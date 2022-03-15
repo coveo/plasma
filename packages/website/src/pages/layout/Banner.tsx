@@ -1,15 +1,24 @@
 import * as React from 'react';
-import {BannerContainer, Section} from '@coveord/plasma-react';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+const code = `
+    import * as React from 'react';
+    import {BannerContainer} from '@coveord/plasma-react';
 
-// start-print
-export const BannerExamples: React.FunctionComponent = () => (
-    <PlasmaComponent id="Banner" title="Banner" withSource>
-        <Section level={3} title="Empty banner">
-            <BannerContainer />
-        </Section>
-    </PlasmaComponent>
+    export default () => (
+        <BannerContainer />
+    );
+`;
+
+export const BannerExamples = () => (
+    <PageLayout
+        id="BannerContainer"
+        componentSourcePath="/banner/BannerContainer.tsx"
+        title="Banner"
+        withPropsTable={false}
+        section="Layout"
+        thumbnail="placeholder"
+        code={code}
+    />
 );
-// stop-print
 export default BannerExamples;

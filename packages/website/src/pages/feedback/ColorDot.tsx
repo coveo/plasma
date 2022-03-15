@@ -1,13 +1,24 @@
 import * as React from 'react';
-import {Section} from '@coveord/plasma-react';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+const code = `
+    import * as React from 'react';
 
-// start-print
+    export default () => (
+        <>
+            <span className="inline-flex label">
+                <i className="color-dot mr1" />
+                Success
+            </span>
+        </>
+    );
+`;
 
-export const ColorDotsExamples = () => (
-    <PlasmaComponent id="ColorDot" title="Color Dot" usage="A color dot indicates the status of an item." withSource>
-        <Section level={2} title="Standard color dots">
+const size = `
+    import * as React from 'react';
+
+    export default () => (
+        <>
             <i className="color-dot mr1" />
             <i className="color-dot state-critical mr1" />
             <i className="color-dot state-major mr1" />
@@ -17,10 +28,9 @@ export const ColorDotsExamples = () => (
             <i className="color-dot state-disabled mr1" />
             <i className="color-dot state-waiting mr1" />
             <i className="color-dot state-new mr1" />
-            <i className="color-dot state-maintenance" />
-        </Section>
-
-        <Section level={2} title="Small color dots">
+            <i className="color-dot state-maintenance mr1" />
+            <br></br>
+            <br></br>
             <i className="color-dot mod-small mr1" />
             <i className="color-dot mod-small state-critical mr1" />
             <i className="color-dot mod-small state-major mr1" />
@@ -31,9 +41,15 @@ export const ColorDotsExamples = () => (
             <i className="color-dot mod-small state-waiting mr1" />
             <i className="color-dot mod-small state-new mr1" />
             <i className="color-dot mod-small state-maintenance" />
-        </Section>
+        </>
+    );
+`;
 
-        <Section level={2} title="Flashing color dots">
+const executing = `
+    import * as React from 'react';
+
+    export default () => (
+        <>
             <i className="color-dot state-executing mr1" />
             <i className="color-dot state-executing state-critical mr1" />
             <i className="color-dot state-executing state-major mr1" />
@@ -44,14 +60,25 @@ export const ColorDotsExamples = () => (
             <i className="color-dot state-executing state-waiting mr1" />
             <i className="color-dot state-executing state-new mr1" />
             <i className="color-dot state-executing state-maintenance" />
-        </Section>
+        </>
+    );
+`;
 
-        <Section level={2} title="Color dot aligned with text">
-            <span className="inline-flex label">
-                <i className="color-dot mr1" />
-                Success
-            </span>
-        </Section>
-    </PlasmaComponent>
+export const ColorDotsExamples = () => (
+    <PageLayout
+        id="ColorDot"
+        sourcePath="packages/style/scss/elements/color-dot.scss"
+        title="Color dot"
+        section="Feedback"
+        withPropsTable={false}
+        description="A color dot indicates the status of an item."
+        thumbnail="placeholder"
+        code={code}
+        examples={{
+            size: {code: size, title: 'Color dots sizes'},
+            executing: {code: executing, title: 'Flashing color dots'},
+        }}
+    />
 );
+
 export default ColorDotsExamples;

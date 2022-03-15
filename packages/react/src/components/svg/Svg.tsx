@@ -2,7 +2,13 @@ import {svg as Icons, SvgName} from '@coveord/plasma-style';
 import * as React from 'react';
 
 export interface ISvgTagProps {
+    /**
+     * CSS classes that the svg element has
+     */
     svgClass?: string;
+    /**
+     * The name of the svg image to display
+     */
     svgName: SvgName;
 }
 

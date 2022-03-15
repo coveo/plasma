@@ -21,12 +21,18 @@ interface PlaygroundProps {
     title: string;
     code: string;
     layout?: 'horizontal' | 'vertical';
+    exampleLayout?: 'horizontal' | 'vertical';
 }
 
 export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
     id: string;
     examples?: Record<string, PlaygroundProps>;
     relatedComponents?: TileProps[];
+    /**
+     * Whether to show the props section or not
+     *
+     * @default true
+     */
     withPropsTable?: boolean;
 }
 
@@ -96,6 +102,7 @@ const Content: React.FunctionComponent<Pick<
                 {code}
             </Sandbox>
         </div>
+
         {withPropsTable && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb1">Props</h4>
@@ -106,7 +113,7 @@ const Content: React.FunctionComponent<Pick<
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb5">Examples</h4>
                 {Object.entries(examples).map(
-                    ([exampleId, {code: exampleCode, title, layout: exampleLayout = 'horizontal'}]) => (
+                    ([exampleId, {code: exampleCode, title, exampleLayout = 'horizontal'}]) => (
                         <Sandbox
                             key={exampleId}
                             id={exampleId}

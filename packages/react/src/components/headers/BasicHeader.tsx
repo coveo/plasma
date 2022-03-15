@@ -5,6 +5,9 @@ import {ITitleProps, Title} from '../title/Title';
 import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper';
 
 export interface IBasicHeaderProps extends IHeaderWrapperProps {
+    /**
+     * The title of the header
+     */
     title: ITitleProps;
 }
 

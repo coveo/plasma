@@ -6,10 +6,10 @@ import {slugify} from 'underscore.string';
 import {SlideY} from '../../animations';
 import {TooltipPlacement} from '../../utils';
 import {Badge, IBadgeProps} from '../badge/Badge';
-import {SvgChild, SvgChildCustomProps, SvgChildProps} from '../svg/SvgChild';
+import {SvgChild, SvgChildProps, OptionalSvgChildProps} from '../svg/SvgChild';
 import {ITooltipProps, Tooltip} from '../tooltip';
 
-export interface IconCardChoice extends Partial<SvgChildCustomProps> {
+export interface IconCardChoice extends OptionalSvgChildProps {
     value: string;
     label: string;
     icon?: SvgName;
@@ -17,18 +17,50 @@ export interface IconCardChoice extends Partial<SvgChildCustomProps> {
 }
 
 export interface IconCardProps {
+    /**
+     * The main text displayed on the card
+     */
     title: string;
-    badges?: IBadgeProps[];
+    /**
+     * The secondary text displayed on the card
+     */
     description?: string;
-    onClick?: (choice?: string) => void;
-    tooltip?: ITooltipProps;
-    choices?: IconCardChoice[];
+    /**
+     * Whether the card is smaller in size
+     */
     small?: boolean;
+    /**
+     * The callback function that will be executed when the user clicks on the card or on one of the choices if choices are specified.
+     */
+    onClick?: (choice?: string) => void;
+    /**
+     * An array of badges to display on the card
+     *
+     * @default []
+     */
+    badges?: IBadgeProps[];
+    /**
+     * The tooltip to display when the user hovers over the card
+     */
+    tooltip?: ITooltipProps;
+    /**
+     * A list of possible choices that are displayed inside a drawer-like box
+     */
+    choices?: IconCardChoice[];
+    /**
+     * Whether the card has an animation on hover. The animation is automatically there if the card has choices.
+     */
     animateOnHover?: boolean;
+    /**
+     * Whether the card is disabled. When disabled, the card appears greyed out and cannot be clicked on.
+     *
+     * @default false
+     */
+    disabled?: boolean;
 }
 
 export const IconCard: React.FunctionComponent<
-    IconCardProps & SvgChildProps & Omit<React.HTMLProps<HTMLDivElement>, 'onClick'>
+    IconCardProps & SvgChildProps & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = ({
     title,
     badges = [],
