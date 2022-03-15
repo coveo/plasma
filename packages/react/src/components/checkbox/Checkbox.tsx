@@ -5,12 +5,26 @@ import {IInputProps, Input} from '../input/Input';
 import {CheckboxContext} from './CheckboxContext';
 
 export interface ICheckboxOwnProps {
+    /**
+     * A callback function that gets executed after the checkbox is clicked
+     *
+     * @param wasChecked Whether the checkbox was checked before it got toggled
+     */
     handleOnClick?: (wasChecked: boolean) => void;
+    /**
+     * Makes the checkbox stand on its own line
+     */
     clearSides?: boolean;
+    /**
+     * The id of the element that gives a label to this checkbox. Not needed when using the Label component in the checkbox's children.
+     */
     'aria-labelledby'?: string;
 }
 
 export interface ICheckboxStateProps {
+    /**
+     * Whether the checkbox is disabled initially. Only useful with connected checkboxes because their disabled state is managed by the PlasmaState.
+     */
     defaultDisabled?: boolean;
 }
 
