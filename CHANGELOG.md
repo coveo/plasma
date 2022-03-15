@@ -1,3 +1,12 @@
+# 38.22.0 (2022-03-15)
+
+
+### Features
+
+* **demo:** update page header page ([c5335b4](https://github.com/coveo/plasma/commits/c5335b4264f2ebf395f3d4daef408b082a4de81f))
+
+
+
 # 38.21.0 (2022-03-15)
 
 
