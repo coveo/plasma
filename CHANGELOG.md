@@ -1,3 +1,12 @@
+# 38.21.0 (2022-03-15)
+
+
+### Features
+
+* writing down section names by hand each time is problematic ([57b54a3](https://github.com/coveo/plasma/commits/57b54a3d3c4e164c7742e5808071efb0b84a431c))
+
+
+
 ## 38.20.1 (2022-03-15)
 
 
