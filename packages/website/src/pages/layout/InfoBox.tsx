@@ -1,54 +1,59 @@
 import * as React from 'react';
-import {CollapsibleConnected, InfoBox, InfoBoxFooter, InfoBoxLink} from '@coveord/plasma-react';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-// start-print
+const code = `
+    import * as React from 'react';
+    import {InfoBox} from '@coveord/plasma-react';
+
+    export default () => <InfoBox>Some contextual information.</InfoBox>;
+    `;
+
+const warning = `
+    import * as React from 'react';
+    import {InfoBox} from '@coveord/plasma-react';
+
+    export default () => (
+        <InfoBox className="mod-warning">
+            Be aware that this is a warning.
+        </InfoBox>
+    );
+`;
+
+const collapsible = `
+    import * as React from 'react';
+    import {InfoBox, CollapsibleConnected} from '@coveord/plasma-react';
+
+    export default () => (
+        <InfoBox className="py0">
+            <CollapsibleConnected
+                headerClasses="py2"
+                id="info-box-collapsible"
+                headerContent={<h6>Some contextual information</h6>}
+                expandedOnMount
+            >
+                <div className="pb2">
+                    <p>Some information about the current component.</p>
+                    <p className="mt2">Or some other piece of information</p>
+                </div>
+            </CollapsibleConnected>
+        </InfoBox>
+    );
+`;
+
 export const InfoBoxExamples: React.FunctionComponent = () => (
-    <PlasmaComponent id="InfoBox" title="Info Box" usage="An info box displays contextual information." withSource>
-        <div className="mt2">
-            <div className="form-group">
-                <label className="form-control-label">Empty InfoBox</label>
-                <InfoBox />
-            </div>
-
-            <div className="form-group">
-                <label className="form-control-label">Empty InfoBox in warning mode</label>
-                <InfoBox className="mod-warning" />
-            </div>
-
-            <div className="form-group">
-                <label className="form-control-label">InfoBox</label>
-                <InfoBox>Some information about the current component.</InfoBox>
-            </div>
-
-            <div className="form-group">
-                <label className="form-control-label">Collapsible InfoBox</label>
-                <InfoBox className="py0">
-                    <CollapsibleConnected
-                        headerClasses="py2"
-                        id="info-box-collapsible"
-                        headerContent={<p className="bolder">Collapsible header</p>}
-                        expandedOnMount
-                    >
-                        <div className="pb2">
-                            <p>Some information about the current component.</p>
-                            <p className="mt2">Or some other piece of information</p>
-                        </div>
-                    </CollapsibleConnected>
-                </InfoBox>
-            </div>
-
-            <div className="form-group">
-                <label className="form-control-label">InfoBox with a link in the footer</label>
-                <InfoBox>
-                    Some information about the current component.
-                    <InfoBoxFooter>
-                        <InfoBoxLink>More information about the current component</InfoBoxLink>
-                    </InfoBoxFooter>
-                </InfoBox>
-            </div>
-        </div>
-    </PlasmaComponent>
+    <PageLayout
+        id="InfoBox"
+        title="Info Box"
+        section="Layout"
+        description="An info box displays contextual information."
+        componentSourcePath="/infoBox/InfoBox.tsx"
+        code={code}
+        examples={{
+            warning: {code: warning, title: 'Warning InfoBox'},
+            collapsible: {code: collapsible, title: 'With collapsible content'},
+        }}
+    />
 );
+
 export default InfoBoxExamples;
