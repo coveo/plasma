@@ -7,7 +7,7 @@ export interface SvgChildStandardProps extends ISvgProps {
 
 export interface SvgChildCustomProps {
     /**
-     * A custom svg element. Should only be used when the svg doesn't exist in the Iconography
+     * A custom svg element. Should only be used if the svg doesn't exist in the Iconography
      */
     svgChild: React.ReactNode;
     svgName?: never;
