@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {TextInputState} from './TextInputState';
 
 export type TextInputAction =
     | {type: 'change-value'; payload: string}
@@ -11,14 +12,6 @@ export type TextInputAction =
     | {type: 'set-dirty'}
     | {type: 'set-pristine'}
     | {type: 'reset'};
-
-export type TextInputState = {
-    value: string;
-    status: 'valid' | 'invalid' | 'warning' | 'indeterminate';
-    message: string;
-    visibleStatus: boolean;
-    isDirty: boolean;
-};
 
 export const textInputDefaultState: TextInputState = {
     value: '',
