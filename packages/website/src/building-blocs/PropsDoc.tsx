@@ -12,6 +12,7 @@ interface PropInfo {
     optional: boolean;
     defaultValue: string | null;
     deprecation: string | null;
+    params: Array<{parameterName: string; text: string}>;
 }
 
 export const PropsDoc: React.FunctionComponent<{componentName: string}> = ({componentName}) => {
@@ -64,6 +65,14 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
                         deprecation = ts.displayPartsToString(deprecatedTag?.text) || '';
                     }
 
+                    const params: Array<{parameterName: string; text: string}> = jsDocTags
+                        .filter((tag) => tag.name === 'param')
+                        .map((param) => ({
+                            parameterName: param.text.find((jsDocComment) => jsDocComment.kind === 'parameterName')
+                                .text,
+                            text: param.text.find((jsDocComment) => jsDocComment.kind === 'text').text,
+                        }));
+
                     accumulator.push({
                         name: entry.name,
                         description: ts.displayPartsToString(symbol.getDocumentationComment(checker)),
@@ -71,6 +80,7 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
                         optional: entry.kindModifiers.includes('optional'),
                         defaultValue,
                         deprecation,
+                        params,
                     });
                 }
             });
@@ -101,7 +111,7 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
                 <tbody>
                     {propsList
                         .sort(requiredFirst)
-                        .map(({name, type, description, optional, deprecation, defaultValue}) => (
+                        .map(({name, type, description, optional, deprecation, defaultValue, params}) => (
                             <tr key={name}>
                                 <td>
                                     <span className="code">{name}</span>
@@ -114,9 +124,20 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
                                     <span className="code">{type}</span>
                                 </td>
                                 <td>{defaultValue}</td>
-                                <td>
+                                <td className="py1">
                                     {deprecation !== null && <div>{deprecation}</div>}
                                     <div>{description}</div>
+                                    {params && (
+                                        <ul className="mt1">
+                                            {params.map(({parameterName, text}) => (
+                                                <li key={parameterName}>
+                                                    <span className="code">{parameterName}</span>
+                                                    <span className="mx1">&ndash;</span>
+                                                    {text}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </td>
                             </tr>
                         ))}
