@@ -77,4 +77,5 @@ export const BreadcrumbsExamples = () => (
         examples={{complex: {code: complex, title: 'With documentation link and tabs'}}}
     />
 );
+
 export default BreadcrumbsExamples;
