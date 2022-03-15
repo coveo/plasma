@@ -1,3 +1,12 @@
+# 38.24.0 (2022-03-15)
+
+
+### Features
+
+* **demo:** revamp tooltip page ([d886940](https://github.com/coveo/plasma/commits/d886940dda9565444002246513cbf531305cda5c))
+
+
+
 ## 38.23.1 (2022-03-15)
 
 
