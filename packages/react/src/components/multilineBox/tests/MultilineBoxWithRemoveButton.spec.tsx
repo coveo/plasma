@@ -195,10 +195,10 @@ describe('Multiline box with remove button', () => {
                                 {name: 'potatas', displayName: 'cromonasse'},
                                 {name: 'help', displayName: 'me'},
                             ]}
-                            renderBody={(data: IMultilineSingleBoxProps[]) => data.map((test) => <div>{'mommy'}</div>)}
+                            renderBody={(data: IMultilineSingleBoxProps[]) => data.map((test) => <div>mommy</div>)}
                         />
                     );
-                    expect(screen.getAllByRole('button', {name: /remove icon/i}).length).toBe(4);
+                    expect(screen.getAllByRole('button', {name: /remove icon/i}).length).toBe(3);
                 });
 
                 it('should not render a remove button if one element is returned from the renderBody prop', () => {
