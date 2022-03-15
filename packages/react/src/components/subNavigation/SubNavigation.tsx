@@ -3,8 +3,17 @@ import * as React from 'react';
 import {map, omit} from 'underscore';
 
 export interface ISubNavigationOwnProps {
+    /**
+     * Id of the SubNavigation
+     */
     id?: string;
+    /**
+     * Array of elements composing the subNavigation
+     */
     items: ISubNavigationItem[];
+    /**
+     * Element selected by default
+     */
     defaultSelected?: string;
 }
 

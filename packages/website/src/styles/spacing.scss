@@ -1,0 +1,30 @@
+$square-size: 120px;
+
+.highlight-padding {
+    > * {
+        background-image: linear-gradient(white, white), linear-gradient(var(--navy-blue-30), var(--navy-blue-30));
+        background-clip: content-box, padding-box;
+    }
+}
+
+.highlight-margin {
+    display: inline-block;
+    background-color: var(--pomegranate-red-30);
+}
+
+.spacing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($square-size, 1fr));
+    gap: 8px;
+}
+
+.spacing-viewer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: $square-size;
+    height: $square-size;
+    font-family: source_code_pro_regular, 'Courier New', Courier, monospace;
+    text-align: center;
+    border: 1px solid black;
+}

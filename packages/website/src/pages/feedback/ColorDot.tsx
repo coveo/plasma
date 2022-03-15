@@ -6,6 +6,19 @@ const code = `
 
     export default () => (
         <>
+            <span className="inline-flex label">
+                <i className="color-dot mr1" />
+                Success
+            </span>
+        </>
+    );
+`;
+
+const size = `
+    import * as React from 'react';
+
+    export default () => (
+        <>
             <i className="color-dot mr1" />
             <i className="color-dot state-critical mr1" />
             <i className="color-dot state-major mr1" />
@@ -15,16 +28,9 @@ const code = `
             <i className="color-dot state-disabled mr1" />
             <i className="color-dot state-waiting mr1" />
             <i className="color-dot state-new mr1" />
-            <i className="color-dot state-maintenance" />
-        </>
-    );
-`;
-
-const small = `
-    import * as React from 'react';
-
-    export default () => (
-        <>
+            <i className="color-dot state-maintenance mr1" />
+            <br></br>
+            <br></br>
             <i className="color-dot mod-small mr1" />
             <i className="color-dot mod-small state-critical mr1" />
             <i className="color-dot mod-small state-major mr1" />
@@ -58,19 +64,6 @@ const executing = `
     );
 `;
 
-const withLabel = `
-    import * as React from 'react';
-
-    export default () => (
-        <>
-            <span className="inline-flex label">
-                <i className="color-dot mr1" />
-                Success
-            </span>
-        </>
-    );
-`;
-
 export const ColorDotsExamples = () => (
     <PageLayout
         id="ColorDot"
@@ -82,9 +75,8 @@ export const ColorDotsExamples = () => (
         thumbnail="placeholder"
         code={code}
         examples={{
-            small: {code: small, title: 'Small color dots'},
+            size: {code: size, title: 'Color dots sizes'},
             executing: {code: executing, title: 'Flashing color dots'},
-            withLabel: {code: withLabel, title: 'Color dot aligned with text'},
         }}
     />
 );

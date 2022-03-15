@@ -76,10 +76,9 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                         id={cData.id}
                         defaultValue={cData.props}
                         {...inputProps}
-                        onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                            inputProps?.onKeyUp?.(e);
-                            const value = e.currentTarget.value;
-                            if (value !== '' && cData.isLast) {
+                        onKeyUp={inputProps?.onKeyUp}
+                        onChangeHandler={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            if (e.currentTarget.value !== '' && cData.isLast) {
                                 parentProps.addNewBox();
                             }
                         }}

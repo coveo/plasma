@@ -9,6 +9,7 @@ import '../styles/props-doc.scss';
 import '../styles/loading-screen.css';
 import '../styles/page-header.scss';
 import '../styles/iconography.scss';
+import '../styles/spacing.scss';
 import {Svg} from '@coveord/plasma-react';
 
 import * as PlasmaReact from '@coveord/plasma-react';

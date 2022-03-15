@@ -69,9 +69,9 @@ const FoundationsPages: React.FC = () => (
                 thumbnail="links"
             />
             <Tile
-                title="Whitespace"
-                description="Whitespace is the standard padding and margin size that one can adjust to customize the layout of an interface."
-                href="/#/foundations/Whitespace"
+                title="Spacing"
+                description="Spacing is the standard padding and margin size that one can adjust to customize the layout of an interface."
+                href="foundations/Spacing"
             />
         </div>
     </Section>

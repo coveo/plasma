@@ -16,7 +16,8 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate>, Omi
      */
     description?: React.ReactNode;
     /**
-     * Additionnal child to add to the blank slatee
+     * Additionnal child to add to the blank slate
+
      */
     additionalSection?: React.ReactNode;
     /**

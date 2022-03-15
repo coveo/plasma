@@ -1,3 +1,52 @@
+## 38.20.1 (2022-03-15)
+
+
+
+# 38.20.0 (2022-03-15)
+
+
+### Bug Fixes
+
+* **react:** disable MultiLineBox remove button on last entry ([13fcfe8](https://github.com/coveo/plasma/commits/13fcfe81f19cd8437769d87b323fe7425610a558))
+* **react:** fix MultiValueInput not adding new line ([74dfb5a](https://github.com/coveo/plasma/commits/74dfb5a79c60b34ef28629b2d1e23440203bc322))
+
+
+### Features
+
+* add link to external design priciples ([a293432](https://github.com/coveo/plasma/commits/a2934321dd09dabfd42f0451f1f3407a94ea532f))
+* **demo:** revamp blank slate page ([01790e9](https://github.com/coveo/plasma/commits/01790e901ef922d157264744dcd3ca56e626737a))
+* **demo:** revamp demo page for color dots + coditionnal props section ([78422f0](https://github.com/coveo/plasma/commits/78422f045b64f0ca7cfd5ade52cd669c39917cf8))
+* **demo:** revamped banner page ([0519213](https://github.com/coveo/plasma/commits/0519213d4c02cd3a7bd9e60b88706fca48a233a4))
+* **demo:** update bordered line page ([1b2838b](https://github.com/coveo/plasma/commits/1b2838b0779c3b4f3cb00a1f25809fd405c8aec4))
+
+
+
+# 38.19.0 (2022-03-14)
+
+
+### Features
+
+* **demo:** revamp subNavigation page ([0e4e9c2](https://github.com/coveo/plasma/commits/0e4e9c2c167581ec016ce926f21ff3d897a9c1e7))
+* **demo:** revamp Tab page ([cfd7b34](https://github.com/coveo/plasma/commits/cfd7b3466a59bb9d9f32084f52da117b18215836))
+* **demo:** revamped sideNavigation page ([a5269ed](https://github.com/coveo/plasma/commits/a5269ed6395535c7e87662d5dc2c7b78e296e17c))
+
+
+
+# 38.18.0 (2022-03-14)
+
+
+### Bug Fixes
+
+* **website:** adjust href on spacing home page tile ([85017d5](https://github.com/coveo/plasma/commits/85017d54aca94a1a0d8e3c5c6832b4ea45864a05))
+
+
+### Features
+
+* **react-icons:** add accessible role to all icons ([acf3e6c](https://github.com/coveo/plasma/commits/acf3e6c622acf44b42b9302db7695e9b1ca6944d))
+* **website:** redo whitespaces demo page ([f60538f](https://github.com/coveo/plasma/commits/f60538f1434ff46b26b86f99922f80d33d8fa307))
+
+
+
 # 38.17.0 (2022-03-14)
 
 

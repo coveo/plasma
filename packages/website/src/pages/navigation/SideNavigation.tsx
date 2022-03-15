@@ -1,71 +1,100 @@
-import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
-import {
-    Form,
-    Section,
-    SideNavigation,
-    SideNavigationItem,
-    SideNavigationLoadingItem,
-    SideNavigationMenuSection,
-} from '@coveord/plasma-react';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-// start-print
-
-export const SideNavigationExample: React.FunctionComponent = () => {
-    const [isExpanded, setIsExpanded] = React.useState(true);
-
-    return (
-        <PlasmaComponent
-            id="SideNavigation"
-            title="Sidebar Navigation"
-            usage="A sidebar navigation is a primary navigation element that displays the architecture of the product’s features."
-            withSource
-        >
-            <Form>
-                <Section level={2} title="Side Navigation">
-                    <SideNavigation>
-                        <SideNavigationMenuSection title="Regular Section" svgName={svg.coveoIcon16px.name}>
-                            <SideNavigationItem isActive>
-                                <a href="http://coveo.com" title="Link to Coveo">
-                                    Link to Coveo
-                                </a>
-                            </SideNavigationItem>
-                            <SideNavigationItem>
-                                <a href="http://coveo.com" title="Link to Coveo">
-                                    Another link to Coveo
-                                </a>
-                            </SideNavigationItem>
-                        </SideNavigationMenuSection>
-                        <SideNavigationMenuSection title="Loading Section">
-                            <SideNavigationLoadingItem className="mod-width-30" />
-                            <SideNavigationLoadingItem className="mod-width-50" />
-                            <SideNavigationLoadingItem className="mod-width-40" />
-                        </SideNavigationMenuSection>
-                        <SideNavigationMenuSection
-                            title="Collapsible Section"
-                            svgName={svg.ai16px.name}
-                            svgClass="mod-stroke"
-                            expandable
-                            expanded={isExpanded}
-                            onClick={() => setIsExpanded(!isExpanded)}
-                        >
-                            <SideNavigationItem>
-                                <a href="http://coveo.com" title="Link to Coveo">
-                                    Link to Coveo
-                                </a>
-                            </SideNavigationItem>
-                            <SideNavigationItem>
-                                <a href="http://coveo.com" title="Link to Coveo">
-                                    Another link to Coveo
-                                </a>
-                            </SideNavigationItem>
-                        </SideNavigationMenuSection>
-                    </SideNavigation>
-                </Section>
-            </Form>
-        </PlasmaComponent>
+const loading = `
+    import * as React from 'react';
+    import {
+        SideNavigation,
+        SideNavigationLoadingItem,
+        SideNavigationMenuSection,
+    } from '@coveord/plasma-react';
+    
+    export default () => (
+        <SideNavigation>
+            <SideNavigationMenuSection title="Loading Section" svgName={'coveoIcon16px'}>
+                <SideNavigationLoadingItem className="mod-width-30" />
+                <SideNavigationLoadingItem className="mod-width-50" />
+                <SideNavigationLoadingItem className="mod-width-40" />
+            </SideNavigationMenuSection>
+        </SideNavigation>
     );
-};
-export default SideNavigationExample;
+`;
+const collapsible = `
+    import * as React from 'react';
+    import {
+        SideNavigation,
+        SideNavigationItem,
+        SideNavigationMenuSection,
+    } from '@coveord/plasma-react';
+
+    export default () => {
+        const [isExpanded, setIsExpanded] = React.useState(true);
+        return (
+            <SideNavigation>
+                <SideNavigationMenuSection
+                    title="Collapsible Section"
+                    svgName={'coveoIcon16px'}
+                    expandable
+                    expanded={isExpanded}
+                    onClick={() => setIsExpanded(!isExpanded)}
+                >
+                    <SideNavigationItem>
+                        <a href="http://coveo.com" title="Link to Coveo">
+                            Link to Coveo
+                        </a>
+                    </SideNavigationItem>
+                    <SideNavigationItem>
+                        <a href="http://coveo.com" title="Link to Coveo">
+                            Another link to Coveo
+                        </a>
+                    </SideNavigationItem>
+                </SideNavigationMenuSection>
+            </SideNavigation>
+        );
+    };
+`;
+
+const code = `
+    import * as React from 'react';
+    import {
+        SideNavigation,
+        SideNavigationItem,
+        SideNavigationMenuSection,
+    } from '@coveord/plasma-react';
+
+    export default () => (
+        <SideNavigation>
+        <SideNavigationMenuSection title="Regular Section" svgName={'coveoIcon16px'}>
+            <SideNavigationItem isActive>
+                <a href="http://coveo.com" title="Link to Coveo">
+                    Link to Coveo
+                </a>
+            </SideNavigationItem>
+            <SideNavigationItem>
+                <a href="http://coveo.com" title="Link to Coveo">
+                    Another link to Coveo
+                </a>
+            </SideNavigationItem>
+        </SideNavigationMenuSection>
+    </SideNavigation>
+    );
+`;
+
+export const SideNavigationExamples = () => (
+    <PageLayout
+        id="SideNavigation"
+        componentSourcePath="/sideNavigation/SideNavigation.tsx"
+        title="SideNavigation"
+        section="Navigation"
+        description="A sidebar navigation is a primary navigation element that displays the architecture of the product’s features."
+        thumbnail="sideNav"
+        code={code}
+        examples={{
+            loading: {code: loading, title: 'Loading section'},
+            collapsible: {code: collapsible, title: 'Collapsible section'},
+        }}
+    />
+);
+
+export default SideNavigationExamples;

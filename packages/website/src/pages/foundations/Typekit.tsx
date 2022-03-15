@@ -1,14 +1,7 @@
 import classNames from 'classnames';
-import dynamic from 'next/dynamic';
 import * as React from 'react';
 
-import {PageHeader} from '../../building-blocs/PageHeader';
-import {PlasmaLoading} from '../../building-blocs/PlasmaLoading';
-
-const Sandbox = dynamic(
-    import('../../building-blocs/Sandbox').then((mod) => mod.Sandbox),
-    {ssr: false, loading: () => <PlasmaLoading />}
-);
+import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import * as React from 'react';
@@ -253,58 +246,53 @@ const typekitStyles: Array<{
 ];
 
 export const Typekit = () => (
-    <>
-        <PageHeader
-            section="Foundations"
-            title="Typekit"
-            thumbnail="typekit"
-            description="The Typekit covers all typography styles designed specifically to work with the Plasma ecosystem."
-            sourcePath="packages/style/scss/typekit.scss"
-        />
-        <div className="plasma-page-layout">
-            <div className="plasma-page-layout__main-code plasma-page-layout__section">
-                <Sandbox id="main-code" horizontal>
-                    {code}
-                </Sandbox>
-            </div>
-            <div className="plasma-page-layout__section full-content flex-column">
-                {typekitStyles.map(({name, variants}) => (
-                    <div key={name} className="p2 mb3">
-                        <h6 className="h6-subdued mb2">{name}</h6>
-                        <table className="table">
-                            <thead className="mod-no-border-top">
-                                <tr>
-                                    <th style={{width: '300px'}}>Usage</th>
-                                    <th>Preview</th>
+    <PageLayout
+        id="Typekit"
+        section="Foundations"
+        title="Typekit"
+        thumbnail="typekit"
+        description="The Typekit covers all typography styles designed specifically to work with the Plasma ecosystem."
+        sourcePath="packages/style/scss/typekit.scss"
+        code={code}
+        withPropsTable={false}
+    >
+        <div className="plasma-page-layout__section full-content flex-column">
+            {typekitStyles.map(({name, variants}) => (
+                <div key={name} className="p2 mb3">
+                    <h6 className="h6-subdued mb2">{name}</h6>
+                    <table className="table">
+                        <thead className="mod-no-border-top">
+                            <tr>
+                                <th style={{width: '300px'}}>Usage</th>
+                                <th>Preview</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {variants.map(({selectors, renderer: Preview}) => (
+                                <tr key={btoa(selectors.join('-'))}>
+                                    <td className="mod-no-border-bottom">
+                                        {selectors.map((selector, i) => (
+                                            <span
+                                                className={classNames('code', {
+                                                    mr1: i + 1 !== selectors.length,
+                                                })}
+                                                key={selector}
+                                            >
+                                                {selector}
+                                            </span>
+                                        ))}
+                                    </td>
+                                    <td className="mod-no-border-bottom">
+                                        <Preview>Deliver breakthrough digital experiences</Preview>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {variants.map(({selectors, renderer: Preview}) => (
-                                    <tr key={Buffer.from(selectors.join('-')).toString('base64')}>
-                                        <td className="mod-no-border-bottom">
-                                            {selectors.map((selector, i) => (
-                                                <span
-                                                    className={classNames('code', {
-                                                        mr1: i + 1 !== selectors.length,
-                                                    })}
-                                                    key={selector}
-                                                >
-                                                    {selector}
-                                                </span>
-                                            ))}
-                                        </td>
-                                        <td className="mod-no-border-bottom">
-                                            <Preview>Deliver breakthrough digital experiences</Preview>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                ))}
-            </div>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ))}
         </div>
-    </>
+    </PageLayout>
 );
 
 export default Typekit;
