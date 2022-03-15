@@ -1,3 +1,35 @@
+# 38.21.0 (2022-03-15)
+
+
+### Features
+
+* writing down section names by hand each time is problematic ([57b54a3](https://github.com/coveo/plasma/commits/57b54a3d3c4e164c7742e5808071efb0b84a431c))
+
+
+
+## 38.20.1 (2022-03-15)
+
+
+
+# 38.20.0 (2022-03-15)
+
+
+### Bug Fixes
+
+* **react:** disable MultiLineBox remove button on last entry ([13fcfe8](https://github.com/coveo/plasma/commits/13fcfe81f19cd8437769d87b323fe7425610a558))
+* **react:** fix MultiValueInput not adding new line ([74dfb5a](https://github.com/coveo/plasma/commits/74dfb5a79c60b34ef28629b2d1e23440203bc322))
+
+
+### Features
+
+* add link to external design priciples ([a293432](https://github.com/coveo/plasma/commits/a2934321dd09dabfd42f0451f1f3407a94ea532f))
+* **demo:** revamp blank slate page ([01790e9](https://github.com/coveo/plasma/commits/01790e901ef922d157264744dcd3ca56e626737a))
+* **demo:** revamp demo page for color dots + coditionnal props section ([78422f0](https://github.com/coveo/plasma/commits/78422f045b64f0ca7cfd5ade52cd669c39917cf8))
+* **demo:** revamped banner page ([0519213](https://github.com/coveo/plasma/commits/0519213d4c02cd3a7bd9e60b88706fca48a233a4))
+* **demo:** update bordered line page ([1b2838b](https://github.com/coveo/plasma/commits/1b2838b0779c3b4f3cb00a1f25809fd405c8aec4))
+
+
+
 # 38.19.0 (2022-03-14)
 
 

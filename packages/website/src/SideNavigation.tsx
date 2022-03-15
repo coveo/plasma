@@ -64,6 +64,18 @@ export const Navigation: React.FunctionComponent = () => {
                     </a>
                 }
             />
+            <SideNavigationMenuSection
+                title={
+                    <a
+                        href="https://coveord.atlassian.net/wiki/spaces/UX/pages/2993946801/Design+principles"
+                        target="_blank"
+                        className="inline-flex flex-center"
+                    >
+                        Design principles
+                        <Svg svgName="external" svgClass="icon mod-20 pl1" />
+                    </a>
+                }
+            />
             <CollapsibleSideSection title="Foundations">
                 <NavLink href="/foundations/Iconography" label="Iconography" />
                 <NavLink href="/foundations/Typekit" label="Typekit" />

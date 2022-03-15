@@ -27,6 +27,11 @@ export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
     id: string;
     examples?: Record<string, PlaygroundProps>;
     relatedComponents?: TileProps[];
+    /**
+     * Whether to show the props section or not
+     *
+     * @default true
+     */
     withPropsTable?: boolean;
 }
 
@@ -96,6 +101,7 @@ const Content: React.FunctionComponent<Pick<
                 {code}
             </Sandbox>
         </div>
+
         {withPropsTable && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb1">Props</h4>
