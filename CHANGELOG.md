@@ -1,3 +1,13 @@
+# 38.23.0 (2022-03-15)
+
+
+### Features
+
+* **demo:** update browser preview page ([8e3ac45](https://github.com/coveo/plasma/commits/8e3ac45d7d44f53705be1fa19aeaec1e43693a93))
+* **demo:** update icon badge page ([943398c](https://github.com/coveo/plasma/commits/943398ce9f34fcaa0fb618f50e348d4e491d8192))
+
+
+
 # 38.22.0 (2022-03-15)
 
 
