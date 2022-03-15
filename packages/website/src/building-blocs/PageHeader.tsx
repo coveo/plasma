@@ -7,7 +7,7 @@ export interface PageHeaderProps {
     title: string;
     thumbnail?: TileProps['thumbnail'];
     description?: React.ReactNode;
-    section: string;
+    section: 'Foundations' | 'Layout' | 'Form' | 'Navigation' | 'Feedback' | 'Advanced';
     /**
      * Path to the component's source file from /packages/react/src/components
      *

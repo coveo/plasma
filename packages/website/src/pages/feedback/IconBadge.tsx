@@ -36,7 +36,7 @@ export const IconBadgeExamples = () => (
         id="IconBadge"
         componentSourcePath="/iconBadge/IconBadge.tsx"
         title="IconBadge"
-        section="Feedbasck"
+        section="Feedback"
         thumbnail="placeholder"
         code={code}
     />
