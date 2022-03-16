@@ -10,15 +10,47 @@ import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from './Colla
 import {CollapsibleToggle} from './CollapsibleToggle';
 
 export interface CollapsibleOwnProps {
+    /**
+     * Unique identifier for the Collapsible
+     */
     id: string;
+    /**
+     * Whether the collapsible is disabled
+     *
+     * @default false
+     */
     disabled?: boolean;
+    /**
+     * Whether the collapsible is expanded on mount
+     */
     expandedOnMount?: boolean;
+    /**
+     * Custom JSX inside the header
+     */
     headerContent?: React.ReactNode;
+    /**
+     * Additionnal CSS classes for the header
+     */
     headerClasses?: string;
+    /**
+     * Additionnal CSS classes for the toggle icon
+     */
     toggleIconClassName?: string;
+    /**
+     * Additionnal CSS classes for the outer most container of the Collapsible
+     */
     className?: string;
+    /**
+     * Whether the collapsible has borders
+     */
     withBorders?: boolean;
+    /**
+     * Set to render a custom toggle icon
+     */
     collapsibleToggleIcon?: React.ReactNode;
+    /**
+     * Callback called when container is clicked
+     */
     onClick?: () => void;
 }
 
