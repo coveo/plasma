@@ -39,7 +39,6 @@ const fullRow = `
 `;
 
 const LabeledValueExamples = () => (
-
     <PageLayout
         id="LabeledValue"
         componentSourcePath="/labeledValue/LabeledValue.tsx"
