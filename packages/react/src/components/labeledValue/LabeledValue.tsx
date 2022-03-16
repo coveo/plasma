@@ -6,13 +6,46 @@ import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ILabeledValueProps {
+    /**
+     * The text to display
+     */
     label: string;
+    /**
+     * The value to display with the label
+     */
     value: React.ReactNode;
+    /**
+     * Set to true for the labeledValue to take the full row
+     *
+     */
     fullRow?: boolean;
+    /**
+     * The text to display in the tooltip. Will make a info icon appears after the label title
+     */
     information?: React.ReactNode;
+    /**
+     * To choose the tooltip placement
+     *
+     * @default top
+     */
     informationPlacement?: TooltipPlacement;
+    /**
+     * To set the padding or not
+     *
+     * @default true
+     */
     padding?: boolean;
+    /**
+     * Do not use
+     *
+     * @deprecated
+     */
     singleLine?: boolean;
+    /**
+     * To add custom CSS classes to the component
+     *
+     *
+     */
     className?: string;
 }
 
