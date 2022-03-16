@@ -1,3 +1,12 @@
+# 38.25.0 (2022-03-16)
+
+
+### Features
+
+* **website:** display jsdocs params in props table ([aa2caa3](https://github.com/coveo/plasma/commits/aa2caa3ad7e8827dc504a3f67ca52e38e7e6ca7b))
+
+
+
 # 38.24.0 (2022-03-15)
 
 
