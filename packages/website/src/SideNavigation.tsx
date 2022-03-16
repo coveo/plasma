@@ -96,9 +96,9 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink href="/layout/ModalWindow" label="Modal" />
                 <NavLink href="/layout/ModalWizard" label="Modal wizard" />
                 <NavLink href="/layout/PageHeader" label="Page header" />
-                <NavLink href="/layout/Footer" label="Page footer" />
                 <NavLink href="/layout/Section" label="Section" />
                 <NavLink href="/layout/SplitLayout" label="Split layout" />
+                <NavLink href="/layout/StickyFooter" label="Sticky footer" />
                 <NavLink href="/layout/TableHOC" label="Table" />
                 <NavLink href="/layout/TableHOCLoading" label="Table loading" />
                 <NavLink href="/layout/TableHOCServer" label="Table server" />
