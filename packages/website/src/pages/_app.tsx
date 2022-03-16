@@ -21,6 +21,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
 import {Provider} from 'react-redux';
+import moment from 'moment';
 
 import logo from '../../resources/plasma-logo.svg';
 import {EngineProvider} from '../search/engine/EngineProvider';
@@ -55,6 +56,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         (window as any).ReactRedux = ReactRedux;
         (window as any).PlasmaReact = PlasmaReact;
         (window as any).PlasmaReactIcons = PlasmaReactIcons;
+        (window as any).moment = moment;
 
         if (window.location.host === 'vapor.coveo.com') {
             window.location.href = window.location.href.replace('vapor.coveo.com', 'plasma.coveo.com');

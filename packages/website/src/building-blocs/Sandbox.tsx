@@ -74,8 +74,8 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
                     .replace(/var .+ = require(.+);/g, '') // remove the require statements
                     .replace(/var .+ = __importStar\(require(.+)\);/g, '') // remove the import statements
                     .replace(/_plasmaReact/g, 'PlasmaReact') // use plasma-react from the window Plasma object
-                    .replace(/_reactRedux/g, 'ReactRedux')
-                    .replace(/_moment/g, 'moment') + // use moment from the window object
+                    .replace(/_reactRedux/g, 'ReactRedux') // use react-redux from the window ReactRedux object
+                    .replace(/_moment/g, 'moment') + // use moment from the window moment object
                 `ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(_default)), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval

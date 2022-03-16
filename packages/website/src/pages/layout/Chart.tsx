@@ -1,76 +1,6 @@
 import * as React from 'react';
-import {
-    BarSeries,
-    Button,
-    ChartContainer,
-    ChartTooltip,
-    InfoLine,
-    LineSeries,
-    ScatterSeries,
-    Section,
-    XGrid,
-    XYAxis,
-    XYChart,
-    XYPoint,
-    YGrid,
-} from '@coveord/plasma-react';
-import * as _ from 'underscore';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
-
-const data = [
-    {
-        label: 'First',
-        data: [
-            {x: -1, y: 3},
-            {x: 0, y: 3},
-            {x: 1, y: 3},
-            {x: 2, y: 6},
-            {x: 3, y: 2},
-            {x: 4, y: 12},
-            {x: 5, y: 8},
-        ],
-    },
-    {
-        label: 'Second',
-        data: [
-            {x: -1, y: 1},
-            {x: 0, y: 5},
-            {x: 1, y: 4},
-            {x: 2, y: 0},
-            {x: 3, y: 6},
-            {x: 4, y: 7},
-            {x: 5, y: 4},
-        ],
-    },
-    {
-        label: 'Third',
-        data: [
-            {x: -1, y: 4},
-            {x: 0, y: 7},
-            {x: 1, y: 1},
-            {x: 2, y: 1},
-            {x: 3, y: 1},
-            {x: 4, y: 2},
-            {x: 5, y: 7},
-        ],
-    },
-];
-
-//                 <Section level={3} title="Chart with y-axis and Info Lines">
-//                     <div className="form-control" style={{height: '300px'}}>
-
-//                     </div>
-//                 </Section>
-//                 <Section level={3} title="Combined Chart">
-//                     <div className="form-control" style={{height: '500px'}}>
-
-//                     </div>
-//                 </Section>
-//                 <Section level={3} title="Date Chart">
-//                     <div className="form-control" style={{height: '300px'}}>
-
-//                     </div>
 
 const code = `
     import * as React from 'react';
@@ -310,32 +240,34 @@ const infoLines = `
 
 const dateChart = `
     import * as React from 'react';
-    import moment from 'moment';
+    import moment=require('./node_modules/moment/ts3.1-typings/moment');
     import {BarSeries, ChartTooltip, ChartContainer, XYAxis, XYChart} from '@coveord/plasma-react';
 
     export default () => (
-        <ChartContainer
-            renderChart={(width, height) => (
-                <XYChart
-                    series={dateData}
-                    height={height}
-                    width={width}
-                    xFormat={(value: number) => moment.unix(value).format('YYYY-MM-DD')}
-                >
-                    <XYAxis x={{tickTextSize: 120}} y={{show: false}}>
-                        <BarSeries />
-                        <ChartTooltip sort />
-                    </XYAxis>
-                </XYChart>
-            )}
-        />
+        <div style={{height: '500px'}}>
+            <ChartContainer
+                renderChart={(width, height) => (
+                    <XYChart
+                        series={dateData}
+                        height={height}
+                        width={width}
+                        xFormat={(value: number) => moment.unix(value).format('YYYY-MM-DD')}
+                    >
+                        <XYAxis x={{tickTextSize: 120}} y={{show: false}}>
+                            <BarSeries />
+                            <ChartTooltip sort />
+                        </XYAxis>
+                    </XYChart>
+                )}
+            />
+        </div>
     );
 
     const dateData = [
         {
             label: 'First',
-            data: [...Array(25).keys()].map((i: number) => ({
-                x: new Date(),
+            data: Array.from(Array(25).keys()).map((i: number) => ({
+                x: moment().startOf('day').subtract(i, 'day').unix(),
                 y: i + 1,
             })),
         },
@@ -354,10 +286,10 @@ export const ChartExamples = () => (
         code={code}
         examples={{
             infoLines: {code: infoLines, title: 'With info lines', exampleLayout: 'vertical'},
+            dateChart: {code: dateChart, title: 'Date chart', exampleLayout: 'vertical'},
             lineSeries: {code: lineSeries, title: 'Line series'},
             scatterSeries: {code: scatterSeries, title: 'Scatter series'},
             barSeries: {code: barSeries, title: 'Bar series'},
-            dateChart: {code: dateChart, title: 'Date chart'},
         }}
     />
 );
