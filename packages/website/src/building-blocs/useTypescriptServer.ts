@@ -35,6 +35,9 @@ const load = async (path: string, ctx: any, root: string) => {
     if (root.includes('@coveord/plasma-react') && path.includes('Entry.d.ts')) {
         newPath = newPath.replace('Entry.d.ts', 'index.d.ts');
     }
+    if (root.includes('moment') && path.includes('moment.d.ts')) {
+        newPath = newPath.replace('moment.d.ts', 'index.d.ts');
+    }
     return {path: newPath, content};
 };
 
@@ -64,6 +67,7 @@ export const useTypescriptServer = () => {
                 jsxFactory: 'React.createElement',
                 jsxFragmentFactory: 'React.Fragment',
                 reactNamespace: 'React',
+                esModuleInterop: true,
             });
 
             defaultMap.forEach((content, path) => {

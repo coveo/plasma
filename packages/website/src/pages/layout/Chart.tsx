@@ -7,31 +7,29 @@ const code = `
     import {BarSeries, LineSeries, ScatterSeries, ChartTooltip, ChartContainer,XYChart, XYAxis, XYPoint} from '@coveord/plasma-react';
 
     export default () => (
-        <div style={{height: '500px'}}>
-            <ChartContainer
-                renderChart={(width, height) => (
-                    <XYChart
-                        series={data}
-                        height={height}
-                        width={width}
-                        color={(serie: number, colorPattern: string[], point?: XYPoint) =>
-                            point && point.y > 7 ? overPattern[serie] : colorPattern[serie]
-                        }
-                        xFormat={(value: number) =>
-                            ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'][value + 1]
-                        }
-                        yFormat={(value: number) => value * 10 + '%'}
-                    >
-                        <XYAxis x={{innerPadding: width / 12}} y={{show: false}}>
-                            <BarSeries />
-                            <LineSeries />
-                            <ScatterSeries />
-                            <ChartTooltip sort />
-                        </XYAxis>
-                    </XYChart>
-                )}
-            />
-        </div>
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart
+                    series={data}
+                    height={height}
+                    width={width}
+                    color={(serie: number, colorPattern: string[], point?: XYPoint) =>
+                        point && point.y > 7 ? overPattern[serie] : colorPattern[serie]
+                    }
+                    xFormat={(value: number) =>
+                        ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'][value + 1]
+                    }
+                    yFormat={(value: number) => value * 10 + '%'}
+                >
+                    <XYAxis x={{innerPadding: width / 12}} y={{show: false}}>
+                        <BarSeries />
+                        <LineSeries />
+                        <ScatterSeries />
+                        <ChartTooltip sort />
+                    </XYAxis>
+                </XYChart>
+            )}
+        />
     );
 
     const data = [
@@ -82,18 +80,18 @@ const barSeries = `
     import {BarSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
 
     export default () => (
-            <ChartContainer
-                renderChart={(width, height) => (
-                    <XYChart
-                        series={[data[0]]}
-                        height={height}
-                        width={width}
-                        padding={{left: width / 12, right: width / 12}}
-                    >
-                        {<BarSeries />}
-                    </XYChart>
-                )}
-            />
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart
+                    series={[data[0]]}
+                    height={height}
+                    width={width}
+                    padding={{left: width / 12, right: width / 12}}
+                >
+                    {<BarSeries />}
+                </XYChart>
+            )}
+        />
     );
 
     const data = [
@@ -115,18 +113,18 @@ const lineSeries = `
     import {LineSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
 
     export default () => (
-            <ChartContainer
-                renderChart={(width, height) => (
-                    <XYChart
-                        series={[data[0]]}
-                        height={height}
-                        width={width}
-                        padding={undefined}
-                    >
-                        {<LineSeries />}
-                    </XYChart>
-                )}
-            />
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart
+                    series={[data[0]]}
+                    height={height}
+                    width={width}
+                    padding={undefined}
+                >
+                    {<LineSeries />}
+                </XYChart>
+            )}
+        />
     );
 
     const data = [
@@ -148,18 +146,18 @@ const scatterSeries = `
     import {ScatterSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
 
     export default () => (
-            <ChartContainer
-                renderChart={(width, height) => (
-                    <XYChart
-                        series={[data[0]]}
-                        height={height}
-                        width={width}
-                        padding={undefined}
-                    >
-                        {<ScatterSeries />}
-                    </XYChart>
-                )}
-            />
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart
+                    series={[data[0]]}
+                    height={height}
+                    width={width}
+                    padding={undefined}
+                >
+                    {<ScatterSeries />}
+                </XYChart>
+            )}
+        />
     );
 
     const data = [
@@ -181,21 +179,19 @@ const infoLines = `
     import {LineSeries, InfoLine, ChartContainer, XGrid, YGrid, XYAxis, XYChart } from '@coveord/plasma-react';
 
     export default () => (
-        <div style={{height: '500px'}}>
-            <ChartContainer
-                renderChart={(width, height) => (
-                    <XYChart series={data} height={height} width={width}>
-                        <XYAxis x={{innerPadding: 30}} y={{innerPadding: 30}}>
-                            <XGrid padding={30} />
-                            <YGrid padding={30} />
-                            <LineSeries />
-                            <InfoLine value={3} label="Three" padding={30} />
-                            <InfoLine value={2} label="Two" padding={30} isVertical />
-                        </XYAxis>
-                    </XYChart>
-                )}
-            />
-        </div>
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart series={data} height={height} width={width}>
+                    <XYAxis x={{innerPadding: 30}} y={{innerPadding: 30}}>
+                        <XGrid padding={30} />
+                        <YGrid padding={30} />
+                        <LineSeries />
+                        <InfoLine value={3} label="Three" padding={30} />
+                        <InfoLine value={2} label="Two" padding={30} isVertical />
+                    </XYAxis>
+                </XYChart>
+            )}
+        />
     );
 
     const data = [
@@ -240,27 +236,25 @@ const infoLines = `
 
 const dateChart = `
     import * as React from 'react';
-    import moment=require('./node_modules/moment/ts3.1-typings/moment');
+    import moment from 'moment';
     import {BarSeries, ChartTooltip, ChartContainer, XYAxis, XYChart} from '@coveord/plasma-react';
 
     export default () => (
-        <div style={{height: '500px'}}>
-            <ChartContainer
-                renderChart={(width, height) => (
-                    <XYChart
-                        series={dateData}
-                        height={height}
-                        width={width}
-                        xFormat={(value: number) => moment.unix(value).format('YYYY-MM-DD')}
-                    >
-                        <XYAxis x={{tickTextSize: 120}} y={{show: false}}>
-                            <BarSeries />
-                            <ChartTooltip sort />
-                        </XYAxis>
-                    </XYChart>
-                )}
-            />
-        </div>
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart
+                    series={dateData}
+                    height={height}
+                    width={width}
+                    xFormat={(value: number) => moment.unix(value).format('YYYY-MM-DD')}
+                >
+                    <XYAxis x={{tickTextSize: 120}} y={{show: false}}>
+                        <BarSeries />
+                        <ChartTooltip sort />
+                    </XYAxis>
+                </XYChart>
+            )}
+        />
     );
 
     const dateData = [
@@ -281,7 +275,6 @@ export const ChartExamples = () => (
         title="Charts"
         section="Layout"
         description="A chart compares sets of complex data to provide insights on their relationship and status."
-        thumbnail="placeholder"
         code={code}
         examples={{
             infoLines: {code: infoLines, title: 'With info lines'},
