@@ -16,10 +16,27 @@ export enum IconBadgeType {
 }
 
 export interface IconBadgeProps {
+    /**
+     * Icon to display
+     */
     svgName: SvgName;
+    /**
+     * Type of the icon badge (New - Information - Warning - Major)
+     */
     type: IconBadgeType;
+    /**
+     * Size of the icon badge
+     *
+     * @default Medium
+     */
     size?: IconBadgeSize;
+    /**
+     * Additionnal CSS class for the icon
+     */
     svgClass?: string;
+    /**
+     * Additionnal CSS class for the icon badge
+     */
     className?: string;
 }
 

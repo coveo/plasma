@@ -1,3 +1,39 @@
+## 38.25.1 (2022-03-16)
+
+
+
+# 38.25.0 (2022-03-16)
+
+
+### Features
+
+* **website:** display jsdocs params in props table ([aa2caa3](https://github.com/coveo/plasma/commits/aa2caa3ad7e8827dc504a3f67ca52e38e7e6ca7b))
+
+
+
+# 38.24.0 (2022-03-15)
+
+
+### Features
+
+* **demo:** revamp tooltip page ([d886940](https://github.com/coveo/plasma/commits/d886940dda9565444002246513cbf531305cda5c))
+
+
+
+## 38.23.1 (2022-03-15)
+
+
+
+# 38.23.0 (2022-03-15)
+
+
+### Features
+
+* **demo:** update browser preview page ([8e3ac45](https://github.com/coveo/plasma/commits/8e3ac45d7d44f53705be1fa19aeaec1e43693a93))
+* **demo:** update icon badge page ([943398c](https://github.com/coveo/plasma/commits/943398ce9f34fcaa0fb618f50e348d4e491d8192))
+
+
+
 # 38.22.0 (2022-03-15)
 
 

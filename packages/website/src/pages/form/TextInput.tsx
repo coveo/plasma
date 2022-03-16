@@ -92,7 +92,6 @@ const hookUsage = `
     );
 `;
 
-// start-print
 export const TextInputExamples: React.FunctionComponent = () => (
     <PageLayout
         id="TextInput"

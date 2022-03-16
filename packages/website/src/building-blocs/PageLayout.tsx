@@ -113,7 +113,7 @@ const Content: React.FunctionComponent<Pick<
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb5">Examples</h4>
                 {Object.entries(examples).map(
-                    ([exampleId, {code: exampleCode, title, exampleLayout = 'horizontal'}]) => (
+                    ([exampleId, {code: exampleCode, title, layout: exampleLayout = 'horizontal'}]) => (
                         <Sandbox
                             key={exampleId}
                             id={exampleId}

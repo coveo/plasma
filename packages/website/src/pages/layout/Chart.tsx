@@ -279,14 +279,13 @@ export const ChartExamples = () => (
         id="ChartContainer"
         componentSourcePath="/chart/ChartContainer.tsx"
         title="Charts"
-        layout="vertical"
         section="Layout"
         description="A chart compares sets of complex data to provide insights on their relationship and status."
         thumbnail="placeholder"
         code={code}
         examples={{
-            infoLines: {code: infoLines, title: 'With info lines', exampleLayout: 'vertical'},
-            dateChart: {code: dateChart, title: 'Date chart', exampleLayout: 'vertical'},
+            infoLines: {code: infoLines, title: 'With info lines'},
+            dateChart: {code: dateChart, title: 'Date chart'},
             lineSeries: {code: lineSeries, title: 'Line series'},
             scatterSeries: {code: scatterSeries, title: 'Scatter series'},
             barSeries: {code: barSeries, title: 'Bar series'},
