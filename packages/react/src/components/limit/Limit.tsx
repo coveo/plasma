@@ -38,7 +38,7 @@ export interface LimitOwnProps {
      */
     limit?: number;
     /**
-     * Whether or not the limit value is editable directly in the Limit card
+     * Whether the limit value is editable directly in the Limit card
      */
     isLimitEditable?: boolean;
     /**

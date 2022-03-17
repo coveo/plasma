@@ -55,7 +55,6 @@ const LimitExamples = () => (
         title="Limit card"
         section="Layout"
         description="A limit card displays the limit and usage of a resource. It includes a bar illustrating the usage against the limit."
-        thumbnail="placeholder"
         code={code}
         examples={{
             withGoal: {code: withGoal, title: 'With goal to reach'},
