@@ -99,7 +99,8 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink href="/layout/Section" label="Section" />
                 <NavLink href="/layout/SplitLayout" label="Split layout" />
                 <NavLink href="/layout/StickyFooter" label="Sticky footer" />
-                <NavLink href="/layout/TableHOC" label="Table" />
+                <NavLink href="/layout/Table" label="Table" />
+                <NavLink href="/layout/TableHOC" label="TableHOC" />
                 <NavLink href="/layout/TableHOCLoading" label="Table loading" />
                 <NavLink href="/layout/TableHOCServer" label="Table server" />
                 <NavLink href="/layout/TableHOCwithBlankSlate" label="Table blank slate" />
