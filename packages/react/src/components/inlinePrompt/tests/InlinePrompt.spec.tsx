@@ -1,6 +1,5 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import * as _ from 'underscore';
 
 import {IInlinePromptOptions, InlinePrompt} from '../InlinePrompt';
 
@@ -48,7 +47,7 @@ describe('InlinePrompt', () => {
         });
 
         it('should have the className as a class if defined', () => {
-            const newOptions: IInlinePromptOptions = _.extend({}, options, {className: undefined});
+            const newOptions: IInlinePromptOptions = Object.assign({}, options, {className: undefined});
 
             expect(inlinePrompt.find('.prompt-' + options.className).length).toBe(1);
 
@@ -59,7 +58,7 @@ describe('InlinePrompt', () => {
         });
 
         it('should have the opened as a class if opened', () => {
-            const newOptions = _.extend({}, options, {isOpened: true});
+            const newOptions = Object.assign({}, options, {isOpened: true});
 
             expect(inlinePrompt.find('.opened').length).toBe(0);
 
@@ -69,12 +68,14 @@ describe('InlinePrompt', () => {
         });
 
         it('should render as many choice buttons as there are choices', () => {
-            expect(inlinePrompt.find('.prompt-action.action').length).toBe(_.size(options.userChoice.choices));
+            expect(inlinePrompt.find('button.mod-danger').length).toBe(
+                Object.values(options.userChoice.choices).length
+            );
         });
 
         it('should display the description if there is one set in the user choice', () => {
-            const newUserChoice = _.extend({}, options.userChoice, {description: undefined});
-            const newOptions = _.extend({}, options, {userChoice: newUserChoice});
+            const newUserChoice = Object.assign({}, options.userChoice, {description: undefined});
+            const newOptions = Object.assign({}, options, {userChoice: newUserChoice});
 
             expect(inlinePrompt.find('.description').length).toBe(1);
 
@@ -84,8 +85,8 @@ describe('InlinePrompt', () => {
         });
 
         it('should have a cancel button if there is one set in the user choice', () => {
-            const newUserChoice = _.extend({}, options.userChoice, {cancel: undefined});
-            const newOptions = _.extend({}, options, {userChoice: newUserChoice});
+            const newUserChoice = Object.assign({}, options.userChoice, {cancel: undefined});
+            const newOptions = Object.assign({}, options, {userChoice: newUserChoice});
 
             expect(inlinePrompt.find('.cancel').length).toBe(1);
 
@@ -95,7 +96,7 @@ describe('InlinePrompt', () => {
         });
 
         it('should call the onClick prop when choice is clicked', () => {
-            inlinePrompt.find('.prompt-action').first().simulate('click');
+            inlinePrompt.find('.mod-danger').first().simulate('click');
 
             expect(onClickSpy.mock.calls.length).toBe(1);
         });
