@@ -1,3 +1,12 @@
+## 38.25.3 (2022-03-17)
+
+
+### Bug Fixes
+
+* **style:** rounded inline-prompt button ([7fcd396](https://github.com/coveo/plasma/commits/7fcd396f23d9b22955097b387407898c9e03345b))
+
+
+
 ## 38.25.2 (2022-03-16)
 
 
