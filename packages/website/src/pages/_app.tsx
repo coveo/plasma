@@ -20,6 +20,7 @@ import Link from 'next/link';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
+import * as LoremIpsum from 'lorem-ipsum';
 import {Provider} from 'react-redux';
 
 import logo from '../../resources/plasma-logo.svg';
@@ -55,6 +56,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         (window as any).ReactRedux = ReactRedux;
         (window as any).PlasmaReact = PlasmaReact;
         (window as any).PlasmaReactIcons = PlasmaReactIcons;
+        (window as any).LoremIpsum = LoremIpsum;
 
         if (window.location.host === 'vapor.coveo.com') {
             window.location.href = window.location.href.replace('vapor.coveo.com', 'plasma.coveo.com');

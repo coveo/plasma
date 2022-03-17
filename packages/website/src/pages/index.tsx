@@ -131,7 +131,7 @@ const LayoutPages: React.FC = () => (
                 href="layout/PageHeader"
                 thumbnail="header"
             />
-            <Tile title="Footer" href="layout/Footer" />
+            <Tile title="Sticky Footer" href="layout/StickyFooter" />
             <Tile title="Section" href="layout/Section" />
             <Tile
                 title="Split Layout"
