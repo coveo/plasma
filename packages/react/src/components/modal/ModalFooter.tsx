@@ -4,6 +4,9 @@ import * as React from 'react';
 import {IClassName} from '../../utils/ClassNameUtils';
 
 export interface IModalFooterProps {
+    /**
+     * Additionnal CSS class for the footer
+     */
     classes?: IClassName;
 }
 

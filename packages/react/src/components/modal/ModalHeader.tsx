@@ -8,10 +8,25 @@ import {Svg} from '../svg/Svg';
 import {Title} from '../title/Title';
 
 export interface IModalHeaderOwnProps {
+    /**
+     * Id of the modal header
+     */
     id?: string;
+    /**
+     * Title of the modal
+     */
     title: string;
+    /**
+     * Additionnal CSS class for the header
+     */
     classes?: IClassName;
+    /**
+     * Props of the link to documentation
+     */
     docLink?: ILinkSvgProps;
+    /**
+     * id for the html element
+     */
     htmlId?: string;
 }
 
