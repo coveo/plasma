@@ -22,6 +22,8 @@ export interface CollapsibleOwnProps {
     disabled?: boolean;
     /**
      * Whether the collapsible is expanded on mount
+     *
+     * @default false
      */
     expandedOnMount?: boolean;
     /**
@@ -42,6 +44,8 @@ export interface CollapsibleOwnProps {
     className?: string;
     /**
      * Whether the collapsible has borders
+     *
+     * @default false
      */
     withBorders?: boolean;
     /**
