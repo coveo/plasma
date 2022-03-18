@@ -34,5 +34,5 @@ If the input can be left blank, the tag “(Optional)” must appear next to the
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Text input](#/form/TextInput) when users should enter no more than one line of text.
--   [Code editor](#/form/CodeEditor) if users need to enter code rather than plain text.
+-   [Text input](https://plasma.coveo.com/form/TextInput) when users should enter no more than one line of text.
+-   [Code editor](https://plasma.coveo.com/form/CodeEditor) when users need to enter code rather than plain text.
