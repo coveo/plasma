@@ -1,3 +1,12 @@
+# 38.28.0 (2022-03-18)
+
+
+### Features
+
+* **demo:** update Limit card page ([ca0f385](https://github.com/coveo/plasma/commits/ca0f38504e063af354d521d85934ae2efefd4613))
+
+
+
 # 38.27.0 (2022-03-18)
 
 
