@@ -9,10 +9,29 @@ import {ListBox} from '../listBox/ListBox';
 import {Svg} from '../svg';
 
 export interface IActionableItemProps {
+    /**
+     * The id of the component
+     */
     id: string;
-    onItemClick?: (e?: React.MouseEvent<HTMLDivElement>) => any;
+    /**
+     * A function to call when clicking on the button
+     *
+     * @param evt the mouse event
+     */
+    onItemClick?: (evt?: React.MouseEvent<HTMLDivElement>) => any;
+    /**
+     * The list of actions
+     *
+     * @default []
+     */
     actions?: IItemBoxProps[];
+    /**
+     * Additionnal CSS class to add on the container
+     */
     containerClassName?: string;
+    /**
+     * Overrides for the Drop props
+     */
     dropProps?: Partial<IDropOwnProps>;
 }
 

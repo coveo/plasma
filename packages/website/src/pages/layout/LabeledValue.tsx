@@ -1,77 +1,56 @@
 import * as React from 'react';
-import {LabeledValue, TooltipPlacement} from '@coveord/plasma-react';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-// start-print
+const code = `
+    import * as React from 'react';
+    import {LabeledValue} from '@coveord/plasma-react';
 
-export const LabeledValueExamples = () => (
-    <PlasmaComponent id="LabeledValue" title="Labeled Value" withSource>
-        <div className="mt2">
-            <div className="form-group">
-                <label className="form-control-label">Two Simple Labeled Values</label>
-                <LabeledValue label="First label" value="first value" />
-                <LabeledValue label="Second label" value="second value" />
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">Two Simple Labeled Values inside a flexbox</label>
-                <div className="flex flex-start">
-                    <LabeledValue label="First label" value="first value" />
-                    <LabeledValue label="Second label" value="second value" />
-                </div>
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">Labeled Values inside a flexbox with one value full row</label>
-                <div className="flex flex-wrap">
-                    <LabeledValue label="First label (full row)" value="first value" fullRow />
-                    <LabeledValue label="Second label" value="second value" />
-                    <LabeledValue label="Third label" value="third value" />
-                </div>
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">Labeled Values "columnised" (3 X 3)</label>
-                <div className="columns">
-                    <LabeledValue label="First label" value="first value" />
-                    <LabeledValue label="Second label" value="second value" />
-                    <LabeledValue label="Third label" value="third value" />
-                    <LabeledValue label="Fourth label" value="fourth value" />
-                    <LabeledValue label="Fifth label" value="fifth value" />
-                </div>
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">Labeled Value with information</label>
-                <LabeledValue label="Label" value="value" information={'Some valuable informations go here.'} />
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">Labeled Value with custom information placement</label>
-                <LabeledValue
-                    label="Label"
-                    value="value"
-                    information={'Some valuable informations go here.'}
-                    informationPlacement={TooltipPlacement.Bottom}
-                />
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">Labeled Value rendered on a single line</label>
-                <LabeledValue label="Label" value="value" singleLine={true} />
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">Labeled Value with JSX.Element as value</label>
-                <LabeledValue
-                    label="Label"
-                    value={
-                        <span>
-                            <span className="bold">a list of values:</span>
-                            <ul>
-                                <li>value 1</li>
-                                <li>value 2</li>
-                                <li>value 3</li>
-                            </ul>
-                        </span>
-                    }
-                />
-            </div>
+    export default () => (
+        <LabeledValue label="Super cool label" value="Value under the super cool label" />
+    );
+`;
+
+const withInformation = `
+    import * as React from 'react';
+    import {LabeledValue, TooltipPlacement} from '@coveord/plasma-react';
+
+    export default () => (
+        <LabeledValue 
+            label="Super cool label" 
+            value="Value under the super cool label" 
+            information={'Some valuable informations go here.'}
+            informationPlacement={TooltipPlacement.Bottom} 
+        />
+    );
+`;
+
+const fullRow = `
+    import * as React from 'react';
+    import {LabeledValue} from '@coveord/plasma-react';
+
+    export default () => (
+        <div className="flex flex-wrap">
+            <LabeledValue label="Super cool label taking the full row" value="Value under the super cool label" fullRow/>
+            <LabeledValue label="Too much bubbly debat at the office" value="WE ARE TWO" />
+            <LabeledValue label="Buddy" value="TO DANCE" />
         </div>
-    </PlasmaComponent>
+    );
+`;
+
+const LabeledValueExamples = () => (
+    <PageLayout
+        id="LabeledValue"
+        componentSourcePath="/labeledValue/LabeledValue.tsx"
+        title="Labeled value"
+        section="Layout"
+        thumbnail="placeholder"
+        code={code}
+        examples={{
+            withInformation: {code: withInformation, title: 'With more information (tooltip)'},
+            fullRow: {code: fullRow, title: 'With fullRow option'},
+        }}
+    />
 );
+
 export default LabeledValueExamples;

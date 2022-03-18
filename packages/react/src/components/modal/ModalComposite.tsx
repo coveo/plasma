@@ -22,14 +22,46 @@ export interface IModalCompositeOwnProps
         Partial<IModalHeaderOwnProps>,
         IModalFooterProps,
         IModalBackdropOwnProps {
+    /**
+     * React child to add to the header
+     */
     modalHeaderChildren?: React.ReactNode;
+    /**
+     * Additionnal CSS class to add to the header
+     */
     modalHeaderClasses?: IClassName;
+    /**
+     * React child to add to the body
+     */
     modalBodyChildren?: React.ReactNode;
+    /**
+     * Additionnal CSS class to add to the body
+     */
     modalBodyClasses?: IClassName;
+    /**
+     * React child to add to the footer
+     */
     modalFooterChildren?: React.ReactNode;
+    /**
+     * Additionnal CSS class to add to the footer
+     */
     modalFooterClasses?: IClassName;
+    /**
+     * Additionnal CSS class to add to the modal container
+     */
     contentClasses?: IClassName;
+    /**
+     * Wheter this backdrop is for a prompt or not
+     *
+     * @default false
+     */
     isPrompt?: boolean;
+    /**
+     * Function that will be called before the modal is closed
+     *
+     * @param isDirty has the modal changed
+     * @returns wheter the close should happen or not
+     */
     validateShouldNavigate?: (isDirty: boolean) => boolean;
 }
 
@@ -195,8 +227,16 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalCompositeOwnPro
     onClose: () => dispatch(closeModal(ownProps.id)),
 });
 
-export const ModalCompositeConnected = connect(
+export const ModalCompositeConnected = connect<
+    IModalStateProps,
+    IModalDispatchProps,
+    IModalCompositeProps &
+        Partial<IModalCompositeStateProps> &
+        Partial<IModalCompositeDispatchProps> &
+        Partial<ReactModal.Props> &
+        Partial<IWithDirtyProps>
+>(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps
-)(ModalComposite);
+)(ModalComposite as any);
