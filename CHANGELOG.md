@@ -1,3 +1,12 @@
+## 38.28.2 (2022-03-18)
+
+
+### Performance Improvements
+
+* **react, color picker:** improve performances ([555bd2d](https://github.com/coveo/plasma/commits/555bd2ded60f9a600273235207b83c3adf618116))
+
+
+
 ## 38.28.1 (2022-03-18)
 
 
