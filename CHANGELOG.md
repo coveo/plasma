@@ -1,3 +1,19 @@
+# 38.29.0 (2022-03-18)
+
+
+### Bug Fixes
+
+* **website:** enable import of moment in sandboxes ([96ece8c](https://github.com/coveo/plasma/commits/96ece8cae2b4d73b740c958b315a7dec715e3777))
+
+
+### Features
+
+* **demo:** update charts page done ([e05c791](https://github.com/coveo/plasma/commits/e05c791d743b7d829f64568287560563085f8335))
+* **demo:** wip update charts page ([3539aa0](https://github.com/coveo/plasma/commits/3539aa0b8c7bf1b8e4ce3ebe76c9d24ca8b8bb86))
+* **wip:** wip charts date not doing so great ([0d5796a](https://github.com/coveo/plasma/commits/0d5796a7633d850423320914a46b2e3f4b5098f5))
+
+
+
 ## 38.28.2 (2022-03-18)
 
 
