@@ -431,6 +431,7 @@ importers:
       '@types/lz-string': 1.3.34
       '@types/prettier': 1.19.1
       '@types/react': 16.14.24
+      '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
       '@types/react-modal': 3.13.1
       '@types/react-redux': 7.1.22
@@ -533,6 +534,7 @@ importers:
       '@types/lz-string': 1.3.34
       '@types/prettier': 1.19.1
       '@types/react': 16.14.24
+      '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
       '@types/react-modal': 3.13.1
       '@types/react-redux': 7.1.22
