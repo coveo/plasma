@@ -58,7 +58,7 @@ export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
      */
     startingYear?: number;
     /**
-     * The label of each days of the week displayed in the calendar
+     * The label of each day of the week displayed in the calendar
      *
      * @default ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
      */
@@ -80,7 +80,7 @@ export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
      */
     isLinkedToDateRange?: boolean;
     /**
-     * When set to true, only the calendar will be visible
+     * If set to true, only the calendar will be visible
      */
     simple?: boolean;
     wrapperClassNames?: string;
