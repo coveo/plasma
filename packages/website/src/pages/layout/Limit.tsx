@@ -30,7 +30,7 @@ const withHistory = `
     );
 `;
 
-const withcustomValue = `
+const withCustomValue = `
     import * as React from 'react';
     import {Limit} from '@coveord/plasma-react';
 
@@ -55,12 +55,11 @@ const LimitExamples = () => (
         title="Limit card"
         section="Layout"
         description="A limit card displays the limit and usage of a resource. It includes a bar illustrating the usage against the limit."
-        thumbnail="placeholder"
         code={code}
         examples={{
             withGoal: {code: withGoal, title: 'With goal to reach'},
             withHistory: {code: withHistory, title: 'With History'},
-            withcustomValue: {code: withcustomValue, title: 'With custom value'},
+            withCustomValue: {code: withCustomValue, title: 'With custom value'},
             isLimitEditable: {code: isLimitEditable, title: 'With editable limit'},
         }}
     />
