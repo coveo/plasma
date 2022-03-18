@@ -13,7 +13,7 @@ export interface ISectionProps {
      */
     description?: React.ReactNode;
     /**
-     * Additionnal CSS class to stle the Section
+     * Additionnal CSS class to set on the Section
      */
     className?: string;
     /**
@@ -21,7 +21,7 @@ export interface ISectionProps {
      */
     mods?: SectionMods | SectionMods[];
     /**
-     * Determine the style of the Section
+     * Determines the level of importance of the section. Smaller number means bigger title, think of it as heading levels.
      *
      * @default 1
      */
