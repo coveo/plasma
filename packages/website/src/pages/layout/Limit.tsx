@@ -7,7 +7,7 @@ const code = `
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
-        <Limit title={'Limit example'} usage={42} limit={100} />
+        <Limit id={'🥔'} title={'Limit example'} usage={42} limit={100} />
     );
 `;
 
@@ -16,7 +16,7 @@ const withGoal = `
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
-        <Limit title={'Limit example'} usage={100} limit={100} isLimitTheGoalToReach />
+        <Limit id={'❗'} title={'Limit example'} usage={100} limit={100} isLimitTheGoalToReach />
     );
 `;
 
@@ -25,7 +25,7 @@ const withHistory = `
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
-        <Limit title={'Hey'} usage={82} isHistoryIncluded limit={100} onHistoryIconClick={() => alert('Patate!')}
+        <Limit id={'🐄'} title={'Hey'} usage={82} isHistoryIncluded limit={100} onHistoryIconClick={() => alert('Patate!')}
         />
     );
 `;
@@ -35,7 +35,7 @@ const withCustomValue = `
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
-        <Limit title={'Patate King'} usage={42} limit={130} limitLabel={'Throttling limit'} />
+        <Limit id={'👑'} title={'Patate King'} usage={42} limit={130} limitLabel={'Throttling limit'} />
     );
 `;
 
@@ -44,7 +44,7 @@ const isLimitEditable = `
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
-        <Limit title={'Supreme leader Snoke'} usage={57} isLimitEditable limit={100} />
+        <Limit id={'💵'} title={'Supreme leader Snoke'} usage={57} isLimitEditable limit={100} />
     );
 `;
 
