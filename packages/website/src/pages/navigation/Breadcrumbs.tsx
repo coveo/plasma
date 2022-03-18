@@ -65,7 +65,7 @@ const complex = `
     );
 `;
 
-export const BreadcrumbsExamples = () => (
+const BreadcrumbsExamples = () => (
     <PageLayout
         id="BreadcrumbHeader"
         componentSourcePath="/breadcrumbs/BreadcrumbHeader.tsx"
