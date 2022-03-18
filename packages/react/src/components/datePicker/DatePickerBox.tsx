@@ -4,13 +4,12 @@ import * as _ from 'underscore';
 import {slugify} from 'underscore.string';
 
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {Calendar, ICalendarProps, ICalendarSelectionRule} from '../calendar/Calendar';
+import {Calendar, ICalendarOwnProps, ICalendarProps} from '../calendar/Calendar';
 import {CalendarConnected} from '../calendar/CalendarConnected';
 import {IOption} from '../optionPicker/Option';
 import {IOptionPickerProps, OptionPicker} from '../optionPicker/OptionPicker';
 import {OptionPickerConnected} from '../optionPicker/OptionPickerConnected';
-import {DatePickerDateRange} from './DatePickerConstants';
-import {DatesSelection, IDatesSelectionProps, IRangeLimit} from './DatesSelection';
+import {DatesSelection, IDatesSelectionOwnProps, IDatesSelectionProps, IRangeLimit} from './DatesSelection';
 import {DatesSelectionConnected} from './DatesSelectionConnected';
 
 export interface IDatesSelectionBox {
@@ -24,14 +23,43 @@ export interface IDatesSelectionBox {
     color?: string;
 }
 
-export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePickerBox> {
+export interface IDatePickerBoxOwnProps
+    extends Pick<
+            ICalendarOwnProps,
+            | 'months'
+            | 'startingMonth'
+            | 'years'
+            | 'startingYear'
+            | 'days'
+            | 'startingDay'
+            | 'selectionRules'
+            | 'isLinkedToDateRange'
+            | 'simple'
+        >,
+        Pick<
+            IDatesSelectionOwnProps,
+            | 'lowerLimitPlaceholder'
+            | 'upperLimitPlaceholder'
+            | 'initiallyUnselected'
+            | 'initialDateRange'
+            | 'isClearable'
+            | 'setToNowTooltip'
+        >,
+        React.ClassAttributes<DatePickerBox> {
     id?: string;
+    /**
+     * This prop configures the portion to the right of the calendar, inside the datepicker dropdown
+     */
     datesSelectionBoxes: IDatesSelectionBox[];
-    setToNowTooltip?: string;
-    isClearable?: boolean;
+    /**
+     * The text displayed inside the "clear" button
+     *
+     * @default "Clear"
+     */
     clearLabel?: string;
-    initiallyUnselected?: boolean;
-    simple?: boolean;
+    /**
+     * The content displayed at the bottom of the datepicker dropdown
+     */
     footer?: JSX.Element;
     onClear?: () => void;
     withoutBoxResize?: boolean;
@@ -39,26 +67,9 @@ export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePicker
 
 export interface IDatePickerBoxStateProps extends IReduxStatePossibleProps {}
 
-export interface IDatePickerBoxChildrenProps {
-    months?: string[];
-    startingMonth?: number;
-    years?: string[];
-    startingYear?: number;
-    days?: string[];
-    startingDay?: number;
-    selectionRules?: ICalendarSelectionRule[];
-    lowerLimitPlaceholder?: string;
-    upperLimitPlaceholder?: string;
-    isLinkedToDateRange?: boolean;
-    initialDateRange?: DatePickerDateRange;
-}
-
 export const DEFAULT_CLEAR_DATE_LABEL = 'Clear';
 
-export interface IDatePickerBoxProps
-    extends IDatePickerBoxOwnProps,
-        IDatePickerBoxStateProps,
-        IDatePickerBoxChildrenProps {}
+export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps {}
 
 export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
     static defaultProps: Partial<IDatePickerBoxProps> = {

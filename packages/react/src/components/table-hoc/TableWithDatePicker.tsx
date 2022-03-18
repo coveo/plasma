@@ -7,7 +7,7 @@ import {PlasmaState} from '../../PlasmaState';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
-import {IDatePickerDropdownChildrenProps, IDatePickerDropdownOwnProps} from '../datePicker/DatePickerDropdown';
+import {IDatePickerDropdownOwnProps} from '../datePicker/DatePickerDropdown';
 import {DatePickerDropdownConnected} from '../datePicker/DatePickerDropdownConnected';
 import {DatePickerSelectors} from '../datePicker/DatePickerSelectors';
 import {ITableHOCOwnProps} from './TableHOC';
@@ -15,8 +15,7 @@ import {Params} from './TableWithUrlState';
 
 export interface ITableWithDatePickerConfig
     extends WithServerSideProcessingProps,
-        Partial<IDatePickerDropdownOwnProps>,
-        Partial<IDatePickerDropdownChildrenProps> {
+        Partial<IDatePickerDropdownOwnProps> {
     matchDates?: (data: any, lowerLimit: Date, upperLimit?: Date) => boolean;
 }
 

@@ -76,9 +76,9 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
                     .replace(/_plasmaReact/g, 'PlasmaReact') // use plasma-react from the window Plasma object
                     .replace(/_reactRedux/g, 'ReactRedux') // use react-redux from the window ReactRedux object
                     .replace(/_redux/g, 'Redux') // use redux from the window Redux object
-                    .replace(/\(.+, _moment\)\.default/g, 'moment') // replace the moment object
-                    .replace(/_moment.default/g, 'moment') // replace the moment() function
-                    .replace(/_loremIpsum/g, 'LoremIpsum') +
+                    .replace(/_loremIpsum/g, 'LoremIpsum')
+                    .replaceAll('(0, _moment).default', 'moment') // replace the moment object
+                    .replace(/_moment.default/g, 'moment') + // replace the moment() function
                 `ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(_default)), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval

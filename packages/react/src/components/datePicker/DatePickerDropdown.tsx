@@ -1,59 +1,118 @@
+import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import moment from 'moment';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {svg} from '@coveord/plasma-style';
 import {TooltipPlacement} from '../../utils';
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
-import {DEFAULT_YEARS, ICalendarSelectionRule} from '../calendar/Calendar';
+import {DEFAULT_YEARS} from '../calendar/Calendar';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop, IDropOwnProps} from '../drop/Drop';
 import {ModalFooter} from '../modal/ModalFooter';
-import {DatePickerBox, IDatePickerBoxChildrenProps, IDatePickerBoxProps, IDatesSelectionBox} from './DatePickerBox';
-import {DatePickerDateRange} from './DatePickerConstants';
-import {IDatePickerState} from './DatePickerReducers';
 import {Svg} from '../svg';
+import {DatePickerBox, IDatePickerBoxOwnProps, IDatePickerBoxProps} from './DatePickerBox';
+import {IDatePickerState} from './DatePickerReducers';
 import {IRangeLimit} from './DatesSelection';
 
-export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
+export interface IDatePickerDropdownOwnProps
+    extends Pick<
+            IDatePickerBoxOwnProps,
+            | 'setToNowTooltip'
+            | 'datesSelectionBoxes'
+            | 'months'
+            | 'startingMonth'
+            | 'years'
+            | 'startingYear'
+            | 'days'
+            | 'startingDay'
+            | 'selectionRules'
+            | 'lowerLimitPlaceholder'
+            | 'upperLimitPlaceholder'
+            | 'isLinkedToDateRange'
+            | 'isClearable'
+            | 'initiallyUnselected'
+            | 'clearLabel'
+            | 'simple'
+            | 'initialDateRange'
+        >,
+        React.ClassAttributes<DatePickerDropdown> {
+    /**
+     * The text displayed in the downdown button when no dates are selected
+     */
     label?: string;
+    /**
+     * CSS classes to set on the DatePicker outer most element
+     */
     className?: string;
+    /**
+     * A unique identifier that identifies the DatePicker in the PlasmaState. Useful to retrieve the selected value.
+     */
     id?: string;
+    /**
+     * The text displayed inside the "Apply" button
+     *
+     * @default "Apply"
+     */
     applyLabel?: string;
+    /**
+     * The text displayed inside the "Cancel" button
+     *
+     * @default "Cancel"
+     */
     cancelLabel?: string;
+    /**
+     * The text displayed in between the 2 selected dates of a date range
+     *
+     * @default "to"
+     */
     toLabel?: string;
+    /**
+     * When true, the dropdown will be aligned with the right edge of its opening button
+     */
     onRight?: boolean;
+    /**
+     * A callback function that is executed before applying a new selection of dates
+     */
     onBeforeApply?: () => void;
+    /**
+     * CSS classes to set on the DatePicker dropdown container
+     *
+     * @default []
+     */
     extraDropdownClasses?: string[];
+    /**
+     * CSS classes to set on the DatePicker toggle button
+     *
+     * @default []
+     */
     extraDropdownToggleClasses?: string[];
+    /**
+     * Whether the datepicker dropdown content is rendered when closed
+     *
+     * @default true
+     */
     renderDatePickerWhenClosed?: boolean;
-    initiallyUnselected?: boolean;
-    isClearable?: boolean;
-    attributeName?: string;
+    /**
+     * When true, the datepicker will not be editable
+     */
     readonly?: boolean;
+    /**
+     * Additional props to set on the underlying Drop component
+     */
     dropOptions?: Partial<IDropOwnProps>;
+    /**
+     * Whether the dropdown should be rendered using the Drop component. Using the Drop component can be useful to render the dropdown content outside of the standard DOM tree. This can be needed when rendering a datepicker inside a Modal and you want the dropdown content to display above or outside the Modal's natural perimeter.
+     *
+     * @default false
+     */
     withDrop?: boolean;
-}
-
-export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
-    datesSelectionBoxes: IDatesSelectionBox[];
-    setToNowTooltip?: string;
-    clearLabel?: string;
-    months?: string[];
-    startingMonth?: number;
-    years?: string[];
-    startingYear?: number;
-    days?: string[];
-    startingDay?: number;
-    selectionRules?: ICalendarSelectionRule[];
-    lowerLimitPlaceholder?: string;
-    upperLimitPlaceholder?: string;
-    isLinkedToDateRange?: boolean;
-    simple?: boolean;
-    initialDateRange?: DatePickerDateRange;
+    /**
+     * @deprecated This was used in conjunction with the old Table component that is now deprecated
+     */
+    attributeName?: string;
 }
 
 export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps {
@@ -74,8 +133,7 @@ export interface IDatePickerDropdownDispatchProps {
 export interface IDatePickerDropdownProps
     extends IDatePickerDropdownOwnProps,
         IDatePickerDropdownStateProps,
-        IDatePickerDropdownDispatchProps,
-        IDatePickerDropdownChildrenProps {}
+        IDatePickerDropdownDispatchProps {}
 
 export const DEFAULT_DATE_PICKER_DROPDOWN_LABEL: string = 'Select date';
 export const DEFAULT_APPLY_DATE_LABEL: string = 'Apply';
