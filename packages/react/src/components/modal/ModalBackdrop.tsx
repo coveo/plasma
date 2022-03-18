@@ -5,7 +5,15 @@ import {defer, omit} from 'underscore';
 import {keyCode} from '../../utils/InputUtils';
 
 export interface IModalBackdropOwnProps {
+    /**
+     * @deprecated Do not use
+     */
     displayFor?: string[];
+    /**
+     * Wheter this backdrop is for a prompt or not
+     *
+     * @default false
+     */
     isPrompt?: boolean;
 }
 

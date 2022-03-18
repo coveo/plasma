@@ -4,82 +4,7 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import * as React from 'react';
-    import {BarSeries, LineSeries, ScatterSeries, ChartTooltip, ChartContainer,XYChart, XYAxis, XYPoint} from '@coveord/plasma-react';
-
-    export default () => (
-        <div style={{height: '500px'}}>
-            <ChartContainer
-                renderChart={(width, height) => (
-                    <XYChart
-                        series={data}
-                        height={height}
-                        width={width}
-                        color={(serie: number, colorPattern: string[], point?: XYPoint) =>
-                            point && point.y > 7 ? overPattern[serie] : colorPattern[serie]
-                        }
-                        xFormat={(value: number) =>
-                            ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'][value + 1]
-                        }
-                        yFormat={(value: number) => value * 10 + '%'}
-                    >
-                        <XYAxis x={{innerPadding: width / 12}} y={{show: false}}>
-                            <BarSeries />
-                            <LineSeries />
-                            <ScatterSeries />
-                            <ChartTooltip sort />
-                        </XYAxis>
-                    </XYChart>
-                )}
-            />
-        </div>
-    );
-
-    const data = [
-        {
-            label: 'First',
-            data: [
-                {x: -1, y: 3},
-                {x: 0, y: 3},
-                {x: 1, y: 3},
-                {x: 2, y: 6},
-                {x: 3, y: 2},
-                {x: 4, y: 12},
-                {x: 5, y: 8},
-            ],
-        },
-        {
-            label: 'Second',
-            data: [
-                {x: -1, y: 1},
-                {x: 0, y: 5},
-                {x: 1, y: 4},
-                {x: 2, y: 0},
-                {x: 3, y: 6},
-                {x: 4, y: 7},
-                {x: 5, y: 4},
-            ],
-        },
-        {
-            label: 'Third',
-            data: [
-                {x: -1, y: 4},
-                {x: 0, y: 7},
-                {x: 1, y: 1},
-                {x: 2, y: 1},
-                {x: 3, y: 1},
-                {x: 4, y: 2},
-                {x: 5, y: 7},
-            ],
-        },
-    ];
-
-    const overPattern = ['var(--deprecated-orange-1)', 'var(--deprecated-orange)', 'var(--deprecated-coveo-orange)'];
-
-`;
-
-const barSeries = `
-    import * as React from 'react';
-    import {BarSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
+    import {LineSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
 
     export default () => (
             <ChartContainer
@@ -88,9 +13,9 @@ const barSeries = `
                         series={[data[0]]}
                         height={height}
                         width={width}
-                        padding={{left: width / 12, right: width / 12}}
+                        padding={undefined}
                     >
-                        {<BarSeries />}
+                        {<LineSeries />}
                     </XYChart>
                 )}
             />
@@ -110,9 +35,9 @@ const barSeries = `
     ];
 `;
 
-const lineSeries = `
+const barSeries = `
     import * as React from 'react';
-    import {LineSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
+    import {BarSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
 
     export default () => (
             <ChartContainer
@@ -121,9 +46,9 @@ const lineSeries = `
                         series={[data[0]]}
                         height={height}
                         width={width}
-                        padding={undefined}
+                        padding={{left: width / 12, right: width / 12}}
                     >
-                        {<LineSeries />}
+                        {<BarSeries />}
                     </XYChart>
                 )}
             />
@@ -274,6 +199,81 @@ const dateChart = `
     ];
 `;
 
+const complex = `
+    import * as React from 'react';
+    import {BarSeries, LineSeries, ScatterSeries, ChartTooltip, ChartContainer,XYChart, XYAxis, XYPoint} from '@coveord/plasma-react';
+
+    export default () => (
+        <div style={{height: '500px'}}>
+            <ChartContainer
+                renderChart={(width, height) => (
+                    <XYChart
+                        series={data}
+                        height={height}
+                        width={width}
+                        color={(serie: number, colorPattern: string[], point?: XYPoint) =>
+                            point && point.y > 7 ? overPattern[serie] : colorPattern[serie]
+                        }
+                        xFormat={(value: number) =>
+                            ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'][value + 1]
+                        }
+                        yFormat={(value: number) => value * 10 + '%'}
+                    >
+                        <XYAxis x={{innerPadding: width / 12}} y={{show: false}}>
+                            <BarSeries />
+                            <LineSeries />
+                            <ScatterSeries />
+                            <ChartTooltip sort />
+                        </XYAxis>
+                    </XYChart>
+                )}
+            />
+        </div>
+    );
+
+    const data = [
+        {
+            label: 'First',
+            data: [
+                {x: -1, y: 3},
+                {x: 0, y: 3},
+                {x: 1, y: 3},
+                {x: 2, y: 6},
+                {x: 3, y: 2},
+                {x: 4, y: 12},
+                {x: 5, y: 8},
+            ],
+        },
+        {
+            label: 'Second',
+            data: [
+                {x: -1, y: 1},
+                {x: 0, y: 5},
+                {x: 1, y: 4},
+                {x: 2, y: 0},
+                {x: 3, y: 6},
+                {x: 4, y: 7},
+                {x: 5, y: 4},
+            ],
+        },
+        {
+            label: 'Third',
+            data: [
+                {x: -1, y: 4},
+                {x: 0, y: 7},
+                {x: 1, y: 1},
+                {x: 2, y: 1},
+                {x: 3, y: 1},
+                {x: 4, y: 2},
+                {x: 5, y: 7},
+            ],
+        },
+    ];
+
+    const overPattern = ['var(--deprecated-orange-1)', 'var(--deprecated-orange)', 'var(--deprecated-coveo-orange)'];
+
+`;
+
 export const ChartExamples = () => (
     <PageLayout
         id="ChartContainer"
@@ -284,11 +284,11 @@ export const ChartExamples = () => (
         thumbnail="placeholder"
         code={code}
         examples={{
-            infoLines: {code: infoLines, title: 'With info lines'},
-            dateChart: {code: dateChart, title: 'Date chart'},
-            lineSeries: {code: lineSeries, title: 'Line series'},
             scatterSeries: {code: scatterSeries, title: 'Scatter series'},
             barSeries: {code: barSeries, title: 'Bar series'},
+            infoLines: {code: infoLines, title: 'With info lines'},
+            dateChart: {code: dateChart, title: 'Date chart'},
+            complex: {code: complex, title: 'Complex chart'},
         }}
     />
 );
