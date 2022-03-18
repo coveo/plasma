@@ -107,7 +107,7 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
             id={_.uniqueId('nav-section')}
             headerContent={sectionHeader}
             toggleIconClassName="navigation-menu-section-toggle"
-            onToggleExpandedState={onClick}
+            onClick={onClick}
             expanded={!!expanded}
         >
             {items}
