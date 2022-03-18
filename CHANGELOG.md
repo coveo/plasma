@@ -1,3 +1,12 @@
+# 38.30.0 (2022-03-18)
+
+
+### Features
+
+* **demo:** update Section page ([10a3939](https://github.com/coveo/plasma/commits/10a3939a090a77af2159ad816a656c67ed3b2bcf))
+
+
+
 # 38.29.0 (2022-03-18)
 
 
