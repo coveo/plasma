@@ -1,84 +1,43 @@
-import {loremIpsum} from 'lorem-ipsum';
 import * as React from 'react';
-import {SplitLayout, StepProgressBar} from '@coveord/plasma-react';
-import {range} from 'underscore';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-const exampleTextLeft = `I am a left child. ${loremIpsum({count: 5, sentenceUpperBound: 15})}`;
-const exampleTextRight = `I am a right child. ${loremIpsum({count: 5, sentenceUpperBound: 15})}`;
+const code = `
+    import * as React from 'react';
+    import {SplitLayout} from '@coveord/plasma-react';
 
-// start-print
-export const SplitLayoutExamples = () => (
-    <PlasmaComponent
+    export default () => (
+        <SplitLayout
+            leftChildren={<p className="p1">Hello from the left!</p>}
+            rightChildren={<p className="p1">Hello from the right!</p>}
+        />
+    );
+`;
+
+const noBorder = `
+    import * as React from 'react';
+    import {SplitLayout, SplitLayoutMods} from '@coveord/plasma-react';
+
+    export default () => (
+        <SplitLayout
+            mods={SplitLayoutMods.noBorder}
+            leftChildren={<p className="p1">Hello from the left!</p>}
+            rightChildren={<p className="p1">Hello from the right!</p>}
+        />
+    );
+`;
+
+const SplitLayoutExamples = () => (
+    <PageLayout
         id="SplitLayout"
         title="Split Layout"
-        usage="A split layout organizes information in two vertical columns."
-        withSource
-    >
-        <div className="mt2">
-            <div className="form-group">
-                <label className="form-control-label">SplitLayout with one JSX.Element on each side</label>
-                <div className="form-control">
-                    <SplitLayout
-                        leftChildren={<div className="p1">{exampleTextLeft}</div>}
-                        rightChildren={<div className="p1">{exampleTextRight}</div>}
-                    />
-                </div>
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">SplitLayout with multiple JSX.Elements on each side</label>
-                <div className="form-control">
-                    <SplitLayout
-                        leftChildren={range(2).map((i) => (
-                            <div key={i} className="p1">
-                                {exampleTextLeft}
-                            </div>
-                        ))}
-                        rightChildren={[
-                            <div key="div" className="p1">
-                                Something is loading:
-                            </div>,
-                            <StepProgressBar key="progress" className="p1" numberOfSteps={10} currentStep={5} />,
-                        ]}
-                    />
-                </div>
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">SplitLayout with classes on container</label>
-                <div className="form-control">
-                    <SplitLayout
-                        leftChildren={<div className="p1">{exampleTextLeft}</div>}
-                        rightChildren={<div className="p1">{exampleTextRight}</div>}
-                        className="bold"
-                    />
-                </div>
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">
-                    SplitLayout with classes on left and right children container
-                </label>
-                <div className="form-control">
-                    <div className="form-control">
-                        <SplitLayout
-                            leftChildren={range(2).map((i) => (
-                                <div key={i} className="p1">
-                                    {exampleTextLeft}
-                                </div>
-                            ))}
-                            rightChildren={range(2).map((i) => (
-                                <div key={i} className="p1">
-                                    {exampleTextRight}
-                                </div>
-                            ))}
-                            leftContainerClassName="bold"
-                            rightContainerClassName="italic"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </PlasmaComponent>
+        section="Layout"
+        description="A split layout organizes information in two vertical columns."
+        componentSourcePath="/splitlayout/SplitLayout.tsx"
+        code={code}
+        layout="vertical"
+        examples={{noBorder: {code: noBorder, title: 'Without a border'}}}
+    />
 );
-// stop-print
+
 export default SplitLayoutExamples;

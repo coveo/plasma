@@ -1,3 +1,65 @@
+# 38.27.0 (2022-03-18)
+
+
+### Features
+
+* **demo:** update labeledValue page ([fbf601f](https://github.com/coveo/plasma/commits/fbf601f8f6ab646bc568793a7927cd99ceb9ed0c))
+
+
+
+# 38.26.0 (2022-03-17)
+
+
+### Bug Fixes
+
+* **react, modal composite:** type was any in the dts ([510b8d0](https://github.com/coveo/plasma/commits/510b8d021124484a48fc56405a86bf2d7b27f86b))
+* **website:** add missing types in for TypeScript ([f942a93](https://github.com/coveo/plasma/commits/f942a938118b77f3aff810fc406063be680b15f9))
+
+
+### Features
+
+* **website, modal:** update demo to use new layout ([5b06f0a](https://github.com/coveo/plasma/commits/5b06f0a251ff49297e6f3417cf2b03590e7606a0))
+
+
+
+## 38.25.6 (2022-03-17)
+
+
+
+## 38.25.5 (2022-03-17)
+
+
+
+## 38.25.4 (2022-03-17)
+
+
+
+## 38.25.3 (2022-03-17)
+
+
+### Bug Fixes
+
+* **style:** rounded inline-prompt button ([7fcd396](https://github.com/coveo/plasma/commits/7fcd396f23d9b22955097b387407898c9e03345b))
+
+
+
+## 38.25.2 (2022-03-16)
+
+
+
+## 38.25.1 (2022-03-16)
+
+
+
+# 38.25.0 (2022-03-16)
+
+
+### Features
+
+* **website:** display jsdocs params in props table ([aa2caa3](https://github.com/coveo/plasma/commits/aa2caa3ad7e8827dc504a3f67ca52e38e7e6ca7b))
+
+
+
 # 38.24.0 (2022-03-15)
 
 

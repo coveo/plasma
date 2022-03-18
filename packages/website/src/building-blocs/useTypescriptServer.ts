@@ -27,6 +27,8 @@ const plasmaReactIconsTypes = require.context(
     /\.d\.ts$/i,
     'lazy-once'
 );
+const reduxTypes = require.context('!!raw-loader!redux', true, /\.d\.ts$/i, 'lazy-once');
+const loremIpsumTypes = require.context('!!raw-loader!lorem-ipsum/types/src', true, /\.d\.ts$/i, 'lazy-once');
 const load = async (path: string, ctx: any, root: string) => {
     const {default: content} = await ctx(path);
     let newPath = `${root}/${path.replace('./', '')}`;
@@ -39,6 +41,8 @@ const load = async (path: string, ctx: any, root: string) => {
 const loadAll: Promise<Map<string, string>> = Promise.all([
     createDefaultMapFromCDN(compilerOptions as any, ts.version!, true, ts as any, lzstring),
     ...typesFiles.keys().map((path) => load(path, typesFiles, '/node_modules/@types')),
+    ...loremIpsumTypes.keys().map((path) => load(path, loremIpsumTypes, '/node_modules/lorem-ipsum')),
+    ...reduxTypes.keys().map((path) => load(path, reduxTypes, '/node_modules/redux')),
     ...plasmaTypes.keys().map((path) => load(path, plasmaTypes, '/node_modules/@coveord/plasma-react')),
     ...plasmaReactIconsTypes
         .keys()
@@ -60,6 +64,8 @@ export const useTypescriptServer = () => {
                 jsxFactory: 'React.createElement',
                 jsxFragmentFactory: 'React.Fragment',
                 reactNamespace: 'React',
+                esModuleInterop: true,
+                allowSyntheticDefaultImports: true,
             });
 
             defaultMap.forEach((content, path) => {

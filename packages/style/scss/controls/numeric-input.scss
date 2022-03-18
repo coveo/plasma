@@ -1,5 +1,7 @@
 $numeric-input-height: 26px;
 $numeric-input-buttons-border-radius: 4px;
+$numeric-input-default-padding: 18px;
+$numeric-input-digit-padding: 10px;
 
 .numeric-input {
     @for $i from 1 through 20 {
