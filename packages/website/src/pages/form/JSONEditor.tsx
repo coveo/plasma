@@ -1,39 +1,72 @@
 import * as React from 'react';
-import {JSONEditor} from '@coveord/plasma-react';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
-import {fakeJSON, JSONToString} from '../../utils/DiffViewerExmaplesCommon';
-
-// start-print
-export class JSONEditorExamples extends React.Component {
-    render() {
+const code = `
+    import * as React from 'react';
+    import {JSONEditorConnected, JSONToString} from '@coveord/plasma-react';
+    
+    const defaultValue = JSONToString({hello: "world", thisIsANumber: 42, andThisAMap: {a: "a", b: "b"}});
+    
+    export default () => {
+        const logValue = (value: string) => console.log(value); 
         return (
-            <PlasmaComponent
-                id="JSONEditor"
-                title="JSON Editor"
-                usage="A JSON editor is a text area where users can enter and edit data in JSON format."
-                withSource
-            >
-                <div className="mt2">
-                    <div className="form-group">
-                        <label className="form-control-label">JSON Editor using codemirror</label>
-                        <JSONEditor value={JSONToString(fakeJSON)} />
-                    </div>
-
-                    <div className="form-group">
-                        <label className="form-control-label">JSON Editor using codemirror in readonly mode</label>
-                        <JSONEditor value={JSONToString(fakeJSON)} readOnly />
-                    </div>
-
-                    <div className="form-group">
-                        <label className="form-control-label">
-                            JSON Editor using codemirror with an action on change
-                        </label>
-                        <JSONEditor value={JSONToString(fakeJSON)} onChange={(json: string) => alert(json)} />
-                    </div>
-                </div>
-            </PlasmaComponent>
+            <JSONEditorConnected id="example-1" value={defaultValue} onChange={logValue} />
         );
-    }
-}
-export default JSONEditorExamples;
+    };
+`;
+
+const readOnly = `
+    import * as React from 'react';
+    import {JSONEditorConnected, JSONToString} from '@coveord/plasma-react';
+    
+    const defaultValue = JSONToString({hello: "world", thisIsANumber: 42, andThisAMap: {a: "a", b: "b"}});
+    
+    export default () => (
+        <JSONEditorConnected id="example-2" value={defaultValue} readOnly />
+    );
+`;
+
+const inError = `
+    import * as React from 'react';
+    import {JSONEditorConnected} from '@coveord/plasma-react';
+    
+    const invalidJSON = "{hello: world}";
+    
+    export default () => (
+        <JSONEditorConnected id="example-3" value={invalidJSON} errorMessage="Custom error message when JSON is invalid" />
+    );
+`;
+
+const valueFromState = `
+    import * as React from 'react';
+    import {useSelector} from 'react-redux';
+    import {JSONEditorConnected, JSONToString, JSONEditorSelectors, PlasmaState} from '@coveord/plasma-react';
+    
+    const defaultValue = JSONToString({hello: 'world', thisIsANumber: 42, andThisAMap: {a: 'a', b: 'b'}});
+    
+    export default () => {
+        const content = useSelector((state: PlasmaState) => JSONEditorSelectors.getValue(state, 'example-4'));
+        return (
+            <>
+                {content}
+                <JSONEditorConnected id="example-4" value={defaultValue} />
+            </>
+        );
+    };
+`;
+
+export default () => (
+    <PageLayout
+        id="JSONEditor"
+        title="JSON Editor"
+        section="Form"
+        description="A JSON editor is a text area where users can enter and edit data in JSON format."
+        componentSourcePath="/editor/JSONEditor.tsx"
+        code={code}
+        examples={{
+            readOnly: {code: readOnly, title: 'Read only'},
+            inError: {code: inError, title: 'Error Message'},
+            valueFromState: {code: valueFromState, title: 'Selector'},
+        }}
+    />
+);

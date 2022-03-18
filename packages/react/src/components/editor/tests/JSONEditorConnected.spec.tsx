@@ -2,24 +2,18 @@ import {render, screen, within, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
-import {JSONEditorProps} from '../JSONEditor';
 import {JSONEditorConnected} from '../JSONEditorConnected';
 
 describe('<JSONEditorConnected />', () => {
-    const basicProps: JSONEditorProps = {
-        id: '💙',
-        value: '{}',
-    };
-
     it('should mount and unmount without errors', () => {
         expect(() => {
-            const {unmount} = render(<JSONEditorConnected id="💙" value={'{}'} />);
+            const {unmount} = render(<JSONEditorConnected id="💙" defaultValue={'{}'} />);
             unmount();
         }).not.toThrow();
     });
 
     it('should not throw when content changes', async () => {
-        render(<JSONEditorConnected id="💙" value={'{}'} />);
+        render(<JSONEditorConnected id="💙" defaultValue={'{}'} />);
 
         await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 
@@ -30,8 +24,8 @@ describe('<JSONEditorConnected />', () => {
 
     it('should render value from store', async () => {
         const expectedValue = '{"test": "asdf"}';
-        const {container} = render(<JSONEditorConnected id="💙" value={'{}'} />, {
-            initialState: {jsonEditors: [{id: basicProps.id, value: expectedValue, valid: true}]},
+        const {container} = render(<JSONEditorConnected id="💙" defaultValue={'{}'} />, {
+            initialState: {jsonEditors: [{id: '💙', value: expectedValue, valid: true}]},
         });
 
         await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
