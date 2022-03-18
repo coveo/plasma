@@ -12,7 +12,7 @@ const code = `
     );
 `;
 
-export const BorderedLineExamples = () => (
+const BorderedLineExamples = () => (
     <PageLayout
         id="BorderedLine"
         componentSourcePath="/borderedLine/BorderedLine.tsx"
