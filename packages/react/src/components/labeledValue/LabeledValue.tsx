@@ -17,6 +17,7 @@ export interface ILabeledValueProps {
     /**
      * Set to true for the labeledValue to take the full row
      *
+     * @default false
      */
     fullRow?: boolean;
     /**
@@ -42,9 +43,7 @@ export interface ILabeledValueProps {
      */
     singleLine?: boolean;
     /**
-     * To add custom CSS classes to the component
-     *
-     *
+     * Add CSS class to the component
      */
     className?: string;
 }
