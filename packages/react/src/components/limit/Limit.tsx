@@ -42,11 +42,11 @@ export interface LimitOwnProps {
      */
     isLimitEditable?: boolean;
     /**
-     * Whether or not the limit value is a goal. When the goal is achived, the progress bar stay teal color instead of turning red
+     * Whether the limit value is a goal. When the goal is achived, the progress bar stay teal color instead of turning red
      */
     isLimitTheGoalToReach?: boolean;
     /**
-     * Whether or not the history icons is rendered
+     * Whether the history icons is rendered
      */
     isHistoryIncluded?: boolean;
     /**

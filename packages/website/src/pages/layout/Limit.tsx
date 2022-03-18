@@ -30,7 +30,7 @@ const withHistory = `
     );
 `;
 
-const withcustomValue = `
+const withCustomValue = `
     import * as React from 'react';
     import {Limit} from '@coveord/plasma-react';
 
@@ -59,7 +59,7 @@ const LimitExamples = () => (
         examples={{
             withGoal: {code: withGoal, title: 'With goal to reach'},
             withHistory: {code: withHistory, title: 'With History'},
-            withcustomValue: {code: withcustomValue, title: 'With custom value'},
+            withCustomValue: {code: withCustomValue, title: 'With custom value'},
             isLimitEditable: {code: isLimitEditable, title: 'With editable limit'},
         }}
     />
