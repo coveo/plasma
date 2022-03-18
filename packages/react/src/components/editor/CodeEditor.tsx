@@ -17,18 +17,48 @@ const ReactCodeMirror = loadable(() => import('./CodeMirror'), {
 });
 
 export interface ICodeEditorProps {
+    /**
+     * The unique identifier that will be used to retrieve the value from the PlasmaState
+     */
     id?: string;
+    /**
+     * The initial value
+     */
     value: string;
+    /**
+     * The mode to use as syntax highlighting in the form of a MIME type. You can use values from the CodeMirrorModes constant to help you out.
+     */
     mode: any;
+    /**
+     * When true, the content of the editor will not be editable
+     */
     readOnly?: boolean;
+    /**
+     * A callback function executed when the content of the editor changes
+     *
+     * @param code The content of the editor after the change
+     */
     onChange?: (code: string) => void;
+    /**
+     * A callback function executed when the editor is mounted to the DOM
+     */
     onMount?: (codemirror: Controlled) => void;
-    errorMessage?: string;
+    /**
+     * Additionnal keywords to suggest to the user when the suggestion menu is opened with CTRL + Space.
+     */
     extraKeywords?: string[];
+    /**
+     * CSS classes to add on the container element
+     */
     className?: string;
+    /**
+     * Additional editor options
+     */
     options?: EditorConfiguration;
+    /**
+     * If rendered inside a Collapsible component, you need to specify the collapsible id otherwise the editor might not be showing its content properly
+     */
     collapsibleId?: string;
-    ref?: React.Ref<CodeEditorDisconnect>;
 }
 
 export interface CodeEditorState {
@@ -152,11 +182,7 @@ class CodeEditorDisconnect extends React.Component<
     }
 }
 
-export const CodeEditor = connect<
-    ReturnType<typeof mapStateToProps>,
-    ReturnType<typeof mapDispatchToProps>,
-    React.PropsWithRef<ICodeEditorProps>
->(
+export const CodeEditor: React.ComponentType<ICodeEditorProps> = connect(
     mapStateToProps,
     mapDispatchToProps
-)(CodeEditorDisconnect as any);
+)(CodeEditorDisconnect);
