@@ -7,12 +7,24 @@ import {BlankSlate} from '../blankSlate';
  * @deprecated Use oldValue and newValue Props.
  */
 export interface DiffViewerPropsDeprecated {
+    /**
+     * @deprecated Use oldValue instead.
+     */
     first: string;
+    /**
+     * @deprecated Use newValue instead.
+     */
     second: string;
 }
 
 export interface DiffViewerBlankSlateProps {
+    /**
+     * Title to show when the old and new values are the same
+     */
     noChangesLabel?: string;
+    /**
+     * Description to show when the old and new values are the same
+     */
     noChangesDescription?: string;
 }
 

@@ -1,32 +1,81 @@
 import * as React from 'react';
-import {DiffViewer, fakeJSON1, JSONToString, Section} from '@coveord/plasma-react';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
-import {fakeJSON} from '../../utils/DiffViewerExmaplesCommon';
+const code = `
+import * as React from 'react';
+import {DiffViewer} from '@coveord/plasma-react';
 
-// start-print
-export const DiffViewerExamples: React.FC = () => (
-    <PlasmaComponent
+export default () => {
+    const oldValue = JSON.stringify({
+        hello: "world",
+        those: ["are", "some", "words"]
+    }, null, 2);
+    const newValue = JSON.stringify({
+        hello: "world",
+        those: ["are", "some", "great", "words"],
+        aNewProperty: 5
+    }, null, 2);
+    return (
+        <DiffViewer oldValue={oldValue} newValue={newValue} />
+    );
+};
+`;
+
+const unified = `
+import * as React from 'react';
+import {DiffViewer} from '@coveord/plasma-react';
+
+export default () => {
+    const oldValue = JSON.stringify({
+        hello: "world",
+        those: ["are", "some", "words"]
+    }, null, 2);
+    const newValue = JSON.stringify({
+        hello: "world",
+        those: ["are", "some", "great", "words"],
+        aNewProperty: 5
+    }, null, 2);
+    return (
+        <DiffViewer oldValue={oldValue} newValue={newValue} splitView={false} />
+    );
+};
+`;
+
+const noChanges = `
+import * as React from 'react';
+import {DiffViewer} from '@coveord/plasma-react';
+
+export default () => {
+    const oldValue = JSON.stringify({
+        hello: "world",
+        those: ["are", "some", "words"]
+    }, null, 2);
+    const newValue = JSON.stringify({
+        hello: "world",
+        those: ["are", "some", "words"]
+    }, null, 2);
+    return (
+        <DiffViewer
+            oldValue={oldValue}
+            newValue={newValue}
+            noChangesLabel={"No changes"}
+            noChangesDescription={"There are no changes to display since oldValue and newValues are equal"}
+        />
+    );
+};
+`;
+
+export default () => (
+    <PageLayout
         id="DiffViewer"
         title="Diff Viewer"
-        usage="A diff viewer allows users to compare code files by showing them side by side and highlighting differences between them."
-        withSource
-    >
-        <Section>
-            <Section level={2} title="DiffViewer with split view">
-                <DiffViewer oldValue={JSONToString(fakeJSON)} newValue={JSONToString(fakeJSON1)} />
-            </Section>
-            <Section level={2} title="DiffViewer with unified view">
-                <DiffViewer oldValue={JSONToString(fakeJSON)} newValue={JSONToString(fakeJSON1)} splitView={false} />
-            </Section>
-            <Section level={2} title="DiffViewer with no changes">
-                <DiffViewer
-                    oldValue={JSONToString(fakeJSON)}
-                    newValue={JSONToString(fakeJSON)}
-                    noChangesLabel={'This is a no change label'}
-                />
-            </Section>
-        </Section>
-    </PlasmaComponent>
+        section="Layout"
+        description="A diff viewer allows users to compare code files by showing them side by side and highlighting differences between them."
+        componentSourcePath="/diffViewer/DiffViewer.tsx"
+        code={code}
+        examples={{
+            unified: {code: unified, title: 'Unified View'},
+            noChanges: {code: noChanges, title: 'Equal Values'},
+        }}
+    />
 );
-export default DiffViewerExamples;
