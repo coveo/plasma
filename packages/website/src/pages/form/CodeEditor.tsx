@@ -1,55 +1,44 @@
 import * as React from 'react';
-import {CodeEditor, CodeMirrorModes} from '@coveord/plasma-react';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-const defaultValue = `from math import pi as PI
+const code = `
+    import * as React from 'react';
+    import {CodeEditor, CodeMirrorModes} from '@coveord/plasma-react';
+
+    const defaultValue = \`from math import pi as PI
 print(PI) // 3.141592653589793
+\`;
+    
+    export default () => (
+        <CodeEditor value={defaultValue} mode={CodeMirrorModes.Python} options={{lineWrapping: true}} />
+    );
 `;
 
-// start-print
-export class CodeEditorExamples extends React.Component {
-    render() {
-        return (
-            <PlasmaComponent
-                id="CodeEditor"
-                title="Code Editor"
-                usage="A code editor is a text area that allows users to edit code. A coding syntax is built in."
-                withSource
-            >
-                <div className="mt2">
-                    <div className="form-group">
-                        <label className="form-control-label">
-                            Code Editor with line wrapping and a starting value in the redux store
-                        </label>
-                        <CodeEditor
-                            id="CodeEditorId"
-                            value="A starting value"
-                            mode={CodeMirrorModes.Python}
-                            options={{lineWrapping: true}}
-                            extraKeywords={['hello', 'world']}
-                        />
-                    </div>
+const readOnly = `
+    import * as React from 'react';
+    import {CodeEditor, CodeMirrorModes} from '@coveord/plasma-react';
 
-                    <div className="form-group">
-                        <label className="form-control-label">Code Editor using codemirror in readonly mode</label>
-                        <CodeEditor value="" mode={CodeMirrorModes.Python} readOnly />
-                    </div>
+    const defaultValue = \`from math import pi as PI
+print(PI) // 3.141592653589793
+\`;
+    
+    export default () => (
+        <CodeEditor value={defaultValue} mode={CodeMirrorModes.Python} readOnly />
+    );
+`;
 
-                    <div className="form-group">
-                        <label className="form-control-label">
-                            Code Editor using codemirror with an action on change
-                        </label>
-                        <CodeEditor value="" mode={CodeMirrorModes.Python} onChange={(code: string) => alert(code)} />
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">Code Editor using the default value prop</label>
-                        <CodeEditor value={defaultValue} mode={CodeMirrorModes.Python} options={{lineWrapping: true}} />
-                    </div>
-                </div>
-            </PlasmaComponent>
-        );
-    }
-}
-// stop-print
-export default CodeEditorExamples;
+export default () => (
+    <PageLayout
+        id="CodeEditor"
+        title="Code Editor"
+        section="Form"
+        description="A code editor is a text area that allows users to edit code. A coding syntax is built in."
+        thumbnail="codeEditor"
+        code={code}
+        componentSourcePath="/editor/CodeEditor.tsx"
+        examples={{
+            readOnly: {code: readOnly, title: 'Read only'},
+        }}
+    />
+);

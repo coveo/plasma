@@ -15,7 +15,6 @@ export interface JSONEditorProps {
     containerClasses?: string[];
     className?: string;
     options?: CodeMirror.EditorConfiguration;
-    ref?: React.Ref<any>;
     collapsibleId?: string;
 }
 
@@ -39,7 +38,6 @@ export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorSta
     options,
     onMount,
     onUnmount,
-    ref,
     collapsibleId,
 }) => {
     const [isInError, setIsInError] = React.useState(false);
@@ -66,7 +64,6 @@ export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorSta
                 readOnly={readOnly}
                 className={className}
                 options={options}
-                ref={ref}
                 collapsibleId={collapsibleId}
             />
             {isInError && <ValidationDetails errorMessage={errorMessage} />}

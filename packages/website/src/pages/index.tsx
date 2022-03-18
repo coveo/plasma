@@ -99,6 +99,11 @@ const LayoutPages: React.FC = () => (
                 href="layout/Chart"
             />
             <Tile
+                title="Child Form"
+                description="A child form associates a subset of options or content to its parent option."
+                href="layout/ChildForm"
+            />
+            <Tile
                 title="Collapsible"
                 description="A collapsible allows users to hide or display a section of content."
                 href="layout/Collapsible"
@@ -174,11 +179,6 @@ const FormPages: React.FC = () => (
                 title="Checkbox"
                 description="A set of checkboxes allow users to select multiple options from a list. A single checkbox can be used to enable/disable an option."
                 href="form/Checkbox"
-            />
-            <Tile
-                title="Child Form"
-                description="A child form associates a subset of options or content to its parent option."
-                href="form/ChildForm"
             />
             <Tile
                 title="Code Editor"

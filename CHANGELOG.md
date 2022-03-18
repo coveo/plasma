@@ -1,3 +1,95 @@
+# 38.30.0 (2022-03-18)
+
+
+### Features
+
+* **demo:** update Section page ([10a3939](https://github.com/coveo/plasma/commits/10a3939a090a77af2159ad816a656c67ed3b2bcf))
+
+
+
+# 38.29.0 (2022-03-18)
+
+
+### Bug Fixes
+
+* **website:** enable import of moment in sandboxes ([96ece8c](https://github.com/coveo/plasma/commits/96ece8cae2b4d73b740c958b315a7dec715e3777))
+
+
+### Features
+
+* **demo:** update charts page done ([e05c791](https://github.com/coveo/plasma/commits/e05c791d743b7d829f64568287560563085f8335))
+* **demo:** wip update charts page ([3539aa0](https://github.com/coveo/plasma/commits/3539aa0b8c7bf1b8e4ce3ebe76c9d24ca8b8bb86))
+* **wip:** wip charts date not doing so great ([0d5796a](https://github.com/coveo/plasma/commits/0d5796a7633d850423320914a46b2e3f4b5098f5))
+
+
+
+## 38.28.2 (2022-03-18)
+
+
+### Performance Improvements
+
+* **react, color picker:** improve performances ([555bd2d](https://github.com/coveo/plasma/commits/555bd2ded60f9a600273235207b83c3adf618116))
+
+
+
+## 38.28.1 (2022-03-18)
+
+
+
+# 38.28.0 (2022-03-18)
+
+
+### Features
+
+* **demo:** update Limit card page ([ca0f385](https://github.com/coveo/plasma/commits/ca0f38504e063af354d521d85934ae2efefd4613))
+
+
+
+# 38.27.0 (2022-03-18)
+
+
+### Features
+
+* **demo:** update labeledValue page ([fbf601f](https://github.com/coveo/plasma/commits/fbf601f8f6ab646bc568793a7927cd99ceb9ed0c))
+
+
+
+# 38.26.0 (2022-03-17)
+
+
+### Bug Fixes
+
+* **react, modal composite:** type was any in the dts ([510b8d0](https://github.com/coveo/plasma/commits/510b8d021124484a48fc56405a86bf2d7b27f86b))
+* **website:** add missing types in for TypeScript ([f942a93](https://github.com/coveo/plasma/commits/f942a938118b77f3aff810fc406063be680b15f9))
+
+
+### Features
+
+* **website, modal:** update demo to use new layout ([5b06f0a](https://github.com/coveo/plasma/commits/5b06f0a251ff49297e6f3417cf2b03590e7606a0))
+
+
+
+## 38.25.6 (2022-03-17)
+
+
+
+## 38.25.5 (2022-03-17)
+
+
+
+## 38.25.4 (2022-03-17)
+
+
+
+## 38.25.3 (2022-03-17)
+
+
+### Bug Fixes
+
+* **style:** rounded inline-prompt button ([7fcd396](https://github.com/coveo/plasma/commits/7fcd396f23d9b22955097b387407898c9e03345b))
+
+
+
 ## 38.25.2 (2022-03-16)
 
 

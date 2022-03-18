@@ -2,6 +2,12 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 export interface ChartContainerProps {
+    /**
+     * The render function for the chart.
+     *
+     * @param width The width of the chart container
+     * @param height the height of the chart container
+     */
     renderChart: (width: number, height: number) => React.ReactNode;
 }
 

@@ -88,6 +88,7 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink href="/layout/BorderedLine" label="Bordered line" />
                 <NavLink href="/layout/BrowserPreview" label="Browser preview" />
                 <NavLink href="/layout/Chart" label="Chart" />
+                <NavLink href="/layout/ChildForm" label="Child form" />
                 <NavLink href="/layout/Collapsible" label="Collapsible" />
                 <NavLink href="/layout/IconCard" label="Icon card" />
                 <NavLink href="/layout/InfoBox" label="Info box" />
@@ -109,7 +110,6 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink href="/form/ActionableItem" label="Actionable item" />
                 <NavLink href="/form/Button" label="Button" />
                 <NavLink href="/form/Checkbox" label="Checkbox" />
-                <NavLink href="/form/ChildForm" label="Child form" />
                 <NavLink href="/form/CodeEditor" label="Code editor" />
                 <NavLink href="/form/ColorPicker" label="Color picker" />
                 <NavLink href="/form/DatePicker" label="Date picker" />
