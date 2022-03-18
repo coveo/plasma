@@ -21,7 +21,6 @@ interface PlaygroundProps {
     title: string;
     code: string;
     layout?: 'horizontal' | 'vertical';
-    exampleLayout?: 'horizontal' | 'vertical';
 }
 
 export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {

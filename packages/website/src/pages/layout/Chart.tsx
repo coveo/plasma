@@ -200,7 +200,6 @@ const complex = `
     import {BarSeries, LineSeries, ScatterSeries, ChartTooltip, ChartContainer,XYChart, XYAxis, XYPoint} from '@coveord/plasma-react';
 
     export default () => (
-        <div style={{height: '500px'}}>
             <ChartContainer
                 renderChart={(width, height) => (
                     <XYChart
@@ -224,7 +223,6 @@ const complex = `
                     </XYChart>
                 )}
             />
-        </div>
     );
 
     const data = [
