@@ -7,8 +7,8 @@ const code = `
 
     export default () => (
         <Section title="Section title" description="Section description.">
-            <Section title="Section title inside the anoter Section">
-                <div> I'm a div child inside a Section inside a Section yes I look weird</div>
+            <Section level={2} mods={'mod-header-padding'}  title="Look at my cool mod">
+                <div>Children</div>
             </Section>
         </Section>
     );
@@ -27,6 +27,19 @@ const withLevel = `
     );
 `;
 
+const withMods = `
+    import * as React from 'react';
+    import {Section} from '@coveord/plasma-react';
+
+    export default () => (
+        <>
+            <Section mods={'mod-header-padding'} title="This is a level 1 section" description="Section description." />
+            <Section mods={'mod-form-top-bottom-padding'}title="This is a level 2 section" description="Section description." />
+            <Section mods={'material-card'}title="This is a level 3 section" description="Section description." />
+        </>
+    );
+`;
+
 const SectionExamples = () => (
     <PageLayout
         id="Section"
@@ -35,7 +48,10 @@ const SectionExamples = () => (
         section="Layout"
         thumbnail="placeholder"
         code={code}
-        examples={{withLevel: {code: withLevel, title: 'With Level option'}}}
+        examples={{
+            withLevel: {code: withLevel, title: 'With Level option'},
+            withMods: {code: withMods, title: 'With Mods option'},
+        }}
     />
 );
 
