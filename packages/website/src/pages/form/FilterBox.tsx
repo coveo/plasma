@@ -1,40 +1,30 @@
 import * as React from 'react';
-import {Button, FilterBoxConnected, Section, Svg} from '@coveord/plasma-react';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-import {ExampleComponent} from '../../utils/ExamplesUtils';
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+const code = `
+    import * as React from 'react';
+    import {FilterBoxConnected} from '@coveord/plasma-react';
 
-export const FilterBoxExamples: ExampleComponent = () => <FilterBoxes />;
-FilterBoxExamples.description = 'Will be used to filter content';
+    export default () => <FilterBoxConnected id="filter-box-id" filterPlaceholder="Custom Placeholder" />;
+`;
 
-// start-print
+const maxWidth = `
+    import * as React from 'react';
+    import {FilterBoxConnected} from '@coveord/plasma-react';
 
-const FilterBoxes: React.FunctionComponent = () => (
-    <PlasmaComponent
-        id="FilterBox"
+    export default () => <FilterBoxConnected id="filter-box-id-2" maxWidth={160} />;
+`;
+
+export default () => (
+    <PageLayout
+        id="FilterBoxConnected"
         title="Filter Box"
-        usage="A filter box allows users to enter text to filter data. It is frequently used with tables and dropdown menus."
-        withSource
-    >
-        <Section title="FilterBox Examples">
-            <Section level={3} title="A filterBox with a custom placeholder.">
-                <FilterBoxConnected id="FirstFilterBox" filterPlaceholder="Custom Placeholder" />
-            </Section>
-            <Section level={3} title="A filterBox with a maximum width.">
-                <FilterBoxConnected id="SecondFilterBox" maxWidth={160} />
-            </Section>
-            <Section level={3} title="A filterBox with a child component">
-                <FilterBoxConnected
-                    id="FilterBoxExampleComponentWithChildren"
-                    className={'flex flex-center'}
-                    filterPlaceholder="Filter"
-                >
-                    <Button classes={['p1', 'ml1']} enabled onClick={() => alert('clicked !')}>
-                        <Svg svgName={'add'} className="icon mod-lg mod-align-with-text" />
-                    </Button>
-                </FilterBoxConnected>
-            </Section>
-        </Section>
-    </PlasmaComponent>
+        section="Form"
+        description="A filter box allows users to enter text to filter data. It is frequently used with tables and dropdown menus."
+        componentSourcePath="/filterBox/FilterBoxConnected.tsx"
+        code={code}
+        examples={{
+            maxWidth: {code: maxWidth, title: 'Maximum width'},
+        }}
+    />
 );
-export default FilterBoxes;
