@@ -11,15 +11,47 @@ import {InputSelectors} from '../input/InputSelectors';
 import {Svg} from '../svg';
 
 export interface LimitOwnProps {
+    /**
+     * Unique identifier of the Limit card
+     */
     id?: string;
+    /**
+     * The text displayed as the title of the Limit card
+     */
     title: string;
+    /**
+     * The text displayed as the title of the limit value
+     *
+     * @default Limit
+     */
     limitLabel?: string;
+    /**
+     * Additionnal CSS classes to customize the style of the Limit card
+     */
     className?: string;
+    /**
+     * Display the current usage under the Usage label
+     */
     usage?: number;
+    /**
+     * Set the limit value of the Limit card. When the limit is reached, the progress bar is turning red color.
+     */
     limit?: number;
+    /**
+     * Whether the limit value is editable directly in the Limit card
+     */
     isLimitEditable?: boolean;
+    /**
+     * Whether the limit value is a goal. When the goal is achived, the progress bar stay teal color instead of turning red
+     */
     isLimitTheGoalToReach?: boolean;
+    /**
+     * Whether the history icons is rendered
+     */
     isHistoryIncluded?: boolean;
+    /**
+     * A callback function that gets executed after the History icon is clicked
+     */
     onHistoryIconClick?: () => void;
 }
 
