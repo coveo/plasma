@@ -137,7 +137,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
     );
 };
 
-export const CollapsibleConnected = connect(
+export const CollapsibleConnected: React.ComponentType<CollapsibleOwnProps> = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps
