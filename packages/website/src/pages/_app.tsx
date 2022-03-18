@@ -22,6 +22,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
 import * as LoremIpsum from 'lorem-ipsum';
 import {Provider} from 'react-redux';
+import moment from 'moment';
 
 import logo from '../../resources/plasma-logo.svg';
 import {EngineProvider} from '../search/engine/EngineProvider';
@@ -56,6 +57,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         (window as any).ReactRedux = ReactRedux;
         (window as any).PlasmaReact = PlasmaReact;
         (window as any).PlasmaReactIcons = PlasmaReactIcons;
+        (window as any).moment = moment;
         (window as any).LoremIpsum = LoremIpsum;
 
         if (window.location.host === 'vapor.coveo.com') {

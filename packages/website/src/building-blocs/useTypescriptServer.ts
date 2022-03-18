@@ -27,6 +27,7 @@ const plasmaReactIconsTypes = require.context(
     /\.d\.ts$/i,
     'lazy-once'
 );
+const momentJsTypes = require.context('!!raw-loader!moment', true, /\.d\.ts$/i, 'lazy-once');
 const reduxTypes = require.context('!!raw-loader!redux', true, /\.d\.ts$/i, 'lazy-once');
 const loremIpsumTypes = require.context('!!raw-loader!lorem-ipsum/types/src', true, /\.d\.ts$/i, 'lazy-once');
 const load = async (path: string, ctx: any, root: string) => {
@@ -34,6 +35,9 @@ const load = async (path: string, ctx: any, root: string) => {
     let newPath = `${root}/${path.replace('./', '')}`;
     if (root.includes('@coveord/plasma-react') && path.includes('Entry.d.ts')) {
         newPath = newPath.replace('Entry.d.ts', 'index.d.ts');
+    }
+    if (root.includes('moment') && path.includes('moment.d.ts')) {
+        newPath = newPath.replace('moment.d.ts', 'index.d.ts');
     }
     return {path: newPath, content};
 };
@@ -47,6 +51,7 @@ const loadAll: Promise<Map<string, string>> = Promise.all([
     ...plasmaReactIconsTypes
         .keys()
         .map((path) => load(path, plasmaReactIconsTypes, '/node_modules/@coveord/plasma-react-icons')),
+    ...momentJsTypes.keys().map((path) => load(path, momentJsTypes, '/node_modules/moment')),
 ]).then(([map, ...mappedTypes]) => {
     mappedTypes.forEach(({path, content}) => {
         map.set(path, content);
