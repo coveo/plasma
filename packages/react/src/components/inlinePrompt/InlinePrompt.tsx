@@ -6,6 +6,7 @@ import * as _ from 'underscore';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {removePrompt} from './InlinePromptActions';
+import {Button} from '../button';
 
 export interface IUserChoice {
     description?: string;
@@ -30,14 +31,9 @@ export const InlinePrompt: React.FunctionComponent<
     IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>
 > = ({options, onCancel}) => {
     const choices: JSX.Element[] = _.map(options.userChoice.choices, (choice: string) => (
-        <button
-            type="button"
-            className="btn action mod-danger prompt-action enabled"
-            onClick={options.onClick}
-            key={choice}
-        >
+        <Button classes="mod-danger ml1" onClick={options.onClick} key={choice}>
             {choice}
-        </button>
+        </Button>
     ));
 
     const description: JSX.Element = options.userChoice.description ? (
@@ -45,9 +41,9 @@ export const InlinePrompt: React.FunctionComponent<
     ) : null;
 
     const cancel: JSX.Element = options.userChoice.cancel ? (
-        <button type="button" className="btn cancel prompt-action enabled" onClick={onCancel}>
+        <Button classes="cancel ml1" onClick={onCancel}>
             {options.userChoice.cancel}
-        </button>
+        </Button>
     ) : null;
 
     const className = classNames(`prompt-${options.className ?? 'info'}`, {opened: options.isOpened});
