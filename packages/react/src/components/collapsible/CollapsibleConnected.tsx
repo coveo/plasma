@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
-import {PlasmaState} from '../../PlasmaState';
+import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from './CollapsibleActions';
 import {CollapsibleToggle} from './CollapsibleToggle';
@@ -141,7 +141,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
     );
 };
 
-export const CollapsibleConnected: React.ComponentType<CollapsibleOwnProps> = connect(
+export const CollapsibleConnected: React.ComponentType<CollapsibleOwnProps & IReduxActionsPayload> = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps
