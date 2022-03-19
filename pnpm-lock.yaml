@@ -86,7 +86,7 @@ importers:
       '@types/react-bootstrap': 0.32.29
       '@types/react-codemirror': 1.0.7
       '@types/react-color': 3.0.6
-      '@types/react-dom': 16.9.14
+      '@types/react-dom': 17.0.14
       '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.13.1
       '@types/react-tether': 0.5.5
@@ -210,7 +210,7 @@ importers:
       '@types/react-bootstrap': 0.32.29
       '@types/react-codemirror': 1.0.7
       '@types/react-color': 3.0.6
-      '@types/react-dom': 16.9.14
+      '@types/react-dom': 17.0.14
       '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.13.1
       '@types/react-tether': 0.5.5
@@ -432,7 +432,7 @@ importers:
       '@types/prettier': 1.19.1
       '@types/react': 16.14.24
       '@types/react-color': 3.0.6
-      '@types/react-dom': 16.9.14
+      '@types/react-dom': 17.0.14
       '@types/react-modal': 3.13.1
       '@types/react-redux': 7.1.22
       '@types/react-router': 5.1.17
@@ -535,7 +535,7 @@ importers:
       '@types/prettier': 1.19.1
       '@types/react': 16.14.24
       '@types/react-color': 3.0.6
-      '@types/react-dom': 16.9.14
+      '@types/react-dom': 17.0.14
       '@types/react-modal': 3.13.1
       '@types/react-redux': 7.1.22
       '@types/react-router': 5.1.17
@@ -2261,7 +2261,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.16.3
       '@testing-library/dom': 8.11.3
-      '@types/react-dom': 17.0.13
+      '@types/react-dom': 17.0.14
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
     dev: true
@@ -2594,14 +2594,8 @@ packages:
       '@types/reactcss': 1.2.6
     dev: true
 
-  /@types/react-dom/16.9.14:
-    resolution: {integrity: sha512-FIX2AVmPTGP30OUJ+0vadeIFJJ07Mh1m+U0rxfgyW34p3rTlXI+nlenvAxNn4BP36YyI9IJ/+UJ7Wu22N1pI7A==}
-    dependencies:
-      '@types/react': 16.14.24
-    dev: true
-
-  /@types/react-dom/17.0.13:
-    resolution: {integrity: sha512-wEP+B8hzvy6ORDv1QBhcQia4j6ea4SFIBttHYpXKPFZRviBvknq0FRh3VrIxeXUmsPkwuXVZrVGG7KUVONmXCQ==}
+  /@types/react-dom/17.0.14:
+    resolution: {integrity: sha512-H03xwEP1oXmSfl3iobtmQ/2dHF5aBHr8aUMwyGZya6OW45G+xtdzmq6HkncefiBt5JU8DVyaWl/nWZbjZCnzAQ==}
     dependencies:
       '@types/react': 17.0.40
     dev: true

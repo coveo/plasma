@@ -97,7 +97,7 @@
         "@types/react-bootstrap": "0.32.29",
         "@types/react-codemirror": "1.0.7",
         "@types/react-color": "3.0.6",
-        "@types/react-dom": "16.9.14",
+        "@types/react-dom": "17.0.14",
         "@types/react-infinite-scroll-component": "4.2.5",
         "@types/react-modal": "3.13.1",
         "@types/react-tether": "0.5.5",
