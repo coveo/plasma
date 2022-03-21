@@ -130,7 +130,7 @@ importers:
       react-bootstrap: 2.0.3
       react-codemirror2: 7.2.1
       react-color: 2.19.3
-      react-diff-viewer: ^3.1.1
+      react-diff-viewer: 3.1.1
       react-dnd: 2.6.0
       react-dnd-html5-backend: 2.6.0
       react-dnd-test-backend: 2.6.0
@@ -465,6 +465,7 @@ importers:
       open-cli: 7.0.1
       raw-loader: 4.0.2
       react: 16.14.0
+      react-diff-viewer: 3.1.1
       react-dom: 16.14.0
       react-markdown: 7.1.1
       react-redux: 7.2.6
@@ -512,6 +513,7 @@ importers:
       next-sitemap: 2.5.4_next@12.1.0
       next-transpile-modules: 9.0.0
       react: 16.14.0
+      react-diff-viewer: 3.1.1_react-dom@16.14.0+react@16.14.0
       react-dom: 16.14.0_react@16.14.0
       react-markdown: 7.1.1_31347e879eca8fbed0f611d143439f58
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
@@ -929,14 +931,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@babel/types/7.16.0:
-    resolution: {integrity: sha512-PJgg/k3SdLsGb3hhisFvtLOw5ts113klrpLuIPtCJIU+BB24fqq6lf8RWqKJEjzqXR9AEH1rIb5XTqwBHB+kQg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.16.7
-      to-fast-properties: 2.0.0
     dev: true
 
   /@babel/types/7.17.0:
@@ -2314,7 +2308,7 @@ packages:
     resolution: {integrity: sha512-zGZJzzBUVDo/eV6KgbE0f0ZI7dInEYvo12Rb70uNQDshC3SkRMb67ja0GgRHZgAX3Za6rhaWlvbDO8rrGyAb1g==}
     dependencies:
       '@babel/parser': 7.16.4
-      '@babel/types': 7.16.0
+      '@babel/types': 7.17.0
       '@types/babel__generator': 7.6.2
       '@types/babel__template': 7.4.0
       '@types/babel__traverse': 7.11.1
@@ -2323,20 +2317,20 @@ packages:
   /@types/babel__generator/7.6.2:
     resolution: {integrity: sha512-MdSJnBjl+bdwkLskZ3NGFp9YcXGx5ggLpQQPqtgakVhsWK0hTtNYhjpZLlWQTviGTvF8at+Bvli3jV7faPdgeQ==}
     dependencies:
-      '@babel/types': 7.16.0
+      '@babel/types': 7.17.0
     dev: true
 
   /@types/babel__template/7.4.0:
     resolution: {integrity: sha512-NTPErx4/FiPCGScH7foPyr+/1Dkzkni+rHiYHHoTjvwou7AQzJkNeD60A9CXRy+ZEN2B1bggmkTMCDb+Mv5k+A==}
     dependencies:
       '@babel/parser': 7.16.4
-      '@babel/types': 7.16.0
+      '@babel/types': 7.17.0
     dev: true
 
   /@types/babel__traverse/7.11.1:
     resolution: {integrity: sha512-Vs0hm0vPahPMYi9tDjtP66llufgO3ST16WXaSTtDGEl9cewAl3AibmxWw6TINOqHPT9z0uABKAYjT9jNSg4npw==}
     dependencies:
-      '@babel/types': 7.16.0
+      '@babel/types': 7.17.0
     dev: true
 
   /@types/cheerio/0.22.28:
@@ -3910,7 +3904,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@babel/template': 7.16.0
-      '@babel/types': 7.16.0
+      '@babel/types': 7.17.0
       '@types/babel__core': 7.1.14
       '@types/babel__traverse': 7.11.1
     dev: true
@@ -9150,7 +9144,7 @@ packages:
       '@babel/parser': 7.16.4
       '@babel/plugin-syntax-typescript': 7.16.0_@babel+core@7.16.0
       '@babel/traverse': 7.16.3
-      '@babel/types': 7.16.0
+      '@babel/types': 7.17.0
       '@jest/transform': 27.4.2
       '@jest/types': 27.5.1
       '@types/babel__traverse': 7.11.1
