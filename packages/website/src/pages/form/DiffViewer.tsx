@@ -69,7 +69,7 @@ export default () => (
     <PageLayout
         id="DiffViewer"
         title="Diff Viewer"
-        section="Layout"
+        section="Form"
         description="A diff viewer allows users to compare code files by showing them side by side and highlighting differences between them."
         componentSourcePath="/diffViewer/DiffViewer.tsx"
         code={code}
