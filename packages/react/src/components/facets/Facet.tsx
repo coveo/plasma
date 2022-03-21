@@ -18,31 +18,100 @@ export interface IFacet {
 }
 
 export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
+    /**
+     * The attributes of this facet, see IFacet
+     */
     facet: IFacet;
+    /**
+     * A list of IFacet representing all the possible values of this facet
+     */
     facetRows: IFacet[];
-    toggleFacet: (facet: string, facetRow: IFacet) => void;
-    clearFacet: (facet: string) => void;
+    /**
+     * Callback function that runs when selecting or unselecting a facet row
+     *
+     * @param facet the name of this facet
+     * @param facetRow the name of the facet row being toggled
+     */
+    toggleFacet?: (facet: string, facetRow: IFacet) => void;
+    /**
+     * Callback function that runs when clicking on the unselect all rows button
+     *
+     * @param facet the name of this facet
+     */
+    clearFacet?: (facet: string) => void;
+    /**
+     * Tooltip on the button to unselect all rows of this facet
+     */
     clearFacetLabel?: string;
+    /**
+     * Maximum number for facet rows to show
+     *
+     * @default 5
+     */
     maxRowsToShow?: number;
+    /**
+     * Display the label in a tooltip if the length is greater than this number
+     */
     maxTooltipLabelLength?: number;
+    /**
+     * Function to format the tooltip on the exclusion button
+     *
+     * @param facetsRowName the name of the facet that is being hovered
+     */
     excludeTooltipMessage?(facetsRowName: string): string;
 }
 
 export interface IFacetStateProps extends IReduxStatePossibleProps {
+    /**
+     * Wheter the facet More dropdown is opened or not
+     */
     isOpened?: boolean;
+    /**
+     * A list of selected facets, see IFacet
+     */
     selectedFacetRows?: IFacet[];
 }
 
 export interface IFacetDispatchProps {
+    /**
+     * Callback function that runs when the component mounts
+     *
+     * @param facet the name of this facet
+     */
     onRender?: (facet: string) => void;
+    /**
+     * Callback function that runs when this component unmounts
+     *
+     * @param facet the name of this facet
+     */
     onDestroy?: (facet: string) => void;
+    /**
+     * Callback function that runs when toggling a facet value
+     *
+     * @param facet the name of the facet
+     * @param facetRow the facet value being toggled
+     */
     onToggleFacet?: (facet: string, facetRow: IFacet) => void;
+    /**
+     * Callback function that runs when clicking on the unselect all button
+     *
+     * @param facet the name of this facet
+     */
     onClearFacet?: (facet: string) => void;
 }
 
 export interface IFacetChildrenProps {
+    /**
+     * The label to display on the More values button
+     */
     moreLabel?: string;
+    /**
+     * The placerholder to display in the More values filter input
+     */
     filterPlaceholder?: string;
+    /**
+     * Wheter to display the exclusion or not
+     */
     enableExclusions?: boolean;
 }
 
@@ -58,14 +127,14 @@ export class Facet extends React.Component<IFacetProps, any> {
     };
 
     private buildFacet = (facetRow: IFacet) => {
-        this.props.toggleFacet(this.props.facet.name, facetRow);
+        this.props.toggleFacet?.(this.props.facet.name, facetRow);
         if (this.props.onToggleFacet) {
             this.props.onToggleFacet(this.props.facet.name, facetRow);
         }
     };
 
     private clearFacet = () => {
-        this.props.clearFacet(this.props.facet.name);
+        this.props.clearFacet?.(this.props.facet.name);
         if (this.props.onClearFacet) {
             this.props.onClearFacet(this.props.facet.name);
         }

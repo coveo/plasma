@@ -62,5 +62,10 @@ export interface IReduxProps {
 }
 
 export interface IReduxStatePossibleProps {
+    /**
+     * Wheter this component is connected to the state or not
+     *
+     * @default true if using a connected component, false otherwise
+     */
     withReduxState?: boolean;
 }
