@@ -15,19 +15,48 @@ import {IItemBoxPropsWithIndex, IListBoxOwnProps} from '../listBox/ListBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
-import {SelectSelector} from './SelectSelector';
 import {SelectConstants} from './SelectConstants';
+import {SelectSelector} from './SelectSelector';
 
 export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
+    /**
+     * Unique identifier
+     */
     id: string;
     button: React.ComponentType<ISelectButtonProps>;
+    /**
+     * The text displayed in the button when no item is selected
+     *
+     * @default "Select an option"
+     */
     placeholder?: string;
+    /**
+     * Additional CSS classes to set on the outermost element
+     */
     selectClasses?: string;
+    /**
+     * Additional CSS classes to set on the dropdown element
+     */
     dropClasses?: string;
+    /**
+     * Whether the dropdown has a child that needs to receive the focus upon opening the dropdown, for example: a filter input.
+     */
     hasFocusableChild?: boolean;
+    /**
+     * Whether the SingleSelect is disabled
+     */
     disabled?: boolean;
+    /**
+     * A callback function that is executed whenever an update of the items array is required. For example if a filter was applied and the filter is done on the server.
+     */
     onUpdate?: () => void;
+    /**
+     * Additional Drop props to set on the Drop component (see IDropPodProps interface)
+     */
     dropOption?: Partial<IDropPodProps>;
+    /**
+     * Additional CSS classes to set on the toggle button
+     */
     toggleClasses?: string;
 }
 
@@ -132,7 +161,10 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
     }
 
     private get selectedOptions(): IItemBoxProps[] {
-        return this.props.items.filter((option: IItemBoxProps) => _.contains(this.props.selectedValues, option.value));
+        return (
+            this.props.items?.filter((option: IItemBoxProps) => _.contains(this.props.selectedValues, option.value)) ??
+            []
+        );
     }
 
     private renderToggle = (openDropdown: () => void) => (
