@@ -1,3 +1,15 @@
+# 39.0.0 (2022-03-21)
+
+
+* refactor!: fix buld ([7471cd9](https://github.com/coveo/plasma/commits/7471cd9061e5d976673a91d03892e9d4fa94e7e0))
+
+
+### BREAKING CHANGES
+
+* onToggleExpandedState is replace by onClick in sideNav
+
+
+
 # 38.31.0 (2022-03-21)
 
 
