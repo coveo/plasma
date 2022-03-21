@@ -11,6 +11,9 @@ import {FilepickerActions} from './FilepickerActions';
 import {FilepickerSelectors} from './FilepickerSelectors';
 
 export interface FilepickerProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    /**
+     * The unique identifier of the file picker
+     */
     id: string;
 }
 
