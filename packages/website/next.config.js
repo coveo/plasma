@@ -20,6 +20,10 @@ module.exports = withPlugins([withTM, withImages], {
                 poll: 10000,
             };
         }
+        config.module.rules.push({
+            test: /\.example.tsx$/,
+            loader: 'raw-loader',
+        });
         return config;
     },
 });

@@ -6,7 +6,7 @@ import {loader} from '@monaco-editor/react';
 
 export const compilerOptions: ts.CompilerOptions = {
     jsx: ts.JsxEmit.React,
-    lib: ['es2015', 'dom'],
+    lib: ['es2017', 'dom'],
     module: ts.ModuleKind.CommonJS,
     target: ts.ScriptTarget.ES5,
     skipLibCheck: true,
