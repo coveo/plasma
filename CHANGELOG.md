@@ -1,3 +1,20 @@
+# 38.31.0 (2022-03-21)
+
+
+### Features
+
+* **website:** allow import of examples from files ([688b01c](https://github.com/coveo/plasma/commits/688b01c42d3611fc2231af2e1808d027cac5099f))
+
+
+
+## 38.30.2 (2022-03-21)
+
+
+
+## 38.30.1 (2022-03-21)
+
+
+
 # 38.30.0 (2022-03-18)
 
 

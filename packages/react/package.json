@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "38.30.0",
+    "version": "38.30.2",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -48,7 +48,7 @@
         "react-bootstrap": "2.0.3",
         "react-codemirror2": "7.2.1",
         "react-color": "2.19.3",
-        "react-diff-viewer": "^3.1.1",
+        "react-diff-viewer": "3.1.1",
         "react-dnd": "2.6.0",
         "react-dnd-html5-backend": "2.6.0",
         "react-infinite-scroll-component": "4.5.3",

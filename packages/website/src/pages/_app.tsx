@@ -18,6 +18,7 @@ import type {AppProps} from 'next/app';
 import Head from 'next/head';
 import Link from 'next/link';
 import * as React from 'react';
+import * as Redux from 'redux';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
 import * as LoremIpsum from 'lorem-ipsum';
@@ -59,6 +60,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         (window as any).PlasmaReactIcons = PlasmaReactIcons;
         (window as any).moment = moment;
         (window as any).LoremIpsum = LoremIpsum;
+        (window as any).Redux = Redux;
 
         if (window.location.host === 'vapor.coveo.com') {
             window.location.href = window.location.href.replace('vapor.coveo.com', 'plasma.coveo.com');
