@@ -7,22 +7,61 @@ import {ToggleForm} from '../childForm/ToggleForm';
 import {Radio} from './Radio';
 
 export interface IRadioSelectOnChangeCallback {
+    /**
+     * A callback function executed when the selected Radio option changes
+     *
+     * @param value The value of the selected option
+     * @param id The unique identifier of the radio select
+     * @param e The change event
+     */
     onChange?: (value: string, id?: string, e?: React.MouseEvent<HTMLElement>) => void;
 }
 
 export interface IRadioSelectProps extends IRadioSelectOnChangeCallback {
+    /**
+     * A unique identifier used to indentify the RadioSelect in the PlasmaState
+     */
     id?: string;
+    /**
+     * See [input's name attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-name)
+     */
     name?: string;
+    /**
+     * Additional CSS classes to set on the outermost element
+     */
     className?: string;
-    value?: string;
+    /**
+     * When disabled, the RadioButtons cannot be selected or unselected
+     *
+     * @default false
+     */
     disabled?: boolean;
+    /**
+     * The text displayed when hovering over a disabled Radio button
+     */
     disabledTooltip?: string;
+    /**
+     * Radio options of the RadioSelect. Each child must be a Radio or a RadioCard
+     */
     children?: Array<React.ReactElement<typeof Radio | typeof RadioCard>> | Array<React.ReactElement<ToggleForm>>;
+    /**
+     * A callback function executed when the selected Radio option changes
+     *
+     * @param value The value of the selected option
+     * @param id The unique identifier of the radio select
+     * @param e The change event
+     */
     onChangeCallback?: (value: string, id?: string, e?: React.MouseEvent<HTMLElement>, disabled?: boolean) => void;
 }
 
 export interface IRadioSelectConnectedProps {
+    /**
+     * Value of the initially selected radio option
+     */
     valueOnMount?: string;
+    /**
+     * Value of the initially disabled radio options
+     */
     disabledValuesOnMount?: string[];
 }
 
