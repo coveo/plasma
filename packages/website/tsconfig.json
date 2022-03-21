@@ -9,7 +9,8 @@
         "tsBuildInfoFile": "./built/.tsbuildinfo",
         "paths": {
             "@coveord/plasma-react/dist/*": ["../react/dist/*"],
-            "@styles/*": ["./src/styles/*"]
+            "@styles/*": ["./src/styles/*"],
+            "@examples/*": ["./src/examples/*"]
         },
         "lib": ["ES2020", "dom"],
         "typeRoots": ["./types", "./node_modules/@types"],
