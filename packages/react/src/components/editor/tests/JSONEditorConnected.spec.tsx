@@ -43,7 +43,7 @@ describe('<JSONEditorConnected />', () => {
         const expectedValue = 'hello';
         const onChangeSpy = jest.fn();
 
-        render(<JSONEditorConnected id="💙" value={''} onChange={onChangeSpy} />);
+        render(<JSONEditorConnected id="💙" defaultValue={''} onChange={onChangeSpy} />);
 
         await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 

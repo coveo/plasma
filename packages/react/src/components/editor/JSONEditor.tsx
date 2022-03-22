@@ -62,9 +62,11 @@ export interface JSONEditorDispatchProps {
     onUnmount?: () => void;
 }
 
-export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorStateProps & JSONEditorDispatchProps> = ({
+export const JSONEditor: React.FunctionComponent<
+    JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>
+> = ({
     value,
-    defaultValue = '{}',
+    defaultValue,
     readOnly,
     onChange,
     errorMessage,
@@ -75,7 +77,7 @@ export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorSta
     onUnmount,
     collapsibleId,
 }) => {
-    const [isInError, setIsInError] = React.useState(false);
+    const [isInError, setIsInError] = React.useState(!JSONEditorUtils.validateValue(value || defaultValue));
 
     React.useEffect(() => {
         onMount?.();
@@ -93,7 +95,7 @@ export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorSta
     return (
         <div className={classNames('form-group', {'input-validation-error': isInError}, containerClasses)}>
             <CodeEditor
-                value={value ?? defaultValue}
+                value={value || defaultValue}
                 onChange={handleChange}
                 mode={CodeMirrorModes.JSON}
                 readOnly={readOnly}
