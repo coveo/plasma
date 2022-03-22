@@ -8,7 +8,6 @@ import {IRangeLimit} from './DatesSelection';
 export interface IDatePickerState {
     id: string;
     calendarId: string;
-    color: string;
     lowerLimit: Date;
     upperLimit: Date;
     inputLowerLimit: Date;
@@ -26,7 +25,6 @@ export interface IDatePickerState {
 export const datePickerInitialState: IDatePickerState = {
     id: undefined,
     calendarId: undefined,
-    color: undefined,
     isRange: false,
     isClearable: false,
     simple: false,
@@ -48,7 +46,6 @@ const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePic
     return {
         id: action.payload.id,
         calendarId: action.payload.calendarId,
-        color: action.payload.color,
         isRange: action.payload.isRange,
         rangeLimit: action.payload.rangeLimit,
         minimalRangeLimit: action.payload.minimalRangeLimit,
