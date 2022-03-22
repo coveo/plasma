@@ -14,10 +14,9 @@ import {
     IMultilineBoxStateProps,
     IMultilineParentProps,
     IMultilineSingleBoxProps,
+    MultilineBox,
 } from '../MultilineBox';
 import {MultilineBoxSelectors} from '../MultilineBoxSelector';
-
-type MultilineBoxWithDnDComponent<T = any> = React.ComponentClass<IMultilineBoxOwnProps<T>>;
 
 export interface IMultilineBoxWithDnDSupplierProps {
     DnDContainerProps?: Partial<IDraggableContainerOwnProps>;
@@ -36,8 +35,8 @@ export interface IMultilineBoxWithDnDProps<T>
         Partial<IMultilineBoxDispatchProps> {}
 
 export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDnDSupplierProps> = {}) => (
-    Component: MultilineBoxWithDnDComponent
-): MultilineBoxWithDnDComponent => {
+    Component: typeof MultilineBox
+): typeof MultilineBox => {
     const makeMapStateToProps = () => {
         const getStateProps = createStructuredSelector({
             multilineBoxIds: MultilineBoxSelectors.getIds,
@@ -96,9 +95,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
                     renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) =>
                         this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)
                     }
-                >
-                    {this.props.children}
-                </Component>
+                />
             );
         }
     }
