@@ -17,7 +17,7 @@ export const TableHOCServerExampleContext = React.createContext<ITableHOCServerE
 });
 
 const generateRows = (allData: IExampleRowData[]) =>
-    allData.map(({email, username, dateOfBirth, city}: IExampleRowData, i: number) => (
+    allData.map(({email, username, city}: IExampleRowData, i: number) => (
         <TableRowConnected
             id={username}
             tableId={TableHOCServerExampleId}
@@ -31,7 +31,6 @@ const generateRows = (allData: IExampleRowData[]) =>
             <td key="city">{city}</td>
             <td key="email">{email.toLowerCase()}</td>
             <td key="username">{username.toLowerCase()}</td>
-            <td key="date-of-birth">{dateOfBirth.toLocaleDateString()}</td>
         </TableRowConnected>
     ));
 

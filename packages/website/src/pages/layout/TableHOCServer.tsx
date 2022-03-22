@@ -1,14 +1,11 @@
-import moment from 'moment';
 import {useRouter} from 'next/router';
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {
-    filterThrough,
     IDispatch,
     PlasmaState,
     ITableHOCCompositeState,
     IThunkAction,
-    LastUpdated,
     Section,
     TableHeaderWithSort,
     TableHOC,
@@ -16,40 +13,20 @@ import {
     TableRowHeader,
     TableRowNumberHeader,
     tableWithActions,
-    tableWithBlankSlate,
-    tableWithDatePicker,
-    tableWithFilter,
-    tableWithNewPagination,
     TableWithPaginationActions,
-    tableWithPredicate,
-    tableWithSort,
     tableWithUrlState,
     UrlUtils,
     withServerSideProcessing,
 } from '@coveord/plasma-react';
-import * as _ from 'underscore';
 
+import {compose} from 'redux';
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {TableHOCExampleUtils, TableHOCServerExampleContext} from '../../utils/TableHOCExampleUtils';
-
-export interface IExampleRowData {
-    city: string;
-    email: string;
-    username: string;
-    dateOfBirth: Date;
-    id: string;
-}
-
-export interface IExampleServerTableState {
-    data: IExampleRowData[];
-    isLoading: boolean;
-}
 
 export const TableHOCServerExamples = () => <TableHOCServer />;
 
 TableHOCServerExamples.title = 'TableHOC server';
 
-// start-print
 export const TableHOCServerExampleId = 'complex-example';
 
 const renderHeader = () => (
@@ -61,9 +38,6 @@ const renderHeader = () => (
                     <TableHeaderWithSort id="address.city" tableId={TableHOCServerExampleId} isLoading={isLoading}>
                         City
                     </TableHeaderWithSort>
-                    <TableHeaderWithSort id="email" tableId={TableHOCServerExampleId} isLoading={isLoading}>
-                        Email
-                    </TableHeaderWithSort>
                     <TableHeaderWithSort
                         id="username"
                         tableId={TableHOCServerExampleId}
@@ -72,7 +46,6 @@ const renderHeader = () => (
                     >
                         Username
                     </TableHeaderWithSort>
-                    <TableRowHeader isLoading={isLoading}>Date of Birth</TableRowHeader>
                     <TableRowHeader isLoading={isLoading} />
                 </tr>
             </thead>
@@ -82,7 +55,6 @@ const renderHeader = () => (
 
 const mapDispatchToProps = (dispatch: IDispatch) => ({
     fetch: () => dispatch(TableHOCServerActions.fetchData()),
-    resetFilter: () => dispatch(filterThrough(TableHOCServerExampleId, '')),
 });
 
 const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = (props) => {
@@ -91,21 +63,9 @@ const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
 
     const router = useRouter();
 
-    const ServerTableComposed = _.compose(
-        withServerSideProcessing,
-        tableWithUrlState,
-        tableWithBlankSlate({title: 'No data fetched from the server'}),
-        tableWithPredicate(TableHOCExampleUtils.tablePredicates[0]),
-        tableWithPredicate(TableHOCExampleUtils.tablePredicates[1]),
-        tableWithBlankSlate({title: 'No users match the selected predicates'}),
-        tableWithFilter(),
-        tableWithSort(),
-        tableWithDatePicker({...(TableHOCExampleUtils.tableDatePickerConfig as any)}),
-        tableWithNewPagination({perPageNumbers: [3, 5, 10]}),
-        tableWithActions()
-    )(TableHOC);
+    const ServerTableComposed = compose(withServerSideProcessing, tableWithUrlState, tableWithActions())(TableHOC);
 
-    const fetch = _.debounce(() => {
+    const fetch = async () => {
         setIsLoading(true);
         if (typeof window !== 'undefined') {
             window.setTimeout(
@@ -119,7 +79,7 @@ const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
                 500
             );
         }
-    }, 40);
+    };
 
     const onUpdate = () => {
         fetch();
@@ -150,22 +110,8 @@ const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
                         onUpdate={() => onUpdate()}
                         onUpdateUrl={updateUrl}
                         isLoading={isLoading}
-                        loading={{numberOfColumns: 6}}
-                        filterPlaceholder="Filter all"
-                        filterBlankslate={{
-                            title: 'No result match the specified filter',
-                            description: 'Try reviewing the specified filters above or clearing all filters.',
-                            buttons: [
-                                {
-                                    name: 'Clear filter',
-                                    enabled: true,
-                                    onClick: props.resetFilter,
-                                },
-                            ],
-                        }}
-                    >
-                        <LastUpdated time={new Date()} />
-                    </ServerTableComposed>
+                        loading={{numberOfColumns: 3}}
+                    ></ServerTableComposed>
                 </TableHOCServerExampleContext.Provider>
             </Section>
         </PlasmaComponent>
@@ -179,19 +125,13 @@ const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () =
         TableHOCServerExampleId,
         getState()
     );
-    const [from, to] = _.map(compositeState.dateLimits, (limit) => limit && limit.toISOString());
     const params: any = {
         _page: compositeState.pageNb + 1,
         _limit: compositeState.perPage,
         _sort: compositeState.sortKey,
         _order: compositeState.sortAscending ? 'asc' : 'desc',
         q: compositeState.filter || undefined,
-        from,
-        to,
     };
-    _.each(compositeState.predicates, (predicate: {id: string; value: string}) => {
-        params[predicate.id] = predicate.value;
-    });
 
     const query = UrlUtils.toQueryString(params);
 
@@ -203,8 +143,6 @@ const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () =
         const users = data.map((user: any) => ({
             city: user.address.city,
             username: user.username,
-            email: user.email,
-            dateOfBirth: moment().subtract(user.address.city.length, 'years').toDate(), // fake a year of birth
         }));
 
         dispatch(TableWithPaginationActions.setCount(TableHOCServerExampleId, count as any));

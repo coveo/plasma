@@ -1,14 +1,10 @@
 import {helpers, seed} from 'faker/locale/en';
 import moment from 'moment';
 import * as React from 'react';
-import {connect} from 'react-redux';
 import {
-    Badge,
     ConfigSupplier,
     DateUtils,
-    filterThrough,
     IActionOptions,
-    IDispatch,
     ITableWithDatePickerConfig,
     Section,
     TableHeaderWithSort,
@@ -18,13 +14,14 @@ import {
     tableWithBlankSlate,
     tableWithDatePicker,
     tableWithFilter,
-    tableWithPagination,
+    tableWithNewPagination,
     tableWithPredicate,
     tableWithSort,
     UUID,
 } from '@coveord/plasma-react';
 import * as _ from 'underscore';
 
+import {compose} from 'redux';
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {SELECTION_BOXES_LONG} from '../../utils/DatePickerExamplesCommon';
 
@@ -32,7 +29,6 @@ export interface IExampleRowData {
     city: string;
     email: string;
     username: string;
-    dateOfBirth: Date;
     id: string;
 }
 
@@ -45,10 +41,7 @@ export const TableHOCExamples = () => (
     >
         <Section>
             <Section level={2} title="Table with Data">
-                <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering" data={twoHundredRowsOfData} />
-            </Section>
-            <Section level={2} title="Table without data">
-                <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering2" data={[]} />
+                <ComplexTable id="tableId" data={twoHundredRowsOfData} />
             </Section>
         </Section>
     </PlasmaComponent>
@@ -63,39 +56,19 @@ export const generateDataWithFaker = (length: number) =>
             city: fakedData.address.city,
             email: fakedData.email,
             username: fakedData.username,
-            dateOfBirth: fakedData.dob,
             id: UUID.generate(),
         };
     });
 const twoHundredRowsOfData = generateDataWithFaker(200);
 
-// start-print
-
 const rowActions: IActionOptions[] = [
     {
         primary: true,
-        icon: 'edit',
-        name: 'Edit',
+        icon: 'info',
+        name: 'Click me!',
         enabled: true,
         trigger: () => alert('trigger on action'),
         callOnDoubleClick: true,
-    },
-    {primary: false, icon: 'view', name: 'View', enabled: true},
-    {primary: false, icon: 'copy', name: 'Copy', enabled: true},
-    {
-        primary: false,
-        icon: 'delete',
-        name: 'Delete',
-        enabled: true,
-        unrepeatable: true,
-        requiresConfirmation: {
-            confirmLabel: 'wanna do it ?',
-            confirmType: 'danger',
-            buttonLabels: {
-                confirm: 'Confirm',
-                cancel: 'Cancel',
-            },
-        },
     },
 ];
 
@@ -111,8 +84,6 @@ const renderHeader = (tableId: string) => (
             <TableHeaderWithSort id="username" tableId={tableId}>
                 Username
             </TableHeaderWithSort>
-            <th>Date of birth</th>
-            <th>Badge</th>
         </tr>
     </thead>
 );
@@ -123,17 +94,11 @@ export const generateTableRow = (allData: IExampleRowData[], tableId: string) =>
             <td key="city">{data.city}</td>
             <td key="email">{data.email.toLowerCase()}</td>
             <td key="username">{data.username.toLowerCase()}</td>
-            <td key="date-of-birth">{data.dateOfBirth.toLocaleDateString()}</td>
-            <td>
-                <Badge label={'🥔 King'} extraClasses={['mod-small mod-success']} />
-            </td>
         </TableRowConnected>
     ));
 
 const tableDatePickerConfig: ConfigSupplier<ITableWithDatePickerConfig> = () => ({
     datesSelectionBoxes: SELECTION_BOXES_LONG,
-    matchDates: (data: IExampleRowData, lowerLimit: Date, upperLimit?: Date) =>
-        _.isUndefined(upperLimit) || (lowerLimit <= data.dateOfBirth && data.dateOfBirth <= upperLimit),
     years: [...DateUtils.getPreviousYears(100), DateUtils.currentYear.toString()],
     initialDateRange: [moment().subtract(75, 'years').toDate(), moment().toDate()],
 });
@@ -146,10 +111,10 @@ const matchPredicate = (predicate: string, rowData: IExampleRowData) => {
 
 const sort = (key: keyof IExampleRowData, isAsc: boolean, a: IExampleRowData, b: IExampleRowData) => {
     if (key) {
-        if (a[key] instanceof Date) {
-            const dateCompare = (a[key] as any) - (b[key] as any);
-            return isAsc ? dateCompare : -1 * dateCompare;
-        }
+        // if (a[key] instanceof Date) {
+        //     const dateCompare = (a[key] as any) - (b[key] as any);
+        //     return isAsc ? dateCompare : -1 * dateCompare;
+        // }
         const compare = (a[key] as string).toLowerCase().localeCompare((b[key] as string).toLowerCase());
 
         return isAsc ? compare : -1 * compare;
@@ -167,19 +132,11 @@ const predicateSetup = {
     ],
 };
 
-const mapDispatchToProps = (dispatch: IDispatch) => ({
-    resetFilter: (id: string) => dispatch(filterThrough(id, '')),
-});
-
-type TableWithActionsAndDataFilteringProps = ReturnType<typeof mapDispatchToProps>;
-
-const TableWithActionsAndDataFilteringDisconnected: React.FunctionComponent<
-    {
-        data: any[];
-        id: string;
-    } & TableWithActionsAndDataFilteringProps
-> = ({id, data, resetFilter}) => {
-    const TableWithActionsAndDataFilteringComposed = _.compose(
+const ComplexTable: React.FunctionComponent<{
+    data: any[];
+    id: string;
+}> = ({id, data}) => {
+    const TableComposed = compose(
         tableWithBlankSlate({
             title: 'No data',
         }),
@@ -190,23 +147,15 @@ const TableWithActionsAndDataFilteringDisconnected: React.FunctionComponent<
         tableWithFilter(), // using the default matchfilter
         tableWithBlankSlate({
             title: 'No results',
-            description: 'Try reviewing the specified filters above or clearing all filters.',
-            buttons: [
-                {
-                    name: 'Clear filter',
-                    enabled: true,
-                    onClick: () => resetFilter(id),
-                },
-            ],
         }),
         tableWithSort({sort}),
         tableWithDatePicker(tableDatePickerConfig),
-        tableWithPagination({perPageNumbers: [3, 5, 10]}),
+        tableWithNewPagination({perPageNumbers: [3, 5, 10]}),
         tableWithActions()
     )(TableHOC);
 
     return (
-        <TableWithActionsAndDataFilteringComposed
+        <TableComposed
             id={id}
             className="table"
             data={data}
@@ -218,10 +167,4 @@ const TableWithActionsAndDataFilteringDisconnected: React.FunctionComponent<
     );
 };
 
-const TableWithActionsAndDataFiltering = connect(
-    undefined,
-    mapDispatchToProps
-)(TableWithActionsAndDataFilteringDisconnected);
-
-// stop-print
 export default TableHOCExamples;
