@@ -4,21 +4,57 @@ import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
-import {PlasmaState} from '../../PlasmaState';
+import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from './CollapsibleActions';
 import {CollapsibleToggle} from './CollapsibleToggle';
 
 export interface CollapsibleOwnProps {
+    /**
+     * Unique identifier for the Collapsible
+     */
     id: string;
+    /**
+     * Whether the collapsible is disabled
+     *
+     * @default false
+     */
     disabled?: boolean;
+    /**
+     * Whether the collapsible is expanded on mount
+     *
+     * @default false
+     */
     expandedOnMount?: boolean;
+    /**
+     * Custom JSX inside the header
+     */
     headerContent?: React.ReactNode;
+    /**
+     * Additionnal CSS classes for the header
+     */
     headerClasses?: string;
+    /**
+     * Additionnal CSS classes for the toggle icon
+     */
     toggleIconClassName?: string;
+    /**
+     * Additionnal CSS classes for the outer most container of the Collapsible
+     */
     className?: string;
+    /**
+     * Whether the collapsible has borders
+     *
+     * @default false
+     */
     withBorders?: boolean;
+    /**
+     * Set to render a custom toggle icon
+     */
     collapsibleToggleIcon?: React.ReactNode;
+    /**
+     * Callback called when container is clicked
+     */
     onClick?: () => void;
 }
 
@@ -105,7 +141,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
     );
 };
 
-export const CollapsibleConnected = connect(
+export const CollapsibleConnected: React.ComponentType<CollapsibleOwnProps & IReduxActionsPayload> = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

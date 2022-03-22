@@ -1,3 +1,32 @@
+# 39.1.0 (2022-03-22)
+
+
+### Features
+
+* **website:** add Countdown demo apge ([9065cc4](https://github.com/coveo/plasma/commits/9065cc418c298b23582b7477e983cdfcacf03aed))
+
+
+
+## 39.0.2 (2022-03-22)
+
+
+
+## 39.0.1 (2022-03-21)
+
+
+
+# 39.0.0 (2022-03-21)
+
+
+* refactor!: fix buld ([7471cd9](https://github.com/coveo/plasma/commits/7471cd9061e5d976673a91d03892e9d4fa94e7e0))
+
+
+### BREAKING CHANGES
+
+* onToggleExpandedState is replace by onClick in sideNav
+
+
+
 # 38.31.0 (2022-03-21)
 
 

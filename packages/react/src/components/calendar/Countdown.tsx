@@ -4,7 +4,17 @@ import {IDatePickerState} from '../datePicker';
 import {Calendar} from './Calendar';
 
 export interface CountdownProps {
+    /**
+     * The starting date from which the countdown begins
+     *
+     * @default Now
+     */
     startDate?: moment.Moment;
+    /**
+     * The end date at which the countdown ends
+     *
+     * @default Last day of the current month
+     */
     endDate?: moment.Moment;
 }
 

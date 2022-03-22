@@ -191,6 +191,11 @@ const FormPages: React.FC = () => (
                 href="form/ColorPicker"
             />
             <Tile
+                title="Countdown"
+                description="A Countdown illustrates how much time there is left until an end date is reached."
+                href="form/Countdown"
+            />
+            <Tile
                 title="Date Picker"
                 description="A date picker is a calendar interface that allows users to select a single date or a date range."
                 href="form/DatePicker"
