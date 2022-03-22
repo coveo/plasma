@@ -1,18 +1,16 @@
 import MonacoEditor from '@monaco-editor/react';
+import initSwc, {transformSync} from '@swc/wasm-web';
+import classNames from 'classnames';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as typescript from 'prettier/parser-typescript';
 import {format} from 'prettier/standalone';
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ts from 'typescript';
-import lzstring from 'lz-string';
-import {twoslasher} from '@typescript/twoslash';
-import classNames from 'classnames';
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as _ from 'underscore';
-import initSwc, {transformSync} from '@swc/wasm-web';
 
 import {PlasmaLoading} from './PlasmaLoading';
 import {useTypescriptServer} from './useTypescriptServer';
+
 // eslint-disable-next-line
 const prettierConfig = require('tsjs/prettier-config');
 
