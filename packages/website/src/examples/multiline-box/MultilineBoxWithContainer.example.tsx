@@ -35,7 +35,7 @@ export default () => (
                             required={!isLast}
                             showValidationOnBlur
                             type="text"
-                            label="Placeholder"
+                            label="Label"
                             defaultValue={props.name}
                             onBlur={(evt: React.FocusEvent<HTMLInputElement>) => {
                                 if (evt.target.value !== '' && isLast) {

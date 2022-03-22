@@ -56,7 +56,6 @@ export interface IMultilineBoxOwnProps<T = any> {
     id: string;
     /**
      * The array of data to render
-
      */
     data: T[];
     /**
@@ -88,7 +87,6 @@ export interface IMultilineBoxOwnProps<T = any> {
     ) => React.ReactNode;
     /**
      * Whether this component is disabled
-
      */
     disabled?: boolean;
 }
