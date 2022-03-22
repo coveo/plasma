@@ -20,14 +20,41 @@ import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
-export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button'>, IDropTargetProps {
+export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 'multi'>, IDropTargetProps {
+    /**
+     * The text displayed in the multi select box when no items are selected
+     *
+     * @default "No selected option"
+     */
     emptyPlaceholder?: string;
+    /**
+     * The text displayed when hovering over the deselect all button
+     *
+     * @default "Deselect All"
+     */
     deselectAllTooltipText?: string;
+    /**
+     * Whether the selected items can be reordered using drag-and-drop
+     *
+     * @default false
+     */
     sortable?: boolean;
+    /**
+     * Setting this to true allows to open the dropdown even if all the items are selected. It is useful if adding custom values is allowed.
+     *
+     * @default false
+     */
     noDisabled?: boolean;
+    /**
+     * Additional CSS inline style to add on the multiselect container
+     *
+     * @default {}
+     */
     multiSelectStyle?: React.CSSProperties;
+    /**
+     * Whether the multiselect is in read only mode. When in read only mode, only the selected option are displayed, greyed out.
+     */
     readOnly?: boolean;
-    connectDropTarget?: any;
 }
 
 export interface IMultiSelectProps
@@ -46,7 +73,6 @@ const selectPropsKeys = [
     'id',
     'isLoading',
     'items',
-    'multi',
     'noActive',
     'noResultItem',
     'onUpdate',
@@ -77,7 +103,7 @@ const parentDropTarget = {
 @DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
 }))
-class MultiSelect extends React.PureComponent<IMultiSelectProps> {
+class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTarget: any}> {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
         emptyPlaceholder: 'No selected option',
@@ -183,7 +209,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
             'mod-sortable': this.props.sortable,
         });
         const buttonAttrs =
-            !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length
+            !this.props.noDisabled && (this.props.selected?.length ?? 0) === (this.props.items?.length ?? 0)
                 ? {disabled: true}
                 : {disabled: this.props.disabled};
         const buttonClasses = classNames(
@@ -233,9 +259,8 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                 .value();
         }
 
-        const selectedItemsWithoutCustom: IItemBoxProps[] = this.props.items.filter((option: IItemBoxProps) =>
-            _.contains(this.props.selected, option.value)
-        );
+        const selectedItemsWithoutCustom: IItemBoxProps[] =
+            this.props.items?.filter((option: IItemBoxProps) => _.contains(this.props.selected, option.value)) ?? [];
         const selectedItemsWithoutCustomItems: string[] = convertItemsBoxToStringList(selectedItemsWithoutCustom);
         const customItemsValues: string[] = _.difference(this.props.selected, selectedItemsWithoutCustomItems);
         const customItems: IItemBoxProps[] = convertStringListToItemsBox(customItemsValues);
@@ -245,4 +270,4 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
     }
 }
 
-export const MultiSelectConnected = DnDUtils.TagControlContext(MultiSelect);
+export const MultiSelectConnected: React.ComponentType<IMultiSelectOwnProps> = DnDUtils.TagControlContext(MultiSelect);
