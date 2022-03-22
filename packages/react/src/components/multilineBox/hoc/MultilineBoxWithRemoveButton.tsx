@@ -12,9 +12,8 @@ import {
     IMultilineBoxOwnProps,
     IMultilineParentProps,
     IMultilineSingleBoxProps,
+    MultilineBox,
 } from '../MultilineBox';
-
-type MultilineBoxWithRemoveButtonComponent<T = any> = React.ComponentClass<IMultilineBoxOwnProps<T>>;
 
 export interface IMultilineBoxWithRemoveButtonSupplierProps<T = any> {
     containerNode?: (
@@ -46,7 +45,7 @@ export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-
 
 export const multilineBoxWithRemoveButton = (
     supplier: ConfigSupplier<IMultilineBoxWithRemoveButtonSupplierProps> = {containerNode: defaultContainerNode}
-) => (Component: MultilineBoxWithRemoveButtonComponent) => {
+) => (Component: typeof MultilineBox): typeof MultilineBox => {
     const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps) => ({
         removeBox: (id: string) => dispatch(removeValueStringList(ownProps.id, id)),
     });
@@ -104,9 +103,7 @@ export const multilineBoxWithRemoveButton = (
                     renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) =>
                         this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)
                     }
-                >
-                    {this.props.children}
-                </Component>
+                />
             );
         }
     }
