@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import {DATES_SEPARATOR, DateUtils} from '../../utils/DateUtils';
-import {ICalendarSelectionRule} from '../calendar/Calendar';
 import {DatePicker, IDatePickerProps} from './DatePicker';
 import {DatePickerDateRange} from './DatePickerConstants';
 
@@ -13,23 +12,49 @@ export interface IRangeLimit {
     message?: string;
 }
 
-export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSelection> {
+export interface IDatesSelectionOwnProps
+    extends Pick<
+            IDatePickerProps,
+            'selectionRules' | 'withTime' | 'hasSetToNowButton' | 'setToNowTooltip' | 'isSelecting' | 'color'
+        >,
+        React.ClassAttributes<DatesSelection> {
     id?: string;
-    withTime?: boolean;
-    hasSetToNowButton?: boolean;
     isRange?: boolean;
+    /**
+     * Whether the datepicker can be set to empty
+     *
+     * @default false
+     */
     isClearable?: boolean;
     rangeLimit?: IRangeLimit;
     minimalRangeLimit?: IRangeLimit;
-    color?: string;
     calendarId?: string;
     defaultLowerLimit?: Date;
     defaultUpperLimit?: Date;
+    /**
+     * The text displayed in the start date text input when no start date is selected
+     *
+     * @default "Select a start date"
+     */
     lowerLimitPlaceholder?: string;
+    /**
+     * The text displayed in the end date text input when no end date is selected
+     *
+     * @default "Select an end date"
+     */
     upperLimitPlaceholder?: string;
+    /**
+     * Whether the datepicker is intially empty
+     *
+     * @default false
+     */
     initiallyUnselected?: boolean;
+    /**
+     * The dates initially selected. Eventhough no dates are set here by default, the current date will be selected by default
+     *
+     * @default []
+     */
     initialDateRange?: DatePickerDateRange;
-    selectionRules?: ICalendarSelectionRule[];
 }
 
 export interface IDatesSelectionStateProps {
@@ -48,15 +73,10 @@ export interface IDatesSelectionDispatchProps {
     onBlur?: (date: Date, isUpperLimit: boolean, datePicker?: boolean) => void;
 }
 
-export interface IDatesSelectionChildrenProps {
-    setToNowTooltip?: string;
-}
-
 export interface IDatesSelectionProps
     extends IDatesSelectionOwnProps,
         IDatesSelectionStateProps,
-        IDatesSelectionDispatchProps,
-        IDatesSelectionChildrenProps {}
+        IDatesSelectionDispatchProps {}
 
 export const LOWER_LIMIT_PLACEHOLDER: string = 'Select a start date';
 export const UPPER_LIMIT_PLACEHOLDER: string = 'Select an end date';

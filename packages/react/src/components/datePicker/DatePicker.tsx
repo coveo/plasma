@@ -6,7 +6,7 @@ import {DateUtils} from '../../utils/DateUtils';
 import {DateLimits} from './DatePickerActions';
 import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
 import {IRangeLimit} from './DatesSelection';
-import {SetToNowButton} from './SetToNowButton';
+import {ISetToNowProps, SetToNowButton} from './SetToNowButton';
 import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../calendar';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
@@ -18,7 +18,12 @@ export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
     upperLimit?: boolean;
     minimalRangeLimit?: IRangeLimit;
     date?: Date;
-    setToNowTooltip?: string;
+    /**
+     * The text displayed when hovering over the set to now button
+     *
+     * @default "Set to now"
+     */
+    setToNowTooltip?: ISetToNowProps['tooltip'];
     isSelecting?: string;
     color?: string;
     selectionRules?: ICalendarSelectionRule[];

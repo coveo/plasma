@@ -1,161 +1,127 @@
 import * as React from 'react';
-import {
-    CalendarConnected,
-    ChildForm,
-    Countdown,
-    DatePickerBox,
-    DatePickerDropdownConnected,
-    DatesSelectionConnected,
-    Section,
-} from '@coveord/plasma-react';
-import * as _ from 'underscore';
 
-import {ExampleComponent} from '../../utils/ExamplesUtils';
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
-import {
-    CALENDAR_ADVANCED_SELECTION_RULES,
-    CALENDAR_SELECTION_RULES,
-    DATE_RANGE_EXAMPLE,
-    FOUR_SELECTION_BOXES,
-    SELECTION_BOXES,
-} from '../../utils/DatePickerExamplesCommon';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-export const DatePickerExamples: ExampleComponent = () => (
-    <PlasmaComponent
-        id="DatePicker"
+const code = `
+    import * as React from 'react';
+    import {
+        CalendarSelectionRuleType,
+        DATES_SEPARATOR,
+        DatePickerDropdownConnected,
+        IDatesSelectionBox,
+        ICalendarSelectionRule,
+    } from '@coveord/plasma-react';
+    import moment from 'moment';
+
+    export default () => (
+        <DatePickerDropdownConnected 
+            id="range-date-picker" 
+            datesSelectionBoxes={selectionOptions} 
+            selectionRules={rules} 
+            initiallyUnselected
+            isClearable
+            label="Select a date range"
+        />
+    );
+
+    const selectionOptions: IDatesSelectionBox[] = [
+        {
+            title: 'Select a date range',
+            quickOptions: [
+                {
+                    label: 'Last Week',
+                    value: () => moment().subtract(1, 'week').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                },
+                {
+                    label: 'Last day',
+                    value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                },
+            ],
+            isRange: true,
+            withTime: false,
+            hasSetToNowButton: true,
+        },
+    ];
+
+    const rules: ICalendarSelectionRule[] = [
+        {
+            test: (date: Date) => date <= new Date() && date >= moment().subtract(2, 'weeks').toDate(), // the date is within the last two weeks
+            isFor: CalendarSelectionRuleType.all,
+        },
+        {
+            test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') >= 0, // The end date cannot be before the start date
+            isFor: CalendarSelectionRuleType.upper,
+        },
+    ];
+`;
+
+const singleDate = `
+    import * as React from 'react';
+    import {
+        CalendarSelectionRuleType,
+        DatePickerDropdownConnected,
+        IDatesSelectionBox,
+        ICalendarSelectionRule,
+    } from '@coveord/plasma-react';
+    import moment from 'moment';
+
+    export default () => (
+        <DatePickerDropdownConnected
+            id="single-date-picker"
+            datesSelectionBoxes={selectionOptions}
+            selectionRules={rules}
+            initiallyUnselected
+            isClearable
+            label="Select a date"
+            isLinkedToDateRange={false}
+        />
+    );
+
+    const selectionOptions: IDatesSelectionBox[] = [
+        {
+            title: 'Select a date',
+            isRange: false,
+            withTime: false,
+            hasSetToNowButton: true,
+        },
+    ];
+
+    const rules: ICalendarSelectionRule[] = [
+        {
+            test: (date: Date) => moment(date).day() > 0 && moment(date).day() < 6, // the date is not a week-end day
+            isFor: CalendarSelectionRuleType.all,
+        },
+    ];
+`;
+
+const readOnly = `
+    import * as React from 'react';
+    import { DatePickerDropdownConnected } from '@coveord/plasma-react';
+
+    export default () => (
+        <DatePickerDropdownConnected
+            id="readonly-date-picker"
+            datesSelectionBoxes={[{
+                title: 'Select a date',
+                isRange: true,
+                withTime: true,
+            }]}
+            readonly
+        />
+    );
+`;
+
+export default () => (
+    <PageLayout
+        id="DatePickerDropdownConnected"
         title="Date Picker"
-        usage="A date picker is a calendar interface that allows users to select a single date or a date range."
-        withSource
-    >
-        <Section>
-            <CalendarComponent />
-            <CountdownComponent />
-            <DatePickerComponents />
-            <DatesSelectionComponent />
-        </Section>
-    </PlasmaComponent>
+        section="Form"
+        description="A date picker is a calendar interface that allows users to select a single date or a date range."
+        componentSourcePath="/datePicker/DatePickerDropdown.tsx"
+        code={code}
+        examples={{
+            singleDate: {code: singleDate, title: 'Single Date'},
+            readOnly: {code: readOnly, title: 'Disabled'},
+        }}
+    />
 );
-DatePickerExamples.title = 'DatePicker';
-
-// start-print
-
-const CalendarComponent: React.FunctionComponent = () => (
-    <Section level={1} title="Calendar component">
-        <CalendarConnected id="calendar" />
-    </Section>
-);
-
-const CountdownComponent: React.FunctionComponent = () => (
-    <Section level={1} title="Countdown component" mods={['mod-form-top-bottom-padding']}>
-        <Countdown />
-    </Section>
-);
-
-const DatePickerComponents: React.FunctionComponent = () => (
-    <Section level={1} title="Date pickers">
-        <Section level={2} title="DatePickerBox">
-            <DatePickerBox id="date-picker-box" withReduxState datesSelectionBoxes={SELECTION_BOXES} />
-        </Section>
-        <Section level={2} title="DatePicker dropdowns">
-            <Section level={3} title="simple date picker dropdown">
-                <DatePickerDropdownConnected
-                    id="date-picker-dropdown"
-                    datesSelectionBoxes={SELECTION_BOXES}
-                    selectionRules={CALENDAR_SELECTION_RULES}
-                    initialDateRange={DATE_RANGE_EXAMPLE} // optional
-                />
-            </Section>
-            <Section level={3} title="DatePicker dropdown with a range limit of 3 days">
-                <DatePickerDropdownConnected
-                    id="date-picker-dropdown-1"
-                    datesSelectionBoxes={[
-                        _.extend({}, SELECTION_BOXES[0], {rangeLimit: {days: 3, message: 'Date limit exceeded'}}),
-                    ]}
-                    selectionRules={CALENDAR_SELECTION_RULES}
-                />
-            </Section>
-            <Section
-                level={3}
-                title="DatePicker dropdown that allows a start date within the last two weeks for a maximum range of 7 days"
-            >
-                <DatePickerDropdownConnected
-                    id="date-picker-dropdown-log-browser"
-                    datesSelectionBoxes={[
-                        _.extend({}, SELECTION_BOXES[0], {rangeLimit: {days: 7, message: 'Date limit exceeded'}}),
-                    ]}
-                    selectionRules={CALENDAR_ADVANCED_SELECTION_RULES}
-                />
-            </Section>
-            <Section level={3} title="DatePicker dropdown with a minimal range limit of 5 minutes">
-                <DatePickerDropdownConnected
-                    id="date-picker-dropdown-2"
-                    datesSelectionBoxes={[
-                        {
-                            ...FOUR_SELECTION_BOXES[0],
-                            minimalRangeLimit: {
-                                minutes: 5,
-                                message: 'You need a range of at least 5 minutes from the start to the end',
-                            },
-                        },
-                    ]}
-                />
-            </Section>
-            <Section level={3} title="Date picker dropdown disabled">
-                <DatePickerDropdownConnected
-                    id="date-picker-dropdown-disabled"
-                    datesSelectionBoxes={SELECTION_BOXES}
-                    selectionRules={CALENDAR_SELECTION_RULES}
-                    readonly
-                />
-            </Section>
-            <Section
-                level={3}
-                title="Clearable date picker dropdown initially unselected with Redux state and disable option"
-            >
-                <DatePickerDropdownConnected
-                    id="date-picker-dropdown-3"
-                    datesSelectionBoxes={FOUR_SELECTION_BOXES}
-                    selectionRules={[]}
-                    isClearable
-                    initiallyUnselected
-                />
-            </Section>
-            <Section level={3} title="Date picker dropdown with drop">
-                <DatePickerDropdownConnected
-                    id="date-picker-dropdown-4"
-                    datesSelectionBoxes={FOUR_SELECTION_BOXES}
-                    selectionRules={[]}
-                    isClearable
-                    initiallyUnselected
-                    withDrop
-                />
-            </Section>
-            <Section level={3} title="Date picker dropdown with drop and a child form">
-                <ChildForm>
-                    <Section level={2} title="My date picker label">
-                        <DatePickerDropdownConnected
-                            id="date-picker-dropdown-5"
-                            datesSelectionBoxes={[{...FOUR_SELECTION_BOXES[0], isRange: false}]}
-                            selectionRules={[]}
-                            isClearable
-                            initiallyUnselected
-                            withDrop
-                            dropOptions={{
-                                parentSelector: 'body',
-                            }}
-                        />
-                    </Section>
-                </ChildForm>
-            </Section>
-        </Section>
-    </Section>
-);
-
-const DatesSelectionComponent: React.FunctionComponent = () => (
-    <Section level={2} title="Dates selection component">
-        <Section level={3} title="Dates selection with hours">
-            <DatesSelectionConnected hasSetToNowButton withTime isRange id="dates-selection" />
-        </Section>
-    </Section>
-);
-export default DatePickerExamples;

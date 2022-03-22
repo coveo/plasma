@@ -111,6 +111,7 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink href="/form/Checkbox" label="Checkbox" />
                 <NavLink href="/form/CodeEditor" label="Code editor" />
                 <NavLink href="/form/ColorPicker" label="Color picker" />
+                <NavLink href="/form/Countdown" label="Countdown" />
                 <NavLink href="/form/DatePicker" label="Date picker" />
                 <NavLink href="/form/DiffViewer" label="Diff viewer" />
                 <NavLink href="/form/Facet" label="Facet" />
