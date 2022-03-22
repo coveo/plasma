@@ -23,7 +23,7 @@ export interface IMultilineSingleBoxProps<T = any> {
      */
     id: string;
     /**
-     * Wheter this box is the last one
+     * Whether this box is the last one
      */
     isLast: boolean;
     /**
@@ -55,7 +55,8 @@ export interface IMultilineBoxOwnProps<T = any> {
      */
     id: string;
     /**
-     * the array of data to render
+     * The array of data to render
+
      */
     data: T[];
     /**
@@ -86,7 +87,8 @@ export interface IMultilineBoxOwnProps<T = any> {
         parentProps: IMultilineParentProps
     ) => React.ReactNode;
     /**
-     * Wheter this component is disabled
+     * Whether this component is disabled
+
      */
     disabled?: boolean;
 }
