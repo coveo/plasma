@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-    Badge,
     IActionOptions,
     TableHeaderWithSort,
     TableHOC,
@@ -15,13 +14,14 @@ import {
 } from '@coveord/plasma-react';
 import {compose} from 'redux';
 import moment from 'moment';
+import {loremIpsum} from 'lorem-ipsum';
 
 export default () => (
     <TableComposed
         id={'tableId'}
         className="table"
-        data={data}
-        renderBody={() => renderRows}
+        data={dataForRows}
+        renderBody={(data: any) => generateRows(data, 'tableId')}
         tableHeader={renderHeader('tableId')}
         showBorderTop
         showBorderBottom
@@ -69,8 +69,7 @@ const tableDatePickerConfig: any = () => ({
 
 const matchPredicate = (predicate: string, rowData: IExampleRowData) => {
     const matchCity = predicate === rowData.city;
-    const matchEmail = predicate === rowData.email;
-    return !predicate || matchCity || matchEmail;
+    return !predicate || matchCity;
 };
 
 const sort = (key: keyof IExampleRowData, isAsc: boolean, a: IExampleRowData, b: IExampleRowData) => {
@@ -82,36 +81,27 @@ const sort = (key: keyof IExampleRowData, isAsc: boolean, a: IExampleRowData, b:
     return 0;
 };
 
-const data = [
-    {
-        city: 'Québec',
-        username: 'germinator',
-        id: 'id-1',
-    },
-    {
-        city: 'Ottawa',
-        username: 'canitalktoyouaboutvisualtesting',
-        id: 'id-2',
-    },
-    {
-        city: 'Toronto',
-        username: 'kienposter',
-        id: 'id-3',
-    },
-    {
-        city: 'Montréal',
-        username: 'notfound',
-        id: 'id-3',
-    },
-];
+const generateData = (length: number) => {
+    const data: any = [];
+    Array.from(Array(length)).map(() => {
+        data.push({
+            city: loremIpsum({count: 1, units: 'word'}),
+            username: loremIpsum({count: 2, units: 'word'}),
+            id: loremIpsum({count: 1, units: 'word'}),
+        });
+    });
+    return data;
+};
+
+const dataForRows = generateData(15);
 
 const predicateSetup = {
     id: 'firstPredicate',
     prepend: <span className="dropdown-prepend">prepend:</span>,
     values: [
         {displayValue: 'All', value: '', selected: true},
-        {displayValue: data[2].city, value: data[2].city},
-        {displayValue: data[1].username, value: data[1].username},
+        {displayValue: dataForRows[2].city, value: dataForRows[2].city},
+        {displayValue: dataForRows[1].username, value: dataForRows[1].username},
     ],
 };
 
@@ -133,19 +123,16 @@ const TableComposed = compose(
     tableWithActions()
 )(TableHOC);
 
-const renderRows = data?.map((item) => (
-    <TableRowConnected id={item.id} tableId={'tableId'} key={item.id} actions={rowActions}>
-        <td key="city">{item.city}</td>
-        <td key="username">{item.username.toLowerCase()}</td>
-        <td>
-            <Badge label={'🥔 King'} extraClasses={['mod-small mod-success']} />
-        </td>
-    </TableRowConnected>
-));
+const generateRows = (allData: IExampleRowData[], tableId: string) =>
+    allData?.map((data: IExampleRowData) => (
+        <TableRowConnected id={data.id} tableId={tableId} key={data.id} actions={rowActions}>
+            <td key="city">{data.city}</td>
+            <td key="username">{data.username.toLowerCase()}</td>
+        </TableRowConnected>
+    ));
 
 interface IExampleRowData {
     city: string;
-    email: string;
     username: string;
     id: string;
 }
