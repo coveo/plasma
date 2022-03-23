@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import {Moment} from 'moment';
 import * as React from 'react';
-
 export interface IDay {
     // eslint-disable-next-line id-blacklist
     number: number;
@@ -11,7 +10,6 @@ export interface IDay {
     isSelected?: boolean;
     isLowerLimit?: boolean;
     isUpperLimit?: boolean;
-    color?: string;
     isSelectable?: boolean;
     isCountdown?: boolean;
 }

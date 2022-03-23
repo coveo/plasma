@@ -29,7 +29,6 @@ describe('Date picker', () => {
     const BASE_DATE_PICKER_STATE: IDatePickerState = {
         id: 'some-date-picker',
         calendarId: 'some-calendar',
-        color: 'teal',
         isRange: false,
         lowerLimit: new Date(new Date().setHours(2, 1, 2, 1)),
         upperLimit: new Date(new Date().setHours(3, 2, 1, 2)),
@@ -64,7 +63,6 @@ describe('Date picker', () => {
                     id: 'some-date-picker',
                     isRange: true,
                     calendarId: 'calendar-321',
-                    color: 'magenta',
                 },
             };
 
@@ -341,7 +339,6 @@ describe('Date picker', () => {
                 payload: {
                     id: 'some-date-picker',
                     isRange: true,
-                    color: 'rainbow',
                     calendarId: 'radnelac',
                 },
             };
@@ -349,7 +346,6 @@ describe('Date picker', () => {
 
             expect(newDatePicker.id).toBe(action.payload.id);
             expect(newDatePicker.isRange).toBe(action.payload.isRange);
-            expect(newDatePicker.color).toBe(action.payload.color);
             expect(newDatePicker.calendarId).toBe(action.payload.calendarId);
         });
 
@@ -364,7 +360,6 @@ describe('Date picker', () => {
                         id: 'some-date-picker',
                         isRange: true,
                         calendarId: 'calendar-321',
-                        color: 'green',
                         initiallyUnselected: true,
                     },
                 };
@@ -393,7 +388,6 @@ describe('Date picker', () => {
                     id: 'some-date-picker',
                     isRange: true,
                     rangeLimit,
-                    color: 'rainbow',
                     calendarId: 'radnelac',
                 },
             };

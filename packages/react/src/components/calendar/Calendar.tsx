@@ -225,7 +225,6 @@ export class Calendar extends React.Component<ICalendarProps, any> {
             day.isLowerLimit =
                 (calendarSelection.isRange && day.date.isSame(selectionStart, 'day')) || day.isLowerLimit;
             day.isUpperLimit = (calendarSelection.isRange && day.date.isSame(selectionEnd, 'day')) || day.isUpperLimit;
-            day.color = isSelected ? calendarSelection.color : day.color;
             day.isCountdown = !!this.props.countdown;
 
             _.each(this.props.selectionRules, (rule: ICalendarSelectionRule) => {

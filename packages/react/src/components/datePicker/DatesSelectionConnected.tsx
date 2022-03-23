@@ -44,7 +44,6 @@ const mapDispatchToProps = (
                 ownProps.id,
                 ownProps.isRange,
                 ownProps.rangeLimit,
-                ownProps.color,
                 ownProps.calendarId,
                 ownProps.initiallyUnselected,
                 ownProps.isClearable,
