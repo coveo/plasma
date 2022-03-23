@@ -22,18 +22,57 @@ export enum AppendedValueSide {
 }
 
 export interface SliderOwnProps extends SliderProps {
+    /**
+     * The unique identifier of the Slider
+     */
     id: string;
+    /**
+     * The initial value
+     */
     initialValue?: number;
+    /**
+     * Crossing point, if the value is lower than that the filling will be on the right and if it's higher, it will be on the left
+     */
     crossingPoint?: number;
+    /**
+     * @deprecated do not use
+     */
     tabIndex?: number;
+    /**
+     * A callback function executed when the slider moves
+     *
+     * @param rangeOutputValue the current value
+     */
     onChange?: (rangeOutputValue: number) => any;
+    /**
+     * A callback function that is used to display information when the user is changing the value
+     *
+     * @param value the current value
+     */
     customTooltip?: (value: any) => JSX.Element;
+    /**
+     * Whether to display a value around the slider (true or AppendedValueSide.both) or only on one side (AppendedValueSide.left, AppendedValueSide.right)
+     *
+     * @default false
+     */
     appendValue?: boolean | AppendedValueSide;
+    /**
+     * Function that receives the current value and a side and renders a component the specified side of the slider
+     *
+     * @param value the current value of the slider
+     * @param side a value of AppendedValueSide
+     */
     appendValueFormatter?: (
         value: number,
         side?: Exclude<AppendedValueSide, AppendedValueSide.both>
     ) => React.ReactNode;
+    /**
+     * Overrides for the style of the tooltip
+     */
     tooltipStyle?: Partial<React.ComponentProps<typeof SliderTooltip>>;
+    /**
+     * Whether to display a tooltip
+     */
     hasTooltip?: boolean;
 }
 
