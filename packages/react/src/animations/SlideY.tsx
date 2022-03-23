@@ -19,7 +19,7 @@ export interface SlideYProps {
      */
     in?: boolean;
     /**
-     * Delay before the animation starts when the "in" prop value changes in milliseconds
+     * Delay  in milliseconds before the animation starts when the "in" prop value changes
      *
      * @default 200
      */
