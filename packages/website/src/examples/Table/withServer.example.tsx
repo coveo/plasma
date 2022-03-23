@@ -1,132 +1,177 @@
-import * as React from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
 import {
-    Badge,
-    ITableHOCProps,
+    IDispatch,
+    PlasmaState,
+    ITableHOCCompositeState,
+    IThunkAction,
     TableHeaderWithSort,
     TableHOC,
-    TableRowConnected,
+    TableHOCUtils,
     TableRowHeader,
     TableRowNumberHeader,
-    tableWithSort,
+    TableWithPaginationActions,
     tableWithUrlState,
-    TableWithUrlStateProps,
+    UrlUtils,
     withServerSideProcessing,
+    TableRowConnected,
+    TableRowNumberColumn,
 } from '@coveord/plasma-react';
+
 import {compose} from 'redux';
 
-const ServerSideTable: React.ComponentType<any> = compose<any>(
-    withServerSideProcessing,
-    tableWithUrlState,
-    tableWithSort()
-)(TableHOC);
+export default () => <TableHOCServer />;
 
-export default () => {
-    const [isLoading, setIsLoading] = React.useState(false);
-    const [users, totalEntries, fetchUsers] = useFetchAPIMock();
+const mapDispatchToProps = (dispatch: IDispatch) => ({
+    fetch: () => dispatch(TableHOCServerActions.fetchData()),
+});
 
-    React.useEffect(() => {
+const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = (props) => {
+    const [data, setData] = React.useState<{users: [any]; count: number}>(null);
+    const [isLoading, setIsLoading] = React.useState(true);
+
+    const ServerTableComposed = compose<any>(withServerSideProcessing, tableWithUrlState)(TableHOC);
+
+    const fetch = async () => {
         setIsLoading(true);
-        fetchUsers({_page: 1, _limit: 4});
-        setIsLoading(false);
-    }, []);
-
-    const onUpdate = () => {
-        fetchUsers({_page: 1, _limit: 4});
+        if (typeof window !== 'undefined') {
+            window.setTimeout(
+                () =>
+                    props
+                        .fetch()
+                        .then((res: any) => {
+                            setData(res);
+                        })
+                        .finally(() => setIsLoading(false)),
+                500
+            );
+        }
     };
 
+    const onUpdate = () => {
+        fetch();
+    };
+
+    const updateUrl = (query: string) => {
+        window.location.href = `${window.location.pathname}?search=${query}`;
+    };
+
+    React.useEffect(() => {
+        fetch();
+    }, []);
+
     return (
-        <ServerSideTable
-            id={'tableId'}
-            className="table"
-            data={users}
-            renderBody={() => renderRows}
-            tableHeader={renderHeader()}
-            onUpdate={() => onUpdate()}
-            totalEntries={totalEntries}
-            // onUpdateUrl={updateUrl}
-            isLoading={isLoading}
-            loading={{numberOfColumns: 2}}
-        />
+        <TableContext.Provider value={{isLoading, id: TableHOCServerExampleId}}>
+            <ServerTableComposed
+                id={TableHOCServerExampleId}
+                className="table table-numbered mod-collapsible-rows"
+                data={data?.users ?? []}
+                renderBody={(allData: any) => generateRows(allData)}
+                tableHeader={renderHeader()}
+                onUpdate={() => onUpdate()}
+                onUpdateUrl={updateUrl}
+                isLoading={isLoading}
+                loading={{numberOfColumns: 3}}
+            ></ServerTableComposed>
+        </TableContext.Provider>
     );
 };
 
-const renderHeader = () => (isLoading: boolean) => (
-    <thead>
-        <tr>
-            <TableHeaderWithSort id="address.city" tableId={TableId} isLoading={false}>
-                City
-            </TableHeaderWithSort>
-            <TableHeaderWithSort id="username" tableId={TableId} isLoading={false} isDefault>
-                Username
-            </TableHeaderWithSort>
-            <th>Badge</th>
-        </tr>
-    </thead>
+const generateRows = (allData: IExampleRowData[]) =>
+    allData.map(({username, city, password}: IExampleRowData, i: number) => (
+        <TableRowConnected
+            id={username}
+            tableId={TableHOCServerExampleId}
+            key={username}
+            isMultiselect
+            disabled={i % 3 === 0}
+            collapsible={{content: i % 2 ? <div className="py2">👋</div> : null}}
+        >
+            <TableRowNumberColumn number={i + 1} />
+            <td key="city">{city}</td>
+            <td key="username">{username.toLowerCase()}</td>
+            <td key="password">{password.toLowerCase()}</td>
+        </TableRowConnected>
+    ));
+
+const TableHOCServer = connect(undefined, mapDispatchToProps)(TableExampleDisconnected);
+
+const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () => PlasmaState) => {
+    const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(
+        TableHOCServerExampleId,
+        getState()
+    );
+    const params: any = {
+        _page: compositeState.pageNb + 1,
+        _limit: compositeState.perPage,
+        _sort: compositeState.sortKey,
+        _order: compositeState.sortAscending ? 'asc' : 'desc',
+        q: compositeState.filter || undefined,
+    };
+
+    const query = UrlUtils.toQueryString(params);
+
+    try {
+        const res = await fetch(`https://jsonplaceholder.typicode.com/users?${query}`);
+        const count = (res.headers.has('x-total-count') && res.headers.get('x-total-count')) || null;
+        const data = await res.json();
+
+        const users = data.map((user: any) => ({
+            city: user.address.city,
+            username: user.username,
+        }));
+
+        dispatch(TableWithPaginationActions.setCount(TableHOCServerExampleId, count as any));
+
+        return {users, count};
+    } catch (error) {
+        throw error;
+    }
+};
+
+const TableHOCServerActions = {
+    fetchData,
+};
+
+const TableHOCServerExampleId = 'complex-example';
+
+interface TableContextProps {
+    isLoading: boolean;
+    id: string;
+}
+
+const TableContext = React.createContext<TableContextProps>({
+    isLoading: true,
+    id: undefined,
+});
+
+const renderHeader = () => (
+    <TableContext.Consumer>
+        {({isLoading}) => (
+            <thead>
+                <tr>
+                    <TableRowNumberHeader isLoading={isLoading} />
+                    <TableHeaderWithSort id="address.city" tableId={TableHOCServerExampleId} isLoading={isLoading}>
+                        City
+                    </TableHeaderWithSort>
+                    <TableHeaderWithSort
+                        id="username"
+                        tableId={TableHOCServerExampleId}
+                        isLoading={isLoading}
+                        isDefault
+                    >
+                        Username
+                    </TableHeaderWithSort>
+                    <TableRowHeader isLoading={isLoading} />
+                </tr>
+            </thead>
+        )}
+    </TableContext.Consumer>
 );
 
-const clean = <T extends Record<string, unknown>>(object: T) => {
-    Object.keys(object).forEach((key) => (object[key] === undefined ? delete object[key] : {}));
-    return object;
-};
-
-const useFetchAPIMock = (): [any[], number, (params?: any, overwrite?: boolean) => void] => {
-    const [users, setUsers] = React.useState([]);
-    const [totalEntries, setTotalEntries] = React.useState(0);
-
-    const fetchUsers = (params?: any, overwrite = true) => {
-        const cleanParams = clean(params);
-        const query =
-            cleanParams && Object.keys(cleanParams).length > 0
-                ? `?${new URLSearchParams(Object.entries(cleanParams)).toString()}`
-                : '';
-
-        return fetch(`https://jsonplaceholder.typicode.com/users${query}`)
-            .then((response) => {
-                setTotalEntries(parseInt(response.headers.get('x-total-count'), 10));
-                return response.json();
-            })
-            .then((newUsers) => {
-                if (overwrite) {
-                    setUsers(newUsers);
-                } else {
-                    setUsers([...users, ...newUsers]);
-                }
-            });
-    };
-    return [data, totalEntries, fetchUsers];
-};
-
-const data = [
-    {
-        city: 'Québec',
-        username: 'germinator',
-        id: 'id-1',
-    },
-    {
-        city: 'Ottawa',
-        username: 'canitalktoyouaboutvisualtesting',
-        id: 'id-2',
-    },
-    {
-        city: 'Toronto',
-        username: 'kienposter',
-        id: 'id-3',
-    },
-    {
-        city: 'Montréal',
-        username: 'notfound',
-        id: 'id-3',
-    },
-];
-
-const renderRows = data?.map((item) => (
-    <TableRowConnected id={item.id} tableId={'tableId'} key={item.id}>
-        <td key="city">{item.city}</td>
-        <td key="username">{item.username.toLowerCase()}</td>
-        <td>
-            <Badge label={'🥔 King'} extraClasses={['mod-small mod-success']} />
-        </td>
-    </TableRowConnected>
-));
-
-const TableId = 'tableId';
+interface IExampleRowData {
+    city: string;
+    username: string;
+    password: string;
+    id: string;
+}

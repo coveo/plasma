@@ -7,6 +7,7 @@ import withAction from '@examples/Table/withAction.example.tsx';
 import withSort from '@examples/Table/withSort.example.tsx';
 import withFilter from '@examples/Table/withFilter.example.tsx';
 import withDatePicker from '@examples/Table/withDatePicker.example.tsx';
+import withServer from '@examples/Table/withServer.example.tsx';
 
 import * as React from 'react';
 
@@ -29,6 +30,7 @@ const TableExamples = () => (
             withSort: {code: withSort, title: 'With colum sort'},
             withFilter: {code: withFilter, title: 'With filter box'},
             withDatePicker: {code: withDatePicker, title: 'With date picker'},
+            withServer: {code: withServer, title: 'With server side rendering'},
         }}
     />
 );
