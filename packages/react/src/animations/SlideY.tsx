@@ -6,8 +6,23 @@ import Transition from 'react-transition-group/Transition';
 
 export interface SlideYProps {
     id?: string;
+    /**
+     * Duration of the animation in milliseconds
+     *
+     * @default 200
+     */
     duration?: number;
+    /**
+     * Whether the slider should be expanded
+     *
+     * @default false
+     */
     in?: boolean;
+    /**
+     * Delay before the animation starts when the "in" prop value changes in milliseconds
+     *
+     * @default 200
+     */
     timeout?: number | {enter?: number; exit?: number};
 }
 
