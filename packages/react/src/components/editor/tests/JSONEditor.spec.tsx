@@ -48,9 +48,12 @@ describe('<JSONEditor />', () => {
         const validateSpy = jest.spyOn(JSONEditorUtils, 'validateValue');
 
         shallowComponent();
+
+        validateSpy.mockReset();
         component.find(CodeEditor).prop('onChange')(expectedValue);
 
-        expect(validateSpy).toHaveBeenCalledTimes(1);
+        // once for the render, once for the onChange
+        expect(validateSpy).toHaveBeenCalledTimes(2);
     });
 
     it('should call the onChange prop if set when editing json', () => {
