@@ -1,0 +1,12 @@
+import {ColorBar} from '@coveord/plasma-react';
+import * as React from 'react';
+
+export default () => (
+    <ColorBar
+        widthPerColor={{'#1372ec': 30, '#ffe300': 15, '#f05245': 10, '#1cebcf': 25, '#7d458f': 20}}
+        tooltipPerColor={{
+            '#1372ec': {title: 'blue', placement: 'top'},
+            '#ffe300': {title: 'yellow', placement: 'top'},
+        }}
+    />
+);
