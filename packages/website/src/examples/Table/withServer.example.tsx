@@ -1,177 +1,155 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import * as React from 'react';
 import {
-    IDispatch,
-    PlasmaState,
-    ITableHOCCompositeState,
-    IThunkAction,
-    TableHeaderWithSort,
     TableHOC,
-    TableHOCUtils,
-    TableRowHeader,
-    TableRowNumberHeader,
-    TableWithPaginationActions,
     tableWithUrlState,
-    UrlUtils,
     withServerSideProcessing,
     TableRowConnected,
     TableRowNumberColumn,
+    tableWithNewPagination,
 } from '@coveord/plasma-react';
 
 import {compose} from 'redux';
+import {loremIpsum} from 'lorem-ipsum';
 
-export default () => <TableHOCServer />;
+const ServerTableComposed = compose<any>(
+    withServerSideProcessing,
+    tableWithUrlState,
+    tableWithNewPagination({perPageNumbers: [3, 5, 10]})
+)(TableHOC);
 
-const mapDispatchToProps = (dispatch: IDispatch) => ({
-    fetch: () => dispatch(TableHOCServerActions.fetchData()),
-});
-
-const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = (props) => {
-    const [data, setData] = React.useState<{users: [any]; count: number}>(null);
-    const [isLoading, setIsLoading] = React.useState(true);
-
-    const ServerTableComposed = compose<any>(withServerSideProcessing, tableWithUrlState)(TableHOC);
-
-    const fetch = async () => {
-        setIsLoading(true);
-        if (typeof window !== 'undefined') {
-            window.setTimeout(
-                () =>
-                    props
-                        .fetch()
-                        .then((res: any) => {
-                            setData(res);
-                        })
-                        .finally(() => setIsLoading(false)),
-                500
-            );
-        }
-    };
-
-    const onUpdate = () => {
-        fetch();
-    };
+export default () => {
+    const [users, totalEntries, fetchUsers] = useAPIMock();
 
     const updateUrl = (query: string) => {
         window.location.href = `${window.location.pathname}?search=${query}`;
     };
 
     React.useEffect(() => {
-        fetch();
+        fetchUsers({_page: 1, _limit: 5});
     }, []);
 
     return (
-        <TableContext.Provider value={{isLoading, id: TableHOCServerExampleId}}>
-            <ServerTableComposed
-                id={TableHOCServerExampleId}
-                className="table table-numbered mod-collapsible-rows"
-                data={data?.users ?? []}
-                renderBody={(allData: any) => generateRows(allData)}
-                tableHeader={renderHeader()}
-                onUpdate={() => onUpdate()}
-                onUpdateUrl={updateUrl}
-                isLoading={isLoading}
-                loading={{numberOfColumns: 3}}
-            ></ServerTableComposed>
-        </TableContext.Provider>
+        <ServerTableComposed
+            id={'tableId'}
+            className="table table-numbered mod-collapsible-rows"
+            data={dataForRows}
+            renderBody={(allData: any) => generateRows(allData)}
+            tableHeader={renderHeader()}
+            onUpdate={() => fetchUsers()}
+            onUpdateUrl={updateUrl}
+            showBorderTop
+            showBorderBottom
+        />
     );
 };
 
+const clean = <T extends Record<string, unknown>>(object: T) => {
+    Object.keys(object).forEach((key) => (object[key] === undefined ? delete object[key] : {}));
+    return object;
+};
+
+const useAPIMock = (): [any[], number, (params?: any, overwrite?: boolean) => void] => {
+    const [users, setUsers] = React.useState([]);
+    const [totalEntries, setTotalEntries] = React.useState(0);
+
+    const fetchUsers = (params?: any, overwrite = true) => {
+        const cleanParams = clean(params);
+        const queryString =
+            cleanParams && Object.keys(cleanParams).length > 0
+                ? `?${new URLSearchParams(Object.entries(cleanParams)).toString()}`
+                : '';
+
+        return fetch(`https://jsonplaceholder.typicode.com/users${queryString}`)
+            .then((response) => {
+                setTotalEntries(parseInt(response.headers.get('x-total-count'), 10));
+                return response.json();
+                // voir ici pour refaire le model https://jsonplaceholder.typicode.com/users
+            })
+            .then((newUsers) => {
+                if (overwrite) {
+                    setUsers(newUsers);
+                } else {
+                    setUsers([...users, ...newUsers]);
+                }
+            });
+    };
+
+    return [users, totalEntries, fetchUsers];
+};
+
+// const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () => PlasmaState) => {
+//     const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState('tableId', getState());
+//     const params: any = {
+//         _page: compositeState.pageNb + 1,
+//         _limit: compositeState.perPage,
+//         _sort: compositeState.sortKey,
+//         _order: compositeState.sortAscending ? 'asc' : 'desc',
+//         q: compositeState.filter || undefined,
+//     };
+
+//     const query = UrlUtils.toQueryString(params);
+
+//     const res = await fetch(`https://jsonplaceholder.typicode.com/users?${query}`);
+//     const count = (res.headers.has('x-total-count') && res.headers.get('x-total-count')) || null;
+//     const data = await res.json();
+
+//     const users = data.map((user: any) => ({
+//         city: user.address.city,
+//         username: user.username,
+//         password: user.password,
+//     }));
+
+//     return {users, count};
+// };
+
+// const TableServerActions = {
+//     fetchData,
+// };
+
+const renderHeader = () => (
+    <thead>
+        <tr>
+            <th></th>
+            <th>City</th>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+);
+
 const generateRows = (allData: IExampleRowData[]) =>
-    allData.map(({username, city, password}: IExampleRowData, i: number) => (
+    allData.map((data: IExampleRowData, i: number) => (
         <TableRowConnected
-            id={username}
-            tableId={TableHOCServerExampleId}
-            key={username}
+            id={data.username}
+            tableId={'tableId'}
+            key={data.username}
             isMultiselect
             disabled={i % 3 === 0}
             collapsible={{content: i % 2 ? <div className="py2">👋</div> : null}}
         >
             <TableRowNumberColumn number={i + 1} />
-            <td key="city">{city}</td>
-            <td key="username">{username.toLowerCase()}</td>
-            <td key="password">{password.toLowerCase()}</td>
+            <td key="city">{data.city}</td>
+            <td key="username">{data.username.toLowerCase()}</td>
+            <td key="password">{data.password.toLowerCase()}</td>
         </TableRowConnected>
     ));
-
-const TableHOCServer = connect(undefined, mapDispatchToProps)(TableExampleDisconnected);
-
-const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () => PlasmaState) => {
-    const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(
-        TableHOCServerExampleId,
-        getState()
-    );
-    const params: any = {
-        _page: compositeState.pageNb + 1,
-        _limit: compositeState.perPage,
-        _sort: compositeState.sortKey,
-        _order: compositeState.sortAscending ? 'asc' : 'desc',
-        q: compositeState.filter || undefined,
-    };
-
-    const query = UrlUtils.toQueryString(params);
-
-    try {
-        const res = await fetch(`https://jsonplaceholder.typicode.com/users?${query}`);
-        const count = (res.headers.has('x-total-count') && res.headers.get('x-total-count')) || null;
-        const data = await res.json();
-
-        const users = data.map((user: any) => ({
-            city: user.address.city,
-            username: user.username,
-        }));
-
-        dispatch(TableWithPaginationActions.setCount(TableHOCServerExampleId, count as any));
-
-        return {users, count};
-    } catch (error) {
-        throw error;
-    }
-};
-
-const TableHOCServerActions = {
-    fetchData,
-};
-
-const TableHOCServerExampleId = 'complex-example';
-
-interface TableContextProps {
-    isLoading: boolean;
-    id: string;
-}
-
-const TableContext = React.createContext<TableContextProps>({
-    isLoading: true,
-    id: undefined,
-});
-
-const renderHeader = () => (
-    <TableContext.Consumer>
-        {({isLoading}) => (
-            <thead>
-                <tr>
-                    <TableRowNumberHeader isLoading={isLoading} />
-                    <TableHeaderWithSort id="address.city" tableId={TableHOCServerExampleId} isLoading={isLoading}>
-                        City
-                    </TableHeaderWithSort>
-                    <TableHeaderWithSort
-                        id="username"
-                        tableId={TableHOCServerExampleId}
-                        isLoading={isLoading}
-                        isDefault
-                    >
-                        Username
-                    </TableHeaderWithSort>
-                    <TableRowHeader isLoading={isLoading} />
-                </tr>
-            </thead>
-        )}
-    </TableContext.Consumer>
-);
-
 interface IExampleRowData {
     city: string;
     username: string;
     password: string;
     id: string;
 }
+
+const generateData = (length: number) => {
+    const data: any = [];
+    Array.from(Array(length)).map(() => {
+        data.push({
+            city: loremIpsum({count: 1, units: 'word'}),
+            username: loremIpsum({count: 2, units: 'word'}),
+            password: loremIpsum({count: 1, units: 'word'}),
+            id: loremIpsum({count: 1, units: 'word'}),
+        });
+    });
+    return data;
+};
+const dataForRows = generateData(15);
