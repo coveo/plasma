@@ -19,5 +19,5 @@ The result of the operation triggering the toast determines the type of toast to
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
 -   [Prompt modal](https://plasma.coveo.com/layout/ModalWindow) - When users shouldn't be able to interact with the page content while the message is displayed.
--   [Info box](https://plasma.coveo.com/layout/InfoBox) When the message isn't related to an action the user has performed.
--   [Tooltip](https://plasma.coveo.com/feedback/Tooltip) When you want to provide additional information about an element on screen.
+-   [Info box](https://plasma.coveo.com/layout/InfoBox) - When the message isn't related to an action the user has performed.
+-   [Tooltip](https://plasma.coveo.com/feedback/Tooltip) - When you want to provide additional information about an element on screen.
