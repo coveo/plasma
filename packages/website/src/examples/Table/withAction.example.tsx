@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Badge, TableHOC, TableRowConnected} from '@coveord/plasma-react';
+import {IActionOptions, TableHOC, TableRowConnected, tableWithActions} from '@coveord/plasma-react';
+import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 
 export default () => (
-    <TableHOC
+    <TableComposed
         id={'tableId'}
         className="table"
         data={dataForRows}
@@ -14,26 +15,35 @@ export default () => (
     />
 );
 
+const TableComposed = compose<any>(tableWithActions())(TableHOC);
+
+const rowActions: IActionOptions[] = [
+    {
+        primary: true,
+        icon: 'edit',
+        name: 'Edit',
+        enabled: true,
+        trigger: () => alert('trigger on action'),
+        callOnDoubleClick: true,
+    },
+];
+
 const renderHeader = () => (
     <thead>
         <tr>
             <th>City</th>
             <th>Username</th>
             <th>Password</th>
-            <th>Badge</th>
         </tr>
     </thead>
 );
 
 const generateRows = (allData: IExampleRowData[], tableId: string) =>
     allData?.map((data: IExampleRowData) => (
-        <TableRowConnected id={data.id} tableId={tableId} key={data.id}>
+        <TableRowConnected id={data.id} tableId={tableId} key={data.id} actions={rowActions}>
             <td key="city">{data.city}</td>
             <td key="username">{data.username.toLowerCase()}</td>
             <td key="password">{data.password.toLowerCase()}</td>
-            <td>
-                <Badge label={'🥔 King'} extraClasses={['mod-small mod-success']} />
-            </td>
         </TableRowConnected>
     ));
 

@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Badge, TableHOC, TableRowConnected} from '@coveord/plasma-react';
+import {TableHOC, TableRowConnected, tableWithNewPagination} from '@coveord/plasma-react';
+import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 
 export default () => (
-    <TableHOC
+    <TableComposed
         id={'tableId'}
         className="table"
         data={dataForRows}
@@ -14,13 +15,14 @@ export default () => (
     />
 );
 
+const TableComposed = compose<any>(tableWithNewPagination({perPageNumbers: [3, 5, 10]}))(TableHOC);
+
 const renderHeader = () => (
     <thead>
         <tr>
             <th>City</th>
             <th>Username</th>
             <th>Password</th>
-            <th>Badge</th>
         </tr>
     </thead>
 );
@@ -31,9 +33,6 @@ const generateRows = (allData: IExampleRowData[], tableId: string) =>
             <td key="city">{data.city}</td>
             <td key="username">{data.username.toLowerCase()}</td>
             <td key="password">{data.password.toLowerCase()}</td>
-            <td>
-                <Badge label={'🥔 King'} extraClasses={['mod-small mod-success']} />
-            </td>
         </TableRowConnected>
     ));
 
@@ -57,4 +56,4 @@ const generateData = (length: number) => {
     return data;
 };
 
-const dataForRows = generateData(5);
+const dataForRows = generateData(15);

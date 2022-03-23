@@ -1,29 +1,46 @@
 import * as React from 'react';
-import {Badge, TableHOC, TableRowConnected} from '@coveord/plasma-react';
+import {TableHeaderWithSort, TableHOC, TableRowConnected, tableWithSort} from '@coveord/plasma-react';
+import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 
 export default () => (
-    <TableHOC
+    <TableComposed
         id={'tableId'}
         className="table"
         data={dataForRows}
         renderBody={(data: any) => generateRows(data, 'tableId')}
-        tableHeader={renderHeader()}
+        tableHeader={renderHeader('tableId')}
         showBorderTop
         showBorderBottom
     />
 );
 
-const renderHeader = () => (
+const renderHeader = (tableId: string) => (
     <thead>
         <tr>
-            <th>City</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Badge</th>
+            <TableHeaderWithSort id="city" tableId={tableId}>
+                City
+            </TableHeaderWithSort>
+            <TableHeaderWithSort id="username" tableId={tableId}>
+                Username
+            </TableHeaderWithSort>
+            <TableHeaderWithSort id="password" tableId={tableId}>
+                Password
+            </TableHeaderWithSort>
         </tr>
     </thead>
 );
+
+const sort = (key: keyof IExampleRowData, isAsc: boolean, a: IExampleRowData, b: IExampleRowData) => {
+    if (key) {
+        const compare = (a[key] as string).toLowerCase().localeCompare((b[key] as string).toLowerCase());
+
+        return isAsc ? compare : -1 * compare;
+    }
+    return 0;
+};
+
+const TableComposed = compose<any>(tableWithSort({sort}))(TableHOC);
 
 const generateRows = (allData: IExampleRowData[], tableId: string) =>
     allData?.map((data: IExampleRowData) => (
@@ -31,9 +48,6 @@ const generateRows = (allData: IExampleRowData[], tableId: string) =>
             <td key="city">{data.city}</td>
             <td key="username">{data.username.toLowerCase()}</td>
             <td key="password">{data.password.toLowerCase()}</td>
-            <td>
-                <Badge label={'🥔 King'} extraClasses={['mod-small mod-success']} />
-            </td>
         </TableRowConnected>
     ));
 

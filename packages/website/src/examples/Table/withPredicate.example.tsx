@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Badge, TableHOC, TableRowConnected} from '@coveord/plasma-react';
+import {TableHOC, TableRowConnected, tableWithPredicate} from '@coveord/plasma-react';
+import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 
 export default () => (
-    <TableHOC
+    <TableComposed
         id={'tableId'}
         className="table"
         data={dataForRows}
@@ -20,10 +21,14 @@ const renderHeader = () => (
             <th>City</th>
             <th>Username</th>
             <th>Password</th>
-            <th>Badge</th>
         </tr>
     </thead>
 );
+
+const matchPredicate = (predicate: string, rowData: IExampleRowData) => {
+    const matchCity = predicate === rowData.city;
+    return !predicate || matchCity;
+};
 
 const generateRows = (allData: IExampleRowData[], tableId: string) =>
     allData?.map((data: IExampleRowData) => (
@@ -31,9 +36,6 @@ const generateRows = (allData: IExampleRowData[], tableId: string) =>
             <td key="city">{data.city}</td>
             <td key="username">{data.username.toLowerCase()}</td>
             <td key="password">{data.password.toLowerCase()}</td>
-            <td>
-                <Badge label={'🥔 King'} extraClasses={['mod-small mod-success']} />
-            </td>
         </TableRowConnected>
     ));
 
@@ -56,5 +58,21 @@ const generateData = (length: number) => {
     });
     return data;
 };
-
 const dataForRows = generateData(5);
+
+const predicateSetup = {
+    id: 'firstPredicate',
+    prepend: <span className="dropdown-prepend">prepend:</span>,
+    values: [
+        {displayValue: 'All', value: '', selected: true},
+        {displayValue: dataForRows[2].city, value: dataForRows[2].city},
+        {displayValue: dataForRows[1].username, value: dataForRows[1].username},
+    ],
+};
+
+const TableComposed = compose<any>(
+    tableWithPredicate({
+        ...predicateSetup,
+        matchPredicate,
+    })
+)(TableHOC);

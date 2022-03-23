@@ -1,8 +1,12 @@
 import code from '@examples/Table/main.example.tsx';
 import withLoading from '@examples/Table/withLoading.example.tsx';
 import withBlankslate from '@examples/Table/withBlankslate.example.tsx';
-import withServer from '@examples/Table/withServer.example.tsx';
-import complex from '@examples/Table/complex.example.tsx';
+import withPagination from '@examples/Table/withPagination.example.tsx';
+import withPredicate from '@examples/Table/withPredicate.example.tsx';
+import withAction from '@examples/Table/withAction.example.tsx';
+import withSort from '@examples/Table/withSort.example.tsx';
+import withFilter from '@examples/Table/withFilter.example.tsx';
+import withDatePicker from '@examples/Table/withDatePicker.example.tsx';
 
 import * as React from 'react';
 
@@ -19,8 +23,12 @@ const TableExamples = () => (
         examples={{
             withLoading: {code: withLoading, title: 'Loading table'},
             withBlankslate: {code: withBlankslate, title: 'Table blankslate'},
-            // withServer: {code: withServer, title: 'With server side rendering'},
-            complex: {code: complex, title: 'Complex table', layout: 'vertical'},
+            withPagination: {code: withPagination, title: 'With pagination'},
+            withPredicate: {code: withPredicate, title: 'With predicate'},
+            withAction: {code: withAction, title: 'With actions'},
+            withSort: {code: withSort, title: 'With colum sort'},
+            withFilter: {code: withFilter, title: 'With filter box'},
+            withDatePicker: {code: withDatePicker, title: 'With date picker'},
         }}
     />
 );

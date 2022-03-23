@@ -148,13 +148,6 @@ const LayoutPages: React.FC = () => (
                 description="A table displays large quantities of items or data in a list format. Filtering features and actions may be added."
                 href="layout/Table"
             />
-            <Tile
-                title="TableHOC"
-                description="A table displays large quantities of items or data in a list format. Filtering features and actions may be added."
-                href="layout/TableHOC"
-            />
-            <Tile title="Table HOC Server" href="layout/TableHOCServer" />
-            <Tile title="Table HOC with Blank Slate" href="layout/TableHOCwithBlankSlate" />
         </div>
     </Section>
 );
