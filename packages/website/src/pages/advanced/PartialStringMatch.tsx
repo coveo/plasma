@@ -1,106 +1,30 @@
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {CheckboxConnected, InfoBox, InfoBoxLink, Label, Loading, PartialStringMatch} from '@coveord/plasma-react';
 
-import {Store} from '../../Store';
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-// start-print
+const code = `
+    import * as React from 'react';
+    import {PartialStringMatch} from '@coveord/plasma-react';
 
-export class PartialStringMatchExamples extends React.Component<any, any> {
-    render() {
-        return (
-            <PlasmaComponent id="PartialStringMatch" title="Partial String Match" withSource>
-                <div className="mt2">
-                    <div className="form-group">
-                        <label className="form-control-label">PartialStringMatch without match</label>
-                        <div>
-                            <PartialStringMatch partialMatch="I do not match">I do not have a match</PartialStringMatch>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">PartialStringMatch with partial match undefined</label>
-                        <div>
-                            <PartialStringMatch>
-                                I do not have a match because partialMatch was not passed as prop
-                            </PartialStringMatch>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">PartialStringMatch with partial match</label>
-                        <div>
-                            <PartialStringMatch partialMatch="I match at the">
-                                I match at the beginning
-                            </PartialStringMatch>
-                        </div>
-                        <div>
-                            <PartialStringMatch partialMatch="the end">I match at the end</PartialStringMatch>
-                        </div>
-                        <div>
-                            <PartialStringMatch partialMatch="in the">I match in the middle</PartialStringMatch>
-                        </div>
-                        <div>
-                            <PartialStringMatch partialMatch="match multiple">
-                                I match multiple times because I match multiple substrings
-                            </PartialStringMatch>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">
-                            PartialStringMatch with partial match (caseInsensitive)
-                        </label>
-                        <div>
-                            <PartialStringMatch partialMatch={'partial match'.toUpperCase()} caseInsensitive>
-                                I match even if my partial match is in uppercase
-                            </PartialStringMatch>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">PartialStringMatch with dangerous match</label>
-                        <div>
-                            <PartialStringMatch
-                                wholeString='Hey <script>alert("I may be dangerous")</script>'
-                                partialMatch={'<script>alert("I may be dangerous")</script>'}
-                            />
-                        </div>
-                    </div>
+    export default () => (
+        <PartialStringMatch partialMatch="pirate">
+            <div className="p1">
+                I’d love to drop anchor in your lagoon. And that was done without a single drop of rum… A pirate is a man that is weak to achieve but too strong to steal from even the greatest achiever. Without the messy paperwork.
+            </div>
+            <div className="p1">
+                I’d love to drop anchor in your lagoon. Where there is a sea there are pirates. You will always remember this as the day you almost caught Captain Jack Sparrow. Life’s pretty good, and why wouldn’t it be? I’m a pirate, after all. Damnation seize my soul if I give you quarters, or take any from you. Right from the Voyage og Noah, surviving was by sailing. Avast ye! and sail against the tides.
+            </div>
+        </PartialStringMatch>
+    );
+`;
 
-                    <div className="form-group">
-                        <label className="form-control-label">PartialStringMatch with children</label>
-                        <div>
-                            <PartialStringMatch key="a" partialMatch="o">
-                                <div>Hello</div>
-                                <br />
-                                <div>World</div>
-                            </PartialStringMatch>
-                            <PartialStringMatch key="b" caseInsensitive partialMatch={'hello'}>
-                                <Provider store={Store}>
-                                    <div className="py2">
-                                        <div className="my2">
-                                            Hello{' '}
-                                            <span>
-                                                is this working with deep structure?{' '}
-                                                <span>(hello, still reading?)</span>
-                                            </span>
-                                        </div>
-                                        <Loading />
-                                        <InfoBox>
-                                            What about custom components?{' '}
-                                            <InfoBoxLink>Can they contain hello?</InfoBoxLink>
-                                            <div>
-                                                <CheckboxConnected label="boom">
-                                                    <Label>Hello connected components too</Label>
-                                                </CheckboxConnected>
-                                            </div>
-                                        </InfoBox>
-                                    </div>
-                                </Provider>
-                            </PartialStringMatch>
-                        </div>
-                    </div>
-                </div>
-            </PlasmaComponent>
-        );
-    }
-}
-export default PartialStringMatchExamples;
+export default () => (
+    <PageLayout
+        id="PartialStringMatch"
+        title="Partial String Match"
+        section="Advanced"
+        description="Highlights a string searched for in any DOM tree."
+        componentSourcePath="/partial-string-match/PartialStringMatch.tsx"
+        code={code}
+    />
+);
