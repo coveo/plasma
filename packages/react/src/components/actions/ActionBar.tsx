@@ -21,19 +21,66 @@ import {PrimaryActionConnected} from './PrimaryActionConnected';
 import {SecondaryActions} from './SecondaryActions';
 
 export interface IActionBarProps {
+    /**
+     * The unique identifier of the action bar
+     */
     id?: string;
-    itemFilterLabel?: string;
-    itemTooltipProps?: ITooltipProps;
-    onClearItemFilter?: () => void;
+    /**
+     * List of additionnal CSS classes to add on the container
+     *
+     * @default []
+     */
     extraContainerClasses?: string[];
+    /**
+     * Whether to remove the default container classes
+     */
     removeDefaultContainerClasses?: boolean;
+    /**
+     * Whether to display smaller actions
+     *
+     * @default false
+     */
     withSmallActions?: boolean;
+    /**
+     * Content to add before the filter and actions
+     */
     prefixContent?: IContentProps;
+    /**
+     * Override for the width of the action bar. By default, it takes the full width
+     *
+     * @default null
+     */
     width?: number;
+    /**
+     * Label of the button that displays the actions that aren't primary
+     *
+     * @default More
+     */
     moreLabel?: string;
-    itemFilterCropLength?: number;
+    /**
+     * Whether the action bar is disabled
+     */
     disabled?: boolean;
+    /**
+     * React component to add after the actions
+     */
     children?: React.ReactNode;
+    /**
+     * @deprecated do not use
+     */
+    itemFilterLabel?: string;
+    /**
+     * @deprecated do not use
+     */
+    itemTooltipProps?: ITooltipProps;
+    /**
+     * @deprecated do not use
+     */
+    onClearItemFilter?: () => void;
+    /**
+     * @deprecated do not use
+     */
+    itemFilterCropLength?: number;
 }
 
 export class ActionBar extends React.PureComponent<
