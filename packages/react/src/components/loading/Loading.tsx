@@ -3,13 +3,30 @@ import * as React from 'react';
 import {omit} from 'underscore';
 
 export interface ILoadingOwnProps extends React.ClassAttributes<Loading> {
+    /**
+     * Unique identifier. Only needed when using LoadingConnected
+     */
     id?: string;
+    /**
+     * Additional CSS classes to set on the loading element
+     */
     className?: string;
+    /**
+     * Whether the loading needs to be vertically centered within its parent container
+     *
+     * @default false
+     */
     fullContent?: boolean;
 }
 
 export interface ILoadingDispatchProps {
+    /**
+     * A callback function executed when the component is added to the DOM. Only useful for the implementation of the LoadingConnected, you most likely won't need this prop.
+     */
     onRender?: () => void;
+    /**
+     * A callback function executed when the component is removed from the DOM. Only useful for the implementation of the LoadingConnected, you most likely won't need this prop.
+     */
     onDestroy?: () => void;
 }
 

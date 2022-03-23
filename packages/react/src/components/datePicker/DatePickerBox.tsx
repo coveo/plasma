@@ -156,7 +156,6 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
                 isClearable: this.props.isClearable,
                 rangeLimit: datesSelectionBox.rangeLimit,
                 minimalRangeLimit: datesSelectionBox.minimalRangeLimit,
-                color: datesSelectionBox.color,
                 calendarId: DatePickerBox.getCalendarId(this.props.id),
                 lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
                 upperLimitPlaceholder: this.props.upperLimitPlaceholder,

@@ -5,9 +5,8 @@ import {
     IMultilineBoxOwnProps,
     IMultilineParentProps,
     IMultilineSingleBoxProps,
+    MultilineBox,
 } from '../MultilineBox';
-
-type MultilineBoxContainerComponent<T = any> = React.ComponentClass<IMultilineBoxOwnProps<T>>;
 
 export interface IMultilineBoxContainerSupplierProps<T = any> {
     containerNode?: (
@@ -28,7 +27,7 @@ const defaultContainerNode = (child: React.ReactNode, data: IMultilineSingleBoxP
 
 export const multilineBoxContainer = (
     supplier: ConfigSupplier<IMultilineBoxContainerSupplierProps> = {containerNode: defaultContainerNode}
-) => (Component: MultilineBoxContainerComponent): MultilineBoxContainerComponent => {
+) => (Component: typeof MultilineBox): typeof MultilineBox => {
     class MultilineBoxContainer<T> extends React.PureComponent<IMultilineBoxContainerProps<T>> {
         static defaultProps = {
             renderBody: () => <div />,
@@ -47,12 +46,10 @@ export const multilineBoxContainer = (
                     renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) =>
                         this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)
                     }
-                >
-                    {this.props.children}
-                </Component>
+                />
             );
         }
     }
 
-    return MultilineBoxContainer;
+    return MultilineBoxContainer as any;
 };

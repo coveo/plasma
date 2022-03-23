@@ -31,7 +31,6 @@ describe('Date picker', () => {
                 type: DatePickerActions.add,
                 payload: {
                     id: DATE_PICKER_ID,
-                    color: COLOR,
                     calendarId: CALENDAR_ID,
                     isRange: IS_RANGE,
                     rangeLimit: undefined,
@@ -42,9 +41,7 @@ describe('Date picker', () => {
                 },
             };
 
-            expect(addDatePicker(DATE_PICKER_ID, IS_RANGE, undefined, COLOR, CALENDAR_ID, true, true)).toEqual(
-                expectedAction
-            );
+            expect(addDatePicker(DATE_PICKER_ID, IS_RANGE, undefined, CALENDAR_ID, true, true)).toEqual(expectedAction);
         });
 
         it('should create an action to add the date picker with default values if optional values are not specified', () => {
@@ -52,7 +49,6 @@ describe('Date picker', () => {
                 type: DatePickerActions.add,
                 payload: {
                     id: DATE_PICKER_ID,
-                    color: DEFAULT_DATE_PICKER_COLOR,
                     calendarId: '',
                     isRange: IS_RANGE,
                     rangeLimit: undefined,

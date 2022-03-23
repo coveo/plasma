@@ -22,11 +22,13 @@ describe('MultilineBox', () => {
                 shallowWithState(<MultilineBox {...defaultProps} />, {})
                     .dive()
                     .dive()
+                    .dive()
             ).not.toThrow();
         });
 
         it('should unmount without errors', () => {
             const wrapper = shallowWithState(<MultilineBox {...defaultProps} />, {})
+                .dive()
                 .dive()
                 .dive();
 
@@ -35,6 +37,7 @@ describe('MultilineBox', () => {
 
         it('should render a multiline box', () => {
             const wrapper = shallowWithState(<MultilineBox {...defaultProps} />, {})
+                .dive()
                 .dive()
                 .dive();
 
@@ -52,6 +55,7 @@ describe('MultilineBox', () => {
                 store = getStoreMock();
                 shallowWithStore(<MultilineBox {...defaultProps} />, store)
                     .dive()
+                    .dive()
                     .dive();
 
                 expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.add);
@@ -60,6 +64,7 @@ describe('MultilineBox', () => {
             it('should remove ids in the store on unmount', () => {
                 store = getStoreMock();
                 const wrapper = shallowWithStore(<MultilineBox {...defaultProps} />, store)
+                    .dive()
                     .dive()
                     .dive();
                 wrapper.unmount();
@@ -81,6 +86,7 @@ describe('MultilineBox', () => {
                         store
                     )
                         .dive()
+                        .dive()
                         .dive();
 
                     expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.removeValue);
@@ -98,6 +104,7 @@ describe('MultilineBox', () => {
                         />,
                         store
                     )
+                        .dive()
                         .dive()
                         .dive();
 
@@ -117,6 +124,7 @@ describe('MultilineBox', () => {
                         />,
                         store
                     )
+                        .dive()
                         .dive()
                         .dive();
 
@@ -149,6 +157,7 @@ describe('MultilineBox', () => {
                         }
                     )
                         .dive()
+                        .dive()
                         .dive();
 
                     expect(dataToBody[0].id).toBe(testId);
@@ -175,6 +184,7 @@ describe('MultilineBox', () => {
                             },
                         }
                     )
+                        .dive()
                         .dive()
                         .dive();
 
@@ -204,6 +214,7 @@ describe('MultilineBox', () => {
                         }
                     )
                         .dive()
+                        .dive()
                         .dive();
 
                     expect(dataToBody[0].props).toEqual({name: 'princess'});
@@ -231,6 +242,7 @@ describe('MultilineBox', () => {
                             },
                         }
                     )
+                        .dive()
                         .dive()
                         .dive();
 
@@ -263,6 +275,7 @@ describe('MultilineBox', () => {
                         }
                     )
                         .dive()
+                        .dive()
                         .dive();
 
                     expect(dataToBody[0].props).toEqual(theInitialProps);
@@ -290,6 +303,7 @@ describe('MultilineBox', () => {
                         }
                     )
                         .dive()
+                        .dive()
                         .dive();
 
                     expect(dataToBody[0].props).toBe('');
@@ -302,6 +316,7 @@ describe('MultilineBox', () => {
 
                     store = getStoreMock();
                     const wrapper = shallowWithStore(<MultilineBox {...defaultProps} data={dataToTest} />, store)
+                        .dive()
                         .dive()
                         .dive();
 
@@ -318,6 +333,7 @@ describe('MultilineBox', () => {
                         <MultilineBox {...defaultProps} data={[{name: 'princess'}]} />,
                         store
                     )
+                        .dive()
                         .dive()
                         .dive();
 

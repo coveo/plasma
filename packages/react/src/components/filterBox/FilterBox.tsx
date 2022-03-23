@@ -4,17 +4,62 @@ import * as React from 'react';
 import {Svg} from '../svg/Svg';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
+    /**
+     * The unique identifier of that filter box
+     */
     id?: string;
+    /**
+     * list of CSS classes to add on the container
+     */
     containerClasses?: string[];
+    /**
+     * Placeholder of the input element
+     */
     filterPlaceholder?: string;
+    /**
+     * Callback function that run when the filter box lose the focus
+     */
     onBlur?: () => void;
-    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-    onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    /**
+     * Callback function that runs onKeyDown
+     *
+     * @param evt the keyboard event
+     */
+    onKeyDown?: (evt: React.KeyboardEvent<HTMLInputElement>) => void;
+    /**
+     * Callback function that runs onKeyUp
+     *
+     * @param evt the keyboard event
+     */
+    onKeyUp?: (evt: React.KeyboardEvent<HTMLInputElement>) => void;
+    /**
+     * Wheter to  automatically focus on the filter box
+     *
+     * @default false
+     */
     isAutoFocus?: boolean;
+    /**
+     * The maximum width in px of the filter box
+     */
     maxWidth?: number;
+    /**
+     * Wheter to display a title on the input
+     */
     withTitleOnInput?: boolean;
+    /**
+     * Wheter to truncate the input or not
+     */
     truncate?: boolean;
+    /**
+     * Callback funtion that runs when the filter changes
+     *
+     * @param id the unique identifier of the filter box
+     * @param filterText the value of the filter box
+     */
     onFilterCallback?: (id: string, filterText: string) => void;
+    /**
+     * CSS class to add on the element
+     */
     className?: string;
 }
 

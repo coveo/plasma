@@ -232,7 +232,7 @@ const FormPages: React.FC = () => (
             <Tile
                 title="Multi Select"
                 description="A multi select allows users to select multiple options from a list. It is typically used when there are a large number of options."
-                href="#/form/MultiSelect"
+                href="form/MultiSelect"
             />
             <Tile
                 title="Numeric Inputs"

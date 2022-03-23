@@ -124,6 +124,7 @@ describe('Multiline box container', () => {
                 )
                     .dive()
                     .dive()
+                    .dive()
                     .dive();
 
                 expect(spyContainerNode).toHaveBeenCalledTimes(1);
@@ -138,6 +139,7 @@ describe('Multiline box container', () => {
                         },
                     },
                 })
+                    .dive()
                     .dive()
                     .dive()
                     .dive();

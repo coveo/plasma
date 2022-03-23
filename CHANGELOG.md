@@ -1,3 +1,39 @@
+## 40.0.2 (2022-03-23)
+
+
+
+## 40.0.1 (2022-03-23)
+
+
+
+# 40.0.0 (2022-03-23)
+
+
+### Code Refactoring
+
+* **calendar:** removed color prop to fix an error ([5b07389](https://github.com/coveo/plasma/commits/5b0738980241c836576f0d6d9a06bfee0450652a))
+
+
+### Styles
+
+* **calendar day:** remove calendar prop ([a2f5cff](https://github.com/coveo/plasma/commits/a2f5cff48af5521c63555d30e83f2d50f0bff58b))
+
+
+### BREAKING CHANGES
+
+* **calendar:** removed the color prop from calendar.tsx
+* **calendar day:** removing a prop the plasma users could be currently using
+
+
+
+## 39.1.2 (2022-03-23)
+
+
+
+## 39.1.1 (2022-03-22)
+
+
+
 # 39.1.0 (2022-03-22)
 
 

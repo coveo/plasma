@@ -8,4 +8,12 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
+    overrides: [
+        {
+            files: ['src/examples/**/*.tsx'],
+            rules: {
+                'no-console': 'off',
+            },
+        },
+    ],
 };
