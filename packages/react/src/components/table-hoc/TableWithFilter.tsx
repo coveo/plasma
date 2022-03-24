@@ -6,7 +6,7 @@ import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing'
 import {PlasmaState} from '../../PlasmaState';
 import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
 import {BlankSlateWithTable, IBlankSlateWithTableProps} from '../blankSlate';
-import {FilterBoxConnected, FilterBoxSelectors} from '../filterBox';
+import {FilterBoxConnected, FilterBoxSelectors, IFilterBoxOwnProps} from '../filterBox';
 import {ITableHOCOwnProps, TableHOC} from './TableHOC';
 import {Params} from './TableWithUrlState';
 
@@ -14,13 +14,14 @@ export interface ITableWithFilterConfig extends WithServerSideProcessingProps {
     blankSlate?: IBlankSlateWithTableProps;
     matchFilter?: (filterValue: string, datum: any) => boolean;
     placeholder?: string;
-    isFilterInFocus?: boolean;
+    filter?: IFilterBoxOwnProps;
 }
 
 export interface TableWithFilterProps {
     filterBlankslate?: IBlankSlateWithTableProps;
     filterMatcher?: (filterValue: string, datum: any) => boolean;
     filterPlaceholder?: string;
+    autoFocus?: boolean;
 }
 
 const defaultMatchFilter = (filter: string, datum: any) =>
@@ -28,7 +29,7 @@ const defaultMatchFilter = (filter: string, datum: any) =>
     -1;
 
 export const tableWithFilter = (
-    supplier: ConfigSupplier<ITableWithFilterConfig> = {blankSlate: {title: 'No results'}}
+    supplier: ConfigSupplier<ITableWithFilterConfig> = {blankSlate: {title: 'No results'}, filter: {isAutoFocus: true}}
 ) => (WrappedTable: typeof TableHOC) => {
     type OwnProps = ITableHOCOwnProps & TableWithFilterProps & WithServerSideProcessingProps;
     type Props = OwnProps & ReturnType<typeof mapStateToProps>;
@@ -38,7 +39,6 @@ export const tableWithFilter = (
     const mapStateToProps = (state: PlasmaState, ownProps: OwnProps) => {
         const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
         const matchFilter = ownProps.filterMatcher || config.matchFilter || defaultMatchFilter;
-        const isFocus = ownProps.isFilterInFocus ? true : false;
         const filterData = () =>
             filterText ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum)) : ownProps.data;
         const urlParams = UrlUtils.getSearchParams();
@@ -46,7 +46,6 @@ export const tableWithFilter = (
             filter: filterText,
             urlFilter: urlParams[Params.filter],
             data: ownProps.isServer || config.isServer ? ownProps.data : ownProps.data && filterData(),
-            isFocus,
         };
     };
 
@@ -58,15 +57,7 @@ export const tableWithFilter = (
         }
 
         render() {
-            const {
-                filterBlankslate,
-                filterMatcher,
-                filterPlaceholder,
-                filter,
-                isFocus,
-                urlFilter,
-                ...tableProps
-            } = this.props;
+            const {filterBlankslate, filterMatcher, filterPlaceholder, filter, urlFilter, ...tableProps} = this.props;
             const blankSlateProps = filterBlankslate || config.blankSlate;
             const shouldShowBlankslate =
                 _.isEmpty(this.props.data) && !_.isEmpty(filter) && !_.isEmpty(blankSlateProps);
@@ -76,7 +67,7 @@ export const tableWithFilter = (
                     id={this.props.id}
                     className="coveo-table-actions"
                     filterPlaceholder={filterPlaceholder || config.placeholder}
-                    isAutoFocus={isFocus}
+                    isAutoFocus={config.filter.isAutoFocus}
                 />
             );
 

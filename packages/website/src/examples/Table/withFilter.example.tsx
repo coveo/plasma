@@ -12,12 +12,11 @@ export default () => (
         tableHeader={renderHeader()}
         showBorderTop
         showBorderBottom
-        isFilterInFocus={false}
     />
 );
 
 const TableComposed = compose<any>(
-    tableWithFilter(), // using the default matchfilter
+    tableWithFilter({filter: {isAutoFocus: false}}), // using the default matchfilter
     tableWithBlankSlate({
         title: 'No results',
     })

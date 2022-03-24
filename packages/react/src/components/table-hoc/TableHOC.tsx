@@ -89,12 +89,6 @@ export interface ITableHOCOwnProps {
         defaultLoadingRow?: number;
         numberOfSubRow?: number;
     };
-    /**
-     * Whether the TableWithFilter hoc has the filter autofocus
-     *
-     * @default true
-     */
-    isFilterInFocus?: boolean;
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
