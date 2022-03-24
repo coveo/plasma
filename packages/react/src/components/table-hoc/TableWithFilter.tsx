@@ -14,6 +14,7 @@ export interface ITableWithFilterConfig extends WithServerSideProcessingProps {
     blankSlate?: IBlankSlateWithTableProps;
     matchFilter?: (filterValue: string, datum: any) => boolean;
     placeholder?: string;
+    isFilterInFocus?: boolean;
 }
 
 export interface TableWithFilterProps {
@@ -37,6 +38,7 @@ export const tableWithFilter = (
     const mapStateToProps = (state: PlasmaState, ownProps: OwnProps) => {
         const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
         const matchFilter = ownProps.filterMatcher || config.matchFilter || defaultMatchFilter;
+        const isFocus = ownProps.isFilterInFocus ? true : false;
         const filterData = () =>
             filterText ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum)) : ownProps.data;
         const urlParams = UrlUtils.getSearchParams();
@@ -44,6 +46,7 @@ export const tableWithFilter = (
             filter: filterText,
             urlFilter: urlParams[Params.filter],
             data: ownProps.isServer || config.isServer ? ownProps.data : ownProps.data && filterData(),
+            isFocus,
         };
     };
 
@@ -55,7 +58,15 @@ export const tableWithFilter = (
         }
 
         render() {
-            const {filterBlankslate, filterMatcher, filterPlaceholder, filter, urlFilter, ...tableProps} = this.props;
+            const {
+                filterBlankslate,
+                filterMatcher,
+                filterPlaceholder,
+                filter,
+                isFocus,
+                urlFilter,
+                ...tableProps
+            } = this.props;
             const blankSlateProps = filterBlankslate || config.blankSlate;
             const shouldShowBlankslate =
                 _.isEmpty(this.props.data) && !_.isEmpty(filter) && !_.isEmpty(blankSlateProps);
@@ -65,7 +76,7 @@ export const tableWithFilter = (
                     id={this.props.id}
                     className="coveo-table-actions"
                     filterPlaceholder={filterPlaceholder || config.placeholder}
-                    isAutoFocus
+                    isAutoFocus={isFocus}
                 />
             );
 

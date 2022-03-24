@@ -12,6 +12,7 @@ export default () => (
         tableHeader={renderHeader()}
         showBorderTop
         showBorderBottom
+        isFilterInFocus={false}
     />
 );
 
