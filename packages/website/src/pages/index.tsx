@@ -114,7 +114,7 @@ const LayoutPages: React.FC = () => (
                 href="layout/IconCard"
             />
             <Tile title="Info Box" description="An info box displays contextual information." href="layout/InfoBox" />
-            <Tile title="Labelled Value" href="layout/LabeledValue" />
+            <Tile title="Labeled Value" href="layout/LabeledValue" />
             <Tile
                 title="Limit Card"
                 description="A limit card displays the limit and usage of a resource. It includes a bar illustrating the usage against the limit."
