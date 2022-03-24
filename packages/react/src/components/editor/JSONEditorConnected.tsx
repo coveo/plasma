@@ -11,7 +11,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: JSONEditorProps): JSONEdi
 });
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: JSONEditorProps): JSONEditorDispatchProps => ({
-    onMount: () => dispatch(JSONEditorActions.addJSONEditor(ownProps.id, ownProps.value)),
+    onMount: () => dispatch(JSONEditorActions.addJSONEditor(ownProps.id, ownProps.defaultValue ?? ownProps.value)),
     onUnmount: () => dispatch(JSONEditorActions.removeJSONEditor(ownProps.id)),
     onChange: (value: string, inError: boolean) => {
         dispatch(JSONEditorActions.updateJSONEditorValue(ownProps.id, value));

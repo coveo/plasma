@@ -209,7 +209,7 @@ describe('Date picker', () => {
 
             it('should clear the selected limits of the dropdown when calling onClear prop', () => {
                 const pickerId: string = DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '6868';
-                store.dispatch(addDatePicker(pickerId, true, undefined, '', 'some-calendar-id', undefined, true));
+                store.dispatch(addDatePicker(pickerId, true, undefined, 'some-calendar-id', undefined, true));
 
                 datePickerDropdown.props().onClear();
                 const datePickerState: IDatePickerState = _.findWhere(store.getState().datePickers, {id: pickerId});

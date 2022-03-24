@@ -1,3 +1,89 @@
+## 40.0.3 (2022-03-23)
+
+
+
+## 40.0.2 (2022-03-23)
+
+
+
+## 40.0.1 (2022-03-23)
+
+
+
+# 40.0.0 (2022-03-23)
+
+
+### Code Refactoring
+
+* **calendar:** removed color prop to fix an error ([5b07389](https://github.com/coveo/plasma/commits/5b0738980241c836576f0d6d9a06bfee0450652a))
+
+
+### Styles
+
+* **calendar day:** remove calendar prop ([a2f5cff](https://github.com/coveo/plasma/commits/a2f5cff48af5521c63555d30e83f2d50f0bff58b))
+
+
+### BREAKING CHANGES
+
+* **calendar:** removed the color prop from calendar.tsx
+* **calendar day:** removing a prop the plasma users could be currently using
+
+
+
+## 39.1.2 (2022-03-23)
+
+
+
+## 39.1.1 (2022-03-22)
+
+
+
+# 39.1.0 (2022-03-22)
+
+
+### Features
+
+* **website:** add Countdown demo apge ([9065cc4](https://github.com/coveo/plasma/commits/9065cc418c298b23582b7477e983cdfcacf03aed))
+
+
+
+## 39.0.2 (2022-03-22)
+
+
+
+## 39.0.1 (2022-03-21)
+
+
+
+# 39.0.0 (2022-03-21)
+
+
+* refactor!: fix buld ([7471cd9](https://github.com/coveo/plasma/commits/7471cd9061e5d976673a91d03892e9d4fa94e7e0))
+
+
+### BREAKING CHANGES
+
+* onToggleExpandedState is replace by onClick in sideNav
+
+
+
+# 38.31.0 (2022-03-21)
+
+
+### Features
+
+* **website:** allow import of examples from files ([688b01c](https://github.com/coveo/plasma/commits/688b01c42d3611fc2231af2e1808d027cac5099f))
+
+
+
+## 38.30.2 (2022-03-21)
+
+
+
+## 38.30.1 (2022-03-21)
+
+
+
 # 38.30.0 (2022-03-18)
 
 

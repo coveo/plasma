@@ -1,18 +1,16 @@
 import MonacoEditor from '@monaco-editor/react';
+import initSwc, {transformSync} from '@swc/wasm-web';
+import classNames from 'classnames';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as typescript from 'prettier/parser-typescript';
 import {format} from 'prettier/standalone';
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ts from 'typescript';
-import lzstring from 'lz-string';
-import {twoslasher} from '@typescript/twoslash';
-import classNames from 'classnames';
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as _ from 'underscore';
-import initSwc, {transformSync} from '@swc/wasm-web';
 
 import {PlasmaLoading} from './PlasmaLoading';
 import {useTypescriptServer} from './useTypescriptServer';
+
 // eslint-disable-next-line
 const prettierConfig = require('tsjs/prettier-config');
 
@@ -75,9 +73,10 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
                     .replace(/var .+ = __importStar\(require(.+)\);/g, '') // remove the import statements
                     .replace(/_plasmaReact/g, 'PlasmaReact') // use plasma-react from the window Plasma object
                     .replace(/_reactRedux/g, 'ReactRedux') // use react-redux from the window ReactRedux object
-                    .replace(/\(.+, _moment\)\.default/g, 'moment') // replace the moment object
-                    .replace(/_moment.default/g, 'moment') // replace the moment() function
-                    .replace(/_loremIpsum/g, 'LoremIpsum') +
+                    .replace(/_redux/g, 'Redux') // use redux from the window Redux object
+                    .replace(/_loremIpsum/g, 'LoremIpsum')
+                    .replaceAll('(0, _moment).default', 'moment') // replace the moment object
+                    .replace(/_moment.default/g, 'moment') + // replace the moment() function
                 `ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(_default)), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval

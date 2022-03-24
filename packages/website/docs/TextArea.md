@@ -27,6 +27,7 @@ If the input can be left blank, the tag “(Optional)” must appear next to the
 | **Fixed size** | By default, the size of the text area input box is fixed. A scrollbar automatically appears if text overflows the alloted space. |
 | **Drag-to-resize** | Allow users to resize the text area manually when they need to provide very long texts, such as the content of an email. Consider this option only when expecting over 500 characters or a few paragraphs. Always restrict the resizing of the text area to a maximum size based on the available space on screen. If the text overflows the alloted space (default or resized), a scrollbar automatically appears. |
 | **Autosize** | Avoid using this option, as it is about to be deprecated. Autosize may cause undesired layout issues on screen, as the expanding area can push important information out of focus without the user's knowledge. Most of the time, the fixed size variant should suffice. In the rare cases where longer text is required, the drag-to-resize option is considered more appropriate. |
+=======
 
 ## Related Components
 

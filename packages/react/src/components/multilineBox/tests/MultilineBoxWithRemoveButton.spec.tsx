@@ -105,6 +105,7 @@ describe('Multiline box with remove button', () => {
                     .dive()
                     .dive()
                     .dive()
+                    .dive()
                     .dive();
 
             it('should contains a Button inside the remove button element sent as arguments', () => {

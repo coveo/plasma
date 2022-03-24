@@ -33,14 +33,55 @@ interface I18nConfig {
 
 export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
     id?: string;
+    /**
+     * The list of months available in the calendar
+     *
+     * @default ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+     */
     months?: string[];
+    /**
+     * The month initially displayed in the calendar in the form of an index of the "months" array prop
+     *
+     * @default current month
+     */
     startingMonth?: number;
+    /**
+     * The list of years available in the calendar
+     *
+     * @default 30 years before and after today
+     */
     years?: string[];
+    /**
+     * The year initially displayed in the calendar in the form of an index of the "years" array prop
+     *
+     * @default current year
+     */
     startingYear?: number;
+    /**
+     * The label of each day of the week displayed in the calendar
+     *
+     * @default ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+     */
     days?: string[];
+    /**
+     * The starting day of the week displayed in the calendar in the form of an index of the "days" array prop
+     *
+     * @default 0
+     */
     startingDay?: number;
+    /**
+     * Selection rules that may restrict the dates available for selection
+     *
+     * @default []
+     */
     selectionRules?: ICalendarSelectionRule[];
+    /**
+     * If set to false, it will sync both the lower and upper to the same value
+     */
     isLinkedToDateRange?: boolean;
+    /**
+     * If set to true, only the calendar will be visible
+     */
     simple?: boolean;
     wrapperClassNames?: string;
     showHeader?: boolean;
@@ -184,7 +225,6 @@ export class Calendar extends React.Component<ICalendarProps, any> {
             day.isLowerLimit =
                 (calendarSelection.isRange && day.date.isSame(selectionStart, 'day')) || day.isLowerLimit;
             day.isUpperLimit = (calendarSelection.isRange && day.date.isSame(selectionEnd, 'day')) || day.isUpperLimit;
-            day.color = isSelected ? calendarSelection.color : day.color;
             day.isCountdown = !!this.props.countdown;
 
             _.each(this.props.selectionRules, (rule: ICalendarSelectionRule) => {

@@ -22,4 +22,7 @@ const mapDispatchToProps = (
     onDestroy: () => dispatch(removeLastUpdated(ownProps.id)),
 });
 
+/**
+ * @deprecated use LastUpdated instead
+ */
 export const LastUpdatedConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(LastUpdated);

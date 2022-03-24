@@ -1,20 +1,22 @@
 import * as React from 'react';
-import {Filepicker} from '@coveord/plasma-react';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+const code = `
+    import * as React from 'react';
+    import {Filepicker} from '@coveord/plasma-react';
 
-const inputId = 'file-input-example';
+    export default () => (
+        <Filepicker id="input-id" accept=".jpg,.png,.csv,.txt" placeholder="Choose a file..." />    
+    );
+`;
 
-// start-print
-export const FilepickerExamples: React.FunctionComponent = () => (
-    <PlasmaComponent
+export default () => (
+    <PageLayout
         id="Filepicker"
         title="File Picker"
-        usage="A file picker is a dialog that allows users to upload a file."
-        withSource
-    >
-        <Filepicker id={inputId} accept=".jpg,.png,.csv,.txt" placeholder="Choose a file..." />
-    </PlasmaComponent>
+        section="Form"
+        description="A file picker is a dialog that allows users to upload a file."
+        componentSourcePath="/filepicker/FilePicker.tsx"
+        code={code}
+    />
 );
-// stop-print
-export default FilepickerExamples;

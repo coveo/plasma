@@ -187,6 +187,11 @@ const FormPages: React.FC = () => (
                 href="form/ColorPicker"
             />
             <Tile
+                title="Countdown"
+                description="A Countdown illustrates how much time there is left until an end date is reached."
+                href="form/Countdown"
+            />
+            <Tile
                 title="Date Picker"
                 description="A date picker is a calendar interface that allows users to select a single date or a date range."
                 href="form/DatePicker"
@@ -230,7 +235,7 @@ const FormPages: React.FC = () => (
             <Tile
                 title="Multi Select"
                 description="A multi select allows users to select multiple options from a list. It is typically used when there are a large number of options."
-                href="#/form/MultiSelect"
+                href="form/MultiSelect"
             />
             <Tile
                 title="Numeric Inputs"

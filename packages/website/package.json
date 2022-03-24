@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-website",
-    "version": "38.30.0",
+    "version": "40.0.3",
     "private": true,
     "description": "Plasma Design System",
     "main": "src/Index.ts",
@@ -48,7 +48,9 @@
         "next-images": "1.8.4",
         "next-sitemap": "2.5.4",
         "next-transpile-modules": "9.0.0",
+        "rc-slider": "9.7.4",
         "react": "16.14.0",
+        "react-diff-viewer": "3.1.1",
         "react-dom": "16.14.0",
         "react-markdown": "7.1.1",
         "react-redux": "7.2.6",

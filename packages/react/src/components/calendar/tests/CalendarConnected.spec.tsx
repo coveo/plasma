@@ -26,8 +26,8 @@ import {CalendarConnected} from '../CalendarConnected';
 describe('Calendar', () => {
     const CALENDAR_ID: string = 'calendar';
     const PICKER_ID: string = 'some-picker';
-    const DEFAULT_ADD_DATE_PICKER_WITHOUT_RANGE = addDatePicker(PICKER_ID, false, undefined, 'any', CALENDAR_ID);
-    const DEFAULT_ADD_DATE_PICKER_WITH_RANGE = addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID);
+    const DEFAULT_ADD_DATE_PICKER_WITHOUT_RANGE = addDatePicker(PICKER_ID, false, undefined, CALENDAR_ID);
+    const DEFAULT_ADD_DATE_PICKER_WITH_RANGE = addDatePicker(PICKER_ID, true, undefined, CALENDAR_ID);
 
     describe('<CalendarConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
@@ -103,7 +103,7 @@ describe('Calendar', () => {
             expect(calendarSelectionProp).toBeDefined();
             expect(calendarSelectionProp).toEqual([]);
 
-            store.dispatch(addDatePicker('any', false, undefined, 'any', CALENDAR_ID));
+            store.dispatch(addDatePicker('any', false, undefined, CALENDAR_ID));
             wrapper.update();
 
             expect(wrapper.find(Calendar).props().calendarSelection.length).toBe(1);

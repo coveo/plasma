@@ -1,7 +1,14 @@
 import {connect} from 'react-redux';
+
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {IRadioSelectDispatchProps, IRadioSelectProps, IRadioSelectStateProps, RadioSelect} from './RadioSelect';
+import {
+    IRadioSelectConnectedProps,
+    IRadioSelectDispatchProps,
+    IRadioSelectProps,
+    IRadioSelectStateProps,
+    RadioSelect,
+} from './RadioSelect';
 import {removeRadioSelect, setRadioSelect} from './RadioSelectActions';
 import {RadioSelectSelectors} from './RadioSelectSelectors';
 
@@ -17,4 +24,8 @@ const mapDispatchToProps = (dispatch: IDispatch): IRadioSelectDispatchProps => (
     onChange: (value: string, id: string) => dispatch(setRadioSelect(id, {value})),
 });
 
-export const RadioSelectConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(RadioSelect);
+export const RadioSelectConnected: React.ComponentType<IRadioSelectProps & IRadioSelectConnectedProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(RadioSelect);
