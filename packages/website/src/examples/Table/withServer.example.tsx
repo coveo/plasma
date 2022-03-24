@@ -5,17 +5,11 @@ import {
     withServerSideProcessing,
     TableRowConnected,
     TableRowNumberColumn,
-    tableWithNewPagination,
 } from '@coveord/plasma-react';
 
 import {compose} from 'redux';
-import {loremIpsum} from 'lorem-ipsum';
 
-const ServerTableComposed = compose<any>(
-    withServerSideProcessing,
-    tableWithUrlState,
-    tableWithNewPagination({perPageNumbers: [3, 5, 10]})
-)(TableHOC);
+const ServerTableComposed = compose<any>(withServerSideProcessing, tableWithUrlState)(TableHOC);
 
 export default () => {
     const [users, totalEntries, fetchUsers] = useAPIMock();
@@ -32,7 +26,7 @@ export default () => {
         <ServerTableComposed
             id={'tableId'}
             className="table table-numbered mod-collapsible-rows"
-            data={dataForRows}
+            data={users}
             renderBody={(allData: any) => generateRows(allData)}
             tableHeader={renderHeader()}
             onUpdate={() => fetchUsers()}
@@ -63,7 +57,6 @@ const useAPIMock = (): [any[], number, (params?: any, overwrite?: boolean) => vo
             .then((response) => {
                 setTotalEntries(parseInt(response.headers.get('x-total-count'), 10));
                 return response.json();
-                // voir ici pour refaire le model https://jsonplaceholder.typicode.com/users
             })
             .then((newUsers) => {
                 if (overwrite) {
@@ -77,42 +70,14 @@ const useAPIMock = (): [any[], number, (params?: any, overwrite?: boolean) => vo
     return [users, totalEntries, fetchUsers];
 };
 
-// const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () => PlasmaState) => {
-//     const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState('tableId', getState());
-//     const params: any = {
-//         _page: compositeState.pageNb + 1,
-//         _limit: compositeState.perPage,
-//         _sort: compositeState.sortKey,
-//         _order: compositeState.sortAscending ? 'asc' : 'desc',
-//         q: compositeState.filter || undefined,
-//     };
-
-//     const query = UrlUtils.toQueryString(params);
-
-//     const res = await fetch(`https://jsonplaceholder.typicode.com/users?${query}`);
-//     const count = (res.headers.has('x-total-count') && res.headers.get('x-total-count')) || null;
-//     const data = await res.json();
-
-//     const users = data.map((user: any) => ({
-//         city: user.address.city,
-//         username: user.username,
-//         password: user.password,
-//     }));
-
-//     return {users, count};
-// };
-
-// const TableServerActions = {
-//     fetchData,
-// };
-
 const renderHeader = () => (
     <thead>
         <tr>
             <th></th>
-            <th>City</th>
+            <th>Name</th>
             <th>Username</th>
-            <th>Password</th>
+            <th>Email</th>
+            <th></th>
         </tr>
     </thead>
 );
@@ -128,28 +93,14 @@ const generateRows = (allData: IExampleRowData[]) =>
             collapsible={{content: i % 2 ? <div className="py2">👋</div> : null}}
         >
             <TableRowNumberColumn number={i + 1} />
-            <td key="city">{data.city}</td>
-            <td key="username">{data.username.toLowerCase()}</td>
-            <td key="password">{data.password.toLowerCase()}</td>
+            <td key="name">{data.name}</td>
+            <td key="username">{data.username}</td>
+            <td key="password">{data.email}</td>
         </TableRowConnected>
     ));
 interface IExampleRowData {
-    city: string;
+    name: string;
     username: string;
-    password: string;
+    email: string;
     id: string;
 }
-
-const generateData = (length: number) => {
-    const data: any = [];
-    Array.from(Array(length)).map(() => {
-        data.push({
-            city: loremIpsum({count: 1, units: 'word'}),
-            username: loremIpsum({count: 2, units: 'word'}),
-            password: loremIpsum({count: 1, units: 'word'}),
-            id: loremIpsum({count: 1, units: 'word'}),
-        });
-    });
-    return data;
-};
-const dataForRows = generateData(15);
