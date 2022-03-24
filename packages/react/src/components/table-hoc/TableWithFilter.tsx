@@ -21,7 +21,6 @@ export interface TableWithFilterProps {
     filterBlankslate?: IBlankSlateWithTableProps;
     filterMatcher?: (filterValue: string, datum: any) => boolean;
     filterPlaceholder?: string;
-    autoFocus?: boolean;
 }
 
 const defaultMatchFilter = (filter: string, datum: any) =>
