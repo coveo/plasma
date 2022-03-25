@@ -62,7 +62,7 @@ export const ButtonExamples: React.FunctionComponent = () => (
             small: {code: small, title: 'Secondary, Small size'},
             disabled: {code: disabled, title: 'Disabled'},
             prepend: {code: prepend, title: 'Prepended icon'},
-            iconAndLink: {code: iconAndLink, title: 'Icon only with an hyperlkink'},
+            iconAndLink: {code: iconAndLink, title: 'Icon only with an hyperlink'},
         }}
         componentSourcePath="/button/Button.tsx"
     />
