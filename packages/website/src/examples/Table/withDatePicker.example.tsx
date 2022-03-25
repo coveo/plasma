@@ -13,7 +13,7 @@ import {loremIpsum} from 'lorem-ipsum';
 
 export default () => (
     <TableComposed
-        id={'tableId'}
+        id="tableId"
         className="table"
         data={dataForRows}
         renderBody={(data: any) => generateRows(data, 'tableId')}
