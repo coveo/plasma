@@ -22,6 +22,14 @@ const small = `
     export default () => <Button small>Hello World!</Button>;
 `;
 
+const iconAndLink = `
+    import * as React from "react";
+    import {Button} from "@coveord/plasma-react";
+    import {ZombieSize24Px} from '@coveord/plasma-react-icons';
+
+    export default () => <Button link="https://www.coveo.com"><ZombieSize24Px height={24} aria-label="zombie" /></Button>;
+`;
+
 const disabled = `
     import * as React from "react";
     import {Button} from "@coveord/plasma-react";
@@ -54,6 +62,7 @@ export const ButtonExamples: React.FunctionComponent = () => (
             small: {code: small, title: 'Secondary, Small size'},
             disabled: {code: disabled, title: 'Disabled'},
             prepend: {code: prepend, title: 'Prepended icon'},
+            iconAndLink: {code: iconAndLink, title: 'Icon only with an hyperlkink'},
         }}
         componentSourcePath="/button/Button.tsx"
     />
