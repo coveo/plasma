@@ -75,17 +75,12 @@ interface IExampleRowData {
     id: string;
 }
 
-const generateData = (length: number) => {
-    const data: any = [];
-    Array.from(Array(length)).map(() => {
-        data.push({
-            city: loremIpsum({count: 1, units: 'word'}),
-            username: loremIpsum({count: 2, units: 'word'}),
-            password: loremIpsum({count: 1, units: 'word'}),
-            id: loremIpsum({count: 1, units: 'word'}),
-        });
-    });
-    return data;
-};
+const generateData = (length: number): any[] =>
+    Array.from(Array(length)).map(() => ({
+        city: loremIpsum({count: 1, units: 'word'}),
+        username: loremIpsum({count: 2, units: 'word'}),
+        password: loremIpsum({count: 1, units: 'word'}),
+        id: loremIpsum({count: 1, units: 'word'}),
+    }));
 
 const dataForRows = generateData(5);
