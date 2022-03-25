@@ -295,6 +295,7 @@ const NavigationPages: React.FC = () => (
             />
             <Tile
                 title="SubNavigation"
+                thumbnail="subNavigation"
                 description="A subnavigation is a secondary vertical navigation component that allows users to navigate between sections of the same interface."
                 href="navigation/SubNavigation"
             />
@@ -343,11 +344,13 @@ const FeedbackPages: React.FC = () => (
             <Tile title="Sync Feedback" href="feedback/SyncFeedback" />
             <Tile
                 title="Toast"
+                thumbnail="toast"
                 description="A toast displays a short message related to an action performed by a user."
                 href="feedback/Toast"
             />
             <Tile
                 title="Tooltip"
+                thumbnail="tooltip"
                 description="A tooltip is a floating label that provides brief additional information about an interface component."
                 href="feedback/Tooltip"
             />
