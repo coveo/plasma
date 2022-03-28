@@ -12,7 +12,7 @@ When presenting only two options,
 
 Aim for seven or less options. If that's impossible, consider using the [Single select](https://plasma.coveo.com/form/SingleSelect) instead.
 
-Sort options by most relevant, unless a more suited ordering rationale applies. For example, when listing size or security level options. If no rationale stands out, place options in alphanumerical order.
+Sort options by most relevant, unless a more suited ordering rationale applies. For example, when listing size (large to small) or security level options (full access to limited access). If no rationale stands out, place options in alphanumerical order.
 
 # Labeling
 
@@ -38,7 +38,7 @@ Always preselect an option as the default. The default option can identify:
 -   The most commonly selected option when you want to help expedite the task.
     If preselecting a default option increases the risk of irreversible changes or security issues, always use the least risky option as the default.
 
-When the user must easily revert to the default option, for instance when testing configurations, add “(recommended)” or “(default)” to the appropriate option label.
+When the user needs to be able to easily revert to the default option, for instance when testing configurations, add “(recommended)” or “(default)” to the appropriate option label.
 
 If the choice is optional, add a neutral option (e.g., "None") so the user can explicitly choose to not select any option.
 

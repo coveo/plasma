@@ -1,6 +1,6 @@
 # Best Practices
 
-A slider is appropriate when providing **an exact value is not important**. Sliders typically allow users to adjust the intensity of an effect, such as a percentage of opacity or when an approximate value is sufficient, for example when choosing a flight departure time. It helps visualize a range of allowed values. 
+A slider is appropriate when providing **an exact value is not important**. Sliders typically allow users to adjust the intensity of an effect, such as a percentage of opacity, or when an approximate value is sufficient, for example when choosing a flight departure time. It helps visualize a range of allowed values. 
 
 * Use a slider when page real estate is not an issue and when visualizing the range helps users make more informed choices.
 * The slider should have a range of up to 100 values. 
@@ -10,7 +10,7 @@ Use sliders carefully, as they can be difficult to control on smaller devices or
 
 ## Labeling
 
-Keep marker labels short (i.e., a single word).
+Keep marker labels short (i.e., ideally a single word).
 
 Provide a short, descriptive title without action verbs. For example, write "Thumbnail size" rather than "Select the size of the thumbnail".
 

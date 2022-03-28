@@ -2,7 +2,7 @@
 
 Use a Multi select for when users need to **filter and select options from a long list**. A Multi select is especially appropriate when the available list of options is very long or when space is limited.
 
-List options in alphanumerical order unless a more suited ordering rationale applies. For example, when listing size or security level options.
+List options in alphanumerical order unless a more suited ordering rationale applies. For example, when listing size (large to small) or security level options (full access to limited access).
 
 When a list contains 20 or more options, include the ability to filter them.
 

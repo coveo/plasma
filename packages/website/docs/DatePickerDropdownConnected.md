@@ -4,7 +4,7 @@ Whenever possible, provide ready-made selections of the most contextually releva
 
 # Variations
 
-The choice of date picker type depends on the input you wish to submit and on the precision required.
+The choice of date picker type depends on the input you want to submit and on the precision required.
 
 | Type                | Purpose                                                                                                                       |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |

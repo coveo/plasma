@@ -14,7 +14,7 @@ Provide a descriptive title without action verbs. For example, write "Price" rat
 
 # Help Text and Instructions
 
-If the selectable value must be within a range, consider indicating the minimum and maximum values, or only one of them, in a help text (e.g., "Maximum of 20").
+If the required value must be within a range, consider indicating the minimum and maximum values, or only one of them, in a help text (e.g., "Maximum of 20").
 
 # Feedback and Validation
 
