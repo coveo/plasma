@@ -16,6 +16,9 @@ import tabPng from '../../resources/thumbnail_Tab.png';
 import badgePng from '../../resources/thumbnail_Tag.png';
 import textInputPng from '../../resources/thumbnail_TextInput.png';
 import typekitPng from '../../resources/thumbnail_Typekit.png';
+import toastSvg from '../../resources/thumbnail_Toast.svg';
+import tooltipSvg from '../../resources/thumbnail_Tooltip.svg';
+import subnavigationSvg from '../../resources/thumbnail_Subnavigation.svg';
 
 const thumbnails = {
     placeholder: placeholderPng,
@@ -32,6 +35,9 @@ const thumbnails = {
     codeEditor: codeEditorPng,
     breadcrumb: breadcrumbPng,
     actionButton: actionButtonPng,
+    toast: toastSvg,
+    tooltip: tooltipSvg,
+    subNavigation: subnavigationSvg,
 };
 export interface TileProps {
     title?: string;

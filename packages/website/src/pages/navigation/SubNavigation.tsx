@@ -107,7 +107,7 @@ export const SubNavigationExamples = () => (
         title="SubNavigation"
         section="Navigation"
         description="A subnavigation is a secondary vertical navigation component that allows users to navigate between sections of the same interface."
-        thumbnail="placeholder"
+        thumbnail="subNavigation"
         code={code}
         examples={{
             defaultSelected: {code: defaultSelected, title: 'Default selected'},

@@ -22,7 +22,7 @@ export const TooltipExamples = () => (
         title="Tooltip"
         section="Feedback"
         description="A tooltip is a floating label that provides brief additional information about an interface component."
-        thumbnail="placeholder"
+        thumbnail="tooltip"
         code={code}
     />
 );
