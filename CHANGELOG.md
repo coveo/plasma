@@ -1,3 +1,12 @@
+# 40.1.0 (2022-03-28)
+
+
+### Features
+
+* added new thumbnails ([0fa1bdb](https://github.com/coveo/plasma/commits/0fa1bdbdec4321731aafcead97b1bfdfd34412ac))
+
+
+
 ## 40.0.3 (2022-03-23)
 
 
