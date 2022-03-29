@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
-import {Defaults} from '../../Defaults';
 import {BrowserUtils} from '../../utils/BrowserUtils';
 import {
     DomPositionCalculator,
@@ -46,6 +45,10 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
     renderDrop,
     parentSelector,
 }) => {
+    const DEFAULT_ROOT: string = 'body';
+
+    const [isOriginalPositionSet, setOriginalPosition] = React.useState(false);
+
     const [offset, setOffset] = React.useState(undefined);
     const [lastPosition, setLastPosition] = React.useState<IDropUIPosition>({
         position: positions?.[0] ?? DropPodPosition.bottom,
@@ -93,7 +96,7 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
 
     React.useEffect(() => {
         const element = document.createElement('div');
-        const portalRoot = document.querySelector(selector ?? Defaults.DROP_ROOT);
+        const portalRoot = document.querySelector(selector ?? DEFAULT_ROOT);
 
         portalRoot.appendChild(element);
 
@@ -101,12 +104,12 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
         return () => {
             portalRoot.removeChild(element);
         };
-    }, [selector, Defaults.DROP_ROOT]);
+    }, [selector, DEFAULT_ROOT]);
 
     const canRenderDrop = () => !!dropElement && isOpen;
 
     const getRelativeParent = () => {
-        const closestCurrentRef = buttonRef?.current?.closest(parentSelector ?? Defaults.DROP_PARENT_ROOT);
+        const closestCurrentRef = buttonRef?.current?.closest(parentSelector ?? DEFAULT_ROOT);
         return closestCurrentRef ?? buttonRef?.current?.parentElement;
     };
 
@@ -134,10 +137,13 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
                 height: Math.max(dropOffset?.height ?? 0, minHeight),
             };
 
-            while (_.isEmpty(newDomPosition) && index < positions.length) {
-                const validator = DomPositionCalculator[positions[index]];
-                newDomPosition = (validator && validator(buttonOffset, dropOffsetPrime, boundingLimit, {})) || {};
-                index += 1;
+            if (!isOriginalPositionSet) {
+                while (_.isEmpty(newDomPosition) && index < positions.length) {
+                    const validator = DomPositionCalculator[positions[index]];
+                    newDomPosition = (validator && validator(buttonOffset, dropOffsetPrime, boundingLimit, {})) || {};
+                    index += 1;
+                }
+                setOriginalPosition(true);
             }
 
             if (_.isEmpty(newDomPosition)) {
