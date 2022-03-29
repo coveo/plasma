@@ -58,7 +58,7 @@ interface IExampleRowData {
     id: string;
 }
 
-const generateData = (length: number): any[] =>
+const generateData = (length: number): IExampleRowData[] =>
     Array.from(Array(length)).map(() => ({
         city: loremIpsum({count: 1, units: 'word'}),
         username: loremIpsum({count: 2, units: 'word'}),

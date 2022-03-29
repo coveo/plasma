@@ -27,7 +27,7 @@ export default () => {
             id={'tableId'}
             className="table table-numbered mod-collapsible-rows"
             data={users}
-            renderBody={(allData: any) => generateRows(allData)}
+            renderBody={(allData: IExampleRowData[]) => generateRows(allData)}
             tableHeader={renderHeader()}
             onUpdate={() => fetchUsers()}
             onUpdateUrl={updateUrl}
