@@ -10,7 +10,7 @@ const WithBlankSlate: React.FunctionComponent = () => (
         <TableComposed
             id="blankSlate"
             className="table"
-            data={{} as any}
+            data={[]}
             renderBody={() => renderRows}
             tableHeader={renderHeader()}
         />
