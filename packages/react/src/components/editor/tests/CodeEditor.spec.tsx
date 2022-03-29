@@ -102,7 +102,7 @@ describe('CodeEditor', () => {
             userEvent.type(screen.getByRole('textbox'), 'new value');
             screen.getByRole('textbox').blur();
 
-            await waitFor(() => expect(updateSpy).toHaveBeenCalledTimes(2), {timeout: 2000});
+            await waitFor(() => expect(updateSpy).toHaveBeenCalledTimes(2));
         });
 
         it('removes the code editor from the store on unmount if mounted with an id', () => {

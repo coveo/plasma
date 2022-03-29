@@ -54,6 +54,7 @@ export const ToastExamples = () => (
         id="Toast"
         componentSourcePath="/toast/Toast.tsx"
         title="Toast"
+        thumbnail="toast"
         section="Feedback"
         description="A toast displays a short message related to an action performed by a user."
         code={code}
