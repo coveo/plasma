@@ -1,3 +1,12 @@
+## 40.1.2 (2022-03-29)
+
+
+### Bug Fixes
+
+* **actions:** removed focus style on more button ([8b9133c](https://github.com/coveo/plasma/commits/8b9133c7edb50d72177af1f64623b721cd6db26a))
+
+
+
 ## 40.1.1 (2022-03-29)
 
 
