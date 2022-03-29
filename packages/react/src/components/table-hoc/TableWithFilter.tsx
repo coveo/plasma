@@ -66,7 +66,7 @@ export const tableWithFilter = (
                     id={this.props.id}
                     className="coveo-table-actions"
                     filterPlaceholder={filterPlaceholder || config.placeholder}
-                    isAutoFocus={config.filter.isAutoFocus}
+                    isAutoFocus={config.filter?.isAutoFocus ?? true}
                 />
             );
 
