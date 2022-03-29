@@ -37,7 +37,7 @@ export interface ITableHOCOwnProps {
     /**
      * Content of the body of the table
      *
-     * @param data The data from the "data" prop
+     * @param data The data from the "data" prop modified by the HOCs if any
      */
     renderBody: (data: any[]) => React.ReactNode;
     /**
@@ -55,7 +55,7 @@ export interface ITableHOCOwnProps {
      */
     tableHeader?: React.ReactNode;
     /**
-     * A callback function executed each time an HOC of the table changes. For exmaple, it's useful to fetch new data with the server side table
+     * A callback function executed each time an HOC of the table changes. For example, it's useful to fetch new data with the server side table
      */
     onUpdate?: () => void;
     /**
