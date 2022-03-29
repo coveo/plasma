@@ -1,6 +1,6 @@
 # Best Practices
 
-A slider is appropriate when providing **an exact value is not important**. Sliders typically allow users to adjust the intensity of an effect, such as a percentage of opacity, or when an approximate value is sufficient, for example when choosing a flight departure time. It helps visualize a range of allowed values. 
+A slider is appropriate when providing **an exact value is not important**. Sliders typically allow users to adjust the intensity of an effect, such as a percentage of opacity, or when an approximate value is sufficient, for example when choosing a flight departure time. It helps visualize a range of allowed values. Consider the following:
 
 * Use a slider when page real estate is not an issue and when visualizing the range helps users make more informed choices.
 * The slider should have a range of up to 100 values. 
