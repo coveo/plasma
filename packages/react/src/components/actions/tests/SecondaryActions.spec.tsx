@@ -77,7 +77,7 @@ describe('Actions', () => {
             />
         );
 
-        expect(wrapper.find('div.dropdown').props()).toMatchObject({
+        expect(wrapper.find('span.dropdown').props()).toMatchObject({
             style: {
                 cursor: 'pointer',
             },
@@ -92,7 +92,7 @@ describe('Actions', () => {
             />
         );
 
-        expect(wrapper.find('div.dropdown').props()).toMatchObject({
+        expect(wrapper.find('span.dropdown').props()).toMatchObject({
             style: {
                 cursor: 'default',
             },
