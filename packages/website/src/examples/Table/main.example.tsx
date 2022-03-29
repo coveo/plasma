@@ -7,7 +7,7 @@ export default () => (
         id={'tableId'}
         className="table"
         data={dataForRows}
-        renderBody={(data: any) => generateRows(data, 'tableId')}
+        renderBody={(data: IExampleRowData[]) => generateRows(data, 'tableId')}
         tableHeader={renderHeader()}
         showBorderTop
         showBorderBottom
