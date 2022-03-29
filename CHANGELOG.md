@@ -1,3 +1,13 @@
+## 40.1.1 (2022-03-29)
+
+
+### Bug Fixes
+
+* **button:** fix icon alignment in button with href ([da29a32](https://github.com/coveo/plasma/commits/da29a32dc9159895d1d27756c4d8773188e1eb21))
+* oops ([17ee1e4](https://github.com/coveo/plasma/commits/17ee1e4ed044752b596d2e89312ea443eccbb554))
+
+
+
 # 40.1.0 (2022-03-28)
 
 
