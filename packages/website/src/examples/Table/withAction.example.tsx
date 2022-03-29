@@ -3,12 +3,14 @@ import {IActionOptions, TableHOC, TableRowConnected, tableWithActions} from '@co
 import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 
+const TABLE_ID: string = 'mainExampleTableId';
+
 export default () => (
     <TableComposed
-        id="tableId"
+        id={TABLE_ID}
         className="table"
         data={dataForRows}
-        renderBody={(data: IExampleRowData[]) => generateRows(data, 'tableId')}
+        renderBody={(data: IExampleRowData[]) => generateRows(data, TABLE_ID)}
         tableHeader={renderHeader()}
         showBorderTop
         showBorderBottom

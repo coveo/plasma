@@ -3,12 +3,14 @@ import {TableHOC, TableRowConnected, tableWithPredicate} from '@coveord/plasma-r
 import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 
+const TABLE_ID: string = 'withPredicateTableId';
+
 export default () => (
     <TableComposed
-        id="tableId"
+        id={TABLE_ID}
         className="table"
         data={dataForRows}
-        renderBody={(data: IExampleRowData[]) => generateRows(data, 'tableId')}
+        renderBody={(data: IExampleRowData[]) => generateRows(data, TABLE_ID)}
         tableHeader={renderHeader()}
         showBorderTop
         showBorderBottom

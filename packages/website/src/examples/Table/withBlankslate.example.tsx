@@ -3,12 +3,14 @@ import {compose} from 'redux';
 
 import {Badge, TableHOC, TableRowConnected, tableWithBlankSlate, tableWithNewPagination} from '@coveord/plasma-react';
 
+const TABLE_ID: string = 'withBlankslateTableId';
+
 export default () => <WithBlankSlate />;
 
 const WithBlankSlate: React.FunctionComponent = () => (
     <>
         <TableComposed
-            id="blankSlate"
+            id={TABLE_ID}
             className="table"
             data={[]}
             renderBody={() => renderRows}
@@ -56,7 +58,7 @@ const data = [
 ];
 
 const renderRows = data?.map((item) => (
-    <TableRowConnected id={item.id} tableId={'tableId'} key={item.id}>
+    <TableRowConnected id={item.id} tableId={TABLE_ID} key={item.id}>
         <td key="city">{item.city}</td>
         <td key="username">{item.username.toLowerCase()}</td>
         <td>

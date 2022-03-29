@@ -3,13 +3,15 @@ import {TableHeaderWithSort, TableHOC, TableRowConnected, tableWithSort} from '@
 import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 
+const TABLE_ID: string = 'withSortTableId';
+
 export default () => (
     <TableComposed
-        id="tableId"
+        id={TABLE_ID}
         className="table"
         data={dataForRows}
-        renderBody={(data: IExampleRowData[]) => generateRows(data, 'tableId')}
-        tableHeader={renderHeader('tableId')}
+        renderBody={(data: IExampleRowData[]) => generateRows(data, TABLE_ID)}
+        tableHeader={renderHeader(TABLE_ID)}
         showBorderTop
         showBorderBottom
     />

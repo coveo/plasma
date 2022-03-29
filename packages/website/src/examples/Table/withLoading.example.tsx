@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {Badge, TableHOC, TableRowConnected} from '@coveord/plasma-react';
 
+const TABLE_ID: string = 'withLoadingTableId';
+
 export default () => (
     <TableHOC
-        id={'tableId'}
+        id={TABLE_ID}
         className="table"
         data={data}
         renderBody={() => renderRows}
@@ -54,7 +56,7 @@ const data = [
 ];
 
 const renderRows = data?.map((item) => (
-    <TableRowConnected id={item.id} tableId={'tableId'} key={item.id}>
+    <TableRowConnected id={item.id} tableId={TABLE_ID} key={item.id}>
         <td key="city">{item.city}</td>
         <td key="username">{item.username.toLowerCase()}</td>
         <td>

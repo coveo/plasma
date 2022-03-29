@@ -9,6 +9,7 @@ import {
 
 import {compose} from 'redux';
 
+const TABLE_ID: string = 'withServerTableId';
 const ServerTableComposed = compose<any>(withServerSideProcessing, tableWithUrlState)(TableHOC);
 
 export default () => {
@@ -24,7 +25,7 @@ export default () => {
 
     return (
         <ServerTableComposed
-            id={'tableId'}
+            id={TABLE_ID}
             className="table table-numbered mod-collapsible-rows"
             data={users}
             renderBody={(allData: IExampleRowData[]) => generateRows(allData)}
@@ -86,7 +87,7 @@ const generateRows = (allData: IExampleRowData[]) =>
     allData.map((data: IExampleRowData, i: number) => (
         <TableRowConnected
             id={data.username}
-            tableId={'tableId'}
+            tableId={TABLE_ID}
             key={data.username}
             isMultiselect
             disabled={i % 3 === 0}
