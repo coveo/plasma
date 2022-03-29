@@ -3,7 +3,7 @@ import {IActionOptions, TableHOC, TableRowConnected, tableWithActions} from '@co
 import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 
-const TABLE_ID: string = 'mainExampleTableId';
+const TABLE_ID: string = 'withActionsTableId';
 
 export default () => (
     <TableComposed
