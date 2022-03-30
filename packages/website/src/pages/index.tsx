@@ -114,7 +114,7 @@ const LayoutPages: React.FC = () => (
                 href="layout/IconCard"
             />
             <Tile title="Info Box" description="An info box displays contextual information." href="layout/InfoBox" />
-            <Tile title="Labelled Value" href="layout/LabeledValue" />
+            <Tile title="Labeled Value" href="layout/LabeledValue" />
             <Tile
                 title="Limit Card"
                 description="A limit card displays the limit and usage of a resource. It includes a bar illustrating the usage against the limit."
@@ -146,11 +146,8 @@ const LayoutPages: React.FC = () => (
             <Tile
                 title="Table"
                 description="A table displays large quantities of items or data in a list format. Filtering features and actions may be added."
-                href="layout/TableHOC"
+                href="layout/Table"
             />
-            <Tile title="Table HOC Loading" href="layout/TableHOCLoading" />
-            <Tile title="Table HOC Server" href="layout/TableHOCServer" />
-            <Tile title="Table HOC with Blank Slate" href="layout/TableHOCwithBlankSlate" />
         </div>
     </Section>
 );
