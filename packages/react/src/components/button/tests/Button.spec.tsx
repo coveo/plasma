@@ -116,14 +116,6 @@ describe('Button', () => {
                 expect(buttonComponent.find('a').prop('href')).toEqual(link);
             });
 
-            it('should have the class btn-container', () => {
-                showButton({
-                    link,
-                });
-
-                expect(buttonComponent.find('.btn-container').length).toBe(1);
-            });
-
             it('should add the rel default value', () => {
                 showButton({
                     link,

@@ -48,6 +48,9 @@ const TableWithPaginationProps = ['totalEntries', 'totalPages', 'pageNb', 'perPa
 
 const sliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
 
+/**
+ * @deprecated use tableWithNewPagination instead
+ */
 export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginationConfig> = {}) => (
     Component: React.ComponentType<ITableWithPaginationProps>
 ) => {
@@ -56,7 +59,9 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         state: PlasmaState,
         ownProps: ITableHOCOwnProps & WithServerSideProcessingProps
     ): ITableWithPaginationStateProps | ITableHOCOwnProps => {
-        const pageNb = NavigationSelectors.getPaginationPage(state, {id: TableHOCUtils.getPaginationId(ownProps.id)});
+        const pageNb = NavigationSelectors.getPaginationPage(state, {
+            id: TableHOCUtils.getPaginationId(ownProps.id),
+        });
         const perPage = NavigationSelectors.getPerPage(state, {id: ownProps.id});
         const isServer = ownProps.isServer || config.isServer;
         const length = TableSelectors.getDataCount(state, {
@@ -77,6 +82,9 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         };
     };
 
+    /**
+     * @deprecated use tableWithNewPagination instead
+     */
     class TableWithPagination extends React.Component<ITableWithPaginationProps> {
         componentDidMount() {
             this.props.onMount();

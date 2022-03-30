@@ -37,6 +37,6 @@ If providing the information is optional, the text input will be automatically t
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Text Area](#/form/TextArea) to have users enter longer text.
--   [Numeric input](#/form/NumericInput) when only numerical characters are allowed.
--   [Single select](#/form/SingleSelect) to have users select an option from a list instead.
+-   [Text Area](https://plasma.coveo.com/form/TextArea) - When users need to enter longer text.
+-   [Numeric input](https://plasma.coveo.com/form/NumericInput) - When only numerical characters are allowed.
+-   [Single select](https://plasma.coveo.com/form/SingleSelect) - When users need to select an option from a list instead.

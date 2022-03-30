@@ -68,6 +68,10 @@
         @include arrow-down-icon(var(--deprecated-medium-grey));
     }
 
+    &.mod-search {
+        text-align: left;
+    }
+
     &.dropdown-toggle-placeholder {
         color: var(--default-text-color);
     }
@@ -108,14 +112,6 @@
 
     .dropdown-toggle-arrow {
         @include arrow-down-icon(var(--deprecated-medium-blue));
-    }
-
-    &.mod-search {
-        text-align: left;
-    }
-
-    &:focus {
-        @include focus-border(var(--white), 0, $button-border-width);
     }
 }
 

@@ -1,6 +1,6 @@
 # Best Practices
 
-Use a Single select to have users **filter options from a long list and select only one**. A Single select is especially appropriate when the list of available options is very long or when the space is limited.
+Use a single select to have users **filter options from a long list and select only one**. A single select is especially appropriate when the list of available options is very long or when the space is limited.
 
 List options in alphanumerical order unless a more suited ordering rationale applies, for example when listing size or security level options.
 
@@ -18,7 +18,7 @@ Provide a descriptive title without action verbs. For instance, write "Favorite 
 
 ## Labels
 
-Labels identify each option and should be self-explanatory. The width of the input should allow to fully display the name of the selected option.
+Labels identify each option and should be self-explanatory. The width of the input should fully display the name of the selected option.
 
 Use a consistent writing style for all options in the list.
 
@@ -39,5 +39,5 @@ Examples:
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Radio buttons](#/form/RadioButton) if there are seven options or less.
--   [Multi select](#/form/MultiSelect) if users can select multiple options from the list.
+-   [Radio buttons](https://plasma.coveo.com/form/RadioButton) - When there are seven options or less.
+-   [Multi select](https://plasma.coveo.com/form/MultiSelect) - When users can select multiple options from the list.

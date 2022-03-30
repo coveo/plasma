@@ -4,10 +4,10 @@ Whenever possible, provide ready-made selections of the most contextually releva
 
 # Variations
 
-The date picker type choice depends on the input to submit and on the precision required.
+The choice of date picker type depends on the input you want to submit and on the precision required.
 
 | Type                | Purpose                                                                                                                       |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Single Date         | Used to select a specific moment.                                                                                             |
-| Date Range          | Used to select a period of time, ranging from one to multiple days.                                                           |
-| With Time Selection | Single Date and Date Range pickers can both be configured to allow for hour and minute selection on each date to be selected. |
+| Single date         | Used to select a specific day.                                                                                             |
+| Date range          | Used to select a period of time, ranging from one to multiple days.                                                           |
+| With time selection | *Single date* and *date range* pickers can be configured to allow for hour and minute selection. |
