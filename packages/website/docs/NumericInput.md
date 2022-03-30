@@ -14,7 +14,7 @@ Provide a descriptive title without action verbs. For example, write "Price" rat
 
 # Help Text and Instructions
 
-If the value to select must be within a range, consider indicating the minimum and maximum values, or only one of them, in a help text (e.g., "Maximum of 20").
+If the required value must be within a range, consider indicating the minimum and maximum values, or only one of them, in a help text (e.g., "Maximum of 20").
 
 # Feedback and Validation
 
@@ -29,5 +29,5 @@ Determine the stepper increment relative to the range. An increment of 10% is ge
 
 # Related Components
 
-If value precision is unimportant, consider using a [slider](#/form/Sliders) instead.
+[Slider](https://plasma.coveo.com/form/Slider) - When value precision is unimportant.
 

@@ -1,12 +1,12 @@
 # Best Practices
 
-Use checkboxes to have users select one or more options from a list, or none at all.
+Use checkboxes so that users can select one or more options from a list, or none at all.
 
 Use a stand-alone checkbox to toggle a single option on/off if the result is not immediately visible, e.g., when a final confirmation from the user is required to apply changes.
 
-Conversely, if the result is applied immediately, such as a change of display, use a [Toggle](#/form/FlatSelect) instead.
+Conversely, if the result is applied immediately, such as a change of display, use a [Toggle](https://plasma.coveo.com/form/FlatSelect) instead.
 
-Aim for seven or less options. If that's impossible, consider breaking your set of options into several smaller logical sets or using the [Multi select](#/form/MultiSelect) instead.
+Aim for seven or less options. If that's impossible, consider breaking your set of options into several smaller logical sets or consider using [Multi select](https://plasma.coveo.com/form/MultiSelect) instead.
 
 List options in alphanumerical order unless a more suited ordering rationale applies, for example when listing size or security level options. If no rationale stands out, place options in alphanumerical order.
 
@@ -46,6 +46,6 @@ The partially selected state is only allowed with checkboxes that have children 
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Multi select](#/form/MultiSelect) if there are more than seven options.
--   [Toggle](#/form/FlatSelect) if the result applies immediately, for example with a change of display.
--   [Radio button](#/form/RadioButton) if options are mutually exclusive.
+-   [Multi select](https://plasma.coveo.com/form/MultiSelect) - When there are more than seven options.
+-   [Toggle](https://plasma.coveo.com/form/FlatSelect) - When the result applies immediately, for example with a change of display.
+-   [Radio button](https://plasma.coveo.com/form/RadioButton) - When options are mutually exclusive.

@@ -1,10 +1,10 @@
 # Best Practices
 
-Use a Multi select to have users **filter and select options from a long list**. A Multi select is especially appropriate when the available list of options is very long or when space is limited.
+Use a Multi select for when users need to **filter and select options from a long list**. A Multi select is especially appropriate when the available list of options is very long or when space is limited.
 
-List options in alphanumerical order unless a more suited ordering rationale applies, for example when listing size or security level options.
+List options in alphanumerical order unless a more suited ordering rationale applies. For example, when listing size (large to small) or security level options (full access to limited access).
 
-Always include the ability to filter options when the list contains 20 or more.
+When a list contains 20 or more options, include the ability to filter them.
 
 # Labeling
 
@@ -39,6 +39,6 @@ Examples:
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Multiline box](#/form/MultilineBox) if space is not an issue or if legibility of the selected option is critical.
--   [Checkbox](#/form/Checkbox) if there are seven options or less.
--   [Single select](#/form/SingleSelect) if users can select only one option from the list.
+-   [Multiline box](https://plasma.coveo.com/form/MultilineBox) - When space is not an issue or when legibility of the selected option is critical.
+-   [Checkbox](https://plasma.coveo.com/form/Checkbox) - When there are seven options or less.
+-   [Single select](https://plasma.coveo.com/form/SingleSelect) - When users can select only one option from the list.
