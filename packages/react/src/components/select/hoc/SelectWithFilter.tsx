@@ -164,7 +164,7 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
                     {...newProps}
                     noResultItem={noResultItem}
                     noDisabled={this.props.customValues}
-                    hasFocusableChild
+                    hasFocusableChild={true}
                 >
                     <FilterBoxConnected
                         {...this.props.filter}
@@ -172,7 +172,7 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
                         onKeyDown={(this.props as any).onKeyDown}
                         onKeyUp={(this.props as any).onKeyUp}
                         className={filterBoxClassNames}
-                        isAutoFocus
+                        isAutoFocus={true}
                     ></FilterBoxConnected>
                     {this.props.children}
                 </Component>
