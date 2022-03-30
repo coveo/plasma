@@ -1,3 +1,12 @@
+## 40.1.4 (2022-03-30)
+
+
+### Bug Fixes
+
+* oppsie ([49c5961](https://github.com/coveo/plasma/commits/49c59615f5edd942e09a5d082be479914d48502a))
+
+
+
 ## 40.1.3 (2022-03-30)
 
 
