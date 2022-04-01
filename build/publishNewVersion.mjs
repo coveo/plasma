@@ -94,14 +94,14 @@ const outputProcess = (process) => {
 
             const versionTag = `${VERSION_PREFIX}${newVersion}`;
             if (!options.dry) {
+                console.log(`Publishing version ${versionTag} on NPM`);
+                outputProcess(
+                    pnpmPublish(since, options.tag, options.branch)
+                );
+
                 gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
                 gitTag(versionTag);
                 if (remote) {
-                    console.log(`Publishing version ${versionTag} on NPM`);
-                    outputProcess(
-                        pnpmPublish(since, options.tag, options.branch)
-                    );
-
                     console.log(`Pushing version ${versionTag} on git`);
                     outputProcess(gitPush());
                     outputProcess(gitPushTags());
