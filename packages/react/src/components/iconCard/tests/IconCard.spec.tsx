@@ -6,6 +6,12 @@ import * as React from 'react';
 import {IconCard} from '../IconCard';
 
 describe('IconCard', () => {
+    const svgChild = (
+        <div role="img" aria-label="shrug icon">
+            🤷
+        </div>
+    );
+
     it('renders the specified icon and title', () => {
         render(<IconCard title="The Title" svgName="home" />);
 
@@ -13,12 +19,14 @@ describe('IconCard', () => {
         expect(screen.getByRole('heading', {name: /the title/i})).toBeVisible();
     });
 
+    it('accepts and renders a node as title', () => {
+        const testId = 'test-id';
+        render(<IconCard title={<div data-testid={testId}>Title</div>} svgName="home" />);
+
+        expect(screen.getByTestId(testId)).toBeVisible();
+    });
+
     it('renders custom icons', () => {
-        const svgChild = (
-            <div role="img" aria-label="shrug icon">
-                🤷
-            </div>
-        );
         render(<IconCard title="The Title" svgChild={svgChild} />);
 
         expect(screen.getByRole('img', {name: /shrug icon/i})).toBeVisible();
@@ -113,11 +121,6 @@ describe('IconCard', () => {
     });
 
     it('shows icons in the drawer when clicking on it', () => {
-        const svgChild = (
-            <div role="img" aria-label="shrug icon">
-                🤷
-            </div>
-        );
         render(
             <IconCard
                 title="Title"
@@ -266,5 +269,42 @@ describe('IconCard', () => {
 
         const card = container.querySelector('.icon-card');
         expect(card).not.toHaveClass('animateOnHover');
+    });
+
+    it('should NOT render the badges within the main content container if placeBadgesAbove is unset', () => {
+        const badgeLabel = 'Badge1';
+        render(<IconCard title="Title" svgChild={svgChild} badges={[{label: badgeLabel}]} />);
+
+        const contentContainer = screen.getByTestId('main-content');
+        expect(within(contentContainer).queryByText(badgeLabel)).not.toBeInTheDocument();
+    });
+
+    it('should render the badges within the main content container if placeBadgesAbove is true', () => {
+        const badgeLabel = 'Badge1';
+        render(<IconCard title="Title" svgChild={svgChild} badges={[{label: badgeLabel}]} placeBadgesAbove />);
+
+        const contentContainer = screen.getByTestId('main-content');
+        expect(within(contentContainer).getByText(badgeLabel)).toBeVisible();
+    });
+
+    it('should not add the mod-fixed class to the container button if fixedSize is unset', () => {
+        render(<IconCard title="Title" svgChild={svgChild} />);
+
+        const card = screen.getByRole('button', {name: /title/i});
+        expect(card).not.toHaveClass('mod-fixed');
+    });
+
+    it('should add the mod-fixed class to the container button if fixedSize is true', () => {
+        render(<IconCard title="Title" svgChild={svgChild} fixedSize />);
+
+        const card = screen.getByRole('button', {name: /title/i});
+        expect(card).toHaveClass('mod-fixed');
+    });
+
+    it('should not add the full-content-x class to the container button if fixedSize is true', () => {
+        render(<IconCard title="Title" svgChild={svgChild} fixedSize />);
+
+        const card = screen.getByRole('button', {name: /title/i});
+        expect(card).not.toHaveClass('full-content-x');
     });
 });

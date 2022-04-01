@@ -4,7 +4,7 @@ import * as React from 'react';
 import {slugify} from 'underscore.string';
 
 import {SlideY} from '../../animations';
-import {TooltipPlacement} from '../../utils';
+import {Override, TooltipPlacement} from '../../utils';
 import {Badge, IBadgeProps} from '../badge/Badge';
 import {SvgChild, SvgChildProps, OptionalSvgChildProps} from '../svg/SvgChild';
 import {ITooltipProps, Tooltip} from '../tooltip';
@@ -20,7 +20,7 @@ export interface IconCardProps {
     /**
      * The main text displayed on the card
      */
-    title: string;
+    title: React.ReactNode;
     /**
      * The secondary text displayed on the card
      */
@@ -57,11 +57,20 @@ export interface IconCardProps {
      * @default false
      */
     disabled?: boolean;
+    /**
+     * Whether to place the badges above the title.
+     */
+    placeBadgesAbove?: boolean;
+    /**
+     * Whether the card should have a fixed width of `456px` and height of `216px`.
+     */
+    fixedSize?: boolean;
 }
 
-export const IconCard: React.FunctionComponent<
-    IconCardProps & SvgChildProps & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = ({
+export const IconCard: React.FunctionComponent<Override<
+    SvgChildProps & React.HTMLAttributes<HTMLDivElement>,
+    IconCardProps
+>> = ({
     title,
     badges = [],
     description,
@@ -73,6 +82,8 @@ export const IconCard: React.FunctionComponent<
     tooltip,
     choices,
     animateOnHover,
+    placeBadgesAbove,
+    fixedSize,
     className,
     small,
     children,
@@ -116,9 +127,11 @@ export const IconCard: React.FunctionComponent<
         >
             <Tooltip {...tooltip} placement={tooltip?.placement || TooltipPlacement.Top} noSpanWrapper>
                 <button
-                    className={classNames('card flex full-content-x p3', {
+                    className={classNames('card flex center-align p3', {
                         'cursor-pointer': (!!onClick || hasChoices) && !disabled && !isOpen,
                         'mod-small': !!small,
+                        'mod-fixed': fixedSize,
+                        'full-content-x': !fixedSize,
                     })}
                     onClick={handleCardClick}
                     aria-expanded={isOpen}
@@ -135,15 +148,17 @@ export const IconCard: React.FunctionComponent<
                             svgClass
                         )}
                     />
-                    <div className="flex flex-column flex-auto justify-center">
+                    <div data-testid="main-content" className="flex flex-column flex-auto justify-center">
+                        {placeBadgesAbove && !!badgeComponents.length ? (
+                            <div className="flex mb1">{badgeComponents}</div>
+                        ) : null}
                         <h6 className="title">{title}</h6>
                         {description && <p className="description">{description}</p>}
                     </div>
-
-                    {badgeComponents.length > 0 || React.Children.count(children) > 0 ? (
+                    {(!placeBadgesAbove && !!badgeComponents.length) || React.Children.count(children) > 0 ? (
                         <div className="flex center-align">
                             {children}
-                            {badgeComponents}
+                            {!placeBadgesAbove && badgeComponents}
                         </div>
                     ) : null}
                 </button>

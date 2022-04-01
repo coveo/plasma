@@ -25,6 +25,11 @@
         top: 8px;
         z-index: 1;
         transition: var(--default-transition);
+
+        &.mod-fixed {
+            width: 456px;
+            height: 216px;
+        }
     }
 
     &.disabled {
