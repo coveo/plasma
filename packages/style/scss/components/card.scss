@@ -21,10 +21,6 @@ $status-card-small-width: 160px;
     border: $default-border;
     border-radius: var(--border-radius);
     box-shadow: var(--low-elevation-on-light);
-
-    .fixed-width {
-        width: 456px;
-    }
 }
 
 .status-card {
