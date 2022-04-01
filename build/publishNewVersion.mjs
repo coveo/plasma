@@ -36,9 +36,11 @@ program.parse();
 const options = program.opts();
 
 const outputProcess = (process) => {
-    console.log(process.stdout.trim());
-    if (process.status !== 0) {
-        console.error(process.stderr.trim());
+    if (process) {
+        console.log(process.stdout.trim());
+        if (process.status !== 0) {
+            console.error(process.stderr.trim());
+        }
     }
 };
 
