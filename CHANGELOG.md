@@ -1,3 +1,12 @@
+## 40.1.6 (2022-04-01)
+
+
+### Bug Fixes
+
+* **modal:** title is now a reactNode ([577f822](https://github.com/coveo/plasma/commits/577f8222fc4491afaa12ae506405660a728deae7))
+
+
+
 ## 40.1.5 (2022-04-01)
 
 
