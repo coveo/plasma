@@ -1,3 +1,12 @@
+## 40.1.7 (2022-04-01)
+
+
+### Bug Fixes
+
+* **plasma-react:** better management of isDirty in TextInput ([674110e](https://github.com/coveo/plasma/commits/674110e118d0046d4c685e4470cee50630d384a2))
+
+
+
 ## 40.1.6 (2022-04-01)
 
 
