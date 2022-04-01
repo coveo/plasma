@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import {FormProvider} from '../../form/FormProvider';
 import {InputValidator, TextInput} from '../TextInput';
+import {useTextInput} from '../useTextInput';
 
 describe('TextInput', () => {
     it('throws an error if the rendering a TextInput outside a FormProvider', () => {
@@ -221,5 +222,57 @@ describe('TextInput', () => {
         userEvent.click(screen.getByRole('button', {name: /toggle input/i})); // unmount
         userEvent.click(screen.getByRole('button', {name: /toggle input/i})); // mount again
         expect(screen.getByRole('textbox', {name: /name/i})).toHaveValue('');
+    });
+
+    it('indicate the input is dirty if the currentValue is different from the initialValue (no defaultValue)', () => {
+        const Fixture = () => {
+            const {state} = useTextInput('🆔');
+            return (
+                <>
+                    <TextInput id="🆔" type="text" label="Name" />
+                    {state.isDirty ? 'dirty' : 'pristine'}
+                </>
+            );
+        };
+
+        render(
+            <FormProvider>
+                <Fixture />
+            </FormProvider>
+        );
+
+        const nameInput = screen.getByRole('textbox', {name: /name/i});
+
+        expect(screen.getByText('pristine')).toBeInTheDocument();
+        userEvent.type(nameInput, 'John');
+        expect(screen.getByText('dirty')).toBeInTheDocument();
+        userEvent.clear(nameInput);
+        expect(screen.getByText('pristine')).toBeInTheDocument();
+    });
+
+    it('indicate the input is dirty if the currentValue is different from the initialValue (with defaultValue)', () => {
+        const Fixture = () => {
+            const {state} = useTextInput('🆔');
+            return (
+                <>
+                    <TextInput id="🆔" type="text" label="Name" defaultValue="John" />
+                    {state.isDirty ? 'dirty' : 'pristine'}
+                </>
+            );
+        };
+
+        render(
+            <FormProvider>
+                <Fixture />
+            </FormProvider>
+        );
+
+        const nameInput = screen.getByRole('textbox', {name: /name/i});
+
+        expect(screen.getByText('pristine')).toBeInTheDocument();
+        userEvent.clear(nameInput);
+        expect(screen.getByText('dirty')).toBeInTheDocument();
+        userEvent.type(nameInput, 'John');
+        expect(screen.getByText('pristine')).toBeInTheDocument();
     });
 });
