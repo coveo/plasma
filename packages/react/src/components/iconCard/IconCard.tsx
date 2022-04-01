@@ -62,9 +62,9 @@ export interface IconCardProps {
      */
     placeBadgesAbove?: boolean;
     /**
-     * Whether the card should have a fixed width of `456px` and height of `216px`.
+     * Classes to apply to the card button element.
      */
-    fixedSize?: boolean;
+    cardClasses?: string[];
 }
 
 export const IconCard: React.FunctionComponent<Override<
@@ -83,7 +83,7 @@ export const IconCard: React.FunctionComponent<Override<
     choices,
     animateOnHover,
     placeBadgesAbove,
-    fixedSize,
+    cardClasses,
     className,
     small,
     children,
@@ -127,12 +127,14 @@ export const IconCard: React.FunctionComponent<Override<
         >
             <Tooltip {...tooltip} placement={tooltip?.placement || TooltipPlacement.Top} noSpanWrapper>
                 <button
-                    className={classNames('card flex center-align p3', {
-                        'cursor-pointer': (!!onClick || hasChoices) && !disabled && !isOpen,
-                        'mod-small': !!small,
-                        'mod-fixed': fixedSize,
-                        'full-content-x': !fixedSize,
-                    })}
+                    className={classNames(
+                        'card flex center-align p3 full-content-x',
+                        {
+                            'cursor-pointer': (!!onClick || hasChoices) && !disabled && !isOpen,
+                            'mod-small': !!small,
+                        },
+                        cardClasses
+                    )}
                     onClick={handleCardClick}
                     aria-expanded={isOpen}
                 >

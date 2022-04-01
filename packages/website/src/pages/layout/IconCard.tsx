@@ -80,12 +80,12 @@ const badgesOnTop = `
         <IconCard
             title={<span className="h5 bolder">Simple builder</span>}
             description="For lightweight usage, prototyping, and testing the search experience. Hosted by Coveo."
-            svgChild={<img className="mr2" style={{width: '112px', height: '112px'}} src="https://placeholder.pics/svg/112x112/DEDEDE/FFFFFF-FFFFFF" />}
-            fixedSize
+            svgChild={<img className="mr3" style={{width: '112px', height: '112px'}} src="https://placeholder.pics/svg/112x112/DEDEDE/FFFFFF-FFFFFF" />}
             placeBadgesAbove
             badges={[{label: 'Recommended', extraClasses: ['mod-small', 'mod-information']}]}
             animateOnHover
             onClick={() => alert('You clicked the card')}
+            cardClasses={['mod-fixed-size']}
         />
     );
 `;

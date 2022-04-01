@@ -287,24 +287,10 @@ describe('IconCard', () => {
         expect(within(contentContainer).getByText(badgeLabel)).toBeVisible();
     });
 
-    it('should not add the mod-fixed class to the container button if fixedSize is unset', () => {
-        render(<IconCard title="Title" svgChild={svgChild} />);
+    it('should add the given class to the container button if cardClasses is defined', () => {
+        render(<IconCard title="Title" svgChild={svgChild} cardClasses={['mod-fixed-size']} />);
 
         const card = screen.getByRole('button', {name: /title/i});
-        expect(card).not.toHaveClass('mod-fixed');
-    });
-
-    it('should add the mod-fixed class to the container button if fixedSize is true', () => {
-        render(<IconCard title="Title" svgChild={svgChild} fixedSize />);
-
-        const card = screen.getByRole('button', {name: /title/i});
-        expect(card).toHaveClass('mod-fixed');
-    });
-
-    it('should not add the full-content-x class to the container button if fixedSize is true', () => {
-        render(<IconCard title="Title" svgChild={svgChild} fixedSize />);
-
-        const card = screen.getByRole('button', {name: /title/i});
-        expect(card).not.toHaveClass('full-content-x');
+        expect(card).toHaveClass('mod-fixed-size');
     });
 });
