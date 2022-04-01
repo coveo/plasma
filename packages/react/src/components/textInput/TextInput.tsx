@@ -46,10 +46,14 @@ interface TextInputProps {
      * Whether the validation result should be visible when the input looses the focus (recommended)
      */
     showValidationOnBlur?: boolean;
+    /**
+     * The initial value
+     */
+    defaultValue?: string;
 }
 
 export const TextInput: React.FunctionComponent<
-    TextInputProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'>
+    TextInputProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>
 > = ({
     id: propsId,
     label,
@@ -67,7 +71,7 @@ export const TextInput: React.FunctionComponent<
     ...inputProps
 }) => {
     const id = React.useMemo(() => propsId || uniqueId(), [propsId]);
-    const {state, dispatch} = useTextInput(id);
+    const {state, dispatch} = useTextInput(id, defaultValue);
     const inputElement = React.useRef<HTMLInputElement>();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -105,7 +109,7 @@ export const TextInput: React.FunctionComponent<
                 throw new Error(`Unknown input validation status: ${status}.`);
         }
 
-        if (state.value === defaultValue) {
+        if (state.value === (defaultValue ?? '')) {
             dispatch({type: 'set-pristine'});
         } else {
             dispatch({type: 'set-dirty'});

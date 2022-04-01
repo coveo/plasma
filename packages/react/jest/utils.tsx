@@ -10,8 +10,6 @@ import {PlasmaReducers} from '../src/PlasmaReducers';
 import {PlasmaState} from '../src/PlasmaState';
 import {IDispatch} from '../src/utils/ReduxUtils';
 
-import 'chosen-js';
-
 const TEST_CONTAINER_ID = 'app';
 const MODAL_ROOT_ID = 'modals';
 const DROP_ROOT_ID = 'dropdowns';
