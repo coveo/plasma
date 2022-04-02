@@ -93,7 +93,7 @@
         "@types/jquery": "2.0.60",
         "@types/loadable__component": "5.13.4",
         "@types/lorem-ipsum": "2.0.0",
-        "@types/react": "16.14.24",
+        "@types/react": "17.0.43",
         "@types/react-bootstrap": "0.32.29",
         "@types/react-codemirror": "1.0.7",
         "@types/react-color": "3.0.6",
