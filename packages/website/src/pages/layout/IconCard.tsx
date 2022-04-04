@@ -85,7 +85,7 @@ const badgesOnTop = `
             badges={[{label: 'Recommended', extraClasses: ['mod-small', 'mod-information']}]}
             animateOnHover
             onClick={() => alert('You clicked the card')}
-            cardClasses={['mod-fixed-size']}
+            cardClassName={['mod-fixed-size']}
         />
     );
 `;

@@ -64,7 +64,7 @@ export interface IconCardProps {
     /**
      * Classes to apply to the card button element.
      */
-    cardClasses?: string[];
+    cardClassName?: string[];
 }
 
 export const IconCard: React.FunctionComponent<Override<
@@ -83,7 +83,7 @@ export const IconCard: React.FunctionComponent<Override<
     choices,
     animateOnHover,
     placeBadgesAbove,
-    cardClasses,
+    cardClassName,
     className,
     small,
     children,
@@ -133,7 +133,7 @@ export const IconCard: React.FunctionComponent<Override<
                             'cursor-pointer': (!!onClick || hasChoices) && !disabled && !isOpen,
                             'mod-small': !!small,
                         },
-                        cardClasses
+                        cardClassName
                     )}
                     onClick={handleCardClick}
                     aria-expanded={isOpen}

@@ -271,7 +271,7 @@ describe('IconCard', () => {
         expect(card).not.toHaveClass('animateOnHover');
     });
 
-    it('should NOT render the badges within the main content container if placeBadgesAbove is unset', () => {
+    it('does not render the badges within the main content container if placeBadgesAbove is false', () => {
         const badgeLabel = 'Badge1';
         render(<IconCard title="Title" svgChild={svgChild} badges={[{label: badgeLabel}]} />);
 
@@ -288,7 +288,7 @@ describe('IconCard', () => {
     });
 
     it('should add the given class to the container button if cardClasses is defined', () => {
-        render(<IconCard title="Title" svgChild={svgChild} cardClasses={['mod-fixed-size']} />);
+        render(<IconCard title="Title" svgChild={svgChild} cardClassName={['mod-fixed-size']} />);
 
         const card = screen.getByRole('button', {name: /title/i});
         expect(card).toHaveClass('mod-fixed-size');
