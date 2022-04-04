@@ -1,3 +1,12 @@
+## 40.2.2 (2022-04-04)
+
+
+### Bug Fixes
+
+* **plasma-tokens:** change ICONS for Icons in the jenkins params ([524970a](https://github.com/coveo/plasma/commits/524970a328c22a89414cae36b7a4a9d5ea32950c))
+
+
+
 ## 40.2.1 (2022-04-01)
 
 
