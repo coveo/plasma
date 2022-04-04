@@ -47,20 +47,20 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
 }) => {
     const DEFAULT_ROOT: string = 'body';
 
-    const [isOriginalPositionSet, setOriginalPosition] = React.useState(false);
-
     const [offset, setOffset] = React.useState(undefined);
-    const [lastPosition, setLastPosition] = React.useState<IDropUIPosition>({
-        position: positions?.[0] ?? DropPodPosition.bottom,
-        orientation: OrientationByPosition[positions?.[0] ?? DropPodPosition.bottom][0],
-    });
+    const [lastPosition, setLastPosition] = React.useState<IDropUIPosition | null>(null);
     const [computedStyle, setComputedStyle] = React.useState<React.CSSProperties>({});
     const [dropElement, setDropElement] = React.useState<HTMLDivElement>(null);
 
-    const updateOffset = () => {
+    const updateElement = () => {
         if (buttonRef?.current) {
             setOffset(buttonRef?.current?.getBoundingClientRect());
         }
+    };
+
+    const updateOffset = () => {
+        setLastPosition(null);
+        updateElement();
     };
 
     const setEventsOnDocument = () => {
@@ -77,7 +77,7 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
         let parentMutationObserver: MutationObserver;
         if (dropElement && dropElement.firstElementChild) {
             const config = {attributes: false, childList: true, subtree: true};
-            parentMutationObserver = new MutationObserver(updateOffset);
+            parentMutationObserver = new MutationObserver(updateElement);
             parentMutationObserver.observe(dropElement.firstElementChild, config);
         }
         return () => {
@@ -137,22 +137,37 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
                 height: Math.max(dropOffset?.height ?? 0, minHeight),
             };
 
-            if (!isOriginalPositionSet) {
-                while (_.isEmpty(newDomPosition) && index < positions.length) {
-                    const validator = DomPositionCalculator[positions[index]];
-                    newDomPosition = (validator && validator(buttonOffset, dropOffsetPrime, boundingLimit, {})) || {};
-                    index += 1;
-                }
-                setOriginalPosition(true);
-            }
-
-            if (_.isEmpty(newDomPosition)) {
+            if (lastPosition) {
                 newDomPosition = DomPositionCalculator[lastPosition.position](
                     buttonOffset,
                     dropOffsetPrime,
                     boundingLimit,
                     lastPosition
                 );
+            }
+
+            while (_.isEmpty(newDomPosition) && index < positions.length) {
+                const validator = DomPositionCalculator[positions[index]];
+                newDomPosition = (validator && validator(buttonOffset, dropOffsetPrime, boundingLimit, {})) || {};
+                index += 1;
+            }
+
+            if (_.isEmpty(newDomPosition)) {
+                if (lastPosition?.position) {
+                    newDomPosition = DomPositionCalculator[lastPosition.position](
+                        buttonOffset,
+                        dropOffsetPrime,
+                        boundingLimit,
+                        lastPosition
+                    );
+                } else {
+                    const position = positions?.[0] ?? DropPodPosition.bottom;
+                    const orientation = OrientationByPosition[position][0];
+                    newDomPosition = DomPositionCalculator[position](buttonOffset, dropOffsetPrime, boundingLimit, {
+                        position,
+                        orientation,
+                    });
+                }
             }
 
             const {style} = newDomPosition;
@@ -196,6 +211,8 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
                 setLastPosition(newDomPosition.lastPosition);
                 return newDomPosition.style;
             }
+        } else {
+            setLastPosition(null);
         }
     };
 
