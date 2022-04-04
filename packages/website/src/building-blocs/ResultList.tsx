@@ -1,5 +1,11 @@
-import {AtomicNoResults, AtomicQuerySummary, AtomicSearchInterface, Result} from '@coveo/atomic-react';
-import {loadClickAnalyticsActions, ResultList as HeadlessResultList, SearchEngine} from '@coveo/headless';
+import {
+    AtomicQuerySummary,
+    AtomicSearchInterface,
+    Result,
+    loadClickAnalyticsActions,
+    ResultList as HeadlessResultList,
+    SearchEngine,
+} from '@coveo/atomic-react';
 import {Section} from '@coveord/plasma-react';
 import {FunctionComponent, useEffect, useState} from 'react';
 import React from 'react';

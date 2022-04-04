@@ -1,4 +1,4 @@
-import {buildHistoryManager, HistoryManager, HistoryManagerState, SearchEngine} from '@coveo/headless';
+import {buildHistoryManager, HistoryManager, HistoryManagerState, SearchEngine} from '@coveo/atomic-react';
 import {Button} from '@coveord/plasma-react';
 
 import {FunctionComponent, useEffect, useState} from 'react';

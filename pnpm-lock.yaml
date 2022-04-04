@@ -418,7 +418,6 @@ importers:
   packages/website:
     specifiers:
       '@coveo/atomic-react': 0.8.2
-      '@coveo/headless': 1.48.1
       '@coveord/plasma-react': workspace:*
       '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
@@ -486,7 +485,6 @@ importers:
       underscore.string: 3.3.5
     dependencies:
       '@coveo/atomic-react': 0.8.2_0eb633c203f8ccadcaadf18e5e4385b1
-      '@coveo/headless': 1.48.1_react-redux@7.2.6+react@16.14.0
       '@coveord/plasma-react': link:../react
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
@@ -1196,40 +1194,8 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/bueno/0.34.3:
-    resolution: {integrity: sha512-J+Nzw0QqcA7yh87PSzLhsz8tq4Iq0T/b+NesoHYDJSI2Cjfwj33VMgXTakb7QynLTLG5VaplxeLZ4xwkENqELQ==}
-    dev: false
-
   /@coveo/bueno/0.34.9:
     resolution: {integrity: sha512-Ez2HoSU1GD7EQwgwqDdbB3ne6K9+ZUQ8a27PJj9BfaSwDJAE9RK0yuSmosQUJSSeR4d9F5mUuOgKd+G5e2Ngsg==}
-    dev: false
-
-  /@coveo/headless/1.48.1_react-redux@7.2.6+react@16.14.0:
-    resolution: {integrity: sha512-f2+J0kOf/+X9cEIrmW6eFEBVQ9Zx7nvj58UUvOwJFLjGVid4rK8IBQBG7IvM6YPiBIulydgXM6W8SOQEYvK/tw==}
-    peerDependencies:
-      encoding: ^0.1.13
-      pino-pretty: ^6.0.0
-    dependencies:
-      '@coveo/bueno': 0.34.3
-      '@reduxjs/toolkit': 1.7.0_react-redux@7.2.6+react@16.14.0
-      '@types/pino': 6.3.12
-      '@types/redux-mock-store': 1.0.3
-      coveo.analytics: 2.18.65
-      cross-fetch: 3.1.5
-      dayjs: 1.10.7
-      exponential-backoff: 3.1.0
-      fast-equals: 2.0.4
-      node-abort-controller: 1.2.1
-      pino: 6.13.3
-      redux: 4.1.2
-      redux-mock-store: 1.5.4
-      redux-thunk: 2.4.1_redux@4.1.2
-      ts-debounce: 3.0.0
-      web-encoding: 1.1.5
-    transitivePeerDependencies:
-      - react
-      - react-native
-      - react-redux
     dev: false
 
   /@coveo/headless/1.55.0_react-redux@7.2.6+react@16.14.0:
@@ -2614,6 +2580,7 @@ packages:
 
   /@types/node/16.11.12:
     resolution: {integrity: sha512-+2Iggwg7PxoO5Kyhvsq9VarmPbIelXP070HMImEpbtGCoyWNINQj4wzjbQCXzdHTRXnqufutJb5KAURZANNBAw==}
+    dev: true
 
   /@types/node/16.11.26:
     resolution: {integrity: sha512-GZ7bu5A6+4DtG7q9GsoHXy3ALcgeIHP4NnL0Vv2wu0uUB/yQex26v0tf6/na1mm0+bS9Uw+0DFex7aaKr2qawQ==}
@@ -2621,7 +2588,6 @@ packages:
 
   /@types/node/17.0.23:
     resolution: {integrity: sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==}
-    dev: true
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -2633,20 +2599,20 @@ packages:
   /@types/pino-pretty/4.7.3:
     resolution: {integrity: sha512-Up2guG601DADD1xr4o3WSibPLpVgNVXGrdFg3Kl+RaS8Ym3XvlT8UV9/IH+8Mk4ykNAAOemQ4QkfDZKCjgYszA==}
     dependencies:
-      '@types/node': 16.11.12
+      '@types/node': 17.0.23
       '@types/pino': 6.3.12
     dev: false
 
   /@types/pino-std-serializers/2.4.1:
     resolution: {integrity: sha512-17XcksO47M24IVTVKPeAByWUd3Oez7EbIjXpSbzMPhXVzgjGtrOa49gKBwxH9hb8dKv58OelsWQ+A1G1l9S3wQ==}
     dependencies:
-      '@types/node': 16.11.12
+      '@types/node': 17.0.23
     dev: false
 
   /@types/pino/6.3.12:
     resolution: {integrity: sha512-dsLRTq8/4UtVSpJgl9aeqHvbh6pzdmjYD3C092SYgLD2TyoCqHpTJk6vp8DvCTGGc7iowZ2MoiYiVUUCcu7muw==}
     dependencies:
-      '@types/node': 16.11.12
+      '@types/node': 17.0.23
       '@types/pino-pretty': 4.7.3
       '@types/pino-std-serializers': 2.4.1
       sonic-boom: 2.4.1
@@ -5175,16 +5141,6 @@ packages:
       rc-slider: 8.7.1
     dev: false
 
-  /coveo.analytics/2.18.65:
-    resolution: {integrity: sha512-NszWIqIYhq5GD7yZofxdd95lNP2puR1RlPoRY6Ojkh73rITkpcrOe3vj51C3GU2Kofi4a3u6Tq7vuyjuFGuGSQ==}
-    dependencies:
-      '@react-native-async-storage/async-storage': 1.16.1
-      cross-fetch: 3.1.5
-    transitivePeerDependencies:
-      - encoding
-      - react-native
-    dev: false
-
   /coveo.analytics/2.19.7:
     resolution: {integrity: sha512-BNHxa1aLguRP8V6mOmP/E3GZYD6K5OpgtnbSylcXBpEt1j+ncxbmzSIrldL7f1iDepxMTcRLGSpaLU8bgElR8w==}
     dependencies:
@@ -7655,6 +7611,10 @@ packages:
       minimist: 1.2.6
     dev: true
 
+  /graceful-fs/4.2.10:
+    resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
+    requiresBuild: true
+
   /graceful-fs/4.2.8:
     resolution: {integrity: sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==}
     dev: true
@@ -9462,7 +9422,7 @@ packages:
   /jsonfile/4.0.0:
     resolution: {integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=}
     optionalDependencies:
-      graceful-fs: 4.2.9
+      graceful-fs: 4.2.10
 
   /jsonfile/6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
@@ -9706,7 +9666,7 @@ packages:
     resolution: {integrity: sha1-L19Fq5HjMhYjT9U62rZo607AmTs=}
     engines: {node: '>=4'}
     dependencies:
-      graceful-fs: 4.2.9
+      graceful-fs: 4.2.10
       parse-json: 4.0.0
       pify: 3.0.0
       strip-bom: 3.0.0

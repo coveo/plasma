@@ -23,7 +23,6 @@
     },
     "dependencies": {
         "@coveo/atomic-react": "0.8.2",
-        "@coveo/headless": "1.48.1",
         "@coveord/plasma-react": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-style": "workspace:*",
