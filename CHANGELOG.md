@@ -1,3 +1,15 @@
+# 40.3.0 (2022-04-04)
+
+
+### Features
+
+* **card:** added props to iconcard ([55979ce](https://github.com/coveo/plasma/commits/55979ce08848d5c06dc37dc8d24f55705069eb10))
+* **card:** changed prop for classes ([5acc09a](https://github.com/coveo/plasma/commits/5acc09a5d2e8b5b1a4edd48cc4a175f982a6583d))
+* **card:** fixed prop def order ([27a0a9a](https://github.com/coveo/plasma/commits/27a0a9ab6db8ca3432632bc7ef9adb668f6f576e))
+* **card:** removed ([670f086](https://github.com/coveo/plasma/commits/670f0866ba05ae7e5ba29339c07aa72b45bbb95d))
+
+
+
 ## 40.2.2 (2022-04-04)
 
 
