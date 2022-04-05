@@ -23,5 +23,5 @@ Both are very similar but a key difference is that Toggles are for only two choi
 
 ## Related Components
 - [Tabs](https://plasma.coveo.com/navigation/Tabs) Might be used instead to toggle views
-- [Radio buttons](#/form/RadioButton) Can be used instead as a form input
+- [Radio buttons](https://plasma.coveo.com/form/RadioButton) Can be used instead as a form input
 - [Select - single](https://plasma.coveo.com/form/SingleSelect) Can be used instead as a form input
