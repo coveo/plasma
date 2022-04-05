@@ -22,6 +22,6 @@ Both are similar in appearance and designed for view switching on an element. Fl
 Both are very similar but a key difference is that Toggles are for only two choices (on or off) and Flat select allows for multiple choices (previous, play, stop, next)
 
 ## Related Components
-- [Tabs](#/navigation/Tabs) Might be used instead to toggle views
+- [Tabs](https://plasma.coveo.com/navigation/Tabs) Might be used instead to toggle views
 - [Radio buttons](#/form/RadioButton) Can be used instead as a form input
 - [Select - single](#/form/SingleSelect) Can be used instead as a form input
