@@ -4,7 +4,7 @@ Use an actionable item when the actions are of secondary importance and there is
 
 An actionable item should always be prompted from a button.
 
-The actionnables shown must be contextual and suited to the user needs based on its selection.
+An actionable item must be contextual and suited to the user's needs based on their selection.
 
 Use the divider line to divide actions into logical groups.
 
