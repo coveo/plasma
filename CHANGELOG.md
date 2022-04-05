@@ -1,3 +1,12 @@
+# 40.4.0 (2022-04-05)
+
+
+### Features
+
+* **gdrive:** remove google drive single user svg ([a30b18c](https://github.com/coveo/plasma/commits/a30b18c84e2f445d1297774d263085e8573dbe14))
+
+
+
 # 40.3.0 (2022-04-04)
 
 
