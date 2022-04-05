@@ -72,6 +72,24 @@ const disabled = `
     );
 `;
 
+const badgesOnTop = `
+    import * as React from 'react';
+    import {IconCard} from '@coveord/plasma-react';
+
+    export default () => (
+        <IconCard
+            title={<span className="h5 bolder">Simple builder</span>}
+            description="For lightweight usage, prototyping, and testing the search experience. Hosted by Coveo."
+            svgChild={<img className="mr3" style={{width: '112px', height: '112px'}} src="https://placeholder.pics/svg/112x112/DEDEDE/FFFFFF-FFFFFF" />}
+            placeBadgesAbove
+            badges={[{label: 'Recommended', extraClasses: ['mod-small', 'mod-information']}]}
+            animateOnHover
+            onClick={() => alert('You clicked the card')}
+            cardClassName={['mod-fixed-size']}
+        />
+    );
+`;
+
 export const IconCardExamples: React.FunctionComponent = () => (
     <PageLayout
         id="IconCard"
@@ -84,6 +102,7 @@ export const IconCardExamples: React.FunctionComponent = () => (
             choices: {code: choices, title: 'With multiple choices'},
             small: {code: small, title: 'Small, with multiple choices'},
             disabled: {code: disabled, title: 'Disabled, with lock badge'},
+            badgesOnTop: {code: badgesOnTop, title: 'With badges on top'},
         }}
     />
 );

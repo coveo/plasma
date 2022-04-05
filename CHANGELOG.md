@@ -1,3 +1,90 @@
+# 40.4.0 (2022-04-05)
+
+
+### Features
+
+* **gdrive:** remove google drive single user svg ([a30b18c](https://github.com/coveo/plasma/commits/a30b18c84e2f445d1297774d263085e8573dbe14))
+
+
+
+# 40.3.0 (2022-04-04)
+
+
+### Features
+
+* **card:** added props to iconcard ([55979ce](https://github.com/coveo/plasma/commits/55979ce08848d5c06dc37dc8d24f55705069eb10))
+* **card:** changed prop for classes ([5acc09a](https://github.com/coveo/plasma/commits/5acc09a5d2e8b5b1a4edd48cc4a175f982a6583d))
+* **card:** fixed prop def order ([27a0a9a](https://github.com/coveo/plasma/commits/27a0a9ab6db8ca3432632bc7ef9adb668f6f576e))
+* **card:** removed ([670f086](https://github.com/coveo/plasma/commits/670f0866ba05ae7e5ba29339c07aa72b45bbb95d))
+
+
+
+## 40.2.2 (2022-04-04)
+
+
+### Bug Fixes
+
+* **plasma-tokens:** change ICONS for Icons in the jenkins params ([524970a](https://github.com/coveo/plasma/commits/524970a328c22a89414cae36b7a4a9d5ea32950c))
+
+
+
+## 40.2.1 (2022-04-01)
+
+
+
+# 40.2.0 (2022-04-01)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries ([6057c0f](https://github.com/coveo/plasma/commits/6057c0f348b8dfa17f1e4c71b69035c149a9a611))
+
+
+
+## 40.1.9 (2022-04-01)
+
+
+
+## 40.1.8 (2022-04-01)
+
+
+### Bug Fixes
+
+* **plasma-react:** better management of isDirty in TextInput ([674110e](https://github.com/coveo/plasma/commits/674110e118d0046d4c685e4470cee50630d384a2))
+
+
+
+## 40.1.7 (2022-04-01)
+
+
+### Bug Fixes
+
+* **plasma-react:** better management of isDirty in TextInput ([674110e](https://github.com/coveo/plasma/commits/674110e118d0046d4c685e4470cee50630d384a2))
+
+
+
+## 40.1.6 (2022-04-01)
+
+
+### Bug Fixes
+
+* **modal:** title is now a reactNode ([577f822](https://github.com/coveo/plasma/commits/577f8222fc4491afaa12ae506405660a728deae7))
+
+
+
+## 40.1.5 (2022-04-01)
+
+
+
+## 40.1.4 (2022-03-30)
+
+
+### Bug Fixes
+
+* oppsie ([49c5961](https://github.com/coveo/plasma/commits/49c59615f5edd942e09a5d082be479914d48502a))
+
+
+
 ## 40.1.3 (2022-03-30)
 
 

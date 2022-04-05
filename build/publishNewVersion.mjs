@@ -36,9 +36,11 @@ program.parse();
 const options = program.opts();
 
 const outputProcess = (process) => {
-    console.log(process.stdout.trim());
-    if (process.status !== 0) {
-        console.error(process.stderr.trim());
+    if (process) {
+        console.log(process.stdout.trim());
+        if (process.status !== 0) {
+            console.error(process.stderr.trim());
+        }
     }
 };
 
@@ -94,12 +96,13 @@ const outputProcess = (process) => {
             if (!options.dry) {
                 gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
                 gitTag(versionTag);
-                if (remote) {
-                    console.log(`Publishing version ${versionTag} on NPM`);
-                    outputProcess(
-                        pnpmPublish(since, options.tag, options.branch)
-                    );
 
+                console.log(`Publishing version ${versionTag} on NPM`);
+                outputProcess(
+                    pnpmPublish(since, options.tag, options.branch)
+                );
+
+                if (remote) {
                     console.log(`Pushing version ${versionTag} on git`);
                     outputProcess(gitPush());
                     outputProcess(gitPushTags());

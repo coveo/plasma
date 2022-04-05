@@ -15,7 +15,7 @@ export interface IModalHeaderOwnProps {
     /**
      * Title of the modal
      */
-    title: string;
+    title: React.ReactNode;
     /**
      * Additionnal CSS class for the header
      */
