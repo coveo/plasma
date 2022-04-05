@@ -2,7 +2,7 @@
 
 The Flat select option should be used for single choice selection.
 
-The width of each of the options should be the same, that way we keep everything equal and balanced, we don't want any of the options feel more important than the other.
+The width of each of the options should be the same, we don't want any of the options feel more important than the other.
 
 Limit the number of options, a good rule of thumb is to have no more than five.
 
