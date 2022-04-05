@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {BrowserUtils} from '../../utils/BrowserUtils';
+import {Defaults} from '../../Defaults';
 import {
     DomPositionCalculator,
     DropPodPosition,
@@ -45,8 +46,6 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
     renderDrop,
     parentSelector,
 }) => {
-    const DEFAULT_ROOT: string = 'body';
-
     const [offset, setOffset] = React.useState(undefined);
     const [lastPosition, setLastPosition] = React.useState<IDropUIPosition | null>(null);
     const [computedStyle, setComputedStyle] = React.useState<React.CSSProperties>({});
@@ -96,7 +95,7 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
 
     React.useEffect(() => {
         const element = document.createElement('div');
-        const portalRoot = document.querySelector(selector ?? DEFAULT_ROOT);
+        const portalRoot = document.querySelector(selector ?? Defaults.DROP_ROOT);
 
         portalRoot.appendChild(element);
 
@@ -104,12 +103,12 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
         return () => {
             portalRoot.removeChild(element);
         };
-    }, [selector, DEFAULT_ROOT]);
+    }, [selector, Defaults.DROP_ROOT]);
 
     const canRenderDrop = () => !!dropElement && isOpen;
 
     const getRelativeParent = () => {
-        const closestCurrentRef = buttonRef?.current?.closest(parentSelector ?? DEFAULT_ROOT);
+        const closestCurrentRef = buttonRef?.current?.closest(parentSelector ?? Defaults.DROP_PARENT_ROOT);
         return closestCurrentRef ?? buttonRef?.current?.parentElement;
     };
 
