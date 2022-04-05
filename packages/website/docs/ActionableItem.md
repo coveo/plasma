@@ -1,4 +1,5 @@
-# Best practices
+# Best Practices
+
 Use when the actions are secondary and there is no need to display them on the page itself.
 
 It should always be prompted from a button, from which it is associated.
