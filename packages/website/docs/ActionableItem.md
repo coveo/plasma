@@ -1,6 +1,6 @@
 # Best Practices
 
-Use when the actions are secondary and there is no need to display them on the page itself.
+Use an actionable item when the actions are of secondary importance and there is no need to display them directly on the page.
 
 It should always be prompted from a button, from which it is associated.
 
