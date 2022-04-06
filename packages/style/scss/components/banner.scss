@@ -1,10 +1,11 @@
 .banner {
     position: relative;
     width: 100%;
-    height: $banner-height;
+    height: auto;
+    min-height: $banner-height;
     padding: $banner-padding;
-    background: var(--navy-blue-80);
-    box-shadow: $banner-box-shadow;
+    background: var(white);
+    border: 1px solid var(--grey-40);
 }
 
 .banner-description {
