@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import {lazy, Suspense} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -10,7 +11,6 @@ import {addStringList, addValueStringList, removeStringList} from '../../../reus
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
 import {IFilterBoxOwnProps} from '../../filterBox/FilterBox';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {FilterBoxSelectors} from '../../filterBox/FilterBoxSelectors';
 import {MatchFilter} from '../../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
@@ -159,21 +159,32 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
                 items,
             };
 
+            // const FilterBox = React.lazy(() => import('./../../filterBox/FilterBoxConnected'));
+
+            const FilterBox = lazy(() =>
+                import('./../../filterBox/FilterBoxConnected').then(({FilterBoxConnected}) => ({
+                    default: FilterBoxConnected,
+                }))
+            );
+
             return (
                 <Component
                     {...newProps}
                     noResultItem={noResultItem}
                     noDisabled={this.props.customValues}
-                    hasFocusableChild={true}
+                    hasFocusableChild
                 >
-                    <FilterBoxConnected
-                        {...this.props.filter}
-                        id={this.props.id}
-                        onKeyDown={(this.props as any).onKeyDown}
-                        onKeyUp={(this.props as any).onKeyUp}
-                        className={filterBoxClassNames}
-                        isAutoFocus={true}
-                    ></FilterBoxConnected>
+                    <Suspense fallback={'patate'}>
+                        <FilterBox
+                            {...this.props.filter}
+                            id={this.props.id}
+                            onKeyDown={(this.props as any).onKeyDown}
+                            onKeyUp={(this.props as any).onKeyUp}
+                            className={filterBoxClassNames}
+                            isAutoFocus
+                        />
+                    </Suspense>
+
                     {this.props.children}
                 </Component>
             );
