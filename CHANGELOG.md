@@ -1,3 +1,18 @@
+## 40.4.2 (2022-04-07)
+
+
+### Bug Fixes
+
+* **droppod:** keep the original position of the drop after first rendering ([43300fe](https://github.com/coveo/plasma/commits/43300fe09e6e7e9a09e6f7a1c1f90f08893123ac))
+* **react, drop:** use last position ([a2a55dd](https://github.com/coveo/plasma/commits/a2a55ddef6fbf42481bffea257e649ce41b05201))
+
+
+### Reverts
+
+* put back defauilt value for root ([954b4c5](https://github.com/coveo/plasma/commits/954b4c523d719ac295f8318a6fcb65ce719710b2))
+
+
+
 ## 40.4.1 (2022-04-06)
 
 
