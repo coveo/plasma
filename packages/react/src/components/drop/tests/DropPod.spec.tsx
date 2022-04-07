@@ -124,9 +124,7 @@ describe('DropPod', () => {
                         </>
                     );
 
-                    const container = screen.getByTestId('custom');
-
-                    expect(within(container).getByText('🍔')).toBeVisible();
+                    expect(screen.getByText(/🍔/i)).toBeVisible();
                 });
 
                 it('should remove the div element with the portal root', () => {

@@ -19,3 +19,4 @@ export * from './TypesUtils';
 export * from './UrlUtils';
 export * from './UUID';
 export * from './ValidComponentChildren';
+export * from './TypeUtils';

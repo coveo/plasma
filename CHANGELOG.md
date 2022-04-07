@@ -1,3 +1,43 @@
+## 40.4.2 (2022-04-07)
+
+
+### Bug Fixes
+
+* **droppod:** keep the original position of the drop after first rendering ([43300fe](https://github.com/coveo/plasma/commits/43300fe09e6e7e9a09e6f7a1c1f90f08893123ac))
+* **react, drop:** use last position ([a2a55dd](https://github.com/coveo/plasma/commits/a2a55ddef6fbf42481bffea257e649ce41b05201))
+
+
+### Reverts
+
+* put back defauilt value for root ([954b4c5](https://github.com/coveo/plasma/commits/954b4c523d719ac295f8318a6fcb65ce719710b2))
+
+
+
+## 40.4.1 (2022-04-06)
+
+
+
+# 40.4.0 (2022-04-05)
+
+
+### Features
+
+* **gdrive:** remove google drive single user svg ([a30b18c](https://github.com/coveo/plasma/commits/a30b18c84e2f445d1297774d263085e8573dbe14))
+
+
+
+# 40.3.0 (2022-04-04)
+
+
+### Features
+
+* **card:** added props to iconcard ([55979ce](https://github.com/coveo/plasma/commits/55979ce08848d5c06dc37dc8d24f55705069eb10))
+* **card:** changed prop for classes ([5acc09a](https://github.com/coveo/plasma/commits/5acc09a5d2e8b5b1a4edd48cc4a175f982a6583d))
+* **card:** fixed prop def order ([27a0a9a](https://github.com/coveo/plasma/commits/27a0a9ab6db8ca3432632bc7ef9adb668f6f576e))
+* **card:** removed ([670f086](https://github.com/coveo/plasma/commits/670f0866ba05ae7e5ba29339c07aa72b45bbb95d))
+
+
+
 ## 40.2.2 (2022-04-04)
 
 

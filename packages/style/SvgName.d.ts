@@ -366,7 +366,6 @@ export type SvgName =
 	| 'sourceGenericRest'
 	| 'sourceGmail'
 	| 'sourceGoogleDriveDomainWide'
-	| 'sourceGoogleDriveSingleUser'
 	| 'sourceGoogleSites'
 	| 'sourceGoogleplus'
 	| 'sourceJira'
