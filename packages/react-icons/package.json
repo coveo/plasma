@@ -47,6 +47,6 @@
         "typescript": "4.5.4"
     },
     "dependencies": {
-        "@swc/helpers": "0.3.3"
+        "@swc/helpers": "0.3.8"
     }
 }
