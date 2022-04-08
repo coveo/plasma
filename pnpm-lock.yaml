@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.3.4
+      '@coveo/semantic-monorepo-tools': 0.3.6
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1044.0
       axios: 0.24.0
@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.3.4
+      '@coveo/semantic-monorepo-tools': 0.3.6
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1044.0
       axios: 0.24.0
@@ -1225,8 +1225,8 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/semantic-monorepo-tools/0.3.4:
-    resolution: {integrity: sha512-S52affS+W5ihy3LP99vOocgB3eIPts+qBqvho4v5ct+cfdyzEobGsMszDpqV2X5RftMjLuAtBuIayWxQxhMnxQ==}
+  /@coveo/semantic-monorepo-tools/0.3.6:
+    resolution: {integrity: sha512-OmYsiZlK4rvpWuk8KZDFMPQtwZMSg2F+1L2xZWZmOXH3A3pAtdj+xI9eVaxS1ddeBIjoGKtI98eSbUq0gRBZvg==}
     dependencies:
       conventional-changelog-writer: 5.0.1
       conventional-commits-parser: 3.2.4
@@ -1334,7 +1334,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.2
+      debug: 4.3.4
       espree: 9.2.0
       globals: 13.12.0
       ignore: 4.0.6
@@ -1373,7 +1373,7 @@ packages:
     engines: {node: '>=10.10.0'}
     dependencies:
       '@humanwhocodes/object-schema': 1.2.1
-      debug: 4.3.2
+      debug: 4.3.4
       minimatch: 3.0.4
     transitivePeerDependencies:
       - supports-color
@@ -6327,7 +6327,7 @@ packages:
       eslint-import-resolver-node: 0.3.6
       eslint-module-utils: 2.7.1
       has: 1.0.3
-      is-core-module: 2.8.0
+      is-core-module: 2.8.1
       is-glob: 4.0.3
       minimatch: 3.0.4
       object.values: 1.1.5
@@ -10609,7 +10609,7 @@ packages:
   /micromark/2.11.4:
     resolution: {integrity: sha512-+WoovN/ppKolQOFIAajxi7Lu9kInbPxFuTBVEavFcL8eAfVstoc5MocPmqBeAdBOJV00uaVjegzH4+MA0DN/uA==}
     dependencies:
-      debug: 4.3.2
+      debug: 4.3.4
       parse-entities: 2.0.0
     transitivePeerDependencies:
       - supports-color
