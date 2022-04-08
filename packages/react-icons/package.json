@@ -36,7 +36,7 @@
         "@babel/types": "7.17.0",
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "6.2.1",
-        "@swc/cli": "0.1.55",
+        "@swc/cli": "0.1.57",
         "@swc/core": "1.2.154",
         "fs-extra": "10.0.0",
         "glob": "7.2.0",

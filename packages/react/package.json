@@ -73,7 +73,7 @@
     "devDependencies": {
         "@helpers/enzyme-redux": "workspace:*",
         "@hot-loader/react-dom": "17.0.2",
-        "@swc/cli": "0.1.55",
+        "@swc/cli": "0.1.57",
         "@swc/core": "1.2.154",
         "@swc/jest": "0.2.20",
         "@testing-library/dom": "8.11.3",
