@@ -62,7 +62,7 @@ importers:
       '@helpers/enzyme-redux': workspace:*
       '@hot-loader/react-dom': 17.0.2
       '@loadable/component': 5.15.2
-      '@swc/cli': 0.1.55
+      '@swc/cli': 0.1.57
       '@swc/core': 1.2.154
       '@swc/helpers': 0.3.6
       '@swc/jest': 0.2.20
@@ -187,7 +187,7 @@ importers:
     devDependencies:
       '@helpers/enzyme-redux': link:../../helpers/enzyme-redux
       '@hot-loader/react-dom': 17.0.2_react@16.14.0
-      '@swc/cli': 0.1.55_@swc+core@1.2.154
+      '@swc/cli': 0.1.57_@swc+core@1.2.154
       '@swc/core': 1.2.154
       '@swc/jest': 0.2.20_@swc+core@1.2.154
       '@testing-library/dom': 8.11.3
@@ -266,7 +266,7 @@ importers:
       '@babel/types': 7.17.0
       '@coveord/plasma-tokens': workspace:*
       '@svgr/core': 6.2.1
-      '@swc/cli': 0.1.55
+      '@swc/cli': 0.1.57
       '@swc/core': 1.2.154
       '@swc/helpers': 0.3.3
       fs-extra: 10.0.0
@@ -282,7 +282,7 @@ importers:
       '@babel/types': 7.17.0
       '@coveord/plasma-tokens': link:../tokens
       '@svgr/core': 6.2.1
-      '@swc/cli': 0.1.55_@swc+core@1.2.154
+      '@swc/cli': 0.1.57_@swc+core@1.2.154
       '@swc/core': 1.2.154
       fs-extra: 10.0.0
       glob: 7.2.0
@@ -2081,8 +2081,8 @@ packages:
       - supports-color
     dev: true
 
-  /@swc/cli/0.1.55_@swc+core@1.2.154:
-    resolution: {integrity: sha512-akkLuRexFq8XTi6JNZ27mXD4wcKXLDSLj4g7YMU+/upFM8IeD1IEp1Mxtre7MzCZn+QOQgPF8N8IReJoHuSn3g==}
+  /@swc/cli/0.1.57_@swc+core@1.2.154:
+    resolution: {integrity: sha512-HxM8TqYHhAg+zp7+RdTU69bnkl4MWdt1ygyp6BDIPjTiaJVH6Dizn2ezbgDS8mnFZI1FyhKvxU/bbaUs8XhzQg==}
     engines: {node: '>= 12.13'}
     hasBin: true
     peerDependencies:
