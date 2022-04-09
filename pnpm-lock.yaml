@@ -73,7 +73,7 @@ importers:
       '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
       '@types/codemirror': 0.0.109
-      '@types/d3': 3.5.46
+      '@types/d3': 3.5.47
       '@types/enzyme': 3.10.11
       '@types/enzyme-adapter-react-16': 1.0.6
       '@types/escape-string-regexp': 1.0.0
@@ -196,7 +196,7 @@ importers:
       '@testing-library/user-event': 13.5.0_@testing-library+dom@8.11.3
       '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
-      '@types/d3': 3.5.46
+      '@types/d3': 3.5.47
       '@types/enzyme': 3.10.11
       '@types/enzyme-adapter-react-16': 1.0.6
       '@types/escape-string-regexp': 1.0.0
@@ -2407,8 +2407,8 @@ packages:
     dependencies:
       '@types/tern': 0.23.3
 
-  /@types/d3/3.5.46:
-    resolution: {integrity: sha512-jNHfiGd41+JUV43LTMzQNidyp4Hn0XfhoSmy8baE0d/N5pGYpD+yX03JacY/MH+smFxYOQGXlz4HxkRZOuRNOQ==}
+  /@types/d3/3.5.47:
+    resolution: {integrity: sha512-VkWIQoZXLFdcBGe5pdBKJmTU3fmpXvo/KV6ixvTzOMl1yJ2hbTXpfvsziag0kcaerPDwas2T0vxojwQG3YwivQ==}
     dev: true
 
   /@types/debug/4.1.7:

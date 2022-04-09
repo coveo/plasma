@@ -82,7 +82,7 @@
         "@testing-library/user-event": "13.5.0",
         "@types/chosen-js": "1.8.3",
         "@types/classnames": "2.3.0",
-        "@types/d3": "3.5.46",
+        "@types/d3": "3.5.47",
         "@types/enzyme": "3.10.11",
         "@types/enzyme-adapter-react-16": "1.0.6",
         "@types/escape-string-regexp": "1.0.0",
