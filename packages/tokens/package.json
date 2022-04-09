@@ -18,7 +18,7 @@
     "license": "Apache-2.0",
     "devDependencies": {
         "@types/fs-extra": "9.0.13",
-        "@types/lodash": "4.14.179",
+        "@types/lodash": "4.14.181",
         "@types/node": "16.11.26",
         "@types/rimraf": "3.0.2",
         "@types/svgo": "2.6.2",
