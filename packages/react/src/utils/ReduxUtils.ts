@@ -15,8 +15,8 @@ import {PlasmaState} from '../PlasmaState';
 export type ConnectedProps<T> = T extends InferableComponentEnhancerWithProps<infer Props, infer _> ? Props : never;
 
 
-type NotVoid<X> = X extends void ? never : X
-export type IThunkAction<R = any, S extends PlasmaState = PlasmaState> = ThunkAction<NotVoid<R,void>, S, any, IReduxAction<any>>;
+type NotAsynchronous<T> = T extends Promise ? never : T;
+export declare type IThunkAction<R = any, S extends PlasmaState = PlasmaState> = ThunkAction<R extends void ? NotAsynchronous<R> : R, S, any, IReduxAction<any>>;
 export type IDispatch<S extends PlasmaState = PlasmaState> = ThunkDispatch<S, any, IReduxAction<any>>;
 
 export class ReduxUtils {
