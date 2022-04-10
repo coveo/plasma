@@ -38,7 +38,7 @@
         "@svgr/core": "6.2.1",
         "@swc/cli": "0.1.57",
         "@swc/core": "1.2.165",
-        "fs-extra": "10.0.0",
+        "fs-extra": "10.0.1",
         "glob": "7.2.0",
         "lodash.groupby": "4.6.0",
         "lodash.upperfirst": "4.3.1",
