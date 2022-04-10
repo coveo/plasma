@@ -377,7 +377,7 @@ importers:
       '@types/lodash': 4.14.181
       '@types/node': 16.11.26
       '@types/rimraf': 3.0.2
-      '@types/svgo': 2.6.2
+      '@types/svgo': 2.6.3
       commander: 9.0.0
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
@@ -397,7 +397,7 @@ importers:
       '@types/lodash': 4.14.181
       '@types/node': 16.11.26
       '@types/rimraf': 3.0.2
-      '@types/svgo': 2.6.2
+      '@types/svgo': 2.6.3
       commander: 9.0.0
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
@@ -2782,10 +2782,10 @@ packages:
     resolution: {integrity: sha512-RJJrrySY7A8havqpGObOB4W92QXKJo63/jFLLgpvOtsGUqbQZ9Sbgl35KMm1DjC6j7AvmmU2bIno+3IyEaemaw==}
     dev: true
 
-  /@types/svgo/2.6.2:
-    resolution: {integrity: sha512-m1SqMc/EDAZ8v0BBX+NmlYytUXtvrMD2/J9LICwnMvAuJwb0GSmACU3XPvcORqE7ghEJA4Mk6NYzpwhQI/biPw==}
+  /@types/svgo/2.6.3:
+    resolution: {integrity: sha512-5sP0Xgo0dXppY0tbYF6TevB/1+tzFLuu71XXxC/zGvQAn9PW7y+DwtDO81g0ZUPye00K6tPwtsLDOpARa0mFcA==}
     dependencies:
-      '@types/node': 16.11.26
+      '@types/node': 17.0.23
     dev: true
 
   /@types/tern/0.23.3:
