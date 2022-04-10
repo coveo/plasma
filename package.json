@@ -1,6 +1,6 @@
 {
     "name": "root",
-    "version": "40.4.10",
+    "version": "40.4.11",
     "private": true,
     "scripts": {
         "preinstall": "npx only-allow pnpm",
