@@ -3,7 +3,7 @@
     "team_name": "admin-ui",
     "general": {
         "environments_order": {
-            "sequential": ["rd", "prd"]
+            "sequential": ["rd"]
         },
         "notifications": {
             "slack_channels": ["admin-ui-builds"]
@@ -43,68 +43,52 @@
         {
             "id": "deploy-plasma-website-assets",
             "s3": {
-                "disabled": true,
                 "bucket": "coveo-nrd-jsadmin",
                 "directory": "react-vapor",
                 "parameters": {
                     "exclude": "*.html",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
-                "source": "packages/website/out",
-                "rd": {
-                    "disabled": false
-                }
+                "source": "packages/website/out"
             }
         },
         {
             "id": "deploy-plasma-website-html",
             "s3": {
-                "disabled": true,
                 "bucket": "coveo-nrd-jsadmin",
                 "directory": "react-vapor",
                 "parameters": {
                     "include": "*.html",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
-                "source": "packages/website/out",
-                "rd": {
-                    "disabled": false
-                }
+                "source": "packages/website/out"
             }
         },
         {
             "id": "deploy-styleguide-minified-files",
             "s3": {
-                "disabled": true,
-                "bucket": "coveo-public-content",
-                "directory": "styleguide/v$[VERSION]",
+                "bucket": "coveo-nrd-jsadmin",
+                "directory": "react-vapor/style/v$[VERSION]",
                 "parameters": {
                     "include": "*.min.*",
                     "acl": "public-read",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
                     "content-encoding": "gzip"
                 },
-                "source": "packages/style/dist",
-                "prd": {
-                    "disabled": false
-                }
+                "source": "packages/style/dist"
             }
         },
         {
             "id": "deploy-styleguide-non-minified-files",
             "s3": {
-                "disabled": true,
-                "bucket": "coveo-public-content",
-                "directory": "styleguide/v$[VERSION]",
+                "bucket": "coveo-nrd-jsadmin",
+                "directory": "react-vapor/style/v$[VERSION]",
                 "parameters": {
                     "exclude": "*.min.*",
                     "acl": "public-read",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
-                "source": "packages/style/dist",
-                "prd": {
-                    "disabled": false
-                }
+                "source": "packages/style/dist"
             }
         }
     ],
