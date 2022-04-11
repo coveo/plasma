@@ -71,7 +71,6 @@
                 "directory": "react-vapor/style/v$[VERSION]",
                 "parameters": {
                     "include": "*.min.*",
-                    "acl": "public-read",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
                     "content-encoding": "gzip"
                 },
@@ -85,7 +84,6 @@
                 "directory": "react-vapor/style/v$[VERSION]",
                 "parameters": {
                     "exclude": "*.min.*",
-                    "acl": "public-read",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
                 "source": "packages/style/dist"
