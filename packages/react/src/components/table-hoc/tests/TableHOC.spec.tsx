@@ -1,4 +1,4 @@
-import {render} from '@test-utils';
+import {render, screen} from '@test-utils';
 import {shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -136,16 +136,22 @@ describe('TableHOC', () => {
             expect(wrapper.find(ActionBarConnected).props().prefixContent).toBe(content);
         });
 
-        it('should keep the tbody with rows data during the loading', () => {
-            const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
+        it('renders a status during the loading', () => {
+            const {rerender} = render(<TableHOC {...defaultProps} isLoading />);
 
-            expect(wrapper.find('tbody').length).toBe(1);
+            expect(screen.getByRole('status')).toBeVisible();
+
+            rerender(<TableHOC {...defaultProps} isLoading={false} />);
+
+            expect(screen.queryByRole('status')).not.toBeInTheDocument();
         });
 
-        it('should set the tbody rows data hidden during the loading', () => {
-            const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
+        it('hides the real rows during the loading', () => {
+            render(<TableHOC {...defaultProps} isLoading />);
 
-            expect(wrapper.find('tbody').hasClass('hidden')).toBe(true);
+            const hiddenBody = screen.getByRole('rowgroup', {hidden: true});
+
+            expect(hiddenBody).toBeInTheDocument();
         });
 
         it('should disabled actions on loading', () => {

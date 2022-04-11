@@ -145,7 +145,12 @@ export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttrib
     const table = (
         <table className={classNames(className)} style={{marginTop: hasActionBar() ? '-1px' : 0}}>
             {tableHeader}
-            <tbody key={`table-body-${id}`} className={classNames({hidden: isLoading}, tbodyClassName)}>
+            <tbody
+                key={`table-body-${id}`}
+                className={classNames({hidden: isLoading}, tbodyClassName)}
+                aria-busy={isLoading}
+                aria-hidden={isLoading}
+            >
                 {renderBody(data || [])}
             </tbody>
             {isLoading && (
