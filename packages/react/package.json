@@ -128,7 +128,7 @@
         "lint-staged": "9.5.0",
         "lorem-ipsum": "2.0.4",
         "minimist": "1.2.6",
-        "postcss": "8.4.4",
+        "postcss": "8.4.12",
         "react": "16.14.0",
         "react-dnd-test-backend": "2.6.0",
         "react-dom": "16.14.0",
