@@ -1,3 +1,12 @@
+## 40.4.24 (2022-04-11)
+
+
+### Bug Fixes
+
+* **react, table:** improve accessibility of loading tables ([a6c3f4f](https://github.com/coveo/plasma/commits/a6c3f4f95b707e78c8d029ca690f22c9fd5cd68c))
+
+
+
 ## 40.4.23 (2022-04-11)
 
 
