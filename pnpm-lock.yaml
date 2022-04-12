@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.3.6
+      '@coveo/semantic-monorepo-tools': 0.3.7
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1044.0
       axios: 0.24.0
@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.3.6
+      '@coveo/semantic-monorepo-tools': 0.3.7
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1044.0
       axios: 0.24.0
@@ -1204,8 +1204,8 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/semantic-monorepo-tools/0.3.6:
-    resolution: {integrity: sha512-OmYsiZlK4rvpWuk8KZDFMPQtwZMSg2F+1L2xZWZmOXH3A3pAtdj+xI9eVaxS1ddeBIjoGKtI98eSbUq0gRBZvg==}
+  /@coveo/semantic-monorepo-tools/0.3.7:
+    resolution: {integrity: sha512-40g+uAofgpyyu0YMAosV57zcysD/HK04L5nd5JIKtXQkE6pv7awgcLz0iUgcCxOXfRMkeRUPmMzQ1qfaO39CLw==}
     dependencies:
       conventional-changelog-writer: 5.0.1
       conventional-commits-parser: 3.2.4
