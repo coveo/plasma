@@ -1,24 +1,6 @@
 import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
-
-const code = `
-    import * as React from 'react';
-    import {Badge} from '@coveord/plasma-react';
-
-    export default () => (
-        <>
-            <Badge label="Default" />
-            <Badge label="Navy" extraClasses={['mod-information ml1']} />
-            <Badge label="Success" extraClasses={['mod-success ml1']} />
-            <Badge label="Critical" extraClasses={['mod-critical ml1']} />
-            <Badge label="New" extraClasses={['mod-warning ml1']} />
-            <Badge label="Beta" extraClasses={['mod-beta ml1']} />
-            <Badge icon="lock" extraClasses={['ml1']} />
-            <Badge icon="lock" label="Label" extraClasses={['ml1']} />
-            <Badge icon="lock" label="tag" extraClasses={['mod-tag ml1']} />
-        </>
-    );
-`;
+import BadgeExample from '../../examples/Badge/Badge.example.tsx';
 
 const modSmall = `
     import * as React from 'react';
@@ -47,7 +29,7 @@ export const BadgeExamples = () => (
         section="Feedback"
         description="A badge is a small label that displays a short yet important piece of information."
         thumbnail="placeholder"
-        code={code}
+        code={BadgeExample}
         examples={{modSmall: {code: modSmall, title: 'mod-small'}}}
     />
 );
