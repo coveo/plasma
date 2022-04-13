@@ -1,6 +1,6 @@
 # Best Practices
 
-The Flat select option should be used for single choice selection.
+A flat select allows users to select a single value among multiple options.
 
 The width of each of the options should be the same, we don't want any of the options feel more important than the other.
 
