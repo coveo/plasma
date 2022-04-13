@@ -6,7 +6,7 @@ An actionable item should always be prompted from a button.
 
 An actionable item must be contextual and suited to the user's needs based on their selection.
 
-Use the divider line to divide actions into logical groups.
+Use a divider line to divide actions into logical groups.
 
 ## Labeling
 
