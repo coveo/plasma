@@ -78,7 +78,7 @@
         "@swc/jest": "0.2.20",
         "@testing-library/dom": "8.11.3",
         "@testing-library/jest-dom": "5.16.4",
-        "@testing-library/react": "12.1.4",
+        "@testing-library/react": "12.1.5",
         "@testing-library/user-event": "13.5.0",
         "@types/chosen-js": "1.8.3",
         "@types/classnames": "2.3.0",
