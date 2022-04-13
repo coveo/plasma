@@ -19,8 +19,6 @@ The Flat select share similarities with various other components but here we try
 
 ## Flat select vs Tabs
 Both are similar in appearance and designed for view switching on an element. Flat select are suitable for view switching within a pane, as where tabs, are used as a navigational control (Moving from screen to another).
-## Flat select vs Toggle switch
-Both are very similar but a key difference is that Toggles are for only two choices (on or off) and Flat select allows for multiple choices (previous, play, stop, next)
 
 ## Related Components
 - [Tabs](https://plasma.coveo.com/navigation/Tabs) Might be used instead to toggle views
