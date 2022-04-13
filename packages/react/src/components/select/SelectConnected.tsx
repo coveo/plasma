@@ -91,7 +91,7 @@ const makeMapStateToProps = () =>
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISelectOwnProps) => ({
     addSelect: () => dispatch(addSelect(ownProps.id)),
     removeSelect: () => dispatch(removeSelect(ownProps.id)),
-    toggleDropdown: () => dispatch(toggleSelect(ownProps.id)),
+    toggleDropdown: () => dispatch(toggleSelect(ownProps.id)), // ici? isOpen
     selectValue: (value: string, isMulti: boolean, index?: number) => {
         dispatch(selectListBoxOption(ownProps.id, isMulti, value, index));
     },

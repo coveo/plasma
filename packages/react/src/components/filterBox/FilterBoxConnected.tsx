@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch: IDispatch): IFilterBoxDispatchProps => ({
     onFilter: (id: string, filterText: string) => debouncedFilterThrough(dispatch, id, filterText),
 });
 
-export const FilterBoxConnected = connect<
+const FilterBoxConnected = connect<
     IFilterBoxStateProps,
     IFilterBoxDispatchProps,
     IFilterBoxOwnProps & Partial<IFilterBoxStateProps> & Partial<IFilterBoxDispatchProps>
@@ -31,3 +31,5 @@ export const FilterBoxConnected = connect<
     mapDispatchToProps,
     ReduxUtils.mergeProps
 )(FilterBox as any);
+
+export default FilterBoxConnected;
