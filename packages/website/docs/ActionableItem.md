@@ -1,6 +1,6 @@
 # Best Practices
 
-Use an actionable item when the actions are of secondary importance and there is no need to display them directly on the page.
+Use an actionable item when your page offers actions that are of secondary importance and that don't need to be displayed directly on the page.
 
 An actionable item should always be prompted from a button.
 
