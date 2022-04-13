@@ -4,7 +4,7 @@ A flat select allows users to select a single value among multiple options.
 
 The width of each of the options should be the same, we don't want any of the options feel more important than the other.
 
-Limit the number of options, a good rule of thumb is to have no more than five.
+Ideally, offer a maximum of five options.
 
 Don't use Flat select when the effect is not immediate, consider using dropdown menu, radio buttons or checkboxes instead. Users are expect to have immediate feedback on their actions when using Flat select.
 
