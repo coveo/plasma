@@ -7,7 +7,6 @@ export const DEFAULT_BADGE_CLASSNAME = 'badge';
 
 export enum BadgeType {
     Default,
-    Thin,
     Critical,
     Warning,
     Success,
@@ -20,13 +19,17 @@ export enum BadgeIconPlacement {
     Right,
 }
 
+const IconPlacementMapping: Record<BadgeIconPlacement, boolean> = {
+    [BadgeIconPlacement.Left]: true,
+    [BadgeIconPlacement.Right]: false,
+};
+
 const TypeClassMapping: Record<BadgeType, string> = {
     [BadgeType.Beta]: 'mod-beta',
     [BadgeType.Critical]: 'mod-critical',
     [BadgeType.Default]: 'mod-default',
     [BadgeType.New]: 'mod-new',
     [BadgeType.Success]: 'mod-success',
-    [BadgeType.Thin]: 'mod-thin',
     [BadgeType.Warning]: 'mod-warning',
 };
 
@@ -68,10 +71,12 @@ interface BadgeWithIconProps extends BadgeBasicProps {
 export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithLabelProps & BadgeWithIconProps);
 
 export class Badge extends React.Component<IBadgeProps> {
-    static defaultProps: Partial<IBadgeProps> = {
+    static defaultProps: IBadgeProps = {
         extraClasses: [],
         type: BadgeType.Default,
         isSmall: false,
+        icon: undefined,
+        iconPlacement: undefined,
     };
 
     private get className(): string {
@@ -82,16 +87,15 @@ export class Badge extends React.Component<IBadgeProps> {
 
     render() {
         return (
-            <span className={this.className} aria-label="badge">
-                {'icon' in this.props ? (
-                    <Svg
-                        svgName={this.props.icon}
-                        svgClass={classNames('icon mod-16')}
-                        className={classNames({mr1: 'label' in this.props && this.props.label})} // gap
-                    />
+            <div className={this.className} aria-label="badge">
+                {'icon' in this.props && this.props.icon && IconPlacementMapping[this.props.iconPlacement] ? (
+                    <Svg svgName={this.props.icon} className={'mod-badge'} svgClass={'icon mod-badge'} />
                 ) : null}
-                {'label' in this.props ? <span>{this.props.label}</span> : null} // why
-            </span>
+                {'label' in this.props ? <div className="badge_label">{this.props.label}</div> : null}
+                {'icon' in this.props && this.props.icon && !IconPlacementMapping[this.props.iconPlacement] ? (
+                    <Svg svgName={this.props.icon} className={'mod-badge'} svgClass={'icon mod-badge'} />
+                ) : null}
+            </div>
         );
     }
 }
