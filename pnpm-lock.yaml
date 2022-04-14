@@ -465,7 +465,7 @@ importers:
       react: 16.14.0
       react-diff-viewer: 3.1.1
       react-dom: 16.14.0
-      react-markdown: 7.1.1
+      react-markdown: 7.1.2
       react-redux: 7.2.6
       react-router: 6.0.2
       react-router-dom: 6.0.2
@@ -512,7 +512,7 @@ importers:
       react: 16.14.0
       react-diff-viewer: 3.1.1_react-dom@16.14.0+react@16.14.0
       react-dom: 16.14.0_react@16.14.0
-      react-markdown: 7.1.1_31347e879eca8fbed0f611d143439f58
+      react-markdown: 7.1.2_31347e879eca8fbed0f611d143439f58
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
       react-router: 6.0.2_react@16.14.0
       react-router-dom: 6.0.2_react-dom@16.14.0+react@16.14.0
@@ -12875,8 +12875,8 @@ packages:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
     dev: false
 
-  /react-markdown/7.1.1_31347e879eca8fbed0f611d143439f58:
-    resolution: {integrity: sha512-bXS7indkcPlCLB6wRFFzX8Xdghr62TBxUF2587o+CUkaZlNaoILb2qNt+5pYmTZuCOC+OeEcdJ+06mu5whtCVQ==}
+  /react-markdown/7.1.2_31347e879eca8fbed0f611d143439f58:
+    resolution: {integrity: sha512-ibMcc0EbfmbwApqJD8AUr0yls8BSrKzIbHaUsPidQljxToCqFh34nwtu3CXNEItcVJNzpjDHrhK8A+MAh2JW3A==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
