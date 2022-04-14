@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Badge, TableHOC, TableRowConnected} from '@coveord/plasma-react';
+import {Badge, BadgeType, TableHOC, TableRowConnected} from '@coveord/plasma-react';
 
 const TABLE_ID: string = 'withLoadingTableId';
 
@@ -60,7 +60,7 @@ const renderRows = data?.map((item) => (
         <td key="city">{item.city}</td>
         <td key="username">{item.username.toLowerCase()}</td>
         <td>
-            <Badge label={'🥔 King'} extraClasses={['mod-small mod-success']} />
+            <Badge label={'🥔 King'} isSmall type={BadgeType.Success} />
         </td>
     </TableRowConnected>
 ));

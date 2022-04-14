@@ -1,4 +1,4 @@
-import {Badge, ListBox} from '@coveord/plasma-react';
+import {Badge, BadgeType, ListBox} from '@coveord/plasma-react';
 import * as React from 'react';
 
 export default () => (
@@ -17,12 +17,12 @@ export default () => (
             {
                 value: '4',
                 displayValue: <span className="ml1">Option 4</span>,
-                prepend: {content: <Badge label="Info" extraClasses={['mod-small mod-information']} />},
+                prepend: {content: <Badge label="Tag" isSmall type={BadgeType.New} />},
             },
             {
                 value: '5',
                 displayValue: <span className="mr1">Option 5</span>,
-                append: {content: <Badge label="Info" extraClasses={['mod-small mod-information']} />},
+                append: {content: <Badge label="Tag" isSmall type={BadgeType.New} />},
             },
         ]}
     />

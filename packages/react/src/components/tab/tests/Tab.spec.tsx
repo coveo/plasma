@@ -2,7 +2,7 @@ import {render, screen, within} from '@test-utils';
 import userEvent, {specialChars} from '@testing-library/user-event';
 import * as React from 'react';
 
-import {Badge} from '../../badge/Badge';
+import {Badge, BadgeType} from '../../badge/Badge';
 import {UrlUtils} from '../../../utils';
 import {Tab, TabConnected} from '../Tab';
 import {TabContent} from '../TabContent';
@@ -28,7 +28,7 @@ describe('Tab', () => {
     });
 
     it('displays the badge when one is set', () => {
-        render(<Tab title="Title" badge={<Badge label="Tag" extraClasses={['mod-information mod-small ml1']} />} />);
+        render(<Tab title="Title" badge={<Badge label="Tag" isSmall type={BadgeType.New} extraClasses={['ml1']} />} />);
 
         expect(
             screen.getByRole('tab', {
