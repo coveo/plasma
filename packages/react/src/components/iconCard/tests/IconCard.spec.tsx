@@ -2,6 +2,7 @@
 import {fireEvent, render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
+import {BadgeType} from '../../badge';
 
 import {IconCard} from '../IconCard';
 
@@ -39,7 +40,16 @@ describe('IconCard', () => {
     });
 
     it('renders the badges specified in the "badges" prop', () => {
-        render(<IconCard title="Title" svgName="home" badges={[{label: 'Badge1'}, {label: 'Badge2'}]} />);
+        render(
+            <IconCard
+                title="Title"
+                svgName="home"
+                badges={[
+                    {label: 'Badge1', type: BadgeType.Success},
+                    {label: 'Badge2', type: BadgeType.Success},
+                ]}
+            />
+        );
 
         const badges = screen.getAllByLabelText('badge');
         expect(badges.length).toBe(2);
@@ -273,7 +283,7 @@ describe('IconCard', () => {
 
     it('does not render the badges within the main content container if placeBadgesAbove is false', () => {
         const badgeLabel = 'Badge1';
-        render(<IconCard title="Title" svgChild={svgChild} badges={[{label: badgeLabel}]} />);
+        render(<IconCard title="Title" svgChild={svgChild} badges={[{label: badgeLabel, type: BadgeType.Success}]} />);
 
         const contentContainer = screen.getByTestId('main-content');
         expect(within(contentContainer).queryByText(badgeLabel)).not.toBeInTheDocument();
@@ -281,7 +291,14 @@ describe('IconCard', () => {
 
     it('should render the badges within the main content container if placeBadgesAbove is true', () => {
         const badgeLabel = 'Badge1';
-        render(<IconCard title="Title" svgChild={svgChild} badges={[{label: badgeLabel}]} placeBadgesAbove />);
+        render(
+            <IconCard
+                title="Title"
+                svgChild={svgChild}
+                badges={[{label: badgeLabel, type: BadgeType.Success}]}
+                placeBadgesAbove
+            />
+        );
 
         const contentContainer = screen.getByTestId('main-content');
         expect(within(contentContainer).getByText(badgeLabel)).toBeVisible();

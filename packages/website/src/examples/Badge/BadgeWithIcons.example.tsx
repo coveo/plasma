@@ -19,5 +19,6 @@ export default () => (
             iconPlacement={BadgeIconPlacement.Left}
             extraClasses={['ml1']}
         />
+        <Badge isSmall icon="lock" iconPlacement={BadgeIconPlacement.Right} extraClasses={['ml1']} />
     </>
 );
