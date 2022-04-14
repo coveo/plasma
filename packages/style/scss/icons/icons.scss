@@ -88,6 +88,13 @@
         vertical-align: -0.2em;
     }
 
+    &.mod-badge {
+        width: 14px;
+        height: 14px;
+        top: 1px;
+        display: flex;
+    }
+
     @for $i from 5 through 36 {
         $size: $i * 2;
         &.mod-#{$size} {

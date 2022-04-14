@@ -1,28 +1,28 @@
 /* stylelint-disable */
 .badge {
     // Default Style
-    display: inline-block;
-    box-sizing: border-box;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
     padding: 4px 8px;
     border: 1px solid;
     border-radius: 8px;
     white-space: nowrap;
+    font-weight: var(--font-weight-medium);
+
+    gap: 4px;
 
     // Variables
     --height: 32px;
     --font-size: 16px;
-    --font-weight: var(--font-weight-medium);
     --line-height: 24px;
     --color: var(--grey-80);
     --fill: var(--grey-80);
     --border-color: var(--grey-50);
-    --background-color: var(--grey-20);
+    --background-color: var(--white);
 
     // Style Override
     height: var(--height);
     font-size: var(--font-size);
-    font-weight: var(--font-weight);
     line-height: var(--line-height);
     color: var(--color);
     border-color: var(--border-color);
@@ -32,7 +32,6 @@
     &.mod-small {
         --height: 24px;
         --font-size: 12px;
-        --font-weight: var(--font-weight-book);
         --line-height: 16px;
     }
 
@@ -75,21 +74,7 @@
         --color: var(--grey-80);
         --fill: var(--grey-80);
         --border-color: var(--grey-40);
-        --background-color: var(--white);
     }
-
-    &.mod-thin {
-        --font-weight: var(--font-weight-book);
-        --font-size: 12px;
-        --line-height: 16px;
-    }
-
-    &.mod-tag {
-        --background-color: var(--white);
-        font-weight: var(--font-weight-book);
-    }
-
-    // --gap: 4px;   FOR THE ICONS
 
     &:last-child {
         margin-right: 0;
