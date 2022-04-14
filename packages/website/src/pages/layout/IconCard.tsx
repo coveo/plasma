@@ -56,25 +56,25 @@ const small = `
 `;
 
 const disabled = `
-    import * as React from 'react';
-    import {IconCard} from '@coveord/plasma-react';
+import * as React from 'react';
+import {BadgeIconPlacement, IconCard} from '@coveord/plasma-react';
 
-    export default () => (
-        <IconCard
-            small
-            title="Web"
-            svgName="sourceWeb"
-            disabled
-            badges={[{icon: 'lock', extraClasses: ['mod-small']}]}
-            tooltip={{title: 'This source is not included in your license'}}
-            style={{width: '368px'}}
-        />
-    );
+export default () => (
+    <IconCard
+        small
+        title="Web"
+        svgName="sourceWeb"
+        disabled
+        badges={[{icon: 'lock', iconPlacement: BadgeIconPlacement.Left, isSmall: true}]}
+        tooltip={{title: 'This source is not included in your license'}}
+        style={{width: '368px'}}
+    />
+);
 `;
 
 const badgesOnTop = `
     import * as React from 'react';
-    import {IconCard} from '@coveord/plasma-react';
+    import {IconCard, BadgeType} from '@coveord/plasma-react';
 
     export default () => (
         <IconCard
@@ -82,7 +82,7 @@ const badgesOnTop = `
             description="For lightweight usage, prototyping, and testing the search experience. Hosted by Coveo."
             svgChild={<img className="mr3" style={{width: '112px', height: '112px'}} src="https://placeholder.pics/svg/112x112/DEDEDE/FFFFFF-FFFFFF" />}
             placeBadgesAbove
-            badges={[{label: 'Recommended', extraClasses: ['mod-small', 'mod-information']}]}
+            badges={[{label: 'Recommended', isSmall: true, type: BadgeType.Default}]}
             animateOnHover
             onClick={() => alert('You clicked the card')}
             cardClassName={['mod-fixed-size']}
