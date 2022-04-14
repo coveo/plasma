@@ -11,7 +11,7 @@ export const BadgeExamples = () => (
         title="Badge"
         section="Feedback"
         description="A badge is a small label that displays a short yet important piece of information."
-        thumbnail="placeholder"
+        thumbnail="badge"
         code={BadgeExample}
         examples={{
             BadgeWithIconsExample: {code: BadgeWithIconsExample, title: 'Badge with icon'},
