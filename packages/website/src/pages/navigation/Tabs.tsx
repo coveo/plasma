@@ -29,7 +29,7 @@ const withIcons = `
 
 const code = `
     import * as React from 'react';
-    import {Badge, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
+    import {Badge, BadgeType, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
 
     export default () => (
         <>
@@ -40,7 +40,7 @@ const code = `
                     id="tab13"
                     title="Mr. Mime"
                     tooltip="I have a badge!"
-                    badge={<Badge label="Beta" extraClasses={['mod-beta mod-small ml1']} />}
+                    badge={<Badge label="Beta" isSmall type={BadgeType.Beta} extraClasses={['ml1']} />}
                 />
                 <TabConnected groupId="patate" id="tab4" title="Rapidash" tooltip="I'm disabled" disabled />
             </TabNavigation>
