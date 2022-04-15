@@ -265,6 +265,7 @@ importers:
     specifiers:
       '@babel/types': 7.17.0
       '@coveord/plasma-tokens': workspace:*
+      '@loadable/component': 5.15.2
       '@svgr/core': 6.2.1
       '@swc/cli': 0.1.57
       '@swc/core': 1.2.165
@@ -277,6 +278,7 @@ importers:
       tslib: 2.3.1
       typescript: 4.5.4
     dependencies:
+      '@loadable/component': 5.15.2
       '@swc/helpers': 0.3.8
     devDependencies:
       '@babel/types': 7.17.0
@@ -1594,6 +1596,17 @@ packages:
       '@types/yargs': 16.0.4
       chalk: 4.1.2
     dev: true
+
+  /@loadable/component/5.15.2:
+    resolution: {integrity: sha512-ryFAZOX5P2vFkUdzaAtTG88IGnr9qxSdvLRvJySXcUA4B4xVWurUNADu3AnKPksxOZajljqTrDEDcYjeL4lvLw==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: '>=16.3.0'
+    dependencies:
+      '@babel/runtime': 7.16.3
+      hoist-non-react-statics: 3.3.2
+      react-is: 16.13.1
+    dev: false
 
   /@loadable/component/5.15.2_react@16.14.0:
     resolution: {integrity: sha512-ryFAZOX5P2vFkUdzaAtTG88IGnr9qxSdvLRvJySXcUA4B4xVWurUNADu3AnKPksxOZajljqTrDEDcYjeL4lvLw==}
