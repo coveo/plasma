@@ -2,7 +2,7 @@
 
 A flat select allows users to select a single value among multiple options.
 
-The width of each of the options should be the same, we don't want any of the options feel more important than the other.
+All options must have the same width.
 
 Aim for five or less options.
 
