@@ -375,7 +375,7 @@ importers:
     specifiers:
       '@types/fs-extra': 9.0.13
       '@types/lodash': 4.14.181
-      '@types/node': 16.11.26
+      '@types/node': 16.11.27
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
       commander: 9.0.0
@@ -395,7 +395,7 @@ importers:
     devDependencies:
       '@types/fs-extra': 9.0.13
       '@types/lodash': 4.14.181
-      '@types/node': 16.11.26
+      '@types/node': 16.11.27
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
       commander: 9.0.0
@@ -409,7 +409,7 @@ importers:
       rimraf: 3.0.2
       sass: 1.48.0
       svgo: 2.8.0
-      ts-node: 10.4.0_44ef5af6cbbc24239b4e70b5c7b0d7a6
+      ts-node: 10.4.0_8726306ae516cefbf62490d54d06d905
       tslib: 2.3.1
       typescript: 4.5.4
 
@@ -2436,7 +2436,7 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 16.11.26
+      '@types/node': 17.0.23
     dev: true
 
   /@types/glob/7.2.0:
@@ -2555,8 +2555,8 @@ packages:
   /@types/node/16.11.12:
     resolution: {integrity: sha512-+2Iggwg7PxoO5Kyhvsq9VarmPbIelXP070HMImEpbtGCoyWNINQj4wzjbQCXzdHTRXnqufutJb5KAURZANNBAw==}
 
-  /@types/node/16.11.26:
-    resolution: {integrity: sha512-GZ7bu5A6+4DtG7q9GsoHXy3ALcgeIHP4NnL0Vv2wu0uUB/yQex26v0tf6/na1mm0+bS9Uw+0DFex7aaKr2qawQ==}
+  /@types/node/16.11.27:
+    resolution: {integrity: sha512-C1pD3kgLoZ56Uuy5lhfOxie4aZlA3UMGLX9rXteq4WitEZH6Rl80mwactt9QG0w0gLFlN/kLBTFnGXtDVWvWQw==}
     dev: true
 
   /@types/node/17.0.23:
@@ -2760,7 +2760,7 @@ packages:
     resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
     dependencies:
       '@types/glob': 7.2.0
-      '@types/node': 16.11.26
+      '@types/node': 17.0.23
     dev: true
 
   /@types/scheduler/0.16.2:
@@ -15160,7 +15160,7 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /ts-node/10.4.0_44ef5af6cbbc24239b4e70b5c7b0d7a6:
+  /ts-node/10.4.0_8726306ae516cefbf62490d54d06d905:
     resolution: {integrity: sha512-g0FlPvvCXSIO1JDF6S232P5jPYqBkRL9qly81ZgAOSU7rwI0stphCgd2kLiCrU9DjQCrJMWEqcNSjQL02s6d8A==}
     hasBin: true
     peerDependencies:
@@ -15179,7 +15179,7 @@ packages:
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.2
-      '@types/node': 16.11.26
+      '@types/node': 16.11.27
       acorn: 8.5.0
       acorn-walk: 8.2.0
       arg: 4.1.3
