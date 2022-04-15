@@ -52,7 +52,7 @@
         --color: var(--rain-forest-green-60);
         --fill: var(--rain-forest-green-60);
         --border-color: var(--success-60);
-        --background-color: var(--success-00);
+        --background-color: var(--success-10);
     }
 
     &.mod-beta {
@@ -77,6 +77,14 @@
 
     &:last-child {
         margin-right: 0;
+    }
+
+    > div.badge_label {
+        order: 1;
+    }
+
+    > span.mod-right {
+        order: 2;
     }
 }
 /* stylelint-enabled */

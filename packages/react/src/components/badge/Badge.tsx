@@ -19,11 +19,6 @@ export enum BadgeIconPlacement {
     Right,
 }
 
-const IconPlacementMapping: Record<BadgeIconPlacement, boolean> = {
-    [BadgeIconPlacement.Left]: true,
-    [BadgeIconPlacement.Right]: false,
-};
-
 const TypeClassMapping: Record<BadgeType, string> = {
     [BadgeType.Beta]: 'mod-beta',
     [BadgeType.Critical]: 'mod-critical',
@@ -88,13 +83,16 @@ export class Badge extends React.Component<IBadgeProps> {
     render() {
         return (
             <div className={this.className} aria-label="badge">
-                {'icon' in this.props && this.props.icon && IconPlacementMapping[this.props.iconPlacement] ? (
-                    <Svg svgName={this.props.icon} className={'mod-badge'} svgClass={'icon mod-badge'} />
+                {'icon' in this.props && this.props.icon ? (
+                    <Svg
+                        svgName={this.props.icon}
+                        className={classNames('mod-badge', {
+                            'mod-right': this.props.iconPlacement === BadgeIconPlacement.Right,
+                        })}
+                        svgClass={'icon mod-badge'}
+                    />
                 ) : null}
                 {'label' in this.props ? <div className="badge_label">{this.props.label}</div> : null}
-                {'icon' in this.props && this.props.icon && !IconPlacementMapping[this.props.iconPlacement] ? (
-                    <Svg svgName={this.props.icon} className={'mod-badge'} svgClass={'icon mod-badge'} />
-                ) : null}
             </div>
         );
     }
