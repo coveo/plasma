@@ -6,7 +6,7 @@ All options must have the same width.
 
 Aim for five or less options.
 
-Don't use Flat select when the effect is not immediate, consider using dropdown menu, radio buttons or checkboxes instead. Users are expect to have immediate feedback on their actions when using Flat select.
+The effect of the flat select must be immediately visible. For example, a display could change according to the user's selection. If not, consider using a drop-down menu, radio buttons, or checkboxes instead.
 
 If used as view switcher (tabs), make sure it makes sense hierarchically and that tabs cannot be used.
 
