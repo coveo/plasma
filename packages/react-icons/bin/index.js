@@ -18,10 +18,7 @@ const getComponentName = (file) => {
 
 const convertIcon = async ([iconName, variants]) => {
     await fs.ensureDir(`./generated/${iconName}`);
-    return Promise.all([
-        ...variants.map(convertVariant),
-        fs.appendFile('./generated/index.ts', `export * from './${iconName}';\n`),
-    ]);
+    return Promise.all(variants.map(convertVariant));
 };
 
 const convertVariant = async (file) => {
@@ -34,7 +31,7 @@ const convertVariant = async (file) => {
             fileContent.toString('utf8'),
             {
                 typescript: true,
-                exportType: 'named',
+                exportType: 'default',
                 namedExport: componentName,
                 template,
                 expandProps: false,
@@ -48,7 +45,14 @@ const convertVariant = async (file) => {
             {componentName}
         );
         return Promise.all([
-            fs.appendFile(`./generated/${iconName}/index.ts`, `export * from './${variantName}';\n`),
+            fs.appendFile(
+                './generated/index.ts',
+                `export const ${componentName} = loadable(() => import('./${iconName}/${variantName}'));\n`
+            ),
+            fs.appendFile(
+                `./generated/${iconName}/index.ts`,
+                `export {default as ${componentName}} from './${variantName}';\n`
+            ),
             fs.outputFile(`./generated/${iconName}/${variantName}.tsx`, tsCode),
         ]);
     } catch (err) {
@@ -62,7 +66,8 @@ const listIconVariants = async (grouped) => {
         iconName,
         variants: variantsPaths.map(getComponentName),
     }));
-    fs.appendFile(`./generated/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
+    fs.appendFile('./generated/index.ts', 'import loadable from "@loadable/component";\n\n');
+    fs.appendFile('./generated/index.ts', `export const iconsList = ${JSON.stringify(list)};\n`);
 };
 
 const handleSvgFiles = (err, files) => {
