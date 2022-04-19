@@ -24,18 +24,7 @@ const build = async ({watch = false}) => {
         console.info('starting typescript compilation');
 
         const tscArgs = ['-p', './tsconfig.build.json', '--emitDeclarationOnly'];
-        const swcArgs = [
-            './src',
-            '--out-dir',
-            './dist/cjs',
-            '--ignore',
-            '**/*.spec.ts',
-            '--ignore',
-            '**/*.spec.tsx',
-            '--copy-files',
-            '--config-file',
-            './.swcrc',
-        ];
+        const swcArgs = ['./src', '--out-dir', './dist/cjs', '--copy-files', '--config-file', './.swcrc'];
         if (watch) {
             tscArgs.push('--watch');
             swcArgs.push('--watch');
