@@ -42,7 +42,7 @@ const ResultList = () => {
 
         engine.dispatch(registerNumberOfResults(1000));
         engine.dispatch(updateQuery({q: value}));
-        engine.dispatch(executeSearch(event));
+        engine.dispatch(executeSearch(event) as any);
     } else {
         engine.dispatch(registerNumberOfResults(1000));
         engine.executeFirstSearch();

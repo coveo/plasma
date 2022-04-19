@@ -1,4 +1,4 @@
-import {AtomicNoResults, AtomicQuerySummary, AtomicSearchInterface, Result} from '@coveo/atomic-react';
+import {AtomicQuerySummary, AtomicSearchInterface, Result} from '@coveo/atomic-react';
 import {loadClickAnalyticsActions, ResultList as HeadlessResultList, SearchEngine} from '@coveo/headless';
 import {Section} from '@coveord/plasma-react';
 import {FunctionComponent, useEffect, useState} from 'react';
@@ -22,7 +22,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
     return (
         <>
             {!state.hasResults && !state.isLoading ? (
-                <AtomicSearchInterface engine={engine}>
+                <AtomicSearchInterface engine={engine as any}>
                     <Section className="section">
                         <NoSearchResultTemplate engine={engine} query={query} />
                     </Section>
@@ -30,7 +30,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
             ) : (
                 <Section className="home flex-auto overflow-auto demo-content">
                     <Section className="section">
-                        <AtomicSearchInterface engine={engine}>
+                        <AtomicSearchInterface engine={engine as any}>
                             <AtomicQuerySummary />
                         </AtomicSearchInterface>
                         <div className="tile-grid">
