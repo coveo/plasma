@@ -1,3 +1,12 @@
+# 40.5.0 (2022-04-19)
+
+
+### Features
+
+* **icons:** lazy load react-icons ([b240b4e](https://github.com/coveo/plasma/commits/b240b4e426d529a99aa4efe70e41211cf0d960d0))
+
+
+
 ## 40.4.37 (2022-04-16)
 
 
