@@ -16,7 +16,7 @@ describe('IconCard', () => {
         render(<IconCard title="The Title" svgName="home" />);
 
         expect(screen.getByRole('img', {name: /home icon/i})).toBeVisible();
-        expect(screen.getByRole('heading', {name: /the title/i})).toBeVisible();
+        expect(screen.getByText(/the title/i)).toBeVisible();
     });
 
     it('accepts and renders a node as title', () => {
