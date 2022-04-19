@@ -15,7 +15,7 @@ module.exports = {
             '@swc/jest',
             {
                 jsc: {
-                    target: 'es5',
+                    target: 'es2021',
                     keepClassNames: true,
                     parser: {
                         syntax: 'typescript',
