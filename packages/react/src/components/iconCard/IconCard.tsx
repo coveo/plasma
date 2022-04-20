@@ -154,7 +154,7 @@ export const IconCard: React.FunctionComponent<Override<
                         {placeBadgesAbove && !!badgeComponents.length ? (
                             <div className="flex mb1">{badgeComponents}</div>
                         ) : null}
-                        <h6 className="title">{title}</h6>
+                        <h5 className="title">{title}</h5>
                         {description && <p className="description">{description}</p>}
                     </div>
                     {(!placeBadgesAbove && !!badgeComponents.length) || React.Children.count(children) > 0 ? (
