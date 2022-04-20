@@ -4,8 +4,6 @@ The button label should allow users to **foresee what will happen** when clickin
 
 Avoid multiplying buttons within a page. A page should have **only one primary action button**. If several secondary action buttons are required, consider using [actionable items](https://plasma.coveo.com/form/ActionableItem) instead.
 
-When using a group of related buttons, such as for the "Save" and "Cancel" actions, always put the action that moves users forward through their journey **to the right**. For example, "Save" would be the rightmost button and "Cancel" would appear left of it.
-
 # Labeling
 
 Keep labels short, preferably **under three words**.
@@ -14,6 +12,19 @@ Use **trigger words** to clearly indicate the action performed by the button. A 
 The first word of the label should be a verb. If adding a noun is required for context, avoid including an article. For example, write "Add filter" rather than "Add a filter", but write "Save" and "Cancel".
 
 When using a button to have users confirm the action to execute, use an active word to **clearly state the resulting action**. For instance, if users must confirm the deletion of a file, write "Delete" and "Cancel" rather than "Yes" and "No".
+
+# Order of Buttons
+
+When using a group of related buttons, such as for the "Save" and "Cancel" actions, always put **the primary button to the right** and the secondary to the left of the primary button.
+
+In such case, the primary button must correspond to an action that moves the user forward through their journey or to the main action that the user should take. 
+
+For example, in the [Sticky footer](https://plasma.coveo.com/layout/StickyFooter) of a page where the user edits a configuration, order buttons as follows: "Cancel" (secondary), then "Save" (primary).
+
+Similarly, in the footer of a [modal wizard](https://plasma.coveo.com/layout/ModalWizard), navigation buttons must be ordered as follows: "Previous" (secondary), then "Next" (primary). At the last step, the “Next” button must be replaced with a primary button with a label indicating the resulting action. For example, an appropriate label would be “Add filter” rather than “Save”. 
+
+Buttons located in a [page header](https://plasma.coveo.com/layout/PageHeader) must also appear in the order described above. The primary action must appear on the rightmost side with the secondary actions to the left of this button. In a page header, the primary action usually relates to the creation of new elements, while secondary actions are usually used to trigger troubleshooting or management actions, such as activity review.
+
 
 # Variants
 
