@@ -13,17 +13,17 @@ The first word of the label should be a verb. If adding a noun is required for c
 
 When using a button to have users confirm the action to execute, use an active word to **clearly state the resulting action**. For instance, if users must confirm the deletion of a file, write "Delete" and "Cancel" rather than "Yes" and "No".
 
-# Order of buttons
+# Order of Buttons
 
-When using a group buttons, such as for the "Save" and "Cancel" actions, always put **the primary button to the right** and the secondary to the left of it.
+When using a group of related buttons, such as for the "Save" and "Cancel" actions, always put **the primary button to the right** and the secondary to the left of the primary button.
 
-In that situation, the primary button should always represent an action that moves users forward through their journey or represent the main action the user should take. 
+In such case, the primary button must correspond to an action that moves the user forward through their journey or to the main action that the user should take. 
 
-For example, when managing modification made to a configuration, order buttons as "Cancel" (secondary) then "Save" (primary) in the [Sticky footer](https://plasma.coveo.com/layout/StickyFooter).
+For example, in the [Sticky footer](https://plasma.coveo.com/layout/StickyFooter) of a page where the user edits a configuration, order buttons as follows: "Cancel" (secondary), then "Save" (primary).
 
-In a similar fashion, when creating new elements using a [Modal Wizard](https://plasma.coveo.com/layout/ModalWizard), navigation buttons must be ordered as "Previous" (secondary) then "Next" (primary) in the footer. When reaching the last step, the “Next” button must be replaced by a primary button appropriately labeling to indicate the resulting action, such as “Add filter” instead of only “Save”. 
+Similarly, in the footer of a [modal wizard](https://plasma.coveo.com/layout/ModalWizard), navigation buttons must be ordered as follows: "Previous" (secondary), then "Next" (primary). At the last step, the “Next” button must be replaced with a primary button with a label indicating the resulting action. For example, an appropriate label would be “Add filter” rather than “Save”. 
 
-For the [Page header](https://plasma.coveo.com/layout/PageHeader), make sure that the primary action always appear on the rightmost side of the screen and list all secondary actions to the left of it. Primary action, in page header, usually relates to the creation of new elements, while secondary actions are usually used to trigger troubleshooting or management actions, such as viewing activities.
+Buttons located in a [page header](https://plasma.coveo.com/layout/PageHeader) must also appear in the order described above. The primary action must appear on the rightmost side with the secondary actions to the left of this button. In a page header, the primary action usually relates to the creation of new elements, while secondary actions are usually used to trigger troubleshooting or management actions, such as activity review.
 
 
 # Variants
