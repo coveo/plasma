@@ -10,15 +10,50 @@ import {FlatSelectOption, IFlatSelectOptionProps} from './FlatSelectOption';
 import {FlatSelectSelectors} from './FlatSelectSelectors';
 
 export interface IFlatSelectOwnProps {
+    /**
+     * The unique identifier of the flat select
+     */
     id: string;
+    /**
+     * The list of options to show
+     */
     options: IFlatSelectOptionProps[];
+    /**
+     * Additionnal CSS class for the flat select
+     */
     className?: string;
+    /**
+     * Whether the flat select options are grouped. Grouped options are displayed closer together
+     *
+     * @default false
+     */
     group?: boolean;
+    /**
+     * Whether the flat select is an option picker. This makes the visual lighter and fits well inside a dropdown
+     *
+     * @default false
+     */
     optionPicker?: boolean;
+    /**
+     * The id of the initialy selected option
+     */
     defaultSelectedOptionId?: string;
+    /**
+     * A callback function that is executed when the user click on a value
+     *
+     * @param option an object representing the value being clicked
+     */
     onClick?: (option: IFlatSelectOptionProps) => void;
+    /**
+     * Whether the flat select is disabled
+     *
+     * @default false
+     */
     disabled?: boolean;
-    classes?: string[] /* @deprecated use className instead */;
+    /**
+     * @deprecated use className instead
+     */
+    classes?: string[];
 }
 
 export type IFlatSelectProps = IFlatSelectOwnProps &

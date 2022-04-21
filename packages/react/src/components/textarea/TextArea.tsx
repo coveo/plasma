@@ -10,38 +10,79 @@ import {ILabelProps} from '../input';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';
 
 export interface ITextAreaOwnProps {
-    id: string;
-    className?: string;
-    additionalAttributes?: React.DetailedHTMLProps<
-        React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-        HTMLTextAreaElement
-    > &
-        TextareaAutosizeProps;
     /**
-     * Use with TextAreaConnected. Only useful in a Redux context.
+     * Unique identifier
+     */
+    id: string;
+    /**
+     * Additional CSS classes to add on the textarea element
+     */
+    className?: string;
+    /**
+     * Additional HTML attributes to add on the
+     */
+    additionalAttributes?: TextareaAutosizeProps;
+    /**
+     * The value inside the textarea element on mount. Use with TextAreaConnected. Only useful in a Redux context.
      */
     valueOnMount?: string;
     /**
-     * Use with TextAreaConnected. Only useful in a Redux context.
+     * Whether the textarea is disabled on mount. Use with TextAreaConnected. Only useful in a Redux context.
      */
     disabledOnMount?: boolean;
-
+    /**
+     * Whether the textarea automatically grows in height when new lines are added
+     *
+     * @default false
+     */
     isAutosize?: boolean;
-
+    /**
+     * A callback function executed when the value of the textarea changes
+     *
+     * @param event The change event
+     */
     onChangeCallback?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    /**
+     * A function that tells whether the current value is valid
+     *
+     * @param value The current value of the textarea
+     */
     validate?: (value: string) => boolean;
+    /**
+     * The text to display when the textarea is invalid
+     */
     validationMessage?: string;
+    /**
+     * Additonal props to set on the invalid message label
+     */
     validationLabelProps?: ILabelProps;
 }
 
 export interface ITextAreaStateProps {
+    /**
+     * The current value of the textarea
+     */
     value?: string;
+    /**
+     * Whether the textarea should be disabled
+     */
     disabled?: boolean;
 }
 
 export interface ITextAreaDispatchProps {
+    /**
+     * A callback function executed when the value of the textarea changes
+     *
+     * @param event The change event
+     */
     onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+    /**
+     * A callback function executed when the textarea is added to the DOM
+     */
     onMount?: () => void;
+    /**
+     * A callback function executed when the textarea is removed from the DOM
+     */
     onUnmount?: () => void;
 }
 

@@ -9,6 +9,7 @@ import '../styles/props-doc.scss';
 import '../styles/loading-screen.css';
 import '../styles/page-header.scss';
 import '../styles/iconography.scss';
+import '../styles/spacing.scss';
 import {Svg} from '@coveord/plasma-react';
 
 import * as PlasmaReact from '@coveord/plasma-react';
@@ -17,9 +18,12 @@ import type {AppProps} from 'next/app';
 import Head from 'next/head';
 import Link from 'next/link';
 import * as React from 'react';
+import * as Redux from 'redux';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
+import * as LoremIpsum from 'lorem-ipsum';
 import {Provider} from 'react-redux';
+import moment from 'moment';
 
 import logo from '../../resources/plasma-logo.svg';
 import {EngineProvider} from '../search/engine/EngineProvider';
@@ -54,6 +58,9 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         (window as any).ReactRedux = ReactRedux;
         (window as any).PlasmaReact = PlasmaReact;
         (window as any).PlasmaReactIcons = PlasmaReactIcons;
+        (window as any).moment = moment;
+        (window as any).LoremIpsum = LoremIpsum;
+        (window as any).Redux = Redux;
 
         if (window.location.host === 'vapor.coveo.com') {
             window.location.href = window.location.href.replace('vapor.coveo.com', 'plasma.coveo.com');

@@ -25,7 +25,7 @@ pipeline {
         name: 'LIBRARIES', 
         description: 'Name of the Figma libraries to extract tokens from (leave all unchecked to extract them all)', 
         type: 'PT_CHECKBOX', 
-        value: 'ICONS', 
+        value: 'Icons', 
         multiSelectDelimiter: ' ', 
         quoteValue: false, 
         saveJSONParameterToFile: false, 

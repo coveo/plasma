@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
-import {ConnectedProps, IDispatch, TooltipPlacement} from '../../utils';
+import {IDispatch, TooltipPlacement} from '../../utils';
 import {useMountedState} from '../../utils/useMountedState';
 import {Button} from '../button';
 import {ModalActions} from '../modal/ModalActions';
@@ -17,32 +17,77 @@ export interface ModalWizardProps
         IModalCompositeOwnProps,
         'modalBodyChildren' | 'validateShouldNavigate' | 'modalFooterChildren' | 'title'
     > {
+    /**
+     * A unique identifier that will be used to identify the modal in the PlasmaState. Among other things this is the identifer that will be used to open the wizard.
+     */
     id: string;
+    /**
+     * A function that is executed when user completes all the steps.
+     *
+     * @param close A function that closes the modal when called.
+     */
     onFinish?: (close: () => void) => unknown;
+    /**
+     * A function that determines whether the current step is valid or not
+     *
+     * @param currentStep The step at is currently displayed in the wizard
+     * @param numberOfSteps The total number of steps to reach completion of the wizard. Useful to know if the current step is the last step.
+     * @default () => ({isValid: true})
+     */
     validateStep?: DependsOnStep<{isValid: boolean; message?: string}>;
-    modalFooterChildren?: React.ReactNode | DependsOnStep<React.ReactNode>;
+    /**
+     * The title of the modal. The title can be dependent on the current step if needed, to do so pass in a function that accepts the same params as the validateStep prop.
+     */
     title?: string | DependsOnStep<string>;
+    /**
+     * Determines what needs to be rendered in the modal footer. The content of the footer can be dependent on the current step by using a render function
+     */
+    modalFooterChildren?: React.ReactNode | DependsOnStep<React.ReactNode>;
+    /**
+     * Whether the wizard should warn about unsaved changes when the user unexpectedly closes the modal
+     */
     isDirty?: boolean;
+    /**
+     * The label of the cancel button
+     *
+     * @default "Cancel"
+     */
     cancelButtonLabel?: string;
+    /**
+     * The label of the next button
+     *
+     * @default "Next"
+     */
     nextButtonLabel?: string;
+    /**
+     * The label of the previous button
+     *
+     * @default "Previous"
+     */
     previousButtonLabel?: string;
+    /**
+     * The label of the finish button
+     *
+     * @default "Finish"
+     */
     finishButtonLabel?: string;
+    /**
+     * A callback function that is executed when the user clicks on the next button
+     */
     onNext?: () => unknown;
+    /**
+     * A callback function that is executed when the user clicks on the previous button
+     */
     onPrevious?: () => unknown;
+    /**
+     * A callback function that is executed when the user clicks on the cancel button
+     */
     onCancel?: () => unknown;
 }
 
-const enhance = connect<null, {close: () => void}, React.PropsWithChildren<ModalWizardProps>>(
-    null,
-    (dispatch: IDispatch, {id}: ModalWizardProps) => ({
-        close: () => dispatch(ModalActions.closeModal(id)),
-    })
-);
-
-const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & ConnectedProps<typeof enhance>> = ({
+export const ModalWizard: React.FunctionComponent<ModalWizardProps> = ({
     id,
     title,
-    close,
     onFinish,
     children,
     modalFooterChildren,
@@ -64,6 +109,8 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
     const isLastStep = currentStep === numberOfSteps - 1;
     const {isValid, message} = validateStep?.(currentStep, numberOfSteps) ?? {isValid: true};
     const isMounted = useMountedState();
+    const dispatch: IDispatch = useDispatch();
+    const close = () => dispatch(ModalActions.closeModal(id));
 
     return (
         <UnsavedChangesModalProvider isDirty={isDirty} confirmationModalId={`${id}-unsaved-modal`}>
@@ -132,5 +179,3 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
         </UnsavedChangesModalProvider>
     );
 };
-
-export const ModalWizard = enhance(ModalWizardDisconneted);

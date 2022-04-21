@@ -1,35 +1,727 @@
-## 38.11.4-next.5 (2022-03-09)
+## 40.5.2 (2022-04-20)
 
 
-### Bug Fixes
 
-* **website:** remove workarounds ([4e25333](https://github.com/coveo/plasma/commits/4e25333e3496c12ce6bca381bc9f02341a66ef15))
+## 40.5.1 (2022-04-20)
+
+
+
+# 40.5.0 (2022-04-19)
 
 
 ### Features
 
-* **react-icons:** add accessible role to all icons ([c5bece6](https://github.com/coveo/plasma/commits/c5bece62080a07129e2a1225130a94567c9c63f8))
-* **react-icons:** add accessible role to all icons ([b5dfd59](https://github.com/coveo/plasma/commits/b5dfd5931214e82dffee1129c13d4a723f3bf7af))
-* **react-icons:** implement Icon type ([1891313](https://github.com/coveo/plasma/commits/1891313451de484d6142aedc2097451bf5f18db3))
-* **react-icons:** implement Icon type ([cb10a12](https://github.com/coveo/plasma/commits/cb10a1211388e66402ce995fbb5820f534dc42b1))
-* **react:** remove Svg from ActionableItem ([e11a8ca](https://github.com/coveo/plasma/commits/e11a8ca13c285a7eec70e381c9f751e4f8d4cdc6))
-* **react:** use plasma-react-icons in badge component ([0e33de1](https://github.com/coveo/plasma/commits/0e33de1c3d0bd3b54c3f47707d1ee8f1bdc02ad8))
-* **react:** use plasma-react-icons in badge component ([1c56382](https://github.com/coveo/plasma/commits/1c56382083157f20156805a8af417e50345cd919))
-* **react:** use react-icons in CollapsibleToggle ([8706144](https://github.com/coveo/plasma/commits/870614490e03c1b5f79e582c908101990bad53a7))
-* **react:** use react-icons in CollapsibleToggle ([1e55008](https://github.com/coveo/plasma/commits/1e5500841f752d693396d894276077560b160cc8))
-* **tokens:** extract design tokens from figma libraries ([ebe3918](https://github.com/coveo/plasma/commits/ebe39185eb94977f595bedbf88afa74943df2efc))
+* **icons:** lazy load react-icons ([b240b4e](https://github.com/coveo/plasma/commits/b240b4e426d529a99aa4efe70e41211cf0d960d0))
+
+
+
+## 40.4.37 (2022-04-16)
+
+
+
+## 40.4.36 (2022-04-16)
+
+
+
+## 40.4.35 (2022-04-16)
+
+
+
+## 40.4.34 (2022-04-15)
+
+
+
+## 40.4.33 (2022-04-15)
+
+
+
+## 40.4.32 (2022-04-15)
+
+
+
+## 40.4.31 (2022-04-15)
+
+
+
+## 40.4.30 (2022-04-14)
+
+
+
+## 40.4.29 (2022-04-14)
+
+
+
+## 40.4.28 (2022-04-13)
+
+
+
+## 40.4.27 (2022-04-13)
+
+
+
+## 40.4.26 (2022-04-13)
+
+
+
+## 40.4.25 (2022-04-12)
+
+
+
+## 40.4.24 (2022-04-11)
+
+
+### Bug Fixes
+
+* **react, table:** improve accessibility of loading tables ([a6c3f4f](https://github.com/coveo/plasma/commits/a6c3f4f95b707e78c8d029ca690f22c9fd5cd68c))
+
+
+
+## 40.4.23 (2022-04-11)
+
+
+
+## 40.4.22 (2022-04-11)
+
+
+
+## 40.4.21 (2022-04-11)
+
+
+
+## 40.4.20 (2022-04-11)
+
+
+
+## 40.4.19 (2022-04-11)
+
+
+
+## 40.4.18 (2022-04-10)
+
+
+
+## 40.4.17 (2022-04-10)
+
+
+
+## 40.4.16 (2022-04-10)
+
+
+
+## 40.4.15 (2022-04-10)
+
+
+
+## 40.4.14 (2022-04-10)
+
+
+
+## 40.4.13 (2022-04-10)
+
+
+
+## 40.4.12 (2022-04-10)
+
+
+
+## 40.4.11 (2022-04-10)
+
+
+
+## 40.4.10 (2022-04-09)
+
+
+
+## 40.4.9 (2022-04-09)
+
+
+
+## 40.4.8 (2022-04-09)
+
+
+
+## 40.4.7 (2022-04-09)
+
+
+
+## 40.4.6 (2022-04-09)
+
+
+
+## 40.4.5 (2022-04-08)
+
+
+
+## 40.4.4 (2022-04-08)
+
+
+
+## 40.4.3 (2022-04-08)
+
+
+
+## 40.4.2 (2022-04-07)
+
+
+### Bug Fixes
+
+* **droppod:** keep the original position of the drop after first rendering ([43300fe](https://github.com/coveo/plasma/commits/43300fe09e6e7e9a09e6f7a1c1f90f08893123ac))
+* **react, drop:** use last position ([a2a55dd](https://github.com/coveo/plasma/commits/a2a55ddef6fbf42481bffea257e649ce41b05201))
+
+
+### Reverts
+
+* put back defauilt value for root ([954b4c5](https://github.com/coveo/plasma/commits/954b4c523d719ac295f8318a6fcb65ce719710b2))
+
+
+
+## 40.4.1 (2022-04-06)
+
+
+
+# 40.4.0 (2022-04-05)
+
+
+### Features
+
+* **gdrive:** remove google drive single user svg ([a30b18c](https://github.com/coveo/plasma/commits/a30b18c84e2f445d1297774d263085e8573dbe14))
+
+
+
+# 40.3.0 (2022-04-04)
+
+
+### Features
+
+* **card:** added props to iconcard ([55979ce](https://github.com/coveo/plasma/commits/55979ce08848d5c06dc37dc8d24f55705069eb10))
+* **card:** changed prop for classes ([5acc09a](https://github.com/coveo/plasma/commits/5acc09a5d2e8b5b1a4edd48cc4a175f982a6583d))
+* **card:** fixed prop def order ([27a0a9a](https://github.com/coveo/plasma/commits/27a0a9ab6db8ca3432632bc7ef9adb668f6f576e))
+* **card:** removed ([670f086](https://github.com/coveo/plasma/commits/670f0866ba05ae7e5ba29339c07aa72b45bbb95d))
+
+
+
+## 40.2.2 (2022-04-04)
+
+
+### Bug Fixes
+
+* **plasma-tokens:** change ICONS for Icons in the jenkins params ([524970a](https://github.com/coveo/plasma/commits/524970a328c22a89414cae36b7a4a9d5ea32950c))
+
+
+
+## 40.2.1 (2022-04-01)
+
+
+
+# 40.2.0 (2022-04-01)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries ([6057c0f](https://github.com/coveo/plasma/commits/6057c0f348b8dfa17f1e4c71b69035c149a9a611))
+
+
+
+## 40.1.9 (2022-04-01)
+
+
+
+## 40.1.8 (2022-04-01)
+
+
+### Bug Fixes
+
+* **plasma-react:** better management of isDirty in TextInput ([674110e](https://github.com/coveo/plasma/commits/674110e118d0046d4c685e4470cee50630d384a2))
+
+
+
+## 40.1.7 (2022-04-01)
+
+
+### Bug Fixes
+
+* **plasma-react:** better management of isDirty in TextInput ([674110e](https://github.com/coveo/plasma/commits/674110e118d0046d4c685e4470cee50630d384a2))
+
+
+
+## 40.1.6 (2022-04-01)
+
+
+### Bug Fixes
+
+* **modal:** title is now a reactNode ([577f822](https://github.com/coveo/plasma/commits/577f8222fc4491afaa12ae506405660a728deae7))
+
+
+
+## 40.1.5 (2022-04-01)
+
+
+
+## 40.1.4 (2022-03-30)
+
+
+### Bug Fixes
+
+* oppsie ([49c5961](https://github.com/coveo/plasma/commits/49c59615f5edd942e09a5d082be479914d48502a))
+
+
+
+## 40.1.3 (2022-03-30)
+
+
+
+## 40.1.2 (2022-03-29)
+
+
+### Bug Fixes
+
+* **actions:** removed focus style on more button ([8b9133c](https://github.com/coveo/plasma/commits/8b9133c7edb50d72177af1f64623b721cd6db26a))
+
+
+
+## 40.1.1 (2022-03-29)
+
+
+### Bug Fixes
+
+* **button:** fix icon alignment in button with href ([da29a32](https://github.com/coveo/plasma/commits/da29a32dc9159895d1d27756c4d8773188e1eb21))
+* oops ([17ee1e4](https://github.com/coveo/plasma/commits/17ee1e4ed044752b596d2e89312ea443eccbb554))
+
+
+
+# 40.1.0 (2022-03-28)
+
+
+### Features
+
+* added new thumbnails ([0fa1bdb](https://github.com/coveo/plasma/commits/0fa1bdbdec4321731aafcead97b1bfdfd34412ac))
+
+
+
+## 40.0.3 (2022-03-23)
+
+
+
+## 40.0.2 (2022-03-23)
+
+
+
+## 40.0.1 (2022-03-23)
+
+
+
+# 40.0.0 (2022-03-23)
+
+
+### Code Refactoring
+
+* **calendar:** removed color prop to fix an error ([5b07389](https://github.com/coveo/plasma/commits/5b0738980241c836576f0d6d9a06bfee0450652a))
+
+
+### Styles
+
+* **calendar day:** remove calendar prop ([a2f5cff](https://github.com/coveo/plasma/commits/a2f5cff48af5521c63555d30e83f2d50f0bff58b))
 
 
 ### BREAKING CHANGES
 
-* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
-* **react:** Badge icon prop now expects an icon from plasma-react-icons
+* **calendar:** removed the color prop from calendar.tsx
+* **calendar day:** removing a prop the plasma users could be currently using
 
-fix(react): fix badge tests
-* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
-* **react:** Badge icon prop now expects an icon from plasma-react-icons
 
-fix(react): fix badge tests
+
+## 39.1.2 (2022-03-23)
+
+
+
+## 39.1.1 (2022-03-22)
+
+
+
+# 39.1.0 (2022-03-22)
+
+
+### Features
+
+* **website:** add Countdown demo apge ([9065cc4](https://github.com/coveo/plasma/commits/9065cc418c298b23582b7477e983cdfcacf03aed))
+
+
+
+## 39.0.2 (2022-03-22)
+
+
+
+## 39.0.1 (2022-03-21)
+
+
+
+# 39.0.0 (2022-03-21)
+
+
+* refactor!: fix buld ([7471cd9](https://github.com/coveo/plasma/commits/7471cd9061e5d976673a91d03892e9d4fa94e7e0))
+
+
+### BREAKING CHANGES
+
+* onToggleExpandedState is replace by onClick in sideNav
+
+
+
+# 38.31.0 (2022-03-21)
+
+
+### Features
+
+* **website:** allow import of examples from files ([688b01c](https://github.com/coveo/plasma/commits/688b01c42d3611fc2231af2e1808d027cac5099f))
+
+
+
+## 38.30.2 (2022-03-21)
+
+
+
+## 38.30.1 (2022-03-21)
+
+
+
+# 38.30.0 (2022-03-18)
+
+
+### Features
+
+* **demo:** update Section page ([10a3939](https://github.com/coveo/plasma/commits/10a3939a090a77af2159ad816a656c67ed3b2bcf))
+
+
+
+# 38.29.0 (2022-03-18)
+
+
+### Bug Fixes
+
+* **website:** enable import of moment in sandboxes ([96ece8c](https://github.com/coveo/plasma/commits/96ece8cae2b4d73b740c958b315a7dec715e3777))
+
+
+### Features
+
+* **demo:** update charts page done ([e05c791](https://github.com/coveo/plasma/commits/e05c791d743b7d829f64568287560563085f8335))
+* **demo:** wip update charts page ([3539aa0](https://github.com/coveo/plasma/commits/3539aa0b8c7bf1b8e4ce3ebe76c9d24ca8b8bb86))
+* **wip:** wip charts date not doing so great ([0d5796a](https://github.com/coveo/plasma/commits/0d5796a7633d850423320914a46b2e3f4b5098f5))
+
+
+
+## 38.28.2 (2022-03-18)
+
+
+### Performance Improvements
+
+* **react, color picker:** improve performances ([555bd2d](https://github.com/coveo/plasma/commits/555bd2ded60f9a600273235207b83c3adf618116))
+
+
+
+## 38.28.1 (2022-03-18)
+
+
+
+# 38.28.0 (2022-03-18)
+
+
+### Features
+
+* **demo:** update Limit card page ([ca0f385](https://github.com/coveo/plasma/commits/ca0f38504e063af354d521d85934ae2efefd4613))
+
+
+
+# 38.27.0 (2022-03-18)
+
+
+### Features
+
+* **demo:** update labeledValue page ([fbf601f](https://github.com/coveo/plasma/commits/fbf601f8f6ab646bc568793a7927cd99ceb9ed0c))
+
+
+
+# 38.26.0 (2022-03-17)
+
+
+### Bug Fixes
+
+* **react, modal composite:** type was any in the dts ([510b8d0](https://github.com/coveo/plasma/commits/510b8d021124484a48fc56405a86bf2d7b27f86b))
+* **website:** add missing types in for TypeScript ([f942a93](https://github.com/coveo/plasma/commits/f942a938118b77f3aff810fc406063be680b15f9))
+
+
+### Features
+
+* **website, modal:** update demo to use new layout ([5b06f0a](https://github.com/coveo/plasma/commits/5b06f0a251ff49297e6f3417cf2b03590e7606a0))
+
+
+
+## 38.25.6 (2022-03-17)
+
+
+
+## 38.25.5 (2022-03-17)
+
+
+
+## 38.25.4 (2022-03-17)
+
+
+
+## 38.25.3 (2022-03-17)
+
+
+### Bug Fixes
+
+* **style:** rounded inline-prompt button ([7fcd396](https://github.com/coveo/plasma/commits/7fcd396f23d9b22955097b387407898c9e03345b))
+
+
+
+## 38.25.2 (2022-03-16)
+
+
+
+## 38.25.1 (2022-03-16)
+
+
+
+# 38.25.0 (2022-03-16)
+
+
+### Features
+
+* **website:** display jsdocs params in props table ([aa2caa3](https://github.com/coveo/plasma/commits/aa2caa3ad7e8827dc504a3f67ca52e38e7e6ca7b))
+
+
+
+# 38.24.0 (2022-03-15)
+
+
+### Features
+
+* **demo:** revamp tooltip page ([d886940](https://github.com/coveo/plasma/commits/d886940dda9565444002246513cbf531305cda5c))
+
+
+
+## 38.23.1 (2022-03-15)
+
+
+
+# 38.23.0 (2022-03-15)
+
+
+### Features
+
+* **demo:** update browser preview page ([8e3ac45](https://github.com/coveo/plasma/commits/8e3ac45d7d44f53705be1fa19aeaec1e43693a93))
+* **demo:** update icon badge page ([943398c](https://github.com/coveo/plasma/commits/943398ce9f34fcaa0fb618f50e348d4e491d8192))
+
+
+
+# 38.22.0 (2022-03-15)
+
+
+### Features
+
+* **demo:** update page header page ([c5335b4](https://github.com/coveo/plasma/commits/c5335b4264f2ebf395f3d4daef408b082a4de81f))
+
+
+
+# 38.21.0 (2022-03-15)
+
+
+### Features
+
+* writing down section names by hand each time is problematic ([57b54a3](https://github.com/coveo/plasma/commits/57b54a3d3c4e164c7742e5808071efb0b84a431c))
+
+
+
+## 38.20.1 (2022-03-15)
+
+
+
+# 38.20.0 (2022-03-15)
+
+
+### Bug Fixes
+
+* **react:** disable MultiLineBox remove button on last entry ([13fcfe8](https://github.com/coveo/plasma/commits/13fcfe81f19cd8437769d87b323fe7425610a558))
+* **react:** fix MultiValueInput not adding new line ([74dfb5a](https://github.com/coveo/plasma/commits/74dfb5a79c60b34ef28629b2d1e23440203bc322))
+
+
+### Features
+
+* add link to external design priciples ([a293432](https://github.com/coveo/plasma/commits/a2934321dd09dabfd42f0451f1f3407a94ea532f))
+* **demo:** revamp blank slate page ([01790e9](https://github.com/coveo/plasma/commits/01790e901ef922d157264744dcd3ca56e626737a))
+* **demo:** revamp demo page for color dots + coditionnal props section ([78422f0](https://github.com/coveo/plasma/commits/78422f045b64f0ca7cfd5ade52cd669c39917cf8))
+* **demo:** revamped banner page ([0519213](https://github.com/coveo/plasma/commits/0519213d4c02cd3a7bd9e60b88706fca48a233a4))
+* **demo:** update bordered line page ([1b2838b](https://github.com/coveo/plasma/commits/1b2838b0779c3b4f3cb00a1f25809fd405c8aec4))
+
+
+
+# 38.19.0 (2022-03-14)
+
+
+### Features
+
+* **demo:** revamp subNavigation page ([0e4e9c2](https://github.com/coveo/plasma/commits/0e4e9c2c167581ec016ce926f21ff3d897a9c1e7))
+* **demo:** revamp Tab page ([cfd7b34](https://github.com/coveo/plasma/commits/cfd7b3466a59bb9d9f32084f52da117b18215836))
+* **demo:** revamped sideNavigation page ([a5269ed](https://github.com/coveo/plasma/commits/a5269ed6395535c7e87662d5dc2c7b78e296e17c))
+
+
+
+# 38.18.0 (2022-03-14)
+
+
+### Bug Fixes
+
+* **website:** adjust href on spacing home page tile ([85017d5](https://github.com/coveo/plasma/commits/85017d54aca94a1a0d8e3c5c6832b4ea45864a05))
+
+
+### Features
+
+* **react-icons:** add accessible role to all icons ([acf3e6c](https://github.com/coveo/plasma/commits/acf3e6c622acf44b42b9302db7695e9b1ca6944d))
+* **website:** redo whitespaces demo page ([f60538f](https://github.com/coveo/plasma/commits/f60538f1434ff46b26b86f99922f80d33d8fa307))
+
+
+
+# 38.17.0 (2022-03-14)
+
+
+### Features
+
+* **demo:** revamp badge page ([43eef69](https://github.com/coveo/plasma/commits/43eef696077315f91ae3f64d92d1ec0727354140))
+
+
+
+# 38.16.0 (2022-03-14)
+
+
+### Bug Fixes
+
+* fix console warnings ([d06139c](https://github.com/coveo/plasma/commits/d06139c94a6b37098cfedc36faf412b4c0f6eccd))
+
+
+### Features
+
+* **atomic:** applied review + fixing openini Search page from url ([4693d05](https://github.com/coveo/plasma/commits/4693d058d1cecba2ccf4089eaf958902fc0daec0))
+* **atomic:** cp the en.json in public folder to fix texts ([40a213d](https://github.com/coveo/plasma/commits/40a213d5af29eda8d374a467058853a4badd1c9e))
+* **atomic:** remove headless + add pager and result per page ([64c4e15](https://github.com/coveo/plasma/commits/64c4e155af0d3c4ce70e1daf86e85e0090178ac1))
+* **atomic:** result page works! ([9c49e5e](https://github.com/coveo/plasma/commits/9c49e5e2b2fd1da2cb15aaa73c1ab5fbd46d7dd3))
+* **atomic:** wIP - cancel first search + setup for custom style ([4c24490](https://github.com/coveo/plasma/commits/4c244902479dff832b607e43fd5667b490626c44))
+* **atomic:** wIP conditional redirection url ([4330724](https://github.com/coveo/plasma/commits/43307244ffd85080d6b774360f91b2b4f5c4bb15))
+* **atomic:** wIP progress for search + styling ([b98af42](https://github.com/coveo/plasma/commits/b98af427f01aa9a9e59d15555070981491b66627))
+* **atomic:** wIP search is working but everything is ugly ([4977894](https://github.com/coveo/plasma/commits/497789400d460ff31a3560f013db70657e941c2e))
+* **atomic:** wIP setup for atomic-react ([fd6b4f9](https://github.com/coveo/plasma/commits/fd6b4f9d39624de7d99d6dd231881afb37264175))
+* putting back our custome no result page ([88962cc](https://github.com/coveo/plasma/commits/88962cc3ee77764fe8f85436b236a2dd410c2a8e))
+
+
+### Performance Improvements
+
+* **nextjs:** add watchOptions to improve hot reload ([6a99db2](https://github.com/coveo/plasma/commits/6a99db2683cdac35e9ab1dd70b27a0ffa6bdaf04))
+
+
+
+## 38.15.13 (2022-03-13)
+
+
+
+## 38.15.12 (2022-03-13)
+
+
+
+## 38.15.11 (2022-03-13)
+
+
+
+## 38.15.10 (2022-03-13)
+
+
+
+## 38.15.9 (2022-03-12)
+
+
+
+## 38.15.8 (2022-03-12)
+
+
+
+## 38.15.7 (2022-03-12)
+
+
+
+## 38.15.6 (2022-03-12)
+
+
+
+## 38.15.5 (2022-03-12)
+
+
+
+## 38.15.4 (2022-03-12)
+
+
+
+## 38.15.3 (2022-03-12)
+
+
+
+## 38.15.2 (2022-03-12)
+
+
+
+## 38.15.1 (2022-03-11)
+
+
+
+# 38.15.0 (2022-03-11)
+
+
+### Features
+
+* **website:** add github link to typekit demo page ([e829806](https://github.com/coveo/plasma/commits/e8298064a681f427b3e39040b5e7efdffa7ad279))
+* **website:** add typekit demo page ([23b270b](https://github.com/coveo/plasma/commits/23b270b48b44a5ff98be4fa27a6d3c417fe1d47f))
+
+
+
+## 38.14.3 (2022-03-11)
+
+
+### Bug Fixes
+
+* **chart:** dropPod throws an error when there is no ref ([524dd55](https://github.com/coveo/plasma/commits/524dd55932fecb607bc395a6253966256bd7064b))
+
+
+
+## 38.14.2 (2022-03-10)
+
+
+### Bug Fixes
+
+* **react:** fix the date picker SetToNow button ([1aad84c](https://github.com/coveo/plasma/commits/1aad84cc4c46ab97206d89b1aa9006884111f8fe))
+
+
+
+## 38.14.1 (2022-03-09)
+
+
+
+# 38.14.0 (2022-03-09)
+
+
+### Features
+
+* **style:** update the look and feel of buttons ([ef11f99](https://github.com/coveo/plasma/commits/ef11f99771433d12ba34c34368e6715f818d3ffb))
+
+
+
+## 38.13.5 (2022-03-09)
+
+
+
+## 38.13.4 (2022-03-09)
+
+
+
+## 38.13.3 (2022-03-09)
 
 
 

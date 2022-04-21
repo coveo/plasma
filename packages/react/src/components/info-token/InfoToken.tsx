@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import {svg, SvgName} from '@coveord/plasma-style';
+import classNames from 'classnames';
 import * as React from 'react';
 
 import {Svg} from '../svg';

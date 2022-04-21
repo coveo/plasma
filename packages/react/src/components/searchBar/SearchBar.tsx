@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+
 import {IClassName} from '../../utils/ClassNameUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {Svg} from '../svg/Svg';
@@ -7,30 +8,84 @@ import {Svg} from '../svg/Svg';
 export interface ISearchBarConnectedProps {
     /**
      * If true, the search bar will be disabled in the UI and in the state on mount.
-     * False by default.
+     *
+     * @default false
      */
     disabledOnMount?: boolean;
 }
 
 export interface ISearchBarOwnProps extends ISearchBarConnectedProps {
+    /**
+     * The unique identifier of the SearchBar
+     */
     id: string;
+    /**
+     * A callback function executed when a search is performed by either pressing Enter or clicking on the icon.
+     *
+     * @param filterText The current value
+     */
     onSearch: (filterText: string) => void;
+    /**
+     * Additional CSS classes to set on the outermost element
+     */
     containerClassNames?: IClassName;
+    /**
+     * Additional CSS classes to set on the inner input element
+     */
     inputClassNames?: IClassName;
+    /**
+     * The text displayed inside the search bar when it is empty
+     */
     placeholder?: string;
+    /**
+     * The minimum width of the SearchBar
+     *
+     * @default "500px"
+     */
     minWidth?: string;
+    /**
+     * The maximum width of the SearchBar
+     *
+     * @default "500px"
+     */
     maxWidth?: string;
 }
 
 export interface ISearchBarStateProps {
+    /**
+     * Whether the SearchBar is disabled. If disabled, it cannot be interracted with
+     *
+     * @default false
+     */
     disabled?: boolean;
+    /**
+     * Whether a search is being performed. If true, a loading icon appears to indicate something is happening.
+     *
+     * @default false
+     */
     searching?: boolean;
+    /**
+     * The value of the search bar. In other words, this is the text currently enterred in the SearchBar.
+     *
+     * @default ""
+     */
     value?: string;
 }
 
 export interface ISearchBarDispatchProps {
+    /**
+     * A callback function executed when the component is mounted to the DOM
+     */
     onMount?: () => void;
+    /**
+     * A callback function executed when the component is unmounted from the DOM
+     */
     onUnmount?: () => void;
+    /**
+     * A callback function executed when the text in the SearchBar changes
+     *
+     * @param event The change event
+     */
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

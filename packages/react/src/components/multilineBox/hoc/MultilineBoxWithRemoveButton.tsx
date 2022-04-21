@@ -12,9 +12,8 @@ import {
     IMultilineBoxOwnProps,
     IMultilineParentProps,
     IMultilineSingleBoxProps,
+    MultilineBox,
 } from '../MultilineBox';
-
-type MultilineBoxWithRemoveButtonComponent<T = any> = React.ComponentClass<IMultilineBoxOwnProps<T>>;
 
 export interface IMultilineBoxWithRemoveButtonSupplierProps<T = any> {
     containerNode?: (
@@ -46,7 +45,7 @@ export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-
 
 export const multilineBoxWithRemoveButton = (
     supplier: ConfigSupplier<IMultilineBoxWithRemoveButtonSupplierProps> = {containerNode: defaultContainerNode}
-) => (Component: MultilineBoxWithRemoveButtonComponent) => {
+) => (Component: typeof MultilineBox): typeof MultilineBox => {
     const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps) => ({
         removeBox: (id: string) => dispatch(removeValueStringList(ownProps.id, id)),
     });
@@ -63,25 +62,23 @@ export const multilineBoxWithRemoveButton = (
             props: Partial<IButtonProps> = {},
             index: number
         ) {
+            const isLastMeaningfulEntry = data.length <= 1;
+            const isDisabled = this.props.disabled || isLastMeaningfulEntry || data[index].isLast;
             return (
                 <Button
-                    classes={[
-                        classNames(defaultMultilineBoxRemoveButtonClasses, {
-                            'cursor-pointer': !data[index]?.isLast,
-                        }),
-                    ]}
+                    classes={[classNames(defaultMultilineBoxRemoveButtonClasses)]}
                     style={{
-                        visibility: data.length > 1 ? 'visible' : 'hidden',
+                        visibility: isDisabled ? 'hidden' : 'visible',
                     }}
-                    onClick={() => !this.props.disabled && this.props.removeBox(data[index].id)}
-                    enabled={!this.props.disabled}
+                    onClick={() => this.props.removeBox(data[index].id)}
+                    enabled={!isDisabled}
                     {...props}
                 >
                     <Svg
                         svgName={svg.remove.name}
                         className="icon mod-18"
                         style={{
-                            visibility: data.length > 1 ? 'visible' : 'hidden',
+                            visibility: isDisabled ? 'hidden' : 'visible',
                         }}
                     />
                 </Button>
@@ -106,9 +103,7 @@ export const multilineBoxWithRemoveButton = (
                     renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) =>
                         this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)
                     }
-                >
-                    {this.props.children}
-                </Component>
+                />
             );
         }
     }

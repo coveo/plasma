@@ -1,41 +1,54 @@
 import * as React from 'react';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+import {PageLayout} from '../../building-blocs/PageLayout';
+
+const code = `
+    import * as React from 'react';
+    import {TargetSize16Px} from '@coveord/plasma-react-icons';
+    
+    export default () => (
+        <a className="link" href="/foundations/Links">
+            Link <TargetSize16Px height={16} />
+        </a>
+    );
+`;
+
+const disabledLink = `
+    import * as React from 'react';
+    import {TargetSize16Px} from '@coveord/plasma-react-icons';
+    
+    export default () => (
+        <a className="link disabled" href="/foundations/Links">
+            Link <TargetSize16Px height={16} />
+        </a>
+    );
+`;
+
+const buttonLink = `
+    import * as React from 'react';
+    import {TargetSize16Px} from '@coveord/plasma-react-icons';
+    
+    export default () => (
+        <button className="link" onClick={() => alert('The button was clicked')}>
+            Link <TargetSize16Px height={16} />
+        </button>
+    );
+`;
 
 export const Links = () => (
-    <PlasmaComponent
+    <PageLayout
         id="Links"
+        code={code}
+        section="Foundations"
         title="Links"
-        usage="A link is a navigational element that guides users to external resources or other sections of the product."
-        withSource
-    >
-        <p>
-            <a className="link" href="https://www.coveo.com/en">
-                Navigating link
-            </a>
-        </p>
-        <p>
-            <a
-                href="https://www.coveo.com/en"
-                className="link disabled"
-                onClick={(e) => {
-                    e.nativeEvent.preventDefault();
-                    return false;
-                }}
-            >
-                Disabled navigating link
-            </a>
-        </p>
-        <p>
-            <button className="link" onClick={() => alert('click')}>
-                Action triggering link
-            </button>
-        </p>
-        <p>
-            <button className="link disabled" disabled onClick={() => alert('click')}>
-                Disabled action triggering link
-            </button>
-        </p>
-    </PlasmaComponent>
+        thumbnail="links"
+        withPropsTable={false}
+        description="A link is a navigational element that guides users to external resources or other sections of the product."
+        sourcePath="packages/style/scss/elements/links.scss"
+        examples={{
+            disabledLink: {code: disabledLink, title: 'Disabled'},
+            buttonLink: {code: buttonLink, title: 'A button disguised as a link'},
+        }}
+    />
 );
 export default Links;

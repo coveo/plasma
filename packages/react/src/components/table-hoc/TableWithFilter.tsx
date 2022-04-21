@@ -6,7 +6,7 @@ import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing'
 import {PlasmaState} from '../../PlasmaState';
 import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
 import {BlankSlateWithTable, IBlankSlateWithTableProps} from '../blankSlate';
-import {FilterBoxConnected, FilterBoxSelectors} from '../filterBox';
+import {FilterBoxConnected, FilterBoxSelectors, IFilterBoxOwnProps} from '../filterBox';
 import {ITableHOCOwnProps, TableHOC} from './TableHOC';
 import {Params} from './TableWithUrlState';
 
@@ -14,6 +14,7 @@ export interface ITableWithFilterConfig extends WithServerSideProcessingProps {
     blankSlate?: IBlankSlateWithTableProps;
     matchFilter?: (filterValue: string, datum: any) => boolean;
     placeholder?: string;
+    filter?: IFilterBoxOwnProps;
 }
 
 export interface TableWithFilterProps {
@@ -27,7 +28,7 @@ const defaultMatchFilter = (filter: string, datum: any) =>
     -1;
 
 export const tableWithFilter = (
-    supplier: ConfigSupplier<ITableWithFilterConfig> = {blankSlate: {title: 'No results'}}
+    supplier: ConfigSupplier<ITableWithFilterConfig> = {blankSlate: {title: 'No results'}, filter: {isAutoFocus: true}}
 ) => (WrappedTable: typeof TableHOC) => {
     type OwnProps = ITableHOCOwnProps & TableWithFilterProps & WithServerSideProcessingProps;
     type Props = OwnProps & ReturnType<typeof mapStateToProps>;
@@ -65,7 +66,7 @@ export const tableWithFilter = (
                     id={this.props.id}
                     className="coveo-table-actions"
                     filterPlaceholder={filterPlaceholder || config.placeholder}
-                    isAutoFocus
+                    isAutoFocus={config.filter?.isAutoFocus ?? true}
                 />
             );
 

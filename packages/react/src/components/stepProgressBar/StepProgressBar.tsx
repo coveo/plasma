@@ -1,17 +1,21 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import {range, uniqueId} from 'underscore';
+
 import {IClassName} from '../../utils/ClassNameUtils';
 
 export interface IStepProgressBarProps {
     /**
-     * A positive integer above zero
+     * The total number of steps. A positive integer above 0.
      */
     numberOfSteps: number;
     /**
-     * The 0-based index of the step currently in completion by the user
+     * The 0-based index of the step currently in completion by the user.
      */
     currentStep: number;
+    /**
+     * Additional CSS classes that are added to the progress bar element
+     */
     className?: IClassName;
 }
 

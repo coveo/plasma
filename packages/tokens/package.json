@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "38.11.4-next.5",
+    "version": "40.4.32-next.5",
     "description": "Design tokens of the Plasma Design System",
     "repository": {
         "type": "git",
@@ -18,15 +18,15 @@
     "license": "Apache-2.0",
     "devDependencies": {
         "@types/fs-extra": "9.0.13",
-        "@types/lodash": "4.14.178",
-        "@types/node": "16.11.12",
+        "@types/lodash": "4.14.181",
+        "@types/node": "16.11.27",
         "@types/rimraf": "3.0.2",
-        "@types/svgo": "2.6.2",
+        "@types/svgo": "2.6.3",
         "commander": "9.0.0",
         "cross-fetch": "3.1.5",
         "dotenv-safe": "8.2.0",
         "figma-js": "1.14.0",
-        "fs-extra": "10.0.0",
+        "fs-extra": "10.0.1",
         "lint-staged": "9.5.0",
         "lodash": "4.17.21",
         "prettier": "2.4.1",

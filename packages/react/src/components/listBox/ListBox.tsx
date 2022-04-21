@@ -9,14 +9,39 @@ import {ItemBoxLoading} from '../loading/components/ItemBoxLoading';
 export type IItemBoxPropsWithIndex = {index?: number} & IItemBoxProps;
 
 export interface IListBoxOwnProps {
+    /**
+     * The content shown in the list of items when there are no items to display.
+     *
+     * @default {value: 'No Items'}
+     */
     noResultItem?: IItemBoxProps;
+    /**
+     * Additional CSS classes to set on the list element
+     */
     classes?: string[];
     id?: string;
     multi?: boolean;
+    /**
+     * The list of items to display as potential choices
+     */
     items?: IItemBoxProps[];
+    /**
+     * Useful if you need to wrap the list of items with another component. We use this when combining with the InfiniteScroll HOC
+     *
+     * @param items The list of items in the form of a React Component
+     */
     wrapItems?: (items: React.ReactNode) => React.ReactNode;
+    /**
+     * Content that is displayed underneath the list of items inside the dropdown
+     */
     footer?: React.ReactNode;
+    /**
+     * Whether the items are currenty loading (being fetched). If true, it will render visual loading placeholders in the ListBox
+     */
     isLoading?: boolean;
+    /**
+     * If true, no highlight will be rendered on active items. An item is active when using keyboard navigation
+     */
     noActive?: boolean;
 }
 

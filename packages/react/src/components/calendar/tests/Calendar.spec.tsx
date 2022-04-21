@@ -165,7 +165,6 @@ describe('Calendar', () => {
                     {
                         id: 'id',
                         calendarId: 'any',
-                        color: 'any',
                         lowerLimit: now,
                         upperLimit: now,
                         isRange: true,
@@ -180,7 +179,6 @@ describe('Calendar', () => {
                     {
                         id: 'id',
                         calendarId: 'any',
-                        color: 'any',
                         lowerLimit: now,
                         upperLimit: now,
                         isRange: true,
@@ -222,7 +220,6 @@ describe('Calendar', () => {
                         {
                             id: 'id1',
                             calendarId: 'any',
-                            color: 'any',
                             lowerLimit: null,
                             upperLimit: null,
                             isRange: true,
@@ -237,7 +234,6 @@ describe('Calendar', () => {
                         {
                             id: 'id2',
                             calendarId: 'any',
-                            color: 'any',
                             lowerLimit: null,
                             upperLimit: null,
                             isRange: true,
@@ -276,7 +272,6 @@ describe('Calendar', () => {
                     {
                         id: 'id',
                         calendarId: 'any',
-                        color: 'any',
                         lowerLimit: now,
                         upperLimit: now,
                         isRange: true,
@@ -298,7 +293,6 @@ describe('Calendar', () => {
                     {
                         id: 'id',
                         calendarId: 'any',
-                        color: 'any',
                         lowerLimit: now,
                         upperLimit: now,
                         isRange: true,
@@ -328,7 +322,6 @@ describe('Calendar', () => {
             const CALENDAR_SELECTION: IDatePickerState = {
                 id: 'id',
                 calendarId: 'any',
-                color: 'any',
                 lowerLimit: moment().subtract(1, 'day').toDate(),
                 upperLimit: moment().add(1, 'day').toDate(),
                 isRange: true,
@@ -380,15 +373,6 @@ describe('Calendar', () => {
                 beforeSelectionDay = calendarInstance.fillInDayInfos(beforeSelectionDay);
 
                 expect(beforeSelectionDay.isSelected).toBeFalsy();
-            });
-
-            it('should return the day color if the day is between the lower and upper limit', () => {
-                expect(day.color).toBe(CALENDAR_SELECTION.color);
-
-                let beforeSelectionDay: IDay = _.extend({}, DAY, {date: moment(now).subtract(3, 'day')});
-                beforeSelectionDay = calendarInstance.fillInDayInfos(beforeSelectionDay);
-
-                expect(beforeSelectionDay.color).toBeUndefined();
             });
 
             it('should return day isLowerLimit if the selection is a range and starts on that day', () => {
@@ -450,7 +434,6 @@ describe('Calendar', () => {
                 expect(day.isSelected).toBe(true);
                 expect(day.isLowerLimit).toBe(true);
                 expect(day.isUpperLimit).toBe(true);
-                expect(day.color).toBe(selectionAll.color);
 
                 calendar.setProps({
                     calendarSelection: [selectionAll, selectionNone],
@@ -461,7 +444,6 @@ describe('Calendar', () => {
                 expect(day.isSelected).toBe(true);
                 expect(day.isLowerLimit).toBe(true);
                 expect(day.isUpperLimit).toBe(true);
-                expect(day.color).toBe(selectionAll.color);
             });
 
             it('should return day isSelectable if the day comes after today', () => {

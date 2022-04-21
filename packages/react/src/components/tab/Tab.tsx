@@ -12,14 +12,41 @@ import {TabActions} from './TabActions';
 import {TabSelectors} from './TabSelectors';
 
 export interface ITabOwnProps {
+    /**
+     * Id to group tabs and tabContents together
+     */
     groupId?: string;
+    /**
+     * Id of the Tab
+     */
     id?: string;
+    /**
+     * The title of the Tab
+     */
     title: string;
+    /**
+     * Whether the Tab is disabled or not
+     */
     disabled?: boolean;
+    /**
+     * Additional text to display as tooltip when hovering over the Tab
+     */
     tooltip?: string;
+    /**
+     * Add an icon to the Tab
+     */
     icon?: SvgName;
+    /**
+     * Whether the mod-stroke is applied to the icon or not
+     */
     iconModStroke?: boolean;
+    /**
+     * Add a Badge to the Tab
+     */
     badge?: React.ReactNode;
+    /**
+     * Add an url to the Tab. Will navigate on click.
+     */
     url?: string;
     onSelect?: (e: React.MouseEvent) => void;
 }

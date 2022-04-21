@@ -27,6 +27,12 @@ export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
     id: string;
     examples?: Record<string, PlaygroundProps>;
     relatedComponents?: TileProps[];
+    /**
+     * Whether to show the props section or not
+     *
+     * @default true
+     */
+    withPropsTable?: boolean;
 }
 
 export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
@@ -39,7 +45,10 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
     layout = 'horizontal',
     examples,
     componentSourcePath,
+    sourcePath,
     relatedComponents,
+    withPropsTable = true,
+    children,
 }) => {
     const isShowingCode = useSelector((state) =>
         TabSelectors.getIsTabSelected(state, {groupId: 'page', id: 'implementation'})
@@ -48,6 +57,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
         <div id={id} className="plasma-page-layout">
             <PageHeader
                 componentSourcePath={componentSourcePath}
+                sourcePath={sourcePath}
                 section={section}
                 thumbnail={thumbnail}
                 title={title}
@@ -68,7 +78,10 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
                             examples={examples}
                             relatedComponents={relatedComponents}
                             layout={layout}
-                        />
+                            withPropsTable={withPropsTable}
+                        >
+                            {children}
+                        </Content>
                     )}
                 </TabPaneConnected>
                 <div className="mod-header-padding">
@@ -80,18 +93,21 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
 };
 const Content: React.FunctionComponent<Pick<
     PageLayoutProps,
-    'code' | 'examples' | 'id' | 'relatedComponents' | 'layout'
->> = ({code, examples, id, relatedComponents, layout}) => (
+    'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable'
+>> = ({code, examples, id, relatedComponents, layout, withPropsTable, children}) => (
     <>
         <div className="plasma-page-layout__main-code plasma-page-layout__section">
             <Sandbox id="main-code" horizontal={layout === 'horizontal'}>
                 {code}
             </Sandbox>
         </div>
-        <div className="plasma-page-layout__section">
-            <h4 className="h2 mb1">Props</h4>
-            <PropsDoc componentName={id} />
-        </div>
+
+        {withPropsTable && (
+            <div className="plasma-page-layout__section">
+                <h4 className="h2 mb1">Props</h4>
+                <PropsDoc componentName={id} />
+            </div>
+        )}
         {examples && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb5">Examples</h4>
@@ -117,5 +133,6 @@ const Content: React.FunctionComponent<Pick<
                 ))}
             </div>
         )}
+        {children}
     </>
 );

@@ -8,13 +8,26 @@ import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
 export interface IColorBarProps {
     /**
-     * key value pair object, in which
-     * each key is a string defining a css legal color value https://www.w3schools.com/cssref/css_colors_legal.asp
-     * and each value is an integer representing the percentage of 100% that this color must fill
+     * An object where the keys are legal CSS color as per https://www.w3schools.com/cssref/css_colors_legal.asp and the values a percentage.
+     * If the total is above 100 we normalize the value.
+     * If the total is under 100 the visible portion of the color bar won't take the full width
      */
-    widthPerColor: KeyValue<number>;
-    tooltipPerColor?: KeyValue<ITooltipProps>;
+    widthPerColor: Record<string, number>;
+    /**
+     * An object where the keys are the colors of widthPerColor and the value are ITooltipProps
+     *
+     * @default {}
+     */
+    tooltipPerColor?: Record<string, ITooltipProps>;
+    /**
+     * Height in px of the color bar
+     *
+     * @default "5px"
+     */
     height?: string;
+    /**
+     * Additionnal CSS class to add on the color bar
+     */
     className?: IClassName;
 }
 
@@ -34,7 +47,7 @@ export class ColorBar extends React.Component<IColorBarProps> {
                             className="inline-block color-bar-color"
                             color={color}
                             style={{height: this.props.height, width: `${width}%`}}
-                        ></Color>
+                        />
                     );
 
                     return this.props.tooltipPerColor[color] ? (

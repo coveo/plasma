@@ -1,69 +1,25 @@
 import * as React from 'react';
-import {ILinkSvgProps, ISvgProps, ITooltipProps, LinkSvg} from '@coveord/plasma-react';
-import * as _ from 'underscore';
 
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-const defaultSvgProps: ISvgProps = {
-    svgName: 'domainGoogle',
-    svgClass: 'icon mod-2x',
-};
+const code = `
+    import * as React from 'react';
+    import {LinkSvg} from '@coveord/plasma-react';
 
-const defaultTooltipProps: ITooltipProps = {
-    title: 'default tooltip description',
-};
+    export default () => (
+        <LinkSvg url="https://www.coveo.com/" svg={{svgName: 'external', svgClass: 'icon mod-14 ml1'}}>
+            Learn more about Coveo
+        </LinkSvg>
+    );
+`;
 
-// start-print
-
-export class LinkSvgExamples extends React.Component<any, any> {
-    render() {
-        const defaultProps: ILinkSvgProps = {
-            url: 'https://www.google.ca',
-            target: '_blank',
-        };
-
-        return (
-            <PlasmaComponent id="LinkSvg" title="Link SVG" withSource>
-                <div className="mt2">
-                    <div className="form-group">
-                        <label className="form-control-label">Default LinkSvg</label>
-                        <div className="form-control">
-                            <LinkSvg {...defaultProps} />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">LinkSvg with a tooltip</label>
-                        <div className="form-control">
-                            <LinkSvg {..._.extend({}, defaultProps, {tooltip: defaultTooltipProps})} />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">LinkSvg with a custom svg</label>
-                        <div className="form-control">
-                            <LinkSvg {..._.extend({}, defaultProps, {svg: defaultSvgProps})} />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">LinkSvg with a tooltip and without a href</label>
-                        <div className="form-control">
-                            <LinkSvg tooltip={defaultTooltipProps} svg={defaultSvgProps} />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">LinkSvg with a custom label</label>
-                        <div className="form-control">
-                            <LinkSvg
-                                url={defaultProps.url}
-                                svg={{svgName: 'external', svgClass: 'icon mod-16 ml1'}}
-                                linkClasses={['bold', 'caps']}
-                            >
-                                Learn more on Google
-                            </LinkSvg>
-                        </div>
-                    </div>
-                </div>
-            </PlasmaComponent>
-        );
-    }
-}
-export default LinkSvgExamples;
+export default () => (
+    <PageLayout
+        id="LinkSvg"
+        title="Link SVG"
+        section="Advanced"
+        description="A SVG that acts as a link."
+        componentSourcePath="/svg/LinkSvg.tsx"
+        code={code}
+    />
+);

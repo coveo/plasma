@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
+import {TooltipPlacement} from '../../utils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
@@ -15,13 +16,32 @@ import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
-export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button'> {
+export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 'multi'> {
+    /**
+     * A callback function executed after the selected item changes
+     *
+     * @param option The selected item value
+     */
     onSelectOptionCallback?: (option: string) => void;
+    /**
+     * Content to display in the toggle button, before the selected option
+     */
     buttonPrepend?: React.ReactNode;
+    /**
+     * If true, the dropdown content can have a width that is larger than the button
+     */
     noFixedWidth?: boolean;
+    /**
+     * Whether a selected item can be unselected
+     */
     canClear?: boolean;
+    /**
+     * The text that appears when hovering over the button to unselect an item
+     */
     deselectTooltipText?: string;
-    footer?: React.ReactNode;
+    /**
+     * A component to render instead of the default button. The button is what is displayed when the dropdown is not opened and used to open it.
+     */
     customButton?: React.ComponentType<ISelectButtonProps>;
 }
 
@@ -36,7 +56,6 @@ const selectPropsKeys = [
     'id',
     'isLoading',
     'items',
-    'multi',
     'noActive',
     'noResultItem',
     'onUpdate',
@@ -147,7 +166,7 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
 
     private getDeselectOptionButton(): React.ReactNode {
         return (
-            <Tooltip title={this.props.deselectTooltipText} placement="top" noSpanWrapper>
+            <Tooltip title={this.props.deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
                 <Svg
                     svgName={svg.clear.name}
                     svgClass="icon mod-12"

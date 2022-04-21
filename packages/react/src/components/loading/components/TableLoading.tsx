@@ -36,7 +36,7 @@ const Body = ({
     numberOfRow?: number;
     numberOfSubRow?: number;
 }) => (
-    <tbody>
+    <tbody role="status">
         {_.times(numberOfRow, (nColumn: number) =>
             isCard ? (
                 <CardRow

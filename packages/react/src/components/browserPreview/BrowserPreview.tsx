@@ -6,7 +6,16 @@ import {Svg} from '../svg';
 import {Tooltip} from '../tooltip';
 
 export interface BrowserPreviewProps {
+    /**
+     * Text that will be displayed in the tooltip on the i icon
+     *
+     * @default The final look in your search page may differ due to the customization you made in your page.
+     *
+     */
     headerDescription?: string;
+    /**
+     * Title of the browser preview
+     */
     title?: string;
 }
 

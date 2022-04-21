@@ -14,19 +14,75 @@ import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
 export type IMaybeServerConfig = WithServerSideProcessingProps;
 
 export interface ITableHOCOwnProps {
+    /**
+     * Unique identifier of the table
+     */
     id: string;
+    /**
+     * Whether the table is loading
+     *
+     * @default false
+     */
     isLoading?: boolean;
+    /**
+     * Whether the table has action buttons
+     *
+     * @default false
+     */
     hasActionButtons?: boolean;
+    /**
+     * The data to be displayed in the table
+     */
     data: any[];
+    /**
+     * Content of the body of the table
+     *
+     * @param data The data from the "data" prop modified by the HOCs if any
+     */
     renderBody: (data: any[]) => React.ReactNode;
+    /**
+     * The actions button to be displayed in the table header
+     *
+     * @default []
+     */
     actions?: React.ReactNode[];
+    /**
+     * Content to add before the filter and actions in the table header
+     */
     actionBarPrefixContent?: IContentProps;
+    /**
+     * Content of the header of the table
+     */
     tableHeader?: React.ReactNode;
+    /**
+     * A callback function executed each time an HOC of the table changes. For example, it's useful to fetch new data with the server side table
+     */
     onUpdate?: () => void;
+    /**
+     * Additionnal CSS classes for the outer most container of the table
+     */
     containerClassName?: string;
+    /**
+     * Additionnal CSS classes for body of the table
+     */
     tbodyClassName?: string;
+    /**
+     * Whether the table header has the "mod-border-top" css class. The header must have actions buttons for the style to be applied
+     *
+     * @default false
+     */
     showBorderTop?: boolean;
+    /**
+     * Whether the table header has the "mod-border-bottom" css class. The header must have actions buttons for the style to be applied
+     *
+     * @default true
+     */
     showBorderBottom?: boolean;
+    /**
+     * Additionnal loading options
+     *
+     * @default isCard: false, numberOfColumns: 5, defaultLoadingRow: 10, numberOfSubRow: 3,
+     */
     loading?: {
         isCard?: boolean;
         numberOfColumns?: number;
@@ -89,7 +145,12 @@ export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttrib
     const table = (
         <table className={classNames(className)} style={{marginTop: hasActionBar() ? '-1px' : 0}}>
             {tableHeader}
-            <tbody key={`table-body-${id}`} className={classNames({hidden: isLoading}, tbodyClassName)}>
+            <tbody
+                key={`table-body-${id}`}
+                className={classNames({hidden: isLoading}, tbodyClassName)}
+                aria-busy={isLoading}
+                aria-hidden={isLoading}
+            >
                 {renderBody(data || [])}
             </tbody>
             {isLoading && (

@@ -89,6 +89,10 @@
             background-color: var(--digital-blue-60);
         }
 
+        .selected-date.comparison-date {
+            background-color: var(--digital-blue-80);
+        }
+
         .lower-limit,
         .upper-limit {
             width: calc(#{$calendar-cell-dimensions} - #{$selected-date-offset} - #{$calendar-limit-border-width});
@@ -387,16 +391,7 @@
     box-sizing: border-box;
     width: $date-picker-dimension;
     height: $date-picker-dimension;
-    padding: $button-small-padding-x;
-    background: none;
-    border: $default-border;
-    border-radius: $border-radius;
-
-    cursor: pointer;
-
-    &:hover {
-        background-color: $date-picker-button-hover-bg;
-    }
+    padding: 7px 8px;
 }
 
 .clear-selection-button {

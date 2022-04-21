@@ -4,12 +4,12 @@ import * as React from 'react';
 import {slugify} from 'underscore.string';
 
 import {SlideY} from '../../animations';
-import {TooltipPlacement} from '../../utils';
+import {Override, TooltipPlacement} from '../../utils';
 import {Badge, IBadgeProps} from '../badge/Badge';
-import {SvgChild, SvgChildCustomProps, SvgChildProps} from '../svg/SvgChild';
+import {SvgChild, SvgChildProps, OptionalSvgChildProps} from '../svg/SvgChild';
 import {ITooltipProps, Tooltip} from '../tooltip';
 
-export interface IconCardChoice extends Partial<SvgChildCustomProps> {
+export interface IconCardChoice extends OptionalSvgChildProps {
     value: string;
     label: string;
     icon?: SvgName;
@@ -17,19 +17,60 @@ export interface IconCardChoice extends Partial<SvgChildCustomProps> {
 }
 
 export interface IconCardProps {
-    title: string;
-    badges?: IBadgeProps[];
+    /**
+     * The main text displayed on the card
+     */
+    title: React.ReactNode;
+    /**
+     * The secondary text displayed on the card
+     */
     description?: string;
-    onClick?: (choice?: string) => void;
-    tooltip?: ITooltipProps;
-    choices?: IconCardChoice[];
+    /**
+     * Whether the card is smaller in size
+     */
     small?: boolean;
+    /**
+     * The callback function that will be executed when the user clicks on the card or on one of the choices if choices are specified.
+     */
+    onClick?: (choice?: string) => void;
+    /**
+     * An array of badges to display on the card
+     *
+     * @default []
+     */
+    badges?: IBadgeProps[];
+    /**
+     * The tooltip to display when the user hovers over the card
+     */
+    tooltip?: ITooltipProps;
+    /**
+     * A list of possible choices that are displayed inside a drawer-like box
+     */
+    choices?: IconCardChoice[];
+    /**
+     * Whether the card has an animation on hover. The animation is automatically there if the card has choices.
+     */
     animateOnHover?: boolean;
+    /**
+     * Whether the card is disabled. When disabled, the card appears greyed out and cannot be clicked on.
+     *
+     * @default false
+     */
+    disabled?: boolean;
+    /**
+     * Whether to place the badges above the title.
+     */
+    placeBadgesAbove?: boolean;
+    /**
+     * Classes to apply to the card button element.
+     */
+    cardClassName?: string[];
 }
 
-export const IconCard: React.FunctionComponent<
-    IconCardProps & SvgChildProps & Omit<React.HTMLProps<HTMLDivElement>, 'onClick'>
-> = ({
+export const IconCard: React.FunctionComponent<Override<
+    SvgChildProps & React.HTMLAttributes<HTMLDivElement>,
+    IconCardProps
+>> = ({
     title,
     badges = [],
     description,
@@ -41,6 +82,8 @@ export const IconCard: React.FunctionComponent<
     tooltip,
     choices,
     animateOnHover,
+    placeBadgesAbove,
+    cardClassName,
     className,
     small,
     children,
@@ -84,10 +127,14 @@ export const IconCard: React.FunctionComponent<
         >
             <Tooltip {...tooltip} placement={tooltip?.placement || TooltipPlacement.Top} noSpanWrapper>
                 <button
-                    className={classNames('card flex full-content-x p3', {
-                        'cursor-pointer': (!!onClick || hasChoices) && !disabled && !isOpen,
-                        'mod-small': !!small,
-                    })}
+                    className={classNames(
+                        'card flex center-align p3 full-content-x',
+                        {
+                            'cursor-pointer': (!!onClick || hasChoices) && !disabled && !isOpen,
+                            'mod-small': !!small,
+                        },
+                        cardClassName
+                    )}
                     onClick={handleCardClick}
                     aria-expanded={isOpen}
                 >
@@ -103,15 +150,17 @@ export const IconCard: React.FunctionComponent<
                             svgClass
                         )}
                     />
-                    <div className="flex flex-column flex-auto justify-center">
-                        <h6 className="title">{title}</h6>
+                    <div data-testid="main-content" className="flex flex-column flex-auto justify-center">
+                        {placeBadgesAbove && !!badgeComponents.length ? (
+                            <div className="flex mb1">{badgeComponents}</div>
+                        ) : null}
+                        <h5 className="title">{title}</h5>
                         {description && <p className="description">{description}</p>}
                     </div>
-
-                    {badgeComponents.length > 0 || React.Children.count(children) > 0 ? (
+                    {(!placeBadgesAbove && !!badgeComponents.length) || React.Children.count(children) > 0 ? (
                         <div className="flex center-align">
                             {children}
-                            {badgeComponents}
+                            {!placeBadgesAbove && badgeComponents}
                         </div>
                     ) : null}
                 </button>

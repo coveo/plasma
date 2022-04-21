@@ -3,17 +3,39 @@ import moment from 'moment';
 import * as React from 'react';
 
 export interface ILastUpdatedOwnProps extends React.ClassAttributes<LastUpdated> {
+    /**
+     * @deprecated do not use
+     */
     id?: string;
+    /**
+     * The text displayed before the time
+     *
+     * @default "Last update:"
+     */
     label?: string;
+    /**
+     * Additionnal CSS class to add on the last updated
+     */
     className?: string;
 }
 
 export interface ILastUpdatedStateProps {
+    /**
+     * A Date representing when the component last updated
+     *
+     * @default new Date()
+     */
     time?: Date;
 }
 
 export interface ILastUpdatedDispatchProps {
+    /**
+     * A callback function executed when the component mounts
+     */
     onRender?: () => void;
+    /**
+     * A callback function executed when the component unmounts
+     */
     onDestroy?: () => void;
 }
 
@@ -21,7 +43,7 @@ export interface ILastUpdatedProps extends ILastUpdatedOwnProps, ILastUpdatedSta
 
 export const LAST_UPDATE_LABEL: string = 'Last update:';
 
-export class LastUpdated extends React.Component<ILastUpdatedProps, any> {
+export class LastUpdated extends React.PureComponent<ILastUpdatedProps> {
     componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();

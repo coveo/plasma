@@ -1,59 +1,42 @@
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {render, screen} from '@test-utils';
 import * as React from 'react';
-import {ChromePicker} from 'react-color';
+import {useSelector} from 'react-redux';
 
-import {getStoreMock, PlasmaMockStore} from '../../utils/tests/TestUtils';
-import {InputConnected} from '../input/Input';
+import {PlasmaState} from '../../PlasmaState';
+import {InputSelectors} from '../input';
 import {ColorPicker} from './ColorPicker';
 
 describe('ColorPicker', () => {
-    let store: PlasmaMockStore;
-
-    beforeEach(() => {
-        store = getStoreMock();
-    });
-
     it('should mount and unmount without error', () => {
         expect(() => {
-            const picker = shallowWithStore(<ColorPicker id="🆔" />, store)
-                .dive()
-                .dive();
-            picker.unmount();
+            const {unmount} = render(<ColorPicker id="🆔" />);
+            unmount();
         }).not.toThrow();
     });
 
     it('should render a ChromeColorPicker', () => {
-        const picker = shallowWithStore(<ColorPicker id="🆔" />, store)
-            .dive()
-            .dive();
+        const {container} = render(<ColorPicker id="🆔" />);
 
-        expect(picker.find(ChromePicker).length).toBe(1);
+        // eslint-disable-next-line testing-library/no-container
+        expect(container.querySelector('.chrome-picker')).toBeVisible();
     });
 
-    it('should pass down props to ChromePicker', () => {
-        const picker = shallowWithStore(<ColorPicker id="🆔" disableAlpha={true} />, store)
-            .dive()
-            .dive();
+    it('should sync the default color to the redux state', () => {
+        const Child: React.FunctionComponent = () => {
+            const selected = useSelector((state: PlasmaState) =>
+                InputSelectors.getValue(state, {
+                    id: 'foo',
+                })
+            );
+            return <div>Selected:{selected}</div>;
+        };
+        render(
+            <>
+                <ColorPicker id="foo" defaultColor="#abc" />
+                <Child />
+            </>
+        );
 
-        expect(picker.find(ChromePicker).props().disableAlpha).toBe(true);
-    });
-
-    it('should contain an InputConnected with the same id', () => {
-        const component = shallowWithStore(<ColorPicker id="foo" />, store)
-            .dive()
-            .dive();
-
-        const input = component.find(InputConnected);
-        expect(input.exists()).toBe(true);
-        expect(input.prop('id')).toBe('foo');
-    });
-
-    it('should sync the InputConnected and ChromePicker with color props', () => {
-        const picker = shallowWithStore(<ColorPicker id="🆔" defaultColor="#fff" />, store)
-            .dive()
-            .dive();
-
-        expect(picker.find(ChromePicker).prop('color')).toBe('#fff');
-        expect(picker.find(InputConnected).prop('defaultValue')).toBe('#fff');
+        expect(screen.getByText('Selected:#abc')).toBeVisible();
     });
 });

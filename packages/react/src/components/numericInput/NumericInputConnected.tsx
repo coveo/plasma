@@ -11,12 +11,37 @@ import {initialNumericInputState} from './NumericInputReducers';
 import {NumericInputSelectors} from './NumericInputSelectors';
 
 export interface NumericInputOwnProps {
+    /**
+     * A unique identifier that identifies the NumericInput in the PlasmaState
+     */
     id: string;
+    /**
+     * The initial value
+     */
     initialValue?: number;
+    /**
+     * The amount by which the buttons will add or substract
+     */
     step?: number;
+    /**
+     * The lower limit (inclusive)
+     */
     min?: number;
+    /**
+     * The upper limit (inclusive)
+     */
     max?: number;
+    /**
+     * The error message displayed when the value manually inputed is outside the specified limits
+     *
+     * @default 'Value is not valid'
+     */
     invalidMessage?: string;
+    /**
+     * The width of the input box in number of digits [1..20]
+     *
+     * @default 12
+     */
     maxLength?: number; // we use the attribute from the input https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
 }
 
@@ -67,6 +92,7 @@ const inputPropsToOmit = [
 export class NumericInputConnected extends React.PureComponent<NumericInputProps & React.HTMLProps<HTMLInputElement>> {
     static defaultProps: Partial<NumericInputOwnProps> = {
         invalidMessage: 'Value is not valid',
+        maxLength: 12,
     };
 
     componentDidMount() {

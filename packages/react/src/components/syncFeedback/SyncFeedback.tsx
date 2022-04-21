@@ -2,7 +2,16 @@ import * as React from 'react';
 import {Svg} from '../svg/Svg';
 
 export interface ISyncFeedbackProps {
+    /**
+     * The label of the current state
+     *
+     * @default 'Saving changes...' for 'SYNCING', 'Changes saved' for 'SUCCESS', and 'Changes could not be saved.' for 'ERROR'.
+     */
     feedback?: string;
+    /**
+     * The current state of the sync feedback component
+     * Either 'SYNCING', 'SUCCESS', 'ERROR' or 'NONE'
+     */
     state: string;
 }
 
@@ -17,7 +26,7 @@ export const DEFAULT_SYNC_FEEDBACK_SYNCING_LABEL: string = 'Saving changes...';
 export const DEFAULT_SYNC_FEEDBACK_SUCCESS_LABEL: string = 'Changes saved';
 export const DEFAULT_SYNC_FEEDBACK_ERROR_LABEL: string = 'Changes could not be saved.';
 
-export class SyncFeedback extends React.Component<ISyncFeedbackProps, any> {
+export class SyncFeedback extends React.PureComponent<ISyncFeedbackProps> {
     render() {
         const classes = ['sync-feedback'];
         if (this.props.state === SyncFeedbackState.ERROR) {

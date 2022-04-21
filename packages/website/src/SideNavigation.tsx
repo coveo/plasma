@@ -20,7 +20,7 @@ const NavLink: React.FunctionComponent<NavLinkProps> = ({href = '', label, disab
                 </div>
             ) : (
                 <Link href={href} prefetch={false}>
-                    <a className="navigation-menu-section-item-link">
+                    <a href={href} className="navigation-menu-section-item-link">
                         <div className="navigation-menu-section">
                             <span>{label}</span>
                         </div>
@@ -64,11 +64,23 @@ export const Navigation: React.FunctionComponent = () => {
                     </a>
                 }
             />
+            <SideNavigationMenuSection
+                title={
+                    <a
+                        href="https://coveord.atlassian.net/wiki/spaces/UX/pages/2993946801/Design+principles"
+                        target="_blank"
+                        className="inline-flex flex-center"
+                    >
+                        Design principles
+                        <Svg svgName="external" svgClass="icon mod-20 pl1" />
+                    </a>
+                }
+            />
             <CollapsibleSideSection title="Foundations">
                 <NavLink href="/foundations/Iconography" label="Iconography" />
-                <NavLink href="/foundations/Headings" label="Headings" />
+                <NavLink href="/foundations/Typekit" label="Typekit" />
                 <NavLink href="/foundations/Links" label="Links" />
-                <NavLink href="/foundations/Whitespace" label="Whitespace" />
+                <NavLink href="/foundations/Spacing" label="Spacing" />
             </CollapsibleSideSection>
             <CollapsibleSideSection title="Layout">
                 <NavLink href="/layout/Banner" label="Banner" />
@@ -76,6 +88,7 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink href="/layout/BorderedLine" label="Bordered line" />
                 <NavLink href="/layout/BrowserPreview" label="Browser preview" />
                 <NavLink href="/layout/Chart" label="Chart" />
+                <NavLink href="/layout/ChildForm" label="Child form" />
                 <NavLink href="/layout/Collapsible" label="Collapsible" />
                 <NavLink href="/layout/IconCard" label="Icon card" />
                 <NavLink href="/layout/InfoBox" label="Info box" />
@@ -84,21 +97,18 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink href="/layout/ModalWindow" label="Modal" />
                 <NavLink href="/layout/ModalWizard" label="Modal wizard" />
                 <NavLink href="/layout/PageHeader" label="Page header" />
-                <NavLink href="/layout/Footer" label="Page footer" />
                 <NavLink href="/layout/Section" label="Section" />
                 <NavLink href="/layout/SplitLayout" label="Split layout" />
-                <NavLink href="/layout/TableHOC" label="Table" />
-                <NavLink href="/layout/TableHOCLoading" label="Table loading" />
-                <NavLink href="/layout/TableHOCServer" label="Table server" />
-                <NavLink href="/layout/TableHOCwithBlankSlate" label="Table blank slate" />
+                <NavLink href="/layout/StickyFooter" label="Sticky footer" />
+                <NavLink href="/layout/Table" label="Table" />
             </CollapsibleSideSection>
             <CollapsibleSideSection title="Form">
                 <NavLink href="/form/ActionableItem" label="Actionable item" />
                 <NavLink href="/form/Button" label="Button" />
                 <NavLink href="/form/Checkbox" label="Checkbox" />
-                <NavLink href="/form/ChildForm" label="Child form" />
                 <NavLink href="/form/CodeEditor" label="Code editor" />
                 <NavLink href="/form/ColorPicker" label="Color picker" />
+                <NavLink href="/form/Countdown" label="Countdown" />
                 <NavLink href="/form/DatePicker" label="Date picker" />
                 <NavLink href="/form/DiffViewer" label="Diff viewer" />
                 <NavLink href="/form/Facet" label="Facet" />

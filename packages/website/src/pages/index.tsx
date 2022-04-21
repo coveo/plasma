@@ -57,9 +57,9 @@ const FoundationsPages: React.FC = () => (
                 thumbnail="iconography"
             />
             <Tile
-                title="Headings"
-                description="A heading is a title at the top of a page or section. Its distinctive font helps visualize the hierarchy of information."
-                href="foundations/Headings"
+                title="Typekit"
+                description="The Typekit covers all typography styles designed specifically to work with the Plasma ecosystem."
+                href="foundations/Typekit"
                 thumbnail="typekit"
             />
             <Tile
@@ -69,9 +69,9 @@ const FoundationsPages: React.FC = () => (
                 thumbnail="links"
             />
             <Tile
-                title="Whitespace"
-                description="Whitespace is the standard padding and margin size that one can adjust to customize the layout of an interface."
-                href="/#/foundations/Whitespace"
+                title="Spacing"
+                description="Spacing is the standard padding and margin size that one can adjust to customize the layout of an interface."
+                href="foundations/Spacing"
             />
         </div>
     </Section>
@@ -99,6 +99,11 @@ const LayoutPages: React.FC = () => (
                 href="layout/Chart"
             />
             <Tile
+                title="Child Form"
+                description="A child form associates a subset of options or content to its parent option."
+                href="layout/ChildForm"
+            />
+            <Tile
                 title="Collapsible"
                 description="A collapsible allows users to hide or display a section of content."
                 href="layout/Collapsible"
@@ -109,7 +114,7 @@ const LayoutPages: React.FC = () => (
                 href="layout/IconCard"
             />
             <Tile title="Info Box" description="An info box displays contextual information." href="layout/InfoBox" />
-            <Tile title="Labelled Value" href="layout/LabeledValue" />
+            <Tile title="Labeled Value" href="layout/LabeledValue" />
             <Tile
                 title="Limit Card"
                 description="A limit card displays the limit and usage of a resource. It includes a bar illustrating the usage against the limit."
@@ -131,7 +136,7 @@ const LayoutPages: React.FC = () => (
                 href="layout/PageHeader"
                 thumbnail="header"
             />
-            <Tile title="Footer" href="layout/Footer" />
+            <Tile title="Sticky Footer" href="layout/StickyFooter" />
             <Tile title="Section" href="layout/Section" />
             <Tile
                 title="Split Layout"
@@ -141,11 +146,8 @@ const LayoutPages: React.FC = () => (
             <Tile
                 title="Table"
                 description="A table displays large quantities of items or data in a list format. Filtering features and actions may be added."
-                href="layout/TableHOC"
+                href="layout/Table"
             />
-            <Tile title="Table HOC Loading" href="layout/TableHOCLoading" />
-            <Tile title="Table HOC Server" href="layout/TableHOCServer" />
-            <Tile title="Table HOC with Blank Slate" href="layout/TableHOCwithBlankSlate" />
         </div>
     </Section>
 );
@@ -171,11 +173,6 @@ const FormPages: React.FC = () => (
                 href="form/Checkbox"
             />
             <Tile
-                title="Child Form"
-                description="A child form associates a subset of options or content to its parent option."
-                href="form/ChildForm"
-            />
-            <Tile
                 title="Code Editor"
                 description="A code editor is a text area that allows users to edit code. A coding syntax is built in."
                 href="form/CodeEditor"
@@ -185,6 +182,11 @@ const FormPages: React.FC = () => (
                 title="Color Picker"
                 description="A color picker is a visual interface that allows users to select a color."
                 href="form/ColorPicker"
+            />
+            <Tile
+                title="Countdown"
+                description="A Countdown illustrates how much time there is left until an end date is reached."
+                href="form/Countdown"
             />
             <Tile
                 title="Date Picker"
@@ -230,7 +232,7 @@ const FormPages: React.FC = () => (
             <Tile
                 title="Multi Select"
                 description="A multi select allows users to select multiple options from a list. It is typically used when there are a large number of options."
-                href="#/form/MultiSelect"
+                href="form/MultiSelect"
             />
             <Tile
                 title="Numeric Inputs"
@@ -290,6 +292,7 @@ const NavigationPages: React.FC = () => (
             />
             <Tile
                 title="SubNavigation"
+                thumbnail="subNavigation"
                 description="A subnavigation is a secondary vertical navigation component that allows users to navigate between sections of the same interface."
                 href="navigation/SubNavigation"
             />
@@ -338,11 +341,13 @@ const FeedbackPages: React.FC = () => (
             <Tile title="Sync Feedback" href="feedback/SyncFeedback" />
             <Tile
                 title="Toast"
+                thumbnail="toast"
                 description="A toast displays a short message related to an action performed by a user."
                 href="feedback/Toast"
             />
             <Tile
                 title="Tooltip"
+                thumbnail="tooltip"
                 description="A tooltip is a floating label that provides brief additional information about an interface component."
                 href="feedback/Tooltip"
             />

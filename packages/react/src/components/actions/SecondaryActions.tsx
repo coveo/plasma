@@ -51,9 +51,9 @@ export const SecondaryActions: React.FunctionComponent<ISecondaryActionsProps> =
                 />
             );
         return (
-            <div className="dropdown action primary-action" style={{cursor: disabled ? 'default' : 'pointer'}}>
+            <span className="dropdown action" style={{cursor: disabled ? 'default' : 'pointer'}}>
                 {actionsItems}
-            </div>
+            </span>
         );
     }
 };

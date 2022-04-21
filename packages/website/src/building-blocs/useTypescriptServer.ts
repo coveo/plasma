@@ -6,7 +6,7 @@ import {loader} from '@monaco-editor/react';
 
 export const compilerOptions: ts.CompilerOptions = {
     jsx: ts.JsxEmit.React,
-    lib: ['es2015', 'dom'],
+    lib: ['es2017', 'dom'],
     module: ts.ModuleKind.CommonJS,
     target: ts.ScriptTarget.ES5,
     skipLibCheck: true,
@@ -27,11 +27,19 @@ const plasmaReactIconsTypes = require.context(
     /\.d\.ts$/i,
     'lazy-once'
 );
+const momentJsTypes = require.context('!!raw-loader!moment', true, /\.d\.ts$/i, 'lazy-once');
+const reduxTypes = require.context('!!raw-loader!redux', true, /\.d\.ts$/i, 'lazy-once');
+const loremIpsumTypes = require.context('!!raw-loader!lorem-ipsum/types/src', true, /\.d\.ts$/i, 'lazy-once');
+const rcSliderTypes = require.context('!!raw-loader!rc-slider/es', true, /\.d\.ts$/i, 'lazy-once');
+const reactDiffViewerTypes = require.context('!!raw-loader!react-diff-viewer/lib', true, /\.d\.ts$/i, 'lazy-once');
 const load = async (path: string, ctx: any, root: string) => {
     const {default: content} = await ctx(path);
     let newPath = `${root}/${path.replace('./', '')}`;
     if (root.includes('@coveord/plasma-react') && path.includes('Entry.d.ts')) {
         newPath = newPath.replace('Entry.d.ts', 'index.d.ts');
+    }
+    if (root.includes('moment') && path.includes('moment.d.ts')) {
+        newPath = newPath.replace('moment.d.ts', 'index.d.ts');
     }
     return {path: newPath, content};
 };
@@ -39,10 +47,15 @@ const load = async (path: string, ctx: any, root: string) => {
 const loadAll: Promise<Map<string, string>> = Promise.all([
     createDefaultMapFromCDN(compilerOptions as any, ts.version!, true, ts as any, lzstring),
     ...typesFiles.keys().map((path) => load(path, typesFiles, '/node_modules/@types')),
+    ...loremIpsumTypes.keys().map((path) => load(path, loremIpsumTypes, '/node_modules/lorem-ipsum')),
+    ...reduxTypes.keys().map((path) => load(path, reduxTypes, '/node_modules/redux')),
+    ...reactDiffViewerTypes.keys().map((path) => load(path, reactDiffViewerTypes, '/node_modules/react-diff-viewer')),
+    ...rcSliderTypes.keys().map((path) => load(path, rcSliderTypes, '/node_modules/rc-slider')),
     ...plasmaTypes.keys().map((path) => load(path, plasmaTypes, '/node_modules/@coveord/plasma-react')),
     ...plasmaReactIconsTypes
         .keys()
         .map((path) => load(path, plasmaReactIconsTypes, '/node_modules/@coveord/plasma-react-icons')),
+    ...momentJsTypes.keys().map((path) => load(path, momentJsTypes, '/node_modules/moment')),
 ]).then(([map, ...mappedTypes]) => {
     mappedTypes.forEach(({path, content}) => {
         map.set(path, content);
@@ -60,6 +73,8 @@ export const useTypescriptServer = () => {
                 jsxFactory: 'React.createElement',
                 jsxFragmentFactory: 'React.Fragment',
                 reactNamespace: 'React',
+                esModuleInterop: true,
+                allowSyntheticDefaultImports: true,
             });
 
             defaultMap.forEach((content, path) => {
