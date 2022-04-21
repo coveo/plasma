@@ -16,10 +16,9 @@ You can offer a flat select as a way to switch views, but tabs should be preferr
 
 ## Flat Select and Tabs
 
-The Flat select share similarities with various other components but here we try to clarify the difference between some of them.
+The flat select component shares similarities with the toggle switch and the tab set.
 
-## Flat select vs Tabs
-Both are similar in appearance and designed for view switching on an element. Flat select are suitable for view switching within a pane, as where tabs, are used as a navigational control (Moving from screen to another).
+The flat select and the tab set look similar and are both designed for view switching. However, flat select are suitable for view switching within a pane, whereas tabs are rather used as a navigational control, i.e., moving from one screen to another.
 
 ## Related Components
 
