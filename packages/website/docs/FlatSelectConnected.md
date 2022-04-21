@@ -14,7 +14,8 @@ If used as view switcher (tabs), make sure it makes sense hierarchically and tha
 - Keep titles short, preferably **under three words**.
 - Make option labels consistent and easy to scan.
 
-## Flat select vs Toggle switch vs Tabs
+## Flat Select and Tabs
+
 The Flat select share similarities with various other components but here we try to clarify the difference between some of them.
 
 ## Flat select vs Tabs
