@@ -8,7 +8,7 @@ Aim for five or less options.
 
 The effect of the flat select must be immediately visible. For example, a display could change according to the user's selection. If not, consider using a drop-down menu, radio buttons, or checkboxes instead.
 
-If used as view switcher (tabs), make sure it makes sense hierarchically and that tabs cannot be used.
+You can offer a flat select as a way to switch views, but tabs should be preferred whenever possible. If you do use a flat select for this purpose, ensure that it makes sense in the hierarchy of information of the page. See [Flat Select and Tabs](https://github.com/coveo/plasma/blob/master/packages/website/docs/FlatSelectConnected.md#flat-select-and-tabs) for details.
 
 ## Labeling
 - Keep titles short, preferably **under three words**.
