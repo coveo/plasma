@@ -62,7 +62,7 @@ describe('TextInput', () => {
             </FormProvider>
         );
 
-        const icon = screen.getByRole('img', {name: /questionstrokedmedium icon/i});
+        const icon = screen.getByRole('img', {name: /question/i});
         userEvent.hover(icon);
 
         expect(await screen.findByText('🍌')).toBeInTheDocument();
@@ -100,25 +100,25 @@ describe('TextInput', () => {
 
         expect(textinput).toBeValid();
         expect(screen.queryByText('valid!')).not.toBeInTheDocument();
-        expect(screen.queryByRole('img', {name: 'checkStrokedSmall icon'})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: 'checkmark'})).not.toBeInTheDocument();
 
         fireEvent.blur(textinput);
 
         expect(screen.getByText('valid!')).toBeInTheDocument();
-        expect(screen.getByRole('img', {name: 'checkStrokedSmall icon'})).toBeInTheDocument();
+        expect(screen.getByRole('img', {name: 'checkmark'})).toBeInTheDocument();
 
         userEvent.clear(textinput);
 
         expect(textinput).toBeInvalid();
         expect(screen.queryByText('valid!')).not.toBeInTheDocument();
-        expect(screen.queryByRole('img', {name: 'checkStrokedSmall icon'})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: 'checkmark'})).not.toBeInTheDocument();
 
         userEvent.type(textinput, '⚠️');
         expect(textinput).toBeValid();
         fireEvent.blur(textinput);
 
         expect(screen.getByText('warning!')).toBeInTheDocument();
-        expect(screen.getByRole('img', {name: 'warningStrokedSmall icon'})).toBeInTheDocument();
+        expect(screen.getByRole('img', {name: 'warning'})).toBeInTheDocument();
 
         userEvent.clear(textinput);
         expect(textinput).toBeInvalid();
@@ -127,7 +127,7 @@ describe('TextInput', () => {
         fireEvent.blur(textinput);
 
         expect(screen.getByText('invalid!')).toBeInTheDocument();
-        expect(screen.getByRole('img', {name: 'criticalStrokedSmall icon'})).toBeInTheDocument();
+        expect(screen.getByRole('img', {name: 'critical'})).toBeInTheDocument();
     });
 
     it('validates the input on mount when showValidationOnMount prop is true', () => {
@@ -141,7 +141,7 @@ describe('TextInput', () => {
 
         expect(screen.getByRole('textbox', {name: '💬'})).toBeInvalid();
         expect(screen.getByText('invalid!')).toBeInTheDocument();
-        expect(screen.getByRole('img', {name: 'criticalStrokedSmall icon'})).toBeInTheDocument();
+        expect(screen.getByRole('img', {name: 'critical'})).toBeInTheDocument();
     });
 
     it('validates the input on change when showValidationOnChange prop is true', () => {
@@ -157,19 +157,19 @@ describe('TextInput', () => {
         const textinput = screen.getByRole('textbox', {name: '💬'});
 
         expect(screen.queryByText('invalid!')).not.toBeInTheDocument();
-        expect(screen.queryByRole('img', {name: 'criticalStrokedSmall icon'})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: 'critical'})).not.toBeInTheDocument();
 
         userEvent.type(textinput, '✅');
 
         expect(textinput).toBeValid();
         expect(screen.getByText('valid!')).toBeInTheDocument();
-        expect(screen.getByRole('img', {name: 'checkStrokedSmall icon'})).toBeInTheDocument();
+        expect(screen.getByRole('img', {name: 'checkmark'})).toBeInTheDocument();
 
         userEvent.clear(textinput);
 
         expect(textinput).toBeInvalid();
         expect(screen.getByText('invalid!')).toBeInTheDocument();
-        expect(screen.getByRole('img', {name: 'criticalStrokedSmall icon'})).toBeInTheDocument();
+        expect(screen.getByRole('img', {name: 'critical'})).toBeInTheDocument();
     });
 
     it('is independant from the other inputs in the same provider', () => {

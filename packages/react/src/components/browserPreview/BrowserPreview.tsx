@@ -1,8 +1,8 @@
+import {InfoSize16Px} from '@coveord/plasma-react-icons';
 import * as React from 'react';
 import {truncate} from 'underscore.string';
 
 import {TooltipPlacement} from '../../utils';
-import {Svg} from '../svg';
 import {Tooltip} from '../tooltip';
 
 export interface BrowserPreviewProps {
@@ -31,10 +31,10 @@ const BrowserPreviewHeader: React.FunctionComponent<{tooltipTitle: string; title
     tooltipTitle,
 }) => (
     <div className="browser-preview__header flex space-between px2 py1">
-        <div>
+        <div className="inline-flex">
             <span className="bolder">Preview</span>
             <Tooltip title={tooltipTitle} placement={TooltipPlacement.Right}>
-                <Svg svgName="info" svgClass="icon mod-14 ml1" />
+                <InfoSize16Px height={16} className="ml1" />
             </Tooltip>
         </div>
         <div>

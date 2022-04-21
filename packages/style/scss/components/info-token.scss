@@ -1,25 +1,33 @@
 .info-token {
-    display: inline-block;
-
-    &.mod-16 {
-        height: 16px;
+    &.mod-info {
+        color: var(--info-60);
     }
 
-    &.mod-24 {
-        height: 24px;
+    &.mod-success {
+        color: var(--success-60);
     }
 
-    &.mod-32 {
-        height: 32px;
+    &.mod-warning {
+        color: var(--warning-70);
+    }
+
+    &.mod-error {
+        color: var(--critical-70);
     }
 
     &.filled {
-        .icon {
-            fill: var(--fill);
-            --stroke: var(--white);
-
-            &.mod-warning {
-                --stroke: var(--black);
+        &,
+        [fill] {
+            fill: currentColor;
+        }
+        &,
+        [stroke] {
+            stroke: var(--white);
+        }
+        &.mod-warning {
+            stroke: var(--black);
+            [stroke] {
+                stroke: var(--black);
             }
         }
     }

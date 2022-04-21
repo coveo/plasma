@@ -54,7 +54,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
         'mod-border-bottom'
     );
 
-    const headerClasses = classNames('inline-flex flex-center caps p2 bold ml3', collapsibleHeaderClassName);
+    const headerClasses = classNames('caps p2 bold ml3', collapsibleHeaderClassName);
 
     return (
         <CollapsibleConnected
@@ -62,11 +62,12 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
             className={classNames(className, 'collapsible-container')}
             headerContent={
                 <div className={headerClasses}>
-                    <div className="mr1">{title}</div>
+                    {title}
                     <CollapsibleHeaderIcon
                         informationTooltip={informationTooltip}
                         informationUrl={informationUrl}
                         disabled={disabled}
+                        className="ml1"
                     />
                 </div>
             }
