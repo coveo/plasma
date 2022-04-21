@@ -1,22 +1,27 @@
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
 
-import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
 import {JSONEditor, JSONEditorDispatchProps, JSONEditorProps, JSONEditorStateProps} from './JSONEditor';
 import {JSONEditorActions} from './JSONEditorActions';
 import {JSONEditorSelectors} from './JSONEditorSelectors';
 
-const mapStateToProps = (state: PlasmaState, ownProps: JSONEditorProps): JSONEditorStateProps => ({
-    value: JSONEditorSelectors.getValue(state, ownProps.id),
-});
+export const JSONEditorConnected = (props: JSONEditorStateProps & JSONEditorDispatchProps & JSONEditorProps) => {
+    const dispatch: IDispatch = useDispatch();
+    const defaultValue = useSelector((state) => JSONEditorSelectors.getValue(state, props.id));
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: JSONEditorProps): JSONEditorDispatchProps => ({
-    onMount: () => dispatch(JSONEditorActions.addJSONEditor(ownProps.id, ownProps.defaultValue ?? ownProps.value)),
-    onUnmount: () => dispatch(JSONEditorActions.removeJSONEditor(ownProps.id)),
-    onChange: (value: string, inError: boolean) => {
-        dispatch(JSONEditorActions.updateJSONEditorValue(ownProps.id, value));
-        ownProps.onChange?.(value, inError);
-    },
-});
+    useEffect(() => {
+        dispatch(JSONEditorActions.addJSONEditor(props.id, props.defaultValue || props.value));
 
-export const JSONEditorConnected = connect(mapStateToProps, mapDispatchToProps)(JSONEditor);
+        return () => {
+            dispatch(JSONEditorActions.removeJSONEditor(props.id));
+        };
+    }, []);
+
+    const onChange = (value: string, inError: boolean) => {
+        dispatch(JSONEditorActions.updateJSONEditorValue(props.id, value));
+        props.onChange?.(value, inError);
+    };
+
+    return <JSONEditor {...props} defaultValue={defaultValue} onChange={onChange} />;
+};

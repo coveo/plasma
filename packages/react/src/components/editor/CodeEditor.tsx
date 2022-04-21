@@ -1,13 +1,13 @@
 import loadable from '@loadable/component';
 import classNames from 'classnames';
 import type {Editor, EditorConfiguration} from 'codemirror';
-import {ComponentType, createRef, Component} from 'react';
+import {Component, ComponentType, createRef} from 'react';
 import type {Controlled} from 'react-codemirror2';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
-import {CollapsibleSelectors} from '../collapsible/CollapsibleSelectors';
+import {CollapsibleSelectors} from '../collapsible';
 import {CodeEditorActions} from './CodeEditorActions';
 import {CodeMirrorGutters} from './EditorConstants';
 
@@ -81,7 +81,7 @@ class CodeEditorDisconnect extends Component<
 > {
     static defaultProps: Partial<ICodeEditorProps> = {
         className: 'mod-border',
-        value: '{}',
+        value: '',
     };
 
     static defaultOptions = {
@@ -119,9 +119,13 @@ class CodeEditorDisconnect extends Component<
             this.editor.refresh();
             this.setState({numberOfRefresh: this.state.numberOfRefresh + 1});
         }
-        if (prevProps.value !== this.props.value && this.editor) {
+
+        if (prevProps.value !== this.props.value) {
             this.setState({value: this.props.value});
-            this.editor.getDoc().clearHistory();
+
+            if (this.editor) {
+                this.editor.getDoc().clearHistory();
+            }
         }
     }
 
