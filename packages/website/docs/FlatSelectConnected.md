@@ -22,6 +22,7 @@ The Flat select share similarities with various other components but here we try
 Both are similar in appearance and designed for view switching on an element. Flat select are suitable for view switching within a pane, as where tabs, are used as a navigational control (Moving from screen to another).
 
 ## Related Components
-- [Tabs](https://plasma.coveo.com/navigation/Tabs) Might be used instead to toggle views
-- [Radio buttons](https://plasma.coveo.com/form/RadioButton) Can be used instead as a form input
-- [Select - single](https://plasma.coveo.com/form/SingleSelect) Can be used instead as a form input
+
+- [Radio buttons](https://plasma.coveo.com/form/RadioButton) - When the result doesn't apply immediately.
+- [Single select](https://plasma.coveo.com/form/SingleSelect) - Alternative to a flat select in the context of a form.
+- [Tabs](https://plasma.coveo.com/navigation/Tabs) - When in a navigational control context.
