@@ -2,7 +2,7 @@
 
 Use an actionable item when your page offers actions that are of secondary importance and that don't need to be displayed directly on the page.
 
-An actionable item should always be prompted from a button.
+An actionable item must be displayed upon the click of a button.
 
 An actionable item must be contextual and suited to the user's needs based on their selection.
 
