@@ -11,6 +11,7 @@ The effect of the flat select must be immediately visible. For example, a displa
 You can offer a flat select as a way to switch views, but tabs should be preferred whenever possible. If you do use a flat select for this purpose, ensure that it makes sense in the hierarchy of information of the page. See [Flat Select and Tabs](https://github.com/coveo/plasma/blob/master/packages/website/docs/FlatSelectConnected.md#flat-select-and-tabs) for details.
 
 ## Labeling
+
 - Keep titles short, preferably **under three words**.
 - Make option labels consistent and easy to scan.
 
