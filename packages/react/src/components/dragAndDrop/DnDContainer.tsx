@@ -1,72 +1,74 @@
 import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
-import {DragSource, DropTarget} from 'react-dnd';
+import {useDrag, useDrop} from 'react-dnd';
+
 import {Svg} from '../svg/Svg';
-import {DnDUtils} from './DnDUtils';
 
 export interface IDraggableContainerOwnProps {
     id: string;
-    index: number;
-    move: (dragIndex: number, hoverIndex: number) => void;
-    child: any;
+    /**
+     * A function triggered when another box is dragged over the current box
+     *
+     * @param movingId the unique identifier of the box being dragged over the current box
+     */
+    onMoveOver: (movingId: string) => void;
     draggableContainerProps?: Partial<React.HTMLProps<HTMLDivElement>>;
     draggableIconProps?: React.HTMLProps<HTMLDivElement>;
-    icon: React.ReactNode;
-}
-
-export interface IDraggableContainerDnDProps {
+    icon?: React.ReactNode;
     isDraggable?: boolean;
-    isDragging?: boolean;
-    connectDragSource?: any;
-    connectDropTarget?: any;
-    connectDragPreview?: any;
 }
 
 export const DraggableContainerType = 'CONTAINER_BOX';
 
-@DropTarget(DraggableContainerType, DnDUtils.getBoxTarget('id'), (connect: any) => ({
-    connectDropTarget: connect.dropTarget(),
-}))
-@DragSource(DraggableContainerType, DnDUtils.getSelectedBoxSource('id'), (connect: any, monitor: any) => ({
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging(),
-}))
-export class DnDContainer extends React.Component<IDraggableContainerOwnProps & IDraggableContainerDnDProps> {
-    static defaultProps = {
-        isDraggable: true,
-        draggableContainerProps: {
-            className: 'flex flex-center',
-        },
-        draggableIconProps: {},
-        icon: <Svg svgName={svg.dragDrop.name} svgClass="icon" />,
-    };
+type DragItem = {id: string};
 
-    private getIcon() {
-        const icon: React.ReactNode = (
+export const DnDContainer: React.FunctionComponent<IDraggableContainerOwnProps> = ({
+    draggableContainerProps = {className: 'flex flex-center'},
+    draggableIconProps = {},
+    icon = <Svg svgName={svg.dragDrop.name} svgClass="icon" />,
+    children,
+    isDraggable = true,
+    onMoveOver,
+    id,
+}) => {
+    const ref = React.useRef<HTMLDivElement>();
+    const iconRef = React.useRef<HTMLDivElement>();
+    const [{}, drop] = useDrop(() => ({
+        accept: DraggableContainerType,
+        hover: ({id: draggedId}: DragItem) => {
+            if (draggedId !== id) {
+                onMoveOver(draggedId);
+            }
+        },
+    }));
+    const [{isDragging}, drag, dragPreview] = useDrag(() => ({
+        item: (): DragItem => ({id}),
+        type: DraggableContainerType,
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
+        }),
+    }));
+
+    const opacity = isDragging ? 0 : 1;
+
+    if (isDraggable) {
+        drag(iconRef);
+        drop(dragPreview(ref));
+    }
+
+    return (
+        <div {...draggableContainerProps} style={{opacity}} ref={ref}>
             <div
                 style={{
-                    visibility: this.props.isDraggable ? 'visible' : 'hidden',
-                    cursor: this.props.isDraggable ? 'move' : 'default',
+                    visibility: isDraggable ? 'visible' : 'hidden',
+                    cursor: isDraggable ? 'move' : 'default',
                 }}
-                {...this.props.draggableIconProps}
+                {...draggableIconProps}
+                ref={iconRef}
             >
-                {this.props.icon}
+                {icon}
             </div>
-        );
-        return this.props.isDraggable ? this.props.connectDragSource(icon) : icon;
-    }
-
-    render() {
-        const opacity = this.props.isDragging ? 0 : 1;
-
-        const content = (
-            <div {...this.props.draggableContainerProps} style={{opacity}}>
-                {this.getIcon()}
-                {this.props.child && React.cloneElement(this.props.child, this.props.child.props)}
-            </div>
-        );
-
-        return this.props.isDraggable ? this.props.connectDropTarget(this.props.connectDragPreview(content)) : content;
-    }
-}
+            {children}
+        </div>
+    );
+};
