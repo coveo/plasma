@@ -208,7 +208,7 @@ describe('Drop', () => {
                     wrapper
                         .find(DropPod)
                         .props()
-                        .renderDrop({} as any, {} as any, {} as any) as any,
+                        .renderDrop({} as any, {} as any) as any,
                     {}
                 );
 

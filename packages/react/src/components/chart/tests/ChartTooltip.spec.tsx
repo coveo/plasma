@@ -46,10 +46,13 @@ describe('<ChartTooltip />', () => {
     it('should render a ChartTooltipContent inside the DropPod', () => {
         const component = shallow(<ChartTooltip />);
         const content = shallow(
-            component.find(DropPod).prop('renderDrop')({}, React.createRef(), {
-                position: DropPodPosition.left,
-                orientation: '',
-            }) as React.ReactElement
+            component.find(DropPod).prop('renderDrop')(
+                {},
+                {
+                    position: DropPodPosition.left,
+                    orientation: '',
+                }
+            ) as React.ReactElement
         );
 
         expect(content.find(ChartTooltipContent).exists()).toBe(true);
