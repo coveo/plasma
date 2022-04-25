@@ -3,6 +3,7 @@ import group from '@examples/FlatSelect/FlatSelectGroup.example.tsx';
 import disabled from '@examples/FlatSelect/FlatSelectDisabled.example.tsx';
 import optionPicker from '@examples/FlatSelect/FlatSelectOptionPicker.example.tsx';
 import appendPrepend from '@examples/FlatSelect/FlatSelectAppendPrepend.example.tsx';
+import iconOnly from '@examples/FlatSelect/FlatSelectIconsOnly.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -19,6 +20,7 @@ export default () => (
             group: {code: group, title: 'Grouped'},
             optionPicker: {code: optionPicker, title: 'Option Picker'},
             appendPrepend: {code: appendPrepend, title: 'Append and prepend'},
+            iconOnly: {code: iconOnly, title: 'Icon only'},
         }}
     />
 );

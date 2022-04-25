@@ -17,7 +17,6 @@
     .flat-select-option {
         // Default style
         display: flex;
-        gap: 10px;
         align-items: center;
         justify-content: center;
 
@@ -57,27 +56,12 @@
             }
         }
 
-        .icon-container {
-            margin-right: 5px;
-            vertical-align: -3px;
-
-            &,
-            .icon {
-                width: 13px;
-                height: 13px;
-            }
-
-            .icon {
-                fill: var(--white);
-            }
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
-
         &:empty {
             display: none;
+        }
+
+        & span.mod-append-prepend {
+            gap: 10px;
         }
 
         &.mod-link,
@@ -99,10 +83,6 @@
                     fill: var(--deprecated-medium-grey);
                 }
             }
-        }
-
-        .icon {
-            margin-bottom: -2px;
         }
     }
 

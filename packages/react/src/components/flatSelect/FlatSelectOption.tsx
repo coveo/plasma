@@ -40,9 +40,11 @@ export class FlatSelectOption extends React.Component<IFlatSelectOptionProps, an
         return (
             <a className={classes} onClick={() => this.onClick()}>
                 <Tooltip {...this.props.tooltip}>
-                    {this.props.prepend ? <Content {...this.props.prepend} /> : null}
-                    {<Content {...this.props.option} />}
-                    {this.props.append ? <Content {...this.props.append} /> : null}
+                    <span className="flex mod-append-prepend">
+                        {this.props.prepend ? <Content {...this.props.prepend} /> : null}
+                        {<Content {...this.props.option} />}
+                        {this.props.append ? <Content {...this.props.append} /> : null}
+                    </span>
                 </Tooltip>
             </a>
         );
