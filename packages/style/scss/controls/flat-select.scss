@@ -106,30 +106,26 @@
         }
     }
 
-    &.mod-btn-group .flat-select-option {
-        height: $button-height;
-        padding: $button-padding-y $button-padding-x;
-        font-weight: var(--main-font-bold);
-
-        font-size: $button-font-size;
-        text-transform: uppercase;
-        border-radius: 0;
+    &.mod-btn-group {
         --gap: 0px;
+        border-radius: 8px;
 
-        &:focus {
-            z-index: 1;
-        }
+        .flat-select-option {
+            @extend .flat-select-option;
+            text-transform: uppercase;
+            border-radius: 0;
 
-        &:first-child {
-            border-radius: $border-radius 0 0 $border-radius;
-        }
+            &:focus {
+                z-index: 1;
+            }
 
-        &:last-child {
-            border-radius: 0 $border-radius $border-radius 0;
-        }
+            &:first-child {
+                border-radius: 8px 0px 0px 8px;
+            }
 
-        & + .flat-select-option {
-            margin-left: 0;
+            &:last-child {
+                border-radius: 0px 8px 8px 0px;
+            }
         }
     }
 
