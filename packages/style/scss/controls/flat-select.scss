@@ -1,28 +1,60 @@
 .flat-select {
+    // Default style
     display: flex;
-    background-color: var(--white);
-    border-radius: $border-radius;
+
+    // Variables
+    --color: var(--digital-blue-80);
+    --background-color: var(--digital-blue-10);
+    --height: 40px;
+    --padding: 10px 15px;
+    --border-radius: 8px;
+    --border: 1px solid var(--digital-blue-20);
+    --gap: 16px;
+
+    // Style override
+    gap: var(--gap);
 
     .flat-select-option {
+        // Default style
         display: flex;
+        gap: 10px;
         align-items: center;
         justify-content: center;
-        min-width: $flat-select-option-size;
-        height: $flat-select-option-size;
-        padding: 0 4px;
-        color: var(--white);
-        font-size: 13px;
-        text-align: center;
-        background-color: var(--navy-blue-80);
-        border: 1px solid var(--navy-blue-80);
-        border-radius: $border-radius;
 
+        // Style override
+        min-width: var(--height);
+        height: var(--height);
+        padding: var(--padding);
+        color: var(--color);
+        text-align: center;
+        background-color: var(--background-color);
+        border: var(--border);
+        border-radius: var(--border-radius);
         cursor: default;
 
         &.disabled,
         &:disabled {
-            cursor: default;
-            opacity: 0.4;
+            --background-color: var(--grey-40);
+            --color: var(--grey-80);
+            --border: 1px solid var(--grey-40);
+        }
+
+        &.selectable {
+            --color: var(--grey-80);
+            --background-color: var(--white);
+            --border: 1px solid var(--grey-40);
+            cursor: pointer;
+
+            &:hover {
+                --background-color: var(--grey-20);
+            }
+
+            &.disabled {
+                cursor: default;
+                --background-color: var(--grey-40);
+                --color: var(--grey-80);
+                --border: 1px solid var(--grey-40);
+            }
         }
 
         .icon-container {
@@ -40,32 +72,8 @@
             }
         }
 
-        & + .flat-select-option {
-            margin-left: 10px;
-        }
-
         &:last-child {
             margin-right: 0;
-        }
-
-        &:hover {
-            text-decoration: none;
-        }
-
-        &.selectable {
-            color: var(--title-text-color);
-            background-color: var(--white);
-            border: $default-border;
-
-            cursor: pointer;
-
-            &.disabled {
-                cursor: default;
-            }
-
-            .icon {
-                fill: var(--navy-blue-80);
-            }
         }
 
         &:empty {
@@ -106,6 +114,7 @@
         font-size: $button-font-size;
         text-transform: uppercase;
         border-radius: 0;
+        --gap: 0px;
 
         &:focus {
             z-index: 1;
