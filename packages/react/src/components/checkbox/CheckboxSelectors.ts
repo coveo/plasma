@@ -8,8 +8,8 @@ import {IGroupableCheckboxesState} from './GroupableCheckboxConstants';
 const get = (
     state: PlasmaState,
     {id}: {id: string},
-    isGroupableState: boolean = false,
-    groupableCheckboxProps: IGroupableCheckboxOwnProps = null
+    isGroupableState?: boolean,
+    groupableCheckboxProps?: IGroupableCheckboxOwnProps
 ) => {
     if (isGroupableState) {
         const groupableCheckboxesState: IGroupableCheckboxesState = _.findWhere(state.groupableCheckboxes, {
