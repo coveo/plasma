@@ -8,6 +8,7 @@ import {
     PlasmaState,
     IActionBarState,
 } from '@coveord/plasma-react';
+import {EditSize24Px, UnavailableSize24Px} from '@coveord/plasma-react-icons';
 import * as React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -44,7 +45,7 @@ const BIG_LIST_OF_ACTIONS: IActionOptions[] = [
         name: 'Link to Coveo',
         link: 'http://coveo.com',
         target: '_blank',
-        icon: 'edit',
+        icon: EditSize24Px,
         primary: true,
         enabled: true,
     },
@@ -53,7 +54,7 @@ const BIG_LIST_OF_ACTIONS: IActionOptions[] = [
         name: 'Confirm Me',
         trigger: () => alert('You confirmed this action !'),
         target: '_blank',
-        icon: 'disable',
+        icon: UnavailableSize24Px,
         primary: true,
         enabled: true,
         requiresConfirmation: {
@@ -70,7 +71,7 @@ const BIG_LIST_OF_ACTIONS: IActionOptions[] = [
         name: 'Action 1',
         trigger: () => alert('Action 1 was triggered'),
         enabled: true,
-        icon: 'edit',
+        icon: EditSize24Px,
         requiresConfirmation: {
             confirmType: 'danger',
             buttonLabels: {
@@ -103,7 +104,7 @@ const BIG_LIST_OF_ACTIONS: IActionOptions[] = [
         name: 'Link to Coveo (disabled)',
         link: 'http://coveo.com',
         target: '_blank',
-        icon: 'edit',
+        icon: EditSize24Px,
         primary: true,
         enabled: false,
         hideDisabled: false,
