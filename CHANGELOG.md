@@ -1,3 +1,12 @@
+## 40.5.3 (2022-04-26)
+
+
+### Bug Fixes
+
+* **react, chart-tooltip:** throws an error on null drop position ([de56162](https://github.com/coveo/plasma/commits/de561628c188012bebef9e44a057b667de68ba61))
+
+
+
 ## 40.5.2 (2022-04-20)
 
 
