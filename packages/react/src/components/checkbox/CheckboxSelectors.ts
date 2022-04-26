@@ -2,13 +2,21 @@ import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 import {PlasmaState} from '../../PlasmaState';
 import {ICheckboxState} from './CheckboxReducers';
+import {IGroupableCheckboxOwnProps} from './GroupableCheckboxConnected';
 import {IGroupableCheckboxesState} from './GroupableCheckboxConstants';
 
-const get = (state: PlasmaState, {id}: {id: string}, isGroupableState: boolean = false, isParent: boolean = false) => {
+const get = (
+    state: PlasmaState,
+    {id}: {id: string},
+    isGroupableState: boolean = false,
+    groupableCheckboxProps: IGroupableCheckboxOwnProps = null
+) => {
     if (isGroupableState) {
-        const groupableCheckboxesState: IGroupableCheckboxesState = _.findWhere(state.groupableCheckboxes);
+        const groupableCheckboxesState: IGroupableCheckboxesState = _.findWhere(state.groupableCheckboxes, {
+            parentId: groupableCheckboxProps.parentId || groupableCheckboxProps.id,
+        });
         if (groupableCheckboxesState) {
-            const checkboxState: ICheckboxState = isParent
+            const checkboxState: ICheckboxState = groupableCheckboxProps.isParent
                 ? groupableCheckboxesState.parent
                 : _.findWhere(groupableCheckboxesState.checkboxes, {id: id});
             return checkboxState;

@@ -32,11 +32,17 @@ describe('CheckboxSelectors', () => {
         describe('when the state is groupableCheckboxesState', () => {
             it('should not throw when no checkbox exist in groupableCheckboxes with a specified id', () => {
                 expect(() => {
-                    CheckboxSelectors.getIsSelected({groupableCheckboxes: []}, {id: ''}, true);
                     CheckboxSelectors.getIsSelected(
-                        {groupableCheckboxes: []},
+                        {groupableCheckboxes: [{total: 100, nbChecked: 0, checkboxes: [], parentId: ''}]},
+                        {id: ''},
+                        true,
+                        {parentId: ''}
+                    );
+                    CheckboxSelectors.getIsSelected(
+                        {groupableCheckboxes: [{total: 100, nbChecked: 0, checkboxes: [], parentId: ''}]},
                         {id: 'I do not exist in the state'},
-                        true
+                        true,
+                        {parentId: ''}
                     );
                 }).not.toThrow();
             });
@@ -49,11 +55,12 @@ describe('CheckboxSelectors', () => {
                             total: 100,
                             nbChecked: 1,
                             checkboxes: [{id, checked: false, disabled: false}],
+                            parentId: 'parentId',
                         },
                     ],
                 };
 
-                expect(CheckboxSelectors.getIsSelected(state, {id}, true)).toBe(false);
+                expect(CheckboxSelectors.getIsSelected(state, {id}, true, {parentId: 'parentId'})).toBe(false);
             });
 
             it('should return true when the checkbox in the groupabelCheckboxes at the specified id is checked', () => {
@@ -64,11 +71,12 @@ describe('CheckboxSelectors', () => {
                             total: 100,
                             nbChecked: 1,
                             checkboxes: [{id, checked: true, disabled: false}],
+                            parentId: 'parentId',
                         },
                     ],
                 };
 
-                expect(CheckboxSelectors.getIsSelected(state, {id}, true)).toBe(true);
+                expect(CheckboxSelectors.getIsSelected(state, {id}, true, {parentId: 'parentId'})).toBe(true);
             });
         });
     });
