@@ -1,4 +1,5 @@
 import {Icon, MoreSize24Px} from '@coveord/plasma-react-icons';
+import classNames from 'classnames';
 import * as React from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
@@ -54,13 +55,19 @@ export class Action extends React.Component<IActionProps, any> {
     };
 
     render() {
-        const {icon, id, name, tooltipPlacement, tooltip} = this.props.action;
+        const {icon, iconClass, id, name, tooltipPlacement, tooltip} = this.props.action;
         const ActionIcon = icon;
+        const actionIcon: JSX.Element = icon ? (
+            <ActionIcon className={classNames(iconClass, 'action-icon')} />
+        ) : (
+            <MoreSize24Px className={classNames(iconClass, 'action-icon action-icon-more')} />
+        );
+
         const inside: string | JSX.Element = this.props.simple ? (
             name
         ) : (
             <span className="inline-flex flex-center">
-                {icon ? <ActionIcon /> : <MoreSize24Px />}
+                {actionIcon}
                 <span className="action-label" data-trigger={id || name}>
                     {name}
                 </span>

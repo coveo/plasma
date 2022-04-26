@@ -1,9 +1,8 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {render, screen, waitFor} from '@testing-library/react';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 
 import {TestUtils} from '../../../utils/tests/TestUtils';
-import {CollapsibleConnected} from '../CollapsibleConnected';
 import {CollapsibleInfoBox, CollapsibleInfoBoxProps} from '../CollapsibleInfoBox';
 
 describe('CollapsibleInfoBox', () => {
@@ -12,70 +11,108 @@ describe('CollapsibleInfoBox', () => {
         title: 'wanna-buy-some-magic?',
     };
 
-    it('should render without errors', () => {
-        expect(() => shallow(<CollapsibleInfoBox {...basicProps} />)).not.toThrow();
+    it('render a CollapsibleInfoBox component', () => {
+        render(
+            <Provider store={TestUtils.buildStore()}>
+                <CollapsibleInfoBox {...basicProps} />
+            </Provider>
+        );
+
+        expect(screen.getByRole('heading', {name: /wanna\-buy\-some\-magic\?/i})).toBeInTheDocument();
     });
 
-    describe('rendering', () => {
-        let component: ReactWrapper<CollapsibleInfoBoxProps>;
+    it('render an icon in header', async () => {
+        render(
+            <Provider store={TestUtils.buildStore()}>
+                <CollapsibleInfoBox {...basicProps} />
+            </Provider>
+        );
 
-        const mountComponent = (props?: Partial<CollapsibleInfoBoxProps>) => {
-            if (component && component.length) {
-                component.unmount();
-            }
-            component = mount(
-                <Provider store={TestUtils.buildStore()}>
-                    <CollapsibleInfoBox {...basicProps} {...props} />
-                </Provider>
-            );
+        await waitFor(() => screen.findByRole('img', {name: 'arrowHeadDown'}));
+
+        expect(screen.getByRole('img', {name: 'arrowHeadDown'})).toBeInTheDocument();
+    });
+
+    it('does not render an icon in header if isSection is true', async () => {
+        const props: CollapsibleInfoBoxProps = {
+            id: 'my-collapsible-info-box',
+            title: 'wanna-buy-some-magic?',
+            isSection: true,
         };
+        render(
+            <Provider store={TestUtils.buildStore()}>
+                <CollapsibleInfoBox {...props} />
+            </Provider>
+        );
 
-        beforeEach(() => {
-            mountComponent();
-        });
+        expect(screen.queryByRole('img', {name: 'arrowHeadDown'})).not.toBeInTheDocument();
+    });
 
-        it('should render a CollapsibleConnected component', () => {
-            expect(component.find(CollapsibleConnected).exists()).toBe(true);
-        });
+    it('display the sectionAdditionalContent if there is any and it is a section', () => {
+        const props: CollapsibleInfoBoxProps = {
+            id: 'my-collapsible-info-box',
+            title: 'wanna-buy-some-magic?',
+            isSection: true,
+            sectionAdditionalContent: 'some content',
+        };
+        render(
+            <Provider store={TestUtils.buildStore()}>
+                <CollapsibleInfoBox {...props} />
+            </Provider>
+        );
+        expect(screen.getByText(/some content/i)).toBeInTheDocument();
+    });
 
-        it('should render a <h6 /> and <svg /> in header', () => {
-            expect(component.find('h6').exists()).toBe(true);
-            expect(component.find('svg').length).toBe(2);
-        });
+    it('display the sectionAdditionalContent if sectionAdditionalContentCondition is true', () => {
+        const props: CollapsibleInfoBoxProps = {
+            id: 'my-collapsible-info-box',
+            title: 'wanna-buy-some-magic?',
+            isSection: true,
+            sectionAdditionalContent: 'some content',
+            sectionAdditionalContentCondition: () => true,
+        };
+        render(
+            <Provider store={TestUtils.buildStore()}>
+                <CollapsibleInfoBox {...props} />
+            </Provider>
+        );
 
-        it('should not render a <svg /> in header if isSection', () => {
-            mountComponent({isSection: true});
-            expect(component.find('h6').exists()).toBe(true);
-            expect(component.find('svg').length).toBe(1);
-        });
+        expect(screen.getByText(/some content/i)).toBeVisible();
+    });
 
-        it('should display the sectionAdditionalContent if there is any and it is a section', () => {
-            const sectionAdditionalContent = 'some content';
+    it('does not display the sectionAdditionalContent if sectionAdditionalContentCondition is false', () => {
+        const props: CollapsibleInfoBoxProps = {
+            id: 'my-collapsible-info-box',
+            title: 'wanna-buy-some-magic?',
+            isSection: true,
+            sectionAdditionalContent: 'some content',
+            sectionAdditionalContentCondition: () => false,
+        };
+        render(
+            <Provider store={TestUtils.buildStore()}>
+                <CollapsibleInfoBox {...props} />
+            </Provider>
+        );
 
-            mountComponent({isSection: true, sectionAdditionalContent});
+        expect(screen.queryByText(/some content/i)).toHaveClass('hidden');
+    });
 
-            expect(component.html()).toContain(sectionAdditionalContent);
-        });
+    it('have the class passed as a prop for the additional content', () => {
+        const classes: string = 'something';
 
-        it('should display the sectionAdditionalContent according to the sectionAdditionalContentCondition if any', () => {
-            const sectionAdditionalContent = 'some content';
+        const props: CollapsibleInfoBoxProps = {
+            id: 'my-collapsible-info-box',
+            title: 'wanna-buy-some-magic?',
+            isSection: true,
+            sectionAdditionalContent: 'some content',
+            sectionAdditionalContentClasses: classes,
+        };
+        render(
+            <Provider store={TestUtils.buildStore()}>
+                <CollapsibleInfoBox {...props} />
+            </Provider>
+        );
 
-            mountComponent({isSection: true, sectionAdditionalContent, sectionAdditionalContentCondition: () => false});
-
-            expect(component.find('.hidden').length).toBe(1);
-
-            mountComponent({isSection: true, sectionAdditionalContent, sectionAdditionalContentCondition: () => true});
-
-            expect(component.find('.hidden').length).toBe(0);
-        });
-
-        it('should have the class passed as a prop for the additional content', () => {
-            const classes: string = 'something';
-            const sectionAdditionalContent = 'some content';
-
-            mountComponent({isSection: true, sectionAdditionalContent, sectionAdditionalContentClasses: classes});
-
-            expect(component.find(`.${classes}`).length).toBe(1);
-        });
+        expect(screen.queryByText(/some content/i)).toHaveClass('something');
     });
 });

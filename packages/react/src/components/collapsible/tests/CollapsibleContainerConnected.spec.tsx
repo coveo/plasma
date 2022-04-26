@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {render, screen} from '@test-utils';
+import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
 import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
@@ -18,22 +18,25 @@ describe('CollapsibleContainerConnected', () => {
         expect(screen.queryByRole('img', {name: /info/i})).not.toBeInTheDocument();
     });
 
-    it('displays a question icon next to the title if informationUrl prop was provided', () => {
+    it('displays a question icon next to the title if informationUrl prop was provided', async () => {
         render(
             <CollapsibleContainerConnected id="🆔" title="the title" informationUrl="http://perdu.com">
                 content
             </CollapsibleContainerConnected>
         );
+        await waitFor(() => screen.findByRole('img', {name: /question/i}));
 
         expect(screen.getByRole('img', {name: /question/i})).toBeInTheDocument();
     });
 
-    it('displays an info icon next to the title if informationTooltip prop was provided alone', () => {
+    it('displays an info icon next to the title if informationTooltip prop was provided alone', async () => {
         render(
             <CollapsibleContainerConnected id="🆔" title="the title" informationTooltip={{title: 'tooltip!'}}>
                 content
             </CollapsibleContainerConnected>
         );
+
+        await waitFor(() => screen.findByRole('img', {name: /info/i}));
 
         expect(screen.getByRole('img', {name: /info/i})).toBeInTheDocument();
     });

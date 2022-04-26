@@ -1,5 +1,5 @@
 import {shallowWithStore} from '@helpers/enzyme-redux';
-import {render, screen} from '@test-utils';
+import {render, screen, waitFor} from '@test-utils';
 import {ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import {Store} from 'redux';
@@ -67,8 +67,10 @@ describe('ActionableItem', () => {
                 expect(screen.getByText('some action')).not.toHaveClass('active');
             });
 
-            it('should render the moreAppend svg in the Drop', () => {
+            it('should render the moreAppend svg in the Drop', async () => {
                 render(<ActionableItem {...basicProps}>click on the dots</ActionableItem>);
+
+                await waitFor(() => screen.findByRole('img', {name: 'dots'}));
 
                 expect(screen.getByRole('img', {name: 'dots'})).toBeInTheDocument();
             });

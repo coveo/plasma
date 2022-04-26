@@ -321,8 +321,10 @@ describe('Toasts', () => {
             expect(toastComponent.find('.search-bar-spinner').length).toBe(1);
         });
 
-        it('should render the success infoToken by default', () => {
+        it('should render the success infoToken by default', async () => {
             render(<Toast title="admin-ui" />);
+
+            await waitFor(() => screen.findByRole('img', {name: /checkmark/i}));
 
             expect(screen.getByRole('img', {name: /checkmark/i})).toBeInTheDocument();
         });
