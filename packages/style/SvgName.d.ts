@@ -36,6 +36,7 @@ export type SvgName =
 	| 'behaviouralAnalytics24px'
 	| 'bellStrokedMedium'
 	| 'bgWave'
+	| 'bgWaveLow'
 	| 'body'
 	| 'brain'
 	| 'bubble16px'
