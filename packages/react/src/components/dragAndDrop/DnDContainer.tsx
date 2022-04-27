@@ -33,7 +33,7 @@ export const DnDContainer: React.FunctionComponent<IDraggableContainerOwnProps> 
 }) => {
     const ref = React.useRef<HTMLDivElement>();
     const iconRef = React.useRef<HTMLDivElement>();
-    const [{}, drop] = useDrop(() => ({
+    const [, drop] = useDrop(() => ({
         accept: DraggableContainerType,
         hover: ({id: draggedId}: DragItem) => {
             if (draggedId !== id) {
