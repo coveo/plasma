@@ -1,3 +1,17 @@
+# 41.0.0 (2022-04-27)
+
+
+### Code Refactoring
+
+* **react:** update react-dnd to version 15 ([e68c0cd](https://github.com/coveo/plasma/commits/e68c0cd9cb37862c16ff870013266f1b7d90873d))
+
+
+### BREAKING CHANGES
+
+* **react:** DnDUtils has been skimmed down to just one reorder function
+
+
+
 ## 40.5.3 (2022-04-26)
 
 
