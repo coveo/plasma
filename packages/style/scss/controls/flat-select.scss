@@ -87,7 +87,7 @@
     }
 
     &.mod-btn-group {
-        --gap: 0px;
+        --gap: 0;
         border-radius: 8px;
 
         .flat-select-option {
@@ -100,11 +100,11 @@
             }
 
             &:first-child {
-                border-radius: 8px 0px 0px 8px;
+                border-radius: 8px 0 0 8px;
             }
 
             &:last-child {
-                border-radius: 0px 8px 8px 0px;
+                border-radius: 0 8px 8px 0;
             }
         }
     }
@@ -114,7 +114,7 @@
 
         .flat-select-option {
             --height: 30px;
-            --padding: 5px 0px;
+            --padding: 5px 0;
         }
     }
 }
