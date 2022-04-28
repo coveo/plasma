@@ -6,23 +6,21 @@ import * as React from 'react';
 import {Action, IActionOptions} from '../Action';
 
 describe('Actions', () => {
-    let action: IActionOptions;
-
-    beforeAll(() => {
-        action = {
-            name: 'action',
-            trigger: jest.fn(),
-            enabled: true,
-        };
-    });
-
     it('should have a defaultProp hideDisabled set to true', () => {
         expect(Action.defaultProps.hideDisabled).toBe(true);
     });
 
-    it('should add the iconClass of the action on the icon class', async () => {
+    it('should add the iconClass on the icon', async () => {
         const iconClass = 'bloup';
-        render(<Action action={{...action, icon: DeleteSize24Px, iconClass}} />);
+        const action: IActionOptions = {
+            name: 'action',
+            trigger: jest.fn(),
+            enabled: true,
+            icon: DeleteSize24Px,
+            iconClass: iconClass,
+        };
+
+        render(<Action action={action} />);
 
         await waitFor(() => screen.findByRole('img', {name: 'delete'}));
 
@@ -30,6 +28,11 @@ describe('Actions', () => {
     });
 
     it('should have icon more if no icon is defined', async () => {
+        const action: IActionOptions = {
+            name: 'action',
+            trigger: jest.fn(),
+            enabled: true,
+        };
         render(<Action action={action} />);
 
         await waitFor(() => screen.findByRole('img', {name: 'more'}));
@@ -37,6 +40,13 @@ describe('Actions', () => {
     });
 
     it('should display the action name', () => {
+        const action: IActionOptions = {
+            name: 'action',
+            trigger: jest.fn(),
+            enabled: true,
+            icon: DeleteSize24Px,
+            iconClass: null,
+        };
         render(<Action action={action} />);
 
         expect(screen.getByText('action')).toBeInTheDocument();
