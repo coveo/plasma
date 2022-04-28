@@ -115,12 +115,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
         const id = _.uniqueId('tooltip-');
 
         const tooltip = (injectedProps: OverlayInjectedProps) => (
-            <BootstrapTooltip
-                id={id}
-                {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
-                {...injectedProps}
-                className="react-vapor-tooltip"
-            >
+            <BootstrapTooltip id={id} {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)} {...injectedProps}>
                 {this.props.title}
                 {tooltipFooter}
             </BootstrapTooltip>
