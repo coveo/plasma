@@ -15,3 +15,8 @@ declare module '*.example.tsx' {
     const content: string;
     export default content;
 }
+
+declare module 'tsjs/prettier-config.js' {
+    const content: any;
+    export default content;
+}

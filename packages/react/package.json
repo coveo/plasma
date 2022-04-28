@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "40.5.2",
+    "version": "41.0.0",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -13,8 +13,8 @@
     "homepage": "https://github.com/coveo/plasma#readme",
     "author": "Coveo",
     "license": "Apache-2.0",
-    "main": "dist/cjs/Entry.js",
-    "module": "dist/esm/Entry.js",
+    "main": "./dist/cjs/Entry.js",
+    "module": "./dist/esm/Entry.js",
     "types": "dist/definitions/Entry.d.ts",
     "repository": {
         "type": "git",
@@ -27,7 +27,7 @@
         "test:ci": "jest --maxWorkers=65% --silent",
         "test:changed": "jest --maxWorkers=65% --changedSince master",
         "test:watch": "jest --watchAll",
-        "test:debug": "jest --clearCache && node --inspect node_modules/jest/bin/jest --runInBand --watchAll",
+        "test:debug": "node --inspect-brk node_modules/jest/bin/jest --runInBand --watchAll --detectOpenHandles --forceExit",
         "precommit": "lint-staged",
         "clean": "rimraf dist coverage",
         "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"src/**/*.{ts,tsx}\" --fix"
@@ -47,8 +47,8 @@
         "react-codemirror2": "7.2.1",
         "react-color": "2.19.3",
         "react-diff-viewer": "3.1.1",
-        "react-dnd": "2.6.0",
-        "react-dnd-html5-backend": "2.6.0",
+        "react-dnd": "15.1.2",
+        "react-dnd-html5-backend": "15.1.2",
         "react-infinite-scroll-component": "4.5.3",
         "react-modal": "3.14.4",
         "react-tether": "1.0.5",
@@ -130,7 +130,7 @@
         "minimist": "1.2.6",
         "postcss": "8.4.12",
         "react": "16.14.0",
-        "react-dnd-test-backend": "2.6.0",
+        "react-dnd-test-backend": "15.1.2",
         "react-dom": "16.14.0",
         "react-redux": "7.2.6",
         "redux": "4.1.2",

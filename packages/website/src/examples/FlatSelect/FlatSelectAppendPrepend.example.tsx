@@ -17,7 +17,7 @@ export default () => (
                 append: {content: () => <ZombieSize16Px />},
             },
             {
-                id: 'item-append',
+                id: 'item-append2',
                 option: {content: 'Disabled 3'},
                 append: {content: () => <ZombieSize16Px />},
                 disabled: true,
