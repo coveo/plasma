@@ -1,3 +1,15 @@
+# 41.1.0 (2022-04-28)
+
+
+### Features
+
+* **mvp, flat select:** applied last mvp style, icon only + cleanup ([fc6b1fd](https://github.com/coveo/plasma/commits/fc6b1fdd43249c553d7a1987d6a0fb6a98bd269a))
+* **mvp, flat select:** applied new style for mod-grouped ([cf5954e](https://github.com/coveo/plasma/commits/cf5954ed37fea3ab1615f8c6bc503a2ca65468f0))
+* **mvp, flat select:** applied new style to mod option-picker ([dd0ba43](https://github.com/coveo/plasma/commits/dd0ba43234745482ee126ca9bb3d0fb4c9e1cf42))
+* **mvp, flat select:** new style applied for flat select (disable, hover, selectable) ([aa5a83c](https://github.com/coveo/plasma/commits/aa5a83c68f1f691c1fc229cd5ea89f038db20669))
+
+
+
 # 41.0.0 (2022-04-27)
 
 
