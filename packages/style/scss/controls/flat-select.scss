@@ -1,75 +1,67 @@
 .flat-select {
+    // Default style
     display: flex;
-    background-color: var(--white);
-    border-radius: $border-radius;
+
+    // Variables
+    --color: var(--digital-blue-80);
+    --background-color: var(--digital-blue-10);
+    --height: 40px;
+    --padding: 10px 15px;
+    --border-radius: 8px;
+    --border: 1px solid var(--digital-blue-20);
+    --gap: 16px;
+
+    // Style override
+    gap: var(--gap);
 
     .flat-select-option {
+        // Default style
         display: flex;
         align-items: center;
         justify-content: center;
-        min-width: $flat-select-option-size;
-        height: $flat-select-option-size;
-        padding: 0 4px;
-        color: var(--white);
-        font-size: 13px;
-        text-align: center;
-        background-color: var(--navy-blue-80);
-        border: 1px solid var(--navy-blue-80);
-        border-radius: $border-radius;
 
+        // Style override
+        min-width: var(--height);
+        height: var(--height);
+        padding: var(--padding);
+        color: var(--color);
+        text-align: center;
+        background-color: var(--background-color);
+        border: var(--border);
+        border-radius: var(--border-radius);
         cursor: default;
 
         &.disabled,
         &:disabled {
-            cursor: default;
-            opacity: 0.4;
-        }
-
-        .icon-container {
-            margin-right: 5px;
-            vertical-align: -3px;
-
-            &,
-            .icon {
-                width: 13px;
-                height: 13px;
-            }
-
-            .icon {
-                fill: var(--white);
-            }
-        }
-
-        & + .flat-select-option {
-            margin-left: 10px;
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
-
-        &:hover {
-            text-decoration: none;
+            --background-color: var(--grey-40);
+            --color: var(--grey-80);
+            --border: 1px solid var(--grey-40);
         }
 
         &.selectable {
-            color: var(--title-text-color);
-            background-color: var(--white);
-            border: $default-border;
-
+            --color: var(--grey-80);
+            --background-color: var(--white);
+            --border: 1px solid var(--grey-40);
             cursor: pointer;
+
+            &:hover {
+                --background-color: var(--grey-20);
+            }
 
             &.disabled {
                 cursor: default;
-            }
-
-            .icon {
-                fill: var(--navy-blue-80);
+                --background-color: var(--grey-40);
+                --color: var(--grey-80);
+                --border: 1px solid var(--grey-40);
             }
         }
 
         &:empty {
             display: none;
+        }
+
+        & span.mod-append-prepend {
+            gap: 10px;
         }
 
         &.mod-link,
@@ -92,66 +84,37 @@
                 }
             }
         }
+    }
 
-        .icon {
-            margin-bottom: -2px;
+    &.mod-btn-group {
+        --gap: 0;
+        border-radius: 8px;
+
+        .flat-select-option {
+            @extend .flat-select-option;
+            flex-grow: 1;
+            border-radius: 0;
+
+            &:focus {
+                z-index: 1;
+            }
+
+            &:first-child {
+                border-radius: 8px 0 0 8px;
+            }
+
+            &:last-child {
+                border-radius: 0 8px 8px 0;
+            }
         }
     }
 
-    &.mod-btn-group .flat-select-option {
-        height: $button-height;
-        padding: $button-padding-y $button-padding-x;
-        font-weight: var(--main-font-bold);
+    &.mod-option-picker {
+        @extend .mod-btn-group;
 
-        font-size: $button-font-size;
-        text-transform: uppercase;
-        border-radius: 0;
-
-        &:focus {
-            z-index: 1;
-        }
-
-        &:first-child {
-            border-radius: $border-radius 0 0 $border-radius;
-        }
-
-        &:last-child {
-            border-radius: 0 $border-radius $border-radius 0;
-        }
-
-        & + .flat-select-option {
-            margin-left: 0;
-        }
-    }
-
-    &.mod-option-picker .flat-select-option {
-        flex: auto;
-        color: var(--title-text-color);
-        background-color: var(--grey-20);
-        border: 1px solid var(--navy-blue-80);
-        border-right-width: 0;
-        border-radius: 0;
-
-        &.selectable {
-            background-color: var(--white);
-            border-color: var(--default-border-color);
-        }
-
-        &:first-child {
-            border-radius: $border-radius 0 0 $border-radius;
-        }
-
-        &:last-child {
-            border-right-width: 1px;
-            border-radius: 0 $border-radius $border-radius 0;
-        }
-
-        &:not(.selectable) + .flat-select-option {
-            border-left-color: var(--navy-blue-80);
-        }
-
-        & + .flat-select-option {
-            margin-left: 0;
+        .flat-select-option {
+            --height: 30px;
+            --padding: 5px 0;
         }
     }
 }

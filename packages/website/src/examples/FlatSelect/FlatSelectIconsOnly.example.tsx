@@ -1,4 +1,5 @@
 import {FlatSelectConnected} from '@coveord/plasma-react';
+import {Donut64Size24Px} from '@coveord/plasma-react-icons';
 import * as React from 'react';
 
 export default () => (
@@ -7,24 +8,15 @@ export default () => (
         options={[
             {
                 id: 'item-id-1',
-                option: {content: 'Option 1'},
+                option: {content: () => <Donut64Size24Px />},
             },
             {
                 id: 'item-id-2',
-                option: {content: 'Option 2'},
+                option: {content: () => <Donut64Size24Px />},
             },
             {
                 id: 'item-id-3',
-                option: {content: 'Option 3'},
-                tooltip: {
-                    title: 'Option 3 tooltip',
-                    container: 'body',
-                    placement: 'bottom',
-                },
-            },
-            {
-                id: 'item-id-4',
-                option: {content: 'Option 4'},
+                option: {content: () => <Donut64Size24Px />},
                 disabled: true,
             },
         ]}
