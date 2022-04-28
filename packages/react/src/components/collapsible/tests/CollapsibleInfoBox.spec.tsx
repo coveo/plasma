@@ -1,8 +1,6 @@
-import {render, screen, waitFor} from '@testing-library/react';
+import {render, screen, waitFor} from '@test-utils';
 import * as React from 'react';
-import {Provider} from 'react-redux';
 
-import {TestUtils} from '../../../utils/tests/TestUtils';
 import {CollapsibleInfoBox, CollapsibleInfoBoxProps} from '../CollapsibleInfoBox';
 
 describe('CollapsibleInfoBox', () => {
@@ -12,23 +10,15 @@ describe('CollapsibleInfoBox', () => {
     };
 
     it('render a CollapsibleInfoBox component', () => {
-        render(
-            <Provider store={TestUtils.buildStore()}>
-                <CollapsibleInfoBox {...basicProps} />
-            </Provider>
-        );
+        render(<CollapsibleInfoBox {...basicProps} />);
 
         expect(screen.getByRole('heading', {name: /wanna\-buy\-some\-magic\?/i})).toBeInTheDocument();
     });
 
     it('render an icon in header', async () => {
-        render(
-            <Provider store={TestUtils.buildStore()}>
-                <CollapsibleInfoBox {...basicProps} />
-            </Provider>
-        );
+        render(<CollapsibleInfoBox {...basicProps} />);
 
-        await waitFor(() => screen.findByRole('img', {name: 'arrowHeadDown'}));
+        await screen.findByRole('img', {name: 'arrowHeadDown'});
 
         expect(screen.getByRole('img', {name: 'arrowHeadDown'})).toBeInTheDocument();
     });
@@ -39,11 +29,7 @@ describe('CollapsibleInfoBox', () => {
             title: 'wanna-buy-some-magic?',
             isSection: true,
         };
-        render(
-            <Provider store={TestUtils.buildStore()}>
-                <CollapsibleInfoBox {...props} />
-            </Provider>
-        );
+        render(<CollapsibleInfoBox {...props} />);
 
         expect(screen.queryByRole('img', {name: 'arrowHeadDown'})).not.toBeInTheDocument();
     });
@@ -55,11 +41,7 @@ describe('CollapsibleInfoBox', () => {
             isSection: true,
             sectionAdditionalContent: 'some content',
         };
-        render(
-            <Provider store={TestUtils.buildStore()}>
-                <CollapsibleInfoBox {...props} />
-            </Provider>
-        );
+        render(<CollapsibleInfoBox {...props} />);
         expect(screen.getByText(/some content/i)).toBeInTheDocument();
     });
 
@@ -71,11 +53,7 @@ describe('CollapsibleInfoBox', () => {
             sectionAdditionalContent: 'some content',
             sectionAdditionalContentCondition: () => true,
         };
-        render(
-            <Provider store={TestUtils.buildStore()}>
-                <CollapsibleInfoBox {...props} />
-            </Provider>
-        );
+        render(<CollapsibleInfoBox {...props} />);
 
         expect(screen.getByText(/some content/i)).toBeVisible();
     });
@@ -88,11 +66,7 @@ describe('CollapsibleInfoBox', () => {
             sectionAdditionalContent: 'some content',
             sectionAdditionalContentCondition: () => false,
         };
-        render(
-            <Provider store={TestUtils.buildStore()}>
-                <CollapsibleInfoBox {...props} />
-            </Provider>
-        );
+        render(<CollapsibleInfoBox {...props} />);
 
         expect(screen.queryByText(/some content/i)).toHaveClass('hidden');
     });
@@ -107,11 +81,7 @@ describe('CollapsibleInfoBox', () => {
             sectionAdditionalContent: 'some content',
             sectionAdditionalContentClasses: classes,
         };
-        render(
-            <Provider store={TestUtils.buildStore()}>
-                <CollapsibleInfoBox {...props} />
-            </Provider>
-        );
+        render(<CollapsibleInfoBox {...props} />);
 
         expect(screen.queryByText(/some content/i)).toHaveClass('something');
     });

@@ -1,5 +1,5 @@
 import {DeleteSize24Px} from '@coveord/plasma-react-icons';
-import {act, render, screen, waitFor} from '@testing-library/react';
+import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
@@ -22,7 +22,7 @@ describe('Actions', () => {
 
         render(<Action action={action} />);
 
-        await waitFor(() => screen.findByRole('img', {name: 'delete'}));
+        await screen.findByRole('img', {name: 'delete'});
 
         expect(screen.getByRole('img', {name: 'delete'})).toHaveClass(iconClass);
     });
@@ -35,7 +35,7 @@ describe('Actions', () => {
         };
         render(<Action action={action} />);
 
-        await waitFor(() => screen.findByRole('img', {name: 'more'}));
+        await screen.findByRole('img', {name: 'more'});
         expect(screen.getByRole('img', {name: 'more'})).toBeInTheDocument();
     });
 
