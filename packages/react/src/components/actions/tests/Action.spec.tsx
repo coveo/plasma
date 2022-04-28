@@ -1,106 +1,69 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {DeleteSize24Px} from '@coveord/plasma-react-icons';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import * as _ from 'underscore';
 
-import {Svg} from '../../svg/Svg';
-import {Action, IActionOptions, IActionProps} from '../Action';
+import {Action, IActionOptions} from '../Action';
 
 describe('Actions', () => {
-    let action: IActionOptions;
-
-    beforeAll(() => {
-        action = {
-            name: 'action',
-            trigger: jest.fn(),
-            enabled: true,
-        };
-    });
-
-    it('should render without errors', () => {
-        expect(() => {
-            shallow(<Action action={action} />);
-        }).not.toThrow();
-    });
-
     it('should have a defaultProp hideDisabled set to true', () => {
         expect(Action.defaultProps.hideDisabled).toBe(true);
     });
 
-    it('should add the id of the action on a data-trigger attribute', () => {
-        const expectedId = 'cut';
-        const component = shallow(<Action action={{...action, id: expectedId}} />);
-
-        expect(component.find('.action-label').prop('data-trigger')).toBe(expectedId);
-    });
-
-    it('should add the iconClass of the action on the icon class', () => {
+    it('should add the iconClass on the icon', async () => {
         const iconClass = 'bloup';
-        const component = shallow(<Action action={{...action, icon: 'link', iconClass}} />);
+        const action: IActionOptions = {
+            name: 'action',
+            trigger: jest.fn(),
+            enabled: true,
+            icon: DeleteSize24Px,
+            iconClass: iconClass,
+        };
 
-        expect(component.find(Svg).prop('className')).toContain(iconClass);
+        render(<Action action={action} />);
+
+        await screen.findByRole('img', {name: 'delete'});
+
+        expect(screen.getByRole('img', {name: 'delete'})).toHaveClass(iconClass);
     });
 
-    it('should add the name of the action on a data-trigger attribute if the id is not defined', () => {
-        const component = shallow(<Action action={action} />);
+    it('should have icon more if no icon is defined', async () => {
+        const action: IActionOptions = {
+            name: 'action',
+            trigger: jest.fn(),
+            enabled: true,
+        };
+        render(<Action action={action} />);
 
-        expect(component.find('.action-label').prop('data-trigger')).toBe(action.name);
+        await screen.findByRole('img', {name: 'more'});
+        expect(screen.getByRole('img', {name: 'more'})).toBeInTheDocument();
     });
 
-    describe('<Action />', () => {
-        let actionComponent: ReactWrapper<IActionProps, any>;
-        const simple: boolean = false;
+    it('should display the action name', () => {
+        const action: IActionOptions = {
+            name: 'action',
+            trigger: jest.fn(),
+            enabled: true,
+            icon: DeleteSize24Px,
+            iconClass: null,
+        };
+        render(<Action action={action} />);
 
-        beforeEach(() => {
-            if (actionComponent && actionComponent.length) {
-                actionComponent.unmount();
-            }
-            actionComponent = mount(<Action action={action} simple={simple} />, {
-                attachTo: document.getElementById('App'),
-            });
-        });
+        expect(screen.getByText('action')).toBeInTheDocument();
+    });
 
-        it('should get an action as a prop', () => {
-            const actionProp = actionComponent.props().action;
+    it('display a <Tooltip /> if the action has a tooltip', () => {
+        const actionWithToolip = {
+            name: 'action',
+            trigger: jest.fn(),
+            enabled: true,
+            tooltip: 'A useful tooltip',
+        };
 
-            expect(actionProp).toBeDefined();
-            expect(actionProp).toEqual(expect.objectContaining(action));
-        });
+        render(<Action action={actionWithToolip} />);
 
-        it('should get if the action is simple (no html) as a prop', () => {
-            const simpleProp = actionComponent.props().simple;
+        userEvent.hover(screen.getByText(/action/i));
 
-            expect(simpleProp).toBeDefined();
-            expect(simpleProp).toBe(simple);
-        });
-
-        it('should not contain html if the action is simple', () => {
-            expect(actionComponent.find('span').find('span').length).toBeGreaterThan(1);
-
-            actionComponent.setProps({action: action, simple: true});
-
-            expect(actionComponent.find('span').length).toBe(1);
-        });
-
-        it('should have icon more if no icon is defined', () => {
-            expect(actionComponent.find('.action-icon-more').length).toBeGreaterThanOrEqual(1);
-
-            actionComponent.setProps({action: {...action, icon: 'delete'}, simple: false});
-
-            expect(actionComponent.find(Svg).length).toBe(1);
-            expect(actionComponent.find('.more-icon').length).toBe(0);
-        });
-
-        it('should display the action name', () => {
-            expect(actionComponent.html()).toContain(action.name);
-        });
-
-        it('should display a <Tooltip /> if the action has a tooltip', () => {
-            expect(actionComponent.find('Tooltip').length).toBe(0);
-
-            const newAction = _.extend({}, action, {tooltip: 'A useful tooltip'});
-            actionComponent.setProps({action: newAction, simple: false});
-
-            expect(actionComponent.find('Tooltip').length).toBe(1);
-        });
+        expect(screen.getByText('A useful tooltip')).toBeInTheDocument();
     });
 });

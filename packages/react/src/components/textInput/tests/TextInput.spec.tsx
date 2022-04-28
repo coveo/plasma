@@ -1,4 +1,4 @@
-import {expectToThrow, fireEvent, render, screen} from '@test-utils';
+import {expectToThrow, fireEvent, render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
@@ -61,7 +61,7 @@ describe('TextInput', () => {
                 <TextInput type="text" label="Label" tooltip="🍌" />
             </FormProvider>
         );
-
+        await waitFor(() => screen.findByRole('img', {name: 'question'}));
         const icon = screen.getByRole('img', {name: /question/i});
         userEvent.hover(icon);
 
@@ -78,7 +78,7 @@ describe('TextInput', () => {
         expect(screen.getByRole('textbox', {name: /label/i})).toBeDisabled();
     });
 
-    it('validates the input on blur when showValidationOnBlur prop is true', () => {
+    it('validates the input on blur when showValidationOnBlur prop is true', async () => {
         const validator: InputValidator = (val) => {
             if (val === '✅') {
                 return {status: 'valid', message: 'valid!'};
@@ -103,7 +103,7 @@ describe('TextInput', () => {
         expect(screen.queryByRole('img', {name: 'checkmark'})).not.toBeInTheDocument();
 
         fireEvent.blur(textinput);
-
+        await waitFor(() => screen.findByRole('img', {name: 'checkmark'}));
         expect(screen.getByText('valid!')).toBeInTheDocument();
         expect(screen.getByRole('img', {name: 'checkmark'})).toBeInTheDocument();
 
@@ -116,6 +116,7 @@ describe('TextInput', () => {
         userEvent.type(textinput, '⚠️');
         expect(textinput).toBeValid();
         fireEvent.blur(textinput);
+        await waitFor(() => screen.findByRole('img', {name: 'warning'}));
 
         expect(screen.getByText('warning!')).toBeInTheDocument();
         expect(screen.getByRole('img', {name: 'warning'})).toBeInTheDocument();
@@ -125,12 +126,13 @@ describe('TextInput', () => {
         userEvent.type(textinput, '❌');
         expect(textinput).toBeInvalid();
         fireEvent.blur(textinput);
+        await waitFor(() => screen.findByRole('img', {name: 'critical'}));
 
         expect(screen.getByText('invalid!')).toBeInTheDocument();
         expect(screen.getByRole('img', {name: 'critical'})).toBeInTheDocument();
     });
 
-    it('validates the input on mount when showValidationOnMount prop is true', () => {
+    it('validates the input on mount when showValidationOnMount prop is true', async () => {
         const validator: InputValidator = (val) => (val ? {status: 'valid'} : {status: 'invalid', message: 'invalid!'});
 
         render(
@@ -138,13 +140,13 @@ describe('TextInput', () => {
                 <TextInput type="text" label="💬" required validate={validator} showValidationOnMount />
             </FormProvider>
         );
-
+        await waitFor(() => screen.findByRole('img', {name: 'critical'}));
         expect(screen.getByRole('textbox', {name: '💬'})).toBeInvalid();
         expect(screen.getByText('invalid!')).toBeInTheDocument();
         expect(screen.getByRole('img', {name: 'critical'})).toBeInTheDocument();
     });
 
-    it('validates the input on change when showValidationOnChange prop is true', () => {
+    it('validates the input on change when showValidationOnChange prop is true', async () => {
         const validator: InputValidator = (val) =>
             val ? {status: 'valid', message: 'valid!'} : {status: 'invalid', message: 'invalid!'};
 
@@ -161,11 +163,14 @@ describe('TextInput', () => {
 
         userEvent.type(textinput, '✅');
 
+        await waitFor(() => screen.findByRole('img', {name: 'checkmark'}));
+
         expect(textinput).toBeValid();
         expect(screen.getByText('valid!')).toBeInTheDocument();
         expect(screen.getByRole('img', {name: 'checkmark'})).toBeInTheDocument();
 
         userEvent.clear(textinput);
+        await waitFor(() => screen.findByRole('img', {name: 'critical'}));
 
         expect(textinput).toBeInvalid();
         expect(screen.getByText('invalid!')).toBeInTheDocument();

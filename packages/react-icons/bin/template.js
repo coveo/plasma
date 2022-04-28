@@ -32,7 +32,7 @@ const template = (variables, {tpl}) => {
         )
     );
     const svgPropsAttr = t.jsxSpreadAttribute(t.identifier('svgProps'));
-    
+
     addAttributeToSvgTag(svgTag, styleAttr);
     addAttributeToSvgTag(svgTag, svgPropsAttr);
 
@@ -44,7 +44,7 @@ ${variables.imports};
 import {SVGProps} from 'react';
 
 const ${variables.componentName} = (${props}) => (${variables.jsx});
- 
+
 ${variables.exports};
 `;
 };

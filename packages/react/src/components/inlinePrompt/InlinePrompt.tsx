@@ -3,6 +3,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
+import {Icon} from '@coveord/plasma-react-icons';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {removePrompt} from './InlinePromptActions';
@@ -12,7 +13,7 @@ export interface IUserChoice {
     description?: string;
     cancel?: string;
     choices?: Record<string, string>;
-    icon?: string;
+    icon?: Icon;
 }
 
 export interface IInlinePromptOptions {

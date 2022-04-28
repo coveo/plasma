@@ -67,8 +67,10 @@ describe('ActionableItem', () => {
                 expect(screen.getByText('some action')).not.toHaveClass('active');
             });
 
-            it('should render the moreAppend svg in the Drop', () => {
+            it('should render the moreAppend svg in the Drop', async () => {
                 render(<ActionableItem {...basicProps}>click on the dots</ActionableItem>);
+
+                await screen.findByRole('img', {name: 'dots'});
 
                 expect(screen.getByRole('img', {name: 'dots'})).toBeInTheDocument();
             });

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {Icon} from '@coveord/plasma-react-icons';
 import {IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {closeDropdown} from '../dropdown/DropdownActions';
@@ -35,7 +36,7 @@ export class TriggerAction extends React.Component<ITriggerActionProps> {
         if (confirmData && this.props.onTriggerConfirm) {
             const confirmLabel: string =
                 this.props.confirmLabel || this.props.action.requiresConfirmation.confirmLabel || CONFIRM_LABEL;
-            const icon: string = this.props.action.icon;
+            const icon: Icon = this.props.action.icon;
             this.props.onTriggerConfirm(
                 () => {
                     if (this.props.action.trigger) {
