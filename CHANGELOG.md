@@ -1,3 +1,12 @@
+## 41.2.1 (2022-04-29)
+
+
+### Bug Fixes
+
+* **navigation:** disable the click event on locked navigation ([e307dc6](https://github.com/coveo/plasma/commits/e307dc63681f4988e82c3142963c1356c2778614))
+
+
+
 # 41.2.0 (2022-04-29)
 
 
