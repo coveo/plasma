@@ -1,3 +1,14 @@
+# 41.2.0 (2022-04-29)
+
+
+### Features
+
+* **style:** allow changing bg-wave aspect ratio ([b3f26c6](https://github.com/coveo/plasma/commits/b3f26c6583783bfc63f19619d100b74e3a1162ad))
+* **style:** revert low wave image ([f93ef14](https://github.com/coveo/plasma/commits/f93ef1444d0bb56ba9178777d9bd3ec8d0138c17))
+* **svg:** add low wave background ([96eeea7](https://github.com/coveo/plasma/commits/96eeea7ccc08a7107b49d6f085e9afb5de72ea62))
+
+
+
 ## 41.1.1 (2022-04-29)
 
 
