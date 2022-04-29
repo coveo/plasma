@@ -1,21 +1,14 @@
-$toast-z-index: 9999;
 $toast-container-margin: 20px;
 $toast-margin-top: $header-height;
-$toast-margin: 10px 0px;
-$toast-radius: 8px;
 $toast-download-padding: 20px;
-$toast-text-font-size: 14px;
-$toast-title-font-weight: 500;
-$toast-close-size: 20px;
 $toast-close-padding-left: 20px;
-$toast-info-token-padding: 12px 16px 12px 8px;
 
 .toast-container {
     position: fixed;
     top: $toast-margin-top;
     right: 0;
     left: 0;
-    z-index: $toast-z-index;
+    z-index: 9999;
     display: flex;
     flex-flow: column-reverse;
     align-items: center;
@@ -48,24 +41,25 @@ $toast-info-token-padding: 12px 16px 12px 8px;
 
 .toast {
     // Default Style
+    @extend .body-l-book;
+    z-index: 9999;
     display: flex;
     min-width: var(--min-width);
     max-width: var(--max-width);
-    margin: $toast-margin;
-    padding: var(--padding);
+    min-height: 64px;
+    padding: 16px;
     color: var(--text-color);
 
     // override
     background-color: var(--background-color);
-    border-radius: $toast-radius;
+    border-radius: 8px;
     box-shadow: var(--high-elevation-on-neutral);
     pointer-events: all;
 
     // variables
     --background-color: var(--success-60);
     --min-width: 280px;
-    --max-width: 632px;
-    --padding: 20px;
+    --max-width: 456px;
     --text-color: var(--white);
 
     &.mod-success {
@@ -85,11 +79,6 @@ $toast-info-token-padding: 12px 16px 12px 8px;
         --background-color: var(--info-60);
     }
 
-    &.mod-small {
-        --min-width: none;
-        --padding: 16px;
-    }
-
     &.mod-hidden {
         display: none;
     }
@@ -104,21 +93,16 @@ $toast-info-token-padding: 12px 16px 12px 8px;
     }
 
     a {
+        @extend .body-l;
         color: inherit;
         text-decoration: underline;
     }
 
-    &:not(.mod-small):not(.mod-download) .toast-content-container {
+    &:not(.mod-download) .toast-content-container {
         display: flex;
         flex: 1 1 auto;
         flex-direction: column;
         justify-content: center;
-        min-height: 55px;
-    }
-
-    .info-token {
-        position: static;
-        padding: $toast-info-token-padding;
     }
 
     &.mod-download {
@@ -164,9 +148,6 @@ $toast-info-token-padding: 12px 16px 12px 8px;
 }
 
 .toast-title {
-    font-weight: $toast-title-font-weight;
-    font-size: $toast-text-font-size;
-    line-height: 20px;
     overflow-wrap: anywhere;
 }
 
@@ -175,18 +156,18 @@ $toast-info-token-padding: 12px 16px 12px 8px;
     align-items: center;
     height: 100%;
     padding-right: 10px;
-    font-size: $toast-text-font-size;
 }
 
 .toast-close {
-    position: static;
-    padding-left: $toast-close-padding-left;
+    display: flex;
+    align-items: center;
+    margin-right: 3px;
     cursor: pointer;
     fill: var(--text-color);
 
     svg {
-        width: $toast-close-size;
-        height: $toast-close-size;
+        width: 24px;
+        height: 24px;
     }
 }
 
