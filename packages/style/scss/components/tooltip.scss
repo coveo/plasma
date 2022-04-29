@@ -1,7 +1,8 @@
 .tooltip {
     position: absolute;
-    z-index: $tooltip-z-index;
+    z-index: 100000;
     display: block;
+    min-height: 32px;
     visibility: visible;
     opacity: 0;
 
@@ -14,14 +15,15 @@
     &.bottom,
     &[data-popper-placement='top'],
     &[data-popper-placement='bottom'] {
-        margin: 20px 0;
+        margin: 12px 0;
+        padding: 6px 0;
     }
 
     &.right,
     &.left,
     &[data-popper-placement='right'],
     &[data-popper-placement='left'] {
-        margin: 0 6px;
+        padding: 0 6px;
     }
 
     .tooltip-inner {
@@ -40,7 +42,7 @@
 }
 
 .tooltip-footer {
-    margin-top: $tooltip-spacing;
+    margin-top: 10px;
 }
 
 // ChartTooltipContent
