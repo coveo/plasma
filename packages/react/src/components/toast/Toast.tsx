@@ -23,7 +23,7 @@ export interface IToastProps {
      */
     dismiss?: number;
     /**
-     * @deprecated Toast are always dismissible by the user
+     * @deprecated Toast are always dismissible by the user - will have no effect
      */
     dismissible?: boolean;
     /**
@@ -122,6 +122,7 @@ export const Toast: React.FC<IToastProps> = ({
     const downloadToast = (
         <div className="toast-download-container flex flex-column">
             <div className="toast-title">{title}</div>
+            {closeButton}
             <div className="toast-description">
                 <div className="flex space-between">
                     {children}
