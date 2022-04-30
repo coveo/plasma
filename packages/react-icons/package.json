@@ -49,6 +49,6 @@
     },
     "dependencies": {
         "@loadable/component": "5.15.2",
-        "@swc/helpers": "0.3.8"
+        "@swc/helpers": "0.3.9"
     }
 }
