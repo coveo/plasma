@@ -8,7 +8,7 @@ importers:
       '@commitlint/config-conventional': 15.0.0
       '@coveo/semantic-monorepo-tools': 0.3.7
       '@sindresorhus/slugify': 2.1.0
-      aws-sdk: 2.1044.0
+      aws-sdk: 2.1125.0
       axios: 0.24.0
       commander: 9.0.0
       commitizen: 4.2.4
@@ -28,7 +28,7 @@ importers:
       '@commitlint/config-conventional': 15.0.0
       '@coveo/semantic-monorepo-tools': 0.3.7
       '@sindresorhus/slugify': 2.1.0
-      aws-sdk: 2.1044.0
+      aws-sdk: 2.1125.0
       axios: 0.24.0
       commander: 9.0.0
       commitizen: 4.2.4
@@ -3908,14 +3908,14 @@ packages:
     engines: {node: '>= 0.4'}
     dev: false
 
-  /aws-sdk/2.1044.0:
-    resolution: {integrity: sha512-n55uGUONQGXteGGG1QlZ1rKx447KSuV/x6jUGNf2nOl41qMI8ZgLUhNUt0uOtw3qJrCTanzCyR/JKBq2PMiqEQ==}
+  /aws-sdk/2.1125.0:
+    resolution: {integrity: sha512-2syNkKDqDcDmB/chc61a5xx+KYzaarLs1/KshE0b1Opp2oSq2FARyUBbk59HgwKaDUB61uPF33ZG9sHiIVx2hQ==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
       events: 1.1.1
       ieee754: 1.1.13
-      jmespath: 0.15.0
+      jmespath: 0.16.0
       querystring: 0.2.0
       sax: 1.2.1
       url: 0.10.3
@@ -4274,7 +4274,7 @@ packages:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
     dev: true
 
@@ -9335,8 +9335,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /jmespath/0.15.0:
-    resolution: {integrity: sha1-o/Iiqarp+Wb10nx5ZRDigJF2Qhc=}
+  /jmespath/0.16.0:
+    resolution: {integrity: sha512-9FzQjJ7MATs1tSpnco1K6ayiYE3figslrXA72G2HQ/n76RzvYlofyi5QM+iX4YRs/pu3yzxlVQSST23+dMDknw==}
     engines: {node: '>= 0.6.0'}
     dev: true
 
