@@ -21,7 +21,7 @@
         "@coveo/semantic-monorepo-tools": "0.3.7",
         "@sindresorhus/slugify": "2.1.0",
         "aws-sdk": "2.1125.0",
-        "axios": "0.24.0",
+        "axios": "0.27.2",
         "commander": "9.2.0",
         "commitizen": "4.2.4",
         "conventional-changelog-angular": "5.0.13",

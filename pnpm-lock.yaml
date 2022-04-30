@@ -9,7 +9,7 @@ importers:
       '@coveo/semantic-monorepo-tools': 0.3.7
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1125.0
-      axios: 0.24.0
+      axios: 0.27.2
       commander: 9.2.0
       commitizen: 4.2.4
       conventional-changelog-angular: 5.0.13
@@ -29,7 +29,7 @@ importers:
       '@coveo/semantic-monorepo-tools': 0.3.7
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1125.0
-      axios: 0.24.0
+      axios: 0.27.2
       commander: 9.2.0
       commitizen: 4.2.4
       conventional-changelog-angular: 5.0.13
@@ -3924,10 +3924,11 @@ packages:
       - debug
     dev: true
 
-  /axios/0.24.0:
-    resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
+  /axios/0.27.2:
+    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.14.5
+      follow-redirects: 1.14.9
+      form-data: 4.0.0
     transitivePeerDependencies:
       - debug
     dev: true
@@ -7212,6 +7213,16 @@ packages:
         optional: true
     dev: true
 
+  /follow-redirects/1.14.9:
+    resolution: {integrity: sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: true
+
   /for-in/1.0.2:
     resolution: {integrity: sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=}
     engines: {node: '>=0.10.0'}
@@ -7239,6 +7250,15 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.34
+    dev: true
+
+  /form-data/4.0.0:
+    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
+    engines: {node: '>= 6'}
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.35
     dev: true
 
   /fragment-cache/0.2.1:
