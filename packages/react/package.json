@@ -76,7 +76,7 @@
         "@swc/cli": "0.1.57",
         "@swc/core": "1.2.174",
         "@swc/jest": "0.2.20",
-        "@testing-library/dom": "8.11.3",
+        "@testing-library/dom": "8.13.0",
         "@testing-library/jest-dom": "5.16.4",
         "@testing-library/react": "12.1.5",
         "@testing-library/user-event": "13.5.0",
