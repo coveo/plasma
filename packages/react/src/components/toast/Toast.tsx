@@ -121,8 +121,10 @@ export const Toast: React.FC<IToastProps> = ({
 
     const downloadToast = (
         <div className="toast-download-container flex flex-column">
-            <div className="toast-title">{title}</div>
-            {closeButton}
+            <div className="toast-title">
+                {title}
+                {closeButton}
+            </div>
             <div className="toast-description">
                 <div className="flex space-between">
                     {children}
@@ -152,10 +154,14 @@ export const Toast: React.FC<IToastProps> = ({
             ) : (
                 <>
                     <div className="toast-content-container">
-                        {title && <div className="toast-title">{title}</div>}
+                        {title && (
+                            <div className="toast-title">
+                                {title}
+                                {closeButton}
+                            </div>
+                        )}
                         {toastContent}
                     </div>
-                    {closeButton}
                 </>
             )}
         </div>

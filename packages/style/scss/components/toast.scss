@@ -49,7 +49,7 @@ $toast-close-padding-left: 20px;
     min-height: 64px;
     margin-bottom: 10px;
     padding: 16px;
-    color: var(--text-color);
+    color: var(--color);
 
     // override
     background-color: var(--background-color);
@@ -61,7 +61,7 @@ $toast-close-padding-left: 20px;
     --background-color: var(--success-60);
     --min-width: 280px;
     --max-width: 456px;
-    --text-color: var(--white);
+    --color: var(--white);
 
     &.mod-success {
         --background-color: var(--success-60);
@@ -69,7 +69,7 @@ $toast-close-padding-left: 20px;
 
     &.mod-warning {
         --background-color: var(--warning-70);
-        --text-color: var(--black);
+        --color: var(--black);
     }
 
     &.mod-error {
@@ -112,25 +112,26 @@ $toast-close-padding-left: 20px;
         padding: 0;
         color: var(--white);
         background: var(--info-60);
-        // border-bottom-right-radius: 8px;
-        // border-bottom-left-radius: 8px;
         border-radius: 8px;
         box-shadow: var(--high-elevation-on-neutral);
-        // border: 1px solid var(--white);
 
         .toast-download-container {
             width: 100%;
         }
 
-        .toast-title,
+        .toast-title {
+            height: 62px;
+            padding: 16px;
+        }
+
         .toast-close {
-            padding: $toast-download-padding;
+            --color: var(--white);
         }
 
         .toast-description {
             @extend .body-s-book;
             margin-top: 0;
-            padding: $toast-download-padding;
+            padding: 16px;
             color: var(--grey-80);
             background: var(--white);
             border-bottom-right-radius: 8px;
@@ -153,6 +154,10 @@ $toast-close-padding-left: 20px;
 }
 
 .toast-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     overflow-wrap: anywhere;
 }
 
@@ -165,10 +170,9 @@ $toast-close-padding-left: 20px;
 
 .toast-close {
     display: flex;
-    align-items: center;
     margin-right: 3px;
     cursor: pointer;
-    fill: var(--text-color);
+    fill: var(--color);
 
     svg {
         width: 24px;
