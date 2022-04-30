@@ -377,7 +377,7 @@ importers:
     specifiers:
       '@types/fs-extra': 9.0.13
       '@types/lodash': 4.14.182
-      '@types/node': 16.11.27
+      '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
       commander: 9.0.0
@@ -397,7 +397,7 @@ importers:
     devDependencies:
       '@types/fs-extra': 9.0.13
       '@types/lodash': 4.14.182
-      '@types/node': 16.11.27
+      '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
       commander: 9.0.0
@@ -411,7 +411,7 @@ importers:
       rimraf: 3.0.2
       sass: 1.48.0
       svgo: 2.8.0
-      ts-node: 10.4.0_e59ad01bc94c6932b9a6a2ae59a4a619
+      ts-node: 10.4.0_053612f007c761766ee2eb0726acd589
       tslib: 2.3.1
       typescript: 4.6.4
 
@@ -2601,8 +2601,8 @@ packages:
     resolution: {integrity: sha512-+2Iggwg7PxoO5Kyhvsq9VarmPbIelXP070HMImEpbtGCoyWNINQj4wzjbQCXzdHTRXnqufutJb5KAURZANNBAw==}
     dev: false
 
-  /@types/node/16.11.27:
-    resolution: {integrity: sha512-C1pD3kgLoZ56Uuy5lhfOxie4aZlA3UMGLX9rXteq4WitEZH6Rl80mwactt9QG0w0gLFlN/kLBTFnGXtDVWvWQw==}
+  /@types/node/16.11.32:
+    resolution: {integrity: sha512-+fnfNvG5JQdC1uGZiTx+0QVtoOHcggy6+epx65JYroPGsE1uhp+vo5kioiGKsAkor6ocwHteU2EvO7N8vtOZtA==}
     dev: true
 
   /@types/node/17.0.23:
@@ -15222,7 +15222,7 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /ts-node/10.4.0_e59ad01bc94c6932b9a6a2ae59a4a619:
+  /ts-node/10.4.0_053612f007c761766ee2eb0726acd589:
     resolution: {integrity: sha512-g0FlPvvCXSIO1JDF6S232P5jPYqBkRL9qly81ZgAOSU7rwI0stphCgd2kLiCrU9DjQCrJMWEqcNSjQL02s6d8A==}
     hasBin: true
     peerDependencies:
@@ -15241,7 +15241,7 @@ packages:
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.2
-      '@types/node': 16.11.27
+      '@types/node': 16.11.32
       acorn: 8.5.0
       acorn-walk: 8.2.0
       arg: 4.1.3
