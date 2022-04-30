@@ -136,7 +136,7 @@ importers:
       react-dnd-test-backend: 15.1.2
       react-dom: 16.14.0
       react-infinite-scroll-component: 4.5.3
-      react-modal: 3.14.4
+      react-modal: 3.15.1
       react-redux: 7.2.6
       react-tether: 1.0.5
       react-textarea-autosize: 8.3.3
@@ -176,7 +176,7 @@ importers:
       react-dnd: 15.1.2_6dabb63a8e3fbfb488bb23675567415c
       react-dnd-html5-backend: 15.1.2
       react-infinite-scroll-component: 4.5.3_react@16.14.0
-      react-modal: 3.14.4_react-dom@16.14.0+react@16.14.0
+      react-modal: 3.15.1_react-dom@16.14.0+react@16.14.0
       react-tether: 1.0.5_react-dom@16.14.0+react@16.14.0
       react-textarea-autosize: 8.3.3_6dabb63a8e3fbfb488bb23675567415c
       react-transition-group: 2.9.0_react-dom@16.14.0+react@16.14.0
@@ -12965,12 +12965,12 @@ packages:
       - supports-color
     dev: false
 
-  /react-modal/3.14.4_react-dom@16.14.0+react@16.14.0:
-    resolution: {integrity: sha512-8surmulejafYCH9wfUmFyj4UfbSJwjcgbS9gf3oOItu4Hwd6ivJyVBETI0yHRhpJKCLZMUtnhzk76wXTsNL6Qg==}
+  /react-modal/3.15.1_react-dom@16.14.0+react@16.14.0:
+    resolution: {integrity: sha512-duB9bxOaYg7Zt6TMFldIFxQRtSP+Dg3F1ZX3FXxSUn+3tZZ/9JCgeAQKDg7rhZSAqopq8TFRw3yIbnx77gyFTw==}
     engines: {node: '>=8'}
     peerDependencies:
-      react: ^0.14.0 || ^15.0.0 || ^16 || ^17
-      react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17
+      react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
+      react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
     dependencies:
       exenv: 1.2.2
       prop-types: 15.7.2
