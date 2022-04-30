@@ -149,7 +149,7 @@ importers:
       regenerator-runtime: 0.13.9
       reselect: 4.1.5
       rimraf: 3.0.2
-      sass: 1.48.0
+      sass: 1.51.0
       split-on-first: 1.x.x
       strict-uri-encode: 2.x.x
       ts-jest: 27.1.4
@@ -254,7 +254,7 @@ importers:
       redux-thunk: 2.4.1_redux@4.2.0
       regenerator-runtime: 0.13.9
       rimraf: 3.0.2
-      sass: 1.48.0
+      sass: 1.51.0
       ts-jest: 27.1.4_eecc682348e44222a66a9b13407b285a
       tslib: 2.3.1
       typescript: 4.6.4
@@ -326,7 +326,7 @@ importers:
       postcss-loader: 3.0.0
       rc-slider: 8.7.1
       resolve-url-loader: 3.1.4
-      sass: 1.48.0
+      sass: 1.51.0
       sass-loader: 10.2.1
       style-loader: 1.3.0
       underscore: 1.13.1
@@ -365,8 +365,8 @@ importers:
       minimist: 1.2.6
       postcss-loader: 3.0.0
       resolve-url-loader: 3.1.4
-      sass: 1.48.0
-      sass-loader: 10.2.1_sass@1.48.0+webpack@4.46.0
+      sass: 1.51.0
+      sass-loader: 10.2.1_sass@1.51.0+webpack@4.46.0
       style-loader: 1.3.0_webpack@4.46.0
       underscore: 1.13.1
       underscore.string: 3.3.6
@@ -389,7 +389,7 @@ importers:
       lodash: 4.17.21
       prettier: 2.4.1
       rimraf: 3.0.2
-      sass: 1.48.0
+      sass: 1.51.0
       svgo: 2.8.0
       ts-node: 10.7.0
       tslib: 2.3.1
@@ -409,7 +409,7 @@ importers:
       lodash: 4.17.21
       prettier: 2.4.1
       rimraf: 3.0.2
-      sass: 1.48.0
+      sass: 1.51.0
       svgo: 2.8.0
       ts-node: 10.7.0_053612f007c761766ee2eb0726acd589
       tslib: 2.3.1
@@ -478,7 +478,7 @@ importers:
       remark-gfm: 3.0.1
       reselect: 4.1.5
       rimraf: 3.0.2
-      sass: 1.49.7
+      sass: 1.51.0
       tslib: 2.3.1
       typescript: 4.6.4
       underscore: 1.13.1
@@ -503,7 +503,7 @@ importers:
       lz-string: 1.4.4
       moment: 2.29.3
       monaco-editor: 0.33.0
-      next: 12.1.5_7565a49c63a94df787d8686b58d1133a
+      next: 12.1.5_ccd5da32f691a61a756252e3310b5055
       next-compose-plugins: 2.2.1
       next-fonts: 1.5.1
       next-global-css: 1.3.1
@@ -548,7 +548,7 @@ importers:
       open-cli: 7.0.1
       raw-loader: 4.0.2
       rimraf: 3.0.2
-      sass: 1.49.7
+      sass: 1.51.0
       tslib: 2.3.1
       typescript: 4.6.4
 
@@ -4514,22 +4514,6 @@ packages:
       fsevents: 1.2.13
     dev: true
 
-  /chokidar/3.5.2:
-    resolution: {integrity: sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==}
-    engines: {node: '>= 8.10.0'}
-    requiresBuild: true
-    dependencies:
-      anymatch: 3.1.2
-      braces: 3.0.2
-      glob-parent: 5.1.2
-      is-binary-path: 2.1.0
-      is-glob: 4.0.3
-      normalize-path: 3.0.0
-      readdirp: 3.6.0
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /chokidar/3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -4545,7 +4529,6 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
-    optional: true
 
   /chosen-js/1.8.7:
     resolution: {integrity: sha512-eVdrZJ2U5ISdObkgsi0od5vIJdLwq1P1Xa/Vj/mgxkMZf14DlgobfB6nrlFi3kW4kkvKLsKk4NDqZj1MU1DCpw==}
@@ -10992,7 +10975,7 @@ packages:
     dependencies:
       '@corex/deepmerge': 2.6.148
       minimist: 1.2.6
-      next: 12.1.5_7565a49c63a94df787d8686b58d1133a
+      next: 12.1.5_ccd5da32f691a61a756252e3310b5055
     dev: false
 
   /next-tick/1.0.0:
@@ -11006,7 +10989,7 @@ packages:
       escalade: 3.1.1
     dev: false
 
-  /next/12.1.5_7565a49c63a94df787d8686b58d1133a:
+  /next/12.1.5_ccd5da32f691a61a756252e3310b5055:
     resolution: {integrity: sha512-YGHDpyfgCfnT5GZObsKepmRnne7Kzp7nGrac07dikhutWQug7hHg85/+sPJ4ZW5Q2pDkb+n0FnmLkmd44htIJQ==}
     engines: {node: '>=12.22.0'}
     hasBin: true
@@ -11029,7 +11012,7 @@ packages:
       postcss: 8.4.5
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
-      sass: 1.49.7
+      sass: 1.51.0
       styled-jsx: 5.0.1_react@16.14.0
     optionalDependencies:
       '@next/swc-android-arm-eabi': 12.1.5
@@ -13790,7 +13773,7 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /sass-loader/10.2.1_sass@1.48.0+webpack@4.46.0:
+  /sass-loader/10.2.1_sass@1.51.0+webpack@4.46.0:
     resolution: {integrity: sha512-RRvWl+3K2LSMezIsd008ErK4rk6CulIMSwrcc2aZvjymUgKo/vjXGp1rSWmfTUX7bblEOz8tst4wBwWtCGBqKA==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -13809,30 +13792,20 @@ packages:
       klona: 2.0.4
       loader-utils: 2.0.0
       neo-async: 2.6.2
-      sass: 1.48.0
+      sass: 1.51.0
       schema-utils: 3.1.1
       semver: 7.3.5
       webpack: 4.46.0_webpack-cli@3.3.12
     dev: true
 
-  /sass/1.48.0:
-    resolution: {integrity: sha512-hQi5g4DcfjcipotoHZ80l7GNJHGqQS5LwMBjVYB/TaT0vcSSpbgM8Ad7cgfsB2M0MinbkEQQPO9+sjjSiwxqmw==}
-    engines: {node: '>=8.9.0'}
-    hasBin: true
-    dependencies:
-      chokidar: 3.5.2
-      immutable: 4.0.0
-      source-map-js: 1.0.1
-    dev: true
-
-  /sass/1.49.7:
-    resolution: {integrity: sha512-13dml55EMIR2rS4d/RDHHP0sXMY3+30e1TKsyXaSz3iLWVoDWEoboY8WzJd5JMnxrRHffKO3wq2mpJ0jxRJiEQ==}
+  /sass/1.51.0:
+    resolution: {integrity: sha512-haGdpTgywJTvHC2b91GSq+clTKGbtkkZmVAb82jZQN/wTy6qs8DdFm2lhEQbEwrY0QDRgSQ3xDurqM977C3noA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       immutable: 4.0.0
-      source-map-js: 1.0.1
+      source-map-js: 1.0.2
     dev: true
 
   /sax/1.2.1:
@@ -14102,11 +14075,6 @@ packages:
 
   /source-list-map/2.0.1:
     resolution: {integrity: sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==}
-    dev: true
-
-  /source-map-js/1.0.1:
-    resolution: {integrity: sha512-4+TN2b3tqOCd/kaGRJ/sTYA0tR0mdXx26ipdolxcwtJVqEnqNYvlCAt1q3ypy4QMlYus+Zh34RNtYLoq2oQ4IA==}
-    engines: {node: '>=0.10.0'}
     dev: true
 
   /source-map-js/1.0.2:
