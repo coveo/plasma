@@ -34,7 +34,7 @@
         "dist"
     ],
     "devDependencies": {
-        "@babel/types": "7.17.0",
+        "@babel/types": "7.17.10",
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "6.2.1",
         "@swc/cli": "0.1.57",
