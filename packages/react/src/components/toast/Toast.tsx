@@ -128,9 +128,7 @@ export const Toast: React.FC<IToastProps> = ({
             <div className="toast-description">
                 <div className="flex space-between">
                     {children}
-                    <div className="spinner-container relative">
-                        <div className="search-bar-spinner" />
-                    </div>
+                    <div className="spinner" />
                 </div>
             </div>
         </div>
