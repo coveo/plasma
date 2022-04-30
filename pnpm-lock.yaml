@@ -453,7 +453,7 @@ importers:
       lorem-ipsum: 2.0.4
       lz-string: 1.4.4
       moment: 2.29.3
-      monaco-editor: 0.27.0
+      monaco-editor: 0.33.0
       next: 12.1.5
       next-compose-plugins: 2.2.1
       next-fonts: 1.5.1
@@ -489,7 +489,7 @@ importers:
       '@coveord/plasma-react': link:../react
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
-      '@monaco-editor/react': 4.4.4_e6a520832b2bd5ec1b4306a03b68a7e9
+      '@monaco-editor/react': 4.4.4_926242311f8c9c4adc0ca6c648a8834e
       '@swc/wasm-web': 1.2.174
       '@typescript/twoslash': 3.1.0
       '@typescript/vfs': 1.3.5
@@ -502,7 +502,7 @@ importers:
       lorem-ipsum: 2.0.4
       lz-string: 1.4.4
       moment: 2.29.3
-      monaco-editor: 0.27.0
+      monaco-editor: 0.33.0
       next: 12.1.5_7565a49c63a94df787d8686b58d1133a
       next-compose-plugins: 2.2.1
       next-fonts: 1.5.1
@@ -1634,24 +1634,24 @@ packages:
       react-is: 16.13.1
     dev: false
 
-  /@monaco-editor/loader/1.3.1_monaco-editor@0.27.0:
+  /@monaco-editor/loader/1.3.1_monaco-editor@0.33.0:
     resolution: {integrity: sha512-LfpAO6e54SZQW0nnI1sWKO4XtAlNx3WHXYZixeVy0HhZ4txGPOok4rs2u4dSi2+iRWeL198cZ2FlFQKr8mH+cw==}
     peerDependencies:
       monaco-editor: '>= 0.21.0 < 1'
     dependencies:
-      monaco-editor: 0.27.0
+      monaco-editor: 0.33.0
       state-local: 1.0.7
     dev: false
 
-  /@monaco-editor/react/4.4.4_e6a520832b2bd5ec1b4306a03b68a7e9:
+  /@monaco-editor/react/4.4.4_926242311f8c9c4adc0ca6c648a8834e:
     resolution: {integrity: sha512-yQsYnVkgP5RC5ZMoRVCXSBn4D4hLUOgoQK+AZJpVY57NDXmEb57OVaaYKh8/RTzxkpuLV278hKNw5DnuzlgQwg==}
     peerDependencies:
       monaco-editor: '>= 0.25.0 < 1'
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@monaco-editor/loader': 1.3.1_monaco-editor@0.27.0
-      monaco-editor: 0.27.0
+      '@monaco-editor/loader': 1.3.1_monaco-editor@0.33.0
+      monaco-editor: 0.33.0
       prop-types: 15.7.2
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
@@ -10850,8 +10850,8 @@ packages:
     resolution: {integrity: sha512-c6YRvhEo//6T2Jz/vVtYzqBzwvPT95JBQ+smCytzf7c50oMZRsR/a4w88aD34I+/QVSfnoAnSBFPJHItlOMJVw==}
     dev: false
 
-  /monaco-editor/0.27.0:
-    resolution: {integrity: sha512-UhwP78Wb8w0ZSYoKXQNTV/0CHObp6NS3nCt51QfKE6sKyBo5PBsvuDOHoI2ooBakc6uIwByRLHVeT7+yXQe2fQ==}
+  /monaco-editor/0.33.0:
+    resolution: {integrity: sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==}
     dev: false
 
   /moo/0.5.1:
