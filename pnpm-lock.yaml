@@ -10,7 +10,7 @@ importers:
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1125.0
       axios: 0.24.0
-      commander: 9.0.0
+      commander: 9.2.0
       commitizen: 4.2.4
       conventional-changelog-angular: 5.0.13
       cz-conventional-changelog: 3.3.0
@@ -30,7 +30,7 @@ importers:
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1125.0
       axios: 0.24.0
-      commander: 9.0.0
+      commander: 9.2.0
       commitizen: 4.2.4
       conventional-changelog-angular: 5.0.13
       cz-conventional-changelog: 3.3.0
@@ -380,7 +380,7 @@ importers:
       '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
-      commander: 9.0.0
+      commander: 9.2.0
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
       figma-js: 1.14.0
@@ -400,7 +400,7 @@ importers:
       '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
-      commander: 9.0.0
+      commander: 9.2.0
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
       figma-js: 1.14.0
@@ -4861,8 +4861,8 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /commander/9.0.0:
-    resolution: {integrity: sha512-JJfP2saEKbQqvW+FI93OYUB4ByV5cizMpFMiiJI8xDbBvQvSkIk0VvQdn1CZ8mqAO8Loq2h0gYTYtDFUZUeERw==}
+  /commander/9.2.0:
+    resolution: {integrity: sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w==}
     engines: {node: ^12.20.0 || >=14}
     dev: true
 
