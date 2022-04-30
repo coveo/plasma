@@ -64,7 +64,7 @@ importers:
       '@loadable/component': 5.15.2
       '@swc/cli': 0.1.57
       '@swc/core': 1.2.174
-      '@swc/helpers': 0.3.8
+      '@swc/helpers': 0.3.9
       '@swc/jest': 0.2.20
       '@testing-library/dom': 8.13.0
       '@testing-library/jest-dom': 5.16.4
@@ -161,7 +161,7 @@ importers:
     dependencies:
       '@coveord/plasma-style': link:../style
       '@loadable/component': 5.15.2_react@16.14.0
-      '@swc/helpers': 0.3.8
+      '@swc/helpers': 0.3.9
       '@types/codemirror': 0.0.109
       chosen-js: 1.8.7
       classnames: 2.3.1
@@ -269,7 +269,7 @@ importers:
       '@svgr/core': 6.2.1
       '@swc/cli': 0.1.57
       '@swc/core': 1.2.174
-      '@swc/helpers': 0.3.8
+      '@swc/helpers': 0.3.9
       fs-extra: 10.1.0
       glob: 7.2.0
       lodash.groupby: 4.6.0
@@ -279,7 +279,7 @@ importers:
       typescript: 4.6.4
     dependencies:
       '@loadable/component': 5.15.2
-      '@swc/helpers': 0.3.8
+      '@swc/helpers': 0.3.9
     devDependencies:
       '@babel/types': 7.17.10
       '@coveord/plasma-tokens': link:../tokens
@@ -2251,8 +2251,8 @@ packages:
       '@swc/core-win32-x64-msvc': 1.2.174
     dev: true
 
-  /@swc/helpers/0.3.8:
-    resolution: {integrity: sha512-aWItSZvJj4+GI6FWkjZR13xPNPctq2RRakzo+O6vN7bC2yjwdg5EFpgaSAUn95b7BGSgcflvzVDPoKmJv24IOg==}
+  /@swc/helpers/0.3.9:
+    resolution: {integrity: sha512-TLzWHAHOrzxauG2uB+5t7fqdom0CDiIbtjJ5zbhnT+SsGmipB767Hrw+d4/si8aS/wrYgWbqjbBR4Y0bxSyLxw==}
     dev: false
 
   /@swc/jest/0.2.20_@swc+core@1.2.174:
