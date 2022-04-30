@@ -383,7 +383,7 @@ importers:
       commander: 9.0.0
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
-      figma-js: 1.14.0
+      figma-js: 1.15.0
       fs-extra: 10.0.1
       lint-staged: 9.5.0
       lodash: 4.17.21
@@ -403,7 +403,7 @@ importers:
       commander: 9.0.0
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
-      figma-js: 1.14.0
+      figma-js: 1.15.0
       fs-extra: 10.0.1
       lint-staged: 9.5.0
       lodash: 4.17.21
@@ -6952,8 +6952,8 @@ packages:
     resolution: {integrity: sha512-0btnI/H8f2pavGMN8w40mlSKOfTK2SVJmBfBeVIj3kNw0swwgzyRq0d5TJVOwodFmtvpPeWPN/MCcfuWF0Ezbw==}
     dev: true
 
-  /figma-js/1.14.0:
-    resolution: {integrity: sha512-XqUmDmGj8tJkjNEuSoKWke0dzbRedya0jc0Ob3lr/g0pLeQI5TtMmz5zpsFLw4KRRtbDD5V/J2MRJhm9nvRS+A==}
+  /figma-js/1.15.0:
+    resolution: {integrity: sha512-j9Yu+Kt2W8Age6pSkT3MFLi/RkByb398PhhhSglbSfce7jOP7XK9X/xjCconxXqvC3vT7I/dAa+E+M5PVwyvXg==}
     engines: {node: '>=8.9'}
     dependencies:
       axios: 0.21.4
