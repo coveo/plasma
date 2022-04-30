@@ -141,7 +141,7 @@ importers:
       react-tether: 1.0.5
       react-textarea-autosize: 8.3.3
       react-transition-group: 2.9.0
-      redux: 4.1.2
+      redux: 4.2.0
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
       redux-promise-middleware: 6.1.2
@@ -217,7 +217,7 @@ importers:
       '@types/react-transition-group': 2.9.2
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.3
-      '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
+      '@types/redux-promise-middleware': 6.0.0_redux@4.2.0
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.38
       '@typescript-eslint/eslint-plugin': 5.6.0_94be94b9fb55b458964b782534cac595
@@ -247,11 +247,11 @@ importers:
       react-dnd-test-backend: 15.1.2
       react-dom: 16.14.0_react@16.14.0
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
-      redux: 4.1.2
+      redux: 4.2.0
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
-      redux-promise-middleware: 6.1.2_redux@4.1.2
-      redux-thunk: 2.4.1_redux@4.1.2
+      redux-promise-middleware: 6.1.2_redux@4.2.0
+      redux-thunk: 2.4.1_redux@4.2.0
       regenerator-runtime: 0.13.9
       rimraf: 3.0.2
       sass: 1.48.0
@@ -471,7 +471,7 @@ importers:
       react-redux: 7.2.6
       react-router: 6.3.0
       react-router-dom: 6.3.0
-      redux: 4.1.2
+      redux: 4.2.0
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
       redux-thunk: 2.4.1
@@ -518,10 +518,10 @@ importers:
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
       react-router: 6.3.0_react@16.14.0
       react-router-dom: 6.3.0_react-dom@16.14.0+react@16.14.0
-      redux: 4.1.2
-      redux-devtools-extension: 2.13.9_redux@4.1.2
-      redux-promise-middleware: 6.1.2_redux@4.1.2
-      redux-thunk: 2.4.1_redux@4.1.2
+      redux: 4.2.0
+      redux-devtools-extension: 2.13.9_redux@4.2.0
+      redux-promise-middleware: 6.1.2_redux@4.2.0
+      redux-thunk: 2.4.1_redux@4.2.0
       remark-gfm: 3.0.1
       reselect: 4.1.5
       underscore: 1.13.1
@@ -540,7 +540,7 @@ importers:
       '@types/react-redux': 7.1.22
       '@types/react-router': 5.1.18
       '@types/react-router-dom': 5.3.3
-      '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
+      '@types/redux-promise-middleware': 6.0.0_redux@4.2.0
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.16.4
       concurrently: 6.5.1
@@ -1196,9 +1196,9 @@ packages:
       fast-equals: 2.0.4
       node-abort-controller: 1.2.1
       pino: 6.13.3
-      redux: 4.1.2
+      redux: 4.2.0
       redux-mock-store: 1.5.4
-      redux-thunk: 2.4.1_redux@4.1.2
+      redux-thunk: 2.4.1_redux@4.2.0
       ts-debounce: 3.0.0
       web-encoding: 1.1.5
     transitivePeerDependencies:
@@ -1835,8 +1835,8 @@ packages:
       immer: 9.0.7
       react: 16.14.0
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
-      redux: 4.1.2
-      redux-thunk: 2.4.1_redux@4.1.2
+      redux: 4.2.0
+      redux-thunk: 2.4.1_redux@4.2.0
       reselect: 4.1.5
     dev: false
 
@@ -2668,7 +2668,7 @@ packages:
       '@types/hoist-non-react-statics': 3.3.1
       '@types/react': 17.0.40
       hoist-non-react-statics: 3.3.2
-      redux: 4.1.2
+      redux: 4.2.0
     dev: true
 
   /@types/react-router-dom/5.3.3:
@@ -2742,19 +2742,19 @@ packages:
   /@types/redux-logger/3.0.9:
     resolution: {integrity: sha512-cwYhVbYNgH01aepeMwhd0ABX6fhVB2rcQ9m80u8Fl50ZODhsZ8RhQArnLTkE7/Zrfq4Sz/taNoF7DQy9pCZSKg==}
     dependencies:
-      redux: 4.1.2
+      redux: 4.2.0
     dev: true
 
   /@types/redux-mock-store/1.0.3:
     resolution: {integrity: sha512-Wqe3tJa6x9MxMN4DJnMfZoBRBRak1XTPklqj4qkVm5VBpZnC8PSADf4kLuFQ9NAdHaowfWoEeUMz7NWc2GMtnA==}
     dependencies:
-      redux: 4.1.2
+      redux: 4.2.0
 
-  /@types/redux-promise-middleware/6.0.0_redux@4.1.2:
+  /@types/redux-promise-middleware/6.0.0_redux@4.2.0:
     resolution: {integrity: sha512-G4MvO6popCiZtlWKbGNkV2S0vnp7ENhKTZj2uUl2yEfcP2oAaFTaqQg3lGvc4uEemsr3VCoCgj4XkF9YIs1nOw==}
     deprecated: This is a stub types definition. redux-promise-middleware provides its own type definitions, so you do not need this installed.
     dependencies:
-      redux-promise-middleware: 6.1.2_redux@4.1.2
+      redux-promise-middleware: 6.1.2_redux@4.2.0
     transitivePeerDependencies:
       - redux
     dev: true
@@ -13303,12 +13303,12 @@ packages:
       strip-indent: 4.0.0
     dev: true
 
-  /redux-devtools-extension/2.13.9_redux@4.1.2:
+  /redux-devtools-extension/2.13.9_redux@4.2.0:
     resolution: {integrity: sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A==}
     peerDependencies:
       redux: ^3.1.0 || ^4.0.0
     dependencies:
-      redux: 4.1.2
+      redux: 4.2.0
     dev: false
 
   /redux-logger/3.0.6:
@@ -13322,19 +13322,19 @@ packages:
     dependencies:
       lodash.isplainobject: 4.0.6
 
-  /redux-promise-middleware/6.1.2_redux@4.1.2:
+  /redux-promise-middleware/6.1.2_redux@4.2.0:
     resolution: {integrity: sha512-ZqZu/nnSzGgwTtNbGoGVontpk7LjTOv0kigtt3CcgXI9gpq+8WlfXTXRZD0WTD5yaohRq0q2nYmJXSTjwXs83Q==}
     peerDependencies:
       redux: ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
-      redux: 4.1.2
+      redux: 4.2.0
 
-  /redux-thunk/2.4.1_redux@4.1.2:
+  /redux-thunk/2.4.1_redux@4.2.0:
     resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
     peerDependencies:
       redux: ^4
     dependencies:
-      redux: 4.1.2
+      redux: 4.2.0
 
   /redux/3.7.2:
     resolution: {integrity: sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/00g0hD6w+A==}
@@ -13344,11 +13344,6 @@ packages:
       loose-envify: 1.4.0
       symbol-observable: 1.2.0
     dev: false
-
-  /redux/4.1.2:
-    resolution: {integrity: sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==}
-    dependencies:
-      '@babel/runtime': 7.16.3
 
   /redux/4.2.0:
     resolution: {integrity: sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==}
