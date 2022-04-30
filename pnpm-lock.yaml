@@ -376,7 +376,7 @@ importers:
   packages/tokens:
     specifiers:
       '@types/fs-extra': 9.0.13
-      '@types/lodash': 4.14.181
+      '@types/lodash': 4.14.182
       '@types/node': 16.11.27
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
@@ -396,7 +396,7 @@ importers:
       typescript: 4.5.4
     devDependencies:
       '@types/fs-extra': 9.0.13
-      '@types/lodash': 4.14.181
+      '@types/lodash': 4.14.182
       '@types/node': 16.11.27
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
@@ -2553,8 +2553,8 @@ packages:
       '@types/react': 17.0.40
     dev: true
 
-  /@types/lodash/4.14.181:
-    resolution: {integrity: sha512-n3tyKthHJbkiWhDZs3DkhkCzt2MexYHXlX0td5iMplyfwketaOeKboEVBqzceH7juqvEg3q5oUoBFxSLu7zFag==}
+  /@types/lodash/4.14.182:
+    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
     dev: true
 
   /@types/lorem-ipsum/2.0.0:
