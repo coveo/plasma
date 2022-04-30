@@ -122,7 +122,7 @@ importers:
       lint-staged: 9.5.0
       lorem-ipsum: 2.0.4
       minimist: 1.2.6
-      moment: 2.29.2
+      moment: 2.29.3
       postcss: 8.4.12
       query-string: 6.14.1
       rc-slider: 9.7.5
@@ -166,7 +166,7 @@ importers:
       chosen-js: 1.8.7
       classnames: 2.3.1
       dnd-core: 2.6.0
-      moment: 2.29.2
+      moment: 2.29.3
       query-string: 6.14.1
       rc-slider: 9.7.5_react-dom@16.14.0+react@16.14.0
       react-bootstrap: 2.0.3_react-dom@16.14.0+react@16.14.0
@@ -452,7 +452,7 @@ importers:
       lint-staged: 9.5.0
       lorem-ipsum: 2.0.4
       lz-string: 1.4.4
-      moment: 2.29.2
+      moment: 2.29.3
       monaco-editor: 0.27.0
       next: 12.1.5
       next-compose-plugins: 2.2.1
@@ -501,7 +501,7 @@ importers:
       jquery: 3.6.0
       lorem-ipsum: 2.0.4
       lz-string: 1.4.4
-      moment: 2.29.2
+      moment: 2.29.3
       monaco-editor: 0.27.0
       next: 12.1.5_7565a49c63a94df787d8686b58d1133a
       next-compose-plugins: 2.2.1
@@ -10853,8 +10853,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /moment/2.29.2:
-    resolution: {integrity: sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg==}
+  /moment/2.29.3:
+    resolution: {integrity: sha512-c6YRvhEo//6T2Jz/vVtYzqBzwvPT95JBQ+smCytzf7c50oMZRsR/a4w88aD34I+/QVSfnoAnSBFPJHItlOMJVw==}
     dev: false
 
   /monaco-editor/0.27.0:
