@@ -49,12 +49,12 @@ importers:
       enzyme: 3.11.0
       react: 16.14.0
       react-redux: 7.2.6
-      tslib: 1.14.1
+      tslib: 2.4.0
     dependencies:
       enzyme: 3.11.0
       react: 16.14.0
       react-redux: 7.2.6_react@16.14.0
-      tslib: 1.14.1
+      tslib: 2.4.0
 
   packages/react:
     specifiers:
@@ -153,7 +153,7 @@ importers:
       split-on-first: 1.x.x
       strict-uri-encode: 2.x.x
       ts-jest: 27.1.4
-      tslib: 2.3.1
+      tslib: 2.4.0
       typescript: 4.6.4
       underscore: 1.13.1
       underscore.string: 3.3.6
@@ -256,7 +256,7 @@ importers:
       rimraf: 3.0.2
       sass: 1.51.0
       ts-jest: 27.1.4_eecc682348e44222a66a9b13407b285a
-      tslib: 2.3.1
+      tslib: 2.4.0
       typescript: 4.6.4
       underscore: 1.13.1
       underscore.string: 3.3.6
@@ -275,7 +275,7 @@ importers:
       lodash.groupby: 4.6.0
       lodash.upperfirst: 4.3.1
       npm-run-all: 4.1.5
-      tslib: 2.3.1
+      tslib: 2.4.0
       typescript: 4.6.4
     dependencies:
       '@loadable/component': 5.15.2
@@ -291,7 +291,7 @@ importers:
       lodash.groupby: 4.6.0
       lodash.upperfirst: 4.3.1
       npm-run-all: 4.1.5
-      tslib: 2.3.1
+      tslib: 2.4.0
       typescript: 4.6.4
 
   packages/style:
@@ -392,7 +392,7 @@ importers:
       sass: 1.51.0
       svgo: 2.8.0
       ts-node: 10.7.0
-      tslib: 2.3.1
+      tslib: 2.4.0
       typescript: 4.6.4
     devDependencies:
       '@types/fs-extra': 9.0.13
@@ -412,7 +412,7 @@ importers:
       sass: 1.51.0
       svgo: 2.8.0
       ts-node: 10.7.0_053612f007c761766ee2eb0726acd589
-      tslib: 2.3.1
+      tslib: 2.4.0
       typescript: 4.6.4
 
   packages/website:
@@ -479,7 +479,7 @@ importers:
       reselect: 4.1.5
       rimraf: 3.0.2
       sass: 1.51.0
-      tslib: 2.3.1
+      tslib: 2.4.0
       typescript: 4.6.4
       underscore: 1.13.1
       underscore.string: 3.3.6
@@ -549,7 +549,7 @@ importers:
       raw-loader: 4.0.2
       rimraf: 3.0.2
       sass: 1.51.0
-      tslib: 2.3.1
+      tslib: 2.4.0
       typescript: 4.6.4
 
 packages:
@@ -3345,12 +3345,6 @@ packages:
     hasBin: true
     dev: true
 
-  /acorn/8.5.0:
-    resolution: {integrity: sha512-yXbYeFy+jUuYd3/CDcg2NkIYE991XYX/bje7LmjJigUciaeO1JR4XxXgCIV1/Zc/dRuFEyw1L0pbA+qynJkW5Q==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
-
   /acorn/8.7.0:
     resolution: {integrity: sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==}
     engines: {node: '>=0.4.0'}
@@ -4513,7 +4507,7 @@ packages:
       htmlparser2: 6.1.0
       parse5: 6.0.1
       parse5-htmlparser2-tree-adapter: 6.0.1
-      tslib: 2.2.0
+      tslib: 2.4.0
 
   /chokidar/2.1.8:
     resolution: {integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==}
@@ -15343,17 +15337,18 @@ packages:
 
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
+    dev: true
 
   /tslib/2.1.0:
     resolution: {integrity: sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==}
     dev: true
 
-  /tslib/2.2.0:
-    resolution: {integrity: sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==}
-
   /tslib/2.3.1:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
     dev: true
+
+  /tslib/2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
   /tsutils/3.21.0:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
