@@ -89,6 +89,7 @@ importers:
       '@types/react-dom': 16.9.15
       '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.13.1
+      '@types/react-redux': 7.1.22
       '@types/react-tether': 0.5.5
       '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.9.2
@@ -213,6 +214,7 @@ importers:
       '@types/react-dom': 16.9.15
       '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.13.1
+      '@types/react-redux': 7.1.22
       '@types/react-tether': 0.5.5
       '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.9.2
@@ -2734,6 +2736,7 @@ packages:
       '@types/react': 17.0.37
       hoist-non-react-statics: 3.3.2
       redux: 4.2.0
+    dev: false
 
   /@types/react-redux/7.1.22:
     resolution: {integrity: sha512-GxIA1kM7ClU73I6wg9IRTVwSO9GS+SAKZKe0Enj+82HMU6aoESFU2HNAdNi3+J53IaOHPiUfT3kSG4L828joDQ==}
@@ -2742,7 +2745,6 @@ packages:
       '@types/react': 17.0.40
       hoist-non-react-statics: 3.3.2
       redux: 4.2.0
-    dev: true
 
   /@types/react-router-dom/5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
@@ -2798,6 +2800,7 @@ packages:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
       csstype: 3.0.10
+    dev: false
 
   /@types/react/17.0.40:
     resolution: {integrity: sha512-UrXhD/JyLH+W70nNSufXqMZNuUD2cXHu6UjCllC6pmOQgBX4SGXOH8fjRka0O0Ee0HrFxapDD8Bwn81Kmiz6jQ==}
@@ -5530,6 +5533,7 @@ packages:
 
   /csstype/3.0.10:
     resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==}
+    dev: false
 
   /csstype/3.0.11:
     resolution: {integrity: sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==}
@@ -13102,7 +13106,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.16.0
-      '@types/react-redux': 7.1.20
+      '@types/react-redux': 7.1.22
       hoist-non-react-statics: 3.3.2
       loose-envify: 1.4.0
       prop-types: 15.7.2
