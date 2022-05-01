@@ -142,7 +142,7 @@ importers:
       react-tether: 1.0.5
       react-textarea-autosize: 8.3.3
       react-transition-group: 2.9.0
-      redux: 4.2.0
+      redux: 4.1.2
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
       redux-promise-middleware: 6.1.2
@@ -218,7 +218,7 @@ importers:
       '@types/react-transition-group': 2.9.2
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.3
-      '@types/redux-promise-middleware': 6.0.0_redux@4.2.0
+      '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.38
       '@typescript-eslint/eslint-plugin': 5.21.0_ade6595cb7be1524e723c025c098ae5d
@@ -249,11 +249,11 @@ importers:
       react-dnd-test-backend: 15.1.2
       react-dom: 16.14.0_react@16.14.0
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
-      redux: 4.2.0
+      redux: 4.1.2
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
-      redux-promise-middleware: 6.1.2_redux@4.2.0
-      redux-thunk: 2.4.1_redux@4.2.0
+      redux-promise-middleware: 6.1.2_redux@4.1.2
+      redux-thunk: 2.4.1_redux@4.1.2
       regenerator-runtime: 0.13.9
       rimraf: 3.0.2
       sass: 1.51.0
@@ -475,7 +475,7 @@ importers:
       react-redux: 7.2.6
       react-router: 6.3.0
       react-router-dom: 6.3.0
-      redux: 4.2.0
+      redux: 4.1.2
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
       redux-thunk: 2.4.1
@@ -522,10 +522,10 @@ importers:
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
       react-router: 6.3.0_react@16.14.0
       react-router-dom: 6.3.0_react-dom@16.14.0+react@16.14.0
-      redux: 4.2.0
-      redux-devtools-extension: 2.13.9_redux@4.2.0
-      redux-promise-middleware: 6.1.2_redux@4.2.0
-      redux-thunk: 2.4.1_redux@4.2.0
+      redux: 4.1.2
+      redux-devtools-extension: 2.13.9_redux@4.1.2
+      redux-promise-middleware: 6.1.2_redux@4.1.2
+      redux-thunk: 2.4.1_redux@4.1.2
       remark-gfm: 3.0.1
       reselect: 4.1.5
       underscore: 1.13.1
@@ -544,7 +544,7 @@ importers:
       '@types/react-redux': 7.1.22
       '@types/react-router': 5.1.18
       '@types/react-router-dom': 5.3.3
-      '@types/redux-promise-middleware': 6.0.0_redux@4.2.0
+      '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.16.4
       concurrently: 6.5.1
@@ -2823,11 +2823,11 @@ packages:
     dependencies:
       redux: 4.2.0
 
-  /@types/redux-promise-middleware/6.0.0_redux@4.2.0:
+  /@types/redux-promise-middleware/6.0.0_redux@4.1.2:
     resolution: {integrity: sha512-G4MvO6popCiZtlWKbGNkV2S0vnp7ENhKTZj2uUl2yEfcP2oAaFTaqQg3lGvc4uEemsr3VCoCgj4XkF9YIs1nOw==}
     deprecated: This is a stub types definition. redux-promise-middleware provides its own type definitions, so you do not need this installed.
     dependencies:
-      redux-promise-middleware: 6.1.2_redux@4.2.0
+      redux-promise-middleware: 6.1.2_redux@4.1.2
     transitivePeerDependencies:
       - redux
     dev: true
@@ -13397,12 +13397,12 @@ packages:
       strip-indent: 4.0.0
     dev: true
 
-  /redux-devtools-extension/2.13.9_redux@4.2.0:
+  /redux-devtools-extension/2.13.9_redux@4.1.2:
     resolution: {integrity: sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A==}
     peerDependencies:
       redux: ^3.1.0 || ^4.0.0
     dependencies:
-      redux: 4.2.0
+      redux: 4.1.2
     dev: false
 
   /redux-logger/3.0.6:
@@ -13416,12 +13416,19 @@ packages:
     dependencies:
       lodash.isplainobject: 4.0.6
 
-  /redux-promise-middleware/6.1.2_redux@4.2.0:
+  /redux-promise-middleware/6.1.2_redux@4.1.2:
     resolution: {integrity: sha512-ZqZu/nnSzGgwTtNbGoGVontpk7LjTOv0kigtt3CcgXI9gpq+8WlfXTXRZD0WTD5yaohRq0q2nYmJXSTjwXs83Q==}
     peerDependencies:
       redux: ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
-      redux: 4.2.0
+      redux: 4.1.2
+
+  /redux-thunk/2.4.1_redux@4.1.2:
+    resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
+    peerDependencies:
+      redux: ^4
+    dependencies:
+      redux: 4.1.2
 
   /redux-thunk/2.4.1_redux@4.2.0:
     resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
@@ -13429,6 +13436,7 @@ packages:
       redux: ^4
     dependencies:
       redux: 4.2.0
+    dev: false
 
   /redux/3.7.2:
     resolution: {integrity: sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/00g0hD6w+A==}
@@ -13438,6 +13446,11 @@ packages:
       loose-envify: 1.4.0
       symbol-observable: 1.2.0
     dev: false
+
+  /redux/4.1.2:
+    resolution: {integrity: sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==}
+    dependencies:
+      '@babel/runtime': 7.17.9
 
   /redux/4.2.0:
     resolution: {integrity: sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==}
