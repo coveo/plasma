@@ -62,7 +62,7 @@
         "mime-types": "2.1.35",
         "prettier": "2.0.5",
         "sort-package-json": "1.57.0",
-        "stylelint": "13.13.1",
+        "stylelint": "14.8.1",
         "tsjs": "4.2.1",
         "ultra-runner": "3.10.5",
         "underscore": "1.13.1",
