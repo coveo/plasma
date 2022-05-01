@@ -158,7 +158,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "pnpm test:ci --filter !root --workspace-concurrency 1"
+          sh "pnpm test:ci"
         }
       }
     }

@@ -8,9 +8,9 @@ importers:
       '@commitlint/config-conventional': 15.0.0
       '@coveo/semantic-monorepo-tools': 0.3.7
       '@sindresorhus/slugify': 2.1.0
-      aws-sdk: 2.1044.0
+      aws-sdk: 2.1125.0
       axios: 0.27.2
-      commander: 9.0.0
+      commander: 9.2.0
       commitizen: 4.2.4
       conventional-changelog-angular: 5.0.13
       cz-conventional-changelog: 3.3.0
@@ -28,9 +28,9 @@ importers:
       '@commitlint/config-conventional': 15.0.0
       '@coveo/semantic-monorepo-tools': 0.3.7
       '@sindresorhus/slugify': 2.1.0
-      aws-sdk: 2.1044.0
+      aws-sdk: 2.1125.0
       axios: 0.27.2
-      commander: 9.0.0
+      commander: 9.2.0
       commitizen: 4.2.4
       conventional-changelog-angular: 5.0.13
       cz-conventional-changelog: 3.3.0
@@ -143,7 +143,7 @@ importers:
       react-tether: 1.0.5
       react-textarea-autosize: 8.3.3
       react-transition-group: 2.9.0
-      redux: 4.1.2
+      redux: 4.2.0
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
       redux-promise-middleware: 6.1.2
@@ -220,7 +220,7 @@ importers:
       '@types/react-transition-group': 2.9.2
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.3
-      '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
+      '@types/redux-promise-middleware': 6.0.0_redux@4.2.0
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.38
       '@typescript-eslint/eslint-plugin': 5.21.0_ade6595cb7be1524e723c025c098ae5d
@@ -251,11 +251,11 @@ importers:
       react-dnd-test-backend: 15.1.2
       react-dom: 16.14.0_react@16.14.0
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
-      redux: 4.1.2
+      redux: 4.2.0
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
-      redux-promise-middleware: 6.1.2_redux@4.1.2
-      redux-thunk: 2.4.1_redux@4.1.2
+      redux-promise-middleware: 6.1.2_redux@4.2.0
+      redux-thunk: 2.4.1_redux@4.2.0
       regenerator-runtime: 0.13.9
       rimraf: 3.0.2
       sass: 1.51.0
@@ -306,7 +306,7 @@ importers:
       autosize: 5.0.1
       chosen-npm: 1.4.2
       codemirror: ^5.59.4
-      concurrently: 6.4.0
+      concurrently: 6.5.1
       coveo-png-sprite: 1.0.1
       coveo-slider: 1.0.2
       css-loader: 3.6.0
@@ -346,7 +346,7 @@ importers:
       ansi-colors: 4.1.1
       autosize: 5.0.1
       chosen-npm: 1.4.2
-      concurrently: 6.4.0
+      concurrently: 6.5.1
       coveo-png-sprite: 1.0.1
       coveo-slider: 1.0.2_jquery@3.6.0+underscore@1.13.1
       css-loader: 3.6.0_webpack@4.46.0
@@ -386,7 +386,7 @@ importers:
       '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
-      commander: 9.0.0
+      commander: 9.2.0
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
       figma-js: 1.15.0
@@ -397,7 +397,7 @@ importers:
       rimraf: 3.0.2
       sass: 1.51.0
       svgo: 2.8.0
-      ts-node: 10.4.0
+      ts-node: 10.7.0
       tslib: 2.3.1
       typescript: 4.6.4
     devDependencies:
@@ -406,7 +406,7 @@ importers:
       '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
-      commander: 9.0.0
+      commander: 9.2.0
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
       figma-js: 1.15.0
@@ -417,7 +417,7 @@ importers:
       rimraf: 3.0.2
       sass: 1.51.0
       svgo: 2.8.0
-      ts-node: 10.4.0_053612f007c761766ee2eb0726acd589
+      ts-node: 10.7.0_053612f007c761766ee2eb0726acd589
       tslib: 2.3.1
       typescript: 4.6.4
 
@@ -450,7 +450,7 @@ importers:
       '@typescript/vfs': 1.3.5
       classnames: 2.3.1
       codemirror: 5.63.3
-      concurrently: 6.4.0
+      concurrently: 6.5.1
       d3: 3.5.17
       faker: 4.1.0
       flagg: 1.1.2
@@ -477,7 +477,7 @@ importers:
       react-redux: 7.2.6
       react-router: 6.3.0
       react-router-dom: 6.3.0
-      redux: 4.1.2
+      redux: 4.2.0
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
       redux-thunk: 2.4.1
@@ -524,10 +524,10 @@ importers:
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
       react-router: 6.3.0_react@16.14.0
       react-router-dom: 6.3.0_react-dom@16.14.0+react@16.14.0
-      redux: 4.1.2
-      redux-devtools-extension: 2.13.9_redux@4.1.2
-      redux-promise-middleware: 6.1.2_redux@4.1.2
-      redux-thunk: 2.4.1_redux@4.1.2
+      redux: 4.2.0
+      redux-devtools-extension: 2.13.9_redux@4.2.0
+      redux-promise-middleware: 6.1.2_redux@4.2.0
+      redux-thunk: 2.4.1_redux@4.2.0
       remark-gfm: 3.0.1
       reselect: 4.1.5
       underscore: 1.13.1
@@ -546,10 +546,10 @@ importers:
       '@types/react-redux': 7.1.22
       '@types/react-router': 5.1.18
       '@types/react-router-dom': 5.3.3
-      '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
+      '@types/redux-promise-middleware': 6.0.0_redux@4.2.0
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.16.4
-      concurrently: 6.4.0
+      concurrently: 6.5.1
       lint-staged: 9.5.0
       open-cli: 7.0.1
       raw-loader: 4.0.2
@@ -2825,11 +2825,11 @@ packages:
     dependencies:
       redux: 4.2.0
 
-  /@types/redux-promise-middleware/6.0.0_redux@4.1.2:
+  /@types/redux-promise-middleware/6.0.0_redux@4.2.0:
     resolution: {integrity: sha512-G4MvO6popCiZtlWKbGNkV2S0vnp7ENhKTZj2uUl2yEfcP2oAaFTaqQg3lGvc4uEemsr3VCoCgj4XkF9YIs1nOw==}
     deprecated: This is a stub types definition. redux-promise-middleware provides its own type definitions, so you do not need this installed.
     dependencies:
-      redux-promise-middleware: 6.1.2_redux@4.1.2
+      redux-promise-middleware: 6.1.2_redux@4.2.0
     transitivePeerDependencies:
       - redux
     dev: true
@@ -3957,14 +3957,14 @@ packages:
     engines: {node: '>= 0.4'}
     dev: false
 
-  /aws-sdk/2.1044.0:
-    resolution: {integrity: sha512-n55uGUONQGXteGGG1QlZ1rKx447KSuV/x6jUGNf2nOl41qMI8ZgLUhNUt0uOtw3qJrCTanzCyR/JKBq2PMiqEQ==}
+  /aws-sdk/2.1125.0:
+    resolution: {integrity: sha512-2syNkKDqDcDmB/chc61a5xx+KYzaarLs1/KshE0b1Opp2oSq2FARyUBbk59HgwKaDUB61uPF33ZG9sHiIVx2hQ==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
       events: 1.1.1
       ieee754: 1.1.13
-      jmespath: 0.15.0
+      jmespath: 0.16.0
       querystring: 0.2.0
       sax: 1.2.1
       url: 0.10.3
@@ -4893,8 +4893,8 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /commander/9.0.0:
-    resolution: {integrity: sha512-JJfP2saEKbQqvW+FI93OYUB4ByV5cizMpFMiiJI8xDbBvQvSkIk0VvQdn1CZ8mqAO8Loq2h0gYTYtDFUZUeERw==}
+  /commander/9.2.0:
+    resolution: {integrity: sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w==}
     engines: {node: ^12.20.0 || >=14}
     dev: true
 
@@ -4981,8 +4981,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /concurrently/6.4.0:
-    resolution: {integrity: sha512-HZ3D0RTQMH3oS4gvtYj1P+NBc6PzE2McEra6yEFcQKrUQ9HvtTGU4Dbne083F034p+LRb7kWU0tPRNvSGs1UCQ==}
+  /concurrently/6.5.1:
+    resolution: {integrity: sha512-FlSwNpGjWQfRwPLXvJ/OgysbBxPkWpiVjy1042b0U7on7S7qwwMIILRj7WTN1mTgqa582bG6NFuScOoh6Zgdag==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     dependencies:
@@ -9421,8 +9421,8 @@ packages:
       - ts-node
     dev: true
 
-  /jmespath/0.15.0:
-    resolution: {integrity: sha1-o/Iiqarp+Wb10nx5ZRDigJF2Qhc=}
+  /jmespath/0.16.0:
+    resolution: {integrity: sha512-9FzQjJ7MATs1tSpnco1K6ayiYE3figslrXA72G2HQ/n76RzvYlofyi5QM+iX4YRs/pu3yzxlVQSST23+dMDknw==}
     engines: {node: '>= 0.6.0'}
     dev: true
 
@@ -13399,12 +13399,12 @@ packages:
       strip-indent: 4.0.0
     dev: true
 
-  /redux-devtools-extension/2.13.9_redux@4.1.2:
+  /redux-devtools-extension/2.13.9_redux@4.2.0:
     resolution: {integrity: sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A==}
     peerDependencies:
       redux: ^3.1.0 || ^4.0.0
     dependencies:
-      redux: 4.1.2
+      redux: 4.2.0
     dev: false
 
   /redux-logger/3.0.6:
@@ -13418,19 +13418,12 @@ packages:
     dependencies:
       lodash.isplainobject: 4.0.6
 
-  /redux-promise-middleware/6.1.2_redux@4.1.2:
+  /redux-promise-middleware/6.1.2_redux@4.2.0:
     resolution: {integrity: sha512-ZqZu/nnSzGgwTtNbGoGVontpk7LjTOv0kigtt3CcgXI9gpq+8WlfXTXRZD0WTD5yaohRq0q2nYmJXSTjwXs83Q==}
     peerDependencies:
       redux: ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
-      redux: 4.1.2
-
-  /redux-thunk/2.4.1_redux@4.1.2:
-    resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
-    peerDependencies:
-      redux: ^4
-    dependencies:
-      redux: 4.1.2
+      redux: 4.2.0
 
   /redux-thunk/2.4.1_redux@4.2.0:
     resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
@@ -13438,7 +13431,6 @@ packages:
       redux: ^4
     dependencies:
       redux: 4.2.0
-    dev: false
 
   /redux/3.7.2:
     resolution: {integrity: sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/00g0hD6w+A==}
@@ -13448,11 +13440,6 @@ packages:
       loose-envify: 1.4.0
       symbol-observable: 1.2.0
     dev: false
-
-  /redux/4.1.2:
-    resolution: {integrity: sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==}
-    dependencies:
-      '@babel/runtime': 7.17.9
 
   /redux/4.2.0:
     resolution: {integrity: sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==}
@@ -15343,36 +15330,6 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /ts-node/10.4.0_053612f007c761766ee2eb0726acd589:
-    resolution: {integrity: sha512-g0FlPvvCXSIO1JDF6S232P5jPYqBkRL9qly81ZgAOSU7rwI0stphCgd2kLiCrU9DjQCrJMWEqcNSjQL02s6d8A==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.7.0
-      '@tsconfig/node10': 1.0.8
-      '@tsconfig/node12': 1.0.9
-      '@tsconfig/node14': 1.0.1
-      '@tsconfig/node16': 1.0.2
-      '@types/node': 16.11.32
-      acorn: 8.7.0
-      acorn-walk: 8.2.0
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 4.6.4
-      yn: 3.1.1
-    dev: true
-
   /ts-node/10.7.0_00a824dde0a4c6e129cc4fa7dfb25416:
     resolution: {integrity: sha512-TbIGS4xgJoX2i3do417KSaep1uRAW/Lu+WAL2doDHC0D6ummjirVOXU5/7aiZotbQ5p1Zp9tP7U6cYhA0O7M8A==}
     hasBin: true
@@ -15404,6 +15361,37 @@ packages:
       yn: 3.1.1
     dev: true
     optional: true
+
+  /ts-node/10.7.0_053612f007c761766ee2eb0726acd589:
+    resolution: {integrity: sha512-TbIGS4xgJoX2i3do417KSaep1uRAW/Lu+WAL2doDHC0D6ummjirVOXU5/7aiZotbQ5p1Zp9tP7U6cYhA0O7M8A==}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.7.0
+      '@tsconfig/node10': 1.0.8
+      '@tsconfig/node12': 1.0.9
+      '@tsconfig/node14': 1.0.1
+      '@tsconfig/node16': 1.0.2
+      '@types/node': 16.11.32
+      acorn: 8.7.0
+      acorn-walk: 8.2.0
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 4.6.4
+      v8-compile-cache-lib: 3.0.0
+      yn: 3.1.1
+    dev: true
 
   /ts-node/9.1.1_typescript@4.5.2:
     resolution: {integrity: sha512-hPlt7ZACERQGf03M253ytLY3dHbGNGrAq9qIHWUY9XHYl1z7wYngSr3OQ5xmui8o2AaxsONxIzjafLUiWBo1Fg==}
@@ -16039,7 +16027,6 @@ packages:
   /v8-compile-cache-lib/3.0.0:
     resolution: {integrity: sha512-mpSYqfsFvASnSn5qMiwrr4VKfumbPyONLCOPmsR3A6pTY/r0+tSaVbgPWSAIuzbk3lCTa+FForeTiO+wBQGkjA==}
     dev: true
-    optional: true
 
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
