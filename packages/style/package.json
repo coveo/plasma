@@ -34,7 +34,7 @@
         "ansi-colors": "4.1.1",
         "autosize": "5.0.1",
         "chosen-npm": "1.4.2",
-        "concurrently": "6.5.1",
+        "concurrently": "6.4.0",
         "coveo-png-sprite": "1.0.1",
         "coveo-slider": "1.0.2",
         "css-loader": "3.6.0",
