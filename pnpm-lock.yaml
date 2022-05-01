@@ -265,14 +265,14 @@ importers:
 
   packages/react-icons:
     specifiers:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.17.10
       '@coveord/plasma-tokens': workspace:*
       '@loadable/component': 5.15.2
       '@svgr/core': 6.2.1
       '@swc/cli': 0.1.57
       '@swc/core': 1.2.174
       '@swc/helpers': 0.3.9
-      fs-extra: 10.1.0
+      fs-extra: 10.0.1
       glob: 7.2.0
       lodash.groupby: 4.6.0
       lodash.upperfirst: 4.3.1
@@ -283,12 +283,12 @@ importers:
       '@loadable/component': 5.15.2
       '@swc/helpers': 0.3.9
     devDependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.17.10
       '@coveord/plasma-tokens': link:../tokens
       '@svgr/core': 6.2.1
       '@swc/cli': 0.1.57_@swc+core@1.2.174
       '@swc/core': 1.2.174
-      fs-extra: 10.1.0
+      fs-extra: 10.0.1
       glob: 7.2.0
       lodash.groupby: 4.6.0
       lodash.upperfirst: 4.3.1
@@ -386,7 +386,7 @@ importers:
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
       figma-js: 1.15.0
-      fs-extra: 10.1.0
+      fs-extra: 10.0.1
       lint-staged: 9.5.0
       lodash: 4.17.21
       prettier: 2.4.1
@@ -406,7 +406,7 @@ importers:
       cross-fetch: 3.1.5
       dotenv-safe: 8.2.0
       figma-js: 1.15.0
-      fs-extra: 10.1.0
+      fs-extra: 10.0.1
       lint-staged: 9.5.0
       lodash: 4.17.21
       prettier: 2.4.1
@@ -909,14 +909,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@babel/types/7.17.0:
-    resolution: {integrity: sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.16.7
-      to-fast-properties: 2.0.0
     dev: true
 
   /@babel/types/7.17.10:
@@ -7313,8 +7305,8 @@ packages:
       universalify: 2.0.0
     dev: true
 
-  /fs-extra/10.1.0:
-    resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
+  /fs-extra/10.0.1:
+    resolution: {integrity: sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==}
     engines: {node: '>=12'}
     dependencies:
       graceful-fs: 4.2.9
