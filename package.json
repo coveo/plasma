@@ -20,7 +20,7 @@
         "@commitlint/config-conventional": "15.0.0",
         "@coveo/semantic-monorepo-tools": "0.3.7",
         "@sindresorhus/slugify": "2.1.0",
-        "aws-sdk": "2.1125.0",
+        "aws-sdk": "2.1044.0",
         "axios": "0.27.2",
         "commander": "9.0.0",
         "commitizen": "4.2.4",
