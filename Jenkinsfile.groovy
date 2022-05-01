@@ -48,7 +48,6 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          
           commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
           if(commitMessage.contains("[version bump]")) {
             skipRemainingStages = true
@@ -236,9 +235,9 @@ pipeline {
         script {
           setLastStageName();
           sh "mkdir -p snyk"
-            
+
           convertPNPMLockToNPM("../pnpm-lock.yaml", "../snyk");
-            
+
           dir('snyk') {
             sh "npx snyk auth $SNYK_TOKEN"
             sh "npx snyk test --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > ../snyk-result.json || true"
@@ -264,7 +263,6 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          
           deploymentPackage.command(command: "package create --version ${NEW_VERSION} --resolve VERSION=${NEW_VERSION} --with-deploy")
         }
       }
