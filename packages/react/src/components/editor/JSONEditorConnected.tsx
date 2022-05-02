@@ -2,13 +2,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 
 import {IDispatch} from '../../utils';
-import {JSONEditor, JSONEditorDispatchProps, JSONEditorProps, JSONEditorStateProps} from './JSONEditor';
+import {JSONEditor, JSONEditorProps} from './JSONEditor';
 import {JSONEditorActions} from './JSONEditorActions';
 import {JSONEditorSelectors} from './JSONEditorSelectors';
 
-export const JSONEditorConnected = (props: JSONEditorStateProps & JSONEditorDispatchProps & JSONEditorProps) => {
+export const JSONEditorConnected = (props: JSONEditorProps) => {
     const dispatch: IDispatch = useDispatch();
-    const defaultValue = useSelector((state) => JSONEditorSelectors.getValue(state, props.id));
+    const value = useSelector((state) => JSONEditorSelectors.getValue(state, props.id));
 
     useEffect(() => {
         dispatch(JSONEditorActions.addJSONEditor(props.id, props.defaultValue || props.value));
@@ -18,10 +18,10 @@ export const JSONEditorConnected = (props: JSONEditorStateProps & JSONEditorDisp
         };
     }, []);
 
-    const onChange = (value: string, inError: boolean) => {
-        dispatch(JSONEditorActions.updateJSONEditorValue(props.id, value));
-        props.onChange?.(value, inError);
+    const onChange = (changedValue: string, inError: boolean) => {
+        dispatch(JSONEditorActions.updateJSONEditorValue(props.id, changedValue));
+        props.onChange?.(changedValue, inError);
     };
 
-    return <JSONEditor {...props} defaultValue={defaultValue} onChange={onChange} />;
+    return <JSONEditor {...props} value={value} onChange={onChange} />;
 };
