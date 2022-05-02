@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import * as React from 'react';
+import {FunctionComponent, useContext} from 'react';
 
 import {XYChartContext, XYPoint, XYSerie} from './XYChart';
 
@@ -8,12 +8,8 @@ export interface LineSeriesProps {
     strokeWith?: number;
 }
 
-export const LineSeries: React.FunctionComponent<LineSeriesProps> = ({
-    interpolate = 'linear',
-    strokeWith = 2,
-    children,
-}) => {
-    const {series, xScale, yScale, color, colorPattern} = React.useContext(XYChartContext);
+export const LineSeries: FunctionComponent<LineSeriesProps> = ({interpolate = 'linear', strokeWith = 2, children}) => {
+    const {series, xScale, yScale, color, colorPattern} = useContext(XYChartContext);
 
     const line = d3.svg
         .line<XYPoint>()

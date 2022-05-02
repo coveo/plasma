@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, KeyboardEvent, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 
 import {keyCode} from '../../utils';
 
-export interface IDropdownOwnProps extends React.ClassAttributes<Dropdown> {
+export interface IDropdownOwnProps extends ClassAttributes<Dropdown> {
     id?: string;
     toggleContent: JSX.Element[];
     dropdownItems: JSX.Element[];
@@ -26,7 +26,7 @@ export interface IDropdownDispatchProps {
 
 export interface IDropdownProps extends IDropdownOwnProps, IDropdownStateProps, IDropdownDispatchProps {}
 
-export class Dropdown extends React.Component<IDropdownProps, any> {
+export class Dropdown extends Component<IDropdownProps, any> {
     private dropdown: HTMLDivElement;
 
     private handleClick = () => {
@@ -45,7 +45,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
         }
     };
 
-    private handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    private handleKeyDown = (event: KeyboardEvent<HTMLSpanElement>) => {
         if (!this.props.disabled && (event.keyCode === keyCode.enter || event.keyCode === keyCode.space)) {
             // Prevent the default action to stop scrolling when space is pressed
             event.preventDefault();

@@ -1,15 +1,12 @@
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {FilterBoxConnected} from '@coveord/plasma-react';
 
     export default () => <FilterBoxConnected id="filter-box-id" filterPlaceholder="Custom Placeholder" />;
 `;
 
 const maxWidth = `
-    import * as React from 'react';
     import {FilterBoxConnected} from '@coveord/plasma-react';
 
     export default () => <FilterBoxConnected id="filter-box-id-2" maxWidth={160} />;

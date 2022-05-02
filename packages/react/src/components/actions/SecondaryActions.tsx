@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {isEmpty} from 'underscore';
 
 import {IActionOptions} from './Action';
@@ -12,7 +12,7 @@ export interface ISecondaryActionsProps {
     disabled?: boolean;
 }
 
-export const SecondaryActions: React.FunctionComponent<ISecondaryActionsProps> = ({
+export const SecondaryActions: FunctionComponent<ISecondaryActionsProps> = ({
     actions,
     id,
     moreLabel,

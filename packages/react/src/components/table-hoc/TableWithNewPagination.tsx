@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component, ComponentType} from 'react';
 import {connect} from 'react-redux';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
@@ -27,7 +27,7 @@ export interface ITableWithNewPaginationProps extends ITableHOCOwnProps, WithSer
 
 export const tableWithNewPagination = (
     supplier: ConfigSupplier<ITableWithNewPaginationConfig> = {perPageNumbers: PER_PAGE_NUMBERS}
-) => (Component: React.ComponentType<ITableWithNewPaginationProps>) => {
+) => (WrappedComponent: ComponentType<ITableWithNewPaginationProps>) => {
     const config = HocUtils.supplyConfig(supplier);
 
     const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableWithNewPaginationProps) => ({
@@ -64,7 +64,7 @@ export const tableWithNewPagination = (
         };
     };
 
-    class TableWithNewPaginationDisconnected extends React.Component<
+    class TableWithNewPaginationDisconnected extends Component<
         ITableWithNewPaginationProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
     > {
         componentDidMount() {
@@ -84,7 +84,7 @@ export const tableWithNewPagination = (
         render() {
             const {onMount, onUnmount, pageNb, perPage, totalEntries, totalPages, ...rest} = this.props;
             return (
-                <Component {...rest}>
+                <WrappedComponent {...rest}>
                     <TablePagination
                         id={this.props.id}
                         disabled={this.props.isLoading}
@@ -98,7 +98,7 @@ export const tableWithNewPagination = (
                         perPageNumbers={config.perPageNumbers}
                     />
                     {this.props.children}
-                </Component>
+                </WrappedComponent>
             );
         }
     }

@@ -1,7 +1,7 @@
-import * as React from 'react';
+import {ReactNode} from 'react';
 
 export interface ITableCollapsibleRowWrapperProps {
-    children?: React.ReactNode;
+    children?: ReactNode;
     className?: string;
 }
 

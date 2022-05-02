@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 
 import {Svg} from '../../svg/Svg';
 import {CollapsibleToggle} from '../CollapsibleToggle';

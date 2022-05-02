@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils';
 import {Svg} from '../svg';
@@ -11,7 +11,7 @@ export interface InputLabelWithTooltipProps {
     invalidMessage?: string;
 }
 
-export const InputLabelWithTooltip: React.FunctionComponent<InputLabelWithTooltipProps> = ({
+export const InputLabelWithTooltip: FunctionComponent<InputLabelWithTooltipProps> = ({
     label,
     tooltip,
     invalidMessage,

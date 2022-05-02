@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {render, screen} from '@test-utils';
 import {IsDirtyIndicator, withSelectedValues} from '../../../../utils/tests/TestUtils';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';

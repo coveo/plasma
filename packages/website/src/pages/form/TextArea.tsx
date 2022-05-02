@@ -1,5 +1,4 @@
 import code from '@examples/TextArea/main.example.tsx';
-import * as React from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
 
 import {Svg} from '../../svg';
@@ -15,10 +15,14 @@ export interface IDraggableSelectedOptionOwnProps {
 
 type DragItem = Pick<ISelectedOptionProps, 'value'>;
 
-export const DraggableSelectedOption: React.FunctionComponent<
-    IDraggableSelectedOptionOwnProps & ISelectedOptionProps
-> = ({label, selectedTooltip, readOnly, value, onMoveOver}) => {
-    const dropRef = React.useRef<HTMLDivElement>();
+export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOptionOwnProps & ISelectedOptionProps> = ({
+    label,
+    selectedTooltip,
+    readOnly,
+    value,
+    onMoveOver,
+}) => {
+    const dropRef = useRef<HTMLDivElement>();
     const [, drop] = useDrop(() => ({
         accept: 'MULTI_SELECT_OPTION',
         hover: ({value: draggedValue}: DragItem) => {

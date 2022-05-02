@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent} from 'react';
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 
 export enum SplitLayoutMods {
     noBorder = 'no-border',
@@ -10,11 +9,11 @@ export interface ISplitLayoutProps {
     /**
      * The content displayed on the left side
      */
-    leftChildren?: React.ReactNode;
+    leftChildren?: ReactNode;
     /**
      * The content displayed on the right side
      */
-    rightChildren?: React.ReactNode;
+    rightChildren?: ReactNode;
     /**
      * CSS classes to set on the split layout outer most element
      */

@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import * as React from 'react';
+import {FunctionComponent, useContext} from 'react';
 
 import {ChartUtils} from './ChartUtils';
 
@@ -9,8 +9,8 @@ export interface BarSeriesProps {
     barRatio?: number;
 }
 
-export const BarSeries: React.FunctionComponent<BarSeriesProps> = ({barRatio = 0.8, children}) => {
-    const {series, xScale, yScale, xDomain, yDomain, color, colorPattern} = React.useContext(XYChartContext);
+export const BarSeries: FunctionComponent<BarSeriesProps> = ({barRatio = 0.8, children}) => {
+    const {series, xScale, yScale, xDomain, yDomain, color, colorPattern} = useContext(XYChartContext);
     const xValues = ChartUtils.getXValues(series);
     const barWidth =
         xValues.length > 1

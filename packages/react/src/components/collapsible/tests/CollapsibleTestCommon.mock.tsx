@@ -1,5 +1,4 @@
 import {loremIpsum} from 'lorem-ipsum';
-import * as React from 'react';
 import * as _ from 'underscore';
 import {CollapsibleOwnProps} from '../CollapsibleConnected';
 import {ICollapsibleContainerOwnProps} from '../CollapsibleContainerConnected';

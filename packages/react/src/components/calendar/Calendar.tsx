@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import moment from 'moment';
-import * as React from 'react';
+import {ClassAttributes, ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
 import {DateUtils} from '../../utils/DateUtils';
@@ -31,7 +31,7 @@ interface I18nConfig {
     [key: string]: Record<Languages, string>;
 }
 
-export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
+export interface ICalendarOwnProps extends ClassAttributes<Calendar> {
     id?: string;
     /**
      * The list of months available in the calendar
@@ -118,8 +118,8 @@ export const MONTH_PICKER_ID: string = 'calendar-months';
 
 export const YEAR_PICKER_ID: string = 'calendar-years';
 
-export class Calendar extends React.Component<ICalendarProps, any> {
-    private countdownHeader: React.ReactNode;
+export class Calendar extends Component<ICalendarProps, any> {
+    private countdownHeader: ReactNode;
 
     static defaultProps: Partial<ICalendarProps> = {
         selectionRules: [],

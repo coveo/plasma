@@ -1,16 +1,14 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {InfoBox} from '@coveord/plasma-react';
 
     export default () => <InfoBox>Some contextual information.</InfoBox>;
     `;
 
 const warning = `
-    import * as React from 'react';
     import {InfoBox} from '@coveord/plasma-react';
 
     export default () => (
@@ -21,7 +19,6 @@ const warning = `
 `;
 
 const collapsible = `
-    import * as React from 'react';
     import {InfoBox, CollapsibleConnected} from '@coveord/plasma-react';
 
     export default () => (
@@ -41,7 +38,7 @@ const collapsible = `
     );
 `;
 
-export const InfoBoxExamples: React.FunctionComponent = () => (
+export const InfoBoxExamples: FunctionComponent = () => (
     <PageLayout
         id="InfoBox"
         title="Info Box"

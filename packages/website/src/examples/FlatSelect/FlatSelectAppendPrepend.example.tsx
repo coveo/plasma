@@ -1,6 +1,5 @@
 import {FlatSelectConnected} from '@coveord/plasma-react';
 import {ZombieSize16Px} from '@coveord/plasma-react-icons';
-import * as React from 'react';
 
 export default () => (
     <FlatSelectConnected

@@ -8,7 +8,6 @@ import {
     PlasmaState,
     IActionBarState,
 } from '@coveord/plasma-react';
-import * as React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 const MY_ID = 'action-bar-id';

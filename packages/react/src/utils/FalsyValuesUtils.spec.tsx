@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {callIfDefined, convertUndefinedAndNullToEmptyString} from './FalsyValuesUtils';
 
 describe('FalsyValuesUtils', () => {

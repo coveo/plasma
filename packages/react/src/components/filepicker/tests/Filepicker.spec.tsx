@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import {shallowWithState} from '@helpers/enzyme-redux';
-import * as React from 'react';
 import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 

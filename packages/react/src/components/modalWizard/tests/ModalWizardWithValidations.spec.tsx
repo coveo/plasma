@@ -1,5 +1,4 @@
 import userEvent, {specialChars} from '@testing-library/user-event';
-import * as React from 'react';
 import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 
 import {ModalWizardWithValidations} from '../ModalWizardWithValidations';

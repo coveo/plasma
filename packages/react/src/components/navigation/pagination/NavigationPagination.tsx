@@ -1,9 +1,9 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 import {PaginationSelect} from '../../pagination';
 import {Svg} from '../../svg/Svg';
 
-export interface INavigationPaginationOwnProps extends React.ClassAttributes<NavigationPagination> {
+export interface INavigationPaginationOwnProps extends ClassAttributes<NavigationPagination> {
     id?: string;
     totalPages: number;
     numberOfPagesToShow?: number;
@@ -32,7 +32,7 @@ export const NUMBER_OF_PAGES_SHOWING: number = 7;
 export const PREVIOUS_LABEL: string = 'Previous';
 export const NEXT_LABEL: string = 'Next';
 
-export class NavigationPagination extends React.Component<INavigationPaginationProps, any> {
+export class NavigationPagination extends Component<INavigationPaginationProps, any> {
     private handlePageClick = (pageNb: number) => {
         if (pageNb >= 0 && this.props.currentPage !== pageNb) {
             this.props.onPageClick?.(pageNb);

@@ -7,7 +7,6 @@ import {
 } from '@coveo/headless';
 
 import {useContext} from 'react';
-import React from 'react';
 
 import dynamic from 'next/dynamic';
 import {EngineContext} from '../search/engine/EngineContext';

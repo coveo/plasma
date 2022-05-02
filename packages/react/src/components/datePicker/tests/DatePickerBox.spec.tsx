@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 import {Provider} from 'react-redux';
 import * as _ from 'underscore';
 

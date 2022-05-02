@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 import {Title} from '../../title/Title';
 import {BasicHeader, IBasicHeaderProps} from '../BasicHeader';
 import {HeaderWrapper} from '../HeaderWrapper';

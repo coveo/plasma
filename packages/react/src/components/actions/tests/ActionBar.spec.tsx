@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 
 import {ActionBar} from '../ActionBar';
 import {PrimaryAction} from '../PrimaryAction';

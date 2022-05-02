@@ -1,9 +1,6 @@
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
-
     export default () => (
         <>
             <span className="inline-flex label">
@@ -15,8 +12,6 @@ const code = `
 `;
 
 const size = `
-    import * as React from 'react';
-
     export default () => (
         <>
             <i className="color-dot mr1" />
@@ -46,8 +41,6 @@ const size = `
 `;
 
 const executing = `
-    import * as React from 'react';
-
     export default () => (
         <>
             <i className="color-dot state-executing mr1" />

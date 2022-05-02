@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent, useContext} from 'react';
 
 import {XYChartContext} from './XYChart';
 
@@ -10,14 +10,14 @@ export interface InfoLineProps {
     padding?: number;
 }
 
-export const InfoLine: React.FunctionComponent<InfoLineProps> = ({
+export const InfoLine: FunctionComponent<InfoLineProps> = ({
     stroke = '#000',
     isVertical = false,
     label = '',
     padding = 30,
     value,
 }: InfoLineProps) => {
-    const {xDomain, yDomain, xScale, yScale, height} = React.useContext(XYChartContext);
+    const {xDomain, yDomain, xScale, yScale, height} = useContext(XYChartContext);
 
     return (
         <g className="info-line">

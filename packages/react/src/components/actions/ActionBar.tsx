@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -64,7 +64,7 @@ export interface IActionBarProps {
     /**
      * React component to add after the actions
      */
-    children?: React.ReactNode;
+    children?: ReactNode;
     /**
      * @deprecated do not use
      */
@@ -83,7 +83,7 @@ export interface IActionBarProps {
     itemFilterCropLength?: number;
 }
 
-export class ActionBar extends React.PureComponent<
+export class ActionBar extends PureComponent<
     IActionBarProps & Partial<ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>>
 > {
     static defaultProps: Partial<IActionBarProps> = {
@@ -128,7 +128,7 @@ export class ActionBar extends React.PureComponent<
         return classNames(this.props.removeDefaultContainerClasses ? '' : ActionBar.defaultClasses);
     }
 
-    private Actions: React.FunctionComponent = () => {
+    private Actions: FunctionComponent = () => {
         const primaryActions =
             this.props.actions
                 ?.filter(({primary}) => !!primary)
@@ -182,14 +182,14 @@ export class ActionBar extends React.PureComponent<
         ) : null;
     };
 
-    private Prompt: React.FunctionComponent = () =>
+    private Prompt: FunctionComponent = () =>
         this.props.prompt?.options ? (
             <div className="prompt">
                 <InlinePromptConnected {...this.props.prompt} />
             </div>
         ) : null;
 
-    private Filter: React.FunctionComponent = () =>
+    private Filter: FunctionComponent = () =>
         this.props.itemFilter ? (
             <ItemFilter
                 label={this.props.itemFilterLabel}

@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {TargetSize16Px} from '@coveord/plasma-react-icons';
     
     export default () => (
@@ -14,7 +11,6 @@ const code = `
 `;
 
 const disabledLink = `
-    import * as React from 'react';
     import {TargetSize16Px} from '@coveord/plasma-react-icons';
     
     export default () => (
@@ -25,7 +21,6 @@ const disabledLink = `
 `;
 
 const buttonLink = `
-    import * as React from 'react';
     import {TargetSize16Px} from '@coveord/plasma-react-icons';
     
     export default () => (

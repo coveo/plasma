@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {BannerContainer} from '../BannerContainer';

@@ -1,5 +1,15 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {
+    ComponentType,
+    MouseEvent,
+    KeyboardEvent,
+    ReactElement,
+    SyntheticEvent,
+    createRef,
+    Children,
+    cloneElement,
+    PureComponent,
+} from 'react';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
@@ -23,7 +33,7 @@ export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
      * Unique identifier
      */
     id: string;
-    button: React.ComponentType<ISelectButtonProps>;
+    button: ComponentType<ISelectButtonProps>;
     /**
      * The text displayed in the button when no item is selected
      *
@@ -73,9 +83,9 @@ const listBoxProps = [
 ];
 
 export interface ISelectButtonProps {
-    onClick: (e: React.MouseEvent) => void;
-    onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => void;
-    onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => void;
+    onClick: (e: MouseEvent) => void;
+    onKeyUp: (e: KeyboardEvent<HTMLElement>) => void;
+    onKeyDown: (e: KeyboardEvent<HTMLElement>) => void;
     selectedOptions: IItemBoxProps[];
     placeholder?: string;
     isOpen?: boolean;
@@ -103,10 +113,10 @@ export type ISelectProps = ISelectOwnProps &
     ReturnType<ReturnType<typeof makeMapStateToProps>>;
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-export class SelectConnected extends React.PureComponent<ISelectProps> {
+export class SelectConnected extends PureComponent<ISelectProps> {
     /* @deprecated use SelectConstants.DropGroupId instead */
     static DropGroup = SelectConstants.DropGroupId;
-    private dropdown = React.createRef<HTMLDivElement>();
+    private dropdown = createRef<HTMLDivElement>();
 
     componentDidMount() {
         this.props.addSelect();
@@ -171,8 +181,8 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
         <div className="js-drop-button-container" ref={this.dropdown}>
             <this.props.button
                 onClick={openDropdown}
-                onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e)}
-                onKeyUp={(e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e)}
+                onKeyDown={(e: KeyboardEvent<HTMLElement>) => this.onKeyDown(e)}
+                onKeyUp={(e: KeyboardEvent<HTMLElement>) => this.onKeyUp(e)}
                 placeholder={this.props.placeholder}
                 selectedOptions={this.selectedOptions}
                 isOpen={this.props.isOpened}
@@ -182,11 +192,11 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
 
     private renderChildren() {
         if (this.props.children && this.props.isOpened) {
-            const newChildren = React.Children.map(this.props.children, (child: React.ReactElement<any>) => {
+            const newChildren = Children.map(this.props.children, (child: ReactElement<any>) => {
                 if (child) {
-                    return React.cloneElement(child, {
-                        onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
-                        onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
+                    return cloneElement(child, {
+                        onKeyDown: (e: KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
+                        onKeyUp: (e: KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
                     });
                 }
             });
@@ -204,7 +214,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
         button?.focus();
     }
 
-    private onToggleDropdown(e: React.SyntheticEvent<HTMLElement>) {
+    private onToggleDropdown(e: SyntheticEvent<HTMLElement>) {
         e.stopPropagation();
         e.preventDefault();
 
@@ -212,7 +222,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
         this.focusOnButton();
     }
 
-    private onKeyDown(e: React.KeyboardEvent<HTMLElement>) {
+    private onKeyDown(e: KeyboardEvent<HTMLElement>) {
         if (
             _.contains([keyCode.escape, keyCode.downArrow, keyCode.upArrow, keyCode.enter], e.keyCode) ||
             (e.keyCode === keyCode.tab && this.props.isOpened)
@@ -222,7 +232,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
         }
     }
 
-    private onKeyUp(e: React.KeyboardEvent<HTMLElement>) {
+    private onKeyUp(e: KeyboardEvent<HTMLElement>) {
         if (keyCode.escape === e.keyCode && this.props.isOpened) {
             this.onToggleDropdown(e);
         }

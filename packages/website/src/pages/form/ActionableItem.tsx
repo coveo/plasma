@@ -1,8 +1,7 @@
-import React from 'react';
+import {FunctionComponent} from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {ActionableItem} from '@coveord/plasma-react';
     
     export default () => (
@@ -19,7 +18,6 @@ const code = `
 `;
 
 const withOnItemClick = `
-    import * as React from 'react';
     import {ActionableItem} from '@coveord/plasma-react';
     
     export default () => (
@@ -36,7 +34,7 @@ const withOnItemClick = `
     );
 `;
 
-const ActionableItemExamples: React.FunctionComponent = () => (
+const ActionableItemExamples: FunctionComponent = () => (
     <PageLayout
         id="ActionableItem"
         title="Actionable Item"

@@ -1,5 +1,5 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
+import {ReactNode} from 'react';
 
 import {ItemBox} from '../../itemBox/ItemBox';
 import {ItemBoxLoading} from '../../loading/components/ItemBoxLoading';
@@ -147,7 +147,7 @@ describe('ListBox', () => {
         });
 
         it('should wrap the items using the result from the "wrapItems" prop', () => {
-            const wrapItems = (items: React.ReactNode) => <div className="wrapping-those-items-real-hard">{items}</div>;
+            const wrapItems = (items: ReactNode) => <div className="wrapping-those-items-real-hard">{items}</div>;
             const list = shallow(<ListBox {...defaultProps} wrapItems={wrapItems} />);
 
             expect(list.childAt(0).childAt(0).hasClass('wrapping-those-items-real-hard')).toBe(true);

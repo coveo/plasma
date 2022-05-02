@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component} from 'react';
 
 const DEFAULT_TITLE = 'Add a new entry';
 
@@ -7,7 +7,7 @@ export interface IAddInputActionProps {
     onClick?: () => void;
 }
 
-export class AddInputAction extends React.Component<IAddInputActionProps, any> {
+export class AddInputAction extends Component<IAddInputActionProps, any> {
     private handleClick() {
         if (this.props.onClick) {
             this.props.onClick();

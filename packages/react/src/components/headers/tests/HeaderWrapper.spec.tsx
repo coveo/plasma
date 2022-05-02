@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 
 import {HeaderWrapper} from '../HeaderWrapper';
 import {TabsHeader} from '../TabsHeader';

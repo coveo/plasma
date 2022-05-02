@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import {svg} from '@coveord/plasma-style';
-import * as React from 'react';
+import classNames from 'classnames';
+import {ChangeEvent, FunctionComponent, InputHTMLAttributes, MouseEventHandler, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -10,7 +10,7 @@ import {Svg} from '../svg';
 import {FilepickerActions} from './FilepickerActions';
 import {FilepickerSelectors} from './FilepickerSelectors';
 
-export interface FilepickerProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface FilepickerProps extends InputHTMLAttributes<HTMLInputElement> {
     /**
      * The unique identifier of the file picker
      */
@@ -28,16 +28,16 @@ const mapDispatchToProps = (dispatch: IDispatch, {id}: FilepickerProps) => ({
     clear: () => dispatch(FilepickerActions.clear(id)),
 });
 
-const FilepickerDisconnected: React.FunctionComponent<
+const FilepickerDisconnected: FunctionComponent<
     FilepickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>
 > = (props) => {
     const {addFilepicker, setFile, clear, isEmpty, selectedFile, placeholder, capture, ...inputProps} = props;
-    const input = React.useRef<HTMLInputElement>();
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = useRef<HTMLInputElement>();
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFile(FileUtils.serialize(e.target.files[0]));
     };
 
-    const handleClear = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    const handleClear: MouseEventHandler<HTMLSpanElement> = (e) => {
         e.preventDefault();
         e.stopPropagation();
         setFile(null);
@@ -46,7 +46,7 @@ const FilepickerDisconnected: React.FunctionComponent<
         }
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         addFilepicker();
         return () => void clear();
     }, []);

@@ -1,5 +1,4 @@
 import {FunctionComponent} from 'react';
-import * as React from 'react';
 import {TableHOCUtils} from '../table-hoc/utils/TableHOCUtils';
 import {PaginationPagesNumber} from './PaginationPagesNumber';
 import {PaginationPerPage} from './PaginationPerPage';

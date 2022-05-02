@@ -1,6 +1,5 @@
 import code from '@examples/SyncFeedback/SyncFeedback.example.tsx';
 import label from '@examples/SyncFeedback/SyncFeedbackLabel.example.tsx';
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 export default () => (

@@ -1,6 +1,6 @@
 import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, ComponentType, FunctionComponent, MouseEvent, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -26,7 +26,7 @@ export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 
     /**
      * Content to display in the toggle button, before the selected option
      */
-    buttonPrepend?: React.ReactNode;
+    buttonPrepend?: ReactNode;
     /**
      * If true, the dropdown content can have a width that is larger than the button
      */
@@ -42,7 +42,7 @@ export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 
     /**
      * A component to render instead of the default button. The button is what is displayed when the dropdown is not opened and used to open it.
      */
-    customButton?: React.ComponentType<ISelectButtonProps>;
+    customButton?: ComponentType<ISelectButtonProps>;
 }
 
 const selectPropsKeys = [
@@ -82,7 +82,7 @@ const mapDispatchToProps = (dispatch: IDispatch, {id}: ISingleSelectOwnProps) =>
     deselect: () => dispatch(clearListBoxOption(id)),
 });
 
-class SingleSelect extends React.PureComponent<ISingleSelectProps> {
+class SingleSelect extends PureComponent<ISingleSelectProps> {
     static defaultProps = {
         placeholder: 'Select an option',
         deselectTooltipText: 'Deselect',
@@ -106,7 +106,7 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
         );
     }
 
-    private Toggle: React.FunctionComponent<ISelectButtonProps> = ({
+    private Toggle: FunctionComponent<ISelectButtonProps> = ({
         onClick,
         onKeyDown,
         onKeyUp,
@@ -164,7 +164,7 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
         return <span className="dropdown-no-value">{this.props.placeholder}</span>;
     }
 
-    private getDeselectOptionButton(): React.ReactNode {
+    private getDeselectOptionButton(): ReactNode {
         return (
             <Tooltip title={this.props.deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
                 <Svg
@@ -177,7 +177,7 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
         );
     }
 
-    private handleDeselect = (e: React.MouseEvent) => {
+    private handleDeselect = (e: MouseEvent) => {
         e.stopPropagation();
         if (!this.props.disabled) {
             this.props.deselect();

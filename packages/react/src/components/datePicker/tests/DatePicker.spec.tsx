@@ -1,6 +1,5 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import moment from 'moment';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../../calendar/Calendar';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useEffect, useState} from 'react';
 import {
     TableHOC,
     tableWithUrlState,
@@ -19,7 +19,7 @@ export default () => {
         window.location.href = `${window.location.pathname}?search=${query}`;
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         fetchUsers({_page: 1, _limit: 5});
     }, []);
 
@@ -44,8 +44,8 @@ const clean = <T extends Record<string, unknown>>(object: T) => {
 };
 
 const useAPIMock = (): [any[], number, (params?: any, overwrite?: boolean) => void] => {
-    const [users, setUsers] = React.useState([]);
-    const [totalEntries, setTotalEntries] = React.useState(0);
+    const [users, setUsers] = useState([]);
+    const [totalEntries, setTotalEntries] = useState(0);
 
     const fetchUsers = (params?: any, overwrite = true) => {
         const cleanParams = clean(params);

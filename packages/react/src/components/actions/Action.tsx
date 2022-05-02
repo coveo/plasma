@@ -1,6 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg';
@@ -48,9 +48,9 @@ export interface IBasicActionProps {
     simple?: boolean;
 }
 
-export interface IActionProps extends React.ClassAttributes<Action>, IBasicActionProps {}
+export interface IActionProps extends ClassAttributes<Action>, IBasicActionProps {}
 
-export class Action extends React.Component<IActionProps, any> {
+export class Action extends Component<IActionProps, any> {
     static defaultProps: Partial<IActionOptions> = {
         hideDisabled: true,
     };

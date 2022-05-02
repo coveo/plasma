@@ -1,8 +1,8 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 import {IOption, Option} from './Option';
 
-export interface IOptionPickerOwnProps extends React.ClassAttributes<OptionPicker> {
+export interface IOptionPickerOwnProps extends ClassAttributes<OptionPicker> {
     id?: string;
     options: IOption[];
 }
@@ -22,7 +22,7 @@ export interface IOptionPickerProps
         IOptionPickerStateProps,
         IOptionPickerDispatchProps {}
 
-export class OptionPicker extends React.Component<IOptionPickerProps, any> {
+export class OptionPicker extends Component<IOptionPickerProps, any> {
     private handleClick(value: string, label: string) {
         if (this.props.onClick) {
             this.props.onClick(value, label);

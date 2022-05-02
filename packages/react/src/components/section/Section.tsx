@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 
 type SectionMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
@@ -7,11 +7,11 @@ export interface ISectionProps {
     /**
      * The text or custom JSX content to the title of the Section
      */
-    title?: React.ReactNode;
+    title?: ReactNode;
     /**
      * The text or custom JSX content to the description of the Section
      */
-    description?: React.ReactNode;
+    description?: ReactNode;
     /**
      * Additionnal CSS class to set on the Section
      */
@@ -28,7 +28,7 @@ export interface ISectionProps {
     level?: 1 | 2 | 3;
 }
 
-export const Section: React.FunctionComponent<ISectionProps> = ({
+export const Section: FunctionComponent<ISectionProps> = ({
     children,
     title,
     description,

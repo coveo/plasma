@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 
 import {XYChart, XYChartContext} from '../XYChart';
 import {XYChartContextMock} from './XYChartContextMock';

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 import * as _ from 'underscore';
 
 import {IToastProps, Toast} from './Toast';
@@ -28,7 +28,7 @@ export interface IToastContainerProps
         IToastContainerStateProps,
         IToastContainerDispatchProps {}
 
-export class ToastContainer extends React.Component<IToastContainerProps> {
+export class ToastContainer extends Component<IToastContainerProps> {
     componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();

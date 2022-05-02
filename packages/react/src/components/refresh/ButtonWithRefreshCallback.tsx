@@ -1,5 +1,4 @@
-import {FunctionComponent} from 'react';
-import * as React from 'react';
+import {HtmlHTMLAttributes, FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
@@ -9,7 +8,7 @@ import {IRefreshCallbackOwnProps, RefreshCallback} from './RefreshCallback';
 import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
 
 export interface IButtonWithRefreshCallbackProps extends IRefreshCallbackOwnProps {
-    buttonContainerProps?: React.HtmlHTMLAttributes<HTMLDivElement>;
+    buttonContainerProps?: HtmlHTMLAttributes<HTMLDivElement>;
     button: IButtonProps;
 }
 

@@ -1,5 +1,5 @@
 import {SideNavigation, SideNavigationItem, SideNavigationMenuSection, Svg} from '@coveord/plasma-react';
-import React, {useState} from 'react';
+import {FunctionComponent, FC, useState} from 'react';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
 
@@ -10,7 +10,7 @@ interface NavLinkProps {
     isActive?: boolean;
 }
 
-const NavLink: React.FunctionComponent<NavLinkProps> = ({href = '', label, disabled, isActive}) => {
+const NavLink: FunctionComponent<NavLinkProps> = ({href = '', label, disabled, isActive}) => {
     const {pathname} = useRouter();
     return (
         <SideNavigationItem disabled={disabled} href={href} isActive={isActive ?? pathname.endsWith(href)}>
@@ -31,7 +31,7 @@ const NavLink: React.FunctionComponent<NavLinkProps> = ({href = '', label, disab
     );
 };
 
-const CollapsibleSideSection: React.FC<{title: string; initiallyClosed?: boolean}> = ({
+const CollapsibleSideSection: FC<{title: string; initiallyClosed?: boolean}> = ({
     title,
     initiallyClosed = false,
     children,
@@ -50,7 +50,7 @@ const CollapsibleSideSection: React.FC<{title: string; initiallyClosed?: boolean
     );
 };
 
-export const Navigation: React.FunctionComponent = () => {
+export const Navigation: FunctionComponent = () => {
     const {pathname} = useRouter();
 
     return (

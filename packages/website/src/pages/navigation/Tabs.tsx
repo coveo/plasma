@@ -1,8 +1,6 @@
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const withIcons = `
-    import * as React from 'react';
     import {Badge, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
     
     export default () => (
@@ -28,7 +26,6 @@ const withIcons = `
 `;
 
 const code = `
-    import * as React from 'react';
     import {Badge, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
 
     export default () => (

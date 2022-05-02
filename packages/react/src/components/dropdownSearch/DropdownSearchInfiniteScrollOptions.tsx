@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component} from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 
@@ -9,7 +9,7 @@ export interface DropdownSearchInfiniteScrollOptionsProps {
     infiniteScroll: InfiniteScroll.InfiniteScrollProps;
 }
 
-export class DropdownSearchInfiniteScrollOptions extends React.Component<DropdownSearchInfiniteScrollOptionsProps> {
+export class DropdownSearchInfiniteScrollOptions extends Component<DropdownSearchInfiniteScrollOptionsProps> {
     private id: string;
 
     componentDidMount() {

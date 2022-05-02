@@ -1,6 +1,6 @@
 import {fireEvent, render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import * as React from 'react';
+import {ReactElement} from 'react';
 
 import {SingleSelectConnected} from '../SingleSelectConnected';
 import {keyCode} from '../../../utils';
@@ -244,7 +244,7 @@ describe('Select', () => {
         });
         describe('footer props', () => {
             it('displays the footer when the dropdown is opened', () => {
-                const footer: React.ReactElement = <span id="some-footer">👢</span>;
+                const footer: ReactElement = <span id="some-footer">👢</span>;
                 render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} footer={footer} />);
 
                 expect(screen.queryByText('👢')).not.toBeVisible();

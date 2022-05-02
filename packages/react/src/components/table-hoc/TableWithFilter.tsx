@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -48,7 +48,7 @@ export const tableWithFilter = (
         };
     };
 
-    class TableWithFilter extends React.Component<Props> {
+    class TableWithFilter extends Component<Props> {
         componentDidUpdate(prevProps: Props) {
             if (prevProps.filter !== this.props.filter && this.props.filter !== this.props.urlFilter) {
                 this.props.onUpdate?.();

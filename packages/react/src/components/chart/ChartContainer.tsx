@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, FunctionComponent, useRef, useState, useEffect} from 'react';
 import * as _ from 'underscore';
 
 export interface ChartContainerProps {
@@ -8,7 +8,7 @@ export interface ChartContainerProps {
      * @param width The width of the chart container
      * @param height the height of the chart container
      */
-    renderChart: (width: number, height: number) => React.ReactNode;
+    renderChart: (width: number, height: number) => ReactNode;
 }
 
 export interface ChartBaseProps {
@@ -16,8 +16,8 @@ export interface ChartBaseProps {
     height: number;
 }
 
-export const ChartContainer: React.FunctionComponent<ChartContainerProps> = (props) => {
-    const container = React.useRef<HTMLDivElement>(null);
+export const ChartContainer: FunctionComponent<ChartContainerProps> = (props) => {
+    const container = useRef<HTMLDivElement>(null);
     useDebouncedWindowResize();
 
     const toggleSvgs = (show: boolean) => {
@@ -39,10 +39,10 @@ export const ChartContainer: React.FunctionComponent<ChartContainerProps> = (pro
 };
 ChartContainer.displayName = 'ChartContainer';
 
-const useForceUpdate = () => React.useState(undefined)[1];
+const useForceUpdate = () => useState(undefined)[1];
 const useDebouncedWindowResize = () => {
     const forceUpdate = useForceUpdate();
-    React.useEffect(() => {
+    useEffect(() => {
         const debouncedResize = () => window.requestAnimationFrame(forceUpdate);
 
         window.addEventListener('resize', debouncedResize);

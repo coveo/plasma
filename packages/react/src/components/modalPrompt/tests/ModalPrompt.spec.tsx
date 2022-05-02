@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 
 import {
     DEFAULT_MODAL_PROMPT_CANCEL_LABEL,

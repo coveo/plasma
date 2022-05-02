@@ -1,5 +1,4 @@
 import {render, RenderOptions, RenderResult} from '@testing-library/react';
-import * as React from 'react';
 import {Provider} from 'react-redux';
 import {AnyAction, applyMiddleware, combineReducers, createStore, Store} from 'redux';
 import promise from 'redux-promise-middleware';

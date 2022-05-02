@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, FunctionComponent, ChangeEvent} from 'react';
 import * as _ from 'underscore';
 
 import classNames from 'classnames';
@@ -12,8 +12,8 @@ import {IClassName} from '../../utils';
 const MultilineBoxWithRemoveButton = _.compose(
     multilineBoxWithRemoveButton({
         containerNode: (
-            child: React.ReactNode,
-            getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode,
+            child: ReactNode,
+            getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode,
             data: Array<IMultilineSingleBoxProps<string>>,
             index: number
         ) => (
@@ -39,7 +39,7 @@ export interface MultiValuesInputProps {
     disabled?: boolean;
 }
 
-export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = ({
+export const MultiValuesInput: FunctionComponent<MultiValuesInputProps> = ({
     id,
     data,
     inputProps,
@@ -77,7 +77,7 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                         defaultValue={cData.props}
                         {...inputProps}
                         onKeyUp={inputProps?.onKeyUp}
-                        onChangeHandler={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        onChangeHandler={(e: ChangeEvent<HTMLInputElement>) => {
                             if (e.currentTarget.value !== '' && cData.isLast) {
                                 parentProps.addNewBox();
                             }

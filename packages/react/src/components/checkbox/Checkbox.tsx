@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {MouseEvent, Children, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 import {IInputProps, Input} from '../input/Input';
 import {CheckboxContext} from './CheckboxContext';
@@ -30,7 +30,7 @@ export interface ICheckboxStateProps {
 
 export interface ICheckboxProps extends ICheckboxOwnProps, ICheckboxStateProps, IInputProps {}
 
-export class Checkbox extends React.Component<ICheckboxProps> {
+export class Checkbox extends Component<ICheckboxProps> {
     componentDidMount() {
         this.updateIndeterminate();
     }
@@ -46,7 +46,7 @@ export class Checkbox extends React.Component<ICheckboxProps> {
         }
     }
 
-    private handleOnClick(e: React.MouseEvent<HTMLElement>) {
+    private handleOnClick(e: MouseEvent<HTMLElement>) {
         if (!this.props.disabled) {
             if (this.props.onClick) {
                 e.preventDefault();
@@ -67,7 +67,7 @@ export class Checkbox extends React.Component<ICheckboxProps> {
             this.props.classes
         );
         const innerInputClasses: string = classNames('react-vapor-checkbox', this.props.innerInputClasses);
-        const hasChildren = React.Children.count(this.props.children) > 0;
+        const hasChildren = Children.count(this.props.children) > 0;
         const labelId = hasChildren && this.props.id ? `checkbox-${this.props.id}` : labeledBy;
         return (
             <Input
@@ -75,7 +75,7 @@ export class Checkbox extends React.Component<ICheckboxProps> {
                 classes={[classes]}
                 innerInputClasses={[innerInputClasses]}
                 type="checkbox"
-                onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
+                onClick={(e: MouseEvent<HTMLElement>) => this.handleOnClick(e)}
                 readOnly
             >
                 <button

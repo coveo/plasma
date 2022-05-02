@@ -1,5 +1,4 @@
 import {render, screen, within} from '@test-utils';
-import * as React from 'react';
 
 import {Badge} from '../Badge';
 

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {Loading} from '../../loading/Loading';
 import {ITableProps} from '../Table';
 import {TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
