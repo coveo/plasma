@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {useEffect, useState} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 
 import {Svg} from '../svg';
 import {CodeEditor} from './CodeEditor';
@@ -12,11 +12,11 @@ export interface JSONEditorProps {
      */
     id?: string;
     /**
-     * @deprecated use defaultValue instead
+     * The text value of the JSON editor
      */
     value?: string;
     /**
-     * The initial value
+     * @deprecated use value instead
      */
     defaultValue?: string;
     /**
@@ -65,8 +65,8 @@ export interface JSONEditorDispatchProps {
 export const JSONEditor: FunctionComponent<
     JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>
 > = ({
-    value,
     defaultValue,
+    value,
     readOnly,
     onChange,
     errorMessage,
@@ -77,7 +77,7 @@ export const JSONEditor: FunctionComponent<
     onUnmount,
     collapsibleId,
 }) => {
-    const editorValue = defaultValue || value || '{}';
+    const editorValue = value || defaultValue || '{}';
     const [isInError, setIsInError] = useState(!JSONEditorUtils.validateValue(editorValue));
 
     useEffect(() => {

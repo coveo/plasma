@@ -6,7 +6,14 @@ import {JSONEditor, JSONEditorProps} from './JSONEditor';
 import {JSONEditorActions} from './JSONEditorActions';
 import {JSONEditorSelectors} from './JSONEditorSelectors';
 
-export const JSONEditorConnected = (props: JSONEditorProps) => {
+interface JSONEditorConnectedProps {
+    /**
+     * initial value of the component
+     */
+    defaultValue?: string;
+}
+
+export const JSONEditorConnected = (props: JSONEditorProps & JSONEditorConnectedProps) => {
     const dispatch: IDispatch = useDispatch();
     const value = useSelector((state) => JSONEditorSelectors.getValue(state, props.id));
 
