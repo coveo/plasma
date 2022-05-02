@@ -33,7 +33,13 @@
     "files": [
         "dist"
     ],
+    "peerDependencies": {
+        "react": ">= 17.0.2",
+        "react-dom": ">= 17.0.2"
+    },
     "devDependencies": {
+        "@types/react": "17.0.44",
+        "@types/react-dom": "17.0.15",
         "@babel/types": "7.17.10",
         "@coveord/plasma-tokens": "workspace:*",
         "@types/react": "16.14.25",
@@ -46,7 +52,9 @@
         "lodash.upperfirst": "4.3.1",
         "npm-run-all": "4.1.5",
         "tslib": "2.3.1",
-        "typescript": "4.6.4"
+        "typescript": "4.6.4",
+        "react": "17.0.2",
+        "react-dom": "17.0.2"
     },
     "dependencies": {
         "@loadable/component": "5.15.2",
