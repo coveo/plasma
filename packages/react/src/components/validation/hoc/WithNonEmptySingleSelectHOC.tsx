@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
@@ -22,10 +22,10 @@ export interface IWithNonEmptySingleSelectHOCProps {
     resetNonEmptyErrorOnUnmount?: boolean;
 }
 
-export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Component: React.ComponentType<T>) => {
+export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedSingleSelect: React.FunctionComponent<
+    const WrappedSingleSelect: FunctionComponent<
         T & IWithNonEmptySingleSelectHOCProps & StateProps & DispatchProps
     > = ({
         selectedValue,
@@ -35,14 +35,14 @@ export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Com
         resetNonEmptyErrorOnUnmount,
         ...props
     }) => {
-        React.useEffect(() => {
+        useEffect(() => {
             clearError(props.id);
             return () => {
                 resetNonEmptyErrorOnUnmount && clearError(props.id);
             };
         }, [props.id, resetNonEmptyErrorOnUnmount]);
 
-        React.useEffect(() => {
+        useEffect(() => {
             setError(props.id, !selectedValue ? nonEmptyValidationMessage : '');
         }, [selectedValue, props.id, nonEmptyValidationMessage]);
 

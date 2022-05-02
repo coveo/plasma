@@ -1,6 +1,6 @@
 import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {LinkSvg} from '../svg/LinkSvg';
@@ -13,7 +13,7 @@ export interface CollapsibleHeaderIconProps {
     disabled?: boolean;
 }
 
-export const CollapsibleHeaderIcon: React.FunctionComponent<CollapsibleHeaderIconProps> = ({
+export const CollapsibleHeaderIcon: FunctionComponent<CollapsibleHeaderIconProps> = ({
     informationTooltip,
     informationUrl,
     disabled = false,

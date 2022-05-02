@@ -8,11 +8,11 @@ import {
     SingleSelectConnected,
     withServerSideProcessing,
 } from '@coveord/plasma-react';
-import * as React from 'react';
+import {ComponentType, FunctionComponent, useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {compose} from 'redux';
 
-const ServerSideSingleSelect: React.ComponentType<ISingleSelectOwnProps & SelectWithInfiniteScrollProps> = compose<any>(
+const ServerSideSingleSelect: ComponentType<ISingleSelectOwnProps & SelectWithInfiniteScrollProps> = compose<any>(
     withServerSideProcessing,
     selectWithFilter,
     selectWithInfiniteScroll
@@ -21,9 +21,9 @@ const ServerSideSingleSelect: React.ComponentType<ISingleSelectOwnProps & Select
 export default () => {
     const filterValue = useSelector((state) => FilterBoxSelectors.getFilterText(state, {id: 'single-select-4'}));
     const [photos, totalEntries, fetchPhotos] = usePhotosAPIMock();
-    const [pageNbr, setPage] = React.useState(1);
+    const [pageNbr, setPage] = useState(1);
 
-    React.useEffect(() => {
+    useEffect(() => {
         fetchPhotos({_page: 1, _limit: PER_PAGE});
     }, []);
 
@@ -63,7 +63,7 @@ export interface PhotoProps {
     thumbnailUrl: string;
 }
 
-const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => (
+const PhotoItem: FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => (
     <div className="flex flex-center">
         <a href={url} target="__blank" className="mr2 flex">
             <img src={thumbnailUrl} alt={title} width={IMG_SIZE} height={IMG_SIZE} />
@@ -81,8 +81,8 @@ const clean = <T extends Record<string, unknown>>(object: T) => {
 };
 
 const usePhotosAPIMock = (): [any[], number, (params?: any, overwrite?: boolean) => void] => {
-    const [photos, setPhotos] = React.useState([]);
-    const [totalEntries, setTotalEntries] = React.useState(0);
+    const [photos, setPhotos] = useState([]);
+    const [totalEntries, setTotalEntries] = useState(0);
 
     const fetchPhotos = (params?: any, overwrite = true) => {
         const cleanParams = clean(params);

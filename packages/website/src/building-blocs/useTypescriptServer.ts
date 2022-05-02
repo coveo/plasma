@@ -1,11 +1,11 @@
 import {createDefaultMapFromCDN} from '@typescript/vfs';
 import lzstring from 'lz-string';
-import React from 'react';
+import {useState, useEffect} from 'react';
 import * as ts from 'typescript';
 import {loader} from '@monaco-editor/react';
 
 export const compilerOptions: ts.CompilerOptions = {
-    jsx: ts.JsxEmit.React,
+    jsx: ts.JsxEmit.ReactJSX,
     lib: ['es2017', 'dom'],
     module: ts.ModuleKind.CommonJS,
     target: ts.ScriptTarget.ES5,
@@ -64,12 +64,12 @@ const loadAll: Promise<Map<string, string>> = Promise.all([
 });
 
 export const useTypescriptServer = () => {
-    const [fsMap, setFsMap] = React.useState<Map<string, string> | null>(null);
+    const [fsMap, setFsMap] = useState<Map<string, string> | null>(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         Promise.all([loadAll, loader.init()]).then(([defaultMap, monaco]) => {
             monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-                jsx: monaco.languages.typescript.JsxEmit.React,
+                jsx: monaco.languages.typescript.JsxEmit.ReactJSX,
                 jsxFactory: 'React.createElement',
                 jsxFragmentFactory: 'React.Fragment',
                 reactNamespace: 'React',

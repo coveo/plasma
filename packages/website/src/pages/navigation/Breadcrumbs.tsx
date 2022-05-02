@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {BreadcrumbHeader} from '@coveord/plasma-react';
 
     export default () => (
@@ -26,7 +23,6 @@ const code = `
 `;
 
 const complex = `
-    import * as React from "react";
     import {BreadcrumbHeader, IBreadcrumbProps} from '@coveord/plasma-react';
 
     const defaultBreadcrumb: IBreadcrumbProps = {

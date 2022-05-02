@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FC} from 'react';
 import {render, screen, within} from '@test-utils';
 
 import {getStoreMock, WarningList} from '../../../../utils/tests/TestUtils';
@@ -9,9 +9,9 @@ import {
 } from '../WithInitialValuesMultiSelectHOC';
 
 const MultiSelectWithInitialValues = withInitialValuesMultiSelectHOC(MultiSelectConnected);
-const MultiSelectWithInitialValuesAndWarnings: React.FC<
-    IMultiSelectOwnProps & IMultiSelectWithInitialValuesOwnProps
-> = (props) => (
+const MultiSelectWithInitialValuesAndWarnings: FC<IMultiSelectOwnProps & IMultiSelectWithInitialValuesOwnProps> = (
+    props
+) => (
     <>
         <WarningList id={props.id} />
         <MultiSelectWithInitialValues {...props} />

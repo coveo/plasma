@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, Children, PureComponent} from 'react';
 import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
@@ -56,19 +56,19 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
     });
 
     @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-    class MultilineBoxWithDnD<T> extends React.PureComponent<IMultilineBoxWithDnDProps<T>> {
+    class MultilineBoxWithDnD<T> extends PureComponent<IMultilineBoxWithDnDProps<T>> {
         static defaultProps = {
             renderBody: () => <div />,
         };
 
-        private getDnDWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
+        private getDnDWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
             const supplierProps: IMultilineBoxWithDnDSupplierProps = {
                 ...{
                     DnDContainerProps: {},
                 },
                 ...HocUtils.supplyConfig(supplier),
             };
-            return React.Children.map(children, (child: React.ReactNode, index: number) => {
+            return Children.map(children, (child: ReactNode, index: number) => {
                 const isLast = index === data.length - 1;
                 const id: string = (data.length && data[index].id) || index.toString();
                 return (

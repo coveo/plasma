@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, HTMLProps, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
@@ -7,8 +7,8 @@ import {BrowserUtils} from '../../utils/BrowserUtils';
 
 export interface IFlippableOwnProps {
     id?: string;
-    front?: React.ReactNode;
-    back?: React.ReactNode;
+    front?: ReactNode;
+    back?: ReactNode;
     className?: string;
     allowUnflip?: (e: EventTarget) => boolean;
 }
@@ -39,7 +39,7 @@ const FlippablePropsToOmit = [
     'onUnflip',
 ];
 
-export class Flippable extends React.Component<IFlippableProps & React.HTMLProps<HTMLDivElement>, any> {
+export class Flippable extends Component<IFlippableProps & HTMLProps<HTMLDivElement>, any> {
     static CONTAINER_CLASSNAME: string = 'flippable';
     static FLIPPER_CLASSNAME: string = 'flipper';
     static sides = {

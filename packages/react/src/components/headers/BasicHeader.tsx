@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component} from 'react';
 import * as _ from 'underscore';
 
 import {ITitleProps, Title} from '../title/Title';
@@ -11,7 +11,7 @@ export interface IBasicHeaderProps extends IHeaderWrapperProps {
     title: ITitleProps;
 }
 
-export class BasicHeader extends React.Component<IBasicHeaderProps> {
+export class BasicHeader extends Component<IBasicHeaderProps> {
     static defaultProps: Partial<IBasicHeaderProps> = _.extend(
         {
             title: {

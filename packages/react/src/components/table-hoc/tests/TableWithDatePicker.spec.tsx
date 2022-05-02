@@ -1,6 +1,5 @@
 import {shallowWithState} from '@helpers/enzyme-redux';
 import moment from 'moment';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';

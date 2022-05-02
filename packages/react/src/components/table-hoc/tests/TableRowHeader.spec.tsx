@@ -1,5 +1,4 @@
 import {shallowWithState} from '@helpers/enzyme-redux';
-import * as React from 'react';
 
 import {TableRowHeader} from '../TableRowHeader';
 

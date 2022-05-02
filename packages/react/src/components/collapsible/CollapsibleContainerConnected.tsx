@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
@@ -11,8 +11,8 @@ import {CollapsibleHeaderIcon} from './CollapsibleHeaderIcon';
 
 export interface ICollapsibleContainerOwnProps {
     id: string;
-    title: React.ReactNode;
-    collapsibleToggleIcon?: React.ReactNode;
+    title: ReactNode;
+    collapsibleToggleIcon?: ReactNode;
     expandedOnMount?: boolean;
     informationUrl?: string;
     informationTooltip?: ITooltipProps;
@@ -30,7 +30,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: ICollapsibleContainerOwnP
     return {expanded: collapsibleState && collapsibleState.expanded};
 };
 
-export const CollapsibleContainerDisconnected: React.FunctionComponent<
+export const CollapsibleContainerDisconnected: FunctionComponent<
     ICollapsibleContainerOwnProps & ReturnType<typeof mapStateToProps>
 > = ({
     children,

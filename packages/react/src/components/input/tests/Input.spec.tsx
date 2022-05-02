@@ -1,5 +1,4 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 
 import {Tooltip} from '../../tooltip/Tooltip';
 import {IInputProps, Input} from '../Input';

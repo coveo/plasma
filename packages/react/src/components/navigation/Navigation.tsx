@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Loading} from '../loading/Loading';
 import {LoadingConnected} from '../loading/LoadingConnected';
@@ -7,7 +7,7 @@ import {NavigationPaginationConnected} from './pagination/NavigationPaginationCo
 import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS} from './perPage/NavigationPerPage';
 import {NavigationPerPageConnected} from './perPage/NavigationPerPageConnected';
 
-export interface INavigationOwnProps extends React.ClassAttributes<Navigation> {
+export interface INavigationOwnProps extends ClassAttributes<Navigation> {
     id?: string;
     totalPages: number;
     totalEntries: number;
@@ -34,7 +34,7 @@ export interface INavigationStateProps extends IReduxStatePossibleProps {
 
 export interface INavigationProps extends INavigationOwnProps, INavigationChildrenProps, INavigationStateProps {}
 
-export class Navigation extends React.Component<INavigationProps, any> {
+export class Navigation extends Component<INavigationProps, any> {
     static defaultProps: Partial<INavigationProps> = {
         perPageNumbers: PER_PAGE_NUMBERS,
     };

@@ -1,8 +1,6 @@
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {Section} from '@coveord/plasma-react';
 
     export default () => (
@@ -15,7 +13,6 @@ const code = `
 `;
 
 const withLevel = `
-    import * as React from 'react';
     import {Section} from '@coveord/plasma-react';
 
     export default () => (
@@ -28,7 +25,6 @@ const withLevel = `
 `;
 
 const withMods = `
-    import * as React from 'react';
     import {Section} from '@coveord/plasma-react';
 
     export default () => (

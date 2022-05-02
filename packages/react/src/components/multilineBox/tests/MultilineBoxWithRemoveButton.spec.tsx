@@ -1,7 +1,7 @@
 import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import {render, screen} from '@test-utils';
 import {ShallowWrapper} from 'enzyme';
-import * as React from 'react';
+import {ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
@@ -152,9 +152,9 @@ describe('Multiline box with remove button', () => {
                 const ModifiedMultilineBoxWithRemoveButton = _.compose(
                     multilineBoxWithRemoveButton({
                         containerNode: (
-                            child: React.ReactNode,
-                            getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode
-                        ): React.ReactNode => (
+                            child: ReactNode,
+                            getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode
+                        ): ReactNode => (
                             <div className={'pick-me-plz'}>
                                 {child}
                                 {getRemoveButton({})}

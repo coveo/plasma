@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent, useRef, useState} from 'react';
 import * as _ from 'underscore';
 
 import {ILinkSvgProps, LinkSvg} from '../svg/LinkSvg';
@@ -7,17 +7,17 @@ import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ITitleProps {
     prefix?: string;
-    text: React.ReactNode;
+    text: ReactNode;
     withTitleTooltip?: boolean;
     documentationLink?: ILinkSvgProps;
     classes?: string[];
     htmlId?: string;
 }
 
-export const Title: React.FunctionComponent<ITitleProps> = (props) => {
-    const ref = React.useRef<HTMLHeadingElement>();
+export const Title: FunctionComponent<ITitleProps> = (props) => {
+    const ref = useRef<HTMLHeadingElement>();
 
-    const [isTruncated, setIsTruncated] = React.useState(false);
+    const [isTruncated, setIsTruncated] = useState(false);
     const linkClasses = classNames(
         'inline-doc-link m1',
         props.documentationLink && props.documentationLink.linkClasses

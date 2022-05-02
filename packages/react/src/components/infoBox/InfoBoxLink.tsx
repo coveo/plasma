@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {HTMLProps, PureComponent} from 'react';
 
-export class InfoBoxLink extends React.PureComponent<React.HTMLProps<HTMLAnchorElement>> {
+export class InfoBoxLink extends PureComponent<HTMLProps<HTMLAnchorElement>> {
     render() {
         return (
             <a {...this.props} className={classNames('underline', this.props.className)}>

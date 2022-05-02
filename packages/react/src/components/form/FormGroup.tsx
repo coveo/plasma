@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 export interface IFormGroupProps {
     title: string;
@@ -10,7 +10,7 @@ export interface IFormGroupProps {
 /*
  * @deprecated use the Section component
  */
-export const FormGroup: React.FunctionComponent<IFormGroupProps> = ({children, title, description, className}) => (
+export const FormGroup: FunctionComponent<IFormGroupProps> = ({children, title, description, className}) => (
     <div className={classNames(className, 'form-group', 'mod-padding-children')}>
         <h3 className="bold">{title}</h3>
         {description && <p className="description">{description}</p>}

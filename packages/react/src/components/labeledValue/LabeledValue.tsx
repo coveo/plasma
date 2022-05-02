@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, PureComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
@@ -13,7 +13,7 @@ export interface ILabeledValueProps {
     /**
      * The value to display with the label
      */
-    value: React.ReactNode;
+    value: ReactNode;
     /**
      * Set to true for the labeledValue to take the full row
      *
@@ -23,7 +23,7 @@ export interface ILabeledValueProps {
     /**
      * The text to display in the tooltip. Will make a info icon appears after the label title
      */
-    information?: React.ReactNode;
+    information?: ReactNode;
     /**
      * To choose the tooltip placement
      *
@@ -48,7 +48,7 @@ export interface ILabeledValueProps {
     className?: string;
 }
 
-export class LabeledValue extends React.PureComponent<ILabeledValueProps> {
+export class LabeledValue extends PureComponent<ILabeledValueProps> {
     static defaultProps: Partial<ILabeledValueProps> = {
         padding: true,
     };

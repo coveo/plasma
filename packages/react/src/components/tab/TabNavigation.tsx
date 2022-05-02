@@ -1,19 +1,19 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {HTMLAttributes, FunctionComponent, KeyboardEvent, useState, useRef} from 'react';
 import {keyCode} from '../../utils';
 
 export interface ITabNavigationProps {
     title?: string;
 }
 
-export const TabNavigation: React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>> = ({
+export const TabNavigation: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
     className,
     children,
     title,
     ...divProps
 }) => {
-    const [currentFocus, setCurrentFocus] = React.useState(0);
-    const tabListRef = React.useRef<HTMLDivElement>();
+    const [currentFocus, setCurrentFocus] = useState(0);
+    const tabListRef = useRef<HTMLDivElement>();
     const findTabs = () => tabListRef.current?.querySelectorAll<HTMLButtonElement>('[role="tab"]:enabled');
 
     const moveFocus = (newFocus: number) => {
@@ -24,7 +24,7 @@ export const TabNavigation: React.FunctionComponent<React.HTMLAttributes<HTMLDiv
         setCurrentFocus(newFocus);
     };
 
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>): void => {
         const tabs = findTabs();
         if ((event.keyCode === keyCode.rightArrow || event.keyCode === keyCode.leftArrow) && tabs) {
             if (event.keyCode === keyCode.rightArrow) {

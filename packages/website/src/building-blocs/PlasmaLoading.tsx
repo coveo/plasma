@@ -1,6 +1,6 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
-export const PlasmaLoading: React.FunctionComponent = () => (
+export const PlasmaLoading: FunctionComponent = () => (
     <div className="plasma-spinner">
         <div className="bounce1" />
         <div className="bounce2" />

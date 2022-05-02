@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, HTMLProps, HTMLAttributes, RefObject, CSSProperties, createRef, PureComponent} from 'react';
 import * as ReactDOM from 'react-dom';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -11,9 +11,9 @@ import {DropSelectors} from './redux/DropReducers';
 export interface IDropOwnProps extends Partial<IDropPodProps> {
     id: string;
     groupId?: string;
-    renderOpenButton: (onClick: () => void) => React.ReactNode;
-    buttonContainerProps?: React.HTMLProps<HTMLDivElement>;
-    listContainerProps?: React.HTMLAttributes<HTMLDivElement>;
+    renderOpenButton: (onClick: () => void) => ReactNode;
+    buttonContainerProps?: HTMLProps<HTMLDivElement>;
+    listContainerProps?: HTMLAttributes<HTMLDivElement>;
     closeOnClickOutside?: boolean;
     closeOnClickDrop?: boolean;
 }
@@ -32,8 +32,8 @@ const mapDispatchToProps = (dispatch: IDispatch, {id, groupId}: IDropOwnProps) =
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class Drop extends React.PureComponent<IDropProps> {
-    private readonly button: React.RefObject<HTMLDivElement>;
+export class Drop extends PureComponent<IDropProps> {
+    private readonly button: RefObject<HTMLDivElement>;
     private dropContent: HTMLDivElement | null;
 
     static defaultProps: Partial<IDropProps>;
@@ -43,7 +43,7 @@ export class Drop extends React.PureComponent<IDropProps> {
 
         this.dropContent = null;
 
-        this.button = React.createRef();
+        this.button = createRef();
         this.handleDocumentClick = this.handleDocumentClick.bind(this);
         this.onClick = this.onClick.bind(this);
     }
@@ -103,7 +103,7 @@ export class Drop extends React.PureComponent<IDropProps> {
                 hasSameWidth={this.props.hasSameWidth}
                 selector={this.props.selector}
                 parentSelector={this.props.parentSelector}
-                renderDrop={(style: React.CSSProperties): React.ReactNode => (
+                renderDrop={(style: CSSProperties): ReactNode => (
                     // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
                     <div
                         style={style}

@@ -1,12 +1,12 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
+import {MouseEvent} from 'react';
 
 import {EventUtils} from './EventUtils';
 
 describe('EventUtils', () => {
     describe('isClickingInsideElementWithClassname', () => {
         let wrapper: ShallowWrapper;
-        const shallowWithHandler = (eventHandler: (e: React.MouseEvent<any>) => void) => {
+        const shallowWithHandler = (eventHandler: (e: MouseEvent<any>) => void) => {
             wrapper = shallow(
                 <div className="div1" onClick={eventHandler}>
                     <ul>
@@ -21,7 +21,7 @@ describe('EventUtils', () => {
         };
 
         it('should not throw and return false when passing falsy values', () => {
-            shallowWithHandler((e: React.MouseEvent<any>) => {
+            shallowWithHandler((e: MouseEvent<any>) => {
                 expect(EventUtils.isClickingInsideElementWithClassname(undefined, undefined)).not.toThrow();
                 expect(EventUtils.isClickingInsideElementWithClassname(null, null)).not.toThrow();
                 expect(EventUtils.isClickingInsideElementWithClassname(undefined, '')).not.toThrow();
@@ -39,7 +39,7 @@ describe('EventUtils', () => {
         });
 
         it('should return true if the click event happens inside the element with the specified classname', () => {
-            shallowWithHandler((e: React.MouseEvent<any>) => {
+            shallowWithHandler((e: MouseEvent<any>) => {
                 expect(EventUtils.isClickingInsideElementWithClassname(e, 'div1')).toBe(true);
             });
 
@@ -49,7 +49,7 @@ describe('EventUtils', () => {
         });
 
         it('should return false if the click event happens outside the element with the specified classname', () => {
-            shallowWithHandler((e: React.MouseEvent<any>) => {
+            shallowWithHandler((e: MouseEvent<any>) => {
                 expect(EventUtils.isClickingInsideElementWithClassname(e, 'div3')).toBe(false);
             });
 
@@ -60,7 +60,7 @@ describe('EventUtils', () => {
             'should return false if the click event happens directly on the element with the specified classname ' +
                 'since it is not considered as "inside"',
             () => {
-                shallowWithHandler((e: React.MouseEvent<any>) => {
+                shallowWithHandler((e: MouseEvent<any>) => {
                     expect(EventUtils.isClickingInsideElementWithClassname(e, 'div2')).toBe(false);
                 });
 
@@ -71,7 +71,7 @@ describe('EventUtils', () => {
         it('should not throw and return false when the event target is null', () => {
             expect(
                 EventUtils.isClickingInsideElementWithClassname(
-                    {target: null, currentTarget: {}} as React.MouseEvent,
+                    {target: null, currentTarget: {}} as MouseEvent,
                     'whatever'
                 )
             ).toBe(false);

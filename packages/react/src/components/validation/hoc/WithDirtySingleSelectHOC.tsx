@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
@@ -23,20 +23,26 @@ export type IWithDirtySingleSelectHOCProps = {
     resetDirtyOnUnmount?: boolean;
 };
 
-export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Component: React.ComponentType<T>) => {
+export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrapperSingleSelect: React.FunctionComponent<
-        T & IWithDirtySingleSelectHOCProps & StateProps & DispatchProps
-    > = ({initialValue, selectedValue, setIsDirty, clearIsDirty, resetDirtyOnUnmount, items, ...props}) => {
-        React.useEffect(
+    const WrapperSingleSelect: FunctionComponent<T & IWithDirtySingleSelectHOCProps & StateProps & DispatchProps> = ({
+        initialValue,
+        selectedValue,
+        setIsDirty,
+        clearIsDirty,
+        resetDirtyOnUnmount,
+        items,
+        ...props
+    }) => {
+        useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
             },
             []
         );
 
-        React.useEffect(() => {
+        useEffect(() => {
             setIsDirty(props.id, initialValue !== selectedValue);
         }, [selectedValue]);
 

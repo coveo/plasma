@@ -1,15 +1,15 @@
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 
 import {Loading} from '../../loading/Loading';
 import {ModalCompositeConnected} from '../ModalComposite';
 
 export interface ModalLoadingProps {
     id: string;
-    title?: React.ReactNode;
+    title?: ReactNode;
     openOnMount?: boolean;
 }
 
-export const ModalLoading: React.FunctionComponent<ModalLoadingProps> = (props) => (
+export const ModalLoading: FunctionComponent<ModalLoadingProps> = (props) => (
     <ModalCompositeConnected
         id={props.id}
         classes="mod-prompt"

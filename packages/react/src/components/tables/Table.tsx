@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
 import {IAdditionalClass, IClassName} from '../../utils/ClassNameUtils';
@@ -36,8 +36,8 @@ export interface IPredicateAttributes {
     [attributeName: string]: IAttributeValue;
 }
 
-export type IAttributeFormatter = (attributeValue: any, attributeName?: string, data?: IData) => React.ReactNode;
-export type IAttributeNameOrValueFormatter = (attributeNameOrValue: string, data?: IData) => React.ReactNode;
+export type IAttributeFormatter = (attributeValue: any, attributeName?: string, data?: IData) => ReactNode;
+export type IAttributeNameOrValueFormatter = (attributeNameOrValue: string, data?: IData) => ReactNode;
 
 export interface ITableHeadingAttribute {
     attributeName: string;
@@ -58,7 +58,7 @@ export interface ITablePredicate {
     attributeNameFormatter?: IAttributeNameOrValueFormatter;
 }
 
-export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBodyInheritedFromTableProps {
+export interface ITableOwnProps extends ClassAttributes<Table>, ITableBodyInheritedFromTableProps {
     id: string;
     blankSlateDefault: IBlankSlateProps;
     tableContainerClasses?: IClassName;
@@ -126,7 +126,7 @@ export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, 
 /*
  * @deprecated use the TableHOC
  */
-export class Table extends React.Component<ITableProps> {
+export class Table extends Component<ITableProps> {
     private isInitialLoad: boolean;
 
     static defaultProps = {
@@ -205,13 +205,13 @@ export class Table extends React.Component<ITableProps> {
             this.props.tableClasses
         );
 
-        const tableBodyNode: React.ReactNode = this.shouldShowTableBody() ? (
+        const tableBodyNode: ReactNode = this.shouldShowTableBody() ? (
             this.getTableBody()
         ) : (
             <TableChildBlankSlate {...this.props} />
         );
 
-        const tableChildLastUpdatedNode: React.ReactNode = !this.props.withoutLastUpdated ? (
+        const tableChildLastUpdatedNode: ReactNode = !this.props.withoutLastUpdated ? (
             <TableChildLastUpdated {...this.props} pullLeft={this.props.pullLastUpdateLeft} />
         ) : null;
 
@@ -235,7 +235,7 @@ export class Table extends React.Component<ITableProps> {
         );
     }
 
-    private setFixedHeaderWrapper(tableElement: React.ReactNode) {
+    private setFixedHeaderWrapper(tableElement: ReactNode) {
         return this.props.withFixedHeader ? (
             <div className="fixed-header-table-container">
                 <div className="fixed-header-table">{tableElement}</div>
@@ -272,7 +272,7 @@ export class Table extends React.Component<ITableProps> {
         const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
         const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
-        const tableBodyNode: React.ReactNode = tableData.displayedIds.map(
+        const tableBodyNode: ReactNode = tableData.displayedIds.map(
             (id: string, yPosition: number): JSX.Element => {
                 const currentRowData: IData = tableData.byId[id];
 

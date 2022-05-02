@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 
@@ -10,7 +10,7 @@ export interface IModalFooterProps {
     classes?: IClassName;
 }
 
-export class ModalFooter extends React.Component<IModalFooterProps> {
+export class ModalFooter extends Component<IModalFooterProps> {
     render() {
         const classes = classNames('modal-footer', this.props.classes);
 

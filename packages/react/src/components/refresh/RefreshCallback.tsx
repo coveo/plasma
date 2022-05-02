@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {Defaults} from '../../Defaults';
 import {PlasmaState} from '../../PlasmaState';
@@ -9,7 +9,7 @@ import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
 export interface IRefreshCallbackOwnProps {
     id: string;
     delay?: number;
-    renderCount?: (count: number) => React.ReactNode;
+    renderCount?: (count: number) => ReactNode;
     callback: (start: () => void) => void;
 }
 
@@ -31,7 +31,7 @@ export type IRefreshCallbackProps = IRefreshCallbackOwnProps &
     ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
-class RefreshCallbackDisconnected extends React.PureComponent<IRefreshCallbackProps, IRefreshCallbackState> {
+class RefreshCallbackDisconnected extends PureComponent<IRefreshCallbackProps, IRefreshCallbackState> {
     static defaultProps: Partial<IRefreshCallbackProps> = {
         delay: 10,
         renderCount: (count: number) => <span>Auto refresh in {count} seconds</span>,

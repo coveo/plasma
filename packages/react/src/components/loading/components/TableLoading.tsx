@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 const Table = ({

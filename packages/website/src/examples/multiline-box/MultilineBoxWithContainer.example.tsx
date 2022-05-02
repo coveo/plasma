@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, FocusEvent} from 'react';
 import {compose} from 'redux';
 import {
     FormProvider,
@@ -13,7 +13,7 @@ interface MyData {
     name: string;
 }
 
-const containerNode = (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<MyData>>, index: number) => (
+const containerNode = (child: ReactNode, data: Array<IMultilineSingleBoxProps<MyData>>, index: number) => (
     <div key={`${data[index].id}Container`} className="p2 m1">
         {child}
     </div>
@@ -37,7 +37,7 @@ export default () => (
                             type="text"
                             label="Label"
                             defaultValue={props.name}
-                            onBlur={(evt: React.FocusEvent<HTMLInputElement>) => {
+                            onBlur={(evt: FocusEvent<HTMLInputElement>) => {
                                 if (evt.target.value !== '' && isLast) {
                                     defaultProps.addNewBox();
                                 }

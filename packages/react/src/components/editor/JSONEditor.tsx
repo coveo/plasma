@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent, useState, useEffect} from 'react';
 
 import {Svg} from '../svg/Svg';
 import {CodeEditor} from './CodeEditor';
@@ -62,7 +62,7 @@ export interface JSONEditorDispatchProps {
     onUnmount?: () => void;
 }
 
-export const JSONEditor: React.FunctionComponent<
+export const JSONEditor: FunctionComponent<
     JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>
 > = ({
     value,
@@ -77,9 +77,9 @@ export const JSONEditor: React.FunctionComponent<
     onUnmount,
     collapsibleId,
 }) => {
-    const [isInError, setIsInError] = React.useState(!JSONEditorUtils.validateValue(value || defaultValue));
+    const [isInError, setIsInError] = useState(!JSONEditorUtils.validateValue(value || defaultValue));
 
-    React.useEffect(() => {
+    useEffect(() => {
         onMount?.();
 
         return onUnmount;
@@ -114,7 +114,7 @@ JSONEditor.defaultProps = {
     },
 };
 
-const ValidationDetails: React.FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (
+const ValidationDetails: FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (
     <div className="input-validation-error-details">
         <Svg className="input-validation-error-icon" svgName="messageAlert" svgClass="icon mod-white" />
         <span className="input-validation-error-message">{errorMessage ?? DEFAULT_JSON_ERROR_MESSAGE}</span>

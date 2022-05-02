@@ -1,5 +1,4 @@
 import {mount, shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 import {act} from 'react-dom/test-utils';
 import {noop} from 'underscore';
 import {ISubNavigationProps, SubNavigation} from '../SubNavigation';

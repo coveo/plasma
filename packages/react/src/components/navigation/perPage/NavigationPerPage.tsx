@@ -1,9 +1,9 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
 import {NavigationPerPageSelect} from './NavigationPerPageSelect';
 
-export interface INavigationPerPageOwnProps extends React.ClassAttributes<NavigationPerPage> {
+export interface INavigationPerPageOwnProps extends ClassAttributes<NavigationPerPage> {
     id?: string;
     totalEntries: number;
     label?: string;
@@ -31,7 +31,7 @@ export interface INavigationPerPageProps
 export const PER_PAGE_NUMBERS: number[] = [10, 20, 30];
 export const PER_PAGE_LABEL: string = 'Results per page';
 
-export class NavigationPerPage extends React.Component<INavigationPerPageProps> {
+export class NavigationPerPage extends Component<INavigationPerPageProps> {
     static defaultProps: Partial<INavigationPerPageProps> = {
         perPageNumbers: PER_PAGE_NUMBERS,
         label: PER_PAGE_LABEL,

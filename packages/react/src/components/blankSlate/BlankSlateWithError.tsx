@@ -1,13 +1,11 @@
 import {svg} from '@coveord/plasma-style';
-import * as React from 'react';
+import {ComponentClass, PureComponent} from 'react';
 
 import {Svg} from '../svg/Svg';
 import {IBlankSlateProps} from './BlankSlate';
 
-export const blankSlateWithError = (
-    Component: React.ComponentClass<IBlankSlateProps>
-): React.ComponentClass<IBlankSlateProps> => {
-    class BlankSlateWithErrorComponent extends React.PureComponent<IBlankSlateProps> {
+export const blankSlateWithError = (Component: ComponentClass<IBlankSlateProps>): ComponentClass<IBlankSlateProps> => {
+    class BlankSlateWithErrorComponent extends PureComponent<IBlankSlateProps> {
         render() {
             return (
                 <Component

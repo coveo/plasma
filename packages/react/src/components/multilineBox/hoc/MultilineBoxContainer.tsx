@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, Children, PureComponent} from 'react';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {
     IMultilineBoxDispatchProps,
@@ -9,11 +9,7 @@ import {
 } from '../MultilineBox';
 
 export interface IMultilineBoxContainerSupplierProps<T = any> {
-    containerNode?: (
-        child: React.ReactNode,
-        data: Array<IMultilineSingleBoxProps<T>>,
-        index: number
-    ) => React.ReactNode;
+    containerNode?: (child: ReactNode, data: Array<IMultilineSingleBoxProps<T>>, index: number) => ReactNode;
 }
 
 export interface IMultilineBoxContainerProps<T>
@@ -21,20 +17,20 @@ export interface IMultilineBoxContainerProps<T>
         IMultilineBoxOwnProps<T>,
         Partial<IMultilineBoxDispatchProps> {}
 
-const defaultContainerNode = (child: React.ReactNode, data: IMultilineSingleBoxProps[], index: number) => (
+const defaultContainerNode = (child: ReactNode, data: IMultilineSingleBoxProps[], index: number) => (
     <div key={`${(data.length && data[index].id) || index}Container`}>{child}</div>
 );
 
 export const multilineBoxContainer = (
     supplier: ConfigSupplier<IMultilineBoxContainerSupplierProps> = {containerNode: defaultContainerNode}
 ) => (Component: typeof MultilineBox): typeof MultilineBox => {
-    class MultilineBoxContainer<T> extends React.PureComponent<IMultilineBoxContainerProps<T>> {
+    class MultilineBoxContainer<T> extends PureComponent<IMultilineBoxContainerProps<T>> {
         static defaultProps = {
             renderBody: () => <div />,
         };
 
-        private getWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-            return React.Children.map(children, (child: React.ReactNode, index: number) =>
+        private getWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
+            return Children.map(children, (child: ReactNode, index: number) =>
                 HocUtils.supplyConfig(supplier).containerNode(child, data, index)
             );
         }

@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {CodeEditor, CodeMirrorModes} from '@coveord/plasma-react';
 
     const defaultValue = \`from math import pi as PI
@@ -16,7 +13,6 @@ print(PI) // 3.141592653589793
 `;
 
 const readOnly = `
-    import * as React from 'react';
     import {CodeEditor, CodeMirrorModes} from '@coveord/plasma-react';
 
     const defaultValue = \`from math import pi as PI

@@ -1,7 +1,6 @@
 import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {IToastProps, Toast} from '../Toast';

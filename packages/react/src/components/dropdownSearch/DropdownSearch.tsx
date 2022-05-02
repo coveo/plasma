@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactText, MouseEvent, KeyboardEvent, createElement, Component} from 'react';
 import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
@@ -47,8 +47,8 @@ export interface IDropdownSearchOwnProps {
     defaultOptions?: IDropdownOption[];
     defaultSelectedOption?: IDropdownOption;
     filterPlaceholder?: string;
-    maxWidth?: React.ReactText;
-    width?: React.ReactText;
+    maxWidth?: ReactText;
+    width?: ReactText;
     hasFilterSuggestionBoxWidthFixed?: boolean;
     highlightThreshold?: number;
     highlightAllFilterResult?: boolean;
@@ -93,7 +93,7 @@ export interface IDropdownSearchProps
 /**
  * @deprecated use components from SelectComponents instead
  */
-export class DropdownSearch extends React.Component<IDropdownSearchProps> {
+export class DropdownSearch extends Component<IDropdownSearchProps> {
     static defaultProps: Partial<IDropdownSearchProps> = {
         isOpened: false,
         highlightThreshold: 100,
@@ -176,14 +176,14 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
                         ? this.getTextFiltered(value)
                         : value;
 
-                const formattedOption = React.createElement(
+                const formattedOption = createElement(
                     ElementTag,
                     {
                         key: opt.value,
                         className: wrapperClasses,
                         title: value,
                         'data-value': opt.value,
-                        onMouseDown: (e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e),
+                        onMouseDown: (e: MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e),
                     },
                     <>
                         <span className={optionClasses}>
@@ -302,7 +302,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
                     id={this.props.id}
                     onFilter={(id, filterText) => this.handleOnFilterTextChange(filterText)}
                     onBlur={() => this.handleOnBlur()}
-                    onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
+                    onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
                     filterPlaceholder={filterPlaceHolder}
                     isAutoFocus={true}
                     filterText={this.props.filterText || ''}
@@ -320,7 +320,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
                 data-toggle="dropdown"
                 onClick={() => this.handleOnClick()}
                 onBlur={() => this.handleOnClose()}
-                onKeyDown={(e: React.KeyboardEvent<HTMLButtonElement>) => this.handleOnKeyDownDropdownButton(e as any)}
+                onKeyDown={(e: KeyboardEvent<HTMLButtonElement>) => this.handleOnKeyDownDropdownButton(e as any)}
                 style={{
                     maxWidth: this.props.maxWidth,
                 }}
@@ -355,7 +355,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
         );
     }
 
-    protected handleOnOptionClickOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    protected handleOnOptionClickOnKeyDown(e: KeyboardEvent<HTMLInputElement>) {
         if (this.isKeyToPreventOnKeyDown(e)) {
             e.preventDefault();
 
@@ -365,7 +365,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
         }
     }
 
-    protected handleOnKeyDownFilterBox(e: React.KeyboardEvent<HTMLInputElement>) {
+    protected handleOnKeyDownFilterBox(e: KeyboardEvent<HTMLInputElement>) {
         if (this.props.onKeyDownFilterBox) {
             this.props.onKeyDownFilterBox(e.keyCode, this.props.activeOption);
         }
@@ -497,7 +497,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
         }
     }
 
-    private handleOnOptionClick = (e: React.MouseEvent<HTMLSpanElement>) => {
+    private handleOnOptionClick = (e: MouseEvent<HTMLSpanElement>) => {
         if (e.target) {
             const option = _.findWhere(this.props.options, {value: e.currentTarget.dataset.value});
             if (option && !option.disabled) {
@@ -527,7 +527,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
         }
     }
 
-    private isKeyToPreventOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    private isKeyToPreventOnKeyDown(e: KeyboardEvent<HTMLInputElement>) {
         /**
          * Prevent Enter key because it triggers an undesirable click event
          * Prevent Tab key to prevent focusing on the next element when selecting an option
@@ -540,7 +540,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
         );
     }
 
-    private handleOnKeyDownDropdownButton(e: React.KeyboardEvent<HTMLInputElement>) {
+    private handleOnKeyDownDropdownButton(e: KeyboardEvent<HTMLInputElement>) {
         if (this.props.onKeyDownDropdownButton) {
             this.props.onKeyDownDropdownButton(e.keyCode, this.props.activeOption);
         }

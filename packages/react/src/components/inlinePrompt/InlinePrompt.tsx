@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -27,9 +27,10 @@ export interface IInlinePromptProps {
     options: IInlinePromptOptions;
 }
 
-export const InlinePrompt: React.FunctionComponent<
-    IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>
-> = ({options, onCancel}) => {
+export const InlinePrompt: FunctionComponent<IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>> = ({
+    options,
+    onCancel,
+}) => {
     const choices: JSX.Element[] = _.map(options.userChoice.choices, (choice: string) => (
         <Button classes="mod-danger ml1" onClick={options.onClick} key={choice}>
             {choice}

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
 import {mod} from '../../utils/DataStructuresUtils';
@@ -30,11 +30,11 @@ export interface IListBoxOwnProps {
      *
      * @param items The list of items in the form of a React Component
      */
-    wrapItems?: (items: React.ReactNode) => React.ReactNode;
+    wrapItems?: (items: ReactNode) => ReactNode;
     /**
      * Content that is displayed underneath the list of items inside the dropdown
      */
-    footer?: React.ReactNode;
+    footer?: ReactNode;
     /**
      * Whether the items are currenty loading (being fetched). If true, it will render visual loading placeholders in the ListBox
      */
@@ -58,7 +58,7 @@ export interface IListBoxDispatchProps {
 
 export interface IListBoxProps extends IListBoxOwnProps, IListBoxStateProps, IListBoxDispatchProps {}
 
-export class ListBox extends React.Component<IListBoxProps> {
+export class ListBox extends Component<IListBoxProps> {
     static defaultProps: Partial<IListBoxProps> = {
         noResultItem: {
             value: 'No Items',
@@ -79,7 +79,7 @@ export class ListBox extends React.Component<IListBoxProps> {
         return classNames('list-box relative', this.props.classes);
     }
 
-    protected getItems(): React.ReactNode {
+    protected getItems(): ReactNode {
         const shouldShow = (item: IItemBoxProps) =>
             !item.hidden && (!this.props.multi || !_.contains(this.props.selected, item.value));
         const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => shouldShow(item) && !item.disabled)
@@ -134,7 +134,7 @@ export class ListBox extends React.Component<IListBoxProps> {
         return _.isEmpty(items) ? emptyItem : items;
     }
 
-    private getLoadingItems(): React.ReactNode {
+    private getLoadingItems(): ReactNode {
         return (
             <>
                 <ItemBoxLoading />

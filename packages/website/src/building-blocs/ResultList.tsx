@@ -2,7 +2,6 @@ import {AtomicQuerySummary, AtomicSearchInterface, Result} from '@coveo/atomic-r
 import {loadClickAnalyticsActions, ResultList as HeadlessResultList, SearchEngine} from '@coveo/headless';
 import {Section} from '@coveord/plasma-react';
 import {FunctionComponent, useEffect, useState} from 'react';
-import React from 'react';
 
 import {Tile, TileProps} from '../building-blocs/Tile';
 import {NoSearchResultTemplate} from '../search/NoSearchResult';

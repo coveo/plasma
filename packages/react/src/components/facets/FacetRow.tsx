@@ -1,12 +1,12 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, MouseEvent, Component} from 'react';
 import * as _ from 'underscore';
 
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {IFacet} from './Facet';
 
-export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
+export interface IFacetRowProps extends ClassAttributes<FacetRow> {
     facetRow: IFacet;
     facet: string;
     onToggleFacet: (facetRow: IFacet) => void;
@@ -16,7 +16,7 @@ export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
     excludeTooltipMessage?(facetsRowName: string): string;
 }
 
-export class FacetRow extends React.Component<IFacetRowProps, any> {
+export class FacetRow extends Component<IFacetRowProps, any> {
     static defaultProps: Partial<IFacetRowProps> = {
         maxTooltipLabelLength: 25,
     };
@@ -114,7 +114,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
         );
     }
 
-    private stopEvent(event: React.MouseEvent<HTMLInputElement>): void {
+    private stopEvent(event: MouseEvent<HTMLInputElement>): void {
         event.preventDefault();
         event.stopPropagation();
     }

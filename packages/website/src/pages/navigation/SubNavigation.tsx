@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const custom = `
-    import * as React from 'react';
     import {SubNavigationConnected, Svg} from '@coveord/plasma-react';
     
     export default () => (
@@ -63,7 +60,6 @@ const custom = `
 `;
 
 const defaultSelected = `
-    import * as React from 'react';
     import {SubNavigationConnected} from '@coveord/plasma-react';
 
     export default () => {
@@ -82,7 +78,6 @@ const defaultSelected = `
 `;
 
 const code = `
-    import * as React from 'react';    
     import {SubNavigationConnected} from '@coveord/plasma-react';
 
     export default () => {

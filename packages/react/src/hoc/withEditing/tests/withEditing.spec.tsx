@@ -1,5 +1,5 @@
 import {mount} from 'enzyme';
-import * as React from 'react';
+import {Component} from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
@@ -23,7 +23,7 @@ describe('Component with editing', () => {
         store.dispatch(clearState());
     });
 
-    class SomeInput extends React.Component<IWithDirtyProps> {
+    class SomeInput extends Component<IWithDirtyProps> {
         static ID = 'SomeInput';
 
         render() {

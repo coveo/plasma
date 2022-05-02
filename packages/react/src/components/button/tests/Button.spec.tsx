@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 import * as _ from 'underscore';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {Button, IButtonProps} from '../Button';

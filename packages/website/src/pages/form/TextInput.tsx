@@ -1,9 +1,8 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {FormProvider, InputValidator, TextInput} from "@coveord/plasma-react";
 
     const nonEmptyValidation: InputValidator = (value: string) => {
@@ -39,7 +38,6 @@ const code = `
 `;
 
 const hookUsage = `
-    import * as React from 'react';
     import {Button, FormProvider, TextInput, useTextInput} from "@coveord/plasma-react";
 
     const CurrentState: React.FunctionComponent = () => {
@@ -92,7 +90,7 @@ const hookUsage = `
     );
 `;
 
-export const TextInputExamples: React.FunctionComponent = () => (
+export const TextInputExamples: FunctionComponent = () => (
     <PageLayout
         id="TextInput"
         title="Text Input"

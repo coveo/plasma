@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
 import {IClassName} from '../../utils/ClassNameUtils';
@@ -15,7 +15,7 @@ export interface IModalHeaderOwnProps {
     /**
      * Title of the modal
      */
-    title: React.ReactNode;
+    title: ReactNode;
     /**
      * Additionnal CSS class for the header
      */
@@ -43,7 +43,7 @@ export interface IModalHeaderProps
         Partial<IModalHeaderStateProps>,
         Partial<IModalHeaderDispatchProps> {}
 
-export class ModalHeader extends React.Component<IModalHeaderProps> {
+export class ModalHeader extends Component<IModalHeaderProps> {
     static defaultProps: Partial<IModalHeaderProps> = {
         lastOpened: true,
     };

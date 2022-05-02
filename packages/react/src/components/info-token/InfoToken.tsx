@@ -1,6 +1,6 @@
 import {svg, SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {Svg} from '../svg';
 
@@ -84,7 +84,7 @@ const ModeClassMapping: Record<InfoTokenMode, string> = {
     [InfoTokenMode.Filled]: 'filled',
 };
 
-export const InfoToken: React.FunctionComponent<InfoTokenProps> = ({mode, size, type, className}) => (
+export const InfoToken: FunctionComponent<InfoTokenProps> = ({mode, size, type, className}) => (
     <Svg
         className={classNames('info-token', ModeClassMapping[mode], SizeClassMapping[size], className)}
         svgName={SvgMapping[type][size]}

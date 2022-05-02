@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 
 import {Defaults} from '../../Defaults';
 import {IClassName} from '../../utils/ClassNameUtils';
@@ -30,7 +30,7 @@ export interface IModalProps extends IModalOwnProps, Partial<IModalStateProps>, 
 /**
  * @deprecated use ModalComposite instead
  */
-export class Modal extends React.Component<IModalProps> {
+export class Modal extends Component<IModalProps> {
     static defaultProps: Partial<IModalProps> = {
         closeTimeout: Defaults.MODAL_TIMEOUT,
     };

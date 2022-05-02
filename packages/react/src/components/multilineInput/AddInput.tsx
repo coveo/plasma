@@ -1,9 +1,9 @@
-import * as React from 'react';
+import {KeyboardEvent, Component} from 'react';
 import * as _ from 'underscore';
 import {IInputProps, Input} from '../input/Input';
 import {AddInputAction} from './AddInputAction';
 
-export class AddInput extends React.Component<IInputProps, any> {
+export class AddInput extends Component<IInputProps, any> {
     private innerInput: Input;
 
     private onAdd(): void {
@@ -13,7 +13,7 @@ export class AddInput extends React.Component<IInputProps, any> {
         }
     }
 
-    private handleAddKeys(event: React.KeyboardEvent<HTMLInputElement>) {
+    private handleAddKeys(event: KeyboardEvent<HTMLInputElement>) {
         if (event.key === 'Enter') {
             this.onAdd();
         }
@@ -22,7 +22,7 @@ export class AddInput extends React.Component<IInputProps, any> {
     render() {
         const props: IInputProps = _.omit(this.props, ['children']);
         props.onBlur = () => this.onAdd();
-        props.onKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => this.handleAddKeys(event);
+        props.onKeyUp = (event: KeyboardEvent<HTMLInputElement>) => this.handleAddKeys(event);
         return (
             <Input ref={(innerInput: Input) => (this.innerInput = innerInput)} {...props}>
                 {this.props.children}

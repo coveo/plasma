@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
@@ -22,11 +22,11 @@ export interface WithNonEmptyValueMultiSelectValidationProps {
     resetNonEmptyMultiSelectErrorOnUnmount?: boolean;
 }
 
-export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: React.ComponentType<T>) => {
+export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
     type NewOwnProps = T & WithNonEmptyValueMultiSelectValidationProps;
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedMultiSelect: React.FunctionComponent<NewOwnProps & StateProps & DispatchProps> = ({
+    const WrappedMultiSelect: FunctionComponent<NewOwnProps & StateProps & DispatchProps> = ({
         selectedValues,
         setError,
         clearError,
@@ -36,14 +36,14 @@ export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Compo
     }) => {
         const hasValuesSelected = selectedValues.length > 0;
 
-        React.useEffect(() => {
+        useEffect(() => {
             clearError(props.id);
             return () => {
                 resetNonEmptyMultiSelectErrorOnUnmount && clearError(props.id);
             };
         }, [props.id, resetNonEmptyMultiSelectErrorOnUnmount]);
 
-        React.useEffect(() => {
+        useEffect(() => {
             setError(props.id, !hasValuesSelected ? nonEmptyValidationMessage : '');
         }, [hasValuesSelected, props.id, nonEmptyValidationMessage]);
 

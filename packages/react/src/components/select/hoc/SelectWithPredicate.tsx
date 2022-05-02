@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -25,8 +25,8 @@ const SelectWithPredicatePropsToOmit = [
 ];
 
 export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
-    Component: React.ComponentType<P>
-): React.FunctionComponent<P & ISelectWithPredicateOwnProps> => {
+    Component: ComponentType<P>
+): FunctionComponent<P & ISelectWithPredicateOwnProps> => {
     type OwnProps = P & ISelectWithPredicateOwnProps;
     type Props = OwnProps & ReturnType<typeof mapStateToProps>;
 
@@ -47,9 +47,9 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
         };
     };
 
-    const WrappedComponent: React.FunctionComponent<Props> = (props) => {
+    const WrappedComponent: FunctionComponent<Props> = (props) => {
         const {onUpdate, predicate} = props;
-        React.useEffect(() => {
+        useEffect(() => {
             onUpdate?.();
         }, [predicate]);
 
