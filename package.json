@@ -27,7 +27,7 @@
         "conventional-changelog-angular": "5.0.13",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "8.14.0",
-        "husky": "4.3.8",
+        "husky": "7.0.4",
         "mime-types": "2.1.35",
         "prettier": "2.0.5",
         "stylelint": "13.13.1",
@@ -35,12 +35,6 @@
         "ultra-runner": "3.10.5",
         "underscore": "1.13.1",
         "walkdir": "0.4.1"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "ultra --recursive --serial --root precommit",
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-        }
     },
     "stylelint": {
         "extends": [
