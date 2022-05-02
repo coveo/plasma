@@ -5,13 +5,13 @@
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "setup": "pnpm install",
-        "start": "pnpm build && pnpm --recursive start --parallel",
+        "start": "pnpm build && pnpm --recursive --parallel start",
         "test": "pnpm --recursive test",
         "test:ci": "pnpm --recursive test:ci",
         "test:changed": "pnpm --recursive test:changed",
-        "clean": "pnpm --recursive clean --parallel",
+        "clean": "pnpm --recursive --parallel clean",
         "build": "ultra --recursive build",
-        "lintfix": "pnpm --recursive lintfix --parallel",
+        "lintfix": "pnpm --recursive --parallel lintfix",
         "commit-cli": "cz",
         "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done"
     },
