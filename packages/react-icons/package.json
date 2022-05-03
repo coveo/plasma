@@ -2,10 +2,29 @@
     "name": "@coveord/plasma-react-icons",
     "version": "41.2.11",
     "description": "Plasma iconography exposed as react components",
-    "main": "./dist/cjs/index.js",
-    "types": "./dist/definitions/index.d.ts",
-    "module": "dist/esm/index.js",
+    "keywords": [
+        "plasma",
+        "icons",
+        "react"
+    ],
+    "homepage": "https://github.com/coveo/plasma/packages/react-icons#readme",
+    "bugs": {
+        "url": "https://github.com/coveo/plasma/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/coveo/plasma.git",
+        "directory": "packages/react-icons"
+    },
+    "license": "ISC",
+    "author": "",
     "sideEffects": false,
+    "main": "./dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "./dist/definitions/index.d.ts",
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "pnpm generate && pnpm compile",
         "generate": "node ./bin/index.js",
@@ -14,28 +33,9 @@
         "compile:esm": "swc ./generated --config module.type=es6 --config jsc.target=es2020 -d dist/esm",
         "compile:dts": "tsc -p tsconfig.json --emitDeclarationOnly"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/coveo/plasma.git",
-        "directory": "packages/react-icons"
-    },
-    "keywords": [
-        "plasma",
-        "icons",
-        "react"
-    ],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/coveo/plasma/issues"
-    },
-    "homepage": "https://github.com/coveo/plasma/packages/react-icons#readme",
-    "files": [
-        "dist"
-    ],
-    "peerDependencies": {
-        "react": ">= 17.0.2",
-        "react-dom": ">= 17.0.2"
+    "dependencies": {
+        "@loadable/component": "5.15.2",
+        "@swc/helpers": "0.3.9"
     },
     "devDependencies": {
         "@babel/types": "7.17.10",
@@ -56,8 +56,8 @@
         "tslib": "2.3.1",
         "typescript": "4.6.4"
     },
-    "dependencies": {
-        "@loadable/component": "5.15.2",
-        "@swc/helpers": "0.3.9"
+    "peerDependencies": {
+        "react": ">= 17.0.2",
+        "react-dom": ">= 17.0.2"
     }
 }

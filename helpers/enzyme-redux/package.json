@@ -1,8 +1,11 @@
 {
     "name": "@helpers/enzyme-redux",
-    "private": true,
     "version": "41.2.11",
+    "private": true,
     "description": "",
+    "keywords": [],
+    "license": "ISC",
+    "author": "",
     "main": "index.jsx",
     "types": "index.d.ts",
     "dependencies": {
@@ -10,8 +13,5 @@
         "react": "17.0.2",
         "react-redux": "7.2.6",
         "tslib": "1.14.1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+    }
 }
