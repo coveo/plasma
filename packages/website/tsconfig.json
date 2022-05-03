@@ -2,6 +2,8 @@
     "extends": "../tsconfig-base",
     "compilerOptions": {
         "removeComments": false,
+        "module": "esnext",
+        "target": "esnext",
         "noUnusedLocals": false,
         "rootDir": "src",
         "outDir": "built",

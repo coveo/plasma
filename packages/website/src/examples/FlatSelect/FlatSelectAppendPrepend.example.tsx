@@ -9,12 +9,18 @@ export default () => (
             {
                 id: 'item-prepend',
                 option: {content: 'Option 1'},
-                prepend: {content: () => <ZombieSize16Px className="mr1" />},
+                prepend: {content: () => <ZombieSize16Px />},
             },
             {
                 id: 'item-append',
                 option: {content: 'Option 2'},
-                append: {content: () => <ZombieSize16Px className="ml1" />},
+                append: {content: () => <ZombieSize16Px />},
+            },
+            {
+                id: 'item-append2',
+                option: {content: 'Disabled 3'},
+                append: {content: () => <ZombieSize16Px />},
+                disabled: true,
             },
         ]}
     />

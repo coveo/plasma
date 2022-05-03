@@ -11,8 +11,7 @@ import * as _ from 'underscore';
 import {PlasmaLoading} from './PlasmaLoading';
 import {useTypescriptServer} from './useTypescriptServer';
 
-// eslint-disable-next-line
-const prettierConfig = require('tsjs/prettier-config');
+const prettierConfig = await import('tsjs/prettier-config.js');
 
 export const Sandbox: React.FunctionComponent<{children: string; id: string; title?: string; horizontal?: boolean}> = ({
     id,

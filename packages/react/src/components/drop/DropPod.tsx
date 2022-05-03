@@ -14,7 +14,7 @@ import {
 } from './DomPositionCalculator';
 
 export interface IDropPodProps {
-    renderDrop: (style: React.CSSProperties, position: IDropUIPosition) => React.ReactNode;
+    renderDrop: (style: React.CSSProperties, position: IDropUIPosition | null) => React.ReactNode;
     isOpen?: boolean;
     positions?: Array<'bottom' | 'top' | 'left' | 'right'>;
     selector?: string;

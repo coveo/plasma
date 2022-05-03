@@ -24,6 +24,7 @@ module.exports = withPlugins([withTM, withImages], {
             test: /\.example.tsx$/,
             loader: 'raw-loader',
         });
+        config.experiments = {topLevelAwait: true};
         return config;
     },
 });

@@ -6,8 +6,8 @@ Be **extremely careful** when allowing users to edit code, as it greatly increas
 
 The code editor should:
 
-* Preferably take the full width of the section it appears in to reduce line wrap friction.
-* Be long enough to display a significant portion of the code and allow users to review it comfortably.
+-   Preferably take the full width of the section it appears in to reduce line wrap friction.
+-   Be long enough to display a significant portion of the code and allow users to review it comfortably.
 
 ## Labeling
 
@@ -16,7 +16,7 @@ Provide a descriptive title without action verbs. For example, write "Plugin scr
 
 ## Help Text and Instructions
 
-Help text should explain how or where the code is used, or provide external references regarding the programming language to use. 
+Help text should explain how or where the code is used, or provide external references regarding the programming language to use.
 Help text should be **short, preferably on one line**.
 
 A placeholder should provide a **temporary example** when the code editor is empty. Add a placeholder only if a short example can allow users to get started without referring to external resources.

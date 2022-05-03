@@ -74,12 +74,12 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
                 ref={ref}
                 isOpen={!!position.position}
                 positions={[position.position, DropPodPosition.left, DropPodPosition.right]}
-                renderDrop={(style: React.CSSProperties, dropPosition: IDropUIPosition): React.ReactNode => (
+                renderDrop={(style: React.CSSProperties, dropPosition: IDropUIPosition | null): React.ReactNode => (
                     <div
                         style={{...style, pointerEvents: 'none'}}
                         className={classNames('show-on-top', {
-                            'ml-2': dropPosition.position === DropPodPosition.left,
-                            ml2: dropPosition.position === DropPodPosition.right,
+                            'ml-2': dropPosition?.position === DropPodPosition.left,
+                            ml2: dropPosition?.position === DropPodPosition.right,
                         })}
                     >
                         <ChartTooltipContent x={position.index} sort={sort} />

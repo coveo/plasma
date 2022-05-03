@@ -11,6 +11,7 @@ export interface ISelectedOptionProps {
     selectedTooltip: ITooltipProps;
     onRemoveClick?: (value: string) => void;
     readOnly?: boolean;
+    prepend?: React.ReactNode;
 }
 
 export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
@@ -25,6 +26,7 @@ export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
         const tooltipPosition = this.props.selectedTooltip?.placement;
         return (
             <div className="selected-option" key={this.props.value} role="listitem">
+                {this.props.prepend}
                 <Tooltip
                     delayShow={300}
                     {...this.props.selectedTooltip}

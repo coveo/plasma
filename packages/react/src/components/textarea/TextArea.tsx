@@ -38,7 +38,6 @@ export interface ITextAreaOwnProps {
     isAutosize?: boolean;
     /**
      * A callback function executed when the value of the textarea changes
-
      *
      * @param event The change event
      */
@@ -73,19 +72,16 @@ export interface ITextAreaStateProps {
 export interface ITextAreaDispatchProps {
     /**
      * A callback function executed when the value of the textarea changes
-
      *
      * @param event The change event
      */
     onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
     /**
      * A callback function executed when the textarea is added to the DOM
-
      */
     onMount?: () => void;
     /**
      * A callback function executed when the textarea is removed from the DOM
-
      */
     onUnmount?: () => void;
 }

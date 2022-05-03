@@ -30,7 +30,9 @@ export default () => {
     };
     return (
         <>
-            <Button onClick={toggleActions} classes="mb2">Toggle actions</Button>
+            <Button onClick={toggleActions} classes="mb2">
+                Toggle actions
+            </Button>
             <ActionBarConnected id={MY_ID} />
         </>
     );
