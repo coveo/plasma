@@ -48,7 +48,6 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          
           commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
           if(commitMessage.contains("[version bump]")) {
             skipRemainingStages = true
@@ -94,7 +93,7 @@ pipeline {
 
           sh "npm cache clean --force"
           sh "rm -rf node_modules"
-          sh "npm install -g pnpm"
+          sh "npm install -g pnpm@7"
           sh "pnpm install"
         }
       }
@@ -158,7 +157,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "pnpm test:ci --filter !root --workspace-concurrency 1"
+          sh "pnpm --workspace-concurrency 1 test:ci"
         }
       }
     }
@@ -236,9 +235,7 @@ pipeline {
         script {
           setLastStageName();
           sh "mkdir -p snyk"
-            
           convertPNPMLockToNPM("../pnpm-lock.yaml", "../snyk");
-            
           dir('snyk') {
             sh "npx snyk auth $SNYK_TOKEN"
             sh "npx snyk test --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > ../snyk-result.json || true"
@@ -264,7 +261,6 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          
           deploymentPackage.command(command: "package create --version ${NEW_VERSION} --resolve VERSION=${NEW_VERSION} --with-deploy")
         }
       }
@@ -313,7 +309,7 @@ pipeline {
   }
 }
 
-@NonCPS 
+@NonCPS
 def getBuildChangeSets() {
     MAX_MSG_LEN = 100
     def changeString = ""

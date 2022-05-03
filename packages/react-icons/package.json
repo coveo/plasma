@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react-icons",
-    "version": "41.2.9",
+    "version": "41.2.10",
     "description": "Plasma iconography exposed as react components",
     "main": "./dist/cjs/index.js",
     "types": "./dist/definitions/index.d.ts",
@@ -36,6 +36,7 @@
     "devDependencies": {
         "@babel/types": "7.17.10",
         "@coveord/plasma-tokens": "workspace:*",
+        "@types/react": "16.14.25",
         "@svgr/core": "6.2.1",
         "@swc/cli": "0.1.57",
         "@swc/core": "1.2.174",
