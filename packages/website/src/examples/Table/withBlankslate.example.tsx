@@ -69,7 +69,7 @@ const renderRows = data?.map((item) => (
         <td key="city">{item.city}</td>
         <td key="username">{item.username.toLowerCase()}</td>
         <td>
-            <Badge label={'🥔 King'} isSmall type={BadgeType.Success} />
+            <Badge label={'King'} icon={'cloud'} isSmall type={BadgeType.Success} />
         </td>
     </TableRowConnected>
 ));
