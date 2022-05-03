@@ -1,6 +1,6 @@
 import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import {ReactNode, ComponentType, FunctionComponent, MouseEvent, PureComponent} from 'react';
+import {ComponentType, FunctionComponent, MouseEvent, PureComponent, ReactNode} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -8,6 +8,7 @@ import {PlasmaState} from '../../PlasmaState';
 import {TooltipPlacement} from '../../utils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch} from '../../utils/ReduxUtils';
+import {CollapsibleToggle} from '../collapsible';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption} from '../listBox/ListBoxActions';
@@ -115,7 +116,7 @@ class SingleSelect extends PureComponent<ISingleSelectProps> {
     }) => {
         const option = selectedOptions[0];
         const showClear = !!option && this.props.canClear && !this.props.disabled;
-        const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
+        const buttonClasses = classNames('btn dropdown-toggle space-between', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
             'single-select-fixed-width': !this.props.noFixedWidth,
             'mod-append': showClear,
@@ -134,12 +135,7 @@ class SingleSelect extends PureComponent<ISingleSelectProps> {
                 {option?.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}
                 {option?.append ? <Content {...option.append} /> : null}
-                <Svg
-                    svgName={isOpen ? svg.chartUp.name : svg.chartDown.name}
-                    svgClass={classNames('icon dropdown-toggle-arrow-size', {
-                        'dropdown-toggle-arrow-style': !showClear,
-                    })}
-                />
+                <CollapsibleToggle expanded={isOpen} />
                 {showClear && this.getDeselectOptionButton()}
             </button>
         );

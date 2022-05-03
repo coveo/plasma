@@ -1,11 +1,11 @@
 import classNames from 'classnames';
-import {ReactText, MouseEvent, KeyboardEvent, createElement, Component} from 'react';
+import {Component, createElement, KeyboardEvent, MouseEvent, ReactText} from 'react';
 import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
 
-import {svg} from '@coveord/plasma-style';
 import {keyCode} from '../../utils/InputUtils';
+import {CollapsibleToggle} from '../collapsible';
 import {Content} from '../content/Content';
 import {FilterBox} from '../filterBox/FilterBox';
 import {ISvgProps, Svg} from '../svg/Svg';
@@ -331,10 +331,7 @@ export class DropdownSearch extends Component<IDropdownSearchProps> {
                 {this.getSvg(selectedOption)}
                 {this.getSelectedOptionElement()}
                 {this.getDropdownOptionAppend(selectedOption)}
-                <Svg
-                    svgName={this.props.isOpened ? svg.chartUp.name : svg.chartDown.name}
-                    svgClass="icon dropdown-toggle-arrow-style"
-                />
+                <CollapsibleToggle expanded={this.props.isOpened} />
             </button>
         );
     }

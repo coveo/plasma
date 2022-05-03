@@ -8,6 +8,7 @@ import * as _ from 'underscore';
 
 import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {CollapsibleToggle} from '../collapsible';
 import {DnDUtils} from '../dragAndDrop';
 import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
@@ -192,7 +193,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
                 ? {disabled: true}
                 : {disabled: this.props.disabled};
         const buttonClasses = classNames(
-            'btn dropdown-toggle multiselect-add dropdown-toggle-placeholder',
+            'btn dropdown-toggle multiselect-add dropdown-toggle-placeholder space-between',
             this.props.toggleClasses
         );
         return (
@@ -219,10 +220,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
                         {...buttonAttrs}
                     >
                         <span className="dropdown-no-value">{this.props.placeholder}</span>
-                        <Svg
-                            svgName={isOpen ? svg.chartUp.name : svg.chartDown.name}
-                            svgClass="icon dropdown-toggle-arrow-style"
-                        />
+                        <CollapsibleToggle expanded={isOpen} />
                     </button>
                 )}
             </div>
