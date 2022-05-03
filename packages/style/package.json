@@ -10,25 +10,61 @@
         "web"
     ],
     "homepage": "https://plasma.coveo.com/",
-    "author": "Coveo",
-    "license": "Apache-2.0",
-    "main": "dist/js/PlasmaStyle.js",
-    "types": "index.d.ts",
-    "scripts": {
-        "build": "gulp clean && gulp && webpack",
-        "start": "concurrently \"gulp watch\" \"webpack --watch\"",
-        "precommit": "lint-staged",
-        "clean": "gulp clean",
-        "lintfix": "../../node_modules/.bin/stylelint --fix \"**/*.scss\" && ../../node_modules/.bin/prettier --write \"**/*.{scss,js,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"**/*.js\" --fix"
-    },
     "repository": {
         "type": "git",
         "url": "https://github.com/coveo/plasma.git"
     },
-    "peerDependencies": {
-        "chosen-npm": "^1.4.2",
-        "coveo-slider": "^1.0.1",
-        "materialize-css": "^0.98.2"
+    "license": "Apache-2.0",
+    "author": "Coveo",
+    "main": "dist/js/PlasmaStyle.js",
+    "types": "index.d.ts",
+    "files": [
+        "dist",
+        "gulpTasks",
+        "scss/**/*.scss",
+        "lib",
+        "resources",
+        "gulpfile.js",
+        "LICENSE",
+        "index.d.ts",
+        "SvgName.d.ts"
+    ],
+    "scripts": {
+        "build": "gulp clean && gulp && webpack",
+        "clean": "gulp clean",
+        "lintfix": "../../node_modules/.bin/stylelint --fix \"**/*.scss\" && ../../node_modules/.bin/prettier --write \"**/*.{scss,js,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"**/*.js\" --fix",
+        "precommit": "lint-staged",
+        "start": "concurrently \"gulp watch\" \"webpack --watch\""
+    },
+    "lint-staged": {
+        "package.json": [
+            "sort-package-json",
+            "git add"
+        ],
+        "**/*.scss": [
+            "stylelint --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.{js}": [
+            "eslint -c ./.eslintrc --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.{js,json,md,yml,html}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "browserslist": [
+        "cover 90%",
+        "last 1 versions",
+        "IE 11",
+        "not dead"
+    ],
+    "dependencies": {
+        "codemirror": "^5.59.4",
+        "rc-slider": "8.7.1"
     },
     "devDependencies": {
         "ansi-colors": "4.1.1",
@@ -67,41 +103,9 @@
         "webpack": "4.46.0",
         "webpack-cli": "3.3.12"
     },
-    "dependencies": {
-        "codemirror": "^5.59.4",
-        "rc-slider": "8.7.1"
-    },
-    "files": [
-        "dist",
-        "gulpTasks",
-        "scss/**/*.scss",
-        "lib",
-        "resources",
-        "gulpfile.js",
-        "LICENSE",
-        "index.d.ts",
-        "SvgName.d.ts"
-    ],
-    "browserslist": [
-        "cover 90%",
-        "last 1 versions",
-        "IE 11",
-        "not dead"
-    ],
-    "lint-staged": {
-        "**/*.scss": [
-            "stylelint --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "**/*.{js}": [
-            "eslint -c ./.eslintrc --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "**/*.{js,json,md,yml,html}": [
-            "prettier --write",
-            "git add"
-        ]
+    "peerDependencies": {
+        "chosen-npm": "^1.4.2",
+        "coveo-slider": "^1.0.1",
+        "materialize-css": "^0.98.2"
     }
 }
