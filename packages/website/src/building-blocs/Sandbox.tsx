@@ -4,17 +4,16 @@ import classNames from 'classnames';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as typescript from 'prettier/parser-typescript';
 import {format} from 'prettier/standalone';
-import React from 'react';
+import {FunctionComponent, FC, useState, useEffect, useRef, useMemo} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {PlasmaLoading} from './PlasmaLoading';
 import {useTypescriptServer} from './useTypescriptServer';
 
-// eslint-disable-next-line
-const prettierConfig = require('tsjs/prettier-config');
+const prettierConfig = await import('tsjs/prettier-config.js');
 
-export const Sandbox: React.FunctionComponent<{children: string; id: string; title?: string; horizontal?: boolean}> = ({
+export const Sandbox: FunctionComponent<{children: string; id: string; title?: string; horizontal?: boolean}> = ({
     id,
     title,
     children,
@@ -25,11 +24,11 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
         plugins: [typescript],
         parser: 'typescript',
     });
-    const [editedCode, setEditedCode] = React.useState(formattedCode);
+    const [editedCode, setEditedCode] = useState(formattedCode);
     const {fsMap, compilerOptions} = useTypescriptServer();
-    const [initialized, setInitialized] = React.useState(false);
+    const [initialized, setInitialized] = useState(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const importAndRunSwcOnMount = async () => {
             await initSwc();
             setInitialized(true);
@@ -37,7 +36,7 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
         importAndRunSwcOnMount();
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (fsMap === null || !initialized) {
             return;
         }
@@ -112,9 +111,9 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
 const EDITOR_MAX_HEIGHT_IN_PX = 600;
 const EDITOR_MIN_HEIGHT_IN_PX = 150;
 
-const Editor: React.FC<{id: string; value: string; onChange: (newValue: string) => void}> = ({id, value, onChange}) => {
-    const editorRef = React.useRef(null);
-    const [height, setHeight] = React.useState<number>(200);
+const Editor: FC<{id: string; value: string; onChange: (newValue: string) => void}> = ({id, value, onChange}) => {
+    const editorRef = useRef(null);
+    const [height, setHeight] = useState<number>(200);
 
     const updateHeight = () => {
         const editor = editorRef.current!;
@@ -126,7 +125,7 @@ const Editor: React.FC<{id: string; value: string; onChange: (newValue: string) 
         editor.layout();
     };
 
-    const debounceChangeEditor = React.useMemo(() => _.debounce(() => onChange(editorRef.current.getValue()), 33), []);
+    const debounceChangeEditor = useMemo(() => _.debounce(() => onChange(editorRef.current.getValue()), 33), []);
     const onChangeEditor = () => {
         debounceChangeEditor();
         updateHeight();

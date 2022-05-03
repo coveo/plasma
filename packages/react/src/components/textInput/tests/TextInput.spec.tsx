@@ -1,6 +1,6 @@
 import {expectToThrow, fireEvent, render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import * as React from 'react';
+import {useState} from 'react';
 
 import {FormProvider} from '../../form/FormProvider';
 import {InputValidator, TextInput} from '../TextInput';
@@ -207,7 +207,7 @@ describe('TextInput', () => {
 
     it('resets its state when unmounting and remounting with the same id', () => {
         const Fixture = () => {
-            const [isMounted, toggleMounted] = React.useState(true);
+            const [isMounted, toggleMounted] = useState(true);
             return (
                 <>
                     <button onClick={() => toggleMounted(!isMounted)}>toggle input</button>

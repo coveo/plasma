@@ -1,6 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
 import {screen, render} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 

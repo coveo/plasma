@@ -1,11 +1,11 @@
 import {ArrowHeadDownSize16Px, ArrowHeadUpSize16Px} from '@coveord/plasma-react-icons';
-import * as React from 'react';
+import {FunctionComponent, SVGProps} from 'react';
 
 export interface CollapsibleToggleProps {
     expanded: boolean;
 }
 
-export const CollapsibleToggle: React.FunctionComponent<CollapsibleToggleProps & React.SVGProps<SVGSVGElement>> = ({
+export const CollapsibleToggle: FunctionComponent<CollapsibleToggleProps & SVGProps<SVGSVGElement>> = ({
     expanded,
     ...svgProps
 }) => {

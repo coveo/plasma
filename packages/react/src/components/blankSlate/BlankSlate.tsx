@@ -1,24 +1,24 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions/Action';
 import {Button} from '../button/Button';
 import {OptionalSvgChildProps, SvgChild} from '../svg/SvgChild';
 
-export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate>, Omit<OptionalSvgChildProps, 'title'> {
+export interface IBlankSlateProps extends ClassAttributes<BlankSlate>, Omit<OptionalSvgChildProps, 'title'> {
     /**
      * Title of the blank slate
      */
-    title?: React.ReactNode;
+    title?: ReactNode;
     /**
      * Description template to add to the blank slate
      */
-    description?: React.ReactNode;
+    description?: ReactNode;
     /**
      * Additionnal child to add to the blank slate
      */
-    additionalSection?: React.ReactNode;
+    additionalSection?: ReactNode;
     /**
      * Array of buttons to add to the blank slate
      */
@@ -48,7 +48,7 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate>, Omi
     buttonClasses?: string[];
 }
 
-export class BlankSlate extends React.Component<IBlankSlateProps> {
+export class BlankSlate extends Component<IBlankSlateProps> {
     static defaultProps: Partial<IBlankSlateProps> = {
         title: null,
         description: null,

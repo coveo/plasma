@@ -1,4 +1,3 @@
-import * as React from 'react';
 import code from '@examples/Slider/Slider.example.tsx';
 import asymetric from '@examples/Slider/SliderAsymetric.example.tsx';
 import onChange from '@examples/Slider/SliderOnChange.example.tsx';

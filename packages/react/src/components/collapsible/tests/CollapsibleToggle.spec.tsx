@@ -1,5 +1,4 @@
 import {render, screen, waitFor} from '@test-utils';
-import * as React from 'react';
 
 import {CollapsibleToggle} from '../CollapsibleToggle';
 

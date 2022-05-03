@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import {ComponentClass} from 'react';
-import * as React from 'react';
+import {ComponentType, PureComponent, ComponentClass} from 'react';
 import {IBlankSlateProps} from './BlankSlate';
 
 export interface IBlankSlateWithTableProps extends IBlankSlateProps {
@@ -10,9 +9,9 @@ export interface IBlankSlateWithTableProps extends IBlankSlateProps {
 }
 
 export const blankSlateWithTable = <P extends IBlankSlateProps>(
-    Component: React.ComponentType<P>
+    Component: ComponentType<P>
 ): ComponentClass<IBlankSlateWithTableProps & P> => {
-    class ComponentBlankSlateWithTable extends React.PureComponent<IBlankSlateWithTableProps & P> {
+    class ComponentBlankSlateWithTable extends PureComponent<IBlankSlateWithTableProps & P> {
         static defaultProps: Partial<IBlankSlateWithTableProps & P> = {
             numberOfColumn: 20,
         } as Partial<IBlankSlateWithTableProps & P>;

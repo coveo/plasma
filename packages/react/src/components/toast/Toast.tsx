@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FC, ComponentClass, useState, useEffect, createElement} from 'react';
 import * as _ from 'underscore';
 
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
@@ -13,7 +13,7 @@ export interface IToastProps {
     /**
      * The content of the toast
      */
-    title?: React.ReactNode;
+    title?: ReactNode;
     /**
      * The type of the toast
      *
@@ -47,7 +47,7 @@ export interface IToastProps {
     /**
      * @deprecated Use children instead
      */
-    content?: React.ReactNode;
+    content?: ReactNode;
     /**
      * @deprecated
      */
@@ -71,7 +71,7 @@ const InfoTokenTypeMapping: Record<IToastProps['type'], InfoTokenType> = {
  * so a character limit of ~150 max is recommended
  */
 
-export const Toast: React.FC<IToastProps> = ({
+export const Toast: FC<IToastProps> = ({
     title,
     type = 'success',
     dismiss,
@@ -87,9 +87,9 @@ export const Toast: React.FC<IToastProps> = ({
 }) => {
     let timeout: number;
 
-    const [isOpened, setIsOpened] = React.useState(true);
+    const [isOpened, setIsOpened] = useState(true);
 
-    React.useEffect(() => {
+    useEffect(() => {
         onRender?.();
         handleSetTimeout();
 
@@ -160,7 +160,7 @@ export const Toast: React.FC<IToastProps> = ({
         <div className="toast-description">
             <div>
                 {children}
-                {_.isString(content) || !content ? content : React.createElement(content as React.ComponentClass)}
+                {_.isString(content) || !content ? content : createElement(content as ComponentClass)}
             </div>
         </div>
     );

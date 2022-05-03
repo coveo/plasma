@@ -1,5 +1,4 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 import {IStepProgressBarProps, StepProgressBar} from '../StepProgressBar';
 
 describe('StepProgressBar', () => {

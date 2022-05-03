@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {LastUpdatedConnected} from '../../lastUpdated/LastUpdatedConnected';
 import {ITableProps} from '../Table';
 import {TableChildComponent} from '../TableConstants';

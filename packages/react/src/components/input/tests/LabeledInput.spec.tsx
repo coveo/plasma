@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 
 import {Tooltip} from '../../tooltip/Tooltip';
 import {InputDescription} from '../InputDescription';

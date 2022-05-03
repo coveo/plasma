@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {RefObject, createRef, Children, Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
@@ -57,15 +57,15 @@ export interface IPopoverState {
     isOpen?: boolean;
 }
 
-export class Popover extends React.Component<IPopoverProps, IPopoverState> {
-    private tetherToggle: React.RefObject<HTMLDivElement>;
-    private tetherElement: React.RefObject<HTMLDivElement>;
+export class Popover extends Component<IPopoverProps, IPopoverState> {
+    private tetherToggle: RefObject<HTMLDivElement>;
+    private tetherElement: RefObject<HTMLDivElement>;
 
     constructor(props: IPopoverProps, state: IPopoverState) {
         super(props, state);
 
-        this.tetherToggle = React.createRef();
-        this.tetherElement = React.createRef();
+        this.tetherToggle = createRef();
+        this.tetherElement = createRef();
 
         // If onToggle wasn't passed, Popover is uncontrolled and we set an initial state.
         if (!_.isFunction(this.props.onToggle)) {
@@ -86,7 +86,7 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     }
 
     render() {
-        const children = React.Children.toArray(this.props.children);
+        const children = Children.toArray(this.props.children);
 
         const isOpen: boolean = (this.state && this.state.isOpen) || this.props.isOpen;
 

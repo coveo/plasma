@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+pnpm --package=@commitlint/cli dlx commitlint --edit $1

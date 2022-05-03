@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 
 import {JSXRenderable} from '../../utils/JSXUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
@@ -10,7 +10,7 @@ export interface ISideNavProps extends IReduxStatePossibleProps {
     opened?: boolean;
 }
 
-export class SideNavigation extends React.Component<ISideNavProps> {
+export class SideNavigation extends Component<ISideNavProps> {
     static toggleEvent = 'side-navigation-toggle';
 
     render() {

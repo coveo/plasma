@@ -1,6 +1,6 @@
 import {DotsSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component, HTMLAttributes, MouseEvent as ReactMouseEvent} from 'react';
 import * as _ from 'underscore';
 
 import {DropPodPosition} from '../drop/DomPositionCalculator';
@@ -18,7 +18,7 @@ export interface IActionableItemProps {
      *
      * @param evt the mouse event
      */
-    onItemClick?: (evt?: React.MouseEvent<HTMLDivElement>) => any;
+    onItemClick?: (evt?: ReactMouseEvent<HTMLDivElement>) => any;
     /**
      * The list of actions
      *
@@ -35,7 +35,7 @@ export interface IActionableItemProps {
     dropProps?: Partial<IDropOwnProps>;
 }
 
-export class ActionableItem extends React.Component<IActionableItemProps & React.HTMLAttributes<HTMLDivElement>> {
+export class ActionableItem extends Component<IActionableItemProps & HTMLAttributes<HTMLDivElement>> {
     static defaultProps: Partial<IActionableItemProps> = {
         actions: [],
     };
@@ -53,7 +53,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
             <div {..._.omit(this.props, 'actions', 'onItemClick', 'dropProps', 'containerClassName')}>
                 <div
                     className={actionableItemClasses}
-                    onClick={(e: React.MouseEvent<HTMLDivElement>) => this.props.onItemClick?.(e)}
+                    onClick={(e: ReactMouseEvent<HTMLDivElement>) => this.props.onItemClick?.(e)}
                 >
                     {this.props.children}
                 </div>

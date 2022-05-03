@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentClass, FunctionComponent, useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import {IDispatch} from '../../../utils/ReduxUtils';
@@ -17,11 +17,11 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
 });
 
 export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
-    Component: React.ComponentClass<T> | React.FunctionComponent<T>
+    Component: ComponentClass<T> | FunctionComponent<T>
 ) => {
     type NewOwnProps = T & IWithNonEmptyValueInputValidationProps;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedInput: React.FunctionComponent<NewOwnProps & DispatchProps> = ({
+    const WrappedInput: FunctionComponent<NewOwnProps & DispatchProps> = ({
         setError,
         clearError,
         validationMessage = 'Input is empty and should not be empty',
@@ -29,9 +29,9 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
         validate,
         ...props
     }) => {
-        const [lastState, setLastState] = React.useState<boolean | null>(null);
+        const [lastState, setLastState] = useState<boolean | null>(null);
 
-        React.useEffect(
+        useEffect(
             () => () => {
                 resetErrorOnUnmount && clearError(props.id);
             },

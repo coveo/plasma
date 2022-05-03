@@ -1,5 +1,5 @@
 import {svg as Icons, SvgName} from '@coveord/plasma-style';
-import * as React from 'react';
+import {HTMLAttributes, FunctionComponent} from 'react';
 
 export interface ISvgTagProps {
     /**
@@ -12,9 +12,9 @@ export interface ISvgTagProps {
     svgName: SvgName;
 }
 
-export interface ISvgProps extends ISvgTagProps, React.HTMLAttributes<HTMLSpanElement> {}
+export interface ISvgProps extends ISvgTagProps, HTMLAttributes<HTMLSpanElement> {}
 
-export const Svg: React.FunctionComponent<ISvgProps> = ({svgClass = '', svgName, ...props}) => {
+export const Svg: FunctionComponent<ISvgProps> = ({svgClass = '', svgName, ...props}) => {
     const setSvgClass = (svgStr: string): string =>
         svgStr
             .replace('<svg ', `<svg class="${svgClass}" role="img" aria-label="${svgName} icon" `)

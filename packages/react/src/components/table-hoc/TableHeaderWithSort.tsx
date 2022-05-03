@@ -1,6 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {HTMLAttributes, FunctionComponent, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -23,8 +23,8 @@ export interface HOCTableHeaderStateProps {
 
 export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps, Partial<HOCTableHeaderStateProps> {}
 
-export const TableHeaderWithSort: React.FunctionComponent<
-    ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>
+export const TableHeaderWithSort: FunctionComponent<
+    ITableHeaderWithSortProps & HTMLAttributes<HTMLTableHeaderCellElement>
 > = ({className, isLoading, id, tableId, isDefault, children}) => {
     const dispatch = useDispatch();
     const sorted = useSelector((state: PlasmaState) => {
@@ -38,7 +38,7 @@ export const TableHeaderWithSort: React.FunctionComponent<
 
     const {style, tableHeaderRef} = useFixedWidthWhileLoading(isLoading);
 
-    React.useEffect(() => {
+    useEffect(() => {
         onMount();
 
         return () => void onUnmount();

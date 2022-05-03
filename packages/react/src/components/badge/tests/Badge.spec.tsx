@@ -1,6 +1,5 @@
 import {LockSize16Px} from '@coveord/plasma-react-icons';
 import {render, screen, waitFor, within} from '@test-utils';
-import * as React from 'react';
 
 import {Badge} from '../Badge';
 

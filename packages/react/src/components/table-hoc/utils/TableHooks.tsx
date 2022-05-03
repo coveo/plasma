@@ -1,16 +1,16 @@
-import * as React from 'react';
+import {CSSProperties, useRef, useState, useLayoutEffect} from 'react';
 
 export const useFixedWidthWhileLoading = (isLoading: boolean) => {
-    const tableHeaderRef = React.useRef<HTMLTableHeaderCellElement>();
-    const [columnWidth, setColumnWidth] = React.useState<number>();
+    const tableHeaderRef = useRef<HTMLTableHeaderCellElement>();
+    const [columnWidth, setColumnWidth] = useState<number>();
 
-    React.useLayoutEffect(() => {
+    useLayoutEffect(() => {
         if (tableHeaderRef.current && !isLoading) {
             setColumnWidth(tableHeaderRef.current.offsetWidth);
         }
     }, [isLoading]);
 
-    const style: React.CSSProperties = isLoading
+    const style: CSSProperties = isLoading
         ? {
               width: `${columnWidth}px`,
           }

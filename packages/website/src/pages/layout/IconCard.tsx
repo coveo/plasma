@@ -1,9 +1,8 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {IconCard} from '@coveord/plasma-react';
 
     export default () => (
@@ -17,7 +16,6 @@ const code = `
 `;
 
 const choices = `
-    import * as React from 'react';
     import {IconCard} from '@coveord/plasma-react';
 
     export default () => (
@@ -36,7 +34,6 @@ const choices = `
 `;
 
 const small = `
-    import * as React from 'react';
     import {IconCard} from '@coveord/plasma-react';
 
     export default () => (
@@ -56,7 +53,6 @@ const small = `
 `;
 
 const disabled = `
-    import * as React from 'react';
     import {IconCard} from '@coveord/plasma-react';
 
     export default () => (
@@ -73,7 +69,6 @@ const disabled = `
 `;
 
 const badgesOnTop = `
-    import * as React from 'react';
     import {IconCard} from '@coveord/plasma-react';
 
     export default () => (
@@ -90,7 +85,7 @@ const badgesOnTop = `
     );
 `;
 
-export const IconCardExamples: React.FunctionComponent = () => (
+export const IconCardExamples: FunctionComponent = () => (
     <PageLayout
         id="IconCard"
         title="Icon Card"

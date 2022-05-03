@@ -1,6 +1,5 @@
 import {shallowWithStore} from '@helpers/enzyme-redux';
 import {ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {IInputOwnProps, InputConnected} from '../../../input/Input';

@@ -1,9 +1,9 @@
-import * as React from 'react';
+import {createContext} from 'react';
 
 export interface CheckboxContextProps {
     labelId: string;
 }
 
-export const CheckboxContext = React.createContext<CheckboxContextProps>({
+export const CheckboxContext = createContext<CheckboxContextProps>({
     labelId: undefined,
 });

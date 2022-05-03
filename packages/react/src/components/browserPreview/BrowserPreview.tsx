@@ -1,5 +1,5 @@
 import {InfoSize16Px} from '@coveord/plasma-react-icons';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {truncate} from 'underscore.string';
 
 import {TooltipPlacement} from '../../utils';
@@ -19,17 +19,14 @@ export interface BrowserPreviewProps {
     title?: string;
 }
 
-export const BrowserPreview: React.FunctionComponent<BrowserPreviewProps> = ({children, headerDescription, title}) => (
+export const BrowserPreview: FunctionComponent<BrowserPreviewProps> = ({children, headerDescription, title}) => (
     <div className="browser-preview flex flex-column">
         <BrowserPreviewHeader tooltipTitle={headerDescription ?? DefaultHeaderDescription} title={title ?? ''} />
         <div className="browser-preview__content flex flex-column flex-auto px4 py3">{children}</div>
     </div>
 );
 
-const BrowserPreviewHeader: React.FunctionComponent<{tooltipTitle: string; title?: string}> = ({
-    title,
-    tooltipTitle,
-}) => (
+const BrowserPreviewHeader: FunctionComponent<{tooltipTitle: string; title?: string}> = ({title, tooltipTitle}) => (
     <div className="browser-preview__header flex space-between px2 py1">
         <div className="inline-flex">
             <span className="bolder">Preview</span>

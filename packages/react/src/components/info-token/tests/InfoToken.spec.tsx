@@ -1,6 +1,5 @@
 /* eslint-disable testing-library/no-container */
-import {render, screen, waitFor} from '@test-utils';
-import * as React from 'react';
+import {render, screen} from '@test-utils';
 
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../InfoToken';
 

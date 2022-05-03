@@ -1,5 +1,3 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
-export const InputDescription: React.FunctionComponent = ({children}) => (
-    <section className="help-text">{children}</section>
-);
+export const InputDescription: FunctionComponent = ({children}) => <section className="help-text">{children}</section>;

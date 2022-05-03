@@ -1,5 +1,4 @@
 import userEvent from '@testing-library/user-event';
-import * as React from 'react';
 import {render, waitFor, screen} from '@test-utils';
 
 import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';

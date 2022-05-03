@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentType, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 
@@ -33,7 +33,7 @@ export const Params = {
     filter: 'q',
 };
 
-function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.ComponentType<P>) {
+function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType<P>) {
     type Props = P &
         TableWithUrlStateProps &
         ReturnType<typeof mapStateToProps> &
@@ -47,7 +47,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.Compone
         initializeFromUrl: () => dispatch(updateTableStateFromUrl(ownProps.id)),
     });
 
-    class WrappedComponentDisconnected extends React.PureComponent<Props> {
+    class WrappedComponentDisconnected extends PureComponent<Props> {
         static displayName = `withUrlState(${Component.displayName})`;
 
         render() {

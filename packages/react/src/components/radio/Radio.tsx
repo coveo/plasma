@@ -1,16 +1,16 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 import {omit} from 'underscore';
 import {IInputProps, Input} from '../input/Input';
 
 export interface RadioOwnProps {
     outerContainerClass?: string;
-    outerElementInContainer?: React.ReactNode;
+    outerElementInContainer?: ReactNode;
 }
 
 export interface RadioProps extends RadioOwnProps, IInputProps {}
 
-export const Radio: React.FunctionComponent<RadioProps> = (props) => {
+export const Radio: FunctionComponent<RadioProps> = (props) => {
     const outerContainerClasses: string =
         !!props.outerContainerClass && classNames('radio-option', props.outerContainerClass);
     const classes: string = classNames('radio-option', props.classes);
@@ -23,7 +23,7 @@ export const Radio: React.FunctionComponent<RadioProps> = (props) => {
     );
 };
 
-const RadioInputContent: React.FunctionComponent<{props: RadioProps; classes: string}> = ({props, classes}) => {
+const RadioInputContent: FunctionComponent<{props: RadioProps; classes: string}> = ({props, classes}) => {
     const inputProps = omit(props, 'outerContainerClass', 'outerElementInContainer');
     return (
         <>

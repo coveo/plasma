@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, FocusEvent} from 'react';
 import {compose} from 'redux';
 import {
     FormProvider,
@@ -17,10 +17,7 @@ interface MyData {
 
 const MultilineBoxWithRemove = compose(
     multilineBoxWithRemoveButton({
-        containerNode: (
-            child: React.ReactNode,
-            getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode
-        ) => (
+        containerNode: (child: ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode) => (
             <div className="inline-flex center-align">
                 {child}
                 {getRemoveButton({
@@ -46,7 +43,7 @@ export default () => (
                         type="text"
                         label="Label"
                         defaultValue={props.name}
-                        onBlur={(evt: React.FocusEvent<HTMLInputElement>) => {
+                        onBlur={(evt: FocusEvent<HTMLInputElement>) => {
                             if (evt.target.value !== '' && isLast) {
                                 defaultProps.addNewBox();
                             }

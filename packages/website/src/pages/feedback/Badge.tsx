@@ -1,8 +1,6 @@
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {Badge} from '@coveord/plasma-react';
     import {LockSize16Px} from '@coveord/plasma-react-icons';
 
@@ -22,7 +20,6 @@ const code = `
 `;
 
 const modSmall = `
-    import * as React from 'react';
     import {Badge} from '@coveord/plasma-react';
     import {LockSize16Px} from '@coveord/plasma-react-icons';
 

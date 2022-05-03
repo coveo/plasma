@@ -1,7 +1,7 @@
 import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import moment from 'moment';
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 
 import {TooltipPlacement} from '../../utils';
@@ -38,7 +38,7 @@ export interface IDatePickerDropdownOwnProps
             | 'simple'
             | 'initialDateRange'
         >,
-        React.ClassAttributes<DatePickerDropdown> {
+        ClassAttributes<DatePickerDropdown> {
     /**
      * The text displayed in the downdown button when no dates are selected
      */
@@ -144,7 +144,7 @@ export const DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES: string[] = [];
 export const DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED: boolean = true;
 export const DEFAULT_INITIALY_UNSELECTED: boolean = false;
 
-export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps, any> {
+export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any> {
     static defaultProps: Partial<IDatePickerDropdownProps> = {
         label: DEFAULT_DATE_PICKER_DROPDOWN_LABEL,
         applyLabel: DEFAULT_APPLY_DATE_LABEL,

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentType, ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -19,7 +19,7 @@ export interface IPredicateComponentProps
     id: string;
 }
 
-type PredicateComponentType = React.ComponentType<IPredicateComponentProps>;
+type PredicateComponentType = ComponentType<IPredicateComponentProps>;
 
 export interface ITableWithPredicateGenericConfig extends WithServerSideProcessingProps {
     id: string;
@@ -41,7 +41,7 @@ const TableWithPredicatePropsToOmit = ['predicate', 'urlPredicate'];
 const defaultMatchPredicate = (predicate: string, datum: any) =>
     !predicate || _.some(_.values(datum), (value: string) => value === predicate);
 
-type TableWithPredicateComponent = React.ComponentType<ITableWithPredicateProps>;
+type TableWithPredicateComponent = ComponentType<ITableWithPredicateProps>;
 export const tableWithPredicateGeneric = (supplier: ConfigSupplier<ITableWithPredicateGenericConfig>) => (
     PredicateComponent: PredicateComponentType
 ) => (TableComponent: TableWithPredicateComponent): TableWithPredicateComponent => {
@@ -74,7 +74,7 @@ export const tableWithPredicateGeneric = (supplier: ConfigSupplier<ITableWithPre
     };
 
     @ReduxConnect(mapStateToProps)
-    class TableWithPredicate extends React.Component<ITableWithPredicateProps> {
+    class TableWithPredicate extends Component<ITableWithPredicateProps> {
         componentDidUpdate(prevProps: ITableWithPredicateProps) {
             if (
                 prevProps.predicate !== this.props.predicate &&
@@ -115,7 +115,7 @@ export const tableWithPredicateGeneric = (supplier: ConfigSupplier<ITableWithPre
 export interface ITableWithPredicateConfig extends WithServerSideProcessingProps {
     id: string;
     values: IItemBoxProps[];
-    prepend?: React.ReactNode;
+    prepend?: ReactNode;
     matchPredicate?: (predicate: string, datum: any) => boolean;
 }
 

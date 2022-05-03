@@ -1,7 +1,6 @@
 import {shallowWithStore} from '@helpers/enzyme-redux';
 import {render, screen} from '@test-utils';
 import {ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 

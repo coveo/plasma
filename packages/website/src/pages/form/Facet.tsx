@@ -1,8 +1,6 @@
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-import * as React from 'react';
 import {FacetConnected, IFacet} from '@coveord/plasma-react';
 
 export default () => {
@@ -28,7 +26,6 @@ export default () => {
 `;
 
 const withExclude = `
-import * as React from 'react';
 import {FacetConnected, IFacet} from '@coveord/plasma-react';
 
 export default () => {
@@ -49,7 +46,6 @@ export default () => {
 `;
 
 const withMore = `
-import * as React from 'react';
 import {FacetConnected, IFacet} from '@coveord/plasma-react';
 
 export default () => {

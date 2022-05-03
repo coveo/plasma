@@ -1,13 +1,13 @@
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {Icon} from '@coveord/plasma-react-icons';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
-import {removePrompt} from './InlinePromptActions';
 import {Button} from '../button';
+import {removePrompt} from './InlinePromptActions';
 
 export interface IUserChoice {
     description?: string;
@@ -28,9 +28,10 @@ export interface IInlinePromptProps {
     options: IInlinePromptOptions;
 }
 
-export const InlinePrompt: React.FunctionComponent<
-    IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>
-> = ({options, onCancel}) => {
+export const InlinePrompt: FunctionComponent<IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>> = ({
+    options,
+    onCancel,
+}) => {
     const choices: JSX.Element[] = _.map(options.userChoice.choices, (choice: string) => (
         <Button classes="mod-danger ml1" onClick={options.onClick} key={choice}>
             {choice}

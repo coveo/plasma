@@ -1,6 +1,6 @@
 import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import * as React from 'react';
+import {FC, ReactNode} from 'react';
 
 import {CollapsibleConnected} from './CollapsibleConnected';
 
@@ -9,12 +9,12 @@ export interface CollapsibleInfoBoxProps {
     title: string;
     expandedOnMount?: boolean;
     isSection?: boolean;
-    sectionAdditionalContent?: React.ReactNode;
+    sectionAdditionalContent?: ReactNode;
     sectionAdditionalContentCondition?: () => boolean;
     sectionAdditionalContentClasses?: string;
 }
 
-export const CollapsibleInfoBox: React.FC<CollapsibleInfoBoxProps> = ({
+export const CollapsibleInfoBox: FC<CollapsibleInfoBoxProps> = ({
     id,
     title,
     expandedOnMount,
@@ -24,7 +24,7 @@ export const CollapsibleInfoBox: React.FC<CollapsibleInfoBoxProps> = ({
     sectionAdditionalContentClasses,
     children,
 }) => {
-    const getHeader = (): React.ReactNode =>
+    const getHeader = (): ReactNode =>
         isSection ? (
             <div className="flex flex-center pl1">
                 <h6>{title}</h6>

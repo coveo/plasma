@@ -1,11 +1,10 @@
 import {mount} from 'enzyme';
-import * as React from 'react';
-import {DragDropContext} from 'react-dnd';
-import TestBackend from 'react-dnd-test-backend';
+import {ReactNode} from 'react';
+import {DndProvider} from 'react-dnd';
+import {TestBackend} from 'react-dnd-test-backend';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {DnDUtils} from '../../components/dragAndDrop/DnDUtils';
 import {PlasmaState} from '../../PlasmaState';
 import {UUID} from '../UUID';
 import {TestUtils} from './TestUtils';
@@ -14,27 +13,16 @@ const mockUUID = (generatedId: string = 'id') => {
     jest.spyOn(UUID, 'generate').mockReturnValue(generatedId);
 };
 
-const mockTagContext = () => {
-    DnDUtils.TagControlContext = (DecoratedClass: any) => DecoratedClass;
-};
-
-const DD = DragDropContext(TestBackend);
-
-const renderComponent = (ComponentClass: any, props = {}, child: React.ReactNode = null) => {
+const renderComponent = (ComponentClass: any, props = {}, child: ReactNode = null) => {
     const store: Store<PlasmaState> = TestUtils.buildStore();
 
-    class Tester extends React.Component {
-        render() {
-            return (
-                <Provider store={store}>
-                    <ComponentClass {...props}>{child}</ComponentClass>
-                </Provider>
-            );
-        }
-    }
-
-    const Draggable = DD(Tester);
-    const wrapper = mount(<Draggable {...props} />);
+    const wrapper = mount(
+        <DndProvider backend={TestBackend}>
+            <Provider store={store}>
+                <ComponentClass {...props}>{child}</ComponentClass>
+            </Provider>
+        </DndProvider>
+    );
 
     return {
         wrapper,
@@ -66,7 +54,6 @@ const clickOnElement = (el: Element = document.getElementById(defaultId), event:
 
 export const RTestUtils = {
     mockUUID,
-    mockTagContext,
     renderComponent,
     addHTMLElementWithId,
     removeHTMLElementWithId,

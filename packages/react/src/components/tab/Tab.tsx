@@ -1,6 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, MouseEvent, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
@@ -43,12 +43,12 @@ export interface ITabOwnProps {
     /**
      * Add a Badge to the Tab
      */
-    badge?: React.ReactNode;
+    badge?: ReactNode;
     /**
      * Add an url to the Tab. Will navigate on click.
      */
     url?: string;
-    onSelect?: (e: React.MouseEvent) => void;
+    onSelect?: (e: MouseEvent) => void;
 }
 
 const enhance = connect(
@@ -62,7 +62,7 @@ const enhance = connect(
 
 export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof enhance>> {}
 
-export const Tab: React.FunctionComponent<ITabProps> = ({
+export const Tab: FunctionComponent<ITabProps> = ({
     icon,
     iconModStroke,
     badge,
@@ -77,12 +77,12 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
     onSelect,
     selectTab,
 }) => {
-    React.useEffect(() => {
+    useEffect(() => {
         onRender?.();
         return onDestroy;
     }, []);
 
-    const handleSelect = (e: React.MouseEvent) => {
+    const handleSelect = (e: MouseEvent) => {
         if (!disabled) {
             selectTab?.();
             onSelect?.(e);

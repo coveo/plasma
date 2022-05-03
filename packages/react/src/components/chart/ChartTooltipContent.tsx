@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent, useContext} from 'react';
 import * as _ from 'underscore';
 
 import {Color} from '../color/Color';
@@ -10,8 +10,8 @@ export interface ChartTooltipContentProps {
     sort: boolean;
 }
 
-export const ChartTooltipContent: React.FunctionComponent<ChartTooltipContentProps> = ({x, sort}) => {
-    const {series, xFormat, yFormat, color, colorPattern} = React.useContext(XYChartContext);
+export const ChartTooltipContent: FunctionComponent<ChartTooltipContentProps> = ({x, sort}) => {
+    const {series, xFormat, yFormat, color, colorPattern} = useContext(XYChartContext);
     const xValues = ChartUtils.getXValues(series);
     const title = xFormat(xValues[x]);
     return (

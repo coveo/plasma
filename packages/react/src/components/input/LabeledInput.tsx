@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
@@ -7,14 +7,14 @@ import {Tooltip} from '../tooltip/Tooltip';
 import {InputDescription} from './InputDescription';
 
 export interface ILabeledInputProps {
-    label?: React.ReactNode;
-    message?: React.ReactNode;
-    helpText?: React.ReactNode;
+    label?: ReactNode;
+    message?: ReactNode;
+    helpText?: ReactNode;
     headerClassName?: string;
     optionalInformation?: string;
 }
 
-export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
+export const LabeledInput: FunctionComponent<ILabeledInputProps> = ({
     children,
     label,
     message,

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 
-export interface IFacetMoreToggleOwnProps extends React.ClassAttributes<FacetMoreToggle> {
+export interface IFacetMoreToggleOwnProps extends ClassAttributes<FacetMoreToggle> {
     facet: string;
     moreLabel?: string;
 }
@@ -20,7 +20,7 @@ export interface IFacetMoreToggleProps
 
 export const FACET_TOGGLE_MORE_LABEL: string = 'More';
 
-export class FacetMoreToggle extends React.Component<IFacetMoreToggleProps, any> {
+export class FacetMoreToggle extends Component<IFacetMoreToggleProps, any> {
     private handleOnChange = () => {
         if (this.props.onToggleMore) {
             this.props.onToggleMore(this.props.facet);

@@ -1,6 +1,5 @@
 import userEvent from '@testing-library/user-event';
 import {shallow} from 'enzyme';
-import * as React from 'react';
 
 import {render, screen} from '@test-utils';
 import {Form} from '../Form';

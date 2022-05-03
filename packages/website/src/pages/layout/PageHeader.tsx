@@ -1,6 +1,5 @@
 import code from '@examples/Header/main.example.tsx';
 import loading from '@examples/Header/loading.example.tsx';
-import React from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

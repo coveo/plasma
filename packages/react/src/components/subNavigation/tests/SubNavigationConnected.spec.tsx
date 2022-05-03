@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import * as React from 'react';
 import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';

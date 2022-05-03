@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent, useContext} from 'react';
 
 import {XYChartContext} from './XYChart';
 
@@ -7,8 +7,8 @@ export interface YGridProps {
     color?: string;
 }
 
-export const YGrid: React.FunctionComponent<YGridProps> = ({padding = 0, color = 'rgba(0,0,0,0.2)'}) => {
-    const context = React.useContext(XYChartContext);
+export const YGrid: FunctionComponent<YGridProps> = ({padding = 0, color = 'rgba(0,0,0,0.2)'}) => {
+    const context = useContext(XYChartContext);
     const {xDomain, xScale, yScale, yTicksCount} = context;
 
     const lines = yScale

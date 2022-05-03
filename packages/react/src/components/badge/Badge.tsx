@@ -1,7 +1,6 @@
-import classNames from 'classnames';
-import * as React from 'react';
-
 import {Icon} from '@coveord/plasma-react-icons';
+import classNames from 'classnames';
+import {Component} from 'react';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
 
@@ -25,7 +24,7 @@ interface BadgeWithIconProps extends BadgeBasicProps {
 
 export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithLabelProps & BadgeWithIconProps);
 
-export class Badge extends React.Component<IBadgeProps> {
+export class Badge extends Component<IBadgeProps> {
     static defaultProps: Partial<IBadgeProps> = {
         extraClasses: [],
     };

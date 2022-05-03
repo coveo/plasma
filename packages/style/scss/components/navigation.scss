@@ -115,6 +115,7 @@
 
                         &.disabled {
                             cursor: default;
+                            pointer-events: none;
                             .navigation-menu-section-item-link {
                                 color: var(--grey-60);
                             }
@@ -143,6 +144,7 @@
 
                             &.state-locked {
                                 color: $navigation-locked-color;
+                                pointer-events: none;
                             }
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {

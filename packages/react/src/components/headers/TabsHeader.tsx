@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import {ITabProps, TabConnected} from '../tab/Tab';
 import {TabNavigation} from '../tab/TabNavigation';
 

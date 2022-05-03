@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {PureComponent} from 'react';
 import * as _ from 'underscore';
 
 import {Input} from '../input/Input';
@@ -30,7 +30,7 @@ export interface ISplitMultilineInputState {
     values: ISplitValue[];
 }
 
-export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInputProps, ISplitMultilineInputState> {
+export class SplitMultilineInput extends PureComponent<ISplitMultilineInputProps, ISplitMultilineInputState> {
     static inputLineClass: string = 'flex space-between relative pb1';
 
     constructor(props: ISplitMultilineInputProps, state: ISplitMultilineInputState) {

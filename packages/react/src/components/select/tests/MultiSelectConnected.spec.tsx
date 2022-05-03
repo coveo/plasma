@@ -1,7 +1,6 @@
 /* eslint-disable testing-library/no-container */
 import userEvent from '@testing-library/user-event';
-import * as React from 'react';
-import {fireEvent, render, screen, within} from '@test-utils';
+import {fireEvent, render, screen, within, act} from '@test-utils';
 
 import {MultiSelectConnected} from '../MultiSelectConnected';
 
@@ -225,12 +224,13 @@ describe('Select', () => {
         });
 
         describe('Sortable', () => {
-            const dragAndDrop = (source: Element, target: Element) => {
+            const dragAndDrop = (source: Element, position: number) => {
+                // We must query the listitem role again on each event because it gets reordered during the drag and drop process
                 const eventData: any = {dataTransfer: {files: []}};
                 fireEvent.dragStart(source, eventData);
-                fireEvent.dragEnter(target, eventData);
-                fireEvent.dragOver(target, eventData);
-                fireEvent.drop(target, eventData);
+                fireEvent.dragEnter(screen.getAllByRole('listitem')[position], eventData);
+                fireEvent.dragOver(screen.getAllByRole('listitem')[position], eventData);
+                fireEvent.drop(screen.getAllByRole('listitem')[position], eventData);
             };
 
             it('does not have the drag icon if the component is not sortable', () => {
@@ -260,7 +260,7 @@ describe('Select', () => {
                 expect(listitems[2]).toHaveTextContent('🍟');
 
                 const dragIcons = container.querySelectorAll('[aria-grabbed=false] svg');
-                dragAndDrop(dragIcons[1], listitems[2]);
+                dragAndDrop(dragIcons[1], 2);
 
                 listitems = screen.getAllByRole('listitem');
                 expect(listitems[0]).toHaveTextContent('🌱');

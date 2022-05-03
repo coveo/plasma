@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {NumericInputConnected} from '@coveord/plasma-react';
 
     export default () => (
@@ -20,7 +17,6 @@ const code = `
 `;
 
 const disabled = `
-    import * as React from 'react';
     import {NumericInputConnected} from '@coveord/plasma-react';
 
     export default () => (

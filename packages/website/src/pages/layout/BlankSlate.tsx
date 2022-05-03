@@ -1,8 +1,6 @@
-import React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {BlankSlate} from '@coveord/plasma-react';
 
     export default () => (
@@ -29,7 +27,6 @@ const code = `
 `;
 
 const inError = `
-    import * as React from 'react';
     import {BlankSlateWithError} from '@coveord/plasma-react';
 
     export default () => (
@@ -41,7 +38,6 @@ const inError = `
 `;
 
 const withTable = `
-    import * as React from 'react';
     import {BlankSlateWithTable} from '@coveord/plasma-react';
 
     export default () => (
@@ -61,7 +57,6 @@ const withTable = `
 `;
 
 const tableInError = `
-    import * as React from 'react';
     import {BlankSlateWithTableInError, ButtonWithRefreshCallback} from '@coveord/plasma-react';
     
     export default () => (        

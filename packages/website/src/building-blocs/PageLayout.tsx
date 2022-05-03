@@ -1,6 +1,6 @@
 import {TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
 import dynamic from 'next/dynamic';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 
 import {GuidelinesTab} from './GuidelinesTab';
@@ -35,7 +35,7 @@ export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
     withPropsTable?: boolean;
 }
 
-export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
+export const PageLayout: FunctionComponent<PageLayoutProps> = ({
     id,
     title,
     description,
@@ -91,7 +91,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
         </div>
     );
 };
-const Content: React.FunctionComponent<Pick<
+const Content: FunctionComponent<Pick<
     PageLayoutProps,
     'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable'
 >> = ({code, examples, id, relatedComponents, layout, withPropsTable, children}) => (

@@ -20,7 +20,7 @@ import {
     WarningSize32Px,
 } from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 export enum InfoTokenType {
     Information,
@@ -102,7 +102,7 @@ const ModeMapping: Record<InfoTokenMode, string> = {
     [InfoTokenMode.Filled]: 'filled',
 };
 
-export const InfoToken: React.FunctionComponent<InfoTokenProps> = ({mode, size, type, className}) => {
+export const InfoToken: FunctionComponent<InfoTokenProps> = ({mode, size, type, className}) => {
     const IconComponent = IconMapping[type][size];
     return (
         <IconComponent

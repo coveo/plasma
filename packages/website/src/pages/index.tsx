@@ -1,7 +1,7 @@
 import {Section, Svg} from '@coveord/plasma-react';
 import {NextPage} from 'next';
 import Head from 'next/head';
-import React from 'react';
+import {FC} from 'react';
 
 import {Tile} from '../building-blocs/Tile';
 
@@ -20,7 +20,7 @@ export const Index: NextPage = () => (
     </Section>
 );
 
-const WelcomeToPlasma: React.FC = () => (
+const WelcomeToPlasma: FC = () => (
     <div className="section intro">
         <h5 className="welcome-to">Welcome to</h5>
         <div className="page-title">PLASMA</div>
@@ -46,7 +46,7 @@ const WelcomeToPlasma: React.FC = () => (
     </div>
 );
 
-const FoundationsPages: React.FC = () => (
+const FoundationsPages: FC = () => (
     <Section className="section">
         <h2>Foundations</h2>
         <div className="tile-grid">
@@ -77,7 +77,7 @@ const FoundationsPages: React.FC = () => (
     </Section>
 );
 
-const LayoutPages: React.FC = () => (
+const LayoutPages: FC = () => (
     <Section className="section">
         <h2>Layout</h2>
         <div className="tile-grid">
@@ -152,7 +152,7 @@ const LayoutPages: React.FC = () => (
     </Section>
 );
 
-const FormPages: React.FC = () => (
+const FormPages: FC = () => (
     <Section className="section">
         <h2>Form</h2>
         <div className="tile-grid">
@@ -274,7 +274,7 @@ const FormPages: React.FC = () => (
     </Section>
 );
 
-const NavigationPages: React.FC = () => (
+const NavigationPages: FC = () => (
     <Section className="section">
         <h2>Navigation</h2>
         <div className="tile-grid">
@@ -306,7 +306,7 @@ const NavigationPages: React.FC = () => (
     </Section>
 );
 
-const FeedbackPages: React.FC = () => (
+const FeedbackPages: FC = () => (
     <Section className="section">
         <h2>Feedback</h2>
         <div className="tile-grid">

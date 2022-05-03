@@ -1,16 +1,17 @@
-import classNames from 'classnames';
-import * as React from 'react';
-import {connect} from 'react-redux';
 import {Icon} from '@coveord/plasma-react-icons';
+import classNames from 'classnames';
+import {ClassAttributes, Component, KeyboardEvent as ReactKeyboardEvent} from 'react';
+import {connect} from 'react-redux';
+
 import {IReduxActionsPayload} from '../../PlasmaState';
+import {keyCode} from '../../utils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {closeDropdown} from '../dropdown/DropdownActions';
 import {IUserChoice} from '../inlinePrompt/InlinePrompt';
 import {addPrompt, removePrompt} from '../inlinePrompt/InlinePromptActions';
 import {Action, IBasicActionProps, IConfirmData} from './Action';
-import {keyCode} from '../../utils';
 
-export interface ITriggerActionOwnProps extends React.ClassAttributes<TriggerAction>, IBasicActionProps {
+export interface ITriggerActionOwnProps extends ClassAttributes<TriggerAction>, IBasicActionProps {
     confirmLabel?: string;
     parentId?: string;
 }
@@ -30,7 +31,7 @@ const mapDispatchToProps = (
     onCloseDropdown: () => dispatch(closeDropdown(ownProps.parentId)),
 });
 
-export class TriggerAction extends React.Component<ITriggerActionProps> {
+export class TriggerAction extends Component<ITriggerActionProps> {
     private onTriggerAction() {
         const confirmData: IConfirmData = this.props.action.requiresConfirmation;
         if (confirmData && this.props.onTriggerConfirm) {
@@ -64,7 +65,7 @@ export class TriggerAction extends React.Component<ITriggerActionProps> {
         }
     }
 
-    private handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    private handleKeyDown = (event: ReactKeyboardEvent<HTMLSpanElement>) => {
         if (this.props.action.enabled && (event.keyCode === keyCode.enter || event.keyCode === keyCode.space)) {
             // Prevent the default action to stop scrolling when space is pressed
             event.preventDefault();

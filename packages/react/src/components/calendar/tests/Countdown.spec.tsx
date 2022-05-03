@@ -1,5 +1,4 @@
 import {render, screen} from '@test-utils';
-import * as React from 'react';
 
 import {Countdown} from '../Countdown';
 

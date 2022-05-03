@@ -1,35 +1,122 @@
-## 40.5.2-next.10 (2022-04-28)
+## 41.2.11 (2022-05-03)
 
 
 ### Bug Fixes
 
-* **website:** remove workarounds ([4e25333](https://github.com/coveo/plasma/commits/4e25333e3496c12ce6bca381bc9f02341a66ef15))
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
+
+
+
+## 41.2.11 (2022-05-03)
+
+
+### Reverts
+
+* **npm:** remove react version overrides ([a91bb3d](https://github.com/coveo/plasma/commits/a91bb3d3880f687ed08029c1d65ec3c49d936ebd))
+
+
+
+# 41.3.0 (2022-05-03)
 
 
 ### Features
 
-* **react-icons:** add accessible role to all icons ([c5bece6](https://github.com/coveo/plasma/commits/c5bece62080a07129e2a1225130a94567c9c63f8))
-* **react-icons:** add accessible role to all icons ([b5dfd59](https://github.com/coveo/plasma/commits/b5dfd5931214e82dffee1129c13d4a723f3bf7af))
-* **react-icons:** implement Icon type ([1891313](https://github.com/coveo/plasma/commits/1891313451de484d6142aedc2097451bf5f18db3))
-* **react-icons:** implement Icon type ([cb10a12](https://github.com/coveo/plasma/commits/cb10a1211388e66402ce995fbb5820f534dc42b1))
-* **react:** remove Svg from ActionableItem ([e11a8ca](https://github.com/coveo/plasma/commits/e11a8ca13c285a7eec70e381c9f751e4f8d4cdc6))
-* **react:** use plasma-react-icons in badge component ([0e33de1](https://github.com/coveo/plasma/commits/0e33de1c3d0bd3b54c3f47707d1ee8f1bdc02ad8))
-* **react:** use plasma-react-icons in badge component ([1c56382](https://github.com/coveo/plasma/commits/1c56382083157f20156805a8af417e50345cd919))
-* **react:** use react-icons in CollapsibleToggle ([8706144](https://github.com/coveo/plasma/commits/870614490e03c1b5f79e582c908101990bad53a7))
-* **react:** use react-icons in CollapsibleToggle ([1e55008](https://github.com/coveo/plasma/commits/1e5500841f752d693396d894276077560b160cc8))
-* **tokens:** extract design tokens from figma libraries ([ebe3918](https://github.com/coveo/plasma/commits/ebe39185eb94977f595bedbf88afa74943df2efc))
+* **husky, pnpm:** fix more scripts + lintfix had a blast ([a4c6360](https://github.com/coveo/plasma/commits/a4c63600915b914f7c6c88b0186301df91a27973))
+
+
+
+## 41.2.10 (2022-05-02)
+
+
+
+## 41.2.9 (2022-04-30)
+
+
+
+## 41.2.8 (2022-04-30)
+
+
+
+## 41.2.7 (2022-04-30)
+
+
+
+## 41.2.6 (2022-04-30)
+
+
+
+## 41.2.5 (2022-04-30)
+
+
+
+## 41.2.4 (2022-04-30)
+
+
+
+## 41.2.3 (2022-04-30)
+
+
+
+## 41.2.2 (2022-04-30)
+
+
+
+## 41.2.1 (2022-04-29)
+
+
+### Bug Fixes
+
+* **navigation:** disable the click event on locked navigation ([e307dc6](https://github.com/coveo/plasma/commits/e307dc63681f4988e82c3142963c1356c2778614))
+
+
+
+# 41.2.0 (2022-04-29)
+
+
+### Features
+
+* **style:** allow changing bg-wave aspect ratio ([b3f26c6](https://github.com/coveo/plasma/commits/b3f26c6583783bfc63f19619d100b74e3a1162ad))
+* **style:** revert low wave image ([f93ef14](https://github.com/coveo/plasma/commits/f93ef1444d0bb56ba9178777d9bd3ec8d0138c17))
+* **svg:** add low wave background ([96eeea7](https://github.com/coveo/plasma/commits/96eeea7ccc08a7107b49d6f085e9afb5de72ea62))
+
+
+
+## 41.1.1 (2022-04-29)
+
+
+
+# 41.1.0 (2022-04-28)
+
+
+### Features
+
+* **mvp, flat select:** applied last mvp style, icon only + cleanup ([fc6b1fd](https://github.com/coveo/plasma/commits/fc6b1fdd43249c553d7a1987d6a0fb6a98bd269a))
+* **mvp, flat select:** applied new style for mod-grouped ([cf5954e](https://github.com/coveo/plasma/commits/cf5954ed37fea3ab1615f8c6bc503a2ca65468f0))
+* **mvp, flat select:** applied new style to mod option-picker ([dd0ba43](https://github.com/coveo/plasma/commits/dd0ba43234745482ee126ca9bb3d0fb4c9e1cf42))
+* **mvp, flat select:** new style applied for flat select (disable, hover, selectable) ([aa5a83c](https://github.com/coveo/plasma/commits/aa5a83c68f1f691c1fc229cd5ea89f038db20669))
+
+
+
+# 41.0.0 (2022-04-27)
+
+
+### Code Refactoring
+
+* **react:** update react-dnd to version 15 ([e68c0cd](https://github.com/coveo/plasma/commits/e68c0cd9cb37862c16ff870013266f1b7d90873d))
 
 
 ### BREAKING CHANGES
 
-* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
-* **react:** Badge icon prop now expects an icon from plasma-react-icons
+* **react:** DnDUtils has been skimmed down to just one reorder function
 
-fix(react): fix badge tests
-* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
-* **react:** Badge icon prop now expects an icon from plasma-react-icons
 
-fix(react): fix badge tests
+
+## 40.5.3 (2022-04-26)
+
+
+### Bug Fixes
+
+* **react, chart-tooltip:** throws an error on null drop position ([de56162](https://github.com/coveo/plasma/commits/de561628c188012bebef9e44a057b667de68ba61))
 
 
 

@@ -1,67 +1,71 @@
 {
     "name": "root",
-    "version": "40.5.2-next.10",
+    "version": "41.2.10-next.10",
     "private": true,
     "scripts": {
-        "preinstall": "npx only-allow pnpm",
-        "setup": "pnpm install",
-        "start": "pnpm build && pnpm --recursive start --parallel",
-        "test": "pnpm --recursive test",
-        "test:ci": "pnpm --recursive test:ci",
-        "test:changed": "pnpm --recursive test:changed",
-        "clean": "pnpm --recursive clean --parallel",
         "build": "ultra --recursive build",
-        "lintfix": "pnpm --recursive lintfix --parallel",
+        "clean": "pnpm --recursive --parallel clean",
         "commit-cli": "cz",
-        "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done"
+        "preinstall": "npx only-allow pnpm",
+        "lintfix": "pnpm --recursive --parallel lintfix",
+        "precommit": "lint-staged",
+        "prepare": "husky install",
+        "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done",
+        "setup": "pnpm install",
+        "start": "pnpm build && pnpm --recursive --parallel start",
+        "test": "pnpm --recursive test",
+        "test:changed": "pnpm --recursive test:changed",
+        "test:ci": "pnpm --recursive test:ci"
     },
-    "devDependencies": {
-        "@commitlint/cli": "15.0.0",
-        "@commitlint/config-conventional": "15.0.0",
-        "@coveo/semantic-monorepo-tools": "0.3.7",
-        "@sindresorhus/slugify": "2.1.0",
-        "aws-sdk": "2.1044.0",
-        "axios": "0.24.0",
-        "commander": "9.0.0",
-        "commitizen": "4.2.4",
-        "conventional-changelog-angular": "5.0.13",
-        "cz-conventional-changelog": "3.3.0",
-        "eslint": "8.4.1",
-        "husky": "4.3.8",
-        "mime-types": "2.1.35",
-        "prettier": "2.0.5",
-        "stylelint": "13.13.1",
-        "tsjs": "3.0.2",
-        "ultra-runner": "3.10.5",
-        "underscore": "1.13.1",
-        "walkdir": "0.4.1"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "ultra --recursive --serial --root precommit",
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-        }
-    },
-    "stylelint": {
+    "commitlint": {
         "extends": [
-            "tsjs/stylelint-config"
+            "@commitlint/config-conventional"
         ]
     },
-    "prettier": "tsjs/prettier-config",
+    "lint-staged": {
+        "package.json": [
+            "sort-package-json",
+            "git add"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    },
     "browserslist": [
         "cover 90%",
         "last 1 versions",
         "IE 11",
         "not dead"
     ],
-    "config": {
-        "commitizen": {
-            "path": "cz-conventional-changelog"
-        }
-    },
-    "commitlint": {
+    "prettier": "tsjs/prettier-config",
+    "stylelint": {
         "extends": [
-            "@commitlint/config-conventional"
+            "tsjs/stylelint-config"
         ]
+    },
+    "devDependencies": {
+        "@commitlint/cli": "15.0.0",
+        "@commitlint/config-conventional": "15.0.0",
+        "@coveo/semantic-monorepo-tools": "0.3.7",
+        "@sindresorhus/slugify": "2.1.0",
+        "aws-sdk": "2.1125.0",
+        "axios": "0.27.2",
+        "commander": "9.2.0",
+        "commitizen": "4.2.4",
+        "conventional-changelog-angular": "5.0.13",
+        "cz-conventional-changelog": "3.3.0",
+        "eslint": "8.14.0",
+        "husky": "7.0.4",
+        "lint-staged": "9.5.0",
+        "mime-types": "2.1.35",
+        "prettier": "2.0.5",
+        "sort-package-json": "1.57.0",
+        "stylelint": "13.13.1",
+        "tsjs": "3.0.2",
+        "ultra-runner": "3.10.5",
+        "underscore": "1.13.1",
+        "walkdir": "0.4.1"
     }
 }

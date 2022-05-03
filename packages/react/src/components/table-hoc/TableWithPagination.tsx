@@ -1,9 +1,9 @@
-import * as React from 'react';
+import {Component, ComponentType, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
+import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';
@@ -52,7 +52,7 @@ const sliceData = (data: any[], startingIndex: number, endingIndex: number) => d
  * @deprecated use tableWithNewPagination instead
  */
 export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginationConfig> = {}) => (
-    Component: React.ComponentType<ITableWithPaginationProps>
+    WrappedComponent: ComponentType<ITableWithPaginationProps>
 ) => {
     const config = HocUtils.supplyConfig(supplier);
     const mapStateToProps = (
@@ -85,7 +85,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
     /**
      * @deprecated use tableWithNewPagination instead
      */
-    class TableWithPagination extends React.Component<ITableWithPaginationProps> {
+    class TableWithPagination extends Component<ITableWithPaginationProps> {
         componentDidMount() {
             this.props.onMount();
         }
@@ -103,7 +103,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         render() {
             const newProps = _.omit(this.props, TableWithPaginationProps);
             return (
-                <Component {...newProps}>
+                <WrappedComponent {...newProps}>
                     <NavigationConnected
                         id={this.props.id}
                         loadingIds={[this.props.id]}
@@ -111,7 +111,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
                         {..._.pick(this.props, TableWithPaginationProps)}
                     />
                     {this.props.children}
-                </Component>
+                </WrappedComponent>
             );
         }
     }
@@ -119,7 +119,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
     return connect<
         ReturnType<typeof mapStateToProps>,
         ReturnType<typeof mapDispatchToProps>,
-        React.PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
+        PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
     >(
         mapStateToProps,
         mapDispatchToProps

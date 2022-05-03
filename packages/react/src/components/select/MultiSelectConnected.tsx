@@ -1,17 +1,15 @@
 import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
-import {DropTarget, IDropTargetProps} from 'react-dnd';
+import {CSSProperties, ReactNode, ComponentType, PureComponent} from 'react';
+import {DndProvider} from 'react-dnd';
+import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {DnDUtils} from '../dragAndDrop/DnDUtils';
-import {
-    DraggableSelectedOption,
-    DraggableSelectedOptionType,
-} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
+import {DnDUtils} from '../dragAndDrop';
+import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
@@ -20,7 +18,7 @@ import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
-export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 'multi'>, IDropTargetProps {
+export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 'multi'> {
     /**
      * The text displayed in the multi select box when no items are selected
      *
@@ -50,7 +48,7 @@ export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button' | '
      *
      * @default {}
      */
-    multiSelectStyle?: React.CSSProperties;
+    multiSelectStyle?: CSSProperties;
     /**
      * Whether the multiselect is in read only mode. When in read only mode, only the selected option are displayed, greyed out.
      */
@@ -93,17 +91,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps)
     onReorder: (values: string[]) => dispatch(reorderListBoxOption(ownProps.id, values)),
 });
 
-// This object is usefull when the drag happen outside of the DraggableSelectedOption,
-// instead of making the child handle it, the parent catches the event
-const parentDropTarget = {
-    drop: _.noop,
-};
-
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-@DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
-    connectDropTarget: connect.dropTarget(),
-}))
-class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTarget: any}> {
+class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: any}> {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
         emptyPlaceholder: 'No selected option',
@@ -114,7 +103,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTa
     };
 
     render() {
-        return (
+        const select = (
             <SelectConnected
                 id={this.props.id}
                 key={this.props.id}
@@ -125,9 +114,10 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTa
                 {this.props.children}
             </SelectConnected>
         );
+        return this.props.sortable ? <DndProvider backend={HTML5Backend}>{select}</DndProvider> : select;
     }
 
-    private getSelectedOptionComponents(): React.ReactNode {
+    private getSelectedOptionComponents(): ReactNode {
         const selected = this.getSelectedOptions();
 
         if (selected.length) {
@@ -168,25 +158,14 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTa
                     selectedTooltip={item.selectedTooltip}
                     value={item.value}
                     onRemoveClick={() => this.props.onRemoveClick(item)}
-                    index={index}
-                    move={(dragIndex: number, hoverIndex: number) => this.move(dragIndex, hoverIndex)}
                     readOnly={this.props.readOnly}
+                    onMoveOver={(draggedValue: string) => {
+                        const newOrder = DnDUtils.reorder(draggedValue, item.value, this.props.selected);
+                        this.props.onReorder(newOrder);
+                    }}
                 />
             </div>
         );
-    }
-
-    private move(dragIndex: number, hoverIndex: number) {
-        const moving = this.props.selected[dragIndex];
-        const newOrder = [...this.props.selected];
-
-        // Remove the element at position dragIndex
-        newOrder.splice(dragIndex, 1);
-
-        // Insert the moving element at hoverIndex
-        newOrder.splice(hoverIndex, 0, moving);
-
-        this.props.onReorder(newOrder);
     }
 
     private getRemoveAllSelectedOptionsButton(): JSX.Element {
@@ -218,19 +197,18 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTa
         );
         return (
             <div className={classes} style={this.props.multiSelectStyle}>
-                {this.props.connectDropTarget(
-                    <div className="multiselect-selected flex flex-center flex-auto full-content">
-                        <div
-                            className={classNames('selected-options-container truncate', {
-                                readOnly: this.props.readOnly,
-                            })}
-                            role="list"
-                        >
-                            {this.getSelectedOptionComponents()}
-                        </div>
-                        {this.getRemoveAllSelectedOptionsButton()}
+                <div className="multiselect-selected flex flex-center flex-auto full-content">
+                    <div
+                        className={classNames('selected-options-container truncate', {
+                            readOnly: this.props.readOnly,
+                        })}
+                        role="list"
+                    >
+                        {this.getSelectedOptionComponents()}
                     </div>
-                )}
+                    {this.getRemoveAllSelectedOptionsButton()}
+                </div>
+
                 {!this.props.readOnly && (
                     <button
                         className={buttonClasses}
@@ -270,4 +248,4 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTa
     }
 }
 
-export const MultiSelectConnected: React.ComponentType<IMultiSelectOwnProps> = DnDUtils.TagControlContext(MultiSelect);
+export const MultiSelectConnected: ComponentType<IMultiSelectOwnProps> = MultiSelect;

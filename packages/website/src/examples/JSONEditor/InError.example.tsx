@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {JSONEditorConnected} from '@coveord/plasma-react';
 
 const invalidJSON = '{hello: world}';

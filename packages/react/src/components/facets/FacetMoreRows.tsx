@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
@@ -6,7 +6,7 @@ import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {FilterBox} from '../filterBox/FilterBox';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 
-export interface IFacetMoreRowsOwnProps extends React.ClassAttributes<FacetMoreRows> {
+export interface IFacetMoreRowsOwnProps extends ClassAttributes<FacetMoreRows> {
     facet: string;
     facetRows: JSX.Element[];
 }
@@ -31,7 +31,7 @@ export interface IFacetMoreRowsProps
         IFacetMoreRowsStateProps,
         IFacetMoreRowsChildrenProps {}
 
-export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
+export class FacetMoreRows extends Component<IFacetMoreRowsProps, any> {
     private facetSearch: HTMLDivElement;
 
     componentDidMount() {

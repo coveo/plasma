@@ -9,7 +9,6 @@ import {
     IActionBarState,
 } from '@coveord/plasma-react';
 import {EditSize24Px, UnavailableSize24Px} from '@coveord/plasma-react-icons';
-import * as React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 const MY_ID = 'action-bar-id';

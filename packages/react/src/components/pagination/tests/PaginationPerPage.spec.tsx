@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 
 import {FlatSelectWithPrepend} from '../../flatSelect/FlatSelectWithPrepend';
 import {PaginationPerPage} from '../PaginationPerPage';

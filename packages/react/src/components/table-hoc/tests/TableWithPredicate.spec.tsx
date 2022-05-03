@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import {shallowWithState} from '@helpers/enzyme-redux';
-import * as React from 'react';
+import {ReactNode} from 'react';
 import {render, screen} from '@test-utils';
 import * as _ from 'underscore';
 
@@ -145,7 +145,7 @@ describe('Table HOC', () => {
                 {value: 'a', city: 'not-test'},
                 {value: 'b', city: 'test'},
             ],
-            renderBody: (data: any[]): React.ReactNode =>
+            renderBody: (data: any[]): ReactNode =>
                 data.map((x) => (
                     <tr>
                         <td>{x.value}</td>

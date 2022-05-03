@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactElement} from 'react';
 import {ITextAreaProps} from './TextArea';
 
 export interface ITextAreaLabelProps {
-    children: React.ReactElement<ITextAreaProps>;
+    children: ReactElement<ITextAreaProps>;
     label: string;
     containerClassName?: string;
 }

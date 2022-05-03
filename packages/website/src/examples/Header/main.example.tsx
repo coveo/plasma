@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {BasicHeader} from '@coveord/plasma-react';
 
 export default () => (

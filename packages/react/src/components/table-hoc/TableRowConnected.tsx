@@ -1,7 +1,15 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {
+    Children,
+    Fragment,
+    HTMLAttributes,
+    isValidElement,
+    PureComponent,
+    ReactChild,
+    ReactNode,
+    MouseEvent as ReactMouseEvent,
+} from 'react';
 import * as _ from 'underscore';
-import {Button} from '../button/Button';
 
 import {SlideY} from '../../animations/SlideY';
 import {PlasmaState} from '../../PlasmaState';
@@ -10,17 +18,18 @@ import {EventUtils} from '../../utils/EventUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
 import {addActionsToActionBar} from '../actions/ActionBarActions';
+import {Button} from '../button/Button';
 import {COLLAPSIBLE_EFFECT_DURATION} from '../collapsible/CollapsibleConnected';
 import {CollapsibleToggle} from '../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from './actions/TableHOCRowActions';
 import {TableSelectors} from './TableSelectors';
 
 export interface CollapsibleRowProps {
-    content?: React.ReactNode;
+    content?: ReactNode;
     className?: string;
     expandOnMount?: boolean;
     noBorderBottom?: boolean;
-    renderCustomToggleCell?: (opened: boolean) => React.ReactNode;
+    renderCustomToggleCell?: (opened: boolean) => ReactNode;
     onToggleCollapsible?: (open: boolean) => void;
 }
 
@@ -60,7 +69,7 @@ const TableRowPropsToOmit = [
 
 const isCollapsible = (props: ITableRowOwnProps): boolean =>
     props.collapsible &&
-    (React.isValidElement(props.collapsible.content) ||
+    (isValidElement(props.collapsible.content) ||
         _.isString(props.collapsible.content) ||
         _.isNull(props.collapsible.content));
 
@@ -107,9 +116,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps) =>
 };
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-class TableRowConnected extends React.PureComponent<
-    ITableRowConnectedProps & React.HTMLAttributes<HTMLTableRowElement>
-> {
+class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttributes<HTMLTableRowElement>> {
     static defaultProps: Partial<ITableRowOwnProps>;
 
     componentDidUpdate(prevProps: ITableRowConnectedProps) {
@@ -133,7 +140,7 @@ class TableRowConnected extends React.PureComponent<
     render() {
         const rowIsCollapsible = isCollapsible(this.props);
         let collapsibleContentRow = null;
-        let collapsibleRowToggle: React.ReactNode = null;
+        let collapsibleRowToggle: ReactNode = null;
         if (rowIsCollapsible) {
             if (_.isNull(this.props.collapsible.content)) {
                 collapsibleRowToggle = <td />;
@@ -159,7 +166,7 @@ class TableRowConnected extends React.PureComponent<
                 );
 
                 const customToggle = this.props.collapsible.renderCustomToggleCell?.(this.props.opened);
-                collapsibleRowToggle = React.isValidElement(customToggle) ? (
+                collapsibleRowToggle = isValidElement(customToggle) ? (
                     customToggle
                 ) : (
                     <td
@@ -176,7 +183,7 @@ class TableRowConnected extends React.PureComponent<
         }
 
         return (
-            <React.Fragment key={`${this.props.tableId}-${this.props.id}`}>
+            <Fragment key={`${this.props.tableId}-${this.props.id}`}>
                 <tr
                     key={`${this.props.tableId}-${this.props.id}-heading`}
                     {..._.omit(this.props, TableRowPropsToOmit)}
@@ -195,17 +202,15 @@ class TableRowConnected extends React.PureComponent<
                     {collapsibleRowToggle}
                 </tr>
                 {collapsibleContentRow}
-            </React.Fragment>
+            </Fragment>
         );
     }
 
     private get columnCount(): number {
-        return React.Children.toArray(this.props.children).filter((child: React.ReactChild) =>
-            React.isValidElement(child)
-        ).length;
+        return Children.toArray(this.props.children).filter((child: ReactChild) => isValidElement(child)).length;
     }
 
-    private handleClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
+    private handleClick = (e: ReactMouseEvent<HTMLTableRowElement>) => {
         if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
             this.props.onClick?.(e);
             const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;

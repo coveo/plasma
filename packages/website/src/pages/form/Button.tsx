@@ -1,29 +1,25 @@
-import React from 'react';
+import {FunctionComponent} from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from "react";
     import {Button} from "@coveord/plasma-react";
 
     export default () => <Button>Hello World!</Button>;
 `;
 
 const primary = `
-    import * as React from "react";
     import {Button} from "@coveord/plasma-react";
 
     export default () => <Button primary>Hello World!</Button>;
 `;
 
 const small = `
-    import * as React from "react";
     import {Button} from "@coveord/plasma-react";
 
     export default () => <Button small>Hello World!</Button>;
 `;
 
 const iconAndLink = `
-    import * as React from "react";
     import {Button} from "@coveord/plasma-react";
     import {ZombieSize24Px} from '@coveord/plasma-react-icons';
 
@@ -31,14 +27,12 @@ const iconAndLink = `
 `;
 
 const disabled = `
-    import * as React from "react";
     import {Button} from "@coveord/plasma-react";
 
     export default () => <Button primary enabled={false}>Hello World!</Button>;
     `;
 
 const prepend = `
-    import * as React from 'react';
     import { Button, Svg } from '@coveord/plasma-react';
 
     export default () => (
@@ -49,7 +43,7 @@ const prepend = `
     );
 `;
 
-export const ButtonExamples: React.FunctionComponent = () => (
+export const ButtonExamples: FunctionComponent = () => (
     <PageLayout
         id="Button"
         title="Button"

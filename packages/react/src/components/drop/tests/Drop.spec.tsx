@@ -1,6 +1,6 @@
 import {ReactWrapper, ShallowWrapper} from 'enzyme';
 import {mountWithStore, shallowWithState} from '@helpers/enzyme-redux';
-import * as React from 'react';
+import {ReactNode} from 'react';
 import userEvent from '@testing-library/user-event';
 import {render, screen, waitFor} from '@test-utils';
 
@@ -12,7 +12,7 @@ import {DefaultGroupIds, DropActions} from '../redux/DropActions';
 
 describe('Drop', () => {
     describe('<Drop />', () => {
-        const defaultButton: React.ReactNode = <div className={'onclick'}></div>;
+        const defaultButton: ReactNode = <div className={'onclick'}></div>;
 
         it('should mount without errors', () => {
             expect(() => {
@@ -66,7 +66,7 @@ describe('Drop', () => {
             const mountDropWithStore = (
                 props?: Partial<IDropProps>,
                 store?: PlasmaMockStore,
-                child: React.ReactNode = null
+                child: ReactNode = null
             ) => {
                 wrapper = mountWithStore(
                     <Drop
@@ -208,7 +208,7 @@ describe('Drop', () => {
                     wrapper
                         .find(DropPod)
                         .props()
-                        .renderDrop({} as any, {} as any, {} as any) as any,
+                        .renderDrop({} as any, {} as any) as any,
                     {}
                 );
 

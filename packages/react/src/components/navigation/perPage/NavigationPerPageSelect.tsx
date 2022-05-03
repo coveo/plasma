@@ -1,6 +1,6 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 
-export interface INavigationPerPageSelectOwnProps extends React.ClassAttributes<NavigationPerPageSelect> {
+export interface INavigationPerPageSelectOwnProps extends ClassAttributes<NavigationPerPageSelect> {
     perPageNb: number;
     selected: boolean;
     onPerPageClick: (perPageNb: number) => void;
@@ -8,7 +8,7 @@ export interface INavigationPerPageSelectOwnProps extends React.ClassAttributes<
 
 export interface INavigationPerPageSelectProps extends INavigationPerPageSelectOwnProps {}
 
-export class NavigationPerPageSelect extends React.Component<INavigationPerPageSelectProps, any> {
+export class NavigationPerPageSelect extends Component<INavigationPerPageSelectProps, any> {
     render() {
         const selectClasses: string = 'flat-select-option' + (this.props.selected ? '' : ' selectable');
         const spanClasses: string = 'enabled' + (this.props.selected ? ' selected-value state-selected' : '');

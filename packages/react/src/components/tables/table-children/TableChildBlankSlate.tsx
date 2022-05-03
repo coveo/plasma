@@ -1,4 +1,3 @@
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {BlankSlate, IBlankSlateProps} from '../../blankSlate/BlankSlate';

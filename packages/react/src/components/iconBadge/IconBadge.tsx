@@ -1,6 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {Svg} from '../svg';
 
@@ -51,7 +51,7 @@ const TypeColorMapping: Record<IconBadgeType, string> = {
     [IconBadgeType.Major]: 'mod-major',
 };
 
-export const IconBadge: React.FunctionComponent<IconBadgeProps> = ({
+export const IconBadge: FunctionComponent<IconBadgeProps> = ({
     svgName,
     type,
     size = IconBadgeSize.Medium,

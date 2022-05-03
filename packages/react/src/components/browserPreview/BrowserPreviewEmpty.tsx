@@ -1,14 +1,14 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 
 import {Svg} from '../svg';
 
 export interface BrowserPreviewEmptyProps {
     onClick?: () => void;
-    image?: React.ReactNode;
+    image?: ReactNode;
 }
 
-export const BrowserPreviewEmpty: React.FunctionComponent<BrowserPreviewEmptyProps> = ({image, onClick, children}) => (
+export const BrowserPreviewEmpty: FunctionComponent<BrowserPreviewEmptyProps> = ({image, onClick, children}) => (
     <div
         onClick={onClick}
         className={classNames('browser-preview__state flex flex-column flex-auto center-align', {

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {TooltipPlacement} from '../../utils';
 
 import {Button} from '../button';
@@ -11,10 +11,7 @@ export interface ISetToNowProps {
 
 export const SET_TO_NOW_DEFAULT_TOOLTIP: string = 'Set to now';
 
-export const SetToNowButton: React.FunctionComponent<ISetToNowProps> = ({
-    onClick,
-    tooltip = SET_TO_NOW_DEFAULT_TOOLTIP,
-}) => (
+export const SetToNowButton: FunctionComponent<ISetToNowProps> = ({onClick, tooltip = SET_TO_NOW_DEFAULT_TOOLTIP}) => (
     <Button
         onClick={onClick}
         tooltip={tooltip || SET_TO_NOW_DEFAULT_TOOLTIP}

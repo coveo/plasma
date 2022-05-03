@@ -1,52 +1,56 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "40.5.2-next.10",
+    "version": "41.2.9-next.10",
     "description": "Design tokens of the Plasma Design System",
+    "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
     "repository": {
         "type": "git",
         "url": "https://github.com/coveo/plasma.git",
         "directory": "packages/tokens"
     },
-    "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
+    "license": "Apache-2.0",
+    "files": [
+        "dist",
+        "icons",
+        "scss"
+    ],
     "scripts": {
         "build": "rimraf dist && tsc --project tsconfig.json",
-        "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
+        "precommit": "lint-staged",
         "tokens:build": "ts-node ./bin/build.ts --project ./bin/tsconfig.json && pnpm tokens:lint",
-        "tokens:lint": "prettier --write \"{src,scss,data}/*.{scss,ts,tsx,json}\"",
-        "precommit": "lint-staged"
-    },
-    "license": "Apache-2.0",
-    "devDependencies": {
-        "@types/fs-extra": "9.0.13",
-        "@types/lodash": "4.14.181",
-        "@types/node": "16.11.27",
-        "@types/rimraf": "3.0.2",
-        "@types/svgo": "2.6.3",
-        "commander": "9.0.0",
-        "cross-fetch": "3.1.5",
-        "dotenv-safe": "8.2.0",
-        "figma-js": "1.14.0",
-        "fs-extra": "10.0.1",
-        "lint-staged": "9.5.0",
-        "lodash": "4.17.21",
-        "prettier": "2.4.1",
-        "rimraf": "3.0.2",
-        "sass": "1.48.0",
-        "svgo": "2.8.0",
-        "ts-node": "10.4.0",
-        "tslib": "2.3.1",
-        "typescript": "4.5.4"
+        "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
+        "tokens:lint": "prettier --write \"{src,scss,data}/*.{scss,ts,tsx,json}\""
     },
     "lint-staged": {
+        "package.json": [
+            "sort-package-json",
+            "git add"
+        ],
         "**/*.{ts,tsx,json,md,scss}": [
             "prettier --write",
             "git add"
         ]
     },
     "prettier": "tsjs/prettier-config",
-    "files": [
-        "dist",
-        "icons",
-        "scss"
-    ]
+    "devDependencies": {
+        "@types/fs-extra": "9.0.13",
+        "@types/lodash": "4.14.182",
+        "@types/node": "16.11.32",
+        "@types/rimraf": "3.0.2",
+        "@types/svgo": "2.6.3",
+        "commander": "9.2.0",
+        "cross-fetch": "3.1.5",
+        "dotenv-safe": "8.2.0",
+        "figma-js": "1.15.0",
+        "fs-extra": "10.1.0",
+        "lint-staged": "9.5.0",
+        "lodash": "4.17.21",
+        "prettier": "2.4.1",
+        "rimraf": "3.0.2",
+        "sass": "1.51.0",
+        "svgo": "2.8.0",
+        "ts-node": "10.7.0",
+        "tslib": "2.3.1",
+        "typescript": "4.6.4"
+    }
 }

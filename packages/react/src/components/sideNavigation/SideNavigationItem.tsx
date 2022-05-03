@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent, useRef, useEffect} from 'react';
 import {addClassNameToChildren} from '../../utils/JSXUtils';
 
 export interface ISideNavigationItemProps {
@@ -13,7 +13,7 @@ export interface SideNavigationItemProps extends Partial<ISideNavigationItemProp
     disabled?: boolean;
 }
 
-export const SideNavigationItem: React.FunctionComponent<SideNavigationItemProps> = ({
+export const SideNavigationItem: FunctionComponent<SideNavigationItemProps> = ({
     isActive,
     href,
     title,
@@ -21,9 +21,9 @@ export const SideNavigationItem: React.FunctionComponent<SideNavigationItemProps
     target,
     disabled,
 }) => {
-    const ref = React.useRef(null);
+    const ref = useRef(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (isActive && ref.current) {
             ref.current.scrollIntoView({behavior: 'instant', block: 'nearest'});
         }

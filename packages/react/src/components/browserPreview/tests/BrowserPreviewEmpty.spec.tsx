@@ -1,5 +1,5 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
+import {ReactNode} from 'react';
 
 import {Svg} from '../../svg';
 import {BrowserPreviewEmpty, BrowserPreviewEmptyProps} from '../BrowserPreviewEmpty';
@@ -10,7 +10,7 @@ describe('BrowserPreviewEmpty', () => {
         onClick: jest.fn(),
     };
 
-    const mountWithProps = (props: BrowserPreviewEmptyProps, children?: React.ReactNode) => {
+    const mountWithProps = (props: BrowserPreviewEmptyProps, children?: ReactNode) => {
         component = mount(<BrowserPreviewEmpty {...props}>{children}</BrowserPreviewEmpty>);
     };
 

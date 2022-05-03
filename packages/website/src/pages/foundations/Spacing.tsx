@@ -1,10 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
-
     // red is margin
     // blue is padding
     // highlight-padding and highlight-margin classes are only available on the Plasma website
