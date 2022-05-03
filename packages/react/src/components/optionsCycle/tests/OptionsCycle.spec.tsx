@@ -1,6 +1,5 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from '@helpers/enzyme-redux';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';

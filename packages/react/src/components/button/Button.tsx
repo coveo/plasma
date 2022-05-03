@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ButtonHTMLAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions/Action';
@@ -29,7 +29,7 @@ const ButtonPropsToOmit = [
     'tooltipPlacement',
 ];
 
-export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
+export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> {
     static defaultProps: Partial<IButtonProps> = {
         enabled: true,
         name: '',

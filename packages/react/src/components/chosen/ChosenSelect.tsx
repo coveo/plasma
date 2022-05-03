@@ -1,7 +1,7 @@
-import * as React from 'react';
+import {HTMLProps, Component} from 'react';
 import * as _ from 'underscore';
 
-export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
+export interface IChosenSelectProps extends HTMLProps<ChosenSelect> {
     allowSingleDeselect?: boolean; // @default: false
     caseSensitiveSearch?: boolean; // @default: false
     disableSearch?: boolean; // @default: false
@@ -49,7 +49,7 @@ const chosenSelectPropsToOmit = [
 /**
  * @deprecated use components from SelectComponents instead
  */
-export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
+export class ChosenSelect extends Component<IChosenSelectProps, any> {
     select: JQuery;
 
     componentDidMount() {

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {MouseEvent, ReactElement, Children, cloneElement, PureComponent} from 'react';
 import * as _ from 'underscore';
 import {RadioCard} from '.';
 
@@ -14,7 +14,7 @@ export interface IRadioSelectOnChangeCallback {
      * @param id The unique identifier of the radio select
      * @param e The change event
      */
-    onChange?: (value: string, id?: string, e?: React.MouseEvent<HTMLElement>) => void;
+    onChange?: (value: string, id?: string, e?: MouseEvent<HTMLElement>) => void;
 }
 
 export interface IRadioSelectProps extends IRadioSelectOnChangeCallback {
@@ -43,7 +43,7 @@ export interface IRadioSelectProps extends IRadioSelectOnChangeCallback {
     /**
      * Radio options of the RadioSelect. Each child must be a Radio or a RadioCard
      */
-    children?: Array<React.ReactElement<typeof Radio | typeof RadioCard>> | Array<React.ReactElement<ToggleForm>>;
+    children?: Array<ReactElement<typeof Radio | typeof RadioCard>> | Array<ReactElement<ToggleForm>>;
     /**
      * A callback function executed when the selected Radio option changes
      *
@@ -51,7 +51,7 @@ export interface IRadioSelectProps extends IRadioSelectOnChangeCallback {
      * @param id The unique identifier of the radio select
      * @param e The change event
      */
-    onChangeCallback?: (value: string, id?: string, e?: React.MouseEvent<HTMLElement>, disabled?: boolean) => void;
+    onChangeCallback?: (value: string, id?: string, e?: MouseEvent<HTMLElement>, disabled?: boolean) => void;
 }
 
 export interface IRadioSelectConnectedProps {
@@ -81,7 +81,7 @@ export interface IRadioSelectAllProps
         IRadioSelectDispatchProps,
         IRadioSelectStateProps {}
 
-export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
+export class RadioSelect extends PureComponent<IRadioSelectAllProps> {
     static defaultProps: Partial<IRadioSelectAllProps> = {
         disabled: false,
     };
@@ -95,15 +95,15 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
     }
 
     render() {
-        const children = React.Children.map(this.props.children, (child: React.ReactElement<any>) =>
-            React.cloneElement(child, {
+        const children = Children.map(this.props.children, (child: ReactElement<any>) =>
+            cloneElement(child, {
                 name: child.props.name || this.props.name,
                 checked: this.props.value === child.props.value,
                 disabled: this.isValueDisabled(child.props.value),
                 disabledTooltip: child.props.disabledTooltip || this.props.disabledTooltip,
                 outerContainerClass: child.props.outerContainerClass,
                 outerElementInContainer: child.props.outerElementInContainer,
-                onClick: (e: React.MouseEvent<HTMLElement>) => {
+                onClick: (e: MouseEvent<HTMLElement>) => {
                     child.props.onClick && child.props.onClick(e);
                     this.handleToggle(child.props.value, e);
                 },
@@ -113,7 +113,7 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
         return <div className={classNames('form-control radio-select', this.props.className)}>{children}</div>;
     }
 
-    private handleToggle(value: string, e: React.MouseEvent<HTMLElement>) {
+    private handleToggle(value: string, e: MouseEvent<HTMLElement>) {
         if (!this.props.disabled) {
             this.props.onChange?.(value, this.props.id, e);
         }

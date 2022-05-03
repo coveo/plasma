@@ -1,6 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, MouseEvent, FunctionComponent, useRef, useEffect} from 'react';
 import * as _ from 'underscore';
 
 import {Collapsible} from '../collapsible/Collapsible';
@@ -8,11 +8,11 @@ import {Svg} from '../svg';
 import {ISideNavigationHeaderProps} from './SideNavigationHeader';
 
 export interface SideNavigationHeaderProps {
-    title?: React.ReactNode;
+    title?: ReactNode;
     svgName?: SvgName;
     svgClass?: string;
-    customIcon?: React.ReactNode;
-    onClick?: (event: React.MouseEvent) => void;
+    customIcon?: ReactNode;
+    onClick?: (event: MouseEvent) => void;
     isLink?: boolean;
     className?: string;
 }
@@ -28,14 +28,14 @@ export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     itemsClassName?: string;
 }
 
-const HeaderIcon: React.FunctionComponent<SideNavigationHeaderProps> = ({svgName, svgClass}) =>
+const HeaderIcon: FunctionComponent<SideNavigationHeaderProps> = ({svgName, svgClass}) =>
     svgName ? (
         <Svg svgName={svgName} svgClass={classNames('navigation-menu-section-header-icon icon mod-lg', svgClass)} />
     ) : (
         <span className="navigation-menu-section-header-no-icon" />
     );
 
-const SideNavigationHeader: React.FunctionComponent<
+const SideNavigationHeader: FunctionComponent<
     SideNavigationHeaderProps & Pick<ISideNavigationSectionProps, 'expandable'>
 > = ({customIcon, onClick, children, expandable, isLink, className, ...iconProps}) => (
     <div
@@ -54,7 +54,7 @@ const SideNavigationHeader: React.FunctionComponent<
     </div>
 );
 
-export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationSectionProps> = ({
+export const SideNavigationMenuSection: FunctionComponent<ISideNavigationSectionProps> = ({
     expandable,
     expanded,
     title,
@@ -66,9 +66,9 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
     itemsClassName,
     ...headerProps
 }) => {
-    const ref = React.useRef(null);
+    const ref = useRef(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (isActive && ref.current) {
             ref.current.scrollIntoView({behavior: 'instant', block: 'nearest'});
         }

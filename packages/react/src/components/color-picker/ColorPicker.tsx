@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent, ChangeEvent, useState, useEffect, useCallback} from 'react';
 import {ChromePicker, ChromePickerProps, ColorChangeHandler, ColorResult} from 'react-color';
 import {useDispatch} from 'react-redux';
 import {uniqueId} from 'underscore';
@@ -17,17 +17,17 @@ export interface IColorPickerProps extends ChromePickerProps {
     defaultColor?: string;
 }
 
-export const ColorPicker: React.FunctionComponent<IColorPickerProps> = ({
+export const ColorPicker: FunctionComponent<IColorPickerProps> = ({
     id = uniqueId('colorpicker'),
     defaultColor = '#000',
     onChangeComplete,
     onChange,
     ...props
 }) => {
-    const [color, setColor] = React.useState(defaultColor);
+    const [color, setColor] = useState(defaultColor);
     const dispatch: IDispatch = useDispatch();
 
-    React.useEffect(() => {
+    useEffect(() => {
         // sync the state on the first render
         dispatch(changeInputValue(id, defaultColor, true));
     }, []);
@@ -37,8 +37,8 @@ export const ColorPicker: React.FunctionComponent<IColorPickerProps> = ({
         onChange?.(colorChanged, event);
     };
 
-    const onUpdate: ColorChangeHandler = React.useCallback(
-        (colorPicked: ColorResult, event: React.ChangeEvent<HTMLInputElement>) => {
+    const onUpdate: ColorChangeHandler = useCallback(
+        (colorPicked: ColorResult, event: ChangeEvent<HTMLInputElement>) => {
             onChangeComplete?.(colorPicked, event);
             dispatch(changeInputValue(id, colorPicked.hex, true));
         },

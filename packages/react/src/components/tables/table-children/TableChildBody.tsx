@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, MouseEvent} from 'react';
 import * as _ from 'underscore';
 
 import {getAdditionalClasses, IAdditionalClass} from '../../../utils/ClassNameUtils';
@@ -40,7 +40,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         props.headingAttributes,
         (headingAttribute: ITableHeadingAttribute, xPosition: number) => {
             const {attributeName, attributeFormatter} = headingAttribute;
-            const headingRowContent: React.ReactNode = attributeFormatter
+            const headingRowContent: ReactNode = attributeFormatter
                 ? attributeFormatter(props.rowData[attributeName], attributeName, props.rowData)
                 : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
 
@@ -48,7 +48,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
                 <td
                     key={`cell-${xPosition}`}
                     className={classNames(getAdditionalClasses(headingAttribute.additionalCellClasses, props.rowData))}
-                    onClick={(event: React.MouseEvent<HTMLTableDataCellElement>) =>
+                    onClick={(event: MouseEvent<HTMLTableDataCellElement>) =>
                         handleOnClick(event, headingAttribute, props)
                     }
                 >
@@ -115,7 +115,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
 };
 
 const handleOnClick = (
-    event: React.MouseEvent<HTMLTableDataCellElement>,
+    event: MouseEvent<HTMLTableDataCellElement>,
     headingAttributes: ITableHeadingAttribute,
     childBodyProps: ITableChildBodyProps
 ) => {

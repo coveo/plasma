@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent, ReactElement, useState, Children, isValidElement} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {IDispatch, TooltipPlacement} from '../../utils';
@@ -42,7 +42,7 @@ export interface ModalWizardProps
     /**
      * Determines what needs to be rendered in the modal footer. The content of the footer can be dependent on the current step by using a render function
      */
-    modalFooterChildren?: React.ReactNode | DependsOnStep<React.ReactNode>;
+    modalFooterChildren?: ReactNode | DependsOnStep<ReactNode>;
     /**
      * Whether the wizard should warn about unsaved changes when the user unexpectedly closes the modal
      */
@@ -85,7 +85,7 @@ export interface ModalWizardProps
     onCancel?: () => unknown;
 }
 
-export const ModalWizard: React.FunctionComponent<ModalWizardProps> = ({
+export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
     id,
     title,
     onFinish,
@@ -102,8 +102,8 @@ export const ModalWizard: React.FunctionComponent<ModalWizardProps> = ({
     onCancel,
     ...modalProps
 }) => {
-    const [currentStep, setCurrentStep] = React.useState(0);
-    const steps = React.Children.toArray(children).filter(React.isValidElement) as React.ReactElement[];
+    const [currentStep, setCurrentStep] = useState(0);
+    const steps = Children.toArray(children).filter(isValidElement) as ReactElement[];
     const numberOfSteps = steps.length;
     const isFirstStep = currentStep === 0;
     const isLastStep = currentStep === numberOfSteps - 1;
@@ -121,7 +121,7 @@ export const ModalWizard: React.FunctionComponent<ModalWizardProps> = ({
                     modalHeaderClasses={['p0 flex flex-column flex-start space-between full-content-x modal-wizard']}
                     modalBodyChildren={
                         <>
-                            {steps.map((step: React.ReactElement, index: number) => {
+                            {steps.map((step: ReactElement, index: number) => {
                                 const hidden = index !== currentStep;
                                 return (
                                     <div className={classNames({hidden})} hidden={hidden} key={index}>

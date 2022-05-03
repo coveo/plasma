@@ -1,17 +1,17 @@
-import * as React from 'react';
+import {CSSProperties, HTMLProps, Component} from 'react';
 import * as _ from 'underscore';
 
 export interface ColorProps {
     color: string;
 }
 
-export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivElement>> {
+export class Color extends Component<ColorProps & HTMLProps<HTMLDivElement>> {
     static defaultprops: Partial<ColorProps> = {
         color: 'var (--white)',
     };
 
     render() {
-        let colorStyle: React.CSSProperties = {backgroundColor: this.props.color} || {};
+        let colorStyle: CSSProperties = {backgroundColor: this.props.color} || {};
         if (this.props.style) {
             colorStyle = {...colorStyle, ...this.props.style};
         }

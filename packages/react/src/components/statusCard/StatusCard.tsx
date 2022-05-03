@@ -1,6 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 
 import {Loading} from '../loading/Loading';
 import {Svg} from '../svg';
@@ -13,7 +13,7 @@ export interface StatusCardProps {
     loading?: boolean;
 }
 
-export class StatusCard extends React.Component<StatusCardProps> {
+export class StatusCard extends Component<StatusCardProps> {
     render() {
         const cardClasses: string = classNames('status-card px3 flex flex-center', this.props.className, {
             simple: this.props.simple,

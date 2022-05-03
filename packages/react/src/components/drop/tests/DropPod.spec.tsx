@@ -1,5 +1,5 @@
 import {render, screen, within} from '@test-utils';
-import * as React from 'react';
+import {RefObject, createRef} from 'react';
 import _ from 'underscore';
 
 import {Defaults} from '../../../Defaults';
@@ -14,7 +14,7 @@ describe('DropPod', () => {
     });
 
     describe('<DropPod />', () => {
-        let buttonRef: React.RefObject<HTMLDivElement>;
+        let buttonRef: RefObject<HTMLDivElement>;
         const defaultParentOffset = {
             bottom: 400,
             top: 50,
@@ -74,7 +74,7 @@ describe('DropPod', () => {
         };
 
         beforeEach(() => {
-            buttonRef = React.createRef<HTMLDivElement>();
+            buttonRef = createRef<HTMLDivElement>();
         });
 
         it('should mount and unmount without errors', () => {

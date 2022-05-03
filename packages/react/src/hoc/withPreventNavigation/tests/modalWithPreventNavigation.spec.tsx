@@ -1,6 +1,6 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
+import {Component} from 'react';
 
 import {closeModal} from '../../../components/modal/ModalActions';
 import {ModalCompositeConnected} from '../../../components/modal/ModalComposite';
@@ -17,7 +17,7 @@ describe('Modal with Prevent Navigation', () => {
     let store: PlasmaMockStore;
     let component: ShallowWrapper<any, any>;
 
-    class SomeModal extends React.Component<IWithPreventNavigationInjectedProps> {
+    class SomeModal extends Component<IWithPreventNavigationInjectedProps> {
         static ID = 'SomeModalId';
 
         render() {

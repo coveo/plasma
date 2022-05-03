@@ -1,7 +1,6 @@
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-import * as React from 'react';
 import {useDispatch} from 'react-redux';
 import {Button, IDispatch, openModal, closeModal, ModalCompositeConnected} from '@coveord/plasma-react';
 
@@ -39,7 +38,6 @@ export default () => {
 `;
 
 const loading = `
-import * as React from 'react';
 import {useDispatch} from 'react-redux';
 import {Button, IDispatch, openModal, closeModal, ModalLoading} from '@coveord/plasma-react';
 
@@ -57,7 +55,6 @@ export default () => {
 `;
 
 const prompts = `
-import * as React from 'react';
 import {useDispatch} from 'react-redux';
 import {Button, IDispatch, openModal, closeModal, ModalCompositeConnected} from '@coveord/plasma-react';
 
@@ -132,7 +129,6 @@ export default () => {
 `;
 
 const withAdditionalProps = `
-import * as React from 'react';
 import {useDispatch} from 'react-redux';
 import {Button, IDispatch, openModal, closeModal, ModalCompositeConnected} from '@coveord/plasma-react';
 
@@ -162,7 +158,6 @@ export default () => {
 `;
 
 const withDirty = `
-import * as React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {
     Button,

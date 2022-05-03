@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import {FilterUtils} from './FilterUtils';
 
 describe('FilterUtils', () => {

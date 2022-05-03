@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {LabeledValue} from '@coveord/plasma-react';
 
     export default () => (
@@ -12,7 +9,6 @@ const code = `
 `;
 
 const withInformation = `
-    import * as React from 'react';
     import {LabeledValue, TooltipPlacement} from '@coveord/plasma-react';
 
     export default () => (
@@ -26,7 +22,6 @@ const withInformation = `
 `;
 
 const fullRow = `
-    import * as React from 'react';
     import {LabeledValue} from '@coveord/plasma-react';
 
     export default () => (

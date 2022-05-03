@@ -1,5 +1,5 @@
 import {mount} from 'enzyme';
-import * as React from 'react';
+import {ReactNode} from 'react';
 import {DndProvider} from 'react-dnd';
 import {TestBackend} from 'react-dnd-test-backend';
 import {Provider} from 'react-redux';
@@ -13,7 +13,7 @@ const mockUUID = (generatedId: string = 'id') => {
     jest.spyOn(UUID, 'generate').mockReturnValue(generatedId);
 };
 
-const renderComponent = (ComponentClass: any, props = {}, child: React.ReactNode = null) => {
+const renderComponent = (ComponentClass: any, props = {}, child: ReactNode = null) => {
     const store: Store<PlasmaState> = TestUtils.buildStore();
 
     const wrapper = mount(

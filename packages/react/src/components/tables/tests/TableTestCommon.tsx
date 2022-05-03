@@ -1,6 +1,5 @@
 import {date, internet} from 'faker/locale/en';
 import moment from 'moment';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {DATES_SEPARATOR} from '../../../utils';

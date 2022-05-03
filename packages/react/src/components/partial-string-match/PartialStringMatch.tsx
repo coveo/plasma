@@ -1,5 +1,5 @@
 import escapeStringRegexp from 'escape-string-regexp';
-import * as React from 'react';
+import {ReactNode, FunctionComponent, cloneElement, Component, PureComponent} from 'react';
 
 export interface PartialStringMatchProps {
     /**
@@ -10,7 +10,7 @@ export interface PartialStringMatchProps {
     caseInsensitive?: boolean;
 }
 
-export class PartialStringMatch extends React.PureComponent<PartialStringMatchProps> {
+export class PartialStringMatch extends PureComponent<PartialStringMatchProps> {
     static defaultProps: Partial<PartialStringMatchProps> = {
         wholeString: '',
         partialMatch: '',
@@ -25,11 +25,11 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
         return this.lookupChildren(toRender);
     }
 
-    private lookupChildren(component: React.ReactNode): React.ReactNode {
+    private lookupChildren(component: ReactNode): ReactNode {
         const iterator = this.deepReplaceStrings(component);
 
-        const children: React.ReactNode[] = [];
-        let result: IteratorResult<React.ReactNode>;
+        const children: ReactNode[] = [];
+        let result: IteratorResult<ReactNode>;
         do {
             result = iterator.next();
             if (result.value) {
@@ -40,7 +40,7 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
         return children.length === 1 ? children[0] : children;
     }
 
-    private *deepReplaceStrings(component: React.ReactNode): IterableIterator<React.ReactNode> {
+    private *deepReplaceStrings(component: ReactNode): IterableIterator<ReactNode> {
         const element = component as JSX.Element;
         if (!component) {
             return;
@@ -52,7 +52,7 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
             yield this.hightlightMatches(component);
         } else if (element.props && element.props.children) {
             // The node is a React.Component, we iterate over its children
-            yield React.cloneElement(element, {
+            yield cloneElement(element, {
                 ...element.props,
                 children: this.lookupChildren(element.props.children),
             });
@@ -62,10 +62,7 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
             yield component;
         } else if (
             typeof element.type === 'function' &&
-            !(
-                element.type.prototype instanceof React.Component ||
-                element.type.prototype instanceof React.PureComponent
-            )
+            !(element.type.prototype instanceof Component || element.type.prototype instanceof PureComponent)
         ) {
             // The node is a React.FunctionComponent, we iterate over what's rendered by the function
             yield this.lookupChildren(element.type(element.props));
@@ -74,13 +71,13 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
         }
     }
 
-    private hightlightMatches(str: string): React.ReactNode {
+    private hightlightMatches(str: string): ReactNode {
         const flags = this.props.caseInsensitive ? 'ig' : 'g';
         const matcher = escapeStringRegexp(this.props.partialMatch);
         const regExp = new RegExp(`(${matcher})`, flags);
 
         if (regExp.test(str)) {
-            const parts: React.ReactNode[] = str.split(regExp);
+            const parts: ReactNode[] = str.split(regExp);
             for (let i = 1; i < parts.length; i += 2) {
                 parts[i] = <Highlight key={`match-${i}`}>{parts[i]}</Highlight>;
             }
@@ -91,4 +88,4 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
     }
 }
 
-const Highlight: React.FunctionComponent = ({children}) => <span className="bolder">{children}</span>;
+const Highlight: FunctionComponent = ({children}) => <span className="bolder">{children}</span>;

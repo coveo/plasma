@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
@@ -10,13 +10,13 @@ export interface ITabPaneProps {
     groupId?: string;
     id?: string;
     className?: IClassName;
-    children?: React.ReactNode;
+    children?: ReactNode;
     isActive?: boolean;
 }
 
 const makeMapStateToProps = () => createStructuredSelector({isActive: TabSelectors.getIsTabSelected});
 
-export const TabPane: React.FunctionComponent<ITabPaneProps> = ({id, className, isActive, children}) => (
+export const TabPane: FunctionComponent<ITabPaneProps> = ({id, className, isActive, children}) => (
     <div
         id={`panel-${id}`}
         role="tabpanel"

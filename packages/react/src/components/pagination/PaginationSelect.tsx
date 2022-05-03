@@ -1,8 +1,7 @@
 import classNames from 'classnames';
-import {FunctionComponent} from 'react';
-import * as React from 'react';
+import {HTMLAttributes, FunctionComponent} from 'react';
 
-export interface IPaginationSelectProps extends React.HTMLAttributes<HTMLAnchorElement> {
+export interface IPaginationSelectProps extends HTMLAttributes<HTMLAnchorElement> {
     disabled?: boolean;
     selected: boolean;
     pageNb: number;

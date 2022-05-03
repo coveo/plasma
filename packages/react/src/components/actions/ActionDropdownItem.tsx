@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {IActionOptions} from './Action';
 import {LinkAction} from './LinkAction';
@@ -9,7 +9,7 @@ export interface IActionDropdownItemProps {
     parentId?: string;
 }
 
-export const ActionDropdownItem: React.FunctionComponent<IActionDropdownItemProps> = ({parentId, action}) => {
+export const ActionDropdownItem: FunctionComponent<IActionDropdownItemProps> = ({parentId, action}) => {
     if (action.separator) {
         return <li className="divider" />;
     }

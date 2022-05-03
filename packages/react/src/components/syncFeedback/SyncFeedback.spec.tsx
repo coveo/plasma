@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 import {each} from 'underscore';
 
 import {SyncFeedback, SyncFeedbackState} from './SyncFeedback';

@@ -1,6 +1,6 @@
 import moment from 'moment';
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, PureComponent} from 'react';
 
 import {DateUtils} from '../../utils/DateUtils';
 import {DateLimits} from './DatePickerActions';
@@ -9,7 +9,7 @@ import {IRangeLimit} from './DatesSelection';
 import {ISetToNowProps, SetToNowButton} from './SetToNowButton';
 import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../calendar';
 
-export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
+export interface IDatePickerProps extends ClassAttributes<DatePicker> {
     onBlur: (date: Date, isUpperLimit: boolean) => void;
     onClick: (isUpperLimit: boolean) => void;
     placeholder: string;
@@ -29,7 +29,7 @@ export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
     selectionRules?: ICalendarSelectionRule[];
 }
 
-export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelected: boolean; isDatePermitted: boolean}> {
+export class DatePicker extends PureComponent<IDatePickerProps, {isSelected: boolean; isDatePermitted: boolean}> {
     static defaultProps: Partial<IDatePickerProps> = {
         color: DEFAULT_DATE_PICKER_COLOR,
     };

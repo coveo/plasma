@@ -1,6 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
 
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {ICheckboxOwnProps} from '../../../checkbox/Checkbox';

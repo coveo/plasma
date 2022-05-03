@@ -1,6 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {PaginationReduxActions} from '../../navigation/pagination';

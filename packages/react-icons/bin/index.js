@@ -31,6 +31,7 @@ const convertVariant = async (file) => {
             fileContent.toString('utf8'),
             {
                 typescript: true,
+                jsxRuntime: 'automatic',
                 exportType: 'default',
                 namedExport: componentName,
                 template,

@@ -1,11 +1,11 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 
-export interface ITableEmptyRowProps extends React.ClassAttributes<TableEmptyRow> {
+export interface ITableEmptyRowProps extends ClassAttributes<TableEmptyRow> {
     text: string;
     nbColumns: number;
 }
 
-export class TableEmptyRow extends React.Component<ITableEmptyRowProps, any> {
+export class TableEmptyRow extends Component<ITableEmptyRowProps, any> {
     render() {
         return (
             <tbody>

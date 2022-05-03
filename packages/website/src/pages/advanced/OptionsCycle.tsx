@@ -1,16 +1,12 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {OptionsCycleConnected} from '@coveord/plasma-react';
 
     export default () => <OptionsCycleConnected id="Cycle-1" options={['Option 1', 'Option 2', 'Option 3', 'Option 4']} />;
 `;
 
 const buttonStyle = `
-    import * as React from 'react';
     import {OptionsCycleConnected} from '@coveord/plasma-react';
 
     export default () => (

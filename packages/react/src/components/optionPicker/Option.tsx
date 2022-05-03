@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import classNames from 'classnames';
 
 export interface IOption {
@@ -8,13 +8,13 @@ export interface IOption {
     [key: string]: any;
 }
 
-export interface IOptionProps extends React.ClassAttributes<Option> {
+export interface IOptionProps extends ClassAttributes<Option> {
     option: IOption;
     isActive: boolean;
     onClick: (value: string, label: string) => void;
 }
 
-export class Option extends React.Component<IOptionProps, any> {
+export class Option extends Component<IOptionProps, any> {
     render() {
         const buttonClass = this.props.isActive ? 'active' : '';
 

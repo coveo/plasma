@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component, ComponentClass, ComponentType, ReactNode} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -40,8 +40,8 @@ const SelectWithFilterPropsToOmit = [
 ];
 
 export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
-    Component: React.ComponentType<P>
-): React.ComponentClass<P & ISelectWithFilterOwnProps> => {
+    WrappedComponent: ComponentType<P>
+): ComponentClass<P & ISelectWithFilterOwnProps> => {
     type OwnProps = P & ISelectWithFilterOwnProps;
     type Props = OwnProps & ReturnType<ReturnType<typeof makeMapStateToProps>> & ReturnType<typeof mapDispatchToProps>;
 
@@ -60,8 +60,8 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
         onSelectCustomValue: (filterValue: string) => dispatch(addValueStringList(ownProps.id, filterValue)),
     });
 
-    class WrappedComponent extends React.Component<Props> {
-        static displayName = `withFilter(${Component.displayName})`;
+    class Wrapper extends Component<Props> {
+        static displayName = `withFilter(${WrappedComponent.displayName})`;
         static defaultProps: Partial<ISelectWithFilterOwnProps> = {
             duplicateText: 'Cannot add a duplicate value',
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
@@ -139,7 +139,7 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
                 mb2: !!this.props.children,
             });
 
-            let noResultItem: React.ReactNode = this.props.noResultItem || this.noResultFilter();
+            let noResultItem: ReactNode = this.props.noResultItem || this.noResultFilter();
             let items = this.props.items.map(
                 (item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue})
             );
@@ -160,7 +160,7 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
             };
 
             return (
-                <Component
+                <WrappedComponent
                     {...newProps}
                     noResultItem={noResultItem}
                     noDisabled={this.props.customValues}
@@ -175,11 +175,11 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
                         isAutoFocus
                     ></FilterBoxConnected>
                     {this.props.children}
-                </Component>
+                </WrappedComponent>
             );
         }
     }
 
     // @ts-ignore
-    return connect(makeMapStateToProps, mapDispatchToProps)(WrappedComponent);
+    return connect(makeMapStateToProps, mapDispatchToProps)(Wrapper);
 };

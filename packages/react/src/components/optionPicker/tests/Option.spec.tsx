@@ -1,4 +1,3 @@
-import * as React from 'react';
 import * as _ from 'underscore';
 import userEvent from '@testing-library/user-event';
 

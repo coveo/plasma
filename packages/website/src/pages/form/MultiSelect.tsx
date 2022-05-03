@@ -1,7 +1,6 @@
 import code from '@examples/MultiSelect/main.example.tsx';
 import withFilter from '@examples/MultiSelect/withFilter.example.tsx';
 import withPredicates from '@examples/MultiSelect/withPredicates.example.tsx';
-import * as React from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

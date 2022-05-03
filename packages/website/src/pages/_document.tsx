@@ -1,7 +1,7 @@
 import {Head, Html, Main, NextScript} from 'next/document';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
-const Document: React.FunctionComponent = () => (
+const Document: FunctionComponent = () => (
     <Html>
         <Head>
             <link rel="stylesheet" href="https://use.typekit.net/wqe4zqp.css" />

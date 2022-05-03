@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {KeyboardEvent, ChangeEvent, Component} from 'react';
 import * as _ from 'underscore';
 import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
@@ -12,13 +12,13 @@ export interface IMultiselectInputProps {
     onFilterTextChange?: (filterText: string) => void;
     onBlur?: () => void;
     onFocus?: () => void;
-    onKeyDownFilterBox?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyDownFilterBox?: (e: KeyboardEvent<HTMLInputElement>) => void;
     filterPlaceholder?: string;
     filterText?: string;
     deselectAllTooltipText?: string;
 }
 
-export class MultiselectInput extends React.Component<IMultiselectInputProps, any> {
+export class MultiselectInput extends Component<IMultiselectInputProps, any> {
     static defaultProps: Partial<IMultiselectInputProps> = {
         deselectAllTooltipText: 'Deselect all options',
     };
@@ -29,7 +29,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
         }
     }
 
-    private handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    private handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (this.props.onFilterTextChange) {
             this.props.onFilterTextChange(e.target.value);
         }
@@ -47,7 +47,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
         }
     }
 
-    private handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    private handleOnKeyDown(e: KeyboardEvent<HTMLInputElement>) {
         if (this.props.onKeyDownFilterBox) {
             this.props.onKeyDownFilterBox(e);
         }
@@ -94,10 +94,10 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
                     <input
                         className="mod-no-border flex-auto"
                         placeholder={this.props.filterPlaceholder}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange(e)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => this.handleInputChange(e)}
                         onBlur={() => this.handleOnBlur()}
                         onFocus={() => this.handleOnFocus()}
-                        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDown(e)}
+                        onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDown(e)}
                         value={this.props.filterText}
                     />
                     <Svg svgName="filter" className="icon" />

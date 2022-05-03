@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {HTMLAttributes, PureComponent} from 'react';
 
-export class BorderedLine extends React.PureComponent<React.HTMLAttributes<HTMLDivElement>> {
+export class BorderedLine extends PureComponent<HTMLAttributes<HTMLDivElement>> {
     static defaultClassName = 'bordered-line mod-border-top mod-border-bottom';
 
     render() {

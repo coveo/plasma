@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {DropdownConnected} from '../dropdown/DropdownConnected';
 import {Svg} from '../svg/Svg';
@@ -14,7 +14,7 @@ export interface IActionsDropdownProps {
 
 export const MORE_LABEL: string = 'More';
 
-export const ActionsDropdown: React.FunctionComponent<IActionsDropdownProps> = ({
+export const ActionsDropdown: FunctionComponent<IActionsDropdownProps> = ({
     actions,
     moreLabel,
     id,

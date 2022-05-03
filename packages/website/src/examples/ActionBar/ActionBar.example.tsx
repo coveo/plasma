@@ -8,7 +8,6 @@ import {
     PlasmaState,
     IActionBarState,
 } from '@coveord/plasma-react';
-import * as React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 const MY_ID = 'action-bar-id';
@@ -30,7 +29,9 @@ export default () => {
     };
     return (
         <>
-            <Button onClick={toggleActions} classes="mb2">Toggle actions</Button>
+            <Button onClick={toggleActions} classes="mb2">
+                Toggle actions
+            </Button>
             <ActionBarConnected id={MY_ID} />
         </>
     );

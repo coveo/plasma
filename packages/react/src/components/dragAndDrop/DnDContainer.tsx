@@ -1,5 +1,5 @@
 import {svg} from '@coveord/plasma-style';
-import * as React from 'react';
+import {HTMLProps, ReactNode, FunctionComponent, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
 
 import {Svg} from '../svg/Svg';
@@ -12,9 +12,9 @@ export interface IDraggableContainerOwnProps {
      * @param movingId the unique identifier of the box being dragged over the current box
      */
     onMoveOver: (movingId: string) => void;
-    draggableContainerProps?: Partial<React.HTMLProps<HTMLDivElement>>;
-    draggableIconProps?: React.HTMLProps<HTMLDivElement>;
-    icon?: React.ReactNode;
+    draggableContainerProps?: Partial<HTMLProps<HTMLDivElement>>;
+    draggableIconProps?: HTMLProps<HTMLDivElement>;
+    icon?: ReactNode;
     isDraggable?: boolean;
 }
 
@@ -22,7 +22,7 @@ export const DraggableContainerType = 'CONTAINER_BOX';
 
 type DragItem = {id: string};
 
-export const DnDContainer: React.FunctionComponent<IDraggableContainerOwnProps> = ({
+export const DnDContainer: FunctionComponent<IDraggableContainerOwnProps> = ({
     draggableContainerProps = {className: 'flex flex-center'},
     draggableIconProps = {},
     icon = <Svg svgName={svg.dragDrop.name} svgClass="icon" />,
@@ -31,8 +31,8 @@ export const DnDContainer: React.FunctionComponent<IDraggableContainerOwnProps> 
     onMoveOver,
     id,
 }) => {
-    const ref = React.useRef<HTMLDivElement>();
-    const iconRef = React.useRef<HTMLDivElement>();
+    const ref = useRef<HTMLDivElement>();
+    const iconRef = useRef<HTMLDivElement>();
     const [, drop] = useDrop(() => ({
         accept: DraggableContainerType,
         hover: ({id: draggedId}: DragItem) => {

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, FocusEvent} from 'react';
 import {compose} from 'redux';
 import {
     FormProvider,
@@ -18,7 +18,7 @@ interface MyData {
     name: string;
 }
 
-const containerNodeExample = (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<MyData>>, index: number) => (
+const containerNodeExample = (child: ReactNode, data: Array<IMultilineSingleBoxProps<MyData>>, index: number) => (
     <div key={`${data[index].id}Container`} className="p1">
         {child}
     </div>
@@ -34,10 +34,7 @@ const ComplexMultilineBox = compose(
         },
     }),
     multilineBoxWithRemoveButton({
-        containerNode: (
-            child: React.ReactNode,
-            getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode
-        ) => (
+        containerNode: (child: ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode) => (
             <div className="inline-flex center-align">
                 {child}
                 {getRemoveButton({
@@ -66,7 +63,7 @@ export default () => (
                         type="text"
                         label="Label"
                         defaultValue={props.name}
-                        onBlur={(evt: React.FocusEvent<HTMLInputElement>) => {
+                        onBlur={(evt: FocusEvent<HTMLInputElement>) => {
                             if (evt.target.value !== '' && isLast) {
                                 defaultProps.addNewBox();
                             }

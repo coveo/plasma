@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {BasicHeader} from '../../headers/BasicHeader';
 
 export const BasicHeaderLoading = () => (

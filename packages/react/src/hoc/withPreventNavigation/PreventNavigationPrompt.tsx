@@ -1,11 +1,11 @@
-import * as React from 'react';
+import {ReactNode} from 'react';
 
 import {ModalComposite} from '../../components/modal/ModalComposite';
 
 export interface PreventNavigationPromptProps {
     id: string;
     title: string;
-    content: React.ReactNode;
+    content: ReactNode;
     exit: string;
     stay: string;
     isOpen: boolean;

@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import * as React from 'react';
 
 import {UUID} from '../../../../utils/UUID';
 import {IDropdownSearchProps} from '../../DropdownSearch';

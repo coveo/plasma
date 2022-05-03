@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {HTMLProps, PureComponent} from 'react';
 
-export class InfoBoxFooter extends React.PureComponent<React.HTMLProps<HTMLDivElement>> {
+export class InfoBoxFooter extends PureComponent<HTMLProps<HTMLDivElement>> {
     render() {
         return (
             <div {...this.props} className={classNames(this.props.className, 'info-box__footer')}>

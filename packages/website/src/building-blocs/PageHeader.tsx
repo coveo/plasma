@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 
 import {GithubButton} from './GithubButton';
 import {Tile, TileProps} from './Tile';
@@ -6,7 +6,7 @@ import {Tile, TileProps} from './Tile';
 export interface PageHeaderProps {
     title: string;
     thumbnail?: TileProps['thumbnail'];
-    description?: React.ReactNode;
+    description?: ReactNode;
     section: 'Foundations' | 'Layout' | 'Form' | 'Navigation' | 'Feedback' | 'Advanced';
     /**
      * Path to the component's source file from /packages/react/src/components
@@ -22,7 +22,7 @@ export interface PageHeaderProps {
     sourcePath?: string;
 }
 
-export const PageHeader: React.FunctionComponent<PageHeaderProps> = ({
+export const PageHeader: FunctionComponent<PageHeaderProps> = ({
     title,
     description,
     thumbnail,

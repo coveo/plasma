@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentClass, FunctionComponent} from 'react';
 import {ValidationMessage} from '../components/ValidationMessage';
 
 interface IWithValidationMessageHOCProps {
@@ -7,7 +7,7 @@ interface IWithValidationMessageHOCProps {
 }
 
 export const withValidationMessage = <T extends IWithValidationMessageHOCProps, R = any>(
-    Component: React.ComponentClass<T, R> | React.FunctionComponent<T>
+    Component: ComponentClass<T, R> | FunctionComponent<T>
 ) => ({onlyShowMessageIfDirty, ...props}: T) => (
     <>
         <Component {...(props as T)} />

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component, ComponentType} from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -27,10 +27,10 @@ const TableWithSortPropsToOmit = ['isAsc', 'sortKey'];
 
 const defaultSort = () => 0;
 
-export type SortableTableComponent = React.ComponentType<ITableWithSortProps>;
+export type SortableTableComponent = ComponentType<ITableWithSortProps>;
 
 export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig> = {}) => (
-    Component: SortableTableComponent
+    WrappedComponent: SortableTableComponent
 ): SortableTableComponent => {
     const config = HocUtils.supplyConfig(supplier);
 
@@ -52,7 +52,7 @@ export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig> = {
     };
 
     @ReduxConnect(mapStateToProps)
-    class TableWithSort extends React.Component<ITableWithSortProps> {
+    class TableWithSort extends Component<ITableWithSortProps> {
         componentDidUpdate(prevProps: ITableWithSortProps) {
             if (prevProps.sortKey !== this.props.sortKey || prevProps.isAsc !== this.props.isAsc) {
                 this.props.onUpdate?.();
@@ -61,7 +61,7 @@ export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig> = {
 
         render() {
             const newProps = {..._.omit(this.props, [...TableWithSortPropsToOmit])};
-            return <Component {...newProps}>{this.props.children}</Component>;
+            return <WrappedComponent {...newProps}>{this.props.children}</WrappedComponent>;
         }
     }
 

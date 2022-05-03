@@ -1,5 +1,5 @@
 import {mount, shallow} from 'enzyme';
-import * as React from 'react';
+import {FunctionComponent, Component} from 'react';
 import {connect, Provider} from 'react-redux';
 
 import {getStoreMock} from '../../utils/tests/TestUtils';
@@ -96,7 +96,7 @@ describe('PartialStringMatch', () => {
     });
 
     it('should highlight all matches rendered throught a function component', () => {
-        const Porkchop: React.FunctionComponent = () => <span>porkchop is a chop of the pork</span>;
+        const Porkchop: FunctionComponent = () => <span>porkchop is a chop of the pork</span>;
         const matcher = 'chop';
         const component = shallow(
             <PartialStringMatch partialMatch={matcher}>
@@ -108,7 +108,7 @@ describe('PartialStringMatch', () => {
     });
 
     it('should render connected components without highlighting the matches', () => {
-        const Porkchop: React.FunctionComponent = () => <span>a porkchop is a chop of the pork</span>;
+        const Porkchop: FunctionComponent = () => <span>a porkchop is a chop of the pork</span>;
         const ConnectedPorkchop = connect((state: any) => ({a: state.a}))(Porkchop);
         const matcher = 'chop';
         const component = mount(
@@ -123,7 +123,7 @@ describe('PartialStringMatch', () => {
     });
 
     it('should render class Components that has no children without throwing', () => {
-        class ClassComponent extends React.Component {
+        class ClassComponent extends Component {
             render() {
                 return <span>aa</span>;
             }

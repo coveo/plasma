@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component} from 'react';
 import {DisplayClass} from '../../utils/ComponentUtils';
 
 export interface IUserFeedbackProps {
@@ -18,7 +18,7 @@ export const UserFeedbackState = {
     ERROR: 'ERROR',
 };
 
-export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
+export class UserFeedback extends Component<IUserFeedbackProps, any> {
     render() {
         const style = this.getUserFeedbackStyle();
         return <div className={style.classes}>{this.props.feedbackText}</div>;

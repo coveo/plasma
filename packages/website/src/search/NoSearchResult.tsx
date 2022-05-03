@@ -2,7 +2,6 @@ import {buildHistoryManager, HistoryManager, HistoryManagerState, SearchEngine} 
 import {Button} from '@coveord/plasma-react';
 
 import {FunctionComponent, useEffect, useState} from 'react';
-import React from 'react';
 
 import {useRouter} from 'next/router';
 import results_empty_state from '../../resources/results_empty_state.png';

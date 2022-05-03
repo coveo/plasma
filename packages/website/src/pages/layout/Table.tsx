@@ -9,8 +9,6 @@ import withFilter from '@examples/Table/withFilter.example.tsx';
 import withDatePicker from '@examples/Table/withDatePicker.example.tsx';
 import withServer from '@examples/Table/withServer.example.tsx';
 
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const TableExamples = () => (

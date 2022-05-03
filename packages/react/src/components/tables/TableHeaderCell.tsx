@@ -1,18 +1,18 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, ReactNode, MouseEvent, Component} from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {Svg} from '../svg/Svg';
 import {TableSortingOrder} from './TableConstants';
 
-export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHeaderCell> {
-    title: React.ReactNode;
+export interface ITableHeaderCellOwnProps extends ClassAttributes<TableHeaderCell> {
+    title: ReactNode;
     id?: string;
     attributeToSort?: string;
     tableId?: string;
     className?: IClassName;
     withFixedHeader?: boolean;
-    onClickCallback?: (e: React.MouseEvent<HTMLTableHeaderCellElement>) => void;
+    onClickCallback?: (e: MouseEvent<HTMLTableHeaderCellElement>) => void;
 }
 
 export interface ITableHeaderStateProps {
@@ -34,12 +34,12 @@ export interface ITableHeaderCellProps
  * @deprecated since version 22.11.30
  * use TableHeaderWithSort instead
  */
-export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any> {
+export class TableHeaderCell extends Component<ITableHeaderCellProps, any> {
     static defaultProps: Partial<ITableHeaderCellProps> = {
         sorted: TableSortingOrder.UNSORTED,
     };
 
-    private handleClick(e: React.MouseEvent<HTMLTableHeaderCellElement>) {
+    private handleClick(e: MouseEvent<HTMLTableHeaderCellElement>) {
         if (this.props.onSort && this.props.attributeToSort) {
             this.props.onSort();
         }
@@ -49,7 +49,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
         }
     }
 
-    private setWithFixedHeaderWrapper(titleNode: React.ReactNode, sortIcon: React.ReactNode) {
+    private setWithFixedHeaderWrapper(titleNode: ReactNode, sortIcon: ReactNode) {
         return (
             <div className="fixed-header-container">
                 {titleNode}
@@ -87,7 +87,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
         return (
             <th
                 className={headerCellClasses}
-                onClick={(e: React.MouseEvent<HTMLTableHeaderCellElement>) => this.handleClick(e)}
+                onClick={(e: MouseEvent<HTMLTableHeaderCellElement>) => this.handleClick(e)}
             >
                 {this.setWithFixedHeaderWrapper(this.props.title, sortIcon)}
             </th>

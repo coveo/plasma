@@ -1,6 +1,5 @@
 import {SvgName} from '@coveord/plasma-style';
 import {shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 
 import {Collapsible} from '../../collapsible/Collapsible';
 import {ISideNavigationSectionProps, SideNavigationMenuSection} from '../SideNavigationMenuSection';

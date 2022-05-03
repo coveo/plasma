@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {HTMLProps, FunctionComponent} from 'react';
 import * as _ from 'underscore';
 
-export const BannerContainer: React.FunctionComponent<React.HTMLProps<HTMLDivElement>> = (props) => (
+export const BannerContainer: FunctionComponent<HTMLProps<HTMLDivElement>> = (props) => (
     <div {..._.omit(props, 'children')} className={classNames(props.className, 'banner')}>
         {props.children}
     </div>

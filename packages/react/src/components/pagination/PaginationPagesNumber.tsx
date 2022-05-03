@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -42,7 +42,7 @@ const NUMBER_OF_PAGES_SHOWING: number = 7;
 const PREVIOUS_LABEL: string = 'Previous';
 const NEXT_LABEL: string = 'Next';
 
-class PaginationPagesNumberDisconnected extends React.Component<IPaginationPagesNumberProps, any> {
+class PaginationPagesNumberDisconnected extends Component<IPaginationPagesNumberProps, any> {
     private handlePageClick = (pageNb: number) => {
         if (pageNb >= 0 && this.props.currentPage !== pageNb) {
             this.props.onPageClick?.(pageNb);

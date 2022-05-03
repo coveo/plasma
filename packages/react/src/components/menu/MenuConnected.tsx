@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component, MouseEvent, ReactNode, SyntheticEvent} from 'react';
 import * as ReactDOM from 'react-dom';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -16,7 +16,7 @@ export interface IMenuOwnProps {
     dropdownClassName?: string;
     positionRight?: boolean;
     closeOnSelectItem?: boolean;
-    buttonSvg?: React.ReactNode;
+    buttonSvg?: ReactNode;
     customOffset?: number;
     buttonProps?: Partial<IButtonProps>;
 }
@@ -50,7 +50,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMenuOwnProps): IMenu
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class MenuConnected extends React.Component<IMenuProps> {
+export class MenuConnected extends Component<IMenuProps> {
     private list: HTMLDivElement;
     private button: HTMLDivElement;
 
@@ -83,7 +83,7 @@ export class MenuConnected extends React.Component<IMenuProps> {
                 <div ref={(ref: HTMLDivElement) => (this.button = ref)}>
                     <Button
                         classes={classNames('btn menu-toggle', this.props.toggleClassName)}
-                        onMouseUp={(e: React.MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
+                        onMouseUp={(e: MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
                         {...this.props.buttonProps}
                     >
                         {this.props.buttonSvg ? this.props.buttonSvg : this.getDefaultSvg()}
@@ -110,7 +110,7 @@ export class MenuConnected extends React.Component<IMenuProps> {
         return <Svg svgName="moreAppend" svgClass="icon mod-lg flex" />;
     }
 
-    private onToggleMenu(e: React.SyntheticEvent<HTMLElement>) {
+    private onToggleMenu(e: SyntheticEvent<HTMLElement>) {
         this.setListPosition();
 
         e.stopPropagation();
@@ -128,7 +128,7 @@ export class MenuConnected extends React.Component<IMenuProps> {
         }
     }
 
-    private handleDocumentClick = (e: MouseEvent) => {
+    private handleDocumentClick = (e: globalThis.MouseEvent) => {
         if (this.props.isOpen && document.body.contains(e.target as HTMLElement)) {
             const list: Element | Text = ReactDOM.findDOMNode(this.list);
             const button: Element | Text = ReactDOM.findDOMNode(this.button);

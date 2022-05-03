@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Attributes, Component} from 'react';
 import {
     Button,
     IMultilineParentProps,
@@ -16,10 +16,7 @@ export interface IMultilineBoxExamplesProps {
     displayName: string;
 }
 
-export class WrapperExample extends React.Component<
-    React.Attributes,
-    {id: string; data: IMultilineBoxExamplesProps[]}
-> {
+export class WrapperExample extends Component<Attributes, {id: string; data: IMultilineBoxExamplesProps[]}> {
     state = {
         id: UUID.generate(),
         data: [

@@ -1,4 +1,14 @@
-import * as React from 'react';
+import {
+    ReactNode,
+    CSSProperties,
+    RefObject,
+    FunctionComponent,
+    RefAttributes,
+    ForwardRefExoticComponent,
+    useState,
+    useEffect,
+    forwardRef,
+} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
@@ -14,7 +24,7 @@ import {
 } from './DomPositionCalculator';
 
 export interface IDropPodProps {
-    renderDrop: (style: React.CSSProperties, position: IDropUIPosition | null) => React.ReactNode;
+    renderDrop: (style: CSSProperties, position: IDropUIPosition | null) => ReactNode;
     isOpen?: boolean;
     positions?: Array<'bottom' | 'top' | 'left' | 'right'>;
     selector?: string;
@@ -25,7 +35,7 @@ export interface IDropPodProps {
 }
 
 export interface IRDropPodProps extends IDropPodProps {
-    buttonRef?: React.RefObject<HTMLElement>;
+    buttonRef?: RefObject<HTMLElement>;
 }
 
 export const defaultDropPodPosition = [
@@ -35,7 +45,7 @@ export const defaultDropPodPosition = [
     DropPodPosition.left,
 ];
 
-const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
+const RDropPod: FunctionComponent<IRDropPodProps> = ({
     isOpen = false,
     positions = defaultDropPodPosition,
     minWidth = 0,
@@ -46,10 +56,10 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
     renderDrop,
     parentSelector,
 }) => {
-    const [offset, setOffset] = React.useState(undefined);
-    const [lastPosition, setLastPosition] = React.useState<IDropUIPosition | null>(null);
-    const [computedStyle, setComputedStyle] = React.useState<React.CSSProperties>({});
-    const [dropElement, setDropElement] = React.useState<HTMLDivElement>(null);
+    const [offset, setOffset] = useState(undefined);
+    const [lastPosition, setLastPosition] = useState<IDropUIPosition | null>(null);
+    const [computedStyle, setComputedStyle] = useState<React.CSSProperties>({});
+    const [dropElement, setDropElement] = useState<HTMLDivElement>(null);
 
     const updateElement = () => {
         if (buttonRef?.current) {
@@ -72,7 +82,7 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
         window.removeEventListener('resize', updateOffset, true);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         let parentMutationObserver: MutationObserver;
         if (dropElement && dropElement.firstElementChild) {
             const config = {attributes: false, childList: true, subtree: true};
@@ -84,7 +94,7 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
         };
     }, [dropElement]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (isOpen) {
             setEventsOnDocument();
         }
@@ -93,7 +103,7 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
         };
     }, [isOpen]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const element = document.createElement('div');
         const portalRoot = document.querySelector(selector ?? Defaults.DROP_ROOT);
 
@@ -112,7 +122,7 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
         return closestCurrentRef ?? buttonRef?.current?.parentElement;
     };
 
-    const calculateStyleOffset = (): React.CSSProperties => {
+    const calculateStyleOffset = (): CSSProperties => {
         let newDomPosition: IDomPositionCalculatorReturn = {};
         if (canRenderDrop()) {
             const buttonOffset: ClientRect | DOMRect = buttonRef?.current?.getBoundingClientRect() ?? offset;
@@ -215,7 +225,7 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
         }
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         setComputedStyle({
             // set the display none for IE11 which does not handle position absolute and visibility hidden like other browser
             display: !canRenderDrop() && BrowserUtils.isIE() ? 'none' : 'inline-block',
@@ -229,12 +239,10 @@ const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
         return null;
     }
 
-    const drop: React.ReactNode = renderDrop(computedStyle, lastPosition);
+    const drop: ReactNode = renderDrop(computedStyle, lastPosition);
     return ReactDOM.createPortal(drop, dropElement);
 };
 
-export const DropPod: React.ForwardRefExoticComponent<
-    IDropPodProps & React.RefAttributes<HTMLElement>
-> = React.forwardRef((props: IDropPodProps, ref: React.RefObject<HTMLElement>) => (
-    <RDropPod {...props} buttonRef={ref} />
-));
+export const DropPod: ForwardRefExoticComponent<
+    IDropPodProps & RefAttributes<HTMLElement>
+> = forwardRef((props: IDropPodProps, ref: RefObject<HTMLElement>) => <RDropPod {...props} buttonRef={ref} />);

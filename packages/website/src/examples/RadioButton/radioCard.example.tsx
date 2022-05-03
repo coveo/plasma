@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {RadioSelectConnected, RadioCard, Label} from '@coveord/plasma-react';
 
 export default () => (

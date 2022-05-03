@@ -1,7 +1,7 @@
 import loadable from '@loadable/component';
 import classNames from 'classnames';
 import type {Editor, EditorConfiguration} from 'codemirror';
-import * as React from 'react';
+import {ComponentType, createRef, Component} from 'react';
 import type {Controlled} from 'react-codemirror2';
 import {connect} from 'react-redux';
 
@@ -75,7 +75,7 @@ const mapDispatchToProps = (dispatch: IDispatch, {id}: ICodeEditorProps) => ({
     clearCodeEditorFromStore: () => dispatch(CodeEditorActions.remove(id)),
 });
 
-class CodeEditorDisconnect extends React.Component<
+class CodeEditorDisconnect extends Component<
     ICodeEditorProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>,
     CodeEditorState
 > {
@@ -95,7 +95,7 @@ class CodeEditorDisconnect extends React.Component<
         },
     };
 
-    private codemirror = React.createRef<Controlled>();
+    private codemirror = createRef<Controlled>();
     private editor: Editor;
 
     state = {
@@ -182,7 +182,7 @@ class CodeEditorDisconnect extends React.Component<
     }
 }
 
-export const CodeEditor: React.ComponentType<ICodeEditorProps> = connect(
+export const CodeEditor: ComponentType<ICodeEditorProps> = connect(
     mapStateToProps,
     mapDispatchToProps
 )(CodeEditorDisconnect);

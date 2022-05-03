@@ -1,5 +1,4 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';

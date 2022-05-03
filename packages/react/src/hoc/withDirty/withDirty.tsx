@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, ComponentType, ComponentClass, PureComponent} from 'react';
 import {isBoolean} from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -8,7 +8,7 @@ import {WithDirtySelectors} from './withDirtySelectors';
 
 export interface IWithDirty {
     id: string;
-    showDirty: (isDirty: boolean) => React.ReactNode;
+    showDirty: (isDirty: boolean) => ReactNode;
     isDirty?: boolean;
 }
 
@@ -26,8 +26,8 @@ export interface IWithDirtyProps
         Partial<IWithDirtyDispatchProps> {}
 
 export const withDirty = <T, R = any>(config: Partial<IWithDirty> = {}) => (
-    Component: React.ComponentType<Partial<IWithDirtyProps> & T>
-): React.ComponentClass<Partial<IWithDirtyProps> & T, R> => {
+    Component: ComponentType<Partial<IWithDirtyProps> & T>
+): ComponentClass<Partial<IWithDirtyProps> & T, R> => {
     const mapStateToProps = (state: PlasmaState, ownProps: IWithDirty): IWithDirtyStateProps => ({
         isDirty: isBoolean(config.isDirty)
             ? config.isDirty
@@ -39,7 +39,7 @@ export const withDirty = <T, R = any>(config: Partial<IWithDirty> = {}) => (
     });
 
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
-    class ComponentWithDirty extends React.PureComponent<Partial<IWithDirtyProps> & T, R> {
+    class ComponentWithDirty extends PureComponent<Partial<IWithDirtyProps> & T, R> {
         componentDidMount() {
             this.props.toggleIsDirty(this.props?.isDirty || config?.isDirty);
         }

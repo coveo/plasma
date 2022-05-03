@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component, ComponentClass, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -36,12 +36,12 @@ export interface ITableWithDatePickerProps
 
 const TableWithFilterPropsToOmit = ['lowerLimit', 'upperLimit'];
 
-export type FilterableTableComponent = React.ComponentClass<ITableWithDatePickerProps>;
+export type FilterableTableComponent = ComponentClass<ITableWithDatePickerProps>;
 
 const defaultMatchDates = () => true;
 
 export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePickerConfig> = {}) => (
-    Component: FilterableTableComponent
+    WrappedComponent: FilterableTableComponent
 ): FilterableTableComponent => {
     const config = HocUtils.supplyConfig(supplier);
 
@@ -67,7 +67,7 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
     };
 
     @ReduxConnect(mapStateToProps)
-    class TableWithDatePicker extends React.Component<ITableWithDatePickerProps> {
+    class TableWithDatePicker extends Component<ITableWithDatePickerProps> {
         static defaultProps: Partial<ITableWithDatePickerProps> = {
             actions: [],
         };
@@ -81,7 +81,7 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
             }
         }
 
-        render(): React.ReactNode {
+        render(): ReactNode {
             const datePickerAction = (
                 <DatePickerDropdownConnected
                     {...(config as any)}
@@ -96,9 +96,9 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
             const newActions = [...this.props.actions, datePickerAction];
             const newProps = _.omit(this.props, TableWithFilterPropsToOmit);
             return (
-                <Component {...newProps} actions={newActions}>
+                <WrappedComponent {...newProps} actions={newActions}>
                     {this.props.children}
-                </Component>
+                </WrappedComponent>
             );
         }
     }

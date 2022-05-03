@@ -1,9 +1,9 @@
 import {SearchBar} from '@coveord/plasma-react';
-import * as React from 'react';
+import {useState} from 'react';
 
 export default () => {
-    const [isSearching, setSearching] = React.useState(false);
-    const [value, setValue] = React.useState('');
+    const [isSearching, setSearching] = useState(false);
+    const [value, setValue] = useState('');
 
     return (
         <SearchBar

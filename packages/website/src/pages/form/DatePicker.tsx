@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {
         CalendarSelectionRuleType,
         DATES_SEPARATOR,
@@ -56,7 +53,6 @@ const code = `
 `;
 
 const singleDate = `
-    import * as React from 'react';
     import {
         CalendarSelectionRuleType,
         DatePickerDropdownConnected,
@@ -95,7 +91,6 @@ const singleDate = `
 `;
 
 const readOnly = `
-    import * as React from 'react';
     import { DatePickerDropdownConnected } from '@coveord/plasma-react';
 
     export default () => (

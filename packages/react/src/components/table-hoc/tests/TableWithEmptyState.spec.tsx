@@ -1,5 +1,5 @@
 import {act, render, screen} from '@test-utils';
-import * as React from 'react';
+import {FunctionComponent, JSXElementConstructor, ReactElement} from 'react';
 
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {TableHOCActions} from '../actions/TableHOCActions';
@@ -9,7 +9,7 @@ import {tableWithEmptyState} from '../TableWithEmptyState';
 
 describe('TableWithEmptyState', () => {
     const TableWithEmptyState = tableWithEmptyState(TableHOC);
-    const EmptyState: React.FunctionComponent = () => <div>No data!</div>;
+    const EmptyState: FunctionComponent = () => <div>No data!</div>;
     let store: PlasmaMockStore;
 
     beforeEach(() => {
@@ -34,7 +34,7 @@ describe('TableWithEmptyState', () => {
 
     it('renders the loading table if the table is empty after waiting 50 ms but still loading', () => {
         jest.useFakeTimers();
-        let update: (ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>) => void;
+        let update: (ui: ReactElement<any, string | JSXElementConstructor<any>>) => void;
         // eslint-disable-next-line testing-library/no-unnecessary-act
         act(() => {
             const {rerender} = render(
@@ -55,7 +55,7 @@ describe('TableWithEmptyState', () => {
 
     it('renders the table if the table is not empty after waiting 50 ms', () => {
         jest.useFakeTimers();
-        let update: (ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>) => void;
+        let update: (ui: ReactElement<any, string | JSXElementConstructor<any>>) => void;
         // eslint-disable-next-line testing-library/no-unnecessary-act
         act(() => {
             const {rerender} = render(
