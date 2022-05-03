@@ -1,4 +1,3 @@
-import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import moment from 'moment';
 import {ClassAttributes, Component} from 'react';
@@ -9,10 +8,10 @@ import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
 import {DEFAULT_YEARS} from '../calendar/Calendar';
+import {CollapsibleToggle} from '../collapsible';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop, IDropOwnProps} from '../drop/Drop';
 import {ModalFooter} from '../modal/ModalFooter';
-import {Svg} from '../svg';
 import {DatePickerBox, IDatePickerBoxOwnProps, IDatePickerBoxProps} from './DatePickerBox';
 import {IDatePickerState} from './DatePickerReducers';
 import {IRangeLimit} from './DatesSelection';
@@ -206,7 +205,7 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
         });
 
         const toggleClasses = classNames(
-            'dropdown-toggle btn inline-flex flex-center',
+            'dropdown-toggle btn inline-flex flex-center space-between',
             this.props.extraDropdownToggleClasses,
             {
                 'dropdown-toggle-placeholder': !this.props.datePicker || !this.props.datePicker.appliedLowerLimit,
@@ -240,10 +239,7 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
                                             {labelSecondPart}
                                         </label>
                                     </span>
-                                    <Svg
-                                        svgName={this.props.isOpened ? svg.chartUp.name : svg.chartDown.name}
-                                        svgClass="icon dropdown-toggle-arrow-style"
-                                    />
+                                    <CollapsibleToggle expanded={this.props.isOpened} />
                                 </button>
                             </div>
                         </div>
@@ -267,10 +263,7 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
                                 {labelSecondPart}
                             </label>
                         </span>
-                        <Svg
-                            svgName={this.props.isOpened ? svg.chartUp.name : svg.chartDown.name}
-                            svgClass="icon dropdown-toggle-arrow-style"
-                        />
+                        <CollapsibleToggle expanded={this.props.isOpened} />
                     </button>
                     <div className={menuClasses}>{this.getDatePickerBox()}</div>
                 </div>

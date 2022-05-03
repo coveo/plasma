@@ -97,7 +97,7 @@ const Content: FunctionComponent<Pick<
 >> = ({code, examples, id, relatedComponents, layout, withPropsTable, children}) => (
     <>
         <div className="plasma-page-layout__main-code plasma-page-layout__section">
-            <Sandbox id="main-code" horizontal={layout === 'horizontal'}>
+            <Sandbox key={id + 'main-code'} id="main-code" horizontal={layout === 'horizontal'}>
                 {code}
             </Sandbox>
         </div>
@@ -114,7 +114,7 @@ const Content: FunctionComponent<Pick<
                 {Object.entries(examples).map(
                     ([exampleId, {code: exampleCode, title, layout: exampleLayout = 'horizontal'}]) => (
                         <Sandbox
-                            key={exampleId}
+                            key={id + exampleId}
                             id={exampleId}
                             title={title}
                             horizontal={exampleLayout === 'horizontal'}
