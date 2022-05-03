@@ -1,3 +1,12 @@
+# 41.3.0 (2022-05-03)
+
+
+### Features
+
+* **husky, pnpm:** fix more scripts + lintfix had a blast ([a4c6360](https://github.com/coveo/plasma/commits/a4c63600915b914f7c6c88b0186301df91a27973))
+
+
+
 ## 41.2.10 (2022-05-02)
 
 
