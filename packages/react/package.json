@@ -11,27 +11,51 @@
         "web"
     ],
     "homepage": "https://github.com/coveo/plasma#readme",
-    "author": "Coveo",
-    "license": "Apache-2.0",
-    "main": "./dist/cjs/Entry.js",
-    "module": "./dist/esm/Entry.js",
-    "types": "dist/definitions/Entry.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/plasma.git"
     },
+    "license": "Apache-2.0",
+    "author": "Coveo",
+    "main": "./dist/cjs/Entry.js",
+    "module": "./dist/esm/Entry.js",
+    "types": "dist/definitions/Entry.d.ts",
+    "files": [
+        "dist"
+    ],
     "scripts": {
-        "start": "node scripts/start",
         "build": "node scripts/build",
-        "test": "jest --maxWorkers=65%",
-        "test:ci": "jest --maxWorkers=65% --silent",
-        "test:changed": "jest --maxWorkers=65% --changedSince master",
-        "test:watch": "jest --watchAll",
-        "test:debug": "node --inspect-brk node_modules/jest/bin/jest --runInBand --watchAll --detectOpenHandles --forceExit",
-        "precommit": "lint-staged",
         "clean": "rimraf dist coverage",
-        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"src/**/*.{ts,tsx}\" --fix"
+        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"src/**/*.{ts,tsx}\" --fix",
+        "precommit": "lint-staged",
+        "start": "node scripts/start",
+        "test": "jest --maxWorkers=65%",
+        "test:changed": "jest --maxWorkers=65% --changedSince master",
+        "test:ci": "jest --maxWorkers=65% --silent",
+        "test:debug": "node --inspect-brk node_modules/jest/bin/jest --runInBand --watchAll --detectOpenHandles --forceExit",
+        "test:watch": "jest --watchAll"
     },
+    "lint-staged": {
+        "package.json": [
+            "sort-package-json",
+            "git add"
+        ],
+        "**/*.scss": [
+            "stylelint --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.{ts,tsx}": [
+            "prettier --write",
+            "eslint -c ./.eslintrc.js --fix",
+            "git add"
+        ],
+        "**/*.{js,jsx,json,md,yml,html}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "prettier": "tsjs/prettier-config",
     "dependencies": {
         "@coveord/plasma-style": "workspace:*",
         "@loadable/component": "5.15.2",
@@ -59,17 +83,6 @@
         "strict-uri-encode": "2.x.x",
         "unidiff": "0.0.4"
     },
-    "peerDependencies": {
-        "codemirror": "^5.39.2",
-        "d3": "^3.5.17",
-        "jquery": ">= 2.0.0 =< 3",
-        "react": "^16.14.21",
-        "react-dom": "^16.14.0",
-        "react-redux": "^7.2.4",
-        "redux": "^4.0.1",
-        "underscore": "^1.8.3",
-        "underscore.string": "^3.3.5"
-    },
     "devDependencies": {
         "@helpers/enzyme-redux": "workspace:*",
         "@hot-loader/react-dom": "17.0.2",
@@ -90,6 +103,7 @@
         "@types/jquery": "2.0.60",
         "@types/loadable__component": "5.13.4",
         "@types/lorem-ipsum": "2.0.0",
+        "@types/react": "17.0.44",
         "@types/react-bootstrap": "0.32.29",
         "@types/react-codemirror": "1.0.7",
         "@types/react-color": "3.0.6",
@@ -100,12 +114,11 @@
         "@types/react-tether": "0.5.5",
         "@types/react-textarea-autosize": "4.3.6",
         "@types/react-transition-group": "2.9.2",
-        "@types/react": "17.0.44",
         "@types/redux-logger": "3.0.9",
         "@types/redux-mock-store": "1.0.3",
         "@types/redux-promise-middleware": "6.0.0",
-        "@types/underscore.string": "0.0.38",
         "@types/underscore": "1.8.10",
+        "@types/underscore.string": "0.0.38",
         "@typescript-eslint/eslint-plugin": "5.21.0",
         "@typescript-eslint/parser": "5.21.0",
         "@wojtekmaj/enzyme-adapter-react-17": "0.6.7",
@@ -117,55 +130,46 @@
         "del": "6.0.0",
         "enzyme": "3.11.0",
         "escape-string-regexp": "1.0.5",
-        "eslint-plugin-jest-dom": "3.9.4",
         "eslint-plugin-jest": "25.7.0",
+        "eslint-plugin-jest-dom": "3.9.4",
         "eslint-plugin-testing-library": "5.3.1",
         "faker": "4.1.0",
         "fancy-log": "1.3.3",
         "identity-obj-proxy": "3.0.0",
-        "jest-environment-jsdom": "28.0.2",
         "jest": "28.0.3",
+        "jest-environment-jsdom": "28.0.2",
         "jquery": "3.6.0",
         "lint-staged": "9.5.0",
         "lorem-ipsum": "2.0.4",
         "minimist": "1.2.6",
         "postcss": "8.4.13",
+        "react": "17.0.2",
         "react-dnd-test-backend": "15.1.2",
         "react-dom": "17.0.2",
         "react-redux": "7.2.6",
-        "react": "17.0.2",
+        "redux": "4.2.0",
         "redux-logger": "3.0.6",
         "redux-mock-store": "1.5.4",
         "redux-promise-middleware": "6.1.2",
         "redux-thunk": "2.4.1",
-        "redux": "4.2.0",
         "regenerator-runtime": "0.13.9",
         "rimraf": "3.0.2",
         "sass": "1.51.0",
         "ts-jest": "27.1.4",
         "tslib": "2.3.1",
         "typescript": "4.6.4",
-        "underscore.string": "3.3.6",
-        "underscore": "1.13.1"
+        "underscore": "1.13.1",
+        "underscore.string": "3.3.6"
     },
-    "files": [
-        "dist"
-    ],
-    "lint-staged": {
-        "**/*.scss": [
-            "stylelint --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "**/*.{ts,tsx}": [
-            "prettier --write",
-            "eslint -c ./.eslintrc.js --fix",
-            "git add"
-        ],
-        "**/*.{js,jsx,json,md,yml,html}": [
-            "prettier --write",
-            "git add"
-        ]
-    },
-    "prettier": "tsjs/prettier-config"
+    "peerDependencies": {
+        "codemirror": "^5.39.2",
+        "d3": "^3.5.17",
+        "jquery": ">= 2.0.0 =< 3",
+        "react": "^16.14.21",
+        "react-dom": "^16.14.0",
+        "react-redux": "^7.2.4",
+        "redux": "^4.0.1",
+        "underscore": "^1.8.3",
+        "underscore.string": "^3.3.5"
+    }
 }

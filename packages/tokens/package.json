@@ -2,20 +2,36 @@
     "name": "@coveord/plasma-tokens",
     "version": "41.2.9",
     "description": "Design tokens of the Plasma Design System",
+    "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
     "repository": {
         "type": "git",
         "url": "https://github.com/coveo/plasma.git",
         "directory": "packages/tokens"
     },
-    "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
+    "license": "Apache-2.0",
+    "files": [
+        "dist",
+        "icons",
+        "scss"
+    ],
     "scripts": {
         "build": "rimraf dist && tsc --project tsconfig.json",
-        "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
+        "precommit": "lint-staged",
         "tokens:build": "ts-node ./bin/build.ts --project ./bin/tsconfig.json && pnpm tokens:lint",
-        "tokens:lint": "prettier --write \"{src,scss,data}/*.{scss,ts,tsx,json}\"",
-        "precommit": "lint-staged"
+        "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
+        "tokens:lint": "prettier --write \"{src,scss,data}/*.{scss,ts,tsx,json}\""
     },
-    "license": "Apache-2.0",
+    "lint-staged": {
+        "package.json": [
+            "sort-package-json",
+            "git add"
+        ],
+        "**/*.{ts,tsx,json,md,scss}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "prettier": "tsjs/prettier-config",
     "devDependencies": {
         "@types/fs-extra": "9.0.13",
         "@types/lodash": "4.14.182",
@@ -36,17 +52,5 @@
         "ts-node": "10.7.0",
         "tslib": "2.3.1",
         "typescript": "4.6.4"
-    },
-    "lint-staged": {
-        "**/*.{ts,tsx,json,md,scss}": [
-            "prettier --write",
-            "git add"
-        ]
-    },
-    "prettier": "tsjs/prettier-config",
-    "files": [
-        "dist",
-        "icons",
-        "scss"
-    ]
+    }
 }
