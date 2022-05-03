@@ -1,6 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 import {Svg} from '../svg';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
@@ -60,18 +60,20 @@ interface BadgeWithIconProps extends BadgeBasicProps {
     icon: SvgName;
     /**
      * Whether the icon is left or right (Required if no label)
+     *
+     * @default BadgeIconPlacement.Left
      */
-    iconPlacement: BadgeIconPlacement;
+    iconPlacement?: BadgeIconPlacement;
 }
 export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithLabelProps & BadgeWithIconProps);
 
-export class Badge extends React.Component<IBadgeProps> {
+export class Badge extends Component<IBadgeProps> {
     static defaultProps: IBadgeProps = {
         extraClasses: [],
         type: BadgeType.Default,
         isSmall: false,
-        icon: undefined,
-        iconPlacement: undefined,
+        label: '',
+        iconPlacement: BadgeIconPlacement.Left,
     };
 
     private get className(): string {

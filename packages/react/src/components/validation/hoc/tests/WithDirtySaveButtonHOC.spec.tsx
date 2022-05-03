@@ -1,5 +1,4 @@
 import {shallowWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
 import * as _ from 'underscore';
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {Button, IButtonProps} from '../../../button';

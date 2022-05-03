@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, HTMLProps, Component} from 'react';
 import {omit} from 'underscore';
 
-export interface ILoadingOwnProps extends React.ClassAttributes<Loading> {
+export interface ILoadingOwnProps extends ClassAttributes<Loading> {
     /**
      * Unique identifier. Only needed when using LoadingConnected
      */
@@ -32,7 +32,7 @@ export interface ILoadingDispatchProps {
 
 export interface ILoadingProps extends ILoadingOwnProps, ILoadingDispatchProps {}
 
-export class Loading extends React.Component<ILoadingProps & React.HTMLProps<HTMLDivElement>, any> {
+export class Loading extends Component<ILoadingProps & HTMLProps<HTMLDivElement>, any> {
     static defaultProps: Partial<ILoadingOwnProps> = {
         fullContent: false,
     };

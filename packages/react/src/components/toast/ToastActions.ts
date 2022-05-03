@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
 import {IReduxAction} from '../../utils/ReduxUtils';
@@ -25,13 +25,13 @@ export interface IToastAddOptionalPayload extends Partial<IToastProps> {
 }
 
 export interface IToastAddPayload extends IToastActionPayload, IToastAddOptionalPayload {
-    title: React.ReactNode;
+    title: ReactNode;
 }
 
 export const addToast = (
     containerId: string,
     title: string,
-    optionals: Partial<React.PropsWithChildren<IToastProps>> = {}
+    optionals: Partial<PropsWithChildren<IToastProps>> = {}
 ): IReduxAction<IToastAddPayload> => ({
     type: ToastAction.addToast,
     payload: {

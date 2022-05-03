@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {svg} from '@coveord/plasma-style';
-import * as React from 'react';
+import {ReactNode, Children, PureComponent, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {removeValueStringList} from '../../../reusableState/customList/StringListActions';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
@@ -17,11 +17,11 @@ import {
 
 export interface IMultilineBoxWithRemoveButtonSupplierProps<T = any> {
     containerNode?: (
-        child: React.ReactNode,
-        getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode,
+        child: ReactNode,
+        getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode,
         data: Array<IMultilineSingleBoxProps<T>>,
         index: number
-    ) => React.ReactNode;
+    ) => ReactNode;
 }
 
 export interface IMultilineBoxWithRemoveButtonProps<T>
@@ -30,15 +30,15 @@ export interface IMultilineBoxWithRemoveButtonProps<T>
         Partial<IMultilineBoxDispatchProps> {}
 
 const defaultContainerNode = (
-    child: React.ReactNode,
-    getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode,
+    child: ReactNode,
+    getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode,
     data: IMultilineSingleBoxProps[],
     index: number
 ) => (
-    <React.Fragment key={`${(data.length && data[index].id) || index}RemoveButton`}>
+    <Fragment key={`${(data.length && data[index].id) || index}RemoveButton`}>
         {child}
         {getRemoveButton()}
-    </React.Fragment>
+    </Fragment>
 );
 
 export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-no-border';
@@ -50,7 +50,7 @@ export const multilineBoxWithRemoveButton = (
         removeBox: (id: string) => dispatch(removeValueStringList(ownProps.id, id)),
     });
 
-    class MultilineBoxWithRemoveButton<T> extends React.PureComponent<
+    class MultilineBoxWithRemoveButton<T> extends PureComponent<
         IMultilineBoxWithRemoveButtonProps<T> & ReturnType<typeof mapDispatchToProps>
     > {
         static defaultProps = {
@@ -85,8 +85,8 @@ export const multilineBoxWithRemoveButton = (
             );
         }
 
-        private getWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-            return React.Children.map(children, (child: React.ReactNode, index: number) =>
+        private getWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
+            return Children.map(children, (child: ReactNode, index: number) =>
                 HocUtils.supplyConfig(supplier).containerNode(
                     child,
                     (props?: Partial<IButtonProps>) => this.getRemoveButtonNode(data, props, index),

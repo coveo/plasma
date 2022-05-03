@@ -1,6 +1,6 @@
 import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import * as React from 'react';
+import {useState} from 'react';
 
 import {Modal} from '../Modal';
 
@@ -24,7 +24,7 @@ describe('Modal', () => {
     it('should call the prop closeCallback if it exists when closing the modal', async () => {
         const closeCallbackSpy = jest.fn();
         const ModalFixture = () => {
-            const [isOpened, setIsOpened] = React.useState(true);
+            const [isOpened, setIsOpened] = useState(true);
             return (
                 <>
                     <button onClick={() => setIsOpened(false)}>close</button>
@@ -42,7 +42,7 @@ describe('Modal', () => {
         jest.useFakeTimers();
         const closeCallbackSpy = jest.fn();
         const ModalFixture = () => {
-            const [isOpened, setIsOpened] = React.useState(true);
+            const [isOpened, setIsOpened] = useState(true);
             return (
                 <>
                     <button onClick={() => setIsOpened(false)}>close</button>

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import * as _ from 'underscore';
 import {NavigationConnected} from '../../navigation/NavigationConnected';
 import {ITableProps} from '../Table';

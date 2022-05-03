@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent, FormEvent} from 'react';
 
 type FormMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
@@ -10,8 +10,8 @@ export interface IFormProps {
     noMargin?: boolean;
 }
 
-export const Form: React.FunctionComponent<IFormProps> = ({children, className, title, mods, noMargin}) => {
-    const onSubmit = (submitEvent: React.FormEvent) => {
+export const Form: FunctionComponent<IFormProps> = ({children, className, title, mods, noMargin}) => {
+    const onSubmit = (submitEvent: FormEvent) => {
         submitEvent.preventDefault();
     };
     return (

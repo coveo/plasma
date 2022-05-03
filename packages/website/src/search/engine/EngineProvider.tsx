@@ -1,13 +1,13 @@
 import {loadFieldActions} from '@coveo/headless';
-import * as React from 'react';
+import {FunctionComponent, useEffect} from 'react';
 
 import {searchEngine} from './Engine';
 import {EngineContext} from './EngineContext';
 
 const engine = searchEngine();
 
-export const EngineProvider: React.FunctionComponent = ({children}) => {
-    React.useEffect(() => {
+export const EngineProvider: FunctionComponent = ({children}) => {
+    useEffect(() => {
         const {registerFieldsToInclude} = loadFieldActions(engine);
         engine.dispatch(registerFieldsToInclude(['description', 'thumbnail']));
     }, []);

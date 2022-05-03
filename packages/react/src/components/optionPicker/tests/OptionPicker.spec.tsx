@@ -1,5 +1,4 @@
 import userEvent from '@testing-library/user-event';
-import * as React from 'react';
 import * as _ from 'underscore';
 import {screen, render} from '@test-utils';
 

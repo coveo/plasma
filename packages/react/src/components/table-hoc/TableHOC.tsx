@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, HTMLAttributes, FunctionComponent} from 'react';
 import * as _ from 'underscore';
 
 import {IContentProps} from '../../Entry';
@@ -39,13 +39,13 @@ export interface ITableHOCOwnProps {
      *
      * @param data The data from the "data" prop modified by the HOCs if any
      */
-    renderBody: (data: any[]) => React.ReactNode;
+    renderBody: (data: any[]) => ReactNode;
     /**
      * The actions button to be displayed in the table header
      *
      * @default []
      */
-    actions?: React.ReactNode[];
+    actions?: ReactNode[];
     /**
      * Content to add before the filter and actions in the table header
      */
@@ -53,7 +53,7 @@ export interface ITableHOCOwnProps {
     /**
      * Content of the header of the table
      */
-    tableHeader?: React.ReactNode;
+    tableHeader?: ReactNode;
     /**
      * A callback function executed each time an HOC of the table changes. For example, it's useful to fetch new data with the server side table
      */
@@ -93,7 +93,7 @@ export interface ITableHOCOwnProps {
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
 
-export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> = ({
+export const TableHOC: FunctionComponent<ITableHOCProps & HTMLAttributes<HTMLTableElement>> = ({
     hasActionButtons = false,
     actions = [],
     actionBarPrefixContent,

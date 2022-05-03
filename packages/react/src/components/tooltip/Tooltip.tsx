@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ClassAttributes, ReactNode, ReactText, Component} from 'react';
 import {OverlayInjectedProps} from 'react-bootstrap/esm/Overlay';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import BootstrapTooltip from 'react-bootstrap/Tooltip';
@@ -24,11 +24,11 @@ export interface IOverlayTriggerProps {
     trigger?: string | string[];
 }
 
-export interface ITooltipProps extends IOverlayTriggerProps, React.ClassAttributes<Tooltip> {
+export interface ITooltipProps extends IOverlayTriggerProps, ClassAttributes<Tooltip> {
     /**
      * The text displayed inside the tooltip
      */
-    title: React.ReactNode;
+    title: ReactNode;
     /**
      * Additionnal CSS class the tooltip should have
      */
@@ -36,11 +36,11 @@ export interface ITooltipProps extends IOverlayTriggerProps, React.ClassAttribut
     /**
      * @deprecated Do not use
      */
-    arrowOffsetLeft?: React.ReactText;
+    arrowOffsetLeft?: ReactText;
     /**
      * @deprecated Do not use
      */
-    arrowOffsetTop?: React.ReactText;
+    arrowOffsetTop?: ReactText;
     /**
      * @deprecated Do not use
      */
@@ -102,7 +102,7 @@ const OVERLAY_PROPS_TO_OMIT: string[] = [
     'container',
 ];
 
-export class Tooltip extends React.Component<ITooltipProps> {
+export class Tooltip extends Component<ITooltipProps> {
     static defaultProps: Partial<ITooltipProps> = {
         className: '',
     };

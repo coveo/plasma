@@ -15,13 +15,18 @@ module.exports = {
             '@swc/jest',
             {
                 jsc: {
-                    target: 'es5',
+                    target: 'es2021',
                     keepClassNames: true,
                     parser: {
                         syntax: 'typescript',
                         tsx: true,
                         decorators: true,
                         dynamicImport: true,
+                    },
+                    transform: {
+                        react: {
+                            runtime: 'automatic',
+                        },
                     },
                 },
             },

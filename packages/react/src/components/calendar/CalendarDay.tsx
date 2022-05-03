@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {Moment} from 'moment';
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 export interface IDay {
     // eslint-disable-next-line id-blacklist
     number: number;
@@ -14,13 +14,13 @@ export interface IDay {
     isCountdown?: boolean;
 }
 
-export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
+export interface ICalendarDayProps extends ClassAttributes<CalendarDay> {
     day: IDay;
     onClick: (value: Date) => void;
     onSelectUnselectable: () => void;
 }
 
-export class CalendarDay extends React.Component<ICalendarDayProps> {
+export class CalendarDay extends Component<ICalendarDayProps> {
     static DEFAULT_DATE_CLASS: string = 'calendar-day';
 
     private handleClick() {

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Svg} from '../svg/Svg';
@@ -17,7 +17,7 @@ export interface IFacet {
     exclude?: boolean;
 }
 
-export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
+export interface IFacetOwnProps extends ClassAttributes<Facet> {
     /**
      * The attributes of this facet, see IFacet
      */
@@ -119,7 +119,7 @@ export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDis
 
 export const CLEAR_FACET_LABEL: string = 'Clear';
 
-export class Facet extends React.Component<IFacetProps, any> {
+export class Facet extends Component<IFacetProps, any> {
     static defaultProps: Partial<IFacetProps> = {
         clearFacetLabel: CLEAR_FACET_LABEL,
         selectedFacetRows: [],

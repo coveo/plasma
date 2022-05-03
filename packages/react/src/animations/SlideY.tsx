@@ -1,7 +1,7 @@
 // inspired from https://github.com/frankwallis/react-slidedown
 // implemented with the new react-transition-group https://github.com/reactjs/react-transition-group
 
-import * as React from 'react';
+import {PureComponent} from 'react';
 import Transition from 'react-transition-group/Transition';
 
 export interface SlideYProps {
@@ -26,7 +26,7 @@ export interface SlideYProps {
     timeout?: number | {enter?: number; exit?: number};
 }
 
-export class SlideY extends React.PureComponent<SlideYProps> {
+export class SlideY extends PureComponent<SlideYProps> {
     private el: HTMLElement;
 
     static defaultTimeout: number = 200;

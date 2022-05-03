@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 import BadgeExample from '../../examples/Badge/Badge.example.tsx';
 import BadgeSmallExample from '../../examples/Badge/BadgeSmall.example.tsx';

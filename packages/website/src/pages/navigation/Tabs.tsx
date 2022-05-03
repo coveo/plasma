@@ -1,10 +1,8 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const withIcons = `
-    import * as React from 'react';
     import {Badge, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
-    
     export default () => (
     <>
         <TabNavigation>
@@ -28,7 +26,6 @@ const withIcons = `
 `;
 
 const code = `
-    import * as React from 'react';
     import {Badge, BadgeType, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
 
     export default () => (
@@ -56,7 +53,7 @@ const code = `
     );
 `;
 
-export const TabsExamples = () => (
+export const TabsExamples: FunctionComponent = () => (
     <PageLayout
         id="Tab"
         componentSourcePath="/tab/Tab.tsx"

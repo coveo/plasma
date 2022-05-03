@@ -1,6 +1,5 @@
 import {render, screen} from '@test-utils';
 import {shallow} from 'enzyme';
-import * as React from 'react';
 import ReactModal from 'react-modal';
 
 import {ModalBody} from '../ModalBody';

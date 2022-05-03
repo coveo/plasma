@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {Badge, BadgeType} from '@coveord/plasma-react';
 
 export default () => (

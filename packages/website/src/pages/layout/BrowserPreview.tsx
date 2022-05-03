@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {BrowserPreview} from '@coveord/plasma-react';
 
     export default () => (
@@ -15,7 +12,6 @@ const code = `
 `;
 
 const withError = `
-    import * as React from 'react';
     import {BrowserPreview, BrowserPreviewError} from '@coveord/plasma-react';
 
     export default () => (
@@ -26,7 +22,6 @@ const withError = `
 `;
 
 const emptyState = `
-    import * as React from 'react';
     import {BrowserPreview, BrowserPreviewEmpty} from '@coveord/plasma-react';
 
     export default () => (

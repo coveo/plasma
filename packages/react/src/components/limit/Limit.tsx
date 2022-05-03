@@ -1,6 +1,6 @@
 import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -55,7 +55,7 @@ export interface LimitOwnProps {
     onHistoryIconClick?: () => void;
 }
 
-export const Limit: React.FunctionComponent<LimitOwnProps> = (props) => {
+export const Limit: FunctionComponent<LimitOwnProps> = (props) => {
     const {id, limit, className} = props;
     const {currentLimit} = useSelector((state: PlasmaState) => ({
         currentLimit: +InputSelectors.getValue(state, {id}) || limit,
@@ -72,21 +72,21 @@ export const Limit: React.FunctionComponent<LimitOwnProps> = (props) => {
     );
 };
 
-const HeaderDivision: React.FunctionComponent<LimitOwnProps> = ({title, isHistoryIncluded, onHistoryIconClick}) => (
+const HeaderDivision: FunctionComponent<LimitOwnProps> = ({title, isHistoryIncluded, onHistoryIconClick}) => (
     <div className="flex space-between">
         <label className="form-control-label"> {title}</label>
         <HistoryIcon isHistoryIncluded={isHistoryIncluded} onHistoryIconClick={onHistoryIconClick} />
     </div>
 );
 
-const HistoryIcon: React.FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({isHistoryIncluded, onHistoryIconClick}) =>
+const HistoryIcon: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({isHistoryIncluded, onHistoryIconClick}) =>
     isHistoryIncluded ? (
         <span className="icon limit-history-button documentation-link" onClick={onHistoryIconClick}>
             <Svg svgName={svg.menuAnalytics.name} />
         </span>
     ) : null;
 
-const ContentDivision: React.FunctionComponent<Omit<LimitOwnProps, 'title'> & {currentLimit: number}> = ({
+const ContentDivision: FunctionComponent<Omit<LimitOwnProps, 'title'> & {currentLimit: number}> = ({
     id,
     usage,
     limit,
@@ -106,14 +106,14 @@ const ContentDivision: React.FunctionComponent<Omit<LimitOwnProps, 'title'> & {c
     </div>
 );
 
-const UsageDivision: React.FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage}) => (
+const UsageDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage}) => (
     <div className="limit-box-usage">
         <label className="form-control-label">Usage</label>
         <span className="limit-box-usage-value">{usage ?? 0}</span>
     </div>
 );
 
-const LimitDivision: React.FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
+const LimitDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
     id,
     limit,
     usage,
@@ -141,7 +141,7 @@ const LimitDivision: React.FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
     );
 };
 
-const ProgressBar: React.FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage, isLimitTheGoalToReach, limit}) => {
+const ProgressBar: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage, isLimitTheGoalToReach, limit}) => {
     const progressClass: string = getProgressBarClass(usage, limit);
     const progressClasses = classNames('limit-box-bar', progressClass, {
         'mod-green': isLimitTheGoalToReach,

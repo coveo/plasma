@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {compose} from 'redux';
 
 import {
@@ -14,7 +14,7 @@ const TABLE_ID: string = 'withBlankslateTableId';
 
 export default () => <WithBlankSlate />;
 
-const WithBlankSlate: React.FunctionComponent = () => (
+const WithBlankSlate: FunctionComponent = () => (
     <>
         <TableComposed
             id={TABLE_ID}

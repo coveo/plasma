@@ -1,12 +1,12 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {IInputProps, Input} from '../input/Input';
 import {Tooltip} from '../tooltip';
 
 export interface RadioCardProps extends Omit<IInputProps, 'outerContainerClass' | 'outerElementInContainer'> {}
 
-export const RadioCard: React.FunctionComponent<RadioCardProps> = (props) => {
+export const RadioCard: FunctionComponent<RadioCardProps> = (props) => {
     const classes = classNames('card', 'radio-card', props.classes);
     const containerClasses = 'radio-card-container m2';
 
@@ -25,7 +25,7 @@ export const RadioCard: React.FunctionComponent<RadioCardProps> = (props) => {
     );
 };
 
-const RadioCardContent: React.FunctionComponent<RadioCardProps & {classes: string}> = ({
+const RadioCardContent: FunctionComponent<RadioCardProps & {classes: string}> = ({
     id,
     name,
     classes,

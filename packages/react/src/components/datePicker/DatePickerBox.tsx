@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 import {slugify} from 'underscore.string';
 
@@ -45,7 +45,7 @@ export interface IDatePickerBoxOwnProps
             | 'isClearable'
             | 'setToNowTooltip'
         >,
-        React.ClassAttributes<DatePickerBox> {
+        ClassAttributes<DatePickerBox> {
     id?: string;
     /**
      * This prop configures the portion to the right of the calendar, inside the datepicker dropdown
@@ -71,7 +71,7 @@ export const DEFAULT_CLEAR_DATE_LABEL = 'Clear';
 
 export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps {}
 
-export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
+export class DatePickerBox extends Component<IDatePickerBoxProps, any> {
     static defaultProps: Partial<IDatePickerBoxProps> = {
         clearLabel: DEFAULT_CLEAR_DATE_LABEL,
     };

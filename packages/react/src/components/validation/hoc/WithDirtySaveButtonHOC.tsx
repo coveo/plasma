@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentType} from 'react';
 import {connect} from 'react-redux';
 import {PlasmaState} from '../../../PlasmaState';
 import {IButtonProps} from '../../button/Button';
@@ -18,7 +18,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IWithDirtySaveButtonHOCPr
     warnings: ValidationSelectors.getAnyWarning(ownProps.validationIds)(state),
 });
 
-export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: React.ComponentType<T>) => {
+export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     const WrappedButton = ({
         dirty,

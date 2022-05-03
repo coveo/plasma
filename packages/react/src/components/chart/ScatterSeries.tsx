@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent, useContext} from 'react';
 
 import {XYChartContext, XYPoint, XYSerie} from './XYChart';
 
@@ -6,8 +6,8 @@ export interface ScatterSeriesProps {
     radius?: number;
 }
 
-export const ScatterSeries: React.FunctionComponent<ScatterSeriesProps> = ({children, radius = 3}) => {
-    const {series, xScale, yScale, color, colorPattern} = React.useContext(XYChartContext);
+export const ScatterSeries: FunctionComponent<ScatterSeriesProps> = ({children, radius = 3}) => {
+    const {series, xScale, yScale, color, colorPattern} = useContext(XYChartContext);
 
     const points = series.map((serie: XYSerie, i: number) =>
         serie.data.map((point: XYPoint, index: number) => (

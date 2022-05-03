@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import * as React from 'react';
 
 import {IDropdownOption} from '../../DropdownSearch';
 import {IMultiselectInputProps, MultiselectInput} from '../MultiSelectInput';

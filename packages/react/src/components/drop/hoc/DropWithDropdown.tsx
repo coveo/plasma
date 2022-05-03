@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentClass, PureComponent} from 'react';
 import * as _ from 'underscore';
 import {SlideY} from '../../../animations/SlideY';
 import {PlasmaState} from '../../../PlasmaState';
@@ -9,7 +9,7 @@ import {Drop, IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
 import {DefaultGroupIds} from '../redux/DropActions';
 import {DropSelectors} from '../redux/DropReducers';
 
-export type DropWithDropdownComponent<T = IDropProps> = React.ComponentClass<IDropProps>;
+export type DropWithDropdownComponent<T = IDropProps> = ComponentClass<IDropProps>;
 
 const mapStateToProps = (state: PlasmaState, {id, groupId}: IDropOwnProps): IDropStateProps => ({
     isOpen: DropSelectors.isOpen(state, {id, groupId}),
@@ -17,7 +17,7 @@ const mapStateToProps = (state: PlasmaState, {id, groupId}: IDropOwnProps): IDro
 
 export const dropWithDropdown = () => (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
     @ReduxConnect(mapStateToProps)
-    class DropWithDropdown extends React.PureComponent<IDropProps> {
+    class DropWithDropdown extends PureComponent<IDropProps> {
         static defaultProps: Partial<IDropProps>;
 
         render() {

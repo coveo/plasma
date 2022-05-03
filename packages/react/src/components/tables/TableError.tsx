@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 
 export interface IErrorSection {
     errorDescription: string;
@@ -8,7 +8,7 @@ export interface IErrorSection {
     errorCode: string;
 }
 
-export interface ITableErrorProps extends React.ClassAttributes<TableError> {
+export interface ITableErrorProps extends ClassAttributes<TableError> {
     error: IErrorSection;
     descriptionLabel?: string;
     troubleshootingLabel?: string;
@@ -19,7 +19,7 @@ export const DESCRIPTION_LABEL: string = 'Description';
 export const TROUBLESHOOTING_LABEL: string = 'Troubleshooting';
 export const ERROR_CODE_LABEL: string = 'Error code';
 
-export class TableError extends React.Component<ITableErrorProps, any> {
+export class TableError extends Component<ITableErrorProps, any> {
     render() {
         const descriptionLabel: string = this.props.descriptionLabel || DESCRIPTION_LABEL;
         const troubleshootingLabel: string = this.props.troubleshootingLabel || TROUBLESHOOTING_LABEL;

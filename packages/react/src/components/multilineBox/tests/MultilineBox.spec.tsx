@@ -1,5 +1,4 @@
 import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {StringListActions} from '../../../reusableState/customList/StringListActions';

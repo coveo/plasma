@@ -1,7 +1,5 @@
 import {render, screen, within} from '@test-utils';
 import userEvent, {specialChars} from '@testing-library/user-event';
-import * as React from 'react';
-
 import {Badge, BadgeType} from '../../badge/Badge';
 import {UrlUtils} from '../../../utils';
 import {Tab, TabConnected} from '../Tab';

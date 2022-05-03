@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 import {Content, IContentProps} from '../content/Content';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
@@ -15,7 +15,7 @@ export interface IFlatSelectOptionProps {
     disabled?: boolean;
 }
 
-export class FlatSelectOption extends React.Component<IFlatSelectOptionProps, any> {
+export class FlatSelectOption extends Component<IFlatSelectOptionProps, any> {
     static defaultProps: Partial<IFlatSelectOptionProps> = {
         selected: false,
         disabled: false,

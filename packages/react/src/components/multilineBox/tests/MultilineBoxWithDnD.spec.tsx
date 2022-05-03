@@ -1,5 +1,4 @@
 import {fireEvent, render, screen} from '@test-utils';
-import * as React from 'react';
 
 import {multilineBoxWithDnD} from '../hoc/MultilineBoxWithDnD';
 import {MultilineBox} from '../MultilineBox';

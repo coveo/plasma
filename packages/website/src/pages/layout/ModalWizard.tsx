@@ -1,7 +1,6 @@
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {useSelector, useDispatch} from 'react-redux';
     import {
         Button,
@@ -104,7 +103,6 @@ const code = `
 `;
 
 const withValidationIds = `
-    import * as React from 'react';
     import {useSelector, useDispatch} from 'react-redux';
     import {
         Button,

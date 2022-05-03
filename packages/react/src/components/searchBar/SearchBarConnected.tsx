@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ChangeEvent} from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 import {PlasmaState} from '../../PlasmaState';
@@ -19,8 +19,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: ISearchBarOwnProps): ISea
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISearchBarOwnProps): ISearchBarDispatchProps => ({
     onMount: () => dispatch(addSearchBar(ownProps.id, ownProps.disabledOnMount)),
     onUnmount: () => dispatch(removeSearchBar(ownProps.id)),
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-        dispatch(setSearchBarValue(ownProps.id, event.target.value)),
+    onChange: (event: ChangeEvent<HTMLInputElement>) => dispatch(setSearchBarValue(ownProps.id, event.target.value)),
 });
 
 export const SearchBarConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(SearchBar);

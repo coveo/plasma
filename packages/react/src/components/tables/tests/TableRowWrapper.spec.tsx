@@ -1,5 +1,4 @@
 import {mount} from 'enzyme';
-import * as React from 'react';
 import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
 
 describe('<TableCollapsibleRowWrapper />', () => {

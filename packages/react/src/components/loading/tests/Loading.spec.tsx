@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {ILoadingProps, Loading} from '../Loading';

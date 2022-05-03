@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {InputHTMLAttributes, FunctionComponent, ChangeEvent, FocusEvent, useMemo, useRef, useEffect} from 'react';
 import {omit, uniqueId} from 'underscore';
 
 import {TooltipPlacement} from '../../utils';
@@ -52,8 +52,8 @@ interface TextInputProps {
     defaultValue?: string;
 }
 
-export const TextInput: React.FunctionComponent<
-    TextInputProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>
+export const TextInput: FunctionComponent<
+    TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>
 > = ({
     id: propsId,
     label,
@@ -70,11 +70,11 @@ export const TextInput: React.FunctionComponent<
     tooltip,
     ...inputProps
 }) => {
-    const id = React.useMemo(() => propsId || uniqueId(), [propsId]);
+    const id = useMemo(() => propsId || uniqueId(), [propsId]);
     const {state, dispatch} = useTextInput(id, defaultValue);
-    const inputElement = React.useRef<HTMLInputElement>();
+    const inputElement = useRef<HTMLInputElement>();
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         dispatch({type: 'change-value', payload: event.target.value});
         if (showValidationOnChange) {
             dispatch({type: 'show-validation'});
@@ -84,14 +84,14 @@ export const TextInput: React.FunctionComponent<
         onChange?.(event);
     };
 
-    const handleOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const handleOnBlur = (event: FocusEvent<HTMLInputElement>) => {
         if (showValidationOnBlur) {
             dispatch({type: 'show-validation'});
         }
         onBlur?.(event);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         const {status, message} = validate?.(state.value) ?? {status: 'valid', message: ''};
         dispatch({type: 'set-message', payload: message || ''});
 
@@ -116,7 +116,7 @@ export const TextInput: React.FunctionComponent<
         }
     }, [state.value]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (defaultValue) {
             dispatch({type: 'change-value', payload: defaultValue as string});
         }
@@ -169,7 +169,7 @@ export const TextInput: React.FunctionComponent<
     );
 };
 
-const HelpTooltip: React.FunctionComponent<{message: string}> = ({message}) => {
+const HelpTooltip: FunctionComponent<{message: string}> = ({message}) => {
     if (!message) {
         return null;
     }
@@ -192,7 +192,7 @@ const statusIconMapping: Record<string, InfoTokenType> = {
     warning: InfoTokenType.Warning,
 };
 
-const ValidationMessage: React.FunctionComponent<{inputId: string}> = ({inputId}) => {
+const ValidationMessage: FunctionComponent<{inputId: string}> = ({inputId}) => {
     const {state} = useTextInput(inputId);
 
     if (!state.visibleStatus || !state.message || state.status === 'indeterminate') {

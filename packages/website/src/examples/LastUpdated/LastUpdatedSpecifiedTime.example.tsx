@@ -1,5 +1,4 @@
 import {LastUpdated} from '@coveord/plasma-react';
-import * as React from 'react';
 
 const ONE_HOUR = 60 * 60 * 1000;
 

@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 

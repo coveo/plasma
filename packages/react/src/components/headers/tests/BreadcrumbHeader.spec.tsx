@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 import {Breadcrumb, IBreadcrumbProps} from '../../breadcrumbs/Breadcrumb';
 import {BreadcrumbHeader, IBreadcrumbHeaderProps} from '../BreadcrumbHeader';
 import {HeaderWrapper} from '../HeaderWrapper';

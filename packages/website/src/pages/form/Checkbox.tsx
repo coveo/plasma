@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {Checkbox, Label} from '@coveord/plasma-react';
 
     export default () => {
@@ -17,7 +14,6 @@ const code = `
 `;
 
 const connected = `
-    import * as React from 'react';
     import {CheckboxConnected, Label} from '@coveord/plasma-react';
 
     export default () => (
@@ -28,7 +24,6 @@ const connected = `
 `;
 
 const disabled = `
-    import * as React from 'react';
     import {Checkbox, Label} from '@coveord/plasma-react';
 
     export default () => (
@@ -39,7 +34,6 @@ const disabled = `
 `;
 
 const group = `
-    import * as React from 'react';
     import {GroupableCheckboxConnected, Label} from '@coveord/plasma-react';
 
     export default () => (

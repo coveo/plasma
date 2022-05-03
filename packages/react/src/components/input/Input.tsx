@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {AllHTMLAttributes, ReactNode, ChangeEventHandler, MouseEvent, KeyboardEvent, Component} from 'react';
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {connect} from 'react-redux';
@@ -17,7 +17,7 @@ import {addInput, removeInput, changeInputValue} from './InputActions';
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
 
 type IInputNativeTagOwnProps = Omit<
-    React.AllHTMLAttributes<HTMLInputElement>,
+    AllHTMLAttributes<HTMLInputElement>,
     'defaultValue' | 'onClick' | 'onChange' | 'onBlur' | 'value'
 >;
 
@@ -26,7 +26,7 @@ export interface IInputAdditionalOwnProps {
     classes?: IClassName;
     innerInputClasses?: IClassName;
     validate?: (value: any) => boolean;
-    labelTitle?: React.ReactNode;
+    labelTitle?: ReactNode;
     labelProps?: ILabelProps;
     validateOnChange?: boolean;
     disabledOnMount?: boolean;
@@ -35,7 +35,7 @@ export interface IInputAdditionalOwnProps {
     minimum?: number /* @deprecated use min instead */;
     maximum?: number /* @deprecated use max instead */;
     onBlur?: (value: string) => void;
-    onChangeHandler?: React.ChangeEventHandler<HTMLInputElement>;
+    onChangeHandler?: ChangeEventHandler<HTMLInputElement>;
     defaultValue?: string;
     isReadOnly?: boolean;
 }
@@ -62,7 +62,7 @@ export interface IInputDispatchProps {
     onDestroy?: () => void;
     onRender?: (value?: string, valid?: boolean, disabled?: boolean) => void;
     onChange?: (value?: string, valid?: boolean) => void;
-    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
     changeDirtyState?: (value?: string, valid?: boolean) => void;
 }
 
@@ -102,7 +102,7 @@ export interface IInputComponentState {
 /**
  * @deprecated Use TextInput instead
  */
-export class Input extends React.Component<IInputProps, IInputComponentState> {
+export class Input extends Component<IInputProps, IInputComponentState> {
     private innerInput: HTMLInputElement;
 
     static defaultProps: Partial<IInputProps> = {
@@ -167,7 +167,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         }
     }
 
-    private handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    private handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
         if (this.props.onChange) {
             const validOnChange =
                 this.props.validateOnChange && this.props.validate && this.props.validate(this.getInnerValue());
@@ -176,19 +176,19 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         this.props.onChangeHandler?.(e);
     };
 
-    private handleClick(e: React.MouseEvent<HTMLElement>) {
+    private handleClick(e: MouseEvent<HTMLElement>) {
         if (this.props.onClick) {
             this.props.onClick(e);
         }
     }
 
-    private handleKeyUp(event: React.KeyboardEvent<HTMLInputElement>) {
+    private handleKeyUp(event: KeyboardEvent<HTMLInputElement>) {
         if (this.props.onKeyUp) {
             this.props.onKeyUp(event);
         }
     }
 
-    private getLabel(): React.ReactNode {
+    private getLabel(): ReactNode {
         const {labelProps, labelTitle} = this.props;
         if (typeof labelTitle === 'string') {
             return labelTitle || this.props.validate ? (
@@ -230,7 +230,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
                 ref={(innerInput: HTMLInputElement) => (this.innerInput = innerInput)}
                 onBlur={() => this.handleBlur()}
                 onChange={this.handleChange}
-                onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
+                onKeyUp={(event: KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
                 min={this.props.minimum}
                 max={this.props.maximum}
                 {..._.omit(this.props, [...PropsToOmitUtils.input, ...inputPropsToOmit])}
@@ -241,13 +241,13 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         ];
 
         return (this.props.disabled || this.props.isReadOnly) && this.props.disabledTooltip ? (
-            <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
+            <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
                 <Tooltip title={this.props.disabledTooltip} placement={TooltipPlacement.Right}>
                     {inputElements}
                 </Tooltip>
             </div>
         ) : (
-            <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
+            <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
                 {inputElements}
             </div>
         );

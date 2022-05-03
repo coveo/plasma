@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {ITableEmptyRowProps, TableEmptyRow} from '../TableEmptyRow';

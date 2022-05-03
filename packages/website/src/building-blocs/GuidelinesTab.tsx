@@ -1,12 +1,12 @@
 import {TabPaneConnected} from '@coveord/plasma-react';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 import {GithubButton} from './GithubButton';
 import {Guidelines, MarkdownOverrides} from './Guidelines';
 
-export const GuidelinesTab: React.FunctionComponent<{id: string}> = ({id}) => (
+export const GuidelinesTab: FunctionComponent<{id: string}> = ({id}) => (
     <TabPaneConnected id="guide" groupId="page">
         {Guidelines.exists(id) ? (
             <>

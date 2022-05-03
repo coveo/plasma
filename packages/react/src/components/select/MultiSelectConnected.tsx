@@ -1,6 +1,6 @@
 import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {CSSProperties, ReactNode, ComponentType, PureComponent} from 'react';
 import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
@@ -48,7 +48,7 @@ export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button' | '
      *
      * @default {}
      */
-    multiSelectStyle?: React.CSSProperties;
+    multiSelectStyle?: CSSProperties;
     /**
      * Whether the multiselect is in read only mode. When in read only mode, only the selected option are displayed, greyed out.
      */
@@ -92,7 +92,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps)
 });
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTarget: any}> {
+class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: any}> {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
         emptyPlaceholder: 'No selected option',
@@ -117,7 +117,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTa
         return this.props.sortable ? <DndProvider backend={HTML5Backend}>{select}</DndProvider> : select;
     }
 
-    private getSelectedOptionComponents(): React.ReactNode {
+    private getSelectedOptionComponents(): ReactNode {
         const selected = this.getSelectedOptions();
 
         if (selected.length) {
@@ -248,4 +248,4 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & {connectDropTa
     }
 }
 
-export const MultiSelectConnected: React.ComponentType<IMultiSelectOwnProps> = MultiSelect;
+export const MultiSelectConnected: ComponentType<IMultiSelectOwnProps> = MultiSelect;

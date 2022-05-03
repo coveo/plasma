@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, PureComponent, useMemo} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -66,7 +66,7 @@ export interface IMultilineBoxOwnProps<T = any> {
      *
      * @default () => <div />
      */
-    renderBody?: (data: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => React.ReactNode;
+    renderBody?: (data: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => ReactNode;
     /**
      * An object representing the default values of a new box
      *
@@ -81,10 +81,10 @@ export interface IMultilineBoxOwnProps<T = any> {
      * @param parentProps see IMultilineParentProps
      */
     renderWrapper?: (
-        children: React.ReactNode,
+        children: ReactNode,
         boxProps: IMultilineSingleBoxProps<T>,
         parentProps: IMultilineParentProps
-    ) => React.ReactNode;
+    ) => ReactNode;
     /**
      * Whether this component is disabled
      */
@@ -125,7 +125,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps
     updateBox: (ids: string[]) => dispatch(updateValueStringList(ownProps.id, ids)),
 });
 
-class MultilineBoxDisconnected<T> extends React.PureComponent<IMultilineBoxProps<T>> {
+class MultilineBoxDisconnected<T> extends PureComponent<IMultilineBoxProps<T>> {
     private initialData: {[id: string]: T};
 
     static defaultProps = {
@@ -197,7 +197,7 @@ class MultilineBoxDisconnected<T> extends React.PureComponent<IMultilineBoxProps
 }
 
 export const MultilineBox = <T extends any>(props: IMultilineBoxOwnProps<T>) => {
-    const Connected = React.useMemo(
+    const Connected = useMemo(
         () =>
             connect<IMultilineBoxStateProps, IMultilineBoxDispatchProps, IMultilineBoxOwnProps<T>>(
                 makeMapStateToProps,

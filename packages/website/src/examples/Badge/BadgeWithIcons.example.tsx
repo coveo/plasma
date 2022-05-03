@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {Badge, BadgeIconPlacement} from '@coveord/plasma-react';
 
 export default () => (

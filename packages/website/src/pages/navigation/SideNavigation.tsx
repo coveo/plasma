@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const loading = `
-    import * as React from 'react';
     import {
         SideNavigation,
         SideNavigationLoadingItem,
@@ -21,7 +18,6 @@ const loading = `
     );
 `;
 const collapsible = `
-    import * as React from 'react';
     import {
         SideNavigation,
         SideNavigationItem,
@@ -56,7 +52,6 @@ const collapsible = `
 `;
 
 const code = `
-    import * as React from 'react';
     import {
         SideNavigation,
         SideNavigationItem,

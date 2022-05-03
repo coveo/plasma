@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactChild} from 'react';
 
 import {ValidComponentChildren} from './ValidComponentChildren';
 
@@ -7,7 +7,7 @@ describe('ValidComponentChildren', () => {
         let counter = 0;
         ValidComponentChildren.map(
             <div></div>,
-            (child: React.ReactChild) => {
+            (child: ReactChild) => {
                 counter++;
             },
             null
@@ -20,7 +20,7 @@ describe('ValidComponentChildren', () => {
         let counter = 0;
         ValidComponentChildren.map(
             'Teenage mutan ninja trouts',
-            (child: React.ReactChild) => {
+            (child: ReactChild) => {
                 counter++;
             },
             null

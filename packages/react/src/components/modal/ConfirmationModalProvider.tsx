@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, FunctionComponent, useState} from 'react';
 import {connect} from 'react-redux';
 
 import {ConnectedProps, IDispatch} from '../../utils';
@@ -17,9 +17,9 @@ export interface IConfirmationModalProviderProps {
     confirmationModalId?: string;
     shouldConfirm: boolean;
     modalTitle: string;
-    modalBodyChildren: React.ReactNode;
+    modalBodyChildren: ReactNode;
     className?: string[];
-    children: (props: IConfirmationModalChildrenProps) => React.ReactNode;
+    children: (props: IConfirmationModalChildrenProps) => ReactNode;
     confirmButtonText?: string;
 }
 
@@ -28,7 +28,7 @@ const enhance = connect(null, (dispatch: IDispatch, ownProps: IConfirmationModal
     closePrompt: () => dispatch(ModalActions.closeModal(ownProps.confirmationModalId)),
 }));
 
-const ConfirmationModalProviderDisconnected: React.FunctionComponent<
+const ConfirmationModalProviderDisconnected: FunctionComponent<
     IConfirmationModalProviderProps & ConnectedProps<typeof enhance>
 > = ({
     confirmationModalId,
@@ -41,7 +41,7 @@ const ConfirmationModalProviderDisconnected: React.FunctionComponent<
     openPrompt,
     closePrompt,
 }) => {
-    const [confirm, setConfirm] = React.useState(null);
+    const [confirm, setConfirm] = useState(null);
 
     const promptBefore = (callbackOnDiscard: () => any): boolean => {
         if (shouldConfirm) {

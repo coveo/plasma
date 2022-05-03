@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {ContentLoadingPlaceholder} from './ContentLoadingPlaceholder';
 import {TextLoadingPlaceholder} from './TextLoadingPlaceholder';
 

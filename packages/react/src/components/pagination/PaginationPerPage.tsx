@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent} from 'react';
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 import * as _ from 'underscore';
 import {UrlUtils} from '../../utils/UrlUtils';
 import {FlatSelectWithPrepend} from '../flatSelect/FlatSelectWithPrepend';
@@ -12,7 +11,7 @@ export interface IPaginationPerPageProps {
     id: string;
     perPage?: number[];
     defaultPerPageSelected?: number;
-    label?: React.ReactNode;
+    label?: ReactNode;
     disabled?: boolean;
     hidden?: boolean;
 }

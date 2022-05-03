@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import * as React from 'react';
+import {FunctionComponent, createContext} from 'react';
 import * as _ from 'underscore';
 
 import {ChartBaseProps} from './ChartContainer';
@@ -44,7 +44,7 @@ export interface XYChartContextProps {
     color?: (serie: number, colorPattern: string[], point?: XYPoint) => string;
 }
 
-export const XYChartContext = React.createContext<XYChartContextProps>({
+export const XYChartContext = createContext<XYChartContextProps>({
     width: 0,
     height: 0,
     xDomain: [0, 0],
@@ -70,7 +70,7 @@ const getDateChartColorPattern = (numOfColors: number) => {
 };
 const defaultPadding = 10;
 
-export const XYChart: React.FunctionComponent<XYChartProps> = ({
+export const XYChart: FunctionComponent<XYChartProps> = ({
     width,
     height,
     series,

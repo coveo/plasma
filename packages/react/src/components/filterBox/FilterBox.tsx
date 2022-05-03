@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, KeyboardEvent, FocusEvent, FormEvent, Component} from 'react';
 
 import {Svg} from '../svg/Svg';
 
-export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
+export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {
     /**
      * The unique identifier of that filter box
      */
@@ -25,13 +25,13 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
      *
      * @param evt the keyboard event
      */
-    onKeyDown?: (evt: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyDown?: (evt: KeyboardEvent<HTMLInputElement>) => void;
     /**
      * Callback function that runs onKeyUp
      *
      * @param evt the keyboard event
      */
-    onKeyUp?: (evt: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyUp?: (evt: KeyboardEvent<HTMLInputElement>) => void;
     /**
      * Wheter to  automatically focus on the filter box
      *
@@ -77,7 +77,7 @@ export interface IFilterBoxProps extends IFilterBoxOwnProps, IFilterBoxStateProp
 
 export const FILTER_PLACEHOLDER: string = 'Filter';
 
-export class FilterBox extends React.Component<IFilterBoxProps, any> {
+export class FilterBox extends Component<IFilterBoxProps, any> {
     filterInput: HTMLInputElement;
 
     static defaultProps: Partial<IFilterBoxProps> = {
@@ -97,7 +97,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
         this.handleChange('');
     };
 
-    placeCursorAtEndOfInputValue(e: React.FocusEvent<any>) {
+    placeCursorAtEndOfInputValue(e: FocusEvent<any>) {
         const input = e.target as HTMLInputElement;
         const temp = input.value;
         input.value = '';
@@ -144,8 +144,8 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
                         type="text"
                         className={filterInputClasses}
                         placeholder={filterPlaceholder}
-                        onChange={(e: React.FormEvent<HTMLInputElement>) => this.handleChange(e.currentTarget.value)}
-                        onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
+                        onChange={(e: FormEvent<HTMLInputElement>) => this.handleChange(e.currentTarget.value)}
+                        onFocus={(e: FocusEvent<HTMLInputElement>) => {
                             this.placeCursorAtEndOfInputValue(e);
                         }}
                         onBlur={this.props.onBlur}

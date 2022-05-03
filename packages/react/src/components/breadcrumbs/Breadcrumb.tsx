@@ -1,10 +1,10 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
 import {ITitleProps, Title} from '../title/Title';
 import {BreadcrumbLink, IBreadcrumbLinkProps} from './BreadcrumbLink';
 
-export interface IBreadcrumbProps extends React.ClassAttributes<Breadcrumb> {
+export interface IBreadcrumbProps extends ClassAttributes<Breadcrumb> {
     /**
      * Array of breadcrumb links to navigate to previous pages
      */
@@ -15,7 +15,7 @@ export interface IBreadcrumbProps extends React.ClassAttributes<Breadcrumb> {
     title: ITitleProps;
 }
 
-export class Breadcrumb extends React.Component<IBreadcrumbProps> {
+export class Breadcrumb extends Component<IBreadcrumbProps> {
     static defaultProps: Partial<IBreadcrumbProps> = {
         links: [],
     };

@@ -1,8 +1,6 @@
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-import * as React from 'react';
 import {DiffViewer} from '@coveord/plasma-react';
 
 export default () => {
@@ -22,7 +20,6 @@ export default () => {
 `;
 
 const unified = `
-import * as React from 'react';
 import {DiffViewer} from '@coveord/plasma-react';
 
 export default () => {
@@ -42,7 +39,6 @@ export default () => {
 `;
 
 const noChanges = `
-import * as React from 'react';
 import {DiffViewer} from '@coveord/plasma-react';
 
 export default () => {
