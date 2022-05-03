@@ -1,29 +1,28 @@
-import '../styles/main.scss';
-import '../styles/page-layout.scss';
+import type {AppProps} from 'next/app';
 import '../styles/github-button.scss';
 import '../styles/home.scss';
-import '../styles/plasmaSearchBar.scss';
-import '../styles/tile.scss';
-import '../styles/sandbox.scss';
-import '../styles/props-doc.scss';
-import '../styles/loading-screen.css';
-import '../styles/page-header.scss';
 import '../styles/iconography.scss';
+import '../styles/loading-screen.css';
+import '../styles/main.scss';
+import '../styles/page-header.scss';
+import '../styles/page-layout.scss';
+import '../styles/plasmaSearchBar.scss';
+import '../styles/props-doc.scss';
+import '../styles/sandbox.scss';
 import '../styles/spacing.scss';
-import {Svg} from '@coveord/plasma-react';
+import '../styles/tile.scss';
 
 import * as PlasmaReact from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
-import type {AppProps} from 'next/app';
+import * as LoremIpsum from 'lorem-ipsum';
+import moment from 'moment';
 import Head from 'next/head';
 import Link from 'next/link';
-import * as React from 'react';
-import * as Redux from 'redux';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
-import * as LoremIpsum from 'lorem-ipsum';
-import {Provider} from 'react-redux';
-import moment from 'moment';
+import * as jsxRuntime from 'react/jsx-runtime';
+import * as Redux from 'redux';
+import * as React from 'react';
 
 import logo from '../../resources/plasma-logo.svg';
 import {EngineProvider} from '../search/engine/EngineProvider';
@@ -41,7 +40,7 @@ const Header = () => (
         <StandaloneSearchBar />
         <div className="right-side">
             <a href="https://github.com/coveo/plasma#readme" aria-label="README" target="_blank">
-                <Svg svgName="githubMark" svgClass="icon mod-32 mod-white" />
+                <PlasmaReact.Svg svgName="githubMark" svgClass="icon mod-32 mod-white" />
             </a>
         </div>
     </div>
@@ -53,8 +52,9 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         PlasmaReact.Defaults.MODAL_ROOT = '#Modals';
         PlasmaReact.Defaults.DROP_ROOT = '#Drops';
 
-        window.React = React;
         window.ReactDOM = ReactDOM;
+        (window as any).jsxRuntime = jsxRuntime;
+        (window as any).React = React;
         (window as any).ReactRedux = ReactRedux;
         (window as any).PlasmaReact = PlasmaReact;
         (window as any).PlasmaReactIcons = PlasmaReactIcons;
@@ -68,7 +68,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     }, []);
 
     return (
-        <Provider store={Store}>
+        <ReactRedux.Provider store={Store}>
             <EngineProvider>
                 <Head>
                     <title>Plasma Design System</title>
@@ -82,7 +82,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                     </div>
                 </div>
             </EngineProvider>
-        </Provider>
+        </ReactRedux.Provider>
     );
 };
 
