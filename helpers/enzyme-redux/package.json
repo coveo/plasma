@@ -1,6 +1,6 @@
 {
     "name": "@helpers/enzyme-redux",
-    "version": "41.2.11",
+    "version": "41.2.10-next.11",
     "private": true,
     "description": "",
     "keywords": [],
