@@ -1,6 +1,15 @@
 ## 41.2.11 (2022-05-03)
 
 
+### Bug Fixes
+
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
+
+
+
+## 41.2.11 (2022-05-03)
+
+
 ### Reverts
 
 * **npm:** remove react version overrides ([a91bb3d](https://github.com/coveo/plasma/commits/a91bb3d3880f687ed08029c1d65ec3c49d936ebd))
