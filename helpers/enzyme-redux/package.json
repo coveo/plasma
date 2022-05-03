@@ -1,7 +1,7 @@
 {
     "name": "@helpers/enzyme-redux",
     "private": true,
-    "version": "1.0.0",
+    "version": "41.2.11",
     "description": "",
     "main": "index.jsx",
     "types": "index.d.ts",

@@ -1,3 +1,12 @@
+## 41.2.11 (2022-05-03)
+
+
+### Reverts
+
+* **npm:** remove react version overrides ([a91bb3d](https://github.com/coveo/plasma/commits/a91bb3d3880f687ed08029c1d65ec3c49d936ebd))
+
+
+
 # 41.3.0 (2022-05-03)
 
 
