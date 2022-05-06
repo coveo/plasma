@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as typescript from 'prettier/parser-typescript';
 import {format} from 'prettier/standalone';
-import {FunctionComponent, FC, useState, useEffect, useRef, useMemo} from 'react';
+import {FunctionComponent, useState, useEffect, useRef, useMemo} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
@@ -25,14 +25,15 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
         parser: 'typescript',
     });
     const [editedCode, setEditedCode] = useState(formattedCode);
-    const {fsMap, compilerOptions} = useTypescriptServer();
+    const {fsMap} = useTypescriptServer();
     const [initialized, setInitialized] = useState(false);
 
+    const importAndRunSwcOnMount = async () => {
+        await initSwc();
+        setInitialized(true);
+    };
+
     useEffect(() => {
-        const importAndRunSwcOnMount = async () => {
-            await initSwc();
-            setInitialized(true);
-        };
         importAndRunSwcOnMount();
     }, []);
 
@@ -53,6 +54,11 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
                         dynamicImport: true,
                         classPrivateProperty: true,
                     },
+                    transform: {
+                        react: {
+                            runtime: 'automatic',
+                        },
+                    },
                 },
                 module: {
                     type: 'commonjs',
@@ -70,13 +76,15 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
                     .replace('exports.default = _default;', '')
                     .replace(/var .+ = require(.+);/g, '') // remove the require statements
                     .replace(/var .+ = __importStar\(require(.+)\);/g, '') // remove the import statements
+                    .replace(/_jsxRuntime/g, 'jsxRuntime')
+                    .replace(/_react/g, 'React')
                     .replace(/_plasmaReact/g, 'PlasmaReact') // use plasma-react from the window Plasma object
                     .replace(/_reactRedux/g, 'ReactRedux') // use react-redux from the window ReactRedux object
                     .replace(/_redux/g, 'Redux') // use redux from the window Redux object
                     .replace(/_loremIpsum/g, 'LoremIpsum')
                     .replaceAll('(0, _moment).default', 'moment') // replace the moment object
                     .replace(/_moment.default/g, 'moment') + // replace the moment() function
-                `ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(_default)), document.getElementById('${id}'));`;
+                `ReactDOM.render(jsxRuntime.jsx(ReactRedux.Provider, {store: Store, children: jsxRuntime.jsx(_default, {})}), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval
             eval(userCodeToEvaluate);
@@ -111,7 +119,11 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
 const EDITOR_MAX_HEIGHT_IN_PX = 600;
 const EDITOR_MIN_HEIGHT_IN_PX = 150;
 
-const Editor: FC<{id: string; value: string; onChange: (newValue: string) => void}> = ({id, value, onChange}) => {
+const Editor: FunctionComponent<{id: string; value: string; onChange: (newValue: string) => void}> = ({
+    id,
+    value,
+    onChange,
+}) => {
     const editorRef = useRef(null);
     const [height, setHeight] = useState<number>(200);
 

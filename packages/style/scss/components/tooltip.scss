@@ -1,12 +1,9 @@
 .tooltip {
     position: absolute;
-    z-index: $tooltip-z-index;
+    z-index: 100000;
     display: block;
-    font-size: 13px;
-    line-height: 1.4;
-    text-transform: none;
+    min-height: 32px;
     visibility: visible;
-
     opacity: 0;
 
     &.show,
@@ -15,127 +12,37 @@
     }
 
     &.top,
-    &[data-popper-placement='top'] {
-        margin-top: -3px;
-        padding: 5px 0;
-
-        .tooltip-arrow {
-            bottom: 0;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px 5px 0;
-
-            border-top-color: var(--digital-blue-100);
-        }
+    &.bottom,
+    &[data-popper-placement='top'],
+    &[data-popper-placement='bottom'] {
+        margin: 12px 0;
+        padding: 6px 0;
     }
 
     &.right,
-    &[data-popper-placement='right'] {
-        margin-left: 3px;
-        padding: 0 5px;
-
-        .tooltip-arrow {
-            top: 50%;
-            left: 0;
-            margin-top: -5px;
-            border-width: 5px 5px 5px 0;
-
-            border-right-color: var(--digital-blue-100);
-        }
-    }
-
-    &.bottom,
-    &[data-popper-placement='bottom'] {
-        margin-top: 3px;
-        padding: 5px 0;
-
-        .tooltip-arrow {
-            top: 0;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 0 5px 5px;
-
-            border-bottom-color: var(--digital-blue-100);
-        }
-    }
-
     &.left,
+    &[data-popper-placement='right'],
     &[data-popper-placement='left'] {
-        margin-left: -3px;
-        padding: 0 5px;
-
-        .tooltip-arrow {
-            top: 50%;
-            right: 0;
-            margin-top: -5px;
-            border-width: 5px 0 5px 5px;
-
-            border-left-color: var(--digital-blue-100);
-        }
-    }
-
-    &.state-error {
-        .tooltip-inner {
-            background-color: var(--critical-70);
-        }
-
-        &.left,
-        &[data-popper-placement='left'] {
-            .tooltip-arrow {
-                border-left-color: var(--critical-70);
-            }
-        }
-
-        &.bottom,
-        &[data-popper-placement='bottom'] {
-            .tooltip-arrow {
-                border-bottom-color: var(--critical-70);
-            }
-        }
-
-        &.top,
-        &[data-popper-placement='top'] {
-            .tooltip-arrow {
-                border-top-color: var(--critical-70);
-            }
-        }
-
-        &.right,
-        &[data-popper-placement='right'] {
-            .tooltip-arrow {
-                border-right-color: var(--critical-70);
-            }
-        }
-    }
-
-    .tooltip-arrow {
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
+        padding: 0 6px;
     }
 
     .tooltip-inner {
+        @extend .body-s-book;
         max-width: 300px;
-        padding: 5px 10px;
+        padding: 8px 16px;
         color: var(--white);
         white-space: normal;
         text-decoration: none;
         word-wrap: break-word;
-        background-color: var(--digital-blue-100);
-        border-radius: 2px;
-
-        .body-m-book,
-        p,
-        .p {
-            --color: var(--white);
-        }
+        background-color: rgba(var(--navy-blue-60-rgb), 0.8);
+        border: 1px solid var(--navy-blue-60);
+        border-radius: 8px;
+        box-shadow: 0px 8px 24px hsla(240, 28%, 35%, 0.53);
     }
 }
 
 .tooltip-footer {
-    margin-top: $tooltip-spacing;
+    margin-top: 10px;
 }
 
 // ChartTooltipContent

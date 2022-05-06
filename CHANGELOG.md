@@ -1,3 +1,36 @@
+# 41.3.0 (2022-05-04)
+
+
+### Bug Fixes
+
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
+* **website:** _react is not defined in sandbox ([8364925](https://github.com/coveo/plasma/commits/8364925e4c3b378bc5da093543e906ec974038e4))
+
+
+### Features
+
+* **mvp, tooltip:** adding box-shadow ([177465f](https://github.com/coveo/plasma/commits/177465f1037cbdbae5ef8d6dcda86051f1226c46))
+* **mvp, tooltip:** applied last style ([83fb6f5](https://github.com/coveo/plasma/commits/83fb6f548ba7a9bf71afb5ffaa00449d7eb90121))
+* **mvp, tooltip:** applied new style to tooltip part 1 ([139b3b9](https://github.com/coveo/plasma/commits/139b3b9ee37b43a43f965f0df735322a7d218d65))
+
+
+
+# 41.3.0 (2022-05-03)
+
+
+### Bug Fixes
+
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
+
+
+### Features
+
+* **mvp, tooltip:** adding box-shadow ([177465f](https://github.com/coveo/plasma/commits/177465f1037cbdbae5ef8d6dcda86051f1226c46))
+* **mvp, tooltip:** applied last style ([83fb6f5](https://github.com/coveo/plasma/commits/83fb6f548ba7a9bf71afb5ffaa00449d7eb90121))
+* **mvp, tooltip:** applied new style to tooltip part 1 ([139b3b9](https://github.com/coveo/plasma/commits/139b3b9ee37b43a43f965f0df735322a7d218d65))
+
+
+
 ## 41.2.11 (2022-05-03)
 
 
