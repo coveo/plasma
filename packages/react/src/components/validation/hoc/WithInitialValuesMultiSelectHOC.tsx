@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -22,9 +22,9 @@ export type IMultiSelectWithInitialValuesOwnProps = {
 const defaultInvalidInitialValuesMessageGenerator = (values: string[]) =>
     `The initial values ('${values.join("', '")}') were selected, but not found. They will be ignored.`;
 
-export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: React.ComponentType<T>) => {
+export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedMultiSelect: React.FunctionComponent<T & IMultiSelectWithInitialValuesOwnProps & DispatchProps> = ({
+    const WrappedMultiSelect: FunctionComponent<T & IMultiSelectWithInitialValuesOwnProps & DispatchProps> = ({
         setWarning,
         clearWarning,
         invalidInitialValuesMessage = defaultInvalidInitialValuesMessageGenerator,
@@ -45,14 +45,14 @@ export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
             selected: _.contains(initialValues, item.value),
         }));
 
-        React.useEffect(
+        useEffect(
             () => () => {
                 props.resetInitialValueWarningOnUnmount && clearWarning();
             },
             []
         );
 
-        React.useEffect(() => {
+        useEffect(() => {
             const message = invalidInitialValuesMessage?.(notFoundInitialValues) || '';
             setWarning(notFoundInitialValues.length > 0 ? message : '');
         }, [invalidInitialValuesMessage, notFoundInitialValues.length]);

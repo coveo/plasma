@@ -1,6 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, HTMLAttributes, FunctionComponent, MouseEventHandler, useState, Children} from 'react';
 import {slugify} from 'underscore.string';
 
 import {SlideY} from '../../animations';
@@ -20,7 +20,7 @@ export interface IconCardProps {
     /**
      * The main text displayed on the card
      */
-    title: React.ReactNode;
+    title: ReactNode;
     /**
      * The secondary text displayed on the card
      */
@@ -67,10 +67,7 @@ export interface IconCardProps {
     cardClassName?: string[];
 }
 
-export const IconCard: React.FunctionComponent<Override<
-    SvgChildProps & React.HTMLAttributes<HTMLDivElement>,
-    IconCardProps
->> = ({
+export const IconCard: FunctionComponent<Override<SvgChildProps & HTMLAttributes<HTMLDivElement>, IconCardProps>> = ({
     title,
     badges = [],
     description,
@@ -89,11 +86,11 @@ export const IconCard: React.FunctionComponent<Override<
     children,
     ...restProps
 }) => {
-    const [isOpen, setIsOpen] = React.useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const hasChoices = !!choices?.length;
 
-    const handleCardClick: React.MouseEventHandler<HTMLButtonElement> = () => {
+    const handleCardClick: MouseEventHandler<HTMLButtonElement> = () => {
         if (!disabled) {
             if (hasChoices) {
                 setIsOpen(true);
@@ -103,7 +100,7 @@ export const IconCard: React.FunctionComponent<Override<
         }
     };
 
-    const handleMouseLeave: React.MouseEventHandler<HTMLDivElement> = () => {
+    const handleMouseLeave: MouseEventHandler<HTMLDivElement> = () => {
         setIsOpen(false);
     };
 
@@ -157,7 +154,7 @@ export const IconCard: React.FunctionComponent<Override<
                         <h5 className="title">{title}</h5>
                         {description && <p className="description">{description}</p>}
                     </div>
-                    {(!placeBadgesAbove && !!badgeComponents.length) || React.Children.count(children) > 0 ? (
+                    {(!placeBadgesAbove && !!badgeComponents.length) || Children.count(children) > 0 ? (
                         <div className="flex center-align">
                             {children}
                             {!placeBadgesAbove && badgeComponents}

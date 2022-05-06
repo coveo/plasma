@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {Badge, TableHOC, TableRowConnected} from '@coveord/plasma-react';
 import {loremIpsum} from 'lorem-ipsum';
 

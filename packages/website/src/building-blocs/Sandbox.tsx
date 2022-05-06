@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as typescript from 'prettier/parser-typescript';
 import {format} from 'prettier/standalone';
-import React from 'react';
+import {FunctionComponent, useState, useEffect, useRef, useMemo} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
@@ -13,7 +13,7 @@ import {useTypescriptServer} from './useTypescriptServer';
 
 const prettierConfig = await import('tsjs/prettier-config.js');
 
-export const Sandbox: React.FunctionComponent<{children: string; id: string; title?: string; horizontal?: boolean}> = ({
+export const Sandbox: FunctionComponent<{children: string; id: string; title?: string; horizontal?: boolean}> = ({
     id,
     title,
     children,
@@ -24,19 +24,20 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
         plugins: [typescript],
         parser: 'typescript',
     });
-    const [editedCode, setEditedCode] = React.useState(formattedCode);
-    const {fsMap, compilerOptions} = useTypescriptServer();
-    const [initialized, setInitialized] = React.useState(false);
+    const [editedCode, setEditedCode] = useState(formattedCode);
+    const {fsMap} = useTypescriptServer();
+    const [initialized, setInitialized] = useState(false);
 
-    React.useEffect(() => {
-        const importAndRunSwcOnMount = async () => {
-            await initSwc();
-            setInitialized(true);
-        };
+    const importAndRunSwcOnMount = async () => {
+        await initSwc();
+        setInitialized(true);
+    };
+
+    useEffect(() => {
         importAndRunSwcOnMount();
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (fsMap === null || !initialized) {
             return;
         }
@@ -52,6 +53,11 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
                         decorators: true,
                         dynamicImport: true,
                         classPrivateProperty: true,
+                    },
+                    transform: {
+                        react: {
+                            runtime: 'automatic',
+                        },
                     },
                 },
                 module: {
@@ -70,13 +76,15 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
                     .replace('exports.default = _default;', '')
                     .replace(/var .+ = require(.+);/g, '') // remove the require statements
                     .replace(/var .+ = __importStar\(require(.+)\);/g, '') // remove the import statements
+                    .replace(/_jsxRuntime/g, 'jsxRuntime')
+                    .replace(/_react/g, 'React')
                     .replace(/_plasmaReact/g, 'PlasmaReact') // use plasma-react from the window Plasma object
                     .replace(/_reactRedux/g, 'ReactRedux') // use react-redux from the window ReactRedux object
                     .replace(/_redux/g, 'Redux') // use redux from the window Redux object
                     .replace(/_loremIpsum/g, 'LoremIpsum')
                     .replaceAll('(0, _moment).default', 'moment') // replace the moment object
                     .replace(/_moment.default/g, 'moment') + // replace the moment() function
-                `ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(_default)), document.getElementById('${id}'));`;
+                `ReactDOM.render(jsxRuntime.jsx(ReactRedux.Provider, {store: Store, children: jsxRuntime.jsx(_default, {})}), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval
             eval(userCodeToEvaluate);
@@ -111,9 +119,13 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
 const EDITOR_MAX_HEIGHT_IN_PX = 600;
 const EDITOR_MIN_HEIGHT_IN_PX = 150;
 
-const Editor: React.FC<{id: string; value: string; onChange: (newValue: string) => void}> = ({id, value, onChange}) => {
-    const editorRef = React.useRef(null);
-    const [height, setHeight] = React.useState<number>(200);
+const Editor: FunctionComponent<{id: string; value: string; onChange: (newValue: string) => void}> = ({
+    id,
+    value,
+    onChange,
+}) => {
+    const editorRef = useRef(null);
+    const [height, setHeight] = useState<number>(200);
 
     const updateHeight = () => {
         const editor = editorRef.current!;
@@ -125,7 +137,7 @@ const Editor: React.FC<{id: string; value: string; onChange: (newValue: string) 
         editor.layout();
     };
 
-    const debounceChangeEditor = React.useMemo(() => _.debounce(() => onChange(editorRef.current.getValue()), 33), []);
+    const debounceChangeEditor = useMemo(() => _.debounce(() => onChange(editorRef.current.getValue()), 33), []);
     const onChangeEditor = () => {
         debounceChangeEditor();
         updateHeight();

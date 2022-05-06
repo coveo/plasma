@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component} from 'react';
 import * as _ from 'underscore';
 
 import {UUID} from '../../utils/UUID';
@@ -35,7 +35,7 @@ export interface IMultilineInputProps
 /**
  * @deprecated use MultiValuesInput instead
  */
-export class MultilineInput extends React.Component<IMultilineInputProps, any> {
+export class MultilineInput extends Component<IMultilineInputProps, any> {
     private handleChange(newValues: IMultilineInputValue[]) {
         if (this.props.onChange) {
             this.props.onChange(newValues);

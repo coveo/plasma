@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {CSSProperties} from 'react';
 
 export interface IDropUIPosition {
     position: string;
@@ -27,7 +27,7 @@ export interface IBoundingLimit {
 }
 
 export interface IDomPositionCalculatorReturn {
-    style?: Partial<React.CSSProperties>;
+    style?: Partial<CSSProperties>;
     lastPosition?: IDropUIPosition;
 }
 

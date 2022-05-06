@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 
 import {DATES_SEPARATOR, DateUtils} from '../../utils/DateUtils';
 import {DatePicker, IDatePickerProps} from './DatePicker';
@@ -17,7 +17,7 @@ export interface IDatesSelectionOwnProps
             IDatePickerProps,
             'selectionRules' | 'withTime' | 'hasSetToNowButton' | 'setToNowTooltip' | 'isSelecting' | 'color'
         >,
-        React.ClassAttributes<DatesSelection> {
+        ClassAttributes<DatesSelection> {
     id?: string;
     isRange?: boolean;
     /**
@@ -81,7 +81,7 @@ export interface IDatesSelectionProps
 export const LOWER_LIMIT_PLACEHOLDER: string = 'Select a start date';
 export const UPPER_LIMIT_PLACEHOLDER: string = 'Select an end date';
 
-export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
+export class DatesSelection extends Component<IDatesSelectionProps, any> {
     static defaultProps: Partial<IDatesSelectionProps> = {
         lowerLimitPlaceholder: LOWER_LIMIT_PLACEHOLDER,
         upperLimitPlaceholder: UPPER_LIMIT_PLACEHOLDER,

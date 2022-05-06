@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 
 export interface IStickyFooterProps {
     /**
@@ -16,7 +16,7 @@ export interface IStickyFooterProps {
     className?: string;
 }
 
-export class StickyFooter extends React.Component<IStickyFooterProps> {
+export class StickyFooter extends Component<IStickyFooterProps> {
     static ID = 'StickyFooter';
     static defaultProps: Partial<IStickyFooterProps> = {
         id: StickyFooter.ID,

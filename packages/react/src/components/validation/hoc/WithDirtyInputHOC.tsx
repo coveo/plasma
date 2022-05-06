@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {PlasmaState} from '../../../PlasmaState';
 
@@ -23,10 +23,10 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
     clearIsDirty: (id: string) => dispatch(ValidationActions.clearDirty(id, ValidationTypes.wrongInitialValue)),
 });
 
-export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.ComponentType<T>) => {
+export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedInput: React.FunctionComponent<T & IWithDirtyInputOwnProps & StateProps & DispatchProps> = ({
+    const WrappedInput: FunctionComponent<T & IWithDirtyInputOwnProps & StateProps & DispatchProps> = ({
         wasDirty,
         setIsDirty,
         clearIsDirty,
@@ -34,7 +34,7 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
         resetDirtyOnUnmount,
         ...props
     }) => {
-        React.useEffect(
+        useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
             },

@@ -1,6 +1,5 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {shallowWithState} from '@helpers/enzyme-redux';
-import * as React from 'react';
 
 import {BrowserUtils} from '../../../utils/BrowserUtils';
 import {removeTestAppContainer} from '../../../utils/tests/TestUtils';

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {ActionBar} from '../../actions/ActionBar';
 
 export const ActionBarLoading = () => (

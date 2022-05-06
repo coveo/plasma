@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
+import {ComponentType} from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
@@ -287,7 +287,7 @@ describe('Select', () => {
         });
 
         describe('when filter is processed on the server side', () => {
-            const ServerSideSingleSelectWithFilter: React.ComponentType<
+            const ServerSideSingleSelectWithFilter: ComponentType<
                 ISelectWithFilterOwnProps & ISingleSelectOwnProps
             > = _.compose(withServerSideProcessing, selectWithFilter)(SingleSelectConnected);
 

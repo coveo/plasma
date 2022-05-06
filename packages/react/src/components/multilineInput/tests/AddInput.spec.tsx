@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 
 import {IInputProps} from '../../input/Input';
 import {AddInput} from '../AddInput';

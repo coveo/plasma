@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ClassAttributes, MouseEvent, Component} from 'react';
 
 import {EventUtils} from '../../utils/EventUtils';
 import {TableCollapsibleRowToggle} from './TableCollapsibleRowToggle';
 
-export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
+export interface ITableHeadingRowOwnProps extends ClassAttributes<TableHeadingRow> {
     id?: string;
     tableId?: string;
     rowId?: string;
@@ -33,7 +33,7 @@ export interface ITableHeadingRowProps
         ITableHeadingRowStateProps,
         ITableHeadingRowDispatchProps {}
 
-export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any> {
+export class TableHeadingRow extends Component<ITableHeadingRowProps, any> {
     componentDidMount() {
         this.props.onRender?.();
     }
@@ -60,7 +60,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
         return (
             <tr
                 className={rowClasses}
-                onClick={(e: React.MouseEvent<any>) => this.handleClick(e)}
+                onClick={(e: MouseEvent<any>) => this.handleClick(e)}
                 onDoubleClick={() => this.handleDoubleClick()}
             >
                 {this.props.children}
@@ -69,7 +69,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
         );
     }
 
-    private handleClick(e: React.MouseEvent<any>) {
+    private handleClick(e: MouseEvent<any>) {
         if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
             const hasMultipleSelectedRow = (e.metaKey || e.ctrlKey) && this.props.isMultiSelect;
 

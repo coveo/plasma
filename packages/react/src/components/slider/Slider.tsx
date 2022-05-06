@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {Range, SliderProps, SliderTooltip} from 'rc-slider';
-import * as React from 'react';
+import {ReactNode, ComponentProps, FunctionComponent, useState, useEffect, useCallback} from 'react';
 import {connect} from 'react-redux';
 import {isBoolean} from 'underscore';
 
@@ -62,14 +62,11 @@ export interface SliderOwnProps extends SliderProps {
      * @param value the current value of the slider
      * @param side a value of AppendedValueSide
      */
-    appendValueFormatter?: (
-        value: number,
-        side?: Exclude<AppendedValueSide, AppendedValueSide.both>
-    ) => React.ReactNode;
+    appendValueFormatter?: (value: number, side?: Exclude<AppendedValueSide, AppendedValueSide.both>) => ReactNode;
     /**
      * Overrides for the style of the tooltip
      */
-    tooltipStyle?: Partial<React.ComponentProps<typeof SliderTooltip>>;
+    tooltipStyle?: Partial<ComponentProps<typeof SliderTooltip>>;
     /**
      * Whether to display a tooltip
      */
@@ -80,20 +77,20 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: SliderOwnProps) => ({
     setOutputValue: (value: number) => dispatch(SliderActions.setValue(ownProps.id, value)),
 });
 
-const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<typeof mapDispatchToProps>> = (props) => {
+const SliderDisconnected: FunctionComponent<SliderOwnProps & ReturnType<typeof mapDispatchToProps>> = (props) => {
     propsValidator(props);
     const crossingPoint = props.crossingPoint ?? (props.min > 0 ? props.min : 0);
-    const [rightHandlePosition, setRightHandlePosition] = React.useState(crossingPoint);
-    const [leftHandlePosition, setLeftHandlePosition] = React.useState(crossingPoint);
+    const [rightHandlePosition, setRightHandlePosition] = useState(crossingPoint);
+    const [leftHandlePosition, setLeftHandlePosition] = useState(crossingPoint);
     const outputValue = getOutputValue(leftHandlePosition, rightHandlePosition, crossingPoint);
     const {onChange, setOutputValue} = props;
 
-    React.useEffect(() => {
+    useEffect(() => {
         onChange?.(outputValue);
         setOutputValue(outputValue);
     }, [outputValue]);
 
-    const jumpValueFromHighToLowRange = React.useCallback(
+    const jumpValueFromHighToLowRange = useCallback(
         (handlePositions: number[]) => {
             setRightHandlePosition(crossingPoint);
             setLeftHandlePosition(handlePositions[0]);
@@ -101,7 +98,7 @@ const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<ty
         [crossingPoint]
     );
 
-    const jumpValueFromLowToHighRange = React.useCallback(
+    const jumpValueFromLowToHighRange = useCallback(
         (handlePositions: number[]) => {
             setLeftHandlePosition(crossingPoint);
             setRightHandlePosition(handlePositions[1]);
@@ -109,7 +106,7 @@ const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<ty
         [crossingPoint]
     );
 
-    const computeNewLeftHandlePosition = React.useCallback(
+    const computeNewLeftHandlePosition = useCallback(
         ([handleA, handleb]: number[]) => {
             const newPosition = handleb < crossingPoint ? handleb : handleA;
             setLeftHandlePosition(newPosition);
@@ -117,7 +114,7 @@ const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<ty
         [crossingPoint]
     );
 
-    const computeNewRightHandlePosition = React.useCallback(
+    const computeNewRightHandlePosition = useCallback(
         ([handleA, handleB]: number[]) => {
             const newPosition = handleA > crossingPoint ? handleA : handleB;
             setRightHandlePosition(newPosition);
@@ -125,7 +122,7 @@ const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<ty
         [crossingPoint]
     );
 
-    const setHandlePosition = React.useCallback(
+    const setHandlePosition = useCallback(
         (handlePositions: number[]) => {
             const valuesPosition = getValuesPositionOnRange(handlePositions, crossingPoint);
             switch (valuesPosition) {
@@ -155,7 +152,7 @@ const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<ty
         ]
     );
 
-    React.useEffect(() => {
+    useEffect(() => {
         setHandlePosition([props.initialValue, props.initialValue]);
     }, [props.initialValue]);
 

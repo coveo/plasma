@@ -1,5 +1,5 @@
 import userEvent, {specialChars} from '@testing-library/user-event';
-import * as React from 'react';
+import {PureComponent} from 'react';
 import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 
 import {ModalWizard} from '../ModalWizard';
@@ -32,7 +32,7 @@ describe('ModalWizard', () => {
         const previousSpy = jest.fn();
 
         const FunctionComponentStep = () => <div>Step 2: FunctionComponent</div>;
-        class ClassComponentStep extends React.PureComponent {
+        class ClassComponentStep extends PureComponent {
             render() {
                 return <div>Step 3: ClassComponent</div>;
             }

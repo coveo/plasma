@@ -1,9 +1,9 @@
 import {Handle, SliderTooltip} from 'rc-slider';
-import * as React from 'react';
+import {ReactNode, ComponentProps, FunctionComponent} from 'react';
 import * as _ from 'underscore';
 
 export interface CustomHandleProps {
-    customTooltip: React.ReactNode;
+    customTooltip: ReactNode;
     hasTooltip: boolean;
     rangeOutput: number;
 }
@@ -16,10 +16,10 @@ export interface HandleProps {
     value: number;
 }
 
-const SliderHandle: React.FunctionComponent<{
+const SliderHandle: FunctionComponent<{
     handleProps: HandleProps;
     handleCustomProps: CustomHandleProps;
-    tooltipProps?: Partial<React.ComponentProps<typeof SliderTooltip>>;
+    tooltipProps?: Partial<ComponentProps<typeof SliderTooltip>>;
 }> = ({handleProps, handleCustomProps, tooltipProps = {}}) => (
     <SliderTooltip
         prefixCls="rc-slider-tooltip"

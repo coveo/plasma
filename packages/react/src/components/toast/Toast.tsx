@@ -1,5 +1,7 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'enzyme';
+import {ReactNode, ComponentClass, useState, useEffect, createElement} from 'react';
+import * as _ from 'underscore';
 
 import {Svg} from '../svg/Svg';
 
@@ -11,7 +13,7 @@ export interface IToastProps {
     /**
      * The content of the toast
      */
-    title?: React.ReactNode;
+    title?: ReactNode;
     /**
      * The type of the toast
      *
@@ -43,9 +45,13 @@ export interface IToastProps {
      */
     onClose?: () => void;
     /**
+     * React child to add to the toast
+     */
+    children?: ReactNode;
+    /**
      * @deprecated Use children instead
      */
-    content?: React.ReactNode;
+    content?: ReactNode;
     /**
      * @deprecated
      */
@@ -55,7 +61,8 @@ export interface IToastProps {
      */
     onDestroy?: () => void;
 }
-export const Toast: React.FC<IToastProps> = ({
+
+export const Toast: FunctionComponent<IToastProps> = ({
     title,
     type = 'success',
     dismiss,
@@ -69,9 +76,9 @@ export const Toast: React.FC<IToastProps> = ({
 }) => {
     let timeout: number;
 
-    const [isOpened, setIsOpened] = React.useState(true);
+    const [isOpened, setIsOpened] = useState(true);
 
-    React.useEffect(() => {
+    useEffect(() => {
         onRender?.();
         handleSetTimeout();
 
@@ -138,9 +145,7 @@ export const Toast: React.FC<IToastProps> = ({
         <div className="toast-description">
             <div>
                 {children}
-                {typeof content === 'string' || !content
-                    ? content
-                    : React.createElement(content as React.ComponentClass)}
+                {typeof content === 'string' || !content ? content : createElement(content as ComponentClass)}
             </div>
         </div>
     );

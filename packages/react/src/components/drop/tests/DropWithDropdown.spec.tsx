@@ -1,5 +1,5 @@
 import {shallowWithState} from '@helpers/enzyme-redux';
-import * as React from 'react';
+import {ReactNode} from 'react';
 import * as _ from 'underscore';
 import {Drop} from '../Drop';
 import {dropWithDropdown} from '../hoc/DropWithDropdown';
@@ -8,7 +8,7 @@ describe('DropWithDropdown', () => {
     describe('<DropWithDropdown />', () => {
         const DropWithDropdown = _.compose(dropWithDropdown())(Drop);
 
-        const defaultButton: React.ReactNode = <div className={'onclick'}></div>;
+        const defaultButton: ReactNode = <div className={'onclick'}></div>;
 
         it('should mount without errors', () => {
             expect(() => {

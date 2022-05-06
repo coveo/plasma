@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, HTMLAttributes, FunctionComponent, MouseEvent, useEffect} from 'react';
 import {map, omit} from 'underscore';
 
 export interface ISubNavigationOwnProps {
@@ -29,7 +29,7 @@ export interface ISubNavigationDispatchProps {
 
 export interface ISubNavigationItem {
     id: string;
-    label: React.ReactNode;
+    label: ReactNode;
     disabled?: boolean;
     link?: string;
 }
@@ -49,7 +49,7 @@ const ISubNavigationPropsToOmit = [
     'selected',
 ];
 
-export const SubNavigation: React.FunctionComponent<ISubNavigationProps & React.HTMLAttributes<HTMLElement>> = ({
+export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttributes<HTMLElement>> = ({
     onDestroy,
     onRender,
     selected,
@@ -59,13 +59,13 @@ export const SubNavigation: React.FunctionComponent<ISubNavigationProps & React.
     className,
     ...props
 }) => {
-    React.useEffect(() => {
+    useEffect(() => {
         onRender?.();
         return () => onDestroy?.();
     }, []);
     const navProps = omit(props, ISubNavigationPropsToOmit);
 
-    const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    const handleItemClick = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
         onClickItem?.(id);
         return true;
     };
@@ -81,7 +81,7 @@ export const SubNavigation: React.FunctionComponent<ISubNavigationProps & React.
             <a
                 href={link}
                 className={classNames('sub-navigation-item-link', {disabled})}
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+                onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
             >
                 {label}
             </a>

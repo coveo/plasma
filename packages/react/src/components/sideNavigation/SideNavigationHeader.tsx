@@ -1,6 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 
 import {Svg} from '../svg';
 
@@ -17,7 +17,7 @@ export interface ISideNavigationHeaderProps {
 /**
  * @deprecated Will be removed in version 5
  */
-export class SideNavigationHeader extends React.Component<ISideNavigationHeaderProps> {
+export class SideNavigationHeader extends Component<ISideNavigationHeaderProps> {
     private handleClick() {
         if (this.props.onClick) {
             this.props.onClick();

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../../PlasmaState';
@@ -22,10 +22,10 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IValidationMessagePro
     cleanMessage: () => dispatch(ValidationActions.cleanMessage(ownProps.id)),
 });
 
-export const ValidationMessageDisconnect: React.FunctionComponent<
+export const ValidationMessageDisconnect: FunctionComponent<
     IValidationMessageProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
 > = ({onlyShowIfDirty, isDirty, errors, warnings, cleanMessage}) => {
-    React.useEffect(() => () => void cleanMessage(), []);
+    useEffect(() => () => void cleanMessage(), []);
 
     const hasDirty = !onlyShowIfDirty || isDirty.some((dirty) => dirty.value);
     const hasErrors = errors.length > 0;

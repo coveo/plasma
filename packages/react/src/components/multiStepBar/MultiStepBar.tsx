@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import * as React from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';

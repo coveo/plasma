@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 import {BorderedLine} from '../BorderedLine';
 
 describe('BorderedLine', () => {

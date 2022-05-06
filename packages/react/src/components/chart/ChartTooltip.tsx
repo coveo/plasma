@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent, CSSProperties, ReactNode, useRef, useContext, useState, Fragment} from 'react';
 
 import {DropPodPosition, IDropUIPosition} from '../drop/DomPositionCalculator';
 import {DropPod} from '../drop/DropPod';
@@ -10,10 +10,10 @@ export interface ChartTooltipProps {
     sort?: boolean;
 }
 
-export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort = false}) => {
-    const ref = React.useRef<HTMLElement>(null);
-    const {series, xScale, yScale, xDomain, yDomain, width, height} = React.useContext(XYChartContext);
-    const [position, setPosition] = React.useState({
+export const ChartTooltip: FunctionComponent<ChartTooltipProps> = ({sort = false}) => {
+    const ref = useRef<HTMLElement>(null);
+    const {series, xScale, yScale, xDomain, yDomain, width, height} = useContext(XYChartContext);
+    const [position, setPosition] = useState({
         x: 0,
         y: 0,
         index: 0,
@@ -34,7 +34,7 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
     const bars = series[0].data.map((point: XYPoint, index: number) => {
         const x = xScale(point.x);
         return (
-            <React.Fragment key={`chart-zone-${index}`}>
+            <Fragment key={`chart-zone-${index}`}>
                 <rect
                     fill="transparent"
                     width={barWidth / 2}
@@ -53,7 +53,7 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
                     onMouseMove={() => onMouseMove(index, point.x, x)}
                     onMouseLeave={onMouseLeave}
                 />
-            </React.Fragment>
+            </Fragment>
         );
     });
     return (
@@ -74,7 +74,7 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
                 ref={ref}
                 isOpen={!!position.position}
                 positions={[position.position, DropPodPosition.left, DropPodPosition.right]}
-                renderDrop={(style: React.CSSProperties, dropPosition: IDropUIPosition | null): React.ReactNode => (
+                renderDrop={(style: CSSProperties, dropPosition: IDropUIPosition | null): ReactNode => (
                     <div
                         style={{...style, pointerEvents: 'none'}}
                         className={classNames('show-on-top', {

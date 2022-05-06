@@ -1,12 +1,12 @@
-import * as React from 'react';
+import {ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
 import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions';
 
 export interface IDropdownSearchAutoInfiniteScrollOptions {
     optionsPerPage: number;
-    endMessage?: React.ReactNode;
-    loader?: React.ReactNode;
+    endMessage?: ReactNode;
+    loader?: ReactNode;
 }
 
 export interface IDropdownSearchAutoInfiniteScrollProps extends IDropdownSearchAutoInfiniteScrollOptions {
@@ -19,7 +19,7 @@ interface IDropdownSearchAutoInfiniteScrollState {
     activeOptions: JSX.Element[];
 }
 
-export class DropdownSearchAutoInfiniteScroll extends React.Component<
+export class DropdownSearchAutoInfiniteScroll extends Component<
     IDropdownSearchAutoInfiniteScrollProps,
     IDropdownSearchAutoInfiniteScrollState
 > {

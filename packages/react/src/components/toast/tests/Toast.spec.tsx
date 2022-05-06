@@ -1,7 +1,6 @@
 import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {mount, ReactWrapper} from 'enzyme';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {IToastProps, Toast} from '../Toast';
@@ -261,7 +260,7 @@ describe('Toasts', () => {
                 </Toast>
             );
 
-            expect(toastComponent.find('.search-bar-spinner').length).toBe(1);
+            expect(toastComponent.find('.spinner').length).toBe(1);
         });
     });
 });

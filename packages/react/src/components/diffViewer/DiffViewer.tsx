@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentProps, FC} from 'react';
 import ReactDiffViewer, {ReactDiffViewerStylesOverride} from 'react-diff-viewer';
 
 import {BlankSlate} from '../blankSlate';
@@ -28,13 +28,13 @@ export interface DiffViewerBlankSlateProps {
     noChangesDescription?: string;
 }
 
-export type ReactDiffViewerProps = React.ComponentProps<typeof ReactDiffViewer>;
+export type ReactDiffViewerProps = ComponentProps<typeof ReactDiffViewer>;
 export type DiffViewerDeprecatedProps = DiffViewerBlankSlateProps &
     DiffViewerPropsDeprecated &
     Omit<ReactDiffViewerProps, 'newValue' | 'oldValue'>;
 export type DiffViewerProps = DiffViewerBlankSlateProps & ReactDiffViewerProps;
 
-export const DiffViewer: React.FC<DiffViewerDeprecatedProps | DiffViewerProps> = ({
+export const DiffViewer: FC<DiffViewerDeprecatedProps | DiffViewerProps> = ({
     first,
     second,
     oldValue,

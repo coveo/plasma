@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {KeyboardEvent, ChangeEvent, HTMLProps, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
@@ -98,9 +98,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IAutocompleteOwnProps
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class AutocompleteConnected extends React.Component<
-    IAutocompleteProps & React.HTMLProps<AutocompleteConnected>
-> {
+export class AutocompleteConnected extends Component<IAutocompleteProps & HTMLProps<AutocompleteConnected>> {
     private dropdown: HTMLDivElement;
     private menu: HTMLDivElement;
 
@@ -134,11 +132,9 @@ export class AutocompleteConnected extends React.Component<
                 <div className="input-wrapper validate input-field">
                     <input
                         onFocus={() => this.props.onFocus()}
-                        onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => this.onKeyUp(e)}
-                        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.onKeyDown(e)}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            this.props.onValueChange(e.target.value, true)
-                        }
+                        onKeyUp={(e: KeyboardEvent<HTMLInputElement>) => this.onKeyUp(e)}
+                        onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => this.onKeyDown(e)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => this.props.onValueChange(e.target.value, true)}
                         value={this.props.value}
                         required
                     />
@@ -159,14 +155,14 @@ export class AutocompleteConnected extends React.Component<
         this.props.onFocus();
     }
 
-    private onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    private onKeyDown(e: KeyboardEvent<HTMLInputElement>) {
         if (_.contains([keyCode.tab, keyCode.downArrow, keyCode.upArrow], e.keyCode)) {
             e.preventDefault();
             e.stopPropagation();
         }
     }
 
-    private onKeyUp(e: React.KeyboardEvent<HTMLInputElement>) {
+    private onKeyUp(e: KeyboardEvent<HTMLInputElement>) {
         if (keyCode.escape === e.keyCode && this.props.isOpen) {
             this.onToggleDropdown();
         }

@@ -1,9 +1,9 @@
-import * as React from 'react';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import * as _ from 'underscore';
 
-import {render, screen, waitFor} from '@test-utils';
-import userEvent from '@testing-library/user-event';
 import {TableRowConnected} from '..';
+import {IActionOptions} from '../../actions';
 import {TableHOC} from '../TableHOC';
 import {tableWithActions} from '../TableWithActions';
 
@@ -12,7 +12,7 @@ describe('Table HOC', () => {
         const TableWithActions = _.compose(tableWithActions())(TableHOC);
         const actionList = [{id: 'test', enabled: true, trigger: _.noop}];
 
-        it('unselects the row when the user click outside and the row is selected', async () => {
+        it('unselects the row when the user click outside and the row is selected', () => {
             render(
                 <>
                     <button>outside</button>
@@ -32,14 +32,14 @@ describe('Table HOC', () => {
 
             userEvent.click(screen.getByText('🍎'));
 
-            await waitFor(() => expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'true'));
+            expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'true');
 
-            userEvent.click(screen.getByRole('button', {name: 'outside'}));
+            userEvent.click(screen.getByRole('button', {name: /outside/i}));
 
-            await waitFor(() => expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'false'));
+            expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'false');
         });
 
-        it('does not unselect when the user click inside the table', async () => {
+        it('does not unselect when the user click inside the table', () => {
             render(
                 <TableWithActions
                     id="a"
@@ -58,14 +58,14 @@ describe('Table HOC', () => {
 
             userEvent.click(screen.getByText('🍎'));
 
-            await waitFor(() => expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'true'));
+            expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'true');
 
-            userEvent.click(screen.getByRole('button', {name: 'inside'}));
+            userEvent.click(screen.getByRole('button', {name: /inside/i}));
 
-            await waitFor(() => expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'true'));
+            expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'true');
         });
 
-        it('renders accessible actions when the user selects a row', async () => {
+        it('renders accessible actions when the user selects a row', () => {
             const actions = [
                 {id: 'first-action', name: 'first one', primary: true, enabled: true, link: 'https://external.link'},
                 {id: 'second-action', name: 'second one', primary: true, enabled: true, trigger: jest.fn()},
@@ -86,26 +86,36 @@ describe('Table HOC', () => {
                 </TableWithActions>
             );
 
-            expect(screen.queryByRole('button', {name: 'first one'})).not.toBeInTheDocument();
-            expect(screen.queryByRole('button', {name: 'second one'})).not.toBeInTheDocument();
+            expect(screen.queryByRole('button', {name: /first one/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('button', {name: /second one/i})).not.toBeInTheDocument();
 
             userEvent.click(screen.getByText('🍎'));
 
-            await waitFor(() => {
-                expect(screen.getByRole('button', {name: 'first one'})).toBeVisible();
-            });
-            await waitFor(() => {
-                expect(screen.getByRole('button', {name: 'second one'})).toBeVisible();
-            });
+            expect(screen.getByRole('button', {name: /first one/i})).toBeVisible();
+            expect(screen.getByRole('button', {name: /second one/i})).toBeVisible();
         });
 
-        it('renders an accessible "more" action when the user selects a row and there are secondary actions', async () => {
-            const actions = [
-                {id: 'first-action', name: 'first one', primary: true, enabled: true, link: 'https://external.link'},
-                {id: 'second-action', name: 'second one', primary: true, enabled: true, trigger: jest.fn()},
-                {id: 'third-action', name: 'third one', enabled: true, trigger: jest.fn()},
-                {id: 'fourth-action', name: 'fourth one', enabled: true, trigger: jest.fn()},
-                {id: 'fifth-action', name: 'fifth one', enabled: true, trigger: jest.fn()},
+        it('renders an accessible "more" action when the user selects a row and there are secondary actions', () => {
+            const actions: IActionOptions[] = [
+                {
+                    id: 'first-action',
+                    name: 'first one',
+                    icon: 'add',
+                    primary: true,
+                    enabled: true,
+                    link: 'https://external.link',
+                },
+                {
+                    id: 'second-action',
+                    name: 'second one',
+                    icon: 'edit',
+                    primary: true,
+                    enabled: true,
+                    trigger: jest.fn(),
+                },
+                {id: 'third-action', name: 'third one', icon: 'view', enabled: true, trigger: jest.fn()},
+                {id: 'fourth-action', name: 'fourth one', icon: 'details', enabled: true, trigger: jest.fn()},
+                {id: 'fifth-action', name: 'fifth one', icon: 'lock', enabled: true, trigger: jest.fn()},
             ];
             render(
                 <TableWithActions
@@ -123,27 +133,19 @@ describe('Table HOC', () => {
                 </TableWithActions>
             );
 
-            expect(screen.queryByRole('button', {name: 'third one'})).not.toBeInTheDocument();
-            expect(screen.queryByRole('button', {name: 'fourth one'})).not.toBeInTheDocument();
-            expect(screen.queryByRole('button', {name: 'fifth one'})).not.toBeInTheDocument();
+            expect(screen.queryByRole('button', {name: /third one/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('button', {name: /fourth one/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('button', {name: /fifth one/i})).not.toBeInTheDocument();
 
             userEvent.click(screen.getByText('🍎'));
 
-            await waitFor(() => {
-                expect(screen.getByRole('button', {name: 'More'})).toBeVisible();
-            });
+            expect(screen.getByRole('button', {name: /more/i})).toBeVisible();
 
-            userEvent.click(screen.getByRole('button', {name: 'More'}));
+            userEvent.click(screen.getByRole('button', {name: /more/i}));
 
-            await waitFor(() => {
-                expect(screen.getByRole('button', {name: 'third one'})).toBeVisible();
-            });
-            await waitFor(() => {
-                expect(screen.getByRole('button', {name: 'fourth one'})).toBeVisible();
-            });
-            await waitFor(() => {
-                expect(screen.getByRole('button', {name: 'fifth one'})).toBeVisible();
-            });
+            expect(screen.getByRole('button', {name: /third one/i})).toBeVisible();
+            expect(screen.getByRole('button', {name: /fourth one/i})).toBeVisible();
+            expect(screen.getByRole('button', {name: /fifth one/i})).toBeVisible();
         });
     });
 });

@@ -1,8 +1,8 @@
-import * as React from 'react';
+import {ClassAttributes, Component} from 'react';
 import {Svg} from '../../svg/Svg';
 import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
 
-export interface IItemFilterProps extends React.ClassAttributes<ItemFilter> {
+export interface IItemFilterProps extends ClassAttributes<ItemFilter> {
     label: string;
     item: string;
     itemTooltipProps?: ITooltipProps;
@@ -12,7 +12,7 @@ export interface IItemFilterProps extends React.ClassAttributes<ItemFilter> {
 
 export const ELLIPSIS: string = '...';
 
-export class ItemFilter extends React.Component<IItemFilterProps, any> {
+export class ItemFilter extends Component<IItemFilterProps, any> {
     render() {
         let itemFilterText: string = this.props.item;
         if (this.props.crop) {

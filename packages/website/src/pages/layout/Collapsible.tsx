@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {CollapsibleConnected} from '@coveord/plasma-react';
 
     export default () => (
@@ -17,7 +14,6 @@ const code = `
 `;
 
 const infoBoxWrapper = `
-    import * as React from 'react';
     import {CollapsibleInfoBox} from '@coveord/plasma-react';
 
     export default () => (
@@ -31,7 +27,6 @@ const infoBoxWrapper = `
 `;
 
 const expanded = `
-    import * as React from 'react';
     import {CollapsibleContainerConnected} from '@coveord/plasma-react';
 
     export default () => (
@@ -51,7 +46,6 @@ const expanded = `
 `;
 
 const disabled = `
-    import * as React from 'react';
     import {CollapsibleContainerConnected} from '@coveord/plasma-react';
 
     export default () => (

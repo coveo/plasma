@@ -1,6 +1,5 @@
 /* eslint-disable testing-library/no-container */
 import userEvent from '@testing-library/user-event';
-import * as React from 'react';
 import {fireEvent, render, screen, within, act} from '@test-utils';
 
 import {MultiSelectConnected} from '../MultiSelectConnected';

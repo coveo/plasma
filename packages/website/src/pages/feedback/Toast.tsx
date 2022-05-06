@@ -1,16 +1,12 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from "react";
     import {Toast} from "@coveord/plasma-react";
 
     export default () => <Toast title='Hello World!' type="success" />;
 `;
 
 const downloadToast = `
-    import * as React from "react";
     import {Toast} from "@coveord/plasma-react";
 
     export default () => (
@@ -21,7 +17,6 @@ const downloadToast = `
 `;
 
 const notifier = `
-    import * as React from 'react';
     import { useDispatch } from 'react-redux';
     import { addToast, Button, IDispatch, ToastContainerConnected } from '@coveord/plasma-react';
 

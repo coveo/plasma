@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {IDispatch} from '../../../utils';
@@ -8,7 +8,7 @@ import {IWithDirtyProps, withDirty} from '../withDirty';
 import {WithDirtyActions} from '../withDirtyActions';
 
 describe('withDirty', () => {
-    const Fixture: React.FunctionComponent<IWithDirtyProps> = () => {
+    const Fixture: FunctionComponent<IWithDirtyProps> = () => {
         const dispatch: IDispatch = useDispatch();
         return <input onChange={(e) => dispatch(WithDirtyActions.toggle('🆔', e.target.value === 'dirty'))} />;
     };

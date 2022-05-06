@@ -1,8 +1,6 @@
-import * as React from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {ColorPicker} from '@coveord/plasma-react';
     
     export default () => {
@@ -14,7 +12,6 @@ const code = `
 `;
 
 const hiddenControls = `
-    import * as React from 'react';
     import {ColorPicker} from '@coveord/plasma-react';
     
     export default () => {
@@ -25,7 +22,6 @@ const hiddenControls = `
 `;
 
 const selector = `
-    import * as React from 'react';
     import {useSelector} from 'react-redux';
     import {ColorPicker, PlasmaState, InputSelectors} from '@coveord/plasma-react';
     

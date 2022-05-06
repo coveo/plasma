@@ -1,8 +1,8 @@
 import {Svg} from '@coveord/plasma-react';
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
-export const GithubButton: React.FunctionComponent<{href: string; ariaLabel: string; className?: string}> = ({
+export const GithubButton: FunctionComponent<{href: string; ariaLabel: string; className?: string}> = ({
     children,
     className,
     ariaLabel,

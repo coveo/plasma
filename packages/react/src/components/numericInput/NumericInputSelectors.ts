@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactText} from 'react';
 import {createSelector} from 'reselect';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -7,7 +7,7 @@ import {initialNumericInputState, INumericInputState} from './NumericInputReduce
 const getNumericInput = (state: PlasmaState, ownProps: {id: string}): INumericInputState =>
     state?.numericInputs?.[ownProps.id] || initialNumericInputState;
 
-const getValue: (state: PlasmaState, ownProps: {id: string}) => React.ReactText = createSelector(
+const getValue: (state: PlasmaState, ownProps: {id: string}) => ReactText = createSelector(
     getNumericInput,
     (numericInput: INumericInputState) => numericInput.value
 );

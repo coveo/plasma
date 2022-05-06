@@ -1,9 +1,9 @@
-import * as React from 'react';
+import {Component} from 'react';
 import * as _ from 'underscore';
 import {IInputProps, Input} from '../input/Input';
 import {DeleteInputAction} from './DeleteInputAction';
 
-export class DeletableInput extends React.Component<IInputProps, any> {
+export class DeletableInput extends Component<IInputProps, any> {
     private onDeleteClicked() {
         if (this.props.onBlur) {
             this.props.onBlur('');

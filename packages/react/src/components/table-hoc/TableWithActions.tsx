@@ -1,19 +1,19 @@
-import * as React from 'react';
+import {Component, ComponentClass, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
+import {WithServerSideProcessingProps} from '../../hoc';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {TableHOCRowActions} from './actions/TableHOCRowActions';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
-import {WithServerSideProcessingProps} from '../../hoc';
 
 export interface ITableWithActionsProps extends ITableHOCOwnProps {}
 
-type TableWithActionsComponent = React.ComponentClass<ITableWithActionsProps>;
+type TableWithActionsComponent = ComponentClass<ITableWithActionsProps>;
 
-export const tableWithActions = () => (Component: TableWithActionsComponent) => {
+export const tableWithActions = () => (WrappedComponent: TableWithActionsComponent) => {
     const mapStateToProps = (state: PlasmaState, ownProps: ITableHOCOwnProps) => ({
         hasSelectedRow: TableSelectors.getSelectedRows(state, ownProps).length > 0,
     });
@@ -22,7 +22,7 @@ export const tableWithActions = () => (Component: TableWithActionsComponent) => 
         deselectRows: () => dispatch(TableHOCRowActions.deselectAll(ownProps.id)),
     });
 
-    class TableWithActions extends React.Component<
+    class TableWithActions extends Component<
         ITableWithActionsProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
     > {
         componentDidMount() {
@@ -35,9 +35,9 @@ export const tableWithActions = () => (Component: TableWithActionsComponent) => 
 
         render() {
             return (
-                <Component {..._.omit(this.props, 'hasSelectedRow', 'deselectRows')} hasActionButtons>
+                <WrappedComponent {..._.omit(this.props, 'hasSelectedRow', 'deselectRows')} hasActionButtons>
                     {this.props.children}
-                </Component>
+                </WrappedComponent>
             );
         }
 
@@ -56,7 +56,7 @@ export const tableWithActions = () => (Component: TableWithActionsComponent) => 
     return connect<
         ReturnType<typeof mapStateToProps>,
         ReturnType<typeof mapDispatchToProps>,
-        React.PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
+        PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
     >(
         mapStateToProps,
         mapDispatchToProps

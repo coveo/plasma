@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React from 'react';
+import {FunctionComponent} from 'react';
 import {IDatePickerState} from '../datePicker';
 import {Calendar} from './Calendar';
 
@@ -18,7 +18,7 @@ export interface CountdownProps {
     endDate?: moment.Moment;
 }
 
-export const Countdown: React.FunctionComponent<CountdownProps> = ({
+export const Countdown: FunctionComponent<CountdownProps> = ({
     startDate = moment(),
     endDate = moment().date(moment().daysInMonth()),
 }) => {

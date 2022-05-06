@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, ComponentClass, PureComponent} from 'react';
 import * as _ from 'underscore';
 
 import {closeModal, IModalActionPayload} from '../../components/modal/ModalActions';
@@ -9,7 +9,7 @@ import {PreventNavigationPrompt} from './PreventNavigationPrompt';
 export interface IWithPreventNavigationConfig {
     id: string;
     title?: string;
-    content?: React.ReactNode;
+    content?: ReactNode;
     exit?: string;
     stay?: string;
 }
@@ -34,8 +34,8 @@ export const preventNavigationDefaultConfig: Partial<IWithPreventNavigationConfi
 };
 
 export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavigationConfig) => (
-    Component: React.ComponentClass<T, R>
-): React.ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
+    Component: ComponentClass<T, R>
+): ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
     const mapDispatchToProps = (
         dispatch: (action: IReduxAction<IModalActionPayload>) => void
     ): IWithPreventNavigationDispatchProps => ({
@@ -43,13 +43,11 @@ export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavig
     });
 
     @ReduxConnect(undefined, mapDispatchToProps)
-    class ModalWithPreventNavigation extends React.PureComponent<
+    class ModalWithPreventNavigation extends PureComponent<
         IWithPreventNavigationDispatchProps,
         IWithPreventNavigationState
     > {
-        private ComponentWithDirty: React.ComponentClass<
-            IWithDirtyProps & T & Partial<IWithPreventNavigationInjectedProps>
-        >;
+        private ComponentWithDirty: ComponentClass<IWithDirtyProps & T & Partial<IWithPreventNavigationInjectedProps>>;
 
         constructor(props: IWithPreventNavigationDispatchProps) {
             super(props);

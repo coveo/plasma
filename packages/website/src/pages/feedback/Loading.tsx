@@ -1,16 +1,12 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {Loading} from '@coveord/plasma-react';
 
     export default () => <Loading />
 `;
 
 const fullContent = `
-    import * as React from 'react';
     import {Loading} from '@coveord/plasma-react';
 
     export default () => <Loading fullContent />

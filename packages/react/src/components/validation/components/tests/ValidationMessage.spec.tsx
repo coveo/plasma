@@ -1,5 +1,4 @@
 import {mountWithStore, shallowWithState} from '@helpers/enzyme-redux';
-import * as React from 'react';
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {ValidationActions} from '../../ValidationActions';
 import {ValidationState} from '../../ValidationState';

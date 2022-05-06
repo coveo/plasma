@@ -1,3 +1,132 @@
+# 41.3.0 (2022-05-04)
+
+
+### Bug Fixes
+
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
+* **website:** _react is not defined in sandbox ([8364925](https://github.com/coveo/plasma/commits/8364925e4c3b378bc5da093543e906ec974038e4))
+
+
+### Features
+
+* **mvp, tooltip:** adding box-shadow ([177465f](https://github.com/coveo/plasma/commits/177465f1037cbdbae5ef8d6dcda86051f1226c46))
+* **mvp, tooltip:** applied last style ([83fb6f5](https://github.com/coveo/plasma/commits/83fb6f548ba7a9bf71afb5ffaa00449d7eb90121))
+* **mvp, tooltip:** applied new style to tooltip part 1 ([139b3b9](https://github.com/coveo/plasma/commits/139b3b9ee37b43a43f965f0df735322a7d218d65))
+
+
+
+# 41.3.0 (2022-05-03)
+
+
+### Bug Fixes
+
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
+
+
+### Features
+
+* **mvp, tooltip:** adding box-shadow ([177465f](https://github.com/coveo/plasma/commits/177465f1037cbdbae5ef8d6dcda86051f1226c46))
+* **mvp, tooltip:** applied last style ([83fb6f5](https://github.com/coveo/plasma/commits/83fb6f548ba7a9bf71afb5ffaa00449d7eb90121))
+* **mvp, tooltip:** applied new style to tooltip part 1 ([139b3b9](https://github.com/coveo/plasma/commits/139b3b9ee37b43a43f965f0df735322a7d218d65))
+
+
+
+## 41.2.11 (2022-05-03)
+
+
+### Bug Fixes
+
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
+
+
+
+## 41.2.11 (2022-05-03)
+
+
+### Bug Fixes
+
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
+
+
+
+## 41.2.11 (2022-05-03)
+
+
+### Reverts
+
+* **npm:** remove react version overrides ([a91bb3d](https://github.com/coveo/plasma/commits/a91bb3d3880f687ed08029c1d65ec3c49d936ebd))
+
+
+
+# 41.3.0 (2022-05-03)
+
+
+### Features
+
+* **husky, pnpm:** fix more scripts + lintfix had a blast ([a4c6360](https://github.com/coveo/plasma/commits/a4c63600915b914f7c6c88b0186301df91a27973))
+
+
+
+## 41.2.10 (2022-05-02)
+
+
+
+## 41.2.9 (2022-04-30)
+
+
+
+## 41.2.8 (2022-04-30)
+
+
+
+## 41.2.7 (2022-04-30)
+
+
+
+## 41.2.6 (2022-04-30)
+
+
+
+## 41.2.5 (2022-04-30)
+
+
+
+## 41.2.4 (2022-04-30)
+
+
+
+## 41.2.3 (2022-04-30)
+
+
+
+## 41.2.2 (2022-04-30)
+
+
+
+## 41.2.1 (2022-04-29)
+
+
+### Bug Fixes
+
+* **navigation:** disable the click event on locked navigation ([e307dc6](https://github.com/coveo/plasma/commits/e307dc63681f4988e82c3142963c1356c2778614))
+
+
+
+# 41.2.0 (2022-04-29)
+
+
+### Features
+
+* **style:** allow changing bg-wave aspect ratio ([b3f26c6](https://github.com/coveo/plasma/commits/b3f26c6583783bfc63f19619d100b74e3a1162ad))
+* **style:** revert low wave image ([f93ef14](https://github.com/coveo/plasma/commits/f93ef1444d0bb56ba9178777d9bd3ec8d0138c17))
+* **svg:** add low wave background ([96eeea7](https://github.com/coveo/plasma/commits/96eeea7ccc08a7107b49d6f085e9afb5de72ea62))
+
+
+
+## 41.1.1 (2022-04-29)
+
+
+
 # 41.1.0 (2022-04-28)
 
 

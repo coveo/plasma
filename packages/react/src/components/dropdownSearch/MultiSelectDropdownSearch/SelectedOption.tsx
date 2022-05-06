@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, Children, PureComponent} from 'react';
 
 import {TooltipPlacement} from '../../../utils/TooltipUtils';
 import {Svg} from '../../svg/Svg';
@@ -7,20 +7,20 @@ import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
 
 export interface ISelectedOptionProps {
     value: string;
-    label: React.ReactNode;
+    label: ReactNode;
     selectedTooltip: ITooltipProps;
     onRemoveClick?: (value: string) => void;
     readOnly?: boolean;
-    prepend?: React.ReactNode;
+    prepend?: ReactNode;
 }
 
-export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
+export class SelectedOption extends PureComponent<ISelectedOptionProps> {
     handleOnRemove = () => {
         this.props.onRemoveClick?.(this.props.value);
     };
 
     render() {
-        const tooltipContent = React.Children.count(this.props.children) > 0 ? this.props.children : this.props.label;
+        const tooltipContent = Children.count(this.props.children) > 0 ? this.props.children : this.props.label;
         const tooltipLabel = typeof this.props.label === 'string' ? this.props.label : '';
         const tooltipCustomLabel = this.props.selectedTooltip?.title;
         const tooltipPosition = this.props.selectedTooltip?.placement;

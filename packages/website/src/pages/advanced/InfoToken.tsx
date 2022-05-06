@@ -1,5 +1,4 @@
 import code from '@examples/InfoToken/main.example.tsx';
-import * as React from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 import criticalExample from '../../examples/InfoToken/critical.example.tsx';

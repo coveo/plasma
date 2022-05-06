@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FocusEvent} from 'react';
 import {compose} from 'redux';
 import {
     FormProvider,
@@ -30,7 +30,7 @@ export default () => (
                         type="text"
                         label="Label"
                         defaultValue={props.name}
-                        onBlur={(evt: React.FocusEvent<HTMLInputElement>) => {
+                        onBlur={(evt: FocusEvent<HTMLInputElement>) => {
                             if (evt.target.value !== '' && isLast) {
                                 defaultProps.addNewBox();
                             }

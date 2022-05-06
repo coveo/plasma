@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ChangeEvent, Component} from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {keyCode} from '../../utils/InputUtils';
@@ -86,12 +86,12 @@ export interface ISearchBarDispatchProps {
      *
      * @param event The change event
      */
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ISearchBarProps extends ISearchBarOwnProps, ISearchBarStateProps, ISearchBarDispatchProps {}
 
-export class SearchBar extends React.Component<ISearchBarProps> {
+export class SearchBar extends Component<ISearchBarProps> {
     static defaultProps: Partial<ISearchBarProps> = {
         placeholder: '',
         disabled: false,

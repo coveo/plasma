@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component} from 'react';
 
 import {Modal} from '../modal/Modal';
 import {ModalBody} from '../modal/ModalBody';
@@ -32,7 +32,7 @@ export interface IModalPromptProps extends IModalPromptOwnProps, IModalPromptSta
 /**
  * @deprecated use ModalComposite instead
  */
-export class ModalPrompt extends React.Component<IModalPromptProps, any> {
+export class ModalPrompt extends Component<IModalPromptProps, any> {
     static defaultProps: Partial<IModalPromptProps> = {
         cancelLabel: DEFAULT_MODAL_PROMPT_CANCEL_LABEL,
         confirmLabel: DEFAULT_MODAL_PROMPT_CONFIRM_LABEL,

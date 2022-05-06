@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 
 import {FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps} from '../FilterBox';
 

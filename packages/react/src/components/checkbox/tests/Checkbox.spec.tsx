@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import * as React from 'react';
 import {render, screen} from '@test-utils';
 
 import {IInputProps, Label} from '../../input';

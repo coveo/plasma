@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -60,7 +60,7 @@ export type IFlatSelectProps = IFlatSelectOwnProps &
     ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
-export const FlatSelect: React.FunctionComponent<IFlatSelectProps> = ({
+export const FlatSelect: FunctionComponent<IFlatSelectProps> = ({
     onDestroy,
     onRender,
     onOptionClick,
@@ -73,7 +73,7 @@ export const FlatSelect: React.FunctionComponent<IFlatSelectProps> = ({
     classes,
     className,
 }) => {
-    React.useEffect(() => {
+    useEffect(() => {
         onRender?.();
         return () => void onDestroy();
     }, []);

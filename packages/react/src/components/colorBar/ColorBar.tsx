@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {Component} from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {KeyValue} from '../../utils/DataStructuresUtils';
@@ -31,7 +31,7 @@ export interface IColorBarProps {
     className?: IClassName;
 }
 
-export class ColorBar extends React.Component<IColorBarProps> {
+export class ColorBar extends Component<IColorBarProps> {
     static defaultProps: Partial<IColorBarProps> = {
         height: '5px',
         tooltipPerColor: {},

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {KeyboardEvent} from 'react';
 import * as _ from 'underscore';
 import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
 import {MultiselectInput} from './MultiSelectInput';
@@ -46,7 +46,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
                     onFilterTextChange={this.props.onFilterTextChange}
                     onBlur={() => this.props.onBlur(this.props.options)}
                     onFocus={this.props.onFocus}
-                    onKeyDownFilterBox={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
+                    onKeyDownFilterBox={(e: KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
                     filterPlaceholder={this.props.filterPlaceholder}
                     filterText={this.props.filterText}
                     deselectAllTooltipText={this.props.deselectAllTooltipText}

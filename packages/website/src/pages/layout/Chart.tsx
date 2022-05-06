@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {LineSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
 
     export default () => (
@@ -36,7 +33,6 @@ const code = `
 `;
 
 const barSeries = `
-    import * as React from 'react';
     import {BarSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
 
     export default () => (
@@ -69,7 +65,6 @@ const barSeries = `
 `;
 
 const scatterSeries = `
-    import * as React from 'react';
     import {ScatterSeries, ChartContainer,XYChart } from '@coveord/plasma-react';
 
     export default () => (
@@ -102,7 +97,6 @@ const scatterSeries = `
 `;
 
 const infoLines = `
-    import * as React from 'react';
     import {LineSeries, InfoLine, ChartContainer, XGrid, YGrid, XYAxis, XYChart } from '@coveord/plasma-react';
 
     export default () => (
@@ -162,7 +156,6 @@ const infoLines = `
 `;
 
 const dateChart = `
-    import * as React from 'react';
     import moment from 'moment';
     import {BarSeries, ChartTooltip, ChartContainer, XYAxis, XYChart} from '@coveord/plasma-react';
 
@@ -196,7 +189,6 @@ const dateChart = `
 `;
 
 const complex = `
-    import * as React from 'react';
     import {BarSeries, LineSeries, ScatterSeries, ChartTooltip, ChartContainer,XYChart, XYAxis, XYPoint} from '@coveord/plasma-react';
 
     export default () => (
