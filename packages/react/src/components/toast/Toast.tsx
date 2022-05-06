@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent} from 'enzyme';
-import {ReactNode, ComponentClass, useState, useEffect, createElement} from 'react';
+import {ReactNode, FunctionComponent, ComponentClass, useState, useEffect, createElement} from 'react';
 import * as _ from 'underscore';
 
 import {Svg} from '../svg/Svg';
@@ -44,10 +43,6 @@ export interface IToastProps {
      * Callback function that will run after the toast is dismissed
      */
     onClose?: () => void;
-    /**
-     * React child to add to the toast
-     */
-    children?: ReactNode;
     /**
      * @deprecated Use children instead
      */
