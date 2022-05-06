@@ -146,10 +146,11 @@ $toast-close-padding-left: 20px;
 
             .spinner {
                 position: relative;
-                width: 16px;
-                height: 16px;
+                width: 20px;
+                height: 20px;
+                margin-right: 1px;
                 background: var(--gradient);
-                border-radius: 50%;
+                border-radius: 10rem;
                 animation: animate 1s linear infinite;
 
                 &:before {
@@ -160,7 +161,7 @@ $toast-close-padding-left: 20px;
                     height: 80%;
                     background: var(--white);
                     border: 3px solid white;
-                    border-radius: 50%;
+                    border-radius: 10rem;
                     transform: translate(-50%, -50%);
                     content: '';
                 }
