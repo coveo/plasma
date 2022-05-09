@@ -241,11 +241,11 @@ export class Input extends Component<IInputProps, IInputComponentState> {
         ];
 
         return (this.props.disabled || this.props.isReadOnly) && this.props.disabledTooltip ? (
-            <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
-                <Tooltip title={this.props.disabledTooltip} placement={TooltipPlacement.Right}>
+            <Tooltip title={this.props.disabledTooltip} placement={TooltipPlacement.Right}>
+                <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
                     {inputElements}
-                </Tooltip>
-            </div>
+                </div>
+            </Tooltip>
         ) : (
             <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
                 {inputElements}
