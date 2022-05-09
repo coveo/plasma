@@ -1,7 +1,6 @@
+import {ArrowHeadLeftSize16Px, ArrowHeadRightSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, Component} from 'react';
-
-import {Svg} from '../svg';
+import {Component, ReactNode} from 'react';
 
 export interface IOptionsCycleConnectedOwnProps {
     id: string;
@@ -64,28 +63,31 @@ export class OptionsCycle extends Component<IOptionsCycleProps> {
     render() {
         return (
             <div
-                className={classNames('options-cycle', this.props.className, {
+                className={classNames('options-cycle flex flex-center', this.props.className, {
                     'mod-inline': this.props.isInline,
                 })}
             >
                 <button
                     type="button"
-                    className={classNames('options-cycle-button previous-option', this.props.previousClassName)}
+                    className={classNames(
+                        'options-cycle-button previous-option inline-flex',
+                        this.props.previousClassName
+                    )}
                     onClick={() => this.goToPreviousOption()}
                     disabled={!this.props.wrapAround && this.props.currentOption === 0}
                 >
-                    <Svg svgName="arrowLeftRounded" className="icon mod-16" />
+                    <ArrowHeadLeftSize16Px height={16} />
                 </button>
                 <span className={classNames('options-cycle-option', this.props.buttonClassName)}>
                     {this.props.options[this.props.currentOption]}
                 </span>
                 <button
                     type="button"
-                    className={classNames('options-cycle-button next-option', this.props.nextClassName)}
+                    className={classNames('options-cycle-button next-option inline-flex', this.props.nextClassName)}
                     onClick={() => this.goToNextOption()}
                     disabled={!this.props.wrapAround && this.props.currentOption === this.props.options.length - 1}
                 >
-                    <Svg svgName="arrowRightRounded" className="icon mod-16" />
+                    <ArrowHeadRightSize16Px height={16} />
                 </button>
             </div>
         );
