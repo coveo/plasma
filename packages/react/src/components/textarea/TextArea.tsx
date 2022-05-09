@@ -1,8 +1,8 @@
-import * as React from 'react';
+import classNames from 'classnames';
+import {ChangeEvent, ChangeEventHandler, FunctionComponent, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
-import classNames from 'classnames';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils';
@@ -38,11 +38,10 @@ export interface ITextAreaOwnProps {
     isAutosize?: boolean;
     /**
      * A callback function executed when the value of the textarea changes
-
      *
      * @param event The change event
      */
-    onChangeCallback?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    onChangeCallback?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
     /**
      * A function that tells whether the current value is valid
      *
@@ -73,19 +72,16 @@ export interface ITextAreaStateProps {
 export interface ITextAreaDispatchProps {
     /**
      * A callback function executed when the value of the textarea changes
-
      *
      * @param event The change event
      */
-    onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+    onChange?: ChangeEventHandler<HTMLTextAreaElement>;
     /**
      * A callback function executed when the textarea is added to the DOM
-
      */
     onMount?: () => void;
     /**
      * A callback function executed when the textarea is removed from the DOM
-
      */
     onUnmount?: () => void;
 }
@@ -98,12 +94,12 @@ const mapStateToProps = (state: PlasmaState, ownProps: ITextAreaOwnProps): IText
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITextAreaOwnProps): ITextAreaDispatchProps => ({
-    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => dispatch(changeTextAreaValue(ownProps.id, e.target.value)),
+    onChange: (e: ChangeEvent<HTMLTextAreaElement>) => dispatch(changeTextAreaValue(ownProps.id, e.target.value)),
     onMount: () => dispatch(addTextArea(ownProps.id, ownProps.valueOnMount, ownProps.disabledOnMount)),
     onUnmount: () => dispatch(removeTextArea(ownProps.id)),
 });
 
-export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
+export const TextArea: FunctionComponent<ITextAreaProps> = ({
     id,
     value,
     validate,
@@ -118,23 +114,23 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
     isAutosize,
     className,
 }) => {
-    const [debouncedValue, setDebouncedValue] = React.useState(value);
-    const [isValid, setIsValid] = React.useState(true);
+    const [debouncedValue, setDebouncedValue] = useState(value);
+    const [isValid, setIsValid] = useState(true);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const timeout = setTimeout(() => {
             setDebouncedValue(value);
         }, 300);
         return () => clearTimeout(timeout);
     }, [value]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (validate) {
             setIsValid(validate(debouncedValue));
         }
     }, [debouncedValue]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         onMount?.();
         setIsValid(true);
         return onUnmount;
@@ -143,7 +139,7 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
     const getValidationLabel = () =>
         !isValid && <div className="full-content-x generic-form-error my1">{validationMessage}</div>;
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         onChange?.(e);
         onChangeCallback?.(e);
     };

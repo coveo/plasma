@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -21,7 +21,7 @@ const mapStateToProps = (state: PlasmaState, {validationIdsByStep}: ModalWithVal
 const extractMessages = (validations: Array<ISingleValidation<string>>) =>
     validations?.map((error) => error.value).join(' ') ?? '';
 
-const ModalWizardWithValidationsDisconnected: React.FunctionComponent<
+const ModalWizardWithValidationsDisconnected: FunctionComponent<
     ModalWithValdiationsProps & ReturnType<typeof mapStateToProps>
 > = ({validationIdsByStep = [], isDirty, isInError, errors, warnings, ...modalWizardProps}) => {
     const validateStep = (currentStep: number): {isValid: boolean; message?: string} => ({

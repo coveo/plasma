@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode} from 'react';
 import {JSXRenderable} from '../../../utils/JSXUtils';
 import {ITableHeadingAttribute, ITableProps} from '../Table';
 import {TableChildComponent} from '../TableConstants';
@@ -13,7 +13,7 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
             const id = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_HEADER_CELL)}${
                 headingAttribute.attributeName
             }`;
-            const title: React.ReactNode = (headingAttribute.titleFormatter as (args: string) => JSXRenderable)(
+            const title: ReactNode = (headingAttribute.titleFormatter as (args: string) => JSXRenderable)(
                 headingAttribute.attributeName
             );
             const className = headingAttribute.headerClasses;

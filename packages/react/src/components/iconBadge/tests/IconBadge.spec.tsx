@@ -1,6 +1,5 @@
 import {render, screen} from '@test-utils';
 import {svg} from '@coveord/plasma-style';
-import * as React from 'react';
 
 import {IconBadge, IconBadgeType} from '../IconBadge';
 

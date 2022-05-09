@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 
 import {IActionOptions} from '../Action';
 import {ACTION_SEPARATOR} from '../ActionConstants';

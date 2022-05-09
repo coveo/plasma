@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {ChildForm} from '@coveord/plasma-react';
 
     export default () => (
@@ -15,7 +12,6 @@ const code = `
 `;
 
 const vertical = `
-    import * as React from 'react';
     import {ChildForm} from '@coveord/plasma-react';
 
     export default () => (

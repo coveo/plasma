@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentClass, FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../../PlasmaState';
@@ -15,11 +15,11 @@ const mapStateToProps = (state: PlasmaState, {validationIds}: IWithDirtyStickyFo
 });
 
 export const withDirtyStickyFooterHOC = <T extends IStickyFooterProps>(
-    Component: React.ComponentClass<T> | React.FunctionComponent<T>
+    Component: ComponentClass<T> | FunctionComponent<T>
 ) => {
     type NewOwnProps = Omit<T, 'isOpened'> & IWithDirtyStickyFooterOwnProps;
     type StateProps = ReturnType<typeof mapStateToProps>;
-    const WrappedStickyFooter: React.FunctionComponent<NewOwnProps & StateProps> = ({
+    const WrappedStickyFooter: FunctionComponent<NewOwnProps & StateProps> = ({
         isDirty,
         validationIds,
         isOpened = false,

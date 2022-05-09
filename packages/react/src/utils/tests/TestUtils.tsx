@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ComponentType, FC, FunctionComponent, createElement, Component} from 'react';
 import {DragDropContext} from 'react-dnd';
 import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
@@ -80,11 +80,11 @@ export class TestUtils {
         });
     }
 
-    static wrapComponentInDnDContext(WrappedComponent: any): React.ComponentType<any> {
+    static wrapComponentInDnDContext(WrappedComponent: any): ComponentType<any> {
         @DragDropContext(TestBackend)
-        class TestContextContainer extends React.Component {
+        class TestContextContainer extends Component {
             render() {
-                return React.createElement(WrappedComponent, this.props);
+                return createElement(WrappedComponent, this.props);
             }
         }
 
@@ -92,21 +92,21 @@ export class TestUtils {
     }
 }
 
-export const ErrorList: React.FC<{id: string}> = ({id}) => {
+export const ErrorList: FC<{id: string}> = ({id}) => {
     const errors = useSelector(ValidationSelectors.getErrors(id));
     const errorList = errors.map(({value}) => <li key={value}>{value}</li>);
 
     return <ul aria-label="errors">{errorList}</ul>;
 };
 
-export const WarningList: React.FunctionComponent<{id: string}> = ({id}) => {
+export const WarningList: FunctionComponent<{id: string}> = ({id}) => {
     const warnings = useSelector(ValidationSelectors.getWarnings(id));
     const warningList = warnings.map(({value}) => <li key={value}>{value}</li>);
 
     return <ul aria-label="warnings">{warningList}</ul>;
 };
 
-export const IsDirtyIndicator: React.FunctionComponent<{id: string; label?: string}> = ({id, label = 'is dirty'}) => {
+export const IsDirtyIndicator: FunctionComponent<{id: string; label?: string}> = ({id, label = 'is dirty'}) => {
     const {isDirty} = useSelector(
         createStructuredSelector({
             isDirty: ValidationSelectors.isDirty([id]),

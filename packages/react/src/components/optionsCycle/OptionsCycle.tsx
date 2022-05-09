@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, Component} from 'react';
 
 import {Svg} from '../svg';
 
@@ -9,7 +9,7 @@ export interface IOptionsCycleConnectedOwnProps {
 }
 
 export interface IOptionsCycleOwnProps {
-    options: React.ReactNode[];
+    options: ReactNode[];
     isInline?: boolean;
     wrapAround?: boolean;
     className?: string;
@@ -34,7 +34,7 @@ export interface IOptionsCycleProps
         Partial<IOptionsCycleStateProps>,
         Partial<IOptionsCycleDispatchProps> {}
 
-export class OptionsCycle extends React.Component<IOptionsCycleProps> {
+export class OptionsCycle extends Component<IOptionsCycleProps> {
     static defaultProps: Partial<IOptionsCycleProps> = {
         currentOption: 0,
         wrapAround: true,

@@ -1,5 +1,4 @@
 import {FlatSelectConnected} from '@coveord/plasma-react';
-import * as React from 'react';
 
 export default () => (
     <FlatSelectConnected
@@ -12,7 +11,6 @@ export default () => (
             {
                 id: 'item-id-2',
                 option: {content: 'Option 2'},
-                disabled: true,
             },
             {
                 id: 'item-id-3',
@@ -22,6 +20,11 @@ export default () => (
                     container: 'body',
                     placement: 'bottom',
                 },
+            },
+            {
+                id: 'item-id-4',
+                option: {content: 'Option 4'},
+                disabled: true,
             },
         ]}
     />

@@ -1,6 +1,6 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
+import {ReactNode, ReactElement} from 'react';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 import {render, screen} from '@test-utils';
@@ -31,10 +31,7 @@ describe('ActionableItem', () => {
             store.dispatch(clearState());
         });
 
-        const shallowWithProps = (
-            props: Partial<IActionableItemProps> = basicProps,
-            children: React.ReactNode = ''
-        ) => {
+        const shallowWithProps = (props: Partial<IActionableItemProps> = basicProps, children: ReactNode = '') => {
             actionableItem = shallowWithStore(
                 <ActionableItem {...basicProps} {...props}>
                     {children}
@@ -71,9 +68,7 @@ describe('ActionableItem', () => {
             it('should render the moreAppend svg in the Drop', () => {
                 shallowWithProps();
 
-                const renderButton: () => React.ReactElement = actionableItem
-                    .find(Drop)
-                    .prop('renderOpenButton') as any;
+                const renderButton: () => ReactElement = actionableItem.find(Drop).prop('renderOpenButton') as any;
                 const button = shallow(renderButton());
 
                 expect(button.find(Svg).prop('svgName')).toBe('moreAppend');

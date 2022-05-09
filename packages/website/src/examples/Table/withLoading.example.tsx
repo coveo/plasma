@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {Badge, TableHOC, TableRowConnected} from '@coveord/plasma-react';
 
 const TABLE_ID: string = 'withLoadingTableId';

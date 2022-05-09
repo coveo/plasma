@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_LABEL, PER_PAGE_NUMBERS} from '../NavigationPerPage';

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, FunctionComponent, ComponentType, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
@@ -29,7 +29,7 @@ export interface CollapsibleOwnProps {
     /**
      * Custom JSX inside the header
      */
-    headerContent?: React.ReactNode;
+    headerContent?: ReactNode;
     /**
      * Additionnal CSS classes for the header
      */
@@ -51,7 +51,7 @@ export interface CollapsibleOwnProps {
     /**
      * Set to render a custom toggle icon
      */
-    collapsibleToggleIcon?: React.ReactNode;
+    collapsibleToggleIcon?: ReactNode;
     /**
      * Callback called when container is clicked
      */
@@ -75,7 +75,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: CollapsibleOwnProps) 
 });
 
 export const COLLAPSIBLE_EFFECT_DURATION = 150;
-export const CollapsibleDisconnected: React.FunctionComponent<
+export const CollapsibleDisconnected: FunctionComponent<
     CollapsibleOwnProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
 > = ({
     children,
@@ -93,7 +93,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
     collapsibleToggleIcon,
     onClick,
 }) => {
-    React.useEffect(() => {
+    useEffect(() => {
         onMount();
         return void onUnmount;
     }, []);
@@ -141,7 +141,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
     );
 };
 
-export const CollapsibleConnected: React.ComponentType<CollapsibleOwnProps & IReduxActionsPayload> = connect(
+export const CollapsibleConnected: ComponentType<CollapsibleOwnProps & IReduxActionsPayload> = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

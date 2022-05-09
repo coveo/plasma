@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {HTMLAttributes, PureComponent} from 'react';
 
-export class Separator extends React.PureComponent<React.HTMLAttributes<HTMLSpanElement>> {
+export class Separator extends PureComponent<HTMLAttributes<HTMLSpanElement>> {
     static defaultClassName = classNames('separator mx1');
     render() {
         return <span className={classNames(this.props.className, Separator.defaultClassName)} />;

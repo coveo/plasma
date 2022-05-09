@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactText, KeyboardEvent, ChangeEvent, HTMLProps, PureComponent} from 'react';
 import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -46,7 +46,7 @@ export interface NumericInputOwnProps {
 }
 
 export interface NumericInputStateProps {
-    value: React.ReactText;
+    value: ReactText;
     hasError: boolean;
 }
 
@@ -69,7 +69,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: NumericInputOwnProps): Nu
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: NumericInputOwnProps): NumericInputDispatchProps => ({
     mount: (value: number) => dispatch(NumericInputActions.mount(ownProps.id, value, ownProps.min, ownProps.max)),
     unmount: () => dispatch(NumericInputActions.unmount(ownProps.id)),
-    setValue: (value: React.ReactText) =>
+    setValue: (value: ReactText) =>
         dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
 });
 
@@ -89,7 +89,7 @@ const inputPropsToOmit = [
 ];
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class NumericInputConnected extends React.PureComponent<NumericInputProps & React.HTMLProps<HTMLInputElement>> {
+export class NumericInputConnected extends PureComponent<NumericInputProps & HTMLProps<HTMLInputElement>> {
     static defaultProps: Partial<NumericInputOwnProps> = {
         invalidMessage: 'Value is not valid',
         maxLength: 12,
@@ -156,7 +156,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
         );
     }
 
-    private onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    private onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         const key = e.keyCode;
         if (key === keyCode.upArrow) {
             this.onIncrement();
@@ -165,7 +165,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
         }
     };
 
-    private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    private onChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = (e.target as HTMLInputElement).value;
         this.props.setValue(value);
     };

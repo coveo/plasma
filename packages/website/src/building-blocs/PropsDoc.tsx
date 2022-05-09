@@ -1,5 +1,5 @@
 import {createSystem, createVirtualTypeScriptEnvironment} from '@typescript/vfs';
-import * as React from 'react';
+import {FunctionComponent, useState, useEffect} from 'react';
 import * as ts from 'typescript';
 
 import {PlasmaLoading} from './PlasmaLoading';
@@ -15,17 +15,16 @@ interface PropInfo {
     params: Array<{parameterName: string; text: string}>;
 }
 
-export const PropsDoc: React.FunctionComponent<{componentName: string}> = ({componentName}) => {
-    const [propsList, setPropsList] = React.useState<PropInfo[]>();
+export const PropsDoc: FunctionComponent<{componentName: string}> = ({componentName}) => {
+    const [propsList, setPropsList] = useState<PropInfo[]>();
     const {fsMap, compilerOptions} = useTypescriptServer();
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (fsMap === null) {
             return;
         }
         const system = createSystem(fsMap);
-        const content = `import * as React from 'react';
-import {${componentName}} from '@coveord/plasma-react';
+        const content = `import {${componentName}} from '@coveord/plasma-react';
 const props: React.ComponentProps<typeof ${componentName}> = {`;
         fsMap.set('props.ts', content);
 

@@ -1,8 +1,8 @@
-import * as React from 'react';
+import {MouseEvent} from 'react';
 import {isEmpty} from 'underscore';
 
 export class EventUtils {
-    static isClickingInsideElementWithClassname = (e: React.MouseEvent<any>, classname: string): boolean => {
+    static isClickingInsideElementWithClassname = (e: MouseEvent<any>, classname: string): boolean => {
         let currentTarget: HTMLElement = e && (e.target as HTMLElement);
         let isClickingInside = false;
 

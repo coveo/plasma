@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, Component} from 'react';
 
 import {Content, IContentProps} from '../content/Content';
 import {PartialStringMatch} from '../partial-string-match/PartialStringMatch';
@@ -7,7 +7,7 @@ import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
 export interface IItemBoxProps {
     value: string;
-    displayValue?: React.ReactNode;
+    displayValue?: ReactNode;
     highlight?: string;
     selected?: boolean;
     active?: boolean;
@@ -23,7 +23,7 @@ export interface IItemBoxProps {
     selectedTooltip?: ITooltipProps;
 }
 
-export class ItemBox extends React.Component<IItemBoxProps> {
+export class ItemBox extends Component<IItemBoxProps> {
     static defaultProps: Partial<IItemBoxProps> = {
         tooltip: {
             title: '',

@@ -1,6 +1,5 @@
 import {render, screen} from '@test-utils';
 import {shallow} from 'enzyme';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {ActionBarConnected} from '../../actions/ActionBar';

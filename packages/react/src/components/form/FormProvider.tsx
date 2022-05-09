@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Reducer, ReducerAction, ReducerState, FunctionComponent, createContext, useReducer, useMemo} from 'react';
 
 import {textInputReducer} from '../textInput/TextInputReducer';
 
@@ -7,9 +7,10 @@ import {textInputReducer} from '../textInput/TextInputReducer';
  *
  * Usefull if you want many independent states of the same component and index those states by id.
  */
-const generateRecordReducer = <S, A>(
-    reducer: React.Reducer<S, A>
-): React.Reducer<Record<string, S>, {id: string; action: A}> => (state = {}, {id, action}) => ({
+const generateRecordReducer = <S, A>(reducer: Reducer<S, A>): Reducer<Record<string, S>, {id: string; action: A}> => (
+    state = {},
+    {id, action}
+) => ({
     ...state,
     [id]: reducer(state[id], action),
 });
@@ -20,8 +21,8 @@ const componentReducers = {
 
 export type FormComponent = keyof typeof componentReducers;
 type FormComponentReducer = typeof componentReducers[FormComponent];
-type FormAction = {type: FormComponent} & React.ReducerAction<FormComponentReducer>;
-type FormState = Record<FormComponent, React.ReducerState<FormComponentReducer>>;
+type FormAction = {type: FormComponent} & ReducerAction<FormComponentReducer>;
+type FormState = Record<FormComponent, ReducerState<FormComponentReducer>>;
 
 const formInitialState: FormState = {
     TextInput: {},
@@ -32,11 +33,11 @@ const formReducer = (state: FormState, {type, ...action}: FormAction) => ({
     [type]: componentReducers[type](state[type], action),
 });
 
-export const FormContext = React.createContext<{state: FormState; dispatch: React.Dispatch<FormAction>}>(undefined);
+export const FormContext = createContext<{state: FormState; dispatch: React.Dispatch<FormAction>}>(undefined);
 
-export const FormProvider: React.FunctionComponent = ({children}) => {
-    const [state, dispatch] = React.useReducer(formReducer, formInitialState);
-    const store = React.useMemo(() => ({state, dispatch}), [state]);
+export const FormProvider: FunctionComponent = ({children}) => {
+    const [state, dispatch] = useReducer(formReducer, formInitialState);
+    const store = useMemo(() => ({state, dispatch}), [state]);
 
     return <FormContext.Provider value={store}>{children}</FormContext.Provider>;
 };

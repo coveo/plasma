@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import moment from 'moment';
-import * as React from 'react';
+import {ClassAttributes, PureComponent} from 'react';
 
-export interface ILastUpdatedOwnProps extends React.ClassAttributes<LastUpdated> {
+export interface ILastUpdatedOwnProps extends ClassAttributes<LastUpdated> {
     /**
      * @deprecated do not use
      */
@@ -43,7 +43,7 @@ export interface ILastUpdatedProps extends ILastUpdatedOwnProps, ILastUpdatedSta
 
 export const LAST_UPDATE_LABEL: string = 'Last update:';
 
-export class LastUpdated extends React.PureComponent<ILastUpdatedProps> {
+export class LastUpdated extends PureComponent<ILastUpdatedProps> {
     componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();

@@ -1,6 +1,5 @@
 import {mount, ReactWrapper} from 'enzyme';
 import moment from 'moment';
-import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';

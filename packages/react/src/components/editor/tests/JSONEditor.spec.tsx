@@ -1,5 +1,4 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {CodeEditor} from '../CodeEditor';

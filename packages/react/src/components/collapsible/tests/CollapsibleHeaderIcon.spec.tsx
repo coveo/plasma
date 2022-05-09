@@ -1,6 +1,5 @@
 import {svg} from '@coveord/plasma-style';
 import {shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
 
 import {LinkSvg} from '../../svg/LinkSvg';
 import {Svg} from '../../svg/Svg';

@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import * as React from 'react';
+import {FunctionComponent, useContext} from 'react';
 import * as _ from 'underscore';
 
 import {XYChartContext} from './XYChart';
@@ -27,8 +27,8 @@ const withDefaultConfig = (props: Partial<AxisProps> = {}): AxisProps =>
         format: _.identity,
     });
 
-export const XYAxis: React.FunctionComponent<XYAxisProps> = ({x, y, children}) => {
-    const context = React.useContext(XYChartContext);
+export const XYAxis: FunctionComponent<XYAxisProps> = ({x, y, children}) => {
+    const context = useContext(XYChartContext);
     const {xDomain, yDomain, xScale, yScale, xFormat, yFormat, width, height, xTicksCount, yTicksCount} = context;
 
     const xAxis = withDefaultConfig(x);

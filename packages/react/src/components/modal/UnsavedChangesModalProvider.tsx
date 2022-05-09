@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode, FunctionComponent} from 'react';
 
 import {ConfirmationModalProvider, IConfirmationModalChildrenProps} from './ConfirmationModalProvider';
 
@@ -14,12 +14,12 @@ export interface IUnsavedChangesModalProviderProps {
     confirmationModalId?: string;
     modalTitle?: string;
     className?: string[];
-    children: (props: IConfirmationModalChildrenProps) => React.ReactNode;
+    children: (props: IConfirmationModalChildrenProps) => ReactNode;
     unsavedChangesDescription?: string;
     confirmButtonText?: string;
 }
 
-export const UnsavedChangesModalProvider: React.FunctionComponent<IUnsavedChangesModalProviderProps> = ({
+export const UnsavedChangesModalProvider: FunctionComponent<IUnsavedChangesModalProviderProps> = ({
     isDirty,
     children,
     confirmationModalId = defaultModalId,

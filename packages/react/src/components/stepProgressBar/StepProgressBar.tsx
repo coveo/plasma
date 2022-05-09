@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import * as React from 'react';
 import {range, uniqueId} from 'underscore';
 
 import {IClassName} from '../../utils/ClassNameUtils';

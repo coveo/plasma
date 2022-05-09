@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
 import * as _ from 'underscore';
 import {KeyValue} from '../../utils/DataStructuresUtils';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';

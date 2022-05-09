@@ -1,6 +1,5 @@
 import {render, screen} from '@test-utils';
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as React from 'react';
 import * as _ from 'underscore';
 
 import {BlankSlate, IBlankSlateProps} from '../BlankSlate';

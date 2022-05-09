@@ -1,5 +1,5 @@
 import {render, screen} from '@test-utils';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -22,7 +22,7 @@ describe('ColorPicker', () => {
     });
 
     it('should sync the default color to the redux state', () => {
-        const Child: React.FunctionComponent = () => {
+        const Child: FunctionComponent = () => {
             const selected = useSelector((state: PlasmaState) =>
                 InputSelectors.getValue(state, {
                     id: 'foo',

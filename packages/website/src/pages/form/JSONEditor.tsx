@@ -2,7 +2,6 @@ import code from '@examples/JSONEditor/JSONEditor.example.tsx';
 import readOnly from '@examples/JSONEditor/ReadOnly.example.tsx';
 import inError from '@examples/JSONEditor/InError.example.tsx';
 import valueFromState from '@examples/JSONEditor/ValueState.example.tsx';
-import * as React from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

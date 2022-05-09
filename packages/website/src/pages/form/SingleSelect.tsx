@@ -2,7 +2,6 @@ import code from '@examples/SingleSelect/main.example.tsx';
 import withFilter from '@examples/SingleSelect/withFilter.example.tsx';
 import withPredicate from '@examples/SingleSelect/withPredicates.example.tsx';
 import withInfiniteScroll from '@examples/SingleSelect/withInfiniteScroll.example.tsx';
-import * as React from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

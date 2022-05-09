@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import Link from 'next/link';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import actionButtonPng from '../../resources/thumbnail_ActionButton.png';
 import codeEditorPng from '../../resources/thumbnail_CodeEditor.png';
@@ -47,7 +47,7 @@ export interface TileProps {
     sendAnalytics?: () => void;
 }
 
-export const Tile: React.FunctionComponent<TileProps> = ({
+export const Tile: FunctionComponent<TileProps> = ({
     title,
     description,
     href,

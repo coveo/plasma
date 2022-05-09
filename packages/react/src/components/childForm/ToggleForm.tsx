@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactElement, MouseEvent, Children, cloneElement, Component} from 'react';
 import {Input} from '../input/Input';
 import {ChildForm} from './ChildForm';
 
@@ -10,20 +10,20 @@ import {ChildForm} from './ChildForm';
 export interface IToggleFormProps {
     classes?: string[];
     checked?: boolean;
-    children?: React.ReactElement<Input | typeof ChildForm> | Array<React.ReactElement<Input | typeof ChildForm>>;
-    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+    children?: ReactElement<Input | typeof ChildForm> | Array<ReactElement<Input | typeof ChildForm>>;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
     value?: string;
 }
 
-export class ToggleForm extends React.Component<IToggleFormProps, any> {
-    private handleClick(e: React.MouseEvent<HTMLElement>) {
+export class ToggleForm extends Component<IToggleFormProps, any> {
+    private handleClick(e: MouseEvent<HTMLElement>) {
         if (this.props.onClick) {
             this.props.onClick(e);
         }
     }
 
     private getChildren() {
-        return React.Children.map(this.props.children, (child: React.ReactElement<any>) => {
+        return Children.map(this.props.children, (child: ReactElement<any>) => {
             if (child.type === ChildForm) {
                 return this.cloneChildForm(child);
             } else {
@@ -32,15 +32,15 @@ export class ToggleForm extends React.Component<IToggleFormProps, any> {
         });
     }
 
-    private cloneControl(child: React.ReactElement<any>) {
-        return React.cloneElement(child, {
+    private cloneControl(child: ReactElement<any>) {
+        return cloneElement(child, {
             checked: this.props.checked,
-            onClick: (e: React.MouseEvent<HTMLElement>) => this.handleClick(e),
+            onClick: (e: MouseEvent<HTMLElement>) => this.handleClick(e),
         });
     }
 
-    private cloneChildForm(child: React.ReactElement<any>) {
-        return React.cloneElement(child, {
+    private cloneChildForm(child: ReactElement<any>) {
+        return cloneElement(child, {
             disabled: !this.props.checked,
         });
     }

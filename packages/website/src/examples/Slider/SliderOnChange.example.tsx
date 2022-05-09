@@ -1,9 +1,9 @@
 import {Slider} from '@coveord/plasma-react';
-import * as React from 'react';
+import {useState} from 'react';
 
 export default () => {
     const initialValue = 0;
-    const [value, setValue] = React.useState(initialValue);
+    const [value, setValue] = useState(initialValue);
     return (
         <>
             <Slider

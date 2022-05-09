@@ -149,9 +149,6 @@ $filter-not-selected-line-height: 18px;
 $filter-type-font-size: 10px;
 $filter-string-filter-label-line-height: 18px;
 
-// Flat select
-$flat-select-option-size: 26px;
-
 // Header
 $header-height: 72px;
 $header-padding: 40px;
@@ -472,10 +469,6 @@ $calendar-limit-border-length: 5px;
 $calendar-max-height: 336px;
 $date-picker-button-hover-bg: rgba(var(--deprecated-dark-grey-rgb), $transparency-3);
 $countdown-cell-height: 28px;
-
-// Tooltip
-$tooltip-z-index: 100000;
-$tooltip-spacing: 10px;
 
 // Home card
 $home-card-padding: 1rem; // Based on white space utility p2 (0.5rem * 2)

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Reducer} from 'react';
 
 export type TextInputAction =
     | {type: 'change-value'; payload: string}
@@ -28,10 +28,7 @@ export const textInputDefaultState: TextInputState = {
     isDirty: false,
 };
 
-export const textInputReducer: React.Reducer<TextInputState, TextInputAction> = (
-    state = textInputDefaultState,
-    action
-) => {
+export const textInputReducer: Reducer<TextInputState, TextInputAction> = (state = textInputDefaultState, action) => {
     switch (action.type) {
         case 'change-value':
             return action.payload === state.value ? state : {...state, value: action.payload};

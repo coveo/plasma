@@ -24,10 +24,8 @@ Display a validation message when users enter a value outside of the expected ra
 
 Determine the stepper increment relative to the range. An increment of 10% is generally acceptable. For instance, if the range is 1-10, the increments should be of 1. If the range is 1-5000, increments of 500 would be acceptable.
 
-
 ---
 
 # Related Components
 
 [Slider](https://plasma.coveo.com/form/Slider) - When value precision is unimportant.
-

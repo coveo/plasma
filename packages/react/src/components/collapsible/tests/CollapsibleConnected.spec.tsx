@@ -1,6 +1,5 @@
 import {ReactWrapper} from 'enzyme';
 import {mountWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
 
 import {SlideY} from '../../../animations/SlideY';
 import {PlasmaState} from '../../../PlasmaState';

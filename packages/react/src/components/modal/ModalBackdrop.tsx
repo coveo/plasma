@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {HTMLAttributes, Component} from 'react';
 import {defer, omit} from 'underscore';
 
 import {keyCode} from '../../utils/InputUtils';
@@ -33,12 +33,12 @@ export interface IModalBackdropProps
 
 const ModalBackdropPropsToOmit = ['displayFor', 'isPrompt', 'display', 'lastOpened', 'onClick'];
 
-export type IModalBackdropAllProps = IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>;
+export type IModalBackdropAllProps = IModalBackdropProps & HTMLAttributes<HTMLDivElement>;
 
 /**
  * @deprecated use ModalComposite instead
  */
-export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
+export class ModalBackdrop extends Component<IModalBackdropAllProps> {
     static defaultProps: Partial<IModalBackdropProps> = {
         lastOpened: true,
     };

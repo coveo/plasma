@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {Component} from 'react';
 
 const DEFAULT_TITLE = 'Delete this entry';
 
@@ -7,7 +7,7 @@ export interface IDeleteInputActionProps {
     onClick: () => void;
 }
 
-export class DeleteInputAction extends React.Component<IDeleteInputActionProps, any> {
+export class DeleteInputAction extends Component<IDeleteInputActionProps, any> {
     render() {
         const title = this.props.title ? this.props.title : DEFAULT_TITLE;
         return (

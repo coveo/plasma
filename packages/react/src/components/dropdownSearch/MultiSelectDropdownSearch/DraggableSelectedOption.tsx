@@ -1,126 +1,62 @@
-import * as React from 'react';
-import {DragSource, DropTarget, IDragSource, IDropTarget} from 'react-dnd';
-import {findDOMNode} from 'react-dom';
-import * as _ from 'underscore';
+import {FunctionComponent, useRef} from 'react';
+import {useDrag, useDrop} from 'react-dnd';
 
 import {Svg} from '../../svg';
-import {ITooltipProps} from '../../tooltip/Tooltip';
 import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
 export interface IDraggableSelectedOptionOwnProps {
-    isDragging?: boolean;
-    connectDragSource?: any;
-    connectDropTarget?: any;
-    connectDragPreview?: any;
-    index: number;
-    selectedTooltip: ITooltipProps;
-    move: (dragIndex: number, hoverIndex: number) => void;
+    /**
+     * A function triggered when another option is dragged over the current option
+     *
+     * @param value the unique value of the option dragged over the current option
+     */
+    onMoveOver: (value: ISelectedOptionProps['value']) => void;
 }
 
-export interface IDraggableSelectedOptionProps extends IDraggableSelectedOptionOwnProps, ISelectedOptionProps {}
+type DragItem = Pick<ISelectedOptionProps, 'value'>;
 
-const selectedOptionSource: IDragSource = {
-    isDragging: (props: IDraggableSelectedOptionProps, monitor: any) => props.label === monitor.getItem().label,
-    beginDrag: (props: IDraggableSelectedOptionProps) => ({...props}),
-};
-
-const cardTarget: IDropTarget = {
-    hover: (props: IDraggableSelectedOptionProps, monitor: any, component?: DraggableSelectedOption): void => {
-        const dragIndex = monitor.getItem().index;
-        const hoverIndex = props.index;
-
-        // Don't replace items with themselves
-        if (dragIndex === hoverIndex) {
-            return;
-        }
-
-        // Determine rectangle on screen
-        const hoverBoundingRect = (findDOMNode(component) as Element).getBoundingClientRect();
-
-        // Get vertical middle
-        const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-
-        // Determine mouse position
-        const clientOffset = monitor.getClientOffset();
-
-        // Get pixels to the top
-        const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-
-        // Only perform the move when the mouse has crossed half of the items height
-        // When dragging downwards, only move when the cursor is below 50%
-        // When dragging upwards, only move when the cursor is above 50%
-
-        // Dragging downwards
-        if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-            return;
-        }
-
-        // Dragging upwards
-        if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-            return;
-        }
-
-        // Time to actually perform the action
-        props.move(dragIndex, hoverIndex);
-
-        // Note: we're mutating the monitor item here!
-        // Generally it's better to avoid mutations,
-        // but it's good here for the sake of performance
-        // to avoid expensive index searches.
-        monitor.getItem().index = hoverIndex;
-    },
-    drop: (props: IDraggableSelectedOptionProps, monitor: any) => {
-        monitor.getItem().label = null;
-    },
-};
-
-export const DraggableSelectedOptionType = 'SELECTED_OPTION';
-const DraggableSelectedOptionPropsToOmit = [
-    'connectDragPreview',
-    'connectDragSource',
-    'connectDropTarget',
-    'index',
-    'isDragging',
-    'move',
-    'selectedTooltip',
-];
-
-@DropTarget(DraggableSelectedOptionType, cardTarget, (connect: any) => ({
-    connectDropTarget: connect.dropTarget(),
-}))
-@DragSource(DraggableSelectedOptionType, selectedOptionSource, (connect: any, monitor: any) => ({
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging(),
-}))
-export class DraggableSelectedOption extends React.PureComponent<IDraggableSelectedOptionProps> {
-    render() {
-        const opacity = this.props.isDragging ? 0 : 1;
-
-        return this.props.connectDragPreview(
-            this.props.connectDropTarget(
-                <div className="selected-option-wrapper" style={{opacity}}>
-                    <SelectedOption
-                        {..._.omit(this.props, DraggableSelectedOptionPropsToOmit)}
-                        label={this.props.isDragging ? null : this.props.label}
-                        selectedTooltip={this.props.selectedTooltip}
-                        readOnly={this.props.readOnly}
-                    >
-                        <div className="inline-flex">
-                            {!this.props.readOnly &&
-                                this.props.connectDragSource(
-                                    <div
-                                        className="move-option infline-flex cursor-move align-center"
-                                        aria-grabbed={this.props.isDragging}
-                                    >
-                                        <Svg svgName="dragDrop" svgClass="icon mod-small" />
-                                    </div>
-                                )}
-                            {this.props.label}
+export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOptionOwnProps & ISelectedOptionProps> = ({
+    label,
+    selectedTooltip,
+    readOnly,
+    value,
+    onMoveOver,
+}) => {
+    const dropRef = useRef<HTMLDivElement>();
+    const [, drop] = useDrop(() => ({
+        accept: 'MULTI_SELECT_OPTION',
+        hover: ({value: draggedValue}: DragItem) => {
+            if (draggedValue !== value) {
+                onMoveOver(draggedValue);
+            }
+        },
+    }));
+    const [{isDragging}, drag, dragPreview] = useDrag(() => ({
+        type: 'MULTI_SELECT_OPTION',
+        item: (): DragItem => ({value}),
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging(),
+        }),
+    }));
+    const opacity = isDragging ? 0 : 1;
+    drop(dragPreview(dropRef));
+    return (
+        <div className="selected-option-wrapper" style={{opacity}} ref={dropRef}>
+            <SelectedOption
+                value={value}
+                label={isDragging ? null : label}
+                selectedTooltip={selectedTooltip}
+                readOnly={readOnly}
+                prepend={
+                    !readOnly && (
+                        <div className="move-option cursor-move" aria-grabbed={isDragging} ref={drag}>
+                            <Svg svgName="dragDrop" svgClass="icon mod-small" />
                         </div>
-                    </SelectedOption>
-                </div>
-            )
-        );
-    }
-}
+                    )
+                }
+            >
+                {label}
+            </SelectedOption>
+        </div>
+    );
+};

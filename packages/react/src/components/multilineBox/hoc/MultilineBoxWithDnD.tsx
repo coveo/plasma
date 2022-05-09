@@ -1,11 +1,13 @@
-import * as React from 'react';
-import {DropTarget} from 'react-dnd';
+import {ReactNode, Children, PureComponent} from 'react';
+import {DndProvider} from 'react-dnd';
+import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
+
 import {PlasmaState} from '../../../PlasmaState';
 import {reorderStringList} from '../../../reusableState/customList/StringListActions';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
-import {DnDContainer, DraggableContainerType, IDraggableContainerOwnProps} from '../../dragAndDrop/DnDContainer';
+import {DnDContainer, IDraggableContainerOwnProps} from '../../dragAndDrop/DnDContainer';
 import {DnDUtils} from '../../dragAndDrop/DnDUtils';
 import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
 import {
@@ -53,52 +55,54 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
         onReorder: (list: string[]) => dispatch(reorderStringList(ownProps.id, list)),
     });
 
-    @DropTarget(DraggableContainerType, DnDUtils.parentDropTarget, (connect: any) => ({
-        connectDropTarget: connect.dropTarget(),
-    }))
     @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-    class MultilineBoxWithDnD<T> extends React.PureComponent<IMultilineBoxWithDnDProps<T>> {
+    class MultilineBoxWithDnD<T> extends PureComponent<IMultilineBoxWithDnDProps<T>> {
         static defaultProps = {
             renderBody: () => <div />,
         };
 
-        private getDnDWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
+        private getDnDWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
             const supplierProps: IMultilineBoxWithDnDSupplierProps = {
                 ...{
                     DnDContainerProps: {},
                 },
                 ...HocUtils.supplyConfig(supplier),
             };
-            return React.Children.map(children, (child: React.ReactNode, index: number) => {
+            return Children.map(children, (child: ReactNode, index: number) => {
                 const isLast = index === data.length - 1;
                 const id: string = (data.length && data[index].id) || index.toString();
                 return (
                     <DnDContainer
                         id={id}
                         key={`${id}DnD`}
-                        index={index}
-                        move={(dragIndex: number, hoverIndex: number) =>
-                            DnDUtils.move(dragIndex, hoverIndex, this.props.multilineBoxIds, this.props.onReorder)
-                        }
-                        child={child}
+                        onMoveOver={(draggedId: string) => {
+                            // Triggered when another box is dragged over the current box
+                            const newOrder = DnDUtils.reorder(draggedId, id, this.props.multilineBoxIds);
+                            this.props.onReorder(newOrder);
+                        }}
                         isDraggable={!isLast}
                         {...supplierProps.DnDContainerProps}
-                    />
+                    >
+                        {child}
+                    </DnDContainer>
                 );
             });
         }
 
         render() {
             return (
-                <Component
-                    {...this.props}
-                    renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) =>
-                        this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)
-                    }
-                />
+                <DndProvider backend={HTML5Backend}>
+                    <Component
+                        {...this.props}
+                        renderBody={(
+                            boxProps: Array<IMultilineSingleBoxProps<T>>,
+                            parentProps: IMultilineParentProps
+                        ) => this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
+                    />
+                </DndProvider>
             );
         }
     }
 
-    return DnDUtils.TagControlContext(MultilineBoxWithDnD);
+    return (MultilineBoxWithDnD as unknown) as typeof MultilineBox;
 };

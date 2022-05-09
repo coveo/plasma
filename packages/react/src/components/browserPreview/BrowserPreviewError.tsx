@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 
 import {Svg} from '../svg';
 
@@ -9,7 +9,7 @@ export interface BrowserPreviewErrorProps {
     errorMessage?: string;
 }
 
-export const BrowserPreviewError: React.FunctionComponent<BrowserPreviewErrorProps> = ({
+export const BrowserPreviewError: FunctionComponent<BrowserPreviewErrorProps> = ({
     onClick,
     description,
     errorMessage,

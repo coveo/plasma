@@ -1,5 +1,5 @@
 import moment from 'moment';
-import * as React from 'react';
+import {FunctionComponent} from 'react';
 import * as _ from 'underscore';
 import {Tooltip} from './Tooltip';
 
@@ -9,7 +9,7 @@ export interface DateTooltipsProps {
     tooltipFormat?: string;
 }
 
-export const DateTooltip: React.FunctionComponent<DateTooltipsProps> = ({date, format, tooltipFormat}) => {
+export const DateTooltip: FunctionComponent<DateTooltipsProps> = ({date, format, tooltipFormat}) => {
     let content: string;
     const title = moment(date).format(tooltipFormat ?? 'LLL');
     const momentDate = moment.isMoment(date) ? date : moment(date);

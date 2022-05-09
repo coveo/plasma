@@ -1,18 +1,23 @@
 {
-  "jsc": {
-    "target": "es5",
-    "keepClassNames": true,
-    "externalHelpers": true,
-    "parser": {
-      "syntax": "typescript",
-      "tsx": true,
-      "decorators": true,
-      "dynamicImport": true,
-      "classPrivateProperty": true
-    }
-  },
-  "module": {
-      "type": "commonjs"
-  },
-  "sourceMaps": true
+    "jsc": {
+        "target": "es5",
+        "keepClassNames": true,
+        "externalHelpers": true,
+        "parser": {
+            "syntax": "typescript",
+            "tsx": true,
+            "decorators": true,
+            "dynamicImport": true,
+            "classPrivateProperty": true
+        },
+        "transform": {
+            "react": {
+                "runtime": "automatic"
+            }
+        }
+    },
+    "module": {
+        "type": "commonjs"
+    },
+    "sourceMaps": true
 }

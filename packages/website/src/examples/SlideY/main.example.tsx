@@ -1,11 +1,11 @@
 import {Button, SlideY} from '@coveord/plasma-react';
 import {loremIpsum} from 'lorem-ipsum';
-import * as React from 'react';
+import {useState} from 'react';
 
 const content = loremIpsum({count: 20});
 
 export default () => {
-    const [opened, setOpened] = React.useState(false);
+    const [opened, setOpened] = useState(false);
     return (
         <>
             <Button onClick={() => setOpened(!opened)}>{opened ? 'Close' : 'Open'}</Button>

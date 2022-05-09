@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import {ReactNode, MouseEvent, KeyboardEvent, PureComponent} from 'react';
 import ReactModal from 'react-modal';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
@@ -25,7 +25,7 @@ export interface IModalCompositeOwnProps
     /**
      * React child to add to the header
      */
-    modalHeaderChildren?: React.ReactNode;
+    modalHeaderChildren?: ReactNode;
     /**
      * Additionnal CSS class to add to the header
      */
@@ -33,7 +33,7 @@ export interface IModalCompositeOwnProps
     /**
      * React child to add to the body
      */
-    modalBodyChildren?: React.ReactNode;
+    modalBodyChildren?: ReactNode;
     /**
      * Additionnal CSS class to add to the body
      */
@@ -41,7 +41,7 @@ export interface IModalCompositeOwnProps
     /**
      * React child to add to the footer
      */
-    modalFooterChildren?: React.ReactNode;
+    modalFooterChildren?: ReactNode;
     /**
      * Additionnal CSS class to add to the footer
      */
@@ -103,7 +103,7 @@ const modalPropsToOmit = [
     'contentClasses',
 ];
 
-export class ModalComposite extends React.PureComponent<
+export class ModalComposite extends PureComponent<
     IModalCompositeProps & Partial<ReactModal.Props> & Partial<IWithDirtyProps>
 > {
     static defaultProps: Partial<IModalCompositeProps> = {
@@ -158,7 +158,7 @@ export class ModalComposite extends React.PureComponent<
         this.props.onDestroy?.();
     }
 
-    private onRequestClose = (e: React.MouseEvent | React.KeyboardEvent) => {
+    private onRequestClose = (e: MouseEvent | KeyboardEvent) => {
         e.preventDefault();
         e.stopPropagation();
 

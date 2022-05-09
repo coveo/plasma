@@ -1,8 +1,8 @@
 import {Label, TextArea} from '@coveord/plasma-react';
-import * as React from 'react';
+import {useState} from 'react';
 
 export default () => {
-    const [value, setValue] = React.useState('');
+    const [value, setValue] = useState('');
 
     return (
         <div className="input-field">

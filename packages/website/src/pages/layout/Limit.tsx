@@ -1,9 +1,6 @@
-import * as React from 'react';
-
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
-    import * as React from 'react';
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
@@ -12,7 +9,6 @@ const code = `
 `;
 
 const withGoal = `
-    import * as React from 'react';
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
@@ -21,7 +17,6 @@ const withGoal = `
 `;
 
 const withHistory = `
-    import * as React from 'react';
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
@@ -31,7 +26,6 @@ const withHistory = `
 `;
 
 const withCustomValue = `
-    import * as React from 'react';
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
@@ -40,7 +34,6 @@ const withCustomValue = `
 `;
 
 const isLimitEditable = `
-    import * as React from 'react';
     import {Limit} from '@coveord/plasma-react';
 
     export default () => (
