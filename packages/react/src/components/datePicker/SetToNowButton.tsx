@@ -1,8 +1,8 @@
+import {CalendarSize24Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
 import {TooltipPlacement} from '../../utils';
 
 import {Button} from '../button';
-import {Svg} from '../svg';
 
 export interface ISetToNowProps {
     onClick: () => void;
@@ -18,6 +18,6 @@ export const SetToNowButton: FunctionComponent<ISetToNowProps> = ({onClick, tool
         tooltipPlacement={TooltipPlacement.Top}
         classes="date-button"
     >
-        <Svg svgName="setToNow" svgClass="icon mod-18" />
+        <CalendarSize24Px height={24} />
     </Button>
 );

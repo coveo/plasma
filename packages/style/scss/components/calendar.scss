@@ -387,27 +387,12 @@
 }
 
 .date-button {
-    display: block;
-    box-sizing: border-box;
-    width: $date-picker-dimension;
-    height: $date-picker-dimension;
     padding: 7px 8px;
 }
 
 .clear-selection-button {
     display: block;
     width: 100%;
-    padding: $dropdown-choices-top-bottom-margin;
-    font-size: $button-font-size;
-    border: $button-border-width solid var(--navy-blue-80);
-
-    &:hover {
-        border-color: var(--digital-blue-80);
-    }
-
-    &:active {
-        border-color: var(--digital-blue-100);
-    }
 }
 
 .date-separator {

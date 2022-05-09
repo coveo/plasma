@@ -4,12 +4,12 @@ import userEvent from '@testing-library/user-event';
 import {SetToNowButton} from '../SetToNowButton';
 
 describe('SetToNowButton', () => {
-    it('renders a button that has a calendar icon in it', () => {
+    it('renders a button that has a calendar icon in it', async () => {
         render(<SetToNowButton onClick={jest.fn()} />);
 
         const setToNowButton = screen.getByRole('button');
         expect(setToNowButton).toBeInTheDocument();
-        expect(within(setToNowButton).getByRole('img', {name: 'setToNow icon'})).toBeInTheDocument();
+        expect(await within(setToNowButton).findByRole('img', {name: 'calendar'})).toBeInTheDocument();
     });
 
     it('calls the onClick prop when clicking on the button', () => {
