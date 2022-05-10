@@ -1,8 +1,8 @@
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, Children, PureComponent} from 'react';
+import {Children, PureComponent, ReactNode} from 'react';
 
 import {TooltipPlacement} from '../../../utils/TooltipUtils';
-import {Svg} from '../../svg/Svg';
 import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
 
 export interface ISelectedOptionProps {
@@ -25,22 +25,21 @@ export class SelectedOption extends PureComponent<ISelectedOptionProps> {
         const tooltipCustomLabel = this.props.selectedTooltip?.title;
         const tooltipPosition = this.props.selectedTooltip?.placement;
         return (
-            <div className="selected-option" key={this.props.value} role="listitem">
+            <div className="selected-option flex flex-center mod-border" key={this.props.value} role="listitem">
                 {this.props.prepend}
                 <Tooltip
                     delayShow={300}
                     {...this.props.selectedTooltip}
                     title={tooltipCustomLabel ?? tooltipLabel}
                     placement={tooltipPosition ?? TooltipPlacement.Top}
-                    className={classNames('selected-option-value', {readOnly: this.props.readOnly})}
+                    className={classNames('selected-option-value px2 py1', {readOnly: this.props.readOnly})}
                 >
                     {tooltipContent}
                 </Tooltip>
-
                 {!this.props.readOnly && (
-                    <div className="remove-option" onClick={this.handleOnRemove} role="button">
-                        <Svg svgName="clear" svgClass="icon mod-small" />
-                    </div>
+                    <button className="remove-option p1 mod-border-left cursor-pointer" onClick={this.handleOnRemove}>
+                        <CrossSize16Px height={16} />
+                    </button>
                 )}
             </div>
         );

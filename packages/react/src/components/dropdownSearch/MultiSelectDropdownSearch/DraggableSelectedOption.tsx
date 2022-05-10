@@ -1,7 +1,7 @@
+import {DragAndDropSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
 
-import {Svg} from '../../svg';
 import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
 export interface IDraggableSelectedOptionOwnProps {
@@ -41,7 +41,7 @@ export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOption
     const opacity = isDragging ? 0 : 1;
     drop(dragPreview(dropRef));
     return (
-        <div className="selected-option-wrapper" style={{opacity}} ref={dropRef}>
+        <div style={{opacity}} ref={dropRef}>
             <SelectedOption
                 value={value}
                 label={isDragging ? null : label}
@@ -49,8 +49,12 @@ export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOption
                 readOnly={readOnly}
                 prepend={
                     !readOnly && (
-                        <div className="move-option cursor-move" aria-grabbed={isDragging} ref={drag}>
-                            <Svg svgName="dragDrop" svgClass="icon mod-small" />
+                        <div
+                            className="move-option cursor-move p1 mod-border-right"
+                            aria-grabbed={isDragging}
+                            ref={drag}
+                        >
+                            <DragAndDropSize16Px height={16} />
                         </div>
                     )
                 }
