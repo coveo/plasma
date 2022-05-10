@@ -1,27 +1,26 @@
 /* stylelint-disable */
 .badge {
     // Default Style
-    display: inline-block;
-    box-sizing: border-box;
-    font-weight: var(--main-font-bolder);
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
     border: 1px solid;
     border-radius: 8px;
     white-space: nowrap;
+    font-weight: var(--font-weight-medium);
+    gap: 4px;
 
     // Variables
     --height: 32px;
-    --padding: 6px 8px;
     --font-size: 16px;
-    --line-height: 18px;
+    --line-height: 24px;
     --color: var(--grey-80);
     --fill: var(--grey-80);
     --border-color: var(--grey-50);
-    --background-color: var(--grey-20);
+    --background-color: var(--white);
 
     // Style Override
     height: var(--height);
-    padding: var(--padding);
     font-size: var(--font-size);
     line-height: var(--line-height);
     color: var(--color);
@@ -31,53 +30,61 @@
     // Mods
     &.mod-small {
         --height: 24px;
-        --padding: 4px 8px;
         --font-size: 12px;
-        --line-height: 14px;
+        --line-height: 16px;
     }
 
     &.mod-critical {
-        --color: var(--critical-100);
-        --fill: var(--critical-100);
-        --border-color: var(--pomegranate-red-40);
+        --color: var(--pomegranate-red-70);
+        --fill: var(--pomegranate-red-70);
+        --border-color: var(--pomegranate-red-70);
         --background-color: var(--pomegranate-red-20);
     }
 
     &.mod-warning {
         --color: var(--warning-90);
         --fill: var(--warning-90);
-        --border-color: var(--turbo-yellow-40);
+        --border-color: var(--turbo-yellow-70);
         --background-color: var(--turbo-yellow-20);
     }
 
-    &.mod-information {
-        --color: var(--navy-blue-80);
-        --fill: var(--navy-blue-80);
-        --border-color: var(--navy-blue-40);
-        --background-color: var(--navy-blue-20);
-    }
-
     &.mod-success {
-        --color: var(--success-100);
-        --fill: var(--success-100);
-        --border-color: var(--rain-forest-green-30);
+        --color: var(--rain-forest-green-60);
+        --fill: var(--rain-forest-green-60);
+        --border-color: var(--success-60);
         --background-color: var(--success-10);
     }
 
     &.mod-beta {
-        --color: var(--sienna-orange-70);
-        --fill: var(--sienna-orange-70);
-        --border-color: var(--sienna-orange-40);
-        --background-color: var(--sienna-orange-20);
+        --color: var(--pomegranate-red-40);
+        --fill: var(--pomegranate-red-40);
+        --border-color: var(--pomegranate-red-40);
+        --background-color: var(--pomegranate-red-10);
     }
 
-    &.mod-tag {
-        --background-color: var(--white);
-        font-weight: var(--main-font-bold);
+    &.mod-new {
+        --color: var(--bright-turquoise-90);
+        --fill: var(--bright-turquoise-90);
+        --border-color: var(--bright-turquoise-30);
+        --background-color: var(--bright-turquoise-20);
+    }
+
+    &.mod-default {
+        --color: var(--grey-80);
+        --fill: var(--grey-80);
+        --border-color: var(--grey-40);
     }
 
     &:last-child {
         margin-right: 0;
+    }
+
+    > div.badge_label {
+        order: 1;
+    }
+
+    > span.mod-right {
+        order: 2;
     }
 }
 /* stylelint-enabled */

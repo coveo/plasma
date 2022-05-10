@@ -5,12 +5,46 @@ import {Svg} from '../svg';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
 
+export enum BadgeType {
+    Default,
+    Critical,
+    Warning,
+    Success,
+    Beta,
+    New,
+}
+
+export enum BadgeIconPlacement {
+    Left,
+    Right,
+}
+
+const TypeClassMapping: Record<BadgeType, string> = {
+    [BadgeType.Beta]: 'mod-beta',
+    [BadgeType.Critical]: 'mod-critical',
+    [BadgeType.Default]: 'mod-default',
+    [BadgeType.New]: 'mod-new',
+    [BadgeType.Success]: 'mod-success',
+    [BadgeType.Warning]: 'mod-warning',
+};
+
 interface BadgeBasicProps {
     /**
      * CSS class for the badge
-     *
      */
     extraClasses?: string[];
+    /**
+     * The type of the badge
+     *
+     * @default Default
+     */
+    type?: BadgeType;
+    /**
+     * The Badge will be smaller in size when true
+     *
+     * @default false
+     */
+    isSmall?: boolean;
 }
 
 interface BadgeWithLabelProps extends BadgeBasicProps {
@@ -24,35 +58,44 @@ interface BadgeWithIconProps extends BadgeBasicProps {
      * Add an icon to the badge (Required if no label)
      */
     icon: SvgName;
+    /**
+     * Whether the icon is left or right (Required if no label)
+     *
+     * @default BadgeIconPlacement.Left
+     */
+    iconPlacement?: BadgeIconPlacement;
 }
-
 export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithLabelProps & BadgeWithIconProps);
 
 export class Badge extends Component<IBadgeProps> {
-    static defaultProps: Partial<IBadgeProps> = {
+    static defaultProps: IBadgeProps = {
         extraClasses: [],
+        type: BadgeType.Default,
+        isSmall: false,
+        label: '',
+        iconPlacement: BadgeIconPlacement.Left,
     };
 
-    private get isSmall(): boolean {
-        return this.className.includes('mod-small');
-    }
-
     private get className(): string {
-        return classNames(DEFAULT_BADGE_CLASSNAME, this.props.extraClasses);
+        return classNames(DEFAULT_BADGE_CLASSNAME, TypeClassMapping[this.props.type], this.props.extraClasses, {
+            'mod-small': this.props.isSmall,
+        });
     }
 
     render() {
         return (
-            <span className={this.className} aria-label="badge">
-                {'icon' in this.props ? (
+            <div className={this.className} aria-label="badge">
+                {'icon' in this.props && this.props.icon ? (
                     <Svg
                         svgName={this.props.icon}
-                        svgClass={classNames('icon', {'mod-16': !this.isSmall, 'mod-12': this.isSmall})}
-                        className={classNames({mr1: 'label' in this.props && this.props.label})}
+                        className={classNames('mod-badge', {
+                            'mod-right': this.props.iconPlacement === BadgeIconPlacement.Right,
+                        })}
+                        svgClass={'icon mod-badge'}
                     />
                 ) : null}
-                {'label' in this.props ? <span>{this.props.label}</span> : null}
-            </span>
+                {'label' in this.props ? <div className="badge_label">{this.props.label}</div> : null}
+            </div>
         );
     }
 }
