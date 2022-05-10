@@ -2,7 +2,7 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import {TargetSize16Px} from '@coveord/plasma-react-icons';
-    
+
     export default () => (
         <a className="link" href="/foundations/Links">
             Link <TargetSize16Px height={16} />
@@ -12,7 +12,7 @@ const code = `
 
 const disabledLink = `
     import {TargetSize16Px} from '@coveord/plasma-react-icons';
-    
+
     export default () => (
         <a className="link disabled" href="/foundations/Links">
             Link <TargetSize16Px height={16} />
@@ -22,7 +22,7 @@ const disabledLink = `
 
 const buttonLink = `
     import {TargetSize16Px} from '@coveord/plasma-react-icons';
-    
+
     export default () => (
         <button className="link" onClick={() => alert('The button was clicked')}>
             Link <TargetSize16Px height={16} />
