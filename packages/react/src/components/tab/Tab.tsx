@@ -1,4 +1,4 @@
-import {SvgName} from '@coveord/plasma-style';
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ReactNode, MouseEvent, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
@@ -6,7 +6,6 @@ import {createStructuredSelector} from 'reselect';
 
 import {ConnectedProps, IDispatch, UrlUtils} from '../../utils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {TabActions} from './TabActions';
 import {TabSelectors} from './TabSelectors';
@@ -35,9 +34,9 @@ export interface ITabOwnProps {
     /**
      * Add an icon to the Tab
      */
-    icon?: SvgName;
+    icon?: Icon;
     /**
-     * Whether the mod-stroke is applied to the icon or not
+     * @deprecated Will have no effect of the icon
      */
     iconModStroke?: boolean;
     /**
@@ -82,6 +81,8 @@ export const Tab: FunctionComponent<ITabProps> = ({
         return onDestroy;
     }, []);
 
+    const IconName = icon;
+
     const handleSelect = (e: MouseEvent) => {
         if (!disabled) {
             selectTab?.();
@@ -110,9 +111,7 @@ export const Tab: FunctionComponent<ITabProps> = ({
                 onClick={handleSelect}
                 disabled={disabled}
             >
-                {icon ? (
-                    <Svg svgName={icon} svgClass={classNames('tab-icon mod-16', {'mod-stroke': iconModStroke})} />
-                ) : null}
+                {icon ? <IconName height={24} className={'tab-icon'} /> : null}
                 {title}
                 {badge ?? null}
             </button>

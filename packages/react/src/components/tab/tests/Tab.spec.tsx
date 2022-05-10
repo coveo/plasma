@@ -1,6 +1,7 @@
 import {render, screen, within} from '@test-utils';
 import userEvent, {specialChars} from '@testing-library/user-event';
 
+import {RocketSize16Px} from '@coveord/plasma-react-icons';
 import {Badge} from '../../badge/Badge';
 import {UrlUtils} from '../../../utils';
 import {Tab, TabConnected} from '../Tab';
@@ -16,14 +17,12 @@ describe('Tab', () => {
         expect(await screen.findByText('tooltip content')).toBeInTheDocument();
     });
 
-    it('displays the icon when one is set', () => {
-        render(<Tab title="Title" icon={'help'} />);
+    it('displays the icon when one is set', async () => {
+        render(<Tab title="Title" icon={RocketSize16Px} />);
 
-        expect(
-            screen.getByRole('tab', {
-                name: /help icon title/i,
-            })
-        ).toBeInTheDocument();
+        await screen.findByRole('img', {name: 'rocket'});
+
+        expect(screen.getByRole('tab', {name: /rocket title/i})).toBeInTheDocument();
     });
 
     it('displays the badge when one is set', () => {
