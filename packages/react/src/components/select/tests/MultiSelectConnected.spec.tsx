@@ -241,7 +241,7 @@ describe('Select', () => {
                 const listitems = screen.getAllByRole('listitem');
                 expect(listitems[0]).toHaveTextContent('🌱');
 
-                const dragIcons = screen.queryAllByRole('img', {name: /draganddrop/i});
+                const dragIcons = screen.queryByRole('img', {name: /draganddrop/i});
                 expect(dragIcons).not.toBeInTheDocument();
             });
 
