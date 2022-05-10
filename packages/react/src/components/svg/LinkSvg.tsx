@@ -1,34 +1,32 @@
+import {Icon, QuestionSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ClassAttributes, Component} from 'react';
+import {Children, FunctionComponent} from 'react';
 
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
-import {ISvgProps, Svg} from './Svg';
 
-export interface ILinkSvgProps extends ClassAttributes<LinkSvg> {
+export interface ILinkSvgProps {
+    icon?: Icon;
     url?: string;
     target?: string;
-    linkClasses?: string[];
-    svg?: ISvgProps;
+    className?: string;
     tooltip?: ITooltipProps;
 }
 
-export class LinkSvg extends Component<ILinkSvgProps> {
-    static defaultProps: Partial<ILinkSvgProps> = {
-        target: '_blank',
-        linkClasses: [],
-        svg: {svgName: 'help', svgClass: 'icon mod-14'},
-    };
-
-    render() {
-        const classes = classNames('link inline-flex flex-center', this.props.linkClasses);
-        const href = this.props.url ? {href: this.props.url} : null;
-        return (
-            <Tooltip {...this.props.tooltip} noSpanWrapper>
-                <a {...href} target={this.props.target} className={classes}>
-                    {this.props.children}
-                    <Svg {...this.props.svg} />
-                </a>
-            </Tooltip>
-        );
-    }
-}
+export const LinkSvg: FunctionComponent<ILinkSvgProps> = ({
+    target = '_blank',
+    icon = QuestionSize16Px,
+    className,
+    url,
+    tooltip,
+    children,
+}) => {
+    const IconComponent = icon;
+    return (
+        <Tooltip {...tooltip} noSpanWrapper>
+            <a href={url} target={target} className={classNames('link inline-flex flex-center', className)}>
+                {children}
+                <IconComponent className={classNames({ml1: Children.count(children) > 0})} />
+            </a>
+        </Tooltip>
+    );
+};
