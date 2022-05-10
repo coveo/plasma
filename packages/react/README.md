@@ -37,7 +37,6 @@ ReactDom.render(<Badge label="Hello Plasma!" />, document.getElementById('Somewh
 In a `.tsx` context:
 
 ```jsx
-import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {Badge} from '@coveord/plasma-react';
 
