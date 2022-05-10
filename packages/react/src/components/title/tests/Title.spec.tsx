@@ -55,10 +55,6 @@ describe('<Title/>', () => {
         const documentationLink: ILinkSvgProps = {
             url: 'https://www.google.ca',
             target: '_blank',
-            svg: {
-                svgName: 'help',
-                svgClass: 'icon mod-20',
-            },
         };
 
         const renderTitle = (props: Partial<ITitleProps> = {}) => {

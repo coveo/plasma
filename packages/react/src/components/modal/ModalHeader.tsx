@@ -67,17 +67,6 @@ export class ModalHeader extends Component<IModalHeaderProps> {
 
     render() {
         const classes = classNames('modal-header', this.props.classes);
-        const docLinkProps: ILinkSvgProps = this.props.docLink
-            ? {
-                  svg: {
-                      svgName: 'help',
-                      svgClass: 'documentation-link icon mod-20',
-                      className: 'flex',
-                  },
-                  ...this.props.docLink,
-              }
-            : null;
-
         let closeComponent: JSX.Element = null;
         if (this.props.onClose) {
             closeComponent = (
@@ -97,7 +86,7 @@ export class ModalHeader extends Component<IModalHeaderProps> {
                 <div className="truncate">
                     <Title
                         text={this.props.title}
-                        documentationLink={docLinkProps}
+                        documentationLink={this.props.docLink}
                         classes={['regular']}
                         htmlId={this.props.htmlId}
                     />

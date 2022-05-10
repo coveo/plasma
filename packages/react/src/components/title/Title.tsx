@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ReactNode, FunctionComponent, useRef, useState} from 'react';
+import {FunctionComponent, ReactNode, useRef, useState} from 'react';
 import * as _ from 'underscore';
 
 import {ILinkSvgProps, LinkSvg} from '../svg/LinkSvg';
@@ -18,13 +18,10 @@ export const Title: FunctionComponent<ITitleProps> = (props) => {
     const ref = useRef<HTMLHeadingElement>();
 
     const [isTruncated, setIsTruncated] = useState(false);
-    const linkClasses = classNames(
-        'inline-doc-link m1',
-        props.documentationLink && props.documentationLink.linkClasses
-    );
-    const titleClasses: string = classNames('bolder', 'truncate', props.classes);
+    const linkClasses = classNames('inline-doc-link ml1', props.documentationLink?.className);
+    const titleClasses: string = classNames('bolder truncate flex', props.classes);
     const prefixClasses: string = classNames({mr1: !_.isEmpty(props.prefix)});
-    const linkIcon = props.documentationLink && <LinkSvg {...props.documentationLink} linkClasses={[linkClasses]} />;
+    const linkIcon = props.documentationLink && <LinkSvg {...props.documentationLink} className={linkClasses} />;
     const tooltipProps = _.isString(props.text) ? {title: props.text} : {};
 
     const detection = () => {
@@ -48,8 +45,8 @@ export const Title: FunctionComponent<ITitleProps> = (props) => {
             <h4 ref={ref} className={titleClasses} id={props.htmlId}>
                 <span className={prefixClasses}>{props.prefix}</span>
                 {title}
+                {linkIcon}
             </h4>
-            {linkIcon}
             {props.children}
         </div>
     );

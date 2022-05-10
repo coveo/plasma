@@ -1,95 +1,34 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
-import * as _ from 'underscore';
+import {ExternalSize16Px} from '@coveord/plasma-react-icons';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 
-import {Tooltip} from '../../tooltip/Tooltip';
-import {ILinkSvgProps, LinkSvg} from '../LinkSvg';
-import {Svg} from '../Svg';
+import {LinkSvg} from '../LinkSvg';
 
-describe('<LinkSvg>', () => {
-    let linkSvgComponent: ReactWrapper<ILinkSvgProps, any>;
-    let linkSvgProps: ILinkSvgProps;
-    const linkSvgLabel = '🍦';
-
-    beforeEach(() => {
-        linkSvgProps = {
-            url: 'www.google.ca',
-        };
+describe('LinkSvg', () => {
+    it('renders the specified children and a question icon next to it', async () => {
+        render(<LinkSvg url="some-link">Some text</LinkSvg>);
+        expect(screen.getByRole('link', {name: /some text/i})).toBeInTheDocument();
+        expect(await screen.findByRole('img', {name: 'question'})).toBeInTheDocument();
     });
 
-    it('should render without error', () => {
-        expect(() => shallow(<LinkSvg {...linkSvgProps} />)).not.toThrow();
+    it('has some space between the text and the icon', async () => {
+        render(<LinkSvg url="some-link">Some text</LinkSvg>);
+        expect(await screen.findByRole('img', {name: 'question'})).toHaveClass('ml1');
     });
 
-    it('should mount and unmount/detach without error', () => {
-        expect(() => {
-            linkSvgComponent = mount(<LinkSvg {...linkSvgProps} />, {attachTo: document.getElementById('App')});
-        }).not.toThrow();
-
-        expect(() => {
-            linkSvgComponent.unmount();
-        }).not.toThrow();
+    it('does not add a space left of the icon if there is only an icon', async () => {
+        render(<LinkSvg url="some-link" />);
+        expect(await screen.findByRole('img', {name: 'question'})).not.toHaveClass('ml1');
     });
 
-    describe('Props handling', () => {
-        afterEach(() => {
-            linkSvgComponent?.unmount();
-        });
+    it('displays the specified tooltip when hovering over the link', async () => {
+        render(<LinkSvg url="some-link" tooltip={{title: 'more info'}} />);
+        userEvent.hover(await screen.findByRole('img', {name: 'question'}));
+        expect(await screen.findByText(/more info/i)).toBeInTheDocument();
+    });
 
-        const renderLinkSvg = (props: Partial<ILinkSvgProps> = {}) => {
-            linkSvgComponent = mount(<LinkSvg {..._.extend(linkSvgProps, props)}>{linkSvgLabel}</LinkSvg>, {
-                attachTo: document.getElementById('App'),
-            });
-        };
-
-        it('should set the link on the <a> href', () => {
-            renderLinkSvg();
-
-            expect(linkSvgComponent.find(`a[href="${linkSvgProps.url}"]`).length).toBe(1);
-        });
-
-        it('should set the target on <a>', () => {
-            renderLinkSvg({url: 'test', target: '_blank'});
-
-            expect(linkSvgComponent.find(`a[target="_blank"]`).length).toBe(1);
-        });
-
-        it('should add custom class with linkClasses on <a>', () => {
-            renderLinkSvg({linkClasses: ['test', 'test1']});
-
-            const element = linkSvgComponent.find('a');
-
-            expect(element.hasClass('test')).toBe(true);
-            expect(element.hasClass('test1')).toBe(true);
-        });
-
-        it('should show a svg by default', () => {
-            renderLinkSvg();
-
-            expect(linkSvgComponent.find(Svg).length).toBe(1);
-        });
-
-        it('should show a tooltip', () => {
-            renderLinkSvg({
-                tooltip: {
-                    title: 'test',
-                },
-            });
-
-            expect(linkSvgComponent.find(Tooltip).length).toBe(1);
-        });
-
-        it('should render without href', () => {
-            renderLinkSvg({
-                url: undefined,
-            });
-
-            expect(linkSvgComponent.find('a').props().href).toBeUndefined();
-        });
-
-        it('should render a custom label as child', () => {
-            renderLinkSvg();
-
-            expect(linkSvgComponent.html()).toContain(linkSvgLabel);
-        });
+    it('renders the specified icon', async () => {
+        render(<LinkSvg url="some-link" icon={ExternalSize16Px} />);
+        expect(await screen.findByRole('img', {name: 'external'})).toBeInTheDocument();
     });
 });

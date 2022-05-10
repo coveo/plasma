@@ -100,6 +100,7 @@ importers:
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.3
       '@types/redux-promise-middleware': 6.0.0
+      '@types/testing-library__jest-dom': 5.14.3
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.38
       '@typescript-eslint/eslint-plugin': 5.21.0
@@ -225,6 +226,7 @@ importers:
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.3
       '@types/redux-promise-middleware': 6.0.0_redux@4.2.0
+      '@types/testing-library__jest-dom': 5.14.3
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.38
       '@typescript-eslint/eslint-plugin': 5.21.0_3zcv2rgeu7r2itzbj2gs5m4rda

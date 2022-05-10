@@ -2,9 +2,10 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import {LinkSvg} from '@coveord/plasma-react';
+    import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 
     export default () => (
-        <LinkSvg url="https://www.coveo.com/" svg={{svgName: 'external', svgClass: 'icon mod-14 ml1'}}>
+        <LinkSvg url="https://www.coveo.com/" icon={ExternalSize16Px}>
             Learn more about Coveo
         </LinkSvg>
     );
