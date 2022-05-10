@@ -1,4 +1,4 @@
-# Best Practices
+a# Best Practices
 
 The button label should allow users to **foresee what will happen** when clicking them.
 
@@ -23,7 +23,7 @@ For example, in the [Sticky footer](https://plasma.coveo.com/layout/StickyFooter
 
 Similarly, in the footer of a [modal wizard](https://plasma.coveo.com/layout/ModalWizard), navigation buttons must be ordered as follows: "Previous" (secondary), then "Next" (primary). At the last step, the “Next” button must be replaced with a primary button with a label indicating the resulting action. For example, an appropriate label would be “Add filter” rather than “Save”.
 
-Buttons located in a [page header](https://plasma.coveo.com/layout/PageHeader) must also appear in the order described above. The primary action must appear on the rightmost side with the secondary actions to the left of this button. In a page header, the primary action usually relates to the creation of new elements, while secondary actions are usually used to trigger troubleshooting or management actions, such as activity review.
+For buttons located in a [page header](https://plasma.coveo.com/layout/PageHeader), always put **the primary button to the left** instead and the secondary to the right of the primary button. In a page header, the primary action usually relates to the creation of new elements, while secondary actions are usually used to trigger troubleshooting or management actions, such as activity review. If multiple secondary actions are required, regroup them using a [actionable item](https://plasma.coveo.com/form/ActionableItem) on the rightmost side of the header. 
 
 # Variants
 
