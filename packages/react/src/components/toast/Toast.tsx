@@ -117,7 +117,7 @@ export const Toast: FunctionComponent<IToastProps> = ({
 
     const closeButton = (
         <span className="toast-close" onClick={handleClose}>
-            <Svg svgName="close" className="icon mod-lg" />
+            <Svg svgName="close" className="icon mod-18" />
         </span>
     );
 

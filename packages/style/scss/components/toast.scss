@@ -200,11 +200,6 @@ $toast-close-padding-left: 20px;
     margin-right: 3px;
     cursor: pointer;
     fill: var(--color);
-
-    svg {
-        width: 24px;
-        height: 24px;
-    }
 }
 
 @keyframes toastFadeInTop {
