@@ -1,12 +1,12 @@
+import {RemoveSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {svg} from '@coveord/plasma-style';
-import {ReactNode, Children, PureComponent, Fragment} from 'react';
+import {Children, Fragment, PureComponent, ReactNode} from 'react';
 import {connect} from 'react-redux';
+
 import {removeValueStringList} from '../../../reusableState/customList/StringListActions';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {Button, IButtonProps} from '../../button/Button';
-import {Svg} from '../../svg/Svg';
 import {
     IMultilineBoxDispatchProps,
     IMultilineBoxOwnProps,
@@ -74,9 +74,8 @@ export const multilineBoxWithRemoveButton = (
                     enabled={!isDisabled}
                     {...props}
                 >
-                    <Svg
-                        svgName={svg.remove.name}
-                        className="icon mod-18"
+                    <RemoveSize16Px
+                        height={16}
                         style={{
                             visibility: isDisabled ? 'hidden' : 'visible',
                         }}

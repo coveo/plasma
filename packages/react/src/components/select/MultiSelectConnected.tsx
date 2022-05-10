@@ -1,6 +1,6 @@
-import {svg} from '@coveord/plasma-style';
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {CSSProperties, ReactNode, ComponentType, PureComponent} from 'react';
+import {ComponentType, CSSProperties, PureComponent, ReactNode} from 'react';
 import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
@@ -14,7 +14,6 @@ import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSear
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
-import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
@@ -172,14 +171,13 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
     private getRemoveAllSelectedOptionsButton(): JSX.Element {
         return this.getSelectedOptions().length > 1 && !this.props.readOnly ? (
             <Tooltip title={this.props.deselectAllTooltipText} placement="top" noSpanWrapper>
-                <div
+                <button
                     className="remove-all-selected-options ml1"
                     onClick={() => this.props.onRemoveAll()}
-                    role="button"
                     aria-label={this.props.deselectAllTooltipText}
                 >
-                    <Svg svgName={svg.clear.name} svgClass="icon" />
-                </div>
+                    <CrossSize16Px height={16} />
+                </button>
             </Tooltip>
         ) : null;
     }
