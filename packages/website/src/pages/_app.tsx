@@ -22,6 +22,8 @@ import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
 import * as jsxRuntime from 'react/jsx-runtime';
 import * as Redux from 'redux';
+import promise from 'redux-promise-middleware';
+import thunk from 'redux-thunk';
 import * as React from 'react';
 
 import logo from '../../resources/plasma-logo.svg';
@@ -61,6 +63,8 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         (window as any).moment = moment;
         (window as any).LoremIpsum = LoremIpsum;
         (window as any).Redux = Redux;
+        (window as any).PromiseMiddleware = promise;
+        (window as any).ThunkMiddleware = thunk;
 
         if (window.location.host === 'vapor.coveo.com') {
             window.location.href = window.location.href.replace('vapor.coveo.com', 'plasma.coveo.com');
