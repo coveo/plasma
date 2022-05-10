@@ -233,6 +233,7 @@ export class Input extends Component<IInputProps, IInputComponentState> {
                 onKeyUp={(event: KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
                 min={this.props.minimum}
                 max={this.props.maximum}
+                autoComplete="off"
                 {..._.omit(this.props, [...PropsToOmitUtils.input, ...inputPropsToOmit])}
                 {...additionalProps}
             />,
