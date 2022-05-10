@@ -91,7 +91,7 @@ describe('MultiValuesInput', () => {
             />
         );
 
-        expect(screen.getAllByRole('textbox')[3].parentElement.parentElement).toHaveAttribute('aria-labelledby');
+        expect(screen.getAllByRole('textbox')[3].parentElement).toHaveAttribute('aria-labelledby');
         userEvent.hover(screen.getAllByRole('textbox')[3].parentElement);
 
         expect(await screen.findByText('You have no power here')).toBeVisible();

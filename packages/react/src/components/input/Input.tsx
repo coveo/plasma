@@ -38,6 +38,7 @@ export interface IInputAdditionalOwnProps {
     onChangeHandler?: ChangeEventHandler<HTMLInputElement>;
     defaultValue?: string;
     isReadOnly?: boolean;
+    tooltipClasses?: IClassName;
 }
 
 export interface IInputNativeTagStateProps {
@@ -241,11 +242,15 @@ export class Input extends Component<IInputProps, IInputComponentState> {
         ];
 
         return (this.props.disabled || this.props.isReadOnly) && this.props.disabledTooltip ? (
-            <Tooltip title={this.props.disabledTooltip} placement={TooltipPlacement.Right}>
-                <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
+            <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
+                <Tooltip
+                    title={this.props.disabledTooltip}
+                    placement={TooltipPlacement.Right}
+                    className={this.props.tooltipClasses}
+                >
                     {inputElements}
-                </div>
-            </Tooltip>
+                </Tooltip>
+            </div>
         ) : (
             <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
                 {inputElements}

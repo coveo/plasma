@@ -257,6 +257,20 @@ describe('<Input />', () => {
                 expect(input.find(Tooltip).props().title).toBe(disabledTooltip);
                 expect(input.find(Tooltip).find('input').length).toBe(1);
             });
+
+            describe('with tooltipClasses', () => {
+                it('should set the given class to the tooltip element', () => {
+                    const disabledTooltip = 'i am truthy';
+                    const tooltipClasses = 'test-class';
+                    shallowInput({
+                        disabled: true,
+                        disabledTooltip,
+                        tooltipClasses,
+                    });
+
+                    expect(input.find(Tooltip).hasClass(tooltipClasses)).toBe(true);
+                });
+            });
         });
     });
 });
