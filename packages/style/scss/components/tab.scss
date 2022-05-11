@@ -6,15 +6,15 @@
 
     .tab {
         position: relative;
-        display: inline-block;
+        display: flex;
+        align-content: center;
+        align-items: center;
         height: 32px;
         margin-left: 0.5rem;
         text-transform: none;
         cursor: pointer;
 
         .tab-icon {
-            @extend .icon;
-            --stroke: var(--grey-100);
             margin-right: 5px;
         }
 
