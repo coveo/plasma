@@ -13,7 +13,7 @@
         input.filter-box {
             width: $filter-box-width-small-screen;
 
-            & + span {
+            & + svg {
                 right: $icon-offset-small-screen;
             }
         }
@@ -29,7 +29,7 @@
         input.filter-box {
             width: $filter-box-width-large-screen;
 
-            & + span {
+            & + svg {
                 right: $icon-offset-large-screen;
             }
         }
@@ -50,10 +50,6 @@
         top: 8px;
         display: none;
         cursor: default;
-
-        svg {
-            fill: var(--grey-80);
-        }
     }
 
     input.filter-box {
@@ -66,15 +62,11 @@
             display: none;
         }
 
-        & + span {
+        & + svg {
             position: absolute;
             top: calc(50% - #{$clear-icon-height} / 2);
             line-height: 0;
             cursor: pointer;
-
-            svg {
-                height: $clear-icon-height;
-            }
 
             &.hide,
             &.hidden {
