@@ -1,21 +1,14 @@
-$toast-z-index: 9999;
 $toast-container-margin: 20px;
 $toast-margin-top: $header-height;
-$toast-margin: 10px 0px;
-$toast-radius: 8px;
 $toast-download-padding: 20px;
-$toast-text-font-size: 14px;
-$toast-title-font-weight: 500;
-$toast-close-size: 20px;
 $toast-close-padding-left: 20px;
-$toast-info-token-padding: 12px 16px 12px 8px;
 
 .toast-container {
     position: fixed;
     top: $toast-margin-top;
     right: 0;
     left: 0;
-    z-index: $toast-z-index;
+    z-index: 9999;
     display: flex;
     flex-flow: column-reverse;
     align-items: center;
@@ -48,25 +41,27 @@ $toast-info-token-padding: 12px 16px 12px 8px;
 
 .toast {
     // Default Style
+    @extend .body-l-book;
+    z-index: 9999;
     display: flex;
     min-width: var(--min-width);
     max-width: var(--max-width);
-    margin: $toast-margin;
-    padding: var(--padding);
-    color: var(--text-color);
+    min-height: 64px;
+    margin-bottom: 10px;
+    padding: 16px;
+    color: var(--color);
 
     // override
     background-color: var(--background-color);
-    border-radius: $toast-radius;
+    border-radius: 8px;
     box-shadow: var(--high-elevation-on-neutral);
     pointer-events: all;
 
     // variables
     --background-color: var(--success-60);
     --min-width: 280px;
-    --max-width: 632px;
-    --padding: 20px;
-    --text-color: var(--white);
+    --max-width: 456px;
+    --color: var(--white);
 
     &.mod-success {
         --background-color: var(--success-60);
@@ -74,7 +69,7 @@ $toast-info-token-padding: 12px 16px 12px 8px;
 
     &.mod-warning {
         --background-color: var(--warning-70);
-        --text-color: var(--black);
+        --color: var(--black);
     }
 
     &.mod-error {
@@ -83,11 +78,6 @@ $toast-info-token-padding: 12px 16px 12px 8px;
 
     &.mod-info {
         --background-color: var(--info-60);
-    }
-
-    &.mod-small {
-        --min-width: none;
-        --padding: 16px;
     }
 
     &.mod-hidden {
@@ -104,59 +94,86 @@ $toast-info-token-padding: 12px 16px 12px 8px;
     }
 
     a {
+        @extend .body-l;
         color: inherit;
         text-decoration: underline;
     }
 
-    &:not(.mod-small):not(.mod-download) .toast-content-container {
+    &:not(.mod-download) .toast-content-container {
         display: flex;
         flex: 1 1 auto;
         flex-direction: column;
         justify-content: center;
-        min-height: 55px;
-    }
-
-    .info-token {
-        position: static;
-        padding: $toast-info-token-padding;
     }
 
     &.mod-download {
+        @extend .body-l;
         min-width: 300px;
         padding: 0;
+        color: var(--white);
         background: var(--info-60);
-        border-radius: 6px;
+        border-radius: 8px;
         box-shadow: var(--high-elevation-on-neutral);
 
         .toast-download-container {
             width: 100%;
         }
 
-        .toast-title,
+        .toast-title {
+            height: 62px;
+            padding: 16px;
+        }
+
         .toast-close {
-            padding: $toast-download-padding;
+            --color: var(--white);
         }
 
         .toast-description {
+            @extend .body-s-book;
+            display: flex;
+            justify-content: space-between;
             margin-top: 0;
-            padding: $toast-download-padding;
+            padding: 16px;
             color: var(--grey-80);
-            font-size: 12px;
-            line-height: 16px;
             background: var(--white);
-            border-bottom-right-radius: inherit;
-            border-bottom-left-radius: inherit;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
             filter: drop-shadow(0px 8px 17px rgba(142, 142, 142, 0.22));
 
             > div {
                 width: 100%;
             }
 
-            .spinner-container {
-                width: 16px;
+            .spinner {
+                position: relative;
+                width: 20px;
+                height: 20px;
+                margin-right: 1px;
+                background: var(--gradient);
+                border-radius: 10rem;
+                animation: animate 1s linear infinite;
 
-                .search-bar-spinner {
-                    left: 7px; // for pixel perfect alignment
+                &:before {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 80%;
+                    height: 80%;
+                    background: var(--white);
+                    border: 3px solid white;
+                    border-radius: 10rem;
+                    transform: translate(-50%, -50%);
+                    content: '';
+                }
+
+                @keyframes animate {
+                    from {
+                        transform: rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(360deg);
+                    }
                 }
             }
         }
@@ -164,9 +181,10 @@ $toast-info-token-padding: 12px 16px 12px 8px;
 }
 
 .toast-title {
-    font-weight: $toast-title-font-weight;
-    font-size: $toast-text-font-size;
-    line-height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     overflow-wrap: anywhere;
 }
 
@@ -175,19 +193,13 @@ $toast-info-token-padding: 12px 16px 12px 8px;
     align-items: center;
     height: 100%;
     padding-right: 10px;
-    font-size: $toast-text-font-size;
 }
 
 .toast-close {
-    position: static;
-    padding-left: $toast-close-padding-left;
+    display: flex;
+    margin-right: 3px;
     cursor: pointer;
-    fill: var(--text-color);
-
-    svg {
-        width: $toast-close-size;
-        height: $toast-close-size;
-    }
+    fill: var(--color);
 }
 
 @keyframes toastFadeInTop {
