@@ -9,7 +9,6 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {PlasmaLoading} from './PlasmaLoading';
-import {useTypescriptServer} from './useTypescriptServer';
 
 const prettierConfig = await import('tsjs/prettier-config.js');
 
@@ -25,7 +24,6 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
         parser: 'typescript',
     });
     const [editedCode, setEditedCode] = useState(formattedCode);
-    const {fsMap} = useTypescriptServer();
     const [initialized, setInitialized] = useState(false);
 
     const importAndRunSwcOnMount = async () => {
@@ -38,7 +36,7 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
     }, []);
 
     useEffect(() => {
-        if (fsMap === null || !initialized) {
+        if (!initialized) {
             return;
         }
         try {
@@ -98,11 +96,11 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
             );
             console.error(error);
         }
-    }, [editedCode, fsMap, initialized]);
+    }, [editedCode, initialized]);
 
     return (
         <div className={classNames('demo-sandbox', {horizontal})}>
-            {fsMap === null ? (
+            {!initialized ? (
                 <PlasmaLoading />
             ) : (
                 <>
