@@ -2,13 +2,16 @@ import {FunctionComponent} from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const withIcons = `
-    import {Badge, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
+
+    import {TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
+    import {HeartSize16Px, LightningSize16Px, RocketSize16Px} from '@coveord/plasma-react-icons';
+
     export default () => (
     <>
         <TabNavigation>
-            <TabConnected groupId="banane" id="tab5" title="Pikachu" icon={'lightning'} />
-            <TabConnected groupId="banane" id="tab6" title="Gyarados" icon={'crawlingBotStroked16'} iconModStroke />
-            <TabConnected groupId="banane" id="tab7" title="Charmander" icon={'check'} />
+            <TabConnected groupId="banane" id="tab5" title="Pikachu" icon={LightningSize16Px} />
+            <TabConnected groupId="banane" id="tab6" title="Gyarados" icon={HeartSize16Px} />
+            <TabConnected groupId="banane" id="tab7" title="Charmander" icon={RocketSize16Px} />
         </TabNavigation>
         <TabContent>
             <TabPaneConnected groupId="banane" id="tab5">
