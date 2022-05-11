@@ -179,12 +179,12 @@ describe('Toasts', () => {
             expect(toastComponent.find(closeSelector).length).toBe(0);
         });
 
-        it('calls the onClose prop when the toast is dismissed', () => {
+        it('calls the onClose prop when the toast is dismissed', async () => {
             const onCloseSpy = jest.fn();
             render(<Toast title="hello world!" onClose={onCloseSpy} />);
 
             expect(screen.getByText(/hello world!/i)).toBeInTheDocument();
-            userEvent.click(screen.getByRole('img', {name: /close icon/i}));
+            userEvent.click(await screen.findByRole('button', {name: /cross/i}));
             expect(screen.queryByText(/hello world!/i)).not.toBeInTheDocument();
             expect(onCloseSpy).toHaveBeenCalledTimes(1);
         });
