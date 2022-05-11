@@ -29,10 +29,6 @@ export interface IconBadgeProps {
      */
     size?: IconBadgeSize;
     /**
-     * @deprecated will have no effet
-     */
-    svgClass?: string;
-    /**
      * Additionnal CSS class for the icon badge
      */
     className?: string;
@@ -54,7 +50,7 @@ export const IconBadge: FunctionComponent<IconBadgeProps> = ({icon, type, size =
 
     return (
         <div className={classNames('icon-badge', SizeClassMapping[size], TypeColorMapping[type], className)}>
-            <IconName height={24} className={classNames('align-middle')} />
+            <IconName height={24} className={'align-middle'} />
         </div>
     );
 };
