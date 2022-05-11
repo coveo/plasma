@@ -12,17 +12,20 @@ import {PlasmaLoading} from './PlasmaLoading';
 
 const prettierConfig = await import('tsjs/prettier-config.js');
 
+const formatCode = (code: string) =>
+    format(code, {
+        ...prettierConfig,
+        plugins: [typescript],
+        parser: 'typescript',
+    });
+
 export const Sandbox: FunctionComponent<{children: string; id: string; title?: string; horizontal?: boolean}> = ({
     id,
     title,
     children,
     horizontal,
 }) => {
-    const formattedCode = format(children as string, {
-        ...prettierConfig,
-        plugins: [typescript],
-        parser: 'typescript',
-    });
+    const formattedCode = formatCode(children as string);
     const [editedCode, setEditedCode] = useState(formattedCode);
     const [initialized, setInitialized] = useState(false);
 
@@ -30,6 +33,10 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
         await initSwc();
         setInitialized(true);
     };
+
+    useEffect(() => {
+        setEditedCode(formatCode(children as string));
+    }, [children]);
 
     useEffect(() => {
         importAndRunSwcOnMount();
@@ -125,6 +132,10 @@ const Editor: FunctionComponent<{id: string; value: string; onChange: (newValue:
 }) => {
     const editorRef = useRef(null);
     const [height, setHeight] = useState<number>(200);
+
+    useEffect(() => {
+        editorRef.current?.setValue?.(value);
+    }, [value]);
 
     const updateHeight = () => {
         const editor = editorRef.current!;
