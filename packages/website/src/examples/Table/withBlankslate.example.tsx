@@ -1,6 +1,3 @@
-import {FunctionComponent} from 'react';
-import {compose} from 'redux';
-
 import {
     Badge,
     BadgeType,
@@ -9,6 +6,9 @@ import {
     tableWithBlankSlate,
     tableWithNewPagination,
 } from '@coveord/plasma-react';
+import {CloudSize16Px} from '@coveord/plasma-react-icons';
+import {FunctionComponent} from 'react';
+import {compose} from 'redux';
 
 const TABLE_ID: string = 'withBlankslateTableId';
 
@@ -69,7 +69,7 @@ const renderRows = data?.map((item) => (
         <td key="city">{item.city}</td>
         <td key="username">{item.username.toLowerCase()}</td>
         <td>
-            <Badge label={'King'} icon={'cloud'} isSmall type={BadgeType.Success} />
+            <Badge label={'King'} icon={CloudSize16Px} isSmall type={BadgeType.Success} />
         </td>
     </TableRowConnected>
 ));

@@ -1,4 +1,5 @@
 import {Badge, BadgeType, TableHOC, TableRowConnected} from '@coveord/plasma-react';
+import {CloudSize16Px} from '@coveord/plasma-react-icons';
 
 const TABLE_ID: string = 'withLoadingTableId';
 
@@ -59,7 +60,7 @@ const renderRows = data?.map((item) => (
         <td key="city">{item.city}</td>
         <td key="username">{item.username.toLowerCase()}</td>
         <td>
-            <Badge label={'King'} icon={'cloud'} isSmall type={BadgeType.Success} />
+            <Badge label={'King'} icon={CloudSize16Px} isSmall type={BadgeType.Success} />
         </td>
     </TableRowConnected>
 ));
