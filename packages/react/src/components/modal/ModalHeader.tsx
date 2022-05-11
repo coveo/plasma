@@ -1,10 +1,10 @@
+import {CrossSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, Component} from 'react';
+import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ILinkSvgProps} from '../svg/LinkSvg';
-import {Svg} from '../svg/Svg';
 import {Title} from '../title/Title';
 
 export interface IModalHeaderOwnProps {
@@ -70,14 +70,14 @@ export class ModalHeader extends Component<IModalHeaderProps> {
         let closeComponent: JSX.Element = null;
         if (this.props.onClose) {
             closeComponent = (
-                <span
+                <button
                     className="small-close"
                     onClick={() => {
                         this.close();
                     }}
                 >
-                    <Svg svgName="close" className="icon mod-lg" />
-                </span>
+                    <CrossSize24Px height={24} />
+                </button>
             );
         }
 
