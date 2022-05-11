@@ -25,6 +25,7 @@ export interface IInputAdditionalOwnProps {
     id?: string;
     classes?: IClassName;
     innerInputClasses?: IClassName;
+    tooltipClasses?: string;
     validate?: (value: any) => boolean;
     labelTitle?: ReactNode;
     labelProps?: ILabelProps;
@@ -38,7 +39,6 @@ export interface IInputAdditionalOwnProps {
     onChangeHandler?: ChangeEventHandler<HTMLInputElement>;
     defaultValue?: string;
     isReadOnly?: boolean;
-    tooltipClasses?: IClassName;
 }
 
 export interface IInputNativeTagStateProps {
