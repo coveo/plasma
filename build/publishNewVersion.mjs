@@ -3,7 +3,6 @@ import {
     getLastTag,
     getNextVersion,
     getCommits,
-    getCurrentVersion,
     getRemoteName,
     gitPush,
     gitPushTags,
@@ -71,7 +70,7 @@ const outputProcess = (process) => {
             bumpInfo = convention.recommendedBumpOpts.whatBump(parsedCommits);
         }
 
-        const currentVersion = getCurrentVersion(PATH);
+        const currentVersion = {version: lastTag.replace(VERSION_PREFIX, '')};
         const newVersion = getNextVersion(currentVersion, bumpInfo);
 
         if (newVersion !== currentVersion) {
