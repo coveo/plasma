@@ -36,10 +36,6 @@ export interface ITabOwnProps {
      */
     icon?: Icon;
     /**
-     * @deprecated Will have no effect of the icon
-     */
-    iconModStroke?: boolean;
-    /**
      * Add a Badge to the Tab
      */
     badge?: ReactNode;
@@ -63,7 +59,6 @@ export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof e
 
 export const Tab: FunctionComponent<ITabProps> = ({
     icon,
-    iconModStroke,
     badge,
     tooltip,
     disabled,
@@ -111,7 +106,7 @@ export const Tab: FunctionComponent<ITabProps> = ({
                 onClick={handleSelect}
                 disabled={disabled}
             >
-                {icon ? <IconName height={24} className={'tab-icon'} /> : null}
+                {icon ? <IconName height={16} className={'tab-icon'} /> : null}
                 {title}
                 {badge ?? null}
             </button>
