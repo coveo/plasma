@@ -1,4 +1,3 @@
-import {createSystem, createVirtualTypeScriptEnvironment} from '@typescript/vfs';
 import {FunctionComponent, useState, useEffect} from 'react';
 import * as ts from 'typescript';
 
@@ -17,27 +16,24 @@ interface PropInfo {
 
 export const PropsDoc: FunctionComponent<{componentName: string}> = ({componentName}) => {
     const [propsList, setPropsList] = useState<PropInfo[]>();
-    const {fsMap, compilerOptions} = useTypescriptServer();
+    const {env} = useTypescriptServer();
 
     useEffect(() => {
-        if (fsMap === null) {
+        if (!env) {
             return;
         }
-        const system = createSystem(fsMap);
+
         const content = `import {${componentName}} from '@coveord/plasma-react';
 const props: React.ComponentProps<typeof ${componentName}> = {`;
-        fsMap.set('props.ts', content);
+        env.createFile('props.ts', content);
 
-        const env = createVirtualTypeScriptEnvironment(system, [...fsMap.keys()], ts as any, compilerOptions as any);
         const checker = env.languageService.getProgram().getTypeChecker();
         const {entries} = env.languageService.getCompletionsAtPosition('props.ts', content.length, {
             triggerKind: ts.CompletionTriggerKind.Invoked,
         });
         const accumulator: PropInfo[] = [];
 
-        if (!entries) {
-            setPropsList(accumulator);
-        } else {
+        if (entries) {
             entries.forEach((entry) => {
                 const symbol = env.languageService.getCompletionEntrySymbol(
                     'props.ts',
@@ -86,7 +82,7 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
         }
 
         setPropsList(accumulator);
-    }, [componentName, fsMap]);
+    }, [componentName, env]);
 
     if (!propsList) {
         return <PlasmaLoading />;

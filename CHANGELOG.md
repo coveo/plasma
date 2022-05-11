@@ -1,36 +1,42 @@
-## 41.2.10-next.11 (2022-05-03)
+# 41.3.0 (2022-05-04)
 
 
 ### Bug Fixes
 
 * **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
-* **website:** remove workarounds ([4e25333](https://github.com/coveo/plasma/commits/4e25333e3496c12ce6bca381bc9f02341a66ef15))
+* **website:** _react is not defined in sandbox ([8364925](https://github.com/coveo/plasma/commits/8364925e4c3b378bc5da093543e906ec974038e4))
 
 
 ### Features
 
-* **react-icons:** add accessible role to all icons ([c5bece6](https://github.com/coveo/plasma/commits/c5bece62080a07129e2a1225130a94567c9c63f8))
-* **react-icons:** add accessible role to all icons ([b5dfd59](https://github.com/coveo/plasma/commits/b5dfd5931214e82dffee1129c13d4a723f3bf7af))
-* **react-icons:** implement Icon type ([1891313](https://github.com/coveo/plasma/commits/1891313451de484d6142aedc2097451bf5f18db3))
-* **react-icons:** implement Icon type ([cb10a12](https://github.com/coveo/plasma/commits/cb10a1211388e66402ce995fbb5820f534dc42b1))
-* **react:** remove Svg from ActionableItem ([e11a8ca](https://github.com/coveo/plasma/commits/e11a8ca13c285a7eec70e381c9f751e4f8d4cdc6))
-* **react:** use plasma-react-icons in badge component ([0e33de1](https://github.com/coveo/plasma/commits/0e33de1c3d0bd3b54c3f47707d1ee8f1bdc02ad8))
-* **react:** use plasma-react-icons in badge component ([1c56382](https://github.com/coveo/plasma/commits/1c56382083157f20156805a8af417e50345cd919))
-* **react:** use react-icons in CollapsibleToggle ([8706144](https://github.com/coveo/plasma/commits/870614490e03c1b5f79e582c908101990bad53a7))
-* **react:** use react-icons in CollapsibleToggle ([1e55008](https://github.com/coveo/plasma/commits/1e5500841f752d693396d894276077560b160cc8))
-* **tokens:** extract design tokens from figma libraries ([ebe3918](https://github.com/coveo/plasma/commits/ebe39185eb94977f595bedbf88afa74943df2efc))
+* **mvp, tooltip:** adding box-shadow ([177465f](https://github.com/coveo/plasma/commits/177465f1037cbdbae5ef8d6dcda86051f1226c46))
+* **mvp, tooltip:** applied last style ([83fb6f5](https://github.com/coveo/plasma/commits/83fb6f548ba7a9bf71afb5ffaa00449d7eb90121))
+* **mvp, tooltip:** applied new style to tooltip part 1 ([139b3b9](https://github.com/coveo/plasma/commits/139b3b9ee37b43a43f965f0df735322a7d218d65))
 
 
-### BREAKING CHANGES
 
-* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
-* **react:** Badge icon prop now expects an icon from plasma-react-icons
+# 41.3.0 (2022-05-03)
 
-fix(react): fix badge tests
-* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
-* **react:** Badge icon prop now expects an icon from plasma-react-icons
 
-fix(react): fix badge tests
+### Bug Fixes
+
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
+
+
+### Features
+
+* **mvp, tooltip:** adding box-shadow ([177465f](https://github.com/coveo/plasma/commits/177465f1037cbdbae5ef8d6dcda86051f1226c46))
+* **mvp, tooltip:** applied last style ([83fb6f5](https://github.com/coveo/plasma/commits/83fb6f548ba7a9bf71afb5ffaa00449d7eb90121))
+* **mvp, tooltip:** applied new style to tooltip part 1 ([139b3b9](https://github.com/coveo/plasma/commits/139b3b9ee37b43a43f965f0df735322a7d218d65))
+
+
+
+## 41.2.11 (2022-05-03)
+
+
+### Bug Fixes
+
+* **react-icons:** add missing type dependency on loadable ([cb9867b](https://github.com/coveo/plasma/commits/cb9867ba93758a7c6fbd6e1c8b5b0483fa968ace))
 
 
 
