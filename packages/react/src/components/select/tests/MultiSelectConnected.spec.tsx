@@ -236,30 +236,30 @@ describe('Select', () => {
             it('does not have the drag icon if the component is not sortable', () => {
                 const items = [{value: '🌱', selected: true}];
 
-                const {container} = render(<MultiSelectConnected id={id} items={items} sortable={false} />);
+                render(<MultiSelectConnected id={id} items={items} sortable={false} />);
 
                 const listitems = screen.getAllByRole('listitem');
                 expect(listitems[0]).toHaveTextContent('🌱');
 
-                const dragIcons = container.querySelector('[aria-grabbed=false] svg');
+                const dragIcons = screen.queryByRole('img', {name: /draganddrop/i});
                 expect(dragIcons).not.toBeInTheDocument();
             });
 
-            it('is possible to reorder items', () => {
+            it('is possible to reorder items', async () => {
                 const items = [
                     {value: '🌱', selected: true},
                     {value: '🥔', selected: true},
                     {value: '🍟', selected: true},
                 ];
 
-                const {container} = render(<MultiSelectConnected id={id} items={items} sortable />);
+                render(<MultiSelectConnected id={id} items={items} sortable />);
 
                 let listitems = screen.getAllByRole('listitem');
                 expect(listitems[0]).toHaveTextContent('🌱');
                 expect(listitems[1]).toHaveTextContent('🥔');
                 expect(listitems[2]).toHaveTextContent('🍟');
 
-                const dragIcons = container.querySelectorAll('[aria-grabbed=false] svg');
+                const dragIcons = await screen.findAllByRole('img', {name: /draganddrop/i});
                 dragAndDrop(dragIcons[1], 2);
 
                 listitems = screen.getAllByRole('listitem');

@@ -14,19 +14,16 @@ export interface ILinkSvgProps {
 
 export const LinkSvg: FunctionComponent<ILinkSvgProps> = ({
     target = '_blank',
-    icon = QuestionSize16Px,
+    icon: IconComponent = QuestionSize16Px,
     className,
     url,
     tooltip,
     children,
-}) => {
-    const IconComponent = icon;
-    return (
-        <Tooltip {...tooltip} noSpanWrapper>
-            <a href={url} target={target} className={classNames('link inline-flex flex-center', className)}>
-                {children}
-                <IconComponent className={classNames({ml1: Children.count(children) > 0})} />
-            </a>
-        </Tooltip>
-    );
-};
+}) => (
+    <Tooltip {...tooltip} noSpanWrapper>
+        <a href={url} target={target} className={classNames('link inline-flex flex-center', className)}>
+            {children}
+            <IconComponent className={classNames({ml1: Children.count(children) > 0})} />
+        </a>
+    </Tooltip>
+);

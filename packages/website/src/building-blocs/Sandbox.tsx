@@ -9,9 +9,15 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {PlasmaLoading} from './PlasmaLoading';
-import {useTypescriptServer} from './useTypescriptServer';
 
 const prettierConfig = await import('tsjs/prettier-config.js');
+
+const formatCode = (code: string) =>
+    format(code, {
+        ...prettierConfig,
+        plugins: [typescript],
+        parser: 'typescript',
+    });
 
 export const Sandbox: FunctionComponent<{children: string; id: string; title?: string; horizontal?: boolean}> = ({
     id,
@@ -19,13 +25,8 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
     children,
     horizontal,
 }) => {
-    const formattedCode = format(children as string, {
-        ...prettierConfig,
-        plugins: [typescript],
-        parser: 'typescript',
-    });
+    const formattedCode = formatCode(children as string);
     const [editedCode, setEditedCode] = useState(formattedCode);
-    const {fsMap} = useTypescriptServer();
     const [initialized, setInitialized] = useState(false);
 
     const importAndRunSwcOnMount = async () => {
@@ -34,11 +35,15 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
     };
 
     useEffect(() => {
+        setEditedCode(formatCode(children as string));
+    }, [children]);
+
+    useEffect(() => {
         importAndRunSwcOnMount();
     }, []);
 
     useEffect(() => {
-        if (fsMap === null || !initialized) {
+        if (!initialized) {
             return;
         }
         try {
@@ -84,7 +89,8 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
                     .replace(/_loremIpsum/g, 'LoremIpsum')
                     .replaceAll('(0, _moment).default', 'moment') // replace the moment object
                     .replace(/_moment.default/g, 'moment') + // replace the moment() function
-                `ReactDOM.render(jsxRuntime.jsx(ReactRedux.Provider, {store: Store, children: jsxRuntime.jsx(_default, {})}), document.getElementById('${id}'));`;
+                `const store = Redux.createStore(Redux.combineReducers(PlasmaReact.PlasmaReducers, Redux.applyMiddleware(ThunkMiddleware, PromiseMiddleware)));
+                ReactDOM.render(jsxRuntime.jsx(ReactRedux.Provider, {store, children: jsxRuntime.jsx(_default, {})}), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval
             eval(userCodeToEvaluate);
@@ -97,11 +103,11 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
             );
             console.error(error);
         }
-    }, [editedCode, fsMap, initialized]);
+    }, [editedCode, initialized]);
 
     return (
         <div className={classNames('demo-sandbox', {horizontal})}>
-            {fsMap === null ? (
+            {!initialized ? (
                 <PlasmaLoading />
             ) : (
                 <>
@@ -126,6 +132,10 @@ const Editor: FunctionComponent<{id: string; value: string; onChange: (newValue:
 }) => {
     const editorRef = useRef(null);
     const [height, setHeight] = useState<number>(200);
+
+    useEffect(() => {
+        editorRef.current?.setValue?.(value);
+    }, [value]);
 
     const updateHeight = () => {
         const editor = editorRef.current!;

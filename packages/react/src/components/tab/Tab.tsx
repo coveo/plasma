@@ -58,7 +58,7 @@ const enhance = connect(
 export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof enhance>> {}
 
 export const Tab: FunctionComponent<ITabProps> = ({
-    icon,
+    icon: IconName,
     badge,
     tooltip,
     disabled,
@@ -75,8 +75,6 @@ export const Tab: FunctionComponent<ITabProps> = ({
         onRender?.();
         return onDestroy;
     }, []);
-
-    const IconName = icon;
 
     const handleSelect = (e: MouseEvent) => {
         if (!disabled) {
@@ -106,7 +104,7 @@ export const Tab: FunctionComponent<ITabProps> = ({
                 onClick={handleSelect}
                 disabled={disabled}
             >
-                {icon ? <IconName height={16} className={'tab-icon'} /> : null}
+                {IconName ? <IconName height={16} className={'tab-icon'} /> : null}
                 {title}
                 {badge ?? null}
             </button>
