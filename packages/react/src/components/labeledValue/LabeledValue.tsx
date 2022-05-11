@@ -1,9 +1,8 @@
 import classNames from 'classnames';
-import {ReactNode, PureComponent} from 'react';
+import {PureComponent, ReactNode} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ILabeledValueProps {
