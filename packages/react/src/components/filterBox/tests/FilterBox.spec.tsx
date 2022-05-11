@@ -1,5 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
+import {screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import {FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps} from '../FilterBox';
 
 describe('FilterBox', () => {
@@ -16,7 +18,7 @@ describe('FilterBox', () => {
         let filterBoxInstance: FilterBox;
 
         beforeEach(() => {
-            filterBox = mount(<FilterBox id={id} />, {attachTo: document.getElementById('App')});
+            filterBox = mount(<FilterBox id={id} />, {attachTo: document.getElementById('app')});
             filterBoxInstance = filterBox.instance() as FilterBox;
         });
 
@@ -86,44 +88,28 @@ describe('FilterBox', () => {
             expect(filterBox.html()).toContain(expectedPlaceholder);
         });
 
-        it('should toggle the hidden class of the clear icon if there is a value or not in the filter input', () => {
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
+        it('should toggle the hidden class of the clear icon if there is a value or not in the filter input', async () => {
+            expect(await screen.findByRole('img', {name: /cross/i})).toHaveClass('hidden');
 
             filterBoxInstance.filterInput.value = 'something';
             filterBox.find('input').simulate('change');
             filterBox.mount().update();
 
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(false);
+            expect(await screen.findByRole('img', {name: /cross/i})).not.toHaveClass('hidden');
 
             filterBoxInstance.filterInput.value = '';
             filterBox.find('input').simulate('change');
             filterBox.mount().update();
 
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
+            expect(await screen.findByRole('img', {name: /cross/i})).toHaveClass('hidden');
         });
 
-        it('should remove the hidden class of the clear icon if there is a value in the input without a change event', () => {
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
-
-            (filterBox.instance() as FilterBox).filterInput.value = 'non empty';
-            filterBox.mount().update();
-
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(false);
-        });
-
-        it('should leave the hidden class of the clear icon if there is an empty value in the input without a change event', () => {
-            filterBoxInstance.filterInput.value = '';
-            filterBox.update();
-
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
-        });
-
-        it('should clear the filter input when clicking the clear icon', () => {
-            const clearIcon = filterBox.find('span').first();
+        it('should clear the filter input when clicking the clear icon', async () => {
+            const clearIcon = await screen.findByRole('img', {name: /cross/i});
 
             filterBoxInstance.filterInput.value = 'something';
 
-            clearIcon.simulate('click');
+            userEvent.click(clearIcon);
 
             expect(filterBoxInstance.filterInput.value).toBe('');
         });
