@@ -65,6 +65,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         (window as any).Redux = Redux;
         (window as any).PromiseMiddleware = promise;
         (window as any).ThunkMiddleware = thunk;
+        (window as any).loaded = true;
 
         if (window.location.host === 'vapor.coveo.com') {
             window.location.href = window.location.href.replace('vapor.coveo.com', 'plasma.coveo.com');
