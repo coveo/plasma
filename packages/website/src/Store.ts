@@ -12,8 +12,3 @@ export const Store = createStore(
     combineReducers(PlasmaReducers),
     composeEnhancers(applyMiddleware<IDispatch>(...middlewares))
 );
-
-if (typeof window !== 'undefined') {
-    // Required for the dynamic examples
-    (window as any).Store = Store;
-}
