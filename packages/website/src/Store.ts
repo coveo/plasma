@@ -26,7 +26,7 @@ const loadFromSessionStorage = () => {
 };
 
 const persistedState =
-    process.env.NODE_ENV === 'development' && (window as any).loaded ? loadFromSessionStorage() : undefined;
+    process.env.NODE_ENV === 'development' && (globalThis as any)?.loaded ? loadFromSessionStorage() : undefined;
 
 export const Store = createStore(
     combineReducers(PlasmaReducers),
