@@ -80,9 +80,9 @@ pipeline {
       steps {
         script {
           if (params.LIBRARIES.length() > 0) {
-            sh "pnpm run tokens:fetch --filter @coveord/plasma-tokens -- --libraries ${params.LIBRARIES}"
+            sh "pnpm run --filter @coveord/plasma-tokens tokens:fetch --libraries ${params.LIBRARIES}"
           } else {
-            sh "pnpm run tokens:fetch --filter @coveord/plasma-tokens"
+            sh "pnpm run --filter @coveord/plasma-tokens tokens:fetch"
           }
         }
       }
@@ -91,7 +91,7 @@ pipeline {
     stage('Build tokens') {
       steps {
         script {
-          sh "pnpm run tokens:build --filter @coveord/plasma-tokens"
+          sh "pnpm run --filter @coveord/plasma-tokens tokens:build"
         }
       }
     }
