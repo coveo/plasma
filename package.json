@@ -63,7 +63,7 @@
         "prettier": "2.0.5",
         "sort-package-json": "1.57.0",
         "stylelint": "13.13.1",
-        "tsjs": "3.0.2",
+        "tsjs": "4.1.0",
         "ultra-runner": "3.10.5",
         "underscore": "1.13.1",
         "walkdir": "0.4.1"
