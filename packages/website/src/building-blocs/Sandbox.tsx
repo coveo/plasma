@@ -89,7 +89,7 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
                     .replace(/_loremIpsum/g, 'LoremIpsum')
                     .replaceAll('(0, _moment).default', 'moment') // replace the moment object
                     .replace(/_moment.default/g, 'moment') + // replace the moment() function
-                `const store = Redux.createStore(Redux.combineReducers(PlasmaReact.PlasmaReducers, Redux.applyMiddleware(ThunkMiddleware, PromiseMiddleware)));
+                `const store = Redux.createStore(Redux.combineReducers(PlasmaReact.PlasmaReducers), Redux.applyMiddleware(ThunkMiddleware, PromiseMiddleware));
                 ReactDOM.render(jsxRuntime.jsx(ReactRedux.Provider, {store, children: jsxRuntime.jsx(_default, {})}), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval
