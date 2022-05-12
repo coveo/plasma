@@ -119,7 +119,7 @@ importers:
       eslint-plugin-jest-dom: 3.9.4
       eslint-plugin-testing-library: 5.3.1
       faker: 4.1.0
-      fancy-log: 1.3.3
+      fancy-log: 2.0.0
       identity-obj-proxy: 3.0.0
       jest: 28.0.3
       jest-environment-jsdom: 28.0.2
@@ -240,7 +240,7 @@ importers:
       eslint-plugin-jest-dom: 3.9.4
       eslint-plugin-testing-library: 5.3.1_typescript@4.6.4
       faker: 4.1.0
-      fancy-log: 1.3.3
+      fancy-log: 2.0.0
       identity-obj-proxy: 3.0.0
       jest: 28.0.3
       jest-environment-jsdom: 28.0.2
@@ -322,7 +322,7 @@ importers:
       css-loader: 3.6.0
       cssnano: 4.1.11
       del: 6.0.0
-      fancy-log: 1.3.3
+      fancy-log: 2.0.0
       file-loader: 5.1.0
       gulp: 4.0.2
       gulp-cheerio: 0.6.3
@@ -362,7 +362,7 @@ importers:
       css-loader: 3.6.0_webpack@4.46.0
       cssnano: 4.1.11
       del: 6.0.0
-      fancy-log: 1.3.3
+      fancy-log: 2.0.0
       file-loader: 5.1.0_webpack@4.46.0
       gulp: 4.0.2
       gulp-cheerio: 0.6.3
@@ -6800,6 +6800,13 @@ packages:
       color-support: 1.1.3
       parse-node-version: 1.0.1
       time-stamp: 1.1.0
+    dev: true
+
+  /fancy-log/2.0.0:
+    resolution: {integrity: sha512-9CzxZbACXMUXW13tS0tI8XsGGmxWzO2DmYrGuBJOJ8k8q2K7hwfJA5qHjuPPe8wtsco33YR9wc+Rlr5wYFvhSA==}
+    engines: {node: '>=10.13.0'}
+    dependencies:
+      color-support: 1.1.3
     dev: true
 
   /fast-deep-equal/3.1.3:
