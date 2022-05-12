@@ -70,7 +70,7 @@ pipeline {
 
           sh "npm cache clean --force"
           sh "rm -rf node_modules"
-          sh "npm install -g pnpm"
+          sh "npm install -g pnpm@7.0.0"
           sh "pnpm install"
         }
       }
