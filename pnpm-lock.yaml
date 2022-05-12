@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.3.7
+      '@coveo/semantic-monorepo-tools': 0.4.0
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1125.0
       axios: 0.27.2
@@ -28,7 +28,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.3.7
+      '@coveo/semantic-monorepo-tools': 0.4.0
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1125.0
       axios: 0.27.2
@@ -1222,8 +1222,8 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/semantic-monorepo-tools/0.3.7:
-    resolution: {integrity: sha512-40g+uAofgpyyu0YMAosV57zcysD/HK04L5nd5JIKtXQkE6pv7awgcLz0iUgcCxOXfRMkeRUPmMzQ1qfaO39CLw==}
+  /@coveo/semantic-monorepo-tools/0.4.0:
+    resolution: {integrity: sha512-KAoS6KTFA54Bl55zl58w8EvhMHRjn0dOTKe+40rDvBULfNpXv/d5KPDwnpoEB5boZ4SMpY1hc9P9qRP+A3Hp1Q==}
     dependencies:
       conventional-changelog-writer: 5.0.1
       conventional-commits-parser: 3.2.4
@@ -7746,7 +7746,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.15.4
+      uglify-js: 3.15.5
     dev: true
 
   /hard-rejection/2.1.0:
@@ -15317,6 +15317,14 @@ packages:
     hasBin: true
     requiresBuild: true
     dev: true
+
+  /uglify-js/3.15.5:
+    resolution: {integrity: sha512-hNM5q5GbBRB5xB+PMqVRcgYe4c8jbyZ1pzZhS6jbq54/4F2gFK869ZheiE5A8/t+W5jtTNpWef/5Q9zk639FNQ==}
+    engines: {node: '>=0.8.0'}
+    hasBin: true
+    requiresBuild: true
+    dev: true
+    optional: true
 
   /ultra-runner/3.10.5:
     resolution: {integrity: sha512-0U2OPII7sbvtbu9rhDlUUkP4Au/DPz2Tzbnawd/XwDuUruDqd+t/Bmel3cLJxl3yMLHf0OY0TMcIx9zzxdlAZw==}
