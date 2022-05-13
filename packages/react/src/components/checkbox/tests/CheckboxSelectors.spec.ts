@@ -2,7 +2,7 @@ import {CheckboxSelectors} from '../CheckboxSelectors';
 
 describe('CheckboxSelectors', () => {
     describe('getIsSelected', () => {
-        describe('when the state is checkbosState', () => {
+        describe('when the state is checkboxState', () => {
             it('should not throw when no checkbox exist at the specified id', () => {
                 expect(() => {
                     CheckboxSelectors.getIsSelected({checkboxes: []}, {id: ''});
@@ -34,15 +34,15 @@ describe('CheckboxSelectors', () => {
                 expect(() => {
                     CheckboxSelectors.getIsSelected(
                         {groupableCheckboxes: [{total: 100, nbChecked: 0, checkboxes: [], parentId: ''}]},
-                        {id: ''},
-                        true,
-                        {parentId: ''}
+                        {id: '', isGroupableState: true, groupableCheckboxProps: {parentId: ''}}
                     );
                     CheckboxSelectors.getIsSelected(
                         {groupableCheckboxes: [{total: 100, nbChecked: 0, checkboxes: [], parentId: ''}]},
-                        {id: 'I do not exist in the state'},
-                        true,
-                        {parentId: ''}
+                        {
+                            id: 'I do not exist in the state',
+                            isGroupableState: true,
+                            groupableCheckboxProps: {parentId: ''},
+                        }
                     );
                 }).not.toThrow();
             });
@@ -60,7 +60,13 @@ describe('CheckboxSelectors', () => {
                     ],
                 };
 
-                expect(CheckboxSelectors.getIsSelected(state, {id}, true, {parentId: 'parentId'})).toBe(false);
+                expect(
+                    CheckboxSelectors.getIsSelected(state, {
+                        id,
+                        isGroupableState: true,
+                        groupableCheckboxProps: {parentId: 'parentId'},
+                    })
+                ).toBe(false);
             });
 
             it('should return true when the checkbox in the groupabelCheckboxes at the specified id is checked', () => {
@@ -76,7 +82,13 @@ describe('CheckboxSelectors', () => {
                     ],
                 };
 
-                expect(CheckboxSelectors.getIsSelected(state, {id}, true, {parentId: 'parentId'})).toBe(true);
+                expect(
+                    CheckboxSelectors.getIsSelected(state, {
+                        id,
+                        isGroupableState: true,
+                        groupableCheckboxProps: {parentId: 'parentId'},
+                    })
+                ).toBe(true);
             });
         });
     });
