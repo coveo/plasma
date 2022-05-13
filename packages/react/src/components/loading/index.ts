@@ -1,5 +1,6 @@
 export * from './Loading';
 export * from './LoadingActions';
+export * from './LoadingCircle';
 export * from './LoadingConnected';
 export * from './LoadingReducers';
 export * from './components/ActionBarLoading';

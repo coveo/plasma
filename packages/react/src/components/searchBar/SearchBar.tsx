@@ -3,6 +3,7 @@ import {ChangeEvent, Component} from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {keyCode} from '../../utils/InputUtils';
+import {LoadingCircle} from '../loading';
 import {Svg} from '../svg/Svg';
 
 export interface ISearchBarConnectedProps {
@@ -152,7 +153,7 @@ export class SearchBar extends Component<ISearchBarProps> {
         const searchIcon = !this.props.searching ? (
             <Svg svgName="search" svgClass={this.props.disabled ? 'search-icon-disabled' : ''} />
         ) : (
-            <div className="search-bar-spinner"></div>
+            <LoadingCircle />
         );
 
         return !this.props.searching && !this.props.disabled ? (
