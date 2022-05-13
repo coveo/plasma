@@ -217,7 +217,7 @@ pipeline {
           }
 
           NEW_VERSION = sh(
-            script: "node -p -e 'require(`./package.json`).version;'",
+            script: "node build/getLastTag.mjs'",
             returnStdout: true
           ).trim()
         }
