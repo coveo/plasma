@@ -1,3 +1,12 @@
+## 41.4.9 (2022-05-13)
+
+
+### Bug Fixes
+
+* **publish:** a random quote appeared ([eab2285](https://github.com/coveo/plasma/commits/eab22852b2817b7464ce52ebe88b1b42711720f9))
+
+
+
 ## 41.4.8 (2022-05-13)
 
 
