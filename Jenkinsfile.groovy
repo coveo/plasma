@@ -217,7 +217,7 @@ pipeline {
           }
 
           NEW_VERSION = sh(
-            script: "node build/getLastTag.mjs'",
+            script: "node build/getLastTag.mjs",
             returnStdout: true
           ).trim()
         }
