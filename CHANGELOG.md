@@ -1,3 +1,12 @@
+## 41.4.8 (2022-05-13)
+
+
+### Bug Fixes
+
+* **publish:** deployment package version ([#2744](https://github.com/coveo/plasma/issues/2744)) ([0b5bbe7](https://github.com/coveo/plasma/commits/0b5bbe7b116977fa91f5130ea5274cd35d4b0722))
+
+
+
 ## 41.4.7 (2022-05-13)
 
 
