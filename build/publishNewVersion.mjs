@@ -14,6 +14,7 @@ import {
     pnpmPublish,
     writeChangelog,
 } from '@coveo/semantic-monorepo-tools';
+import {spawnSync} from 'node:child_process';
 import {Command, Option} from 'commander';
 import angularChangelogConvention from 'conventional-changelog-angular';
 
@@ -93,19 +94,19 @@ const outputProcess = (process) => {
 
             const versionTag = `${VERSION_PREFIX}${newVersion}`;
             if (!options.dry) {
-                gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
+                outputProcess(gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.'));
                 gitTag(versionTag);
-
-                console.log(`Publishing version ${versionTag} on NPM`);
-                outputProcess(
-                    pnpmPublish(since, options.tag, options.branch)
-                );
 
                 if (remote) {
                     console.log(`Pushing version ${versionTag} on git`);
                     outputProcess(gitPush());
                     outputProcess(gitPushTags());
                 }
+
+                outputProcess(spawnSync('git', ['status'], {encoding: 'utf-8'}));
+
+                console.log(`Publishing version ${versionTag} on NPM`);
+                outputProcess(pnpmPublish(since, options.tag, options.branch));
             }
         }
     } else {
