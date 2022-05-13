@@ -128,5 +128,12 @@ describe('Checkbox', () => {
             );
             expect(screen.getByRole('checkbox', {name: 'custom label'})).toBeVisible();
         });
+
+        it('a disabled checkbox with tooltip should set classes on tooltip', () => {
+            render(<Checkbox id="my-test" aria-labelledby="hover me" disabled disabledTooltip="test tooltip" />);
+
+            const tooltipContent = document.querySelector('.input-wrapper > span');
+            expect(tooltipContent).toHaveClass('flex center-align');
+        });
     });
 });

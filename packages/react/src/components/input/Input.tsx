@@ -25,6 +25,7 @@ export interface IInputAdditionalOwnProps {
     id?: string;
     classes?: IClassName;
     innerInputClasses?: IClassName;
+    tooltipClasses?: string;
     validate?: (value: any) => boolean;
     labelTitle?: ReactNode;
     labelProps?: ILabelProps;
@@ -242,7 +243,11 @@ export class Input extends Component<IInputProps, IInputComponentState> {
 
         return (this.props.disabled || this.props.isReadOnly) && this.props.disabledTooltip ? (
             <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
-                <Tooltip title={this.props.disabledTooltip} placement={TooltipPlacement.Right}>
+                <Tooltip
+                    title={this.props.disabledTooltip}
+                    placement={TooltipPlacement.Right}
+                    className={this.props.tooltipClasses}
+                >
                     {inputElements}
                 </Tooltip>
             </div>

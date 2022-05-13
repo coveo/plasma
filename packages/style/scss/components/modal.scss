@@ -1,6 +1,4 @@
-@use "sass:math";
-
-$icon-size: math.div(4em, 3);
+$icon-size: 24px;
 
 // This generate classes layer-1, layer-2, ..., layer-10.
 @mixin generate-layers($nbr-layers, $base) {
@@ -218,17 +216,10 @@ $icon-size: math.div(4em, 3);
 
     .small-close {
         position: absolute;
-        top: -($icon-size + pxtoem(10));
+        top: -($icon-size + 10px);
         right: 0;
+        color: var(--white);
         cursor: pointer;
-
-        // Make both the icon and his containing span the same size.
-        &,
-        & .icon {
-            width: $icon-size;
-            height: $icon-size;
-            fill: var(--white);
-        }
     }
 }
 

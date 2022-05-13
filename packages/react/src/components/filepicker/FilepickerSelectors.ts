@@ -5,7 +5,7 @@ import {FilepickerState} from './FilepickerReducers';
 
 const getFile = (inputId: string): File => {
     const input = document.getElementById(inputId) as HTMLInputElement;
-    return input?.files[0];
+    return input?.files?.[0];
 };
 
 const getFilePicker = (state: PlasmaState, {id}: {id: string}) => state.filepickers[id];

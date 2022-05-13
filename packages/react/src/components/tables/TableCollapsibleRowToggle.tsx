@@ -1,19 +1,13 @@
-import {ClassAttributes, Component} from 'react';
+import {FunctionComponent} from 'react';
 
-import {Svg} from '../svg';
+import {CollapsibleToggle} from '../collapsible';
 
-export interface ITableCollapsibleRowToggleProps extends ClassAttributes<TableCollapsibleRowToggle> {
+export interface ITableCollapsibleRowToggleProps {
     isExpanded: boolean;
 }
 
-export class TableCollapsibleRowToggle extends Component<ITableCollapsibleRowToggleProps, any> {
-    render() {
-        const arrowIcon: JSX.Element = this.props.isExpanded ? (
-            <Svg svgName="arrowTop" className="state-expanded" svgClass="icon" />
-        ) : (
-            <Svg svgName="arrowBottom" className="state-collapsed" svgClass="icon" />
-        );
-
-        return <td>{arrowIcon}</td>;
-    }
-}
+export const TableCollapsibleRowToggle: FunctionComponent<ITableCollapsibleRowToggleProps> = ({isExpanded}) => (
+    <td>
+        <CollapsibleToggle expanded={isExpanded} />
+    </td>
+);

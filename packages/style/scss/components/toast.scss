@@ -6,7 +6,6 @@ $toast-radius: 8px;
 $toast-download-padding: 20px;
 $toast-text-font-size: 14px;
 $toast-title-font-weight: 500;
-$toast-close-size: 20px;
 $toast-close-padding-left: 20px;
 $toast-info-token-padding: 12px 16px 12px 8px;
 
@@ -181,13 +180,8 @@ $toast-info-token-padding: 12px 16px 12px 8px;
 .toast-close {
     position: static;
     padding-left: $toast-close-padding-left;
+    color: var(--text-color);
     cursor: pointer;
-    fill: var(--text-color);
-
-    svg {
-        width: $toast-close-size;
-        height: $toast-close-size;
-    }
 }
 
 @keyframes toastFadeInTop {

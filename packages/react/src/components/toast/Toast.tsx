@@ -1,9 +1,9 @@
+import {CrossSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, FC, ComponentClass, useState, useEffect, createElement} from 'react';
+import {ComponentClass, createElement, FC, ReactNode, useEffect, useState} from 'react';
 import * as _ from 'underscore';
 
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {Svg} from '../svg/Svg';
 
 export interface IToastProps {
     /**
@@ -133,9 +133,9 @@ export const Toast: FC<IToastProps> = ({
     );
 
     const closeButton = dismissible && !isSmall && (
-        <span className="toast-close" onClick={handleClose}>
-            <Svg svgName="close" className="icon mod-lg" />
-        </span>
+        <button className="toast-close flex" onClick={handleClose}>
+            <CrossSize24Px height={24} />
+        </button>
     );
 
     const infoToken = !isSmall && type !== 'download' && (

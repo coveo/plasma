@@ -1,7 +1,6 @@
+import {CrossSize16Px, FilterSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ClassAttributes, KeyboardEvent, FocusEvent, FormEvent, Component} from 'react';
-
-import {Svg} from '../svg/Svg';
+import {ClassAttributes, Component, FocusEvent, FormEvent, KeyboardEvent} from 'react';
 
 export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {
     /**
@@ -86,7 +85,7 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
 
     private handleChange = (nextInputValue: string) => {
         this.filterInput.value = nextInputValue;
-        this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
+        this.filterInput.nextElementSibling?.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
 
         this.props.onFilterCallback?.(this.props.id, this.filterInput.value);
         this.props.onFilter?.(this.props.id, this.filterInput.value);
@@ -153,13 +152,8 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                         onKeyUp={this.props.onKeyUp}
                         style={inputMaxWidth}
                     />
-                    <Svg
-                        svgName="clear"
-                        className={svgClearClasses}
-                        svgClass="icon mod-lg"
-                        onClick={() => this.clearValue()}
-                    />
-                    <Svg svgName="filter" className="filter-icon" svgClass="icon mod-lg" />
+                    <CrossSize16Px height={16} className={svgClearClasses} onClick={() => this.clearValue()} />
+                    <FilterSize16Px height={16} className="filter-icon" />
                 </div>
                 {this.props.children}
             </div>

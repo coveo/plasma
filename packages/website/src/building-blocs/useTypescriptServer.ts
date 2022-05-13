@@ -1,8 +1,15 @@
-import {createDefaultMapFromCDN} from '@typescript/vfs';
+import {
+    createDefaultMapFromCDN,
+    createSystem,
+    createVirtualTypeScriptEnvironment,
+    VirtualTypeScriptEnvironment,
+} from '@typescript/vfs';
 import lzstring from 'lz-string';
 import {useState, useEffect} from 'react';
 import * as ts from 'typescript';
 import {loader} from '@monaco-editor/react';
+
+const initMonaco = loader.init();
 
 export const compilerOptions: ts.CompilerOptions = {
     jsx: ts.JsxEmit.ReactJSX,
@@ -63,26 +70,42 @@ const loadAll: Promise<Map<string, string>> = Promise.all([
     return map;
 });
 
+const setupTypescript = Promise.all([loadAll, initMonaco]).then(([defaultMap, monaco]) => {
+    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+        jsx: monaco.languages.typescript.JsxEmit.ReactJSX,
+        jsxFactory: 'React.createElement',
+        jsxFragmentFactory: 'React.Fragment',
+        reactNamespace: 'React',
+        esModuleInterop: true,
+        allowSyntheticDefaultImports: true,
+    });
+
+    defaultMap.forEach((content, path) => {
+        monaco.languages.typescript.typescriptDefaults.addExtraLib(content, `file://${path}`);
+    });
+    return defaultMap;
+});
+
+let globalEnv: VirtualTypeScriptEnvironment | null = null;
+const getGlobalEnv: Promise<VirtualTypeScriptEnvironment> = new Promise((resolve) => {
+    setupTypescript.then((defaultMap) => {
+        const system = createSystem(defaultMap);
+        globalEnv = createVirtualTypeScriptEnvironment(
+            system,
+            [...defaultMap.keys()],
+            ts as any,
+            compilerOptions as any
+        );
+        resolve(globalEnv);
+    });
+});
+
 export const useTypescriptServer = () => {
-    const [fsMap, setFsMap] = useState<Map<string, string> | null>(null);
+    const [env, setEnv] = useState<VirtualTypeScriptEnvironment | null>(null);
 
     useEffect(() => {
-        Promise.all([loadAll, loader.init()]).then(([defaultMap, monaco]) => {
-            monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-                jsx: monaco.languages.typescript.JsxEmit.ReactJSX,
-                jsxFactory: 'React.createElement',
-                jsxFragmentFactory: 'React.Fragment',
-                reactNamespace: 'React',
-                esModuleInterop: true,
-                allowSyntheticDefaultImports: true,
-            });
-
-            defaultMap.forEach((content, path) => {
-                monaco.languages.typescript.typescriptDefaults.addExtraLib(content, `file://${path}`);
-            });
-            setFsMap(new Map(defaultMap));
-        });
+        getGlobalEnv.then(setEnv);
     }, []);
 
-    return {fsMap, setFsMap, compilerOptions};
+    return {env, compilerOptions};
 };

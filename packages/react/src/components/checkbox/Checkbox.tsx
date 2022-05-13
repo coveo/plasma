@@ -66,7 +66,11 @@ export class Checkbox extends Component<ICheckboxProps> {
             {disabled: !!this.props.disabled, 'checkbox-clear': this.props.clearSides},
             this.props.classes
         );
-        const innerInputClasses: string = classNames('react-vapor-checkbox', this.props.innerInputClasses);
+        const innerInputClasses: string = classNames(
+            {'checkbox checkbox-label': !!this.props.disabledTooltip},
+            'react-vapor-checkbox',
+            this.props.innerInputClasses
+        );
         const hasChildren = Children.count(this.props.children) > 0;
         const labelId = hasChildren && this.props.id ? `checkbox-${this.props.id}` : labeledBy;
         return (
@@ -77,6 +81,7 @@ export class Checkbox extends Component<ICheckboxProps> {
                 type="checkbox"
                 onClick={(e: MouseEvent<HTMLElement>) => this.handleOnClick(e)}
                 readOnly
+                tooltipClasses={this.props.disabledTooltip ? 'flex center-align' : null}
             >
                 <button
                     type="button"
