@@ -1,3 +1,12 @@
+## 41.4.6 (2022-05-13)
+
+
+### Bug Fixes
+
+* **publish:** force pnpm@7.0.0 and change publish ([7849125](https://github.com/coveo/plasma/commits/78491251ab42655fd9ad07bc06d8a2395abf0fad))
+
+
+
 # 41.3.0 (2022-05-04)
 
 
