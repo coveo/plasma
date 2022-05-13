@@ -1,6 +1,5 @@
 import {
     generateChangelog,
-    getLastTag,
     getNextVersion,
     getCommits,
     getRemoteName,
@@ -17,6 +16,8 @@ import {
 import {spawnSync} from 'node:child_process';
 import {Command, Option} from 'commander';
 import angularChangelogConvention from 'conventional-changelog-angular';
+
+import getLastTag from './getLastTag.mjs';
 
 const VERSION_PREFIX = 'v';
 const PATH = '.';
@@ -47,15 +48,12 @@ const outputProcess = (process) => {
 (async () => {
     const convention = await angularChangelogConvention;
 
-    const [lastTag] = getLastTag(VERSION_PREFIX);
+    const lastTag = getLastTag();
     console.log('Last tag: %s', lastTag);
 
     const [remote] = getRemoteName();
-    const since = lastTag;
 
-    console.log('Since: %s', since);
-
-    const changedPackages = pnpmGetChangedPackages(since);
+    const changedPackages = pnpmGetChangedPackages(lastTag);
     if (!changedPackages.includes('root')) {
         changedPackages.push('root');
     }
@@ -76,7 +74,7 @@ const outputProcess = (process) => {
 
         if (newVersion !== currentVersion) {
             console.log('Bumping %s to version %s', changedPackages.join(', '), newVersion);
-            pnpmBumpVersion(newVersion, since, ['root']);
+            pnpmBumpVersion(newVersion, lastTag, ['root']);
 
             if (parsedCommits.length > 0) {
                 const changelog = await generateChangelog(
@@ -106,7 +104,7 @@ const outputProcess = (process) => {
                 outputProcess(spawnSync('git', ['status'], {encoding: 'utf-8'}));
 
                 console.log(`Publishing version ${versionTag} on NPM`);
-                outputProcess(pnpmPublish(since, options.tag, options.branch));
+                outputProcess(pnpmPublish(lastTag, options.tag, options.branch));
             }
         }
     } else {
