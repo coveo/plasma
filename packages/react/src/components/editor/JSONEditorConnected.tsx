@@ -1,22 +1,34 @@
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
 
-import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
-import {JSONEditor, JSONEditorDispatchProps, JSONEditorProps, JSONEditorStateProps} from './JSONEditor';
+import {JSONEditor, JSONEditorProps} from './JSONEditor';
 import {JSONEditorActions} from './JSONEditorActions';
 import {JSONEditorSelectors} from './JSONEditorSelectors';
 
-const mapStateToProps = (state: PlasmaState, ownProps: JSONEditorProps): JSONEditorStateProps => ({
-    value: JSONEditorSelectors.getValue(state, ownProps.id),
-});
+interface JSONEditorConnectedProps {
+    /**
+     * initial value of the component
+     */
+    defaultValue?: string;
+}
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: JSONEditorProps): JSONEditorDispatchProps => ({
-    onMount: () => dispatch(JSONEditorActions.addJSONEditor(ownProps.id, ownProps.defaultValue ?? ownProps.value)),
-    onUnmount: () => dispatch(JSONEditorActions.removeJSONEditor(ownProps.id)),
-    onChange: (value: string, inError: boolean) => {
-        dispatch(JSONEditorActions.updateJSONEditorValue(ownProps.id, value));
-        ownProps.onChange?.(value, inError);
-    },
-});
+export const JSONEditorConnected = (props: JSONEditorProps & JSONEditorConnectedProps) => {
+    const dispatch: IDispatch = useDispatch();
+    const value = useSelector((state) => JSONEditorSelectors.getValue(state, props.id));
 
-export const JSONEditorConnected = connect(mapStateToProps, mapDispatchToProps)(JSONEditor);
+    useEffect(() => {
+        dispatch(JSONEditorActions.addJSONEditor(props.id, props.defaultValue || props.value));
+
+        return () => {
+            dispatch(JSONEditorActions.removeJSONEditor(props.id));
+        };
+    }, []);
+
+    const onChange = (changedValue: string, inError: boolean) => {
+        dispatch(JSONEditorActions.updateJSONEditorValue(props.id, changedValue));
+        props.onChange?.(changedValue, inError);
+    };
+
+    return <JSONEditor {...props} value={value} onChange={onChange} />;
+};
