@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import {ReactNode, HTMLAttributes, FunctionComponent, MouseEvent, useEffect} from 'react';
 import {map, omit} from 'underscore';
+import {SlideY} from '../../animations';
 
 export interface ISubNavigationOwnProps {
     /**
@@ -15,6 +16,8 @@ export interface ISubNavigationOwnProps {
      * Element selected by default
      */
     defaultSelected?: string;
+    description?: string;
+    headerClass?: string;
 }
 
 export interface ISubNavigationStateProps {
@@ -32,6 +35,7 @@ export interface ISubNavigationItem {
     label: ReactNode;
     disabled?: boolean;
     link?: string;
+    description?: string;
 }
 
 export interface ISubNavigationProps
@@ -71,22 +75,25 @@ export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttribut
     };
     const selectedItem = selected || defaultSelected;
 
-    const navItems = map(items, ({id, link, label, disabled}: ISubNavigationItem) => (
-        <li
-            key={id}
-            className={classNames('sub-navigation-item', {
-                'mod-selected': id === selectedItem,
-            })}
-        >
-            <a
-                href={link}
-                className={classNames('sub-navigation-item-link', {disabled})}
-                onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
-            >
-                {label}
-            </a>
-        </li>
-    ));
+    const navItems = map(items, ({id, link, label, disabled, description}: ISubNavigationItem) => {
+        const openDescription = description && selectedItem === id;
+        return (
+            <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selectedItem})}>
+                <a
+                    href={link}
+                    className={classNames('sub-navigation-item-link', {disabled})}
+                    onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+                >
+                    {label}
+                </a>
+                {description && (
+                    <SlideY in={openDescription}>
+                        <div className={classNames('sub-navigation-item-description')}>{description}</div>
+                    </SlideY>
+                )}
+            </li>
+        );
+    });
 
     return (
         <nav {...navProps} className={classNames('sub-navigation', className)}>

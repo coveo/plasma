@@ -24,6 +24,12 @@
                 }
             }
 
+            &-description {
+                display: block;
+                padding: 7px 40px 20px 40px;
+                line-height: $sub-navigation-line-height;
+            }
+
             &.mod-selected {
                 background-color: var(--grey-20);
 

@@ -2,7 +2,7 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const custom = `
     import {SubNavigationConnected, Svg} from '@coveord/plasma-react';
-    
+
     export default () => (
         <SubNavigationConnected
             id="third-sub-nav"
@@ -73,7 +73,7 @@ const defaultSelected = `
 
         return (
             <SubNavigationConnected id="second-sub-nav" items={exampleItems} defaultSelected="star-wars" />
-        ); 
+        );
     };
 `;
 
@@ -82,7 +82,7 @@ const code = `
 
     export default () => {
         const exampleItems = [
-            {label: 'Avatar', id: 'avatar'},
+            {label: <h4>Avatar</h4>, id: 'avatar', description: 'helloWorld'},
             {label: 'Titanic', id: 'titanic'},
             {label: 'Star Wars: The Force Awakens', id: 'star-wars'},
             {label: 'Jurassic World', id: 'jurasic-world'},
@@ -90,8 +90,8 @@ const code = `
         ];
 
         return (
-            <SubNavigationConnected id="first-sub-nav" items={exampleItems} />
-        ); 
+            <SubNavigationConnected id="first-sub-nav" items={exampleItems} headerClass="h4" />
+        );
     };
 `;
 
