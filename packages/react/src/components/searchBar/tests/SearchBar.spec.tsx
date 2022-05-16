@@ -21,10 +21,9 @@ describe('SearchBar', () => {
     });
 
     it('renders a loading animation when is searching', () => {
-        const {container} = render(<SearchBar {...requiredProps} searching />);
+        render(<SearchBar {...requiredProps} searching />);
 
-        // eslint-disable-next-line testing-library/no-container
-        expect(container.querySelector('.loading-spinner')).toBeInTheDocument();
+        expect(screen.getByRole('alert')).toBeInTheDocument();
         expect(screen.queryByRole('img', {name: 'search icon'})).not.toBeInTheDocument();
     });
 

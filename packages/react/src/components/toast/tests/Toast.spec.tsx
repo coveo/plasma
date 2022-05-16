@@ -254,13 +254,13 @@ describe('Toasts', () => {
         });
 
         it('should have a loading icon in the description', () => {
-            toastComponent = mount(
+            render(
                 <Toast title="a" type="download">
                     <div>Some file.csv</div>
                 </Toast>
             );
 
-            expect(toastComponent.find('.loading-spinner').length).toBe(1);
+            expect(screen.getByRole('alert')).toBeInTheDocument();
         });
     });
 });
