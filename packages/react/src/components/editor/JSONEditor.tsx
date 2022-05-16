@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import {FunctionComponent, useState, useEffect} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 
-import {Svg} from '../svg/Svg';
+import {Svg} from '../svg';
 import {CodeEditor} from './CodeEditor';
 import {CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
 import {JSONEditorUtils} from './JSONEditorUtils';
@@ -12,11 +12,11 @@ export interface JSONEditorProps {
      */
     id?: string;
     /**
-     * @deprecated use defaultValue instead
+     * The text value of the JSON editor
      */
     value?: string;
     /**
-     * The initial value
+     * @deprecated use value instead
      */
     defaultValue?: string;
     /**
@@ -65,8 +65,8 @@ export interface JSONEditorDispatchProps {
 export const JSONEditor: FunctionComponent<
     JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>
 > = ({
-    value,
     defaultValue,
+    value,
     readOnly,
     onChange,
     errorMessage,
@@ -77,7 +77,8 @@ export const JSONEditor: FunctionComponent<
     onUnmount,
     collapsibleId,
 }) => {
-    const [isInError, setIsInError] = useState(!JSONEditorUtils.validateValue(value || defaultValue));
+    const editorValue = value || defaultValue || '{}';
+    const [isInError, setIsInError] = useState(!JSONEditorUtils.validateValue(editorValue));
 
     useEffect(() => {
         onMount?.();
@@ -85,17 +86,26 @@ export const JSONEditor: FunctionComponent<
         return onUnmount;
     }, []);
 
-    const handleChange = (json: string) => {
-        const hasError = !JSONEditorUtils.validateValue(json);
-
+    const validate = (val: string) => {
+        const hasError = !JSONEditorUtils.validateValue(val);
         setIsInError(hasError);
-        onChange?.(json, hasError);
+        return hasError;
+    };
+
+    useEffect(() => {
+        validate(editorValue);
+    }, [editorValue]);
+
+    const handleChange = (json: string) => {
+        const isValid = validate(json);
+
+        return onChange?.(json, isValid);
     };
 
     return (
         <div className={classNames('form-group', {'input-validation-error': isInError}, containerClasses)}>
             <CodeEditor
-                value={value || defaultValue}
+                value={editorValue}
                 onChange={handleChange}
                 mode={CodeMirrorModes.JSON}
                 readOnly={readOnly}

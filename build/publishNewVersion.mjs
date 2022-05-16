@@ -1,9 +1,7 @@
 import {
     generateChangelog,
-    getLastTag,
     getNextVersion,
     getCommits,
-    getCurrentVersion,
     getRemoteName,
     gitPush,
     gitPushTags,
@@ -15,8 +13,11 @@ import {
     pnpmPublish,
     writeChangelog,
 } from '@coveo/semantic-monorepo-tools';
+import {spawnSync} from 'node:child_process';
 import {Command, Option} from 'commander';
 import angularChangelogConvention from 'conventional-changelog-angular';
+
+import getLastTag from './getLastTag.mjs';
 
 const VERSION_PREFIX = 'v';
 const PATH = '.';
@@ -47,15 +48,12 @@ const outputProcess = (process) => {
 (async () => {
     const convention = await angularChangelogConvention;
 
-    const [lastTag] = getLastTag(VERSION_PREFIX);
+    const lastTag = getLastTag();
     console.log('Last tag: %s', lastTag);
 
     const [remote] = getRemoteName();
-    const since = lastTag;
 
-    console.log('Since: %s', since);
-
-    const changedPackages = pnpmGetChangedPackages(since);
+    const changedPackages = pnpmGetChangedPackages(lastTag);
     if (!changedPackages.includes('root')) {
         changedPackages.push('root');
     }
@@ -71,12 +69,12 @@ const outputProcess = (process) => {
             bumpInfo = convention.recommendedBumpOpts.whatBump(parsedCommits);
         }
 
-        const currentVersion = getCurrentVersion(PATH);
+        const currentVersion = {version: lastTag.replace(VERSION_PREFIX, '')};
         const newVersion = getNextVersion(currentVersion, bumpInfo);
 
         if (newVersion !== currentVersion) {
             console.log('Bumping %s to version %s', changedPackages.join(', '), newVersion);
-            pnpmBumpVersion(newVersion, since, ['root']);
+            pnpmBumpVersion(newVersion, lastTag, ['root']);
 
             if (parsedCommits.length > 0) {
                 const changelog = await generateChangelog(
@@ -94,19 +92,19 @@ const outputProcess = (process) => {
 
             const versionTag = `${VERSION_PREFIX}${newVersion}`;
             if (!options.dry) {
-                gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
+                outputProcess(gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.'));
                 gitTag(versionTag);
-
-                console.log(`Publishing version ${versionTag} on NPM`);
-                outputProcess(
-                    pnpmPublish(since, options.tag, options.branch)
-                );
 
                 if (remote) {
                     console.log(`Pushing version ${versionTag} on git`);
                     outputProcess(gitPush());
                     outputProcess(gitPushTags());
                 }
+
+                outputProcess(spawnSync('git', ['status'], {encoding: 'utf-8'}));
+
+                console.log(`Publishing version ${versionTag} on NPM`);
+                outputProcess(pnpmPublish(lastTag, options.tag, options.branch));
             }
         }
     } else {

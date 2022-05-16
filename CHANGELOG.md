@@ -1,3 +1,48 @@
+# 41.5.0 (2022-05-16)
+
+
+### Bug Fixes
+
+* **website:** window is not defined on first load ([eb0875b](https://github.com/coveo/plasma/commits/eb0875b388ba8fe63dd6c31c2a1eaaeecf5a9d26))
+
+
+### Features
+
+* **react:** focus on lower limit after selecting upper limit ([891ea49](https://github.com/coveo/plasma/commits/891ea49dc8833b5d1017c51547dd4f478a53e3bc))
+
+
+
+## 41.4.9 (2022-05-13)
+
+
+### Bug Fixes
+
+* **publish:** a random quote appeared ([eab2285](https://github.com/coveo/plasma/commits/eab22852b2817b7464ce52ebe88b1b42711720f9))
+
+
+
+## 41.4.8 (2022-05-13)
+
+
+### Bug Fixes
+
+* **publish:** deployment package version ([#2744](https://github.com/coveo/plasma/issues/2744)) ([0b5bbe7](https://github.com/coveo/plasma/commits/0b5bbe7b116977fa91f5130ea5274cd35d4b0722))
+
+
+
+## 41.4.7 (2022-05-13)
+
+
+
+## 41.4.6 (2022-05-13)
+
+
+### Bug Fixes
+
+* **publish:** force pnpm@7.0.0 and change publish ([7849125](https://github.com/coveo/plasma/commits/78491251ab42655fd9ad07bc06d8a2395abf0fad))
+
+
+
 # 41.3.0 (2022-05-04)
 
 

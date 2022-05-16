@@ -1,6 +1,6 @@
 {
     "name": "root",
-    "version": "41.2.10-next.10",
+    "version": "0.0.0-next.10",
     "private": true,
     "scripts": {
         "build": "ultra --recursive build",
@@ -48,7 +48,7 @@
     "devDependencies": {
         "@commitlint/cli": "15.0.0",
         "@commitlint/config-conventional": "15.0.0",
-        "@coveo/semantic-monorepo-tools": "0.3.7",
+        "@coveo/semantic-monorepo-tools": "0.4.0",
         "@sindresorhus/slugify": "2.1.0",
         "aws-sdk": "2.1125.0",
         "axios": "0.27.2",

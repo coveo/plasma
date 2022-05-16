@@ -1,9 +1,7 @@
 import {CrossSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ComponentClass, createElement, FC, ReactNode, useEffect, useState} from 'react';
+import {ReactNode, FunctionComponent, ComponentClass, useState, useEffect, createElement} from 'react';
 import * as _ from 'underscore';
-
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 
 export interface IToastProps {
     /**
@@ -25,7 +23,7 @@ export interface IToastProps {
      */
     dismiss?: number;
     /**
-     * Whether the toast can be dismissed manually
+     * @deprecated Toast are always dismissible by the user - will have no effect
      */
     dismissible?: boolean;
     /**
@@ -33,7 +31,7 @@ export interface IToastProps {
      */
     animate?: boolean;
     /**
-     * The toast will be smaller in size when true
+     * @deprecated Do not use - will have no effect
      */
     isSmall?: boolean;
     /**
@@ -58,26 +56,11 @@ export interface IToastProps {
     onDestroy?: () => void;
 }
 
-const InfoTokenTypeMapping: Record<IToastProps['type'], InfoTokenType> = {
-    info: InfoTokenType.Information,
-    success: InfoTokenType.Success,
-    warning: InfoTokenType.Warning,
-    error: InfoTokenType.Critical,
-    download: null,
-};
-
-/**
- * A toast should be a short notif and not a lengthy piece of daily news,
- * so a character limit of ~150 max is recommended
- */
-
-export const Toast: FC<IToastProps> = ({
+export const Toast: FunctionComponent<IToastProps> = ({
     title,
     type = 'success',
     dismiss,
-    dismissible = true,
     animate = true,
-    isSmall,
     className,
     children,
     onClose,
@@ -109,7 +92,7 @@ export const Toast: FC<IToastProps> = ({
     };
 
     const handleSetTimeout = () => {
-        if (dismissible && dismiss > 0) {
+        if (dismiss > 0) {
             timeout = window.setTimeout(handleClose, dismiss);
         }
     };
@@ -127,40 +110,36 @@ export const Toast: FC<IToastProps> = ({
             'mod-info': type === 'info',
             'mod-download': type === 'download',
             'mod-animated': animate,
-            'mod-small': isSmall,
         },
         className
     );
 
-    const closeButton = dismissible && !isSmall && (
+    const closeButton = (
         <button className="toast-close flex" onClick={handleClose}>
             <CrossSize24Px height={24} />
         </button>
     );
 
-    const infoToken = !isSmall && type !== 'download' && (
-        <InfoToken type={InfoTokenTypeMapping[type]} size={InfoTokenSize.Large} mode={InfoTokenMode.Filled} />
-    );
-
     const downloadToast = (
         <div className="toast-download-container flex flex-column">
-            <div className="toast-title">{title}</div>
+            <div className="toast-title">
+                {title}
+                {closeButton}
+            </div>
             <div className="toast-description">
                 <div className="flex space-between">
                     {children}
-                    <div className="spinner-container relative">
-                        <div className="search-bar-spinner" />
-                    </div>
+                    <div className="spinner" />
                 </div>
             </div>
         </div>
     );
 
-    const toastContent = (!!content || !!children) && !isSmall && (
+    const toastContent = (!!content || !!children) && (
         <div className="toast-description">
             <div>
                 {children}
-                {_.isString(content) || !content ? content : createElement(content as ComponentClass)}
+                {typeof content === 'string' || !content ? content : createElement(content as ComponentClass)}
             </div>
         </div>
     );
@@ -171,12 +150,15 @@ export const Toast: FC<IToastProps> = ({
                 downloadToast
             ) : (
                 <>
-                    <span className="info-token-container">{infoToken}</span>
                     <div className="toast-content-container">
-                        {title && <div className="toast-title">{title}</div>}
+                        {title && (
+                            <div className="toast-title">
+                                {title}
+                                {closeButton}
+                            </div>
+                        )}
                         {toastContent}
                     </div>
-                    {closeButton}
                 </>
             )}
         </div>

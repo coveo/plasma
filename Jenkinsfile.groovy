@@ -93,7 +93,7 @@ pipeline {
 
           sh "npm cache clean --force"
           sh "rm -rf node_modules"
-          sh "npm install -g pnpm@7"
+          sh "npm install -g pnpm@7.0.0"
           sh "pnpm install"
         }
       }
@@ -217,7 +217,7 @@ pipeline {
           }
 
           NEW_VERSION = sh(
-            script: "node -p -e 'require(`./package.json`).version;'",
+            script: "node build/getLastTag.mjs",
             returnStdout: true
           ).trim()
         }

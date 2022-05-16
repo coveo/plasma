@@ -68,6 +68,7 @@ export const TextInput: FunctionComponent<
     description,
     helpText,
     tooltip,
+    autoComplete,
     ...inputProps
 }) => {
     const id = useMemo(() => propsId || uniqueId(), [propsId]);
@@ -159,6 +160,7 @@ export const TextInput: FunctionComponent<
                         className="flex-auto body-m-book"
                         ref={inputElement}
                         aria-invalid={state.status === 'invalid'}
+                        autoComplete={autoComplete || 'off'}
                     />
                 </div>
                 <HelpTooltip message={tooltip} />

@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-website",
-    "version": "41.3.0-next.11",
+    "version": "41.5.0-next.11",
     "private": true,
     "description": "Plasma Design System",
     "homepage": "https://plasma.coveo.com/",
@@ -100,7 +100,6 @@
         "@types/redux-promise-middleware": "6.0.0",
         "@types/underscore": "1.8.10",
         "@types/webpack-env": "1.16.4",
-        "concurrently": "6.5.1",
         "lint-staged": "9.5.0",
         "open-cli": "7.0.1",
         "raw-loader": "4.0.2",

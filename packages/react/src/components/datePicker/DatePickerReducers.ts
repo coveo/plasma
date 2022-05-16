@@ -84,7 +84,7 @@ const changeUpperLimit = (state: IDatePickerState, action: IReduxAction<IReduxAc
         : _.extend({}, state, {
               upperLimit: action.payload.date,
               inputUpperLimit: action.payload.date,
-              selected: '',
+              selected: state.isRange ? DateLimits.lower : '',
           });
 
 const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState =>

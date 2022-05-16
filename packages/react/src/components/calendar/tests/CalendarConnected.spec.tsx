@@ -130,39 +130,31 @@ describe('Calendar', () => {
             expect(calendar.find(OptionsCycleConnected).length).toBe(2);
         });
 
-        it(
-            'should set the selected value of the picker to an empty string when calling onClick on a date range picker ' +
-                'and the limit selected is the upper one',
-            () => {
-                const pickerSelected: string = DateLimits.upper;
+        it('focuses on the lower limit after selecting the upper limit', () => {
+            const pickerSelected: string = DateLimits.upper;
 
-                store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
-                store.dispatch(selectDate(PICKER_ID, pickerSelected));
+            store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
+            store.dispatch(selectDate(PICKER_ID, pickerSelected));
 
-                expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe(pickerSelected);
+            expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe(pickerSelected);
 
-                calendar.props().onClick(PICKER_ID, true, new Date());
+            calendar.props().onClick(PICKER_ID, true, new Date());
 
-                expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe('');
-            }
-        );
+            expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe(DateLimits.lower);
+        });
 
-        it(
-            'should set the selected value of the picker to the upper limit when calling onClick on a date range picker ' +
-                'and the limit selected is the lower one',
-            () => {
-                const pickerSelected: string = DateLimits.lower;
+        it('focuses on the upper limit after selecting the lower limit', () => {
+            const pickerSelected: string = DateLimits.lower;
 
-                store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
-                store.dispatch(selectDate(PICKER_ID, pickerSelected));
+            store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
+            store.dispatch(selectDate(PICKER_ID, pickerSelected));
 
-                expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe(pickerSelected);
+            expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe(pickerSelected);
 
-                calendar.props().onClick(PICKER_ID, false, new Date());
+            calendar.props().onClick(PICKER_ID, false, new Date());
 
-                expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe(DateLimits.upper);
-            }
-        );
+            expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe(DateLimits.upper);
+        });
 
         it(
             'should set the selected value of the picker to an empty string when calling onClick on a standard date picker ' +
@@ -327,7 +319,7 @@ describe('Calendar', () => {
             store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
 
             expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).upperLimit).toBe(currentUpperLimit);
-            expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe('');
+            expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe(DateLimits.lower);
 
             calendar.props().onSelectUnselectable(PICKER_ID);
 

@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "41.3.0-next.11",
+    "version": "41.5.0-next.11",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -136,7 +136,7 @@
         "eslint-plugin-jest-dom": "3.9.4",
         "eslint-plugin-testing-library": "5.3.1",
         "faker": "4.1.0",
-        "fancy-log": "1.3.3",
+        "fancy-log": "2.0.0",
         "identity-obj-proxy": "3.0.0",
         "jest": "28.0.3",
         "jest-environment-jsdom": "28.0.2",
