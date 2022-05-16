@@ -1,3 +1,17 @@
+# 41.5.0 (2022-05-16)
+
+
+### Bug Fixes
+
+* **website:** window is not defined on first load ([eb0875b](https://github.com/coveo/plasma/commits/eb0875b388ba8fe63dd6c31c2a1eaaeecf5a9d26))
+
+
+### Features
+
+* **react:** focus on lower limit after selecting upper limit ([891ea49](https://github.com/coveo/plasma/commits/891ea49dc8833b5d1017c51547dd4f478a53e3bc))
+
+
+
 ## 41.4.9 (2022-05-13)
 
 
