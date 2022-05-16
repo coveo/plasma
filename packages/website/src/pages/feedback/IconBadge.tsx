@@ -2,28 +2,26 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import {IconBadge, IconBadgeType} from '@coveord/plasma-react';
+    import {BellSize24Px}  from '@coveord/plasma-react-icons'
 
     export default () => (
         <>
             <IconBadge
-                svgName={"bellStrokedMedium"}
+                icon={BellSize24Px}
                 type={IconBadgeType.New}
-                svgClass="mod-stroke"
                 className="mr1"
             />
             <IconBadge
-                svgName={"bellStrokedMedium"}
+                icon={BellSize24Px}
                 type={IconBadgeType.Information}
-                svgClass="mod-stroke"
                 className="mr1"
             />
             <IconBadge
-                svgName={"bellStrokedMedium"}
+                icon={BellSize24Px}
                 type={IconBadgeType.Warning}
-                svgClass="mod-stroke"
                 className="mr1"
             />
-            <IconBadge svgName={"bellStrokedMedium"} type={IconBadgeType.Major} svgClass="mod-stroke" />
+            <IconBadge icon={BellSize24Px} type={IconBadgeType.Major} />
         </>
     );
 `;

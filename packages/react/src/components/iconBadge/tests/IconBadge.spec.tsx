@@ -1,38 +1,46 @@
 import {render, screen} from '@test-utils';
-import {svg} from '@coveord/plasma-style';
 
+import {BellSize16Px} from '@coveord/plasma-react-icons';
 import {IconBadge, IconBadgeType} from '../IconBadge';
 
 describe('IconBadge', () => {
-    it('renders the specified icon with the type New, and size Medium by default', () => {
-        render(<IconBadge svgName={svg.bellStrokedMedium.name} type={IconBadgeType.New} />);
+    it('renders the specified icon with the type New, and size Medium by default', async () => {
+        render(<IconBadge icon={BellSize16Px} type={IconBadgeType.New} />);
 
-        const iconBadge = screen.getByRole('img', {name: 'bellStrokedMedium icon'}).parentElement;
+        await screen.findByRole('img', {name: 'bell'});
+        const iconBadge = screen.getByRole('img', {name: 'bell'}).parentElement;
+
         expect(iconBadge).toBeInTheDocument();
         expect(iconBadge).toHaveClass('mod-24');
         expect(iconBadge).toHaveClass('mod-new');
     });
 
-    it('renders the specified icon with the type Information', () => {
-        render(<IconBadge svgName={svg.bellStrokedMedium.name} type={IconBadgeType.Information} />);
+    it('renders the specified icon with the type Information', async () => {
+        render(<IconBadge icon={BellSize16Px} type={IconBadgeType.Information} />);
 
-        const iconBadge = screen.getByRole('img', {name: 'bellStrokedMedium icon'}).parentElement;
+        await screen.findByRole('img', {name: 'bell'});
+        const iconBadge = screen.getByRole('img', {name: 'bell'}).parentElement;
+
         expect(iconBadge).toBeInTheDocument();
         expect(iconBadge).toHaveClass('mod-info');
     });
 
-    it('renders the specified icon with the type Warning', () => {
-        render(<IconBadge svgName={svg.bellStrokedMedium.name} type={IconBadgeType.Warning} />);
+    it('renders the specified icon with the type Warning', async () => {
+        render(<IconBadge icon={BellSize16Px} type={IconBadgeType.Warning} />);
 
-        const iconBadge = screen.getByRole('img', {name: 'bellStrokedMedium icon'}).parentElement;
+        await screen.findByRole('img', {name: 'bell'});
+        const iconBadge = screen.getByRole('img', {name: 'bell'}).parentElement;
+
         expect(iconBadge).toBeInTheDocument();
         expect(iconBadge).toHaveClass('mod-warning');
     });
 
-    it('renders the specified icon with the type Major', () => {
-        render(<IconBadge svgName={svg.bellStrokedMedium.name} type={IconBadgeType.Major} />);
+    it('renders the specified icon with the type Major', async () => {
+        render(<IconBadge icon={BellSize16Px} type={IconBadgeType.Major} />);
 
-        const iconBadge = screen.getByRole('img', {name: 'bellStrokedMedium icon'}).parentElement;
+        await screen.findByRole('img', {name: 'bell'});
+        const iconBadge = screen.getByRole('img', {name: 'bell'}).parentElement;
+
         expect(iconBadge).toBeInTheDocument();
         expect(iconBadge).toHaveClass('mod-major');
     });
