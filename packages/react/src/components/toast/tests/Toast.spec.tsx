@@ -260,7 +260,7 @@ describe('Toasts', () => {
                 </Toast>
             );
 
-            expect(toastComponent.find('.loading-circle').length).toBe(1);
+            expect(toastComponent.find('.loading-spinner').length).toBe(1);
         });
     });
 });

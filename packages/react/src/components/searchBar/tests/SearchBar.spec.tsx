@@ -24,7 +24,7 @@ describe('SearchBar', () => {
         const {container} = render(<SearchBar {...requiredProps} searching />);
 
         // eslint-disable-next-line testing-library/no-container
-        expect(container.querySelector('.loading-circle')).toBeInTheDocument();
+        expect(container.querySelector('.loading-spinner')).toBeInTheDocument();
         expect(screen.queryByRole('img', {name: 'search icon'})).not.toBeInTheDocument();
     });
 
