@@ -1,3 +1,46 @@
+## 41.5.1-next.0 (2022-05-16)
+
+
+### Bug Fixes
+
+* **react:** fix failing badge test ([cd20d6d](https://github.com/coveo/plasma/commits/cd20d6d5bafcc81103116d5068864c8b10095d09))
+* **react:** fix failing test in MultiSelectConnected ([066d08d](https://github.com/coveo/plasma/commits/066d08d9ab31faa43faa4b62683bc6e93e09bf76))
+* **react:** remove unused import in LabeledValue ([82ed5f8](https://github.com/coveo/plasma/commits/82ed5f8a38c01b1b5041502e05362681d70529d1))
+* **website:** _react is not defined in sandbox ([c469856](https://github.com/coveo/plasma/commits/c4698567acb0b9536101ed78625480e9799b07db))
+* **website:** remove workarounds ([4e25333](https://github.com/coveo/plasma/commits/4e25333e3496c12ce6bca381bc9f02341a66ef15))
+* **website:** use new icon in badge examples ([0f862ea](https://github.com/coveo/plasma/commits/0f862eaeb5b78c32f2b0e4c4db4b9cd1a5eb7403))
+* **website:** window is not defined on first load ([69bc45f](https://github.com/coveo/plasma/commits/69bc45f567f5d0446d8b1d03d4142c625ab77c7a))
+
+
+### Features
+
+* **iconbadge:** removed svg and using new icons ([#2731](https://github.com/coveo/plasma/issues/2731)) ([4bc0767](https://github.com/coveo/plasma/commits/4bc0767a9733f0f15a6a43cccab5c3a9c3b46565))
+* **icons:** removed svg from tabs ([#2733](https://github.com/coveo/plasma/issues/2733)) ([dc8401b](https://github.com/coveo/plasma/commits/dc8401b465801a7bb509ec2f1e9840e2ab43c6f1))
+* **react-icons:** add accessible role to all icons ([c5bece6](https://github.com/coveo/plasma/commits/c5bece62080a07129e2a1225130a94567c9c63f8))
+* **react-icons:** add accessible role to all icons ([b5dfd59](https://github.com/coveo/plasma/commits/b5dfd5931214e82dffee1129c13d4a723f3bf7af))
+* **react-icons:** implement Icon type ([1891313](https://github.com/coveo/plasma/commits/1891313451de484d6142aedc2097451bf5f18db3))
+* **react-icons:** implement Icon type ([cb10a12](https://github.com/coveo/plasma/commits/cb10a1211388e66402ce995fbb5820f534dc42b1))
+* **react:** remove Svg from ActionableItem ([e11a8ca](https://github.com/coveo/plasma/commits/e11a8ca13c285a7eec70e381c9f751e4f8d4cdc6))
+* **react:** use plasma-react-icons in badge component ([0e33de1](https://github.com/coveo/plasma/commits/0e33de1c3d0bd3b54c3f47707d1ee8f1bdc02ad8))
+* **react:** use plasma-react-icons in badge component ([1c56382](https://github.com/coveo/plasma/commits/1c56382083157f20156805a8af417e50345cd919))
+* **react:** use react-icons in CollapsibleToggle ([8706144](https://github.com/coveo/plasma/commits/870614490e03c1b5f79e582c908101990bad53a7))
+* **react:** use react-icons in CollapsibleToggle ([1e55008](https://github.com/coveo/plasma/commits/1e5500841f752d693396d894276077560b160cc8))
+* **tokens:** extract design tokens from figma libraries ([ebe3918](https://github.com/coveo/plasma/commits/ebe39185eb94977f595bedbf88afa74943df2efc))
+
+
+### BREAKING CHANGES
+
+* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
+* **react:** Badge icon prop now expects an icon from plasma-react-icons
+
+fix(react): fix badge tests
+* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
+* **react:** Badge icon prop now expects an icon from plasma-react-icons
+
+fix(react): fix badge tests
+
+
+
 # 41.5.0 (2022-05-16)
 
 
