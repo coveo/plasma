@@ -82,15 +82,15 @@ const code = `
 
     export default () => {
         const exampleItems = [
-            {label: <h4>Avatar</h4>, id: 'avatar', description: 'helloWorld'},
-            {label: 'Titanic', id: 'titanic'},
+            {label: 'Avatar', id: 'avatar'},
+            {label: 'Titanic', id: 'titanic', description: 'boat'},
             {label: 'Star Wars: The Force Awakens', id: 'star-wars'},
             {label: 'Jurassic World', id: 'jurasic-world'},
             {label: 'The Avengers', id: 'the-avengers'},
         ];
 
         return (
-            <SubNavigationConnected id="first-sub-nav" items={exampleItems} headerClass="h4" />
+            <SubNavigationConnected id="first-sub-nav" items={exampleItems} />
         );
     };
 `;

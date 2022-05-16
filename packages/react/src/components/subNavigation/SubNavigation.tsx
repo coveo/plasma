@@ -88,7 +88,7 @@ export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttribut
                 </a>
                 {description && (
                     <SlideY in={openDescription}>
-                        <div className={classNames('sub-navigation-item-description')}>{description}</div>
+                        <div className="sub-navigation-item-description body-m-book-subdued">{description}</div>
                     </SlideY>
                 )}
             </li>

@@ -21,6 +21,19 @@ describe('SubNavigation', () => {
         ).not.toThrow();
 
         expect(() =>
+            shallow(
+                <SubNavigation
+                    items={[
+                        {id: 'a', label: 'A'},
+                        {id: 'b', label: 'B'},
+                    ]}
+                    selected="b"
+                    description="alphabet soup"
+                />
+            )
+        ).not.toThrow();
+
+        expect(() =>
             shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected="not-existing-id" />)
         ).not.toThrow();
     });
@@ -52,10 +65,25 @@ describe('SubNavigation', () => {
             ],
         };
 
+        const propsWithDescription: ISubNavigationProps = {
+            items: [
+                {id: 'a', label: 'A', description: 'Apple'},
+                {id: 'b', label: 'B'},
+            ],
+        };
+
         it('should render one navigation link per item', () => {
             subNavigation = shallow(<SubNavigation {...basicProps} />);
 
             expect(subNavigation.find('li').length).toBe(basicProps.items.length);
+        });
+
+        it('should render a description', () => {
+            subNavigation = shallow(<SubNavigation {...propsWithDescription} />);
+            expect(subNavigation.find('div').length).toBe(1);
+            expect(subNavigation.find('div').hasClass('sub-navigation-item-description body-m-book-subdued')).toBe(
+                true
+            );
         });
 
         it('should have the "mod-selected" class on the selected item', () => {
