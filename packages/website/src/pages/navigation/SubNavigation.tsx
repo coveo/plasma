@@ -83,10 +83,11 @@ const code = `
     export default () => {
         const exampleItems = [
             {label: 'Avatar', id: 'avatar'},
-            {label: <div className="body-m py1">Titanic</div>, id: 'titanic', description: 'Cupcake ipsum dolor sit amet. Lemon drops croissant sesame snaps cookie jelly beans tootsie roll muffin. Liquorice liquorice fruitcake tiramisu sesame snaps sugar plum lollipop gummi bears cookie.'},
-            {label: 'Star Wars: The Force Awakens', id: 'star-wars'},
-            {label: 'Jurassic World', id: 'jurasic-world'},
+            {label: 'Titanic', id: 'titanic'},
             {label: 'The Avengers', id: 'the-avengers'},
+            {label: <div className="body-m py3">Cupcakes</div>, id: 'cupcake', description: 'Cupcake ipsum dolor sit amet. Lemon drops croissant sesame snaps cookie jelly beans tootsie roll muffin. Liquorice liquorice fruitcake tiramisu sesame snaps sugar plum lollipop gummi bears cookie.'},
+            {label: <div className="body-m py3">Banana</div>, id: 'banana'},
+            {label: <div className="body-m py3">Chocolate</div>, id: 'chocolate', description: 'Cupcake ipsum dolor sit amet. Lemon drops croissant sesame snaps cookie jelly beans tootsie roll muffin. Liquorice liquorice fruitcake tiramisu sesame snaps sugar plum lollipop gummi bears cookie.'},
         ];
 
         return (

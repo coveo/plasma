@@ -18,6 +18,10 @@
                 color: var(--title-text-color);
                 line-height: $sub-navigation-line-height;
 
+                &-with-description {
+                    display: block;
+                    padding: 0 40px;
+                }
                 &.disabled {
                     color: var(--deprecated-medium-grey);
                     cursor: default;
@@ -26,7 +30,7 @@
 
             &-description {
                 display: block;
-                padding: 7px 40px 20px;
+                padding: 0 40px 24px;
                 line-height: $sub-navigation-line-height;
             }
 

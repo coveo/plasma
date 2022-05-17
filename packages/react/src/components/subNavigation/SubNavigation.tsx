@@ -83,7 +83,11 @@ export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttribut
             <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selectedItem})}>
                 <a
                     href={link}
-                    className={classNames('sub-navigation-item-link', {disabled})}
+                    className={classNames(
+                        {'sub-navigation-item-link': !description},
+                        {'sub-navigation-item-link-with-description': description},
+                        {disabled}
+                    )}
                     onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
                 >
                     {label}
