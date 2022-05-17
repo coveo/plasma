@@ -42,12 +42,9 @@ describe('SearchBar', () => {
     });
 
     it('render the input of the search bar with extra classes', () => {
-        const component = shallow(<SearchBar {...requiredProps} inputClassNames="extra-class" />)
-            .find('div')
-            .first()
-            .find('input');
+        render(<SearchBar {...requiredProps} inputClassNames="extra-class" />);
 
-        expect(component.prop('className')).toContain('extra-class');
+        expect(screen.getByRole('textbox')).toHaveClass('extra-class');
     });
 
     it('calls onSearch when user click on the search icon', () => {
