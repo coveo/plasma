@@ -1,11 +1,9 @@
-import {SvgName} from '@coveord/plasma-style';
-import classNames from 'classnames';
-import {HTMLAttributes, FunctionComponent, useEffect} from 'react';
+import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
+import {FunctionComponent, HTMLAttributes, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
-import {Svg} from '../svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
 import {useFixedWidthWhileLoading} from './utils/TableHooks';
@@ -17,20 +15,26 @@ export interface ITableHeaderWithSortOwnProps {
     isDefault?: boolean;
 }
 
-export interface HOCTableHeaderStateProps {
-    sorted: boolean;
-}
+type Order = 'ascending' | 'descending' | 'unsorted';
 
-export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps, Partial<HOCTableHeaderStateProps> {}
+export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps {}
 
 export const TableHeaderWithSort: FunctionComponent<
     ITableHeaderWithSortProps & HTMLAttributes<HTMLTableHeaderCellElement>
-> = ({className, isLoading, id, tableId, isDefault, children}) => {
+> = ({isLoading, id, tableId, isDefault, children}) => {
     const dispatch = useDispatch();
-    const sorted = useSelector((state: PlasmaState) => {
-        const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id});
-        return tableSort && tableSort.isAsc;
-    });
+    const order = useSelector(
+        (state: PlasmaState): Order => {
+            const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id});
+            if (tableSort?.isAsc === true) {
+                return 'ascending';
+            } else if (tableSort?.isAsc === false) {
+                return 'descending';
+            } else {
+                return 'unsorted';
+            }
+        }
+    );
 
     const onMount = () => dispatch(TableHeaderActions.addTableHeader(id, tableId, isDefault));
     const onSort = () => dispatch(TableHeaderActions.sortTable(id));
@@ -44,16 +48,15 @@ export const TableHeaderWithSort: FunctionComponent<
         return () => void onUnmount();
     }, []);
 
-    const headerCellClasses = classNames(className, 'admin-sort', {
-        'admin-sort-ascending': sorted === true,
-        'admin-sort-descending': sorted === false,
-    });
+    let IconComponent = DoubleArrowHeadVSize16Px;
 
-    const getSvg = classNames({
-        sortedAsc: sorted === true,
-        sortedDesc: sorted === false,
-        ascDesc: sorted === undefined,
-    }) as SvgName;
+    if (order === 'ascending') {
+        IconComponent = ArrowUpSize16Px;
+    }
+
+    if (order === 'descending') {
+        IconComponent = ArrowDownSize16Px;
+    }
 
     if (isLoading) {
         return (
@@ -64,10 +67,10 @@ export const TableHeaderWithSort: FunctionComponent<
     }
 
     return (
-        <th id={id} className={headerCellClasses} onClick={onSort} ref={tableHeaderRef} style={style}>
-            {children}
-            <div className="admin-sort-icon">
-                <Svg svgName={getSvg} className="tables-sort icon" />
+        <th id={id} className="admin-sort" onClick={onSort} ref={tableHeaderRef} style={style}>
+            <div className="inline-flex flex-center">
+                {children}
+                <IconComponent className="ml1" />
             </div>
         </th>
     );
