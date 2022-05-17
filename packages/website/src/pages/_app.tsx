@@ -1,4 +1,3 @@
-import type {AppProps} from 'next/app';
 import '../styles/github-button.scss';
 import '../styles/home.scss';
 import '../styles/iconography.scss';
@@ -18,14 +17,16 @@ import * as LoremIpsum from 'lorem-ipsum';
 import moment from 'moment';
 import Head from 'next/head';
 import Link from 'next/link';
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
 import * as jsxRuntime from 'react/jsx-runtime';
 import * as Redux from 'redux';
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
-import * as React from 'react';
+import type {AppProps} from 'next/app';
 
+import githubLogo from '../../resources/github-mark.svg';
 import logo from '../../resources/plasma-logo.svg';
 import {EngineProvider} from '../search/engine/EngineProvider';
 import StandaloneSearchBar from '../search/StandaloneSearchBar';
@@ -42,7 +43,8 @@ const Header = () => (
         <StandaloneSearchBar />
         <div className="right-side">
             <a href="https://github.com/coveo/plasma#readme" aria-label="README" target="_blank">
-                <PlasmaReact.Svg svgName="githubMark" svgClass="icon mod-32 mod-white" />
+                {/* <PlasmaReact.Svg svgName="githubMark" svgClass="icon mod-32 mod-white" /> */}
+                <img src={githubLogo} width={32} height={32} className="invert" />
             </a>
         </div>
     </div>
