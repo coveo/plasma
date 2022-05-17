@@ -1,6 +1,5 @@
 import {FunctionComponent, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
-
 import {Svg} from '../../svg';
 import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
@@ -21,6 +20,7 @@ export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOption
     readOnly,
     value,
     onMoveOver,
+    onRemoveClick,
 }) => {
     const dropRef = useRef<HTMLDivElement>();
     const [, drop] = useDrop(() => ({
@@ -47,6 +47,7 @@ export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOption
                 label={isDragging ? null : label}
                 selectedTooltip={selectedTooltip}
                 readOnly={readOnly}
+                onRemoveClick={onRemoveClick}
                 prepend={
                     !readOnly && (
                         <div className="move-option cursor-move" aria-grabbed={isDragging} ref={drag}>
