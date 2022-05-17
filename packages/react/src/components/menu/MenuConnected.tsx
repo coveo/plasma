@@ -1,3 +1,4 @@
+import {DotsSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {Component, MouseEvent, ReactNode, SyntheticEvent} from 'react';
 import * as ReactDOM from 'react-dom';
@@ -5,7 +6,6 @@ import * as ReactDOM from 'react-dom';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Button, IButtonProps} from '../button/Button';
-import {Svg} from '../svg/Svg';
 import {addMenu, removeMenu, toggleMenu} from './MenuActions';
 import {IMenuState} from './MenuReducers';
 
@@ -107,7 +107,7 @@ export class MenuConnected extends Component<IMenuProps> {
     }
 
     private getDefaultSvg() {
-        return <Svg svgName="moreAppend" svgClass="icon mod-lg flex" />;
+        return <DotsSize24Px height={24} />;
     }
 
     private onToggleMenu(e: SyntheticEvent<HTMLElement>) {

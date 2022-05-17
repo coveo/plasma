@@ -1,3 +1,5 @@
+import {AddSize16Px} from '@coveord/plasma-react-icons';
+import {screen} from '@test-utils';
 import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
@@ -6,7 +8,6 @@ import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {Svg} from '../../svg/Svg';
 import {IMenuProps, MenuConnected} from '../MenuConnected';
 
 describe('Menu', () => {
@@ -22,7 +23,7 @@ describe('Menu', () => {
                 <Provider store={store}>
                     <MenuConnected id={id} {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('app')}
             );
             menuWrapper = wrapper.find(MenuConnected).first();
         };
@@ -85,10 +86,10 @@ describe('Menu', () => {
                 expect(menuWrapper.find('.select-dropdown-container').hasClass(expectedClass)).toBe(true);
             });
 
-            it('should add the custom svg', () => {
-                mountMenuConnected([], {buttonSvg: <Svg svgName="add" />});
+            it('should add the custom svg', async () => {
+                mountMenuConnected([], {buttonSvg: <AddSize16Px />});
 
-                expect(menuWrapper.find(Svg).props().svgName).toBe('add');
+                expect(await screen.findByRole('img', {name: /add/i})).toBeInTheDocument();
             });
         });
 
