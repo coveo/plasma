@@ -1,6 +1,8 @@
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import {mount, shallow} from 'enzyme';
+
 import {keyCode} from '../../../utils/InputUtils';
-import {Svg} from '../../svg/Svg';
 import {SearchBar} from '../SearchBar';
 import {searchBarPropsScenarios} from './SearchBarPropsScenarios.mock';
 
@@ -62,38 +64,33 @@ describe('SearchBar', () => {
         expect(component.find('div').first().find('input').prop('className')).toContain('extra-class');
     });
 
-    it('should have a clickable span containing an svg by default, which when clicked, the search method is called', () => {
+    it('should have a clickable span containing an svg by default, which when clicked, the search method is called', async () => {
         const searchSpy = jest.spyOn(SearchBar.prototype as any, 'search');
-        const component = shallow(<SearchBar {...requiredProps} />);
-        const clickableSpan = component.find('div .search-bar-icon-container span');
+        render(<SearchBar {...requiredProps} />);
+        const searchIcon = await screen.findByRole('img', {name: /search/i});
 
-        (clickableSpan.props() as any).onClick();
+        userEvent.click(searchIcon);
 
         expect(searchSpy).toHaveBeenCalledTimes(1);
-
-        const svg = clickableSpan.find(Svg);
-
-        expect(svg.length).toBe(1);
-        expect(svg.prop('svgName')).toBe('search');
     });
 
-    it('should have an unclickable grey search svg if SearchBar is disabled', () => {
-        const component = shallow(<SearchBar {...requiredProps} disabled />);
+    it('should have an unclickable grey search svg if SearchBar is disabled', async () => {
+        const searchSpy = jest.spyOn(SearchBar.prototype as any, 'search');
+        render(<SearchBar {...requiredProps} disabled />);
 
-        expect(component.find('div .search-bar-icon-container span').length).toBe(0);
+        const searchIcon = await screen.findByRole('img', {name: /search/i});
+        expect(searchIcon).toBeInTheDocument();
+        expect(searchIcon).toHaveClass('search-icon-disabled');
 
-        const svg = component.find('div .search-bar-icon-container').find(Svg);
+        userEvent.click(searchIcon);
 
-        expect(svg.length).toBe(1);
-        expect(svg.prop('svgName')).toBe('search');
-        expect(svg.prop('svgClass')).toBe('search-icon-disabled');
+        expect(searchSpy).not.toHaveBeenCalled();
     });
 
     it('should have an unclickable loading animation if searching is passed as prop', () => {
         const component = shallow(<SearchBar {...requiredProps} searching />);
 
         expect(component.find('div .search-bar-icon-container span').length).toBe(0);
-        expect(component.find('div .search-bar-icon-container').find(Svg).length).toBe(0);
         expect(component.find('div .search-bar-icon-container .search-bar-spinner').length).toBe(1);
     });
 

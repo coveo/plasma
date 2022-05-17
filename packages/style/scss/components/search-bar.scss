@@ -20,28 +20,14 @@
 }
 
 .search-bar-icon-container {
-    float: right;
-    margin: $search-bar-icon-margin;
-
-    &,
-    svg {
-        width: $search-bar-icon-size;
-        height: $search-bar-icon-size;
-    }
-
-    svg {
-        cursor: pointer;
-        fill: var(--navy-blue-80);
-    }
-}
-
-.search-bar-disabled svg {
-    cursor: default;
-    fill: var(--deprecated-light-grey);
+    margin: 8px;
+    color: var(--navy-blue-80);
+    cursor: pointer;
 }
 
 .search-icon-disabled {
-    fill: var(--grey-40);
+    color: var(--grey-40);
+    cursor: default;
 }
 
 .search-bar-loading .search-bar-icon-container {
