@@ -1,4 +1,4 @@
-import {svg} from '@coveord/plasma-style';
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ComponentType, FunctionComponent, MouseEvent, PureComponent, ReactNode} from 'react';
 import {connect} from 'react-redux';
@@ -12,7 +12,6 @@ import {CollapsibleToggle} from '../collapsible';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption} from '../listBox/ListBoxActions';
-import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
@@ -163,12 +162,9 @@ class SingleSelect extends PureComponent<ISingleSelectProps> {
     private getDeselectOptionButton(): ReactNode {
         return (
             <Tooltip title={this.props.deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
-                <Svg
-                    svgName={svg.clear.name}
-                    svgClass="icon mod-12"
-                    className="btn-append center-align"
-                    onClick={this.handleDeselect}
-                />
+                <button onClick={this.handleDeselect} className="btn-append cursor-pointer">
+                    <CrossSize16Px height={16} />
+                </button>
             </Tooltip>
         );
     }
