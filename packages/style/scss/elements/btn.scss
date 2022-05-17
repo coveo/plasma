@@ -35,10 +35,9 @@
     }
 
     &:focus {
-        @include focus-border(var(--white), $button-border-radius, $button-border-width);
+        @include focus-border();
         text-decoration: none;
         background-color: var(--white);
-        border-color: var(--digital-blue-60);
     }
 
     &:hover {

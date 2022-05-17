@@ -86,7 +86,7 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
 
     private handleChange = (nextInputValue: string) => {
         this.filterInput.value = nextInputValue;
-        this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
+        // this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
 
         this.props.onFilterCallback?.(this.props.id, this.filterInput.value);
         this.props.onFilter?.(this.props.id, this.filterInput.value);
@@ -121,9 +121,8 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
     render() {
         const inputMaxWidth = {maxWidth: `${this.props.maxWidth}px`};
         const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
-        const filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
-        const filterInputClasses = classNames('filter-box', {truncate: this.props.truncate});
-        const svgClearClasses = classNames({hidden: !(this.filterInput && this.filterInput.value)});
+        const filterBoxContainerClasses = classNames('flex filter-container', this.props.containerClasses);
+        const filterInputClasses = classNames('flex filter-box', {truncate: this.props.truncate});
 
         return (
             <div className={this.props.className}>
@@ -154,12 +153,20 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                         style={inputMaxWidth}
                     />
                     <Svg
+                        svgName="filter"
+                        className={classNames('flex filter-box-icon', {
+                            hidden: this.filterInput?.value,
+                        })}
+                        svgClass="icon"
+                    />
+                    <Svg
                         svgName="clear"
-                        className={svgClearClasses}
-                        svgClass="icon mod-lg"
+                        className={classNames('flex filter-box-icon', {
+                            hidden: !this.filterInput?.value,
+                        })}
+                        svgClass="icon"
                         onClick={() => this.clearValue()}
                     />
-                    <Svg svgName="filter" className="filter-icon" svgClass="icon mod-lg" />
                 </div>
                 {this.props.children}
             </div>
