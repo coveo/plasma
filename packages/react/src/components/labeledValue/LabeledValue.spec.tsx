@@ -2,7 +2,6 @@ import {shallow, ShallowWrapper} from 'enzyme';
 import {screen, render} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {LabeledValue} from './LabeledValue';
 

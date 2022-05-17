@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import {ReactNode, FunctionComponent} from 'react';
+import {FunctionComponent, ReactNode} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg/Svg';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 import {Tooltip} from '../tooltip/Tooltip';
 import {InputDescription} from './InputDescription';
 
@@ -29,8 +29,13 @@ export const LabeledInput: FunctionComponent<ILabeledInputProps> = ({
                     {!!label ? <span>{label}</span> : null}
                 </header>
                 {!!information ? (
-                    <Tooltip title={information} placement={TooltipPlacement.Right} className="ml1 labeled-tooltip">
-                        <Svg svgName="info" svgClass="icon mod-14" />
+                    <Tooltip title={information} placement={TooltipPlacement.Right} className="labeled-tooltip">
+                        <InfoToken
+                            mode={InfoTokenMode.Stroked}
+                            size={InfoTokenSize.Small}
+                            type={InfoTokenType.Information}
+                            className="ml1"
+                        />
                     </Tooltip>
                 ) : null}
             </div>
