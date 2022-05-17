@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 import {render, screen} from '@test-utils';
 
 import {fireEvent, within} from '@testing-library/react';
-import {ILinkSvgProps, LinkSvg} from '../../svg/LinkSvg';
+import {ILinkSvgProps, LinkSvg} from '../../linkSvg/LinkSvg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {ITitleProps, Title} from '../Title';
 

@@ -8,7 +8,6 @@ import * as _ from 'underscore';
 import {useSelector} from 'react-redux';
 
 import {createStructuredSelector} from 'reselect';
-import {ISvgProps} from '../../components/svg/Svg';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
 import {PlasmaReducers} from '../../PlasmaReducers';
 import {PlasmaState} from '../../PlasmaState';
@@ -116,11 +115,6 @@ export const IsDirtyIndicator: FunctionComponent<{id: string; label?: string}> =
 };
 
 export const defaultMapStateToProps = () => ({});
-
-export const defaultSvgProps: ISvgProps = {
-    svgName: 'domainGoogle',
-    svgClass: 'icon mod-2x',
-};
 
 export const defaultTooltipProps: ITooltipProps = {
     title: 'default tooltip description',
