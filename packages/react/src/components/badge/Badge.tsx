@@ -92,7 +92,9 @@ export class Badge extends Component<IBadgeProps> {
                         height={this.props.isSmall ? 14 : 18}
                     />
                 ) : null}
-                {'label' in this.props ? <div className="badge_label">{this.props.label}</div> : null}
+                {'label' in this.props && this.props.label ? (
+                    <div className="badge_label">{this.props.label}</div>
+                ) : null}
             </div>
         );
     }
