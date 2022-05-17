@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-render-in-setup */
-import {SvgName} from '@coveord/plasma-style';
+import {CrossSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
@@ -21,7 +21,7 @@ describe('DropdownSearch', () => {
     const id: string = UUID.generate();
     const options: IDropdownOption[] = [
         {value: 'test a', displayValue: 'test a', prefix: 'test'},
-        {value: 'test b', displayValue: 'test b', svg: {svgClass: 'svg-class', svgName: 'svgName' as SvgName}},
+        {value: 'test b', displayValue: 'test b', icon: EditSize16Px},
         {value: 'test c', displayValue: 'test c'},
     ];
 
@@ -457,10 +457,7 @@ describe('DropdownSearch', () => {
                     prefix: 'test',
                     value: 'test1',
                     displayValue: 'test 2',
-                    svg: {
-                        svgName: 'close',
-                        svgClass: 'small',
-                    },
+                    icon: CrossSize16Px,
                     selected: true,
                 };
             });
