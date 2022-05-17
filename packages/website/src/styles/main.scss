@@ -114,3 +114,7 @@
         text-transform: uppercase;
     }
 }
+
+img.invert {
+    filter: invert(1);
+}
