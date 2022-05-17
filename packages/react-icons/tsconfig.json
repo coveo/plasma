@@ -2,7 +2,8 @@
     "extends": "../tsconfig-base.json",
     "compilerOptions": {
         "outDir": "./dist",
-        "declarationDir": "./dist/definitions"
+        "declarationDir": "./dist/definitions",
+        "rootDir": "src"
     },
-    "include": ["generated"]
+    "include": ["src"]
 }

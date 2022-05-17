@@ -29,8 +29,8 @@
         "build": "pnpm generate && pnpm compile",
         "generate": "node ./bin/index.js",
         "compile": "run-p compile:*",
-        "compile:cjs": "swc ./generated --config module.type=commonjs --config jsc.target=es5 -d dist/cjs",
-        "compile:esm": "swc ./generated --config module.type=es6 --config jsc.target=es2020 -d dist/esm",
+        "compile:cjs": "swc ./src --config module.type=commonjs --config jsc.target=es5 -d dist/cjs",
+        "compile:esm": "swc ./src --config module.type=es6 --config jsc.target=es2020 -d dist/esm",
         "compile:dts": "tsc -p tsconfig.json --emitDeclarationOnly"
     },
     "dependencies": {
