@@ -77,7 +77,7 @@ export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttribut
     };
     const selectedItem = selected || defaultSelected;
 
-    const navItemsContainDescription = items.map((item) => Object.keys(item).includes('description')).includes(true);
+    const navItemsContainDescription = items.some((item) => item.description);
     const navItems = map(items, ({id, link, label, disabled, description}: ISubNavigationItem) => {
         const openDescription = description && selectedItem === id;
 
@@ -106,19 +106,18 @@ export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttribut
                     )}
                 </li>
             );
-        } else {
-            return (
-                <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selectedItem})}>
-                    <a
-                        href={link}
-                        className={classNames('sub-navigation-item-link', {disabled})}
-                        onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
-                    >
-                        {label}
-                    </a>
-                </li>
-            );
         }
+        return (
+            <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selectedItem})}>
+                <a
+                    href={link}
+                    className={classNames('sub-navigation-item-link', {disabled})}
+                    onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+                >
+                    {label}
+                </a>
+            </li>
+        );
     });
 
     return (
