@@ -1,3 +1,12 @@
+# 41.6.0 (2022-05-17)
+
+
+### Features
+
+* **loadingSpinner:** extracted in a new component ([#2745](https://github.com/coveo/plasma/issues/2745)) ([3121fbc](https://github.com/coveo/plasma/commits/3121fbcaf6315067d7b94926f49e6bd2eebe0e75))
+
+
+
 # 41.5.0 (2022-05-16)
 
 
