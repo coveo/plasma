@@ -1,3 +1,13 @@
+## 41.6.2 (2022-05-17)
+
+
+### Bug Fixes
+
+* **draggableselectedoption:** removeOnClick prop was not defined ([#2750](https://github.com/coveo/plasma/issues/2750)) ([dd6b2aa](https://github.com/coveo/plasma/commits/dd6b2aafc1c0f9e6e35afce66ba431300945589d))
+* **react:** remove extra padding for icon only badge ([cb12007](https://github.com/coveo/plasma/commits/cb12007fab37d878f78eacf4a18c390ad816d6db))
+
+
+
 ## 41.6.1 (2022-05-17)
 
 
