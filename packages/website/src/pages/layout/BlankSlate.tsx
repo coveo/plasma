@@ -2,10 +2,11 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import {BlankSlate} from '@coveord/plasma-react';
+    import {IdeaSize32Px} from '@coveord/plasma-react-icons';
 
     export default () => (
         <BlankSlate
-            svgName="tips"
+            icon={IdeaSize32Px}
             title="Title of the blank slate"
             description={
                 <span>
@@ -39,6 +40,7 @@ const inError = `
 
 const withTable = `
     import {BlankSlateWithTable} from '@coveord/plasma-react';
+    import {IdeaSize32Px} from '@coveord/plasma-react-icons';
 
     export default () => (
         <table className="table">
@@ -50,7 +52,7 @@ const withTable = `
                 </tr>
             </thead>
             <tbody>
-                <BlankSlateWithTable title="Title test" description="description test" svgName="tips" />
+                <BlankSlateWithTable title="Title test" description="description test" icon={IdeaSize32Px} />
             </tbody>
         </table>
     );

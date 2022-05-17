@@ -1,16 +1,20 @@
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ClassAttributes, ReactNode, Component} from 'react';
+import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions/Action';
 import {Button} from '../button/Button';
-import {OptionalSvgChildProps, SvgChild} from '../svg/SvgChild';
 
-export interface IBlankSlateProps extends ClassAttributes<BlankSlate>, Omit<OptionalSvgChildProps, 'title'> {
+export interface IBlankSlateProps {
     /**
      * Title of the blank slate
      */
     title?: ReactNode;
+    /**
+     * An icon to display above the title
+     */
+    icon?: Icon;
     /**
      * Description template to add to the blank slate
      */
@@ -61,13 +65,7 @@ export class BlankSlate extends Component<IBlankSlateProps> {
     };
 
     private getSvgTemplate() {
-        return (
-            <SvgChild
-                svgName={this.props.svgName}
-                svgClass={`icon mod-4x ${this.props.svgClass}`}
-                svgChild={this.props.svgChild}
-            />
-        );
+        return this.props.icon ? <this.props.icon height={64} /> : null;
     }
 
     private getDescriptionTemplate(): JSX.Element {
