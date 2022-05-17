@@ -1,7 +1,7 @@
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {FacetMoreRows} from './FacetMoreRows';
 import {FacetMoreRowsConnected} from './FacetMoreRowsConnected';
@@ -204,7 +204,7 @@ export class Facet extends Component<IFacetProps, any> {
                             className="remove-selected-tooltip"
                             title={`${this.props.clearFacetLabel} ${this.props.facet.formattedName}`}
                         >
-                            <Svg svgName="clear" className="icon" />
+                            <CrossSize16Px height={16} />
                         </Tooltip>
                     </div>
                     <div className="facet-header-title">{this.props.facet.formattedName}</div>

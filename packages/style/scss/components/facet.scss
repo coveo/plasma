@@ -35,17 +35,15 @@
     height: 100%;
     cursor: pointer;
 
-    .icon {
+    svg {
         position: relative;
         top: 50%;
         display: block;
-        width: $facet-more-button-icon-size;
-        height: $facet-more-button-icon-size;
+        color: var(--grey-60);
         transform: translateY(-50%);
-        fill: var(--grey-60);
 
         &:hover {
-            fill: var(--navy-blue-80);
+            color: var(--navy-blue-80);
         }
     }
 }
@@ -134,8 +132,6 @@
 .exclude-icon {
     position: relative;
     display: none;
-    width: $facet-exclude-checkbox-icon-size;
-    height: $facet-exclude-checkbox-icon-size;
 
     svg {
         position: absolute;
@@ -146,17 +142,12 @@
 
 .exclude-button {
     display: none;
-    width: $facet-exclude-button-size;
-    height: $facet-exclude-button-size;
-
     svg {
-        width: inherit;
-        height: inherit;
-        fill: var(--grey-60);
+        color: var(--grey-60);
     }
 
     &:hover svg {
-        fill: var(--navy-blue-80);
+        color: var(--navy-blue-80);
     }
 }
 
@@ -183,7 +174,7 @@
 
         .exclude-icon {
             display: block;
-            fill: var(--critical-70);
+            color: var(--critical-70);
         }
     }
 }
