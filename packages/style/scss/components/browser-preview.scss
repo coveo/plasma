@@ -27,7 +27,8 @@
     &__state {
         color: var(--title-text-color);
 
-        svg {
+        svg,
+        img {
             width: 220px;
             height: 220px;
         }

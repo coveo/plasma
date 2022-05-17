@@ -1,7 +1,6 @@
+import previewError from '@coveord/plasma-style/resources/icons/svg/preview-error.svg';
 import classNames from 'classnames';
 import {FunctionComponent} from 'react';
-
-import {Svg} from '../svg';
 
 export interface BrowserPreviewErrorProps {
     onClick?: () => void;
@@ -20,7 +19,7 @@ export const BrowserPreviewError: FunctionComponent<BrowserPreviewErrorProps> = 
             'cursor-pointer': onClick,
         })}
     >
-        <Svg svgName="previewError" className="block" />
+        <img src={previewError} />
         <p className="medium-title-text mt2 center bolder">{description ?? 'Unable to show preview'}</p>
         {errorMessage ? <p className="center mt1 browser-preview__state--error">{errorMessage}</p> : null}
     </div>
