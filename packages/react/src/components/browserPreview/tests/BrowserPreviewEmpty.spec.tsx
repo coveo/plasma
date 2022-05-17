@@ -1,7 +1,7 @@
+import {render, screen} from '@test-utils';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {ReactNode} from 'react';
 
-import {Svg} from '../../svg';
 import {BrowserPreviewEmpty, BrowserPreviewEmptyProps} from '../BrowserPreviewEmpty';
 
 describe('BrowserPreviewEmpty', () => {
@@ -39,10 +39,10 @@ describe('BrowserPreviewEmpty', () => {
         expect(defaultProps.onClick).toHaveBeenCalledTimes(1);
     });
 
-    it('renders a Svg as child by default', () => {
-        mountWithProps(defaultProps);
+    it('renders a Svg as child by default', async () => {
+        render(<BrowserPreviewEmpty />);
 
-        expect(component.find('.browser-preview__state').childAt(0).find(Svg)).toBeTruthy();
+        expect(await screen.findByRole('img', {name: /undo/i})).toBeInTheDocument();
     });
 
     it('renders the specified node instead of the default image', () => {
