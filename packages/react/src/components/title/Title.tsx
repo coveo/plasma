@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import {FunctionComponent, ReactNode, useRef, useState} from 'react';
 import * as _ from 'underscore';
 
-import {ILinkSvgProps, LinkSvg} from '../svg/LinkSvg';
+import {ILinkSvgProps, LinkSvg} from '../linkSvg/LinkSvg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ITitleProps {

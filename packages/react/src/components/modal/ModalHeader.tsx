@@ -4,7 +4,7 @@ import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {IClassName} from '../../utils/ClassNameUtils';
-import {ILinkSvgProps} from '../svg/LinkSvg';
+import {ILinkSvgProps} from '../linkSvg/LinkSvg';
 import {Title} from '../title/Title';
 
 export interface IModalHeaderOwnProps {
