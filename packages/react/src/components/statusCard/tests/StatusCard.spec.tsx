@@ -1,7 +1,8 @@
+import {QuestionSize24Px} from '@coveord/plasma-react-icons';
+import {render, screen} from '@test-utils';
 import {shallow} from 'enzyme';
 
 import {Loading} from '../../loading/Loading';
-import {Svg} from '../../svg';
 import {StatusCard} from '../StatusCard';
 
 describe('StatusCard', () => {
@@ -29,10 +30,9 @@ describe('StatusCard', () => {
         expect(card.hasClass('loading')).toBe(true);
     });
 
-    it('renders a Svg if the "icon" prop is specified', () => {
-        const card = shallow(<StatusCard title="title" icon="help" />);
+    it('renders a Svg if the "icon" prop is specified', async () => {
+        render(<StatusCard title="title" icon={QuestionSize24Px} />);
 
-        expect(card.find(Svg).exists()).toBe(true);
-        expect(card.find(Svg).prop('svgName')).toBe('help');
+        expect(await screen.findByRole('img', {name: /question/i})).toBeInTheDocument();
     });
 });
