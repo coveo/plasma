@@ -1,5 +1,6 @@
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import {ClassAttributes, Component} from 'react';
-import {Svg} from '../../svg/Svg';
+
 import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
 
 export interface IItemFilterProps extends ClassAttributes<ItemFilter> {
@@ -39,7 +40,7 @@ export class ItemFilter extends Component<IItemFilterProps, any> {
                 <span className="item-filter-label">{this.props.label}: </span>
                 {itemFilter}
                 <button className="item-filter-clear" onClick={() => this.props.onClear()}>
-                    <Svg svgName="clear" svgClass="icon" />
+                    <CrossSize16Px />
                 </button>
             </div>
         );
