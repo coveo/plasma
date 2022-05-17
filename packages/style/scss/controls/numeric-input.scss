@@ -28,10 +28,10 @@ $numeric-input-digit-padding: 10px;
     }
 
     button {
-        --fill: var(--white);
         width: $numeric-input-height;
         height: $numeric-input-height;
-        padding: 0 7px;
+        padding: 0 5px;
+        color: var(--white);
         line-height: $numeric-input-height;
         background-color: var(--digital-blue-80);
         border-radius: $numeric-input-buttons-border-radius;
