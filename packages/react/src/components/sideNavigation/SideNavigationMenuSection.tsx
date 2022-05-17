@@ -1,16 +1,14 @@
-import {SvgName} from '@coveord/plasma-style';
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, MouseEvent, FunctionComponent, useRef, useEffect} from 'react';
+import {FunctionComponent, MouseEvent, ReactNode, useEffect, useRef} from 'react';
 import * as _ from 'underscore';
 
 import {Collapsible} from '../collapsible/Collapsible';
-import {Svg} from '../svg';
 import {ISideNavigationHeaderProps} from './SideNavigationHeader';
 
 export interface SideNavigationHeaderProps {
     title?: ReactNode;
-    svgName?: SvgName;
-    svgClass?: string;
+    icon?: Icon;
     customIcon?: ReactNode;
     onClick?: (event: MouseEvent) => void;
     isLink?: boolean;
@@ -28,9 +26,9 @@ export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     itemsClassName?: string;
 }
 
-const HeaderIcon: FunctionComponent<SideNavigationHeaderProps> = ({svgName, svgClass}) =>
-    svgName ? (
-        <Svg svgName={svgName} svgClass={classNames('navigation-menu-section-header-icon icon mod-lg', svgClass)} />
+const HeaderIcon: FunctionComponent<SideNavigationHeaderProps> = ({icon: IconName}) =>
+    IconName ? (
+        <IconName height={16} className="navigation-menu-section-header-icon" />
     ) : (
         <span className="navigation-menu-section-header-no-icon" />
     );
@@ -43,7 +41,7 @@ const SideNavigationHeader: FunctionComponent<
             'navigation-menu-section-header',
             {
                 'no-collapse': !expandable && !isLink,
-                'no-icon': !customIcon && !iconProps.svgName,
+                'no-icon': !customIcon && !iconProps.icon,
             },
             className
         )}
