@@ -1,7 +1,7 @@
+import {MoreSize24Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
 
 import {DropdownConnected} from '../dropdown/DropdownConnected';
-import {Svg} from '../svg/Svg';
 import {IActionOptions} from './Action';
 import {ActionDropdownItem} from './ActionDropdownItem';
 
@@ -26,7 +26,7 @@ export const ActionsDropdown: FunctionComponent<IActionsDropdownProps> = ({
     ));
 
     const toggleContent: JSX.Element[] = [
-        <Svg key="action-dropdown-toggle-icon" svgName="more" className="action-icon" svgClass="icon icon-medium" />,
+        <MoreSize24Px className="action-icon" />,
         <span key="action-dropdown-toggle-label" className="action-label" data-trigger="more">
             {label}
         </span>,
