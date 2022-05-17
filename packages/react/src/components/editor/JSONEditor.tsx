@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {FunctionComponent, useEffect, useState} from 'react';
 
-import {Svg} from '../svg';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 import {CodeEditor} from './CodeEditor';
 import {CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
 import {JSONEditorUtils} from './JSONEditorUtils';
@@ -126,7 +126,7 @@ JSONEditor.defaultProps = {
 
 const ValidationDetails: FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (
     <div className="input-validation-error-details">
-        <Svg className="input-validation-error-icon" svgName="messageAlert" svgClass="icon mod-white" />
+        <InfoToken mode={InfoTokenMode.Filled} size={InfoTokenSize.Small} type={InfoTokenType.Critical} />
         <span className="input-validation-error-message">{errorMessage ?? DEFAULT_JSON_ERROR_MESSAGE}</span>
     </div>
 );
