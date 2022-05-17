@@ -416,10 +416,7 @@ $facet-checkbox-mark-size: 10px;
 $facet-checkbox-line-width: 2px;
 $facet-more-height: 200px;
 $facet-more-button-border: 2px dashed var(--deprecated-medium-grey);
-$facet-more-button-icon-size: 10px;
 $facet-exclude-padding-right: 24px;
-$facet-exclude-checkbox-icon-size: 10px;
-$facet-exclude-button-size: 13px;
 $facet-exclude-button-icon-size: 7px;
 
 // Spaced boxes
@@ -558,7 +555,7 @@ $search-bar-input-margin-left: 10px;
 $search-bar-width-without-input: $search-bar-icon-size + $search-bar-icon-margin * 2 + $search-bar-input-margin-left;
 $search-bar-spinner-border: 2px solid var(--navy-blue-80);
 $search-bar-spinner-border-radius: 50%;
-$search-bar-spinner-offset: 6px;
+$search-bar-spinner-offset: 8px;
 $search-bar-spinner-size: 16px;
 
 // Multi Step Bar

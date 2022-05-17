@@ -180,7 +180,7 @@ describe('Facets', () => {
 
         beforeEach(() => {
             props = {...FACET_ROW_PROPS, enableExclusions: true};
-            facetRowExcludeView = mount(<FacetRow {...props} />, {attachTo: document.getElementById('App')});
+            facetRowExcludeView = mount(<FacetRow {...props} />, {attachTo: document.getElementById('app')});
         });
 
         it('should display a .facet-exclude-button when exclude behavior is enabled', () => {
@@ -188,7 +188,7 @@ describe('Facets', () => {
         });
 
         it('should display a .exclude-icon when exclude behavior is enabled and checkbox is checked as exclude', () => {
-            expect(facetRowExcludeView.find('.icon.hide.exclude-icon').length).toBeGreaterThanOrEqual(1);
+            expect(facetRowExcludeView.find('.hide.exclude-icon').length).toBeGreaterThanOrEqual(1);
         });
 
         it('should call onToggle with good attribute when exclude behavior is enabled', () => {
