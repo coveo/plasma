@@ -1,12 +1,12 @@
+import {ArrowHeadLeftSize16Px, ArrowHeadRightSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {Component} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
+import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {PaginationReduxActions} from '../navigation/pagination/NavigationPaginationActions';
-import {Svg} from '../svg';
 import {PaginationSelect} from './PaginationSelect';
 import {PaginationSelectors} from './PaginationSelectors';
 
@@ -114,7 +114,7 @@ class PaginationPagesNumberDisconnected extends Component<IPaginationPagesNumber
                         data-page={currentPage - 1}
                         onClick={() => this.handlePageClick(currentPage - 1)}
                     >
-                        <Svg svgName="arrowLeftRounded" className="pagination-icon" svgClass="icon icon-small mod-lg" />
+                        <ArrowHeadLeftSize16Px height={16} />
                         {previousLabel}
                     </a>
                     {pageSelects}
@@ -124,11 +124,7 @@ class PaginationPagesNumberDisconnected extends Component<IPaginationPagesNumber
                         onClick={() => this.handlePageClick(currentPage + 1)}
                     >
                         {nextLabel}
-                        <Svg
-                            svgName="arrowRightRounded"
-                            className="pagination-icon"
-                            svgClass="icon icon-small mod-lg"
-                        />
+                        <ArrowHeadRightSize16Px height={16} />
                     </a>
                 </div>
             </div>
