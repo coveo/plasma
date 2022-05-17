@@ -7,7 +7,7 @@ const code = `
     export default () => (
         <IconCard
             title="Card title"
-            svgName="sourceCustom"
+            icon={<img src="https://placeholder.pics/svg/72x72/DEDEDE/FFFFFF-FFFFFF" />}
             description="Card description"
             onClick={() => alert('You clicked the card')}
         />
@@ -16,16 +16,17 @@ const code = `
 
 const choices = `
     import {IconCard} from '@coveord/plasma-react';
-
+    import {CloudSize24Px, DatabaseSize24Px, CrawlingBotSize24Px} from '@coveord/plasma-react-icons';
+    
     export default () => (
         <IconCard
             title="Web"
             description="Enter a starting URL and automatically index all the pages of this site."
-            svgName="sourceWeb"
+            icon={<img src="https://placeholder.pics/svg/72x72/DEDEDE/FFFFFF-FFFFFF" />}
             choices={[
-                {value: 'cloud', label: 'Cloud', icon: 'cloud'},
-                {value: 'on-prem', label: 'On-Premise', icon: 'database'},
-                {value: 'crodule', label: 'Crawling Module', icon: 'crawlingBot', disabled: true},
+                {value: 'cloud', label: 'Cloud', icon: CloudSize24Px},
+                {value: 'on-prem', label: 'On-Premise', icon: DatabaseSize24Px},
+                {value: 'crodule', label: 'Crawling Module', icon: CrawlingBotSize24Px, disabled: true},
             ]}
             onClick={(choice) => alert(choice)}
         />
@@ -34,16 +35,17 @@ const choices = `
 
 const small = `
     import {IconCard} from '@coveord/plasma-react';
+    import {CloudSize24Px, DatabaseSize24Px, CrawlingBotSize24Px} from '@coveord/plasma-react-icons';
 
     export default () => (
         <IconCard
             small
             title="Web"
-            svgName="sourceWeb"
+            icon={<img src="https://placeholder.pics/svg/40x40/DEDEDE/FFFFFF-FFFFFF" />}
             choices={[
-                {value: 'cloud', label: 'Cloud', icon: 'cloud'},
-                {value: 'on-prem', label: 'On-Premise', icon: 'database'},
-                {value: 'crodule', label: 'Crawling Module', icon: 'crawlingBot', disabled: true},
+                {value: 'cloud', label: 'Cloud', icon: CloudSize24Px},
+                {value: 'on-prem', label: 'On-Premise', icon: DatabaseSize24Px},
+                {value: 'crodule', label: 'Crawling Module', icon: CrawlingBotSize24Px, disabled: true},
             ]}
             onClick={(choice) => alert(choice)}
             style={{width: '368px'}}
@@ -52,19 +54,20 @@ const small = `
 `;
 
 const disabled = `
-import {BadgeIconPlacement, IconCard} from '@coveord/plasma-react';
+    import {BadgeIconPlacement, IconCard} from '@coveord/plasma-react';
+    import {LockSize16Px} from '@coveord/plasma-react-icons';
 
-export default () => (
-    <IconCard
-        small
-        title="Web"
-        svgName="sourceWeb"
-        disabled
-        badges={[{icon: 'lock', iconPlacement: BadgeIconPlacement.Left, isSmall: true}]}
-        tooltip={{title: 'This source is not included in your license'}}
-        style={{width: '368px'}}
-    />
-);
+    export default () => (
+        <IconCard
+            small
+            title="Web"
+            icon={<img src="https://placeholder.pics/svg/40x40/DEDEDE/FFFFFF-FFFFFF" />}
+            disabled
+            badges={[{icon: LockSize16Px, iconPlacement: BadgeIconPlacement.Left, isSmall: true}]}
+            tooltip={{title: 'This source is not included in your license'}}
+            style={{width: '368px'}}
+        />
+    );
 `;
 
 const badgesOnTop = `
@@ -72,14 +75,14 @@ const badgesOnTop = `
 
     export default () => (
         <IconCard
-            title={<span className="h5 bolder">Simple builder</span>}
+            title="Simple builder"
             description="For lightweight usage, prototyping, and testing the search experience. Hosted by Coveo."
-            svgChild={<img className="mr3" style={{width: '112px', height: '112px'}} src="https://placeholder.pics/svg/112x112/DEDEDE/FFFFFF-FFFFFF" />}
+            icon={<img style={{width: '112px', height: '112px'}} src="https://placeholder.pics/svg/112x112/DEDEDE/FFFFFF-FFFFFF" />}
+            customIconSize
             placeBadgesAbove
             badges={[{label: 'Recommended', isSmall: true, type: BadgeType.Default}]}
             animateOnHover
             onClick={() => alert('You clicked the card')}
-            cardClassName={['mod-fixed-size']}
         />
     );
 `;
