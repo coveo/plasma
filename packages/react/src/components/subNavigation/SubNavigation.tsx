@@ -93,9 +93,7 @@ export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttribut
                             ? createElement(
                                   'div',
                                   {
-                                      className: description
-                                          ? 'sub-navigation-item-link-with-description-label'
-                                          : 'sub-navigation-item-link-with-description-label-solo',
+                                      className: 'sub-navigation-item-link-with-description-label',
                                   },
                                   `${label}`
                               )

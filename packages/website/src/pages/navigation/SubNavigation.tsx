@@ -1,99 +1,8 @@
+import code from '@examples/SubNavigation/main.example.tsx';
+import custom from '@examples/SubNavigation/custom.example.tsx';
+import defaultSelected from '@examples/SubNavigation/defaultSelected.example.tsx';
+import customWithDesc from '@examples/SubNavigation/customWithDesc.example.tsx';
 import {PageLayout} from '../../building-blocs/PageLayout';
-
-const custom = `
-    import {SubNavigationConnected, Svg} from '@coveord/plasma-react';
-
-    export default () => (
-        <SubNavigationConnected
-            id="third-sub-nav"
-            items={[
-                {
-                    label: (
-                        <span className="flex space-between">
-                            <span className="truncate">Avatar</span>
-                            <Svg svgName="thumbUp" svgClass="icon" />
-                        </span>
-                    ),
-                    id: 'avatar',
-                    disabled: true,
-                },
-                {
-                    label: (
-                        <span className="flex space-between">
-                            <span className="truncate">Titanic</span>
-                            <Svg svgName="thumbUp" svgClass="icon" />
-                        </span>
-                    ),
-                    id: 'titanic',
-                },
-                {
-                    label: (
-                        <span className="flex space-between">
-                            <span className="truncate pr1">Star Wars: The Force Awakens</span>
-                            <Svg svgName="thumbUp" svgClass="icon" />
-                        </span>
-                    ),
-                    id: 'star-wars',
-                },
-                {
-                    label: (
-                        <span className="flex space-between">
-                            <span className="truncate">Jurassic World</span>
-                            <Svg svgName="thumbDown" svgClass="icon" />
-                        </span>
-                    ),
-                    id: 'jurasic-world',
-                },
-                {
-                    label: (
-                        <span className="flex space-between">
-                            <span className="truncate">The Avengers</span>
-                            <Svg svgName="thumbDown" svgClass="icon" />
-                        </span>
-                    ),
-                    id: 'the-avengers',
-                },
-            ]}
-            defaultSelected="titanic"
-        />
-    );
-`;
-
-const defaultSelected = `
-    import {SubNavigationConnected} from '@coveord/plasma-react';
-
-    export default () => {
-        const exampleItems = [
-            {label: 'Avatar', id: 'avatar'},
-            {label: 'Titanic', id: 'titanic'},
-            {label: 'Star Wars: The Force Awakens', id: 'star-wars'},
-            {label: 'Jurassic World', id: 'jurasic-world'},
-            {label: 'The Avengers', id: 'the-avengers'},
-        ];
-
-        return (
-            <SubNavigationConnected id="second-sub-nav" items={exampleItems} defaultSelected="star-wars" />
-        );
-    };
-`;
-
-const code = `
-    import {SubNavigationConnected} from '@coveord/plasma-react';
-
-    export default () => {
-        const exampleItems = [
-            {label: 'Avatar', id: 'avatar'},
-            {label: 'Titanic', id: 'titanic'},
-            {label: 'The Avengers', id: 'the-avengers'},
-            {label: 'Banana', id: 'banana'},
-            {label: 'Chocolate', id: 'chocolate', description: 'Cupcake ipsum dolor sit amet. Lemon drops croissant sesame snaps cookie jelly beans tootsie roll muffin. Liquorice liquorice fruitcake tiramisu sesame snaps sugar plum lollipop gummi bears cookie.'},
-        ];
-
-        return (
-            <SubNavigationConnected id="first-sub-nav" items={exampleItems} />
-        );
-    };
-`;
 
 export const SubNavigationExamples = () => (
     <PageLayout
@@ -107,6 +16,7 @@ export const SubNavigationExamples = () => (
         examples={{
             defaultSelected: {code: defaultSelected, title: 'Default selected'},
             custom: {code: custom, title: 'Custom JSX labels and disabled item'},
+            customWithDesc: {code: customWithDesc, title: 'When there are descriptions in Sub Nav'},
         }}
     />
 );

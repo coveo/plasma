@@ -91,12 +91,12 @@ describe('SubNavigation', () => {
             expect(subNavigation.find('div').last().hasClass('sub-navigation-item-description')).toBe(true);
         });
 
-        it('should create items in div elements with a solo class if item does not have a description', () => {
+        it('should create items in div elements', () => {
             subNavigation = shallow(<SubNavigation {...propsWithDescription} />);
             expect(subNavigation.find('div').length).toBe(3);
-            expect(
-                subNavigation.find('div').first().hasClass('sub-navigation-item-link-with-description-label-solo')
-            ).toBe(true);
+            expect(subNavigation.find('div').first().hasClass('sub-navigation-item-link-with-description-label')).toBe(
+                true
+            );
         });
 
         it('should respect the label when a description is supplied', () => {
