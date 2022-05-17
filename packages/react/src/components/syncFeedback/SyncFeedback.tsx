@@ -1,5 +1,6 @@
 import {PureComponent} from 'react';
-import {Svg} from '../svg/Svg';
+
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 
 export interface ISyncFeedbackProps {
     /**
@@ -23,7 +24,7 @@ export const SyncFeedbackState = {
 };
 
 export const DEFAULT_SYNC_FEEDBACK_SYNCING_LABEL: string = 'Saving changes...';
-export const DEFAULT_SYNC_FEEDBACK_SUCCESS_LABEL: string = 'Changes saved';
+export const DEFAULT_SYNC_FEEDBACK_SUCCESS_LABEL: string = 'Changes saved.';
 export const DEFAULT_SYNC_FEEDBACK_ERROR_LABEL: string = 'Changes could not be saved.';
 
 export class SyncFeedback extends PureComponent<ISyncFeedbackProps> {
@@ -47,9 +48,23 @@ export class SyncFeedback extends PureComponent<ISyncFeedbackProps> {
         if (this.props.state === SyncFeedbackState.SYNCING) {
             return <span className="status-dot syncing sync-feedback-icon"></span>;
         } else if (this.props.state === SyncFeedbackState.SUCCESS) {
-            return <Svg svgName="check" className="sync-feedback-icon" svgClass="icon" />;
+            return (
+                <InfoToken
+                    className="sync-feedback-icon"
+                    mode={InfoTokenMode.Stroked}
+                    size={InfoTokenSize.Small}
+                    type={InfoTokenType.Success}
+                />
+            );
         } else if (this.props.state === SyncFeedbackState.ERROR) {
-            return <Svg svgName="clear" className="sync-feedback-icon" svgClass="icon" />;
+            return (
+                <InfoToken
+                    className="sync-feedback-icon"
+                    mode={InfoTokenMode.Stroked}
+                    size={InfoTokenSize.Small}
+                    type={InfoTokenType.Critical}
+                />
+            );
         } else {
             return null;
         }
