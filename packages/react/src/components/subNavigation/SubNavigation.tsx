@@ -16,8 +16,10 @@ export interface ISubNavigationOwnProps {
      * Element selected by default
      */
     defaultSelected?: string;
+    /**
+     * A small description that appears once the subNavigation selected
+     */
     description?: string;
-    headerClass?: string;
 }
 
 export interface ISubNavigationStateProps {

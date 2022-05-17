@@ -83,7 +83,7 @@ const code = `
     export default () => {
         const exampleItems = [
             {label: 'Avatar', id: 'avatar'},
-            {label: 'Titanic', id: 'titanic', description: 'boat'},
+            {label: <div className="body-m py1">Titanic</div>, id: 'titanic', description: 'Cupcake ipsum dolor sit amet. Lemon drops croissant sesame snaps cookie jelly beans tootsie roll muffin. Liquorice liquorice fruitcake tiramisu sesame snaps sugar plum lollipop gummi bears cookie.'},
             {label: 'Star Wars: The Force Awakens', id: 'star-wars'},
             {label: 'Jurassic World', id: 'jurasic-world'},
             {label: 'The Avengers', id: 'the-avengers'},
