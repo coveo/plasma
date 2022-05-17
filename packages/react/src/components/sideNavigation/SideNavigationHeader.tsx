@@ -1,16 +1,12 @@
-import {SvgName} from '@coveord/plasma-style';
-import classNames from 'classnames';
+import {Icon} from '@coveord/plasma-react-icons';
 import {Component} from 'react';
-
-import {Svg} from '../svg';
 
 /**
  * @deprecated Use SideNavigationHeaderProps instead
  */
 export interface ISideNavigationHeaderProps {
     title: string;
-    svgName?: SvgName;
-    svgClass?: string;
+    icon?: Icon;
     onClick?: () => void;
 }
 
@@ -25,9 +21,8 @@ export class SideNavigationHeader extends Component<ISideNavigationHeaderProps> 
     }
 
     render() {
-        const svgClass = classNames('navigation-menu-section-header-icon icon mod-lg', this.props.svgClass);
-        const icon = this.props.svgName ? (
-            <Svg svgName={this.props.svgName} svgClass={svgClass} />
+        const icon = this.props.icon ? (
+            <this.props.icon className="navigation-menu-section-header-icon" />
         ) : (
             <span className="navigation-menu-section-header-icon" />
         );
