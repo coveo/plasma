@@ -1,3 +1,12 @@
+## 41.6.1 (2022-05-17)
+
+
+### Bug Fixes
+
+* **navigation:** revert css style for state-locked nav ([#2746](https://github.com/coveo/plasma/issues/2746)) ([e92b164](https://github.com/coveo/plasma/commits/e92b1642917fb1aa9e103530d40e3673562a10f4))
+
+
+
 # 41.6.0 (2022-05-17)
 
 
