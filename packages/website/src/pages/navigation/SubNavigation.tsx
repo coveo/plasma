@@ -85,9 +85,8 @@ const code = `
             {label: 'Avatar', id: 'avatar'},
             {label: 'Titanic', id: 'titanic'},
             {label: 'The Avengers', id: 'the-avengers'},
-            {label: <div className="body-m py3">Cupcakes</div>, id: 'cupcake', description: 'Cupcake ipsum dolor sit amet. Lemon drops croissant sesame snaps cookie jelly beans tootsie roll muffin. Liquorice liquorice fruitcake tiramisu sesame snaps sugar plum lollipop gummi bears cookie.'},
-            {label: <div className="body-m py3">Banana</div>, id: 'banana'},
-            {label: <div className="body-m py3">Chocolate</div>, id: 'chocolate', description: 'Cupcake ipsum dolor sit amet. Lemon drops croissant sesame snaps cookie jelly beans tootsie roll muffin. Liquorice liquorice fruitcake tiramisu sesame snaps sugar plum lollipop gummi bears cookie.'},
+            {label: 'Banana', id: 'banana'},
+            {label: 'Chocolate', id: 'chocolate', description: 'Cupcake ipsum dolor sit amet. Lemon drops croissant sesame snaps cookie jelly beans tootsie roll muffin. Liquorice liquorice fruitcake tiramisu sesame snaps sugar plum lollipop gummi bears cookie.'},
         ];
 
         return (

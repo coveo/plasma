@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ReactNode, HTMLAttributes, FunctionComponent, MouseEvent, useEffect} from 'react';
+import {ReactNode, HTMLAttributes, FunctionComponent, MouseEvent, useEffect, createElement} from 'react';
 import {map, omit} from 'underscore';
 import {SlideY} from '../../animations';
 
@@ -77,28 +77,50 @@ export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttribut
     };
     const selectedItem = selected || defaultSelected;
 
+    const navItemsContainDescription = items.map((item) => Object.keys(item).includes('description')).includes(true);
     const navItems = map(items, ({id, link, label, disabled, description}: ISubNavigationItem) => {
         const openDescription = description && selectedItem === id;
-        return (
-            <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selectedItem})}>
-                <a
-                    href={link}
-                    className={classNames(
-                        {'sub-navigation-item-link': !description},
-                        {'sub-navigation-item-link-with-description': description},
-                        {disabled}
+
+        if (navItemsContainDescription) {
+            return (
+                <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selectedItem})}>
+                    <a
+                        href={link}
+                        className={classNames('sub-navigation-item-link-with-description', {disabled})}
+                        onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+                    >
+                        {typeof label === 'string'
+                            ? createElement(
+                                  'div',
+                                  {
+                                      className: description
+                                          ? 'sub-navigation-item-link-with-description-label'
+                                          : 'sub-navigation-item-link-with-description-label-solo',
+                                  },
+                                  `${label}`
+                              )
+                            : label}
+                    </a>
+                    {description && (
+                        <SlideY in={openDescription}>
+                            <div className="sub-navigation-item-description body-m-book-subdued">{description}</div>
+                        </SlideY>
                     )}
-                    onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
-                >
-                    {label}
-                </a>
-                {description && (
-                    <SlideY in={openDescription}>
-                        <div className="sub-navigation-item-description body-m-book-subdued">{description}</div>
-                    </SlideY>
-                )}
-            </li>
-        );
+                </li>
+            );
+        } else {
+            return (
+                <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selectedItem})}>
+                    <a
+                        href={link}
+                        className={classNames('sub-navigation-item-link', {disabled})}
+                        onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+                    >
+                        {label}
+                    </a>
+                </li>
+            );
+        }
     });
 
     return (

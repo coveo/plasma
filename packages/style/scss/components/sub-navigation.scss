@@ -21,6 +21,16 @@
                 &-with-description {
                     display: block;
                     padding: 0 40px;
+
+                    &-label {
+                        @extend .body-m;
+                        padding: 24px 0 8px;
+
+                        &-solo {
+                            @extend .body-m;
+                            padding: 24px 0;
+                        }
+                    }
                 }
                 &.disabled {
                     color: var(--deprecated-medium-grey);
