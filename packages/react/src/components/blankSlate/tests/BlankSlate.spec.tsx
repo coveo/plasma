@@ -1,5 +1,7 @@
+import {TipSize32Px} from '@coveord/plasma-react-icons';
 import {render, screen} from '@test-utils';
 import {mount, ReactWrapper, shallow} from 'enzyme';
+import {FunctionComponent} from 'react';
 import * as _ from 'underscore';
 
 import {BlankSlate, IBlankSlateProps} from '../BlankSlate';
@@ -114,7 +116,7 @@ describe('BlankSlate', () => {
             expect(blankSlateComponent.find('button').length).toBe(2);
         });
 
-        it('should render the svg', () => {
+        it('should render the svg', async () => {
             render(
                 <BlankSlate
                     title="title"
@@ -127,15 +129,15 @@ describe('BlankSlate', () => {
                         },
                     ]}
                     withModal={false}
-                    svgName="tips"
+                    icon={TipSize32Px}
                 />
             );
 
-            expect(screen.getByRole('img', {name: /tips icon/i})).toBeVisible();
+            expect(await screen.findByRole('img', {name: /tip/i})).toBeVisible();
         });
 
         it('should render custom svg', () => {
-            const svgChild = (
+            const svgChild: FunctionComponent = () => (
                 <div role="img" aria-label="shrug icon">
                     🤷
                 </div>
@@ -152,7 +154,7 @@ describe('BlankSlate', () => {
                         },
                     ]}
                     withModal={false}
-                    svgChild={svgChild}
+                    icon={svgChild}
                 />
             );
 
