@@ -1,7 +1,4 @@
 .icon-card {
-    --fixed-height: 216px;
-    --fixed-width: 456px;
-
     position: relative;
     top: -8px;
     transition: var(--default-transition);
@@ -28,12 +25,15 @@
         z-index: 1;
         transition: var(--default-transition);
 
-        &.mod-fixed-size {
-            width: var(--fixed-width);
-            min-width: var(--fixed-width);
-            height: var(--fixed-height);
-            min-height: var(--fixed-height);
+        &.mod-small .logo:not(.custom-logo-size) {
+            width: 40px;
+            height: 40px;
         }
+    }
+
+    .logo:not(.custom-logo-size) {
+        width: 72px;
+        height: 72px;
     }
 
     &.disabled {

@@ -1,4 +1,5 @@
 /* eslint-disable testing-library/no-container */
+import {AddSize16Px, InfoSize16Px, RemoveSize16Px} from '@coveord/plasma-react-icons';
 import {fireEvent, render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {BadgeType} from '../../badge';
@@ -6,34 +7,27 @@ import {BadgeType} from '../../badge';
 import {IconCard} from '../IconCard';
 
 describe('IconCard', () => {
-    const svgChild = (
+    const icon = (
         <div role="img" aria-label="shrug icon">
             🤷
         </div>
     );
 
-    it('renders the specified icon and title', () => {
-        render(<IconCard title="The Title" svgName="home" />);
+    it('renders the specified icon and title', async () => {
+        render(<IconCard title="The Title" icon={<InfoSize16Px />} />);
 
-        expect(screen.getByRole('img', {name: /home icon/i})).toBeVisible();
+        expect(await screen.findByRole('img', {name: /info/i})).toBeVisible();
         expect(screen.getByRole('heading', {name: /the title/i})).toBeVisible();
     });
 
-    it('accepts and renders a node as title', () => {
-        const testId = 'test-id';
-        render(<IconCard title={<div data-testid={testId}>Title</div>} svgName="home" />);
-
-        expect(screen.getByTestId(testId)).toBeVisible();
-    });
-
     it('renders custom icons', () => {
-        render(<IconCard title="The Title" svgChild={svgChild} />);
+        render(<IconCard title="The Title" icon={icon} />);
 
         expect(screen.getByRole('img', {name: /shrug icon/i})).toBeVisible();
     });
 
     it('renders a description underneath the title when specified', () => {
-        render(<IconCard title="Title" svgName="home" description="the description" />);
+        render(<IconCard title="Title" description="the description" icon={icon} />);
 
         expect(screen.getByText(/description/i)).toBeVisible();
     });
@@ -42,7 +36,7 @@ describe('IconCard', () => {
         render(
             <IconCard
                 title="Title"
-                svgName="home"
+                icon={icon}
                 badges={[
                     {label: 'Badge1', type: BadgeType.Success},
                     {label: 'Badge2', type: BadgeType.Success},
@@ -57,7 +51,7 @@ describe('IconCard', () => {
     });
 
     it('displays the specified tooltip when hovering over the card', async () => {
-        render(<IconCard title="Title" svgName="home" tooltip={{title: 'the tooltip'}} />);
+        render(<IconCard title="Title" icon={icon} tooltip={{title: 'the tooltip'}} />);
 
         userEvent.hover(screen.getByRole('button', {name: /title/i}));
 
@@ -66,7 +60,7 @@ describe('IconCard', () => {
 
     it('calls the "onClick" prop when clicking on the card', () => {
         const mockOnClick = jest.fn();
-        render(<IconCard title="Title" svgName="home" onClick={mockOnClick} />);
+        render(<IconCard title="Title" icon={icon} onClick={mockOnClick} />);
 
         const card = screen.getByRole('button', {name: /title/i});
         userEvent.click(card);
@@ -77,7 +71,7 @@ describe('IconCard', () => {
 
     it('does not call the "onClick" prop when clicking on the card if it is disabled', () => {
         const mockOnClick = jest.fn();
-        render(<IconCard title="Title" svgName="home" onClick={mockOnClick} disabled />);
+        render(<IconCard title="Title" icon={icon} onClick={mockOnClick} disabled />);
 
         const card = screen.getByRole('button', {name: /title/i});
         userEvent.click(card);
@@ -87,7 +81,7 @@ describe('IconCard', () => {
     });
 
     it('does not have a pointer cursor if no click handler is set', () => {
-        render(<IconCard title="Title" svgName="home" />);
+        render(<IconCard title="Title" icon={icon} />);
 
         expect(screen.getByRole('button', {name: /title/i})).not.toHaveClass('cursor-pointer');
     });
@@ -96,7 +90,7 @@ describe('IconCard', () => {
         render(
             <IconCard
                 title="Title"
-                svgName="home"
+                icon={icon}
                 choices={[
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
@@ -105,7 +99,7 @@ describe('IconCard', () => {
             />
         );
 
-        const card = screen.getByRole('button', {name: /home icon title/i});
+        const card = screen.getByRole('button', {name: /title/i});
         expect(card).toHaveClass('cursor-pointer');
         userEvent.click(card);
         expect(card).not.toHaveClass('cursor-pointer');
@@ -115,7 +109,7 @@ describe('IconCard', () => {
         render(
             <IconCard
                 title="Title"
-                svgName="home"
+                icon={icon}
                 choices={[
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
@@ -129,14 +123,14 @@ describe('IconCard', () => {
         expect(card).toHaveAttribute('aria-expanded', 'true');
     });
 
-    it('shows icons in the drawer when clicking on it', () => {
+    it('shows icons in the drawer when clicking on it', async () => {
         render(
             <IconCard
                 title="Title"
-                svgName="home"
+                icon={icon}
                 choices={[
-                    {label: '🍌', value: 'banana', svgChild},
-                    {label: '🍎', value: 'apple', icon: 'add'},
+                    {label: '🍌', value: 'banana', icon: RemoveSize16Px},
+                    {label: '🍎', value: 'apple', icon: AddSize16Px},
                 ]}
             />
         );
@@ -144,15 +138,15 @@ describe('IconCard', () => {
         const card = screen.getByRole('button', {name: /title/i});
         userEvent.click(card);
 
-        expect(screen.getByRole('img', {name: /add icon/i})).toBeVisible();
-        expect(screen.getByRole('img', {name: /shrug icon/i})).toBeVisible();
+        expect(await screen.findByRole('img', {name: /add/i})).toBeVisible();
+        expect(await screen.findByRole('img', {name: /remove/i})).toBeVisible();
     });
 
     it('collapses the drawer when the mouse leaves the icon card', () => {
         const {container} = render(
             <IconCard
                 title="Title"
-                svgName="home"
+                icon={icon}
                 choices={[
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
@@ -171,7 +165,7 @@ describe('IconCard', () => {
         render(
             <IconCard
                 title="Title"
-                svgName="home"
+                icon={icon}
                 choices={[
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
@@ -194,7 +188,7 @@ describe('IconCard', () => {
         render(
             <IconCard
                 title="Title"
-                svgName="home"
+                icon={icon}
                 onClick={mockOnClick}
                 choices={[
                     {label: '🍌', value: 'banana'},
@@ -215,7 +209,7 @@ describe('IconCard', () => {
         render(
             <IconCard
                 title="Title"
-                svgName="home"
+                icon={icon}
                 onClick={mockOnClick}
                 choices={[
                     {label: '🍌', value: 'banana', disabled: true},
@@ -240,7 +234,7 @@ describe('IconCard', () => {
         render(
             <IconCard
                 title="Title"
-                svgName="home"
+                icon={icon}
                 small
                 choices={[
                     {label: '🍌', value: 'banana', disabled: true},
@@ -257,7 +251,7 @@ describe('IconCard', () => {
 
     it('renders the children inside the card if specified', () => {
         render(
-            <IconCard title="Title" svgName="home" small>
+            <IconCard title="Title" icon={icon} small>
                 child
             </IconCard>
         );
@@ -267,14 +261,14 @@ describe('IconCard', () => {
     });
 
     it('animates the card on hover if animateOnHover prop is true', () => {
-        const {container} = render(<IconCard title="Title" svgName="home" animateOnHover />);
+        const {container} = render(<IconCard title="Title" icon={icon} animateOnHover />);
 
         const card = container.querySelector('.icon-card');
         expect(card).toHaveClass('animateOnHover');
     });
 
     it('does not animates the card on hover if disabled', () => {
-        const {container} = render(<IconCard title="Title" svgName="home" animateOnHover disabled />);
+        const {container} = render(<IconCard title="Title" icon={icon} animateOnHover disabled />);
 
         const card = container.querySelector('.icon-card');
         expect(card).not.toHaveClass('animateOnHover');
@@ -282,7 +276,7 @@ describe('IconCard', () => {
 
     it('does not render the badges within the main content container if placeBadgesAbove is false', () => {
         const badgeLabel = 'Badge1';
-        render(<IconCard title="Title" svgChild={svgChild} badges={[{label: badgeLabel, type: BadgeType.Success}]} />);
+        render(<IconCard title="Title" icon={icon} badges={[{label: badgeLabel, type: BadgeType.Success}]} />);
 
         const contentContainer = screen.getByTestId('main-content');
         expect(within(contentContainer).queryByText(badgeLabel)).not.toBeInTheDocument();
@@ -293,7 +287,7 @@ describe('IconCard', () => {
         render(
             <IconCard
                 title="Title"
-                svgChild={svgChild}
+                icon={icon}
                 badges={[{label: badgeLabel, type: BadgeType.Success}]}
                 placeBadgesAbove
             />
@@ -304,7 +298,7 @@ describe('IconCard', () => {
     });
 
     it('should add the given class to the container button if cardClasses is defined', () => {
-        render(<IconCard title="Title" svgChild={svgChild} cardClassName={['mod-fixed-size']} />);
+        render(<IconCard title="Title" icon={icon} cardClassName={['mod-fixed-size']} />);
 
         const card = screen.getByRole('button', {name: /title/i});
         expect(card).toHaveClass('mod-fixed-size');
