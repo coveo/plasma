@@ -1,4 +1,5 @@
-import {Section, Svg} from '@coveord/plasma-react';
+import {LinkSvg, Section} from '@coveord/plasma-react';
+import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {NextPage} from 'next';
 import Head from 'next/head';
 import {FC} from 'react';
@@ -28,18 +29,16 @@ const WelcomeToPlasma: FC = () => (
             <div>Coveo’s platform design system & ionized Vapor.</div>
             <div>
                 Learn more about our brand, our values and our story by visiting our{' '}
-                <a href="https://brand.coveo.com/" target="_blank" className="link inline-flex">
+                <LinkSvg icon={ExternalSize16Px} url="https://brand.coveo.com/">
                     brand page
-                    <Svg svgName="external" svgClass="icon mod-14" style={{marginLeft: '4px'}} />
-                </a>
+                </LinkSvg>
                 .
             </div>
             <div>
                 Be part of the progress! Contribute to Plasma on{' '}
-                <a href="https://github.com/coveo/plasma#readme" target="_blank" className="link inline-flex">
+                <LinkSvg icon={ExternalSize16Px} url="https://github.com/coveo/plasma#readme">
                     GitHub
-                    <Svg svgName="external" svgClass="icon mod-14" style={{marginLeft: '4px'}} />
-                </a>
+                </LinkSvg>
                 .
             </div>
         </div>
