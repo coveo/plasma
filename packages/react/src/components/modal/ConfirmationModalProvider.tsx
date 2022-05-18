@@ -67,8 +67,8 @@ const ConfirmationModalProviderDisconnected: FunctionComponent<
                 modalBodyChildren={modalBodyChildren}
                 modalFooterChildren={
                     <>
-                        <Button small name={confirmButtonText} onClick={confirm} primary />
                         <Button small autoFocus name="Cancel" onClick={closePrompt} />
+                        <Button small name={confirmButtonText} onClick={confirm} primary />
                     </>
                 }
             />
