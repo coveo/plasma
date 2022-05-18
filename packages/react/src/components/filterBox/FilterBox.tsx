@@ -168,6 +168,7 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                             hidden: this.filterInput?.value,
                         })}
                         svgClass="icon"
+                        aria-hidden={this.filterInput?.value.length === 0}
                     />
                     <Svg
                         svgName="clear"
@@ -176,6 +177,7 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                         })}
                         svgClass="icon"
                         onClick={() => this.clearValue()}
+                        aria-hidden={this.filterInput?.value.length !== 0}
                     />
                 </div>
                 {this.props.children}
