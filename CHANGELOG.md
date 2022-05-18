@@ -1,3 +1,39 @@
+## 41.5.1-next.1 (2022-05-18)
+
+
+### Bug Fixes
+
+* **react:** remove extra padding for icon only badge ([b3a368b](https://github.com/coveo/plasma/commits/b3a368ba1f8fbdffbc2ba065b486f22763d71c8f))
+
+
+### Code Refactoring
+
+* **react,website:** remove Svg from SideNavigation components ([7801fd2](https://github.com/coveo/plasma/commits/7801fd2843843102e6d85ad67a8756b6026b876f))
+* **react:** remove Svg from BlankSlate ([fe1cf87](https://github.com/coveo/plasma/commits/fe1cf87f7c3899dda686b55113f06e075a6f84df))
+* **react:** remove Svg from IconCard ([81a5e6a](https://github.com/coveo/plasma/commits/81a5e6aa4a35f81325d7323f8b04ef7858ac390e))
+
+
+### Features
+
+* **react-icons:** write Icon type manually ([f801efe](https://github.com/coveo/plasma/commits/f801efe2fb6d0541ca7991854edb004e7defd2de))
+* **react:** delete Svg and SvgChild components ([1252162](https://github.com/coveo/plasma/commits/12521629bd1a3b5a6a8c8459479e7c8cb725e827))
+
+
+### BREAKING CHANGES
+
+* **react,website:** svgName and svgClass props no longer exist, use icon prop instead
+* **react:** icon prop for choices now expects an icon from the iconography, .mod-fixed-size is
+getting removed, that doesn't belong in plasma
+* **react:** Blankslates no longer have svgName and svgClass props, use icon prop instead
+
+fix(website): use Icons in BlankSlate examples
+* **react:** Svg and SvgChild no longer exist, either use icons from plasma-react-icons or img
+tag with an svg from plasma-style
+
+fix: linkSvg path changed
+
+
+
 ## 41.5.1-next.0 (2022-05-16)
 
 
