@@ -3,14 +3,16 @@
 .filter-container {
     --container-width: 320px;
     --border-color: var(--grey-40);
+    --background-color: var(--white);
+    --icon-color: var(--grey-80);
 
     position: relative;
     align-items: center;
     justify-content: center;
     width: var(--container-width);
     height: 40px;
-    padding: 16px 10px;
-    background-color: var(--white);
+    padding: 10px 16px;
+    background-color: var(--background-color);
     border: 1px solid var(--border-color);
     border-radius: 8px;
 
@@ -23,6 +25,12 @@
         box-shadow: 0px 0px 0px 4px var(--digital-blue-20);
     }
 
+    &.disabled {
+        --background-color: var(--grey-20);
+        --icon-color: var(--grey-60);
+        pointer-events: none;
+    }
+
     &.mod-small {
         --container-width: $filter-box-width-mod-small;
 
@@ -33,7 +41,6 @@
 
     > .filter-box-icon {
         position: relative;
-        padding: 0 8px;
 
         &.hidden {
             display: none;
@@ -42,7 +49,7 @@
         & svg {
             width: 24px;
             height: 24px;
-            fill: var(--grey-80);
+            fill: var(--icon-color);
         }
     }
 

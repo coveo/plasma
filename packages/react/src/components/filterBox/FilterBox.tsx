@@ -39,6 +39,12 @@ export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {
      */
     isAutoFocus?: boolean;
     /**
+     * Wheter to disabled the filter box
+     *
+     * @default false
+     */
+    disabled?: boolean;
+    /**
      * The maximum width in px of the filter box
      */
     maxWidth?: number;
@@ -82,12 +88,11 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
 
     static defaultProps: Partial<IFilterBoxProps> = {
         isAutoFocus: false,
+        disabled: false,
     };
 
     private handleChange = (nextInputValue: string) => {
         this.filterInput.value = nextInputValue;
-        // this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
-
         this.props.onFilterCallback?.(this.props.id, this.filterInput.value);
         this.props.onFilter?.(this.props.id, this.filterInput.value);
     };
@@ -121,7 +126,11 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
     render() {
         const inputMaxWidth = {maxWidth: `${this.props.maxWidth}px`};
         const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
-        const filterBoxContainerClasses = classNames('flex filter-container', this.props.containerClasses);
+        const filterBoxContainerClasses = classNames(
+            'flex filter-container',
+            {disabled: this.props.disabled},
+            this.props.containerClasses
+        );
         const filterInputClasses = classNames('flex filter-box', {truncate: this.props.truncate});
 
         return (
@@ -151,6 +160,7 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                         onKeyDown={this.props.onKeyDown}
                         onKeyUp={this.props.onKeyUp}
                         style={inputMaxWidth}
+                        disabled={this.props.disabled}
                     />
                     <Svg
                         svgName="filter"
