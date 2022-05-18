@@ -43,7 +43,6 @@ const Header = () => (
         <StandaloneSearchBar />
         <div className="right-side">
             <a href="https://github.com/coveo/plasma#readme" aria-label="README" target="_blank">
-                {/* <PlasmaReact.Svg svgName="githubMark" svgClass="icon mod-32 mod-white" /> */}
                 <img src={githubLogo} width={32} height={32} className="invert" />
             </a>
         </div>
