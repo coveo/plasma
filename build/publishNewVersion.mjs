@@ -26,8 +26,8 @@ const BUMP_TYPES = ['major', 'minor', 'patch', 'prerelease'];
 const program = new Command();
 program
     .option('--dry', 'dry run', false)
-    .option('--tag', 'tag to use on NPM', 'latest')
-    .option('--branch', 'allow deploy on branch', 'master')
+    .option('--tag <tag>', 'tag to use on NPM', 'latest')
+    .option('--branch <branch>', 'allow deploy on branch', 'master')
     .addOption(
         new Option('--bump <type>', 'bump a <type> version instead of reliying on commit messages').choices(BUMP_TYPES)
     );
@@ -105,6 +105,9 @@ const outputProcess = (process) => {
 
                 console.log(`Publishing version ${versionTag} on NPM`);
                 outputProcess(pnpmPublish(lastTag, options.tag, options.branch));
+            } else {
+                console.log('Would have called pnpmPublish with the following arguments:');
+                console.log(`pnpmPublish(${lastTag}, ${options.tag}, ${options.branch})`);
             }
         }
     } else {
