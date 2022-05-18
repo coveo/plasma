@@ -1,3 +1,12 @@
+# 41.9.0 (2022-05-18)
+
+
+### Features
+
+* **subnav:** add a description in subnav ([#2747](https://github.com/coveo/plasma/issues/2747)) ([7bbc4ba](https://github.com/coveo/plasma/commits/7bbc4ba95c08e0e94099db0224ba2544a0e04c46))
+
+
+
 ## 41.8.1 (2022-05-18)
 
 
