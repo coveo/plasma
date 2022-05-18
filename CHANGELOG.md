@@ -1,3 +1,12 @@
+# 41.8.0 (2022-05-18)
+
+
+### Features
+
+* **checkbox:** enhance CheckboxSelectors ([#2667](https://github.com/coveo/plasma/issues/2667)) ([c0785e4](https://github.com/coveo/plasma/commits/c0785e4f0515596eed69caa54daede2834bea9b8))
+
+
+
 # 41.7.0 (2022-05-18)
 
 
