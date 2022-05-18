@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import {ReactNode, FunctionComponent, ComponentClass, useState, useEffect, createElement} from 'react';
 import * as _ from 'underscore';
+import {LoadingSpinner} from '../loading/LoadingSpinner';
 
 import {Svg} from '../svg/Svg';
 
@@ -130,7 +131,7 @@ export const Toast: FunctionComponent<IToastProps> = ({
             <div className="toast-description">
                 <div className="flex space-between">
                     {children}
-                    <div className="spinner" />
+                    <LoadingSpinner />
                 </div>
             </div>
         </div>

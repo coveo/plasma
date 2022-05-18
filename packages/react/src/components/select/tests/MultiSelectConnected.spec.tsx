@@ -1,7 +1,6 @@
 /* eslint-disable testing-library/no-container */
+import {fireEvent, render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import {fireEvent, render, screen, within, act} from '@test-utils';
-
 import {MultiSelectConnected} from '../MultiSelectConnected';
 
 describe('Select', () => {
@@ -266,6 +265,21 @@ describe('Select', () => {
                 expect(listitems[0]).toHaveTextContent('🌱');
                 expect(listitems[1]).toHaveTextContent('🍟');
                 expect(listitems[2]).toHaveTextContent('🥔');
+            });
+
+            it('is possible to remove a selected item', () => {
+                const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
+                render(<MultiSelectConnected id={id} items={items} sortable />);
+
+                let listitems = screen.getAllByRole('listitem');
+                expect(listitems[0]).toHaveTextContent('🌱');
+                expect(listitems[1]).toHaveTextContent('🥔');
+
+                userEvent.click(within(listitems[0]).getByRole('button'));
+
+                listitems = screen.getAllByRole('listitem');
+                expect(listitems.length).toBe(1);
+                expect(listitems[0]).toHaveTextContent('🥔');
             });
         });
     });

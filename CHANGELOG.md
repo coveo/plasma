@@ -1,3 +1,31 @@
+## 41.6.2 (2022-05-17)
+
+
+### Bug Fixes
+
+* **draggableselectedoption:** removeOnClick prop was not defined ([#2750](https://github.com/coveo/plasma/issues/2750)) ([dd6b2aa](https://github.com/coveo/plasma/commits/dd6b2aafc1c0f9e6e35afce66ba431300945589d))
+* **react:** remove extra padding for icon only badge ([cb12007](https://github.com/coveo/plasma/commits/cb12007fab37d878f78eacf4a18c390ad816d6db))
+
+
+
+## 41.6.1 (2022-05-17)
+
+
+### Bug Fixes
+
+* **navigation:** revert css style for state-locked nav ([#2746](https://github.com/coveo/plasma/issues/2746)) ([e92b164](https://github.com/coveo/plasma/commits/e92b1642917fb1aa9e103530d40e3673562a10f4))
+
+
+
+# 41.6.0 (2022-05-17)
+
+
+### Features
+
+* **loadingSpinner:** extracted in a new component ([#2745](https://github.com/coveo/plasma/issues/2745)) ([3121fbc](https://github.com/coveo/plasma/commits/3121fbcaf6315067d7b94926f49e6bd2eebe0e75))
+
+
+
 # 41.5.0 (2022-05-16)
 
 

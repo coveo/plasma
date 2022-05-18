@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "41.5.0",
+    "version": "41.6.2",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -117,6 +117,7 @@
         "@types/redux-logger": "3.0.9",
         "@types/redux-mock-store": "1.0.3",
         "@types/redux-promise-middleware": "6.0.0",
+        "@types/testing-library__jest-dom": "5.14.3",
         "@types/underscore": "1.8.10",
         "@types/underscore.string": "0.0.38",
         "@typescript-eslint/eslint-plugin": "5.21.0",
