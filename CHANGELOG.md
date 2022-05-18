@@ -1,3 +1,12 @@
+## 41.9.1 (2022-05-18)
+
+
+### Bug Fixes
+
+* **unsaved change modal:** button layout ([#2755](https://github.com/coveo/plasma/issues/2755)) ([3259e57](https://github.com/coveo/plasma/commits/3259e57eb36b26b76d7ac8d8aa64cf4f528811ba))
+
+
+
 # 41.9.0 (2022-05-18)
 
 
