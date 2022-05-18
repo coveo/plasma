@@ -1,4 +1,8 @@
 .tooltip {
+    --tooltip-color: rgba(var(--navy-blue-60-rgb), 0.94);
+    --arrow-size: 4px;
+    --tooltip-gap: 8px;
+
     position: absolute;
     z-index: 100000;
     display: block;
@@ -11,19 +15,64 @@
         opacity: 1;
     }
 
+    .tooltip-arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+
     &.top,
-    &.bottom,
-    &[data-popper-placement='top'],
-    &[data-popper-placement='bottom'] {
-        margin: 12px 0;
-        padding: 6px 0;
+    &[data-popper-placement='top'] {
+        margin-bottom: var(--tooltip-gap);
+        padding: var(--arrow-size) 0;
+
+        .tooltip-arrow {
+            bottom: 0;
+            margin-left: calc(-1 * var(--arrow-size));
+            border-width: var(--arrow-size) var(--arrow-size) 0;
+            border-top-color: var(--tooltip-color);
+        }
     }
 
     &.right,
+    &[data-popper-placement='right'] {
+        margin-left: var(--tooltip-gap);
+        padding: 0 var(--arrow-size);
+
+        .tooltip-arrow {
+            left: 0;
+            margin-top: calc(-1 * var(--arrow-size));
+            border-width: var(--arrow-size) var(--arrow-size) var(--arrow-size) 0;
+            border-right-color: var(--tooltip-color);
+        }
+    }
+
+    &.bottom,
+    &[data-popper-placement='bottom'] {
+        margin-top: var(--tooltip-gap);
+        padding: var(--arrow-size) 0;
+
+        .tooltip-arrow {
+            top: 0;
+            margin-left: calc(-1 * var(--arrow-size));
+            border-width: 0 var(--arrow-size) var(--arrow-size);
+            border-bottom-color: var(--tooltip-color);
+        }
+    }
+
     &.left,
-    &[data-popper-placement='right'],
     &[data-popper-placement='left'] {
-        padding: 0 6px;
+        margin-right: var(--tooltip-gap);
+        padding: 0 var(--arrow-size);
+
+        .tooltip-arrow {
+            right: 0;
+            margin-top: calc(-1 * var(--arrow-size));
+            border-width: var(--arrow-size) 0 var(--arrow-size) var(--arrow-size);
+            border-left-color: var(--tooltip-color);
+        }
     }
 
     .tooltip-inner {
@@ -34,10 +83,11 @@
         white-space: normal;
         text-decoration: none;
         word-wrap: break-word;
-        background-color: rgba(var(--navy-blue-60-rgb), 0.8);
-        border: 1px solid var(--navy-blue-60);
+        background-color: var(--tooltip-color);
+        border-color: var(--tooltip-color);
         border-radius: 8px;
-        box-shadow: 0px 8px 24px hsla(240, 28%, 35%, 0.53);
+        filter: drop-shadow(0px 8px 24px rgba(var(--navy-blue-70-rgb), 0.53));
+        backdrop-filter: blur(2px);
     }
 }
 
