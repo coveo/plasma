@@ -18,10 +18,24 @@
                 color: var(--title-text-color);
                 line-height: $sub-navigation-line-height;
 
+                &-with-description {
+                    display: block;
+                    padding: 0 40px;
+
+                    &-label {
+                        @extend .body-l;
+                        padding: 16px 0;
+                    }
+                }
                 &.disabled {
                     color: var(--deprecated-medium-grey);
                     cursor: default;
                 }
+            }
+
+            &-description {
+                display: block;
+                padding: 0 40px 24px;
             }
 
             &.mod-selected {
