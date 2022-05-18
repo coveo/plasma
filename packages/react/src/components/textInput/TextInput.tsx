@@ -148,7 +148,7 @@ export const TextInput: FunctionComponent<
                     className="text-input-box flex flex-column justify-center"
                     onClick={() => inputElement.current.focus()}
                 >
-                    <label className="body-s-book-subdued cursor-text" htmlFor={id}>
+                    <label className="caption-label cursor-text" htmlFor={id}>
                         {inputProps.required ? label : `${label} (Optional)`}
                     </label>
                     <input
