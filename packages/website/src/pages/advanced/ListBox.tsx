@@ -1,5 +1,7 @@
 import code from '@examples/ListBox/main.example.tsx';
+import emptyExample from '@examples/ListBox/empty.example.tsx';
 import loadingExample from '../../examples/ListBox/loading.example.tsx';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 export default () => (
@@ -12,6 +14,7 @@ export default () => (
         code={code}
         examples={{
             loading: {code: loadingExample, title: 'Loading'},
+            empty: {code: emptyExample, title: 'Empty state'},
         }}
     />
 );

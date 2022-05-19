@@ -1,13 +1,14 @@
 .list-box {
+    --background-color: var(white);
+
     z-index: 1000;
     min-width: 100%;
-    min-height: $list-box-min-height;
     max-height: $list-box-max-height;
 
     margin: 0;
-    padding: 8px 0px 16px;
+    padding: 8px 0px;
     overflow-y: auto;
-    background-color: var(--white);
+    background-color: var(--background-color);
     border: $default-border;
     border-radius: 8px;
 
@@ -42,11 +43,8 @@
     &.active {
         --background-color: #e3f1ff;
         --color: var(--digital-blue-80);
-        border: 1px solid var(--digital-blue-20);
-    }
-
-    &:focus {
-        border-color: var(--deprecated-turquoise); // ???? remove or new color
+        border-top: 1px solid var(--digital-blue-20);
+        border-bottom: 1px solid var(--digital-blue-20);
     }
 
     &.disabled {
