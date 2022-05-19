@@ -38,7 +38,6 @@ const momentJsTypes = require.context('!!raw-loader!moment', true, /\.d\.ts$/i, 
 const reduxTypes = require.context('!!raw-loader!redux', true, /\.d\.ts$/i, 'lazy-once');
 const loremIpsumTypes = require.context('!!raw-loader!lorem-ipsum/types/src', true, /\.d\.ts$/i, 'lazy-once');
 const rcSliderTypes = require.context('!!raw-loader!rc-slider/es', true, /\.d\.ts$/i, 'lazy-once');
-const reactDiffViewerTypes = require.context('!!raw-loader!react-diff-viewer/lib', true, /\.d\.ts$/i, 'lazy-once');
 const load = async (path: string, ctx: any, root: string) => {
     const {default: content} = await ctx(path);
     let newPath = `${root}/${path.replace('./', '')}`;
@@ -56,7 +55,6 @@ const loadAll: Promise<Map<string, string>> = Promise.all([
     ...typesFiles.keys().map((path) => load(path, typesFiles, '/node_modules/@types')),
     ...loremIpsumTypes.keys().map((path) => load(path, loremIpsumTypes, '/node_modules/lorem-ipsum')),
     ...reduxTypes.keys().map((path) => load(path, reduxTypes, '/node_modules/redux')),
-    ...reactDiffViewerTypes.keys().map((path) => load(path, reactDiffViewerTypes, '/node_modules/react-diff-viewer')),
     ...rcSliderTypes.keys().map((path) => load(path, rcSliderTypes, '/node_modules/rc-slider')),
     ...plasmaTypes.keys().map((path) => load(path, plasmaTypes, '/node_modules/@coveord/plasma-react')),
     ...plasmaReactIconsTypes

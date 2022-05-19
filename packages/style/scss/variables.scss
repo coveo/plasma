@@ -37,7 +37,7 @@ $default-line-height: 16px;
 $big-line-height: 21px;
 $code-font-size: 14px;
 $base-font-family: var(--main-font);
-$code-font-family: source_code_pro_regular, 'Courier New', Courier, monospace;
+$code-font-family: var(--code-font);
 $standard-line-height: 1.35em;
 $help-text-font-size: 14px;
 $help-text-line-height: 17px;
