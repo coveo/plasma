@@ -57,7 +57,7 @@ export class ItemBox extends Component<IItemBoxProps> {
 
     private getClasses(): string {
         return classNames(
-            'body-m-book item-box',
+            'body-m-book flex flex-center item-box',
             {
                 selected: this.props.selected,
                 active: this.props.active,

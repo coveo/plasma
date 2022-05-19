@@ -1,9 +1,9 @@
 .list-box {
     z-index: 1000;
     min-width: 100%;
-    min-height: 88px;
-
+    min-height: $list-box-min-height;
     max-height: $list-box-max-height;
+
     margin: 0;
     padding: 8px 0px 16px;
     overflow-y: auto;
@@ -19,7 +19,9 @@
 .item-box {
     --background-color: var(--white);
     --color: var(--default-text-color);
+    gap: 9px;
 
+    height: 32px;
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
     overflow: hidden;
     color: var(--color);
@@ -27,6 +29,7 @@
     text-overflow: ellipsis;
     list-style: none;
     background-color: var(--background-color);
+    outline: none;
 
     cursor: pointer;
 
@@ -43,7 +46,7 @@
     }
 
     &:focus {
-        border-color: var(--deprecated-turquoise);
+        border-color: var(--deprecated-turquoise); // ???? remove or new color
     }
 
     &.disabled {
@@ -60,9 +63,8 @@
         height: $item-box-divider-height;
         margin: $item-box-vertical-spacing 0;
         padding: 0;
-        --background-color: var(--deprecated-medium-grey);
-
         cursor: default;
+        --background-color: var(--deprecated-medium-grey);
     }
 
     .prepend,
