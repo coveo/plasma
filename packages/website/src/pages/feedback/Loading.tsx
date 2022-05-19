@@ -15,7 +15,7 @@ const fullContent = `
 const loadingSpinner = `
     import {LoadingSpinner} from '@coveord/plasma-react';
 
-    export default () => <LoadingSpinner />
+    export default () => <div className="flex justify-center"><LoadingSpinner /></div>
 `;
 
 export default () => (
