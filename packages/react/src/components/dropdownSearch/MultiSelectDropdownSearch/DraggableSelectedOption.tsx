@@ -1,7 +1,6 @@
 import {DragAndDropSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
-
 import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
 export interface IDraggableSelectedOptionOwnProps {
@@ -21,6 +20,7 @@ export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOption
     readOnly,
     value,
     onMoveOver,
+    onRemoveClick,
 }) => {
     const dropRef = useRef<HTMLDivElement>();
     const [, drop] = useDrop(() => ({
@@ -47,6 +47,7 @@ export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOption
                 label={isDragging ? null : label}
                 selectedTooltip={selectedTooltip}
                 readOnly={readOnly}
+                onRemoveClick={onRemoveClick}
                 prepend={
                     !readOnly && (
                         <div

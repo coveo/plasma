@@ -1,7 +1,9 @@
+import custom from '@examples/SubNavigation/custom.example.tsx';
+import customWithDesc from '@examples/SubNavigation/customWithDesc.example.tsx';
+import defaultSelected from '@examples/SubNavigation/defaultSelected.example.tsx';
+import code from '@examples/SubNavigation/main.example.tsx';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
-import code from '../../examples/SubNavigation/main.example.tsx';
-import defaultSelected from '../../examples/SubNavigation/defaultSelected.example.tsx';
-import custom from '../../examples/SubNavigation/custom.example.tsx';
 
 export const SubNavigationExamples = () => (
     <PageLayout
@@ -15,6 +17,7 @@ export const SubNavigationExamples = () => (
         examples={{
             defaultSelected: {code: defaultSelected, title: 'Default selected'},
             custom: {code: custom, title: 'Custom JSX labels and disabled item'},
+            customWithDesc: {code: customWithDesc, title: 'When there are descriptions in Sub Nav'},
         }}
     />
 );

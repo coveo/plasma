@@ -108,7 +108,7 @@ const ContentDivision: FunctionComponent<Omit<LimitOwnProps, 'title'> & {current
 const UsageDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage}) => (
     <div className="limit-box-usage">
         <label className="form-control-label">Usage</label>
-        <span className="limit-box-usage-value">{usage ?? 0}</span>
+        <span className="limit-box-usage-value">{Number(usage ?? 0).toLocaleString()}</span>
     </div>
 );
 
@@ -135,7 +135,7 @@ const LimitDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
     ) : (
         <div className="limit-box-limit">
             <label className="form-control-label">{limitLabel}</label>
-            <span className="limit-box-limit-value">{limit}</span>
+            <span className="limit-box-limit-value">{Number(limit ?? 0).toLocaleString()}</span>
         </div>
     );
 };

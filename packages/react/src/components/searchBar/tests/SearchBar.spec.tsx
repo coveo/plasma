@@ -1,121 +1,102 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import {mount, shallow} from 'enzyme';
-
-import {keyCode} from '../../../utils/InputUtils';
+import {shallow} from 'enzyme';
 import {SearchBar} from '../SearchBar';
 import {searchBarPropsScenarios} from './SearchBarPropsScenarios.mock';
 
 describe('SearchBar', () => {
     const requiredProps = {...searchBarPropsScenarios[0]};
-    afterEach(() => {
-        jest.restoreAllMocks();
-    });
 
-    it('should not throw on render', () => {
+    it('does not throw', () => {
         expect(() => {
-            searchBarPropsScenarios.forEach((props) => shallow(<SearchBar {...props} />));
+            searchBarPropsScenarios.forEach((props) => render(<SearchBar {...props} />));
         }).not.toThrow();
     });
 
-    it('should have a container div with the search-bar class and without the search-bar-loading and search-bar-disabled classes by default', () => {
-        const containerDiv = shallow(<SearchBar {...requiredProps} />)
-            .find('div')
-            .first();
+    it('render the search bar', async () => {
+        render(<SearchBar {...requiredProps} />);
 
-        expect(containerDiv.hasClass('search-bar')).toBe(true);
-        expect(containerDiv.hasClass('search-bar-loading')).toBe(false);
-        expect(containerDiv.hasClass('search-bar-disabled')).toBe(false);
+        expect(screen.getByRole('textbox')).toBeInTheDocument();
+        expect(await screen.findByRole('img', {name: 'search'})).toBeInTheDocument();
     });
 
-    it('should have a container div with search-bar-loading class when searching is passed as prop', () => {
-        const containerDiv = shallow(<SearchBar {...requiredProps} searching />)
-            .find('div')
-            .first();
+    it('renders a loading animation when is searching', () => {
+        render(<SearchBar {...requiredProps} searching />);
 
-        expect(containerDiv.hasClass('search-bar-loading')).toBe(true);
+        expect(screen.getByRole('alert')).toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: 'search'})).not.toBeInTheDocument();
     });
 
-    it('should have a container div with search-bar-disabled class when disabled is passed as prop', () => {
-        const containerDiv = shallow(<SearchBar {...requiredProps} disabled />)
-            .find('div')
-            .first();
+    it('render a disabled search box if disabled is true', () => {
+        render(<SearchBar {...requiredProps} disabled />);
 
-        expect(containerDiv.hasClass('search-bar-disabled')).toBe(true);
+        expect(screen.getByRole('textbox')).toBeDisabled();
     });
 
-    it('should add the extra container classes if passed as prop', () => {
+    it('render the search with extra classes', () => {
         const containerDiv = shallow(<SearchBar {...requiredProps} containerClassNames="extra-class" />)
             .find('div')
             .first();
 
-        expect(containerDiv.hasClass('extra-class')).toBe(true);
+        expect(containerDiv.prop('className')).toContain('extra-class');
     });
 
-    it('should have an input inside the div container with the search-bar-input class by default', () => {
-        const component = shallow(<SearchBar {...requiredProps} />);
+    it('render the input of the search bar with extra classes', () => {
+        render(<SearchBar {...requiredProps} inputClassNames="extra-class" />);
 
-        expect(component.find('div').first().find('input').prop('className')).toBe('search-bar-input');
+        expect(screen.getByRole('textbox')).toHaveClass('extra-class');
     });
 
-    it('should have an input inside the div container with extra classes if passed as props', () => {
-        const component = shallow(<SearchBar {...requiredProps} inputClassNames="extra-class" />);
+    it('calls onSearch when user click on the search icon', async () => {
+        const searchSpy = jest.fn();
 
-        expect(component.find('div').first().find('input').prop('className')).toContain('extra-class');
-    });
-
-    it('should have a clickable span containing an svg by default, which when clicked, the search method is called', async () => {
-        const searchSpy = jest.spyOn(SearchBar.prototype as any, 'search');
-        render(<SearchBar {...requiredProps} />);
-        const searchIcon = await screen.findByRole('img', {name: /search/i});
-
-        userEvent.click(searchIcon);
+        render(<SearchBar onSearch={searchSpy} />);
+        userEvent.click(await screen.findByRole('img', {name: 'search'}));
 
         expect(searchSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should have an unclickable grey search svg if SearchBar is disabled', async () => {
-        const searchSpy = jest.spyOn(SearchBar.prototype as any, 'search');
-        render(<SearchBar {...requiredProps} disabled />);
+    it('calls onSearch if user press enter', () => {
+        const searchSpy = jest.fn();
 
-        const searchIcon = await screen.findByRole('img', {name: /search/i});
-        expect(searchIcon).toBeInTheDocument();
-        expect(searchIcon).toHaveClass('search-icon-disabled');
-
-        userEvent.click(searchIcon);
-
-        expect(searchSpy).not.toHaveBeenCalled();
-    });
-
-    it('should have an unclickable loading animation if searching is passed as prop', () => {
-        const component = shallow(<SearchBar {...requiredProps} searching />);
-
-        expect(component.find('div .search-bar-icon-container span').length).toBe(0);
-        expect(component.find('div .search-bar-icon-container .search-bar-spinner').length).toBe(1);
-    });
-
-    it('should call onChange on input change if it is defined', () => {
-        const onChange = jest.fn();
-        const props = {...requiredProps, onChange};
-        const component = mount(<SearchBar {...props} />);
-        component.find('input').simulate('change');
-
-        expect(onChange).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call search on enter keyup', () => {
-        const searchSpy = jest.spyOn(SearchBar.prototype as any, 'search');
-        const component = mount(<SearchBar {...requiredProps} />);
-        component.find('input').simulate('keyup', {keyCode: keyCode.enter} as any);
+        render(<SearchBar onSearch={searchSpy} />);
+        userEvent.click(screen.getByRole('textbox'));
+        userEvent.keyboard('{enter}');
 
         expect(searchSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call search on keyups other than enter', () => {
-        const searchSpy = jest.spyOn(SearchBar.prototype as any, 'search');
-        const component = mount(<SearchBar {...requiredProps} />);
-        component.find('input').simulate('keyup', {keyCode: keyCode.leftArrow} as any);
+    it('dont call onSearch will the user is typing', () => {
+        const searchSpy = jest.fn();
+
+        render(<SearchBar onSearch={searchSpy} />);
+        userEvent.click(screen.getByRole('textbox'));
+        userEvent.keyboard('Hello darkness my old friend');
 
         expect(searchSpy).not.toHaveBeenCalled();
+    });
+
+    it('dont calls onSearch if the search bar is disabled', async () => {
+        const searchSpy = jest.fn();
+
+        render(<SearchBar onSearch={searchSpy} disabled />);
+        userEvent.click(await screen.findByRole('img', {name: 'search'}));
+
+        expect(searchSpy).toHaveBeenCalledTimes(0);
+
+        userEvent.click(screen.getByRole('textbox'));
+        userEvent.keyboard('{enter}');
+
+        expect(searchSpy).toHaveBeenCalledTimes(0);
+    });
+
+    it('call onChange on input change if it is defined', () => {
+        const onChangeSpy = jest.fn();
+
+        render(<SearchBar onChange={onChangeSpy} />);
+        userEvent.click(screen.getByRole('textbox'));
+        userEvent.keyboard('hello darkness'); // 14 characters
+
+        expect(onChangeSpy).toHaveBeenCalledTimes(14);
     });
 });

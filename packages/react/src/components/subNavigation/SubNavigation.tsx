@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import {ReactNode, HTMLAttributes, FunctionComponent, MouseEvent, useEffect} from 'react';
+import {ReactNode, HTMLAttributes, FunctionComponent, MouseEvent, useEffect, createElement} from 'react';
 import {map, omit} from 'underscore';
+import {SlideY} from '../../animations';
 
 export interface ISubNavigationOwnProps {
     /**
@@ -15,6 +16,10 @@ export interface ISubNavigationOwnProps {
      * Element selected by default
      */
     defaultSelected?: string;
+    /**
+     * A small description that appears once the subNavigation selected
+     */
+    description?: string;
 }
 
 export interface ISubNavigationStateProps {
@@ -32,6 +37,7 @@ export interface ISubNavigationItem {
     label: ReactNode;
     disabled?: boolean;
     link?: string;
+    description?: string;
 }
 
 export interface ISubNavigationProps
@@ -71,22 +77,48 @@ export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttribut
     };
     const selectedItem = selected || defaultSelected;
 
-    const navItems = map(items, ({id, link, label, disabled}: ISubNavigationItem) => (
-        <li
-            key={id}
-            className={classNames('sub-navigation-item', {
-                'mod-selected': id === selectedItem,
-            })}
-        >
-            <a
-                href={link}
-                className={classNames('sub-navigation-item-link', {disabled})}
-                onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
-            >
-                {label}
-            </a>
-        </li>
-    ));
+    const navItemsContainDescription = items.some((item) => item.description);
+    const navItems = map(items, ({id, link, label, disabled, description}: ISubNavigationItem) => {
+        const openDescription = description && selectedItem === id;
+
+        if (navItemsContainDescription) {
+            return (
+                <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selectedItem})}>
+                    <a
+                        href={link}
+                        className={classNames('sub-navigation-item-link-with-description', {disabled})}
+                        onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+                    >
+                        {typeof label === 'string'
+                            ? createElement(
+                                  'div',
+                                  {
+                                      className: 'sub-navigation-item-link-with-description-label',
+                                  },
+                                  `${label}`
+                              )
+                            : label}
+                    </a>
+                    {description && (
+                        <SlideY in={openDescription}>
+                            <div className="sub-navigation-item-description body-m-book-subdued">{description}</div>
+                        </SlideY>
+                    )}
+                </li>
+            );
+        }
+        return (
+            <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selectedItem})}>
+                <a
+                    href={link}
+                    className={classNames('sub-navigation-item-link', {disabled})}
+                    onClick={(e: MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+                >
+                    {label}
+                </a>
+            </li>
+        );
+    });
 
     return (
         <nav {...navProps} className={classNames('sub-navigation', className)}>

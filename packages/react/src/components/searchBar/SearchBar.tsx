@@ -4,6 +4,7 @@ import {ChangeEvent, Component} from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {keyCode} from '../../utils/InputUtils';
+import {LoadingSpinner} from '../loading/LoadingSpinner';
 
 export interface ISearchBarConnectedProps {
     /**
@@ -152,7 +153,7 @@ export class SearchBar extends Component<ISearchBarProps> {
         const searchIcon = !this.props.searching ? (
             <SearchSize16Px height={16} className={this.props.disabled ? 'search-icon-disabled' : ''} />
         ) : (
-            <div className="search-bar-spinner"></div>
+            <LoadingSpinner small />
         );
 
         return !this.props.searching && !this.props.disabled ? (

@@ -1,4 +1,5 @@
 .search-bar {
+    display: flex;
     min-width: $search-bar-min-width;
     height: $input-height;
     border: $default-border;
@@ -20,9 +21,17 @@
 }
 
 .search-bar-icon-container {
-    margin: 8px;
-    color: var(--navy-blue-80);
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: $search-bar-icon-margin;
+
+    svg {
+        width: $search-bar-icon-size;
+        height: $search-bar-icon-size;
+        color: var(--navy-blue-80);
+        cursor: pointer;
+    }
 }
 
 .search-icon-disabled {
@@ -32,28 +41,4 @@
 
 .search-bar-loading .search-bar-icon-container {
     position: relative;
-}
-
-.search-bar-spinner {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    margin-top: 5px;
-    margin-left: 5px;
-    background: var(--gradient);
-    border-radius: 10rem;
-    animation: loading-spinner 1s linear infinite;
-
-    &:before {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 80%;
-        height: 80%;
-        background: var(--white);
-        border: 1px solid white;
-        border-radius: 10rem;
-        transform: translate(-50%, -50%);
-        content: '';
-    }
 }
