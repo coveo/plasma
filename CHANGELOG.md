@@ -1,3 +1,12 @@
+# 42.1.0 (2022-05-19)
+
+
+### Features
+
+* **tooltip:** add back the arrow ([#2757](https://github.com/coveo/plasma/issues/2757)) ([70fc410](https://github.com/coveo/plasma/commits/70fc410aac007dc2ef7ef91d8fedf4d7b27b79ba))
+
+
+
 ## 42.0.2 (2022-05-19)
 
 
