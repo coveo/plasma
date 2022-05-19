@@ -1,3 +1,18 @@
+# 42.0.0 (2022-05-19)
+
+
+### Features
+
+* new DiffViewer Component ([#2753](https://github.com/coveo/plasma/issues/2753)) ([c68dd52](https://github.com/coveo/plasma/commits/c68dd5216e6bcb1951eed6dfa8dd2e83c6634dae))
+
+
+### BREAKING CHANGES
+
+* - delete the old library used for this component there (react-diff-viewer & unidiff)
+- the props used for this component are no longer the same
+
+
+
 ## 41.9.1 (2022-05-18)
 
 
