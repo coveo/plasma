@@ -1,3 +1,12 @@
+## 42.1.1 (2022-05-19)
+
+
+### Bug Fixes
+
+* **searchbar:** make the loading spinner smaller in the search bar ([d6c46e9](https://github.com/coveo/plasma/commits/d6c46e9734bd9dd18e6da76df1cc2b2f5674c3c8))
+
+
+
 # 42.1.0 (2022-05-19)
 
 
