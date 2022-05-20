@@ -1,26 +1,44 @@
 import {render, screen} from '@test-utils';
 
-import {fakeJSON, fakeJSON1, JSONToString} from '../../../utils/JSONUtils';
 import {DiffViewer} from '../DiffViewer';
 
 describe('DiffViewer', () => {
-    it('should render the diffViewer table', () => {
-        const {container} = render(<DiffViewer oldValue={JSONToString(fakeJSON)} newValue={JSONToString(fakeJSON1)} />);
+    const difference = `
+--- PRIMARY
++++ CURRENT_STATE
+@@ -3,7 +3,7 @@
+   "parents" : { },
+   "model" : {
+     "condition" : { },
+-    "description" : "Some user note",
++    "description" : "Some differences",
+     "isDefault" : true,
+     "name" : "default",
+     "splitTestEnabled" : false`;
+
+    it('should render an empty state component', () => {
+        const {container} = render(<DiffViewer difference="" />);
         const firstChild = container.firstChild as HTMLElement;
 
-        expect(firstChild.className).toContain('diff-container');
+        expect(firstChild.className).toContain('diff-viewer');
+        expect(screen.getByText(/no changes/i)).toBeVisible();
     });
 
-    it('should render the blankSlate and not the diffViewer table if the two values are the same', () => {
-        const {container} = render(
-            <DiffViewer
-                oldValue={JSONToString(fakeJSON)}
-                newValue={JSONToString(fakeJSON)}
-                noChangesLabel={'no changes'}
-            />
-        );
+    it('should make a diff viewer component unified view', () => {
+        const {container} = render(<DiffViewer difference={difference} />);
         const firstChild = container.firstChild as HTMLElement;
-        expect(firstChild.className).not.toContain('diff-container');
-        expect(screen.getByText(/no changes/)).toBeVisible();
+        const diffViewComponent = firstChild.firstChild as HTMLElement;
+
+        expect(firstChild.className).toContain('diff-viewer');
+        expect(diffViewComponent.className).toContain('diff diff-unified');
+    });
+
+    it('should make a diff viewer component splitted view', () => {
+        const {container} = render(<DiffViewer difference={difference} splitView />);
+        const firstChild = container.firstChild as HTMLElement;
+        const diffViewComponent = firstChild.firstChild as HTMLElement;
+
+        expect(firstChild.className).toContain('diff-viewer');
+        expect(diffViewComponent.className).toContain('diff diff-split');
     });
 });
