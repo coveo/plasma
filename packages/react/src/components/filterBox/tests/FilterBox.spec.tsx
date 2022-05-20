@@ -129,23 +129,6 @@ describe('<FilterBox />', () => {
         expect(screen.queryByRole('img', {name: 'clear icon'})).not.toBeInTheDocument();
     });
 
-    // it('render a cross icon by default when user is typing', async () => {
-    //    TO
-    //     render(<FilterBox />);
-
-    //     userEvent.type(screen.getByRole('textbox'), 'hello');
-    //     userEvent.tab();
-
-    //     await screen.findByDisplayValue(/hello/i);
-    //     screen.logTestingPlaygroundURL();
-
-    //     expect(await screen.findByRole('img', {name: 'clear icon'})).toBeInTheDocument();
-    // });
-
-    // it('should clear the filter input when clicking the clear icon', () => {
-    //    TODO
-    // });
-
     it('should set container class when the container class is specified', () => {
         const id = 'patate';
         const containerClass = 'mod-small';
