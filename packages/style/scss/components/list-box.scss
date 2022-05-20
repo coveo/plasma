@@ -15,6 +15,16 @@
     box-shadow: $list-box-box-shadow;
 
     @include slim-scroll(var(--grey-20), var(--grey-50));
+
+    &.with-footer {
+        border-bottom: none;
+        border-radius: 8px 8px 0 0;
+        box-shadow: none;
+    }
+}
+.list-box-with-footer {
+    border-radius: 8px;
+    box-shadow: $list-box-box-shadow;
 }
 
 .item-box {
@@ -22,7 +32,7 @@
     --color: var(--default-text-color);
     gap: 9px;
 
-    height: 32px;
+    height: 40px;
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
     overflow: hidden;
     color: var(--color);
@@ -82,13 +92,22 @@
 }
 
 .select-footer {
+    @extend .body-s-book;
+    @extend %light;
+
+    display: flex;
+    gap: 9px;
+    align-content: center;
+
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
+
     overflow: hidden;
-    color: var(--deprecated-dark-grey);
-    font-size: var(--small-font-size);
-    line-height: $default-line-height;
+    color: var(--grey-100);
+
     white-space: nowrap;
     text-overflow: ellipsis;
     list-style: none;
-    border-top: $default-border;
+    border: 1px solid var(--grey-40);
+    border-radius: 0 0 8px 8px;
+    fill: var(--grey-100);
 }
