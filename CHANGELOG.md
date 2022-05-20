@@ -1,3 +1,12 @@
+## 42.1.2 (2022-05-20)
+
+
+### Bug Fixes
+
+* **react:** make sure a limit of 0 renders the limit label ([64626f8](https://github.com/coveo/plasma/commits/64626f86bbcffe0f4395e27eba1e639db1818e04))
+
+
+
 ## 42.1.1 (2022-05-19)
 
 
