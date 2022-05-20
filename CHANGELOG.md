@@ -1,3 +1,12 @@
+## 42.1.3 (2022-05-20)
+
+
+### Bug Fixes
+
+* **badges:** adding back information type + remove breaking change ([#2762](https://github.com/coveo/plasma/issues/2762)) ([a861b3f](https://github.com/coveo/plasma/commits/a861b3fb3a4581ae2e583d7556fe5fb70f280ad5))
+
+
+
 ## 42.1.2 (2022-05-20)
 
 
