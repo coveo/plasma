@@ -91,8 +91,22 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
         disabled: false,
     };
 
+    private handleIcons = (inputValue: string) => {
+        if (inputValue.length !== 0) {
+            this.filterInput.nextElementSibling.setAttribute('class', ' flex filter-box-icon hidden'); // hide filter icon
+            this.filterInput.nextElementSibling.nextElementSibling.classList.remove('hidden'); // show clear icon
+        } else {
+            this.filterInput.nextElementSibling.classList.remove('hidden'); // show filter icon
+            this.filterInput.nextElementSibling.nextElementSibling.setAttribute(
+                'class',
+                ' flex filter-box-icon hidden'
+            ); // hide clear icon
+        }
+    };
+
     private handleChange = (nextInputValue: string) => {
         this.filterInput.value = nextInputValue;
+        this.handleIcons(nextInputValue);
         this.props.onFilterCallback?.(this.props.id, this.filterInput.value);
         this.props.onFilter?.(this.props.id, this.filterInput.value);
     };
@@ -164,17 +178,13 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                     />
                     <Svg
                         svgName="filter"
-                        className={classNames('flex filter-box-icon', {
-                            hidden: this.filterInput?.value,
-                        })}
+                        className="flex filter-box-icon"
                         svgClass="icon"
                         aria-hidden={this.filterInput?.value.length === 0}
                     />
                     <Svg
                         svgName="clear"
-                        className={classNames('flex filter-box-icon', {
-                            hidden: !this.filterInput?.value,
-                        })}
+                        className="flex filter-box-icon hidden"
                         svgClass="icon"
                         onClick={() => this.clearValue()}
                         aria-hidden={this.filterInput?.value.length !== 0}
