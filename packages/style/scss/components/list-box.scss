@@ -1,12 +1,13 @@
 .list-box {
     --background-color: var(white);
+    --padding: 8px 0px;
 
     z-index: 1000;
     min-width: 100%;
     max-height: $list-box-max-height;
 
     margin: 0;
-    padding: 8px 0px;
+    padding: var(--padding);
     overflow-y: auto;
     background-color: var(--background-color);
     border: $default-border;
@@ -16,24 +17,21 @@
 
     @include slim-scroll(var(--grey-20), var(--grey-50));
 
-    &.with-footer {
-        border-bottom: none;
-        border-radius: 8px 8px 0 0;
-        box-shadow: none;
+    &.list-box-with-footer {
+        --padding: 8px 0 0 0;
     }
-}
-.list-box-with-footer {
-    border-radius: 8px;
-    box-shadow: $list-box-box-shadow;
 }
 
 .item-box {
     --background-color: var(--white);
     --color: var(--default-text-color);
-    gap: 9px;
+    --cursor: pointer;
+    --height: 40px;
+    --padding: 8px 16px;
 
-    height: 40px;
-    padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
+    gap: 9px;
+    height: var(--height);
+    padding: var(--padding);
     overflow: hidden;
     color: var(--color);
     white-space: nowrap;
@@ -42,7 +40,7 @@
     background-color: var(--background-color);
     outline: none;
 
-    cursor: pointer;
+    cursor: var(--cursor);
 
     &:hover {
         --background-color: var(--grey-20);
@@ -51,7 +49,7 @@
     &:focus,
     &.selected,
     &.active {
-        --background-color: #e3f1ff;
+        --background-color: var(--digital-blue-10);
         --color: var(--digital-blue-80);
         border-top: 1px solid var(--digital-blue-20);
         border-bottom: 1px solid var(--digital-blue-20);
@@ -59,7 +57,11 @@
 
     &.disabled {
         --color: var(--grey-60);
-        cursor: default;
+        --cursor: default;
+
+        &:hover {
+            --background-color: var(--white);
+        }
     }
 
     &.multi-line {
@@ -68,19 +70,19 @@
     }
 
     &.divider {
-        height: $item-box-divider-height;
+        --height: $item-box-divider-height;
+        --padding: 0;
+        --cursor: default;
+        --background-color: var(--grey-50);
         margin: $item-box-vertical-spacing 0;
-        padding: 0;
-        cursor: default;
-        --background-color: var(--deprecated-medium-grey);
     }
 
     .prepend,
     .append {
-        color: var(--deprecated-medium-grey);
+        --color: var(--grey-50);
 
         &-red {
-            color: var(--critical-70);
+            --color: var(--critical-70);
         }
     }
 }
@@ -107,7 +109,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     list-style: none;
-    border: 1px solid var(--grey-40);
+    border-top: 1px solid var(--grey-40);
     border-radius: 0 0 8px 8px;
     fill: var(--grey-100);
 }
