@@ -25,11 +25,11 @@ export interface IActionableItemProps {
      */
     actions?: IItemBoxProps[];
     /**
-     * Additionnal CSS class to add on the outermost container
+     * Additional CSS class to add on the outermost container
      */
     className?: string;
     /**
-     * Additionnal CSS class to add on the main item
+     * Additional CSS class to add on the main item
      */
     containerClassName?: string;
     /**
