@@ -34,6 +34,13 @@
         --line-height: 16px;
     }
 
+    &.mod-information {
+        --color: var(--navy-blue-80);
+        --fill: var(--navy-blue-80);
+        --border-color: var(--navy-blue-40);
+        --background-color: var(--navy-blue-20);
+    }
+
     &.mod-critical {
         --color: var(--pomegranate-red-70);
         --fill: var(--pomegranate-red-70);

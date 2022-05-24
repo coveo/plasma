@@ -92,8 +92,7 @@
 
 .loading-spinner {
     position: relative;
-    width: 24px;
-    height: 24px;
+    display: inline-block;
     background: var(--gradient);
     border-radius: 50%;
     animation: rotationAnimation 2s linear infinite;

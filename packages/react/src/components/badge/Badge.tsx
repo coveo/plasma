@@ -11,6 +11,7 @@ export enum BadgeType {
     Success,
     Beta,
     New,
+    Information,
 }
 
 export enum BadgeIconPlacement {
@@ -25,6 +26,7 @@ const TypeClassMapping: Record<BadgeType, string> = {
     [BadgeType.New]: 'mod-new',
     [BadgeType.Success]: 'mod-success',
     [BadgeType.Warning]: 'mod-warning',
+    [BadgeType.Information]: 'mod-information',
 };
 
 interface BadgeBasicProps {
@@ -69,7 +71,6 @@ export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithL
 export class Badge extends Component<IBadgeProps> {
     static defaultProps: IBadgeProps = {
         extraClasses: [],
-        type: BadgeType.Default,
         isSmall: false,
         label: '',
         iconPlacement: BadgeIconPlacement.Left,

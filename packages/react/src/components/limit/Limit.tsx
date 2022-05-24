@@ -5,9 +5,8 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
-import {InputConnected} from '../input';
+import {InputConnected, InputSelectors} from '../input';
 import {changeInputValue} from '../input/InputActions';
-import {InputSelectors} from '../input/InputSelectors';
 
 export interface LimitOwnProps {
     /**
@@ -55,16 +54,15 @@ export interface LimitOwnProps {
 }
 
 export const Limit: FunctionComponent<LimitOwnProps> = (props) => {
-    const {id, limit, className} = props;
     const {currentLimit} = useSelector((state: PlasmaState) => ({
-        currentLimit: +InputSelectors.getValue(state, {id}) || limit,
+        currentLimit: +InputSelectors.getValue(state, {id: props.id}) || props.limit,
     }));
 
     return (
-        <div className={classNames('limit-box mb2', className)}>
+        <div className={classNames('limit-box mb2', props.className)}>
             <div className="limit-box-main p2 pb1">
                 <HeaderDivision {...props} />
-                <ContentDivision {...props} currentLimit={currentLimit} />
+                <ContentDivision {...props} limit={currentLimit} />
             </div>
             <ProgressBar usage={props.usage} isLimitTheGoalToReach={props.isLimitTheGoalToReach} limit={currentLimit} />
         </div>
@@ -85,23 +83,16 @@ const HistoryIcon: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({isHistory
         </button>
     ) : null;
 
-const ContentDivision: FunctionComponent<Omit<LimitOwnProps, 'title'> & {currentLimit: number}> = ({
+const ContentDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
     id,
     usage,
     limit,
     isLimitEditable,
     limitLabel = 'Limit',
-    currentLimit,
 }) => (
     <div className="limit-box-numbers pt1 flex">
         <UsageDivision usage={usage} />
-        <LimitDivision
-            id={id}
-            usage={usage}
-            limit={limit}
-            isLimitEditable={!!currentLimit && isLimitEditable}
-            limitLabel={currentLimit ? limitLabel : ''}
-        />
+        <LimitDivision id={id} usage={usage} limit={limit} isLimitEditable={isLimitEditable} limitLabel={limitLabel} />
     </div>
 );
 

@@ -153,7 +153,7 @@ export class SearchBar extends Component<ISearchBarProps> {
         const searchIcon = !this.props.searching ? (
             <SearchSize16Px height={16} className={this.props.disabled ? 'search-icon-disabled' : ''} />
         ) : (
-            <LoadingSpinner small />
+            <LoadingSpinner size={16} />
         );
 
         return !this.props.searching && !this.props.disabled ? (

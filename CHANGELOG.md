@@ -1,45 +1,31 @@
-## 41.5.1-next.5 (2022-05-20)
-
-
-### Features
-
-* **tokens:** extract design tokens from figma libraries ([bcfe94a](https://github.com/coveo/plasma/commits/bcfe94a9f26a1831725b64fc23efa57861b7eba4))
+## 42.1.4 (2022-05-24)
 
 
 
-## 41.5.1-next.4 (2022-05-19)
-
-
-
-## 41.5.1-next.3 (2022-05-19)
-
-
-
-## 41.5.1-next.2 (2022-05-19)
+## 42.1.3 (2022-05-20)
 
 
 ### Bug Fixes
 
-* **draggableselectedoption:** removeOnClick prop was not defined ([#2750](https://github.com/coveo/plasma/issues/2750)) ([dd6b2aa](https://github.com/coveo/plasma/commits/dd6b2aafc1c0f9e6e35afce66ba431300945589d))
-* **navigation:** revert css style for state-locked nav ([#2746](https://github.com/coveo/plasma/issues/2746)) ([e92b164](https://github.com/coveo/plasma/commits/e92b1642917fb1aa9e103530d40e3673562a10f4))
-* **react:** remove extra padding for icon only badge ([cb12007](https://github.com/coveo/plasma/commits/cb12007fab37d878f78eacf4a18c390ad816d6db))
-* **unsaved change modal:** button layout ([#2755](https://github.com/coveo/plasma/issues/2755)) ([3259e57](https://github.com/coveo/plasma/commits/3259e57eb36b26b76d7ac8d8aa64cf4f528811ba))
+* **badges:** adding back information type + remove breaking change ([#2762](https://github.com/coveo/plasma/issues/2762)) ([a861b3f](https://github.com/coveo/plasma/commits/a861b3fb3a4581ae2e583d7556fe5fb70f280ad5))
 
 
-### Features
 
-* **checkbox:** enhance CheckboxSelectors ([#2667](https://github.com/coveo/plasma/issues/2667)) ([c0785e4](https://github.com/coveo/plasma/commits/c0785e4f0515596eed69caa54daede2834bea9b8))
-* **limit:** add thousands separators for big numbers ([82b866e](https://github.com/coveo/plasma/commits/82b866ec7d48b86712bb7c21b308f1f251cc6a06))
-* **loadingSpinner:** extracted in a new component ([#2745](https://github.com/coveo/plasma/issues/2745)) ([3121fbc](https://github.com/coveo/plasma/commits/3121fbcaf6315067d7b94926f49e6bd2eebe0e75))
-* new DiffViewer Component ([#2753](https://github.com/coveo/plasma/issues/2753)) ([c68dd52](https://github.com/coveo/plasma/commits/c68dd5216e6bcb1951eed6dfa8dd2e83c6634dae))
-* **subnav:** add a description in subnav ([#2747](https://github.com/coveo/plasma/issues/2747)) ([7bbc4ba](https://github.com/coveo/plasma/commits/7bbc4ba95c08e0e94099db0224ba2544a0e04c46))
-* **tooltip:** add back the arrow ([#2757](https://github.com/coveo/plasma/issues/2757)) ([70fc410](https://github.com/coveo/plasma/commits/70fc410aac007dc2ef7ef91d8fedf4d7b27b79ba))
+## 42.1.2 (2022-05-20)
 
 
-### BREAKING CHANGES
+### Bug Fixes
 
-* - delete the old library used for this component there (react-diff-viewer & unidiff)
-- the props used for this component are no longer the same
+* **react:** make sure a limit of 0 renders the limit label ([64626f8](https://github.com/coveo/plasma/commits/64626f86bbcffe0f4395e27eba1e639db1818e04))
+
+
+
+## 42.1.1 (2022-05-19)
+
+
+### Bug Fixes
+
+* **searchbar:** make the loading spinner smaller in the search bar ([d6c46e9](https://github.com/coveo/plasma/commits/d6c46e9734bd9dd18e6da76df1cc2b2f5674c3c8))
 
 
 
