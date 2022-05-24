@@ -33,13 +33,13 @@ export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {
      */
     onKeyUp?: (evt: KeyboardEvent<HTMLInputElement>) => void;
     /**
-     * Wheter to  automatically focus on the filter box
+     * Whether to  automatically focus on the filter box
      *
      * @default false
      */
     isAutoFocus?: boolean;
     /**
-     * Wheter to disabled the filter box
+     * Whether to disable the filter box
      *
      * @default false
      */
@@ -49,11 +49,11 @@ export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {
      */
     maxWidth?: number;
     /**
-     * Wheter to display a title on the input
+     * Whether to display a title on the input
      */
     withTitleOnInput?: boolean;
     /**
-     * Wheter to truncate the input or not
+     * Whether to truncate the input or not
      */
     truncate?: boolean;
     /**
@@ -93,14 +93,11 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
 
     private handleIcons = (inputValue: string) => {
         if (inputValue.length !== 0) {
-            this.filterInput.nextElementSibling.setAttribute('class', ' flex filter-box-icon hidden'); // hide filter icon
+            this.filterInput.nextElementSibling.classList.add('hidden'); // hide filter icon
             this.filterInput.nextElementSibling.nextElementSibling.classList.remove('hidden'); // show clear icon
         } else {
             this.filterInput.nextElementSibling.classList.remove('hidden'); // show filter icon
-            this.filterInput.nextElementSibling.nextElementSibling.setAttribute(
-                'class',
-                ' flex filter-box-icon hidden'
-            ); // hide clear icon
+            this.filterInput.nextElementSibling.nextElementSibling.classList.add('hidden'); // hide clear icon
         }
     };
 
@@ -180,14 +177,14 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                         svgName="filter"
                         className="flex filter-box-icon"
                         svgClass="icon"
-                        aria-hidden={this.filterInput?.value.length === 0}
+                        aria-hidden={!!this.filterInput?.value}
                     />
                     <Svg
                         svgName="clear"
                         className="flex filter-box-icon hidden"
                         svgClass="icon"
                         onClick={() => this.clearValue()}
-                        aria-hidden={this.filterInput?.value.length !== 0}
+                        aria-hidden={!!!this.filterInput?.value}
                     />
                 </div>
                 {this.props.children}
