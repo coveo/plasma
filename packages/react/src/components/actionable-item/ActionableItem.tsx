@@ -1,7 +1,6 @@
 import {DotsSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {Component, HTMLAttributes, MouseEvent as ReactMouseEvent} from 'react';
-import * as _ from 'underscore';
+import {FunctionComponent, MouseEvent as ReactMouseEvent} from 'react';
 
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop, IDropOwnProps} from '../drop/Drop';
@@ -26,7 +25,11 @@ export interface IActionableItemProps {
      */
     actions?: IItemBoxProps[];
     /**
-     * Additionnal CSS class to add on the container
+     * Additional CSS class to add on the outermost container
+     */
+    className?: string;
+    /**
+     * Additional CSS class to add on the main item
      */
     containerClassName?: string;
     /**
@@ -35,44 +38,41 @@ export interface IActionableItemProps {
     dropProps?: Partial<IDropOwnProps>;
 }
 
-export class ActionableItem extends Component<IActionableItemProps & HTMLAttributes<HTMLDivElement>> {
-    static defaultProps: Partial<IActionableItemProps> = {
-        actions: [],
-    };
-
-    render() {
-        const actionableItemClasses: string = classNames(
-            {'cursor-pointer': !!this.props.onItemClick},
-            'actionable-item-content actionable-item-container align-middle inline-block mod-border',
-            this.props.containerClassName
-        );
-        const dropPodClasses: string =
-            'actionable-item-container actionable-item-dots align-middle cursor-pointer inline-block mod-border-top mod-border-right mod-border-bottom';
-
-        return (
-            <div {..._.omit(this.props, 'actions', 'onItemClick', 'dropProps', 'containerClassName')}>
-                <div
-                    className={actionableItemClasses}
-                    onClick={(e: ReactMouseEvent<HTMLDivElement>) => this.props.onItemClick?.(e)}
-                >
-                    {this.props.children}
-                </div>
-                {this.props.actions && this.props.actions.length ? (
-                    <Drop
-                        id={this.props.id}
-                        positions={[DropPodPosition.bottom, DropPodPosition.top]}
-                        buttonContainerProps={{className: 'inline-block'}}
-                        renderOpenButton={(onClick: () => void) => (
-                            <div onClick={onClick} className={dropPodClasses}>
-                                <DotsSize16Px />
-                            </div>
-                        )}
-                        {...(this.props.dropProps || {})}
+export const ActionableItem: FunctionComponent<IActionableItemProps> = ({
+    id,
+    className,
+    containerClassName,
+    actions = [],
+    onItemClick,
+    dropProps,
+    children,
+}) => (
+    <div
+        className={classNames('actionable-item inline-flex mod-border mod-rounded-border-2 overflow-hidden', className)}
+    >
+        <div
+            className={classNames({'cursor-pointer hover-effect': !!onItemClick}, 'px2 py1', containerClassName)}
+            onClick={(e: ReactMouseEvent<HTMLDivElement>) => onItemClick?.(e)}
+            role={onItemClick ? 'button' : null}
+        >
+            {children}
+        </div>
+        {actions && actions.length ? (
+            <Drop
+                id={id}
+                positions={[DropPodPosition.bottom, DropPodPosition.top]}
+                renderOpenButton={(onClick: () => void, isOpen) => (
+                    <button
+                        onClick={onClick}
+                        className={classNames('mod-border-left p1 cursor-pointer hover-effect', {open: isOpen})}
                     >
-                        <ListBox items={this.props.actions} noActive />
-                    </Drop>
-                ) : null}
-            </div>
-        );
-    }
-}
+                        <DotsSize16Px />
+                    </button>
+                )}
+                {...(dropProps || {})}
+            >
+                <ListBox items={actions} noActive />
+            </Drop>
+        ) : null}
+    </div>
+);
