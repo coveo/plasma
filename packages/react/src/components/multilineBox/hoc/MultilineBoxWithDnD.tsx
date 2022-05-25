@@ -74,6 +74,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
                 return (
                     <DnDContainer
                         id={id}
+                        parentId={this.props.id}
                         key={`${id}DnD`}
                         onMoveOver={(draggedId: string) => {
                             // Triggered when another box is dragged over the current box

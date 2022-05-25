@@ -235,12 +235,12 @@ describe('Select', () => {
             it('does not have the drag icon if the component is not sortable', () => {
                 const items = [{value: '🌱', selected: true}];
 
-                const {container} = render(<MultiSelectConnected id={id} items={items} sortable={false} />);
+                render(<MultiSelectConnected id={id} items={items} sortable={false} />);
 
                 const listitems = screen.getAllByRole('listitem');
                 expect(listitems[0]).toHaveTextContent('🌱');
 
-                const dragIcons = container.querySelector('[aria-grabbed=false] svg');
+                const dragIcons = screen.queryByRole('img', {name: /drag/i});
                 expect(dragIcons).not.toBeInTheDocument();
             });
 
@@ -251,14 +251,14 @@ describe('Select', () => {
                     {value: '🍟', selected: true},
                 ];
 
-                const {container} = render(<MultiSelectConnected id={id} items={items} sortable />);
+                render(<MultiSelectConnected id={id} items={items} sortable />);
 
                 let listitems = screen.getAllByRole('listitem');
                 expect(listitems[0]).toHaveTextContent('🌱');
                 expect(listitems[1]).toHaveTextContent('🥔');
                 expect(listitems[2]).toHaveTextContent('🍟');
 
-                const dragIcons = container.querySelectorAll('[aria-grabbed=false] svg');
+                const dragIcons = screen.getAllByRole('img', {name: /drag/i});
                 dragAndDrop(dragIcons[1], 2);
 
                 listitems = screen.getAllByRole('listitem');
@@ -280,6 +280,46 @@ describe('Select', () => {
                 listitems = screen.getAllByRole('listitem');
                 expect(listitems.length).toBe(1);
                 expect(listitems[0]).toHaveTextContent('🥔');
+            });
+
+            it('does not allow to drag items across different multi selects', () => {
+                render(
+                    <>
+                        <MultiSelectConnected
+                            id="fruits"
+                            items={[
+                                {value: '🍌', selected: true},
+                                {value: '🍊', selected: true},
+                            ]}
+                            sortable
+                        />
+                        ;
+                        <MultiSelectConnected
+                            id="tools"
+                            items={[
+                                {value: '🔨', selected: true},
+                                {value: '🔧', selected: true},
+                            ]}
+                            sortable
+                        />
+                        ;
+                    </>
+                );
+
+                let listitems = screen.getAllByRole('listitem');
+                expect(listitems[0]).toHaveTextContent('🍌');
+                expect(listitems[1]).toHaveTextContent('🍊');
+                expect(listitems[2]).toHaveTextContent('🔨');
+                expect(listitems[3]).toHaveTextContent('🔧');
+
+                const dragIcons = screen.getAllByRole('img', {name: /drag/i});
+                dragAndDrop(dragIcons[1], 2);
+
+                listitems = screen.getAllByRole('listitem');
+                expect(listitems[0]).toHaveTextContent('🍌');
+                expect(listitems[1]).toHaveTextContent('🍊');
+                expect(listitems[2]).toHaveTextContent('🔨');
+                expect(listitems[3]).toHaveTextContent('🔧');
             });
         });
     });

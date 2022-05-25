@@ -10,6 +10,10 @@ export interface IDraggableSelectedOptionOwnProps {
      * @param value the unique value of the option dragged over the current option
      */
     onMoveOver: (value: ISelectedOptionProps['value']) => void;
+    /**
+     * The unique identifier of the parent MultiSelect component
+     */
+    parentId: string;
 }
 
 type DragItem = Pick<ISelectedOptionProps, 'value'>;
@@ -19,12 +23,14 @@ export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOption
     selectedTooltip,
     readOnly,
     value,
+    parentId,
     onMoveOver,
     onRemoveClick,
 }) => {
+    const DraggableItemType = `MULTI_SELECT_OPTION_${parentId}`;
     const dropRef = useRef<HTMLDivElement>();
     const [, drop] = useDrop(() => ({
-        accept: 'MULTI_SELECT_OPTION',
+        accept: DraggableItemType,
         hover: ({value: draggedValue}: DragItem) => {
             if (draggedValue !== value) {
                 onMoveOver(draggedValue);
@@ -32,7 +38,7 @@ export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOption
         },
     }));
     const [{isDragging}, drag, dragPreview] = useDrag(() => ({
-        type: 'MULTI_SELECT_OPTION',
+        type: DraggableItemType,
         item: (): DragItem => ({value}),
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging(),
