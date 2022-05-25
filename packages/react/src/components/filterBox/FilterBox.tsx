@@ -33,7 +33,7 @@ export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {
      */
     onKeyUp?: (evt: KeyboardEvent<HTMLInputElement>) => void;
     /**
-     * Whether to  automatically focus on the filter box
+     * Whether to automatically focus on the filter box
      *
      * @default false
      */
@@ -181,7 +181,7 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                     />
                     <Svg
                         svgName="clear"
-                        className="flex filter-box-icon hidden"
+                        className="flex filter-box-icon clear-icon hidden"
                         svgClass="icon"
                         onClick={() => this.clearValue()}
                         aria-hidden={!!!this.filterInput?.value}
