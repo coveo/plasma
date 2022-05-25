@@ -54,4 +54,10 @@ describe('Limit', () => {
         expect(screen.getByText('42,000,000.5')).toBeInTheDocument();
         expect(screen.getByText('100,000,000.5')).toBeInTheDocument();
     });
+
+    it('shows the limit label even if the limit value is zero', () => {
+        render(<Limit id="🆔" title="My limit" limit={0} limitLabel="abcde" />);
+
+        expect(screen.getByText(/abcde/i)).toBeInTheDocument();
+    });
 });

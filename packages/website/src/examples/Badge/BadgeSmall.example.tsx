@@ -8,5 +8,6 @@ export default () => (
         <Badge isSmall label="New" type={BadgeType.New} extraClasses={['ml1']} />
         <Badge isSmall label="Success" type={BadgeType.Success} extraClasses={['ml1']} />
         <Badge isSmall label="Warning" type={BadgeType.Warning} extraClasses={['ml1']} />
+        <Badge isSmall label="Information" type={BadgeType.Information} extraClasses={['ml1']} />
     </>
 );

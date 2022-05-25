@@ -1,21 +1,54 @@
-import {ComponentProps, FC} from 'react';
-import ReactDiffViewer, {ReactDiffViewerStylesOverride} from 'react-diff-viewer';
+import {FunctionComponent, ReactNode} from 'react';
+import {parseDiff, Decoration, Diff, Hunk} from 'react-diff-view';
 
 import {BlankSlate} from '../blankSlate';
 
-/**
- * @deprecated Use oldValue and newValue Props.
- */
-export interface DiffViewerPropsDeprecated {
-    /**
-     * @deprecated Use oldValue instead.
-     */
-    first: string;
-    /**
-     * @deprecated Use newValue instead.
-     */
-    second: string;
+enum DIFF_VIEWER_VIEW_TYPE {
+    SPLIT = 'split',
+    UNIFIED = 'unified',
 }
+
+interface HunkModel {
+    oldStart: number;
+    oldLines: number;
+    newStart: number;
+    newLines: number;
+    content: string;
+    changes: Array<{
+        type: 'delete' | 'insert' | 'normal';
+        content: string | ReactNode;
+        isNormal?: boolean;
+        isInsert?: boolean;
+        isDelete?: boolean;
+        lineNumber?: number;
+        oldLineNumber?: number;
+        newLineNumber?: number;
+    }>;
+}
+
+interface DiffByFileProps {
+    hunks: HunkModel[];
+    newRevision: string;
+    oldRevision: string;
+    type: 'add' | 'delete' | 'modify' | 'rename' | 'copy';
+    viewType: DIFF_VIEWER_VIEW_TYPE;
+}
+
+const DiffByFile: FunctionComponent<DiffByFileProps> = ({oldRevision, newRevision, hunks, type, viewType}) => (
+    <Diff key={`${oldRevision}-${newRevision}`} diffType={type} hunks={hunks} viewType={viewType}>
+        {(collectionHunk: HunkModel[]) =>
+            collectionHunk.map((hunk: HunkModel) => (
+                <>
+                    <Decoration key={`decoration-${hunk.content}`}>
+                        <span />
+                        {hunk.content}
+                    </Decoration>
+                    <Hunk key={hunk.content} hunk={hunk} />
+                </>
+            ))
+        }
+    </Diff>
+);
 
 export interface DiffViewerBlankSlateProps {
     /**
@@ -28,40 +61,41 @@ export interface DiffViewerBlankSlateProps {
     noChangesDescription?: string;
 }
 
-export type ReactDiffViewerProps = ComponentProps<typeof ReactDiffViewer>;
-export type DiffViewerDeprecatedProps = DiffViewerBlankSlateProps &
-    DiffViewerPropsDeprecated &
-    Omit<ReactDiffViewerProps, 'newValue' | 'oldValue'>;
-export type DiffViewerProps = DiffViewerBlankSlateProps & ReactDiffViewerProps;
+export interface DiffViewerProps extends DiffViewerBlankSlateProps {
+    /**
+     * Show changes between state A and state B (git diff format)
+     */
+    difference: string;
+    /**
+     * Whether the difference display is split
+     *
+     * @default false
+     */
+    splitView?: boolean;
+}
 
-export const DiffViewer: FC<DiffViewerDeprecatedProps | DiffViewerProps> = ({
-    first,
-    second,
-    oldValue,
-    newValue,
+export const DiffViewer: FunctionComponent<DiffViewerProps> = ({
+    difference,
     noChangesLabel,
     noChangesDescription,
-    ...props
-}: DiffViewerDeprecatedProps & DiffViewerProps) => {
-    const defaultStyles = {
-        codeFold: {
-            fontFamily: 'canada-type-gibson, sans-serif',
-            fontWeight: 400,
-            a: {pre: {display: 'block', marginTop: '10px'}},
-        },
-        diffContainer: {
-            fontFamily: 'source_code_pro_regular, Courier New, Courier, monospace',
-            color: '#282829',
-            pre: {lineHeight: '18px'},
-        },
-    } as ReactDiffViewerStylesOverride;
+    splitView = false,
+}) => {
+    if (difference === '') {
+        return (
+            <div className="diff-viewer">
+                <BlankSlate title={noChangesLabel ?? 'No changes'} description={noChangesDescription} />
+            </div>
+        );
+    }
 
-    const a = first ?? oldValue;
-    const b = second ?? newValue;
+    const files = parseDiff(difference);
+    const viewType = splitView ? DIFF_VIEWER_VIEW_TYPE.SPLIT : DIFF_VIEWER_VIEW_TYPE.UNIFIED;
 
-    return a !== b ? (
-        <ReactDiffViewer {...props} oldValue={a} newValue={b} styles={{...defaultStyles, ...props.styles}} />
-    ) : (
-        <BlankSlate title={noChangesLabel ?? 'No changes'} description={noChangesDescription} />
+    return (
+        <div className="diff-viewer">
+            {files.map((file: any, index: number) => (
+                <DiffByFile key={index} {...file} viewType={viewType} />
+            ))}
+        </div>
     );
 };
