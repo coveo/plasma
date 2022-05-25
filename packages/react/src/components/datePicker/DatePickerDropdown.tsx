@@ -394,6 +394,13 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
                 footer: (
                     <ModalFooter classes={['mod-small']}>
                         <Button
+                            enabled={true}
+                            name={this.props.cancelLabel}
+                            small={true}
+                            primary={false}
+                            onClick={() => this.handleCancel()}
+                        />
+                        <Button
                             enabled={!hasExceededRangeLimit && !hasNotReachTheMinimalRangeLimit}
                             name={this.props.applyLabel}
                             small={true}
@@ -401,13 +408,6 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
                             tooltip={this.getApplyButtonTooltip(hasExceededRangeLimit, hasNotReachTheMinimalRangeLimit)}
                             tooltipPlacement={TooltipPlacement.Left}
                             onClick={() => this.handleApply()}
-                        />
-                        <Button
-                            enabled={true}
-                            name={this.props.cancelLabel}
-                            small={true}
-                            primary={true}
-                            onClick={() => this.handleCancel()}
                         />
                     </ModalFooter>
                 ),
