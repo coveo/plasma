@@ -1,89 +1,66 @@
 /// @deprecated the prefix coveo is no longer used.
 .coveo-filter-container,
 .filter-container {
+    --container-width: 320px;
+    --border-color: var(--grey-40);
+    --background-color: var(--white);
+    --icon-color: var(--grey-80);
+
     position: relative;
+    align-items: center;
+    justify-content: center;
+    width: var(--container-width);
+    height: 40px;
+    padding: 10px 16px;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
 
-    @media only screen and (max-width: $screen-size-break-point) {
-        width: $filter-box-width-small-screen;
-
-        .filter-icon {
-            right: $icon-offset-small-screen;
-        }
-
-        input.filter-box {
-            width: $filter-box-width-small-screen;
-
-            & + span {
-                right: $icon-offset-small-screen;
-            }
-        }
+    &:hover {
+        --border-color: var(--grey-50);
     }
 
-    @media only screen and (min-width: $screen-size-break-point) {
-        width: $filter-box-width-large-screen;
+    &:focus-within {
+        --border-color: var(--digital-blue-60);
+        box-shadow: 0px 0px 0px 4px var(--digital-blue-20);
+    }
 
-        .filter-icon {
-            right: $icon-offset-large-screen;
-        }
-
-        input.filter-box {
-            width: $filter-box-width-large-screen;
-
-            & + span {
-                right: $icon-offset-large-screen;
-            }
-        }
+    &.disabled {
+        --background-color: var(--grey-20);
+        --icon-color: var(--grey-60);
+        pointer-events: none;
     }
 
     &.mod-small {
-        width: $filter-box-width-mod-small;
+        --container-width: $filter-box-width-mod-small;
 
         input.filter-box {
             width: $filter-box-width-mod-small;
-            height: $filter-box-small-height;
-            font-size: $filter-box-small-font-size;
         }
     }
 
-    .filter-icon {
-        position: absolute;
-        top: 8px;
-        display: none;
-        cursor: default;
+    > .filter-box-icon {
+        position: relative;
+
+        &.hidden {
+            display: none;
+        }
 
         svg {
-            fill: var(--grey-80);
+            width: 20px;
+            height: 20px;
+            fill: var(--icon-color);
         }
     }
 
     input.filter-box {
-        height: $filter-box-height;
-        margin: 0;
-        padding-right: 40px;
-        padding-left: 20px;
+        position: relative;
+        width: 100%;
+        padding: 0;
+        border: none;
 
-        &::-ms-clear {
-            display: none;
-        }
-
-        & + span {
-            position: absolute;
-            top: calc(50% - #{$clear-icon-height} / 2);
-            line-height: 0;
-            cursor: pointer;
-
-            svg {
-                height: $clear-icon-height;
-            }
-
-            &.hide,
-            &.hidden {
-                display: none;
-
-                & + .filter-icon {
-                    display: block;
-                }
-            }
+        &:focus {
+            outline: none;
         }
     }
 }
