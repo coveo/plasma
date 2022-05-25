@@ -394,9 +394,9 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
                 footer: (
                     <ModalFooter classes={['mod-small']}>
                         <Button
-                            enabled={true}
+                            enabled
                             name={this.props.cancelLabel}
-                            small={true}
+                            small
                             primary={false}
                             onClick={() => this.handleCancel()}
                         />
