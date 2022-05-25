@@ -154,6 +154,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
             >
                 <span className="mr1">{index + 1}</span>
                 <DraggableSelectedOption
+                    parentId={this.props.id}
                     label={item.selectedDisplayValue ?? item.displayValue ?? item.value}
                     selectedTooltip={item.selectedTooltip}
                     value={item.value}

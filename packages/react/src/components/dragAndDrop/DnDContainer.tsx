@@ -6,6 +6,7 @@ import {Svg} from '../svg/Svg';
 
 export interface IDraggableContainerOwnProps {
     id: string;
+    parentId: string;
     /**
      * A function triggered when another box is dragged over the current box
      *
@@ -18,8 +19,6 @@ export interface IDraggableContainerOwnProps {
     isDraggable?: boolean;
 }
 
-export const DraggableContainerType = 'CONTAINER_BOX';
-
 type DragItem = {id: string};
 
 export const DnDContainer: FunctionComponent<IDraggableContainerOwnProps> = ({
@@ -30,11 +29,13 @@ export const DnDContainer: FunctionComponent<IDraggableContainerOwnProps> = ({
     isDraggable = true,
     onMoveOver,
     id,
+    parentId,
 }) => {
+    const DraggableItemType = `MULTI_LINE_BOX_${parentId}`;
     const ref = useRef<HTMLDivElement>();
     const iconRef = useRef<HTMLDivElement>();
     const [, drop] = useDrop(() => ({
-        accept: DraggableContainerType,
+        accept: DraggableItemType,
         hover: ({id: draggedId}: DragItem) => {
             if (draggedId !== id) {
                 onMoveOver(draggedId);
@@ -43,7 +44,7 @@ export const DnDContainer: FunctionComponent<IDraggableContainerOwnProps> = ({
     }));
     const [{isDragging}, drag, dragPreview] = useDrag(() => ({
         item: (): DragItem => ({id}),
-        type: DraggableContainerType,
+        type: DraggableItemType,
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
