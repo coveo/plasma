@@ -1,3 +1,12 @@
+# 42.2.0 (2022-05-25)
+
+
+### Features
+
+* **mvp, listbox:** new style ([#2761](https://github.com/coveo/plasma/issues/2761)) ([db185bb](https://github.com/coveo/plasma/commits/db185bbe8786909784ca428c76128ac42678e335))
+
+
+
 ## 42.1.4 (2022-05-24)
 
 
