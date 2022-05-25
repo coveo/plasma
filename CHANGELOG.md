@@ -1,3 +1,12 @@
+## 42.3.1 (2022-05-25)
+
+
+### Bug Fixes
+
+* **datepicker:** fix button order + style ([#2767](https://github.com/coveo/plasma/issues/2767)) ([b8fcdfc](https://github.com/coveo/plasma/commits/b8fcdfcc0c2527caf9d2f57d45c888d709d8e9ac))
+
+
+
 # 42.3.0 (2022-05-25)
 
 
