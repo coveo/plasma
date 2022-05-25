@@ -1,3 +1,12 @@
+# 42.3.0 (2022-05-25)
+
+
+### Features
+
+* **mvp, filter box:** apply new style ([#2751](https://github.com/coveo/plasma/issues/2751)) ([f1f7d02](https://github.com/coveo/plasma/commits/f1f7d021b202653ff4cc0becc5f61a616b3e1b7c))
+
+
+
 # 42.2.0 (2022-05-25)
 
 
