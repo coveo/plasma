@@ -254,17 +254,17 @@
 .select-dropdown-container {
     z-index: $table-header-z-index;
     background-color: var(--white);
-    border: $default-border;
-    border-radius: $border-radius;
+    border-radius: 8px;
 
-    box-shadow: $list-box-box-shadow;
-
-    .select-dropdown-filter {
+    > .select-dropdown-filter {
         background-color: var(--grey-20);
-    }
+        border: 1px solid var(--grey-40);
+        border-bottom: none;
+        border-radius: 8px 8px 0 0;
 
-    .list-box {
-        border: none;
-        box-shadow: initial;
+        ~ .list-box {
+            padding: 0 0 8px 0;
+            border-radius: 0 0 8px 8px;
+        }
     }
 }

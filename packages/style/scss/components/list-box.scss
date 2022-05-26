@@ -47,10 +47,15 @@
     }
 
     &:focus,
-    &.selected,
-    &.active {
+    &.selected {
         --background-color: var(--digital-blue-10);
         --color: var(--digital-blue-80);
+        border-top: 1px solid var(--digital-blue-20);
+        border-bottom: 1px solid var(--digital-blue-20);
+    }
+
+    &.active:not(.selected) {
+        --background-color: var(--grey-20);
         border-top: 1px solid var(--digital-blue-20);
         border-bottom: 1px solid var(--digital-blue-20);
     }
