@@ -475,13 +475,12 @@ $home-card-x-padding: 1em;
 
 // Box
 $item-box-horizontal-spacing: 16px;
+$item-box-vertical-spacing: 8px;
 $item-box-divider-height: 1px;
 $item-box-spacing: 5px;
-$item-box-vertical-spacing: 8px;
-$list-box-max-height: 240px;
+$list-box-max-height: 300px;
 $list-box-vertical-spacing: 8px;
-$list-box-box-shadow: 0 2px 4px rgba(var(--black-rgb), $transparency-4);
-$list-box-border-radius: 0 0 2px 2px;
+$list-box-box-shadow: var(--low-elevation-on-light);
 
 // Limit Box
 $limit-box-width: 300px;
@@ -574,7 +573,7 @@ $icon-hover-offset: 2px;
 $action-icons-size: 18px;
 
 // Scroll bar
-$slim-scroll-bar-width: 6px;
+$slim-scroll-bar-width: 8px;
 
 // Diff viewer
 $diff-line-height: 20px;

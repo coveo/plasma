@@ -32,21 +32,27 @@ export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {
      */
     onKeyUp?: (evt: KeyboardEvent<HTMLInputElement>) => void;
     /**
-     * Wheter to  automatically focus on the filter box
+     * Whether to automatically focus on the filter box
      *
      * @default false
      */
     isAutoFocus?: boolean;
     /**
+     * Whether to disable the filter box
+     *
+     * @default false
+     */
+    disabled?: boolean;
+    /**
      * The maximum width in px of the filter box
      */
     maxWidth?: number;
     /**
-     * Wheter to display a title on the input
+     * Whether to display a title on the input
      */
     withTitleOnInput?: boolean;
     /**
-     * Wheter to truncate the input or not
+     * Whether to truncate the input or not
      */
     truncate?: boolean;
     /**
@@ -81,12 +87,22 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
 
     static defaultProps: Partial<IFilterBoxProps> = {
         isAutoFocus: false,
+        disabled: false,
+    };
+
+    private handleIcons = (inputValue: string) => {
+        if (inputValue.length !== 0) {
+            this.filterInput?.nextElementSibling?.classList?.add('hidden'); // hide filter icon
+            this.filterInput?.nextElementSibling?.nextElementSibling?.classList?.remove('hidden'); // show clear icon
+        } else {
+            this.filterInput?.nextElementSibling?.classList?.remove('hidden'); // show filter icon
+            this.filterInput?.nextElementSibling?.nextElementSibling?.classList?.add('hidden'); // hide clear icon
+        }
     };
 
     private handleChange = (nextInputValue: string) => {
         this.filterInput.value = nextInputValue;
-        this.filterInput.nextElementSibling?.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
-
+        this.handleIcons(nextInputValue);
         this.props.onFilterCallback?.(this.props.id, this.filterInput.value);
         this.props.onFilter?.(this.props.id, this.filterInput.value);
     };
@@ -120,9 +136,12 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
     render() {
         const inputMaxWidth = {maxWidth: `${this.props.maxWidth}px`};
         const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
-        const filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
-        const filterInputClasses = classNames('filter-box', {truncate: this.props.truncate});
-        const svgClearClasses = classNames({hidden: !(this.filterInput && this.filterInput.value)});
+        const filterBoxContainerClasses = classNames(
+            'flex filter-container',
+            {disabled: this.props.disabled},
+            this.props.containerClasses
+        );
+        const filterInputClasses = classNames('flex filter-box', {truncate: this.props.truncate});
 
         return (
             <div className={this.props.className}>
@@ -151,9 +170,19 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                         onKeyDown={this.props.onKeyDown}
                         onKeyUp={this.props.onKeyUp}
                         style={inputMaxWidth}
+                        disabled={this.props.disabled}
                     />
-                    <CrossSize16Px height={16} className={svgClearClasses} onClick={() => this.clearValue()} />
-                    <FilterSize16Px height={16} className="filter-icon" />
+                    <FilterSize16Px
+                        height={16}
+                        className="flex filter-box-icon"
+                        aria-hidden={!!this.filterInput?.value}
+                    />
+                    <CrossSize16Px
+                        height={16}
+                        className={'flex filter-box-icon clear-icon hidden'}
+                        onClick={() => this.clearValue()}
+                        aria-hidden={!!!this.filterInput?.value}
+                    />
                 </div>
                 {this.props.children}
             </div>

@@ -1,59 +1,72 @@
 .list-box {
+    --background-color: var(white);
+    --padding: 8px 0px;
+
     z-index: 1000;
     min-width: 100%;
-
     max-height: $list-box-max-height;
+
     margin: 0;
-    padding: $list-box-vertical-spacing 0;
+    padding: var(--padding);
     overflow-y: auto;
-    background-color: var(--white);
+    background-color: var(--background-color);
     border: $default-border;
-    border-color: var(--default-border-color);
-    border-radius: $list-box-border-radius;
+    border-radius: 8px;
 
     box-shadow: $list-box-box-shadow;
 
-    @include slim-scroll(var(--white), var(--grey-50));
+    @include slim-scroll(var(--grey-20), var(--grey-50));
+
+    &.list-box-with-footer {
+        --padding: 8px 0 0 0;
+    }
 }
 
 .item-box {
-    padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
+    --background-color: var(--white);
+    --color: var(--default-text-color);
+    --cursor: pointer;
+    --height: 40px;
+    --padding: 8px 16px;
+
+    gap: 9px;
+    height: var(--height);
+    padding: var(--padding);
     overflow: hidden;
-    color: var(--default-text-color);
-    font-size: var(--small-font-size);
-    line-height: $default-line-height;
+    color: var(--color);
     white-space: nowrap;
     text-overflow: ellipsis;
     list-style: none;
-    background-color: var(--white);
+    background-color: var(--background-color);
+    outline: none;
 
-    cursor: pointer;
+    cursor: var(--cursor);
 
     &:hover {
-        color: var(--grey-80);
-        background: var(--grey-20);
-    }
-
-    &.selected {
-        color: var(--deprecated-dark-blue);
-        font-weight: var(--main-font-bold);
+        --background-color: var(--grey-20);
     }
 
     &:focus,
-    &.active {
-        color: var(--grey-40);
-        background: var(--navy-blue-80);
+    &.selected {
+        --background-color: var(--digital-blue-10);
+        --color: var(--digital-blue-80);
+        border-top: 1px solid var(--digital-blue-20);
+        border-bottom: 1px solid var(--digital-blue-20);
     }
 
-    &:focus {
-        border-color: var(--deprecated-turquoise);
+    &.active:not(.selected) {
+        --background-color: var(--grey-20);
+        border-top: 1px solid var(--digital-blue-20);
+        border-bottom: 1px solid var(--digital-blue-20);
     }
 
     &.disabled {
-        color: var(--deprecated-medium-grey);
-        background: var(--white);
+        --color: var(--grey-60);
+        --cursor: default;
 
-        cursor: default;
+        &:hover {
+            --background-color: var(--white);
+        }
     }
 
     &.multi-line {
@@ -62,37 +75,46 @@
     }
 
     &.divider {
-        height: $item-box-divider-height;
+        --height: $item-box-divider-height;
+        --padding: 0;
+        --cursor: default;
+        --background-color: var(--grey-50);
         margin: $item-box-vertical-spacing 0;
-        padding: 0;
-        background-color: var(--deprecated-medium-grey);
-
-        cursor: default;
     }
 
     .prepend,
     .append {
-        color: var(--deprecated-medium-grey);
+        --color: var(--grey-50);
 
         &-red {
-            color: var(--critical-70);
+            --color: var(--critical-70);
         }
     }
 }
 
 .item-box-loading {
-    height: 1em;
+    height: 14px;
     background-color: var(--grey-40);
+    border-radius: 8px;
 }
 
 .select-footer {
+    @extend .body-s-book;
+    @extend %light;
+
+    display: flex;
+    gap: 9px;
+    align-items: center;
+
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
+
     overflow: hidden;
-    color: var(--deprecated-dark-grey);
-    font-size: var(--small-font-size);
-    line-height: $default-line-height;
+    color: var(--grey-100);
+
     white-space: nowrap;
     text-overflow: ellipsis;
     list-style: none;
-    border-top: $default-border;
+    border-top: 1px solid var(--grey-40);
+    border-radius: 0 0 8px 8px;
+    fill: var(--grey-100);
 }

@@ -200,11 +200,7 @@ export class SelectConnected extends PureComponent<ISelectProps> {
                     });
                 }
             });
-            return (
-                <div className="flex p2 flex-center flex-column mod-border-bottom select-dropdown-filter">
-                    {newChildren}
-                </div>
-            );
+            return <div className="flex p2 flex-center flex-column select-dropdown-filter">{newChildren}</div>;
         }
         return null;
     }
