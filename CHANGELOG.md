@@ -1,3 +1,12 @@
+## 42.4.1 (2022-05-26)
+
+
+### Bug Fixes
+
+* **react:** prevent dragging stuff across different components ([70e0174](https://github.com/coveo/plasma/commits/70e0174ca5fe657e47e645e12a9e69d173c6160f))
+
+
+
 # 42.4.0 (2022-05-26)
 
 
