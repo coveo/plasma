@@ -1,3 +1,12 @@
+## 42.5.1 (2022-05-27)
+
+
+### Bug Fixes
+
+* **react:** make tableWithNewPagination work with tableWithUrlState ([3376406](https://github.com/coveo/plasma/commits/33764068fdaf413393b3977c54fe370fa299e7cf))
+
+
+
 # 42.5.0 (2022-05-27)
 
 
