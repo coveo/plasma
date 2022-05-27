@@ -1,3 +1,12 @@
+# 42.5.0 (2022-05-27)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries ([4bd61d0](https://github.com/coveo/plasma/commits/4bd61d0e1869a2ace349d4809604ef3d09440cbf))
+
+
+
 ## 42.4.1 (2022-05-26)
 
 
