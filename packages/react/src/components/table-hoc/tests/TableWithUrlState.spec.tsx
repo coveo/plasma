@@ -22,6 +22,7 @@ import {tableWithPredicate} from '../TableWithPredicate';
 import {tableWithSort} from '../TableWithSort';
 import {tableWithUrlState} from '../TableWithUrlState';
 import {TableHOCUtils} from '../utils/TableHOCUtils';
+import {selectFlatSelect} from '../../flatSelect';
 
 describe('Table HOC', () => {
     describe('tableWithUrlState', () => {
@@ -128,6 +129,7 @@ describe('Table HOC', () => {
                     .dive();
 
                 expect(store.getActions()).toContainEqual(changePerPage('💎', 3));
+                expect(store.getActions()).toContainEqual(selectFlatSelect('💎_PerPage', '3'));
             });
         });
 
