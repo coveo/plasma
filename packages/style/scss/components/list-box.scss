@@ -19,6 +19,8 @@
 
     &.list-box-with-footer {
         --padding: 8px 0 0 0;
+        border-bottom: none;
+        border-radius: 8px 8px 0 0;
     }
 }
 
@@ -114,7 +116,10 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     list-style: none;
-    border-top: 1px solid var(--grey-40);
+    background-color: var(--white);
+    border: 1px solid var(--grey-40);
     border-radius: 0 0 8px 8px;
+
+    box-shadow: $list-box-box-shadow;
     fill: var(--grey-100);
 }

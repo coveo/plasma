@@ -151,12 +151,14 @@ export class ListBox extends Component<IListBoxProps> {
     render() {
         const items = this.props.isLoading ? this.getLoadingItems() : this.getItems();
         return (
-            <div className={classNames('list-box', {'list-box-with-footer': this.props.footer})}>
-                <ul className={this.getClasses()} id={`${this.props.id}-container`} role="listbox" tabIndex={0}>
-                    {this.props.wrapItems(items)}
-                </ul>
+            <>
+                <div className={classNames('list-box', {'list-box-with-footer': this.props.footer})}>
+                    <ul className={this.getClasses()} id={`${this.props.id}-container`} role="listbox" tabIndex={0}>
+                        {this.props.wrapItems(items)}
+                    </ul>
+                </div>
                 {this.props.footer}
-            </div>
+            </>
         );
     }
 
