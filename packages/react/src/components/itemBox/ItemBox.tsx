@@ -87,11 +87,13 @@ export class ItemBox extends Component<IItemBoxProps> {
                     role="option"
                     onMouseDown={(event) => event.preventDefault()}
                 >
-                    {this.props.prepend ? <Content {...this.props.prepend} /> : null}
-                    <PartialStringMatch partialMatch={this.props.highlight} caseInsensitive>
-                        {this.props.displayValue || (!this.props.divider ? this.props.value : '')}
-                    </PartialStringMatch>
-                    {this.props.append ? <Content {...this.props.append} /> : null}
+                    <span className="truncante-item-box-content">
+                        {this.props.prepend ? <Content {...this.props.prepend} /> : null}
+                        <PartialStringMatch partialMatch={this.props.highlight} caseInsensitive>
+                            {this.props.displayValue || (!this.props.divider ? this.props.value : '')}
+                        </PartialStringMatch>
+                        {this.props.append ? <Content {...this.props.append} /> : null}
+                    </span>
                 </li>
             </Tooltip>
         );
