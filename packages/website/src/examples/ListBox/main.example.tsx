@@ -15,12 +15,12 @@ export default () => (
             {value: '3', displayValue: 'Option 3'},
             {
                 value: '4',
-                displayValue: <span className="ml1">Option 4</span>,
+                displayValue: 'Option 4',
                 prepend: {content: <Badge label="Tag" isSmall type={BadgeType.New} />},
             },
             {
                 value: '5',
-                displayValue: <span className="mr1">Option 5</span>,
+                displayValue: 'Option 5',
                 append: {content: <Badge label="Tag" isSmall type={BadgeType.New} />},
             },
         ]}

@@ -24,7 +24,7 @@ describe('ListBox', () => {
         ],
     };
 
-    it('should render without errors', () => {
+    it('render without errors', () => {
         expect(() => {
             shallow(<ListBox {...defaultProps} />);
         }).not.toThrow();
@@ -41,11 +41,11 @@ describe('ListBox', () => {
             }
         });
 
-        it('should render with the box-item class', () => {
+        it('render with the box-item class', () => {
             expect(listBoxComponent.find(ItemBox).length).toBe(defaultProps.items.length);
         });
 
-        it('should not throw on unmount', () => {
+        it('does not throw on unmount', () => {
             expect(() => listBoxComponent.unmount()).not.toThrow();
         });
     });
@@ -63,7 +63,7 @@ describe('ListBox', () => {
             }
         });
 
-        it('should call onRender on mount', () => {
+        it('call onRender on mount', () => {
             const onRenderSpy = jest.fn();
             renderListBox({
                 onRender: onRenderSpy,
@@ -72,7 +72,7 @@ describe('ListBox', () => {
             expect(onRenderSpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should call onDestroy on unmount', () => {
+        it('call onDestroy on unmount', () => {
             const onDestroySpy = jest.fn();
             renderListBox({
                 onDestroy: onDestroySpy,
@@ -85,7 +85,7 @@ describe('ListBox', () => {
             expect(onDestroySpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should render items with events on onOptionClick on the item', () => {
+        it('render items with events on onOptionClick on the item', () => {
             renderListBox();
 
             (listBoxComponent.find(ItemBox).at(1).instance() as any).handleOnOptionClick({target: 'target'});
@@ -93,7 +93,7 @@ describe('ListBox', () => {
             expect(spyOnOptionClick).toHaveBeenCalled();
         });
 
-        it('should render items with events on onOptionClick', () => {
+        it('render items with events on onOptionClick', () => {
             const onOptionClick: jest.Mock<any, any> = jest.fn();
             renderListBox({
                 onOptionClick,
@@ -104,7 +104,7 @@ describe('ListBox', () => {
             expect(onOptionClick).toHaveBeenCalled();
         });
 
-        it('should not trigger onOptionClick if the clicked item is disabled', () => {
+        it('not trigger onOptionClick if the clicked item is disabled', () => {
             const onOptionClick: jest.Mock<any, any> = jest.fn();
             renderListBox({
                 items: [{value: 'test', disabled: true}],
@@ -116,7 +116,7 @@ describe('ListBox', () => {
             expect(onOptionClick).not.toHaveBeenCalled();
         });
 
-        it('should show the no result <BoxItem/> if the items array is empty', () => {
+        it('show the no result <BoxItem/> if the items array is empty', () => {
             renderListBox({
                 items: [],
             });
@@ -124,7 +124,7 @@ describe('ListBox', () => {
             expect(listBoxComponent.find(ItemBox).props().value).toBe(ListBox.defaultProps.noResultItem.value);
         });
 
-        it('should show the no result <BoxItem/> if all items are hidden', () => {
+        it('show the no result <BoxItem/> if all items are hidden', () => {
             renderListBox({
                 items: [
                     {value: 'test', hidden: true},
@@ -135,7 +135,7 @@ describe('ListBox', () => {
             expect(listBoxComponent.find(ItemBox).props().value).toBe(ListBox.defaultProps.noResultItem.value);
         });
 
-        it('should not show the no result <BoxItem/> if one item is not hidden', () => {
+        it('not show the no result <BoxItem/> if one item is not hidden', () => {
             renderListBox({
                 items: [
                     {value: 'test', hidden: false},
@@ -146,16 +146,16 @@ describe('ListBox', () => {
             expect(listBoxComponent.find(ItemBox).props().value).not.toBe(ListBox.defaultProps.noResultItem.value);
         });
 
-        it('should wrap the items using the result from the "wrapItems" prop', () => {
+        it('wrap the items using the result from the "wrapItems" prop', () => {
             const wrapItems = (items: ReactNode) => <div className="wrapping-those-items-real-hard">{items}</div>;
             const list = shallow(<ListBox {...defaultProps} wrapItems={wrapItems} />);
 
             expect(list.childAt(0).childAt(0).hasClass('wrapping-those-items-real-hard')).toBe(true);
         });
 
-        it('should render 7 ItemBoxLoading components when isLoading prop is true', () => {
+        it('render 7 ItemBoxLoading components when isLoading prop is true', () => {
             const listItems = shallow(<ListBox {...defaultProps} isLoading />)
-                .find('ul.list-box')
+                .find('ul')
                 .children();
 
             expect(listItems.length).toBe(7);
@@ -164,7 +164,7 @@ describe('ListBox', () => {
             });
         });
 
-        it('should render without active on any item if noActive is set as a prop', () => {
+        it('render without active on any item if noActive is set as a prop', () => {
             renderListBox({
                 noActive: true,
             });

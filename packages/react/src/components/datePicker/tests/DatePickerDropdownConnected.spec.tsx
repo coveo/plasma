@@ -376,7 +376,7 @@ describe('Date picker', () => {
 
                 store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
 
-                datePickerDropdown.find(ModalFooter).find(Button).last().simulate('click');
+                datePickerDropdown.find(ModalFooter).find(Button).first().simulate('click');
 
                 expect(_.findWhere(store.getState().optionsCycles, {id: monthCycleId}).currentOption).toBe(
                     newLowerLimit.getMonth()
