@@ -89,7 +89,7 @@ export class ItemBox extends Component<IItemBoxProps> {
                 >
                     {this.props.prepend ? <Content {...this.props.prepend} /> : null}
                     <PartialStringMatch partialMatch={this.props.highlight} caseInsensitive>
-                        {this.props.displayValue || this.props.value}
+                        {this.props.displayValue || (!this.props.divider ? this.props.value : '')}
                     </PartialStringMatch>
                     {this.props.append ? <Content {...this.props.append} /> : null}
                 </li>

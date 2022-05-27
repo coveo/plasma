@@ -77,7 +77,7 @@
     }
 
     &.divider {
-        --height: $item-box-divider-height;
+        --height: 1px;
         --padding: 0;
         --cursor: default;
         --background-color: var(--grey-50);
