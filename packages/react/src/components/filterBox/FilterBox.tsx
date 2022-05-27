@@ -179,9 +179,9 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                     />
                     <CrossSize16Px
                         height={16}
-                        className={'flex filter-box-icon clear-icon hidden'}
+                        className="flex filter-box-icon clear-icon hidden"
                         onClick={() => this.clearValue()}
-                        aria-hidden={!!!this.filterInput?.value}
+                        aria-hidden={!this.filterInput?.value}
                     />
                 </div>
                 {this.props.children}
