@@ -150,7 +150,7 @@ describe('ListBox', () => {
             const wrapItems = (items: ReactNode) => <div className="wrapping-those-items-real-hard">{items}</div>;
             const list = shallow(<ListBox {...defaultProps} wrapItems={wrapItems} />);
 
-            expect(list.childAt(0).childAt(0).hasClass('wrapping-those-items-real-hard')).toBe(true);
+            expect(list.childAt(0).childAt(0).childAt(0).hasClass('wrapping-those-items-real-hard')).toBe(true);
         });
 
         it('render 7 ItemBoxLoading components when isLoading prop is true', () => {

@@ -5,7 +5,11 @@ export default () => (
         items={[
             {
                 value: '1',
-                displayValue: 'Option 1',
+                displayValue: 'All',
+            },
+            {
+                value: 'soDivider',
+                divider: true,
             },
             {
                 value: '2',
