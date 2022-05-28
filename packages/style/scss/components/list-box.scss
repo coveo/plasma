@@ -42,12 +42,6 @@
     outline: none;
     cursor: var(--cursor);
 
-    > .truncante-item-box-content {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
     &:hover {
         --background-color: var(--grey-20);
     }
