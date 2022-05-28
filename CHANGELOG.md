@@ -1,3 +1,12 @@
+## 42.5.2 (2022-05-28)
+
+
+### Bug Fixes
+
+* **listbox:** footer is now external to the list ([#2770](https://github.com/coveo/plasma/issues/2770)) ([9706079](https://github.com/coveo/plasma/commits/97060795e425aa78d8855e5ba29d8d26ee654b64))
+
+
+
 ## 42.5.1 (2022-05-27)
 
 
