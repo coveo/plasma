@@ -1,3 +1,12 @@
+## 42.5.3 (2022-05-30)
+
+
+### Bug Fixes
+
+* **dropdown btn:** fix focus style for btn dropdown ([#2773](https://github.com/coveo/plasma/issues/2773)) ([0bf9f35](https://github.com/coveo/plasma/commits/0bf9f35702de7258a3f102a0c25722e2287b4783))
+
+
+
 ## 42.5.2 (2022-05-28)
 
 
