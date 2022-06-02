@@ -1,3 +1,12 @@
+## 42.5.4 (2022-06-02)
+
+
+### Bug Fixes
+
+* **list-box, infinite scroll:** fix infinte scroll for single select ([#2774](https://github.com/coveo/plasma/issues/2774)) ([df4de3e](https://github.com/coveo/plasma/commits/df4de3edc9eb7d016895a719b99bec7b5f628cd7))
+
+
+
 ## 42.5.3 (2022-05-30)
 
 
