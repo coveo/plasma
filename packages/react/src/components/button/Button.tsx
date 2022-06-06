@@ -2,9 +2,15 @@ import classNames from 'classnames';
 import {ButtonHTMLAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
-import {IBaseActionOptions} from '../actions/Action';
-import {Tooltip} from '../tooltip/Tooltip';
+import {IBaseActionOptions} from '../actions';
+import {LoadingSpinner} from '../loading';
+import {Tooltip} from '../tooltip';
+
 export interface IButtonProps extends IBaseActionOptions {
+    /**
+     * If set to true, forces the button to display a spinner to the left of the text
+     */
+    isLoading?: boolean;
     /**
      * If set to true, forces the button to have a smaller size
      */
@@ -19,6 +25,7 @@ const ButtonPropsToOmit = [
     'classes',
     'enabled',
     'hideDisabled',
+    'isLoading',
     'link',
     'name',
     'onClick',
@@ -32,6 +39,7 @@ const ButtonPropsToOmit = [
 export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> {
     static defaultProps: Partial<IButtonProps> = {
         enabled: true,
+        isLoading: false,
         name: '',
         tooltip: '',
         primary: false,
@@ -58,6 +66,7 @@ export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLBu
 
             buttonElement = (
                 <a className={`${this.className}`} {...buttonAttrs}>
+                    {this.props.isLoading && <LoadingSpinner size={this.props.small ? 16 : undefined} />}
                     {this.props.name}
                     {this.props.children}
                 </a>
@@ -65,6 +74,7 @@ export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLBu
         } else {
             buttonElement = (
                 <button className={this.className} {...buttonAttrs}>
+                    {this.props.isLoading && <LoadingSpinner size={this.props.small ? 16 : undefined} />}
                     {this.props.name}
                     {this.props.children}
                 </button>
@@ -91,6 +101,7 @@ export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLBu
             'btn',
             {
                 'mod-primary': this.props.primary,
+                'mod-loading': this.props.isLoading,
                 'mod-small': this.props.small,
                 'state-disabled disabled': !this.props.enabled,
             },

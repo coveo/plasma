@@ -249,6 +249,25 @@
     &.collapsible-header {
         border-radius: 0;
     }
+
+    &.mod-loading {
+        &:disabled .loading-spinner:before,
+        &.state-disabled .loading-spinner:before {
+            background-color: var(--white);
+            border-color: var(--white);
+        }
+
+        &.mod-primary .loading-spinner:before {
+            background-color: var(--digital-blue-60);
+            border-color: var(--digital-blue-60);
+        }
+
+        &.mod-primary:disabled .loading-spinner:before,
+        &.mod-primary.state-disabled .loading-spinner:before {
+            background-color: var(--grey-40);
+            border-color: var(--grey-40);
+        }
+    }
 }
 
 button {
