@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
-import {Tooltip} from '../../tooltip/Tooltip';
+
+import {Tooltip} from '../../tooltip';
 import {Button, IButtonProps} from '../Button';
 
 describe('Button', () => {
@@ -160,6 +161,43 @@ describe('Button', () => {
                 buttonComponent.find('a').simulate('click');
 
                 expect(spyOnClick).toHaveBeenCalledTimes(1);
+            });
+        });
+
+        describe('with the isLoading props', () => {
+            it("shouldn't render the loading button by default", () => {
+                showButton({isLoading: false});
+
+                expect(buttonComponent.find('button').hasClass('mod-loading')).toBe(false);
+                expect(buttonComponent.find('[role="alert"]')[0]).not.toBeDefined();
+            });
+
+            it("shouldn't render the loading button for a standard button", () => {
+                showButton({isLoading: true});
+
+                expect(buttonComponent.find('button').hasClass('mod-loading')).toBe(false);
+                expect(buttonComponent.find('[role="alert"]')[0]).not.toBeDefined();
+            });
+
+            it('should render the loading button for a disabled button', () => {
+                showButton({isLoading: true, enabled: false});
+
+                expect(buttonComponent.find('button').hasClass('mod-loading')).toBe(true);
+                expect(buttonComponent.find('[role="alert"]').hasClass('loading-spinner')).toBe(true);
+            });
+
+            it("shouldn't render the loading button for a primary button", () => {
+                showButton({isLoading: true, primary: true});
+
+                expect(buttonComponent.find('button').hasClass('mod-loading')).toBe(false);
+                expect(buttonComponent.find('[role="alert"]')[0]).not.toBeDefined();
+            });
+
+            it('should render the loading button for a primary disabled button', () => {
+                showButton({isLoading: true, primary: true, enabled: false});
+
+                expect(buttonComponent.find('button').hasClass('mod-loading')).toBe(true);
+                expect(buttonComponent.find('[role="alert"]').hasClass('loading-spinner')).toBe(true);
             });
         });
     });
