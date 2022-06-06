@@ -1,3 +1,12 @@
+## 42.5.5 (2022-06-06)
+
+
+### Bug Fixes
+
+* **toast:** add gap in toast-title ([#2775](https://github.com/coveo/plasma/issues/2775)) ([bdb0153](https://github.com/coveo/plasma/commits/bdb0153a85234c490f7a8c828bd959d6269dd891))
+
+
+
 ## 42.5.4 (2022-06-02)
 
 
