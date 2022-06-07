@@ -1,49 +1,14 @@
-import {FunctionComponent} from 'react';
+import code from '@examples/button/Button.example.tsx';
+import disabled from '@examples/button/Disabled.example.tsx';
+import iconAndLink from '@examples/button/IconAndLink.example.tsx';
+import loading from '@examples/button/Loading.example.tsx';
+import prepend from '@examples/button/Prepend.example.tsx';
+import primary from '@examples/button/Primary.example.tsx';
+import small from '@examples/button/Small.example.tsx';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-const code = `
-    import {Button} from "@coveord/plasma-react";
-
-    export default () => <Button>Hello World!</Button>;
-`;
-
-const primary = `
-    import {Button} from "@coveord/plasma-react";
-
-    export default () => <Button primary>Hello World!</Button>;
-`;
-
-const small = `
-    import {Button} from "@coveord/plasma-react";
-
-    export default () => <Button small>Hello World!</Button>;
-`;
-
-const iconAndLink = `
-    import {Button} from "@coveord/plasma-react";
-    import {ZombieSize24Px} from '@coveord/plasma-react-icons';
-
-    export default () => <Button link="https://www.coveo.com"><ZombieSize24Px height={24} aria-label="zombie" /></Button>;
-`;
-
-const disabled = `
-    import {Button} from "@coveord/plasma-react";
-
-    export default () => <Button primary enabled={false}>Hello World!</Button>;
-    `;
-
-const prepend = `
-    import { Button, Svg } from '@coveord/plasma-react';
-
-    export default () => (
-        <Button classes={['mod-prepend']}>
-            <span className="btn-prepend">P</span>
-            Hello World!
-        </Button>
-    );
-`;
-
-export const ButtonExamples: FunctionComponent = () => (
+export default () => (
     <PageLayout
         id="Button"
         title="Button"
@@ -55,10 +20,10 @@ export const ButtonExamples: FunctionComponent = () => (
             primary: {code: primary, title: 'Primary, Default size'},
             small: {code: small, title: 'Secondary, Small size'},
             disabled: {code: disabled, title: 'Disabled'},
+            loading: {code: loading, title: 'Loading'},
             prepend: {code: prepend, title: 'Prepended icon'},
             iconAndLink: {code: iconAndLink, title: 'Icon only with an hyperlink'},
         }}
         componentSourcePath="/button/Button.tsx"
     />
 );
-export default ButtonExamples;
