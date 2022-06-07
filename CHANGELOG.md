@@ -1,3 +1,12 @@
+# 42.6.0 (2022-06-07)
+
+
+### Features
+
+* **react, button:** add new loading option ([#2777](https://github.com/coveo/plasma/issues/2777)) ([ab6279e](https://github.com/coveo/plasma/commits/ab6279ef159dd80be64d478ecaedd608493109a4))
+
+
+
 ## 42.5.5 (2022-06-06)
 
 
