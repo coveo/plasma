@@ -65,7 +65,7 @@
         "stylelint": "13.13.1",
         "tsjs": "3.0.2",
         "ultra-runner": "3.10.5",
-        "underscore": "1.13.1",
+        "underscore": "1.13.4",
         "walkdir": "0.4.1"
     }
 }

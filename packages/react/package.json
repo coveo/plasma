@@ -117,7 +117,7 @@
         "@types/redux-mock-store": "1.0.3",
         "@types/redux-promise-middleware": "6.0.0",
         "@types/testing-library__jest-dom": "5.14.3",
-        "@types/underscore": "1.8.10",
+        "@types/underscore": "1.11.4",
         "@types/underscore.string": "0.0.38",
         "@typescript-eslint/eslint-plugin": "5.21.0",
         "@typescript-eslint/parser": "5.21.0",
@@ -158,7 +158,7 @@
         "ts-jest": "27.1.4",
         "tslib": "2.3.1",
         "typescript": "4.6.4",
-        "underscore": "1.13.1",
+        "underscore": "1.13.4",
         "underscore.string": "3.3.6"
     },
     "peerDependencies": {
