@@ -1,3 +1,12 @@
+## 42.7.2 (2022-06-13)
+
+
+### Bug Fixes
+
+* **style:** list-box background color ([3340d63](https://github.com/coveo/plasma/commits/3340d638ba0c70ff0ee066f00a84193683dd3cd8))
+
+
+
 ## 42.7.1 (2022-06-13)
 
 
