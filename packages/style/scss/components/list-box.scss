@@ -1,5 +1,5 @@
 .list-box {
-    --background-color: var(white);
+    --background-color: var(--white);
     --padding: 8px 0px;
 
     z-index: 1000;
@@ -19,9 +19,6 @@
 
     &.list-box-with-footer {
         --padding: 8px 0 0 0;
-        border-bottom: none;
-        border-radius: 8px 8px 0 0;
-        box-shadow: none;
     }
 }
 
@@ -33,14 +30,16 @@
     --padding: 8px 16px;
 
     gap: 9px;
-    min-width: 0;
-
     height: var(--height);
     padding: var(--padding);
+    overflow: hidden;
     color: var(--color);
+    white-space: nowrap;
+    text-overflow: ellipsis;
     list-style: none;
     background-color: var(--background-color);
     outline: none;
+
     cursor: var(--cursor);
 
     &:hover {
@@ -76,7 +75,7 @@
     }
 
     &.divider {
-        --height: 1px;
+        --height: $item-box-divider-height;
         --padding: 0;
         --cursor: default;
         --background-color: var(--grey-50);
@@ -115,10 +114,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     list-style: none;
-    background-color: var(--white);
-    border: 1px solid var(--grey-40);
+    border-top: 1px solid var(--grey-40);
     border-radius: 0 0 8px 8px;
-
-    box-shadow: $list-box-box-shadow;
     fill: var(--grey-100);
 }
