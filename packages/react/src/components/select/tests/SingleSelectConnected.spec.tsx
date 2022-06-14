@@ -2,7 +2,6 @@ import {fireEvent, render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {ReactElement} from 'react';
 
-import {SingleSelectConnected} from '../SingleSelectConnected';
 import {keyCode} from '../../../utils';
 
 describe('Select', () => {

@@ -3,8 +3,6 @@ import {ButtonHTMLAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions';
-import {LoadingSpinner} from '../loading';
-import {Tooltip} from '../tooltip';
 
 export interface IButtonProps extends IBaseActionOptions {
     /**

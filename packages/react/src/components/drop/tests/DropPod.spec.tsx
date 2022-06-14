@@ -4,7 +4,6 @@ import _ from 'underscore';
 
 import {Defaults} from '../../../Defaults';
 import {DomPositionCalculator, DropPodPosition} from '../DomPositionCalculator';
-import {DropPod} from '../DropPod';
 
 describe('DropPod', () => {
     const defaultDrop = <div>Hello world!</div>;

@@ -1,13 +1,11 @@
 import {mount, ReactWrapper} from 'enzyme';
 import {act} from 'react-dom/test-utils';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
 import {PlasmaState} from '../../../PlasmaState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ISubNavigationProps, SubNavigation} from '../SubNavigation';
-import {SubNavigationConnected} from '../SubNavigationConnected';
 
 describe('SubNavigation', () => {
     let wrapper: ReactWrapper<any, any>;

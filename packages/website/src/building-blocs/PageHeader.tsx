@@ -1,7 +1,6 @@
 import {ReactNode, FunctionComponent} from 'react';
 
-import {GithubButton} from './GithubButton';
-import {Tile, TileProps} from './Tile';
+import {TileProps} from './Tile';
 
 export interface PageHeaderProps {
     title: string;

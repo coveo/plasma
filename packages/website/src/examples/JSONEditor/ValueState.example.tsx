@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux';
-import {JSONEditorConnected, JSONToString, JSONEditorSelectors, PlasmaState} from '@coveord/plasma-react';
+import {JSONToString, JSONEditorSelectors, PlasmaState} from '@coveord/plasma-react';
 
 const defaultValue = JSONToString({hello: 'world', thisIsANumber: 42, andThisAMap: {a: 'a', b: 'b'}});
 

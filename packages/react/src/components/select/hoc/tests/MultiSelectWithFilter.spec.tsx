@@ -1,8 +1,6 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {MultiSelectWithFilter} from '../SelectComponents';
-
 describe('Select', () => {
     describe('MultiSelectWithFilter', () => {
         const id: string = 'multi-select-with-filter';

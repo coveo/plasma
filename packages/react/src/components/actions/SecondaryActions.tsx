@@ -2,8 +2,6 @@ import {FunctionComponent} from 'react';
 import {isEmpty} from 'underscore';
 
 import {IActionOptions} from './Action';
-import {ActionsDropdown} from './ActionsDropdown';
-import {PrimaryActionConnected} from './PrimaryActionConnected';
 
 export interface ISecondaryActionsProps {
     actions: IActionOptions[];

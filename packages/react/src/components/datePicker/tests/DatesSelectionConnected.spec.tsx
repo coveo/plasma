@@ -1,6 +1,5 @@
 import {mount, ReactWrapper} from 'enzyme';
 import moment from 'moment';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -10,7 +9,6 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addOptionPicker, changeOptionPicker} from '../../optionPicker/OptionPickerActions';
 import {changeDatePickerLowerLimit, changeDatePickerUpperLimit, DateLimits, selectDate} from '../DatePickerActions';
 import {DatesSelection, IDatesSelectionProps} from '../DatesSelection';
-import {DatesSelectionConnected} from '../DatesSelectionConnected';
 
 describe('Date picker', () => {
     describe('<DatesSelectionConnected />', () => {

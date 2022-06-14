@@ -2,7 +2,6 @@ import {loadFieldActions} from '@coveo/headless';
 import {FunctionComponent, useEffect} from 'react';
 
 import {searchEngine} from './Engine';
-import {EngineContext} from './EngineContext';
 
 const engine = searchEngine();
 

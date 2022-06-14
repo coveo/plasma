@@ -8,7 +8,6 @@ import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
 import {IDatePickerDropdownOwnProps} from '../datePicker/DatePickerDropdown';
-import {DatePickerDropdownConnected} from '../datePicker/DatePickerDropdownConnected';
 import {DatePickerSelectors} from '../datePicker/DatePickerSelectors';
 import {ITableHOCOwnProps} from './TableHOC';
 import {Params} from './TableWithUrlState';

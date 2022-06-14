@@ -1,5 +1,4 @@
 import {FunctionComponent} from 'react';
-import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import {IconCard} from '@coveord/plasma-react';

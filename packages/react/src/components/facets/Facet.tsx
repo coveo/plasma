@@ -1,13 +1,6 @@
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {Svg} from '../svg/Svg';
-import {Tooltip} from '../tooltip/Tooltip';
-import {FacetMoreRows} from './FacetMoreRows';
-import {FacetMoreRowsConnected} from './FacetMoreRowsConnected';
-import {FacetMoreToggle} from './FacetMoreToggle';
-import {FacetMoreToggleConnected} from './FacetMoreToggleConnected';
-import {FacetRow} from './FacetRow';
 
 export interface IFacet {
     name: string;

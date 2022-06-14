@@ -1,8 +1,6 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {MultiValuesInput} from '../MultiValuesInput';
-
 describe('MultiValuesInput', () => {
     const defaultProps = {
         id: '🚗',

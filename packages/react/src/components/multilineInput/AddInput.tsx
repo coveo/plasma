@@ -1,7 +1,6 @@
 import {KeyboardEvent, Component} from 'react';
 import * as _ from 'underscore';
 import {IInputProps, Input} from '../input/Input';
-import {AddInputAction} from './AddInputAction';
 
 export class AddInput extends Component<IInputProps, any> {
     private innerInput: Input;

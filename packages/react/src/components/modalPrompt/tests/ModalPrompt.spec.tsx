@@ -1,11 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {
-    DEFAULT_MODAL_PROMPT_CANCEL_LABEL,
-    DEFAULT_MODAL_PROMPT_CONFIRM_LABEL,
-    IModalPromptProps,
-    ModalPrompt,
-} from '../ModalPrompt';
+import {DEFAULT_MODAL_PROMPT_CANCEL_LABEL, DEFAULT_MODAL_PROMPT_CONFIRM_LABEL, IModalPromptProps} from '../ModalPrompt';
 
 describe('ModalPrompt', () => {
     const id: string = 'modalPrompt';

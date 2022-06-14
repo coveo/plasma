@@ -1,7 +1,6 @@
 import moment from 'moment';
 import {FunctionComponent} from 'react';
 import * as _ from 'underscore';
-import {Tooltip} from './Tooltip';
 
 export interface DateTooltipsProps {
     date: moment.MomentInput;

@@ -1,5 +1,3 @@
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
     import {Button, StickyFooter} from '@coveord/plasma-react';
     import {loremIpsum} from 'lorem-ipsum';

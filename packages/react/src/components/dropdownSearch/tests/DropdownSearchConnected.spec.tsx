@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -14,7 +13,6 @@ import {
     updateActiveOptionDropdownSearch,
     updateOptionsDropdownSearch,
 } from '../DropdownSearchActions';
-import {DropdownSearchConnected} from '../DropdownSearchConnected';
 import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {

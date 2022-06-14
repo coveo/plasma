@@ -1,5 +1,3 @@
-import {SubNavigationConnected} from '@coveord/plasma-react';
-
 export default () => {
     const exampleItems = [
         {label: 'Avatar', id: 'avatar'},

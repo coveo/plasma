@@ -3,8 +3,7 @@ import {ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
 import {mod} from '../../utils/DataStructuresUtils';
-import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
-import {ItemBoxLoading} from '../loading/components/ItemBoxLoading';
+import {IItemBoxProps} from '../itemBox/ItemBox';
 
 export type IItemBoxPropsWithIndex = {index?: number} & IItemBoxProps;
 

@@ -7,10 +7,7 @@ import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUt
 import {JSXRenderable} from '../../../utils/JSXUtils';
 import {IActionOptions} from '../../actions/Action';
 import {IData, ITableHeadingAttribute} from '../Table';
-import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected';
-import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
 import {TableChildComponent, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
-import {TableHeadingRowConnected} from '../TableHeadingRowConnected';
 import {getTableChildComponentId} from '../TableUtils';
 
 export interface ITableBodyInheritedFromTableProps {

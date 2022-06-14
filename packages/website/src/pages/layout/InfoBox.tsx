@@ -1,7 +1,5 @@
 import {FunctionComponent} from 'react';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
     import {InfoBox} from '@coveord/plasma-react';
 

@@ -1,4 +1,3 @@
-import {Button, SlideY} from '@coveord/plasma-react';
 import {loremIpsum} from 'lorem-ipsum';
 import {useState} from 'react';
 

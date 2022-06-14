@@ -1,8 +1,6 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {BrowserPreview} from '../BrowserPreview';
-
 describe('BrowserPreview', () => {
     it('renders the specified header description as tooltip title', async () => {
         const headerDescription = '🥰';

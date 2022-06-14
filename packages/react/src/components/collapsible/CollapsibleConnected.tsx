@@ -3,11 +3,9 @@ import {ReactNode, FunctionComponent, ComponentType, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
-import {SlideY} from '../../animations/SlideY';
 import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from './CollapsibleActions';
-import {CollapsibleToggle} from './CollapsibleToggle';
 
 export interface CollapsibleOwnProps {
     /**

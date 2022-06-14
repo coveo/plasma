@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -10,7 +9,6 @@ import {addFilter, filterThrough} from '../../filterBox/FilterBoxActions';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {addFacet, toggleMoreFacetRows} from '../FacetActions';
 import {FacetMoreRows, IFacetMoreRowsProps} from '../FacetMoreRows';
-import {FacetMoreRowsConnected} from '../FacetMoreRowsConnected';
 import {FacetRow} from '../FacetRow';
 
 describe('Facets', () => {

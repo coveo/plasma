@@ -1,4 +1,3 @@
-import {LastUpdatedConnected} from '../../lastUpdated/LastUpdatedConnected';
 import {ITableProps} from '../Table';
 import {TableChildComponent} from '../TableConstants';
 import {getTableChildComponentId} from '../TableUtils';

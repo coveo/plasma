@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -8,7 +7,6 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IOptionPickerProps, OptionPicker} from '../OptionPicker';
 import {changeOptionPicker} from '../OptionPickerActions';
-import {OptionPickerConnected} from '../OptionPickerConnected';
 import {IOptionPickerState} from '../OptionPickerReducers';
 
 describe('Option picker', () => {

@@ -8,12 +8,9 @@ import {PlasmaState} from '../../PlasmaState';
 import {TooltipPlacement} from '../../utils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch} from '../../utils/ReduxUtils';
-import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption} from '../listBox/ListBoxActions';
-import {Svg} from '../svg/Svg';
-import {Tooltip} from '../tooltip/Tooltip';
-import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
+import {ISelectButtonProps, ISelectOwnProps} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
 export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 'multi'> {

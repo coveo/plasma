@@ -3,8 +3,7 @@ import {InputHTMLAttributes, FunctionComponent, ChangeEvent, FocusEvent, useMemo
 import {omit, uniqueId} from 'underscore';
 
 import {TooltipPlacement} from '../../utils';
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {Tooltip} from '../tooltip';
+import {InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 import {useTextInput} from './useTextInput';
 
 export type InputValidator = (value: string) => {status: 'valid' | 'invalid' | 'warning'; message?: string};

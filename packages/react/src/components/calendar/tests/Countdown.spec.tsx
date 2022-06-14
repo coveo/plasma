@@ -1,7 +1,5 @@
 import {render, screen} from '@test-utils';
 
-import {Countdown} from '../Countdown';
-
 describe('Countdown', () => {
     it('should render with default props', () => {
         // mock timer as test can be flaky on the last of the month

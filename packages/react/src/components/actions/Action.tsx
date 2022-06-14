@@ -3,8 +3,6 @@ import classNames from 'classnames';
 import {ClassAttributes, Component} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg';
-import {Tooltip} from '../tooltip/Tooltip';
 
 export interface IConfirmButtonLabel {
     cancel: string;

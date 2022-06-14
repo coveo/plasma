@@ -1,4 +1,4 @@
-import {IActionOptions, TableHOC, TableRowConnected, tableWithActions} from '@coveord/plasma-react';
+import {IActionOptions, TableHOC, tableWithActions} from '@coveord/plasma-react';
 import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 

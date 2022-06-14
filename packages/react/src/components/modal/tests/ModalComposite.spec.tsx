@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 import ReactModal from 'react-modal';
 
 import {ModalBody} from '../ModalBody';
-import {ModalComposite} from '../ModalComposite';
 import {ModalFooter} from '../ModalFooter';
 import {ModalHeader} from '../ModalHeader';
 

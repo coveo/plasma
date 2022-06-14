@@ -5,7 +5,7 @@ import {SlideY} from '../../../animations/SlideY';
 import {PlasmaState} from '../../../PlasmaState';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {setCollapsibleExpanded} from '../CollapsibleActions';
-import {CollapsibleConnected, CollapsibleOwnProps} from '../CollapsibleConnected';
+import {CollapsibleOwnProps} from '../CollapsibleConnected';
 import {CollapsibleToggle} from '../CollapsibleToggle';
 import {collapsiblePossibleProps} from './CollapsibleTestCommon.mock';
 

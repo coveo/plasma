@@ -2,8 +2,7 @@ import {expectToThrow, fireEvent, render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {useState} from 'react';
 
-import {FormProvider} from '../../form/FormProvider';
-import {InputValidator, TextInput} from '../TextInput';
+import {InputValidator} from '../TextInput';
 import {useTextInput} from '../useTextInput';
 
 describe('TextInput', () => {

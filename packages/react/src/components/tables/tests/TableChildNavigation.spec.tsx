@@ -1,5 +1,4 @@
 import {mount} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../../PlasmaState';
@@ -7,7 +6,6 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {NavigationConnected} from '../../navigation/NavigationConnected';
 import {ITableProps} from '../Table';
-import {TableChildNavigation} from '../table-children/TableChildNavigation';
 import {tablePropsMock} from './TableTestCommon';
 
 describe('<TableChildNavigation />', () => {

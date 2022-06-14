@@ -1,5 +1,3 @@
-import {SingleSelectConnected} from '@coveord/plasma-react';
-
 export default () => (
     <SingleSelectConnected
         id="single-select-1"

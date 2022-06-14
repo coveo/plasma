@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 import {PlasmaState} from '../../../PlasmaState';
@@ -7,7 +6,7 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Checkbox} from '../Checkbox';
 import {ICheckboxState} from '../CheckboxReducers';
-import {GroupableCheckboxConnected, IGroupableCheckboxOwnProps} from '../GroupableCheckboxConnected';
+import {IGroupableCheckboxOwnProps} from '../GroupableCheckboxConnected';
 import {IGroupableCheckboxesState} from '../GroupableCheckboxConstants';
 import {divTemplateClasses, divTemplateForMultipleCheckbox} from './GroupableCheckboxTestUtils';
 

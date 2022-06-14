@@ -1,8 +1,5 @@
 import {ReactNode, FunctionComponent} from 'react';
 
-import {Loading} from '../../loading/Loading';
-import {ModalCompositeConnected} from '../ModalComposite';
-
 export interface ModalLoadingProps {
     id: string;
     title?: ReactNode;

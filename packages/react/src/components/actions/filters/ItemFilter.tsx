@@ -1,6 +1,5 @@
 import {ClassAttributes, Component} from 'react';
-import {Svg} from '../../svg/Svg';
-import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
+import {ITooltipProps} from '../../tooltip/Tooltip';
 
 export interface IItemFilterProps extends ClassAttributes<ItemFilter> {
     label: string;

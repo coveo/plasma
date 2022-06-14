@@ -1,7 +1,6 @@
 import {FunctionComponent, useState, useEffect} from 'react';
 import * as ts from 'typescript';
 
-import {PlasmaLoading} from './PlasmaLoading';
 import {useTypescriptServer} from './useTypescriptServer';
 
 interface PropInfo {

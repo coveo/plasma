@@ -5,7 +5,6 @@ import {render, screen} from '@test-utils';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {SingleSelectWithFilter} from '../../select/hoc/SelectComponents';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {tableWithPredicate, tableWithPredicateGeneric} from '../TableWithPredicate';
 import {TableHOCUtils} from '../utils/TableHOCUtils';

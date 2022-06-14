@@ -1,10 +1,8 @@
-import {AtomicQuerySummary, AtomicSearchInterface, Result} from '@coveo/atomic-react';
+import {Result} from '@coveo/atomic-react';
 import {loadClickAnalyticsActions, ResultList as HeadlessResultList, SearchEngine} from '@coveo/headless';
-import {Section} from '@coveord/plasma-react';
 import {FunctionComponent, useEffect, useState} from 'react';
 
-import {Tile, TileProps} from '../building-blocs/Tile';
-import {NoSearchResultTemplate} from '../search/NoSearchResult';
+import {TileProps} from '../building-blocs/Tile';
 
 interface ResultListProps {
     controller: HeadlessResultList;

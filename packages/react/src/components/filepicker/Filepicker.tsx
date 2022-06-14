@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
 import {FileMetadata, FileUtils} from '../../utils/FileUtils';
-import {Svg} from '../svg';
 import {FilepickerActions} from './FilepickerActions';
 import {FilepickerSelectors} from './FilepickerSelectors';
 

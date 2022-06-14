@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
 import {IActionOptions} from '../Action';
-import {ILinkActionProps, LinkAction} from '../LinkAction';
+import {ILinkActionProps} from '../LinkAction';
 
 describe('Actions', () => {
     const action: IActionOptions = {

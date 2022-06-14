@@ -1,7 +1,5 @@
 import {shallow} from 'enzyme';
 
-import {StickyFooter} from '../StickyFooter';
-
 describe('StickyFooter', () => {
     it('should render without error', () => {
         expect(() => shallow(<StickyFooter isOpened={true} />)).not.toThrow();

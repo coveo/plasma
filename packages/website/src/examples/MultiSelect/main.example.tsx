@@ -1,5 +1,3 @@
-import {MultiSelectConnected} from '@coveord/plasma-react';
-
 export default () => (
     <MultiSelectConnected
         id="mutli-select-1"

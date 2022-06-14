@@ -2,9 +2,6 @@ import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import {Component} from 'react';
 
-import {Loading} from '../loading/Loading';
-import {Svg} from '../svg';
-
 export interface StatusCardProps {
     title: string;
     className?: string;

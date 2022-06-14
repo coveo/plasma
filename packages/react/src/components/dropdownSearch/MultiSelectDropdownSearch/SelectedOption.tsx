@@ -2,8 +2,7 @@ import classNames from 'classnames';
 import {ReactNode, Children, PureComponent} from 'react';
 
 import {TooltipPlacement} from '../../../utils/TooltipUtils';
-import {Svg} from '../../svg/Svg';
-import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
+import {ITooltipProps} from '../../tooltip/Tooltip';
 
 export interface ISelectedOptionProps {
     value: string;

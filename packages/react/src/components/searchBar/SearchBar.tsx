@@ -3,8 +3,6 @@ import {ChangeEvent, Component} from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {keyCode} from '../../utils/InputUtils';
-import {LoadingSpinner} from '../loading/LoadingSpinner';
-import {Svg} from '../svg/Svg';
 
 export interface ISearchBarConnectedProps {
     /**

@@ -1,8 +1,8 @@
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
-import {ITitleProps, Title} from '../title/Title';
-import {BreadcrumbLink, IBreadcrumbLinkProps} from './BreadcrumbLink';
+import {ITitleProps} from '../title/Title';
+import {IBreadcrumbLinkProps} from './BreadcrumbLink';
 
 export interface IBreadcrumbProps extends ClassAttributes<Breadcrumb> {
     /**

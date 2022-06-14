@@ -3,7 +3,7 @@ import moment from 'moment';
 import {contains} from 'underscore.string';
 
 import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ILastUpdatedProps, LAST_UPDATE_LABEL, LastUpdated} from '../LastUpdated';
+import {ILastUpdatedProps, LAST_UPDATE_LABEL} from '../LastUpdated';
 
 describe('LastUpdated', () => {
     describe('<LastUpdated />', () => {

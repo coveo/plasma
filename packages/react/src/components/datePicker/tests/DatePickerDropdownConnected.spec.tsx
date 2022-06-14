@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -17,7 +16,6 @@ import {addOptionsCycle, changeOptionsCycle} from '../../optionsCycle/OptionsCyc
 import {addDatePicker, applyDatePicker, changeDatePickerLowerLimit, DateLimits} from '../DatePickerActions';
 import {DatePickerBox} from '../DatePickerBox';
 import {DatePickerDropdown, IDatePickerDropdownOwnProps, IDatePickerDropdownProps} from '../DatePickerDropdown';
-import {DatePickerDropdownConnected} from '../DatePickerDropdownConnected';
 import {IDatePickerState} from '../DatePickerReducers';
 
 describe('Date picker', () => {

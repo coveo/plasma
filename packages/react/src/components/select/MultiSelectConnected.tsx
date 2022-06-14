@@ -1,7 +1,6 @@
 import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import {CSSProperties, ReactNode, ComponentType, PureComponent} from 'react';
-import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -9,13 +8,9 @@ import * as _ from 'underscore';
 import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {DnDUtils} from '../dragAndDrop';
-import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
-import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
-import {Svg} from '../svg/Svg';
-import {Tooltip} from '../tooltip/Tooltip';
-import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
+import {ISelectButtonProps, ISelectOwnProps} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
 export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 'multi'> {

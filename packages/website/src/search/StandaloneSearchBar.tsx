@@ -1,5 +1,3 @@
-import {AtomicSearchBox, AtomicSearchInterface} from '@coveo/atomic-react';
-
 import {useContext} from 'react';
 import {useRouter} from 'next/router';
 

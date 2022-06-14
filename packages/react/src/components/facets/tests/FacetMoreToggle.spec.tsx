@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 import {createTestAppContainer} from '../../../utils/tests/TestUtils';
 
-import {FACET_TOGGLE_MORE_LABEL, FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle';
+import {FACET_TOGGLE_MORE_LABEL, IFacetMoreToggleProps} from '../FacetMoreToggle';
 
 describe('Facets', () => {
     const basicFacetMoreToggleProps: IFacetMoreToggleProps = {

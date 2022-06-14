@@ -2,8 +2,6 @@ import {svg} from '@coveord/plasma-style';
 import {HTMLProps, ReactNode, FunctionComponent, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
 
-import {Svg} from '../svg/Svg';
-
 export interface IDraggableContainerOwnProps {
     id: string;
     parentId: string;

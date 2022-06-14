@@ -1,14 +1,7 @@
 import {FunctionComponent} from 'react';
 import {compose} from 'redux';
 
-import {
-    Badge,
-    BadgeType,
-    TableHOC,
-    TableRowConnected,
-    tableWithBlankSlate,
-    tableWithNewPagination,
-} from '@coveord/plasma-react';
+import {BadgeType, TableHOC, tableWithBlankSlate, tableWithNewPagination} from '@coveord/plasma-react';
 
 const TABLE_ID: string = 'withBlankslateTableId';
 

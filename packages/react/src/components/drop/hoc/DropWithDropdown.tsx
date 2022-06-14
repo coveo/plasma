@@ -1,6 +1,5 @@
 import {ComponentClass, PureComponent} from 'react';
 import * as _ from 'underscore';
-import {SlideY} from '../../../animations/SlideY';
 import {PlasmaState} from '../../../PlasmaState';
 import {PropsToOmitUtils} from '../../../utils/PropsToOmitUtils';
 import {ReduxConnect} from '../../../utils/ReduxUtils';

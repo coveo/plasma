@@ -1,5 +1,4 @@
 import {mount} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -10,7 +9,6 @@ import {IActionOptions} from '../../actions/Action';
 import {PrimaryAction} from '../../actions/PrimaryAction';
 import {openDropdownSearch} from '../../dropdownSearch/DropdownSearchActions';
 import {ITableProps, Table} from '../Table';
-import {TableConnected} from '../TableConnected';
 import {TableChildComponent} from '../TableConstants';
 import * as TableDataModifier from '../TableDataModifier';
 import {getTableChildComponentId} from '../TableUtils';

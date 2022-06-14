@@ -2,8 +2,6 @@ import userEvent, {specialChars} from '@testing-library/user-event';
 import {PureComponent} from 'react';
 import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 
-import {ModalWizard} from '../ModalWizard';
-
 describe('ModalWizard', () => {
     it('closes the modal and execute the onCancel prop if passed when clicking on "cancel"', async () => {
         const cancelSpy = jest.fn();

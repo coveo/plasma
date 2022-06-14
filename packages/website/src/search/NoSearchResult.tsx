@@ -1,5 +1,4 @@
 import {buildHistoryManager, HistoryManager, HistoryManagerState, SearchEngine} from '@coveo/headless';
-import {Button} from '@coveord/plasma-react';
 
 import {FunctionComponent, useEffect, useState} from 'react';
 

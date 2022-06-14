@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 
 import {IDispatch} from '../../utils';
-import {JSONEditor, JSONEditorProps} from './JSONEditor';
+import {JSONEditorProps} from './JSONEditor';
 import {JSONEditorActions} from './JSONEditorActions';
 import {JSONEditorSelectors} from './JSONEditorSelectors';
 

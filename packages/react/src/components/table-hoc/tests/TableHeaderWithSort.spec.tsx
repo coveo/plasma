@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event';
 
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {TableHeaderActions} from '../actions/TableHeaderActions';
-import {TableHeaderWithSort} from '../TableHeaderWithSort';
 
 describe('Table HOC', () => {
     describe('TableHeaderWithSort', () => {

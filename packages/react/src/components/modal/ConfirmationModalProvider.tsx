@@ -2,9 +2,7 @@ import {ReactNode, FunctionComponent, useState} from 'react';
 import {connect} from 'react-redux';
 
 import {ConnectedProps, IDispatch} from '../../utils';
-import {Button} from '../button/Button';
 import {ModalActions} from './ModalActions';
-import {ModalCompositeConnected} from './ModalComposite';
 
 const defaultModalClasses = ['mod-prompt', 'mod-fade-in-scale'];
 const defaultConfirmButtonText = 'Confirm';

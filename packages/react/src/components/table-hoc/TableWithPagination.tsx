@@ -8,7 +8,6 @@ import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';
 import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
-import {NavigationConnected} from '../navigation/NavigationConnected';
 import {NavigationSelectors} from '../navigation/NavigationSelectors';
 import {TableWithPaginationActions} from './actions/TableWithPaginationActions';
 import {ITableHOCOwnProps} from './TableHOC';

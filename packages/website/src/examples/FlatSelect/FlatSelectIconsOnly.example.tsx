@@ -1,6 +1,3 @@
-import {FlatSelectConnected} from '@coveord/plasma-react';
-import {Donut64Size24Px} from '@coveord/plasma-react-icons';
-
 export default () => (
     <FlatSelectConnected
         id="flat-select-id"

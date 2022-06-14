@@ -1,5 +1,3 @@
-import {Slider} from '@coveord/plasma-react';
-
 export default () => (
     <Slider
         id="🍄"

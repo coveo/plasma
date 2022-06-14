@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow, ShallowWrapper} from 'enzyme';
 import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
-import {ILoadingProps, Loading} from '../Loading';
+import {ILoadingProps} from '../Loading';
 
 describe('<Loading />', () => {
     beforeEach(() => {

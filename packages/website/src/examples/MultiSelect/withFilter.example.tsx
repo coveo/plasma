@@ -1,5 +1,3 @@
-import {MultiSelectWithFilter} from '@coveord/plasma-react';
-
 export default () => (
     <MultiSelectWithFilter
         id="mutli-select-2"

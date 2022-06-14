@@ -2,7 +2,7 @@ import {mountWithStore, shallowWithState} from '@helpers/enzyme-redux';
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {ValidationActions} from '../../ValidationActions';
 import {ValidationState} from '../../ValidationState';
-import {IValidationMessageProps, ValidationMessage} from '../ValidationMessage';
+import {IValidationMessageProps} from '../ValidationMessage';
 
 describe('ValidationMessage', () => {
     const defaultProps: IValidationMessageProps = {

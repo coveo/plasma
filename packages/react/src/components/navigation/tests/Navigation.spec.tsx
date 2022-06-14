@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
 import {Loading} from '../../loading/Loading';
-import {INavigationProps, Navigation} from '../Navigation';
+import {INavigationProps} from '../Navigation';
 import {NavigationPagination} from '../pagination/NavigationPagination';
 import {NavigationPerPage, PER_PAGE_NUMBERS} from '../perPage/NavigationPerPage';
 import {NavigationPerPageSelect} from '../perPage/NavigationPerPageSelect';

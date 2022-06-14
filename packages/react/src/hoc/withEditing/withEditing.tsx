@@ -1,6 +1,5 @@
 import {ReactNode, ComponentType, ComponentClass} from 'react';
 
-import {StickyFooter} from '../../components/stickyFooter/StickyFooter';
 import {withDirty} from '../withDirty/withDirty';
 
 export interface IWithEditing {

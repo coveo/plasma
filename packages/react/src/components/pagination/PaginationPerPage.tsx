@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import {ReactNode, FunctionComponent} from 'react';
 import * as _ from 'underscore';
 import {UrlUtils} from '../../utils/UrlUtils';
-import {FlatSelectWithPrepend} from '../flatSelect/FlatSelectWithPrepend';
 import {Params} from '../table-hoc/TableWithUrlState';
 import {PaginationUtils} from './PaginationUtils';
 import {TablePaginationDefaultValue} from './PaginationConstants';

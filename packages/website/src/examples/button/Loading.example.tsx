@@ -1,5 +1,3 @@
-import {Button} from '@coveord/plasma-react';
-
 export default () => (
     <>
         <Button isLoading enabled={false}>

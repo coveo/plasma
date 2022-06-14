@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import {InfoBoxLink} from '../InfoBoxLink';
 
 describe('InfoBoxLink', () => {
     it('should not throw', () => {

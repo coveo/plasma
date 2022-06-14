@@ -3,11 +3,10 @@ import classNames from 'classnames';
 import {ReactNode, HTMLAttributes, FunctionComponent, MouseEventHandler, useState, Children} from 'react';
 import {slugify} from 'underscore.string';
 
-import {SlideY} from '../../animations';
 import {Override, TooltipPlacement} from '../../utils';
-import {Badge, IBadgeProps} from '../badge/Badge';
-import {SvgChild, SvgChildProps, OptionalSvgChildProps} from '../svg/SvgChild';
-import {ITooltipProps, Tooltip} from '../tooltip';
+import {IBadgeProps} from '../badge/Badge';
+import {SvgChildProps, OptionalSvgChildProps} from '../svg/SvgChild';
+import {ITooltipProps} from '../tooltip';
 
 export interface IconCardChoice extends OptionalSvgChildProps {
     value: string;

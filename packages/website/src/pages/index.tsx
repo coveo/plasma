@@ -1,9 +1,5 @@
-import {Section, Svg} from '@coveord/plasma-react';
 import {NextPage} from 'next';
-import Head from 'next/head';
 import {FC} from 'react';
-
-import {Tile} from '../building-blocs/Tile';
 
 export const Index: NextPage = () => (
     <Section className="home flex-auto overflow-auto demo-content">

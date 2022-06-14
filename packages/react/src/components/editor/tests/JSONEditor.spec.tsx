@@ -2,7 +2,7 @@ import {shallow, ShallowWrapper} from 'enzyme';
 
 import {CodeEditor} from '../CodeEditor';
 import {CodeMirrorModes} from '../EditorConstants';
-import {JSONEditor, JSONEditorProps} from '../JSONEditor';
+import {JSONEditorProps} from '../JSONEditor';
 import {JSONEditorUtils} from '../JSONEditorUtils';
 
 describe('<JSONEditor />', () => {

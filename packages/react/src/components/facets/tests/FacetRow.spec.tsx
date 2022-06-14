@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
 import {IFacet} from '../Facet';
-import {FacetRow, IFacetRowProps} from '../FacetRow';
+import {IFacetRowProps} from '../FacetRow';
 
 describe('Facets', () => {
     let spyOnToggleFacet: jest.Mock<any, any>;

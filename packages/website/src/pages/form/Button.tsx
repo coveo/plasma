@@ -6,8 +6,6 @@ import prepend from '@examples/button/Prepend.example.tsx';
 import primary from '@examples/button/Primary.example.tsx';
 import small from '@examples/button/Small.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="Button"

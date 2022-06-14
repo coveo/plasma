@@ -12,10 +12,8 @@ import {IDispatch, IReduxStatePossibleProps, ReduxUtils} from '../../utils/Redux
 import {IModalDispatchProps, IModalOwnProps, IModalStateProps} from './Modal';
 import {addModal, closeModal, removeModal} from './ModalActions';
 import {IModalBackdropOwnProps} from './ModalBackdrop';
-import {ModalBody} from './ModalBody';
-import {IModalFooterProps, ModalFooter} from './ModalFooter';
-import {IModalHeaderDispatchProps, IModalHeaderOwnProps, IModalHeaderProps, ModalHeader} from './ModalHeader';
-import {ModalHeaderConnected} from './ModalHeaderConnected';
+import {IModalFooterProps} from './ModalFooter';
+import {IModalHeaderDispatchProps, IModalHeaderOwnProps, IModalHeaderProps} from './ModalHeader';
 
 export interface IModalCompositeOwnProps
     extends IModalOwnProps,

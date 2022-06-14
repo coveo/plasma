@@ -1,4 +1,3 @@
-import {Slider} from '@coveord/plasma-react';
 import {useState} from 'react';
 
 export default () => {

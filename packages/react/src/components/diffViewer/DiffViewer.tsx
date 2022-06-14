@@ -1,7 +1,5 @@
 import {FunctionComponent, ReactNode} from 'react';
-import {parseDiff, Decoration, Diff, Hunk} from 'react-diff-view';
-
-import {BlankSlate} from '../blankSlate';
+import {parseDiff} from 'react-diff-view';
 
 enum DIFF_VIEWER_VIEW_TYPE {
     SPLIT = 'split',

@@ -7,11 +7,9 @@ import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {DateLimits} from '../datePicker/DatePickerActions';
 import {IDatePickerState} from '../datePicker/DatePickerReducers';
-import {IOptionsCycleProps, OptionsCycle} from '../optionsCycle/OptionsCycle';
-import {OptionsCycleConnected} from '../optionsCycle/OptionsCycleConnected';
-import {TableHeader} from '../tables/TableHeader';
+import {IOptionsCycleProps} from '../optionsCycle/OptionsCycle';
 import {ITableHeaderCellProps} from '../tables/TableHeaderCell';
-import {CalendarDay, IDay} from './CalendarDay';
+import {IDay} from './CalendarDay';
 
 export const CalendarSelectionRuleType = {
     all: 'ALL',

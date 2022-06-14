@@ -3,9 +3,7 @@ import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {LinkSvg} from '../svg/LinkSvg';
-import {Svg} from '../svg/Svg';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {ITooltipProps} from '../tooltip/Tooltip';
 
 export interface CollapsibleHeaderIconProps {
     informationTooltip: ITooltipProps;

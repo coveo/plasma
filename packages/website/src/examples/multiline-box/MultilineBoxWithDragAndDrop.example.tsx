@@ -1,11 +1,9 @@
 import {FocusEvent} from 'react';
 import {compose} from 'redux';
 import {
-    FormProvider,
     MultilineBox,
     IMultilineSingleBoxProps,
     IMultilineParentProps,
-    TextInput,
     multilineBoxWithDnD,
 } from '@coveord/plasma-react';
 

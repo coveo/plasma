@@ -1,6 +1,5 @@
 import {mount, ReactWrapper} from 'enzyme';
 import moment from 'moment';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -20,7 +19,6 @@ import {addOptionPicker, changeOptionPicker} from '../../optionPicker/OptionPick
 import {changeOptionsCycle} from '../../optionsCycle/OptionsCycleActions';
 import {OptionsCycleConnected} from '../../optionsCycle/OptionsCycleConnected';
 import {Calendar, ICalendarProps, MONTH_PICKER_ID, YEAR_PICKER_ID} from '../Calendar';
-import {CalendarConnected} from '../CalendarConnected';
 
 describe('Calendar', () => {
     const CALENDAR_ID: string = 'calendar';

@@ -1,4 +1,4 @@
-import {IItemBoxProps, MultiSelectWithPredicate} from '@coveord/plasma-react';
+import {IItemBoxProps} from '@coveord/plasma-react';
 
 export default () => (
     <MultiSelectWithPredicate

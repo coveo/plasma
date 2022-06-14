@@ -9,7 +9,7 @@ import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from '../actions/TableHOCRowActions';
-import {ITableRowConnectedProps, TableRowConnected} from '../TableRowConnected';
+import {ITableRowConnectedProps} from '../TableRowConnected';
 import {TableSelectors} from '../TableSelectors';
 
 describe('Table HOC', () => {

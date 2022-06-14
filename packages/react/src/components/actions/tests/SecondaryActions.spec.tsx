@@ -4,7 +4,6 @@ import {IActionOptions} from '../Action';
 import {ACTION_SEPARATOR} from '../ActionConstants';
 import {ActionsDropdown} from '../ActionsDropdown';
 import {PrimaryActionConnected} from '../PrimaryActionConnected';
-import {SecondaryActions} from '../SecondaryActions';
 
 describe('Actions', () => {
     const linkAction: IActionOptions = {

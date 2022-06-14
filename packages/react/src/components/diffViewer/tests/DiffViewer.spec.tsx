@@ -1,7 +1,5 @@
 import {render, screen} from '@test-utils';
 
-import {DiffViewer} from '../DiffViewer';
-
 describe('DiffViewer', () => {
     const difference = `
 --- PRIMARY

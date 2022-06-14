@@ -3,8 +3,6 @@ import emptyExample from '@examples/ListBox/empty.example.tsx';
 import withFooterExample from '@examples/ListBox/withFooter.example.tsx';
 import loadingExample from '../../examples/ListBox/loading.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="ListBox"

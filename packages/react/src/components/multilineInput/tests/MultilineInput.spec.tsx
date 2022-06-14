@@ -7,7 +7,7 @@ import {ILabelProps} from '../../input';
 import {validateInputValue} from '../../input/InputActions';
 import {AddInput} from '../AddInput';
 import {DeletableInput} from '../DeletableInput';
-import {IMultilineInputProps, IMultilineInputValue, MultilineInput} from '../MultilineInput';
+import {IMultilineInputProps, IMultilineInputValue} from '../MultilineInput';
 
 describe('MultilineInput', () => {
     it('should render without errors', () => {

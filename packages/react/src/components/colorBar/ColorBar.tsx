@@ -3,8 +3,7 @@ import {Component} from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {KeyValue} from '../../utils/DataStructuresUtils';
-import {Color} from '../color/Color';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {ITooltipProps} from '../tooltip/Tooltip';
 
 export interface IColorBarProps {
     /**

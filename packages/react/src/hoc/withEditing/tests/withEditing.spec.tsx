@@ -1,10 +1,7 @@
 import {mount} from 'enzyme';
 import {Component} from 'react';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {Button} from '../../../components/button/Button';
-import {Input} from '../../../components/input/Input';
 import {StickyFooter} from '../../../components/stickyFooter/StickyFooter';
 import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';

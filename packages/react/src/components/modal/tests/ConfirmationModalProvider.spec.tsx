@@ -1,9 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import {render, screen} from '@test-utils';
 
-import {ConfirmationModalProvider} from '../ConfirmationModalProvider';
-import {ModalCompositeConnected} from '../ModalComposite';
-
 describe('ConfirmationModalProvider', () => {
     describe('when shouldConfirm prop is true:', () => {
         it('should open the ConfirmationModal to interrupt the leaving action if isDirty is true', () => {

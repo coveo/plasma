@@ -5,7 +5,6 @@ import {ShallowWrapper} from 'enzyme';
 import {keyCode} from '../../../utils/InputUtils';
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {NumericInputActions} from '../NumericInputActions';
-import {NumericInputConnected} from '../NumericInputConnected';
 import {initialNumericInputState} from '../NumericInputReducers';
 
 describe('Numeric Input', () => {

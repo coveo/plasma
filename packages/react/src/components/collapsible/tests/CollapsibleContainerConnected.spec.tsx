@@ -1,8 +1,6 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
-
 describe('CollapsibleContainerConnected', () => {
     it('displays the collapsible header and its content', () => {
         render(

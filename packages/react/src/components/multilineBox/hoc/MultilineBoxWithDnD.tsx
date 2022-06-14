@@ -1,5 +1,4 @@
 import {ReactNode, Children, PureComponent} from 'react';
-import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
 
@@ -7,7 +6,7 @@ import {PlasmaState} from '../../../PlasmaState';
 import {reorderStringList} from '../../../reusableState/customList/StringListActions';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
-import {DnDContainer, IDraggableContainerOwnProps} from '../../dragAndDrop/DnDContainer';
+import {IDraggableContainerOwnProps} from '../../dragAndDrop/DnDContainer';
 import {DnDUtils} from '../../dragAndDrop/DnDUtils';
 import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
 import {

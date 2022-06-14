@@ -1,8 +1,6 @@
 import {
     ACTION_SEPARATOR,
-    ActionBarConnected,
     addActionsToActionBar,
-    Button,
     IActionOptions,
     IDispatch,
     PlasmaState,

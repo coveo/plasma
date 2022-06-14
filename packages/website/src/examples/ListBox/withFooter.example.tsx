@@ -1,5 +1,3 @@
-import {ListBox, Svg} from '@coveord/plasma-react';
-
 export default () => (
     <ListBox
         items={[

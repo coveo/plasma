@@ -1,6 +1,3 @@
-import {ContentLoadingPlaceholder} from './ContentLoadingPlaceholder';
-import {TextLoadingPlaceholder} from './TextLoadingPlaceholder';
-
 export const PaginationLoading = () => (
     <div className="pagination-container">
         <div className="items-per-page prepended-flat-select">

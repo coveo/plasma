@@ -1,7 +1,5 @@
 import {render, screen, within} from '@test-utils';
 
-import {Badge} from '../Badge';
-
 describe('Badge', () => {
     it('renders a badge', () => {
         render(<Badge label="label" icon="lock" />);

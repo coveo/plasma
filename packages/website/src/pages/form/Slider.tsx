@@ -3,8 +3,6 @@ import asymetric from '@examples/Slider/SliderAsymetric.example.tsx';
 import onChange from '@examples/Slider/SliderOnChange.example.tsx';
 import append from '@examples/Slider/SliderAppend.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="Slider"

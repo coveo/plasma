@@ -1,7 +1,6 @@
 import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import {Component} from 'react';
-import {Svg} from '../svg';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
 

@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import {ClassAttributes, MouseEvent, Component} from 'react';
 
 import {EventUtils} from '../../utils/EventUtils';
-import {TableCollapsibleRowToggle} from './TableCollapsibleRowToggle';
 
 export interface ITableHeadingRowOwnProps extends ClassAttributes<TableHeadingRow> {
     id?: string;

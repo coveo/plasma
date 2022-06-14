@@ -2,7 +2,6 @@ import {shallow} from 'enzyme';
 import * as React from 'react';
 import {mocked} from 'ts-jest/utils';
 
-import {BarSeries} from '../BarSeries';
 import {ChartUtils} from '../ChartUtils';
 import {XYChartContextMock, XYChartOnePointContextMock} from './XYChartContextMock';
 

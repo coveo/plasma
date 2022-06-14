@@ -3,9 +3,8 @@ import {shallow} from 'enzyme';
 import * as _ from 'underscore';
 
 import {ActionBarConnected} from '../../actions/ActionBar';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {TableLoading} from '../../loading/components/TableLoading';
-import {ITableHOCOwnProps, TableHOC} from '../TableHOC';
+import {ITableHOCOwnProps} from '../TableHOC';
 
 describe('TableHOC', () => {
     describe('<TableHOC/>', () => {

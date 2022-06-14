@@ -6,7 +6,6 @@ import {withServerSideProcessing} from '../../../../hoc';
 import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../../itemBox/ItemBox';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../MultiSelectConnected';
-import {MultiSelectWithPredicate} from '../SelectComponents';
 import {ISelectWithPredicateOwnProps, selectWithPredicate} from '../SelectWithPredicate';
 
 describe('MultiSelectWithPredicate', () => {

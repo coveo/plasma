@@ -6,7 +6,7 @@ import {DateUtils} from '../../utils/DateUtils';
 import {DateLimits} from './DatePickerActions';
 import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
 import {IRangeLimit} from './DatesSelection';
-import {ISetToNowProps, SetToNowButton} from './SetToNowButton';
+import {ISetToNowProps} from './SetToNowButton';
 import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../calendar';
 
 export interface IDatePickerProps extends ClassAttributes<DatePicker> {

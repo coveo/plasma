@@ -4,8 +4,6 @@ import withRemove from '@examples/multiline-box/MultilineBoxWithRemove.example.t
 import withDragAndDrop from '@examples/multiline-box/MultilineBoxWithDragAndDrop.example.tsx';
 import complex from '@examples/multiline-box/MultilineBoxComplex.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="MultilineBox"

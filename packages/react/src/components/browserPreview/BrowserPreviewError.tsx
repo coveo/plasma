@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 
-import {Svg} from '../svg';
-
 export interface BrowserPreviewErrorProps {
     onClick?: () => void;
     description?: string;

@@ -1,4 +1,4 @@
-import {TableHOC, TableRowConnected, tableWithBlankSlate, tableWithFilter} from '@coveord/plasma-react';
+import {TableHOC, tableWithBlankSlate, tableWithFilter} from '@coveord/plasma-react';
 import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 

@@ -3,8 +3,6 @@ import readOnly from '@examples/JSONEditor/ReadOnly.example.tsx';
 import inError from '@examples/JSONEditor/InError.example.tsx';
 import valueFromState from '@examples/JSONEditor/ValueState.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="JSONEditorConnected"

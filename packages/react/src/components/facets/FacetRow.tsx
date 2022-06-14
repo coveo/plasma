@@ -2,8 +2,6 @@ import classNames from 'classnames';
 import {ClassAttributes, MouseEvent, Component} from 'react';
 import * as _ from 'underscore';
 
-import {Svg} from '../svg/Svg';
-import {Tooltip} from '../tooltip/Tooltip';
 import {IFacet} from './Facet';
 
 export interface IFacetRowProps extends ClassAttributes<FacetRow> {

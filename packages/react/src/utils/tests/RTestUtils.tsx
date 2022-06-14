@@ -1,8 +1,6 @@
 import {mount} from 'enzyme';
 import {ReactNode} from 'react';
-import {DndProvider} from 'react-dnd';
 import {TestBackend} from 'react-dnd-test-backend';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../PlasmaState';

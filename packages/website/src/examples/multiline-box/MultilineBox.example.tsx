@@ -1,11 +1,5 @@
 import {FocusEvent} from 'react';
-import {
-    FormProvider,
-    MultilineBox,
-    IMultilineSingleBoxProps,
-    IMultilineParentProps,
-    TextInput,
-} from '@coveord/plasma-react';
+import {IMultilineSingleBoxProps, IMultilineParentProps} from '@coveord/plasma-react';
 
 interface MyData {
     name: string;

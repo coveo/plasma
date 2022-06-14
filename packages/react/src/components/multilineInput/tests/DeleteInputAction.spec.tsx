@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {DeleteInputAction, IDeleteInputActionProps} from '../DeleteInputAction';
+import {IDeleteInputActionProps} from '../DeleteInputAction';
 
 describe('DeleteInputAction', () => {
     it('should render without errors', () => {

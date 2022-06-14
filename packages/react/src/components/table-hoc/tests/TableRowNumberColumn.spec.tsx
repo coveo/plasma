@@ -1,5 +1,4 @@
 import {shallow} from 'enzyme';
-import {TableRowNumberColumn} from '../TableRowNumberColumn';
 
 describe('TableRowNumberColumn', () => {
     it('should render without error', () => {

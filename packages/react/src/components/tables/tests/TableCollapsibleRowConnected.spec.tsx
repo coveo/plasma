@@ -1,12 +1,10 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITableCollapsibleRowProps, TableCollapsibleRow} from '../TableCollapsibleRow';
-import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected';
 import {addRow} from '../TableRowActions';
 
 describe('Tables', () => {

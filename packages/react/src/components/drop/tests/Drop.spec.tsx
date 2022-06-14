@@ -6,7 +6,7 @@ import {render, screen, waitFor} from '@test-utils';
 
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {Drop, IDropProps} from '../Drop';
+import {IDropProps} from '../Drop';
 import {DropPod} from '../DropPod';
 import {DefaultGroupIds, DropActions} from '../redux/DropActions';
 

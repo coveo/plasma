@@ -1,8 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
 import {Radio} from '../../radio/Radio';
-import {ChildForm} from '../ChildForm';
-import {IToggleFormProps, ToggleForm} from '../ToggleForm';
+import {IToggleFormProps} from '../ToggleForm';
 
 describe('ToggleForm', () => {
     it('should render without errors', () => {

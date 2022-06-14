@@ -1,12 +1,10 @@
-import {TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
+import {TabSelectors} from '@coveord/plasma-react';
 import dynamic from 'next/dynamic';
 import {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 
-import {GuidelinesTab} from './GuidelinesTab';
-import {PageHeader, PageHeaderProps} from './PageHeader';
-import {PlasmaLoading} from './PlasmaLoading';
-import {Tile, TileProps} from './Tile';
+import {PageHeaderProps} from './PageHeader';
+import {TileProps} from './Tile';
 
 const Sandbox = dynamic(
     import('./Sandbox').then((mod) => mod.Sandbox),

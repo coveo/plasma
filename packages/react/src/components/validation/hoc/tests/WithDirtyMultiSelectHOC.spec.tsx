@@ -1,5 +1,5 @@
 import {render, screen} from '@test-utils';
-import {IsDirtyIndicator, withSelectedValues} from '../../../../utils/tests/TestUtils';
+import {withSelectedValues} from '../../../../utils/tests/TestUtils';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
 import {withDirtyMultiSelectHOC} from '../WithDirtyMultiSelectHOC';
 

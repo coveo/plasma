@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import {MouseEvent, Children, Component} from 'react';
 import * as ReactDOM from 'react-dom';
-import {IInputProps, Input} from '../input/Input';
-import {CheckboxContext} from './CheckboxContext';
+import {IInputProps} from '../input/Input';
 
 export interface ICheckboxOwnProps {
     /**

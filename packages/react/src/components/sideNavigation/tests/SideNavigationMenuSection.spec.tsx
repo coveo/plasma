@@ -2,7 +2,7 @@ import {SvgName} from '@coveord/plasma-style';
 import {shallow, ShallowWrapper} from 'enzyme';
 
 import {Collapsible} from '../../collapsible/Collapsible';
-import {ISideNavigationSectionProps, SideNavigationMenuSection} from '../SideNavigationMenuSection';
+import {ISideNavigationSectionProps} from '../SideNavigationMenuSection';
 
 describe('SideNavigationMenuSection', () => {
     let section: ShallowWrapper<ISideNavigationSectionProps>;

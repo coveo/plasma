@@ -1,7 +1,5 @@
 import {ClassAttributes, Component} from 'react';
 
-import {Svg} from '../svg';
-
 export interface ITableCollapsibleRowToggleProps extends ClassAttributes<TableCollapsibleRowToggle> {
     isExpanded: boolean;
 }

@@ -1,7 +1,6 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {shallow} from 'enzyme';
-import {SearchBar} from '../SearchBar';
 import {searchBarPropsScenarios} from './SearchBarPropsScenarios.mock';
 
 describe('SearchBar', () => {

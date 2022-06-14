@@ -1,7 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import * as _ from 'underscore';
 
-import {IPaginationSelectProps, PaginationSelect} from '../PaginationSelect';
+import {IPaginationSelectProps} from '../PaginationSelect';
 
 describe('paginationSelectWrapper', () => {
     const basicPaginationSelectProps: IPaginationSelectProps = {

@@ -2,7 +2,7 @@ import {mountWithStore, shallowWithState, shallowWithStore} from '@helpers/enzym
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {UUID} from '../../../utils/UUID';
-import {FlatSelectConnected, IFlatSelectOwnProps} from '../FlatSelect';
+import {IFlatSelectOwnProps} from '../FlatSelect';
 import {addFlatSelect, removeFlatSelect, selectFlatSelect} from '../FlatSelectActions';
 import {FlatSelectOption, IFlatSelectOptionProps} from '../FlatSelectOption';
 

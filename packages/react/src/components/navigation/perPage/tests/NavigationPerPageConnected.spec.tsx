@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -10,7 +9,6 @@ import {addLoading, turnOffLoading} from '../../../loading/LoadingActions';
 import {addPagination, changePage} from '../../pagination/NavigationPaginationActions';
 import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS} from '../NavigationPerPage';
 import {changePerPage} from '../NavigationPerPageActions';
-import {NavigationPerPageConnected} from '../NavigationPerPageConnected';
 import {INavigationPerPageSelectProps, NavigationPerPageSelect} from '../NavigationPerPageSelect';
 
 describe('<NavigationPerPageConnected />', () => {

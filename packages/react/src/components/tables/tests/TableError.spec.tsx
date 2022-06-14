@@ -6,7 +6,6 @@ import {
     ERROR_CODE_LABEL,
     IErrorSection,
     ITableErrorProps,
-    TableError,
     TROUBLESHOOTING_LABEL,
 } from '../TableError';
 

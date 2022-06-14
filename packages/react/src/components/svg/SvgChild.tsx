@@ -1,5 +1,5 @@
 import {ReactNode, FunctionComponent} from 'react';
-import {ISvgProps, Svg} from './Svg';
+import {ISvgProps} from './Svg';
 
 export interface SvgChildStandardProps extends ISvgProps {
     svgChild?: never;

@@ -1,4 +1,4 @@
-import {IItemBoxProps, SingleSelectWithPredicate} from '@coveord/plasma-react';
+import {IItemBoxProps} from '@coveord/plasma-react';
 
 export default () => (
     <SingleSelectWithPredicate

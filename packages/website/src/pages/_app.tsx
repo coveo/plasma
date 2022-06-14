@@ -16,8 +16,6 @@ import * as PlasmaReact from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import * as LoremIpsum from 'lorem-ipsum';
 import moment from 'moment';
-import Head from 'next/head';
-import Link from 'next/link';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
 import * as jsxRuntime from 'react/jsx-runtime';
@@ -27,9 +25,6 @@ import thunk from 'redux-thunk';
 import * as React from 'react';
 
 import logo from '../../resources/plasma-logo.svg';
-import {EngineProvider} from '../search/engine/EngineProvider';
-import StandaloneSearchBar from '../search/StandaloneSearchBar';
-import {Navigation} from '../SideNavigation';
 import {Store} from '../Store';
 
 const Header = () => (

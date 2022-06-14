@@ -1,12 +1,10 @@
 import {mount} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IRadioSelectAllProps, RadioSelect} from '../RadioSelect';
-import {RadioSelectConnected} from '../RadioSelectConnected';
 
 describe('RadioSelectConnected', () => {
     let store: Store<PlasmaState>;

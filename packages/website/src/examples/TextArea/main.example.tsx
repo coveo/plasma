@@ -1,4 +1,3 @@
-import {Label, TextArea} from '@coveord/plasma-react';
 import {useState} from 'react';
 
 export default () => {

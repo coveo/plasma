@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import {HTMLAttributes, SFC} from 'react';
 
-import {Svg} from '../svg/Svg';
-
 export interface CollapsibleToggleProps {
     expanded: boolean;
     className?: string;

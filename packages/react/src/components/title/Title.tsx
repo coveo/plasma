@@ -2,8 +2,7 @@ import classNames from 'classnames';
 import {ReactNode, FunctionComponent, useRef, useState} from 'react';
 import * as _ from 'underscore';
 
-import {ILinkSvgProps, LinkSvg} from '../svg/LinkSvg';
-import {Tooltip} from '../tooltip/Tooltip';
+import {ILinkSvgProps} from '../svg/LinkSvg';
 
 export interface ITitleProps {
     prefix?: string;

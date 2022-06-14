@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
 import {FilterBox} from '../../filterBox/FilterBox';
-import {FacetMoreRows, IFacetMoreRowsProps} from '../FacetMoreRows';
+import {IFacetMoreRowsProps} from '../FacetMoreRows';
 
 describe('Facets', () => {
     const facet: string = 'facetTitle';

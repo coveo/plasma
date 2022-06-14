@@ -6,7 +6,7 @@ import {IReduxAction} from '../../utils/ReduxUtils';
 import {closeDropdown} from '../dropdown/DropdownActions';
 import {IUserChoice} from '../inlinePrompt/InlinePrompt';
 import {addPrompt, removePrompt} from '../inlinePrompt/InlinePromptActions';
-import {Action, IBasicActionProps, IConfirmData} from './Action';
+import {IBasicActionProps, IConfirmData} from './Action';
 import {keyCode} from '../../utils';
 
 export interface ITriggerActionOwnProps extends ClassAttributes<TriggerAction>, IBasicActionProps {

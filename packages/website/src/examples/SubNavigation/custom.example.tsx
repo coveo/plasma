@@ -1,5 +1,3 @@
-import {SubNavigationConnected, Svg} from '@coveord/plasma-react';
-
 export default () => (
     <SubNavigationConnected
         id="third-sub-nav"

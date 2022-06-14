@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
 import {Tooltip} from '../../tooltip/Tooltip';
-import {ILinkSvgProps, LinkSvg} from '../LinkSvg';
+import {ILinkSvgProps} from '../LinkSvg';
 import {Svg} from '../Svg';
 
 describe('<LinkSvg>', () => {

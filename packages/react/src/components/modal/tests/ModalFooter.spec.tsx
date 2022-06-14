@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {IModalFooterProps, ModalFooter} from '../ModalFooter';
+import {IModalFooterProps} from '../ModalFooter';
 
 describe('ModalFooter', () => {
     it('should render without errors', () => {

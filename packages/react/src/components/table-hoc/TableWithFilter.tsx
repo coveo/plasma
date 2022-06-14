@@ -5,8 +5,8 @@ import * as _ from 'underscore';
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
 import {PlasmaState} from '../../PlasmaState';
 import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
-import {BlankSlateWithTable, IBlankSlateWithTableProps} from '../blankSlate';
-import {FilterBoxConnected, FilterBoxSelectors, IFilterBoxOwnProps} from '../filterBox';
+import {IBlankSlateWithTableProps} from '../blankSlate';
+import {FilterBoxSelectors, IFilterBoxOwnProps} from '../filterBox';
 import {ITableHOCOwnProps, TableHOC} from './TableHOC';
 import {Params} from './TableWithUrlState';
 

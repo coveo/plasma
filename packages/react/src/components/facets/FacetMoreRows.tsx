@@ -3,8 +3,6 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {FilterBox} from '../filterBox/FilterBox';
-import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 
 export interface IFacetMoreRowsOwnProps extends ClassAttributes<FacetMoreRows> {
     facet: string;

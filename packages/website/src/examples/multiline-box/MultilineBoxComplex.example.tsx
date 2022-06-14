@@ -1,18 +1,15 @@
 import {ReactNode, FocusEvent} from 'react';
 import {compose} from 'redux';
 import {
-    FormProvider,
     MultilineBox,
     IButtonProps,
     IMultilineSingleBoxProps,
     IMultilineParentProps,
-    TextInput,
     defaultMultilineBoxRemoveButtonClasses,
     multilineBoxWithRemoveButton,
     multilineBoxWithDnD,
     multilineBoxContainer,
 } from '@coveord/plasma-react';
-import {DragAndDropSize16Px} from '@coveord/plasma-react-icons';
 
 interface MyData {
     name: string;

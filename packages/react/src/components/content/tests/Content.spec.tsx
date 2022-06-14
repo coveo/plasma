@@ -1,7 +1,6 @@
 import {shallow} from 'enzyme';
 
 import {Loading} from '../../loading/Loading';
-import {Content} from '../Content';
 
 describe('Content', () => {
     it('should render without errors', () => {

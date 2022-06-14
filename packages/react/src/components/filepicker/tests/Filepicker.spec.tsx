@@ -1,11 +1,10 @@
 import {mount} from 'enzyme';
 import {shallowWithState} from '@helpers/enzyme-redux';
 import {act} from 'react-dom/test-utils';
-import {Provider} from 'react-redux';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {Svg} from '../../svg';
-import {Filepicker, FilepickerProps} from '../Filepicker';
+import {FilepickerProps} from '../Filepicker';
 import {FilepickerActions} from '../FilepickerActions';
 import {FilepickerSelectors} from '../FilepickerSelectors';
 

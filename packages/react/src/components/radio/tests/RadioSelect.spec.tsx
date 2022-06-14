@@ -2,7 +2,7 @@ import {shallow, ShallowWrapper} from 'enzyme';
 
 import {Radio} from '../Radio';
 import {RadioCard} from '../RadioCard';
-import {IRadioSelectAllProps, RadioSelect} from '../RadioSelect';
+import {IRadioSelectAllProps} from '../RadioSelect';
 
 describe('<RadioSelect />', () => {
     it('should mount without errors', () => {

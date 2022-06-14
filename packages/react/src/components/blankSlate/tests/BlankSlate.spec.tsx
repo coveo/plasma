@@ -2,7 +2,7 @@ import {render, screen} from '@test-utils';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {BlankSlate, IBlankSlateProps} from '../BlankSlate';
+import {IBlankSlateProps} from '../BlankSlate';
 
 describe('BlankSlate', () => {
     let blankSlateComponent: ReactWrapper<IBlankSlateProps, any>;

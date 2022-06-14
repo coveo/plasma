@@ -4,7 +4,7 @@ import * as _ from 'underscore';
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
+import {IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps} from '../MultilineBox';
 
 describe('MultilineBox', () => {
     describe('<MultilineBox/>', () => {

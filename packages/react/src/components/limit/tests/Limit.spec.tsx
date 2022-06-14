@@ -1,8 +1,6 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {Limit} from '../Limit';
-
 describe('Limit', () => {
     it('renders Limit component with default values', () => {
         render(<Limit id="🆔" title="My limit" limit={100} />);

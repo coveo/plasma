@@ -1,10 +1,8 @@
 import {ComponentType, FunctionComponent, ReactNode} from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {Loading} from '../../loading/Loading';
 import {ISelectOwnProps} from '../SelectConnected';
 import {SelectSelector} from '../SelectSelector';
 

@@ -2,7 +2,6 @@ import userEvent from '@testing-library/user-event';
 import {render, screen} from '@test-utils';
 
 import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
-import {CodeEditor} from '../CodeEditor';
 import {CodeEditorActions} from '../CodeEditorActions';
 import {CodeMirrorModes} from '../EditorConstants';
 

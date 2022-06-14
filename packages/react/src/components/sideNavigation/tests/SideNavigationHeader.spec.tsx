@@ -2,7 +2,7 @@ import {SvgName} from '@coveord/plasma-style';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
 import {Svg} from '../../svg';
-import {ISideNavigationHeaderProps, SideNavigationHeader} from '../SideNavigationHeader';
+import {ISideNavigationHeaderProps} from '../SideNavigationHeader';
 
 describe('SideNavigationHeader', () => {
     const title = 'hello';

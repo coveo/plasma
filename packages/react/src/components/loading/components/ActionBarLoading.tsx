@@ -1,5 +1,3 @@
-import {ActionBar} from '../../actions/ActionBar';
-
 export const ActionBarLoading = () => (
     <ActionBar extraContainerClasses={['mod-no-border']}>
         <div className="coveo-table-actions">

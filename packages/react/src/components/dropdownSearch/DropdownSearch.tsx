@@ -6,15 +6,9 @@ import {contains} from 'underscore.string';
 
 import {svg} from '@coveord/plasma-style';
 import {keyCode} from '../../utils/InputUtils';
-import {Content} from '../content/Content';
-import {FilterBox} from '../filterBox/FilterBox';
-import {ISvgProps, Svg} from '../svg/Svg';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
-import {
-    DropdownSearchAutoInfiniteScroll,
-    IDropdownSearchAutoInfiniteScrollOptions,
-} from './DropdownSearchAutoInfiniteScroll';
-import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions';
+import {ISvgProps} from '../svg/Svg';
+import {ITooltipProps} from '../tooltip/Tooltip';
+import {IDropdownSearchAutoInfiniteScrollOptions} from './DropdownSearchAutoInfiniteScroll';
 
 export interface IDropdownOption {
     svg?: ISvgProps;

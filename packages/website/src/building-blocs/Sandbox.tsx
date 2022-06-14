@@ -1,4 +1,3 @@
-import MonacoEditor from '@monaco-editor/react';
 import initSwc, {transformSync} from '@swc/wasm-web';
 import classNames from 'classnames';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
@@ -7,8 +6,6 @@ import {format} from 'prettier/standalone';
 import {FunctionComponent, useState, useEffect, useRef, useMemo} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
-
-import {PlasmaLoading} from './PlasmaLoading';
 
 const prettierConfig = await import('tsjs/prettier-config.js');
 

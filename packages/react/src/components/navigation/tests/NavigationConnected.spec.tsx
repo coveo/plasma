@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -9,7 +8,6 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {LoadingConnected} from '../../loading/LoadingConnected';
 import {PaginationSelect} from '../../pagination';
 import {INavigationProps, Navigation} from '../Navigation';
-import {NavigationConnected} from '../NavigationConnected';
 import {NavigationPaginationConnected} from '../pagination/NavigationPaginationConnected';
 import {NavigationPerPageConnected} from '../perPage/NavigationPerPageConnected';
 import {NavigationPerPageSelect} from '../perPage/NavigationPerPageSelect';

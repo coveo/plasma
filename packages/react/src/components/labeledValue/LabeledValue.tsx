@@ -2,8 +2,6 @@ import classNames from 'classnames';
 import {ReactNode, PureComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg/Svg';
-import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ILabeledValueProps {
     /**

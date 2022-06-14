@@ -4,7 +4,6 @@ import {useSelector} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
 import {InputSelectors} from '../input';
-import {ColorPicker} from './ColorPicker';
 
 describe('ColorPicker', () => {
     it('should mount and unmount without error', () => {

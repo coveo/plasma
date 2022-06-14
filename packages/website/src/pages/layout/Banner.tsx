@@ -1,5 +1,3 @@
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
     import {BannerContainer} from '@coveord/plasma-react';
 

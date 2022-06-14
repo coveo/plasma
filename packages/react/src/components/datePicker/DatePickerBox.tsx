@@ -4,13 +4,10 @@ import * as _ from 'underscore';
 import {slugify} from 'underscore.string';
 
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {Calendar, ICalendarOwnProps, ICalendarProps} from '../calendar/Calendar';
-import {CalendarConnected} from '../calendar/CalendarConnected';
+import {ICalendarOwnProps, ICalendarProps} from '../calendar/Calendar';
 import {IOption} from '../optionPicker/Option';
-import {IOptionPickerProps, OptionPicker} from '../optionPicker/OptionPicker';
-import {OptionPickerConnected} from '../optionPicker/OptionPickerConnected';
-import {DatesSelection, IDatesSelectionOwnProps, IDatesSelectionProps, IRangeLimit} from './DatesSelection';
-import {DatesSelectionConnected} from './DatesSelectionConnected';
+import {IOptionPickerProps} from '../optionPicker/OptionPicker';
+import {IDatesSelectionOwnProps, IDatesSelectionProps, IRangeLimit} from './DatesSelection';
 
 export interface IDatesSelectionBox {
     title: string;

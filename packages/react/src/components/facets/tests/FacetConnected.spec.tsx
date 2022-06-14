@@ -1,11 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../../PlasmaState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Facet, IFacet, IFacetProps} from '../Facet';
-import {FacetConnected} from '../FacetConnected';
 import {FacetMoreRows} from '../FacetMoreRows';
 import {FacetMoreToggle} from '../FacetMoreToggle';
 import {FacetRow} from '../FacetRow';

@@ -11,7 +11,7 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Drop} from '../../drop/Drop';
 import {ListBox} from '../../listBox/ListBox';
 import {Svg} from '../../svg/Svg';
-import {ActionableItem, IActionableItemProps} from '../ActionableItem';
+import {IActionableItemProps} from '../ActionableItem';
 
 describe('ActionableItem', () => {
     const basicProps: IActionableItemProps = {

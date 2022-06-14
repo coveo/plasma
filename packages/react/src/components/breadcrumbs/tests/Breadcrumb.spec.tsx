@@ -2,7 +2,7 @@ import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from '@helpers/enzyme-redux';
 import * as _ from 'underscore';
 import {Title} from '../../title/Title';
-import {Breadcrumb, IBreadcrumbProps} from '../Breadcrumb';
+import {IBreadcrumbProps} from '../Breadcrumb';
 import {BreadcrumbLink, IBreadcrumbLinkProps} from '../BreadcrumbLink';
 
 describe('<Breadcrumb/>', () => {

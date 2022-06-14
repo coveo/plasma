@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import {Component} from 'react';
 import * as _ from 'underscore';
 
-import {IToastProps, Toast} from './Toast';
+import {IToastProps} from './Toast';
 import {IToastState} from './ToastReducers';
 
 export interface IToastContainerOwnProps {

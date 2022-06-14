@@ -1,5 +1,3 @@
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
     import {CodeEditor, CodeMirrorModes} from '@coveord/plasma-react';
 

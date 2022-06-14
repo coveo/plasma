@@ -3,8 +3,6 @@ import classNames from 'classnames';
 import {ReactNode, MouseEvent, FunctionComponent, useRef, useEffect} from 'react';
 import * as _ from 'underscore';
 
-import {Collapsible} from '../collapsible/Collapsible';
-import {Svg} from '../svg';
 import {ISideNavigationHeaderProps} from './SideNavigationHeader';
 
 export interface SideNavigationHeaderProps {

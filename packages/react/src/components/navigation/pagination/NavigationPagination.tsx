@@ -1,7 +1,5 @@
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
-import {PaginationSelect} from '../../pagination';
-import {Svg} from '../../svg/Svg';
 
 export interface INavigationPaginationOwnProps extends ClassAttributes<NavigationPagination> {
     id?: string;

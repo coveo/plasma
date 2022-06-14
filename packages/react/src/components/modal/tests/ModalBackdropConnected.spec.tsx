@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../../PlasmaState';
@@ -7,7 +6,6 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addModal, openModal} from '../ModalActions';
 import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
-import {ModalBackdropConnected} from '../ModalBackdropConnected';
 
 describe('ModalBackdrop', () => {
     let modalBackdrop: ReactWrapper<IModalBackdropProps, any>;

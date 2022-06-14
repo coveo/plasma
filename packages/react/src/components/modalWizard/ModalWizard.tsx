@@ -4,11 +4,8 @@ import {useDispatch} from 'react-redux';
 
 import {IDispatch, TooltipPlacement} from '../../utils';
 import {useMountedState} from '../../utils/useMountedState';
-import {Button} from '../button';
 import {ModalActions} from '../modal/ModalActions';
-import {IModalCompositeOwnProps, ModalCompositeConnected} from '../modal/ModalComposite';
-import {UnsavedChangesModalProvider} from '../modal/UnsavedChangesModalProvider';
-import {StepProgressBar} from '../stepProgressBar';
+import {IModalCompositeOwnProps} from '../modal/ModalComposite';
 
 type DependsOnStep<T> = (currentStep: number, numberOfSteps: number) => T;
 

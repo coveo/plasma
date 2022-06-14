@@ -1,11 +1,7 @@
 import {render, screen, within} from '@test-utils';
 import userEvent, {specialChars} from '@testing-library/user-event';
-import {Badge, BadgeType} from '../../badge/Badge';
+import {BadgeType} from '../../badge/Badge';
 import {UrlUtils} from '../../../utils';
-import {Tab, TabConnected} from '../Tab';
-import {TabContent} from '../TabContent';
-import {TabNavigation} from '../TabNavigation';
-import {TabPaneConnected} from '../TabPane';
 
 describe('Tab', () => {
     it('displays the tooltip text when hovering over the tab button', async () => {

@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {IModalBodyProps, ModalBody} from '../ModalBody';
+import {IModalBodyProps} from '../ModalBody';
 
 describe('ModalBody', () => {
     it('should render without errors', () => {

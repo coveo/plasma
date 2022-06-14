@@ -2,8 +2,6 @@ import code from '@examples/ColorBar/ColorBar.example.tsx';
 import partial from '@examples/ColorBar/ColorBarPartial.example.tsx';
 import overflow from '@examples/ColorBar/ColorBarOverflow.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="ColorBar"

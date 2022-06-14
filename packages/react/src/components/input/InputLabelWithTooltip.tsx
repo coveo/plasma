@@ -1,9 +1,6 @@
 import {FunctionComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils';
-import {Svg} from '../svg';
-import {Tooltip} from '../tooltip';
-import {Label} from './Label';
 
 export interface InputLabelWithTooltipProps {
     label: string;

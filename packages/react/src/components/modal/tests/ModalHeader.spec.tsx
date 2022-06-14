@@ -5,7 +5,7 @@ import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tes
 import {ILinkSvgProps} from '../../svg/LinkSvg';
 import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
-import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
+import {IModalHeaderProps} from '../ModalHeader';
 
 describe('ModalHeader', () => {
     const basicProps: IModalHeaderProps = {

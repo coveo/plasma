@@ -2,7 +2,6 @@ import {shallow} from 'enzyme';
 import * as React from 'react';
 import {mocked} from 'ts-jest/utils';
 
-import {LineSeries} from '../LineSeries';
 import {XYChartContextMock} from './XYChartContextMock';
 
 jest.mock('react', () => {

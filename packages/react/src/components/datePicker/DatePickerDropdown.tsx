@@ -7,13 +7,10 @@ import * as ReactDOM from 'react-dom';
 import {TooltipPlacement} from '../../utils';
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {Button} from '../button/Button';
 import {DEFAULT_YEARS} from '../calendar/Calendar';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
-import {Drop, IDropOwnProps} from '../drop/Drop';
-import {ModalFooter} from '../modal/ModalFooter';
-import {Svg} from '../svg';
-import {DatePickerBox, IDatePickerBoxOwnProps, IDatePickerBoxProps} from './DatePickerBox';
+import {IDropOwnProps} from '../drop/Drop';
+import {IDatePickerBoxOwnProps, IDatePickerBoxProps} from './DatePickerBox';
 import {IDatePickerState} from './DatePickerReducers';
 import {IRangeLimit} from './DatesSelection';
 

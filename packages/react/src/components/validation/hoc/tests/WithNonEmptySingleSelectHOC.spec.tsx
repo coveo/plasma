@@ -1,5 +1,5 @@
 import {render, screen} from '@test-utils';
-import {ErrorList, withSelectedValues} from '../../../../utils/tests/TestUtils';
+import {withSelectedValues} from '../../../../utils/tests/TestUtils';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
 import {withNonEmptySingleSelectHOC, IWithNonEmptySingleSelectHOCProps} from '../WithNonEmptySingleSelectHOC';
 

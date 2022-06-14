@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {defaultDropPodPosition, DropPod, IDropPodProps} from './DropPod';
+import {defaultDropPodPosition, IDropPodProps} from './DropPod';
 import {DefaultGroupIds, DropActions} from './redux/DropActions';
 import {DropSelectors} from './redux/DropReducers';
 

@@ -1,7 +1,5 @@
 import {shallow} from 'enzyme';
 
-import {YGrid} from '../YGrid';
-
 describe('<YGrid />', () => {
     it('should not throw', () => {
         expect(() => {

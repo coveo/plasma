@@ -2,8 +2,6 @@ import {FunctionComponent} from 'react';
 import {truncate} from 'underscore.string';
 
 import {TooltipPlacement} from '../../utils';
-import {Svg} from '../svg';
-import {Tooltip} from '../tooltip';
 
 export interface BrowserPreviewProps {
     /**

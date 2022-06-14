@@ -1,9 +1,6 @@
 import classNames from 'classnames';
 import {ReactNode, FC} from 'react';
 
-import {Svg} from '../svg/Svg';
-import {CollapsibleConnected} from './CollapsibleConnected';
-
 export interface CollapsibleInfoBoxProps {
     id: string;
     title: string;

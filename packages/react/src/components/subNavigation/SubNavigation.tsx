@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import {ReactNode, HTMLAttributes, FunctionComponent, MouseEvent, useEffect, createElement} from 'react';
 import {map, omit} from 'underscore';
-import {SlideY} from '../../animations';
 
 export interface ISubNavigationOwnProps {
     /**

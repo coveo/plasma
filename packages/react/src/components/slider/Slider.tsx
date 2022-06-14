@@ -1,12 +1,11 @@
 import classNames from 'classnames';
-import {Range, SliderProps, SliderTooltip} from 'rc-slider';
+import {SliderProps, SliderTooltip} from 'rc-slider';
 import {ReactNode, ComponentProps, FunctionComponent, useState, useEffect, useCallback} from 'react';
 import {connect} from 'react-redux';
 import {isBoolean} from 'underscore';
 
 import {IDispatch} from '../../utils/ReduxUtils';
 import {SliderActions} from './SliderActions';
-import SliderHandle from './SliderHandle';
 import {
     getOutputValue,
     getValuesPositionOnRange,

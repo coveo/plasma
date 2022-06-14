@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Link from 'next/link';
 import {FunctionComponent} from 'react';
 
 import actionButtonPng from '../../resources/thumbnail_ActionButton.png';

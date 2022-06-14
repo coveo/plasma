@@ -1,5 +1,4 @@
 import * as _ from 'underscore';
-import {NavigationConnected} from '../../navigation/NavigationConnected';
 import {ITableProps} from '../Table';
 import {TableChildComponent} from '../TableConstants';
 import {getTableChildComponentId} from '../TableUtils';

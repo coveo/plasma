@@ -1,7 +1,6 @@
 import moment from 'moment';
 import {FunctionComponent} from 'react';
 import {IDatePickerState} from '../datePicker';
-import {Calendar} from './Calendar';
 
 export interface CountdownProps {
     /**

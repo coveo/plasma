@@ -1,17 +1,7 @@
 import classNames from 'classnames';
-import {
-    ReactNode,
-    ReactChild,
-    MouseEvent,
-    HTMLAttributes,
-    isValidElement,
-    Children,
-    PureComponent,
-    Fragment,
-} from 'react';
+import {ReactNode, ReactChild, MouseEvent, HTMLAttributes, isValidElement, Children, PureComponent} from 'react';
 import * as _ from 'underscore';
 
-import {SlideY} from '../../animations/SlideY';
 import {PlasmaState} from '../../PlasmaState';
 import {UrlUtils} from '../../utils';
 import {EventUtils} from '../../utils/EventUtils';
@@ -19,7 +9,6 @@ import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
 import {addActionsToActionBar} from '../actions/ActionBarActions';
 import {COLLAPSIBLE_EFFECT_DURATION} from '../collapsible/CollapsibleConnected';
-import {CollapsibleToggle} from '../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from './actions/TableHOCRowActions';
 import {TableSelectors} from './TableSelectors';
 

@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import {ReactNode, Component} from 'react';
 
-import {Svg} from '../svg';
-
 export interface IOptionsCycleConnectedOwnProps {
     id: string;
     startAt?: number;

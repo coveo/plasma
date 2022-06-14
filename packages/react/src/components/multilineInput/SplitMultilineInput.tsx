@@ -2,9 +2,6 @@ import {PureComponent} from 'react';
 import * as _ from 'underscore';
 
 import {Input} from '../input/Input';
-import {Label} from '../input/Label';
-import {AddInputAction} from './AddInputAction';
-import {DeleteInputAction} from './DeleteInputAction';
 
 export interface ISplitInput {
     id: string;

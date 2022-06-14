@@ -1,7 +1,7 @@
 import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
-import {ButtonWithRefreshCallback, IButtonWithRefreshCallbackProps} from '../ButtonWithRefreshCallback';
+import {IButtonWithRefreshCallbackProps} from '../ButtonWithRefreshCallback';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
 import {RefreshStatus} from '../RefreshCallbackReducer';
 

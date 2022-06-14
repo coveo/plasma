@@ -1,7 +1,5 @@
 import code from '@examples/SlideY/main.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="SlideY"

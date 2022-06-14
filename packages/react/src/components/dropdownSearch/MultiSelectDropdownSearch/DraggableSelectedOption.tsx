@@ -1,7 +1,6 @@
 import {FunctionComponent, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
-import {Svg} from '../../svg';
-import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
+import {ISelectedOptionProps} from './SelectedOption';
 
 export interface IDraggableSelectedOptionOwnProps {
     /**

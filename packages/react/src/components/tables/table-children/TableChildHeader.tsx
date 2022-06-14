@@ -3,7 +3,6 @@ import {ReactNode} from 'react';
 import {JSXRenderable} from '../../../utils/JSXUtils';
 import {ITableHeadingAttribute, ITableProps} from '../Table';
 import {TableChildComponent} from '../TableConstants';
-import {TableHeader} from '../TableHeader';
 import {ITableHeaderCellOwnProps} from '../TableHeaderCell';
 import {getTableChildComponentId} from '../TableUtils';
 

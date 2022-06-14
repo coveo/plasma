@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {ITabPaneProps, TabPane} from '../TabPane';
+import {ITabPaneProps} from '../TabPane';
 
 describe('TabPane', () => {
     const id: string = 'tab';

@@ -2,7 +2,7 @@ import {shallow} from 'enzyme';
 import {range} from 'underscore';
 
 import {JSXRenderable} from '../../utils/JSXUtils';
-import {ISplitLayoutProps, SplitLayout, SplitLayoutMods} from './SplitLayout';
+import {ISplitLayoutProps, SplitLayoutMods} from './SplitLayout';
 
 describe('SplitLayout', () => {
     const testClassesString = 'some classes';

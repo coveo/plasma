@@ -4,7 +4,6 @@ import {mocked} from 'ts-jest/utils';
 
 import {DropPodPosition} from '../../drop/DomPositionCalculator';
 import {DropPod} from '../../drop/DropPod';
-import {ChartTooltip} from '../ChartTooltip';
 import {ChartTooltipContent} from '../ChartTooltipContent';
 import {ChartUtils} from '../ChartUtils';
 import {XYChartContextMock, XYChartOnePointContextMock} from './XYChartContextMock';

@@ -8,7 +8,6 @@ import {ReduxConnect} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {SelectSelector} from '../select/SelectSelector';
-import {SingleSelectConnected} from '../select/SingleSelectConnected';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableHOCUtils} from './utils/TableHOCUtils';
 

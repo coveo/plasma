@@ -1,8 +1,8 @@
 import {mount, ReactWrapper} from 'enzyme';
 import {render, screen} from '@test-utils';
 
-import {IInputProps, Label} from '../../input';
-import {Checkbox, ICheckboxProps} from '../Checkbox';
+import {IInputProps} from '../../input';
+import {ICheckboxProps} from '../Checkbox';
 
 describe('Checkbox', () => {
     it('should render without errors', () => {

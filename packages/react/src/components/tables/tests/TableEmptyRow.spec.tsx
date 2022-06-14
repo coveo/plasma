@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
-import {ITableEmptyRowProps, TableEmptyRow} from '../TableEmptyRow';
+import {ITableEmptyRowProps} from '../TableEmptyRow';
 
 describe('Tables', () => {
     const tableEmptyRowBasicProps: ITableEmptyRowProps = {

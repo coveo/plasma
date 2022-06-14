@@ -1,5 +1,3 @@
-import {BasicHeader} from '@coveord/plasma-react';
-
 export default () => (
     <BasicHeader
         title={{

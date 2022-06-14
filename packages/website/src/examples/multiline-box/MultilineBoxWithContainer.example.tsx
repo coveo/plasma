@@ -1,12 +1,10 @@
 import {ReactNode, FocusEvent} from 'react';
 import {compose} from 'redux';
 import {
-    FormProvider,
     MultilineBox,
     multilineBoxContainer,
     IMultilineSingleBoxProps,
     IMultilineParentProps,
-    TextInput,
 } from '@coveord/plasma-react';
 
 interface MyData {

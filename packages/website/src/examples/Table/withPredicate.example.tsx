@@ -1,4 +1,4 @@
-import {TableHOC, TableRowConnected, tableWithPredicate} from '@coveord/plasma-react';
+import {TableHOC, tableWithPredicate} from '@coveord/plasma-react';
 import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 

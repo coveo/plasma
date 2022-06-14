@@ -1,5 +1,3 @@
-import {SingleSelectWithFilter} from '@coveord/plasma-react';
-
 export default () => (
     <SingleSelectWithFilter
         id="single-select-2"

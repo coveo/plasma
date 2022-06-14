@@ -1,12 +1,11 @@
 import classNames from 'classnames';
 import {svg} from '@coveord/plasma-style';
-import {ReactNode, Children, PureComponent, Fragment} from 'react';
+import {ReactNode, Children, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {removeValueStringList} from '../../../reusableState/customList/StringListActions';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IDispatch} from '../../../utils/ReduxUtils';
-import {Button, IButtonProps} from '../../button/Button';
-import {Svg} from '../../svg/Svg';
+import {IButtonProps} from '../../button/Button';
 import {
     IMultilineBoxDispatchProps,
     IMultilineBoxOwnProps,

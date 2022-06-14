@@ -1,9 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {Provider} from 'react-redux';
 import * as _ from 'underscore';
 
 import {createTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
-import {ITableHeaderProps, TableHeader} from '../TableHeader';
+import {ITableHeaderProps} from '../TableHeader';
 import {ITableHeaderCellOwnProps, ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell';
 import {TableHeaderCellConnected} from '../TableHeaderCellConnected';
 

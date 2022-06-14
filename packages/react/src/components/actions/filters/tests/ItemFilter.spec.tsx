@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
 import {ITooltipProps, Tooltip} from '../../../tooltip/Tooltip';
-import {ELLIPSIS, IItemFilterProps, ItemFilter} from '../ItemFilter';
+import {ELLIPSIS, IItemFilterProps} from '../ItemFilter';
 
 describe('Item filter', () => {
     let ITEM_FILTER_BASIC_PROPS: IItemFilterProps;

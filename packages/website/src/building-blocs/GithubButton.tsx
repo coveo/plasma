@@ -1,4 +1,3 @@
-import {Svg} from '@coveord/plasma-react';
 import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 

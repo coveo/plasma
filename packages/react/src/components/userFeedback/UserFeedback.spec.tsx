@@ -2,7 +2,7 @@ import {shallow, ShallowWrapper} from 'enzyme';
 import {all, extend} from 'underscore';
 
 import {DisplayClass} from '../../utils/ComponentUtils';
-import {IUserFeedbackProps, UserFeedback, UserFeedbackState} from './UserFeedback';
+import {IUserFeedbackProps, UserFeedbackState} from './UserFeedback';
 
 describe('<UserFeedback>', () => {
     const getShallowOutput = (

@@ -1,7 +1,6 @@
 import {FunctionComponent, useContext} from 'react';
 import * as _ from 'underscore';
 
-import {Color} from '../color/Color';
 import {ChartUtils} from './ChartUtils';
 import {XYChartContext, XYSerie} from './XYChart';
 

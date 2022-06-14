@@ -1,4 +1,4 @@
-import {Badge, BadgeIconPlacement} from '@coveord/plasma-react';
+import {BadgeIconPlacement} from '@coveord/plasma-react';
 
 export default () => (
     <div className="flex">

@@ -10,7 +10,6 @@ import {useContext} from 'react';
 
 import dynamic from 'next/dynamic';
 import {EngineContext} from '../search/engine/EngineContext';
-import {PlasmaLoading} from '../building-blocs/PlasmaLoading';
 
 const isServer = () => typeof window === `undefined`;
 

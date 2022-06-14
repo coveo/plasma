@@ -1,5 +1,3 @@
-import {JSONEditorConnected} from '@coveord/plasma-react';
-
 const invalidJSON = '{hello: world}';
 
 export default () => (

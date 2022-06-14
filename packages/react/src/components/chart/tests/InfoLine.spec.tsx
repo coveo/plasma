@@ -1,7 +1,5 @@
 import {shallow} from 'enzyme';
 
-import {InfoLine} from '../InfoLine';
-
 describe('<InfoLine />', () => {
     it('should not throw', () => {
         expect(() => {

@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {XYChart, XYChartContext} from '../XYChart';
+import {XYChartContext} from '../XYChart';
 import {XYChartContextMock} from './XYChartContextMock';
 
 describe('<XYChart />', () => {

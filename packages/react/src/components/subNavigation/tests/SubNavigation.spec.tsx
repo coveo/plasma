@@ -1,7 +1,7 @@
 import {mount, shallow, ShallowWrapper} from 'enzyme';
 import {act} from 'react-dom/test-utils';
 import {noop} from 'underscore';
-import {ISubNavigationProps, SubNavigation} from '../SubNavigation';
+import {ISubNavigationProps} from '../SubNavigation';
 
 describe('SubNavigation', () => {
     it('should render without errors', () => {

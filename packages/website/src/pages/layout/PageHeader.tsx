@@ -1,8 +1,6 @@
 import code from '@examples/Header/main.example.tsx';
 import loading from '@examples/Header/loading.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export const PageHeaderExamples = () => (
     <PageLayout
         id="BasicHeader"

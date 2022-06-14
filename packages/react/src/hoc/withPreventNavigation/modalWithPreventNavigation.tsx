@@ -4,7 +4,6 @@ import * as _ from 'underscore';
 import {closeModal, IModalActionPayload} from '../../components/modal/ModalActions';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {IWithDirtyProps, withDirty} from '../withDirty/withDirty';
-import {PreventNavigationPrompt} from './PreventNavigationPrompt';
 
 export interface IWithPreventNavigationConfig {
     id: string;

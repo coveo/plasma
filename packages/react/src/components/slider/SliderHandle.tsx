@@ -1,4 +1,4 @@
-import {Handle, SliderTooltip} from 'rc-slider';
+import {SliderTooltip} from 'rc-slider';
 import {ReactNode, ComponentProps, FunctionComponent} from 'react';
 import * as _ from 'underscore';
 

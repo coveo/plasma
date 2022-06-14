@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {RadioCard, RadioCardProps} from '../RadioCard';
+import {RadioCardProps} from '../RadioCard';
 
 describe('RadioCard', () => {
     const anId = 'patate';

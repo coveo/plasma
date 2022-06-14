@@ -4,8 +4,7 @@ import * as ReactDOM from 'react-dom';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {Button, IButtonProps} from '../button/Button';
-import {Svg} from '../svg/Svg';
+import {IButtonProps} from '../button/Button';
 import {addMenu, removeMenu, toggleMenu} from './MenuActions';
 import {IMenuState} from './MenuReducers';
 

@@ -2,7 +2,7 @@ import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from '@helpers/enzyme-redux';
 import * as _ from 'underscore';
 
-import {IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';
+import {IOptionsCycleProps} from '../OptionsCycle';
 
 describe('Options cycle', () => {
     const OPTIONS = [

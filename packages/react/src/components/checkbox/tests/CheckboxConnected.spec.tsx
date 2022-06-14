@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../../PlasmaState';
@@ -8,7 +7,6 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IInputProps} from '../../input/Input';
 import {Checkbox} from '../Checkbox';
 import {toggleCheckbox} from '../CheckboxActions';
-import {CheckboxConnected} from '../CheckboxConnected';
 
 describe('Checkbox', () => {
     describe('<CheckboxConnected />', () => {

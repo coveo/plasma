@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import * as _ from 'underscore';
 
-import {ITitleProps, Title} from '../title/Title';
+import {ITitleProps} from '../title/Title';
 import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper';
 
 export interface IBasicHeaderProps extends IHeaderWrapperProps {

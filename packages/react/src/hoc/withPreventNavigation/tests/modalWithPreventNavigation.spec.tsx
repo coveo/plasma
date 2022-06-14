@@ -3,7 +3,6 @@ import {shallowWithStore} from '@helpers/enzyme-redux';
 import {Component} from 'react';
 
 import {closeModal} from '../../../components/modal/ModalActions';
-import {ModalCompositeConnected} from '../../../components/modal/ModalComposite';
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {
     IWithPreventNavigationConfig,

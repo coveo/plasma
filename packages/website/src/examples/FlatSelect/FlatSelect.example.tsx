@@ -1,5 +1,3 @@
-import {FlatSelectConnected} from '@coveord/plasma-react';
-
 export default () => (
     <FlatSelectConnected
         id="flat-select-id"

@@ -1,12 +1,5 @@
 import {Attributes, Component} from 'react';
-import {
-    Button,
-    IMultilineParentProps,
-    IMultilineSingleBoxProps,
-    InputConnected,
-    MultilineBox,
-    UUID,
-} from '@coveord/plasma-react';
+import {IMultilineParentProps, IMultilineSingleBoxProps, UUID} from '@coveord/plasma-react';
 import * as _ from 'underscore';
 
 export type IExampleData = IMultilineSingleBoxProps<IMultilineBoxExamplesProps>;

@@ -1,7 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 
 import {Tooltip} from '../../tooltip/Tooltip';
-import {IInputProps, Input} from '../Input';
+import {IInputProps} from '../Input';
 import {Label} from '../Label';
 
 describe('<Input />', () => {

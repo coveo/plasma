@@ -3,7 +3,6 @@ import {
     IDatesSelectionBox,
     ITableWithDatePickerConfig,
     TableHOC,
-    TableRowConnected,
     tableWithDatePicker,
 } from '@coveord/plasma-react';
 import {compose} from 'redux';

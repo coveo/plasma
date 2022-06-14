@@ -5,7 +5,7 @@ import {render, screen} from '@test-utils';
 import {fireEvent, within} from '@testing-library/react';
 import {ILinkSvgProps, LinkSvg} from '../../svg/LinkSvg';
 import {Tooltip} from '../../tooltip/Tooltip';
-import {ITitleProps, Title} from '../Title';
+import {ITitleProps} from '../Title';
 
 describe('<Title/>', () => {
     const defaultProps: ITitleProps = {

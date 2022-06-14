@@ -3,8 +3,8 @@ import * as _ from 'underscore';
 
 import {UUID} from '../../../utils/UUID';
 import {Content, IContentProps} from '../../content/Content';
-import {ISvgProps, Svg} from '../../svg/Svg';
-import {FlatSelectOption, IFlatSelectOptionProps} from '../FlatSelectOption';
+import {ISvgProps} from '../../svg/Svg';
+import {IFlatSelectOptionProps} from '../FlatSelectOption';
 
 describe('FlatSelect', () => {
     it('should render without errors', () => {

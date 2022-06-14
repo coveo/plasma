@@ -6,7 +6,6 @@ import * as _ from 'underscore';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {removePrompt} from './InlinePromptActions';
-import {Button} from '../button';
 
 export interface IUserChoice {
     description?: string;

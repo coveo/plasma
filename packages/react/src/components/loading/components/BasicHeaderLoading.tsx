@@ -1,5 +1,3 @@
-import {BasicHeader} from '../../headers/BasicHeader';
-
 export const BasicHeaderLoading = () => (
     <BasicHeader
         title={{

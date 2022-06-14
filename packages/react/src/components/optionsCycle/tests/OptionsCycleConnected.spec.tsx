@@ -4,7 +4,6 @@ import {shallowWithStore} from '@helpers/enzyme-redux';
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {IOptionsCycleConnectedOwnProps, IOptionsCycleProps} from '../OptionsCycle';
 import {addOptionsCycle, changeOptionsCycle} from '../OptionsCycleActions';
-import {OptionsCycleConnected} from '../OptionsCycleConnected';
 
 describe('Options cycle', () => {
     const optionsCycleBasicProps: IOptionsCycleProps & IOptionsCycleConnectedOwnProps = {

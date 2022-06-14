@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -8,7 +7,6 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addModal, openModal} from '../ModalActions';
 import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
-import {ModalHeaderConnected} from '../ModalHeaderConnected';
 import {IModalState} from '../ModalReducers';
 
 describe('ModalHeader', () => {

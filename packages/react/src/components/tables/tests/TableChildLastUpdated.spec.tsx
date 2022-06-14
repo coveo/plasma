@@ -1,12 +1,10 @@
 import {mount} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITableProps} from '../Table';
-import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated';
 import {tablePropsMock} from './TableTestCommon';
 
 describe('<TableChildLastUpdated />', () => {

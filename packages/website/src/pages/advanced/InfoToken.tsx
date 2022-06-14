@@ -1,6 +1,5 @@
 import code from '@examples/InfoToken/main.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
 import criticalExample from '../../examples/InfoToken/critical.example.tsx';
 import infoExample from '../../examples/InfoToken/info.example.tsx';
 import questionExample from '../../examples/InfoToken/question.example.tsx';

@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../../PlasmaState';
@@ -7,7 +6,7 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITabProps, TabConnected} from '../../tab/Tab';
 import {TabNavigation} from '../../tab/TabNavigation';
-import {ITabsHeaderProps, TabsHeader} from '../TabsHeader';
+import {ITabsHeaderProps} from '../TabsHeader';
 
 describe('<TabsHeader/>', () => {
     let tabsHeaderComponent: ReactWrapper<ITabsHeaderProps, any>;

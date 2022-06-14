@@ -2,7 +2,6 @@ import {shallow} from 'enzyme';
 import * as React from 'react';
 import {mocked} from 'ts-jest/utils';
 
-import {XGrid} from '../XGrid';
 import {XYChartContextMock} from './XYChartContextMock';
 
 jest.mock('react', () => {

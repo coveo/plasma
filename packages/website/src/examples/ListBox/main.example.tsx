@@ -1,4 +1,4 @@
-import {Badge, BadgeType, ListBox} from '@coveord/plasma-react';
+import {BadgeType} from '@coveord/plasma-react';
 
 export default () => (
     <ListBox

@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
 import {Tooltip} from '../../tooltip';
-import {Button, IButtonProps} from '../Button';
+import {IButtonProps} from '../Button';
 
 describe('Button', () => {
     let buttonComponent: ReactWrapper<IButtonProps, any>;

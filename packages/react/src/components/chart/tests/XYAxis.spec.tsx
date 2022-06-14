@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 import * as React from 'react';
 import {mocked} from 'ts-jest/utils';
 
-import {XYAxis} from '../XYAxis';
 import {XYChartContext} from '../XYChart';
 import {XYChartContextMock} from './XYChartContextMock';
 

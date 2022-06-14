@@ -1,9 +1,6 @@
 import {FunctionComponent} from 'react';
 
-import {DropdownConnected} from '../dropdown/DropdownConnected';
-import {Svg} from '../svg/Svg';
 import {IActionOptions} from './Action';
-import {ActionDropdownItem} from './ActionDropdownItem';
 
 export interface IActionsDropdownProps {
     actions: IActionOptions[];

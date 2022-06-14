@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
 import {SlideY} from '../../../animations/SlideY';
-import {ITableCollapsibleRowProps, TableCollapsibleRow} from '../TableCollapsibleRow';
+import {ITableCollapsibleRowProps} from '../TableCollapsibleRow';
 import {TableError} from '../TableError';
 
 describe('Tables', () => {

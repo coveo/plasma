@@ -1,7 +1,7 @@
 import {ClassAttributes, Component} from 'react';
 
 import {DATES_SEPARATOR, DateUtils} from '../../utils/DateUtils';
-import {DatePicker, IDatePickerProps} from './DatePicker';
+import {IDatePickerProps} from './DatePicker';
 import {DatePickerDateRange} from './DatePickerConstants';
 
 export interface IRangeLimit {

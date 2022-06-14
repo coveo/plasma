@@ -1,9 +1,7 @@
 import classNames from 'classnames';
-import {FunctionComponent, CSSProperties, ReactNode, useRef, useContext, useState, Fragment} from 'react';
+import {FunctionComponent, CSSProperties, ReactNode, useRef, useContext, useState} from 'react';
 
 import {DropPodPosition, IDropUIPosition} from '../drop/DomPositionCalculator';
-import {DropPod} from '../drop/DropPod';
-import {ChartTooltipContent} from './ChartTooltipContent';
 import {XYChartContext, XYPoint} from './XYChart';
 
 export interface ChartTooltipProps {

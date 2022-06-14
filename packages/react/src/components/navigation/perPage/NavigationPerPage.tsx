@@ -1,8 +1,6 @@
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
-import {NavigationPerPageSelect} from './NavigationPerPageSelect';
-
 export interface INavigationPerPageOwnProps extends ClassAttributes<NavigationPerPage> {
     id?: string;
     totalEntries: number;

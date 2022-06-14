@@ -2,8 +2,6 @@ import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import {Component} from 'react';
 
-import {Svg} from '../svg';
-
 /**
  * @deprecated Use SideNavigationHeaderProps instead
  */

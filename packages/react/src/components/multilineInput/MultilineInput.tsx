@@ -2,9 +2,6 @@ import {Component} from 'react';
 import * as _ from 'underscore';
 
 import {UUID} from '../../utils/UUID';
-import {Label} from '../input/Label';
-import {AddInput} from './AddInput';
-import {DeletableInput} from './DeletableInput';
 
 export interface IMultilineInputValue {
     id: string;

@@ -2,9 +2,6 @@ import classNames from 'classnames';
 import {ReactNode, FunctionComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg/Svg';
-import {Tooltip} from '../tooltip/Tooltip';
-import {InputDescription} from './InputDescription';
 
 export interface ILabeledInputProps {
     label?: ReactNode;

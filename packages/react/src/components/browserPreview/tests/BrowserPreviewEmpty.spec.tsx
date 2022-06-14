@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import {ReactNode} from 'react';
 
 import {Svg} from '../../svg';
-import {BrowserPreviewEmpty, BrowserPreviewEmptyProps} from '../BrowserPreviewEmpty';
+import {BrowserPreviewEmptyProps} from '../BrowserPreviewEmpty';
 
 describe('BrowserPreviewEmpty', () => {
     let component: ReactWrapper<BrowserPreviewEmptyProps>;

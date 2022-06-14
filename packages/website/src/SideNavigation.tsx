@@ -1,7 +1,5 @@
-import {SideNavigation, SideNavigationItem, SideNavigationMenuSection, Svg} from '@coveord/plasma-react';
 import {FunctionComponent, FC, useState} from 'react';
 import {useRouter} from 'next/router';
-import Link from 'next/link';
 
 interface NavLinkProps {
     href?: string;

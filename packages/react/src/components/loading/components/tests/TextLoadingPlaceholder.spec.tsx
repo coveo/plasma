@@ -1,7 +1,5 @@
 import {shallow} from 'enzyme';
 
-import {TextLoadingPlaceholder} from '../TextLoadingPlaceholder';
-
 describe('TextLoadingPlaceholder tests', () => {
     describe('<TextLoadingPlaceholder />', () => {
         it('should mount and unmount without errors', () => {

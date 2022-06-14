@@ -1,4 +1,4 @@
-import {TableHeaderWithSort, TableHOC, TableRowConnected, tableWithSort} from '@coveord/plasma-react';
+import {TableHOC, tableWithSort} from '@coveord/plasma-react';
 import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
 

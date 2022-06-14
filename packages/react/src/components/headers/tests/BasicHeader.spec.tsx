@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {Title} from '../../title/Title';
-import {BasicHeader, IBasicHeaderProps} from '../BasicHeader';
+import {IBasicHeaderProps} from '../BasicHeader';
 import {HeaderWrapper} from '../HeaderWrapper';
 
 describe('<BasicHeader/>', () => {

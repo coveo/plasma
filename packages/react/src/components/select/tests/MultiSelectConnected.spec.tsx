@@ -1,7 +1,6 @@
 /* eslint-disable testing-library/no-container */
 import {fireEvent, render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import {MultiSelectConnected} from '../MultiSelectConnected';
 
 describe('Select', () => {
     describe('<MultiSelectConnected />', () => {

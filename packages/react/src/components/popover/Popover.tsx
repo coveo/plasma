@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import {RefObject, createRef, Children, Component} from 'react';
 import {findDOMNode} from 'react-dom';
-import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
 
 export interface ITetherComponentCopiedProps {

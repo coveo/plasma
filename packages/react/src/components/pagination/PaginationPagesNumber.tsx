@@ -6,8 +6,6 @@ import * as _ from 'underscore';
 import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {PaginationReduxActions} from '../navigation/pagination/NavigationPaginationActions';
-import {Svg} from '../svg';
-import {PaginationSelect} from './PaginationSelect';
 import {PaginationSelectors} from './PaginationSelectors';
 
 export interface IPaginationPagesNumberOwnProps {

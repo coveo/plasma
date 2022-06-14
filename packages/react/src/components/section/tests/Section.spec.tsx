@@ -1,7 +1,5 @@
 import {shallow} from 'enzyme';
 
-import {Section} from '../Section';
-
 describe('Section', () => {
     const SOME_TITLE = '🎢✨🎊';
     const SOME_DESCRIPTION = '🎀🎁';

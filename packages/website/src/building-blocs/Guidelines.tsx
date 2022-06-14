@@ -1,4 +1,3 @@
-import {Tooltip} from '@coveord/plasma-react';
 import {Components} from 'react-markdown';
 
 const MarkdownFiles = new Map();

@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import {ReactNode, MouseEvent, Component} from 'react';
 
-import {Svg} from '../svg';
-
 export interface IBreadcrumbLinkProps {
     name: ReactNode;
     link?: string;

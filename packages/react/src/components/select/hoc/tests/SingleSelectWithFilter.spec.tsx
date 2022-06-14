@@ -1,7 +1,6 @@
 import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
 import {ComponentType} from 'react';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -18,7 +17,6 @@ import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/List
 import {toggleSelect} from '../../SelectActions';
 import {SelectConnected} from '../../SelectConnected';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../../SingleSelectConnected';
-import {SingleSelectWithFilter} from '../SelectComponents';
 import {ISelectWithFilterOwnProps, selectWithFilter} from '../SelectWithFilter';
 
 describe('Select', () => {

@@ -1,5 +1,3 @@
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
     import {TargetSize16Px} from '@coveord/plasma-react-icons';
     

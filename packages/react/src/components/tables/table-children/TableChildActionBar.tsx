@@ -1,11 +1,7 @@
 import * as _ from 'underscore';
 import {humanize} from 'underscore.string';
 
-import {ActionBarConnected} from '../../actions/ActionBar';
-import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
-import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {ITablePredicate, ITableProps} from '../Table';
 import {TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {getTableChildComponentId} from '../TableUtils';

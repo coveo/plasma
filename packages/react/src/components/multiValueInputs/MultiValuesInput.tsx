@@ -4,7 +4,6 @@ import * as _ from 'underscore';
 import classNames from 'classnames';
 import {IButtonProps} from '../button/Button';
 import {IInputOwnProps} from '../input/Input';
-import {InputConnected} from '../input/Input';
 import {multilineBoxWithRemoveButton} from '../multilineBox/hoc/MultilineBoxWithRemoveButton';
 import {IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../multilineBox/MultilineBox';
 import {IClassName} from '../../utils';

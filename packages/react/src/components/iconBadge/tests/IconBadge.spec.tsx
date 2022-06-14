@@ -1,7 +1,7 @@
 import {render, screen} from '@test-utils';
 import {svg} from '@coveord/plasma-style';
 
-import {IconBadge, IconBadgeType} from '../IconBadge';
+import {IconBadgeType} from '../IconBadge';
 
 describe('IconBadge', () => {
     it('renders the specified icon with the type New, and size Medium by default', () => {

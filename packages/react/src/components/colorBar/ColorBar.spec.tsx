@@ -2,7 +2,7 @@ import {shallow} from 'enzyme';
 import * as _ from 'underscore';
 import {KeyValue} from '../../utils/DataStructuresUtils';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
-import {ColorBar, IColorBarProps} from './ColorBar';
+import {IColorBarProps} from './ColorBar';
 import {noColorsPropsScenarios, withColorsPropsScenarios} from './ColorBarPropsScenarios.mock';
 
 describe('ColorBar', () => {

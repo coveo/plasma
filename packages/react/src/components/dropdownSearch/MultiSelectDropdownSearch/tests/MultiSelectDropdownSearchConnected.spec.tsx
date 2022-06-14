@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -18,7 +17,6 @@ import {
 } from '../../DropdownSearchActions';
 import {defaultSelectedOptionPlaceholder} from '../../DropdownSearchReducers';
 import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch';
-import {MultiSelectDropdownSearchConnected} from '../MultiSelectDropdownSearchConnected';
 
 describe('MultiSelectDropdownSearch', () => {
     const id: string = UUID.generate();

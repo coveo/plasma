@@ -1,8 +1,6 @@
 import code from '@examples/RadioButton/main.example.tsx';
 import radioCard from '@examples/RadioButton/radioCard.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="RadioSelectConnected"

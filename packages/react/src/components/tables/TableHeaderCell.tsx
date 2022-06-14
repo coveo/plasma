@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import {ClassAttributes, ReactNode, MouseEvent, Component} from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
-import {Svg} from '../svg/Svg';
 import {TableSortingOrder} from './TableConstants';
 
 export interface ITableHeaderCellOwnProps extends ClassAttributes<TableHeaderCell> {

@@ -3,10 +3,8 @@ import {MouseEvent, HTMLAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
 import {DropPodPosition} from '../drop/DomPositionCalculator';
-import {Drop, IDropOwnProps} from '../drop/Drop';
+import {IDropOwnProps} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {ListBox} from '../listBox/ListBox';
-import {Svg} from '../svg';
 
 export interface IActionableItemProps {
     /**

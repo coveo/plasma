@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 
 import {Tooltip} from '../../tooltip/Tooltip';
-import {InputLabelWithTooltip, InputLabelWithTooltipProps} from '../InputLabelWithTooltip';
+import {InputLabelWithTooltipProps} from '../InputLabelWithTooltip';
 import {Label} from '../Label';
 
 describe('InputLabelWithTooltip', () => {

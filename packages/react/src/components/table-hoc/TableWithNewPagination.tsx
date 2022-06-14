@@ -10,7 +10,6 @@ import {INavigationChildrenProps, INavigationOwnProps} from '../navigation';
 import {NavigationSelectors} from '../navigation/NavigationSelectors';
 import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
 import {PaginationUtils} from '../pagination/PaginationUtils';
-import {TablePagination} from '../pagination/TablePagination';
 import {TableWithPaginationActions} from './actions/TableWithPaginationActions';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';

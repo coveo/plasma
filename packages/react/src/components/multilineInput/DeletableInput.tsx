@@ -1,7 +1,6 @@
 import {Component} from 'react';
 import * as _ from 'underscore';
-import {IInputProps, Input} from '../input/Input';
-import {DeleteInputAction} from './DeleteInputAction';
+import {IInputProps} from '../input/Input';
 
 export class DeletableInput extends Component<IInputProps, any> {
     private onDeleteClicked() {

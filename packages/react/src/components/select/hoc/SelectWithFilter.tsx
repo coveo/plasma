@@ -10,7 +10,6 @@ import {addStringList, addValueStringList, removeStringList} from '../../../reus
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
 import {IFilterBoxOwnProps} from '../../filterBox/FilterBox';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {FilterBoxSelectors} from '../../filterBox/FilterBoxSelectors';
 import {MatchFilter} from '../../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';

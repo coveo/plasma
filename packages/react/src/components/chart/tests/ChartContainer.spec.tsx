@@ -1,7 +1,5 @@
 import {mount} from 'enzyme';
 
-import {ChartContainer} from '../ChartContainer';
-
 describe('<ChartContainer />', () => {
     it('should not throw', () => {
         expect(() => {

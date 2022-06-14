@@ -1,6 +1,5 @@
 import {mount, ReactWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -10,7 +9,7 @@ import {getStoreMock, PlasmaMockStore, TestUtils} from '../../../utils/tests/Tes
 import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt';
 import {addPrompt, removePrompt} from '../../inlinePrompt/InlinePromptActions';
 import {IActionOptions} from '../Action';
-import {ActionBar, ActionBarConnected, IActionBarProps} from '../ActionBar';
+import {ActionBar, IActionBarProps} from '../ActionBar';
 import {addActionsToActionBar, removeActionBar} from '../ActionBarActions';
 import {filterItems, removeItemFilter} from '../filters/ItemFilterActions';
 import {PrimaryActionConnected} from '../PrimaryActionConnected';

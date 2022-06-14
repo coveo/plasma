@@ -5,7 +5,6 @@ import * as _ from 'underscore';
 import {PlasmaState} from '../../PlasmaState';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {Svg} from '../svg/Svg';
 import {NumericInputActions} from './NumericInputActions';
 import {initialNumericInputState} from './NumericInputReducers';
 import {NumericInputSelectors} from './NumericInputSelectors';

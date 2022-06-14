@@ -4,8 +4,6 @@ import * as _ from 'underscore';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ILinkSvgProps} from '../svg/LinkSvg';
-import {Svg} from '../svg/Svg';
-import {Title} from '../title/Title';
 
 export interface IModalHeaderOwnProps {
     /**

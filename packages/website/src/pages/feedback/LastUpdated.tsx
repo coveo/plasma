@@ -1,6 +1,5 @@
 import code from '@examples/LastUpdated/LastUpdated.example.tsx';
 import specificTime from '@examples/LastUpdated/LastUpdatedSpecifiedTime.example.tsx';
-import {PageLayout} from '../../building-blocs/PageLayout';
 
 export default () => (
     <PageLayout

@@ -3,7 +3,6 @@ import * as React from 'react';
 import {mocked} from 'ts-jest/utils';
 
 import {ChartUtils} from '../ChartUtils';
-import {ScatterSeries} from '../ScatterSeries';
 import {XYChartContextMock} from './XYChartContextMock';
 
 jest.mock('react', () => {

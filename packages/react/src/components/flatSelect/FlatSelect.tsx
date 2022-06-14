@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {IDispatch} from '../../utils';
 import {addFlatSelect, removeFlatSelect, selectFlatSelect} from './FlatSelectActions';
-import {FlatSelectOption, IFlatSelectOptionProps} from './FlatSelectOption';
+import {IFlatSelectOptionProps} from './FlatSelectOption';
 import {FlatSelectSelectors} from './FlatSelectSelectors';
 
 export interface IFlatSelectOwnProps {

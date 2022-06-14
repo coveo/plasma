@@ -1,7 +1,5 @@
 import {shallow} from 'enzyme';
 
-import {ActionBarLoading} from '../ActionBarLoading';
-
 describe('ActionBarLoading tests', () => {
     describe('<ActionBarLoading />', () => {
         it('should mount and unmount without errors', () => {

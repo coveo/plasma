@@ -5,20 +5,15 @@ import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
-import {Content, IContentProps} from '../content/Content';
-import {InlinePromptConnected} from '../inlinePrompt/InlinePrompt';
+import {IContentProps} from '../content/Content';
 import {removePrompt} from '../inlinePrompt/InlinePromptActions';
 import {IPromptState} from '../inlinePrompt/InlinePromptReducers';
 import {ITooltipProps} from '../tooltip/Tooltip';
 import {IActionOptions} from './Action';
 import {addActionBar, removeActionBar} from './ActionBarActions';
 import {IActionBarState} from './ActionBarReducers';
-import {ItemFilter} from './filters/ItemFilter';
 import {addItemFilter, filterItems, removeItemFilter} from './filters/ItemFilterActions';
 import {IItemFilterState} from './filters/ItemFilterReducers';
-import {PrimaryAction} from './PrimaryAction';
-import {PrimaryActionConnected} from './PrimaryActionConnected';
-import {SecondaryActions} from './SecondaryActions';
 
 export interface IActionBarProps {
     /**

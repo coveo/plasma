@@ -12,13 +12,7 @@ import {IDatePickerDropdownProps} from '../datePicker/DatePickerDropdown';
 import {IDropdownOption, IDropdownSearchProps} from '../dropdownSearch/DropdownSearch';
 import {IFilterBoxProps} from '../filterBox/FilterBox';
 import {INavigationChildrenProps} from '../navigation/Navigation';
-import {TableChildActionBar} from './table-children/TableChildActionBar';
-import {TableChildBlankSlate} from './table-children/TableChildBlankSlate';
-import {ITableBodyInheritedFromTableProps, TableChildBody} from './table-children/TableChildBody';
-import {TableChildHeader} from './table-children/TableChildHeader';
-import {TableChildLastUpdated} from './table-children/TableChildLastUpdated';
-import {TableChildLoadingRow} from './table-children/TableChildLoadingRow';
-import {TableChildNavigation} from './table-children/TableChildNavigation';
+import {ITableBodyInheritedFromTableProps} from './table-children/TableChildBody';
 import {DEFAULT_TABLE_DATA, DEFAULT_TABLE_PER_PAGE, TableSortingOrder} from './TableConstants';
 import {ITableCompositeState, ITableData} from './TableReducers';
 

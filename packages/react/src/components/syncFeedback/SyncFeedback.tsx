@@ -1,5 +1,4 @@
 import {PureComponent} from 'react';
-import {Svg} from '../svg/Svg';
 
 export interface ISyncFeedbackProps {
     /**

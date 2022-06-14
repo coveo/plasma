@@ -1,11 +1,5 @@
 import {useEffect, useState} from 'react';
-import {
-    TableHOC,
-    tableWithUrlState,
-    withServerSideProcessing,
-    TableRowConnected,
-    TableRowNumberColumn,
-} from '@coveord/plasma-react';
+import {TableHOC, tableWithUrlState, withServerSideProcessing} from '@coveord/plasma-react';
 
 import {compose} from 'redux';
 

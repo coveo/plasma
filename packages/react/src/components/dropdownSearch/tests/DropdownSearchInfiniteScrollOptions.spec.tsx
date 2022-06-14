@@ -2,10 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
-import {
-    DropdownSearchInfiniteScrollOptions,
-    DropdownSearchInfiniteScrollOptionsProps,
-} from '../DropdownSearchInfiniteScrollOptions';
+import {DropdownSearchInfiniteScrollOptionsProps} from '../DropdownSearchInfiniteScrollOptions';
 
 describe('DropdownSearchInfiniteScrollOptions', () => {
     let basicProps: DropdownSearchInfiniteScrollOptionsProps;

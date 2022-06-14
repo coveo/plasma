@@ -1,6 +1,5 @@
 import {shallow} from 'enzyme';
 
-import {HeaderWrapper} from '../HeaderWrapper';
 import {TabsHeader} from '../TabsHeader';
 
 describe('<HeaderWrapper/>', () => {

@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import {ReactNode, FunctionComponent} from 'react';
 
-import {Svg} from '../svg';
-
 export interface BrowserPreviewEmptyProps {
     onClick?: () => void;
     image?: ReactNode;

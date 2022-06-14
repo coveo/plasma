@@ -1,9 +1,6 @@
 import {KeyboardEvent, ChangeEvent, Component} from 'react';
 import * as _ from 'underscore';
-import {Svg} from '../../svg/Svg';
-import {Tooltip} from '../../tooltip/Tooltip';
 import {IDropdownOption} from '../DropdownSearch';
-import {SelectedOption} from './SelectedOption';
 
 export interface IMultiselectInputProps {
     selectedOptions: IDropdownOption[];

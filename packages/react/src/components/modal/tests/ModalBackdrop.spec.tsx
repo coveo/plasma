@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 
 import {keyCode} from '../../../utils/InputUtils';
 import {createTestAppContainer, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
-import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
+import {IModalBackdropProps} from '../ModalBackdrop';
 
 describe('ModalBackdrop', () => {
     it('should render without errors', () => {

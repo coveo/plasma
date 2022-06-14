@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import {ClassAttributes, KeyboardEvent, FocusEvent, FormEvent, Component} from 'react';
 
-import {Svg} from '../svg/Svg';
-
 export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {
     /**
      * The unique identifier of that filter box

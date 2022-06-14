@@ -1,5 +1,4 @@
 import {mount} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -12,7 +11,6 @@ import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnec
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {Loading} from '../../loading/Loading';
 import {ITableProps} from '../Table';
-import {TableChildActionBar} from '../table-children/TableChildActionBar';
 import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {SELECTION_BOXES, tablePropsMock} from './TableTestCommon';
 

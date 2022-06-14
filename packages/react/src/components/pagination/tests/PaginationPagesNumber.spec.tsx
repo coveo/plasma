@@ -4,7 +4,7 @@ import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {PaginationReduxActions} from '../../navigation/pagination';
 import {Svg} from '../../svg';
-import {IPaginationPagesNumberProps, PaginationPagesNumber} from '../PaginationPagesNumber';
+import {IPaginationPagesNumberProps} from '../PaginationPagesNumber';
 import {PaginationSelect} from '../PaginationSelect';
 
 describe('PaginationPagesNumber tests', () => {

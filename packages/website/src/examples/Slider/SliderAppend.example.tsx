@@ -1,4 +1,4 @@
-import {AppendedValueSide, Slider} from '@coveord/plasma-react';
+import {AppendedValueSide} from '@coveord/plasma-react';
 import {FunctionComponent} from 'react';
 
 const AppendLabel: FunctionComponent<{value: string; label: string}> = ({value, label}) => (

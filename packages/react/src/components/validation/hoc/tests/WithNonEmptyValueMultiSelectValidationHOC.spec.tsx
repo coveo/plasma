@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {render, screen} from '@test-utils';
-import {withSelectedValues, ErrorList} from '../../../../utils/tests/TestUtils';
+import {withSelectedValues} from '../../../../utils/tests/TestUtils';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
 import {
     withNonEmptyMultiSelectHOC,

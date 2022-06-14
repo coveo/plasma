@@ -1,5 +1,3 @@
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
     import {BrowserPreview} from '@coveord/plasma-react';
 

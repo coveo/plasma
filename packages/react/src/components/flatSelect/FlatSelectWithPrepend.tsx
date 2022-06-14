@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {ReactNode, FunctionComponent} from 'react';
 
-import {FlatSelectConnected, IFlatSelectOwnProps} from './FlatSelect';
+import {IFlatSelectOwnProps} from './FlatSelect';
 
 export interface IFlatSelectWithPrependProps extends IFlatSelectOwnProps {
     prepend?: ReactNode;

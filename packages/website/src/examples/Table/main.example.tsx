@@ -1,4 +1,4 @@
-import {Badge, BadgeType, TableHOC, TableRowConnected} from '@coveord/plasma-react';
+import {BadgeType} from '@coveord/plasma-react';
 import {loremIpsum} from 'lorem-ipsum';
 
 const TABLE_ID: string = 'mainExampleTableId';

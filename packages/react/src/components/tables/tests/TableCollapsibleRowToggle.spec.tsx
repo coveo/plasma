@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
-import {ITableCollapsibleRowToggleProps, TableCollapsibleRowToggle} from '../TableCollapsibleRowToggle';
+import {ITableCollapsibleRowToggleProps} from '../TableCollapsibleRowToggle';
 
 describe('Tables', () => {
     it('should render without errors', () => {

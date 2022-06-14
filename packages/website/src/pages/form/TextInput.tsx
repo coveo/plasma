@@ -1,7 +1,5 @@
 import {FunctionComponent} from 'react';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
     import {FormProvider, InputValidator, TextInput} from "@coveord/plasma-react";
 

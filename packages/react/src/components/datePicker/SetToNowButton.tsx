@@ -1,9 +1,6 @@
 import {FunctionComponent} from 'react';
 import {TooltipPlacement} from '../../utils';
 
-import {Button} from '../button';
-import {Svg} from '../svg';
-
 export interface ISetToNowProps {
     onClick: () => void;
     tooltip?: string;

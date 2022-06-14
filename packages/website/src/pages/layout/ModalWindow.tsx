@@ -1,5 +1,3 @@
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
 import {useDispatch} from 'react-redux';
 import {Button, IDispatch, openModal, closeModal, ModalCompositeConnected} from '@coveord/plasma-react';

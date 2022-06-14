@@ -1,7 +1,6 @@
 import {shallowWithState} from '@helpers/enzyme-redux';
 
 import {IBlankSlateProps} from '../BlankSlate';
-import {BlankSlateWithError} from '../BlankSlatesHOC';
 
 describe('BlankSlateWithError Tests', () => {
     describe('<BlankSlateWithError>', () => {

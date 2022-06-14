@@ -1,5 +1,4 @@
-import {ITabProps, TabConnected} from '../tab/Tab';
-import {TabNavigation} from '../tab/TabNavigation';
+import {ITabProps} from '../tab/Tab';
 
 export interface ITabsHeaderProps {
     /**

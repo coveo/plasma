@@ -3,8 +3,7 @@ import {ClassAttributes, ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions/Action';
-import {Button} from '../button/Button';
-import {OptionalSvgChildProps, SvgChild} from '../svg/SvgChild';
+import {OptionalSvgChildProps} from '../svg/SvgChild';
 
 export interface IBlankSlateProps extends ClassAttributes<BlankSlate>, Omit<OptionalSvgChildProps, 'title'> {
     /**

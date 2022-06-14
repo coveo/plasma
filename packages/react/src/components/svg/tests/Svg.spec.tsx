@@ -1,7 +1,7 @@
 import {SvgName} from '@coveord/plasma-style';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {ISvgProps, Svg} from '../Svg';
+import {ISvgProps} from '../Svg';
 
 describe('Svg', () => {
     let svg: ReactWrapper<ISvgProps, any>;

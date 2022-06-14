@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import {FunctionComponent, useEffect, useState} from 'react';
 
-import {Svg} from '../svg';
-import {CodeEditor} from './CodeEditor';
 import {CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
 import {JSONEditorUtils} from './JSONEditorUtils';
 

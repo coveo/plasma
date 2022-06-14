@@ -5,9 +5,8 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
-import {InputConnected, InputSelectors} from '../input';
+import {InputSelectors} from '../input';
 import {changeInputValue} from '../input/InputActions';
-import {Svg} from '../svg';
 
 export interface LimitOwnProps {
     /**

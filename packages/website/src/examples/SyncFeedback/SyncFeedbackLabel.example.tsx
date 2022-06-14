@@ -1,4 +1,4 @@
-import {SyncFeedback, SyncFeedbackState} from '@coveord/plasma-react';
+import {SyncFeedbackState} from '@coveord/plasma-react';
 
 export default () => (
     <>

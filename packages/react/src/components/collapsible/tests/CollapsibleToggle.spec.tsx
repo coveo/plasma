@@ -1,7 +1,6 @@
 import {shallow} from 'enzyme';
 
 import {Svg} from '../../svg/Svg';
-import {CollapsibleToggle} from '../CollapsibleToggle';
 
 describe('CollapsibleToggle', () => {
     it('should render a Svg component with the icon "arrowBottomRounded" when expanded is false', () => {

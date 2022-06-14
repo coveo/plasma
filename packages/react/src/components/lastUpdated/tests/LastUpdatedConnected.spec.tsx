@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {contains} from 'underscore.string';
 
@@ -8,7 +7,6 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ILastUpdatedProps, LastUpdated} from '../LastUpdated';
 import {changeLastUpdated} from '../LastUpdatedActions';
-import {LastUpdatedConnected} from '../LastUpdatedConnected';
 
 describe('LastUpdated', () => {
     describe('<LastUpdatedConnected />', () => {

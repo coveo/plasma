@@ -2,7 +2,6 @@ import {shallow} from 'enzyme';
 
 import {Loading} from '../../loading/Loading';
 import {Svg} from '../../svg';
-import {StatusCard} from '../StatusCard';
 
 describe('StatusCard', () => {
     it('should render without errors', () => {

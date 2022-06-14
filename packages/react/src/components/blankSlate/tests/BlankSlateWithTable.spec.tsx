@@ -1,7 +1,5 @@
 import {shallowWithState} from '@helpers/enzyme-redux';
 
-import {BlankSlateWithTable} from '../BlankSlatesHOC';
-
 describe('BlankSlateWithTable Tests', () => {
     describe('<BlankSlateWithTable>', () => {
         const defaultProps = {

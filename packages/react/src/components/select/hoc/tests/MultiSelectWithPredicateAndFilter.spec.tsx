@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../../../PlasmaState';
@@ -8,7 +7,6 @@ import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {UUID} from '../../../../utils/UUID';
 import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../../itemBox/ItemBox';
-import {MultiSelectWithPredicateAndFilter} from '../SelectComponents';
 
 describe('MultiSelectWithPredicateAndFilter', () => {
     let wrapper: ReactWrapper<any, any>;

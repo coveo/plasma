@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 
 import {Svg} from '../../svg/Svg';
 import {TableSortingOrder} from '../TableConstants';
-import {ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell';
+import {ITableHeaderCellProps} from '../TableHeaderCell';
 
 describe('Tables', () => {
     let title: string;

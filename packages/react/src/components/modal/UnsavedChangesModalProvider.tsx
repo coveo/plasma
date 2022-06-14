@@ -1,6 +1,6 @@
 import {ReactNode, FunctionComponent} from 'react';
 
-import {ConfirmationModalProvider, IConfirmationModalChildrenProps} from './ConfirmationModalProvider';
+import {IConfirmationModalChildrenProps} from './ConfirmationModalProvider';
 
 const defaultModalId = 'UnsavedChangesModalId';
 const defaultModalTitle = 'Unsaved Changes';

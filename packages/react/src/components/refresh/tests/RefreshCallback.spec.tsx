@@ -3,7 +3,7 @@ import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
-import {IRefreshCallbackProps, IRefreshCallbackState, RefreshCallback} from '../RefreshCallback';
+import {IRefreshCallbackProps, IRefreshCallbackState} from '../RefreshCallback';
 import {RefreshStatus} from '../RefreshCallbackReducer';
 
 describe('RefreshCallback tests', () => {

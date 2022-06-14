@@ -4,7 +4,7 @@ import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
 import {ISingleValidation, ValidationSelectors} from '../validation';
-import {ModalWizard, ModalWizardProps} from './ModalWizard';
+import {ModalWizardProps} from './ModalWizard';
 
 export interface ModalWithValdiationsProps extends Omit<ModalWizardProps, 'validateStep' | 'isDirty'> {
     validationIdsByStep?: string[][];

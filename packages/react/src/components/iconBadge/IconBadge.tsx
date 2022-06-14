@@ -2,8 +2,6 @@ import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 
-import {Svg} from '../svg';
-
 export enum IconBadgeSize {
     Medium,
 }

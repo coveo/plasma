@@ -1,6 +1,6 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 
-import {SideNavigationItem, SideNavigationItemProps} from '../SideNavigationItem';
+import {SideNavigationItemProps} from '../SideNavigationItem';
 
 describe('SideNavigationItem', () => {
     let item: ShallowWrapper<SideNavigationItemProps>;

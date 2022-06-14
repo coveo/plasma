@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {PlasmaState} from '../../PlasmaState';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IBlankSlateWithTableProps} from '../blankSlate';
-import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
 

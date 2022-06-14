@@ -1,5 +1,3 @@
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
     import {IconBadge, IconBadgeType} from '@coveord/plasma-react';
 

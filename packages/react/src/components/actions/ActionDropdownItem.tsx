@@ -1,8 +1,6 @@
 import {FunctionComponent} from 'react';
 
 import {IActionOptions} from './Action';
-import {LinkAction} from './LinkAction';
-import {TriggerActionConnected} from './TriggerActionConnected';
 
 export interface IActionDropdownItemProps {
     action: IActionOptions;

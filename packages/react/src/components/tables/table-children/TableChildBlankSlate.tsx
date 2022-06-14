@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {BlankSlate, IBlankSlateProps} from '../../blankSlate/BlankSlate';
+import {IBlankSlateProps} from '../../blankSlate/BlankSlate';
 import {ITableProps} from '../Table';
 import {TABLE_PREDICATE_DEFAULT_VALUE, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
 

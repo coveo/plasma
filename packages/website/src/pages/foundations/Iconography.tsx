@@ -2,8 +2,6 @@ import {ITableHOCProps, TableHOC, tableWithFilter, TableWithFilterProps} from '@
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import {HTMLAttributes, ComponentType, FunctionComponent} from 'react';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const {iconsList, ...Icons} = PlasmaReactIcons;
 
 const TableWithFilter: ComponentType<

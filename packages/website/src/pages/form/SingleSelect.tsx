@@ -3,8 +3,6 @@ import withFilter from '@examples/SingleSelect/withFilter.example.tsx';
 import withPredicate from '@examples/SingleSelect/withPredicates.example.tsx';
 import withInfiniteScroll from '@examples/SingleSelect/withInfiniteScroll.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="SingleSelectConnected"

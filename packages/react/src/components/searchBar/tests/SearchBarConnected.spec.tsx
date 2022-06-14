@@ -2,7 +2,6 @@ import {mountWithStore} from '@helpers/enzyme-redux';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {addSearchBar, removeSearchBar, setSearchBarValue} from '../SearchBarActions';
-import {SearchBarConnected} from '../SearchBarConnected';
 import {searchBarConnectedPropsScenarios} from './SearchBarPropsScenarios.mock';
 
 describe('SearchBarConnected', () => {

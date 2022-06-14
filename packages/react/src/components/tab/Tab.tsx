@@ -6,8 +6,6 @@ import {createStructuredSelector} from 'reselect';
 
 import {ConnectedProps, IDispatch, UrlUtils} from '../../utils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg';
-import {Tooltip} from '../tooltip/Tooltip';
 import {TabActions} from './TabActions';
 import {TabSelectors} from './TabSelectors';
 

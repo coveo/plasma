@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 import {Content, IContentProps} from '../../content/Content';
 import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
-import {IItemBoxProps, ItemBox} from '../ItemBox';
+import {IItemBoxProps} from '../ItemBox';
 
 describe('ItemBox', () => {
     let ItemBoxComponent: ReactWrapper<IItemBoxProps, any>;

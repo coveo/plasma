@@ -1,7 +1,7 @@
 import {mount} from 'enzyme';
 
 import {Loading} from '../../loading/Loading';
-import {ITableChildLoadingRowProps, TableChildLoadingRow} from '../table-children/TableChildLoadingRow';
+import {ITableChildLoadingRowProps} from '../table-children/TableChildLoadingRow';
 import {TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
 import {tablePropsMock} from './TableTestCommon';
 

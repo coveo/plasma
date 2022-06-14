@@ -2,10 +2,9 @@ import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
 import {Range} from 'rc-slider';
 import {act} from 'react-dom/test-utils';
-import {Provider} from 'react-redux';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {AppendedValueSide, Slider} from '../Slider';
+import {AppendedValueSide} from '../Slider';
 
 describe('<Slider/>', () => {
     let store: ReturnType<typeof getStoreMock>;

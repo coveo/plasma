@@ -3,8 +3,6 @@ import {fireEvent, render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {BadgeType} from '../../badge';
 
-import {IconCard} from '../IconCard';
-
 describe('IconCard', () => {
     const svgChild = (
         <div role="img" aria-label="shrug icon">

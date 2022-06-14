@@ -1,8 +1,6 @@
 import {render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {SetToNowButton} from '../SetToNowButton';
-
 describe('SetToNowButton', () => {
     it('renders a button that has a calendar icon in it', () => {
         render(<SetToNowButton onClick={jest.fn()} />);

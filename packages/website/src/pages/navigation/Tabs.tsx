@@ -1,5 +1,4 @@
 import {FunctionComponent} from 'react';
-import {PageLayout} from '../../building-blocs/PageLayout';
 
 const withIcons = `
     import {Badge, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';

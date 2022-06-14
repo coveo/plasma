@@ -3,7 +3,7 @@ import {shallow, ShallowWrapper} from 'enzyme';
 
 import {LinkSvg} from '../../svg/LinkSvg';
 import {Svg} from '../../svg/Svg';
-import {CollapsibleHeaderIcon, CollapsibleHeaderIconProps} from '../CollapsibleHeaderIcon';
+import {CollapsibleHeaderIconProps} from '../CollapsibleHeaderIcon';
 
 describe('CollapsibleHeaderIcon', () => {
     const defaultProps = {

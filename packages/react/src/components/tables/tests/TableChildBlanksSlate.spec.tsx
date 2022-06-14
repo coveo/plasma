@@ -1,7 +1,6 @@
 import {mount} from 'enzyme';
 
 import {ITableProps} from '../Table';
-import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
 import {DEFAULT_TABLE_DATA, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
 import {tablePropsMock} from './TableTestCommon';
 

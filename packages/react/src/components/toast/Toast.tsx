@@ -1,9 +1,5 @@
 import classNames from 'classnames';
 import {ReactNode, FunctionComponent, ComponentClass, useState, useEffect, createElement} from 'react';
-import * as _ from 'underscore';
-import {LoadingSpinner} from '../loading/LoadingSpinner';
-
-import {Svg} from '../svg/Svg';
 
 export interface IToastProps {
     /**

@@ -1,12 +1,10 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {PlasmaState} from '../../../PlasmaState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IActionOptions} from '../Action';
 import {IPrimaryActionProps, PrimaryAction} from '../PrimaryAction';
-import {PrimaryActionConnected} from '../PrimaryActionConnected';
 import {TriggerActionConnected} from '../TriggerActionConnected';
 
 describe('Actions', () => {

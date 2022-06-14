@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
-import {Svg} from '../svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
 import {useFixedWidthWhileLoading} from './utils/TableHooks';

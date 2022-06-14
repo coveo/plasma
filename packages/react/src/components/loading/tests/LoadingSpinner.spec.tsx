@@ -1,7 +1,5 @@
 import {render, screen} from '@test-utils';
 
-import {LoadingSpinner} from '../LoadingSpinner';
-
 describe('LoadingSpinner', () => {
     it('renders a loading of size 24 by default', () => {
         render(<LoadingSpinner />);

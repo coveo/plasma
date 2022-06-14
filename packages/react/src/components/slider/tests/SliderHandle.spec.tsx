@@ -1,6 +1,6 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 
-import SliderHandle, {CustomHandleProps, HandleProps} from '../SliderHandle';
+import {CustomHandleProps, HandleProps} from '../SliderHandle';
 
 describe('<SliderHandle/>', () => {
     let shallowedSliderHandle: ShallowWrapper;

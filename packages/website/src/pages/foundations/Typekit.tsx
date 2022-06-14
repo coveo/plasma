@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 const code = `
     export default () => (
         <h1>Hello World!</h1>

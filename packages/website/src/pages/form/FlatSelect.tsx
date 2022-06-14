@@ -5,8 +5,6 @@ import optionPicker from '@examples/FlatSelect/FlatSelectOptionPicker.example.ts
 import appendPrepend from '@examples/FlatSelect/FlatSelectAppendPrepend.example.tsx';
 import iconOnly from '@examples/FlatSelect/FlatSelectIconsOnly.example.tsx';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
-
 export default () => (
     <PageLayout
         id="FlatSelectConnected"

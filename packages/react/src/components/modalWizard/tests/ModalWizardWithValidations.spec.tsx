@@ -1,8 +1,6 @@
 import userEvent, {specialChars} from '@testing-library/user-event';
 import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 
-import {ModalWizardWithValidations} from '../ModalWizardWithValidations';
-
 describe('ModalWizardWithValidations', () => {
     it('validates each steps using validation ids', () => {
         render(

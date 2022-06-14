@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -10,7 +9,6 @@ import {addLoading, turnOffLoading} from '../../../loading/LoadingActions';
 import {PaginationSelect} from '../../../pagination';
 import {INavigationPaginationProps, NavigationPagination} from '../NavigationPagination';
 import {changePage, resetPaging} from '../NavigationPaginationActions';
-import {NavigationPaginationConnected} from '../NavigationPaginationConnected';
 
 describe('<NavigationPaginationConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
