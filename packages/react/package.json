@@ -123,7 +123,7 @@
         "@typescript-eslint/parser": "5.21.0",
         "@wojtekmaj/enzyme-adapter-react-17": "0.6.7",
         "ansi-colors": "4.1.1",
-        "autoprefixer": "9.8.8",
+        "autoprefixer": "10.4.2",
         "codecov": "3.8.2",
         "codemirror": "5.63.3",
         "d3": "3.5.17",
