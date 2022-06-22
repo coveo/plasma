@@ -3,6 +3,61 @@ import {IRangeLimit} from '../components';
 import {DateUtils} from './DateUtils';
 
 describe('DateUtils', () => {
+    describe('currentDate', () => {
+        it('returns the current system date', () => {
+            jest.useFakeTimers();
+
+            const expectedDate1 = new Date(2022, 0, 1);
+            const expectedDate2 = new Date(2002, 2, 22);
+
+            jest.setSystemTime(expectedDate1);
+
+            expect(DateUtils.currentDate).toStrictEqual(expectedDate1);
+
+            jest.setSystemTime(expectedDate2);
+
+            expect(DateUtils.currentDate).toStrictEqual(expectedDate2);
+
+            jest.useRealTimers();
+        });
+    });
+    describe('currentMonth', () => {
+        it('returns the current system month', () => {
+            jest.useFakeTimers();
+
+            const expectedDate1 = new Date(2022, 0, 1);
+            const expectedDate2 = new Date(2002, 2, 22);
+
+            jest.setSystemTime(expectedDate1);
+
+            expect(DateUtils.currentMonth).toBe(0);
+
+            jest.setSystemTime(expectedDate2);
+
+            expect(DateUtils.currentMonth).toBe(2);
+
+            jest.useRealTimers();
+        });
+    });
+    describe('currentYear', () => {
+        it('returns the current system year', () => {
+            jest.useFakeTimers();
+
+            const expectedDate1 = new Date(2022, 0, 1);
+            const expectedDate2 = new Date(2002, 2, 22);
+
+            jest.setSystemTime(expectedDate1);
+
+            expect(DateUtils.currentYear).toBe(2022);
+
+            jest.setSystemTime(expectedDate2);
+
+            expect(DateUtils.currentYear).toBe(2002);
+
+            jest.useRealTimers();
+        });
+    });
+
     describe('getValidDate', () => {
         it('should return a valid formatted date if the format is MMM DD, YYYY, H:mm', () => {
             const date = 'Jan 02, 2010, 22:21';
