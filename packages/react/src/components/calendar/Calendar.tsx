@@ -126,7 +126,6 @@ export class Calendar extends Component<ICalendarProps, any> {
         years: DEFAULT_YEARS,
         months: DEFAULT_MONTHS,
         days: DEFAULT_DAYS,
-        startingMonth: DateUtils.currentMonth,
         startingDay: 0,
         showHeader: true,
         defaultLanguage: 'en',
@@ -251,6 +250,7 @@ export class Calendar extends Component<ICalendarProps, any> {
     }
 
     render() {
+        const startingMonth = this.props.startingMonth || DateUtils.currentMonth;
         const monthPickerProps: IOptionsCycleProps = {
             options: this.props.months,
             isInline: true,
@@ -282,13 +282,9 @@ export class Calendar extends Component<ICalendarProps, any> {
         }));
 
         const monthPicker = this.props.withReduxState ? (
-            <OptionsCycleConnected
-                id={this.props.id + MONTH_PICKER_ID}
-                startAt={this.props.startingMonth}
-                {...monthPickerProps}
-            />
+            <OptionsCycleConnected id={this.props.id + MONTH_PICKER_ID} startAt={startingMonth} {...monthPickerProps} />
         ) : (
-            <OptionsCycle currentOption={this.props.startingMonth} {...monthPickerProps} />
+            <OptionsCycle currentOption={startingMonth} {...monthPickerProps} />
         );
 
         const yearPicker = this.props.withReduxState ? (
@@ -299,9 +295,7 @@ export class Calendar extends Component<ICalendarProps, any> {
 
         const selectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
         const year = parseInt(this.props.years[selectedYearOption], 10);
-        const selectedMonth = !_.isUndefined(this.props.selectedMonth)
-            ? this.props.selectedMonth
-            : this.props.startingMonth;
+        const selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : startingMonth;
         const month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), this.props.startingDay);
         const weeks: JSX.Element[] = _.map(month, (week: IDay[]) => {
             const days: JSX.Element[] = _.map(week, (day: IDay) => {

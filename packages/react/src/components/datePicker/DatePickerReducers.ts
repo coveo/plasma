@@ -22,7 +22,7 @@ export interface IDatePickerState {
     simple: boolean;
 }
 
-export const datePickerInitialState: IDatePickerState = {
+export const datePickerInitialState: () => IDatePickerState = () => ({
     id: undefined,
     calendarId: undefined,
     isRange: false,
@@ -35,7 +35,7 @@ export const datePickerInitialState: IDatePickerState = {
     inputUpperLimit: moment().endOf('day').toDate(),
     appliedLowerLimit: moment().startOf('day').toDate(),
     appliedUpperLimit: moment().endOf('day').toDate(),
-};
+});
 export const datePickersInitialState: IDatePickerState[] = [];
 
 const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePickerPayload>): IDatePickerState => {
@@ -136,7 +136,7 @@ const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActi
           });
 
 export const datePickerReducer = (
-    state: IDatePickerState = datePickerInitialState,
+    state: IDatePickerState = datePickerInitialState(),
     action: IReduxAction<any>
 ): IDatePickerState => {
     switch (action.type) {
