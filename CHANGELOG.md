@@ -1,3 +1,12 @@
+## 42.7.4 (2022-06-22)
+
+
+### Bug Fixes
+
+* **react, date utils:** make sure the date is dynamic ([#2784](https://github.com/coveo/plasma/issues/2784)) ([b1b4bcd](https://github.com/coveo/plasma/commits/b1b4bcdfe07bd95936f35d19b0b81a52954e21c1))
+
+
+
 ## 42.7.3 (2022-06-14)
 
 
