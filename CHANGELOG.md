@@ -1,3 +1,12 @@
+## 42.7.5 (2022-06-22)
+
+
+### Bug Fixes
+
+* **react, date picker:** make sure the datePicker dates are dynamics ([#2785](https://github.com/coveo/plasma/issues/2785)) ([66760dd](https://github.com/coveo/plasma/commits/66760dd8ffd6f529ddc01ee4386f8e3dc8c69f94))
+
+
+
 ## 42.7.4 (2022-06-22)
 
 
