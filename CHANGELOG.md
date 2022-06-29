@@ -1,3 +1,12 @@
+# 42.8.0 (2022-06-29)
+
+
+### Features
+
+* **icon-card:** adding description to be react node compatible ([#2788](https://github.com/coveo/plasma/issues/2788)) ([2236e08](https://github.com/coveo/plasma/commits/2236e08e26ffde0ae5f349fb0944431f3857b78f))
+
+
+
 ## 42.7.6 (2022-06-22)
 
 
