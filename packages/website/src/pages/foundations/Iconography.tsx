@@ -25,10 +25,11 @@ const IconSetCard: FunctionComponent<IconSet> = ({iconName, variants}) => (
             <tbody>
                 {variants.map((svgName) => {
                     const SvgComponent = Icons[svgName];
+                    const size = parseInt(/(\d+)px/i.exec(svgName)?.[0] ?? '16', 10);
                     return SvgComponent ? (
                         <tr key={svgName}>
                             <td className="mod-no-border-bottom">
-                                <SvgComponent height={parseInt(/(\d+)px/i.exec(svgName)[0], 10)} />
+                                <SvgComponent height={size} />
                             </td>
                             <td className="mod-no-border-bottom">{svgName}</td>
                         </tr>
