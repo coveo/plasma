@@ -19,15 +19,18 @@ input[type='url'],
 input[type='search'],
 input[type='tel'],
 input[type='color'] {
-    padding: 3px 6px;
-    color: var(--deprecated-dark-grey);
-    font-size: $input-font-size;
-    font-family: var(--main-font);
-    border: 1px solid var(--deprecated-medium-grey);
-    border-radius: 2px;
+    // Hands off the inputs managed by MUI
+    &:not(.MuiInputBase-input) {
+        padding: 3px 6px;
+        color: var(--deprecated-dark-grey);
+        font-size: $input-font-size;
+        font-family: var(--main-font);
+        border: 1px solid var(--deprecated-medium-grey);
+        border-radius: 2px;
 
-    &:focus-visible {
-        @include focus-outline();
+        &:focus-visible {
+            @include focus-outline();
+        }
     }
 }
 

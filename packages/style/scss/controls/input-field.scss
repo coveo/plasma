@@ -1,4 +1,5 @@
-.input-field {
+// Must crank up the specificity to override rules from inputs.scss
+.input-field.input-field.input-field {
     position: relative;
     margin-top: $input-margin-top;
 
