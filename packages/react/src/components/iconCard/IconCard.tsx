@@ -24,7 +24,7 @@ export interface IconCardProps {
     /**
      * The secondary text displayed on the card
      */
-    description?: string;
+    description?: ReactNode;
     /**
      * Whether the card is smaller in size
      */

@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "42.7.3",
+    "version": "42.9.1",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -131,7 +131,7 @@
         "enzyme": "3.11.0",
         "escape-string-regexp": "1.0.5",
         "eslint-plugin-jest": "25.7.0",
-        "eslint-plugin-jest-dom": "3.9.4",
+        "eslint-plugin-jest-dom": "4.0.2",
         "eslint-plugin-testing-library": "5.3.1",
         "faker": "4.1.0",
         "fancy-log": "2.0.0",

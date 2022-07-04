@@ -1,3 +1,55 @@
+## 42.9.2 (2022-06-30)
+
+
+
+## 42.9.1 (2022-06-30)
+
+
+
+# 42.9.0 (2022-06-30)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries ([2d6434a](https://github.com/coveo/plasma/commits/2d6434a260160fdb1a3a6fb3bfd9ff0b6fcef162))
+
+
+
+## 42.8.1 (2022-06-30)
+
+
+
+# 42.8.0 (2022-06-29)
+
+
+### Features
+
+* **icon-card:** adding description to be react node compatible ([#2788](https://github.com/coveo/plasma/issues/2788)) ([2236e08](https://github.com/coveo/plasma/commits/2236e08e26ffde0ae5f349fb0944431f3857b78f))
+
+
+
+## 42.7.6 (2022-06-22)
+
+
+
+## 42.7.5 (2022-06-22)
+
+
+### Bug Fixes
+
+* **react, date picker:** make sure the datePicker dates are dynamics ([#2785](https://github.com/coveo/plasma/issues/2785)) ([66760dd](https://github.com/coveo/plasma/commits/66760dd8ffd6f529ddc01ee4386f8e3dc8c69f94))
+
+
+
+## 42.7.4 (2022-06-22)
+
+
+### Bug Fixes
+
+* **react, date utils:** make sure the date is dynamic ([#2784](https://github.com/coveo/plasma/issues/2784)) ([b1b4bcd](https://github.com/coveo/plasma/commits/b1b4bcdfe07bd95936f35d19b0b81a52954e21c1))
+
+
+
 ## 42.7.3 (2022-06-14)
 
 

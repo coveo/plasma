@@ -19,9 +19,15 @@ export const LONG_DATE_FORMAT: string = SIMPLE_DATE_FORMAT + ', H:mm';
 export const DATES_SEPARATOR: string = '%';
 
 export class DateUtils {
-    static currentDate: Date = new Date();
-    static currentMonth: number = DateUtils.currentDate.getMonth();
-    static currentYear: number = DateUtils.currentDate.getFullYear();
+    static get currentDate(): Date {
+        return new Date();
+    }
+    static get currentMonth(): number {
+        return DateUtils.currentDate.getMonth();
+    }
+    static get currentYear(): number {
+        return DateUtils.currentDate.getFullYear();
+    }
 
     static getPreviousYears(numberOfYears: number): string[] {
         return _.range(DateUtils.currentYear - numberOfYears, DateUtils.currentYear).map(String);

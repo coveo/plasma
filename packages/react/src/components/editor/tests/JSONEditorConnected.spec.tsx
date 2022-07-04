@@ -25,7 +25,7 @@ describe('<JSONEditorConnected />', () => {
         expect(within(line).getByText(matcher)).toBeVisible();
     });
 
-    it('will not display error when rendering with (deprecated) value prop', async() => {
+    it('will not display error when rendering with (deprecated) value prop', async () => {
         render(<JSONEditorConnected id="💙" value={'{}'} />);
 
         await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
