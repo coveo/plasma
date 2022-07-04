@@ -1,0 +1,12 @@
+{
+    "extends": "../tsconfig-base",
+    "compilerOptions": {
+        "tsBuildInfoFile": "./dist/.tsbuildinfo",
+        "declarationDir": "./dist/definitions",
+        "baseUrl": ".",
+        "paths": {
+            "@test-utils": ["jest/utils.tsx"],
+            "*": ["types/*", "*"]
+        }
+    }
+}
