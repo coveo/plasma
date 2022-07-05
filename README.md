@@ -68,7 +68,7 @@ Alternatively, you can run it directly from the `packages/react` package, which 
 
 Every commit made to this repository must comply to the [Conventional Commits specification](https://www.conventionalcommits.org/). Our build system is configured to automatically release and publish new versions according to this convention.
 
-> We have integrated an optionnal [command line utility](https://github.com/commitizen/cz-cli) to help you build proper commit messages.
+> We have integrated an optional [command line utility](https://github.com/commitizen/cz-cli) to help you build proper commit messages.
 >
 > ```bash
 > git add . # stage the changes you want to commit
