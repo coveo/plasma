@@ -1,10 +1,10 @@
 import {
-    BaseTextFieldProps,
     Box,
     Button,
     InputAdornment,
     MenuItem,
     Pagination,
+    StandardTextFieldProps,
     TextField,
     Typography,
 } from '@mui/material';
@@ -72,6 +72,7 @@ const Footer = ({lastUpdate}: FooterProps) => {
                     <Typography variant="subtitle2">Results per page</Typography>
                     {[25, 50, 100].map((s) => (
                         <Button
+                            key={s}
                             color="primary"
                             size="small"
                             variant={pageSize === s ? 'contained' : 'outlined'}
@@ -124,13 +125,13 @@ export const MainDataGrid = <R extends GridValidRowModel = any>({
         }}
         sx={{
             border: 0,
-            '& .MuiDataGrid-columnHeader:first-child': {
+            '& .MuiDataGrid-columnHeader:first-of-type': {
                 paddingLeft: 5,
             },
             '& .MuiDataGrid-columnHeader:last-child': {
                 paddingRight: 5,
             },
-            '& .MuiDataGrid-cell:first-child': {
+            '& .MuiDataGrid-cell:first-of-type': {
                 paddingLeft: 5,
             },
             '& .MuiDataGrid-cell:last-child': {
@@ -147,18 +148,18 @@ export const MainDataGrid = <R extends GridValidRowModel = any>({
     />
 );
 
-interface MainDataGridSelectFilterProps extends BaseTextFieldProps {
+interface MainDataGridSelectFilterProps extends StandardTextFieldProps {
     filters: Array<{value: string; caption: string}>;
-    onChange?: (filter: string | undefined) => void;
+    onFilterChange?: (filter: string | undefined) => void;
 }
 
 const FILTER_ALL = '__ALL__';
 
 export const MainDataGridTableSelectFilter = ({
     filters,
-    onChange,
+    onFilterChange,
     label,
-    inputProps,
+    InputProps,
     ...rest
 }: MainDataGridSelectFilterProps) => {
     const [selectedFilter, setSelectedFilter] = useState(FILTER_ALL);
@@ -168,14 +169,14 @@ export const MainDataGridTableSelectFilter = ({
             select
             variant="outlined"
             size="small"
-            inputProps={{
+            InputProps={{
                 startAdornment: <InputAdornment position="start">{label}:</InputAdornment>,
-                ...inputProps,
+                ...InputProps,
             }}
             value={selectedFilter}
             onChange={(e) => {
                 setSelectedFilter(e.target.value);
-                onChange && onChange(e.target.value !== FILTER_ALL ? e.target.value : undefined);
+                onFilterChange && onFilterChange(e.target.value !== FILTER_ALL ? e.target.value : undefined);
             }}
             {...rest}
         >
@@ -191,29 +192,29 @@ export const MainDataGridTableSelectFilter = ({
     );
 };
 
-interface MainDataGridFreeTextFilterProps extends BaseTextFieldProps {
-    onChange?: (filter: string | undefined) => void;
+interface MainDataGridFreeTextFilterProps extends StandardTextFieldProps {
+    onFilterChange?: (filter: string | undefined) => void;
 }
 
-export const MainDataGridFreeTextFilter = ({onChange, inputProps, ...rest}: MainDataGridFreeTextFilterProps) => {
+export const MainDataGridFreeTextFilter = ({onFilterChange, InputProps, ...rest}: MainDataGridFreeTextFilterProps) => {
     const [filter, setFilter] = useState('');
 
     return (
         <TextField
             variant="outlined"
             size="small"
-            inputProps={{
+            InputProps={{
                 endAdornment: (
                     <InputAdornment position="end">
                         <FilterAltIcon />
                     </InputAdornment>
                 ),
-                ...inputProps,
+                ...InputProps,
             }}
             value={filter}
             onChange={(e) => {
                 setFilter(e.target.value);
-                onChange && onChange(e.target.value !== '' ? e.target.value : undefined);
+                onFilterChange && onFilterChange(e.target.value !== '' ? e.target.value : undefined);
             }}
             {...rest}
         />
