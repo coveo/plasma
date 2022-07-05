@@ -4,6 +4,8 @@ import {
     PaletteColorOptions,
     experimental_sx as sx,
     SimplePaletteColorOptions,
+    TypeText,
+    TypeBackground,
 } from '@mui/material';
 import {Shadows} from '@mui/material/styles/shadows';
 
@@ -39,6 +41,10 @@ const createShadows = (
     return steps as Shadows;
 };
 
+const navyBlue = {
+    main: '#333357', // --navy-blue-80
+};
+
 const digitalBlue = {
     light: '#c7e4ff', // digital-blue-20
     main: '#1372ec', // digital-blue-60
@@ -53,256 +59,240 @@ const gray = {
     contrastText: '#333357', // gray-80
 };
 
-const palette: ThemeOptions = {
-    palette: {
-        primary: digitalBlue,
-        primary_gray: gray,
-        accent_red: {
-            main: '#f05245', // --pomegranate-red-50
-        },
-        accent_blue: {
-            main: '#00adff', // --cerulean-blue-50
-        },
-        accent_yellow: {
-            main: '#ffe300', // --turbo-yellow-50
-        },
-        accent_turquoise: {
-            main: '#1cebcf', // --bright-turquoise-40
-        },
-        secondary: {
-            main: '#333357', // --navy-blue-80
-        },
-        secondary_purple: {
-            main: '#451c5c', // --grape-purple-70
-        },
-        secondary_green: {
-            main: '#00634f', // --rain-forest-green-60
-        },
-        secondary_blue: {
-            main: '#2e45ba', // --governor-blue-60
-        },
-        info: {
-            main: '#525296', // --info-60
-        },
-        warning: {
-            main: '#e2b104', // --warn-70
-        },
-        success: {
-            main: '#12a344', // --success-60
-        },
-        error: {
-            main: '#cd2113', // --critical-70
-        },
-        text: {
-            primary: '#282829',
-            secondary: '#626971',
-            disabled: '#bcc3ca',
-        },
-        background: {
-            default: '#ffffff',
-        },
-    },
+const pomegranateRed = {
+    main: '#f05245', // --pomegranate-red-50
 };
 
-const fundamentals: ThemeOptions = {
-    ...palette,
-    typography: {
-        fontFamily: 'canada-type-gibson, sans-serif',
-        fontSize: 14,
-        fontWeightRegular: '--font-weight-book',
-    },
-    shape: {
-        borderRadius: 4,
-    },
-    components: {
-        MuiButtonBase: {
-            defaultProps: {
-                disableRipple: true,
+const ceruleanBlue = {
+    main: '#00adff', // --cerulean-blue-50
+};
+
+const turboYellow = {
+    main: '#ffe300', // --turbo-yellow-50
+};
+
+const brightTurquoise = {
+    main: '#1cebcf', // --bright-turquoise-40
+};
+
+const grapePurple = {
+    main: '#451c5c', // --grape-purple-70
+};
+
+const rainForestGreen = {
+    main: '#00634f', // --rain-forest-green-60
+};
+
+const governorBlue = {
+    main: '#2e45ba', // --governor-blue-60
+};
+
+const lightBackground = {
+    default: '#ffffff',
+};
+
+const createCoveoTheme = (variant: 'light' | 'medium' | 'dark'): ThemeOptions => {
+    let text: Partial<TypeText>;
+    switch (variant) {
+        case 'light':
+            text = {
+                primary: '#282829',
+                secondary: '#626971',
+                disabled: '#bcc3ca',
+            };
+            break;
+        case 'medium':
+        case 'dark':
+        default:
+            text = {
+                primary: '#282829',
+                secondary: '#626971',
+                disabled: '#bcc3ca',
+            };
+            break;
+    }
+
+    let background: Partial<TypeBackground>;
+    switch (variant) {
+        case 'light':
+            background = {
+                default: '#ffffff',
+            };
+            break;
+        case 'medium':
+            background = {
+                default: '#ffffff',
+            };
+            break;
+        case 'dark':
+        default:
+            background = {
+                default: '#ffffff',
+            };
+            break;
+    }
+
+    let shadows: Shadows;
+    switch (variant) {
+        case 'light':
+            shadows = createShadows('rgba(229, 232, 232, 0.6)', 0, 0, 2, 10, 2, 25);
+            break;
+        case 'medium':
+            shadows = createShadows('rgba(113, 113, 113, 0.16)', 0, 0, 2, 14, 3, 26);
+            break;
+        case 'dark':
+        default:
+            shadows = createShadows('rgba(24, 29, 58, 0.5)', 0, 0, 2, 8, 3, 24);
+            break;
+    }
+
+    return createTheme({
+        palette: {
+            primary: digitalBlue,
+            primary_gray: gray,
+            accent_red: pomegranateRed,
+            accent_blue: ceruleanBlue,
+            accent_yellow: turboYellow,
+            accent_turquoise: brightTurquoise,
+            secondary: navyBlue,
+            secondary_purple: grapePurple,
+            secondary_green: rainForestGreen,
+            secondary_blue: governorBlue,
+            info: {
+                main: '#525296', // --info-60
             },
+            warning: {
+                main: '#e2b104', // --warn-70
+            },
+            success: {
+                main: '#12a344', // --success-60
+            },
+            error: {
+                main: '#cd2113', // --critical-70
+            },
+            text,
+            background,
         },
-        MuiButton: {
-            defaultProps: {
-                disableElevation: true,
+        typography: {
+            fontFamily: 'canada-type-gibson, sans-serif',
+            fontSize: 14,
+            fontWeightRegular: '--font-weight-book',
+        },
+        shape: {
+            borderRadius: 4,
+        },
+        components: {
+            MuiButtonBase: {
+                defaultProps: {
+                    disableRipple: true,
+                },
             },
-            styleOverrides: {
-                root: sx({
-                    fontSize: 16,
-                    fontWeight: 400,
-                    textTransform: 'none',
-                    borderRadius: 2,
-                }),
+            MuiButton: {
+                defaultProps: {
+                    disableElevation: true,
+                },
+                styleOverrides: {
+                    root: sx({
+                        fontSize: 16,
+                        fontWeight: 400,
+                        textTransform: 'none',
+                        borderRadius: 2,
+                    }),
+                },
+                variants: [
+                    {
+                        props: {variant: 'contained'},
+                        style: {
+                            background: '--digital-blue-60',
+                        },
+                    },
+                    {
+                        props: {size: 'small'},
+                        style: {
+                            fontSize: 14,
+                        },
+                    },
+                ],
             },
-            variants: [
-                {
-                    props: {size: 'small'},
-                    style: {
+            MuiInput: {
+                styleOverrides: {
+                    root: sx({fontSize: 14}),
+                },
+            },
+            MuiSelect: {
+                styleOverrides: {
+                    outlined: sx({color: digitalBlue['800']}),
+                },
+            },
+            MuiOutlinedInput: {
+                styleOverrides: {
+                    root: sx({
+                        backgroundColor: lightBackground.default,
+                        borderRadius: 2,
                         fontSize: 14,
-                    },
-                },
-            ],
-        },
-        MuiInput: {
-            styleOverrides: {
-                root: sx({fontSize: 14}),
-            },
-        },
-        MuiSelect: {
-            styleOverrides: {
-                outlined: sx({color: digitalBlue['800']}),
-            },
-        },
-        MuiOutlinedInput: {
-            styleOverrides: {
-                root: sx({
-                    backgroundColor: palette.palette.background.default,
-                    borderRadius: 2,
-                    fontSize: 14,
 
-                    // I don't quite know why the `focused` member exists on level above, but this is the only
-                    // thing I did that actually worked.
-                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        // I don't quite know why the `focused` member exists on level above, but this is the only
+                        // thing I did that actually worked.
+                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                            border: 1,
+                            borderColor: digitalBlue.main,
+                            boxShadow: '0px 0px 0px 4px #c7e4ff',
+                        },
+                        '&:hover .MuiOutlinedInput-notchedOutline': {
+                            border: 1,
+                            borderColor: gray.dark,
+                        },
+                    }),
+                    notchedOutline: sx({
                         border: 1,
-                        borderColor: digitalBlue.main,
-                        boxShadow: '0px 0px 0px 4px #c7e4ff',
-                    },
-                    '&:hover .MuiOutlinedInput-notchedOutline': {
-                        border: 1,
-                        borderColor: gray.dark,
-                    },
-                }),
-                notchedOutline: sx({
-                    border: 1,
-                    borderColor: gray.main,
-                    borderRadius: 2,
-                }),
-            },
-        },
-        MuiInputAdornment: {
-            styleOverrides: {
-                root: sx({
-                    color: palette.palette.text.secondary,
-                }),
-            },
-        },
-        MuiTextField: {
-            defaultProps: {
-                variant: 'standard',
-            },
-        },
-        MuiFormControlLabel: {
-            styleOverrides: {
-                label: sx({fontSize: 14}),
-            },
-        },
-        MuiFormHelperText: {
-            styleOverrides: {
-                root: sx({fontSize: 14}),
-                contained: sx({mx: 4}),
-            },
-        },
-        MuiCard: {
-            defaultProps: {
-                elevation: 0,
-            },
-        },
-        MuiAccordion: {
-            defaultProps: {
-                disableGutters: true,
-                elevation: 0,
-            },
-        },
-        MuiAccordionSummary: {
-            styleOverrides: {
-                root: sx({px: 5, py: 1, backgroundColor: gray.main}),
-                content: sx({fontWeight: 400, textTransform: 'uppercase'}),
-            },
-        },
-    },
-};
-
-const lightBackgroundText: ThemeOptions = {
-    palette: {
-        text: {
-            primary: '#282829',
-            secondary: '#626971',
-            disabled: '#bcc3ca',
-        },
-    },
-};
-
-const mediumBackgroundText: ThemeOptions = lightBackgroundText;
-
-const darkBackgroundText: ThemeOptions = {
-    palette: {
-        text: {
-            primary: '#ffffff',
-            secondary: '#626971', // TODO
-            disabled: '#bcc3ca', // TODO
-        },
-    },
-};
-
-const lightBackgroundShadows: ThemeOptions = {
-    shadows: createShadows('rgba(229, 232, 232, 0.6)', 0, 0, 2, 10, 2, 25),
-};
-
-const mediumBackgroundShadows: ThemeOptions = {
-    shadows: createShadows('rgba(113, 113, 113, 0.16)', 0, 0, 2, 14, 3, 26),
-};
-
-const darkBackgroundShadows: ThemeOptions = {
-    shadows: createShadows('rgba(24, 29, 58, 0.5)', 0, 0, 2, 8, 3, 24),
-};
-
-const lightBackgroundProps: ThemeOptions = {
-    components: {
-        MuiButton: {
-            variants: [
-                {
-                    props: {variant: 'contained'},
-                    style: {
-                        background: '--digital-blue-60',
-                    },
+                        borderColor: gray.main,
+                        borderRadius: 2,
+                    }),
                 },
-            ],
-        },
-    },
-};
-
-const mediumBackgroundProps: ThemeOptions = lightBackgroundProps;
-
-const darkBackgroundProps: ThemeOptions = {
-    components: {
-        MuiButton: {
-            variants: [
-                {
-                    props: {variant: 'contained'},
-                    style: {
-                        background: '--digital-blue-60', // TODO
-                    },
+            },
+            MuiInputAdornment: {
+                styleOverrides: {
+                    root: sx({
+                        color: text.secondary,
+                    }),
                 },
-            ],
+            },
+            MuiTextField: {
+                defaultProps: {
+                    variant: 'standard',
+                },
+            },
+            MuiFormControlLabel: {
+                styleOverrides: {
+                    label: sx({fontSize: 14}),
+                },
+            },
+            MuiFormHelperText: {
+                styleOverrides: {
+                    root: sx({fontSize: 14}),
+                    contained: sx({mx: 4}),
+                },
+            },
+            MuiCard: {
+                defaultProps: {
+                    elevation: 0,
+                },
+            },
+            MuiAccordion: {
+                defaultProps: {
+                    disableGutters: true,
+                    elevation: 0,
+                },
+            },
+            MuiAccordionSummary: {
+                styleOverrides: {
+                    root: sx({px: 5, py: 1, backgroundColor: gray.main}),
+                    content: sx({fontWeight: 400, textTransform: 'uppercase'}),
+                },
+            },
         },
-    },
+        shadows,
+    });
 };
 
-export const lightBackgroundTheme = createTheme(
-    fundamentals,
-    lightBackgroundText,
-    lightBackgroundShadows,
-    lightBackgroundProps
-);
-
-export const mediumBackgroundTheme = createTheme(
-    fundamentals,
-    mediumBackgroundText,
-    mediumBackgroundShadows,
-    mediumBackgroundProps
-);
-
-export const darkBackgroundTheme = createTheme(
-    fundamentals,
-    darkBackgroundText,
-    darkBackgroundShadows,
-    darkBackgroundProps
-);
+export const lightBackgroundTheme = createCoveoTheme('light');
