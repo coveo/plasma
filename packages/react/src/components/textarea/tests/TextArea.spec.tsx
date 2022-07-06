@@ -16,7 +16,7 @@ describe('Textarea', () => {
     });
 
     it('calls the onChangeCallback when the user changes the textarea value', () => {
-        const onChangeSpy = jest.fn();
+        const onChangeSpy = vi.fn();
         render(<TextAreaConnected id="🆔" onChangeCallback={onChangeSpy} />);
         const textarea = screen.getByRole('textbox');
         userEvent.type(textarea, 'abc');
@@ -24,7 +24,7 @@ describe('Textarea', () => {
     });
 
     it('shows the validation message when the value is not valid', async () => {
-        jest.useFakeTimers();
+        vi.useFakeTimers();
         const notEmptyValidator = (v: string) => !!v;
         const validationMessage = 'cannot be empty';
         render(<TextAreaConnected id="🆔" validate={notEmptyValidator} validationMessage={validationMessage} />);
@@ -32,16 +32,16 @@ describe('Textarea', () => {
         expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
         userEvent.type(textarea, 'abc');
         act(() => {
-            jest.advanceTimersByTime(400);
+            vi.advanceTimersByTime(400);
         });
         expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
         userEvent.clear(textarea);
         act(() => {
-            jest.advanceTimersByTime(400);
+            vi.advanceTimersByTime(400);
         });
         expect(await screen.findByText(validationMessage)).toBeInTheDocument();
-        jest.runOnlyPendingTimers();
-        jest.useRealTimers();
+        vi.runOnlyPendingTimers();
+        vi.useRealTimers();
     });
 
     it('renders the textarea content as text when disabled', () => {

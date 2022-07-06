@@ -5,13 +5,13 @@ import {IFacet} from '../Facet';
 import {FacetRow, IFacetRowProps} from '../FacetRow';
 
 describe('Facets', () => {
-    let spyOnToggleFacet: jest.Mock<any, any>;
+    let spyOnToggleFacet: vi.Mock<any, any>;
 
     let FACET_ROW_PROPS: IFacetRowProps;
     let FACET_ROW: JSX.Element;
 
     beforeEach(() => {
-        spyOnToggleFacet = jest.fn();
+        spyOnToggleFacet = vi.fn();
 
         FACET_ROW_PROPS = {
             facetRow: {
@@ -44,8 +44,8 @@ describe('Facets', () => {
 
         it('should stop event if click on checkbox directly', () => {
             const event = {
-                preventDefault: jest.fn(),
-                stopPropagation: jest.fn(),
+                preventDefault: vi.fn(),
+                stopPropagation: vi.fn(),
             };
             (facetRowView.instance() as any).stopEvent(event);
 

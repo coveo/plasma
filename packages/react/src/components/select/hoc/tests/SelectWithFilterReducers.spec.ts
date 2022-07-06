@@ -25,10 +25,10 @@ describe('Select', () => {
             type: 'pokeball',
         };
 
-        let spyStringListCompositeState: jest.SpyInstance;
+        let spyStringListCompositeState: vi.SpyInstance;
 
         beforeEach(() => {
-            spyStringListCompositeState = jest.spyOn<any, string>(StringListReducers, 'stringListCompositeReducer');
+            spyStringListCompositeState = vi.spyOn<any, string>(StringListReducers, 'stringListCompositeReducer');
         });
 
         it('should return the default state if the action has no payload', () => {

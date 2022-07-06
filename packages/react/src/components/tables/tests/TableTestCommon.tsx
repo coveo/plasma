@@ -132,8 +132,8 @@ export const tablePropsMockWithData = {
             totalPages: 1,
         },
     } as any,
-    getActions: jest.fn(),
-    onRowClick: jest.fn(),
+    getActions: vi.fn(),
+    onRowClick: vi.fn(),
 } as any;
 
 export const tablePossibleProps = [

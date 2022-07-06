@@ -16,7 +16,7 @@ describe('Actions', () => {
     beforeAll(() => {
         triggerAction = {
             name: 'action2',
-            trigger: jest.fn(),
+            trigger: vi.fn(),
             enabled: true,
         };
     });

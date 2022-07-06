@@ -5,7 +5,7 @@ import {SetToNowButton} from '../SetToNowButton';
 
 describe('SetToNowButton', () => {
     it('renders a button that has a calendar icon in it', () => {
-        render(<SetToNowButton onClick={jest.fn()} />);
+        render(<SetToNowButton onClick={vi.fn()} />);
 
         const setToNowButton = screen.getByRole('button');
         expect(setToNowButton).toBeInTheDocument();
@@ -13,7 +13,7 @@ describe('SetToNowButton', () => {
     });
 
     it('calls the onClick prop when clicking on the button', () => {
-        const onClickSpy = jest.fn();
+        const onClickSpy = vi.fn();
         render(<SetToNowButton onClick={onClickSpy} />);
 
         userEvent.click(screen.getByRole('button'));

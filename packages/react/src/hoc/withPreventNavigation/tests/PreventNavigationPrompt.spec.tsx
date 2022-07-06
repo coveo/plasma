@@ -30,7 +30,7 @@ describe('Modal with Prevent Navigation', () => {
     });
 
     it('should call onStay when the user close the modal', () => {
-        const spy = jest.fn();
+        const spy = vi.fn();
         shallowWithProps({onStay: spy});
 
         component.find(ModalComposite).prop('onClose')();
@@ -39,7 +39,7 @@ describe('Modal with Prevent Navigation', () => {
     });
 
     it('should call onStay when the user click on the stay button of the footer', () => {
-        const spy = jest.fn();
+        const spy = vi.fn();
         shallowWithProps({onStay: spy});
 
         const footer = shallow(
@@ -51,7 +51,7 @@ describe('Modal with Prevent Navigation', () => {
     });
 
     it('should call onClose when the user click on the exit button of the footer', () => {
-        const spy = jest.fn();
+        const spy = vi.fn();
         shallowWithProps({onClose: spy});
 
         const footer = shallow(

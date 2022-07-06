@@ -38,7 +38,7 @@ describe('CollapsibleContainerConnected', () => {
     });
 
     it('calls the onClick event when the collapsible is clicked if the prop is set', () => {
-        const functionToBeCalled = jest.fn();
+        const functionToBeCalled = vi.fn();
 
         render(
             <CollapsibleContainerConnected id="🆔" title="the title" onClick={functionToBeCalled}>

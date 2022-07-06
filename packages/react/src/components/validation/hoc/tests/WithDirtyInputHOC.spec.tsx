@@ -113,7 +113,7 @@ describe('WithDirtyInputHOC', () => {
             });
 
             it('should call the original validate function and return the same value', () => {
-                const validateSpy = jest.fn().mockReturnValue(true);
+                const validateSpy = vi.fn().mockReturnValue(true);
                 inputWrapper = shallowWithStore<typeof InputWithHOC>(
                     <InputWithHOC {...INPUT_PROPS} validate={validateSpy} />,
                     store

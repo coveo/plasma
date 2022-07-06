@@ -15,7 +15,7 @@ describe('Option picker', () => {
                 value: () => 'optionValue',
             },
             isActive: false,
-            onClick: jest.fn(),
+            onClick: vi.fn(),
         };
     });
 
@@ -49,7 +49,7 @@ describe('Option picker', () => {
                 <Option
                     option={{label: 'Option 1', value: () => 'optionValue', disabled: true}}
                     isActive={false}
-                    onClick={() => jest.fn()}
+                    onClick={() => vi.fn()}
                 />
             );
             expect(screen.getByRole('button')).toBeDisabled();

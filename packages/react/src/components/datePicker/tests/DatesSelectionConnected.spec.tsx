@@ -35,7 +35,7 @@ describe('Date picker', () => {
         };
 
         beforeEach(() => {
-            jest.useFakeTimers();
+            vi.useFakeTimers();
             store = TestUtils.buildStore();
 
             mountComponent();
@@ -43,7 +43,7 @@ describe('Date picker', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            jest.clearAllTimers();
+            vi.clearAllTimers();
         });
 
         it('should get an id as a prop', () => {

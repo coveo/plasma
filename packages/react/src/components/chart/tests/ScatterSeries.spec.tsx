@@ -6,11 +6,11 @@ import {ChartUtils} from '../ChartUtils';
 import {ScatterSeries} from '../ScatterSeries';
 import {XYChartContextMock} from './XYChartContextMock';
 
-jest.mock('react', () => {
-    const originReact = jest.requireActual('react');
+vi.mock('react', () => {
+    const originReact = vi.requireActual('react');
     return {
         ...originReact,
-        useContext: jest.fn(),
+        useContext: vi.fn(),
     };
 });
 

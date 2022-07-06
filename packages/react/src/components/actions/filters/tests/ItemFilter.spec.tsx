@@ -11,7 +11,7 @@ describe('Item filter', () => {
         ITEM_FILTER_BASIC_PROPS = {
             label: 'Item filter',
             item: '',
-            onClear: jest.fn(),
+            onClear: vi.fn(),
         };
     });
 

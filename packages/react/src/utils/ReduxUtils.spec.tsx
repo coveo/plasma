@@ -7,7 +7,7 @@ describe('ReduxUtils', () => {
             b: false,
         };
         const expectedDispatchProps = {
-            c: jest.fn(),
+            c: vi.fn(),
         };
         const expectedOwnProps = {
             d: 'd',

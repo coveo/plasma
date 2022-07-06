@@ -49,8 +49,8 @@ describe('Table HOC', () => {
         });
 
         it('should not throw when rendering the HOC component', () => {
-            const onUpdateUrlSpy = jest.fn();
-            const renderBodySpy = jest.fn();
+            const onUpdateUrlSpy = vi.fn();
+            const renderBodySpy = vi.fn();
 
             expect(() => {
                 const TableWithUrlState = tableWithUrlState(TableHOC);
@@ -70,9 +70,9 @@ describe('Table HOC', () => {
         });
 
         it('should call the "onUpdateUrl" prop with the query string representing the current state when the table needs to update', () => {
-            jest.useFakeTimers();
-            const onUpdateUrlSpy = jest.fn();
-            const renderBodySpy = jest.fn();
+            vi.useFakeTimers();
+            const onUpdateUrlSpy = vi.fn();
+            const renderBodySpy = vi.fn();
             const TableWithUrlState = tableWithUrlState(TableHOC);
             table = shallowWithStore(
                 <TableWithUrlState id={'table'} data={[]} onUpdateUrl={onUpdateUrlSpy} renderBody={renderBodySpy} />,
@@ -84,7 +84,7 @@ describe('Table HOC', () => {
             expect(onUpdateUrlSpy).not.toHaveBeenCalled();
 
             table.prop('onUpdate')();
-            jest.runAllTimers();
+            vi.runAllTimers();
 
             expect(onUpdateUrlSpy).toHaveBeenCalledTimes(1);
             expect(onUpdateUrlSpy).toHaveBeenCalledWith('');
@@ -94,7 +94,7 @@ describe('Table HOC', () => {
             const TableWithUrlState = compose(tableWithUrlState, tableWithPagination())(TableHOC);
 
             it('should set the current page number in the url using "page" as param name', () => {
-                jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
+                vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
                     pageNb: 2,
                 });
 
@@ -104,7 +104,7 @@ describe('Table HOC', () => {
             });
 
             it('should set the current perPage number in the url using "pageSize" as param name', () => {
-                jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
+                vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
                     perPage: 5,
                 });
 
@@ -114,7 +114,7 @@ describe('Table HOC', () => {
             });
 
             it('should dispatch an action to set the page number on mount if "page" param is specified in the url', () => {
-                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({page: 4});
+                vi.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({page: 4});
                 table = shallowWithStore(<TableWithUrlState id="🦋" />, store)
                     .dive()
                     .dive();
@@ -123,7 +123,7 @@ describe('Table HOC', () => {
             });
 
             it('should dispatch an action to set the page size on mount if "pageSize" param is specified in the url', () => {
-                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({pageSize: 3});
+                vi.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({pageSize: 3});
                 table = shallowWithStore(<TableWithUrlState id="💎" />, store)
                     .dive()
                     .dive();
@@ -137,7 +137,7 @@ describe('Table HOC', () => {
             const TableWithUrlState = compose(tableWithUrlState, tableWithSort())(TableHOC);
 
             it('should set the current sorted column key in the url using "sortBy" as param name', () => {
-                jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
+                vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
                     sortKey: 'bacon',
                 });
 
@@ -147,7 +147,7 @@ describe('Table HOC', () => {
             });
 
             it('should set the current sort direction in the url using "order" as param name', () => {
-                jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
+                vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
                     sortAscending: true,
                 });
 
@@ -157,7 +157,7 @@ describe('Table HOC', () => {
             });
 
             it('should dispatch an action to set the sort key on mount if "sortBy" and "order" params are specified in the url', () => {
-                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({sortBy: '🔥', order: 'desc'});
+                vi.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({sortBy: '🔥', order: 'desc'});
                 table = shallowWithStore(<TableWithUrlState id="🦋" />, store)
                     .dive()
                     .dive();
@@ -171,7 +171,7 @@ describe('Table HOC', () => {
 
             it('should set the current filter text in the url using "q" as param name', () => {
                 const filterText = 'not so black sheep 🐑';
-                jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
+                vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
                     filter: filterText,
                 });
 
@@ -181,7 +181,7 @@ describe('Table HOC', () => {
             });
 
             it('should dispatch an action to set the filter value on mount if "q" param is specified in the url', () => {
-                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({q: '💧'});
+                vi.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({q: '💧'});
                 table = shallowWithStore(<TableWithUrlState id="🎠" />, store)
                     .dive()
                     .dive();
@@ -196,7 +196,7 @@ describe('Table HOC', () => {
             const TableWithUrlState = compose(tableWithUrlState, tableWithDatePicker())(TableHOC);
 
             it('should set the current lower date limit in the url using "from" as param name', () => {
-                jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
+                vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
                     dateLimits: [lowerLimit],
                 });
 
@@ -206,7 +206,7 @@ describe('Table HOC', () => {
             });
 
             it('should set the current upper date limit in the url using "to" as param name', () => {
-                jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
+                vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
                     dateLimits: [null, upperLimit],
                 });
 
@@ -216,7 +216,7 @@ describe('Table HOC', () => {
             });
 
             it('should dispatch an action to set the lower date limit on mount if "from" param is specified in the url', () => {
-                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({from: lowerLimit.toISOString()});
+                vi.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({from: lowerLimit.toISOString()});
                 table = shallowWithStore(<TableWithUrlState id="🏦" />, store)
                     .dive()
                     .dive();
@@ -229,7 +229,7 @@ describe('Table HOC', () => {
             });
 
             it('should dispatch an action to set the upper date limit on mount if "to" param is specified in the url', () => {
-                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({to: upperLimit.toISOString()});
+                vi.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({to: upperLimit.toISOString()});
                 table = shallowWithStore(<TableWithUrlState id="🏥" />, store)
                     .dive()
                     .dive();
@@ -256,7 +256,7 @@ describe('Table HOC', () => {
             )(TableHOC);
 
             it('should set the selected predicate values in the url using the each predicate id as param name', () => {
-                jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
+                vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValue({
                     predicates: [
                         {id: 'size', value: '12 inches'},
                         {id: 'topping', value: 'pepperoni'},
@@ -270,8 +270,8 @@ describe('Table HOC', () => {
             });
 
             it('should dispatch an action to set each selected predicate on mount if its id is specified in the url', () => {
-                jest.spyOn(TableHOCUtils, 'getPredicateIds').mockReturnValue(['size', 'topping']);
-                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({size: '12 inches', topping: 'pepperoni'});
+                vi.spyOn(TableHOCUtils, 'getPredicateIds').mockReturnValue(['size', 'topping']);
+                vi.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({size: '12 inches', topping: 'pepperoni'});
                 table = shallowWithStore(<TableWithUrlState id="🍕" />, store)
                     .dive()
                     .dive();

@@ -22,7 +22,7 @@ describe('ConfirmationModalProvider', () => {
                             classes={['mod-slide-in-bottom', 'mod-big', 'mod-stick-bottom']}
                             modalBodyChildren="Hakuna matata"
                             modalFooterChildren={
-                                <button className="btn" onClick={() => promptBefore(jest.fn())}>
+                                <button className="btn" onClick={() => promptBefore(vi.fn())}>
                                     prompt confirmation modal
                                 </button>
                             }
@@ -55,7 +55,7 @@ describe('ConfirmationModalProvider', () => {
                             classes={['mod-slide-in-bottom', 'mod-big', 'mod-stick-bottom']}
                             modalBodyChildren="Hakuna matata"
                             modalFooterChildren={
-                                <button className="btn" onClick={() => promptBefore(jest.fn())}>
+                                <button className="btn" onClick={() => promptBefore(vi.fn())}>
                                     prompt confirmation modal
                                 </button>
                             }

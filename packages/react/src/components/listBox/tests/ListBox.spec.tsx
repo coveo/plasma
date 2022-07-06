@@ -8,7 +8,7 @@ import {IListBoxProps, ListBox} from '../ListBox';
 describe('ListBox', () => {
     let listBoxComponent: ReactWrapper<IListBoxProps, any>;
 
-    const spyOnOptionClick = jest.fn();
+    const spyOnOptionClick = vi.fn();
 
     const defaultProps: IListBoxProps = {
         id: '🍄',
@@ -64,7 +64,7 @@ describe('ListBox', () => {
         });
 
         it('call onRender on mount', () => {
-            const onRenderSpy = jest.fn();
+            const onRenderSpy = vi.fn();
             renderListBox({
                 onRender: onRenderSpy,
             });
@@ -73,7 +73,7 @@ describe('ListBox', () => {
         });
 
         it('call onDestroy on unmount', () => {
-            const onDestroySpy = jest.fn();
+            const onDestroySpy = vi.fn();
             renderListBox({
                 onDestroy: onDestroySpy,
             });
@@ -94,7 +94,7 @@ describe('ListBox', () => {
         });
 
         it('render items with events on onOptionClick', () => {
-            const onOptionClick: jest.Mock<any, any> = jest.fn();
+            const onOptionClick: vi.Mock<any, any> = vi.fn();
             renderListBox({
                 onOptionClick,
             });
@@ -105,7 +105,7 @@ describe('ListBox', () => {
         });
 
         it('not trigger onOptionClick if the clicked item is disabled', () => {
-            const onOptionClick: jest.Mock<any, any> = jest.fn();
+            const onOptionClick: vi.Mock<any, any> = vi.fn();
             renderListBox({
                 items: [{value: 'test', disabled: true}],
                 onOptionClick,

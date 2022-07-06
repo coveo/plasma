@@ -99,7 +99,7 @@ describe('Autocomplete', () => {
         });
 
         it('should filter the visible values with custom function', () => {
-            const spy = jest.fn(() => false);
+            const spy = vi.fn(() => false);
             mountAutocomplete([{value: 'a'}, {value: 'b'}], {
                 // Take the value twice and make it uppercase
                 matchFilter: spy,

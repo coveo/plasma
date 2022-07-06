@@ -64,7 +64,7 @@ describe('Table HOC', () => {
             });
 
             it('should call onUpdate when the filter changes', () => {
-                const updateSpy = jest.fn();
+                const updateSpy = vi.fn();
                 const filterText = 'b';
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} onUpdate={updateSpy} />,
@@ -81,7 +81,7 @@ describe('Table HOC', () => {
             });
 
             it('should not call onUpdate when the filter does not changes', () => {
-                const updateSpy = jest.fn();
+                const updateSpy = vi.fn();
                 const filterText = 'b';
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} onUpdate={updateSpy} />,
@@ -98,7 +98,7 @@ describe('Table HOC', () => {
             });
 
             it('should render a blankSlate as renderBody if the data is empty and the filter is not empty', () => {
-                jest.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValueOnce(true);
+                vi.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValueOnce(true);
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} data={null} />,
                     getStateWithFilter('filterText')

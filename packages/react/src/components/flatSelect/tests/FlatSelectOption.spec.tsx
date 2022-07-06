@@ -37,7 +37,7 @@ describe('FlatSelect', () => {
         it('should call prop onClick when specified on click', () => {
             renderFlatSelectOption();
 
-            const clickSpy = jest.fn();
+            const clickSpy = vi.fn();
             const option = flatSelect.find('a');
 
             flatSelect.setProps({onClick: clickSpy}).mount();

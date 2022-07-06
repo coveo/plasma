@@ -86,7 +86,7 @@ describe('FlatSelect', () => {
     });
 
     it('should call "onClick" prop when changing selection', () => {
-        const onClickSpy = jest.fn();
+        const onClickSpy = vi.fn();
         const component = shallowWithState(<FlatSelectConnected {...props} onClick={onClickSpy} />, {})
             .dive()
             .dive();

@@ -24,7 +24,7 @@ describe('SelectWithInfiniteScroll', () => {
     });
 
     it('calls the next prop when the user scrolls to the bottom of the list', () => {
-        const nextSpy = jest.fn();
+        const nextSpy = vi.fn();
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={5000} items={items} />);
@@ -40,7 +40,7 @@ describe('SelectWithInfiniteScroll', () => {
     });
 
     it('does not call the next prop when there is no more items and the user scrolls to the bottom of the list', () => {
-        const nextSpy = jest.fn();
+        const nextSpy = vi.fn();
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={3} items={items} />);

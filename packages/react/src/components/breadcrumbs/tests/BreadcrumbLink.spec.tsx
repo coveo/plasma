@@ -60,7 +60,7 @@ describe('<BreadcrumbLink/>', () => {
                     stopImmediatePropagation: _.noop,
                 },
             };
-            const spy = jest.fn(() => false);
+            const spy = vi.fn(() => false);
             renderBreadcrumbLink({...defaultProps, onClick: spy});
             breadcrumbLinkComponent
                 .find('a')
@@ -71,8 +71,8 @@ describe('<BreadcrumbLink/>', () => {
         });
 
         it('should return true if the onClick props return true', () => {
-            const stopPropagationSpy: jest.Mock<any, any> = jest.fn();
-            const spy: jest.SpyInstance = jest.spyOn<any, string>(BreadcrumbLink.prototype, 'handleOnClick');
+            const stopPropagationSpy: vi.Mock<any, any> = vi.fn();
+            const spy: vi.SpyInstance = vi.spyOn<any, string>(BreadcrumbLink.prototype, 'handleOnClick');
             renderBreadcrumbLink({...defaultProps, onClick: () => true});
             breadcrumbLinkComponent.find('a.link').simulate('click', {
                 stopPropagation: stopPropagationSpy,

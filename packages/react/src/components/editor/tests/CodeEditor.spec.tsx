@@ -8,7 +8,7 @@ import {CodeMirrorModes} from '../EditorConstants';
 
 describe('CodeEditor', () => {
     beforeEach(() => {
-        jest.spyOn(CollapsibleSelectors, 'isExpanded').mockReturnValue(false);
+        vi.spyOn(CollapsibleSelectors, 'isExpanded').mockReturnValue(false);
     });
 
     it('should get the value as a prop', async () => {
@@ -40,7 +40,7 @@ describe('CodeEditor', () => {
     });
 
     it('should call onChange prop when its value prop changes', async () => {
-        const onChangeSpy = jest.fn();
+        const onChangeSpy = vi.fn();
         const expectedValue: string = 'the expected value';
 
         render(<CodeEditor id="anId" value="" mode={CodeMirrorModes.Python} onChange={onChangeSpy} />);
@@ -90,7 +90,7 @@ describe('CodeEditor', () => {
     });
 
     it('updates the value in the store on mount and on change if mounted with an id', async () => {
-        const updateSpy = jest.spyOn(CodeEditorActions, 'updateValue');
+        const updateSpy = vi.spyOn(CodeEditorActions, 'updateValue');
         render(<CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} />);
 
         await screen.findByRole('textbox');
@@ -104,7 +104,7 @@ describe('CodeEditor', () => {
     });
 
     it('removes the code editor from the store on unmount if mounted with an id', () => {
-        const removeSpy = jest.spyOn(CodeEditorActions, 'remove');
+        const removeSpy = vi.spyOn(CodeEditorActions, 'remove');
         const {unmount} = render(<CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} />);
 
         unmount();

@@ -10,7 +10,7 @@ describe('NavigationPerPageSelect', () => {
         basicNavigationPerPageSelectProps = {
             perPageNb: 20,
             selected: false,
-            onPerPageClick: jest.fn(),
+            onPerPageClick: vi.fn(),
         };
     });
 

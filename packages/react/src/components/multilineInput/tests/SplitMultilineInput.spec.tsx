@@ -101,7 +101,7 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should call removeLine with the index of the input when clicking the delete input action', () => {
-            const removeLineSpy: jest.SpyInstance = jest.spyOn<any, string>(splitMultilineInputInstance, 'removeLine');
+            const removeLineSpy: vi.SpyInstance = vi.spyOn<any, string>(splitMultilineInputInstance, 'removeLine');
             splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]})).update();
 
             splitMultilineInput.find(DeleteInputAction).simulate('click');
@@ -112,7 +112,7 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should call changeValue when an existing input is changed', () => {
-            const changeValueSpy: jest.SpyInstance = jest.spyOn<any, string>(
+            const changeValueSpy: vi.SpyInstance = vi.spyOn<any, string>(
                 splitMultilineInputInstance,
                 'changeValue'
             );
@@ -132,7 +132,7 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should call addLine when clicking the <AddInputAction />', () => {
-            const addLineSpy: jest.SpyInstance = jest.spyOn<any, string>(splitMultilineInputInstance, 'addLine');
+            const addLineSpy: vi.SpyInstance = vi.spyOn<any, string>(splitMultilineInputInstance, 'addLine');
             splitMultilineInput.find(AddInputAction).simulate('click');
 
             expect(addLineSpy).toHaveBeenCalledTimes(1);
@@ -194,7 +194,7 @@ describe('SplitMultilineInput', () => {
         it('should add the new value to the state when calling addLine and there is no error', () => {
             const expectedValue: string = 'new value';
 
-            jest.spyOn(Input.prototype, 'getInnerValue').mockReturnValue(expectedValue);
+            vi.spyOn(Input.prototype, 'getInnerValue').mockReturnValue(expectedValue);
 
             splitMultilineInput.find(AddInputAction).simulate('click');
 
@@ -204,7 +204,7 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should reset the inputs of the line to add if the value was successfully added', () => {
-            const resetSpy = jest.spyOn(Input.prototype, 'reset');
+            const resetSpy = vi.spyOn(Input.prototype, 'reset');
 
             splitMultilineInput.find(AddInputAction).simulate('click');
 
@@ -229,7 +229,7 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should not reset the inputs if an input is in error', () => {
-            const resetSpy: jest.SpyInstance = jest.spyOn(Input.prototype, 'reset');
+            const resetSpy: vi.SpyInstance = vi.spyOn(Input.prototype, 'reset');
             const newProps: ISplitMultilineInputProps = _.extend({}, basicProps, {
                 inputs: [
                     {
@@ -262,7 +262,7 @@ describe('SplitMultilineInput', () => {
             const unexpectedValue: string = 'the value has been changed!';
             const valueId: string = basicProps.inputs[0].id;
             const input: any = {
-                validate: jest.fn(),
+                validate: vi.fn(),
             };
 
             splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]}));
@@ -275,7 +275,7 @@ describe('SplitMultilineInput', () => {
 
         it('should call onChange if it is set as a prop when calling handleChange', () => {
             const newProps: ISplitMultilineInputProps = _.extend({}, basicProps, {
-                onChange: jest.fn(),
+                onChange: vi.fn(),
             });
 
             expect(() => (splitMultilineInputInstance as any).handleChange()).not.toThrow();

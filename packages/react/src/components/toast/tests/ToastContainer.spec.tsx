@@ -39,7 +39,7 @@ describe('Toasts', () => {
         });
 
         it('should call prop onRender on mounting if set', () => {
-            const renderSpy = jest.fn();
+            const renderSpy = vi.fn();
             const newToastAttributes = _.extend({}, basicProps, {onRender: renderSpy});
 
             component.unmount();
@@ -49,7 +49,7 @@ describe('Toasts', () => {
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy = jest.fn();
+            const destroySpy = vi.fn();
             const newToastAttributes = _.extend({}, basicProps, {onDestroy: destroySpy});
 
             expect(() => instance.componentWillUnmount()).not.toThrow();
@@ -73,7 +73,7 @@ describe('Toasts', () => {
         });
 
         it('should be call prop onCloseToast when a toast is closed', () => {
-            const onCloseToast = jest.fn();
+            const onCloseToast = vi.fn();
             let newToastAttributes = _.extend({}, basicProps, {toasts: [{id: 'toast-id', title: 'some toast title'}]});
 
             component.setProps(newToastAttributes).mount();

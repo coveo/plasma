@@ -69,7 +69,7 @@ describe('MultilineInput', () => {
         });
 
         it('should call prop onChange with new value when add input changes', () => {
-            const changeSpy = jest.fn();
+            const changeSpy = vi.fn();
             multilineInput.setProps({onChange: changeSpy, values: []});
             multilineInput.mount();
 
@@ -84,7 +84,7 @@ describe('MultilineInput', () => {
         });
 
         it('should call prop onChange with updated value when delete input changes', () => {
-            const changeSpy = jest.fn();
+            const changeSpy = vi.fn();
             multilineInput.setProps({onChange: changeSpy, values: [multilineInputValue]});
             multilineInput.mount();
 
@@ -99,7 +99,7 @@ describe('MultilineInput', () => {
         });
 
         it('should call prop onChange with removed value when delete input changes for something empty', () => {
-            const changeSpy = jest.fn();
+            const changeSpy = vi.fn();
             multilineInput.setProps({onChange: changeSpy, values: [multilineInputValue]});
             multilineInput.mount();
 

@@ -149,7 +149,7 @@ describe('<InputConnected />', () => {
 
     describe('onChange', () => {
         it('should call changeDirtyState if set as props', () => {
-            const changeDirtyStateSpy = jest.fn();
+            const changeDirtyStateSpy = vi.fn();
             const wrapperInputConnected: ShallowWrapper<IInputProps> = shallowWithState(
                 <InputConnected changeDirtyState={changeDirtyStateSpy} />,
                 {}

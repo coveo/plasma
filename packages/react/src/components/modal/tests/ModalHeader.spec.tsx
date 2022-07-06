@@ -33,37 +33,37 @@ describe('ModalHeader', () => {
         });
 
         it('should call prop onClose when modal x clicked and prop is set and last opened is not set', () => {
-            jest.useFakeTimers();
-            const closeSpy = jest.fn();
+            vi.useFakeTimers();
+            const closeSpy = vi.fn();
 
             modal.setProps(_.extend({}, basicProps, {onClose: closeSpy}));
             modal.mount();
-            jest.advanceTimersByTime(5);
+            vi.advanceTimersByTime(5);
 
             const input = modal.find('.small-close');
             input.simulate('click');
 
             expect(closeSpy.mock.calls.length).toBe(1);
-            jest.clearAllTimers();
+            vi.clearAllTimers();
         });
 
         it('should call prop onClose when modal x clicked and modal is last opened', () => {
-            jest.useFakeTimers();
-            const closeSpy = jest.fn();
+            vi.useFakeTimers();
+            const closeSpy = vi.fn();
 
             modal.setProps(_.extend({}, basicProps, {lastOpened: true, onClose: closeSpy}));
             modal.mount();
-            jest.advanceTimersByTime(5);
+            vi.advanceTimersByTime(5);
 
             const input = modal.find('.small-close');
             input.simulate('click');
 
             expect(closeSpy.mock.calls.length).toBe(1);
-            jest.clearAllTimers();
+            vi.clearAllTimers();
         });
 
         it('should not call prop onClose when modal x clicked and modal is not last opened', () => {
-            const closeSpy = jest.fn();
+            const closeSpy = vi.fn();
 
             modal.setProps(_.extend({}, basicProps, {lastOpened: false, onClose: closeSpy}));
             modal.mount();

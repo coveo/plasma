@@ -31,7 +31,7 @@ describe('<Loading />', () => {
     });
 
     it('should call onRender if prop is set when mounting', () => {
-        const onRenderSpy = jest.fn();
+        const onRenderSpy = vi.fn();
         const loading: ReactWrapper<ILoadingProps, any> = mount(<Loading onRender={onRenderSpy} />, {
             attachTo: document.getElementById('App'),
         });
@@ -41,7 +41,7 @@ describe('<Loading />', () => {
     });
 
     it('should call onDestroy if prop is set when unmounting', () => {
-        const onDestroySpy = jest.fn();
+        const onDestroySpy = vi.fn();
         const loading: ReactWrapper<ILoadingProps, any> = mount(<Loading onDestroy={onDestroySpy} />, {
             attachTo: document.getElementById('App'),
         });

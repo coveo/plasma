@@ -14,7 +14,7 @@ describe('<FilterBox />', () => {
     });
 
     it('calls onRender on render if set', () => {
-        const renderSpy = jest.fn();
+        const renderSpy = vi.fn();
 
         render(<FilterBox onRender={renderSpy} />);
 
@@ -22,7 +22,7 @@ describe('<FilterBox />', () => {
     });
 
     it('calls onDestroy on unmount if set', () => {
-        const destroySpy = jest.fn();
+        const destroySpy = vi.fn();
 
         const {unmount} = render(<FilterBox onDestroy={destroySpy} />);
 
@@ -32,7 +32,7 @@ describe('<FilterBox />', () => {
     });
 
     it('calls onFilter when the filter input value has changed and prop is set', () => {
-        const filterSpy = jest.fn();
+        const filterSpy = vi.fn();
 
         render(<FilterBox onFilter={filterSpy} />);
         userEvent.click(screen.getByRole('textbox'));
@@ -47,7 +47,7 @@ describe('<FilterBox />', () => {
     });
 
     it('calls onFilterCallback when the filter input value has changed and prop is set', () => {
-        const onFilterCallbackSpy = jest.fn();
+        const onFilterCallbackSpy = vi.fn();
 
         render(<FilterBox onFilterCallback={onFilterCallbackSpy} />);
         userEvent.click(screen.getByRole('textbox'));
@@ -61,7 +61,7 @@ describe('<FilterBox />', () => {
     });
 
     it('calls onBlur when the input loose focus', () => {
-        const onBlur = jest.fn();
+        const onBlur = vi.fn();
 
         render(<FilterBox onBlur={onBlur} />);
 
@@ -73,7 +73,7 @@ describe('<FilterBox />', () => {
     });
 
     it('calls onKeyDown when the input get a key down event', () => {
-        const onKeyDownSpy = jest.fn();
+        const onKeyDownSpy = vi.fn();
 
         render(<FilterBox onKeyDown={onKeyDownSpy} />);
         userEvent.click(screen.getByRole('textbox'));
@@ -83,7 +83,7 @@ describe('<FilterBox />', () => {
     });
 
     it('calls onKeyUp when the input get a key up event', () => {
-        const onKeyUpSpy = jest.fn();
+        const onKeyUpSpy = vi.fn();
 
         render(<FilterBox onKeyUp={onKeyUpSpy} />);
         userEvent.click(screen.getByRole('textbox'));
@@ -93,7 +93,7 @@ describe('<FilterBox />', () => {
     });
 
     it('calls placeCursorAtEndOfInputValue when a focus event is triggered on the filter box', () => {
-        const placeCursorAtEndOfInputValueSpy = jest.spyOn(FilterBox.prototype, 'placeCursorAtEndOfInputValue');
+        const placeCursorAtEndOfInputValueSpy = vi.spyOn(FilterBox.prototype, 'placeCursorAtEndOfInputValue');
 
         render(<FilterBox />);
 

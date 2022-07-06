@@ -253,7 +253,7 @@ describe('<Slider/>', () => {
         });
 
         it('should call the onChange callBack function on state change', () => {
-            const callBackSpy = jest.fn();
+            const callBackSpy = vi.fn();
             mountedSlider = mount(
                 <Provider store={store}>
                     <Slider

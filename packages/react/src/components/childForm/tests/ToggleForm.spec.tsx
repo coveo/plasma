@@ -58,7 +58,7 @@ describe('ToggleForm', () => {
         });
 
         it('should call onClick handler when parent control is clicked and prop is set', () => {
-            const clickSpy = jest.fn();
+            const clickSpy = vi.fn();
             const parentControlInnerInput = toggleForm.find('.radio-option').first();
 
             toggleForm.setProps({onClick: clickSpy});

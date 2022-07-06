@@ -13,13 +13,13 @@ describe('<ChartContainer />', () => {
     });
 
     it('should re-render on window resize', () => {
-        jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({width: 10, height: 50} as DOMRect);
-        jest.spyOn(Element.prototype, 'querySelectorAll').mockReturnValue(([{style: {}}] as unknown) as NodeListOf<
+        vi.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({width: 10, height: 50} as DOMRect);
+        vi.spyOn(Element.prototype, 'querySelectorAll').mockReturnValue(([{style: {}}] as unknown) as NodeListOf<
             SVGSVGElement
         >);
-        jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb: any) => cb());
+        vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb: any) => cb());
 
-        const renderSpy = jest.fn(() => null);
+        const renderSpy = vi.fn(() => null);
 
         const component = mount(<ChartContainer renderChart={renderSpy} />);
 

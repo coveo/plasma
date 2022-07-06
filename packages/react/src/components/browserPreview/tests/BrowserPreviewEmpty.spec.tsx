@@ -7,7 +7,7 @@ import {BrowserPreviewEmpty, BrowserPreviewEmptyProps} from '../BrowserPreviewEm
 describe('BrowserPreviewEmpty', () => {
     let component: ReactWrapper<BrowserPreviewEmptyProps>;
     const defaultProps: BrowserPreviewEmptyProps = {
-        onClick: jest.fn(),
+        onClick: vi.fn(),
     };
 
     const mountWithProps = (props: BrowserPreviewEmptyProps, children?: ReactNode) => {

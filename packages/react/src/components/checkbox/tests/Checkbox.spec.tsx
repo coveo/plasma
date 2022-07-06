@@ -21,7 +21,7 @@ describe('Checkbox', () => {
         };
 
         it('should call prop onClick when specified on click', () => {
-            const clickSpy = jest.fn();
+            const clickSpy = vi.fn();
             renderCheckbox({
                 onClick: clickSpy,
             });
@@ -33,7 +33,7 @@ describe('Checkbox', () => {
         });
 
         it('should not call prop onClick when specified on click if disabled', () => {
-            const clickSpy = jest.fn();
+            const clickSpy = vi.fn();
             renderCheckbox({
                 onClick: clickSpy,
                 disabled: true,
@@ -46,7 +46,7 @@ describe('Checkbox', () => {
         });
 
         it('should call prop handleOnClick when specified on click', () => {
-            const handleOnClickSpy = jest.fn();
+            const handleOnClickSpy = vi.fn();
             renderCheckbox({
                 handleOnClick: handleOnClickSpy,
             });
@@ -59,7 +59,7 @@ describe('Checkbox', () => {
         });
 
         it('should not call prop handleOnClick when specified on click if disabled', () => {
-            const handleOnClickSpy = jest.fn();
+            const handleOnClickSpy = vi.fn();
             renderCheckbox({
                 handleOnClick: handleOnClickSpy,
                 disabled: true,

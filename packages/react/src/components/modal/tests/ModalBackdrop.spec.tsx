@@ -23,7 +23,7 @@ describe('ModalBackdrop', () => {
 
         afterEach(() => {
             removeTestAppContainer();
-            jest.resetAllMocks();
+            vi.resetAllMocks();
         });
 
         it('should set "closed" class when display prop is false or not specified', () => {
@@ -60,7 +60,7 @@ describe('ModalBackdrop', () => {
         });
 
         it('should call onClick on click when onClick prop is set', () => {
-            const clickSpy = jest.fn();
+            const clickSpy = vi.fn();
 
             modalBackdrop.simulate('click');
 
@@ -74,7 +74,7 @@ describe('ModalBackdrop', () => {
         });
 
         it('should not call handleClick when user hits escape and the modal is not the last one opened', () => {
-            const handleClickSpy = jest.spyOn<any, string>(modalBackdrop.instance(), 'handleClick');
+            const handleClickSpy = vi.spyOn<any, string>(modalBackdrop.instance(), 'handleClick');
 
             modalBackdrop.setProps({lastOpened: false});
 
@@ -87,7 +87,7 @@ describe('ModalBackdrop', () => {
         });
 
         it('should not call handleClick when user hits another key', () => {
-            const handleClickSpy = jest.spyOn<any, string>(modalBackdrop.instance(), 'handleClick');
+            const handleClickSpy = vi.spyOn<any, string>(modalBackdrop.instance(), 'handleClick');
 
             modalBackdrop.setProps({lastOpened: true});
 
@@ -100,7 +100,7 @@ describe('ModalBackdrop', () => {
         });
 
         it('should not call handleClick when user hits escape but the event was handled somewhere else', () => {
-            const handleClickSpy = jest.spyOn<any, string>(modalBackdrop.instance(), 'handleClick');
+            const handleClickSpy = vi.spyOn<any, string>(modalBackdrop.instance(), 'handleClick');
 
             modalBackdrop.setProps({lastOpened: true});
 

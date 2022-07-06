@@ -95,7 +95,7 @@ describe('Table HOC', () => {
             });
 
             it('should call onUpdate when the predicate changes', () => {
-                const updateSpy = jest.fn();
+                const updateSpy = vi.fn();
                 const predicate = predicateValues[1].value;
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
@@ -112,7 +112,7 @@ describe('Table HOC', () => {
             });
 
             it('should not call onUpdate when the predicate does not changes', () => {
-                const updateSpy = jest.fn();
+                const updateSpy = vi.fn();
                 const predicate = predicateValues[1].value;
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,

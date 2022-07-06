@@ -40,7 +40,7 @@ describe('MultiSelectDropdownSearch', () => {
                 renderMultiSelectDropdownSearch(props);
 
                 const filterText: string = 'customValue';
-                const onCustomOptionClick = jest.fn();
+                const onCustomOptionClick = vi.fn();
                 multiSelectDropdownSearch.setProps({
                     filterText,
                     onCustomOptionClick,
@@ -82,7 +82,7 @@ describe('MultiSelectDropdownSearch', () => {
             it('should call onKeyDownFilterBox props on key down in input', () => {
                 renderMultiSelectDropdownSearch(props);
 
-                const onKeyDownFilterBox = jest.fn();
+                const onKeyDownFilterBox = vi.fn();
 
                 multiSelectDropdownSearch.setProps({
                     onKeyDownFilterBox,
@@ -96,7 +96,7 @@ describe('MultiSelectDropdownSearch', () => {
             it('should call onBlur props on blur in input', () => {
                 renderMultiSelectDropdownSearch(props);
 
-                const onBlur = jest.fn();
+                const onBlur = vi.fn();
 
                 multiSelectDropdownSearch.setProps({
                     onBlur,

@@ -79,7 +79,7 @@ describe('TableSelectors', () => {
 
     describe('getIsTrulyEmpty', () => {
         it('should return true if the data is empty, there is no filter, predicate or date limit applied', () => {
-            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce({});
+            vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce({});
 
             expect(TableSelectors.getIsTrulyEmpty({} as PlasmaState, {id: 'table-id', data: []})).toBe(true);
         });
@@ -88,7 +88,7 @@ describe('TableSelectors', () => {
             const tableState: ITableHOCCompositeState = {
                 dateLimits: [null, null],
             };
-            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
+            vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
 
             expect(TableSelectors.getIsTrulyEmpty({} as PlasmaState, {id: 'table-id', data: []})).toBe(true);
         });
@@ -97,7 +97,7 @@ describe('TableSelectors', () => {
             const tableState: ITableHOCCompositeState = {
                 filter: 'desk',
             };
-            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
+            vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
 
             expect(TableSelectors.getIsTrulyEmpty({} as PlasmaState, {id: 'table-id', data: []})).toBe(false);
         });
@@ -106,7 +106,7 @@ describe('TableSelectors', () => {
             const tableState: ITableHOCCompositeState = {
                 predicates: [{id: 'type', value: 'a'}],
             };
-            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
+            vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
 
             expect(TableSelectors.getIsTrulyEmpty({} as PlasmaState, {id: 'table-id', data: []})).toBe(false);
         });
@@ -116,7 +116,7 @@ describe('TableSelectors', () => {
             const tableState: ITableHOCCompositeState = {
                 dateLimits: [now],
             };
-            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
+            vi.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
 
             expect(TableSelectors.getIsTrulyEmpty({} as PlasmaState, {id: 'table-id', data: []})).toBe(false);
         });

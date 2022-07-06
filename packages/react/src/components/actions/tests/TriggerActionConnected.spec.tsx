@@ -22,7 +22,7 @@ describe('<TriggerActionConnected />', () => {
     beforeAll(() => {
         action = {
             name: 'action',
-            trigger: jest.fn(),
+            trigger: vi.fn(),
             enabled: true,
         };
     });
@@ -69,7 +69,7 @@ describe('<TriggerActionConnected />', () => {
 
     it('should add a prompt onTriggerConfirm', () => {
         expect(store.getState().prompts.length).toBe(0);
-        triggerAction.props().onTriggerConfirm(jest.fn(), {}, 'someClass');
+        triggerAction.props().onTriggerConfirm(vi.fn(), {}, 'someClass');
 
         expect(store.getState().prompts.length).toBe(1);
     });
@@ -77,7 +77,7 @@ describe('<TriggerActionConnected />', () => {
     it('should remove the prompt onConfirm', () => {
         store.dispatch(
             addPrompt(parentId, {
-                onClick: jest.fn(),
+                onClick: vi.fn(),
                 userChoice: {},
                 isOpened: false,
                 className: 'someClass',

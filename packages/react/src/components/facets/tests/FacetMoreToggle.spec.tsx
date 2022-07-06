@@ -47,8 +47,8 @@ describe('Facets', () => {
         });
 
         it('should call onToggleMore on change if prop is set', () => {
-            const onToggleMoreSpy = jest.fn();
-            const handleOnChangeSpy: jest.SpyInstance = jest.spyOn(facetMoreToggle.instance() as any, 'handleOnChange');
+            const onToggleMoreSpy = vi.fn();
+            const handleOnChangeSpy: vi.SpyInstance = vi.spyOn(facetMoreToggle.instance() as any, 'handleOnChange');
             const newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, {onToggleMore: onToggleMoreSpy});
 
             facetMoreToggle.find('input').simulate('change');
@@ -56,7 +56,7 @@ describe('Facets', () => {
             expect(handleOnChangeSpy).toHaveBeenCalled();
 
             facetMoreToggle = mount(<FacetMoreToggle {...newFacetMoreToggleProps} />);
-            const newHandleOnChangeSpy: jest.SpyInstance = jest.spyOn(
+            const newHandleOnChangeSpy: vi.SpyInstance = vi.spyOn(
                 facetMoreToggle.instance() as any,
                 'handleOnChange'
             );
@@ -70,7 +70,7 @@ describe('Facets', () => {
         it('should stop clicks from propagating their events', () => {
             const nativeEvent = {nativeEvent: {stopImmediatePropagation: _.noop}};
 
-            const generalEventSpy = jest.fn();
+            const generalEventSpy = vi.fn();
 
             document.addEventListener('click', generalEventSpy);
 

@@ -160,7 +160,7 @@ describe('Table HOC', () => {
                 });
 
                 it('should call onUpdate when the pageNb or perPage changes', () => {
-                    const updateSpy = jest.fn();
+                    const updateSpy = vi.fn();
                     const initialPage = 2;
                     const initialPerPage = 2;
 
@@ -185,7 +185,7 @@ describe('Table HOC', () => {
                 });
 
                 it('should not call onUpdate when pageNb & perPage does not changes', () => {
-                    const updateSpy = jest.fn();
+                    const updateSpy = vi.fn();
 
                     store = getStoreWithPage(1, 10);
                     const wrapper = shallowWithStore(

@@ -33,7 +33,7 @@ describe('TableWithEmptyState', () => {
     });
 
     it('renders the loading table if the table is empty after waiting 50 ms but still loading', () => {
-        jest.useFakeTimers();
+        vi.useFakeTimers();
         let update: (ui: ReactElement<any, string | JSXElementConstructor<any>>) => void;
         // eslint-disable-next-line testing-library/no-unnecessary-act
         act(() => {
@@ -46,15 +46,15 @@ describe('TableWithEmptyState', () => {
             update = rerender;
         });
 
-        jest.advanceTimersByTime(50);
+        vi.advanceTimersByTime(50);
         update(<TableWithEmptyState id="🌶" data={[]} renderBody={() => null} emptyState={<EmptyState />} isLoading />);
 
         expect(screen.getAllByRole('row').length).toBe(20);
-        jest.useRealTimers();
+        vi.useRealTimers();
     });
 
     it('renders the table if the table is not empty after waiting 50 ms', () => {
-        jest.useFakeTimers();
+        vi.useFakeTimers();
         let update: (ui: ReactElement<any, string | JSXElementConstructor<any>>) => void;
         // eslint-disable-next-line testing-library/no-unnecessary-act
         act(() => {
@@ -67,16 +67,16 @@ describe('TableWithEmptyState', () => {
             update = rerender;
         });
 
-        jest.advanceTimersByTime(50);
+        vi.advanceTimersByTime(50);
         update(<TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />);
 
         expect(screen.getByRole('table')).toBeInTheDocument();
-        jest.useRealTimers();
+        vi.useRealTimers();
     });
 
     it('should not call the setEmptyState action from the TableHOCActions if the table rendered has the setEmptyState property already set', () => {
-        jest.spyOn<any, string>(TableSelectors, 'isEmptyStateAlreadySet').mockReturnValueOnce(true);
-        const setEmptyStateSpy = jest.spyOn<any, string>(TableHOCActions, 'setEmptyState');
+        vi.spyOn<any, string>(TableSelectors, 'isEmptyStateAlreadySet').mockReturnValueOnce(true);
+        const setEmptyStateSpy = vi.spyOn<any, string>(TableHOCActions, 'setEmptyState');
 
         render(<TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />);
 
@@ -84,7 +84,7 @@ describe('TableWithEmptyState', () => {
     });
 
     it('should call the setEmptyState from the TableHOCActions when the table is first rendered', () => {
-        const setEmptyStateSpy = jest.spyOn<any, string>(TableHOCActions, 'setEmptyState');
+        const setEmptyStateSpy = vi.spyOn<any, string>(TableHOCActions, 'setEmptyState');
 
         render(<TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />);
 

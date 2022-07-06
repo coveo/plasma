@@ -76,11 +76,11 @@ describe('SlideY', () => {
         let component: ReactWrapper<SlideYProps, any>;
 
         beforeEach(() => {
-            jest.useFakeTimers();
+            vi.useFakeTimers();
         });
 
         afterEach(() => {
-            jest.clearAllTimers();
+            vi.clearAllTimers();
         });
 
         const mountAndWrap = (isIn: boolean, duration?: number) => {
@@ -94,7 +94,7 @@ describe('SlideY', () => {
         };
 
         const transitionToEnd = (el: HTMLElement) => {
-            jest.advanceTimersByTime(timeout + 1);
+            vi.advanceTimersByTime(timeout + 1);
             el.dispatchEvent(
                 new Event('transitionend', {
                     bubbles: true,

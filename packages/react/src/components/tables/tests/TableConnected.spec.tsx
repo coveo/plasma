@@ -229,7 +229,7 @@ describe('<TableConnected />', () => {
         });
 
         it('should call the manual thunk if it is passed as own props on onModifyData', () => {
-            const manualSpy = jest.fn(() => _.noop);
+            const manualSpy = vi.fn(() => _.noop);
             const wrapper = mountComponentWithProps({...tablePropsMock, manual: manualSpy});
             const tableConnected = wrapper.find(Table);
 

@@ -56,12 +56,12 @@ export class TestUtils {
     }
 
     static makeDebounceStatic() {
-        jest.mock('underscore', () => {
-            const originalUnderscore = jest.requireActual('underscore');
+        vi.mock('underscore', () => {
+            const originalUnderscore = vi.requireActual('underscore');
             return {
                 ...originalUnderscore,
-                debounce: jest.fn((func: any) => {
-                    func.cancel = jest.fn();
+                debounce: vi.fn((func: any) => {
+                    func.cancel = vi.fn();
                     return func as ((...args: any[]) => any) & _.Cancelable;
                 }),
             };
@@ -69,8 +69,8 @@ export class TestUtils {
     }
 
     static makeDeferSync() {
-        jest.mock('underscore', () => {
-            const originalUnderscore = jest.requireActual('underscore');
+        vi.mock('underscore', () => {
+            const originalUnderscore = vi.requireActual('underscore');
             return {
                 ...originalUnderscore,
                 defer: function (this: any, func: () => void) {

@@ -68,7 +68,7 @@ describe('Button', () => {
         });
 
         it('should call the onClick props on click', () => {
-            const spyOnClick = jest.fn();
+            const spyOnClick = vi.fn();
 
             showButton({
                 onClick: spyOnClick,
@@ -152,7 +152,7 @@ describe('Button', () => {
             });
 
             it('should call the onClick props on click', () => {
-                const spyOnClick = jest.fn();
+                const spyOnClick = vi.fn();
 
                 showButton({
                     onClick: spyOnClick,

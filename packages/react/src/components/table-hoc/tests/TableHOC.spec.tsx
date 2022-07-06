@@ -21,13 +21,13 @@ describe('TableHOC', () => {
         });
 
         it('should call renderBody with an array when data is null', () => {
-            const renderBody = jest.fn();
+            const renderBody = vi.fn();
             render(<TableHOC id="table-2" data={null} renderBody={renderBody} />);
             expect(renderBody).toHaveBeenCalledWith([]);
         });
 
         it('should call renderBody with an array when data is undefined', () => {
-            const renderBody = jest.fn();
+            const renderBody = vi.fn();
             render(<TableHOC id="table-2" data={undefined} renderBody={renderBody} />);
             expect(renderBody).toHaveBeenCalledWith([]);
         });

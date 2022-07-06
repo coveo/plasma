@@ -8,8 +8,8 @@ import {FacetRow} from '../FacetRow';
 describe('Facets', () => {
     const facetRows: IFacet[] = [];
     const facet: IFacet = {name: '', formattedName: '', count: '0'};
-    const toggleFacet: (facet: string, facetRow: IFacet) => void = jest.fn();
-    const clearFacet: (facet: string) => void = jest.fn();
+    const toggleFacet: (facet: string, facetRow: IFacet) => void = vi.fn();
+    const clearFacet: (facet: string) => void = vi.fn();
     const maxRowsToShow = 4;
 
     it('should render without errors', () => {
@@ -53,7 +53,7 @@ describe('Facets', () => {
         });
 
         it('should call prop onRender on mounting if set', () => {
-            const renderSpy = jest.fn();
+            const renderSpy = vi.fn();
             const newFacetAttributes = _.extend({}, facetBasicAttributes, {onRender: renderSpy});
 
             facetComponent.unmount();
@@ -64,7 +64,7 @@ describe('Facets', () => {
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy = jest.fn();
+            const destroySpy = vi.fn();
             const newFacetAttributes = _.extend({}, facetBasicAttributes, {onRender: destroySpy});
 
             expect(() => facetInstance.componentWillUnmount()).not.toThrow();
@@ -277,7 +277,7 @@ describe('Facets', () => {
         });
 
         it('should call onToggleFacet when calling buildCategoryFacet and prop is set', () => {
-            const onToggleFacetSpy = jest.fn();
+            const onToggleFacetSpy = vi.fn();
             const newFacetAttributes = _.extend({}, facetBasicAttributes, {onToggleFacet: onToggleFacetSpy});
 
             callBuildCategoryFacet();
@@ -302,7 +302,7 @@ describe('Facets', () => {
         });
 
         it('should call onClearFacet when calling buildCategoryFacet and prop is set', () => {
-            const onClearFacetSpy = jest.fn();
+            const onClearFacetSpy = vi.fn();
             const newFacetAttributes = _.extend({}, facetBasicAttributes, {onClearFacet: onClearFacetSpy});
 
             callClearCategoryFacet();

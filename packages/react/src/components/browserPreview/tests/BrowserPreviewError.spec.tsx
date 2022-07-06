@@ -6,7 +6,7 @@ import {BrowserPreviewError, BrowserPreviewErrorProps} from '../BrowserPreviewEr
 describe('BrowserPreviewError', () => {
     let component: ReactWrapper<BrowserPreviewErrorProps>;
     const defaultProps: BrowserPreviewErrorProps = {
-        onClick: jest.fn(),
+        onClick: vi.fn(),
         description: '💖',
         errorMessage: '😮',
     };

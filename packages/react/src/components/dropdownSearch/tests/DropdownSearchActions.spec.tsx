@@ -14,7 +14,7 @@ describe('DropdownSearch', () => {
             const activeOption: IDropdownOption = {value: 'anywoulddo', selected: false};
 
             it('should return an action of type DropdownSearchActions.select if isSelectingOption returns true', () => {
-                jest.spyOn(DropdownSearchUtils, 'isSelectingOption').mockReturnValue(true);
+                vi.spyOn(DropdownSearchUtils, 'isSelectingOption').mockReturnValue(true);
 
                 expect(selectOrSetNextActiveOption(dropdownId, keyCode, activeOption)).toEqual(
                     selectOptionDropdownSearch(dropdownId, activeOption, true)
@@ -22,7 +22,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should return an action of type DropdownSearchActions.active if isSelectingOption returns false', () => {
-                jest.spyOn(DropdownSearchUtils, 'isSelectingOption').mockReturnValue(false);
+                vi.spyOn(DropdownSearchUtils, 'isSelectingOption').mockReturnValue(false);
 
                 expect(selectOrSetNextActiveOption(dropdownId, keyCode, activeOption)).toEqual(
                     updateActiveOptionDropdownSearch(dropdownId, keyCode, activeOption)

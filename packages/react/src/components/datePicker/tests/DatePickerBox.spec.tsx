@@ -111,7 +111,7 @@ describe('Date picker', () => {
             });
 
             it('should call onClear prop when clicking on the clear button', () => {
-                const onClearSpy = jest.fn();
+                const onClearSpy = vi.fn();
                 const onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), {onClear: onClearSpy});
 
                 datePickerBox.setProps(onClearProps);

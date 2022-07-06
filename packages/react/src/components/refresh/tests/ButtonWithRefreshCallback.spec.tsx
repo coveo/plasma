@@ -27,7 +27,7 @@ describe('ButtonWithRefreshCallback tests', () => {
 
         describe('once mounted', () => {
             it('should call the callback on click button', () => {
-                const spy = jest.fn();
+                const spy = vi.fn();
 
                 const component = shallowWithState(<ButtonWithRefreshCallback {...defaultProps} callback={spy} />, {
                     refreshCallback: {id: RefreshStatus.inProgress},

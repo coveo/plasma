@@ -42,14 +42,14 @@ describe('Date picker', () => {
             };
 
             it('should call isOpen from the DropSelector', () => {
-                const spy = jest.spyOn(DropSelectors, 'isOpen');
+                const spy = vi.spyOn(DropSelectors, 'isOpen');
                 mountComponent();
 
                 expect(spy).toHaveBeenCalled();
             });
 
             it('should close the drop if the props withDrop is enable on onClose', () => {
-                jest.spyOn(DropSelectors, 'isOpen').mockReturnValue(true);
+                vi.spyOn(DropSelectors, 'isOpen').mockReturnValue(true);
 
                 wrapper = mountComponent();
                 const wrapperFooter = shallow(wrapper.find(DatePickerBox).props().footer);
@@ -61,7 +61,7 @@ describe('Date picker', () => {
             });
 
             it('should close the drop if the props withDrop is enable on onApply', () => {
-                jest.spyOn(DropSelectors, 'isOpen').mockReturnValue(true);
+                vi.spyOn(DropSelectors, 'isOpen').mockReturnValue(true);
 
                 wrapper = mountComponent();
                 const wrapperFooter = shallow(wrapper.find(DatePickerBox).props().footer);
@@ -430,7 +430,7 @@ describe('Date picker', () => {
         });
 
         it('goes to the next month when clicking on the next month arrow', () => {
-            jest.useFakeTimers().setSystemTime(new Date(2000, 0, 1));
+            vi.useFakeTimers().setSystemTime(new Date(2000, 0, 1));
 
             render(<DatePickerDropdownConnected id={'dropdown'} datesSelectionBoxes={[]} />);
 
@@ -439,7 +439,7 @@ describe('Date picker', () => {
             expect(screen.getByText(/february/i)).toBeVisible();
             expect(screen.getByText(/2000/i)).toBeVisible();
 
-            jest.useRealTimers();
+            vi.useRealTimers();
         });
     });
 });

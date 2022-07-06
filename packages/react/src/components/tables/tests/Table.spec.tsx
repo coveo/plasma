@@ -169,7 +169,7 @@ describe('<Table />', () => {
 
     describe('after render', () => {
         it('should call onDidMount on componentDidMount if it is defined', () => {
-            const onDidMountSpy = jest.fn();
+            const onDidMountSpy = vi.fn();
 
             mountComponentWithProps({...tablePropsMock, onDidMount: onDidMountSpy});
 
@@ -177,7 +177,7 @@ describe('<Table />', () => {
         });
 
         it('should call onUnmount on componentWillUnmount if it is defined', () => {
-            const onUnmountSpy = jest.fn();
+            const onUnmountSpy = vi.fn();
 
             mountComponentWithProps({...tablePropsMock, onUnmount: onUnmountSpy}).unmount();
 
@@ -239,11 +239,11 @@ describe('<Table />', () => {
 
         describe('componentWillReceiveProps', () => {
             let tableAsAny: any;
-            let onModifyDataSpy: jest.Mock<any, any>;
+            let onModifyDataSpy: vi.Mock<any, any>;
             let tableProps: any;
 
             beforeEach(() => {
-                onModifyDataSpy = jest.fn();
+                onModifyDataSpy = vi.fn();
                 tableProps = {...tablePropsMock, onModifyData: onModifyDataSpy};
                 tableAsAny = new Table(tableProps);
             });
@@ -473,11 +473,11 @@ describe('<Table />', () => {
 
         describe('componentWillUpdate', () => {
             let tableAsAny: Table;
-            let onWillUpdateSpy: jest.Mock<any, any>;
+            let onWillUpdateSpy: vi.Mock<any, any>;
             let tableProps: any;
 
             beforeEach(() => {
-                onWillUpdateSpy = jest.fn();
+                onWillUpdateSpy = vi.fn();
                 tableProps = {...tablePropsMock, onWillUpdate: onWillUpdateSpy, actions: [{id: 'id1'}]};
                 tableAsAny = new Table(tableProps);
             });

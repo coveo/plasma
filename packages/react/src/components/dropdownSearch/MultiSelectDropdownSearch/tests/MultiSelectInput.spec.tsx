@@ -84,7 +84,7 @@ describe('MultiSelectInput', () => {
             it('should handle on remove all', () => {
                 renderMultiSelectInput(props);
 
-                const onRemoveAll = jest.fn();
+                const onRemoveAll = vi.fn();
 
                 multiSelectInput.setProps({
                     selectedOptions,
@@ -99,7 +99,7 @@ describe('MultiSelectInput', () => {
             it('should handle on input change', () => {
                 renderMultiSelectInput(props);
 
-                const onInputChange = jest.fn();
+                const onInputChange = vi.fn();
 
                 multiSelectInput.setProps({
                     onFilterTextChange: onInputChange,
@@ -113,7 +113,7 @@ describe('MultiSelectInput', () => {
             it('should handle on blur', () => {
                 renderMultiSelectInput(props);
 
-                const onBlur = jest.fn();
+                const onBlur = vi.fn();
 
                 multiSelectInput.setProps({
                     onBlur: onBlur,
@@ -127,7 +127,7 @@ describe('MultiSelectInput', () => {
             it('should handle on focus', () => {
                 renderMultiSelectInput(props);
 
-                const onFocus = jest.fn();
+                const onFocus = vi.fn();
 
                 multiSelectInput.setProps({
                     onFocus: onFocus,
@@ -141,7 +141,7 @@ describe('MultiSelectInput', () => {
             it('should handle on key down', () => {
                 renderMultiSelectInput(props);
 
-                const onKeyDown = jest.fn();
+                const onKeyDown = vi.fn();
 
                 multiSelectInput.setProps({
                     onKeyDownFilterBox: onKeyDown,

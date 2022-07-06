@@ -64,11 +64,11 @@ describe('Table HOC', () => {
         });
 
         describe('with a matchDates function', () => {
-            let matchDatesSpy: jest.Mock<any, any>;
+            let matchDatesSpy: vi.Mock<any, any>;
             let TableWithDatePickerAndMatch: FilterableTableComponent;
 
             beforeEach(() => {
-                matchDatesSpy = jest.fn(() => true);
+                matchDatesSpy = vi.fn(() => true);
 
                 TableWithDatePickerAndMatch = _.compose(tableWithDatePicker({matchDates: matchDatesSpy}))(TableHOC);
             });
@@ -122,7 +122,7 @@ describe('Table HOC', () => {
             });
 
             it('should call onUpdate when the lowerLimit changes', () => {
-                const updateSpy = jest.fn();
+                const updateSpy = vi.fn();
                 const lowerLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
@@ -139,7 +139,7 @@ describe('Table HOC', () => {
             });
 
             it('should call onUpdate when the upperLimit changes', () => {
-                const updateSpy = jest.fn();
+                const updateSpy = vi.fn();
                 const lowerLimit = moment().subtract(15, 'm').toDate();
                 const upperLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
@@ -157,7 +157,7 @@ describe('Table HOC', () => {
             });
 
             it('should not call onUpdate when the date picker does not changes', () => {
-                const updateSpy = jest.fn();
+                const updateSpy = vi.fn();
                 const lowerLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,

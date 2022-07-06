@@ -107,7 +107,7 @@ describe('ActionableItem', () => {
             });
 
             it('should call the onItemClick method if passed as prop', () => {
-                const props = {id: 'someid', onItemClick: jest.fn()};
+                const props = {id: 'someid', onItemClick: vi.fn()};
                 shallowWithProps(props);
 
                 actionableItem.find('.actionable-item-content').simulate('click');

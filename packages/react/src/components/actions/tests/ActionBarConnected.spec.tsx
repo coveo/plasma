@@ -33,17 +33,17 @@ describe('Actions', () => {
             },
             {
                 name: 'action2',
-                trigger: jest.fn(),
+                trigger: vi.fn(),
                 enabled: true,
             },
             {
                 name: 'action3',
-                trigger: jest.fn(),
+                trigger: vi.fn(),
                 enabled: false,
             },
             {
                 name: 'action4',
-                trigger: jest.fn(),
+                trigger: vi.fn(),
                 enabled: false,
                 hideDisabled: false,
             },
@@ -159,7 +159,7 @@ describe('Actions', () => {
         it('should get the <InlinePrompt /> as a prop', () => {
             const expectedClass = 'expected-class';
             const inlinePromptOptions: IInlinePromptOptions = {
-                onClick: jest.fn(),
+                onClick: vi.fn(),
                 userChoice: {},
                 className: expectedClass,
             };
@@ -174,7 +174,7 @@ describe('Actions', () => {
         });
 
         it('should call onClearItemFilter when calling clearItemFilter', () => {
-            const onClearItemFilterSpy = jest.fn();
+            const onClearItemFilterSpy = vi.fn();
 
             wrapper = mount(
                 <Provider store={store}>

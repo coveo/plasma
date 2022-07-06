@@ -26,7 +26,7 @@ import {predictableData, SELECTION_BOXES, tableOwnPropsMock, tablePropsMockWithD
 describe('TableDataModifier', () => {
     describe('dispatchPreTableStateModification', () => {
         it('should dispatch three actions to unselectAllRows, remove actions, and turn on loading', () => {
-            const dispatchSpy = jest.fn() as any;
+            const dispatchSpy = vi.fn() as any;
 
             const actions = [
                 unselectAllRows(tableOwnPropsMock.id),
@@ -49,7 +49,7 @@ describe('TableDataModifier', () => {
 
     describe('dispatchPostTableStateModification', () => {
         it('should dispatch two actions to turnOffLoading and update the last updated component', () => {
-            const dispatchSpy = jest.fn() as any;
+            const dispatchSpy = vi.fn() as any;
 
             const actions = [
                 turnOffLoading(getTableLoadingIds(tableOwnPropsMock.id)),
@@ -409,7 +409,7 @@ describe('TableDataModifier', () => {
         });
 
         it('should dispatch an action of type MODIFY_STATE_TABLE and turn off loading', () => {
-            const dispatchSpy = jest.fn();
+            const dispatchSpy = vi.fn();
             defaultTableStateModifierThunk(tablePropsMockWithData, true, tableCompositeState)(dispatchSpy);
 
             expect(dispatchSpy).toHaveBeenCalledWith(expect.objectContaining({type: TableActions.modifyState}));

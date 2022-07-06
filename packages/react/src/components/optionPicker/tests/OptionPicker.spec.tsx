@@ -51,7 +51,7 @@ describe('Option picker', () => {
         });
 
         it('should call prop onRender on mounting if set', () => {
-            const renderSpy: jest.Mock<any, any> = jest.fn();
+            const renderSpy: vi.Mock<any, any> = vi.fn();
             const withRenderProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {onRender: renderSpy});
             render(<OptionPicker {...withRenderProps} />);
 
@@ -59,7 +59,7 @@ describe('Option picker', () => {
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy: jest.Mock<any, any> = jest.fn();
+            const destroySpy: vi.Mock<any, any> = vi.fn();
             const withDestroyProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {
                 onDestroy: destroySpy,
             });
@@ -71,7 +71,7 @@ describe('Option picker', () => {
         });
 
         it('should call onClick if defined when clicking an option', () => {
-            const onClickSpy: jest.SpyInstance = jest.fn();
+            const onClickSpy: vi.SpyInstance = vi.fn();
             const withOnClickProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {
                 onClick: onClickSpy,
             });

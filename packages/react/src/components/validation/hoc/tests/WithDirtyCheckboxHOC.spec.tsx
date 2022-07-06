@@ -46,7 +46,7 @@ describe('WithDirtyCheckboxHOC', () => {
         });
 
         describe('after mount', () => {
-            let handleOnClickSpy: jest.Mock;
+            let handleOnClickSpy: vi.Mock;
 
             const shallowCheckbox = (props?: Partial<ICheckboxOwnProps & IInputOwnProps>) =>
                 shallowWithStore<typeof CheckboxWithHOC>(
@@ -55,7 +55,7 @@ describe('WithDirtyCheckboxHOC', () => {
                 ).dive();
 
             beforeEach(() => {
-                handleOnClickSpy = jest.fn();
+                handleOnClickSpy = vi.fn();
                 checkboxWrapper = shallowCheckbox();
             });
 

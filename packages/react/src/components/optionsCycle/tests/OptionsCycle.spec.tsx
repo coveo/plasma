@@ -26,14 +26,14 @@ describe('Options cycle', () => {
         };
 
         it('should call prop onRender on mounting if set', () => {
-            const renderSpy = jest.fn();
+            const renderSpy = vi.fn();
             mountComponent({onRender: renderSpy});
 
             expect(renderSpy.mock.calls.length).toBe(1);
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy = jest.fn();
+            const destroySpy = vi.fn();
             mountComponent({onDestroy: destroySpy});
 
             optionsCycleWrapper.unmount();
@@ -77,7 +77,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange when clicking the previous arrow', () => {
-            const spyOnChange = jest.fn();
+            const spyOnChange = vi.fn();
 
             mountComponent({onChange: spyOnChange});
 
@@ -87,7 +87,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange when clicking the next arrow', () => {
-            const spyOnChange = jest.fn();
+            const spyOnChange = vi.fn();
 
             mountComponent({onChange: spyOnChange});
 
@@ -97,7 +97,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChangeOption when clicking the previous arrow', () => {
-            const spyOnChangeOption = jest.fn();
+            const spyOnChangeOption = vi.fn();
 
             mountComponent({onChangeOption: spyOnChangeOption, onChange: _.noop});
 
@@ -107,7 +107,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChangeOption when clicking the next arrow', () => {
-            const spyOnChangeOption = jest.fn();
+            const spyOnChangeOption = vi.fn();
 
             mountComponent({onChange: spyOnChangeOption});
 
@@ -117,7 +117,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange with the last option when clicking on the previous arrow if the current option is the first one', () => {
-            const spyOnChange = jest.fn();
+            const spyOnChange = vi.fn();
 
             mountComponent({onChange: spyOnChange, currentOption: 0});
             optionsCycleWrapper.find('.previous-option').simulate('click');
@@ -126,7 +126,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange with the previous option when clicking on the previous arrow if the current option is not the first one', () => {
-            const spyOnChange = jest.fn();
+            const spyOnChange = vi.fn();
 
             mountComponent({onChange: spyOnChange, currentOption: 2});
             optionsCycleWrapper.find('.previous-option').simulate('click');
@@ -135,7 +135,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange with the first option when clicking on the next arrow if the current option is the last one', () => {
-            const spyOnChange = jest.fn();
+            const spyOnChange = vi.fn();
 
             mountComponent({onChange: spyOnChange, currentOption: OPTIONS.length - 1});
             optionsCycleWrapper.find('.next-option').simulate('click');
@@ -144,7 +144,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange with the previous option when clicking on the next arrow if the current option is not the last one', () => {
-            const spyOnChange = jest.fn();
+            const spyOnChange = vi.fn();
 
             mountComponent({onChange: spyOnChange, currentOption: 2});
             optionsCycleWrapper.find('.next-option').simulate('click');

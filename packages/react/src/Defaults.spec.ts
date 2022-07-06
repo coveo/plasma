@@ -5,7 +5,7 @@ import {Defaults} from './Defaults';
 describe('Defaults', () => {
     describe('APP_ELEMENT', () => {
         it('should call ReactModal.setAppElement', () => {
-            const setAppElementSpy = jest.spyOn(ReactModal, 'setAppElement').mockImplementation(() => null);
+            const setAppElementSpy = vi.spyOn(ReactModal, 'setAppElement').mockImplementation(() => null);
             const expectedAppElement = '#app-element';
 
             Defaults.APP_ELEMENT = expectedAppElement;

@@ -22,8 +22,8 @@ describe('Calendar day', () => {
     beforeAll(() => {
         BASIC_CALENDAR_DAY_PROPS = {
             day: DAY,
-            onClick: jest.fn(),
-            onSelectUnselectable: jest.fn(),
+            onClick: vi.fn(),
+            onSelectUnselectable: vi.fn(),
         };
     });
 
@@ -48,7 +48,7 @@ describe('Calendar day', () => {
         });
 
         afterEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
             removeTestAppContainer();
         });
 
@@ -147,7 +147,7 @@ describe('Calendar day', () => {
         });
 
         it('should call handleClick when clicking the day', () => {
-            const handleClickSpy: jest.SpyInstance = jest.spyOn<any, string>(calendarDayInstance, 'handleClick');
+            const handleClickSpy: vi.SpyInstance = vi.spyOn<any, string>(calendarDayInstance, 'handleClick');
 
             calendarDay.find('td').simulate('click');
 
@@ -179,7 +179,7 @@ describe('Calendar day', () => {
             });
             const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, {
                 day: unSelectableDay,
-                onSelectUnselectable: jest.fn(),
+                onSelectUnselectable: vi.fn(),
             });
 
             calendarDay.setProps(unSelectableDayProps);

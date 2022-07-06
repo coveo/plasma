@@ -22,9 +22,9 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
 
     beforeEach(() => {
         basicProps = {
-            onMouseEnter: jest.fn(),
+            onMouseEnter: vi.fn(),
             options: getOptions('Test', totalOptions),
-            ulElementRefFunction: jest.fn(),
+            ulElementRefFunction: vi.fn(),
             endMessage: 'the end',
             optionsPerPage,
         };

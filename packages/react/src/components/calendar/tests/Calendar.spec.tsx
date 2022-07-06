@@ -145,7 +145,7 @@ describe('Calendar', () => {
         });
 
         it('should call onClick when handleClick has been called, onClick is defined and one picker is selected', () => {
-            const onClickSpy: jest.Mock<any, any> = jest.fn();
+            const onClickSpy: vi.Mock<any, any> = vi.fn();
             const now: Date = new Date();
 
             expect(() => {
@@ -201,7 +201,7 @@ describe('Calendar', () => {
             'should call handleInvalidDateSelected when it is defined and selecting a day that is not selectable ' +
                 'and one picker is selected',
             () => {
-                const onSelectUnselectableSpy: jest.Mock<any, any> = jest.fn();
+                const onSelectUnselectableSpy: vi.Mock<any, any> = vi.fn();
 
                 expect(() => {
                     calendarInstance['handleInvalidDateSelected'].call(calendarInstance);
@@ -254,7 +254,7 @@ describe('Calendar', () => {
         );
 
         it('should call handleClick on <CalendarDay /> click', () => {
-            const handleClickSpy: jest.SpyInstance = jest.spyOn<any, string>(calendarInstance, 'handleClick');
+            const handleClickSpy: vi.SpyInstance = vi.spyOn<any, string>(calendarInstance, 'handleClick');
             const firstCalendarDay: ReactWrapper<ICalendarDayProps, any> = calendar.find(CalendarDay).first();
             firstCalendarDay.find('td').simulate('click');
 

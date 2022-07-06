@@ -28,7 +28,7 @@ describe('Flippable', () => {
         });
 
         it('should call onRender prop if set when mounting', () => {
-            const onRenderSpy = jest.fn();
+            const onRenderSpy = vi.fn();
 
             flippable.unmount();
             flippable.setProps({onRender: onRenderSpy});
@@ -38,7 +38,7 @@ describe('Flippable', () => {
         });
 
         it('should call onDestroy prop if set when will unmount', () => {
-            const onDestroySpy = jest.fn();
+            const onDestroySpy = vi.fn();
 
             expect(() => flippable.instance().componentWillUnmount()).not.toThrow();
 
@@ -53,7 +53,7 @@ describe('Flippable', () => {
         });
 
         it('should have the flippable-ie class when the browser is IE', () => {
-            jest.spyOn(BrowserUtils, 'isIE').mockReturnValue(true);
+            vi.spyOn(BrowserUtils, 'isIE').mockReturnValue(true);
             const component = shallowWithState(<Flippable />, {});
 
             expect(component.hasClass('flippable-ie')).toBe(true);
@@ -106,7 +106,7 @@ describe('Flippable', () => {
         });
 
         it('should call onFlip prop if any when clicking on the front side and flippable is not flipped', () => {
-            const onFlipSpy = jest.fn();
+            const onFlipSpy = vi.fn();
 
             flippable.setProps({
                 onFlip: onFlipSpy,
@@ -146,7 +146,7 @@ describe('Flippable', () => {
             'should call onUnflip prop if any when clicking outside the back side of the flippable ' +
                 'only when it is flipped',
             () => {
-                const onUnflipSpy = jest.fn();
+                const onUnflipSpy = vi.fn();
 
                 flippable.setProps({
                     onUnflip: onUnflipSpy,
@@ -171,7 +171,7 @@ describe('Flippable', () => {
         );
 
         it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns false', () => {
-            const onUnflipSpy = jest.fn();
+            const onUnflipSpy = vi.fn();
 
             flippable.setProps({
                 onUnflip: onUnflipSpy,
@@ -185,7 +185,7 @@ describe('Flippable', () => {
         });
 
         it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns true', () => {
-            const onUnflipSpy = jest.fn();
+            const onUnflipSpy = vi.fn();
 
             flippable.setProps({
                 onUnflip: onUnflipSpy,

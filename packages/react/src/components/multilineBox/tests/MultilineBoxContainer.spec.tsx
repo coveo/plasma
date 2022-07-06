@@ -92,10 +92,10 @@ describe('Multiline box container', () => {
 
         describe('once rendered without errors', () => {
             let MultilineBoxContainerWithSpy: any;
-            let spyContainerNode: jest.Mock<any, any>;
+            let spyContainerNode: vi.Mock<any, any>;
 
             beforeEach(() => {
-                spyContainerNode = jest.fn(() => <div></div>);
+                spyContainerNode = vi.fn(() => <div></div>);
 
                 MultilineBoxContainerWithSpy = _.compose(
                     multilineBoxContainer({

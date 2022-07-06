@@ -124,7 +124,7 @@ describe('Radio', () => {
         });
 
         it('should call prop onChange when specified on click', () => {
-            const changeSpy = jest.fn();
+            const changeSpy = vi.fn();
             const innerInput = radio.find('input');
 
             radio.setProps({onChange: changeSpy}).mount();

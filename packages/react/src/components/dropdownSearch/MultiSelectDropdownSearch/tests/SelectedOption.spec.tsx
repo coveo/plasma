@@ -34,7 +34,7 @@ describe('SelectedOption', () => {
             it('should call remove option when click on the remove-option div', () => {
                 renderSelectedOption(props);
 
-                const onRemoveOptionClick = jest.fn();
+                const onRemoveOptionClick = vi.fn();
                 selectedOption.setProps({onRemoveClick: onRemoveOptionClick});
 
                 selectedOption.find('.remove-option').simulate('click');
@@ -45,7 +45,7 @@ describe('SelectedOption', () => {
             it('should not call remove option when clicking anywhere else', () => {
                 renderSelectedOption(props);
 
-                const onRemoveOptionClick = jest.fn();
+                const onRemoveOptionClick = vi.fn();
                 selectedOption.setProps({onRemoveClick: onRemoveOptionClick});
 
                 selectedOption.simulate('click');

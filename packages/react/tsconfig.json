@@ -5,8 +5,9 @@
         "declarationDir": "./dist/definitions",
         "baseUrl": ".",
         "paths": {
-            "@test-utils": ["jest/utils.tsx"],
+            "@test-utils": ["vitest/utils.tsx"],
             "*": ["types/*", "*"]
-        }
+        },
+        "types": ["vitest/globals"]
     }
 }

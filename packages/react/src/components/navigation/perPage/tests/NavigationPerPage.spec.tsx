@@ -77,7 +77,7 @@ describe('NavigationPerPage', () => {
         });
 
         it('should call onRender if prop is set on mount', () => {
-            const onRenderSpy = jest.fn();
+            const onRenderSpy = vi.fn();
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onRender={onRenderSpy} />,
@@ -88,7 +88,7 @@ describe('NavigationPerPage', () => {
         });
 
         it('should call onDestroy if prop is set when unmounting', () => {
-            const onDestroySpy = jest.fn();
+            const onDestroySpy = vi.fn();
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onDestroy={onDestroySpy} />,
@@ -126,7 +126,7 @@ describe('NavigationPerPage', () => {
 
         it('should call onPerPageClick prop if it is set when calling handleClick and perPage is different than currentPerPage', () => {
             const newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS, {
-                onPerPageClick: jest.fn(),
+                onPerPageClick: vi.fn(),
             });
             const expectedPerPage: number = 22;
 
@@ -140,7 +140,7 @@ describe('NavigationPerPage', () => {
 
         it('should not call onPerPageClick prop if perPage is identical to currentPerPage', () => {
             const newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS, {
-                onPerPageClick: jest.fn(),
+                onPerPageClick: vi.fn(),
                 currentPerPage: 10,
             });
             const expectedPerPage: number = 10;

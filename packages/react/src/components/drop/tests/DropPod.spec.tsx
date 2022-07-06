@@ -10,7 +10,7 @@ describe('DropPod', () => {
     const defaultDrop = <div>Hello world!</div>;
 
     afterEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     describe('<DropPod />', () => {
@@ -33,11 +33,11 @@ describe('DropPod', () => {
                           orientation: DropPodPosition.left,
                       },
                   };
-            jest.spyOn(DomPositionCalculator, 'bottom').mockReturnValue(bottomStyle);
-            jest.spyOn(DomPositionCalculator, 'top').mockReturnValue({});
-            jest.spyOn(DomPositionCalculator, 'left').mockReturnValue({});
-            jest.spyOn(DomPositionCalculator, 'right').mockReturnValue({});
-            jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({
+            vi.spyOn(DomPositionCalculator, 'bottom').mockReturnValue(bottomStyle);
+            vi.spyOn(DomPositionCalculator, 'top').mockReturnValue({});
+            vi.spyOn(DomPositionCalculator, 'left').mockReturnValue({});
+            vi.spyOn(DomPositionCalculator, 'right').mockReturnValue({});
+            vi.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({
                 x: 0,
                 y: 0,
                 bottom: 0,
@@ -49,7 +49,7 @@ describe('DropPod', () => {
                 toJSON: () => ({}),
                 ...dropOffset,
             });
-            global.window.getComputedStyle = jest.fn(
+            global.window.getComputedStyle = vi.fn(
                 () =>
                     ({
                         paddingLeft: '10',
@@ -69,8 +69,8 @@ describe('DropPod', () => {
                 },
             } as any;
 
-            jest.spyOn(MutationObserver.prototype, 'observe').mockImplementation(() => null);
-            jest.spyOn(MutationObserver.prototype, 'disconnect').mockImplementation(() => null);
+            vi.spyOn(MutationObserver.prototype, 'observe').mockImplementation(() => null);
+            vi.spyOn(MutationObserver.prototype, 'disconnect').mockImplementation(() => null);
         };
 
         beforeEach(() => {
@@ -460,7 +460,7 @@ describe('DropPod', () => {
                 });
 
                 it('should remove events on unmount', () => {
-                    const spy = jest.spyOn(window, 'removeEventListener');
+                    const spy = vi.spyOn(window, 'removeEventListener');
 
                     const {unmount} = render(
                         <DropPod isOpen renderDrop={() => '🚀'} positions={[DropPodPosition.bottom]} />
@@ -474,7 +474,7 @@ describe('DropPod', () => {
                 });
 
                 it('should add events if the prop isOpen change to true on update', () => {
-                    const spy = jest.spyOn(window, 'addEventListener');
+                    const spy = vi.spyOn(window, 'addEventListener');
 
                     const {rerender} = render(
                         <DropPod isOpen={false} renderDrop={() => '🚀'} positions={[DropPodPosition.bottom]} />
@@ -488,7 +488,7 @@ describe('DropPod', () => {
                 });
 
                 it('should remove events if the prop isOpen change to false on update', () => {
-                    const spy = jest.spyOn(window, 'removeEventListener');
+                    const spy = vi.spyOn(window, 'removeEventListener');
 
                     const {rerender} = render(
                         <DropPod isOpen={true} renderDrop={() => '🚀'} positions={[DropPodPosition.bottom]} />

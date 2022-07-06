@@ -22,7 +22,7 @@ describe('Facets', () => {
         let store: Store<PlasmaState>;
 
         beforeEach(() => {
-            const onToggleFacet = jest.fn();
+            const onToggleFacet = vi.fn();
             facet = 'facetTitle';
             facetRows = [
                 <FacetRow

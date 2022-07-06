@@ -33,7 +33,7 @@ describe('Drop', () => {
         });
 
         it('should call renderOpenButton on mount', () => {
-            const renderOpenButtonSpy = jest.fn(() => <div>DIV</div>);
+            const renderOpenButtonSpy = vi.fn(() => <div>DIV</div>);
             shallowWithState(<Drop id={'test'} renderOpenButton={renderOpenButtonSpy} />, {})
                 .dive()
                 .dive();
@@ -217,7 +217,7 @@ describe('Drop', () => {
 
             describe('events', () => {
                 it('should add the event on click if the drop is opening', () => {
-                    const spy = jest.spyOn(document, 'addEventListener');
+                    const spy = vi.spyOn(document, 'addEventListener');
                     const shallowWrapper = shallowWithState(
                         <Drop id={'test'} renderOpenButton={() => defaultButton} />,
                         {}
@@ -233,7 +233,7 @@ describe('Drop', () => {
                 });
 
                 it('should remove the event on click if the drop is closing', () => {
-                    const spy = jest.spyOn(document, 'removeEventListener');
+                    const spy = vi.spyOn(document, 'removeEventListener');
                     const shallowWrapper = shallowWithState(
                         <Drop id={'test'} renderOpenButton={() => defaultButton} />,
                         {}

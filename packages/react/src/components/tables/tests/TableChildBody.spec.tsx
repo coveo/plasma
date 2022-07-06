@@ -14,20 +14,20 @@ import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
 import {TableHeadingRow} from '../TableHeadingRow';
 
 describe('<TableChildBody />', () => {
-    let spyOnRowClick: jest.Mock<any, any>;
-    let spyHandleOnRowClick: jest.Mock<any, any>;
+    let spyOnRowClick: vi.Mock<any, any>;
+    let spyHandleOnRowClick: vi.Mock<any, any>;
     let someActions: IActionOptions[];
     let tableChildBodyProps: ITableChildBodyProps;
     let store: Store<PlasmaState>;
 
     beforeAll(() => {
         document.body.innerHTML += '<div id="App"></div>';
-        spyOnRowClick = jest.fn();
-        spyHandleOnRowClick = jest.fn();
+        spyOnRowClick = vi.fn();
+        spyHandleOnRowClick = vi.fn();
         someActions = [
             {
                 name: 'some-action',
-                trigger: jest.fn(),
+                trigger: vi.fn(),
                 enabled: true,
             },
         ];
@@ -42,7 +42,7 @@ describe('<TableChildBody />', () => {
             isLoading: false,
             onRowClick: spyOnRowClick,
             handleOnRowClick: spyHandleOnRowClick,
-            getActions: jest.fn(() => someActions),
+            getActions: vi.fn(() => someActions),
             headingAttributes: [
                 {
                     attributeName: 'email',
@@ -104,7 +104,7 @@ describe('<TableChildBody />', () => {
         });
 
         it('should trigger an onClick event on click cell element', () => {
-            const spy = jest.fn();
+            const spy = vi.fn();
 
             const component = mountComponentWithProps({
                 ...tableChildBodyProps,
@@ -176,7 +176,7 @@ describe('<TableChildBody />', () => {
         });
 
         it('should call getActions results with option callOnDoubleClick true on row double click', () => {
-            const actionSpy = jest.fn();
+            const actionSpy = vi.fn();
             const twoActions: IActionOptions[] = [
                 {
                     name: 'action that should not be called',
@@ -192,7 +192,7 @@ describe('<TableChildBody />', () => {
                     trigger: actionSpy,
                 },
             ];
-            const getActionsSpy = jest.fn().mockReturnValue(twoActions);
+            const getActionsSpy = vi.fn().mockReturnValue(twoActions);
 
             mountComponentWithProps({...tableChildBodyProps, getActions: getActionsSpy})
                 .find(TableHeadingRow)
@@ -236,7 +236,7 @@ describe('<TableChildBody />', () => {
 
         it('should set the selectionDisabled prop to true on the <TableHeadingRow /> if there are no actions defined for the row', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
-                getActions: jest.fn(() => []),
+                getActions: vi.fn(() => []),
             });
 
             expect(mountComponentWithProps(newProps).find(TableHeadingRow).props().selectionDisabled).toBe(true);

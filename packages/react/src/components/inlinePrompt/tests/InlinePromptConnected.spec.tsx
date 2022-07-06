@@ -21,7 +21,7 @@ describe('InlinePrompt', () => {
         beforeEach(() => {
             id = 'filter-box';
             options = {
-                onClick: jest.fn(),
+                onClick: vi.fn(),
                 userChoice: {
                     icon: 'icon',
                     description: 'description',

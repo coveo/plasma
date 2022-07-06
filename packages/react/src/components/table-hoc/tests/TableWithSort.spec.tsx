@@ -91,7 +91,7 @@ describe('Table HOC', () => {
             });
 
             it('should call onUpdate when the sort changes', () => {
-                const updateSpy = jest.fn();
+                const updateSpy = vi.fn();
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithSort(true, 'value')
@@ -107,7 +107,7 @@ describe('Table HOC', () => {
             });
 
             it('should not call onUpdate when the predicate does not changes', () => {
-                const updateSpy = jest.fn();
+                const updateSpy = vi.fn();
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithSort(true, 'value')

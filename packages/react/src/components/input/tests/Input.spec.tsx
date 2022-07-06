@@ -88,7 +88,7 @@ describe('<Input />', () => {
         });
 
         it('should call prop onBlur on inner input blur', () => {
-            const spyOnBlur = jest.fn();
+            const spyOnBlur = vi.fn();
 
             shallowInput({
                 onBlur: spyOnBlur,
@@ -105,7 +105,7 @@ describe('<Input />', () => {
         });
 
         it('should call prop onChange on inner input change', () => {
-            const spyOnChange = jest.fn();
+            const spyOnChange = vi.fn();
 
             shallowInput({
                 onChange: spyOnChange,
@@ -117,7 +117,7 @@ describe('<Input />', () => {
         });
 
         it('should call prop onClick on inner container click', () => {
-            const spyOnClick = jest.fn();
+            const spyOnClick = vi.fn();
 
             shallowInput({
                 classes: 'banane',
@@ -131,7 +131,7 @@ describe('<Input />', () => {
         });
 
         it('should call prop onKeyUp on key up', () => {
-            const spyOnKeyUp = jest.fn();
+            const spyOnKeyUp = vi.fn();
 
             shallowInput({
                 onKeyUp: spyOnKeyUp,

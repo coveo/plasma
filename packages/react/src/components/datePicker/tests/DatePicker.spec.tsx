@@ -12,8 +12,8 @@ describe('Date picker', () => {
 
     beforeAll(() => {
         DATE_PICKER_BASIC_PROPS = {
-            onClick: jest.fn(),
-            onBlur: jest.fn(),
+            onClick: vi.fn(),
+            onBlur: vi.fn(),
             placeholder: 'Pick a date',
         };
     });
@@ -32,7 +32,7 @@ describe('Date picker', () => {
             datePicker = mount(<DatePicker {...DATE_PICKER_BASIC_PROPS} />);
             datePickerInstance = datePicker.instance() as DatePicker;
 
-            jest.clearAllMocks();
+            vi.clearAllMocks();
         });
 
         afterEach(() => {
@@ -165,7 +165,7 @@ describe('Date picker', () => {
         });
 
         it('should call onBlur prop on handleChangeDate only if the input value is a valid date', () => {
-            const onBlurSpy = jest.fn();
+            const onBlurSpy = vi.fn();
             const simpleDate: string = DateUtils.getSimpleDate(new Date());
             const newOnChangeSpyProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {onBlur: onBlurSpy});
             datePicker.setProps(newOnChangeSpyProps);
@@ -276,7 +276,7 @@ describe('Date picker', () => {
                 const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {
                     isSelecting: DateLimits.lower,
                 });
-                const handleChangeDateSpy = jest.spyOn<any, string>(datePickerInstance, 'handleChangeDate');
+                const handleChangeDateSpy = vi.spyOn<any, string>(datePickerInstance, 'handleChangeDate');
 
                 datePicker.setProps(dateProps);
 
@@ -290,7 +290,7 @@ describe('Date picker', () => {
             it('should not call prop onBlur when clicking a calendar day', () => {
                 const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {
                     isSelecting: DateLimits.lower,
-                    onBlur: jest.fn(),
+                    onBlur: vi.fn(),
                 });
 
                 datePicker.setProps(dateProps);
@@ -332,7 +332,7 @@ describe('Date picker', () => {
                     },
                 ];
 
-                const onBlurSpy = jest.fn();
+                const onBlurSpy = vi.fn();
                 const newOnChangeSpyProps: IDatePickerProps = {
                     ...DATE_PICKER_BASIC_PROPS,
                     onBlur: onBlurSpy,

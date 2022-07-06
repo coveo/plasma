@@ -122,7 +122,7 @@ describe('ItemBox', () => {
         });
 
         it('should call the onOptionClick on click', () => {
-            const onOptionClick: jest.Mock<any, any> = jest.fn();
+            const onOptionClick: vi.Mock<any, any> = vi.fn();
 
             renderItemBox({
                 onOptionClick,

@@ -120,7 +120,7 @@ describe('MultiSelectWithPredicate', () => {
         });
 
         it('triggers the onUpdate prop when the selected predicate changes', () => {
-            const onUpdateSpy = jest.fn();
+            const onUpdateSpy = vi.fn();
 
             const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
 

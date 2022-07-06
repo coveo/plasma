@@ -6,7 +6,7 @@ import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
     it('closes the modal and execute the onCancel prop if passed when clicking on "cancel"', async () => {
-        const cancelSpy = jest.fn();
+        const cancelSpy = vi.fn();
         render(
             <div>
                 <ModalWizard id="🧙‍♂️" onCancel={cancelSpy}>
@@ -28,8 +28,8 @@ describe('ModalWizard', () => {
     });
 
     it('navigates properly through the steps when clicking on "next" and "previous" buttons', () => {
-        const nextSpy = jest.fn();
-        const previousSpy = jest.fn();
+        const nextSpy = vi.fn();
+        const previousSpy = vi.fn();
 
         const FunctionComponentStep = () => <div>Step 2: FunctionComponent</div>;
         class ClassComponentStep extends PureComponent {
@@ -74,7 +74,7 @@ describe('ModalWizard', () => {
     });
 
     it('calls the "onFinish" prop and the modal stays open when clicking on the "finish" button', () => {
-        const finishSpy = jest.fn();
+        const finishSpy = vi.fn();
 
         render(
             <ModalWizard id="🧙‍♂️" onFinish={finishSpy}>

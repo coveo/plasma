@@ -14,14 +14,14 @@ describe('ActionsBar', () => {
     });
 
     it('should call onRender prop if set when mounting', () => {
-        const onRenderSpy = jest.fn();
+        const onRenderSpy = vi.fn();
         shallow(<ActionBar onRender={onRenderSpy} />);
 
         expect(onRenderSpy).toHaveBeenCalled();
     });
 
     it('should call onDestroy prop if set when will unmount', () => {
-        const onDestroySpy = jest.fn();
+        const onDestroySpy = vi.fn();
 
         const actionBar = shallow(<ActionBar onDestroy={onDestroySpy} />);
         actionBar.unmount();
@@ -112,7 +112,7 @@ describe('ActionsBar', () => {
     });
 
     it('should call clearItemFilter if defined when clicking the "item-filter-clear" button', () => {
-        const clearItemFilterSpy = jest.fn();
+        const clearItemFilterSpy = vi.fn();
         const itemFilter = shallow(<ActionBar itemFilter="💎" clearItemFilter={clearItemFilterSpy} />)
             .childAt(0)
             .dive();

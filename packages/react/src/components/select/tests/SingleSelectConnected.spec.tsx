@@ -193,7 +193,7 @@ describe('Select', () => {
         });
 
         it('should call with the selected option the onSelectOptionCallback prop when defined', () => {
-            const onSelectOptionCallbackSpy = jest.fn();
+            const onSelectOptionCallbackSpy = vi.fn();
 
             render(
                 <SingleSelectConnected

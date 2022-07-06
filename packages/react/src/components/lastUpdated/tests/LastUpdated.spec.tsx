@@ -28,7 +28,7 @@ describe('LastUpdated', () => {
         });
 
         it('should add the current time if we do not pass it the time prop', () => {
-            jest.useFakeTimers();
+            vi.useFakeTimers();
 
             const expectedTime = moment(new Date(Date.now())).format('LTS');
 
@@ -36,7 +36,7 @@ describe('LastUpdated', () => {
 
             expect(contains(lastUpdatedWrapper.html(), expectedTime)).toBe(true);
 
-            jest.clearAllTimers();
+            vi.clearAllTimers();
         });
 
         it('should use the default label if not defined', () => {
@@ -53,7 +53,7 @@ describe('LastUpdated', () => {
         });
 
         it('should trigger onRender prop when mounting', () => {
-            const renderSpy = jest.fn();
+            const renderSpy = vi.fn();
             lastUpdated = mount(<LastUpdated />, {attachTo: document.getElementById('App')});
 
             lastUpdated.unmount();
@@ -64,7 +64,7 @@ describe('LastUpdated', () => {
         });
 
         it('should trigger onDestroy prop when unmounting', () => {
-            const destroySpy = jest.fn();
+            const destroySpy = vi.fn();
             lastUpdated = mount(<LastUpdated />, {attachTo: document.getElementById('App')});
 
             expect(() => lastUpdated.instance().componentWillUnmount()).not.toThrow();

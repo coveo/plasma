@@ -4,26 +4,11 @@ import {AnyAction, applyMiddleware, combineReducers, createStore, Store} from 'r
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 
-import {Defaults} from '../src/Defaults';
 import {PlasmaReducers} from '../src/PlasmaReducers';
 import {PlasmaState} from '../src/PlasmaState';
 import {IDispatch} from '../src/utils/ReduxUtils';
 
 const TEST_CONTAINER_ID = 'app';
-const MODAL_ROOT_ID = 'modals';
-const DROP_ROOT_ID = 'dropdowns';
-
-const setup = () => {
-    document.body.innerHTML = `<div id="${TEST_CONTAINER_ID}"></div><div id="${MODAL_ROOT_ID}"></div><div id="${DROP_ROOT_ID}"></div>`;
-    Defaults.APP_ELEMENT = '#' + TEST_CONTAINER_ID;
-    Defaults.MODAL_ROOT = '#' + MODAL_ROOT_ID;
-    Defaults.DROP_ROOT = '#' + DROP_ROOT_ID;
-    Defaults.MODAL_TIMEOUT = 0;
-};
-
-const cleanup = () => {
-    jest.restoreAllMocks();
-};
 
 const customRender = (
     ui: React.ReactElement,
@@ -48,24 +33,5 @@ const customRender = (
     return render(ui, {wrapper: TestWrapper, container, ...renderOptions});
 };
 
-/**
- * Jest logs thrown errors with console.error even when using `.toThrow()` matcher.
- * This function will silence those logs.
- *
- * @param func Function that you would normally pass to `expect(func).toThrow()`
- */
-const expectToThrow = (func: () => unknown, error?: JestToErrorArg): void => {
-    // Even though the error is caught, it still gets printed to the console
-    // so we mock that out to avoid the wall of red text.
-    const spy = jest.spyOn(console, 'error');
-    spy.mockImplementation(() => null);
-
-    expect(func).toThrow(error);
-
-    spy.mockRestore();
-};
-
-type JestToErrorArg = Parameters<jest.Matchers<unknown, () => unknown>['toThrow']>[0];
-
 export * from '@testing-library/react';
-export {customRender as render, expectToThrow, cleanup, setup};
+export {customRender as render};

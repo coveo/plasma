@@ -22,7 +22,7 @@ describe('DeletableInput', () => {
         });
 
         it('should call property onBlur when delete button is clicked and prop is specified', () => {
-            const blurSpy = jest.fn();
+            const blurSpy = vi.fn();
             const deleteButton = deleteInput.find('.input-actions');
 
             deleteButton.simulate('click');

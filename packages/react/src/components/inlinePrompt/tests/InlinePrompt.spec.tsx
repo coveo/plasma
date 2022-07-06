@@ -7,7 +7,7 @@ describe('InlinePrompt', () => {
 
     it('should render without errors', () => {
         options = {
-            onClick: jest.fn(),
+            onClick: vi.fn(),
             userChoice: {},
         };
 
@@ -18,10 +18,10 @@ describe('InlinePrompt', () => {
 
     describe('<InlinePrompt />', () => {
         let inlinePrompt: ReactWrapper;
-        let onClickSpy: jest.Mock<any, any>;
+        let onClickSpy: vi.Mock<any, any>;
 
         beforeEach(() => {
-            onClickSpy = jest.fn();
+            onClickSpy = vi.fn();
             options = {
                 onClick: onClickSpy,
                 userChoice: {
@@ -101,7 +101,7 @@ describe('InlinePrompt', () => {
         });
 
         it('should call the onCancel prop if set when clicking the cancel button', () => {
-            const onCancelSpy = jest.fn();
+            const onCancelSpy = vi.fn();
 
             inlinePrompt.setProps({options: options, onCancel: onCancelSpy});
             inlinePrompt.find('.cancel').first().simulate('click');

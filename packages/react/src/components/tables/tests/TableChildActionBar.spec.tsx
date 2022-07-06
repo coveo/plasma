@@ -174,7 +174,7 @@ describe('<TableChildActionBar />', () => {
             });
 
             it('should call onPredicateOptionClick if onOptionClickCallback of a dropdownSearch connected is called', () => {
-                const onPredicateOptionClickSpy = jest.fn();
+                const onPredicateOptionClickSpy = vi.fn();
                 const tableActionBar = mountComponentWithProps({
                     ...tablePropsMock,
                     onPredicateOptionClick: onPredicateOptionClickSpy,

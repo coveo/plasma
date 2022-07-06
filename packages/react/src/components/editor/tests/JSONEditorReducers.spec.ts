@@ -66,7 +66,7 @@ describe('JSONEditorReducers', () => {
         });
 
         it('should return a jsonEditor with the valid status if passed', () => {
-            jest.spyOn(JSONEditorUtils, 'validateValue').mockReturnValue(true);
+            vi.spyOn(JSONEditorUtils, 'validateValue').mockReturnValue(true);
             const action = JSONEditorActions.addJSONEditor('new-json-editor', '{}');
             const newState = jsonEditorsReducer(oldState, action);
             const newJSONEditor = getNewJSONEditor(newState, action)[0];
@@ -102,7 +102,7 @@ describe('JSONEditorReducers', () => {
             });
 
             it('should return a jsonEditor with the valid status if passed', () => {
-                jest.spyOn(JSONEditorUtils, 'validateValue').mockReturnValue(true);
+                vi.spyOn(JSONEditorUtils, 'validateValue').mockReturnValue(true);
                 const action = JSONEditorActions.updateJSONEditorValue(oldState[0].id, '{}');
                 const newState = jsonEditorsReducer(oldState, action);
 

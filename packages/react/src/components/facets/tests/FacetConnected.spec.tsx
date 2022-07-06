@@ -48,8 +48,8 @@ describe('Facets', () => {
                     formattedName: 'Row 2',
                 },
             ];
-            onToggleFacet = jest.fn();
-            clearFacet = jest.fn();
+            onToggleFacet = vi.fn();
+            clearFacet = vi.fn();
 
             store = TestUtils.buildStore();
 

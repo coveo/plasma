@@ -169,10 +169,10 @@ describe('Select', () => {
 
         describe('interactions', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
-            let dispatchSpy: jest.SpyInstance;
+            let dispatchSpy: vi.SpyInstance;
 
             beforeEach(() => {
-                dispatchSpy = jest.spyOn(store, 'dispatch');
+                dispatchSpy = vi.spyOn(store, 'dispatch');
                 mountSingleSelect({items});
             });
 
@@ -294,7 +294,7 @@ describe('Select', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
             it('should not filter the items because it is done on the server', () => {
-                jest.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('a');
+                vi.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('a');
                 const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
                     <ServerSideSingleSelectWithFilter {...basicProps} items={items} />,
                     store
@@ -306,8 +306,8 @@ describe('Select', () => {
             });
 
             it('should trigger the onUpdate prop when the selected predicate changes', () => {
-                const onUpdateSpy = jest.fn();
-                jest.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('current-filter-value');
+                const onUpdateSpy = vi.fn();
+                vi.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('current-filter-value');
                 const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
                     <ServerSideSingleSelectWithFilter {...basicProps} items={items} onUpdate={onUpdateSpy} />,
                     store

@@ -5,7 +5,7 @@ import {IActionOptions} from '../Action';
 import {ITriggerActionProps, TriggerAction} from '../TriggerActionConnected';
 
 describe('Actions', () => {
-    let triggerSpy: jest.Mock;
+    let triggerSpy: vi.Mock;
     const action: IActionOptions = {
         name: 'action',
         enabled: true,
@@ -23,7 +23,7 @@ describe('Actions', () => {
         let triggerActionInstance: TriggerAction;
 
         beforeEach(() => {
-            triggerSpy = jest.fn();
+            triggerSpy = vi.fn();
             action.trigger = triggerSpy;
             triggerAction = mount(<TriggerAction action={action} simple={simple} />, {
                 attachTo: document.getElementById('App'),
@@ -68,7 +68,7 @@ describe('Actions', () => {
         });
 
         it('should call onTriggerAction when clicked if action is enabled', () => {
-            const onTriggerActionSpy = jest.spyOn<any, string>(triggerActionInstance, 'onTriggerAction');
+            const onTriggerActionSpy = vi.spyOn<any, string>(triggerActionInstance, 'onTriggerAction');
 
             triggerAction.find('.enabled').simulate('click');
 
@@ -77,7 +77,7 @@ describe('Actions', () => {
 
         it('should not call onTriggerAction when clicked if action is not enabled and visible', () => {
             triggerAction.setProps({action: {...action, enabled: false, hideDisabled: false}});
-            const onTriggerActionSpy = jest.spyOn<any, string>(triggerActionInstance, 'onTriggerAction');
+            const onTriggerActionSpy = vi.spyOn<any, string>(triggerActionInstance, 'onTriggerAction');
 
             triggerAction.find('.state-disabled').simulate('click');
 
@@ -91,7 +91,7 @@ describe('Actions', () => {
         });
 
         it('should call the onCloseDropdown if it exists and no confirmation is required', () => {
-            const onCloseDropdownSpy = jest.fn();
+            const onCloseDropdownSpy = vi.fn();
             triggerAction.setProps({onCloseDropdown: onCloseDropdownSpy});
 
             triggerAction.find('.enabled').simulate('click');
@@ -100,7 +100,7 @@ describe('Actions', () => {
         });
 
         it('should call the onTriggerConfirm if set when clicked and confirmation is required', () => {
-            const onTriggerConfirmSpy = jest.fn();
+            const onTriggerConfirmSpy = vi.fn();
 
             const newAction = _.extend({}, action);
             newAction.requiresConfirmation = {
@@ -136,7 +136,7 @@ describe('Actions', () => {
                 const onTriggerConfirm = (onClick: () => void) => {
                     onClick();
                 };
-                const onConfirmSpy = jest.fn();
+                const onConfirmSpy = vi.fn();
                 const newAction = _.extend({}, action);
                 newAction.requiresConfirmation = {
                     confirmType: 'danger',

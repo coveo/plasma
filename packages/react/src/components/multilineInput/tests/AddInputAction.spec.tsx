@@ -31,7 +31,7 @@ describe('AddInputAction', () => {
         });
 
         it('should call onClick props on button click if prop is set', () => {
-            const clickSpy = jest.fn();
+            const clickSpy = vi.fn();
 
             const innerAction = addInput.find('.input-actions');
             innerAction.simulate('click');

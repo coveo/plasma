@@ -82,7 +82,7 @@ describe('Tables', () => {
         });
 
         it('should call onRender prop if set on mount', () => {
-            const onRenderSpy = jest.fn();
+            const onRenderSpy = vi.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onRender: onRenderSpy});
 
             tableHeadingRow.unmount();
@@ -93,7 +93,7 @@ describe('Tables', () => {
         });
 
         it('should call onDestroy prop if set when unmounting', () => {
-            const onDestroySpy = jest.fn();
+            const onDestroySpy = vi.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onDestroy: onDestroySpy});
 
             expect(() => tableHeadingRowInstance.componentWillUnmount()).not.toThrow();
@@ -107,7 +107,7 @@ describe('Tables', () => {
         });
 
         it('should call onClick prop if set when clicking on row', () => {
-            const onClickSpy = jest.fn();
+            const onClickSpy = vi.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onClick: onClickSpy});
 
             tableHeadingRow.setProps(newTabledHeadingRowProps as any);
@@ -117,7 +117,7 @@ describe('Tables', () => {
         });
 
         it('should call onDoubleClick prop if set when double clicking on row', () => {
-            const onDoubleClickSpy = jest.fn();
+            const onDoubleClickSpy = vi.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onDoubleClick: onDoubleClickSpy});
 
             tableHeadingRow.setProps(newTabledHeadingRowProps as any);
@@ -127,7 +127,7 @@ describe('Tables', () => {
         });
 
         it('should call onClickCallBack prop if set when clicking on row', () => {
-            const onClickCallback = jest.fn();
+            const onClickCallback = vi.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onClickCallback});
             tableHeadingRow.setProps(newTabledHeadingRowProps as any);
 
@@ -137,7 +137,7 @@ describe('Tables', () => {
         });
 
         it('should not call onClick prop if set when clicking inside an underlying dropdown', () => {
-            const onClickSpy = jest.fn();
+            const onClickSpy = vi.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onClick: onClickSpy});
 
             tableHeadingRow.setProps(newTabledHeadingRowProps as any);

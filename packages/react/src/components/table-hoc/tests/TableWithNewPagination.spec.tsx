@@ -57,7 +57,7 @@ describe('TableWithNewPagination tests', () => {
             });
 
             it('should not call onUpdate if the pageNb dont change', () => {
-                const spy = jest.fn();
+                const spy = vi.fn();
                 wrapper = shallowTableWithNewPagination(
                     {perPageNumbers: []},
                     {onUpdate: spy, id: 'test'},
@@ -73,7 +73,7 @@ describe('TableWithNewPagination tests', () => {
             });
 
             it('should call onUpdate if the pageNb change', () => {
-                const spy = jest.fn();
+                const spy = vi.fn();
                 wrapper = shallowTableWithNewPagination(
                     {perPageNumbers: []},
                     {onUpdate: spy, id: 'test'},
@@ -89,7 +89,7 @@ describe('TableWithNewPagination tests', () => {
             });
 
             it('should not call onUpdate if the perPage dont change', () => {
-                const spy = jest.fn();
+                const spy = vi.fn();
                 wrapper = shallowTableWithNewPagination(
                     {perPageNumbers: []},
                     {onUpdate: spy, id: 'test'},
@@ -105,7 +105,7 @@ describe('TableWithNewPagination tests', () => {
             });
 
             it('should call onUpdate if the perPage change', () => {
-                const spy = jest.fn();
+                const spy = vi.fn();
                 wrapper = shallowTableWithNewPagination(
                     {perPageNumbers: []},
                     {onUpdate: spy, id: 'test'},

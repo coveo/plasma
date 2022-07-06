@@ -20,7 +20,7 @@ describe('TableWithPrepend', () => {
     });
 
     it('should not render prepended content if the table is truly empty', () => {
-        jest.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValue(true);
+        vi.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValue(true);
         const Prepend = () => <span>ink!</span>;
         const wrapper = shallowWithState(<TableWithPrepend {...basicProps} data={[]} prepend={<Prepend />} />, {})
             .dive()
@@ -32,7 +32,7 @@ describe('TableWithPrepend', () => {
     });
 
     it('should render prepended content if the table is not truly empty', () => {
-        jest.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValue(false);
+        vi.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValue(false);
         const Prepend = () => <span>ink!</span>;
         const wrapper = shallowWithState(<TableWithPrepend {...basicProps} data={[]} prepend={<Prepend />} />, {})
             .dive()

@@ -40,7 +40,7 @@ describe('Limit', () => {
     });
 
     it('calls the onClick method on history icon onClick', () => {
-        const clickSpy = jest.fn();
+        const clickSpy = vi.fn();
         render(<Limit id="🆔" title="My limit" limit={100} isHistoryIncluded={true} onHistoryIconClick={clickSpy} />);
         const historyIcon = screen.getByLabelText(/menuanalytics icon/i);
         userEvent.click(historyIcon);

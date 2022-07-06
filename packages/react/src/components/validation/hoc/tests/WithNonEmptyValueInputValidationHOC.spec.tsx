@@ -45,10 +45,10 @@ describe('WithNonEmptyValueInputValidationHOC', () => {
         });
 
         describe('after mount', () => {
-            let validateSpy: jest.Mock<any, any>;
+            let validateSpy: vi.Mock<any, any>;
 
             beforeEach(() => {
-                validateSpy = jest.fn();
+                validateSpy = vi.fn();
                 inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} validate={validateSpy} />, store).dive();
             });
 

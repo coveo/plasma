@@ -43,7 +43,7 @@ describe('<JSONEditor />', () => {
 
     it('should validate value when editing json', () => {
         const expectedValue = '{}';
-        const validateSpy = jest.spyOn(JSONEditorUtils, 'validateValue');
+        const validateSpy = vi.spyOn(JSONEditorUtils, 'validateValue');
 
         shallowComponent();
 
@@ -56,7 +56,7 @@ describe('<JSONEditor />', () => {
 
     it('should call the onChange prop if set when editing json', () => {
         const expectedValue = '';
-        const onChangeSpy = jest.fn();
+        const onChangeSpy = vi.fn();
 
         shallowComponent({onChange: onChangeSpy});
         component.find(CodeEditor).prop('onChange')(expectedValue);

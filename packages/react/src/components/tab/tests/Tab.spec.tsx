@@ -37,7 +37,7 @@ describe('Tab', () => {
     });
 
     it('redirects to the specified url when clicking on the tab', () => {
-        const spy = jest.spyOn(UrlUtils, 'redirectToUrl').mockImplementation(() => null);
+        const spy = vi.spyOn(UrlUtils, 'redirectToUrl').mockImplementation(() => null);
         render(<Tab title="Title" url="www" />);
         userEvent.click(screen.getByRole('tab', {name: /title/i}));
         expect(spy).toHaveBeenCalledWith('www');
@@ -46,7 +46,7 @@ describe('Tab', () => {
     });
 
     it('calls the onSelect callback when clicking on the tab', () => {
-        const onSelectSpy = jest.fn();
+        const onSelectSpy = vi.fn();
         render(<TabConnected id="🆔" title="Title" onSelect={onSelectSpy} />);
         userEvent.click(screen.getByRole('tab', {name: /title/i}));
         expect(onSelectSpy).toHaveBeenCalled();

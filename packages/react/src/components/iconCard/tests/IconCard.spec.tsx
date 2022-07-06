@@ -65,7 +65,7 @@ describe('IconCard', () => {
     });
 
     it('calls the "onClick" prop when clicking on the card', () => {
-        const mockOnClick = jest.fn();
+        const mockOnClick = vi.fn();
         render(<IconCard title="Title" svgName="home" onClick={mockOnClick} />);
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -76,7 +76,7 @@ describe('IconCard', () => {
     });
 
     it('does not call the "onClick" prop when clicking on the card if it is disabled', () => {
-        const mockOnClick = jest.fn();
+        const mockOnClick = vi.fn();
         render(<IconCard title="Title" svgName="home" onClick={mockOnClick} disabled />);
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -101,7 +101,7 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
                 ]}
-                onClick={jest.fn()}
+                onClick={vi.fn()}
             />
         );
 
@@ -190,7 +190,7 @@ describe('IconCard', () => {
     });
 
     it('calls the onClick prop with the choice value when clicking on one of them', () => {
-        const mockOnClick = jest.fn();
+        const mockOnClick = vi.fn();
         render(
             <IconCard
                 title="Title"
@@ -211,7 +211,7 @@ describe('IconCard', () => {
     });
 
     it('renders disabled buttons for disabled choices', () => {
-        const mockOnClick = jest.fn();
+        const mockOnClick = vi.fn();
         render(
             <IconCard
                 title="Title"

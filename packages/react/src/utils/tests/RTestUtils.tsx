@@ -10,7 +10,7 @@ import {UUID} from '../UUID';
 import {TestUtils} from './TestUtils';
 
 const mockUUID = (generatedId: string = 'id') => {
-    jest.spyOn(UUID, 'generate').mockReturnValue(generatedId);
+    vi.spyOn(UUID, 'generate').mockReturnValue(generatedId);
 };
 
 const renderComponent = (ComponentClass: any, props = {}, child: ReactNode = null) => {

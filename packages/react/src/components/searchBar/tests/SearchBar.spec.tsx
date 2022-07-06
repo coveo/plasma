@@ -48,7 +48,7 @@ describe('SearchBar', () => {
     });
 
     it('calls onSearch when user click on the search icon', () => {
-        const searchSpy = jest.fn();
+        const searchSpy = vi.fn();
 
         render(<SearchBar onSearch={searchSpy} />);
         userEvent.click(screen.queryByRole('img', {name: 'search icon'}));
@@ -57,7 +57,7 @@ describe('SearchBar', () => {
     });
 
     it('calls onSearch if user press enter', () => {
-        const searchSpy = jest.fn();
+        const searchSpy = vi.fn();
 
         render(<SearchBar onSearch={searchSpy} />);
         userEvent.click(screen.getByRole('textbox'));
@@ -67,7 +67,7 @@ describe('SearchBar', () => {
     });
 
     it('dont call onSearch will the user is typing', () => {
-        const searchSpy = jest.fn();
+        const searchSpy = vi.fn();
 
         render(<SearchBar onSearch={searchSpy} />);
         userEvent.click(screen.getByRole('textbox'));
@@ -77,7 +77,7 @@ describe('SearchBar', () => {
     });
 
     it('dont calls onSearch if the search bar is disabled', () => {
-        const searchSpy = jest.fn();
+        const searchSpy = vi.fn();
 
         render(<SearchBar onSearch={searchSpy} disabled />);
         userEvent.click(screen.queryByRole('img', {name: 'search icon'}));
@@ -91,7 +91,7 @@ describe('SearchBar', () => {
     });
 
     it('call onChange on input change if it is defined', () => {
-        const onChangeSpy = jest.fn();
+        const onChangeSpy = vi.fn();
 
         render(<SearchBar onChange={onChangeSpy} />);
         userEvent.click(screen.getByRole('textbox'));

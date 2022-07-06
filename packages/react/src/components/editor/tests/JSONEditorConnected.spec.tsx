@@ -62,7 +62,7 @@ describe('<JSONEditorConnected />', () => {
 
     it('should call the onChange function from props if it is provided', async () => {
         const expectedValue = 'hello';
-        const onChangeSpy = jest.fn();
+        const onChangeSpy = vi.fn();
 
         render(<JSONEditorConnected id="💙" defaultValue={''} onChange={onChangeSpy} />);
 

@@ -60,7 +60,7 @@ describe('<CollapsibleConnected />', () => {
             });
 
             it('should call onClick prop if set when clicking the toggle', () => {
-                const onClickSpy = jest.fn();
+                const onClickSpy = vi.fn();
                 mountComponentWithProps({disabled: false, onClick: onClickSpy});
 
                 wrapper.find(`.${collapsibleProps.headerClasses}`).simulate('click');
@@ -69,7 +69,7 @@ describe('<CollapsibleConnected />', () => {
             });
 
             it('should not call onClick prop when clicking the toggle if disabled', () => {
-                const onClickSpy = jest.fn();
+                const onClickSpy = vi.fn();
                 mountComponentWithProps({disabled: true, onClick: onClickSpy});
 
                 wrapper.find(`.${collapsibleProps.headerClasses}`).simulate('click');

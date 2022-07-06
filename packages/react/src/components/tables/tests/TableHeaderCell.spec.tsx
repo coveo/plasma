@@ -61,7 +61,7 @@ describe('Tables', () => {
         });
 
         it('should call onMount if it is set as a prop and attributeToSort is defined', () => {
-            const onMountSpy = jest.fn();
+            const onMountSpy = vi.fn();
 
             tableHeaderCell.unmount();
             tableHeaderCell.setProps({onMount: onMountSpy, attributeToSort: 'i am defined', onUnmount: _.noop});
@@ -71,7 +71,7 @@ describe('Tables', () => {
         });
 
         it('should not call onMount if it is set as a prop and attributeToSort is undefined', () => {
-            const onMountSpy = jest.fn();
+            const onMountSpy = vi.fn();
 
             tableHeaderCell.unmount();
             tableHeaderCell.setProps({onMount: onMountSpy, onUnmount: _.noop});
@@ -81,7 +81,7 @@ describe('Tables', () => {
         });
 
         it('should call onSort on click of the header cell if it is set as a prop and attributeToSort is defined', () => {
-            const onSortSpy = jest.fn();
+            const onSortSpy = vi.fn();
 
             tableHeaderCell.setProps({onSort: onSortSpy, attributeToSort: 'i am defined'});
             tableHeaderCell.simulate('click');
@@ -90,7 +90,7 @@ describe('Tables', () => {
         });
 
         it('should not call onSort on click of the header cell if it is set as a prop and attributeToSort is undefined', () => {
-            const onSortSpy = jest.fn();
+            const onSortSpy = vi.fn();
 
             tableHeaderCell.setProps({onSort: onSortSpy});
             tableHeaderCell.simulate('click');
@@ -99,7 +99,7 @@ describe('Tables', () => {
         });
 
         it('should call onUnmount if it is set as a prop', () => {
-            const onUnmountSpy = jest.fn();
+            const onUnmountSpy = vi.fn();
 
             tableHeaderCell.setProps({onUnmount: onUnmountSpy});
             tableHeaderCell.unmount();
@@ -108,7 +108,7 @@ describe('Tables', () => {
         });
 
         it('should call onClickCallBack if it is set as a prop', () => {
-            const onClickCallBackSpy = jest.fn();
+            const onClickCallBackSpy = vi.fn();
             tableHeaderCell.setProps({onClickCallback: onClickCallBackSpy});
 
             tableHeaderCell.find('th').simulate('click');

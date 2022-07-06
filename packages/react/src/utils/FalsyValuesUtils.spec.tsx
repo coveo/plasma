@@ -17,10 +17,10 @@ describe('FalsyValuesUtils', () => {
 });
 
 describe('callIfDefined', () => {
-    let callbackSpy: jest.Mock<any, any>;
+    let callbackSpy: vi.Mock<any, any>;
 
     beforeEach(() => {
-        callbackSpy = jest.fn();
+        callbackSpy = vi.fn();
     });
 
     it('should call the callback when it is a defined function', () => {

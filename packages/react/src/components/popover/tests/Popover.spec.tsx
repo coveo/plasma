@@ -11,7 +11,7 @@ describe('<Popover>', () => {
     const popoverElementId = 'PopoverElement';
     const popoverToggleSelector = `#${popoverToggleId}`;
 
-    let toggleOpenedSpy: jest.SpyInstance;
+    let toggleOpenedSpy: vi.SpyInstance;
 
     const mountPopover = (props: IPopoverProps) =>
         (popoverWrapper = mount(
@@ -26,11 +26,11 @@ describe('<Popover>', () => {
             attachment: 'top left',
         };
 
-        toggleOpenedSpy = jest.spyOn(Popover.prototype, 'toggleOpened');
+        toggleOpenedSpy = vi.spyOn(Popover.prototype, 'toggleOpened');
     });
 
     afterEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     it('should render without error', () => {
@@ -112,10 +112,10 @@ describe('<Popover>', () => {
             });
 
             describe('With a controlled Popover', () => {
-                let onToggleSpy: jest.Mock<any, any>;
+                let onToggleSpy: vi.Mock<any, any>;
 
                 beforeEach(() => {
-                    onToggleSpy = jest.fn();
+                    onToggleSpy = vi.fn();
 
                     popoverProps.onToggle = onToggleSpy;
 

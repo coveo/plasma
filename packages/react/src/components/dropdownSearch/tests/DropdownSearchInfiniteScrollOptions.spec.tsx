@@ -12,13 +12,13 @@ describe('DropdownSearchInfiniteScrollOptions', () => {
 
     beforeEach(() => {
         basicProps = {
-            onMouseEnter: jest.fn(),
+            onMouseEnter: vi.fn(),
             options: [<div key="1">1</div>, <div key="2">2</div>],
-            ulElementRefFunction: jest.fn(),
+            ulElementRefFunction: vi.fn(),
             infiniteScroll: {
                 dataLength: 42,
                 hasMore: true,
-                next: jest.fn(),
+                next: vi.fn(),
                 endMessage: 'The end.',
                 loader: undefined,
             },

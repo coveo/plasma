@@ -36,7 +36,7 @@ describe('Filepicker', () => {
     });
 
     it('should render the placeholder in the input label when no file is selected', () => {
-        jest.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(true);
+        vi.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(true);
         const inputLabel = shallowWithState(<Filepicker {...basicProps} placeholder="🔥" />, {filepickers: {}})
             .dive()
             .dive()
@@ -48,7 +48,7 @@ describe('Filepicker', () => {
 
     it('should add the filepicker in the state on mount', () => {
         const store = getStoreMock({filepickers: {}});
-        const addFilepickerSpy = jest.spyOn(FilepickerActions, 'add');
+        const addFilepickerSpy = vi.spyOn(FilepickerActions, 'add');
         act(() => {
             mount(
                 <Provider store={store}>
@@ -62,7 +62,7 @@ describe('Filepicker', () => {
 
     it('should remove the filepicker from the state on unmount', () => {
         const store = getStoreMock({filepickers: {}});
-        const clearFilepickerSpy = jest.spyOn(FilepickerActions, 'clear');
+        const clearFilepickerSpy = vi.spyOn(FilepickerActions, 'clear');
         const filepicker = mount(
             <Provider store={store}>
                 <Filepicker {...basicProps} />
@@ -74,7 +74,7 @@ describe('Filepicker', () => {
     });
 
     it('should set the selected file metadata in the state when it changes in the input', () => {
-        const setFileMetadataSpy = jest.spyOn(FilepickerActions, 'setFile');
+        const setFileMetadataSpy = vi.spyOn(FilepickerActions, 'setFile');
         const filepicker = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
             .dive()
             .dive()
@@ -95,7 +95,7 @@ describe('Filepicker', () => {
     });
 
     it('should render a clear button when a file is selected', () => {
-        jest.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(false);
+        vi.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(false);
         const cancelButton = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
             .dive()
             .dive()
@@ -105,7 +105,7 @@ describe('Filepicker', () => {
     });
 
     it('should not render a clear button when no file is selected', () => {
-        jest.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(true);
+        vi.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(true);
         const cancelButton = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
             .dive()
             .dive()
@@ -115,8 +115,8 @@ describe('Filepicker', () => {
     });
 
     it('should set the selected file to null in the state when clicking on the clear button', () => {
-        const setFileMetadataSpy = jest.spyOn(FilepickerActions, 'setFile');
-        jest.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(false);
+        const setFileMetadataSpy = vi.spyOn(FilepickerActions, 'setFile');
+        vi.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(false);
         const cancelButton = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
             .dive()
             .dive()

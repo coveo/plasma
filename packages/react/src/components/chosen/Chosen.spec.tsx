@@ -5,10 +5,10 @@ import {ChosenSelect, IChosenSelectProps} from './ChosenSelect';
 describe('<ChosenSelect>', () => {
     let chosenSelectWrapper: ReactWrapper<IChosenSelectProps, any>;
     let chosenSelectProps: IChosenSelectProps;
-    let onChosenChangeSpy: jest.Mock<any, any>;
+    let onChosenChangeSpy: vi.Mock<any, any>;
 
     beforeAll(() => {
-        onChosenChangeSpy = jest.fn();
+        onChosenChangeSpy = vi.fn();
     });
 
     beforeEach(() => {

@@ -6,14 +6,14 @@ import {Modal} from '../Modal';
 
 describe('Modal', () => {
     it('calls onRender prop when mounting', () => {
-        const renderSpy = jest.fn();
+        const renderSpy = vi.fn();
         render(<Modal id="🆔" onRender={renderSpy} />);
 
         expect(renderSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
-        const destroySpy = jest.fn();
+        const destroySpy = vi.fn();
         const {unmount} = render(<Modal id="🆔" onDestroy={destroySpy} />);
 
         unmount();
@@ -22,7 +22,7 @@ describe('Modal', () => {
     });
 
     it('should call the prop closeCallback if it exists when closing the modal', async () => {
-        const closeCallbackSpy = jest.fn();
+        const closeCallbackSpy = vi.fn();
         const ModalFixture = () => {
             const [isOpened, setIsOpened] = useState(true);
             return (
@@ -39,8 +39,8 @@ describe('Modal', () => {
     });
 
     it('should call the prop closeCallback with a timeout if specified when closing the modal', () => {
-        jest.useFakeTimers();
-        const closeCallbackSpy = jest.fn();
+        vi.useFakeTimers();
+        const closeCallbackSpy = vi.fn();
         const ModalFixture = () => {
             const [isOpened, setIsOpened] = useState(true);
             return (
@@ -53,10 +53,10 @@ describe('Modal', () => {
         render(<ModalFixture />);
         userEvent.click(screen.getByRole('button', {name: /close/i}));
         expect(closeCallbackSpy).toHaveBeenCalledTimes(0);
-        jest.advanceTimersByTime(500);
+        vi.advanceTimersByTime(500);
 
         expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
 
-        jest.clearAllTimers();
+        vi.clearAllTimers();
     });
 });

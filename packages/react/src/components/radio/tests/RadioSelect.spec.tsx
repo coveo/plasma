@@ -21,7 +21,7 @@ describe('<RadioSelect />', () => {
 
     describe('once mounted', () => {
         let radioSelect: ShallowWrapper<IRadioSelectAllProps>;
-        let spy: jest.Mock<any, any>;
+        let spy: vi.Mock<any, any>;
 
         const firstRadioValue = 'blue';
         const secondRadioValue = 'red';
@@ -29,7 +29,7 @@ describe('<RadioSelect />', () => {
         const specialDisabledTooltip = 'oh no i am disabled';
 
         const shallowRadioSelect = (props: IRadioSelectAllProps = {}) => {
-            spy = jest.fn();
+            spy = vi.fn();
             radioSelect = shallow(
                 <RadioSelect {...props}>
                     <Radio id="radio1" value={firstRadioValue} onClick={spy} disabledTooltip={specialDisabledTooltip} />
@@ -39,7 +39,7 @@ describe('<RadioSelect />', () => {
         };
 
         const shallowRadioSelectWithCard = (props: IRadioSelectAllProps = {}) => {
-            spy = jest.fn();
+            spy = vi.fn();
             radioSelect = shallow(
                 <RadioSelect {...props}>
                     <RadioCard
@@ -69,7 +69,7 @@ describe('<RadioSelect />', () => {
         shallowRadioSelectVariations.forEach((variation) => {
             describe(`${variation.name}`, () => {
                 it('should call onMount on mount', () => {
-                    const spyOnMount = jest.fn();
+                    const spyOnMount = vi.fn();
                     variation.creator({
                         onMount: spyOnMount,
                     });
@@ -78,7 +78,7 @@ describe('<RadioSelect />', () => {
                 });
 
                 it('should call onUnmount on unmount', () => {
-                    const spyOnUnmount = jest.fn();
+                    const spyOnUnmount = vi.fn();
                     variation.creator({
                         onUnmount: spyOnUnmount,
                     });
@@ -155,7 +155,7 @@ describe('<RadioSelect />', () => {
                 });
 
                 it('should call onChange prop when the child call onClick', () => {
-                    const spyOnChange = jest.fn();
+                    const spyOnChange = vi.fn();
                     variation.creator({
                         onChange: spyOnChange,
                     });
@@ -170,7 +170,7 @@ describe('<RadioSelect />', () => {
                 });
 
                 it('should not call onChange prop when the child call onClick if the component is disabled', () => {
-                    const spyOnChange = jest.fn();
+                    const spyOnChange = vi.fn();
                     variation.creator({
                         onChange: spyOnChange,
                         disabled: true,
@@ -186,7 +186,7 @@ describe('<RadioSelect />', () => {
                 });
 
                 it('should call onChangeCallback prop when the child call onClick', () => {
-                    const spyOnChangeCallback = jest.fn();
+                    const spyOnChangeCallback = vi.fn();
                     variation.creator({
                         onChangeCallback: spyOnChangeCallback,
                     });

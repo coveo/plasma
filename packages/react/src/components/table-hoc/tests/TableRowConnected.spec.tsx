@@ -33,7 +33,7 @@ describe('Table HOC', () => {
         });
 
         afterEach(() => {
-            jest.restoreAllMocks();
+            vi.restoreAllMocks();
         });
 
         it('should not throw', () => {
@@ -131,7 +131,7 @@ describe('Table HOC', () => {
 
         it('should dispatch an TableHOCRowActions.remove on componentWillUnmount', () => {
             const expectedAction = TableHOCRowActions.remove(defaultProps.id, defaultProps.tableId, true);
-            jest.spyOn(TableSelectors, 'getTableRow').mockReturnValue({
+            vi.spyOn(TableSelectors, 'getTableRow').mockReturnValue({
                 selected: true,
                 opened: false,
             } as HOCTableRowState);
@@ -174,7 +174,7 @@ describe('Table HOC', () => {
             const actions = [{name: 'name', enabled: false}];
             const newActions = [{name: 'name', enabled: true}];
             const expectedAction = addActionsToActionBar(defaultProps.tableId, actions);
-            jest.spyOn(TableSelectors, 'getTableRow').mockReturnValue({
+            vi.spyOn(TableSelectors, 'getTableRow').mockReturnValue({
                 selected: true,
                 opened: false,
             } as HOCTableRowState);
@@ -191,7 +191,7 @@ describe('Table HOC', () => {
             const actions = [{name: 'name', enabled: false}];
             const newActions = [{name: 'name', enabled: true}];
             const expectedAction = TableHOCRowActions.select(defaultProps.id, false);
-            jest.spyOn(TableSelectors, 'getTableRow').mockReturnValue({
+            vi.spyOn(TableSelectors, 'getTableRow').mockReturnValue({
                 selected: true,
                 opened: false,
             } as HOCTableRowState);
@@ -253,7 +253,7 @@ describe('Table HOC', () => {
 
         describe('double click', () => {
             it('should dispatch trigger actions with callOnDoubleClick=true when double clicking the row', () => {
-                const triggerActionSpy = jest.fn();
+                const triggerActionSpy = vi.fn();
 
                 const wrapper = shallowWithStore(
                     <TableRowConnected
@@ -271,8 +271,8 @@ describe('Table HOC', () => {
             });
 
             it('should navigate to the link if a link is defined instead of the trigger', () => {
-                const triggerActionSpy = jest.fn();
-                const redirectionSpy = jest.spyOn(UrlUtils, 'redirectToUrl');
+                const triggerActionSpy = vi.fn();
+                const redirectionSpy = vi.spyOn(UrlUtils, 'redirectToUrl');
                 const wrapper = shallowWithStore(
                     <TableRowConnected
                         {...defaultProps}
@@ -297,7 +297,7 @@ describe('Table HOC', () => {
             });
 
             it('should not be triggered in any way when the action is not enabled', () => {
-                const triggerActionSpy = jest.fn();
+                const triggerActionSpy = vi.fn();
                 const wrapper = shallowWithStore(
                     <TableRowConnected
                         {...defaultProps}
@@ -437,8 +437,8 @@ describe('Table HOC', () => {
                 const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id);
 
                 wrapper.find(CollapsibleToggle).simulate('click', {
-                    preventDefault: jest.fn(),
-                    stopPropagation: jest.fn(),
+                    preventDefault: vi.fn(),
+                    stopPropagation: vi.fn(),
                 });
 
                 expect(store.getActions()).toContainEqual(expectedAction);
@@ -552,7 +552,7 @@ describe('Table HOC', () => {
         });
 
         it('should call the onToggleCollapsible props with true the row is opened', () => {
-            const spy = jest.fn();
+            const spy = vi.fn();
             store = getStoreMock({
                 tableHOCRow: [
                     {
@@ -579,15 +579,15 @@ describe('Table HOC', () => {
                 .dive();
 
             row.find(CollapsibleToggle).simulate('click', {
-                preventDefault: jest.fn(),
-                stopPropagation: jest.fn(),
+                preventDefault: vi.fn(),
+                stopPropagation: vi.fn(),
             });
 
             expect(spy).toHaveBeenCalledWith(true);
         });
 
         it('should call the onToggleCollapsible props with false the row is closed', () => {
-            const spy = jest.fn();
+            const spy = vi.fn();
             store = getStoreMock({
                 tableHOCRow: [
                     {
@@ -614,8 +614,8 @@ describe('Table HOC', () => {
                 .dive();
 
             row.find(CollapsibleToggle).simulate('click', {
-                preventDefault: jest.fn(),
-                stopPropagation: jest.fn(),
+                preventDefault: vi.fn(),
+                stopPropagation: vi.fn(),
             });
 
             expect(spy).toHaveBeenCalledWith(false);

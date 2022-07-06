@@ -68,7 +68,7 @@ describe('Table HOC', () => {
         it('renders accessible actions when the user selects a row', () => {
             const actions = [
                 {id: 'first-action', name: 'first one', primary: true, enabled: true, link: 'https://external.link'},
-                {id: 'second-action', name: 'second one', primary: true, enabled: true, trigger: jest.fn()},
+                {id: 'second-action', name: 'second one', primary: true, enabled: true, trigger: vi.fn()},
             ];
             render(
                 <TableWithActions
@@ -111,11 +111,11 @@ describe('Table HOC', () => {
                     icon: 'edit',
                     primary: true,
                     enabled: true,
-                    trigger: jest.fn(),
+                    trigger: vi.fn(),
                 },
-                {id: 'third-action', name: 'third one', icon: 'view', enabled: true, trigger: jest.fn()},
-                {id: 'fourth-action', name: 'fourth one', icon: 'details', enabled: true, trigger: jest.fn()},
-                {id: 'fifth-action', name: 'fifth one', icon: 'lock', enabled: true, trigger: jest.fn()},
+                {id: 'third-action', name: 'third one', icon: 'view', enabled: true, trigger: vi.fn()},
+                {id: 'fourth-action', name: 'fourth one', icon: 'details', enabled: true, trigger: vi.fn()},
+                {id: 'fifth-action', name: 'fifth one', icon: 'lock', enabled: true, trigger: vi.fn()},
             ];
             render(
                 <TableWithActions

@@ -41,7 +41,7 @@ describe('DropdownSearch', () => {
     const infiniteScrollProps: InfiniteScrollProps = {
         dataLength: 2,
         hasMore: true,
-        next: jest.fn(),
+        next: vi.fn(),
         endMessage: 'no more',
         loader: null,
     };
@@ -65,7 +65,7 @@ describe('DropdownSearch', () => {
             if (dropdownSearch?.exists()) {
                 dropdownSearch.unmount();
             }
-            jest.restoreAllMocks();
+            vi.restoreAllMocks();
         });
 
         describe('default props', () => {
@@ -98,7 +98,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onMountCallBack prop if set when mounting', () => {
-                const onMountCallBack = jest.fn();
+                const onMountCallBack = vi.fn();
 
                 dropdownSearch.unmount();
                 dropdownSearch.setProps({onMountCallBack});
@@ -108,7 +108,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onMount prop if set when mounting', () => {
-                const onMountSpy = jest.fn();
+                const onMountSpy = vi.fn();
 
                 dropdownSearch.unmount();
                 dropdownSearch.setProps({onMount: onMountSpy});
@@ -118,7 +118,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onDestroy prop if set when will unmount', () => {
-                const onDestroy = jest.fn();
+                const onDestroy = vi.fn();
 
                 expect(() => dropdownSearchInstance.componentWillUnmount()).not.toThrow();
 
@@ -129,7 +129,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onFilterTextChange if defined when onChange the "filter-box" input', () => {
-                const onFilterTextChange = jest.fn();
+                const onFilterTextChange = vi.fn();
                 dropdownSearch.setProps({isOpened: true, onFilterTextChange});
                 dropdownSearch.find('input.filter-box').simulate('change');
 
@@ -137,11 +137,11 @@ describe('DropdownSearch', () => {
             });
 
             it('should not call onFilterTextChange if defined when the filter box input changes and customFiltering is defined', () => {
-                const onFilterTextChange = jest.fn();
+                const onFilterTextChange = vi.fn();
                 dropdownSearch.setProps({
                     isOpened: true,
                     onFilterTextChange,
-                    customFiltering: jest.fn(),
+                    customFiltering: vi.fn(),
                 });
                 dropdownSearch.find('input.filter-box').simulate('change');
 
@@ -149,7 +149,7 @@ describe('DropdownSearch', () => {
             });
 
             it('shoudl call customFiltering if defined when the filter box input changes', () => {
-                const customFiltering = jest.fn();
+                const customFiltering = vi.fn();
                 dropdownSearch.setProps({isOpened: true, customFiltering});
                 dropdownSearch.find('input.filter-box').simulate('change');
 
@@ -157,7 +157,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onBlur if defined when we lost focus on "filter-box" input', () => {
-                const onBlur = jest.fn();
+                const onBlur = vi.fn();
                 dropdownSearch.setProps({onBlur, isOpened: true});
 
                 const element = dropdownSearch.find('.filter-box');
@@ -168,7 +168,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onToggleDropdown if defined when click the "dropdown-toggle" button', () => {
-                const onToggleDropdown = jest.fn();
+                const onToggleDropdown = vi.fn();
                 dropdownSearch.setProps({onToggleDropdown});
 
                 dropdownSearch.find('button.dropdown-toggle').simulate('click');
@@ -177,7 +177,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onClickCallBack if defined when click the "dropdown-toggle" button', () => {
-                const onClickCallBack = jest.fn();
+                const onClickCallBack = vi.fn();
                 dropdownSearch.setProps({onClickCallBack});
 
                 dropdownSearch.find('button.dropdown-toggle').simulate('click');
@@ -186,7 +186,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onOptionClickCallBack if defined when click an option "dropdown-toggle" button', () => {
-                const onOptionClickCallBack = jest.fn();
+                const onOptionClickCallBack = vi.fn();
                 dropdownSearch.setProps({isOpened: true, onOptionClickCallBack});
 
                 dropdownSearch.find('[data-value="test a"]').simulate('mousedown');
@@ -197,7 +197,7 @@ describe('DropdownSearch', () => {
             it('should call onMouseEnterDropdown if defined when enter over the ul element and dropdown is opened', () => {
                 renderDropdownSearch({...ownProps, isOpened: true});
 
-                const onMouseEnterDropdown = jest.fn();
+                const onMouseEnterDropdown = vi.fn();
                 dropdownSearch.setProps({onMouseEnterDropdown});
 
                 dropdownSearch.find('ul.dropdown-menu').simulate('mouseenter');
@@ -206,7 +206,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onKeyDownFilterBox if defined when key down on "filter-box"', () => {
-                const onKeyDownFilterBox = jest.fn();
+                const onKeyDownFilterBox = vi.fn();
                 dropdownSearch.setProps({isOpened: true, onKeyDownFilterBox, activeOption: options[0]});
 
                 dropdownSearch.find('input.filter-box').simulate('keydown');
@@ -215,7 +215,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onOptionClickCallBack if defined and they key is enter when key down on "filter-box"', () => {
-                const onOptionClickCallBack = jest.fn();
+                const onOptionClickCallBack = vi.fn();
                 dropdownSearch.setProps({
                     isOpened: true,
                     activeOption: {value: 'test a'},
@@ -228,7 +228,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onOptionClickCallBack if defined and they key is tab when key down on "filter-box"', () => {
-                const onOptionClickCallBack = jest.fn();
+                const onOptionClickCallBack = vi.fn();
                 dropdownSearch.setProps({
                     isOpened: true,
                     activeOption: {value: 'test a'},
@@ -241,7 +241,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call onKeyDownDropdownButton if defined when key down on button "dropdown-toggle"', () => {
-                const onKeyDownDropdownButton = jest.fn();
+                const onKeyDownDropdownButton = vi.fn();
                 dropdownSearch.setProps({onKeyDownDropdownButton});
 
                 dropdownSearch.find('button.dropdown-toggle').simulate('keydown');
@@ -250,8 +250,8 @@ describe('DropdownSearch', () => {
             });
 
             it('should call handleOnOptionClickOnKeyDown if search is off', () => {
-                jest.spyOn(DropdownSearch.prototype as any, 'isSearchOn').mockReturnValue(false);
-                const handleOnOptionClickOnKeyDownSpy = jest.spyOn(
+                vi.spyOn(DropdownSearch.prototype as any, 'isSearchOn').mockReturnValue(false);
+                const handleOnOptionClickOnKeyDownSpy = vi.spyOn(
                     DropdownSearch.prototype as any,
                     'handleOnOptionClickOnKeyDown'
                 );
@@ -262,8 +262,8 @@ describe('DropdownSearch', () => {
             });
 
             it('should not call handleOnOptionClickOnKeyDown if search is on', () => {
-                jest.spyOn(DropdownSearch.prototype as any, 'isSearchOn').mockReturnValue(true);
-                const handleOnOptionClickOnKeyDownSpy = jest.spyOn(
+                vi.spyOn(DropdownSearch.prototype as any, 'isSearchOn').mockReturnValue(true);
+                const handleOnOptionClickOnKeyDownSpy = vi.spyOn(
                     DropdownSearch.prototype as any,
                     'handleOnOptionClickOnKeyDown'
                 );
@@ -274,7 +274,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call updateOptions when receiving new default options when the option list is empty', () => {
-                const updateOptionsSpy: jest.Mock<any, any> = jest.fn();
+                const updateOptionsSpy: vi.Mock<any, any> = vi.fn();
                 const newProps: IDropdownSearchProps = {...ownProps, updateOptions: updateOptionsSpy};
                 dropdownSearch.setProps(newProps);
 
@@ -304,7 +304,7 @@ describe('DropdownSearch', () => {
 
             describe('handleOnOptionClick', () => {
                 it('should call onOptionClick if option is found in options', () => {
-                    const onOptionClick = jest.fn();
+                    const onOptionClick = vi.fn();
                     dropdownSearch.setProps({...ownProps, onOptionClick});
 
                     dropdownSearchInstanceAsAny.handleOnOptionClick({
@@ -316,7 +316,7 @@ describe('DropdownSearch', () => {
                 });
 
                 it('should not call onOptionClick if option was not found in options', () => {
-                    const onOptionClick = jest.fn();
+                    const onOptionClick = vi.fn();
                     dropdownSearch.setProps({...ownProps, onOptionClick});
 
                     dropdownSearchInstanceAsAny.handleOnOptionClick({
@@ -404,7 +404,7 @@ describe('DropdownSearch', () => {
                 });
 
                 it('should call the hasMoreItems prop to let the infinite scroll if there are more items', () => {
-                    const hasMoreItemsSpy: jest.Mock<any, any> = jest.fn();
+                    const hasMoreItemsSpy: vi.Mock<any, any> = vi.fn();
                     dropdownSearch.setProps({
                         ...ownProps,
                         isOpened: true,
@@ -419,7 +419,7 @@ describe('DropdownSearch', () => {
 
                 it(`if infiniteScroll prop is defined
                     should call handleOnMouseEnter when calling DropdownSearchInfiniteScrollOptions onMouseEnter prop`, () => {
-                    const handleOnMouseEnterSpy = jest.spyOn<any, string>(dropdownSearchInstance, 'handleOnMouseEnter');
+                    const handleOnMouseEnterSpy = vi.spyOn<any, string>(dropdownSearchInstance, 'handleOnMouseEnter');
 
                     dropdownSearch.setProps({
                         ...ownProps,
@@ -434,7 +434,7 @@ describe('DropdownSearch', () => {
 
                 it(`if autoInfiniteScroll prop is defined
                     should call handleOnMouseEnter when calling DropdownSearchInfiniteScrollOptions onMouseEnter prop`, () => {
-                    const handleOnMouseEnterSpy = jest.spyOn<any, string>(dropdownSearchInstance, 'handleOnMouseEnter');
+                    const handleOnMouseEnterSpy = vi.spyOn<any, string>(dropdownSearchInstance, 'handleOnMouseEnter');
 
                     dropdownSearch.setProps({
                         ...ownProps,
@@ -506,14 +506,14 @@ describe('DropdownSearch', () => {
             it('should call handleOnClose if a blur event occurs on the dropdown button', () => {
                 renderDropdownSearch({...ownProps, isOpened: false});
 
-                const handleOnCloseSpy = jest.spyOn(DropdownSearch.prototype as any, 'handleOnClose');
+                const handleOnCloseSpy = vi.spyOn(DropdownSearch.prototype as any, 'handleOnClose');
                 dropdownSearch.find('button.dropdown-toggle').simulate('blur');
 
                 expect(handleOnCloseSpy).toHaveBeenCalledTimes(1);
             });
 
             it('should call this.props.onClose if a blur event occurs on the dropdown button and the onClose prop is defined', () => {
-                const onCloseSpy = jest.fn();
+                const onCloseSpy = vi.fn();
                 renderDropdownSearch({...ownProps, isOpened: false, onClose: onCloseSpy});
 
                 dropdownSearch.find('button.dropdown-toggle').simulate('blur');
@@ -580,7 +580,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should call getNoOptions if no options are in the dropdown', () => {
-                const getNoOptionsSpy = jest.spyOn(DropdownSearch.prototype as any, 'getNoOptions');
+                const getNoOptionsSpy = vi.spyOn(DropdownSearch.prototype as any, 'getNoOptions');
                 renderDropdownSearch({...ownProps, isOpened: true, options: []});
 
                 expect(getNoOptionsSpy).toHaveBeenCalledTimes(1);
@@ -609,11 +609,11 @@ describe('DropdownSearch', () => {
                     activeOption: {value: 'testd 1', displayValue: 'test 1'},
                 });
 
-                jest.spyOn(dropdownSearchInstanceAsAny, 'isScrolledIntoView').mockReturnValue(false);
-                const spy = jest.spyOn(dropdownSearchInstanceAsAny, 'updateScrollPositionBasedOnActiveElement');
+                vi.spyOn(dropdownSearchInstanceAsAny, 'isScrolledIntoView').mockReturnValue(false);
+                const spy = vi.spyOn(dropdownSearchInstanceAsAny, 'updateScrollPositionBasedOnActiveElement');
 
                 const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
-                jest.spyOn(ul, 'getBoundingClientRect').mockReturnValue({bottom: 10, top: 10} as DOMRect);
+                vi.spyOn(ul, 'getBoundingClientRect').mockReturnValue({bottom: 10, top: 10} as DOMRect);
 
                 dropdownSearch.setProps({activeOption: {value: 'test 15'}});
 
@@ -631,11 +631,11 @@ describe('DropdownSearch', () => {
                     activeOption: {value: 'test 19', displayValue: 'test 19'},
                 });
 
-                jest.spyOn(dropdownSearchInstanceAsAny, 'isScrolledIntoView').mockReturnValue(false);
-                const spy = jest.spyOn<any, string>(dropdownSearchInstance, 'updateScrollPositionBasedOnActiveElement');
+                vi.spyOn(dropdownSearchInstanceAsAny, 'isScrolledIntoView').mockReturnValue(false);
+                const spy = vi.spyOn<any, string>(dropdownSearchInstance, 'updateScrollPositionBasedOnActiveElement');
 
                 const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
-                jest.spyOn(ul, 'getBoundingClientRect').mockReturnValue({bottom: 200000, top: 200000} as DOMRect);
+                vi.spyOn(ul, 'getBoundingClientRect').mockReturnValue({bottom: 200000, top: 200000} as DOMRect);
 
                 dropdownSearch.setProps({activeOption: {value: 'test 1', displayValue: 'test 1'}});
 

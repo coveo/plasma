@@ -82,7 +82,7 @@ describe('navigation', () => {
         });
 
         it('should call onPerPageClick prop with the correct values when it is set', () => {
-            const onPerPageClick = jest.fn();
+            const onPerPageClick = vi.fn();
             const perPageNumbers: number[] = [2, 3, 4];
             const currentPerPage: number = perPageNumbers[1];
             const expectedPerPage: number = perPageNumbers[perPageNumbers.length - 1];

@@ -88,7 +88,7 @@ describe('ModalPrompt', () => {
 
         describe('with a confirm spy', () => {
             it('should call prop onConfirm when modalPrompt Confirm button is clicked and prop is set', () => {
-                const confirmSpy = jest.fn();
+                const confirmSpy = vi.fn();
                 const confirmButton = modalPrompt.find('.js-confirm');
 
                 confirmButton.simulate('click');
@@ -103,14 +103,14 @@ describe('ModalPrompt', () => {
         });
 
         describe('with a cancel spy', () => {
-            let cancelSpy: jest.Mock<any, any>;
+            let cancelSpy: vi.Mock<any, any>;
 
             beforeEach(() => {
-                cancelSpy = jest.fn();
+                cancelSpy = vi.fn();
             });
 
             it('should call prop onCancel when modalPrompt x is clicked and prop is set', () => {
-                jest.useFakeTimers();
+                vi.useFakeTimers();
                 const closeButton = modalPrompt.find('.small-close');
 
                 closeButton.simulate('click');
@@ -118,12 +118,12 @@ describe('ModalPrompt', () => {
                 expect(cancelSpy).not.toHaveBeenCalled();
 
                 modalPrompt.setProps({id, title, onCancel: cancelSpy});
-                jest.advanceTimersByTime(5);
+                vi.advanceTimersByTime(5);
 
                 closeButton.simulate('click');
 
                 expect(cancelSpy).toHaveBeenCalledTimes(1);
-                jest.clearAllTimers();
+                vi.clearAllTimers();
             });
 
             it('should call prop onCancel when modalPrompt cancel button is clicked and prop is set', () => {
