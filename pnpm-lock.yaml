@@ -68,8 +68,8 @@ importers:
       '@helpers/enzyme-redux': workspace:*
       '@hot-loader/react-dom': 17.0.2
       '@loadable/component': 5.15.2
-      '@mui/icons-material': ^5.8.0
-      '@mui/material': ^5.8.0
+      '@mui/icons-material': ^5.8.4
+      '@mui/material': ^5.8.7
       '@mui/x-data-grid': ^5.8.0
       '@swc/cli': 0.1.57
       '@swc/core': 1.2.174
