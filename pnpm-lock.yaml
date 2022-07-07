@@ -438,7 +438,6 @@ importers:
   packages/website:
     specifiers:
       '@coveo/atomic-react': 0.8.13
-      '@coveo/headless': 1.48.1
       '@coveord/plasma-react': workspace:*
       '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
@@ -504,7 +503,6 @@ importers:
       underscore.string: 3.3.6
     dependencies:
       '@coveo/atomic-react': 0.8.13_yyaspy5yuooqy74l2zish2glee
-      '@coveo/headless': 1.48.1_g7iv2n2puphpvmcbz4lgg4le54
       '@coveord/plasma-react': link:../react
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
@@ -1355,34 +1353,6 @@ packages:
 
   /@coveo/bueno/0.34.9:
     resolution: {integrity: sha512-Ez2HoSU1GD7EQwgwqDdbB3ne6K9+ZUQ8a27PJj9BfaSwDJAE9RK0yuSmosQUJSSeR4d9F5mUuOgKd+G5e2Ngsg==}
-    dev: false
-
-  /@coveo/headless/1.48.1_g7iv2n2puphpvmcbz4lgg4le54:
-    resolution: {integrity: sha512-f2+J0kOf/+X9cEIrmW6eFEBVQ9Zx7nvj58UUvOwJFLjGVid4rK8IBQBG7IvM6YPiBIulydgXM6W8SOQEYvK/tw==}
-    peerDependencies:
-      encoding: ^0.1.13
-      pino-pretty: ^6.0.0
-    dependencies:
-      '@coveo/bueno': 0.34.9
-      '@reduxjs/toolkit': 1.8.1_g7iv2n2puphpvmcbz4lgg4le54
-      '@types/pino': 6.3.12
-      '@types/redux-mock-store': 1.0.3
-      coveo.analytics: 2.19.10
-      cross-fetch: 3.1.5
-      dayjs: 1.11.1
-      exponential-backoff: 3.1.0
-      fast-equals: 2.0.4
-      node-abort-controller: 1.2.1
-      pino: 6.14.0
-      redux: 4.2.0
-      redux-mock-store: 1.5.4
-      redux-thunk: 2.4.1_redux@4.2.0
-      ts-debounce: 3.0.0
-      web-encoding: 1.1.5
-    transitivePeerDependencies:
-      - react
-      - react-native
-      - react-redux
     dev: false
 
   /@coveo/headless/1.58.0_g7iv2n2puphpvmcbz4lgg4le54:
