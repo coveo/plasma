@@ -477,7 +477,7 @@ importers:
       next-fonts: 1.5.1
       next-global-css: 1.3.1
       next-images: 1.8.4
-      next-sitemap: 2.5.20
+      next-sitemap: '3.1.10 '
       next-transpile-modules: 9.0.0
       open-cli: 7.0.1
       raw-loader: 4.0.2
@@ -525,7 +525,7 @@ importers:
       next-fonts: 1.5.1
       next-global-css: 1.3.1
       next-images: 1.8.4
-      next-sitemap: 2.5.20_next@12.1.5
+      next-sitemap: 3.1.10_next@12.1.5
       next-transpile-modules: 9.0.0
       rc-slider: 9.7.5_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
@@ -1296,8 +1296,8 @@ packages:
     dev: true
     optional: true
 
-  /@corex/deepmerge/2.6.148:
-    resolution: {integrity: sha512-6QMz0/2h5C3ua51iAnXMPWFbb1QOU1UvSM4bKBw5mzdT+WtLgjbETBBIQZ+Sh9WvEcGwlAt/DEdRpIC3XlDBMA==}
+  /@corex/deepmerge/4.0.29:
+    resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
     dev: false
 
   /@coveo/atomic-react/0.8.13_yyaspy5yuooqy74l2zish2glee:
@@ -11194,14 +11194,15 @@ packages:
       url-loader: 4.1.1_file-loader@6.2.0
     dev: false
 
-  /next-sitemap/2.5.20_next@12.1.5:
-    resolution: {integrity: sha512-Qbm4N2WGA6VHemFN0C9PNWQav9RKwMEbVrNgVvDQhG0sDBmNBgKii54WklOjCvVJVHgQPgtXLBhlNaJGS+RVQA==}
+  /next-sitemap/3.1.10_next@12.1.5:
+    resolution: {integrity: sha512-IslH1nxY5p/3+cdjFiXDFSfchUJ0R+Flvm/T/01y7xokA/hd4rnuU+Jh0ZEZ92j7zBgwPUp1KTg0B41zuSpVHw==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
+      '@next/env': '*'
       next: '*'
     dependencies:
-      '@corex/deepmerge': 2.6.148
+      '@corex/deepmerge': 4.0.29
       minimist: 1.2.6
       next: 12.1.5_dmi2t66wvavvdsdvw6dn5lzaaa
     dev: false
