@@ -67,5 +67,11 @@
         "ultra-runner": "3.10.5",
         "underscore": "1.13.1",
         "walkdir": "0.4.1"
+    },
+    "pnpm": {
+        "overrides": {
+            "@types/react": "17.0.44",
+            "@types/react-dom": "17.0.11"
+        }
     }
 }
