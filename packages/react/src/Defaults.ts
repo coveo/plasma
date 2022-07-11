@@ -4,7 +4,7 @@ export abstract class Defaults {
     static MODAL_ROOT: string = 'body';
     static MODAL_TIMEOUT: number = 300;
 
-    static DROP_ROOT: string = 'body';
+    static DROP_ROOT: string = '#plasma-dropdowns';
     static DROP_PARENT_ROOT: string = 'body';
 
     static TOOLTIP_ROOT: string = 'body';

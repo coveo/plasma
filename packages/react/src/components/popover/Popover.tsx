@@ -24,20 +24,13 @@ export interface ITetherComponentCopiedProps {
     onRepositioned?: (...args: any[]) => void;
 }
 
-interface PopoverOwnProps {
-    /**
-     * Whether the popover has dropdowns components rendered in it. The goal of this prop is to prevent the popover from closing when selecting a dropdown value.
-     */
-    hasDropdowns?: boolean;
-}
-
 export interface IPopoverDispatchProps {
     onToggle?: (isOpen: boolean) => void;
     onMount?: (isOpen: boolean) => void;
     onUnmount?: () => void;
 }
 
-export interface IPopoverProps extends PopoverOwnProps, IPopoverDispatchProps, ITetherComponentCopiedProps {
+export interface IPopoverProps extends IPopoverDispatchProps, ITetherComponentCopiedProps {
     id?: string;
     /**
      * Optionnal, use it to specify the isOpen state of the Popover.
@@ -131,7 +124,7 @@ export class Popover extends Component<IPopoverProps, IPopoverState> {
             const tetherElement: Element | Text = findDOMNode(this.tetherElement.current);
             const target: Node = event.target as Node;
             const dropdownsContainer = document.querySelector(Defaults.DROP_ROOT);
-            const clickedInsideADropdown = this.props.hasDropdowns && dropdownsContainer.contains(target);
+            const clickedInsideADropdown = dropdownsContainer.contains(target);
 
             if (!tetherElement.contains(target) && !tetherToggle.contains(target) && !clickedInsideADropdown) {
                 if (this.props.isModal) {

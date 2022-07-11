@@ -11,7 +11,7 @@ const Document: FunctionComponent = () => (
                 <Main />
             </div>
             <div id="Modals" />
-            <div id="Drops" />
+            <div id="plasma-dropdowns" />
             <NextScript />
         </body>
     </Html>

@@ -203,7 +203,6 @@ describe('<Popover>', () => {
                             targetAttachment="bottom left"
                             isOpen={isOpen}
                             onToggle={setOpen}
-                            hasDropdowns
                         >
                             <Button>Toggle</Button>
                             <div className="p3">

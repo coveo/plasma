@@ -43,6 +43,32 @@ import {Badge} from '@coveord/plasma-react';
 ReactDom.render(<Badge label="Hello Plasma!" />, document.getElementById('SomewhereInYourApp'));
 ```
 
+#### Dropdowns
+
+All components that implement a dropdown behaviour like the SingleSelect or the MultiSelect will render their content outside the normal DOM hierachy using react portals to avoid some overlapping issues.
+
+The target of that portal is given by the `Defaults.DROP_ROOT` selector, but you can change this value to something else if you need.
+
+```ts
+Defaults.DROP_ROOT = '#plasma-dropdowns'; // default
+```
+
+**If no DOM element match the specified selector an error will be thrown, so make sure this selector points to an element that always exists in the DOM. Preferably, that element should be outside the hierarchy of the whole app.**
+
+Example of a working DOM structure:
+
+```html
+<html>
+    <head>
+        <!-- ... -->
+    </head>
+    <body className="coveo-styleguide">
+        <div id="App"><!-- Your app renders here --></div>
+        <div id="plasma-dropdowns"></div>
+    </body>
+</html>
+```
+
 ## Contributing
 
 See [our main page](https://github.com/coveo/plasma#plasma).
