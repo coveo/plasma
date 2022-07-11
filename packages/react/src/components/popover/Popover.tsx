@@ -3,6 +3,7 @@ import {RefObject, createRef, Children, Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
+import {Defaults} from '../../Defaults';
 
 export interface ITetherComponentCopiedProps {
     renderElementTag?: string;
@@ -23,13 +24,20 @@ export interface ITetherComponentCopiedProps {
     onRepositioned?: (...args: any[]) => void;
 }
 
+interface PopoverOwnProps {
+    /**
+     * Whether the popover has dropdowns components rendered in it. The goal of this prop is to prevent the popover from closing when selecting a dropdown value.
+     */
+    hasDropdowns?: boolean;
+}
+
 export interface IPopoverDispatchProps {
     onToggle?: (isOpen: boolean) => void;
     onMount?: (isOpen: boolean) => void;
     onUnmount?: () => void;
 }
 
-export interface IPopoverProps extends IPopoverDispatchProps, ITetherComponentCopiedProps {
+export interface IPopoverProps extends PopoverOwnProps, IPopoverDispatchProps, ITetherComponentCopiedProps {
     id?: string;
     /**
      * Optionnal, use it to specify the isOpen state of the Popover.
@@ -38,7 +46,6 @@ export interface IPopoverProps extends IPopoverDispatchProps, ITetherComponentCo
      */
     isOpen?: boolean;
     isOpenOnMount?: boolean;
-
     /**
      * Optionnal, a callback fired when the Popover wishes to change visibility. Called with the requested `isOpen` value. Use this prop if
      * you want to control the Popover state. Let it undefined if you want the Popover to control his state itself.
@@ -95,7 +102,11 @@ export class Popover extends Component<IPopoverProps, IPopoverState> {
                 <div ref={this.tetherToggle} onClick={() => this.toggleOpened(!isOpen)}>
                     {children[0]}
                 </div>
-                <div ref={this.tetherElement} className={classNames({hide: !isOpen}, 'shadow-2')}>
+                <div
+                    ref={this.tetherElement}
+                    className={classNames({hide: !isOpen}, 'shadow-2')}
+                    aria-hidden={!this.props.isOpen}
+                >
                     {children[1]}
                 </div>
             </TetherComponent>
@@ -119,8 +130,10 @@ export class Popover extends Component<IPopoverProps, IPopoverState> {
             const tetherToggle: Element | Text = findDOMNode(this.tetherToggle.current);
             const tetherElement: Element | Text = findDOMNode(this.tetherElement.current);
             const target: Node = event.target as Node;
+            const dropdownsContainer = document.querySelector(Defaults.DROP_ROOT);
+            const clickedInsideADropdown = this.props.hasDropdowns && dropdownsContainer.contains(target);
 
-            if (!tetherElement.contains(target) && !tetherToggle.contains(target)) {
+            if (!tetherElement.contains(target) && !tetherToggle.contains(target) && !clickedInsideADropdown) {
                 if (this.props.isModal) {
                     event.stopImmediatePropagation();
                     event.preventDefault();

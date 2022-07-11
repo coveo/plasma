@@ -1,7 +1,12 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
+import {render, screen} from '@test-utils';
 
+import userEvent from '@testing-library/user-event';
+import {useState} from 'react';
 import {IPopoverProps, Popover} from '../Popover';
+import {Button} from '../../button';
+import {SingleSelectConnected} from '../../select';
 
 describe('<Popover>', () => {
     let popoverProps: IPopoverProps;
@@ -187,6 +192,39 @@ describe('<Popover>', () => {
                 expect(toggleOpenedSpy.mock.calls.length).toBe(1);
 
                 expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
+            });
+
+            it('does not close the popover when clicking on children dropdown values', () => {
+                const Fixture = () => {
+                    const [isOpen, setOpen] = useState(false);
+                    return (
+                        <Popover
+                            attachment="top left"
+                            targetAttachment="bottom left"
+                            isOpen={isOpen}
+                            onToggle={setOpen}
+                            hasDropdowns
+                        >
+                            <Button>Toggle</Button>
+                            <div className="p3">
+                                <SingleSelectConnected
+                                    id="single-select-1"
+                                    items={[
+                                        {value: 'one', displayValue: 'Option 1'},
+                                        {value: 'two', displayValue: 'Option 2'},
+                                        {value: 'three', displayValue: 'Option 3'},
+                                    ]}
+                                />
+                            </div>
+                        </Popover>
+                    );
+                };
+                render(<Fixture />);
+
+                userEvent.click(screen.getByRole('button', {name: /toggle/i}));
+                userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+                userEvent.click(screen.getByRole('option', {name: /option 2/i}));
+                expect(screen.getByRole('button', {name: /option 2/i})).toBeInTheDocument();
             });
         });
 
