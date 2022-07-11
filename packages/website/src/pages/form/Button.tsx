@@ -5,6 +5,7 @@ import loading from '@examples/button/Loading.example.tsx';
 import prepend from '@examples/button/Prepend.example.tsx';
 import primary from '@examples/button/Primary.example.tsx';
 import small from '@examples/button/Small.example.tsx';
+import withTooltip from '@examples/button/WithTooltip.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -23,6 +24,7 @@ export default () => (
             loading: {code: loading, title: 'Loading'},
             prepend: {code: prepend, title: 'Prepended icon'},
             iconAndLink: {code: iconAndLink, title: 'Icon only with an hyperlink'},
+            withTooltip: {code: withTooltip, title: 'With tooltop'},
         }}
         componentSourcePath="/button/Button.tsx"
     />
