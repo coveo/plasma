@@ -1,3 +1,18 @@
+# 43.0.0 (2022-07-11)
+
+
+### Features
+
+* **react:** allow using dropdowns inside popover ([#2792](https://github.com/coveo/plasma/issues/2792)) ([d31a4fd](https://github.com/coveo/plasma/commits/d31a4fd20b88ea93f7ab5e1065adf3eafced886d))
+
+
+### BREAKING CHANGES
+
+* **react:** The DROP_ROOT must target an existing element in the DOM otherwise it will throw an
+error.
+
+
+
 ## 42.9.4 (2022-07-11)
 
 
