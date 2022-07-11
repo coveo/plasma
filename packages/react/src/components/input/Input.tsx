@@ -1,5 +1,13 @@
 import classNames from 'classnames';
-import {AllHTMLAttributes, ReactNode, ChangeEventHandler, MouseEvent, KeyboardEvent, Component} from 'react';
+import {
+    AllHTMLAttributes,
+    ReactNode,
+    ChangeEventHandler,
+    MouseEvent,
+    KeyboardEvent,
+    Component,
+    MutableRefObject,
+} from 'react';
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {connect} from 'react-redux';
@@ -39,6 +47,7 @@ export interface IInputAdditionalOwnProps {
     onChangeHandler?: ChangeEventHandler<HTMLInputElement>;
     defaultValue?: string;
     isReadOnly?: boolean;
+    wrapperRef?: MutableRefObject<HTMLDivElement>;
 }
 
 export interface IInputNativeTagStateProps {
@@ -243,7 +252,11 @@ export class Input extends Component<IInputProps, IInputComponentState> {
         ];
 
         return (this.props.disabled || this.props.isReadOnly) && this.props.disabledTooltip ? (
-            <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
+            <div
+                className={classes}
+                onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}
+                ref={this.props.wrapperRef}
+            >
                 <Tooltip
                     title={this.props.disabledTooltip}
                     placement={TooltipPlacement.Right}
@@ -253,7 +266,11 @@ export class Input extends Component<IInputProps, IInputComponentState> {
                 </Tooltip>
             </div>
         ) : (
-            <div className={classes} onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}>
+            <div
+                className={classes}
+                onClick={(e: MouseEvent<HTMLElement>) => this.handleClick(e)}
+                ref={this.props.wrapperRef}
+            >
                 {inputElements}
             </div>
         );
