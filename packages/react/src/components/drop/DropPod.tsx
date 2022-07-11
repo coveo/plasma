@@ -105,8 +105,14 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
 
     useEffect(() => {
         const element = document.createElement('div');
-        const portalRoot = document.querySelector(selector ?? Defaults.DROP_ROOT);
+        const rootSelector = selector ?? Defaults.DROP_ROOT;
+        const portalRoot = document.querySelector(rootSelector);
 
+        if (portalRoot === null) {
+            throw new Error(
+                `Plasma dropdowns' root element at "${rootSelector}" does not exist in the DOM. Make sure this element exists or change Defaults.DROP_ROOT to something else. More info at https://github.com/coveo/plasma/blob/master/packages/react/README.md#dropdowns`
+            );
+        }
         portalRoot.appendChild(element);
 
         setDropElement(element);

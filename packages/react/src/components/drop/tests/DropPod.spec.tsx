@@ -96,7 +96,7 @@ describe('DropPod', () => {
 
             describe('portal creation selector', () => {
                 afterEach(() => {
-                    Defaults.DROP_ROOT = 'body';
+                    Defaults.DROP_ROOT = '#plasma-dropdowns';
                 });
 
                 it('should render the content inside of the selector', () => {

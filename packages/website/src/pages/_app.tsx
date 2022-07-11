@@ -52,7 +52,6 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     React.useEffect(() => {
         PlasmaReact.Defaults.APP_ELEMENT = '#App';
         PlasmaReact.Defaults.MODAL_ROOT = '#Modals';
-        PlasmaReact.Defaults.DROP_ROOT = '#Drops';
 
         window.ReactDOM = ReactDOM;
         (window as any).jsxRuntime = jsxRuntime;
