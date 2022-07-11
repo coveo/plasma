@@ -1,4 +1,6 @@
-import {BaseTextFieldProps, Box, Grid} from '@mui/material';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import {BaseTextFieldProps} from '@mui/material/TextField';
 import {ReactNode} from 'react';
 import {lightBackgroundTheme} from '../theme/MuiTheme';
 

@@ -1,14 +1,11 @@
-import {
-    Box,
-    Button,
-    InputAdornment,
-    MenuItem,
-    Pagination,
-    StandardTextFieldProps,
-    TextField,
-    Typography,
-} from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import InputAdornment from '@mui/material/InputAdornment';
+import MenuItem from '@mui/material/MenuItem';
+import Pagination from '@mui/material/Pagination';
+import TextField, {StandardTextFieldProps} from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import {
     DataGrid,
     DataGridProps,

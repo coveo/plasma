@@ -1,4 +1,5 @@
 import {
+    createTheme,
     ThemeOptions,
     PaletteColorOptions,
     experimental_sx as sx,
@@ -6,7 +7,6 @@ import {
     TypeText,
     TypeBackground,
 } from '@mui/material/styles';
-import {createTheme} from '@mui/material/styles';
 import {Shadows} from '@mui/material/styles/shadows';
 
 declare module '@mui/material/styles' {
