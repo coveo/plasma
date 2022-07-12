@@ -438,7 +438,7 @@ importers:
   packages/website:
     specifiers:
       '@coveo/atomic-react': 0.8.13
-      '@coveo/headless': 1.48.1
+      '@coveo/headless': 1.77.9
       '@coveord/plasma-react': workspace:*
       '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
@@ -504,7 +504,7 @@ importers:
       underscore.string: 3.3.6
     dependencies:
       '@coveo/atomic-react': 0.8.13_yyaspy5yuooqy74l2zish2glee
-      '@coveo/headless': 1.48.1_g7iv2n2puphpvmcbz4lgg4le54
+      '@coveo/headless': 1.77.9_g7iv2n2puphpvmcbz4lgg4le54
       '@coveord/plasma-react': link:../react
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
@@ -1332,7 +1332,7 @@ packages:
       '@stencil/core': 2.14.2
       '@stencil/store': 1.5.0_@stencil+core@2.14.2
       coveo-styleguide: 9.34.4_sfoxds7t5ydpegc3knd667wn6m
-      dayjs: 1.11.1
+      dayjs: 1.11.3
       dompurify: 2.3.6
       escape-html: 1.0.3
       focus-visible: 5.2.0
@@ -1357,8 +1357,12 @@ packages:
     resolution: {integrity: sha512-Ez2HoSU1GD7EQwgwqDdbB3ne6K9+ZUQ8a27PJj9BfaSwDJAE9RK0yuSmosQUJSSeR4d9F5mUuOgKd+G5e2Ngsg==}
     dev: false
 
-  /@coveo/headless/1.48.1_g7iv2n2puphpvmcbz4lgg4le54:
-    resolution: {integrity: sha512-f2+J0kOf/+X9cEIrmW6eFEBVQ9Zx7nvj58UUvOwJFLjGVid4rK8IBQBG7IvM6YPiBIulydgXM6W8SOQEYvK/tw==}
+  /@coveo/bueno/0.40.9:
+    resolution: {integrity: sha512-7c5HJou3SjNjfpapgh0qt3W0YeQJgtqJg38xOVCbhcWa4EiFtaj4aWkcbdGwEkZrcUDeeMkZ/wRpHEdVfXMWvQ==}
+    dev: false
+
+  /@coveo/headless/1.58.0_g7iv2n2puphpvmcbz4lgg4le54:
+    resolution: {integrity: sha512-7CLrJPJvRLwkw0OLGDHsc2p6le3EaoTlWcBFLv6qnzD8/cjMAlOHPmBt3YVKD6u2NwR906IIskT+RDhV3jMO0w==}
     peerDependencies:
       encoding: ^0.1.13
       pino-pretty: ^6.0.0
@@ -1367,9 +1371,10 @@ packages:
       '@reduxjs/toolkit': 1.8.1_g7iv2n2puphpvmcbz4lgg4le54
       '@types/pino': 6.3.12
       '@types/redux-mock-store': 1.0.3
-      coveo.analytics: 2.19.10
+      abab: 2.0.6
+      coveo.analytics: 2.20.1
       cross-fetch: 3.1.5
-      dayjs: 1.11.1
+      dayjs: 1.11.3
       exponential-backoff: 3.1.0
       fast-equals: 2.0.4
       node-abort-controller: 1.2.1
@@ -1385,20 +1390,20 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/headless/1.58.0_g7iv2n2puphpvmcbz4lgg4le54:
-    resolution: {integrity: sha512-7CLrJPJvRLwkw0OLGDHsc2p6le3EaoTlWcBFLv6qnzD8/cjMAlOHPmBt3YVKD6u2NwR906IIskT+RDhV3jMO0w==}
+  /@coveo/headless/1.77.9_g7iv2n2puphpvmcbz4lgg4le54:
+    resolution: {integrity: sha512-UlUcCwR0jqZBmB4+oozjlIOVlk80FgMqK6G2YLX7+rLK7MXHMZ3wPO71hFoY78WwwUnBJ+s5WkFv2RxYzQ00+A==}
     peerDependencies:
       encoding: ^0.1.13
       pino-pretty: ^6.0.0
     dependencies:
-      '@coveo/bueno': 0.34.9
+      '@coveo/bueno': 0.40.9
       '@reduxjs/toolkit': 1.8.1_g7iv2n2puphpvmcbz4lgg4le54
-      '@types/pino': 6.3.12
+      '@types/pino': 6.3.11
       '@types/redux-mock-store': 1.0.3
       abab: 2.0.6
-      coveo.analytics: 2.19.10
+      coveo.analytics: 2.20.1
       cross-fetch: 3.1.5
-      dayjs: 1.11.1
+      dayjs: 1.11.3
       exponential-backoff: 3.1.0
       fast-equals: 2.0.4
       node-abort-controller: 1.2.1
@@ -1407,7 +1412,7 @@ packages:
       redux-mock-store: 1.5.4
       redux-thunk: 2.4.1_redux@4.2.0
       ts-debounce: 3.0.0
-      web-encoding: 1.1.5
+      web-encoding: 1.1.4
     transitivePeerDependencies:
       - react
       - react-native
@@ -2019,10 +2024,10 @@ packages:
     resolution: {integrity: sha512-XjDVbs3ZU16CO1h5Q3Ew2RPJqmZBDE/EVf1LYp6ePEffs3V/MX9ZbL5bJr8qiK5SbGmUMuDoaFgyKacYz8prRA==}
     dev: false
 
-  /@react-native-async-storage/async-storage/1.17.3:
-    resolution: {integrity: sha512-2dxdlGwBjBP2qYu6F72U7cRRFshISYiNEWCaQNOJtxUERCMaYRWcniYqhL248KSbGUMpRhFCEtliztsiGoYYMA==}
+  /@react-native-async-storage/async-storage/1.17.7:
+    resolution: {integrity: sha512-mDtWhCcpxzrZhA95f6zi0pnBsjBEZW1LKZWfxVXG0UfaWpPxDBCKowNk2xjRTytckZeVhjmPJPtBU+8QNQcR0A==}
     peerDependencies:
-      react-native: ^0.0.0-0 || 0.60 - 0.68 || 1000.0.0
+      react-native: ^0.0.0-0 || 0.60 - 0.69 || 1000.0.0
     dependencies:
       merge-options: 3.0.4
     dev: false
@@ -2758,10 +2763,10 @@ packages:
 
   /@types/node/17.0.31:
     resolution: {integrity: sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==}
+    dev: true
 
   /@types/node/18.0.0:
     resolution: {integrity: sha512-cHlGmko4gWLVI27cGJntjs/Sj8th9aYwplmZFwmmgYQQvL5NUsgVJG7OddLvNfLqYS31KFN0s3qlaD9qCaxACA==}
-    dev: true
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -2778,20 +2783,29 @@ packages:
   /@types/pino-pretty/4.7.5:
     resolution: {integrity: sha512-rfHe6VIknk14DymxGqc9maGsRe8/HQSvM2u46EAz2XrS92qsAJnW16dpdFejBuZKD8cRJX6Aw6uVZqIQctMpAg==}
     dependencies:
-      '@types/node': 17.0.31
+      '@types/node': 18.0.0
       '@types/pino': 6.3.12
     dev: false
 
   /@types/pino-std-serializers/2.4.1:
     resolution: {integrity: sha512-17XcksO47M24IVTVKPeAByWUd3Oez7EbIjXpSbzMPhXVzgjGtrOa49gKBwxH9hb8dKv58OelsWQ+A1G1l9S3wQ==}
     dependencies:
-      '@types/node': 17.0.31
+      '@types/node': 18.0.0
+    dev: false
+
+  /@types/pino/6.3.11:
+    resolution: {integrity: sha512-S7+fLONqSpHeW9d7TApUqO6VN47KYgOXhCNKwGBVLHObq8HhaAYlVqUNdfnvoXjCMiwE5xcPm/5R2ZUh8bgaXQ==}
+    dependencies:
+      '@types/node': 18.0.0
+      '@types/pino-pretty': 4.7.5
+      '@types/pino-std-serializers': 2.4.1
+      sonic-boom: 2.8.0
     dev: false
 
   /@types/pino/6.3.12:
     resolution: {integrity: sha512-dsLRTq8/4UtVSpJgl9aeqHvbh6pzdmjYD3C092SYgLD2TyoCqHpTJk6vp8DvCTGGc7iowZ2MoiYiVUUCcu7muw==}
     dependencies:
-      '@types/node': 17.0.31
+      '@types/node': 18.0.0
       '@types/pino-pretty': 4.7.5
       '@types/pino-std-serializers': 2.4.1
       sonic-boom: 2.8.0
@@ -5367,10 +5381,10 @@ packages:
       - react-dom
     dev: false
 
-  /coveo.analytics/2.19.10:
-    resolution: {integrity: sha512-LrGxp4Vk3DXijlJG9TYlMssR+pS2hdutO2hnP+23dM7rhmaWxx5kIPYR6fC4cAzfMd1yrPTGIOjkJrGhnsm/Iw==}
+  /coveo.analytics/2.20.1:
+    resolution: {integrity: sha512-MhjgMxyO+kJIe3G5IuaHlFyb5MNPmFwAnzpO9Aqay/8pULRj46OaHpVNINSvS2fjyespWwY2LA3IOV/YxqsTPQ==}
     dependencies:
-      '@react-native-async-storage/async-storage': 1.17.3
+      '@react-native-async-storage/async-storage': 1.17.7
       cross-fetch: 3.1.5
     transitivePeerDependencies:
       - encoding
@@ -5768,8 +5782,8 @@ packages:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}
     dev: true
 
-  /dayjs/1.11.1:
-    resolution: {integrity: sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==}
+  /dayjs/1.11.3:
+    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==}
     dev: false
 
   /debug/2.6.9:
@@ -7466,7 +7480,7 @@ packages:
     dev: true
 
   /foreach/2.0.5:
-    resolution: {integrity: sha1-C+4AUBiusmDQo6865ljdATbsG5k=}
+    resolution: {integrity: sha512-ZBbtRiapkZYLsqoPyZOR+uPfto0GRMNQN1GwzZtZt7iZvPPbDDQV0JF5Hx4o/QFQ5c0vyuoZ98T8RSBbopzWtA==}
     dev: false
 
   /fork-stream/0.0.4:
@@ -8979,7 +8993,7 @@ packages:
     dependencies:
       available-typed-arrays: 1.0.5
       call-bind: 1.0.2
-      es-abstract: 1.19.5
+      es-abstract: 1.20.1
       foreach: 2.0.5
       has-tostringtag: 1.0.0
     dev: false
@@ -16410,6 +16424,14 @@ packages:
       - supports-color
     dev: true
 
+  /web-encoding/1.1.4:
+    resolution: {integrity: sha512-EJn3rQ/blHgaOTG8XvxGsZXTCyw9p1RAaDI/L0W3jjJRvW25F8uRshacU4h49wc9Fj0JlKU+oyOKm40HDAj75w==}
+    dependencies:
+      util: 0.12.4
+    optionalDependencies:
+      '@zxing/text-encoding': 0.9.0
+    dev: false
+
   /web-encoding/1.1.5:
     resolution: {integrity: sha512-HYLeVCdJ0+lBYV2FvNZmv3HJ2Nt0QYXqZojk3d9FJOLkwnuhzM9tmamh8d7HPM8QqjKH8DeHkFTx+CFlWpZZDA==}
     dependencies:
@@ -16557,7 +16579,7 @@ packages:
     dependencies:
       available-typed-arrays: 1.0.5
       call-bind: 1.0.2
-      es-abstract: 1.19.5
+      es-abstract: 1.20.1
       foreach: 2.0.5
       has-tostringtag: 1.0.0
       is-typed-array: 1.1.8
