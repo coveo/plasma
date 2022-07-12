@@ -437,7 +437,7 @@ importers:
 
   packages/website:
     specifiers:
-      '@coveo/atomic-react': 0.8.13
+      '@coveo/atomic-react': 0.5.8
       '@coveord/plasma-react': workspace:*
       '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
@@ -502,7 +502,7 @@ importers:
       underscore: 1.13.1
       underscore.string: 3.3.6
     dependencies:
-      '@coveo/atomic-react': 0.8.13_yyaspy5yuooqy74l2zish2glee
+      '@coveo/atomic-react': 0.5.8_yyaspy5yuooqy74l2zish2glee
       '@coveord/plasma-react': link:../react
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
@@ -1300,8 +1300,8 @@ packages:
     resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
     dev: false
 
-  /@coveo/atomic-react/0.8.13_yyaspy5yuooqy74l2zish2glee:
-    resolution: {integrity: sha512-+09a1cvbH/sDsUxsR1o2zz4PnlvpZiHyeAkmsA44A4R/937lGqpLtL/fhNuhutNXo6S2hOwLs5X/fJJHZ0bnOQ==}
+  /@coveo/atomic-react/0.5.8_yyaspy5yuooqy74l2zish2glee:
+    resolution: {integrity: sha512-w+aYZ75PWZugsScxyEOThHJGBg63oPmY/grBxVpqo2jBdoBQbP4SmG2ekEa1dEXjVDNl/Umi4bpqaIbuvMTg6Q==}
     peerDependencies:
       react: ^17.0.2
       react-dom: ^17.0.2
@@ -2728,10 +2728,10 @@ packages:
 
   /@types/node/17.0.31:
     resolution: {integrity: sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==}
+    dev: true
 
   /@types/node/18.0.0:
     resolution: {integrity: sha512-cHlGmko4gWLVI27cGJntjs/Sj8th9aYwplmZFwmmgYQQvL5NUsgVJG7OddLvNfLqYS31KFN0s3qlaD9qCaxACA==}
-    dev: true
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -2748,20 +2748,20 @@ packages:
   /@types/pino-pretty/4.7.5:
     resolution: {integrity: sha512-rfHe6VIknk14DymxGqc9maGsRe8/HQSvM2u46EAz2XrS92qsAJnW16dpdFejBuZKD8cRJX6Aw6uVZqIQctMpAg==}
     dependencies:
-      '@types/node': 17.0.31
+      '@types/node': 18.0.0
       '@types/pino': 6.3.12
     dev: false
 
   /@types/pino-std-serializers/2.4.1:
     resolution: {integrity: sha512-17XcksO47M24IVTVKPeAByWUd3Oez7EbIjXpSbzMPhXVzgjGtrOa49gKBwxH9hb8dKv58OelsWQ+A1G1l9S3wQ==}
     dependencies:
-      '@types/node': 17.0.31
+      '@types/node': 18.0.0
     dev: false
 
   /@types/pino/6.3.12:
     resolution: {integrity: sha512-dsLRTq8/4UtVSpJgl9aeqHvbh6pzdmjYD3C092SYgLD2TyoCqHpTJk6vp8DvCTGGc7iowZ2MoiYiVUUCcu7muw==}
     dependencies:
-      '@types/node': 17.0.31
+      '@types/node': 18.0.0
       '@types/pino-pretty': 4.7.5
       '@types/pino-std-serializers': 2.4.1
       sonic-boom: 2.8.0
@@ -7436,7 +7436,7 @@ packages:
     dev: true
 
   /foreach/2.0.5:
-    resolution: {integrity: sha1-C+4AUBiusmDQo6865ljdATbsG5k=}
+    resolution: {integrity: sha512-ZBbtRiapkZYLsqoPyZOR+uPfto0GRMNQN1GwzZtZt7iZvPPbDDQV0JF5Hx4o/QFQ5c0vyuoZ98T8RSBbopzWtA==}
     dev: false
 
   /fork-stream/0.0.4:
@@ -8949,7 +8949,7 @@ packages:
     dependencies:
       available-typed-arrays: 1.0.5
       call-bind: 1.0.2
-      es-abstract: 1.19.5
+      es-abstract: 1.20.1
       foreach: 2.0.5
       has-tostringtag: 1.0.0
     dev: false
@@ -9686,7 +9686,7 @@ packages:
     hasBin: true
 
   /jsonfile/4.0.0:
-    resolution: {integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=}
+    resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
     optionalDependencies:
       graceful-fs: 4.2.10
 
@@ -11661,7 +11661,7 @@ packages:
     dev: true
 
   /os-tmpdir/1.0.2:
-    resolution: {integrity: sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=}
+    resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
 
   /p-finally/2.0.1:
@@ -16528,7 +16528,7 @@ packages:
     dependencies:
       available-typed-arrays: 1.0.5
       call-bind: 1.0.2
-      es-abstract: 1.19.5
+      es-abstract: 1.20.1
       foreach: 2.0.5
       has-tostringtag: 1.0.0
       is-typed-array: 1.1.8
