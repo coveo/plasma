@@ -24,7 +24,7 @@ export interface IBaseActionOptions {
     target?: string;
     primary?: boolean;
     tooltip?: string;
-    tooltipPlacement?: string;
+    tooltipPlacement?: 'left' | 'right' | 'top' | 'bottom';
     hideDisabled?: boolean;
     onClick?: () => void;
 }

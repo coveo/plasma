@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import {ButtonHTMLAttributes, Component} from 'react';
 import * as _ from 'underscore';
+import {TooltipPlacement} from '../../utils/TooltipUtils';
 
 import {IBaseActionOptions} from '../actions';
 import {LoadingSpinner} from '../loading';
@@ -44,7 +45,7 @@ export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLBu
         tooltip: '',
         primary: false,
         small: false,
-        tooltipPlacement: 'right',
+        tooltipPlacement: TooltipPlacement.Right,
         target: '',
     };
 
