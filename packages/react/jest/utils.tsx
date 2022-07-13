@@ -1,4 +1,6 @@
 import {render, RenderOptions, RenderResult} from '@testing-library/react';
+import {mount, shallow} from 'enzyme';
+import {cloneElement, createElement} from 'react';
 import {Provider} from 'react-redux';
 import {AnyAction, applyMiddleware, combineReducers, createStore, Store} from 'redux';
 import promise from 'redux-promise-middleware';
@@ -67,3 +69,24 @@ type JestToErrorArg = Parameters<jest.Matchers<unknown, () => unknown>['toThrow'
 
 export * from '@testing-library/react';
 export {customRender as render, expectToThrow, cleanup, setup};
+
+export const shallowWithStore = (Component: any, store: any) => {
+    const ReactReduxComponent = cloneElement(Component, {store}, null);
+    return shallow(ReactReduxComponent);
+};
+
+export const mountWithStore = (Component: any, store: any, withContext = true) => {
+    const ComponentAlreadyWithProvider = cloneElement(Component, {store}, null);
+    const ReactReduxComponent = createElement(Provider, {store}, Component);
+    return mount(withContext ? ComponentAlreadyWithProvider : ReactReduxComponent);
+};
+
+export const shallowWithState = (Component: any, state: any) => {
+    const store = {
+        getState: () => state,
+        subscribe: () => ({}),
+        dispatch: () => ({}),
+    };
+    const ReactReduxComponent = cloneElement(Component, {store}, null);
+    return shallow(ReactReduxComponent);
+};

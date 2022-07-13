@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithStore} from '@test-utils';
 import {compose} from 'underscore';
 
 import {getStoreMock, TestUtils} from '../../../utils/tests/TestUtils';

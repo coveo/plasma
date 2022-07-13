@@ -1,4 +1,4 @@
-import {shallowWithState} from '@helpers/enzyme-redux';
+import {shallowWithState} from '@test-utils';
 import {ReactNode} from 'react';
 import * as _ from 'underscore';
 import {Drop} from '../Drop';

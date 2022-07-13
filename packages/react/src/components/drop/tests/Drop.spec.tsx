@@ -1,5 +1,5 @@
 import {ReactWrapper, ShallowWrapper} from 'enzyme';
-import {mountWithStore, shallowWithState} from '@helpers/enzyme-redux';
+import {mountWithStore, shallowWithState} from '@test-utils';
 import {ReactNode} from 'react';
 import userEvent from '@testing-library/user-event';
 import {render, screen, waitFor} from '@test-utils';

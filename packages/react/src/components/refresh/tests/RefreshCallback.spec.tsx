@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithState, shallowWithStore} from '@test-utils';
 
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';

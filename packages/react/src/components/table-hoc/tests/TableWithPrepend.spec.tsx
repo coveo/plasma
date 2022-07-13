@@ -1,4 +1,4 @@
-import {shallowWithState} from '@helpers/enzyme-redux';
+import {shallowWithState} from '@test-utils';
 
 import {TableHOC} from '../TableHOC';
 import {TableSelectors} from '../TableSelectors';

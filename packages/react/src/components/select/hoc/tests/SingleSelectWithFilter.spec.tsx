@@ -1,5 +1,5 @@
 import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithStore} from '@test-utils';
 import {ComponentType} from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
