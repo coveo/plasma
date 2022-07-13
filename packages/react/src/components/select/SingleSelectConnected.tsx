@@ -1,7 +1,7 @@
 import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import {ReactNode, ComponentType, FunctionComponent, MouseEvent, useEffect} from 'react';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -65,31 +65,25 @@ const selectPropsKeys = [
     'wrapItems',
 ];
 
-export type ISingleSelectProps = ISingleSelectOwnProps &
-    ReturnType<typeof mapDispatchToProps> &
-    ReturnType<typeof mapStateToProps>;
+export type ISingleSelectProps = ISingleSelectOwnProps;
 
-const mapStateToProps = (state: PlasmaState, ownProps: ISingleSelectOwnProps) => {
-    const customSelected = SelectSelector.getListState(state, ownProps);
-    return {
-        selectedOption: customSelected.length
-            ? customSelected[customSelected.length - 1]
-            : SelectSelector.getListBoxSelected(state, ownProps)[0],
-    };
-};
-
-const mapDispatchToProps = (dispatch: IDispatch, {id}: ISingleSelectOwnProps) => ({
-    deselect: () => dispatch(clearListBoxOption(id)),
-});
-
-export const SingleSelect: FunctionComponent<ISingleSelectProps> = ({
+export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
     placeholder = 'Select an option',
     deselectTooltipText = 'Deselect',
     ...props
 }) => {
+    const dispatch: IDispatch = useDispatch();
+
+    const {customSelected, defaultSelected} = useSelector((state: PlasmaState) => ({
+        customSelected: SelectSelector.getListState(state, props),
+        defaultSelected: SelectSelector.getListBoxSelected(state, props)[0],
+    }));
+
+    const selectedOption = customSelected.length ? customSelected[customSelected.length - 1] : defaultSelected;
+
     useEffect(() => {
-        props.onSelectOptionCallback?.(props.selectedOption);
-    }, [props.selectedOption]);
+        props.onSelectOptionCallback?.(selectedOption);
+    }, [selectedOption]);
 
     const Toggle: FunctionComponent<ISelectButtonProps> = ({onClick, onKeyDown, onKeyUp, selectedOptions, isOpen}) => {
         const option = selectedOptions[0];
@@ -157,7 +151,7 @@ export const SingleSelect: FunctionComponent<ISingleSelectProps> = ({
     const handleDeselect = (e: MouseEvent) => {
         e.stopPropagation();
         if (!props.disabled) {
-            props.deselect();
+            dispatch(clearListBoxOption(props.id));
         }
     };
 
@@ -171,12 +165,3 @@ export const SingleSelect: FunctionComponent<ISingleSelectProps> = ({
         </SelectConnected>
     );
 };
-
-export const SingleSelectConnected = connect<
-    ReturnType<typeof mapStateToProps>,
-    ReturnType<typeof mapDispatchToProps>,
-    ISingleSelectOwnProps
->(
-    mapStateToProps,
-    mapDispatchToProps
-)(SingleSelect as any);
