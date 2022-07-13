@@ -156,8 +156,8 @@ importers:
       reselect: 4.1.5
       rimraf: 3.0.2
       sass: 1.51.0
-      split-on-first: 1.x.x
-      strict-uri-encode: 2.x.x
+      split-on-first: 3.0.0
+      strict-uri-encode: 2.0.0
       ts-jest: 27.1.4
       tslib: 2.3.1
       typescript: 4.6.4
@@ -170,7 +170,10 @@ importers:
       '@types/codemirror': 0.0.109
       chosen-js: 1.8.7
       classnames: 2.3.1
+      codemirror: 5.63.3
+      d3: 3.5.17
       dnd-core: 2.6.0
+      jquery: 3.6.0
       moment: 2.29.3
       query-string: 6.14.1
       rc-slider: 9.7.5_sfoxds7t5ydpegc3knd667wn6m
@@ -182,12 +185,16 @@ importers:
       react-dnd-html5-backend: 15.1.3
       react-infinite-scroll-component: 4.5.3_react@17.0.2
       react-modal: 3.15.1_sfoxds7t5ydpegc3knd667wn6m
+      react-redux: 7.2.6_sfoxds7t5ydpegc3knd667wn6m
       react-tether: 1.0.5_sfoxds7t5ydpegc3knd667wn6m
       react-textarea-autosize: 8.3.3_zdsfwtvwq54q3oqxwtq4jnbhh4
       react-transition-group: 2.9.0_sfoxds7t5ydpegc3knd667wn6m
+      redux: 4.2.0
       reselect: 4.1.5
-      split-on-first: 1.1.0
+      split-on-first: 3.0.0
       strict-uri-encode: 2.0.0
+      underscore: 1.13.1
+      underscore.string: 3.3.6
     devDependencies:
       '@helpers/enzyme-redux': link:../../helpers/enzyme-redux
       '@hot-loader/react-dom': 17.0.2_react@17.0.2
@@ -231,8 +238,6 @@ importers:
       ansi-colors: 4.1.1
       autoprefixer: 10.4.2_postcss@8.4.13
       codecov: 3.8.2
-      codemirror: 5.63.3
-      d3: 3.5.17
       del: 6.0.0
       enzyme: 3.11.0
       escape-string-regexp: 1.0.5
@@ -244,7 +249,6 @@ importers:
       identity-obj-proxy: 3.0.0
       jest: 28.0.3
       jest-environment-jsdom: 28.0.2
-      jquery: 3.6.0
       lint-staged: 9.5.0
       lorem-ipsum: 2.0.4
       minimist: 1.2.6
@@ -252,8 +256,6 @@ importers:
       react: 17.0.2
       react-dnd-test-backend: 15.1.2
       react-dom: 17.0.2_react@17.0.2
-      react-redux: 7.2.6_sfoxds7t5ydpegc3knd667wn6m
-      redux: 4.2.0
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
       redux-promise-middleware: 6.1.2_redux@4.2.0
@@ -264,8 +266,6 @@ importers:
       ts-jest: 27.1.4_gwmdgjhs6y73u3mbuuhctmzw44
       tslib: 2.3.1
       typescript: 4.6.4
-      underscore: 1.13.1
-      underscore.string: 3.3.6
 
   packages/react-icons:
     specifiers:
@@ -2836,6 +2836,7 @@ packages:
       '@types/react': 18.0.8
       hoist-non-react-statics: 3.3.2
       redux: 4.2.0
+    dev: false
 
   /@types/react-router-dom/5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
@@ -2890,6 +2891,7 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.0.11
+    dev: false
 
   /@types/reactcss/1.2.6:
     resolution: {integrity: sha512-qaIzpCuXNWomGR1Xq8SCFTtF4v8V27Y6f+b9+bzHiv087MylI/nTCqqdChNeWS7tslgROmYB7yeiruWX7WnqNg==}
@@ -4938,6 +4940,7 @@ packages:
 
   /codemirror/5.63.3:
     resolution: {integrity: sha512-1C+LELr+5grgJYqwZKqxrcbPsHFHapVaVAloBsFBASbpLnQqLw1U8yXJ3gT5D+rhxIiSpo+kTqN+hQ+9ialIXw==}
+    dev: false
 
   /codemirror/5.65.3:
     resolution: {integrity: sha512-kCC0iwGZOVZXHEKW3NDTObvM7pTIyowjty4BUqeREROc/3I6bWbgZDA3fGDwlA+rbgRjvnRnfqs9SfXynel1AQ==}
@@ -5706,6 +5709,7 @@ packages:
 
   /d3/3.5.17:
     resolution: {integrity: sha1-vEZ0gAQ3iyGjYMn8fPUjF5B2L7g=}
+    dev: false
 
   /dargs/7.0.0:
     resolution: {integrity: sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==}
@@ -13293,6 +13297,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-is: 17.0.2
+    dev: false
 
   /react-router-dom/6.3.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw==}
@@ -14459,6 +14464,11 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /split-on-first/3.0.0:
+    resolution: {integrity: sha512-qxQJTx2ryR0Dw0ITYyekNQWpz6f8dGd7vffGNflQQ3Iqj9NJ6qiZ7ELpZsJ/QBhIVAiDfXdag3+Gp8RvWa62AA==}
+    engines: {node: '>=12'}
+    dev: false
+
   /split-string/3.1.0:
     resolution: {integrity: sha512-NzNVhJDYpwceVVii8/Hu6DKfD2G+NrQHlS/V/qgv763EYudVwEcMQNxd2lh+0VrUByXN/oJkl5grOhYWvQUYiw==}
     engines: {node: '>=0.10.0'}
@@ -14576,7 +14586,7 @@ packages:
     dev: true
 
   /strict-uri-encode/2.0.0:
-    resolution: {integrity: sha1-ucczDHBChi9rFC3CdLvMWGbONUY=}
+    resolution: {integrity: sha512-QwiXZgpRcKkhTj2Scnn++4PKtWsH0kpzZ62L2R6c/LUVYv7hVnZqcg2+sMuT6R7Jusu1vviK/MFsu6kNJfWlEQ==}
     engines: {node: '>=4'}
     dev: false
 
