@@ -84,7 +84,7 @@ importers:
       '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.13.1
       '@types/react-redux': 7.1.22
-      '@types/react-tether': 1.0.0
+      '@types/react-tether': 0.5.5
       '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.9.2
       '@types/redux-logger': 3.0.9
@@ -211,7 +211,7 @@ importers:
       '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.13.1
       '@types/react-redux': 7.1.22
-      '@types/react-tether': 1.0.0_sfoxds7t5ydpegc3knd667wn6m
+      '@types/react-tether': 0.5.5
       '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.9.2
       '@types/redux-logger': 3.0.9
@@ -2807,14 +2807,11 @@ packages:
       hoist-non-react-statics: 3.3.2
       redux: 4.2.0
 
-  /@types/react-tether/1.0.0_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-mvB19kFphBxcA9izsF7Ht8wu1I7YiD/k22hQpz+j/kAcUk4W+J3GtTdSaXb3xTs4xdVVnfFU3jsWnDqJmk1TUA==}
-    deprecated: This is a stub types definition. react-tether provides its own type definitions, so you do not need this installed.
+  /@types/react-tether/0.5.5:
+    resolution: {integrity: sha512-ZM/wd77k/kn+nPQyP3j9tnLfK1MehIG/KXAhPbZeHP4J2ZLQ/xXonzdxbeyOdQgLSQtB0hbuRZcSOUOP/VjQnw==}
     dependencies:
-      react-tether: 2.0.8_sfoxds7t5ydpegc3knd667wn6m
-    transitivePeerDependencies:
-      - react
-      - react-dom
+      '@types/react': 17.0.44
+      '@types/tether': 1.4.6
     dev: true
 
   /@types/react-textarea-autosize/4.3.6:
@@ -2897,6 +2894,10 @@ packages:
     resolution: {integrity: sha512-oKZe+Mf4ioWlMuzVBaXQ9WDnEm1+umLx0InILg+yvZVBBDmzV5KfZyLrCvadtWcx8+916jLmHafcmqqffl+iIw==}
     dependencies:
       '@types/jest': 27.4.1
+    dev: true
+
+  /@types/tether/1.4.6:
+    resolution: {integrity: sha512-9nHygDpiN1VPAkTXZyKOmdVK12EPp4KLgc7kj9ji0X6qsHzzQV8e7KYEh1afrF6TTVs5d9oRJXwkmjeSWc+5Cw==}
     dev: true
 
   /@types/tough-cookie/4.0.2:
@@ -13286,18 +13287,6 @@ packages:
       tether: 1.4.7
     dev: false
 
-  /react-tether/2.0.8_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-k5imIcN7shOy0z59WKLljvBwmGqzAcqsjHtBk8h03F3aFn+Wdz4p56ecOLCqvBb/gpQp9WEFv+Saclro6GZQCQ==}
-    peerDependencies:
-      react: ^16.3.0 || ^17
-      react-dom: ^16.3.0 || ^17
-    dependencies:
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      tether: 1.4.7
-    dev: true
-
   /react-textarea-autosize/8.3.3_zdsfwtvwq54q3oqxwtq4jnbhh4:
     resolution: {integrity: sha512-2XlHXK2TDxS6vbQaoPbMOfQ8GK7+irc2fVK6QFIcC8GOnH3zI/v481n+j1L0WaPVvKxwesnY93fEfH++sus2rQ==}
     engines: {node: '>=10'}
@@ -15219,6 +15208,7 @@ packages:
 
   /tether/1.4.7:
     resolution: {integrity: sha512-Z0J1aExjoFU8pybVkQAo/vD2wfSO63r+XOPfWQMC5qtf1bI7IWqNk4MiyBcgvvnY8kqnY06dVdvwTK2S3PU/Fw==}
+    dev: false
 
   /text-extensions/1.9.0:
     resolution: {integrity: sha512-wiBrwC1EhBelW12Zy26JeOUkQ5mRu+5o8rpsJk5+2t+Y5vE7e842qtZDQ2g1NpX/29HdyFeJ4nSIhI47ENSxlQ==}
