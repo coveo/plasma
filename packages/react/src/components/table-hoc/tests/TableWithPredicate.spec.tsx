@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import {shallowWithState} from '@helpers/enzyme-redux';
+import {shallowWithState} from '@test-utils';
 import {ReactNode} from 'react';
 import {render, screen} from '@test-utils';
 import * as _ from 'underscore';

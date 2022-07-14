@@ -1,5 +1,5 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithStore} from '@test-utils';
 import {ReactNode, ReactElement} from 'react';
 import {Store} from 'redux';
 import * as _ from 'underscore';

@@ -1,4 +1,4 @@
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithStore} from '@test-utils';
 import {ShallowWrapper} from 'enzyme';
 
 import {getStoreMock} from '../../../../utils/tests/TestUtils';

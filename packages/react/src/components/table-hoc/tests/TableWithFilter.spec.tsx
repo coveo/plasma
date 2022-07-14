@@ -1,5 +1,5 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import {shallowWithState} from '@helpers/enzyme-redux';
+import {shallowWithState} from '@test-utils';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';

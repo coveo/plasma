@@ -1,5 +1,5 @@
 import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithStore} from '@test-utils';
 import {Range} from 'rc-slider';
 import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';

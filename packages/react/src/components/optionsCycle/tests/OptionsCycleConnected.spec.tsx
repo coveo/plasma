@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithStore} from '@test-utils';
 
 import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {IOptionsCycleConnectedOwnProps, IOptionsCycleProps} from '../OptionsCycle';

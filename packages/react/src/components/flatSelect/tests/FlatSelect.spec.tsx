@@ -1,4 +1,4 @@
-import {mountWithStore, shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
+import {mountWithStore, shallowWithState, shallowWithStore} from '@test-utils';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {UUID} from '../../../utils/UUID';

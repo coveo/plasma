@@ -1,4 +1,4 @@
-import {mountWithStore} from '@helpers/enzyme-redux';
+import {mountWithStore} from '@test-utils';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {addSearchBar, removeSearchBar, setSearchBarValue} from '../SearchBarActions';

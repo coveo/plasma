@@ -1,4 +1,4 @@
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithStore} from '@test-utils';
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {Button, IButtonProps} from '../../../button';
 import {IWithDirtySaveButtonHOCProps, withDirtySaveButtonHOC} from '../WithDirtySaveButtonHOC';
