@@ -1,3 +1,22 @@
+# 44.0.0 (2022-07-14)
+
+
+### Build System
+
+* **npm:** move most of the peerDependencies to actual dependencies ([#2800](https://github.com/coveo/plasma/issues/2800)) ([bab2aa4](https://github.com/coveo/plasma/commits/bab2aa4e6ba948af334b2032500510213b8d5dd4))
+
+
+### BREAKING CHANGES
+
+* **npm:** Moving peer dependencies to dependencies might increase bundle size momentarily but
+we'll work on improve that in a later step
+
+* build(npm): streamlining peer deps even more
+
+* revert(react): rollback @types/react-tether version
+
+
+
 ## 43.0.3 (2022-07-13)
 
 
