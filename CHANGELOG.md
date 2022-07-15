@@ -1,3 +1,12 @@
+# 44.1.0 (2022-07-15)
+
+
+### Features
+
+* p8 make steps in modalWizard full-height ([#2799](https://github.com/coveo/plasma/issues/2799)) ([31da44a](https://github.com/coveo/plasma/commits/31da44a7579108dec13fc6555399894bb83cb540))
+
+
+
 # 44.0.0 (2022-07-14)
 
 
