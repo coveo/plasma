@@ -62,7 +62,7 @@ const FoundationsPages: FC = () => (
                 href="foundations/Typekit"
                 thumbnail="typekit"
             />
-            <Tile title="Palette" description="" href="foundations/Palette" />
+            <Tile title="Palette" href="foundations/Palette" />
             <Tile
                 title="Links"
                 description="A link is a navigational element that guides users to external resources or other sections of the product."
