@@ -1,4 +1,5 @@
 import type {AppProps} from 'next/app';
+import '../styles/colors.scss';
 import '../styles/github-button.scss';
 import '../styles/home.scss';
 import '../styles/iconography.scss';

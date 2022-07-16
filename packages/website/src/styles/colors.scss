@@ -1,0 +1,343 @@
+.colorDemo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+// Grey sclae
+.color_demo_bg-white {
+    background-color: var(--white);
+}
+.color_demo_bg-grey-20 {
+    background-color: var(--grey-20);
+}
+.color_demo_bg-grey-40 {
+    background-color: var(--grey-40);
+}
+.color_demo_bg-grey-50 {
+    background-color: var(--grey-50);
+}
+.color_demo_bg-grey-60 {
+    background-color: var(--grey-60);
+}
+.color_demo_bg-grey-80 {
+    background-color: var(--grey-80);
+}
+.color_demo_bg-grey-100 {
+    background-color: var(--grey-100);
+}
+.color_demo_bg-black {
+    background-color: var(--black);
+}
+
+// Navy blue scale
+.color_demo_bg-navy-blue-10 {
+    background-color: var(--navy-blue-10);
+}
+.color_demo_bg-navy-blue-20 {
+    background-color: var(--navy-blue-20);
+}
+.color_demo_bg-navy-blue-30 {
+    background-color: var(--navy-blue-30);
+}
+.color_demo_bg-navy-blue-40 {
+    background-color: var(--navy-blue-40);
+}
+.color_demo_bg-navy-blue-50 {
+    background-color: var(--navy-blue-50);
+}
+.color_demo_bg-navy-blue-60 {
+    background-color: var(--navy-blue-60);
+}
+.color_demo_bg-navy-blue-70 {
+    background-color: var(--navy-blue-70);
+}
+.color_demo_bg-navy-blue-80 {
+    background-color: var(--navy-blue-80);
+}
+.color_demo_bg-navy-blue-90 {
+    background-color: var(--navy-blue-90);
+}
+.color_demo_bg-navy-blue-100 {
+    background-color: var(--navy-blue-100);
+}
+
+// Digital blue scale
+.color_demo_bg-digital-blue-10 {
+    background-color: var(--digital-blue-10);
+}
+.color_demo_bg-digital-blue-20 {
+    background-color: var(--digital-blue-20);
+}
+.color_demo_bg-digital-blue-40 {
+    background-color: var(--digital-blue-40);
+}
+.color_demo_bg-digital-blue-60 {
+    background-color: var(--digital-blue-60);
+}
+.color_demo_bg-digital-blue-80 {
+    background-color: var(--digital-blue-80);
+}
+.color_demo_bg-digital-blue-100 {
+    background-color: var(--digital-blue-100);
+}
+
+// Pomegranate red scale
+.color_demo_bg-pomegranate-red-10 {
+    background-color: var(--pomegranate-red-10);
+}
+.color_demo_bg-pomegranate-red-20 {
+    background-color: var(--pomegranate-red-20);
+}
+.color_demo_bg-pomegranate-red-30 {
+    background-color: var(--pomegranate-red-30);
+}
+.color_demo_bg-pomegranate-red-40 {
+    background-color: var(--pomegranate-red-40);
+}
+.color_demo_bg-pomegranate-red-50 {
+    background-color: var(--pomegranate-red-50);
+}
+.color_demo_bg-pomegranate-red-60 {
+    background-color: var(--pomegranate-red-60);
+}
+.color_demo_bg-pomegranate-red-70 {
+    background-color: var(--pomegranate-red-70);
+}
+.color_demo_bg-pomegranate-red-80 {
+    background-color: var(--pomegranate-red-80);
+}
+.color_demo_bg-pomegranate-red-90 {
+    background-color: var(--pomegranate-red-90);
+}
+.color_demo_bg-pomegranate-red-100 {
+    background-color: var(--pomegranate-red-100);
+}
+
+// Cerulean blue scale
+.color_demo_bg-cerulean-blue-10 {
+    background-color: var(--cerulean-blue-10);
+}
+.color_demo_bg-cerulean-blue-20 {
+    background-color: var(--cerulean-blue-20);
+}
+.color_demo_bg-cerulean-blue-30 {
+    background-color: var(--cerulean-blue-30);
+}
+.color_demo_bg-cerulean-blue-40 {
+    background-color: var(--cerulean-blue-40);
+}
+.color_demo_bg-cerulean-blue-50 {
+    background-color: var(--cerulean-blue-50);
+}
+.color_demo_bg-cerulean-blue-60 {
+    background-color: var(--cerulean-blue-60);
+}
+.color_demo_bg-cerulean-blue-70 {
+    background-color: var(--cerulean-blue-70);
+}
+.color_demo_bg-cerulean-blue-80 {
+    background-color: var(--cerulean-blue-80);
+}
+.color_demo_bg-cerulean-blue-90 {
+    background-color: var(--cerulean-blue-90);
+}
+.color_demo_bg-cerulean-blue-100 {
+    background-color: var(--cerulean-blue-100);
+}
+
+// Turbo yellow scale
+.color_demo_bg-turbo-yellow-10 {
+    background-color: var(--turbo-yellow-10);
+}
+.color_demo_bg-turbo-yellow-20 {
+    background-color: var(--turbo-yellow-20);
+}
+.color_demo_bg-turbo-yellow-30 {
+    background-color: var(--turbo-yellow-30);
+}
+.color_demo_bg-turbo-yellow-40 {
+    background-color: var(--turbo-yellow-40);
+}
+.color_demo_bg-turbo-yellow-50 {
+    background-color: var(--turbo-yellow-50);
+}
+.color_demo_bg-turbo-yellow-60 {
+    background-color: var(--turbo-yellow-60);
+}
+.color_demo_bg-turbo-yellow-70 {
+    background-color: var(--turbo-yellow-70);
+}
+.color_demo_bg-turbo-yellow-80 {
+    background-color: var(--turbo-yellow-80);
+}
+.color_demo_bg-turbo-yellow-90 {
+    background-color: var(--turbo-yellow-90);
+}
+.color_demo_bg-turbo-yellow-100 {
+    background-color: var(--turbo-yellow-100);
+}
+
+// Bright turquoise scale
+.color_demo_bg-bright-turquoise-10 {
+    background-color: var(--bright-turquoise-10);
+}
+.color_demo_bg-bright-turquoise-20 {
+    background-color: var(--bright-turquoise-20);
+}
+.color_demo_bg-bright-turquoise-30 {
+    background-color: var(--bright-turquoise-30);
+}
+.color_demo_bg-bright-turquoise-40 {
+    background-color: var(--bright-turquoise-40);
+}
+.color_demo_bg-bright-turquoise-50 {
+    background-color: var(--bright-turquoise-50);
+}
+.color_demo_bg-bright-turquoise-60 {
+    background-color: var(--bright-turquoise-60);
+}
+.color_demo_bg-bright-turquoise-70 {
+    background-color: var(--bright-turquoise-70);
+}
+.color_demo_bg-bright-turquoise-80 {
+    background-color: var(--bright-turquoise-80);
+}
+.color_demo_bg-bright-turquoise-90 {
+    background-color: var(--bright-turquoise-90);
+}
+.color_demo_bg-bright-turquoise-100 {
+    background-color: var(--bright-turquoise-100);
+}
+
+// Grape purple scale
+.color_demo_bg-grape-purple-10 {
+    background-color: var(--grape-purple-10);
+}
+.color_demo_bg-grape-purple-20 {
+    background-color: var(--grape-purple-20);
+}
+.color_demo_bg-grape-purple-30 {
+    background-color: var(--grape-purple-30);
+}
+.color_demo_bg-grape-purple-40 {
+    background-color: var(--grape-purple-40);
+}
+.color_demo_bg-grape-purple-50 {
+    background-color: var(--grape-purple-50);
+}
+.color_demo_bg-grape-purple-60 {
+    background-color: var(--grape-purple-60);
+}
+.color_demo_bg-grape-purple-70 {
+    background-color: var(--grape-purple-70);
+}
+.color_demo_bg-grape-purple-80 {
+    background-color: var(--grape-purple-80);
+}
+.color_demo_bg-grape-purple-90 {
+    background-color: var(--grape-purple-90);
+}
+.color_demo_bg-grape-purple-100 {
+    background-color: var(--grape-purple-100);
+}
+
+// Rain-forest green scale
+.color_demo_bg-rain-forest-green-10 {
+    background-color: var(--rain-forest-green-10);
+}
+.color_demo_bg-rain-forest-green-20 {
+    background-color: var(--rain-forest-green-20);
+}
+.color_demo_bg-rain-forest-green-30 {
+    background-color: var(--rain-forest-green-30);
+}
+.color_demo_bg-rain-forest-green-40 {
+    background-color: var(--rain-forest-green-40);
+}
+.color_demo_bg-rain-forest-green-50 {
+    background-color: var(--rain-forest-green-50);
+}
+.color_demo_bg-rain-forest-green-60 {
+    background-color: var(--rain-forest-green-60);
+}
+.color_demo_bg-rain-forest-green-70 {
+    background-color: var(--rain-forest-green-70);
+}
+.color_demo_bg-rain-forest-green-80 {
+    background-color: var(--rain-forest-green-80);
+}
+.color_demo_bg-rain-forest-green-90 {
+    background-color: var(--rain-forest-green-90);
+}
+.color_demo_bg-rain-forest-green-100 {
+    background-color: var(--rain-forest-green-100);
+}
+
+// Governor-bay blue scale
+.color_demo_bg-governor-bay-blue-10 {
+    background-color: var(--governor-bay-blue-10);
+}
+.color_demo_bg-governor-bay-blue-20 {
+    background-color: var(--governor-bay-blue-20);
+}
+.color_demo_bg-governor-bay-blue-30 {
+    background-color: var(--governor-bay-blue-30);
+}
+.color_demo_bg-governor-bay-blue-40 {
+    background-color: var(--governor-bay-blue-40);
+}
+.color_demo_bg-governor-bay-blue-50 {
+    background-color: var(--governor-bay-blue-50);
+}
+.color_demo_bg-governor-bay-blue-60 {
+    background-color: var(--governor-bay-blue-60);
+}
+.color_demo_bg-governor-bay-blue-70 {
+    background-color: var(--governor-bay-blue-70);
+}
+.color_demo_bg-governor-bay-blue-80 {
+    background-color: var(--governor-bay-blue-80);
+}
+.color_demo_bg-governor-bay-blue-90 {
+    background-color: var(--governor-bay-blue-90);
+}
+.color_demo_bg-governor-bay-blue-100 {
+    background-color: var(--governor-bay-blue-100);
+}
+
+// Sienna orange scale
+.color_demo_bg-sienna-orange-10 {
+    background-color: var(--sienna-orange-10);
+}
+.color_demo_bg-sienna-orange-20 {
+    background-color: var(--sienna-orange-20);
+}
+.color_demo_bg-sienna-orange-30 {
+    background-color: var(--sienna-orange-30);
+}
+.color_demo_bg-sienna-orange-40 {
+    background-color: var(--sienna-orange-40);
+}
+.color_demo_bg-sienna-orange-50 {
+    background-color: var(--sienna-orange-50);
+}
+.color_demo_bg-sienna-orange-60 {
+    background-color: var(--sienna-orange-60);
+}
+.color_demo_bg-sienna-orange-70 {
+    background-color: var(--sienna-orange-70);
+}
+.color_demo_bg-sienna-orange-80 {
+    background-color: var(--sienna-orange-80);
+}
+.color_demo_bg-sienna-orange-90 {
+    background-color: var(--sienna-orange-90);
+}
+.color_demo_bg-sienna-orange-100 {
+    background-color: var(--sienna-orange-100);
+}
