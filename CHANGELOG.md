@@ -1,3 +1,17 @@
+# 45.0.0 (2022-07-19)
+
+
+### Features
+
+* **react:** remove chosen-js and jquery ([#2804](https://github.com/coveo/plasma/issues/2804)) ([046043a](https://github.com/coveo/plasma/commits/046043a80109bf2542cbe242768b586dd613108a))
+
+
+### BREAKING CHANGES
+
+* **react:** ChosenSelect was removed, use SingleSelectConnected instead
+
+
+
 # 44.2.0 (2022-07-19)
 
 
