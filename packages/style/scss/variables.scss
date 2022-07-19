@@ -391,13 +391,6 @@ $dropdown-multiselect-icon-position: $dropdown-multiselect-icon-size * 0.5 - $dr
 $multiselect-padding: 2 * $spacing;
 $multiselect-dropdown-margin: calc(-#{$multiselect-padding} - 2 * #{$default-border-size});
 
-// Chosen
-$chosen-clear-icon-size: 10px;
-$chosen-filter-icon-size: 16px;
-$chosen-multi-search-choice-height: 24px;
-$chosen-multi-search-choice-margin: 10px;
-$chosen-multi-search-choice-padding: 10px;
-
 // Facet
 $facet-column-width: 30%;
 $facet-column-max-width: 360px;

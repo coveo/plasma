@@ -65,7 +65,6 @@ importers:
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 12.1.5
       '@testing-library/user-event': 13.5.0
-      '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
       '@types/codemirror': 0.0.109
       '@types/d3': 3.5.47
@@ -73,7 +72,6 @@ importers:
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
       '@types/jest': 27.4.1
-      '@types/jquery': 2.0.60
       '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/react': ^17.0
@@ -98,7 +96,6 @@ importers:
       '@wojtekmaj/enzyme-adapter-react-17': 0.6.7
       ansi-colors: 4.1.1
       autoprefixer: 10.4.2
-      chosen-js: 1.8.7
       classnames: 2.3.1
       codecov: 3.8.2
       codemirror: 5.63.3
@@ -115,7 +112,6 @@ importers:
       identity-obj-proxy: 3.0.0
       jest: 28.0.3
       jest-environment-jsdom: 28.0.2
-      jquery: 3.6.0
       lint-staged: 9.5.0
       lorem-ipsum: 2.0.4
       minimist: 1.2.6
@@ -159,12 +155,10 @@ importers:
       '@loadable/component': 5.15.2_react@17.0.2
       '@swc/helpers': 0.3.9
       '@types/codemirror': 0.0.109
-      chosen-js: 1.8.7
       classnames: 2.3.1
       codemirror: 5.63.3
       d3: 3.5.17
       dnd-core: 2.6.0
-      jquery: 3.6.0
       moment: 2.29.4
       query-string: 6.14.1
       rc-slider: 9.7.5_sfoxds7t5ydpegc3knd667wn6m
@@ -193,14 +187,12 @@ importers:
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 12.1.5_sfoxds7t5ydpegc3knd667wn6m
       '@testing-library/user-event': 13.5.0_tlwynutqiyp5mns3woioasuxnq
-      '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
       '@types/d3': 3.5.47
       '@types/enzyme': 3.10.12
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
       '@types/jest': 27.4.1
-      '@types/jquery': 2.0.60
       '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 17.0.44
@@ -304,7 +296,6 @@ importers:
     specifiers:
       ansi-colors: 4.1.1
       autosize: 5.0.1
-      chosen-npm: 1.4.2
       codemirror: ^5.59.4
       concurrently: 7.1.0
       coveo-png-sprite: 1.0.1
@@ -331,6 +322,7 @@ importers:
       minimist: 1.2.6
       postcss: 8.4.4
       postcss-loader: 4.0.3
+      postcss-scss: ^4.0.4
       rc-slider: 8.7.1
       react-diff-view: 2.4.10
       resolve-url-loader: 3.1.4
@@ -348,7 +340,6 @@ importers:
     devDependencies:
       ansi-colors: 4.1.1
       autosize: 5.0.1
-      chosen-npm: 1.4.2
       concurrently: 7.1.0
       coveo-png-sprite: 1.0.1
       coveo-slider: 1.0.2_nk4ke35bzutwbd4xuiytz3maei
@@ -374,6 +365,7 @@ importers:
       minimist: 1.2.6
       postcss: 8.4.4
       postcss-loader: 4.0.3_eblbzikeidnqrhsulbohfqveve
+      postcss-scss: 4.0.4_postcss@8.4.4
       resolve-url-loader: 3.1.4
       sass: 1.51.0
       sass-loader: 10.2.1_sass@1.51.0+webpack@4.46.0
@@ -2531,12 +2523,6 @@ packages:
       '@types/node': 18.0.0
     dev: true
 
-  /@types/chosen-js/1.8.3:
-    resolution: {integrity: sha512-HoXjB21X12y1D8x9G2qSSqea1zGelwWciZbHTh3Mm3GW4pgme3sNLM+IiGkkcwCfr2DsvskjG1qOAlFsav5ojA==}
-    dependencies:
-      '@types/jquery': 2.0.60
-    dev: true
-
   /@types/classnames/2.3.0:
     resolution: {integrity: sha512-3GsbOoDYteFShlrBTKzI2Eii4vPg/jAf7LXRIn0WQePKlmhpkV0KoTMuawA7gZJkrbPrZGwv9IEAfIWaOaQK8w==}
     dependencies:
@@ -2628,10 +2614,6 @@ packages:
     dependencies:
       jest-matcher-utils: 27.5.1
       pretty-format: 27.5.1
-    dev: true
-
-  /@types/jquery/2.0.60:
-    resolution: {integrity: sha512-izi6OBEVrAwaHiqWITjOPBbVtcKZKAXTocJqPZsAKA2lvmbpFEyPSAxgcqmisbiMYj9EvrooUEPLHQeQqVMWAg==}
     dev: true
 
   /@types/jsdom/16.2.14:
@@ -4707,15 +4689,6 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
-
-  /chosen-js/1.8.7:
-    resolution: {integrity: sha512-eVdrZJ2U5ISdObkgsi0od5vIJdLwq1P1Xa/Vj/mgxkMZf14DlgobfB6nrlFi3kW4kkvKLsKk4NDqZj1MU1DCpw==}
-    dev: false
-
-  /chosen-npm/1.4.2:
-    resolution: {integrity: sha1-7Ghq55ZRNHPbwXGxpjcC5tfhUV8=}
-    engines: {node: '>=0.4.0'}
-    dev: true
 
   /chownr/1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
@@ -9544,6 +9517,7 @@ packages:
 
   /jquery/3.6.0:
     resolution: {integrity: sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==}
+    dev: true
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -12428,6 +12402,15 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       postcss: 7.0.39
+    dev: true
+
+  /postcss-scss/4.0.4_postcss@8.4.4:
+    resolution: {integrity: sha512-aBBbVyzA8b3hUL0MGrpydxxXKXFZc5Eqva0Q3V9qsBOLEMsjb6w49WfpsoWzpEgcqJGW4t7Rio8WXVU9Gd8vWg==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.3.3
+    dependencies:
+      postcss: 8.4.4
     dev: true
 
   /postcss-selector-parser/3.1.2:

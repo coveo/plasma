@@ -12,7 +12,6 @@ export * from './calendar';
 export * from './chart';
 export * from './checkbox';
 export * from './childForm';
-export * from './chosen';
 export * from './collapsible';
 export * from './color';
 export * from './color-picker';
