@@ -1,3 +1,12 @@
+# 44.2.0 (2022-07-19)
+
+
+### Features
+
+* **react, loadable:** create loadable to lazy load component ([#2803](https://github.com/coveo/plasma/issues/2803)) ([db3e99c](https://github.com/coveo/plasma/commits/db3e99ce598b9885d7c61117f9c850b5cd8785cf))
+
+
+
 ## 44.1.1 (2022-07-15)
 
 
