@@ -1,9 +1,5 @@
 import _ from 'underscore';
 
-// jQuery has to be imported before chosen-js
-import $ from 'jquery';
-global.$ = global.jQuery = $;
-
 global._ = _;
 
 document.createRange = () => {

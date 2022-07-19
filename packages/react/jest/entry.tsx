@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom';
-import 'chosen-js';
 
 import {cleanup, setup} from '@test-utils';
 import * as Enzyme from 'enzyme';

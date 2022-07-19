@@ -32,7 +32,7 @@
     "scripts": {
         "build": "gulp clean && gulp && webpack",
         "clean": "gulp clean",
-        "lintfix": "../../node_modules/.bin/stylelint --fix --syntax \"**/*.scss\" && ../../node_modules/.bin/prettier --write \"**/*.{scss,js,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"**/*.js\" --fix",
+        "lintfix": "../../node_modules/.bin/stylelint --custom-syntax postcss-scss --fix \"**/*.scss\" && ../../node_modules/.bin/prettier --write \"**/*.{scss,js,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"**/*.js\" --fix",
         "precommit": "lint-staged",
         "start": "concurrently \"gulp watch\" \"webpack --watch\""
     },
@@ -42,7 +42,7 @@
             "git add"
         ],
         "**/*.scss": [
-            "stylelint --fix",
+            "stylelint --custom-syntax postcss-scss --fix",
             "prettier --write",
             "git add"
         ],
@@ -70,7 +70,6 @@
     "devDependencies": {
         "ansi-colors": "4.1.1",
         "autosize": "5.0.1",
-        "chosen-npm": "1.4.2",
         "concurrently": "7.1.0",
         "coveo-png-sprite": "1.0.1",
         "coveo-slider": "1.0.2",
@@ -96,6 +95,7 @@
         "minimist": "1.2.6",
         "postcss": "8.4.4",
         "postcss-loader": "4.0.3",
+        "postcss-scss": "^4.0.4",
         "resolve-url-loader": "3.1.4",
         "sass": "1.51.0",
         "sass-loader": "10.2.1",
@@ -106,7 +106,6 @@
         "webpack-cli": "3.3.12"
     },
     "peerDependencies": {
-        "chosen-npm": "^1.4.2",
         "coveo-slider": "^1.0.1",
         "materialize-css": "^0.98.2"
     }
