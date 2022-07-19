@@ -1,20 +1,23 @@
-import loadable from '@loadable/component';
 import classNames from 'classnames';
 import type {Editor, EditorConfiguration} from 'codemirror';
 import {Component, ComponentType, createRef} from 'react';
+import {IControlledCodeMirror} from 'react-codemirror2';
 import type {Controlled} from 'react-codemirror2';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
 import {CollapsibleSelectors} from '../collapsible';
+import {Loadable} from '../loadable/Loadable';
 import {CodeEditorActions} from './CodeEditorActions';
 import {CodeMirrorGutters} from './EditorConstants';
 
-const ReactCodeMirror = loadable(() => import('./CodeMirror'), {
-    ssr: false,
-    resolveComponent: (mod: typeof import('./CodeMirror')) => mod.Controlled,
-});
+const ReactCodeMirror = Loadable<IControlledCodeMirror>(
+    () => import('./CodeMirror').then((mod: typeof import('./CodeMirror')) => mod.Controlled),
+    {
+        ssr: false,
+    }
+);
 
 export interface ICodeEditorProps {
     /**
