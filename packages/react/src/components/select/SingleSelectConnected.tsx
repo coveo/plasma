@@ -82,7 +82,9 @@ export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
     const selectedOption = customSelected.length ? customSelected[customSelected.length - 1] : defaultSelected;
 
     useEffect(() => {
-        props.onSelectOptionCallback?.(selectedOption);
+        if (selectedOption) {
+            props.onSelectOptionCallback?.(selectedOption);
+        }
     }, [selectedOption]);
 
     const Toggle: FunctionComponent<ISelectButtonProps> = ({onClick, onKeyDown, onKeyUp, selectedOptions, isOpen}) => {
