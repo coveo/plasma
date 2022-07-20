@@ -1,3 +1,12 @@
+## 45.0.1 (2022-07-20)
+
+
+### Bug Fixes
+
+* **react, single select:** call onSelectOptionCallback if there is a selected option ([#2805](https://github.com/coveo/plasma/issues/2805)) ([d9003ea](https://github.com/coveo/plasma/commits/d9003eaf16d55d2c9cd3b579741b7f375b8cdb6c))
+
+
+
 # 45.0.0 (2022-07-19)
 
 
