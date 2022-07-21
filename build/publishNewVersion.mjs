@@ -104,10 +104,10 @@ const outputProcess = (process) => {
                 outputProcess(spawnSync('git', ['status'], {encoding: 'utf-8'}));
 
                 console.log(`Publishing version ${versionTag} on NPM`);
-                outputProcess(pnpmPublish(lastTag, options.tag, options.branch));
+                outputProcess(pnpmPublish(options.tag, options.branch));
             } else {
                 console.log('Would have called pnpmPublish with the following arguments:');
-                console.log(`pnpmPublish(${lastTag}, ${options.tag}, ${options.branch})`);
+                console.log(`pnpmPublish(${options.tag}, ${options.branch})`);
             }
         }
     } else {
