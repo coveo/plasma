@@ -1,3 +1,12 @@
+## 45.0.2 (2022-07-22)
+
+
+### Bug Fixes
+
+* **react, single select:** memoize the button ([#2809](https://github.com/coveo/plasma/issues/2809)) ([a837e0a](https://github.com/coveo/plasma/commits/a837e0adcf5f77f2ed9e016e15bf5ce3f7d09b52))
+
+
+
 ## 45.0.1 (2022-07-20)
 
 
