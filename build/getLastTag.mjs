@@ -2,7 +2,7 @@ import {getLastTag} from '@coveo/semantic-monorepo-tools';
 import url from 'url';
 
 const VERSION_PREFIX = 'v';
-const lastTag = getLastTag(VERSION_PREFIX)?.[0];
+const lastTag = await getLastTag(VERSION_PREFIX)?.[0];
 
 export default function() {
     return lastTag;
