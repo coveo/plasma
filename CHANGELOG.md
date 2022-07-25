@@ -1,3 +1,12 @@
+## 45.0.3 (2022-07-25)
+
+
+### Bug Fixes
+
+* **svg:** added xmlns attribute to some sources svg ([#2806](https://github.com/coveo/plasma/issues/2806)) ([9820630](https://github.com/coveo/plasma/commits/982063091a6b92863356dd35372798ee9cc80e0d))
+
+
+
 ## 45.0.2 (2022-07-22)
 
 
