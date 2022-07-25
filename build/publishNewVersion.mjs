@@ -48,18 +48,18 @@ const outputProcess = (process) => {
 (async () => {
     const convention = await angularChangelogConvention;
 
-    const lastTag = getLastTag();
+    const lastTag = await getLastTag();
     console.log('Last tag: %s', lastTag);
 
-    const [remote] = getRemoteName();
+    const remote = await getRemoteName();
 
-    const changedPackages = pnpmGetChangedPackages(lastTag);
+    const changedPackages = await pnpmGetChangedPackages(lastTag);
     if (!changedPackages.includes('root')) {
         changedPackages.push('root');
     }
 
     if (changedPackages.length > 0) {
-        const [commits] = getCommits(PATH, lastTag);
+        const commits = await getCommits(PATH, lastTag);
 
         const parsedCommits = parseCommits(commits, convention.parserOpts);
         let bumpInfo;
@@ -69,12 +69,12 @@ const outputProcess = (process) => {
             bumpInfo = convention.recommendedBumpOpts.whatBump(parsedCommits);
         }
 
-        const currentVersion = {version: lastTag.replace(VERSION_PREFIX, '')};
+        const currentVersion = lastTag.replace(VERSION_PREFIX, '');
         const newVersion = getNextVersion(currentVersion, bumpInfo);
 
         if (newVersion !== currentVersion) {
             console.log('Bumping %s to version %s', changedPackages.join(', '), newVersion);
-            pnpmBumpVersion(newVersion, lastTag, ['root']);
+            await pnpmBumpVersion(newVersion, lastTag, ['root']);
 
             if (parsedCommits.length > 0) {
                 const changelog = await generateChangelog(
@@ -92,22 +92,22 @@ const outputProcess = (process) => {
 
             const versionTag = `${VERSION_PREFIX}${newVersion}`;
             if (!options.dry) {
-                outputProcess(gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.'));
-                gitTag(versionTag);
+                await gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
+                await gitTag(versionTag);
 
                 if (remote) {
                     console.log(`Pushing version ${versionTag} on git`);
-                    outputProcess(gitPush());
-                    outputProcess(gitPushTags());
+                    await gitPush();
+                    await gitPushTags();
                 }
 
-                outputProcess(spawnSync('git', ['status'], {encoding: 'utf-8'}));
+                spawnSync('git', ['status'], {encoding: 'utf-8'});
 
                 console.log(`Publishing version ${versionTag} on NPM`);
-                outputProcess(pnpmPublish(lastTag, options.tag, options.branch));
+                await pnpmPublish(options.tag, options.branch);
             } else {
                 console.log('Would have called pnpmPublish with the following arguments:');
-                console.log(`pnpmPublish(${lastTag}, ${options.tag}, ${options.branch})`);
+                console.log(`pnpmPublish(${options.tag}, ${options.branch})`);
             }
         }
     } else {
