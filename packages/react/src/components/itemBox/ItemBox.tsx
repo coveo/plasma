@@ -87,7 +87,7 @@ export class ItemBox extends Component<IItemBoxProps> {
                     role="option"
                     onMouseDown={(event) => event.preventDefault()}
                 >
-                    <span className="truncate">
+                    <span className="truncate full-content-x">
                         {this.props.prepend ? <Content {...this.props.prepend} /> : null}
                         <PartialStringMatch partialMatch={this.props.highlight} caseInsensitive>
                             {this.props.displayValue || (!this.props.divider ? this.props.value : '')}
