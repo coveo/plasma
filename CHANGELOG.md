@@ -1,3 +1,34 @@
+# 45.1.0 (2022-07-26)
+
+
+### Features
+
+* p8 itembox ([#2808](https://github.com/coveo/plasma/issues/2808)) ([70f4d4b](https://github.com/coveo/plasma/commits/70f4d4bf0d42144bdafc028f1626c9b6b77bf8da))
+
+
+
+## 45.0.4 (2022-07-25)
+
+
+
+## 45.0.3 (2022-07-25)
+
+
+### Bug Fixes
+
+* **svg:** added xmlns attribute to some sources svg ([#2806](https://github.com/coveo/plasma/issues/2806)) ([9820630](https://github.com/coveo/plasma/commits/982063091a6b92863356dd35372798ee9cc80e0d))
+
+
+
+## 45.0.2 (2022-07-22)
+
+
+### Bug Fixes
+
+* **react, single select:** memoize the button ([#2809](https://github.com/coveo/plasma/issues/2809)) ([a837e0a](https://github.com/coveo/plasma/commits/a837e0adcf5f77f2ed9e016e15bf5ce3f7d09b52))
+
+
+
 ## 45.0.1 (2022-07-20)
 
 
