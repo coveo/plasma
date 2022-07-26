@@ -1,3 +1,12 @@
+# 45.1.0 (2022-07-26)
+
+
+### Features
+
+* p8 itembox ([#2808](https://github.com/coveo/plasma/issues/2808)) ([70f4d4b](https://github.com/coveo/plasma/commits/70f4d4bf0d42144bdafc028f1626c9b6b77bf8da))
+
+
+
 ## 45.0.4 (2022-07-25)
 
 
