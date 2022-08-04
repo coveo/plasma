@@ -1,3 +1,12 @@
+# 45.2.0 (2022-08-04)
+
+
+### Features
+
+* **style, source:** Remove Exchange svg - CTCORE-8709 ([#2812](https://github.com/coveo/plasma/issues/2812)) ([31bc066](https://github.com/coveo/plasma/commits/31bc0668731aae6e8795ab024450883249b21591))
+
+
+
 ## 45.1.1 (2022-07-26)
 
 
