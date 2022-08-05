@@ -1,3 +1,12 @@
+## 45.2.1 (2022-08-05)
+
+
+### Bug Fixes
+
+* **infotoken:** allow passing classes to override svg properties ([#2811](https://github.com/coveo/plasma/issues/2811)) ([6f469c4](https://github.com/coveo/plasma/commits/6f469c40b102108a26ba8580dd30e2851c7abc92))
+
+
+
 # 45.2.0 (2022-08-04)
 
 
