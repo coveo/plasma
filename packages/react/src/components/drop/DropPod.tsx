@@ -215,7 +215,7 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
                 const {paddingLeft, paddingRight} = getComputedStyle(relativeParent) ?? {};
                 const fallbackMaxWidth = 850;
                 const calculatedMaxWidth = parentOffset.width - (parseFloat(paddingLeft) + parseFloat(paddingRight));
-                const maxWidth = !!isNaN(calculatedMaxWidth) ? fallbackMaxWidth : calculatedMaxWidth;
+                const maxWidth = isNaN(calculatedMaxWidth) ? fallbackMaxWidth : calculatedMaxWidth;
                 newDomPosition.style = {
                     ...newDomPosition.style,
                     maxWidth: maxWidth,
