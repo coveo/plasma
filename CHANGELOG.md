@@ -1,3 +1,12 @@
+## 45.3.1 (2022-08-15)
+
+
+### Bug Fixes
+
+* p adding a fallback when maxWidth is a NaN ([#2816](https://github.com/coveo/plasma/issues/2816)) ([8971733](https://github.com/coveo/plasma/commits/897173370e2a1c87af522868296077670f189c8e))
+
+
+
 # 45.3.0 (2022-08-08)
 
 
