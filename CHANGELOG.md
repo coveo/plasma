@@ -1,3 +1,12 @@
+## 45.3.2 (2022-08-16)
+
+
+### Bug Fixes
+
+* **loadable:** export the component ([#2817](https://github.com/coveo/plasma/issues/2817)) ([96cb14e](https://github.com/coveo/plasma/commits/96cb14e2f5b6768b26137316c94463438c31d5d6))
+
+
+
 ## 45.3.1 (2022-08-15)
 
 
