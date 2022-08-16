@@ -26,8 +26,7 @@
     },
     "snyk": {
         "org": "coveo-admin-ui",
-        "no_container_images": true,
-        "configurations": []
+        "no_container_images": true
     },
     "snyk_code": {
         "no_scan": false,
