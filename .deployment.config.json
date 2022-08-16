@@ -25,15 +25,13 @@
         "no_endpoint": true
     },
     "snyk": {
-        "org": "coveo-adminui",
-        "no_container_images": true,
-        "configurations": []
+        "org": "coveo-admin-ui",
+        "no_container_images": true
     },
     "snyk_code": {
         "no_scan": false,
         "configurations": [
             {
-                "org": "coveo-admin-ui",
                 "path": "./",
                 "project_name": "plasma"
             }
