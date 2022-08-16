@@ -39,6 +39,7 @@ export * from './input';
 export * from './itemBox';
 export * from './labeledValue';
 export * from './lastUpdated';
+export * from './loadable';
 export * from './limit';
 export * from './listBox';
 export * from './loading';
