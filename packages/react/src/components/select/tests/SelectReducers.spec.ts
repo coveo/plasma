@@ -69,6 +69,15 @@ describe('Select', () => {
 
                 expect(oldState).toEqual(oldStateBefore);
             });
+
+            it('does not add a duplicate ID in the state', () => {
+                const oldState: ISelectState[] = [selectInitialState];
+                const newState: ISelectState[] = selectCompositeReducer(oldState, addSelect(id));
+                const newNewState: ISelectState[] = selectCompositeReducer(newState, addSelect(id)); // trying to add the same id againß
+
+                expect(newState[1].id).toBe(id);
+                expect(newNewState.length).toBe(2); // oldState lenght is 1.
+            });
         });
 
         describe('REMOVE_SELECT', () => {
