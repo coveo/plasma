@@ -1,3 +1,12 @@
+## 45.4.1 (2022-08-18)
+
+
+### Bug Fixes
+
+* **style:** inputs style remove border radius ([#2821](https://github.com/coveo/plasma/issues/2821)) ([ed9ec2b](https://github.com/coveo/plasma/commits/ed9ec2b8274683f32b65e3df8f9cc1e078158643))
+
+
+
 # 45.4.0 (2022-08-16)
 
 
