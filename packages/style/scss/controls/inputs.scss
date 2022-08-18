@@ -24,7 +24,6 @@ input[type='color'] {
     font-size: $input-font-size;
     font-family: var(--main-font);
     border: 1px solid var(--deprecated-medium-grey);
-    border-radius: 2px;
 
     &:focus-visible {
         @include focus-outline();
