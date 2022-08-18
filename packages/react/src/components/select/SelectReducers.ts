@@ -32,6 +32,7 @@ export const selectCompositeReducer = (
     switch (action.type) {
         case SelectActions.add:
             const index = state.findIndex((element) => element.id === action.payload.id);
+            // do not add to the state if it is already present
             if (index === -1) {
                 return [...state, selectReducer(undefined, action)];
             }
