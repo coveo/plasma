@@ -1,3 +1,12 @@
+## 45.4.2 (2022-08-22)
+
+
+### Bug Fixes
+
+* p (select) select id are added only once in redux state ([#2820](https://github.com/coveo/plasma/issues/2820)) ([e194fb9](https://github.com/coveo/plasma/commits/e194fb90f9632382f80edc94a34dd0fe64c8aa13))
+
+
+
 ## 45.4.1 (2022-08-18)
 
 
