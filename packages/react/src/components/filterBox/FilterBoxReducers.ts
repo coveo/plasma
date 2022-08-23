@@ -60,7 +60,12 @@ export const filterBoxesReducer = (
         case FilterActions.filterThrough:
             return state.map((filterBox) => filterBoxReducer(filterBox, action));
         case FilterActions.addFilter:
-            return [...state, filterBoxReducer(undefined, action)];
+            const index = state.findIndex((element) => element.id === action.payload.id);
+            // do not add to the state if it is already present
+            if (index === -1) {
+                return [...state, filterBoxReducer(undefined, action)];
+            }
+            return state;
         case FilterActions.removeFilter:
             return _.reject(state, (filterBox: IFilterState) => action.payload.id === filterBox.id);
         default:
