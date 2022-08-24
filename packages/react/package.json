@@ -20,7 +20,7 @@
     "exports": {
         ".": {
             "types": "./dist/definitions/Entry.d.ts",
-            "import": "./dist/cjs/esm.js",
+            "import": "./dist/esm/Entry.js",
             "require": "./dist/cjs/Entry.js"
         }
     },
