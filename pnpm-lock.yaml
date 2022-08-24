@@ -299,7 +299,6 @@ importers:
       codemirror: ^5.59.4
       concurrently: 7.1.0
       coveo-png-sprite: 1.0.1
-      coveo-slider: 1.0.2
       css-loader: 3.6.0
       cssnano: 4.1.11
       del: 6.0.0
@@ -335,6 +334,7 @@ importers:
       webpack-cli: 3.3.12
     dependencies:
       codemirror: 5.65.3
+      materialize-css: 0.98.2
       rc-slider: 8.7.1
       react-diff-view: 2.4.10
     devDependencies:
@@ -342,7 +342,6 @@ importers:
       autosize: 5.0.1
       concurrently: 7.1.0
       coveo-png-sprite: 1.0.1
-      coveo-slider: 1.0.2_nk4ke35bzutwbd4xuiytz3maei
       css-loader: 3.6.0_webpack@4.46.0
       cssnano: 4.1.11
       del: 6.0.0
@@ -359,7 +358,6 @@ importers:
       gulp-uglify: 3.0.2
       jquery: 3.6.0
       lint-staged: 9.5.0
-      materialize-css: 0.98.2
       merge-stream: 1.0.1
       mini-css-extract-plugin: 0.12.0_webpack@4.46.0
       minimist: 1.2.6
@@ -4205,7 +4203,6 @@ packages:
     engines: {node: 0.4 || >=0.5.8}
     dependencies:
       inherits: 2.0.4
-    dev: true
 
   /bluebird/3.7.2:
     resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
@@ -5238,16 +5235,6 @@ packages:
       vinyl: 2.2.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /coveo-slider/1.0.2_nk4ke35bzutwbd4xuiytz3maei:
-    resolution: {integrity: sha512-CXdx/Ga93I9/hqe6AaW8RvfISNh1PF/OMaVI2mz0Ppf5uz2gZTi3xXtfYClQWg0dP59rZH7xv4rmWfJiha0sDg==}
-    peerDependencies:
-      jquery: ^2.2.4
-      underscore: ^1.9.1
-    dependencies:
-      jquery: 3.6.0
-      underscore: 1.13.1
     dev: true
 
   /coveo-styleguide/9.34.4_sfoxds7t5ydpegc3knd667wn6m:
@@ -7485,7 +7472,6 @@ packages:
       inherits: 2.0.4
       mkdirp: 0.5.6
       rimraf: 2.6.3
-    dev: true
 
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
@@ -7996,7 +7982,6 @@ packages:
   /hammerjs/2.0.8:
     resolution: {integrity: sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=}
     engines: {node: '>=0.8.0'}
-    dev: true
 
   /handlebars/4.7.7:
     resolution: {integrity: sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==}
@@ -9513,7 +9498,6 @@ packages:
 
   /jquery/2.2.4:
     resolution: {integrity: sha512-lBHj60ezci2u1v2FqnZIraShGgEXq35qCzMv4lITyHGppTnA13rwR0MgwyNJh9TnDs3aXUvd1xjAotfraMHX/Q==}
-    dev: true
 
   /jquery/3.6.0:
     resolution: {integrity: sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==}
@@ -10305,7 +10289,7 @@ packages:
       hammerjs: 2.0.8
       jquery: 2.2.4
       node-archiver: 0.3.0
-    dev: true
+    dev: false
 
   /mathml-tag-names/2.1.3:
     resolution: {integrity: sha512-APMBEanjybaPzUrfqU0IMU5I0AswKMH7k8OTLs0vvV4KZpExkTkY87nR/zpbuTPj+gARop7aGUbl11pnDfW6xg==}
@@ -10985,7 +10969,6 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.6
-    dev: true
 
   /modify-values/1.0.1:
     resolution: {integrity: sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==}
@@ -11218,7 +11201,6 @@ packages:
     dependencies:
       fstream: 1.0.12
       tar: 2.2.2
-    dev: true
 
   /node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
@@ -15093,7 +15075,6 @@ packages:
       block-stream: 0.0.9
       fstream: 1.0.12
       inherits: 2.0.4
-    dev: true
 
   /teeny-request/7.0.1:
     resolution: {integrity: sha512-sasJmQ37klOlplL4Ia/786M5YlOcoLGQyq2TE4WHSRupbAuDaQW0PfVxV4MtdBtRJ4ngzS+1qim8zP6Zp35qCw==}

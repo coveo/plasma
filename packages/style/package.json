@@ -64,6 +64,7 @@
     ],
     "dependencies": {
         "codemirror": "^5.59.4",
+        "materialize-css": "0.98.2",
         "rc-slider": "8.7.1",
         "react-diff-view": "2.4.10"
     },
@@ -72,7 +73,6 @@
         "autosize": "5.0.1",
         "concurrently": "7.1.0",
         "coveo-png-sprite": "1.0.1",
-        "coveo-slider": "1.0.2",
         "css-loader": "3.6.0",
         "cssnano": "4.1.11",
         "del": "6.0.0",
@@ -104,9 +104,5 @@
         "underscore.string": "3.3.6",
         "webpack": "4.46.0",
         "webpack-cli": "3.3.12"
-    },
-    "peerDependencies": {
-        "coveo-slider": "^1.0.1",
-        "materialize-css": "^0.98.2"
     }
 }
