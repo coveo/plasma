@@ -95,7 +95,7 @@
         "minimist": "1.2.6",
         "postcss": "8.4.4",
         "postcss-loader": "4.0.3",
-        "postcss-scss": "^4.0.4",
+        "postcss-scss": "4.0.4",
         "resolve-url-loader": "3.1.4",
         "sass": "1.51.0",
         "sass-loader": "10.2.1",
