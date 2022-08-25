@@ -14,6 +14,9 @@ export interface CollapsibleInfoBoxProps {
     sectionAdditionalContentClasses?: string;
 }
 
+/**
+ * @deprecated Use Mantine Accordion instead
+ */
 export const CollapsibleInfoBox: FC<CollapsibleInfoBoxProps> = ({
     id,
     title,

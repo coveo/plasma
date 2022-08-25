@@ -13,6 +13,9 @@ export interface CollapsibleHeaderIconProps {
     disabled?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine Accordion instead
+ */
 export const CollapsibleHeaderIcon: FunctionComponent<CollapsibleHeaderIconProps> = ({
     informationTooltip,
     informationUrl,

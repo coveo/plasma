@@ -8,6 +8,9 @@ export interface LineSeriesProps {
     strokeWith?: number;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const LineSeries: FunctionComponent<LineSeriesProps> = ({interpolate = 'linear', strokeWith = 2, children}) => {
     const {series, xScale, yScale, color, colorPattern} = useContext(XYChartContext);
 

@@ -29,6 +29,9 @@ export interface ICheckboxStateProps {
 
 export interface ICheckboxProps extends ICheckboxOwnProps, ICheckboxStateProps, IInputProps {}
 
+/**
+ * @deprecated Use Mantine Checkbox instead
+ */
 export const Checkbox: FunctionComponent<ICheckboxProps> = ({
     id,
     disabled,

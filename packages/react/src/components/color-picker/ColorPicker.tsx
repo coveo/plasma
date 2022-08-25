@@ -17,6 +17,9 @@ export interface IColorPickerProps extends ChromePickerProps {
     defaultColor?: string;
 }
 
+/**
+ * @deprecated Use Mantine ColorPicker instead
+ */
 export const ColorPicker: FunctionComponent<IColorPickerProps> = ({
     id = uniqueId('colorpicker'),
     defaultColor = '#000',

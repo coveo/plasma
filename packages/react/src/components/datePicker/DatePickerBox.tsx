@@ -71,6 +71,9 @@ export const DEFAULT_CLEAR_DATE_LABEL = 'Clear';
 
 export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps {}
 
+/**
+ * @deprecated Use Mantine DatePicker instead
+ */
 export class DatePickerBox extends Component<IDatePickerBoxProps, any> {
     static defaultProps: Partial<IDatePickerBoxProps> = {
         clearLabel: DEFAULT_CLEAR_DATE_LABEL,

@@ -141,6 +141,9 @@ export const CollapsibleDisconnected: FunctionComponent<
     );
 };
 
+/**
+ * @deprecated Use Mantine Accordion instead
+ */
 export const CollapsibleConnected: ComponentType<CollapsibleOwnProps & IReduxActionsPayload> = connect(
     mapStateToProps,
     mapDispatchToProps,

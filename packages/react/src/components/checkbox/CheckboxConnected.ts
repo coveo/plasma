@@ -21,4 +21,7 @@ const mapDispatchToProps = (
     onClick: (e: React.MouseEvent<HTMLElement>) => dispatch(toggleCheckbox(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine Checkbox instead
+ */
 export const CheckboxConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Checkbox);

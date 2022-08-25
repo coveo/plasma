@@ -144,6 +144,9 @@ export const DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES: string[] = [];
 export const DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED: boolean = true;
 export const DEFAULT_INITIALY_UNSELECTED: boolean = false;
 
+/**
+ * @deprecated Use Mantine DatePicker instead
+ */
 export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any> {
     static defaultProps: Partial<IDatePickerDropdownProps> = {
         label: DEFAULT_DATE_PICKER_DROPDOWN_LABEL,

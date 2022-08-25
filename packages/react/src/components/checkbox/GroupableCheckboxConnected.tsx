@@ -61,4 +61,7 @@ const mapDispatchToProps = (
     onClick: () => dispatch(toggleGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
 });
 
+/**
+ * @deprecated Use Mantine Checkbox instead
+ */
 export const GroupableCheckboxConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Checkbox);

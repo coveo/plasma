@@ -9,6 +9,9 @@ export interface CollapsibleToggleProps {
     svgClassName?: string;
 }
 
+/**
+ * @deprecated Use Mantine Accordion instead
+ */
 export const CollapsibleToggle: SFC<CollapsibleToggleProps & HTMLAttributes<HTMLSpanElement>> = ({
     expanded,
     className,

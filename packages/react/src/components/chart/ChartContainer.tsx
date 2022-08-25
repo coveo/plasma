@@ -16,6 +16,9 @@ export interface ChartBaseProps {
     height: number;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const ChartContainer: FunctionComponent<ChartContainerProps> = (props) => {
     const container = useRef<HTMLDivElement>(null);
     useDebouncedWindowResize();

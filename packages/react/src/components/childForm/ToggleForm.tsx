@@ -15,6 +15,9 @@ export interface IToggleFormProps {
     value?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class ToggleForm extends Component<IToggleFormProps, any> {
     private handleClick(e: MouseEvent<HTMLElement>) {
         if (this.props.onClick) {
