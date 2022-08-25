@@ -15,6 +15,9 @@ export interface IBreadcrumbProps extends ClassAttributes<Breadcrumb> {
     title: ITitleProps;
 }
 
+/**
+ * @deprecated Use Mantine Breadcrumbs instead
+ */
 export class Breadcrumb extends Component<IBreadcrumbProps> {
     static defaultProps: Partial<IBreadcrumbProps> = {
         links: [],

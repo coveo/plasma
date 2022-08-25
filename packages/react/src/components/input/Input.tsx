@@ -110,7 +110,7 @@ export interface IInputComponentState {
 }
 
 /**
- * @deprecated Use TextInput instead
+ * @deprecated Use Mantine TextInput instead
  */
 export class Input extends Component<IInputProps, IInputComponentState> {
     private innerInput: HTMLInputElement;

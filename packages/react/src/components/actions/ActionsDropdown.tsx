@@ -14,6 +14,9 @@ export interface IActionsDropdownProps {
 
 export const MORE_LABEL: string = 'More';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const ActionsDropdown: FunctionComponent<IActionsDropdownProps> = ({
     actions,
     moreLabel,
@@ -44,6 +47,6 @@ export const ActionsDropdown: FunctionComponent<IActionsDropdownProps> = ({
 };
 
 /**
- * @deprecated use ActionsDropdown directly instead
+ * @deprecated Use Mantine instead
  */
 export const ActionsDropdownConnected = ActionsDropdown;

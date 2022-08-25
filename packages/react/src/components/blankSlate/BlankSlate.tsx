@@ -48,6 +48,9 @@ export interface IBlankSlateProps extends ClassAttributes<BlankSlate>, Omit<Opti
     buttonClasses?: string[];
 }
 
+/**
+ * @deprecated Use Plasmantine Blank-slate instead
+ */
 export class BlankSlate extends Component<IBlankSlateProps> {
     static defaultProps: Partial<IBlankSlateProps> = {
         title: null,

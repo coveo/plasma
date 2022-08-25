@@ -35,6 +35,9 @@ export interface IActionableItemProps {
     dropProps?: Partial<IDropOwnProps>;
 }
 
+/**
+ * @deprecated Use Mantine Menu instead
+ */
 export class ActionableItem extends Component<IActionableItemProps & HTMLAttributes<HTMLDivElement>> {
     static defaultProps: Partial<IActionableItemProps> = {
         actions: [],

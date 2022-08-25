@@ -12,6 +12,9 @@ export interface IPrimaryActionStateProps extends IReduxStatePossibleProps {}
 
 export interface IPrimaryActionProps extends IPrimaryActionOwnProps, IPrimaryActionStateProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class PrimaryAction extends Component<IPrimaryActionProps, any> {
     render() {
         const action: JSX.Element = this.props.action.link ? (

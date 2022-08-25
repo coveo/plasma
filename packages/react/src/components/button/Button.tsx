@@ -37,6 +37,9 @@ const ButtonPropsToOmit = [
     'tooltipPlacement',
 ];
 
+/**
+ * @deprecated Use Mantine Button instead
+ */
 export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> {
     static defaultProps: Partial<IButtonProps> = {
         enabled: true,

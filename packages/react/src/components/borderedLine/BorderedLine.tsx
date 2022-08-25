@@ -1,6 +1,9 @@
 import classNames from 'classnames';
 import {HTMLAttributes, PureComponent} from 'react';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class BorderedLine extends PureComponent<HTMLAttributes<HTMLDivElement>> {
     static defaultClassName = 'bordered-line mod-border-top mod-border-bottom';
 
