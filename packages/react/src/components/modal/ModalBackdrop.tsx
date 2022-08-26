@@ -36,7 +36,7 @@ const ModalBackdropPropsToOmit = ['displayFor', 'isPrompt', 'display', 'lastOpen
 export type IModalBackdropAllProps = IModalBackdropProps & HTMLAttributes<HTMLDivElement>;
 
 /**
- * @deprecated use ModalComposite instead
+ * @deprecated Use Mantine Modal instead
  */
 export class ModalBackdrop extends Component<IModalBackdropAllProps> {
     static defaultProps: Partial<IModalBackdropProps> = {

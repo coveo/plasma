@@ -48,6 +48,9 @@ export interface ILabeledValueProps {
     className?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class LabeledValue extends PureComponent<ILabeledValueProps> {
     static defaultProps: Partial<ILabeledValueProps> = {
         padding: true,

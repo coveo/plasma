@@ -58,6 +58,9 @@ export interface IListBoxDispatchProps {
 
 export interface IListBoxProps extends IListBoxOwnProps, IListBoxStateProps, IListBoxDispatchProps {}
 
+/**
+ * @deprecated Use Mantine List instead
+ */
 export class ListBox extends Component<IListBoxProps> {
     static defaultProps: Partial<IListBoxProps> = {
         noResultItem: {

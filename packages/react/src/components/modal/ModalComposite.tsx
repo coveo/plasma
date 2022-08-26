@@ -103,6 +103,9 @@ const modalPropsToOmit = [
     'contentClasses',
 ];
 
+/**
+ * @deprecated Use Mantine Modal instead
+ */
 export class ModalComposite extends PureComponent<
     IModalCompositeProps & Partial<ReactModal.Props> & Partial<IWithDirtyProps>
 > {
@@ -227,6 +230,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalCompositeOwnPro
     onClose: () => dispatch(closeModal(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine Modal instead
+ */
 export const ModalCompositeConnected = connect<
     IModalStateProps,
     IModalDispatchProps,

@@ -76,4 +76,7 @@ const ConfirmationModalProviderDisconnected: FunctionComponent<
     );
 };
 
+/**
+ * @deprecated Use Mantine Modal instead
+ */
 export const ConfirmationModalProvider = enhance(ConfirmationModalProviderDisconnected);

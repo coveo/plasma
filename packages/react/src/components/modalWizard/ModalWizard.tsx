@@ -85,6 +85,9 @@ export interface ModalWizardProps
     onCancel?: () => unknown;
 }
 
+/**
+ * @deprecated Use Mantine Modal instead
+ */
 export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
     id,
     title,

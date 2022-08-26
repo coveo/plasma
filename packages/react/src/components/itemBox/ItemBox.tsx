@@ -23,6 +23,9 @@ export interface IItemBoxProps {
     selectedTooltip?: ITooltipProps;
 }
 
+/**
+ * @deprecated Use Mantine List instead
+ */
 export class ItemBox extends Component<IItemBoxProps> {
     static defaultProps: Partial<IItemBoxProps> = {
         tooltip: {

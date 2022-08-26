@@ -32,6 +32,9 @@ const ModalWizardWithValidationsDisconnected: FunctionComponent<
     return <ModalWizard validateStep={validateStep} isDirty={isDirty} {...modalWizardProps} />;
 };
 
+/**
+ * @deprecated Use Mantine Modal instead
+ */
 export const ModalWizardWithValidations = connect<
     ReturnType<typeof mapStateToProps>,
     null,

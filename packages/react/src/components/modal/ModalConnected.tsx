@@ -17,6 +17,6 @@ const mapDispatchToProps = (
 });
 
 /**
- * @deprecated use ModalCompositeConnected instead
+ * @deprecated Use Mantine Modal instead
  */
 export const ModalConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Modal);

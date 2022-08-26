@@ -14,4 +14,7 @@ const mapDispatchToProps = (
     onDestroy: () => dispatch(removeLoading(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const LoadingConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Loading);

@@ -6,6 +6,9 @@ interface LoadingSpinnerProps {
     className?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const LoadingSpinner: FunctionComponent<LoadingSpinnerProps> = ({size = 24, className}) => (
     <div
         role="alert"

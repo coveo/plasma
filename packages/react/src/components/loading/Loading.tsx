@@ -32,6 +32,9 @@ export interface ILoadingDispatchProps {
 
 export interface ILoadingProps extends ILoadingOwnProps, ILoadingDispatchProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class Loading extends Component<ILoadingProps & HTMLProps<HTMLDivElement>, any> {
     static defaultProps: Partial<ILoadingOwnProps> = {
         fullContent: false,

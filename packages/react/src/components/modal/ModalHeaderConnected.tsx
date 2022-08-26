@@ -8,4 +8,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalHeaderOwnProps)
     onClose: () => dispatch(closeModal(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine Modal instead
+ */
 export const ModalHeaderConnected = connect(undefined, mapDispatchToProps, ReduxUtils.mergeProps)(ModalHeader);

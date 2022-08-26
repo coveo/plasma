@@ -196,6 +196,9 @@ class MultilineBoxDisconnected<T> extends PureComponent<IMultilineBoxProps<T>> {
     }
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const MultilineBox = <T extends any>(props: IMultilineBoxOwnProps<T>) => {
     const Connected = useMemo(
         () =>

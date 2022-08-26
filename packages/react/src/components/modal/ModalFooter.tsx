@@ -10,6 +10,9 @@ export interface IModalFooterProps {
     classes?: IClassName;
 }
 
+/**
+ * @deprecated Use Mantine Modal instead
+ */
 export class ModalFooter extends Component<IModalFooterProps> {
     render() {
         const classes = classNames('modal-footer', this.props.classes);

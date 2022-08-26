@@ -5,6 +5,9 @@ export interface IContentLoadingPlaceholder {
     className?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const ContentLoadingPlaceholder: FunctionComponent<IContentLoadingPlaceholder> = ({
     className = '',
     children,

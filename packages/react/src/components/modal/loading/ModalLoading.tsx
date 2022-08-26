@@ -9,6 +9,9 @@ export interface ModalLoadingProps {
     openOnMount?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine Modal instead
+ */
 export const ModalLoading: FunctionComponent<ModalLoadingProps> = (props) => (
     <ModalCompositeConnected
         id={props.id}

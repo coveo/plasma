@@ -28,7 +28,7 @@ export interface IModalDispatchProps {
 export interface IModalProps extends IModalOwnProps, Partial<IModalStateProps>, Partial<IModalDispatchProps> {}
 
 /**
- * @deprecated use ModalComposite instead
+ * @deprecated Use Mantine Modal instead
  */
 export class Modal extends Component<IModalProps> {
     static defaultProps: Partial<IModalProps> = {

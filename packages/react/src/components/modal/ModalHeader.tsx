@@ -43,6 +43,9 @@ export interface IModalHeaderProps
         Partial<IModalHeaderStateProps>,
         Partial<IModalHeaderDispatchProps> {}
 
+/**
+ * @deprecated Use Mantine Modal instead
+ */
 export class ModalHeader extends Component<IModalHeaderProps> {
     static defaultProps: Partial<IModalHeaderProps> = {
         lastOpened: true,
