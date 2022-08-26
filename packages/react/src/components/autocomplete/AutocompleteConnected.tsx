@@ -98,7 +98,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IAutocompleteOwnProps
 });
 
 /**
- * @deprecated Use Mantine Autocomplete instead
+ * @deprecated Use Mantine Autocomplete instead: https://mantine.dev/core/autocomplete/
  */
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class AutocompleteConnected extends Component<IAutocompleteProps & HTMLProps<AutocompleteConnected>> {

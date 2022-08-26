@@ -62,6 +62,6 @@ const mapDispatchToProps = (
 });
 
 /**
- * @deprecated Use Mantine Calendar instead
+ * @deprecated Use Mantine Calendar instead: https://mantine.dev/dates/calendar/
  */
 export const CalendarConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Calendar);

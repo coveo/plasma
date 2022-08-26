@@ -30,7 +30,7 @@ export interface ICheckboxStateProps {
 export interface ICheckboxProps extends ICheckboxOwnProps, ICheckboxStateProps, IInputProps {}
 
 /**
- * @deprecated Use Mantine Checkbox instead
+ * @deprecated Use Mantine Checkbox instead: https://mantine.dev/core/checkbox/
  */
 export const Checkbox: FunctionComponent<ICheckboxProps> = ({
     id,

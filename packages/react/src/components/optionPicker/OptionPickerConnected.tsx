@@ -23,4 +23,7 @@ const mapDispatchToProps = (
     onClick: (value: string, label: string) => dispatch(changeOptionPicker(ownProps.id, label, value)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const OptionPickerConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(OptionPicker);

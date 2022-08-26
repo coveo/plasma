@@ -11,7 +11,7 @@ export interface IBreadcrumbLinkProps {
 }
 
 /**
- * @deprecated Use Mantine Breadcrumbs instead
+ * @deprecated Use Mantine Breadcrumbs instead: https://mantine.dev/core/breadcrumbs/
  */
 export class BreadcrumbLink extends Component<IBreadcrumbLinkProps> {
     private handleOnClick(e: MouseEvent<HTMLAnchorElement>): boolean {

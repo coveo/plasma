@@ -3,6 +3,9 @@ import * as _ from 'underscore';
 import {IInputProps, Input} from '../input/Input';
 import {AddInputAction} from './AddInputAction';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class AddInput extends Component<IInputProps, any> {
     private innerInput: Input;
 

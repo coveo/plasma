@@ -249,4 +249,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
     }
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const MultiSelectConnected: ComponentType<IMultiSelectOwnProps> = MultiSelect;

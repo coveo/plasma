@@ -33,7 +33,7 @@ export interface IMultilineInputProps
         IMultilineInputDispatchProps {}
 
 /**
- * @deprecated use MultiValuesInput instead
+ * @deprecated Use Mantine instead
  */
 export class MultilineInput extends Component<IMultilineInputProps, any> {
     private handleChange(newValues: IMultilineInputValue[]) {

@@ -57,6 +57,9 @@ export interface IPopoverState {
     isOpen?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine Popover instead
+ */
 export class Popover extends Component<IPopoverProps, IPopoverState> {
     private tetherToggle: RefObject<HTMLDivElement>;
     private tetherElement: RefObject<HTMLDivElement>;

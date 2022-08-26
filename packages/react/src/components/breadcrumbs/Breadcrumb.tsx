@@ -16,7 +16,7 @@ export interface IBreadcrumbProps extends ClassAttributes<Breadcrumb> {
 }
 
 /**
- * @deprecated Use Mantine Breadcrumbs instead
+ * @deprecated Use Mantine Breadcrumbs instead: https://mantine.dev/core/breadcrumbs/
  */
 export class Breadcrumb extends Component<IBreadcrumbProps> {
     static defaultProps: Partial<IBreadcrumbProps> = {

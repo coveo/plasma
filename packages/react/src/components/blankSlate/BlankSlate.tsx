@@ -49,7 +49,7 @@ export interface IBlankSlateProps extends ClassAttributes<BlankSlate>, Omit<Opti
 }
 
 /**
- * @deprecated Use Plasmantine Blank-slate instead
+ * @deprecated Use Mantine instead
  */
 export class BlankSlate extends Component<IBlankSlateProps> {
     static defaultProps: Partial<IBlankSlateProps> = {

@@ -62,6 +62,6 @@ const mapDispatchToProps = (
 });
 
 /**
- * @deprecated Use Mantine Checkbox instead
+ * @deprecated Use Mantine Checkbox instead: https://mantine.dev/core/checkbox/
  */
 export const GroupableCheckboxConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Checkbox);

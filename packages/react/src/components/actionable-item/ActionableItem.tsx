@@ -36,7 +36,7 @@ export interface IActionableItemProps {
 }
 
 /**
- * @deprecated Use Mantine Menu instead
+ * @deprecated Use Mantine Menu instead: https://mantine.dev/core/menu/
  */
 export class ActionableItem extends Component<IActionableItemProps & HTMLAttributes<HTMLDivElement>> {
     static defaultProps: Partial<IActionableItemProps> = {

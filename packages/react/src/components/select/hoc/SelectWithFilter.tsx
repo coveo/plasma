@@ -39,6 +39,9 @@ const SelectWithFilterPropsToOmit = [
     'noResultFilterText',
 ];
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
     WrappedComponent: ComponentType<P>
 ): ComponentClass<P & ISelectWithFilterOwnProps> => {

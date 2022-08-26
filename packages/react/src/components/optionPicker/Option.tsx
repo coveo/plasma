@@ -14,6 +14,9 @@ export interface IOptionProps extends ClassAttributes<Option> {
     onClick: (value: string, label: string) => void;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class Option extends Component<IOptionProps, any> {
     render() {
         const buttonClass = this.props.isActive ? 'active' : '';

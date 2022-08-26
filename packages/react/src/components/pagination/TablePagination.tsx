@@ -12,6 +12,9 @@ export interface ITablePaginationProps {
     disabled?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TablePagination: FunctionComponent<ITablePaginationProps> = ({
     id,
     disabled = false,

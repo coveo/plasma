@@ -50,7 +50,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMenuOwnProps): IMenu
 });
 
 /**
- * @deprecated Use Mantine Menu instead
+ * @deprecated Use Mantine Menu instead: https://mantine.dev/core/menu/
  */
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class MenuConnected extends Component<IMenuProps> {

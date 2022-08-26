@@ -142,7 +142,7 @@ export const CollapsibleDisconnected: FunctionComponent<
 };
 
 /**
- * @deprecated Use Mantine Accordion instead
+ * @deprecated Use Mantine Accordion instead: https://mantine.dev/core/accordion/
  */
 export const CollapsibleConnected: ComponentType<CollapsibleOwnProps & IReduxActionsPayload> = connect(
     mapStateToProps,

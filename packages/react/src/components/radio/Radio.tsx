@@ -10,6 +10,9 @@ export interface RadioOwnProps {
 
 export interface RadioProps extends RadioOwnProps, IInputProps {}
 
+/**
+ * @deprecated Use Mantine Radio instead
+ */
 export const Radio: FunctionComponent<RadioProps> = (props) => {
     const outerContainerClasses: string =
         !!props.outerContainerClass && classNames('radio-option', props.outerContainerClass);

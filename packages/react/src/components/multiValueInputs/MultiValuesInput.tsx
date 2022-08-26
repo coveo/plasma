@@ -39,6 +39,9 @@ export interface MultiValuesInputProps {
     disabled?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const MultiValuesInput: FunctionComponent<MultiValuesInputProps> = ({
     id,
     data,

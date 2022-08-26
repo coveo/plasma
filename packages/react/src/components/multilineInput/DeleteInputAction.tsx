@@ -7,6 +7,9 @@ export interface IDeleteInputActionProps {
     onClick: () => void;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class DeleteInputAction extends Component<IDeleteInputActionProps, any> {
     render() {
         const title = this.props.title ? this.props.title : DEFAULT_TITLE;
