@@ -9,6 +9,9 @@ export interface ILabelProps {
     invalidMessage?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const Label: FunctionComponent<ILabelProps & HTMLProps<HTMLLabelElement>> = ({
     classes,
     validMessage,

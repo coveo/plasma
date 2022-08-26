@@ -11,6 +11,9 @@ export interface IBreadcrumbHeaderProps extends IHeaderWrapperProps {
     breadcrumb: IBreadcrumbProps;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class BreadcrumbHeader extends Component<IBreadcrumbHeaderProps> {
     static defaultProps: Partial<IBreadcrumbHeaderProps> = _.extend(
         {

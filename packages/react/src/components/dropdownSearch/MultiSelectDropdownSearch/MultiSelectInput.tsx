@@ -18,6 +18,9 @@ export interface IMultiselectInputProps {
     deselectAllTooltipText?: string;
 }
 
+/**
+ * @deprecated use Mantine instead
+ */
 export class MultiselectInput extends Component<IMultiselectInputProps, any> {
     static defaultProps: Partial<IMultiselectInputProps> = {
         deselectAllTooltipText: 'Deselect all options',

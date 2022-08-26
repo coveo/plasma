@@ -16,6 +16,9 @@ export interface IFacetRowProps extends ClassAttributes<FacetRow> {
     excludeTooltipMessage?(facetsRowName: string): string;
 }
 
+/**
+ * @deprecated use Mantine instead
+ */
 export class FacetRow extends Component<IFacetRowProps, any> {
     static defaultProps: Partial<IFacetRowProps> = {
         maxTooltipLabelLength: 25,

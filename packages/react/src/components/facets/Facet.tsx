@@ -119,6 +119,9 @@ export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDis
 
 export const CLEAR_FACET_LABEL: string = 'Clear';
 
+/**
+ * @deprecated use Mantine instead
+ */
 export class Facet extends Component<IFacetProps, any> {
     static defaultProps: Partial<IFacetProps> = {
         clearFacetLabel: CLEAR_FACET_LABEL,

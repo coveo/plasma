@@ -67,6 +67,9 @@ export interface IconCardProps {
     cardClassName?: string[];
 }
 
+/**
+ * @deprecated Use Mantine Card instead
+ */
 export const IconCard: FunctionComponent<Override<SvgChildProps & HTMLAttributes<HTMLDivElement>, IconCardProps>> = ({
     title,
     badges = [],

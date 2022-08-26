@@ -11,6 +11,9 @@ export interface InputLabelWithTooltipProps {
     invalidMessage?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const InputLabelWithTooltip: FunctionComponent<InputLabelWithTooltipProps> = ({
     label,
     tooltip,

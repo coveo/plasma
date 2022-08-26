@@ -60,6 +60,9 @@ export type IFlatSelectProps = IFlatSelectOwnProps &
     ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
+/**
+ * @deprecated use Mantine SegmentedControl instead
+ */
 export const FlatSelect: FunctionComponent<IFlatSelectProps> = ({
     onDestroy,
     onRender,

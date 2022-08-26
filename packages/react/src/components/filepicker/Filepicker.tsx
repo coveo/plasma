@@ -76,4 +76,7 @@ const FilepickerDisconnected: FunctionComponent<
     );
 };
 
+/**
+ * @deprecated use Mantine FileInput instead
+ */
 export const Filepicker = connect(mapStateToProps, mapDispatchToProps)(FilepickerDisconnected);

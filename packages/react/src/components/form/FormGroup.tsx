@@ -7,8 +7,8 @@ export interface IFormGroupProps {
     className?: string;
 }
 
-/*
- * @deprecated use the Section component
+/**
+ * @deprecated Use Mantine instead
  */
 export const FormGroup: FunctionComponent<IFormGroupProps> = ({children, title, description, className}) => (
     <div className={classNames(className, 'form-group', 'mod-padding-children')}>

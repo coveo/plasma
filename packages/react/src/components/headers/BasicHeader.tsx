@@ -11,6 +11,9 @@ export interface IBasicHeaderProps extends IHeaderWrapperProps {
     title: ITitleProps;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class BasicHeader extends Component<IBasicHeaderProps> {
     static defaultProps: Partial<IBasicHeaderProps> = _.extend(
         {
