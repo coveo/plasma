@@ -6,6 +6,9 @@ export interface ITableCollapsibleRowToggleProps extends ClassAttributes<TableCo
     isExpanded: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class TableCollapsibleRowToggle extends Component<ITableCollapsibleRowToggleProps, any> {
     render() {
         const arrowIcon: JSX.Element = this.props.isExpanded ? (

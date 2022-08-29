@@ -15,6 +15,9 @@ const mapStateToProps = (state: PlasmaState, ownProps: ITableCollapsibleRowOwnPr
 
 const mapDispatchToProps = () => ({});
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableCollapsibleRowConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

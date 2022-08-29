@@ -4,6 +4,9 @@ import {ITableProps} from '../Table';
 import {TableChildComponent} from '../TableConstants';
 import {getTableChildComponentId} from '../TableUtils';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableChildNavigation = (props: ITableProps): JSX.Element => {
     const tableData = props.tableCompositeState.data || props.initialTableData;
     const navigationProps = _.isBoolean(props.navigation) ? {} : props.navigation;

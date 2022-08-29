@@ -5,6 +5,9 @@ export interface ITableEmptyRowProps extends ClassAttributes<TableEmptyRow> {
     nbColumns: number;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class TableEmptyRow extends Component<ITableEmptyRowProps, any> {
     render() {
         return (

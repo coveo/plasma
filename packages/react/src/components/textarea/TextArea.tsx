@@ -99,6 +99,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITextAreaOwnProps): I
     onUnmount: () => dispatch(removeTextArea(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine Textarea instead: https://mantine.dev/core/textarea/
+ */
 export const TextArea: FunctionComponent<ITextAreaProps> = ({
     id,
     value,
@@ -166,4 +169,7 @@ export const TextArea: FunctionComponent<ITextAreaProps> = ({
     );
 };
 
+/**
+ * @deprecated Use Mantine Textarea instead: https://mantine.dev/core/textarea/
+ */
 export const TextAreaConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TextArea);

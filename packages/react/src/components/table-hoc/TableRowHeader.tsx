@@ -6,6 +6,9 @@ interface TableRowHeaderProps {
     isLoading?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableRowHeader: FunctionComponent<TableRowHeaderProps> = ({isLoading, children}) => {
     const {style, tableHeaderRef} = useFixedWidthWhileLoading(isLoading);
 

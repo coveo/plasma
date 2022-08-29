@@ -9,6 +9,9 @@ export interface TableWithPrependProps extends ITableHOCOwnProps, Omit<HTMLAttri
     prepend?: ReactNode;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const tableWithPrepend = (Component: FunctionComponent<TableWithPrependProps>) => {
     const mapStateToProps = (state: PlasmaState, ownProps: TableWithPrependProps) => ({
         isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),

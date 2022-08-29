@@ -22,7 +22,9 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
         dispatch(ValidationActions.setDirty(id, isDirty, ValidationTypes.wrongInitialValue)),
     clearIsDirty: (id: string) => dispatch(ValidationActions.clearDirty(id, ValidationTypes.wrongInitialValue)),
 });
-
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;

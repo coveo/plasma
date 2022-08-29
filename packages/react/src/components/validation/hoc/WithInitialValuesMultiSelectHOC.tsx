@@ -21,7 +21,9 @@ export type IMultiSelectWithInitialValuesOwnProps = {
 
 const defaultInvalidInitialValuesMessageGenerator = (values: string[]) =>
     `The initial values ('${values.join("', '")}') were selected, but not found. They will be ignored.`;
-
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedMultiSelect: FunctionComponent<T & IMultiSelectWithInitialValuesOwnProps & DispatchProps> = ({

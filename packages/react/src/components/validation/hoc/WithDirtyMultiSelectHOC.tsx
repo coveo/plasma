@@ -19,7 +19,9 @@ const mapDispatchToProps = (dispatch: IDispatch, {id}: IMultiSelectOwnProps) => 
 export type IMultiSelectWithDirtyOwnProps = {
     initialValues: string[];
 };
-
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;

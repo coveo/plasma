@@ -7,6 +7,9 @@ export interface TableChildLastUpdatedProps extends ITableProps {
     pullLeft?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableChildLastUpdated = (props: TableChildLastUpdatedProps): JSX.Element => (
     <LastUpdatedConnected
         className={props.pullLeft && 'left'}

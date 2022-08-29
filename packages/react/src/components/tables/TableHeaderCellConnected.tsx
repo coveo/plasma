@@ -22,6 +22,9 @@ const mapDispatchToProps = (
     onUnmount: () => dispatch(removeHeaderCell(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableHeaderCellConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

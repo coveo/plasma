@@ -21,7 +21,9 @@ export interface IWithNonEmptySingleSelectHOCProps {
     nonEmptyValidationMessage?: string;
     resetNonEmptyErrorOnUnmount?: boolean;
 }
-
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
