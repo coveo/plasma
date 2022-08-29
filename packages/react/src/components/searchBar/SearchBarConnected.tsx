@@ -22,4 +22,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISearchBarOwnProps): 
     onChange: (event: ChangeEvent<HTMLInputElement>) => dispatch(setSearchBarValue(ownProps.id, event.target.value)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const SearchBarConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(SearchBar);

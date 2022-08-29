@@ -43,6 +43,9 @@ const buttonWithRefreshCallbackDisconnected: FunctionComponent<
     </>
 );
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const ButtonWithRefreshCallback = connect(
     mapStateToProps,
     mapDispatchToProps

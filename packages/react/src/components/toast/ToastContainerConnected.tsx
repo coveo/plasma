@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IToastContainerOwnPro
     onCloseToast: (id: string) => dispatch(removeToast(ownProps.id, id)),
 });
 
+/**
+ * @deprecated Use Mantine Notification instead: https://mantine.dev/core/notification/
+ */
 export const ToastContainerConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

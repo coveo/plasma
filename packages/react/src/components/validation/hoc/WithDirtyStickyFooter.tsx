@@ -13,7 +13,9 @@ export interface IWithDirtyStickyFooterOwnProps {
 const mapStateToProps = (state: PlasmaState, {validationIds}: IWithDirtyStickyFooterOwnProps) => ({
     isDirty: ValidationSelectors.isDirty(validationIds)(state),
 });
-
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withDirtyStickyFooterHOC = <T extends IStickyFooterProps>(
     Component: ComponentClass<T> | FunctionComponent<T>
 ) => {

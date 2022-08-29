@@ -7,6 +7,9 @@ export interface XGridProps {
     color?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const XGrid: FunctionComponent<XGridProps> = ({padding = 0, color = 'rgba(0,0,0,0.2)'}) => {
     const context = useContext(XYChartContext);
     const {yDomain, xScale, yScale} = context;

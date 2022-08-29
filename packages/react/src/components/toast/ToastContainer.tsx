@@ -28,6 +28,9 @@ export interface IToastContainerProps
         IToastContainerStateProps,
         IToastContainerDispatchProps {}
 
+/**
+ * @deprecated Use Mantine Notification instead: https://mantine.dev/core/notification/
+ */
 export class ToastContainer extends Component<IToastContainerProps> {
     componentDidMount() {
         if (this.props.onRender) {

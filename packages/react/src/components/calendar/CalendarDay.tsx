@@ -20,6 +20,9 @@ export interface ICalendarDayProps extends ClassAttributes<CalendarDay> {
     onSelectUnselectable: () => void;
 }
 
+/**
+ * @deprecated Use Mantine Calendar instead: https://mantine.dev/dates/calendar/
+ */
 export class CalendarDay extends Component<ICalendarDayProps> {
     static DEFAULT_DATE_CLASS: string = 'calendar-day';
 

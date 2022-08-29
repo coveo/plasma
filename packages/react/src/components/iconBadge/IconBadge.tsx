@@ -51,6 +51,9 @@ const TypeColorMapping: Record<IconBadgeType, string> = {
     [IconBadgeType.Major]: 'mod-major',
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const IconBadge: FunctionComponent<IconBadgeProps> = ({
     svgName,
     type,

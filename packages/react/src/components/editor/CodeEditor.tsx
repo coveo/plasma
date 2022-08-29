@@ -189,6 +189,9 @@ class CodeEditorDisconnect extends Component<
     }
 }
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const CodeEditor: ComponentType<ICodeEditorProps> = connect(
     mapStateToProps,
     mapDispatchToProps

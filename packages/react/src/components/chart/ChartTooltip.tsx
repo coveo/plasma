@@ -10,6 +10,9 @@ export interface ChartTooltipProps {
     sort?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const ChartTooltip: FunctionComponent<ChartTooltipProps> = ({sort = false}) => {
     const ref = useRef<HTMLElement>(null);
     const {series, xScale, yScale, xDomain, yDomain, width, height} = useContext(XYChartContext);

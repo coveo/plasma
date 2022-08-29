@@ -123,8 +123,8 @@ export interface ITableDispatchProps {
 
 export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, ITableDispatchProps {}
 
-/*
- * @deprecated use the TableHOC
+/**
+ * @deprecated Use Mantine instead
  */
 export class Table extends Component<ITableProps> {
     private isInitialLoad: boolean;

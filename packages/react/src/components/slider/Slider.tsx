@@ -219,4 +219,7 @@ const SliderDisconnected: FunctionComponent<SliderOwnProps & ReturnType<typeof m
     );
 };
 
+/**
+ * @deprecated Use Mantine Slider instead: https://mantine.dev/core/slider/
+ */
 export const Slider = connect(null, mapDispatchToProps)(SliderDisconnected);

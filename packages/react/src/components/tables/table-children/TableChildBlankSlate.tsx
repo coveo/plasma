@@ -6,6 +6,9 @@ import {TABLE_PREDICATE_DEFAULT_VALUE, TOGGLE_ARROW_CELL_COUNT} from '../TableCo
 
 export interface ITableChildBlankSlateProps extends ITableProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Element => {
     const {
         blankSlateDefault,

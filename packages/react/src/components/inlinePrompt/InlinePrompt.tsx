@@ -27,6 +27,9 @@ export interface IInlinePromptProps {
     options: IInlinePromptOptions;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const InlinePrompt: FunctionComponent<IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>> = ({
     options,
     onCancel,
@@ -62,4 +65,7 @@ const mapDispatchToProps = (dispatch: IDispatch<PlasmaState>, ownProps: IInlineP
     onCancel: () => dispatch(removePrompt(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const InlinePromptConnected = connect(null, mapDispatchToProps)(InlinePrompt);

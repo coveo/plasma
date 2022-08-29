@@ -8,6 +8,9 @@ export interface ITabsHeaderProps {
     tabs?: ITabProps[];
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TabsHeader = (props: ITabsHeaderProps) => {
     if (props.tabs) {
         return (

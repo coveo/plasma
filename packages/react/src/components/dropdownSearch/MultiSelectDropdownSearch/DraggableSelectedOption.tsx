@@ -18,6 +18,9 @@ export interface IDraggableSelectedOptionOwnProps {
 
 type DragItem = Pick<ISelectedOptionProps, 'value'>;
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOptionOwnProps & ISelectedOptionProps> = ({
     label,
     selectedTooltip,

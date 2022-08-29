@@ -25,6 +25,9 @@ const mapDispatchToProps = (
     onToggleMore: (facet: string) => dispatch(toggleMoreFacetRows(facet)),
 });
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const FacetMoreToggleConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

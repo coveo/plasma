@@ -50,6 +50,9 @@ export interface IBasicActionProps {
 
 export interface IActionProps extends ClassAttributes<Action>, IBasicActionProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class Action extends Component<IActionProps, any> {
     static defaultProps: Partial<IActionOptions> = {
         hideDisabled: true,

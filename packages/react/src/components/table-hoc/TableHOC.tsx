@@ -93,6 +93,9 @@ export interface ITableHOCOwnProps {
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableHOC: FunctionComponent<ITableHOCProps & HTMLAttributes<HTMLTableElement>> = ({
     hasActionButtons = false,
     actions = [],

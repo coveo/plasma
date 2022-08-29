@@ -9,6 +9,9 @@ export interface BarSeriesProps {
     barRatio?: number;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const BarSeries: FunctionComponent<BarSeriesProps> = ({barRatio = 0.8, children}) => {
     const {series, xScale, yScale, xDomain, yDomain, color, colorPattern} = useContext(XYChartContext);
     const xValues = ChartUtils.getXValues(series);

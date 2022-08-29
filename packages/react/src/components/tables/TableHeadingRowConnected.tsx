@@ -36,6 +36,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHeadingRowOwnPr
     onDestroy: () => dispatch(removeRow(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableHeadingRowConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

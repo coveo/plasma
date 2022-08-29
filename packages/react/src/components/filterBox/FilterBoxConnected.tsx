@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch: IDispatch): IFilterBoxDispatchProps => ({
     onFilter: (id: string, filterText: string) => debouncedFilterThrough(dispatch, id, filterText),
 });
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const FilterBoxConnected = connect<
     IFilterBoxStateProps,
     IFilterBoxDispatchProps,

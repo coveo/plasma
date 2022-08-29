@@ -67,6 +67,9 @@ const selectPropsKeys = [
 
 export type ISingleSelectProps = ISingleSelectOwnProps;
 
+/**
+ * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
+ */
 export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
     placeholder = 'Select an option',
     deselectTooltipText = 'Deselect',

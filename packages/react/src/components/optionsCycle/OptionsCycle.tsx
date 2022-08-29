@@ -34,6 +34,9 @@ export interface IOptionsCycleProps
         Partial<IOptionsCycleStateProps>,
         Partial<IOptionsCycleDispatchProps> {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class OptionsCycle extends Component<IOptionsCycleProps> {
     static defaultProps: Partial<IOptionsCycleProps> = {
         currentOption: 0,

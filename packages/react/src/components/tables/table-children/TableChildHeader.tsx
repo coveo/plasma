@@ -7,6 +7,9 @@ import {TableHeader} from '../TableHeader';
 import {ITableHeaderCellOwnProps} from '../TableHeaderCell';
 import {getTableChildComponentId} from '../TableUtils';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableChildHeader = (props: ITableProps): JSX.Element => {
     const tableHeaderCells: ITableHeaderCellOwnProps[] = props.headingAttributes.map(
         (headingAttribute: ITableHeadingAttribute) => {

@@ -13,6 +13,9 @@ export interface ITableWithActionsProps extends ITableHOCOwnProps {}
 
 type TableWithActionsComponent = ComponentClass<ITableWithActionsProps>;
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const tableWithActions = () => (WrappedComponent: TableWithActionsComponent) => {
     const mapStateToProps = (state: PlasmaState, ownProps: ITableHOCOwnProps) => ({
         hasSelectedRow: TableSelectors.getSelectedRows(state, ownProps).length > 0,

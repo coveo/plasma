@@ -252,6 +252,9 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
     return ReactDOM.createPortal(drop, dropElement);
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const DropPod: ForwardRefExoticComponent<
     IDropPodProps & RefAttributes<HTMLElement>
 > = forwardRef((props: IDropPodProps, ref: RefObject<HTMLElement>) => <RDropPod {...props} buttonRef={ref} />);

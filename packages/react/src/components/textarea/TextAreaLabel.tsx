@@ -8,6 +8,9 @@ export interface ITextAreaLabelProps {
     containerClassName?: string;
 }
 
+/**
+ * @deprecated Use Mantine Textarea instead: https://mantine.dev/core/textarea/
+ */
 export const TextAreaLabel = (props: ITextAreaLabelProps) => (
     <div className={classNames('input-field form-group', props.containerClassName)}>
         {props.children}

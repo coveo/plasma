@@ -85,6 +85,9 @@ const ModeClassMapping: Record<InfoTokenMode, string> = {
     [InfoTokenMode.Filled]: 'filled',
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const InfoToken: FunctionComponent<InfoTokenProps> = ({mode, size, type, className, svgClassName}) => (
     <Svg
         className={classNames('info-token', ModeClassMapping[mode], SizeClassMapping[size], className)}

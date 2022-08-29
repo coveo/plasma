@@ -19,6 +19,9 @@ export interface IUnsavedChangesModalProviderProps {
     confirmButtonText?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const UnsavedChangesModalProvider: FunctionComponent<IUnsavedChangesModalProviderProps> = ({
     isDirty,
     children,

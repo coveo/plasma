@@ -55,6 +55,9 @@ const ISubNavigationPropsToOmit = [
     'selected',
 ];
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttributes<HTMLElement>> = ({
     onDestroy,
     onRender,

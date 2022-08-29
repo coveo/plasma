@@ -10,6 +10,9 @@ export interface IWithEditing {
     footerChildren?: ReactNode;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withEditing = <T, R = any>(config: IWithEditing) => (Component: ComponentType<T>): ComponentClass<T, R> =>
     withDirty<T, R>({
         id: config.id,

@@ -29,6 +29,9 @@ const defaultSort = () => 0;
 
 export type SortableTableComponent = ComponentType<ITableWithSortProps>;
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig> = {}) => (
     WrappedComponent: SortableTableComponent
 ): SortableTableComponent => {

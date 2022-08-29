@@ -7,6 +7,9 @@ export interface IModalBodyProps {
     classes?: IClassName;
 }
 
+/**
+ * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
+ */
 export class ModalBody extends Component<IModalBodyProps> {
     render() {
         const classes = classNames('modal-body relative', this.props.classes);

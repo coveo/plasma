@@ -119,6 +119,9 @@ export interface ITableWithPredicateConfig extends WithServerSideProcessingProps
     matchPredicate?: (predicate: string, datum: any) => boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateConfig>) => {
     const config = HocUtils.supplyConfig(supplier);
 

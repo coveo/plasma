@@ -31,7 +31,7 @@ const mapDispatchToProps = (
 });
 
 /**
- * @deprecated use ModalCompositeConnected instead
+ * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
 export const ModalBackdropConnected = connect(
     mapStateToProps,

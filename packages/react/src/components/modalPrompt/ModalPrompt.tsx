@@ -30,7 +30,7 @@ export const DEFAULT_MODAL_PROMPT_CANCEL_LABEL: string = 'Cancel';
 export interface IModalPromptProps extends IModalPromptOwnProps, IModalPromptStateProps, IModalPromptDispatchProps {}
 
 /**
- * @deprecated use ModalComposite instead
+ * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
 export class ModalPrompt extends Component<IModalPromptProps, any> {
     static defaultProps: Partial<IModalPromptProps> = {

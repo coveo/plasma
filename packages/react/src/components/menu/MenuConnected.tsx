@@ -49,6 +49,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMenuOwnProps): IMenu
     onDocumentClick: () => dispatch(toggleMenu(ownProps.id, false)),
 });
 
+/**
+ * @deprecated Use Mantine Menu instead: https://mantine.dev/core/menu/
+ */
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class MenuConnected extends Component<IMenuProps> {
     private list: HTMLDivElement;

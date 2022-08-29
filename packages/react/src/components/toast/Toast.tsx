@@ -57,6 +57,9 @@ export interface IToastProps {
     onDestroy?: () => void;
 }
 
+/**
+ * @deprecated Use Mantine Notification instead: https://mantine.dev/core/notification/
+ */
 export const Toast: FunctionComponent<IToastProps> = ({
     title,
     type = 'success',

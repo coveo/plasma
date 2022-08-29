@@ -32,4 +32,7 @@ const SliderHandle: FunctionComponent<{
     </SliderTooltip>
 );
 
+/**
+ * @deprecated Use Mantine Slider instead: https://mantine.dev/core/slider/
+ */
 export default SliderHandle;

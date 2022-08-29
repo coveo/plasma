@@ -34,6 +34,9 @@ export interface INavigationStateProps extends IReduxStatePossibleProps {
 
 export interface INavigationProps extends INavigationOwnProps, INavigationChildrenProps, INavigationStateProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class Navigation extends Component<INavigationProps, any> {
     static defaultProps: Partial<INavigationProps> = {
         perPageNumbers: PER_PAGE_NUMBERS,

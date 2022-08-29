@@ -31,6 +31,9 @@ export interface IFacetMoreRowsProps
         IFacetMoreRowsStateProps,
         IFacetMoreRowsChildrenProps {}
 
+/**
+ * @deprecated use Mantine instead
+ */
 export class FacetMoreRows extends Component<IFacetMoreRowsProps, any> {
     private facetSearch: HTMLDivElement;
 

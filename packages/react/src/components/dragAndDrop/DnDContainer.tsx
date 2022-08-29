@@ -21,6 +21,9 @@ export interface IDraggableContainerOwnProps {
 
 type DragItem = {id: string};
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const DnDContainer: FunctionComponent<IDraggableContainerOwnProps> = ({
     draggableContainerProps = {className: 'flex flex-center'},
     draggableIconProps = {},

@@ -25,6 +25,9 @@ export interface ITableWithNewPaginationConfig
 
 export interface ITableWithNewPaginationProps extends ITableHOCOwnProps, WithServerSideProcessingProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const tableWithNewPagination = (
     supplier: ConfigSupplier<ITableWithNewPaginationConfig> = {perPageNumbers: PER_PAGE_NUMBERS}
 ) => (WrappedComponent: ComponentType<ITableWithNewPaginationProps>) => {

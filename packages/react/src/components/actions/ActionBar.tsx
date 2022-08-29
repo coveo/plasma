@@ -83,6 +83,9 @@ export interface IActionBarProps {
     itemFilterCropLength?: number;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class ActionBar extends PureComponent<
     IActionBarProps & Partial<ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>>
 > {

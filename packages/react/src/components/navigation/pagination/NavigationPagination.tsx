@@ -32,6 +32,9 @@ export const NUMBER_OF_PAGES_SHOWING: number = 7;
 export const PREVIOUS_LABEL: string = 'Previous';
 export const NEXT_LABEL: string = 'Next';
 
+/**
+ * @deprecated Use Mantine Pagination instead: https://mantine.dev/core/pagination/
+ */
 export class NavigationPagination extends Component<INavigationPaginationProps, any> {
     private handlePageClick = (pageNb: number) => {
         if (pageNb >= 0 && this.props.currentPage !== pageNb) {

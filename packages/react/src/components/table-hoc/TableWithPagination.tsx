@@ -49,7 +49,7 @@ const TableWithPaginationProps = ['totalEntries', 'totalPages', 'pageNb', 'perPa
 const sliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
 
 /**
- * @deprecated use tableWithNewPagination instead
+ * @deprecated Use Mantine instead
  */
 export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginationConfig> = {}) => (
     WrappedComponent: ComponentType<ITableWithPaginationProps>

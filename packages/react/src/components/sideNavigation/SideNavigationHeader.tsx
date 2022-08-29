@@ -4,9 +4,6 @@ import {Component} from 'react';
 
 import {Svg} from '../svg';
 
-/**
- * @deprecated Use SideNavigationHeaderProps instead
- */
 export interface ISideNavigationHeaderProps {
     title: string;
     svgName?: SvgName;
@@ -15,7 +12,7 @@ export interface ISideNavigationHeaderProps {
 }
 
 /**
- * @deprecated Will be removed in version 5
+ * @deprecated Use Mantine NavLink instead: https://mantine.dev/core/nav-link/
  */
 export class SideNavigationHeader extends Component<ISideNavigationHeaderProps> {
     private handleClick() {

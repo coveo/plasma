@@ -14,4 +14,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: INavigationOwnProps): INa
     };
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const NavigationConnected = connect(mapStateToProps, undefined, ReduxUtils.mergeProps)(Navigation);

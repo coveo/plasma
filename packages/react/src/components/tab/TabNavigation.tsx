@@ -6,6 +6,9 @@ export interface ITabNavigationProps {
     title?: string;
 }
 
+/**
+ * @deprecated Use Mantine Tabs instead: https://mantine.dev/core/tabs/
+ */
 export const TabNavigation: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
     className,
     children,

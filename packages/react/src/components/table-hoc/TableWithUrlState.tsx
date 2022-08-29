@@ -159,4 +159,7 @@ const updateTableStateFromUrl = (tableId: string): IThunkAction => (dispatch: ID
     }
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export {tableWithUrlState, Params as TableWithUrlStateParameters};

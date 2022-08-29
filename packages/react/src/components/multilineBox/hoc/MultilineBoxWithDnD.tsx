@@ -36,6 +36,9 @@ export interface IMultilineBoxWithDnDProps<T>
         Partial<IMultilineBoxWithDnDDispatchProps>,
         Partial<IMultilineBoxDispatchProps> {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDnDSupplierProps> = {}) => (
     Component: typeof MultilineBox
 ): typeof MultilineBox => {

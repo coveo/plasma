@@ -10,6 +10,9 @@ export interface InfoLineProps {
     padding?: number;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const InfoLine: FunctionComponent<InfoLineProps> = ({
     stroke = '#000',
     isVertical = false,

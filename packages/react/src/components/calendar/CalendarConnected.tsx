@@ -61,4 +61,7 @@ const mapDispatchToProps = (
     onDateChange: (pickerId: string, newValue: number) => dispatch(changeOptionsCycle(pickerId, newValue)),
 });
 
+/**
+ * @deprecated Use Mantine Calendar instead: https://mantine.dev/dates/calendar/
+ */
 export const CalendarConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Calendar);

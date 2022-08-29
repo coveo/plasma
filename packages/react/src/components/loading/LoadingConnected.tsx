@@ -14,4 +14,8 @@ const mapDispatchToProps = (
     onDestroy: () => dispatch(removeLoading(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine Loader instead: https://mantine.dev/core/loader/
+ * or use Mantine LoadingOverlay: https://mantine.dev/core/loading-overlay/
+ */
 export const LoadingConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Loading);

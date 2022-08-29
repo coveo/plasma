@@ -21,6 +21,9 @@ export interface ITableWithBlankSlateStateProps {
 
 export interface ITableWithBlankSlateProps extends Partial<ITableWithBlankSlateStateProps> {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTableProps> = {}) => (
     Component: ComponentClass<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>
 ): ComponentType<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps> => {
