@@ -14,6 +14,9 @@ export interface ISvgTagProps {
 
 export interface ISvgProps extends ISvgTagProps, HTMLAttributes<HTMLSpanElement> {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const Svg: FunctionComponent<ISvgProps> = ({svgClass = '', svgName, ...props}) => {
     const setSvgClass = (svgStr: string): string =>
         svgStr

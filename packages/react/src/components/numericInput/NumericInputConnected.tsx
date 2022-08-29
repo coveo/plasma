@@ -89,7 +89,7 @@ const inputPropsToOmit = [
 ];
 
 /**
- * @deprecated Use Mantine NumberInput instead
+ * @deprecated Use Mantine NumberInput instead: https://mantine.dev/core/number-input/
  */
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class NumericInputConnected extends PureComponent<NumericInputProps & HTMLProps<HTMLInputElement>> {

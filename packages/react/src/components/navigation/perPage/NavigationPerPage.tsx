@@ -31,6 +31,9 @@ export interface INavigationPerPageProps
 export const PER_PAGE_NUMBERS: number[] = [10, 20, 30];
 export const PER_PAGE_LABEL: string = 'Results per page';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class NavigationPerPage extends Component<INavigationPerPageProps> {
     static defaultProps: Partial<INavigationPerPageProps> = {
         perPageNumbers: PER_PAGE_NUMBERS,

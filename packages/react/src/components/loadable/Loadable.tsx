@@ -2,6 +2,9 @@ import loadable, {DefaultComponent, OptionsWithoutResolver} from '@loadable/comp
 
 import {Loading} from '../loading/Loading';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const Loadable = <T extends unknown>(
     doImport: (props: T) => Promise<DefaultComponent<T>>,
     options?: OptionsWithoutResolver<T>

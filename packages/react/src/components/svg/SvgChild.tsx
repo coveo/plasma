@@ -29,6 +29,9 @@ export interface OptionalSvgChildProps extends Partial<ISvgProps> {
 export const isCustomSvgChild = (x: SvgChildProps): x is SvgChildCustomProps =>
     (x as SvgChildCustomProps).svgChild !== undefined;
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const SvgChild: FunctionComponent<OptionalSvgChildProps> = ({svgChild, svgName, svgClass, ...svgProps}) => {
     if (!svgChild && !svgName) {
         return null;

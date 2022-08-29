@@ -58,7 +58,7 @@ export interface IPopoverState {
 }
 
 /**
- * @deprecated Use Mantine Popover instead
+ * @deprecated Use Mantine Popover instead: https://mantine.dev/core/popover/
  */
 export class Popover extends Component<IPopoverProps, IPopoverState> {
     private tetherToggle: RefObject<HTMLDivElement>;

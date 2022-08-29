@@ -9,21 +9,21 @@ import {ISelectWithPredicateOwnProps, selectWithPredicate} from './SelectWithPre
 // Single Select
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 export const SingleSelectWithFilter: ComponentType<
     ISelectWithFilterOwnProps & ISingleSelectOwnProps
 > = selectWithFilter(SingleSelectConnected);
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 export const SingleSelectWithPredicate: ComponentType<
     ISelectWithPredicateOwnProps & ISingleSelectOwnProps
 > = selectWithPredicate(SingleSelectConnected);
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 export const SingleSelectWithPredicateAndFilter: ComponentType<
     ISingleSelectOwnProps & ISelectWithFilterOwnProps & ISelectWithPredicateOwnProps
@@ -32,7 +32,7 @@ export const SingleSelectWithPredicateAndFilter: ComponentType<
 // Multi Select
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine MultiSelect instead: https://mantine.dev/core/multi-select/
  */
 export const MultiSelectWithFilter: ComponentType<ISelectWithFilterOwnProps & IMultiSelectOwnProps> = selectWithFilter(
     MultiSelectConnected

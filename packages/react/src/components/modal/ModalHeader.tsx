@@ -44,7 +44,7 @@ export interface IModalHeaderProps
         Partial<IModalHeaderDispatchProps> {}
 
 /**
- * @deprecated Use Mantine Modal instead
+ * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
 export class ModalHeader extends Component<IModalHeaderProps> {
     static defaultProps: Partial<IModalHeaderProps> = {

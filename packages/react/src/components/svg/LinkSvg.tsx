@@ -12,6 +12,9 @@ export interface ILinkSvgProps extends ClassAttributes<LinkSvg> {
     tooltip?: ITooltipProps;
 }
 
+/**
+ * @deprecated Use Mantine ActionIcon instead: https://mantine.dev/core/action-icon/#usage-with-react-router
+ */
 export class LinkSvg extends Component<ILinkSvgProps> {
     static defaultProps: Partial<ILinkSvgProps> = {
         target: '_blank',

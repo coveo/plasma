@@ -21,4 +21,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IFlippableOwnProps): 
     onUnflip: () => dispatch(changeFlippableSide(ownProps.id, false)),
 });
 
+/**
+ * @deprecated Don't use
+ */
 export const FlippableConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Flippable);

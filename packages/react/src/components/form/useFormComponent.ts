@@ -3,7 +3,7 @@ import {TextInputState} from '../textInput/TextInputReducer';
 import {FormComponent, FormContext} from './FormProvider';
 
 /**
- * @deprecated Use Mantine use-form instead
+ * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/
  */
 export const useFormComponent = (component: FormComponent): {state: Record<string, TextInputState>} => {
     const formContext = useContext(FormContext);

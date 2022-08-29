@@ -8,7 +8,7 @@ export interface IModalBodyProps {
 }
 
 /**
- * @deprecated Use Mantine Modal instead
+ * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
 export class ModalBody extends Component<IModalBodyProps> {
     render() {

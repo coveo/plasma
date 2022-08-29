@@ -24,6 +24,6 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxOwnProps): IL
 });
 
 /**
- * @deprecated Use Mantine List instead
+ * @deprecated Use Mantine Menu instead: https://mantine.dev/core/menu/
  */
 export const ListBoxConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.defaultMergeProps)(ListBox);

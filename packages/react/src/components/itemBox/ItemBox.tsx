@@ -24,7 +24,7 @@ export interface IItemBoxProps {
 }
 
 /**
- * @deprecated Use Mantine List instead
+ * @deprecated Use Mantine Menu instead: https://mantine.dev/core/menu/
  */
 export class ItemBox extends Component<IItemBoxProps> {
     static defaultProps: Partial<IItemBoxProps> = {

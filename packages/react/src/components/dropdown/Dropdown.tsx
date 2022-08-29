@@ -27,7 +27,7 @@ export interface IDropdownDispatchProps {
 export interface IDropdownProps extends IDropdownOwnProps, IDropdownStateProps, IDropdownDispatchProps {}
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine Menu instead https://mantine.dev/core/menu/
  */
 export class Dropdown extends Component<IDropdownProps, any> {
     private dropdown: HTMLDivElement;

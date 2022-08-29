@@ -31,6 +31,9 @@ const mapDispatchToProps = (
     onPageClick: (pageNb: number) => dispatch(changePage(ownProps.id, pageNb)),
 });
 
+/**
+ * @deprecated Use Mantine Pagination instead: https://mantine.dev/core/pagination/
+ */
 export const NavigationPaginationConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

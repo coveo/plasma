@@ -113,7 +113,7 @@ export type ISelectProps = ISelectOwnProps &
     ReturnType<ReturnType<typeof makeMapStateToProps>>;
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
 export class SelectConnected extends PureComponent<ISelectProps> {

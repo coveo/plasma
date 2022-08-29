@@ -100,7 +100,7 @@ class RefreshCallbackDisconnected extends PureComponent<IRefreshCallbackProps, I
 }
 
 /**
- * @deprecated Use Mantine Radio instead
+ * @deprecated Use Mantine instead
  */
 export const RefreshCallback = connect<
     ReturnType<typeof mapStateToProps>,

@@ -16,6 +16,9 @@ export interface IStickyFooterProps {
     className?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class StickyFooter extends Component<IStickyFooterProps> {
     static ID = 'StickyFooter';
     static defaultProps: Partial<IStickyFooterProps> = {

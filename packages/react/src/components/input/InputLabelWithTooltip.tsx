@@ -12,7 +12,7 @@ export interface InputLabelWithTooltipProps {
 }
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine Input instead: https://mantine.dev/core/input/
  */
 export const InputLabelWithTooltip: FunctionComponent<InputLabelWithTooltipProps> = ({
     label,

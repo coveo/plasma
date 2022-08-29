@@ -18,6 +18,9 @@ export interface IStepProgressBarProps {
     className?: IClassName;
 }
 
+/**
+ * @deprecated Use Mantine Stepper instead: https://mantine.dev/core/stepper/
+ */
 export const StepProgressBar = (props: IStepProgressBarProps) => {
     const {numberOfSteps, currentStep} = props;
     const stepProgressBarSteps = range(numberOfSteps).map((stepNumber: number) => (

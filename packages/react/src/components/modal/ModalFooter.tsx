@@ -11,7 +11,7 @@ export interface IModalFooterProps {
 }
 
 /**
- * @deprecated Use Mantine Modal instead
+ * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
 export class ModalFooter extends Component<IModalFooterProps> {
     render() {

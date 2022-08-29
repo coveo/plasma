@@ -7,7 +7,7 @@ import {Tooltip} from '../tooltip';
 export interface RadioCardProps extends Omit<IInputProps, 'outerContainerClass' | 'outerElementInContainer'> {}
 
 /**
- * @deprecated Use Mantine Radio instead
+ * @deprecated Use Mantine Radio instead: https://mantine.dev/core/radio/
  */
 export const RadioCard: FunctionComponent<RadioCardProps> = (props) => {
     const classes = classNames('card', 'radio-card', props.classes);

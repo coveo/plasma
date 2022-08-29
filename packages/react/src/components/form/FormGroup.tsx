@@ -8,7 +8,7 @@ export interface IFormGroupProps {
 }
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/
  */
 export const FormGroup: FunctionComponent<IFormGroupProps> = ({children, title, description, className}) => (
     <div className={classNames(className, 'form-group', 'mod-padding-children')}>

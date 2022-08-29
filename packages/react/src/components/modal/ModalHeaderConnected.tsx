@@ -9,6 +9,6 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalHeaderOwnProps)
 });
 
 /**
- * @deprecated Use Mantine Modal instead
+ * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
 export const ModalHeaderConnected = connect(undefined, mapDispatchToProps, ReduxUtils.mergeProps)(ModalHeader);

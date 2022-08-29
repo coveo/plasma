@@ -33,7 +33,8 @@ export interface ILoadingDispatchProps {
 export interface ILoadingProps extends ILoadingOwnProps, ILoadingDispatchProps {}
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine Loader instead: https://mantine.dev/core/loader/
+ * or use Mantine LoadingOverlay: https://mantine.dev/core/loading-overlay/
  */
 export class Loading extends Component<ILoadingProps & HTMLProps<HTMLDivElement>, any> {
     static defaultProps: Partial<ILoadingOwnProps> = {

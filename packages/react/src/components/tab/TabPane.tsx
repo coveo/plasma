@@ -28,6 +28,10 @@ export const TabPane: FunctionComponent<ITabPaneProps> = ({id, className, isActi
         {children}
     </div>
 );
+
+/**
+ * @deprecated Use Mantine Tabs instead: https://mantine.dev/core/tabs/
+ */
 export const TabPaneConnected = connect<
     ReturnType<ReturnType<typeof makeMapStateToProps>>,
     Record<string, never>,

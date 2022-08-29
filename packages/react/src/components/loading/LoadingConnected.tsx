@@ -15,6 +15,7 @@ const mapDispatchToProps = (
 });
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use Mantine Loader instead: https://mantine.dev/core/loader/
+ * or use Mantine LoadingOverlay: https://mantine.dev/core/loading-overlay/
  */
 export const LoadingConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Loading);
