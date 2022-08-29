@@ -91,14 +91,8 @@ const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
     state.id !== action.payload.id ? state : _.extend({}, state, {selected: action.payload.limit});
 
 const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-    const lowerLimit: Date =
-        state.lowerLimit || !state.isClearable
-            ? state.lowerLimit || state.inputLowerLimit || state.appliedLowerLimit
-            : null;
-    let upperLimit: Date =
-        state.upperLimit || !state.isClearable
-            ? state.upperLimit || state.inputUpperLimit || state.appliedUpperLimit
-            : null;
+    const lowerLimit: Date = state.lowerLimit || !state.isClearable ? state.lowerLimit || state.inputLowerLimit : null;
+    let upperLimit: Date = state.upperLimit || !state.isClearable ? state.upperLimit || state.inputUpperLimit : null;
 
     if (state.isRange && !upperLimit) {
         upperLimit = lowerLimit ? moment(lowerLimit).endOf('day').toDate() : upperLimit;
