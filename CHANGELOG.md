@@ -1,3 +1,17 @@
+# 46.0.0 (2022-08-30)
+
+
+### chore
+
+* p$ (dep, materialize-css) removing from project ([#2832](https://github.com/coveo/plasma/issues/2832)) ([7a0387d](https://github.com/coveo/plasma/commits/7a0387d82d08434fc619a7adecd3a52300b14245))
+
+
+### BREAKING CHANGES
+
+* p'( removing materialise-css as dependencies
+
+
+
 ## 45.4.7 (2022-08-29)
 
 
