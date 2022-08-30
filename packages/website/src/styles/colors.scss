@@ -8,6 +8,24 @@
     border-radius: 8px;
 }
 
+.gradientDemo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+// Gradient
+.color_demo_gradient {
+    background: var(--gradient);
+}
+.color_demo_gradient_header {
+    background: var(--gradient-header);
+}
+
 // Grey sclae
 .color_demo_bg-white {
     background-color: var(--white);

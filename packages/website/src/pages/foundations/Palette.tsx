@@ -11,7 +11,13 @@ const code = `
 
 const colors: Array<{
     name: string;
-    variants: Array<{renderer: FunctionComponent; cssName: string[]; rgbVariant: string[]; hslaCode: string[]}>;
+    variants: Array<{
+        renderer: FunctionComponent;
+        cssName: string[];
+        semanticDerivate?: string[];
+        rgbVariant?: string[];
+        hslaCode: string[];
+    }>;
 }> = [
     {
         name: 'Grey scale',
@@ -72,6 +78,7 @@ const colors: Array<{
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-navy-blue-10">{children}</div>,
                 cssName: ['--navy-blue-10'],
+                semanticDerivate: ['--info-10'],
                 rgbVariant: ['--navy-blue-10-rgb'],
                 hslaCode: ['hsla(238, 100%, 97%, 1)'],
             },
@@ -102,13 +109,14 @@ const colors: Array<{
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-navy-blue-60">{children}</div>,
                 cssName: ['--navy-blue-60'],
+                semanticDerivate: ['--info-60'],
                 rgbVariant: ['--navy-blue-60-rgb'],
                 hslaCode: ['hsla(240, 29%, 45%, 1)'],
             },
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-navy-blue-70">{children}</div>,
                 cssName: ['--navy-blue-70'],
-                rgbVariant: ['--navy-blue-7o-rgb'],
+                rgbVariant: ['--navy-blue-70-rgb'],
                 hslaCode: ['hsla(240, 28%, 34%, 1)'],
             },
             {
@@ -126,6 +134,7 @@ const colors: Array<{
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-navy-blue-100">{children}</div>,
                 cssName: ['--navy-blue-100'],
+                semanticDerivate: ['--info-100'],
                 rgbVariant: ['--navy-blue-100-rgb'],
                 hslaCode: ['hsla(231, 41%, 16%, 1)'],
             },
@@ -178,6 +187,7 @@ const colors: Array<{
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-pomegranate-red-10">{children}</div>,
                 cssName: ['--pomegranate-red-10'],
+                semanticDerivate: ['--critical-10'],
                 rgbVariant: ['--pomegranate-red-10-rgb'],
                 hslaCode: ['hsla(4, 100%, 97%, 1)'],
             },
@@ -214,6 +224,7 @@ const colors: Array<{
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-pomegranate-red-70">{children}</div>,
                 cssName: ['--pomegranate-red-70'],
+                semanticDerivate: ['--critical-70'],
                 rgbVariant: ['--pomegranate-red-70-rgb'],
                 hslaCode: ['hsla(5, 83%, 44%, 1)'],
             },
@@ -232,6 +243,7 @@ const colors: Array<{
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-pomegranate-red-100">{children}</div>,
                 cssName: ['--pomegranate-red-100'],
+                semanticDerivate: ['--critical-100'],
                 rgbVariant: ['--pomegranate-red-100-rgb'],
                 hslaCode: ['hsla(5, 94%, 19%, 1)'],
             },
@@ -308,6 +320,7 @@ const colors: Array<{
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-turbo-yellow-10">{children}</div>,
                 cssName: ['--turbo-yellow-10'],
+                semanticDerivate: ['--warning-10'],
                 rgbVariant: ['--turbo-yellow-10-rgb'],
                 hslaCode: ['hsla(55, 100%, 93%, 1)'],
             },
@@ -344,6 +357,7 @@ const colors: Array<{
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-turbo-yellow-70">{children}</div>,
                 cssName: ['--turbo-yellow-70'],
+                semanticDerivate: ['--warning-70'],
                 rgbVariant: ['--turbo-yellow-70-rgb'],
                 hslaCode: ['hsla(47, 97%, 45%, 1)'],
             },
@@ -356,6 +370,7 @@ const colors: Array<{
             {
                 renderer: ({children}) => <div className="colorDemo color_demo_bg-turbo-yellow-90">{children}</div>,
                 cssName: ['--turbo-yellow-90'],
+                semanticDerivate: ['--warning-90'],
                 rgbVariant: ['--turbo-yellow-90-rgb'],
                 hslaCode: ['hsla(47, 98%, 26%, 1)'],
             },
@@ -754,14 +769,14 @@ export const Palette = () => (
                     <table className="table">
                         <thead className="mod-no-border-top">
                             <tr>
-                                <th>CSS name</th>
+                                <th style={{width: '350px'}}>CSS name</th>
                                 <th>RGB variant name</th>
                                 <th>Hsla value</th>
                                 <th style={{width: '200px'}}>Preview</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {variants.map(({cssName, rgbVariant, hslaCode, renderer: Preview}) => (
+                            {variants.map(({cssName, semanticDerivate, rgbVariant, hslaCode, renderer: Preview}) => (
                                 <tr key={Buffer.from(cssName.join('-')).toString('base64')}>
                                     <td className="mod-no-border-bottom">
                                         {cssName.map((selector, i) => (
@@ -774,12 +789,23 @@ export const Palette = () => (
                                                 {selector}
                                             </span>
                                         ))}
+                                        {semanticDerivate?.map((selector, i) => (
+                                            <span
+                                                style={{display: 'table-cell'}}
+                                                className={classNames('code', {
+                                                    mr1: i + 1 !== semanticDerivate?.length,
+                                                })}
+                                                key={selector}
+                                            >
+                                                {selector} (semantic derivate)
+                                            </span>
+                                        ))}
                                     </td>
                                     <td className="mod-no-border-bottom">
-                                        {rgbVariant.map((selector, i) => (
+                                        {rgbVariant?.map((selector, i) => (
                                             <span
                                                 className={classNames('code', {
-                                                    mr1: i + 1 !== rgbVariant.length,
+                                                    mr1: i + 1 !== rgbVariant?.length,
                                                 })}
                                                 key={selector}
                                             >
@@ -808,6 +834,37 @@ export const Palette = () => (
                     </table>
                 </div>
             ))}
+        </div>
+        <div className="p2 mb3">
+            <div className="plasma-page-layout__section full-content flex-column">
+                <h6 className="h6-subdued mb2">Gradient</h6>
+                <table className="table">
+                    <thead className="mod-no-border-top">
+                        <tr>
+                            <th style={{width: '350px'}}>CSS name</th>
+                            <th>Preview</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td className="mod-no-border-bottom">
+                                <span className="code">--gradient</span>
+                            </td>
+                            <td className="mod-no-border-bottom">
+                                <div className="gradientDemo color_demo_gradient"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="mod-no-border-bottom">
+                                <span className="code">--gradient-header</span>
+                            </td>
+                            <td className="mod-no-border-bottom">
+                                <div className="gradientDemo color_demo_gradient_header"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </PageLayout>
 );
