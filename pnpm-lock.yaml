@@ -315,7 +315,6 @@ importers:
       gulp-uglify: 3.0.2
       jquery: 3.6.0
       lint-staged: 9.5.0
-      materialize-css: 0.98.2
       merge-stream: 1.0.1
       mini-css-extract-plugin: 0.12.0
       minimist: 1.2.6
@@ -334,7 +333,6 @@ importers:
       webpack-cli: 3.3.12
     dependencies:
       codemirror: 5.65.3
-      materialize-css: 0.98.2
       rc-slider: 8.7.1
       react-diff-view: 2.4.10
     devDependencies:
@@ -4198,13 +4196,6 @@ packages:
     dev: true
     optional: true
 
-  /block-stream/0.0.9:
-    resolution: {integrity: sha1-E+v+d4oDIFz+A3UUgeu0szAMEmo=}
-    engines: {node: 0.4 || >=0.5.8}
-    dependencies:
-      inherits: 2.0.4
-    dev: false
-
   /bluebird/3.7.2:
     resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
     dev: true
@@ -5115,8 +5106,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      JSONStream: 1.3.5
       is-text-path: 1.0.1
+      JSONStream: 1.3.5
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -7465,16 +7456,6 @@ packages:
     requiresBuild: true
     optional: true
 
-  /fstream/1.0.12:
-    resolution: {integrity: sha512-WvJ193OHa0GHPEL+AycEJgxvBEwyfRkN1vhjca23OaPVMCaLCXTd5qAu82AjTcgP1UJmytkOKb63Ypde7raDIg==}
-    engines: {node: '>=0.6'}
-    dependencies:
-      graceful-fs: 4.2.10
-      inherits: 2.0.4
-      mkdirp: 0.5.6
-      rimraf: 2.6.3
-    dev: false
-
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
 
@@ -7980,11 +7961,6 @@ packages:
     dependencies:
       glogg: 1.0.2
     dev: true
-
-  /hammerjs/2.0.8:
-    resolution: {integrity: sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=}
-    engines: {node: '>=0.8.0'}
-    dev: false
 
   /handlebars/4.7.7:
     resolution: {integrity: sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==}
@@ -9499,10 +9475,6 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
-  /jquery/2.2.4:
-    resolution: {integrity: sha512-lBHj60ezci2u1v2FqnZIraShGgEXq35qCzMv4lITyHGppTnA13rwR0MgwyNJh9TnDs3aXUvd1xjAotfraMHX/Q==}
-    dev: false
-
   /jquery/3.6.0:
     resolution: {integrity: sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==}
     dev: true
@@ -10287,14 +10259,6 @@ packages:
     resolution: {integrity: sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==}
     dev: false
 
-  /materialize-css/0.98.2:
-    resolution: {integrity: sha1-+eQjn9J+KpF6DeN5101Qji2S7I4=}
-    dependencies:
-      hammerjs: 2.0.8
-      jquery: 2.2.4
-      node-archiver: 0.3.0
-    dev: false
-
   /mathml-tag-names/2.1.3:
     resolution: {integrity: sha512-APMBEanjybaPzUrfqU0IMU5I0AswKMH7k8OTLs0vvV4KZpExkTkY87nR/zpbuTPj+gARop7aGUbl11pnDfW6xg==}
     dev: true
@@ -10973,6 +10937,7 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.6
+    dev: true
 
   /modify-values/1.0.1:
     resolution: {integrity: sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==}
@@ -11198,13 +11163,6 @@ packages:
 
   /node-abort-controller/1.2.1:
     resolution: {integrity: sha512-79PYeJuj6S9+yOHirR0JBLFOgjB6sQCir10uN6xRx25iD+ZD4ULqgRn3MwWBRaQGB0vEgReJzWwJo42T1R6YbQ==}
-    dev: false
-
-  /node-archiver/0.3.0:
-    resolution: {integrity: sha1-ufGv5QBtC98pJgGBgzoHCXi8aUc=}
-    dependencies:
-      fstream: 1.0.12
-      tar: 2.2.2
     dev: false
 
   /node-fetch/2.6.7:
@@ -15071,15 +15029,6 @@ packages:
   /tapable/2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
-    dev: false
-
-  /tar/2.2.2:
-    resolution: {integrity: sha512-FCEhQ/4rE1zYv9rYXJw/msRqsnmlje5jHP6huWeBZ704jUTy02c5AZyWujpMR1ax6mVw9NyJMfuK2CMDWVIfgA==}
-    deprecated: This version of tar is no longer supported, and will not receive security updates. Please upgrade asap.
-    dependencies:
-      block-stream: 0.0.9
-      fstream: 1.0.12
-      inherits: 2.0.4
     dev: false
 
   /teeny-request/7.0.1:

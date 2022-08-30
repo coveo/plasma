@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 // OPTIONS
 // --min                        Flag to enable minification                                         Default: false
 // --gzip                       Flag to enable gziphication                                         Default: false
@@ -35,11 +37,7 @@ const useGzippedSources = argv.gzip;
 const cleanAll = argv.all;
 
 gulp.task('lib', () => {
-    const dependencies = [
-        'node_modules/materialize-css/js/jquery.easing.1.3.js',
-        'node_modules/materialize-css/js/collapsible.js',
-        './lib/js/*',
-    ];
+    const dependencies = ['./lib/js/*'];
     dependencies.forEach((path) => {
         fs.exists(path, (exists) => {
             if (!exists) {
@@ -72,17 +70,11 @@ gulp.task('clean', (done) => {
     });
 });
 
-gulp.task('copy:images', () => {
-    return gulp.src('./resources/images/**/*').pipe(gulp.dest('./dist/images/'));
-});
+gulp.task('copy:images', () => gulp.src('./resources/images/**/*').pipe(gulp.dest('./dist/images/')));
 
-gulp.task('copy:fonts', () => {
-    return gulp.src('./resources/fonts/**/*').pipe(gulp.dest('./dist/fonts/'));
-});
+gulp.task('copy:fonts', () => gulp.src('./resources/fonts/**/*').pipe(gulp.dest('./dist/fonts/')));
 
-gulp.task('copy:js', () => {
-    return gulp.src('./resources/js/**/*').pipe(gulp.dest('./dist/js/'));
-});
+gulp.task('copy:js', () => gulp.src('./resources/js/**/*').pipe(gulp.dest('./dist/js/')));
 
 gulp.task('sprites', () => {
     const template =
@@ -155,7 +147,7 @@ gulp.task('svg:concat', () => {
     return src
         .pipe(
             svgmin((file) => {
-                var prefix = path.basename(file.relative, path.extname(file.relative));
+                const prefix = path.basename(file.relative, path.extname(file.relative));
                 return {
                     plugins: [
                         {
