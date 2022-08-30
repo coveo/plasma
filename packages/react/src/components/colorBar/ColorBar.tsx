@@ -31,6 +31,9 @@ export interface IColorBarProps {
     className?: IClassName;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class ColorBar extends Component<IColorBarProps> {
     static defaultProps: Partial<IColorBarProps> = {
         height: '5px',

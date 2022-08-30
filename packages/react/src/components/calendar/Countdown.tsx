@@ -18,6 +18,9 @@ export interface CountdownProps {
     endDate?: moment.Moment;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const Countdown: FunctionComponent<CountdownProps> = ({
     startDate = moment(),
     endDate = moment().date(moment().daysInMonth()),

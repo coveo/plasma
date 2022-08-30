@@ -9,6 +9,9 @@ export interface DateTooltipsProps {
     tooltipFormat?: string;
 }
 
+/**
+ * @deprecated Use Mantine Tooltip instead: https://mantine.dev/core/tooltip/
+ */
 export const DateTooltip: FunctionComponent<DateTooltipsProps> = ({date, format, tooltipFormat}) => {
     let content: string;
     const title = moment(date).format(tooltipFormat ?? 'LLL');

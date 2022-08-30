@@ -70,6 +70,9 @@ const getDateChartColorPattern = (numOfColors: number) => {
 };
 const defaultPadding = 10;
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const XYChart: FunctionComponent<XYChartProps> = ({
     width,
     height,

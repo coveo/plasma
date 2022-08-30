@@ -4,6 +4,9 @@ export interface WithServerSideProcessingProps {
     isServer?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withServerSideProcessing = <T extends Record<string, unknown>>(
     Component: ComponentType<T>
 ): ComponentType<T & WithServerSideProcessingProps> => {

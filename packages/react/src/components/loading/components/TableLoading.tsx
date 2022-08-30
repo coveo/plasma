@@ -93,6 +93,9 @@ const Cell = ({num}: {num: number}) => (
     </td>
 );
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableLoading = {
     Table,
     Body,

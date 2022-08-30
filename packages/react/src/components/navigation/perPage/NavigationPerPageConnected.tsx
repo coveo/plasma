@@ -42,6 +42,9 @@ const mapDispatchToProps = (
     },
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const NavigationPerPageConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

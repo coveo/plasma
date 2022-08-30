@@ -3,6 +3,9 @@ import * as _ from 'underscore';
 import {IInputProps, Input} from '../input/Input';
 import {DeleteInputAction} from './DeleteInputAction';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class DeletableInput extends Component<IInputProps, any> {
     private onDeleteClicked() {
         if (this.props.onBlur) {

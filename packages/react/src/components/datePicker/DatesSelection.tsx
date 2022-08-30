@@ -81,6 +81,9 @@ export interface IDatesSelectionProps
 export const LOWER_LIMIT_PLACEHOLDER: string = 'Select a start date';
 export const UPPER_LIMIT_PLACEHOLDER: string = 'Select an end date';
 
+/**
+ * @deprecated Use Mantine DatePicker instead
+ */
 export class DatesSelection extends Component<IDatesSelectionProps, any> {
     static defaultProps: Partial<IDatesSelectionProps> = {
         lowerLimitPlaceholder: LOWER_LIMIT_PLACEHOLDER,

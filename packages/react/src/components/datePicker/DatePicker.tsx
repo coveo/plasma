@@ -29,6 +29,9 @@ export interface IDatePickerProps extends ClassAttributes<DatePicker> {
     selectionRules?: ICalendarSelectionRule[];
 }
 
+/**
+ * @deprecated Use Mantine DatePicker instead
+ */
 export class DatePicker extends PureComponent<IDatePickerProps, {isSelected: boolean; isDatePermitted: boolean}> {
     static defaultProps: Partial<IDatePickerProps> = {
         color: DEFAULT_DATE_PICKER_COLOR,

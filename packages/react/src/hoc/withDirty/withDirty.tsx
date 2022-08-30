@@ -25,6 +25,9 @@ export interface IWithDirtyProps
         Partial<IWithDirtyStateProps>,
         Partial<IWithDirtyDispatchProps> {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withDirty = <T, R = any>(config: Partial<IWithDirty> = {}) => (
     Component: ComponentType<Partial<IWithDirtyProps> & T>
 ): ComponentClass<Partial<IWithDirtyProps> & T, R> => {

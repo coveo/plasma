@@ -97,6 +97,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IAutocompleteOwnProps
     setActive: (diff: number) => dispatch(setAutocompleteActive(ownProps.id, diff)),
 });
 
+/**
+ * @deprecated Use Mantine Autocomplete instead: https://mantine.dev/core/autocomplete/
+ */
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class AutocompleteConnected extends Component<IAutocompleteProps & HTMLProps<AutocompleteConnected>> {
     private dropdown: HTMLDivElement;

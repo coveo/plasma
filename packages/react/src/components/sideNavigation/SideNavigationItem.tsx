@@ -13,6 +13,9 @@ export interface SideNavigationItemProps extends Partial<ISideNavigationItemProp
     disabled?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine NavLink instead: https://mantine.dev/core/nav-link/
+ */
 export const SideNavigationItem: FunctionComponent<SideNavigationItemProps> = ({
     isActive,
     href,

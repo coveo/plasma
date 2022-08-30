@@ -18,6 +18,9 @@ export const UserFeedbackState = {
     ERROR: 'ERROR',
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class UserFeedback extends Component<IUserFeedbackProps, any> {
     render() {
         const style = this.getUserFeedbackStyle();

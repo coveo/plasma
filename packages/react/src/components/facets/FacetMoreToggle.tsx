@@ -20,6 +20,9 @@ export interface IFacetMoreToggleProps
 
 export const FACET_TOGGLE_MORE_LABEL: string = 'More';
 
+/**
+ * @deprecated use Mantine instead
+ */
 export class FacetMoreToggle extends Component<IFacetMoreToggleProps, any> {
     private handleOnChange = () => {
         if (this.props.onToggleMore) {

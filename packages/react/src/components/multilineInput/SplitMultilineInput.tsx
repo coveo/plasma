@@ -30,6 +30,9 @@ export interface ISplitMultilineInputState {
     values: ISplitValue[];
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class SplitMultilineInput extends PureComponent<ISplitMultilineInputProps, ISplitMultilineInputState> {
     static inputLineClass: string = 'flex space-between relative pb1';
 

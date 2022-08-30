@@ -16,6 +16,9 @@ export interface IPaginationPerPageProps {
     hidden?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const PaginationPerPage: FunctionComponent<IPaginationPerPageProps> = ({
     id,
     perPage = TablePaginationDefaultValue.PerPage,

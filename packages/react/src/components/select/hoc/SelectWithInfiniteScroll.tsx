@@ -13,6 +13,9 @@ export interface SelectWithInfiniteScrollProps {
     next: () => void;
 }
 
+/**
+ * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
+ */
 export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button'>>(
     Component: ComponentType<P>
 ): ComponentType<P & SelectWithInfiniteScrollProps> => {

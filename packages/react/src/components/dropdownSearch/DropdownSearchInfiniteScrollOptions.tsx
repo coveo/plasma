@@ -9,6 +9,9 @@ export interface DropdownSearchInfiniteScrollOptionsProps {
     infiniteScroll: InfiniteScroll.InfiniteScrollProps;
 }
 
+/**
+ * @deprecated use Mantine instead
+ */
 export class DropdownSearchInfiniteScrollOptions extends Component<DropdownSearchInfiniteScrollOptionsProps> {
     private id: string;
 

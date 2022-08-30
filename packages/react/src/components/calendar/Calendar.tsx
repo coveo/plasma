@@ -118,6 +118,9 @@ export const MONTH_PICKER_ID: string = 'calendar-months';
 
 export const YEAR_PICKER_ID: string = 'calendar-years';
 
+/**
+ * @deprecated Use Mantine Calendar instead: https://mantine.dev/dates/calendar/
+ */
 export class Calendar extends Component<ICalendarProps, any> {
     private countdownHeader: ReactNode;
 

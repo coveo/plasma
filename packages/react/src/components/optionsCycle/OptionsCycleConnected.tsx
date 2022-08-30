@@ -24,4 +24,7 @@ const mapDispatchToProps = (
     onChange: (index: number) => dispatch(changeOptionsCycle(ownProps.id, index)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const OptionsCycleConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(OptionsCycle);

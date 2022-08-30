@@ -140,6 +140,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
     },
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Table);
 
 export const TableConnectedUtils = {

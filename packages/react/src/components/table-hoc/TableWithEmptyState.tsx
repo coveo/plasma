@@ -14,6 +14,9 @@ export interface TableWithEmptyStateProps {
 
 const UPDATE_DELAY = 50; // ms
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const tableWithEmptyState = (
     Component: FunctionComponent<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>
 ) => {

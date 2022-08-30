@@ -27,6 +27,9 @@ const defaultMatchFilter = (filter: string, datum: any) =>
     JSON.stringify(_.values(datum).map((v: any) => _.isString(v) && v.toLowerCase())).indexOf(filter.toLowerCase()) !==
     -1;
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const tableWithFilter = (
     supplier: ConfigSupplier<ITableWithFilterConfig> = {blankSlate: {title: 'No results'}, filter: {isAutoFocus: true}}
 ) => (WrappedTable: typeof TableHOC) => {

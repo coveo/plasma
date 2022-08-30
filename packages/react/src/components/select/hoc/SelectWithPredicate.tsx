@@ -24,6 +24,9 @@ const SelectWithPredicatePropsToOmit = [
     'options',
 ];
 
+/**
+ * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
+ */
 export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
     Component: ComponentType<P>
 ): FunctionComponent<P & ISelectWithPredicateOwnProps> => {

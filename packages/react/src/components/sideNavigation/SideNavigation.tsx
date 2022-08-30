@@ -10,6 +10,9 @@ export interface ISideNavProps extends IReduxStatePossibleProps {
     opened?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine NavLink instead: https://mantine.dev/core/nav-link/
+ */
 export class SideNavigation extends Component<ISideNavProps> {
     static toggleEvent = 'side-navigation-toggle';
 

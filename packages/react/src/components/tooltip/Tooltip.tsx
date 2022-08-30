@@ -102,6 +102,9 @@ const OVERLAY_PROPS_TO_OMIT: string[] = [
     'container',
 ];
 
+/**
+ * @deprecated Use Mantine Tooltip instead: https://mantine.dev/core/tooltip/
+ */
 export class Tooltip extends Component<ITooltipProps> {
     static defaultProps: Partial<ITooltipProps> = {
         className: '',

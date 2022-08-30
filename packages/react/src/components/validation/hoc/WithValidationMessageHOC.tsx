@@ -6,6 +6,9 @@ interface IWithValidationMessageHOCProps {
     onlyShowMessageIfDirty?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withValidationMessage = <T extends IWithValidationMessageHOCProps, R = any>(
     Component: ComponentClass<T, R> | FunctionComponent<T>
 ) => ({onlyShowMessageIfDirty, ...props}: T) => (

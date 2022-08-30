@@ -77,6 +77,9 @@ const mapDispatchToProps = (
     },
 });
 
+/**
+ * @deprecated Use Mantine DatePicker instead
+ */
 export const DatePickerDropdownConnected: React.ComponentType<IDatePickerDropdownOwnProps> = connect(
     mapStateToProps,
     mapDispatchToProps,

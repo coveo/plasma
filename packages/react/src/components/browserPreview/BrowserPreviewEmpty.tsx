@@ -8,6 +8,9 @@ export interface BrowserPreviewEmptyProps {
     image?: ReactNode;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const BrowserPreviewEmpty: FunctionComponent<BrowserPreviewEmptyProps> = ({image, onClick, children}) => (
     <div
         onClick={onClick}

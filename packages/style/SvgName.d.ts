@@ -360,7 +360,6 @@ export type SvgName =
 	| 'sourceDynamics'
 	| 'sourceEktronCms'
 	| 'sourceEvernote'
-	| 'sourceExchange'
 	| 'sourceFacebook'
 	| 'sourceFileSystem'
 	| 'sourceGenericRest'

@@ -81,7 +81,12 @@ export const listBoxesReducer = (
 ): IListBoxState[] => {
     switch (action.type) {
         case ListBoxActions.add:
-            return [...state, listBoxReducer(undefined, action)];
+            const index = state.findIndex((element) => element.id === action.payload.id);
+            // do not add to the state if it is already present
+            if (index === -1) {
+                return [...state, listBoxReducer(undefined, action)];
+            }
+            return state;
         case ListBoxActions.remove:
             return _.reject(state, (listBox: IListBoxState) => action.payload.id === listBox.id);
         case ListBoxActions.clear:

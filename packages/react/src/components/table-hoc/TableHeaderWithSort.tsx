@@ -23,6 +23,9 @@ export interface HOCTableHeaderStateProps {
 
 export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps, Partial<HOCTableHeaderStateProps> {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableHeaderWithSort: FunctionComponent<
     ITableHeaderWithSortProps & HTMLAttributes<HTMLTableHeaderCellElement>
 > = ({className, isLoading, id, tableId, isDefault, children}) => {

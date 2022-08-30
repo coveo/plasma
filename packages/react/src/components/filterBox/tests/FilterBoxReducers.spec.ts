@@ -107,6 +107,24 @@ describe('FilterBox', () => {
             expect(filtersState.filter((timer) => timer.id === action.payload.id).length).toBe(0);
         });
 
+        it('does not add a duplicate ID in the state', () => {
+            const oldState: IFilterState[] = filtersInitialState;
+            const action: IReduxAction<IFilterActionPayload> = {
+                type: FilterActions.addFilter,
+                payload: {
+                    id: 'some-filter',
+                },
+            };
+            const newState: IFilterState[] = filterBoxesReducer(oldState, action);
+
+            expect(newState.length).toBe(1); // oldState length is 0.
+            expect(newState[0].id).toBe('some-filter');
+
+            const newNewState: IFilterState[] = filterBoxesReducer(newState, action); // trying to add the same id again
+
+            expect(newNewState.length).toBe(1); // length didn't change
+        });
+
         it('should update the filter text of a filter box when the action is "FilterActions.filterThrough"', () => {
             const oldState: IFilterState[] = [
                 {

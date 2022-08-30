@@ -39,6 +39,9 @@ const FlippablePropsToOmit = [
     'onUnflip',
 ];
 
+/**
+ * @deprecated Don't use
+ */
 export class Flippable extends Component<IFlippableProps & HTMLProps<HTMLDivElement>, any> {
     static CONTAINER_CLASSNAME: string = 'flippable';
     static FLIPPER_CLASSNAME: string = 'flipper';

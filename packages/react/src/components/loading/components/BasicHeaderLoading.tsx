@@ -1,5 +1,8 @@
 import {BasicHeader} from '../../headers/BasicHeader';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const BasicHeaderLoading = () => (
     <BasicHeader
         title={{

@@ -8,6 +8,9 @@ export interface IMultiSelectDropdownSearchProps extends IDropdownSearchProps {
     selectedOptions: IDropdownOption[];
 }
 
+/**
+ * @deprecated use Mantine instead
+ */
 export class MultiSelectDropdownSearch extends DropdownSearch {
     static defaultProps: IMultiSelectDropdownSearchProps = {
         ...DropdownSearch.defaultProps,

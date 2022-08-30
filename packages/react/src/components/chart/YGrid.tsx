@@ -7,6 +7,9 @@ export interface YGridProps {
     color?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const YGrid: FunctionComponent<YGridProps> = ({padding = 0, color = 'rgba(0,0,0,0.2)'}) => {
     const context = useContext(XYChartContext);
     const {xDomain, xScale, yScale, yTicksCount} = context;

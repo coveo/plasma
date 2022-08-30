@@ -52,6 +52,9 @@ interface TextInputProps {
     defaultValue?: string;
 }
 
+/**
+ * @deprecated Use Mantine Textinput instead: https://mantine.dev/core/text-input/
+ */
 export const TextInput: FunctionComponent<
     TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>
 > = ({

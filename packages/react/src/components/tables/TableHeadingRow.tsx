@@ -33,6 +33,9 @@ export interface ITableHeadingRowProps
         ITableHeadingRowStateProps,
         ITableHeadingRowDispatchProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class TableHeadingRow extends Component<ITableHeadingRowProps, any> {
     componentDidMount() {
         this.props.onRender?.();

@@ -136,6 +136,9 @@ class PaginationPagesNumberDisconnected extends Component<IPaginationPagesNumber
     }
 }
 
+/**
+ * @deprecated Use Mantine instead: https://mantine.dev/core/pagination/
+ */
 export const PaginationPagesNumber = connect<
     ReturnType<typeof mapStateToProps>,
     ReturnType<typeof mapDispatchToProps>,

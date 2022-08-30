@@ -8,6 +8,9 @@ export interface IBlankSlateWithTableProps extends IBlankSlateProps {
     blankSlateCellClassName?: string;
 }
 
+/**
+ * @deprecated Use Plasmantine Blank-slate instead
+ */
 export const blankSlateWithTable = <P extends IBlankSlateProps>(
     Component: ComponentType<P>
 ): ComponentClass<IBlankSlateWithTableProps & P> => {

@@ -32,6 +32,9 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
     const headingAndCollapsibleId = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_HEADING_ROW)}${
         props.rowData.id

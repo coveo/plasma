@@ -4,6 +4,9 @@ import {Action, IBasicActionProps} from './Action';
 
 export interface ILinkActionProps extends ClassAttributes<LinkAction>, IBasicActionProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class LinkAction extends Component<ILinkActionProps> {
     render() {
         const actionClasses: string = classNames({

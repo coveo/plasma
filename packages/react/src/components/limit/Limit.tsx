@@ -54,6 +54,9 @@ export interface LimitOwnProps {
     onHistoryIconClick?: () => void;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const Limit: FunctionComponent<LimitOwnProps> = (props) => {
     const {currentLimit} = useSelector((state: PlasmaState) => ({
         currentLimit: +InputSelectors.getValue(state, {id: props.id}) || props.limit,

@@ -56,9 +56,7 @@ export interface IReduxAction<T = Record<string, unknown>> extends Redux.Action 
 }
 
 export interface IReduxProps {
-    dispatch?: (
-        action: IReduxAction<any> | JQueryDeferred<any> | JQueryXHR | ((dispatch: Redux.Dispatch<any>) => void)
-    ) => void;
+    dispatch?: (action: IReduxAction<any> | ((dispatch: Redux.Dispatch<any>) => void)) => void;
 }
 
 export interface IReduxStatePossibleProps {

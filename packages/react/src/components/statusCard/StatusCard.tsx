@@ -13,6 +13,9 @@ export interface StatusCardProps {
     loading?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine Card instead: https://mantine.dev/core/card/
+ */
 export class StatusCard extends Component<StatusCardProps> {
     render() {
         const cardClasses: string = classNames('status-card px3 flex flex-center', this.props.className, {

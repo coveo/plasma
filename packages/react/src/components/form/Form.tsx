@@ -10,6 +10,9 @@ export interface IFormProps {
     noMargin?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/
+ */
 export const Form: FunctionComponent<IFormProps> = ({children, className, title, mods, noMargin}) => {
     const onSubmit = (submitEvent: FormEvent) => {
         submitEvent.preventDefault();

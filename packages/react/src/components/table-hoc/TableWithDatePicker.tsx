@@ -40,6 +40,9 @@ export type FilterableTableComponent = ComponentClass<ITableWithDatePickerProps>
 
 const defaultMatchDates = () => true;
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePickerConfig> = {}) => (
     WrappedComponent: FilterableTableComponent
 ): FilterableTableComponent => {

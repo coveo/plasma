@@ -1,4 +1,4 @@
-// DEPRECATED!!! Replaced by collapsible.js from Dogfalo/materialize
+// DEPRECATED!!!
 
 /* ========================================================================
  * Bootstrap: transition.js v3.3.5

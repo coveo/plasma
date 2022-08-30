@@ -59,6 +59,9 @@ const mapDispatchToProps = (
         dispatch(updateOptionsDropdownSearch(ownProps.id, options, undefined, false)),
 });
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const MultiSelectDropdownSearchConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

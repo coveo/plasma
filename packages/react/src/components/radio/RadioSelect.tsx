@@ -81,6 +81,9 @@ export interface IRadioSelectAllProps
         IRadioSelectDispatchProps,
         IRadioSelectStateProps {}
 
+/**
+ * @deprecated Use Mantine Radio instead
+ */
 export class RadioSelect extends PureComponent<IRadioSelectAllProps> {
     static defaultProps: Partial<IRadioSelectAllProps> = {
         disabled: false,

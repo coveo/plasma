@@ -95,12 +95,13 @@ describe('CodeEditor', () => {
 
         await screen.findByRole('textbox');
 
-        expect(updateSpy).toHaveBeenCalledTimes(1);
+        expect(updateSpy).toHaveBeenCalled();
 
+        updateSpy.mockClear();
         userEvent.type(screen.getByRole('textbox'), 'new value');
         screen.getByRole('textbox').blur();
 
-        expect(updateSpy).toHaveBeenCalledTimes(2);
+        expect(updateSpy).toHaveBeenCalledTimes(1);
     });
 
     it('removes the code editor from the store on unmount if mounted with an id', () => {

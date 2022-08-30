@@ -69,6 +69,9 @@ interface BadgeWithIconProps extends BadgeBasicProps {
 }
 export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithLabelProps & BadgeWithIconProps);
 
+/**
+ * @deprecated Use Mantine Badge instead: https://mantine.dev/core/badge/
+ */
 export class Badge extends Component<IBadgeProps> {
     static defaultProps: IBadgeProps = {
         extraClasses: [],

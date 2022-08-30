@@ -1,3 +1,180 @@
+# 46.0.0 (2022-08-30)
+
+
+### chore
+
+* p$ (dep, materialize-css) removing from project ([#2832](https://github.com/coveo/plasma/issues/2832)) ([7a0387d](https://github.com/coveo/plasma/commits/7a0387d82d08434fc619a7adecd3a52300b14245))
+
+
+### BREAKING CHANGES
+
+* p'( removing materialise-css as dependencies
+
+
+
+## 45.4.7 (2022-08-29)
+
+
+
+## 45.4.6 (2022-08-24)
+
+
+
+## 45.4.5 (2022-08-24)
+
+
+
+## 45.4.4 (2022-08-23)
+
+
+
+## 45.4.3 (2022-08-22)
+
+
+
+## 45.4.2 (2022-08-22)
+
+
+### Bug Fixes
+
+* p (select) select id are added only once in redux state ([#2820](https://github.com/coveo/plasma/issues/2820)) ([e194fb9](https://github.com/coveo/plasma/commits/e194fb90f9632382f80edc94a34dd0fe64c8aa13))
+
+
+
+## 45.4.1 (2022-08-18)
+
+
+### Bug Fixes
+
+* **style:** inputs style remove border radius ([#2821](https://github.com/coveo/plasma/issues/2821)) ([ed9ec2b](https://github.com/coveo/plasma/commits/ed9ec2b8274683f32b65e3df8f9cc1e078158643))
+
+
+
+# 45.4.0 (2022-08-16)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries ([#2819](https://github.com/coveo/plasma/issues/2819)) ([193ee21](https://github.com/coveo/plasma/commits/193ee2183c5cb78c64a7596f86cbdd3e37edf1da))
+
+
+
+## 45.3.3 (2022-08-16)
+
+
+
+## 45.3.2 (2022-08-16)
+
+
+### Bug Fixes
+
+* **loadable:** export the component ([#2817](https://github.com/coveo/plasma/issues/2817)) ([96cb14e](https://github.com/coveo/plasma/commits/96cb14e2f5b6768b26137316c94463438c31d5d6))
+
+
+
+## 45.3.1 (2022-08-15)
+
+
+### Bug Fixes
+
+* p adding a fallback when maxWidth is a NaN ([#2816](https://github.com/coveo/plasma/issues/2816)) ([8971733](https://github.com/coveo/plasma/commits/897173370e2a1c87af522868296077670f189c8e))
+
+
+
+# 45.3.0 (2022-08-08)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries ([#2815](https://github.com/coveo/plasma/issues/2815)) ([7f38843](https://github.com/coveo/plasma/commits/7f388431bdc6a1c6327e48c1b8836b7a41e94efa))
+
+
+
+## 45.2.1 (2022-08-05)
+
+
+### Bug Fixes
+
+* **infotoken:** allow passing classes to override svg properties ([#2811](https://github.com/coveo/plasma/issues/2811)) ([6f469c4](https://github.com/coveo/plasma/commits/6f469c40b102108a26ba8580dd30e2851c7abc92))
+
+
+
+# 45.2.0 (2022-08-04)
+
+
+### Features
+
+* **style, source:** Remove Exchange svg - CTCORE-8709 ([#2812](https://github.com/coveo/plasma/issues/2812)) ([31bc066](https://github.com/coveo/plasma/commits/31bc0668731aae6e8795ab024450883249b21591))
+
+
+
+## 45.1.1 (2022-07-26)
+
+
+
+# 45.1.0 (2022-07-26)
+
+
+### Features
+
+* p8 itembox ([#2808](https://github.com/coveo/plasma/issues/2808)) ([70f4d4b](https://github.com/coveo/plasma/commits/70f4d4bf0d42144bdafc028f1626c9b6b77bf8da))
+
+
+
+## 45.0.4 (2022-07-25)
+
+
+
+## 45.0.3 (2022-07-25)
+
+
+### Bug Fixes
+
+* **svg:** added xmlns attribute to some sources svg ([#2806](https://github.com/coveo/plasma/issues/2806)) ([9820630](https://github.com/coveo/plasma/commits/982063091a6b92863356dd35372798ee9cc80e0d))
+
+
+
+## 45.0.2 (2022-07-22)
+
+
+### Bug Fixes
+
+* **react, single select:** memoize the button ([#2809](https://github.com/coveo/plasma/issues/2809)) ([a837e0a](https://github.com/coveo/plasma/commits/a837e0adcf5f77f2ed9e016e15bf5ce3f7d09b52))
+
+
+
+## 45.0.1 (2022-07-20)
+
+
+### Bug Fixes
+
+* **react, single select:** call onSelectOptionCallback if there is a selected option ([#2805](https://github.com/coveo/plasma/issues/2805)) ([d9003ea](https://github.com/coveo/plasma/commits/d9003eaf16d55d2c9cd3b579741b7f375b8cdb6c))
+
+
+
+# 45.0.0 (2022-07-19)
+
+
+### Features
+
+* **react:** remove chosen-js and jquery ([#2804](https://github.com/coveo/plasma/issues/2804)) ([046043a](https://github.com/coveo/plasma/commits/046043a80109bf2542cbe242768b586dd613108a))
+
+
+### BREAKING CHANGES
+
+* **react:** ChosenSelect was removed, use SingleSelectConnected instead
+
+
+
+# 44.2.0 (2022-07-19)
+
+
+### Features
+
+* **react, loadable:** create loadable to lazy load component ([#2803](https://github.com/coveo/plasma/issues/2803)) ([db3e99c](https://github.com/coveo/plasma/commits/db3e99ce598b9885d7c61117f9c850b5cd8785cf))
+
+
+
 ## 44.1.1 (2022-07-15)
 
 

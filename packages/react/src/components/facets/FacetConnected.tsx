@@ -32,4 +32,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onClearFacet: (facet: string) => dispatch(emptyFacet(facet)),
 });
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const FacetConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Facet);

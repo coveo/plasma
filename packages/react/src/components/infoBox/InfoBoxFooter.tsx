@@ -1,6 +1,9 @@
 import classNames from 'classnames';
 import {HTMLProps, PureComponent} from 'react';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class InfoBoxFooter extends PureComponent<HTMLProps<HTMLDivElement>> {
     render() {
         return (

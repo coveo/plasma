@@ -31,6 +31,9 @@ const mapDispatchToProps = (
     onClickItem: (itemId) => dispatch(selectSubNavigation(ownProps.id, itemId)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const SubNavigationConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

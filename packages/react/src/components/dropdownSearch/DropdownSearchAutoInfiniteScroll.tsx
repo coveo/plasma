@@ -19,6 +19,9 @@ interface IDropdownSearchAutoInfiniteScrollState {
     activeOptions: JSX.Element[];
 }
 
+/**
+ * @deprecated use Mantine instead
+ */
 export class DropdownSearchAutoInfiniteScroll extends Component<
     IDropdownSearchAutoInfiniteScrollProps,
     IDropdownSearchAutoInfiniteScrollState

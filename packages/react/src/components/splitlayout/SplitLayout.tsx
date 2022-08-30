@@ -32,6 +32,9 @@ export interface ISplitLayoutProps {
     mods?: SplitLayoutMods | SplitLayoutMods[];
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const SplitLayout: FunctionComponent<ISplitLayoutProps> = ({
     className,
     mods,

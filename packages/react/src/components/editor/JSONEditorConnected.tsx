@@ -13,6 +13,9 @@ interface JSONEditorConnectedProps {
     defaultValue?: string;
 }
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const JSONEditorConnected = (props: JSONEditorProps & JSONEditorConnectedProps) => {
     const dispatch: IDispatch = useDispatch();
     const value = useSelector((state) => JSONEditorSelectors.getValue(state, props.id));

@@ -213,9 +213,12 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
             // Restrict the max-width to the inner width of the closest relatively positioned ancestor
             if (relativeParent) {
                 const {paddingLeft, paddingRight} = getComputedStyle(relativeParent) ?? {};
+                const fallbackMaxWidth = 850;
+                const calculatedMaxWidth = parentOffset.width - (parseFloat(paddingLeft) + parseFloat(paddingRight));
+                const maxWidth = isNaN(calculatedMaxWidth) ? fallbackMaxWidth : calculatedMaxWidth;
                 newDomPosition.style = {
                     ...newDomPosition.style,
-                    maxWidth: parentOffset.width - (parseFloat(paddingLeft) + parseFloat(paddingRight)),
+                    maxWidth: maxWidth,
                 };
 
                 // Don't show if no space to render the drop target inside the window
@@ -249,6 +252,9 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
     return ReactDOM.createPortal(drop, dropElement);
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const DropPod: ForwardRefExoticComponent<
     IDropPodProps & RefAttributes<HTMLElement>
 > = forwardRef((props: IDropPodProps, ref: RefObject<HTMLElement>) => <RDropPod {...props} buttonRef={ref} />);

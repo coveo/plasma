@@ -91,6 +91,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps)
     onReorder: (values: string[]) => dispatch(reorderListBoxOption(ownProps.id, values)),
 });
 
+/**
+ * @deprecated Use Mantine MultiSelect instead: https://mantine.dev/core/multi-select/
+ */
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
 class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: any}> {
     static defaultProps: Partial<IMultiSelectProps> = {
@@ -249,4 +252,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
     }
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const MultiSelectConnected: ComponentType<IMultiSelectOwnProps> = MultiSelect;

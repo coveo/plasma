@@ -21,6 +21,9 @@ const defaultContainerNode = (child: ReactNode, data: IMultilineSingleBoxProps[]
     <div key={`${(data.length && data[index].id) || index}Container`}>{child}</div>
 );
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const multilineBoxContainer = (
     supplier: ConfigSupplier<IMultilineBoxContainerSupplierProps> = {containerNode: defaultContainerNode}
 ) => (Component: typeof MultilineBox): typeof MultilineBox => {
