@@ -1,3 +1,12 @@
+## 46.0.1 (2022-08-31)
+
+
+### Bug Fixes
+
+* **datepickerreducer:** removed appliedLower and UpperLimit to ternary operator ([#2831](https://github.com/coveo/plasma/issues/2831)) ([e78f71b](https://github.com/coveo/plasma/commits/e78f71b17751f8e217be3ee1babf531a08e9e7d6))
+
+
+
 # 46.0.0 (2022-08-30)
 
 
