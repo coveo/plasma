@@ -58,6 +58,9 @@ export interface IListBoxDispatchProps {
 
 export interface IListBoxProps extends IListBoxOwnProps, IListBoxStateProps, IListBoxDispatchProps {}
 
+/**
+ * @deprecated Use Mantine Menu instead: https://mantine.dev/core/menu/
+ */
 export class ListBox extends Component<IListBoxProps> {
     static defaultProps: Partial<IListBoxProps> = {
         noResultItem: {
@@ -76,7 +79,7 @@ export class ListBox extends Component<IListBoxProps> {
     }
 
     private getClasses(): string {
-        return classNames('relative', this.props.classes);
+        return classNames('list-box relative', {'list-box-with-footer': this.props.footer}, this.props.classes);
     }
 
     protected getItems(): ReactNode {

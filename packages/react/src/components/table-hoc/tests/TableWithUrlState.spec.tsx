@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithStore} from '@test-utils';
 import {compose} from 'underscore';
 
 import {getStoreMock, TestUtils} from '../../../utils/tests/TestUtils';
@@ -22,6 +22,7 @@ import {tableWithPredicate} from '../TableWithPredicate';
 import {tableWithSort} from '../TableWithSort';
 import {tableWithUrlState} from '../TableWithUrlState';
 import {TableHOCUtils} from '../utils/TableHOCUtils';
+import {selectFlatSelect} from '../../flatSelect';
 
 describe('Table HOC', () => {
     describe('tableWithUrlState', () => {
@@ -128,6 +129,7 @@ describe('Table HOC', () => {
                     .dive();
 
                 expect(store.getActions()).toContainEqual(changePerPage('💎', 3));
+                expect(store.getActions()).toContainEqual(selectFlatSelect('💎_PerPage', '3'));
             });
         });
 

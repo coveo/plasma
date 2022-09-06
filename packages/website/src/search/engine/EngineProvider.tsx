@@ -1,4 +1,4 @@
-import {loadFieldActions} from '@coveo/headless';
+import {loadFieldActions} from '@coveo/atomic-react';
 import {FunctionComponent, useEffect} from 'react';
 
 import {searchEngine} from './Engine';

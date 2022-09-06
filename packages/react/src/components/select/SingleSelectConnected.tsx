@@ -1,14 +1,13 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ComponentType, FunctionComponent, MouseEvent, PureComponent, ReactNode} from 'react';
-import {connect} from 'react-redux';
+import {ReactNode, ComponentType, FunctionComponent, MouseEvent, useEffect, useMemo} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
 import {TooltipPlacement} from '../../utils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch} from '../../utils/ReduxUtils';
-import {CollapsibleToggle} from '../collapsible';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption} from '../listBox/ListBoxActions';
@@ -65,123 +64,110 @@ const selectPropsKeys = [
     'wrapItems',
 ];
 
-export type ISingleSelectProps = ISingleSelectOwnProps &
-    ReturnType<typeof mapDispatchToProps> &
-    ReturnType<typeof mapStateToProps>;
+export type ISingleSelectProps = ISingleSelectOwnProps;
 
-const mapStateToProps = (state: PlasmaState, ownProps: ISingleSelectOwnProps) => {
-    const customSelected = SelectSelector.getListState(state, ownProps);
-    return {
-        selectedOption: customSelected.length
-            ? customSelected[customSelected.length - 1]
-            : SelectSelector.getListBoxSelected(state, ownProps)[0],
+/**
+ * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
+ */
+export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
+    placeholder = 'Select an option',
+    deselectTooltipText = 'Deselect',
+    ...props
+}) => {
+    const dispatch: IDispatch = useDispatch();
+
+    const {customSelected, defaultSelected} = useSelector((state: PlasmaState) => ({
+        customSelected: SelectSelector.getListState(state, props),
+        defaultSelected: SelectSelector.getListBoxSelected(state, props)[0],
+    }));
+
+    const selectedOption = customSelected.length ? customSelected[customSelected.length - 1] : defaultSelected;
+
+    const handleDeselect = (e: MouseEvent) => {
+        e.stopPropagation();
+        if (!props.disabled) {
+            dispatch(clearListBoxOption(props.id));
+        }
     };
+
+    useEffect(() => {
+        if (selectedOption) {
+            props.onSelectOptionCallback?.(selectedOption);
+        }
+    }, [selectedOption]);
+
+    const Toggle: FunctionComponent<ISelectButtonProps> = useMemo(
+        () => ({onClick, onKeyDown, onKeyUp, selectedOptions, isOpen}) => {
+            const option = selectedOptions[0];
+            const showClear = !!option && props.canClear && !props.disabled;
+            const buttonClasses = classNames('btn dropdown-toggle', props.toggleClasses, {
+                'dropdown-toggle-placeholder': !option,
+                'single-select-fixed-width': !props.noFixedWidth,
+                'mod-append': showClear,
+            });
+
+            return (
+                <button
+                    className={buttonClasses}
+                    type="button"
+                    onClick={onClick}
+                    onKeyDown={onKeyDown}
+                    onKeyUp={onKeyUp}
+                    disabled={props.disabled}
+                >
+                    {props.buttonPrepend}
+                    {option?.prepend ? <Content {...option.prepend} /> : null}
+                    <SelectedOption option={option} placeholder={placeholder} />
+                    {option?.append ? <Content {...option.append} /> : null}
+                    <Svg
+                        svgName={isOpen ? svg.chartUp.name : svg.chartDown.name}
+                        svgClass={classNames('icon dropdown-toggle-arrow-size', {
+                            'dropdown-toggle-arrow-style': !showClear,
+                        })}
+                    />
+                    {showClear && (
+                        <Tooltip title={deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
+                            <button onClick={handleDeselect} className="btn-append cursor-pointer">
+                                <CrossSize16Px height={16} />
+                            </button>
+                        </Tooltip>
+                    )}
+                </button>
+            );
+        },
+        [props.canClear, props.disabled, props.toggleClasses, props.noFixedWidth, props.buttonPrepend]
+    );
+
+    return (
+        <SelectConnected
+            {..._.pick(props, selectPropsKeys)}
+            placeholder={placeholder}
+            button={props.customButton ?? Toggle}
+            isLoading={props.isLoading}
+        >
+            {props.children}
+        </SelectConnected>
+    );
 };
 
-const mapDispatchToProps = (dispatch: IDispatch, {id}: ISingleSelectOwnProps) => ({
-    deselect: () => dispatch(clearListBoxOption(id)),
-});
-
-class SingleSelect extends PureComponent<ISingleSelectProps> {
-    static defaultProps = {
-        placeholder: 'Select an option',
-        deselectTooltipText: 'Deselect',
-    };
-
-    componentDidUpdate(prevProps: ISingleSelectProps) {
-        if (prevProps.selectedOption !== this.props.selectedOption) {
-            this.props.onSelectOptionCallback?.(this.props.selectedOption);
-        }
-    }
-
-    render() {
+const SelectedOption: FunctionComponent<{placeholder: string; option: IItemBoxProps}> = ({
+    option,
+    placeholder,
+}): JSX.Element => {
+    if (option) {
+        const displayValue =
+            option.selectedDisplayValue || getReactNodeTextContent(option.displayValue) || option.value;
         return (
-            <SelectConnected
-                {..._.pick(this.props, selectPropsKeys)}
-                button={this.props.customButton ?? this.Toggle}
-                isLoading={this.props.isLoading}
+            <span
+                key={option.value}
+                className="dropdown-selected-value flex-auto left-align"
+                data-value={option.value}
+                title={displayValue}
             >
-                {this.props.children}
-            </SelectConnected>
+                {displayValue}
+            </span>
         );
     }
 
-    private Toggle: FunctionComponent<ISelectButtonProps> = ({
-        onClick,
-        onKeyDown,
-        onKeyUp,
-        selectedOptions,
-        isOpen,
-    }) => {
-        const option = selectedOptions[0];
-        const showClear = !!option && this.props.canClear && !this.props.disabled;
-        const buttonClasses = classNames('btn dropdown-toggle space-between', this.props.toggleClasses, {
-            'dropdown-toggle-placeholder': !option,
-            'single-select-fixed-width': !this.props.noFixedWidth,
-            'mod-append': showClear,
-        });
-
-        return (
-            <button
-                className={buttonClasses}
-                type="button"
-                onClick={onClick}
-                onKeyDown={onKeyDown}
-                onKeyUp={onKeyUp}
-                disabled={this.props.disabled}
-            >
-                {this.props.buttonPrepend}
-                {option?.prepend ? <Content {...option.prepend} /> : null}
-                {this.getSelectedOptionElement(option)}
-                {option?.append ? <Content {...option.append} /> : null}
-                <CollapsibleToggle expanded={isOpen} />
-                {showClear && this.getDeselectOptionButton()}
-            </button>
-        );
-    };
-
-    private getSelectedOptionElement(option: IItemBoxProps): JSX.Element {
-        if (option) {
-            const displayValue =
-                option.selectedDisplayValue || getReactNodeTextContent(option.displayValue) || option.value;
-            return (
-                <span
-                    key={option.value}
-                    className="dropdown-selected-value flex-auto left-align"
-                    data-value={option.value}
-                    title={displayValue}
-                >
-                    {displayValue}
-                </span>
-            );
-        }
-
-        return <span className="dropdown-no-value">{this.props.placeholder}</span>;
-    }
-
-    private getDeselectOptionButton(): ReactNode {
-        return (
-            <Tooltip title={this.props.deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
-                <button onClick={this.handleDeselect} className="btn-append cursor-pointer">
-                    <CrossSize16Px height={16} />
-                </button>
-            </Tooltip>
-        );
-    }
-
-    private handleDeselect = (e: MouseEvent) => {
-        e.stopPropagation();
-        if (!this.props.disabled) {
-            this.props.deselect();
-        }
-    };
-}
-
-export const SingleSelectConnected = connect<
-    ReturnType<typeof mapStateToProps>,
-    ReturnType<typeof mapDispatchToProps>,
-    ISingleSelectOwnProps
->(
-    mapStateToProps,
-    mapDispatchToProps
-)(SingleSelect as any);
+    return <span className="dropdown-no-value">{placeholder}</span>;
+};

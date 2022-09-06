@@ -3,6 +3,9 @@ import {ComponentClass, PureComponent} from 'react';
 
 import {IBlankSlateProps} from './BlankSlate';
 
+/**
+ * @deprecated Use Plasmantine Blank-slate instead
+ */
 export const blankSlateWithError = (Component: ComponentClass<IBlankSlateProps>): ComponentClass<IBlankSlateProps> => {
     class BlankSlateWithErrorComponent extends PureComponent<IBlankSlateProps> {
         render() {

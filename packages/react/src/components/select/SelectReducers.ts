@@ -31,7 +31,12 @@ export const selectCompositeReducer = (
 ): ISelectState[] => {
     switch (action.type) {
         case SelectActions.add:
-            return [...state, selectReducer(undefined, action)];
+            const index = state.findIndex((element) => element.id === action.payload.id);
+            // do not add to the state if it is already present
+            if (index === -1) {
+                return [...state, selectReducer(undefined, action)];
+            }
+            return state;
         case SelectActions.remove:
             return _.reject(state, (listBox: ISelectState) => action.payload.id === listBox.id);
         default:

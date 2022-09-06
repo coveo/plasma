@@ -52,6 +52,9 @@ const SideNavigationHeader: FunctionComponent<
     </div>
 );
 
+/**
+ * @deprecated Use Mantine NavLink instead: https://mantine.dev/core/nav-link/
+ */
 export const SideNavigationMenuSection: FunctionComponent<ISideNavigationSectionProps> = ({
     expandable,
     expanded,

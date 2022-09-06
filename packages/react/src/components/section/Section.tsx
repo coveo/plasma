@@ -28,6 +28,9 @@ export interface ISectionProps {
     level?: 1 | 2 | 3;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const Section: FunctionComponent<ISectionProps> = ({
     children,
     title,

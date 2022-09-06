@@ -14,6 +14,9 @@ export interface ITitleProps {
     htmlId?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const Title: FunctionComponent<ITitleProps> = (props) => {
     const ref = useRef<HTMLHeadingElement>();
 

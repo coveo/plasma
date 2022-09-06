@@ -1,3 +1,5 @@
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
@@ -425,6 +427,19 @@ describe('Date picker', () => {
 
                 expect(datePickerDropdown.find(DatePickerBox).props().withReduxState).toBe(true);
             });
+        });
+
+        it('goes to the next month when clicking on the next month arrow', () => {
+            jest.useFakeTimers().setSystemTime(new Date(2000, 0, 1));
+
+            render(<DatePickerDropdownConnected id={'dropdown'} datesSelectionBoxes={[]} />);
+
+            userEvent.click(screen.getAllByRole('button', {name: /arrowrightrounded/i})[0]);
+
+            expect(screen.getByText(/february/i)).toBeVisible();
+            expect(screen.getByText(/2000/i)).toBeVisible();
+
+            jest.useRealTimers();
         });
     });
 });

@@ -91,7 +91,7 @@ export interface IDropdownSearchProps
         IDropdownSearchDispatchProps {}
 
 /**
- * @deprecated use components from SelectComponents instead
+ * @deprecated use Mantine instead
  */
 export class DropdownSearch extends Component<IDropdownSearchProps> {
     static defaultProps: Partial<IDropdownSearchProps> = {

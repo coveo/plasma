@@ -38,6 +38,9 @@ export interface IActionableItemProps {
     dropProps?: Partial<IDropOwnProps>;
 }
 
+/**
+ * @deprecated Use Mantine Menu instead: https://mantine.dev/core/menu/
+ */
 export const ActionableItem: FunctionComponent<IActionableItemProps> = ({
     id,
     className,

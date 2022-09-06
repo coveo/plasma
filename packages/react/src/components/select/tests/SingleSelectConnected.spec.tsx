@@ -207,6 +207,7 @@ describe('Select', () => {
 
             userEvent.click(screen.getByText('to select value'));
 
+            expect(onSelectOptionCallbackSpy).toHaveBeenCalledTimes(1);
             expect(onSelectOptionCallbackSpy).toHaveBeenCalledWith('b');
         });
         describe('keyboard events', () => {

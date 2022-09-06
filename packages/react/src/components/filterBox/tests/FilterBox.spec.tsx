@@ -7,7 +7,7 @@ import {FilterBox, FILTER_PLACEHOLDER, IFilterBoxProps} from '../FilterBox';
 describe('<FilterBox />', () => {
     let filterBox: ReactWrapper<IFilterBoxProps, any>;
 
-    it('render a filter box', () => {
+    it('renders a filter box', () => {
         render(<FilterBox />);
 
         expect(screen.getByRole('textbox')).toBeInTheDocument();

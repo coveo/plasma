@@ -18,4 +18,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IPopoverProps): IPopo
     onUnmount: () => dispatch(removePopover(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine Popover instead: https://mantine.dev/core/popover/
+ */
 export const PopoverConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Popover);

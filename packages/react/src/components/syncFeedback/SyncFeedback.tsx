@@ -27,6 +27,9 @@ export const DEFAULT_SYNC_FEEDBACK_SYNCING_LABEL: string = 'Saving changes...';
 export const DEFAULT_SYNC_FEEDBACK_SUCCESS_LABEL: string = 'Changes saved.';
 export const DEFAULT_SYNC_FEEDBACK_ERROR_LABEL: string = 'Changes could not be saved.';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class SyncFeedback extends PureComponent<ISyncFeedbackProps> {
     render() {
         const classes = ['sync-feedback'];

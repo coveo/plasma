@@ -1,4 +1,4 @@
-import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithState, shallowWithStore} from '@test-utils';
 import {render, screen} from '@test-utils';
 import {ShallowWrapper} from 'enzyme';
 import {ReactNode} from 'react';

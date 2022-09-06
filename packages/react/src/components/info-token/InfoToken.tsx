@@ -46,6 +46,7 @@ export interface InfoTokenProps {
     type: InfoTokenType;
     size: InfoTokenSize;
     mode: InfoTokenMode;
+    svgClassName?: string;
     className?: string;
 }
 
@@ -102,6 +103,9 @@ const ModeMapping: Record<InfoTokenMode, string> = {
     [InfoTokenMode.Filled]: 'filled',
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const InfoToken: FunctionComponent<InfoTokenProps> = ({mode, size, type, className}) => {
     const IconComponent = IconMapping[type][size];
     return (

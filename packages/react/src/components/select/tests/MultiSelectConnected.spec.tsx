@@ -281,6 +281,46 @@ describe('Select', () => {
                 expect(listitems.length).toBe(1);
                 expect(listitems[0]).toHaveTextContent('🥔');
             });
+
+            it('does not allow to drag items across different multi selects', () => {
+                render(
+                    <>
+                        <MultiSelectConnected
+                            id="fruits"
+                            items={[
+                                {value: '🍌', selected: true},
+                                {value: '🍊', selected: true},
+                            ]}
+                            sortable
+                        />
+                        ;
+                        <MultiSelectConnected
+                            id="tools"
+                            items={[
+                                {value: '🔨', selected: true},
+                                {value: '🔧', selected: true},
+                            ]}
+                            sortable
+                        />
+                        ;
+                    </>
+                );
+
+                let listitems = screen.getAllByRole('listitem');
+                expect(listitems[0]).toHaveTextContent('🍌');
+                expect(listitems[1]).toHaveTextContent('🍊');
+                expect(listitems[2]).toHaveTextContent('🔨');
+                expect(listitems[3]).toHaveTextContent('🔧');
+
+                const dragIcons = screen.getAllByRole('img', {name: /drag/i});
+                dragAndDrop(dragIcons[1], 2);
+
+                listitems = screen.getAllByRole('listitem');
+                expect(listitems[0]).toHaveTextContent('🍌');
+                expect(listitems[1]).toHaveTextContent('🍊');
+                expect(listitems[2]).toHaveTextContent('🔨');
+                expect(listitems[3]).toHaveTextContent('🔧');
+            });
         });
     });
 });

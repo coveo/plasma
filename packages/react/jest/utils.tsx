@@ -1,4 +1,6 @@
 import {render, RenderOptions, RenderResult} from '@testing-library/react';
+import {mount, shallow} from 'enzyme';
+import {cloneElement, createElement} from 'react';
 import {Provider} from 'react-redux';
 import {AnyAction, applyMiddleware, combineReducers, createStore, Store} from 'redux';
 import promise from 'redux-promise-middleware';
@@ -11,13 +13,11 @@ import {IDispatch} from '../src/utils/ReduxUtils';
 
 const TEST_CONTAINER_ID = 'app';
 const MODAL_ROOT_ID = 'modals';
-const DROP_ROOT_ID = 'dropdowns';
 
 const setup = () => {
-    document.body.innerHTML = `<div id="${TEST_CONTAINER_ID}"></div><div id="${MODAL_ROOT_ID}"></div><div id="${DROP_ROOT_ID}"></div>`;
+    document.body.innerHTML = `<div id="${TEST_CONTAINER_ID}"></div><div id="${MODAL_ROOT_ID}"></div><div id="plasma-dropdowns"></div>`;
     Defaults.APP_ELEMENT = '#' + TEST_CONTAINER_ID;
     Defaults.MODAL_ROOT = '#' + MODAL_ROOT_ID;
-    Defaults.DROP_ROOT = '#' + DROP_ROOT_ID;
     Defaults.MODAL_TIMEOUT = 0;
 };
 
@@ -69,3 +69,24 @@ type JestToErrorArg = Parameters<jest.Matchers<unknown, () => unknown>['toThrow'
 
 export * from '@testing-library/react';
 export {customRender as render, expectToThrow, cleanup, setup};
+
+export const shallowWithStore = (Component: any, store: any) => {
+    const ReactReduxComponent = cloneElement(Component, {store}, null);
+    return shallow(ReactReduxComponent);
+};
+
+export const mountWithStore = (Component: any, store: any, withContext = true) => {
+    const ComponentAlreadyWithProvider = cloneElement(Component, {store}, null);
+    const ReactReduxComponent = createElement(Provider, {store}, Component);
+    return mount(withContext ? ComponentAlreadyWithProvider : ReactReduxComponent);
+};
+
+export const shallowWithState = (Component: any, state: any) => {
+    const store = {
+        getState: () => state,
+        subscribe: () => ({}),
+        dispatch: () => ({}),
+    };
+    const ReactReduxComponent = cloneElement(Component, {store}, null);
+    return shallow(ReactReduxComponent);
+};

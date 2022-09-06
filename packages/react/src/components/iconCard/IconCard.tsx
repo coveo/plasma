@@ -23,7 +23,7 @@ export interface IconCardProps {
     /**
      * The secondary text displayed on the card
      */
-    description?: string;
+    description?: ReactNode;
     /**
      * The icon shown on the left of the card
      */
@@ -74,6 +74,9 @@ export interface IconCardProps {
     cardClassName?: string[];
 }
 
+/**
+ * @deprecated Use Mantine Card instead: https://mantine.dev/core/card/
+ */
 export const IconCard: FunctionComponent<HTMLAttributes<HTMLDivElement> & IconCardProps> = ({
     title,
     badges = [],

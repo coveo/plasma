@@ -303,4 +303,22 @@ describe('IconCard', () => {
         const card = screen.getByRole('button', {name: /title/i});
         expect(card).toHaveClass('mod-fixed-size');
     });
+
+    it('renders the description when its a react node', () => {
+        render(
+            <IconCard
+                title="title"
+                svgChild={svgChild}
+                cardClassName={['mod-fixed-size']}
+                description={
+                    <ul>
+                        <li>Apple</li>
+                        <li>Banana</li>
+                    </ul>
+                }
+            />
+        );
+
+        expect(screen.getAllByRole('listitem')).toHaveLength(2);
+    });
 });

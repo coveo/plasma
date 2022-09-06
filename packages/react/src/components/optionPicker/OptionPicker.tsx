@@ -22,6 +22,9 @@ export interface IOptionPickerProps
         IOptionPickerStateProps,
         IOptionPickerDispatchProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class OptionPicker extends Component<IOptionPickerProps, any> {
     private handleClick(value: string, label: string) {
         if (this.props.onClick) {

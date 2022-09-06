@@ -73,6 +73,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IDropdownSearchOwnPro
     updateOptions: (options: IDropdownOption[]) => dispatch(updateOptionsDropdownSearch(ownProps.id, options)),
 });
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const DropdownSearchConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

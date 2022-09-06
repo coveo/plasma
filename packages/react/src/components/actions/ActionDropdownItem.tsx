@@ -9,6 +9,9 @@ export interface IActionDropdownItemProps {
     parentId?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const ActionDropdownItem: FunctionComponent<IActionDropdownItemProps> = ({parentId, action}) => {
     if (action.separator) {
         return <li className="divider" />;

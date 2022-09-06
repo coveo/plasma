@@ -31,6 +31,9 @@ const mapDispatchToProps = (dispatch: IDispatch, {id, groupId}: IDropOwnProps) =
     toggle: (isOpen?: boolean) => dispatch(DropActions.toggle(id, groupId, isOpen)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class Drop extends PureComponent<IDropProps> {
     private readonly button: RefObject<HTMLDivElement>;

@@ -36,6 +36,9 @@ export interface IMultilineBoxWithDnDProps<T>
         Partial<IMultilineBoxWithDnDDispatchProps>,
         Partial<IMultilineBoxDispatchProps> {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDnDSupplierProps> = {}) => (
     Component: typeof MultilineBox
 ): typeof MultilineBox => {
@@ -74,6 +77,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
                 return (
                     <DnDContainer
                         id={id}
+                        parentId={this.props.id}
                         key={`${id}DnD`}
                         onMoveOver={(draggedId: string) => {
                             // Triggered when another box is dragged over the current box

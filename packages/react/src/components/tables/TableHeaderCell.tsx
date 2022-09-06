@@ -32,8 +32,7 @@ export interface ITableHeaderCellProps
         ITableHeaderCellDispatchProps {}
 
 /**
- * @deprecated since version 22.11.30
- * use TableHeaderWithSort instead
+ * @deprecated Use Mantine instead
  */
 export class TableHeaderCell extends Component<ITableHeaderCellProps, any> {
     static defaultProps: Partial<ITableHeaderCellProps> = {

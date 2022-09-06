@@ -19,6 +19,9 @@ export interface BrowserPreviewProps {
     title?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const BrowserPreview: FunctionComponent<BrowserPreviewProps> = ({children, headerDescription, title}) => (
     <div className="browser-preview flex flex-column">
         <BrowserPreviewHeader tooltipTitle={headerDescription ?? DefaultHeaderDescription} title={title ?? ''} />

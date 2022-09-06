@@ -14,6 +14,9 @@ export interface ILabeledInputProps {
     optionalInformation?: string;
 }
 
+/**
+ * @deprecated Use Mantine Input instead: https://mantine.dev/core/input/
+ */
 export const LabeledInput: FunctionComponent<ILabeledInputProps> = ({
     children,
     label,

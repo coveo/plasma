@@ -13,6 +13,9 @@ export interface PreventNavigationPromptProps {
     onStay: () => void;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const PreventNavigationPrompt = ({
     id,
     title,

@@ -74,6 +74,9 @@ export interface DiffViewerProps extends DiffViewerBlankSlateProps {
     splitView?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const DiffViewer: FunctionComponent<DiffViewerProps> = ({
     difference,
     noChangesLabel,

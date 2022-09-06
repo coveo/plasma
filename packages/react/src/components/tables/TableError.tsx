@@ -19,6 +19,9 @@ export const DESCRIPTION_LABEL: string = 'Description';
 export const TROUBLESHOOTING_LABEL: string = 'Troubleshooting';
 export const ERROR_CODE_LABEL: string = 'Error code';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class TableError extends Component<ITableErrorProps, any> {
     render() {
         const descriptionLabel: string = this.props.descriptionLabel || DESCRIPTION_LABEL;

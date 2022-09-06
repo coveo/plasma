@@ -6,6 +6,9 @@ interface LoadingSpinnerProps {
     className?: string;
 }
 
+/**
+ * @deprecated Use Mantine Loader instead: https://mantine.dev/core/loader/
+ */
 export const LoadingSpinner: FunctionComponent<LoadingSpinnerProps> = ({size = 24, className}) => (
     <div
         role="alert"

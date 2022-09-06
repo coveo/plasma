@@ -21,7 +21,9 @@ export interface WithNonEmptyValueMultiSelectValidationProps {
     nonEmptyValidationMessage?: string;
     resetNonEmptyMultiSelectErrorOnUnmount?: boolean;
 }
-
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
     type NewOwnProps = T & WithNonEmptyValueMultiSelectValidationProps;
     type StateProps = ReturnType<typeof mapStateToProps>;

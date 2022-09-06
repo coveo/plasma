@@ -115,6 +115,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps) =>
     };
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttributes<HTMLTableRowElement>> {
     static defaultProps: Partial<ITableRowOwnProps>;

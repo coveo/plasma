@@ -32,6 +32,9 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps {
     hasPadding?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class HeaderWrapper extends Component<IHeaderWrapperProps> {
     static defaultProps: Partial<IHeaderWrapperProps> = {
         hasBorderBottom: true,

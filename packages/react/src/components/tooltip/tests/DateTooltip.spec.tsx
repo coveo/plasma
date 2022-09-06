@@ -1,6 +1,5 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import moment from 'moment';
-import * as _ from 'underscore';
 import {DateTooltip, DateTooltipsProps} from '../DateTooltip';
 import {Tooltip} from '../Tooltip';
 

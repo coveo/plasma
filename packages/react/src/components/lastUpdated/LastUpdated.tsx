@@ -43,6 +43,9 @@ export interface ILastUpdatedProps extends ILastUpdatedOwnProps, ILastUpdatedSta
 
 export const LAST_UPDATE_LABEL: string = 'Last update:';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class LastUpdated extends PureComponent<ILastUpdatedProps> {
     componentDidMount() {
         if (this.props.onRender) {

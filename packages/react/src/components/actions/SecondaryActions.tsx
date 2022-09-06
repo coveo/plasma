@@ -12,6 +12,9 @@ export interface ISecondaryActionsProps {
     disabled?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const SecondaryActions: FunctionComponent<ISecondaryActionsProps> = ({
     actions,
     id,
@@ -59,6 +62,6 @@ export const SecondaryActions: FunctionComponent<ISecondaryActionsProps> = ({
 };
 
 /**
- * @deprecated use SecondaryActions directly
+ * @deprecated Use Mantine instead
  */
 export const SecondaryActionsConnected = SecondaryActions;

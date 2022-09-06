@@ -57,6 +57,9 @@ const enhance = connect(
 
 export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof enhance>> {}
 
+/**
+ * @deprecated Use Mantine Tabs instead: https://mantine.dev/core/tabs/
+ */
 export const Tab: FunctionComponent<ITabProps> = ({
     icon: IconName,
     badge,
@@ -117,4 +120,7 @@ export const Tab: FunctionComponent<ITabProps> = ({
     );
 };
 
+/**
+ * @deprecated Use Mantine Tabs instead: https://mantine.dev/core/tabs/
+ */
 export const TabConnected = enhance(Tab);

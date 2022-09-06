@@ -1,4 +1,4 @@
-import {shallowWithStore} from '@helpers/enzyme-redux';
+import {shallowWithStore} from '@test-utils';
 import {ComponentType} from 'react';
 import * as _ from 'underscore';
 

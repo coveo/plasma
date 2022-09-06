@@ -1,4 +1,4 @@
-const internalComponentPropsToOmit: string[] = ['children', 'dangerouslySetInnerHTML'];
+const internalComponentPropsToOmit: string[] = ['children', 'dangerouslySetInnerHTML', 'tooltipClasses', 'isParent'];
 
 // We omit those props for the input native tag because those props are reserved for the Input component and
 // to stay compatible with the old interface

@@ -86,13 +86,14 @@ describe('Date picker', () => {
             it('should return the old state with default lowerlimit and upperlimit state properties if initialDateRange is not passed', () => {
                 const datePickersState: IDatePickerState[] = datePickersReducer(undefined, action);
 
-                expect(datePickersState[0].lowerLimit as Date).toBe(datePickerInitialState.lowerLimit);
-                expect(datePickersState[0].inputLowerLimit as Date).toBe(datePickerInitialState.inputLowerLimit);
-                expect(datePickersState[0].appliedLowerLimit as Date).toBe(datePickerInitialState.appliedLowerLimit);
+                const initialState = datePickerInitialState();
+                expect(datePickersState[0].lowerLimit as Date).toStrictEqual(initialState.lowerLimit);
+                expect(datePickersState[0].inputLowerLimit as Date).toStrictEqual(initialState.inputLowerLimit);
+                expect(datePickersState[0].appliedLowerLimit as Date).toStrictEqual(initialState.appliedLowerLimit);
 
-                expect(datePickersState[0].upperLimit as Date).toBe(datePickerInitialState.upperLimit);
-                expect(datePickersState[0].inputUpperLimit as Date).toBe(datePickerInitialState.inputUpperLimit);
-                expect(datePickersState[0].appliedUpperLimit as Date).toBe(datePickerInitialState.appliedUpperLimit);
+                expect(datePickersState[0].upperLimit as Date).toStrictEqual(initialState.upperLimit);
+                expect(datePickersState[0].inputUpperLimit as Date).toStrictEqual(initialState.inputUpperLimit);
+                expect(datePickersState[0].appliedUpperLimit as Date).toStrictEqual(initialState.appliedUpperLimit);
             });
 
             it('should return the old state with initialDateRange set properly in the state if passed', () => {
@@ -322,7 +323,7 @@ describe('Date picker', () => {
         it('should return the default state if the action is not defined and the state is undefined', () => {
             const datePickerState: IDatePickerState = datePickerReducer(undefined, GENERIC_ACTION);
 
-            expect(datePickerState).toBe(datePickerInitialState);
+            expect(datePickerState).toStrictEqual(datePickerInitialState());
         });
 
         it('should return the old state when the action is not defined', () => {
@@ -333,7 +334,7 @@ describe('Date picker', () => {
         });
 
         it('should return a new date picker with the specified id when the action is "ADD_DATE_PICKER"', () => {
-            const oldDatePicker: IDatePickerState = datePickerInitialState;
+            const oldDatePicker: IDatePickerState = datePickerInitialState();
             const action: IReduxAction<IAddDatePickerPayload> = {
                 type: DatePickerActions.add,
                 payload: {
@@ -353,7 +354,7 @@ describe('Date picker', () => {
             'should return a new datepicker state that is unselected when the actions is "ADD_DATE_PICKER" ' +
                 'and the payload contains initiallyUnselected true',
             () => {
-                const oldDatePicker: IDatePickerState = datePickerInitialState;
+                const oldDatePicker: IDatePickerState = datePickerInitialState();
                 const action: IReduxAction<IAddDatePickerPayload> = {
                     type: DatePickerActions.add,
                     payload: {
@@ -375,7 +376,7 @@ describe('Date picker', () => {
         );
 
         it('should return a new date picker with the rangeLimit when the action is "ADD_DATE_PICKER"', () => {
-            const oldDatePicker: IDatePickerState = datePickerInitialState;
+            const oldDatePicker: IDatePickerState = datePickerInitialState();
             const rangeLimit: IRangeLimit = {
                 weeks: 1,
                 days: 1,
@@ -653,31 +654,6 @@ describe('Date picker', () => {
             expect(newDatePicker.appliedUpperLimit).toBe(oldDatePicker.inputUpperLimit);
         });
 
-        it(
-            'should apply the already applied limit if the new limits are not valid and neither are the input limits ' +
-                ' and the datepicker is not clearable',
-            () => {
-                const oldDatePicker: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
-                    upperLimit: undefined,
-                    lowerLimit: undefined,
-                    inputUpperLimit: undefined,
-                    inputLowerLimit: undefined,
-                    appliedUpperLimit: new Date(new Date().setHours(2, 0, 1, 1)),
-                    appliedLowerLimit: new Date(new Date().setHours(0, 0, 1, 1)),
-                });
-                const action: IReduxAction<IDatePickerPayload> = {
-                    type: DatePickerActions.apply,
-                    payload: {
-                        id: 'some-date',
-                    },
-                };
-                const newDatePicker: IDatePickerState = datePickerReducer(oldDatePicker, action);
-
-                expect(newDatePicker.appliedLowerLimit).toBe(oldDatePicker.appliedLowerLimit);
-                expect(newDatePicker.appliedUpperLimit).toBe(oldDatePicker.appliedUpperLimit);
-            }
-        );
-
         it('should allows to apply null limits when the datepicker is clearable', () => {
             const oldDatePicker: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
                 isClearable: true,
@@ -790,7 +766,7 @@ describe('Date picker', () => {
         );
 
         it('should not change the original state', () => {
-            const expectedState = _.extend({}, datePickerInitialState);
+            const expectedState = _.extend({}, datePickerInitialState());
             const action: IReduxAction<IChangeDatePickerPayload> = {
                 type: DatePickerActions.changeUpperLimit,
                 payload: {
@@ -798,9 +774,9 @@ describe('Date picker', () => {
                     date: new Date(new Date().setHours(3, 3, 3, 3)),
                 },
             };
-            datePickerReducer(datePickerInitialState, action);
+            datePickerReducer(datePickerInitialState(), action);
 
-            expect(expectedState).toEqual(datePickerInitialState);
+            expect(expectedState).toEqual(datePickerInitialState());
         });
 
         describe('reducer for the action "APPLY_DATE"', () => {
@@ -826,16 +802,6 @@ describe('Date picker', () => {
                 expect(newDatePicker.appliedLowerLimit).toBe(oldDatePicker.inputLowerLimit);
             });
 
-            it('should return the appliedLowerLimit if the lowerLimit and inputLowerLimits are not defined', () => {
-                oldDatePicker = _.extend({}, BASE_DATE_PICKER_STATE, {
-                    lowerLimit: undefined,
-                    inputLowerLimit: undefined,
-                });
-                newDatePicker = datePickerReducer(oldDatePicker, action);
-
-                expect(newDatePicker.appliedLowerLimit).toBe(oldDatePicker.appliedLowerLimit);
-            });
-
             it('should return the lowerLimit if the lowerLimit is defined', () => {
                 oldDatePicker = _.extend({}, BASE_DATE_PICKER_STATE);
                 newDatePicker = datePickerReducer(oldDatePicker, action);
@@ -850,16 +816,6 @@ describe('Date picker', () => {
                 newDatePicker = datePickerReducer(oldDatePicker, action);
 
                 expect(newDatePicker.appliedUpperLimit).toBe(oldDatePicker.inputUpperLimit);
-            });
-
-            it('should return the appliedUpperLimit if the upperLimit and inputUpperLimit are not defined', () => {
-                oldDatePicker = _.extend({}, BASE_DATE_PICKER_STATE, {
-                    upperLimit: undefined,
-                    inputUpperLimit: undefined,
-                });
-                newDatePicker = datePickerReducer(oldDatePicker, action);
-
-                expect(newDatePicker.appliedUpperLimit).toBe(oldDatePicker.appliedUpperLimit);
             });
 
             it('should return the upperLimit if its greater than the lowerLimit', () => {

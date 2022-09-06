@@ -8,6 +8,9 @@ const mapStateToProps = (): IPrimaryActionStateProps => ({
 
 const mapDispatchToProps = () => ({});
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const PrimaryActionConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

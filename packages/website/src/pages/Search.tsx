@@ -4,7 +4,7 @@ import {
     loadQueryActions,
     loadSearchActions,
     loadSearchAnalyticsActions,
-} from '@coveo/headless';
+} from '@coveo/atomic-react';
 
 import {useContext} from 'react';
 

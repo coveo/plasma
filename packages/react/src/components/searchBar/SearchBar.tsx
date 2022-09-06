@@ -92,6 +92,9 @@ export interface ISearchBarDispatchProps {
 
 export interface ISearchBarProps extends ISearchBarOwnProps, ISearchBarStateProps, ISearchBarDispatchProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class SearchBar extends Component<ISearchBarProps> {
     static defaultProps: Partial<ISearchBarProps> = {
         placeholder: '',

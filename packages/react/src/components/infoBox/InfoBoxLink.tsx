@@ -1,6 +1,9 @@
 import classNames from 'classnames';
 import {HTMLProps, PureComponent} from 'react';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class InfoBoxLink extends PureComponent<HTMLProps<HTMLAnchorElement>> {
     render() {
         return (

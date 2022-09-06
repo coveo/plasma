@@ -17,7 +17,9 @@ const mapStateToProps = (state: PlasmaState, ownProps: IWithDirtySaveButtonHOCPr
     errors: ValidationSelectors.getAnyError(ownProps.validationIds)(state),
     warnings: ValidationSelectors.getAnyWarning(ownProps.validationIds)(state),
 });
-
+/**
+ * @deprecated Use Mantine instead
+ */
 export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     const WrappedButton = ({

@@ -20,6 +20,10 @@
 
     .btn {
         border-color: var(--default-border-color);
+
+        &:focus {
+            border: 1px solid var(--digital-blue-60);
+        }
     }
 }
 

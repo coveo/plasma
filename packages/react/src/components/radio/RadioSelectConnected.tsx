@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch: IDispatch): IRadioSelectDispatchProps => (
     onChange: (value: string, id: string) => dispatch(setRadioSelect(id, {value})),
 });
 
+/**
+ * @deprecated Use Mantine Radio instead: https://mantine.dev/core/radio/
+ */
 export const RadioSelectConnected: React.ComponentType<IRadioSelectProps & IRadioSelectConnectedProps> = connect(
     mapStateToProps,
     mapDispatchToProps,

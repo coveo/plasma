@@ -24,4 +24,8 @@ const mapDispatchToProps = (
     onDocumentClick: () => dispatch(closeDropdown(ownProps.id)),
 });
 
+/**
+ * @deprecated Use Mantine Menu instead https://mantine.dev/core/menu/
+ */
+
 export const DropdownConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Dropdown);

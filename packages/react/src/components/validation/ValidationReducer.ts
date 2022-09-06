@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import {ValidationActions, ValidationActionsTypes} from './ValidationActions';
+import {ValidationActionsTypes} from './ValidationActions';
 import {ValidationsState, ValidationState} from './ValidationState';
 
 type ValidationActions = {

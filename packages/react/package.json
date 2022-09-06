@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "42.1.5-next.0",
+    "version": "46.0.1-next.0",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -17,6 +17,13 @@
     },
     "license": "Apache-2.0",
     "author": "Coveo",
+    "exports": {
+        ".": {
+            "types": "./dist/definitions/Entry.d.ts",
+            "import": "./dist/esm/Entry.js",
+            "require": "./dist/cjs/Entry.js"
+        }
+    },
     "main": "./dist/cjs/Entry.js",
     "module": "./dist/esm/Entry.js",
     "types": "dist/definitions/Entry.d.ts",
@@ -62,10 +69,11 @@
         "@loadable/component": "5.15.2",
         "@swc/helpers": "0.3.9",
         "@types/codemirror": "0.0.109",
-        "chosen-js": "1.8.7",
         "classnames": "2.3.1",
+        "codemirror": "5.63.3",
+        "d3": "3.5.17",
         "dnd-core": "2.6.0",
-        "moment": "2.29.3",
+        "moment": "2.29.4",
         "query-string": "6.14.1",
         "rc-slider": "9.7.5",
         "react-bootstrap": "2.3.1",
@@ -80,11 +88,12 @@
         "react-textarea-autosize": "8.3.3",
         "react-transition-group": "2.9.0",
         "reselect": "4.1.5",
-        "split-on-first": "1.x.x",
-        "strict-uri-encode": "2.x.x"
+        "split-on-first": "3.0.0",
+        "strict-uri-encode": "2.0.0",
+        "underscore": "1.13.1",
+        "underscore.string": "3.3.6"
     },
     "devDependencies": {
-        "@helpers/enzyme-redux": "workspace:*",
         "@hot-loader/react-dom": "17.0.2",
         "@swc/cli": "0.1.57",
         "@swc/core": "1.2.174",
@@ -93,14 +102,12 @@
         "@testing-library/jest-dom": "5.16.4",
         "@testing-library/react": "12.1.5",
         "@testing-library/user-event": "13.5.0",
-        "@types/chosen-js": "1.8.3",
         "@types/classnames": "2.3.0",
         "@types/d3": "3.5.47",
         "@types/enzyme": "3.10.12",
         "@types/escape-string-regexp": "1.0.0",
         "@types/faker": "4.1.12",
         "@types/jest": "27.4.1",
-        "@types/jquery": "2.0.60",
         "@types/loadable__component": "5.13.4",
         "@types/lorem-ipsum": "2.0.0",
         "@types/react": "17.0.44",
@@ -124,22 +131,19 @@
         "@typescript-eslint/parser": "5.21.0",
         "@wojtekmaj/enzyme-adapter-react-17": "0.6.7",
         "ansi-colors": "4.1.1",
-        "autoprefixer": "9.8.8",
+        "autoprefixer": "10.4.2",
         "codecov": "3.8.2",
-        "codemirror": "5.63.3",
-        "d3": "3.5.17",
         "del": "6.0.0",
         "enzyme": "3.11.0",
         "escape-string-regexp": "1.0.5",
         "eslint-plugin-jest": "25.7.0",
-        "eslint-plugin-jest-dom": "3.9.4",
+        "eslint-plugin-jest-dom": "4.0.2",
         "eslint-plugin-testing-library": "5.3.1",
         "faker": "4.1.0",
         "fancy-log": "2.0.0",
         "identity-obj-proxy": "3.0.0",
         "jest": "28.0.3",
         "jest-environment-jsdom": "28.0.2",
-        "jquery": "3.6.0",
         "lint-staged": "9.5.0",
         "lorem-ipsum": "2.0.4",
         "minimist": "1.2.6",
@@ -158,19 +162,14 @@
         "sass": "1.51.0",
         "ts-jest": "27.1.4",
         "tslib": "2.3.1",
-        "typescript": "4.6.4",
-        "underscore": "1.13.1",
-        "underscore.string": "3.3.6"
+        "typescript": "4.6.4"
     },
     "peerDependencies": {
-        "codemirror": "^5.39.2",
-        "d3": "^3.5.17",
-        "jquery": ">= 2.0.0 =< 3",
-        "react": "^16.14.21",
-        "react-dom": "^16.14.0",
-        "react-redux": "^7.2.4",
-        "redux": "^4.0.1",
-        "underscore": "^1.8.3",
-        "underscore.string": "^3.3.5"
+        "@types/react": "^17.0",
+        "@types/react-dom": "^17.0",
+        "react": "^17.0",
+        "react-dom": "^17.0",
+        "react-redux": "^7.2.6",
+        "redux": "^4"
     }
 }

@@ -8,6 +8,9 @@ export interface BrowserPreviewErrorProps {
     errorMessage?: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const BrowserPreviewError: FunctionComponent<BrowserPreviewErrorProps> = ({
     onClick,
     description,

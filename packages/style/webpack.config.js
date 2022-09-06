@@ -44,11 +44,12 @@ module.exports = {
                     {
                         loader: 'postcss-loader',
                         options: {
-                            ident: 'v2-postcss',
-                            plugins: () => [
-                                require('autoprefixer')(),
-                                require('cssnano')({zindex: false, preset: ['default', {mergeLonghand: false}]}),
-                            ],
+                            postcssOptions: {
+                                plugins: () => [
+                                    require('autoprefixer')(),
+                                    require('cssnano')({zindex: false, preset: ['default', {mergeLonghand: false}]}),
+                                ],
+                            },
                         },
                     },
                     {loader: 'resolve-url-loader'},

@@ -11,10 +11,12 @@
   "commitBody": "UITOOL-284",
   "packageRules": [
     {
-      "description": "Automatically merge minor and patch-level updates",
-      "updateTypes": ["minor", "patch"],
-      "automerge": true,
-      "semanticCommitType": "chore"
+        "description": "Automatically merge minor and patch-level updates",
+        "updateTypes": ["minor", "patch"],
+        "automerge": true,
+        "semanticCommitType": "chore",
+        "stabilityDays": 7,
+        "internalChecksFilter": "strict"
     }
   ],
   "lockFileMaintenance": {

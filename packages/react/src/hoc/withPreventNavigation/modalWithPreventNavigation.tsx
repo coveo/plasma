@@ -33,6 +33,9 @@ export const preventNavigationDefaultConfig: Partial<IWithPreventNavigationConfi
     stay: 'Cancel',
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavigationConfig) => (
     Component: ComponentClass<T, R>
 ): ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {

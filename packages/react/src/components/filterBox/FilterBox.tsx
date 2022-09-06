@@ -82,6 +82,9 @@ export interface IFilterBoxProps extends IFilterBoxOwnProps, IFilterBoxStateProp
 
 export const FILTER_PLACEHOLDER: string = 'Filter';
 
+/**
+ * @deprecated use Mantine instead
+ */
 export class FilterBox extends Component<IFilterBoxProps, any> {
     filterInput: HTMLInputElement;
 

@@ -12,6 +12,9 @@ export interface CollapsibleHeaderIconProps {
     className?: string;
 }
 
+/**
+ * @deprecated Use Mantine Accordion instead: https://mantine.dev/core/accordion/
+ */
 export const CollapsibleHeaderIcon: FunctionComponent<CollapsibleHeaderIconProps> = ({
     informationTooltip,
     informationUrl,

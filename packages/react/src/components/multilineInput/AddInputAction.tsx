@@ -7,6 +7,9 @@ export interface IAddInputActionProps {
     onClick?: () => void;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class AddInputAction extends Component<IAddInputActionProps, any> {
     private handleClick() {
         if (this.props.onClick) {

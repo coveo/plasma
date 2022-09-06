@@ -1,4 +1,4 @@
-import {shallowWithState} from '@helpers/enzyme-redux';
+import {shallowWithState} from '@test-utils';
 import * as _ from 'underscore';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
 import {multilineBoxContainer} from '../hoc/MultilineBoxContainer';

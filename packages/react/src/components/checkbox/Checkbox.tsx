@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import {MouseEvent, Children, Component} from 'react';
-import * as ReactDOM from 'react-dom';
+import {MouseEvent, Children, useRef, FunctionComponent, useEffect} from 'react';
 import {IInputProps, Input} from '../input/Input';
 import {CheckboxContext} from './CheckboxContext';
 
@@ -30,69 +29,82 @@ export interface ICheckboxStateProps {
 
 export interface ICheckboxProps extends ICheckboxOwnProps, ICheckboxStateProps, IInputProps {}
 
-export class Checkbox extends Component<ICheckboxProps> {
-    componentDidMount() {
-        this.updateIndeterminate();
-    }
+/**
+ * @deprecated Use Mantine Checkbox instead: https://mantine.dev/core/checkbox/
+ */
+export const Checkbox: FunctionComponent<ICheckboxProps> = ({
+    id,
+    disabled,
+    disabledTooltip,
+    onClick,
+    handleOnClick,
+    checked,
+    clearSides,
+    children,
+    indeterminate,
+    classes,
+    innerInputClasses,
+    'aria-labelledby': labelledBy,
+    ...attributes
+}) => {
+    const ref = useRef<HTMLDivElement | null>(null);
 
-    componentDidUpdate() {
-        this.updateIndeterminate();
-    }
-
-    private updateIndeterminate() {
-        const inputElements = (ReactDOM.findDOMNode(this) as Element).getElementsByTagName('input');
-        if (inputElements.length) {
-            inputElements[0].indeterminate = !!this.props.indeterminate;
+    const updateIndeterminate = () => {
+        if (ref?.current) {
+            const inputElements = ref.current?.getElementsByTagName('input');
+            if (inputElements.length) {
+                inputElements[0].indeterminate = !!indeterminate;
+            }
         }
-    }
+    };
 
-    private handleOnClick(e: MouseEvent<HTMLElement>) {
-        if (!this.props.disabled) {
-            if (this.props.onClick) {
+    useEffect(() => {
+        updateIndeterminate();
+    });
+
+    const onToggle = (e: MouseEvent<HTMLElement>) => {
+        if (!disabled) {
+            if (onClick) {
                 e.preventDefault();
                 e.stopPropagation();
-                this.props.onClick(e);
+                onClick(e);
             }
-            if (this.props.handleOnClick) {
-                this.props.handleOnClick(this.props.checked);
+            if (handleOnClick) {
+                handleOnClick(checked);
             }
         }
-    }
+    };
 
-    render() {
-        const {clearSides, children, 'aria-labelledby': labeledBy, handleOnClick, ...attributes} = this.props;
-        const classes: string = classNames(
-            'checkbox checkbox-label',
-            {disabled: !!this.props.disabled, 'checkbox-clear': this.props.clearSides},
-            this.props.classes
-        );
-        const innerInputClasses: string = classNames(
-            {'checkbox checkbox-label': !!this.props.disabledTooltip},
-            'react-vapor-checkbox',
-            this.props.innerInputClasses
-        );
-        const hasChildren = Children.count(this.props.children) > 0;
-        const labelId = hasChildren && this.props.id ? `checkbox-${this.props.id}` : labeledBy;
-        return (
-            <Input
-                {...attributes}
-                classes={[classes]}
-                innerInputClasses={[innerInputClasses]}
-                type="checkbox"
-                onClick={(e: MouseEvent<HTMLElement>) => this.handleOnClick(e)}
-                readOnly
-                tooltipClasses={this.props.disabledTooltip ? 'flex center-align' : null}
-            >
-                <button
-                    type="button"
-                    role="checkbox"
-                    aria-checked={this.props.checked}
-                    aria-labelledby={labelId}
-                    tabIndex={0}
-                    disabled={!!this.props.disabled}
-                />
-                <CheckboxContext.Provider value={{labelId}}>{this.props.children}</CheckboxContext.Provider>
-            </Input>
-        );
-    }
-}
+    const hasChildren = Children.count(children) > 0;
+    const labelId = hasChildren && id ? `checkbox-${id}` : labelledBy;
+    return (
+        <Input
+            {...attributes}
+            id={id}
+            disabled={disabled}
+            disabledTooltip={disabledTooltip}
+            checked={checked}
+            classes={[
+                classNames('checkbox checkbox-label', {disabled: !!disabled, 'checkbox-clear': clearSides}, classes),
+            ]}
+            innerInputClasses={[
+                classNames({'checkbox checkbox-label': !!disabledTooltip}, 'react-vapor-checkbox', innerInputClasses),
+            ]}
+            type="checkbox"
+            onClick={onToggle}
+            readOnly
+            tooltipClasses={disabledTooltip ? 'flex center-align' : null}
+            wrapperRef={ref}
+        >
+            <button
+                type="button"
+                role="checkbox"
+                aria-checked={checked}
+                aria-labelledby={labelId}
+                tabIndex={0}
+                disabled={!!disabled}
+            />
+            <CheckboxContext.Provider value={{labelId}}>{children}</CheckboxContext.Provider>
+        </Input>
+    );
+};

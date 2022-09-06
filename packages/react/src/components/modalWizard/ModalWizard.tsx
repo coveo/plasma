@@ -85,6 +85,9 @@ export interface ModalWizardProps
     onCancel?: () => unknown;
 }
 
+/**
+ * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
+ */
 export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
     id,
     title,
@@ -124,7 +127,7 @@ export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
                             {steps.map((step: ReactElement, index: number) => {
                                 const hidden = index !== currentStep;
                                 return (
-                                    <div className={classNames({hidden})} hidden={hidden} key={index}>
+                                    <div className={classNames({hidden}, 'full-content-y')} hidden={hidden} key={index}>
                                         {step}
                                     </div>
                                 );

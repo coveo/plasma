@@ -31,6 +31,9 @@ const mapDispatchToProps = (
     onCloseDropdown: () => dispatch(closeDropdown(ownProps.parentId)),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class TriggerAction extends Component<ITriggerActionProps> {
     private onTriggerAction() {
         const confirmData: IConfirmData = this.props.action.requiresConfirmation;
@@ -95,6 +98,9 @@ export class TriggerAction extends Component<ITriggerActionProps> {
     }
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TriggerActionConnected = connect<null, ReturnType<typeof mapDispatchToProps>, ITriggerActionOwnProps>(
     undefined,
     mapDispatchToProps

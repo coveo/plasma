@@ -52,6 +52,9 @@ export interface IBlankSlateProps {
     buttonClasses?: string[];
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class BlankSlate extends Component<IBlankSlateProps> {
     static defaultProps: Partial<IBlankSlateProps> = {
         title: null,

@@ -25,6 +25,9 @@ export interface ITableCollapsibleRowProps
         ITableCollapsibleRowStateProps,
         ITableCollapsibleRowChildrenProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class TableCollapsibleRow extends Component<ITableCollapsibleRowProps, any> {
     render() {
         const rowClasses: string = classNames('collapsible-row', this.props.id, {in: this.props.opened});

@@ -19,6 +19,9 @@ type Order = 'ascending' | 'descending' | 'unsorted';
 
 export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const TableHeaderWithSort: FunctionComponent<
     ITableHeaderWithSortProps & HTMLAttributes<HTMLTableHeaderCellElement>
 > = ({isLoading, id, tableId, isDefault, children}) => {

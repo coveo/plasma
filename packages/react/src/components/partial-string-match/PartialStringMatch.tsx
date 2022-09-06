@@ -10,6 +10,9 @@ export interface PartialStringMatchProps {
     caseInsensitive?: boolean;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class PartialStringMatch extends PureComponent<PartialStringMatchProps> {
     static defaultProps: Partial<PartialStringMatchProps> = {
         wholeString: '',

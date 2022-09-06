@@ -7,9 +7,11 @@ import {IDispatch, IThunkAction} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
 import {applyDatePicker, changeDatePickerLowerLimit, changeDatePickerUpperLimit} from '../datePicker/DatePickerActions';
 import {filterThrough} from '../filterBox/FilterBoxActions';
+import {selectFlatSelect} from '../flatSelect';
 import {selectListBoxOption} from '../listBox/ListBoxActions';
 import {changePage} from '../navigation/pagination/NavigationPaginationActions';
 import {changePerPage} from '../navigation/perPage/NavigationPerPageActions';
+import {PaginationUtils} from '../pagination';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableHOCOwnProps} from './TableHOC';
 import {ITableHOCPredicateValue, TableHOCUtils} from './utils/TableHOCUtils';
@@ -149,6 +151,7 @@ const updateTableStateFromUrl = (tableId: string): IThunkAction => (dispatch: ID
 
     if (urlParams.hasOwnProperty(Params.pageSize)) {
         dispatch(changePerPage(tableId, urlParams[Params.pageSize]));
+        dispatch(selectFlatSelect(PaginationUtils.getPaginationPerPageId(tableId), urlParams[Params.pageSize] + ''));
     }
 
     if (urlParams.hasOwnProperty(Params.pageNumber)) {
@@ -156,4 +159,7 @@ const updateTableStateFromUrl = (tableId: string): IThunkAction => (dispatch: ID
     }
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export {tableWithUrlState, Params as TableWithUrlStateParameters};

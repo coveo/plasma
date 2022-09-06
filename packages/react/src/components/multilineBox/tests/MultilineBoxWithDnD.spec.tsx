@@ -44,4 +44,54 @@ describe('MultilineBoxWithDnD', () => {
         expect(boxes[1]).toHaveTextContent('🍌');
         expect(boxes[2]).toHaveTextContent('🍎');
     });
+
+    it('does not allow dragging items across different multi box components', () => {
+        render(
+            <>
+                <MultilineBoxWithDnD
+                    id="fruits"
+                    data={[{fruit: '🍍'}, {fruit: '🍎'}, {fruit: '🍌'}]}
+                    renderBody={(data) =>
+                        data.map(({id, props}) => (
+                            <div key={id} data-testid={props.fruit ? 'box' : undefined}>
+                                {props.fruit}
+                            </div>
+                        ))
+                    }
+                    defaultProps={{fruit: ''}}
+                />
+                <MultilineBoxWithDnD
+                    id="tools"
+                    data={[{tool: '🔨'}, {tool: '🔧'}, {tool: '🪚'}]}
+                    renderBody={(data) =>
+                        data.map(({id, props}) => (
+                            <div key={id} data-testid={props.tool ? 'box' : undefined}>
+                                {props.tool}
+                            </div>
+                        ))
+                    }
+                    defaultProps={{tool: ''}}
+                />
+            </>
+        );
+
+        let boxes = screen.getAllByTestId('box');
+        expect(boxes[0]).toHaveTextContent('🍍');
+        expect(boxes[1]).toHaveTextContent('🍎');
+        expect(boxes[2]).toHaveTextContent('🍌');
+        expect(boxes[3]).toHaveTextContent('🔨');
+        expect(boxes[4]).toHaveTextContent('🔧');
+        expect(boxes[5]).toHaveTextContent('🪚');
+
+        const dragIcons = screen.getAllByRole('img', {name: /dragdrop icon/i});
+        dragAndDrop(dragIcons[2], 3);
+
+        boxes = screen.getAllByTestId('box');
+        expect(boxes[0]).toHaveTextContent('🍍');
+        expect(boxes[1]).toHaveTextContent('🍎');
+        expect(boxes[2]).toHaveTextContent('🍌');
+        expect(boxes[3]).toHaveTextContent('🔨');
+        expect(boxes[4]).toHaveTextContent('🔧');
+        expect(boxes[5]).toHaveTextContent('🪚');
+    });
 });

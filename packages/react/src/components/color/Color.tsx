@@ -5,6 +5,9 @@ export interface ColorProps {
     color: string;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class Color extends Component<ColorProps & HTMLProps<HTMLDivElement>> {
     static defaultprops: Partial<ColorProps> = {
         color: 'var (--white)',

@@ -43,6 +43,9 @@ const defaultContainerNode = (
 
 export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-no-border';
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const multilineBoxWithRemoveButton = (
     supplier: ConfigSupplier<IMultilineBoxWithRemoveButtonSupplierProps> = {containerNode: defaultContainerNode}
 ) => (Component: typeof MultilineBox): typeof MultilineBox => {

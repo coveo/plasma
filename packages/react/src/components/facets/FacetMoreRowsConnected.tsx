@@ -32,6 +32,9 @@ const mapDispatchToProps = (
     onDocumentClick: () => dispatch(closeMoreFacetRows()),
 });
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const FacetMoreRowsConnected = connect(
     mapStateToProps,
     mapDispatchToProps,

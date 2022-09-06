@@ -49,5 +49,7 @@ export const ValidationMessageDisconnect: FunctionComponent<
         </>
     );
 };
-
+/**
+ * @deprecated Use Mantine instead
+ */
 export const ValidationMessage = connect(mapStateToProps, mapDispatchToProps)(ValidationMessageDisconnect);

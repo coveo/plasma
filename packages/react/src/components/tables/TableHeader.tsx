@@ -11,6 +11,9 @@ export interface ITableHeaderProps extends ClassAttributes<TableHeader>, IReduxS
     headerClass?: IClassName;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class TableHeader extends Component<ITableHeaderProps, any> {
     render() {
         const columns: JSX.Element[] = _.map(

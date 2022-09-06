@@ -45,6 +45,9 @@ const TypeColorMapping: Record<IconBadgeType, string> = {
     [IconBadgeType.Major]: 'mod-major',
 };
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const IconBadge: FunctionComponent<IconBadgeProps> = ({icon, type, size = IconBadgeSize.Medium, className}) => {
     const IconName = icon;
 

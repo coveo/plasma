@@ -1,7 +1,6 @@
 import {CrossSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ReactNode, FunctionComponent, ComponentClass, useState, useEffect, createElement} from 'react';
-import * as _ from 'underscore';
 import {LoadingSpinner} from '../loading/LoadingSpinner';
 
 export interface IToastProps {
@@ -57,6 +56,9 @@ export interface IToastProps {
     onDestroy?: () => void;
 }
 
+/**
+ * @deprecated Use Mantine Notification instead: https://mantine.dev/core/notification/
+ */
 export const Toast: FunctionComponent<IToastProps> = ({
     title,
     type = 'success',

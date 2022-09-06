@@ -96,7 +96,7 @@ describe('DropPod', () => {
 
             describe('portal creation selector', () => {
                 afterEach(() => {
-                    Defaults.DROP_ROOT = 'body';
+                    Defaults.DROP_ROOT = '#plasma-dropdowns';
                 });
 
                 it('should render the content inside of the selector', () => {
@@ -451,6 +451,23 @@ describe('DropPod', () => {
 
                     const {maxWidth} = screen.getByText('🚀').style;
                     expect(maxWidth).toBe('980px'); // 1000px width - (10px padding left + 10px padding right)
+                });
+
+                it('should set the fallback maxWidth to the inner width if the calculated one is a NaN', () => {
+                    setupReference({
+                        width: 0 / 0, // not a number
+                    });
+                    render(
+                        <DropPod
+                            isOpen
+                            renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
+                            positions={[DropPodPosition.bottom]}
+                            ref={buttonRef}
+                        />
+                    );
+
+                    const {maxWidth} = screen.getByText('🚀').style;
+                    expect(maxWidth).toBe('850px');
                 });
             });
 

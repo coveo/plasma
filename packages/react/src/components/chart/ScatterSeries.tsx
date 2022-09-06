@@ -6,6 +6,9 @@ export interface ScatterSeriesProps {
     radius?: number;
 }
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const ScatterSeries: FunctionComponent<ScatterSeriesProps> = ({children, radius = 3}) => {
     const {series, xScale, yScale, color, colorPattern} = useContext(XYChartContext);
 

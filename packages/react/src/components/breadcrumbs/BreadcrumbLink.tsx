@@ -9,6 +9,9 @@ export interface IBreadcrumbLinkProps {
     onClick?: (props: IBreadcrumbLinkProps) => boolean; // return false to cancel the href event
 }
 
+/**
+ * @deprecated Use Mantine Breadcrumbs instead: https://mantine.dev/core/breadcrumbs/
+ */
 export class BreadcrumbLink extends Component<IBreadcrumbLinkProps> {
     private handleOnClick(e: MouseEvent<HTMLAnchorElement>): boolean {
         if (this.props.onClick && !this.props.onClick(this.props)) {

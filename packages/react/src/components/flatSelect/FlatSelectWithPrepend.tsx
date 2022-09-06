@@ -8,6 +8,9 @@ export interface IFlatSelectWithPrependProps extends IFlatSelectOwnProps {
     prependClassName?: string;
 }
 
+/**
+ * @deprecated use Mantine SegmentedControl instead: https://mantine.dev/core/segmented-control/
+ */
 export const FlatSelectWithPrepend: FunctionComponent<IFlatSelectWithPrependProps> = ({
     prepend,
     prependClassName = '',

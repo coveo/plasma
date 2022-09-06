@@ -15,6 +15,9 @@ const mapStateToProps = (state: PlasmaState, {id, groupId}: IDropOwnProps): IDro
     isOpen: DropSelectors.isOpen(state, {id, groupId}),
 });
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export const dropWithDropdown = () => (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
     @ReduxConnect(mapStateToProps)
     class DropWithDropdown extends PureComponent<IDropProps> {

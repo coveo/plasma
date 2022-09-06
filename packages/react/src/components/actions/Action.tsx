@@ -23,7 +23,7 @@ export interface IBaseActionOptions {
     target?: string;
     primary?: boolean;
     tooltip?: string;
-    tooltipPlacement?: string;
+    tooltipPlacement?: 'left' | 'right' | 'top' | 'bottom';
     hideDisabled?: boolean;
     onClick?: () => void;
 }
@@ -49,6 +49,9 @@ export interface IBasicActionProps {
 
 export interface IActionProps extends ClassAttributes<Action>, IBasicActionProps {}
 
+/**
+ * @deprecated Use Mantine instead
+ */
 export class Action extends Component<IActionProps, any> {
     static defaultProps: Partial<IActionOptions> = {
         hideDisabled: true,

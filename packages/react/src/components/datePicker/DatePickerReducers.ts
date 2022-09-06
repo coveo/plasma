@@ -22,7 +22,7 @@ export interface IDatePickerState {
     simple: boolean;
 }
 
-export const datePickerInitialState: IDatePickerState = {
+export const datePickerInitialState: () => IDatePickerState = () => ({
     id: undefined,
     calendarId: undefined,
     isRange: false,
@@ -35,7 +35,7 @@ export const datePickerInitialState: IDatePickerState = {
     inputUpperLimit: moment().endOf('day').toDate(),
     appliedLowerLimit: moment().startOf('day').toDate(),
     appliedUpperLimit: moment().endOf('day').toDate(),
-};
+});
 export const datePickersInitialState: IDatePickerState[] = [];
 
 const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePickerPayload>): IDatePickerState => {
@@ -91,14 +91,8 @@ const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
     state.id !== action.payload.id ? state : _.extend({}, state, {selected: action.payload.limit});
 
 const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-    const lowerLimit: Date =
-        state.lowerLimit || !state.isClearable
-            ? state.lowerLimit || state.inputLowerLimit || state.appliedLowerLimit
-            : null;
-    let upperLimit: Date =
-        state.upperLimit || !state.isClearable
-            ? state.upperLimit || state.inputUpperLimit || state.appliedUpperLimit
-            : null;
+    const lowerLimit: Date = state.lowerLimit || !state.isClearable ? state.lowerLimit || state.inputLowerLimit : null;
+    let upperLimit: Date = state.upperLimit || !state.isClearable ? state.upperLimit || state.inputUpperLimit : null;
 
     if (state.isRange && !upperLimit) {
         upperLimit = lowerLimit ? moment(lowerLimit).endOf('day').toDate() : upperLimit;
@@ -136,7 +130,7 @@ const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActi
           });
 
 export const datePickerReducer = (
-    state: IDatePickerState = datePickerInitialState,
+    state: IDatePickerState = datePickerInitialState(),
     action: IReduxAction<any>
 ): IDatePickerState => {
     switch (action.type) {

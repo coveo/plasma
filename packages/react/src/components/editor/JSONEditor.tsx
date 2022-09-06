@@ -62,6 +62,9 @@ export interface JSONEditorDispatchProps {
     onUnmount?: () => void;
 }
 
+/**
+ * @deprecated use Mantine instead
+ */
 export const JSONEditor: FunctionComponent<
     JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>
 > = ({

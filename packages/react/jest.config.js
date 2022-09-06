@@ -32,7 +32,6 @@ module.exports = {
             },
         ],
     },
-    transformIgnorePatterns: ['/node_modules/(?!@helpers/enzyme-redux)(.*)'],
     testMatch: ['<rootDir>/src/**/*.spec.{ts,tsx}'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'scss'],
     testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],

@@ -73,6 +73,9 @@ const mapDispatchToProps = (
     },
 });
 
+/**
+ * @deprecated Use Mantine DatePicker instead
+ */
 export const DatesSelectionConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
