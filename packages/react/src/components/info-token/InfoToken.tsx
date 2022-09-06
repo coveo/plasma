@@ -46,7 +46,6 @@ export interface InfoTokenProps {
     type: InfoTokenType;
     size: InfoTokenSize;
     mode: InfoTokenMode;
-    svgClassName?: string;
     className?: string;
 }
 

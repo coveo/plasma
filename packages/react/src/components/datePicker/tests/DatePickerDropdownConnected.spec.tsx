@@ -429,12 +429,12 @@ describe('Date picker', () => {
             });
         });
 
-        it('goes to the next month when clicking on the next month arrow', () => {
+        it('goes to the next month when clicking on the next month arrow', async () => {
             jest.useFakeTimers().setSystemTime(new Date(2000, 0, 1));
 
             render(<DatePickerDropdownConnected id={'dropdown'} datesSelectionBoxes={[]} />);
 
-            userEvent.click(screen.getAllByRole('button', {name: /arrowrightrounded/i})[0]);
+            userEvent.click((await screen.findAllByRole('button', {name: /arrowHeadRight/i}))[0]);
 
             expect(screen.getByText(/february/i)).toBeVisible();
             expect(screen.getByText(/2000/i)).toBeVisible();

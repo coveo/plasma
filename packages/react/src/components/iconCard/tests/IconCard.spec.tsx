@@ -308,7 +308,6 @@ describe('IconCard', () => {
         render(
             <IconCard
                 title="title"
-                svgChild={svgChild}
                 cardClassName={['mod-fixed-size']}
                 description={
                     <ul>

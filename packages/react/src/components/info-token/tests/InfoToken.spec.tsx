@@ -184,20 +184,18 @@ describe('InfoToken', () => {
         expect(largeToken).toHaveClass('filled');
     });
 
-    it('allows additional classes to be passed down to the token through svgClassName', () => {
+    it('allows additional classes to be passed down to the token through classnam', async () => {
         render(
             <InfoToken
                 type={InfoTokenType.Tip}
                 mode={InfoTokenMode.Stroked}
                 size={InfoTokenSize.Large}
-                svgClassName="no-link"
-                className="class-on-span"
+                className="my-class"
             />
         );
 
-        const largeToken = screen.getByRole('img', {name: 'ideaStrokedLarge icon'});
+        const largeToken = await screen.findByRole('img', {name: 'tip'});
         expect(largeToken).toBeInTheDocument();
-        expect(largeToken).toHaveClass('no-link');
-        expect(largeToken).not.toHaveClass('class-on-span');
+        expect(largeToken).toHaveClass('my-class');
     });
 });

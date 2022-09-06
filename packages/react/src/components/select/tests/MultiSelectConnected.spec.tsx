@@ -282,7 +282,7 @@ describe('Select', () => {
                 expect(listitems[0]).toHaveTextContent('🥔');
             });
 
-            it('does not allow to drag items across different multi selects', () => {
+            it('does not allow to drag items across different multi selects', async () => {
                 render(
                     <>
                         <MultiSelectConnected
@@ -312,7 +312,7 @@ describe('Select', () => {
                 expect(listitems[2]).toHaveTextContent('🔨');
                 expect(listitems[3]).toHaveTextContent('🔧');
 
-                const dragIcons = screen.getAllByRole('img', {name: /drag/i});
+                const dragIcons = await screen.findAllByRole('img', {name: /drag/i});
                 dragAndDrop(dragIcons[1], 2);
 
                 listitems = screen.getAllByRole('listitem');

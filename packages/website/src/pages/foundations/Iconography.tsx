@@ -29,7 +29,7 @@ const IconSetCard: FunctionComponent<IconSet> = ({iconName, variants}) => (
                     return IconComponent ? (
                         <tr key={svgName}>
                             <td className="mod-no-border-bottom">
-                                <SvgComponent height={size} />
+                                <IconComponent height={size} />
                             </td>
                             <td className="mod-no-border-bottom">{svgName}</td>
                         </tr>
