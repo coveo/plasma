@@ -1,3 +1,12 @@
+## 46.0.2-next.1 (2022-09-07)
+
+
+### Bug Fixes
+
+* **style:** fix some bad merge conflicts ([53c89c1](https://github.com/coveo/plasma/commits/53c89c1de4fbfee2017a196b6e5b1066ef1f761d))
+
+
+
 ## 46.0.2-next.0 (2022-09-06)
 
 
