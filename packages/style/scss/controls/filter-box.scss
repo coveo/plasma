@@ -41,6 +41,7 @@
 
     > .filter-box-icon {
         position: relative;
+        color: var(--grey-100);
 
         &.hidden {
             display: none;
@@ -48,12 +49,6 @@
 
         &.clear-icon {
             cursor: pointer;
-        }
-
-        svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--icon-color);
         }
     }
 
