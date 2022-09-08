@@ -145,8 +145,9 @@ export const IconCard: FunctionComponent<HTMLAttributes<HTMLDivElement> & IconCa
                     aria-expanded={isOpen}
                 >
                     <div
-                        className={classNames('logo overflow-hidden mod-rounded-border-4 mr3', {
+                        className={classNames('logo mod-rounded-border-4 mr3', {
                             'custom-logo-size': customIconSize,
+                            'overflow-hidden': !customIconSize,
                         })}
                     >
                         {icon}
