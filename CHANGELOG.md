@@ -1,3 +1,12 @@
+## 46.0.2-next.2 (2022-09-08)
+
+
+### Bug Fixes
+
+* **iconcard:** remove overflow hidden for custom logo img ([b51adba](https://github.com/coveo/plasma/commits/b51adbaf69c8590a739fa676363f7093d816db8c))
+
+
+
 ## 46.0.2-next.1 (2022-09-07)
 
 
