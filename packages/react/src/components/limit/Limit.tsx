@@ -54,6 +54,8 @@ export interface LimitOwnProps {
     onHistoryIconClick?: () => void;
 }
 
+const isANumber = (n: any): n is number => typeof n === 'number' && !Number.isNaN(n);
+
 /**
  * @deprecated Use Mantine instead
  */
@@ -100,12 +102,13 @@ const ContentDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
     </div>
 );
 
-const UsageDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage}) => (
-    <div className="limit-box-usage">
-        <label className="form-control-label">Usage</label>
-        <span className="limit-box-usage-value">{Number(usage ?? 0).toLocaleString()}</span>
-    </div>
-);
+const UsageDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage}) =>
+    isANumber(usage) ? (
+        <div className="limit-box-usage">
+            <label className="form-control-label">Usage</label>
+            <span className="limit-box-usage-value">{usage.toLocaleString()}</span>
+        </div>
+    ) : null;
 
 const LimitDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
     id,
@@ -114,25 +117,30 @@ const LimitDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
     isLimitEditable,
     limitLabel,
 }) => {
-    const limitValueString: string = limit?.toString();
-    const minLimitValue: number = usage ?? 0;
     const dispatch: IDispatch = useDispatch();
-    return isLimitEditable ? (
-        <InputConnected
-            id={id}
-            type="number"
-            labelTitle={limitLabel}
-            defaultValue={limitValueString}
-            min={minLimitValue}
-            classes="limit-box-limit form-group input-field validate"
-            onChange={(limitValue: string) => dispatch(changeInputValue(id, limitValue, true))}
-        />
-    ) : (
+
+    if (isLimitEditable) {
+        const limitValueString: string = limit?.toString() ?? '';
+        const minLimitValue: number = usage ?? 0;
+        return (
+            <InputConnected
+                id={id}
+                type="number"
+                labelTitle={limitLabel}
+                defaultValue={limitValueString}
+                min={minLimitValue}
+                classes="limit-box-limit form-group input-field validate"
+                onChange={(limitValue: string) => dispatch(changeInputValue(id, limitValue, true))}
+            />
+        );
+    }
+
+    return isANumber(limit) ? (
         <div className="limit-box-limit">
             <label className="form-control-label">{limitLabel}</label>
-            <span className="limit-box-limit-value">{Number(limit ?? 0).toLocaleString()}</span>
+            <span className="limit-box-limit-value">{limit.toLocaleString()}</span>
         </div>
-    );
+    ) : null;
 };
 
 const ProgressBar: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage, isLimitTheGoalToReach, limit}) => {
