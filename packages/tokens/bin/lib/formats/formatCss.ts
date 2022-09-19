@@ -2,7 +2,7 @@ import {kebabCase} from 'lodash';
 
 import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from './token';
 
-const formatCssVariableName = (name: string): string => kebabCase(name);
+const formatCssVariableName = (name: string): string => `plasma-${kebabCase(name)}`;
 
 const formatVariable = (name: string, value: string | number): string => `--${name}: ${value};`;
 

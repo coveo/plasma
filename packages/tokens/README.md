@@ -25,9 +25,9 @@ Tokens are provided through multiple outputs. Choose the format that best suits 
 ### TypeScript
 
 ```ts
-import {color} from '@coveord/plasma-tokens';
+import * as PlasmaTokens from '@coveord/plasma-tokens';
 
-color.primary.actionBlue[6]; // '#1372ec'
+PlasmaTokens.color.primary.actionBlue[6]; // '#1372ec'
 ```
 
 ### Sass
@@ -38,7 +38,7 @@ color.primary.actionBlue[6]; // '#1372ec'
 @import '~@coveord/plasma-tokens/scss/Colors';
 
 .something {
-    background-color: $color-primary-action-blue-6;
+    background-color: $plasma-color-primary-action-blue-6;
 }
 ```
 
@@ -54,7 +54,7 @@ Tokens in CSS are exposed as [CSS variables](https://developer.mozilla.org/en-US
 
 ```css
 .something {
-    background-color: var(--color-primary-action-blue-6);
+    background-color: var(--plasma-color-primary-action-blue-6);
 }
 ```
 

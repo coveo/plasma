@@ -22,13 +22,13 @@ const ColorBlock: FunctionComponent<{colorName: string; colorValue: string}> = (
                 <tr>
                     <td>SCSS</td>
                     <td>
-                        <span className="code">${kebabCase(colorName)}</span>
+                        <span className="code">$plasma-{kebabCase(colorName)}</span>
                     </td>
                 </tr>
                 <tr>
                     <td>CSS</td>
                     <td>
-                        <span className="code">--{kebabCase(colorName)}</span>
+                        <span className="code">--plasma-{kebabCase(colorName)}</span>
                     </td>
                 </tr>
             </table>
