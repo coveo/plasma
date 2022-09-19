@@ -1,5 +1,6 @@
 import {appendFileSync, outputFileSync} from 'fs-extra';
 
+import {formatCss} from './formats/formatCss';
 import {formatScss} from './formats/formatScss';
 import {formatSvg} from './formats/formatSvg';
 import {formatTs} from './formats/formatTs';
@@ -7,6 +8,7 @@ import {TokenList} from './formats/token';
 
 export const generateTokens = (name: string, tokens: TokenList) => {
     [
+        {filePath: `${name}.css`, outputFormat: 'css'},
         {filePath: `${name}.scss`, outputFormat: 'scss'},
         {filePath: `${name}.ts`, outputFormat: 'ts'},
         {outputFormat: 'svg'},
@@ -22,6 +24,11 @@ export const generateTokens = (name: string, tokens: TokenList) => {
             if (output) {
                 outputFileSync('./scss/' + filePath, output);
                 appendFileSync('./scss/index.scss', `@import '${name}';\n`);
+            }
+        } else if (outputFormat === 'css') {
+            const output = formatCss(tokens);
+            if (output) {
+                outputFileSync('./css/' + filePath, output);
             }
         } else if (outputFormat === 'svg') {
             const outputs = formatSvg(tokens);

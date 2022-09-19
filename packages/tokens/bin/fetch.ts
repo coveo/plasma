@@ -23,10 +23,10 @@ const fetchIconSvgMarkup = async ([iconNodeId, iconUrl]: [string, string]): Prom
 };
 
 const getLibraryData = async (library: LibraryName) => {
-    console.log(`Fetching "${library}" library.`);
+    console.info(`Fetching "${library}" library.`);
     const libraryContent = await fetchLibrary(library);
     writeJsonSync(`./data/${library.toLowerCase()}Library.json`, libraryContent, {spaces: 4});
-    console.log(`${library} library done.`);
+    console.info(`${library} library done.`);
     return libraryContent;
 };
 
@@ -39,17 +39,17 @@ const getIconsLibrary = async () => {
         []
     );
 
-    console.log(`Detected ${iconsNodeId.length} icons, starting to fetch icons markup in chunks of size ${chunkSize}`);
+    console.info(`Detected ${iconsNodeId.length} icons, starting to fetch icons markup in chunks of size ${chunkSize}`);
 
     const {data} = await figmaClient.fileImages(FilesId.Icons, {ids: iconsNodeId, format: 'svg'});
     const iconsChunks = {
         async *[Symbol.asyncIterator]() {
             const chunks = chunk(Object.entries(data.images), chunkSize);
             for (let i = 0; i < chunks.length; i++) {
-                console.log(`Fetching chunks... (${i + 1}/${chunks.length})`);
+                console.info(`Fetching chunks... (${i + 1}/${chunks.length})`);
                 yield await Promise.all(chunks[i].map(fetchIconSvgMarkup));
             }
-            console.log('Icons markup done.');
+            console.info('Icons markup done.');
         },
     };
 
@@ -64,7 +64,7 @@ const getIconsLibrary = async () => {
 };
 
 const getLibrariesData = async (libraries: LibraryName[]) => {
-    console.log('Starting to fetch data from the following Figma libraries:', libraries);
+    console.info('Starting to fetch data from the following Figma libraries:', libraries);
 
     if (libraries.includes('Icons')) {
         const librariesOtherThanIcons = libraries.filter((library) => library !== 'Icons');

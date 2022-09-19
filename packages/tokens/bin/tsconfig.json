@@ -1,4 +1,5 @@
 {
+    "ts-node": {"files": true},
     "compilerOptions": {
         "strict": true,
         "types": ["Node"],
@@ -7,5 +8,5 @@
         "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node"
     },
-    "include": ["**/*.ts"]
+    "include": ["**/*.ts", "types"]
 }
