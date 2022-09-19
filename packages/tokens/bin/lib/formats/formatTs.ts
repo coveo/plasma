@@ -38,7 +38,8 @@ const formatTsToken = (token: Token | TokenGroup | TokenEnum): string => {
     }
 
     const value = formatTsVariableValue(token);
-    return value === '' ? value : `export const ${token.name} = ${value};\n`;
+    const name = formatTsVariableName(token.name);
+    return value === '' ? value : `export const ${name} = ${value};\n`;
 };
 
 export const formatTs = (tokens: TokenList): string => tokens.reduce((memo, token) => memo + formatTsToken(token), '');

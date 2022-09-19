@@ -11,6 +11,7 @@ import '../styles/props-doc.scss';
 import '../styles/sandbox.scss';
 import '../styles/spacing.scss';
 import '../styles/tile.scss';
+import '../styles/colors.scss';
 
 import * as PlasmaReact from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
