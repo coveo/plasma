@@ -36,6 +36,16 @@ const ColorBlock: FunctionComponent<{colorName: string; colorValue: string}> = (
     </div>
 );
 
+const primaryFirst = (a: string, b: string) => {
+    if (a === 'primary') {
+        return -1;
+    }
+    if (b === 'primary') {
+        return 1;
+    }
+    return 0;
+};
+
 const ColorGroup: FunctionComponent<{name: string; value: any}> = ({name, value}) => {
     if (!isColorGroup(value)) {
         return <ColorBlock colorName={name} colorValue={value} />;
@@ -44,7 +54,8 @@ const ColorGroup: FunctionComponent<{name: string; value: any}> = ({name, value}
     return (
         <>
             {Object.keys(value)
-                .sort()
+                .sort() // Alphabetical
+                .sort(primaryFirst)
                 .sort((a, b) => Number(isColorGroup(value[a])) - Number(isColorGroup(value[b]))) // ColorBlock first
                 .map((child) => {
                     const isColorBlock = !isColorGroup(value[child]);
