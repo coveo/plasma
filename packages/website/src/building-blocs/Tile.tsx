@@ -19,6 +19,7 @@ import typekitPng from '../../resources/thumbnail_Typekit.png';
 import toastSvg from '../../resources/thumbnail_Toast.svg';
 import tooltipSvg from '../../resources/thumbnail_Tooltip.svg';
 import subnavigationSvg from '../../resources/thumbnail_Subnavigation.svg';
+import palettePng from '../../resources/thumbnail_Palette.png';
 
 const thumbnails = {
     placeholder: placeholderPng,
@@ -38,6 +39,7 @@ const thumbnails = {
     toast: toastSvg,
     tooltip: tooltipSvg,
     subNavigation: subnavigationSvg,
+    colors: palettePng,
 };
 export interface TileProps {
     title?: string;

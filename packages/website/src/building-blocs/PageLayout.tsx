@@ -19,7 +19,7 @@ const PropsDoc = dynamic(
 
 interface PlaygroundProps {
     title: string;
-    code: string;
+    code?: string;
     layout?: 'horizontal' | 'vertical';
 }
 
@@ -96,11 +96,13 @@ const Content: FunctionComponent<Pick<
     'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable'
 >> = ({code, examples, id, relatedComponents, layout, withPropsTable, children}) => (
     <>
-        <div className="plasma-page-layout__main-code plasma-page-layout__section">
-            <Sandbox id="main-code" horizontal={layout === 'horizontal'}>
-                {code}
-            </Sandbox>
-        </div>
+        {code && (
+            <div className="plasma-page-layout__main-code plasma-page-layout__section">
+                <Sandbox id="main-code" horizontal={layout === 'horizontal'}>
+                    {code}
+                </Sandbox>
+            </div>
+        )}
 
         {withPropsTable && (
             <div className="plasma-page-layout__section">
