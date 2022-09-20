@@ -1,3 +1,14 @@
+## 46.0.2-next.3 (2022-09-20)
+
+
+### Features
+
+* **lading-spinner:** fix width that change the proportion of the spinner ([#2836](https://github.com/coveo/plasma/issues/2836)) ([ea39f0f](https://github.com/coveo/plasma/commits/ea39f0f75138c2f85f54ea0e84d6f8850f331ded))
+* **tokens,website:** color tokens extraction ([#2837](https://github.com/coveo/plasma/issues/2837)) ([c4718fe](https://github.com/coveo/plasma/commits/c4718fe5054c64a489608a4d2da61a8ccbba206f))
+* **tokens:** fetch icons by chunks of 100 ([#2835](https://github.com/coveo/plasma/issues/2835)) ([2b79aa3](https://github.com/coveo/plasma/commits/2b79aa3bb29581f9ac0b2ec7314b8e17bd911f6a))
+
+
+
 ## 46.0.2-next.2 (2022-09-08)
 
 
