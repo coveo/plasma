@@ -12,9 +12,7 @@ describe('Limit', () => {
     });
 
     it('renders Limit component with custom values', async () => {
-        render(
-            <Limit id="🆔" title="My limit" usage={33} limit={130} limitLabel="Threshold" isHistoryIncluded={true} />
-        );
+        render(<Limit id="🆔" title="My limit" usage={33} limit={130} limitLabel="Threshold" isHistoryIncluded />);
 
         expect(screen.getByText(/usage/i)).toBeInTheDocument();
         expect(screen.getByText(/threshold/i)).toBeInTheDocument();
@@ -24,7 +22,7 @@ describe('Limit', () => {
     });
 
     it('renders an editable Limit component when editable', () => {
-        render(<Limit id="🆔" title="My limit" limit={100} usage={33} isLimitEditable={true} />);
+        render(<Limit id="🆔" title="My limit" limit={100} usage={33} isLimitEditable />);
         expect(
             screen.getByRole('spinbutton', {
                 name: /limit/i,
@@ -41,7 +39,7 @@ describe('Limit', () => {
 
     it('calls the onClick method on history icon onClick', async () => {
         const clickSpy = jest.fn();
-        render(<Limit id="🆔" title="My limit" limit={100} isHistoryIncluded={true} onHistoryIconClick={clickSpy} />);
+        render(<Limit id="🆔" title="My limit" limit={100} isHistoryIncluded onHistoryIconClick={clickSpy} />);
         const historyIcon = await screen.findByRole('button', {name: /chart/i});
         userEvent.click(historyIcon);
 
@@ -59,5 +57,56 @@ describe('Limit', () => {
         render(<Limit id="🆔" title="My limit" limit={0} limitLabel="abcde" />);
 
         expect(screen.getByText(/abcde/i)).toBeInTheDocument();
+    });
+
+    it('hides the limit label when the limit value is undefined', () => {
+        render(<Limit id="🆔" title="My limit" limit={undefined} limitLabel="abcde" />);
+
+        expect(screen.queryByText(/abcde/i)).not.toBeInTheDocument();
+    });
+
+    it('hides the usage label when the usage value is undefined', () => {
+        render(<Limit id="🆔" title="My limit" usage={undefined} />);
+
+        expect(screen.queryByText(/usage/i)).not.toBeInTheDocument();
+    });
+
+    it('hides both the usage and the limit when they are undefined', () => {
+        const {container} = render(<Limit id="🆔" title="My limit" />);
+
+        expect(container).toMatchInlineSnapshot(`
+            <div
+              id="app"
+            >
+              <div
+                class="limit-box mb2"
+              >
+                <div
+                  class="limit-box-main p2 pb1"
+                >
+                  <div
+                    class="flex space-between"
+                  >
+                    <label
+                      class="form-control-label"
+                    >
+                       
+                      My limit
+                    </label>
+                  </div>
+                  <div
+                    class="limit-box-numbers pt1 flex"
+                  />
+                </div>
+                <div
+                  class="limit-box-footer no-limit"
+                >
+                  <div
+                    class=""
+                  />
+                </div>
+              </div>
+            </div>
+        `);
     });
 });

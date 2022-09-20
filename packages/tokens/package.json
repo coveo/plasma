@@ -9,39 +9,43 @@
         "directory": "packages/tokens"
     },
     "license": "Apache-2.0",
+    "main": "./dist/index.js",
     "files": [
         "dist",
         "icons",
-        "scss"
+        "scss",
+        "css"
     ],
     "scripts": {
         "build": "rimraf dist && tsc --project tsconfig.json",
         "precommit": "lint-staged",
         "tokens:build": "ts-node ./bin/build.ts --project ./bin/tsconfig.json && pnpm tokens:lint",
         "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
-        "tokens:lint": "prettier --write \"{src,scss,data}/*.{scss,ts,tsx,json}\""
+        "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "lint-staged": {
         "package.json": [
             "sort-package-json",
             "git add"
         ],
-        "**/*.{ts,tsx,json,md,scss}": [
+        "**/*.{ts,tsx,json,md,scss,css}": [
             "prettier --write",
             "git add"
         ]
     },
     "prettier": "tsjs/prettier-config",
     "devDependencies": {
+        "@types/chroma-js": "2.1.4",
         "@types/fs-extra": "9.0.13",
         "@types/lodash": "4.14.182",
         "@types/node": "16.11.32",
         "@types/rimraf": "3.0.2",
         "@types/svgo": "2.6.3",
+        "chroma-js": "2.4.2",
         "commander": "9.2.0",
         "cross-fetch": "3.1.5",
         "dotenv-safe": "8.2.0",
-        "figma-js": "1.15.0",
+        "figma-js": "1.16.0",
         "fs-extra": "10.1.0",
         "lint-staged": "9.5.0",
         "lodash": "4.17.21",

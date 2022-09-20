@@ -14,6 +14,6 @@ export const LoadingSpinner: FunctionComponent<LoadingSpinnerProps> = ({size = 2
         role="alert"
         aria-busy="true"
         className={classNames('loading-spinner', className)}
-        style={{width: size, height: size}}
+        style={{width: size, height: size, minWidth: size}}
     />
 );

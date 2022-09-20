@@ -2,9 +2,9 @@ import {kebabCase} from 'lodash';
 
 import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from './token';
 
-const formatScssVariableName = (name: string): string => kebabCase(name);
+const formatScssVariableName = (name: string): string => `plasma-${kebabCase(name)}`;
 
-const formatVariable = (name: string, value: string | number): string => `--${name}: ${value};`;
+const formatVariable = (name: string, value: string | number): string => `$${name}: ${value};`;
 
 const formatClass = (name: string, value: Record<string, string | number>): string => {
     const styles = Object.entries(value).map(
@@ -31,7 +31,7 @@ const filterTokens = (tokens: TokenList, type: Token['type']): Token[] => {
 
     const filterToken = (token: Token | TokenGroup | TokenEnum) => {
         if (isTokenGroup(token)) {
-            token.children.forEach(filterToken);
+            token.children.map((child) => ({...child, name: `${token.name}-${child.name}`})).forEach(filterToken);
         } else if (!isTokenEnum(token) && token.type === type) {
             filteredTokens.push(token);
         }
@@ -48,7 +48,7 @@ export const formatScss = (tokens: TokenList): string => {
     let output = '';
 
     if (variables.length > 0) {
-        output += `:root {\n\t${variables.join('\n\t')}\n}\n`;
+        output += variables.join('\n') + '\n';
     }
 
     if (classes.length > 0) {

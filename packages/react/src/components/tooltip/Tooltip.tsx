@@ -1,4 +1,4 @@
-import {ClassAttributes, ReactNode, ReactText, Component} from 'react';
+import {Component, ReactNode, ReactText} from 'react';
 import {OverlayInjectedProps} from 'react-bootstrap/esm/Overlay';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import BootstrapTooltip from 'react-bootstrap/Tooltip';
@@ -24,7 +24,7 @@ export interface IOverlayTriggerProps {
     trigger?: string | string[];
 }
 
-export interface ITooltipProps extends IOverlayTriggerProps, ClassAttributes<Tooltip> {
+export interface ITooltipProps extends IOverlayTriggerProps {
     /**
      * The text displayed inside the tooltip
      */

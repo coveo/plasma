@@ -1,6 +1,11 @@
+$limit-box-width: 300px;
+$limit-box-height: 124px;
+$limit-progress-bar-height: 10px;
+
 .limit-box {
     width: $limit-box-width;
     min-width: $limit-box-width;
+    min-height: $limit-box-height;
     border: $default-border;
     border-radius: $border-radius;
 }

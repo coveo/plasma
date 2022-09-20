@@ -1,7 +1,8 @@
 import {program} from 'commander';
+import fetch from 'cross-fetch';
 import {Client, Frame} from 'figma-js';
 import {writeJsonSync} from 'fs-extra';
-import fetch from 'cross-fetch';
+import {chunk} from 'lodash';
 
 import {getPage} from './lib/figma';
 import {FilesId, LibraryName, PagesId} from './lib/mappings';
@@ -22,12 +23,15 @@ const fetchIconSvgMarkup = async ([iconNodeId, iconUrl]: [string, string]): Prom
 };
 
 const getLibraryData = async (library: LibraryName) => {
+    console.info(`Fetching "${library}" library.`);
     const libraryContent = await fetchLibrary(library);
     writeJsonSync(`./data/${library.toLowerCase()}Library.json`, libraryContent, {spaces: 4});
+    console.info(`${library} library done.`);
     return libraryContent;
 };
 
 const getIconsLibrary = async () => {
+    const chunkSize = 100;
     const iconsLibrary = await getLibraryData('Icons');
     const {children} = getPage(iconsLibrary, PagesId.Icons[0]);
     const iconsNodeId = (children as Frame[])?.reduce<string[]>(
@@ -35,20 +39,32 @@ const getIconsLibrary = async () => {
         []
     );
 
+    console.info(`Detected ${iconsNodeId.length} icons, starting to fetch icons markup in chunks of size ${chunkSize}`);
+
     const {data} = await figmaClient.fileImages(FilesId.Icons, {ids: iconsNodeId, format: 'svg'});
+    const iconsChunks = {
+        async *[Symbol.asyncIterator]() {
+            const chunks = chunk(Object.entries(data.images), chunkSize);
+            for (let i = 0; i < chunks.length; i++) {
+                console.info(`Fetching chunks... (${i + 1}/${chunks.length})`);
+                yield await Promise.all(chunks[i].map(fetchIconSvgMarkup));
+            }
+            console.info('Icons markup done.');
+        },
+    };
 
-    const fetchedIcons = await Promise.all(Object.entries(data.images).map(fetchIconSvgMarkup));
     const output: Record<string, string> = {};
-
-    fetchedIcons.forEach(([iconNodeId, iconSvgMarkup]) => {
-        output[iconNodeId] = iconSvgMarkup;
-    });
+    for await (const fetchedIcons of iconsChunks) {
+        fetchedIcons.forEach(([iconNodeId, iconSvgMarkup]) => {
+            output[iconNodeId] = iconSvgMarkup;
+        });
+    }
 
     writeJsonSync(`./data/icons.json`, output, {spaces: 4});
 };
 
 const getLibrariesData = async (libraries: LibraryName[]) => {
-    console.log('Fetching data from the following Figma libraries:', libraries);
+    console.info('Starting to fetch data from the following Figma libraries:', libraries);
 
     if (libraries.includes('Icons')) {
         const librariesOtherThanIcons = libraries.filter((library) => library !== 'Icons');
