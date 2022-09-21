@@ -1,7 +1,6 @@
+import {UndoSize32Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, FunctionComponent} from 'react';
-
-import {Svg} from '../svg';
+import {FunctionComponent, ReactNode} from 'react';
 
 export interface BrowserPreviewEmptyProps {
     onClick?: () => void;
@@ -18,7 +17,7 @@ export const BrowserPreviewEmpty: FunctionComponent<BrowserPreviewEmptyProps> = 
             'cursor-pointer': onClick,
         })}
     >
-        {image ?? <Svg svgName="arrowLeftReturn" className="block" />}
+        {image ?? <UndoSize32Px style={{color: 'var(--info-60)'}} />}
         <p className="medium-title-text mt2 flex flex-column center-align center">{children}</p>
     </div>
 );

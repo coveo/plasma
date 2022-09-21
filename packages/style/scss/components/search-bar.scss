@@ -29,18 +29,14 @@
     svg {
         width: $search-bar-icon-size;
         height: $search-bar-icon-size;
+        color: var(--navy-blue-80);
         cursor: pointer;
-        fill: var(--navy-blue-80);
     }
 }
 
-.search-bar-disabled svg {
-    cursor: default;
-    fill: var(--deprecated-light-grey);
-}
-
 .search-icon-disabled {
-    fill: var(--grey-40);
+    color: var(--grey-40);
+    cursor: default;
 }
 
 .search-bar-loading .search-bar-icon-container {

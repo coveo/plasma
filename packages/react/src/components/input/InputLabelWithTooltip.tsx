@@ -1,7 +1,7 @@
 import {FunctionComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils';
-import {Svg} from '../svg';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 import {Tooltip} from '../tooltip';
 import {Label} from './Label';
 
@@ -22,7 +22,12 @@ export const InputLabelWithTooltip: FunctionComponent<InputLabelWithTooltipProps
     <Label invalidMessage={invalidMessage}>
         {label}
         <Tooltip title={tooltip} placement={TooltipPlacement.Right}>
-            <Svg svgName="info" svgClass="icon documentation-link mod-16 ml1" />
+            <InfoToken
+                mode={InfoTokenMode.Stroked}
+                size={InfoTokenSize.Small}
+                type={InfoTokenType.Information}
+                className="ml1"
+            />
         </Tooltip>
     </Label>
 );

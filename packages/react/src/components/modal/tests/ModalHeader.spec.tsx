@@ -2,8 +2,9 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
-import {ILinkSvgProps} from '../../svg/LinkSvg';
-import {Svg} from '../../svg/Svg';
+import {ILinkSvgProps} from '../../linkSvg/LinkSvg';
+import {Svg} from '../../linkSvg/Svg';
+import {Title} from '../../title';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
 
@@ -93,10 +94,8 @@ describe('ModalHeader', () => {
             const docLink: ILinkSvgProps = {url: 'testomax', tooltip: {title: 'doclinktooltip'}};
             modal.setProps({docLink});
 
-            expect(modal.find(Tooltip).exists()).toBe(true);
-            expect(modal.find(Tooltip).props().title).toBe(docLink.tooltip.title);
-            expect(modal.find('a').props().href).toBe(docLink.url);
-            expect(modal.find(Svg).props().svgName).toBe('help');
+            expect(modal.find(Title).exists()).toBe(true);
+            expect(modal.find(Title).props().documentationLink).toBe(docLink);
         });
     });
 });

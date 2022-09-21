@@ -1,8 +1,6 @@
-import {svg} from '@coveord/plasma-style';
-import {HTMLProps, ReactNode, FunctionComponent, useRef} from 'react';
+import {DragAndDropSize24Px} from '@coveord/plasma-react-icons';
+import {FunctionComponent, HTMLProps, ReactNode, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
-
-import {Svg} from '../svg/Svg';
 
 export interface IDraggableContainerOwnProps {
     id: string;
@@ -27,7 +25,7 @@ type DragItem = {id: string};
 export const DnDContainer: FunctionComponent<IDraggableContainerOwnProps> = ({
     draggableContainerProps = {className: 'flex flex-center'},
     draggableIconProps = {},
-    icon = <Svg svgName={svg.dragDrop.name} svgClass="icon" />,
+    icon = <DragAndDropSize24Px className="mb2 mr1" />,
     children,
     isDraggable = true,
     onMoveOver,

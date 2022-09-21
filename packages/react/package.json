@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "46.0.1",
+    "version": "46.0.2-next.3",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -64,6 +64,7 @@
     },
     "prettier": "tsjs/prettier-config",
     "dependencies": {
+        "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-style": "workspace:*",
         "@loadable/component": "5.15.2",
         "@swc/helpers": "0.3.9",

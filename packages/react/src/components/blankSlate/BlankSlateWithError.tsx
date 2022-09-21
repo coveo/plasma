@@ -1,7 +1,6 @@
-import {svg} from '@coveord/plasma-style';
+import {CriticalSize24Px} from '@coveord/plasma-react-icons';
 import {ComponentClass, PureComponent} from 'react';
 
-import {Svg} from '../svg/Svg';
 import {IBlankSlateProps} from './BlankSlate';
 
 /**
@@ -15,7 +14,7 @@ export const blankSlateWithError = (Component: ComponentClass<IBlankSlateProps>)
                     {...this.props}
                     title={
                         <div className="flex center-align">
-                            <Svg svgName={svg.info.name} className="icon mr1 flex center-align" />
+                            <CriticalSize24Px className="mr1" />
                             {this.props.title}
                         </div>
                     }

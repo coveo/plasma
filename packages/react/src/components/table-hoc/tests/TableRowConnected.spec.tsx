@@ -11,6 +11,7 @@ import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from '../actions/TableHOCRowActions';
 import {ITableRowConnectedProps, TableRowConnected} from '../TableRowConnected';
 import {TableSelectors} from '../TableSelectors';
+import {Button} from '../../button/Button';
 
 describe('Table HOC', () => {
     describe('TableRowConnected', () => {
@@ -436,10 +437,7 @@ describe('Table HOC', () => {
                 shallowComponent();
                 const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id);
 
-                wrapper.find(CollapsibleToggle).simulate('click', {
-                    preventDefault: jest.fn(),
-                    stopPropagation: jest.fn(),
-                });
+                wrapper.find(Button).simulate('click');
 
                 expect(store.getActions()).toContainEqual(expectedAction);
             });
@@ -578,10 +576,7 @@ describe('Table HOC', () => {
                 .dive()
                 .dive();
 
-            row.find(CollapsibleToggle).simulate('click', {
-                preventDefault: jest.fn(),
-                stopPropagation: jest.fn(),
-            });
+            row.find(Button).simulate('click');
 
             expect(spy).toHaveBeenCalledWith(true);
         });
@@ -613,10 +608,7 @@ describe('Table HOC', () => {
                 .dive()
                 .dive();
 
-            row.find(CollapsibleToggle).simulate('click', {
-                preventDefault: jest.fn(),
-                stopPropagation: jest.fn(),
-            });
+            row.find(Button).simulate('click');
 
             expect(spy).toHaveBeenCalledWith(false);
         });

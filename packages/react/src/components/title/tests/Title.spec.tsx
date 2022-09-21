@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 import {render, screen} from '@test-utils';
 
 import {fireEvent, within} from '@testing-library/react';
-import {ILinkSvgProps, LinkSvg} from '../../svg/LinkSvg';
+import {ILinkSvgProps, LinkSvg} from '../../linkSvg/LinkSvg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {ITitleProps, Title} from '../Title';
 
@@ -55,10 +55,6 @@ describe('<Title/>', () => {
         const documentationLink: ILinkSvgProps = {
             url: 'https://www.google.ca',
             target: '_blank',
-            svg: {
-                svgName: 'help',
-                svgClass: 'icon mod-20',
-            },
         };
 
         const renderTitle = (props: Partial<ITitleProps> = {}) => {

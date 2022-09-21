@@ -69,7 +69,7 @@ export * from './statusCard';
 export * from './stepProgressBar';
 export * from './stickyFooter';
 export * from './subNavigation';
-export * from './svg';
+export * from './linkSvg';
 export * from './syncFeedback';
 export * from './tab';
 export * from './tab';

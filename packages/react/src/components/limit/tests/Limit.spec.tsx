@@ -11,14 +11,14 @@ describe('Limit', () => {
         expect(screen.getByText(/my limit/i)).toBeInTheDocument();
     });
 
-    it('renders Limit component with custom values', () => {
+    it('renders Limit component with custom values', async () => {
         render(<Limit id="🆔" title="My limit" usage={33} limit={130} limitLabel="Threshold" isHistoryIncluded />);
 
         expect(screen.getByText(/usage/i)).toBeInTheDocument();
         expect(screen.getByText(/threshold/i)).toBeInTheDocument();
         expect(screen.getByText(/130/i)).toBeInTheDocument();
         expect(screen.getByText(/33/i)).toBeInTheDocument();
-        expect(screen.getByLabelText(/menuanalytics icon/i)).toBeInTheDocument();
+        expect(await screen.findByRole('button', {name: /chart/i})).toBeInTheDocument();
     });
 
     it('renders an editable Limit component when editable', () => {
@@ -37,10 +37,10 @@ describe('Limit', () => {
         expect(screen.queryByText(/130/i)).not.toBeInTheDocument();
     });
 
-    it('calls the onClick method on history icon onClick', () => {
+    it('calls the onClick method on history icon onClick', async () => {
         const clickSpy = jest.fn();
         render(<Limit id="🆔" title="My limit" limit={100} isHistoryIncluded onHistoryIconClick={clickSpy} />);
-        const historyIcon = screen.getByLabelText(/menuanalytics icon/i);
+        const historyIcon = await screen.findByRole('button', {name: /chart/i});
         userEvent.click(historyIcon);
 
         expect(clickSpy).toHaveBeenCalled();

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ReactNode, FunctionComponent, ComponentType, useEffect} from 'react';
+import {ComponentType, FunctionComponent, ReactNode, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
@@ -122,8 +122,7 @@ export const CollapsibleDisconnected: FunctionComponent<
                 {collapsibleToggleIcon || (
                     <CollapsibleToggle
                         expanded={expanded}
-                        svgClassName={classNames(toggleIconClassName, {disabled})}
-                        className="mr2"
+                        className={classNames('mr2', toggleIconClassName, {disabled})}
                     />
                 )}
             </div>

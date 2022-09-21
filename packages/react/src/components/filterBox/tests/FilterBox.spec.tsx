@@ -7,7 +7,7 @@ import {FilterBox, FILTER_PLACEHOLDER, IFilterBoxProps} from '../FilterBox';
 describe('<FilterBox />', () => {
     let filterBox: ReactWrapper<IFilterBoxProps, any>;
 
-    it('render a filter box', () => {
+    it('renders a filter box', () => {
         render(<FilterBox />);
 
         expect(screen.getByRole('textbox')).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe('<FilterBox />', () => {
         expect(destroySpy).toHaveBeenCalled();
     });
 
-    it('calls onFilter when the filter input value has changed and prop is set', () => {
+    it('calls onFilter when the filter input value has changed and prop is set', async () => {
         const filterSpy = jest.fn();
 
         render(<FilterBox onFilter={filterSpy} />);
@@ -41,12 +41,12 @@ describe('<FilterBox />', () => {
 
         expect(filterSpy).not.toHaveBeenCalled();
 
-        userEvent.keyboard('F');
+        userEvent.type(await screen.findByRole('textbox'), 'F');
 
         expect(filterSpy).toHaveBeenCalled();
     });
 
-    it('calls onFilterCallback when the filter input value has changed and prop is set', () => {
+    it('calls onFilterCallback when the filter input value has changed and prop is set', async () => {
         const onFilterCallbackSpy = jest.fn();
 
         render(<FilterBox onFilterCallback={onFilterCallbackSpy} />);
@@ -55,7 +55,7 @@ describe('<FilterBox />', () => {
 
         expect(onFilterCallbackSpy).not.toHaveBeenCalled();
 
-        userEvent.keyboard('F');
+        userEvent.type(await screen.findByRole('textbox'), 'F');
 
         expect(onFilterCallbackSpy).toHaveBeenCalled();
     });
@@ -67,26 +67,26 @@ describe('<FilterBox />', () => {
 
         userEvent.click(screen.getByRole('textbox'));
         userEvent.keyboard('{enter}');
-        userEvent.tab(); // remove focus from thw input
+        userEvent.tab(); // remove focus from the input
 
         expect(onBlur).toHaveBeenCalled();
     });
 
-    it('calls onKeyDown when the input get a key down event', () => {
+    it('calls onKeyDown when the input get a key down event', async () => {
         const onKeyDownSpy = jest.fn();
 
         render(<FilterBox onKeyDown={onKeyDownSpy} />);
-        userEvent.click(screen.getByRole('textbox'));
+        userEvent.click(await screen.findByRole('textbox'));
         userEvent.keyboard('F');
 
         expect(onKeyDownSpy).toHaveBeenCalled();
     });
 
-    it('calls onKeyUp when the input get a key up event', () => {
+    it('calls onKeyUp when the input get a key up event', async () => {
         const onKeyUpSpy = jest.fn();
 
         render(<FilterBox onKeyUp={onKeyUpSpy} />);
-        userEvent.click(screen.getByRole('textbox'));
+        userEvent.click(await screen.findByRole('textbox'));
         userEvent.keyboard('F');
 
         expect(onKeyUpSpy).toHaveBeenCalled();
@@ -117,10 +117,10 @@ describe('<FilterBox />', () => {
         expect(screen.queryByPlaceholderText(FILTER_PLACEHOLDER)).not.toBeInTheDocument();
     });
 
-    it('render a filter icon by default', () => {
+    it('render a filter icon by default', async () => {
         render(<FilterBox />);
 
-        expect(screen.getByRole('img', {name: 'filter icon'})).toBeVisible();
+        expect(await screen.findByRole('img', {name: 'filter'})).toBeVisible();
     });
 
     it('does not render a cross icon by default', () => {

@@ -1,4 +1,4 @@
-import {SvgName} from '@coveord/plasma-style';
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ReactNode, MouseEvent, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
@@ -6,7 +6,6 @@ import {createStructuredSelector} from 'reselect';
 
 import {ConnectedProps, IDispatch, UrlUtils} from '../../utils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {TabActions} from './TabActions';
 import {TabSelectors} from './TabSelectors';
@@ -35,11 +34,7 @@ export interface ITabOwnProps {
     /**
      * Add an icon to the Tab
      */
-    icon?: SvgName;
-    /**
-     * Whether the mod-stroke is applied to the icon or not
-     */
-    iconModStroke?: boolean;
+    icon?: Icon;
     /**
      * Add a Badge to the Tab
      */
@@ -66,8 +61,7 @@ export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof e
  * @deprecated Use Mantine Tabs instead: https://mantine.dev/core/tabs/
  */
 export const Tab: FunctionComponent<ITabProps> = ({
-    icon,
-    iconModStroke,
+    icon: IconName,
     badge,
     tooltip,
     disabled,
@@ -113,9 +107,7 @@ export const Tab: FunctionComponent<ITabProps> = ({
                 onClick={handleSelect}
                 disabled={disabled}
             >
-                {icon ? (
-                    <Svg svgName={icon} svgClass={classNames('tab-icon mod-16', {'mod-stroke': iconModStroke})} />
-                ) : null}
+                {IconName ? <IconName height={16} className={'tab-icon'} /> : null}
                 {title}
                 {badge ?? null}
             </button>

@@ -1,7 +1,6 @@
+import {CrossSize16Px, FilterSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ClassAttributes, KeyboardEvent, FocusEvent, FormEvent, Component} from 'react';
-
-import {Svg} from '../svg/Svg';
+import {ClassAttributes, Component, FocusEvent, FormEvent, KeyboardEvent} from 'react';
 
 export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {
     /**
@@ -96,11 +95,11 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
 
     private handleIcons = (inputValue: string) => {
         if (inputValue.length !== 0) {
-            this.filterInput.nextElementSibling.classList.add('hidden'); // hide filter icon
-            this.filterInput.nextElementSibling.nextElementSibling.classList.remove('hidden'); // show clear icon
+            this.filterInput?.nextElementSibling?.classList?.add('hidden'); // hide filter icon
+            this.filterInput?.nextElementSibling?.nextElementSibling?.classList?.remove('hidden'); // show clear icon
         } else {
-            this.filterInput.nextElementSibling.classList.remove('hidden'); // show filter icon
-            this.filterInput.nextElementSibling.nextElementSibling.classList.add('hidden'); // hide clear icon
+            this.filterInput?.nextElementSibling?.classList?.remove('hidden'); // show filter icon
+            this.filterInput?.nextElementSibling?.nextElementSibling?.classList?.add('hidden'); // hide clear icon
         }
     };
 
@@ -176,18 +175,16 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
                         style={inputMaxWidth}
                         disabled={this.props.disabled}
                     />
-                    <Svg
-                        svgName="filter"
+                    <FilterSize16Px
+                        height={16}
                         className="flex filter-box-icon"
-                        svgClass="icon"
                         aria-hidden={!!this.filterInput?.value}
                     />
-                    <Svg
-                        svgName="clear"
+                    <CrossSize16Px
+                        height={16}
                         className="flex filter-box-icon clear-icon hidden"
-                        svgClass="icon"
                         onClick={() => this.clearValue()}
-                        aria-hidden={!!!this.filterInput?.value}
+                        aria-hidden={!this.filterInput?.value}
                     />
                 </div>
                 {this.props.children}

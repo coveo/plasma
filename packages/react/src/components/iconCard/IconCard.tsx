@@ -1,18 +1,17 @@
-import {SvgName} from '@coveord/plasma-style';
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, HTMLAttributes, FunctionComponent, MouseEventHandler, useState, Children} from 'react';
+import {Children, FunctionComponent, HTMLAttributes, MouseEventHandler, ReactNode, useState} from 'react';
 import {slugify} from 'underscore.string';
 
 import {SlideY} from '../../animations';
-import {Override, TooltipPlacement} from '../../utils';
+import {TooltipPlacement} from '../../utils';
 import {Badge, IBadgeProps} from '../badge/Badge';
-import {SvgChild, SvgChildProps, OptionalSvgChildProps} from '../svg/SvgChild';
 import {ITooltipProps, Tooltip} from '../tooltip';
 
-export interface IconCardChoice extends OptionalSvgChildProps {
+export interface IconCardChoice {
     value: string;
     label: string;
-    icon?: SvgName;
+    icon?: Icon;
     disabled?: boolean;
 }
 
@@ -25,6 +24,14 @@ export interface IconCardProps {
      * The secondary text displayed on the card
      */
     description?: ReactNode;
+    /**
+     * The icon shown on the left of the card
+     */
+    icon: ReactNode;
+    /**
+     * Whether the specified icon has a custom size. Setting this to true will make the icon container as much as needed to display the content of the icon prop.
+     */
+    customIconSize?: boolean;
     /**
      * Whether the card is smaller in size
      */
@@ -70,15 +77,12 @@ export interface IconCardProps {
 /**
  * @deprecated Use Mantine Card instead: https://mantine.dev/core/card/
  */
-export const IconCard: FunctionComponent<Override<SvgChildProps & HTMLAttributes<HTMLDivElement>, IconCardProps>> = ({
+export const IconCard: FunctionComponent<HTMLAttributes<HTMLDivElement> & IconCardProps> = ({
     title,
     badges = [],
     description,
     disabled = false,
     onClick,
-    svgName,
-    svgClass,
-    svgChild,
     tooltip,
     choices,
     animateOnHover,
@@ -86,6 +90,8 @@ export const IconCard: FunctionComponent<Override<SvgChildProps & HTMLAttributes
     cardClassName,
     className,
     small,
+    icon,
+    customIconSize,
     children,
     ...restProps
 }) => {
@@ -138,18 +144,14 @@ export const IconCard: FunctionComponent<Override<SvgChildProps & HTMLAttributes
                     onClick={handleCardClick}
                     aria-expanded={isOpen}
                 >
-                    <SvgChild
-                        svgChild={svgChild}
-                        svgName={svgName}
-                        svgClass={classNames(
-                            'logo overflow-hidden mod-rounded-border-4 icon mr3',
-                            {
-                                'mod-72': !small,
-                                'mod-40': !!small,
-                            },
-                            svgClass
-                        )}
-                    />
+                    <div
+                        className={classNames('logo mod-rounded-border-4 mr3', {
+                            'custom-logo-size': customIconSize,
+                            'overflow-hidden': !customIconSize,
+                        })}
+                    >
+                        {icon}
+                    </div>
                     <div data-testid="main-content" className="flex flex-column flex-auto justify-center">
                         {placeBadgesAbove && !!badgeComponents.length ? (
                             <div className="flex mb1">{badgeComponents}</div>
@@ -172,32 +174,20 @@ export const IconCard: FunctionComponent<Override<SvgChildProps & HTMLAttributes
                             'mod-small': !!small,
                         })}
                     >
-                        {choices.map(
-                            ({
-                                icon,
-                                svgChild: choiceSvgChild,
-                                label,
-                                value,
-                                disabled: choiceDisabled,
-                            }: IconCardChoice) => (
-                                <li key={value} className="icon-card-drawer-choice">
-                                    <button
-                                        className={classNames('inline-flex center-align link', {
-                                            disabled: choiceDisabled,
-                                        })}
-                                        onClick={() => onClick?.(value)}
-                                        disabled={choiceDisabled}
-                                    >
-                                        <SvgChild
-                                            svgChild={choiceSvgChild}
-                                            svgName={icon}
-                                            svgClass={'icon mod-24 mod-stroke mr1'}
-                                        />
-                                        {label}
-                                    </button>
-                                </li>
-                            )
-                        )}
+                        {choices.map(({icon: ChoiceIcon, label, value, disabled: choiceDisabled}: IconCardChoice) => (
+                            <li key={value} className="icon-card-drawer-choice">
+                                <button
+                                    className={classNames('inline-flex center-align link', {
+                                        disabled: choiceDisabled,
+                                    })}
+                                    onClick={() => onClick?.(value)}
+                                    disabled={choiceDisabled}
+                                >
+                                    {ChoiceIcon && <ChoiceIcon height={24} className="mr1" />}
+                                    {label}
+                                </button>
+                            </li>
+                        ))}
                     </ul>
                 </SlideY>
             ) : null}

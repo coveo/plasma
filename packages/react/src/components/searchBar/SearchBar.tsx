@@ -1,10 +1,10 @@
+import {SearchSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ChangeEvent, Component} from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {LoadingSpinner} from '../loading/LoadingSpinner';
-import {Svg} from '../svg/Svg';
 
 export interface ISearchBarConnectedProps {
     /**
@@ -132,7 +132,7 @@ export class SearchBar extends Component<ISearchBarProps> {
                     onKeyUp={(event) => event.keyCode === keyCode.enter && this.search()}
                     onChange={(event) => this.props.onChange && this.props.onChange(event)}
                 />
-                <div className="search-bar-icon-container">{this.getSearchIcon()}</div>
+                <div className="search-bar-icon-container flex">{this.getSearchIcon()}</div>
             </div>
         );
     }
@@ -154,7 +154,7 @@ export class SearchBar extends Component<ISearchBarProps> {
 
     private getSearchIcon(): JSX.Element {
         const searchIcon = !this.props.searching ? (
-            <Svg svgName="search" svgClass={this.props.disabled ? 'search-icon-disabled' : ''} />
+            <SearchSize16Px height={16} className={this.props.disabled ? 'search-icon-disabled' : ''} />
         ) : (
             <LoadingSpinner size={16} />
         );

@@ -187,7 +187,7 @@ describe('Multiline box with remove button', () => {
                     expect(wrapper.find('.pick-me-plz').length).toBe(1);
                 });
 
-                it('should render a remove button for all the elements returned from the renderBody prop', () => {
+                it('should render a remove button for all the elements returned from the renderBody prop', async () => {
                     render(
                         <ModifiedMultilineBoxWithRemoveButton
                             id="allo"
@@ -199,7 +199,8 @@ describe('Multiline box with remove button', () => {
                             renderBody={(data: IMultilineSingleBoxProps[]) => data.map((test) => <div>mommy</div>)}
                         />
                     );
-                    expect(screen.getAllByRole('button', {name: /remove icon/i}).length).toBe(3);
+                    const dragButtons = await screen.findAllByRole('button', {name: /remove/i});
+                    expect(dragButtons.length).toBe(3);
                 });
 
                 it('should not render a remove button if one element is returned from the renderBody prop', () => {

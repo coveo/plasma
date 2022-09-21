@@ -11,7 +11,7 @@ import {DropSelectors} from './redux/DropReducers';
 export interface IDropOwnProps extends Partial<IDropPodProps> {
     id: string;
     groupId?: string;
-    renderOpenButton: (onClick: () => void) => ReactNode;
+    renderOpenButton: (onClick: () => void, isOpen: boolean) => ReactNode;
     buttonContainerProps?: HTMLProps<HTMLDivElement>;
     listContainerProps?: HTMLAttributes<HTMLDivElement>;
     closeOnClickOutside?: boolean;
@@ -76,7 +76,7 @@ export class Drop extends PureComponent<IDropProps> {
         return (
             <>
                 <div ref={this.button} {...this.props.buttonContainerProps}>
-                    {this.props.renderOpenButton(this.onClick)}
+                    {this.props.renderOpenButton(this.onClick, this.props.isOpen)}
                 </div>
                 {this.createPortalMenu()}
             </>

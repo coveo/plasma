@@ -110,7 +110,7 @@ describe('<CollapsibleConnected />', () => {
             it('should set the class disabled on collapsible if disabled', () => {
                 mountComponentWithProps({disabled: true});
 
-                expect(wrapper.find(CollapsibleToggle).props().svgClassName).toContain('disabled');
+                expect(wrapper.find(CollapsibleToggle).props().className).toContain('disabled');
             });
         });
     });

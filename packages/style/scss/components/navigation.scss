@@ -88,7 +88,9 @@
                         width: $navigation-section-icon-size;
                         height: $navigation-section-icon-size;
                         margin: 0 $navigation-section-icon-margin-right 0 $navigation-section-icon-margin-left;
-                        fill: var(--navy-blue-80);
+                        &.mod-fill {
+                            fill: var(--navy-blue-80);
+                        }
 
                         &.mod-stroke {
                             fill: none;
@@ -99,10 +101,6 @@
                         height: $navigation-menu-section-height;
                         padding-left: $sidenavigation-padding-left + $navigation-active-border-width;
                     }
-                }
-
-                .navigation-menu-section-toggle {
-                    fill: var(--navy-blue-80);
                 }
 
                 .navigation-menu-section-items {

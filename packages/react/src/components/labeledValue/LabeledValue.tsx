@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import {ReactNode, PureComponent} from 'react';
+import {PureComponent, ReactNode} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg/Svg';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ILabeledValueProps {
@@ -63,7 +63,7 @@ export class LabeledValue extends PureComponent<ILabeledValueProps> {
                 placement={this.props.informationPlacement || TooltipPlacement.Top}
                 className="labeled-tooltip"
             >
-                <Svg svgName="info" svgClass="icon mod-14 no-link" />
+                <InfoToken mode={InfoTokenMode.Stroked} size={InfoTokenSize.Small} type={InfoTokenType.Information} />
             </Tooltip>
         ) : null;
 

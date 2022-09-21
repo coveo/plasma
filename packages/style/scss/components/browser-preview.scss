@@ -10,10 +10,6 @@
         background-color: var(--navy-blue-60);
         border-radius: $big-border-radius $big-border-radius 0px 0px;
 
-        svg {
-            fill: currentColor;
-        }
-
         .white-dot {
             display: inline-block;
             width: 10px;
@@ -31,10 +27,10 @@
     &__state {
         color: var(--title-text-color);
 
-        svg {
+        svg,
+        img {
             width: 220px;
             height: 220px;
-            fill: #5f619e;
         }
 
         .medium-title-text {

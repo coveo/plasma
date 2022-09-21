@@ -7,6 +7,7 @@ const {rmSync} = require('fs-extra');
 const template = require('./template');
 
 const iconsSourceDirPath = 'node_modules/@coveord/plasma-tokens/icons';
+const outDirPath = './src/generated'
 
 const findIconName = (filename) => filename.replace(iconsSourceDirPath, '').substring(1).split('/')[0];
 const findVariantName = (filename) => filename.replace(iconsSourceDirPath, '').split('/').pop().replace('.svg', '');
@@ -16,8 +17,10 @@ const getComponentName = (file) => {
     return `${upperFirst(iconName)}${upperFirst(variantName)}`;
 };
 
+const convertIcons = async (grouped) => Promise.all(Object.entries(grouped).map(convertIcon));
+
 const convertIcon = async ([iconName, variants]) => {
-    await fs.ensureDir(`./generated/${iconName}`);
+    await fs.ensureDir(`${outDirPath}/${iconName}`);
     return Promise.all(variants.map(convertVariant));
 };
 
@@ -47,14 +50,14 @@ const convertVariant = async (file) => {
         );
         return Promise.all([
             fs.appendFile(
-                './generated/index.ts',
+                `${outDirPath}/index.ts`,
                 `export const ${componentName} = loadable(() => import('./${iconName}/${variantName}'));\n`
             ),
             fs.appendFile(
-                `./generated/${iconName}/index.ts`,
+                `${outDirPath}/${iconName}/index.ts`,
                 `export {default as ${componentName}} from './${variantName}';\n`
             ),
-            fs.outputFile(`./generated/${iconName}/${variantName}.tsx`, tsCode),
+            fs.outputFile(`${outDirPath}/${iconName}/${variantName}.tsx`, tsCode),
         ]);
     } catch (err) {
         console.error(`Error: could not convert svg at "${file}" into a React component.`);
@@ -67,9 +70,10 @@ const listIconVariants = async (grouped) => {
         iconName,
         variants: variantsPaths.map(getComponentName),
     }));
-    fs.appendFile('./generated/index.ts', 'import loadable from "@loadable/component";\n\n');
-    fs.appendFile('./generated/index.ts', `export const iconsList = ${JSON.stringify(list)};\n`);
+    return fs.appendFile(`${outDirPath}/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
 };
+
+const importLoadable = () => fs.appendFile(`${outDirPath}/index.ts`, 'import loadable from "@loadable/component";\n\n');
 
 const handleSvgFiles = (err, files) => {
     if (err) {
@@ -77,10 +81,10 @@ const handleSvgFiles = (err, files) => {
     }
 
     const grouped = groupBy(files, findIconName);
-    Promise.all([...Object.entries(grouped).map(convertIcon), listIconVariants(grouped)]);
+    Promise.all([importLoadable(), convertIcons(grouped), listIconVariants(grouped)]);
 };
 
-rmSync('./generated', {recursive: true, force: true});
+rmSync(outDirPath, {recursive: true, force: true});
 rmSync('./dist', {recursive: true, force: true});
-fs.ensureDirSync('./generated');
+fs.ensureDirSync(outDirPath);
 glob(`${iconsSourceDirPath}/**/*.svg`, handleSvgFiles);

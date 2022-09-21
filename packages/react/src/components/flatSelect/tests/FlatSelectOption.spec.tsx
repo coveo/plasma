@@ -3,7 +3,6 @@ import * as _ from 'underscore';
 
 import {UUID} from '../../../utils/UUID';
 import {Content, IContentProps} from '../../content/Content';
-import {ISvgProps, Svg} from '../../svg/Svg';
 import {FlatSelectOption, IFlatSelectOptionProps} from '../FlatSelectOption';
 
 describe('FlatSelect', () => {
@@ -20,11 +19,7 @@ describe('FlatSelect', () => {
             id: UUID.generate(),
             option: defaultOption,
         };
-        const svg: ISvgProps = {
-            svgName: 'domainGoogle',
-            svgClass: 'icon',
-        };
-        const content: IContentProps = {content: () => <Svg {...svg} />, classes: ['mr1']};
+        const content: IContentProps = {content: () => <div>ink</div>, classes: ['mr1']};
 
         const renderFlatSelectOption = (props: IFlatSelectOptionProps = defaultProps) => {
             flatSelect = mount(<FlatSelectOption {...props} />, {attachTo: document.getElementById('App')});

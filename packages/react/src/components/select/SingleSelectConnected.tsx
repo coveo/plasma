@@ -1,6 +1,6 @@
-import {svg} from '@coveord/plasma-style';
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, ComponentType, FunctionComponent, MouseEvent, useEffect, useMemo} from 'react';
+import {ComponentType, FunctionComponent, MouseEvent, ReactNode, useEffect, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -8,10 +8,10 @@ import {PlasmaState} from '../../PlasmaState';
 import {TooltipPlacement} from '../../utils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch} from '../../utils/ReduxUtils';
+import {CollapsibleToggle} from '../collapsible';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption} from '../listBox/ListBoxActions';
-import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
@@ -120,20 +120,12 @@ export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
                     {option?.prepend ? <Content {...option.prepend} /> : null}
                     <SelectedOption option={option} placeholder={placeholder} />
                     {option?.append ? <Content {...option.append} /> : null}
-                    <Svg
-                        svgName={isOpen ? svg.chartUp.name : svg.chartDown.name}
-                        svgClass={classNames('icon dropdown-toggle-arrow-size', {
-                            'dropdown-toggle-arrow-style': !showClear,
-                        })}
-                    />
+                    <CollapsibleToggle expanded={isOpen} />
                     {showClear && (
                         <Tooltip title={deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
-                            <Svg
-                                svgName={svg.clear.name}
-                                svgClass="icon mod-12"
-                                className="btn-append center-align"
-                                onClick={handleDeselect}
-                            />
+                            <button onClick={handleDeselect} className="btn-append cursor-pointer">
+                                <CrossSize16Px height={16} />
+                            </button>
                         </Tooltip>
                     )}
                 </button>

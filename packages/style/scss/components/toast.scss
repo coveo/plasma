@@ -166,8 +166,8 @@ $toast-close-padding-left: 20px;
 .toast-close {
     display: flex;
     margin-right: 3px;
+    color: var(--color);
     cursor: pointer;
-    fill: var(--color);
 }
 
 @keyframes toastFadeInTop {

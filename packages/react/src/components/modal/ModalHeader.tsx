@@ -1,10 +1,10 @@
+import {CrossSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, Component} from 'react';
+import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {IClassName} from '../../utils/ClassNameUtils';
-import {ILinkSvgProps} from '../svg/LinkSvg';
-import {Svg} from '../svg/Svg';
+import {ILinkSvgProps} from '../linkSvg/LinkSvg';
 import {Title} from '../title/Title';
 
 export interface IModalHeaderOwnProps {
@@ -70,28 +70,17 @@ export class ModalHeader extends Component<IModalHeaderProps> {
 
     render() {
         const classes = classNames('modal-header', this.props.classes);
-        const docLinkProps: ILinkSvgProps = this.props.docLink
-            ? {
-                  svg: {
-                      svgName: 'help',
-                      svgClass: 'documentation-link icon mod-20',
-                      className: 'flex',
-                  },
-                  ...this.props.docLink,
-              }
-            : null;
-
         let closeComponent: JSX.Element = null;
         if (this.props.onClose) {
             closeComponent = (
-                <span
+                <button
                     className="small-close"
                     onClick={() => {
                         this.close();
                     }}
                 >
-                    <Svg svgName="close" className="icon mod-lg" />
-                </span>
+                    <CrossSize24Px height={24} />
+                </button>
             );
         }
 
@@ -100,7 +89,7 @@ export class ModalHeader extends Component<IModalHeaderProps> {
                 <div className="truncate">
                     <Title
                         text={this.props.title}
-                        documentationLink={docLinkProps}
+                        documentationLink={this.props.docLink}
                         classes={['regular']}
                         htmlId={this.props.htmlId}
                     />

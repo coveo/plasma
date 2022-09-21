@@ -26,20 +26,20 @@ describe('Table HOC', () => {
             });
         });
 
-        it('should render correctly', () => {
+        it('should render correctly', async () => {
             render(<TableHeaderWithSort {...defaultProps} />, {});
 
-            expect(screen.getByRole('img', {name: /ascDesc icon/i})).toBeInTheDocument();
-            expect(screen.queryByRole('img', {name: /sortedAsc icon/i})).not.toBeInTheDocument();
-            expect(screen.queryByRole('img', {name: /sortedDesc icon/i})).not.toBeInTheDocument();
+            expect(await screen.findByRole('img', {name: /doubleArrowHeadV/i})).toBeInTheDocument();
+            expect(screen.queryByRole('img', {name: /arrowUp/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('img', {name: /arrowDown/i})).not.toBeInTheDocument();
         });
 
         it('should render empty if isLoading', () => {
             render(<TableHeaderWithSort {...defaultProps} isLoading />, {});
 
-            expect(screen.queryByRole('img', {name: /sortedAsc icon/i})).not.toBeInTheDocument();
-            expect(screen.queryByRole('img', {name: /sortedDesc icon/i})).not.toBeInTheDocument();
-            expect(screen.queryByRole('img', {name: /ascDesc icon/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('img', {name: /doubleArrowHeadV/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('img', {name: /arrowUp/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('img', {name: /arrowDown/i})).not.toBeInTheDocument();
         });
 
         it('should not throw when rendering children', () => {
@@ -78,31 +78,31 @@ describe('Table HOC', () => {
             expect(store.getActions()).toContainEqual(expectedAction);
         });
 
-        it('renders the default svg when the table is not sorted', () => {
+        it('renders the default svg when the table is not sorted', async () => {
             render(<TableHeaderWithSort id={'patate'} tableId={'id'} isLoading={false} />);
 
-            expect(screen.getByRole('img', {name: /ascDesc icon/i})).toBeInTheDocument();
+            expect(await screen.findByRole('img', {name: /doubleArrowHeadV/i})).toBeInTheDocument();
         });
 
-        it('renders the sortedAsc svg when the user click one time on the arrows', () => {
+        it('renders arrow up icon when the user click one time on the arrows', async () => {
             render(<TableHeaderWithSort id={'patate'} tableId={'id'} isLoading={false} />);
 
-            const btn = screen.getByRole('img', {name: /ascDesc icon/i});
+            const btn = await screen.findByRole('img', {name: /doubleArrowHeadV/i});
             userEvent.click(btn);
 
-            expect(screen.getByRole('img', {name: /sortedAsc icon/i})).toBeInTheDocument();
+            expect(await screen.findByRole('img', {name: /arrowUp/i})).toBeInTheDocument();
         });
 
-        it('renders the sortedDesc svg when the user click two time on the arrows', () => {
+        it('renders arrow down icon the user click two time on the arrows', async () => {
             render(<TableHeaderWithSort id={'patate'} tableId={'id'} isLoading={false} />);
 
-            const btn1 = screen.getByRole('img', {name: /ascDesc icon/i});
+            const btn1 = await screen.findByRole('img', {name: /doubleArrowHeadV/i});
             userEvent.click(btn1);
 
-            const btn2 = screen.getByRole('img', {name: /sortedAsc icon/i});
+            const btn2 = await screen.findByRole('img', {name: /arrowUp/i});
             userEvent.click(btn2);
 
-            expect(screen.getByRole('img', {name: /sortedDesc icon/i})).toBeInTheDocument();
+            expect(await screen.findByRole('img', {name: /arrowDown/i})).toBeInTheDocument();
         });
     });
 });

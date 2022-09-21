@@ -1,7 +1,6 @@
-import {SvgName} from '@coveord/plasma-style';
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {Component} from 'react';
-import {Svg} from '../svg';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
 
@@ -59,7 +58,7 @@ interface BadgeWithIconProps extends BadgeBasicProps {
     /**
      * Add an icon to the badge (Required if no label)
      */
-    icon: SvgName;
+    icon: Icon;
     /**
      * Whether the icon is left or right (Required if no label)
      *
@@ -90,12 +89,11 @@ export class Badge extends Component<IBadgeProps> {
         return (
             <div className={this.className} aria-label="badge">
                 {'icon' in this.props && this.props.icon ? (
-                    <Svg
-                        svgName={this.props.icon}
+                    <this.props.icon
                         className={classNames('mod-badge', {
                             'mod-right': this.props.iconPlacement === BadgeIconPlacement.Right,
                         })}
-                        svgClass={'icon mod-badge'}
+                        height={this.props.isSmall ? 14 : 18}
                     />
                 ) : null}
                 {'label' in this.props && this.props.label ? (

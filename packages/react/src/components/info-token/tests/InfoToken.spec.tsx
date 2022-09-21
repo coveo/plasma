@@ -4,198 +4,198 @@ import {render, screen} from '@test-utils';
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../InfoToken';
 
 describe('InfoToken', () => {
-    it('renders the infoStrokedSmall icon if the specified size and type are Small and Information', () => {
+    it('renders the info icon if the specified size and type are Small and Information', async () => {
         render(<InfoToken type={InfoTokenType.Information} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Small} />);
 
-        const smallToken = screen.getByRole('img', {name: 'infoStrokedSmall icon'});
+        const smallToken = await screen.findByRole('img', {name: 'info'});
         expect(smallToken).toBeInTheDocument();
-        expect(smallToken).toHaveClass('mod-16');
+        expect(smallToken).toHaveAttribute('height', '16');
         expect(smallToken).toHaveClass('mod-info');
+        expect(smallToken).toHaveClass('stroked');
     });
 
-    it('renders the infoStrokedMedium icon if the specified size and type are Medium and Information', () => {
-        render(<InfoToken type={InfoTokenType.Information} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Medium} />);
+    it('renders the info icon if the specified size and type are Medium and Information', async () => {
+        render(<InfoToken type={InfoTokenType.Information} mode={InfoTokenMode.Filled} size={InfoTokenSize.Medium} />);
 
-        const mediumToken = screen.getByRole('img', {name: 'infoStrokedMedium icon'});
+        const mediumToken = await screen.findByRole('img', {name: 'info'});
         expect(mediumToken).toBeInTheDocument();
-        expect(mediumToken).toHaveClass('mod-24');
+        expect(mediumToken).toHaveAttribute('height', '24');
         expect(mediumToken).toHaveClass('mod-info');
+        expect(mediumToken).toHaveClass('filled');
     });
 
-    it('renders the infoStrokedLarge icon if the specified size and type are Large and Information', () => {
+    it('renders the info icon if the specified size and type are Large and Information', async () => {
         render(<InfoToken type={InfoTokenType.Information} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Large} />);
 
-        const largeToken = screen.getByRole('img', {name: 'infoStrokedLarge icon'});
+        const largeToken = await screen.findByRole('img', {name: 'info'});
         expect(largeToken).toBeInTheDocument();
-        expect(largeToken).toHaveClass('mod-32');
+        expect(largeToken).toHaveAttribute('height', '32');
         expect(largeToken).toHaveClass('mod-info');
+        expect(largeToken).toHaveClass('stroked');
     });
 
-    it('renders the checkStrokedSmall icon if the specified size and type are Small and Success', () => {
-        render(<InfoToken type={InfoTokenType.Success} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Small} />);
+    it('renders the checkmark icon if the specified size and type are Small and Success', async () => {
+        render(<InfoToken type={InfoTokenType.Success} mode={InfoTokenMode.Filled} size={InfoTokenSize.Small} />);
 
-        const smallToken = screen.getByRole('img', {name: 'checkStrokedSmall icon'});
+        const smallToken = await screen.findByRole('img', {name: 'checkmark'});
         expect(smallToken).toBeInTheDocument();
-        expect(smallToken).toHaveClass('mod-16');
+        expect(smallToken).toHaveAttribute('height', '16');
         expect(smallToken).toHaveClass('mod-success');
+        expect(smallToken).toHaveClass('filled');
     });
 
-    it('renders the checkStrokedMedium icon if the specified size and type are Medium and Success', () => {
+    it('renders the checkmark icon if the specified size and type are Medium and Success', async () => {
         render(<InfoToken type={InfoTokenType.Success} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Medium} />);
 
-        const mediumToken = screen.getByRole('img', {name: 'checkStrokedMedium icon'});
+        const mediumToken = await screen.findByRole('img', {name: 'checkmark'});
         expect(mediumToken).toBeInTheDocument();
-        expect(mediumToken).toHaveClass('mod-24');
+        expect(mediumToken).toHaveAttribute('height', '24');
         expect(mediumToken).toHaveClass('mod-success');
+        expect(mediumToken).toHaveClass('stroked');
     });
 
-    it('renders the checkStrokedLarge icon if the specified size and type are Large and Success', () => {
-        render(<InfoToken type={InfoTokenType.Success} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Large} />);
+    it('renders the checkmark icon if the specified size and type are Large and Success', async () => {
+        render(<InfoToken type={InfoTokenType.Success} mode={InfoTokenMode.Filled} size={InfoTokenSize.Large} />);
 
-        const largeToken = screen.getByRole('img', {name: 'checkStrokedLarge icon'});
+        const largeToken = await screen.findByRole('img', {name: 'checkmark'});
         expect(largeToken).toBeInTheDocument();
-        expect(largeToken).toHaveClass('mod-32');
+        expect(largeToken).toHaveAttribute('height', '32');
         expect(largeToken).toHaveClass('mod-success');
+        expect(largeToken).toHaveClass('filled');
     });
 
-    it('renders the warningStrokedSmall icon if the specified size and type are Small and Warning', () => {
+    it('renders the warning icon if the specified size and type are Small and Warning', async () => {
         render(<InfoToken type={InfoTokenType.Warning} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Small} />);
 
-        const smallToken = screen.getByRole('img', {name: 'warningStrokedSmall icon'});
+        const smallToken = await screen.findByRole('img', {name: 'warning'});
         expect(smallToken).toBeInTheDocument();
-        expect(smallToken).toHaveClass('mod-16');
+        expect(smallToken).toHaveAttribute('height', '16');
         expect(smallToken).toHaveClass('mod-warning');
+        expect(smallToken).toHaveClass('stroked');
     });
 
-    it('renders the warningStrokedMedium icon if the specified size and type are Medium and Warning', () => {
-        render(<InfoToken type={InfoTokenType.Warning} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Medium} />);
+    it('renders the warning icon if the specified size and type are Medium and Warning', async () => {
+        render(<InfoToken type={InfoTokenType.Warning} mode={InfoTokenMode.Filled} size={InfoTokenSize.Medium} />);
 
-        const mediumToken = screen.getByRole('img', {name: 'warningStrokedMedium icon'});
+        const mediumToken = await screen.findByRole('img', {name: 'warning'});
         expect(mediumToken).toBeInTheDocument();
-        expect(mediumToken).toHaveClass('mod-24');
+        expect(mediumToken).toHaveAttribute('height', '24');
         expect(mediumToken).toHaveClass('mod-warning');
+        expect(mediumToken).toHaveClass('filled');
     });
 
-    it('renders the warningStrokedLarge icon if the specified size and type are Large and Warning', () => {
+    it('renders the warning icon if the specified size and type are Large and Warning', async () => {
         render(<InfoToken type={InfoTokenType.Warning} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Large} />);
 
-        const largeToken = screen.getByRole('img', {name: 'warningStrokedLarge icon'});
+        const largeToken = await screen.findByRole('img', {name: 'warning'});
         expect(largeToken).toBeInTheDocument();
-        expect(largeToken).toHaveClass('mod-32');
+        expect(largeToken).toHaveAttribute('height', '32');
         expect(largeToken).toHaveClass('mod-warning');
+        expect(largeToken).toHaveClass('stroked');
     });
 
-    it('renders the criticalStrokedSmall icon if the specified size and type are Small and Critical', () => {
-        render(<InfoToken type={InfoTokenType.Critical} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Small} />);
+    it('renders the critical icon if the specified size and type are Small and Critical', async () => {
+        render(<InfoToken type={InfoTokenType.Critical} mode={InfoTokenMode.Filled} size={InfoTokenSize.Small} />);
 
-        const smallToken = screen.getByRole('img', {name: 'criticalStrokedSmall icon'});
+        const smallToken = await screen.findByRole('img', {name: 'critical'});
         expect(smallToken).toBeInTheDocument();
-        expect(smallToken).toHaveClass('mod-16');
+        expect(smallToken).toHaveAttribute('height', '16');
         expect(smallToken).toHaveClass('mod-error');
+        expect(smallToken).toHaveClass('filled');
     });
 
-    it('renders the criticalStrokedMedium icon if the specified size and type are Medium and Critical', () => {
+    it('renders the critical icon if the specified size and type are Medium and Critical', async () => {
         render(<InfoToken type={InfoTokenType.Critical} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Medium} />);
 
-        const mediumToken = screen.getByRole('img', {name: 'criticalStrokedMedium icon'});
+        const mediumToken = await screen.findByRole('img', {name: 'critical'});
         expect(mediumToken).toBeInTheDocument();
-        expect(mediumToken).toHaveClass('mod-24');
+        expect(mediumToken).toHaveAttribute('height', '24');
         expect(mediumToken).toHaveClass('mod-error');
+        expect(mediumToken).toHaveClass('stroked');
     });
 
-    it('renders the criticalStrokedLarge icon if the specified size and type are Large and Critical', () => {
-        render(<InfoToken type={InfoTokenType.Critical} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Large} />);
+    it('renders the critical icon if the specified size and type are Large and Critical', async () => {
+        render(<InfoToken type={InfoTokenType.Critical} mode={InfoTokenMode.Filled} size={InfoTokenSize.Large} />);
 
-        const largeToken = screen.getByRole('img', {name: 'criticalStrokedLarge icon'});
+        const largeToken = await screen.findByRole('img', {name: 'critical'});
         expect(largeToken).toBeInTheDocument();
-        expect(largeToken).toHaveClass('mod-32');
+        expect(largeToken).toHaveAttribute('height', '32');
         expect(largeToken).toHaveClass('mod-error');
+        expect(largeToken).toHaveClass('filled');
     });
 
-    it('renders the ideaStrokedSmall icon if the specified size and type are Small and Tip', () => {
+    it('renders the tip icon if the specified size and type are Small and Tip', async () => {
         render(<InfoToken type={InfoTokenType.Tip} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Small} />);
 
-        const smallToken = screen.getByRole('img', {name: 'ideaStrokedSmall icon'});
+        const smallToken = await screen.findByRole('img', {name: 'tip'});
         expect(smallToken).toBeInTheDocument();
-        expect(smallToken).toHaveClass('mod-16');
+        expect(smallToken).toHaveAttribute('height', '16');
         expect(smallToken).toHaveClass('mod-success');
+        expect(smallToken).toHaveClass('stroked');
     });
 
-    it('renders the ideaStrokedMedium icon if the specified size and type are Medium and Tip', () => {
-        render(<InfoToken type={InfoTokenType.Tip} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Medium} />);
+    it('renders the tip icon if the specified size and type are Medium and Tip', async () => {
+        render(<InfoToken type={InfoTokenType.Tip} mode={InfoTokenMode.Filled} size={InfoTokenSize.Medium} />);
 
-        const mediumToken = screen.getByRole('img', {name: 'ideaStrokedMedium icon'});
+        const mediumToken = await screen.findByRole('img', {name: 'tip'});
         expect(mediumToken).toBeInTheDocument();
-        expect(mediumToken).toHaveClass('mod-24');
+        expect(mediumToken).toHaveAttribute('height', '24');
         expect(mediumToken).toHaveClass('mod-success');
+        expect(mediumToken).toHaveClass('filled');
     });
 
-    it('renders the ideaStrokedLarge icon if the specified size and type are Large and Tip', () => {
+    it('renders the tip icon if the specified size and type are Large and Tip', async () => {
         render(<InfoToken type={InfoTokenType.Tip} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Large} />);
 
-        const largeToken = screen.getByRole('img', {name: 'ideaStrokedLarge icon'});
+        const largeToken = await screen.findByRole('img', {name: 'tip'});
         expect(largeToken).toBeInTheDocument();
-        expect(largeToken).toHaveClass('mod-32');
+        expect(largeToken).toHaveAttribute('height', '32');
         expect(largeToken).toHaveClass('mod-success');
+        expect(largeToken).toHaveClass('stroked');
     });
 
-    it('renders the questionStrokedSmall icon if the specified size and type are Small and Question', () => {
-        render(<InfoToken type={InfoTokenType.Question} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Small} />);
+    it('renders the question icon if the specified size and type are Small and Question', async () => {
+        render(<InfoToken type={InfoTokenType.Question} mode={InfoTokenMode.Filled} size={InfoTokenSize.Small} />);
 
-        const smallToken = screen.getByRole('img', {name: 'questionStrokedSmall icon'});
+        const smallToken = await screen.findByRole('img', {name: 'question'});
         expect(smallToken).toBeInTheDocument();
-        expect(smallToken).toHaveClass('mod-16');
+        expect(smallToken).toHaveAttribute('height', '16');
         expect(smallToken).toHaveClass('mod-info');
+        expect(smallToken).toHaveClass('filled');
     });
 
-    it('renders the questionStrokedMedium icon if the specified size and type are Medium and Question', () => {
+    it('renders the question icon if the specified size and type are Medium and Question', async () => {
         render(<InfoToken type={InfoTokenType.Question} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Medium} />);
 
-        const mediumToken = screen.getByRole('img', {name: 'questionStrokedMedium icon'});
+        const mediumToken = await screen.findByRole('img', {name: 'question'});
         expect(mediumToken).toBeInTheDocument();
-        expect(mediumToken).toHaveClass('mod-24');
+        expect(mediumToken).toHaveAttribute('height', '24');
         expect(mediumToken).toHaveClass('mod-info');
+        expect(mediumToken).toHaveClass('stroked');
     });
 
-    it('renders the questionStrokedLarge icon if the specified size and type are Large and Question', () => {
-        render(<InfoToken type={InfoTokenType.Question} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Large} />);
+    it('renders the question icon if the specified size and type are Large and Question', async () => {
+        render(<InfoToken type={InfoTokenType.Question} mode={InfoTokenMode.Filled} size={InfoTokenSize.Large} />);
 
-        const largeToken = screen.getByRole('img', {name: 'questionStrokedLarge icon'});
+        const largeToken = await screen.findByRole('img', {name: 'question'});
         expect(largeToken).toBeInTheDocument();
-        expect(largeToken).toHaveClass('mod-32');
+        expect(largeToken).toHaveAttribute('height', '32');
         expect(largeToken).toHaveClass('mod-info');
+        expect(largeToken).toHaveClass('filled');
     });
 
-    it('renders with a "filled" class is mode is "Filled"', () => {
-        const {container} = render(
-            <InfoToken type={InfoTokenType.Information} mode={InfoTokenMode.Filled} size={InfoTokenSize.Large} />
-        );
-
-        expect(container.querySelector('.filled')).toBeInTheDocument();
-    });
-
-    it('does not render with a "filled" class is mode is "Stroked"', () => {
-        const {container} = render(
-            <InfoToken type={InfoTokenType.Information} mode={InfoTokenMode.Stroked} size={InfoTokenSize.Large} />
-        );
-
-        expect(container.querySelector('.filled')).not.toBeInTheDocument();
-    });
-
-    it('allows additional classes to be passed down to the token through svgClassName', () => {
+    it('allows additional classes to be passed down to the token through classnam', async () => {
         render(
             <InfoToken
                 type={InfoTokenType.Tip}
                 mode={InfoTokenMode.Stroked}
                 size={InfoTokenSize.Large}
-                svgClassName="no-link"
-                className="class-on-span"
+                className="my-class"
             />
         );
 
-        const largeToken = screen.getByRole('img', {name: 'ideaStrokedLarge icon'});
+        const largeToken = await screen.findByRole('img', {name: 'tip'});
         expect(largeToken).toBeInTheDocument();
-        expect(largeToken).toHaveClass('no-link');
-        expect(largeToken).not.toHaveClass('class-on-span');
+        expect(largeToken).toHaveClass('my-class');
     });
 });

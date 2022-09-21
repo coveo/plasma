@@ -204,7 +204,6 @@ export type SvgName =
 	| 'ftWebpage'
 	| 'fullview'
 	| 'gear'
-	| 'githubMark'
 	| 'groupMember'
 	| 'hamburger'
 	| 'headset'

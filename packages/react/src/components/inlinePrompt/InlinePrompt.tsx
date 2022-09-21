@@ -1,3 +1,4 @@
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 import {connect} from 'react-redux';
@@ -5,14 +6,14 @@ import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
-import {removePrompt} from './InlinePromptActions';
 import {Button} from '../button';
+import {removePrompt} from './InlinePromptActions';
 
 export interface IUserChoice {
     description?: string;
     cancel?: string;
     choices?: Record<string, string>;
-    icon?: string;
+    icon?: Icon;
 }
 
 export interface IInlinePromptOptions {

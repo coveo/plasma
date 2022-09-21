@@ -1,7 +1,8 @@
-import {SideNavigation, SideNavigationItem, SideNavigationMenuSection, Svg} from '@coveord/plasma-react';
+import {SideNavigation, SideNavigationItem, SideNavigationMenuSection} from '@coveord/plasma-react';
 import {FunctionComponent, FC, useState} from 'react';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
+import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 
 interface NavLinkProps {
     href?: string;
@@ -60,7 +61,7 @@ export const Navigation: FunctionComponent = () => {
                 title={
                     <a href="https://brand.coveo.com/" target="_blank" className="inline-flex flex-center">
                         Brand
-                        <Svg svgName="external" svgClass="icon mod-20 pl1" />
+                        <ExternalSize16Px className="ml1" />
                     </a>
                 }
             />
@@ -72,7 +73,7 @@ export const Navigation: FunctionComponent = () => {
                         className="inline-flex flex-center"
                     >
                         Design principles
-                        <Svg svgName="external" svgClass="icon mod-20 pl1" />
+                        <ExternalSize16Px className="ml1" />
                     </a>
                 }
             />

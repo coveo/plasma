@@ -1,4 +1,5 @@
-import {SubNavigationConnected, Svg} from '@coveord/plasma-react';
+import {SubNavigationConnected} from '@coveord/plasma-react';
+import {ThumbsDownSize16Px, ThumbsUpSize16Px} from '@coveord/plasma-react-icons';
 
 export default () => (
     <SubNavigationConnected
@@ -8,7 +9,7 @@ export default () => (
                 label: (
                     <span className="flex space-between">
                         <span className="truncate">Avatar</span>
-                        <Svg svgName="thumbUp" svgClass="icon" />
+                        <ThumbsUpSize16Px />
                     </span>
                 ),
                 id: 'avatar',
@@ -18,7 +19,7 @@ export default () => (
                 label: (
                     <span className="flex space-between">
                         <span className="truncate">Titanic</span>
-                        <Svg svgName="thumbUp" svgClass="icon" />
+                        <ThumbsUpSize16Px />
                     </span>
                 ),
                 id: 'titanic',
@@ -27,7 +28,7 @@ export default () => (
                 label: (
                     <span className="flex space-between">
                         <span className="truncate pr1">Star Wars: The Force Awakens</span>
-                        <Svg svgName="thumbUp" svgClass="icon" />
+                        <ThumbsUpSize16Px />
                     </span>
                 ),
                 id: 'star-wars',
@@ -36,7 +37,7 @@ export default () => (
                 label: (
                     <span className="flex space-between">
                         <span className="truncate">Jurassic World</span>
-                        <Svg svgName="thumbDown" svgClass="icon" />
+                        <ThumbsDownSize16Px />
                     </span>
                 ),
                 id: 'jurasic-world',
@@ -45,7 +46,7 @@ export default () => (
                 label: (
                     <span className="flex space-between">
                         <span className="truncate">The Avengers</span>
-                        <Svg svgName="thumbDown" svgClass="icon" />
+                        <ThumbsDownSize16Px />
                     </span>
                 ),
                 id: 'the-avengers',

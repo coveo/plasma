@@ -1,6 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
+import {screen, render} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {LabeledValue} from './LabeledValue';
 
@@ -74,8 +75,12 @@ describe('LabeledValue', () => {
             expect(labeledValue.find(Tooltip).prop('placement')).toBe(TooltipPlacement.Bottom);
         });
 
-        it('should render an svg inside the tooltip having the "info" name', () => {
-            expect(labeledValue.find(Tooltip).find(Svg).prop('svgName')).toBe('info');
+        it('renders an info icon if additional information is provided in the information prop', async () => {
+            render(<LabeledValue label="name" value="Joe" information="more info" />);
+            const infoIcon = await screen.findByRole('img', {name: /info/i});
+            expect(infoIcon).toBeInTheDocument();
+            userEvent.hover(infoIcon);
+            expect(await screen.findByText(/more info/i)).toBeInTheDocument();
         });
 
         it('should have the padding prop set to true and the class "padded" by default', () => {

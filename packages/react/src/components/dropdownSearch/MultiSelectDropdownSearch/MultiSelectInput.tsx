@@ -1,6 +1,6 @@
+import {CrossSize16Px, FilterAddSize16Px} from '@coveord/plasma-react-icons';
 import {KeyboardEvent, ChangeEvent, Component} from 'react';
 import * as _ from 'underscore';
-import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {IDropdownOption} from '../DropdownSearch';
 import {SelectedOption} from './SelectedOption';
@@ -79,7 +79,7 @@ export class MultiselectInput extends Component<IMultiselectInputProps, any> {
             return (
                 <Tooltip title={this.props.deselectAllTooltipText} placement={'top'}>
                     <div className="remove-all-selected-options" onClick={() => this.handleOnRemoveAll()}>
-                        <Svg svgName="clear" svgClass="icon" />
+                        <CrossSize16Px height={16} />
                     </div>
                 </Tooltip>
             );
@@ -103,7 +103,7 @@ export class MultiselectInput extends Component<IMultiselectInputProps, any> {
                         onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDown(e)}
                         value={this.props.filterText}
                     />
-                    <Svg svgName="filter" className="icon" />
+                    <FilterAddSize16Px height={16} />
                 </div>
             </div>
         );

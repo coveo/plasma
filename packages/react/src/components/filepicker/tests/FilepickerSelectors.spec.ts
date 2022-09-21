@@ -3,7 +3,7 @@ import {FilepickerSelectors} from '../FilepickerSelectors';
 
 describe('FilepickerSelectors', () => {
     describe('getFile', () => {
-        // This selector cannot be tested, because for security reasons the browser won't allow to select a file programmatically.
+        // tested via the FilePicker component tests
     });
 
     describe('isEmpty', () => {

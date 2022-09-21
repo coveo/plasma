@@ -1,5 +1,3 @@
-import {ILinkSvgProps} from '../components/svg/LinkSvg';
-
 export type ComponentId = string;
 
 /**
@@ -20,17 +18,3 @@ export interface IComponentBehaviour {
     isLoading?: boolean;
     disabled?: boolean;
 }
-
-export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgProps => ({
-    url,
-    target: '_blank',
-    svg: {
-        svgName: 'help',
-        svgClass: 'icon mod-20',
-    },
-    tooltip: {
-        title,
-        placement: 'bottom',
-        container: 'body',
-    },
-});

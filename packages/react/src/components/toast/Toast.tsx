@@ -1,8 +1,7 @@
+import {CrossSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ReactNode, FunctionComponent, ComponentClass, useState, useEffect, createElement} from 'react';
 import {LoadingSpinner} from '../loading/LoadingSpinner';
-
-import {Svg} from '../svg/Svg';
 
 export interface IToastProps {
     /**
@@ -119,9 +118,9 @@ export const Toast: FunctionComponent<IToastProps> = ({
     );
 
     const closeButton = (
-        <span className="toast-close" onClick={handleClose}>
-            <Svg svgName="close" className="icon mod-18" />
-        </span>
+        <button className="toast-close flex" onClick={handleClose}>
+            <CrossSize24Px height={24} />
+        </button>
     );
 
     const downloadToast = (

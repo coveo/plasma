@@ -1,27 +1,14 @@
-import classNames from 'classnames';
-import {HTMLAttributes, SFC} from 'react';
-
-import {Svg} from '../svg/Svg';
+import {ArrowHeadDownSize16Px, ArrowHeadUpSize16Px} from '@coveord/plasma-react-icons';
+import {FunctionComponent, SVGProps} from 'react';
 
 export interface CollapsibleToggleProps {
     expanded: boolean;
-    className?: string;
-    svgClassName?: string;
 }
 
-/**
- * @deprecated Use Mantine Accordion instead: https://mantine.dev/core/accordion/
- */
-export const CollapsibleToggle: SFC<CollapsibleToggleProps & HTMLAttributes<HTMLSpanElement>> = ({
+export const CollapsibleToggle: FunctionComponent<CollapsibleToggleProps & SVGProps<SVGSVGElement>> = ({
     expanded,
-    className,
-    svgClassName,
-    ...rest
-}) => (
-    <Svg
-        svgName={expanded ? 'arrowTopRounded' : 'arrowBottomRounded'}
-        svgClass={classNames('icon', svgClassName)}
-        className={className}
-        {...rest}
-    />
-);
+    ...svgProps
+}) => {
+    const Icon = expanded ? ArrowHeadUpSize16Px : ArrowHeadDownSize16Px;
+    return <Icon height={16} {...svgProps} />;
+};

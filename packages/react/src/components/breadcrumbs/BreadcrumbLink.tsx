@@ -1,7 +1,6 @@
+import {ArrowHeadRightSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, MouseEvent, Component} from 'react';
-
-import {Svg} from '../svg';
+import {Component, MouseEvent, ReactNode} from 'react';
 
 export interface IBreadcrumbLinkProps {
     name: ReactNode;
@@ -41,7 +40,7 @@ export class BreadcrumbLink extends Component<IBreadcrumbLinkProps> {
                 >
                     {this.props.name}
                 </TagName>
-                <Svg svgName="arrowRightRounded" className="breadcrumb-arrow" />
+                <ArrowHeadRightSize24Px />
             </li>
         );
     }

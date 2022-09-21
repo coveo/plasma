@@ -114,21 +114,21 @@ describe('Select', () => {
             expect(screen.queryByRole('button', {name: /pre a post/})).not.toBeInTheDocument();
         });
 
-        it('should have a clear icon when a value selected and canClear is true', () => {
+        it('should have a cross when a value selected and canClear is true', async () => {
             render(<SingleSelectConnected id={id} items={[{value: 'my value', selected: true}]} canClear />);
 
             expect(screen.getByRole('button', {name: /my value/})).toHaveClass('mod-append');
-            expect(screen.getByRole('img', {name: /clear icon/})).toBeVisible();
+            expect(await screen.findByRole('img', {name: /cross/})).toBeVisible();
         });
 
-        it('should not have a clear icon when a value selected and canClear is undefined', () => {
+        it('should not have a cross when a value selected and canClear is undefined', () => {
             render(<SingleSelectConnected id={id} items={[{value: 'my value', selected: true}]} canClear={false} />);
 
             expect(screen.getByRole('button', {name: /my value/})).not.toHaveClass('mod-append');
-            expect(screen.queryByRole('img', {name: /clear icon/})).not.toBeInTheDocument();
+            expect(screen.queryByRole('img', {name: /cross/})).not.toBeInTheDocument();
         });
 
-        it('should not have a clear icon when no value is selected and canClear is true', () => {
+        it('should not have a cross when no value is selected and canClear is true', () => {
             render(
                 <SingleSelectConnected
                     id={id}
@@ -139,10 +139,10 @@ describe('Select', () => {
             );
 
             expect(screen.getByRole('button', {name: /select one/})).not.toHaveClass('mod-append');
-            expect(screen.queryByRole('img', {name: /clear icon/})).not.toBeInTheDocument();
+            expect(screen.queryByRole('img', {name: /cross/})).not.toBeInTheDocument();
         });
 
-        it('should not have a clear icon when disabled is true even if canClear is true', () => {
+        it('should not have a cross when disabled is true even if canClear is true', () => {
             render(
                 <SingleSelectConnected
                     id={id}
@@ -154,10 +154,10 @@ describe('Select', () => {
             );
 
             expect(screen.getByRole('button', {name: /select one/})).not.toHaveClass('mod-append');
-            expect(screen.queryByRole('img', {name: /clear icon/})).not.toBeInTheDocument();
+            expect(screen.queryByRole('img', {name: /cross/})).not.toBeInTheDocument();
         });
 
-        it('should clear the selected value when the deselect is clicked', () => {
+        it('should clear the selected value when the deselect is clicked', async () => {
             render(
                 <SingleSelectConnected
                     id={id}
@@ -169,7 +169,7 @@ describe('Select', () => {
 
             expect(screen.queryByRole('button', {name: /select one/})).not.toBeInTheDocument();
 
-            userEvent.click(screen.getByRole('img', {name: /clear icon/}));
+            userEvent.click(await screen.findByRole('img', {name: /cross/}));
 
             expect(screen.getByRole('button', {name: /select one/})).toBeInTheDocument();
         });

@@ -1,133 +1,35 @@
-import {mount} from 'enzyme';
-import {shallowWithState} from '@test-utils';
-import {act} from 'react-dom/test-utils';
-import {Provider} from 'react-redux';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {Svg} from '../../svg';
-import {Filepicker, FilepickerProps} from '../Filepicker';
-import {FilepickerActions} from '../FilepickerActions';
+import {Filepicker} from '../Filepicker';
 import {FilepickerSelectors} from '../FilepickerSelectors';
 
 describe('Filepicker', () => {
-    const basicProps: FilepickerProps = {
-        id: '🐟',
-    };
-    const now = new Date().valueOf();
+    const file = new File(['hello'], 'hello.png', {type: 'image/png'});
 
-    it('should render and unmount without throwing errors', () => {
-        expect(() => {
-            const filepicker = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
-                .dive()
-                .dive();
-            filepicker.unmount();
-        }).not.toThrow();
+    it('renders the specified placeholder', () => {
+        render(<Filepicker id="🆔" placeholder="choose a file" />);
+
+        expect(screen.getByText(/choose a file/i)).toBeInTheDocument();
     });
 
-    it('should render an input of type "file"', () => {
-        const filepicker = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
-            .dive()
-            .dive()
-            .children()
-            .first();
+    it('displays the name of the uploaded file', () => {
+        render(<Filepicker id="🆔" placeholder="choose a file" />);
+        const input = screen.getByLabelText(/choose a file/i);
+        userEvent.upload(input, file);
 
-        expect(filepicker.type()).toBe('input');
-        expect(filepicker.prop('type')).toBe('file');
+        expect(screen.getByText(/hello\.png/i)).toBeInTheDocument();
+        expect(FilepickerSelectors.getFile('🆔')).toStrictEqual(file);
     });
 
-    it('should render the placeholder in the input label when no file is selected', () => {
-        jest.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(true);
-        const inputLabel = shallowWithState(<Filepicker {...basicProps} placeholder="🔥" />, {filepickers: {}})
-            .dive()
-            .dive()
-            .children()
-            .last();
+    it('removes the selected file when clicking on the cross button', async () => {
+        render(<Filepicker id="🆔" placeholder="choose a file" />);
+        const input = screen.getByLabelText(/choose a file/i);
+        userEvent.upload(input, file);
 
-        expect(inputLabel.text()).toBe('🔥');
-    });
+        const clearButton = await screen.findByRole('button', {name: /cross/i});
+        userEvent.click(clearButton);
 
-    it('should add the filepicker in the state on mount', () => {
-        const store = getStoreMock({filepickers: {}});
-        const addFilepickerSpy = jest.spyOn(FilepickerActions, 'add');
-        act(() => {
-            mount(
-                <Provider store={store}>
-                    <Filepicker {...basicProps} />
-                </Provider>
-            );
-        });
-
-        expect(addFilepickerSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('should remove the filepicker from the state on unmount', () => {
-        const store = getStoreMock({filepickers: {}});
-        const clearFilepickerSpy = jest.spyOn(FilepickerActions, 'clear');
-        const filepicker = mount(
-            <Provider store={store}>
-                <Filepicker {...basicProps} />
-            </Provider>
-        );
-        filepicker.unmount();
-
-        expect(clearFilepickerSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('should set the selected file metadata in the state when it changes in the input', () => {
-        const setFileMetadataSpy = jest.spyOn(FilepickerActions, 'setFile');
-        const filepicker = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
-            .dive()
-            .dive()
-            .children()
-            .first();
-
-        filepicker.prop('onChange')({
-            target: {files: [new File(['content of my file'], 'my file', {type: 'text/plain', lastModified: now})]},
-        });
-
-        expect(setFileMetadataSpy).toHaveBeenCalledTimes(1);
-        expect(setFileMetadataSpy).toHaveBeenCalledWith(basicProps.id, {
-            name: 'my file',
-            type: 'text/plain',
-            size: 18,
-            lastModified: now,
-        });
-    });
-
-    it('should render a clear button when a file is selected', () => {
-        jest.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(false);
-        const cancelButton = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
-            .dive()
-            .dive()
-            .find(Svg);
-
-        expect(cancelButton.exists()).toBe(true);
-    });
-
-    it('should not render a clear button when no file is selected', () => {
-        jest.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(true);
-        const cancelButton = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
-            .dive()
-            .dive()
-            .find(Svg);
-
-        expect(cancelButton.exists()).toBe(false);
-    });
-
-    it('should set the selected file to null in the state when clicking on the clear button', () => {
-        const setFileMetadataSpy = jest.spyOn(FilepickerActions, 'setFile');
-        jest.spyOn(FilepickerSelectors, 'isEmpty').mockReturnValue(false);
-        const cancelButton = shallowWithState(<Filepicker {...basicProps} />, {filepickers: {}})
-            .dive()
-            .dive()
-            .find(Svg);
-
-        setFileMetadataSpy.mockReset();
-        cancelButton.prop('onClick')(
-            (new MouseEvent('click') as unknown) as React.MouseEvent<HTMLSpanElement, MouseEvent>
-        );
-
-        expect(setFileMetadataSpy).toHaveBeenCalledTimes(1);
-        expect(setFileMetadataSpy).toHaveBeenCalledWith(basicProps.id, null);
+        expect(screen.getByText(/choose a file/i)).toBeInTheDocument();
     });
 });

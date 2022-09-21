@@ -1,14 +1,13 @@
-import {SvgName} from '@coveord/plasma-style';
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {Component} from 'react';
 
 import {Loading} from '../loading/Loading';
-import {Svg} from '../svg';
 
 export interface StatusCardProps {
     title: string;
     className?: string;
-    icon?: SvgName;
+    icon?: Icon;
     simple?: boolean;
     loading?: boolean;
 }
@@ -31,9 +30,7 @@ export class StatusCard extends Component<StatusCardProps> {
             <Loading key="loading" className="center-align" />
         ) : (
             <>
-                {this.props.icon && (
-                    <Svg key="icon" className="py3 mr3" svgName={this.props.icon} svgClass="icon mod-2x" />
-                )}
+                {this.props.icon && <this.props.icon height={24} className="mr3" />}
                 <div key="status" className="py2">
                     <h6>{this.props.title}</h6>
                     {this.props.children && <div className="mt1">{this.props.children}</div>}

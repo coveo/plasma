@@ -1,6 +1,5 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {Svg} from '../../svg';
 import {BrowserPreviewError, BrowserPreviewErrorProps} from '../BrowserPreviewError';
 
 describe('BrowserPreviewError', () => {
@@ -43,7 +42,7 @@ describe('BrowserPreviewError', () => {
     it('renders a Svg as child', () => {
         mountWithProps(defaultProps);
 
-        expect(component.find('.browser-preview__state').childAt(0).find(Svg)).toBeTruthy();
+        expect(component.find('.browser-preview__state').childAt(0).find('img')).toBeTruthy();
     });
 
     it('renders the specified description as child', () => {

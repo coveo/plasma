@@ -1,7 +1,7 @@
 export const color = {
     primary: {
         gradient: 'linear-gradient(78.21deg, #fadf4a 0.00%, #f9463a 30.73%, #08b7ea 67.19%, #03dec8 94.57%)',
-        actionBlue: {1: '#e3f1ff', 2: '#c7e4ff', 3: '#8bc7ff', 4: '#399ffe', 6: '#1372ec', 8: '#1a50ad', 9: '#062d70'},
+        action: {1: '#e3f1ff', 2: '#c7e4ff', 3: '#8bc7ff', 4: '#399ffe', 6: '#1372ec', 8: '#1a50ad', 9: '#062d70'},
         grey: {0: '#ffffff', 2: '#f6f7f9', 4: '#e5e8e8', 5: '#c5cacf', 6: '#8e959d', 8: '#626971', 9: '#282829'},
         navy: {
             0: '#f1f2ff',

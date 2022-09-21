@@ -15,7 +15,7 @@ describe('MultilineBoxWithDnD', () => {
         fireEvent.drop(screen.getAllByTestId('box')[position], eventData);
     };
 
-    it('reorders boxes when performing drag and drop', () => {
+    it('reorders boxes when performing drag and drop', async () => {
         render(
             <MultilineBoxWithDnD
                 id="🆔"
@@ -36,7 +36,7 @@ describe('MultilineBoxWithDnD', () => {
         expect(boxes[1]).toHaveTextContent('🍎');
         expect(boxes[2]).toHaveTextContent('🍌');
 
-        const dragIcons = screen.getAllByRole('img', {name: /dragdrop icon/i});
+        const dragIcons = await screen.findAllByRole('img', {name: /draganddrop/i});
         dragAndDrop(dragIcons[1], 2);
 
         boxes = screen.getAllByTestId('box');
@@ -45,7 +45,7 @@ describe('MultilineBoxWithDnD', () => {
         expect(boxes[2]).toHaveTextContent('🍎');
     });
 
-    it('does not allow dragging items across different multi box components', () => {
+    it('does not allow dragging items across different multi box components', async () => {
         render(
             <>
                 <MultilineBoxWithDnD
@@ -83,7 +83,7 @@ describe('MultilineBoxWithDnD', () => {
         expect(boxes[4]).toHaveTextContent('🔧');
         expect(boxes[5]).toHaveTextContent('🪚');
 
-        const dragIcons = screen.getAllByRole('img', {name: /dragdrop icon/i});
+        const dragIcons = await screen.findAllByRole('img', {name: /drag/i});
         dragAndDrop(dragIcons[2], 3);
 
         boxes = screen.getAllByTestId('box');

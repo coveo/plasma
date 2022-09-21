@@ -1,5 +1,5 @@
-import {FunctionComponent} from 'react';
 import classNames from 'classnames';
+import {FunctionComponent} from 'react';
 
 interface LoadingSpinnerProps {
     size?: number;

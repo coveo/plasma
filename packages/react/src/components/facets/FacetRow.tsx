@@ -1,8 +1,8 @@
+import {CrossSize16Px, UnavailableSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ClassAttributes, MouseEvent, Component} from 'react';
+import {ClassAttributes, Component, MouseEvent} from 'react';
 import * as _ from 'underscore';
 
-import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {IFacet} from './Facet';
 
@@ -24,7 +24,7 @@ export class FacetRow extends Component<IFacetRowProps, any> {
         maxTooltipLabelLength: 25,
     };
 
-    get isExclude(): boolean {
+    get isExcluded(): boolean {
         return !!this.props.enableExclusions && !!this.props.facetRow.exclude;
     }
 
@@ -47,12 +47,12 @@ export class FacetRow extends Component<IFacetRowProps, any> {
                         type="checkbox"
                         name={this.props.facetRow.name}
                         className="facet-checkbox-input"
-                        checked={this.props.isChecked && !this.isExclude}
+                        checked={this.props.isChecked && !this.isExcluded}
                         onClick={this.stopEvent}
                         onChange={_.noop}
                     />
-                    <button type="button" className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
-                        <Svg svgName="clear" className="icon hide exclude-icon" />
+                    <button type="button" className={this.props.isChecked && this.isExcluded ? 'exclude-box' : ''}>
+                        <CrossSize16Px className="hide exclude-icon" />
                     </button>
                     {this.getLabel()}
                     {this.getCount()}
@@ -66,7 +66,7 @@ export class FacetRow extends Component<IFacetRowProps, any> {
             ? this.props.maxTooltipLabelLength - this.props.facetRow.count.length
             : this.props.maxTooltipLabelLength;
 
-        const className = classNames({'text-exclude': this.props.isChecked && this.isExclude});
+        const className = classNames({'text-exclude': this.props.isChecked && this.isExcluded});
         const label: JSX.Element = <span className={className}>{this.props.facetRow.formattedName}</span>;
 
         return this.props.facetRow.formattedName.length > maxCalculatedNameLength ? (
@@ -87,7 +87,7 @@ export class FacetRow extends Component<IFacetRowProps, any> {
             return (
                 <span
                     className={classNames('facet-value-count', {
-                        'text-exclude': this.props.isChecked && this.isExclude,
+                        'text-exclude': this.props.isChecked && this.isExcluded,
                     })}
                 >
                     {this.props.facetRow.count}
@@ -99,21 +99,19 @@ export class FacetRow extends Component<IFacetRowProps, any> {
     private getExcludeAction() {
         return this.props.enableExclusions ? (
             <div className="flex center-align facet-exclude-button" onClick={() => this.toggleFacetToExclude()}>
-                {this.props.isChecked && this.isExclude ? null : this.getExcludeButton()}
+                {this.props.isChecked && this.isExcluded ? null : this.getExcludeButton()}
             </div>
         ) : null;
     }
 
     private getExcludeButton() {
-        return this.props.excludeTooltipMessage ? (
+        return (
             <Tooltip
                 className="exclude-button"
-                title={this.props.excludeTooltipMessage(this.props.facetRow.formattedName)}
+                title={this.props.excludeTooltipMessage?.(this.props.facetRow.formattedName) ?? ''}
             >
-                <Svg svgName="exclude" className="icon" />
+                <UnavailableSize16Px height={16} />
             </Tooltip>
-        ) : (
-            <Svg svgName="exclude" className="exclude-button icon" />
         );
     }
 
@@ -123,7 +121,7 @@ export class FacetRow extends Component<IFacetRowProps, any> {
     }
 
     private toggleFacetToExclude(): void {
-        this.props.onToggleFacet({...this.props.facetRow, exclude: !this.isExclude});
+        this.props.onToggleFacet({...this.props.facetRow, exclude: !this.isExcluded});
     }
 
     private toggleFacet(): void {

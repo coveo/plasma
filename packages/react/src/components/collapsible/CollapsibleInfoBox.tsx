@@ -1,7 +1,7 @@
+import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, FC} from 'react';
+import {FC, ReactNode} from 'react';
 
-import {Svg} from '../svg/Svg';
 import {CollapsibleConnected} from './CollapsibleConnected';
 
 export interface CollapsibleInfoBoxProps {
@@ -37,7 +37,7 @@ export const CollapsibleInfoBox: FC<CollapsibleInfoBoxProps> = ({
             </div>
         ) : (
             <div className="flex">
-                <Svg svgName="info" className="icon mod-20 mx1 js-info-svg" />
+                <InfoSize24Px height={24} className="mx1" />
                 <h6>{title}</h6>
             </div>
         );

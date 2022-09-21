@@ -1,11 +1,11 @@
+import {MinusSize16Px, PlusSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactText, KeyboardEvent, ChangeEvent, HTMLProps, PureComponent} from 'react';
+import {ChangeEvent, HTMLProps, KeyboardEvent, PureComponent, ReactText} from 'react';
 import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {Svg} from '../svg/Svg';
 import {NumericInputActions} from './NumericInputActions';
 import {initialNumericInputState} from './NumericInputReducers';
 import {NumericInputSelectors} from './NumericInputSelectors';
@@ -124,7 +124,7 @@ export class NumericInputConnected extends PureComponent<NumericInputProps & HTM
                         disabled={!decrementEnabled || this.props.disabled}
                         onClick={this.onDecrement}
                     >
-                        <Svg svgName="minus" svgClass="icon mod-12" />
+                        <MinusSize16Px height={16} />
                     </button>
                     <div className="flex flex-column">
                         <input
@@ -149,7 +149,7 @@ export class NumericInputConnected extends PureComponent<NumericInputProps & HTM
                         disabled={!incrementEnabled || this.props.disabled}
                         onClick={this.onIncrement}
                     >
-                        <Svg svgName="plus" svgClass="icon mod-12" />
+                        <PlusSize16Px height={16} />
                     </button>
                 </div>
                 <div className="flex flex-row">

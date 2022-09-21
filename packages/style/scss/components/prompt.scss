@@ -13,11 +13,6 @@ $prompt-message-line-height: 20px;
                 height: $modal-prompt-header-height;
                 padding: $header-height-padding $modal-prompt-horizontal-padding;
 
-                .small-close {
-                    width: $modal-prompt-close-icon-size;
-                    height: $modal-prompt-close-icon-size;
-                }
-
                 h1 {
                     color: var(--white);
                     white-space: inherit;

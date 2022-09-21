@@ -1,8 +1,8 @@
 {
     "name": "PlasmaDS - Colors",
-    "lastModified": "2022-09-16T15:13:03Z",
-    "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/84a75013-3e62-4908-bf57-8a0a238dac67?Expires=1664150400&Signature=hqnQT372IKHjfkIW~FbehLbYOHNJT66gOYpay7kOlcfDXjOM2M~Pu3ZIAdbr9-L0Kx3BGccMsbEs6e4cqd3uSjlmzmhT0S-6XXmqrZONNTqdlMVHYe5GAX3mF6bTaXF9y~YTbJE-I3qv7iGYwZWS7j62HPJNzLGuOylk5NBxf1XntdnT3aZpHaLmSNyVhQ~bqMdhL-lfBUawxquOqtViAXAMvuAzziFGNq0jreFn6VXigp9TnvYNCh9mg1B60ECVfuATCKKUF7UQPPZJosi5nkqozOAUf072I9ijwSlNUk0m3D9Dtj4OEEcWMU3afb2VRh~g4TIuPrk3Pcolzpmgxw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-    "version": "2350400610",
+    "lastModified": "2022-09-18T18:28:45Z",
+    "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/524a4899-61bb-4ab6-b1e9-b2d9c81c0dc6?Expires=1664755200&Signature=IX8iyNWigTeSwQBAW2cddM6HkroaAe33bJcWwzkDYsJ4BYqJs-uiGmGKLrk6iCJPJ6Dxn-VFHHNI55BQGnWbyXhqFVJ269cTuOKXHQnykYPsvo42fyo99hTEYbkbjSBDaUCLQRFym8T218QndfxWbeLXAIlFsS9OY290mWuRePm04IU8thqdF0YKaS5iMIDCJOvJtW0tpx4f49u3Z2JkO75qkidoqBTCjyXgdFvqUjOl5-qMJabk1kj8wtnJEYFK-eWYtEbi~SEKsT2Av-Uvz271WeV2c3VzCgUyFs3a2WNaCymtP1XpHm06OP8JTZOWx0UzaGQF8lO~ia579HedFQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    "version": "2354779381",
     "role": "editor",
     "editorType": "figma",
     "linkAccess": "org_view",
@@ -10898,43 +10898,43 @@
                 },
                 "60:289": {
                     "key": "950cefc352f1bc53bebe4353467c6412007aaede",
-                    "name": "Primary/Action Blue/1",
+                    "name": "Primary/Action/1",
                     "styleType": "FILL",
                     "description": ""
                 },
                 "3:183": {
                     "key": "07a46166994d8c6dad6d655d3a8cafe3905984a9",
-                    "name": "Primary/Action Blue/2",
+                    "name": "Primary/Action/2",
                     "styleType": "FILL",
                     "description": ""
                 },
                 "3:184": {
                     "key": "c668f99a1be97a48fed29b196e76cc8d3650ad52",
-                    "name": "Primary/Action Blue/3",
+                    "name": "Primary/Action/3",
                     "styleType": "FILL",
                     "description": ""
                 },
                 "3:185": {
                     "key": "9e207aa9672a6a67e16d5c10fde21d6fe2c4d2d0",
-                    "name": "Primary/Action Blue/4",
+                    "name": "Primary/Action/4",
                     "styleType": "FILL",
                     "description": "Main actions (in Dark): CTA, Links"
                 },
                 "3:186": {
                     "key": "cef3bd74b075cc8c91c1b6d1faf32c2670ef4e48",
-                    "name": "Primary/Action Blue/6 - Main",
+                    "name": "Primary/Action/6 - Main",
                     "styleType": "FILL",
                     "description": "Main actions (in Light): CTA, Links"
                 },
                 "3:187": {
                     "key": "f6e0c23f50c037165f98a6d661b8abfb2fc00203",
-                    "name": "Primary/Action Blue/8",
+                    "name": "Primary/Action/8",
                     "styleType": "FILL",
                     "description": "Hover color for button and links"
                 },
                 "3:188": {
                     "key": "dcb071e57fd4df0a6ae6777ec82ff0c552ce36d2",
-                    "name": "Primary/Action Blue/9",
+                    "name": "Primary/Action/9",
                     "styleType": "FILL",
                     "description": "Pressed state for link and buttons"
                 },

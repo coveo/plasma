@@ -1,7 +1,8 @@
-import code from '@examples/SubNavigation/main.example.tsx';
 import custom from '@examples/SubNavigation/custom.example.tsx';
-import defaultSelected from '@examples/SubNavigation/defaultSelected.example.tsx';
 import customWithDesc from '@examples/SubNavigation/customWithDesc.example.tsx';
+import defaultSelected from '@examples/SubNavigation/defaultSelected.example.tsx';
+import code from '@examples/SubNavigation/main.example.tsx';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 export const SubNavigationExamples = () => (

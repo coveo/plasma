@@ -259,7 +259,7 @@ describe('Numeric Input', () => {
                 expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue));
             });
 
-            it('is disabled if you pass it the disabled prop', () => {
+            it('is disabled if you pass it the disabled prop', async () => {
                 render(<NumericInputConnected id={id} initialValue={initialValue} disabled />, {
                     initialState: {
                         numericInputs: {
@@ -268,8 +268,8 @@ describe('Numeric Input', () => {
                     },
                 });
 
-                expect(screen.getByRole('button', {name: /minus icon/i})).toBeDisabled();
-                expect(screen.getByRole('button', {name: /plus icon/i})).toBeDisabled();
+                expect(await screen.findByRole('button', {name: /minus/i})).toBeDisabled();
+                expect(await screen.findByRole('button', {name: /plus/i})).toBeDisabled();
                 expect(screen.getByRole('textbox')).toBeDisabled();
             });
         });

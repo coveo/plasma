@@ -1,4 +1,5 @@
 import {Badge, BadgeType, TableHOC, TableRowConnected} from '@coveord/plasma-react';
+import {CloudSize16Px} from '@coveord/plasma-react-icons';
 import {loremIpsum} from 'lorem-ipsum';
 
 const TABLE_ID: string = 'mainExampleTableId';
@@ -33,7 +34,7 @@ const generateRows = (allData: IExampleRowData[], tableId: string) =>
             <td key="username">{data.username.toLowerCase()}</td>
             <td key="password">{data.password.toLowerCase()}</td>
             <td>
-                <Badge label={'King'} icon={'cloud'} isSmall type={BadgeType.Success} />
+                <Badge label={'King'} icon={CloudSize16Px} isSmall type={BadgeType.Success} />
             </td>
         </TableRowConnected>
     ));

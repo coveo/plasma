@@ -1,4 +1,5 @@
-import {ListBox, Svg} from '@coveord/plasma-react';
+import {ListBox} from '@coveord/plasma-react';
+import {ClockSize24Px} from '@coveord/plasma-react-icons';
 
 export default () => (
     <ListBox
@@ -15,34 +16,10 @@ export default () => (
                 value: '3',
                 displayValue: 'Option 3',
             },
-            {
-                value: '4',
-                displayValue: 'Option 4',
-            },
-            {
-                value: '5',
-                displayValue: 'Option 5',
-            },
-            {
-                value: '6',
-                displayValue: 'Option 6',
-            },
-            {
-                value: '7',
-                displayValue: 'Option 7',
-            },
-            {
-                value: '8',
-                displayValue: 'Option 8',
-            },
-            {
-                value: '9',
-                displayValue: 'Option 9',
-            },
         ]}
         footer={
             <div className="select-footer">
-                <Svg svgName="clock24px" className="icon mod-lg" />
+                <ClockSize24Px />
                 Look at my Footer
             </div>
         }

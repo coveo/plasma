@@ -3,7 +3,6 @@ import {shallowWithState, shallowWithStore} from '@test-utils';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {PaginationReduxActions} from '../../navigation/pagination';
-import {Svg} from '../../svg';
 import {IPaginationPagesNumberProps, PaginationPagesNumber} from '../PaginationPagesNumber';
 import {PaginationSelect} from '../PaginationSelect';
 
@@ -60,12 +59,6 @@ describe('PaginationPagesNumber tests', () => {
 
                     expect(wrapper.find('a.flat-select-option').at(0).text()).toContain(label);
                 });
-
-                it('should have a <Svg />', () => {
-                    wrapper = shallowPaginationPagesNumber().dive().dive();
-
-                    expect(wrapper.find('a.flat-select-option').at(0).find(Svg).length).toBe(1);
-                });
             });
 
             describe('next arrow', () => {
@@ -100,12 +93,6 @@ describe('PaginationPagesNumber tests', () => {
                         .dive();
 
                     expect(wrapper.find('a.flat-select-option').at(1).text()).toContain(label);
-                });
-
-                it('should have a <Svg />', () => {
-                    wrapper = shallowPaginationPagesNumber().dive().dive();
-
-                    expect(wrapper.find('a.flat-select-option').at(1).find(Svg).length).toBe(1);
                 });
             });
 

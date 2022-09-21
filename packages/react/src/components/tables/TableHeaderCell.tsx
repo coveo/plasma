@@ -1,8 +1,9 @@
+import {DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ClassAttributes, ReactNode, MouseEvent, Component} from 'react';
+import {ClassAttributes, Component, MouseEvent, ReactNode} from 'react';
 import * as _ from 'underscore';
+
 import {IClassName} from '../../utils/ClassNameUtils';
-import {Svg} from '../svg/Svg';
 import {TableSortingOrder} from './TableConstants';
 
 export interface ITableHeaderCellOwnProps extends ClassAttributes<TableHeaderCell> {
@@ -73,7 +74,7 @@ export class TableHeaderCell extends Component<ITableHeaderCellProps, any> {
         const tableCellHasSort = !_.isUndefined(this.props.sorted) && !!this.props.attributeToSort;
         const sortIcon: JSX.Element = tableCellHasSort ? (
             <div className="admin-sort-icon">
-                <Svg svgName="ascDesc" className="tables-sort icon" />
+                <DoubleArrowHeadVSize16Px className="tables-sort" />
             </div>
         ) : null;
 

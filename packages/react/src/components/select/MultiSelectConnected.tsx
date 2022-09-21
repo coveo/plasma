@@ -1,6 +1,6 @@
-import {svg} from '@coveord/plasma-style';
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {CSSProperties, ReactNode, ComponentType, PureComponent} from 'react';
+import {ComponentType, CSSProperties, PureComponent, ReactNode} from 'react';
 import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
@@ -8,12 +8,12 @@ import * as _ from 'underscore';
 
 import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {CollapsibleToggle} from '../collapsible';
 import {DnDUtils} from '../dragAndDrop';
 import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
-import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
@@ -175,14 +175,13 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
     private getRemoveAllSelectedOptionsButton(): JSX.Element {
         return this.getSelectedOptions().length > 1 && !this.props.readOnly ? (
             <Tooltip title={this.props.deselectAllTooltipText} placement="top" noSpanWrapper>
-                <div
+                <button
                     className="remove-all-selected-options ml1"
                     onClick={() => this.props.onRemoveAll()}
-                    role="button"
                     aria-label={this.props.deselectAllTooltipText}
                 >
-                    <Svg svgName={svg.clear.name} svgClass="icon" />
-                </div>
+                    <CrossSize16Px height={16} />
+                </button>
             </Tooltip>
         ) : null;
     }
@@ -196,7 +195,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
                 ? {disabled: true}
                 : {disabled: this.props.disabled};
         const buttonClasses = classNames(
-            'btn dropdown-toggle multiselect-add dropdown-toggle-placeholder',
+            'btn dropdown-toggle multiselect-add dropdown-toggle-placeholder space-between',
             this.props.toggleClasses
         );
         return (
@@ -223,10 +222,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
                         {...buttonAttrs}
                     >
                         <span className="dropdown-no-value">{this.props.placeholder}</span>
-                        <Svg
-                            svgName={isOpen ? svg.chartUp.name : svg.chartDown.name}
-                            svgClass="icon dropdown-toggle-arrow-style"
-                        />
+                        <CollapsibleToggle expanded={isOpen} />
                     </button>
                 )}
             </div>

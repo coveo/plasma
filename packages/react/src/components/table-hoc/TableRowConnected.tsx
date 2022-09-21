@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import {
-    ReactNode,
-    ReactChild,
-    MouseEvent,
+    Children,
+    Fragment,
     HTMLAttributes,
     isValidElement,
-    Children,
     PureComponent,
-    Fragment,
+    ReactChild,
+    ReactNode,
+    MouseEvent as ReactMouseEvent,
 } from 'react';
 import * as _ from 'underscore';
 
@@ -18,6 +18,7 @@ import {EventUtils} from '../../utils/EventUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
 import {addActionsToActionBar} from '../actions/ActionBarActions';
+import {Button} from '../button/Button';
 import {COLLAPSIBLE_EFFECT_DURATION} from '../collapsible/CollapsibleConnected';
 import {CollapsibleToggle} from '../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from './actions/TableHOCRowActions';
@@ -176,12 +177,9 @@ class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttr
                             'mod-no-border-bottom': this.props.collapsible.noBorderBottom,
                         })}
                     >
-                        <CollapsibleToggle
-                            onClick={this.onToggleCollapsible}
-                            expanded={this.props.opened}
-                            svgClassName="mod-12"
-                            className={'btn mod-no-border right px1'}
-                        />
+                        <Button onClick={this.onToggleCollapsible} classes="mod-no-border right px1">
+                            <CollapsibleToggle expanded={this.props.opened} />
+                        </Button>
                     </td>
                 );
             }
@@ -215,7 +213,7 @@ class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttr
         return Children.toArray(this.props.children).filter((child: ReactChild) => isValidElement(child)).length;
     }
 
-    private handleClick = (e: MouseEvent<HTMLTableRowElement>) => {
+    private handleClick = (e: ReactMouseEvent<HTMLTableRowElement>) => {
         if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
             this.props.onClick?.(e);
             const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
@@ -236,10 +234,7 @@ class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttr
             });
     };
 
-    private onToggleCollapsible = (e: MouseEvent<HTMLElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
-
+    private onToggleCollapsible = () => {
         this.props.onCollapsibleClick(this.props.opened);
     };
 }

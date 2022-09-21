@@ -1,9 +1,8 @@
-import {SvgName} from '@coveord/plasma-style';
+import {Icon, MoreSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ClassAttributes, Component} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface IConfirmButtonLabel {
@@ -30,7 +29,7 @@ export interface IBaseActionOptions {
 }
 
 export interface IActionOptions extends IBaseActionOptions {
-    icon?: SvgName;
+    icon?: Icon;
     iconClass?: string;
     id?: string;
     trigger?: () => void;
@@ -60,15 +59,13 @@ export class Action extends Component<IActionProps, any> {
 
     render() {
         const {icon, iconClass, id, name, tooltipPlacement, tooltip} = this.props.action;
+        const ActionIcon = icon;
         const actionIcon: JSX.Element = icon ? (
-            <Svg svgName={icon} className={classNames(iconClass, 'action-icon')} svgClass="icon" />
+            <ActionIcon className={classNames(iconClass, 'action-icon')} />
         ) : (
-            <Svg
-                svgName="more"
-                className={classNames(iconClass, 'action-icon action-icon-more')}
-                svgClass="icon icon-medium"
-            />
+            <MoreSize24Px className={classNames(iconClass, 'action-icon action-icon-more')} />
         );
+
         const inside: string | JSX.Element = this.props.simple ? (
             name
         ) : (

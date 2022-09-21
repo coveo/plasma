@@ -1,6 +1,7 @@
 import {IActionOptions, TableHOC, TableRowConnected, tableWithActions} from '@coveord/plasma-react';
 import {compose} from 'redux';
 import {loremIpsum} from 'lorem-ipsum';
+import {EditSize24Px} from '@coveord/plasma-react-icons';
 
 const TABLE_ID: string = 'withActionsTableId';
 
@@ -21,7 +22,7 @@ const TableComposed = compose<any>(tableWithActions())(TableHOC);
 const rowActions: IActionOptions[] = [
     {
         primary: true,
-        icon: 'edit',
+        icon: EditSize24Px,
         name: 'Edit',
         enabled: true,
         trigger: () => alert('trigger on action'),

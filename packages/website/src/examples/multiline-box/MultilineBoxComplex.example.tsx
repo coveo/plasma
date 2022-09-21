@@ -1,18 +1,17 @@
-import {ReactNode, FocusEvent} from 'react';
-import {compose} from 'redux';
 import {
-    FormProvider,
-    MultilineBox,
-    IButtonProps,
-    IMultilineSingleBoxProps,
-    IMultilineParentProps,
-    TextInput,
     defaultMultilineBoxRemoveButtonClasses,
-    multilineBoxWithRemoveButton,
-    multilineBoxWithDnD,
+    FormProvider,
+    IButtonProps,
+    IMultilineParentProps,
+    IMultilineSingleBoxProps,
+    MultilineBox,
     multilineBoxContainer,
+    multilineBoxWithDnD,
+    multilineBoxWithRemoveButton,
+    TextInput,
 } from '@coveord/plasma-react';
-import {DragAndDropSize16Px} from '@coveord/plasma-react-icons';
+import {FocusEvent, ReactNode} from 'react';
+import {compose} from 'redux';
 
 interface MyData {
     name: string;
@@ -25,14 +24,7 @@ const containerNodeExample = (child: ReactNode, data: Array<IMultilineSingleBoxP
 );
 
 const ComplexMultilineBox = compose(
-    multilineBoxWithDnD({
-        DnDContainerProps: {
-            draggableContainerProps: {
-                className: 'inline-flex center-align',
-            },
-            icon: <DragAndDropSize16Px className="mb2 mr1" />,
-        },
-    }),
+    multilineBoxWithDnD(),
     multilineBoxWithRemoveButton({
         containerNode: (child: ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode) => (
             <div className="inline-flex center-align">

@@ -13,18 +13,18 @@ describe('SearchBar', () => {
         }).not.toThrow();
     });
 
-    it('render the search bar', () => {
+    it('render the search bar', async () => {
         render(<SearchBar {...requiredProps} />);
 
         expect(screen.getByRole('textbox')).toBeInTheDocument();
-        expect(screen.getByRole('img', {name: 'search icon'})).toBeInTheDocument();
+        expect(await screen.findByRole('img', {name: 'search'})).toBeInTheDocument();
     });
 
     it('renders a loading animation when is searching', () => {
         render(<SearchBar {...requiredProps} searching />);
 
         expect(screen.getByRole('alert')).toBeInTheDocument();
-        expect(screen.queryByRole('img', {name: 'search icon'})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: 'search'})).not.toBeInTheDocument();
     });
 
     it('render a disabled search box if disabled is true', () => {
@@ -47,11 +47,11 @@ describe('SearchBar', () => {
         expect(screen.getByRole('textbox')).toHaveClass('extra-class');
     });
 
-    it('calls onSearch when user click on the search icon', () => {
+    it('calls onSearch when user click on the search icon', async () => {
         const searchSpy = jest.fn();
 
         render(<SearchBar onSearch={searchSpy} />);
-        userEvent.click(screen.queryByRole('img', {name: 'search icon'}));
+        userEvent.click(await screen.findByRole('img', {name: 'search'}));
 
         expect(searchSpy).toHaveBeenCalledTimes(1);
     });
@@ -76,11 +76,11 @@ describe('SearchBar', () => {
         expect(searchSpy).not.toHaveBeenCalled();
     });
 
-    it('dont calls onSearch if the search bar is disabled', () => {
+    it('dont calls onSearch if the search bar is disabled', async () => {
         const searchSpy = jest.fn();
 
         render(<SearchBar onSearch={searchSpy} disabled />);
-        userEvent.click(screen.queryByRole('img', {name: 'search icon'}));
+        userEvent.click(await screen.findByRole('img', {name: 'search'}));
 
         expect(searchSpy).toHaveBeenCalledTimes(0);
 

@@ -97,7 +97,7 @@ $links-color: var(--digital-blue-60);
 $filter-box-height: 34px;
 $filter-box-small-height: 32px;
 $filter-box-small-font-size: 13px;
-$clear-icon-height: 12px;
+$clear-icon-height: 16px;
 $screen-size-break-point: $breakpoint-desktop-large;
 $filter-box-width-large-screen: 336px;
 $filter-box-width-small-screen: 260px;
@@ -187,7 +187,6 @@ $modal-big-height-stick: 95%;
 
 // Prompt modal
 $modal-prompt-text-padding-y: 24px;
-$modal-prompt-close-icon-size: 14px;
 $modal-prompt-horizontal-padding: 30px;
 $modal-prompt-max-height: 350px;
 $modal-prompt-min-height: 280px;
@@ -410,10 +409,7 @@ $facet-checkbox-mark-size: 10px;
 $facet-checkbox-line-width: 2px;
 $facet-more-height: 200px;
 $facet-more-button-border: 2px dashed var(--deprecated-medium-grey);
-$facet-more-button-icon-size: 10px;
 $facet-exclude-padding-right: 24px;
-$facet-exclude-checkbox-icon-size: 10px;
-$facet-exclude-button-size: 13px;
 $facet-exclude-button-icon-size: 7px;
 
 // Spaced boxes

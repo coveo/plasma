@@ -1,4 +1,4 @@
-import {svg} from '@coveord/plasma-style';
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ChangeEvent, FunctionComponent, InputHTMLAttributes, MouseEventHandler, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
 import {FileMetadata, FileUtils} from '../../utils/FileUtils';
-import {Svg} from '../svg';
 import {FilepickerActions} from './FilepickerActions';
 import {FilepickerSelectors} from './FilepickerSelectors';
 
@@ -64,12 +63,9 @@ const FilepickerDisconnected: FunctionComponent<
             <label htmlFor={props.id} className={classNames('btn', {'mod-append reset-text-transform': !isEmpty})}>
                 {selectedFile?.name ?? placeholder}
                 {!isEmpty && (
-                    <Svg
-                        className="btn-append mod-icon"
-                        svgName={svg.clear.name}
-                        svgClass="icon mod-16"
-                        onClick={handleClear}
-                    />
+                    <button className="btn-append cursor-pointer" onClick={handleClear}>
+                        <CrossSize16Px height={16} />
+                    </button>
                 )}
             </label>
         </>

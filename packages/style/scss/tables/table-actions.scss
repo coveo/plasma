@@ -94,10 +94,6 @@
             height: $action-icons-size;
         }
 
-        .action-icon svg {
-            fill: var(--navy-blue-80);
-        }
-
         &.prompt-action {
             margin-left: $button-margin-width;
             padding: $button-padding-y $button-padding-x;

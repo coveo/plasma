@@ -1,4 +1,4 @@
-import {svg} from '@coveord/plasma-style';
+import {ChartSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -7,7 +7,6 @@ import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {InputConnected, InputSelectors} from '../input';
 import {changeInputValue} from '../input/InputActions';
-import {Svg} from '../svg';
 
 export interface LimitOwnProps {
     /**
@@ -84,9 +83,9 @@ const HeaderDivision: FunctionComponent<LimitOwnProps> = ({title, isHistoryInclu
 
 const HistoryIcon: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({isHistoryIncluded, onHistoryIconClick}) =>
     isHistoryIncluded ? (
-        <span className="icon limit-history-button documentation-link" onClick={onHistoryIconClick}>
-            <Svg svgName={svg.menuAnalytics.name} />
-        </span>
+        <button className="link" onClick={onHistoryIconClick}>
+            <ChartSize16Px height={16} />
+        </button>
     ) : null;
 
 const ContentDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({

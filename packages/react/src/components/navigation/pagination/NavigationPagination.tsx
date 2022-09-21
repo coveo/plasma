@@ -1,7 +1,8 @@
+import {ArrowHeadLeftSize16Px, ArrowHeadRightSize16Px} from '@coveord/plasma-react-icons';
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
+
 import {PaginationSelect} from '../../pagination';
-import {Svg} from '../../svg/Svg';
 
 export interface INavigationPaginationOwnProps extends ClassAttributes<NavigationPagination> {
     id?: string;
@@ -99,7 +100,7 @@ export class NavigationPagination extends Component<INavigationPaginationProps, 
                         data-page={currentPage - 1}
                         onClick={() => this.handlePageClick(currentPage - 1)}
                     >
-                        <Svg svgName="arrowLeftRounded" className="pagination-icon" svgClass="icon icon-small mod-lg" />
+                        <ArrowHeadLeftSize16Px height={16} />
                         {previousLabel}
                     </a>
                     {pageSelects}
@@ -109,11 +110,7 @@ export class NavigationPagination extends Component<INavigationPaginationProps, 
                         onClick={() => this.handlePageClick(currentPage + 1)}
                     >
                         {nextLabel}
-                        <Svg
-                            svgName="arrowRightRounded"
-                            className="pagination-icon"
-                            svgClass="icon icon-small mod-lg"
-                        />
+                        <ArrowHeadRightSize16Px height={16} />
                     </a>
                 </div>
             </div>
