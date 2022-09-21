@@ -1,3 +1,208 @@
+# 47.0.0 (2022-09-21)
+
+
+### Features
+
+* **lading-spinner:** fix width that change the proportion of the spinner ([#2836](https://github.com/coveo/plasma/issues/2836)) ([ea39f0f](https://github.com/coveo/plasma/commits/ea39f0f75138c2f85f54ea0e84d6f8850f331ded))
+* **react:** use the new Iconography everywhere ([#2838](https://github.com/coveo/plasma/issues/2838)) ([13e807f](https://github.com/coveo/plasma/commits/13e807ffd10f2f48b6f27e0629ce16c5903d6022)), closes [#2733](https://github.com/coveo/plasma/issues/2733) [#2731](https://github.com/coveo/plasma/issues/2731) [#2763](https://github.com/coveo/plasma/issues/2763) [#2768](https://github.com/coveo/plasma/issues/2768) [#2761](https://github.com/coveo/plasma/issues/2761) [#2751](https://github.com/coveo/plasma/issues/2751) [#2767](https://github.com/coveo/plasma/issues/2767) [#2766](https://github.com/coveo/plasma/issues/2766)
+* release major 47 ([#2839](https://github.com/coveo/plasma/issues/2839)) ([678521f](https://github.com/coveo/plasma/commits/678521f4d05d2b0aef1128b2ed4a623682ceeba6))
+* **tokens,website:** color tokens extraction ([#2837](https://github.com/coveo/plasma/issues/2837)) ([c4718fe](https://github.com/coveo/plasma/commits/c4718fe5054c64a489608a4d2da61a8ccbba206f))
+* **tokens:** fetch icons by chunks of 100 ([#2835](https://github.com/coveo/plasma/issues/2835)) ([2b79aa3](https://github.com/coveo/plasma/commits/2b79aa3bb29581f9ac0b2ec7314b8e17bd911f6a))
+
+
+### BREAKING CHANGES
+
+* in this commit to make it happen.
+* Svg component was removed, use Iconography instead
+* **react:** Badge icon prop now expects an icon from plasma-react-icons
+
+fix(react): fix badge tests
+
+* feat(react): use react-icons in CollapsibleToggle
+
+Switch out the Svg component for the icons from plasma-react-icons in the CollapsibleToggle
+component
+* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
+
+* chore(release): publish version v38.11.4-next.1 [version bump]
+
+* chore(release): publish version v38.11.4-next.0 [version bump]
+
+* feat(react-icons): implement Icon type
+
+Added a typescript type that represents an Icon from plasma-react-icon
+
+* feat(react-icons): add accessible role to all icons
+
+* feat(react): use plasma-react-icons in badge component
+
+Remove the usage of Svg in favour of plasma-react-icons
+* **react:** Badge icon prop now expects an icon from plasma-react-icons
+
+fix(react): fix badge tests
+
+* feat(react): use react-icons in CollapsibleToggle
+
+Switch out the Svg component for the icons from plasma-react-icons in the CollapsibleToggle
+component
+* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
+
+* chore(release): publish version v38.11.4-next.1 [version bump]
+
+* build(publish): add debugging information in publish script
+
+* chore(release): publish version v38.11.6 [version bump]
+
+* chore(release): publish version v38.11.4-next.2 [version bump]
+
+* feat(react): remove Svg from ActionableItem
+
+Switch out Svg for plasma-react-icons in ActionableItem component
+
+* chore(release): publish version v38.11.4-next.3 [version bump]
+
+* feat(tokens): extract design tokens from figma libraries
+
+* chore(release): publish version v38.11.4-next.1 [version bump]
+
+* chore(release): publish version v38.11.4-next.4 [version bump]
+
+* fix(website): remove workarounds
+
+Properly declaring plasma-react-icons as a module fixed the issue with nextjs :tada:
+
+* chore(release): publish version v38.11.4-next.5 [version bump]
+
+* refactor(react): remove Svg from CollapsibleInfoBox
+
+Switch out the Svg component for the icon from plasma-react-icons in CollapsibleInfoBox
+
+* refactor(react): remove Svg from CollapsibleContainer
+
+Switch out the Svg component for icons from the plasma-react-icons packages
+
+* refactor(react): remove Svg from BrowserPreview
+
+Switch out the Svg for plasma-react-icons in BrowserPreview component where I could
+
+* chore(release): publish version v38.11.4-next.6 [version bump]
+
+* chore(release): publish version v38.11.4-next.7 [version bump]
+
+* chore(release): publish version v38.11.4-next.8 [version bump]
+
+* refactor(react): use plasma-react-icons in InfoToken
+
+Switch out the Svg component for plasma-react-icons in the InfoToken component
+
+* chore(release): publish version v38.11.4-next.9 [version bump]
+
+* refactor(icons, action bar): replace svg with icons
+
+* test: fix uts for lazy loading icons
+
+* refactor: applied review to pr
+
+* refactor: applied review again xD
+
+* chore(release): publish version v40.5.2-next.10 [version bump]
+
+* chore(release): publish version v41.2.10-next.11 [version bump]
+
+* fix(website): _react is not defined in sandbox
+
+* refactor(react): use new iconography for dropdown toggles
+
+* refactor(react): use new icons in date picker
+
+* refactor(react): use new icons in LinkSvg and Breadcrumbs
+
+* refactor(react): remove Svg from MultilineBox and MultiSelect
+
+* fix(react): fix failing test in MultiSelectConnected
+
+* fix(website): window is not defined on first load
+
+Using globalThis instead of window fixes everything
+
+* fix(website): use new icon in badge examples
+* **react:** Svg and SvgChild no longer exist, either use icons from plasma-react-icons or img
+tag with an svg from plasma-style
+
+fix: linkSvg path changed
+
+* refactor(react): remove Svg from ActionsDropdown
+
+* refactor(react): remove Svg from ItemFilter
+
+* refactor(react): remove Svg from BlankSlate
+
+The blankslates will now accept Icons from the iconography instead of Svg
+* **react:** Blankslates no longer have svgName and svgClass props, use icon prop instead
+
+fix(website): use Icons in BlankSlate examples
+
+* refactor(react): remove Svg from Facet and FacetRow
+
+Svg component is getting replaced by icons from the Iconography
+
+* refactor(react): remove Svg from IconCard
+
+Replace usage of Svg by icons from the iconography
+* **react:** icon prop for choices now expects an icon from the iconography, .mod-fixed-size is
+getting removed, that doesn't belong in plasma
+
+* refactor(react,website): remove Svg from SideNavigation components
+
+replacing usage of Svg for icons from the iconography
+* **react:** svgName and svgClass props no longer exist, use icon prop instead
+
+* refactor(react): remove Svg from SearchBar
+
+* refactor: remove Svg from TableHeader
+
+* refactor(website,style): move the github icon in the website resources
+
+* refactor: remove Svg from NumericInput
+
+* refactor(dropdownsearch): replace usage of Svg by the Iconography
+
+* refactor(select): replace usages of Svg by the iconopgraphy
+
+* refactor: replace Svg with InfoToken in input labels
+
+* refactor(statuscard): replace usage of Svg by the iconography
+
+* refactor(menuconnected): replace usage of Svg by the iconography
+
+* refactor(pagination): replace usages of the Svg by the iconography
+
+* refactor(website): remove Svg usages in the website
+
+* refactor(jsoneditor): remove usages of the Svg component
+
+* refactor(syncfeedback): replace Svg by InfoToken
+
+* refactor(website): remove commented code
+
+* chore(release): publish version v41.5.1-next.1 [version bump]
+
+* chore(release): publish version v41.5.1-next.2 [version bump]
+
+* build(icons): fix version
+
+* chore(release): publish version v41.5.1-next.3 [version bump]
+
+* build(npm): fix version missmatch
+
+* chore(release): publish version v41.5.1-next.4 [version bump]
+
+* feat(tokens): extract design tokens from figma libraries
+
+* chore(release): publish version v41.5.1-next.5 [version bump]
+
+
+
 ## 46.0.2-next.3 (2022-09-20)
 
 
