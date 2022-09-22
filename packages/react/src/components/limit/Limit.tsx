@@ -58,7 +58,7 @@ const isANumber = (n: any): n is number => typeof n === 'number' && !Number.isNa
 /**
  * @deprecated Use Mantine instead
  */
-export const Limit: FunctionComponent<LimitOwnProps> = (props) => {
+export const Limit: FunctionComponent<React.PropsWithChildren<LimitOwnProps>> = (props) => {
     const {currentLimit} = useSelector((state: PlasmaState) => ({
         currentLimit: +InputSelectors.getValue(state, {id: props.id}) || props.limit,
     }));
@@ -74,21 +74,28 @@ export const Limit: FunctionComponent<LimitOwnProps> = (props) => {
     );
 };
 
-const HeaderDivision: FunctionComponent<LimitOwnProps> = ({title, isHistoryIncluded, onHistoryIconClick}) => (
+const HeaderDivision: FunctionComponent<React.PropsWithChildren<LimitOwnProps>> = ({
+    title,
+    isHistoryIncluded,
+    onHistoryIconClick,
+}) => (
     <div className="flex space-between">
         <label className="form-control-label"> {title}</label>
         <HistoryIcon isHistoryIncluded={isHistoryIncluded} onHistoryIconClick={onHistoryIconClick} />
     </div>
 );
 
-const HistoryIcon: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({isHistoryIncluded, onHistoryIconClick}) =>
+const HistoryIcon: FunctionComponent<React.PropsWithChildren<Omit<LimitOwnProps, 'title'>>> = ({
+    isHistoryIncluded,
+    onHistoryIconClick,
+}) =>
     isHistoryIncluded ? (
         <button className="link" onClick={onHistoryIconClick}>
             <ChartSize16Px height={16} />
         </button>
     ) : null;
 
-const ContentDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
+const ContentDivision: FunctionComponent<React.PropsWithChildren<Omit<LimitOwnProps, 'title'>>> = ({
     id,
     usage,
     limit,
@@ -101,7 +108,7 @@ const ContentDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
     </div>
 );
 
-const UsageDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage}) =>
+const UsageDivision: FunctionComponent<React.PropsWithChildren<Omit<LimitOwnProps, 'title'>>> = ({usage}) =>
     isANumber(usage) ? (
         <div className="limit-box-usage">
             <label className="form-control-label">Usage</label>
@@ -109,7 +116,7 @@ const UsageDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage})
         </div>
     ) : null;
 
-const LimitDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
+const LimitDivision: FunctionComponent<React.PropsWithChildren<Omit<LimitOwnProps, 'title'>>> = ({
     id,
     limit,
     usage,
@@ -142,7 +149,11 @@ const LimitDivision: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
     ) : null;
 };
 
-const ProgressBar: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({usage, isLimitTheGoalToReach, limit}) => {
+const ProgressBar: FunctionComponent<React.PropsWithChildren<Omit<LimitOwnProps, 'title'>>> = ({
+    usage,
+    isLimitTheGoalToReach,
+    limit,
+}) => {
     const progressClass: string = getProgressBarClass(usage, limit);
     const progressClasses = classNames('limit-box-bar', progressClass, {
         'mod-green': isLimitTheGoalToReach,

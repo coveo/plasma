@@ -38,7 +38,7 @@ export const FormContext = createContext<{state: FormState; dispatch: React.Disp
 /**
  * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/
  */
-export const FormProvider: FunctionComponent = ({children}) => {
+export const FormProvider: FunctionComponent<React.PropsWithChildren<unknown>> = ({children}) => {
     const [state, dispatch] = useReducer(formReducer, formInitialState);
     const store = useMemo(() => ({state, dispatch}), [state]);
 

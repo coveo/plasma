@@ -32,7 +32,7 @@ const NavLink: FunctionComponent<NavLinkProps> = ({href = '', label, disabled, i
     );
 };
 
-const CollapsibleSideSection: FC<{title: string; initiallyClosed?: boolean}> = ({
+const CollapsibleSideSection: FC<React.PropsWithChildren<{title: string; initiallyClosed?: boolean}>> = ({
     title,
     initiallyClosed = false,
     children,
@@ -51,7 +51,7 @@ const CollapsibleSideSection: FC<{title: string; initiallyClosed?: boolean}> = (
     );
 };
 
-export const Navigation: FunctionComponent = () => {
+export const Navigation: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
     const {pathname} = useRouter();
 
     return (

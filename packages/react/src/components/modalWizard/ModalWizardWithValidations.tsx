@@ -21,9 +21,9 @@ const mapStateToProps = (state: PlasmaState, {validationIdsByStep}: ModalWithVal
 const extractMessages = (validations: Array<ISingleValidation<string>>) =>
     validations?.map((error) => error.value).join(' ') ?? '';
 
-const ModalWizardWithValidationsDisconnected: FunctionComponent<
+const ModalWizardWithValidationsDisconnected: FunctionComponent<React.PropsWithChildren<
     ModalWithValdiationsProps & ReturnType<typeof mapStateToProps>
-> = ({validationIdsByStep = [], isDirty, isInError, errors, warnings, ...modalWizardProps}) => {
+>> = ({validationIdsByStep = [], isDirty, isInError, errors, warnings, ...modalWizardProps}) => {
     const validateStep = (currentStep: number): {isValid: boolean; message?: string} => ({
         isValid: !isInError(currentStep),
         message: isInError ? extractMessages(errors(currentStep)) : extractMessages(warnings(currentStep)),

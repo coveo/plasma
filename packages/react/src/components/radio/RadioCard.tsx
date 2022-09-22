@@ -9,7 +9,7 @@ export interface RadioCardProps extends Omit<IInputProps, 'outerContainerClass' 
 /**
  * @deprecated Use Mantine Radio instead: https://mantine.dev/core/radio/
  */
-export const RadioCard: FunctionComponent<RadioCardProps> = (props) => {
+export const RadioCard: FunctionComponent<React.PropsWithChildren<RadioCardProps>> = (props) => {
     const classes = classNames('card', 'radio-card', props.classes);
     const containerClasses = 'radio-card-container m2';
 
@@ -28,7 +28,7 @@ export const RadioCard: FunctionComponent<RadioCardProps> = (props) => {
     );
 };
 
-const RadioCardContent: FunctionComponent<RadioCardProps & {classes: string}> = ({
+const RadioCardContent: FunctionComponent<React.PropsWithChildren<RadioCardProps & {classes: string}>> = ({
     id,
     name,
     classes,

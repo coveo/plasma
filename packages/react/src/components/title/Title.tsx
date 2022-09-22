@@ -17,7 +17,7 @@ export interface ITitleProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const Title: FunctionComponent<ITitleProps> = (props) => {
+export const Title: FunctionComponent<React.PropsWithChildren<ITitleProps>> = (props) => {
     const ref = useRef<HTMLHeadingElement>();
 
     const [isTruncated, setIsTruncated] = useState(false);

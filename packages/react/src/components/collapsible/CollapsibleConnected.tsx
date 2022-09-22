@@ -75,9 +75,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: CollapsibleOwnProps) 
 });
 
 export const COLLAPSIBLE_EFFECT_DURATION = 150;
-export const CollapsibleDisconnected: FunctionComponent<
+export const CollapsibleDisconnected: FunctionComponent<React.PropsWithChildren<
     CollapsibleOwnProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
-> = ({
+>> = ({
     children,
     id,
     disabled = false,
@@ -143,8 +143,6 @@ export const CollapsibleDisconnected: FunctionComponent<
 /**
  * @deprecated Use Mantine Accordion instead: https://mantine.dev/core/accordion/
  */
-export const CollapsibleConnected: ComponentType<CollapsibleOwnProps & IReduxActionsPayload> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(CollapsibleDisconnected);
+export const CollapsibleConnected: ComponentType<React.PropsWithChildren<
+    CollapsibleOwnProps & IReduxActionsPayload
+>> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(CollapsibleDisconnected);

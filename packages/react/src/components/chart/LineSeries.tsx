@@ -11,7 +11,11 @@ export interface LineSeriesProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const LineSeries: FunctionComponent<LineSeriesProps> = ({interpolate = 'linear', strokeWith = 2, children}) => {
+export const LineSeries: FunctionComponent<React.PropsWithChildren<LineSeriesProps>> = ({
+    interpolate = 'linear',
+    strokeWith = 2,
+    children,
+}) => {
     const {series, xScale, yScale, color, colorPattern} = useContext(XYChartContext);
 
     const line = d3.svg

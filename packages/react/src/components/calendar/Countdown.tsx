@@ -21,7 +21,7 @@ export interface CountdownProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const Countdown: FunctionComponent<CountdownProps> = ({
+export const Countdown: FunctionComponent<React.PropsWithChildren<CountdownProps>> = ({
     startDate = moment(),
     endDate = moment().date(moment().daysInMonth()),
 }) => {

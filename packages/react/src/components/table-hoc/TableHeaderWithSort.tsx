@@ -22,9 +22,9 @@ export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps 
 /**
  * @deprecated Use Mantine instead
  */
-export const TableHeaderWithSort: FunctionComponent<
+export const TableHeaderWithSort: FunctionComponent<React.PropsWithChildren<
     ITableHeaderWithSortProps & HTMLAttributes<HTMLTableHeaderCellElement>
-> = ({isLoading, id, tableId, isDefault, children}) => {
+>> = ({isLoading, id, tableId, isDefault, children}) => {
     const dispatch = useDispatch();
     const order = useSelector(
         (state: PlasmaState): Order => {

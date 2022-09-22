@@ -10,7 +10,10 @@ export interface YGridProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const YGrid: FunctionComponent<YGridProps> = ({padding = 0, color = 'rgba(0,0,0,0.2)'}) => {
+export const YGrid: FunctionComponent<React.PropsWithChildren<YGridProps>> = ({
+    padding = 0,
+    color = 'rgba(0,0,0,0.2)',
+}) => {
     const context = useContext(XYChartContext);
     const {xDomain, xScale, yScale, yTicksCount} = context;
 

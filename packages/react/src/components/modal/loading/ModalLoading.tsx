@@ -12,7 +12,7 @@ export interface ModalLoadingProps {
 /**
  * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
-export const ModalLoading: FunctionComponent<ModalLoadingProps> = (props) => (
+export const ModalLoading: FunctionComponent<React.PropsWithChildren<ModalLoadingProps>> = (props) => (
     <ModalCompositeConnected
         id={props.id}
         classes="mod-prompt"

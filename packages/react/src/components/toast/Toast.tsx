@@ -59,7 +59,7 @@ export interface IToastProps {
 /**
  * @deprecated Use Mantine Notification instead: https://mantine.dev/core/notification/
  */
-export const Toast: FunctionComponent<IToastProps> = ({
+export const Toast: FunctionComponent<React.PropsWithChildren<IToastProps>> = ({
     title,
     type = 'success',
     dismiss,
@@ -80,7 +80,7 @@ export const Toast: FunctionComponent<IToastProps> = ({
         handleSetTimeout();
 
         return () => {
-            clearTimeout();
+            clearTimeout(null);
             onDestroy?.();
         };
     }, []);
@@ -142,7 +142,9 @@ export const Toast: FunctionComponent<IToastProps> = ({
         <div className="toast-description">
             <div>
                 {children}
-                {typeof content === 'string' || !content ? content : createElement(content as ComponentClass)}
+                {typeof content === 'string' || !content
+                    ? content
+                    : createElement((content as unknown) as ComponentClass)}
             </div>
         </div>
     );

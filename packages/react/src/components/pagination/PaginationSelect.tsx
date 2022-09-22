@@ -8,7 +8,7 @@ export interface IPaginationSelectProps extends HTMLAttributes<HTMLAnchorElement
     onPageClick: (pageNb: number) => void;
 }
 
-export const PaginationSelect: FunctionComponent<IPaginationSelectProps> = ({
+export const PaginationSelect: FunctionComponent<React.PropsWithChildren<IPaginationSelectProps>> = ({
     disabled,
     selected,
     pageNb,

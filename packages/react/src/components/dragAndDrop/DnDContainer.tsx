@@ -22,7 +22,7 @@ type DragItem = {id: string};
 /**
  * @deprecated Use Mantine instead
  */
-export const DnDContainer: FunctionComponent<IDraggableContainerOwnProps> = ({
+export const DnDContainer: FunctionComponent<React.PropsWithChildren<IDraggableContainerOwnProps>> = ({
     draggableContainerProps = {className: 'flex flex-center'},
     draggableIconProps = {},
     icon = <DragAndDropSize24Px className="mb2 mr1" />,

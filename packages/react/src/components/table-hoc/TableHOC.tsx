@@ -89,6 +89,7 @@ export interface ITableHOCOwnProps {
         defaultLoadingRow?: number;
         numberOfSubRow?: number;
     };
+    children?: ReactNode;
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}

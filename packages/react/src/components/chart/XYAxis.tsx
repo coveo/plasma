@@ -30,7 +30,7 @@ const withDefaultConfig = (props: Partial<AxisProps> = {}): AxisProps =>
 /**
  * @deprecated Use Mantine instead
  */
-export const XYAxis: FunctionComponent<XYAxisProps> = ({x, y, children}) => {
+export const XYAxis: FunctionComponent<React.PropsWithChildren<XYAxisProps>> = ({x, y, children}) => {
     const context = useContext(XYChartContext);
     const {xDomain, yDomain, xScale, yScale, xFormat, yFormat, width, height, xTicksCount, yTicksCount} = context;
 

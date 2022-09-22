@@ -17,15 +17,15 @@ export interface SelectWithInfiniteScrollProps {
  * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button'>>(
-    Component: ComponentType<P>
-): ComponentType<P & SelectWithInfiniteScrollProps> => {
+    Component: ComponentType<React.PropsWithChildren<P>>
+): ComponentType<React.PropsWithChildren<P & SelectWithInfiniteScrollProps>> => {
     const mapStateToProps = createStructuredSelector({
         isOpened: SelectSelector.getSelectOpened,
     });
 
-    const ComponentWithInfiniteScroll: FunctionComponent<
-        P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>
-    > = (props) => {
+    const ComponentWithInfiniteScroll: FunctionComponent<React.PropsWithChildren<
+        React.PropsWithChildren<P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>>
+    >> = (props) => {
         const dataLength = _.size(props.items);
         const hasMore = props.totalEntries - dataLength > 0;
 

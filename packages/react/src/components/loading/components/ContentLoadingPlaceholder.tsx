@@ -8,7 +8,7 @@ export interface IContentLoadingPlaceholder {
 /**
  * @deprecated Use Mantine instead
  */
-export const ContentLoadingPlaceholder: FunctionComponent<IContentLoadingPlaceholder> = ({
+export const ContentLoadingPlaceholder: FunctionComponent<React.PropsWithChildren<IContentLoadingPlaceholder>> = ({
     className = '',
     children,
 }) => <div className={classNames('text-content-placeholder', className)}>{children}</div>;

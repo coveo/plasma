@@ -9,6 +9,7 @@ import {
     Children,
     cloneElement,
     PureComponent,
+    ReactNode,
 } from 'react';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -33,7 +34,7 @@ export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
      * Unique identifier
      */
     id: string;
-    button: ComponentType<ISelectButtonProps>;
+    button: ComponentType<React.PropsWithChildren<ISelectButtonProps>>;
     /**
      * The text displayed in the button when no item is selected
      *
@@ -68,6 +69,7 @@ export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
      * Additional CSS classes to set on the toggle button
      */
     toggleClasses?: string;
+    children?: ReactNode;
 }
 
 const listBoxProps = [

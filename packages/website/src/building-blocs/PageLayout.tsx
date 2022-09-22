@@ -1,6 +1,6 @@
 import {TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
 import dynamic from 'next/dynamic';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, ReactNode} from 'react';
 import {useSelector} from 'react-redux';
 
 import {GuidelinesTab} from './GuidelinesTab';
@@ -21,6 +21,7 @@ interface PlaygroundProps {
     title: string;
     code?: string;
     layout?: 'horizontal' | 'vertical';
+    children?: ReactNode;
 }
 
 export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
@@ -33,6 +34,7 @@ export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
      * @default true
      */
     withPropsTable?: boolean;
+    children?: ReactNode;
 }
 
 export const PageLayout: FunctionComponent<PageLayoutProps> = ({
@@ -93,7 +95,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({
 };
 const Content: FunctionComponent<Pick<
     PageLayoutProps,
-    'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable'
+    'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable' | 'children'
 >> = ({code, examples, id, relatedComponents, layout, withPropsTable, children}) => (
     <>
         {code && (

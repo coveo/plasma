@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {RefObject, createRef, Children, Component} from 'react';
+import {RefObject, createRef, Children, Component, ReactNode} from 'react';
 import {findDOMNode} from 'react-dom';
 import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
@@ -22,6 +22,7 @@ export interface ITetherComponentCopiedProps {
     constraints?: any[];
     onUpdate?: (...args: any[]) => void;
     onRepositioned?: (...args: any[]) => void;
+    children?: ReactNode;
 }
 
 export interface IPopoverDispatchProps {

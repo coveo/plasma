@@ -31,10 +31,9 @@ export interface IInlinePromptProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const InlinePrompt: FunctionComponent<IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>> = ({
-    options,
-    onCancel,
-}) => {
+export const InlinePrompt: FunctionComponent<React.PropsWithChildren<
+    IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>
+>> = ({options, onCancel}) => {
     const choices: JSX.Element[] = _.map(options.userChoice.choices, (choice: string) => (
         <Button classes="mod-danger ml1" onClick={options.onClick} key={choice}>
             {choice}

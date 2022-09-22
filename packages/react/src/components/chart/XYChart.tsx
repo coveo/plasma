@@ -73,7 +73,7 @@ const defaultPadding = 10;
 /**
  * @deprecated Use Mantine instead
  */
-export const XYChart: FunctionComponent<XYChartProps> = ({
+export const XYChart: FunctionComponent<React.PropsWithChildren<XYChartProps>> = ({
     width,
     height,
     series,

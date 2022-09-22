@@ -15,7 +15,7 @@ export interface ITablePaginationProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const TablePagination: FunctionComponent<ITablePaginationProps> = ({
+export const TablePagination: FunctionComponent<React.PropsWithChildren<ITablePaginationProps>> = ({
     id,
     disabled = false,
     totalPages,

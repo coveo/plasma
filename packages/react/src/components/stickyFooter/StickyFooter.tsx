@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 
 export interface IStickyFooterProps {
     /**
@@ -14,6 +14,7 @@ export interface IStickyFooterProps {
      * CSS classes to set on the footer element
      */
     className?: string;
+    children?: ReactNode;
 }
 
 /**

@@ -26,16 +26,16 @@ export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     itemsClassName?: string;
 }
 
-const HeaderIcon: FunctionComponent<SideNavigationHeaderProps> = ({icon: IconName}) =>
+const HeaderIcon: FunctionComponent<React.PropsWithChildren<SideNavigationHeaderProps>> = ({icon: IconName}) =>
     IconName ? (
         <IconName height={16} className="navigation-menu-section-header-icon" />
     ) : (
         <span className="navigation-menu-section-header-no-icon" />
     );
 
-const SideNavigationHeader: FunctionComponent<
+const SideNavigationHeader: FunctionComponent<React.PropsWithChildren<
     SideNavigationHeaderProps & Pick<ISideNavigationSectionProps, 'expandable'>
-> = ({customIcon, onClick, children, expandable, isLink, className, ...iconProps}) => (
+>> = ({customIcon, onClick, children, expandable, isLink, className, ...iconProps}) => (
     <div
         className={classNames(
             'navigation-menu-section-header',
@@ -55,7 +55,7 @@ const SideNavigationHeader: FunctionComponent<
 /**
  * @deprecated Use Mantine NavLink instead: https://mantine.dev/core/nav-link/
  */
-export const SideNavigationMenuSection: FunctionComponent<ISideNavigationSectionProps> = ({
+export const SideNavigationMenuSection: FunctionComponent<React.PropsWithChildren<ISideNavigationSectionProps>> = ({
     expandable,
     expanded,
     title,

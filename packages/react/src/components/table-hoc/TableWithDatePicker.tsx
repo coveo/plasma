@@ -22,6 +22,7 @@ export interface ITableWithDatePickerConfig
 export interface ITableWithDatePickerStateProps {
     lowerLimit: Date;
     upperLimit: Date;
+    children?: ReactNode;
 }
 
 export interface ITableWithDatePickerDispatchProps {

@@ -48,7 +48,12 @@ const TypeColorMapping: Record<IconBadgeType, string> = {
 /**
  * @deprecated Use Mantine instead
  */
-export const IconBadge: FunctionComponent<IconBadgeProps> = ({icon, type, size = IconBadgeSize.Medium, className}) => {
+export const IconBadge: FunctionComponent<React.PropsWithChildren<IconBadgeProps>> = ({
+    icon,
+    type,
+    size = IconBadgeSize.Medium,
+    className,
+}) => {
     const IconName = icon;
 
     return (

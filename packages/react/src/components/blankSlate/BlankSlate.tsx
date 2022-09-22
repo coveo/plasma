@@ -50,6 +50,7 @@ export interface IBlankSlateProps {
      * Additional css classes the buttons should have
      */
     buttonClasses?: string[];
+    children?: ReactNode;
 }
 
 /**

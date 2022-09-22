@@ -1,4 +1,4 @@
-import {Component, ComponentType, PropsWithChildren} from 'react';
+import {Component, ComponentType, PropsWithChildren, ReactNode} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -25,6 +25,7 @@ export interface ITableWithPaginationStateProps {
     totalPages: number;
     pageNb: number;
     perPage: number;
+    children?: ReactNode;
 }
 
 const mapDispatchToProps = (

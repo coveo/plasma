@@ -41,7 +41,7 @@ export interface IActionableItemProps {
 /**
  * @deprecated Use Mantine Menu instead: https://mantine.dev/core/menu/
  */
-export const ActionableItem: FunctionComponent<IActionableItemProps> = ({
+export const ActionableItem: FunctionComponent<React.PropsWithChildren<IActionableItemProps>> = ({
     id,
     className,
     containerClassName,

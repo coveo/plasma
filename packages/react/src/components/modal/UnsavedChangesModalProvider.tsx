@@ -22,7 +22,9 @@ export interface IUnsavedChangesModalProviderProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const UnsavedChangesModalProvider: FunctionComponent<IUnsavedChangesModalProviderProps> = ({
+export const UnsavedChangesModalProvider: FunctionComponent<React.PropsWithChildren<
+    IUnsavedChangesModalProviderProps
+>> = ({
     isDirty,
     children,
     confirmationModalId = defaultModalId,

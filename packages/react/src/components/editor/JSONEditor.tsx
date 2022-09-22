@@ -65,9 +65,9 @@ export interface JSONEditorDispatchProps {
 /**
  * @deprecated use Mantine instead
  */
-export const JSONEditor: FunctionComponent<
+export const JSONEditor: FunctionComponent<React.PropsWithChildren<
     JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>
-> = ({
+>> = ({
     defaultValue,
     value,
     readOnly,
@@ -127,7 +127,7 @@ JSONEditor.defaultProps = {
     },
 };
 
-const ValidationDetails: FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (
+const ValidationDetails: FunctionComponent<React.PropsWithChildren<{errorMessage?: string}>> = ({errorMessage}) => (
     <div className="input-validation-error-details">
         <InfoToken mode={InfoTokenMode.Filled} size={InfoTokenSize.Small} type={InfoTokenType.Critical} />
         <span className="input-validation-error-message">{errorMessage ?? DEFAULT_JSON_ERROR_MESSAGE}</span>

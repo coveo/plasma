@@ -23,7 +23,7 @@ export class Content extends PureComponent<IContentProps> {
             return this.props.content;
         }
 
-        return createElement(this.props.content as ComponentClass, this.props.componentProps);
+        return createElement((this.props.content as unknown) as ComponentClass, this.props.componentProps);
     }
 
     render() {

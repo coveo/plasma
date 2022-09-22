@@ -26,6 +26,7 @@ export interface ISelectWithFilterOwnProps {
     noResultFilterText?: (filterText: string) => string;
     noItemsText?: string;
     filter?: IFilterBoxOwnProps;
+    children?: ReactNode;
 }
 
 const SelectWithFilterPropsToOmit = [
@@ -43,7 +44,7 @@ const SelectWithFilterPropsToOmit = [
  * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
-    WrappedComponent: ComponentType<P>
+    WrappedComponent: ComponentType<React.PropsWithChildren<P>>
 ): ComponentClass<P & ISelectWithFilterOwnProps> => {
     type OwnProps = P & ISelectWithFilterOwnProps;
     type Props = OwnProps & ReturnType<ReturnType<typeof makeMapStateToProps>> & ReturnType<typeof mapDispatchToProps>;
@@ -142,7 +143,7 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
                 mb2: !!this.props.children,
             });
 
-            let noResultItem: ReactNode = this.props.noResultItem || this.noResultFilter();
+            let noResultItem: any = this.props.noResultItem || this.noResultFilter();
             let items = this.props.items.map(
                 (item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue})
             );

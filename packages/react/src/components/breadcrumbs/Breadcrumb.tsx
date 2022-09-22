@@ -1,4 +1,4 @@
-import {ClassAttributes, Component} from 'react';
+import {ClassAttributes, Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {ITitleProps, Title} from '../title/Title';
@@ -13,6 +13,7 @@ export interface IBreadcrumbProps extends ClassAttributes<Breadcrumb> {
      * The content of the current breadcrumb
      */
     title: ITitleProps;
+    children?: ReactNode;
 }
 
 /**

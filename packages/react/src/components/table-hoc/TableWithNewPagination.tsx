@@ -30,7 +30,7 @@ export interface ITableWithNewPaginationProps extends ITableHOCOwnProps, WithSer
  */
 export const tableWithNewPagination = (
     supplier: ConfigSupplier<ITableWithNewPaginationConfig> = {perPageNumbers: PER_PAGE_NUMBERS}
-) => (WrappedComponent: ComponentType<ITableWithNewPaginationProps>) => {
+) => (WrappedComponent: ComponentType<React.PropsWithChildren<ITableWithNewPaginationProps>>) => {
     const config = HocUtils.supplyConfig(supplier);
 
     const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableWithNewPaginationProps) => ({
