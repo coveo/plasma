@@ -6,7 +6,7 @@ import {EngineContext} from './EngineContext';
 
 const engine = searchEngine();
 
-export const EngineProvider: FunctionComponent = ({children}) => {
+export const EngineProvider: FunctionComponent<React.PropsWithChildren> = ({children}) => {
     useEffect(() => {
         const {registerFieldsToInclude} = loadFieldActions(engine);
         engine.dispatch(registerFieldsToInclude(['description', 'thumbnail']));

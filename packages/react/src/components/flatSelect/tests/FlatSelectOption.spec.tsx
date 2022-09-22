@@ -19,7 +19,7 @@ describe('FlatSelect', () => {
             id: UUID.generate(),
             option: defaultOption,
         };
-        const content: IContentProps = {content: () => <div>ink</div>, classes: ['mr1']};
+        const content: IContentProps = {content: <div>ink</div>, classes: ['mr1']};
 
         const renderFlatSelectOption = (props: IFlatSelectOptionProps = defaultProps) => {
             flatSelect = mount(<FlatSelectOption {...props} />, {attachTo: document.getElementById('App')});

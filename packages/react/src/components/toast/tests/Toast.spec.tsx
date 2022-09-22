@@ -108,7 +108,7 @@ describe('Toasts', () => {
         const descriptionContainer = '.toast-description';
         const expectedDescription = 'description';
         const newToastAttributes = _.extend({}, toastBasicAttributes, {
-            content: () => <a href="#">{expectedDescription}</a>,
+            content: <a href="#">{expectedDescription}</a>,
         });
 
         expect(toastComponent.find(descriptionContainer).length).toBe(0);
