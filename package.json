@@ -70,7 +70,7 @@
     },
     "pnpm": {
         "overrides": {
-            "@types/react": "^17.0",
+            "@types/react": "^18.0",
             "@types/react-dom": "^17.0"
         }
     }

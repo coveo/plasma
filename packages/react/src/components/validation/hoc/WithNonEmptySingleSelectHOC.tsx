@@ -48,7 +48,7 @@ export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Com
             setError(props.id, !selectedValue ? nonEmptyValidationMessage : '');
         }, [selectedValue, props.id, nonEmptyValidationMessage]);
 
-        return <Component {...(props as T)} />;
+        return <Component {...(props as any)} />;
     };
 
     return connect<StateProps, DispatchProps, T & IWithNonEmptySingleSelectHOCProps>(

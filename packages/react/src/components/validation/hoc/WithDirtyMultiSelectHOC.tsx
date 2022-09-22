@@ -39,7 +39,7 @@ export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Componen
             toggleIsDirty(hasDifferentValuesSelected);
         }, [hasDifferentValuesSelected]);
 
-        return <Component {...(props as T)} />;
+        return <Component {...(props as any)} />;
     };
 
     return connect<StateProps, DispatchProps, T & IMultiSelectWithDirtyOwnProps>(

@@ -37,7 +37,7 @@ export const withDirtyCheckboxHOC = <T extends ICheckboxOwnProps & IInputOwnProp
 
         return (
             <Component
-                {...(props as T)}
+                {...(props as any)}
                 handleOnClick={(wasChecked: boolean) => {
                     const isNowChecked = !wasChecked;
                     setIsDirty(props.id, isNowChecked !== !!props.defaultChecked);

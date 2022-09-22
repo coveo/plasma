@@ -50,7 +50,7 @@ export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Compon
 
         const itemsWithSelectedInitialValue = items.map((item) => ({...item, selected: item.value === initialValue}));
 
-        return <Component {...(props as T)} items={itemsWithSelectedInitialValue} />;
+        return <Component {...(props as any)} items={itemsWithSelectedInitialValue} />;
     };
 
     return connect<StateProps, DispatchProps, T & IWithDirtySingleSelectHOCProps>(
