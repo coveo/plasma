@@ -2,7 +2,18 @@ export const color = {
     primary: {
         gradient: 'linear-gradient(78.21deg, #fadf4a 0.00%, #f9463a 30.73%, #08b7ea 67.19%, #03dec8 94.57%)',
         action: {1: '#e3f1ff', 2: '#c7e4ff', 3: '#8bc7ff', 4: '#399ffe', 6: '#1372ec', 8: '#1a50ad', 9: '#062d70'},
-        grey: {0: '#ffffff', 2: '#f6f7f9', 4: '#e5e8e8', 5: '#c5cacf', 6: '#8e959d', 8: '#626971', 9: '#282829'},
+        gray: {
+            0: '#fcfcfc',
+            1: '#f9f9f9',
+            2: '#f1f2f2',
+            3: '#e5e8e8',
+            4: '#d6dcdd',
+            5: '#b7bcc0',
+            6: '#8e959d',
+            7: '#565b66',
+            8: '#353a3f',
+            9: '#282829',
+        },
         navy: {
             0: '#f1f2ff',
             1: '#d6d7fd',
@@ -15,6 +26,7 @@ export const color = {
             8: '#262646',
             9: '#181d3a',
         },
+        pureWhite: '#ffffff',
     },
     secondary: {
         lime: {0: '#d3fce9', 6: '#12a344', 9: '#004a20'},
