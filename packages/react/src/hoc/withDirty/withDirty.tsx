@@ -10,6 +10,7 @@ export interface IWithDirty {
     id: string;
     showDirty: (isDirty: boolean) => ReactNode;
     isDirty?: boolean;
+    children?: ReactNode;
 }
 
 export interface IWithDirtyStateProps {
