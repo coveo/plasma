@@ -1,5 +1,3 @@
-import {StringListActions} from '../../../../reusableState/customList/StringListActions';
-import * as StringListReducers from '../../../../reusableState/customList/StringListReducers';
 import {IStringListCompositeState} from '../../../../reusableState/customList/StringListReducers';
 import {stringListInitialState} from '../../../../reusableState/customList/StringListReducers';
 import {IReduxAction} from '../../../../utils/ReduxUtils';
@@ -24,12 +22,6 @@ describe('Select', () => {
         const genericAction: IReduxAction<ISelectWithFilterPayload> = {
             type: 'pokeball',
         };
-
-        let spyStringListCompositeState: jest.SpyInstance;
-
-        beforeEach(() => {
-            spyStringListCompositeState = jest.spyOn<any, string>(StringListReducers, 'stringListCompositeReducer');
-        });
 
         it('should return the default state if the action has no payload', () => {
             const newState: IStringListCompositeState = selectWithFilterCompositeReducer({}, {type: undefined});
@@ -56,12 +48,6 @@ describe('Select', () => {
             });
 
             expect(newState).toBe(oldState);
-        });
-
-        it('should call stringListCompositeReducer if the action type is contains in the StringListActions', () => {
-            selectWithFilterCompositeReducer(oldState, {type: StringListActions.add, payload: {id: stateId}});
-
-            expect(spyStringListCompositeState).toHaveBeenCalledTimes(1);
         });
 
         describe('SELECT_ITEM_LIST_BOX', () => {
