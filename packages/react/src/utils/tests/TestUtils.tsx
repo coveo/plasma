@@ -1,18 +1,14 @@
-import {ComponentType, FC, FunctionComponent, createElement, Component} from 'react';
-import {DragDropContext} from 'react-dnd';
-import TestBackend from 'react-dnd-test-backend';
+// import {DragDropContext} from 'react-dnd';
+// import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
 import createMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as _ from 'underscore';
-import {useSelector} from 'react-redux';
 
-import {createStructuredSelector} from 'reselect';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
 import {PlasmaReducers} from '../../PlasmaReducers';
 import {PlasmaState} from '../../PlasmaState';
 import {CommonActions, IDispatch} from '../ReduxUtils';
-import {ValidationSelectors} from '../../components';
 
 export interface IExampleRowData {
     city: string;
@@ -79,40 +75,40 @@ export class TestUtils {
         });
     }
 
-    static wrapComponentInDnDContext(WrappedComponent: any): ComponentType<any> {
-        @DragDropContext(TestBackend)
-        class TestContextContainer extends Component {
-            render() {
-                return createElement(WrappedComponent, this.props);
-            }
-        }
+    // static wrapComponentInDnDContext(WrappedComponent: any): ComponentType<any> {
+    //     @DragDropContext(TestBackend)
+    //     class TestContextContainer extends Component {
+    //         render() {
+    //             return createElement(WrappedComponent, this.props);
+    //         }
+    //     }
 
-        return TestContextContainer;
-    }
+    //     return TestContextContainer;
+    // }
 }
 
-export const ErrorList: FC<{id: string}> = ({id}) => {
-    const errors = useSelector(ValidationSelectors.getErrors(id));
-    const errorList = errors.map(({value}) => <li key={value}>{value}</li>);
+// export const ErrorList: FC<{id: string}> = ({id}) => {
+//     const errors = useSelector(ValidationSelectors.getErrors(id));
+//     const errorList = errors.map(({value}) => <li key={value}>{value}</li>);
 
-    return <ul aria-label="errors">{errorList}</ul>;
-};
+//     return <ul aria-label="errors">{errorList}</ul>;
+// };
 
-export const WarningList: FunctionComponent<{id: string}> = ({id}) => {
-    const warnings = useSelector(ValidationSelectors.getWarnings(id));
-    const warningList = warnings.map(({value}) => <li key={value}>{value}</li>);
+// export const WarningList: FunctionComponent<{id: string}> = ({id}) => {
+//     const warnings = useSelector(ValidationSelectors.getWarnings(id));
+//     const warningList = warnings.map(({value}) => <li key={value}>{value}</li>);
 
-    return <ul aria-label="warnings">{warningList}</ul>;
-};
+//     return <ul aria-label="warnings">{warningList}</ul>;
+// };
 
-export const IsDirtyIndicator: FunctionComponent<{id: string; label?: string}> = ({id, label = 'is dirty'}) => {
-    const {isDirty} = useSelector(
-        createStructuredSelector({
-            isDirty: ValidationSelectors.isDirty([id]),
-        })
-    );
-    return isDirty && <div>{label}</div>;
-};
+// export const IsDirtyIndicator: FunctionComponent<{id: string; label?: string}> = ({id, label = 'is dirty'}) => {
+//     const {isDirty} = useSelector(
+//         createStructuredSelector({
+//             isDirty: ValidationSelectors.isDirty([id]),
+//         })
+//     );
+//     return isDirty && <div>{label}</div>;
+// };
 
 export const defaultMapStateToProps = () => ({});
 
