@@ -1,7 +1,6 @@
 import * as d3 from 'd3';
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import {mocked} from 'ts-jest/utils';
 
 import {XYAxis} from '../XYAxis';
 import {XYChartContext} from '../XYChart';
@@ -15,7 +14,7 @@ jest.mock('react', () => {
     };
 });
 
-const mockedReact = mocked(React);
+const mockedReact = jest.mocked(React);
 
 describe('<XYAxis />', () => {
     beforeAll(() => {
