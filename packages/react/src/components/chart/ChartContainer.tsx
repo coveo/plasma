@@ -19,7 +19,7 @@ export interface ChartBaseProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const ChartContainer: FunctionComponent<ChartContainerProps> = (props) => {
+export const ChartContainer: FunctionComponent<React.PropsWithChildren<ChartContainerProps>> = (props) => {
     const container = useRef<HTMLDivElement>(null);
     useDebouncedWindowResize();
 

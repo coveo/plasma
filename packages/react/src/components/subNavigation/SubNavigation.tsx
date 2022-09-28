@@ -58,16 +58,9 @@ const ISubNavigationPropsToOmit = [
 /**
  * @deprecated Use Mantine instead
  */
-export const SubNavigation: FunctionComponent<ISubNavigationProps & HTMLAttributes<HTMLElement>> = ({
-    onDestroy,
-    onRender,
-    selected,
-    defaultSelected,
-    onClickItem,
-    items,
-    className,
-    ...props
-}) => {
+export const SubNavigation: FunctionComponent<
+    React.PropsWithChildren<ISubNavigationProps & HTMLAttributes<HTMLElement>>
+> = ({onDestroy, onRender, selected, defaultSelected, onClickItem, items, className, ...props}) => {
     useEffect(() => {
         onRender?.();
         return () => onDestroy?.();

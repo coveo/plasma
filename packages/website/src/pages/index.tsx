@@ -21,7 +21,7 @@ export const Index: NextPage = () => (
     </Section>
 );
 
-const WelcomeToPlasma: FC = () => (
+const WelcomeToPlasma: FC<React.PropsWithChildren<unknown>> = () => (
     <div className="section intro">
         <h5 className="welcome-to">Welcome to</h5>
         <div className="page-title">PLASMA</div>
@@ -45,7 +45,7 @@ const WelcomeToPlasma: FC = () => (
     </div>
 );
 
-const FoundationsPages: FC = () => (
+const FoundationsPages: FC<React.PropsWithChildren<unknown>> = () => (
     <Section className="section">
         <h2>Foundations</h2>
         <div className="tile-grid">
@@ -76,7 +76,7 @@ const FoundationsPages: FC = () => (
     </Section>
 );
 
-const LayoutPages: FC = () => (
+const LayoutPages: FC<React.PropsWithChildren<unknown>> = () => (
     <Section className="section">
         <h2>Layout</h2>
         <div className="tile-grid">
@@ -151,7 +151,7 @@ const LayoutPages: FC = () => (
     </Section>
 );
 
-const FormPages: FC = () => (
+const FormPages: FC<React.PropsWithChildren<unknown>> = () => (
     <Section className="section">
         <h2>Form</h2>
         <div className="tile-grid">
@@ -273,7 +273,7 @@ const FormPages: FC = () => (
     </Section>
 );
 
-const NavigationPages: FC = () => (
+const NavigationPages: FC<React.PropsWithChildren<unknown>> = () => (
     <Section className="section">
         <h2>Navigation</h2>
         <div className="tile-grid">
@@ -305,7 +305,7 @@ const NavigationPages: FC = () => (
     </Section>
 );
 
-const FeedbackPages: FC = () => (
+const FeedbackPages: FC<React.PropsWithChildren<unknown>> = () => (
     <Section className="section">
         <h2>Feedback</h2>
         <div className="tile-grid">

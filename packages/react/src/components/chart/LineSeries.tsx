@@ -10,7 +10,7 @@ export interface LineSeriesProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const LineSeries: FunctionComponent<LineSeriesProps> = ({strokeWith = 2, children}) => {
+export const LineSeries: FunctionComponent<React.PropsWithChildren<LineSeriesProps>> = ({strokeWith = 2, children}) => {
     const {series, xScale, yScale, color, colorPattern} = useContext(XYChartContext);
 
     const line = d3

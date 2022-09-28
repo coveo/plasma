@@ -12,7 +12,11 @@ export interface DateTooltipsProps {
 /**
  * @deprecated Use Mantine Tooltip instead: https://mantine.dev/core/tooltip/
  */
-export const DateTooltip: FunctionComponent<DateTooltipsProps> = ({date, format, tooltipFormat}) => {
+export const DateTooltip: FunctionComponent<React.PropsWithChildren<DateTooltipsProps>> = ({
+    date,
+    format,
+    tooltipFormat,
+}) => {
     let content: string;
     const title = moment(date).format(tooltipFormat ?? 'LLL');
     const momentDate = moment.isMoment(date) ? date : moment(date);

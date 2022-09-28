@@ -3,7 +3,6 @@ import * as _ from 'underscore';
 import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {ILinkSvgProps} from '../../linkSvg/LinkSvg';
-import {Svg} from '../../linkSvg/Svg';
 import {Title} from '../../title';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {IModalHeaderProps, ModalHeader} from '../ModalHeader';

@@ -56,7 +56,7 @@ interface TextInputProps {
  * @deprecated Use Mantine Textinput instead: https://mantine.dev/core/text-input/
  */
 export const TextInput: FunctionComponent<
-    TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>
+    React.PropsWithChildren<TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>>
 > = ({
     id: propsId,
     label,
@@ -174,7 +174,7 @@ export const TextInput: FunctionComponent<
     );
 };
 
-const HelpTooltip: FunctionComponent<{message: string}> = ({message}) => {
+const HelpTooltip: FunctionComponent<React.PropsWithChildren<{message: string}>> = ({message}) => {
     if (!message) {
         return null;
     }
@@ -197,7 +197,7 @@ const statusIconMapping: Record<string, InfoTokenType> = {
     warning: InfoTokenType.Warning,
 };
 
-const ValidationMessage: FunctionComponent<{inputId: string}> = ({inputId}) => {
+const ValidationMessage: FunctionComponent<React.PropsWithChildren<{inputId: string}>> = ({inputId}) => {
     const {state} = useTextInput(inputId);
 
     if (!state.visibleStatus || !state.message || state.status === 'indeterminate') {

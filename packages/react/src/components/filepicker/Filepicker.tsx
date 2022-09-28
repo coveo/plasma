@@ -28,7 +28,9 @@ const mapDispatchToProps = (dispatch: IDispatch, {id}: FilepickerProps) => ({
 });
 
 const FilepickerDisconnected: FunctionComponent<
-    FilepickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>
+    React.PropsWithChildren<
+        FilepickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>
+    >
 > = (props) => {
     const {addFilepicker, setFile, clear, isEmpty, selectedFile, placeholder, capture, ...inputProps} = props;
     const input = useRef<HTMLInputElement>();

@@ -28,8 +28,8 @@ const SelectWithPredicatePropsToOmit = [
  * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
-    Component: ComponentType<P>
-): FunctionComponent<P & ISelectWithPredicateOwnProps> => {
+    Component: ComponentType<React.PropsWithChildren<P>>
+): FunctionComponent<React.PropsWithChildren<P & ISelectWithPredicateOwnProps>> => {
     type OwnProps = P & ISelectWithPredicateOwnProps;
     type Props = OwnProps & ReturnType<typeof mapStateToProps>;
 
@@ -50,7 +50,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
         };
     };
 
-    const WrappedComponent: FunctionComponent<Props> = (props) => {
+    const WrappedComponent: FunctionComponent<React.PropsWithChildren<Props>> = (props) => {
         const {onUpdate, predicate} = props;
         useEffect(() => {
             onUpdate?.();

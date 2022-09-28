@@ -12,7 +12,10 @@ export interface IActionDropdownItemProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const ActionDropdownItem: FunctionComponent<IActionDropdownItemProps> = ({parentId, action}) => {
+export const ActionDropdownItem: FunctionComponent<React.PropsWithChildren<IActionDropdownItemProps>> = ({
+    parentId,
+    action,
+}) => {
     if (action.separator) {
         return <li className="divider" />;
     }

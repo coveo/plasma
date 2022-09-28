@@ -131,7 +131,7 @@ export class ActionBar extends PureComponent<
         return classNames(this.props.removeDefaultContainerClasses ? '' : ActionBar.defaultClasses);
     }
 
-    private Actions: FunctionComponent = () => {
+    private Actions: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
         const primaryActions =
             this.props.actions
                 ?.filter(({primary}) => !!primary)
@@ -185,14 +185,14 @@ export class ActionBar extends PureComponent<
         ) : null;
     };
 
-    private Prompt: FunctionComponent = () =>
+    private Prompt: FunctionComponent<React.PropsWithChildren<unknown>> = () =>
         this.props.prompt?.options ? (
             <div className="prompt">
                 <InlinePromptConnected {...this.props.prompt} />
             </div>
         ) : null;
 
-    private Filter: FunctionComponent = () =>
+    private Filter: FunctionComponent<React.PropsWithChildren<unknown>> = () =>
         this.props.itemFilter ? (
             <ItemFilter
                 label={this.props.itemFilterLabel}

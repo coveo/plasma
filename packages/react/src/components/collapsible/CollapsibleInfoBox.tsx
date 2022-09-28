@@ -17,7 +17,7 @@ export interface CollapsibleInfoBoxProps {
 /**
  * @deprecated Use Mantine Accordion instead: https://mantine.dev/core/accordion/
  */
-export const CollapsibleInfoBox: FC<CollapsibleInfoBoxProps> = ({
+export const CollapsibleInfoBox: FC<React.PropsWithChildren<CollapsibleInfoBoxProps>> = ({
     id,
     title,
     expandedOnMount,

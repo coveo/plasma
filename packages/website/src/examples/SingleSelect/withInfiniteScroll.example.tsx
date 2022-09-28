@@ -12,11 +12,9 @@ import {ComponentType, FunctionComponent, useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {compose} from 'redux';
 
-const ServerSideSingleSelect: ComponentType<ISingleSelectOwnProps & SelectWithInfiniteScrollProps> = compose<any>(
-    withServerSideProcessing,
-    selectWithFilter,
-    selectWithInfiniteScroll
-)(SingleSelectConnected);
+const ServerSideSingleSelect: ComponentType<
+    React.PropsWithChildren<ISingleSelectOwnProps & SelectWithInfiniteScrollProps>
+> = compose<any>(withServerSideProcessing, selectWithFilter, selectWithInfiniteScroll)(SingleSelectConnected);
 
 export default () => {
     const filterValue = useSelector((state) => FilterBoxSelectors.getFilterText(state, {id: 'single-select-4'}));
@@ -63,7 +61,7 @@ export interface PhotoProps {
     thumbnailUrl: string;
 }
 
-const PhotoItem: FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => (
+const PhotoItem: FunctionComponent<React.PropsWithChildren<PhotoProps>> = ({id, url, title, thumbnailUrl}) => (
     <div className="flex flex-center">
         <a href={url} target="__blank" className="mr2 flex">
             <img src={thumbnailUrl} alt={title} width={IMG_SIZE} height={IMG_SIZE} />

@@ -24,31 +24,32 @@ const defaultContainerNode = (child: ReactNode, data: IMultilineSingleBoxProps[]
 /**
  * @deprecated Use Mantine instead
  */
-export const multilineBoxContainer = (
-    supplier: ConfigSupplier<IMultilineBoxContainerSupplierProps> = {containerNode: defaultContainerNode}
-) => (Component: typeof MultilineBox): typeof MultilineBox => {
-    class MultilineBoxContainer<T> extends PureComponent<IMultilineBoxContainerProps<T>> {
-        static defaultProps = {
-            renderBody: () => <div />,
-        };
+export const multilineBoxContainer =
+    (supplier: ConfigSupplier<IMultilineBoxContainerSupplierProps> = {containerNode: defaultContainerNode}) =>
+    (Component: typeof MultilineBox): typeof MultilineBox => {
+        class MultilineBoxContainer<T> extends PureComponent<IMultilineBoxContainerProps<T>> {
+            static defaultProps = {
+                renderBody: () => <div />,
+            };
 
-        private getWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-            return Children.map(children, (child: ReactNode, index: number) =>
-                HocUtils.supplyConfig(supplier).containerNode(child, data, index)
-            );
+            private getWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
+                return Children.map(children, (child: ReactNode, index: number) =>
+                    HocUtils.supplyConfig(supplier).containerNode(child, data, index)
+                );
+            }
+
+            render() {
+                return (
+                    <Component
+                        {...this.props}
+                        renderBody={(
+                            boxProps: Array<IMultilineSingleBoxProps<T>>,
+                            parentProps: IMultilineParentProps
+                        ) => this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
+                    />
+                );
+            }
         }
 
-        render() {
-            return (
-                <Component
-                    {...this.props}
-                    renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) =>
-                        this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)
-                    }
-                />
-            );
-        }
-    }
-
-    return MultilineBoxContainer as any;
-};
+        return MultilineBoxContainer as any;
+    };

@@ -88,7 +88,7 @@ export interface ModalWizardProps
 /**
  * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
-export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
+export const ModalWizard: FunctionComponent<React.PropsWithChildren<ModalWizardProps>> = ({
     id,
     title,
     onFinish,

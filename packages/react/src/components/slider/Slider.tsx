@@ -77,7 +77,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: SliderOwnProps) => ({
     setOutputValue: (value: number) => dispatch(SliderActions.setValue(ownProps.id, value)),
 });
 
-const SliderDisconnected: FunctionComponent<SliderOwnProps & ReturnType<typeof mapDispatchToProps>> = (props) => {
+const SliderDisconnected: FunctionComponent<
+    React.PropsWithChildren<SliderOwnProps & ReturnType<typeof mapDispatchToProps>>
+> = (props) => {
     propsValidator(props);
     const crossingPoint = props.crossingPoint ?? (props.min > 0 ? props.min : 0);
     const [rightHandlePosition, setRightHandlePosition] = useState(crossingPoint);

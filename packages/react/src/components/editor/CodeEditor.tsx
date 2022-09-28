@@ -192,7 +192,7 @@ class CodeEditorDisconnect extends Component<
 /**
  * @deprecated use Mantine instead
  */
-export const CodeEditor: ComponentType<ICodeEditorProps> = connect(
+export const CodeEditor: ComponentType<React.PropsWithChildren<ICodeEditorProps>> = connect(
     mapStateToProps,
     mapDispatchToProps
 )(CodeEditorDisconnect);

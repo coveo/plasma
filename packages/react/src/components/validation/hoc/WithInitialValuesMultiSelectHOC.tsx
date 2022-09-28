@@ -24,9 +24,13 @@ const defaultInvalidInitialValuesMessageGenerator = (values: string[]) =>
 /**
  * @deprecated Use Mantine instead
  */
-export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
+export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
+    Component: ComponentType<React.PropsWithChildren<T>>
+) => {
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedMultiSelect: FunctionComponent<T & IMultiSelectWithInitialValuesOwnProps & DispatchProps> = ({
+    const WrappedMultiSelect: FunctionComponent<
+        React.PropsWithChildren<T & IMultiSelectWithInitialValuesOwnProps & DispatchProps>
+    > = ({
         setWarning,
         clearWarning,
         invalidInitialValuesMessage = defaultInvalidInitialValuesMessageGenerator,

@@ -16,11 +16,13 @@ export interface HandleProps {
     value: number;
 }
 
-const SliderHandle: FunctionComponent<{
-    handleProps: HandleProps;
-    handleCustomProps: CustomHandleProps;
-    tooltipProps?: Partial<ComponentProps<typeof SliderTooltip>>;
-}> = ({handleProps, handleCustomProps, tooltipProps = {}}) => (
+const SliderHandle: FunctionComponent<
+    React.PropsWithChildren<{
+        handleProps: HandleProps;
+        handleCustomProps: CustomHandleProps;
+        tooltipProps?: Partial<ComponentProps<typeof SliderTooltip>>;
+    }>
+> = ({handleProps, handleCustomProps, tooltipProps = {}}) => (
     <SliderTooltip
         prefixCls="rc-slider-tooltip"
         overlay={handleCustomProps.customTooltip ?? handleCustomProps.rangeOutput}

@@ -11,7 +11,7 @@ const code = `
 
 const typekitStyles: Array<{
     name: string;
-    variants: Array<{renderer: FunctionComponent; selectors: string[]}>;
+    variants: Array<{renderer: FunctionComponent<React.PropsWithChildren<unknown>>; selectors: string[]}>;
 }> = [
     {
         name: 'Code',

@@ -15,7 +15,7 @@ export interface CollapsibleHeaderIconProps {
 /**
  * @deprecated Use Mantine Accordion instead: https://mantine.dev/core/accordion/
  */
-export const CollapsibleHeaderIcon: FunctionComponent<CollapsibleHeaderIconProps> = ({
+export const CollapsibleHeaderIcon: FunctionComponent<React.PropsWithChildren<CollapsibleHeaderIconProps>> = ({
     informationTooltip,
     informationUrl,
     disabled = false,

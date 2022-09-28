@@ -143,8 +143,8 @@ describe('MultiSelectDropdownSearch', () => {
             it('should get what to do on onRemoveAllSelectedOptions as a prop', () => {
                 renderMultiSelectDropdownSearchConnected(props);
 
-                const onRemoveAllSelectedOptions = multiSelectDropdownSearchConnected.props()
-                    .onRemoveAllSelectedOptions;
+                const onRemoveAllSelectedOptions =
+                    multiSelectDropdownSearchConnected.props().onRemoveAllSelectedOptions;
 
                 expect(onRemoveAllSelectedOptions).toBeDefined();
             });

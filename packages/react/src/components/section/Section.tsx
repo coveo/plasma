@@ -31,7 +31,7 @@ export interface ISectionProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const Section: FunctionComponent<ISectionProps> = ({
+export const Section: FunctionComponent<React.PropsWithChildren<ISectionProps>> = ({
     children,
     title,
     description,

@@ -93,7 +93,7 @@ describe('Table HOC', () => {
 
         it('should slice the data according to the perPageNumbers specified in the HOC config', () => {
             const expectedPerPageNumbers = [2, 3, 4];
-            const MyTable: ComponentType<ITableWithPaginationProps> = _.compose(
+            const MyTable: ComponentType<React.PropsWithChildren<ITableWithPaginationProps>> = _.compose(
                 tableWithPagination({perPageNumbers: expectedPerPageNumbers})
             )(TableHOC);
             const table = shallowWithStore(<MyTable {...defaultProps} />, getStoreMock())

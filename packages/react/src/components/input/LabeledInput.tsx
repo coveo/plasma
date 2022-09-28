@@ -17,7 +17,7 @@ export interface ILabeledInputProps {
 /**
  * @deprecated Use Mantine Input instead: https://mantine.dev/core/input/
  */
-export const LabeledInput: FunctionComponent<ILabeledInputProps> = ({
+export const LabeledInput: FunctionComponent<React.PropsWithChildren<ILabeledInputProps>> = ({
     children,
     label,
     message,

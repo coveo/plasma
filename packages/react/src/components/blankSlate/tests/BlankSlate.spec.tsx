@@ -137,7 +137,7 @@ describe('BlankSlate', () => {
         });
 
         it('should render custom svg', () => {
-            const svgChild: FunctionComponent = () => (
+            const svgChild: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
                 <div role="img" aria-label="shrug icon">
                     🤷
                 </div>

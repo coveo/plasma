@@ -28,39 +28,41 @@ export interface IWithDirtyProps
 /**
  * @deprecated Use Mantine instead
  */
-export const withDirty = <T, R = any>(config: Partial<IWithDirty> = {}) => (
-    Component: ComponentType<Partial<IWithDirtyProps> & T>
-): ComponentClass<Partial<IWithDirtyProps> & T, R> => {
-    const mapStateToProps = (state: PlasmaState, ownProps: IWithDirty): IWithDirtyStateProps => ({
-        isDirty: isBoolean(config.isDirty)
-            ? config.isDirty
-            : WithDirtySelectors.getIsDirty(state, {id: ownProps.id || config.id}),
-    });
+export const withDirty =
+    <T, R = any>(config: Partial<IWithDirty> = {}) =>
+    (
+        Component: ComponentType<React.PropsWithChildren<Partial<IWithDirtyProps> & T>>
+    ): ComponentClass<Partial<IWithDirtyProps> & T, R> => {
+        const mapStateToProps = (state: PlasmaState, ownProps: IWithDirty): IWithDirtyStateProps => ({
+            isDirty: isBoolean(config.isDirty)
+                ? config.isDirty
+                : WithDirtySelectors.getIsDirty(state, {id: ownProps.id || config.id}),
+        });
 
-    const mapDispatchToProps = (dispatch: IDispatch, ownProps: IWithDirty): IWithDirtyDispatchProps => ({
-        toggleIsDirty: (isDirty: boolean) => dispatch(WithDirtyActions.toggle(ownProps.id || config.id, isDirty)),
-    });
+        const mapDispatchToProps = (dispatch: IDispatch, ownProps: IWithDirty): IWithDirtyDispatchProps => ({
+            toggleIsDirty: (isDirty: boolean) => dispatch(WithDirtyActions.toggle(ownProps.id || config.id, isDirty)),
+        });
 
-    @ReduxConnect(mapStateToProps, mapDispatchToProps)
-    class ComponentWithDirty extends PureComponent<Partial<IWithDirtyProps> & T, R> {
-        componentDidMount() {
-            this.props.toggleIsDirty(this.props?.isDirty || config?.isDirty);
+        @ReduxConnect(mapStateToProps, mapDispatchToProps)
+        class ComponentWithDirty extends PureComponent<Partial<IWithDirtyProps> & T, R> {
+            componentDidMount() {
+                this.props.toggleIsDirty(this.props?.isDirty || config?.isDirty);
+            }
+
+            componentWillUnmount() {
+                this.props.toggleIsDirty(false);
+            }
+
+            render() {
+                const {showDirty, isDirty, children} = this.props;
+                return (
+                    <>
+                        <Component {...this.props}>{children}</Component>
+                        {showDirty?.(isDirty) || config.showDirty(isDirty)}
+                    </>
+                );
+            }
         }
 
-        componentWillUnmount() {
-            this.props.toggleIsDirty(false);
-        }
-
-        render() {
-            const {showDirty, isDirty, children} = this.props;
-            return (
-                <>
-                    <Component {...this.props}>{children}</Component>
-                    {showDirty?.(isDirty) || config.showDirty(isDirty)}
-                </>
-            );
-        }
-    }
-
-    return ComponentWithDirty;
-};
+        return ComponentWithDirty;
+    };

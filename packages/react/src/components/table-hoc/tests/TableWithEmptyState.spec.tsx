@@ -9,7 +9,7 @@ import {tableWithEmptyState} from '../TableWithEmptyState';
 
 describe('TableWithEmptyState', () => {
     const TableWithEmptyState = tableWithEmptyState(TableHOC);
-    const EmptyState: FunctionComponent = () => <div>No data!</div>;
+    const EmptyState: FunctionComponent<React.PropsWithChildren<unknown>> = () => <div>No data!</div>;
     let store: PlasmaMockStore;
 
     beforeEach(() => {

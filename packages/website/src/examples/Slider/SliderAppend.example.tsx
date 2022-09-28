@@ -1,7 +1,7 @@
 import {AppendedValueSide, Slider} from '@coveord/plasma-react';
 import {FunctionComponent} from 'react';
 
-const AppendLabel: FunctionComponent<{value: string; label: string}> = ({value, label}) => (
+const AppendLabel: FunctionComponent<React.PropsWithChildren<{value: string; label: string}>> = ({value, label}) => (
     <div style={{textAlign: 'center'}}>
         <label style={{display: 'block', marginBottom: '10px', textAlign: 'center'}}>{label}</label>
         <span style={{margin: '0 auto'}}>{value}</span>

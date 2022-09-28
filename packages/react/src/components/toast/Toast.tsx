@@ -59,7 +59,7 @@ export interface IToastProps {
 /**
  * @deprecated Use Mantine Notification instead: https://mantine.dev/core/notification/
  */
-export const Toast: FunctionComponent<IToastProps> = ({
+export const Toast: FunctionComponent<React.PropsWithChildren<IToastProps>> = ({
     title,
     type = 'success',
     dismiss,

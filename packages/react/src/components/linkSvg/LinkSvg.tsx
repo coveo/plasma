@@ -12,7 +12,7 @@ export interface ILinkSvgProps {
     tooltip?: ITooltipProps;
 }
 
-export const LinkSvg: FunctionComponent<ILinkSvgProps> = ({
+export const LinkSvg: FunctionComponent<React.PropsWithChildren<ILinkSvgProps>> = ({
     target = '_blank',
     icon: IconComponent = QuestionSize16Px,
     className,

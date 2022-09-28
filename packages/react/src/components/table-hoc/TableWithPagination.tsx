@@ -51,77 +51,77 @@ const sliceData = (data: any[], startingIndex: number, endingIndex: number) => d
 /**
  * @deprecated Use Mantine instead
  */
-export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginationConfig> = {}) => (
-    WrappedComponent: ComponentType<ITableWithPaginationProps>
-) => {
-    const config = HocUtils.supplyConfig(supplier);
-    const mapStateToProps = (
-        state: PlasmaState,
-        ownProps: ITableHOCOwnProps & WithServerSideProcessingProps
-    ): ITableWithPaginationStateProps | ITableHOCOwnProps => {
-        const pageNb = NavigationSelectors.getPaginationPage(state, {
-            id: TableHOCUtils.getPaginationId(ownProps.id),
-        });
-        const perPage = NavigationSelectors.getPerPage(state, {id: ownProps.id});
-        const isServer = ownProps.isServer || config.isServer;
-        const length = TableSelectors.getDataCount(state, {
-            id: ownProps.id,
-            data: ownProps.data,
-            isServer,
-        });
+export const tableWithPagination =
+    (supplier: ConfigSupplier<ITableWithPaginationConfig> = {}) =>
+    (WrappedComponent: ComponentType<React.PropsWithChildren<ITableWithPaginationProps>>) => {
+        const config = HocUtils.supplyConfig(supplier);
+        const mapStateToProps = (
+            state: PlasmaState,
+            ownProps: ITableHOCOwnProps & WithServerSideProcessingProps
+        ): ITableWithPaginationStateProps | ITableHOCOwnProps => {
+            const pageNb = NavigationSelectors.getPaginationPage(state, {
+                id: TableHOCUtils.getPaginationId(ownProps.id),
+            });
+            const perPage = NavigationSelectors.getPerPage(state, {id: ownProps.id});
+            const isServer = ownProps.isServer || config.isServer;
+            const length = TableSelectors.getDataCount(state, {
+                id: ownProps.id,
+                data: ownProps.data,
+                isServer,
+            });
 
-        const startingIndex = pageNb * perPage;
-        const endingIndex = startingIndex + perPage;
+            const startingIndex = pageNb * perPage;
+            const endingIndex = startingIndex + perPage;
 
-        return {
-            pageNb,
-            perPage,
-            totalEntries: length,
-            totalPages: Math.max(Math.ceil(length / perPage), 1),
-            data: isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
+            return {
+                pageNb,
+                perPage,
+                totalEntries: length,
+                totalPages: Math.max(Math.ceil(length / perPage), 1),
+                data: isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
+            };
         };
-    };
 
-    /**
-     * @deprecated use tableWithNewPagination instead
-     */
-    class TableWithPagination extends Component<ITableWithPaginationProps> {
-        componentDidMount() {
-            this.props.onMount();
-        }
+        /**
+         * @deprecated use tableWithNewPagination instead
+         */
+        class TableWithPagination extends Component<ITableWithPaginationProps> {
+            componentDidMount() {
+                this.props.onMount();
+            }
 
-        componentWillUnmount() {
-            this.props.onUnmount();
-        }
+            componentWillUnmount() {
+                this.props.onUnmount();
+            }
 
-        componentDidUpdate(prevProps: ITableWithPaginationProps) {
-            if (prevProps.pageNb !== this.props.pageNb || prevProps.perPage !== this.props.perPage) {
-                this.props.onUpdate?.();
+            componentDidUpdate(prevProps: ITableWithPaginationProps) {
+                if (prevProps.pageNb !== this.props.pageNb || prevProps.perPage !== this.props.perPage) {
+                    this.props.onUpdate?.();
+                }
+            }
+
+            render() {
+                const newProps = _.omit(this.props, TableWithPaginationProps);
+                return (
+                    <WrappedComponent {...newProps}>
+                        <NavigationConnected
+                            id={this.props.id}
+                            loadingIds={[this.props.id]}
+                            {...config}
+                            {..._.pick(this.props, TableWithPaginationProps)}
+                        />
+                        {this.props.children}
+                    </WrappedComponent>
+                );
             }
         }
 
-        render() {
-            const newProps = _.omit(this.props, TableWithPaginationProps);
-            return (
-                <WrappedComponent {...newProps}>
-                    <NavigationConnected
-                        id={this.props.id}
-                        loadingIds={[this.props.id]}
-                        {...config}
-                        {..._.pick(this.props, TableWithPaginationProps)}
-                    />
-                    {this.props.children}
-                </WrappedComponent>
-            );
-        }
-    }
-
-    return connect<
-        ReturnType<typeof mapStateToProps>,
-        ReturnType<typeof mapDispatchToProps>,
-        PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
-    >(
-        mapStateToProps,
-        mapDispatchToProps
-    )(TableWithPagination as any);
-};
+        return connect<
+            ReturnType<typeof mapStateToProps>,
+            ReturnType<typeof mapDispatchToProps>,
+            PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
+        >(
+            mapStateToProps,
+            mapDispatchToProps
+        )(TableWithPagination as any);
+    };

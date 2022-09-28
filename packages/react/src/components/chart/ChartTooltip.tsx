@@ -13,7 +13,7 @@ export interface ChartTooltipProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const ChartTooltip: FunctionComponent<ChartTooltipProps> = ({sort = false}) => {
+export const ChartTooltip: FunctionComponent<React.PropsWithChildren<ChartTooltipProps>> = ({sort = false}) => {
     const ref = useRef<HTMLElement>(null);
     const {series, xScale, yScale, xDomain, yDomain, width, height} = useContext(XYChartContext);
     const [position, setPosition] = useState({
