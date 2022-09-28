@@ -20,6 +20,7 @@ export interface IWithPreventNavigationInjectedProps extends IWithDirtyProps {
 
 export interface IWithPreventNavigationDispatchProps {
     closeModal: (id: string) => void;
+    children?: ReactNode;
 }
 
 export interface IWithPreventNavigationState {

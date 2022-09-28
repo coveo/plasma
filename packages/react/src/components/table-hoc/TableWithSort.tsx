@@ -1,4 +1,4 @@
-import {Component, ComponentType} from 'react';
+import {Component, ComponentType, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -16,6 +16,7 @@ export interface ITableWithSortConfig extends WithServerSideProcessingProps {
 export interface ITableWithSortStateProps {
     isAsc?: boolean;
     sortKey?: string;
+    children?: ReactNode;
 }
 
 export interface ITableWithSortProps

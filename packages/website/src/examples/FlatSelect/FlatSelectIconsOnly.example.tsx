@@ -7,15 +7,15 @@ export default () => (
         options={[
             {
                 id: 'item-id-1',
-                option: {content: () => <Donut64Size24Px />},
+                option: {content: <Donut64Size24Px />},
             },
             {
                 id: 'item-id-2',
-                option: {content: () => <Donut64Size24Px />},
+                option: {content: <Donut64Size24Px />},
             },
             {
                 id: 'item-id-3',
-                option: {content: () => <Donut64Size24Px />},
+                option: {content: <Donut64Size24Px />},
                 disabled: true,
             },
         ]}

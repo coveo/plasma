@@ -29,7 +29,7 @@ const enhance = connect(null, (dispatch: IDispatch, ownProps: IConfirmationModal
 }));
 
 const ConfirmationModalProviderDisconnected: FunctionComponent<
-    React.PropsWithChildren<IConfirmationModalProviderProps & ConnectedProps<typeof enhance>>
+    IConfirmationModalProviderProps & ConnectedProps<typeof enhance>
 > = ({
     confirmationModalId,
     shouldConfirm,
