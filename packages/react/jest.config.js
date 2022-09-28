@@ -4,6 +4,7 @@ module.exports = {
         '\\.(scss|css|svg)$': '<rootDir>/jest/identity-obj-proxy-esm.js',
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': 'identity-obj-proxy',
         '^@test-utils$': '<rootDir>/jest/utils.tsx',
+        '^d3$': '<rootDir>/node_modules/d3/dist/d3.min.js',
     },
     setupFiles: ['<rootDir>/jest/setup.ts'],
     setupFilesAfterEnv: ['<rootDir>/jest/entry.tsx'],
