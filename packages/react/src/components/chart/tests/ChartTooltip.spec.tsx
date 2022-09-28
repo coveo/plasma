@@ -1,6 +1,5 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import {mocked} from 'ts-jest/utils';
 
 import {DropPodPosition} from '../../drop/DomPositionCalculator';
 import {DropPod} from '../../drop/DropPod';
@@ -17,7 +16,7 @@ jest.mock('react', () => {
     };
 });
 
-const mockedReact = mocked(React);
+const mockedReact = jest.mocked(React);
 
 describe('<ChartTooltip />', () => {
     beforeAll(() => {
