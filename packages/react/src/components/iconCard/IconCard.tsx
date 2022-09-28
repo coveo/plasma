@@ -77,7 +77,7 @@ export interface IconCardProps {
 /**
  * @deprecated Use Mantine Card instead: https://mantine.dev/core/card/
  */
-export const IconCard: FunctionComponent<HTMLAttributes<HTMLDivElement> & IconCardProps> = ({
+export const IconCard: FunctionComponent<React.PropsWithChildren<HTMLAttributes<HTMLDivElement> & IconCardProps>> = ({
     title,
     badges = [],
     description,

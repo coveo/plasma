@@ -45,7 +45,7 @@ export const defaultDropPodPosition = [
     DropPodPosition.left,
 ];
 
-const RDropPod: FunctionComponent<IRDropPodProps> = ({
+const RDropPod: FunctionComponent<React.PropsWithChildren<IRDropPodProps>> = ({
     isOpen = false,
     positions = defaultDropPodPosition,
     minWidth = 0,
@@ -255,6 +255,6 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
 /**
  * @deprecated Use Mantine instead
  */
-export const DropPod: ForwardRefExoticComponent<
-    IDropPodProps & RefAttributes<HTMLElement>
-> = forwardRef((props: IDropPodProps, ref: RefObject<HTMLElement>) => <RDropPod {...props} buttonRef={ref} />);
+export const DropPod: ForwardRefExoticComponent<IDropPodProps & RefAttributes<HTMLElement>> = forwardRef(
+    (props: IDropPodProps, ref: RefObject<HTMLElement>) => <RDropPod {...props} buttonRef={ref} />
+);

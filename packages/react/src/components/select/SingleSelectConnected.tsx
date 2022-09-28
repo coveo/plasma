@@ -42,7 +42,7 @@ export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 
     /**
      * A component to render instead of the default button. The button is what is displayed when the dropdown is not opened and used to open it.
      */
-    customButton?: ComponentType<ISelectButtonProps>;
+    customButton?: ComponentType<React.PropsWithChildren<ISelectButtonProps>>;
 }
 
 const selectPropsKeys = [
@@ -70,7 +70,7 @@ export type ISingleSelectProps = ISingleSelectOwnProps;
 /**
  * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
-export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
+export const SingleSelectConnected: FunctionComponent<React.PropsWithChildren<ISingleSelectProps>> = ({
     placeholder = 'Select an option',
     deselectTooltipText = 'Deselect',
     ...props
@@ -97,40 +97,41 @@ export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
         }
     }, [selectedOption]);
 
-    const Toggle: FunctionComponent<ISelectButtonProps> = useMemo(
-        () => ({onClick, onKeyDown, onKeyUp, selectedOptions, isOpen}) => {
-            const option = selectedOptions[0];
-            const showClear = !!option && props.canClear && !props.disabled;
-            const buttonClasses = classNames('btn dropdown-toggle', props.toggleClasses, {
-                'dropdown-toggle-placeholder': !option,
-                'single-select-fixed-width': !props.noFixedWidth,
-                'mod-append': showClear,
-            });
+    const Toggle: FunctionComponent<React.PropsWithChildren<ISelectButtonProps>> = useMemo(
+        () =>
+            ({onClick, onKeyDown, onKeyUp, selectedOptions, isOpen}) => {
+                const option = selectedOptions[0];
+                const showClear = !!option && props.canClear && !props.disabled;
+                const buttonClasses = classNames('btn dropdown-toggle', props.toggleClasses, {
+                    'dropdown-toggle-placeholder': !option,
+                    'single-select-fixed-width': !props.noFixedWidth,
+                    'mod-append': showClear,
+                });
 
-            return (
-                <button
-                    className={buttonClasses}
-                    type="button"
-                    onClick={onClick}
-                    onKeyDown={onKeyDown}
-                    onKeyUp={onKeyUp}
-                    disabled={props.disabled}
-                >
-                    {props.buttonPrepend}
-                    {option?.prepend ? <Content {...option.prepend} /> : null}
-                    <SelectedOption option={option} placeholder={placeholder} />
-                    {option?.append ? <Content {...option.append} /> : null}
-                    <CollapsibleToggle expanded={isOpen} />
-                    {showClear && (
-                        <Tooltip title={deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
-                            <button onClick={handleDeselect} className="btn-append cursor-pointer">
-                                <CrossSize16Px height={16} />
-                            </button>
-                        </Tooltip>
-                    )}
-                </button>
-            );
-        },
+                return (
+                    <button
+                        className={buttonClasses}
+                        type="button"
+                        onClick={onClick}
+                        onKeyDown={onKeyDown}
+                        onKeyUp={onKeyUp}
+                        disabled={props.disabled}
+                    >
+                        {props.buttonPrepend}
+                        {option?.prepend ? <Content {...option.prepend} /> : null}
+                        <SelectedOption option={option} placeholder={placeholder} />
+                        {option?.append ? <Content {...option.append} /> : null}
+                        <CollapsibleToggle expanded={isOpen} />
+                        {showClear && (
+                            <Tooltip title={deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
+                                <button onClick={handleDeselect} className="btn-append cursor-pointer">
+                                    <CrossSize16Px height={16} />
+                                </button>
+                            </Tooltip>
+                        )}
+                    </button>
+                );
+            },
         [props.canClear, props.disabled, props.toggleClasses, props.noFixedWidth, props.buttonPrepend]
     );
 
@@ -146,7 +147,7 @@ export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
     );
 };
 
-const SelectedOption: FunctionComponent<{placeholder: string; option: IItemBoxProps}> = ({
+const SelectedOption: FunctionComponent<React.PropsWithChildren<{placeholder: string; option: IItemBoxProps}>> = ({
     option,
     placeholder,
 }): JSX.Element => {

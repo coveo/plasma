@@ -9,7 +9,10 @@ export interface ScatterSeriesProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const ScatterSeries: FunctionComponent<ScatterSeriesProps> = ({children, radius = 3}) => {
+export const ScatterSeries: FunctionComponent<React.PropsWithChildren<ScatterSeriesProps>> = ({
+    children,
+    radius = 3,
+}) => {
     const {series, xScale, yScale, color, colorPattern} = useContext(XYChartContext);
 
     const points = series.map((serie: XYSerie, i: number) =>

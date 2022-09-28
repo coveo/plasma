@@ -16,7 +16,7 @@ export interface SideNavigationItemProps extends Partial<ISideNavigationItemProp
 /**
  * @deprecated Use Mantine NavLink instead: https://mantine.dev/core/nav-link/
  */
-export const SideNavigationItem: FunctionComponent<SideNavigationItemProps> = ({
+export const SideNavigationItem: FunctionComponent<React.PropsWithChildren<SideNavigationItemProps>> = ({
     isActive,
     href,
     title,

@@ -7,12 +7,13 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const {iconsList, ...Icons} = PlasmaReactIcons;
 
-const TableWithFilter: ComponentType<TableWithFilterProps & ITableHOCProps & HTMLAttributes<HTMLTableElement>> =
-    tableWithFilter()(TableHOC);
+const TableWithFilter: ComponentType<
+    React.PropsWithChildren<TableWithFilterProps & ITableHOCProps & HTMLAttributes<HTMLTableElement>>
+> = tableWithFilter()(TableHOC);
 
 type IconSet = {iconName: string; variants: Array<keyof typeof Icons>};
 
-const IconSetCard: FunctionComponent<IconSet> = ({iconName, variants}) => (
+const IconSetCard: FunctionComponent<React.PropsWithChildren<IconSet>> = ({iconName, variants}) => (
     <div key={iconName} className="card p2 flex-column">
         <h6 className="h6-subdued mb2">{iconName}</h6>
         <table className="table">
@@ -40,7 +41,7 @@ const IconSetCard: FunctionComponent<IconSet> = ({iconName, variants}) => (
     </div>
 );
 
-const IconsTable: FunctionComponent = () => (
+const IconsTable: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
     <TableWithFilter
         id="iconography"
         data={iconsList}

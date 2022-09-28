@@ -16,7 +16,12 @@ export interface ITabPaneProps {
 
 const makeMapStateToProps = () => createStructuredSelector({isActive: TabSelectors.getIsTabSelected});
 
-export const TabPane: FunctionComponent<ITabPaneProps> = ({id, className, isActive, children}) => (
+export const TabPane: FunctionComponent<React.PropsWithChildren<ITabPaneProps>> = ({
+    id,
+    className,
+    isActive,
+    children,
+}) => (
     <div
         id={`panel-${id}`}
         role="tabpanel"

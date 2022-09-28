@@ -22,15 +22,14 @@ export type IMultiSelectWithDirtyOwnProps = {
 /**
  * @deprecated Use Mantine instead
  */
-export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
+export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(
+    Component: ComponentType<React.PropsWithChildren<T>>
+) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedMultiSelect: FunctionComponent<T & IMultiSelectWithDirtyOwnProps & StateProps & DispatchProps> = ({
-        initialValues = [],
-        selectedValues,
-        toggleIsDirty,
-        ...props
-    }) => {
+    const WrappedMultiSelect: FunctionComponent<
+        React.PropsWithChildren<T & IMultiSelectWithDirtyOwnProps & StateProps & DispatchProps>
+    > = ({initialValues = [], selectedValues, toggleIsDirty, ...props}) => {
         const hasDifferentValuesSelected =
             _.difference(initialValues, selectedValues).length > 0 ||
             _.difference(selectedValues, initialValues).length > 0;

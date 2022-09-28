@@ -9,12 +9,13 @@ export interface IBlankSlateWithTable extends IBlankSlateWithTableProps, IBlankS
 /**
  * @deprecated Use Plasmantine Blank-slate instead
  */
-export const BlankSlateWithTable: FunctionComponent<IBlankSlateWithTable> = _.compose(blankSlateWithTable)(BlankSlate);
+export const BlankSlateWithTable: FunctionComponent<React.PropsWithChildren<IBlankSlateWithTable>> =
+    _.compose(blankSlateWithTable)(BlankSlate);
 
 /**
  * @deprecated Use Plasmantine Blank-slate instead
  */
-export const BlankSlateWithTableInError: FunctionComponent<IBlankSlateWithTable> = _.compose(
+export const BlankSlateWithTableInError: FunctionComponent<React.PropsWithChildren<IBlankSlateWithTable>> = _.compose(
     blankSlateWithTable,
     blankSlateWithError
 )(BlankSlate);
@@ -22,4 +23,5 @@ export const BlankSlateWithTableInError: FunctionComponent<IBlankSlateWithTable>
 /**
  * @deprecated Use Plasmantine Blank-slate instead
  */
-export const BlankSlateWithError: FunctionComponent<IBlankSlateWithTable> = _.compose(blankSlateWithError)(BlankSlate);
+export const BlankSlateWithError: FunctionComponent<React.PropsWithChildren<IBlankSlateWithTable>> =
+    _.compose(blankSlateWithError)(BlankSlate);

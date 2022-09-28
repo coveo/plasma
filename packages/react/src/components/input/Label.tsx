@@ -12,7 +12,7 @@ export interface ILabelProps {
 /**
  * @deprecated Use Mantine Input instead: https://mantine.dev/core/input/
  */
-export const Label: FunctionComponent<ILabelProps & HTMLProps<HTMLLabelElement>> = ({
+export const Label: FunctionComponent<React.PropsWithChildren<ILabelProps & HTMLProps<HTMLLabelElement>>> = ({
     classes,
     validMessage,
     invalidMessage,

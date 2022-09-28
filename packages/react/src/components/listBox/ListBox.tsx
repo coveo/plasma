@@ -85,8 +85,10 @@ export class ListBox extends Component<IListBoxProps> {
     protected getItems(): ReactNode {
         const shouldShow = (item: IItemBoxProps) =>
             !item.hidden && (!this.props.multi || !_.contains(this.props.selected, item.value));
-        const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => shouldShow(item) && !item.disabled)
-            .length;
+        const visibleLength = _.filter(
+            this.props.items,
+            (item: IItemBoxProps) => shouldShow(item) && !item.disabled
+        ).length;
 
         let realIndex = 0;
         let activeSet = false;

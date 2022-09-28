@@ -8,7 +8,7 @@ import {IWithDirtyProps, withDirty} from '../withDirty';
 import {WithDirtyActions} from '../withDirtyActions';
 
 describe('withDirty', () => {
-    const Fixture: FunctionComponent<IWithDirtyProps> = () => {
+    const Fixture: FunctionComponent<React.PropsWithChildren<IWithDirtyProps>> = () => {
         const dispatch: IDispatch = useDispatch();
         return <input onChange={(e) => dispatch(WithDirtyActions.toggle('🆔', e.target.value === 'dirty'))} />;
     };

@@ -32,7 +32,7 @@ export interface ICheckboxProps extends ICheckboxOwnProps, ICheckboxStateProps, 
 /**
  * @deprecated Use Mantine Checkbox instead: https://mantine.dev/core/checkbox/
  */
-export const Checkbox: FunctionComponent<ICheckboxProps> = ({
+export const Checkbox: FunctionComponent<React.PropsWithChildren<ICheckboxProps>> = ({
     id,
     disabled,
     disabledTooltip,

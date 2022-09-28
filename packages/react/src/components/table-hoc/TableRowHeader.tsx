@@ -9,7 +9,10 @@ interface TableRowHeaderProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const TableRowHeader: FunctionComponent<TableRowHeaderProps> = ({isLoading, children}) => {
+export const TableRowHeader: FunctionComponent<React.PropsWithChildren<TableRowHeaderProps>> = ({
+    isLoading,
+    children,
+}) => {
     const {style, tableHeaderRef} = useFixedWidthWhileLoading(isLoading);
 
     return (

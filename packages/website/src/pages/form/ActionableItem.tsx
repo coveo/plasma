@@ -18,7 +18,7 @@ const code = `
     );
 `;
 
-const ActionableItemExamples: FunctionComponent = () => (
+const ActionableItemExamples: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
     <PageLayout
         id="ActionableItem"
         title="Actionable Item"

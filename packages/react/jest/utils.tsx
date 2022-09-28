@@ -43,7 +43,9 @@ const customRender = (
         };
     } = {}
 ): RenderResult => {
-    const TestWrapper: React.FunctionComponent = ({children}) => <Provider store={store}>{children}</Provider>;
+    const TestWrapper: React.FunctionComponent<React.PropsWithChildren<unknown>> = ({children}) => (
+        <Provider store={store}>{children}</Provider>
+    );
 
     return render(ui, {wrapper: TestWrapper, container, ...renderOptions});
 };

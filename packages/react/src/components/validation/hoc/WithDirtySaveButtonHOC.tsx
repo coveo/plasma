@@ -20,7 +20,9 @@ const mapStateToProps = (state: PlasmaState, ownProps: IWithDirtySaveButtonHOCPr
 /**
  * @deprecated Use Mantine instead
  */
-export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: ComponentType<T>) => {
+export const withDirtySaveButtonHOC = <T extends IButtonProps>(
+    Component: ComponentType<React.PropsWithChildren<T>>
+) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     const WrappedButton = ({
         dirty,
@@ -52,7 +54,7 @@ export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: Compon
 
         return (
             <Component
-                {...((props as unknown) as T)}
+                {...(props as unknown as T)}
                 enabled={canSaveWhenDirty && !hasErrors && enabled}
                 tooltip={generatedTooltip || tooltip}
             />

@@ -24,11 +24,13 @@ export interface WithNonEmptyValueMultiSelectValidationProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
+export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(
+    Component: ComponentType<React.PropsWithChildren<T>>
+) => {
     type NewOwnProps = T & WithNonEmptyValueMultiSelectValidationProps;
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedMultiSelect: FunctionComponent<NewOwnProps & StateProps & DispatchProps> = ({
+    const WrappedMultiSelect: FunctionComponent<React.PropsWithChildren<NewOwnProps & StateProps & DispatchProps>> = ({
         selectedValues,
         setError,
         clearError,

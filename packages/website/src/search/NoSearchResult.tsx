@@ -11,7 +11,7 @@ interface NoResultTemplateProps {
     query: string;
 }
 
-export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = (props) => {
+export const NoSearchResultTemplate: FunctionComponent<React.PropsWithChildren<NoResultTemplateProps>> = (props) => {
     const {engine, query} = props;
     const router = useRouter();
 

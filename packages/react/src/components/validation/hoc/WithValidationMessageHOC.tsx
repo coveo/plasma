@@ -9,13 +9,16 @@ interface IWithValidationMessageHOCProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const withValidationMessage = <T extends IWithValidationMessageHOCProps, R = any>(
-    Component: ComponentClass<T, R> | FunctionComponent<T>
-) => ({onlyShowMessageIfDirty, ...props}: T) => (
-    <>
-        <Component {...(props as T)} />
-        <div>
-            <ValidationMessage id={props.id!} onlyShowIfDirty={onlyShowMessageIfDirty} />
-        </div>
-    </>
-);
+export const withValidationMessage =
+    <T extends IWithValidationMessageHOCProps, R = any>(
+        Component: ComponentClass<T, R> | FunctionComponent<React.PropsWithChildren<T>>
+    ) =>
+    ({onlyShowMessageIfDirty, ...props}: T) =>
+        (
+            <>
+                <Component {...(props as T)} />
+                <div>
+                    <ValidationMessage id={props.id!} onlyShowIfDirty={onlyShowMessageIfDirty} />
+                </div>
+            </>
+        );

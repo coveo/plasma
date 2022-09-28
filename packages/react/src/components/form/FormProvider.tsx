@@ -7,13 +7,12 @@ import {textInputReducer} from '../textInput/TextInputReducer';
  *
  * Usefull if you want many independent states of the same component and index those states by id.
  */
-const generateRecordReducer = <S, A>(reducer: Reducer<S, A>): Reducer<Record<string, S>, {id: string; action: A}> => (
-    state = {},
-    {id, action}
-) => ({
-    ...state,
-    [id]: reducer(state[id], action),
-});
+const generateRecordReducer =
+    <S, A>(reducer: Reducer<S, A>): Reducer<Record<string, S>, {id: string; action: A}> =>
+    (state = {}, {id, action}) => ({
+        ...state,
+        [id]: reducer(state[id], action),
+    });
 
 const componentReducers = {
     TextInput: generateRecordReducer(textInputReducer),
@@ -38,7 +37,7 @@ export const FormContext = createContext<{state: FormState; dispatch: React.Disp
 /**
  * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/
  */
-export const FormProvider: FunctionComponent = ({children}) => {
+export const FormProvider: FunctionComponent<React.PropsWithChildren<unknown>> = ({children}) => {
     const [state, dispatch] = useReducer(formReducer, formInitialState);
     const store = useMemo(() => ({state, dispatch}), [state]);
 

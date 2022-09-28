@@ -9,7 +9,7 @@ export interface ITabNavigationProps {
 /**
  * @deprecated Use Mantine Tabs instead: https://mantine.dev/core/tabs/
  */
-export const TabNavigation: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
+export const TabNavigation: FunctionComponent<React.PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({
     className,
     children,
     title,

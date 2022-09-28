@@ -63,7 +63,7 @@ export type IFlatSelectProps = IFlatSelectOwnProps &
 /**
  * @deprecated use Mantine SegmentedControl instead: https://mantine.dev/core/segmented-control/
  */
-export const FlatSelect: FunctionComponent<IFlatSelectProps> = ({
+export const FlatSelect: FunctionComponent<React.PropsWithChildren<IFlatSelectProps>> = ({
     onDestroy,
     onRender,
     onOptionClick,

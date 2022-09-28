@@ -56,7 +56,7 @@ const code = `
     );
 `;
 
-export const TabsExamples: FunctionComponent = () => (
+export const TabsExamples: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
     <PageLayout
         id="Tab"
         componentSourcePath="/tab/Tab.tsx"

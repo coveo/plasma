@@ -10,7 +10,11 @@ export interface BrowserPreviewEmptyProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const BrowserPreviewEmpty: FunctionComponent<BrowserPreviewEmptyProps> = ({image, onClick, children}) => (
+export const BrowserPreviewEmpty: FunctionComponent<React.PropsWithChildren<BrowserPreviewEmptyProps>> = ({
+    image,
+    onClick,
+    children,
+}) => (
     <div
         onClick={onClick}
         className={classNames('browser-preview__state flex flex-column flex-auto center-align', {

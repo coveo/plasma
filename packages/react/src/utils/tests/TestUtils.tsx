@@ -78,21 +78,24 @@ export class TestUtils {
     }
 }
 
-export const ErrorList: FunctionComponent<{id: string}> = ({id}) => {
+export const ErrorList: FunctionComponent<React.PropsWithChildren<{id: string}>> = ({id}) => {
     const errors = useSelector(ValidationSelectors.getErrors(id));
     const errorList = errors.map(({value}) => <li key={value}>{value}</li>);
 
     return <ul aria-label="errors">{errorList}</ul>;
 };
 
-export const WarningList: FunctionComponent<{id: string}> = ({id}) => {
+export const WarningList: FunctionComponent<React.PropsWithChildren<{id: string}>> = ({id}) => {
     const warnings = useSelector(ValidationSelectors.getWarnings(id));
     const warningList = warnings.map(({value}) => <li key={value}>{value}</li>);
 
     return <ul aria-label="warnings">{warningList}</ul>;
 };
 
-export const IsDirtyIndicator: FunctionComponent<{id: string; label?: string}> = ({id, label = 'is dirty'}) => {
+export const IsDirtyIndicator: FunctionComponent<React.PropsWithChildren<{id: string; label?: string}>> = ({
+    id,
+    label = 'is dirty',
+}) => {
     const {isDirty} = useSelector(
         createStructuredSelector({
             isDirty: ValidationSelectors.isDirty([id]),

@@ -102,7 +102,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITextAreaOwnProps): I
 /**
  * @deprecated Use Mantine Textarea instead: https://mantine.dev/core/textarea/
  */
-export const TextArea: FunctionComponent<ITextAreaProps> = ({
+export const TextArea: FunctionComponent<React.PropsWithChildren<ITextAreaProps>> = ({
     id,
     value,
     validate,

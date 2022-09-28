@@ -19,11 +19,11 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
  * @deprecated Use Mantine instead
  */
 export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
-    Component: ComponentClass<T> | FunctionComponent<T>
+    Component: ComponentClass<T> | FunctionComponent<React.PropsWithChildren<T>>
 ) => {
     type NewOwnProps = T & IWithNonEmptyValueInputValidationProps;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedInput: FunctionComponent<NewOwnProps & DispatchProps> = ({
+    const WrappedInput: FunctionComponent<React.PropsWithChildren<NewOwnProps & DispatchProps>> = ({
         setError,
         clearError,
         validationMessage = 'Input is empty and should not be empty',
