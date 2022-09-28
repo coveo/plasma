@@ -1,4 +1,4 @@
-import {ComponentType, FC, FunctionComponent, createElement, Component} from 'react';
+import {ComponentType, FunctionComponent, createElement, Component} from 'react';
 import {DragDropContext} from 'react-dnd';
 import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
@@ -91,7 +91,7 @@ export class TestUtils {
     }
 }
 
-export const ErrorList: FC<{id: string}> = ({id}) => {
+export const ErrorList: FunctionComponent<{id: string}> = ({id}) => {
     const errors = useSelector(ValidationSelectors.getErrors(id));
     const errorList = errors.map(({value}) => <li key={value}>{value}</li>);
 
@@ -126,19 +126,21 @@ export const triggerAlertFunction = () => {
     alert(`Alert function triggered`);
 };
 
-export const withSelectedValues = (id: string, ...values: string[]) => (state: PlasmaState) => ({
-    ...state,
-    listBoxes: [
-        ...(state.listBoxes || []),
-        {
-            active: 0,
-            ...{
-                id: id,
-                selected: values,
+export const withSelectedValues =
+    (id: string, ...values: string[]) =>
+    (state: PlasmaState) => ({
+        ...state,
+        listBoxes: [
+            ...(state.listBoxes || []),
+            {
+                active: 0,
+                ...{
+                    id: id,
+                    selected: values,
+                },
             },
-        },
-    ],
-});
+        ],
+    });
 
 export const getStoreMock = createMockStore<Partial<PlasmaState>, IDispatch>([thunk]);
 export type PlasmaMockStore = ReturnType<typeof getStoreMock>;
