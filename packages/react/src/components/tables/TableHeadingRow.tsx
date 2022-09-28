@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ClassAttributes, MouseEvent, Component} from 'react';
+import {ClassAttributes, MouseEvent, Component, ReactNode} from 'react';
 
 import {EventUtils} from '../../utils/EventUtils';
 import {TableCollapsibleRowToggle} from './TableCollapsibleRowToggle';
@@ -15,6 +15,7 @@ export interface ITableHeadingRowOwnProps extends ClassAttributes<TableHeadingRo
     isMultiSelect?: boolean;
     selectionDisabled?: boolean;
     tableHasCollapsibleRow?: boolean;
+    children?: ReactNode;
 }
 
 export interface ITableHeadingRowStateProps {

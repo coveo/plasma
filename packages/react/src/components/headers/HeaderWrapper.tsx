@@ -30,6 +30,7 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps {
      * @default true
      */
     hasPadding?: boolean;
+    children?: ReactNode;
 }
 
 /**

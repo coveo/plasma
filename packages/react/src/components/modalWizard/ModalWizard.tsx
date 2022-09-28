@@ -83,12 +83,13 @@ export interface ModalWizardProps
      * A callback function that is executed when the user clicks on the cancel button
      */
     onCancel?: () => unknown;
+    children?: ReactNode;
 }
 
 /**
  * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
-export const ModalWizard: FunctionComponent<React.PropsWithChildren<ModalWizardProps>> = ({
+export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
     id,
     title,
     onFinish,

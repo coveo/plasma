@@ -54,6 +54,7 @@ export interface IToastProps {
      * @deprecated Use onClose instead
      */
     onDestroy?: () => void;
+    children?: ReactNode;
 }
 
 /**
@@ -142,7 +143,9 @@ export const Toast: FunctionComponent<React.PropsWithChildren<IToastProps>> = ({
         <div className="toast-description">
             <div>
                 {children}
-                {typeof content === 'string' || !content ? content : createElement(content as ComponentClass)}
+                {typeof content === 'string' || !content
+                    ? content
+                    : createElement(content as unknown as ComponentClass)}
             </div>
         </div>
     );

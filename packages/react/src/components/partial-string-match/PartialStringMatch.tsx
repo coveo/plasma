@@ -8,6 +8,7 @@ export interface PartialStringMatchProps {
     wholeString?: string;
     partialMatch?: string;
     caseInsensitive?: boolean;
+    children?: ReactNode;
 }
 
 /**

@@ -14,6 +14,7 @@ export interface IWithDirty {
 
 export interface IWithDirtyStateProps {
     isDirty: boolean;
+    children?: ReactNode;
 }
 
 export interface IWithDirtyDispatchProps {

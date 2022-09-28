@@ -29,6 +29,7 @@ export interface ITableWithPredicateGenericConfig extends WithServerSideProcessi
 export interface ITableWithPredicateStateProps {
     predicate: string;
     urlPredicate: string[];
+    children?: ReactNode;
 }
 
 export interface ITableWithPredicateProps

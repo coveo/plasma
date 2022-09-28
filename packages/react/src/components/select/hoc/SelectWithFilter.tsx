@@ -26,6 +26,7 @@ export interface ISelectWithFilterOwnProps {
     noResultFilterText?: (filterText: string) => string;
     noItemsText?: string;
     filter?: IFilterBoxOwnProps;
+    children?: ReactNode;
 }
 
 const SelectWithFilterPropsToOmit = [
@@ -142,7 +143,7 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
                 mb2: !!this.props.children,
             });
 
-            let noResultItem: ReactNode = this.props.noResultItem || this.noResultFilter();
+            let noResultItem: any = this.props.noResultItem || this.noResultFilter();
             let items = this.props.items.map(
                 (item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue})
             );

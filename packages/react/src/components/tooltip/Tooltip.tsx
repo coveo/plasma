@@ -22,6 +22,7 @@ export interface IOverlayTriggerProps {
     container?: string;
     rootClose?: boolean;
     trigger?: string | string[];
+    children?: ReactNode;
 }
 
 export interface ITooltipProps extends IOverlayTriggerProps {
