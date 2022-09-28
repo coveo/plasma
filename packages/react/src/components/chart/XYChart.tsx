@@ -107,7 +107,6 @@ export const XYChart: FunctionComponent<XYChartProps> = ({
     width = width - chartPadding.left - chartPadding.right;
     height = height - chartPadding.top - chartPadding.bottom;
 
-    // const xScale = d3.scale.ordinal<number, number>().domain(xValues).rangePoints([0, width]);
     const xScale = scalePoint<number>().domain(xValues).range([0, width]);
 
     const yScale = scaleLinear<number, number>().domain(yDomain).range([height, 0]);

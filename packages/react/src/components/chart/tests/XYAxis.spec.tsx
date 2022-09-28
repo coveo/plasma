@@ -49,8 +49,7 @@ describe('<XYAxis />', () => {
         expect(component.find('.x-axis-tick').length).toBe(XYChartContextMock.xScale.domain().length);
     });
 
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should render as many x ticks labels as d3 determine', () => {
+    it('should render as many x ticks labels as d3 determine', () => {
         const component = shallow(<XYAxis x={{show: true}} y={{show: false}} />);
 
         // D3 doesn't enforce a strict tick count
