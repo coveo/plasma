@@ -56,6 +56,12 @@ const FoundationsPages: FC = () => (
                 thumbnail="iconography"
             />
             <Tile
+                title="Colors"
+                description="The colors that give Plasma its identity"
+                href="foundations/Colors"
+                thumbnail="colors"
+            />
+            <Tile
                 title="Typekit"
                 description="The Typekit covers all typography styles designed specifically to work with the Plasma ecosystem."
                 href="foundations/Typekit"
