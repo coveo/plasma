@@ -8,13 +8,13 @@ describe('SelectWithInfiniteScroll', () => {
     const SingleSelectWithInfiniteScroll = selectWithInfiniteScroll(SingleSelectConnected);
     const id = 'to-infinity-and-beyond';
 
-    it('contains the items', () => {
+    it('contains the items', async () => {
         const items = [{value: '🏹'}, {value: '💘'}, {value: '👼'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={5000} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const listitems = screen.getAllByRole('option');
         expect(listitems.length).toBe(3);
@@ -23,14 +23,14 @@ describe('SelectWithInfiniteScroll', () => {
         expect(listitems[2]).toHaveTextContent('👼');
     });
 
-    it('calls the next prop when the user scrolls to the bottom of the list', () => {
+    it('calls the next prop when the user scrolls to the bottom of the list', async () => {
         const nextSpy = jest.fn();
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={5000} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');
@@ -39,14 +39,14 @@ describe('SelectWithInfiniteScroll', () => {
         expect(nextSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('does not call the next prop when there is no more items and the user scrolls to the bottom of the list', () => {
+    it('does not call the next prop when there is no more items and the user scrolls to the bottom of the list', async () => {
         const nextSpy = jest.fn();
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={3} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');
@@ -55,13 +55,13 @@ describe('SelectWithInfiniteScroll', () => {
         expect(nextSpy).toHaveBeenCalledTimes(0);
     });
 
-    it('displays a loading when the user scrolls to the bottom of the list and there is more items to display', () => {
+    it('displays a loading when the user scrolls to the bottom of the list and there is more items to display', async () => {
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={5000} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');
@@ -70,13 +70,13 @@ describe('SelectWithInfiniteScroll', () => {
         expect(screen.getByRole('alert')).toBeVisible();
     });
 
-    it('does not displays a loading when the user scrolls to the bottom of the list and there is no more items to display', () => {
+    it('does not displays a loading when the user scrolls to the bottom of the list and there is no more items to display', async () => {
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={3} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');

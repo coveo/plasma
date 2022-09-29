@@ -68,7 +68,7 @@ describe('<JSONEditorConnected />', () => {
 
         await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 
-        userEvent.type(screen.getByRole('textbox'), expectedValue);
+        await userEvent.type(screen.getByRole('textbox'), expectedValue);
 
         expect(onChangeSpy).toHaveBeenCalledTimes(5);
         expect(onChangeSpy).toHaveBeenCalledWith('{}h', true);

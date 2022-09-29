@@ -23,7 +23,7 @@ describe('LinkSvg', () => {
 
     it('displays the specified tooltip when hovering over the link', async () => {
         render(<LinkSvg url="some-link" tooltip={{title: 'more info'}} />);
-        userEvent.hover(await screen.findByRole('img', {name: 'question'}));
+        await userEvent.hover(await screen.findByRole('img', {name: 'question'}));
         expect(await screen.findByText(/more info/i)).toBeInTheDocument();
     });
 

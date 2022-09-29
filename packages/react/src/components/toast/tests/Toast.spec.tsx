@@ -141,7 +141,7 @@ describe('Toasts', () => {
         render(<Toast title="hello world!" onClose={onCloseSpy} />);
 
         expect(screen.getByText(/hello world!/i)).toBeInTheDocument();
-        userEvent.click(await screen.findByRole('button', {name: /cross/i}));
+        await userEvent.click(await screen.findByRole('button', {name: /cross/i}));
         expect(screen.queryByText(/hello world!/i)).not.toBeInTheDocument();
         expect(onCloseSpy).toHaveBeenCalledTimes(1);
     });
@@ -223,7 +223,7 @@ describe('Toasts', () => {
 
             render(<Toast {...newToastAttributes} />);
 
-            userEvent.hover(screen.queryByText('some title'));
+            await userEvent.hover(screen.queryByText('some title'));
 
             await waitFor(
                 () => {

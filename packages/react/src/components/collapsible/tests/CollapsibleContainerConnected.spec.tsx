@@ -40,7 +40,7 @@ describe('CollapsibleContainerConnected', () => {
         expect(screen.getByRole('img', {name: /info/i})).toBeInTheDocument();
     });
 
-    it('calls the onClick event when the collapsible is clicked if the prop is set', () => {
+    it('calls the onClick event when the collapsible is clicked if the prop is set', async () => {
         const functionToBeCalled = jest.fn();
 
         render(
@@ -49,7 +49,7 @@ describe('CollapsibleContainerConnected', () => {
             </CollapsibleContainerConnected>
         );
 
-        userEvent.click(screen.getByText(/the title/i));
+        await userEvent.click(screen.getByText(/the title/i));
 
         expect(functionToBeCalled).toHaveBeenCalledTimes(1);
     });

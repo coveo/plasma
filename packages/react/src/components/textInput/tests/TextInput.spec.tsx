@@ -63,7 +63,7 @@ describe('TextInput', () => {
         );
         await waitFor(() => screen.findByRole('img', {name: 'question'}));
         const icon = screen.getByRole('img', {name: /question/i});
-        userEvent.hover(icon);
+        await userEvent.hover(icon);
 
         expect(await screen.findByText('🍌')).toBeInTheDocument();
     });
@@ -96,7 +96,7 @@ describe('TextInput', () => {
         );
 
         const textinput = screen.getByRole('textbox', {name: '💬'});
-        userEvent.type(textinput, '✅');
+        await userEvent.type(textinput, '✅');
 
         expect(textinput).toBeValid();
         expect(screen.queryByText('valid!')).not.toBeInTheDocument();
@@ -107,13 +107,13 @@ describe('TextInput', () => {
         expect(screen.getByText('valid!')).toBeInTheDocument();
         expect(screen.getByRole('img', {name: 'checkmark'})).toBeInTheDocument();
 
-        userEvent.clear(textinput);
+        await userEvent.clear(textinput);
 
         expect(textinput).toBeInvalid();
         expect(screen.queryByText('valid!')).not.toBeInTheDocument();
         expect(screen.queryByRole('img', {name: 'checkmark'})).not.toBeInTheDocument();
 
-        userEvent.type(textinput, '⚠️');
+        await userEvent.type(textinput, '⚠️');
         expect(textinput).toBeValid();
         fireEvent.blur(textinput);
         await waitFor(() => screen.findByRole('img', {name: 'warning'}));
@@ -121,9 +121,9 @@ describe('TextInput', () => {
         expect(screen.getByText('warning!')).toBeInTheDocument();
         expect(screen.getByRole('img', {name: 'warning'})).toBeInTheDocument();
 
-        userEvent.clear(textinput);
+        await userEvent.clear(textinput);
         expect(textinput).toBeInvalid();
-        userEvent.type(textinput, '❌');
+        await userEvent.type(textinput, '❌');
         expect(textinput).toBeInvalid();
         fireEvent.blur(textinput);
         await waitFor(() => screen.findByRole('img', {name: 'critical'}));
@@ -161,7 +161,7 @@ describe('TextInput', () => {
         expect(screen.queryByText('invalid!')).not.toBeInTheDocument();
         expect(screen.queryByRole('img', {name: 'critical'})).not.toBeInTheDocument();
 
-        userEvent.type(textinput, '✅');
+        await userEvent.type(textinput, '✅');
 
         await waitFor(() => screen.findByRole('img', {name: 'checkmark'}));
 
@@ -169,7 +169,7 @@ describe('TextInput', () => {
         expect(screen.getByText('valid!')).toBeInTheDocument();
         expect(screen.getByRole('img', {name: 'checkmark'})).toBeInTheDocument();
 
-        userEvent.clear(textinput);
+        await userEvent.clear(textinput);
         await waitFor(() => screen.findByRole('img', {name: 'critical'}));
 
         expect(textinput).toBeInvalid();
@@ -177,7 +177,7 @@ describe('TextInput', () => {
         expect(screen.getByRole('img', {name: 'critical'})).toBeInTheDocument();
     });
 
-    it('is independant from the other inputs in the same provider', () => {
+    it('is independant from the other inputs in the same provider', async () => {
         const validator: InputValidator = (val) => (val ? {status: 'valid'} : {status: 'invalid'});
 
         render(
@@ -190,14 +190,14 @@ describe('TextInput', () => {
         const firstNameInput = screen.getByRole('textbox', {name: 'first name'});
         const lastNameInput = screen.getByRole('textbox', {name: 'last name'});
 
-        userEvent.type(firstNameInput, 'John');
+        await userEvent.type(firstNameInput, 'John');
 
         expect(firstNameInput).toHaveValue('John');
         expect(firstNameInput).toBeValid();
         expect(lastNameInput).toHaveValue('');
         expect(lastNameInput).toBeInvalid();
 
-        userEvent.type(lastNameInput, 'Doe');
+        await userEvent.type(lastNameInput, 'Doe');
 
         expect(firstNameInput).toHaveValue('John');
         expect(firstNameInput).toBeValid();
@@ -205,7 +205,7 @@ describe('TextInput', () => {
         expect(lastNameInput).toBeValid();
     });
 
-    it('resets its state when unmounting and remounting with the same id', () => {
+    it('resets its state when unmounting and remounting with the same id', async () => {
         const Fixture = () => {
             const [isMounted, toggleMounted] = useState(true);
             return (
@@ -222,14 +222,14 @@ describe('TextInput', () => {
             </FormProvider>
         );
 
-        userEvent.type(screen.getByRole('textbox', {name: /name/i}), 'some value');
+        await userEvent.type(screen.getByRole('textbox', {name: /name/i}), 'some value');
         expect(screen.getByRole('textbox', {name: /name/i})).toHaveValue('some value');
-        userEvent.click(screen.getByRole('button', {name: /toggle input/i})); // unmount
-        userEvent.click(screen.getByRole('button', {name: /toggle input/i})); // mount again
+        await userEvent.click(screen.getByRole('button', {name: /toggle input/i})); // unmount
+        await userEvent.click(screen.getByRole('button', {name: /toggle input/i})); // mount again
         expect(screen.getByRole('textbox', {name: /name/i})).toHaveValue('');
     });
 
-    it('indicate the input is dirty if the currentValue is different from the initialValue (no defaultValue)', () => {
+    it('indicate the input is dirty if the currentValue is different from the initialValue (no defaultValue)', async () => {
         const Fixture = () => {
             const {state} = useTextInput('🆔');
             return (
@@ -249,13 +249,13 @@ describe('TextInput', () => {
         const nameInput = screen.getByRole('textbox', {name: /name/i});
 
         expect(screen.getByText('pristine')).toBeInTheDocument();
-        userEvent.type(nameInput, 'John');
+        await userEvent.type(nameInput, 'John');
         expect(screen.getByText('dirty')).toBeInTheDocument();
-        userEvent.clear(nameInput);
+        await userEvent.clear(nameInput);
         expect(screen.getByText('pristine')).toBeInTheDocument();
     });
 
-    it('indicate the input is dirty if the currentValue is different from the initialValue (with defaultValue)', () => {
+    it('indicate the input is dirty if the currentValue is different from the initialValue (with defaultValue)', async () => {
         const Fixture = () => {
             const {state} = useTextInput('🆔');
             return (
@@ -275,9 +275,9 @@ describe('TextInput', () => {
         const nameInput = screen.getByRole('textbox', {name: /name/i});
 
         expect(screen.getByText('pristine')).toBeInTheDocument();
-        userEvent.clear(nameInput);
+        await userEvent.clear(nameInput);
         expect(screen.getByText('dirty')).toBeInTheDocument();
-        userEvent.type(nameInput, 'John');
+        await userEvent.type(nameInput, 'John');
         expect(screen.getByText('pristine')).toBeInTheDocument();
     });
 });

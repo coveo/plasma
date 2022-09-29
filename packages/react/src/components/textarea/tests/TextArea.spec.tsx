@@ -1,4 +1,4 @@
-import {act, render, screen} from '@test-utils';
+import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
 import {TextAreaConnected} from '../TextArea';
@@ -15,31 +15,34 @@ describe('Textarea', () => {
         expect(textarea).toHaveValue('the expected value');
     });
 
-    it('calls the onChangeCallback when the user changes the textarea value', () => {
+    it('calls the onChangeCallback when the user changes the textarea value', async () => {
         const onChangeSpy = jest.fn();
         render(<TextAreaConnected id="🆔" onChangeCallback={onChangeSpy} />);
         const textarea = screen.getByRole('textbox');
-        userEvent.type(textarea, 'abc');
+        await userEvent.type(textarea, 'abc');
         expect(onChangeSpy).toHaveBeenCalledTimes(3);
     });
 
     it('shows the validation message when the value is not valid', async () => {
+        const user = userEvent.setup({delay: null});
         jest.useFakeTimers();
+
         const notEmptyValidator = (v: string) => !!v;
         const validationMessage = 'cannot be empty';
+
         render(<TextAreaConnected id="🆔" validate={notEmptyValidator} validationMessage={validationMessage} />);
+
         const textarea = screen.getByRole('textbox');
         expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
-        userEvent.type(textarea, 'abc');
-        act(() => {
-            jest.advanceTimersByTime(400);
-        });
+
+        await user.type(textarea, 'abc');
+        jest.advanceTimersByTime(400);
+
         expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
-        userEvent.clear(textarea);
-        act(() => {
-            jest.advanceTimersByTime(400);
-        });
+
+        await user.clear(textarea);
         expect(await screen.findByText(validationMessage)).toBeInTheDocument();
+
         jest.runOnlyPendingTimers();
         jest.useRealTimers();
     });

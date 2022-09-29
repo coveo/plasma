@@ -13,7 +13,7 @@ describe('Tab', () => {
     it('displays the tooltip text when hovering over the tab button', async () => {
         render(<Tab title="Title" tooltip="tooltip content" />);
         const tab = screen.getByRole('tab', {name: /title/i});
-        userEvent.hover(tab);
+        await userEvent.hover(tab);
         expect(await screen.findByText('tooltip content')).toBeInTheDocument();
     });
 
@@ -36,23 +36,23 @@ describe('Tab', () => {
         expect(screen.getByText(/tag/i)).toBeInTheDocument();
     });
 
-    it('redirects to the specified url when clicking on the tab', () => {
+    it('redirects to the specified url when clicking on the tab', async () => {
         const spy = jest.spyOn(UrlUtils, 'redirectToUrl').mockImplementation(() => null);
         render(<Tab title="Title" url="www" />);
-        userEvent.click(screen.getByRole('tab', {name: /title/i}));
+        await userEvent.click(screen.getByRole('tab', {name: /title/i}));
         expect(spy).toHaveBeenCalledWith('www');
         spy.mockReset();
         spy.mockRestore();
     });
 
-    it('calls the onSelect callback when clicking on the tab', () => {
+    it('calls the onSelect callback when clicking on the tab', async () => {
         const onSelectSpy = jest.fn();
         render(<TabConnected id="🆔" title="Title" onSelect={onSelectSpy} />);
-        userEvent.click(screen.getByRole('tab', {name: /title/i}));
+        await userEvent.click(screen.getByRole('tab', {name: /title/i}));
         expect(onSelectSpy).toHaveBeenCalled();
     });
 
-    it('manages 2 tab groups independently from each other', () => {
+    it('manages 2 tab groups independently from each other', async () => {
         render(
             <div>
                 <TabNavigation>
@@ -76,7 +76,7 @@ describe('Tab', () => {
         expect(tab3).toHaveAttribute('aria-selected', 'true');
         expect(tab4).toHaveAttribute('aria-selected', 'false');
 
-        userEvent.click(tab2);
+        await userEvent.click(tab2);
 
         expect(tab1).toHaveAttribute('aria-selected', 'false');
         expect(tab2).toHaveAttribute('aria-selected', 'true');
@@ -112,61 +112,61 @@ describe('Tab', () => {
             expect(screen.queryByRole('tabpanel', {name: /Tab 3/i})).not.toBeInTheDocument();
         });
 
-        it('displays the panel associated with the active panel', () => {
+        it('displays the panel associated with the active panel', async () => {
             renderView();
             const tab1 = screen.getByRole('tab', {name: /Tab 1/i});
             const tab2 = screen.getByRole('tab', {name: /Tab 2/i});
             const tab3 = screen.getByRole('tab', {name: /Tab 3/i});
 
-            userEvent.click(tab2);
+            await userEvent.click(tab2);
 
             expect(screen.queryByRole('tabpanel', {name: /Tab 1/i})).not.toBeInTheDocument();
             expect(screen.getByRole('tabpanel', {name: /Tab 2/i})).toBeVisible();
             expect(screen.queryByRole('tabpanel', {name: /Tab 3/i})).not.toBeInTheDocument();
 
-            userEvent.click(tab3);
+            await userEvent.click(tab3);
 
             expect(screen.queryByRole('tabpanel', {name: /Tab 1/i})).not.toBeInTheDocument();
             expect(screen.queryByRole('tabpanel', {name: /Tab 2/i})).not.toBeInTheDocument();
             expect(screen.getByRole('tabpanel', {name: /Tab 3/i})).toBeVisible();
 
-            userEvent.click(tab1);
+            await userEvent.click(tab1);
 
             expect(screen.getByRole('tabpanel', {name: /Tab 1/i})).toBeVisible();
             expect(screen.queryByRole('tabpanel', {name: /Tab 2/i})).not.toBeInTheDocument();
             expect(screen.queryByRole('tabpanel', {name: /Tab 3/i})).not.toBeInTheDocument();
         });
 
-        it('supports keyboard navigation between tabs', () => {
+        it('supports keyboard navigation between tabs', async () => {
             renderView();
             const tab1 = screen.getByRole('tab', {name: /Tab 1/i});
             const tab2 = screen.getByRole('tab', {name: /Tab 2/i});
             const tab3 = screen.getByRole('tab', {name: /Tab 3/i});
 
             expect(document.body).toHaveFocus();
-            userEvent.tab();
+            await userEvent.tab();
 
             // Move right
             expect(tab1).toHaveFocus();
-            userEvent.type(tab1, specialChars.arrowRight);
+            await userEvent.type(tab1, specialChars.arrowRight);
             expect(tab2).toHaveFocus();
-            userEvent.type(tab2, specialChars.arrowRight);
+            await userEvent.type(tab2, specialChars.arrowRight);
             expect(tab3).toHaveFocus();
-            userEvent.type(tab3, specialChars.arrowRight);
+            await userEvent.type(tab3, specialChars.arrowRight);
             expect(tab1).toHaveFocus();
 
             // Move left
-            userEvent.type(tab1, specialChars.arrowLeft);
+            await userEvent.type(tab1, specialChars.arrowLeft);
             expect(tab3).toHaveFocus();
-            userEvent.type(tab3, specialChars.arrowLeft);
+            await userEvent.type(tab3, specialChars.arrowLeft);
             expect(tab2).toHaveFocus();
-            userEvent.type(tab2, specialChars.arrowLeft);
+            await userEvent.type(tab2, specialChars.arrowLeft);
             expect(tab1).toHaveFocus();
         });
 
-        it('does not display the panel associated with a disabled tab', () => {
+        it('does not display the panel associated with a disabled tab', async () => {
             renderView();
-            userEvent.click(screen.getByRole('tab', {name: /Tab 4/i}));
+            await userEvent.click(screen.getByRole('tab', {name: /Tab 4/i}));
             expect(screen.queryByRole('tabpanel', {name: /Tab 4/i})).not.toBeInTheDocument();
         });
     });
