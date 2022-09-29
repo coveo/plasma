@@ -59,22 +59,4 @@ describe('<JSONEditorConnected />', () => {
 
         expect(within(line).getByText(matcher)).toBeVisible();
     });
-
-    it('should call the onChange function from props if it is provided', async () => {
-        const expectedValue = 'hello';
-        const onChangeSpy = jest.fn();
-
-        render(<JSONEditorConnected id="💙" defaultValue={''} onChange={onChangeSpy} />);
-
-        await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
-
-        await userEvent.type(screen.getByRole('textbox'), expectedValue);
-
-        expect(onChangeSpy).toHaveBeenCalledTimes(5);
-        expect(onChangeSpy).toHaveBeenCalledWith('{}h', true);
-        expect(onChangeSpy).toHaveBeenCalledWith('{}he', true);
-        expect(onChangeSpy).toHaveBeenCalledWith('{}hel', true);
-        expect(onChangeSpy).toHaveBeenCalledWith('{}hell', true);
-        expect(onChangeSpy).toHaveBeenCalledWith('{}hello', true);
-    });
 });

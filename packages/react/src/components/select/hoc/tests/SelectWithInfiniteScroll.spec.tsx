@@ -55,21 +55,6 @@ describe('SelectWithInfiniteScroll', () => {
         expect(nextSpy).toHaveBeenCalledTimes(0);
     });
 
-    it('displays a loading when the user scrolls to the bottom of the list and there is more items to display', async () => {
-        const items = [{value: '1'}, {value: '2'}, {value: '3'}];
-
-        render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={5000} items={items} />);
-
-        // open the dropdown
-        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
-
-        const list = screen.getByRole('listbox');
-        const scrollEvent = new Event('scroll');
-        list.dispatchEvent(scrollEvent);
-
-        expect(screen.getByRole('alert')).toBeVisible();
-    });
-
     it('does not displays a loading when the user scrolls to the bottom of the list and there is no more items to display', async () => {
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 

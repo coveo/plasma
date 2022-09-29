@@ -219,11 +219,12 @@ describe('Toasts', () => {
         });
 
         it('should not dismiss the toast if the dismiss is set to 0', async () => {
+            const user = userEvent.setup({delay: null});
             const newToastAttributes = _.extend({}, toastBasicAttributes, {dismiss: 0});
 
             render(<Toast {...newToastAttributes} />);
 
-            await userEvent.hover(screen.queryByText('some title'));
+            await user.hover(screen.queryByText('some title'));
 
             await waitFor(
                 () => {
