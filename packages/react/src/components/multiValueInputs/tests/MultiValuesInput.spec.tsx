@@ -92,7 +92,7 @@ describe('MultiValuesInput', () => {
         );
 
         expect(screen.getAllByRole('textbox')[3].parentElement).toHaveAttribute('aria-labelledby');
-        userEvent.hover(screen.getAllByRole('textbox')[3].parentElement);
+        await userEvent.hover(screen.getAllByRole('textbox')[3].parentElement);
 
         expect(await screen.findByText('You have no power here')).toBeVisible();
     });
@@ -182,7 +182,7 @@ describe('MultiValuesInput', () => {
                 data={['🍍', '🍓']}
             />
         );
-        userEvent.type(screen.getAllByRole('textbox')[1], '🍎🍐🍒🍉🍍');
+        await userEvent.type(screen.getAllByRole('textbox')[1], '🍎🍐🍒🍉🍍');
         expect(screen.getAllByRole('textbox')[1]).toHaveClass('invalid');
     });
 

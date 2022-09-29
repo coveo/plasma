@@ -13,10 +13,10 @@ describe('Filepicker', () => {
         expect(screen.getByText(/choose a file/i)).toBeInTheDocument();
     });
 
-    it('displays the name of the uploaded file', () => {
+    it('displays the name of the uploaded file', async () => {
         render(<Filepicker id="🆔" placeholder="choose a file" />);
         const input = screen.getByLabelText(/choose a file/i);
-        userEvent.upload(input, file);
+        await userEvent.upload(input, file);
 
         expect(screen.getByText(/hello\.png/i)).toBeInTheDocument();
         expect(FilepickerSelectors.getFile('🆔')).toStrictEqual(file);
@@ -25,10 +25,10 @@ describe('Filepicker', () => {
     it('removes the selected file when clicking on the cross button', async () => {
         render(<Filepicker id="🆔" placeholder="choose a file" />);
         const input = screen.getByLabelText(/choose a file/i);
-        userEvent.upload(input, file);
+        await userEvent.upload(input, file);
 
         const clearButton = await screen.findByRole('button', {name: /cross/i});
-        userEvent.click(clearButton);
+        await userEvent.click(clearButton);
 
         expect(screen.getByText(/choose a file/i)).toBeInTheDocument();
     });

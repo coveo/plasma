@@ -434,7 +434,7 @@ describe('Date picker', () => {
 
             render(<DatePickerDropdownConnected id={'dropdown'} datesSelectionBoxes={[]} />);
 
-            userEvent.click((await screen.findAllByRole('button', {name: /arrowHeadRight/i}))[0]);
+            await userEvent.click((await screen.findAllByRole('button', {name: /arrowHeadRight/i}))[0]);
 
             expect(screen.getByText(/february/i)).toBeVisible();
             expect(screen.getByText(/2000/i)).toBeVisible();

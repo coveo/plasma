@@ -62,7 +62,7 @@ describe('Form', () => {
             expect(formCollection.getElementsByClassName('mb2').length).toBe(0);
         });
 
-        it('does not change the url when the user press enter inside a form', () => {
+        it('does not change the url when the user press enter inside a form', async () => {
             const initialHREF = window.location.href;
 
             render(
@@ -72,8 +72,8 @@ describe('Form', () => {
                 </Form>
             );
 
-            userEvent.type(screen.getByRole('textbox'), 'hello world');
-            userEvent.click(screen.getByRole('button'));
+            await userEvent.type(screen.getByRole('textbox'), 'hello world');
+            await userEvent.click(screen.getByRole('button'));
 
             expect(window.location.href).toBe(initialHREF);
         });

@@ -10,14 +10,14 @@ describe('ActionableItem', () => {
         expect(screen.getByText(/the content/i)).toBeInTheDocument();
     });
 
-    it('renders a button if the onItemClick prop was provided', () => {
+    it('renders a button if the onItemClick prop was provided', async () => {
         const onClickSpy = jest.fn();
         render(
             <ActionableItem id="🆔" onItemClick={onClickSpy}>
                 the content
             </ActionableItem>
         );
-        userEvent.click(screen.getByRole('button', {name: /the content/i}));
+        await userEvent.click(screen.getByRole('button', {name: /the content/i}));
         expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
 
@@ -34,8 +34,8 @@ describe('ActionableItem', () => {
                 the content
             </ActionableItem>
         );
-        userEvent.click(await screen.findByRole('button', {name: /dots/i}));
-        userEvent.click(screen.getByText(/action 2/i));
+        await userEvent.click(await screen.findByRole('button', {name: /dots/i}));
+        await userEvent.click(screen.getByText(/action 2/i));
         expect(onClickSpy).toHaveBeenCalledTimes(1);
         expect(onClickSpy).toHaveBeenCalledWith('action 2');
     });
@@ -47,7 +47,7 @@ describe('ActionableItem', () => {
             </ActionableItem>
         );
         const dotsButton = await screen.findByRole('button', {name: /dots/i});
-        userEvent.click(dotsButton);
+        await userEvent.click(dotsButton);
         expect(dotsButton).toHaveClass('open');
     });
 });
