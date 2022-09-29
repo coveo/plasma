@@ -3106,7 +3106,7 @@ packages:
     dev: true
 
   /@types/warning/3.0.0:
-    resolution: {integrity: sha1-DSUBJorY+ZYrdA04fEZU9fjiPlI=}
+    resolution: {integrity: sha512-t/Tvs5qR47OLOr+4E9ckN8AmP2Tf16gWq+/qA4iUGS/OOyHVO8wv2vjJuX8SNOUTJyWb+2t7wJm6cXILFnOROA==}
     dev: false
 
   /@types/webpack-env/1.16.4:
@@ -7282,7 +7282,7 @@ packages:
     dev: true
 
   /exenv/1.2.2:
-    resolution: {integrity: sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=}
+    resolution: {integrity: sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==}
     dev: false
 
   /exit/0.1.2:
