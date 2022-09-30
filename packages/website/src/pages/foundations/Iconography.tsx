@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {ITableHOCProps, TableHOC, tableWithFilter, TableWithFilterProps} from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import {HTMLAttributes, ComponentType, FunctionComponent} from 'react';
@@ -6,9 +7,8 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const {iconsList, ...Icons} = PlasmaReactIcons;
 
-const TableWithFilter: ComponentType<
-    TableWithFilterProps & ITableHOCProps & HTMLAttributes<HTMLTableElement>
-> = tableWithFilter()(TableHOC);
+const TableWithFilter: ComponentType<TableWithFilterProps & ITableHOCProps & HTMLAttributes<HTMLTableElement>> =
+    tableWithFilter()(TableHOC);
 
 type IconSet = {iconName: string; variants: Array<keyof typeof Icons>};
 
@@ -59,7 +59,7 @@ const IconsTable: FunctionComponent = () => (
 
 const code = `
     import { DollarsSize64Px } from '@coveord/plasma-react-icons';
-    
+
     // Control the size using "height" or "width" attributes (defaults to 1em)
     // The icon takes the same color as the text around it
 

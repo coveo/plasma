@@ -1,9 +1,9 @@
 {
     "name": "PlasmaDS - Colors",
-    "lastModified": "2022-09-18T18:28:45Z",
-    "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/524a4899-61bb-4ab6-b1e9-b2d9c81c0dc6?Expires=1664755200&Signature=IX8iyNWigTeSwQBAW2cddM6HkroaAe33bJcWwzkDYsJ4BYqJs-uiGmGKLrk6iCJPJ6Dxn-VFHHNI55BQGnWbyXhqFVJ269cTuOKXHQnykYPsvo42fyo99hTEYbkbjSBDaUCLQRFym8T218QndfxWbeLXAIlFsS9OY290mWuRePm04IU8thqdF0YKaS5iMIDCJOvJtW0tpx4f49u3Z2JkO75qkidoqBTCjyXgdFvqUjOl5-qMJabk1kj8wtnJEYFK-eWYtEbi~SEKsT2Av-Uvz271WeV2c3VzCgUyFs3a2WNaCymtP1XpHm06OP8JTZOWx0UzaGQF8lO~ia579HedFQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-    "version": "2354779381",
-    "role": "editor",
+    "lastModified": "2022-09-22T16:36:20Z",
+    "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/60ee82a5-892e-4959-83ef-9320278ca0a1?Expires=1664755200&Signature=GO~yq5QdPQOFYiyu6O~hnaHS8Kbk~mXjLIzUnb3stTgkeg0DNObC5kSjuybHPkCOMU0a64IgREEF900unY9nsHwhJgHjPFOK6KB1RzGu~s9muoiBtRjfH-IcdGEKMWkuL8eiTJaVBo09HqRwh9OQWqJw0sFyaO9Mo5Ea60SEQQ8-XGLBKEUgbFEbwRkDOKuPjs1l31ti1p36Aeejh57deTs~ff7WGz236ZxdGG4gP83rgIhoTN72Xp7~wRqgPKf3mABK~Bc2-YVQ08N~y9hS5pcfc0HbEhJThh9EDmuLtTt8QnkbwFnXs7bylfO4VtiqadzXk36G8K1nbKfGNoq5Gg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    "version": "2375809883",
+    "role": "viewer",
     "editorType": "figma",
     "linkAccess": "org_view",
     "nodes": {
@@ -20,15 +20,15 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -604,
-                            "y": 2180,
+                            "y": -584,
                             "width": 48,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": -603.2088012695312,
-                            "y": 2183.56396484375,
+                            "y": -580.4359741210938,
                             "width": 46.6337890625,
-                            "height": 8.580078125
+                            "height": 8.5799560546875
                         },
                         "constraints": {
                             "vertical": "TOP",
@@ -86,13 +86,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -613,
-                            "y": 2091,
+                            "y": -673,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -613,
-                            "y": 2091,
+                            "y": -673,
                             "width": 67,
                             "height": 67
                         },
@@ -8808,19 +8808,19 @@
                         "effects": []
                     },
                     {
-                        "id": "524:317",
-                        "name": "$primary-grey-00",
+                        "id": "785:327",
+                        "name": "Grey 0",
                         "type": "TEXT",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
-                            "x": 588,
-                            "y": 50,
+                            "x": 593,
+                            "y": 46,
                             "width": 36,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
-                            "x": 588.5342407226562,
-                            "y": 53.599998474121094,
+                            "x": 593.5342407226562,
+                            "y": 49.599998474121094,
                             "width": 35.01019287109375,
                             "height": 10.692001342773438
                         },
@@ -8874,21 +8874,21 @@
                         ]
                     },
                     {
-                        "id": "524:318",
+                        "id": "785:298",
                         "name": "$primary-grey-00",
                         "type": "RECTANGLE",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 575,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
-                            "x": 567,
-                            "y": -45,
-                            "width": 83,
-                            "height": 83
+                            "x": 575,
+                            "y": -40,
+                            "width": 67,
+                            "height": 67
                         },
                         "preserveRatio": true,
                         "constraints": {
@@ -8900,9 +8900,9 @@
                                 "blendMode": "NORMAL",
                                 "type": "SOLID",
                                 "color": {
-                                    "r": 1,
-                                    "g": 1,
-                                    "b": 1,
+                                    "r": 0.987500011920929,
+                                    "g": 0.987500011920929,
+                                    "b": 0.987500011920929,
                                     "a": 1
                                 }
                             }
@@ -8911,28 +8911,117 @@
                         "strokeWeight": 1,
                         "strokeAlign": "INSIDE",
                         "styles": {
-                            "fill": "3:92",
-                            "effect": "708:309"
+                            "fill": "786:329"
                         },
-                        "effects": [
+                        "effects": []
+                    },
+                    {
+                        "id": "786:334",
+                        "name": "Grey 1",
+                        "type": "TEXT",
+                        "blendMode": "PASS_THROUGH",
+                        "absoluteBoundingBox": {
+                            "x": 458,
+                            "y": 46,
+                            "width": 34,
+                            "height": 16
+                        },
+                        "absoluteRenderBounds": {
+                            "x": 458.44830322265625,
+                            "y": 49.599998474121094,
+                            "width": 31.866180419921875,
+                            "height": 10.692001342773438
+                        },
+                        "constraints": {
+                            "vertical": "TOP",
+                            "horizontal": "LEFT"
+                        },
+                        "fills": [
                             {
-                                "type": "DROP_SHADOW",
-                                "visible": true,
-                                "color": {
-                                    "r": 0.8980392217636108,
-                                    "g": 0.9098039269447327,
-                                    "b": 0.9098039269447327,
-                                    "a": 0.75
-                                },
                                 "blendMode": "NORMAL",
-                                "offset": {
-                                    "x": 0,
-                                    "y": 2
-                                },
-                                "radius": 8,
-                                "showShadowBehindNode": true
+                                "type": "SOLID",
+                                "color": {
+                                    "r": 0.1568627506494522,
+                                    "g": 0.1568627506494522,
+                                    "b": 0.16078431904315948,
+                                    "a": 1
+                                }
                             }
+                        ],
+                        "strokes": [],
+                        "strokeWeight": 1,
+                        "strokeAlign": "OUTSIDE",
+                        "styles": {
+                            "fill": "3:89",
+                            "text": "524:290"
+                        },
+                        "effects": [],
+                        "characters": "Grey 1",
+                        "style": {
+                            "fontFamily": "Gibson",
+                            "fontPostScriptName": "Gibson-Medium",
+                            "fontWeight": 500,
+                            "textAutoResize": "WIDTH_AND_HEIGHT",
+                            "fontSize": 12,
+                            "textAlignHorizontal": "CENTER",
+                            "textAlignVertical": "BOTTOM",
+                            "letterSpacing": 0.03600000143051148,
+                            "lineHeightPx": 16,
+                            "lineHeightPercent": 113.77777862548828,
+                            "lineHeightPercentFontSize": 133.3333282470703,
+                            "lineHeightUnit": "PIXELS"
+                        },
+                        "layoutVersion": 3,
+                        "characterStyleOverrides": [],
+                        "styleOverrideTable": {},
+                        "lineTypes": [
+                            "NONE"
+                        ],
+                        "lineIndentations": [
+                            0
                         ]
+                    },
+                    {
+                        "id": "524:320",
+                        "name": "$primary-grey-20",
+                        "type": "RECTANGLE",
+                        "blendMode": "PASS_THROUGH",
+                        "absoluteBoundingBox": {
+                            "x": 443,
+                            "y": -40,
+                            "width": 67,
+                            "height": 67
+                        },
+                        "absoluteRenderBounds": {
+                            "x": 443,
+                            "y": -40,
+                            "width": 67,
+                            "height": 67
+                        },
+                        "preserveRatio": true,
+                        "constraints": {
+                            "vertical": "TOP",
+                            "horizontal": "LEFT"
+                        },
+                        "fills": [
+                            {
+                                "blendMode": "NORMAL",
+                                "type": "SOLID",
+                                "color": {
+                                    "r": 0.9750000238418579,
+                                    "g": 0.9750000238418579,
+                                    "b": 0.9750000238418579,
+                                    "a": 1
+                                }
+                            }
+                        ],
+                        "strokes": [],
+                        "strokeWeight": 1,
+                        "strokeAlign": "INSIDE",
+                        "styles": {
+                            "fill": "3:189"
+                        },
+                        "effects": []
                     },
                     {
                         "id": "524:319",
@@ -8940,14 +9029,14 @@
                         "type": "TEXT",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
-                            "x": 325,
-                            "y": 50,
+                            "x": 324,
+                            "y": 46,
                             "width": 36,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
-                            "x": 325.53424072265625,
-                            "y": 53.599998474121094,
+                            "x": 324.53424072265625,
+                            "y": 49.599998474121094,
                             "width": 34.794189453125,
                             "height": 10.692001342773438
                         },
@@ -9001,19 +9090,19 @@
                         ]
                     },
                     {
-                        "id": "524:320",
+                        "id": "785:326",
                         "name": "$primary-grey-20",
                         "type": "RECTANGLE",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 311,
-                            "y": -37,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": 311,
-                            "y": -37,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
@@ -9027,9 +9116,9 @@
                                 "blendMode": "NORMAL",
                                 "type": "SOLID",
                                 "color": {
-                                    "r": 0.9647058844566345,
-                                    "g": 0.9686274528503418,
-                                    "b": 0.9764705896377563,
+                                    "r": 0.9460416436195374,
+                                    "g": 0.949524998664856,
+                                    "b": 0.949999988079071,
                                     "a": 1
                                 }
                             }
@@ -9038,7 +9127,115 @@
                         "strokeWeight": 1,
                         "strokeAlign": "INSIDE",
                         "styles": {
-                            "fill": "3:189"
+                            "fill": "786:328"
+                        },
+                        "effects": []
+                    },
+                    {
+                        "id": "786:332",
+                        "name": "Grey 3",
+                        "type": "TEXT",
+                        "blendMode": "PASS_THROUGH",
+                        "absoluteBoundingBox": {
+                            "x": 191,
+                            "y": 46,
+                            "width": 36,
+                            "height": 16
+                        },
+                        "absoluteRenderBounds": {
+                            "x": 191.53424072265625,
+                            "y": 49.599998474121094,
+                            "width": 34.61418151855469,
+                            "height": 10.692001342773438
+                        },
+                        "constraints": {
+                            "vertical": "TOP",
+                            "horizontal": "LEFT"
+                        },
+                        "fills": [
+                            {
+                                "blendMode": "NORMAL",
+                                "type": "SOLID",
+                                "color": {
+                                    "r": 0.1568627506494522,
+                                    "g": 0.1568627506494522,
+                                    "b": 0.16078431904315948,
+                                    "a": 1
+                                }
+                            }
+                        ],
+                        "strokes": [],
+                        "strokeWeight": 1,
+                        "strokeAlign": "OUTSIDE",
+                        "styles": {
+                            "fill": "3:89",
+                            "text": "524:290"
+                        },
+                        "effects": [],
+                        "characters": "Grey 3",
+                        "style": {
+                            "fontFamily": "Gibson",
+                            "fontPostScriptName": "Gibson-Medium",
+                            "fontWeight": 500,
+                            "textAutoResize": "WIDTH_AND_HEIGHT",
+                            "fontSize": 12,
+                            "textAlignHorizontal": "CENTER",
+                            "textAlignVertical": "BOTTOM",
+                            "letterSpacing": 0.03600000143051148,
+                            "lineHeightPx": 16,
+                            "lineHeightPercent": 113.77777862548828,
+                            "lineHeightPercentFontSize": 133.3333282470703,
+                            "lineHeightUnit": "PIXELS"
+                        },
+                        "layoutVersion": 3,
+                        "characterStyleOverrides": [],
+                        "styleOverrideTable": {},
+                        "lineTypes": [
+                            "NONE"
+                        ],
+                        "lineIndentations": [
+                            0
+                        ]
+                    },
+                    {
+                        "id": "524:322",
+                        "name": "$primary-grey-40",
+                        "type": "RECTANGLE",
+                        "blendMode": "PASS_THROUGH",
+                        "absoluteBoundingBox": {
+                            "x": 179,
+                            "y": -40,
+                            "width": 67,
+                            "height": 67
+                        },
+                        "absoluteRenderBounds": {
+                            "x": 179,
+                            "y": -40,
+                            "width": 67,
+                            "height": 67
+                        },
+                        "preserveRatio": true,
+                        "constraints": {
+                            "vertical": "TOP",
+                            "horizontal": "LEFT"
+                        },
+                        "fills": [
+                            {
+                                "blendMode": "NORMAL",
+                                "type": "SOLID",
+                                "color": {
+                                    "r": 0.8980392217636108,
+                                    "g": 0.9098039269447327,
+                                    "b": 0.9098039269447327,
+                                    "a": 1
+                                }
+                            }
+                        ],
+                        "strokes": [],
+                        "strokeWeight": 1,
+                        "strokeAlign": "INSIDE",
+                        "styles": {
+                            "fill": "3:149"
                         },
                         "effects": []
                     },
@@ -9048,13 +9245,13 @@
                         "type": "TEXT",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
-                            "x": 61,
+                            "x": 60,
                             "y": 50,
                             "width": 36,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
-                            "x": 61.53423309326172,
+                            "x": 60.53423309326172,
                             "y": 53.599998474121094,
                             "width": 35.0701904296875,
                             "height": 10.692001342773438
@@ -9109,19 +9306,19 @@
                         ]
                     },
                     {
-                        "id": "524:322",
-                        "name": "$primary-grey-40",
+                        "id": "524:324",
+                        "name": "$primary-grey-50",
                         "type": "RECTANGLE",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 47,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": 47,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
@@ -9135,9 +9332,9 @@
                                 "blendMode": "NORMAL",
                                 "type": "SOLID",
                                 "color": {
-                                    "r": 0.8980392217636108,
-                                    "g": 0.9098039269447327,
-                                    "b": 0.9098039269447327,
+                                    "r": 0.8395833373069763,
+                                    "g": 0.8634166717529297,
+                                    "b": 0.8666666746139526,
                                     "a": 1
                                 }
                             }
@@ -9146,7 +9343,7 @@
                         "strokeWeight": 1,
                         "strokeAlign": "INSIDE",
                         "styles": {
-                            "fill": "3:149"
+                            "fill": "3:190"
                         },
                         "effects": []
                     },
@@ -9156,13 +9353,13 @@
                         "type": "TEXT",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
-                            "x": -71,
+                            "x": -72,
                             "y": 50,
                             "width": 36,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
-                            "x": -70.46576690673828,
+                            "x": -71.46576690673828,
                             "y": 53.599998474121094,
                             "width": 34.69818878173828,
                             "height": 10.692001342773438
@@ -9217,19 +9414,19 @@
                         ]
                     },
                     {
-                        "id": "524:324",
-                        "name": "$primary-grey-50",
+                        "id": "785:294",
+                        "name": "$primary-grey-00",
                         "type": "RECTANGLE",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -85,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -85,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
@@ -9243,9 +9440,9 @@
                                 "blendMode": "NORMAL",
                                 "type": "SOLID",
                                 "color": {
-                                    "r": 0.7718750238418579,
-                                    "g": 0.792187511920929,
-                                    "b": 0.8125,
+                                    "r": 0.7164583206176758,
+                                    "g": 0.7383291721343994,
+                                    "b": 0.7541666626930237,
                                     "a": 1
                                 }
                             }
@@ -9254,25 +9451,25 @@
                         "strokeWeight": 1,
                         "strokeAlign": "INSIDE",
                         "styles": {
-                            "fill": "3:190"
+                            "fill": "786:330"
                         },
                         "effects": []
                     },
                     {
-                        "id": "524:325",
+                        "id": "786:333",
                         "name": "Grey 6",
                         "type": "TEXT",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
-                            "x": -203,
+                            "x": -205,
                             "y": 50,
-                            "width": 39,
+                            "width": 36,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
-                            "x": -202.1732177734375,
+                            "x": -204.46575927734375,
                             "y": 53.599998474121094,
-                            "width": 37.245086669921875,
+                            "width": 34.83018493652344,
                             "height": 10.692001342773438
                         },
                         "constraints": {
@@ -9299,7 +9496,7 @@
                             "text": "524:290"
                         },
                         "effects": [],
-                        "characters": "Grey  6",
+                        "characters": "Grey 6",
                         "style": {
                             "fontFamily": "Gibson",
                             "fontPostScriptName": "Gibson-Medium",
@@ -9331,13 +9528,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -217,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -217,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
@@ -9367,18 +9564,126 @@
                         "effects": []
                     },
                     {
+                        "id": "524:325",
+                        "name": "Grey 7",
+                        "type": "TEXT",
+                        "blendMode": "PASS_THROUGH",
+                        "absoluteBoundingBox": {
+                            "x": -336,
+                            "y": 50,
+                            "width": 39,
+                            "height": 16
+                        },
+                        "absoluteRenderBounds": {
+                            "x": -335.1732177734375,
+                            "y": 53.599998474121094,
+                            "width": 37.365081787109375,
+                            "height": 10.692001342773438
+                        },
+                        "constraints": {
+                            "vertical": "TOP",
+                            "horizontal": "LEFT"
+                        },
+                        "fills": [
+                            {
+                                "blendMode": "NORMAL",
+                                "type": "SOLID",
+                                "color": {
+                                    "r": 0.1568627506494522,
+                                    "g": 0.1568627506494522,
+                                    "b": 0.16078431904315948,
+                                    "a": 1
+                                }
+                            }
+                        ],
+                        "strokes": [],
+                        "strokeWeight": 1,
+                        "strokeAlign": "OUTSIDE",
+                        "styles": {
+                            "fill": "3:89",
+                            "text": "524:290"
+                        },
+                        "effects": [],
+                        "characters": "Grey  7",
+                        "style": {
+                            "fontFamily": "Gibson",
+                            "fontPostScriptName": "Gibson-Medium",
+                            "fontWeight": 500,
+                            "textAutoResize": "WIDTH_AND_HEIGHT",
+                            "fontSize": 12,
+                            "textAlignHorizontal": "CENTER",
+                            "textAlignVertical": "BOTTOM",
+                            "letterSpacing": 0.03600000143051148,
+                            "lineHeightPx": 16,
+                            "lineHeightPercent": 113.77777862548828,
+                            "lineHeightPercentFontSize": 133.3333282470703,
+                            "lineHeightUnit": "PIXELS"
+                        },
+                        "layoutVersion": 3,
+                        "characterStyleOverrides": [],
+                        "styleOverrideTable": {},
+                        "lineTypes": [
+                            "NONE"
+                        ],
+                        "lineIndentations": [
+                            0
+                        ]
+                    },
+                    {
+                        "id": "524:328",
+                        "name": "$primary-grey-80",
+                        "type": "RECTANGLE",
+                        "blendMode": "PASS_THROUGH",
+                        "absoluteBoundingBox": {
+                            "x": -349,
+                            "y": -40,
+                            "width": 67,
+                            "height": 67
+                        },
+                        "absoluteRenderBounds": {
+                            "x": -349,
+                            "y": -40,
+                            "width": 67,
+                            "height": 67
+                        },
+                        "preserveRatio": true,
+                        "constraints": {
+                            "vertical": "TOP",
+                            "horizontal": "LEFT"
+                        },
+                        "fills": [
+                            {
+                                "blendMode": "NORMAL",
+                                "type": "SOLID",
+                                "color": {
+                                    "r": 0.33916667103767395,
+                                    "g": 0.35806557536125183,
+                                    "b": 0.4000000059604645,
+                                    "a": 1
+                                }
+                            }
+                        ],
+                        "strokes": [],
+                        "strokeWeight": 1,
+                        "strokeAlign": "INSIDE",
+                        "styles": {
+                            "fill": "3:148"
+                        },
+                        "effects": []
+                    },
+                    {
                         "id": "524:327",
                         "name": "Grey 8",
                         "type": "TEXT",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
-                            "x": -466,
+                            "x": -467,
                             "y": 50,
                             "width": 36,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
-                            "x": -465.46575927734375,
+                            "x": -466.46575927734375,
                             "y": 53.599998474121094,
                             "width": 34.746185302734375,
                             "height": 10.692001342773438
@@ -9433,19 +9738,19 @@
                         ]
                     },
                     {
-                        "id": "524:328",
-                        "name": "$primary-grey-80",
+                        "id": "785:302",
+                        "name": "$primary-grey-20",
                         "type": "RECTANGLE",
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -481,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -481,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
@@ -9459,9 +9764,9 @@
                                 "blendMode": "NORMAL",
                                 "type": "SOLID",
                                 "color": {
-                                    "r": 0.3843137323856354,
-                                    "g": 0.4117647111415863,
-                                    "b": 0.4431372582912445,
+                                    "r": 0.20793402194976807,
+                                    "g": 0.2268836498260498,
+                                    "b": 0.24583333730697632,
                                     "a": 1
                                 }
                             }
@@ -9470,7 +9775,7 @@
                         "strokeWeight": 1,
                         "strokeAlign": "INSIDE",
                         "styles": {
-                            "fill": "3:148"
+                            "fill": "786:331"
                         },
                         "effects": []
                     },
@@ -9547,13 +9852,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -613,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -613,
-                            "y": -39,
+                            "y": -40,
                             "width": 67,
                             "height": 67
                         },
@@ -9589,13 +9894,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 590,
-                            "y": -161,
+                            "y": -162,
                             "width": 38,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": 591.1403198242188,
-                            "y": -157.39999389648438,
+                            "y": -158.39999389648438,
                             "width": 36.24200439453125,
                             "height": 10.691986083984375
                         },
@@ -9655,13 +9960,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 575,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": 575,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -9697,13 +10002,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 455,
-                            "y": -161,
+                            "y": -162,
                             "width": 36,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": 456.0544128417969,
-                            "y": -157.27999877929688,
+                            "y": -158.27999877929688,
                             "width": 33.09796142578125,
                             "height": 10.571990966796875
                         },
@@ -9763,13 +10068,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 443,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": 443,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -9805,13 +10110,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 320,
-                            "y": -161,
+                            "y": -162,
                             "width": 38,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": 321.1403503417969,
-                            "y": -157.39999389648438,
+                            "y": -158.39999389648438,
                             "width": 36.025970458984375,
                             "height": 10.691986083984375
                         },
@@ -9871,13 +10176,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 311,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": 311,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -9913,13 +10218,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 191,
-                            "y": -161,
+                            "y": -162,
                             "width": 38,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": 192.14035034179688,
-                            "y": -157.39999389648438,
+                            "y": -158.39999389648438,
                             "width": 35.84596252441406,
                             "height": 10.692001342773438
                         },
@@ -9979,13 +10284,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 179,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": 179,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -10021,13 +10326,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 60,
-                            "y": -161,
+                            "y": -162,
                             "width": 38,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": 61.140342712402344,
-                            "y": -157.3159942626953,
+                            "y": -158.3159942626953,
                             "width": 36.301971435546875,
                             "height": 10.607986450195312
                         },
@@ -10087,13 +10392,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": 47,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": 47,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -10129,13 +10434,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -72,
-                            "y": -161,
+                            "y": -162,
                             "width": 38,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": -70.85965728759766,
-                            "y": -157.27999877929688,
+                            "y": -158.27999877929688,
                             "width": 35.929969787597656,
                             "height": 10.571990966796875
                         },
@@ -10195,13 +10500,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -85,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -85,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -10237,13 +10542,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -204,
-                            "y": -161,
+                            "y": -162,
                             "width": 38,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": -202.85964965820312,
-                            "y": -157.39999389648438,
+                            "y": -158.39999389648438,
                             "width": 36.06196594238281,
                             "height": 10.691986083984375
                         },
@@ -10303,13 +10608,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -217,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -217,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -10345,13 +10650,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -335,
-                            "y": -161,
+                            "y": -162,
                             "width": 38,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": -333.8596496582031,
-                            "y": -157.27999877929688,
+                            "y": -158.27999877929688,
                             "width": 36.181976318359375,
                             "height": 10.571990966796875
                         },
@@ -10411,13 +10716,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -349,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -349,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -10453,13 +10758,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -467,
-                            "y": -161,
+                            "y": -162,
                             "width": 38,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": -465.8596496582031,
-                            "y": -157.39999389648438,
+                            "y": -158.39999389648438,
                             "width": 35.97796630859375,
                             "height": 10.692001342773438
                         },
@@ -10519,13 +10824,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -481,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -481,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -10561,13 +10866,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -599,
-                            "y": -161,
+                            "y": -162,
                             "width": 38,
                             "height": 16
                         },
                         "absoluteRenderBounds": {
                             "x": -597.8596801757812,
-                            "y": -157.39999389648438,
+                            "y": -158.39999389648438,
                             "width": 35.92999267578125,
                             "height": 10.691986083984375
                         },
@@ -10627,13 +10932,13 @@
                         "blendMode": "PASS_THROUGH",
                         "absoluteBoundingBox": {
                             "x": -613,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
                         "absoluteRenderBounds": {
                             "x": -613,
-                            "y": -250,
+                            "y": -251,
                             "width": 67,
                             "height": 67
                         },
@@ -10661,6 +10966,133 @@
                             "fill": "3:4"
                         },
                         "effects": []
+                    },
+                    {
+                        "id": "785:290",
+                        "name": "$primary-grey-00",
+                        "type": "TEXT",
+                        "blendMode": "PASS_THROUGH",
+                        "absoluteBoundingBox": {
+                            "x": -611,
+                            "y": -373,
+                            "width": 59,
+                            "height": 16
+                        },
+                        "absoluteRenderBounds": {
+                            "x": -609.9846801757812,
+                            "y": -369.4360046386719,
+                            "width": 57.4737548828125,
+                            "height": 8.5679931640625
+                        },
+                        "constraints": {
+                            "vertical": "TOP",
+                            "horizontal": "LEFT"
+                        },
+                        "fills": [
+                            {
+                                "blendMode": "NORMAL",
+                                "type": "SOLID",
+                                "color": {
+                                    "r": 0.1568627506494522,
+                                    "g": 0.1568627506494522,
+                                    "b": 0.16078431904315948,
+                                    "a": 1
+                                }
+                            }
+                        ],
+                        "strokes": [],
+                        "strokeWeight": 1,
+                        "strokeAlign": "OUTSIDE",
+                        "styles": {
+                            "fill": "3:89",
+                            "text": "524:290"
+                        },
+                        "effects": [],
+                        "characters": "Pure White",
+                        "style": {
+                            "fontFamily": "Gibson",
+                            "fontPostScriptName": "Gibson-Medium",
+                            "fontWeight": 500,
+                            "textAutoResize": "WIDTH_AND_HEIGHT",
+                            "fontSize": 12,
+                            "textAlignHorizontal": "CENTER",
+                            "textAlignVertical": "BOTTOM",
+                            "letterSpacing": 0.03600000143051148,
+                            "lineHeightPx": 16,
+                            "lineHeightPercent": 113.77777862548828,
+                            "lineHeightPercentFontSize": 133.3333282470703,
+                            "lineHeightUnit": "PIXELS"
+                        },
+                        "layoutVersion": 3,
+                        "characterStyleOverrides": [],
+                        "styleOverrideTable": {},
+                        "lineTypes": [
+                            "NONE"
+                        ],
+                        "lineIndentations": [
+                            0
+                        ]
+                    },
+                    {
+                        "id": "785:291",
+                        "name": "$primary-grey-00",
+                        "type": "RECTANGLE",
+                        "blendMode": "PASS_THROUGH",
+                        "absoluteBoundingBox": {
+                            "x": -613,
+                            "y": -462,
+                            "width": 67,
+                            "height": 67
+                        },
+                        "absoluteRenderBounds": {
+                            "x": -621,
+                            "y": -468,
+                            "width": 83,
+                            "height": 83
+                        },
+                        "preserveRatio": true,
+                        "constraints": {
+                            "vertical": "TOP",
+                            "horizontal": "LEFT"
+                        },
+                        "fills": [
+                            {
+                                "blendMode": "NORMAL",
+                                "type": "SOLID",
+                                "color": {
+                                    "r": 1,
+                                    "g": 1,
+                                    "b": 1,
+                                    "a": 1
+                                }
+                            }
+                        ],
+                        "strokes": [],
+                        "strokeWeight": 1,
+                        "strokeAlign": "INSIDE",
+                        "styles": {
+                            "fill": "3:92",
+                            "effect": "708:309"
+                        },
+                        "effects": [
+                            {
+                                "type": "DROP_SHADOW",
+                                "visible": true,
+                                "color": {
+                                    "r": 0.8980392217636108,
+                                    "g": 0.9098039269447327,
+                                    "b": 0.9098039269447327,
+                                    "a": 0.699999988079071
+                                },
+                                "blendMode": "NORMAL",
+                                "offset": {
+                                    "x": 0,
+                                    "y": 2
+                                },
+                                "radius": 8,
+                                "showShadowBehindNode": true
+                            }
+                        ]
                     }
                 ],
                 "backgroundColor": {
@@ -10682,7 +11114,7 @@
             "styles": {
                 "3:89": {
                     "key": "d5f48b4f01d02aaad4a60bec5c9066eda9e2f8f0",
-                    "name": "Primary/Grey/9",
+                    "name": "Primary/Gray/9",
                     "styleType": "FILL",
                     "description": "Formerly Grey100 - Use this color for all text"
                 },
@@ -11178,47 +11610,59 @@
                     "styleType": "FILL",
                     "description": "Semantic Destructive: Darkest color"
                 },
-                "3:92": {
-                    "key": "609ef97a79ecb507a1d25cfef7af77c7bf88b7ac",
-                    "name": "Primary/Grey/0",
+                "786:329": {
+                    "key": "954e47a945e4f45c1ca444fde19cff3413074001",
+                    "name": "Primary/Gray/0",
                     "styleType": "FILL",
-                    "description": "Basically White"
-                },
-                "708:309": {
-                    "key": "8307815d8afa2895bf6e8ffdd333cc50f371ff19",
-                    "name": "Elevation/On-Light/Low",
-                    "styleType": "EFFECT",
-                    "description": "This shadow effect is used on Cards and Icon Cards in Passive state - Light shadow should be used in white backgrounds."
+                    "description": ""
                 },
                 "3:189": {
                     "key": "82ea34007d8b1f603992072c3279665031179893",
-                    "name": "Primary/Grey/2",
+                    "name": "Primary/Gray/1",
                     "styleType": "FILL",
                     "description": "Use this color for light borders and separators"
                 },
+                "786:328": {
+                    "key": "616e942c21b36abb466fe48ebe6a9fbdc403d534",
+                    "name": "Primary/Gray/2",
+                    "styleType": "FILL",
+                    "description": ""
+                },
                 "3:149": {
                     "key": "597123277264c51d06d0f8cdf4a77e05837bb39a",
-                    "name": "Primary/Grey/4",
+                    "name": "Primary/Gray/3",
                     "styleType": "FILL",
                     "description": ""
                 },
                 "3:190": {
                     "key": "544883646d2078915a10d4b67867fd2e31ad212a",
-                    "name": "Primary/Grey/5",
+                    "name": "Primary/Gray/4",
+                    "styleType": "FILL",
+                    "description": ""
+                },
+                "786:330": {
+                    "key": "7d84045bf4f4ba69a63b1793a649442c740e43ab",
+                    "name": "Primary/Gray/5",
                     "styleType": "FILL",
                     "description": ""
                 },
                 "3:191": {
                     "key": "a893673d64228d1efa43f6e9fecdec22d5e3d15c",
-                    "name": "Primary/Grey/6",
+                    "name": "Primary/Gray/6",
                     "styleType": "FILL",
                     "description": "Use this color for Disabled text and similar instances"
                 },
                 "3:148": {
                     "key": "ee1de65ecd0dfce3cad5a7bd28e9c05bdf54de20",
-                    "name": "Primary/Grey/8",
+                    "name": "Primary/Gray/7",
                     "styleType": "FILL",
                     "description": "Use this color for paragraphs"
+                },
+                "786:331": {
+                    "key": "12cf3f7c3a578626a7b057f634feb18e8ac77c09",
+                    "name": "Primary/Gray/8",
+                    "styleType": "FILL",
+                    "description": ""
                 },
                 "3:198": {
                     "key": "4800fdb9b86838705b067bd87d0ae69c3eecea45",
@@ -11279,6 +11723,18 @@
                     "name": "Primary/Navy/9 - Sem",
                     "styleType": "FILL",
                     "description": "Semantic Information: Darkest color"
+                },
+                "3:92": {
+                    "key": "609ef97a79ecb507a1d25cfef7af77c7bf88b7ac",
+                    "name": "Primary/Pure White",
+                    "styleType": "FILL",
+                    "description": "Pure White"
+                },
+                "708:309": {
+                    "key": "8307815d8afa2895bf6e8ffdd333cc50f371ff19",
+                    "name": "Elevation/On-Light/M",
+                    "styleType": "EFFECT",
+                    "description": "This shadow effect is used on Cards and Icon Cards in Passive state - Light shadow should be used in white backgrounds."
                 }
             }
         }

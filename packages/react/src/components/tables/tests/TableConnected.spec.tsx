@@ -12,9 +12,8 @@ import {openDropdownSearch} from '../../dropdownSearch/DropdownSearchActions';
 import {ITableProps, Table} from '../Table';
 import {TableConnected} from '../TableConnected';
 import {TableChildComponent} from '../TableConstants';
-import * as TableDataModifier from '../TableDataModifier';
 import {getTableChildComponentId} from '../TableUtils';
-import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
+import {tablePossibleProps, tablePropsMock} from './TableTestCommon';
 
 describe('<TableConnected />', () => {
     let store: Store<PlasmaState>;
@@ -229,7 +228,7 @@ describe('<TableConnected />', () => {
         });
 
         it('should call the manual thunk if it is passed as own props on onModifyData', () => {
-            const manualSpy = jest.fn(() => _.noop);
+            const manualSpy = jest.fn(() => jest.fn());
             const wrapper = mountComponentWithProps({...tablePropsMock, manual: manualSpy});
             const tableConnected = wrapper.find(Table);
 
@@ -244,27 +243,6 @@ describe('<TableConnected />', () => {
                 tableComposite1,
                 tableComposite2,
             ]);
-        });
-
-        it('should call the default data modifier thunk if manual is not in ownProps on onModifyData', () => {
-            const wrapper = mountComponentWithProps({...tablePropsMockWithData});
-            const tableConnected = wrapper.find(Table);
-            const defaultTableStateModifierThunkSpy = jest
-                .spyOn(TableDataModifier, 'defaultTableStateModifierThunk')
-                .mockReturnValue(_.noop);
-
-            const shouldResetPage = true;
-            const tableComposite1 = tablePropsMock.tableCompositeState;
-            tableConnected.props().onModifyData(shouldResetPage, tableComposite1);
-
-            expect(defaultTableStateModifierThunkSpy).toHaveBeenCalledTimes(1);
-            expect(
-                _.rest(
-                    defaultTableStateModifierThunkSpy.mock.calls[
-                        defaultTableStateModifierThunkSpy.mock.calls.length - 1
-                    ]
-                )
-            ).toEqual([shouldResetPage, tableComposite1]);
         });
     });
 });
