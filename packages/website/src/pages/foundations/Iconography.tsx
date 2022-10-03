@@ -7,8 +7,9 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const {iconsList, ...Icons} = PlasmaReactIcons;
 
-const TableWithFilter: ComponentType<TableWithFilterProps & ITableHOCProps & HTMLAttributes<HTMLTableElement>> =
-    tableWithFilter()(TableHOC);
+const TableWithFilter: ComponentType<
+    React.PropsWithChildren<TableWithFilterProps & ITableHOCProps & HTMLAttributes<HTMLTableElement>>
+> = tableWithFilter()(TableHOC);
 
 type IconSet = {iconName: string; variants: Array<keyof typeof Icons>};
 

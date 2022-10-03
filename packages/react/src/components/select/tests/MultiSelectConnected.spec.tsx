@@ -56,12 +56,12 @@ describe('Select', () => {
             expect(listitems[1]).toHaveTextContent('🥔');
         });
 
-        it('displays the displayValue in the dropdown list', () => {
+        it('displays the displayValue in the dropdown list', async () => {
             const items = [{value: '🌱', displayValue: '🌱'}, {value: '🥔', displayValue: '🥔'}, {value: '🍟'}];
             render(<MultiSelectConnected id={id} items={items} />);
 
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+            await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             expect(
                 screen.getByRole('option', {
@@ -80,12 +80,12 @@ describe('Select', () => {
             ).toBeVisible();
         });
 
-        it('hides items that are hidden', () => {
+        it('hides items that are hidden', async () => {
             const items = [{value: 'first', hidden: true}, {value: 'second'}, {value: 'third'}];
 
             render(<MultiSelectConnected id={id} items={items} />, {});
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+            await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             expect(
                 screen.queryByRole('option', {
@@ -94,7 +94,7 @@ describe('Select', () => {
             ).not.toBeInTheDocument();
         });
 
-        it('is possible to remove a selected item', () => {
+        it('is possible to remove a selected item', async () => {
             const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
             render(<MultiSelectConnected id={id} items={items} />);
 
@@ -103,7 +103,7 @@ describe('Select', () => {
             expect(listitems[0]).toHaveTextContent('🌱');
             expect(listitems[1]).toHaveTextContent('🥔');
 
-            userEvent.click(within(listitems[0]).getByRole('button'));
+            await userEvent.click(within(listitems[0]).getByRole('button'));
 
             listitems = screen.getAllByRole('listitem');
             expect(listitems.length).toBe(1);
@@ -126,11 +126,11 @@ describe('Select', () => {
             expect(within(listitems[1]).queryByRole('button')).not.toBeInTheDocument();
         });
 
-        it('is possible to remove all selected items', () => {
+        it('is possible to remove all selected items', async () => {
             const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
             render(<MultiSelectConnected id={id} items={items} />);
 
-            userEvent.click(screen.getByRole('button', {name: 'Deselect All'}));
+            await userEvent.click(screen.getByRole('button', {name: 'Deselect All'}));
 
             expect(screen.getByRole('list')).toHaveTextContent('No selected option');
         });
@@ -142,12 +142,12 @@ describe('Select', () => {
             expect(screen.queryByRole('button', {name: 'Deselect All'})).not.toBeInTheDocument();
         });
 
-        it('hides items from the dropdown list when they are selected', () => {
+        it('hides items from the dropdown list when they are selected', async () => {
             const items = [{value: '🌱'}, {value: '🥔', selected: true}, {value: '🍟'}];
 
             render(<MultiSelectConnected id={id} items={items} />);
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+            await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             // pre-selected option is in the listbox
             expect(screen.getByText(/🥔/i)).toBeInTheDocument();
@@ -164,7 +164,7 @@ describe('Select', () => {
             ).toBeInTheDocument();
 
             // select 🍟
-            userEvent.click(
+            await userEvent.click(
                 screen.getByRole('option', {
                     name: /🍟/i,
                 })
@@ -173,7 +173,7 @@ describe('Select', () => {
             expect(screen.getByText(/🍟/i)).toBeInTheDocument();
 
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+            await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             expect(
                 screen.getByRole('option', {
@@ -192,7 +192,7 @@ describe('Select', () => {
             ).not.toBeInTheDocument();
         });
 
-        it('does not open the dropdown if there is no unselected items', () => {
+        it('does not open the dropdown if there is no unselected items', async () => {
             const items = [
                 {value: '🌱', selected: true},
                 {value: '🥔', selected: true},
@@ -200,17 +200,17 @@ describe('Select', () => {
             render(<MultiSelectConnected id={id} items={items} />);
 
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+            await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             // one list for the selected values
             expect(screen.getAllByRole('list').length).toBe(1);
         });
 
-        it('does not open the dropdown if there is no items', () => {
+        it('does not open the dropdown if there is no items', async () => {
             render(<MultiSelectConnected id={id} items={[]} />);
 
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+            await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             // one list for the selected values
             expect(screen.getAllByRole('list').length).toBe(1);
@@ -267,7 +267,7 @@ describe('Select', () => {
                 expect(listitems[2]).toHaveTextContent('🥔');
             });
 
-            it('is possible to remove a selected item', () => {
+            it('is possible to remove a selected item', async () => {
                 const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
                 render(<MultiSelectConnected id={id} items={items} sortable />);
 
@@ -275,7 +275,7 @@ describe('Select', () => {
                 expect(listitems[0]).toHaveTextContent('🌱');
                 expect(listitems[1]).toHaveTextContent('🥔');
 
-                userEvent.click(within(listitems[0]).getByRole('button'));
+                await userEvent.click(within(listitems[0]).getByRole('button'));
 
                 listitems = screen.getAllByRole('listitem');
                 expect(listitems.length).toBe(1);

@@ -39,74 +39,74 @@ export interface IMultilineBoxWithDnDProps<T>
 /**
  * @deprecated Use Mantine instead
  */
-export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDnDSupplierProps> = {}) => (
-    Component: typeof MultilineBox
-): typeof MultilineBox => {
-    const makeMapStateToProps = () => {
-        const getStateProps = createStructuredSelector({
-            multilineBoxIds: MultilineBoxSelectors.getIds,
-        });
+export const multilineBoxWithDnD =
+    (supplier: ConfigSupplier<IMultilineBoxWithDnDSupplierProps> = {}) =>
+    (Component: typeof MultilineBox): typeof MultilineBox => {
+        const makeMapStateToProps = () => {
+            const getStateProps = createStructuredSelector({
+                multilineBoxIds: MultilineBoxSelectors.getIds,
+            });
 
-        return (state: PlasmaState, ownProps: IMultiSelectOwnProps): IMultilineBoxStateProps =>
-            getStateProps(state, {id: ownProps.id});
-    };
-
-    const mapDispatchToProps = (
-        dispatch: IDispatch,
-        ownProps: IMultilineBoxOwnProps
-    ): IMultilineBoxWithDnDDispatchProps => ({
-        onReorder: (list: string[]) => dispatch(reorderStringList(ownProps.id, list)),
-    });
-
-    @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-    class MultilineBoxWithDnD<T> extends PureComponent<IMultilineBoxWithDnDProps<T>> {
-        static defaultProps = {
-            renderBody: () => <div />,
+            return (state: PlasmaState, ownProps: IMultiSelectOwnProps): IMultilineBoxStateProps =>
+                getStateProps(state, {id: ownProps.id});
         };
 
-        private getDnDWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-            const supplierProps: IMultilineBoxWithDnDSupplierProps = {
-                ...{
-                    DnDContainerProps: {},
-                },
-                ...HocUtils.supplyConfig(supplier),
+        const mapDispatchToProps = (
+            dispatch: IDispatch,
+            ownProps: IMultilineBoxOwnProps
+        ): IMultilineBoxWithDnDDispatchProps => ({
+            onReorder: (list: string[]) => dispatch(reorderStringList(ownProps.id, list)),
+        });
+
+        @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
+        class MultilineBoxWithDnD<T> extends PureComponent<IMultilineBoxWithDnDProps<T>> {
+            static defaultProps = {
+                renderBody: () => <div />,
             };
-            return Children.map(children, (child: ReactNode, index: number) => {
-                const isLast = index === data.length - 1;
-                const id: string = (data.length && data[index].id) || index.toString();
+
+            private getDnDWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
+                const supplierProps: IMultilineBoxWithDnDSupplierProps = {
+                    ...{
+                        DnDContainerProps: {},
+                    },
+                    ...HocUtils.supplyConfig(supplier),
+                };
+                return Children.map(children, (child: ReactNode, index: number) => {
+                    const isLast = index === data.length - 1;
+                    const id: string = (data.length && data[index].id) || index.toString();
+                    return (
+                        <DnDContainer
+                            id={id}
+                            parentId={this.props.id}
+                            key={`${id}DnD`}
+                            onMoveOver={(draggedId: string) => {
+                                // Triggered when another box is dragged over the current box
+                                const newOrder = DnDUtils.reorder(draggedId, id, this.props.multilineBoxIds);
+                                this.props.onReorder(newOrder);
+                            }}
+                            isDraggable={!isLast}
+                            {...supplierProps.DnDContainerProps}
+                        >
+                            {child}
+                        </DnDContainer>
+                    );
+                });
+            }
+
+            render() {
                 return (
-                    <DnDContainer
-                        id={id}
-                        parentId={this.props.id}
-                        key={`${id}DnD`}
-                        onMoveOver={(draggedId: string) => {
-                            // Triggered when another box is dragged over the current box
-                            const newOrder = DnDUtils.reorder(draggedId, id, this.props.multilineBoxIds);
-                            this.props.onReorder(newOrder);
-                        }}
-                        isDraggable={!isLast}
-                        {...supplierProps.DnDContainerProps}
-                    >
-                        {child}
-                    </DnDContainer>
+                    <DndProvider backend={HTML5Backend}>
+                        <Component
+                            {...this.props}
+                            renderBody={(
+                                boxProps: Array<IMultilineSingleBoxProps<T>>,
+                                parentProps: IMultilineParentProps
+                            ) => this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
+                        />
+                    </DndProvider>
                 );
-            });
+            }
         }
 
-        render() {
-            return (
-                <DndProvider backend={HTML5Backend}>
-                    <Component
-                        {...this.props}
-                        renderBody={(
-                            boxProps: Array<IMultilineSingleBoxProps<T>>,
-                            parentProps: IMultilineParentProps
-                        ) => this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
-                    />
-                </DndProvider>
-            );
-        }
-    }
-
-    return (MultilineBoxWithDnD as unknown) as typeof MultilineBox;
-};
+        return MultilineBoxWithDnD as unknown as typeof MultilineBox;
+    };

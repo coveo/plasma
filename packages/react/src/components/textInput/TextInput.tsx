@@ -56,7 +56,7 @@ interface TextInputProps {
  * @deprecated Use Mantine Textinput instead: https://mantine.dev/core/text-input/
  */
 export const TextInput: FunctionComponent<
-    TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>
+    React.PropsWithChildren<TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>>
 > = ({
     id: propsId,
     label,

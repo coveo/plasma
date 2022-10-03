@@ -9,6 +9,7 @@ import {
     Children,
     cloneElement,
     PureComponent,
+    ReactNode,
 } from 'react';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -68,6 +69,7 @@ export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
      * Additional CSS classes to set on the toggle button
      */
     toggleClasses?: string;
+    children?: ReactNode;
 }
 
 const listBoxProps = [

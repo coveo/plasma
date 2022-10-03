@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ComponentType, FunctionComponent, useEffect} from 'react';
+import {ComponentType, FunctionComponent, PropsWithChildren, useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -50,7 +50,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
         };
     };
 
-    const WrappedComponent: FunctionComponent<Props> = (props) => {
+    const WrappedComponent: FunctionComponent<PropsWithChildren<Props>> = (props) => {
         const {onUpdate, predicate} = props;
         useEffect(() => {
             onUpdate?.();

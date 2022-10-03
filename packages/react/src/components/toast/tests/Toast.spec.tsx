@@ -141,7 +141,7 @@ describe('Toasts', () => {
         render(<Toast title="hello world!" onClose={onCloseSpy} />);
 
         expect(screen.getByText(/hello world!/i)).toBeInTheDocument();
-        userEvent.click(await screen.findByRole('button', {name: /cross/i}));
+        await userEvent.click(await screen.findByRole('button', {name: /cross/i}));
         expect(screen.queryByText(/hello world!/i)).not.toBeInTheDocument();
         expect(onCloseSpy).toHaveBeenCalledTimes(1);
     });
@@ -219,11 +219,12 @@ describe('Toasts', () => {
         });
 
         it('should not dismiss the toast if the dismiss is set to 0', async () => {
+            const user = userEvent.setup({delay: null});
             const newToastAttributes = _.extend({}, toastBasicAttributes, {dismiss: 0});
 
             render(<Toast {...newToastAttributes} />);
 
-            userEvent.hover(screen.queryByText('some title'));
+            await user.hover(screen.queryByText('some title'));
 
             await waitFor(
                 () => {

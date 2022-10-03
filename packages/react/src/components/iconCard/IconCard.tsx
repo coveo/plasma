@@ -1,6 +1,14 @@
 import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {Children, FunctionComponent, HTMLAttributes, MouseEventHandler, ReactNode, useState} from 'react';
+import {
+    Children,
+    FunctionComponent,
+    HTMLAttributes,
+    MouseEventHandler,
+    PropsWithChildren,
+    ReactNode,
+    useState,
+} from 'react';
 import {slugify} from 'underscore.string';
 
 import {SlideY} from '../../animations';
@@ -77,7 +85,7 @@ export interface IconCardProps {
 /**
  * @deprecated Use Mantine Card instead: https://mantine.dev/core/card/
  */
-export const IconCard: FunctionComponent<HTMLAttributes<HTMLDivElement> & IconCardProps> = ({
+export const IconCard: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLDivElement> & IconCardProps>> = ({
     title,
     badges = [],
     description,

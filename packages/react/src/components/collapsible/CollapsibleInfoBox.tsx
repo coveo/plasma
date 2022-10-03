@@ -1,6 +1,6 @@
 import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {FC, ReactNode} from 'react';
+import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 
 import {CollapsibleConnected} from './CollapsibleConnected';
 
@@ -17,7 +17,7 @@ export interface CollapsibleInfoBoxProps {
 /**
  * @deprecated Use Mantine Accordion instead: https://mantine.dev/core/accordion/
  */
-export const CollapsibleInfoBox: FC<CollapsibleInfoBoxProps> = ({
+export const CollapsibleInfoBox: FunctionComponent<PropsWithChildren<CollapsibleInfoBoxProps>> = ({
     id,
     title,
     expandedOnMount,

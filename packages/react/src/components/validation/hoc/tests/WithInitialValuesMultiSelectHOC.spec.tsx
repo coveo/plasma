@@ -9,9 +9,9 @@ import {
 } from '../WithInitialValuesMultiSelectHOC';
 
 const MultiSelectWithInitialValues = withInitialValuesMultiSelectHOC(MultiSelectConnected);
-const MultiSelectWithInitialValuesAndWarnings: FC<IMultiSelectOwnProps & IMultiSelectWithInitialValuesOwnProps> = (
-    props
-) => (
+const MultiSelectWithInitialValuesAndWarnings: FC<
+    React.PropsWithChildren<IMultiSelectOwnProps & IMultiSelectWithInitialValuesOwnProps>
+> = (props) => (
     <>
         <WarningList id={props.id} />
         <MultiSelectWithInitialValues {...props} />

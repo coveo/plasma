@@ -1,6 +1,6 @@
 import {UndoSize32Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {FunctionComponent, ReactNode} from 'react';
+import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 
 export interface BrowserPreviewEmptyProps {
     onClick?: () => void;
@@ -10,7 +10,11 @@ export interface BrowserPreviewEmptyProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const BrowserPreviewEmpty: FunctionComponent<BrowserPreviewEmptyProps> = ({image, onClick, children}) => (
+export const BrowserPreviewEmpty: FunctionComponent<PropsWithChildren<BrowserPreviewEmptyProps>> = ({
+    image,
+    onClick,
+    children,
+}) => (
     <div
         onClick={onClick}
         className={classNames('browser-preview__state flex flex-column flex-auto center-align', {

@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import {FunctionComponent, useContext} from 'react';
+import {FunctionComponent, PropsWithChildren, useContext} from 'react';
 
 import {XYChartContext, XYPoint, XYSerie} from './XYChart';
 
@@ -10,7 +10,7 @@ export interface LineSeriesProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const LineSeries: FunctionComponent<LineSeriesProps> = ({strokeWith = 2, children}) => {
+export const LineSeries: FunctionComponent<PropsWithChildren<LineSeriesProps>> = ({strokeWith = 2, children}) => {
     const {series, xScale, yScale, color, colorPattern} = useContext(XYChartContext);
 
     const line = d3

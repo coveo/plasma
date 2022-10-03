@@ -142,11 +142,11 @@ describe('Drop', () => {
                     </Drop>
                 );
 
-                userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
+                await userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
 
                 await waitFor(() => expect(screen.getByRole('button', {name: 'children button'})).toBeVisible());
 
-                userEvent.click(screen.getByRole('button', {name: 'children button'}));
+                await userEvent.click(screen.getByRole('button', {name: 'children button'}));
 
                 expect(screen.queryByRole('button', {name: 'children button'})).not.toBeInTheDocument();
             });
@@ -162,11 +162,11 @@ describe('Drop', () => {
                     </Drop>
                 );
 
-                userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
+                await userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
 
                 await waitFor(() => expect(screen.getByRole('button', {name: 'children button'})).toBeVisible());
 
-                userEvent.click(screen.getByRole('button', {name: 'children button'}));
+                await userEvent.click(screen.getByRole('button', {name: 'children button'}));
 
                 expect(screen.getByRole('button', {name: 'children button'})).toBeVisible();
             });

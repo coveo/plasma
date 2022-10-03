@@ -21,15 +21,9 @@ type DragItem = Pick<ISelectedOptionProps, 'value'>;
 /**
  * @deprecated use Mantine instead
  */
-export const DraggableSelectedOption: FunctionComponent<IDraggableSelectedOptionOwnProps & ISelectedOptionProps> = ({
-    label,
-    selectedTooltip,
-    readOnly,
-    value,
-    parentId,
-    onMoveOver,
-    onRemoveClick,
-}) => {
+export const DraggableSelectedOption: FunctionComponent<
+    React.PropsWithChildren<IDraggableSelectedOptionOwnProps & ISelectedOptionProps>
+> = ({label, selectedTooltip, readOnly, value, parentId, onMoveOver, onRemoveClick}) => {
     const DraggableItemType = `MULTI_SELECT_OPTION_${parentId}`;
     const dropRef = useRef<HTMLDivElement>();
     const [, drop] = useDrop(() => ({

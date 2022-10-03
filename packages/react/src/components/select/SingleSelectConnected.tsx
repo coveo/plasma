@@ -98,39 +98,40 @@ export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
     }, [selectedOption]);
 
     const Toggle: FunctionComponent<ISelectButtonProps> = useMemo(
-        () => ({onClick, onKeyDown, onKeyUp, selectedOptions, isOpen}) => {
-            const option = selectedOptions[0];
-            const showClear = !!option && props.canClear && !props.disabled;
-            const buttonClasses = classNames('btn dropdown-toggle', props.toggleClasses, {
-                'dropdown-toggle-placeholder': !option,
-                'single-select-fixed-width': !props.noFixedWidth,
-                'mod-append': showClear,
-            });
+        () =>
+            ({onClick, onKeyDown, onKeyUp, selectedOptions, isOpen}) => {
+                const option = selectedOptions[0];
+                const showClear = !!option && props.canClear && !props.disabled;
+                const buttonClasses = classNames('btn dropdown-toggle', props.toggleClasses, {
+                    'dropdown-toggle-placeholder': !option,
+                    'single-select-fixed-width': !props.noFixedWidth,
+                    'mod-append': showClear,
+                });
 
-            return (
-                <button
-                    className={buttonClasses}
-                    type="button"
-                    onClick={onClick}
-                    onKeyDown={onKeyDown}
-                    onKeyUp={onKeyUp}
-                    disabled={props.disabled}
-                >
-                    {props.buttonPrepend}
-                    {option?.prepend ? <Content {...option.prepend} /> : null}
-                    <SelectedOption option={option} placeholder={placeholder} />
-                    {option?.append ? <Content {...option.append} /> : null}
-                    <CollapsibleToggle expanded={isOpen} />
-                    {showClear && (
-                        <Tooltip title={deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
-                            <button onClick={handleDeselect} className="btn-append cursor-pointer">
-                                <CrossSize16Px height={16} />
-                            </button>
-                        </Tooltip>
-                    )}
-                </button>
-            );
-        },
+                return (
+                    <button
+                        className={buttonClasses}
+                        type="button"
+                        onClick={onClick}
+                        onKeyDown={onKeyDown}
+                        onKeyUp={onKeyUp}
+                        disabled={props.disabled}
+                    >
+                        {props.buttonPrepend}
+                        {option?.prepend ? <Content {...option.prepend} /> : null}
+                        <SelectedOption option={option} placeholder={placeholder} />
+                        {option?.append ? <Content {...option.append} /> : null}
+                        <CollapsibleToggle expanded={isOpen} />
+                        {showClear && (
+                            <Tooltip title={deselectTooltipText} placement={TooltipPlacement.Top} noSpanWrapper>
+                                <button onClick={handleDeselect} className="btn-append cursor-pointer">
+                                    <CrossSize16Px height={16} />
+                                </button>
+                            </Tooltip>
+                        )}
+                    </button>
+                );
+            },
         [props.canClear, props.disabled, props.toggleClasses, props.noFixedWidth, props.buttonPrepend]
     );
 

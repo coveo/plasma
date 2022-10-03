@@ -30,64 +30,70 @@ const defaultMatchFilter = (filter: string, datum: any) =>
 /**
  * @deprecated Use Mantine instead
  */
-export const tableWithFilter = (
-    supplier: ConfigSupplier<ITableWithFilterConfig> = {blankSlate: {title: 'No results'}, filter: {isAutoFocus: true}}
-) => (WrappedTable: typeof TableHOC) => {
-    type OwnProps = ITableHOCOwnProps & TableWithFilterProps & WithServerSideProcessingProps;
-    type Props = OwnProps & ReturnType<typeof mapStateToProps>;
+export const tableWithFilter =
+    (
+        supplier: ConfigSupplier<ITableWithFilterConfig> = {
+            blankSlate: {title: 'No results'},
+            filter: {isAutoFocus: true},
+        }
+    ) =>
+    (WrappedTable: typeof TableHOC) => {
+        type OwnProps = ITableHOCOwnProps & TableWithFilterProps & WithServerSideProcessingProps;
+        type Props = OwnProps & ReturnType<typeof mapStateToProps>;
 
-    const config = HocUtils.supplyConfig(supplier);
+        const config = HocUtils.supplyConfig(supplier);
 
-    const mapStateToProps = (state: PlasmaState, ownProps: OwnProps) => {
-        const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
-        const matchFilter = ownProps.filterMatcher || config.matchFilter || defaultMatchFilter;
-        const filterData = () =>
-            filterText ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum)) : ownProps.data;
-        const urlParams = UrlUtils.getSearchParams();
-        return {
-            filter: filterText,
-            urlFilter: urlParams[Params.filter],
-            data: ownProps.isServer || config.isServer ? ownProps.data : ownProps.data && filterData(),
+        const mapStateToProps = (state: PlasmaState, ownProps: OwnProps) => {
+            const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
+            const matchFilter = ownProps.filterMatcher || config.matchFilter || defaultMatchFilter;
+            const filterData = () =>
+                filterText ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum)) : ownProps.data;
+            const urlParams = UrlUtils.getSearchParams();
+            return {
+                filter: filterText,
+                urlFilter: urlParams[Params.filter],
+                data: ownProps.isServer || config.isServer ? ownProps.data : ownProps.data && filterData(),
+            };
         };
-    };
 
-    class TableWithFilter extends Component<Props> {
-        componentDidUpdate(prevProps: Props) {
-            if (prevProps.filter !== this.props.filter && this.props.filter !== this.props.urlFilter) {
-                this.props.onUpdate?.();
+        class TableWithFilter extends Component<Props> {
+            componentDidUpdate(prevProps: Props) {
+                if (prevProps.filter !== this.props.filter && this.props.filter !== this.props.urlFilter) {
+                    this.props.onUpdate?.();
+                }
+            }
+
+            render() {
+                const {filterBlankslate, filterMatcher, filterPlaceholder, filter, urlFilter, ...tableProps} =
+                    this.props;
+                const blankSlateProps = filterBlankslate || config.blankSlate;
+                const shouldShowBlankslate =
+                    _.isEmpty(this.props.data) && !_.isEmpty(filter) && !_.isEmpty(blankSlateProps);
+                const filterAction = (
+                    <FilterBoxConnected
+                        key="FilterBox"
+                        id={this.props.id}
+                        className="coveo-table-actions"
+                        filterPlaceholder={filterPlaceholder || config.placeholder}
+                        isAutoFocus={config.filter?.isAutoFocus ?? true}
+                    />
+                );
+
+                return (
+                    <WrappedTable
+                        {...tableProps}
+                        actions={[...(this.props.actions ?? []), filterAction]}
+                        renderBody={
+                            shouldShowBlankslate
+                                ? () => <BlankSlateWithTable {...blankSlateProps} />
+                                : this.props.renderBody
+                        }
+                    >
+                        {this.props.children}
+                    </WrappedTable>
+                );
             }
         }
 
-        render() {
-            const {filterBlankslate, filterMatcher, filterPlaceholder, filter, urlFilter, ...tableProps} = this.props;
-            const blankSlateProps = filterBlankslate || config.blankSlate;
-            const shouldShowBlankslate =
-                _.isEmpty(this.props.data) && !_.isEmpty(filter) && !_.isEmpty(blankSlateProps);
-            const filterAction = (
-                <FilterBoxConnected
-                    key="FilterBox"
-                    id={this.props.id}
-                    className="coveo-table-actions"
-                    filterPlaceholder={filterPlaceholder || config.placeholder}
-                    isAutoFocus={config.filter?.isAutoFocus ?? true}
-                />
-            );
-
-            return (
-                <WrappedTable
-                    {...tableProps}
-                    actions={[...(this.props.actions ?? []), filterAction]}
-                    renderBody={
-                        shouldShowBlankslate
-                            ? () => <BlankSlateWithTable {...blankSlateProps} />
-                            : this.props.renderBody
-                    }
-                >
-                    {this.props.children}
-                </WrappedTable>
-            );
-        }
-    }
-
-    return connect<ReturnType<typeof mapStateToProps>, null, OwnProps>(mapStateToProps)(TableWithFilter as any);
-};
+        return connect<ReturnType<typeof mapStateToProps>, null, OwnProps>(mapStateToProps)(TableWithFilter as any);
+    };

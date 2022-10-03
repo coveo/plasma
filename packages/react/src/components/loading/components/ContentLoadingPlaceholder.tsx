@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 
 export interface IContentLoadingPlaceholder {
     className?: string;
@@ -8,7 +8,7 @@ export interface IContentLoadingPlaceholder {
 /**
  * @deprecated Use Mantine instead
  */
-export const ContentLoadingPlaceholder: FunctionComponent<IContentLoadingPlaceholder> = ({
+export const ContentLoadingPlaceholder: FunctionComponent<PropsWithChildren<IContentLoadingPlaceholder>> = ({
     className = '',
     children,
 }) => <div className={classNames('text-content-placeholder', className)}>{children}</div>;

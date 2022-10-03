@@ -66,7 +66,7 @@ export interface JSONEditorDispatchProps {
  * @deprecated use Mantine instead
  */
 export const JSONEditor: FunctionComponent<
-    JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>
+    React.PropsWithChildren<JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>>
 > = ({
     defaultValue,
     value,

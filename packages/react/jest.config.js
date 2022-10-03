@@ -9,7 +9,7 @@ module.exports = {
     setupFiles: ['<rootDir>/jest/setup.ts'],
     setupFilesAfterEnv: ['<rootDir>/jest/entry.tsx'],
     extensionsToTreatAsEsm: ['.ts', '.tsx'],
-    testEnvironment: 'jsdom',
+    testEnvironment: '<rootDir>/jest/preSetup.ts', // custom environement
     reporters: ['default'],
     transform: {
         '^.+\\.(t|j)sx?$': [
