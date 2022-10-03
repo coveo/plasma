@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {RefObject, createRef, Children, Component} from 'react';
+import {RefObject, createRef, Children, Component, ReactNode} from 'react';
 import {findDOMNode} from 'react-dom';
 import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
@@ -51,6 +51,7 @@ export interface IPopoverProps extends IPopoverDispatchProps, ITetherComponentCo
      * @default: false
      */
     isModal?: boolean;
+    children?: ReactNode;
 }
 
 export interface IPopoverState {

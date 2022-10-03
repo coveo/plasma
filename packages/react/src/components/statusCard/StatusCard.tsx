@@ -1,6 +1,6 @@
 import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 
 import {Loading} from '../loading/Loading';
 
@@ -10,6 +10,7 @@ export interface StatusCardProps {
     icon?: Icon;
     simple?: boolean;
     loading?: boolean;
+    children?: ReactNode;
 }
 
 /**

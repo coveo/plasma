@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent, FormEvent, FormHTMLAttributes} from 'react';
+import {FunctionComponent, FormEvent, PropsWithChildren, FormHTMLAttributes} from 'react';
 
 type FormMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
@@ -13,7 +13,14 @@ export interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
 /**
  * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/
  */
-export const Form: FunctionComponent<IFormProps> = ({children, className, title, mods, noMargin, ...props}) => {
+export const Form: FunctionComponent<PropsWithChildren<IFormProps>> = ({
+    children,
+    className,
+    title,
+    mods,
+    noMargin,
+    ...props
+}) => {
     const onSubmit = (submitEvent: FormEvent) => {
         submitEvent.preventDefault();
     };

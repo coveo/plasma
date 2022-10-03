@@ -169,7 +169,7 @@ describe('Select', () => {
 
             expect(screen.queryByRole('button', {name: /select one/})).not.toBeInTheDocument();
 
-            userEvent.click(await screen.findByRole('img', {name: /cross/}));
+            await userEvent.click(await screen.findByRole('img', {name: /cross/}));
 
             expect(screen.getByRole('button', {name: /select one/})).toBeInTheDocument();
         });
@@ -192,7 +192,7 @@ describe('Select', () => {
             expect(screen.queryByRole('button', {name: /Another selected value bites the dust/})).toBeVisible();
         });
 
-        it('should call with the selected option the onSelectOptionCallback prop when defined', () => {
+        it('should call with the selected option the onSelectOptionCallback prop when defined', async () => {
             const onSelectOptionCallbackSpy = jest.fn();
 
             render(
@@ -203,9 +203,9 @@ describe('Select', () => {
                 />
             );
 
-            userEvent.click(screen.getByRole('button'));
+            await userEvent.click(screen.getByRole('button'));
 
-            userEvent.click(screen.getByText('to select value'));
+            await userEvent.click(screen.getByText('to select value'));
 
             expect(onSelectOptionCallbackSpy).toHaveBeenCalledTimes(1);
             expect(onSelectOptionCallbackSpy).toHaveBeenCalledWith('b');
@@ -244,13 +244,13 @@ describe('Select', () => {
             });
         });
         describe('footer props', () => {
-            it('displays the footer when the dropdown is opened', () => {
+            it('displays the footer when the dropdown is opened', async () => {
                 const footer: ReactElement = <span id="some-footer">👢</span>;
                 render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} footer={footer} />);
 
                 expect(screen.queryByText('👢')).not.toBeVisible();
 
-                userEvent.click(screen.getByRole('button'));
+                await userEvent.click(screen.getByRole('button'));
 
                 expect(screen.getByText('👢')).toBeVisible();
             });

@@ -24,9 +24,11 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IButtonWithRefreshCal
 const isNotStopped = (status: string) => status !== RefreshStatus.stopped;
 
 const buttonWithRefreshCallbackDisconnected: FunctionComponent<
-    IButtonWithRefreshCallbackProps &
-        Partial<ReturnType<typeof mapStateToProps>> &
-        Partial<ReturnType<typeof mapDispatchToProps>>
+    React.PropsWithChildren<
+        IButtonWithRefreshCallbackProps &
+            Partial<ReturnType<typeof mapStateToProps>> &
+            Partial<ReturnType<typeof mapDispatchToProps>>
+    >
 > = ({button, buttonContainerProps, status, start, stop, ...refreshCallbackProps}) => (
     <>
         <div {...(buttonContainerProps || {})}>

@@ -53,28 +53,28 @@ describe('IconCard', () => {
     it('displays the specified tooltip when hovering over the card', async () => {
         render(<IconCard title="Title" icon={icon} tooltip={{title: 'the tooltip'}} />);
 
-        userEvent.hover(screen.getByRole('button', {name: /title/i}));
+        await userEvent.hover(screen.getByRole('button', {name: /title/i}));
 
         expect(await screen.findByText('the tooltip')).toBeVisible();
     });
 
-    it('calls the "onClick" prop when clicking on the card', () => {
+    it('calls the "onClick" prop when clicking on the card', async () => {
         const mockOnClick = jest.fn();
         render(<IconCard title="Title" icon={icon} onClick={mockOnClick} />);
 
         const card = screen.getByRole('button', {name: /title/i});
-        userEvent.click(card);
+        await userEvent.click(card);
 
         expect(card).toHaveClass('cursor-pointer');
         expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
 
-    it('does not call the "onClick" prop when clicking on the card if it is disabled', () => {
+    it('does not call the "onClick" prop when clicking on the card if it is disabled', async () => {
         const mockOnClick = jest.fn();
         render(<IconCard title="Title" icon={icon} onClick={mockOnClick} disabled />);
 
         const card = screen.getByRole('button', {name: /title/i});
-        userEvent.click(card);
+        await userEvent.click(card);
 
         expect(card).not.toHaveClass('cursor-pointer');
         expect(mockOnClick).not.toHaveBeenCalled();
@@ -86,7 +86,7 @@ describe('IconCard', () => {
         expect(screen.getByRole('button', {name: /title/i})).not.toHaveClass('cursor-pointer');
     });
 
-    it('does not have a pointer cursor if the drawer is opened', () => {
+    it('does not have a pointer cursor if the drawer is opened', async () => {
         render(
             <IconCard
                 title="Title"
@@ -101,11 +101,11 @@ describe('IconCard', () => {
 
         const card = screen.getByRole('button', {name: /title/i});
         expect(card).toHaveClass('cursor-pointer');
-        userEvent.click(card);
+        await userEvent.click(card);
         expect(card).not.toHaveClass('cursor-pointer');
     });
 
-    it('expands the drawer when clicking on it', () => {
+    it('expands the drawer when clicking on it', async () => {
         render(
             <IconCard
                 title="Title"
@@ -119,7 +119,7 @@ describe('IconCard', () => {
 
         const card = screen.getByRole('button', {name: /title/i});
         expect(card).toHaveAttribute('aria-expanded', 'false');
-        userEvent.click(card);
+        await userEvent.click(card);
         expect(card).toHaveAttribute('aria-expanded', 'true');
     });
 
@@ -136,13 +136,13 @@ describe('IconCard', () => {
         );
 
         const card = screen.getByRole('button', {name: /title/i});
-        userEvent.click(card);
+        await userEvent.click(card);
 
         expect(await screen.findByRole('img', {name: /add/i})).toBeVisible();
         expect(await screen.findByRole('img', {name: /remove/i})).toBeVisible();
     });
 
-    it('collapses the drawer when the mouse leaves the icon card', () => {
+    it('collapses the drawer when the mouse leaves the icon card', async () => {
         const {container} = render(
             <IconCard
                 title="Title"
@@ -155,13 +155,13 @@ describe('IconCard', () => {
         );
 
         const card = screen.getByRole('button', {name: /title/i});
-        userEvent.click(card);
+        await userEvent.click(card);
         expect(card).toHaveAttribute('aria-expanded', 'true');
         fireEvent.mouseLeave(container.querySelector('.icon-card'));
         expect(card).toHaveAttribute('aria-expanded', 'false');
     });
 
-    it('renders all the specified choices in a drawer', () => {
+    it('renders all the specified choices in a drawer', async () => {
         render(
             <IconCard
                 title="Title"
@@ -174,7 +174,7 @@ describe('IconCard', () => {
         );
 
         // Open the drawer
-        userEvent.click(screen.getByRole('button', {name: /title/i}));
+        await userEvent.click(screen.getByRole('button', {name: /title/i}));
 
         const drawer = screen.getByRole('list');
         expect(drawer).toBeInTheDocument();
@@ -183,7 +183,7 @@ describe('IconCard', () => {
         expect(within(drawer).getByRole('button', {name: '🍎'})).toBeInTheDocument();
     });
 
-    it('calls the onClick prop with the choice value when clicking on one of them', () => {
+    it('calls the onClick prop with the choice value when clicking on one of them', async () => {
         const mockOnClick = jest.fn();
         render(
             <IconCard
@@ -197,14 +197,14 @@ describe('IconCard', () => {
             />
         );
         // Open the drawer
-        userEvent.click(screen.getByRole('button', {name: /title/i}));
+        await userEvent.click(screen.getByRole('button', {name: /title/i}));
 
-        userEvent.click(screen.getByRole('button', {name: '🍌'}));
+        await userEvent.click(screen.getByRole('button', {name: '🍌'}));
         expect(mockOnClick).toHaveBeenCalledTimes(1);
         expect(mockOnClick).toHaveBeenCalledWith('banana');
     });
 
-    it('renders disabled buttons for disabled choices', () => {
+    it('renders disabled buttons for disabled choices', async () => {
         const mockOnClick = jest.fn();
         render(
             <IconCard
@@ -219,13 +219,13 @@ describe('IconCard', () => {
         );
 
         // Open the drawer
-        userEvent.click(screen.getByRole('button', {name: /title/i}));
+        await userEvent.click(screen.getByRole('button', {name: /title/i}));
 
         const button = screen.queryByRole('button', {name: '🍌'});
         expect(button).toBeInTheDocument();
         expect(button).toBeDisabled();
 
-        userEvent.click(button);
+        await userEvent.click(button);
 
         expect(mockOnClick).not.toHaveBeenCalled();
     });

@@ -20,6 +20,7 @@ export interface IWithPreventNavigationInjectedProps extends IWithDirtyProps {
 
 export interface IWithPreventNavigationDispatchProps {
     closeModal: (id: string) => void;
+    children?: ReactNode;
 }
 
 export interface IWithPreventNavigationState {
@@ -36,64 +37,66 @@ export const preventNavigationDefaultConfig: Partial<IWithPreventNavigationConfi
 /**
  * @deprecated Use Mantine instead
  */
-export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavigationConfig) => (
-    Component: ComponentClass<T, R>
-): ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
-    const mapDispatchToProps = (
-        dispatch: (action: IReduxAction<IModalActionPayload>) => void
-    ): IWithPreventNavigationDispatchProps => ({
-        closeModal: (id: string) => dispatch(closeModal(id)),
-    });
+export const modalWithPreventNavigation =
+    <T, R = any>(config: IWithPreventNavigationConfig) =>
+    (Component: ComponentClass<T, R>): ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
+        const mapDispatchToProps = (
+            dispatch: (action: IReduxAction<IModalActionPayload>) => void
+        ): IWithPreventNavigationDispatchProps => ({
+            closeModal: (id: string) => dispatch(closeModal(id)),
+        });
 
-    @ReduxConnect(undefined, mapDispatchToProps)
-    class ModalWithPreventNavigation extends PureComponent<
-        IWithPreventNavigationDispatchProps,
-        IWithPreventNavigationState
-    > {
-        private ComponentWithDirty: ComponentClass<IWithDirtyProps & T & Partial<IWithPreventNavigationInjectedProps>>;
+        @ReduxConnect(undefined, mapDispatchToProps)
+        class ModalWithPreventNavigation extends PureComponent<
+            IWithPreventNavigationDispatchProps,
+            IWithPreventNavigationState
+        > {
+            private ComponentWithDirty: ComponentClass<
+                IWithDirtyProps & T & Partial<IWithPreventNavigationInjectedProps>
+            >;
 
-        constructor(props: IWithPreventNavigationDispatchProps) {
-            super(props);
-            this.state = {
-                showPrevent: false,
-            };
+            constructor(props: IWithPreventNavigationDispatchProps) {
+                super(props);
+                this.state = {
+                    showPrevent: false,
+                };
 
-            const {title, content, exit, stay} = _.defaults(config, preventNavigationDefaultConfig);
-            this.ComponentWithDirty = withDirty<T & Partial<IWithPreventNavigationInjectedProps>>({
-                id: config.id,
-                showDirty: (isDirty: boolean) =>
-                    isDirty && (
-                        <PreventNavigationPrompt
-                            id={`prevent-navigation-${config.id}`}
-                            isOpen={this.state.showPrevent}
-                            title={title}
-                            onStay={() => this.setState({showPrevent: false})}
-                            onClose={() => {
-                                this.setState({showPrevent: false});
-                                this.props.closeModal(config.id);
-                            }}
-                            exit={exit}
-                            stay={stay}
-                            content={content}
-                        />
-                    ),
-            })(Component as any);
+                const {title, content, exit, stay} = _.defaults(config, preventNavigationDefaultConfig);
+                this.ComponentWithDirty = withDirty<T & Partial<IWithPreventNavigationInjectedProps>>({
+                    id: config.id,
+                    showDirty: (isDirty: boolean) =>
+                        isDirty && (
+                            <PreventNavigationPrompt
+                                id={`prevent-navigation-${config.id}`}
+                                isOpen={this.state.showPrevent}
+                                title={title}
+                                onStay={() => this.setState({showPrevent: false})}
+                                onClose={() => {
+                                    this.setState({showPrevent: false});
+                                    this.props.closeModal(config.id);
+                                }}
+                                exit={exit}
+                                stay={stay}
+                                content={content}
+                            />
+                        ),
+                })(Component as any);
+            }
+
+            render() {
+                const newProps = {
+                    ..._.omit(this.props, 'closeModal'),
+                    validateShouldNavigate: (isDirty: boolean) => {
+                        if (isDirty) {
+                            this.setState({showPrevent: true});
+                            return false;
+                        }
+                        return true;
+                    },
+                };
+                return <this.ComponentWithDirty {...newProps}>{this.props.children}</this.ComponentWithDirty>;
+            }
         }
 
-        render() {
-            const newProps = {
-                ..._.omit(this.props, 'closeModal'),
-                validateShouldNavigate: (isDirty: boolean) => {
-                    if (isDirty) {
-                        this.setState({showPrevent: true});
-                        return false;
-                    }
-                    return true;
-                },
-            };
-            return <this.ComponentWithDirty {...newProps}>{this.props.children}</this.ComponentWithDirty>;
-        }
-    }
-
-    return ModalWithPreventNavigation as any;
-};
+        return ModalWithPreventNavigation as any;
+    };

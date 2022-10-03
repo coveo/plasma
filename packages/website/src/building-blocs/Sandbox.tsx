@@ -19,12 +19,9 @@ const formatCode = (code: string) =>
         parser: 'typescript',
     });
 
-export const Sandbox: FunctionComponent<{children: string; id: string; title?: string; horizontal?: boolean}> = ({
-    id,
-    title,
-    children,
-    horizontal,
-}) => {
+export const Sandbox: FunctionComponent<
+    React.PropsWithChildren<{children: string; id: string; title?: string; horizontal?: boolean}>
+> = ({id, title, children, horizontal}) => {
     const formattedCode = formatCode(children as string);
     const [editedCode, setEditedCode] = useState(formattedCode);
     const [initialized, setInitialized] = useState(false);
@@ -125,11 +122,9 @@ export const Sandbox: FunctionComponent<{children: string; id: string; title?: s
 const EDITOR_MAX_HEIGHT_IN_PX = 600;
 const EDITOR_MIN_HEIGHT_IN_PX = 150;
 
-const Editor: FunctionComponent<{id: string; value: string; onChange: (newValue: string) => void}> = ({
-    id,
-    value,
-    onChange,
-}) => {
+const Editor: FunctionComponent<
+    React.PropsWithChildren<{id: string; value: string; onChange: (newValue: string) => void}>
+> = ({id, value, onChange}) => {
     const editorRef = useRef(null);
     const [height, setHeight] = useState<number>(200);
 

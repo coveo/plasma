@@ -12,6 +12,7 @@ export interface ISelectedOptionProps {
     onRemoveClick?: (value: string) => void;
     readOnly?: boolean;
     prepend?: ReactNode;
+    children?: ReactNode;
 }
 
 export class SelectedOption extends PureComponent<ISelectedOptionProps> {

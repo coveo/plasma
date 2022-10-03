@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -11,7 +11,7 @@ const code = `
 
 const typekitStyles: Array<{
     name: string;
-    variants: Array<{renderer: FunctionComponent; selectors: string[]}>;
+    variants: Array<{renderer: FunctionComponent<PropsWithChildren<unknown>>; selectors: string[]}>;
 }> = [
     {
         name: 'Code',

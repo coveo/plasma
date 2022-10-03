@@ -1,4 +1,4 @@
-import {HTMLAttributes, ReactNode, FunctionComponent} from 'react';
+import {HTMLAttributes, ReactNode, FunctionComponent, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -12,12 +12,14 @@ export interface TableWithPrependProps extends ITableHOCOwnProps, Omit<HTMLAttri
 /**
  * @deprecated Use Mantine instead
  */
-export const tableWithPrepend = (Component: FunctionComponent<TableWithPrependProps>) => {
+export const tableWithPrepend = (Component: FunctionComponent<PropsWithChildren<TableWithPrependProps>>) => {
     const mapStateToProps = (state: PlasmaState, ownProps: TableWithPrependProps) => ({
         isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
     });
 
-    const TableWithPrepend: FunctionComponent<TableWithPrependProps & ReturnType<typeof mapStateToProps>> = (props) => {
+    const TableWithPrepend: FunctionComponent<
+        React.PropsWithChildren<TableWithPrependProps & ReturnType<typeof mapStateToProps>>
+    > = (props) => {
         const {prepend, isTrulyEmpty, ...tableProps} = props;
         return (
             <>

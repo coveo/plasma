@@ -1,6 +1,6 @@
 import {QuestionSize24Px} from '@coveord/plasma-react-icons';
 import {Anchor, Breadcrumbs, DefaultProps, Divider, Group, Stack, Text, Title, Tooltip} from '@mantine/core';
-import {FunctionComponent, ReactNode} from 'react';
+import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 
 interface HeaderProps extends DefaultProps {
     description?: ReactNode;
@@ -10,7 +10,7 @@ interface HeaderProps extends DefaultProps {
     docLinkTooltipLabel?: string;
 }
 
-export const Header: FunctionComponent<HeaderProps> = ({
+export const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
     description,
     actions,
     borderBottom,

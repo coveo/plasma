@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {IInputProps, Input} from '../input/Input';
 import {Tooltip} from '../tooltip';
@@ -28,7 +28,7 @@ export const RadioCard: FunctionComponent<RadioCardProps> = (props) => {
     );
 };
 
-const RadioCardContent: FunctionComponent<RadioCardProps & {classes: string}> = ({
+const RadioCardContent: FunctionComponent<PropsWithChildren<RadioCardProps & {classes: string}>> = ({
     id,
     name,
     classes,

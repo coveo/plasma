@@ -67,14 +67,12 @@ export const toastsContainerReducer = (
             return _.reject(state, (container: IToastsState) => action.payload.id === container.id);
         case ToastAction.addToast:
         case ToastAction.removeToast:
-            return state.map(
-                (container: IToastsState): IToastsState => {
-                    const toastAction = action as IReduxAction<IToastActionPayload>;
-                    return toastAction.payload.containerId === container.id
-                        ? {...container, toasts: toastsReducer(container.toasts, toastAction)}
-                        : container;
-                }
-            );
+            return state.map((container: IToastsState): IToastsState => {
+                const toastAction = action as IReduxAction<IToastActionPayload>;
+                return toastAction.payload.containerId === container.id
+                    ? {...container, toasts: toastsReducer(container.toasts, toastAction)}
+                    : container;
+            });
         default:
             return state;
     }

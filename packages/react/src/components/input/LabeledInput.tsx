@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent, ReactNode} from 'react';
+import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
@@ -17,7 +17,7 @@ export interface ILabeledInputProps {
 /**
  * @deprecated Use Mantine Input instead: https://mantine.dev/core/input/
  */
-export const LabeledInput: FunctionComponent<ILabeledInputProps> = ({
+export const LabeledInput: FunctionComponent<PropsWithChildren<ILabeledInputProps>> = ({
     children,
     label,
     message,

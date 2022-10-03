@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {IToastProps, Toast} from './Toast';
@@ -11,6 +11,7 @@ export interface IToastContainerOwnProps {
     bottom?: boolean;
     left?: boolean;
     right?: boolean;
+    children?: ReactNode;
 }
 
 export interface IToastContainerStateProps {

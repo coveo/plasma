@@ -184,7 +184,7 @@ describe('Table HOC', () => {
             expect(actions.length).toBe(1);
         });
 
-        it('should filter out elements not matching the predicate in the state', () => {
+        it('should filter out elements not matching the predicate in the state', async () => {
             const predicate = predicateValues[1].value;
             const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, getStateWithPredicate(predicate))
                 .dive()
@@ -196,7 +196,7 @@ describe('Table HOC', () => {
             expect(tableData).toEqual(filteredData);
         });
 
-        it('should show values when opened', () => {
+        it('should show values when opened', async () => {
             render(<TableWithPredicate {...defaultProps} />);
 
             expect(
@@ -211,7 +211,7 @@ describe('Table HOC', () => {
             ).not.toBeInTheDocument();
 
             // Click on the dropdown
-            userEvent.click(screen.getByRole('button'));
+            await userEvent.click(screen.getByRole('button'));
 
             expect(
                 screen.getByRole('option', {
