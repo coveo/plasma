@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent, ReactNode, useRef, useState} from 'react';
+import {FunctionComponent, PropsWithChildren, ReactNode, useRef, useState} from 'react';
 import * as _ from 'underscore';
 
 import {ILinkSvgProps, LinkSvg} from '../linkSvg/LinkSvg';
@@ -17,7 +17,7 @@ export interface ITitleProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const Title: FunctionComponent<React.PropsWithChildren<ITitleProps>> = (props) => {
+export const Title: FunctionComponent<PropsWithChildren<ITitleProps>> = (props) => {
     const ref = useRef<HTMLHeadingElement>();
 
     const [isTruncated, setIsTruncated] = useState(false);

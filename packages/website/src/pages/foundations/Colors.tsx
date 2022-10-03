@@ -8,10 +8,7 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 const isColorGroup = (value: any) => typeof value !== 'string';
 
-const ColorBlock: FunctionComponent<React.PropsWithChildren<{colorName: string; colorValue: string}>> = ({
-    colorName,
-    colorValue,
-}) => (
+const ColorBlock: FunctionComponent<{colorName: string; colorValue: string}> = ({colorName, colorValue}) => (
     <div className="color-box">
         <div className="mb1 overflow-hidden color-sticker card" style={{background: colorValue}} />
         <div className="color-details caption-subdued">
@@ -49,7 +46,7 @@ const primaryFirst = (a: string, b: string) => {
     return 0;
 };
 
-const ColorGroup: FunctionComponent<React.PropsWithChildren<{name: string; value: any}>> = ({name, value}) => {
+const ColorGroup: FunctionComponent<{name: string; value: any}> = ({name, value}) => {
     if (!isColorGroup(value)) {
         return <ColorBlock colorName={name} colorValue={value} />;
     }

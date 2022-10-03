@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
 /**
  * @deprecated Use Mantine instead
  */
-export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: ComponentType<React.PropsWithChildren<T>>) => {
+export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedInput: FunctionComponent<

@@ -19,9 +19,7 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
 /**
  * @deprecated Use Mantine instead
  */
-export const withDirtyCheckboxHOC = <T extends ICheckboxOwnProps & IInputOwnProps>(
-    Component: ComponentType<React.PropsWithChildren<T>>
-) => {
+export const withDirtyCheckboxHOC = <T extends ICheckboxOwnProps & IInputOwnProps>(Component: ComponentType<T>) => {
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedCheckbox: FunctionComponent<
         React.PropsWithChildren<T & IWithDirtyCheckboxOwnProps & DispatchProps>

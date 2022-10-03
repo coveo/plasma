@@ -25,9 +25,7 @@ export type IWithDirtySingleSelectHOCProps = {
 /**
  * @deprecated Use Mantine instead
  */
-export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(
-    Component: ComponentType<React.PropsWithChildren<T>>
-) => {
+export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrapperSingleSelect: FunctionComponent<

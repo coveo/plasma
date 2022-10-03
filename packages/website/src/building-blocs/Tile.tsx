@@ -49,7 +49,7 @@ export interface TileProps {
     sendAnalytics?: () => void;
 }
 
-export const Tile: FunctionComponent<React.PropsWithChildren<TileProps>> = ({
+export const Tile: FunctionComponent<TileProps> = ({
     title,
     description,
     href,

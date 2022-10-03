@@ -174,7 +174,7 @@ export const TextInput: FunctionComponent<
     );
 };
 
-const HelpTooltip: FunctionComponent<React.PropsWithChildren<{message: string}>> = ({message}) => {
+const HelpTooltip: FunctionComponent<{message: string}> = ({message}) => {
     if (!message) {
         return null;
     }
@@ -197,7 +197,7 @@ const statusIconMapping: Record<string, InfoTokenType> = {
     warning: InfoTokenType.Warning,
 };
 
-const ValidationMessage: FunctionComponent<React.PropsWithChildren<{inputId: string}>> = ({inputId}) => {
+const ValidationMessage: FunctionComponent<{inputId: string}> = ({inputId}) => {
     const {state} = useTextInput(inputId);
 
     if (!state.visibleStatus || !state.message || state.status === 'indeterminate') {

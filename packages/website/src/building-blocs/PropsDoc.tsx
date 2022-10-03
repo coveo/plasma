@@ -14,7 +14,7 @@ interface PropInfo {
     params: Array<{parameterName: string; text: string}>;
 }
 
-export const PropsDoc: FunctionComponent<React.PropsWithChildren<{componentName: string}>> = ({componentName}) => {
+export const PropsDoc: FunctionComponent<{componentName: string}> = ({componentName}) => {
     const [propsList, setPropsList] = useState<PropInfo[]>();
     const {env} = useTypescriptServer();
 

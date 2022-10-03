@@ -22,9 +22,7 @@ export type IMultiSelectWithDirtyOwnProps = {
 /**
  * @deprecated Use Mantine instead
  */
-export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(
-    Component: ComponentType<React.PropsWithChildren<T>>
-) => {
+export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedMultiSelect: FunctionComponent<

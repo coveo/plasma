@@ -6,9 +6,7 @@ export interface ITableCollapsibleRowToggleProps {
     isExpanded: boolean;
 }
 
-export const TableCollapsibleRowToggle: FunctionComponent<React.PropsWithChildren<ITableCollapsibleRowToggleProps>> = ({
-    isExpanded,
-}) => (
+export const TableCollapsibleRowToggle: FunctionComponent<ITableCollapsibleRowToggleProps> = ({isExpanded}) => (
     <td>
         <CollapsibleToggle expanded={isExpanded} />
     </td>

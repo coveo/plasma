@@ -1,4 +1,4 @@
-import {ComponentType, FunctionComponent} from 'react';
+import {ComponentType, FunctionComponent, PropsWithChildren} from 'react';
 
 export interface WithServerSideProcessingProps {
     isServer?: boolean;
@@ -8,11 +8,9 @@ export interface WithServerSideProcessingProps {
  * @deprecated Use Mantine instead
  */
 export const withServerSideProcessing = <T extends Record<string, unknown>>(
-    Component: ComponentType<React.PropsWithChildren<T>>
-): ComponentType<React.PropsWithChildren<T & WithServerSideProcessingProps>> => {
-    const WrappedComponent: FunctionComponent<React.PropsWithChildren<T>> = (props) => (
-        <Component {...props} isServer />
-    );
+    Component: ComponentType<PropsWithChildren<T>>
+): ComponentType<PropsWithChildren<T & WithServerSideProcessingProps>> => {
+    const WrappedComponent: FunctionComponent<PropsWithChildren<T>> = (props) => <Component {...props} isServer />;
     WrappedComponent.displayName = `withServerSideProcessing(${Component.displayName})`;
     return WrappedComponent;
 };

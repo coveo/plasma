@@ -18,11 +18,7 @@ interface ResultListProps {
     query: string;
 }
 
-export const ResultList: FunctionComponent<React.PropsWithChildren<ResultListProps>> = ({
-    controller,
-    engine,
-    query,
-}) => {
+export const ResultList: FunctionComponent<ResultListProps> = ({controller, engine, query}) => {
     const [state, setState] = useState(controller.state);
     const {logDocumentOpen} = loadClickAnalyticsActions(engine);
 

@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 import {GithubButton} from './GithubButton';
 import {Guidelines, MarkdownOverrides} from './Guidelines';
 
-export const GuidelinesTab: FunctionComponent<React.PropsWithChildren<{id: string}>> = ({id}) => (
+export const GuidelinesTab: FunctionComponent<{id: string}> = ({id}) => (
     <TabPaneConnected id="guide" groupId="page">
         {Guidelines.exists(id) ? (
             <>

@@ -1,4 +1,4 @@
-import {ComponentType, PureComponent} from 'react';
+import {ComponentType, PropsWithChildren, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 
@@ -35,7 +35,7 @@ export const Params = {
     filter: 'q',
 };
 
-function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType<React.PropsWithChildren<P>>) {
+function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType<PropsWithChildren<P>>) {
     type Props = P &
         TableWithUrlStateProps &
         ReturnType<typeof mapStateToProps> &

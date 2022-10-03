@@ -22,7 +22,7 @@ export interface PageHeaderProps {
     sourcePath?: string;
 }
 
-export const PageHeader: FunctionComponent<React.PropsWithChildren<PageHeaderProps>> = ({
+export const PageHeader: FunctionComponent<PageHeaderProps> = ({
     title,
     description,
     thumbnail,

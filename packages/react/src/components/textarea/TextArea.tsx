@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ChangeEvent, ChangeEventHandler, FunctionComponent, useEffect, useState} from 'react';
+import {ChangeEvent, ChangeEventHandler, FunctionComponent, PropsWithChildren, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
@@ -102,7 +102,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITextAreaOwnProps): I
 /**
  * @deprecated Use Mantine Textarea instead: https://mantine.dev/core/textarea/
  */
-export const TextArea: FunctionComponent<React.PropsWithChildren<ITextAreaProps>> = ({
+export const TextArea: FunctionComponent<PropsWithChildren<ITextAreaProps>> = ({
     id,
     value,
     validate,

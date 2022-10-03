@@ -1,5 +1,5 @@
 import {shallowWithStore} from '@test-utils';
-import {ComponentType} from 'react';
+import {ComponentType, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -93,7 +93,7 @@ describe('Table HOC', () => {
 
         it('should slice the data according to the perPageNumbers specified in the HOC config', () => {
             const expectedPerPageNumbers = [2, 3, 4];
-            const MyTable: ComponentType<React.PropsWithChildren<ITableWithPaginationProps>> = _.compose(
+            const MyTable: ComponentType<PropsWithChildren<ITableWithPaginationProps>> = _.compose(
                 tableWithPagination({perPageNumbers: expectedPerPageNumbers})
             )(TableHOC);
             const table = shallowWithStore(<MyTable {...defaultProps} />, getStoreMock())

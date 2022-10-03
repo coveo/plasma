@@ -24,9 +24,7 @@ export interface IWithNonEmptySingleSelectHOCProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(
-    Component: ComponentType<React.PropsWithChildren<T>>
-) => {
+export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedSingleSelect: FunctionComponent<

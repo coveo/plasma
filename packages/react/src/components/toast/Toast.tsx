@@ -1,6 +1,14 @@
 import {CrossSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {ReactNode, FunctionComponent, ComponentClass, useState, useEffect, createElement} from 'react';
+import {
+    ReactNode,
+    FunctionComponent,
+    ComponentClass,
+    useState,
+    useEffect,
+    createElement,
+    PropsWithChildren,
+} from 'react';
 import {LoadingSpinner} from '../loading/LoadingSpinner';
 
 export interface IToastProps {
@@ -60,7 +68,7 @@ export interface IToastProps {
 /**
  * @deprecated Use Mantine Notification instead: https://mantine.dev/core/notification/
  */
-export const Toast: FunctionComponent<React.PropsWithChildren<IToastProps>> = ({
+export const Toast: FunctionComponent<PropsWithChildren<IToastProps>> = ({
     title,
     type = 'success',
     dismiss,

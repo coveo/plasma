@@ -1,4 +1,4 @@
-import {Component, ComponentType, ReactNode} from 'react';
+import {Component, ComponentType, PropsWithChildren, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -28,7 +28,7 @@ const TableWithSortPropsToOmit = ['isAsc', 'sortKey'];
 
 const defaultSort = () => 0;
 
-export type SortableTableComponent = ComponentType<React.PropsWithChildren<ITableWithSortProps>>;
+export type SortableTableComponent = ComponentType<PropsWithChildren<ITableWithSortProps>>;
 
 /**
  * @deprecated Use Mantine instead
