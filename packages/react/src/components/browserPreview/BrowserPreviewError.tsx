@@ -11,7 +11,7 @@ export interface BrowserPreviewErrorProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const BrowserPreviewError: FunctionComponent<React.PropsWithChildren<BrowserPreviewErrorProps>> = ({
+export const BrowserPreviewError: FunctionComponent<BrowserPreviewErrorProps> = ({
     onClick,
     description,
     errorMessage,

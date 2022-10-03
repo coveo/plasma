@@ -1,5 +1,5 @@
 import {InfoSize16Px} from '@coveord/plasma-react-icons';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import {truncate} from 'underscore.string';
 
 import {TooltipPlacement} from '../../utils';
@@ -22,7 +22,7 @@ export interface BrowserPreviewProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const BrowserPreview: FunctionComponent<React.PropsWithChildren<BrowserPreviewProps>> = ({
+export const BrowserPreview: FunctionComponent<PropsWithChildren<BrowserPreviewProps>> = ({
     children,
     headerDescription,
     title,
@@ -33,7 +33,7 @@ export const BrowserPreview: FunctionComponent<React.PropsWithChildren<BrowserPr
     </div>
 );
 
-const BrowserPreviewHeader: FunctionComponent<React.PropsWithChildren<{tooltipTitle: string; title?: string}>> = ({
+const BrowserPreviewHeader: FunctionComponent<PropsWithChildren<{tooltipTitle: string; title?: string}>> = ({
     title,
     tooltipTitle,
 }) => (

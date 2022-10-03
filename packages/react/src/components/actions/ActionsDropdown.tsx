@@ -17,7 +17,7 @@ export const MORE_LABEL: string = 'More';
 /**
  * @deprecated Use Mantine instead
  */
-export const ActionsDropdown: FunctionComponent<React.PropsWithChildren<IActionsDropdownProps>> = ({
+export const ActionsDropdown: FunctionComponent<IActionsDropdownProps> = ({
     actions,
     moreLabel,
     id,

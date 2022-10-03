@@ -15,7 +15,7 @@ export interface ISecondaryActionsProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const SecondaryActions: FunctionComponent<React.PropsWithChildren<ISecondaryActionsProps>> = ({
+export const SecondaryActions: FunctionComponent<ISecondaryActionsProps> = ({
     actions,
     id,
     moreLabel,

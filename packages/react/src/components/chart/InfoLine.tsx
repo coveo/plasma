@@ -13,7 +13,7 @@ export interface InfoLineProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const InfoLine: FunctionComponent<React.PropsWithChildren<InfoLineProps>> = ({
+export const InfoLine: FunctionComponent<InfoLineProps> = ({
     stroke = '#000',
     isVertical = false,
     label = '',

@@ -13,10 +13,7 @@ export interface ChartTooltipContentProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const ChartTooltipContent: FunctionComponent<React.PropsWithChildren<ChartTooltipContentProps>> = ({
-    x,
-    sort,
-}) => {
+export const ChartTooltipContent: FunctionComponent<ChartTooltipContentProps> = ({x, sort}) => {
     const {series, xFormat, yFormat, color, colorPattern} = useContext(XYChartContext);
     const xValues = ChartUtils.getXValues(series);
     const title = xFormat(xValues[x]);
