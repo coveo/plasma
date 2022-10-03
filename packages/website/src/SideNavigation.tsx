@@ -1,5 +1,5 @@
 import {SideNavigation, SideNavigationItem, SideNavigationMenuSection} from '@coveord/plasma-react';
-import {FunctionComponent, FC, useState} from 'react';
+import {FunctionComponent, useState, PropsWithChildren} from 'react';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
@@ -11,7 +11,7 @@ interface NavLinkProps {
     isActive?: boolean;
 }
 
-const NavLink: FunctionComponent<React.PropsWithChildren<NavLinkProps>> = ({href = '', label, disabled, isActive}) => {
+const NavLink: FunctionComponent<PropsWithChildren<NavLinkProps>> = ({href = '', label, disabled, isActive}) => {
     const {pathname} = useRouter();
     return (
         <SideNavigationItem disabled={disabled} href={href} isActive={isActive ?? pathname.endsWith(href)}>
@@ -32,7 +32,7 @@ const NavLink: FunctionComponent<React.PropsWithChildren<NavLinkProps>> = ({href
     );
 };
 
-const CollapsibleSideSection: FC<React.PropsWithChildren<{title: string; initiallyClosed?: boolean}>> = ({
+const CollapsibleSideSection: FunctionComponent<PropsWithChildren<{title: string; initiallyClosed?: boolean}>> = ({
     title,
     initiallyClosed = false,
     children,
@@ -51,7 +51,7 @@ const CollapsibleSideSection: FC<React.PropsWithChildren<{title: string; initial
     );
 };
 
-export const Navigation: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
+export const Navigation: FunctionComponent = () => {
     const {pathname} = useRouter();
 
     return (

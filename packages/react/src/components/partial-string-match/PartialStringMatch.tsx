@@ -1,5 +1,5 @@
 import escapeStringRegexp from 'escape-string-regexp';
-import {ReactNode, FunctionComponent, cloneElement, Component, PureComponent} from 'react';
+import {ReactNode, FunctionComponent, cloneElement, Component, PureComponent, PropsWithChildren} from 'react';
 
 export interface PartialStringMatchProps {
     /**
@@ -92,6 +92,6 @@ export class PartialStringMatch extends PureComponent<PartialStringMatchProps> {
     }
 }
 
-const Highlight: FunctionComponent<React.PropsWithChildren<unknown>> = ({children}) => (
+const Highlight: FunctionComponent<PropsWithChildren<unknown>> = ({children}) => (
     <span className="bolder">{children}</span>
 );

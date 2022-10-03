@@ -1,10 +1,10 @@
 import {render, screen, waitFor} from '@test-utils';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import {Loadable} from '../Loadable';
 
 describe('<Loadable />', () => {
     it('renders a Loading while importing and the component once it succeeds', async () => {
-        const Fixture: FunctionComponent<React.PropsWithChildren<unknown>> = () => <h1>Hello world</h1>;
+        const Fixture: FunctionComponent<PropsWithChildren<unknown>> = () => <h1>Hello world</h1>;
         const LoadableComponent = Loadable(
             () =>
                 new Promise<FunctionComponent>((resolve) => {

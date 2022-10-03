@@ -14,7 +14,7 @@ const TABLE_ID: string = 'withBlankslateTableId';
 
 export default () => <WithBlankSlate />;
 
-const WithBlankSlate: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
+const WithBlankSlate: FunctionComponent = () => (
     <>
         <TableComposed
             id={TABLE_ID}

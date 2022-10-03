@@ -1,6 +1,6 @@
 import {FunctionComponent} from 'react';
 
-export const PlasmaLoading: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
+export const PlasmaLoading: FunctionComponent = () => (
     <div className="plasma-spinner">
         <div className="bounce1" />
         <div className="bounce2" />

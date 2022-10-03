@@ -38,7 +38,7 @@ const collapsible = `
     );
 `;
 
-export const InfoBoxExamples: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
+export const InfoBoxExamples: FunctionComponent = () => (
     <PageLayout
         id="InfoBox"
         title="Info Box"

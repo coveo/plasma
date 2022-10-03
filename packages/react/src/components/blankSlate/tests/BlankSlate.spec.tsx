@@ -1,7 +1,7 @@
 import {TipSize32Px} from '@coveord/plasma-react-icons';
 import {render, screen} from '@test-utils';
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
 import {BlankSlate, IBlankSlateProps} from '../BlankSlate';
@@ -137,7 +137,7 @@ describe('BlankSlate', () => {
         });
 
         it('should render custom svg', () => {
-            const svgChild: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
+            const svgChild: FunctionComponent<PropsWithChildren<unknown>> = () => (
                 <div role="img" aria-label="shrug icon">
                     🤷
                 </div>

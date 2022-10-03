@@ -90,7 +90,7 @@ const hookUsage = `
     );
 `;
 
-export const TextInputExamples: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
+export const TextInputExamples: FunctionComponent = () => (
     <PageLayout
         id="TextInput"
         title="Text Input"

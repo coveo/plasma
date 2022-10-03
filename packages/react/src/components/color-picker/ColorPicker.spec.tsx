@@ -22,7 +22,7 @@ describe('ColorPicker', () => {
     });
 
     it('should sync the default color to the redux state', () => {
-        const Child: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
+        const Child: FunctionComponent = () => {
             const selected = useSelector((state: PlasmaState) =>
                 InputSelectors.getValue(state, {
                     id: 'foo',

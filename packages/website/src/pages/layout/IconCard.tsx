@@ -87,7 +87,7 @@ const badgesOnTop = `
     );
 `;
 
-export const IconCardExamples: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
+export const IconCardExamples: FunctionComponent = () => (
     <PageLayout
         id="IconCard"
         title="Icon Card"

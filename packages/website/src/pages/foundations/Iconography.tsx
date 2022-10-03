@@ -41,7 +41,7 @@ const IconSetCard: FunctionComponent<React.PropsWithChildren<IconSet>> = ({iconN
     </div>
 );
 
-const IconsTable: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
+const IconsTable: FunctionComponent = () => (
     <TableWithFilter
         id="iconography"
         data={iconsList}

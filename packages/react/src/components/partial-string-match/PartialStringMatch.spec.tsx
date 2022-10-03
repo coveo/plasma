@@ -96,9 +96,7 @@ describe('PartialStringMatch', () => {
     });
 
     it('should highlight all matches rendered throught a function component', () => {
-        const Porkchop: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
-            <span>porkchop is a chop of the pork</span>
-        );
+        const Porkchop: FunctionComponent = () => <span>porkchop is a chop of the pork</span>;
         const matcher = 'chop';
         const component = shallow(
             <PartialStringMatch partialMatch={matcher}>
@@ -110,9 +108,7 @@ describe('PartialStringMatch', () => {
     });
 
     it('should render connected components without highlighting the matches', () => {
-        const Porkchop: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
-            <span>a porkchop is a chop of the pork</span>
-        );
+        const Porkchop: FunctionComponent = () => <span>a porkchop is a chop of the pork</span>;
         const ConnectedPorkchop = connect((state: any) => ({a: state.a}))(Porkchop);
         const matcher = 'chop';
         const component = mount(
