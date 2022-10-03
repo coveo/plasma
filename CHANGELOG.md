@@ -1,3 +1,12 @@
+# 47.2.0 (2022-10-03)
+
+
+### Features
+
+* p8 adding link to colors in home page for demo ([#2848](https://github.com/coveo/plasma/issues/2848)) ([a936caf](https://github.com/coveo/plasma/commits/a936cafb45a0ca5ab9214c89e90bdb1ece9c3653))
+
+
+
 ## 47.1.3 (2022-09-29)
 
 
