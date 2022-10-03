@@ -34,13 +34,7 @@ interface DiffByFileProps {
     viewType: DIFF_VIEWER_VIEW_TYPE;
 }
 
-const DiffByFile: FunctionComponent<React.PropsWithChildren<DiffByFileProps>> = ({
-    oldRevision,
-    newRevision,
-    hunks,
-    type,
-    viewType,
-}) => (
+const DiffByFile: FunctionComponent<DiffByFileProps> = ({oldRevision, newRevision, hunks, type, viewType}) => (
     <Diff key={`${oldRevision}-${newRevision}`} diffType={type} hunks={hunks} viewType={viewType}>
         {(collectionHunk: HunkModel[]) =>
             collectionHunk.map((hunk: HunkModel) => (
@@ -83,7 +77,7 @@ export interface DiffViewerProps extends DiffViewerBlankSlateProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const DiffViewer: FunctionComponent<React.PropsWithChildren<DiffViewerProps>> = ({
+export const DiffViewer: FunctionComponent<DiffViewerProps> = ({
     difference,
     noChangesLabel,
     noChangesDescription,

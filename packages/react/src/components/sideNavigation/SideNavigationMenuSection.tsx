@@ -1,6 +1,6 @@
 import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {FunctionComponent, MouseEvent, ReactNode, useEffect, useRef} from 'react';
+import {FunctionComponent, MouseEvent, PropsWithChildren, ReactNode, useEffect, useRef} from 'react';
 import * as _ from 'underscore';
 
 import {Collapsible} from '../collapsible/Collapsible';
@@ -26,7 +26,7 @@ export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     itemsClassName?: string;
 }
 
-const HeaderIcon: FunctionComponent<React.PropsWithChildren<SideNavigationHeaderProps>> = ({icon: IconName}) =>
+const HeaderIcon: FunctionComponent<SideNavigationHeaderProps> = ({icon: IconName}) =>
     IconName ? (
         <IconName height={16} className="navigation-menu-section-header-icon" />
     ) : (
@@ -55,7 +55,7 @@ const SideNavigationHeader: FunctionComponent<
 /**
  * @deprecated Use Mantine NavLink instead: https://mantine.dev/core/nav-link/
  */
-export const SideNavigationMenuSection: FunctionComponent<React.PropsWithChildren<ISideNavigationSectionProps>> = ({
+export const SideNavigationMenuSection: FunctionComponent<PropsWithChildren<ISideNavigationSectionProps>> = ({
     expandable,
     expanded,
     title,

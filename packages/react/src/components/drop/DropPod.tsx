@@ -45,7 +45,7 @@ export const defaultDropPodPosition = [
     DropPodPosition.left,
 ];
 
-const RDropPod: FunctionComponent<React.PropsWithChildren<IRDropPodProps>> = ({
+const RDropPod: FunctionComponent<IRDropPodProps> = ({
     isOpen = false,
     positions = defaultDropPodPosition,
     minWidth = 0,

@@ -1,5 +1,5 @@
 import {ScaleLinear, scaleLinear, scalePoint, ScalePoint} from 'd3';
-import {FunctionComponent, createContext} from 'react';
+import {FunctionComponent, createContext, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
 import {ChartBaseProps} from './ChartContainer';
@@ -73,7 +73,7 @@ const defaultPadding = 10;
 /**
  * @deprecated Use Mantine instead
  */
-export const XYChart: FunctionComponent<React.PropsWithChildren<XYChartProps>> = ({
+export const XYChart: FunctionComponent<PropsWithChildren<XYChartProps>> = ({
     width,
     height,
     series,

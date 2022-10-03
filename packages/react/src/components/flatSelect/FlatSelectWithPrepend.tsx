@@ -11,7 +11,7 @@ export interface IFlatSelectWithPrependProps extends IFlatSelectOwnProps {
 /**
  * @deprecated use Mantine SegmentedControl instead: https://mantine.dev/core/segmented-control/
  */
-export const FlatSelectWithPrepend: FunctionComponent<React.PropsWithChildren<IFlatSelectWithPrependProps>> = ({
+export const FlatSelectWithPrepend: FunctionComponent<IFlatSelectWithPrependProps> = ({
     prepend,
     prependClassName = '',
     ...flatSelectProps

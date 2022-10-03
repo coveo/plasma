@@ -42,7 +42,7 @@ export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 
     /**
      * A component to render instead of the default button. The button is what is displayed when the dropdown is not opened and used to open it.
      */
-    customButton?: ComponentType<React.PropsWithChildren<ISelectButtonProps>>;
+    customButton?: ComponentType<ISelectButtonProps>;
 }
 
 const selectPropsKeys = [
@@ -70,7 +70,7 @@ export type ISingleSelectProps = ISingleSelectOwnProps;
 /**
  * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
-export const SingleSelectConnected: FunctionComponent<React.PropsWithChildren<ISingleSelectProps>> = ({
+export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
     placeholder = 'Select an option',
     deselectTooltipText = 'Deselect',
     ...props
@@ -97,7 +97,7 @@ export const SingleSelectConnected: FunctionComponent<React.PropsWithChildren<IS
         }
     }, [selectedOption]);
 
-    const Toggle: FunctionComponent<React.PropsWithChildren<ISelectButtonProps>> = useMemo(
+    const Toggle: FunctionComponent<ISelectButtonProps> = useMemo(
         () =>
             ({onClick, onKeyDown, onKeyUp, selectedOptions, isOpen}) => {
                 const option = selectedOptions[0];
@@ -147,7 +147,7 @@ export const SingleSelectConnected: FunctionComponent<React.PropsWithChildren<IS
     );
 };
 
-const SelectedOption: FunctionComponent<React.PropsWithChildren<{placeholder: string; option: IItemBoxProps}>> = ({
+const SelectedOption: FunctionComponent<{placeholder: string; option: IItemBoxProps}> = ({
     option,
     placeholder,
 }): JSX.Element => {

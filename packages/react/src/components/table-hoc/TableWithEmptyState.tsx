@@ -18,7 +18,7 @@ const UPDATE_DELAY = 50; // ms
  * @deprecated Use Mantine instead
  */
 export const tableWithEmptyState = (
-    Component: FunctionComponent<React.PropsWithChildren<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>>
+    Component: FunctionComponent<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>
 ) => {
     const mapStateToProps = (state: PlasmaState, ownProps: ITableHOCOwnProps) => {
         const isTrulyEmpty = TableSelectors.getIsTrulyEmpty(state, ownProps);

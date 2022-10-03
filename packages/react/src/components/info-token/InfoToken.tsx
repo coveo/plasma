@@ -105,12 +105,7 @@ const ModeMapping: Record<InfoTokenMode, string> = {
 /**
  * @deprecated Use Mantine instead
  */
-export const InfoToken: FunctionComponent<React.PropsWithChildren<InfoTokenProps>> = ({
-    mode,
-    size,
-    type,
-    className,
-}) => {
+export const InfoToken: FunctionComponent<InfoTokenProps> = ({mode, size, type, className}) => {
     const IconComponent = IconMapping[type][size];
     return (
         <IconComponent

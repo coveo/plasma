@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent, FormEvent} from 'react';
+import {FunctionComponent, FormEvent, PropsWithChildren} from 'react';
 
 type FormMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
@@ -13,7 +13,7 @@ export interface IFormProps {
 /**
  * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/
  */
-export const Form: FunctionComponent<React.PropsWithChildren<IFormProps>> = ({
+export const Form: FunctionComponent<PropsWithChildren<IFormProps>> = ({
     children,
     className,
     title,

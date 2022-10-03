@@ -1,6 +1,6 @@
 import {Icon, QuestionSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {Children, FunctionComponent} from 'react';
+import {Children, FunctionComponent, PropsWithChildren} from 'react';
 
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
@@ -12,7 +12,7 @@ export interface ILinkSvgProps {
     tooltip?: ITooltipProps;
 }
 
-export const LinkSvg: FunctionComponent<React.PropsWithChildren<ILinkSvgProps>> = ({
+export const LinkSvg: FunctionComponent<PropsWithChildren<ILinkSvgProps>> = ({
     target = '_blank',
     icon: IconComponent = QuestionSize16Px,
     className,

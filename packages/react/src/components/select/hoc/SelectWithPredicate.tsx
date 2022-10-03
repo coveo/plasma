@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ComponentType, FunctionComponent, useEffect} from 'react';
+import {ComponentType, FunctionComponent, PropsWithChildren, useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -28,8 +28,8 @@ const SelectWithPredicatePropsToOmit = [
  * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
-    Component: ComponentType<React.PropsWithChildren<P>>
-): FunctionComponent<React.PropsWithChildren<P & ISelectWithPredicateOwnProps>> => {
+    Component: ComponentType<P>
+): FunctionComponent<P & ISelectWithPredicateOwnProps> => {
     type OwnProps = P & ISelectWithPredicateOwnProps;
     type Props = OwnProps & ReturnType<typeof mapStateToProps>;
 
@@ -50,7 +50,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
         };
     };
 
-    const WrappedComponent: FunctionComponent<React.PropsWithChildren<Props>> = (props) => {
+    const WrappedComponent: FunctionComponent<PropsWithChildren<Props>> = (props) => {
         const {onUpdate, predicate} = props;
         useEffect(() => {
             onUpdate?.();

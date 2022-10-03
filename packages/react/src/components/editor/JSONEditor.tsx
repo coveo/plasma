@@ -127,7 +127,7 @@ JSONEditor.defaultProps = {
     },
 };
 
-const ValidationDetails: FunctionComponent<React.PropsWithChildren<{errorMessage?: string}>> = ({errorMessage}) => (
+const ValidationDetails: FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (
     <div className="input-validation-error-details">
         <InfoToken mode={InfoTokenMode.Filled} size={InfoTokenSize.Small} type={InfoTokenType.Critical} />
         <span className="input-validation-error-message">{errorMessage ?? DEFAULT_JSON_ERROR_MESSAGE}</span>

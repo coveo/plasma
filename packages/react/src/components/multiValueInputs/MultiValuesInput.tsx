@@ -42,7 +42,7 @@ export interface MultiValuesInputProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const MultiValuesInput: FunctionComponent<React.PropsWithChildren<MultiValuesInputProps>> = ({
+export const MultiValuesInput: FunctionComponent<MultiValuesInputProps> = ({
     id,
     data,
     inputProps,

@@ -19,7 +19,7 @@ export interface IPaginationPerPageProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const PaginationPerPage: FunctionComponent<React.PropsWithChildren<IPaginationPerPageProps>> = ({
+export const PaginationPerPage: FunctionComponent<IPaginationPerPageProps> = ({
     id,
     perPage = TablePaginationDefaultValue.PerPage,
     defaultPerPageSelected = UrlUtils.getSearchParams?.()?.[Params.pageSize],

@@ -35,7 +35,7 @@ export interface ISplitLayoutProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const SplitLayout: FunctionComponent<React.PropsWithChildren<ISplitLayoutProps>> = ({
+export const SplitLayout: FunctionComponent<ISplitLayoutProps> = ({
     className,
     mods,
     rightChildren,

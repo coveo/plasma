@@ -9,9 +9,7 @@ interface TableRowNumberHeaderProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const TableRowNumberHeader: FunctionComponent<React.PropsWithChildren<TableRowNumberHeaderProps>> = ({
-    isLoading,
-}) => {
+export const TableRowNumberHeader: FunctionComponent<TableRowNumberHeaderProps> = ({isLoading}) => {
     const {style, tableHeaderRef} = useFixedWidthWhileLoading(isLoading);
 
     return <th ref={tableHeaderRef} style={style} />;

@@ -13,7 +13,7 @@ export interface RadioProps extends RadioOwnProps, IInputProps {}
 /**
  * @deprecated Use Mantine Radio instead: https://mantine.dev/core/radio/
  */
-export const Radio: FunctionComponent<React.PropsWithChildren<RadioProps>> = (props) => {
+export const Radio: FunctionComponent<RadioProps> = (props) => {
     const outerContainerClasses: string =
         !!props.outerContainerClass && classNames('radio-option', props.outerContainerClass);
     const classes: string = classNames('radio-option', props.classes);
@@ -26,10 +26,7 @@ export const Radio: FunctionComponent<React.PropsWithChildren<RadioProps>> = (pr
     );
 };
 
-const RadioInputContent: FunctionComponent<React.PropsWithChildren<{props: RadioProps; classes: string}>> = ({
-    props,
-    classes,
-}) => {
+const RadioInputContent: FunctionComponent<{props: RadioProps; classes: string}> = ({props, classes}) => {
     const inputProps = omit(props, 'outerContainerClass', 'outerElementInContainer');
     return (
         <>

@@ -1,4 +1,4 @@
-import {Component, ComponentType} from 'react';
+import {Component, ComponentType, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
@@ -30,7 +30,7 @@ export interface ITableWithNewPaginationProps extends ITableHOCOwnProps, WithSer
  */
 export const tableWithNewPagination =
     (supplier: ConfigSupplier<ITableWithNewPaginationConfig> = {perPageNumbers: PER_PAGE_NUMBERS}) =>
-    (WrappedComponent: ComponentType<React.PropsWithChildren<ITableWithNewPaginationProps>>) => {
+    (WrappedComponent: ComponentType<PropsWithChildren<ITableWithNewPaginationProps>>) => {
         const config = HocUtils.supplyConfig(supplier);
 
         const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableWithNewPaginationProps) => ({

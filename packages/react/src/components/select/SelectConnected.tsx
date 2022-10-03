@@ -34,7 +34,7 @@ export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
      * Unique identifier
      */
     id: string;
-    button: ComponentType<React.PropsWithChildren<ISelectButtonProps>>;
+    button: ComponentType<ISelectButtonProps>;
     /**
      * The text displayed in the button when no item is selected
      *

@@ -14,7 +14,7 @@ export interface InputLabelWithTooltipProps {
 /**
  * @deprecated Use Mantine Input instead: https://mantine.dev/core/input/
  */
-export const InputLabelWithTooltip: FunctionComponent<React.PropsWithChildren<InputLabelWithTooltipProps>> = ({
+export const InputLabelWithTooltip: FunctionComponent<InputLabelWithTooltipProps> = ({
     label,
     tooltip,
     invalidMessage,

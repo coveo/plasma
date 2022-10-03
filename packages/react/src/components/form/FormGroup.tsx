@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 
 export interface IFormGroupProps {
     title: string;
@@ -10,7 +10,7 @@ export interface IFormGroupProps {
 /**
  * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/
  */
-export const FormGroup: FunctionComponent<React.PropsWithChildren<IFormGroupProps>> = ({
+export const FormGroup: FunctionComponent<PropsWithChildren<IFormGroupProps>> = ({
     children,
     title,
     description,

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {HTMLAttributes, FunctionComponent} from 'react';
+import {HTMLAttributes, FunctionComponent, PropsWithChildren} from 'react';
 
 export interface IChildFormProps extends HTMLAttributes<HTMLDivElement> {
     /**
@@ -15,6 +15,6 @@ export interface IChildFormProps extends HTMLAttributes<HTMLDivElement> {
 /**
  * @deprecated Use Mantine instead
  */
-export const ChildForm: FunctionComponent<React.PropsWithChildren<IChildFormProps>> = ({className, children}) => (
+export const ChildForm: FunctionComponent<PropsWithChildren<IChildFormProps>> = ({className, children}) => (
     <div className={classNames('coveo-child', className)}>{children}</div>
 );

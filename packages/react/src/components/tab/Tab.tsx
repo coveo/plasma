@@ -60,7 +60,7 @@ export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof e
 /**
  * @deprecated Use Mantine Tabs instead: https://mantine.dev/core/tabs/
  */
-export const Tab: FunctionComponent<React.PropsWithChildren<ITabProps>> = ({
+export const Tab: FunctionComponent<ITabProps> = ({
     icon: IconName,
     badge,
     tooltip,
