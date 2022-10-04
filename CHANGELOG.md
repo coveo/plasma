@@ -1,3 +1,12 @@
+## 47.2.1 (2022-10-04)
+
+
+### Bug Fixes
+
+* **style:** remove root level style on inputs ([#2851](https://github.com/coveo/plasma/issues/2851)) ([27d4e5b](https://github.com/coveo/plasma/commits/27d4e5be9c50d39e7da6b16f438b510467744ed3))
+
+
+
 # 47.2.0 (2022-10-03)
 
 
