@@ -3,33 +3,6 @@ textarea {
     @include placeholder();
 }
 
-select,
-textarea,
-input[type='text'],
-input[type='password'],
-input[type='datetime'],
-input[type='datetime-local'],
-input[type='date'],
-input[type='month'],
-input[type='time'],
-input[type='week'],
-input[type='number'],
-input[type='email'],
-input[type='url'],
-input[type='search'],
-input[type='tel'],
-input[type='color'] {
-    padding: 3px 6px;
-    color: var(--deprecated-dark-grey);
-    font-size: $input-font-size;
-    font-family: var(--main-font);
-    border: 1px solid var(--deprecated-medium-grey);
-
-    &:focus-visible {
-        @include focus-outline();
-    }
-}
-
 input[type='text'],
 textarea {
     &.admin-invisible-textbox {
