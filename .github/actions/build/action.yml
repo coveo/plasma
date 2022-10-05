@@ -1,0 +1,7 @@
+name: 'Build'
+description: 'Build all packages'
+runs:
+    using: composite
+    steps:
+        - shell: bash
+          run: pnpm build
