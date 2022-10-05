@@ -11,7 +11,7 @@ const ALLOWED_EXTENSIONS = ['js', 'ts', 'jsx', 'tsx'];
 
     console.log('\x1b[32mList of changed files', changedFilesWithoutDuplicates);
 
-    // // remove all files that are not an allowed extension from the array
+    // remove all files that are not an allowed extension from the array
     const filteredArray = changedFilesWithoutDuplicates.filter((element) => {
         const extension = element.split('.').pop();
         return ALLOWED_EXTENSIONS.includes(extension);
