@@ -1615,7 +1615,7 @@ packages:
       jest-validate: 29.0.3
       jest-watcher: 29.0.3
       micromatch: 4.0.5
-      pretty-format: 29.0.3
+      pretty-format: 29.2.1
       slash: 3.0.0
       strip-ansi: 6.0.1
     transitivePeerDependencies:
