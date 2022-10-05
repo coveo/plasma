@@ -1,0 +1,22 @@
+name: 'Lint'
+description: 'Lint source files with ESLint'
+inputs:
+    WORKFLOW:
+        description: 'The Workflow'
+        required: false
+runs:
+    using: composite
+    steps:
+        - shell: bash
+          run: |
+              Purple='\033[0;35m'
+              echo -e "${Purple}Starting Lint..."
+              if ${{inputs.WORKFLOW == 'ci'}}
+                then
+                  CHANGED_FILES=$(git diff --name-only --pretty="" --diff-filter=d origin/${{ github.base_ref }} HEAD)
+                else
+                  Purple='\033[0;35m'
+                  echo -e "${Purple}Setting default memory of Node to $NODE_OPTIONS to avoid JavaScript heap out of memory error."
+                  CHANGED_FILES=$(git diff --name-only --pretty="" --diff-filter=d $(git log -1 --before=@{2.days.ago} --format=%H))
+                fi
+              node .github/actions/lint/lintChangedFiles.mjs $CHANGED_FILES
