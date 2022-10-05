@@ -26,11 +26,7 @@
         "**/package.json": [
             "sort-package-json"
         ],
-        "**/*.{js,jsx,ts,tsx,mjs}": [
-            "prettier --write",
-            "eslint --fix"
-        ],
-        "**/*.{json,md,yml,html,css}": [
+        "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html,css}": [
             "prettier --write"
         ],
         "**/*.scss": [
