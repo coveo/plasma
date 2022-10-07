@@ -8,15 +8,18 @@ runs:
     using: composite
     steps:
         - shell: bash
+          if: inputs.WORKFLOW == 'ci'
+          name: Lint changed files from PR
           run: |
               Purple='\033[0;35m'
               echo -e "${Purple}Starting Lint..."
-              if ${{inputs.WORKFLOW == 'ci'}}
-                then
-                  CHANGED_FILES=$(git diff --name-only --pretty="" --diff-filter=d origin/${{ github.base_ref }} HEAD)
-                else
-                  Purple='\033[0;35m'
-                  echo -e "${Purple}Setting default memory of Node to $NODE_OPTIONS to avoid JavaScript heap out of memory error."
-                  CHANGED_FILES=$(git diff --name-only --pretty="" --diff-filter=d $(git log -1 --before=@{2.days.ago} --format=%H))
-                fi
+              CHANGED_FILES=$(git diff --name-only --pretty="" --diff-filter=d origin/${{ github.base_ref }} HEAD)
+              node .github/actions/lint/lintChangedFiles.mjs $CHANGED_FILES
+        - shell: bash
+          if: inputs.WORKFLOW != 'ci'
+          name: Lint all files changed in the last 2 days
+          run: |
+              Purple='\033[0;35m'
+              echo -e "${Purple}Starting Lint..."
+              CHANGED_FILES=$(git diff --name-only --pretty="" --diff-filter=d $(git log -1 --before=@{2.days.ago} --format=%H))
               node .github/actions/lint/lintChangedFiles.mjs $CHANGED_FILES
