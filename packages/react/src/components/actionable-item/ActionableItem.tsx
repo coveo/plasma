@@ -1,6 +1,6 @@
 import {DotsSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {FunctionComponent, MouseEvent as ReactMouseEvent} from 'react';
+import {FunctionComponent, MouseEvent as ReactMouseEvent, PropsWithChildren} from 'react';
 
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop, IDropOwnProps} from '../drop/Drop';
@@ -41,7 +41,7 @@ export interface IActionableItemProps {
 /**
  * @deprecated Use Mantine Menu instead: https://mantine.dev/core/menu/
  */
-export const ActionableItem: FunctionComponent<IActionableItemProps> = ({
+export const ActionableItem: FunctionComponent<PropsWithChildren<IActionableItemProps>> = ({
     id,
     className,
     containerClassName,

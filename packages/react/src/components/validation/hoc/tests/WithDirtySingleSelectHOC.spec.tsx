@@ -36,7 +36,7 @@ describe('SingleSelectWithDirty', () => {
         expect(screen.getByRole('button', {name: /my value/})).toBeVisible();
     });
 
-    it('should trigger the dirty state when the user selects a value', () => {
+    it('should trigger the dirty state when the user selects a value', async () => {
         render(
             <>
                 <SingleSelectWithHOC id="🍎" items={[{value: 'new value'}, {value: 'some value'}]} initialValue="" />
@@ -44,14 +44,14 @@ describe('SingleSelectWithDirty', () => {
             </>
         );
 
-        userEvent.click(screen.getByRole('button'));
+        await userEvent.click(screen.getByRole('button'));
 
-        userEvent.click(screen.getByText('new value'));
+        await userEvent.click(screen.getByText('new value'));
 
         expect(screen.getByText('is dirty')).toBeVisible();
     });
 
-    it('should trigger the dirty state when the user selects a different value', () => {
+    it('should trigger the dirty state when the user selects a different value', async () => {
         render(
             <>
                 <SingleSelectWithHOC
@@ -63,9 +63,9 @@ describe('SingleSelectWithDirty', () => {
             </>
         );
 
-        userEvent.click(screen.getByRole('button', {name: /old value/i}));
+        await userEvent.click(screen.getByRole('button', {name: /old value/i}));
 
-        userEvent.click(screen.getByRole('option', {name: /new value/i}));
+        await userEvent.click(screen.getByRole('option', {name: /new value/i}));
 
         expect(screen.getByText(/is dirty/)).toBeInTheDocument();
     });

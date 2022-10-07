@@ -46,72 +46,73 @@ export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-
 /**
  * @deprecated Use Mantine instead
  */
-export const multilineBoxWithRemoveButton = (
-    supplier: ConfigSupplier<IMultilineBoxWithRemoveButtonSupplierProps> = {containerNode: defaultContainerNode}
-) => (Component: typeof MultilineBox): typeof MultilineBox => {
-    const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps) => ({
-        removeBox: (id: string) => dispatch(removeValueStringList(ownProps.id, id)),
-    });
+export const multilineBoxWithRemoveButton =
+    (supplier: ConfigSupplier<IMultilineBoxWithRemoveButtonSupplierProps> = {containerNode: defaultContainerNode}) =>
+    (Component: typeof MultilineBox): typeof MultilineBox => {
+        const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps) => ({
+            removeBox: (id: string) => dispatch(removeValueStringList(ownProps.id, id)),
+        });
 
-    class MultilineBoxWithRemoveButton<T> extends PureComponent<
-        IMultilineBoxWithRemoveButtonProps<T> & ReturnType<typeof mapDispatchToProps>
-    > {
-        static defaultProps = {
-            renderBody: () => <div />,
-        };
+        class MultilineBoxWithRemoveButton<T> extends PureComponent<
+            IMultilineBoxWithRemoveButtonProps<T> & ReturnType<typeof mapDispatchToProps>
+        > {
+            static defaultProps = {
+                renderBody: () => <div />,
+            };
 
-        private getRemoveButtonNode(
-            data: Array<Partial<IMultilineSingleBoxProps<T>>>,
-            props: Partial<IButtonProps> = {},
-            index: number
-        ) {
-            const isLastMeaningfulEntry = data.length <= 1;
-            const isDisabled = this.props.disabled || isLastMeaningfulEntry || data[index].isLast;
-            return (
-                <Button
-                    classes={[classNames(defaultMultilineBoxRemoveButtonClasses)]}
-                    style={{
-                        visibility: isDisabled ? 'hidden' : 'visible',
-                    }}
-                    onClick={() => this.props.removeBox(data[index].id)}
-                    enabled={!isDisabled}
-                    {...props}
-                >
-                    <RemoveSize16Px
-                        height={16}
+            private getRemoveButtonNode(
+                data: Array<Partial<IMultilineSingleBoxProps<T>>>,
+                props: Partial<IButtonProps> = {},
+                index: number
+            ) {
+                const isLastMeaningfulEntry = data.length <= 1;
+                const isDisabled = this.props.disabled || isLastMeaningfulEntry || data[index].isLast;
+                return (
+                    <Button
+                        classes={[classNames(defaultMultilineBoxRemoveButtonClasses)]}
                         style={{
                             visibility: isDisabled ? 'hidden' : 'visible',
                         }}
+                        onClick={() => this.props.removeBox(data[index].id)}
+                        enabled={!isDisabled}
+                        {...props}
+                    >
+                        <RemoveSize16Px
+                            height={16}
+                            style={{
+                                visibility: isDisabled ? 'hidden' : 'visible',
+                            }}
+                        />
+                    </Button>
+                );
+            }
+
+            private getWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
+                return Children.map(children, (child: ReactNode, index: number) =>
+                    HocUtils.supplyConfig(supplier).containerNode(
+                        child,
+                        (props?: Partial<IButtonProps>) => this.getRemoveButtonNode(data, props, index),
+                        data,
+                        index
+                    )
+                );
+            }
+
+            render() {
+                return (
+                    <Component
+                        {...this.props}
+                        renderBody={(
+                            boxProps: Array<IMultilineSingleBoxProps<T>>,
+                            parentProps: IMultilineParentProps
+                        ) => this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
                     />
-                </Button>
-            );
+                );
+            }
         }
 
-        private getWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-            return Children.map(children, (child: ReactNode, index: number) =>
-                HocUtils.supplyConfig(supplier).containerNode(
-                    child,
-                    (props?: Partial<IButtonProps>) => this.getRemoveButtonNode(data, props, index),
-                    data,
-                    index
-                )
-            );
-        }
-
-        render() {
-            return (
-                <Component
-                    {...this.props}
-                    renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) =>
-                        this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)
-                    }
-                />
-            );
-        }
-    }
-
-    return connect<null, ReturnType<typeof mapDispatchToProps>, IMultilineBoxWithRemoveButtonProps<any>>(
-        undefined,
-        mapDispatchToProps
-    )(MultilineBoxWithRemoveButton as any);
-};
+        return connect<null, ReturnType<typeof mapDispatchToProps>, IMultilineBoxWithRemoveButtonProps<any>>(
+            undefined,
+            mapDispatchToProps
+        )(MultilineBoxWithRemoveButton as any);
+    };

@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {ITitleProps, Title} from '../title/Title';
@@ -9,6 +9,7 @@ export interface IBasicHeaderProps extends IHeaderWrapperProps {
      * The title of the header
      */
     title: ITitleProps;
+    children?: ReactNode;
 }
 
 /**

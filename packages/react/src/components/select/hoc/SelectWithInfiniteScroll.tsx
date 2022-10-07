@@ -24,7 +24,7 @@ export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button
     });
 
     const ComponentWithInfiniteScroll: FunctionComponent<
-        P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>
+        React.PropsWithChildren<P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>>
     > = (props) => {
         const dataLength = _.size(props.items);
         const hasMore = props.totalEntries - dataLength > 0;

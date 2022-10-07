@@ -16,6 +16,7 @@ export interface IDropOwnProps extends Partial<IDropPodProps> {
     listContainerProps?: HTMLAttributes<HTMLDivElement>;
     closeOnClickOutside?: boolean;
     closeOnClickDrop?: boolean;
+    children?: ReactNode;
 }
 
 export type IDropStateProps = ReturnType<typeof mapStateToProps>;

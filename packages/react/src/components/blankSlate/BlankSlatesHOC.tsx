@@ -1,4 +1,4 @@
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 import {BlankSlate, IBlankSlateProps} from './BlankSlate';
 import {blankSlateWithError} from './BlankSlateWithError';
@@ -9,12 +9,13 @@ export interface IBlankSlateWithTable extends IBlankSlateWithTableProps, IBlankS
 /**
  * @deprecated Use Plasmantine Blank-slate instead
  */
-export const BlankSlateWithTable: FunctionComponent<IBlankSlateWithTable> = _.compose(blankSlateWithTable)(BlankSlate);
+export const BlankSlateWithTable: FunctionComponent<PropsWithChildren<IBlankSlateWithTable>> =
+    _.compose(blankSlateWithTable)(BlankSlate);
 
 /**
  * @deprecated Use Plasmantine Blank-slate instead
  */
-export const BlankSlateWithTableInError: FunctionComponent<IBlankSlateWithTable> = _.compose(
+export const BlankSlateWithTableInError: FunctionComponent<PropsWithChildren<IBlankSlateWithTable>> = _.compose(
     blankSlateWithTable,
     blankSlateWithError
 )(BlankSlate);
@@ -22,4 +23,5 @@ export const BlankSlateWithTableInError: FunctionComponent<IBlankSlateWithTable>
 /**
  * @deprecated Use Plasmantine Blank-slate instead
  */
-export const BlankSlateWithError: FunctionComponent<IBlankSlateWithTable> = _.compose(blankSlateWithError)(BlankSlate);
+export const BlankSlateWithError: FunctionComponent<PropsWithChildren<IBlankSlateWithTable>> =
+    _.compose(blankSlateWithError)(BlankSlate);

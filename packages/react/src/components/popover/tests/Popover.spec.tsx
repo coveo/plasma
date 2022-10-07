@@ -194,7 +194,7 @@ describe('<Popover>', () => {
                 expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
             });
 
-            it('does not close the popover when clicking on children dropdown values', () => {
+            it('does not close the popover when clicking on children dropdown values', async () => {
                 const Fixture = () => {
                     const [isOpen, setOpen] = useState(false);
                     return (
@@ -220,9 +220,9 @@ describe('<Popover>', () => {
                 };
                 render(<Fixture />);
 
-                userEvent.click(screen.getByRole('button', {name: /toggle/i}));
-                userEvent.click(screen.getByRole('button', {name: /select an option/i}));
-                userEvent.click(screen.getByRole('option', {name: /option 2/i}));
+                await userEvent.click(screen.getByRole('button', {name: /toggle/i}));
+                await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+                await userEvent.click(screen.getByRole('option', {name: /option 2/i}));
                 expect(screen.getByRole('button', {name: /option 2/i})).toBeInTheDocument();
             });
         });

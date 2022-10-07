@@ -1,10 +1,11 @@
 import classNames from 'classnames';
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 
 export interface IModalBodyProps {
     classes?: IClassName;
+    children?: ReactNode;
 }
 
 /**

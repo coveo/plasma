@@ -4,12 +4,9 @@ import {FunctionComponent} from 'react';
 
 import githubLogo from '../../resources/github-mark.svg';
 
-export const GithubButton: FunctionComponent<{href: string; ariaLabel: string; className?: string}> = ({
-    children,
-    className,
-    ariaLabel,
-    href,
-}) => (
+export const GithubButton: FunctionComponent<
+    React.PropsWithChildren<{href: string; ariaLabel: string; className?: string}>
+> = ({children, className, ariaLabel, href}) => (
     <a
         href={href}
         aria-label={ariaLabel}

@@ -1,6 +1,5 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import {mocked} from 'ts-jest/utils';
 
 import {BarSeries} from '../BarSeries';
 import {ChartUtils} from '../ChartUtils';
@@ -14,7 +13,7 @@ jest.mock('react', () => {
     };
 });
 
-const mockedReact = mocked(React);
+const mockedReact = jest.mocked(React);
 
 describe('<BarSeries />', () => {
     it('should not throw', () => {

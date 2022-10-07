@@ -1,9 +1,13 @@
 import classNames from 'classnames';
-import {HTMLAttributes, FunctionComponent} from 'react';
+import {HTMLAttributes, FunctionComponent, PropsWithChildren} from 'react';
 
 export interface ITabContentProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const TabContent: FunctionComponent<ITabContentProps> = ({className, children, ...divProps}) => (
+export const TabContent: FunctionComponent<PropsWithChildren<ITabContentProps>> = ({
+    className,
+    children,
+    ...divProps
+}) => (
     <div {...divProps} className={classNames('tab-content', className)}>
         {children}
     </div>

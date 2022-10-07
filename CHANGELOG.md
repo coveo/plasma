@@ -1,3 +1,44 @@
+## 47.0.1-next.0 (2022-10-03)
+
+
+* chore!: p$ bump react and react-dom to 18 (#2845) ([c4651de](https://github.com/coveo/plasma/commits/c4651dec1282af10a4bad5aec506a61f2f0875bd)), closes [#2845](https://github.com/coveo/plasma/issues/2845) [#2840](https://github.com/coveo/plasma/issues/2840) [#2842](https://github.com/coveo/plasma/issues/2842) [#2843](https://github.com/coveo/plasma/issues/2843) [#2844](https://github.com/coveo/plasma/issues/2844) [#2844](https://github.com/coveo/plasma/issues/2844)
+
+
+### BREAKING CHANGES
+
+* peerDependecy for React is now 18 or higher
+
+* chore: p$ apply codemod for implicit children
+
+* refactor: p! add children prop where codemod did not
+
+* chore: p$ custom env for enzyme not compatible with react 18
+
+* ci: p! max workers at 2 for tests
+
+* chore: p$ bumping RTL and cie
+
+* chore: p$ hack to remove console error for reactDom render
+
+* test: p
+ fixed or removed or skip tests after userEvent bump
+
+* chore(release): publish version v47.1.2 [version bump]
+
+
+
+## 47.1.3 (2022-09-29)
+
+
+
+## 47.1.2 (2022-09-28)
+
+
+
+## 47.1.1 (2022-09-28)
+
+
+
 # 47.1.0 (2022-09-22)
 
 

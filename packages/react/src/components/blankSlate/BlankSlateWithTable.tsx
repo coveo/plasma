@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ComponentType, PureComponent, ComponentClass} from 'react';
+import {ComponentType, PureComponent, ComponentClass, PropsWithChildren} from 'react';
 import {IBlankSlateProps} from './BlankSlate';
 
 export interface IBlankSlateWithTableProps extends IBlankSlateProps {
@@ -12,7 +12,7 @@ export interface IBlankSlateWithTableProps extends IBlankSlateProps {
  * @deprecated Use Plasmantine Blank-slate instead
  */
 export const blankSlateWithTable = <P extends IBlankSlateProps>(
-    Component: ComponentType<P>
+    Component: ComponentType<PropsWithChildren<P>>
 ): ComponentClass<IBlankSlateWithTableProps & P> => {
     class ComponentBlankSlateWithTable extends PureComponent<IBlankSlateWithTableProps & P> {
         static defaultProps: Partial<IBlankSlateWithTableProps & P> = {

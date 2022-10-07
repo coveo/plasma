@@ -284,11 +284,11 @@ describe('Date picker', () => {
             expect(document.querySelector('.to-label')).not.toBeInTheDocument();
         });
 
-        it('should call onClick when clicking the dropdown toggle', () => {
+        it('should call onClick when clicking the dropdown toggle', async () => {
             const onClickSpy = jest.fn();
             render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} onClick={onClickSpy} />);
 
-            userEvent.click(screen.getByRole('button'));
+            await userEvent.click(screen.getByRole('button'));
             expect(onClickSpy).toHaveBeenCalled();
         });
 

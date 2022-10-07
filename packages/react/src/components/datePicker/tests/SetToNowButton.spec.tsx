@@ -12,11 +12,11 @@ describe('SetToNowButton', () => {
         expect(await within(setToNowButton).findByRole('img', {name: 'calendar'})).toBeInTheDocument();
     });
 
-    it('calls the onClick prop when clicking on the button', () => {
+    it('calls the onClick prop when clicking on the button', async () => {
         const onClickSpy = jest.fn();
         render(<SetToNowButton onClick={onClickSpy} />);
 
-        userEvent.click(screen.getByRole('button'));
+        await userEvent.click(screen.getByRole('button'));
         expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
 });

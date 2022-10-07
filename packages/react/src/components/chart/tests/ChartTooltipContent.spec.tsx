@@ -1,6 +1,5 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import {mocked} from 'ts-jest/utils';
 
 import {ChartTooltipContent} from '../ChartTooltipContent';
 import {XYChartContextMock} from './XYChartContextMock';
@@ -13,7 +12,7 @@ jest.mock('react', () => {
     };
 });
 
-const mockedReact = mocked(React);
+const mockedReact = jest.mocked(React);
 
 describe('<ChartTooltipContent />', () => {
     beforeEach(() => {

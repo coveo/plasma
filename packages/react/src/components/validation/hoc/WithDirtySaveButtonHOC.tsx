@@ -52,7 +52,7 @@ export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: Compon
 
         return (
             <Component
-                {...((props as unknown) as T)}
+                {...(props as unknown as T)}
                 enabled={canSaveWhenDirty && !hasErrors && enabled}
                 tooltip={generatedTooltip || tooltip}
             />

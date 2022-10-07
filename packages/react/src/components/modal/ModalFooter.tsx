@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 
@@ -8,6 +8,7 @@ export interface IModalFooterProps {
      * Additionnal CSS class for the footer
      */
     classes?: IClassName;
+    children?: ReactNode;
 }
 
 /**

@@ -1,5 +1,5 @@
 import {Icon} from '@coveord/plasma-react-icons';
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 
 /**
  * @deprecated Use SideNavigationHeaderProps instead
@@ -8,6 +8,7 @@ export interface ISideNavigationHeaderProps {
     title: string;
     icon?: Icon;
     onClick?: () => void;
+    children?: ReactNode;
 }
 
 /**

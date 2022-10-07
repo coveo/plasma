@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {Breadcrumb, IBreadcrumbProps} from '../breadcrumbs/Breadcrumb';
@@ -9,6 +9,7 @@ export interface IBreadcrumbHeaderProps extends IHeaderWrapperProps {
      * Allows to configure the breadcrumb shown in the header
      */
     breadcrumb: IBreadcrumbProps;
+    children?: ReactNode;
 }
 
 /**

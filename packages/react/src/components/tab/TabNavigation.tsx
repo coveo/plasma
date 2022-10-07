@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {HTMLAttributes, FunctionComponent, KeyboardEvent, useState, useRef} from 'react';
+import {HTMLAttributes, FunctionComponent, KeyboardEvent, useState, useRef, PropsWithChildren} from 'react';
 import {keyCode} from '../../utils';
 
 export interface ITabNavigationProps {
@@ -9,7 +9,7 @@ export interface ITabNavigationProps {
 /**
  * @deprecated Use Mantine Tabs instead: https://mantine.dev/core/tabs/
  */
-export const TabNavigation: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
+export const TabNavigation: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({
     className,
     children,
     title,

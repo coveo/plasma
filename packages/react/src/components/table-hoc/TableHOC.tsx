@@ -89,6 +89,7 @@ export interface ITableHOCOwnProps {
         defaultLoadingRow?: number;
         numberOfSubRow?: number;
     };
+    children?: ReactNode;
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
@@ -96,7 +97,9 @@ export interface ITableHOCProps extends ITableHOCOwnProps {}
 /**
  * @deprecated Use Mantine instead
  */
-export const TableHOC: FunctionComponent<ITableHOCProps & HTMLAttributes<HTMLTableElement>> = ({
+export const TableHOC: FunctionComponent<
+    React.PropsWithChildren<ITableHOCProps & HTMLAttributes<HTMLTableElement>>
+> = ({
     hasActionButtons = false,
     actions = [],
     actionBarPrefixContent,

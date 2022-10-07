@@ -24,43 +24,48 @@ export interface ITableWithBlankSlateProps extends Partial<ITableWithBlankSlateS
 /**
  * @deprecated Use Mantine instead
  */
-export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTableProps> = {}) => (
-    Component: ComponentClass<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>
-): ComponentType<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps> => {
-    const config = HocUtils.supplyConfig(supplier);
-    const defaultRenderBlankSlateMethod = <BlankSlateWithTable {...config} />;
-    const mapStateToProps = (state: PlasmaState, ownProps: ITableHOCOwnProps & ITableWithBlankSlateProps) => {
-        const isEmpty = TableSelectors.getIsEmpty(state, ownProps);
-        return {
-            isEmpty,
-            isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
-            isEmptyStateSet: TableSelectors.isEmptyStateSet(state, ownProps),
-            data: isEmpty ? null : ownProps.data,
+export const tableWithBlankSlate =
+    (supplier: ConfigSupplier<IBlankSlateWithTableProps> = {}) =>
+    (
+        Component: ComponentClass<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>
+    ): ComponentType<
+        React.PropsWithChildren<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps>
+    > => {
+        const config = HocUtils.supplyConfig(supplier);
+        const defaultRenderBlankSlateMethod = <BlankSlateWithTable {...config} />;
+        const mapStateToProps = (state: PlasmaState, ownProps: ITableHOCOwnProps & ITableWithBlankSlateProps) => {
+            const isEmpty = TableSelectors.getIsEmpty(state, ownProps);
+            return {
+                isEmpty,
+                isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
+                isEmptyStateSet: TableSelectors.isEmptyStateSet(state, ownProps),
+                data: isEmpty ? null : ownProps.data,
+            };
         };
-    };
 
-    const TableWithBlankSlate: FunctionComponent<
-        ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>
-    > = (props) => {
-        const {renderBlankSlate, renderBlankSlateOnly, isEmpty, isTrulyEmpty, isEmptyStateSet, ...tableProps} = props;
+        const TableWithBlankSlate: FunctionComponent<
+            React.PropsWithChildren<ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>>
+        > = (props) => {
+            const {renderBlankSlate, renderBlankSlateOnly, isEmpty, isTrulyEmpty, isEmptyStateSet, ...tableProps} =
+                props;
 
-        const blankSlateToRender = renderBlankSlate ?? defaultRenderBlankSlateMethod;
-        let componentToReturn = (
-            <Component {...tableProps} renderBody={isEmpty ? () => blankSlateToRender : props.renderBody} />
-        );
+            const blankSlateToRender = renderBlankSlate ?? defaultRenderBlankSlateMethod;
+            let componentToReturn = (
+                <Component {...tableProps} renderBody={isEmpty ? () => blankSlateToRender : props.renderBody} />
+            );
 
-        if (isTrulyEmpty && !props.isLoading) {
-            if (isEmptyStateSet) {
-                componentToReturn = <Component {...tableProps} renderBody={props.renderBody} />;
-            } else if (renderBlankSlateOnly) {
-                componentToReturn = blankSlateToRender;
+            if (isTrulyEmpty && !props.isLoading) {
+                if (isEmptyStateSet) {
+                    componentToReturn = <Component {...tableProps} renderBody={props.renderBody} />;
+                } else if (renderBlankSlateOnly) {
+                    componentToReturn = blankSlateToRender;
+                }
             }
-        }
 
-        return componentToReturn;
+            return componentToReturn;
+        };
+
+        return connect<ReturnType<typeof mapStateToProps>, ITableHOCOwnProps & ITableWithBlankSlateProps>(
+            mapStateToProps
+        )(TableWithBlankSlate as any);
     };
-
-    return connect<ReturnType<typeof mapStateToProps>, ITableHOCOwnProps & ITableWithBlankSlateProps>(mapStateToProps)(
-        TableWithBlankSlate as any
-    );
-};

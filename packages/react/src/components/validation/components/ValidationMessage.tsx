@@ -23,7 +23,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IValidationMessagePro
 });
 
 export const ValidationMessageDisconnect: FunctionComponent<
-    IValidationMessageProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
+    React.PropsWithChildren<
+        IValidationMessageProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
+    >
 > = ({onlyShowIfDirty, isDirty, errors, warnings, cleanMessage}) => {
     useEffect(() => () => void cleanMessage(), []);
 

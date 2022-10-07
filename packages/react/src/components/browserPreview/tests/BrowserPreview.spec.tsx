@@ -8,7 +8,7 @@ describe('BrowserPreview', () => {
         const headerDescription = '🥰';
         render(<BrowserPreview headerDescription={headerDescription} />);
         await waitFor(() => screen.findByRole('img', {name: /info/i}));
-        userEvent.hover(screen.getByRole('img', {name: /info/i}));
+        await userEvent.hover(screen.getByRole('img', {name: /info/i}));
 
         expect(await screen.findByText(headerDescription)).toBeVisible();
     });

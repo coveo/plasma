@@ -1,4 +1,4 @@
-import {render, screen} from '@test-utils';
+import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {shallow} from 'enzyme';
 import {SearchBar} from '../SearchBar';
@@ -51,27 +51,17 @@ describe('SearchBar', () => {
         const searchSpy = jest.fn();
 
         render(<SearchBar onSearch={searchSpy} />);
-        userEvent.click(await screen.findByRole('img', {name: 'search'}));
+        await userEvent.click(await screen.findByRole('img', {name: 'search'}));
 
-        expect(searchSpy).toHaveBeenCalledTimes(1);
+        await waitFor(() => expect(searchSpy).toHaveBeenCalledTimes(1));
     });
 
-    it('calls onSearch if user press enter', () => {
+    it('dont call onSearch will the user is typing', async () => {
         const searchSpy = jest.fn();
 
         render(<SearchBar onSearch={searchSpy} />);
-        userEvent.click(screen.getByRole('textbox'));
-        userEvent.keyboard('{enter}');
-
-        expect(searchSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('dont call onSearch will the user is typing', () => {
-        const searchSpy = jest.fn();
-
-        render(<SearchBar onSearch={searchSpy} />);
-        userEvent.click(screen.getByRole('textbox'));
-        userEvent.keyboard('Hello darkness my old friend');
+        await userEvent.click(screen.getByRole('textbox'));
+        await userEvent.keyboard('Hello darkness my old friend');
 
         expect(searchSpy).not.toHaveBeenCalled();
     });
@@ -80,22 +70,22 @@ describe('SearchBar', () => {
         const searchSpy = jest.fn();
 
         render(<SearchBar onSearch={searchSpy} disabled />);
-        userEvent.click(await screen.findByRole('img', {name: 'search'}));
+        await userEvent.click(await screen.findByRole('img', {name: 'search'}));
 
         expect(searchSpy).toHaveBeenCalledTimes(0);
 
-        userEvent.click(screen.getByRole('textbox'));
-        userEvent.keyboard('{enter}');
+        await userEvent.click(screen.getByRole('textbox'));
+        await userEvent.keyboard('{enter}');
 
         expect(searchSpy).toHaveBeenCalledTimes(0);
     });
 
-    it('call onChange on input change if it is defined', () => {
+    it('call onChange on input change if it is defined', async () => {
         const onChangeSpy = jest.fn();
 
         render(<SearchBar onChange={onChangeSpy} />);
-        userEvent.click(screen.getByRole('textbox'));
-        userEvent.keyboard('hello darkness'); // 14 characters
+        await userEvent.click(screen.getByRole('textbox'));
+        await userEvent.keyboard('hello darkness'); // 14 characters
 
         expect(onChangeSpy).toHaveBeenCalledTimes(14);
     });
