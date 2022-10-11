@@ -1,3 +1,12 @@
+# 47.3.0 (2022-10-11)
+
+
+### Features
+
+* add form props in the form component ([#2854](https://github.com/coveo/plasma/issues/2854)) ([734df4d](https://github.com/coveo/plasma/commits/734df4d2a7bb8eab8781208a61382b31564b2392))
+
+
+
 ## 47.2.3 (2022-10-07)
 
 
