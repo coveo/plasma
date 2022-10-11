@@ -3,7 +3,7 @@ import {FunctionComponent, FormEvent, PropsWithChildren, FormHTMLAttributes} fro
 
 type FormMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
-export interface IFormProps extends FormHTMLAttributes<HTMLFormElement>, FormHTMLAttributes<HTMLFormElement> {
+export interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
     title?: string;
     className?: string;
     mods?: FormMods | FormMods[];
@@ -25,7 +25,7 @@ export const Form: FunctionComponent<PropsWithChildren<IFormProps>> = ({
         submitEvent.preventDefault();
     };
     return (
-        <form onSubmit={onSubmit} className="full-content" {...props} {...props}>
+        <form onSubmit={onSubmit} className="full-content" {...props}>
             <fieldset className={classNames('coveo-form mod-padding-children', {my2: !noMargin}, mods, className)}>
                 {title && <h2 className="mb2">{title}</h2>}
                 {children}
