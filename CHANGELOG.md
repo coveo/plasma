@@ -1,3 +1,12 @@
+## 47.3.1 (2022-10-12)
+
+
+### Reverts
+
+* Revert breaking updates (#2855) ([fcef4c8](https://github.com/coveo/plasma/commits/fcef4c891b4f4cbe04ca23e75d1ddbe7eb6450cc)), closes [#2855](https://github.com/coveo/plasma/issues/2855) [#2844](https://github.com/coveo/plasma/issues/2844) [#2843](https://github.com/coveo/plasma/issues/2843)
+
+
+
 # 47.3.0 (2022-10-11)
 
 
