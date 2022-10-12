@@ -53,7 +53,10 @@ describe('<XYAxis />', () => {
         const component = shallow(<XYAxis x={{show: true}} y={{show: false}} />);
 
         // D3 doesn't enforce a strict tick count
-        const linearScale = scaleLinear().range(XYChartContextMock.xScale.range()).domain(XYChartContextMock.xDomain);
+        const linearScale = d3.scale
+            .linear()
+            .range(XYChartContextMock.xScale.range())
+            .domain(XYChartContextMock.xDomain);
 
         expect(component.find('.x-axis-tick text').length).toBe(
             linearScale.ticks(XYChartContextMock.xTicksCount).length

@@ -43,7 +43,7 @@ export const XYAxis: FunctionComponent<PropsWithChildren<XYAxisProps>> = ({x, y,
     const newWidth = width - yAxis.size - 2 * xInnerPadding;
     const newHeight = height - xAxis.size - 2 * yInnerPadding;
 
-    const newXScale = xScale.range([0, newWidth]);
+    const newXScale = xScale.rangePoints([0, newWidth]);
     const newYScale = yScale.range([newHeight, 0]);
 
     const minX = newXScale(xDomain[0]);
