@@ -4,20 +4,21 @@ import {FunctionComponent, useContext} from 'react';
 import {XYChartContext, XYPoint, XYSerie} from './XYChart';
 
 export interface LineSeriesProps {
+    interpolate?: string;
     strokeWith?: number;
 }
 
 /**
  * @deprecated Use Mantine instead
  */
-export const LineSeries: FunctionComponent<LineSeriesProps> = ({strokeWith = 2, children}) => {
+export const LineSeries: FunctionComponent<LineSeriesProps> = ({interpolate = 'linear', strokeWith = 2, children}) => {
     const {series, xScale, yScale, color, colorPattern} = useContext(XYChartContext);
 
-    const line = d3
+    const line = d3.svg
         .line<XYPoint>()
         .x((d) => xScale(d.x))
         .y((d) => yScale(d.y))
-        .curve(d3.curveLinear);
+        .interpolate(interpolate);
 
     const lines = series.map((serie: XYSerie, i: number) => (
         <path

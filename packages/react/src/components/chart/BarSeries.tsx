@@ -1,4 +1,4 @@
-import {range, scaleBand} from 'd3';
+import * as d3 from 'd3';
 import {FunctionComponent, useContext} from 'react';
 
 import {ChartUtils} from './ChartUtils';
@@ -20,7 +20,10 @@ export const BarSeries: FunctionComponent<BarSeriesProps> = ({barRatio = 0.8, ch
             ? ((xScale(xDomain[1]) - xScale(xDomain[0])) / xValues.length / 2) * barRatio
             : (xScale(xDomain[0]) / 2) * barRatio;
 
-    const innerXScale = scaleBand<number>().domain(range(series.length)).rangeRound([-barWidth, barWidth]);
+    const innerXScale = d3.scale
+        .ordinal<number, number>()
+        .domain(d3.range(series.length))
+        .rangeBands([-barWidth, barWidth], 0);
 
     const bars = series.map((serie: XYSerie, serieIndex: number) =>
         serie.data.map((point: XYPoint) => {
@@ -29,7 +32,7 @@ export const BarSeries: FunctionComponent<BarSeriesProps> = ({barRatio = 0.8, ch
                 <rect
                     key={`${serie.label}-${point.x}`}
                     fill={color(serieIndex, colorPattern, point)}
-                    width={innerXScale.bandwidth()}
+                    width={innerXScale.rangeBand()}
                     height={yScale(yDomain[0]) - barHeight}
                     x={xScale(point.x) + innerXScale(serieIndex)}
                     y={barHeight}

@@ -1,4 +1,4 @@
-import {ComponentType, FunctionComponent, createElement, Component} from 'react';
+import {ComponentType, FC, FunctionComponent, createElement, Component} from 'react';
 import {DragDropContext} from 'react-dnd';
 import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
@@ -91,7 +91,7 @@ export class TestUtils {
     }
 }
 
-export const ErrorList: FunctionComponent<{id: string}> = ({id}) => {
+export const ErrorList: FC<{id: string}> = ({id}) => {
     const errors = useSelector(ValidationSelectors.getErrors(id));
     const errorList = errors.map(({value}) => <li key={value}>{value}</li>);
 
