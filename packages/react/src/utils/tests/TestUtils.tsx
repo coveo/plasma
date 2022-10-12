@@ -1,4 +1,6 @@
-import {FunctionComponent} from 'react';
+import {ComponentType, FunctionComponent, createElement, Component} from 'react';
+import {DragDropContext} from 'react-dnd';
+import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
 import createMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -75,6 +77,17 @@ export class TestUtils {
                 },
             };
         });
+    }
+
+    static wrapComponentInDnDContext(WrappedComponent: any): ComponentType<any> {
+        @DragDropContext(TestBackend)
+        class TestContextContainer extends Component {
+            render() {
+                return createElement(WrappedComponent, this.props);
+            }
+        }
+
+        return TestContextContainer;
     }
 }
 
