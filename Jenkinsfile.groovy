@@ -49,7 +49,10 @@ pipeline {
         script {
           setLastStageName();
           commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
-          if(commitMessage.contains("[version bump]")) {
+          if (!(env.BRANCH_NAME ==~ /(master|next|release-.*)/)) {
+            skipRemainingStages = true
+            println "Skipping this build because it is a pull request."
+          } else if (commitMessage.contains("[version bump]")) {
             skipRemainingStages = true
             println "Skipping this build because it was triggered by a version bump."
           } else {
