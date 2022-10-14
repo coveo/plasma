@@ -5,6 +5,8 @@
 
 Plasma is Coveo's design system used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](https://plasma.coveo.com/). The `@coveord/plasma-style` package contains the generic style classes used across the components and `@coveord/plasma-react` is a react implementation of multiple visual and behavioural components.
 
+This is a CI/CD test.
+
 ## Usage
 
 ```bash
