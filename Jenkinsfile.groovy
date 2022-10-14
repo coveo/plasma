@@ -51,7 +51,10 @@ pipeline {
           commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
           if (!(env.BRANCH_NAME ==~ /(master|next|release-.*)/)) {
             skipRemainingStages = true
-            println "Skipping this build because it is a pull request."
+            println "Skipping this build because it is a pull request. Pull requests are now built using the github CI workflow."
+          } else if (env.BRANCH_NAME ==~ /master/) {
+            skipRemainingStages = true
+            println "Skipping this build because it is the master branch. The master branch is now built using the github CD workflow."
           } else if (commitMessage.contains("[version bump]")) {
             skipRemainingStages = true
             println "Skipping this build because it was triggered by a version bump."

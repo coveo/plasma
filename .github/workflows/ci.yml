@@ -6,7 +6,7 @@ on:
 
 jobs:
     lint:
-        name: 'Lint Changed Files'
+        name: Lint Changed Files
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -35,13 +35,11 @@ jobs:
             - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
             - uses: ./.github/actions/setup
             - uses: ./.github/actions/build
-            - name: Configure AWS Credentials
-              uses: aws-actions/configure-aws-credentials@v1
+            - uses: ./.github/actions/deploy
               with:
-                  role-to-assume: ${{ secrets.AWS_ROLE_PUSH_DEMO }}
-                  aws-region: us-east-1
-            - name: Push distribution code to s3 demo folder
-              run: bash ./build/deploy-demo.sh ${{ github.head_ref }}
+                  AWS_ROLE: ${{ secrets.AWS_ROLE }}
+                  AWS_REGION: ${{ secrets.AWS_REGION }}
+                  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
             - name: Add demo link as a commment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
