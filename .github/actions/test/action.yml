@@ -4,4 +4,4 @@ runs:
     using: composite
     steps:
         - shell: bash
-          run: pnpm --workspace-concurrency 1 test:ci
+          run: pnpm test
