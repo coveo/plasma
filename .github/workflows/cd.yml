@@ -1,0 +1,35 @@
+name: CD
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    cd:
+        name: Continous Delivery
+        runs-on: [self-hosted, linux, x64, ec2]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+              with:
+                  fetch-depth: 0
+            - name: Setup
+              uses: ./.github/actions/setup
+              with:
+                  use_cache: 'false'
+                  use_deployment_pipeline: 'true'
+            - name: Lint
+              uses: ./.github/actions/lint
+              with:
+                  WORKFLOW: 'cd'
+            - name: Build
+              uses: ./.github/actions/build
+            - name: Test
+              uses: ./.github/actions/test
+            - name: Scan for vulnerabilities
+              uses: ./.github/actions/snyk-pnpm
+              with:
+                  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+            - name: Publish and Deploy
+              uses: ./.github/actions/deploy
