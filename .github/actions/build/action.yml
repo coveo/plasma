@@ -3,12 +3,5 @@ description: 'Build all packages'
 runs:
     using: composite
     steps:
-        - uses: actions/cache@v3
-          name: Setup turbo cache
-          with:
-              path: node_modules/.cache/turbo
-              key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
-              restore-keys: |
-                  turbo-${{ github.job }}-${{ github.ref_name }}-
         - shell: bash
           run: pnpm build
