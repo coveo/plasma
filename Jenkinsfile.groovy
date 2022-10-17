@@ -160,7 +160,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "pnpm --workspace-concurrency 1 test:ci"
+          sh "pnpm test -- -- --silent"
         }
       }
     }
