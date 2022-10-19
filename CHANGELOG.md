@@ -1,3 +1,12 @@
+## 47.3.4 (2022-10-19)
+
+
+### Bug Fixes
+
+* **limit:** chart pie was renamed so i changed the icon ([#2860](https://github.com/coveo/plasma/issues/2860)) ([04525ac](https://github.com/coveo/plasma/commits/04525ac9594761dce898ce0189ec9ff890e48ccc))
+
+
+
 ## 47.3.3 (2022-10-17)
 
 
