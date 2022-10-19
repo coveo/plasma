@@ -3,6 +3,10 @@ description: Publish the new versions on NPM and re deploy the website
 runs:
     using: 'composite'
     steps:
+        - if: inputs.use_deployment_pipeline == 'true'
+          uses: actions/setup-python@v3
+        - if: inputs.use_deployment_pipeline == 'true'
+          uses: coveo/deployment-pipeline-actions/setup@main
         - name: Publish new version
           shell: bash
           run: node build/publishNewVersion.mjs

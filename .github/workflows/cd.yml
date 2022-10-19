@@ -18,7 +18,6 @@ jobs:
               uses: ./.github/actions/setup
               with:
                   use_cache: 'false'
-                  use_deployment_pipeline: 'true'
             - name: Lint
               uses: ./.github/actions/lint
               with:

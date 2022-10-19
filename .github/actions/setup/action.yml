@@ -4,9 +4,6 @@ inputs:
     use_cache:
         default: 'true'
         description: Whether github actions cache should be used
-    use_deployment_pipeline:
-        default: 'false'
-        description: Whether the deployment pipeline should be installed
 runs:
     using: composite
     steps:
@@ -15,10 +12,6 @@ runs:
           with:
               version: 7
               run_install: false
-        - if: inputs.use_deployment_pipeline == 'true'
-          uses: actions/setup-python@v3
-        - if: inputs.use_deployment_pipeline == 'true'
-          uses: coveo/deployment-pipeline-actions/setup@main
         - name: Get pnpm store directory
           id: pnpm-cache
           if: inputs.use_cache == 'true'
