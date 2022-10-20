@@ -1,3 +1,12 @@
+## 47.3.5 (2022-10-20)
+
+
+### Bug Fixes
+
+* **xyaxis:** when few data points, the x axis would not display any label ([#2862](https://github.com/coveo/plasma/issues/2862)) ([a015d7b](https://github.com/coveo/plasma/commits/a015d7bbe3c94f579726e7af5f88318b275f0320))
+
+
+
 ## 47.3.4 (2022-10-19)
 
 
