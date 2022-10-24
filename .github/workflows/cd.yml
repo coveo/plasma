@@ -8,7 +8,7 @@ on:
 jobs:
     cd:
         name: Continous Delivery
-        runs-on: [self-hosted, linux, x64, ec2]
+        runs-on: ubuntu-latest
         steps:
             - name: Checkout
               uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -16,8 +16,6 @@ jobs:
                   fetch-depth: 0
             - name: Setup
               uses: ./.github/actions/setup
-              with:
-                  use_cache: 'false'
             - name: Lint
               uses: ./.github/actions/lint
               with:
@@ -30,5 +28,27 @@ jobs:
               uses: ./.github/actions/snyk-pnpm
               with:
                   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-            - name: Publish and Deploy
-              uses: ./.github/actions/deploy
+            - name: Check Scan
+              uses: ./.github/actions/check-scan-alerts
+            - name: Publish new version
+              shell: bash
+              run: node build/publishNewVersion.mjs
+            - name: Upload website content
+              uses: actions/upload-pages-artifact@v1
+              with:
+                  path: packages/website/out
+
+    deploy:
+        name: Deploy Website
+        needs: cd
+        runs-on: ubuntu-latest
+        permissions:
+            pages: write
+            id-token: write
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v1
