@@ -1,9 +1,5 @@
 name: 'Setup'
 description: 'Install Node, PNPM, and dependencies using cache'
-inputs:
-    use_cache:
-        default: 'true'
-        description: Whether github actions cache should be used
 runs:
     using: composite
     steps:
@@ -14,13 +10,11 @@ runs:
               run_install: false
         - name: Get pnpm store directory
           id: pnpm-cache
-          if: inputs.use_cache == 'true'
           shell: bash
           run: |
               echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
         - uses: actions/cache@v3
           name: Setup pnpm cache
-          if: inputs.use_cache == 'true'
           # inspired from https://github.com/pnpm/action-setup/tree/master#use-cache-to-reduce-installation-time
           with:
               path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
@@ -31,7 +25,6 @@ runs:
           shell: bash
           run: pnpm install --frozen-lockfile
         - name: Setup turbo cache
-          if: inputs.use_cache == 'true'
           uses: actions/cache@v3
           with:
               path: node_modules/.cache/turbo
