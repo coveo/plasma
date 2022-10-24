@@ -1,4 +1,4 @@
-import {ScaleLinear, scaleLinear, scalePoint, ScalePoint} from 'd3';
+import * as d3 from 'd3';
 import {FunctionComponent, createContext, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
@@ -35,8 +35,8 @@ export interface XYChartContextProps {
     yDomain: [number, number];
     series: XYSerie[];
     colorPattern: string[];
-    xScale: ScalePoint<number>;
-    yScale: ScaleLinear<number, number>;
+    xScale: d3.ScalePoint<number>;
+    yScale: d3.ScaleLinear<number, number>;
     xFormat: (value: number) => string | number;
     yFormat: (value: number) => string | number;
     xTicksCount: number;
@@ -51,8 +51,8 @@ export const XYChartContext = createContext<XYChartContextProps>({
     yDomain: [0, 0],
     series: [],
     colorPattern: [],
-    xScale: scalePoint<number>(),
-    yScale: scaleLinear(),
+    xScale: d3.scalePoint<number>(),
+    yScale: d3.scaleLinear(),
     xFormat: _.identity,
     yFormat: _.identity,
     xTicksCount: 10,
@@ -107,9 +107,9 @@ export const XYChart: FunctionComponent<PropsWithChildren<XYChartProps>> = ({
     width = width - chartPadding.left - chartPadding.right;
     height = height - chartPadding.top - chartPadding.bottom;
 
-    const xScale = scalePoint<number>().domain(xValues).range([0, width]);
+    const xScale = d3.scalePoint<number>().domain(xValues).range([0, width]);
 
-    const yScale = scaleLinear<number, number>().domain(yDomain).range([height, 0]);
+    const yScale = d3.scaleLinear<number, number>().domain(yDomain).range([height, 0]);
 
     return (
         <XYChartContext.Provider
