@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "build": "ultra --recursive build",
+        "build": "turbo run build",
         "clean": "pnpm --recursive --parallel clean",
         "commit-cli": "cz",
         "preinstall": "npx only-allow pnpm",
@@ -13,9 +13,7 @@
         "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done",
         "setup": "pnpm install",
         "start": "pnpm build && pnpm --recursive --parallel start",
-        "test": "pnpm --recursive test",
-        "test:changed": "pnpm --recursive test:changed",
-        "test:ci": "pnpm --recursive test:ci"
+        "test": "turbo run test"
     },
     "commitlint": {
         "extends": [
@@ -23,9 +21,15 @@
         ]
     },
     "lint-staged": {
-        "package.json": [
-            "sort-package-json",
-            "git add"
+        "**/package.json": [
+            "sort-package-json"
+        ],
+        "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html,css}": [
+            "prettier --write"
+        ],
+        "**/*.scss": [
+            "stylelint --custom-syntax postcss-scss --fix",
+            "prettier --write"
         ]
     },
     "config": {
@@ -64,7 +68,7 @@
         "sort-package-json": "1.57.0",
         "stylelint": "14.12.1",
         "tsjs": "4.2.1",
-        "ultra-runner": "3.10.5",
+        "turbo": "1.5.6",
         "underscore": "1.13.4",
         "walkdir": "0.4.1"
     },

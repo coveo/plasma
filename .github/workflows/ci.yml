@@ -1,0 +1,49 @@
+name: CI
+
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+
+jobs:
+    lint:
+        name: 'Lint Changed Files'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+              with:
+                  fetch-depth: 0
+            - uses: ./.github/actions/setup
+            - uses: ./.github/actions/lint
+              with:
+                  WORKFLOW: 'ci'
+    test:
+        name: Build and Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+            - uses: ./.github/actions/setup
+            - uses: ./.github/actions/build
+            - uses: ./.github/actions/test
+    demo:
+        name: Deploy Demo
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
+            id-token: write
+            contents: read
+        steps:
+            - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+            - uses: ./.github/actions/setup
+            - uses: ./.github/actions/build
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v1
+              with:
+                  role-to-assume: ${{ secrets.AWS_ROLE_PUSH_DEMO }}
+                  aws-region: us-east-1
+            - name: Push distribution code to s3 demo folder
+              run: bash ./build/deploy-demo.sh ${{ github.head_ref }}
+            - name: Add demo link as a commment on the PR
+              uses: ./.github/actions/comment-on-pr
+              with:
+                  message: ':heavy_check_mark: [Live demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ github.head_ref }}/index.html).'
+                  avoidRepostsWith: Live demo of your latest successful build available here
