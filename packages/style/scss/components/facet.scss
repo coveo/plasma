@@ -5,6 +5,9 @@
     margin-right: 0;
     padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
     border-right: $default-border;
+    &-activity {
+        border-right: none;
+    }
 }
 
 .facet {
