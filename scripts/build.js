@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const {spawn} = require('child_process');
+const path = require('path');
 
 process.on('unhandledRejection', (err) => {
     throw err;
@@ -24,27 +25,25 @@ const build = async ({watch = false}) => {
         console.info('starting typescript compilation');
 
         const tscArgs = ['-p', './tsconfig.build.json', '--emitDeclarationOnly'];
-        const swcArgs = [
-            './src',
-            '--out-dir',
-            './dist/cjs',
-            '--ignore',
-            '**/*.spec.ts',
-            '--ignore',
-            '**/*.spec.tsx',
-            '--copy-files',
-            '--config-file',
-            './.swcrc',
-        ];
+        const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
+
         if (watch) {
             tscArgs.push('--watch');
             swcArgs.push('--watch');
         }
 
-        const swcES6Args = [...swcArgs, '--config', 'module.type=es6', '--out-dir', './dist/esm'];
+        const swcCJSArgs = [
+            ...swcArgs,
+            '--config',
+            'module.type=commonjs',
+            'jsc.target=es5',
+            '--out-dir',
+            './dist/cjs',
+        ];
+        const swcES6Args = [...swcArgs, '--config', 'module.type=es6', 'jsc.target=es2020', '--out-dir', './dist/esm'];
 
         const dts = spawn('tsc', tscArgs, {stdio: 'inherit', shell: true});
-        const commonJs = spawn('swc', swcArgs, {stdio: 'inherit', shell: true});
+        const commonJs = spawn('swc', swcCJSArgs, {stdio: 'inherit', shell: true});
         const esm = spawn('swc', swcES6Args, {stdio: 'inherit', shell: true});
         await Promise.all([onExit(dts), onExit(commonJs), onExit(esm)]);
 

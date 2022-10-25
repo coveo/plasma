@@ -1,23 +1,19 @@
 {
+    "$schema": "https://json.schemastore.org/swcrc",
+    "exclude": [".*\\.spec\\..*"],
     "jsc": {
-        "target": "es5",
-        "keepClassNames": true,
         "externalHelpers": true,
         "parser": {
             "syntax": "typescript",
             "tsx": true,
             "decorators": true,
-            "dynamicImport": true,
-            "classPrivateProperty": true
+            "dynamicImport": true
         },
         "transform": {
             "react": {
                 "runtime": "automatic"
             }
         }
-    },
-    "module": {
-        "type": "commonjs"
     },
     "sourceMaps": true
 }
