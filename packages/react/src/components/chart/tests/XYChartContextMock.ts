@@ -1,4 +1,4 @@
-import {scaleLinear, scaleOrdinal, scalePoint} from 'd3';
+import {scaleLinear, scaleOrdinal, scalePoint} from 'd3-scale';
 import * as _ from 'underscore';
 
 import {XYChartContextProps} from '../XYChart';

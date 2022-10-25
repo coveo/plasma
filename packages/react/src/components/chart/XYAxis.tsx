@@ -1,4 +1,4 @@
-import {scaleLinear} from 'd3';
+import {scaleLinear} from 'd3-scale';
 import {FunctionComponent, PropsWithChildren, useContext} from 'react';
 import * as _ from 'underscore';
 

@@ -161,6 +161,9 @@ importers:
       '@types/classnames': 2.3.0
       '@types/codemirror': 0.0.109
       '@types/d3': 7.4.0
+      '@types/d3-array': 3.0.3
+      '@types/d3-scale': 4.0.2
+      '@types/d3-shape': 3.1.0
       '@types/enzyme': 3.10.12
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
@@ -193,6 +196,9 @@ importers:
       codecov: 3.8.2
       codemirror: 5.63.3
       d3: 7.6.1
+      d3-array: 3.2.0
+      d3-scale: 4.0.2
+      d3-shape: 3.1.0
       del: 6.0.0
       dnd-core: 16.0.1
       enzyme: 3.11.0
@@ -252,6 +258,9 @@ importers:
       classnames: 2.3.1
       codemirror: 5.63.3
       d3: 7.6.1
+      d3-array: 3.2.0
+      d3-scale: 4.0.2
+      d3-shape: 3.1.0
       dnd-core: 16.0.1
       moment: 2.29.4
       query-string: 6.14.1
@@ -283,6 +292,9 @@ importers:
       '@testing-library/user-event': 14.4.3_znccgeejomvff3jrsk3ljovfpu
       '@types/classnames': 2.3.0
       '@types/d3': 7.4.0
+      '@types/d3-array': 3.0.3
+      '@types/d3-scale': 4.0.2
+      '@types/d3-shape': 3.1.0
       '@types/enzyme': 3.10.12
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
@@ -9840,11 +9852,11 @@ packages:
       wrappy: 1.0.2
 
   /inherits/2.0.1:
-    resolution: {integrity: sha512-8nWq2nLTAwd02jTqJExUYFSD/fKq6VH9Y/oG2accc/kdI0V98Bag8d5a4gi3XHz73rDWa2PvTtvcWYquKqSENA==}
+    resolution: {integrity: sha1-sX0I0ya0Qj5Wjv9xn5GwscvfafE=}
     dev: true
 
   /inherits/2.0.3:
-    resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
+    resolution: {integrity: sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=}
     dev: true
 
   /inherits/2.0.4:
