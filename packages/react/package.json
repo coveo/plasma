@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "47.3.7",
+    "version": "47.0.1-next.1",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
