@@ -1,4 +1,4 @@
-import {scaleLinear} from 'd3';
+import {scaleLinear} from 'd3-scale';
 import {shallow} from 'enzyme';
 import * as React from 'react';
 

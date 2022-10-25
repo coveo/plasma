@@ -33,35 +33,8 @@
         "build": "gulp clean && gulp && webpack",
         "clean": "gulp clean",
         "lintfix": "../../node_modules/.bin/stylelint --custom-syntax postcss-scss --fix \"**/*.scss\" && ../../node_modules/.bin/prettier --write \"**/*.{scss,js,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"**/*.js\" --fix",
-        "precommit": "lint-staged",
         "start": "concurrently \"gulp watch\" \"webpack --watch\""
     },
-    "lint-staged": {
-        "package.json": [
-            "sort-package-json",
-            "git add"
-        ],
-        "**/*.scss": [
-            "stylelint --custom-syntax postcss-scss --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "**/*.{js}": [
-            "eslint -c ./.eslintrc --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "**/*.{js,json,md,yml,html}": [
-            "prettier --write",
-            "git add"
-        ]
-    },
-    "browserslist": [
-        "cover 90%",
-        "last 1 versions",
-        "IE 11",
-        "not dead"
-    ],
     "dependencies": {
         "codemirror": "^5.59.4",
         "rc-slider": "8.7.1",

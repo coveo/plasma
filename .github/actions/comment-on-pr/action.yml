@@ -1,0 +1,22 @@
+name: 'Add Comment on PR'
+description: 'Add a comment on the current PR'
+inputs:
+    message:
+        description: The message to post on the PR
+        required: true
+    avoidRepostsWith:
+        description: Use this to avoid reposting the message if it is already on the PR
+        required: false
+runs:
+    using: composite
+    steps:
+        - uses: actions/github-script@v6
+          with:
+              script: |
+                  const addComment = require('./.github/actions/comment-on-pr/index.js');
+                  await addComment({
+                      github,
+                      context,
+                      message: '${{ inputs.message }}',
+                      avoidRepostsWith: '${{ inputs.avoidRepostsWith }}',
+                  });

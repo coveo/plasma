@@ -8,6 +8,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
+    ignorePatterns: ['build', '.eslintrc.js'],
     overrides: [
         {
             files: ['src/examples/**/*.tsx'],

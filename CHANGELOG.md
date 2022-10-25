@@ -1,3 +1,85 @@
+## 47.3.5 (2022-10-20)
+
+
+### Bug Fixes
+
+* **xyaxis:** when few data points, the x axis would not display any label ([#2862](https://github.com/coveo/plasma/issues/2862)) ([a015d7b](https://github.com/coveo/plasma/commits/a015d7bbe3c94f579726e7af5f88318b275f0320))
+
+
+
+## 47.3.4 (2022-10-19)
+
+
+### Bug Fixes
+
+* **limit:** chart pie was renamed so i changed the icon ([#2860](https://github.com/coveo/plasma/issues/2860)) ([04525ac](https://github.com/coveo/plasma/commits/04525ac9594761dce898ce0189ec9ff890e48ccc))
+
+
+
+## 47.3.3 (2022-10-17)
+
+
+
+## 47.3.2 (2022-10-13)
+
+
+
+## 47.3.1 (2022-10-12)
+
+
+### Reverts
+
+* Revert breaking updates (#2855) ([fcef4c8](https://github.com/coveo/plasma/commits/fcef4c891b4f4cbe04ca23e75d1ddbe7eb6450cc)), closes [#2855](https://github.com/coveo/plasma/issues/2855) [#2844](https://github.com/coveo/plasma/issues/2844) [#2843](https://github.com/coveo/plasma/issues/2843)
+
+
+
+# 47.3.0 (2022-10-11)
+
+
+### Features
+
+* add form props in the form component ([#2854](https://github.com/coveo/plasma/issues/2854)) ([734df4d](https://github.com/coveo/plasma/commits/734df4d2a7bb8eab8781208a61382b31564b2392))
+
+
+
+## 47.2.3 (2022-10-07)
+
+
+
+## 47.2.2 (2022-10-05)
+
+
+
+## 47.2.1 (2022-10-04)
+
+
+### Bug Fixes
+
+* **style:** remove root level style on inputs ([#2851](https://github.com/coveo/plasma/issues/2851)) ([27d4e5b](https://github.com/coveo/plasma/commits/27d4e5be9c50d39e7da6b16f438b510467744ed3))
+
+
+
+# 47.2.0 (2022-10-03)
+
+
+### Features
+
+* p8 adding link to colors in home page for demo ([#2848](https://github.com/coveo/plasma/issues/2848)) ([a936caf](https://github.com/coveo/plasma/commits/a936cafb45a0ca5ab9214c89e90bdb1ece9c3653))
+
+
+
+## 47.1.3 (2022-09-29)
+
+
+
+## 47.1.2 (2022-09-28)
+
+
+
+## 47.1.1 (2022-09-28)
+
+
+
 ## 47.0.1-next.0 (2022-10-03)
 
 
@@ -20,7 +102,8 @@
 
 * chore: p$ hack to remove console error for reactDom render
 
-* test: p fixed or removed or skip tests after userEvent bump
+* test: p
+ fixed or removed or skip tests after userEvent bump
 
 * chore(release): publish version v47.1.2 [version bump]
 

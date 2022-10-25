@@ -1,4 +1,5 @@
-import {range, scaleBand} from 'd3';
+import {scaleBand} from 'd3-scale';
+import {range} from 'd3-array';
 import {FunctionComponent, PropsWithChildren, useContext} from 'react';
 
 import {ChartUtils} from './ChartUtils';

@@ -1,4 +1,4 @@
-import {ChartSize16Px} from '@coveord/plasma-react-icons';
+import {ChartPieSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -84,7 +84,7 @@ const HeaderDivision: FunctionComponent<LimitOwnProps> = ({title, isHistoryInclu
 const HistoryIcon: FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({isHistoryIncluded, onHistoryIconClick}) =>
     isHistoryIncluded ? (
         <button className="link" onClick={onHistoryIconClick}>
-            <ChartSize16Px height={16} />
+            <ChartPieSize16Px height={16} />
         </button>
     ) : null;
 

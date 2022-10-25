@@ -1,0 +1,33 @@
+name: 'Setup'
+description: 'Install Node, PNPM, and dependencies using cache'
+runs:
+    using: composite
+    steps:
+        - uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
+        - uses: pnpm/action-setup@35ab4267a1a21c8e8cb1c087cf1642e891ff57bd
+          with:
+              version: 7
+              run_install: false
+        - name: Get pnpm store directory
+          id: pnpm-cache
+          shell: bash
+          run: |
+              echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+        - uses: actions/cache@v3
+          name: Setup pnpm cache
+          # inspired from https://github.com/pnpm/action-setup/tree/master#use-cache-to-reduce-installation-time
+          with:
+              path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+              key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+              restore-keys: |
+                  ${{ runner.os }}-pnpm-store-
+        - name: Install dependencies
+          shell: bash
+          run: pnpm install --frozen-lockfile
+        - name: Setup turbo cache
+          uses: actions/cache@v3
+          with:
+              path: node_modules/.cache/turbo
+              key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+              restore-keys: |
+                  turbo-${{ github.job }}-${{ github.ref_name }}-

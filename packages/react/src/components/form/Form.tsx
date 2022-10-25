@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import {FunctionComponent, FormEvent, PropsWithChildren} from 'react';
+import {FunctionComponent, FormEvent, PropsWithChildren, FormHTMLAttributes} from 'react';
 
 type FormMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
-export interface IFormProps {
+export interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
     title?: string;
     className?: string;
     mods?: FormMods | FormMods[];
@@ -19,12 +19,13 @@ export const Form: FunctionComponent<PropsWithChildren<IFormProps>> = ({
     title,
     mods,
     noMargin,
+    ...props
 }) => {
     const onSubmit = (submitEvent: FormEvent) => {
         submitEvent.preventDefault();
     };
     return (
-        <form onSubmit={onSubmit} className="full-content">
+        <form onSubmit={onSubmit} className="full-content" {...props}>
             <fieldset className={classNames('coveo-form mod-padding-children', {my2: !noMargin}, mods, className)}>
                 {title && <h2 className="mb2">{title}</h2>}
                 {children}

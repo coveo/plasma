@@ -1,8 +1,8 @@
-const isJenkins = !!process.env.JENKINS_HOME;
-const branchName = process.env.BRANCH_NAME;
+const isCI = !!process.env.JENKINS_HOME || process.env.CI === 'true';
+const branchName = process.env.BRANCH_NAME || process.env.GITHUB_HEAD_REF;
 
 let basePath = '/';
-if (isJenkins && branchName !== 'master') {
+if (isCI && branchName !== 'master') {
     basePath = `/feature/${branchName}/`;
 }
 

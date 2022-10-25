@@ -1,4 +1,4 @@
-import {ScaleLinear, scaleLinear, scalePoint, ScalePoint} from 'd3';
+import {scaleLinear, scalePoint} from 'd3-scale';
 import {FunctionComponent, createContext, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
@@ -35,8 +35,8 @@ export interface XYChartContextProps {
     yDomain: [number, number];
     series: XYSerie[];
     colorPattern: string[];
-    xScale: ScalePoint<number>;
-    yScale: ScaleLinear<number, number>;
+    xScale: d3.ScalePoint<number>;
+    yScale: d3.ScaleLinear<number, number>;
     xFormat: (value: number) => string | number;
     yFormat: (value: number) => string | number;
     xTicksCount: number;
