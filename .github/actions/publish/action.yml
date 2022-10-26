@@ -1,0 +1,8 @@
+name: Publish
+description: Publish a new version of the packages on npm
+runs:
+    using: composite
+    steps:
+        - name: Publish
+          shell: bash
+          run: node ./.github/actions/publish/publishNewVersion.mjs

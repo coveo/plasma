@@ -14,7 +14,7 @@ import {
     writeChangelog,
 } from '@coveo/semantic-monorepo-tools';
 import {spawnSync} from 'node:child_process';
-import {Command, Option} from 'commander';
+import {Command, Option as CommanderOption} from 'commander';
 import angularChangelogConvention from 'conventional-changelog-angular';
 
 import getLastTag from './getLastTag.mjs';
@@ -29,7 +29,9 @@ program
     .option('--tag <tag>', 'tag to use on NPM', 'latest')
     .option('--branch <branch>', 'allow deploy on branch', 'master')
     .addOption(
-        new Option('--bump <type>', 'bump a <type> version instead of reliying on commit messages').choices(BUMP_TYPES)
+        new CommanderOption('--bump <type>', 'bump a <type> version instead of reliying on commit messages').choices(
+            BUMP_TYPES
+        )
     );
 
 program.parse();
@@ -38,7 +40,7 @@ const options = program.opts();
 
 const outputProcess = (process) => {
     if (process) {
-        console.log(process.stdout.trim());
+        console.info(process.stdout.trim());
         if (process.status !== 0) {
             console.error(process.stderr.trim());
         }
@@ -49,7 +51,7 @@ const outputProcess = (process) => {
     const convention = await angularChangelogConvention;
 
     const lastTag = await getLastTag();
-    console.log('Last tag: %s', lastTag);
+    console.info('Last tag: %s', lastTag);
 
     const remote = await getRemoteName();
 
@@ -73,7 +75,7 @@ const outputProcess = (process) => {
         const newVersion = getNextVersion(currentVersion, bumpInfo);
 
         if (newVersion !== currentVersion) {
-            console.log('Bumping %s to version %s', changedPackages.join(', '), newVersion);
+            console.info('Bumping %s to version %s', changedPackages.join(', '), newVersion);
             await pnpmBumpVersion(newVersion, lastTag, ['root']);
 
             if (parsedCommits.length > 0) {
@@ -92,25 +94,25 @@ const outputProcess = (process) => {
 
             const versionTag = `${VERSION_PREFIX}${newVersion}`;
             if (!options.dry) {
-                await gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
+                await gitCommit(`chore(release): publish version ${versionTag} [skip ci]`, '.');
                 await gitTag(versionTag);
 
                 if (remote) {
-                    console.log(`Pushing version ${versionTag} on git`);
+                    console.info(`Pushing version ${versionTag} on git`);
                     await gitPush();
                     await gitPushTags();
                 }
 
                 spawnSync('git', ['status'], {encoding: 'utf-8'});
 
-                console.log(`Publishing version ${versionTag} on NPM`);
+                console.info(`Publishing version ${versionTag} on NPM`);
                 await pnpmPublish(undefined, options.tag, options.branch);
             } else {
-                console.log('Would have called pnpmPublish with the following arguments:');
-                console.log(`pnpmPublish(undefined, ${options.tag}, ${options.branch})`);
+                console.info('Would have called pnpmPublish with the following arguments:');
+                console.info(`pnpmPublish(undefined, ${options.tag}, ${options.branch})`);
             }
         }
     } else {
-        console.log('No package changed, skipping publish');
+        console.info('No package changed, skipping publish');
     }
 })();

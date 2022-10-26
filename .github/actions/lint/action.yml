@@ -1,8 +1,8 @@
-name: 'Lint'
-description: 'Lint source files with ESLint'
+name: Lint
+description: Lint source files with ESLint
 inputs:
     WORKFLOW:
-        description: 'The Workflow'
+        description: The Workflow
         required: false
 runs:
     using: composite

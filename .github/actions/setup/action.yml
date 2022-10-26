@@ -1,5 +1,5 @@
-name: 'Setup'
-description: 'Install Node, PNPM, and dependencies using cache'
+name: Setup
+description: Install Node, PNPM, and dependencies using cache
 runs:
     using: composite
     steps:
