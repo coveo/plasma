@@ -17,4 +17,4 @@ runs:
               aws-region: ${{ inputs.AWS_REGION }}
         - name: Push distribution code to s3 demo folder
           shell: bash
-          run: bash ./github/actions/deploy/deploy.sh ${{ github.ref_name }} ${{ inputs.AWS_BUCKET }}
+          run: bash ./.github/actions/deploy/deploy.sh ${{ github.ref_name }} ${{ inputs.AWS_BUCKET }}
