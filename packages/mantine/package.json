@@ -8,8 +8,8 @@
         "components",
         "coveo"
     ],
-    "license": "ISC",
-    "author": "",
+    "license": "Apache-2.0",
+    "author": "Coveo",
     "exports": {
         ".": {
             "types": "./dist/definitions/index.d.ts",
@@ -29,7 +29,6 @@
     "dependencies": {
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-tokens": "workspace:*",
-        "@emotion/react": "11.10.0",
         "@monaco-editor/react": "4.4.5",
         "@swc/helpers": "0.4.11",
         "@tanstack/react-table": "8.5.11",
