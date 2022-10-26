@@ -29,14 +29,14 @@ runs:
           env:
               SNYK_TOKEN: ${{ inputs.SNYK_TOKEN }}
           run: |
-            npx --yes snyk test --org=coveo-admin-ui --file=./snyk/scan-me/package-lock.json --sarif-file-output=./sarifs/snyk-test.json
+            npx --yes snyk test --org=coveo-admin-ui --file=./snyk/scan-me/package-lock.json --sarif-file-output=./sarifs/snyk-test.sarif
             npx --yes snyk monitor --org=coveo-admin-ui --file=./snyk/scan-me/package-lock.json
         - name: Snyk Code
           shell: bash
           continue-on-error: true
           env:
               SNYK_TOKEN: ${{ inputs.SNYK_TOKEN }}
-          run: npx snyk code test --org=coveo-admin-ui --file=./snyk/scan-me/package-lock.json --sarif-file-output=./sarifs/snyk-code.json
+          run: npx snyk code test --org=coveo-admin-ui --file=./snyk/scan-me/package-lock.json --sarif-file-output=./sarifs/snyk-code.sarif
         - name: Upload result to GitHub Code Scanning
           uses: github/codeql-action/upload-sarif@86f3159a697a097a813ad9bfa0002412d97690a4 # tag=v2
 >>>>>>> 9f1c95d47 (ci(github): add CD workflow for master branch (#2868))
