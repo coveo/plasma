@@ -11,5 +11,5 @@
         "allowSyntheticDefaultImports": true,
         "lib": ["es2017", "DOM"]
     },
-    "include": ["src/index.ts", "src/**.ts"]
+    "include": ["src"]
 }

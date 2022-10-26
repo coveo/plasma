@@ -94,7 +94,7 @@ const outputProcess = (process) => {
 
             const versionTag = `${VERSION_PREFIX}${newVersion}`;
             if (!options.dry) {
-                await gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
+                await gitCommit(`chore(release): publish version ${versionTag} [skip ci]`, '.');
                 await gitTag(versionTag);
 
                 if (remote) {
