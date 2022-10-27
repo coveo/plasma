@@ -3,6 +3,11 @@ description: Install Node, PNPM, and dependencies using cache
 runs:
     using: composite
     steps:
+        - name: Setup Git
+          shell: bash
+          run: |
+            git config --global user.email "action@github.com"
+            git config --global user.name "GitHub Action"
         - uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
         - uses: pnpm/action-setup@35ab4267a1a21c8e8cb1c087cf1642e891ff57bd
           with:
