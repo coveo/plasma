@@ -5,4 +5,4 @@ runs:
     steps:
         - name: Publish
           shell: bash
-          run: node ./.github/actions/publish/publishNewVersion.mjs
+          run: DEBUG=* node ./.github/actions/publish/publishNewVersion.mjs
