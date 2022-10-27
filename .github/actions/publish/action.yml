@@ -4,7 +4,6 @@ runs:
     using: composite
     steps:
         - name: Publish
-<<<<<<< HEAD
           uses: actions/github-script@v6
           with:
               script: |
@@ -18,7 +17,5 @@ runs:
                   } else {
                     await publishNewVersion({github, context, exec});
                   }
-=======
           shell: bash
           run: node ./.github/actions/publish/publishNewVersion.mjs
->>>>>>> 9f1c95d47 (ci(github): add CD workflow for master branch (#2868))
