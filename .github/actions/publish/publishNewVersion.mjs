@@ -12,6 +12,7 @@ import {
     pnpmGetChangedPackages,
     pnpmPublish,
     writeChangelog,
+    gitSetupSshRemote,
 } from '@coveo/semantic-monorepo-tools';
 import {spawnSync} from 'node:child_process';
 import {Command, Option as CommanderOption} from 'commander';
@@ -48,6 +49,15 @@ const outputProcess = (process) => {
 };
 
 (async () => {
+    const REPO_OWNER = 'coveo';
+    const REPO_NAME = 'plasma';
+    const GIT_USERNAME = 'plasma-bot';
+    const GIT_EMAIL = 'plasma-bot@users.noreply.github.com';
+    const GIT_SSH_REMOTE = 'deploy';
+
+    await gitSetupSshRemote(REPO_OWNER, REPO_NAME, process.env.DEPLOY_KEY, GIT_SSH_REMOTE);
+    await gitSetupUser(GIT_USERNAME, GIT_EMAIL);
+
     const convention = await angularChangelogConvention;
 
     const lastTag = await getLastTag();
@@ -84,8 +94,8 @@ const outputProcess = (process) => {
                     newVersion,
                     {
                         host: 'https://github.com',
-                        owner: 'coveo',
-                        repository: 'plasma',
+                        owner: REPO_OWNER,
+                        repository: REPO_NAME,
                     },
                     convention.writerOpts
                 );
