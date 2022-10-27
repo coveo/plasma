@@ -39,6 +39,8 @@ jobs:
               uses: ./.github/actions/check-scan-alerts
             - name: Publish
               uses: ./.github/actions/publish
+              env:
+                NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Deploy
               uses: ./.github/actions/deploy
               with:
