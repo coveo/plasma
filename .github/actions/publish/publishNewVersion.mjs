@@ -13,6 +13,7 @@ import {
     pnpmPublish,
     writeChangelog,
     gitSetupSshRemote,
+    gitSetupUser,
 } from '@coveo/semantic-monorepo-tools';
 import {spawnSync} from 'node:child_process';
 import {Command, Option as CommanderOption} from 'commander';
