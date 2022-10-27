@@ -4,20 +4,16 @@ on:
     push:
         branches:
             - master
-<<<<<<< HEAD
             - next
 
 concurrency:
     group: ${{ github.ref_name }}
     cancel-in-progress: true
-=======
->>>>>>> 9f1c95d47 (ci(github): add CD workflow for master branch (#2868))
 
 jobs:
     cd:
         name: Continous Delivery
         runs-on: ubuntu-latest
-<<<<<<< HEAD
         environment: production
         permissions:
             pull-requests: write
@@ -28,19 +24,7 @@ jobs:
             statuses: write
         steps:
             - name: Checkout
-              uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
-=======
-        permissions:
-            pull-requests: write
-            id-token: write
-            actions: read
-            contents: read
-            security-events: write
-            statuses: write
-        steps:
-            - name: Checkout
               uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
->>>>>>> 9f1c95d47 (ci(github): add CD workflow for master branch (#2868))
               with:
                   fetch-depth: 0
             - name: Setup
@@ -61,19 +45,10 @@ jobs:
               uses: ./.github/actions/check-scan-alerts
             - name: Publish
               uses: ./.github/actions/publish
-<<<<<<< HEAD
               env:
-                  DEBUG: "*"
-                  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Deploy
               uses: ./.github/actions/deploy
-              # Demo for next branch is deployed by the CI workflow
-              if: github.ref != 'refs/heads/next'
-=======
-            - name: Deploy
-              uses: ./.github/actions/deploy
->>>>>>> 9f1c95d47 (ci(github): add CD workflow for master branch (#2868))
               with:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
