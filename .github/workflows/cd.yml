@@ -10,6 +10,10 @@ concurrency:
     group: ${{ github.ref_name }}
     cancel-in-progress: true
 
+concurrency:
+    group: ${{ github.ref_name }}
+    cancel-in-progress: true
+
 jobs:
     cd:
         name: Continous Delivery
@@ -46,7 +50,8 @@ jobs:
             - name: Publish
               uses: ./.github/actions/publish
               env:
-                NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Deploy
               uses: ./.github/actions/deploy
               with:
