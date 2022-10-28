@@ -110,7 +110,7 @@ const outputProcess = (process) => {
 
                 if (remote) {
                     console.info(`Pushing version ${versionTag} on git`);
-                    await gitPush();
+                    await gitPush(GIT_SSH_REMOTE);
                     await gitPushTags();
                 }
 
