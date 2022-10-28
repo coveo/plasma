@@ -38,8 +38,9 @@ export default async ({github, context, exec}, {
 } = {}) => {
     const GIT_USERNAME = 'plasma-bot';
     const GIT_EMAIL = 'plasma-bot@users.noreply.github.com';
+    const GIT_SSH_REMOTE = 'deploy';
 
-    await gitSetupSshRemote(context.repo.owner, context.repo.repo, process.env.DEPLOY_KEY, 'deploy');
+    await gitSetupSshRemote(context.repo.owner, context.repo.repo, process.env.DEPLOY_KEY, GIT_SSH_REMOTE);
     await gitSetupUser(GIT_USERNAME, GIT_EMAIL);
 
     const convention = await angularChangelogConvention;
@@ -92,7 +93,7 @@ export default async ({github, context, exec}, {
 
                 if (remote) {
                     console.info(`Pushing version ${versionTag} on git`);
-                    await gitPush(remote);
+                    await gitPush(GIT_SSH_REMOTE);
                     await gitPushTags();
                 }
 
