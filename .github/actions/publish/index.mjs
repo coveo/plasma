@@ -73,8 +73,9 @@ export default async ({github, context, exec}, {
             console.info('Bumping %s to version %s', changedPackages.join(', '), newVersion);
             await pnpmBumpVersion(newVersion, lastTag, ['root']);
 
+            let changelog = ''
             if (parsedCommits.length > 0) {
-                const changelog = await generateChangelog(
+                changelog = await generateChangelog(
                     parsedCommits,
                     newVersion,
                     {
