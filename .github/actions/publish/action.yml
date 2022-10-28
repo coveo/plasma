@@ -4,5 +4,8 @@ runs:
     using: composite
     steps:
         - name: Publish
-          shell: bash
-          run: DEBUG=* node ./.github/actions/publish/publishNewVersion.mjs
+          uses: actions/github-script@v6
+          with:
+              script: |
+                  const {default: publishNewVersion} = await import('${{ github.workspace }}/.github/actions/publish/index.mjs');
+                  await publishNewVersion({github, context, exec});
