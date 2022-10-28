@@ -121,7 +121,7 @@ export const ModalWizard: ModalWizardType = ({
     const isLastStep = currentStepIndex === numberOfSteps - 1;
     const currentStep = modalSteps.filter((step: ReactElement, index: number) => index === currentStepIndex)[0];
 
-    const {isValid} = currentStep.props.validateStep?.(currentStepIndex, numberOfSteps) ?? {isValid: true};
+    const {isValid} = currentStep?.props?.validateStep?.(currentStepIndex, numberOfSteps) ?? {isValid: true};
     const isModalDirty = isDirty && isDirty();
 
     const {classes} = useStyles();

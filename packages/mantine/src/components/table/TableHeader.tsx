@@ -5,7 +5,7 @@ const useStyles = createStyles((theme) => ({
     header: {
         position: 'sticky',
         top: 0,
-        zIndex: 12, // skeleton is 11
+        zIndex: 13, // skeleton is 11
         backgroundColor: theme.colors.gray[1],
         borderBottom: `1px solid ${theme.colors.gray[4]}`,
     },
