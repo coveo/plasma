@@ -1,3 +1,12 @@
+# 47.4.0 (2022-10-28)
+
+
+### Features
+
+* **mantine:** mantine package creation (#2867) 3b2b652, closes #2867
+
+
+
 ## 47.3.11 (2022-10-28)
 
 
