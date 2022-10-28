@@ -45,6 +45,7 @@ jobs:
             - name: Publish
               uses: ./.github/actions/publish
               env:
+                  DEBUG: "*"
                   DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Deploy
