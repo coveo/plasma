@@ -381,7 +381,7 @@ importers:
     specifiers:
       '@types/chroma-js': 2.1.4
       '@types/fs-extra': 9.0.13
-      '@types/lodash': 4.14.182
+      '@types/lodash': 4.14.186
       '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
@@ -403,7 +403,7 @@ importers:
     devDependencies:
       '@types/chroma-js': 2.1.4
       '@types/fs-extra': 9.0.13
-      '@types/lodash': 4.14.182
+      '@types/lodash': 4.14.186
       '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
@@ -2654,11 +2654,11 @@ packages:
   /@types/lodash.kebabcase/4.1.7:
     resolution: {integrity: sha512-qzrcpK5uiADZ9OyZaegalM0b9Y3WetoBQ04RAtP3xZFGC5ul1UxmbjZ3j6suCh0BDkvgQmoMh8t5e9cVrdJYMw==}
     dependencies:
-      '@types/lodash': 4.14.182
+      '@types/lodash': 4.14.186
     dev: true
 
-  /@types/lodash/4.14.182:
-    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
+  /@types/lodash/4.14.186:
+    resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==}
     dev: true
 
   /@types/lorem-ipsum/2.0.0:
@@ -3179,7 +3179,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.3.8
+      semver: 7.3.7
       tsutils: 3.21.0
     transitivePeerDependencies:
       - supports-color
