@@ -56,7 +56,6 @@
         "@sindresorhus/slugify": "2.1.0",
         "aws-sdk": "2.1222.0",
         "axios": "0.27.2",
-        "commander": "9.4.0",
         "commitizen": "4.2.5",
         "conventional-changelog-angular": "5.0.13",
         "cz-conventional-changelog": "3.3.0",
