@@ -101,6 +101,13 @@ export default async ({github, context, exec}, {
                 console.info(`Publishing version ${versionTag} on NPM`);
                 await pnpmPublish(undefined, tag, branch);
 
+                const [, ...bodyArray] = changelog.split('\n');
+                await github.rest.repos.createRelease({
+                    ...context.repo,
+                    tag_name: versionTag,
+                    name: `Release ${versionTag}`,
+                    body: bodyArray.join('\n'),
+                });
             } else {
                 console.info('Would have called pnpmPublish with the following arguments:');
                 console.info(`pnpmPublish(undefined, ${tag}, ${branch})`);
