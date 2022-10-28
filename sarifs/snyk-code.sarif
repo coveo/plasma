@@ -148,7 +148,7 @@
                   "Mock api() tests"
                 ],
                 "precision": "very-high",
-                "repoDatasetSize": 523,
+                "repoDatasetSize": 522,
                 "cwe": [
                   "CWE-798",
                   "CWE-259"
