@@ -64,6 +64,7 @@ importers:
       '@swc/cli': 0.1.57
       '@swc/core': 1.3.3
       '@swc/helpers': 0.4.11
+<<<<<<< HEAD
       '@swc/jest': 0.2.23
       '@tanstack/react-table': 8.5.11
       '@tanstack/table-core': 8.5.11
@@ -83,10 +84,33 @@ importers:
       identity-obj-proxy: 3.0.0
       jest: 29.2.1
       jest-environment-jsdom: 29.1.2
+=======
+      '@swc/jest': 0.2.22
+      '@tanstack/react-table': 8.5.11
+      '@tanstack/table-core': 8.5.11
+      '@testing-library/dom': 8.13.0
+      '@testing-library/jest-dom': 5.16.5
+      '@testing-library/react': 11.2.7
+      '@testing-library/react-hooks': 8.0.1
+      '@testing-library/user-event': 12.8.3
+      '@types/jest': 27.5.2
+      '@types/lodash.defaultsdeep': 4.6.7
+      '@types/react': ^17.0
+      '@types/react-beautiful-dnd': 13.1.2
+      '@types/react-dom': ^17.0
+      '@types/testing-library__jest-dom': 5.14.5
+      dayjs: 1.11.3
+      eslint-plugin-jest: 26.1.5
+      eslint-plugin-testing-library: 5.5.1
+      identity-obj-proxy: 3.0.0
+      jest: 28.1.2
+      jest-environment-jsdom: 28.1.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
       jest-junit: 13.2.0
       lodash.defaultsdeep: 4.6.1
       monaco-editor: 0.34.0
       npm-run-all: 4.1.5
+<<<<<<< HEAD
       react: 18.2.0
       react-beautiful-dnd: 13.1.1
       react-dom: 18.2.0
@@ -99,10 +123,25 @@ importers:
       '@monaco-editor/react': 4.4.5_7payg3yaajmz2lehtpasnhysrm
       '@swc/helpers': 0.4.11
       '@tanstack/react-table': 8.5.11_biqbaboplfbrettd7655fr4n2y
+=======
+      react: 17.0.2
+      react-beautiful-dnd: 13.1.0
+      react-dom: 17.0.2
+      rimraf: 3.0.2
+      tslib: 2.3.1
+      typescript: 4.6.4
+    dependencies:
+      '@coveord/plasma-react-icons': link:../react-icons
+      '@coveord/plasma-tokens': link:../tokens
+      '@monaco-editor/react': 4.4.5_gnpkoj5uzrqs5wqxh42z7ffyam
+      '@swc/helpers': 0.4.11
+      '@tanstack/react-table': 8.5.11_sfoxds7t5ydpegc3knd667wn6m
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
       '@tanstack/table-core': 8.5.11
       dayjs: 1.11.3
       lodash.defaultsdeep: 4.6.1
       monaco-editor: 0.34.0
+<<<<<<< HEAD
       react-beautiful-dnd: 13.1.1_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@emotion/react': 11.10.0_bbvjflvjoibwhtpmedigb26h6y
@@ -136,6 +175,42 @@ importers:
       rimraf: 3.0.2
       tslib: 2.4.0
       typescript: 4.7.4
+=======
+      react-beautiful-dnd: 13.1.0_sfoxds7t5ydpegc3knd667wn6m
+    devDependencies:
+      '@emotion/react': 11.10.0_zdsfwtvwq54q3oqxwtq4jnbhh4
+      '@mantine/core': 5.6.2_hgauvpocvw6pdap66iqqqqugkm
+      '@mantine/dates': 5.6.2_j6z63ewflhg4e4vad2l6yo6ysu
+      '@mantine/form': 5.6.2_react@17.0.2
+      '@mantine/hooks': 5.6.2_react@17.0.2
+      '@mantine/modals': 5.6.2_6ivupjogjhx3rl524os3bb4kva
+      '@swc/cli': 0.1.57_@swc+core@1.3.3
+      '@swc/core': 1.3.3
+      '@swc/jest': 0.2.22_@swc+core@1.3.3
+      '@testing-library/dom': 8.13.0
+      '@testing-library/jest-dom': 5.16.5
+      '@testing-library/react': 11.2.7_sfoxds7t5ydpegc3knd667wn6m
+      '@testing-library/react-hooks': 8.0.1_wsn53pslsboo2rytzocxzsur7i
+      '@testing-library/user-event': 12.8.3_tlwynutqiyp5mns3woioasuxnq
+      '@types/jest': 27.5.2
+      '@types/lodash.defaultsdeep': 4.6.7
+      '@types/react': 17.0.44
+      '@types/react-beautiful-dnd': 13.1.2
+      '@types/react-dom': 17.0.15
+      '@types/testing-library__jest-dom': 5.14.5
+      eslint-plugin-jest: 26.1.5_bmx2iisgsiqhot7rn2hyxwpi5e
+      eslint-plugin-testing-library: 5.5.1_typescript@4.6.4
+      identity-obj-proxy: 3.0.0
+      jest: 28.1.2
+      jest-environment-jsdom: 28.1.2
+      jest-junit: 13.2.0
+      npm-run-all: 4.1.5
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      rimraf: 3.0.2
+      tslib: 2.3.1
+      typescript: 4.6.4
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
 
   packages/react:
     specifiers:
@@ -1008,6 +1083,17 @@ packages:
     dependencies:
       '@babel/core': 7.19.1
       '@babel/helper-plugin-utils': 7.19.0
+<<<<<<< HEAD
+=======
+    dev: true
+
+  /@babel/runtime-corejs3/7.19.6:
+    resolution: {integrity: sha512-oWNn1ZlGde7b4i/3tnixpH9qI0bOAACiUs+KEES4UUCnsPjVWFlWdLV/iwJuPC2qp3EowbAqsm+0XqNwnwYhxA==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      core-js-pure: 3.26.0
+      regenerator-runtime: 0.13.9
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /@babel/runtime/7.17.9:
@@ -1265,7 +1351,11 @@ packages:
       '@salesforce-ux/design-system': 2.17.5
       '@stencil/core': 2.14.2
       '@stencil/store': 1.5.0_@stencil+core@2.14.2
+<<<<<<< HEAD
       coveo-styleguide: 9.34.4_biqbaboplfbrettd7655fr4n2y
+=======
+      coveo-styleguide: 9.34.4_sfoxds7t5ydpegc3knd667wn6m
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
       dayjs: 1.11.3
       dompurify: 2.3.6
       escape-html: 1.0.3
@@ -1400,7 +1490,11 @@ packages:
     resolution: {integrity: sha512-G/YwXTkv7Den9mXDO7AhLWkE3q+I92B+VqAE+dYG4NGPaHZGvt3G8Q0p9vmE+sq7rTGphUbAvmQ9YpbfMQGGlA==}
     dev: true
 
+<<<<<<< HEAD
   /@emotion/react/11.10.0_bbvjflvjoibwhtpmedigb26h6y:
+=======
+  /@emotion/react/11.10.0_zdsfwtvwq54q3oqxwtq4jnbhh4:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-K6z9zlHxxBXwN8TcpwBKcEsBsOw4JWCCmR+BeeOWgqp8GIU1yA2Odd41bwdAAr0ssbQrbJbVnndvv7oiv1bZeQ==}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -1418,9 +1512,15 @@ packages:
       '@emotion/serialize': 1.1.0
       '@emotion/utils': 1.2.0
       '@emotion/weak-memoize': 0.3.0
+<<<<<<< HEAD
       '@types/react': 18.0.24
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
+=======
+      '@types/react': 17.0.44
+      hoist-non-react-statics: 3.3.2
+      react: 17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /@emotion/serialize/1.1.0:
@@ -1485,32 +1585,55 @@ packages:
       '@floating-ui/core': 1.0.1
     dev: true
 
+<<<<<<< HEAD
   /@floating-ui/react-dom-interactions/0.10.2_knhnagtyfncgg2hpin7s37uixq:
+=======
+  /@floating-ui/react-dom-interactions/0.10.2_wsn53pslsboo2rytzocxzsur7i:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-KhF+UN+MVqUx1bG1fe0aAiBl1hbz07Uin6UW70mxwUDhaGpitM16CYvGri1EqGY4hnWK8TQknDSP8iQFOxjhsg==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
+<<<<<<< HEAD
       '@floating-ui/react-dom': 1.0.0_biqbaboplfbrettd7655fr4n2y
       aria-hidden: 1.2.1_bbvjflvjoibwhtpmedigb26h6y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+=======
+      '@floating-ui/react-dom': 1.0.0_sfoxds7t5ydpegc3knd667wn6m
+      aria-hidden: 1.2.1_zdsfwtvwq54q3oqxwtq4jnbhh4
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     transitivePeerDependencies:
       - '@types/react'
     dev: true
 
+<<<<<<< HEAD
   /@floating-ui/react-dom/1.0.0_biqbaboplfbrettd7655fr4n2y:
+=======
+  /@floating-ui/react-dom/1.0.0_sfoxds7t5ydpegc3knd667wn6m:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-uiOalFKPG937UCLm42RxjESTWUVpbbatvlphQAU6bsv+ence6IoVG8JOUZcy8eW81NkU+Idiwvx10WFLmR4MIg==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@floating-ui/dom': 1.0.3
+<<<<<<< HEAD
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
   /@hot-loader/react-dom/17.0.2_react@18.2.0:
+=======
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@hot-loader/react-dom/17.0.2_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-G2RZrFhsQClS+bdDh/Ojpk3SgocLPUGnvnJDTQYnmKSSwXtU+Yh+8QMs+Ia3zaAvBiOSpIIDSUxuN69cvKqrWg==}
     peerDependencies:
       react: 17.0.2
@@ -1569,6 +1692,18 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /@jest/console/28.1.3:
+    resolution: {integrity: sha512-QPAkP5EwKdK/bxIr6C1I4Vs0rm2nHiANzj/Z5X2JQkrZo6IqvC4ldZ9K95tF0HdidhA8Bo6egxSzUFPYKcEXLw==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+      chalk: 4.1.2
+      jest-message-util: 28.1.3
+      jest-util: 28.1.3
+      slash: 3.0.0
+    dev: true
+
   /@jest/console/29.0.3:
     resolution: {integrity: sha512-cGg0r+klVHSYnfE977S9wmpuQ9L+iYuYgL+5bPXiUlUynLLYunRxswEmhBzvrSKGof5AKiHuTTmUKAqRcDY9dg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -1591,6 +1726,49 @@ packages:
       jest-message-util: 29.2.1
       jest-util: 29.2.1
       slash: 3.0.0
+    dev: true
+
+  /@jest/core/28.1.3:
+    resolution: {integrity: sha512-CIKBrlaKOzA7YG19BEqCw3SLIsEwjZkeJzf5bdooVnW4bH5cktqe3JX+G2YV1aK5vP8N9na1IGWFzYaTp6k6NA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    peerDependencies:
+      node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
+    peerDependenciesMeta:
+      node-notifier:
+        optional: true
+    dependencies:
+      '@jest/console': 28.1.3
+      '@jest/reporters': 28.1.3
+      '@jest/test-result': 28.1.3
+      '@jest/transform': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+      ansi-escapes: 4.3.2
+      chalk: 4.1.2
+      ci-info: 3.3.0
+      exit: 0.1.2
+      graceful-fs: 4.2.10
+      jest-changed-files: 28.1.3
+      jest-config: 28.1.3_@types+node@18.7.18
+      jest-haste-map: 28.1.3
+      jest-message-util: 28.1.3
+      jest-regex-util: 28.0.2
+      jest-resolve: 28.1.3
+      jest-resolve-dependencies: 28.1.3
+      jest-runner: 28.1.3
+      jest-runtime: 28.1.3
+      jest-snapshot: 28.1.3
+      jest-util: 28.1.3
+      jest-validate: 28.1.3
+      jest-watcher: 28.1.3
+      micromatch: 4.0.5
+      pretty-format: 28.1.3
+      rimraf: 3.0.2
+      slash: 3.0.0
+      strip-ansi: 6.0.1
+    transitivePeerDependencies:
+      - supports-color
+      - ts-node
     dev: true
 
   /@jest/core/29.0.3:
@@ -1684,6 +1862,16 @@ packages:
       '@jest/types': 27.5.1
     dev: true
 
+  /@jest/environment/28.1.3:
+    resolution: {integrity: sha512-1bf40cMFTEkKyEf585R9Iz1WayDjHoHqvts0XFYEqyKM3cFWDpeMoqKKTAF9LSYQModPUlh8FKptoM2YcMWAXA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/fake-timers': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+      jest-mock: 28.1.3
+    dev: true
+
   /@jest/environment/29.0.3:
     resolution: {integrity: sha512-iKl272NKxYNQNqXMQandAIwjhQaGw5uJfGXduu8dS9llHi8jV2ChWrtOAVPnMbaaoDhnI3wgUGNDvZgHeEJQCA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -1704,6 +1892,13 @@ packages:
       jest-mock: 29.2.2
     dev: true
 
+  /@jest/expect-utils/28.1.3:
+    resolution: {integrity: sha512-wvbi9LUrHJLn3NlDW6wF2hvIMtd4JUl2QNVrjq+IBSHirgfrR3o9RnVtxzdEGO2n9JyIWwHnLfby5KzqBGg2YA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      jest-get-type: 28.0.2
+    dev: true
+
   /@jest/expect-utils/29.0.3:
     resolution: {integrity: sha512-i1xUkau7K/63MpdwiRqaxgZOjxYs4f0WMTGJnYwUKubsNRZSeQbLorS7+I4uXVF9KQ5r61BUPAUMZ7Lf66l64Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -1711,8 +1906,23 @@ packages:
       jest-get-type: 29.2.0
     dev: true
 
+<<<<<<< HEAD
   /@jest/expect-utils/29.2.2:
     resolution: {integrity: sha512-vwnVmrVhTmGgQzyvcpze08br91OL61t9O0lJMDyb6Y/D8EKQ9V7rGUb/p7PDt0GPzK0zFYqXWFo4EO2legXmkg==}
+=======
+  /@jest/expect/28.1.3:
+    resolution: {integrity: sha512-lzc8CpUbSoE4dqT0U+g1qODQjBRHPpCPXissXD4mS9+sWQdmmpeJ9zSH1rS1HEkrsMN0fb7nKrJ9giAR1d3wBw==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      expect: 28.1.3
+      jest-snapshot: 28.1.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@jest/expect/29.0.3:
+    resolution: {integrity: sha512-6W7K+fsI23FQ01H/BWccPyDZFrnU9QlzDcKOjrNVU5L8yUORFAJJIpmyxWPW70+X624KUNqzZwPThPMX28aXEQ==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       jest-get-type: 29.2.0
@@ -1728,6 +1938,18 @@ packages:
       - supports-color
     dev: true
 
+  /@jest/fake-timers/28.1.3:
+    resolution: {integrity: sha512-D/wOkL2POHv52h+ok5Oj/1gOG9HSywdoPtFsRCUmlCILXNn5eIWmcnd3DIiWlJnpGvQtmajqBP95Ei0EimxfLw==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/types': 28.1.3
+      '@sinonjs/fake-timers': 9.1.2
+      '@types/node': 18.7.18
+      jest-message-util: 28.1.3
+      jest-mock: 28.1.3
+      jest-util: 28.1.3
+    dev: true
+
   /@jest/fake-timers/29.0.3:
     resolution: {integrity: sha512-tmbUIo03x0TdtcZCESQ0oQSakPCpo7+s6+9mU19dd71MptkP4zCwoeZqna23//pgbhtT1Wq02VmA9Z9cNtvtCQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -1740,8 +1962,24 @@ packages:
       jest-util: 29.2.1
     dev: true
 
+<<<<<<< HEAD
   /@jest/fake-timers/29.2.2:
     resolution: {integrity: sha512-nqaW3y2aSyZDl7zQ7t1XogsxeavNpH6kkdq+EpXncIDvAkjvFD7hmhcIs1nWloengEWUoWqkqSA6MSbf9w6DgA==}
+=======
+  /@jest/globals/28.1.3:
+    resolution: {integrity: sha512-XFU4P4phyryCXu1pbcqMO0GSQcYe1IsalYCDzRNyhetyeyxMcIxa11qPNDpVNLeretItNqEmYYQn1UYz/5x1NA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/environment': 28.1.3
+      '@jest/expect': 28.1.3
+      '@jest/types': 28.1.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@jest/globals/29.0.3:
+    resolution: {integrity: sha512-YqGHT65rFY2siPIHHFjuCGUsbzRjdqkwbat+Of6DmYRg5shIXXrLdZoVE/+TJ9O1dsKsFmYhU58JvIbZRU1Z9w==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.2.1
@@ -1760,6 +1998,44 @@ packages:
       '@jest/expect': 29.2.2
       '@jest/types': 29.2.1
       jest-mock: 29.2.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@jest/reporters/28.1.3:
+    resolution: {integrity: sha512-JuAy7wkxQZVNU/V6g9xKzCGC5LVXx9FDcABKsSXp5MiKPEE2144a/vXTEDoyzjUpZKfVwp08Wqg5A4WfTMAzjg==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    peerDependencies:
+      node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
+    peerDependenciesMeta:
+      node-notifier:
+        optional: true
+    dependencies:
+      '@bcoe/v8-coverage': 0.2.3
+      '@jest/console': 28.1.3
+      '@jest/test-result': 28.1.3
+      '@jest/transform': 28.1.3
+      '@jest/types': 28.1.3
+      '@jridgewell/trace-mapping': 0.3.15
+      '@types/node': 18.7.18
+      chalk: 4.1.2
+      collect-v8-coverage: 1.0.1
+      exit: 0.1.2
+      glob: 7.2.3
+      graceful-fs: 4.2.10
+      istanbul-lib-coverage: 3.2.0
+      istanbul-lib-instrument: 5.2.0
+      istanbul-lib-report: 3.0.0
+      istanbul-lib-source-maps: 4.0.1
+      istanbul-reports: 3.1.4
+      jest-message-util: 28.1.3
+      jest-util: 28.1.3
+      jest-worker: 28.1.3
+      slash: 3.0.0
+      string-length: 4.0.2
+      strip-ansi: 6.0.1
+      terminal-link: 2.1.1
+      v8-to-istanbul: 9.0.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1802,6 +2078,7 @@ packages:
       - supports-color
     dev: true
 
+<<<<<<< HEAD
   /@jest/reporters/29.2.2:
     resolution: {integrity: sha512-AzjL2rl2zJC0njIzcooBvjA4sJjvdoq98sDuuNs4aNugtLPSQ+91nysGKRF0uY1to5k0MdGMdOBggUsPqvBcpA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -1837,6 +2114,13 @@ packages:
       v8-to-istanbul: 9.0.1
     transitivePeerDependencies:
       - supports-color
+=======
+  /@jest/schemas/28.1.3:
+    resolution: {integrity: sha512-/l/VWsdt/aBXgjshLWOFyFt3IVdYypu5y2Wn2rOO1un6nkqIn8SLXzgIMYXFyYsRWDyF5EthmKJMIdJvk08grg==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@sinclair/typebox': 0.24.42
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /@jest/schemas/29.0.0:
@@ -1846,13 +2130,37 @@ packages:
       '@sinclair/typebox': 0.24.42
     dev: true
 
+<<<<<<< HEAD
   /@jest/source-map/29.2.0:
     resolution: {integrity: sha512-1NX9/7zzI0nqa6+kgpSdKPK+WU1p+SJk3TloWZf5MzPbxri9UEeXX5bWZAPCzbQcyuAzubcdUHA7hcNznmRqWQ==}
+=======
+  /@jest/source-map/28.1.2:
+    resolution: {integrity: sha512-cV8Lx3BeStJb8ipPHnqVw/IM2VCMWO3crWZzYodSIkxXnRcXJipCdx1JCK0K5MsJJouZQTH73mzf4vgxRaH9ww==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.15
+      callsites: 3.1.0
+      graceful-fs: 4.2.10
+    dev: true
+
+  /@jest/source-map/29.0.0:
+    resolution: {integrity: sha512-nOr+0EM8GiHf34mq2GcJyz/gYFyLQ2INDhAylrZJ9mMWoW21mLBfZa0BUVPPMxVYrLjeiRe2Z7kWXOGnS0TFhQ==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.15
       callsites: 3.1.0
       graceful-fs: 4.2.10
+    dev: true
+
+  /@jest/test-result/28.1.3:
+    resolution: {integrity: sha512-kZAkxnSE+FqE8YjW8gNuoVkkC9I7S1qmenl8sGcDOLropASP+BkcGKwhXoyqQuGOGeYY0y/ixjrd/iERpEXHNg==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/console': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/istanbul-lib-coverage': 2.0.4
+      collect-v8-coverage: 1.0.1
     dev: true
 
   /@jest/test-result/29.0.3:
@@ -1865,8 +2173,23 @@ packages:
       collect-v8-coverage: 1.0.1
     dev: true
 
+<<<<<<< HEAD
   /@jest/test-result/29.2.1:
     resolution: {integrity: sha512-lS4+H+VkhbX6z64tZP7PAUwPqhwj3kbuEHcaLuaBuB+riyaX7oa1txe0tXgrFj5hRWvZKvqO7LZDlNWeJ7VTPA==}
+=======
+  /@jest/test-sequencer/28.1.3:
+    resolution: {integrity: sha512-NIMPEqqa59MWnDi1kvXXpYbqsfQmSJsIbnd85mdVGkiDfQ9WQQTXOLsvISUfonmnBT+w85WEgneCigEEdHDFxw==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/test-result': 28.1.3
+      graceful-fs: 4.2.10
+      jest-haste-map: 28.1.3
+      slash: 3.0.0
+    dev: true
+
+  /@jest/test-sequencer/29.0.3:
+    resolution: {integrity: sha512-Hf4+xYSWZdxTNnhDykr8JBs0yBN/nxOXyUQWfotBUqqy0LF9vzcFB0jm/EDNZCx587znLWTIgxcokW7WeZMobQ==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/console': 29.2.1
@@ -1883,6 +2206,29 @@ packages:
       graceful-fs: 4.2.10
       jest-haste-map: 29.2.1
       slash: 3.0.0
+    dev: true
+
+  /@jest/transform/28.1.3:
+    resolution: {integrity: sha512-u5dT5di+oFI6hfcLOHGTAfmUxFRrjK+vnaP0kkVow9Md/M7V/MxqQMOz/VV25UZO8pzeA9PjfTpOu6BDuwSPQA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@babel/core': 7.19.1
+      '@jest/types': 28.1.3
+      '@jridgewell/trace-mapping': 0.3.15
+      babel-plugin-istanbul: 6.1.1
+      chalk: 4.1.2
+      convert-source-map: 1.8.0
+      fast-json-stable-stringify: 2.1.0
+      graceful-fs: 4.2.10
+      jest-haste-map: 28.1.3
+      jest-regex-util: 28.0.2
+      jest-util: 28.1.3
+      micromatch: 4.0.5
+      pirates: 4.0.5
+      slash: 3.0.0
+      write-file-atomic: 4.0.2
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@jest/transform/29.0.3:
@@ -1931,6 +2277,17 @@ packages:
       - supports-color
     dev: true
 
+  /@jest/types/26.6.2:
+    resolution: {integrity: sha512-fC6QCp7Sc5sX6g8Tvbmj4XUTbyrik0akgRy03yjXbQaBWWNWGE7SGtJk98m0N8nzegD/7SggrUlivxo5ax4KWQ==}
+    engines: {node: '>= 10.14.2'}
+    dependencies:
+      '@types/istanbul-lib-coverage': 2.0.4
+      '@types/istanbul-reports': 3.0.1
+      '@types/node': 18.7.18
+      '@types/yargs': 15.0.14
+      chalk: 4.1.2
+    dev: true
+
   /@jest/types/27.5.1:
     resolution: {integrity: sha512-Cx46iJ9QpwQTjIdq5VJu2QTMMs3QlEjI0x1QbBP5W1+nMzyc2XmimiRR/CbX9TO0cPTeUlxWMOu8mslYsJ8DEw==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -1939,6 +2296,18 @@ packages:
       '@types/istanbul-reports': 3.0.1
       '@types/node': 18.7.18
       '@types/yargs': 16.0.4
+      chalk: 4.1.2
+    dev: true
+
+  /@jest/types/28.1.3:
+    resolution: {integrity: sha512-RyjiyMUZrKz/c+zlMFO1pm70DcIlST8AeWTkoUdZevew44wcNZQHsEVOiCVtgVnlFFD82FPaXycys58cf2muVQ==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/schemas': 28.1.3
+      '@types/istanbul-lib-coverage': 2.0.4
+      '@types/istanbul-reports': 3.0.1
+      '@types/node': 18.7.18
+      '@types/yargs': 17.0.10
       chalk: 4.1.2
     dev: true
 
@@ -2023,13 +2392,18 @@ packages:
       react-is: 16.13.1
     dev: false
 
+<<<<<<< HEAD
   /@mantine/core/5.6.2_lfw22vnem577qasyhak44dsvlu:
+=======
+  /@mantine/core/5.6.2_hgauvpocvw6pdap66iqqqqugkm:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-H42PBsiEsuA2g+c2RzEnw+rbNw+lFMqsJCgeH41DaugPGjRYgDuYkE1h6wkCbroXIcIGbcltnz1w7oTpF3eOYw==}
     peerDependencies:
       '@mantine/hooks': 5.6.2
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
+<<<<<<< HEAD
       '@floating-ui/react-dom-interactions': 0.10.2_knhnagtyfncgg2hpin7s37uixq
       '@mantine/hooks': 5.6.2_react@18.2.0
       '@mantine/styles': 5.6.2_mg4fhtdxyo75pete66srcc5noa
@@ -2038,12 +2412,26 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-textarea-autosize: 8.3.4_bbvjflvjoibwhtpmedigb26h6y
+=======
+      '@floating-ui/react-dom-interactions': 0.10.2_wsn53pslsboo2rytzocxzsur7i
+      '@mantine/hooks': 5.6.2_react@17.0.2
+      '@mantine/styles': 5.6.2_u4cymisylerj3jiwtpfzocvf4i
+      '@mantine/utils': 5.6.2_react@17.0.2
+      '@radix-ui/react-scroll-area': 1.0.0_sfoxds7t5ydpegc3knd667wn6m
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-textarea-autosize: 8.3.4_zdsfwtvwq54q3oqxwtq4jnbhh4
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     transitivePeerDependencies:
       - '@emotion/react'
       - '@types/react'
     dev: true
 
+<<<<<<< HEAD
   /@mantine/dates/5.6.2_54yr6hmbho2dlqzmi7qem65fh4:
+=======
+  /@mantine/dates/5.6.2_j6z63ewflhg4e4vad2l6yo6ysu:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-ODc5VDIF/CzOxkC5lOCKkAY+Jk6fNk1ILymDL/eZ95juHsrqviG4kvQUTUehHXI2ikA/tGIfN3AhZLU9RWHipA==}
     peerDependencies:
       '@mantine/core': 5.6.2
@@ -2051,6 +2439,7 @@ packages:
       dayjs: '>=1.0.0'
       react: '>=16.8.0'
     dependencies:
+<<<<<<< HEAD
       '@mantine/core': 5.6.2_lfw22vnem577qasyhak44dsvlu
       '@mantine/hooks': 5.6.2_react@18.2.0
       '@mantine/utils': 5.6.2_react@18.2.0
@@ -2059,24 +2448,48 @@ packages:
     dev: true
 
   /@mantine/form/5.6.2_react@18.2.0:
+=======
+      '@mantine/core': 5.6.2_hgauvpocvw6pdap66iqqqqugkm
+      '@mantine/hooks': 5.6.2_react@17.0.2
+      '@mantine/utils': 5.6.2_react@17.0.2
+      dayjs: 1.11.3
+      react: 17.0.2
+    dev: true
+
+  /@mantine/form/5.6.2_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-RbNsB1BtrpZAN9zeJeaFpUZ1pnmWPDcC4gkQYgRuvCdmBTlnmqFnmUZjt8JaTzrlEIOA6h3bbSo+xeYL4tYClg==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
       fast-deep-equal: 3.1.3
       klona: 2.0.5
+<<<<<<< HEAD
       react: 18.2.0
     dev: true
 
   /@mantine/hooks/5.6.2_react@18.2.0:
+=======
+      react: 17.0.2
+    dev: true
+
+  /@mantine/hooks/5.6.2_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-kstAXKXQc6WSbBJ+X7v/E1dtSjUnauMZ4NTS6FK3PpQBlRaRZhEVPHYeMoyfnIvcmU6IWdv3LjkRYOzcCtumOQ==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
+<<<<<<< HEAD
       react: 18.2.0
     dev: true
 
   /@mantine/modals/5.6.2_flpsrn4ztwxtwu74zpyotzqome:
+=======
+      react: 17.0.2
+    dev: true
+
+  /@mantine/modals/5.6.2_6ivupjogjhx3rl524os3bb4kva:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-NhcAaPob9e7zGZ2Cw23wOUggWQ5HgSp8h6mBi+DJW5pF4wYedZbbosrKTBEl6pZcBtf4fIV1rEUEOdrKDfcrWA==}
     peerDependencies:
       '@mantine/core': 5.6.2
@@ -2084,6 +2497,7 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
+<<<<<<< HEAD
       '@mantine/core': 5.6.2_lfw22vnem577qasyhak44dsvlu
       '@mantine/hooks': 5.6.2_react@18.2.0
       '@mantine/utils': 5.6.2_react@18.2.0
@@ -2092,12 +2506,23 @@ packages:
     dev: true
 
   /@mantine/styles/5.6.2_mg4fhtdxyo75pete66srcc5noa:
+=======
+      '@mantine/core': 5.6.2_hgauvpocvw6pdap66iqqqqugkm
+      '@mantine/hooks': 5.6.2_react@17.0.2
+      '@mantine/utils': 5.6.2_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@mantine/styles/5.6.2_u4cymisylerj3jiwtpfzocvf4i:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-lMIYU+tbZS2F7LBCD2KOxGbR4Upx0Vl8gbbxDYFJIPi/M0LCQbQg5tYTIVtlO2oNAiIoTOpPVt66ITLFPdlEkg==}
     peerDependencies:
       '@emotion/react': '>=11.9.0'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
+<<<<<<< HEAD
       '@emotion/react': 11.10.0_bbvjflvjoibwhtpmedigb26h6y
       clsx: 1.1.1
       csstype: 3.0.9
@@ -2106,11 +2531,25 @@ packages:
     dev: true
 
   /@mantine/utils/5.6.2_react@18.2.0:
+=======
+      '@emotion/react': 11.10.0_zdsfwtvwq54q3oqxwtq4jnbhh4
+      clsx: 1.1.1
+      csstype: 3.0.9
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@mantine/utils/5.6.2_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-oWBVtewwIiqqKMCw8JahrHsDb1h68Eq878RWhnH+wOC1FOz1oV0ZXz0+5/gMUFZGss0duWEZXTVXafkBnD2HZA==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
+<<<<<<< HEAD
       react: 18.2.0
+=======
+      react: 17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /@monaco-editor/loader/1.3.2_monaco-editor@0.33.0:
@@ -2123,6 +2562,9 @@ packages:
     dev: false
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
   /@monaco-editor/loader/1.3.2_monaco-editor@0.34.0:
     resolution: {integrity: sha512-BTDbpHl3e47r3AAtpfVFTlAi7WXv4UQ/xZmz8atKl4q7epQV5e7+JbigFDViWF71VBi4IIBdcWP57Hj+OWuc9g==}
     peerDependencies:
@@ -2132,9 +2574,26 @@ packages:
       state-local: 1.0.7
     dev: false
 
+<<<<<<< HEAD
   /@monaco-editor/react/4.4.5_7payg3yaajmz2lehtpasnhysrm:
     resolution: {integrity: sha512-IImtzU7sRc66OOaQVCG+5PFHkSWnnhrUWGBuH6zNmH2h0YgmAhcjHZQc/6MY9JWEbUtVF1WPBMJ9u1XuFbRrVA==}
 =======
+=======
+  /@monaco-editor/react/4.4.5_gnpkoj5uzrqs5wqxh42z7ffyam:
+    resolution: {integrity: sha512-IImtzU7sRc66OOaQVCG+5PFHkSWnnhrUWGBuH6zNmH2h0YgmAhcjHZQc/6MY9JWEbUtVF1WPBMJ9u1XuFbRrVA==}
+    peerDependencies:
+      monaco-editor: '>= 0.25.0 < 1'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@monaco-editor/loader': 1.3.2_monaco-editor@0.34.0
+      monaco-editor: 0.34.0
+      prop-types: 15.8.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
   /@monaco-editor/react/4.4.6_m23risk2t2ktwbmyoufat5z4ue:
     resolution: {integrity: sha512-Gr3uz3LYf33wlFE3eRnta4RxP5FSNxiIV9ENn2D2/rN8KgGAD8ecvcITRtsbbyuOuNkwbuHYxfeaz2Vr+CtyFA==}
 >>>>>>> aa9a452dc (chore(deps): update dependency @monaco-editor/react to v4.4.6 (#2846))
@@ -2326,40 +2785,66 @@ packages:
       '@babel/runtime': 7.19.4
     dev: true
 
+<<<<<<< HEAD
   /@radix-ui/react-compose-refs/1.0.0_react@18.2.0:
+=======
+  /@radix-ui/react-compose-refs/1.0.0_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-0KaSv6sx787/hK3eF53iOkiSLwAGlFMx5lotrqD2pTjB18KbybKoEIgkNZTKC60YECDQTKGTRcDBILwZVqVKvA==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       react: 18.2.0
     dev: true
 
   /@radix-ui/react-context/1.0.0_react@18.2.0:
+=======
+      react: 17.0.2
+    dev: true
+
+  /@radix-ui/react-context/1.0.0_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-1pVM9RfOQ+n/N5PJK33kRSKsr1glNxomxONs5c49MliinBY6Yw2Q995qfBUUo0/Mbg05B/sGA0gkgPI7kmSHBg==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       react: 18.2.0
     dev: true
 
   /@radix-ui/react-direction/1.0.0_react@18.2.0:
+=======
+      react: 17.0.2
+    dev: true
+
+  /@radix-ui/react-direction/1.0.0_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-2HV05lGUgYcA6xgLQ4BKPDmtL+QbIZYH5fCOTAOOcJ5O0QbWS3i9lKaurLzliYUDhORI2Qr3pyjhJh44lKA3rQ==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       react: 18.2.0
     dev: true
 
   /@radix-ui/react-presence/1.0.0_biqbaboplfbrettd7655fr4n2y:
+=======
+      react: 17.0.2
+    dev: true
+
+  /@radix-ui/react-presence/1.0.0_sfoxds7t5ydpegc3knd667wn6m:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-A+6XEvN01NfVWiKu38ybawfHsBjWum42MRPnEuqPsBZ4eV7e/7K321B5VgYMPv3Xx5An6o1/l9ZuDBgmcmWK3w==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
       react-dom: ^16.8 || ^17.0 || ^18.0
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       '@radix-ui/react-compose-refs': 1.0.0_react@18.2.0
       '@radix-ui/react-use-layout-effect': 1.0.0_react@18.2.0
       react: 18.2.0
@@ -2367,18 +2852,36 @@ packages:
     dev: true
 
   /@radix-ui/react-primitive/1.0.0_biqbaboplfbrettd7655fr4n2y:
+=======
+      '@radix-ui/react-compose-refs': 1.0.0_react@17.0.2
+      '@radix-ui/react-use-layout-effect': 1.0.0_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@radix-ui/react-primitive/1.0.0_sfoxds7t5ydpegc3knd667wn6m:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-EyXe6mnRlHZ8b6f4ilTDrXmkLShICIuOTTj0GX4w1rp+wSxf3+TD05u1UOITC8VsJ2a9nwHvdXtOXEOl0Cw/zQ==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
       react-dom: ^16.8 || ^17.0 || ^18.0
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       '@radix-ui/react-slot': 1.0.0_react@18.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
   /@radix-ui/react-scroll-area/1.0.0_biqbaboplfbrettd7655fr4n2y:
+=======
+      '@radix-ui/react-slot': 1.0.0_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@radix-ui/react-scroll-area/1.0.0_sfoxds7t5ydpegc3knd667wn6m:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-3SNFukAjS5remgtpAVR9m3Zgo23ZojBZ8V3TCyR3A+56x2mtVqKlPV4+e8rScZUFMuvtbjIdQCmsJBFBazKZig==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
@@ -2387,6 +2890,7 @@ packages:
       '@babel/runtime': 7.19.4
       '@radix-ui/number': 1.0.0
       '@radix-ui/primitive': 1.0.0
+<<<<<<< HEAD
       '@radix-ui/react-compose-refs': 1.0.0_react@18.2.0
       '@radix-ui/react-context': 1.0.0_react@18.2.0
       '@radix-ui/react-direction': 1.0.0_react@18.2.0
@@ -2399,40 +2903,80 @@ packages:
     dev: true
 
   /@radix-ui/react-slot/1.0.0_react@18.2.0:
+=======
+      '@radix-ui/react-compose-refs': 1.0.0_react@17.0.2
+      '@radix-ui/react-context': 1.0.0_react@17.0.2
+      '@radix-ui/react-direction': 1.0.0_react@17.0.2
+      '@radix-ui/react-presence': 1.0.0_sfoxds7t5ydpegc3knd667wn6m
+      '@radix-ui/react-primitive': 1.0.0_sfoxds7t5ydpegc3knd667wn6m
+      '@radix-ui/react-use-callback-ref': 1.0.0_react@17.0.2
+      '@radix-ui/react-use-layout-effect': 1.0.0_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@radix-ui/react-slot/1.0.0_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-3mrKauI/tWXo1Ll+gN5dHcxDPdm/Df1ufcDLCecn+pnCIVcdWE7CujXo8QaXOWRJyZyQWWbpB8eFwHzWXlv5mQ==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       '@radix-ui/react-compose-refs': 1.0.0_react@18.2.0
       react: 18.2.0
     dev: true
 
   /@radix-ui/react-use-callback-ref/1.0.0_react@18.2.0:
+=======
+      '@radix-ui/react-compose-refs': 1.0.0_react@17.0.2
+      react: 17.0.2
+    dev: true
+
+  /@radix-ui/react-use-callback-ref/1.0.0_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-GZtyzoHz95Rhs6S63D2t/eqvdFCm7I+yHMLVQheKM7nBD8mbZIt+ct1jz4536MDnaOGKIxynJ8eHTkVGVVkoTg==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       react: 18.2.0
     dev: true
 
   /@radix-ui/react-use-layout-effect/1.0.0_react@18.2.0:
+=======
+      react: 17.0.2
+    dev: true
+
+  /@radix-ui/react-use-layout-effect/1.0.0_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-6Tpkq+R6LOlmQb1R5NNETLG0B4YP0wc+klfXafpUCj6JGyaUc8il7/kUZ7m59rGbXGczE9Bs+iz2qloqsZBduQ==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       react: 18.2.0
     dev: true
 
   /@react-aria/ssr/3.1.2_react@18.2.0:
+=======
+      react: 17.0.2
+    dev: true
+
+  /@react-aria/ssr/3.1.2_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-amXY11ImpokvkTMeKRHjsSsG7v1yzzs6yeqArCyBIk60J3Yhgxwx9Cah+Uu/804ATFwqzN22AXIo7SdtIaMP+g==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       react: 18.2.0
+=======
+      react: 17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: false
 
   /@react-dnd/asap/4.0.1:
@@ -2721,8 +3265,11 @@ packages:
     dev: true
 
   /@swc/cli/0.1.57_@swc+core@1.3.3:
+<<<<<<< HEAD
 =======
 >>>>>>> 0f273caf1 (chore(deps): update dependency @swc/core to v1.3.10 (#2829))
+=======
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-HxM8TqYHhAg+zp7+RdTU69bnkl4MWdt1ygyp6BDIPjTiaJVH6Dizn2ezbgDS8mnFZI1FyhKvxU/bbaUs8XhzQg==}
     engines: {node: '>= 12.13'}
     hasBin: true
@@ -2733,7 +3280,11 @@ packages:
       chokidar:
         optional: true
     dependencies:
+<<<<<<< HEAD
       '@swc/core': 1.3.10
+=======
+      '@swc/core': 1.3.3
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
       commander: 7.2.0
       fast-glob: 3.2.12
       slash: 3.0.0
@@ -2756,6 +3307,17 @@ packages:
     resolution: {integrity: sha512-R6MpKXvNx/T/8a0wUTiX1THxfRbURSCmYlSi/JnUaqLYUclQK1N8aCMWz7EYSz6FE0VZBREJYDJcdnfP88E/1Q==}
 =======
 >>>>>>> 0f273caf1 (chore(deps): update dependency @swc/core to v1.3.10 (#2829))
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [android]
+    requiresBuild: true
+    dependencies:
+      '@swc/wasm': 1.2.122
+    dev: true
+    optional: true
+
+  /@swc/core-android-arm-eabi/1.3.3:
+    resolution: {integrity: sha512-R6MpKXvNx/T/8a0wUTiX1THxfRbURSCmYlSi/JnUaqLYUclQK1N8aCMWz7EYSz6FE0VZBREJYDJcdnfP88E/1Q==}
     engines: {node: '>=10'}
     cpu: [arm]
     os: [android]
@@ -2790,6 +3352,17 @@ packages:
     dev: true
     optional: true
 
+  /@swc/core-android-arm64/1.3.3:
+    resolution: {integrity: sha512-yZlku4ypVKykwHTS8CETxw2PH23UBeM6VhNB8efF4A4gVWtRZjv1PfjsSqh/X0vjgVTrs2zSaQ+eF6GLVbWrgA==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [android]
+    requiresBuild: true
+    dependencies:
+      '@swc/wasm': 1.2.130
+    dev: true
+    optional: true
+
   /@swc/core-darwin-arm64/1.3.10:
     resolution: {integrity: sha512-X1eM5LDk24W/pbGamwpMRGkQW1BC+1xYNzS38hiK5YCS20TDZwI5LIg2pTEecKl/SRt1WFMwAThUwKbp4m1HIA==}
 <<<<<<< HEAD
@@ -2804,6 +3377,15 @@ packages:
     resolution: {integrity: sha512-/T8vyikY7t/be6bHd1D9J/bmXYMDMkBo9NA3auDT/hmouzawhJ6E7OqRE4HLuLTflnRw8WmEWgpeRIzMHvNjBQ==}
 =======
 >>>>>>> 0f273caf1 (chore(deps): update dependency @swc/core to v1.3.10 (#2829))
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-darwin-arm64/1.3.3:
+    resolution: {integrity: sha512-/T8vyikY7t/be6bHd1D9J/bmXYMDMkBo9NA3auDT/hmouzawhJ6E7OqRE4HLuLTflnRw8WmEWgpeRIzMHvNjBQ==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [darwin]
@@ -2832,6 +3414,15 @@ packages:
     dev: true
     optional: true
 
+  /@swc/core-darwin-x64/1.3.3:
+    resolution: {integrity: sha512-hw4o1If986In5m3y3/OimgiBKJh49kbTG9MRWo8msqTic2aBlrtfHjSecMn1g+oP7pdaUUCTkovmT7OpvvQ/Tw==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@swc/core-freebsd-x64/1.3.10:
     resolution: {integrity: sha512-tJ+ncGIZcueU3RVuQtawLvU0zGza4YKH7aD9unaypFE6e0qx34EX7fzObAhTUi881muEFIU/mDKmVpFqdEi7QQ==}
 <<<<<<< HEAD
@@ -2848,6 +3439,17 @@ packages:
     resolution: {integrity: sha512-JFDu3uLa0WMw77o+QNR5D1uErQ5s18HmEwJr5ndOQoDlS+XO2qUG6AxU5LdwLEl5qMf2C99t7gkfzcCZG1PRsw==}
 =======
 >>>>>>> 0f273caf1 (chore(deps): update dependency @swc/core to v1.3.10 (#2829))
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [freebsd]
+    requiresBuild: true
+    dependencies:
+      '@swc/wasm': 1.2.130
+    dev: true
+    optional: true
+
+  /@swc/core-freebsd-x64/1.3.3:
+    resolution: {integrity: sha512-JFDu3uLa0WMw77o+QNR5D1uErQ5s18HmEwJr5ndOQoDlS+XO2qUG6AxU5LdwLEl5qMf2C99t7gkfzcCZG1PRsw==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [freebsd]
@@ -2882,6 +3484,17 @@ packages:
     dev: true
     optional: true
 
+  /@swc/core-linux-arm-gnueabihf/1.3.3:
+    resolution: {integrity: sha512-kJoyNP/ury9KmZnjhpj0QApY6VxC9S4hkgsycm8yTJ23O8WrUbgeDOlgAgFJNyHszhR5CnlssDv7ErCwMZtkgw==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dependencies:
+      '@swc/wasm': 1.2.130
+    dev: true
+    optional: true
+
   /@swc/core-linux-arm64-gnu/1.3.10:
     resolution: {integrity: sha512-OaOd+wFbcTQwOD9Ce5luUp8qYoEvdX3s00Bby+j7hybu1fVZK4W40cqzVRp/EDElriG0I+tAdFvQW7PCcEzsPQ==}
 <<<<<<< HEAD
@@ -2896,6 +3509,15 @@ packages:
     resolution: {integrity: sha512-Y+10o78O2snKnrNTbasT9S3Out0wlOyAkLZvq5zqzW1cz2K2Yzm04zQdKQOCRHlfTF0XSmZ++qRWVNol49WsNA==}
 =======
 >>>>>>> 0f273caf1 (chore(deps): update dependency @swc/core to v1.3.10 (#2829))
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-arm64-gnu/1.3.3:
+    resolution: {integrity: sha512-Y+10o78O2snKnrNTbasT9S3Out0wlOyAkLZvq5zqzW1cz2K2Yzm04zQdKQOCRHlfTF0XSmZ++qRWVNol49WsNA==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
@@ -2924,6 +3546,15 @@ packages:
     dev: true
     optional: true
 
+  /@swc/core-linux-arm64-musl/1.3.3:
+    resolution: {integrity: sha512-y6ErPP6Sk0f8exoanUxXeFALvPraTjyoVr8pitpfTqoUd9YcxwOTpPbR5WXI3FWnQ7GS86iH0LvaFDCgHQ1fjg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@swc/core-linux-x64-gnu/1.3.10:
     resolution: {integrity: sha512-rjAyQVRkHCWvCA0wyk0nhJdVMfown6wLvDztKZ0wyT6NDDFdvekTMgALQXL5MW4Q0MYBvGMSauoysTZCdZW9aA==}
 <<<<<<< HEAD
@@ -2938,6 +3569,15 @@ packages:
     resolution: {integrity: sha512-sqyvNJkPHKHlK/XLIoMNLiux8YxsCJpAk3UreS0NO+sRNRru2AMyrRwX6wxmnJybhEek9SPKF0pXi+GfcaFKYA==}
 =======
 >>>>>>> 0f273caf1 (chore(deps): update dependency @swc/core to v1.3.10 (#2829))
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-x64-gnu/1.3.3:
+    resolution: {integrity: sha512-sqyvNJkPHKHlK/XLIoMNLiux8YxsCJpAk3UreS0NO+sRNRru2AMyrRwX6wxmnJybhEek9SPKF0pXi+GfcaFKYA==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
@@ -2966,6 +3606,15 @@ packages:
     dev: true
     optional: true
 
+  /@swc/core-linux-x64-musl/1.3.3:
+    resolution: {integrity: sha512-5fjwHdMv+DOgEp7sdNVmvS4Hr2rDaewa0BpDW8RefcjHoJnDpFVButLDMkwv/Yd+v4YN+99kyX/lOI+/OTD99w==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@swc/core-win32-arm64-msvc/1.3.10:
     resolution: {integrity: sha512-KcQIERfwGyTAcJOnqGsFbRtU6wSm91xwYFVYjeYy2aNU/SKQ5rtwPTW1UAaUDdwDcS1Y49fNWWj+GPtdaZ+WXQ==}
 <<<<<<< HEAD
@@ -2982,6 +3631,17 @@ packages:
     resolution: {integrity: sha512-JxcfG89GieqCFXkRl/mtFds/ME6ncEtLRIQ0+RBIREIGisA9ZgJ8EryBzGZyPu5+7kE0vXGVB6A2cfrv4SNW4A==}
 =======
 >>>>>>> 0f273caf1 (chore(deps): update dependency @swc/core to v1.3.10 (#2829))
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dependencies:
+      '@swc/wasm': 1.2.130
+    dev: true
+    optional: true
+
+  /@swc/core-win32-arm64-msvc/1.3.3:
+    resolution: {integrity: sha512-JxcfG89GieqCFXkRl/mtFds/ME6ncEtLRIQ0+RBIREIGisA9ZgJ8EryBzGZyPu5+7kE0vXGVB6A2cfrv4SNW4A==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [win32]
@@ -3016,6 +3676,17 @@ packages:
     dev: true
     optional: true
 
+  /@swc/core-win32-ia32-msvc/1.3.3:
+    resolution: {integrity: sha512-yqZjTn5V7wYCxMCC5Rg8u87SmGeRSlqYAafHL3IgiFe8hSxOykc2dR1MYNc4WZumYiMlU15VSa6mW8A0pj37FA==}
+    engines: {node: '>=10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dependencies:
+      '@swc/wasm': 1.2.130
+    dev: true
+    optional: true
+
   /@swc/core-win32-x64-msvc/1.3.10:
     resolution: {integrity: sha512-40yeeov6XcJHm99anMeEn/NwhDcoM2fhBQHWRVZfCa43QC45AUjJ3kWrD76U6MPGnGy7MsCOXdFyu1mJOAHKEw==}
 <<<<<<< HEAD
@@ -3030,6 +3701,15 @@ packages:
     resolution: {integrity: sha512-CIuxz9wiHkgG7m3kjgptgO3iHOmrybvLf0rUNGbVTTHwTcrpjznAnS/MnMPiaIQPlxz70KSXAR2QJjw7fGtfbA==}
 =======
 >>>>>>> 0f273caf1 (chore(deps): update dependency @swc/core to v1.3.10 (#2829))
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-win32-x64-msvc/1.3.3:
+    resolution: {integrity: sha512-CIuxz9wiHkgG7m3kjgptgO3iHOmrybvLf0rUNGbVTTHwTcrpjznAnS/MnMPiaIQPlxz70KSXAR2QJjw7fGtfbA==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [win32]
@@ -3082,11 +3762,42 @@ packages:
       '@swc/core-win32-x64-msvc': 1.3.10
     dev: true
 
+  /@swc/core/1.3.3:
+    resolution: {integrity: sha512-OGx3Qpw+czNSaea1ojP2X2wxrGtYicQxH1QnzX4F3rXGEcSUFIllmrae6iJHW91zS4SNcOocnQoRz1IYnrILYw==}
+    engines: {node: '>=10'}
+    hasBin: true
+    requiresBuild: true
+    optionalDependencies:
+      '@swc/core-android-arm-eabi': 1.3.3
+      '@swc/core-android-arm64': 1.3.3
+      '@swc/core-darwin-arm64': 1.3.3
+      '@swc/core-darwin-x64': 1.3.3
+      '@swc/core-freebsd-x64': 1.3.3
+      '@swc/core-linux-arm-gnueabihf': 1.3.3
+      '@swc/core-linux-arm64-gnu': 1.3.3
+      '@swc/core-linux-arm64-musl': 1.3.3
+      '@swc/core-linux-x64-gnu': 1.3.3
+      '@swc/core-linux-x64-musl': 1.3.3
+      '@swc/core-win32-arm64-msvc': 1.3.3
+      '@swc/core-win32-ia32-msvc': 1.3.3
+      '@swc/core-win32-x64-msvc': 1.3.3
+    dev: true
+
   /@swc/helpers/0.4.11:
     resolution: {integrity: sha512-rEUrBSGIoSFuYxwBYtlUFMlE2CwGhmW+w9355/5oduSw8e5h2+Tj4UrAGNNgP9915++wj5vkQo0UuOBqOAq4nw==}
     dependencies:
       tslib: 2.4.0
     dev: false
+
+  /@swc/jest/0.2.22_@swc+core@1.3.3:
+    resolution: {integrity: sha512-PIUIk9IdB1oAVfF9zNIfYoMBoEhahrrSvyryFANas7swC1cF0L5HR0f9X4qfet46oyCHCBtNcSpN0XJEOFIKlw==}
+    engines: {npm: '>= 7.0.0'}
+    peerDependencies:
+      '@swc/core': '*'
+    dependencies:
+      '@jest/create-cache-key-function': 27.5.1
+      '@swc/core': 1.3.3
+    dev: true
 
   /@swc/jest/0.2.23_@swc+core@1.3.10:
     resolution: {integrity: sha512-ZLj17XjHbPtNsgqjm83qizENw05emLkKGu3WuPUttcy9hkngl0/kcc7fDbcSBpADS0GUtsO+iKPjZFWVAtJSlA==}
@@ -3115,7 +3826,11 @@ packages:
     dev: true
     optional: true
 
+<<<<<<< HEAD
   /@tanstack/react-table/8.5.11_biqbaboplfbrettd7655fr4n2y:
+=======
+  /@tanstack/react-table/8.5.11_sfoxds7t5ydpegc3knd667wn6m:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-bIegBJ3VPUX3Z7rMnFEnTRCRgPccTsciilQA1ib/pA6M7Qq1boTNPjNjSbEHmBKytaxPrPfcUfzkZLogYtvu3g==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -3123,8 +3838,13 @@ packages:
       react-dom: '>=16'
     dependencies:
       '@tanstack/table-core': 8.5.11
+<<<<<<< HEAD
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+=======
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: false
 
   /@tanstack/table-core/8.5.11:
@@ -3132,12 +3852,35 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
+<<<<<<< HEAD
   /@testing-library/dom/8.18.1:
     resolution: {integrity: sha512-oEvsm2B/WtcHKE+IcEeeCqNU/ltFGaVyGbpcm4g/2ytuT49jrlH9x5qRKL/H3A6yfM4YAbSbC0ceT5+9CEXnLg==}
     engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.18.6
       '@babel/runtime': 7.19.4
+=======
+  /@testing-library/dom/7.31.2:
+    resolution: {integrity: sha512-3UqjCpey6HiTZT92vODYLPxTBWlM8ZOOjr3LX5F37/VRipW2M1kX6I/Cm4VXzteZqfGfagg8yXywpcOgQBlNsQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@babel/code-frame': 7.18.6
+      '@babel/runtime': 7.19.4
+      '@types/aria-query': 4.2.2
+      aria-query: 4.2.2
+      chalk: 4.1.2
+      dom-accessibility-api: 0.5.14
+      lz-string: 1.4.4
+      pretty-format: 26.6.2
+    dev: true
+
+  /@testing-library/dom/8.13.0:
+    resolution: {integrity: sha512-9VHgfIatKNXQNaZTtLnalIy0jNZzY35a4S3oi08YAt9Hv1VsfZ/DfA45lM8D/UhtHBGJ4/lGwp0PZkVndRkoOQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@babel/code-frame': 7.18.6
+      '@babel/runtime': 7.17.9
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
       '@types/aria-query': 4.2.2
       aria-query: 5.0.0
       chalk: 4.1.2
@@ -3161,8 +3904,49 @@ packages:
       redent: 3.0.0
     dev: true
 
+<<<<<<< HEAD
   /@testing-library/react/13.4.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw==}
+=======
+  /@testing-library/react-hooks/8.0.1_wsn53pslsboo2rytzocxzsur7i:
+    resolution: {integrity: sha512-Aqhl2IVmLt8IovEVarNDFuJDVWVvhnr9/GCU6UUnrYXwgDFF9h2L2o2P9KBni1AST5sT6riAyoukFLyjQUgD/g==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      '@types/react': ^16.9.0 || ^17.0.0
+      react: ^16.9.0 || ^17.0.0
+      react-dom: ^16.9.0 || ^17.0.0
+      react-test-renderer: ^16.9.0 || ^17.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react-dom:
+        optional: true
+      react-test-renderer:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@types/react': 17.0.44
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-error-boundary: 3.1.4_react@17.0.2
+    dev: true
+
+  /@testing-library/react/11.2.7_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-tzRNp7pzd5QmbtXNG/mhdcl7Awfu/Iz1RaVHY75zTdOkmHCuzMhRL83gWHSgOAcjS3CCbyfwUHMZgRJb4kAfpA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@testing-library/dom': 7.31.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@testing-library/react/12.1.5_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-OfTXCJUFgjd/digLUuPxa0+/3ZxsQmE7ub9kcbW/wi96Bh3o/p5vrETcBGfP17NWPGqeYYl5LTRpwyGoMC4ysg==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: '>=12'}
     peerDependencies:
       react: ^18.0.0
@@ -3175,8 +3959,23 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
+<<<<<<< HEAD
   /@testing-library/user-event/12.8.3_znccgeejomvff3jrsk3ljovfpu:
     resolution: {integrity: sha512-IR0iWbFkgd56Bu5ZI/ej8yQwrkCv8Qydx6RzwbKz9faXazR/+5tvYKsZQgyXJiwgpcva127YO6JcWy7YlCfofQ==}
+=======
+  /@testing-library/user-event/12.8.3_tlwynutqiyp5mns3woioasuxnq:
+    resolution: {integrity: sha512-IR0iWbFkgd56Bu5ZI/ej8yQwrkCv8Qydx6RzwbKz9faXazR/+5tvYKsZQgyXJiwgpcva127YO6JcWy7YlCfofQ==}
+    engines: {node: '>=10', npm: '>=6'}
+    peerDependencies:
+      '@testing-library/dom': '>=7.21.4'
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@testing-library/dom': 8.13.0
+    dev: true
+
+  /@testing-library/user-event/13.5.0_tlwynutqiyp5mns3woioasuxnq:
+    resolution: {integrity: sha512-5Kwtbo3Y/NowpkbRuSepbyMFkZmHgD+vPzYB/RJ4oxt5Gj/avFFBYjhw27cqSVPVw/3a67NK1PbiIr9k4Gwmdg==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: '>=10', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
@@ -3553,6 +4352,13 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
+  /@types/jest/27.5.2:
+    resolution: {integrity: sha512-mpT8LJJ4CMeeahobofYWIjFo0xonRS/HfxnVEPMPFSQdGUt1uHCnoPT7Zhb+sjDU2wz0oKV0OLUR0WzrHNgfeA==}
+    dependencies:
+      jest-matcher-utils: 27.5.1
+      pretty-format: 27.5.1
+    dev: true
+
   /@types/jest/29.0.3:
     resolution: {integrity: sha512-F6ukyCTwbfsEX5F2YmVYmM5TcTHy1q9P5rWlRbrk56KyMh3v9xRGUO3aa8+SkvMi0SHXtASJv1283enXimC0Og==}
     dependencies:
@@ -3560,11 +4366,20 @@ packages:
       pretty-format: 29.0.3
     dev: true
 
+<<<<<<< HEAD
   /@types/jest/29.1.2:
     resolution: {integrity: sha512-y+nlX0h87U0R+wsGn6EBuoRWYyv3KFtwRNP3QWp9+k2tJ2/bqcGS3UxD7jgT+tiwJWWq3UsyV4Y+T6rsMT4XMg==}
     dependencies:
       expect: 29.0.3
       pretty-format: 29.0.3
+=======
+  /@types/jsdom/16.2.15:
+    resolution: {integrity: sha512-nwF87yjBKuX/roqGYerZZM0Nv1pZDMAT5YhOHYeM/72Fic+VEqJh4nyoqoapzJnW3pUlfxPY5FhgsJtM+dRnQQ==}
+    dependencies:
+      '@types/node': 18.7.18
+      '@types/parse5': 6.0.3
+      '@types/tough-cookie': 4.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /@types/jsdom/20.0.0:
@@ -3586,6 +4401,12 @@ packages:
     resolution: {integrity: sha512-YhoCCxyuvP2XeZNbHbi8Wb9EMaUJuA2VGHxJffcQYrJKIKSkymJrhbzsf9y4zpTmr5pExAAEh5hbF628PAZ8Dg==}
     dependencies:
       '@types/react': 18.0.24
+    dev: true
+
+  /@types/lodash.defaultsdeep/4.6.7:
+    resolution: {integrity: sha512-D+AUxs64qehDMkbfFoskG0XsIOh2CHBGqYfcQcubLbZSFCGKJKS885su3a97huqBNHj+p9of9UZ/uUIP46wUGQ==}
+    dependencies:
+      '@types/lodash': 4.14.186
     dev: true
 
   /@types/lodash.defaultsdeep/4.6.7:
@@ -3660,6 +4481,10 @@ packages:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: true
 
+  /@types/parse5/6.0.3:
+    resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
+    dev: true
+
   /@types/pino-pretty/4.7.5:
     resolution: {integrity: sha512-rfHe6VIknk14DymxGqc9maGsRe8/HQSvM2u46EAz2XrS92qsAJnW16dpdFejBuZKD8cRJX6Aw6uVZqIQctMpAg==}
     dependencies:
@@ -3700,7 +4525,11 @@ packages:
   /@types/react-beautiful-dnd/13.1.2:
     resolution: {integrity: sha512-+OvPkB8CdE/bGdXKyIhc/Lm2U7UAYCCJgsqmopFmh9gbAudmslkI8eOrPDjg4JhwSE6wytz4a3/wRjKtovHVJg==}
     dependencies:
+<<<<<<< HEAD
       '@types/react': 18.0.24
+=======
+      '@types/react': 17.0.44
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /@types/react-bootstrap/0.32.29:
@@ -3893,6 +4722,12 @@ packages:
 
   /@types/yargs-parser/21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
+    dev: true
+
+  /@types/yargs/15.0.14:
+    resolution: {integrity: sha512-yEJzHoxf6SyQGhBhIYGXQDSCkJjB6HohDShto7m8vaKg9Yp0Yn8+71J9eakh2bnPg6BfsH9PRMhiRTZnd4eXGQ==}
+    dependencies:
+      '@types/yargs-parser': 21.0.0
     dev: true
 
   /@types/yargs/16.0.4:
@@ -4778,7 +5613,11 @@ packages:
     engines: {node: '>=0.6.10'}
     dev: true
 
+<<<<<<< HEAD
   /aria-hidden/1.2.1_bbvjflvjoibwhtpmedigb26h6y:
+=======
+  /aria-hidden/1.2.1_zdsfwtvwq54q3oqxwtq4jnbhh4:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-PN344VAf9j1EAi+jyVHOJ8XidQdPVssGco39eNcsGdM4wcsILtxrKLkbuiMfLWYROK1FjRQasMWCBttrhjnr6A==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -4788,11 +5627,27 @@ packages:
       '@types/react':
         optional: true
     dependencies:
+<<<<<<< HEAD
       '@types/react': 18.0.24
       react: 18.2.0
       tslib: 2.4.0
     dev: true
 
+=======
+      '@types/react': 17.0.44
+      react: 17.0.2
+      tslib: 2.4.0
+    dev: true
+
+  /aria-query/4.2.2:
+    resolution: {integrity: sha512-o/HelwhuKpTj/frsOsbNLNgnNGVIFsVP/SW2BSF14gVl7kAfMOJ6/8wUAUvG1R1NHKrfG+2sHZTu0yauT1qBrA==}
+    engines: {node: '>=6.0'}
+    dependencies:
+      '@babel/runtime': 7.19.4
+      '@babel/runtime-corejs3': 7.19.6
+    dev: true
+
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
   /aria-query/5.0.0:
     resolution: {integrity: sha512-V+SM7AbUwJ+EBnB8+DXs0hPZHO0W6pqBcc0dW90OwtVG02PswOu/teuARoLQjdDOH+t9pJgGnW5/Qmouf3gPJg==}
     engines: {node: '>=6.0'}
@@ -5108,8 +5963,31 @@ packages:
       - debug
     dev: true
 
+<<<<<<< HEAD
   /babel-jest/29.2.2_@babel+core@7.19.1:
     resolution: {integrity: sha512-kkq2QSDIuvpgfoac3WZ1OOcHsQQDU5xYk2Ql7tLdJ8BVAYbefEXal+NfS45Y5LVZA7cxC8KYcQMObpCt1J025w==}
+=======
+  /babel-jest/28.1.3_@babel+core@7.19.1:
+    resolution: {integrity: sha512-epUaPOEWMk3cWX0M/sPvCHHCe9fMFAa/9hXEgKP8nFfNl/jlGkE9ucq9NqkZGXLDduCJYS0UvSlPUwC0S+rH6Q==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    peerDependencies:
+      '@babel/core': ^7.8.0
+    dependencies:
+      '@babel/core': 7.19.1
+      '@jest/transform': 28.1.3
+      '@types/babel__core': 7.1.19
+      babel-plugin-istanbul: 6.1.1
+      babel-preset-jest: 28.1.3_@babel+core@7.19.1
+      chalk: 4.1.2
+      graceful-fs: 4.2.10
+      slash: 3.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /babel-jest/29.0.3_@babel+core@7.19.1:
+    resolution: {integrity: sha512-ApPyHSOhS/sVzwUOQIWJmdvDhBsMG01HX9z7ogtkp1TToHGGUWFlnXJUIzCgKPSfiYLn3ibipCYzsKSURHEwLg==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
       '@babel/core': ^7.8.0
@@ -5139,8 +6017,23 @@ packages:
       - supports-color
     dev: true
 
+<<<<<<< HEAD
   /babel-plugin-jest-hoist/29.2.0:
     resolution: {integrity: sha512-TnspP2WNiR3GLfCsUNHqeXw0RoQ2f9U5hQ5L3XFpwuO8htQmSrhh8qsB6vi5Yi8+kuynN1yjDjQsPfkebmB6ZA==}
+=======
+  /babel-plugin-jest-hoist/28.1.3:
+    resolution: {integrity: sha512-Ys3tUKAmfnkRUpPdpa98eYrAR0nV+sSFUZZEGuQ2EbFd1y4SOLtD5QDNHAq+bb9a+bbXvYQC4b+ID/THIMcU6Q==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@babel/template': 7.18.10
+      '@babel/types': 7.19.0
+      '@types/babel__core': 7.1.19
+      '@types/babel__traverse': 7.17.1
+    dev: true
+
+  /babel-plugin-jest-hoist/29.0.2:
+    resolution: {integrity: sha512-eBr2ynAEFjcebVvu8Ktx580BD1QKCrBG1XwEUTXJe285p9HA/4hOhfWCFRQhTKSyBV0VzjhG7H91Eifz9s29hg==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@babel/template': 7.18.10
@@ -5178,8 +6071,24 @@ packages:
       '@babel/plugin-syntax-top-level-await': 7.14.5_@babel+core@7.19.1
     dev: true
 
+<<<<<<< HEAD
   /babel-preset-jest/29.2.0_@babel+core@7.19.1:
     resolution: {integrity: sha512-z9JmMJppMxNv8N7fNRHvhMg9cvIkMxQBXgFkane3yKVEvEOP+kB50lk8DFRvF9PGqbyXxlmebKWhuDORO8RgdA==}
+=======
+  /babel-preset-jest/28.1.3_@babel+core@7.19.1:
+    resolution: {integrity: sha512-L+fupJvlWAHbQfn74coNX3zf60LXMJsezNvvx8eIh7iOR1luJ1poxYgQk1F8PYtNq/6QODDHCqsSnTFSWC491A==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    dependencies:
+      '@babel/core': 7.19.1
+      babel-plugin-jest-hoist: 28.1.3
+      babel-preset-current-node-syntax: 1.0.1_@babel+core@7.19.1
+    dev: true
+
+  /babel-preset-jest/29.0.2_@babel+core@7.19.1:
+    resolution: {integrity: sha512-BeVXp7rH5TK96ofyEnHjznjLMQ2nAeDJ+QzxKnHAAMs0RgrQsCywjAN8m4mOm5Di0pxU//3AoEeJJrerMH5UeA==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -6276,6 +7185,11 @@ packages:
       is-plain-object: 5.0.0
     dev: true
 
+  /core-js-pure/3.26.0:
+    resolution: {integrity: sha512-LiN6fylpVBVwT8twhhluD9TzXmZQQsr2I2eIKtWNbZI1XMfBT7CV18itaN6RA7EtQd/SDdRx/wzvAShX2HvhQA==}
+    requiresBuild: true
+    dev: true
+
   /core-js/2.6.12:
     resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
     deprecated: core-js@<3.4 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Please, upgrade your dependencies to the actual version of core-js.
@@ -7200,8 +8114,23 @@ packages:
     resolution: {integrity: sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==}
     dev: false
 
+<<<<<<< HEAD
   /diff-sequences/29.2.0:
     resolution: {integrity: sha512-413SY5JpYeSBZxmenGEmCVQ8mCgtFJF0w9PROdaS6z987XC2Pd2GOKqOITLtMftmyFZqgtCOb/QA7/Z3ZXfzIw==}
+=======
+  /diff-sequences/27.5.1:
+    resolution: {integrity: sha512-k1gCAXAsNgLwEL+Y8Wvl+M6oEFj5bgazfZULpS5CneoPPXRaCCW7dm+q21Ky2VEE5X+VeRDBVg1Pcvvsr4TtNQ==}
+    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+    dev: true
+
+  /diff-sequences/28.1.1:
+    resolution: {integrity: sha512-FU0iFaH/E23a+a718l8Qa/19bF9p06kgE0KipMOMadwa3SjnaElKzPaUC0vnibs6/B/9ni97s61mcejk8W1fQw==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dev: true
+
+  /diff-sequences/29.0.0:
+    resolution: {integrity: sha512-7Qe/zd1wxSDL4D/X/FPjOMB+ZMDt71W94KYaq05I2l0oQqgXgs7s4ftYYmV38gBSrPz2vcygxfs1xn0FT+rKNA==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dev: true
 
@@ -7800,6 +8729,26 @@ packages:
       requireindex: 1.2.0
     dev: true
 
+  /eslint-plugin-jest/26.1.5_bmx2iisgsiqhot7rn2hyxwpi5e:
+    resolution: {integrity: sha512-su89aDuljL9bTjEufTXmKUMSFe2kZUL9bi7+woq+C2ukHZordhtfPm4Vg+tdioHBaKf8v3/FXW9uV0ksqhYGFw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      '@typescript-eslint/eslint-plugin': ^5.0.0
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      jest: '*'
+    peerDependenciesMeta:
+      '@typescript-eslint/eslint-plugin':
+        optional: true
+      jest:
+        optional: true
+    dependencies:
+      '@typescript-eslint/utils': 5.38.0_typescript@4.6.4
+      jest: 28.1.2
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
+
   /eslint-plugin-jest/27.0.4_ux4igbs2hksg7ljbuaoo35zb2i:
     resolution: {integrity: sha512-BuvY78pHMpMJ6Cio7sKg6jrqEcnRYPUc4Nlihku4vKx3FjlmMINSX4vcYokZIe+8TKcyr1aI5Kq7vYwgJNdQSA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -7928,13 +8877,22 @@ packages:
       - typescript
     dev: true
 
+<<<<<<< HEAD
   /eslint-plugin-testing-library/5.7.2_typescript@4.7.4:
     resolution: {integrity: sha512-0ZmHeR/DUUgEzW8rwUBRWxuqntipDtpvxK0hymdHnLlABryJkzd+CAHr+XnISaVsTisZ5MLHp6nQF+8COHLLTA==}
+=======
+  /eslint-plugin-testing-library/5.5.1_typescript@4.6.4:
+    resolution: {integrity: sha512-plLEkkbAKBjPxsLj7x4jNapcHAg2ernkQlKKrN2I8NrQwPISZHyCUNvg5Hv3EDqOQReToQb5bnqXYbkijJPE/g==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6'}
     peerDependencies:
       eslint: ^7.5.0 || ^8.0.0
     dependencies:
+<<<<<<< HEAD
       '@typescript-eslint/utils': 5.38.0_typescript@4.7.4
+=======
+      '@typescript-eslint/utils': 5.38.0_typescript@4.6.4
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -8218,6 +9176,17 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       homedir-polyfill: 1.0.3
+    dev: true
+
+  /expect/28.1.3:
+    resolution: {integrity: sha512-eEh0xn8HlsuOBxFgIss+2mX85VAS4Qy3OSkjV7rlBWljtA4oWH37glVGyOZSZvErDT/yBywZdPGwCXuTvSG85g==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/expect-utils': 28.1.3
+      jest-get-type: 28.0.2
+      jest-matcher-utils: 28.1.3
+      jest-message-util: 28.1.3
+      jest-util: 28.1.3
     dev: true
 
   /expect/29.0.3:
@@ -9907,6 +10876,15 @@ packages:
       has: 1.0.3
     dev: true
 
+<<<<<<< HEAD
+=======
+  /is-core-module/2.11.0:
+    resolution: {integrity: sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==}
+    dependencies:
+      has: 1.0.3
+    dev: true
+
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
   /is-data-descriptor/0.1.4:
     resolution: {integrity: sha512-+w9D5ulSoBNlmw9OHn3U2v51SyoCd0he+bB3xMl62oijhrspxowjU+AIcDY0N3iEJbUEkB15IlMASQsxYigvXg==}
     engines: {node: '>=0.10.0'}
@@ -10322,6 +11300,14 @@ packages:
       istanbul-lib-report: 3.0.0
     dev: true
 
+  /jest-changed-files/28.1.3:
+    resolution: {integrity: sha512-esaOfUWJXk2nfZt9SPyC8gA1kNfdKLkQWyzsMlqq8msYSlNKfmZxfRgZn4Cd4MGVUF+7v6dBs0d5TOAKa7iIiA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      execa: 5.1.1
+      p-limit: 3.1.0
+    dev: true
+
   /jest-changed-files/29.0.0:
     resolution: {integrity: sha512-28/iDMDrUpGoCitTURuDqUzWQoWmOmOKOFST1mi2lwh62X4BFf6khgH3uSuo1e49X/UDjuApAj3w0wLOex4VPQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -10330,8 +11316,40 @@ packages:
       p-limit: 3.1.0
     dev: true
 
+<<<<<<< HEAD
   /jest-changed-files/29.2.0:
     resolution: {integrity: sha512-qPVmLLyBmvF5HJrY7krDisx6Voi8DmlV3GZYX0aFNbaQsZeoz1hfxcCMbqDGuQCxU1dJy9eYc2xscE8QrCCYaA==}
+=======
+  /jest-circus/28.1.3:
+    resolution: {integrity: sha512-cZ+eS5zc79MBwt+IhQhiEp0OeBddpc1n8MBo1nMB8A7oPMKEO+Sre+wHaLJexQUj9Ya/8NOBY0RESUgYjB6fow==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/environment': 28.1.3
+      '@jest/expect': 28.1.3
+      '@jest/test-result': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+      chalk: 4.1.2
+      co: 4.6.0
+      dedent: 0.7.0
+      is-generator-fn: 2.1.0
+      jest-each: 28.1.3
+      jest-matcher-utils: 28.1.3
+      jest-message-util: 28.1.3
+      jest-runtime: 28.1.3
+      jest-snapshot: 28.1.3
+      jest-util: 28.1.3
+      p-limit: 3.1.0
+      pretty-format: 28.1.3
+      slash: 3.0.0
+      stack-utils: 2.0.5
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /jest-circus/29.0.3:
+    resolution: {integrity: sha512-QeGzagC6Hw5pP+df1+aoF8+FBSgkPmraC1UdkeunWh0jmrp7wC0Hr6umdUAOELBQmxtKAOMNC3KAdjmCds92Zg==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       execa: 5.1.1
@@ -10365,6 +11383,34 @@ packages:
       - supports-color
     dev: true
 
+  /jest-cli/28.1.3:
+    resolution: {integrity: sha512-roY3kvrv57Azn1yPgdTebPAXvdR2xfezaKKYzVxZ6It/5NCxzJym6tUI5P1zkdWhfUYkxEI9uZWcQdaFLo8mJQ==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    hasBin: true
+    peerDependencies:
+      node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
+    peerDependenciesMeta:
+      node-notifier:
+        optional: true
+    dependencies:
+      '@jest/core': 28.1.3
+      '@jest/test-result': 28.1.3
+      '@jest/types': 28.1.3
+      chalk: 4.1.2
+      exit: 0.1.2
+      graceful-fs: 4.2.10
+      import-local: 3.1.0
+      jest-config: 28.1.3
+      jest-util: 28.1.3
+      jest-validate: 28.1.3
+      prompts: 2.4.2
+      yargs: 17.5.1
+    transitivePeerDependencies:
+      - '@types/node'
+      - supports-color
+      - ts-node
+    dev: true
+
   /jest-cli/29.0.3:
     resolution: {integrity: sha512-aUy9Gd/Kut1z80eBzG10jAn6BgS3BoBbXyv+uXEqBJ8wnnuZ5RpNfARoskSrTIy1GY4a8f32YGuCMwibtkl9CQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -10393,6 +11439,7 @@ packages:
       - ts-node
     dev: true
 
+<<<<<<< HEAD
   /jest-cli/29.2.2:
     resolution: {integrity: sha512-R45ygnnb2CQOfd8rTPFR+/fls0d+1zXS6JPYTBBrnLPrhr58SSuPTiA5Tplv8/PXpz4zXR/AYNxmwIj6J6nrvg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -10419,6 +11466,83 @@ packages:
       - '@types/node'
       - supports-color
       - ts-node
+=======
+  /jest-config/28.1.3:
+    resolution: {integrity: sha512-MG3INjByJ0J4AsNBm7T3hsuxKQqFIiRo/AUqb1q9LRKI5UU6Aar9JHbr9Ivn1TVwfUD9KirRoM/T6u8XlcQPHQ==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    peerDependencies:
+      '@types/node': '*'
+      ts-node: '>=9.0.0'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      ts-node:
+        optional: true
+    dependencies:
+      '@babel/core': 7.19.1
+      '@jest/test-sequencer': 28.1.3
+      '@jest/types': 28.1.3
+      babel-jest: 28.1.3_@babel+core@7.19.1
+      chalk: 4.1.2
+      ci-info: 3.3.0
+      deepmerge: 4.2.2
+      glob: 7.2.3
+      graceful-fs: 4.2.10
+      jest-circus: 28.1.3
+      jest-environment-node: 28.1.3
+      jest-get-type: 28.0.2
+      jest-regex-util: 28.0.2
+      jest-resolve: 28.1.3
+      jest-runner: 28.1.3
+      jest-util: 28.1.3
+      jest-validate: 28.1.3
+      micromatch: 4.0.5
+      parse-json: 5.2.0
+      pretty-format: 28.1.3
+      slash: 3.0.0
+      strip-json-comments: 3.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /jest-config/28.1.3_@types+node@18.7.18:
+    resolution: {integrity: sha512-MG3INjByJ0J4AsNBm7T3hsuxKQqFIiRo/AUqb1q9LRKI5UU6Aar9JHbr9Ivn1TVwfUD9KirRoM/T6u8XlcQPHQ==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    peerDependencies:
+      '@types/node': '*'
+      ts-node: '>=9.0.0'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      ts-node:
+        optional: true
+    dependencies:
+      '@babel/core': 7.19.1
+      '@jest/test-sequencer': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+      babel-jest: 28.1.3_@babel+core@7.19.1
+      chalk: 4.1.2
+      ci-info: 3.3.0
+      deepmerge: 4.2.2
+      glob: 7.2.3
+      graceful-fs: 4.2.10
+      jest-circus: 28.1.3
+      jest-environment-node: 28.1.3
+      jest-get-type: 28.0.2
+      jest-regex-util: 28.0.2
+      jest-resolve: 28.1.3
+      jest-runner: 28.1.3
+      jest-util: 28.1.3
+      jest-validate: 28.1.3
+      micromatch: 4.0.5
+      parse-json: 5.2.0
+      pretty-format: 28.1.3
+      slash: 3.0.0
+      strip-json-comments: 3.1.1
+    transitivePeerDependencies:
+      - supports-color
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /jest-config/29.0.3:
@@ -10498,6 +11622,7 @@ packages:
       - supports-color
     dev: true
 
+<<<<<<< HEAD
   /jest-config/29.2.2:
     resolution: {integrity: sha512-Q0JX54a5g1lP63keRfKR8EuC7n7wwny2HoTRDb8cx78IwQOiaYUVZAdjViY3WcTxpR02rPUpvNVmZ1fkIlZPcw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -10577,6 +11702,30 @@ packages:
 
   /jest-diff/29.2.1:
     resolution: {integrity: sha512-gfh/SMNlQmP3MOUgdzxPOd4XETDJifADpT937fN1iUGz+9DgOu2eUPHH25JDkLVcLwwqxv3GzVyK4VBUr9fjfA==}
+=======
+  /jest-diff/27.5.1:
+    resolution: {integrity: sha512-m0NvkX55LDt9T4mctTEgnZk3fmEg3NRYutvMPWM/0iPnkFj2wIeF45O1718cMSOFO1vINkqmxqD8vE37uTEbqw==}
+    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+    dependencies:
+      chalk: 4.1.2
+      diff-sequences: 27.5.1
+      jest-get-type: 27.5.1
+      pretty-format: 27.5.1
+    dev: true
+
+  /jest-diff/28.1.3:
+    resolution: {integrity: sha512-8RqP1B/OXzjjTWkqMX67iqgwBVJRgCyKD3L9nq+6ZqJMdvjE8RgHktqZ6jNrkdMT+dJuYNI3rhQpxaz7drJHfw==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      chalk: 4.1.2
+      diff-sequences: 28.1.1
+      jest-get-type: 28.0.2
+      pretty-format: 28.1.3
+    dev: true
+
+  /jest-diff/29.0.3:
+    resolution: {integrity: sha512-+X/AIF5G/vX9fWK+Db9bi9BQas7M9oBME7egU7psbn4jlszLFCu0dW63UgeE6cs/GANq4fLaT+8sGHQQ0eCUfg==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       chalk: 4.1.2
@@ -10585,15 +11734,43 @@ packages:
       pretty-format: 29.2.1
     dev: true
 
+<<<<<<< HEAD
   /jest-docblock/29.2.0:
     resolution: {integrity: sha512-bkxUsxTgWQGbXV5IENmfiIuqZhJcyvF7tU4zJ/7ioTutdz4ToB5Yx6JOFBpgI+TphRY4lhOyCWGNH/QFQh5T6A==}
+=======
+  /jest-docblock/28.1.1:
+    resolution: {integrity: sha512-3wayBVNiOYx0cwAbl9rwm5kKFP8yHH3d/fkEaL02NPTkDojPtheGB7HZSFY4wzX+DxyrvhXz0KSCVksmCknCuA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      detect-newline: 3.1.0
+    dev: true
+
+  /jest-docblock/29.0.0:
+    resolution: {integrity: sha512-s5Kpra/kLzbqu9dEjov30kj1n4tfu3e7Pl8v+f8jOkeWNqM6Ds8jRaJfZow3ducoQUrf2Z4rs2N5S3zXnb83gw==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       detect-newline: 3.1.0
     dev: true
 
+<<<<<<< HEAD
   /jest-each/29.2.1:
     resolution: {integrity: sha512-sGP86H/CpWHMyK3qGIGFCgP6mt+o5tu9qG4+tobl0LNdgny0aitLXs9/EBacLy3Bwqy+v4uXClqJgASJWcruYw==}
+=======
+  /jest-each/28.1.3:
+    resolution: {integrity: sha512-arT1z4sg2yABU5uogObVPvSlSMQlDA48owx07BDPAiasW0yYpYHYOo4HHLz9q0BVzDVU4hILFjzJw0So9aCL/g==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/types': 28.1.3
+      chalk: 4.1.2
+      jest-get-type: 28.0.2
+      jest-util: 28.1.3
+      pretty-format: 28.1.3
+    dev: true
+
+  /jest-each/29.0.3:
+    resolution: {integrity: sha512-wILhZfESURHHBNvPMJ0lZlYZrvOQJxAo3wNHi+ycr90V7M+uGR9Gh4+4a/BmaZF0XTyZsk4OiYEf3GJN7Ltqzg==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.2.1
@@ -10601,6 +11778,25 @@ packages:
       jest-get-type: 29.2.0
       jest-util: 29.2.1
       pretty-format: 29.2.1
+    dev: true
+
+  /jest-environment-jsdom/28.1.2:
+    resolution: {integrity: sha512-Ujhx/xFZGVPuxAVpseQ7KqdBErenuWH3Io2HujkGOKMS2VWmpnTGYHzv+73p21QJ9yYQlJkeg06rTe1svV+u0g==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/environment': 28.1.3
+      '@jest/fake-timers': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/jsdom': 16.2.15
+      '@types/node': 18.7.18
+      jest-mock: 28.1.3
+      jest-util: 28.1.3
+      jsdom: 19.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - canvas
+      - supports-color
+      - utf-8-validate
     dev: true
 
   /jest-environment-jsdom/29.0.3:
@@ -10622,8 +11818,25 @@ packages:
       - utf-8-validate
     dev: true
 
+<<<<<<< HEAD
   /jest-environment-jsdom/29.1.2:
     resolution: {integrity: sha512-D+XNIKia5+uDjSMwL/G1l6N9MCb7LymKI8FpcLo7kkISjc/Sa9w+dXXEa7u1Wijo3f8sVLqfxdGqYtRhmca+Xw==}
+=======
+  /jest-environment-node/28.1.3:
+    resolution: {integrity: sha512-ugP6XOhEpjAEhGYvp5Xj989ns5cB1K6ZdjBYuS30umT4CQEETaxSiPcZ/E1kFktX4GkrcM4qu07IIlDYX1gp+A==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/environment': 28.1.3
+      '@jest/fake-timers': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+      jest-mock: 28.1.3
+      jest-util: 28.1.3
+    dev: true
+
+  /jest-environment-node/29.0.3:
+    resolution: {integrity: sha512-cdZqRCnmIlTXC+9vtvmfiY/40Cj6s2T0czXuq1whvQdmpzAnj4sbqVYuZ4zFHk766xTTJ+Ij3uUqkk8KCfXoyg==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/environment': 29.2.2
@@ -10653,14 +11866,44 @@ packages:
       jest-util: 29.2.1
     dev: true
 
+  /jest-get-type/27.5.1:
+    resolution: {integrity: sha512-2KY95ksYSaK7DMBWQn6dQz3kqAf3BB64y2udeG+hv4KfSOb9qwcYQstTJc1KCbsix+wLZWZYN8t7nwX3GOBLRw==}
+    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+    dev: true
+
+  /jest-get-type/28.0.2:
+    resolution: {integrity: sha512-ioj2w9/DxSYHfOm5lJKCdcAmPJzQXmbM/Url3rhlghrPvT3tt+7a/+oXc9azkKmLvoiXjtV83bEWqi+vs5nlPA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dev: true
+
   /jest-get-type/29.0.0:
     resolution: {integrity: sha512-83X19z/HuLKYXYHskZlBAShO7UfLFXu/vWajw9ZNJASN32li8yHMaVGAQqxFW1RCFOkB7cubaL6FaJVQqqJLSw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dev: true
 
+<<<<<<< HEAD
   /jest-get-type/29.2.0:
     resolution: {integrity: sha512-uXNJlg8hKFEnDgFsrCjznB+sTxdkuqiCL6zMgA75qEbAJjJYTs9XPrvDctrEig2GDow22T/LvHgO57iJhXB/UA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+=======
+  /jest-haste-map/28.1.3:
+    resolution: {integrity: sha512-3S+RQWDXccXDKSWnkHa/dPwt+2qwA8CJzR61w3FoYCvoo3Pn8tvGcysmMF0Bj0EX5RYvAI2EIvC57OmotfdtKA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/types': 28.1.3
+      '@types/graceful-fs': 4.1.5
+      '@types/node': 18.7.18
+      anymatch: 3.1.2
+      fb-watchman: 2.0.1
+      graceful-fs: 4.2.10
+      jest-regex-util: 28.0.2
+      jest-util: 28.1.3
+      jest-worker: 28.1.3
+      micromatch: 4.0.5
+      walker: 1.0.8
+    optionalDependencies:
+      fsevents: 2.3.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /jest-haste-map/29.0.3:
@@ -10682,8 +11925,31 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+<<<<<<< HEAD
   /jest-haste-map/29.2.1:
     resolution: {integrity: sha512-wF460rAFmYc6ARcCFNw4MbGYQjYkvjovb9GBT+W10Um8q5nHq98jD6fHZMDMO3tA56S8XnmNkM8GcA8diSZfnA==}
+=======
+  /jest-junit/13.2.0:
+    resolution: {integrity: sha512-B0XNlotl1rdsvFZkFfoa19mc634+rrd8E4Sskb92Bb8MmSXeWV9XJGUyctunZS1W410uAxcyYuPUGVnbcOH8cg==}
+    engines: {node: '>=10.12.0'}
+    dependencies:
+      mkdirp: 1.0.4
+      strip-ansi: 6.0.1
+      uuid: 8.3.2
+      xml: 1.0.1
+    dev: true
+
+  /jest-leak-detector/28.1.3:
+    resolution: {integrity: sha512-WFVJhnQsiKtDEo5lG2mM0v40QWnBM+zMdHHyJs8AWZ7J0QZJS59MsyKeJHWhpBZBH32S48FOVvGyOFT1h0DlqA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      jest-get-type: 28.0.2
+      pretty-format: 28.1.3
+    dev: true
+
+  /jest-leak-detector/29.0.3:
+    resolution: {integrity: sha512-YfW/G63dAuiuQ3QmQlh8hnqLDe25WFY3eQhuc/Ev1AGmkw5zREblTh7TCSKLoheyggu6G9gxO2hY8p9o6xbaRQ==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.2.1
@@ -10719,6 +11985,26 @@ packages:
       pretty-format: 29.2.1
     dev: true
 
+  /jest-matcher-utils/27.5.1:
+    resolution: {integrity: sha512-z2uTx/T6LBaCoNWNFWwChLBKYxTMcGBRjAt+2SbP929/Fflb9aa5LGma654Rz8z9HLxsrUaYzxE9T/EFIL/PAw==}
+    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+    dependencies:
+      chalk: 4.1.2
+      jest-diff: 27.5.1
+      jest-get-type: 27.5.1
+      pretty-format: 27.5.1
+    dev: true
+
+  /jest-matcher-utils/28.1.3:
+    resolution: {integrity: sha512-kQeJ7qHemKfbzKoGjHHrRKH6atgxMk8Enkk2iPQ3XwO6oE/KYD8lMYOziCkeSB9G4adPM4nR1DE8Tf5JeWH6Bw==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      chalk: 4.1.2
+      jest-diff: 28.1.3
+      jest-get-type: 28.0.2
+      pretty-format: 28.1.3
+    dev: true
+
   /jest-matcher-utils/29.0.3:
     resolution: {integrity: sha512-RsR1+cZ6p1hDV4GSCQTg+9qjeotQCgkaleIKLK7dm+U4V/H2bWedU3RAtLm8+mANzZ7eDV33dMar4pejd7047w==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -10737,6 +12023,21 @@ packages:
       jest-diff: 29.2.1
       jest-get-type: 29.2.0
       pretty-format: 29.2.1
+    dev: true
+
+  /jest-message-util/28.1.3:
+    resolution: {integrity: sha512-PFdn9Iewbt575zKPf1286Ht9EPoJmYT7P0kY+RibeYZ2XtOr53pDLEFoTWXbd1h4JiGiWpTBC84fc8xMXQMb7g==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@babel/code-frame': 7.18.6
+      '@jest/types': 28.1.3
+      '@types/stack-utils': 2.0.1
+      chalk: 4.1.2
+      graceful-fs: 4.2.10
+      micromatch: 4.0.5
+      pretty-format: 28.1.3
+      slash: 3.0.0
+      stack-utils: 2.0.5
     dev: true
 
   /jest-message-util/29.0.3:
@@ -10769,6 +12070,14 @@ packages:
       stack-utils: 2.0.5
     dev: true
 
+  /jest-mock/28.1.3:
+    resolution: {integrity: sha512-o3J2jr6dMMWYVH4Lh/NKmDXdosrsJgi4AviS8oXLujcjpCMBb1FMsblDnOXKZKfSiHLxYub1eS0IHuRXsio9eA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+    dev: true
+
   /jest-mock/29.0.3:
     resolution: {integrity: sha512-ort9pYowltbcrCVR43wdlqfAiFJXBx8l4uJDsD8U72LgBcetvEp+Qxj1W9ZYgMRoeAo+ov5cnAGF2B6+Oth+ww==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -10777,6 +12086,7 @@ packages:
       '@types/node': 18.7.18
     dev: true
 
+<<<<<<< HEAD
   /jest-mock/29.2.2:
     resolution: {integrity: sha512-1leySQxNAnivvbcx0sCB37itu8f4OX2S/+gxLAV4Z62shT4r4dTG9tACDywUAEZoLSr36aYUTsVp3WKwWt4PMQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -10784,6 +12094,18 @@ packages:
       '@jest/types': 29.2.1
       '@types/node': 18.7.18
       jest-util: 29.2.1
+=======
+  /jest-pnp-resolver/1.2.2_jest-resolve@28.1.3:
+    resolution: {integrity: sha512-olV41bKSMm8BdnuMsewT4jqlZ8+3TCARAXjZGT9jcoSnrfUnRCqnMoF9XEeoWjbzObpqF9dRhHQj0Xb9QdF6/w==}
+    engines: {node: '>=6'}
+    peerDependencies:
+      jest-resolve: '*'
+    peerDependenciesMeta:
+      jest-resolve:
+        optional: true
+    dependencies:
+      jest-resolve: 28.1.3
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /jest-pnp-resolver/1.2.2_jest-resolve@29.0.3:
@@ -10798,6 +12120,7 @@ packages:
       jest-resolve: 29.0.3
     dev: true
 
+<<<<<<< HEAD
   /jest-pnp-resolver/1.2.2_jest-resolve@29.2.2:
     resolution: {integrity: sha512-olV41bKSMm8BdnuMsewT4jqlZ8+3TCARAXjZGT9jcoSnrfUnRCqnMoF9XEeoWjbzObpqF9dRhHQj0Xb9QdF6/w==}
     engines: {node: '>=6'}
@@ -10808,6 +12131,11 @@ packages:
         optional: true
     dependencies:
       jest-resolve: 29.2.2
+=======
+  /jest-regex-util/28.0.2:
+    resolution: {integrity: sha512-4s0IgyNIy0y9FK+cjoVYoxamT7Zeo7MhzqRGx7YDYmaQn1wucY9rotiGkBzzcMXTtjrCAP/f7f+E0F7+fxPNdw==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /jest-regex-util/29.0.0:
@@ -10815,9 +12143,20 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dev: true
 
+<<<<<<< HEAD
   /jest-regex-util/29.2.0:
     resolution: {integrity: sha512-6yXn0kg2JXzH30cr2NlThF+70iuO/3irbaB4mh5WyqNIvLLP+B6sFdluO1/1RJmslyh/f9osnefECflHvTbwVA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+=======
+  /jest-resolve-dependencies/28.1.3:
+    resolution: {integrity: sha512-qa0QO2Q0XzQoNPouMbCc7Bvtsem8eQgVPNkwn9LnS+R2n8DaVDPL/U1gngC0LTl1RYXJU0uJa2BMC2DbTfFrHA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      jest-regex-util: 28.0.2
+      jest-snapshot: 28.1.3
+    transitivePeerDependencies:
+      - supports-color
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: true
 
   /jest-resolve-dependencies/29.0.3:
@@ -10838,6 +12177,21 @@ packages:
       jest-snapshot: 29.2.2
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /jest-resolve/28.1.3:
+    resolution: {integrity: sha512-Z1W3tTjE6QaNI90qo/BJpfnvpxtaFTFw5CDgwpyE/Kz8U/06N1Hjf4ia9quUhCh39qIGWF1ZuxFiBiJQwSEYKQ==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      chalk: 4.1.2
+      graceful-fs: 4.2.10
+      jest-haste-map: 28.1.3
+      jest-pnp-resolver: 1.2.2_jest-resolve@28.1.3
+      jest-util: 28.1.3
+      jest-validate: 28.1.3
+      resolve: 1.22.1
+      resolve.exports: 1.1.0
+      slash: 3.0.0
     dev: true
 
   /jest-resolve/29.0.3:
@@ -10868,6 +12222,35 @@ packages:
       resolve: 1.22.1
       resolve.exports: 1.1.0
       slash: 3.0.0
+    dev: true
+
+  /jest-runner/28.1.3:
+    resolution: {integrity: sha512-GkMw4D/0USd62OVO0oEgjn23TM+YJa2U2Wu5zz9xsQB1MxWKDOlrnykPxnMsN0tnJllfLPinHTka61u0QhaxBA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/console': 28.1.3
+      '@jest/environment': 28.1.3
+      '@jest/test-result': 28.1.3
+      '@jest/transform': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+      chalk: 4.1.2
+      emittery: 0.10.2
+      graceful-fs: 4.2.10
+      jest-docblock: 28.1.1
+      jest-environment-node: 28.1.3
+      jest-haste-map: 28.1.3
+      jest-leak-detector: 28.1.3
+      jest-message-util: 28.1.3
+      jest-resolve: 28.1.3
+      jest-runtime: 28.1.3
+      jest-util: 28.1.3
+      jest-watcher: 28.1.3
+      jest-worker: 28.1.3
+      p-limit: 3.1.0
+      source-map-support: 0.5.13
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /jest-runner/29.0.3:
@@ -10928,6 +12311,36 @@ packages:
       - supports-color
     dev: true
 
+  /jest-runtime/28.1.3:
+    resolution: {integrity: sha512-NU+881ScBQQLc1JHG5eJGU7Ui3kLKrmwCPPtYsJtBykixrM2OhVQlpMmFWJjMyDfdkGgBMNjXCGB/ebzsgNGQw==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/environment': 28.1.3
+      '@jest/fake-timers': 28.1.3
+      '@jest/globals': 28.1.3
+      '@jest/source-map': 28.1.2
+      '@jest/test-result': 28.1.3
+      '@jest/transform': 28.1.3
+      '@jest/types': 28.1.3
+      chalk: 4.1.2
+      cjs-module-lexer: 1.2.2
+      collect-v8-coverage: 1.0.1
+      execa: 5.1.1
+      glob: 7.2.3
+      graceful-fs: 4.2.10
+      jest-haste-map: 28.1.3
+      jest-message-util: 28.1.3
+      jest-mock: 28.1.3
+      jest-regex-util: 28.0.2
+      jest-resolve: 28.1.3
+      jest-snapshot: 28.1.3
+      jest-util: 28.1.3
+      slash: 3.0.0
+      strip-bom: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /jest-runtime/29.0.3:
     resolution: {integrity: sha512-12gZXRQ7ozEeEHKTY45a+YLqzNDR/x4c//X6AqwKwKJPpWM8FY4vwn4VQJOcLRS3Nd1fWwgP7LU4SoynhuUMHQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -10984,6 +12397,37 @@ packages:
       jest-util: 29.2.1
       slash: 3.0.0
       strip-bom: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /jest-snapshot/28.1.3:
+    resolution: {integrity: sha512-4lzMgtiNlc3DU/8lZfmqxN3AYD6GGLbl+72rdBpXvcV+whX7mDrREzkPdp2RnmfIiWBg1YbuFSkXduF2JcafJg==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@babel/core': 7.19.1
+      '@babel/generator': 7.19.0
+      '@babel/plugin-syntax-typescript': 7.17.10_@babel+core@7.19.1
+      '@babel/traverse': 7.19.1
+      '@babel/types': 7.19.0
+      '@jest/expect-utils': 28.1.3
+      '@jest/transform': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/babel__traverse': 7.17.1
+      '@types/prettier': 2.6.0
+      babel-preset-current-node-syntax: 1.0.1_@babel+core@7.19.1
+      chalk: 4.1.2
+      expect: 28.1.3
+      graceful-fs: 4.2.10
+      jest-diff: 28.1.3
+      jest-get-type: 28.0.2
+      jest-haste-map: 28.1.3
+      jest-matcher-utils: 28.1.3
+      jest-message-util: 28.1.3
+      jest-util: 28.1.3
+      natural-compare: 1.4.0
+      pretty-format: 28.1.3
+      semver: 7.3.7
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -11052,6 +12496,18 @@ packages:
       - supports-color
     dev: true
 
+  /jest-util/28.1.3:
+    resolution: {integrity: sha512-XdqfpHwpcSRko/C35uLYFM2emRAltIIKZiJ9eAmhjsj0CqZMa0p1ib0R5fWIqGhn1a103DebTbpqIaP1qCQ6tQ==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+      chalk: 4.1.2
+      ci-info: 3.3.0
+      graceful-fs: 4.2.10
+      picomatch: 2.3.1
+    dev: true
+
   /jest-util/29.0.3:
     resolution: {integrity: sha512-Q0xaG3YRG8QiTC4R6fHjHQPaPpz9pJBEi0AeOE4mQh/FuWOijFjGXMMOfQEaU9i3z76cNR7FobZZUQnL6IyfdQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -11074,6 +12530,18 @@ packages:
       ci-info: 3.3.0
       graceful-fs: 4.2.10
       picomatch: 2.3.1
+    dev: true
+
+  /jest-validate/28.1.3:
+    resolution: {integrity: sha512-SZbOGBWEsaTxBGCOpsRWlXlvNkvTkY0XxRfh7zYmvd8uL5Qzyg0CHAXiXKROflh801quA6+/DsT4ODDthOC/OA==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/types': 28.1.3
+      camelcase: 6.3.0
+      chalk: 4.1.2
+      jest-get-type: 28.0.2
+      leven: 3.1.0
+      pretty-format: 28.1.3
     dev: true
 
   /jest-validate/29.0.3:
@@ -11100,6 +12568,20 @@ packages:
       pretty-format: 29.2.1
     dev: true
 
+  /jest-watcher/28.1.3:
+    resolution: {integrity: sha512-t4qcqj9hze+jviFPUN3YAtAEeFnr/azITXQEMARf5cMwKY2SMBRnCQTXLixTl20OR6mLh9KLMrgVJgJISym+1g==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/test-result': 28.1.3
+      '@jest/types': 28.1.3
+      '@types/node': 18.7.18
+      ansi-escapes: 4.3.2
+      chalk: 4.1.2
+      emittery: 0.10.2
+      jest-util: 28.1.3
+      string-length: 4.0.2
+    dev: true
+
   /jest-watcher/29.0.3:
     resolution: {integrity: sha512-tQX9lU91A+9tyUQKUMp0Ns8xAcdhC9fo73eqA3LFxP2bSgiF49TNcc+vf3qgGYYK9qRjFpXW9+4RgF/mbxyOOw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -11114,6 +12596,7 @@ packages:
       string-length: 4.0.2
     dev: true
 
+<<<<<<< HEAD
   /jest-watcher/29.2.2:
     resolution: {integrity: sha512-j2otfqh7mOvMgN2WlJ0n7gIx9XCMWntheYGlBK7+5g3b1Su13/UAK7pdKGyd4kDlrLwtH2QPvRv5oNIxWvsJ1w==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -11130,12 +12613,45 @@ packages:
 
   /jest-worker/29.2.1:
     resolution: {integrity: sha512-ROHTZ+oj7sBrgtv46zZ84uWky71AoYi0vEV9CdEtc1FQunsoAGe5HbQmW76nI5QWdvECVPrSi1MCVUmizSavMg==}
+=======
+  /jest-worker/28.1.3:
+    resolution: {integrity: sha512-CqRA220YV/6jCo8VWvAt1KKx6eek1VIHMPeLEbpcfSfkEeWyBNppynM/o6q+Wmw+sOhos2ml34wZbSX3G13//g==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@types/node': 18.7.18
+      merge-stream: 2.0.0
+      supports-color: 8.1.1
+    dev: true
+
+  /jest-worker/29.0.3:
+    resolution: {integrity: sha512-Tl/YWUugQOjoTYwjKdfJWkSOfhufJHO5LhXTSZC3TRoQKO+fuXnZAdoXXBlpLXKGODBL3OvdUasfDD4PcMe6ng==}
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@types/node': 18.7.18
       jest-util: 29.2.1
       merge-stream: 2.0.0
       supports-color: 8.1.1
+    dev: true
+
+  /jest/28.1.2:
+    resolution: {integrity: sha512-Tuf05DwLeCh2cfWCQbcz9UxldoDyiR1E9Igaei5khjonKncYdc6LDfynKCEWozK0oLE3GD+xKAo2u8x/0s6GOg==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    hasBin: true
+    peerDependencies:
+      node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
+    peerDependenciesMeta:
+      node-notifier:
+        optional: true
+    dependencies:
+      '@jest/core': 28.1.3
+      '@jest/types': 28.1.3
+      import-local: 3.1.0
+      jest-cli: 28.1.3
+    transitivePeerDependencies:
+      - '@types/node'
+      - supports-color
+      - ts-node
     dev: true
 
   /jest/29.0.3:
@@ -11212,6 +12728,48 @@ packages:
   /jsdoc-type-pratt-parser/3.1.0:
     resolution: {integrity: sha512-MgtD0ZiCDk9B+eI73BextfRrVQl0oyzRG8B2BjORts6jbunj4ScKPcyXGTbB6eXL4y9TzxCm6hyeLq/2ASzNdw==}
     engines: {node: '>=12.0.0'}
+    dev: true
+
+  /jsdom/19.0.0:
+    resolution: {integrity: sha512-RYAyjCbxy/vri/CfnjUWJQQtZ3LKlLnDqj+9XLNnJPgEGeirZs3hllKR20re8LUZ6o1b1X4Jat+Qd26zmP41+A==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      canvas: ^2.5.0
+    peerDependenciesMeta:
+      canvas:
+        optional: true
+    dependencies:
+      abab: 2.0.6
+      acorn: 8.8.0
+      acorn-globals: 6.0.0
+      cssom: 0.5.0
+      cssstyle: 2.3.0
+      data-urls: 3.0.2
+      decimal.js: 10.3.1
+      domexception: 4.0.0
+      escodegen: 2.0.0
+      form-data: 4.0.0
+      html-encoding-sniffer: 3.0.0
+      http-proxy-agent: 5.0.0
+      https-proxy-agent: 5.0.1
+      is-potential-custom-element-name: 1.0.1
+      nwsapi: 2.2.0
+      parse5: 6.0.1
+      saxes: 5.0.1
+      symbol-tree: 3.2.4
+      tough-cookie: 4.0.0
+      w3c-hr-time: 1.0.2
+      w3c-xmlserializer: 3.0.0
+      webidl-conversions: 7.0.0
+      whatwg-encoding: 2.0.0
+      whatwg-mimetype: 3.0.0
+      whatwg-url: 10.0.0
+      ws: 8.9.0
+      xml-name-validator: 4.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
     dev: true
 
   /jsdom/20.0.0:
@@ -12728,6 +14286,12 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.6
+    dev: true
+
+  /mkdirp/1.0.4:
+    resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}
+    engines: {node: '>=10'}
+    hasBin: true
     dev: true
 
   /mkdirp/1.0.4:
@@ -14374,6 +15938,16 @@ packages:
     hasBin: true
     dev: true
 
+  /pretty-format/26.6.2:
+    resolution: {integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==}
+    engines: {node: '>= 10'}
+    dependencies:
+      '@jest/types': 26.6.2
+      ansi-regex: 5.0.1
+      ansi-styles: 4.3.0
+      react-is: 17.0.2
+    dev: true
+
   /pretty-format/27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -14381,6 +15955,16 @@ packages:
       ansi-regex: 5.0.1
       ansi-styles: 5.2.0
       react-is: 17.0.2
+    dev: true
+
+  /pretty-format/28.1.3:
+    resolution: {integrity: sha512-8gFb/To0OmxHR9+ZTb14Df2vNxdGCX8g1xWGUTqUw5TiZvcQf5sHKObd5UcPyLLyowNwDAMTF3XWOG1B6mxl1Q==}
+    engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dependencies:
+      '@jest/schemas': 28.1.3
+      ansi-regex: 5.0.1
+      ansi-styles: 5.2.0
+      react-is: 18.1.0
     dev: true
 
   /pretty-format/29.0.3:
@@ -14756,9 +16340,15 @@ packages:
       react-dom: '>=16.9.0'
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       rc-trigger: 5.2.18_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+=======
+      rc-trigger: 5.2.18_sfoxds7t5ydpegc3knd667wn6m
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: false
 
   /rc-trigger/2.6.5:
@@ -14824,12 +16414,18 @@ packages:
       react-dom: '>=16.9.0'
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+=======
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
       react-is: 16.13.1
       shallowequal: 1.1.0
     dev: false
 
+<<<<<<< HEAD
   /react-beautiful-dnd/13.1.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-0Lvs4tq2VcrEjEgDXHjT98r+63drkKEgqyxdA7qD3mvKwga6a5SscbdLPO2IExotU1jW8L0Ksdl0Cj2AF67nPQ==}
     peerDependencies:
@@ -14845,11 +16441,32 @@ packages:
       react-redux: 7.2.8_biqbaboplfbrettd7655fr4n2y
       redux: 4.2.0
       use-memo-one: 1.1.3_react@18.2.0
+=======
+  /react-beautiful-dnd/13.1.0_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-aGvblPZTJowOWUNiwd6tNfEpgkX5OxmpqxHKNW/4VmvZTNTbeiq7bA3bn5T+QSF2uibXB0D1DmJsb1aC/+3cUA==}
+    peerDependencies:
+      react: ^16.8.5 || ^17.0.0
+      react-dom: ^16.8.5 || ^17.0.0
+    dependencies:
+      '@babel/runtime': 7.17.9
+      css-box-model: 1.2.1
+      memoize-one: 5.2.1
+      raf-schd: 4.0.3
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-redux: 7.2.8_sfoxds7t5ydpegc3knd667wn6m
+      redux: 4.2.0
+      use-memo-one: 1.1.3_react@17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     transitivePeerDependencies:
       - react-native
     dev: false
 
+<<<<<<< HEAD
   /react-bootstrap/2.3.1_knhnagtyfncgg2hpin7s37uixq:
+=======
+  /react-bootstrap/2.3.1_wsn53pslsboo2rytzocxzsur7i:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-+k68LdaSS62Zc/1gr18NC9QpDk/wwhNk+90QgcTMYSA8BzlXC1G2ogWWrz2LFuP2FlmCtVjcr/UXw3mpdxVmWw==}
     peerDependencies:
       '@types/react': '>=16.14.8'
@@ -14971,7 +16588,21 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
+<<<<<<< HEAD
   /react-infinite-scroll-component/4.5.3_react@18.2.0:
+=======
+  /react-error-boundary/3.1.4_react@17.0.2:
+    resolution: {integrity: sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==}
+    engines: {node: '>=10', npm: '>=6'}
+    peerDependencies:
+      react: '>=16.13.1'
+    dependencies:
+      '@babel/runtime': 7.19.4
+      react: 17.0.2
+    dev: true
+
+  /react-infinite-scroll-component/4.5.3_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-8O0PIeYZx0xFVS1ChLlLl/1obn64vylzXeheLsm+t0qUibmet7U6kDaKFg6jVRQJwDikWBTcyqEFFsxrbFCO5w==}
     peerDependencies:
       prop-types: ^15.0.0
@@ -15056,7 +16687,11 @@ packages:
       react-dom: 18.2.0_react@18.2.0
       react-is: 17.0.2
 
+<<<<<<< HEAD
   /react-redux/7.2.8_biqbaboplfbrettd7655fr4n2y:
+=======
+  /react-redux/7.2.8_sfoxds7t5ydpegc3knd667wn6m:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-6+uDjhs3PSIclqoCk0kd6iX74gzrGc3W5zcAjbrFgEdIjRSQObdIwfx80unTkVUYvbQ95Y8Av3OvFHq1w5EOUw==}
     peerDependencies:
       react: ^16.8.3 || ^17 || ^18
@@ -15068,17 +16703,30 @@ packages:
       react-native:
         optional: true
     dependencies:
+<<<<<<< HEAD
       '@babel/runtime': 7.19.4
+=======
+      '@babel/runtime': 7.17.9
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
       '@types/react-redux': 7.1.24
       hoist-non-react-statics: 3.3.2
       loose-envify: 1.4.0
       prop-types: 15.8.1
+<<<<<<< HEAD
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-is: 17.0.2
     dev: false
 
   /react-shallow-renderer/16.15.0_react@18.2.0:
+=======
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-is: 17.0.2
+    dev: false
+
+  /react-shallow-renderer/16.15.0_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-oScf2FqQ9LFVQgA73vr86xl2NaOIX73rh+YFqcOp68CWj56tSfgtGKrEbyhCj0rSijyG9M1CYprTh39fBi5hzA==}
     peerDependencies:
       react: ^16.0.0 || ^17.0.0 || ^18.0.0
@@ -15126,21 +16774,35 @@ packages:
       - '@types/react'
     dev: false
 
+<<<<<<< HEAD
   /react-textarea-autosize/8.3.4_bbvjflvjoibwhtpmedigb26h6y:
+=======
+  /react-textarea-autosize/8.3.4_zdsfwtvwq54q3oqxwtq4jnbhh4:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-CdtmP8Dc19xL8/R6sWvtknD/eCXkQr30dtvC4VmGInhRsfF8X/ihXCq6+9l9qbxmKRiq407/7z5fxE7cVWQNgQ==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       react: 18.2.0
       use-composed-ref: 1.3.0_react@18.2.0
       use-latest: 1.2.1_bbvjflvjoibwhtpmedigb26h6y
+=======
+      react: 17.0.2
+      use-composed-ref: 1.3.0_react@17.0.2
+      use-latest: 1.2.1_zdsfwtvwq54q3oqxwtq4jnbhh4
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     transitivePeerDependencies:
       - '@types/react'
     dev: true
 
+<<<<<<< HEAD
   /react-transition-group/2.9.0_biqbaboplfbrettd7655fr4n2y:
+=======
+  /react-transition-group/2.9.0_sfoxds7t5ydpegc3knd667wn6m:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-+HzNTCHpeQyl4MJ/bdE0u6XRMe9+XG/+aL4mCxVN4DnPBQ0/5bfHWPDuOZUzYdMj94daZaZdCCc1Dzt9R/xSSg==}
     peerDependencies:
       react: '>=15.0.0'
@@ -15856,6 +17518,13 @@ packages:
 
   /sax/1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    dev: true
+
+  /saxes/5.0.1:
+    resolution: {integrity: sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==}
+    engines: {node: '>=10'}
+    dependencies:
+      xmlchars: 2.2.0
     dev: true
 
   /saxes/6.0.0:
@@ -17622,7 +19291,11 @@ packages:
       react: '>=15.0.0'
     dependencies:
       '@babel/runtime': 7.19.4
+<<<<<<< HEAD
       '@types/react': 18.0.24
+=======
+      '@types/react': 17.0.44
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
       invariant: 2.2.4
       react: 18.2.0
       react-lifecycles-compat: 3.0.4
@@ -17911,7 +19584,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
+<<<<<<< HEAD
       react: 18.2.0
+=======
+      react: 17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
 
   /use-isomorphic-layout-effect/1.1.2_bbvjflvjoibwhtpmedigb26h6y:
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
@@ -17922,8 +19599,13 @@ packages:
       '@types/react':
         optional: true
     dependencies:
+<<<<<<< HEAD
       '@types/react': 18.0.24
       react: 18.2.0
+=======
+      '@types/react': 17.0.44
+      react: 17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
 
   /use-latest/1.2.1_bbvjflvjoibwhtpmedigb26h6y:
     resolution: {integrity: sha512-xA+AVm/Wlg3e2P/JiItTziwS7FK92LWrDB0p+hgXloIMuVCeJJ8v6f0eeHyPZaJrM+usM1FkFfbNCrJGs8A/zw==}
@@ -17934,16 +19616,28 @@ packages:
       '@types/react':
         optional: true
     dependencies:
+<<<<<<< HEAD
       '@types/react': 18.0.24
       react: 18.2.0
       use-isomorphic-layout-effect: 1.1.2_bbvjflvjoibwhtpmedigb26h6y
 
   /use-memo-one/1.1.3_react@18.2.0:
+=======
+      '@types/react': 17.0.44
+      react: 17.0.2
+      use-isomorphic-layout-effect: 1.1.2_zdsfwtvwq54q3oqxwtq4jnbhh4
+
+  /use-memo-one/1.1.3_react@17.0.2:
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     resolution: {integrity: sha512-g66/K7ZQGYrI6dy8GLpVcMsBp4s17xNkYJVSMvTEevGy3nDxHOfE6z8BVE22+5G5x7t3+bhzrlTDB7ObrEE0cQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
+<<<<<<< HEAD
       react: 18.2.0
+=======
+      react: 17.0.2
+>>>>>>> 3b2b65210 (feat(mantine): mantine package creation (#2867))
     dev: false
 
   /use/3.1.1:
@@ -18313,6 +20007,14 @@ packages:
   /whatwg-mimetype/3.0.0:
     resolution: {integrity: sha512-nt+N2dzIutVRxARx1nghPKGv1xHikU7HKdfafKkLNLindmPU/ch3U31NOCGGA/dmPcmb1VlofO0vnKAcsm0o/Q==}
     engines: {node: '>=12'}
+    dev: true
+
+  /whatwg-url/10.0.0:
+    resolution: {integrity: sha512-CLxxCmdUby142H5FZzn4D8ikO1cmypvXVQktsgosNy4a4BHrDHeciBBGZhb0bNoR5/MltoCatso+vFjjGx8t0w==}
+    engines: {node: '>=12'}
+    dependencies:
+      tr46: 3.0.0
+      webidl-conversions: 7.0.0
     dev: true
 
   /whatwg-url/11.0.0:
