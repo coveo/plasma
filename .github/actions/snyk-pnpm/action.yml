@@ -39,7 +39,6 @@ runs:
           run: npx snyk code test --org=coveo-admin-ui --file=./snyk/scan-me/package-lock.json --sarif-file-output=./sarifs/snyk-code.sarif
         - name: Upload result to GitHub Code Scanning
           uses: github/codeql-action/upload-sarif@86f3159a697a097a813ad9bfa0002412d97690a4 # tag=v2
->>>>>>> 9f1c95d47 (ci(github): add CD workflow for master branch (#2868))
           with:
               sarif_file: ./sarifs
         - name: Cleanup
