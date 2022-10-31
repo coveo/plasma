@@ -2,7 +2,7 @@ import {Tuple} from '@mantine/core';
 
 import {PlasmaColors} from './theme/PlasmaColors';
 
-export {ColumnDef, createColumnHelper} from '@tanstack/table-core';
+export {type ColumnDef, createColumnHelper} from '@tanstack/table-core';
 
 export * from '@mantine/core';
 export * from '@mantine/form';
