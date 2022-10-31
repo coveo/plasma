@@ -36,8 +36,8 @@ export default async ({github, context, exec}, {
     branch = 'master', 
     bump = null
 } = {}) => {
-    const GIT_USERNAME = 'plasma-bot';
-    const GIT_EMAIL = 'plasma-bot@users.noreply.github.com';
+    const GIT_USERNAME = 'coveobot';
+    const GIT_EMAIL = 'coveobot@coveo.com';
     const GIT_SSH_REMOTE = 'deploy';
 
     await gitSetupSshRemote(context.repo.owner, context.repo.repo, process.env.DEPLOY_KEY, GIT_SSH_REMOTE);
