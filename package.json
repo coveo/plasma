@@ -13,7 +13,7 @@
         "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done",
         "setup": "pnpm install",
         "start": "pnpm build && pnpm --recursive --parallel start",
-        "test": "turbo run test"
+        "test": "turbo run test --concurrency=1"
     },
     "commitlint": {
         "extends": [
