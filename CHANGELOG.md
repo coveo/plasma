@@ -1,3 +1,17 @@
+# 47.5.0 (2022-10-31)
+
+
+### Bug Fixes
+
+* **mantine:** add missing type exports (#2885) 00151c2, closes #2885
+
+
+### Features
+
+* **mantine:** lazy-load monaco-editor (#2883) 03918b7, closes #2883
+
+
+
 ## 47.4.1 (2022-10-31)
 
 
