@@ -4,7 +4,6 @@ module.exports = {
     globalSetup: '<rootDir>/src/__tests__/GlobalSetup.ts',
     moduleNameMapper: {
         '^@test-utils$': '<rootDir>/src/__tests__/Utils.tsx',
-        '^monaco-editor$': 'identity-obj-proxy',
     },
     testEnvironment: 'jsdom',
     transform: {

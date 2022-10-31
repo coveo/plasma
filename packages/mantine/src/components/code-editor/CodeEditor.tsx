@@ -2,12 +2,14 @@ import {CheckSize16Px, CopySize16Px} from '@coveord/plasma-react-icons';
 import {
     ActionIcon,
     Box,
+    Center,
     CopyButton,
     createStyles,
     DefaultProps,
     Group,
     Input,
     InputWrapperBaseProps,
+    Loader,
     Selectors,
     Stack,
     Tooltip,
@@ -15,12 +17,9 @@ import {
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
 import Editor, {loader} from '@monaco-editor/react';
-import * as monaco from 'monaco-editor';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 
 import {useParentHeight} from '../../hooks';
-
-loader.config({monaco});
 
 const useStyles = createStyles((theme) => ({
     root: {},
@@ -66,10 +65,18 @@ interface CodeEditorProps
      */
     maxHeight?: number;
     disabled?: boolean;
+    /**
+     * Defines how the monaco editor files will be loaded.
+     * Note that using `'local'` requires [some additional configuration](https://github.com/suren-atoyan/monaco-react#use-monaco-editor-as-an-npm-package).
+     *
+     * @default 'local'
+     */
+    monacoLoader?: 'cdn' | 'local';
 }
 
 const defaultProps: Partial<CodeEditorProps> = {
     language: 'plaintext',
+    monacoLoader: 'local',
     defaultValue: '',
     minHeight: 300,
 };
@@ -91,8 +98,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         minHeight,
         maxHeight,
         disabled,
+        monacoLoader,
         ...others
     } = useComponentDefaultProps('CodeEditor', defaultProps, props);
+    const [loaded, setLoaded] = useState(false);
     const {classes, theme} = useStyles();
     const [_value, handleChange] = useUncontrolled<string>({
         value,
@@ -101,6 +110,20 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         finalValue: '',
     });
     const [parentHeight, ref] = useParentHeight();
+
+    const loadLocalMonaco = async () => {
+        const monaco = await import('monaco-editor');
+        loader.config({monaco});
+        setLoaded(true);
+    };
+
+    useEffect(() => {
+        if (monacoLoader === 'local') {
+            loadLocalMonaco();
+        } else {
+            setLoaded(true);
+        }
+    }, []);
 
     const _label = label ? (
         <Input.Label required={required} {...labelProps}>
@@ -142,7 +165,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         </Group>
     );
 
-    const _editor = (
+    const _editor = loaded ? (
         <Box p="md" pl="xs" className={classes.editor}>
             <Editor
                 defaultLanguage={language}
@@ -167,6 +190,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 }}
             />
         </Box>
+    ) : (
+        <Center className={classes.editor}>
+            <Loader />
+        </Center>
     );
 
     return (

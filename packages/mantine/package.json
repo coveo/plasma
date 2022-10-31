@@ -24,7 +24,8 @@
         "build": "node ../../scripts/build",
         "clean": "rimraf dist",
         "start": "node ../../scripts/start",
-        "test": "jest --maxWorkers=65%"
+        "test": "jest --maxWorkers=65%",
+        "test:watch": "jest --watchAll"
     },
     "dependencies": {
         "@coveord/plasma-react-icons": "workspace:*",
