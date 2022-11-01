@@ -10,10 +10,6 @@ concurrency:
     group: ${{ github.ref_name }}
     cancel-in-progress: true
 
-concurrency:
-    group: ${{ github.ref_name }}
-    cancel-in-progress: true
-
 jobs:
     cd:
         name: Continous Delivery
@@ -55,6 +51,8 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Deploy
               uses: ./.github/actions/deploy
+              # Demo for next branch is deployed by the CI workflow
+              if: github.ref != 'refs/heads/next'
               with:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
