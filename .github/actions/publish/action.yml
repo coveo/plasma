@@ -8,4 +8,12 @@ runs:
           with:
               script: |
                   const {default: publishNewVersion} = await import('${{ github.workspace }}/.github/actions/publish/index.mjs');
-                  await publishNewVersion({github, context, exec});
+                  if (${{ github.ref }} === 'refs/heads/next') {
+                    await publishNewVersion({github, context, exec}, {
+                        bump: 'prerelease',
+                        tag: 'next',
+                        branch: 'next',
+                    });
+                  } else {
+                    await publishNewVersion({github, context, exec});
+                  }
