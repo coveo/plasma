@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "47.0.1-next.0",
+    "version": "47.0.1-next.1",
     "description": "Design tokens of the Plasma Design System",
     "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
     "repository": {
@@ -18,22 +18,10 @@
     ],
     "scripts": {
         "build": "rimraf dist && tsc --project tsconfig.json",
-        "precommit": "lint-staged",
         "tokens:build": "ts-node ./bin/build.ts --project ./bin/tsconfig.json && pnpm tokens:lint",
         "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
         "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
-    "lint-staged": {
-        "package.json": [
-            "sort-package-json",
-            "git add"
-        ],
-        "**/*.{ts,tsx,json,md,scss,css}": [
-            "prettier --write",
-            "git add"
-        ]
-    },
-    "prettier": "tsjs/prettier-config",
     "devDependencies": {
         "@types/chroma-js": "2.1.4",
         "@types/fs-extra": "9.0.13",

@@ -1,4 +1,4 @@
-import {scaleLinear} from 'd3';
+import {scaleLinear} from 'd3-scale';
 import {FunctionComponent, PropsWithChildren, useContext} from 'react';
 import * as _ from 'underscore';
 
@@ -80,7 +80,7 @@ export const XYAxis: FunctionComponent<PropsWithChildren<XYAxisProps>> = ({x, y,
         .map((values: number[]) => values[Math.floor((values.length - 1) / 2)]);
 
     const xTicks = newXScale.domain().map((tick: number) => {
-        const text = _.contains(ticks, tick) && xFormat(tick);
+        const text = _.contains(ticks.length === 0 ? newXScale.domain() : ticks, tick) && xFormat(tick);
         const textX = newXScale(tick);
         return (
             <g

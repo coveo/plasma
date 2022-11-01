@@ -3,7 +3,6 @@
 set -e
 
 BRANCH="$1"
-
 DESTINATION=react-vapor/feature
 BUCKET=coveo-nrd-jsadmin
 
