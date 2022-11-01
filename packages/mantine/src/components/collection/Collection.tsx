@@ -27,6 +27,7 @@ interface CollectionProps<T> extends DefaultProps<Selectors<typeof useStyles>> {
     onChange?: (value: T[]) => void;
     draggable?: boolean;
     disabled?: boolean;
+    allowAdd?: (values: T[]) => boolean;
     addLabel?: string;
     addDisabledTooltip?: string;
     spacing?: MantineNumberSize;
@@ -47,7 +48,6 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         value,
         defaultValue,
         onChange,
-        onFocus,
         disabled,
         draggable,
         children,
@@ -56,6 +56,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         newItem,
         addLabel,
         addDisabledTooltip,
+        allowAdd,
 
         // Style props
         classNames,
@@ -84,17 +85,17 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         </CollectionItem>
     ));
 
-    const hasEmptyItem = values.some((item) => JSON.stringify(item) === JSON.stringify(newItem));
+    const addAllowed = allowAdd?.(values) ?? true;
 
     const _addButton = disabled ? null : (
         <Group>
-            <Tooltip label={addDisabledTooltip} disabled={!hasEmptyItem}>
+            <Tooltip label={addDisabledTooltip} disabled={addAllowed}>
                 <Box>
                     <Button
                         variant="subtle"
                         leftIcon={<AddSize16Px height={16} />}
                         onClick={() => append(newItem)}
-                        disabled={hasEmptyItem}
+                        disabled={!addAllowed}
                     >
                         {addLabel}
                     </Button>
