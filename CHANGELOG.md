@@ -1,3 +1,12 @@
+# 47.6.0 (2022-11-01)
+
+
+### Features
+
+* **mantine:** add "allowAdd" prop to Collection (#2887) fabf8cb, closes #2887
+
+
+
 # 47.5.0 (2022-10-31)
 
 
