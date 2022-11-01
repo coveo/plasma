@@ -1,0 +1,14 @@
+{
+    "extends": "../tsconfig-base.json",
+    "compilerOptions": {
+        "outDir": "./dist",
+        "declarationDir": "./dist/definitions",
+        "rootDir": "src",
+        "tsBuildInfoFile": "./dist/.tsbuildinfo",
+        "baseUrl": ".",
+        "paths": {
+            "@test-utils": ["./src/__tests__/Utils.tsx"]
+        }
+    },
+    "include": ["src"]
+}
