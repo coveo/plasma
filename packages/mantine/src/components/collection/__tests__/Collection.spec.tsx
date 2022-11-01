@@ -96,12 +96,13 @@ describe('Collection', () => {
         expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","orange","new"]}');
     });
 
-    it('disallows from adding more than one new item at once', () => {
+    it('disables the add button whenever allowAdd callback returns false', () => {
+        const allowAdd = jest.fn().mockImplementation(() => false);
         const Fixture = () => {
             const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
             return (
                 <>
-                    <Collection newItem="new" {...form.getInputProps('fruits')}>
+                    <Collection newItem="new" {...form.getInputProps('fruits')} allowAdd={allowAdd}>
                         {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                     <div data-testid="form-state">{JSON.stringify(form.values)}</div>
@@ -109,10 +110,13 @@ describe('Collection', () => {
             );
         };
 
-        render(<Fixture />);
-        const addItem = screen.getByRole('button', {name: /add/i});
-        userEvent.click(addItem);
-        expect(addItem).toBeDisabled();
+        const {rerender} = render(<Fixture />);
+        expect(screen.getByRole('button', {name: /add/i})).toBeDisabled();
+        expect(allowAdd).toHaveBeenCalledWith(['banana', 'orange']);
+
+        allowAdd.mockImplementation(() => true);
+        rerender(<Fixture />);
+        expect(screen.getByRole('button', {name: /add/i})).toBeEnabled();
     });
 
     describe('when required is true', () => {
