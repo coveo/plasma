@@ -1,6 +1,6 @@
 import {Center, Collapse, createStyles, Loader, Skeleton, Table as MantineTable} from '@mantine/core';
 import {useForm} from '@mantine/form';
-import {useDidUpdate} from '@mantine/hooks';
+import {useClickOutside, useDidUpdate} from '@mantine/hooks';
 import {
     ColumnDef,
     defaultColumnSizing,
@@ -175,6 +175,10 @@ export const Table: TableType = <T,>({
         onMount?.({...state, ...form.values});
     }, []);
 
+    const outSideClickRef = useClickOutside(() => {
+        table.resetRowSelection(true);
+    });
+
     useDidUpdate(() => {
         triggerChange();
         clearSelection();
@@ -256,7 +260,13 @@ export const Table: TableType = <T,>({
             }}
         >
             {header}
-            <MantineTable className={classes.table} horizontalSpacing="sm" verticalSpacing="xs" pb="sm">
+            <MantineTable
+                ref={outSideClickRef}
+                className={classes.table}
+                horizontalSpacing="sm"
+                verticalSpacing="xs"
+                pb="sm"
+            >
                 <thead className={classes.header}>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id}>
