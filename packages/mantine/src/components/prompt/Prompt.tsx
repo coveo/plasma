@@ -36,15 +36,15 @@ export interface PromptProps extends ModalProps {
 }
 interface PromptType {
     (props: PromptProps): ReactElement;
-    Footer: typeof ModalFooter;
+    Footer: typeof PromptFooter;
 }
 
 export const Prompt: PromptType = ({children, variant, size, ...otherProps}) => {
     const {classes, cx} = useStyles();
     const convertedChildren = Children.toArray(children) as ReactElement[];
 
-    const otherChildren = convertedChildren.filter((child) => child.type !== ModalFooter);
-    const footer = convertedChildren.find((child) => child.type === ModalFooter);
+    const otherChildren = convertedChildren.filter((child) => child.type !== PromptFooter);
+    const footer = convertedChildren.find((child) => child.type === PromptFooter);
 
     const classNames = {
         header: cx(classes.header, variant && classes[variant]),
