@@ -1,6 +1,6 @@
 import {createStyles, Modal, ModalProps} from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
-import {ModalFooter} from './PromptFooter';
+import {PromptFooter} from './PromptFooter';
 
 const useStyles = createStyles((theme) => {
     const white = '#fff';
@@ -61,4 +61,4 @@ export const Prompt: PromptType = ({children, variant, size, ...otherProps}) => 
     );
 };
 
-Prompt.Footer = ModalFooter;
+Prompt.Footer = PromptFooter;

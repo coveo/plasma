@@ -13,7 +13,7 @@ export * from './components';
 export * from './theme';
 
 // explicitly overriding mantine components
-export {Header, Table, Modal} from './components';
+export {Header, Table} from './components';
 
 declare module '@mantine/core' {
     export interface MantineThemeColorsOverride {
