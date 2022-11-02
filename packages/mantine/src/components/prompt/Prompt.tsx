@@ -1,6 +1,6 @@
-import {createStyles, Modal as MantineModal, ModalProps as MantineModalProps} from '@mantine/core';
-import {Children, FunctionComponent, ReactElement, ReactNode} from 'react';
-import {ModalFooter, ModalFooterProps} from './ModalFooter';
+import {createStyles, Modal, ModalProps} from '@mantine/core';
+import {Children, ReactElement, ReactNode} from 'react';
+import {ModalFooter} from './PromptFooter';
 
 const useStyles = createStyles((theme) => {
     const white = '#fff';
@@ -30,13 +30,16 @@ const useStyles = createStyles((theme) => {
     };
 });
 
-export interface ModalType extends MantineModalProps {
-    type?: 'success' | 'warning' | 'critical' | 'info';
-    Footer?: FunctionComponent<ModalFooterProps>;
+export interface PromptProps extends ModalProps {
+    variant?: 'success' | 'warning' | 'critical' | 'info';
     children: ReactNode;
 }
+interface PromptType {
+    (props: PromptProps): ReactElement;
+    Footer: typeof ModalFooter;
+}
 
-export const Modal = ({children, type, size, ...otherProps}: ModalType) => {
+export const Prompt: PromptType = ({children, variant, size, ...otherProps}) => {
     const {classes, cx} = useStyles();
     const convertedChildren = Children.toArray(children) as ReactElement[];
 
@@ -44,18 +47,18 @@ export const Modal = ({children, type, size, ...otherProps}: ModalType) => {
     const footer = convertedChildren.find((child) => child.type === ModalFooter);
 
     const classNames = {
-        header: cx(classes.header, type && classes[type]),
-        close: type ? classes.whiteClose : '',
+        header: cx(classes.header, variant && classes[variant]),
+        close: variant ? classes.whiteClose : '',
         body: classes.body,
-        modal: type ? classes.modalType : '',
+        modal: variant ? classes.modalType : '',
     };
 
     return (
-        <MantineModal padding={0} classNames={classNames} size={type ? 'sm' : size} {...otherProps}>
+        <Modal padding={0} classNames={classNames} size={variant ? 'sm' : size} {...otherProps}>
             <div className={classes.innerBody}>{otherChildren}</div>
             {footer}
-        </MantineModal>
+        </Modal>
     );
 };
 
-Modal.Footer = ModalFooter;
+Prompt.Footer = ModalFooter;

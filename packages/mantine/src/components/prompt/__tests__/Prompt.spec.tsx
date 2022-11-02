@@ -1,13 +1,13 @@
 import {render, screen} from '@test-utils';
-import {Modal} from '../Modal';
+import {Prompt} from '../Prompt';
 
-describe('Modal', () => {
-    it('title, body and close button is displayed', () => {
+describe('Prompt', () => {
+    it('displays the title, body and close button', () => {
         render(
-            <Modal opened onClose={jest.fn()} title="title modal">
+            <Prompt opened onClose={jest.fn()} title="title modal">
                 content modal
-                <Modal.Footer>footer content</Modal.Footer>
-            </Modal>
+                <Prompt.Footer>footer content</Prompt.Footer>
+            </Prompt>
         );
         expect(screen.getByText(/content modal/i)).toBeInTheDocument();
         expect(screen.getByText(/footer content/i)).toBeInTheDocument();
@@ -15,12 +15,12 @@ describe('Modal', () => {
         expect(screen.getByRole('button')).toBeInTheDocument();
     });
 
-    it('Call onClose when click on the close button', () => {
+    it('calls onClose when clicking on the close button', () => {
         const onClose = jest.fn();
         render(
-            <Modal opened onClose={onClose} title="title modal">
+            <Prompt opened onClose={onClose} title="title modal">
                 content modal
-            </Modal>
+            </Prompt>
         );
 
         screen.getByRole('button').click();
