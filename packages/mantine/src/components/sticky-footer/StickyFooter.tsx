@@ -1,7 +1,7 @@
 import {createStyles, DefaultProps, Divider, Group, Paper} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
-interface StickyFooterProps extends DefaultProps {
+export interface StickyFooterProps extends DefaultProps {
     /**
      * Whether a border is render on top of the footer
      */
