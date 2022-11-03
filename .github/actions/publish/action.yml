@@ -12,5 +12,5 @@ runs:
                     console.log(github.ref)
                   } else {
                     console.log(github.ref)
-                    console.log(Éi'm branch")
+                    console.log("i'm branch")
                   }
