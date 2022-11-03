@@ -1,3 +1,12 @@
+# 47.7.0 (2022-11-03)
+
+
+### Features
+
+* **carousel:** +carousel component for ML feature (#2895) 870b1de, closes #2895
+
+
+
 ## 47.6.1 (2022-11-03)
 
 
