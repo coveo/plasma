@@ -8,12 +8,9 @@ runs:
           with:
               script: |
                   const {default: publishNewVersion} = await import('${{ github.workspace }}/.github/actions/publish/index.mjs');
-                  if (${{ github.ref }} === 'refs/heads/next') {
-                    await publishNewVersion({github, context, exec}, {
-                        bump: 'prerelease',
-                        tag: 'next',
-                        branch: 'next',
-                    });
+                  if (github.ref === 'refs/heads/next') {
+                    console.log(github.ref)
                   } else {
-                    await publishNewVersion({github, context, exec});
+                    console.log(github.ref)
+                    console.log(Éi'm branch")
                   }
