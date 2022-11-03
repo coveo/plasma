@@ -9,6 +9,10 @@ jobs:
         name: Dry publish
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
+              with:
+                  fetch-depth: 0
+            - uses: ./.github/actions/setup
             - name: Deploy
               uses: ./.github/actions/deploy
               # Demo for next branch is deployed by the CI workflow
