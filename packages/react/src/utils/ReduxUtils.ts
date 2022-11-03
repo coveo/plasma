@@ -38,13 +38,10 @@ export const clearState = (): Redux.Action => ({
 });
 
 /* @deprecated use react-redux connect instead */
-export const ReduxConnect = (
-    mapStateToProps?: any,
-    mapDispatchToProps?: any,
-    mergeProps?: any,
-    options?: any
-): ((target: any) => any) => (target) =>
-    connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any;
+export const ReduxConnect =
+    (mapStateToProps?: any, mapDispatchToProps?: any, mergeProps?: any, options?: any): ((target: any) => any) =>
+    (target) =>
+        connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any;
 
 export interface BasePayload {
     id: string;

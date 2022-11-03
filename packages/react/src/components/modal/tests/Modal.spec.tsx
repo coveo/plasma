@@ -33,12 +33,13 @@ describe('Modal', () => {
             );
         };
         render(<ModalFixture />);
-        userEvent.click(screen.getByRole('button', {name: /close/i}));
+        await userEvent.click(screen.getByRole('button', {name: /close/i}));
 
         await waitFor(() => expect(closeCallbackSpy).toHaveBeenCalledTimes(1));
     });
 
-    it('should call the prop closeCallback with a timeout if specified when closing the modal', () => {
+    it('should call the prop closeCallback with a timeout if specified when closing the modal', async () => {
+        const user = userEvent.setup({delay: null});
         jest.useFakeTimers();
         const closeCallbackSpy = jest.fn();
         const ModalFixture = () => {
@@ -51,7 +52,7 @@ describe('Modal', () => {
             );
         };
         render(<ModalFixture />);
-        userEvent.click(screen.getByRole('button', {name: /close/i}));
+        await user.click(screen.getByRole('button', {name: /close/i}));
         expect(closeCallbackSpy).toHaveBeenCalledTimes(0);
         jest.advanceTimersByTime(500);
 

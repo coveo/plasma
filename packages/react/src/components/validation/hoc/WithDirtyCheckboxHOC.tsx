@@ -21,13 +21,9 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
  */
 export const withDirtyCheckboxHOC = <T extends ICheckboxOwnProps & IInputOwnProps>(Component: ComponentType<T>) => {
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedCheckbox: FunctionComponent<T & IWithDirtyCheckboxOwnProps & DispatchProps> = ({
-        setIsDirty,
-        clearIsDirty,
-        handleOnClick,
-        resetDirtyOnUnmount,
-        ...props
-    }) => {
+    const WrappedCheckbox: FunctionComponent<
+        React.PropsWithChildren<T & IWithDirtyCheckboxOwnProps & DispatchProps>
+    > = ({setIsDirty, clearIsDirty, handleOnClick, resetDirtyOnUnmount, ...props}) => {
         useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);

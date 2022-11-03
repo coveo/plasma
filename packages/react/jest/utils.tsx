@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 import {render, RenderOptions, RenderResult} from '@testing-library/react';
 import {mount, shallow} from 'enzyme';
 import {cloneElement, createElement} from 'react';
@@ -13,16 +15,25 @@ import {IDispatch} from '../src/utils/ReduxUtils';
 
 const TEST_CONTAINER_ID = 'app';
 const MODAL_ROOT_ID = 'modals';
+const originalError = console.error;
 
 const setup = () => {
     document.body.innerHTML = `<div id="${TEST_CONTAINER_ID}"></div><div id="${MODAL_ROOT_ID}"></div><div id="plasma-dropdowns"></div>`;
     Defaults.APP_ELEMENT = '#' + TEST_CONTAINER_ID;
     Defaults.MODAL_ROOT = '#' + MODAL_ROOT_ID;
     Defaults.MODAL_TIMEOUT = 0;
+    console.error = (...args) => {
+        if (/Warning: ReactDOM.render is no longer supported in React 18./.test(args[0])) {
+            return;
+        } else {
+            originalError.call(console, ...args);
+        }
+    };
 };
 
 const cleanup = () => {
     jest.restoreAllMocks();
+    console.error = originalError;
 };
 
 const customRender = (
@@ -43,7 +54,9 @@ const customRender = (
         };
     } = {}
 ): RenderResult => {
-    const TestWrapper: React.FunctionComponent = ({children}) => <Provider store={store}>{children}</Provider>;
+    const TestWrapper: React.FunctionComponent<PropsWithChildren<unknown>> = ({children}) => (
+        <Provider store={store}>{children}</Provider>
+    );
 
     return render(ui, {wrapper: TestWrapper, container, ...renderOptions});
 };

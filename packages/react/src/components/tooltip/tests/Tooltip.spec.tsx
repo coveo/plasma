@@ -9,21 +9,21 @@ describe('Tooltip', () => {
         render(<Tooltip title="the title">hover me</Tooltip>);
 
         expect(screen.queryByText(/the title/i)).not.toBeInTheDocument();
-        userEvent.hover(screen.getByText(/hover me/i));
+        await userEvent.hover(screen.getByText(/hover me/i));
         expect(await screen.findByText(/the title/i)).toBeInTheDocument();
     });
 
     it('renders just the children when no title is specified', async () => {
         const {container} = render(<Tooltip>hover me</Tooltip>);
         expect(screen.getByText(/hover me/i)).toBeInTheDocument();
-        userEvent.hover(screen.getByText(/hover me/i));
+        await userEvent.hover(screen.getByText(/hover me/i));
         expect(container).toHaveTextContent('hover me');
     });
 
     it('render the tooltip on the top by default', async () => {
         render(<Tooltip title="the title">hover me</Tooltip>);
 
-        userEvent.hover(screen.getByText(/hover me/i));
+        await userEvent.hover(screen.getByText(/hover me/i));
         const tooltipContent = await screen.findByText(/the title/i);
         expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'top');
     });
@@ -35,7 +35,7 @@ describe('Tooltip', () => {
             </Tooltip>
         );
 
-        userEvent.hover(screen.getByText(/hover me/i));
+        await userEvent.hover(screen.getByText(/hover me/i));
         const tooltipContent = await screen.findByText(/the title/i);
         expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'right');
     });
@@ -47,7 +47,7 @@ describe('Tooltip', () => {
             </Tooltip>
         );
 
-        userEvent.hover(screen.getByText(/hover me/i));
+        await userEvent.hover(screen.getByText(/hover me/i));
         const tooltipContent = await screen.findByText(/the title/i);
         expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'bottom');
     });
@@ -59,7 +59,7 @@ describe('Tooltip', () => {
             </Tooltip>
         );
 
-        userEvent.hover(screen.getByText(/hover me/i));
+        await userEvent.hover(screen.getByText(/hover me/i));
         const tooltipContent = await screen.findByText(/the title/i);
         expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'left');
     });
@@ -71,7 +71,7 @@ describe('Tooltip', () => {
             </Tooltip>
         );
 
-        userEvent.hover(screen.getByText(/hover me/i));
+        await userEvent.hover(screen.getByText(/hover me/i));
         const tooltipContent = await screen.findByText(/the title/i);
         expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'top');
     });

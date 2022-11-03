@@ -23,21 +23,19 @@ export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps 
  * @deprecated Use Mantine instead
  */
 export const TableHeaderWithSort: FunctionComponent<
-    ITableHeaderWithSortProps & HTMLAttributes<HTMLTableHeaderCellElement>
+    React.PropsWithChildren<ITableHeaderWithSortProps & HTMLAttributes<HTMLTableHeaderCellElement>>
 > = ({isLoading, id, tableId, isDefault, children}) => {
     const dispatch = useDispatch();
-    const order = useSelector(
-        (state: PlasmaState): Order => {
-            const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id});
-            if (tableSort?.isAsc === true) {
-                return 'ascending';
-            } else if (tableSort?.isAsc === false) {
-                return 'descending';
-            } else {
-                return 'unsorted';
-            }
+    const order = useSelector((state: PlasmaState): Order => {
+        const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id});
+        if (tableSort?.isAsc === true) {
+            return 'ascending';
+        } else if (tableSort?.isAsc === false) {
+            return 'descending';
+        } else {
+            return 'unsorted';
         }
-    );
+    });
 
     const onMount = () => dispatch(TableHeaderActions.addTableHeader(id, tableId, isDefault));
     const onSort = () => dispatch(TableHeaderActions.sortTable(id));

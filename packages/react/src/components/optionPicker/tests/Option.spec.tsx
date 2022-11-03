@@ -33,10 +33,10 @@ describe('Option picker', () => {
             expect(screen.getByRole('button')).toHaveClass('active');
         });
 
-        it('should call the onClick prop with the result of the option value when clicking the button', () => {
+        it('should call the onClick prop with the result of the option value when clicking the button', async () => {
             render(<Option {...OPTION_BASIC_PROPS} />);
             const optionButton = screen.getByRole('button', {name: /Option 1/i});
-            userEvent.click(optionButton);
+            await userEvent.click(optionButton);
 
             expect(OPTION_BASIC_PROPS.onClick).toHaveBeenCalledWith(
                 OPTION_BASIC_PROPS.option.value(),

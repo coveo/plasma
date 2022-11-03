@@ -1,5 +1,5 @@
-import * as d3 from 'd3';
-import {FunctionComponent, useContext} from 'react';
+import {scaleLinear} from 'd3-scale';
+import {FunctionComponent, PropsWithChildren, useContext} from 'react';
 import * as _ from 'underscore';
 
 import {XYChartContext} from './XYChart';
@@ -30,7 +30,7 @@ const withDefaultConfig = (props: Partial<AxisProps> = {}): AxisProps =>
 /**
  * @deprecated Use Mantine instead
  */
-export const XYAxis: FunctionComponent<XYAxisProps> = ({x, y, children}) => {
+export const XYAxis: FunctionComponent<PropsWithChildren<XYAxisProps>> = ({x, y, children}) => {
     const context = useContext(XYChartContext);
     const {xDomain, yDomain, xScale, yScale, xFormat, yFormat, width, height, xTicksCount, yTicksCount} = context;
 
@@ -43,7 +43,7 @@ export const XYAxis: FunctionComponent<XYAxisProps> = ({x, y, children}) => {
     const newWidth = width - yAxis.size - 2 * xInnerPadding;
     const newHeight = height - xAxis.size - 2 * yInnerPadding;
 
-    const newXScale = xScale.rangePoints([0, newWidth]);
+    const newXScale = xScale.range([0, newWidth]);
     const newYScale = yScale.range([newHeight, 0]);
 
     const minX = newXScale(xDomain[0]);
@@ -66,7 +66,7 @@ export const XYAxis: FunctionComponent<XYAxisProps> = ({x, y, children}) => {
             </g>
         ));
 
-    const xLinearScale = d3.scale.linear().range(newXScale.range()).domain(xDomain);
+    const xLinearScale = scaleLinear().range(newXScale.range()).domain(xDomain);
     const xNumberOfTicks = xLinearScale.ticks(
         xAxis.tickTextSize === 0 ? xTicksCount : Math.floor(newWidth / xAxis.tickTextSize)
     ).length;

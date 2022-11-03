@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {HTMLProps, FunctionComponent, useContext} from 'react';
+import {HTMLProps, FunctionComponent, useContext, PropsWithChildren} from 'react';
 import {CheckboxContext, CheckboxContextProps} from '../checkbox/CheckboxContext';
 
 export interface ILabelProps {
@@ -12,7 +12,7 @@ export interface ILabelProps {
 /**
  * @deprecated Use Mantine Input instead: https://mantine.dev/core/input/
  */
-export const Label: FunctionComponent<ILabelProps & HTMLProps<HTMLLabelElement>> = ({
+export const Label: FunctionComponent<PropsWithChildren<ILabelProps & HTMLProps<HTMLLabelElement>>> = ({
     classes,
     validMessage,
     invalidMessage,

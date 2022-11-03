@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {MouseEvent, Children, useRef, FunctionComponent, useEffect} from 'react';
+import {MouseEvent, Children, useRef, FunctionComponent, useEffect, PropsWithChildren} from 'react';
 import {IInputProps, Input} from '../input/Input';
 import {CheckboxContext} from './CheckboxContext';
 
@@ -32,7 +32,7 @@ export interface ICheckboxProps extends ICheckboxOwnProps, ICheckboxStateProps, 
 /**
  * @deprecated Use Mantine Checkbox instead: https://mantine.dev/core/checkbox/
  */
-export const Checkbox: FunctionComponent<ICheckboxProps> = ({
+export const Checkbox: FunctionComponent<PropsWithChildren<ICheckboxProps>> = ({
     id,
     disabled,
     disabledTooltip,

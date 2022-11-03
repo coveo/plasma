@@ -28,15 +28,9 @@ export type IWithDirtySingleSelectHOCProps = {
 export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrapperSingleSelect: FunctionComponent<T & IWithDirtySingleSelectHOCProps & StateProps & DispatchProps> = ({
-        initialValue,
-        selectedValue,
-        setIsDirty,
-        clearIsDirty,
-        resetDirtyOnUnmount,
-        items,
-        ...props
-    }) => {
+    const WrapperSingleSelect: FunctionComponent<
+        React.PropsWithChildren<T & IWithDirtySingleSelectHOCProps & StateProps & DispatchProps>
+    > = ({initialValue, selectedValue, setIsDirty, clearIsDirty, resetDirtyOnUnmount, items, ...props}) => {
         useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);

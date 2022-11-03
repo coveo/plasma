@@ -28,6 +28,7 @@ export interface IModalHeaderOwnProps {
      * id for the html element
      */
     htmlId?: string;
+    children?: ReactNode;
 }
 
 export interface IModalHeaderStateProps {

@@ -34,10 +34,12 @@ export const tableWithEmptyState = (
     });
 
     const TableEmptyState: FunctionComponent<
-        ITableHOCOwnProps &
-            TableWithEmptyStateProps &
-            ReturnType<typeof mapStateToProps> &
-            ReturnType<typeof mapDispatchToProps>
+        React.PropsWithChildren<
+            ITableHOCOwnProps &
+                TableWithEmptyStateProps &
+                ReturnType<typeof mapStateToProps> &
+                ReturnType<typeof mapDispatchToProps>
+        >
     > = (props) => {
         const {emptyState, isTrulyEmpty: isTrulyEmpty, setEmptyState, isEmptyStateAlreadySet, ...tableProps} = props;
         const [shouldRenderEmptyState, setShouldRenderEmptyState_immediate] = useState(false);

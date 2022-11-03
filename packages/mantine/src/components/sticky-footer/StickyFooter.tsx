@@ -1,5 +1,5 @@
 import {createStyles, DefaultProps, Divider, Group, Paper} from '@mantine/core';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 
 interface StickyFooterProps extends DefaultProps {
     /**
@@ -17,7 +17,11 @@ const useStyles = createStyles(() => ({
     },
 }));
 
-export const StickyFooter: FunctionComponent<StickyFooterProps> = ({borderTop, children, ...others}) => {
+export const StickyFooter: FunctionComponent<PropsWithChildren<StickyFooterProps>> = ({
+    borderTop,
+    children,
+    ...others
+}) => {
     const {classes} = useStyles();
 
     return (

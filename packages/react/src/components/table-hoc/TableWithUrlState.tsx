@@ -1,4 +1,4 @@
-import {ComponentType, PureComponent} from 'react';
+import {ComponentType, PropsWithChildren, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 
@@ -35,7 +35,7 @@ export const Params = {
     filter: 'q',
 };
 
-function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType<P>) {
+function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType<PropsWithChildren<P>>) {
     type Props = P &
         TableWithUrlStateProps &
         ReturnType<typeof mapStateToProps> &
@@ -104,60 +104,64 @@ const getQuery = (state: PlasmaState, tableId: string): string => {
     });
 };
 
-const updateTableStateFromUrl = (tableId: string): IThunkAction => (dispatch: IDispatch, getState) => {
-    const urlParams = UrlUtils.getSearchParams();
-    const possiblePredicates = TableHOCUtils.getPredicateIds(tableId, getState());
+const updateTableStateFromUrl =
+    (tableId: string): IThunkAction =>
+    (dispatch: IDispatch, getState) => {
+        const urlParams = UrlUtils.getSearchParams();
+        const possiblePredicates = TableHOCUtils.getPredicateIds(tableId, getState());
 
-    Object.keys(urlParams)
-        .filter((key) => possiblePredicates.includes(key))
-        .forEach((key) =>
-            dispatch(selectListBoxOption(TableHOCUtils.getPredicateId(tableId, key), false, urlParams[key]))
-        );
+        Object.keys(urlParams)
+            .filter((key) => possiblePredicates.includes(key))
+            .forEach((key) =>
+                dispatch(selectListBoxOption(TableHOCUtils.getPredicateId(tableId, key), false, urlParams[key]))
+            );
 
-    if (urlParams.hasOwnProperty(Params.lowerDateLimit)) {
-        dispatch(
-            changeDatePickerLowerLimit(
-                TableHOCUtils.getDatePickerId(tableId),
-                new Date(urlParams[Params.lowerDateLimit])
-            )
-        );
-    }
+        if (urlParams.hasOwnProperty(Params.lowerDateLimit)) {
+            dispatch(
+                changeDatePickerLowerLimit(
+                    TableHOCUtils.getDatePickerId(tableId),
+                    new Date(urlParams[Params.lowerDateLimit])
+                )
+            );
+        }
 
-    if (urlParams.hasOwnProperty(Params.upperDateLimit)) {
-        dispatch(
-            changeDatePickerUpperLimit(
-                TableHOCUtils.getDatePickerId(tableId),
-                new Date(urlParams[Params.upperDateLimit])
-            )
-        );
-    }
+        if (urlParams.hasOwnProperty(Params.upperDateLimit)) {
+            dispatch(
+                changeDatePickerUpperLimit(
+                    TableHOCUtils.getDatePickerId(tableId),
+                    new Date(urlParams[Params.upperDateLimit])
+                )
+            );
+        }
 
-    if (urlParams.hasOwnProperty(Params.lowerDateLimit) || urlParams.hasOwnProperty(Params.upperDateLimit)) {
-        dispatch(applyDatePicker(tableId));
-    }
+        if (urlParams.hasOwnProperty(Params.lowerDateLimit) || urlParams.hasOwnProperty(Params.upperDateLimit)) {
+            dispatch(applyDatePicker(tableId));
+        }
 
-    if (urlParams.hasOwnProperty(Params.filter)) {
-        dispatch(filterThrough(tableId, urlParams[Params.filter]));
-    }
+        if (urlParams.hasOwnProperty(Params.filter)) {
+            dispatch(filterThrough(tableId, urlParams[Params.filter]));
+        }
 
-    if (urlParams.hasOwnProperty(Params.sortKey) && urlParams.hasOwnProperty(Params.sortOrder)) {
-        dispatch(
-            TableHeaderActions.sortTable(
-                urlParams[Params.sortKey],
-                urlParams[Params.sortOrder] === SortOrderValues.ascending
-            )
-        );
-    }
+        if (urlParams.hasOwnProperty(Params.sortKey) && urlParams.hasOwnProperty(Params.sortOrder)) {
+            dispatch(
+                TableHeaderActions.sortTable(
+                    urlParams[Params.sortKey],
+                    urlParams[Params.sortOrder] === SortOrderValues.ascending
+                )
+            );
+        }
 
-    if (urlParams.hasOwnProperty(Params.pageSize)) {
-        dispatch(changePerPage(tableId, urlParams[Params.pageSize]));
-        dispatch(selectFlatSelect(PaginationUtils.getPaginationPerPageId(tableId), urlParams[Params.pageSize] + ''));
-    }
+        if (urlParams.hasOwnProperty(Params.pageSize)) {
+            dispatch(changePerPage(tableId, urlParams[Params.pageSize]));
+            dispatch(
+                selectFlatSelect(PaginationUtils.getPaginationPerPageId(tableId), urlParams[Params.pageSize] + '')
+            );
+        }
 
-    if (urlParams.hasOwnProperty(Params.pageNumber)) {
-        dispatch(changePage(TableHOCUtils.getPaginationId(tableId), urlParams[Params.pageNumber]));
-    }
-};
+        if (urlParams.hasOwnProperty(Params.pageNumber)) {
+            dispatch(changePage(TableHOCUtils.getPaginationId(tableId), urlParams[Params.pageNumber]));
+        }
+    };
 
 /**
  * @deprecated Use Mantine instead

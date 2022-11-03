@@ -79,7 +79,7 @@ describe('LabeledValue', () => {
             render(<LabeledValue label="name" value="Joe" information="more info" />);
             const infoIcon = await screen.findByRole('img', {name: /info/i});
             expect(infoIcon).toBeInTheDocument();
-            userEvent.hover(infoIcon);
+            await userEvent.hover(infoIcon);
             expect(await screen.findByText(/more info/i)).toBeInTheDocument();
         });
 

@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import {FunctionComponent, FormEvent, FormHTMLAttributes} from 'react';
+import {FunctionComponent, FormEvent, PropsWithChildren, FormHTMLAttributes} from 'react';
 
 type FormMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
-export interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
+export interface IFormProps extends FormHTMLAttributes<HTMLFormElement>, FormHTMLAttributes<HTMLFormElement> {
     title?: string;
     className?: string;
     mods?: FormMods | FormMods[];
@@ -13,12 +13,19 @@ export interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
 /**
  * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/
  */
-export const Form: FunctionComponent<IFormProps> = ({children, className, title, mods, noMargin, ...props}) => {
+export const Form: FunctionComponent<PropsWithChildren<IFormProps>> = ({
+    children,
+    className,
+    title,
+    mods,
+    noMargin,
+    ...props
+}) => {
     const onSubmit = (submitEvent: FormEvent) => {
         submitEvent.preventDefault();
     };
     return (
-        <form onSubmit={onSubmit} className="full-content" {...props}>
+        <form onSubmit={onSubmit} className="full-content" {...props} {...props}>
             <fieldset className={classNames('coveo-form mod-padding-children', {my2: !noMargin}, mods, className)}>
                 {title && <h2 className="mb2">{title}</h2>}
                 {children}

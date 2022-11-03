@@ -288,7 +288,7 @@ describe('Select', () => {
 
         describe('when filter is processed on the server side', () => {
             const ServerSideSingleSelectWithFilter: ComponentType<
-                ISelectWithFilterOwnProps & ISingleSelectOwnProps
+                React.PropsWithChildren<ISelectWithFilterOwnProps & ISingleSelectOwnProps>
             > = _.compose(withServerSideProcessing, selectWithFilter)(SingleSelectConnected);
 
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];

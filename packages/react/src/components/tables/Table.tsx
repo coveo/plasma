@@ -272,31 +272,27 @@ export class Table extends Component<ITableProps> {
         const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
         const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
-        const tableBodyNode: ReactNode = tableData.displayedIds.map(
-            (id: string, yPosition: number): JSX.Element => {
-                const currentRowData: IData = tableData.byId[id];
+        const tableBodyNode: ReactNode = tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
+            const currentRowData: IData = tableData.byId[id];
 
-                return (
-                    <TableChildBody
-                        key={id}
-                        disabled={this.props.disabled}
-                        tableId={this.props.id}
-                        rowData={currentRowData}
-                        isLoading={this.props.tableCompositeState.isLoading}
-                        getActions={(rowData?: IData) =>
-                            (this.props.getActions && this.props.getActions(rowData)) || []
-                        }
-                        headingAttributes={this.props.headingAttributes}
-                        collapsibleFormatter={this.props.collapsibleFormatter}
-                        onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions, numberOfSelectedIds)}
-                        handleOnRowClick={this.props.handleOnRowClick}
-                        additionalRowClasses={this.props.additionalRowClasses}
-                        isMultiSelect={this.props.rowsMultiSelect}
-                        withoutHoverOnRow={this.props.withoutHoverOnRow}
-                    />
-                );
-            }
-        );
+            return (
+                <TableChildBody
+                    key={id}
+                    disabled={this.props.disabled}
+                    tableId={this.props.id}
+                    rowData={currentRowData}
+                    isLoading={this.props.tableCompositeState.isLoading}
+                    getActions={(rowData?: IData) => (this.props.getActions && this.props.getActions(rowData)) || []}
+                    headingAttributes={this.props.headingAttributes}
+                    collapsibleFormatter={this.props.collapsibleFormatter}
+                    onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions, numberOfSelectedIds)}
+                    handleOnRowClick={this.props.handleOnRowClick}
+                    additionalRowClasses={this.props.additionalRowClasses}
+                    isMultiSelect={this.props.rowsMultiSelect}
+                    withoutHoverOnRow={this.props.withoutHoverOnRow}
+                />
+            );
+        });
 
         return this.props.collapsibleFormatter ? (
             tableBodyNode

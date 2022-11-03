@@ -255,6 +255,6 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
 /**
  * @deprecated Use Mantine instead
  */
-export const DropPod: ForwardRefExoticComponent<
-    IDropPodProps & RefAttributes<HTMLElement>
-> = forwardRef((props: IDropPodProps, ref: RefObject<HTMLElement>) => <RDropPod {...props} buttonRef={ref} />);
+export const DropPod: ForwardRefExoticComponent<IDropPodProps & RefAttributes<HTMLElement>> = forwardRef(
+    (props: IDropPodProps, ref: RefObject<HTMLElement>) => <RDropPod {...props} buttonRef={ref} />
+);

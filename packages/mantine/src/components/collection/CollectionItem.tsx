@@ -1,6 +1,6 @@
 import {DragAndDropSize16Px, RemoveSize16Px} from '@coveord/plasma-react-icons';
 import {ActionIcon, DefaultProps, Group, Selectors} from '@mantine/core';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import {Draggable} from 'react-beautiful-dnd';
 
 import useStyles from './Colllection.styles';
@@ -26,7 +26,7 @@ const RemoveButton: FunctionComponent<{
 
 const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
 
-const StaticCollectionItem: FunctionComponent<CollectionItemSharedProps> = ({
+const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     onRemove,
     removable = true,
     styles,
@@ -43,12 +43,12 @@ const StaticCollectionItem: FunctionComponent<CollectionItemSharedProps> = ({
     );
 };
 
-const DisabledCollectionItem: FunctionComponent<CollectionItemSharedProps> = ({children}) => {
+const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({children}) => {
     const {classes, cx} = useStyles();
     return <Group className={cx(classes.item)}>{children}</Group>;
 };
 
-const DraggableCollectionItem: FunctionComponent<CollectionItemSharedProps> = ({
+const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     index,
     onRemove,
     removable = true,
@@ -77,7 +77,11 @@ const DraggableCollectionItem: FunctionComponent<CollectionItemSharedProps> = ({
     );
 };
 
-export const CollectionItem: FunctionComponent<CollectionItemProps> = ({draggable, disabled, ...otherProps}) => {
+export const CollectionItem: FunctionComponent<PropsWithChildren<CollectionItemProps>> = ({
+    draggable,
+    disabled,
+    ...otherProps
+}) => {
     if (disabled) {
         return <DisabledCollectionItem {...otherProps} />;
     }

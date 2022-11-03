@@ -10,13 +10,8 @@ export interface ITableChildBlankSlateProps extends ITableProps {}
  * @deprecated Use Mantine instead
  */
 export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Element => {
-    const {
-        blankSlateDefault,
-        blankSlateNoResultsOnAction,
-        blankSlateOnError,
-        headingAttributes,
-        tableCompositeState,
-    } = props;
+    const {blankSlateDefault, blankSlateNoResultsOnAction, blankSlateOnError, headingAttributes, tableCompositeState} =
+        props;
 
     let blankSlatePropsToUse: IBlankSlateProps;
     if (tableCompositeState.isInError) {

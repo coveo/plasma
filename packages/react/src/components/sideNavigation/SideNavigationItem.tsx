@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {FunctionComponent, useRef, useEffect} from 'react';
+import {FunctionComponent, useRef, useEffect, PropsWithChildren} from 'react';
 import {addClassNameToChildren} from '../../utils/JSXUtils';
 
 export interface ISideNavigationItemProps {
@@ -16,7 +16,7 @@ export interface SideNavigationItemProps extends Partial<ISideNavigationItemProp
 /**
  * @deprecated Use Mantine NavLink instead: https://mantine.dev/core/nav-link/
  */
-export const SideNavigationItem: FunctionComponent<SideNavigationItemProps> = ({
+export const SideNavigationItem: FunctionComponent<PropsWithChildren<SideNavigationItemProps>> = ({
     isActive,
     href,
     title,

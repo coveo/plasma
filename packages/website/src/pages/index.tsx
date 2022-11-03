@@ -2,7 +2,7 @@ import {LinkSvg, Section} from '@coveord/plasma-react';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {NextPage} from 'next';
 import Head from 'next/head';
-import {FC} from 'react';
+import {FunctionComponent} from 'react';
 
 import {Tile} from '../building-blocs/Tile';
 
@@ -21,7 +21,7 @@ export const Index: NextPage = () => (
     </Section>
 );
 
-const WelcomeToPlasma: FC = () => (
+const WelcomeToPlasma: FunctionComponent = () => (
     <div className="section intro">
         <h5 className="welcome-to">Welcome to</h5>
         <div className="page-title">PLASMA</div>
@@ -45,7 +45,7 @@ const WelcomeToPlasma: FC = () => (
     </div>
 );
 
-const FoundationsPages: FC = () => (
+const FoundationsPages: FunctionComponent = () => (
     <Section className="section">
         <h2>Foundations</h2>
         <div className="tile-grid">
@@ -82,7 +82,7 @@ const FoundationsPages: FC = () => (
     </Section>
 );
 
-const LayoutPages: FC = () => (
+const LayoutPages: FunctionComponent = () => (
     <Section className="section">
         <h2>Layout</h2>
         <div className="tile-grid">
@@ -157,7 +157,7 @@ const LayoutPages: FC = () => (
     </Section>
 );
 
-const FormPages: FC = () => (
+const FormPages: FunctionComponent = () => (
     <Section className="section">
         <h2>Form</h2>
         <div className="tile-grid">
@@ -279,7 +279,7 @@ const FormPages: FC = () => (
     </Section>
 );
 
-const NavigationPages: FC = () => (
+const NavigationPages: FunctionComponent = () => (
     <Section className="section">
         <h2>Navigation</h2>
         <div className="tile-grid">
@@ -311,7 +311,7 @@ const NavigationPages: FC = () => (
     </Section>
 );
 
-const FeedbackPages: FC = () => (
+const FeedbackPages: FunctionComponent = () => (
     <Section className="section">
         <h2>Feedback</h2>
         <div className="tile-grid">

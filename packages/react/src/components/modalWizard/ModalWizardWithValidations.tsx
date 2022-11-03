@@ -22,7 +22,7 @@ const extractMessages = (validations: Array<ISingleValidation<string>>) =>
     validations?.map((error) => error.value).join(' ') ?? '';
 
 const ModalWizardWithValidationsDisconnected: FunctionComponent<
-    ModalWithValdiationsProps & ReturnType<typeof mapStateToProps>
+    React.PropsWithChildren<ModalWithValdiationsProps & ReturnType<typeof mapStateToProps>>
 > = ({validationIdsByStep = [], isDirty, isInError, errors, warnings, ...modalWizardProps}) => {
     const validateStep = (currentStep: number): {isValid: boolean; message?: string} => ({
         isValid: !isInError(currentStep),

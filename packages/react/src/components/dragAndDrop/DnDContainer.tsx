@@ -1,5 +1,5 @@
 import {DragAndDropSize24Px} from '@coveord/plasma-react-icons';
-import {FunctionComponent, HTMLProps, ReactNode, useRef} from 'react';
+import {FunctionComponent, HTMLProps, PropsWithChildren, ReactNode, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
 
 export interface IDraggableContainerOwnProps {
@@ -22,7 +22,7 @@ type DragItem = {id: string};
 /**
  * @deprecated Use Mantine instead
  */
-export const DnDContainer: FunctionComponent<IDraggableContainerOwnProps> = ({
+export const DnDContainer: FunctionComponent<PropsWithChildren<IDraggableContainerOwnProps>> = ({
     draggableContainerProps = {className: 'flex flex-center'},
     draggableIconProps = {},
     icon = <DragAndDropSize24Px className="mb2 mr1" />,
