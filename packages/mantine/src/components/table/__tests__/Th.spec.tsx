@@ -55,7 +55,7 @@ describe('Th', () => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: true}]}));
         });
 
-        userEvent.click(screen.getByRole('button', {name: 'name arrowHeadUp'}));
+        userEvent.click(await screen.findByRole('button', {name: 'name arrowHeadUp'}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
         });

@@ -3,7 +3,7 @@ import {FunctionComponent, FormEvent, PropsWithChildren, FormHTMLAttributes} fro
 
 type FormMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
-export interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
+export interface IFormProps extends FormHTMLAttributes<HTMLFormElement>, FormHTMLAttributes<HTMLFormElement> {
     title?: string;
     className?: string;
     mods?: FormMods | FormMods[];
