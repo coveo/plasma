@@ -1,3 +1,12 @@
+# 47.8.0 (2022-11-03)
+
+
+### Features
+
+* made adjustments to table component dates and style of th (#2897) 9572408, closes #2897
+
+
+
 # 47.7.0 (2022-11-03)
 
 
