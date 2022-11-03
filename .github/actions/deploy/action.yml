@@ -1,0 +1,20 @@
+name: Deploy
+description: Deploy the website
+inputs:
+    AWS_ROLE:
+        description: The AWS role name to assume using OIDC. This role should have the necesary privileges to deploy the website.
+    AWS_REGION:
+        description: The AWS region in which to deploy the website.
+    AWS_BUCKET:
+        description: The AWS S3 bucket in which to deploy the website.
+runs:
+    using: composite
+    steps:
+        - name: Configure AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+              role-to-assume: ${{ inputs.AWS_ROLE }}
+              aws-region: ${{ inputs.AWS_REGION }}
+        - name: Push distribution code to s3 demo folder
+          shell: bash
+          run: bash ./.github/actions/deploy/deploy.sh ${{ github.head_ref || github.ref_name }} ${{ inputs.AWS_BUCKET }}

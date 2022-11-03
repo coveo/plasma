@@ -1,0 +1,59 @@
+name: CD
+
+on:
+    push:
+        branches:
+            - master
+            - next
+
+concurrency:
+    group: ${{ github.ref_name }}
+    cancel-in-progress: true
+
+jobs:
+    cd:
+        name: Continous Delivery
+        runs-on: ubuntu-latest
+        environment: production
+        permissions:
+            pull-requests: write
+            id-token: write
+            actions: read
+            contents: write
+            security-events: write
+            statuses: write
+        steps:
+            - name: Checkout
+              uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
+              with:
+                  fetch-depth: 0
+            - name: Setup
+              uses: ./.github/actions/setup
+            - name: Lint
+              uses: ./.github/actions/lint
+              with:
+                  WORKFLOW: 'cd'
+            - name: Build
+              uses: ./.github/actions/build
+            - name: Test
+              uses: ./.github/actions/test
+            - name: Scan for vulnerabilities
+              uses: ./.github/actions/snyk-pnpm
+              with:
+                  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+            - name: Check Scan
+              uses: ./.github/actions/check-scan-alerts
+            - name: Publish
+              uses: ./.github/actions/publish
+              env:
+                  DEBUG: "*"
+                  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: Deploy
+              uses: ./.github/actions/deploy
+              # Demo for next branch is deployed by the CI workflow
+              if: github.ref != 'refs/heads/next'
+              with:
+                  AWS_ROLE: ${{ secrets.AWS_ROLE }}
+                  AWS_REGION: ${{ secrets.AWS_REGION }}
+                  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}

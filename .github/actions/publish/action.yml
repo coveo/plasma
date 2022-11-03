@@ -1,0 +1,19 @@
+name: Publish
+description: Publish a new version of the packages on npm
+runs:
+    using: composite
+    steps:
+        - name: Publish
+          uses: actions/github-script@v6
+          with:
+              script: |
+                  const {default: publishNewVersion} = await import('${{ github.workspace }}/.github/actions/publish/index.mjs');
+                  if (${{ github.ref }} === 'refs/heads/next') {
+                    await publishNewVersion({github, context, exec}, {
+                        bump: 'prerelease',
+                        tag: 'next',
+                        branch: 'next',
+                    });
+                  } else {
+                    await publishNewVersion({github, context, exec});
+                  }

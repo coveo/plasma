@@ -1,5 +1,5 @@
-name: 'Build'
-description: 'Build all packages'
+name: Build
+description: Build all packages
 runs:
     using: composite
     steps:

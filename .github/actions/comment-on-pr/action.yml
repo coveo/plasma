@@ -1,5 +1,5 @@
-name: 'Add Comment on PR'
-description: 'Add a comment on the current PR'
+name: Add Comment on PR
+description: Add a comment on the current PR
 inputs:
     message:
         description: The message to post on the PR

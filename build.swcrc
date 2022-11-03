@@ -1,0 +1,19 @@
+{
+    "$schema": "https://json.schemastore.org/swcrc",
+    "exclude": [".*\\.spec\\..*"],
+    "jsc": {
+        "externalHelpers": true,
+        "parser": {
+            "syntax": "typescript",
+            "tsx": true,
+            "decorators": true,
+            "dynamicImport": true
+        },
+        "transform": {
+            "react": {
+                "runtime": "automatic"
+            }
+        }
+    },
+    "sourceMaps": true
+}
