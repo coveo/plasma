@@ -1,3 +1,12 @@
+# 47.9.0 (2022-11-03)
+
+
+### Features
+
+* **mantine:** add modal with mantine (#2892) e9420d6, closes #2892
+
+
+
 # 47.8.0 (2022-11-03)
 
 
