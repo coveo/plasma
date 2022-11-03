@@ -19,6 +19,7 @@ const useStyles = createStyles((theme) => {
             fontSize: theme.headings.sizes.h4.fontSize,
             lineHeight: theme.headings.sizes.h4.fontSize,
         },
+        default: {},
         success: {backgroundColor: theme.colors.lime[6], color: white},
         warning: {backgroundColor: theme.colors.yellow[5], color: white},
         critical: {
@@ -31,7 +32,7 @@ const useStyles = createStyles((theme) => {
 });
 
 export interface PromptProps extends ModalProps {
-    variant?: 'success' | 'warning' | 'critical' | 'info';
+    variant: 'default' | 'success' | 'warning' | 'critical' | 'info';
     children: ReactNode;
 }
 interface PromptType {
@@ -41,20 +42,21 @@ interface PromptType {
 
 export const Prompt: PromptType = ({children, variant, size, ...otherProps}) => {
     const {classes, cx} = useStyles();
+    const defaultVariant = variant === 'default';
     const convertedChildren = Children.toArray(children) as ReactElement[];
 
     const otherChildren = convertedChildren.filter((child) => child.type !== PromptFooter);
     const footer = convertedChildren.find((child) => child.type === PromptFooter);
 
     const classNames = {
-        header: cx(classes.header, variant && classes[variant]),
-        close: variant ? classes.whiteClose : '',
+        header: cx(classes.header, classes[variant]),
+        close: !defaultVariant && classes.whiteClose,
         body: classes.body,
-        modal: variant ? classes.modalType : '',
+        modal: !defaultVariant && classes.modalType,
     };
 
     return (
-        <Modal padding={0} classNames={classNames} size={variant ? 'sm' : size} {...otherProps}>
+        <Modal padding={0} classNames={classNames} size={defaultVariant ? size : 'sm'} {...otherProps}>
             <div className={classes.innerBody}>{otherChildren}</div>
             {footer}
         </Modal>

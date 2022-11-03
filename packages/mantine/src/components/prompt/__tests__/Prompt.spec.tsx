@@ -4,7 +4,7 @@ import {Prompt} from '../Prompt';
 describe('Prompt', () => {
     it('displays the title, body and close button', () => {
         render(
-            <Prompt opened onClose={jest.fn()} title="title modal">
+            <Prompt variant="default" opened onClose={jest.fn()} title="title modal">
                 content modal
                 <Prompt.Footer>footer content</Prompt.Footer>
             </Prompt>
@@ -18,7 +18,7 @@ describe('Prompt', () => {
     it('calls onClose when clicking on the close button', () => {
         const onClose = jest.fn();
         render(
-            <Prompt opened onClose={onClose} title="title modal">
+            <Prompt variant="default" opened onClose={onClose} title="title modal">
                 content modal
             </Prompt>
         );
