@@ -42,6 +42,6 @@ describe('EditableDateRangePicker', () => {
         userEvent.clear(endInput);
         userEvent.type(endInput, 'Jan 14, 2022');
 
-        expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-01-14T00:00:00.000Z"]');
+        expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-01-14T23:59:59.999Z"]');
     });
 });
