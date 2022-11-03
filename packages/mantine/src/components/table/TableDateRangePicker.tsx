@@ -32,11 +32,17 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
 
     const onApply = (dates: DateRangePickerValue) => {
         if (dates[0] !== null && dates[1] !== null) {
-            form.setFieldValue('dateRange', dates);
+            form.setFieldValue('dateRange', [dayjs(dates[0]).toDate(), dayjs(dates[1]).toDate()]);
         } else if (dates[1] === null) {
-            form.setFieldValue('dateRange', [dates[0], dates[0]]);
+            form.setFieldValue('dateRange', [
+                dayjs(dates[0]).startOf('day').toDate(),
+                dayjs(dates[0]).endOf('day').toDate(),
+            ]);
         } else {
-            form.setFieldValue('dateRange', [dates[1], dates[1]]);
+            form.setFieldValue('dateRange', [
+                dayjs(dates[1]).startOf('day').toDate(),
+                dayjs(dates[1]).endOf('day').toDate(),
+            ]);
         }
         setOpened(false);
     };
