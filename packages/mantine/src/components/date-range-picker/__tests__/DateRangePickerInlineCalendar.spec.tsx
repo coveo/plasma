@@ -1,4 +1,5 @@
 import {render, screen, userEvent} from '@test-utils';
+import dayjs from 'dayjs';
 
 import {DateRangePickerInlineCalendar} from '../DateRangePickerInlineCalendar';
 
@@ -86,6 +87,9 @@ describe('DateRangePickerInlineCalendar', () => {
 
         userEvent.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith([new Date(2022, 0, 8), new Date(2022, 0, 14)]);
+        expect(onApply).toHaveBeenCalledWith([
+            dayjs(new Date(2022, 0, 8)).startOf('day').toDate(),
+            dayjs(new Date(2022, 0, 14)).endOf('day').toDate(),
+        ]);
     });
 });

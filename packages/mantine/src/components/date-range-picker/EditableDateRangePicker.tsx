@@ -1,4 +1,5 @@
 import {DatePicker, DatePickerProps, DateRangePickerValue} from '@mantine/dates';
+import dayjs from 'dayjs';
 import {ReactNode} from 'react';
 
 export interface EditableDateRangePickerProps {
@@ -24,11 +25,11 @@ export const EditableDateRangePicker = ({
     startProps = {},
     endProps = {},
 }: EditableDateRangePickerProps) => {
-    const onChangeStart = (date: Date | null) => {
-        onChange?.([date, value?.[1] ?? null]);
+    const onChangeStart = (date: Date) => {
+        onChange?.([dayjs(date).startOf('day').toDate(), value?.[1]]);
     };
-    const onChangeEnd = (date: Date | null) => {
-        onChange?.([value?.[0] ?? null, date]);
+    const onChangeEnd = (date: Date) => {
+        onChange?.([value?.[0], dayjs(date).endOf('day').toDate()]);
     };
 
     return (
