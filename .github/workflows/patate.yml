@@ -13,12 +13,8 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
-            - name: Deploy
-              uses: ./.github/actions/deploy
+            - name: Publish
+              uses: ./.github/actions/publish
               # Demo for next branch is deployed by the CI workflow
               if: github.ref != 'refs/heads/next'
-              with:
-                  AWS_ROLE: ${{ secrets.AWS_ROLE }}
-                  AWS_REGION: ${{ secrets.AWS_REGION }}
-                  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
 
