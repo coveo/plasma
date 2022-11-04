@@ -41,6 +41,7 @@
     },
     "devDependencies": {
         "@emotion/react": "11.10.0",
+        "@mantine/carousel": "5.6.4",
         "@mantine/core": "5.6.2",
         "@mantine/dates": "5.6.2",
         "@mantine/form": "5.6.2",
@@ -60,6 +61,7 @@
         "@types/react-beautiful-dnd": "13.1.2",
         "@types/react-dom": "17.0.15",
         "@types/testing-library__jest-dom": "5.14.5",
+        "embla-carousel-react": "7.0.4",
         "eslint-plugin-jest": "26.1.5",
         "eslint-plugin-testing-library": "5.5.1",
         "identity-obj-proxy": "3.0.0",
@@ -75,11 +77,13 @@
     },
     "peerDependencies": {
         "@emotion/react": "^11.10.0",
+        "@mantine/carousel": "5.6.4",
         "@mantine/core": "^5.6.2",
         "@mantine/dates": "^5.6.2",
         "@mantine/form": "^5.6.2",
         "@mantine/hooks": "^5.6.2",
         "@mantine/modals": "^5.6.2",
+        "embla-carousel-react": "7.0.4",
         "react": ">= 17.0.2",
         "react-dom": ">= 17.0.2"
     }
