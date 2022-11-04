@@ -1,4 +1,4 @@
-import {Center, Collapse, createStyles, Loader, Skeleton, Table as MantineTable} from '@mantine/core';
+import {Box, Center, Collapse, createStyles, Loader, Skeleton, Table as MantineTable} from '@mantine/core';
 import {useForm} from '@mantine/form';
 import {useClickOutside, useDidUpdate} from '@mantine/hooks';
 import {
@@ -175,7 +175,7 @@ export const Table: TableType = <T,>({
         onMount?.({...state, ...form.values});
     }, []);
 
-    const outSideClickRef = useClickOutside(() => {
+    const outsideClickRef = useClickOutside(() => {
         table.resetRowSelection(true);
     });
 
@@ -248,46 +248,42 @@ export const Table: TableType = <T,>({
     });
 
     return (
-        <TableContext.Provider
-            value={{
-                onChange: triggerChange,
-                state,
-                setState,
-                clearFilters,
-                getSelectedRow,
-                clearSelection,
-                form,
-            }}
-        >
-            {header}
-            <MantineTable
-                ref={outSideClickRef}
-                className={classes.table}
-                horizontalSpacing="sm"
-                verticalSpacing="xs"
-                pb="sm"
+        <Box ref={outsideClickRef}>
+            <TableContext.Provider
+                value={{
+                    onChange: triggerChange,
+                    state,
+                    setState,
+                    clearFilters,
+                    getSelectedRow,
+                    clearSelection,
+                    form,
+                }}
             >
-                <thead className={classes.header}>
-                    {table.getHeaderGroups().map((headerGroup) => (
-                        <tr key={headerGroup.id}>
-                            {headerGroup.headers.map((columnHeader) => (
-                                <Th key={columnHeader.id} header={columnHeader} />
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody>
-                    {rows.length ? (
-                        rows
-                    ) : (
-                        <tr>
-                            <td colSpan={columns.length}>{noDataChildren}</td>
-                        </tr>
-                    )}
-                </tbody>
-            </MantineTable>
-            {footer}
-        </TableContext.Provider>
+                {header}
+                <MantineTable className={classes.table} horizontalSpacing="sm" verticalSpacing="xs" pb="sm">
+                    <thead className={classes.header}>
+                        {table.getHeaderGroups().map((headerGroup) => (
+                            <tr key={headerGroup.id}>
+                                {headerGroup.headers.map((columnHeader) => (
+                                    <Th key={columnHeader.id} header={columnHeader} />
+                                ))}
+                            </tr>
+                        ))}
+                    </thead>
+                    <tbody>
+                        {rows.length ? (
+                            rows
+                        ) : (
+                            <tr>
+                                <td colSpan={columns.length}>{noDataChildren}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </MantineTable>
+                {footer}
+            </TableContext.Provider>
+        </Box>
     );
 };
 
