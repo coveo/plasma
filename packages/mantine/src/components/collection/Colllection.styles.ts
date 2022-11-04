@@ -6,6 +6,7 @@ export default createStyles((theme) => ({
     root: {},
     item: {
         backgroundColor: theme.colorScheme === 'light' ? theme.white : theme.black,
+        alignItems: 'baseline',
     },
     itemDragging: {
         boxShadow: theme.shadows.sm,

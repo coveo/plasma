@@ -1,3 +1,34 @@
+## 47.9.1 (2022-11-04)
+
+
+
+# 47.9.0 (2022-11-03)
+
+
+### Features
+
+* **mantine:** add modal with mantine (#2892) e9420d6, closes #2892
+
+
+
+# 47.8.0 (2022-11-03)
+
+
+### Features
+
+* made adjustments to table component dates and style of th (#2897) 9572408, closes #2897
+
+
+
+# 47.7.0 (2022-11-03)
+
+
+### Features
+
+* **carousel:** +carousel component for ML feature (#2895) 870b1de, closes #2895
+
+
+
 ## 47.6.1 (2022-11-03)
 
 
