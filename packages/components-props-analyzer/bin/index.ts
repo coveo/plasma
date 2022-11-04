@@ -9,7 +9,7 @@ const generateProps = async () => {
         const props = await getPropsOfComponent(component);
         await outputFile(
             `./src/components/${component.name}.ts`,
-            `// Don't edit this file, it gets overwriten on each build
+            `// Don't edit this file, it is automatically generated on each build
             import {ComponentMetadata} from '../ComponentsList';
             export const ${component.name}Metadata: ComponentMetadata[] = ${JSON.stringify(props)};`
         );
