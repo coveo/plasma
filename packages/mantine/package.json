@@ -30,13 +30,11 @@
     "dependencies": {
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-tokens": "workspace:*",
-        "@mantine/carousel": "5.6.4",
         "@monaco-editor/react": "4.4.5",
         "@swc/helpers": "0.4.11",
         "@tanstack/react-table": "8.5.11",
         "@tanstack/table-core": "8.5.11",
         "dayjs": "1.11.3",
-        "embla-carousel-react": "7.0.4",
         "lodash.defaultsdeep": "4.6.1",
         "monaco-editor": "0.34.0",
         "react-beautiful-dnd": "13.1.0"
