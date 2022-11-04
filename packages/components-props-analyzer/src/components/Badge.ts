@@ -1,0 +1,58 @@
+// Don't edit this file, it gets overwriten on each build
+import {ComponentMetadata} from '../ComponentsList';
+export const BadgeMetadata: ComponentMetadata[] = [
+    {
+        name: 'icon',
+        description: 'Add an icon to the badge (Required if no label)',
+        type: 'Icon',
+        optional: false,
+        defaultValue: null,
+        deprecation: null,
+        params: [],
+    },
+    {
+        name: 'label',
+        description: 'The label of the badge (Required if no icon)',
+        type: 'string',
+        optional: false,
+        defaultValue: null,
+        deprecation: null,
+        params: [],
+    },
+    {
+        name: 'extraClasses',
+        description: 'CSS class for the badge',
+        type: 'string[]',
+        optional: true,
+        defaultValue: null,
+        deprecation: null,
+        params: [],
+    },
+    {
+        name: 'iconPlacement',
+        description: 'Whether the icon is left or right (Required if no label)',
+        type: 'BadgeIconPlacement',
+        optional: true,
+        defaultValue: 'BadgeIconPlacement.Left',
+        deprecation: null,
+        params: [],
+    },
+    {
+        name: 'isSmall',
+        description: 'The Badge will be smaller in size when true',
+        type: 'boolean',
+        optional: true,
+        defaultValue: 'false',
+        deprecation: null,
+        params: [],
+    },
+    {
+        name: 'type',
+        description: 'The type of the badge',
+        type: 'BadgeType',
+        optional: true,
+        defaultValue: 'Default',
+        deprecation: null,
+        params: [],
+    },
+];
