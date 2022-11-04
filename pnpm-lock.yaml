@@ -50,6 +50,51 @@ importers:
       underscore: 1.13.4
       walkdir: 0.4.1
 
+  packages/components-props-analyzer:
+    specifiers:
+      '@coveord/plasma-mantine': workspace:*
+      '@coveord/plasma-react': workspace:*
+      '@swc/cli': 0.1.57
+      '@swc/core': 1.3.14
+      '@types/fs-extra': 9.0.13
+      '@types/lz-string': 1.3.34
+      '@types/node': 16.11.32
+      '@types/react': ^17.0
+      '@types/react-dom': ^17.0
+      '@types/rimraf': 3.0.2
+      '@typescript/twoslash': 3.1.0
+      '@typescript/vfs': 1.3.5
+      cross-fetch: 3.1.5
+      fs-extra: 10.1.0
+      react: 17.0.2
+      react-dom: 17.0.2
+      rimraf: 3.0.2
+      ts-node: 10.7.0
+      tslib: 2.3.1
+      typescript: 4.6.4
+    dependencies:
+      '@coveord/plasma-mantine': link:../mantine
+      '@coveord/plasma-react': link:../react
+    devDependencies:
+      '@swc/cli': 0.1.57_@swc+core@1.3.14
+      '@swc/core': 1.3.14
+      '@types/fs-extra': 9.0.13
+      '@types/lz-string': 1.3.34
+      '@types/node': 16.11.32
+      '@types/react': 17.0.44
+      '@types/react-dom': 17.0.15
+      '@types/rimraf': 3.0.2
+      '@typescript/twoslash': 3.1.0
+      '@typescript/vfs': 1.3.5
+      cross-fetch: 3.1.5
+      fs-extra: 10.1.0
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      rimraf: 3.0.2
+      ts-node: 10.7.0_zec4777zkq3l6pqhzdd4evqufy
+      tslib: 2.3.1
+      typescript: 4.6.4
+
   packages/mantine:
     specifiers:
       '@coveord/plasma-react-icons': workspace:*
@@ -140,51 +185,6 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       rimraf: 3.0.2
-      tslib: 2.3.1
-      typescript: 4.6.4
-
-  packages/props-table:
-    specifiers:
-      '@coveord/plasma-mantine': workspace:*
-      '@coveord/plasma-react': workspace:*
-      '@swc/cli': 0.1.57
-      '@swc/core': ^1.3.14
-      '@types/fs-extra': 9.0.13
-      '@types/lz-string': 1.3.34
-      '@types/node': 16.11.32
-      '@types/react': ^17.0
-      '@types/react-dom': ^17.0
-      '@types/rimraf': 3.0.2
-      '@typescript/twoslash': 3.1.0
-      '@typescript/vfs': 1.3.5
-      cross-fetch: 3.1.5
-      fs-extra: 10.1.0
-      react: 17.0.2
-      react-dom: 17.0.2
-      rimraf: 3.0.2
-      ts-node: 10.7.0
-      tslib: 2.3.1
-      typescript: 4.6.4
-    dependencies:
-      '@coveord/plasma-mantine': link:../mantine
-      '@coveord/plasma-react': link:../react
-    devDependencies:
-      '@swc/cli': 0.1.57_@swc+core@1.3.14
-      '@swc/core': 1.3.14
-      '@types/fs-extra': 9.0.13
-      '@types/lz-string': 1.3.34
-      '@types/node': 16.11.32
-      '@types/react': 17.0.44
-      '@types/react-dom': 17.0.15
-      '@types/rimraf': 3.0.2
-      '@typescript/twoslash': 3.1.0
-      '@typescript/vfs': 1.3.5
-      cross-fetch: 3.1.5
-      fs-extra: 10.1.0
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      rimraf: 3.0.2
-      ts-node: 10.7.0_zec4777zkq3l6pqhzdd4evqufy
       tslib: 2.3.1
       typescript: 4.6.4
 
@@ -562,7 +562,6 @@ importers:
   packages/website:
     specifiers:
       '@coveo/atomic-react': 0.5.8
-      '@coveord/plasma-components-props-analyzer': workspace:*
       '@coveord/plasma-react': workspace:*
       '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
@@ -618,13 +617,11 @@ importers:
       reselect: 4.1.5
       rimraf: 3.0.2
       sass: 1.51.0
-      ts-node: 10.7.0
       tslib: 2.3.1
       typescript: 4.6.4
       underscore: 1.13.1
     dependencies:
       '@coveo/atomic-react': 0.5.8_yyaspy5yuooqy74l2zish2glee
-      '@coveord/plasma-components-props-analyzer': link:../components-props-analyzer
       '@coveord/plasma-react': link:../react
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
@@ -682,7 +679,6 @@ importers:
       raw-loader: 4.0.2
       rimraf: 3.0.2
       sass: 1.51.0
-      ts-node: 10.7.0_typescript@4.6.4
       tslib: 2.3.1
       typescript: 4.6.4
 
@@ -3672,10 +3668,6 @@ packages:
     resolution: {integrity: sha512-+fnfNvG5JQdC1uGZiTx+0QVtoOHcggy6+epx65JYroPGsE1uhp+vo5kioiGKsAkor6ocwHteU2EvO7N8vtOZtA==}
     dev: true
 
-  /@types/node/17.0.31:
-    resolution: {integrity: sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==}
-    dev: true
-
   /@types/node/18.7.18:
     resolution: {integrity: sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==}
 
@@ -3863,7 +3855,7 @@ packages:
   /@types/svgo/2.6.3:
     resolution: {integrity: sha512-5sP0Xgo0dXppY0tbYF6TevB/1+tzFLuu71XXxC/zGvQAn9PW7y+DwtDO81g0ZUPye00K6tPwtsLDOpARa0mFcA==}
     dependencies:
-      '@types/node': 17.0.31
+      '@types/node': 18.7.18
     dev: true
 
   /@types/tern/0.23.4:
@@ -13096,7 +13088,7 @@ packages:
     dev: true
 
   /object-assign/3.0.0:
-    resolution: {integrity: sha1-m+3VygiXlJvKR+f/QIBi1Un1h/I=}
+    resolution: {integrity: sha512-jHP15vXVGeVh1HuaA2wY6lxk+whK/x4KBG88VXeRma7CCun7iGD5qPc4eYykQ9sdQvg8jkwFKsSxHln2ybW3xQ==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -17294,36 +17286,6 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
       '@types/node': 16.11.32
-      acorn: 8.8.0
-      acorn-walk: 8.2.0
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 4.6.4
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-    dev: true
-
-  /ts-node/10.7.0_typescript@4.6.4:
-    resolution: {integrity: sha512-TbIGS4xgJoX2i3do417KSaep1uRAW/Lu+WAL2doDHC0D6ummjirVOXU5/7aiZotbQ5p1Zp9tP7U6cYhA0O7M8A==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.7.0
-      '@tsconfig/node10': 1.0.9
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.3
       acorn: 8.8.0
       acorn-walk: 8.2.0
       arg: 4.1.3
