@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 overrides:
   '@types/react': ^17.0
   '@types/react-dom': ^17.0
-  loader-utils@2.0.2: 2.0.3
+  loader-utils: 2.0.3
 
 importers:
 
@@ -4425,7 +4425,7 @@ packages:
     resolution: {integrity: sha512-YBrGyT2/uVQ/c6Rr+t6ZJXniY03YtHGMJQYal368burRGYKqhx9qGTWqcBU5s1CwYY9E/ri63RYyG1IacMZtqw==}
     engines: {node: '>=8.9'}
     dependencies:
-      loader-utils: 2.0.2
+      loader-utils: 2.0.3
       regex-parser: 2.2.11
     dev: true
 
@@ -6409,7 +6409,7 @@ packages:
       camelcase: 5.3.1
       cssesc: 3.0.0
       icss-utils: 4.1.1
-      loader-utils: 1.4.0
+      loader-utils: 2.0.3
       normalize-path: 3.0.0
       postcss: 7.0.39
       postcss-modules-extract-imports: 2.0.0
@@ -7168,11 +7168,6 @@ packages:
 
   /emoji-regex/9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
-    dev: true
-
-  /emojis-list/2.1.0:
-    resolution: {integrity: sha1-TapNnbAPmBmIDHn6RXrlsJof04k=}
-    engines: {node: '>= 0.10'}
     dev: true
 
   /emojis-list/3.0.0:
@@ -8168,7 +8163,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
-      loader-utils: 1.4.0
+      loader-utils: 2.0.3
       schema-utils: 2.7.1
       webpack: 4.46.0_webpack-cli@3.3.12
     dev: true
@@ -8179,7 +8174,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
-      loader-utils: 2.0.2
+      loader-utils: 2.0.3
       schema-utils: 3.1.1
     dev: false
 
@@ -11464,26 +11459,8 @@ packages:
     engines: {node: '>=4.3.0 <5.0.0 || >=5.10'}
     dev: true
 
-  /loader-utils/1.2.3:
-    resolution: {integrity: sha512-fkpz8ejdnEMG3s37wGL07iSBDg99O9D5yflE9RGNH3hRdx9SOwYfnGYdZOUIZitN8E+E2vkq3MUMYMvPYl5ZZA==}
-    engines: {node: '>=4.0.0'}
-    dependencies:
-      big.js: 5.2.2
-      emojis-list: 2.1.0
-      json5: 1.0.1
-    dev: true
-
-  /loader-utils/1.4.0:
-    resolution: {integrity: sha512-qH0WSMBtn/oHuwjy/NucEgbx5dbxxnxup9s4PVXJUDHZBQY+s0NWA9rJf53RBnQZxfch7euUui7hpoAPvALZdA==}
-    engines: {node: '>=4.0.0'}
-    dependencies:
-      big.js: 5.2.2
-      emojis-list: 3.0.0
-      json5: 1.0.1
-    dev: true
-
-  /loader-utils/2.0.2:
-    resolution: {integrity: sha512-TM57VeHptv569d/GKh6TAYdzKblwDNiumOdkFnejjD0XwTH87K90w3O7AiJRqdQoXygvi1VQTJTLGhJl7WqA7A==}
+  /loader-utils/2.0.3:
+    resolution: {integrity: sha512-THWqIsn8QRnvLl0shHYVBN9syumU8pYWEHPTmkiVGd+7K5eFNVSY6AJhRvgGF70gg1Dz+l/k8WicvFCxdEs60A==}
     engines: {node: '>=8.9.0'}
     dependencies:
       big.js: 5.2.2
@@ -12511,7 +12488,7 @@ packages:
     peerDependencies:
       webpack: ^4.4.0 || ^5.0.0
     dependencies:
-      loader-utils: 1.4.0
+      loader-utils: 2.0.3
       normalize-url: 1.9.1
       schema-utils: 1.0.0
       webpack: 4.46.0_webpack-cli@3.3.12
@@ -13766,7 +13743,7 @@ packages:
     dependencies:
       cosmiconfig: 7.0.1
       klona: 2.0.5
-      loader-utils: 2.0.2
+      loader-utils: 2.0.3
       postcss: 8.4.4
       schema-utils: 2.7.1
       semver: 7.3.5
@@ -14463,7 +14440,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
-      loader-utils: 2.0.2
+      loader-utils: 2.0.3
       schema-utils: 3.1.1
     dev: true
 
@@ -15516,7 +15493,7 @@ packages:
       compose-function: 3.0.3
       convert-source-map: 1.7.0
       es6-iterator: 2.0.3
-      loader-utils: 1.2.3
+      loader-utils: 2.0.3
       postcss: 7.0.36
       rework: 1.0.1
       rework-visit: 1.0.0
@@ -15705,7 +15682,7 @@ packages:
         optional: true
     dependencies:
       klona: 2.0.5
-      loader-utils: 2.0.2
+      loader-utils: 2.0.3
       neo-async: 2.6.2
       sass: 1.51.0
       schema-utils: 3.1.1
@@ -16504,7 +16481,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
-      loader-utils: 2.0.2
+      loader-utils: 2.0.3
       schema-utils: 2.7.1
       webpack: 4.46.0_webpack-cli@3.3.12
     dev: true
@@ -17747,7 +17724,7 @@ packages:
         optional: true
     dependencies:
       file-loader: 6.2.0
-      loader-utils: 2.0.2
+      loader-utils: 2.0.3
       mime-types: 2.1.35
       schema-utils: 3.1.1
     dev: false
@@ -18112,7 +18089,7 @@ packages:
       global-modules: 2.0.0
       import-local: 2.0.0
       interpret: 1.4.0
-      loader-utils: 1.4.0
+      loader-utils: 2.0.3
       supports-color: 6.1.0
       v8-compile-cache: 2.3.0
       webpack: 4.46.0_webpack-cli@3.3.12
@@ -18151,7 +18128,7 @@ packages:
       eslint-scope: 4.0.3
       json-parse-better-errors: 1.0.2
       loader-runner: 2.4.0
-      loader-utils: 1.4.0
+      loader-utils: 2.0.3
       memory-fs: 0.4.1
       micromatch: 3.1.10
       mkdirp: 0.5.6
