@@ -1,3 +1,5 @@
+import {TooltipMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -21,6 +23,7 @@ export const TooltipExamples = () => (
         description="A tooltip is a floating label that provides brief additional information about an interface component."
         thumbnail="tooltip"
         code={code}
+        propsMetadata={TooltipMetadata}
     />
 );
 

@@ -1,3 +1,5 @@
+import {LimitMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -49,6 +51,7 @@ const LimitExamples = () => (
         section="Layout"
         description="A limit card displays the limit and usage of a resource. It includes a bar illustrating the usage against the limit."
         code={code}
+        propsMetadata={LimitMetadata}
         examples={{
             withGoal: {code: withGoal, title: 'With goal to reach'},
             withHistory: {code: withHistory, title: 'With History'},

@@ -1,3 +1,5 @@
+import {SectionMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -48,6 +50,7 @@ const SectionExamples = () => (
             withLevel: {code: withLevel, title: 'With Level option'},
             withMods: {code: withMods, title: 'With Mods option'},
         }}
+        propsMetadata={SectionMetadata}
     />
 );
 

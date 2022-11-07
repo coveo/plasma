@@ -1,4 +1,6 @@
+import {ActionableItemMetadata} from '@coveord/plasma-components-props-analyzer';
 import {FunctionComponent} from 'react';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -25,6 +27,7 @@ const ActionableItemExamples: FunctionComponent = () => (
         section="Form"
         description="An actionable item is a dropdown menu listing actions associated with an element."
         code={code}
+        propsMetadata={ActionableItemMetadata}
         componentSourcePath="/actionable-item/ActionableItem.tsx"
     />
 );

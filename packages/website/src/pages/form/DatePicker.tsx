@@ -1,3 +1,5 @@
+import {DatePickerDropdownConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -114,6 +116,7 @@ export default () => (
         description="A date picker is a calendar interface that allows users to select a single date or a date range."
         componentSourcePath="/datePicker/DatePickerDropdown.tsx"
         code={code}
+        propsMetadata={DatePickerDropdownConnectedMetadata}
         examples={{
             singleDate: {code: singleDate, title: 'Single Date'},
             readOnly: {code: readOnly, title: 'Disabled'},

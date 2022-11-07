@@ -1,3 +1,5 @@
+import {CheckboxMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -67,6 +69,7 @@ const CheckboxExamples = () => (
             disabled: {code: disabled, title: 'Disabled'},
             group: {code: group, title: 'A group of checkboxes'},
         }}
+        propsMetadata={CheckboxMetadata}
     />
 );
 

@@ -1,3 +1,5 @@
+import {FacetMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -81,6 +83,7 @@ export default () => (
         description="A facet is a set of options used to filter a list of content items."
         componentSourcePath="/facets/FacetConnected.tsx"
         code={code}
+        propsMetadata={FacetMetadata}
         examples={{
             withExclude: {code: withExclude, title: 'Allow exclusion'},
             withMore: {code: withMore, title: 'Show more'},

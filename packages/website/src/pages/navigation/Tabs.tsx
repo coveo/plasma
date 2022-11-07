@@ -1,4 +1,6 @@
+import {TabMetadata} from '@coveord/plasma-components-props-analyzer';
 import {FunctionComponent} from 'react';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const withIcons = `
@@ -65,6 +67,7 @@ export const TabsExamples: FunctionComponent = () => (
         description="A set of tabs allows users to navigate between sections of the same interface."
         thumbnail="tab"
         code={code}
+        propsMetadata={TabMetadata}
         examples={{withIcons: {code: withIcons, title: 'Tab with icons'}}}
     />
 );

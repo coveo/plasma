@@ -1,4 +1,6 @@
+import {IconCardMetadata} from '@coveord/plasma-components-props-analyzer';
 import {FunctionComponent} from 'react';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -94,6 +96,7 @@ export const IconCardExamples: FunctionComponent = () => (
         section="Layout"
         description="An icon card is an element that regroups related pieces of information together. It can be either static or interactive."
         componentSourcePath="/iconCard/IconCard.tsx"
+        propsMetadata={IconCardMetadata}
         code={code}
         examples={{
             choices: {code: choices, title: 'With multiple choices'},
