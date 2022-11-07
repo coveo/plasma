@@ -17,5 +17,3 @@ runs:
                   } else {
                     await publishNewVersion({github, context, exec});
                   }
-          shell: bash
-          run: node ./.github/actions/publish/publishNewVersion.mjs
