@@ -1,7 +1,192 @@
+<<<<<<< HEAD
+## 47.9.1 (2022-11-04)
+
+
+
+# 47.9.0 (2022-11-03)
+
+
+### Features
+
+* **mantine:** add modal with mantine (#2892) e9420d6, closes #2892
+
+
+
+# 47.8.0 (2022-11-03)
+
+
+### Features
+
+* made adjustments to table component dates and style of th (#2897) 9572408, closes #2897
+
+
+
+# 47.7.0 (2022-11-03)
+
+
+### Features
+
+* **carousel:** +carousel component for ML feature (#2895) 870b1de, closes #2895
+
+
+
+## 47.6.1 (2022-11-03)
+
+
+
+# 47.6.0 (2022-11-01)
+
+
+### Features
+
+* **mantine:** add "allowAdd" prop to Collection (#2887) fabf8cb, closes #2887
+
+
+
+# 47.5.0 (2022-10-31)
+
+
+### Bug Fixes
+
+* **mantine:** add missing type exports (#2885) 00151c2, closes #2885
+
+
+### Features
+
+* **mantine:** lazy-load monaco-editor (#2883) 03918b7, closes #2883
+
+
+
+## 47.4.1 (2022-10-31)
+
+
+
+# 47.4.0 (2022-10-28)
+
+
+### Features
+
+* **mantine:** mantine package creation (#2867) 3b2b652, closes #2867
+
+
+
+## 47.3.11 (2022-10-28)
+
+
+
+## 47.3.10 (2022-10-28)
+
+
+
+## 47.3.9 (2022-10-28)
+
+
+
+## 47.3.8 (2022-10-28)
+
+
+
+## 47.3.7 (2022-10-28)
+
+
+
+## 47.3.6 (2022-10-25)
+
+
+
 ## 47.0.1-next.1 (2022-10-25)
 
 
 
+## 47.3.5 (2022-10-20)
+
+
+### Bug Fixes
+
+* **xyaxis:** when few data points, the x axis would not display any label ([#2862](https://github.com/coveo/plasma/issues/2862)) ([a015d7b](https://github.com/coveo/plasma/commits/a015d7bbe3c94f579726e7af5f88318b275f0320))
+
+
+
+## 47.3.4 (2022-10-19)
+
+
+### Bug Fixes
+
+* **limit:** chart pie was renamed so i changed the icon ([#2860](https://github.com/coveo/plasma/issues/2860)) ([04525ac](https://github.com/coveo/plasma/commits/04525ac9594761dce898ce0189ec9ff890e48ccc))
+
+
+
+## 47.3.3 (2022-10-17)
+
+
+
+## 47.3.2 (2022-10-13)
+
+
+
+## 47.3.1 (2022-10-12)
+
+
+### Reverts
+
+* Revert breaking updates (#2855) ([fcef4c8](https://github.com/coveo/plasma/commits/fcef4c891b4f4cbe04ca23e75d1ddbe7eb6450cc)), closes [#2855](https://github.com/coveo/plasma/issues/2855) [#2844](https://github.com/coveo/plasma/issues/2844) [#2843](https://github.com/coveo/plasma/issues/2843)
+
+
+
+# 47.3.0 (2022-10-11)
+
+
+### Features
+
+* add form props in the form component ([#2854](https://github.com/coveo/plasma/issues/2854)) ([734df4d](https://github.com/coveo/plasma/commits/734df4d2a7bb8eab8781208a61382b31564b2392))
+
+
+
+## 47.2.3 (2022-10-07)
+
+
+
+## 47.2.2 (2022-10-05)
+
+
+
+## 47.2.1 (2022-10-04)
+
+
+### Bug Fixes
+
+* **style:** remove root level style on inputs ([#2851](https://github.com/coveo/plasma/issues/2851)) ([27d4e5b](https://github.com/coveo/plasma/commits/27d4e5be9c50d39e7da6b16f438b510467744ed3))
+
+
+
+# 47.2.0 (2022-10-03)
+
+
+### Features
+
+* p8 adding link to colors in home page for demo ([#2848](https://github.com/coveo/plasma/issues/2848)) ([a936caf](https://github.com/coveo/plasma/commits/a936cafb45a0ca5ab9214c89e90bdb1ece9c3653))
+
+
+
+## 47.1.3 (2022-09-29)
+
+
+
+## 47.1.2 (2022-09-28)
+
+
+
+## 47.1.1 (2022-09-28)
+
+
+
+# 47.1.0 (2022-09-22)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries ([#2840](https://github.com/coveo/plasma/issues/2840)) ([8d0f926](https://github.com/coveo/plasma/commits/8d0f926186f4cca4510d99f91c6b8f9b475355de))
+=======
 ## 47.3.5 (2022-10-20)
 
 
@@ -110,6 +295,7 @@
  fixed or removed or skip tests after userEvent bump
 
 * chore(release): publish version v47.1.2 [version bump]
+>>>>>>> 499ff03ea (chore(release): publish version v47.0.1-next.0 [version bump])
 
 
 

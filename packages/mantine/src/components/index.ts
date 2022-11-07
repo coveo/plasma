@@ -6,4 +6,5 @@ export * from './sticky-footer';
 export * from './header';
 export * from './inline-confirm';
 export * from './table';
+export * from './prompt';
 export * from './modal-wizard';

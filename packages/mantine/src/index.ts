@@ -2,18 +2,16 @@ import {Tuple} from '@mantine/core';
 
 import {PlasmaColors} from './theme/PlasmaColors';
 
-export {type ColumnDef, createColumnHelper} from '@tanstack/table-core';
-
+export * from '@mantine/carousel';
 export * from '@mantine/core';
 export * from '@mantine/form';
 export type {FormValidateInput} from '@mantine/form/lib/types';
 export * from '@mantine/hooks';
-
+export {createColumnHelper, type ColumnDef} from '@tanstack/table-core';
 export * from './components';
-export * from './theme';
-
 // explicitly overriding mantine components
 export {Header, Table} from './components';
+export * from './theme';
 
 declare module '@mantine/core' {
     export interface MantineThemeColorsOverride {

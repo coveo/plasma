@@ -7,6 +7,15 @@ const useStyles = createStyles((theme) => ({
         padding: '0 !important',
         fontWeight: '400 !important' as any,
         color: theme.black + '!important',
+        button: {
+            padding: '8px 16px',
+            div: {
+                padding: '0px !important',
+            },
+        },
+        div: {
+            padding: '8px 16px',
+        },
     },
 
     noSort: {

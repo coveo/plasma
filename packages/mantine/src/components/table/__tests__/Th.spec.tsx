@@ -45,7 +45,7 @@ describe('Th', () => {
         await screen.findAllByRole('img', {name: 'arrowHeadDown'});
         await screen.findAllByRole('img', {name: 'arrowHeadUp'});
 
-        userEvent.click(screen.getByRole('button', {name: /name arrowheaddown/i}));
+        userEvent.click(screen.getByRole('button', {name: 'name arrowHeadDown'}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
         });
@@ -55,8 +55,7 @@ describe('Th', () => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: true}]}));
         });
 
-        await waitFor(() => expect(screen.queryByRole('button', {name: 'name arrowHeadUp'})).toBeVisible());
-        userEvent.click(screen.getByRole('button', {name: 'name arrowHeadUp'}));
+        userEvent.click(await screen.findByRole('button', {name: 'name arrowHeadUp'}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
         });
