@@ -6,14 +6,11 @@ import {useSelector} from 'react-redux';
 import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
 import {PlasmaLoading} from './PlasmaLoading';
+import {PropsDoc, PropsTableProps} from './PropsTable';
 import {Tile, TileProps} from './Tile';
 
 const Sandbox = dynamic(
     import('./Sandbox').then((mod) => mod.Sandbox),
-    {ssr: false, loading: () => <PlasmaLoading />}
-);
-const PropsDoc = dynamic(
-    import('./PropsDoc').then((mod) => mod.PropsDoc),
     {ssr: false, loading: () => <PlasmaLoading />}
 );
 
@@ -23,7 +20,7 @@ interface PlaygroundProps {
     layout?: 'horizontal' | 'vertical';
 }
 
-export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
+export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps, PropsTableProps {
     id: string;
     examples?: Record<string, PlaygroundProps>;
     relatedComponents?: TileProps[];
@@ -48,6 +45,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({
     sourcePath,
     relatedComponents,
     withPropsTable = true,
+    propsMetadata,
     children,
 }) => {
     const isShowingCode = useSelector((state) =>
@@ -79,6 +77,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({
                             relatedComponents={relatedComponents}
                             layout={layout}
                             withPropsTable={withPropsTable}
+                            propsMetadata={propsMetadata}
                         >
                             {children}
                         </Content>
@@ -91,10 +90,12 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({
         </div>
     );
 };
-const Content: FunctionComponent<Pick<
-    PageLayoutProps,
-    'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable'
->> = ({code, examples, id, relatedComponents, layout, withPropsTable, children}) => (
+const Content: FunctionComponent<
+    Pick<
+        PageLayoutProps,
+        'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable' | 'propsMetadata'
+    >
+> = ({code, examples, id, relatedComponents, layout, withPropsTable, propsMetadata, children}) => (
     <>
         {code && (
             <div className="plasma-page-layout__main-code plasma-page-layout__section">
@@ -107,7 +108,7 @@ const Content: FunctionComponent<Pick<
         {withPropsTable && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb1">Props</h4>
-                <PropsDoc componentName={id} />
+                <PropsDoc propsMetadata={propsMetadata} />
             </div>
         )}
         {examples && (
