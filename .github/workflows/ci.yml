@@ -13,41 +13,35 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
-            # - uses: ./.github/actions/lint
-            #   with:
-                #   WORKFLOW: 'ci'
-            - name: Scan for vulnerabilities
-              uses: ./.github/actions/snyk-pnpm
+            - uses: ./.github/actions/lint
               with:
-                  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-            - name: Check Scan
-              uses: ./.github/actions/check-scan-alerts
-    # test:
-    #     name: Build and Test
-    #     runs-on: ubuntu-latest
-    #     steps:
-    #         - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
-    #         - uses: ./.github/actions/setup
-    #         - uses: ./.github/actions/build
-    #         - uses: ./.github/actions/test
-    # demo:
-    #     name: Deploy Demo
-    #     runs-on: ubuntu-latest
-    #     permissions:
-    #         pull-requests: write
-    #         id-token: write
-    #         contents: read
-    #     steps:
-    #         - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
-    #         - uses: ./.github/actions/setup
-    #         - uses: ./.github/actions/build
-    #         - uses: ./.github/actions/deploy
-    #           with:
-    #               AWS_ROLE: ${{ secrets.AWS_ROLE }}
-    #               AWS_REGION: ${{ secrets.AWS_REGION }}
-    #               AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
-    #         - name: Add demo link as a commment on the PR
-    #           uses: ./.github/actions/comment-on-pr
-    #           with:
-    #               message: ':heavy_check_mark: [Live demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ github.head_ref }}/index.html).'
-    #               avoidRepostsWith: Live demo of your latest successful build available here
+                  WORKFLOW: 'ci'
+    test:
+        name: Build and Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
+            - uses: ./.github/actions/setup
+            - uses: ./.github/actions/build
+            - uses: ./.github/actions/test
+    demo:
+        name: Deploy Demo
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
+            id-token: write
+            contents: read
+        steps:
+            - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
+            - uses: ./.github/actions/setup
+            - uses: ./.github/actions/build
+            - uses: ./.github/actions/deploy
+              with:
+                  AWS_ROLE: ${{ secrets.AWS_ROLE }}
+                  AWS_REGION: ${{ secrets.AWS_REGION }}
+                  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+            - name: Add demo link as a commment on the PR
+              uses: ./.github/actions/comment-on-pr
+              with:
+                  message: ':heavy_check_mark: [Live demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ github.head_ref }}/index.html).'
+                  avoidRepostsWith: Live demo of your latest successful build available here

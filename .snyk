@@ -4,4 +4,4 @@ ignore: {}
 patch: {}
 exclude:
   global:
-    - packages/react/src/components/tables/tests/TableTestCommon.tsx
+    - packages/react/src/components/tables/tests/TableTestCommon.tsx # contains mocks for tests but cannot be converted to .mock.ts
