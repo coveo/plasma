@@ -21,10 +21,7 @@ export const BarSeries: FunctionComponent<PropsWithChildren<BarSeriesProps>> = (
             ? ((xScale(xDomain[1]) - xScale(xDomain[0])) / xValues.length / 2) * barRatio
             : (xScale(xDomain[0]) / 2) * barRatio;
 
-    const innerXScale = d3.scale
-        .ordinal<number, number>()
-        .domain(d3.range(series.length))
-        .rangeBands([-barWidth, barWidth], 0);
+    const innerXScale = scaleBand<number>().domain(range(series.length)).rangeRound([-barWidth, barWidth]);
 
     const bars = series.map((serie: XYSerie, serieIndex: number) =>
         serie.data.map((point: XYPoint) => {
@@ -33,7 +30,7 @@ export const BarSeries: FunctionComponent<PropsWithChildren<BarSeriesProps>> = (
                 <rect
                     key={`${serie.label}-${point.x}`}
                     fill={color(serieIndex, colorPattern, point)}
-                    width={innerXScale.rangeBand()}
+                    width={innerXScale.bandwidth()}
                     height={yScale(yDomain[0]) - barHeight}
                     x={xScale(point.x) + innerXScale(serieIndex)}
                     y={barHeight}

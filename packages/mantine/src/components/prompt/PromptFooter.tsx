@@ -1,8 +1,8 @@
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import {StickyFooter, StickyFooterProps} from '../sticky-footer';
 
 export interface PromptFooterProps extends StickyFooterProps {}
 
-export const PromptFooter: FunctionComponent<PromptFooterProps> = ({children, ...otherProps}) => (
+export const PromptFooter: FunctionComponent<PropsWithChildren<PromptFooterProps>> = ({children, ...otherProps}) => (
     <StickyFooter {...otherProps}>{children}</StickyFooter>
 );
