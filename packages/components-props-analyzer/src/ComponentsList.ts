@@ -4,7 +4,7 @@ export interface Component {
      */
     name: string;
     /**
-     * the name of the package from which the component is exported
+     * The name of the package from which the component is exported
      */
     packageName: string;
 }
