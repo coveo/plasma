@@ -3,8 +3,13 @@ import ts from 'typescript';
 
 import {Component, ComponentMetadata} from '../src/ComponentsList';
 
-const getContent = ({name, packageName}: Component) =>
-    `import {ComponentProps} from 'react';import {${name}} from '${packageName}';const props: ComponentProps<typeof ${name}> = { `;
+const getContent = ({name, packageName, propsType = 'auto'}: Component) => {
+    if (propsType && propsType !== 'auto') {
+        return `import {${propsType}} from '${packageName}';const props: ${propsType} = { `;
+    } else {
+        return `import {ComponentProps} from 'react';import {${name}} from '${packageName}';const props: ComponentProps<typeof ${name}> = { `;
+    }
+};
 
 export const getPropsOfComponent = (component: Component, env: VirtualTypeScriptEnvironment): ComponentMetadata[] => {
     const fileName = `${component.name}.tsx`;
