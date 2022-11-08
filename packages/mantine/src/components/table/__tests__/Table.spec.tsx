@@ -125,4 +125,31 @@ describe('Table', () => {
         const allRows = screen.getAllByRole('button', {name: 'arrowHeadDown'});
         expect(allRows).toHaveLength(2);
     });
+
+    it('reset row selection when user click outside the table', () => {
+        render(
+            <div>
+                <div>I'm a header</div>
+                <Table
+                    data={[
+                        {firstName: 'first', lastName: 'last'},
+                        {firstName: 'patate', lastName: 'king'},
+                    ]}
+                    columns={columns}
+                />
+            </div>
+        );
+
+        const row = screen.getByRole('row', {name: 'patate king'});
+
+        expect(row).not.toHaveClass('__mantine-ref-rowSelected');
+
+        userEvent.click(row);
+
+        expect(row).toHaveClass('__mantine-ref-rowSelected');
+
+        userEvent.click(screen.getByText(/i'm a header/i));
+
+        expect(row).not.toHaveClass('__mantine-ref-rowSelected');
+    });
 });
