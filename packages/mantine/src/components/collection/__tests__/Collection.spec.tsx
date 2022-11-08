@@ -51,6 +51,33 @@ describe('Collection', () => {
         expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["orange"]}');
     });
 
+    it('calls the onRemoveItem function when clicking on a remove button', async () => {
+        const onRemoveItemSpy = jest.fn();
+        const Fixture = () => {
+            const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+            return (
+                <Collection newItem="" {...form.getInputProps('fruits')} onRemoveItem={onRemoveItemSpy}>
+                    {(name) => <span data-testid="item">{name}</span>}
+                </Collection>
+            );
+        };
+
+        render(<Fixture />);
+        let items = screen.getAllByTestId('item');
+        expect(items).toHaveLength(2);
+        /* eslint-disable-next-line testing-library/no-node-access */
+        const removeOrange = await within(items[1].parentElement).findByRole('button', {name: /remove/i});
+        userEvent.click(removeOrange);
+
+        expect(onRemoveItemSpy).toHaveBeenCalledWith(1);
+
+        items = screen.getAllByTestId('item');
+        const removeBanana = await within(items[0].parentElement).findByRole('button', {name: /remove/i});
+        userEvent.click(removeBanana);
+
+        expect(onRemoveItemSpy).toHaveBeenCalledWith(0);
+    });
+
     it('does not render the remove button when disabled', async () => {
         const Fixture = () => {
             const [disabled, setDisabled] = useState(false);
