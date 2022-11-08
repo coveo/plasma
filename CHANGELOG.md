@@ -1,3 +1,21 @@
+# 48.0.0 (2022-11-08)
+
+
+* chore!:  bump react and react-dom to 18 (#2906) 56c3493, closes #2906
+
+
+### Features
+
+* create components-props-analyzer package (#2903) ef6ebc4, closes #2903
+* **mantine, table:**  reset row selection if user click outside the table (#2890) 0717d65, closes #2890
+
+
+### BREAKING CHANGES
+
+* peerDependecy for React is now 18 or higher
+
+
+
 ## 47.9.3 (2022-11-07)
 
 ## 47.9.2 (2022-11-07)
