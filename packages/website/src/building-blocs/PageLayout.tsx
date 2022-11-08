@@ -7,9 +7,10 @@ import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
 import {PlasmaLoading} from './PlasmaLoading';
 import {PropsDoc, PropsTableProps} from './PropsTable';
+import {type SandboxProps} from './Sandbox';
 import {Tile, TileProps} from './Tile';
 
-const Sandbox = dynamic(
+const Sandbox = dynamic<SandboxProps>(
     import('./Sandbox').then((mod) => mod.Sandbox),
     {ssr: false, loading: () => <PlasmaLoading />}
 );
