@@ -216,7 +216,7 @@ describe('Table HOC', () => {
             expect(store.getActions()).not.toContain(actionNotExpected);
         });
 
-        it('does not select the row when clicking inside an underlying dropdown', () => {
+        it('does not select the row when clicking inside an underlying dropdown', async () => {
             // We must mount the component here because simulated events don't propagate throughout ShallowWrappers
             render(
                 <TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]}>
@@ -228,7 +228,7 @@ describe('Table HOC', () => {
                 </TableRowConnected>
             );
 
-            userEvent.click(screen.getByRole('button', {name: 'name'}));
+            await userEvent.click(screen.getByRole('button', {name: 'name'}));
             expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'false');
         });
 

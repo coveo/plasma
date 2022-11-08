@@ -18,25 +18,27 @@ const mapStateToProps = (state: PlasmaState, {id, groupId}: IDropOwnProps): IDro
 /**
  * @deprecated Use Mantine instead
  */
-export const dropWithDropdown = () => (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
-    @ReduxConnect(mapStateToProps)
-    class DropWithDropdown extends PureComponent<IDropProps> {
-        static defaultProps: Partial<IDropProps>;
+export const dropWithDropdown =
+    () =>
+    (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
+        @ReduxConnect(mapStateToProps)
+        class DropWithDropdown extends PureComponent<IDropProps> {
+            static defaultProps: Partial<IDropProps>;
 
-        render() {
-            return (
-                <Component {..._.omit(this.props, PropsToOmitUtils.internal)}>
-                    <SlideY in={this.props.isOpen}>{this.props.children}</SlideY>
-                </Component>
-            );
+            render() {
+                return (
+                    <Component {..._.omit(this.props, PropsToOmitUtils.internal)}>
+                        <SlideY in={this.props.isOpen}>{this.props.children}</SlideY>
+                    </Component>
+                );
+            }
         }
-    }
 
-    DropWithDropdown.defaultProps = {
-        ...Drop.defaultProps,
-        positions: [DropPodPosition.bottom, DropPodPosition.top],
-        groupId: DefaultGroupIds.dropdown,
+        DropWithDropdown.defaultProps = {
+            ...Drop.defaultProps,
+            positions: [DropPodPosition.bottom, DropPodPosition.top],
+            groupId: DefaultGroupIds.dropdown,
+        };
+
+        return DropWithDropdown;
     };
-
-    return DropWithDropdown;
-};

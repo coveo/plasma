@@ -1,204 +1,126 @@
 ## 47.9.3 (2022-11-07)
 
-
-
 ## 47.9.2 (2022-11-07)
-
 
 ### Bug Fixes
 
 * 🤖 remove next-fonts (#2902) e18632a, closes #2902
 
-
-
 ## 47.9.1 (2022-11-04)
 
-
-
 # 47.9.0 (2022-11-03)
-
 
 ### Features
 
 * **mantine:** add modal with mantine (#2892) e9420d6, closes #2892
 
-
-
 # 47.8.0 (2022-11-03)
-
 
 ### Features
 
 * made adjustments to table component dates and style of th (#2897) 9572408, closes #2897
 
-
-
 # 47.7.0 (2022-11-03)
-
 
 ### Features
 
 * **carousel:** +carousel component for ML feature (#2895) 870b1de, closes #2895
 
-
-
 ## 47.6.1 (2022-11-03)
 
-
-
 # 47.6.0 (2022-11-01)
-
 
 ### Features
 
 * **mantine:** add "allowAdd" prop to Collection (#2887) fabf8cb, closes #2887
 
-
-
 # 47.5.0 (2022-10-31)
-
 
 ### Bug Fixes
 
 * **mantine:** add missing type exports (#2885) 00151c2, closes #2885
 
-
 ### Features
 
 * **mantine:** lazy-load monaco-editor (#2883) 03918b7, closes #2883
 
-
-
 ## 47.4.1 (2022-10-31)
 
-
-
 # 47.4.0 (2022-10-28)
-
 
 ### Features
 
 * **mantine:** mantine package creation (#2867) 3b2b652, closes #2867
 
-
-
 ## 47.3.11 (2022-10-28)
-
-
 
 ## 47.3.10 (2022-10-28)
 
-
-
 ## 47.3.9 (2022-10-28)
-
-
 
 ## 47.3.8 (2022-10-28)
 
-
-
 ## 47.3.7 (2022-10-28)
-
-
 
 ## 47.3.6 (2022-10-25)
 
-
-
 ## 47.3.5 (2022-10-20)
-
 
 ### Bug Fixes
 
 * **xyaxis:** when few data points, the x axis would not display any label ([#2862](https://github.com/coveo/plasma/issues/2862)) ([a015d7b](https://github.com/coveo/plasma/commits/a015d7bbe3c94f579726e7af5f88318b275f0320))
 
-
-
 ## 47.3.4 (2022-10-19)
-
 
 ### Bug Fixes
 
 * **limit:** chart pie was renamed so i changed the icon ([#2860](https://github.com/coveo/plasma/issues/2860)) ([04525ac](https://github.com/coveo/plasma/commits/04525ac9594761dce898ce0189ec9ff890e48ccc))
 
-
-
 ## 47.3.3 (2022-10-17)
-
-
 
 ## 47.3.2 (2022-10-13)
 
-
-
 ## 47.3.1 (2022-10-12)
-
 
 ### Reverts
 
 * Revert breaking updates (#2855) ([fcef4c8](https://github.com/coveo/plasma/commits/fcef4c891b4f4cbe04ca23e75d1ddbe7eb6450cc)), closes [#2855](https://github.com/coveo/plasma/issues/2855) [#2844](https://github.com/coveo/plasma/issues/2844) [#2843](https://github.com/coveo/plasma/issues/2843)
 
-
-
 # 47.3.0 (2022-10-11)
-
 
 ### Features
 
 * add form props in the form component ([#2854](https://github.com/coveo/plasma/issues/2854)) ([734df4d](https://github.com/coveo/plasma/commits/734df4d2a7bb8eab8781208a61382b31564b2392))
 
-
-
 ## 47.2.3 (2022-10-07)
-
-
 
 ## 47.2.2 (2022-10-05)
 
-
-
 ## 47.2.1 (2022-10-04)
-
 
 ### Bug Fixes
 
 * **style:** remove root level style on inputs ([#2851](https://github.com/coveo/plasma/issues/2851)) ([27d4e5b](https://github.com/coveo/plasma/commits/27d4e5be9c50d39e7da6b16f438b510467744ed3))
 
-
-
 # 47.2.0 (2022-10-03)
-
 
 ### Features
 
 * p8 adding link to colors in home page for demo ([#2848](https://github.com/coveo/plasma/issues/2848)) ([a936caf](https://github.com/coveo/plasma/commits/a936cafb45a0ca5ab9214c89e90bdb1ece9c3653))
 
-
-
 ## 47.1.3 (2022-09-29)
-
-
 
 ## 47.1.2 (2022-09-28)
 
-
-
 ## 47.1.1 (2022-09-28)
 
-
-
 # 47.1.0 (2022-09-22)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([#2840](https://github.com/coveo/plasma/issues/2840)) ([8d0f926](https://github.com/coveo/plasma/commits/8d0f926186f4cca4510d99f91c6b8f9b475355de))
 
-
-
 # 47.0.0 (2022-09-21)
-
 
 ### Features
 
@@ -207,7 +129,6 @@
 * release major 47 ([#2839](https://github.com/coveo/plasma/issues/2839)) ([678521f](https://github.com/coveo/plasma/commits/678521f4d05d2b0aef1128b2ed4a623682ceeba6))
 * **tokens,website:** color tokens extraction ([#2837](https://github.com/coveo/plasma/issues/2837)) ([c4718fe](https://github.com/coveo/plasma/commits/c4718fe5054c64a489608a4d2da61a8ccbba206f))
 * **tokens:** fetch icons by chunks of 100 ([#2835](https://github.com/coveo/plasma/issues/2835)) ([2b79aa3](https://github.com/coveo/plasma/commits/2b79aa3bb29581f9ac0b2ec7314b8e17bd911f6a))
-
 
 ### BREAKING CHANGES
 
@@ -221,6 +142,7 @@ fix(react): fix badge tests
 
 Switch out the Svg component for the icons from plasma-react-icons in the CollapsibleToggle
 component
+
 * **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
 
 * chore(release): publish version v38.11.4-next.1 [version bump]
@@ -236,6 +158,7 @@ Added a typescript type that represents an Icon from plasma-react-icon
 * feat(react): use plasma-react-icons in badge component
 
 Remove the usage of Svg in favour of plasma-react-icons
+
 * **react:** Badge icon prop now expects an icon from plasma-react-icons
 
 fix(react): fix badge tests
@@ -244,6 +167,7 @@ fix(react): fix badge tests
 
 Switch out the Svg component for the icons from plasma-react-icons in the CollapsibleToggle
 component
+
 * **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
 
 * chore(release): publish version v38.11.4-next.1 [version bump]
@@ -337,6 +261,7 @@ fix: linkSvg path changed
 * refactor(react): remove Svg from BlankSlate
 
 The blankslates will now accept Icons from the iconography instead of Svg
+
 * **react:** Blankslates no longer have svgName and svgClass props, use icon prop instead
 
 fix(website): use Icons in BlankSlate examples
@@ -348,12 +273,14 @@ Svg component is getting replaced by icons from the Iconography
 * refactor(react): remove Svg from IconCard
 
 Replace usage of Svg by icons from the iconography
+
 * **react:** icon prop for choices now expects an icon from the iconography, .mod-fixed-size is
 getting removed, that doesn't belong in plasma
 
 * refactor(react,website): remove Svg from SideNavigation components
 
 replacing usage of Svg for icons from the iconography
+
 * **react:** svgName and svgClass props no longer exist, use icon prop instead
 
 * refactor(react): remove Svg from SearchBar
@@ -400,10 +327,7 @@ replacing usage of Svg for icons from the iconography
 
 * chore(release): publish version v41.5.1-next.5 [version bump]
 
-
-
 ## 46.0.2-next.3 (2022-09-20)
-
 
 ### Features
 
@@ -411,28 +335,19 @@ replacing usage of Svg for icons from the iconography
 * **tokens,website:** color tokens extraction ([#2837](https://github.com/coveo/plasma/issues/2837)) ([c4718fe](https://github.com/coveo/plasma/commits/c4718fe5054c64a489608a4d2da61a8ccbba206f))
 * **tokens:** fetch icons by chunks of 100 ([#2835](https://github.com/coveo/plasma/issues/2835)) ([2b79aa3](https://github.com/coveo/plasma/commits/2b79aa3bb29581f9ac0b2ec7314b8e17bd911f6a))
 
-
-
 ## 46.0.2-next.2 (2022-09-08)
-
 
 ### Bug Fixes
 
 * **iconcard:** remove overflow hidden for custom logo img ([b51adba](https://github.com/coveo/plasma/commits/b51adbaf69c8590a739fa676363f7093d816db8c))
 
-
-
 ## 46.0.2-next.1 (2022-09-07)
-
 
 ### Bug Fixes
 
 * **style:** fix some bad merge conflicts ([53c89c1](https://github.com/coveo/plasma/commits/53c89c1de4fbfee2017a196b6e5b1066ef1f761d))
 
-
-
 ## 46.0.2-next.0 (2022-09-06)
-
 
 ### Bug Fixes
 
@@ -448,13 +363,11 @@ replacing usage of Svg for icons from the iconography
 * **website:** use new icon in badge examples ([0f862ea](https://github.com/coveo/plasma/commits/0f862eaeb5b78c32f2b0e4c4db4b9cd1a5eb7403))
 * **website:** window is not defined on first load ([69bc45f](https://github.com/coveo/plasma/commits/69bc45f567f5d0446d8b1d03d4142c625ab77c7a))
 
-
 ### Code Refactoring
 
 * **react,website:** remove Svg from SideNavigation components ([7801fd2](https://github.com/coveo/plasma/commits/7801fd2843843102e6d85ad67a8756b6026b876f))
 * **react:** remove Svg from BlankSlate ([fe1cf87](https://github.com/coveo/plasma/commits/fe1cf87f7c3899dda686b55113f06e075a6f84df))
 * **react:** remove Svg from IconCard ([81a5e6a](https://github.com/coveo/plasma/commits/81a5e6aa4a35f81325d7323f8b04ef7858ac390e))
-
 
 ### Features
 
@@ -474,7 +387,6 @@ replacing usage of Svg for icons from the iconography
 * **tokens:** extract design tokens from figma libraries ([bcfe94a](https://github.com/coveo/plasma/commits/bcfe94a9f26a1831725b64fc23efa57861b7eba4))
 * **tokens:** extract design tokens from figma libraries ([ebe3918](https://github.com/coveo/plasma/commits/ebe39185eb94977f595bedbf88afa74943df2efc))
 
-
 ### BREAKING CHANGES
 
 * **react,website:** svgName and svgClass props no longer exist, use icon prop instead
@@ -483,227 +395,155 @@ getting removed, that doesn't belong in plasma
 * **react:** Blankslates no longer have svgName and svgClass props, use icon prop instead
 
 fix(website): use Icons in BlankSlate examples
+
 * **react:** Svg and SvgChild no longer exist, either use icons from plasma-react-icons or img
 tag with an svg from plasma-style
 
 fix: linkSvg path changed
+
 * **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
 * **react:** Badge icon prop now expects an icon from plasma-react-icons
 
 fix(react): fix badge tests
+
 * **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
 * **react:** Badge icon prop now expects an icon from plasma-react-icons
 
 fix(react): fix badge tests
-
-
 
 ## 46.0.1 (2022-08-31)
 
-
 ### Bug Fixes
 
 * **datepickerreducer:** removed appliedLower and UpperLimit to ternary operator ([#2831](https://github.com/coveo/plasma/issues/2831)) ([e78f71b](https://github.com/coveo/plasma/commits/e78f71b17751f8e217be3ee1babf531a08e9e7d6))
 
-
-
 # 46.0.0 (2022-08-30)
-
 
 ### chore
 
 * p$ (dep, materialize-css) removing from project ([#2832](https://github.com/coveo/plasma/issues/2832)) ([7a0387d](https://github.com/coveo/plasma/commits/7a0387d82d08434fc619a7adecd3a52300b14245))
 
-
 ### BREAKING CHANGES
 
 * p'( removing materialise-css as dependencies
 
-
-
 ## 45.4.7 (2022-08-29)
-
-
 
 ## 45.4.6 (2022-08-24)
 
-
-
 ## 45.4.5 (2022-08-24)
-
-
 
 ## 45.4.4 (2022-08-23)
 
-
-
 ## 45.4.3 (2022-08-22)
 
-
-
 ## 45.4.2 (2022-08-22)
-
 
 ### Bug Fixes
 
 * p (select) select id are added only once in redux state ([#2820](https://github.com/coveo/plasma/issues/2820)) ([e194fb9](https://github.com/coveo/plasma/commits/e194fb90f9632382f80edc94a34dd0fe64c8aa13))
 
-
-
 ## 45.4.1 (2022-08-18)
-
 
 ### Bug Fixes
 
 * **style:** inputs style remove border radius ([#2821](https://github.com/coveo/plasma/issues/2821)) ([ed9ec2b](https://github.com/coveo/plasma/commits/ed9ec2b8274683f32b65e3df8f9cc1e078158643))
 
-
-
 # 45.4.0 (2022-08-16)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([#2819](https://github.com/coveo/plasma/issues/2819)) ([193ee21](https://github.com/coveo/plasma/commits/193ee2183c5cb78c64a7596f86cbdd3e37edf1da))
 
-
-
 ## 45.3.3 (2022-08-16)
 
-
-
 ## 45.3.2 (2022-08-16)
-
 
 ### Bug Fixes
 
 * **loadable:** export the component ([#2817](https://github.com/coveo/plasma/issues/2817)) ([96cb14e](https://github.com/coveo/plasma/commits/96cb14e2f5b6768b26137316c94463438c31d5d6))
 
-
-
 ## 45.3.1 (2022-08-15)
-
 
 ### Bug Fixes
 
 * p adding a fallback when maxWidth is a NaN ([#2816](https://github.com/coveo/plasma/issues/2816)) ([8971733](https://github.com/coveo/plasma/commits/897173370e2a1c87af522868296077670f189c8e))
 
-
-
 # 45.3.0 (2022-08-08)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([#2815](https://github.com/coveo/plasma/issues/2815)) ([7f38843](https://github.com/coveo/plasma/commits/7f388431bdc6a1c6327e48c1b8836b7a41e94efa))
 
-
-
 ## 45.2.1 (2022-08-05)
-
 
 ### Bug Fixes
 
 * **infotoken:** allow passing classes to override svg properties ([#2811](https://github.com/coveo/plasma/issues/2811)) ([6f469c4](https://github.com/coveo/plasma/commits/6f469c40b102108a26ba8580dd30e2851c7abc92))
 
-
-
 # 45.2.0 (2022-08-04)
-
 
 ### Features
 
 * **style, source:** Remove Exchange svg - CTCORE-8709 ([#2812](https://github.com/coveo/plasma/issues/2812)) ([31bc066](https://github.com/coveo/plasma/commits/31bc0668731aae6e8795ab024450883249b21591))
 
-
-
 ## 45.1.1 (2022-07-26)
 
-
-
 # 45.1.0 (2022-07-26)
-
 
 ### Features
 
 * p8 itembox ([#2808](https://github.com/coveo/plasma/issues/2808)) ([70f4d4b](https://github.com/coveo/plasma/commits/70f4d4bf0d42144bdafc028f1626c9b6b77bf8da))
 
-
-
 ## 45.0.4 (2022-07-25)
 
-
-
 ## 45.0.3 (2022-07-25)
-
 
 ### Bug Fixes
 
 * **svg:** added xmlns attribute to some sources svg ([#2806](https://github.com/coveo/plasma/issues/2806)) ([9820630](https://github.com/coveo/plasma/commits/982063091a6b92863356dd35372798ee9cc80e0d))
 
-
-
 ## 45.0.2 (2022-07-22)
-
 
 ### Bug Fixes
 
 * **react, single select:** memoize the button ([#2809](https://github.com/coveo/plasma/issues/2809)) ([a837e0a](https://github.com/coveo/plasma/commits/a837e0adcf5f77f2ed9e016e15bf5ce3f7d09b52))
 
-
-
 ## 45.0.1 (2022-07-20)
-
 
 ### Bug Fixes
 
 * **react, single select:** call onSelectOptionCallback if there is a selected option ([#2805](https://github.com/coveo/plasma/issues/2805)) ([d9003ea](https://github.com/coveo/plasma/commits/d9003eaf16d55d2c9cd3b579741b7f375b8cdb6c))
 
-
-
 # 45.0.0 (2022-07-19)
-
 
 ### Features
 
 * **react:** remove chosen-js and jquery ([#2804](https://github.com/coveo/plasma/issues/2804)) ([046043a](https://github.com/coveo/plasma/commits/046043a80109bf2542cbe242768b586dd613108a))
 
-
 ### BREAKING CHANGES
 
 * **react:** ChosenSelect was removed, use SingleSelectConnected instead
 
-
-
 # 44.2.0 (2022-07-19)
-
 
 ### Features
 
 * **react, loadable:** create loadable to lazy load component ([#2803](https://github.com/coveo/plasma/issues/2803)) ([db3e99c](https://github.com/coveo/plasma/commits/db3e99ce598b9885d7c61117f9c850b5cd8785cf))
 
-
-
 ## 44.1.1 (2022-07-15)
 
-
-
 # 44.1.0 (2022-07-15)
-
 
 ### Features
 
 * p8 make steps in modalWizard full-height ([#2799](https://github.com/coveo/plasma/issues/2799)) ([31da44a](https://github.com/coveo/plasma/commits/31da44a7579108dec13fc6555399894bb83cb540))
 
-
-
 # 44.0.0 (2022-07-14)
-
 
 ### Build System
 
 * **npm:** move most of the peerDependencies to actual dependencies ([#2800](https://github.com/coveo/plasma/issues/2800)) ([bab2aa4](https://github.com/coveo/plasma/commits/bab2aa4e6ba948af334b2032500510213b8d5dd4))
-
 
 ### BREAKING CHANGES
 
@@ -714,443 +554,284 @@ we'll work on improve that in a later step
 
 * revert(react): rollback @types/react-tether version
 
-
-
 ## 43.0.3 (2022-07-13)
-
-
 
 ## 43.0.2 (2022-07-12)
 
-
-
 ## 43.0.1 (2022-07-12)
 
-
-
 # 43.0.0 (2022-07-11)
-
 
 ### Features
 
 * **react:** allow using dropdowns inside popover ([#2792](https://github.com/coveo/plasma/issues/2792)) ([d31a4fd](https://github.com/coveo/plasma/commits/d31a4fd20b88ea93f7ab5e1065adf3eafced886d))
-
 
 ### BREAKING CHANGES
 
 * **react:** The DROP_ROOT must target an existing element in the DOM otherwise it will throw an
 error.
 
-
-
 ## 42.9.4 (2022-07-11)
-
-
 
 ## 42.9.3 (2022-07-08)
 
-
-
 ## 42.9.2 (2022-06-30)
-
-
 
 ## 42.9.1 (2022-06-30)
 
-
-
 # 42.9.0 (2022-06-30)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([2d6434a](https://github.com/coveo/plasma/commits/2d6434a260160fdb1a3a6fb3bfd9ff0b6fcef162))
 
-
-
 ## 42.8.1 (2022-06-30)
 
-
-
 # 42.8.0 (2022-06-29)
-
 
 ### Features
 
 * **icon-card:** adding description to be react node compatible ([#2788](https://github.com/coveo/plasma/issues/2788)) ([2236e08](https://github.com/coveo/plasma/commits/2236e08e26ffde0ae5f349fb0944431f3857b78f))
 
-
-
 ## 42.7.6 (2022-06-22)
 
-
-
 ## 42.7.5 (2022-06-22)
-
 
 ### Bug Fixes
 
 * **react, date picker:** make sure the datePicker dates are dynamics ([#2785](https://github.com/coveo/plasma/issues/2785)) ([66760dd](https://github.com/coveo/plasma/commits/66760dd8ffd6f529ddc01ee4386f8e3dc8c69f94))
 
-
-
 ## 42.7.4 (2022-06-22)
-
 
 ### Bug Fixes
 
 * **react, date utils:** make sure the date is dynamic ([#2784](https://github.com/coveo/plasma/issues/2784)) ([b1b4bcd](https://github.com/coveo/plasma/commits/b1b4bcdfe07bd95936f35d19b0b81a52954e21c1))
 
-
-
 ## 42.7.3 (2022-06-14)
 
-
-
 ## 42.7.2 (2022-06-13)
-
 
 ### Bug Fixes
 
 * **style:** list-box background color ([3340d63](https://github.com/coveo/plasma/commits/3340d638ba0c70ff0ee066f00a84193683dd3cd8))
 
-
-
 ## 42.7.1 (2022-06-13)
 
-
-
 # 42.7.0 (2022-06-09)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([#2778](https://github.com/coveo/plasma/issues/2778)) ([6582460](https://github.com/coveo/plasma/commits/658246055a32b75b77b7f663dd41b6d24d7c3737))
 
-
-
 ## 42.6.2 (2022-06-09)
-
-
 
 ## 42.6.1 (2022-06-08)
 
-
-
 # 42.6.0 (2022-06-07)
-
 
 ### Features
 
 * **react, button:** add new loading option ([#2777](https://github.com/coveo/plasma/issues/2777)) ([ab6279e](https://github.com/coveo/plasma/commits/ab6279ef159dd80be64d478ecaedd608493109a4))
 
-
-
 ## 42.5.5 (2022-06-06)
-
 
 ### Bug Fixes
 
 * **toast:** add gap in toast-title ([#2775](https://github.com/coveo/plasma/issues/2775)) ([bdb0153](https://github.com/coveo/plasma/commits/bdb0153a85234c490f7a8c828bd959d6269dd891))
 
-
-
 ## 42.5.4 (2022-06-02)
-
 
 ### Bug Fixes
 
 * **list-box, infinite scroll:** fix infinte scroll for single select ([#2774](https://github.com/coveo/plasma/issues/2774)) ([df4de3e](https://github.com/coveo/plasma/commits/df4de3edc9eb7d016895a719b99bec7b5f628cd7))
 
-
-
 ## 42.5.3 (2022-05-30)
-
 
 ### Bug Fixes
 
 * **dropdown btn:** fix focus style for btn dropdown ([#2773](https://github.com/coveo/plasma/issues/2773)) ([0bf9f35](https://github.com/coveo/plasma/commits/0bf9f35702de7258a3f102a0c25722e2287b4783))
 
-
-
 ## 42.5.2 (2022-05-28)
-
 
 ### Bug Fixes
 
 * **listbox:** footer is now external to the list ([#2770](https://github.com/coveo/plasma/issues/2770)) ([9706079](https://github.com/coveo/plasma/commits/97060795e425aa78d8855e5ba29d8d26ee654b64))
 
-
-
 ## 42.5.1 (2022-05-27)
-
 
 ### Bug Fixes
 
 * **react:** make tableWithNewPagination work with tableWithUrlState ([3376406](https://github.com/coveo/plasma/commits/33764068fdaf413393b3977c54fe370fa299e7cf))
 
-
-
 # 42.5.0 (2022-05-27)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([4bd61d0](https://github.com/coveo/plasma/commits/4bd61d0e1869a2ace349d4809604ef3d09440cbf))
 
-
-
 ## 42.4.1 (2022-05-26)
-
 
 ### Bug Fixes
 
 * **react:** prevent dragging stuff across different components ([70e0174](https://github.com/coveo/plasma/commits/70e0174ca5fe657e47e645e12a9e69d173c6160f))
 
-
-
 # 42.4.0 (2022-05-26)
-
 
 ### Features
 
 * **mvp, filter box:** new style ([#2766](https://github.com/coveo/plasma/issues/2766)) ([06925bd](https://github.com/coveo/plasma/commits/06925bd3a77c7a92f9d8fa389df25f5626eb3169))
 
-
-
 ## 42.3.1 (2022-05-25)
-
 
 ### Bug Fixes
 
 * **datepicker:** fix button order + style ([#2767](https://github.com/coveo/plasma/issues/2767)) ([b8fcdfc](https://github.com/coveo/plasma/commits/b8fcdfcc0c2527caf9d2f57d45c888d709d8e9ac))
 
-
-
 # 42.3.0 (2022-05-25)
-
 
 ### Features
 
 * **mvp, filter box:** apply new style ([#2751](https://github.com/coveo/plasma/issues/2751)) ([f1f7d02](https://github.com/coveo/plasma/commits/f1f7d021b202653ff4cc0becc5f61a616b3e1b7c))
 
-
-
 # 42.2.0 (2022-05-25)
-
 
 ### Features
 
 * **mvp, listbox:** new style ([#2761](https://github.com/coveo/plasma/issues/2761)) ([db185bb](https://github.com/coveo/plasma/commits/db185bbe8786909784ca428c76128ac42678e335))
-
-
 
 ## 42.1.4 (2022-05-24)
 
-
 ### Bug Fixes
 
 * **datepickerreducer:** removed appliedLower and UpperLimit to ternary operator ([#2831](https://github.com/coveo/plasma/issues/2831)) ([e78f71b](https://github.com/coveo/plasma/commits/e78f71b17751f8e217be3ee1babf531a08e9e7d6))
 
-
-
 # 46.0.0 (2022-08-30)
-
 
 ### chore
 
 * p$ (dep, materialize-css) removing from project ([#2832](https://github.com/coveo/plasma/issues/2832)) ([7a0387d](https://github.com/coveo/plasma/commits/7a0387d82d08434fc619a7adecd3a52300b14245))
 
-
 ### BREAKING CHANGES
 
 * p'( removing materialise-css as dependencies
 
-
-
 ## 45.4.7 (2022-08-29)
-
-
 
 ## 45.4.6 (2022-08-24)
 
-
-
 ## 45.4.5 (2022-08-24)
-
-
 
 ## 45.4.4 (2022-08-23)
 
-
-
 ## 45.4.3 (2022-08-22)
 
-
-
 ## 45.4.2 (2022-08-22)
-
 
 ### Bug Fixes
 
 * p (select) select id are added only once in redux state ([#2820](https://github.com/coveo/plasma/issues/2820)) ([e194fb9](https://github.com/coveo/plasma/commits/e194fb90f9632382f80edc94a34dd0fe64c8aa13))
 
-
-
 ## 45.4.1 (2022-08-18)
-
 
 ### Bug Fixes
 
 * **style:** inputs style remove border radius ([#2821](https://github.com/coveo/plasma/issues/2821)) ([ed9ec2b](https://github.com/coveo/plasma/commits/ed9ec2b8274683f32b65e3df8f9cc1e078158643))
 
-
-
 # 45.4.0 (2022-08-16)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([#2819](https://github.com/coveo/plasma/issues/2819)) ([193ee21](https://github.com/coveo/plasma/commits/193ee2183c5cb78c64a7596f86cbdd3e37edf1da))
 
-
-
 ## 45.3.3 (2022-08-16)
 
-
-
 ## 45.3.2 (2022-08-16)
-
 
 ### Bug Fixes
 
 * **loadable:** export the component ([#2817](https://github.com/coveo/plasma/issues/2817)) ([96cb14e](https://github.com/coveo/plasma/commits/96cb14e2f5b6768b26137316c94463438c31d5d6))
 
-
-
 ## 45.3.1 (2022-08-15)
-
 
 ### Bug Fixes
 
 * p adding a fallback when maxWidth is a NaN ([#2816](https://github.com/coveo/plasma/issues/2816)) ([8971733](https://github.com/coveo/plasma/commits/897173370e2a1c87af522868296077670f189c8e))
 
-
-
 # 45.3.0 (2022-08-08)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([#2815](https://github.com/coveo/plasma/issues/2815)) ([7f38843](https://github.com/coveo/plasma/commits/7f388431bdc6a1c6327e48c1b8836b7a41e94efa))
 
-
-
 ## 45.2.1 (2022-08-05)
-
 
 ### Bug Fixes
 
 * **infotoken:** allow passing classes to override svg properties ([#2811](https://github.com/coveo/plasma/issues/2811)) ([6f469c4](https://github.com/coveo/plasma/commits/6f469c40b102108a26ba8580dd30e2851c7abc92))
 
-
-
 # 45.2.0 (2022-08-04)
-
 
 ### Features
 
 * **style, source:** Remove Exchange svg - CTCORE-8709 ([#2812](https://github.com/coveo/plasma/issues/2812)) ([31bc066](https://github.com/coveo/plasma/commits/31bc0668731aae6e8795ab024450883249b21591))
 
-
-
 ## 45.1.1 (2022-07-26)
 
-
-
 # 45.1.0 (2022-07-26)
-
 
 ### Features
 
 * p8 itembox ([#2808](https://github.com/coveo/plasma/issues/2808)) ([70f4d4b](https://github.com/coveo/plasma/commits/70f4d4bf0d42144bdafc028f1626c9b6b77bf8da))
 
-
-
 ## 45.0.4 (2022-07-25)
 
-
-
 ## 45.0.3 (2022-07-25)
-
 
 ### Bug Fixes
 
 * **svg:** added xmlns attribute to some sources svg ([#2806](https://github.com/coveo/plasma/issues/2806)) ([9820630](https://github.com/coveo/plasma/commits/982063091a6b92863356dd35372798ee9cc80e0d))
 
-
-
 ## 45.0.2 (2022-07-22)
-
 
 ### Bug Fixes
 
 * **react, single select:** memoize the button ([#2809](https://github.com/coveo/plasma/issues/2809)) ([a837e0a](https://github.com/coveo/plasma/commits/a837e0adcf5f77f2ed9e016e15bf5ce3f7d09b52))
 
-
-
 ## 45.0.1 (2022-07-20)
-
 
 ### Bug Fixes
 
 * **react, single select:** call onSelectOptionCallback if there is a selected option ([#2805](https://github.com/coveo/plasma/issues/2805)) ([d9003ea](https://github.com/coveo/plasma/commits/d9003eaf16d55d2c9cd3b579741b7f375b8cdb6c))
 
-
-
 # 45.0.0 (2022-07-19)
-
 
 ### Features
 
 * **react:** remove chosen-js and jquery ([#2804](https://github.com/coveo/plasma/issues/2804)) ([046043a](https://github.com/coveo/plasma/commits/046043a80109bf2542cbe242768b586dd613108a))
 
-
 ### BREAKING CHANGES
 
 * **react:** ChosenSelect was removed, use SingleSelectConnected instead
 
-
-
 # 44.2.0 (2022-07-19)
-
 
 ### Features
 
 * **react, loadable:** create loadable to lazy load component ([#2803](https://github.com/coveo/plasma/issues/2803)) ([db3e99c](https://github.com/coveo/plasma/commits/db3e99ce598b9885d7c61117f9c850b5cd8785cf))
 
-
-
 ## 44.1.1 (2022-07-15)
 
-
-
 # 44.1.0 (2022-07-15)
-
 
 ### Features
 
 * p8 make steps in modalWizard full-height ([#2799](https://github.com/coveo/plasma/issues/2799)) ([31da44a](https://github.com/coveo/plasma/commits/31da44a7579108dec13fc6555399894bb83cb540))
 
-
-
 # 44.0.0 (2022-07-14)
-
 
 ### Build System
 
 * **npm:** move most of the peerDependencies to actual dependencies ([#2800](https://github.com/coveo/plasma/issues/2800)) ([bab2aa4](https://github.com/coveo/plasma/commits/bab2aa4e6ba948af334b2032500510213b8d5dd4))
-
 
 ### BREAKING CHANGES
 
@@ -1161,236 +842,150 @@ we'll work on improve that in a later step
 
 * revert(react): rollback @types/react-tether version
 
-
-
 ## 43.0.3 (2022-07-13)
-
-
 
 ## 43.0.2 (2022-07-12)
 
-
-
 ## 43.0.1 (2022-07-12)
 
-
-
 # 43.0.0 (2022-07-11)
-
 
 ### Features
 
 * **react:** allow using dropdowns inside popover ([#2792](https://github.com/coveo/plasma/issues/2792)) ([d31a4fd](https://github.com/coveo/plasma/commits/d31a4fd20b88ea93f7ab5e1065adf3eafced886d))
-
 
 ### BREAKING CHANGES
 
 * **react:** The DROP_ROOT must target an existing element in the DOM otherwise it will throw an
 error.
 
-
-
 ## 42.9.4 (2022-07-11)
-
-
 
 ## 42.9.3 (2022-07-08)
 
-
-
 ## 42.9.2 (2022-06-30)
-
-
 
 ## 42.9.1 (2022-06-30)
 
-
-
 # 42.9.0 (2022-06-30)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([2d6434a](https://github.com/coveo/plasma/commits/2d6434a260160fdb1a3a6fb3bfd9ff0b6fcef162))
 
-
-
 ## 42.8.1 (2022-06-30)
 
-
-
 # 42.8.0 (2022-06-29)
-
 
 ### Features
 
 * **icon-card:** adding description to be react node compatible ([#2788](https://github.com/coveo/plasma/issues/2788)) ([2236e08](https://github.com/coveo/plasma/commits/2236e08e26ffde0ae5f349fb0944431f3857b78f))
 
-
-
 ## 42.7.6 (2022-06-22)
 
-
-
 ## 42.7.5 (2022-06-22)
-
 
 ### Bug Fixes
 
 * **react, date picker:** make sure the datePicker dates are dynamics ([#2785](https://github.com/coveo/plasma/issues/2785)) ([66760dd](https://github.com/coveo/plasma/commits/66760dd8ffd6f529ddc01ee4386f8e3dc8c69f94))
 
-
-
 ## 42.7.4 (2022-06-22)
-
 
 ### Bug Fixes
 
 * **react, date utils:** make sure the date is dynamic ([#2784](https://github.com/coveo/plasma/issues/2784)) ([b1b4bcd](https://github.com/coveo/plasma/commits/b1b4bcdfe07bd95936f35d19b0b81a52954e21c1))
 
-
-
 ## 42.7.3 (2022-06-14)
 
-
-
 ## 42.7.2 (2022-06-13)
-
 
 ### Bug Fixes
 
 * **style:** list-box background color ([3340d63](https://github.com/coveo/plasma/commits/3340d638ba0c70ff0ee066f00a84193683dd3cd8))
 
-
-
 ## 42.7.1 (2022-06-13)
 
-
-
 # 42.7.0 (2022-06-09)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([#2778](https://github.com/coveo/plasma/issues/2778)) ([6582460](https://github.com/coveo/plasma/commits/658246055a32b75b77b7f663dd41b6d24d7c3737))
 
-
-
 ## 42.6.2 (2022-06-09)
-
-
 
 ## 42.6.1 (2022-06-08)
 
-
-
 # 42.6.0 (2022-06-07)
-
 
 ### Features
 
 * **react, button:** add new loading option ([#2777](https://github.com/coveo/plasma/issues/2777)) ([ab6279e](https://github.com/coveo/plasma/commits/ab6279ef159dd80be64d478ecaedd608493109a4))
 
-
-
 ## 42.5.5 (2022-06-06)
-
 
 ### Bug Fixes
 
 * **toast:** add gap in toast-title ([#2775](https://github.com/coveo/plasma/issues/2775)) ([bdb0153](https://github.com/coveo/plasma/commits/bdb0153a85234c490f7a8c828bd959d6269dd891))
 
-
-
 ## 42.5.4 (2022-06-02)
-
 
 ### Bug Fixes
 
 * **list-box, infinite scroll:** fix infinte scroll for single select ([#2774](https://github.com/coveo/plasma/issues/2774)) ([df4de3e](https://github.com/coveo/plasma/commits/df4de3edc9eb7d016895a719b99bec7b5f628cd7))
 
-
-
 ## 42.5.3 (2022-05-30)
-
 
 ### Bug Fixes
 
 * **dropdown btn:** fix focus style for btn dropdown ([#2773](https://github.com/coveo/plasma/issues/2773)) ([0bf9f35](https://github.com/coveo/plasma/commits/0bf9f35702de7258a3f102a0c25722e2287b4783))
 
-
-
 ## 42.5.2 (2022-05-28)
-
 
 ### Bug Fixes
 
 * **listbox:** footer is now external to the list ([#2770](https://github.com/coveo/plasma/issues/2770)) ([9706079](https://github.com/coveo/plasma/commits/97060795e425aa78d8855e5ba29d8d26ee654b64))
 
-
-
 ## 42.5.1 (2022-05-27)
-
 
 ### Bug Fixes
 
 * **react:** make tableWithNewPagination work with tableWithUrlState ([3376406](https://github.com/coveo/plasma/commits/33764068fdaf413393b3977c54fe370fa299e7cf))
 
-
-
 # 42.5.0 (2022-05-27)
-
 
 ### Features
 
 * **tokens:** extract design tokens from figma libraries ([4bd61d0](https://github.com/coveo/plasma/commits/4bd61d0e1869a2ace349d4809604ef3d09440cbf))
 
-
-
 ## 42.4.1 (2022-05-26)
-
 
 ### Bug Fixes
 
 * **react:** prevent dragging stuff across different components ([70e0174](https://github.com/coveo/plasma/commits/70e0174ca5fe657e47e645e12a9e69d173c6160f))
 
-
-
 # 42.4.0 (2022-05-26)
-
 
 ### Features
 
 * **mvp, filter box:** new style ([#2766](https://github.com/coveo/plasma/issues/2766)) ([06925bd](https://github.com/coveo/plasma/commits/06925bd3a77c7a92f9d8fa389df25f5626eb3169))
 
-
-
 ## 42.3.1 (2022-05-25)
-
 
 ### Bug Fixes
 
 * **datepicker:** fix button order + style ([#2767](https://github.com/coveo/plasma/issues/2767)) ([b8fcdfc](https://github.com/coveo/plasma/commits/b8fcdfcc0c2527caf9d2f57d45c888d709d8e9ac))
 
-
-
 # 42.3.0 (2022-05-25)
-
 
 ### Features
 
 * **mvp, filter box:** apply new style ([#2751](https://github.com/coveo/plasma/issues/2751)) ([f1f7d02](https://github.com/coveo/plasma/commits/f1f7d021b202653ff4cc0becc5f61a616b3e1b7c))
 
-
-
 # 42.2.0 (2022-05-25)
-
 
 ### Features
 
 * **mvp, listbox:** new style ([#2761](https://github.com/coveo/plasma/issues/2761)) ([db185bb](https://github.com/coveo/plasma/commits/db185bbe8786909784ca428c76128ac42678e335))
-
-
 
 ## 42.1.4 (2022-05-24)
 
@@ -1519,9 +1114,9 @@ fix(react): fix badge tests
 
 ### BREAKING CHANGES
 
-  * - delete the old library used for this component there (react-diff-viewer & unidiff)
+* - delete the old library used for this component there (react-diff-viewer & unidiff)
 
-- the props used for this component are no longer the same
+* the props used for this component are no longer the same
 
 ## 41.9.1 (2022-05-18)
 
@@ -2496,7 +2091,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **svg:** Svg prop svgName's type changed
 
-- SvgNames type from plasma-react is replaced by SvgName type from plasma-style
+* SvgNames type from plasma-react is replaced by SvgName type from plasma-style
+
 * svgName prop now is typed to SvgName instead of SvgNames
 * plasma-style UMD library named changed from VaporSVG to PlasmaStyle
 
@@ -2527,7 +2123,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **toast:** Some props of the Toast component changed
 
-- type is now a string union type instead of just string
+* type is now a string union type instead of just string
+
 * isDownload prop was removed, it is now one of the types
 * isOpened prop was removed (wasn't used)
 * showInfoToken prop was removed (wasn't used)
@@ -2543,7 +2140,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **toast:** Some props of the Toast component changed
 
-- type is now a string union type instead of just string
+* type is now a string union type instead of just string
+
 * isDownload prop was removed, it is now one of the types
 * isOpened prop was removed (wasn't used)
 * showInfoToken prop was removed (wasn't used)

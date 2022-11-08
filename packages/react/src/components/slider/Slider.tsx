@@ -167,7 +167,7 @@ const SliderDisconnected: FunctionComponent<SliderOwnProps & ReturnType<typeof m
                 <SliderHandle
                     key={handleProps.index}
                     handleProps={handleProps}
-                    handleCustomProps={customProps}
+                    handleCustomProps={customProps as any}
                     tooltipProps={
                         props.tooltipStyle ?? {
                             overlayClassName: 'vapor-slider-overlay',

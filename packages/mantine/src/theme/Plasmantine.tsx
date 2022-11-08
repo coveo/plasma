@@ -1,9 +1,9 @@
 import {MantineProvider} from '@mantine/core';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 
 import {plasmaTheme} from './Theme';
 
-export const Plasmantine: FunctionComponent = ({children}) => (
+export const Plasmantine: FunctionComponent<PropsWithChildren> = ({children}) => (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={plasmaTheme}>
         {children}
     </MantineProvider>

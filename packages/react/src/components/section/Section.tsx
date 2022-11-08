@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ReactNode, FunctionComponent} from 'react';
+import {ReactNode, FunctionComponent, PropsWithChildren} from 'react';
 
 type SectionMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
@@ -31,7 +31,7 @@ export interface ISectionProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const Section: FunctionComponent<ISectionProps> = ({
+export const Section: FunctionComponent<PropsWithChildren<ISectionProps>> = ({
     children,
     title,
     description,

@@ -28,7 +28,7 @@ export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Com
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedSingleSelect: FunctionComponent<
-        T & IWithNonEmptySingleSelectHOCProps & StateProps & DispatchProps
+        React.PropsWithChildren<T & IWithNonEmptySingleSelectHOCProps & StateProps & DispatchProps>
     > = ({
         selectedValue,
         setError,

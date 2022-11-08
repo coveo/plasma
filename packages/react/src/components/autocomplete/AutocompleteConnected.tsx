@@ -54,31 +54,25 @@ const mapStateToProps = (state: PlasmaState, ownProps: IAutocompleteOwnProps): I
     const defaultValue = listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : '';
     const value = (autocomplete && autocomplete.value) || defaultValue;
 
-    const itemsWithHidden = _.map(
-        ownProps.items,
-        (item: IItemBoxProps): IItemBoxProps => {
-            const visible = _.isFunction(ownProps.matchFilter)
-                ? ownProps.matchFilter(value, item)
-                : defaultListBoxMatchFilter(value, item);
+    const itemsWithHidden = _.map(ownProps.items, (item: IItemBoxProps): IItemBoxProps => {
+        const visible = _.isFunction(ownProps.matchFilter)
+            ? ownProps.matchFilter(value, item)
+            : defaultListBoxMatchFilter(value, item);
 
-            return {...item, hidden: !visible || !!item.hidden};
-        }
-    );
+        return {...item, hidden: !visible || !!item.hidden};
+    });
 
     let index = 0;
     const activeIndex = autocomplete && autocomplete.active;
     const visibleLength = _.filter(itemsWithHidden, (item: IItemBoxProps) => !item.hidden && !item.disabled).length;
-    const visibleItems = _.map(
-        itemsWithHidden,
-        (item: IItemBoxProps): IItemBoxProps => {
-            let active = false;
-            if (!item.hidden && !item.disabled) {
-                active = mod(activeIndex, visibleLength) === index;
-                index++;
-            }
-            return {...item, highlight: value, active};
+    const visibleItems = _.map(itemsWithHidden, (item: IItemBoxProps): IItemBoxProps => {
+        let active = false;
+        if (!item.hidden && !item.disabled) {
+            active = mod(activeIndex, visibleLength) === index;
+            index++;
         }
-    );
+        return {...item, highlight: value, active};
+    });
 
     return {
         value,

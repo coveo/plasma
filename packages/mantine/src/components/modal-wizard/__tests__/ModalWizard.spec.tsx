@@ -255,7 +255,7 @@ describe('ModalWizard', () => {
         });
 
         userEvent.click(finishButton);
-        expect(onFinish).toBeCalledTimes(1);
+        expect(onFinish).toHaveBeenCalledTimes(1);
     });
 
     it('handle dirty state if user confirms close', () => {

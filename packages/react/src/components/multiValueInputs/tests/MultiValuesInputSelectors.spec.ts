@@ -12,7 +12,7 @@ describe('MultiValuesInputSelectors', () => {
         it('should return the values from the inputs', () => {
             const id = '🍣';
             const expectedValues = ['🍱', '🍙', '🍚'];
-            const testState = ({
+            const testState = {
                 multilineIds: {
                     [id]: {id, list: ['🍝', '🍜', '🍲']},
                 },
@@ -21,7 +21,7 @@ describe('MultiValuesInputSelectors', () => {
                     {id: '🍲', value: '🍚'},
                     {id: '🍜', value: '🍙'},
                 ],
-            } as any) as PlasmaState;
+            } as any as PlasmaState;
 
             expect(MultiValuesInputSelectors.getValues(testState, id)).toEqual(expectedValues);
         });
@@ -29,7 +29,7 @@ describe('MultiValuesInputSelectors', () => {
         it('should not return the values from the another multiline', () => {
             const id = '🇮🇹';
             const expectedValues = ['🍝'];
-            const testState = ({
+            const testState = {
                 multilineIds: {
                     [id]: {id, list: ['🍕']},
                     other: {id: 'other', list: ['👾']},
@@ -38,7 +38,7 @@ describe('MultiValuesInputSelectors', () => {
                     {id: '🍕', value: '🍝'},
                     {id: '👾', value: '🤖'},
                 ],
-            } as any) as PlasmaState;
+            } as any as PlasmaState;
 
             expect(MultiValuesInputSelectors.getValues(testState, id)).toEqual(expectedValues);
         });

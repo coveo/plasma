@@ -1,10 +1,10 @@
-import {Children, FunctionComponent, ReactElement, useState} from 'react';
+import {Children, FunctionComponent, PropsWithChildren, ReactElement, useState} from 'react';
 
 import {InlineConfirmButton} from './InlineConfirmButton';
 import {InlineConfirmContext} from './InlineConfirmContext';
 import {InlineConfirmPrompt} from './InlineConfirmPrompt';
 
-type InlineConfirmType = FunctionComponent & {
+type InlineConfirmType = FunctionComponent<PropsWithChildren> & {
     Prompt: typeof InlineConfirmPrompt;
     Button: typeof InlineConfirmButton;
 };

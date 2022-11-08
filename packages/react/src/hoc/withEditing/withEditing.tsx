@@ -13,14 +13,16 @@ export interface IWithEditing {
 /**
  * @deprecated Use Mantine instead
  */
-export const withEditing = <T, R = any>(config: IWithEditing) => (Component: ComponentType<T>): ComponentClass<T, R> =>
-    withDirty<T, R>({
-        id: config.id,
-        isDirty: config.isDirty,
-        showDirty: (isDirty: boolean) =>
-            config.footerChildren && (
-                <StickyFooter className={config.footerClassName} isOpened={isDirty}>
-                    {config.footerChildren}
-                </StickyFooter>
-            ),
-    })(Component);
+export const withEditing =
+    <T, R = any>(config: IWithEditing) =>
+    (Component: ComponentType<T>): ComponentClass<T, R> =>
+        withDirty<T, R>({
+            id: config.id,
+            isDirty: config.isDirty,
+            showDirty: (isDirty: boolean) =>
+                config.footerChildren && (
+                    <StickyFooter className={config.footerClassName} isOpened={isDirty}>
+                        {config.footerChildren}
+                    </StickyFooter>
+                ),
+        })(Component);

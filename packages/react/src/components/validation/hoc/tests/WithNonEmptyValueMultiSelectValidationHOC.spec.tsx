@@ -8,9 +8,9 @@ import {
 } from '../WithNonEmptyValueMultiSelectValidationHOC';
 
 const MultiSelectWithNonEmpty = withNonEmptyMultiSelectHOC(MultiSelectConnected);
-const MultiSelectWithNonEmptyAndError: FC<IMultiSelectOwnProps & WithNonEmptyValueMultiSelectValidationProps> = (
-    props
-) => (
+const MultiSelectWithNonEmptyAndError: FC<
+    React.PropsWithChildren<IMultiSelectOwnProps & WithNonEmptyValueMultiSelectValidationProps>
+> = (props) => (
     <>
         <MultiSelectWithNonEmpty {...props} />
         <ErrorList id={props.id} />

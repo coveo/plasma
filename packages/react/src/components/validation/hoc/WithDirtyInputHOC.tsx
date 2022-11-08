@@ -28,14 +28,9 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
 export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: ComponentType<T>) => {
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedInput: FunctionComponent<T & IWithDirtyInputOwnProps & StateProps & DispatchProps> = ({
-        wasDirty,
-        setIsDirty,
-        clearIsDirty,
-        validate,
-        resetDirtyOnUnmount,
-        ...props
-    }) => {
+    const WrappedInput: FunctionComponent<
+        React.PropsWithChildren<T & IWithDirtyInputOwnProps & StateProps & DispatchProps>
+    > = ({wasDirty, setIsDirty, clearIsDirty, validate, resetDirtyOnUnmount, ...props}) => {
         useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);

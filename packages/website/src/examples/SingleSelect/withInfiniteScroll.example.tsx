@@ -12,11 +12,9 @@ import {ComponentType, FunctionComponent, useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {compose} from 'redux';
 
-const ServerSideSingleSelect: ComponentType<ISingleSelectOwnProps & SelectWithInfiniteScrollProps> = compose<any>(
-    withServerSideProcessing,
-    selectWithFilter,
-    selectWithInfiniteScroll
-)(SingleSelectConnected);
+const ServerSideSingleSelect: ComponentType<
+    React.PropsWithChildren<ISingleSelectOwnProps & SelectWithInfiniteScrollProps>
+> = compose<any>(withServerSideProcessing, selectWithFilter, selectWithInfiniteScroll)(SingleSelectConnected);
 
 export default () => {
     const filterValue = useSelector((state) => FilterBoxSelectors.getFilterText(state, {id: 'single-select-4'}));

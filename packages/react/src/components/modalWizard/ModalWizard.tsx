@@ -83,6 +83,7 @@ export interface ModalWizardProps
      * A callback function that is executed when the user clicks on the cancel button
      */
     onCancel?: () => unknown;
+    children?: ReactNode;
 }
 
 /**

@@ -27,8 +27,6 @@ const mapDispatchToProps = (dispatch: IDispatch): IRadioSelectDispatchProps => (
 /**
  * @deprecated Use Mantine Radio instead: https://mantine.dev/core/radio/
  */
-export const RadioSelectConnected: React.ComponentType<IRadioSelectProps & IRadioSelectConnectedProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(RadioSelect);
+export const RadioSelectConnected: React.ComponentType<
+    React.PropsWithChildren<IRadioSelectProps & IRadioSelectConnectedProps>
+> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(RadioSelect);

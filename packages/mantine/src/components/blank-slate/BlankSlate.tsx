@@ -1,5 +1,5 @@
 import {Paper, Stack} from '@mantine/core';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 
 interface BlankSlateProps {
     /**
@@ -10,7 +10,7 @@ interface BlankSlateProps {
     withBorder?: boolean;
 }
 
-export const BlankSlate: FunctionComponent<BlankSlateProps> = ({children, withBorder = true}) => (
+export const BlankSlate: FunctionComponent<PropsWithChildren<BlankSlateProps>> = ({children, withBorder = true}) => (
     <Paper shadow={withBorder && 'xs'} p="xl" withBorder={withBorder}>
         <Stack align="center">{children}</Stack>
     </Paper>

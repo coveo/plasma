@@ -19,6 +19,7 @@ export interface IMenuOwnProps {
     buttonSvg?: ReactNode;
     customOffset?: number;
     buttonProps?: Partial<IButtonProps>;
+    children?: ReactNode;
 }
 
 export interface IMenuStateProps {

@@ -1,5 +1,5 @@
 import {createStyles, Group} from '@mantine/core';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 
 const useStyles = createStyles((theme) => ({
     header: {
@@ -11,7 +11,7 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export const TableHeader: FunctionComponent = ({children}) => {
+export const TableHeader: FunctionComponent<PropsWithChildren> = ({children}) => {
     const {classes} = useStyles();
     return (
         <Group position="right" spacing="lg" className={classes.header} px="md" py="sm">

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 
 import {Defaults} from '../../Defaults';
 import {IClassName} from '../../utils/ClassNameUtils';
@@ -14,6 +14,7 @@ export interface IModalOwnProps {
      */
     openOnMount?: boolean;
     contentRef?: (el: HTMLDivElement) => void;
+    children?: ReactNode;
 }
 
 export interface IModalStateProps {

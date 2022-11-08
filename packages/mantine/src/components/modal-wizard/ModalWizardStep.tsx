@@ -1,4 +1,4 @@
-import {FunctionComponent, ReactElement} from 'react';
+import {FunctionComponent, PropsWithChildren, ReactElement} from 'react';
 
 type DependsOnStep<T> = (currentStep: number, numberOfSteps: number) => T;
 
@@ -43,7 +43,9 @@ export interface ModalWizardStepProps {
     countsAsProgress?: boolean;
 }
 
-const ModalWizardStep: FunctionComponent<ModalWizardStepProps> = ({children}) => <div>{children}</div>;
+const ModalWizardStep: FunctionComponent<PropsWithChildren<ModalWizardStepProps>> = ({children}) => (
+    <div>{children}</div>
+);
 
 ModalWizardStep.defaultProps = {
     showProgressBar: true,

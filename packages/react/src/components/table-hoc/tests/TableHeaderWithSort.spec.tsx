@@ -69,11 +69,11 @@ describe('Table HOC', () => {
             expect(store.getActions()).toContainEqual(expectedAction);
         });
 
-        it('should dispatch an sortTable on click', () => {
+        it('should dispatch an sortTable on click', async () => {
             const expectedAction = TableHeaderActions.sortTable(defaultProps.id);
 
             render(<TableHeaderWithSort {...defaultProps} />, {store});
-            userEvent.click(screen.getByRole('columnheader'));
+            await userEvent.click(screen.getByRole('columnheader'));
 
             expect(store.getActions()).toContainEqual(expectedAction);
         });
@@ -88,7 +88,7 @@ describe('Table HOC', () => {
             render(<TableHeaderWithSort id={'patate'} tableId={'id'} isLoading={false} />);
 
             const btn = await screen.findByRole('img', {name: /doubleArrowHeadV/i});
-            userEvent.click(btn);
+            await userEvent.click(btn);
 
             expect(await screen.findByRole('img', {name: /arrowUp/i})).toBeInTheDocument();
         });
@@ -97,10 +97,10 @@ describe('Table HOC', () => {
             render(<TableHeaderWithSort id={'patate'} tableId={'id'} isLoading={false} />);
 
             const btn1 = await screen.findByRole('img', {name: /doubleArrowHeadV/i});
-            userEvent.click(btn1);
+            await userEvent.click(btn1);
 
             const btn2 = await screen.findByRole('img', {name: /arrowUp/i});
-            userEvent.click(btn2);
+            await userEvent.click(btn2);
 
             expect(await screen.findByRole('img', {name: /arrowDown/i})).toBeInTheDocument();
         });
