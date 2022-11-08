@@ -29,13 +29,20 @@ import {Th} from './Th';
 const useStyles = createStyles<string, {hasHeader: boolean}>((theme, {hasHeader}, getRef) => ({
     table: {
         width: '100%',
+        '& td:first-child': {
+            paddingLeft: 24,
+        },
     },
+
     header: {
         position: 'sticky',
         top: hasHeader ? 69 : 0,
         backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
         transition: 'box-shadow 150ms ease',
         zIndex: 12, // skeleton is 11
+        '& tr th:first-child div': {
+            paddingLeft: 24,
+        },
 
         '&::after': {
             content: '""',
