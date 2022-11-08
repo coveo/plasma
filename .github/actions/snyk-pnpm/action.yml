@@ -29,7 +29,7 @@ runs:
           env:
               SNYK_TOKEN: ${{ inputs.SNYK_TOKEN }}
           run: |
-            npx --yes snyk test --org=coveo-admin-ui --file=./snyk/scan-me/package-lock.json --sarif-file-output=./sarifs/snyk-test.sarif
+            npx --yes snyk test --org=coveo-admin-ui --severity-threshold=high --file=./snyk/scan-me/package-lock.json --sarif-file-output=./sarifs/snyk-test.sarif
             npx --yes snyk monitor --org=coveo-admin-ui --file=./snyk/scan-me/package-lock.json
         - name: Snyk Code
           shell: bash
