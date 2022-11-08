@@ -1,19 +1,16 @@
 import {TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
 import dynamic from 'next/dynamic';
-import {FunctionComponent, PropsWithChildren} from 'react';
+import {FunctionComponent, ReactNode} from 'react';
 import {useSelector} from 'react-redux';
 
 import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
 import {PlasmaLoading} from './PlasmaLoading';
+import {PropsDoc, PropsTableProps} from './PropsTable';
 import {Tile, TileProps} from './Tile';
 
 const Sandbox = dynamic(
     import('./Sandbox').then((mod) => mod.Sandbox),
-    {ssr: false, loading: () => <PlasmaLoading />}
-);
-const PropsDoc = dynamic(
-    import('./PropsDoc').then((mod) => mod.PropsDoc),
     {ssr: false, loading: () => <PlasmaLoading />}
 );
 
@@ -23,7 +20,7 @@ interface PlaygroundProps {
     layout?: 'horizontal' | 'vertical';
 }
 
-export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
+export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps, PropsTableProps {
     id: string;
     examples?: Record<string, PlaygroundProps>;
     relatedComponents?: TileProps[];
@@ -33,9 +30,10 @@ export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
      * @default true
      */
     withPropsTable?: boolean;
+    children?: ReactNode;
 }
 
-export const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> = ({
+export const PageLayout = ({
     id,
     title,
     description,
@@ -48,8 +46,9 @@ export const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> =
     sourcePath,
     relatedComponents,
     withPropsTable = true,
+    propsMetadata,
     children,
-}) => {
+}: PageLayoutProps) => {
     const isShowingCode = useSelector((state) =>
         TabSelectors.getIsTabSelected(state, {groupId: 'page', id: 'implementation'})
     );
@@ -79,6 +78,7 @@ export const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> =
                             relatedComponents={relatedComponents}
                             layout={layout}
                             withPropsTable={withPropsTable}
+                            propsMetadata={propsMetadata}
                         >
                             {children}
                         </Content>
@@ -92,10 +92,11 @@ export const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> =
     );
 };
 const Content: FunctionComponent<
-    React.PropsWithChildren<
-        Pick<PageLayoutProps, 'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable'>
+    Pick<
+        PageLayoutProps,
+        'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable' | 'propsMetadata' | 'children'
     >
-> = ({code, examples, id, relatedComponents, layout, withPropsTable, children}) => (
+> = ({code, examples, id, relatedComponents, layout, withPropsTable, propsMetadata, children}) => (
     <>
         {code && (
             <div className="plasma-page-layout__main-code plasma-page-layout__section">
@@ -108,7 +109,7 @@ const Content: FunctionComponent<
         {withPropsTable && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb1">Props</h4>
-                <PropsDoc componentName={id} />
+                <PropsDoc propsMetadata={propsMetadata} />
             </div>
         )}
         {examples && (

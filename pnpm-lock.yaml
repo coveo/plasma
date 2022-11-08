@@ -575,6 +575,7 @@ importers:
   packages/website:
     specifiers:
       '@coveo/atomic-react': 0.5.8
+      '@coveord/plasma-components-props-analyzer': workspace:*
       '@coveord/plasma-react': workspace:*
       '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
@@ -634,6 +635,7 @@ importers:
       underscore: 1.13.1
     dependencies:
       '@coveo/atomic-react': 0.5.8_cswecg4s6kp6jcqeq5j65fogoa
+      '@coveord/plasma-components-props-analyzer': link:../components-props-analyzer
       '@coveord/plasma-react': link:../react
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style

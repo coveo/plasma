@@ -9,6 +9,7 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {PlasmaLoading} from './PlasmaLoading';
+import typesLoader from './typesLoader';
 
 const prettierConfig = await import('tsjs/prettier-config.js');
 
@@ -37,6 +38,7 @@ export const Sandbox: FunctionComponent<
 
     useEffect(() => {
         importAndRunSwcOnMount();
+        typesLoader.load();
     }, []);
 
     useEffect(() => {
