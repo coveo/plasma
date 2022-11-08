@@ -1,3 +1,4 @@
+import {ButtonMetadata} from '@coveord/plasma-components-props-analyzer';
 import code from '@examples/button/Button.example.tsx';
 import disabled from '@examples/button/Disabled.example.tsx';
 import iconAndLink from '@examples/button/IconAndLink.example.tsx';
@@ -27,5 +28,6 @@ export default () => (
             withTooltip: {code: withTooltip, title: 'With tooltop'},
         }}
         componentSourcePath="/button/Button.tsx"
+        propsMetadata={ButtonMetadata}
     />
 );

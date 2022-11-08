@@ -1,3 +1,4 @@
+import {SubNavigationMetadata} from '@coveord/plasma-components-props-analyzer';
 import custom from '@examples/SubNavigation/custom.example.tsx';
 import customWithDesc from '@examples/SubNavigation/customWithDesc.example.tsx';
 import defaultSelected from '@examples/SubNavigation/defaultSelected.example.tsx';
@@ -13,6 +14,7 @@ export const SubNavigationExamples = () => (
         section="Navigation"
         description="A subnavigation is a secondary vertical navigation component that allows users to navigate between sections of the same interface."
         thumbnail="subNavigation"
+        propsMetadata={SubNavigationMetadata}
         code={code}
         examples={{
             defaultSelected: {code: defaultSelected, title: 'Default selected'},

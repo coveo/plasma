@@ -1,3 +1,5 @@
+import {BadgeMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 import BadgeExample from '../../examples/Badge/Badge.example.tsx';
 import BadgeSmallExample from '../../examples/Badge/BadgeSmall.example.tsx';
@@ -12,6 +14,7 @@ export const BadgeExamples = () => (
         description="A badge is a small label that displays a short yet important piece of information."
         thumbnail="badge"
         code={BadgeExample}
+        propsMetadata={BadgeMetadata}
         examples={{
             BadgeWithIconsExample: {code: BadgeWithIconsExample, title: 'Badge with icon'},
             BadgeSmallExample: {code: BadgeSmallExample, title: 'Badge small'},

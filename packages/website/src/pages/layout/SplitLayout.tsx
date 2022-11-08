@@ -1,3 +1,5 @@
+import {SplitLayoutMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -32,6 +34,7 @@ const SplitLayoutExamples = () => (
         componentSourcePath="/splitlayout/SplitLayout.tsx"
         code={code}
         layout="vertical"
+        propsMetadata={SplitLayoutMetadata}
         examples={{noBorder: {code: noBorder, title: 'Without a border'}}}
     />
 );

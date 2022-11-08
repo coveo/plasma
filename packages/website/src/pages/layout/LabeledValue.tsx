@@ -1,3 +1,5 @@
+import {LabeledValueMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -40,6 +42,7 @@ const LabeledValueExamples = () => (
         title="Labeled value"
         section="Layout"
         thumbnail="placeholder"
+        propsMetadata={LabeledValueMetadata}
         code={code}
         examples={{
             withInformation: {code: withInformation, title: 'With more information (tooltip)'},

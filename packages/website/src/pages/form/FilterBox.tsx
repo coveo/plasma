@@ -1,3 +1,5 @@
+import {FilterBoxConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -26,6 +28,7 @@ export default () => (
         description="A filter box allows users to enter text to filter data. It is frequently used with tables and dropdown menus."
         componentSourcePath="/filterBox/FilterBoxConnected.tsx"
         code={code}
+        propsMetadata={FilterBoxConnectedMetadata}
         examples={{
             maxWidth: {code: maxWidth, title: 'Maximum width'},
             disabled: {code: disabled, title: 'Disabled'},

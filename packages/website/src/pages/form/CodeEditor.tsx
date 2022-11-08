@@ -1,3 +1,5 @@
+import {CodeEditorMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -33,6 +35,7 @@ export default () => (
         thumbnail="codeEditor"
         code={code}
         componentSourcePath="/editor/CodeEditor.tsx"
+        propsMetadata={CodeEditorMetadata}
         examples={{
             readOnly: {code: readOnly, title: 'Read only'},
         }}

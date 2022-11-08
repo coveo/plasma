@@ -1,3 +1,5 @@
+import {FilepickerMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -16,5 +18,6 @@ export default () => (
         description="A file picker is a dialog that allows users to upload a file."
         componentSourcePath="/filepicker/FilePicker.tsx"
         code={code}
+        propsMetadata={FilepickerMetadata}
     />
 );

@@ -1,3 +1,5 @@
+import {BrowserPreviewMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -44,6 +46,7 @@ export const BrowserPreviewExamples = () => (
         thumbnail="placeholder"
         description="A browser preview shows the result of configuration changes in a simplified representation of a browser interface."
         componentSourcePath="/browserPreview/BrowserPreview.tsx"
+        propsMetadata={BrowserPreviewMetadata}
         code={code}
         examples={{
             withError: {code: withError, title: 'With error'},

@@ -1,3 +1,4 @@
+import {StickyFooterMetadata} from '@coveord/plasma-components-props-analyzer';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -32,6 +33,7 @@ const StickyFooterExample = () => (
         section="Layout"
         description="A page footer that sticks to the bottom of the screen"
         componentSourcePath="/stickyFooter/StickyFooter.tsx"
+        propsMetadata={StickyFooterMetadata}
         code={code}
     />
 );
