@@ -1,3 +1,12 @@
+## 48.0.2 (2022-11-08)
+
+
+### Performance Improvements
+
+* **website:** make each page load faster 🚤  (#2912) 82c9e24, closes #2912 #2909 #2908 #2911
+
+
+
 ## 48.0.1 (2022-11-08)
 
 
