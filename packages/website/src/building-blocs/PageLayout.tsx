@@ -1,6 +1,6 @@
 import {TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
 import dynamic from 'next/dynamic';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, ReactNode} from 'react';
 import {useSelector} from 'react-redux';
 
 import {GuidelinesTab} from './GuidelinesTab';
@@ -30,9 +30,10 @@ export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps, Props
      * @default true
      */
     withPropsTable?: boolean;
+    children?: ReactNode;
 }
 
-export const PageLayout: FunctionComponent<PageLayoutProps> = ({
+export const PageLayout = ({
     id,
     title,
     description,
@@ -47,7 +48,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({
     withPropsTable = true,
     propsMetadata,
     children,
-}) => {
+}: PageLayoutProps) => {
     const isShowingCode = useSelector((state) =>
         TabSelectors.getIsTabSelected(state, {groupId: 'page', id: 'implementation'})
     );
