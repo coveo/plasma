@@ -1,3 +1,12 @@
+## 48.0.1 (2022-11-08)
+
+
+### Performance Improvements
+
+* **props-analyzer:** speedup props metadata generation process (#2907) 9c0ff9e, closes #2907
+
+
+
 # 48.0.0 (2022-11-08)
 
 
