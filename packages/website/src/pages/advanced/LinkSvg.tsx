@@ -1,3 +1,5 @@
+import {LinkSvgMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -19,5 +21,6 @@ export default () => (
         description="A SVG that acts as a link."
         componentSourcePath="/svg/LinkSvg.tsx"
         code={code}
+        propsMetadata={LinkSvgMetadata}
     />
 );

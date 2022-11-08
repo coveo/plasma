@@ -1,3 +1,5 @@
+import {LoadingMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -32,6 +34,7 @@ export default () => (
         description="A loading spinner indicates that content or data is actively being loaded."
         componentSourcePath="/loading/Loading.tsx"
         code={code}
+        propsMetadata={LoadingMetadata}
         examples={{
             fullContent: {code: fullContent, title: 'Vertically centered'},
             loadingSpinner: {code: loadingSpinner, title: 'Loading spinner that can be used in other components'},

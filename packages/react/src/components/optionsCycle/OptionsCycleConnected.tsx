@@ -1,10 +1,12 @@
+import {ComponentType} from 'react';
 import {connect} from 'react-redux';
 
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
+import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {
     IOptionsCycleConnectedOwnProps,
     IOptionsCycleDispatchProps,
+    IOptionsCycleOwnProps,
     IOptionsCycleStateProps,
     OptionsCycle,
 } from './OptionsCycle';
@@ -27,4 +29,8 @@ const mapDispatchToProps = (
 /**
  * @deprecated Use Mantine instead
  */
-export const OptionsCycleConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(OptionsCycle);
+export const OptionsCycleConnected: ComponentType<IOptionsCycleOwnProps & IOptionsCycleConnectedOwnProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(OptionsCycle);

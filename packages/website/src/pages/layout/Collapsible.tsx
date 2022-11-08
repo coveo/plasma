@@ -1,3 +1,5 @@
+import {CollapsibleConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -72,6 +74,7 @@ const CollapsibleExamples = () => (
         section="Layout"
         description="A collapsible allows users to hide or display a section of content."
         code={code}
+        propsMetadata={CollapsibleConnectedMetadata}
         examples={{
             infoBoxWrapper: {code: infoBoxWrapper, title: 'Info box wrapper'},
             expanded: {code: expanded, title: 'Expanded on mount'},

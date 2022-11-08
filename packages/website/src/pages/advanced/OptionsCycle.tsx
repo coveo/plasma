@@ -1,3 +1,5 @@
+import {OptionsCycleConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -28,6 +30,7 @@ export default () => (
         description="Allows to cycle through an ordered list of options using right-left arrow buttons."
         componentSourcePath="/optionsCycle/OptionsCycle.tsx"
         code={code}
+        propsMetadata={OptionsCycleConnectedMetadata}
         examples={{
             buttonStyle: {code: buttonStyle, title: 'Styles like the Button'},
         }}

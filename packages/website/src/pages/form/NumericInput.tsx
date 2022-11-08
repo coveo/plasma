@@ -1,3 +1,5 @@
+import {NumericInputConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -31,6 +33,7 @@ const NumericInputExamples = () => (
         section="Form"
         description="A numeric input allows users to enter and edit numerical values, either manually or using an input stepper."
         componentSourcePath="/numericInput/NumericInputConnected.tsx"
+        propsMetadata={NumericInputConnectedMetadata}
         code={code}
         examples={{disabled: {code: disabled, title: 'Disabled'}}}
     />

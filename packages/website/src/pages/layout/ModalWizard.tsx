@@ -1,3 +1,5 @@
+import {ModalWizardMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -171,6 +173,7 @@ export const ModalWizardExamples = () => (
         description="A modal wizard guides users through a task by presenting a succession of actions to complete."
         componentSourcePath="/modalWizard/ModalWizard.tsx"
         code={code}
+        propsMetadata={ModalWizardMetadata}
         examples={{withValidationIds: {code: withValidationIds, title: 'Using validation ids'}}}
     />
 );

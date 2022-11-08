@@ -1,3 +1,5 @@
+import {BlankSlateMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -105,6 +107,7 @@ export const BlankSlateExample = () => (
         section="Layout"
         description="A blank slate informs users that a section doesn’t contain any data and provides a way to address it."
         thumbnail="placeholder"
+        propsMetadata={BlankSlateMetadata}
         code={code}
         examples={{
             inError: {code: inError, title: 'With error'},
