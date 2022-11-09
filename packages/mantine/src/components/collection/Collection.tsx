@@ -25,6 +25,7 @@ interface CollectionProps<T> extends DefaultProps<Selectors<typeof useStyles>> {
     value?: T[];
     onFocus?: () => void;
     onChange?: (value: T[]) => void;
+    onRemoveItem?: (itemIndex: number) => void;
     draggable?: boolean;
     disabled?: boolean;
     allowAdd?: (values: T[]) => boolean;
@@ -48,6 +49,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         value,
         defaultValue,
         onChange,
+        onRemoveItem,
         disabled,
         draggable,
         children,
@@ -71,13 +73,18 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
 
     const [values, {append, remove, reorder}] = useControlledList({value, onChange, defaultValue});
     const hasOnlyOneItem = values.length === 1;
+    const removeItem = (index: number) => () => {
+        remove(index);
+        onRemoveItem?.(index);
+    };
+
     const items = values.map((item, index) => (
         <CollectionItem
             key={index}
             disabled={disabled}
             draggable={draggable}
             index={index}
-            onRemove={() => remove(index)}
+            onRemove={removeItem(index)}
             styles={styles}
             removable={!(required && hasOnlyOneItem)}
         >
