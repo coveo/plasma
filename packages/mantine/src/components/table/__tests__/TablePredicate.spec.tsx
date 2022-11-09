@@ -97,13 +97,13 @@ describe('Table.Predicate', () => {
             ).toHaveValue('Second');
         });
 
-        userEvent.click(
+        await userEvent.click(
             screen.getByRole('searchbox', {
                 name: 'rank',
             })
         );
 
-        userEvent.click(
+        await userEvent.click(
             screen.getByRole('option', {
                 name: 'First',
             })

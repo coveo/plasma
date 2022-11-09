@@ -13,13 +13,15 @@ jest.mock('@mantine/hooks', () => ({
 }));
 
 describe('DateRangePickerPopoverCalendar', () => {
+    const user = userEvent.setup({delay: null});
+
     it('does not render the preset searchbox when there is no presets', () => {
         render(<DateRangePickerPopoverCalendar defaultValue={[null, null]} />);
 
         expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
     });
 
-    it('updates with the selected dates when choosing a preset', () => {
+    it('updates with the selected dates when choosing a preset', async () => {
         const Fixture = () => {
             const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
             return (
@@ -36,17 +38,17 @@ describe('DateRangePickerPopoverCalendar', () => {
         };
         render(<Fixture />);
 
-        userEvent.click(
+        await user.click(
             screen.getByRole('searchbox', {
                 name: 'Date range',
             })
         );
-        userEvent.click(screen.getByRole('option', {name: 'select me'}));
+        await user.click(screen.getByRole('option', {name: 'select me'}));
 
         expect(screen.getByTestId('json')).toHaveTextContent('["1999-12-31T00:00:00.000Z","2000-01-01T00:00:00.000Z"]');
     });
 
-    it('calls onApply with the selected dates when clicking in the calendar', () => {
+    it('calls onApply with the selected dates when clicking in the calendar', async () => {
         jest.useFakeTimers().setSystemTime(new Date(2022, 0, 31));
         const Fixture = () => {
             const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
@@ -59,10 +61,10 @@ describe('DateRangePickerPopoverCalendar', () => {
         };
         render(<Fixture />);
 
-        userEvent.click(screen.getByRole('textbox', {name: 'Start'}));
+        await user.click(screen.getByRole('textbox', {name: 'Start'}));
         // click once for the start, once for the end
-        userEvent.click(screen.getAllByRole('button', {name: '8'})[0]);
-        userEvent.click(screen.getAllByRole('button', {name: '14'})[0]);
+        await user.click(screen.getAllByRole('button', {name: '8'})[0]);
+        await user.click(screen.getAllByRole('button', {name: '14'})[0]);
 
         // hides the calendar when the second date is clicked
         expect(screen.queryByRole('button', {name: '8'})).not.toBeInTheDocument();
@@ -72,7 +74,7 @@ describe('DateRangePickerPopoverCalendar', () => {
         jest.useRealTimers();
     });
 
-    it('calls onApply with the selected dates when typing in the inputs', () => {
+    it('calls onApply with the selected dates when typing in the inputs', async () => {
         const Fixture = () => {
             const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
             return (
@@ -87,14 +89,14 @@ describe('DateRangePickerPopoverCalendar', () => {
         const startInput = screen.getByRole('textbox', {
             name: /start/i,
         });
-        userEvent.clear(startInput);
-        userEvent.type(startInput, 'Jan 8, 2022');
+        await user.clear(startInput);
+        await user.type(startInput, 'Jan 8, 2022');
 
         const endInput = screen.getByRole('textbox', {
             name: /end/i,
         });
-        userEvent.clear(endInput);
-        userEvent.type(endInput, 'Jan 14, 2022');
+        await user.clear(endInput);
+        await user.type(endInput, 'Jan 14, 2022');
 
         expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-01-14T23:59:59.999Z"]');
     });

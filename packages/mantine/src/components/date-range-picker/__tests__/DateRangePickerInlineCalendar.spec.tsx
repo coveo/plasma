@@ -4,21 +4,23 @@ import dayjs from 'dayjs';
 import {DateRangePickerInlineCalendar} from '../DateRangePickerInlineCalendar';
 
 describe('DateRangePickerInlineCalendar', () => {
-    it('calls onApply when the user clicks on the apply button', () => {
+    const user = userEvent.setup({delay: null});
+
+    it('calls onApply when the user clicks on the apply button', async () => {
         const onApply = jest.fn();
         render(<DateRangePickerInlineCalendar initialRange={[null, null]} onApply={onApply} onCancel={jest.fn()} />);
 
-        userEvent.click(screen.getByRole('button', {name: 'Apply'}));
+        await user.click(screen.getByRole('button', {name: 'Apply'}));
 
         expect(onApply).toHaveBeenCalledTimes(1);
         expect(onApply).toHaveBeenCalledWith([null, null]);
     });
 
-    it('calls onCancel when the user clicks on the cancel button', () => {
+    it('calls onCancel when the user clicks on the cancel button', async () => {
         const onCancel = jest.fn();
         render(<DateRangePickerInlineCalendar initialRange={[null, null]} onApply={jest.fn()} onCancel={onCancel} />);
 
-        userEvent.click(screen.getByRole('button', {name: 'Cancel'}));
+        await user.click(screen.getByRole('button', {name: 'Cancel'}));
 
         expect(onCancel).toHaveBeenCalledTimes(1);
     });
@@ -29,7 +31,7 @@ describe('DateRangePickerInlineCalendar', () => {
         expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
     });
 
-    it('calls onApply with the selected dates when choosing a preset', () => {
+    it('calls onApply with the selected dates when choosing a preset', async () => {
         const onApply = jest.fn();
         render(
             <DateRangePickerInlineCalendar
@@ -42,50 +44,50 @@ describe('DateRangePickerInlineCalendar', () => {
             />
         );
 
-        userEvent.click(
+        await user.click(
             screen.getByRole('searchbox', {
                 name: 'Date range',
             })
         );
-        userEvent.click(screen.getByRole('option', {name: 'select me'}));
-        userEvent.click(screen.getByRole('button', {name: 'Apply'}));
+        await user.click(screen.getByRole('option', {name: 'select me'}));
+        await user.click(screen.getByRole('button', {name: 'Apply'}));
 
         expect(onApply).toHaveBeenCalledWith([new Date(1999, 11, 31), new Date(2000, 0, 1)]);
     });
 
-    it('calls onApply with the selected dates when clicking in the calendar', () => {
+    it('calls onApply with the selected dates when clicking in the calendar', async () => {
         jest.useFakeTimers().setSystemTime(new Date(2022, 0, 31));
         const onApply = jest.fn();
         render(<DateRangePickerInlineCalendar initialRange={[null, null]} onApply={onApply} onCancel={jest.fn()} />);
 
         // click once for the start, once for the end
-        userEvent.click(screen.getAllByRole('button', {name: '8'})[0]);
-        userEvent.click(screen.getAllByRole('button', {name: '14'})[0]);
+        await user.click(screen.getAllByRole('button', {name: '8'})[0]);
+        await user.click(screen.getAllByRole('button', {name: '14'})[0]);
 
-        userEvent.click(screen.getByRole('button', {name: 'Apply'}));
+        await user.click(screen.getByRole('button', {name: 'Apply'}));
 
         expect(onApply).toHaveBeenCalledWith([new Date(2022, 0, 8), new Date(2022, 0, 14)]);
 
         jest.useRealTimers();
     });
 
-    it('calls onApply with the selected dates when typing in the inputs', () => {
+    it('calls onApply with the selected dates when typing in the inputs', async () => {
         const onApply = jest.fn();
         render(<DateRangePickerInlineCalendar initialRange={[null, null]} onApply={onApply} onCancel={jest.fn()} />);
 
         const startInput = screen.getByRole('textbox', {
             name: /start/i,
         });
-        userEvent.clear(startInput);
-        userEvent.type(startInput, 'Jan 8, 2022');
+        await user.clear(startInput);
+        await user.type(startInput, 'Jan 8, 2022');
 
         const endInput = screen.getByRole('textbox', {
             name: /end/i,
         });
-        userEvent.clear(endInput);
-        userEvent.type(endInput, 'Jan 14, 2022');
+        await user.clear(endInput);
+        await user.type(endInput, 'Jan 14, 2022');
 
-        userEvent.click(screen.getByRole('button', {name: 'Apply'}));
+        await user.click(screen.getByRole('button', {name: 'Apply'}));
 
         expect(onApply).toHaveBeenCalledWith([
             dayjs(new Date(2022, 0, 8)).startOf('day').toDate(),

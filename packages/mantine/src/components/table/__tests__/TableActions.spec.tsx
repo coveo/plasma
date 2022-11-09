@@ -10,7 +10,7 @@ const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
 
 describe('Table.Actions', () => {
-    it('displays the actions when the row is selected', () => {
+    it('displays the actions when the row is selected', async () => {
         render(
             <Table<RowData> data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
                 <Table.Header>
@@ -24,12 +24,12 @@ describe('Table.Actions', () => {
         expect(screen.queryByRole('button', {name: 'Eat vegetable'})).not.toBeInTheDocument();
 
         // select the fruit row
-        userEvent.click(screen.getByRole('cell', {name: 'fruit'}));
+        await userEvent.click(screen.getByRole('cell', {name: 'fruit'}));
         expect(screen.getByRole('button', {name: 'Eat fruit'})).toBeVisible();
         expect(screen.queryByRole('button', {name: 'Eat vegetable'})).not.toBeInTheDocument();
 
         // select the vegetable row
-        userEvent.click(screen.getByRole('cell', {name: 'vegetable'}));
+        await userEvent.click(screen.getByRole('cell', {name: 'vegetable'}));
         expect(screen.queryByRole('button', {name: 'Eat fruit'})).not.toBeInTheDocument();
         expect(screen.getByRole('button', {name: 'Eat vegetable'})).toBeVisible();
     });

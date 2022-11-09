@@ -89,7 +89,7 @@ describe('Table', () => {
 
         expect(screen.queryByText('Collapsible content: last')).not.toBeVisible();
 
-        userEvent.click(screen.getByRole('button', {name: 'arrowHeadDown'}));
+        await userEvent.click(screen.getByRole('button', {name: 'arrowHeadDown'}));
         await waitFor(() => {
             expect(screen.queryByText('Collapsible content: last')).toBeVisible();
         });
@@ -126,7 +126,7 @@ describe('Table', () => {
         expect(allRows).toHaveLength(2);
     });
 
-    it('reset row selection when user click outside the table', () => {
+    it('reset row selection when user click outside the table', async () => {
         render(
             <div>
                 <div>I'm a header</div>
@@ -144,11 +144,11 @@ describe('Table', () => {
 
         expect(row).not.toHaveClass('__mantine-ref-rowSelected');
 
-        userEvent.click(row);
+        await userEvent.click(row);
 
         expect(row).toHaveClass('__mantine-ref-rowSelected');
 
-        userEvent.click(screen.getByText(/i'm a header/i));
+        await userEvent.click(screen.getByText(/i'm a header/i));
 
         expect(row).not.toHaveClass('__mantine-ref-rowSelected');
     });

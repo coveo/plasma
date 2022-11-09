@@ -22,7 +22,7 @@ describe('Table.Filter', () => {
         expect(screen.getByPlaceholderText('hello fruits')).toBeVisible();
     });
 
-    it('calls onChange when typing something in the filter', () => {
+    it('calls onChange when typing something in the filter', async () => {
         const onChange = jest.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
@@ -32,7 +32,7 @@ describe('Table.Filter', () => {
             </Table>
         );
 
-        userEvent.type(screen.getByRole('textbox'), 'vegetable');
+        await userEvent.type(screen.getByRole('textbox'), 'vegetable');
 
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({globalFilter: 'vegetable'}));
     });

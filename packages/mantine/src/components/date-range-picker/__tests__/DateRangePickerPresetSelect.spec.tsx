@@ -3,7 +3,7 @@ import {render, screen, userEvent} from '@test-utils';
 import {DateRangePickerPresetSelect} from '../DateRangePickerPresetSelect';
 
 describe('DateRangePickerPresetSelect', () => {
-    it('calls onChange when selecting a preset', () => {
+    it('calls onChange when selecting a preset', async () => {
         const onChange = jest.fn();
         render(
             <DateRangePickerPresetSelect
@@ -15,12 +15,12 @@ describe('DateRangePickerPresetSelect', () => {
             />
         );
 
-        userEvent.click(
+        await userEvent.click(
             screen.getByRole('searchbox', {
                 name: 'Date range',
             })
         );
-        userEvent.click(screen.getByRole('option', {name: 'select me'}));
+        await userEvent.click(screen.getByRole('option', {name: 'select me'}));
 
         expect(onChange).toHaveBeenCalledWith([new Date(1999, 11, 31), new Date(2000, 0, 1)]);
     });
