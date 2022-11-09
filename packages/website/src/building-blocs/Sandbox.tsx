@@ -88,6 +88,7 @@ export const Sandbox = ({id, title, children, horizontal}: SandboxProps) => {
                     .replace(/_jsxRuntime/g, 'jsxRuntime')
                     .replace(/_react/g, 'React')
                     .replace(/_plasmaReact/g, 'PlasmaReact') // use plasma-react from the window Plasma object
+                    .replace(/_plasmaMantine/g, 'PlasmaMantine') // use plasma-react from the window Plasma object
                     .replace(/_reactRedux/g, 'ReactRedux') // use react-redux from the window ReactRedux object
                     .replace(/_redux/g, 'Redux') // use redux from the window Redux object
                     .replace(/_loremIpsum/g, 'LoremIpsum')

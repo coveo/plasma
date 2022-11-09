@@ -21,6 +21,7 @@
     "dependencies": {
         "@coveo/atomic-react": "0.5.8",
         "@coveord/plasma-components-props-analyzer": "workspace:*",
+        "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-style": "workspace:*",

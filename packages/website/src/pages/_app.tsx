@@ -12,6 +12,7 @@ import '../styles/spacing.scss';
 import '../styles/tile.scss';
 import '../styles/colors.scss';
 
+import * as PlasmaMantine from '@coveord/plasma-mantine';
 import * as PlasmaReact from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import * as LoremIpsum from 'lorem-ipsum';
@@ -60,6 +61,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         (window as any).React = React;
         (window as any).ReactRedux = ReactRedux;
         (window as any).PlasmaReact = PlasmaReact;
+        (window as any).PlasmaMantine = PlasmaMantine;
         (window as any).PlasmaReactIcons = PlasmaReactIcons;
         (window as any).moment = moment;
         (window as any).LoremIpsum = LoremIpsum;
