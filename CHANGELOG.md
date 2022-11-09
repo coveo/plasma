@@ -1,3 +1,12 @@
+## 48.1.1 (2022-11-09)
+
+
+### Bug Fixes
+
+* **table, Mantine:**  removed rounded corner on selected text in table row (#2914) 5a685ad, closes #2914
+
+
+
 # 48.1.0 (2022-11-09)
 
 
