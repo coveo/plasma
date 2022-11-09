@@ -1,3 +1,12 @@
+# 48.1.0 (2022-11-09)
+
+
+### Features
+
+* **mantine, collection:** call callback function when an item is removed (#2915) c1d24d9, closes #2915
+
+
+
 ## 48.0.2 (2022-11-08)
 
 
