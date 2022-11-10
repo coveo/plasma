@@ -1,3 +1,5 @@
+import {ColorPickerMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -53,6 +55,7 @@ const ColorPickerExamples = () => (
         }
         componentSourcePath="/color-picker/ColorPicker.tsx"
         code={code}
+        propsMetadata={ColorPickerMetadata}
         examples={{
             hiddenControls: {code: hiddenControls, title: 'Hidden Controls'},
             selector: {code: selector, title: 'Selector'},

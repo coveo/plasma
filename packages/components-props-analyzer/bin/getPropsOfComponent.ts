@@ -1,33 +1,25 @@
-import {createFSBackedSystem, createVirtualTypeScriptEnvironment} from '@typescript/vfs';
+import {VirtualTypeScriptEnvironment} from '@typescript/vfs';
 import ts from 'typescript';
 
 import {Component, ComponentMetadata} from '../src/ComponentsList';
 
-export const compilerOptions: ts.CompilerOptions = {
-    jsx: ts.JsxEmit.ReactJSX,
-    target: ts.ScriptTarget.ES2017,
-    skipLibCheck: true,
-    esModuleInterop: true,
-    strict: false,
+const getContent = ({name, packageName, propsType = 'auto'}: Component) => {
+    if (propsType && propsType !== 'auto') {
+        return `import {${propsType}} from '${packageName}';const props: ${propsType} = { `;
+    } else {
+        return `import {ComponentProps} from 'react';import {${name}} from '${packageName}';const props: ComponentProps<typeof ${name}> = { `;
+    }
 };
 
-const fileName = 'index.tsx';
-
-const getContent = ({name, packageName}: Component) =>
-    `import {ComponentProps} from 'react';import {${name}} from '${packageName}';const props: ComponentProps<typeof ${name}> = { `;
-
-export const getPropsOfComponent = async (component: Component): Promise<ComponentMetadata[]> => {
-    const fsMap = new Map<string, string>();
+export const getPropsOfComponent = (component: Component, env: VirtualTypeScriptEnvironment): ComponentMetadata[] => {
+    const fileName = `${component.name}.tsx`;
     const content = getContent(component);
-    fsMap.set(fileName, content);
-    const system = createFSBackedSystem(fsMap, __dirname, ts);
-    const env = createVirtualTypeScriptEnvironment(system, [fileName], ts, compilerOptions);
-
-    const checker = env.languageService.getProgram()!.getTypeChecker();
+    env.createFile(fileName, content);
     const {entries} = env.languageService.getCompletionsAtPosition(fileName, content.length + 1, {
         triggerKind: ts.CompletionTriggerKind.Invoked,
     }) ?? {entries: []};
 
+    const checker = env.languageService.getProgram()!.getTypeChecker();
     const accumulator: ComponentMetadata[] = [];
 
     if (entries) {
@@ -75,6 +67,8 @@ export const getPropsOfComponent = async (component: Component): Promise<Compone
             }
         });
     }
+
+    env.sys.deleteFile?.(fileName);
 
     return accumulator;
 };

@@ -6,12 +6,9 @@
         "target": "esnext",
         "noUnusedLocals": false,
         "rootDir": "src",
-        "outDir": "built",
         "baseUrl": ".",
-        "tsBuildInfoFile": "./built/.tsbuildinfo",
         "paths": {
             "@coveord/plasma-react/dist/*": ["../react/dist/*"],
-            "@styles/*": ["./src/styles/*"],
             "@examples/*": ["./src/examples/*"]
         },
         "lib": ["ES2020", "dom"],

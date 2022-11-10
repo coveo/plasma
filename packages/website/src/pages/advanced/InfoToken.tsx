@@ -1,3 +1,4 @@
+import {InfoTokenMetadata} from '@coveord/plasma-components-props-analyzer';
 import code from '@examples/InfoToken/main.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
@@ -16,6 +17,7 @@ export default () => (
         description="An InfoToken is a visual representation of the status of something."
         componentSourcePath="/info-token/InfoToken.tsx"
         code={code}
+        propsMetadata={InfoTokenMetadata}
         examples={{
             info: {code: infoExample, title: 'Information'},
             success: {code: successExample, title: 'Success'},

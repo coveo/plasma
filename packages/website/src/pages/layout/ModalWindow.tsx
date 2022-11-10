@@ -1,3 +1,5 @@
+import {ModalCompositeConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -226,6 +228,7 @@ const ModalWindowExamples = () => (
         section="Layout"
         description="A modal appears over the current context to have users focus on a particular task or information."
         componentSourcePath="/modal/ModalComposite.tsx"
+        propsMetadata={ModalCompositeConnectedMetadata}
         code={code}
         examples={{
             prompts: {code: prompts, title: 'Prompts'},

@@ -1,3 +1,4 @@
+import {TextInputMetadata} from '@coveord/plasma-components-props-analyzer';
 import {FunctionComponent} from 'react';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
@@ -100,6 +101,7 @@ export const TextInputExamples: FunctionComponent = () => (
         componentSourcePath="/textInput/TextInput.tsx"
         code={code}
         examples={{hookUsage: {code: hookUsage, title: 'useTextInput hook usage'}}}
+        propsMetadata={TextInputMetadata}
     />
 );
 export default TextInputExamples;

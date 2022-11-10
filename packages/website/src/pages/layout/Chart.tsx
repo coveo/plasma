@@ -1,3 +1,5 @@
+import {ChartContainerMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -268,6 +270,7 @@ export const ChartExamples = () => (
         section="Layout"
         description="A chart compares sets of complex data to provide insights on their relationship and status."
         code={code}
+        propsMetadata={ChartContainerMetadata}
         examples={{
             scatterSeries: {code: scatterSeries, title: 'Scatter series'},
             barSeries: {code: barSeries, title: 'Bar series'},

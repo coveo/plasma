@@ -1,3 +1,5 @@
+import {ToastMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -53,6 +55,7 @@ export const ToastExamples = () => (
         section="Feedback"
         description="A toast displays a short message related to an action performed by a user."
         code={code}
+        propsMetadata={ToastMetadata}
         examples={{
             download: {code: downloadToast, title: 'Download Toast'},
             container: {code: notifier, title: 'Toast Notifier'},

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import {ClassAttributes, HTMLProps, Component} from 'react';
+import {Component, HTMLProps} from 'react';
 import {omit} from 'underscore';
 
-export interface ILoadingOwnProps extends ClassAttributes<Loading> {
+export interface ILoadingOwnProps {
     /**
      * Unique identifier. Only needed when using LoadingConnected
      */

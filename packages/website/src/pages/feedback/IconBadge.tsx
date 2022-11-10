@@ -1,3 +1,5 @@
+import {IconBadgeMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -34,6 +36,7 @@ export const IconBadgeExamples = () => (
         section="Feedback"
         thumbnail="placeholder"
         code={code}
+        propsMetadata={IconBadgeMetadata}
     />
 );
 

@@ -1,21 +1,14 @@
-import {
-    createDefaultMapFromCDN,
-    createSystem,
-    createVirtualTypeScriptEnvironment,
-    VirtualTypeScriptEnvironment,
-} from '@typescript/vfs';
-import lzstring from 'lz-string';
-import {useState, useEffect} from 'react';
-import * as ts from 'typescript';
 import {loader} from '@monaco-editor/react';
+import {createDefaultMapFromCDN} from '@typescript/vfs';
+import lzstring from 'lz-string';
+import * as ts from 'typescript';
 
 const initMonaco = loader.init();
 
 export const compilerOptions: ts.CompilerOptions = {
     jsx: ts.JsxEmit.ReactJSX,
     lib: ['es2017', 'dom'],
-    module: ts.ModuleKind.CommonJS,
-    target: ts.ScriptTarget.ES5,
+    target: ts.ScriptTarget.ES2017,
     skipLibCheck: true,
     esModuleInterop: true,
     strict: false,
@@ -38,6 +31,7 @@ const momentJsTypes = require.context('!!raw-loader!moment', true, /\.d\.ts$/i, 
 const reduxTypes = require.context('!!raw-loader!redux', true, /\.d\.ts$/i, 'lazy-once');
 const loremIpsumTypes = require.context('!!raw-loader!lorem-ipsum/types/src', true, /\.d\.ts$/i, 'lazy-once');
 const rcSliderTypes = require.context('!!raw-loader!rc-slider/es', true, /\.d\.ts$/i, 'lazy-once');
+
 const load = async (path: string, ctx: any, root: string) => {
     const {default: content} = await ctx(path);
     let newPath = `${root}/${path.replace('./', '')}`;
@@ -68,42 +62,26 @@ const loadAll: Promise<Map<string, string>> = Promise.all([
     return map;
 });
 
-const setupTypescript = Promise.all([loadAll, initMonaco]).then(([defaultMap, monaco]) => {
-    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-        jsx: monaco.languages.typescript.JsxEmit.ReactJSX,
-        jsxFactory: 'React.createElement',
-        jsxFragmentFactory: 'React.Fragment',
-        reactNamespace: 'React',
-        esModuleInterop: true,
-        allowSyntheticDefaultImports: true,
-    });
+let loaded = false;
 
-    defaultMap.forEach((content, path) => {
-        monaco.languages.typescript.typescriptDefaults.addExtraLib(content, `file://${path}`);
-    });
-    return defaultMap;
-});
+const loadTypesInMonaco = async () => {
+    if (!loaded) {
+        const [defaultMap, monaco] = await Promise.all([loadAll, initMonaco]);
+        monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+            jsx: monaco.languages.typescript.JsxEmit.ReactJSX,
+            jsxFactory: 'React.createElement',
+            jsxFragmentFactory: 'React.Fragment',
+            reactNamespace: 'React',
+            esModuleInterop: true,
+            allowSyntheticDefaultImports: true,
+        });
 
-let globalEnv: VirtualTypeScriptEnvironment | null = null;
-const getGlobalEnv: Promise<VirtualTypeScriptEnvironment> = new Promise((resolve) => {
-    setupTypescript.then((defaultMap) => {
-        const system = createSystem(defaultMap);
-        globalEnv = createVirtualTypeScriptEnvironment(
-            system,
-            [...defaultMap.keys()],
-            ts as any,
-            compilerOptions as any
-        );
-        resolve(globalEnv);
-    });
-});
+        defaultMap.forEach((content, path) => {
+            monaco.languages.typescript.typescriptDefaults.addExtraLib(content, `file://${path}`);
+        });
 
-export const useTypescriptServer = () => {
-    const [env, setEnv] = useState<VirtualTypeScriptEnvironment | null>(null);
-
-    useEffect(() => {
-        getGlobalEnv.then(setEnv);
-    }, []);
-
-    return {env, compilerOptions};
+        loaded = true;
+    }
 };
+
+export default {load: loadTypesInMonaco};

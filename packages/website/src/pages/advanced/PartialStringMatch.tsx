@@ -1,3 +1,5 @@
+import {PartialStringMatchMetadata} from '@coveord/plasma-components-props-analyzer';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
@@ -20,6 +22,7 @@ export default () => (
         id="PartialStringMatch"
         title="Partial String Match"
         section="Advanced"
+        propsMetadata={PartialStringMatchMetadata}
         description="Highlights a string searched for in any DOM tree."
         componentSourcePath="/partial-string-match/PartialStringMatch.tsx"
         code={code}

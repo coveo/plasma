@@ -1,9 +1,10 @@
+import {FlatSelectConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
 import code from '@examples/FlatSelect/FlatSelect.example.tsx';
-import group from '@examples/FlatSelect/FlatSelectGroup.example.tsx';
-import disabled from '@examples/FlatSelect/FlatSelectDisabled.example.tsx';
-import optionPicker from '@examples/FlatSelect/FlatSelectOptionPicker.example.tsx';
 import appendPrepend from '@examples/FlatSelect/FlatSelectAppendPrepend.example.tsx';
+import disabled from '@examples/FlatSelect/FlatSelectDisabled.example.tsx';
+import group from '@examples/FlatSelect/FlatSelectGroup.example.tsx';
 import iconOnly from '@examples/FlatSelect/FlatSelectIconsOnly.example.tsx';
+import optionPicker from '@examples/FlatSelect/FlatSelectOptionPicker.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -15,6 +16,7 @@ export default () => (
         description="A flat select is a group of mutually exclusive buttons aligned horizontally. It is used to allow users to switch between interface displays or binary options."
         componentSourcePath="/flatSelect/FlatSelect.tsx"
         code={code}
+        propsMetadata={FlatSelectConnectedMetadata}
         examples={{
             disabled: {code: disabled, title: 'Disabled'},
             group: {code: group, title: 'Grouped'},

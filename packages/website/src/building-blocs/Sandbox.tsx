@@ -4,11 +4,12 @@ import classNames from 'classnames';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as typescript from 'prettier/parser-typescript';
 import {format} from 'prettier/standalone';
-import {FunctionComponent, useState, useEffect, useRef, useMemo} from 'react';
+import {FunctionComponent, useEffect, useMemo, useRef, useState} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {PlasmaLoading} from './PlasmaLoading';
+import typesLoader from './typesLoader';
 
 const prettierConfig = await import('tsjs/prettier-config.js');
 
@@ -19,9 +20,14 @@ const formatCode = (code: string) =>
         parser: 'typescript',
     });
 
-export const Sandbox: FunctionComponent<
-    React.PropsWithChildren<{children: string; id: string; title?: string; horizontal?: boolean}>
-> = ({id, title, children, horizontal}) => {
+export interface SandboxProps {
+    children: string;
+    id: string;
+    title?: string;
+    horizontal?: boolean;
+}
+
+export const Sandbox = ({id, title, children, horizontal}: SandboxProps) => {
     const formattedCode = formatCode(children as string);
     const [editedCode, setEditedCode] = useState(formattedCode);
     const [initialized, setInitialized] = useState(false);
@@ -37,6 +43,7 @@ export const Sandbox: FunctionComponent<
 
     useEffect(() => {
         importAndRunSwcOnMount();
+        typesLoader.load();
     }, []);
 
     useEffect(() => {

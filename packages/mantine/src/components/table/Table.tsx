@@ -231,7 +231,7 @@ export const Table: TableType = <T,>({
                         const width = size !== defaultColumnSizing.size ? size : undefined;
                         return (
                             <td key={cell.id} style={{width}}>
-                                <Skeleton visible={loading}>
+                                <Skeleton visible={loading} sx={!loading ? {borderRadius: 0} : undefined}>
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </Skeleton>
                             </td>

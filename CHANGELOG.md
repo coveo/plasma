@@ -1,3 +1,43 @@
+## 48.1.2 (2022-11-10)
+
+
+
+## 48.1.1 (2022-11-09)
+
+
+### Bug Fixes
+
+* **table, Mantine:**  removed rounded corner on selected text in table row (#2914) 5a685ad, closes #2914
+
+
+
+# 48.1.0 (2022-11-09)
+
+
+### Features
+
+* **mantine, collection:** call callback function when an item is removed (#2915) c1d24d9, closes #2915
+
+
+
+## 48.0.2 (2022-11-08)
+
+
+### Performance Improvements
+
+* **website:** make each page load faster 🚤  (#2912) 82c9e24, closes #2912 #2909 #2908 #2911
+
+
+
+## 48.0.1 (2022-11-08)
+
+
+### Performance Improvements
+
+* **props-analyzer:** speedup props metadata generation process (#2907) 9c0ff9e, closes #2907
+
+
+
 # 48.0.0 (2022-11-08)
 
 
