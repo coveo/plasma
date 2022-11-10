@@ -11,12 +11,13 @@ interface TablePaginationProps {
 }
 
 export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalPages}) => {
-    const {state, setState} = useTable();
+    const {state, setState, containerRef} = useTable();
     const updatePage = (newPage: number) => {
         setState((prevState: TableState) => ({
             ...prevState,
             pagination: {...prevState.pagination, pageIndex: newPage - 1},
         }));
+        containerRef.current.scrollIntoView({behavior: 'smooth'});
     };
 
     return (

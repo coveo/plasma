@@ -258,6 +258,7 @@ export const Table: TableType = <T,>({
                     getSelectedRow,
                     clearSelection,
                     form,
+                    containerRef: outsideClickRef,
                 }}
             >
                 {header}
