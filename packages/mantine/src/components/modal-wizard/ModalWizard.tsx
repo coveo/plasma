@@ -1,4 +1,4 @@
-import {Button, Modal, Progress} from '@mantine/core';
+import {Button, ButtonProps, Modal, ModalProps, Progress, ProgressProps} from '@mantine/core';
 import {Children, ReactElement, useMemo, useState} from 'react';
 import {StickyFooter} from '../sticky-footer';
 import {ModalWizardStep} from './ModalWizardStep';
@@ -70,7 +70,7 @@ interface ModalWizardProps {
     /**
      * Props to pass to each modal
      */
-    modalProps?: any;
+    modalProps?: Partial<ModalProps>;
 
     /**
      * Classname for modal
@@ -85,12 +85,12 @@ interface ModalWizardProps {
     /**
      * Props for progress bar
      */
-    progressBarProps?: any;
+    progressBarProps?: Partial<ProgressProps>;
 
     /**
      * Props for action buttons
      */
-    buttonProps?: any;
+    buttonProps?: Partial<ButtonProps>;
 
     /**
      * Children to display in modal wizard
