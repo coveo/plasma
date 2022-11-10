@@ -30,7 +30,7 @@ const useStyles = createStyles<string, {hasHeader: boolean}>((theme, {hasHeader}
     table: {
         width: '100%',
         '& td:first-child': {
-            paddingLeft: 24,
+            paddingLeft: theme.spacing.md,
         },
     },
 
@@ -41,7 +41,7 @@ const useStyles = createStyles<string, {hasHeader: boolean}>((theme, {hasHeader}
         transition: 'box-shadow 150ms ease',
         zIndex: 12, // skeleton is 11
         '& tr th:first-child div': {
-            paddingLeft: 24,
+            paddingLeft: theme.spacing.md,
         },
 
         '&::after': {
