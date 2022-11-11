@@ -9,7 +9,8 @@ describe('InlineConfirm', () => {
         expect(screen.getByText('Hello World')).toBeVisible();
     });
 
-    it('calls the onClick prop when clicking on a button', () => {
+    it('calls the onClick prop when clicking on a button', async () => {
+        const user = userEvent.setup({delay: null});
         const onClickSpy = jest.fn();
         render(
             <InlineConfirm>
@@ -19,12 +20,13 @@ describe('InlineConfirm', () => {
             </InlineConfirm>
         );
 
-        userEvent.click(screen.getByRole('button', {name: 'Delete'}));
+        await user.click(screen.getByRole('button', {name: 'Delete'}));
 
         expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('replace the children with a prompt when clicking on a button which requires confirmation', () => {
+    it('replace the children with a prompt when clicking on a button which requires confirmation', async () => {
+        const user = userEvent.setup({delay: null});
         render(
             <InlineConfirm>
                 <InlineConfirm.Button id="my-button-id">Remove</InlineConfirm.Button>
@@ -34,13 +36,14 @@ describe('InlineConfirm', () => {
         expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
         expect(screen.getByRole('button', {name: 'Remove'})).toBeVisible();
 
-        userEvent.click(screen.getByRole('button', {name: 'Remove'}));
+        await user.click(screen.getByRole('button', {name: 'Remove'}));
 
         expect(screen.getByText('Are you sure?')).toBeVisible();
         expect(screen.queryByRole('button', {name: 'Remove'})).not.toBeInTheDocument();
     });
 
-    it('hides the prompt when the user cancel and call onConfirm when the user confirms', () => {
+    it('hides the prompt when the user cancel and call onConfirm when the user confirms', async () => {
+        const user = userEvent.setup({delay: null});
         const confirmSpy = jest.fn();
         render(
             <InlineConfirm>
@@ -55,22 +58,23 @@ describe('InlineConfirm', () => {
             </InlineConfirm>
         );
 
-        userEvent.click(screen.getByRole('button', {name: 'Remove'}));
+        await user.click(screen.getByRole('button', {name: 'Remove'}));
         expect(screen.getByText('Are you sure?')).toBeVisible();
 
-        userEvent.click(screen.getByRole('button', {name: 'I changed my mind'}));
+        await user.click(screen.getByRole('button', {name: 'I changed my mind'}));
         expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
         expect(confirmSpy).not.toHaveBeenCalled();
 
-        userEvent.click(screen.getByRole('button', {name: 'Remove'}));
+        await user.click(screen.getByRole('button', {name: 'Remove'}));
         expect(screen.getByText('Are you sure?')).toBeVisible();
 
-        userEvent.click(screen.getByRole('button', {name: 'I confirm'}));
+        await user.click(screen.getByRole('button', {name: 'I confirm'}));
         expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
         expect(confirmSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('shows the prompt related to the clicked button', () => {
+    it('shows the prompt related to the clicked button', async () => {
+        const user = userEvent.setup({delay: null});
         render(
             <InlineConfirm>
                 <InlineConfirm.Button id="remove">Remove</InlineConfirm.Button>
@@ -81,13 +85,13 @@ describe('InlineConfirm', () => {
             </InlineConfirm>
         );
 
-        userEvent.click(screen.getByRole('button', {name: 'Remove'}));
+        await user.click(screen.getByRole('button', {name: 'Remove'}));
         expect(screen.getByText('Delete X?')).toBeVisible();
         expect(screen.queryByText('Print?')).not.toBeInTheDocument();
 
-        userEvent.click(screen.getByRole('button', {name: 'Cancel'}));
+        await user.click(screen.getByRole('button', {name: 'Cancel'}));
 
-        userEvent.click(screen.getByRole('button', {name: 'Print'}));
+        await user.click(screen.getByRole('button', {name: 'Print'}));
         expect(screen.queryByText('Delete X?')).not.toBeInTheDocument();
         expect(screen.getByText('Print?')).toBeVisible();
     });

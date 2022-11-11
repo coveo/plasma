@@ -1,3 +1,20 @@
+## 48.2.1 (2022-11-11)
+
+
+
+# 48.2.0 (2022-11-10)
+
+
+### Features
+
+* **table, Mantine:**  align cells of first column with Header (#2913) f832c4a, closes #2913
+
+
+
+## 48.1.2 (2022-11-10)
+
+
+
 ## 48.1.1 (2022-11-09)
 
 

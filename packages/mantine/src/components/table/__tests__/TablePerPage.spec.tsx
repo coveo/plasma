@@ -62,7 +62,8 @@ describe('Table.PerPage', () => {
         );
     });
 
-    it('calls onChange when changing the number of items per page', () => {
+    it('calls onChange when changing the number of items per page', async () => {
+        const user = userEvent.setup({delay: null});
         const onChange = jest.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
@@ -72,7 +73,7 @@ describe('Table.PerPage', () => {
             </Table>
         );
 
-        userEvent.click(screen.queryByRole('radio', {name: '100'}));
+        await user.click(screen.queryByRole('radio', {name: '100'}));
 
         expect(onChange).toHaveBeenCalledWith(
             expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})})

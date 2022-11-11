@@ -69,6 +69,7 @@ describe('Table', () => {
     });
 
     it('opens the collapsible rows when the user click on the toggle', async () => {
+        const user = userEvent.setup({delay: null});
         const Fixture: FunctionComponent<{row: RowData}> = ({row}) => <div>Collapsible content: {row.lastName}</div>;
         const customColumns: Array<ColumnDef<RowData>> = [
             columnHelper.accessor('firstName', {
@@ -89,7 +90,7 @@ describe('Table', () => {
 
         expect(screen.queryByText('Collapsible content: last')).not.toBeVisible();
 
-        userEvent.click(screen.getByRole('button', {name: 'arrowHeadDown'}));
+        await user.click(screen.getByRole('button', {name: 'arrowHeadDown'}));
         await waitFor(() => {
             expect(screen.queryByText('Collapsible content: last')).toBeVisible();
         });
@@ -126,7 +127,8 @@ describe('Table', () => {
         expect(allRows).toHaveLength(2);
     });
 
-    it('reset row selection when user click outside the table', () => {
+    it('reset row selection when user click outside the table', async () => {
+        const user = userEvent.setup({delay: null});
         render(
             <div>
                 <div>I'm a header</div>
@@ -144,11 +146,11 @@ describe('Table', () => {
 
         expect(row).not.toHaveClass('__mantine-ref-rowSelected');
 
-        userEvent.click(row);
+        await user.click(row);
 
         expect(row).toHaveClass('__mantine-ref-rowSelected');
 
-        userEvent.click(screen.getByText(/i'm a header/i));
+        await user.click(screen.getByText(/i'm a header/i));
 
         expect(row).not.toHaveClass('__mantine-ref-rowSelected');
     });

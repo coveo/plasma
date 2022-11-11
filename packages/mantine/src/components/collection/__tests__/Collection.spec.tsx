@@ -24,6 +24,7 @@ describe('Collection', () => {
     });
 
     it('removes the item when clicking on its remove button', async () => {
+        const user = userEvent.setup({delay: null});
         const Fixture = () => {
             const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
             return (
@@ -42,7 +43,7 @@ describe('Collection', () => {
         /* eslint-disable-next-line testing-library/no-node-access */
         const removeBanana = await within(items[0].parentElement).findByRole('button', {name: /remove/i});
 
-        userEvent.click(removeBanana);
+        await user.click(removeBanana);
 
         items = screen.getAllByTestId('item');
         // eslint-disable-next-line jest-dom/prefer-in-document
@@ -52,6 +53,7 @@ describe('Collection', () => {
     });
 
     it('calls the onRemoveItem function when clicking on a remove button', async () => {
+        const user = userEvent.setup({delay: null});
         const onRemoveItemSpy = jest.fn();
         const Fixture = () => {
             const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
@@ -67,18 +69,19 @@ describe('Collection', () => {
         expect(items).toHaveLength(2);
         /* eslint-disable-next-line testing-library/no-node-access */
         const removeOrange = await within(items[1].parentElement).findByRole('button', {name: /remove/i});
-        userEvent.click(removeOrange);
+        await user.click(removeOrange);
 
         expect(onRemoveItemSpy).toHaveBeenCalledWith(1);
 
         items = screen.getAllByTestId('item');
         const removeBanana = await within(items[0].parentElement).findByRole('button', {name: /remove/i});
-        userEvent.click(removeBanana);
+        await user.click(removeBanana);
 
         expect(onRemoveItemSpy).toHaveBeenCalledWith(0);
     });
 
     it('does not render the remove button when disabled', async () => {
+        const user = userEvent.setup({delay: null});
         const Fixture = () => {
             const [disabled, setDisabled] = useState(false);
             const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
@@ -94,11 +97,12 @@ describe('Collection', () => {
 
         render(<Fixture />);
         await screen.findAllByRole('button', {name: /remove/i});
-        userEvent.click(screen.getByRole('button', {name: /disable/i}));
+        await user.click(screen.getByRole('button', {name: /disable/i}));
         expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
     });
 
-    it('adds a new item when clicking on the add button', () => {
+    it('adds a new item when clicking on the add button', async () => {
+        const user = userEvent.setup({delay: null});
         const Fixture = () => {
             const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
             return (
@@ -113,7 +117,7 @@ describe('Collection', () => {
 
         render(<Fixture />);
         const addItem = screen.getByRole('button', {name: /add/i});
-        userEvent.click(addItem);
+        await user.click(addItem);
 
         const items = screen.getAllByTestId('item');
         expect(items).toHaveLength(3);
@@ -190,6 +194,7 @@ describe('Collection', () => {
         });
 
         it('not render the remove button after removing an item from a collection containing two items', async () => {
+            const user = userEvent.setup({delay: null});
             const Fixture = () => {
                 const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
                 return (
@@ -211,7 +216,7 @@ describe('Collection', () => {
             expect(items[0]).toHaveTextContent('banana');
             expect(items[1]).toHaveTextContent('orange');
 
-            userEvent.click(removeButtons[1]);
+            await user.click(removeButtons[1]);
 
             expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
         });
@@ -238,6 +243,7 @@ describe('Collection', () => {
 
         describe('when required is true', () => {
             it('not render the remove button after removing an item from a collection containing two items', async () => {
+                const user = userEvent.setup({delay: null});
                 const Fixture = () => {
                     const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
                     return (
@@ -265,7 +271,7 @@ describe('Collection', () => {
                 expect(items[0]).toHaveTextContent('banana');
                 expect(items[1]).toHaveTextContent('orange');
 
-                userEvent.click(removeButtons[1]);
+                await user.click(removeButtons[1]);
 
                 expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
             });
