@@ -2,7 +2,8 @@ import {render, screen, userEvent} from '@test-utils';
 import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
-    it('navigate slides using footer buttons', () => {
+    it('navigate slides using footer buttons', async () => {
+        const user = userEvent.setup({delay: null});
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -69,7 +70,7 @@ describe('ModalWizard', () => {
         });
         expect(nextButton).toBeInTheDocument();
 
-        userEvent.click(nextButton);
+        await user.click(nextButton);
 
         expect(
             screen.getByRole('heading', {
@@ -96,7 +97,7 @@ describe('ModalWizard', () => {
         });
         expect(nextButton).toBeInTheDocument();
 
-        userEvent.click(nextButton);
+        await user.click(nextButton);
 
         expect(
             screen.getByRole('heading', {
@@ -125,7 +126,7 @@ describe('ModalWizard', () => {
         expect(nextButton).toBeInTheDocument();
         expect(nextButton).toBeDisabled();
 
-        userEvent.click(
+        await user.click(
             screen.getByRole('button', {
                 name: /previous/i,
             })
@@ -152,7 +153,8 @@ describe('ModalWizard', () => {
         ).toBeInTheDocument();
     });
 
-    it('modal wizard onClose', () => {
+    it('modal wizard onClose', async () => {
+        const user = userEvent.setup({delay: null});
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -182,12 +184,13 @@ describe('ModalWizard', () => {
         const closeButton = screen.getByRole('button', {
             name: /closebuttonlabel/i,
         });
-        userEvent.click(closeButton);
+        await user.click(closeButton);
 
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('modal wizard onCancel', () => {
+    it('modal wizard onCancel', async () => {
+        const user = userEvent.setup({delay: null});
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -217,12 +220,13 @@ describe('ModalWizard', () => {
         const cancelButton = screen.getByRole('button', {
             name: /cancel/i,
         });
-        userEvent.click(cancelButton);
+        await user.click(cancelButton);
 
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('modal wizard onFinish', () => {
+    it('modal wizard onFinish', async () => {
+        const user = userEvent.setup({delay: null});
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -254,11 +258,12 @@ describe('ModalWizard', () => {
             name: /finish/i,
         });
 
-        userEvent.click(finishButton);
+        await user.click(finishButton);
         expect(onFinish).toHaveBeenCalledTimes(1);
     });
 
-    it('handle dirty state if user confirms close', () => {
+    it('handle dirty state if user confirms close', async () => {
+        const user = userEvent.setup({delay: null});
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -295,13 +300,14 @@ describe('ModalWizard', () => {
         });
 
         handleDirtyState.mockReturnValueOnce(true);
-        userEvent.click(closeButton);
+        await user.click(closeButton);
 
         expect(handleDirtyState).toHaveBeenCalledTimes(1);
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('handle dirty state if user confirms cancel', () => {
+    it('handle dirty state if user confirms cancel', async () => {
+        const user = userEvent.setup({delay: null});
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -338,7 +344,7 @@ describe('ModalWizard', () => {
         });
 
         handleDirtyState.mockReturnValueOnce(false);
-        userEvent.click(closeButton);
+        await user.click(closeButton);
         expect(handleDirtyState).toHaveBeenCalledTimes(1);
         expect(onClose).toHaveBeenCalledTimes(0);
     });

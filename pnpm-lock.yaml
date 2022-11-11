@@ -119,7 +119,7 @@ importers:
       '@testing-library/dom': 8.18.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
-      '@testing-library/user-event': 12.8.3
+      '@testing-library/user-event': 14.4.3
       '@types/jest': 29.1.2
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/react': ^18.0
@@ -168,7 +168,7 @@ importers:
       '@testing-library/dom': 8.18.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
-      '@testing-library/user-event': 12.8.3_znccgeejomvff3jrsk3ljovfpu
+      '@testing-library/user-event': 14.4.3_znccgeejomvff3jrsk3ljovfpu
       '@types/jest': 29.1.2
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/react': 18.0.25
@@ -3103,16 +3103,6 @@ packages:
       '@types/react-dom': 18.0.8
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dev: true
-
-  /@testing-library/user-event/12.8.3_znccgeejomvff3jrsk3ljovfpu:
-    resolution: {integrity: sha512-IR0iWbFkgd56Bu5ZI/ej8yQwrkCv8Qydx6RzwbKz9faXazR/+5tvYKsZQgyXJiwgpcva127YO6JcWy7YlCfofQ==}
-    engines: {node: '>=10', npm: '>=6'}
-    peerDependencies:
-      '@testing-library/dom': '>=7.21.4'
-    dependencies:
-      '@babel/runtime': 7.20.1
-      '@testing-library/dom': 8.18.1
     dev: true
 
   /@testing-library/user-event/14.4.3_znccgeejomvff3jrsk3ljovfpu:

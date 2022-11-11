@@ -69,6 +69,7 @@ describe('Table.Predicate', () => {
     });
 
     it('calls onChange when changing the predicate', async () => {
+        const user = userEvent.setup({delay: null});
         const onChange = jest.fn();
         render(
             <Table
@@ -97,13 +98,13 @@ describe('Table.Predicate', () => {
             ).toHaveValue('Second');
         });
 
-        userEvent.click(
+        await user.click(
             screen.getByRole('searchbox', {
                 name: 'rank',
             })
         );
 
-        userEvent.click(
+        await user.click(
             screen.getByRole('option', {
                 name: 'First',
             })
