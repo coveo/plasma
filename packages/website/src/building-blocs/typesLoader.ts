@@ -35,6 +35,7 @@ const plasmaReactIconsTypes = require.context(
 );
 const mantineCoreTypes = require.context('!!raw-loader!@mantine/core/lib', true, /\.d\.ts$/i, 'lazy-once');
 const mantineHooksTypes = require.context('!!raw-loader!@mantine/hooks/lib', true, /\.d\.ts$/i, 'lazy-once');
+const mantineFormTypes = require.context('!!raw-loader!@mantine/form/lib', true, /\.d\.ts$/i, 'lazy-once');
 const momentJsTypes = require.context('!!raw-loader!moment', true, /\.d\.ts$/i, 'lazy-once');
 const reduxTypes = require.context('!!raw-loader!redux', true, /\.d\.ts$/i, 'lazy-once');
 const loremIpsumTypes = require.context('!!raw-loader!lorem-ipsum/types/src', true, /\.d\.ts$/i, 'lazy-once');
@@ -66,6 +67,7 @@ const loadAll: Promise<Map<string, string>> = Promise.all([
     ...momentJsTypes.keys().map((path) => load(path, momentJsTypes, '/node_modules/moment')),
     ...mantineCoreTypes.keys().map((path) => load(path, mantineCoreTypes, '/node_modules/@mantine/core')),
     ...mantineHooksTypes.keys().map((path) => load(path, mantineHooksTypes, '/node_modules/@mantine/hooks')),
+    ...mantineFormTypes.keys().map((path) => load(path, mantineFormTypes, '/node_modules/@mantine/form')),
 ]).then(([map, ...mappedTypes]) => {
     mappedTypes.forEach(({path, content}) => {
         map.set(path, content);
