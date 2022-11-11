@@ -1,7 +1,7 @@
 import {DateRangePickerValue} from '@mantine/dates';
 import {UseFormReturnType} from '@mantine/form';
 import {TableState} from '@tanstack/react-table';
-import {createContext, Dispatch} from 'react';
+import {createContext, Dispatch, RefObject} from 'react';
 
 export type onTableChangeEvent = (params: TableState & TableFormType) => void;
 
@@ -51,6 +51,10 @@ type TableContextType = {
      * Form used to handle predicates and dateRange
      */
     form: UseFormReturnType<TableFormType>;
+    /**
+     * Table container ref
+     */
+    containerRef: RefObject<HTMLDivElement>;
 };
 
 export const TableContext = createContext<TableContextType | null>(null);
