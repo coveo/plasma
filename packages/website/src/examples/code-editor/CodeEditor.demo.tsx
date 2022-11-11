@@ -1,5 +1,4 @@
-import {useForm} from '@mantine/form';
-import {CodeEditor} from './CodeEditor';
+import {CodeEditor, useForm} from '@coveord/plasma-mantine';
 
 export default () => {
     const form = useForm({
@@ -19,6 +18,7 @@ export default () => {
                 return null;
             },
         },
+        validateInputOnBlur: true,
     });
 
     return (
@@ -26,6 +26,7 @@ export default () => {
             language="json"
             label="Configuration"
             description="This JSON configuration is very important"
+            monacoLoader="cdn"
             {...form.getInputProps('config')}
         />
     );
