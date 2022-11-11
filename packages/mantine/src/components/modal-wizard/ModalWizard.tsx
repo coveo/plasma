@@ -163,7 +163,7 @@ export const ModalWizard: ModalWizardType = ({
                 <Button
                     name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
                     disabled={false}
-                    size="md"
+                    size="sm"
                     variant="outline"
                     onClick={() => {
                         if (isFirstStep) {
@@ -179,7 +179,7 @@ export const ModalWizard: ModalWizardType = ({
 
                 <Button
                     disabled={!isValid}
-                    size="md"
+                    size="sm"
                     onClick={() => {
                         if (isLastStep) {
                             onFinish ? onFinish() : onClose();
