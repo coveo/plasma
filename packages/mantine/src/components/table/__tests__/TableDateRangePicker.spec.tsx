@@ -46,6 +46,7 @@ describe('Table.DateRangePicker', () => {
     });
 
     it('displays the selected date range in the table', async () => {
+        const user = userEvent.setup({delay: null});
         const onChange = jest.fn();
         render(
             <Table
@@ -65,19 +66,19 @@ describe('Table.DateRangePicker', () => {
         await screen.findByText('Jan 01, 2022 - Jan 07, 2022');
         await screen.findByRole('button', {name: 'calendar'});
 
-        userEvent.click(screen.getByRole('button', {name: 'calendar'}));
+        await user.click(screen.getByRole('button', {name: 'calendar'}));
 
         await screen.findByRole('dialog');
 
         // select a preset
-        userEvent.click(
+        await user.click(
             screen.getByRole('searchbox', {
                 name: 'Date range',
             })
         );
-        userEvent.click(screen.getByRole('option', {name: 'Preset'}));
+        await user.click(screen.getByRole('option', {name: 'Preset'}));
 
-        userEvent.click(screen.getByRole('button', {name: 'Apply'}));
+        await user.click(screen.getByRole('button', {name: 'Apply'}));
 
         await waitFor(() => expect(screen.queryByText('Jan 08, 2022 - Jan 14, 2022')).toBeVisible());
         expect(onChange).toHaveBeenCalledWith(
