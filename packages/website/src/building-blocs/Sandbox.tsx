@@ -88,13 +88,22 @@ export const Sandbox = ({id, title, children, horizontal}: SandboxProps) => {
                     .replace(/_jsxRuntime/g, 'jsxRuntime')
                     .replace(/_react/g, 'React')
                     .replace(/_plasmaReact/g, 'PlasmaReact') // use plasma-react from the window Plasma object
+                    .replace(/_plasmaMantine/g, 'PlasmaMantine') // use plasma-react from the window Plasma object
                     .replace(/_reactRedux/g, 'ReactRedux') // use react-redux from the window ReactRedux object
                     .replace(/_redux/g, 'Redux') // use redux from the window Redux object
                     .replace(/_loremIpsum/g, 'LoremIpsum')
                     .replaceAll('(0, _moment).default', 'moment') // replace the moment object
                     .replace(/_moment.default/g, 'moment') + // replace the moment() function
                 `const store = Redux.createStore(Redux.combineReducers(PlasmaReact.PlasmaReducers), Redux.applyMiddleware(ThunkMiddleware, PromiseMiddleware));
-                ReactDOM.render(jsxRuntime.jsx(ReactRedux.Provider, {store, children: jsxRuntime.jsx(_default, {})}), document.getElementById('${id}'));`;
+                ReactDOM.render(
+                    jsxRuntime.jsx(PlasmaMantine.Plasmantine, {
+                        children: jsxRuntime.jsx(
+                            ReactRedux.Provider, 
+                            {store, children: jsxRuntime.jsx(_default, {})},
+                        )
+                    }),
+                    document.getElementById('${id}')
+                );`;
 
             // eslint-disable-next-line no-eval
             eval(userCodeToEvaluate);
