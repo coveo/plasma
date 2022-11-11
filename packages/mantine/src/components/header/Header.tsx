@@ -34,7 +34,7 @@ export const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                         ) : null}
                     </Group>
                 </Title>
-                <Text>{description}</Text>
+                <Text size="sm">{description}</Text>
             </Stack>
             <Group spacing="xs">{actions}</Group>
         </Group>
