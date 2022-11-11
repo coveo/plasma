@@ -5,13 +5,13 @@ export interface PropsTableProps {
     propsMetadata?: ComponentMetadata[];
 }
 
-export const PropsDoc: FunctionComponent<PropsTableProps> = ({propsMetadata = []}) => {
+export const PropsTable: FunctionComponent<PropsTableProps> = ({propsMetadata = []}) => {
     if (propsMetadata.length < 1) {
         return <p>This component has no props.</p>;
     }
 
     return (
-        <div className="props-doc">
+        <div className="props-table">
             <table className="full-content-x">
                 <thead className="body-m">
                     <tr>
@@ -40,7 +40,7 @@ export const PropsDoc: FunctionComponent<PropsTableProps> = ({propsMetadata = []
                                 <td className="py1">
                                     {deprecation !== null && <div>{deprecation}</div>}
                                     <div>{description}</div>
-                                    {params && (
+                                    {params?.length > 0 && (
                                         <ul className="mt1">
                                             {params.map(({parameterName, text}) => (
                                                 <li key={parameterName}>

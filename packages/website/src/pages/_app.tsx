@@ -6,7 +6,7 @@ import '../styles/main.scss';
 import '../styles/page-header.scss';
 import '../styles/page-layout.scss';
 import '../styles/plasmaSearchBar.scss';
-import '../styles/props-doc.scss';
+import '../styles/props-table.scss';
 import '../styles/sandbox.scss';
 import '../styles/spacing.scss';
 import '../styles/tile.scss';

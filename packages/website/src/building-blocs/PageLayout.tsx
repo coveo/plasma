@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
 import {PlasmaLoading} from './PlasmaLoading';
-import {PropsDoc, PropsTableProps} from './PropsTable';
+import {PropsTable, PropsTableProps} from './PropsTable';
 import {type SandboxProps} from './Sandbox';
 import {Tile, TileProps} from './Tile';
 
@@ -110,7 +110,7 @@ const Content: FunctionComponent<
         {withPropsTable && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb1">Props</h4>
-                <PropsDoc propsMetadata={propsMetadata} />
+                <PropsTable propsMetadata={propsMetadata} />
             </div>
         )}
         {examples && (
