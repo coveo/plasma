@@ -4,7 +4,7 @@ import {StickyFooter} from '../sticky-footer';
 import {ModalWizardStep} from './ModalWizardStep';
 import {Header} from '../header';
 
-interface ModalWizardProps extends Omit<ModalProps, 'title' | 'centered'> {
+interface ModalWizardProps extends Omit<ModalProps, 'centered'> {
     /**
      * The label of the cancel button
      *
@@ -77,6 +77,7 @@ export const ModalWizard: ModalWizardType = ({
     nextButtonLabel = 'Next',
     previousButtonLabel = 'Previous',
     finishButtonLabel = 'Finish',
+    title,
     opened,
     onNext,
     onPrevious,
