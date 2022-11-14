@@ -2,8 +2,7 @@ import {render, screen, userEvent} from '@test-utils';
 import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
-    it('navigate slides using footer buttons', async () => {
-        const user = userEvent.setup({delay: null});
+    it('navigate slides using footer buttons', () => {
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -38,6 +37,8 @@ describe('ModalWizard', () => {
                 closeButtonLabel="closebuttonlabel"
                 isDirty={isDirty}
                 handleDirtyState={() => confirm('Are you sure you want to close?')}
+                opened={true}
+                onClose={() => {}}
             >
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
@@ -70,7 +71,7 @@ describe('ModalWizard', () => {
         });
         expect(nextButton).toBeInTheDocument();
 
-        await user.click(nextButton);
+        userEvent.click(nextButton);
 
         expect(
             screen.getByRole('heading', {
@@ -97,7 +98,7 @@ describe('ModalWizard', () => {
         });
         expect(nextButton).toBeInTheDocument();
 
-        await user.click(nextButton);
+        userEvent.click(nextButton);
 
         expect(
             screen.getByRole('heading', {
@@ -126,7 +127,7 @@ describe('ModalWizard', () => {
         expect(nextButton).toBeInTheDocument();
         expect(nextButton).toBeDisabled();
 
-        await user.click(
+        userEvent.click(
             screen.getByRole('button', {
                 name: /previous/i,
             })
@@ -153,8 +154,7 @@ describe('ModalWizard', () => {
         ).toBeInTheDocument();
     });
 
-    it('modal wizard onClose', async () => {
-        const user = userEvent.setup({delay: null});
+    it('modal wizard onClose', () => {
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -168,7 +168,7 @@ describe('ModalWizard', () => {
         const onClose = jest.fn();
 
         render(
-            <ModalWizard isDirty={isDirty} onClose={onClose} closeButtonLabel="closebuttonlabel">
+            <ModalWizard isDirty={isDirty} onClose={onClose} closeButtonLabel="closebuttonlabel" opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
@@ -184,13 +184,12 @@ describe('ModalWizard', () => {
         const closeButton = screen.getByRole('button', {
             name: /closebuttonlabel/i,
         });
-        await user.click(closeButton);
+        userEvent.click(closeButton);
 
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('modal wizard onCancel', async () => {
-        const user = userEvent.setup({delay: null});
+    it('modal wizard onCancel', () => {
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -204,7 +203,7 @@ describe('ModalWizard', () => {
         const onClose = jest.fn();
 
         render(
-            <ModalWizard isDirty={isDirty} onClose={onClose}>
+            <ModalWizard isDirty={isDirty} onClose={onClose} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
@@ -220,13 +219,12 @@ describe('ModalWizard', () => {
         const cancelButton = screen.getByRole('button', {
             name: /cancel/i,
         });
-        await user.click(cancelButton);
+        userEvent.click(cancelButton);
 
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('modal wizard onFinish', async () => {
-        const user = userEvent.setup({delay: null});
+    it('modal wizard onFinish', () => {
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -241,7 +239,7 @@ describe('ModalWizard', () => {
         const onFinish = jest.fn();
 
         render(
-            <ModalWizard isDirty={isDirty} onClose={onClose} onFinish={onFinish}>
+            <ModalWizard isDirty={isDirty} onClose={onClose} onFinish={onFinish} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
@@ -258,12 +256,11 @@ describe('ModalWizard', () => {
             name: /finish/i,
         });
 
-        await user.click(finishButton);
+        userEvent.click(finishButton);
         expect(onFinish).toHaveBeenCalledTimes(1);
     });
 
-    it('handle dirty state if user confirms close', async () => {
-        const user = userEvent.setup({delay: null});
+    it('handle dirty state if user confirms close', () => {
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -283,6 +280,7 @@ describe('ModalWizard', () => {
                 onClose={onClose}
                 handleDirtyState={handleDirtyState}
                 closeButtonLabel="closebuttonlabel"
+                opened={true}
             >
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
@@ -300,14 +298,13 @@ describe('ModalWizard', () => {
         });
 
         handleDirtyState.mockReturnValueOnce(true);
-        await user.click(closeButton);
+        userEvent.click(closeButton);
 
         expect(handleDirtyState).toHaveBeenCalledTimes(1);
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('handle dirty state if user confirms cancel', async () => {
-        const user = userEvent.setup({delay: null});
+    it('handle dirty state if user confirms cancel', () => {
         const modelSteps = [
             {
                 docLink: 'https://google.com',
@@ -327,6 +324,7 @@ describe('ModalWizard', () => {
                 onClose={onClose}
                 handleDirtyState={handleDirtyState}
                 closeButtonLabel="closebuttonlabel"
+                opened={true}
             >
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
@@ -344,7 +342,7 @@ describe('ModalWizard', () => {
         });
 
         handleDirtyState.mockReturnValueOnce(false);
-        await user.click(closeButton);
+        userEvent.click(closeButton);
         expect(handleDirtyState).toHaveBeenCalledTimes(1);
         expect(onClose).toHaveBeenCalledTimes(0);
     });

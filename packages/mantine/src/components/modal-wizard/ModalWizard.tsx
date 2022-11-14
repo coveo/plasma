@@ -1,10 +1,10 @@
-import {Button, DefaultProps, Modal, ModalProps, Progress} from '@mantine/core';
+import {Button, Modal, ModalProps, Progress} from '@mantine/core';
 import {Children, ReactElement, useMemo, useState} from 'react';
 import {StickyFooter} from '../sticky-footer';
 import {ModalWizardStep} from './ModalWizardStep';
 import {Header} from '../header';
 
-interface ModalWizardProps extends DefaultProps {
+interface ModalWizardProps extends Omit<ModalProps, 'title' | 'centered'> {
     /**
      * The label of the cancel button
      *
@@ -44,11 +44,6 @@ interface ModalWizardProps extends DefaultProps {
     onPrevious?: () => unknown;
 
     /**
-     * A callback function that is executed when the user clicks on the cancel button
-     */
-    onClose?: () => unknown;
-
-    /**
      * A function that is executed when user completes all the steps.
      *
      * @param close A function that closes the modal when called.
@@ -64,16 +59,6 @@ interface ModalWizardProps extends DefaultProps {
      * A function to confirm close if the state is dirty before closing
      */
     handleDirtyState?: () => boolean;
-
-    /**
-     * Props to pass to each modal
-     */
-    modalProps?: Partial<ModalProps>;
-
-    /**
-     * Label for close button
-     */
-    closeButtonLabel?: string;
 
     /**
      * Children to display in modal wizard
@@ -92,16 +77,16 @@ export const ModalWizard: ModalWizardType = ({
     nextButtonLabel = 'Next',
     previousButtonLabel = 'Previous',
     finishButtonLabel = 'Finish',
+    opened,
     onNext,
     onPrevious,
     onClose,
     onFinish,
     isDirty,
-    modalProps,
     handleDirtyState,
     classNames,
-    closeButtonLabel,
     children,
+    ...modalProps
 }) => {
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const modalSteps = (Children.toArray(children) as ReactElement[]).filter((child) => child.type === ModalWizardStep);
@@ -134,10 +119,9 @@ export const ModalWizard: ModalWizardType = ({
 
     return (
         <Modal
-            opened
+            opened={opened}
             classNames={classNames}
             centered
-            closeButtonLabel={closeButtonLabel}
             title={
                 <Header
                     docLink={currentStep.props.docLink}
