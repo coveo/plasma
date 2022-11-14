@@ -38,7 +38,7 @@ describe('ModalWizard', () => {
                 isDirty={isDirty}
                 handleDirtyState={() => confirm('Are you sure you want to close?')}
                 opened={true}
-                onClose={() => {}}
+                onClose={undefined}
             >
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
