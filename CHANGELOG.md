@@ -1,3 +1,12 @@
+# 48.4.0 (2022-11-14)
+
+
+### Features
+
+* **props-analyzer:** add suffix option to avoid collisions (#2926) 0ba8901, closes #2926
+
+
+
 # 48.3.0 (2022-11-11)
 
 
