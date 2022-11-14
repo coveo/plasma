@@ -1,3 +1,12 @@
+# 48.3.0 (2022-11-11)
+
+
+### Features
+
+* **table pagination, Mantine:**  scroll back up the table when changing pages (#2920) 0ffb578, closes #2920
+
+
+
 ## 48.2.1 (2022-11-11)
 
 
