@@ -18,7 +18,7 @@ export interface Component {
     propsType?: 'auto' | string;
     /**
      * Suffix to add to the exported name.
-     * Usefull to avoid name collisions
+     * Useful to avoid name collisions
      */
     suffix?: string;
 }
