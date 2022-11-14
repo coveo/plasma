@@ -16,15 +16,16 @@ const generateProps = async () => {
     const promises = componentsList.map(async (component) => {
         const operations: Array<Promise<void>> = [];
         const props = getPropsOfComponent(component, env);
+        const name = component.name + (component?.suffix ?? '');
         operations.push(
             outputFile(
-                `./src/components/${component.name}.ts`,
+                `./src/components/${name}.ts`,
                 `// Don't edit this file, it is automatically generated on each build
                 import {ComponentMetadata} from '../ComponentsList';
-                export const ${component.name}Metadata: ComponentMetadata[] = ${JSON.stringify(props)};`
+                export const ${name}Metadata: ComponentMetadata[] = ${JSON.stringify(props)};`
             )
         );
-        operations.push(appendFile('./src/components/index.ts', `export * from './${component.name}';\n`));
+        operations.push(appendFile('./src/components/index.ts', `export * from './${name}';\n`));
         return Promise.all(operations);
     });
 

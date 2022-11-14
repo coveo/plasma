@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-components-props-analyzer",
-    "version": "48.3.0",
+    "version": "48.4.0",
     "private": true,
     "description": "",
     "keywords": [],
@@ -15,7 +15,7 @@
         "compile": "node ../../scripts/build",
         "gen:props": "ts-node --project ./bin/tsconfig.json ./bin/index.ts",
         "prettify": "prettier --write 'src/components/*.ts'",
-        "start": "nodemon --watch 'src/ComponentsList.ts' --exec 'pnpm build'"
+        "start": "nodemon --watch 'src/ComponentsList.ts' --exec 'pnpm build' --on-change-only"
     },
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",
