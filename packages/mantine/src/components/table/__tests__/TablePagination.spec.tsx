@@ -9,6 +9,14 @@ const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
 
 describe('Table.Pagination', () => {
+    beforeEach(() => {
+        if (!HTMLElement.prototype.scrollIntoView) {
+            HTMLElement.prototype.scrollIntoView = () => {
+                jest.fn();
+            };
+        }
+    });
+
     it('displays the number of pages', () => {
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
