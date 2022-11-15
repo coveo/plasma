@@ -1,3 +1,12 @@
+# 48.9.0 (2022-11-15)
+
+
+### Features
+
+* **website:** add demo page for the Mantine Collection component (#2929) 488af41, closes #2929
+
+
+
 # 48.8.0 (2022-11-15)
 
 
