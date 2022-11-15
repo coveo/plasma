@@ -276,6 +276,11 @@ const components: Component[] = [
         name: 'SlideY',
         packageName: '@coveord/plasma-react',
     },
+    {
+        name: 'Header',
+        packageName: '@coveord/plasma-mantine',
+        suffix: 'Mantine',
+    },
 ];
 
 export default components;
