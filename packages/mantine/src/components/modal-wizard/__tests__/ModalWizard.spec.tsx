@@ -45,7 +45,7 @@ describe('ModalWizard', () => {
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -176,7 +176,7 @@ describe('ModalWizard', () => {
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -212,7 +212,7 @@ describe('ModalWizard', () => {
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -249,7 +249,7 @@ describe('ModalWizard', () => {
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -292,7 +292,7 @@ describe('ModalWizard', () => {
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -337,7 +337,7 @@ describe('ModalWizard', () => {
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
