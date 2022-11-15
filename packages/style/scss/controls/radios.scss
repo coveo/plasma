@@ -117,7 +117,7 @@ $labelIndent: $radio-button-size + $radio-button-option-height;
 
         &:hover {
             box-shadow: var(--medium-elevation-on-light);
-            transform: translate3d(0px, -8px, 0px);
+            transform: translate3d(0px, -4px, 0px);
             cursor: pointer !important;
         }
         *:hover:not(a) {
