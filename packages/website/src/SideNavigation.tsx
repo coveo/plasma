@@ -85,6 +85,7 @@ export const Navigation: FunctionComponent = () => {
                 <NavLink href="/foundations/Spacing" label="Spacing" />
             </CollapsibleSideSection>
             <CollapsibleSideSection title="Mantine">
+                <NavLink href="/mantine/Collection" label="Collection" />
                 <NavLink href="/mantine/Header" label="Page Header" />
             </CollapsibleSideSection>
             <CollapsibleSideSection title="Layout">
