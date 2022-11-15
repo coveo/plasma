@@ -1,3 +1,12 @@
+# 48.7.0 (2022-11-15)
+
+
+### Features
+
+* **plasma-mantine:** make ModalWizard more customizable (#2919) 283e442, closes #2919
+
+
+
 # 48.6.0 (2022-11-15)
 
 
