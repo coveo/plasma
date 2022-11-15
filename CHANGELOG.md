@@ -1,3 +1,12 @@
+# 48.6.0 (2022-11-15)
+
+
+### Features
+
+* **website:** add a demo page for the manine header component (#2927) 976d159, closes #2927
+
+
+
 # 48.5.0 (2022-11-15)
 
 
