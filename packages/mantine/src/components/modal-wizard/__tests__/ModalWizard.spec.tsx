@@ -2,30 +2,32 @@ import {render, screen, userEvent} from '@test-utils';
 import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
-    it('navigate slides using footer buttons', () => {
+    it('navigate modal steps using footer buttons', async () => {
+        const user = userEvent.setup();
+
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 2</div>,
             },
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: false}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: false}),
                 element: <div> Slide 3</div>,
             },
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: false}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: false}),
                 element: <div> Unreachable slide</div>,
             },
         ];
@@ -71,7 +73,7 @@ describe('ModalWizard', () => {
         });
         expect(nextButton).toBeInTheDocument();
 
-        userEvent.click(nextButton);
+        await user.click(nextButton);
 
         expect(
             screen.getByRole('heading', {
@@ -98,7 +100,7 @@ describe('ModalWizard', () => {
         });
         expect(nextButton).toBeInTheDocument();
 
-        userEvent.click(nextButton);
+        await user.click(nextButton);
 
         expect(
             screen.getByRole('heading', {
@@ -127,7 +129,7 @@ describe('ModalWizard', () => {
         expect(nextButton).toBeInTheDocument();
         expect(nextButton).toBeDisabled();
 
-        userEvent.click(
+        await user.click(
             screen.getByRole('button', {
                 name: /previous/i,
             })
@@ -154,12 +156,14 @@ describe('ModalWizard', () => {
         ).toBeInTheDocument();
     });
 
-    it('modal wizard onClose', () => {
+    it('calls the onClose prop when closing the modal', async () => {
+        const user = userEvent.setup();
+
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -184,17 +188,18 @@ describe('ModalWizard', () => {
         const closeButton = screen.getByRole('button', {
             name: /closebuttonlabel/i,
         });
-        userEvent.click(closeButton);
+        await user.click(closeButton);
 
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('modal wizard onCancel', () => {
+    it('closes the modal when clicking on cancel', async () => {
+        const user = userEvent.setup();
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -219,17 +224,18 @@ describe('ModalWizard', () => {
         const cancelButton = screen.getByRole('button', {
             name: /cancel/i,
         });
-        userEvent.click(cancelButton);
+        await user.click(cancelButton);
 
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('modal wizard onFinish', () => {
+    it('calls onFinish prop when clicking on finish button', async () => {
+        const user = userEvent.setup();
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -256,16 +262,17 @@ describe('ModalWizard', () => {
             name: /finish/i,
         });
 
-        userEvent.click(finishButton);
+        await user.click(finishButton);
         expect(onFinish).toHaveBeenCalledTimes(1);
     });
 
-    it('handle dirty state if user confirms close', () => {
+    it('triggers handleDirty callback when the modal wizard has dirty state', async () => {
+        const user = userEvent.setup();
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -298,18 +305,19 @@ describe('ModalWizard', () => {
         });
 
         handleDirtyState.mockReturnValueOnce(true);
-        userEvent.click(closeButton);
+        await user.click(closeButton);
 
         expect(handleDirtyState).toHaveBeenCalledTimes(1);
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('handle dirty state if user confirms cancel', () => {
+    it('close the modal if user confirms close when the modal wizard has dirty state ', async () => {
+        const user = userEvent.setup();
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -342,7 +350,7 @@ describe('ModalWizard', () => {
         });
 
         handleDirtyState.mockReturnValueOnce(false);
-        userEvent.click(closeButton);
+        await user.click(closeButton);
         expect(handleDirtyState).toHaveBeenCalledTimes(1);
         expect(onClose).toHaveBeenCalledTimes(0);
     });
