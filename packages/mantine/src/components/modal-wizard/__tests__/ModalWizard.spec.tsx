@@ -311,7 +311,7 @@ describe('ModalWizard', () => {
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('close the modal if user confirms close when the modal wizard has dirty state ', async () => {
+    it('close the modal if user confirms close when the modal wizard has dirty state', async () => {
         const user = userEvent.setup();
         const modelSteps = [
             {
