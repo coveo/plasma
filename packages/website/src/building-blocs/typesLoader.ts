@@ -15,8 +15,14 @@ export const compilerOptions: ts.CompilerOptions = {
 };
 
 const typesFiles = require.context('!!raw-loader!@types', true, /\.d\.ts$/i, 'lazy-once');
-const plasmaTypes = require.context(
+const plasmaReactTypes = require.context(
     '!!raw-loader!@coveord/plasma-react/dist/definitions',
+    true,
+    /\.d\.ts$/i,
+    'lazy-once'
+);
+const plasmaMantineTypes = require.context(
+    '!!raw-loader!@coveord/plasma-mantine/dist/definitions',
     true,
     /\.d\.ts$/i,
     'lazy-once'
@@ -27,6 +33,8 @@ const plasmaReactIconsTypes = require.context(
     /\.d\.ts$/i,
     'lazy-once'
 );
+const mantineCoreTypes = require.context('!!raw-loader!@mantine/core/lib', true, /\.d\.ts$/i, 'lazy-once');
+const mantineHooksTypes = require.context('!!raw-loader!@mantine/hooks/lib', true, /\.d\.ts$/i, 'lazy-once');
 const momentJsTypes = require.context('!!raw-loader!moment', true, /\.d\.ts$/i, 'lazy-once');
 const reduxTypes = require.context('!!raw-loader!redux', true, /\.d\.ts$/i, 'lazy-once');
 const loremIpsumTypes = require.context('!!raw-loader!lorem-ipsum/types/src', true, /\.d\.ts$/i, 'lazy-once');
@@ -50,11 +58,14 @@ const loadAll: Promise<Map<string, string>> = Promise.all([
     ...loremIpsumTypes.keys().map((path) => load(path, loremIpsumTypes, '/node_modules/lorem-ipsum')),
     ...reduxTypes.keys().map((path) => load(path, reduxTypes, '/node_modules/redux')),
     ...rcSliderTypes.keys().map((path) => load(path, rcSliderTypes, '/node_modules/rc-slider')),
-    ...plasmaTypes.keys().map((path) => load(path, plasmaTypes, '/node_modules/@coveord/plasma-react')),
+    ...plasmaReactTypes.keys().map((path) => load(path, plasmaReactTypes, '/node_modules/@coveord/plasma-react')),
+    ...plasmaMantineTypes.keys().map((path) => load(path, plasmaMantineTypes, '/node_modules/@coveord/plasma-mantine')),
     ...plasmaReactIconsTypes
         .keys()
         .map((path) => load(path, plasmaReactIconsTypes, '/node_modules/@coveord/plasma-react-icons')),
     ...momentJsTypes.keys().map((path) => load(path, momentJsTypes, '/node_modules/moment')),
+    ...mantineCoreTypes.keys().map((path) => load(path, mantineCoreTypes, '/node_modules/@mantine/core')),
+    ...mantineHooksTypes.keys().map((path) => load(path, mantineHooksTypes, '/node_modules/@mantine/hooks')),
 ]).then(([map, ...mappedTypes]) => {
     mappedTypes.forEach(({path, content}) => {
         map.set(path, content);

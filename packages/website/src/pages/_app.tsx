@@ -13,6 +13,7 @@ import '../styles/tile.scss';
 import '../styles/colors.scss';
 
 import * as PlasmaReact from '@coveord/plasma-react';
+import * as PlasmaMantine from '@coveord/plasma-mantine';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import * as LoremIpsum from 'lorem-ipsum';
 import moment from 'moment';
@@ -60,6 +61,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         (window as any).React = React;
         (window as any).ReactRedux = ReactRedux;
         (window as any).PlasmaReact = PlasmaReact;
+        (window as any).PlasmaMantine = PlasmaMantine;
         (window as any).PlasmaReactIcons = PlasmaReactIcons;
         (window as any).moment = moment;
         (window as any).LoremIpsum = LoremIpsum;
@@ -74,21 +76,26 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     }, []);
 
     return (
-        <ReactRedux.Provider store={Store}>
-            <EngineProvider>
-                <Head>
-                    <title>Plasma Design System</title>
-                    <meta property="og:title" content="Plasma Design System" key="title" />
-                </Head>
-                <Header />
-                <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
-                    <Navigation />
-                    <div className="coveo-form flex-auto relative overflow-auto demo-content">
-                        <Component {...pageProps} />
-                    </div>
-                </div>
-            </EngineProvider>
-        </ReactRedux.Provider>
+        <>
+            <Head>
+                <title>Plasma Design System</title>
+                <meta property="og:title" content="Plasma Design System" key="title" />
+            </Head>
+
+            <ReactRedux.Provider store={Store}>
+                <EngineProvider>
+                    <PlasmaMantine.Plasmantine>
+                        <Header />
+                        <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
+                            <Navigation />
+                            <div className="coveo-form flex-auto relative overflow-auto demo-content">
+                                <Component {...pageProps} />
+                            </div>
+                        </div>
+                    </PlasmaMantine.Plasmantine>
+                </EngineProvider>
+            </ReactRedux.Provider>
+        </>
     );
 };
 

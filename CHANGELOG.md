@@ -1,3 +1,21 @@
+# 48.6.0 (2022-11-15)
+
+
+### Features
+
+* **website:** add a demo page for the manine header component (#2927) 976d159, closes #2927
+
+
+
+# 48.5.0 (2022-11-15)
+
+
+### Features
+
+* **website:** setup mantine in website (#2925) c1e1e19, closes #2925
+
+
+
 # 48.4.0 (2022-11-14)
 
 

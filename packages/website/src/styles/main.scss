@@ -5,10 +5,6 @@
 
 #App {
     overflow: hidden;
-    color: var(--default-text-color);
-    font-weight: var(--main-font-regular);
-    font-size: var(--default-font-size);
-
     .demo-header {
         display: grid;
         grid-template-columns: 261px 1fr 261px;

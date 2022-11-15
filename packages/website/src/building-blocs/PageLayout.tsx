@@ -1,7 +1,6 @@
-import {TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
+import {Tabs} from '@coveord/plasma-mantine';
 import dynamic from 'next/dynamic';
 import {FunctionComponent, ReactNode} from 'react';
-import {useSelector} from 'react-redux';
 
 import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
@@ -40,64 +39,51 @@ export const PageLayout = ({
     description,
     thumbnail,
     section,
-    code,
-    layout = 'horizontal',
-    examples,
+    children,
     componentSourcePath,
     sourcePath,
-    relatedComponents,
-    withPropsTable = true,
-    propsMetadata,
-    children,
-}: PageLayoutProps) => {
-    const isShowingCode = useSelector((state) =>
-        TabSelectors.getIsTabSelected(state, {groupId: 'page', id: 'implementation'})
-    );
-    return (
-        <div id={id} className="plasma-page-layout">
-            <PageHeader
-                componentSourcePath={componentSourcePath}
-                sourcePath={sourcePath}
-                section={section}
-                thumbnail={thumbnail}
-                title={title}
-                description={description}
-            />
-            <TabsHeader
-                tabs={[
-                    {groupId: 'page', id: 'implementation', title: 'Implementation'},
-                    {groupId: 'page', id: 'guide', title: 'Guidelines'},
-                ]}
-            />
-            <TabContent>
-                <TabPaneConnected id="implementation" groupId="page">
-                    {isShowingCode && (
-                        <Content
-                            id={id}
-                            code={code}
-                            examples={examples}
-                            relatedComponents={relatedComponents}
-                            layout={layout}
-                            withPropsTable={withPropsTable}
-                            propsMetadata={propsMetadata}
-                        >
-                            {children}
-                        </Content>
-                    )}
-                </TabPaneConnected>
-                <div className="mod-header-padding">
-                    <GuidelinesTab id={id} />
-                </div>
-            </TabContent>
-        </div>
-    );
-};
+    ...contentProps
+}: PageLayoutProps) => (
+    <div id={id} className="plasma-page-layout">
+        <PageHeader
+            componentSourcePath={componentSourcePath}
+            sourcePath={sourcePath}
+            section={section}
+            thumbnail={thumbnail}
+            title={title}
+            description={description}
+        />
+        <Tabs defaultValue="implementation">
+            <Tabs.List pl="xs">
+                <Tabs.Tab value="implementation">Implementation</Tabs.Tab>
+                <Tabs.Tab value="guide">Guidelines</Tabs.Tab>
+            </Tabs.List>
+            <Tabs.Panel value="implementation">
+                <Content id={id} {...contentProps}>
+                    {children}
+                </Content>
+            </Tabs.Panel>
+            <Tabs.Panel value="guide">
+                <GuidelinesTab id={id} />
+            </Tabs.Panel>
+        </Tabs>
+    </div>
+);
 const Content: FunctionComponent<
     Pick<
         PageLayoutProps,
         'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable' | 'propsMetadata' | 'children'
     >
-> = ({code, examples, id, relatedComponents, layout, withPropsTable, propsMetadata, children}) => (
+> = ({
+    code,
+    examples,
+    id,
+    relatedComponents,
+    layout = 'horizontal',
+    withPropsTable = true,
+    propsMetadata,
+    children,
+}) => (
     <>
         {code && (
             <div className="plasma-page-layout__main-code plasma-page-layout__section">
