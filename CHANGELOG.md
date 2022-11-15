@@ -1,3 +1,12 @@
+# 48.8.0 (2022-11-15)
+
+
+### Features
+
+* **radio-card:** lower the translation on hover (#2928) 31d9f87, closes #2928
+
+
+
 # 48.7.0 (2022-11-15)
 
 
