@@ -1,4 +1,4 @@
-import {TabPaneConnected} from '@coveord/plasma-react';
+import {Container} from '@coveord/plasma-mantine';
 import {FunctionComponent} from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -7,7 +7,7 @@ import {GithubButton} from './GithubButton';
 import {Guidelines, MarkdownOverrides} from './Guidelines';
 
 export const GuidelinesTab: FunctionComponent<{id: string}> = ({id}) => (
-    <TabPaneConnected id="guide" groupId="page">
+    <Container fluid>
         {Guidelines.exists(id) ? (
             <>
                 <Markdown remarkPlugins={[remarkGfm]} components={MarkdownOverrides}>
@@ -35,5 +35,5 @@ export const GuidelinesTab: FunctionComponent<{id: string}> = ({id}) => (
                 </GithubButton>
             </div>
         )}
-    </TabPaneConnected>
+    </Container>
 );
