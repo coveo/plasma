@@ -1,3 +1,12 @@
+# 48.5.0 (2022-11-15)
+
+
+### Features
+
+* **website:** setup mantine in website (#2925) c1e1e19, closes #2925
+
+
+
 # 48.4.0 (2022-11-14)
 
 
