@@ -2,31 +2,32 @@ import {render, screen, userEvent} from '@test-utils';
 import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
-    it('navigate slides using footer buttons', async () => {
-        const user = userEvent.setup({delay: null});
+    it('navigate modal steps using footer buttons', async () => {
+        const user = userEvent.setup();
+
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 2</div>,
             },
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: false}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: false}),
                 element: <div> Slide 3</div>,
             },
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: false}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: false}),
                 element: <div> Unreachable slide</div>,
             },
         ];
@@ -38,11 +39,13 @@ describe('ModalWizard', () => {
                 closeButtonLabel="closebuttonlabel"
                 isDirty={isDirty}
                 handleDirtyState={() => confirm('Are you sure you want to close?')}
+                opened={true}
+                onClose={undefined}
             >
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -153,13 +156,14 @@ describe('ModalWizard', () => {
         ).toBeInTheDocument();
     });
 
-    it('modal wizard onClose', async () => {
-        const user = userEvent.setup({delay: null});
+    it('calls the onClose prop when closing the modal', async () => {
+        const user = userEvent.setup();
+
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -168,11 +172,11 @@ describe('ModalWizard', () => {
         const onClose = jest.fn();
 
         render(
-            <ModalWizard isDirty={isDirty} onClose={onClose} closeButtonLabel="closebuttonlabel">
+            <ModalWizard isDirty={isDirty} onClose={onClose} closeButtonLabel="closebuttonlabel" opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -189,13 +193,13 @@ describe('ModalWizard', () => {
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('modal wizard onCancel', async () => {
-        const user = userEvent.setup({delay: null});
+    it('closes the modal when clicking on cancel', async () => {
+        const user = userEvent.setup();
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -204,11 +208,11 @@ describe('ModalWizard', () => {
         const onClose = jest.fn();
 
         render(
-            <ModalWizard isDirty={isDirty} onClose={onClose}>
+            <ModalWizard isDirty={isDirty} onClose={onClose} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -225,13 +229,13 @@ describe('ModalWizard', () => {
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('modal wizard onFinish', async () => {
-        const user = userEvent.setup({delay: null});
+    it('calls onFinish prop when clicking on finish button', async () => {
+        const user = userEvent.setup();
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -241,11 +245,11 @@ describe('ModalWizard', () => {
         const onFinish = jest.fn();
 
         render(
-            <ModalWizard isDirty={isDirty} onClose={onClose} onFinish={onFinish}>
+            <ModalWizard isDirty={isDirty} onClose={onClose} onFinish={onFinish} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -262,13 +266,13 @@ describe('ModalWizard', () => {
         expect(onFinish).toHaveBeenCalledTimes(1);
     });
 
-    it('handle dirty state if user confirms close', async () => {
-        const user = userEvent.setup({delay: null});
+    it('triggers handleDirty callback when the modal wizard has dirty state', async () => {
+        const user = userEvent.setup();
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -283,11 +287,12 @@ describe('ModalWizard', () => {
                 onClose={onClose}
                 handleDirtyState={handleDirtyState}
                 closeButtonLabel="closebuttonlabel"
+                opened={true}
             >
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}
@@ -306,13 +311,13 @@ describe('ModalWizard', () => {
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('handle dirty state if user confirms cancel', async () => {
-        const user = userEvent.setup({delay: null});
+    it('close the modal if user confirms close when the modal wizard has dirty state', async () => {
+        const user = userEvent.setup();
         const modelSteps = [
             {
                 docLink: 'https://google.com',
-                title: (currentStep, numberOfSteps) => 'Current Step is: ' + currentStep,
-                validateStep: (currentStep, numberOfSteps) => ({isValid: true}),
+                title: (currentStep: string) => 'Current Step is: ' + currentStep,
+                validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
         ];
@@ -327,11 +332,12 @@ describe('ModalWizard', () => {
                 onClose={onClose}
                 handleDirtyState={handleDirtyState}
                 closeButtonLabel="closebuttonlabel"
+                opened={true}
             >
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
-                        title={(currentStep, numberOfSteps) => 'Current Step is: ' + currentStep}
+                        title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
                     >
                         {model_item.element}

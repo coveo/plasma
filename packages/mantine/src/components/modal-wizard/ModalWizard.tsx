@@ -1,10 +1,10 @@
-import {Button, createStyles, Modal, Progress} from '@mantine/core';
+import {Button, Modal, ModalProps, Progress} from '@mantine/core';
 import {Children, ReactElement, useMemo, useState} from 'react';
 import {StickyFooter} from '../sticky-footer';
 import {ModalWizardStep} from './ModalWizardStep';
 import {Header} from '../header';
 
-interface ModalWizardProps {
+interface ModalWizardProps extends Omit<ModalProps, 'centered' | 'title'> {
     /**
      * The label of the cancel button
      *
@@ -17,20 +17,20 @@ interface ModalWizardProps {
      *
      * @default "Next"
      */
-
     nextButtonLabel?: string;
+
     /**
      * The label of the previous button
      *
      * @default "Previous"
      */
     previousButtonLabel?: string;
+
     /**
      * The label of the finish button
      *
      * @default "Finish"
      */
-
     finishButtonLabel?: string;
 
     /**
@@ -44,12 +44,6 @@ interface ModalWizardProps {
     onPrevious?: () => unknown;
 
     /**
-     * A callback function that is executed when the user clicks on the cancel button
-     */
-
-    onClose?: () => unknown;
-
-    /**
      * A function that is executed when user completes all the steps.
      *
      * @param close A function that closes the modal when called.
@@ -59,7 +53,6 @@ interface ModalWizardProps {
     /**
      * Determine if user interacted with any steps in the modal wizard
      */
-
     isDirty?: () => boolean;
 
     /**
@@ -68,31 +61,13 @@ interface ModalWizardProps {
     handleDirtyState?: () => boolean;
 
     /**
-     * Props to pass to each modal
-     */
-    modalProps?: any;
-
-    /**
-     * Label for close button
-     */
-    closeButtonLabel?: string;
-
-    /**
      * Children to display in modal wizard
      * */
     children?: Array<ReturnType<typeof ModalWizardStep>>;
 }
 
-const useStyles = createStyles(() => ({
-    modal: {
-        height: '70%',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-}));
-
 interface ModalWizardType {
-    <T>(props: ModalWizardProps): ReactElement;
+    (props: ModalWizardProps): ReactElement;
 
     Step: typeof ModalWizardStep;
 }
@@ -102,15 +77,16 @@ export const ModalWizard: ModalWizardType = ({
     nextButtonLabel = 'Next',
     previousButtonLabel = 'Previous',
     finishButtonLabel = 'Finish',
+    opened,
     onNext,
     onPrevious,
     onClose,
     onFinish,
     isDirty,
-    modalProps,
     handleDirtyState,
-    closeButtonLabel,
+    classNames,
     children,
+    ...modalProps
 }) => {
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const modalSteps = (Children.toArray(children) as ReactElement[]).filter((child) => child.type === ModalWizardStep);
@@ -123,8 +99,6 @@ export const ModalWizard: ModalWizardType = ({
 
     const {isValid} = currentStep?.props?.validateStep?.(currentStepIndex, numberOfSteps) ?? {isValid: true};
     const isModalDirty = isDirty && isDirty();
-
-    const {classes} = useStyles();
 
     const closeModalWizard = () => {
         if (isModalDirty && handleDirtyState) {
@@ -145,14 +119,12 @@ export const ModalWizard: ModalWizardType = ({
 
     return (
         <Modal
-            opened
-            classNames={{modal: classes.modal}}
+            opened={opened}
+            classNames={classNames}
             centered
-            closeButtonLabel={closeButtonLabel}
-            padding="xl"
             title={
                 <Header
-                    docLink={currentStep.props.docLin}
+                    docLink={currentStep.props.docLink}
                     description={
                         typeof currentStep.props.description === 'function'
                             ? currentStep.props.description(currentStepIndex + 1, numberOfSteps)
@@ -169,13 +141,13 @@ export const ModalWizard: ModalWizardType = ({
             onClose={closeModalWizard}
             {...modalProps}
         >
-            {currentStep.props.showProgressBar && <Progress value={getProgressMemo} />}
+            {currentStep.props.showProgressBar && <Progress color="teal" size="lg" value={getProgressMemo} />}
             {currentStep}
             <StickyFooter borderTop py={null} px={null} pt="md">
                 <Button
                     name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
                     disabled={false}
-                    size="md"
+                    size="sm"
                     variant="outline"
                     onClick={() => {
                         if (isFirstStep) {
@@ -191,7 +163,7 @@ export const ModalWizard: ModalWizardType = ({
 
                 <Button
                     disabled={!isValid}
-                    size="md"
+                    size="sm"
                     onClick={() => {
                         if (isLastStep) {
                             onFinish ? onFinish() : onClose();
