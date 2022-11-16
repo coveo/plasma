@@ -135,12 +135,6 @@ export const plasmaTheme: MantineThemeOverride = {
             defaultProps: {
                 radius: 'sm',
             },
-            styles: {
-                labelWrapper: {
-                    display: 'flex',
-                    alignItems: 'center',
-                },
-            },
         },
         List: {
             styles: () => ({
