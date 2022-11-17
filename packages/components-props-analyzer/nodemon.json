@@ -1,0 +1,6 @@
+{
+    "watch": ["./src/ComponentsList.ts"],
+    "exec": "pnpm build",
+    "ext": ".ts",
+    "runOnChangeOnly": true
+}

@@ -15,7 +15,7 @@
         "compile": "node ../../scripts/build",
         "gen:props": "ts-node --project ./bin/tsconfig.json ./bin/index.ts",
         "prettify": "prettier --write 'src/components/*.ts'",
-        "start": "nodemon --watch 'src/ComponentsList.ts' --exec 'pnpm build' --on-change-only"
+        "start": "nodemon"
     },
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",

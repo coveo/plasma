@@ -1,4 +1,5 @@
 import {ComponentMetadata} from '@coveord/plasma-components-props-analyzer';
+import {Code, Text} from '@coveord/plasma-mantine';
 import {FunctionComponent} from 'react';
 
 export interface PropsTableProps {
@@ -27,30 +28,32 @@ export const PropsTable: FunctionComponent<PropsTableProps> = ({propsMetadata = 
                         .map(({name, type, description, optional, deprecation, defaultValue, params}) => (
                             <tr key={name}>
                                 <td>
-                                    <span className="code">{name}</span>
+                                    <Code>{name}</Code>
                                     {optional ? null : <span className="body-s-book-italic-subdued ml2">required</span>}
                                     {deprecation !== null ? (
                                         <span className="body-s-book-italic-subdued ml2">deprecated</span>
                                     ) : null}
                                 </td>
                                 <td>
-                                    <span className="code">{type}</span>
+                                    <Code>{type}</Code>
                                 </td>
-                                <td>{defaultValue}</td>
+                                <td>{defaultValue ? <Code>{defaultValue}</Code> : null}</td>
                                 <td className="py1">
-                                    {deprecation !== null && <div>{deprecation}</div>}
-                                    <div>{description}</div>
-                                    {params?.length > 0 && (
-                                        <ul className="mt1">
-                                            {params.map(({parameterName, text}) => (
-                                                <li key={parameterName}>
-                                                    <span className="code">{parameterName}</span>
-                                                    <span className="mx1">&ndash;</span>
-                                                    {text}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
+                                    <Text size="sm">
+                                        {deprecation !== null && <div>{deprecation}</div>}
+                                        {description}
+                                        {params?.length > 0 && (
+                                            <ul>
+                                                {params.map(({parameterName, text}) => (
+                                                    <li key={parameterName}>
+                                                        <span className="code">{parameterName}</span>
+                                                        <span className="mx1">&ndash;</span>
+                                                        {text}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </Text>
                                 </td>
                             </tr>
                         ))}
