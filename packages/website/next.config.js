@@ -23,6 +23,10 @@ module.exports = withPlugins([withTM, withImages], {
             test: /\.example.tsx$/,
             loader: 'raw-loader',
         });
+        config.module.rules.push({
+            test: /\.demo.tsx$/,
+            use: [options.defaultLoaders.babel, path.resolve(__dirname, 'build/demo-loader.js')],
+        });
         config.experiments = {topLevelAwait: true};
         return config;
     },

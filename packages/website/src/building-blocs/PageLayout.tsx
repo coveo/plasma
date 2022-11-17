@@ -6,7 +6,7 @@ import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
 import {PlasmaLoading} from './PlasmaLoading';
 import {PropsTable, PropsTableProps} from './PropsTable';
-import {type SandboxProps} from './Sandbox';
+import {SandboxProps} from './Sandbox';
 import {Tile, TileProps} from './Tile';
 
 const Sandbox = dynamic<SandboxProps>(
@@ -17,6 +17,7 @@ const Sandbox = dynamic<SandboxProps>(
 interface PlaygroundProps {
     title: string;
     code?: string;
+    Demo?: () => JSX.Element;
     layout?: 'horizontal' | 'vertical';
 }
 
@@ -72,10 +73,19 @@ export const PageLayout = ({
 const Content: FunctionComponent<
     Pick<
         PageLayoutProps,
-        'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable' | 'propsMetadata' | 'children'
+        | 'code'
+        | 'Demo'
+        | 'examples'
+        | 'id'
+        | 'relatedComponents'
+        | 'layout'
+        | 'withPropsTable'
+        | 'propsMetadata'
+        | 'children'
     >
 > = ({
     code,
+    Demo,
     examples,
     id,
     relatedComponents,
@@ -93,6 +103,12 @@ const Content: FunctionComponent<
             </div>
         )}
 
+        {Demo && (
+            <div className="plasma-page-layout__main-code plasma-page-layout__section">
+                <Demo />
+            </div>
+        )}
+
         {withPropsTable && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb1">Props</h4>
@@ -103,16 +119,22 @@ const Content: FunctionComponent<
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb5">Examples</h4>
                 {Object.entries(examples).map(
-                    ([exampleId, {code: exampleCode, title, layout: exampleLayout = 'horizontal'}]) => (
-                        <Sandbox
-                            key={id + exampleId}
-                            id={exampleId}
-                            title={title}
-                            horizontal={exampleLayout === 'horizontal'}
-                        >
-                            {exampleCode}
-                        </Sandbox>
-                    )
+                    ([
+                        exampleId,
+                        {code: exampleCode, Demo: ExampleDemo, title, layout: exampleLayout = 'horizontal'},
+                    ]) =>
+                        Demo ? (
+                            <ExampleDemo key={id + exampleId} />
+                        ) : (
+                            <Sandbox
+                                key={id + exampleId}
+                                id={exampleId}
+                                title={title}
+                                horizontal={exampleLayout === 'horizontal'}
+                            >
+                                {exampleCode}
+                            </Sandbox>
+                        )
                 )}
             </div>
         )}

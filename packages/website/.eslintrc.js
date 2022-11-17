@@ -8,7 +8,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
-    ignorePatterns: ['build', '.eslintrc.js'],
+    ignorePatterns: ['build', '.eslintrc.js', 'next.config.js'],
     overrides: [
         {
             files: ['src/examples/**/*.tsx'],
