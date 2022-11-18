@@ -151,5 +151,11 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
             },
         },
+        Popover: {
+            defaultProps: {
+                shadow: 'md',
+                withArrow: true,
+            },
+        },
     },
 };
