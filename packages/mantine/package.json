@@ -24,7 +24,7 @@
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-tokens": "workspace:*",
         "@monaco-editor/react": "4.4.5",
-        "@swc/helpers": "0.4.11",
+        "@swc/helpers": "0.4.12",
         "@tanstack/react-table": "8.5.11",
         "@tanstack/table-core": "8.5.11",
         "dayjs": "1.11.3",
