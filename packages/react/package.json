@@ -43,7 +43,7 @@
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-style": "workspace:*",
         "@loadable/component": "5.15.2",
-        "@swc/helpers": "0.4.11",
+        "@swc/helpers": "0.4.12",
         "@types/codemirror": "0.0.109",
         "classnames": "2.3.1",
         "codemirror": "5.63.3",
