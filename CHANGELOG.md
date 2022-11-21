@@ -1,3 +1,18 @@
+# 48.10.0 (2022-11-21)
+
+
+### Bug Fixes
+
+* **website:** remove dependency on codesandbox (#2939) f3afa7b, closes #2939
+
+
+### Features
+
+* **mantine:** adjust popover default shadow (#2933) 20bc058, closes #2933
+* **website:** add open in code sandbox button (#2931) 4751a54, closes #2931
+
+
+
 ## 48.9.3 (2022-11-17)
 
 
