@@ -583,6 +583,7 @@ importers:
       '@coveord/plasma-tokens': workspace:*
       '@emotion/react': 11.10.5
       '@emotion/server': 11.10.0
+      '@mantine/carousel': 5.6.4
       '@mantine/core': 5.6.4
       '@mantine/dates': 5.6.4
       '@mantine/form': 5.6.4
@@ -611,6 +612,7 @@ importers:
       '@typescript/vfs': 1.3.5
       classnames: 2.3.1
       codesandbox-import-utils: 2.2.3
+      embla-carousel-react: 7.0.4
       faker: 4.1.0
       flagg: 1.1.2
       lint-staged: 9.5.0
@@ -654,6 +656,7 @@ importers:
       '@coveord/plasma-tokens': link:../tokens
       '@emotion/react': 11.10.5_fan5qbzahqtxlm5dzefqlqx5ia
       '@emotion/server': 11.10.0
+      '@mantine/carousel': 5.6.4_kskdhsai3hxyxvrgjvcvhd4o5q
       '@mantine/core': 5.6.4_ll62gflqvquxay7bew75yguy5y
       '@mantine/dates': 5.6.4_2biisn5y7bl5zalpavyxtndony
       '@mantine/form': 5.6.4_react@18.2.0
@@ -667,6 +670,7 @@ importers:
       '@typescript/vfs': 1.3.5
       classnames: 2.3.1
       codesandbox-import-utils: 2.2.3
+      embla-carousel-react: 7.0.4_react@18.2.0
       faker: 4.1.0
       flagg: 1.1.2
       lodash.kebabcase: 4.1.1
@@ -1868,6 +1872,21 @@ packages:
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-is: 16.13.1
+    dev: false
+
+  /@mantine/carousel/5.6.4_kskdhsai3hxyxvrgjvcvhd4o5q:
+    resolution: {integrity: sha512-CsON0yegEOKntuhjqVTb8a0+QpIAoNSCgX2oVfoQCZHlpbf4N2NrC0316o4GusS1Oul/FHeuPU/TpQKp5g7/bA==}
+    peerDependencies:
+      '@mantine/core': 5.6.4
+      '@mantine/hooks': 5.6.4
+      embla-carousel-react: ^7.0.0
+      react: '>=16.8.0'
+    dependencies:
+      '@mantine/core': 5.6.4_ll62gflqvquxay7bew75yguy5y
+      '@mantine/hooks': 5.6.4_react@18.2.0
+      '@mantine/utils': 5.6.4_react@18.2.0
+      embla-carousel-react: 7.0.4_react@18.2.0
+      react: 18.2.0
     dev: false
 
   /@mantine/carousel/5.6.4_t6gk53zqvxgp646t4soz2fbnm4:
@@ -7204,11 +7223,9 @@ packages:
     dependencies:
       embla-carousel: 7.0.4
       react: 18.2.0
-    dev: true
 
   /embla-carousel/7.0.4:
     resolution: {integrity: sha512-2/EO9Zh6yT1EiTNkCUhbYfAqe6PVODSYFZQxTeuLGFYYNTKTkHvalfuFVIdEDmtxbbGepuYtLqCmk6yzJfJeyw==}
-    dev: true
 
   /emittery/0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
