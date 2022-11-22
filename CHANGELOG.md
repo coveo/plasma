@@ -1,3 +1,12 @@
+# 48.11.0 (2022-11-22)
+
+
+### Features
+
+* **website:** pin sandboxes packages versions (#2944) e551534, closes #2944
+
+
+
 ## 48.10.1 (2022-11-21)
 
 
