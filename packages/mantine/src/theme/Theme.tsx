@@ -157,5 +157,14 @@ export const plasmaTheme: MantineThemeOverride = {
                 withArrow: true,
             },
         },
+        Badge: {
+            styles: {
+                root: {
+                    textTransform: 'none',
+                    padding: '4px 8px',
+                    fontWeight: 500,
+                },
+            },
+        },
     },
 };

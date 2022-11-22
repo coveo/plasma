@@ -1,24 +1,27 @@
-import {getParameters} from 'codesandbox/lib/api/define';
+import {getParameters} from 'codesandbox-import-utils/lib/api/define';
+// @ts-ignore
+import packageConfig from '../../package.json';
 
 const packageJson = {
     dependencies: {
-        react: 'latest',
-        'react-dom': 'latest',
+        react: packageConfig.dependencies.react,
+        'react-dom': packageConfig.dependencies['react-dom'],
         '@coveord/plasma-mantine': 'latest',
-        '@emotion/react': 'latest',
-        '@mantine/core': 'latest',
-        '@mantine/dates': 'latest',
-        '@mantine/form': 'latest',
-        '@mantine/hooks': 'latest',
-        '@mantine/modals': 'latest',
-        '@mantine/carousel': 'latest',
-        'embla-carousel-react': 'latest',
+        '@coveord/plasma-react-icons': 'latest',
+        '@emotion/react': packageConfig.dependencies['@emotion/react'],
+        '@mantine/core': packageConfig.dependencies['@mantine/core'],
+        '@mantine/dates': packageConfig.dependencies['@mantine/dates'],
+        '@mantine/form': packageConfig.dependencies['@mantine/form'],
+        '@mantine/hooks': packageConfig.dependencies['@mantine/hooks'],
+        '@mantine/modals': packageConfig.dependencies['@mantine/modals'],
+        '@mantine/carousel': packageConfig.dependencies['@mantine/carousel'],
+        'embla-carousel-react': packageConfig.dependencies['embla-carousel-react'],
     },
     devDependencies: {
-        tslib: 'latest',
-        typescript: 'latest',
-        '@types/react': 'latest',
-        '@types/react-dom': 'latest',
+        tslib: packageConfig.devDependencies.tslib,
+        typescript: packageConfig.devDependencies.typescript,
+        '@types/react': packageConfig.devDependencies['@types/react'],
+        '@types/react-dom': packageConfig.devDependencies['@types/react-dom'],
     },
 };
 
