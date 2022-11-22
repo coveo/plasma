@@ -1,7 +1,7 @@
 import {CodeEditorMantineMetadata} from '@coveord/plasma-components-props-analyzer';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
-import MainExample from '../../examples/code-editor/CodeEditor.demo.tsx';
+import MainExample from '@examples/code-editor/CodeEditor.demo.tsx';
 
 const CodeEditorPage = () => (
     <PageLayout

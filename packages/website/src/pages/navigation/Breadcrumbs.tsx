@@ -1,8 +1,8 @@
 import {BreadcrumbHeaderMetadata} from '@coveord/plasma-components-props-analyzer';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
-import complex from '../../examples/Breadcrumbs/complex.example.tsx';
-import code from '../../examples/Breadcrumbs/main.example.tsx';
+import complex from '@examples/Breadcrumbs/complex.example.tsx';
+import code from '@examples/Breadcrumbs/main.example.tsx';
 
 const BreadcrumbsExamples = () => (
     <PageLayout

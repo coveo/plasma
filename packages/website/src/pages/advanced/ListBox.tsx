@@ -4,7 +4,7 @@ import code from '@examples/ListBox/main.example.tsx';
 import withFooterExample from '@examples/ListBox/withFooter.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
-import loadingExample from '../../examples/ListBox/loading.example.tsx';
+import loadingExample from '@examples/ListBox/loading.example.tsx';
 
 export default () => (
     <PageLayout

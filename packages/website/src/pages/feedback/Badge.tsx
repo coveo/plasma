@@ -1,9 +1,9 @@
 import {BadgeMetadata} from '@coveord/plasma-components-props-analyzer';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
-import BadgeExample from '../../examples/Badge/Badge.example.tsx';
-import BadgeSmallExample from '../../examples/Badge/BadgeSmall.example.tsx';
-import BadgeWithIconsExample from '../../examples/Badge/BadgeWithIcons.example.tsx';
+import BadgeExample from '@examples/Badge/Badge.example.tsx';
+import BadgeSmallExample from '@examples/Badge/BadgeSmall.example.tsx';
+import BadgeWithIconsExample from '@examples/Badge/BadgeWithIcons.example.tsx';
 
 export const BadgeExamples = () => (
     <PageLayout
