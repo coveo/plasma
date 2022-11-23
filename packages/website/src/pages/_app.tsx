@@ -1,3 +1,4 @@
+import '../styles/colors.scss';
 import '../styles/github-button.scss';
 import '../styles/home.scss';
 import '../styles/iconography.scss';
@@ -10,15 +11,15 @@ import '../styles/props-table.scss';
 import '../styles/sandbox.scss';
 import '../styles/spacing.scss';
 import '../styles/tile.scss';
-import '../styles/colors.scss';
 
-import * as PlasmaReact from '@coveord/plasma-react';
 import * as PlasmaMantine from '@coveord/plasma-mantine';
+import * as PlasmaReact from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import * as LoremIpsum from 'lorem-ipsum';
 import moment from 'moment';
 import Head from 'next/head';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
@@ -30,6 +31,7 @@ import type {AppProps} from 'next/app';
 
 import githubLogo from '../../resources/github-mark.svg';
 import logo from '../../resources/plasma-logo.svg';
+import LegacyWarningBanner from '../building-blocs/LegacyWarningBanner';
 import {EngineProvider} from '../search/engine/EngineProvider';
 import StandaloneSearchBar from '../search/StandaloneSearchBar';
 import {Navigation} from '../SideNavigation';
@@ -52,6 +54,9 @@ const Header = () => (
 );
 
 const MyApp = ({Component, pageProps}: AppProps) => {
+    const {pathname} = useRouter();
+    const isLegacy = /^\/legacy*/.test(pathname);
+
     React.useEffect(() => {
         PlasmaReact.Defaults.APP_ELEMENT = '#App';
         PlasmaReact.Defaults.MODAL_ROOT = '#Modals';
@@ -89,6 +94,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                         <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
                             <Navigation />
                             <div className="coveo-form flex-auto relative overflow-auto demo-content">
+                                {isLegacy ? <LegacyWarningBanner /> : null}
                                 <Component {...pageProps} />
                             </div>
                         </div>
