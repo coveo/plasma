@@ -1,10 +1,10 @@
 import {ListBoxMetadata} from '@coveord/plasma-components-props-analyzer';
 import emptyExample from '@examples/ListBox/empty.example.tsx';
+import loadingExample from '@examples/ListBox/loading.example.tsx';
 import code from '@examples/ListBox/main.example.tsx';
 import withFooterExample from '@examples/ListBox/withFooter.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
-import loadingExample from '../../examples/ListBox/loading.example.tsx';
 
 export default () => (
     <PageLayout
