@@ -1,9 +1,9 @@
 import {SideNavigationMetadata} from '@coveord/plasma-components-props-analyzer';
+import collapsible from '@examples/SideNavigation/collapsible.example.tsx';
+import loading from '@examples/SideNavigation/loading.example.tsx';
+import code from '@examples/SideNavigation/main.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
-import collapsible from '../../examples/SideNavigation/collapsible.example.tsx';
-import loading from '../../examples/SideNavigation/loading.example.tsx';
-import code from '../../examples/SideNavigation/main.example.tsx';
 
 export const SideNavigationExamples = () => (
     <PageLayout

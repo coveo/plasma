@@ -1,7 +1,7 @@
 import {CollectionMetadata} from '@coveord/plasma-components-props-analyzer';
+import mainExample from '@examples/collection/Collection.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
-import mainExample from '../../examples/collection/Collection.example.tsx';
 
 export default () => (
     <PageLayout
