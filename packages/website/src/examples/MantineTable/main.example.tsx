@@ -22,6 +22,7 @@ export default () => {
     ];
     return (
         <Table data={dataForRows} columns={columns}>
+            {/* you can override background color with: sx={{backgroundColor: 'white'}} */}
             <Table.Header></Table.Header>
         </Table>
     );
