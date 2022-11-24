@@ -1,3 +1,12 @@
+## 48.13.1 (2022-11-24)
+
+
+### Bug Fixes
+
+* **toastcontainer:** compose the onClose function in order to not ove… (#2949) b7ba973, closes #2949
+
+
+
 # 48.13.0 (2022-11-24)
 
 
