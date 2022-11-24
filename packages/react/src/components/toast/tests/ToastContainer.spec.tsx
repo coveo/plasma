@@ -100,5 +100,25 @@ describe('Toasts', () => {
 
             expect(() => component.find(Toast).props().onClose()).not.toThrow();
         });
+
+        it('should called the onClose if defined on the toast', () => {
+            let result = '';
+            const newToastAttributes = _.extend({}, basicProps, {
+                toasts: [
+                    {
+                        id: 'toast-id',
+                        title: 'greatest guitarist',
+                        onClose: () => {
+                            result = 'allAlongTheWatchtower';
+                        },
+                    },
+                ],
+            });
+
+            component.setProps(newToastAttributes).mount();
+            component.find(Toast).props().onClose();
+
+            expect(result).toBe('allAlongTheWatchtower');
+        });
     });
 });

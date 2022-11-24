@@ -63,6 +63,7 @@ export class ToastContainer extends Component<IToastContainerProps> {
                       key={toast.id}
                       {...toast}
                       onClose={() => {
+                          toast.onClose?.();
                           this.onCloseToast(toast.id);
                       }}
                   />
