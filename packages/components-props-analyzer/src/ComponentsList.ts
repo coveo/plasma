@@ -290,6 +290,11 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
         suffix: 'Mantine',
     },
+    {
+        name: 'Table',
+        packageName: '@coveord/plasma-mantine',
+        suffix: 'Mantine',
+    },
 ];
 
 export default components;
