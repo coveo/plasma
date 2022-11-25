@@ -1,5 +1,5 @@
 import {TableMantineMetadata} from '@coveord/plasma-components-props-analyzer';
-import mainExample from '@examples/Table/main.mantine.example.tsx';
+import mainExample from '@examples/layout/Table/main.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

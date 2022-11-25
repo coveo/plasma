@@ -1,6 +1,6 @@
 import {BreadcrumbHeaderMetadata} from '@coveord/plasma-components-props-analyzer';
-import complex from '@examples/Breadcrumbs/complex.example.tsx';
-import code from '@examples/Breadcrumbs/main.example.tsx';
+import complex from '@examples/legacy/navigation/Breadcrumbs/complex.example.tsx';
+import code from '@examples/legacy/navigation/Breadcrumbs/main.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

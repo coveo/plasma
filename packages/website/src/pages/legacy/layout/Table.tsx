@@ -1,14 +1,14 @@
 import {TableHOCMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/Table/main.example.tsx';
-import withAction from '@examples/Table/withAction.example.tsx';
-import withBlankslate from '@examples/Table/withBlankslate.example.tsx';
-import withDatePicker from '@examples/Table/withDatePicker.example.tsx';
-import withFilter from '@examples/Table/withFilter.example.tsx';
-import withLoading from '@examples/Table/withLoading.example.tsx';
-import withPagination from '@examples/Table/withPagination.example.tsx';
-import withPredicate from '@examples/Table/withPredicate.example.tsx';
-import withServer from '@examples/Table/withServer.example.tsx';
-import withSort from '@examples/Table/withSort.example.tsx';
+import code from '@examples/legacy/layout/Table/main.example.tsx';
+import withAction from '@examples/legacy/layout/Table/withAction.example.tsx';
+import withBlankslate from '@examples/legacy/layout/Table/withBlankslate.example.tsx';
+import withDatePicker from '@examples/legacy/layout/Table/withDatePicker.example.tsx';
+import withFilter from '@examples/legacy/layout/Table/withFilter.example.tsx';
+import withLoading from '@examples/legacy/layout/Table/withLoading.example.tsx';
+import withPagination from '@examples/legacy/layout/Table/withPagination.example.tsx';
+import withPredicate from '@examples/legacy/layout/Table/withPredicate.example.tsx';
+import withServer from '@examples/legacy/layout/Table/withServer.example.tsx';
+import withSort from '@examples/legacy/layout/Table/withSort.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

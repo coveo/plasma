@@ -1,5 +1,5 @@
 import {SlideYMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/SlideY/main.example.tsx';
+import code from '@examples/legacy/advanced/SlideY/main.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

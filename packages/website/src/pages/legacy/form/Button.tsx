@@ -1,12 +1,12 @@
 import {ButtonMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/button/Button.example.tsx';
-import disabled from '@examples/button/Disabled.example.tsx';
-import iconAndLink from '@examples/button/IconAndLink.example.tsx';
-import loading from '@examples/button/Loading.example.tsx';
-import prepend from '@examples/button/Prepend.example.tsx';
-import primary from '@examples/button/Primary.example.tsx';
-import small from '@examples/button/Small.example.tsx';
-import withTooltip from '@examples/button/WithTooltip.example.tsx';
+import code from '@examples/legacy/form/button/Button.example.tsx';
+import disabled from '@examples/legacy/form/button/Disabled.example.tsx';
+import iconAndLink from '@examples/legacy/form/button/IconAndLink.example.tsx';
+import loading from '@examples/legacy/form/button/Loading.example.tsx';
+import prepend from '@examples/legacy/form/button/Prepend.example.tsx';
+import primary from '@examples/legacy/form/button/Primary.example.tsx';
+import small from '@examples/legacy/form/button/Small.example.tsx';
+import withTooltip from '@examples/legacy/form/button/WithTooltip.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

@@ -1,8 +1,8 @@
 import {SliderMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/Slider/Slider.example.tsx';
-import append from '@examples/Slider/SliderAppend.example.tsx';
-import asymetric from '@examples/Slider/SliderAsymetric.example.tsx';
-import onChange from '@examples/Slider/SliderOnChange.example.tsx';
+import code from '@examples/legacy/form/Slider/Slider.example.tsx';
+import append from '@examples/legacy/form/Slider/SliderAppend.example.tsx';
+import asymetric from '@examples/legacy/form/Slider/SliderAsymetric.example.tsx';
+import onChange from '@examples/legacy/form/Slider/SliderOnChange.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
