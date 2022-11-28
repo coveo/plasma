@@ -1,10 +1,10 @@
 import {FlatSelectConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/FlatSelect/FlatSelect.example.tsx';
-import appendPrepend from '@examples/FlatSelect/FlatSelectAppendPrepend.example.tsx';
-import disabled from '@examples/FlatSelect/FlatSelectDisabled.example.tsx';
-import group from '@examples/FlatSelect/FlatSelectGroup.example.tsx';
-import iconOnly from '@examples/FlatSelect/FlatSelectIconsOnly.example.tsx';
-import optionPicker from '@examples/FlatSelect/FlatSelectOptionPicker.example.tsx';
+import code from '@examples/legacy/form/FlatSelect/FlatSelect.example.tsx';
+import appendPrepend from '@examples/legacy/form/FlatSelect/FlatSelectAppendPrepend.example.tsx';
+import disabled from '@examples/legacy/form/FlatSelect/FlatSelectDisabled.example.tsx';
+import group from '@examples/legacy/form/FlatSelect/FlatSelectGroup.example.tsx';
+import iconOnly from '@examples/legacy/form/FlatSelect/FlatSelectIconsOnly.example.tsx';
+import optionPicker from '@examples/legacy/form/FlatSelect/FlatSelectOptionPicker.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

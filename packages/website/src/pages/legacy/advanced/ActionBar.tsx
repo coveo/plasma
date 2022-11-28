@@ -1,5 +1,5 @@
 import {ActionBarConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/ActionBar/ActionBar.example.tsx';
+import code from '@examples/legacy/advanced/ActionBar/ActionBar.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

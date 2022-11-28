@@ -1,8 +1,8 @@
 import {DiffViewerMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/diff-viewer/DiffViewer.example.tsx';
-import manyChanges from '@examples/diff-viewer/ManyChanges.example.tsx';
-import noChanges from '@examples/diff-viewer/NoChanges.example.tsx';
-import splitView from '@examples/diff-viewer/SplitView.example.tsx';
+import code from '@examples/legacy/form/diff-viewer/DiffViewer.example.tsx';
+import manyChanges from '@examples/legacy/form/diff-viewer/ManyChanges.example.tsx';
+import noChanges from '@examples/legacy/form/diff-viewer/NoChanges.example.tsx';
+import splitView from '@examples/legacy/form/diff-viewer/SplitView.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

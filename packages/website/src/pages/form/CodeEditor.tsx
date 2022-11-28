@@ -1,5 +1,5 @@
 import {CodeEditorMantineMetadata} from '@coveord/plasma-components-props-analyzer';
-import MainExample from '@examples/code-editor/CodeEditor.demo.tsx';
+import MainExample from '@examples/form/code-editor/CodeEditor.demo.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

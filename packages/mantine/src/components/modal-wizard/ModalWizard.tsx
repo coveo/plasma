@@ -130,8 +130,8 @@ export const ModalWizard: ModalWizardType = ({
                             ? currentStep.props.description(currentStepIndex + 1, numberOfSteps)
                             : currentStep.props.description
                     }
-                    py={null}
-                    px={null}
+                    py={0}
+                    px={0}
                 >
                     {typeof currentStep.props.title === 'function'
                         ? currentStep.props.title(currentStepIndex + 1, numberOfSteps)
@@ -143,7 +143,7 @@ export const ModalWizard: ModalWizardType = ({
         >
             {currentStep.props.showProgressBar && <Progress color="teal" size="lg" value={getProgressMemo} />}
             {currentStep}
-            <StickyFooter borderTop py={null} px={null} pt="md">
+            <StickyFooter py={0} px={0} pt="sm" borderTop>
                 <Button
                     name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
                     disabled={false}
