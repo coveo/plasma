@@ -1,5 +1,5 @@
 import {HeaderMantineMetadata} from '@coveord/plasma-components-props-analyzer';
-import mainExample from '@examples/Header/Header.mantine.example.tsx';
+import mainExample from '@examples/layout/Header/Header.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

@@ -1,8 +1,8 @@
 import {ListBoxMetadata} from '@coveord/plasma-components-props-analyzer';
-import emptyExample from '@examples/ListBox/empty.example.tsx';
-import loadingExample from '@examples/ListBox/loading.example.tsx';
-import code from '@examples/ListBox/main.example.tsx';
-import withFooterExample from '@examples/ListBox/withFooter.example.tsx';
+import emptyExample from '@examples/legacy/advanced/ListBox/empty.example.tsx';
+import loadingExample from '@examples/legacy/advanced/ListBox/loading.example.tsx';
+import code from '@examples/legacy/advanced/ListBox/main.example.tsx';
+import withFooterExample from '@examples/legacy/advanced/ListBox/withFooter.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

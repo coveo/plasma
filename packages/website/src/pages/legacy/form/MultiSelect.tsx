@@ -1,7 +1,7 @@
 import {MultiSelectConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/MultiSelect/main.example.tsx';
-import withFilter from '@examples/MultiSelect/withFilter.example.tsx';
-import withPredicates from '@examples/MultiSelect/withPredicates.example.tsx';
+import code from '@examples/legacy/form/MultiSelect/main.example.tsx';
+import withFilter from '@examples/legacy/form/MultiSelect/withFilter.example.tsx';
+import withPredicates from '@examples/legacy/form/MultiSelect/withPredicates.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

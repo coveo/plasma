@@ -1,5 +1,5 @@
 import {CollectionMetadata} from '@coveord/plasma-components-props-analyzer';
-import mainExample from '@examples/collection/Collection.example.tsx';
+import mainExample from '@examples/form/collection/Collection.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
