@@ -16,6 +16,7 @@ const packageJson = {
         '@mantine/modals': packageConfig.dependencies['@mantine/modals'],
         '@mantine/carousel': packageConfig.dependencies['@mantine/carousel'],
         'embla-carousel-react': packageConfig.dependencies['embla-carousel-react'],
+        'lorem-ipsum': packageConfig.dependencies['lorem-ipsum'],
     },
     devDependencies: {
         tslib: packageConfig.devDependencies.tslib,

@@ -16,8 +16,14 @@ declare module '*.example.tsx' {
     export default content;
 }
 
+interface DemoComponentProps {
+    center?: boolean;
+    grow?: boolean;
+    title?: string;
+}
+
 declare module '*.demo.tsx' {
-    const DemoComponent: () => JSX.Element;
+    const DemoComponent: (props: DemoComponentProps) => JSX.Element;
     export default DemoComponent;
 }
 
