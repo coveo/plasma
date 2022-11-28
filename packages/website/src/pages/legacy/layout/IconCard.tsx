@@ -1,93 +1,12 @@
 import {IconCardMetadata} from '@coveord/plasma-components-props-analyzer';
+import IconCardExample from '@examples/legacy/layout/IconCard/IconCard.example.tsx';
+import IconCardDisabledExample from '@examples/legacy/layout/IconCard/IconCardDisabled.example.tsx';
+import IconCardSmallExample from '@examples/legacy/layout/IconCard/IconCardSmall.example.tsx';
+import IconCardWithBadgesExample from '@examples/legacy/layout/IconCard/IconCardWithBadges.example.tsx';
+import IconCardWithChoicesExample from '@examples/legacy/layout/IconCard/IconCardWithChoices.example.tsx';
 import {FunctionComponent} from 'react';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {IconCard} from '@coveord/plasma-react';
-
-    export default () => (
-        <IconCard
-            title="Card title"
-            icon={<img src="https://placeholder.pics/svg/72x72/DEDEDE/FFFFFF-FFFFFF" />}
-            description="Card description"
-            onClick={() => alert('You clicked the card')}
-        />
-    );
-`;
-
-const choices = `
-    import {IconCard} from '@coveord/plasma-react';
-    import {CloudSize24Px, DatabaseSize24Px, CrawlingBotSize24Px} from '@coveord/plasma-react-icons';
-    
-    export default () => (
-        <IconCard
-            title="Web"
-            description="Enter a starting URL and automatically index all the pages of this site."
-            icon={<img src="https://placeholder.pics/svg/72x72/DEDEDE/FFFFFF-FFFFFF" />}
-            choices={[
-                {value: 'cloud', label: 'Cloud', icon: CloudSize24Px},
-                {value: 'on-prem', label: 'On-Premise', icon: DatabaseSize24Px},
-                {value: 'crodule', label: 'Crawling Module', icon: CrawlingBotSize24Px, disabled: true},
-            ]}
-            onClick={(choice) => alert(choice)}
-        />
-    );
-`;
-
-const small = `
-    import {IconCard} from '@coveord/plasma-react';
-    import {CloudSize24Px, DatabaseSize24Px, CrawlingBotSize24Px} from '@coveord/plasma-react-icons';
-
-    export default () => (
-        <IconCard
-            small
-            title="Web"
-            icon={<img src="https://placeholder.pics/svg/40x40/DEDEDE/FFFFFF-FFFFFF" />}
-            choices={[
-                {value: 'cloud', label: 'Cloud', icon: CloudSize24Px},
-                {value: 'on-prem', label: 'On-Premise', icon: DatabaseSize24Px},
-                {value: 'crodule', label: 'Crawling Module', icon: CrawlingBotSize24Px, disabled: true},
-            ]}
-            onClick={(choice) => alert(choice)}
-            style={{width: '368px'}}
-        />
-    );
-`;
-
-const disabled = `
-    import {BadgeIconPlacement, IconCard} from '@coveord/plasma-react';
-    import {LockSize16Px} from '@coveord/plasma-react-icons';
-
-    export default () => (
-        <IconCard
-            small
-            title="Web"
-            icon={<img src="https://placeholder.pics/svg/40x40/DEDEDE/FFFFFF-FFFFFF" />}
-            disabled
-            badges={[{icon: LockSize16Px, iconPlacement: BadgeIconPlacement.Left, isSmall: true}]}
-            tooltip={{title: 'This source is not included in your license'}}
-            style={{width: '368px'}}
-        />
-    );
-`;
-
-const badgesOnTop = `
-    import {IconCard, BadgeType} from '@coveord/plasma-react';
-
-    export default () => (
-        <IconCard
-            title="Simple builder"
-            description="For lightweight usage, prototyping, and testing the search experience. Hosted by Coveo."
-            icon={<img style={{width: '112px', height: '112px'}} src="https://placeholder.pics/svg/112x112/DEDEDE/FFFFFF-FFFFFF" />}
-            customIconSize
-            placeBadgesAbove
-            badges={[{label: 'Recommended', isSmall: true, type: BadgeType.Default}]}
-            animateOnHover
-            onClick={() => alert('You clicked the card')}
-        />
-    );
-`;
 
 export const IconCardExamples: FunctionComponent = () => (
     <PageLayout
@@ -97,12 +16,12 @@ export const IconCardExamples: FunctionComponent = () => (
         description="An icon card is an element that regroups related pieces of information together. It can be either static or interactive."
         componentSourcePath="/iconCard/IconCard.tsx"
         propsMetadata={IconCardMetadata}
-        code={code}
+        code={IconCardExample}
         examples={{
-            choices: {code: choices, title: 'With multiple choices'},
-            small: {code: small, title: 'Small, with multiple choices'},
-            disabled: {code: disabled, title: 'Disabled, with lock badge'},
-            badgesOnTop: {code: badgesOnTop, title: 'With badges on top'},
+            choices: {code: IconCardWithChoicesExample, title: 'With multiple choices'},
+            small: {code: IconCardSmallExample, title: 'Small, with multiple choices'},
+            disabled: {code: IconCardDisabledExample, title: 'Disabled, with lock badge'},
+            badgesOnTop: {code: IconCardWithBadgesExample, title: 'With badges on top'},
         }}
     />
 );

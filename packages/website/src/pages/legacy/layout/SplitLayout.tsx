@@ -1,29 +1,8 @@
 import {SplitLayoutMetadata} from '@coveord/plasma-components-props-analyzer';
+import SplitLayoutExample from '@examples/legacy/layout/SplitLayout/SplitLayout.example.tsx';
+import SplitLayoutBorderlessExample from '@examples/legacy/layout/SplitLayout/SplitLayoutBorderless.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {SplitLayout} from '@coveord/plasma-react';
-
-    export default () => (
-        <SplitLayout
-            leftChildren={<p className="p1">Hello from the left!</p>}
-            rightChildren={<p className="p1">Hello from the right!</p>}
-        />
-    );
-`;
-
-const noBorder = `
-    import {SplitLayout, SplitLayoutMods} from '@coveord/plasma-react';
-
-    export default () => (
-        <SplitLayout
-            mods={SplitLayoutMods.noBorder}
-            leftChildren={<p className="p1">Hello from the left!</p>}
-            rightChildren={<p className="p1">Hello from the right!</p>}
-        />
-    );
-`;
 
 const SplitLayoutExamples = () => (
     <PageLayout
@@ -32,10 +11,10 @@ const SplitLayoutExamples = () => (
         section="Layout"
         description="A split layout organizes information in two vertical columns."
         componentSourcePath="/splitlayout/SplitLayout.tsx"
-        code={code}
+        code={SplitLayoutExample}
         layout="vertical"
         propsMetadata={SplitLayoutMetadata}
-        examples={{noBorder: {code: noBorder, title: 'Without a border'}}}
+        examples={{noBorder: {code: SplitLayoutBorderlessExample, title: 'Without a border'}}}
     />
 );
 
