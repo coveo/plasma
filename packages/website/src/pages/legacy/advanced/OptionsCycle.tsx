@@ -1,26 +1,8 @@
 import {OptionsCycleConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
+import OptionsCycleExample from '@examples/legacy/advanced/OptionsCycle/OptionsCycle.example.tsx';
+import OptionsCycleButtonExample from '@examples/legacy/advanced/OptionsCycle/OptionsCycleButton.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {OptionsCycleConnected} from '@coveord/plasma-react';
-
-    export default () => <OptionsCycleConnected id="Cycle-1" options={['Option 1', 'Option 2', 'Option 3', 'Option 4']} />;
-`;
-
-const buttonStyle = `
-    import {OptionsCycleConnected} from '@coveord/plasma-react';
-
-    export default () => (
-        <OptionsCycleConnected 
-            id="Cycle-1" 
-            options={['Option 1', 'Option 2', 'Option 3', 'Option 4']}
-            previousClassName="btn mod-border w4 center"
-            buttonClassName="btn ml1"
-            nextClassName="btn mod-border ml1 w4 center"
-        />
-    );
-`;
 
 export default () => (
     <PageLayout
@@ -29,10 +11,10 @@ export default () => (
         section="Advanced"
         description="Allows to cycle through an ordered list of options using right-left arrow buttons."
         componentSourcePath="/optionsCycle/OptionsCycle.tsx"
-        code={code}
+        code={OptionsCycleExample}
         propsMetadata={OptionsCycleConnectedMetadata}
         examples={{
-            buttonStyle: {code: buttonStyle, title: 'Styles like the Button'},
+            buttonStyle: {code: OptionsCycleButtonExample, title: 'Styles like the Button'},
         }}
     />
 );

@@ -1,12 +1,6 @@
+import BannerExample from '@examples/legacy/layout/Banner/Banner.example.tsx';
+
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {BannerContainer} from '@coveord/plasma-react';
-
-    export default () => (
-        <BannerContainer />
-    );
-`;
 
 export const BannerExamples = () => (
     <PageLayout
@@ -16,7 +10,7 @@ export const BannerExamples = () => (
         withPropsTable={false}
         section="Layout"
         thumbnail="placeholder"
-        code={code}
+        code={BannerExample}
     />
 );
 export default BannerExamples;

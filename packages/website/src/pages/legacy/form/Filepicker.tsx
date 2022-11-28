@@ -1,14 +1,7 @@
 import {FilepickerMetadata} from '@coveord/plasma-components-props-analyzer';
+import FilepickerExample from '@examples/legacy/form/Filepicker/Filepicker.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {Filepicker} from '@coveord/plasma-react';
-
-    export default () => (
-        <Filepicker id="input-id" accept=".jpg,.png,.csv,.txt" placeholder="Choose a file..." />    
-    );
-`;
 
 export default () => (
     <PageLayout
@@ -17,7 +10,7 @@ export default () => (
         section="Form"
         description="A file picker is a dialog that allows users to upload a file."
         componentSourcePath="/filepicker/FilePicker.tsx"
-        code={code}
+        code={FilepickerExample}
         propsMetadata={FilepickerMetadata}
     />
 );

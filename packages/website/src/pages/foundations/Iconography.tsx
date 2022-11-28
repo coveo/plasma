@@ -2,6 +2,7 @@
 import {ITableHOCProps, TableHOC, tableWithFilter, TableWithFilterProps} from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import {HTMLAttributes, ComponentType, FunctionComponent} from 'react';
+import code from '@examples/foundations/Iconography/Iconography.example.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -57,19 +58,6 @@ const IconsTable: FunctionComponent = () => (
         }}
     />
 );
-
-const code = `
-    import { DollarsSize64Px } from '@coveord/plasma-react-icons';
-
-    // Control the size using "height" or "width" attributes (defaults to 1em)
-    // The icon takes the same color as the text around it
-
-    export default () => (
-        <div style={{color: 'green'}}>
-            <DollarsSize64Px height={64} />
-        </div>
-    );
-`;
 
 export const IconographyExamples = () => (
     <PageLayout
