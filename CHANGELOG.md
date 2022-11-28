@@ -1,3 +1,12 @@
+# 48.14.0 (2022-11-28)
+
+
+### Features
+
+* **plasma-mantine:** export Header interface (#2953) 9545826, closes #2953
+
+
+
 ## 48.13.2 (2022-11-28)
 
 
