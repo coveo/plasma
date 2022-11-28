@@ -2,7 +2,7 @@ import {QuestionSize24Px} from '@coveord/plasma-react-icons';
 import {Anchor, Breadcrumbs, DefaultProps, Divider, Group, Stack, Text, Title, Tooltip} from '@mantine/core';
 import {FunctionComponent, ReactNode} from 'react';
 
-interface HeaderProps extends DefaultProps {
+export interface HeaderProps extends DefaultProps {
     /**
      * The description text displayed inside the header underneath the title
      */
