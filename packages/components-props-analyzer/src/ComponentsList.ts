@@ -117,6 +117,7 @@ const components: Component[] = [
     {
         name: 'CodeEditor',
         packageName: '@coveord/plasma-react',
+        suffix: 'Legacy',
     },
     {
         name: 'ColorPicker',
@@ -279,7 +280,6 @@ const components: Component[] = [
     {
         name: 'Header',
         packageName: '@coveord/plasma-mantine',
-        suffix: 'Mantine',
     },
     {
         name: 'Collection',
@@ -288,12 +288,10 @@ const components: Component[] = [
     {
         name: 'CodeEditor',
         packageName: '@coveord/plasma-mantine',
-        suffix: 'Mantine',
     },
     {
         name: 'Table',
         packageName: '@coveord/plasma-mantine',
-        suffix: 'Mantine',
     },
 ];
 

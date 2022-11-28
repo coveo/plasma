@@ -5,7 +5,7 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 
 export default () => (
     <PageLayout
-        section="Mantine"
+        section="Form"
         title="Collection"
         sourcePath="/packages/mantine/src/components/collection/Collection.tsx"
         description="A Collection allows users to provide multiple inputs for the same parameter. Each input appears on a different line."
