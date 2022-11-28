@@ -130,8 +130,8 @@ export const ModalWizard: ModalWizardType = ({
                             ? currentStep.props.description(currentStepIndex + 1, numberOfSteps)
                             : currentStep.props.description
                     }
-                    py={null}
-                    px={null}
+                    py={0}
+                    px={0}
                 >
                     {typeof currentStep.props.title === 'function'
                         ? currentStep.props.title(currentStepIndex + 1, numberOfSteps)
