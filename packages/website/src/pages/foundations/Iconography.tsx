@@ -2,7 +2,7 @@
 import {ITableHOCProps, TableHOC, tableWithFilter, TableWithFilterProps} from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import {HTMLAttributes, ComponentType, FunctionComponent} from 'react';
-import code from '@examples/foundations/Iconography/Iconography.example.tsx';
+import IconographyDemo from '@examples/foundations/Iconography/Iconography.demo.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -66,7 +66,7 @@ export const IconographyExamples = () => (
         title="Iconography"
         thumbnail="iconography"
         description="Icons are used to visually represent actions, functionalities, and features."
-        code={code}
+        demo={<IconographyDemo center />}
         withPropsTable={false}
     >
         <IconsTable />

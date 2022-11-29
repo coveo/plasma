@@ -1,5 +1,5 @@
 import {CodeEditorMetadata} from '@coveord/plasma-components-props-analyzer';
-import MainExample from '@examples/form/code-editor/CodeEditor.demo.tsx';
+import CodeEditorDemo from '@examples/form/code-editor/CodeEditor.demo.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -12,7 +12,7 @@ const CodeEditorPage = () => (
         description="A code editor is a text area that allows users to edit code. A coding syntax is built in."
         thumbnail="codeEditor"
         propsMetadata={CodeEditorMetadata}
-        demo={<MainExample grow />}
+        demo={<CodeEditorDemo grow />}
     />
 );
 
