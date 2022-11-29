@@ -1,22 +1,24 @@
 import {DatePickerDropdownConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import DatePickerExample from '@examples/legacy/form/DatePicker/DatePicker.demo.tsx';
-import DatePickerReadonlyExample from '@examples/legacy/form/DatePicker/DatePickerReadonly.demo.tsx';
-import SingleDatePickerExample from '@examples/legacy/form/DatePicker/SingleDatePicker.demo.tsx';
+import DatePickerDemo from '@examples/legacy/form/DatePicker/DatePicker.demo.tsx';
+import DatePickerReadonlyDemo from '@examples/legacy/form/DatePicker/DatePickerReadonly.demo.tsx';
+import SingleDatePickerDemo from '@examples/legacy/form/DatePicker/SingleDatePicker.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         id="DatePickerDropdownConnected"
         title="Date Picker"
         section="Form"
         description="A date picker is a calendar interface that allows users to select a single date or a date range."
         componentSourcePath="/datePicker/DatePickerDropdown.tsx"
-        code={DatePickerExample}
+        demo={<DatePickerDemo />}
         propsMetadata={DatePickerDropdownConnectedMetadata}
         examples={{
-            singleDate: {code: SingleDatePickerExample, title: 'Single Date'},
-            readOnly: {code: DatePickerReadonlyExample, title: 'Disabled'},
+            singleDate: <SingleDatePickerDemo title="Single Date" />,
+            readOnly: <DatePickerReadonlyDemo title="Disabled" />,
         }}
     />
 );
+
+export default Page;
