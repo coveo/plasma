@@ -1,8 +1,11 @@
-import {Group} from '@mantine/core';
-import {FunctionComponent, PropsWithChildren} from 'react';
+import {Group, DefaultProps} from '@mantine/core';
+import {FunctionComponent, ReactNode} from 'react';
 
-export const TableFooter: FunctionComponent<PropsWithChildren> = ({children}) => (
-    <Group position="apart" px="md" py="sm">
+interface TableFooterProps extends DefaultProps {
+    children?: ReactNode;
+}
+export const TableFooter: FunctionComponent<TableFooterProps> = ({children, ...others}) => (
+    <Group position="apart" px="md" py="sm" {...others}>
         {children}
     </Group>
 );
