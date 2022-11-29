@@ -1,4 +1,4 @@
-import {CodeEditorMetadata} from '@coveord/plasma-components-props-analyzer';
+import {CodeEditorLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
 import CodeEditorExample from '@examples/legacy/form/CodeEditor/CodeEditor.example.tsx';
 import CodeEditorReadonlyExample from '@examples/legacy/form/CodeEditor/CodeEditorReadonly.example.tsx';
 
@@ -13,7 +13,7 @@ export default () => (
         thumbnail="codeEditor"
         code={CodeEditorExample}
         componentSourcePath="/editor/CodeEditor.tsx"
-        propsMetadata={CodeEditorMetadata}
+        propsMetadata={CodeEditorLegacyMetadata}
         examples={{
             readOnly: {code: CodeEditorReadonlyExample, title: 'Read only'},
         }}

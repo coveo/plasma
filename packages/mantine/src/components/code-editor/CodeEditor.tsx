@@ -11,6 +11,7 @@ import {
     InputWrapperBaseProps,
     Loader,
     Selectors,
+    Space,
     Stack,
     Tooltip,
     useComponentDefaultProps,
@@ -141,7 +142,9 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         <Input.Error mt="xs" {...errorProps}>
             {error}
         </Input.Error>
-    ) : null;
+    ) : (
+        <Space h="xs" />
+    );
 
     const _header =
         _label || _description ? (
