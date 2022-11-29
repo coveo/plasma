@@ -15,3 +15,5 @@ document.createRange = () => {
 
     return range;
 };
+
+global.URL.createObjectURL = jest.fn();
