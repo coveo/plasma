@@ -1,5 +1,5 @@
 import {TableMetadata} from '@coveord/plasma-components-props-analyzer';
-import mainExample from '@examples/layout/Table/main.example.tsx';
+import TableDemo from '@examples/layout/Table/Table.demo.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -11,6 +11,6 @@ export default () => (
         description="A table displays large quantities of items or data in a list format. Filtering features, date picker, collapsible rows and actions may be added."
         id="Table"
         propsMetadata={TableMetadata}
-        code={mainExample}
+        demo={<TableDemo />}
     />
 );

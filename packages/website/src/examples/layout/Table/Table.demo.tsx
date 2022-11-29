@@ -20,12 +20,7 @@ export default () => {
             enableSorting: false,
         }),
     ];
-    return (
-        <Table data={dataForRows} columns={columns}>
-            {/* you can override background color with: sx={{backgroundColor: 'white'}} */}
-            <Table.Header></Table.Header>
-        </Table>
-    );
+    return <Table data={dataForRows} columns={columns} />;
 };
 
 interface IExampleRowData {
