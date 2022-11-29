@@ -1,8 +1,8 @@
 import {JSONEditorConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import inError from '@examples/legacy/form/JSONEditor/InError.example.tsx';
-import code from '@examples/legacy/form/JSONEditor/JSONEditor.example.tsx';
-import readOnly from '@examples/legacy/form/JSONEditor/ReadOnly.example.tsx';
-import valueFromState from '@examples/legacy/form/JSONEditor/ValueState.example.tsx';
+import inError from '@examples/legacy/form/JSONEditor/InError.demo.tsx';
+import code from '@examples/legacy/form/JSONEditor/JSONEditor.demo.tsx';
+import readOnly from '@examples/legacy/form/JSONEditor/ReadOnly.demo.tsx';
+import valueFromState from '@examples/legacy/form/JSONEditor/ValueState.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

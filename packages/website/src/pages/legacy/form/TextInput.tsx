@@ -1,6 +1,6 @@
 import {TextInputMetadata} from '@coveord/plasma-components-props-analyzer';
-import TextInputExample from '@examples/legacy/form/TextInput/TextInput.example.tsx';
-import useTextInputExample from '@examples/legacy/form/TextInput/useTextInput.example.tsx';
+import TextInputExample from '@examples/legacy/form/TextInput/TextInput.demo.tsx';
+import useTextInputExample from '@examples/legacy/form/TextInput/useTextInput.demo.tsx';
 import {FunctionComponent} from 'react';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';

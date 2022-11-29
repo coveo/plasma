@@ -1,7 +1,7 @@
 import {DatePickerDropdownConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import DatePickerExample from '@examples/legacy/form/DatePicker/DatePicker.example.tsx';
-import DatePickerReadonlyExample from '@examples/legacy/form/DatePicker/DatePickerReadonly.example.tsx';
-import SingleDatePickerExample from '@examples/legacy/form/DatePicker/SingleDatePicker.example.tsx';
+import DatePickerExample from '@examples/legacy/form/DatePicker/DatePicker.demo.tsx';
+import DatePickerReadonlyExample from '@examples/legacy/form/DatePicker/DatePickerReadonly.demo.tsx';
+import SingleDatePickerExample from '@examples/legacy/form/DatePicker/SingleDatePicker.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

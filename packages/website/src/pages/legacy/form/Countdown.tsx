@@ -1,5 +1,5 @@
 import {CountdownMetadata} from '@coveord/plasma-components-props-analyzer';
-import CountdownExample from '@examples/legacy/form/Countdown/Countdown.example.tsx';
+import CountdownExample from '@examples/legacy/form/Countdown/Countdown.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

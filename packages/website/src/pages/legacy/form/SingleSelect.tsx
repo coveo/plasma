@@ -1,8 +1,8 @@
 import {SingleSelectConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/legacy/form/SingleSelect/main.example.tsx';
-import withFilter from '@examples/legacy/form/SingleSelect/withFilter.example.tsx';
-import withInfiniteScroll from '@examples/legacy/form/SingleSelect/withInfiniteScroll.example.tsx';
-import withPredicate from '@examples/legacy/form/SingleSelect/withPredicates.example.tsx';
+import code from '@examples/legacy/form/SingleSelect/main.demo.tsx';
+import withFilter from '@examples/legacy/form/SingleSelect/withFilter.demo.tsx';
+import withInfiniteScroll from '@examples/legacy/form/SingleSelect/withInfiniteScroll.demo.tsx';
+import withPredicate from '@examples/legacy/form/SingleSelect/withPredicates.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
