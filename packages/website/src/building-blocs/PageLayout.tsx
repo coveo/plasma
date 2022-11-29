@@ -1,6 +1,6 @@
 import {Tabs} from '@coveord/plasma-mantine';
 import dynamic from 'next/dynamic';
-import {FunctionComponent, ReactNode} from 'react';
+import {Fragment, FunctionComponent, ReactNode} from 'react';
 
 import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
@@ -17,7 +17,7 @@ const Sandbox = dynamic<SandboxProps>(
 interface PlaygroundProps {
     title: string;
     code?: string;
-    Demo?: () => JSX.Element;
+    demo?: ReactNode;
     layout?: 'horizontal' | 'vertical';
 }
 
@@ -74,7 +74,7 @@ const Content: FunctionComponent<
     Pick<
         PageLayoutProps,
         | 'code'
-        | 'Demo'
+        | 'demo'
         | 'examples'
         | 'id'
         | 'relatedComponents'
@@ -85,7 +85,7 @@ const Content: FunctionComponent<
     >
 > = ({
     code,
-    Demo,
+    demo: mainDemo,
     examples,
     id,
     relatedComponents,
@@ -103,11 +103,7 @@ const Content: FunctionComponent<
             </div>
         )}
 
-        {Demo && (
-            <div className="plasma-page-layout__main-code plasma-page-layout__section">
-                <Demo />
-            </div>
-        )}
+        {mainDemo && <div className="plasma-page-layout__main-code plasma-page-layout__section">{mainDemo}</div>}
 
         {withPropsTable && (
             <div className="plasma-page-layout__section">
@@ -119,12 +115,9 @@ const Content: FunctionComponent<
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb5">Examples</h4>
                 {Object.entries(examples).map(
-                    ([
-                        exampleId,
-                        {code: exampleCode, Demo: ExampleDemo, title, layout: exampleLayout = 'horizontal'},
-                    ]) =>
-                        Demo ? (
-                            <ExampleDemo key={id + exampleId} />
+                    ([exampleId, {code: exampleCode, demo, title, layout: exampleLayout = 'horizontal'}]) =>
+                        demo ? (
+                            <Fragment key={id + exampleId}>{demo}</Fragment>
                         ) : (
                             <Sandbox
                                 key={id + exampleId}

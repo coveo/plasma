@@ -1,42 +1,9 @@
 import {SectionMetadata} from '@coveord/plasma-components-props-analyzer';
+import SectionExample from '@examples/legacy/layout/Section/Section.example.tsx';
+import SectionLevelExample from '@examples/legacy/layout/Section/SectionLevel.example.tsx';
+import SectionWithModsExample from '@examples/legacy/layout/Section/SectionWithMods.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {Section} from '@coveord/plasma-react';
-
-    export default () => (
-        <Section title="Section title" description="Section description.">
-            <Section level={2} mods={'mod-header-padding'}  title="Look at my cool mod">
-                <div>Children</div>
-            </Section>
-        </Section>
-    );
-`;
-
-const withLevel = `
-    import {Section} from '@coveord/plasma-react';
-
-    export default () => (
-        <>
-            <Section title="This is a level 1 section" description="Section description." level={1} />
-            <Section title="This is a level 2 section" description="Section description." level={2} />
-            <Section title="This is a level 3 section" description="Section description." level={3} />
-        </>
-    );
-`;
-
-const withMods = `
-    import {Section} from '@coveord/plasma-react';
-
-    export default () => (
-        <>
-            <Section mods={'mod-header-padding'} title="This is a level 1 section" description="Section description." />
-            <Section mods={'mod-form-top-bottom-padding'}title="This is a level 2 section" description="Section description." />
-            <Section mods={'material-card'}title="This is a level 3 section" description="Section description." />
-        </>
-    );
-`;
 
 const SectionExamples = () => (
     <PageLayout
@@ -45,10 +12,10 @@ const SectionExamples = () => (
         title="Section"
         section="Layout"
         thumbnail="placeholder"
-        code={code}
+        code={SectionExample}
         examples={{
-            withLevel: {code: withLevel, title: 'With Level option'},
-            withMods: {code: withMods, title: 'With Mods option'},
+            withLevel: {code: SectionLevelExample, title: 'With Level option'},
+            withMods: {code: SectionWithModsExample, title: 'With Mods option'},
         }}
         propsMetadata={SectionMetadata}
     />

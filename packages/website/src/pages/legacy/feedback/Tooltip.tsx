@@ -1,18 +1,7 @@
 import {TooltipMetadata} from '@coveord/plasma-components-props-analyzer';
+import TooltipExample from '@examples/legacy/feedback/Tooltip/Tooltip.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {Tooltip} from '@coveord/plasma-react';
-
-    export default () => (
-        <Tooltip title="I am a tooltip!" placement="right" noSpanWrapper>
-            <button type="button" className="btn">
-                Hover me!
-            </button>
-        </Tooltip>
-    );
-`;
 
 export const TooltipExamples = () => (
     <PageLayout
@@ -22,7 +11,7 @@ export const TooltipExamples = () => (
         section="Feedback"
         description="A tooltip is a floating label that provides brief additional information about an interface component."
         thumbnail="tooltip"
-        code={code}
+        code={TooltipExample}
         propsMetadata={TooltipMetadata}
     />
 );

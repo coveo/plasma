@@ -1,12 +1,7 @@
 import {CountdownMetadata} from '@coveord/plasma-components-props-analyzer';
+import CountdownExample from '@examples/legacy/form/Countdown/Countdown.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {Countdown} from '@coveord/plasma-react';
-
-    export default () => <Countdown />
-`;
 
 export default () => (
     <PageLayout
@@ -15,7 +10,7 @@ export default () => (
         title="Countdown"
         componentSourcePath="/calendar/Countdown.tsx"
         description="A Countdown illustrates how much time there is left until an end date is reached."
-        code={code}
+        code={CountdownExample}
         propsMetadata={CountdownMetadata}
     />
 );

@@ -1,14 +1,6 @@
+import BorderedLineExample from '@examples/legacy/layout/BorderedLine/BorderedLine.example.tsx';
+
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {BorderedLine} from '@coveord/plasma-react';
-
-    export default () => (
-        <BorderedLine className="full-content-x">
-            I am a bordered row and you can fill me with whatever you want!
-        </BorderedLine>
-    );
-`;
 
 const BorderedLineExamples = () => (
     <PageLayout
@@ -18,7 +10,7 @@ const BorderedLineExamples = () => (
         section="Layout"
         thumbnail="placeholder"
         withPropsTable={false}
-        code={code}
+        code={BorderedLineExample}
     />
 );
 

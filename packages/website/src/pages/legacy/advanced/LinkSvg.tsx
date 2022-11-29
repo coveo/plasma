@@ -1,17 +1,7 @@
 import {LinkSvgMetadata} from '@coveord/plasma-components-props-analyzer';
+import LinkSvgExample from '@examples/legacy/advanced/LinkSvg/LinkSvg.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {LinkSvg} from '@coveord/plasma-react';
-    import {ExternalSize16Px} from '@coveord/plasma-react-icons';
-
-    export default () => (
-        <LinkSvg url="https://www.coveo.com/" icon={ExternalSize16Px}>
-            Learn more about Coveo
-        </LinkSvg>
-    );
-`;
 
 export default () => (
     <PageLayout
@@ -20,7 +10,7 @@ export default () => (
         section="Advanced"
         description="A SVG that acts as a link."
         componentSourcePath="/svg/LinkSvg.tsx"
-        code={code}
+        code={LinkSvgExample}
         propsMetadata={LinkSvgMetadata}
     />
 );

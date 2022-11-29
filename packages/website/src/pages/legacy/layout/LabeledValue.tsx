@@ -1,39 +1,9 @@
 import {LabeledValueMetadata} from '@coveord/plasma-components-props-analyzer';
+import LabelledValueExample from '@examples/legacy/layout/LabelledValue/LabelledValue.example.tsx';
+import LabelledValueFullRowExample from '@examples/legacy/layout/LabelledValue/LabelledValueFullRow.example.tsx';
+import LabelledValueWithInformationExample from '@examples/legacy/layout/LabelledValue/LabelledValueWithInformation.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {LabeledValue} from '@coveord/plasma-react';
-
-    export default () => (
-        <LabeledValue label="Super cool label" value="Value under the super cool label" />
-    );
-`;
-
-const withInformation = `
-    import {LabeledValue, TooltipPlacement} from '@coveord/plasma-react';
-
-    export default () => (
-        <LabeledValue 
-            label="Super cool label" 
-            value="Value under the super cool label" 
-            information={'Some valuable informations go here.'}
-            informationPlacement={TooltipPlacement.Bottom} 
-        />
-    );
-`;
-
-const fullRow = `
-    import {LabeledValue} from '@coveord/plasma-react';
-
-    export default () => (
-        <div className="flex flex-wrap">
-            <LabeledValue label="Super cool label taking the full row" value="Value under the super cool label" fullRow/>
-            <LabeledValue label="Too much bubbly debat at the office" value="WE ARE TWO" />
-            <LabeledValue label="Buddy" value="TO DANCE" />
-        </div>
-    );
-`;
 
 const LabeledValueExamples = () => (
     <PageLayout
@@ -43,10 +13,10 @@ const LabeledValueExamples = () => (
         section="Layout"
         thumbnail="placeholder"
         propsMetadata={LabeledValueMetadata}
-        code={code}
+        code={LabelledValueExample}
         examples={{
-            withInformation: {code: withInformation, title: 'With more information (tooltip)'},
-            fullRow: {code: fullRow, title: 'With fullRow option'},
+            withInformation: {code: LabelledValueWithInformationExample, title: 'With more information (tooltip)'},
+            fullRow: {code: LabelledValueFullRowExample, title: 'With fullRow option'},
         }}
     />
 );

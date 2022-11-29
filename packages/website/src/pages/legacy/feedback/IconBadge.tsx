@@ -1,32 +1,7 @@
 import {IconBadgeMetadata} from '@coveord/plasma-components-props-analyzer';
+import IconAndLinkExample from '@examples/legacy/form/button/IconAndLink.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {IconBadge, IconBadgeType} from '@coveord/plasma-react';
-    import {BellSize24Px}  from '@coveord/plasma-react-icons'
-
-    export default () => (
-        <>
-            <IconBadge
-                icon={BellSize24Px}
-                type={IconBadgeType.New}
-                className="mr1"
-            />
-            <IconBadge
-                icon={BellSize24Px}
-                type={IconBadgeType.Information}
-                className="mr1"
-            />
-            <IconBadge
-                icon={BellSize24Px}
-                type={IconBadgeType.Warning}
-                className="mr1"
-            />
-            <IconBadge icon={BellSize24Px} type={IconBadgeType.Major} />
-        </>
-    );
-`;
 
 export const IconBadgeExamples = () => (
     <PageLayout
@@ -35,7 +10,7 @@ export const IconBadgeExamples = () => (
         title="IconBadge"
         section="Feedback"
         thumbnail="placeholder"
-        code={code}
+        code={IconAndLinkExample}
         propsMetadata={IconBadgeMetadata}
     />
 );

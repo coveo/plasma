@@ -1,46 +1,9 @@
 import {ColorPickerMetadata} from '@coveord/plasma-components-props-analyzer';
+import ColorPickerExample from '@examples/legacy/form/ColorPicker/ColorPicker.example.tsx';
+import ColorPickerHiddenControlsExample from '@examples/legacy/form/ColorPicker/ColorPickerHiddenControls.example.tsx';
+import ColorPickerSelectorExample from '@examples/legacy/form/ColorPicker/ColorPickerSelector.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    import {ColorPicker} from '@coveord/plasma-react';
-    
-    export default () => {
-        const logColor = (color) => console.log(color);
-        return (
-            <ColorPicker id="color-picker-id" defaultColor="#F37231" onChangeComplete={logColor} />            
-        );
-    }
-`;
-
-const hiddenControls = `
-    import {ColorPicker} from '@coveord/plasma-react';
-    
-    export default () => {
-        return (
-            <ColorPicker id="color-picker-id-2" styles={{default: {controls: {display: 'none'}}}} />            
-        );
-    }
-`;
-
-const selector = `
-    import {useSelector} from 'react-redux';
-    import {ColorPicker, PlasmaState, InputSelectors} from '@coveord/plasma-react';
-    
-    export default () => {
-        const selected = useSelector((state: PlasmaState) =>
-            InputSelectors.getValue(state, {
-                id: 'color-picker-id-3',
-            })
-        );
-        return (
-            <>
-                <ColorPicker id="color-picker-id-3" />
-                Selected value: {selected}
-            </>
-        );
-    };
-`;
 
 const ColorPickerExamples = () => (
     <PageLayout
@@ -54,11 +17,11 @@ const ColorPickerExamples = () => (
             </>
         }
         componentSourcePath="/color-picker/ColorPicker.tsx"
-        code={code}
+        code={ColorPickerExample}
         propsMetadata={ColorPickerMetadata}
         examples={{
-            hiddenControls: {code: hiddenControls, title: 'Hidden Controls'},
-            selector: {code: selector, title: 'Selector'},
+            hiddenControls: {code: ColorPickerHiddenControlsExample, title: 'Hidden Controls'},
+            selector: {code: ColorPickerSelectorExample, title: 'Selector'},
         }}
     />
 );
