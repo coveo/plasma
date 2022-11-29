@@ -151,11 +151,6 @@ gulp.task('svg:concat', () => {
                 return {
                     plugins: [
                         {
-                            removeAttrs: {
-                                attrs: ['xmlns:*', 'xmlns'],
-                            },
-                        },
-                        {
                             removeUselessDefs: true,
                         },
                         {
