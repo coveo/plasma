@@ -26,7 +26,7 @@ describe('Modal', () => {
 
         fireEvent.click(screen.getByRole('button'));
 
-        expect(onClose).toBeCalled();
+        expect(onClose).toHaveBeenCalled();
     });
 });
 1;
