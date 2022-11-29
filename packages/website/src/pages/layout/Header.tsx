@@ -1,5 +1,5 @@
 import {HeaderMetadata} from '@coveord/plasma-components-props-analyzer';
-import mainExample from '@examples/layout/Header/Header.example.tsx';
+import HeaderDemo from '@examples/layout/Header/Header.demo.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -12,6 +12,6 @@ export default () => (
         thumbnail="header"
         id="Header"
         propsMetadata={HeaderMetadata}
-        code={mainExample}
+        demo={<HeaderDemo />}
     />
 );
