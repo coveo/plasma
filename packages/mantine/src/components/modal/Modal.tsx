@@ -1,4 +1,4 @@
-import {Modal as MantineModal, ModalProps, Text} from '@mantine/core';
+import {Modal as MantineModal, ModalProps} from '@mantine/core';
 import {FunctionComponent} from 'react';
 import {Header, HeaderProps} from '../header';
 
