@@ -1,30 +1,23 @@
 import {Modal as MantineModal, ModalProps, Text} from '@mantine/core';
 import {FunctionComponent} from 'react';
-import {Header, HeaderProps as PlasmantineHeaderProps} from '../header';
-
-interface HeaderProps extends Omit<PlasmantineHeaderProps, 'children'> {
-    title: string;
-}
+import {Header, HeaderProps} from '../header';
 
 export interface CustomModalProps extends Omit<ModalProps, 'centered' | 'title'> {
     /**
      * Header component props (layout/Header)
      */
-    header: HeaderProps;
+    header?: Omit<HeaderProps, 'children' | 'description'>;
+    title: string;
+    description?: HeaderProps['description'];
 }
 
-export const Modal: FunctionComponent<CustomModalProps> = ({
-    children,
-    header: {title, ...otherHeaderProps},
-    ...otherProps
-}) => (
+export const Modal: FunctionComponent<CustomModalProps> = ({children, title, header, description, ...otherProps}) => (
     <MantineModal
         {...otherProps}
+        styles={{title: {width: '100%'}}}
         title={
-            <Header py={0} px={0} {...otherHeaderProps}>
-                <Text size="md" py="md" weight="500">
-                    {title}
-                </Text>
+            <Header py={0} px={0} description={description} {...header}>
+                {title}
             </Header>
         }
     >

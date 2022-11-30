@@ -6,7 +6,20 @@ export default () => {
 
     return (
         <>
-            <Modal opened={opened} onClose={() => setOpened(false)} header={{title: 'Modal title'}}>
+            <Modal
+                opened={opened}
+                onClose={() => setOpened(false)}
+                title="Modal title"
+                description="Modal description"
+                header={{
+                    actions: (
+                        <>
+                            <Button>Action 1</Button>
+                            <Button variant="outline">Action 2</Button>
+                        </>
+                    ),
+                }}
+            >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim. Phasellus
                 lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit. Cras vitae ipsum
