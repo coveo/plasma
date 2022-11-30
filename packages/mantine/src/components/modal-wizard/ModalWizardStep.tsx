@@ -41,11 +41,10 @@ export interface ModalWizardStepProps {
      * @default true
      */
     countsAsProgress?: boolean;
+    children: ReactElement<any, any>;
 }
 
-const ModalWizardStep: FunctionComponent<PropsWithChildren<ModalWizardStepProps>> = ({children}) => (
-    <div>{children}</div>
-);
+const ModalWizardStep: FunctionComponent<PropsWithChildren<ModalWizardStepProps>> = ({children}) => children;
 
 ModalWizardStep.defaultProps = {
     showProgressBar: true,
