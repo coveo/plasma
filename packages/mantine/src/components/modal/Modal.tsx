@@ -7,7 +7,13 @@ export interface CustomModalProps extends Omit<ModalProps, 'centered' | 'title'>
      * Header component props (layout/Header)
      */
     header?: Omit<HeaderProps, 'children' | 'description'>;
+    /**
+     * The title text displayed on top of the modal
+     */
     title: string;
+    /**
+     * The description text displayed inside the header underneath the title
+     */
     description?: HeaderProps['description'];
 }
 
