@@ -2,7 +2,7 @@ import {Modal as MantineModal, ModalProps} from '@mantine/core';
 import {FunctionComponent} from 'react';
 import {Header, HeaderProps} from '../header';
 
-export interface CustomModalProps extends Omit<ModalProps, 'centered' | 'title'> {
+export interface CustomModalProps extends Omit<ModalProps, 'title'> {
     /**
      * Header component props (layout/Header)
      */
