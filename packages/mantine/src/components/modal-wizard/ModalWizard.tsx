@@ -137,7 +137,7 @@ export const ModalWizard: ModalWizardType = ({
     return (
         <Modal
             opened={opened}
-            classNames={{modal: cx(modal, classNames.modal), body: cx(body, classNames.body)}}
+            classNames={{modal: cx(modal, classNames?.modal), body: cx(body, classNames?.body)}}
             centered
             title={
                 <Header
