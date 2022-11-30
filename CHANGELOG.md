@@ -1,3 +1,16 @@
+# 48.15.0 (2022-11-29)
+
+
+### Features
+
+* **mantine:** added possibility to override backgroundColor on Table.Footer with sx (#2960) 9987d1d, closes #2960
+
+
+
+## 48.14.3 (2022-11-29)
+
+
+
 ## 48.14.2 (2022-11-29)
 
 
