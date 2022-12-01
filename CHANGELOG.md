@@ -1,3 +1,12 @@
+## 48.16.1 (2022-12-01)
+
+
+### Bug Fixes
+
+* **react:** make plasma react usable from code sandbox (#2961) 6455086, closes #2961
+
+
+
 # 48.16.0 (2022-11-30)
 
 
