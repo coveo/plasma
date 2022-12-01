@@ -1,3 +1,12 @@
+# 48.17.0 (2022-12-01)
+
+
+### Features
+
+* **table:** added support for doubleclick on a row (#2964) 1481b96, closes #2964
+
+
+
 ## 48.16.1 (2022-12-01)
 
 
