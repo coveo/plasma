@@ -124,6 +124,10 @@ interface TableProps<T> {
      * Initial state of the table
      */
     initialState?: InitialTableState & Partial<TableFormType>;
+    /**
+     * Action passed when user doubleClicks on a row
+     */
+    doubleClickAction?: (datum: T) => void;
 }
 
 interface TableType {
@@ -149,6 +153,7 @@ export const Table: TableType = <T,>({
     onChange,
     children,
     loading = false,
+    doubleClickAction,
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
@@ -224,6 +229,7 @@ export const Table: TableType = <T,>({
             <Fragment key={row.id}>
                 <tr
                     onClick={() => toggleRowSelection(row)}
+                    onDoubleClick={() => doubleClickAction(row.original)}
                     className={cx(classes.row, {[classes.rowSelected]: row.getIsSelected()})}
                 >
                     {row.getVisibleCells().map((cell) => {
