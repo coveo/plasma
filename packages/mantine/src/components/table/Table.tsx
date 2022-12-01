@@ -125,7 +125,7 @@ interface TableProps<T> {
      */
     initialState?: InitialTableState & Partial<TableFormType>;
     /**
-     * Action passed when user doubleClicks on a row
+     * Action passed when user double clicks on a row
      */
     doubleClickAction?: (datum: T) => void;
 }
@@ -229,7 +229,7 @@ export const Table: TableType = <T,>({
             <Fragment key={row.id}>
                 <tr
                     onClick={() => toggleRowSelection(row)}
-                    onDoubleClick={() => doubleClickAction(row.original)}
+                    onDoubleClick={() => doubleClickAction?.(row.original)}
                     className={cx(classes.row, {[classes.rowSelected]: row.getIsSelected()})}
                 >
                     {row.getVisibleCells().map((cell) => {
