@@ -11,19 +11,19 @@ const divStyles = {
 const modalWizardSteps = [
     {
         docLink: 'https://coveo.com',
-        title: (currentStep: string, numberOfSteps: any) => 'Current Step is: ' + currentStep,
+        title: 'Current Step is 1',
         validateStep: () => ({isValid: true}),
         element: <div style={divStyles}> Slide 1</div>,
     },
     {
         docLink: 'https://coveo.com',
-        title: (currentStep: string, numberOfSteps: any) => 'Current Step is: ' + currentStep,
+        title: 'Current Step is 2',
         validateStep: () => ({isValid: true}),
         element: <div style={divStyles}> Slide 2</div>,
     },
     {
         docLink: 'https://coveo.com',
-        title: (currentStep: string, numberOfSteps: any) => 'Current Step is: ' + currentStep,
+        title: 'Current Step is 3',
         validateStep: () => ({isValid: true}),
         element: <div style={divStyles}> Slide 3</div>,
     },
