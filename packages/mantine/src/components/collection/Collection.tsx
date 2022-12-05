@@ -7,6 +7,7 @@ import {
     MantineNumberSize,
     Selectors,
     Stack,
+    Title,
     Tooltip,
     useComponentDefaultProps,
 } from '@mantine/core';
@@ -16,7 +17,7 @@ import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 
 import {useControlledList} from '../../hooks';
 import {CollectionItem} from './CollectionItem';
-import useStyles from './Colllection.styles';
+import useStyles from './Collection.styles';
 
 interface CollectionProps<T> extends DefaultProps<Selectors<typeof useStyles>> {
     /**
@@ -99,6 +100,20 @@ interface CollectionProps<T> extends DefaultProps<Selectors<typeof useStyles>> {
      * @default false
      */
     required?: boolean;
+    /**
+     * Label associated with a collection (title)
+     */
+    label?: string;
+    /**
+     * Description for the collection (under the label)
+     */
+    description?: string;
+    /**
+     * Error message if input is invalid
+     *
+     * @default 'Invalid Input'
+     */
+    error?: string;
 }
 
 const defaultProps: Partial<CollectionProps<unknown>> = {
@@ -106,8 +121,11 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     addLabel: 'Add item',
     addDisabledTooltip: 'There is already an empty item',
     disabled: false,
-    spacing: 'xs',
+    spacing: 'xl',
     required: false,
+    error: 'Invalid Input',
+    label: '',
+    description: '',
 };
 
 export const Collection = <T,>(props: CollectionProps<T>) => {
@@ -125,6 +143,9 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         addLabel,
         addDisabledTooltip,
         allowAdd,
+        label,
+        description,
+        error,
 
         // Style props
         classNames,
@@ -149,6 +170,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
             key={index}
             disabled={disabled}
             draggable={draggable}
+            error={error}
             index={index}
             onRemove={removeItem(index)}
             styles={styles}
@@ -190,9 +212,17 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
                         {...others}
                     >
                         <Stack spacing={spacing}>
-                            {items}
-                            {provided.placeholder}
-                            {_addButton}
+                            <Stack spacing={'xs'}>
+                                <Title order={3}>{label}</Title>
+                                <Title order={6} color="dimmed" weight={200}>
+                                    {description}
+                                </Title>
+                            </Stack>
+                            <Stack>
+                                {items}
+                                {provided.placeholder}
+                                {_addButton}
+                            </Stack>
                         </Stack>
                     </Box>
                 )}
