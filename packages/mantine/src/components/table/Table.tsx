@@ -29,8 +29,8 @@ import {Th} from './Th';
 const useStyles = createStyles<string, {hasHeader: boolean}>((theme, {hasHeader}, getRef) => ({
     table: {
         width: '100%',
-        '& td:first-child': {
-            paddingLeft: theme.spacing.md,
+        '& td:first-of-type': {
+            paddingLeft: theme.spacing.xl,
         },
     },
 
@@ -40,8 +40,11 @@ const useStyles = createStyles<string, {hasHeader: boolean}>((theme, {hasHeader}
         backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
         transition: 'box-shadow 150ms ease',
         zIndex: 12, // skeleton is 11
-        '& tr th:first-child div': {
-            paddingLeft: theme.spacing.md,
+        '& tr th:first-of-type button': {
+            paddingLeft: theme.spacing.xl,
+        },
+        '& tr th:first-of-type div': {
+            paddingLeft: theme.spacing.xl,
         },
 
         '&::after': {
