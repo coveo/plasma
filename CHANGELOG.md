@@ -1,3 +1,30 @@
+# 48.17.0 (2022-12-01)
+
+
+### Features
+
+* **table:** added support for doubleclick on a row (#2964) 1481b96, closes #2964
+
+
+
+## 48.16.1 (2022-12-01)
+
+
+### Bug Fixes
+
+* **react:** make plasma react usable from code sandbox (#2961) 6455086, closes #2961
+
+
+
+# 48.16.0 (2022-11-30)
+
+
+### Features
+
+* **plasmantine:** Create the modal component with Header (#2954) d2b980d, closes #2954
+
+
+
 # 48.15.0 (2022-11-29)
 
 
