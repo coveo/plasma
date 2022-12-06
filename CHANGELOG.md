@@ -1,3 +1,12 @@
+## 48.17.1 (2022-12-06)
+
+
+### Bug Fixes
+
+* **table, Mantine:** adjust the first column padding to align with Header (#2965) cd81dda, closes #2965
+
+
+
 # 48.17.0 (2022-12-01)
 
 
