@@ -1,3 +1,12 @@
+## 48.17.5 (2022-12-06)
+
+
+### Bug Fixes
+
+* **mantine:** add type keyword to header props export (#2973) f8a9151, closes #2973
+
+
+
 ## 48.17.4 (2022-12-06)
 
 
