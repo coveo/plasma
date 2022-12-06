@@ -1,3 +1,12 @@
+## 48.17.3 (2022-12-06)
+
+
+### Bug Fixes
+
+* **mantine:** adjust header doc link icon alignment (#2970) 0ec0db6, closes #2970
+
+
+
 ## 48.17.2 (2022-12-06)
 
 
