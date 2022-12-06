@@ -8,8 +8,6 @@ import useStyles from './Collection.styles';
 interface CollectionItemProps extends CollectionItemSharedProps {
     draggable?: boolean;
     disabled: boolean;
-    label?: string;
-    error?: string;
 }
 
 interface CollectionItemSharedProps extends DefaultProps<Selectors<typeof useStyles>> {

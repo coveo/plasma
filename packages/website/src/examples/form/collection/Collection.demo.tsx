@@ -11,9 +11,7 @@ export default () => {
             ],
         },
         validate: {
-            todoList: {
-                name: (value) => (value.length < 2 ? "That can't be a task..." : null),
-            },
+            todoList: (value) => (value.length < 2 ? `Don't be lazy, add just ${2 - value.length} more tasks` : null),
         },
     });
 
@@ -31,7 +29,6 @@ export default () => {
                     <TextInput
                         // Autofocus is annoying when playing with the sandbox but you should have this on otherwise
                         // autoFocus
-                        error="That can't be a task..."
                         placeholder="Do something ..."
                         {...form.getInputProps(`todoList.${index}.name`)}
                         styles={{flex: 1}}

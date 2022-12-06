@@ -4,22 +4,24 @@ import {
     Button,
     DefaultProps,
     Group,
+    Input,
+    InputWrapperBaseProps,
     MantineNumberSize,
     Selectors,
     Stack,
-    Title,
     Tooltip,
     useComponentDefaultProps,
 } from '@mantine/core';
 import {useId} from '@mantine/hooks';
 import {ReactNode} from 'react';
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-
 import {useControlledList} from '../../hooks';
 import {CollectionItem} from './CollectionItem';
 import useStyles from './Collection.styles';
 
-interface CollectionProps<T> extends DefaultProps<Selectors<typeof useStyles>> {
+interface CollectionProps<T>
+    extends Omit<InputWrapperBaseProps, 'inputContainer' | 'inputWrapperOrder'>,
+        DefaultProps<Selectors<typeof useStyles>> {
     /**
      * The default value each new item should have
      */
@@ -100,20 +102,6 @@ interface CollectionProps<T> extends DefaultProps<Selectors<typeof useStyles>> {
      * @default false
      */
     required?: boolean;
-    /**
-     * Label associated with a collection (title)
-     */
-    label?: string;
-    /**
-     * Description for the collection (under the label)
-     */
-    description?: string;
-    /**
-     * Error message if input is invalid
-     *
-     * @default 'Invalid Input'
-     */
-    error?: string;
 }
 
 const defaultProps: Partial<CollectionProps<unknown>> = {
@@ -121,11 +109,8 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     addLabel: 'Add item',
     addDisabledTooltip: 'There is already an empty item',
     disabled: false,
-    spacing: 'xl',
+    spacing: 'xs',
     required: false,
-    error: 'Invalid Input',
-    label: '',
-    description: '',
 };
 
 export const Collection = <T,>(props: CollectionProps<T>) => {
@@ -144,8 +129,11 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         addDisabledTooltip,
         allowAdd,
         label,
+        labelProps,
         description,
+        descriptionProps,
         error,
+        errorProps,
 
         // Style props
         classNames,
@@ -165,12 +153,29 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         onRemoveItem?.(index);
     };
 
+    const _label = label ? (
+        <Input.Label required={required} {...labelProps}>
+            {label}
+        </Input.Label>
+    ) : null;
+
+    const _description = description ? (
+        <Input.Description {...descriptionProps}>{description}</Input.Description>
+    ) : null;
+    const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : null;
+    const _header =
+        _label || _description ? (
+            <Stack spacing="xs">
+                {_label}
+                {_description}
+            </Stack>
+        ) : null;
+
     const items = values.map((item, index) => (
         <CollectionItem
             key={index}
             disabled={disabled}
             draggable={draggable}
-            error={error}
             index={index}
             onRemove={removeItem(index)}
             styles={styles}
@@ -211,17 +216,13 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
                         className={cx(classes.root, className)}
                         {...others}
                     >
-                        <Stack spacing={spacing}>
-                            <Stack spacing={'xs'}>
-                                <Title order={3}>{label}</Title>
-                                <Title order={6} color="dimmed" weight={200}>
-                                    {description}
-                                </Title>
-                            </Stack>
-                            <Stack>
+                        <Stack>
+                            {_header}
+                            <Stack spacing={spacing}>
                                 {items}
                                 {provided.placeholder}
                                 {_addButton}
+                                {_error}
                             </Stack>
                         </Stack>
                     </Box>
