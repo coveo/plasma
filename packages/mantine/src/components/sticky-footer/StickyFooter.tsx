@@ -13,7 +13,6 @@ const useStyles = createStyles(() => ({
         position: 'sticky',
         bottom: 0,
         zIndex: 1,
-        overflow: 'hidden',
         backgroundColor: 'white',
     },
 }));
