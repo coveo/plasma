@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ReactNode, Children, isValidElement, cloneElement} from 'react';
+import {Children, cloneElement, isValidElement, ReactNode} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import * as _ from 'underscore';
 import {clean, stripTags} from 'underscore.string';
@@ -14,7 +14,9 @@ export const getReactNodeTextContent = (node: ReactNode): string =>
 export const addClassNameToChildren = (children: ReactNode, className: string) =>
     Children.map(children, (child) =>
         isValidElement(child) ? (
-            cloneElement(child, {className: classNames(child.props.className, className)})
+            cloneElement<{className?: string; [key: string]: any}>(child, {
+                className: classNames(child.props.className, className),
+            })
         ) : (
             <span className={className}>{child}</span>
         )
