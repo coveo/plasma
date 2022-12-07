@@ -18,7 +18,7 @@ export const BrowserPreviewDemos = () => (
         section="Layout"
         thumbnail="placeholder"
         description="A browser preview shows the result of configuration changes in a simplified representation of a browser interface."
-        componentSourcePath="/browserPreview/BrowserPreview.tsx"
+        sourcePath="/packages/react/src/components/browserPreview/BrowserPreview.tsx"
         propsMetadata={BrowserPreviewMetadata}
         demo={<BrowserPreviewDemo />}
         examples={{

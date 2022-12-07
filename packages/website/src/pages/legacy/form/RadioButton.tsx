@@ -10,7 +10,7 @@ const Page = () => (
         title="Radio Buttons"
         section="Form"
         description="A radio button allows users to select exactly one option from a list of mutually exclusive options."
-        componentSourcePath="/radio/RadioSelectConnected.tsx"
+        sourcePath="/packages/react/src/components/radio/RadioSelectConnected.tsx"
         demo={<RadioButtonDemo center />}
         propsMetadata={RadioSelectConnectedMetadata}
         examples={{

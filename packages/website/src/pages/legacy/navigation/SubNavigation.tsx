@@ -9,7 +9,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const SubNavigationDemos = () => (
     <PageLayout
         id="SubNavigation"
-        componentSourcePath="/subNavigation/SubNavigation.tsx"
+        sourcePath="/packages/react/src/components/subNavigation/SubNavigation.tsx"
         title="SubNavigation"
         section="Navigation"
         description="A subnavigation is a secondary vertical navigation component that allows users to navigate between sections of the same interface."

@@ -10,7 +10,7 @@ export const ModalWizardDemos = () => (
         title="Modal Wizard"
         section="Layout"
         description="A modal wizard guides users through a task by presenting a succession of actions to complete."
-        componentSourcePath="/modalWizard/ModalWizard.tsx"
+        sourcePath="/packages/react/src/components/modalWizard/ModalWizard.tsx"
         demo={<ModalWizardDemo />}
         propsMetadata={ModalWizardMetadata}
         examples={{withValidationIds: <ModalWizardWithValidationIdsDemo title="Using validation ids" />}}

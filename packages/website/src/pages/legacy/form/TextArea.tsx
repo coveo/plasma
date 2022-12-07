@@ -9,7 +9,7 @@ const Page = () => (
         title="Text Area"
         section="Form"
         description="A text area allows users to enter and edit longer text, often on multiple lines or in a paragraph."
-        componentSourcePath="/textarea/TextArea.tsx"
+        sourcePath="/packages/react/src/components/textarea/TextArea.tsx"
         demo={<TextAreaDemo />}
         propsMetadata={TextAreaMetadata}
     />

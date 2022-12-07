@@ -7,7 +7,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 const BreadcrumbsDemos = () => (
     <PageLayout
         id="BreadcrumbHeader"
-        componentSourcePath="/breadcrumbs/BreadcrumbHeader.tsx"
+        sourcePath="/packages/react/src/components/breadcrumbs/BreadcrumbHeader.tsx"
         title="Breadcrumbs"
         section="Navigation"
         description="A breadcrumb is a secondary navigation that helps users to understand the hierarchy of interfaces and navigate through them."

@@ -10,7 +10,7 @@ const NumericInputDemos = () => (
         title="Numeric Input"
         section="Form"
         description="A numeric input allows users to enter and edit numerical values, either manually or using an input stepper."
-        componentSourcePath="/numericInput/NumericInputConnected.tsx"
+        sourcePath="/packages/react/src/components/numericInput/NumericInputConnected.tsx"
         propsMetadata={NumericInputConnectedMetadata}
         demo={<NumericInputDemo center />}
         examples={{disabled: <NumericInputDisabledDemo center title="Disabled" />}}

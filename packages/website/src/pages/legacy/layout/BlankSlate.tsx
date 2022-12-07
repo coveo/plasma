@@ -9,7 +9,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const BlankSlateDemo = () => (
     <PageLayout
         id="BlankSlate"
-        componentSourcePath="/blankSlate/BlankSlate.tsx"
+        sourcePath="/packages/react/src/components/blankSlate/BlankSlate.tsx"
         title="Blank Slate"
         section="Layout"
         description="A blank slate informs users that a section doesn’t contain any data and provides a way to address it."

@@ -8,7 +8,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 const SectionDemos = () => (
     <PageLayout
         id="Section"
-        componentSourcePath="/section/Section.tsx"
+        sourcePath="/packages/react/src/components/section/Section.tsx"
         title="Section"
         section="Layout"
         thumbnail="placeholder"

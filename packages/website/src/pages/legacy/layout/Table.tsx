@@ -15,7 +15,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 const TableDemos = () => (
     <PageLayout
         id="TableHOC"
-        componentSourcePath="/table-hoc/TableHOC.tsx"
+        sourcePath="/packages/react/src/components/table-hoc/TableHOC.tsx"
         title="Table"
         section="Layout"
         description="A table displays large quantities of items or data in a list format. Filtering features and actions may be added."

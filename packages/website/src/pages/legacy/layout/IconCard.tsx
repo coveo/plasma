@@ -13,7 +13,7 @@ export const IconCardDemos = () => (
         title="Icon Card"
         section="Layout"
         description="An icon card is an element that regroups related pieces of information together. It can be either static or interactive."
-        componentSourcePath="/iconCard/IconCard.tsx"
+        sourcePath="/packages/react/src/components/iconCard/IconCard.tsx"
         propsMetadata={IconCardMetadata}
         demo={<IconCardDemo center />}
         examples={{

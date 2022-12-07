@@ -11,7 +11,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const ChartDemos = () => (
     <PageLayout
         id="ChartContainer"
-        componentSourcePath="/chart/ChartContainer.tsx"
+        sourcePath="/packages/react/src/components/chart/ChartContainer.tsx"
         title="Charts"
         section="Layout"
         description="A chart compares sets of complex data to provide insights on their relationship and status."

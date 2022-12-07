@@ -41,13 +41,11 @@ export const PageLayout = ({
     thumbnail,
     section,
     children,
-    componentSourcePath,
     sourcePath,
     ...contentProps
 }: PageLayoutProps) => (
     <div id={id} className="plasma-page-layout">
         <PageHeader
-            componentSourcePath={componentSourcePath}
             sourcePath={sourcePath}
             section={section}
             thumbnail={thumbnail}

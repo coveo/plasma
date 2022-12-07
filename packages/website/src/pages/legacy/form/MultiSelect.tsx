@@ -11,7 +11,7 @@ const Page = () => (
         title="Multi Select"
         section="Form"
         description="A multi select allows users to select multiple options from a list. It is typically used when there are a large number of options."
-        componentSourcePath="/select/MultiSelectConnected.tsx"
+        sourcePath="/packages/react/src/components/select/MultiSelectConnected.tsx"
         demo={<MultiSelectDemo center />}
         propsMetadata={MultiSelectConnectedMetadata}
         examples={{

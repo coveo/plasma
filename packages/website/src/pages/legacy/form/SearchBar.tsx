@@ -8,7 +8,7 @@ const Page = () => (
         id="SearchBar"
         title="Search Bar"
         section="Form"
-        componentSourcePath="/searchBar/SearchBar.tsx"
+        sourcePath="/packages/react/src/components/searchBar/SearchBar.tsx"
         propsMetadata={SearchBarMetadata}
         description="A search bar allows users to search a large set of data by entering keywords. A list of matching items is then returned."
         demo={<SearchBarDemo center />}

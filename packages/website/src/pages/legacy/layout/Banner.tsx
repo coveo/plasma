@@ -5,7 +5,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const BannerDemos = () => (
     <PageLayout
         id="BannerContainer"
-        componentSourcePath="/banner/BannerContainer.tsx"
+        sourcePath="/packages/react/src/components/banner/BannerContainer.tsx"
         title="Banner"
         withPropsTable={false}
         section="Layout"

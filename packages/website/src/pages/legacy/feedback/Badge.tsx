@@ -8,7 +8,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const BadgeDemos = () => (
     <PageLayout
         id="Badge"
-        componentSourcePath="/badge/Badge.tsx"
+        sourcePath="/packages/react/src/components/badge/Badge.tsx"
         title="Badge"
         section="Feedback"
         description="A badge is a small label that displays a short yet important piece of information."

@@ -15,8 +15,8 @@ const DemoPage = () => (
         title="Info Token"
         section="Advanced"
         description="An InfoToken is a visual representation of the status of something."
-        componentSourcePath="/info-token/InfoToken.tsx"
         demo={<InfoTokenDemo center />}
+        sourcePath="/packages/react/src/components/info-token/InfoToken.tsx"
         propsMetadata={InfoTokenMetadata}
         examples={{
             info: <InfoTokenInfoDemo center title="Information" />,

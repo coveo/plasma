@@ -10,8 +10,8 @@ const DemoPage = () => (
         title="Sync Feedback"
         section="Feedback"
         description="A sync feedback indicates the status of an operation to the user."
-        componentSourcePath="/numericInput/NumericInputConnected.tsx"
         demo={<SyncFeedbackDemo center />}
+        sourcePath="/packages/react/src/components/numericInput/NumericInputConnected.tsx"
         propsMetadata={SyncFeedbackMetadata}
         examples={{label: <SyncFeedbackLabelDemo center title="Custom Labels" />}}
     />

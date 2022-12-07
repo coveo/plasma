@@ -9,7 +9,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 const CollapsibleDemos = () => (
     <PageLayout
         id="CollapsibleConnected"
-        componentSourcePath="/collapsible/CollapsibleConnected.tsx"
+        sourcePath="/packages/react/src/components/collapsible/CollapsibleConnected.tsx"
         title="Collapsible"
         section="Layout"
         description="A collapsible allows users to hide or display a section of content."

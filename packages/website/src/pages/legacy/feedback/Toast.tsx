@@ -8,7 +8,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const ToastDemos = () => (
     <PageLayout
         id="Toast"
-        componentSourcePath="/toast/Toast.tsx"
+        sourcePath="/packages/react/src/components/toast/Toast.tsx"
         title="Toast"
         thumbnail="toast"
         section="Feedback"

@@ -12,7 +12,7 @@ const Page = () => (
         title="JSON Editor"
         section="Form"
         description="A JSON editor is a text area where users can enter and edit data in JSON format."
-        componentSourcePath="/editor/JSONEditor.tsx"
+        sourcePath="/packages/react/src/components/editor/JSONEditor.tsx"
         demo={<JSONEditorDemo />}
         propsMetadata={JSONEditorConnectedMetadata}
         examples={{

@@ -11,7 +11,7 @@ const Page = () => (
         title="Filter Box"
         section="Form"
         description="A filter box allows users to enter text to filter data. It is frequently used with tables and dropdown menus."
-        componentSourcePath="/filterBox/FilterBoxConnected.tsx"
+        sourcePath="/packages/react/src/components/filterBox/FilterBoxConnected.tsx"
         demo={<FilterBoxDemo center />}
         propsMetadata={FilterBoxConnectedMetadata}
         examples={{

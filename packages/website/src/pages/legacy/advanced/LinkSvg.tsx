@@ -9,8 +9,8 @@ const DemoPage = () => (
         title="Link SVG"
         section="Advanced"
         description="A SVG that acts as a link."
-        componentSourcePath="/svg/LinkSvg.tsx"
         demo={<LinkSvgDemo center />}
+        sourcePath="/packages/react/src/components/svg/LinkSvg.tsx"
         propsMetadata={LinkSvgMetadata}
     />
 );

@@ -13,7 +13,7 @@ const ModalWindowDemos = () => (
         title="Modal Window"
         section="Layout"
         description="A modal appears over the current context to have users focus on a particular task or information."
-        componentSourcePath="/modal/ModalComposite.tsx"
+        sourcePath="/packages/react/src/components/modal/ModalComposite.tsx"
         propsMetadata={ModalCompositeConnectedMetadata}
         demo={<ModalWindowDemo />}
         examples={{

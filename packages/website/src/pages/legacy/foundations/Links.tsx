@@ -13,7 +13,7 @@ export const Links = () => (
         thumbnail="links"
         withPropsTable={false}
         description="A link is a navigational element that guides users to external resources or other sections of the product."
-        sourcePath="packages/style/scss/elements/links.scss"
+        sourcePath="/packages/style/scss/elements/links.scss"
         examples={{
             disabledLink: <LinkDisabledDemo center title="Disabled" />,
             buttonLink: <ButtonLinkDemo center title="A button disguised as a link" />,

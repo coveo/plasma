@@ -9,8 +9,8 @@ const DemoPage = () => (
         title="Step Progress Bar"
         section="Feedback"
         description="A step progress bar visualizes a user’s progress as they complete a task by representing the number of steps left to complete the task."
-        componentSourcePath="/stepProgressBar/StepProgressBar.tsx"
         demo={<StepProgressBarDemo />}
+        sourcePath="/packages/react/src/components/stepProgressBar/StepProgressBar.tsx"
         propsMetadata={StepProgressBarMetadata}
     />
 );

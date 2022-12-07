@@ -10,7 +10,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 const LimitDemos = () => (
     <PageLayout
         id="Limit"
-        componentSourcePath="/limit/Limit.tsx"
+        sourcePath="/packages/react/src/components/limit/Limit.tsx"
         title="Limit card"
         section="Layout"
         description="A limit card displays the limit and usage of a resource. It includes a bar illustrating the usage against the limit."

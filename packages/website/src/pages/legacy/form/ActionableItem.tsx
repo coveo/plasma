@@ -12,7 +12,7 @@ const ActionableItemDemos: FunctionComponent = () => (
         description="An actionable item is a dropdown menu listing actions associated with an element."
         demo={<ActionableItemDemo center />}
         propsMetadata={ActionableItemMetadata}
-        componentSourcePath="/actionable-item/ActionableItem.tsx"
+        sourcePath="/packages/react/src/components/actionable-item/ActionableItem.tsx"
     />
 );
 

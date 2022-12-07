@@ -11,7 +11,7 @@ export const InfoBoxDemos: FunctionComponent = () => (
         title="Info Box"
         section="Layout"
         description="An info box displays contextual information."
-        componentSourcePath="/infoBox/InfoBox.tsx"
+        sourcePath="/packages/react/src/components/infoBox/InfoBox.tsx"
         demo={<InfoBoxDemo />}
         examples={{
             warning: <InfoBoxWarningDemo title="Warning InfoBox" />,
