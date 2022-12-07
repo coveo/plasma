@@ -1,3 +1,12 @@
+# 48.18.0 (2022-12-07)
+
+
+### Features
+
+* **mantine:** add xml language support to the CodeEditor (#2969) a126c30, closes #2969
+
+
+
 ## 48.17.5 (2022-12-06)
 
 
