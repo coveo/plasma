@@ -1,10 +1,10 @@
-import ColorBarExample from '@examples/legacy/feedback/ColorBar/ColorBar.example.tsx';
-import ColorDotExecutingExample from '@examples/legacy/feedback/ColorDot/ColorDotExecuting.example.tsx';
-import ColorDotSizeExample from '@examples/legacy/feedback/ColorDot/ColorDotSize.example.tsx';
+import ColorDotDemo from '@examples/legacy/feedback/ColorDot/ColorDot.demo.tsx';
+import ColorDotExecutingDemo from '@examples/legacy/feedback/ColorDot/ColorDotExecuting.demo.tsx';
+import ColorDotSizeDemo from '@examples/legacy/feedback/ColorDot/ColorDotSize.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const ColorDotsExamples = () => (
+export const ColorDotsDemos = () => (
     <PageLayout
         id="ColorDot"
         sourcePath="packages/style/scss/elements/color-dot.scss"
@@ -13,12 +13,12 @@ export const ColorDotsExamples = () => (
         withPropsTable={false}
         description="A color dot indicates the status of an item."
         thumbnail="placeholder"
-        code={ColorBarExample}
+        demo={<ColorDotDemo center />}
         examples={{
-            size: {code: ColorDotSizeExample, title: 'Color dots sizes'},
-            executing: {code: ColorDotExecutingExample, title: 'Flashing color dots'},
+            size: <ColorDotSizeDemo center title="Color dots sizes" />,
+            executing: <ColorDotExecutingDemo center title="Flashing color dots" />,
         }}
     />
 );
 
-export default ColorDotsExamples;
+export default ColorDotsDemos;
