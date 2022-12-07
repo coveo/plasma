@@ -1,4 +1,4 @@
-import {ModalWizardMetadata} from '@coveord/plasma-components-props-analyzer';
+import {ModalWizardLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
 import ModalWizardDemo from '@examples/legacy/layout/ModalWizard/ModalWizard.demo.tsx';
 import ModalWizardWithValidationIdsDemo from '@examples/legacy/layout/ModalWizard/ModalWizardWithValidationIds.demo.tsx';
 
@@ -12,7 +12,7 @@ export const ModalWizardDemos = () => (
         description="A modal wizard guides users through a task by presenting a succession of actions to complete."
         componentSourcePath="/modalWizard/ModalWizard.tsx"
         demo={<ModalWizardDemo />}
-        propsMetadata={ModalWizardMetadata}
+        propsMetadata={ModalWizardLegacyMetadata}
         examples={{withValidationIds: <ModalWizardWithValidationIdsDemo title="Using validation ids" />}}
     />
 );

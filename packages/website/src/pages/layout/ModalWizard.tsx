@@ -6,7 +6,7 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 export default () => (
     <PageLayout
         section="Layout"
-        title="Modal"
+        title="ModalWizard"
         sourcePath="/packages/mantine/src/components/modal-wizard/ModalWizard.tsx"
         description="A Modal Wizard is a collection of Modals that user can interact with to display any information step by step"
         id="ModalWizard"
