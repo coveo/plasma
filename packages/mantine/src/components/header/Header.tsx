@@ -48,7 +48,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                         <Breadcrumbs>{children}</Breadcrumbs>
                         {docLink ? (
                             <Tooltip label={docLinkTooltipLabel} position="bottom">
-                                <Anchor href={docLink} target="_blank" ml="xs">
+                                <Anchor inline href={docLink} target="_blank" ml="xs">
                                     <QuestionSize24Px height={24} />
                                 </Anchor>
                             </Tooltip>

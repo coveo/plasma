@@ -97,6 +97,7 @@ const components: Component[] = [
     {
         name: 'StickyFooter',
         packageName: '@coveord/plasma-react',
+        suffix: 'Legacy',
     },
     {
         name: 'TableHOC',
@@ -295,6 +296,10 @@ const components: Component[] = [
     },
     {
         name: 'Modal',
+        packageName: '@coveord/plasma-mantine',
+    },
+    {
+        name: 'StickyFooter',
         packageName: '@coveord/plasma-mantine',
     },
 ];

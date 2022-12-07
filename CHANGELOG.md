@@ -1,3 +1,47 @@
+# 48.18.0 (2022-12-07)
+
+
+### Features
+
+* **mantine:** add xml language support to the CodeEditor (#2969) a126c30, closes #2969
+
+
+
+## 48.17.5 (2022-12-06)
+
+
+### Bug Fixes
+
+* **mantine:** add type keyword to header props export (#2973) f8a9151, closes #2973
+
+
+
+## 48.17.4 (2022-12-06)
+
+
+
+## 48.17.3 (2022-12-06)
+
+
+### Bug Fixes
+
+* **mantine:** adjust header doc link icon alignment (#2970) 0ec0db6, closes #2970
+
+
+
+## 48.17.2 (2022-12-06)
+
+
+
+## 48.17.1 (2022-12-06)
+
+
+### Bug Fixes
+
+* **table, Mantine:** adjust the first column padding to align with Header (#2965) cd81dda, closes #2965
+
+
+
 # 48.17.0 (2022-12-01)
 
 
