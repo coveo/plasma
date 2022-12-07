@@ -1,10 +1,26 @@
-import {Box, Button, createStyles, Modal, ModalProps, Progress} from '@mantine/core';
+import {Box, Button, createStyles, DefaultProps, Modal, ModalProps, Progress, Selectors} from '@mantine/core';
 import {Children, ReactElement, useMemo, useState} from 'react';
 import {StickyFooter} from '../sticky-footer';
 import {ModalWizardStep} from './ModalWizardStep';
 import {Header} from '../header';
 
-interface ModalWizardProps extends Omit<ModalProps, 'centered' | 'title'> {
+const useStyles = createStyles(() => ({
+    modal: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    body: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+    },
+}));
+
+type ModalWizardStylesNames = Selectors<typeof useStyles>;
+
+interface ModalWizardProps
+    extends Omit<DefaultProps<ModalWizardStylesNames>, 'classNames' | 'styles'>,
+        Omit<ModalProps, 'centered' | 'title'> {
     /**
      * The label of the cancel button
      *
@@ -72,18 +88,6 @@ interface ModalWizardType {
     Step: typeof ModalWizardStep;
 }
 
-const useStyles = createStyles(() => ({
-    modal: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    body: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-    },
-}));
-
 export const ModalWizard: ModalWizardType = ({
     cancelButtonLabel = 'Cancel',
     nextButtonLabel = 'Next',
@@ -97,13 +101,21 @@ export const ModalWizard: ModalWizardType = ({
     isDirty,
     handleDirtyState,
     classNames,
+    className,
+    styles,
+    unstyled,
     children,
     ...modalProps
 }) => {
     const {
         classes: {modal, body},
         cx,
-    } = useStyles();
+    } = useStyles(null, {
+        name: 'ModalWizard',
+        classNames,
+        styles,
+        unstyled,
+    });
 
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const modalSteps = (Children.toArray(children) as ReactElement[]).filter((child) => child.type === ModalWizardStep);
@@ -133,7 +145,6 @@ export const ModalWizard: ModalWizardType = ({
     };
 
     const getProgressMemo = useMemo(() => getProgress(currentStepIndex), [currentStepIndex]);
-
     return (
         <Modal
             opened={opened}
@@ -165,11 +176,9 @@ export const ModalWizard: ModalWizardType = ({
                     marginTop: 'auto',
                 })}
             >
-                <StickyFooter px={0} py="sm" borderTop>
+                <StickyFooter px={0} pt="sm" pb={0} borderTop>
                     <Button
                         name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
-                        disabled={false}
-                        size="sm"
                         variant="outline"
                         onClick={() => {
                             if (isFirstStep) {
@@ -185,7 +194,6 @@ export const ModalWizard: ModalWizardType = ({
 
                     <Button
                         disabled={!isValid}
-                        size="sm"
                         onClick={() => {
                             if (isLastStep) {
                                 onFinish ? onFinish() : onClose();
