@@ -1,3 +1,12 @@
+# 48.19.0 (2022-12-07)
+
+
+### Features
+
+* **website:** convert all legacy layout demos to the new sandbox (#2975) c464f16, closes #2975
+
+
+
 ## 48.18.2 (2022-12-07)
 
 
