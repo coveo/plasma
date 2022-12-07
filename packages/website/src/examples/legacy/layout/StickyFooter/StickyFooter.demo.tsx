@@ -9,7 +9,7 @@ export default () => {
     return (
         <>
             <Button onClick={() => setIsOpened(true)}>Open Footer</Button>
-            <div style={{maxHeight: '500px'}} className="overflow-auto mt1">
+            <div style={{maxHeight: '300px'}} className="overflow-auto mt1">
                 <div>{lorem}</div>
                 <StickyFooter isOpened={isOpened}>
                     <Button onClick={() => setIsOpened(false)}>Cancel</Button>

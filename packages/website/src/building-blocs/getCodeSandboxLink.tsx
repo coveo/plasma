@@ -115,9 +115,9 @@ const indexHtml = `
 <!DOCTYPE html>
 <html>
 <body class="coveo-styleguide">
-    <div id="App" />
     <div id="Modals" />
     <div id="plasma-dropdowns" />
+    <div id="App" />
 </body>
 </html>
 `;

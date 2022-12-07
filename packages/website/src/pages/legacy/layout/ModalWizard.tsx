@@ -1,20 +1,20 @@
 import {ModalWizardMetadata} from '@coveord/plasma-components-props-analyzer';
-import ModalWizardExample from '@examples/legacy/layout/ModalWizard/ModalWizard.example.tsx';
-import ModalWizardWithValidationIdsExample from '@examples/legacy/layout/ModalWizard/ModalWizardWithValidationIds.example.tsx';
+import ModalWizardDemo from '@examples/legacy/layout/ModalWizard/ModalWizard.demo.tsx';
+import ModalWizardWithValidationIdsDemo from '@examples/legacy/layout/ModalWizard/ModalWizardWithValidationIds.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const ModalWizardExamples = () => (
+export const ModalWizardDemos = () => (
     <PageLayout
         id="ModalWizard"
         title="Modal Wizard"
         section="Layout"
         description="A modal wizard guides users through a task by presenting a succession of actions to complete."
         componentSourcePath="/modalWizard/ModalWizard.tsx"
-        code={ModalWizardExample}
+        demo={<ModalWizardDemo />}
         propsMetadata={ModalWizardMetadata}
-        examples={{withValidationIds: {code: ModalWizardWithValidationIdsExample, title: 'Using validation ids'}}}
+        examples={{withValidationIds: <ModalWizardWithValidationIdsDemo title="Using validation ids" />}}
     />
 );
 
-export default ModalWizardExamples;
+export default ModalWizardDemos;

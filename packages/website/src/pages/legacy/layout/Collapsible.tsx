@@ -1,26 +1,26 @@
 import {CollapsibleConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import CollapsibleExample from '@examples/legacy/layout/Collapsible/Collapsible.example.tsx';
-import CollapsibleDisabledExample from '@examples/legacy/layout/Collapsible/CollapsibleDisabled.example.tsx';
-import CollapsibleExpandedExample from '@examples/legacy/layout/Collapsible/CollapsibleExpanded.example.tsx';
-import CollapsibleInfoBoxExample from '@examples/legacy/layout/Collapsible/CollapsibleInfoBox.example.tsx';
+import CollapsibleDemo from '@examples/legacy/layout/Collapsible/Collapsible.demo.tsx';
+import CollapsibleDisabledDemo from '@examples/legacy/layout/Collapsible/CollapsibleDisabled.demo.tsx';
+import CollapsibleExpandedDemo from '@examples/legacy/layout/Collapsible/CollapsibleExpanded.demo.tsx';
+import CollapsibleInfoBoxDemo from '@examples/legacy/layout/Collapsible/CollapsibleInfoBox.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const CollapsibleExamples = () => (
+const CollapsibleDemos = () => (
     <PageLayout
         id="CollapsibleConnected"
         componentSourcePath="/collapsible/CollapsibleConnected.tsx"
         title="Collapsible"
         section="Layout"
         description="A collapsible allows users to hide or display a section of content."
-        code={CollapsibleExample}
+        demo={<CollapsibleDemo />}
         propsMetadata={CollapsibleConnectedMetadata}
         examples={{
-            infoBoxWrapper: {code: CollapsibleInfoBoxExample, title: 'Info box wrapper'},
-            expanded: {code: CollapsibleExpandedExample, title: 'Expanded on mount'},
-            disabled: {code: CollapsibleDisabledExample, title: 'Disabled'},
+            infoBoxWrapper: <CollapsibleInfoBoxDemo title="Info box wrapper" />,
+            expanded: <CollapsibleExpandedDemo title="Expanded on mount" />,
+            disabled: <CollapsibleDisabledDemo title="Disabled" />,
         }}
     />
 );
 
-export default CollapsibleExamples;
+export default CollapsibleDemos;
