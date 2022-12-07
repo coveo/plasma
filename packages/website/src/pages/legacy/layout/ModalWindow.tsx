@@ -1,13 +1,13 @@
 import {ModalCompositeConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import ModalLoadingExample from '@examples/legacy/layout/ModalWindow/ModalLoading.example.tsx';
-import ModalPromptExample from '@examples/legacy/layout/ModalWindow/ModalPrompt.example.tsx';
-import ModalWindowExample from '@examples/legacy/layout/ModalWindow/ModalWindow.example.tsx';
-import ModalWithDirtyExample from '@examples/legacy/layout/ModalWindow/ModalWithDirty.example.tsx';
-import ModalWithPropsExample from '@examples/legacy/layout/ModalWindow/ModalWithProps.example.tsx';
+import ModalLoadingDemo from '@examples/legacy/layout/ModalWindow/ModalLoading.demo.tsx';
+import ModalPromptDemo from '@examples/legacy/layout/ModalWindow/ModalPrompt.demo.tsx';
+import ModalWindowDemo from '@examples/legacy/layout/ModalWindow/ModalWindow.demo.tsx';
+import ModalWithDirtyDemo from '@examples/legacy/layout/ModalWindow/ModalWithDirty.demo.tsx';
+import ModalWithPropsDemo from '@examples/legacy/layout/ModalWindow/ModalWithProps.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const ModalWindowExamples = () => (
+const ModalWindowDemos = () => (
     <PageLayout
         id="ModalCompositeConnected"
         title="Modal Window"
@@ -15,14 +15,14 @@ const ModalWindowExamples = () => (
         description="A modal appears over the current context to have users focus on a particular task or information."
         componentSourcePath="/modal/ModalComposite.tsx"
         propsMetadata={ModalCompositeConnectedMetadata}
-        code={ModalWindowExample}
+        demo={<ModalWindowDemo />}
         examples={{
-            prompts: {code: ModalPromptExample, title: 'Prompts'},
-            loading: {code: ModalLoadingExample, title: 'Loading Modal'},
-            withAdditionalProps: {code: ModalWithPropsExample, title: 'With Additional Props'},
-            withDirty: {code: ModalWithDirtyExample, title: 'With Dirty State Management'},
+            prompts: <ModalPromptDemo title="Prompts" />,
+            loading: <ModalLoadingDemo title="Loading Modal" />,
+            withAdditionalProps: <ModalWithPropsDemo title="With Additional Props" />,
+            withDirty: <ModalWithDirtyDemo title="With Dirty State Management" />,
         }}
     />
 );
 
-export default ModalWindowExamples;
+export default ModalWindowDemos;

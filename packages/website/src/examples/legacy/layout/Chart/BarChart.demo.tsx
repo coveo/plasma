@@ -1,13 +1,20 @@
 import {BarSeries, ChartContainer, XYChart} from '@coveord/plasma-react';
 
-export default () => (
-    <ChartContainer
-        renderChart={(width, height) => (
-            <XYChart series={[data[0]]} height={height} width={width} padding={{left: width / 12, right: width / 12}}>
-                {<BarSeries />}
-            </XYChart>
-        )}
-    />
+const DemoPage = () => (
+    <div style={{height: 400}}>
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart
+                    series={[data[0]]}
+                    height={height}
+                    width={width}
+                    padding={{left: width / 12, right: width / 12}}
+                >
+                    {<BarSeries />}
+                </XYChart>
+            )}
+        />
+    </div>
 );
 
 const data = [
@@ -22,3 +29,5 @@ const data = [
         ],
     },
 ];
+
+export default DemoPage;

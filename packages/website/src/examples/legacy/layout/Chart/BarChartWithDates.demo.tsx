@@ -2,21 +2,23 @@ import moment from 'moment';
 import {BarSeries, ChartTooltip, ChartContainer, XYAxis, XYChart} from '@coveord/plasma-react';
 
 export default () => (
-    <ChartContainer
-        renderChart={(width, height) => (
-            <XYChart
-                series={dateData}
-                height={height}
-                width={width}
-                xFormat={(value: number) => moment.unix(value).format('YYYY-MM-DD')}
-            >
-                <XYAxis x={{tickTextSize: 120}} y={{show: false}}>
-                    <BarSeries />
-                    <ChartTooltip sort />
-                </XYAxis>
-            </XYChart>
-        )}
-    />
+    <div style={{height: 400}}>
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart
+                    series={dateData}
+                    height={height}
+                    width={width}
+                    xFormat={(value: number) => moment.unix(value).format('YYYY-MM-DD')}
+                >
+                    <XYAxis x={{tickTextSize: 120}} y={{show: false}}>
+                        <BarSeries />
+                        <ChartTooltip sort />
+                    </XYAxis>
+                </XYChart>
+            )}
+        />
+    </div>
 );
 
 const dateData = [

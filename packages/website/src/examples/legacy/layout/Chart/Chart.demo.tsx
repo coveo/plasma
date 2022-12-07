@@ -1,15 +1,5 @@
 import {LineSeries, ChartContainer, XYChart} from '@coveord/plasma-react';
 
-export default () => (
-    <ChartContainer
-        renderChart={(width, height) => (
-            <XYChart series={[data[0]]} height={height} width={width} padding={undefined}>
-                {<LineSeries />}
-            </XYChart>
-        )}
-    />
-);
-
 const data = [
     {
         label: 'First',
@@ -22,3 +12,16 @@ const data = [
         ],
     },
 ];
+const DemoPage = () => (
+    <div style={{height: 400}}>
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart series={[data[0]]} height={height} width={width} padding={undefined}>
+                    {<LineSeries />}
+                </XYChart>
+            )}
+        />
+    </div>
+);
+
+export default DemoPage;

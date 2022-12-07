@@ -1,8 +1,8 @@
-import BorderedLineExample from '@examples/legacy/layout/BorderedLine/BorderedLine.example.tsx';
+import BorderedLineDemo from '@examples/legacy/layout/BorderedLine/BorderedLine.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const BorderedLineExamples = () => (
+const BorderedLineDemos = () => (
     <PageLayout
         id="BorderedLine"
         componentSourcePath="/borderedLine/BorderedLine.tsx"
@@ -10,8 +10,8 @@ const BorderedLineExamples = () => (
         section="Layout"
         thumbnail="placeholder"
         withPropsTable={false}
-        code={BorderedLineExample}
+        demo={<BorderedLineDemo />}
     />
 );
 
-export default BorderedLineExamples;
+export default BorderedLineDemos;
