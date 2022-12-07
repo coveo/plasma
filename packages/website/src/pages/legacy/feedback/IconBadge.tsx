@@ -1,5 +1,5 @@
 import {IconBadgeMetadata} from '@coveord/plasma-components-props-analyzer';
-import IconAndLinkExample from '@examples/legacy/form/button/IconAndLink.example.tsx';
+import IconBadgeExample from '@examples/legacy/feedback/IconBadge/IconBadge.example.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
@@ -10,7 +10,7 @@ export const IconBadgeExamples = () => (
         title="IconBadge"
         section="Feedback"
         thumbnail="placeholder"
-        code={IconAndLinkExample}
+        code={IconBadgeExample}
         propsMetadata={IconBadgeMetadata}
     />
 );

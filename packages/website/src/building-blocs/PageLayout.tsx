@@ -1,4 +1,4 @@
-import {Tabs} from '@coveord/plasma-mantine';
+import {Stack, Tabs} from '@coveord/plasma-mantine';
 import dynamic from 'next/dynamic';
 import {Fragment, FunctionComponent, ReactNode} from 'react';
 
@@ -17,13 +17,13 @@ const Sandbox = dynamic<SandboxProps>(
 interface PlaygroundProps {
     title: string;
     code?: string;
-    demo?: ReactNode;
     layout?: 'horizontal' | 'vertical';
 }
 
 export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps, PropsTableProps {
     id: string;
-    examples?: Record<string, PlaygroundProps>;
+    examples?: Record<string, PlaygroundProps | ReactNode>;
+    demo?: ReactNode;
     relatedComponents?: TileProps[];
     /**
      * Whether to show the props section or not
@@ -114,21 +114,22 @@ const Content: FunctionComponent<
         {examples && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb5">Examples</h4>
-                {Object.entries(examples).map(
-                    ([exampleId, {code: exampleCode, demo, title, layout: exampleLayout = 'horizontal'}]) =>
-                        demo ? (
-                            <Fragment key={id + exampleId}>{demo}</Fragment>
-                        ) : (
+                <Stack>
+                    {Object.entries(examples).map(([exampleId, example]) =>
+                        isOldSandbox(example) ? (
                             <Sandbox
                                 key={id + exampleId}
                                 id={exampleId}
-                                title={title}
-                                horizontal={exampleLayout === 'horizontal'}
+                                title={example.title}
+                                horizontal={example.layout !== 'vertical'}
                             >
-                                {exampleCode}
+                                {example.code}
                             </Sandbox>
+                        ) : (
+                            <Fragment key={id + exampleId}>{example}</Fragment>
                         )
-                )}
+                    )}
+                </Stack>
             </div>
         )}
         {relatedComponents && relatedComponents.length > 0 && (
@@ -142,3 +143,6 @@ const Content: FunctionComponent<
         {children}
     </>
 );
+
+const isOldSandbox = (example: PlaygroundProps | ReactNode): example is PlaygroundProps =>
+    !!(example as PlaygroundProps)?.code;

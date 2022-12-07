@@ -26,7 +26,7 @@ interface DemoProps extends DemoComponentProps {
     children?: ReactNode;
 }
 
-const useStyles = createStyles((theme, {center, grow}: DemoComponentProps) => ({
+const useStyles = createStyles((theme, {grow}: DemoComponentProps) => ({
     root: {},
     sandbox: {
         border: `1px solid ${theme.colors.gray[3]}`,
@@ -35,9 +35,11 @@ const useStyles = createStyles((theme, {center, grow}: DemoComponentProps) => ({
     },
     actions: {
         position: 'absolute',
-        top: theme.spacing.xs,
-        right: theme.spacing.xs,
+        top: 0,
+        right: 0,
         zIndex: 2,
+        padding: theme.spacing.xs,
+        backgroundColor: '#1E1E1E',
         'button:hover, a:hover': {
             backgroundColor: theme.colors.gray[8],
         },
@@ -47,7 +49,7 @@ const useStyles = createStyles((theme, {center, grow}: DemoComponentProps) => ({
         minHeight: 100,
     },
     previewWrapper: {
-        padding: center ? undefined : theme.spacing.md,
+        padding: theme.spacing.md,
         height: grow ? MAX_HEIGHT : '100%',
     },
     code: {
