@@ -16,13 +16,6 @@ module.exports = withPlugins([withTM, withImages], {
     },
     webpack: (config, options) => {
         patchWebpackConfig(config, options);
-        config.resolve.alias = Object.assign({}, config.resolve.alias, {
-            '@coveord/plasma-react': path.resolve(__dirname, '../react/dist/esm/Entry.js'),
-        });
-        config.module.rules.push({
-            test: /\.example.tsx$/,
-            loader: 'raw-loader',
-        });
         config.module.rules.push({
             test: /\.demo.tsx$/,
             use: [options.defaultLoaders.babel, path.resolve(__dirname, 'build/demo-loader.js')],
