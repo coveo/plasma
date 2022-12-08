@@ -1,5 +1,5 @@
 import {SearchSize16Px} from '@coveord/plasma-react-icons';
-import {createStyles, TextInput} from '@mantine/core';
+import {createStyles, TextInput, Selectors, DefaultProps} from '@mantine/core';
 import {TableState} from '@tanstack/react-table';
 import {ChangeEvent, FunctionComponent} from 'react';
 import {useTable} from './useTable';
@@ -13,7 +13,8 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-interface TableFilterProps {
+type TableFilterStylesNames = Selectors<typeof useStyles>;
+interface TableFilterProps extends DefaultProps<TableFilterStylesNames> {
     /**
      * The placeholder for the filter input
      *
@@ -22,8 +23,14 @@ interface TableFilterProps {
     placeholder?: string;
 }
 
-export const TableFilter: FunctionComponent<TableFilterProps> = ({placeholder = 'Search by any field'}) => {
-    const {classes, cx} = useStyles();
+export const TableFilter: FunctionComponent<TableFilterProps> = ({
+    placeholder = 'Search by any field',
+    classNames,
+    styles,
+    unstyled,
+    ...others
+}) => {
+    const {classes, cx} = useStyles(null, {name: 'TableHeader', classNames, styles, unstyled});
     const {state, setState} = useTable();
 
     const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +46,7 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({placeholder = 
             rightSection={<SearchSize16Px height={14} className={cx({[classes.empty]: !state.globalFilter})} />}
             value={state.globalFilter}
             onChange={handleSearchChange}
+            {...others}
         />
     );
 };
