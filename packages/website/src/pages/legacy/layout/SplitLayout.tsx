@@ -10,7 +10,7 @@ const SplitLayoutDemos = () => (
         title="Split Layout"
         section="Layout"
         description="A split layout organizes information in two vertical columns."
-        componentSourcePath="/splitlayout/SplitLayout.tsx"
+        sourcePath="/packages/react/src/components/splitlayout/SplitLayout.tsx"
         demo={<SplitLayoutDemo />}
         layout="vertical"
         propsMetadata={SplitLayoutMetadata}

@@ -8,7 +8,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const SideNavigationDemos = () => (
     <PageLayout
         id="SideNavigation"
-        componentSourcePath="/sideNavigation/SideNavigation.tsx"
+        sourcePath="/packages/react/src/components/sideNavigation/SideNavigation.tsx"
         title="SideNavigation"
         section="Navigation"
         description="A sidebar navigation is a primary navigation element that displays the architecture of the product’s features."

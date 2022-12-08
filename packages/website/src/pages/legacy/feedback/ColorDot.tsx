@@ -7,7 +7,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const ColorDotsDemos = () => (
     <PageLayout
         id="ColorDot"
-        sourcePath="packages/style/scss/elements/color-dot.scss"
+        sourcePath="/packages/style/scss/elements/color-dot.scss"
         title="Color dot"
         section="Feedback"
         withPropsTable={false}

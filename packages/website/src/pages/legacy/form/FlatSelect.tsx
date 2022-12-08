@@ -14,7 +14,7 @@ const FlatSelectDemoPage = () => (
         title="Flat Select"
         section="Form"
         description="A flat select is a group of mutually exclusive buttons aligned horizontally. It is used to allow users to switch between interface displays or binary options."
-        componentSourcePath="/flatSelect/FlatSelect.tsx"
+        sourcePath="/packages/react/src/components/flatSelect/FlatSelect.tsx"
         demo={<FlatSelectDemo center />}
         propsMetadata={FlatSelectConnectedMetadata}
         examples={{

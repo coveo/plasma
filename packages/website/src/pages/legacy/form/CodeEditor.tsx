@@ -12,7 +12,7 @@ const CodeEditorLegacyPage = () => (
         description="A code editor is a text area that allows users to edit code. A coding syntax is built in."
         thumbnail="codeEditor"
         demo={<CodeEditorDemo />}
-        componentSourcePath="/editor/CodeEditor.tsx"
+        sourcePath="/packages/react/src/components/editor/CodeEditor.tsx"
         propsMetadata={CodeEditorLegacyMetadata}
         examples={{
             readOnly: <CodeEditorReadonlyDemo title="Read only" />,

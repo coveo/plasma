@@ -27,7 +27,7 @@ const ButtonPage = () => (
             iconAndLink: <ButtonWithIconAndLinkDemo center title="Icon only with an hyperlink" />,
             withTooltip: <ButtonWithTooltipDemo center title="With tooltip" />,
         }}
-        componentSourcePath="/button/Button.tsx"
+        sourcePath="/packages/react/src/components/button/Button.tsx"
         propsMetadata={ButtonMetadata}
     />
 );

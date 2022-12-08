@@ -9,7 +9,7 @@ const ChildFormDemos = () => (
         title="Child Form"
         section="Layout"
         description="A child form associates a subset of options or content to its parent option."
-        componentSourcePath="/childForm/ChildForm.tsx"
+        sourcePath="/packages/react/src/components/childForm/ChildForm.tsx"
         demo={<ChildFormDemo />}
         examples={{
             vertical: <ChildFormVerticalDemo title="Vertical" />,

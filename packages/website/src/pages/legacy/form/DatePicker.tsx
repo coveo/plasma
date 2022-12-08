@@ -11,7 +11,7 @@ const Page = () => (
         title="Date Picker"
         section="Form"
         description="A date picker is a calendar interface that allows users to select a single date or a date range."
-        componentSourcePath="/datePicker/DatePickerDropdown.tsx"
+        sourcePath="/packages/react/src/components/datePicker/DatePickerDropdown.tsx"
         demo={<DatePickerDemo />}
         propsMetadata={DatePickerDropdownConnectedMetadata}
         examples={{

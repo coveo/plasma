@@ -8,7 +8,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const TabsDemos: FunctionComponent = () => (
     <PageLayout
         id="Tab"
-        componentSourcePath="/tab/Tab.tsx"
+        sourcePath="/packages/react/src/components/tab/Tab.tsx"
         title="Tab"
         section="Navigation"
         description="A set of tabs allows users to navigate between sections of the same interface."

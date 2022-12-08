@@ -5,7 +5,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 const BorderedLineDemos = () => (
     <PageLayout
         id="BorderedLine"
-        componentSourcePath="/borderedLine/BorderedLine.tsx"
+        sourcePath="/packages/react/src/components/borderedLine/BorderedLine.tsx"
         title="Bordered Line"
         section="Layout"
         thumbnail="placeholder"

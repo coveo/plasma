@@ -6,7 +6,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 export const IconBadgeDemos = () => (
     <PageLayout
         id="IconBadge"
-        componentSourcePath="/iconBadge/IconBadge.tsx"
+        sourcePath="/packages/react/src/components/iconBadge/IconBadge.tsx"
         title="IconBadge"
         section="Feedback"
         thumbnail="placeholder"

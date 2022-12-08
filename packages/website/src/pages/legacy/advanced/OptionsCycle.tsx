@@ -10,8 +10,8 @@ const DemoPage = () => (
         title="Options Cycle"
         section="Advanced"
         description="Allows to cycle through an ordered list of options using right-left arrow buttons."
-        componentSourcePath="/optionsCycle/OptionsCycle.tsx"
         demo={<OptionsCycleDemo center />}
+        sourcePath="/packages/react/src/components/optionsCycle/OptionsCycle.tsx"
         propsMetadata={OptionsCycleConnectedMetadata}
         examples={{
             buttonStyle: <OptionsCycleButtonDemo center title="Styles like the Button" />,

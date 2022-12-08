@@ -12,7 +12,7 @@ export const TextInputDemos: FunctionComponent = () => (
         section="Form"
         thumbnail="textInput"
         description="A text input allows users to enter and edit short texts, such as names, emails, and passwords."
-        componentSourcePath="/textInput/TextInput.tsx"
+        sourcePath="/packages/react/src/components/textInput/TextInput.tsx"
         demo={<TextInputDemo center />}
         examples={{hookUsage: <UseTextInputDemo title="useTextInput hook usage" />}}
         propsMetadata={TextInputMetadata}

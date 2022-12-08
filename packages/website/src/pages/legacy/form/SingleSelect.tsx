@@ -12,7 +12,7 @@ const Page = () => (
         title="Single Select"
         section="Form"
         description="A single select allows users to select only one option from a list. It is typically used when there are a large number of options."
-        componentSourcePath="/select/SingleSelectConnected.tsx"
+        sourcePath="/packages/react/src/components/select/SingleSelectConnected.tsx"
         demo={<SingleSelectDemo center />}
         propsMetadata={SingleSelectConnectedMetadata}
         examples={{

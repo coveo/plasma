@@ -12,7 +12,7 @@ const Page = () => (
         title="Slider"
         section="Form"
         description="A slider offers a quick and visual way for users to select a value within a given range."
-        componentSourcePath="/slider/Slider.tsx"
+        sourcePath="/packages/react/src/components/slider/Slider.tsx"
         demo={<SliderDemo />}
         propsMetadata={SliderMetadata}
         examples={{

@@ -12,7 +12,7 @@ const Page = () => (
         title="Diff Viewer"
         section="Form"
         description="A diff viewer allows users to compare code files by showing them side by side and highlighting differences between them."
-        componentSourcePath="/diffViewer/DiffViewer.tsx"
+        sourcePath="/packages/react/src/components/diffViewer/DiffViewer.tsx"
         demo={<DiffViewerDemo />}
         propsMetadata={DiffViewerMetadata}
         examples={{

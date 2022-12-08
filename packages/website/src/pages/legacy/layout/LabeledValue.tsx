@@ -8,7 +8,7 @@ import {PageLayout} from '../../../building-blocs/PageLayout';
 const LabeledValueDemos = () => (
     <PageLayout
         id="LabeledValue"
-        componentSourcePath="/labeledValue/LabeledValue.tsx"
+        sourcePath="/packages/react/src/components/labeledValue/LabeledValue.tsx"
         title="Labeled value"
         section="Layout"
         thumbnail="placeholder"

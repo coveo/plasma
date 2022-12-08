@@ -9,7 +9,7 @@ const Page = () => (
         title="File Picker"
         section="Form"
         description="A file picker is a dialog that allows users to upload a file."
-        componentSourcePath="/filepicker/FilePicker.tsx"
+        sourcePath="/packages/react/src/components/filepicker/FilePicker.tsx"
         demo={<FilepickerDemo center />}
         propsMetadata={FilepickerMetadata}
     />

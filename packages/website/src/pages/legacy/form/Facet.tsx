@@ -11,7 +11,7 @@ const FacetsDemoPage = () => (
         title="Facet"
         section="Form"
         description="A facet is a set of options used to filter a list of content items."
-        componentSourcePath="/facets/FacetConnected.tsx"
+        sourcePath="/packages/react/src/components/facets/FacetConnected.tsx"
         demo={<FacetDemo center />}
         propsMetadata={FacetMetadata}
         examples={{

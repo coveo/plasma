@@ -9,7 +9,7 @@ const Demo = () => (
         title="Sticky Footer"
         section="Layout"
         description="A page footer that sticks to the bottom of the screen"
-        componentSourcePath="/stickyFooter/StickyFooter.tsx"
+        sourcePath="/packages/react/src/components/stickyFooter/StickyFooter.tsx"
         propsMetadata={StickyFooterLegacyMetadata}
         demo={<StickyFooterDemo />}
     />

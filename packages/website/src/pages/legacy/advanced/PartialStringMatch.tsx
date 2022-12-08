@@ -10,8 +10,8 @@ const DemoPage = () => (
         section="Advanced"
         propsMetadata={PartialStringMatchMetadata}
         description="Highlights a string searched for in any DOM tree."
-        componentSourcePath="/partial-string-match/PartialStringMatch.tsx"
         demo={<PartialStringMatchDemo />}
+        sourcePath="/packages/react/src/components/partial-string-match/PartialStringMatch.tsx"
     />
 );
 

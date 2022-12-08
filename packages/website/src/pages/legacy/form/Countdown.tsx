@@ -8,7 +8,7 @@ const Page = () => (
         id="Countdown"
         section="Form"
         title="Countdown"
-        componentSourcePath="/calendar/Countdown.tsx"
+        sourcePath="/packages/react/src/components/calendar/Countdown.tsx"
         description="A Countdown illustrates how much time there is left until an end date is reached."
         demo={<CountdownDemo center />}
         propsMetadata={CountdownMetadata}

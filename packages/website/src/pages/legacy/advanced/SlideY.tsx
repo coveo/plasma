@@ -9,8 +9,8 @@ const DemoPage = () => (
         title="Slide Y"
         section="Advanced"
         description="Allows to hide and show content using a vertical expand animation."
-        sourcePath="packages/react/src/animations/SlideY.tsx"
         demo={<SlideYDemo />}
+        sourcePath="/packages/react/src/animations/SlideY.tsx"
         propsMetadata={SlideYMetadata}
     />
 );

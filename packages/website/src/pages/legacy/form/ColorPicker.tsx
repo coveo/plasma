@@ -16,7 +16,7 @@ const ColorPickerDemos = () => (
                 <a href="https://github.com/casesandberg/react-color/">React Color</a>
             </>
         }
-        componentSourcePath="/color-picker/ColorPicker.tsx"
+        sourcePath="/packages/react/src/components/color-picker/ColorPicker.tsx"
         demo={<ColorPickerDemo center />}
         propsMetadata={ColorPickerMetadata}
         examples={{

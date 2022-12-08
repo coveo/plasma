@@ -12,8 +12,8 @@ const DemoPage = () => (
         title="List Box"
         section="Advanced"
         description="A list of items from which to choose from."
-        componentSourcePath="/listBox/ListBox.tsx"
         demo={<ListBoxDemo center />}
+        sourcePath="/packages/react/src/components/listBox/ListBox.tsx"
         propsMetadata={ListBoxMetadata}
         examples={{
             loading: <ListBoxLoadingDemo center title="Loading" />,

@@ -11,8 +11,8 @@ const DemoPage = () => (
         title="Color Bar"
         section="Feedback"
         description="A color bar is used to indicate the ratio between things."
-        componentSourcePath="/colorBar/ColorBar.tsx"
         demo={<ColorBarDemo />}
+        sourcePath="/packages/react/src/components/colorBar/ColorBar.tsx"
         propsMetadata={ColorBarMetadata}
         examples={{
             partial: <ColorBarPartialDemo title="Partially filled" />,
