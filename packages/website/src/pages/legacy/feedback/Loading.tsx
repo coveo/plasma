@@ -1,22 +1,24 @@
 import {LoadingMetadata} from '@coveord/plasma-components-props-analyzer';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-import LoadingExample from '../../../examples/legacy/feedback/Loading/Loading.example.tsx';
-import LoadingFullcontent from '../../../examples/legacy/feedback/Loading/LoadingFullcontent.example.tsx';
-import LoadingSpinner from '../../../examples/legacy/feedback/Loading/LoadingSpinner.example.tsx';
+import LoadingDemo from '../../../examples/legacy/feedback/Loading/Loading.demo.tsx';
+import LoadingFullContentDemo from '../../../examples/legacy/feedback/Loading/LoadingFullcontent.demo.tsx';
+import LoadingSpinnerDemo from '../../../examples/legacy/feedback/Loading/LoadingSpinner.demo.tsx';
 
-export default () => (
+const DemoPage = () => (
     <PageLayout
         id="Loading"
         title="Loading Spinner"
         section="Feedback"
         description="A loading spinner indicates that content or data is actively being loaded."
-        componentSourcePath="/loading/Loading.tsx"
-        code={LoadingExample}
+        demo={<LoadingDemo center />}
+        sourcePath="/packages/react/src/components/loading/Loading.tsx"
         propsMetadata={LoadingMetadata}
         examples={{
-            fullContent: {code: LoadingFullcontent, title: 'Vertically centered'},
-            loadingSpinner: {code: LoadingSpinner, title: 'Loading spinner that can be used in other components'},
+            fullContent: <LoadingFullContentDemo center title="Vertically centered" />,
+            loadingSpinner: <LoadingSpinnerDemo center title="Loading spinner that can be used in other components" />,
         }}
     />
 );
+
+export default DemoPage;

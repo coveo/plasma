@@ -1,16 +1,18 @@
 import {PartialStringMatchMetadata} from '@coveord/plasma-components-props-analyzer';
-import PartialStringMatchExample from '@examples/legacy/advanced/PartialStringMatch/PartialStringMatch.example.tsx';
+import PartialStringMatchDemo from '@examples/legacy/advanced/PartialStringMatch/PartialStringMatch.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const DemoPage = () => (
     <PageLayout
         id="PartialStringMatch"
         title="Partial String Match"
         section="Advanced"
         propsMetadata={PartialStringMatchMetadata}
         description="Highlights a string searched for in any DOM tree."
-        componentSourcePath="/partial-string-match/PartialStringMatch.tsx"
-        code={PartialStringMatchExample}
+        demo={<PartialStringMatchDemo />}
+        sourcePath="/packages/react/src/components/partial-string-match/PartialStringMatch.tsx"
     />
 );
+
+export default DemoPage;

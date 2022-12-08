@@ -1,22 +1,24 @@
 import {FacetMetadata} from '@coveord/plasma-components-props-analyzer';
-import FacetExample from '@examples/legacy/form/Facet/Facet.example.tsx';
-import FacetWithExcludeExample from '@examples/legacy/form/Facet/FacetWithExclude.example.tsx';
-import FacetWithMoreExample from '@examples/legacy/form/Facet/FacetWithMore.example.tsx';
+import FacetDemo from '@examples/legacy/form/Facet/Facet.demo.tsx';
+import FacetWithExcludeDemo from '@examples/legacy/form/Facet/FacetWithExclude.demo.tsx';
+import FacetWithMoreDemo from '@examples/legacy/form/Facet/FacetWithMore.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const FacetsDemoPage = () => (
     <PageLayout
         id="Facet"
         title="Facet"
         section="Form"
         description="A facet is a set of options used to filter a list of content items."
-        componentSourcePath="/facets/FacetConnected.tsx"
-        code={FacetExample}
+        sourcePath="/packages/react/src/components/facets/FacetConnected.tsx"
+        demo={<FacetDemo center />}
         propsMetadata={FacetMetadata}
         examples={{
-            withExclude: {code: FacetWithExcludeExample, title: 'Allow exclusion'},
-            withMore: {code: FacetWithMoreExample, title: 'Show more'},
+            withExclude: <FacetWithExcludeDemo center title="Allow exclusion" />,
+            withMore: <FacetWithMoreDemo center title="Show more" />,
         }}
     />
 );
+
+export default FacetsDemoPage;

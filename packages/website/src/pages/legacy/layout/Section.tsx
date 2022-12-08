@@ -1,24 +1,24 @@
 import {SectionMetadata} from '@coveord/plasma-components-props-analyzer';
-import SectionExample from '@examples/legacy/layout/Section/Section.example.tsx';
-import SectionLevelExample from '@examples/legacy/layout/Section/SectionLevel.example.tsx';
-import SectionWithModsExample from '@examples/legacy/layout/Section/SectionWithMods.example.tsx';
+import SectionDemo from '@examples/legacy/layout/Section/Section.demo.tsx';
+import SectionLevelDemo from '@examples/legacy/layout/Section/SectionLevel.demo.tsx';
+import SectionWithModsDemo from '@examples/legacy/layout/Section/SectionWithMods.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const SectionExamples = () => (
+const SectionDemos = () => (
     <PageLayout
         id="Section"
-        componentSourcePath="/section/Section.tsx"
+        sourcePath="/packages/react/src/components/section/Section.tsx"
         title="Section"
         section="Layout"
         thumbnail="placeholder"
-        code={SectionExample}
+        demo={<SectionDemo />}
         examples={{
-            withLevel: {code: SectionLevelExample, title: 'With Level option'},
-            withMods: {code: SectionWithModsExample, title: 'With Mods option'},
+            withLevel: <SectionLevelDemo title="With Level option" />,
+            withMods: <SectionWithModsDemo title="With Mods option" />,
         }}
         propsMetadata={SectionMetadata}
     />
 );
 
-export default SectionExamples;
+export default SectionDemos;

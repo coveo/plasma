@@ -1,20 +1,20 @@
 import {NumericInputConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import NumericInputExample from '@examples/legacy/form/NumericInput/NumericInput.example.tsx';
-import NumericInputDisabledExample from '@examples/legacy/form/NumericInput/NumericInputDisabled.example.tsx';
+import NumericInputDemo from '@examples/legacy/form/NumericInput/NumericInput.demo.tsx';
+import NumericInputDisabledDemo from '@examples/legacy/form/NumericInput/NumericInputDisabled.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const NumericInputExamples = () => (
+const NumericInputDemos = () => (
     <PageLayout
         id="NumericInputConnected"
         title="Numeric Input"
         section="Form"
         description="A numeric input allows users to enter and edit numerical values, either manually or using an input stepper."
-        componentSourcePath="/numericInput/NumericInputConnected.tsx"
+        sourcePath="/packages/react/src/components/numericInput/NumericInputConnected.tsx"
         propsMetadata={NumericInputConnectedMetadata}
-        code={NumericInputExample}
-        examples={{disabled: {code: NumericInputDisabledExample, title: 'Disabled'}}}
+        demo={<NumericInputDemo center />}
+        examples={{disabled: <NumericInputDisabledDemo center title="Disabled" />}}
     />
 );
 
-export default NumericInputExamples;
+export default NumericInputDemos;

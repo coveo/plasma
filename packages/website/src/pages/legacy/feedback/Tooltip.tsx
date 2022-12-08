@@ -1,19 +1,19 @@
 import {TooltipMetadata} from '@coveord/plasma-components-props-analyzer';
-import TooltipExample from '@examples/legacy/feedback/Tooltip/Tooltip.example.tsx';
+import TooltipDemo from '@examples/legacy/feedback/Tooltip/Tooltip.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const TooltipExamples = () => (
+export const TooltipDemos = () => (
     <PageLayout
         id="Tooltip"
-        componentSourcePath="/tooltip/Tooltip.tsx"
+        sourcePath="/packages/react/src/components/tooltip/Tooltip.tsx"
         title="Tooltip"
         section="Feedback"
         description="A tooltip is a floating label that provides brief additional information about an interface component."
         thumbnail="tooltip"
-        code={TooltipExample}
+        demo={<TooltipDemo center />}
         propsMetadata={TooltipMetadata}
     />
 );
 
-export default TooltipExamples;
+export default TooltipDemos;

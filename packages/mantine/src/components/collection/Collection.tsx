@@ -4,6 +4,8 @@ import {
     Button,
     DefaultProps,
     Group,
+    Input,
+    InputWrapperBaseProps,
     MantineNumberSize,
     Selectors,
     Stack,
@@ -13,12 +15,13 @@ import {
 import {useId} from '@mantine/hooks';
 import {ReactNode} from 'react';
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-
 import {useControlledList} from '../../hooks';
 import {CollectionItem} from './CollectionItem';
-import useStyles from './Colllection.styles';
+import useStyles from './Collection.styles';
 
-interface CollectionProps<T> extends DefaultProps<Selectors<typeof useStyles>> {
+interface CollectionProps<T>
+    extends Omit<InputWrapperBaseProps, 'inputContainer' | 'inputWrapperOrder'>,
+        DefaultProps<Selectors<typeof useStyles>> {
     /**
      * The default value each new item should have
      */
@@ -125,6 +128,12 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         addLabel,
         addDisabledTooltip,
         allowAdd,
+        label,
+        labelProps,
+        description,
+        descriptionProps,
+        error,
+        errorProps,
 
         // Style props
         classNames,
@@ -143,6 +152,24 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         remove(index);
         onRemoveItem?.(index);
     };
+
+    const _label = label ? (
+        <Input.Label required={required} {...labelProps}>
+            {label}
+        </Input.Label>
+    ) : null;
+
+    const _description = description ? (
+        <Input.Description {...descriptionProps}>{description}</Input.Description>
+    ) : null;
+    const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : null;
+    const _header =
+        _label || _description ? (
+            <Stack spacing="xs">
+                {_label}
+                {_description}
+            </Stack>
+        ) : null;
 
     const items = values.map((item, index) => (
         <CollectionItem
@@ -189,10 +216,14 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
                         className={cx(classes.root, className)}
                         {...others}
                     >
-                        <Stack spacing={spacing}>
-                            {items}
-                            {provided.placeholder}
-                            {_addButton}
+                        <Stack>
+                            {_header}
+                            <Stack spacing={spacing}>
+                                {items}
+                                {provided.placeholder}
+                                {_addButton}
+                                {_error}
+                            </Stack>
                         </Stack>
                     </Box>
                 )}

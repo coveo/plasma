@@ -1,11 +1,11 @@
 import {ColorPickerMetadata} from '@coveord/plasma-components-props-analyzer';
-import ColorPickerExample from '@examples/legacy/form/ColorPicker/ColorPicker.example.tsx';
-import ColorPickerHiddenControlsExample from '@examples/legacy/form/ColorPicker/ColorPickerHiddenControls.example.tsx';
-import ColorPickerSelectorExample from '@examples/legacy/form/ColorPicker/ColorPickerSelector.example.tsx';
+import ColorPickerDemo from '@examples/legacy/form/ColorPicker/ColorPicker.demo.tsx';
+import ColorPickerHiddenControlsDemo from '@examples/legacy/form/ColorPicker/ColorPickerHiddenControls.demo.tsx';
+import ColorPickerSelectorDemo from '@examples/legacy/form/ColorPicker/ColorPickerSelector.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const ColorPickerExamples = () => (
+const ColorPickerDemos = () => (
     <PageLayout
         id="ColorPicker"
         title="Color Picker"
@@ -16,14 +16,14 @@ const ColorPickerExamples = () => (
                 <a href="https://github.com/casesandberg/react-color/">React Color</a>
             </>
         }
-        componentSourcePath="/color-picker/ColorPicker.tsx"
-        code={ColorPickerExample}
+        sourcePath="/packages/react/src/components/color-picker/ColorPicker.tsx"
+        demo={<ColorPickerDemo center />}
         propsMetadata={ColorPickerMetadata}
         examples={{
-            hiddenControls: {code: ColorPickerHiddenControlsExample, title: 'Hidden Controls'},
-            selector: {code: ColorPickerSelectorExample, title: 'Selector'},
+            hiddenControls: <ColorPickerHiddenControlsDemo center title="Hidden Controls" />,
+            selector: <ColorPickerSelectorDemo center title="Selector" />,
         }}
     />
 );
 
-export default ColorPickerExamples;
+export default ColorPickerDemos;

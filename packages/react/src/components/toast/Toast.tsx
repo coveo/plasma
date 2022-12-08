@@ -89,7 +89,7 @@ export const Toast: FunctionComponent<PropsWithChildren<IToastProps>> = ({
         handleSetTimeout();
 
         return () => {
-            clearTimeout();
+            handleClearTimeout();
             onDestroy?.();
         };
     }, []);

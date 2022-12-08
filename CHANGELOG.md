@@ -1,3 +1,89 @@
+# 48.21.0 (2022-12-08)
+
+
+### Features
+
+* **plasma-mantine:** Improve ModalWizard (#2963) b66da4e, closes #2963
+
+
+
+## 48.20.1 (2022-12-08)
+
+
+
+# 48.20.0 (2022-12-08)
+
+
+### Features
+
+* **website:** use the new code editor in legacy/advanced pages (#2980) f606378, closes #2980
+* **website:** use the new code editor in legacy/feedback pages (#2979) a2a2843, closes #2979
+* **website:** use the new code editor in legacy/foundations pages (#2977) 49153c3, closes #2977
+* **website:** use the new code editor in legacy/navigation pages (#2978) f4f31e3, closes #2978
+
+
+
+# 48.19.0 (2022-12-07)
+
+
+### Features
+
+* **website:** convert all legacy layout demos to the new sandbox (#2975) c464f16, closes #2975
+
+
+
+## 48.18.2 (2022-12-07)
+
+
+
+## 48.18.1 (2022-12-07)
+
+
+
+# 48.18.0 (2022-12-07)
+
+
+### Features
+
+* **mantine:** add xml language support to the CodeEditor (#2969) a126c30, closes #2969
+
+
+
+## 48.17.5 (2022-12-06)
+
+
+### Bug Fixes
+
+* **mantine:** add type keyword to header props export (#2973) f8a9151, closes #2973
+
+
+
+## 48.17.4 (2022-12-06)
+
+
+
+## 48.17.3 (2022-12-06)
+
+
+### Bug Fixes
+
+* **mantine:** adjust header doc link icon alignment (#2970) 0ec0db6, closes #2970
+
+
+
+## 48.17.2 (2022-12-06)
+
+
+
+## 48.17.1 (2022-12-06)
+
+
+### Bug Fixes
+
+* **table, Mantine:** adjust the first column padding to align with Header (#2965) cd81dda, closes #2965
+
+
+
 # 48.17.0 (2022-12-01)
 
 

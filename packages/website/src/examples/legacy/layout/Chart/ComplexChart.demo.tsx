@@ -10,27 +10,29 @@ import {
 } from '@coveord/plasma-react';
 
 export default () => (
-    <ChartContainer
-        renderChart={(width, height) => (
-            <XYChart
-                series={data}
-                height={height}
-                width={width}
-                color={(serie: number, colorPattern: string[], point?: XYPoint) =>
-                    point && point.y > 7 ? overPattern[serie] : colorPattern[serie]
-                }
-                xFormat={(value: number) => ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'][value + 1]}
-                yFormat={(value: number) => value * 10 + '%'}
-            >
-                <XYAxis x={{innerPadding: width / 12}} y={{show: false}}>
-                    <BarSeries />
-                    <LineSeries />
-                    <ScatterSeries />
-                    <ChartTooltip sort />
-                </XYAxis>
-            </XYChart>
-        )}
-    />
+    <div style={{height: 400}}>
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart
+                    series={data}
+                    height={height}
+                    width={width}
+                    color={(serie: number, colorPattern: string[], point?: XYPoint) =>
+                        point && point.y > 7 ? overPattern[serie] : colorPattern[serie]
+                    }
+                    xFormat={(value: number) => ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'][value + 1]}
+                    yFormat={(value: number) => value * 10 + '%'}
+                >
+                    <XYAxis x={{innerPadding: width / 12}} y={{show: false}}>
+                        <BarSeries />
+                        <LineSeries />
+                        <ScatterSeries />
+                        <ChartTooltip sort />
+                    </XYAxis>
+                </XYChart>
+            )}
+        />
+    </div>
 );
 
 const data = [

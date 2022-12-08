@@ -1,16 +1,18 @@
 import {LinkSvgMetadata} from '@coveord/plasma-components-props-analyzer';
-import LinkSvgExample from '@examples/legacy/advanced/LinkSvg/LinkSvg.example.tsx';
+import LinkSvgDemo from '@examples/legacy/advanced/LinkSvg/LinkSvg.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const DemoPage = () => (
     <PageLayout
         id="LinkSvg"
         title="Link SVG"
         section="Advanced"
         description="A SVG that acts as a link."
-        componentSourcePath="/svg/LinkSvg.tsx"
-        code={LinkSvgExample}
+        demo={<LinkSvgDemo center />}
+        sourcePath="/packages/react/src/components/svg/LinkSvg.tsx"
         propsMetadata={LinkSvgMetadata}
     />
 );
+
+export default DemoPage;

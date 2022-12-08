@@ -1,24 +1,24 @@
 import {LabeledValueMetadata} from '@coveord/plasma-components-props-analyzer';
-import LabelledValueExample from '@examples/legacy/layout/LabelledValue/LabelledValue.example.tsx';
-import LabelledValueFullRowExample from '@examples/legacy/layout/LabelledValue/LabelledValueFullRow.example.tsx';
-import LabelledValueWithInformationExample from '@examples/legacy/layout/LabelledValue/LabelledValueWithInformation.example.tsx';
+import LabelledValueDemo from '@examples/legacy/layout/LabelledValue/LabelledValue.demo.tsx';
+import LabelledValueFullRowDemo from '@examples/legacy/layout/LabelledValue/LabelledValueFullRow.demo.tsx';
+import LabelledValueWithInformationDemo from '@examples/legacy/layout/LabelledValue/LabelledValueWithInformation.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const LabeledValueExamples = () => (
+const LabeledValueDemos = () => (
     <PageLayout
         id="LabeledValue"
-        componentSourcePath="/labeledValue/LabeledValue.tsx"
+        sourcePath="/packages/react/src/components/labeledValue/LabeledValue.tsx"
         title="Labeled value"
         section="Layout"
         thumbnail="placeholder"
         propsMetadata={LabeledValueMetadata}
-        code={LabelledValueExample}
+        demo={<LabelledValueDemo />}
         examples={{
-            withInformation: {code: LabelledValueWithInformationExample, title: 'With more information (tooltip)'},
-            fullRow: {code: LabelledValueFullRowExample, title: 'With fullRow option'},
+            withInformation: <LabelledValueWithInformationDemo title="With more information (tooltip)" />,
+            fullRow: <LabelledValueFullRowDemo title="With fullRow option" />,
         }}
     />
 );
 
-export default LabeledValueExamples;
+export default LabeledValueDemos;

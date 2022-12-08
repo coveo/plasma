@@ -1,27 +1,27 @@
 import {BlankSlateMetadata} from '@coveord/plasma-components-props-analyzer';
-import BlankslateExample from '@examples/legacy/layout/Blankslate/Blankslate.example.tsx';
-import BlankslateInErrorExample from '@examples/legacy/layout/Blankslate/BlankslateInError.example.tsx';
-import BlankslateWithTableExample from '@examples/legacy/layout/Blankslate/BlankslateWithTable.example.tsx';
-import BlankslateWithTableErrorExample from '@examples/legacy/layout/Blankslate/BlankslateWithTableError.example.tsx';
+import BlankslateDemo from '@examples/legacy/layout/Blankslate/Blankslate.demo.tsx';
+import BlankslateInErrorDemo from '@examples/legacy/layout/Blankslate/BlankslateInError.demo.tsx';
+import BlankslateWithTableDemo from '@examples/legacy/layout/Blankslate/BlankslateWithTable.demo.tsx';
+import BlankslateWithTableErrorDemo from '@examples/legacy/layout/Blankslate/BlankslateWithTableError.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const BlankSlateExample = () => (
+export const BlankSlateDemo = () => (
     <PageLayout
         id="BlankSlate"
-        componentSourcePath="/blankSlate/BlankSlate.tsx"
+        sourcePath="/packages/react/src/components/blankSlate/BlankSlate.tsx"
         title="Blank Slate"
         section="Layout"
         description="A blank slate informs users that a section doesn’t contain any data and provides a way to address it."
         thumbnail="placeholder"
         propsMetadata={BlankSlateMetadata}
-        code={BlankslateExample}
+        demo={<BlankslateDemo />}
         examples={{
-            inError: {code: BlankslateInErrorExample, title: 'With error'},
-            withTable: {code: BlankslateWithTableExample, title: 'With table'},
-            tableInError: {code: BlankslateWithTableErrorExample, title: 'Table in error'},
+            inError: <BlankslateInErrorDemo title="With error" />,
+            withTable: <BlankslateWithTableDemo title="With table" />,
+            tableInError: <BlankslateWithTableErrorDemo title="Table in error" />,
         }}
     />
 );
 
-export default BlankSlateExample;
+export default BlankSlateDemo;

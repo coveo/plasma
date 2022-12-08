@@ -1,16 +1,16 @@
-import BannerExample from '@examples/legacy/layout/Banner/Banner.example.tsx';
+import BannerDemo from '@examples/legacy/layout/Banner/Banner.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const BannerExamples = () => (
+export const BannerDemos = () => (
     <PageLayout
         id="BannerContainer"
-        componentSourcePath="/banner/BannerContainer.tsx"
+        sourcePath="/packages/react/src/components/banner/BannerContainer.tsx"
         title="Banner"
         withPropsTable={false}
         section="Layout"
         thumbnail="placeholder"
-        code={BannerExample}
+        demo={<BannerDemo />}
     />
 );
-export default BannerExamples;
+export default BannerDemos;

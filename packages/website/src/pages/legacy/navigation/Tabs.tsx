@@ -1,22 +1,22 @@
 import {TabMetadata} from '@coveord/plasma-components-props-analyzer';
-import TabExample from '@examples/legacy/navigation/Tabs/Tab.example.tsx';
-import TabWithIconExample from '@examples/legacy/navigation/Tabs/TabWithIcon.example.tsx';
+import TabDemo from '@examples/legacy/navigation/Tabs/Tab.demo.tsx';
+import TabWithIconDemo from '@examples/legacy/navigation/Tabs/TabWithIcon.demo.tsx';
 import {FunctionComponent} from 'react';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const TabsExamples: FunctionComponent = () => (
+export const TabsDemos: FunctionComponent = () => (
     <PageLayout
         id="Tab"
-        componentSourcePath="/tab/Tab.tsx"
+        sourcePath="/packages/react/src/components/tab/Tab.tsx"
         title="Tab"
         section="Navigation"
         description="A set of tabs allows users to navigate between sections of the same interface."
         thumbnail="tab"
-        code={TabExample}
+        demo={<TabDemo />}
         propsMetadata={TabMetadata}
-        examples={{withIcons: {code: TabWithIconExample, title: 'Tab with icons'}}}
+        examples={{withIcons: <TabWithIconDemo title="Tab with icons" />}}
     />
 );
 
-export default TabsExamples;
+export default TabsDemos;

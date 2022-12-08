@@ -1,4 +1,4 @@
-import {createStyles, DefaultProps, Divider, Group, Paper} from '@mantine/core';
+import {Box, createStyles, DefaultProps, Divider, Group} from '@mantine/core';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
 export interface StickyFooterProps extends DefaultProps {
@@ -13,7 +13,7 @@ const useStyles = createStyles(() => ({
         position: 'sticky',
         bottom: 0,
         zIndex: 1,
-        maxHeight: '80px',
+        backgroundColor: 'white',
     },
 }));
 
@@ -25,11 +25,13 @@ export const StickyFooter: FunctionComponent<PropsWithChildren<StickyFooterProps
     const {classes} = useStyles();
 
     return (
-        <Paper className={classes.footer}>
+        <>
             {borderTop ? <Divider size="xs" /> : null}
-            <Group position="right" spacing="xs" py="md" px="xl" {...others}>
-                {children}
-            </Group>
-        </Paper>
+            <Box className={classes.footer}>
+                <Group position="right" spacing="xs" pt="md" pb="md" px="xl" {...others}>
+                    {children}
+                </Group>
+            </Box>
+        </>
     );
 };
