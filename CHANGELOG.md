@@ -1,3 +1,12 @@
+# 48.22.0 (2022-12-08)
+
+
+### Features
+
+* **website:** add CodeEditor examples for XML and python (#2983) a381cd0, closes #2983
+
+
+
 ## 48.21.1 (2022-12-08)
 
 
