@@ -1,3 +1,12 @@
+# 48.21.0 (2022-12-08)
+
+
+### Features
+
+* **plasma-mantine:** Improve ModalWizard (#2963) b66da4e, closes #2963
+
+
+
 ## 48.20.1 (2022-12-08)
 
 
