@@ -1,3 +1,15 @@
+# 48.20.0 (2022-12-08)
+
+
+### Features
+
+* **website:** use the new code editor in legacy/advanced pages (#2980) f606378, closes #2980
+* **website:** use the new code editor in legacy/feedback pages (#2979) a2a2843, closes #2979
+* **website:** use the new code editor in legacy/foundations pages (#2977) 49153c3, closes #2977
+* **website:** use the new code editor in legacy/navigation pages (#2978) f4f31e3, closes #2978
+
+
+
 # 48.19.0 (2022-12-07)
 
 
