@@ -1,10 +1,26 @@
-import {Button, Modal, ModalProps, Progress} from '@mantine/core';
+import {Box, Button, createStyles, DefaultProps, Modal, ModalProps, Progress, Selectors} from '@mantine/core';
 import {Children, ReactElement, useMemo, useState} from 'react';
 import {StickyFooter} from '../sticky-footer';
 import {ModalWizardStep} from './ModalWizardStep';
 import {Header} from '../header';
 
-interface ModalWizardProps extends Omit<ModalProps, 'centered' | 'title'> {
+const useStyles = createStyles(() => ({
+    modal: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    body: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+    },
+}));
+
+type ModalWizardStylesNames = Selectors<typeof useStyles>;
+
+interface ModalWizardProps
+    extends Omit<DefaultProps<ModalWizardStylesNames>, 'classNames' | 'styles'>,
+        Omit<ModalProps, 'centered' | 'title'> {
     /**
      * The label of the cancel button
      *
@@ -85,9 +101,22 @@ export const ModalWizard: ModalWizardType = ({
     isDirty,
     handleDirtyState,
     classNames,
+    className,
+    styles,
+    unstyled,
     children,
     ...modalProps
 }) => {
+    const {
+        classes: {modal, body},
+        cx,
+    } = useStyles(null, {
+        name: 'ModalWizard',
+        classNames,
+        styles,
+        unstyled,
+    });
+
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const modalSteps = (Children.toArray(children) as ReactElement[]).filter((child) => child.type === ModalWizardStep);
 
@@ -116,11 +145,10 @@ export const ModalWizard: ModalWizardType = ({
     };
 
     const getProgressMemo = useMemo(() => getProgress(currentStepIndex), [currentStepIndex]);
-
     return (
         <Modal
             opened={opened}
-            classNames={classNames}
+            classNames={{modal: cx(modal, classNames?.modal), body: cx(body, classNames?.body)}}
             centered
             title={
                 <Header
@@ -143,39 +171,42 @@ export const ModalWizard: ModalWizardType = ({
         >
             {currentStep.props.showProgressBar && <Progress color="teal" size="lg" value={getProgressMemo} />}
             {currentStep}
-            <StickyFooter py={0} px={0} pt="sm" borderTop>
-                <Button
-                    name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
-                    disabled={false}
-                    size="sm"
-                    variant="outline"
-                    onClick={() => {
-                        if (isFirstStep) {
-                            closeModalWizard();
-                        } else {
-                            onPrevious?.();
-                            setCurrentStepIndex(currentStepIndex - 1);
-                        }
-                    }}
-                >
-                    {isFirstStep ? cancelButtonLabel : previousButtonLabel}
-                </Button>
+            <Box
+                sx={(theme) => ({
+                    marginTop: 'auto',
+                })}
+            >
+                <StickyFooter px={0} pt="sm" pb={0} borderTop>
+                    <Button
+                        name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
+                        variant="outline"
+                        onClick={() => {
+                            if (isFirstStep) {
+                                closeModalWizard();
+                            } else {
+                                onPrevious?.();
+                                setCurrentStepIndex(currentStepIndex - 1);
+                            }
+                        }}
+                    >
+                        {isFirstStep ? cancelButtonLabel : previousButtonLabel}
+                    </Button>
 
-                <Button
-                    disabled={!isValid}
-                    size="sm"
-                    onClick={() => {
-                        if (isLastStep) {
-                            onFinish ? onFinish() : onClose();
-                        } else {
-                            onNext?.();
-                            setCurrentStepIndex(currentStepIndex + 1);
-                        }
-                    }}
-                >
-                    {isLastStep ? finishButtonLabel : nextButtonLabel}
-                </Button>
-            </StickyFooter>
+                    <Button
+                        disabled={!isValid}
+                        onClick={() => {
+                            if (isLastStep) {
+                                onFinish ? onFinish() : onClose();
+                            } else {
+                                onNext?.();
+                                setCurrentStepIndex(currentStepIndex + 1);
+                            }
+                        }}
+                    >
+                        {isLastStep ? finishButtonLabel : nextButtonLabel}
+                    </Button>
+                </StickyFooter>
+            </Box>
         </Modal>
     );
 };

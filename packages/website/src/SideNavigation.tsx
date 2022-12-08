@@ -91,6 +91,7 @@ const CurrentNavigation = () => {
                 <NavLink href="/layout/Header" label="Header" />
                 <NavLink href="/layout/Table" label="Table" />
                 <NavLink href="/layout/Modal" label="Modal" />
+                <NavLink href="/layout/ModalWizard" label="ModalWizard" />
                 <NavLink href="/layout/StickyFooter" label="Sticky footer" />
             </CollapsibleSideSection>
             <CollapsibleSideSection title="Form">
