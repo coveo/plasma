@@ -12,7 +12,6 @@ const SplitLayoutDemos = () => (
         description="A split layout organizes information in two vertical columns."
         sourcePath="/packages/react/src/components/splitlayout/SplitLayout.tsx"
         demo={<SplitLayoutDemo />}
-        layout="vertical"
         propsMetadata={SplitLayoutMetadata}
         examples={{noBorder: <SplitLayoutBorderlessDemo title="Without a border" />}}
     />

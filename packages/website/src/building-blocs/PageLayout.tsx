@@ -1,28 +1,14 @@
 import {Stack, Tabs} from '@coveord/plasma-mantine';
-import dynamic from 'next/dynamic';
 import {Fragment, FunctionComponent, ReactNode} from 'react';
 
 import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
-import {PlasmaLoading} from './PlasmaLoading';
 import {PropsTable, PropsTableProps} from './PropsTable';
-import {SandboxProps} from './Sandbox';
 import {Tile, TileProps} from './Tile';
 
-const Sandbox = dynamic<SandboxProps>(
-    import('./Sandbox').then((mod) => mod.Sandbox),
-    {ssr: false, loading: () => <PlasmaLoading />}
-);
-
-interface PlaygroundProps {
-    title: string;
-    code?: string;
-    layout?: 'horizontal' | 'vertical';
-}
-
-export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps, PropsTableProps {
+export interface PageLayoutProps extends PageHeaderProps, PropsTableProps {
     id: string;
-    examples?: Record<string, PlaygroundProps | ReactNode>;
+    examples?: Record<string, ReactNode>;
     demo?: ReactNode;
     relatedComponents?: TileProps[];
     /**
@@ -71,36 +57,10 @@ export const PageLayout = ({
 const Content: FunctionComponent<
     Pick<
         PageLayoutProps,
-        | 'code'
-        | 'demo'
-        | 'examples'
-        | 'id'
-        | 'relatedComponents'
-        | 'layout'
-        | 'withPropsTable'
-        | 'propsMetadata'
-        | 'children'
+        'demo' | 'examples' | 'id' | 'relatedComponents' | 'withPropsTable' | 'propsMetadata' | 'children'
     >
-> = ({
-    code,
-    demo: mainDemo,
-    examples,
-    id,
-    relatedComponents,
-    layout = 'horizontal',
-    withPropsTable = true,
-    propsMetadata,
-    children,
-}) => (
+> = ({demo: mainDemo, examples, id, relatedComponents, withPropsTable = true, propsMetadata, children}) => (
     <>
-        {code && (
-            <div className="plasma-page-layout__main-code plasma-page-layout__section">
-                <Sandbox id="main-code" horizontal={layout === 'horizontal'}>
-                    {code}
-                </Sandbox>
-            </div>
-        )}
-
         {mainDemo && <div className="plasma-page-layout__main-code plasma-page-layout__section">{mainDemo}</div>}
 
         {withPropsTable && (
@@ -113,20 +73,9 @@ const Content: FunctionComponent<
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb5">Examples</h4>
                 <Stack>
-                    {Object.entries(examples).map(([exampleId, example]) =>
-                        isOldSandbox(example) ? (
-                            <Sandbox
-                                key={id + exampleId}
-                                id={exampleId}
-                                title={example.title}
-                                horizontal={example.layout !== 'vertical'}
-                            >
-                                {example.code}
-                            </Sandbox>
-                        ) : (
-                            <Fragment key={id + exampleId}>{example}</Fragment>
-                        )
-                    )}
+                    {Object.entries(examples).map(([exampleId, example]) => (
+                        <Fragment key={id + exampleId}>{example}</Fragment>
+                    ))}
                 </Stack>
             </div>
         )}
@@ -141,6 +90,3 @@ const Content: FunctionComponent<
         {children}
     </>
 );
-
-const isOldSandbox = (example: PlaygroundProps | ReactNode): example is PlaygroundProps =>
-    !!(example as PlaygroundProps)?.code;
