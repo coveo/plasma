@@ -8,7 +8,6 @@
         "rootDir": "src",
         "baseUrl": ".",
         "paths": {
-            "@coveord/plasma-react/dist/*": ["../react/dist/*"],
             "@examples/*": ["./src/examples/*"],
             "@demo": ["./src/building-blocs/Demo.tsx"]
         },
