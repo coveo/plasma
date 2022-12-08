@@ -1,11 +1,13 @@
 import {
     BlankSlate,
+    Box,
     Button,
     ColumnDef,
     createColumnHelper,
     DateRangePickerPreset,
     Table,
     Title,
+    useTable,
 } from '@coveord/plasma-mantine';
 import {FunctionComponent, useState} from 'react';
 
@@ -39,13 +41,21 @@ export default () => {
 
     const fetchData = (state: any) => {
         setLoading(true);
-        fetch(
-            `https://jsonplaceholder.typicode.com/posts?_sort=${
-                state.sorting?.[0]?.id ? state.sorting?.[0]?.id : 'userId'
-            }&_order=${state.sorting?.[0]?.desc ? 'desc' : 'asc'}&_page=${
-                state.pagination.pageIndex ? state.pagination.pageIndex + 1 : 1
-            }&_limit=${state.pagination.pageSize}`
-        )
+        const searchParams = new URLSearchParams({
+            _sort: state.sorting?.[0]?.id ?? 'userId',
+            _order: state.sorting?.[0]?.desc ? 'desc' : 'asc',
+            _page: state.pagination.pageIndex + 1,
+            _limit: state.pagination.pageSize,
+            userId: state.predicates.user,
+            title_like: state.globalFilter,
+        });
+        if (state.predicates.user === '') {
+            searchParams.delete('userId');
+        }
+        if (!state.globalFilter) {
+            searchParams.delete('title_like');
+        }
+        fetch(`https://jsonplaceholder.typicode.com/posts?${searchParams.toString()}`)
             .then((response) => response.json())
             .then((json) => setData(json))
             .then(() => setPages(Math.ceil(100 / state.pagination?.pageSize)))
@@ -65,12 +75,14 @@ export default () => {
                 fetchData(state);
             }}
             loading={loading}
-            initialState={{dateRange: [previousDay, today]}}
-            getExpandChildren={(datum) => <div className="py2">{datum.body}</div>}
+            initialState={{dateRange: [previousDay, today], predicates: {user: ''}}}
+            getExpandChildren={(datum) => <Box py="xs">{datum.body}</Box>}
         >
             {/* you can override background color with: sx={{backgroundColor: 'white'}} for Header and Footer */}
             <Table.Header>
                 <Table.Actions>{(datum: IExampleRowData) => <TableActions datum={datum} />}</Table.Actions>
+                <UserPredicate />
+                <Table.Filter placeholder="Search posts by title" />
                 <Table.DateRangePicker presets={DatePickerPresets} />
             </Table.Header>
             <Table.Footer>
@@ -81,11 +93,21 @@ export default () => {
     );
 };
 
-const NoData: FunctionComponent = () => (
-    <BlankSlate>
-        <Title order={4}>No Data</Title>
-    </BlankSlate>
-);
+const NoData: FunctionComponent = () => {
+    const {state, form, clearFilters} = useTable();
+    const isFiltered = !!state.globalFilter || !!form.values.predicates.user;
+
+    return isFiltered ? (
+        <BlankSlate>
+            <Title order={4}>No data found for those filters</Title>
+            <Button onClick={clearFilters}>Clear filters</Button>
+        </BlankSlate>
+    ) : (
+        <BlankSlate>
+            <Title order={4}>No Data</Title>
+        </BlankSlate>
+    );
+};
 
 const today: Date = new Date();
 const previous: Date = new Date(new Date().getTime());
@@ -102,3 +124,26 @@ const TableActions: FunctionComponent<{datum: IExampleRowData}> = ({datum}) => {
     const pressedAction = () => alert('Some action is triggered!');
     return <>{actionCondition ? <Button onClick={pressedAction}>Action!</Button> : null}</>;
 };
+
+const UserPredicate: FunctionComponent = () => (
+    <Table.Predicate
+        id="user"
+        label="User"
+        data={[
+            {
+                value: '',
+                label: 'All',
+            },
+            {value: '1', label: '1'},
+            {value: '2', label: '2'},
+            {value: '3', label: '3'},
+            {value: '4', label: '4'},
+            {value: '5', label: '5'},
+            {value: '6', label: '6'},
+            {value: '7', label: '7'},
+            {value: '8', label: '8'},
+            {value: '9', label: '9'},
+            {value: '10', label: '10'},
+        ]}
+    />
+);
