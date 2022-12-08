@@ -11,6 +11,6 @@ export default () => (
         description="A table displays large quantities of items or data in a list format. Filtering features, date picker, collapsible rows and actions may be added."
         id="Table"
         propsMetadata={TableMetadata}
-        demo={<TableDemo />}
+        demo={<TableDemo layout="vertical" />}
     />
 );
