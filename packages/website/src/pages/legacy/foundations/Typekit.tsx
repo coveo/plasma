@@ -1,4 +1,4 @@
-import TypekitExample from '@examples/legacy/foundations/Typekit/Typekit.example.tsx';
+import TypekitDemo from '@examples/legacy/foundations/Typekit/Typekit.demo.tsx';
 import classNames from 'classnames';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
@@ -246,7 +246,7 @@ export const Typekit = () => (
         thumbnail="typekit"
         description="The Typekit covers all typography styles designed specifically to work with the Plasma ecosystem."
         sourcePath="packages/style/scss/typekit.scss"
-        code={TypekitExample}
+        demo={<TypekitDemo center />}
         withPropsTable={false}
     >
         <div className="plasma-page-layout__section full-content flex-column">
