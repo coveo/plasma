@@ -1,30 +1,30 @@
 import {ChartContainerMetadata} from '@coveord/plasma-components-props-analyzer';
-import BarChartExample from '@examples/legacy/layout/Chart/BarChart.example.tsx';
-import BarChartWithDatesExample from '@examples/legacy/layout/Chart/BarChartWithDates.example.tsx';
-import ChartExample from '@examples/legacy/layout/Chart/Chart.example.tsx';
-import ChartWithInfoLinesExample from '@examples/legacy/layout/Chart/ChartWithInfoLines.example.tsx';
-import ComplexChartExample from '@examples/legacy/layout/Chart/ComplexChart.example.tsx';
-import ScatterChartExample from '@examples/legacy/layout/Chart/ScatterChart.example.tsx';
+import BarChartDemo from '@examples/legacy/layout/Chart/BarChart.demo.tsx';
+import BarChartWithDatesDemo from '@examples/legacy/layout/Chart/BarChartWithDates.demo.tsx';
+import ChartDemo from '@examples/legacy/layout/Chart/Chart.demo.tsx';
+import ChartWithInfoLinesDemo from '@examples/legacy/layout/Chart/ChartWithInfoLines.demo.tsx';
+import ComplexChartDemo from '@examples/legacy/layout/Chart/ComplexChart.demo.tsx';
+import ScatterChartDemo from '@examples/legacy/layout/Chart/ScatterChart.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const ChartExamples = () => (
+export const ChartDemos = () => (
     <PageLayout
         id="ChartContainer"
         componentSourcePath="/chart/ChartContainer.tsx"
         title="Charts"
         section="Layout"
         description="A chart compares sets of complex data to provide insights on their relationship and status."
-        code={ChartExample}
+        demo={<ChartDemo />}
         propsMetadata={ChartContainerMetadata}
         examples={{
-            scatterSeries: {code: ScatterChartExample, title: 'Scatter series'},
-            barSeries: {code: BarChartExample, title: 'Bar series'},
-            infoLines: {code: ChartWithInfoLinesExample, title: 'With info lines'},
-            dateChart: {code: BarChartWithDatesExample, title: 'Date chart'},
-            complex: {code: ComplexChartExample, title: 'Complex chart'},
+            scatterSeries: <ScatterChartDemo title="Scatter series" />,
+            barSeries: <BarChartDemo title="Bar series" />,
+            infoLines: <ChartWithInfoLinesDemo title="With info lines" />,
+            dateChart: <BarChartWithDatesDemo title="Date chart" />,
+            complex: <ComplexChartDemo title="Complex chart" />,
         }}
     />
 );
 
-export default ChartExamples;
+export default ChartDemos;

@@ -1,19 +1,21 @@
 import {LineSeries, InfoLine, ChartContainer, XGrid, YGrid, XYAxis, XYChart} from '@coveord/plasma-react';
 
 export default () => (
-    <ChartContainer
-        renderChart={(width, height) => (
-            <XYChart series={data} height={height} width={width}>
-                <XYAxis x={{innerPadding: 30}} y={{innerPadding: 30}}>
-                    <XGrid padding={30} />
-                    <YGrid padding={30} />
-                    <LineSeries />
-                    <InfoLine value={3} label="Three" padding={30} />
-                    <InfoLine value={2} label="Two" padding={30} isVertical />
-                </XYAxis>
-            </XYChart>
-        )}
-    />
+    <div style={{height: 400}}>
+        <ChartContainer
+            renderChart={(width, height) => (
+                <XYChart series={data} height={height} width={width}>
+                    <XYAxis x={{innerPadding: 30}} y={{innerPadding: 30}}>
+                        <XGrid padding={30} />
+                        <YGrid padding={30} />
+                        <LineSeries />
+                        <InfoLine value={3} label="Three" padding={30} />
+                        <InfoLine value={2} label="Two" padding={30} isVertical />
+                    </XYAxis>
+                </XYChart>
+            )}
+        />
+    </div>
 );
 
 const data = [

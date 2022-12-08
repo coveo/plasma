@@ -1,9 +1,9 @@
 import {SearchBarMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/legacy/form/SearchBar/main.example.tsx';
+import SearchBarDemo from '@examples/legacy/form/SearchBar/main.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         id="SearchBar"
         title="Search Bar"
@@ -11,6 +11,8 @@ export default () => (
         componentSourcePath="/searchBar/SearchBar.tsx"
         propsMetadata={SearchBarMetadata}
         description="A search bar allows users to search a large set of data by entering keywords. A list of matching items is then returned."
-        code={code}
+        demo={<SearchBarDemo center />}
     />
 );
+
+export default Page;

@@ -1,11 +1,11 @@
 import {ToastMetadata} from '@coveord/plasma-components-props-analyzer';
-import DownloadToastExample from '@examples/legacy/feedback/Toast/DownloadToast.example.tsx';
-import ToastExample from '@examples/legacy/feedback/Toast/Toast.example.tsx';
-import ToastNotifierExample from '@examples/legacy/feedback/Toast/ToastNotifier.example.tsx';
+import DownloadToastDemo from '@examples/legacy/feedback/Toast/DownloadToast.demo.tsx';
+import ToastDemo from '@examples/legacy/feedback/Toast/Toast.demo.tsx';
+import ToastNotifierDemo from '@examples/legacy/feedback/Toast/ToastNotifier.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const ToastExamples = () => (
+export const ToastDemos = () => (
     <PageLayout
         id="Toast"
         componentSourcePath="/toast/Toast.tsx"
@@ -13,12 +13,12 @@ export const ToastExamples = () => (
         thumbnail="toast"
         section="Feedback"
         description="A toast displays a short message related to an action performed by a user."
-        code={ToastExample}
+        demo={<ToastDemo center />}
         propsMetadata={ToastMetadata}
         examples={{
-            download: {code: DownloadToastExample, title: 'Download Toast'},
-            container: {code: ToastNotifierExample, title: 'Toast Notifier'},
+            download: <DownloadToastDemo center title="Download Toast" />,
+            container: <ToastNotifierDemo center title="Toast Notifier" />,
         }}
     />
 );
-export default ToastExamples;
+export default ToastDemos;

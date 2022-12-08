@@ -1,26 +1,26 @@
 import {CheckboxMetadata} from '@coveord/plasma-components-props-analyzer';
-import CheckboxExample from '@examples/legacy/form/Checkbox/Checkbox.example.tsx';
-import CheckboxConnectedExample from '@examples/legacy/form/Checkbox/CheckboxConnected.example.tsx';
-import CheckboxDisabledExample from '@examples/legacy/form/Checkbox/CheckboxDisabled.example.tsx';
-import GroupableCheckboxExample from '@examples/legacy/form/Checkbox/GroupableCheckbox.example.tsx';
+import CheckboxDemo from '@examples/legacy/form/Checkbox/Checkbox.demo.tsx';
+import CheckboxConnectedDemo from '@examples/legacy/form/Checkbox/CheckboxConnected.demo.tsx';
+import CheckboxDisabledDemo from '@examples/legacy/form/Checkbox/CheckboxDisabled.demo.tsx';
+import GroupableCheckboxDemo from '@examples/legacy/form/Checkbox/GroupableCheckbox.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const CheckboxExamples = () => (
+const CheckboxDemos = () => (
     <PageLayout
         id="Checkbox"
         title="Checkbox"
         section="Form"
         description="A set of checkboxes allow users to select multiple options from a list. A single checkbox can be used to enable/disable an option."
         componentSourcePath="/checkbox/Checkbox.tsx"
-        code={CheckboxExample}
+        demo={<CheckboxDemo center />}
         examples={{
-            connected: {code: CheckboxConnectedExample, title: 'Connected to the PlasmaState'},
-            disabled: {code: CheckboxDisabledExample, title: 'Disabled'},
-            group: {code: GroupableCheckboxExample, title: 'A group of checkboxes'},
+            connected: <CheckboxConnectedDemo center title="Connected to the PlasmaState" />,
+            disabled: <CheckboxDisabledDemo center title="Disabled" />,
+            group: <GroupableCheckboxDemo center title="A group of checkboxes" />,
         }}
         propsMetadata={CheckboxMetadata}
     />
 );
 
-export default CheckboxExamples;
+export default CheckboxDemos;

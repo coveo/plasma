@@ -1,18 +1,18 @@
-import {StickyFooterMetadata} from '@coveord/plasma-components-props-analyzer';
-import StickyFooterExample from '@examples/legacy/layout/StickyFooter/StickyFooter.example.tsx';
+import {StickyFooterLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
+import StickyFooterDemo from '@examples/legacy/layout/StickyFooter/StickyFooter.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const Example = () => (
+const Demo = () => (
     <PageLayout
         id="StickyFooter"
         title="Sticky Footer"
         section="Layout"
         description="A page footer that sticks to the bottom of the screen"
         componentSourcePath="/stickyFooter/StickyFooter.tsx"
-        propsMetadata={StickyFooterMetadata}
-        code={StickyFooterExample}
+        propsMetadata={StickyFooterLegacyMetadata}
+        demo={<StickyFooterDemo />}
     />
 );
 
-export default Example;
+export default Demo;
