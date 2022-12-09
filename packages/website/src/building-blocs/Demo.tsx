@@ -3,8 +3,8 @@ import {
     Box,
     Center,
     createStyles,
-    Group,
     ScrollArea,
+    SimpleGrid,
     Stack,
     Title,
     Tooltip,
@@ -59,7 +59,7 @@ const useStyles = createStyles((theme, {grow}: DemoComponentProps) => ({
     },
 }));
 
-const Demo = ({children, snippet, center = false, grow = false, title}: DemoProps) => {
+const Demo = ({children, snippet, center = false, grow = false, title, layout}: DemoProps) => {
     const {classes} = useStyles({center, grow});
     const clipboard = useClipboard();
     const sandboxLink = getCodeSandboxLink(snippet);
@@ -70,7 +70,7 @@ const Demo = ({children, snippet, center = false, grow = false, title}: DemoProp
                     {title}
                 </Title>
             ) : null}
-            <Group grow className={classes.sandbox} align="stretch" spacing={0}>
+            <SimpleGrid className={classes.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
                 <Box component={center ? Center : 'div'} className={classes.preview}>
                     <ScrollArea.Autosize maxHeight={MAX_HEIGHT}>
                         <div className={classes.previewWrapper}>{children}</div>
@@ -103,7 +103,7 @@ const Demo = ({children, snippet, center = false, grow = false, title}: DemoProp
                         </Tooltip>
                     </Stack>
                 </div>
-            </Group>
+            </SimpleGrid>
         </div>
     );
 };

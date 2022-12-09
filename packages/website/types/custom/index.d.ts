@@ -20,6 +20,7 @@ interface DemoComponentProps {
     center?: boolean;
     grow?: boolean;
     title?: string;
+    layout?: 'horizontal' | 'vertical';
 }
 
 declare module '*.demo.tsx' {
