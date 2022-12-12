@@ -1,28 +1,30 @@
 import {FlatSelectConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/FlatSelect/FlatSelect.example.tsx';
-import appendPrepend from '@examples/FlatSelect/FlatSelectAppendPrepend.example.tsx';
-import disabled from '@examples/FlatSelect/FlatSelectDisabled.example.tsx';
-import group from '@examples/FlatSelect/FlatSelectGroup.example.tsx';
-import iconOnly from '@examples/FlatSelect/FlatSelectIconsOnly.example.tsx';
-import optionPicker from '@examples/FlatSelect/FlatSelectOptionPicker.example.tsx';
+import FlatSelectDemo from '@examples/legacy/form/FlatSelect/FlatSelect.demo.tsx';
+import FlatSelectAppendPrependDemo from '@examples/legacy/form/FlatSelect/FlatSelectAppendPrepend.demo.tsx';
+import FlatSelectDisabledDemo from '@examples/legacy/form/FlatSelect/FlatSelectDisabled.demo.tsx';
+import FlatSelectGroupDemo from '@examples/legacy/form/FlatSelect/FlatSelectGroup.demo.tsx';
+import FlatSelectIconOnlyDemo from '@examples/legacy/form/FlatSelect/FlatSelectIconsOnly.demo.tsx';
+import FlatSelectOptionPickerDemo from '@examples/legacy/form/FlatSelect/FlatSelectOptionPicker.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const FlatSelectDemoPage = () => (
     <PageLayout
         id="FlatSelectConnected"
         title="Flat Select"
         section="Form"
         description="A flat select is a group of mutually exclusive buttons aligned horizontally. It is used to allow users to switch between interface displays or binary options."
-        componentSourcePath="/flatSelect/FlatSelect.tsx"
-        code={code}
+        sourcePath="/packages/react/src/components/flatSelect/FlatSelect.tsx"
+        demo={<FlatSelectDemo center />}
         propsMetadata={FlatSelectConnectedMetadata}
         examples={{
-            disabled: {code: disabled, title: 'Disabled'},
-            group: {code: group, title: 'Grouped'},
-            optionPicker: {code: optionPicker, title: 'Option Picker'},
-            appendPrepend: {code: appendPrepend, title: 'Append and prepend'},
-            iconOnly: {code: iconOnly, title: 'Icon only'},
+            disabled: <FlatSelectDisabledDemo center title="Disabled" />,
+            group: <FlatSelectGroupDemo center title="Grouped" />,
+            optionPicker: <FlatSelectOptionPickerDemo center title="Option Picker" />,
+            appendPrepend: <FlatSelectAppendPrependDemo center title="Append and prepend" />,
+            iconOnly: <FlatSelectIconOnlyDemo center title="Icon only" />,
         }}
     />
 );
+
+export default FlatSelectDemoPage;

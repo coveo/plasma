@@ -1,29 +1,15 @@
-import {Tabs} from '@coveord/plasma-mantine';
-import dynamic from 'next/dynamic';
-import {FunctionComponent, ReactNode} from 'react';
+import {Stack, Tabs} from '@coveord/plasma-mantine';
+import {Fragment, FunctionComponent, ReactNode} from 'react';
 
 import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
-import {PlasmaLoading} from './PlasmaLoading';
 import {PropsTable, PropsTableProps} from './PropsTable';
-import {SandboxProps} from './Sandbox';
 import {Tile, TileProps} from './Tile';
 
-const Sandbox = dynamic<SandboxProps>(
-    import('./Sandbox').then((mod) => mod.Sandbox),
-    {ssr: false, loading: () => <PlasmaLoading />}
-);
-
-interface PlaygroundProps {
-    title: string;
-    code?: string;
-    Demo?: () => JSX.Element;
-    layout?: 'horizontal' | 'vertical';
-}
-
-export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps, PropsTableProps {
+export interface PageLayoutProps extends PageHeaderProps, PropsTableProps {
     id: string;
-    examples?: Record<string, PlaygroundProps>;
+    examples?: Record<string, ReactNode>;
+    demo?: ReactNode;
     relatedComponents?: TileProps[];
     /**
      * Whether to show the props section or not
@@ -41,13 +27,11 @@ export const PageLayout = ({
     thumbnail,
     section,
     children,
-    componentSourcePath,
     sourcePath,
     ...contentProps
 }: PageLayoutProps) => (
     <div id={id} className="plasma-page-layout">
         <PageHeader
-            componentSourcePath={componentSourcePath}
             sourcePath={sourcePath}
             section={section}
             thumbnail={thumbnail}
@@ -73,41 +57,11 @@ export const PageLayout = ({
 const Content: FunctionComponent<
     Pick<
         PageLayoutProps,
-        | 'code'
-        | 'Demo'
-        | 'examples'
-        | 'id'
-        | 'relatedComponents'
-        | 'layout'
-        | 'withPropsTable'
-        | 'propsMetadata'
-        | 'children'
+        'demo' | 'examples' | 'id' | 'relatedComponents' | 'withPropsTable' | 'propsMetadata' | 'children'
     >
-> = ({
-    code,
-    Demo,
-    examples,
-    id,
-    relatedComponents,
-    layout = 'horizontal',
-    withPropsTable = true,
-    propsMetadata,
-    children,
-}) => (
+> = ({demo: mainDemo, examples, id, relatedComponents, withPropsTable = true, propsMetadata, children}) => (
     <>
-        {code && (
-            <div className="plasma-page-layout__main-code plasma-page-layout__section">
-                <Sandbox id="main-code" horizontal={layout === 'horizontal'}>
-                    {code}
-                </Sandbox>
-            </div>
-        )}
-
-        {Demo && (
-            <div className="plasma-page-layout__main-code plasma-page-layout__section">
-                <Demo />
-            </div>
-        )}
+        {mainDemo && <div className="plasma-page-layout__main-code plasma-page-layout__section">{mainDemo}</div>}
 
         {withPropsTable && (
             <div className="plasma-page-layout__section">
@@ -118,24 +72,11 @@ const Content: FunctionComponent<
         {examples && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb5">Examples</h4>
-                {Object.entries(examples).map(
-                    ([
-                        exampleId,
-                        {code: exampleCode, Demo: ExampleDemo, title, layout: exampleLayout = 'horizontal'},
-                    ]) =>
-                        Demo ? (
-                            <ExampleDemo key={id + exampleId} />
-                        ) : (
-                            <Sandbox
-                                key={id + exampleId}
-                                id={exampleId}
-                                title={title}
-                                horizontal={exampleLayout === 'horizontal'}
-                            >
-                                {exampleCode}
-                            </Sandbox>
-                        )
-                )}
+                <Stack>
+                    {Object.entries(examples).map(([exampleId, example]) => (
+                        <Fragment key={id + exampleId}>{example}</Fragment>
+                    ))}
+                </Stack>
             </div>
         )}
         {relatedComponents && relatedComponents.length > 0 && (

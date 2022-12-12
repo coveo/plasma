@@ -1,22 +1,22 @@
 import {BasicHeaderMetadata} from '@coveord/plasma-components-props-analyzer';
-import loading from '@examples/Header/loading.example.tsx';
-import code from '@examples/Header/main.example.tsx';
+import PageHeaderLoadingDemo from '@examples/legacy/layout/Header/loading.demo.tsx';
+import PageHeaderDemo from '@examples/legacy/layout/Header/main.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const PageHeaderExamples = () => (
+export const PageHeaderDemos = () => (
     <PageLayout
         id="BasicHeader"
-        componentSourcePath="/headers/BasicHeader.tsx"
+        sourcePath="/packages/react/src/components/headers/BasicHeader.tsx"
         title="Page header"
         section="Layout"
         description="A page header informs a user of the section of the product they are currently in. It includes a breadcrumb and optional tabs."
         thumbnail="header"
-        code={code}
+        demo={<PageHeaderDemo />}
         propsMetadata={BasicHeaderMetadata}
         examples={{
-            loading: {code: loading, title: 'Loading'},
+            loading: <PageHeaderLoadingDemo title="Loading" />,
         }}
     />
 );
-export default PageHeaderExamples;
+export default PageHeaderDemos;

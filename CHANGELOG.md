@@ -1,3 +1,184 @@
+## 48.22.4 (2022-12-09)
+
+
+
+## 48.22.3 (2022-12-09)
+
+
+
+## 48.22.2 (2022-12-09)
+
+
+
+## 48.22.1 (2022-12-09)
+
+
+
+# 48.22.0 (2022-12-08)
+
+
+### Features
+
+* **website:** add CodeEditor examples for XML and python (#2983) a381cd0, closes #2983
+
+
+
+## 48.21.1 (2022-12-08)
+
+
+
+# 48.21.0 (2022-12-08)
+
+
+### Features
+
+* **plasma-mantine:** Improve ModalWizard (#2963) b66da4e, closes #2963
+
+
+
+## 48.20.1 (2022-12-08)
+
+
+
+# 48.20.0 (2022-12-08)
+
+
+### Features
+
+* **website:** use the new code editor in legacy/advanced pages (#2980) f606378, closes #2980
+* **website:** use the new code editor in legacy/feedback pages (#2979) a2a2843, closes #2979
+* **website:** use the new code editor in legacy/foundations pages (#2977) 49153c3, closes #2977
+* **website:** use the new code editor in legacy/navigation pages (#2978) f4f31e3, closes #2978
+
+
+
+# 48.19.0 (2022-12-07)
+
+
+### Features
+
+* **website:** convert all legacy layout demos to the new sandbox (#2975) c464f16, closes #2975
+
+
+
+## 48.18.2 (2022-12-07)
+
+
+
+## 48.18.1 (2022-12-07)
+
+
+
+# 48.18.0 (2022-12-07)
+
+
+### Features
+
+* **mantine:** add xml language support to the CodeEditor (#2969) a126c30, closes #2969
+
+
+
+## 48.17.5 (2022-12-06)
+
+
+### Bug Fixes
+
+* **mantine:** add type keyword to header props export (#2973) f8a9151, closes #2973
+
+
+
+## 48.17.4 (2022-12-06)
+
+
+
+## 48.17.3 (2022-12-06)
+
+
+### Bug Fixes
+
+* **mantine:** adjust header doc link icon alignment (#2970) 0ec0db6, closes #2970
+
+
+
+## 48.17.2 (2022-12-06)
+
+
+
+## 48.17.1 (2022-12-06)
+
+
+### Bug Fixes
+
+* **table, Mantine:** adjust the first column padding to align with Header (#2965) cd81dda, closes #2965
+
+
+
+# 48.17.0 (2022-12-01)
+
+
+### Features
+
+* **table:** added support for doubleclick on a row (#2964) 1481b96, closes #2964
+
+
+
+## 48.16.1 (2022-12-01)
+
+
+### Bug Fixes
+
+* **react:** make plasma react usable from code sandbox (#2961) 6455086, closes #2961
+
+
+
+# 48.16.0 (2022-11-30)
+
+
+### Features
+
+* **plasmantine:** Create the modal component with Header (#2954) d2b980d, closes #2954
+
+
+
+# 48.15.0 (2022-11-29)
+
+
+### Features
+
+* **mantine:** added possibility to override backgroundColor on Table.Footer with sx (#2960) 9987d1d, closes #2960
+
+
+
+## 48.14.3 (2022-11-29)
+
+
+
+## 48.14.2 (2022-11-29)
+
+
+
+## 48.14.1 (2022-11-28)
+
+
+
+# 48.14.0 (2022-11-28)
+
+
+### Features
+
+* **plasma-mantine:** export Header interface (#2953) 9545826, closes #2953
+
+
+
+## 48.13.2 (2022-11-28)
+
+
+### Bug Fixes
+
+* **plasma-mantine:** fix ModalWizard breaks when mantine version > 5.6.2 (#2952) ea04aed, closes #2952
+
+
+
 ## 48.13.1 (2022-11-24)
 
 

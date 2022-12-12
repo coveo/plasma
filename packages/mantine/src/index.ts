@@ -10,7 +10,7 @@ export * from '@mantine/hooks';
 export {createColumnHelper, type ColumnDef} from '@tanstack/table-core';
 export * from './components';
 // explicitly overriding mantine components
-export {Header, Table} from './components';
+export {Header, Table, type HeaderProps, Modal} from './components';
 export * from './theme';
 
 declare module '@mantine/core' {

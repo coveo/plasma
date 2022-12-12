@@ -29,8 +29,8 @@ import {Th} from './Th';
 const useStyles = createStyles<string, {hasHeader: boolean}>((theme, {hasHeader}, getRef) => ({
     table: {
         width: '100%',
-        '& td:first-child': {
-            paddingLeft: theme.spacing.md,
+        '& td:first-of-type': {
+            paddingLeft: theme.spacing.xl,
         },
     },
 
@@ -40,8 +40,11 @@ const useStyles = createStyles<string, {hasHeader: boolean}>((theme, {hasHeader}
         backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
         transition: 'box-shadow 150ms ease',
         zIndex: 12, // skeleton is 11
-        '& tr th:first-child div': {
-            paddingLeft: theme.spacing.md,
+        '& tr th:first-of-type button': {
+            paddingLeft: theme.spacing.xl,
+        },
+        '& tr th:first-of-type div': {
+            paddingLeft: theme.spacing.xl,
         },
 
         '&::after': {
@@ -124,6 +127,10 @@ interface TableProps<T> {
      * Initial state of the table
      */
     initialState?: InitialTableState & Partial<TableFormType>;
+    /**
+     * Action passed when user double clicks on a row
+     */
+    doubleClickAction?: (datum: T) => void;
 }
 
 interface TableType {
@@ -149,6 +156,7 @@ export const Table: TableType = <T,>({
     onChange,
     children,
     loading = false,
+    doubleClickAction,
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
@@ -224,6 +232,7 @@ export const Table: TableType = <T,>({
             <Fragment key={row.id}>
                 <tr
                     onClick={() => toggleRowSelection(row)}
+                    onDoubleClick={() => doubleClickAction?.(row.original)}
                     className={cx(classes.row, {[classes.rowSelected]: row.getIsSelected()})}
                 >
                     {row.getVisibleCells().map((cell) => {

@@ -1,16 +1,18 @@
 import {TextAreaMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/TextArea/main.example.tsx';
+import TextAreaDemo from '@examples/legacy/form/TextArea/main.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         id="TextArea"
         title="Text Area"
         section="Form"
         description="A text area allows users to enter and edit longer text, often on multiple lines or in a paragraph."
-        componentSourcePath="/textarea/TextArea.tsx"
-        code={code}
+        sourcePath="/packages/react/src/components/textarea/TextArea.tsx"
+        demo={<TextAreaDemo />}
         propsMetadata={TextAreaMetadata}
     />
 );
+
+export default Page;

@@ -1,22 +1,24 @@
 import {ColorBarMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/ColorBar/ColorBar.example.tsx';
-import overflow from '@examples/ColorBar/ColorBarOverflow.example.tsx';
-import partial from '@examples/ColorBar/ColorBarPartial.example.tsx';
+import ColorBarDemo from '@examples/legacy/feedback/ColorBar/ColorBar.demo.tsx';
+import ColorBarOverflowDemo from '@examples/legacy/feedback/ColorBar/ColorBarOverflow.demo.tsx';
+import ColorBarPartialDemo from '@examples/legacy/feedback/ColorBar/ColorBarPartial.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const DemoPage = () => (
     <PageLayout
         id="ColorBar"
         title="Color Bar"
         section="Feedback"
         description="A color bar is used to indicate the ratio between things."
-        componentSourcePath="/colorBar/ColorBar.tsx"
-        code={code}
+        demo={<ColorBarDemo />}
+        sourcePath="/packages/react/src/components/colorBar/ColorBar.tsx"
         propsMetadata={ColorBarMetadata}
         examples={{
-            partial: {code: partial, title: 'Partially filled'},
-            overflow: {code: overflow, title: 'Overflow'},
+            partial: <ColorBarPartialDemo title="Partially filled" />,
+            overflow: <ColorBarOverflowDemo title="Overflow" />,
         }}
     />
 );
+
+export default DemoPage;

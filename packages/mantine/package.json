@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-mantine",
-    "version": "48.12.1",
+    "version": "48.22.3",
     "description": "A Plasma flavoured Mantine theme",
     "keywords": [
         "plasma",
@@ -34,12 +34,12 @@
     },
     "devDependencies": {
         "@emotion/react": "11.10.5",
-        "@mantine/carousel": "5.6.4",
-        "@mantine/core": "5.6.2",
-        "@mantine/dates": "5.6.2",
-        "@mantine/form": "5.6.2",
-        "@mantine/hooks": "5.6.2",
-        "@mantine/modals": "5.6.2",
+        "@mantine/carousel": "5.9.2",
+        "@mantine/core": "5.9.2",
+        "@mantine/dates": "5.9.2",
+        "@mantine/form": "5.9.2",
+        "@mantine/hooks": "5.9.2",
+        "@mantine/modals": "5.9.2",
         "@swc/cli": "0.1.57",
         "@swc/core": "1.3.16",
         "@swc/jest": "0.2.23",
@@ -65,11 +65,11 @@
         "react-dom": "18.2.0",
         "rimraf": "3.0.2",
         "tslib": "2.4.0",
-        "typescript": "4.7.4"
+        "typescript": "4.9.3"
     },
     "peerDependencies": {
         "@emotion/react": "^11.10.0",
-        "@mantine/carousel": "5.6.4",
+        "@mantine/carousel": "5.8.3",
         "@mantine/core": "^5.6.2",
         "@mantine/dates": "^5.6.2",
         "@mantine/form": "^5.6.2",

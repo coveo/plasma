@@ -1,14 +1,16 @@
 import {ActionBarConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/ActionBar/ActionBar.example.tsx';
+import ActionBarDemo from '@examples/legacy/advanced/ActionBar/ActionBar.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const DemoPage = () => (
     <PageLayout
         id="ActionBarConnected"
         title="Action Bar"
         section="Advanced"
-        code={code}
+        demo={<ActionBarDemo />}
         propsMetadata={ActionBarConnectedMetadata}
     />
 );
+
+export default DemoPage;

@@ -73,6 +73,16 @@ const LayoutPages: FunctionComponent = () => (
                 href="layout/Header"
                 thumbnail="header"
             />
+            <Tile
+                title="Sticky footer"
+                description="A page footer that sticks to the bottom of the screen."
+                href="layout/StickyFooter"
+            />
+            <Tile
+                title="Table"
+                description="A table displays large quantities of items or data in a list format."
+                href="layout/Table"
+            />
         </div>
     </Section>
 );

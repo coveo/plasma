@@ -1,16 +1,18 @@
 import {SlideYMetadata} from '@coveord/plasma-components-props-analyzer';
-import code from '@examples/SlideY/main.example.tsx';
+import SlideYDemo from '@examples/legacy/advanced/SlideY/main.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const DemoPage = () => (
     <PageLayout
         id="SlideY"
         title="Slide Y"
         section="Advanced"
         description="Allows to hide and show content using a vertical expand animation."
-        sourcePath="packages/react/src/animations/SlideY.tsx"
-        code={code}
+        demo={<SlideYDemo />}
+        sourcePath="/packages/react/src/animations/SlideY.tsx"
         propsMetadata={SlideYMetadata}
     />
 );
+
+export default DemoPage;

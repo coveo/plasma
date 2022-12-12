@@ -93,7 +93,7 @@ export const ColorsExamples = () => (
         title="Colors"
         thumbnail="colors"
         description="The colors that give Plasma its identity"
-        sourcePath="packages/tokens#readme"
+        sourcePath="/packages/tokens#readme"
         withPropsTable={false}
     >
         <div className="plasma-page-layout__section pl5">

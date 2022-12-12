@@ -1,30 +1,32 @@
 import {InfoTokenMetadata} from '@coveord/plasma-components-props-analyzer';
-import criticalExample from '@examples/InfoToken/critical.example.tsx';
-import infoExample from '@examples/InfoToken/info.example.tsx';
-import code from '@examples/InfoToken/main.example.tsx';
-import questionExample from '@examples/InfoToken/question.example.tsx';
-import successExample from '@examples/InfoToken/success.example.tsx';
-import tipExample from '@examples/InfoToken/tip.example.tsx';
-import warningExample from '@examples/InfoToken/warning.example.tsx';
+import InfoTokenCriticalDemo from '@examples/legacy/advanced/InfoToken/critical.demo.tsx';
+import InfoTokenInfoDemo from '@examples/legacy/advanced/InfoToken/info.demo.tsx';
+import InfoTokenDemo from '@examples/legacy/advanced/InfoToken/main.demo.tsx';
+import InfoTokenQuestionDemo from '@examples/legacy/advanced/InfoToken/question.demo.tsx';
+import InfoTokenSuccessDemo from '@examples/legacy/advanced/InfoToken/success.demo.tsx';
+import InfoTokenTipDemo from '@examples/legacy/advanced/InfoToken/tip.demo.tsx';
+import InfoTokenWarningDemo from '@examples/legacy/advanced/InfoToken/warning.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export default () => (
+const DemoPage = () => (
     <PageLayout
         id="InfoToken"
         title="Info Token"
         section="Advanced"
         description="An InfoToken is a visual representation of the status of something."
-        componentSourcePath="/info-token/InfoToken.tsx"
-        code={code}
+        demo={<InfoTokenDemo center />}
+        sourcePath="/packages/react/src/components/info-token/InfoToken.tsx"
         propsMetadata={InfoTokenMetadata}
         examples={{
-            info: {code: infoExample, title: 'Information'},
-            success: {code: successExample, title: 'Success'},
-            warning: {code: warningExample, title: 'Warning'},
-            critical: {code: criticalExample, title: 'Critical'},
-            tip: {code: tipExample, title: 'Tip'},
-            question: {code: questionExample, title: 'Question'},
+            info: <InfoTokenInfoDemo center title="Information" />,
+            success: <InfoTokenSuccessDemo center title="Success" />,
+            warning: <InfoTokenWarningDemo center title="Warning" />,
+            critical: <InfoTokenCriticalDemo center title="Critical" />,
+            tip: <InfoTokenTipDemo center title="Tip" />,
+            question: <InfoTokenQuestionDemo center title="Question" />,
         }}
     />
 );
+
+export default DemoPage;

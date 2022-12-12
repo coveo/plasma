@@ -4,7 +4,7 @@ import {FunctionComponent} from 'react';
 
 import {Table} from '../Table';
 
-type RowData = {firstName: string; lastName: string};
+type RowData = {firstName: string; lastName?: string};
 
 const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [
@@ -125,6 +125,21 @@ describe('Table', () => {
 
         const allRows = screen.getAllByRole('button', {name: 'arrowHeadDown'});
         expect(allRows).toHaveLength(2);
+    });
+
+    it('calls an action when user double clicks on a row', async () => {
+        const user = userEvent.setup();
+        const doubleClickSpy = jest.fn();
+        render(
+            <Table<RowData>
+                data={[{firstName: 'Mario'}, {firstName: 'Luigi'}]}
+                columns={columns}
+                doubleClickAction={doubleClickSpy}
+            ></Table>
+        );
+        await user.dblClick(screen.getByRole('cell', {name: 'Mario'}));
+        expect(doubleClickSpy).toHaveBeenCalledTimes(1);
+        expect(doubleClickSpy).toHaveBeenCalledWith({firstName: 'Mario'});
     });
 
     it('reset row selection when user click outside the table', async () => {

@@ -81,6 +81,7 @@ const components: Component[] = [
     {
         name: 'ModalWizard',
         packageName: '@coveord/plasma-react',
+        suffix: 'Legacy',
     },
     {
         name: 'BasicHeader',
@@ -97,6 +98,7 @@ const components: Component[] = [
     {
         name: 'StickyFooter',
         packageName: '@coveord/plasma-react',
+        suffix: 'Legacy',
     },
     {
         name: 'TableHOC',
@@ -117,6 +119,7 @@ const components: Component[] = [
     {
         name: 'CodeEditor',
         packageName: '@coveord/plasma-react',
+        suffix: 'Legacy',
     },
     {
         name: 'ColorPicker',
@@ -279,7 +282,6 @@ const components: Component[] = [
     {
         name: 'Header',
         packageName: '@coveord/plasma-mantine',
-        suffix: 'Mantine',
     },
     {
         name: 'Collection',
@@ -288,12 +290,22 @@ const components: Component[] = [
     {
         name: 'CodeEditor',
         packageName: '@coveord/plasma-mantine',
-        suffix: 'Mantine',
     },
     {
         name: 'Table',
         packageName: '@coveord/plasma-mantine',
-        suffix: 'Mantine',
+    },
+    {
+        name: 'Modal',
+        packageName: '@coveord/plasma-mantine',
+    },
+    {
+        name: 'ModalWizard',
+        packageName: '@coveord/plasma-mantine',
+    },
+    {
+        name: 'StickyFooter',
+        packageName: '@coveord/plasma-mantine',
     },
 ];
 

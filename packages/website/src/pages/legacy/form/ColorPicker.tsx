@@ -1,48 +1,11 @@
 import {ColorPickerMetadata} from '@coveord/plasma-components-props-analyzer';
+import ColorPickerDemo from '@examples/legacy/form/ColorPicker/ColorPicker.demo.tsx';
+import ColorPickerHiddenControlsDemo from '@examples/legacy/form/ColorPicker/ColorPickerHiddenControls.demo.tsx';
+import ColorPickerSelectorDemo from '@examples/legacy/form/ColorPicker/ColorPickerSelector.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const code = `
-    import {ColorPicker} from '@coveord/plasma-react';
-    
-    export default () => {
-        const logColor = (color) => console.log(color);
-        return (
-            <ColorPicker id="color-picker-id" defaultColor="#F37231" onChangeComplete={logColor} />            
-        );
-    }
-`;
-
-const hiddenControls = `
-    import {ColorPicker} from '@coveord/plasma-react';
-    
-    export default () => {
-        return (
-            <ColorPicker id="color-picker-id-2" styles={{default: {controls: {display: 'none'}}}} />            
-        );
-    }
-`;
-
-const selector = `
-    import {useSelector} from 'react-redux';
-    import {ColorPicker, PlasmaState, InputSelectors} from '@coveord/plasma-react';
-    
-    export default () => {
-        const selected = useSelector((state: PlasmaState) =>
-            InputSelectors.getValue(state, {
-                id: 'color-picker-id-3',
-            })
-        );
-        return (
-            <>
-                <ColorPicker id="color-picker-id-3" />
-                Selected value: {selected}
-            </>
-        );
-    };
-`;
-
-const ColorPickerExamples = () => (
+const ColorPickerDemos = () => (
     <PageLayout
         id="ColorPicker"
         title="Color Picker"
@@ -53,14 +16,14 @@ const ColorPickerExamples = () => (
                 <a href="https://github.com/casesandberg/react-color/">React Color</a>
             </>
         }
-        componentSourcePath="/color-picker/ColorPicker.tsx"
-        code={code}
+        sourcePath="/packages/react/src/components/color-picker/ColorPicker.tsx"
+        demo={<ColorPickerDemo center />}
         propsMetadata={ColorPickerMetadata}
         examples={{
-            hiddenControls: {code: hiddenControls, title: 'Hidden Controls'},
-            selector: {code: selector, title: 'Selector'},
+            hiddenControls: <ColorPickerHiddenControlsDemo center title="Hidden Controls" />,
+            selector: <ColorPickerSelectorDemo center title="Selector" />,
         }}
     />
 );
 
-export default ColorPickerExamples;
+export default ColorPickerDemos;

@@ -1,26 +1,16 @@
+import SpacingDemo from '@examples/legacy/foundations/Spacing/Spacing.demo.tsx';
+
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    // red is margin
-    // blue is padding
-    // highlight-padding and highlight-margin classes are only available on the Plasma website
-
-    export default () => (
-        <div className="highlight-padding highlight-margin">
-            <div className="p2 m2">Content</div>
-        </div>
-    )
-`;
 
 export const Spacing = () => (
     <PageLayout
         id="Spacing"
-        code={code}
+        demo={<SpacingDemo center />}
         section="Foundations"
         title="Spacing"
         description="Spacing is the standard padding and margin size that one can adjust to customize the layout of an interface."
         withPropsTable={false}
-        sourcePath="packages/style/scss/utility/white-space.scss"
+        sourcePath="/packages/style/scss/utility/white-space.scss"
     >
         <div className="plasma-page-layout__section">
             <h4 className="h2 mb1">The spacing mechanism</h4>

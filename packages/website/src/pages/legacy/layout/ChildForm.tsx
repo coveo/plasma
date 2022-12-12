@@ -1,39 +1,20 @@
+import ChildFormDemo from '@examples/legacy/layout/ChildForm/ChildForm.demo.tsx';
+import ChildFormVerticalDemo from '@examples/legacy/layout/ChildForm/ChildFormVertical.demo.tsx';
+
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const code = `
-    import {ChildForm} from '@coveord/plasma-react';
-
-    export default () => (
-        <>
-            Parent
-            <ChildForm>Child</ChildForm>
-        </>
-    );
-`;
-
-const vertical = `
-    import {ChildForm} from '@coveord/plasma-react';
-
-    export default () => (
-        <div className="inline-flex center-align">
-            Parent
-            <ChildForm className="vertical">Child</ChildForm>
-        </div>
-    );
-`;
-
-const ChildFormExamples = () => (
+const ChildFormDemos = () => (
     <PageLayout
         id="ChildForm"
         title="Child Form"
         section="Layout"
         description="A child form associates a subset of options or content to its parent option."
-        componentSourcePath="/childForm/ChildForm.tsx"
-        code={code}
+        sourcePath="/packages/react/src/components/childForm/ChildForm.tsx"
+        demo={<ChildFormDemo />}
         examples={{
-            vertical: {code: vertical, title: 'Vertical'},
+            vertical: <ChildFormVerticalDemo title="Vertical" />,
         }}
     />
 );
 
-export default ChildFormExamples;
+export default ChildFormDemos;

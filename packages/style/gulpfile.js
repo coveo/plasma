@@ -18,8 +18,6 @@ const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const merge = require('merge-stream');
-const svgmin = require('gulp-svgmin');
-const cheerio = require('gulp-cheerio');
 const filesToJson = require('gulp-files-to-json');
 const parseArgs = require('minimist');
 const _ = require('underscore');
@@ -31,6 +29,7 @@ const config = {
     },
 };
 
+// eslint-disable-next-line id-blacklist
 const argv = parseArgs(process.argv.slice(2), {boolean: ['min', 'gzip', 'all']});
 const useMinifiedSources = argv.min;
 const useGzippedSources = argv.gzip;
@@ -38,11 +37,11 @@ const cleanAll = argv.all;
 
 gulp.task('lib', () => {
     const dependencies = ['./lib/js/*'];
-    dependencies.forEach((path) => {
-        fs.exists(path, (exists) => {
+    dependencies.forEach((dependencyPath) => {
+        fs.exists(dependencyPath, (exists) => {
             if (!exists) {
-                if (path.indexOf('*') === -1) {
-                    log(colors.red('File not found: ', path));
+                if (dependencyPath.indexOf('*') === -1) {
+                    log(colors.red('File not found: ', dependencyPath));
                     process.exit(1);
                 }
             }
@@ -144,51 +143,7 @@ gulp.task('svg:concat', () => {
         gulp.src('./resources/icons/svg/coveo-search-ui-filetypes/*.svg').pipe(rename({prefix: 'ft-'}))
     );
 
-    return src
-        .pipe(
-            svgmin((file) => {
-                const prefix = path.basename(file.relative, path.extname(file.relative));
-                return {
-                    plugins: [
-                        {
-                            removeAttrs: {
-                                attrs: ['xmlns:*', 'xmlns'],
-                            },
-                        },
-                        {
-                            removeUselessDefs: true,
-                        },
-                        {
-                            removeComments: true,
-                        },
-                        {
-                            cleanupIDs: {
-                                prefix: prefix + '-',
-                                minify: true,
-                            },
-                        },
-                    ],
-                };
-            })
-        )
-        .pipe(
-            cheerio(($) => {
-                // tslint:disable-next-line
-                $('svg').each(function () {
-                    const svg = $(this);
-                    if (svg) {
-                        const attrs = svg[0].attribs;
-                        for (const attrName in attrs) {
-                            if (attrName.match(/xmlns:.+/)) {
-                                svg.removeAttr(attrName);
-                            }
-                        }
-                    }
-                });
-            })
-        )
-        .pipe(filesToJson('CoveoStyleGuideSvg.json'))
-        .pipe(gulp.dest('dist/svg'));
+    return src.pipe(filesToJson('CoveoStyleGuideSvg.json')).pipe(gulp.dest('dist/svg'));
 });
 
 gulp.task(

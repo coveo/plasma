@@ -1,25 +1,25 @@
 import {SideNavigationMetadata} from '@coveord/plasma-components-props-analyzer';
-import collapsible from '@examples/SideNavigation/collapsible.example.tsx';
-import loading from '@examples/SideNavigation/loading.example.tsx';
-import code from '@examples/SideNavigation/main.example.tsx';
+import SideNavigationCollapsibleDemo from '@examples/legacy/navigation/SideNavigation/collapsible.demo.tsx';
+import SideNavigationLoadingDemo from '@examples/legacy/navigation/SideNavigation/loading.demo.tsx';
+import SideNavigationDemo from '@examples/legacy/navigation/SideNavigation/main.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-export const SideNavigationExamples = () => (
+export const SideNavigationDemos = () => (
     <PageLayout
         id="SideNavigation"
-        componentSourcePath="/sideNavigation/SideNavigation.tsx"
+        sourcePath="/packages/react/src/components/sideNavigation/SideNavigation.tsx"
         title="SideNavigation"
         section="Navigation"
         description="A sidebar navigation is a primary navigation element that displays the architecture of the product’s features."
         thumbnail="sideNav"
-        code={code}
+        demo={<SideNavigationDemo />}
         propsMetadata={SideNavigationMetadata}
         examples={{
-            loading: {code: loading, title: 'Loading section'},
-            collapsible: {code: collapsible, title: 'Collapsible section'},
+            loading: <SideNavigationLoadingDemo title="Loading section" />,
+            collapsible: <SideNavigationCollapsibleDemo title="Collapsible section" />,
         }}
     />
 );
 
-export default SideNavigationExamples;
+export default SideNavigationDemos;

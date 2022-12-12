@@ -1,21 +1,21 @@
 import {BreadcrumbHeaderMetadata} from '@coveord/plasma-components-props-analyzer';
-import complex from '@examples/Breadcrumbs/complex.example.tsx';
-import code from '@examples/Breadcrumbs/main.example.tsx';
+import BreadcrumbsComplexDemo from '@examples/legacy/navigation/Breadcrumbs/complex.demo.tsx';
+import BreadcrumbsDemo from '@examples/legacy/navigation/Breadcrumbs/main.demo.tsx';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
-const BreadcrumbsExamples = () => (
+const BreadcrumbsDemos = () => (
     <PageLayout
         id="BreadcrumbHeader"
-        componentSourcePath="/breadcrumbs/BreadcrumbHeader.tsx"
+        sourcePath="/packages/react/src/components/breadcrumbs/BreadcrumbHeader.tsx"
         title="Breadcrumbs"
         section="Navigation"
         description="A breadcrumb is a secondary navigation that helps users to understand the hierarchy of interfaces and navigate through them."
         thumbnail="breadcrumb"
-        code={code}
+        demo={<BreadcrumbsDemo />}
         propsMetadata={BreadcrumbHeaderMetadata}
-        examples={{complex: {code: complex, title: 'With documentation link and tabs'}}}
+        examples={{complex: <BreadcrumbsComplexDemo title="With documentation link and tabs" />}}
     />
 );
 
-export default BreadcrumbsExamples;
+export default BreadcrumbsDemos;

@@ -11,15 +11,17 @@ import {
     InputWrapperBaseProps,
     Loader,
     Selectors,
+    Space,
     Stack,
     Tooltip,
     useComponentDefaultProps,
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
-import Editor, {loader} from '@monaco-editor/react';
+import Editor, {loader, useMonaco} from '@monaco-editor/react';
 import {FunctionComponent, useEffect, useState} from 'react';
 
 import {useParentHeight} from '../../hooks';
+import {XML} from './languages/xml';
 
 const useStyles = createStyles((theme) => ({
     root: {},
@@ -39,7 +41,7 @@ interface CodeEditorProps
      *
      * @default 'plaintext'
      */
-    language?: 'plaintext' | 'json' | 'markdown' | 'python';
+    language?: 'plaintext' | 'json' | 'markdown' | 'python' | 'xml';
     /** Default value for uncontrolled input */
     defaultValue?: string;
     /** Value for controlled input */
@@ -102,6 +104,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         ...others
     } = useComponentDefaultProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
+    const [registered, setRegistered] = useState(false);
+    const monaco = useMonaco();
     const {classes, theme} = useStyles();
     const [_value, handleChange] = useUncontrolled<string>({
         value,
@@ -112,8 +116,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     const [parentHeight, ref] = useParentHeight();
 
     const loadLocalMonaco = async () => {
-        const monaco = await import('monaco-editor');
-        loader.config({monaco});
+        const monacoInstance = await import('monaco-editor');
+        loader.config({monaco: monacoInstance});
         setLoaded(true);
     };
 
@@ -124,6 +128,13 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             setLoaded(true);
         }
     }, []);
+
+    useEffect(() => {
+        if (monaco && language === 'xml' && !registered) {
+            XML.register(monaco);
+            setRegistered(true);
+        }
+    }, [monaco, language]);
 
     const _label = label ? (
         <Input.Label required={required} {...labelProps}>
@@ -141,7 +152,9 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         <Input.Error mt="xs" {...errorProps}>
             {error}
         </Input.Error>
-    ) : null;
+    ) : (
+        <Space h="xs" />
+    );
 
     const _header =
         _label || _description ? (

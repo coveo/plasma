@@ -8,27 +8,18 @@ import '../styles/page-header.scss';
 import '../styles/page-layout.scss';
 import '../styles/plasmaSearchBar.scss';
 import '../styles/props-table.scss';
-import '../styles/sandbox.scss';
 import '../styles/spacing.scss';
 import '../styles/tile.scss';
 
-import * as PlasmaMantine from '@coveord/plasma-mantine';
-import * as PlasmaReact from '@coveord/plasma-react';
-import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
-import * as LoremIpsum from 'lorem-ipsum';
-import moment from 'moment';
+import {Plasmantine} from '@coveord/plasma-mantine';
+import {Defaults} from '@coveord/plasma-react';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactRedux from 'react-redux';
-import * as jsxRuntime from 'react/jsx-runtime';
-import * as Redux from 'redux';
-import promise from 'redux-promise-middleware';
-import thunk from 'redux-thunk';
-import type {AppProps} from 'next/app';
+import {useEffect} from 'react';
+import {Provider} from 'react-redux';
 
+import type {AppProps} from 'next/app';
 import githubLogo from '../../resources/github-mark.svg';
 import logo from '../../resources/plasma-logo.svg';
 import LegacyWarningBanner from '../building-blocs/LegacyWarningBanner';
@@ -57,23 +48,9 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     const {pathname} = useRouter();
     const isLegacy = /^\/legacy*/.test(pathname);
 
-    React.useEffect(() => {
-        PlasmaReact.Defaults.APP_ELEMENT = '#App';
-        PlasmaReact.Defaults.MODAL_ROOT = '#Modals';
-
-        window.ReactDOM = ReactDOM;
-        (window as any).jsxRuntime = jsxRuntime;
-        (window as any).React = React;
-        (window as any).ReactRedux = ReactRedux;
-        (window as any).PlasmaReact = PlasmaReact;
-        (window as any).PlasmaMantine = PlasmaMantine;
-        (window as any).PlasmaReactIcons = PlasmaReactIcons;
-        (window as any).moment = moment;
-        (window as any).LoremIpsum = LoremIpsum;
-        (window as any).Redux = Redux;
-        (window as any).PromiseMiddleware = promise;
-        (window as any).ThunkMiddleware = thunk;
-        (window as any).loaded = true;
+    useEffect(() => {
+        Defaults.APP_ELEMENT = '#App';
+        Defaults.MODAL_ROOT = '#Modals';
 
         if (window.location.host === 'vapor.coveo.com') {
             window.location.href = window.location.href.replace('vapor.coveo.com', 'plasma.coveo.com');
@@ -87,9 +64,9 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                 <meta property="og:title" content="Plasma Design System" key="title" />
             </Head>
 
-            <ReactRedux.Provider store={Store}>
+            <Provider store={Store}>
                 <EngineProvider>
-                    <PlasmaMantine.Plasmantine>
+                    <Plasmantine>
                         <Header />
                         <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
                             <Navigation />
@@ -98,9 +75,9 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                                 <Component {...pageProps} />
                             </div>
                         </div>
-                    </PlasmaMantine.Plasmantine>
+                    </Plasmantine>
                 </EngineProvider>
-            </ReactRedux.Provider>
+            </Provider>
         </>
     );
 };

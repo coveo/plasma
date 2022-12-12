@@ -1,13 +1,8 @@
+import TypekitDemo from '@examples/legacy/foundations/Typekit/Typekit.demo.tsx';
 import classNames from 'classnames';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-
-const code = `
-    export default () => (
-        <h1>Hello World!</h1>
-    );
-`;
 
 const typekitStyles: Array<{
     name: string;
@@ -250,8 +245,8 @@ export const Typekit = () => (
         title="Typekit"
         thumbnail="typekit"
         description="The Typekit covers all typography styles designed specifically to work with the Plasma ecosystem."
-        sourcePath="packages/style/scss/typekit.scss"
-        code={code}
+        demo={<TypekitDemo center />}
+        sourcePath="/packages/style/scss/typekit.scss"
         withPropsTable={false}
     >
         <div className="plasma-page-layout__section full-content flex-column">
