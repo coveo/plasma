@@ -28,7 +28,7 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     const updatePerPage = (newPerPage: string) => {
         setState((prevState: TableState) => ({
             ...prevState,
-            pagination: {...prevState.pagination, pageSize: parseInt(newPerPage, 10)},
+            pagination: {pageIndex: 0, pageSize: parseInt(newPerPage, 10)},
         }));
     };
 
