@@ -1,3 +1,12 @@
+## 48.22.5 (2022-12-12)
+
+
+### Bug Fixes
+
+* **mantine table:** reset page index when page size is changed (#2988) e5d3fac, closes #2988
+
+
+
 ## 48.22.4 (2022-12-09)
 
 
