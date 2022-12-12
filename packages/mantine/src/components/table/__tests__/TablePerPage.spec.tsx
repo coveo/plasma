@@ -79,4 +79,28 @@ describe('Table.PerPage', () => {
             expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})})
         );
     });
+
+    it('resets page index when changing the number of items per page', async () => {
+        const user = userEvent.setup({delay: null});
+        const onChange = jest.fn();
+        render(
+            <Table
+                data={[{name: 'fruit'}, {name: 'vegetable'}]}
+                columns={columns}
+                onChange={onChange}
+                initialState={{pagination: {pageIndex: 1, pageSize: 50}}}
+            >
+                <Table.Footer>
+                    <Table.Pagination totalPages={2} />
+                    <Table.PerPage />
+                </Table.Footer>
+            </Table>
+        );
+
+        await user.click(screen.queryByRole('radio', {name: '100'}));
+
+        expect(onChange).toHaveBeenCalledWith(
+            expect.objectContaining({pagination: expect.objectContaining({pageIndex: 0})})
+        );
+    });
 });
