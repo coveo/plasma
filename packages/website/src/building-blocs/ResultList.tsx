@@ -25,6 +25,8 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
+    const linkToComponent = (uri: string) => sanitizeHtml(uri.replace(/.+plasma\.coveo\.com\//g, ''));
+
     return (
         <>
             {!state.hasResults && !state.isLoading ? (
@@ -44,7 +46,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
                                 <Tile
                                     key={result.uniqueId}
                                     title={result.title}
-                                    href={sanitizeHtml(result.clickUri.replace(/.+plasma\.coveo\.com\//g, ''))}
+                                    href={linkToComponent(result.clickUri)}
                                     description={result.raw.description as string}
                                     thumbnail={result.raw.thumbnail as TileProps['thumbnail']}
                                     sendAnalytics={() => engine.dispatch(logDocumentOpen(result))}
