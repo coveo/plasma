@@ -8,6 +8,7 @@ import {
 } from '@coveo/atomic-react';
 import {Section} from '@coveord/plasma-react';
 import {FunctionComponent, useEffect, useState} from 'react';
+import sanitizeHtml from 'sanitize-html';
 
 import {Tile, TileProps} from '../building-blocs/Tile';
 import {NoSearchResultTemplate} from '../search/NoSearchResult';
@@ -43,7 +44,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
                                 <Tile
                                     key={result.uniqueId}
                                     title={result.title}
-                                    href={result.clickUri.replace(/.+plasma\.coveo\.com\//g, '')}
+                                    href={sanitizeHtml(result.clickUri.replace(/.+plasma\.coveo\.com\//g, ''))}
                                     description={result.raw.description as string}
                                     thumbnail={result.raw.thumbnail as TileProps['thumbnail']}
                                     sendAnalytics={() => engine.dispatch(logDocumentOpen(result))}
