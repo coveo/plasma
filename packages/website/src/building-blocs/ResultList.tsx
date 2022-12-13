@@ -43,7 +43,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
                                 <Tile
                                     key={result.uniqueId}
                                     title={result.title}
-                                    href={result.clickUri.replace(/.+plasma\.coveo\.com\//, '')}
+                                    href={result.clickUri.replace(/.+plasma\.coveo\.com\//g, '')}
                                     description={result.raw.description as string}
                                     thumbnail={result.raw.thumbnail as TileProps['thumbnail']}
                                     sendAnalytics={() => engine.dispatch(logDocumentOpen(result))}
