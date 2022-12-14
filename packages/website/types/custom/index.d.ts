@@ -20,6 +20,7 @@ interface DemoComponentProps {
     center?: boolean;
     grow?: boolean;
     title?: string;
+    noPadding?: boolean;
     layout?: 'horizontal' | 'vertical';
 }
 

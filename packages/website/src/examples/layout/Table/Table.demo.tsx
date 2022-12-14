@@ -9,6 +9,7 @@ import {
     Title,
     useTable,
 } from '@coveord/plasma-mantine';
+import {EditSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent, useState} from 'react';
 
 interface IExampleRowData {
@@ -66,6 +67,7 @@ export default () => {
     return (
         <Table
             data={data}
+            getRowId={({id}) => id.toString()}
             columns={columns}
             noDataChildren={<NoData />}
             onMount={(state) => {
@@ -121,8 +123,16 @@ const DatePickerPresets: Record<string, DateRangePickerPreset> = {
 
 const TableActions: FunctionComponent<{datum: IExampleRowData}> = ({datum}) => {
     const actionCondition = datum.id % 2 === 0 ? true : false;
-    const pressedAction = () => alert('Some action is triggered!');
-    return <>{actionCondition ? <Button onClick={pressedAction}>Action!</Button> : null}</>;
+    const pressedAction = () => alert('Edit action is triggered!');
+    return (
+        <>
+            {actionCondition ? (
+                <Button variant="subtle" onClick={pressedAction} leftIcon={<EditSize16Px height={16} />}>
+                    Edit
+                </Button>
+            ) : null}
+        </>
+    );
 };
 
 const UserPredicate: FunctionComponent = () => (

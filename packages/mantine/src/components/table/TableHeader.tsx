@@ -1,5 +1,8 @@
-import {createStyles, DefaultProps, Group, Selectors} from '@mantine/core';
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
+import {Button, createStyles, DefaultProps, Group, Selectors, Space, Tooltip} from '@mantine/core';
 import {FunctionComponent, ReactNode} from 'react';
+
+import {useTable} from './useTable';
 
 const useStyles = createStyles((theme) => ({
     root: {
@@ -7,7 +10,7 @@ const useStyles = createStyles((theme) => ({
         top: 0,
         zIndex: 13, // skeleton is 11
         backgroundColor: theme.colors.gray[1],
-        borderBottom: `1px solid ${theme.colors.gray[4]}`,
+        borderBottom: `1px solid ${theme.colors.gray[3]}`,
     },
 }));
 
@@ -23,9 +26,26 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({
     children,
     ...others
 }) => {
+    const {getSelectedRows, multiRowSelectionEnabled, clearSelection} = useTable();
     const {classes} = useStyles(null, {name: 'TableHeader', classNames, styles, unstyled});
-    return (
-        <Group position="right" spacing="lg" className={classes.root} px="md" py="sm" {...others}>
+    const selectedRows = getSelectedRows();
+    return multiRowSelectionEnabled ? (
+        <Group position="apart" className={classes.root}>
+            {selectedRows.length > 0 ? (
+                <Tooltip label="Unselect all">
+                    <Button onClick={clearSelection} ml="lg" variant="subtle" leftIcon={<CrossSize16Px height={16} />}>
+                        {selectedRows.length} selected
+                    </Button>
+                </Tooltip>
+            ) : (
+                <Space />
+            )}
+            <Group position="right" spacing="lg" px="md" py="sm" {...others}>
+                {children}
+            </Group>
+        </Group>
+    ) : (
+        <Group position="right" spacing="lg" px="md" py="sm" className={classes.root} {...others}>
             {children}
         </Group>
     );

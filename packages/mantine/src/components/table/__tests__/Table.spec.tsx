@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, waitFor} from '@test-utils';
+import {render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
 
 import {Table} from '../Table';
@@ -75,7 +75,7 @@ describe('Table', () => {
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
-            Table.CollapsibleColumn,
+            Table.CollapsibleColumn as ColumnDef<RowData>,
         ];
         render(
             <Table
@@ -106,7 +106,7 @@ describe('Table', () => {
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
-            Table.CollapsibleColumn,
+            Table.CollapsibleColumn as ColumnDef<RowData>,
         ];
         render(
             <Table
@@ -157,16 +157,109 @@ describe('Table', () => {
             </div>
         );
 
-        const row = screen.getByRole('row', {name: 'patate king'});
+        const row = screen.getByRole('row', {name: 'patate king', selected: false});
 
-        expect(row).not.toHaveClass('__mantine-ref-rowSelected');
+        expect(row).toBeInTheDocument();
 
         await user.click(row);
 
-        expect(row).toHaveClass('__mantine-ref-rowSelected');
+        expect(screen.getByRole('row', {name: 'patate king', selected: true})).toBeInTheDocument();
 
         await user.click(screen.getByText(/i'm a header/i));
 
-        expect(row).not.toHaveClass('__mantine-ref-rowSelected');
+        expect(screen.getByRole('row', {name: 'patate king', selected: false})).toBeInTheDocument();
+    });
+
+    describe('when multi row selection is enabled', () => {
+        it('displays a checkbox as the first cell of each row', () => {
+            render(
+                <Table
+                    data={[
+                        {firstName: 'John', lastName: 'Smith'},
+                        {firstName: 'Jane', lastName: 'Doe'},
+                    ]}
+                    columns={columns}
+                    multiRowSelectionEnabled
+                />
+            );
+
+            expect(screen.getByRole('columnheader', {name: /select all from this page/i})).toBeInTheDocument();
+
+            const rows = screen.getAllByRole('row');
+            rows.forEach((row) => {
+                expect(within(row).getByRole('checkbox', {name: /select/i})).toBeInTheDocument();
+            });
+        });
+
+        it('selects all rows of the current page when clicking on the checkbox that is in the column header', async () => {
+            const user = userEvent.setup({delay: null});
+            render(
+                <Table
+                    data={[
+                        {firstName: 'John', lastName: 'Smith'},
+                        {firstName: 'Jane', lastName: 'Doe'},
+                    ]}
+                    columns={columns}
+                    multiRowSelectionEnabled
+                />
+            );
+
+            const selectAll = screen.getByRole('checkbox', {name: /select all from this page/i});
+            await user.click(selectAll);
+
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(2);
+            await user.click(selectAll);
+
+            expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
+        });
+
+        it('does not clear the row selection when clicking outside the table', async () => {
+            const user = userEvent.setup({delay: null});
+            render(
+                <div>
+                    <div>I'm a header</div>
+                    <Table
+                        data={[
+                            {firstName: 'first', lastName: 'last'},
+                            {firstName: 'patate', lastName: 'king'},
+                        ]}
+                        columns={columns}
+                        multiRowSelectionEnabled
+                    />
+                </div>
+            );
+
+            const row = screen.getByRole('row', {name: /patate king/i, selected: false});
+
+            expect(row).toBeInTheDocument();
+
+            await user.click(row);
+
+            expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+
+            await user.click(screen.getByText(/i'm a header/i));
+
+            expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+        });
+
+        it('unselects all the selected rows when clicking on the the unselect button from the table header', async () => {
+            const user = userEvent.setup({delay: null});
+            render(
+                <Table
+                    data={[
+                        {firstName: 'John', lastName: 'Smith'},
+                        {firstName: 'Jane', lastName: 'Doe'},
+                    ]}
+                    columns={columns}
+                    multiRowSelectionEnabled
+                >
+                    <Table.Header />
+                </Table>
+            );
+
+            await user.click(screen.getByRole('checkbox', {name: /select all/i}));
+            await user.click(screen.getByRole('button', {name: /2 selected/i}));
+            expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
+        });
     });
 });

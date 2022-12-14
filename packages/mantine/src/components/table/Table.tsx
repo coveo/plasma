@@ -10,7 +10,7 @@ import {
     TableState,
     useReactTable,
 } from '@tanstack/react-table';
-import {InitialTableState} from '@tanstack/table-core';
+import {CoreOptions, InitialTableState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, Fragment, ReactElement, ReactNode, useCallback, useEffect, useState} from 'react';
 
@@ -24,58 +24,74 @@ import {TableHeader} from './TableHeader';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
+import {TableSelectableColumn} from './TableSelectableColumn';
 import {Th} from './Th';
+import {useRowSelection} from './useRowSelection';
 
-const useStyles = createStyles<string, {hasHeader: boolean}>((theme, {hasHeader}, getRef) => ({
-    table: {
-        width: '100%',
-        '& td:first-of-type': {
-            paddingLeft: theme.spacing.xl,
-        },
-    },
+interface TableStylesParams {
+    hasHeader: boolean;
+    multiRowSelectionEnabled: boolean;
+}
 
-    header: {
-        position: 'sticky',
-        top: hasHeader ? 69 : 0,
-        backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
-        transition: 'box-shadow 150ms ease',
-        zIndex: 12, // skeleton is 11
-        '& tr th:first-of-type button': {
-            paddingLeft: theme.spacing.xl,
-        },
-        '& tr th:first-of-type div': {
-            paddingLeft: theme.spacing.xl,
+const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, multiRowSelectionEnabled}) => {
+    const rowBackgroundColor =
+        theme.colorScheme === 'dark'
+            ? theme.fn.rgba(theme.colors[theme.primaryColor][7], 0.2)
+            : theme.colors[theme.primaryColor][0];
+    return {
+        table: {
+            width: '100%',
+            '& td:first-of-type, th:first-of-type > *': {
+                paddingLeft: theme.spacing.xl,
+            },
         },
 
-        '&::after': {
-            content: '""',
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            borderBottom: `1px solid ${theme.colors.gray[2]}`,
-        },
-    },
+        header: {
+            position: 'sticky',
+            top: hasHeader ? 69 : 0,
+            backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
+            transition: 'box-shadow 150ms ease',
+            zIndex: 12, // skeleton is 11
 
-    rowSelected: {
-        ref: getRef('rowSelected'),
-    },
-
-    row: {
-        [`&:hover, &.${getRef('rowSelected')}`]: {
-            backgroundColor:
-                theme.colorScheme === 'dark'
-                    ? theme.fn.rgba(theme.colors[theme.primaryColor][7], 0.2)
-                    : theme.colors[theme.primaryColor][0],
+            '&::after': {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                bottom: 0,
+                borderBottom: `1px solid ${theme.colors.gray[2]}`,
+            },
         },
-    },
-}));
+
+        rowSelected: {
+            backgroundColor: multiRowSelectionEnabled ? undefined : rowBackgroundColor,
+        },
+
+        rowSelectionCheckboxCell: {
+            verticalAlign: 'middle',
+        },
+
+        rowCollapsibleButtonCell: {
+            textAlign: 'right',
+        },
+
+        row: {
+            '&:hover': {
+                backgroundColor: rowBackgroundColor,
+            },
+        },
+    };
+});
 
 interface TableProps<T> {
     /**
      * Data to display in the table
      */
     data: T[];
+    /**
+     * Defines how each row is uniquely identified. It is highly recommended that you specify this prop to an ID that makes sense.
+     */
+    getRowId?: CoreOptions<T>['getRowId'];
     /**
      * Columns to display in the table.
      *
@@ -131,6 +147,12 @@ interface TableProps<T> {
      * Action passed when user double clicks on a row
      */
     doubleClickAction?: (datum: T) => void;
+    /**
+     * Whether the user can select multiple rows in order to perform actions in bulk
+     *
+     * @default false
+     */
+    multiRowSelectionEnabled?: boolean;
 }
 
 interface TableType {
@@ -142,12 +164,13 @@ interface TableType {
     Pagination: typeof TablePagination;
     PerPage: typeof TablePerPage;
     Predicate: typeof TablePredicate;
-    CollapsibleColumn: typeof TableCollapsibleColumn;
     DateRangePicker: typeof TableDateRangePicker;
+    CollapsibleColumn: typeof TableCollapsibleColumn;
 }
 
 export const Table: TableType = <T,>({
     data,
+    getRowId,
     noDataChildren,
     getExpandChildren,
     initialState = {},
@@ -157,6 +180,7 @@ export const Table: TableType = <T,>({
     children,
     loading = false,
     doubleClickAction,
+    multiRowSelectionEnabled,
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
@@ -166,15 +190,16 @@ export const Table: TableType = <T,>({
     const form = useForm<TableFormType>({
         initialValues: {predicates: initialState?.predicates ?? {}, dateRange: initialState?.dateRange ?? [null, null]},
     });
-
-    const {cx, classes} = useStyles({hasHeader: !!header});
+    const {cx, classes} = useStyles({hasHeader: !!header, multiRowSelectionEnabled});
 
     const table = useReactTable({
         initialState: defaultsDeep(initialStateWithoutForm, {pagination: {pageSize: TablePerPage.DEFAULT_SIZE}}),
         data,
-        columns,
+        columns: multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: true,
+        enableMultiRowSelection: !!multiRowSelectionEnabled,
+        getRowId,
         getRowCanExpand: (row: Row<T>) => !!getExpandChildren?.(row.original) ?? false,
     });
     const [state, setState] = useState<TableState>(table.initialState);
@@ -183,6 +208,7 @@ export const Table: TableType = <T,>({
         state,
         onStateChange: setState,
     }));
+    const {clearSelection, getSelectedRow, getSelectedRows} = useRowSelection(table);
 
     const triggerChange = () => onChange?.({...state, ...form.values});
 
@@ -190,13 +216,11 @@ export const Table: TableType = <T,>({
         onMount?.({...state, ...form.values});
     }, []);
 
-    const outsideClickRef = useClickOutside(() => {
-        table.resetRowSelection(true);
-    });
-
     useDidUpdate(() => {
         triggerChange();
-        clearSelection();
+        if (!multiRowSelectionEnabled) {
+            clearSelection();
+        }
     }, [state.globalFilter, state.sorting, state.pagination, form.values]);
 
     const clearFilters = useCallback(() => {
@@ -204,14 +228,11 @@ export const Table: TableType = <T,>({
         setState((prevState) => ({...prevState, globalFilter: ''}));
     }, []);
 
-    const clearSelection = () => {
-        setState((prevState) => ({...prevState, rowSelection: {}}));
-    };
-
-    const getSelectedRow = useCallback(
-        () => table.getSelectedRowModel().flatRows?.[0]?.original ?? null,
-        [state.rowSelection]
-    );
+    const outsideClickRef = useClickOutside(() => {
+        if (!multiRowSelectionEnabled) {
+            clearSelection();
+        }
+    });
 
     if (!data) {
         return (
@@ -221,25 +242,29 @@ export const Table: TableType = <T,>({
         );
     }
 
-    const toggleRowSelection = (row: Row<T>) => {
-        table.setRowSelection(() => ({[row.id]: !row.getIsSelected()}));
-    };
-
     const rows = table.getRowModel().rows.map((row) => {
         const rowChildren = getExpandChildren?.(row.original) ?? null;
 
         return (
             <Fragment key={row.id}>
                 <tr
-                    onClick={() => toggleRowSelection(row)}
+                    onClick={() => row.toggleSelected()}
                     onDoubleClick={() => doubleClickAction?.(row.original)}
                     className={cx(classes.row, {[classes.rowSelected]: row.getIsSelected()})}
+                    aria-selected={row.getIsSelected()}
                 >
                     {row.getVisibleCells().map((cell) => {
                         const size = cell.column.getSize();
                         const width = size !== defaultColumnSizing.size ? size : undefined;
                         return (
-                            <td key={cell.id} style={{width}}>
+                            <td
+                                key={cell.id}
+                                style={{width}}
+                                className={cx({
+                                    [classes.rowSelectionCheckboxCell]: cell.column.id === TableSelectableColumn.id,
+                                    [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
+                                })}
+                            >
                                 <Skeleton visible={loading} sx={!loading ? {borderRadius: 0} : undefined}>
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </Skeleton>
@@ -251,10 +276,12 @@ export const Table: TableType = <T,>({
                     <tr>
                         <td
                             colSpan={columns.length + 1}
-                            style={{padding: 0, borderBottomColor: row.getIsExpanded() ? undefined : 'transparent'}}
+                            style={{padding: 0, borderTop: row.getIsExpanded() ? undefined : 'none'}}
                         >
-                            <Collapse in={row.getIsExpanded()} px="sm" py="xs">
-                                {rowChildren}
+                            <Collapse in={row.getIsExpanded()}>
+                                <Box px="sm" py="xs">
+                                    {rowChildren}
+                                </Box>
                             </Collapse>
                         </td>
                     </tr>
@@ -272,9 +299,11 @@ export const Table: TableType = <T,>({
                     setState,
                     clearFilters,
                     getSelectedRow,
+                    getSelectedRows,
                     clearSelection,
                     form,
                     containerRef: outsideClickRef,
+                    multiRowSelectionEnabled,
                 }}
             >
                 {header}
