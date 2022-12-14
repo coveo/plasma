@@ -449,7 +449,7 @@ importers:
     specifiers:
       ansi-colors: 4.1.1
       autosize: 5.0.1
-      codemirror: ^5.59.4
+      codemirror: 5.59.4
       concurrently: 7.1.0
       coveo-png-sprite: 1.0.1
       css-loader: 3.6.0
@@ -466,7 +466,7 @@ importers:
       gulp-rename: 1.4.0
       gulp-svgmin: 3.0.0
       gulp-uglify: 3.0.2
-      is-svg: ^4.3.2
+      is-svg: 4.3.2
       jquery: 3.6.0
       lint-staged: 9.5.0
       merge-stream: 1.0.1
@@ -487,7 +487,7 @@ importers:
       webpack: 4.46.0
       webpack-cli: 3.3.12
     dependencies:
-      codemirror: 5.65.9
+      codemirror: 5.59.4
       is-svg: 4.3.2
       rc-slider: 8.7.1
       react-diff-view: 2.4.10
@@ -606,7 +606,6 @@ importers:
       '@types/react-modal': 3.13.1
       '@types/react-redux': 7.1.22
       '@types/redux-promise-middleware': 6.0.0
-      '@types/sanitize-html': ^2.6.2
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.16.4
       classnames: 2.3.1
@@ -662,7 +661,6 @@ importers:
       '@mantine/modals': 5.9.2_uw7trfygy6zitf2mjy7qrym72y
       '@mantine/next': 5.9.2_zr4hdbjzuvmthwg2ulf6h3lsha
       '@mantine/prism': 5.9.2_uw7trfygy6zitf2mjy7qrym72y
-      '@types/sanitize-html': 2.6.2
       classnames: 2.3.1
       codesandbox-import-utils: 2.2.3
       embla-carousel-react: 7.0.4_react@18.2.0
@@ -3402,12 +3400,6 @@ packages:
       '@types/node': 16.11.32
     dev: true
 
-  /@types/sanitize-html/2.6.2:
-    resolution: {integrity: sha512-7Lu2zMQnmHHQGKXVvCOhSziQMpa+R2hMHFefzbYoYMHeaXR0uXqNeOc3JeQQQ8/6Xa2Br/P1IQTLzV09xxAiUQ==}
-    dependencies:
-      htmlparser2: 6.1.0
-    dev: false
-
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
 
@@ -5478,12 +5470,12 @@ packages:
     resolution: {integrity: sha512-/D5PcsKyzthtSy2NNKCyJi3b+htRkoKv3idswR/tR6UAvMNKA7SrmyZy6fOONJxSRs1JlUWEDAbxqfdArbK8iA==}
     dev: false
 
-  /codemirror/5.63.3:
-    resolution: {integrity: sha512-1C+LELr+5grgJYqwZKqxrcbPsHFHapVaVAloBsFBASbpLnQqLw1U8yXJ3gT5D+rhxIiSpo+kTqN+hQ+9ialIXw==}
+  /codemirror/5.59.4:
+    resolution: {integrity: sha512-achw5JBgx8QPcACDDn+EUUXmCYzx/zxEtOGXyjvLEvYY8GleUrnfm5D+Zb+UjShHggXKDT9AXrbkBZX6a0YSQg==}
     dev: false
 
-  /codemirror/5.65.9:
-    resolution: {integrity: sha512-19Jox5sAKpusTDgqgKB5dawPpQcY+ipQK7xoEI+MVucEF9qqFaXpeqY1KaoyGBso/wHQoDa4HMMxMjdsS3Zzzw==}
+  /codemirror/5.63.3:
+    resolution: {integrity: sha512-1C+LELr+5grgJYqwZKqxrcbPsHFHapVaVAloBsFBASbpLnQqLw1U8yXJ3gT5D+rhxIiSpo+kTqN+hQ+9ialIXw==}
     dev: false
 
   /codesandbox-import-util-types/2.2.3:
@@ -6939,7 +6931,7 @@ packages:
   /domutils/1.5.1:
     resolution: {integrity: sha512-gSu5Oi/I+3wDENBsOWBiRK1eoGxcywYSqg3rR960/+EfY0CF4EX1VPkgHOZ3WiS/Jg2DtliF6BhWcHlfpYUcGw==}
     dependencies:
-      dom-serializer: 0.1.1
+      dom-serializer: 0.2.2
       domelementtype: 1.3.1
     dev: true
 
@@ -9129,15 +9121,6 @@ packages:
       inherits: 2.0.4
       readable-stream: 3.6.0
     dev: true
-
-  /htmlparser2/6.1.0:
-    resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
-    dependencies:
-      domelementtype: 2.3.0
-      domhandler: 4.3.1
-      domutils: 2.8.0
-      entities: 2.2.0
-    dev: false
 
   /htmlparser2/7.2.0:
     resolution: {integrity: sha512-H7MImA4MS6cw7nbyURtLPO1Tms7C5H602LRETv95z1MxO/7CP7rDVROehUYeYBUYEON94NXXDEPmZuq+hX4sog==}
