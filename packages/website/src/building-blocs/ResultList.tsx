@@ -8,7 +8,7 @@ import {
 } from '@coveo/atomic-react';
 import {Section} from '@coveord/plasma-react';
 import {FunctionComponent, useEffect, useState} from 'react';
-import sanitizeHtml from 'sanitize-html';
+import {sanitize} from 'dompurify';
 
 import {Tile, TileProps} from '../building-blocs/Tile';
 import {NoSearchResultTemplate} from '../search/NoSearchResult';
@@ -25,7 +25,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
-    const linkToComponent = (uri: string) => sanitizeHtml(uri.replace(/.+plasma\.coveo\.com\//g, ''));
+    const linkToComponent = (uri: string) => sanitize(uri.replace(/.+plasma\.coveo\.com\//g, ''));
 
     return (
         <>
