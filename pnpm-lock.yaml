@@ -576,6 +576,7 @@ importers:
 
   packages/website:
     specifiers:
+      '@braintree/sanitize-url': 6.0.2
       '@coveo/atomic-react': 0.5.8
       '@coveord/plasma-components-props-analyzer': workspace:*
       '@coveord/plasma-mantine': workspace:*
@@ -594,7 +595,6 @@ importers:
       '@mantine/next': 5.9.2
       '@mantine/prism': 5.9.2
       '@types/classnames': 2.3.0
-      '@types/dompurify': 2.4.0
       '@types/faker': 4.1.12
       '@types/hoist-non-react-statics': 3.3.1
       '@types/lodash.kebabcase': 4.1.7
@@ -611,7 +611,6 @@ importers:
       '@types/webpack-env': 1.16.4
       classnames: 2.3.1
       codesandbox-import-utils: 2.2.3
-      dompurify: 2.4.1
       embla-carousel-react: 7.0.4
       faker: 4.1.0
       flagg: 1.1.2
@@ -645,6 +644,7 @@ importers:
       typescript: 4.9.3
       underscore: 1.13.1
     dependencies:
+      '@braintree/sanitize-url': 6.0.2
       '@coveo/atomic-react': 0.5.8_cswecg4s6kp6jcqeq5j65fogoa
       '@coveord/plasma-components-props-analyzer': link:../components-props-analyzer
       '@coveord/plasma-mantine': link:../mantine
@@ -665,7 +665,6 @@ importers:
       '@types/sanitize-html': 2.6.2
       classnames: 2.3.1
       codesandbox-import-utils: 2.2.3
-      dompurify: 2.4.1
       embla-carousel-react: 7.0.4_react@18.2.0
       faker: 4.1.0
       flagg: 1.1.2
@@ -693,7 +692,6 @@ importers:
       underscore: 1.13.1
     devDependencies:
       '@types/classnames': 2.3.0
-      '@types/dompurify': 2.4.0
       '@types/faker': 4.1.12
       '@types/hoist-non-react-statics': 3.3.1
       '@types/lodash.kebabcase': 4.1.7
@@ -1080,6 +1078,10 @@ packages:
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
+
+  /@braintree/sanitize-url/6.0.2:
+    resolution: {integrity: sha512-Tbsj02wXCbqGmzdnXNk0SOF19ChhRU70BsroIi4Pm6Ehp56in6vch94mfbdQ17DozxkL3BAVjbZ4Qc1a0HFRAg==}
+    dev: false
 
   /@commitlint/cli/17.1.2:
     resolution: {integrity: sha512-h/4Hlka3bvCLbnxf0Er2ri5A44VMlbMSkdTRp8Adv2tRiklSTRIoPGs7OEXDv3EoDs2AAzILiPookgM4Gi7LOw==}
@@ -3054,12 +3056,6 @@ packages:
       '@types/ms': 0.7.31
     dev: false
 
-  /@types/dompurify/2.4.0:
-    resolution: {integrity: sha512-IDBwO5IZhrKvHFUl+clZxgf3hn2b/lU6H1KaBShPkQyGJUQ0xwebezIPSuiyGwfz1UzJWQl4M7BDxtHtCCPlTg==}
-    dependencies:
-      '@types/trusted-types': 2.0.2
-    dev: true
-
   /@types/enzyme/3.10.12:
     resolution: {integrity: sha512-xryQlOEIe1TduDWAOphR0ihfebKFSWOXpIsk+70JskCfRfW+xALdnJ0r1ZOTo85F9Qsjk6vtlU7edTYHbls9tA==}
     dependencies:
@@ -3446,10 +3442,6 @@ packages:
 
   /@types/tough-cookie/4.0.2:
     resolution: {integrity: sha512-Q5vtl1W5ue16D+nIaW8JWebSSraJVlK+EthKn7e7UcD4KWsaSJ8BqGPXNaPghgtcn/fhvrN17Tv8ksUsQpiplw==}
-    dev: true
-
-  /@types/trusted-types/2.0.2:
-    resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
     dev: true
 
   /@types/underscore.string/0.0.38:
@@ -6942,10 +6934,6 @@ packages:
 
   /dompurify/2.3.10:
     resolution: {integrity: sha512-o7Fg/AgC7p/XpKjf/+RC3Ok6k4St5F7Q6q6+Nnm3p2zGWioAY6dh0CbbuwOhH2UcSzKsdniE/YnE2/92JcsA+g==}
-    dev: false
-
-  /dompurify/2.4.1:
-    resolution: {integrity: sha512-ewwFzHzrrneRjxzmK6oVz/rZn9VWspGFRDb4/rRtIsM1n36t9AKma/ye8syCpcw+XJ25kOK/hOG7t1j2I2yBqA==}
     dev: false
 
   /domutils/1.5.1:

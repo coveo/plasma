@@ -8,8 +8,7 @@ import {
 } from '@coveo/atomic-react';
 import {Section} from '@coveord/plasma-react';
 import {FunctionComponent, useEffect, useState} from 'react';
-import {sanitize} from 'dompurify';
-
+import {sanitizeUrl} from '@braintree/sanitize-url';
 import {Tile, TileProps} from '../building-blocs/Tile';
 import {NoSearchResultTemplate} from '../search/NoSearchResult';
 
@@ -24,8 +23,6 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
     const {logDocumentOpen} = loadClickAnalyticsActions(engine);
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
-
-    const linkToComponent = (uri: string) => sanitize(uri.replace(/.+plasma\.coveo\.com\//g, ''));
 
     return (
         <>
@@ -46,7 +43,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
                                 <Tile
                                     key={result.uniqueId}
                                     title={result.title}
-                                    href={linkToComponent(result.clickUri)}
+                                    href={sanitizeUrl(result.uri.replace(/.+plasma\.coveo\.com\//g, ''))}
                                     description={result.raw.description as string}
                                     thumbnail={result.raw.thumbnail as TileProps['thumbnail']}
                                     sendAnalytics={() => engine.dispatch(logDocumentOpen(result))}
