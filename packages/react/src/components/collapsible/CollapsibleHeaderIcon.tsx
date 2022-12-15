@@ -28,7 +28,12 @@ export const CollapsibleHeaderIcon: FunctionComponent<CollapsibleHeaderIconProps
 
     return informationUrl ? (
         <Tooltip {...tooltipProps}>
-            <a href={informationUrl} target="_blank" className={classNames('link', className, {disabled})}>
+            <a
+                href={informationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classNames('link', className, {disabled})}
+            >
                 <QuestionSize16Px height={18} />
             </a>
         </Tooltip>

@@ -19,6 +19,7 @@
         "start": "open-cli http://localhost:3000/ && next dev"
     },
     "dependencies": {
+        "@braintree/sanitize-url": "6.0.2",
         "@coveo/atomic-react": "0.5.8",
         "@coveord/plasma-components-props-analyzer": "workspace:*",
         "@coveord/plasma-mantine": "workspace:*",
