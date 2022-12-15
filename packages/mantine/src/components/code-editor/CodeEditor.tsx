@@ -143,9 +143,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     ) : null;
 
     const _description = description ? (
-        <Input.Description mt="xs" {...descriptionProps}>
-            {description}
-        </Input.Description>
+        <Input.Description {...descriptionProps}>{description}</Input.Description>
     ) : null;
 
     const _error = error ? (
