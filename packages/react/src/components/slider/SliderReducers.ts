@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
+import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
 import {ISetSliderValuePayload, SliderActionTypes} from './SliderActions';
 
 export interface ISlidersState {
@@ -10,15 +10,18 @@ export interface ISliderState {
     value: number;
 }
 
-export const SliderReducer = (state: ISlidersState = null, action: IReduxAction<ISetSliderValuePayload>) => {
+export const SliderReducer = (
+    state: ISlidersState = null,
+    action: IReduxAction<ISetSliderValuePayload> | IReduxAction<BasePayload>
+) => {
     if (action?.type === SliderActionTypes.setValue) {
-        return {
-            ...state,
-            [action.payload.id]: {
-                id: action.payload.id,
-                value: action.payload.value,
-            },
-        };
+        const {id, value} = action.payload as ISetSliderValuePayload;
+        return {...state, [id]: {id, value}};
+    }
+    if (action?.type === SliderActionTypes.removeSlider) {
+        const clone = structuredClone(state);
+        delete clone[action.payload.id];
+        return clone;
     }
     return state;
 };

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {Range, SliderProps, SliderTooltip} from 'rc-slider';
-import {ReactNode, ComponentProps, FunctionComponent, useState, useEffect, useCallback} from 'react';
-import {connect} from 'react-redux';
+import {ComponentProps, FunctionComponent, ReactNode, useCallback, useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {isBoolean} from 'underscore';
 
 import {IDispatch} from '../../utils/ReduxUtils';
@@ -73,21 +73,27 @@ export interface SliderOwnProps extends SliderProps {
     hasTooltip?: boolean;
 }
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: SliderOwnProps) => ({
-    setOutputValue: (value: number) => dispatch(SliderActions.setValue(ownProps.id, value)),
-});
-
-const SliderDisconnected: FunctionComponent<SliderOwnProps & ReturnType<typeof mapDispatchToProps>> = (props) => {
+/**
+ * @deprecated Use Mantine Slider instead: https://mantine.dev/core/slider/
+ */
+export const Slider: FunctionComponent<SliderOwnProps> = (props) => {
     propsValidator(props);
     const crossingPoint = props.crossingPoint ?? (props.min > 0 ? props.min : 0);
     const [rightHandlePosition, setRightHandlePosition] = useState(crossingPoint);
     const [leftHandlePosition, setLeftHandlePosition] = useState(crossingPoint);
     const outputValue = getOutputValue(leftHandlePosition, rightHandlePosition, crossingPoint);
-    const {onChange, setOutputValue} = props;
+    const dispatch: IDispatch = useDispatch();
+
+    useEffect(
+        () => () => {
+            dispatch(SliderActions.remove(props.id));
+        },
+        []
+    );
 
     useEffect(() => {
-        onChange?.(outputValue);
-        setOutputValue(outputValue);
+        props.onChange?.(outputValue);
+        dispatch(SliderActions.setValue(props.id, outputValue));
     }, [outputValue]);
 
     const jumpValueFromHighToLowRange = useCallback(
@@ -218,8 +224,3 @@ const SliderDisconnected: FunctionComponent<SliderOwnProps & ReturnType<typeof m
         </div>
     );
 };
-
-/**
- * @deprecated Use Mantine Slider instead: https://mantine.dev/core/slider/
- */
-export const Slider = connect(null, mapDispatchToProps)(SliderDisconnected);
