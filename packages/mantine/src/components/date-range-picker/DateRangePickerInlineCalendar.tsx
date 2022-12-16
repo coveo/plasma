@@ -55,6 +55,9 @@ export const DateRangePickerInlineCalendar = ({
     const calendarInputProps = form.getInputProps('dates');
 
     const onCalendarApply = () => {
+        if (!form.values.dates[1]) {
+            form.values.dates[1] = form.values.dates[0]; // when date range is the same day
+        }
         onApply(form.values.dates);
     };
 
