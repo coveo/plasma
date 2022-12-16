@@ -1,3 +1,18 @@
+# 48.23.0 (2022-12-16)
+
+
+### Bug Fixes
+
+* **codeQL:** fix security vulnerabilities (#2990) eef665c, closes #2990
+* **mantine:** standardize input wrapper styles (#2992) 15e139b, closes #2992
+
+
+### Features
+
+* **mantine:** implement row multi selection on table component (#2991) 8ca9ae9, closes #2991
+
+
+
 ## 48.22.5 (2022-12-12)
 
 
