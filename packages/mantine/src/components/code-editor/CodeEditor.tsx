@@ -17,7 +17,7 @@ import {
     useComponentDefaultProps,
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
-import Editor, {loader, useMonaco} from '@monaco-editor/react';
+import Editor, {loader, Monaco} from '@monaco-editor/react';
 import {FunctionComponent, useEffect, useState} from 'react';
 
 import {useParentHeight} from '../../hooks';
@@ -104,8 +104,6 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         ...others
     } = useComponentDefaultProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
-    const [registered, setRegistered] = useState(false);
-    const monaco = useMonaco();
     const {classes, theme} = useStyles();
     const [_value, handleChange] = useUncontrolled<string>({
         value,
@@ -121,6 +119,12 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         setLoaded(true);
     };
 
+    const registerLanguages = (monaco: Monaco) => {
+        if (monaco && language === 'xml') {
+            XML.register(monaco);
+        }
+    };
+
     useEffect(() => {
         if (monacoLoader === 'local') {
             loadLocalMonaco();
@@ -128,13 +132,6 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             setLoaded(true);
         }
     }, []);
-
-    useEffect(() => {
-        if (monaco && language === 'xml' && !registered) {
-            XML.register(monaco);
-            setRegistered(true);
-        }
-    }, [monaco, language]);
 
     const _label = label ? (
         <Input.Label required={required} {...labelProps}>
@@ -195,7 +192,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 }}
                 value={_value}
                 onChange={handleChange}
-                onMount={(editor) => {
+                onMount={(editor, monaco) => {
+                    registerLanguages(monaco);
                     editor.onDidFocusEditorText(onFocus);
                     editor.onDidBlurEditorText(async () => {
                         await editor.getAction('editor.action.formatDocument').run();

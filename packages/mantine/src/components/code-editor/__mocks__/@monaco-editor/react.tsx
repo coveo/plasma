@@ -1,7 +1,19 @@
 import {EditorProps} from '@monaco-editor/react';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useEffect} from 'react';
 
-const MockedEditor: FunctionComponent<EditorProps> = (props) => <div data-testid="monaco-editor" />;
+const editor: any = {
+    onDidFocusEditorText: jest.fn(),
+    onDidBlurEditorText: jest.fn(),
+};
+
+const monaco: any = jest.fn();
+
+const MockedEditor: FunctionComponent<EditorProps> = (props) => {
+    useEffect(() => {
+        props.onMount(editor, monaco);
+    }, []);
+    return <div data-testid="monaco-editor" />;
+};
 
 export default MockedEditor;
 

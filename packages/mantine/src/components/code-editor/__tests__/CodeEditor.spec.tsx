@@ -55,7 +55,7 @@ describe('CodeEditor', () => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
     });
 
-    it('loads the xml language in the monaco instance if the editor language is xml', () => {
+    it('loads the xml language in the monaco instance if the editor language is xml', async () => {
         const xmlLanguageSpy = jest.spyOn(XML, 'register').mockImplementation();
         render(<CodeEditor label="label" description="description" monacoLoader="cdn" language="xml" />);
         expect(xmlLanguageSpy).toHaveBeenCalledTimes(1);
