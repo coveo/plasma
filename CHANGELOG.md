@@ -1,3 +1,14 @@
+## 48.23.1 (2022-12-16)
+
+
+### Bug Fixes
+
+* 🐛 local monaco should not load via cdn (#2994) 2808169, closes #2994
+* 🐛 set end date same as start date inlineDatePicker (#2995) 4fed7b5, closes #2995
+* **react:** remove slider state on unmount (#2996) 50eff65, closes #2996
+
+
+
 # 48.23.0 (2022-12-16)
 
 
