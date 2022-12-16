@@ -40,9 +40,13 @@ type TableContextType = {
      */
     clearFilters: () => void;
     /**
-     * Function that returns the selected row if any
+     * Function that returns the selected row if any.
      */
     getSelectedRow: () => any | null;
+    /**
+     * Function that returns an array of the selected rows. Most useful when multi row selection is enabled.
+     */
+    getSelectedRows: () => any[];
     /**
      * Function that clear the selected row
      */
@@ -55,6 +59,7 @@ type TableContextType = {
      * Table container ref
      */
     containerRef: RefObject<HTMLDivElement>;
+    multiRowSelectionEnabled: boolean;
 };
 
 export const TableContext = createContext<TableContextType | null>(null);

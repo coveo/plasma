@@ -4,12 +4,12 @@ import {ColumnDef} from '@tanstack/table-core';
 import {MouseEvent as ReactMouseEvent} from 'react';
 
 /**
- * Generic column to use when your table need collapsible rows
+ * Generic column to use when your table needs collapsible rows
  */
 export const TableCollapsibleColumn: ColumnDef<unknown> = {
     id: 'collapsible',
-    header: '',
     enableSorting: false,
+    header: '',
     cell: (info) => {
         const handler = info.row.getToggleExpandedHandler();
         const onClick = (e: ReactMouseEvent<HTMLButtonElement>) => {

@@ -4,27 +4,16 @@ import {defaultColumnSizing, flexRender, Header} from '@tanstack/react-table';
 
 const useStyles = createStyles((theme) => ({
     th: {
-        padding: '0 !important',
         fontWeight: '400 !important' as any,
+        padding: '0 !important',
         color: theme.black + '!important',
-        button: {
-            padding: '8px 16px',
-            div: {
-                padding: '0px !important',
-            },
-        },
-        div: {
-            padding: '8px 16px',
-        },
-    },
-
-    noSort: {
-        padding: `${theme.spacing.xs}px ${theme.spacing.md}px`,
+        verticalAlign: 'middle',
     },
 
     control: {
         width: '100%',
-        padding: `${theme.spacing.xs}px ${theme.spacing.md}px`,
+        padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
+        whiteSpace: 'nowrap',
 
         '&:hover': {
             backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[6] : theme.colors.gray[2],
@@ -58,9 +47,7 @@ export const Th = <T,>({header}: ThProps<T>) => {
     if (!header.column.getCanSort()) {
         return (
             <th className={classes.th} style={{width}}>
-                <Text className={classes.noSort} size="xs">
-                    {flexRender(header.column.columnDef.header, header.getContext())}
-                </Text>
+                <Text size="xs">{flexRender(header.column.columnDef.header, header.getContext())}</Text>
             </th>
         );
     }
@@ -72,7 +59,7 @@ export const Th = <T,>({header}: ThProps<T>) => {
     return (
         <th className={classes.th} style={{width}} aria-sort={sortingOrder ? SortingLabels[sortingOrder] : 'none'}>
             <UnstyledButton onClick={onSort} className={classes.control}>
-                <Group position="apart">
+                <Group position="apart" noWrap>
                     <Text size="xs">{flexRender(header.column.columnDef.header, header.getContext())}</Text>
                     <Center sx={(theme) => ({color: sortingOrder ? theme.colors.action[8] : undefined})}>
                         <Icon height={14} />

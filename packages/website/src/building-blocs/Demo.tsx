@@ -26,7 +26,7 @@ interface DemoProps extends DemoComponentProps {
     children?: ReactNode;
 }
 
-const useStyles = createStyles((theme, {grow}: DemoComponentProps) => ({
+const useStyles = createStyles((theme, {grow, noPadding}: DemoComponentProps) => ({
     root: {},
     sandbox: {
         border: `1px solid ${theme.colors.gray[3]}`,
@@ -49,7 +49,7 @@ const useStyles = createStyles((theme, {grow}: DemoComponentProps) => ({
         minHeight: 100,
     },
     previewWrapper: {
-        padding: theme.spacing.md,
+        padding: noPadding ? 0 : theme.spacing.md,
         height: grow ? MAX_HEIGHT : '100%',
     },
     code: {
@@ -59,8 +59,8 @@ const useStyles = createStyles((theme, {grow}: DemoComponentProps) => ({
     },
 }));
 
-const Demo = ({children, snippet, center = false, grow = false, title, layout}: DemoProps) => {
-    const {classes} = useStyles({center, grow});
+const Demo = ({children, snippet, center = false, grow = false, title, layout, noPadding}: DemoProps) => {
+    const {classes} = useStyles({center, grow, noPadding});
     const clipboard = useClipboard();
     const sandboxLink = getCodeSandboxLink(snippet);
     return (

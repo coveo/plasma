@@ -3,9 +3,9 @@ import {useTable} from './useTable';
 
 interface TableActionsProps<T> {
     /**
-     * Function that return components for the selected row
+     * Function that return components for the selected row or selected rows when multi row selection is enabled
      *
-     * @param datum the data of the selected row
+     * @param datum the data of the selected row(s)
      * @example
      * <Table.Actions<MyType>>
      *     {(datum: MyType) => (
@@ -21,16 +21,16 @@ interface TableActionsProps<T> {
      *     )}
      * </Table.Actions>
      */
-    children: (datum: T) => ReactNode;
+    children: ((datum: T) => ReactNode) | ((data: T[]) => ReactNode);
 }
 
 export const TableActions = <T,>({children}: TableActionsProps<T>): ReactElement => {
-    const {getSelectedRow} = useTable();
-    const selectedRow = getSelectedRow();
+    const {getSelectedRows, multiRowSelectionEnabled} = useTable();
+    const selectedRows = getSelectedRows();
 
-    if (!selectedRow) {
+    if (selectedRows.length <= 0) {
         return null;
     }
 
-    return <>{children(selectedRow)}</>;
+    return <>{children(multiRowSelectionEnabled ? selectedRows : selectedRows[0])}</>;
 };

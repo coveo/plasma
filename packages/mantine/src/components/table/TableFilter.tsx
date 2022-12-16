@@ -35,7 +35,13 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
 
     const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {value} = event.currentTarget;
-        setState((prevState: TableState) => ({...prevState, globalFilter: value}));
+        setState((prevState: TableState) => ({
+            ...prevState,
+            pagination: prevState.pagination
+                ? {pageIndex: 0, pageSize: prevState.pagination.pageSize}
+                : prevState.pagination,
+            globalFilter: value,
+        }));
     };
 
     return (
