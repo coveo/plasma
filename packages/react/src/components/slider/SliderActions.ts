@@ -1,7 +1,8 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
+import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
 
 export const SliderActionTypes = {
     setValue: 'SLIDER_SET_VALUE',
+    removeSlider: 'REMOVE_SLIDER',
 };
 
 export interface ISetSliderValuePayload {
@@ -14,6 +15,12 @@ const setValue = (id: string, value: number): IReduxAction<ISetSliderValuePayloa
     payload: {id, value},
 });
 
+const remove = (id: string): IReduxAction<BasePayload> => ({
+    type: SliderActionTypes.removeSlider,
+    payload: {id},
+});
+
 export const SliderActions = {
     setValue,
+    remove,
 };

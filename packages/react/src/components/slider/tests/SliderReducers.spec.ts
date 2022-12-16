@@ -60,4 +60,15 @@ describe('SliderReducers', () => {
 
         expect(sliderState).toEqual(expectedState);
     });
+
+    it('removes the slider from the state when the action is removeSlider', () => {
+        sliderState = SliderReducer(
+            {
+                ['🍩 slider']: {id: '🍩 slider', value: 100},
+                ['🥔 slider']: {id: '🥔 slider', value: 200},
+            },
+            {type: 'REMOVE_SLIDER', payload: {id: '🥔 slider'}}
+        );
+        expect(sliderState).toEqual({['🍩 slider']: {id: '🍩 slider', value: 100}});
+    });
 });

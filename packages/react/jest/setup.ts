@@ -17,3 +17,7 @@ document.createRange = () => {
 };
 
 global.URL.createObjectURL = jest.fn();
+
+if (!global.structuredClone) {
+    global.structuredClone = (o: any) => JSON.parse(JSON.stringify(o));
+}
