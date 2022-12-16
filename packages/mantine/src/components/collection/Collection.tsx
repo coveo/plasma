@@ -165,10 +165,10 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
     const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : null;
     const _header =
         _label || _description ? (
-            <Stack spacing="xs">
+            <Box mb="sm">
                 {_label}
                 {_description}
-            </Stack>
+            </Box>
         ) : null;
 
     const items = values.map((item, index) => (
@@ -216,14 +216,12 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
                         className={cx(classes.root, className)}
                         {...others}
                     >
-                        <Stack>
-                            {_header}
-                            <Stack spacing={spacing}>
-                                {items}
-                                {provided.placeholder}
-                                {_addButton}
-                                {_error}
-                            </Stack>
+                        {_header}
+                        <Stack spacing={spacing}>
+                            {items}
+                            {provided.placeholder}
+                            {_addButton}
+                            {_error}
                         </Stack>
                     </Box>
                 )}

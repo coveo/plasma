@@ -5,6 +5,7 @@ import {ButtonStylesParams, MantineThemeOverride, ModalStylesParams} from '@mant
 import {PlasmaColors} from './PlasmaColors';
 
 export const plasmaTheme: MantineThemeOverride = {
+    // These are overrides over https://github.com/mantinedev/mantine/blob/master/src/mantine-styles/src/theme/default-theme.ts
     colorScheme: 'light',
     fontFamily: 'canada-type-gibson, sans-serif',
     black: color.primary.gray[9],
@@ -59,7 +60,7 @@ export const plasmaTheme: MantineThemeOverride = {
         Button: {
             styles: (theme, params: ButtonStylesParams) => ({
                 root: {
-                    '&': {fontWeight: 400},
+                    fontWeight: 400,
                     backgroundColor: params.variant === 'outline' ? 'white' : undefined,
                 },
             }),
@@ -81,17 +82,23 @@ export const plasmaTheme: MantineThemeOverride = {
             defaultProps: {
                 withAsterisk: false,
             },
+            styles: (theme) => ({
+                label: {
+                    marginBottom: theme.spacing.xs,
+                    lineHeight: '20px',
+                },
+                description: {
+                    lineHeight: '20px',
+                    fontSize: theme.fontSizes.sm,
+                    color: theme.colors.gray[7],
+                    marginBottom: theme.spacing.xs,
+                },
+            }),
         },
         TextInput: {
             defaultProps: {
                 radius: 8,
             },
-            styles: (theme) => ({
-                description: {
-                    fontSize: 'inherit',
-                    paddingBottom: theme.spacing.xs,
-                },
-            }),
         },
         Tooltip: {
             defaultProps: {
