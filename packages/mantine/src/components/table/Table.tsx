@@ -44,6 +44,9 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
             '& td:first-of-type, th:first-of-type > *': {
                 paddingLeft: theme.spacing.xl,
             },
+            '& tbody td': {
+                verticalAlign: 'top',
+            },
         },
 
         header: {
@@ -67,12 +70,9 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
             backgroundColor: multiRowSelectionEnabled ? undefined : rowBackgroundColor,
         },
 
-        rowSelectionCheckboxCell: {
-            verticalAlign: 'middle',
-        },
-
         rowCollapsibleButtonCell: {
             textAlign: 'right',
+            padding: `${theme.spacing.xs / 2}px ${theme.spacing.sm}px !important`,
         },
 
         row: {
@@ -261,7 +261,6 @@ export const Table: TableType = <T,>({
                                 key={cell.id}
                                 style={{width}}
                                 className={cx({
-                                    [classes.rowSelectionCheckboxCell]: cell.column.id === TableSelectableColumn.id,
                                     [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
                                 })}
                             >
@@ -276,7 +275,11 @@ export const Table: TableType = <T,>({
                     <tr>
                         <td
                             colSpan={columns.length + 1}
-                            style={{padding: 0, borderTop: row.getIsExpanded() ? undefined : 'none'}}
+                            style={{
+                                padding: 0,
+                                borderTop: row.getIsExpanded() ? undefined : 'none',
+                                borderBottom: row.getIsExpanded() ? undefined : 'none',
+                            }}
                         >
                             <Collapse in={row.getIsExpanded()}>
                                 <Box px="sm" py="xs">

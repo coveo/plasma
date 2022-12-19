@@ -1,5 +1,5 @@
 import {ArrowHeadDownSize24Px, ArrowHeadUpSize24Px} from '@coveord/plasma-react-icons';
-import {Button} from '@mantine/core';
+import {ActionIcon} from '@mantine/core';
 import {ColumnDef} from '@tanstack/table-core';
 import {MouseEvent as ReactMouseEvent} from 'react';
 
@@ -10,6 +10,7 @@ export const TableCollapsibleColumn: ColumnDef<unknown> = {
     id: 'collapsible',
     enableSorting: false,
     header: '',
+    size: 62,
     cell: (info) => {
         const handler = info.row.getToggleExpandedHandler();
         const onClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
@@ -18,9 +19,9 @@ export const TableCollapsibleColumn: ColumnDef<unknown> = {
         };
 
         return info.row.getCanExpand() ? (
-            <Button onClick={onClick} variant="subtle" size="xs">
+            <ActionIcon onClick={onClick} variant="subtle" radius="sm">
                 {info.row.getIsExpanded() ? <ArrowHeadUpSize24Px /> : <ArrowHeadDownSize24Px />}
-            </Button>
+            </ActionIcon>
         ) : null;
     },
 };
