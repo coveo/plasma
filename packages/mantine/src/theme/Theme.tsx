@@ -99,6 +99,19 @@ export const plasmaTheme: MantineThemeOverride = {
             defaultProps: {
                 radius: 8,
             },
+            styles: (theme) => ({
+                description: {
+                    fontSize: 'inherit',
+                    paddingBottom: theme.spacing.xs,
+                },
+                invalid: {
+                    color: theme.colors.red[9],
+                    borderColor: theme.colors.red[6],
+                },
+                error: {
+                    color: theme.colors.red[9],
+                },
+            }),
         },
         Tooltip: {
             defaultProps: {
