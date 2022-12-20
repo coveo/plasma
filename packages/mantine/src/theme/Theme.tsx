@@ -93,6 +93,13 @@ export const plasmaTheme: MantineThemeOverride = {
                     color: theme.colors.gray[7],
                     marginBottom: theme.spacing.xs,
                 },
+                invalid: {
+                    color: theme.colors.red[9],
+                    borderColor: theme.colors.red[6],
+                },
+                error: {
+                    color: theme.colors.red[9],
+                },
             }),
         },
         TextInput: {
@@ -103,13 +110,6 @@ export const plasmaTheme: MantineThemeOverride = {
                 description: {
                     fontSize: 'inherit',
                     paddingBottom: theme.spacing.xs,
-                },
-                invalid: {
-                    color: theme.colors.red[9],
-                    borderColor: theme.colors.red[6],
-                },
-                error: {
-                    color: theme.colors.red[9],
                 },
             }),
         },
@@ -185,17 +185,6 @@ export const plasmaTheme: MantineThemeOverride = {
                     fontWeight: 500,
                 },
             },
-        },
-        Select: {
-            styles: (theme) => ({
-                invalid: {
-                    color: theme.colors.red[9],
-                    borderColor: theme.colors.red[6],
-                },
-                error: {
-                    color: theme.colors.red[9],
-                },
-            }),
         },
     },
 };
