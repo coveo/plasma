@@ -1,3 +1,4 @@
+import {Group} from '@mantine/core';
 import {ReactElement, ReactNode} from 'react';
 import {useTable} from './useTable';
 
@@ -32,5 +33,5 @@ export const TableActions = <T,>({children}: TableActionsProps<T>): ReactElement
         return null;
     }
 
-    return <>{children(multiRowSelectionEnabled ? selectedRows : selectedRows[0])}</>;
+    return <Group spacing="xs">{children(multiRowSelectionEnabled ? selectedRows : selectedRows[0])}</Group>;
 };

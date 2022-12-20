@@ -47,7 +47,9 @@ export const Th = <T,>({header}: ThProps<T>) => {
     if (!header.column.getCanSort()) {
         return (
             <th className={classes.th} style={{width}}>
-                <Text size="xs">{flexRender(header.column.columnDef.header, header.getContext())}</Text>
+                <Text size="xs" py="xs" px="sm">
+                    {flexRender(header.column.columnDef.header, header.getContext())}
+                </Text>
             </th>
         );
     }
