@@ -21,7 +21,7 @@ export interface ModalWizardStepProps {
     /**
      * A tooltip label for the docLink
      */
-    docLinkTooltipLabel: string | ReactElement | DependsOnStep<string | ReactElement>;
+    docLinkTooltipLabel?: string | ReactElement | DependsOnStep<string | ReactElement>;
 
     /**
      * A function to validate the current step, it determines if the next step should be enabled or not.
