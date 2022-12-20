@@ -1,3 +1,12 @@
+## 48.23.2 (2022-12-20)
+
+
+### Bug Fixes
+
+* **mantine:** give unsortable columns header some padding (#3000) cff198a, closes #3000
+
+
+
 ## 48.23.1 (2022-12-16)
 
 
