@@ -153,6 +153,7 @@ export const ModalWizard: ModalWizardType = ({
             title={
                 <Header
                     docLink={currentStep.props.docLink}
+                    docLinkTooltipLabel={currentStep.props.docLinkTooltipLabel}
                     description={
                         typeof currentStep.props.description === 'function'
                             ? currentStep.props.description(currentStepIndex + 1, numberOfSteps)

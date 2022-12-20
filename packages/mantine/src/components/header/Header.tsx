@@ -23,7 +23,7 @@ export interface HeaderProps extends DefaultProps {
     /**
      * The tooltip text shown when hovering over the doc link icon
      */
-    docLinkTooltipLabel?: string;
+    docLinkTooltipLabel: string;
     /**
      * The title of the header.
      * If more than one children are provided, each of them act as parts of a breadcrumb
