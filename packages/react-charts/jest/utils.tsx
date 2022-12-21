@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom';
 
 import {render, RenderOptions, RenderResult} from '@testing-library/react';
-import {mount, shallow} from 'enzyme';
-import {cloneElement, createElement, PropsWithChildren} from 'react';
+import {PropsWithChildren} from 'react';
 
 const TEST_CONTAINER_ID = 'app';
 const MODAL_ROOT_ID = 'modals';
@@ -55,24 +54,3 @@ type JestToErrorArg = Parameters<jest.Matchers<unknown, () => unknown>['toThrow'
 
 export * from '@testing-library/react';
 export {customRender as render, expectToThrow, cleanup, setup};
-
-// export const shallowWithStore = (Component: any, store: any) => {
-//     const ReactReduxComponent = cloneElement(Component, {store}, null);
-//     return shallow(ReactReduxComponent);
-// };
-
-// export const mountWithStore = (Component: any, store: any, withContext = true) => {
-//     const ComponentAlreadyWithProvider = cloneElement(Component, {store}, null);
-//     const ReactReduxComponent = createElement(Provider, {store}, Component);
-//     return mount(withContext ? ComponentAlreadyWithProvider : ReactReduxComponent);
-// };
-
-// export const shallowWithState = (Component: any, state: any) => {
-//     const store = {
-//         getState: () => state,
-//         subscribe: () => ({}),
-//         dispatch: () => ({}),
-//     };
-//     const ReactReduxComponent = cloneElement(Component, {store}, null);
-//     return shallow(ReactReduxComponent);
-// };
