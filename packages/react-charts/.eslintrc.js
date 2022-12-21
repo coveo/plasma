@@ -8,6 +8,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
+    ignorePatterns: ['.eslintrc.js', 'node_modules', 'dist', '.turbo', 'jest.config.js'],
     overrides: [
         {
             files: ['**/*.spec.*'],
