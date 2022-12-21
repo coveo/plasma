@@ -442,8 +442,6 @@ importers:
       lint-staged: 9.5.0
       react: 18.2.0
       react-dom: 18.2.0
-      react-redux: 7.2.6
-      redux: 4.2.0
       regenerator-runtime: 0.13.9
       rimraf: 3.0.2
       sass: 1.51.0
@@ -494,8 +492,6 @@ importers:
       lint-staged: 9.5.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      react-redux: 7.2.6_biqbaboplfbrettd7655fr4n2y
-      redux: 4.2.0
       regenerator-runtime: 0.13.9
       rimraf: 3.0.2
       sass: 1.51.0

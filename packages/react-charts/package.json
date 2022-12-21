@@ -1,5 +1,5 @@
 {
-    "name": "@coveord/plasma-react-charts",
+    "name": "@coveord/plasma-react-legacy-charts",
     "version": "48.23.2",
     "description": "Plasma charts implemented with React!",
     "keywords": [
@@ -84,8 +84,6 @@
         "lint-staged": "9.5.0",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-redux": "7.2.6",
-        "redux": "4.2.0",
         "regenerator-runtime": "0.13.9",
         "rimraf": "3.0.2",
         "sass": "1.51.0",
@@ -97,8 +95,6 @@
         "@types/react": "^18.0",
         "@types/react-dom": "^18.0",
         "react": "^18.0",
-        "react-dom": "^18.0",
-        "react-redux": "^7.2.6",
-        "redux": "^4"
+        "react-dom": "^18.0"
     }
 }

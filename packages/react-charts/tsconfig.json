@@ -10,5 +10,5 @@
         },
         "typeRoots": ["types", "node_modules/@types"]
     },
-    "exclude": ["dist", "node_modules", "jest.config.js", "jest/identity-obj-proxy-esm.js"]
+    "exclude": ["dist", "node_modules"]
 }
