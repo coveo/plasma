@@ -1,3 +1,12 @@
+# 48.25.0 (2022-12-21)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries (#3002) 2d99aa5, closes #3002
+
+
+
 # 48.24.0 (2022-12-21)
 
 
