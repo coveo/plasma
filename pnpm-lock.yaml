@@ -205,10 +205,6 @@ importers:
       '@testing-library/user-event': 14.4.3
       '@types/classnames': 2.3.0
       '@types/codemirror': 0.0.109
-      '@types/d3': 7.4.0
-      '@types/d3-array': 3.0.3
-      '@types/d3-scale': 4.0.2
-      '@types/d3-shape': 3.1.0
       '@types/enzyme': 3.10.12
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
@@ -240,10 +236,6 @@ importers:
       classnames: 2.3.1
       codecov: 3.8.2
       codemirror: 5.63.3
-      d3: 7.6.1
-      d3-array: 3.2.0
-      d3-scale: 4.0.2
-      d3-shape: 3.1.0
       del: 6.0.0
       dnd-core: 16.0.1
       enzyme: 3.11.0
@@ -302,10 +294,6 @@ importers:
       '@types/codemirror': 0.0.109
       classnames: 2.3.1
       codemirror: 5.63.3
-      d3: 7.6.1
-      d3-array: 3.2.0
-      d3-scale: 4.0.2
-      d3-shape: 3.1.0
       dnd-core: 16.0.1
       moment: 2.29.4
       query-string: 6.14.1
@@ -336,10 +324,6 @@ importers:
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.4.3_znccgeejomvff3jrsk3ljovfpu
       '@types/classnames': 2.3.0
-      '@types/d3': 7.4.0
-      '@types/d3-array': 3.0.3
-      '@types/d3-scale': 4.0.2
-      '@types/d3-shape': 3.1.0
       '@types/enzyme': 3.10.12
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
@@ -680,8 +664,8 @@ importers:
       '@coveord/plasma-components-props-analyzer': workspace:*
       '@coveord/plasma-mantine': workspace:*
       '@coveord/plasma-react': workspace:*
-      '@coveord/plasma-react-charts': workspace:*
       '@coveord/plasma-react-icons': workspace:*
+      '@coveord/plasma-react-charts': workspace:*
       '@coveord/plasma-style': workspace:*
       '@coveord/plasma-tokens': workspace:*
       '@emotion/react': 11.10.5
@@ -748,8 +732,8 @@ importers:
       '@coveord/plasma-components-props-analyzer': link:../components-props-analyzer
       '@coveord/plasma-mantine': link:../mantine
       '@coveord/plasma-react': link:../react
-      '@coveord/plasma-react-charts': link:../react-charts
       '@coveord/plasma-react-icons': link:../react-icons
+      '@coveord/plasma-react-charts': link:../react-charts
       '@coveord/plasma-style': link:../style
       '@coveord/plasma-tokens': link:../tokens
       '@emotion/react': 11.10.5_fan5qbzahqtxlm5dzefqlqx5ia

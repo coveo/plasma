@@ -9,7 +9,6 @@ export * from './breadcrumbs';
 export * from './browserPreview';
 export * from './button';
 export * from './calendar';
-export * from './chart';
 export * from './checkbox';
 export * from './childForm';
 export * from './collapsible';
