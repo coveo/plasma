@@ -46,7 +46,7 @@
         "autosize": "5.0.1",
         "concurrently": "7.1.0",
         "coveo-png-sprite": "1.0.1",
-        "css-loader": "3.6.0",
+        "css-loader": "6.7.3",
         "cssnano": "4.1.11",
         "del": "6.0.0",
         "fancy-log": "2.0.0",
