@@ -1,4 +1,4 @@
-import {BarSeries, ChartContainer, XYChart} from '@coveord/plasma-react';
+import {BarSeries, ChartContainer, XYChart} from '@coveord/plasma-react-charts';
 
 const DemoPage = () => (
     <div style={{height: 400}}>

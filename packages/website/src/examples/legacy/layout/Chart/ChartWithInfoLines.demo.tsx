@@ -1,4 +1,4 @@
-import {LineSeries, InfoLine, ChartContainer, XGrid, YGrid, XYAxis, XYChart} from '@coveord/plasma-react';
+import {LineSeries, InfoLine, ChartContainer, XGrid, YGrid, XYAxis, XYChart} from '@coveord/plasma-react-charts';
 
 export default () => (
     <div style={{height: 400}}>

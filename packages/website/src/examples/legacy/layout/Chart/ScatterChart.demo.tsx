@@ -1,4 +1,4 @@
-import {ScatterSeries, ChartContainer, XYChart} from '@coveord/plasma-react';
+import {ScatterSeries, ChartContainer, XYChart} from '@coveord/plasma-react-charts';
 
 export default () => (
     <div style={{height: 400}}>

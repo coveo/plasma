@@ -684,6 +684,7 @@ importers:
       '@coveord/plasma-components-props-analyzer': workspace:*
       '@coveord/plasma-mantine': workspace:*
       '@coveord/plasma-react': workspace:*
+      '@coveord/plasma-react-charts': workspace:*
       '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
       '@coveord/plasma-tokens': workspace:*
@@ -751,6 +752,7 @@ importers:
       '@coveord/plasma-components-props-analyzer': link:../components-props-analyzer
       '@coveord/plasma-mantine': link:../mantine
       '@coveord/plasma-react': link:../react
+      '@coveord/plasma-react-charts': link:../react-charts
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
       '@coveord/plasma-tokens': link:../tokens

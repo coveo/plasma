@@ -1,4 +1,4 @@
-import {LineSeries, ChartContainer, XYChart} from '@coveord/plasma-react';
+import {LineSeries, ChartContainer, XYChart} from '@coveord/plasma-react-charts';
 
 const data = [
     {

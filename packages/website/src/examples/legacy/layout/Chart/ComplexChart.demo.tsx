@@ -7,7 +7,7 @@ import {
     XYChart,
     XYAxis,
     XYPoint,
-} from '@coveord/plasma-react';
+} from '@coveord/plasma-react-charts';
 
 export default () => (
     <div style={{height: 400}}>

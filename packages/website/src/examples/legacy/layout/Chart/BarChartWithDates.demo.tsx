@@ -1,5 +1,5 @@
 import moment from 'moment';
-import {BarSeries, ChartTooltip, ChartContainer, XYAxis, XYChart} from '@coveord/plasma-react';
+import {BarSeries, ChartTooltip, ChartContainer, XYAxis, XYChart} from '@coveord/plasma-react-charts';
 
 export default () => (
     <div style={{height: 400}}>

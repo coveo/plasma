@@ -24,6 +24,7 @@
         "@coveord/plasma-components-props-analyzer": "workspace:*",
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react": "workspace:*",
+        "@coveord/plasma-react-charts": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-style": "workspace:*",
         "@coveord/plasma-tokens": "workspace:*",
