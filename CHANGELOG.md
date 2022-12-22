@@ -1,3 +1,12 @@
+## 48.25.1 (2022-12-22)
+
+
+### Bug Fixes
+
+* **mantine:** adjust modal sizes in the theme (#3004) f0c084e, closes #3004
+
+
+
 # 48.25.0 (2022-12-21)
 
 
