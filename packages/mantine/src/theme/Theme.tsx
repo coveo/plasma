@@ -70,7 +70,7 @@ export const plasmaTheme: MantineThemeOverride = {
                 modal: {
                     width: fullScreen
                         ? undefined
-                        : theme.fn.size({size, sizes: {xs: 320, sm: 440, md: '45%', lg: 1334, xl: '85%'}}),
+                        : theme.fn.size({size, sizes: {xs: 440, sm: 550, md: 800, lg: 1334, xl: '85%'}}),
                 },
             }),
             defaultProps: {
