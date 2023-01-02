@@ -47,7 +47,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                     <Group spacing={0}>
                         <Breadcrumbs>{children}</Breadcrumbs>
                         {docLink ? (
-                            <Tooltip label={docLinkTooltipLabel} position="bottom">
+                            <Tooltip label={docLinkTooltipLabel} disabled={!docLinkTooltipLabel} position="bottom">
                                 <Anchor inline href={docLink} target="_blank" ml="xs">
                                     <QuestionSize24Px height={24} />
                                 </Anchor>
