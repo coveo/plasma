@@ -1,3 +1,30 @@
+## 48.25.1 (2022-12-22)
+
+
+### Bug Fixes
+
+* **mantine:** adjust modal sizes in the theme (#3004) f0c084e, closes #3004
+
+
+
+# 48.25.0 (2022-12-21)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries (#3002) 2d99aa5, closes #3002
+
+
+
+# 48.24.0 (2022-12-21)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries (#2993) 1de57cd, closes #2993
+
+
+
 ## 48.23.2 (2022-12-20)
 
 
