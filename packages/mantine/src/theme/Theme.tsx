@@ -106,12 +106,6 @@ export const plasmaTheme: MantineThemeOverride = {
             defaultProps: {
                 radius: 8,
             },
-            styles: (theme) => ({
-                description: {
-                    fontSize: 'inherit',
-                    paddingBottom: theme.spacing.xs,
-                },
-            }),
         },
         Tooltip: {
             defaultProps: {
