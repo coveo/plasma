@@ -60,11 +60,6 @@
         --status-text-color: var(--critical-100);
     }
 
-    &.valid {
-        --status-color: var(--success-60);
-        --status-text-color: var(--success-100);
-    }
-
     &.warning {
         --status-color: var(--warning-70);
         --status-text-color: var(--warning-90);
