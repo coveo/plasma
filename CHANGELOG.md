@@ -1,3 +1,12 @@
+## 48.25.2 (2023-01-04)
+
+
+### Bug Fixes
+
+* **style:** changed mantine textinput error colors and added styles t… (#2998) 6e6d270, closes #2998
+
+
+
 ## 48.25.1 (2022-12-22)
 
 
