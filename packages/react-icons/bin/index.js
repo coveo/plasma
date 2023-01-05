@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs-extra');
 const glob = require('glob');
 const svgr = require('@svgr/core');
@@ -7,7 +9,7 @@ const {rmSync} = require('fs-extra');
 const template = require('./template');
 
 const iconsSourceDirPath = 'node_modules/@coveord/plasma-tokens/icons';
-const outDirPath = './src/generated'
+const outDirPath = './src/generated';
 
 const findIconName = (filename) => filename.replace(iconsSourceDirPath, '').substring(1).split('/')[0];
 const findVariantName = (filename) => filename.replace(iconsSourceDirPath, '').split('/').pop().replace('.svg', '');
@@ -21,7 +23,10 @@ const convertIcons = async (grouped) => Promise.all(Object.entries(grouped).map(
 
 const convertIcon = async ([iconName, variants]) => {
     await fs.ensureDir(`${outDirPath}/${iconName}`);
-    return Promise.all(variants.map(convertVariant));
+    return Promise.all(
+        variants.map(convertVariant),
+        fs.appendFile(`${outDirPath}/index.ts`, `export * from './${iconName}';\n`)
+    );
 };
 
 const convertVariant = async (file) => {
@@ -50,10 +55,6 @@ const convertVariant = async (file) => {
         );
         return Promise.all([
             fs.appendFile(
-                `${outDirPath}/index.ts`,
-                `export const ${componentName} = loadable(() => import('./${iconName}/${variantName}'));\n`
-            ),
-            fs.appendFile(
                 `${outDirPath}/${iconName}/index.ts`,
                 `export {default as ${componentName}} from './${variantName}';\n`
             ),
@@ -73,15 +74,13 @@ const listIconVariants = async (grouped) => {
     return fs.appendFile(`${outDirPath}/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
 };
 
-const importLoadable = () => fs.appendFile(`${outDirPath}/index.ts`, 'import loadable from "@loadable/component";\n\n');
-
 const handleSvgFiles = (err, files) => {
     if (err) {
         console.error(err);
     }
 
     const grouped = groupBy(files, findIconName);
-    Promise.all([importLoadable(), convertIcons(grouped), listIconVariants(grouped)]);
+    Promise.all([convertIcons(grouped), listIconVariants(grouped)]);
 };
 
 rmSync(outDirPath, {recursive: true, force: true});
