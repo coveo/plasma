@@ -43,8 +43,11 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
     );
 };
 
-const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({children}) => {
-    const {classes, cx} = useStyles();
+const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
+    children,
+    styles,
+}) => {
+    const {classes, cx} = useStyles(null, {name: 'Collection', styles});
     return <Group className={cx(classes.item)}>{children}</Group>;
 };
 

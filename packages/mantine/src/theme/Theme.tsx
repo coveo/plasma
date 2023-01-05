@@ -93,6 +93,13 @@ export const plasmaTheme: MantineThemeOverride = {
                     color: theme.colors.gray[7],
                     marginBottom: theme.spacing.xs,
                 },
+                invalid: {
+                    color: theme.colors.red[9],
+                    borderColor: theme.colors.red[6],
+                },
+                error: {
+                    color: theme.colors.red[9],
+                },
             }),
         },
         TextInput: {
