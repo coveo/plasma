@@ -1,3 +1,12 @@
+## 48.25.4 (2023-01-09)
+
+
+### Bug Fixes
+
+* **plasma-mantine:** fix ModalWizard doclink tooltip shows a black icon on hover (#3001) 21bb7ef, closes #3001
+
+
+
 ## 48.25.3 (2023-01-09)
 
 
