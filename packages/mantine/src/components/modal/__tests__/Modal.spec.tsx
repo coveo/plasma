@@ -1,5 +1,6 @@
+import {QuestionSize32Px} from '@coveord/plasma-react-icons';
 import {Container} from '@mantine/core';
-import {render, screen, fireEvent} from '@test-utils';
+import {fireEvent, render, screen} from '@test-utils';
 import {Modal} from '../Modal';
 
 describe('Modal', () => {
@@ -15,6 +16,25 @@ describe('Modal', () => {
         expect(screen.getByText(/Children/i)).toBeInTheDocument();
         expect(screen.getByRole('dialog')).toBeInTheDocument();
         expect(screen.getByRole('button')).toBeInTheDocument();
+    });
+
+    it('allows ReactNode as title', async () => {
+        render(
+            <Modal
+                opened
+                onClose={jest.fn()}
+                title={
+                    <div>
+                        <QuestionSize32Px />
+                        ReactNode title
+                    </div>
+                }
+            >
+                <Container>Children</Container>
+            </Modal>
+        );
+        expect(await screen.findByRole('img', {name: /question/i})).toBeInTheDocument();
+        expect(screen.getByText(/reactnode title/i)).toBeInTheDocument();
     });
 
     it('trigger onClose function when click on the close button', () => {

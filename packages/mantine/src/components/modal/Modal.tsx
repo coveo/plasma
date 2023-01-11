@@ -1,5 +1,5 @@
 import {Modal as MantineModal, ModalProps} from '@mantine/core';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, ReactNode} from 'react';
 import {Header, HeaderProps} from '../header';
 
 export interface CustomModalProps extends Omit<ModalProps, 'title'> {
@@ -10,7 +10,7 @@ export interface CustomModalProps extends Omit<ModalProps, 'title'> {
     /**
      * The title text displayed on top of the modal
      */
-    title: string;
+    title: ReactNode;
     /**
      * The description text displayed inside the header underneath the title
      */
