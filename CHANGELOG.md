@@ -1,3 +1,12 @@
+# 48.26.0 (2023-01-12)
+
+
+### Features
+
+* **Modal:** +ReactNode as title prop type (#3007) 6e82370, closes #3007
+
+
+
 ## 48.25.4 (2023-01-09)
 
 
