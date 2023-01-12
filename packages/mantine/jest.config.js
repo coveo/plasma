@@ -4,6 +4,7 @@ module.exports = {
     globalSetup: '<rootDir>/src/__tests__/GlobalSetup.ts',
     moduleNameMapper: {
         '^@test-utils$': '<rootDir>/src/__tests__/Utils.tsx',
+        '^@coveord/plasma-react-icons$': '<rootDir>/node_modules/@coveord/plasma-react-icons/mock',
     },
     testEnvironment: 'jsdom',
     transform: {

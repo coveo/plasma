@@ -30,7 +30,7 @@ describe('CollapsibleInfoBox', () => {
         };
         render(<CollapsibleInfoBox {...props} />);
 
-        expect(screen.queryByRole('img', {name: 'arrowHeadDown'})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: 'info'})).not.toBeInTheDocument();
     });
 
     it('display the sectionAdditionalContent if there is any and it is a section', () => {

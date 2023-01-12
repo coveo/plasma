@@ -7,6 +7,7 @@ module.exports = {
         '^d3-scale$': '<rootDir>/node_modules/d3-scale/dist/d3-scale.min.js',
         '^d3-array$': '<rootDir>/node_modules/d3-array/dist/d3-array.min.js',
         '^d3-shape$': '<rootDir>/node_modules/d3-shape/dist/d3-shape.min.js',
+        '^@coveord/plasma-react-icons$': '<rootDir>/node_modules/@coveord/plasma-react-icons/mock',
     },
     setupFiles: ['<rootDir>/jest/setup.ts'],
     setupFilesAfterEnv: ['<rootDir>/jest/entry.tsx'],
