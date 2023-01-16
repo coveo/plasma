@@ -1,4 +1,4 @@
-import * as QueryString from 'query-string';
+import queryString from 'query-string';
 
 /* istanbul ignore next */
 const getQuery = () => {
@@ -20,10 +20,10 @@ const getPathName = () => {
 };
 
 const toObject = (query: string) => ({
-    ...QueryString.parse(query, {parseBooleans: true, parseNumbers: true, sort: false}),
+    ...queryString.parse(query, {parseBooleans: true, parseNumbers: true, sort: false}),
 });
 
-const toQueryString = (obj: Record<string, unknown>): string => QueryString.stringify(obj, {sort: false});
+const toQueryString = (obj: Record<string, unknown>): string => queryString.stringify(obj, {sort: false});
 
 const getSearchParams = (): {[key: string]: any} => UrlUtils.toObject(UrlUtils.getQuery());
 
