@@ -1,3 +1,12 @@
+## 48.27.2 (2023-01-16)
+
+
+### Bug Fixes
+
+* **plasma-react:** bumped query-string to fix vulnerability in decode… (#3008) 2a5dc14, closes #3008
+
+
+
 ## 48.27.1 (2023-01-16)
 
 
