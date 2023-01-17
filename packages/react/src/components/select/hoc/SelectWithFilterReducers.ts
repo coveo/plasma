@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
-import {IStringListPayload, StringListActions} from '../../../reusableState/customList/StringListActions';
-import {IStringListState, stringListCompositeReducer} from '../../../reusableState/customList/StringListReducers';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IListBoxPayload, ListBoxActions} from '../../listBox/ListBoxActions';
+import {IStringListPayload, StringListActions} from '../../../reusableState/customList/StringListActions.js';
+import {IStringListState, stringListCompositeReducer} from '../../../reusableState/customList/StringListReducers.js';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {IListBoxPayload, ListBoxActions} from '../../listBox/ListBoxActions.js';
 
 export type ISelectWithFilterCompositeState = {[id: string]: ISelectWithFilterState};
 

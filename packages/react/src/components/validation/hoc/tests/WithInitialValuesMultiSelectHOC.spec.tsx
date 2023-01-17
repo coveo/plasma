@@ -1,12 +1,12 @@
 import {FC} from 'react';
 import {render, screen, within} from '@test-utils';
 
-import {getStoreMock, WarningList} from '../../../../utils/tests/TestUtils';
-import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
+import {getStoreMock, WarningList} from '../../../../utils/tests/TestUtils.js';
+import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected.js';
 import {
     IMultiSelectWithInitialValuesOwnProps,
     withInitialValuesMultiSelectHOC,
-} from '../WithInitialValuesMultiSelectHOC';
+} from '../WithInitialValuesMultiSelectHOC.js';
 
 const MultiSelectWithInitialValues = withInitialValuesMultiSelectHOC(MultiSelectConnected);
 const MultiSelectWithInitialValuesAndWarnings: FC<

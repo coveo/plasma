@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import {ReduxUtils} from '../../utils/ReduxUtils';
-import {IPrimaryActionStateProps, PrimaryAction} from './PrimaryAction';
+import {ReduxUtils} from '../../utils/ReduxUtils.js';
+import {IPrimaryActionStateProps, PrimaryAction} from './PrimaryAction.js';
 
 const mapStateToProps = (): IPrimaryActionStateProps => ({
     withReduxState: true,

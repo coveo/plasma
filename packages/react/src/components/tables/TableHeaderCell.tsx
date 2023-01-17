@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import {ClassAttributes, Component, MouseEvent, ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {IClassName} from '../../utils/ClassNameUtils';
-import {TableSortingOrder} from './TableConstants';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {TableSortingOrder} from './TableConstants.js';
 
 export interface ITableHeaderCellOwnProps extends ClassAttributes<TableHeaderCell> {
     title: ReactNode;

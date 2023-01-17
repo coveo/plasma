@@ -1,7 +1,7 @@
 import {ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
-import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions';
+import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions.js';
 
 export interface IDropdownSearchAutoInfiniteScrollOptions {
     optionsPerPage: number;

@@ -1,7 +1,7 @@
-import {LastUpdatedConnected} from '../../lastUpdated/LastUpdatedConnected';
-import {ITableProps} from '../Table';
-import {TableChildComponent} from '../TableConstants';
-import {getTableChildComponentId} from '../TableUtils';
+import {LastUpdatedConnected} from '../../lastUpdated/LastUpdatedConnected.js';
+import {ITableProps} from '../Table.js';
+import {TableChildComponent} from '../TableConstants.js';
+import {getTableChildComponentId} from '../TableUtils.js';
 
 export interface TableChildLastUpdatedProps extends ITableProps {
     pullLeft?: boolean;

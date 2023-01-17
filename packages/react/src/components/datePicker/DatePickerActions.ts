@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {DatePickerDateRange} from './DatePickerConstants';
-import {IRangeLimit} from './DatesSelection';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {DatePickerDateRange} from './DatePickerConstants.js';
+import {IRangeLimit} from './DatesSelection.js';
 
 export const DatePickerActions = {
     add: 'ADD_DATE_PICKER',

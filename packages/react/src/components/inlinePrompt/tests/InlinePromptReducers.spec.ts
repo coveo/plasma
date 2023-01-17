@@ -1,12 +1,12 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IAddPromptActionPayload, IPromptActionPayload, PromptActions} from '../InlinePromptActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {IAddPromptActionPayload, IPromptActionPayload, PromptActions} from '../InlinePromptActions.js';
 import {
     IPromptState,
     promptInitialState,
     promptReducer,
     promptsInitialState,
     promptsReducer,
-} from '../InlinePromptReducers';
+} from '../InlinePromptReducers.js';
 
 describe('InlinePrompt', () => {
     describe('prompts', () => {

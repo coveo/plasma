@@ -1,10 +1,10 @@
 import {mountWithStore, shallowWithState, shallowWithStore} from '@test-utils';
 
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {UUID} from '../../../utils/UUID';
-import {FlatSelectConnected, IFlatSelectOwnProps} from '../FlatSelect';
-import {addFlatSelect, removeFlatSelect, selectFlatSelect} from '../FlatSelectActions';
-import {FlatSelectOption, IFlatSelectOptionProps} from '../FlatSelectOption';
+import {getStoreMock} from '../../../utils/tests/TestUtils.js';
+import {UUID} from '../../../utils/UUID.js';
+import {FlatSelectConnected, IFlatSelectOwnProps} from '../FlatSelect.js';
+import {addFlatSelect, removeFlatSelect, selectFlatSelect} from '../FlatSelectActions.js';
+import {FlatSelectOption, IFlatSelectOptionProps} from '../FlatSelectOption.js';
 
 describe('FlatSelect', () => {
     const defaultOptions: IFlatSelectOptionProps[] = [

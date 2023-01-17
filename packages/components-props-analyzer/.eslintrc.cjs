@@ -5,5 +5,5 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
-    ignorePatterns: ['.eslintrc.js', 'dist', 'node_modules'],
+    ignorePatterns: ['.eslintrc.cjs', 'dist', 'node_modules'],
 };

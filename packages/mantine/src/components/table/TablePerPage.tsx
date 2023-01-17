@@ -2,7 +2,7 @@ import {Group, SegmentedControl, Text} from '@mantine/core';
 import {TableState} from '@tanstack/react-table';
 import {FunctionComponent} from 'react';
 
-import {useTable} from './useTable';
+import {useTable} from './useTable.js';
 
 interface TablePerPageProps {
     /**

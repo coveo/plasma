@@ -1,9 +1,9 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {TableHeaderActions} from '../actions/TableHeaderActions';
-import {TableHeaderWithSort} from '../TableHeaderWithSort';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {TableHeaderActions} from '../actions/TableHeaderActions.js';
+import {TableHeaderWithSort} from '../TableHeaderWithSort.js';
 
 describe('Table HOC', () => {
     describe('TableHeaderWithSort', () => {

@@ -1,14 +1,14 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {closeModals} from './ModalActions';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {closeModals} from './ModalActions.js';
 import {
     IModalBackdropDispatchProps,
     IModalBackdropOwnProps,
     IModalBackdropStateProps,
     ModalBackdrop,
-} from './ModalBackdrop';
+} from './ModalBackdrop.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IModalBackdropOwnProps): IModalBackdropStateProps => {
     let modals = state.modals;

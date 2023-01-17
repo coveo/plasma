@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {JSONEditorState} from './JSONEditorReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {JSONEditorState} from './JSONEditorReducers.js';
 
 const getValue = (state: PlasmaState, id: string): string => {
     const jsonEditor: JSONEditorState = _.findWhere(state.jsonEditors, {id});

@@ -3,13 +3,13 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IOptionPickerProps, OptionPicker} from '../OptionPicker';
-import {changeOptionPicker} from '../OptionPickerActions';
-import {OptionPickerConnected} from '../OptionPickerConnected';
-import {IOptionPickerState} from '../OptionPickerReducers';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IOptionPickerProps, OptionPicker} from '../OptionPicker.js';
+import {changeOptionPicker} from '../OptionPickerActions.js';
+import {OptionPickerConnected} from '../OptionPickerConnected.js';
+import {IOptionPickerState} from '../OptionPickerReducers.js';
 
 describe('Option picker', () => {
     const OPTION_PICKER_BASIC_PROPS: IOptionPickerProps = {

@@ -4,12 +4,12 @@ import {ShallowWrapper} from 'enzyme';
 import {ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {StringListActions} from '../../../reusableState/customList/StringListActions';
-import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {Button, IButtonProps} from '../../button/Button';
-import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
-import {IMultilineBoxOwnProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
+import {StringListActions} from '../../../reusableState/customList/StringListActions.js';
+import {RTestUtils} from '../../../utils/tests/RTestUtils.js';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {Button, IButtonProps} from '../../button/Button.js';
+import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton.js';
+import {IMultilineBoxOwnProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox.js';
 
 describe('Multiline box with remove button', () => {
     describe('<MultilineBoxWithRemoveButton/>', () => {

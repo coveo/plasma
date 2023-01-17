@@ -1,6 +1,6 @@
 import {render, screen, waitFor} from '@test-utils';
 import {FunctionComponent, PropsWithChildren} from 'react';
-import {Loadable} from '../Loadable';
+import {Loadable} from '../Loadable.js';
 
 describe('<Loadable />', () => {
     it('renders a Loading while importing and the component once it succeeds', async () => {

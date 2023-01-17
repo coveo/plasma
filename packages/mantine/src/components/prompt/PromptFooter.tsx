@@ -1,5 +1,5 @@
 import {FunctionComponent, PropsWithChildren} from 'react';
-import {StickyFooter, StickyFooterProps} from '../sticky-footer';
+import {StickyFooter, StickyFooterProps} from '../sticky-footer/index.js';
 
 export interface PromptFooterProps extends StickyFooterProps {}
 

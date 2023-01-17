@@ -1,8 +1,8 @@
 import {shallowWithStore} from '@test-utils';
 
-import {getStoreMock} from '../../../../utils/tests/TestUtils';
-import {StickyFooter} from '../../../stickyFooter/StickyFooter';
-import {withDirtyStickyFooterHOC} from '../WithDirtyStickyFooter';
+import {getStoreMock} from '../../../../utils/tests/TestUtils.js';
+import {StickyFooter} from '../../../stickyFooter/StickyFooter.js';
+import {withDirtyStickyFooterHOC} from '../WithDirtyStickyFooter.js';
 
 describe('WithDirtyStickyFooter', () => {
     const StickyFooterWithHOC = withDirtyStickyFooterHOC(StickyFooter);

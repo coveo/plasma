@@ -1,12 +1,12 @@
-import {IReduxAction} from '../../../utils';
-import {JSONEditorActionPayload, JSONEditorActions} from '../JSONEditorActions';
+import {IReduxAction} from '../../../utils/index.js';
+import {JSONEditorActionPayload, JSONEditorActions} from '../JSONEditorActions.js';
 import {
     jsonEditorInitialState,
     jsonEditorsInitialState,
     jsonEditorsReducer,
     JSONEditorState,
-} from '../JSONEditorReducers';
-import {JSONEditorUtils} from '../JSONEditorUtils';
+} from '../JSONEditorReducers.js';
+import {JSONEditorUtils} from '../JSONEditorUtils.js';
 
 describe('JSONEditorReducers', () => {
     let oldState: JSONEditorState[];

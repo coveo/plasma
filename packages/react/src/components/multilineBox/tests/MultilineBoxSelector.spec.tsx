@@ -1,4 +1,4 @@
-import {MultilineBoxSelectors} from '../MultilineBoxSelector';
+import {MultilineBoxSelectors} from '../MultilineBoxSelector.js';
 
 describe('MultilineBoxSelectors', () => {
     const id: string = 'Raptor';

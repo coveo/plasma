@@ -1,7 +1,7 @@
 import {CriticalSize24Px} from '@coveord/plasma-react-icons';
 import {ComponentClass, PureComponent} from 'react';
 
-import {IBlankSlateProps} from './BlankSlate';
+import {IBlankSlateProps} from './BlankSlate.js';
 
 /**
  * @deprecated Use Plasmantine Blank-slate instead

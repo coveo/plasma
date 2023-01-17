@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {IPaginationState} from '../navigation/pagination';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IPaginationState} from '../navigation/pagination/index.js';
 
 const getPaginationState = (state: PlasmaState, {id}: {id: string}) => _.findWhere(state.paginationComposite, {id: id});
 

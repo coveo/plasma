@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {Component} from 'react';
-import {Content, IContentProps} from '../content/Content';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {Content, IContentProps} from '../content/Content.js';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip.js';
 
 export interface IFlatSelectOptionProps {
     id: string;

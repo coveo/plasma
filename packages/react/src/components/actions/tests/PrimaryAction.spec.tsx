@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {IActionOptions} from '../Action';
-import {IPrimaryActionProps, PrimaryAction} from '../PrimaryAction';
+import {IActionOptions} from '../Action.js';
+import {IPrimaryActionProps, PrimaryAction} from '../PrimaryAction.js';
 
 describe('Actions', () => {
     let actions: IActionOptions[];

@@ -2,9 +2,9 @@
 import {AddSize16Px, InfoSize16Px, RemoveSize16Px} from '@coveord/plasma-react-icons';
 import {fireEvent, render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import {BadgeType} from '../../badge';
+import {BadgeType} from '../../badge.js';
 
-import {IconCard} from '../IconCard';
+import {IconCard} from '../IconCard.js';
 
 describe('IconCard', () => {
     const icon = (

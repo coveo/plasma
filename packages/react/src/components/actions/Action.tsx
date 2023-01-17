@@ -2,8 +2,8 @@ import {Icon, MoreSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ClassAttributes, Component} from 'react';
 
-import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Tooltip} from '../tooltip/Tooltip';
+import {TooltipPlacement} from '../../utils/TooltipUtils.js';
+import {Tooltip} from '../tooltip/Tooltip.js';
 
 export interface IConfirmButtonLabel {
     cancel: string;

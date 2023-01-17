@@ -1,7 +1,7 @@
 import {QuestionSize32Px} from '@coveord/plasma-react-icons';
 import {Container} from '@mantine/core';
 import {fireEvent, render, screen} from '@test-utils';
-import {Modal} from '../Modal';
+import {Modal} from '../Modal.js';
 
 describe('Modal', () => {
     it('renders title, desctiption, close button, and child', () => {

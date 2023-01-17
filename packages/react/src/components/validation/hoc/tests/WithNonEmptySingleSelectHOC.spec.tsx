@@ -1,7 +1,7 @@
 import {render, screen} from '@test-utils';
-import {ErrorList, withSelectedValues} from '../../../../utils/tests/TestUtils';
-import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
-import {withNonEmptySingleSelectHOC, IWithNonEmptySingleSelectHOCProps} from '../WithNonEmptySingleSelectHOC';
+import {ErrorList, withSelectedValues} from '../../../../utils/tests/TestUtils.js';
+import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected.js';
+import {withNonEmptySingleSelectHOC, IWithNonEmptySingleSelectHOCProps} from '../WithNonEmptySingleSelectHOC.js';
 
 describe('SingleSelectWithNonEmpty', () => {
     const SingleSelectWithNonEmpty = withNonEmptySingleSelectHOC(SingleSelectConnected);

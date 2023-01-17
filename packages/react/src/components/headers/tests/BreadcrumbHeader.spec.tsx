@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {Breadcrumb, IBreadcrumbProps} from '../../breadcrumbs/Breadcrumb';
-import {BreadcrumbHeader, IBreadcrumbHeaderProps} from '../BreadcrumbHeader';
-import {HeaderWrapper} from '../HeaderWrapper';
+import {Breadcrumb, IBreadcrumbProps} from '../../breadcrumbs/Breadcrumb.js';
+import {BreadcrumbHeader, IBreadcrumbHeaderProps} from '../BreadcrumbHeader.js';
+import {HeaderWrapper} from '../HeaderWrapper.js';
 
 describe('<BreadcrumbHeader/>', () => {
     const defaultProps: IBreadcrumbHeaderProps = {

@@ -3,15 +3,15 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {addFilter, filterThrough} from '../../filterBox/FilterBoxActions';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {addFacet, toggleMoreFacetRows} from '../FacetActions';
-import {FacetMoreRows, IFacetMoreRowsProps} from '../FacetMoreRows';
-import {FacetMoreRowsConnected} from '../FacetMoreRowsConnected';
-import {FacetRow} from '../FacetRow';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {addFilter, filterThrough} from '../../filterBox/FilterBoxActions.js';
+import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected.js';
+import {addFacet, toggleMoreFacetRows} from '../FacetActions.js';
+import {FacetMoreRows, IFacetMoreRowsProps} from '../FacetMoreRows.js';
+import {FacetMoreRowsConnected} from '../FacetMoreRowsConnected.js';
+import {FacetRow} from '../FacetRow.js';
 
 describe('Facets', () => {
     describe('<FacetMoreRowConnected />', () => {

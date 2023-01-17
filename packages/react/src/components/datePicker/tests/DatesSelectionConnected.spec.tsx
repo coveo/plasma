@@ -4,13 +4,13 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {addOptionPicker, changeOptionPicker} from '../../optionPicker/OptionPickerActions';
-import {changeDatePickerLowerLimit, changeDatePickerUpperLimit, DateLimits, selectDate} from '../DatePickerActions';
-import {DatesSelection, IDatesSelectionProps} from '../DatesSelection';
-import {DatesSelectionConnected} from '../DatesSelectionConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {addOptionPicker, changeOptionPicker} from '../../optionPicker/OptionPickerActions.js';
+import {changeDatePickerLowerLimit, changeDatePickerUpperLimit, DateLimits, selectDate} from '../DatePickerActions.js';
+import {DatesSelection, IDatesSelectionProps} from '../DatesSelection.js';
+import {DatesSelectionConnected} from '../DatesSelectionConnected.js';
 
 describe('Date picker', () => {
     describe('<DatesSelectionConnected />', () => {

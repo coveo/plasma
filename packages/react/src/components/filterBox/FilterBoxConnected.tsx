@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {FilterBox, IFilterBoxDispatchProps, IFilterBoxOwnProps, IFilterBoxStateProps} from './FilterBox';
-import {addFilter, filterThrough, removeFilter} from './FilterBoxActions';
-import {FilterBoxSelectors} from './FilterBoxSelectors';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {FilterBox, IFilterBoxDispatchProps, IFilterBoxOwnProps, IFilterBoxStateProps} from './FilterBox.js';
+import {addFilter, filterThrough, removeFilter} from './FilterBoxActions.js';
+import {FilterBoxSelectors} from './FilterBoxSelectors.js';
 
 const FILTER_THROUGH_DEBOUNCE = 400;
 export const debouncedFilterThrough = _.debounce(

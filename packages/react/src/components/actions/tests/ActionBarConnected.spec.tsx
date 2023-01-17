@@ -4,17 +4,17 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {getStoreMock, PlasmaMockStore, TestUtils} from '../../../utils/tests/TestUtils';
-import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt';
-import {addPrompt, removePrompt} from '../../inlinePrompt/InlinePromptActions';
-import {IActionOptions} from '../Action';
-import {ActionBar, ActionBarConnected, IActionBarProps} from '../ActionBar';
-import {addActionsToActionBar, removeActionBar} from '../ActionBarActions';
-import {filterItems, removeItemFilter} from '../filters/ItemFilterActions';
-import {PrimaryActionConnected} from '../PrimaryActionConnected';
-import {SecondaryActions} from '../SecondaryActions';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {getStoreMock, PlasmaMockStore, TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt.js';
+import {addPrompt, removePrompt} from '../../inlinePrompt/InlinePromptActions.js';
+import {IActionOptions} from '../Action.js';
+import {ActionBar, ActionBarConnected, IActionBarProps} from '../ActionBar.js';
+import {addActionsToActionBar, removeActionBar} from '../ActionBarActions.js';
+import {filterItems, removeItemFilter} from '../filters/ItemFilterActions.js';
+import {PrimaryActionConnected} from '../PrimaryActionConnected.js';
+import {SecondaryActions} from '../SecondaryActions.js';
 
 describe('Actions', () => {
     const id: string = 'secondary-actions';

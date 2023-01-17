@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {ValidationActionsTypes} from './ValidationActions';
-import {ValidationsState, ValidationState} from './ValidationState';
+import {ValidationActionsTypes} from './ValidationActions.js';
+import {ValidationsState, ValidationState} from './ValidationState.js';
 
 type ValidationActions = {
     type: string;

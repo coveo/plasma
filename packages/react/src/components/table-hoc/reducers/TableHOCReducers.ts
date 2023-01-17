@@ -1,7 +1,7 @@
 import _ from 'underscore';
 
-import {IReduxAction} from '../../../utils';
-import {TableHOCActionsType, TableHOCSetEmptyStatePayload} from '../actions/TableHOCActions';
+import {IReduxAction} from '../../../utils/index.js';
+import {TableHOCActionsType, TableHOCSetEmptyStatePayload} from '../actions/TableHOCActions.js';
 
 export interface HOCTableState {
     id: string;

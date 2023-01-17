@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {CollapsibleActions, CollapsiblePayload} from './CollapsibleActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {CollapsibleActions, CollapsiblePayload} from './CollapsibleActions.js';
 
 export interface CollapsibleState {
     id: string;

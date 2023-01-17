@@ -1,7 +1,7 @@
 import {render, screen, userEvent} from '@test-utils';
 import dayjs from 'dayjs';
 
-import {DateRangePickerInlineCalendar} from '../DateRangePickerInlineCalendar';
+import {DateRangePickerInlineCalendar} from '../DateRangePickerInlineCalendar.js';
 
 describe('DateRangePickerInlineCalendar', () => {
     it('calls onApply when the user clicks on the apply button', async () => {

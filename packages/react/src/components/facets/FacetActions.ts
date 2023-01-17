@@ -1,5 +1,5 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IFacet} from './Facet';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IFacet} from './Facet.js';
 
 export const FacetActions = {
     addFacet: 'ADD_FACET',

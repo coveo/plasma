@@ -1,9 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {UUID} from '../../../utils/UUID';
-import {Content, IContentProps} from '../../content/Content';
-import {FlatSelectOption, IFlatSelectOptionProps} from '../FlatSelectOption';
+import {UUID} from '../../../utils/UUID.js';
+import {Content, IContentProps} from '../../content/Content.js';
+import {FlatSelectOption, IFlatSelectOptionProps} from '../FlatSelectOption.js';
 
 describe('FlatSelect', () => {
     it('should render without errors', () => {

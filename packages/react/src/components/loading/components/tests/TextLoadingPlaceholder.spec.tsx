@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {TextLoadingPlaceholder} from '../TextLoadingPlaceholder';
+import {TextLoadingPlaceholder} from '../TextLoadingPlaceholder.js';
 
 describe('TextLoadingPlaceholder tests', () => {
     describe('<TextLoadingPlaceholder />', () => {

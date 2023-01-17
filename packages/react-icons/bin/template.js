@@ -1,4 +1,4 @@
-const t = require('@babel/types');
+import t from '@babel/types';
 
 const findSvgTag = (variables) => variables.jsx.openingElement;
 
@@ -49,4 +49,4 @@ ${variables.exports};
 `;
 };
 
-module.exports = template;
+export default template;

@@ -1,8 +1,8 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {Filepicker} from '../Filepicker';
-import {FilepickerSelectors} from '../FilepickerSelectors';
+import {Filepicker} from '../Filepicker.js';
+import {FilepickerSelectors} from '../FilepickerSelectors.js';
 
 describe('Filepicker', () => {
     const file = new File(['hello'], 'hello.png', {type: 'image/png'});

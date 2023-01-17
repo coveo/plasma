@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {ItemBoxLoading} from '../ItemBoxLoading';
+import {ItemBoxLoading} from '../ItemBoxLoading.js';
 
 describe('ItemBoxLoading', () => {
     it('should render and unmount without throwing errors', () => {

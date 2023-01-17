@@ -1,13 +1,13 @@
 import * as faker from 'faker/locale/en';
 import * as _ from 'underscore';
-import {TableChildComponent, TableSortingOrder} from '../TableConstants';
+import {TableChildComponent, TableSortingOrder} from '../TableConstants.js';
 import {
     convertDataByIdToCollection,
     convertInitialCollectionToDataById,
     getNextTableSortingOrder,
     getTableChildComponentId,
     getTableLoadingIds,
-} from '../TableUtils';
+} from '../TableUtils.js';
 
 describe('TableUtils', () => {
     describe('getNextTableSortingOrder', () => {

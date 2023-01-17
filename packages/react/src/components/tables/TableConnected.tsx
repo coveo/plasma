@@ -1,26 +1,26 @@
 import {connect} from 'react-redux';
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {ReduxUtils} from '../../utils/ReduxUtils';
-import {IActionOptions} from '../actions/Action';
-import {addActionsToActionBar} from '../actions/ActionBarActions';
-import {IDatePickerState} from '../datePicker/DatePickerReducers';
-import {IDropdownOption} from '../dropdownSearch/DropdownSearch';
-import {closeDropdownSearch, selectOptionDropdownSearch} from '../dropdownSearch/DropdownSearchActions';
-import {IDropdownSearchState} from '../dropdownSearch/DropdownSearchReducers';
-import {IFilterState} from '../filterBox/FilterBoxReducers';
-import {IPaginationState} from '../navigation/pagination/NavigationPaginationReducers';
-import {IPerPageState} from '../navigation/perPage/NavigationPerPageReducers';
-import {IData, ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, Table} from './Table';
-import {addTable, removeTable} from './TableActions';
-import {DEFAULT_TABLE_DATA, TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE} from './TableConstants';
-import {defaultTableStateModifierThunk} from './TableDataModifier';
-import {ITableHeaderCellState} from './TableHeaderCellReducers';
-import {ITableById, ITableCompositeState, ITableData, ITableState} from './TableReducers';
-import {getTableChildComponentId} from './TableUtils';
+import s from 'underscore.string';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {ReduxUtils} from '../../utils/ReduxUtils.js';
+import {IActionOptions} from '../actions/Action.js';
+import {addActionsToActionBar} from '../actions/ActionBarActions.js';
+import {IDatePickerState} from '../datePicker/DatePickerReducers.js';
+import {IDropdownOption} from '../dropdownSearch/DropdownSearch.js';
+import {closeDropdownSearch, selectOptionDropdownSearch} from '../dropdownSearch/DropdownSearchActions.js';
+import {IDropdownSearchState} from '../dropdownSearch/DropdownSearchReducers.js';
+import {IFilterState} from '../filterBox/FilterBoxReducers.js';
+import {IPaginationState} from '../navigation/pagination/NavigationPaginationReducers.js';
+import {IPerPageState} from '../navigation/perPage/NavigationPerPageReducers.js';
+import {IData, ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, Table} from './Table.js';
+import {addTable, removeTable} from './TableActions.js';
+import {DEFAULT_TABLE_DATA, TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE} from './TableConstants.js';
+import {defaultTableStateModifierThunk} from './TableDataModifier.js';
+import {ITableHeaderCellState} from './TableHeaderCellReducers.js';
+import {ITableById, ITableCompositeState, ITableData, ITableState} from './TableReducers.js';
+import {getTableChildComponentId} from './TableUtils.js';
 
 export const getTableCompositeState = (state: PlasmaState, id: string): ITableCompositeState => {
     const tableState: ITableState = state.tables[id] || ({} as ITableState);
@@ -34,7 +34,7 @@ export const getTableCompositeState = (state: PlasmaState, id: string): ITableCo
         (tableState &&
             _.reject(
                 state.dropdownSearch,
-                (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)
+                (dropdownSearch: IDropdownSearchState) => !s.contains(dropdownSearch.id, id)
             )) ||
         [];
     const datePickerState: IDatePickerState =

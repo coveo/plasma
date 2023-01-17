@@ -1,7 +1,7 @@
 import {fireEvent, render, screen} from '@test-utils';
 
-import {multilineBoxWithDnD} from '../hoc/MultilineBoxWithDnD';
-import {MultilineBox} from '../MultilineBox';
+import {multilineBoxWithDnD} from '../hoc/MultilineBoxWithDnD.js';
+import {MultilineBox} from '../MultilineBox.js';
 
 describe('MultilineBoxWithDnD', () => {
     const MultilineBoxWithDnD = multilineBoxWithDnD()(MultilineBox);

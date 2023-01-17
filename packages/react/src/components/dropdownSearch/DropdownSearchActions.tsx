@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IDropdownOption} from './DropdownSearch';
-import {isSelectingOption} from './DropdownSearchUtils';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IDropdownOption} from './DropdownSearch.js';
+import {isSelectingOption} from './DropdownSearchUtils.js';
 
 export interface IDefaultDropdownSearchPayload {
     id: string;

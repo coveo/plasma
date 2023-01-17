@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import {Color} from '../Color';
+import {Color} from '../Color.js';
 
 describe('ColorBar', () => {
     it('should render without error in different prop scenarios', () => {

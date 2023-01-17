@@ -1,4 +1,4 @@
-import {UrlUtils} from './UrlUtils';
+import {UrlUtils} from './UrlUtils.js';
 
 describe('UrlUtils', () => {
     describe('toObject', () => {

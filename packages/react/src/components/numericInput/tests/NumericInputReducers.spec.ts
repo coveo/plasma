@@ -1,13 +1,13 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {NumericInputActions} from '../NumericInputActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {NumericInputActions} from '../NumericInputActions.js';
 import {
     initialNumericInputsState,
     initialNumericInputState,
     INumericInputPayload,
     INumericInputsState,
     numericInputReducer,
-} from '../NumericInputReducers';
+} from '../NumericInputReducers.js';
 
 describe('Numeric Input', () => {
     describe('Numeric Input Reducers', () => {

@@ -3,7 +3,7 @@ import {RefObject, createRef, Children, Component, ReactNode} from 'react';
 import {findDOMNode} from 'react-dom';
 import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
-import {Defaults} from '../../Defaults';
+import {Defaults} from '../../Defaults.js';
 
 export interface ITetherComponentCopiedProps {
     renderElementTag?: string;

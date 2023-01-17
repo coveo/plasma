@@ -2,7 +2,7 @@ import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {mount, ReactWrapper} from 'enzyme';
 
-import {FilterBox, FILTER_PLACEHOLDER, IFilterBoxProps} from '../FilterBox';
+import {FilterBox, FILTER_PLACEHOLDER, IFilterBoxProps} from '../FilterBox.js';
 
 describe('<FilterBox />', () => {
     let filterBox: ReactWrapper<IFilterBoxProps, any>;

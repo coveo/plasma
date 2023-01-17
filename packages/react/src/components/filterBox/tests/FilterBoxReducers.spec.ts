@@ -1,14 +1,14 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {selectListBoxOption} from '../../listBox/ListBoxActions';
-import {toggleSelect} from '../../select/SelectActions';
-import {FilterActions, IChangeFilterActionPayload, IFilterActionPayload} from '../FilterBoxActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {selectListBoxOption} from '../../listBox/ListBoxActions.js';
+import {toggleSelect} from '../../select/SelectActions.js';
+import {FilterActions, IChangeFilterActionPayload, IFilterActionPayload} from '../FilterBoxActions.js';
 import {
     filterBoxesReducer,
     filterBoxInitialState,
     filterBoxReducer,
     filtersInitialState,
     IFilterState,
-} from '../FilterBoxReducers';
+} from '../FilterBoxReducers.js';
 
 describe('FilterBox', () => {
     describe('FilterBoxReducers', () => {

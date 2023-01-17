@@ -1,4 +1,4 @@
-import {JSONEditorUtils} from '../JSONEditorUtils';
+import {JSONEditorUtils} from '../JSONEditorUtils.js';
 
 describe('JSONEditorUtils', () => {
     describe('validateValue', () => {

@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {IActionOptions} from '../Action';
-import {ITriggerActionProps, TriggerAction} from '../TriggerActionConnected';
+import {IActionOptions} from '../Action.js';
+import {ITriggerActionProps, TriggerAction} from '../TriggerActionConnected.js';
 
 describe('Actions', () => {
     let triggerSpy: jest.Mock;

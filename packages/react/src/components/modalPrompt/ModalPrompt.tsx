@@ -1,9 +1,9 @@
 import {Component} from 'react';
 
-import {Modal} from '../modal/Modal';
-import {ModalBody} from '../modal/ModalBody';
-import {ModalFooter} from '../modal/ModalFooter';
-import {ModalHeader} from '../modal/ModalHeader';
+import {Modal} from '../modal/Modal.js';
+import {ModalBody} from '../modal/ModalBody.js';
+import {ModalFooter} from '../modal/ModalFooter.js';
+import {ModalHeader} from '../modal/ModalHeader.js';
 
 export interface IModalPromptOwnProps {
     id: string;

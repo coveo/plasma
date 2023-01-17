@@ -4,16 +4,16 @@ import {ComponentProps, FunctionComponent, ReactNode, useCallback, useEffect, us
 import {useDispatch} from 'react-redux';
 import {isBoolean} from 'underscore';
 
-import {IDispatch} from '../../utils/ReduxUtils';
-import {SliderActions} from './SliderActions';
-import SliderHandle from './SliderHandle';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {SliderActions} from './SliderActions.js';
+import SliderHandle from './SliderHandle.js';
 import {
     getOutputValue,
     getValuesPositionOnRange,
     handleIsAtCrossingPoint,
     propsValidator,
     valuesPositionOnRange,
-} from './SliderUtils';
+} from './SliderUtils.js';
 
 export enum AppendedValueSide {
     left = 'LEFT',

@@ -2,19 +2,23 @@ import {ComponentType, PropsWithChildren, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, IThunkAction} from '../../utils/ReduxUtils';
-import {UrlUtils} from '../../utils/UrlUtils';
-import {applyDatePicker, changeDatePickerLowerLimit, changeDatePickerUpperLimit} from '../datePicker/DatePickerActions';
-import {filterThrough} from '../filterBox/FilterBoxActions';
-import {selectFlatSelect} from '../flatSelect';
-import {selectListBoxOption} from '../listBox/ListBoxActions';
-import {changePage} from '../navigation/pagination/NavigationPaginationActions';
-import {changePerPage} from '../navigation/perPage/NavigationPerPageActions';
-import {PaginationUtils} from '../pagination';
-import {TableHeaderActions} from './actions/TableHeaderActions';
-import {ITableHOCOwnProps} from './TableHOC';
-import {ITableHOCPredicateValue, TableHOCUtils} from './utils/TableHOCUtils';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, IThunkAction} from '../../utils/ReduxUtils.js';
+import {UrlUtils} from '../../utils/UrlUtils.js';
+import {
+    applyDatePicker,
+    changeDatePickerLowerLimit,
+    changeDatePickerUpperLimit,
+} from '../datePicker/DatePickerActions.js';
+import {filterThrough} from '../filterBox/FilterBoxActions.js';
+import {selectFlatSelect} from '../flatSelect/index.js';
+import {selectListBoxOption} from '../listBox/ListBoxActions.js';
+import {changePage} from '../navigation/pagination/NavigationPaginationActions.js';
+import {changePerPage} from '../navigation/perPage/NavigationPerPageActions.js';
+import {PaginationUtils} from '../pagination/index.js';
+import {TableHeaderActions} from './actions/TableHeaderActions.js';
+import {ITableHOCOwnProps} from './TableHOC.js';
+import {ITableHOCPredicateValue, TableHOCUtils} from './utils/TableHOCUtils.js';
 
 export interface TableWithUrlStateProps {
     onUpdateUrl: (queryString: string) => void;

@@ -1,5 +1,5 @@
-import {ContentLoadingPlaceholder} from './ContentLoadingPlaceholder';
-import {TextLoadingPlaceholder} from './TextLoadingPlaceholder';
+import {ContentLoadingPlaceholder} from './ContentLoadingPlaceholder.js';
+import {TextLoadingPlaceholder} from './TextLoadingPlaceholder.js';
 
 /**
  * @deprecated Use Mantine instead

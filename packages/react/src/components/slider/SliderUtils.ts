@@ -1,4 +1,4 @@
-import {SliderOwnProps} from './Slider';
+import {SliderOwnProps} from './Slider.js';
 
 export const valuesPositionOnRange = {
     lower: 'LOWER_THAN_CROSSING_POINT',

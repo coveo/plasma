@@ -1,5 +1,5 @@
-import {flatSelectInitialState, IFlatSelectState} from '../FlatSelectReducers';
-import {FlatSelectSelectors} from '../FlatSelectSelectors';
+import {flatSelectInitialState, IFlatSelectState} from '../FlatSelectReducers.js';
+import {FlatSelectSelectors} from '../FlatSelectSelectors.js';
 
 describe('FlatSelectSelectors', () => {
     describe('getInput', () => {

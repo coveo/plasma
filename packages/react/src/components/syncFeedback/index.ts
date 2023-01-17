@@ -1,1 +1,1 @@
-export * from './SyncFeedback';
+export * from './SyncFeedback.js';

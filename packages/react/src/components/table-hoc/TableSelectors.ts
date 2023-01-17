@@ -1,9 +1,9 @@
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {HOCTableRowState} from './reducers/TableRowReducers';
-import {ITableWithSortState} from './reducers/TableWithSortReducers';
-import {TableHOCUtils} from './utils/TableHOCUtils';
+import {PlasmaState} from '../../PlasmaState.js';
+import {HOCTableRowState} from './reducers/TableRowReducers.js';
+import {ITableWithSortState} from './reducers/TableWithSortReducers.js';
+import {TableHOCUtils} from './utils/TableHOCUtils.js';
 
 export interface TableSelectorsProps {
     id: string;

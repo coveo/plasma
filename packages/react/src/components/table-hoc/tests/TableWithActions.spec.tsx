@@ -2,10 +2,10 @@ import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as _ from 'underscore';
 
-import {TableRowConnected} from '..';
-import {IActionOptions} from '../../actions';
-import {TableHOC} from '../TableHOC';
-import {tableWithActions} from '../TableWithActions';
+import {IActionOptions} from '../../actions/index.js';
+import {TableHOC} from '../TableHOC.js';
+import {TableRowConnected} from '../TableRowConnected.js';
+import {tableWithActions} from '../TableWithActions.js';
 
 describe('Table HOC', () => {
     describe('TableWithActions', () => {

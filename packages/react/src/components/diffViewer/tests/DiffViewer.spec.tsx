@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 
-import {DiffViewer} from '../DiffViewer';
+import {DiffViewer} from '../DiffViewer.js';
 
 describe('DiffViewer', () => {
     const difference = `

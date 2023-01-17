@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import {ClassAttributes, Component, MouseEvent} from 'react';
 import * as _ from 'underscore';
 
-import {Tooltip} from '../tooltip/Tooltip';
-import {IFacet} from './Facet';
+import {Tooltip} from '../tooltip/Tooltip.js';
+import {IFacet} from './Facet.js';
 
 export interface IFacetRowProps extends ClassAttributes<FacetRow> {
     facetRow: IFacet;

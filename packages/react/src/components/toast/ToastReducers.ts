@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IToastProps} from './Toast';
-import {IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction} from './ToastActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IToastProps} from './Toast.js';
+import {IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction} from './ToastActions.js';
 
 export interface IToastsState {
     id: string;

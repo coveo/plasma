@@ -2,9 +2,9 @@ import {FunctionComponent, ChangeEvent, useState, useEffect, useCallback} from '
 import {ChromePicker, ChromePickerProps, ColorChangeHandler, ColorResult} from 'react-color';
 import {useDispatch} from 'react-redux';
 import {uniqueId} from 'underscore';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {changeInputValue} from '../input/InputActions';
-import {InputConnected} from '../input/Input';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {changeInputValue} from '../input/InputActions.js';
+import {InputConnected} from '../input/Input.js';
 
 export interface IColorPickerProps extends ChromePickerProps {
     /**

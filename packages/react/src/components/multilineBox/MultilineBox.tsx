@@ -3,19 +3,19 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
+import {PlasmaState} from '../../PlasmaState.js';
 import {
     addStringList,
     addValueStringList,
     removeStringList,
     removeValueStringList,
     updateValueStringList,
-} from '../../reusableState/customList/StringListActions';
-import {deepClone} from '../../utils/CloneUtils';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {UUID} from '../../utils/UUID';
-import {IMultiSelectOwnProps} from '../select/MultiSelectConnected';
-import {MultilineBoxSelectors} from './MultilineBoxSelector';
+} from '../../reusableState/customList/StringListActions.js';
+import {deepClone} from '../../utils/CloneUtils.js';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {UUID} from '../../utils/UUID.js';
+import {IMultiSelectOwnProps} from '../select/MultiSelectConnected.js';
+import {MultilineBoxSelectors} from './MultilineBoxSelector.js';
 
 export interface IMultilineSingleBoxProps<T = any> {
     /**

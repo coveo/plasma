@@ -1,5 +1,5 @@
-import {PlasmaState} from '../../../PlasmaState';
-import {SubNavigationSelector} from '../SubNavigationSelector';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {SubNavigationSelector} from '../SubNavigationSelector.js';
 
 describe('SubNavigationSelector', () => {
     const defaultState: PlasmaState = {

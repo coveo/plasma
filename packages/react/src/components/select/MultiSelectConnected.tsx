@@ -6,17 +6,17 @@ import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {CollapsibleToggle} from '../collapsible';
-import {DnDUtils} from '../dragAndDrop';
-import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
-import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
-import {Tooltip} from '../tooltip/Tooltip';
-import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
-import {SelectSelector} from './SelectSelector';
+import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState/index.js';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils.js';
+import {CollapsibleToggle} from '../collapsible/index.js';
+import {DnDUtils} from '../dragAndDrop/index.js';
+import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption.js';
+import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption.js';
+import {IItemBoxProps} from '../itemBox/ItemBox.js';
+import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions.js';
+import {Tooltip} from '../tooltip/Tooltip.js';
+import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected.js';
+import {SelectSelector} from './SelectSelector.js';
 
 export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 'multi'> {
     /**

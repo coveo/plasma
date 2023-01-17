@@ -3,22 +3,22 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../../PlasmaState';
-import {keyCode} from '../../../../utils/InputUtils';
-import {clearState} from '../../../../utils/ReduxUtils';
-import {TestUtils} from '../../../../utils/tests/TestUtils';
-import {UUID} from '../../../../utils/UUID';
-import {IDropdownSearchProps} from '../../DropdownSearch';
+import {PlasmaState} from '../../../../PlasmaState.js';
+import {keyCode} from '../../../../utils/InputUtils.js';
+import {clearState} from '../../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../../utils/tests/TestUtils.js';
+import {UUID} from '../../../../utils/UUID.js';
+import {IDropdownSearchProps} from '../../DropdownSearch.js';
 import {
     addCustomSelectedOption,
     applyFilterDropdownSearch,
     closeDropdownSearch,
     openDropdownSearch,
     updateOptionsDropdownSearch,
-} from '../../DropdownSearchActions';
-import {defaultSelectedOptionPlaceholder} from '../../DropdownSearchReducers';
-import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch';
-import {MultiSelectDropdownSearchConnected} from '../MultiSelectDropdownSearchConnected';
+} from '../../DropdownSearchActions.js';
+import {defaultSelectedOptionPlaceholder} from '../../DropdownSearchReducers.js';
+import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch.js';
+import {MultiSelectDropdownSearchConnected} from '../MultiSelectDropdownSearchConnected.js';
 
 describe('MultiSelectDropdownSearch', () => {
     const id: string = UUID.generate();

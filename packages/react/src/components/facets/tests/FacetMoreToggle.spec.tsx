@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
-import {createTestAppContainer} from '../../../utils/tests/TestUtils';
+import {createTestAppContainer} from '../../../utils/tests/TestUtils.js';
 
-import {FACET_TOGGLE_MORE_LABEL, FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle';
+import {FACET_TOGGLE_MORE_LABEL, FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle.js';
 
 describe('Facets', () => {
     const basicFacetMoreToggleProps: IFacetMoreToggleProps = {

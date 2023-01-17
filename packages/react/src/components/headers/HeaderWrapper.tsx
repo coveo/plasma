@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import {ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
-import {Content, IContentProps} from '../content/Content';
-import {ITabsHeaderProps, TabsHeader} from './TabsHeader';
+import {Content, IContentProps} from '../content/Content.js';
+import {ITabsHeaderProps, TabsHeader} from './TabsHeader.js';
 
 export interface IHeaderWrapperProps extends ITabsHeaderProps {
     /**

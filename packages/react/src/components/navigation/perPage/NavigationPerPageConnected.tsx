@@ -1,19 +1,19 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../../utils/ReduxUtils';
-import {changePage} from '../pagination/NavigationPaginationActions';
-import {IPaginationState} from '../pagination/NavigationPaginationReducers';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../../utils/ReduxUtils.js';
+import {changePage} from '../pagination/NavigationPaginationActions.js';
+import {IPaginationState} from '../pagination/NavigationPaginationReducers.js';
 import {
     INavigationPerPageDispatchProps,
     INavigationPerPageOwnProps,
     INavigationPerPageStateProps,
     NavigationPerPage,
     PER_PAGE_NUMBERS,
-} from './NavigationPerPage';
-import {addPerPage, changePerPage, removePerPage} from './NavigationPerPageActions';
-import {IPerPageState} from './NavigationPerPageReducers';
+} from './NavigationPerPage.js';
+import {addPerPage, changePerPage, removePerPage} from './NavigationPerPageActions.js';
+import {IPerPageState} from './NavigationPerPageReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: INavigationPerPageOwnProps): INavigationPerPageStateProps => {
     const perPageNumber: number[] = ownProps.perPageNumbers || PER_PAGE_NUMBERS;

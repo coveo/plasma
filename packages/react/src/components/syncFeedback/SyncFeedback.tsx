@@ -1,6 +1,6 @@
 import {PureComponent} from 'react';
 
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token/index.js';
 
 export interface ISyncFeedbackProps {
     /**

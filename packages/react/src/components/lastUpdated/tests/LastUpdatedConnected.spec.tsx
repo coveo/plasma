@@ -1,14 +1,14 @@
 import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
-import {contains} from 'underscore.string';
+import s from 'underscore.string';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ILastUpdatedProps, LastUpdated} from '../LastUpdated';
-import {changeLastUpdated} from '../LastUpdatedActions';
-import {LastUpdatedConnected} from '../LastUpdatedConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {ILastUpdatedProps, LastUpdated} from '../LastUpdated.js';
+import {changeLastUpdated} from '../LastUpdatedActions.js';
+import {LastUpdatedConnected} from '../LastUpdatedConnected.js';
 
 describe('LastUpdated', () => {
     describe('<LastUpdatedConnected />', () => {
@@ -61,7 +61,7 @@ describe('LastUpdated', () => {
         });
 
         it('should display the last update time', () => {
-            expect(contains(lastUpdated.html(), 'AM') || contains(lastUpdated.html(), 'PM')).toBe(true);
+            expect(s.contains(lastUpdated.html(), 'AM') || s.contains(lastUpdated.html(), 'PM')).toBe(true);
         });
 
         it('should add the last update time in the store on render', () => {

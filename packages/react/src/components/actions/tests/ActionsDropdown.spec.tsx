@@ -1,8 +1,8 @@
 import {shallow} from 'enzyme';
 
-import {DropdownConnected} from '../../dropdown';
-import {IActionOptions} from '../Action';
-import {ActionsDropdown} from '../ActionsDropdown';
+import {DropdownConnected} from '../../dropdown.js';
+import {IActionOptions} from '../Action.js';
+import {ActionsDropdown} from '../ActionsDropdown.js';
 
 describe('Actions', () => {
     const linkAction: IActionOptions = {

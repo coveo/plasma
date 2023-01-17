@@ -2,7 +2,7 @@ import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {LinkSvg} from '../LinkSvg';
+import {LinkSvg} from '../LinkSvg.js';
 
 describe('LinkSvg', () => {
     it('renders the specified children and a question icon next to it', async () => {

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import {FunctionComponent, PropsWithChildren} from 'react';
-import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {IInputProps, Input} from '../input/Input';
-import {Tooltip} from '../tooltip';
+import {TooltipPlacement} from '../../utils/TooltipUtils.js';
+import {IInputProps, Input} from '../input/Input.js';
+import {Tooltip} from '../tooltip/index.js';
 
 export interface RadioCardProps extends Omit<IInputProps, 'outerContainerClass' | 'outerElementInContainer'> {}
 

@@ -2,7 +2,7 @@ import {scaleLinear} from 'd3-scale';
 import {FunctionComponent, PropsWithChildren, useContext} from 'react';
 import * as _ from 'underscore';
 
-import {XYChartContext} from './XYChart';
+import {XYChartContext} from './XYChart.js';
 
 export interface AxisProps {
     show?: boolean;

@@ -1,9 +1,9 @@
 import {FunctionComponent} from 'react';
 
-import {TooltipPlacement} from '../../utils';
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {Tooltip} from '../tooltip';
-import {Label} from './Label';
+import {TooltipPlacement} from '../../utils/index.js';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token/index.js';
+import {Tooltip} from '../tooltip/index.js';
+import {Label} from './Label.js';
 
 export interface InputLabelWithTooltipProps {
     label: string;

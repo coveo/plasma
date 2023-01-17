@@ -1,7 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {MouseEvent} from 'react';
 
-import {EventUtils} from './EventUtils';
+import {EventUtils} from './EventUtils.js';
 
 describe('EventUtils', () => {
     describe('isClickingInsideElementWithClassname', () => {

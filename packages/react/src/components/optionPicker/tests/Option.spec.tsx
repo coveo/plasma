@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import {render, screen} from '@test-utils';
 
-import {IOptionProps, Option} from '../Option';
+import {IOptionProps, Option} from '../Option.js';
 
 describe('Option picker', () => {
     let OPTION_BASIC_PROPS: IOptionProps;

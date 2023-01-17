@@ -1,9 +1,9 @@
 import {FunctionComponent, useContext} from 'react';
 import * as _ from 'underscore';
 
-import {Color} from '../color/Color';
-import {ChartUtils} from './ChartUtils';
-import {XYChartContext, XYSerie} from './XYChart';
+import {Color} from '../color/Color.js';
+import {ChartUtils} from './ChartUtils.js';
+import {XYChartContext, XYSerie} from './XYChart.js';
 
 export interface ChartTooltipContentProps {
     x: number;

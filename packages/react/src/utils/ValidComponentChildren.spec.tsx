@@ -1,4 +1,4 @@
-import {ValidComponentChildren} from './ValidComponentChildren';
+import {ValidComponentChildren} from './ValidComponentChildren.js';
 
 describe('ValidComponentChildren', () => {
     it('should call function for valid component', () => {

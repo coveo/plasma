@@ -1,5 +1,5 @@
-import {PlasmaState} from '../../PlasmaState';
-import {ValidationState} from './ValidationState';
+import {PlasmaState} from '../../PlasmaState.js';
+import {ValidationState} from './ValidationState.js';
 
 const getErrors = (id: string) => (state: PlasmaState) =>
     state.validation?.[id]?.error?.filter((error) => !!error.value) || [];

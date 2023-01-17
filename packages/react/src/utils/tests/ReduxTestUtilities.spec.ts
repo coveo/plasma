@@ -1,6 +1,6 @@
-import {TableHOCUtils} from '../../components/table-hoc/utils/TableHOCUtils';
-import {PlasmaState} from '../../PlasmaState';
-import {ReduxTestUtilities} from './ReduxTestUtilities';
+import {TableHOCUtils} from '../../components/table-hoc/utils/TableHOCUtils.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {ReduxTestUtilities} from './ReduxTestUtilities.js';
 
 describe('ReduxTestUtilities', () => {
     const tableId = 'tableId';

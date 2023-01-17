@@ -1,13 +1,13 @@
 import {findWhere} from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ISubNavigationActionPayload, SubNavigationActions} from '../SubNavigationActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {ISubNavigationActionPayload, SubNavigationActions} from '../SubNavigationActions.js';
 import {
     ISubNavigationState,
     subNavigationInitialState,
     subNavigationReducer,
     subNavigationsInitialState,
     subNavigationsReducer,
-} from '../SubNavigationReducers';
+} from '../SubNavigationReducers.js';
 
 describe('Reducers', () => {
     describe('subNavigations', () => {

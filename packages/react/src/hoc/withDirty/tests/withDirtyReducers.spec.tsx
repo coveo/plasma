@@ -1,6 +1,6 @@
-import {ComponentId} from '../../../utils/ComponentUtils';
-import {WithDirtyActions} from '../withDirtyActions';
-import {dirtyComponentsInitialState, withDirtyReducer} from '../withDirtyReducers';
+import {ComponentId} from '../../../utils/ComponentUtils.js';
+import {WithDirtyActions} from '../withDirtyActions.js';
+import {dirtyComponentsInitialState, withDirtyReducer} from '../withDirtyReducers.js';
 
 describe('withEditing', () => {
     describe('withEditingReducers', () => {

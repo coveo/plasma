@@ -1,10 +1,10 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from '@test-utils';
 
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {RefreshCallBackActions} from '../RefeshCallbackActions';
-import {IRefreshCallbackProps, IRefreshCallbackState, RefreshCallback} from '../RefreshCallback';
-import {RefreshStatus} from '../RefreshCallbackReducer';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {RefreshCallBackActions} from '../RefeshCallbackActions.js';
+import {IRefreshCallbackProps, IRefreshCallbackState, RefreshCallback} from '../RefreshCallback.js';
+import {RefreshStatus} from '../RefreshCallbackReducer.js';
 
 describe('RefreshCallback tests', () => {
     describe('<RefreshCallback />', () => {

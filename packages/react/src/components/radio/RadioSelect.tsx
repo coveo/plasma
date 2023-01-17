@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import {MouseEvent, ReactElement, Children, cloneElement, PureComponent} from 'react';
+import {Children, cloneElement, MouseEvent, PureComponent, ReactElement} from 'react';
 import * as _ from 'underscore';
-import {RadioCard} from '.';
 
-import {ToggleForm} from '../childForm/ToggleForm';
-import {Radio} from './Radio';
+import {ToggleForm} from '../childForm/ToggleForm.js';
+import {Radio} from './Radio.js';
+import {RadioCard} from './RadioCard.js';
 
 export interface IRadioSelectOnChangeCallback {
     /**

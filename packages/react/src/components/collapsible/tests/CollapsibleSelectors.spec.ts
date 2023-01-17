@@ -1,5 +1,5 @@
-import {PlasmaState} from '../../../PlasmaState';
-import {CollapsibleSelectors} from '../CollapsibleSelectors';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {CollapsibleSelectors} from '../CollapsibleSelectors.js';
 
 describe('CollapsibleSelectors', () => {
     it('should not throw and return false when passing a falsy id', () => {

@@ -1,10 +1,15 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {IOptionPickerDispatchProps, IOptionPickerOwnProps, IOptionPickerStateProps, OptionPicker} from './OptionPicker';
-import {addOptionPicker, changeOptionPicker, removeOptionPicker} from './OptionPickerActions';
-import {IOptionPickerState} from './OptionPickerReducers';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {
+    IOptionPickerDispatchProps,
+    IOptionPickerOwnProps,
+    IOptionPickerStateProps,
+    OptionPicker,
+} from './OptionPicker.js';
+import {addOptionPicker, changeOptionPicker, removeOptionPicker} from './OptionPickerActions.js';
+import {IOptionPickerState} from './OptionPickerReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IOptionPickerOwnProps): IOptionPickerStateProps => {
     const item: IOptionPickerState = _.findWhere(state.optionPickers, {id: ownProps.id});

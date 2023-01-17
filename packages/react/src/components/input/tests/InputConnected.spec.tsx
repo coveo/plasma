@@ -4,12 +4,12 @@ import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
 import {shallowWithState} from '@test-utils';
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IInputProps, Input} from '../Input';
-import {InputConnected} from '../Input';
-import {inputPossibleProps, inputProps} from './InputTestCommons.mock';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IInputProps, Input} from '../Input.js';
+import {InputConnected} from '../Input.js';
+import {inputPossibleProps, inputProps} from './InputTestCommons.mock.js';
 
 describe('<InputConnected />', () => {
     let store: Store<PlasmaState>;

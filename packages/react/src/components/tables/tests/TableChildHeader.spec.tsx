@@ -2,15 +2,15 @@ import {mount} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ITableProps} from '../Table';
-import {TableChildHeader} from '../table-children/TableChildHeader';
-import {TableHeader} from '../TableHeader';
-import {TableHeaderCell} from '../TableHeaderCell';
-import {TableHeaderCellConnected} from '../TableHeaderCellConnected';
-import {tablePropsMock} from './TableTestCommon';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {ITableProps} from '../Table.js';
+import {TableChildHeader} from '../table-children/TableChildHeader.js';
+import {TableHeader} from '../TableHeader.js';
+import {TableHeaderCell} from '../TableHeaderCell.js';
+import {TableHeaderCellConnected} from '../TableHeaderCellConnected.js';
+import {tablePropsMock} from './TableTestCommon.js';
 
 describe('<TableChildHeader />', () => {
     let store: Store<PlasmaState>;

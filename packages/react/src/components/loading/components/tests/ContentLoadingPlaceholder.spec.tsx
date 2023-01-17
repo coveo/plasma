@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {ContentLoadingPlaceholder} from '../ContentLoadingPlaceholder';
+import {ContentLoadingPlaceholder} from '../ContentLoadingPlaceholder.js';
 
 describe('ContentLoadingPlaceholder tests', () => {
     describe('<ContentLoadingPlaceholder />', () => {

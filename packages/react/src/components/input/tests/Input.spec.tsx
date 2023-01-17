@@ -1,8 +1,8 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 
-import {Tooltip} from '../../tooltip/Tooltip';
-import {IInputProps, Input} from '../Input';
-import {Label} from '../Label';
+import {Tooltip} from '../../tooltip/Tooltip.js';
+import {IInputProps, Input} from '../Input.js';
+import {Label} from '../Label.js';
 
 describe('<Input />', () => {
     it('should mount without errors', () => {

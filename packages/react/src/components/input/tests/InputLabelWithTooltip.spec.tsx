@@ -1,8 +1,8 @@
 import {shallow} from 'enzyme';
 
-import {Tooltip} from '../../tooltip/Tooltip';
-import {InputLabelWithTooltip, InputLabelWithTooltipProps} from '../InputLabelWithTooltip';
-import {Label} from '../Label';
+import {Tooltip} from '../../tooltip/Tooltip.js';
+import {InputLabelWithTooltip, InputLabelWithTooltipProps} from '../InputLabelWithTooltip.js';
+import {Label} from '../Label.js';
 
 describe('InputLabelWithTooltip', () => {
     const defaultProps: InputLabelWithTooltipProps = {

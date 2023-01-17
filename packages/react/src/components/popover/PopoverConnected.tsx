@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {IPopoverDispatchProps, IPopoverProps, IPopoverState, Popover} from './Popover';
-import {addPopover, removePopover, setPopoverIsOpen} from './PopoverActions';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {IPopoverDispatchProps, IPopoverProps, IPopoverState, Popover} from './Popover.js';
+import {addPopover, removePopover, setPopoverIsOpen} from './PopoverActions.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IPopoverProps): IPopoverState => {
     const popoverState = findWhere(state.popovers, {id: ownProps.id});

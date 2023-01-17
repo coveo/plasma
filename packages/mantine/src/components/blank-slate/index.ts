@@ -1,1 +1,1 @@
-export * from './BlankSlate';
+export * from './BlankSlate.js';

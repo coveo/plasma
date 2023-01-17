@@ -1,12 +1,12 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITableRowActionPayload, TableRowActions, unselectAllRows} from '../TableRowActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {ITableRowActionPayload, TableRowActions, unselectAllRows} from '../TableRowActions.js';
 import {
     ITableRowState,
     tableRowInitialState,
     tableRowReducer,
     tableRowsInitialState,
     tableRowsReducer,
-} from '../TableRowReducers';
+} from '../TableRowReducers.js';
 
 describe('Tables', () => {
     describe('TableRowReducers', () => {

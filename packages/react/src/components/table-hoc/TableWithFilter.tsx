@@ -2,13 +2,13 @@ import {Component} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
-import {PlasmaState} from '../../PlasmaState';
-import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
-import {BlankSlateWithTable, IBlankSlateWithTableProps} from '../blankSlate';
-import {FilterBoxConnected, FilterBoxSelectors, IFilterBoxOwnProps} from '../filterBox';
-import {ITableHOCOwnProps, TableHOC} from './TableHOC';
-import {Params} from './TableWithUrlState';
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/index.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils/index.js';
+import {BlankSlateWithTable, IBlankSlateWithTableProps} from '../blankSlate/index.js';
+import {FilterBoxConnected, FilterBoxSelectors, IFilterBoxOwnProps} from '../filterBox/index.js';
+import {ITableHOCOwnProps, TableHOC} from './TableHOC.js';
+import {Params} from './TableWithUrlState.js';
 
 export interface ITableWithFilterConfig extends WithServerSideProcessingProps {
     blankSlate?: IBlankSlateWithTableProps;

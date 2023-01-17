@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import {ReactNode, Component} from 'react';
 
-import {Content, IContentProps} from '../content/Content';
-import {PartialStringMatch} from '../partial-string-match/PartialStringMatch';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {Content, IContentProps} from '../content/Content.js';
+import {PartialStringMatch} from '../partial-string-match/PartialStringMatch.js';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip.js';
 
 export interface IItemBoxProps {
     value: string;

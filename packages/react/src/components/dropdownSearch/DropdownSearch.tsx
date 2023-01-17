@@ -3,18 +3,18 @@ import classNames from 'classnames';
 import {Component, createElement, KeyboardEvent, MouseEvent, ReactText} from 'react';
 import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
+import s from 'underscore.string';
 
-import {keyCode} from '../../utils/InputUtils';
-import {CollapsibleToggle} from '../collapsible';
-import {Content} from '../content/Content';
-import {FilterBox} from '../filterBox/FilterBox';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {keyCode} from '../../utils/InputUtils.js';
+import {CollapsibleToggle} from '../collapsible/index.js';
+import {Content} from '../content/Content.js';
+import {FilterBox} from '../filterBox/FilterBox.js';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip.js';
 import {
     DropdownSearchAutoInfiniteScroll,
     IDropdownSearchAutoInfiniteScrollOptions,
-} from './DropdownSearchAutoInfiniteScroll';
-import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions';
+} from './DropdownSearchAutoInfiniteScroll.js';
+import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions.js';
 
 export interface IDropdownOption {
     icon?: Icon;
@@ -157,7 +157,7 @@ export class DropdownSearch extends Component<IDropdownSearchProps> {
                 const value = option.displayValue || option.value;
                 return (
                     _.isEmpty(this.props.filterText) ||
-                    contains(value.toLowerCase(), this.props.filterText.toLowerCase())
+                    s.contains(value.toLowerCase(), this.props.filterText.toLowerCase())
                 );
             })
             .map((opt: IDropdownOption, index: number, opts: IDropdownOption[]) => {

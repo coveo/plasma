@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {Loading} from '../../loading/Loading';
-import {ISelectOwnProps} from '../SelectConnected';
-import {SelectSelector} from '../SelectSelector';
+import {Loading} from '../../loading/Loading.js';
+import {ISelectOwnProps} from '../SelectConnected.js';
+import {SelectSelector} from '../SelectSelector.js';
 
 export interface SelectWithInfiniteScrollProps {
     totalEntries: number;

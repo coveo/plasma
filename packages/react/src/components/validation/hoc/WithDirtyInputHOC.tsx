@@ -1,12 +1,12 @@
 import {ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {PlasmaState} from '../../../PlasmaState';
+import {PlasmaState} from '../../../PlasmaState.js';
 
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {IInputOwnProps} from '../../input/Input';
-import {ValidationActions} from '../ValidationActions';
-import {ValidationSelectors} from '../ValidationSelectors';
-import {ValidationTypes} from '../ValidationTypes';
+import {IDispatch} from '../../../utils/ReduxUtils.js';
+import {IInputOwnProps} from '../../input/Input.js';
+import {ValidationActions} from '../ValidationActions.js';
+import {ValidationSelectors} from '../ValidationSelectors.js';
+import {ValidationTypes} from '../ValidationTypes.js';
 
 export interface IWithDirtyInputOwnProps {
     id?: string;

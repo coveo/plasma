@@ -2,10 +2,10 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import moment from 'moment';
 import * as _ from 'underscore';
 
-import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../../calendar/Calendar';
-import {DateUtils} from '../../../utils/DateUtils';
-import {DatePicker, IDatePickerProps} from '../DatePicker';
-import {DateLimits} from '../DatePickerActions';
+import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../../calendar/Calendar.js';
+import {DateUtils} from '../../../utils/DateUtils.js';
+import {DatePicker, IDatePickerProps} from '../DatePicker.js';
+import {DateLimits} from '../DatePickerActions.js';
 
 describe('Date picker', () => {
     let DATE_PICKER_BASIC_PROPS: IDatePickerProps;

@@ -1,10 +1,10 @@
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {changePage} from '../../navigation/pagination/NavigationPaginationActions';
-import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions';
-import {ITableRowAddPayload, TableHOCRowActions} from '../actions/TableHOCRowActions';
-import {HOCTableRowState, TableRowReducers} from '../reducers/TableRowReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {changePage} from '../../navigation/pagination/NavigationPaginationActions.js';
+import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions.js';
+import {ITableRowAddPayload, TableHOCRowActions} from '../actions/TableHOCRowActions.js';
+import {HOCTableRowState, TableRowReducers} from '../reducers/TableRowReducers.js';
 
 describe('Table HOC', () => {
     describe('TableRowReducers', () => {

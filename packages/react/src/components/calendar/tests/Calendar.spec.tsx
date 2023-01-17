@@ -2,10 +2,10 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import moment from 'moment';
 import * as _ from 'underscore';
 
-import {DateUtils} from '../../../utils/DateUtils';
-import {DateLimits} from '../../datePicker/DatePickerActions';
-import {IDatePickerState} from '../../datePicker/DatePickerReducers';
-import {OptionsCycle} from '../../optionsCycle/OptionsCycle';
+import {DateUtils} from '../../../utils/DateUtils.js';
+import {DateLimits} from '../../datePicker/DatePickerActions.js';
+import {IDatePickerState} from '../../datePicker/DatePickerReducers.js';
+import {OptionsCycle} from '../../optionsCycle/OptionsCycle.js';
 import {
     Calendar,
     CalendarSelectionRuleType,
@@ -14,8 +14,8 @@ import {
     DEFAULT_YEARS,
     ICalendarProps,
     ICalendarSelectionRule,
-} from '../Calendar';
-import {CalendarDay, ICalendarDayProps, IDay} from '../CalendarDay';
+} from '../Calendar.js';
+import {CalendarDay, ICalendarDayProps, IDay} from '../CalendarDay.js';
 
 describe('Calendar', () => {
     it('should render without errors', () => {

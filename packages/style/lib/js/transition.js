@@ -15,16 +15,16 @@
     // ============================================================
 
     function transitionEnd() {
-        var el = document.createElement('bootstrap');
+        const el = document.createElement('bootstrap');
 
-        var transEndEventNames = {
+        const transEndEventNames = {
             WebkitTransition: 'webkitTransitionEnd',
             MozTransition: 'transitionend',
             OTransition: 'oTransitionEnd otransitionend',
             transition: 'transitionend',
         };
 
-        for (var name in transEndEventNames) {
+        for (const name in transEndEventNames) {
             if (el.style[name] !== undefined) {
                 return {end: transEndEventNames[name]};
             }
@@ -35,13 +35,13 @@
 
     // http://blog.alexmaccaw.com/css-transitions
     $.fn.emulateTransitionEnd = function (duration) {
-        var called = false;
-        var $el = this;
+        let called = false;
+        const $el = this;
         $(this).one('bsTransitionEnd', function () {
             called = true;
         });
-        var callback = function () {
-            if (!called) $($el).trigger($.support.transition.end);
+        const callback = function () {
+            if (!called) {$($el).trigger($.support.transition.end);}
         };
         setTimeout(callback, duration);
         return this;
@@ -50,13 +50,13 @@
     $(function () {
         $.support.transition = transitionEnd();
 
-        if (!$.support.transition) return;
+        if (!$.support.transition) {return;}
 
         $.event.special.bsTransitionEnd = {
             bindType: $.support.transition.end,
             delegateType: $.support.transition.end,
             handle: function (e) {
-                if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments);
+                if ($(e.target).is(this)) {return e.handleObj.handler.apply(this, arguments);}
             },
         };
     });

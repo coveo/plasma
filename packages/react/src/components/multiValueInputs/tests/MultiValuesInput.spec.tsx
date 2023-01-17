@@ -1,7 +1,7 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {MultiValuesInput} from '../MultiValuesInput';
+import {MultiValuesInput} from '../MultiValuesInput.js';
 
 describe('MultiValuesInput', () => {
     const defaultProps = {

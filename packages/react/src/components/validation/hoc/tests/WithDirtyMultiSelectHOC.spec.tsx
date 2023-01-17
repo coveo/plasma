@@ -1,7 +1,7 @@
 import {render, screen} from '@test-utils';
-import {IsDirtyIndicator, withSelectedValues} from '../../../../utils/tests/TestUtils';
-import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
-import {withDirtyMultiSelectHOC} from '../WithDirtyMultiSelectHOC';
+import {IsDirtyIndicator, withSelectedValues} from '../../../../utils/tests/TestUtils.js';
+import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected.js';
+import {withDirtyMultiSelectHOC} from '../WithDirtyMultiSelectHOC.js';
 
 const MultiSelectWithDirty = withDirtyMultiSelectHOC(MultiSelectConnected);
 

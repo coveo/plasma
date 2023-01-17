@@ -1,10 +1,10 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 
-import {IDispatch} from '../../utils';
-import {JSONEditor, JSONEditorProps} from './JSONEditor';
-import {JSONEditorActions} from './JSONEditorActions';
-import {JSONEditorSelectors} from './JSONEditorSelectors';
+import {IDispatch} from '../../utils/index.js';
+import {JSONEditor, JSONEditorProps} from './JSONEditor.js';
+import {JSONEditorActions} from './JSONEditorActions.js';
+import {JSONEditorSelectors} from './JSONEditorSelectors.js';
 
 interface JSONEditorConnectedProps {
     /**

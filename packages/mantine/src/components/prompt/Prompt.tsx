@@ -1,6 +1,6 @@
 import {createStyles, Modal, ModalProps} from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
-import {PromptFooter} from './PromptFooter';
+import {PromptFooter} from './PromptFooter.js';
 
 const useStyles = createStyles((theme) => {
     const white = '#fff';

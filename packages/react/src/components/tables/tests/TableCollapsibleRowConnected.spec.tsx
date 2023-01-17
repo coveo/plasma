@@ -2,12 +2,12 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ITableCollapsibleRowProps, TableCollapsibleRow} from '../TableCollapsibleRow';
-import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected';
-import {addRow} from '../TableRowActions';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {ITableCollapsibleRowProps, TableCollapsibleRow} from '../TableCollapsibleRow.js';
+import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected.js';
+import {addRow} from '../TableRowActions.js';
 
 describe('Tables', () => {
     describe('<TableCollapsibleRowConnected />', () => {

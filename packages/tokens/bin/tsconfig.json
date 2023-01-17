@@ -1,12 +1,14 @@
 {
-    "ts-node": {"files": true},
+    "ts-node": {"files": true, "esm": true, "swc": true},
     "compilerOptions": {
         "strict": true,
         "types": ["Node"],
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "node"
+        "moduleResolution": "Node16",
+        "module": "Node16",
+        "allowJs": true
     },
     "include": ["**/*.ts", "types"]
 }

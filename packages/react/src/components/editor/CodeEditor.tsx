@@ -5,15 +5,15 @@ import {IControlledCodeMirror} from 'react-codemirror2';
 import type {Controlled} from 'react-codemirror2';
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils';
-import {CollapsibleSelectors} from '../collapsible';
-import {Loadable} from '../loadable/Loadable';
-import {CodeEditorActions} from './CodeEditorActions';
-import {CodeMirrorGutters} from './EditorConstants';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch} from '../../utils/index.js';
+import {CollapsibleSelectors} from '../collapsible/index.js';
+import {Loadable} from '../loadable/Loadable.js';
+import {CodeEditorActions} from './CodeEditorActions.js';
+import {CodeMirrorGutters} from './EditorConstants.js';
 
 const ReactCodeMirror = Loadable<IControlledCodeMirror>(
-    () => import('./CodeMirror').then((mod: typeof import('./CodeMirror')) => mod.Controlled),
+    () => import('./CodeMirror.js').then((mod: typeof import('./CodeMirror')) => mod.Controlled),
     {
         ssr: false,
     }

@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
 import {
     addOptionsCycle,
     changeOptionsCycle,
@@ -6,7 +6,7 @@ import {
     IOptionsCyclePayload,
     OptionsCycleActions,
     removeOptionsCycle,
-} from '../OptionsCycleActions';
+} from '../OptionsCycleActions.js';
 
 describe('Options cycle', () => {
     describe('OptionsCycleActions', () => {

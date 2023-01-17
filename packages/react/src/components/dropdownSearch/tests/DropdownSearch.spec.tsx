@@ -4,18 +4,18 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 
-import {keyCode} from '../../../utils/InputUtils';
-import {UUID} from '../../../utils/UUID';
-import {Content} from '../../content/Content';
-import {FilterBox} from '../../filterBox/FilterBox';
-import {Tooltip} from '../../tooltip/Tooltip';
-import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
+import {keyCode} from '../../../utils/InputUtils.js';
+import {UUID} from '../../../utils/UUID.js';
+import {Content} from '../../content/Content.js';
+import {FilterBox} from '../../filterBox/FilterBox.js';
+import {Tooltip} from '../../tooltip/Tooltip.js';
+import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch.js';
 import {
     DropdownSearchAutoInfiniteScroll,
     IDropdownSearchAutoInfiniteScrollOptions,
-} from '../DropdownSearchAutoInfiniteScroll';
-import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions';
-import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
+} from '../DropdownSearchAutoInfiniteScroll.js';
+import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions.js';
+import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers.js';
 
 describe('DropdownSearch', () => {
     const id: string = UUID.generate();

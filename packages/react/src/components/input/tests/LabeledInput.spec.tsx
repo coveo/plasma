@@ -1,8 +1,8 @@
 import {shallow} from 'enzyme';
 
-import {Tooltip} from '../../tooltip/Tooltip';
-import {InputDescription} from '../InputDescription';
-import {LabeledInput} from '../LabeledInput';
+import {Tooltip} from '../../tooltip/Tooltip.js';
+import {InputDescription} from '../InputDescription.js';
+import {LabeledInput} from '../LabeledInput.js';
 
 describe('LabeledInput', () => {
     const SOME_LABEL = '📺📽';

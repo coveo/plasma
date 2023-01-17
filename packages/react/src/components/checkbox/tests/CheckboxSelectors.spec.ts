@@ -1,4 +1,4 @@
-import {CheckboxSelectors} from '../CheckboxSelectors';
+import {CheckboxSelectors} from '../CheckboxSelectors.js';
 
 describe('CheckboxSelectors', () => {
     describe('getIsSelected', () => {

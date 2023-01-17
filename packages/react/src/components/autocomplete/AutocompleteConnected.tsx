@@ -3,22 +3,22 @@ import {KeyboardEvent, ChangeEvent, HTMLProps, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
-import {SlideY} from '../../animations/SlideY';
-import {PlasmaState} from '../../PlasmaState';
-import {mod} from '../../utils/DataStructuresUtils';
-import {keyCode} from '../../utils/InputUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {defaultListBoxMatchFilter} from '../filterBox/FilterBoxUtils';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {ListBoxConnected} from '../listBox/ListBoxConnected';
+import {SlideY} from '../../animations/SlideY.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {mod} from '../../utils/DataStructuresUtils.js';
+import {keyCode} from '../../utils/InputUtils.js';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils.js';
+import {defaultListBoxMatchFilter} from '../filterBox/FilterBoxUtils.js';
+import {IItemBoxProps} from '../itemBox/ItemBox.js';
+import {ListBoxConnected} from '../listBox/ListBoxConnected.js';
 import {
     addAutocomplete,
     removeAutocomplete,
     setAutocompleteActive,
     setAutocompleteValue,
     toggleAutocomplete,
-} from './AutocompleteActions';
-import {IAutocompleteState} from './AutocompleteReducers';
+} from './AutocompleteActions.js';
+import {IAutocompleteState} from './AutocompleteReducers.js';
 
 export interface IAutocompleteOwnProps {
     id: string;

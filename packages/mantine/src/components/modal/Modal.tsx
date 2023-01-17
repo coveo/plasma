@@ -1,6 +1,6 @@
 import {Modal as MantineModal, ModalProps} from '@mantine/core';
 import {FunctionComponent, ReactNode} from 'react';
-import {Header, HeaderProps} from '../header';
+import {Header, HeaderProps} from '../header/index.js';
 
 export interface CustomModalProps extends Omit<ModalProps, 'title'> {
     /**

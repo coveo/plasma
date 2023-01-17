@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 
-import {Loading} from '../../loading/Loading';
-import {Content} from '../Content';
+import {Loading} from '../../loading/Loading.js';
+import {Content} from '../Content.js';
 
 describe('Content', () => {
     it('should render without errors', () => {

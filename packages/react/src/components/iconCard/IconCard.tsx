@@ -9,12 +9,12 @@ import {
     ReactNode,
     useState,
 } from 'react';
-import {slugify} from 'underscore.string';
+import s from 'underscore.string';
 
-import {SlideY} from '../../animations';
-import {TooltipPlacement} from '../../utils';
-import {Badge, IBadgeProps} from '../badge/Badge';
-import {ITooltipProps, Tooltip} from '../tooltip';
+import {SlideY} from '../../animations/index.js';
+import {TooltipPlacement} from '../../utils/index.js';
+import {Badge, IBadgeProps} from '../badge/Badge.js';
+import {ITooltipProps, Tooltip} from '../tooltip/index.js';
 
 export interface IconCardChoice {
     value: string;
@@ -122,7 +122,7 @@ export const IconCard: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLDi
     };
 
     const badgeComponents = badges.map((badgeProps) => (
-        <Badge {...badgeProps} key={slugify(JSON.stringify(badgeProps))} />
+        <Badge {...badgeProps} key={s.slugify(JSON.stringify(badgeProps))} />
     ));
 
     return (

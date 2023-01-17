@@ -2,11 +2,11 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import {Provider} from 'react-redux';
 import * as _ from 'underscore';
 
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {CalendarConnected} from '../../calendar/CalendarConnected';
-import {OptionPickerConnected} from '../../optionPicker/OptionPickerConnected';
-import {DatePickerBox, DEFAULT_CLEAR_DATE_LABEL, IDatePickerBoxProps} from '../DatePickerBox';
-import {DatesSelectionConnected} from '../DatesSelectionConnected';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {CalendarConnected} from '../../calendar/CalendarConnected.js';
+import {OptionPickerConnected} from '../../optionPicker/OptionPickerConnected.js';
+import {DatePickerBox, DEFAULT_CLEAR_DATE_LABEL, IDatePickerBoxProps} from '../DatePickerBox.js';
+import {DatesSelectionConnected} from '../DatesSelectionConnected.js';
 
 describe('Date picker', () => {
     const DATE_PICKER_BOX_BASIC_PROPS: IDatePickerBoxProps = {

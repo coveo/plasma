@@ -2,11 +2,11 @@ import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from '@test-utils';
 import * as _ from 'underscore';
 
-import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IBlankSlateProps} from '../../blankSlate';
-import {ITableHOCProps, TableHOC} from '../TableHOC';
-import {TableSelectors} from '../TableSelectors';
-import {tableWithFilter} from '../TableWithFilter';
+import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {IBlankSlateProps} from '../../blankSlate.js';
+import {ITableHOCProps, TableHOC} from '../TableHOC.js';
+import {TableSelectors} from '../TableSelectors.js';
+import {tableWithFilter} from '../TableWithFilter.js';
 
 describe('Table HOC', () => {
     describe('TableWithFilter', () => {

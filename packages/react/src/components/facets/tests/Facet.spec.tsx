@@ -1,9 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
-import {createTestAppContainer} from '../../../utils/tests/TestUtils';
+import {createTestAppContainer} from '../../../utils/tests/TestUtils.js';
 
-import {Facet, IFacet, IFacetProps} from '../Facet';
-import {FacetRow} from '../FacetRow';
+import {Facet, IFacet, IFacetProps} from '../Facet.js';
+import {FacetRow} from '../FacetRow.js';
 
 describe('Facets', () => {
     const facetRows: IFacet[] = [];

@@ -1,12 +1,12 @@
 import {HTMLAttributes, ComponentClass, FunctionComponent, ComponentType} from 'react';
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {IBlankSlateWithTableProps} from '../blankSlate';
-import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
-import {ITableHOCOwnProps} from './TableHOC';
-import {TableSelectors} from './TableSelectors';
+import {PlasmaState} from '../../PlasmaState.js';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils.js';
+import {IBlankSlateWithTableProps} from '../blankSlate/index.js';
+import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC.js';
+import {ITableHOCOwnProps} from './TableHOC.js';
+import {TableSelectors} from './TableSelectors.js';
 
 export interface ITableWithBlankSlateStateProps {
     /**

@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event';
 import {render, screen} from '@test-utils';
 
-import {SingleSelectConnected} from '../../SingleSelectConnected';
-import {selectWithInfiniteScroll} from '../SelectWithInfiniteScroll';
+import {SingleSelectConnected} from '../../SingleSelectConnected.js';
+import {selectWithInfiniteScroll} from '../SelectWithInfiniteScroll.js';
 
 describe('SelectWithInfiniteScroll', () => {
     const SingleSelectWithInfiniteScroll = selectWithInfiniteScroll(SingleSelectConnected);

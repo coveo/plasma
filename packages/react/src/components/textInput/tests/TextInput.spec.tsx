@@ -2,9 +2,9 @@ import {expectToThrow, fireEvent, render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {useState} from 'react';
 
-import {FormProvider} from '../../form/FormProvider';
-import {InputValidator, TextInput} from '../TextInput';
-import {useTextInput} from '../useTextInput';
+import {FormProvider} from '../../form/FormProvider.js';
+import {InputValidator, TextInput} from '../TextInput.js';
+import {useTextInput} from '../useTextInput.js';
 
 describe('TextInput', () => {
     it('throws an error if the rendering a TextInput outside a FormProvider', () => {

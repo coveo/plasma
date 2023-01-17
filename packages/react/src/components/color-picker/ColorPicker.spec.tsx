@@ -2,9 +2,9 @@ import {render, screen} from '@test-utils';
 import {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {InputSelectors} from '../input';
-import {ColorPicker} from './ColorPicker';
+import {PlasmaState} from '../../PlasmaState.js';
+import {InputSelectors} from '../input.js';
+import {ColorPicker} from './ColorPicker.js';
 
 describe('ColorPicker', () => {
     it('should mount and unmount without error', () => {

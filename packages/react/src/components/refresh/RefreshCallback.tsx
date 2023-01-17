@@ -1,10 +1,10 @@
 import {ReactNode, PureComponent} from 'react';
 import {connect} from 'react-redux';
-import {Defaults} from '../../Defaults';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {RefreshCallBackActions} from './RefeshCallbackActions';
-import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
+import {Defaults} from '../../Defaults.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {RefreshCallBackActions} from './RefeshCallbackActions.js';
+import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer.js';
 
 export interface IRefreshCallbackOwnProps {
     id: string;

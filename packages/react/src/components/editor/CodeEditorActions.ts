@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../utils';
+import {IReduxAction} from '../../utils/index.js';
 
 export const CodeEditorActionTypes = {
     remove: 'REMOVE_CODE_EDITOR',

@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
-import {NavigationConnected} from '../../navigation/NavigationConnected';
-import {ITableProps} from '../Table';
-import {TableChildComponent} from '../TableConstants';
-import {getTableChildComponentId} from '../TableUtils';
+import {NavigationConnected} from '../../navigation/NavigationConnected.js';
+import {ITableProps} from '../Table.js';
+import {TableChildComponent} from '../TableConstants.js';
+import {getTableChildComponentId} from '../TableUtils.js';
 
 /**
  * @deprecated Use Mantine instead

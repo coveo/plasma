@@ -2,16 +2,16 @@ import classNames from 'classnames';
 import {ReactNode, MouseEvent} from 'react';
 import * as _ from 'underscore';
 
-import {getAdditionalClasses, IAdditionalClass} from '../../../utils/ClassNameUtils';
-import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
-import {JSXRenderable} from '../../../utils/JSXUtils';
-import {IActionOptions} from '../../actions/Action';
-import {IData, ITableHeadingAttribute} from '../Table';
-import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected';
-import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
-import {TableChildComponent, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
-import {TableHeadingRowConnected} from '../TableHeadingRowConnected';
-import {getTableChildComponentId} from '../TableUtils';
+import {getAdditionalClasses, IAdditionalClass} from '../../../utils/ClassNameUtils.js';
+import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils.js';
+import {JSXRenderable} from '../../../utils/JSXUtils.js';
+import {IActionOptions} from '../../actions/Action.js';
+import {IData, ITableHeadingAttribute} from '../Table.js';
+import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected.js';
+import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper.js';
+import {TableChildComponent, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants.js';
+import {TableHeadingRowConnected} from '../TableHeadingRowConnected.js';
+import {getTableChildComponentId} from '../TableUtils.js';
 
 export interface ITableBodyInheritedFromTableProps {
     getActions?: (rowData?: IData) => IActionOptions[];

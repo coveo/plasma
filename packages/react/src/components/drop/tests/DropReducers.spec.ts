@@ -1,6 +1,6 @@
-import {toggleCheckbox} from '../../checkbox/CheckboxActions';
-import {DropActions} from '../redux/DropActions';
-import {dropInitialState, dropReducer, DropSelectors} from '../redux/DropReducers';
+import {toggleCheckbox} from '../../checkbox/CheckboxActions.js';
+import {DropActions} from '../redux/DropActions.js';
+import {dropInitialState, dropReducer, DropSelectors} from '../redux/DropReducers.js';
 
 describe('dropReducer', () => {
     describe('DROP_TOGGLE', () => {

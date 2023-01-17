@@ -1,9 +1,9 @@
 import {shallowWithState} from '@test-utils';
 import * as _ from 'underscore';
 
-import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {ITableHOCProps, TableHOC} from '../TableHOC';
-import {tableWithSort} from '../TableWithSort';
+import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {ITableHOCProps, TableHOC} from '../TableHOC.js';
+import {tableWithSort} from '../TableWithSort.js';
 
 describe('Table HOC', () => {
     describe('TableWithSort', () => {

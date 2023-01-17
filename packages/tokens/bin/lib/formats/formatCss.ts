@@ -1,6 +1,6 @@
-import {kebabCase} from 'lodash';
+import {kebabCase} from 'lodash-es';
 
-import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from './token';
+import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from '../tokens/index.js';
 
 const formatCssVariableName = (name: string): string => `plasma-${kebabCase(name)}`;
 

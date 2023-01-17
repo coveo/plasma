@@ -2,9 +2,9 @@ import {SearchSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {ChangeEvent, Component} from 'react';
 
-import {IClassName} from '../../utils/ClassNameUtils';
-import {keyCode} from '../../utils/InputUtils';
-import {LoadingSpinner} from '../loading/LoadingSpinner';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {keyCode} from '../../utils/InputUtils.js';
+import {LoadingSpinner} from '../loading/LoadingSpinner.js';
 
 export interface ISearchBarConnectedProps {
     /**

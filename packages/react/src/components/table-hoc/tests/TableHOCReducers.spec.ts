@@ -1,7 +1,7 @@
 import _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {TableHOCActions, TableHOCSetEmptyStatePayload} from '../actions/TableHOCActions';
-import {HOCTableState, TableHOCReducers} from '../reducers/TableHOCReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {TableHOCActions, TableHOCSetEmptyStatePayload} from '../actions/TableHOCActions.js';
+import {HOCTableState, TableHOCReducers} from '../reducers/TableHOCReducers.js';
 
 describe('TableHOCReducers', () => {
     const fakeAction: IReduxAction<TableHOCSetEmptyStatePayload> = {

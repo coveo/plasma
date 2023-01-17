@@ -1,4 +1,4 @@
-import * as utils from '../SliderUtils';
+import * as utils from '../SliderUtils.js';
 
 describe('SliderUtils', () => {
     describe('getValuesPositionOnRange', () => {

@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {IClassName} from '../../utils/ClassNameUtils';
-import {ILinkSvgProps} from '../linkSvg/LinkSvg';
-import {Title} from '../title/Title';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {ILinkSvgProps} from '../linkSvg/LinkSvg.js';
+import {Title} from '../title/Title.js';
 
 export interface IModalHeaderOwnProps {
     /**

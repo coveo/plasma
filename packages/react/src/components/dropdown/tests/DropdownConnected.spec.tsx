@@ -3,11 +3,11 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {createTestAppContainer, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
-import {Dropdown, IDropdownProps} from '../Dropdown';
-import {toggleDropdown} from '../DropdownActions';
-import {DropdownConnected} from '../DropdownConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {createTestAppContainer, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils.js';
+import {Dropdown, IDropdownProps} from '../Dropdown.js';
+import {toggleDropdown} from '../DropdownActions.js';
+import {DropdownConnected} from '../DropdownConnected.js';
 
 describe('Dropdown', () => {
     describe('<DropdownConnected />', () => {

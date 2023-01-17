@@ -1,10 +1,10 @@
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ListBoxActions} from '../../listBox/ListBoxActions';
-import {DropReducerActions, IDropPayload} from './DropActions';
-import {SelectConstants} from '../../select/SelectConstants';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {ListBoxActions} from '../../listBox/ListBoxActions.js';
+import {DropReducerActions, IDropPayload} from './DropActions.js';
+import {SelectConstants} from '../../select/SelectConstants.js';
 
 export interface IDropState {
     [groupId: string]: {

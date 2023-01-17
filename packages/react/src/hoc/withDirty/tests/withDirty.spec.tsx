@@ -3,9 +3,9 @@ import userEvent from '@testing-library/user-event';
 import {FunctionComponent, PropsWithChildren} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {IDispatch} from '../../../utils';
-import {IWithDirtyProps, withDirty} from '../withDirty';
-import {WithDirtyActions} from '../withDirtyActions';
+import {IDispatch} from '../../../utils/index.js';
+import {IWithDirtyProps, withDirty} from '../withDirty.js';
+import {WithDirtyActions} from '../withDirtyActions.js';
 
 describe('withDirty', () => {
     const Fixture: FunctionComponent<PropsWithChildren<IWithDirtyProps>> = () => {

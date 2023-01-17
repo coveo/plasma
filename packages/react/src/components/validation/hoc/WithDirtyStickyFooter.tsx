@@ -1,9 +1,9 @@
 import {ComponentClass, FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {IStickyFooterProps} from '../../stickyFooter/StickyFooter';
-import {ValidationSelectors} from '../ValidationSelectors';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {IStickyFooterProps} from '../../stickyFooter/StickyFooter.js';
+import {ValidationSelectors} from '../ValidationSelectors.js';
 
 export interface IWithDirtyStickyFooterOwnProps {
     validationIds: string[];

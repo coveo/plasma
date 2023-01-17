@@ -1,13 +1,13 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {Tooltip} from '../tooltip/Tooltip';
-import {FacetMoreRows} from './FacetMoreRows';
-import {FacetMoreRowsConnected} from './FacetMoreRowsConnected';
-import {FacetMoreToggle} from './FacetMoreToggle';
-import {FacetMoreToggleConnected} from './FacetMoreToggleConnected';
-import {FacetRow} from './FacetRow';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils.js';
+import {Tooltip} from '../tooltip/Tooltip.js';
+import {FacetMoreRows} from './FacetMoreRows.js';
+import {FacetMoreRowsConnected} from './FacetMoreRowsConnected.js';
+import {FacetMoreToggle} from './FacetMoreToggle.js';
+import {FacetMoreToggleConnected} from './FacetMoreToggleConnected.js';
+import {FacetRow} from './FacetRow.js';
 
 export interface IFacet {
     name: string;

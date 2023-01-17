@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
-import {PaginationPerPage} from '../PaginationPerPage';
-import {TablePagination} from '../TablePagination';
+import {PaginationPerPage} from '../PaginationPerPage.js';
+import {TablePagination} from '../TablePagination.js';
 
 describe('TablePagination', () => {
     describe('<TablePagination /> tests', () => {

@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {DropActions} from '../drop/redux/DropActions';
-import {SelectConstants} from './SelectConstants';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {DropActions} from '../drop/redux/DropActions.js';
+import {SelectConstants} from './SelectConstants.js';
 
 export const SelectActions = {
     add: 'ADD_SELECT',

@@ -1,6 +1,6 @@
-import {TabConstants} from '../TabConstants';
-import {ITabGroupState, ITabState} from '../TabReducers';
-import {TabSelectors} from '../TabSelectors';
+import {TabConstants} from '../TabConstants.js';
+import {ITabGroupState, ITabState} from '../TabReducers.js';
+import {TabSelectors} from '../TabSelectors.js';
 
 describe('TabSelector', () => {
     const ownProps = {

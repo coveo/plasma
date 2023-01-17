@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {PaginationLoading} from '../PaginationLoading';
+import {PaginationLoading} from '../PaginationLoading.js';
 
 describe('PaginationLoading tests', () => {
     describe('<PaginationLoading />', () => {

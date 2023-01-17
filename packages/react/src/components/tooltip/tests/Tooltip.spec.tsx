@@ -1,8 +1,8 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {TooltipPlacement} from '../../../utils';
-import {Tooltip} from '../Tooltip';
+import {TooltipPlacement} from '../../../utils/index.js';
+import {Tooltip} from '../Tooltip.js';
 
 describe('Tooltip', () => {
     it('displays the title only when hovering over the children', async () => {

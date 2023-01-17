@@ -1,16 +1,16 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {Input} from '../../input/Input';
-import {AddInputAction} from '../AddInputAction';
-import {DeleteInputAction} from '../DeleteInputAction';
+import {Input} from '../../input/Input.js';
+import {AddInputAction} from '../AddInputAction.js';
+import {DeleteInputAction} from '../DeleteInputAction.js';
 import {
     ISplitInput,
     ISplitMultilineInputProps,
     ISplitMultilineInputState,
     ISplitValue,
     SplitMultilineInput,
-} from '../SplitMultilineInput';
+} from '../SplitMultilineInput.js';
 
 describe('SplitMultilineInput', () => {
     const basicProps: ISplitMultilineInputProps = {

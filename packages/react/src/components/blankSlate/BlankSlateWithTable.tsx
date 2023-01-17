@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {ComponentType, PureComponent, ComponentClass, PropsWithChildren} from 'react';
-import {IBlankSlateProps} from './BlankSlate';
+import {IBlankSlateProps} from './BlankSlate.js';
 
 export interface IBlankSlateWithTableProps extends IBlankSlateProps {
     numberOfColumn?: number;

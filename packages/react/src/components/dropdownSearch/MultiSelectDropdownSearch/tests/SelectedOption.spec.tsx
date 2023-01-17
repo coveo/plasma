@@ -1,5 +1,5 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {ISelectedOptionProps, SelectedOption} from '../SelectedOption';
+import {ISelectedOptionProps, SelectedOption} from '../SelectedOption.js';
 
 describe('SelectedOption', () => {
     const props: ISelectedOptionProps = {

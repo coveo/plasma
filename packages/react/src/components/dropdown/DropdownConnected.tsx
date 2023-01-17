@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {Dropdown, IDropdownDispatchProps, IDropdownOwnProps, IDropdownStateProps} from './Dropdown';
-import {addDropdown, closeDropdown, removeDropdown, toggleDropdown} from './DropdownActions';
-import {IDropdownState} from './DropdownReducers';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {Dropdown, IDropdownDispatchProps, IDropdownOwnProps, IDropdownStateProps} from './Dropdown.js';
+import {addDropdown, closeDropdown, removeDropdown, toggleDropdown} from './DropdownActions.js';
+import {IDropdownState} from './DropdownReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IDropdownOwnProps): IDropdownStateProps => {
     const item: IDropdownState = _.findWhere(state.dropdowns, {id: ownProps.id});

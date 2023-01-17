@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 
-import {FlatSelectWithPrepend} from '../../flatSelect/FlatSelectWithPrepend';
-import {PaginationPerPage} from '../PaginationPerPage';
+import {FlatSelectWithPrepend} from '../../flatSelect/FlatSelectWithPrepend.js';
+import {PaginationPerPage} from '../PaginationPerPage.js';
 
 describe('PaginationPerPage', () => {
     describe('<PaginationPerPage /> tests', () => {

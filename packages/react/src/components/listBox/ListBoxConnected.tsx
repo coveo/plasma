@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {IListBoxDispatchProps, IListBoxOwnProps, IListBoxStateProps, ListBox} from './ListBox';
-import {addListBox, removeListBox, selectListBoxOption} from './ListBoxActions';
-import {IListBoxState} from './ListBoxReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {IItemBoxProps} from '../itemBox/ItemBox.js';
+import {IListBoxDispatchProps, IListBoxOwnProps, IListBoxStateProps, ListBox} from './ListBox.js';
+import {addListBox, removeListBox, selectListBoxOption} from './ListBoxActions.js';
+import {IListBoxState} from './ListBoxReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IListBoxOwnProps): IListBoxStateProps => {
     const list: IListBoxState = _.findWhere(state.listBoxes, {id: ownProps.id});

@@ -1,4 +1,4 @@
-import {WithDirtySelectors} from '../withDirtySelectors';
+import {WithDirtySelectors} from '../withDirtySelectors.js';
 
 describe('WithDirtySelectors', () => {
     describe('getIsDirty selector', () => {

@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IData, ITableRowData} from './Table';
-import {DEFAULT_TABLE_DATA, TableChildComponent, TableSortingOrder} from './TableConstants';
+import {IData, ITableRowData} from './Table.js';
+import {DEFAULT_TABLE_DATA, TableChildComponent, TableSortingOrder} from './TableConstants.js';
 
 const {ASCENDING, DESCENDING, UNSORTED} = TableSortingOrder;
 

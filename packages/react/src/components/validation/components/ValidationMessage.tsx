@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import {FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {IDispatch} from '../../../utils';
-import {ValidationActions} from '../ValidationActions';
-import {ValidationSelectors} from '../ValidationSelectors';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {IDispatch} from '../../../utils/index.js';
+import {ValidationActions} from '../ValidationActions.js';
+import {ValidationSelectors} from '../ValidationSelectors.js';
 
 export interface IValidationMessageProps {
     id: string;

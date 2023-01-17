@@ -3,18 +3,18 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ActionBarConnected} from '../../actions/ActionBar';
-import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
-import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {Loading} from '../../loading/Loading';
-import {ITableProps} from '../Table';
-import {TableChildActionBar} from '../table-children/TableChildActionBar';
-import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
-import {SELECTION_BOXES, tablePropsMock} from './TableTestCommon';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {ActionBarConnected} from '../../actions/ActionBar.js';
+import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected.js';
+import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected.js';
+import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected.js';
+import {Loading} from '../../loading/Loading.js';
+import {ITableProps} from '../Table.js';
+import {TableChildActionBar} from '../table-children/TableChildActionBar.js';
+import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants.js';
+import {SELECTION_BOXES, tablePropsMock} from './TableTestCommon.js';
 
 describe('<TableChildActionBar />', () => {
     let store: Store<PlasmaState>;

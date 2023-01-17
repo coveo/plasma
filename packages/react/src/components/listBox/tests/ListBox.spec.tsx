@@ -1,9 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {ReactNode} from 'react';
 
-import {ItemBox} from '../../itemBox/ItemBox';
-import {ItemBoxLoading} from '../../loading/components/ItemBoxLoading';
-import {IListBoxProps, ListBox} from '../ListBox';
+import {ItemBox} from '../../itemBox/ItemBox.js';
+import {ItemBoxLoading} from '../../loading/components/ItemBoxLoading.js';
+import {IListBoxProps, ListBox} from '../ListBox.js';
 
 describe('ListBox', () => {
     let listBoxComponent: ReactWrapper<IListBoxProps, any>;

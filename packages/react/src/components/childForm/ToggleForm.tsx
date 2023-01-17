@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {ReactElement, MouseEvent, Children, cloneElement, Component} from 'react';
-import {Input} from '../input/Input';
-import {ChildForm} from './ChildForm';
+import {Input} from '../input/Input.js';
+import {ChildForm} from './ChildForm.js';
 
 /**
  * @deprecated Use a form or the class coveo-parent for the style instead

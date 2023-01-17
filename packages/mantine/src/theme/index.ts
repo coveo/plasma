@@ -1,1 +1,1 @@
-export * from './Plasmantine';
+export * from './Plasmantine.js';

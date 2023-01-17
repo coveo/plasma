@@ -1,9 +1,9 @@
 import {mount} from 'enzyme';
 
-import {Loading} from '../../loading/Loading';
-import {ITableChildLoadingRowProps, TableChildLoadingRow} from '../table-children/TableChildLoadingRow';
-import {TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
-import {tablePropsMock} from './TableTestCommon';
+import {Loading} from '../../loading/Loading.js';
+import {ITableChildLoadingRowProps, TableChildLoadingRow} from '../table-children/TableChildLoadingRow.js';
+import {TOGGLE_ARROW_CELL_COUNT} from '../TableConstants.js';
+import {tablePropsMock} from './TableTestCommon.js';
 
 describe('<TableChildLoadingRow />', () => {
     describe('render', () => {

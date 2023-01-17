@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const {spawn} = require('child_process');
 const path = require('path');
+const fs = require('fs');
 
 process.on('unhandledRejection', (err) => {
     throw err;
@@ -23,8 +24,9 @@ const build = async ({watch = false}) => {
     // compile with swc and tsc
     try {
         console.info('starting typescript compilation');
+        const tsconfigPath = fs.existsSync('./tsconfig.build.json') ? './tsconfig.build.json' : './tsconfig.json';
 
-        const tscArgs = ['-p', './tsconfig.build.json', '--emitDeclarationOnly'];
+        const tscArgs = ['-p', tsconfigPath, '--emitDeclarationOnly'];
         const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
 
         if (watch) {
@@ -46,6 +48,20 @@ const build = async ({watch = false}) => {
         const commonJs = spawn('swc', swcCJSArgs, {stdio: 'inherit', shell: true});
         const esm = spawn('swc', swcES6Args, {stdio: 'inherit', shell: true});
         await Promise.all([onExit(dts), onExit(commonJs), onExit(esm)]);
+        // Ensure NodeJS resolves dist/cjs/**/*.js as dist/cjs/**/*.cjs
+        fs.writeFileSync(
+            'dist/cjs/package.json',
+            JSON.stringify({
+                type: 'commonjs',
+            })
+        );
+        // Ensure NodeJS resolves dist/esm/**/*.js as dist/esm/**/*.mjs
+        fs.writeFileSync(
+            'dist/esm/package.json',
+            JSON.stringify({
+                type: 'module',
+            })
+        );
 
         console.info('typescript compilation ended');
     } catch (error) {

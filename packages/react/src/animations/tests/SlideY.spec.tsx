@@ -1,6 +1,6 @@
 import {mount, ReactWrapper} from 'enzyme';
 import {render, screen} from '@test-utils';
-import {SlideY, SlideYProps} from '../SlideY';
+import {SlideY, SlideYProps} from '../SlideY.js';
 
 describe('SlideY', () => {
     const dummyTimeout = 400;

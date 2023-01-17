@@ -1,9 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {shallowWithState} from '@test-utils';
 
-import {BrowserUtils} from '../../../utils/BrowserUtils';
-import {removeTestAppContainer} from '../../../utils/tests/TestUtils';
-import {Flippable, IFlippableProps} from '../Flippable';
+import {BrowserUtils} from '../../../utils/BrowserUtils.js';
+import {removeTestAppContainer} from '../../../utils/tests/TestUtils.js';
+import {Flippable, IFlippableProps} from '../Flippable.js';
 
 describe('Flippable', () => {
     it('should render without errors', () => {

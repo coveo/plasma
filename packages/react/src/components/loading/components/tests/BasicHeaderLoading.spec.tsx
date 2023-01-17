@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {BasicHeaderLoading} from '../BasicHeaderLoading';
+import {BasicHeaderLoading} from '../BasicHeaderLoading.js';
 
 describe('BasicHeaderLoading tests', () => {
     describe('<BasicHeaderLoading />', () => {

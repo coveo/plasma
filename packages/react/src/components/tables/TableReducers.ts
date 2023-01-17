@@ -1,13 +1,13 @@
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IActionOptions} from '../actions/Action';
-import {LoadingActions} from '../loading/LoadingActions';
-import {ITablePredicate} from './Table';
-import {ITableActionPayload, TableActions} from './TableActions';
-import {DEFAULT_TABLE_DATA, TableChildComponent, TableSortingOrder} from './TableConstants';
-import {TableHeaderCellActions} from './TableHeaderCellActions';
-import {getTableChildComponentId} from './TableUtils';
+import s from 'underscore.string';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IActionOptions} from '../actions/Action.js';
+import {LoadingActions} from '../loading/LoadingActions.js';
+import {ITablePredicate} from './Table.js';
+import {ITableActionPayload, TableActions} from './TableActions.js';
+import {DEFAULT_TABLE_DATA, TableChildComponent, TableSortingOrder} from './TableConstants.js';
+import {TableHeaderCellActions} from './TableHeaderCellActions.js';
+import {getTableChildComponentId} from './TableUtils.js';
 
 export interface ITableById {
     [id: string]: {
@@ -231,7 +231,7 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
             const currentTableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
                 ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
                 : _.findKey(tablesState, (tableState, tableId: string) =>
-                      contains(action.payload && action.payload.id, tableId)
+                      s.contains(action.payload && action.payload.id, tableId)
                   );
 
             return currentTableId

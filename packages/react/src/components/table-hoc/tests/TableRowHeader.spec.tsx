@@ -1,6 +1,6 @@
 import {shallowWithState} from '@test-utils';
 
-import {TableRowHeader} from '../TableRowHeader';
+import {TableRowHeader} from '../TableRowHeader.js';
 
 describe('TableRowHeader', () => {
     it('should mount and unmount without errors', () => {

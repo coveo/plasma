@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import {InlineConfirmContext} from './InlineConfirmContext';
+import {InlineConfirmContext} from './InlineConfirmContext.js';
 
 export const useInlineConfirm = () => {
     const ctx = useContext(InlineConfirmContext);

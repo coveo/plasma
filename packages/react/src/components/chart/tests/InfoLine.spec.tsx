@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {InfoLine} from '../InfoLine';
+import {InfoLine} from '../InfoLine.js';
 
 describe('<InfoLine />', () => {
     it('should not throw', () => {

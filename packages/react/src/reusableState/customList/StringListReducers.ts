@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
-import {IItemBoxProps} from '../../components/itemBox/ItemBox';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IStringListPayload, StringListActions} from './StringListActions';
+import {IItemBoxProps} from '../../components/itemBox/ItemBox.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IStringListPayload, StringListActions} from './StringListActions.js';
 
 export type IStringListCompositeState = {[id: string]: IStringListState};
 

@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../../../utils/ReduxUtils';
+import {IReduxAction} from '../../../../utils/ReduxUtils.js';
 import {
     addItemFilter,
     filterItems,
@@ -6,7 +6,7 @@ import {
     IItemFilteringActionPayload,
     ItemFilterActions,
     removeItemFilter,
-} from '../ItemFilterActions';
+} from '../ItemFilterActions.js';
 
 const ITEM_FILTER_ID: string = 'the-item-filter';
 

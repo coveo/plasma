@@ -2,8 +2,8 @@ import {Button, Center, Group, Space} from '@mantine/core';
 import {DateRangePickerValue, RangeCalendar, RangeCalendarProps} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
-import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
-import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
+import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect.js';
+import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker.js';
 
 export interface DateRangePickerInlineCalendarProps
     extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {

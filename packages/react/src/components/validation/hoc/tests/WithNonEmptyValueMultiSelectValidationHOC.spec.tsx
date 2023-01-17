@@ -1,11 +1,11 @@
 import {FC} from 'react';
 import {render, screen} from '@test-utils';
-import {withSelectedValues, ErrorList} from '../../../../utils/tests/TestUtils';
-import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
+import {withSelectedValues, ErrorList} from '../../../../utils/tests/TestUtils.js';
+import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected.js';
 import {
     withNonEmptyMultiSelectHOC,
     WithNonEmptyValueMultiSelectValidationProps,
-} from '../WithNonEmptyValueMultiSelectValidationHOC';
+} from '../WithNonEmptyValueMultiSelectValidationHOC.js';
 
 const MultiSelectWithNonEmpty = withNonEmptyMultiSelectHOC(MultiSelectConnected);
 const MultiSelectWithNonEmptyAndError: FC<

@@ -1,8 +1,8 @@
 import {ComponentType} from 'react';
 import {connect} from 'react-redux';
-import {PlasmaState} from '../../../PlasmaState';
-import {IButtonProps} from '../../button/Button';
-import {ValidationSelectors} from '../ValidationSelectors';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {IButtonProps} from '../../button/Button.js';
+import {ValidationSelectors} from '../ValidationSelectors.js';
 
 export interface IWithDirtySaveButtonHOCProps {
     validationIds: string[];

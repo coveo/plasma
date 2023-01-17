@@ -1,7 +1,7 @@
 import {render, screen, within, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {JSONEditorConnected} from '../JSONEditorConnected';
+import {JSONEditorConnected} from '../JSONEditorConnected.js';
 
 describe('<JSONEditorConnected />', () => {
     it('should mount and unmount without errors', () => {

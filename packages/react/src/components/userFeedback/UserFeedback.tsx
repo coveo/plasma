@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import {DisplayClass} from '../../utils/ComponentUtils';
+import {DisplayClass} from '../../utils/ComponentUtils.js';
 
 export interface IUserFeedbackProps {
     feedbackText: string;

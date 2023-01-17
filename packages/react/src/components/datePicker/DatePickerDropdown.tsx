@@ -3,18 +3,18 @@ import moment from 'moment';
 import {ClassAttributes, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {TooltipPlacement} from '../../utils';
-import {DateUtils} from '../../utils/DateUtils';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {Button} from '../button/Button';
-import {DEFAULT_YEARS} from '../calendar/Calendar';
-import {CollapsibleToggle} from '../collapsible';
-import {DropPodPosition} from '../drop/DomPositionCalculator';
-import {Drop, IDropOwnProps} from '../drop/Drop';
-import {ModalFooter} from '../modal/ModalFooter';
-import {DatePickerBox, IDatePickerBoxOwnProps, IDatePickerBoxProps} from './DatePickerBox';
-import {IDatePickerState} from './DatePickerReducers';
-import {IRangeLimit} from './DatesSelection';
+import {TooltipPlacement} from '../../utils/index.js';
+import {DateUtils} from '../../utils/DateUtils.js';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils.js';
+import {Button} from '../button/Button.js';
+import {DEFAULT_YEARS} from '../calendar/Calendar.js';
+import {CollapsibleToggle} from '../collapsible/index.js';
+import {DropPodPosition} from '../drop/DomPositionCalculator.js';
+import {Drop, IDropOwnProps} from '../drop/Drop.js';
+import {ModalFooter} from '../modal/ModalFooter.js';
+import {DatePickerBox, IDatePickerBoxOwnProps, IDatePickerBoxProps} from './DatePickerBox.js';
+import {IDatePickerState} from './DatePickerReducers.js';
+import {IRangeLimit} from './DatesSelection.js';
 
 export interface IDatePickerDropdownOwnProps
     extends Pick<

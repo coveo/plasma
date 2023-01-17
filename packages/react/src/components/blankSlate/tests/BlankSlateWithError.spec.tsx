@@ -1,7 +1,7 @@
 import {shallowWithState} from '@test-utils';
 
-import {IBlankSlateProps} from '../BlankSlate';
-import {BlankSlateWithError} from '../BlankSlatesHOC';
+import {IBlankSlateProps} from '../BlankSlate.js';
+import {BlankSlateWithError} from '../BlankSlatesHOC.js';
 
 describe('BlankSlateWithError Tests', () => {
     describe('<BlankSlateWithError>', () => {

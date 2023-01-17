@@ -1,14 +1,14 @@
 import * as _ from 'underscore';
-import {humanize} from 'underscore.string';
+import s from 'underscore.string';
 
-import {ActionBarConnected} from '../../actions/ActionBar';
-import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
-import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
-import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {ITablePredicate, ITableProps} from '../Table';
-import {TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
-import {getTableChildComponentId} from '../TableUtils';
+import {ActionBarConnected} from '../../actions/ActionBar.js';
+import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected.js';
+import {IDropdownOption} from '../../dropdownSearch/DropdownSearch.js';
+import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected.js';
+import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected.js';
+import {ITablePredicate, ITableProps} from '../Table.js';
+import {TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants.js';
+import {getTableChildComponentId} from '../TableUtils.js';
 
 export const TableChildActionBar = (props: ITableProps): JSX.Element => {
     if (!props.actionBar) {
@@ -51,7 +51,7 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
                             fixedPrepend={
                                 (predicate.attributeNameFormatter
                                     ? predicate.attributeNameFormatter(predicate.attributeName)
-                                    : humanize(predicate.attributeName)) as any
+                                    : s.humanize(predicate.attributeName)) as any
                             }
                             id={predicateId}
                             containerClasses={containerClasses}

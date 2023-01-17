@@ -2,12 +2,12 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {addPrompt} from '../../inlinePrompt/InlinePromptActions';
-import {IActionOptions} from '../Action';
-import {ITriggerActionProps, TriggerAction, TriggerActionConnected} from '../TriggerActionConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {addPrompt} from '../../inlinePrompt/InlinePromptActions.js';
+import {IActionOptions} from '../Action.js';
+import {ITriggerActionProps, TriggerAction, TriggerActionConnected} from '../TriggerActionConnected.js';
 
 describe('<TriggerActionConnected />', () => {
     let action: IActionOptions;

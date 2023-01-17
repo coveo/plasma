@@ -14,19 +14,19 @@ import {CoreOptions, InitialTableState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, Fragment, ReactElement, ReactNode, useCallback, useEffect, useState} from 'react';
 
-import {TableActions} from './TableActions';
-import {TableCollapsibleColumn} from './TableCollapsibleColumn';
-import {onTableChangeEvent, TableContext, TableFormType} from './TableContext';
-import {TableDateRangePicker} from './TableDateRangePicker';
-import {TableFilter} from './TableFilter';
-import {TableFooter} from './TableFooter';
-import {TableHeader} from './TableHeader';
-import {TablePagination} from './TablePagination';
-import {TablePerPage} from './TablePerPage';
-import {TablePredicate} from './TablePredicate';
-import {TableSelectableColumn} from './TableSelectableColumn';
-import {Th} from './Th';
-import {useRowSelection} from './useRowSelection';
+import {TableActions} from './TableActions.js';
+import {TableCollapsibleColumn} from './TableCollapsibleColumn.js';
+import {onTableChangeEvent, TableContext, TableFormType} from './TableContext.js';
+import {TableDateRangePicker} from './TableDateRangePicker.js';
+import {TableFilter} from './TableFilter.js';
+import {TableFooter} from './TableFooter.js';
+import {TableHeader} from './TableHeader.js';
+import {TablePagination} from './TablePagination.js';
+import {TablePerPage} from './TablePerPage.js';
+import {TablePredicate} from './TablePredicate.js';
+import {TableSelectableColumn} from './TableSelectableColumn.js';
+import {Th} from './Th.js';
+import {useRowSelection} from './useRowSelection.js';
 
 interface TableStylesParams {
     hasHeader: boolean;

@@ -1,6 +1,6 @@
 import {render, screen, userEvent} from '@test-utils';
 
-import {InlineConfirm} from '../InlineConfirm';
+import {InlineConfirm} from '../InlineConfirm.js';
 
 describe('InlineConfirm', () => {
     it('renders its children', () => {

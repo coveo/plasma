@@ -1,12 +1,12 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IChangeOptionPayload, IOptionPickerPayload} from '../OptionPickerActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {IChangeOptionPayload, IOptionPickerPayload} from '../OptionPickerActions.js';
 import {
     addOptionPicker,
     changeOptionPicker,
     OptionPickerActions,
     removeOptionPicker,
     resetOptionPickers,
-} from '../OptionPickerActions';
+} from '../OptionPickerActions.js';
 
 describe('Option picker', () => {
     describe('OptionsPickerActions', () => {

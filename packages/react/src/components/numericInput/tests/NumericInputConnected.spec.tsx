@@ -2,11 +2,11 @@ import {shallowWithStore} from '@test-utils';
 import {render, screen} from '@test-utils';
 import {ShallowWrapper} from 'enzyme';
 
-import {keyCode} from '../../../utils/InputUtils';
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {NumericInputActions} from '../NumericInputActions';
-import {NumericInputConnected} from '../NumericInputConnected';
-import {initialNumericInputState} from '../NumericInputReducers';
+import {keyCode} from '../../../utils/InputUtils.js';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {NumericInputActions} from '../NumericInputActions.js';
+import {NumericInputConnected} from '../NumericInputConnected.js';
+import {initialNumericInputState} from '../NumericInputReducers.js';
 
 describe('Numeric Input', () => {
     describe('<NumericInputConnected />', () => {

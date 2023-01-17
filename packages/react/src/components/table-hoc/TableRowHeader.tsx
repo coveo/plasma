@@ -1,6 +1,6 @@
 import {FunctionComponent, PropsWithChildren} from 'react';
 
-import {useFixedWidthWhileLoading} from './utils/TableHooks';
+import {useFixedWidthWhileLoading} from './utils/TableHooks.js';
 
 interface TableRowHeaderProps {
     isLoading?: boolean;

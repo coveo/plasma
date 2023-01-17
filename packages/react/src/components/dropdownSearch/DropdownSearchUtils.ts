@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
-import {keyCode} from '../../utils/InputUtils';
-import {IDropdownOption} from './DropdownSearch';
-import {IDropdownSearchState} from './DropdownSearchReducers';
+import {keyCode} from '../../utils/InputUtils.js';
+import {IDropdownOption} from './DropdownSearch.js';
+import {IDropdownSearchState} from './DropdownSearchReducers.js';
 
 /**
  * Utility function preventing boilerplate code when retrieving the selected option of a DropdownSearchConnected.

@@ -3,17 +3,17 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IActionOptions} from '../../actions/Action';
-import {PrimaryAction} from '../../actions/PrimaryAction';
-import {openDropdownSearch} from '../../dropdownSearch/DropdownSearchActions';
-import {ITableProps, Table} from '../Table';
-import {TableConnected} from '../TableConnected';
-import {TableChildComponent} from '../TableConstants';
-import {getTableChildComponentId} from '../TableUtils';
-import {tablePossibleProps, tablePropsMock} from './TableTestCommon';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IActionOptions} from '../../actions/Action.js';
+import {PrimaryAction} from '../../actions/PrimaryAction.js';
+import {openDropdownSearch} from '../../dropdownSearch/DropdownSearchActions.js';
+import {ITableProps, Table} from '../Table.js';
+import {TableConnected} from '../TableConnected.js';
+import {TableChildComponent} from '../TableConstants.js';
+import {getTableChildComponentId} from '../TableUtils.js';
+import {tablePossibleProps, tablePropsMock} from './TableTestCommon.js';
 
 describe('<TableConnected />', () => {
     let store: Store<PlasmaState>;

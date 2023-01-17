@@ -1,6 +1,6 @@
-import {camelCase} from 'lodash';
+import {camelCase} from 'lodash-es';
 
-import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from './token';
+import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from '../tokens/token.js';
 
 const valueIncludesUnit = (value: string | number) => /px$|%$/.test(value.toString());
 

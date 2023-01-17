@@ -15,9 +15,10 @@ import {
 import {useId} from '@mantine/hooks';
 import {ReactNode} from 'react';
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-import {useControlledList} from '../../hooks';
-import {CollectionItem} from './CollectionItem';
-import useStyles from './Collection.styles';
+
+import {useControlledList} from '../../hooks/index.js';
+import useStyles from './Collection.styles.js';
+import {CollectionItem} from './CollectionItem.js';
 
 interface CollectionProps<T>
     extends Omit<InputWrapperBaseProps, 'inputContainer' | 'inputWrapperOrder'>,

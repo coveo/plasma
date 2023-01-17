@@ -1,5 +1,5 @@
-import {ISliderState} from '../SliderReducers';
-import {SliderSelectors} from '../SliderSelectors';
+import {ISliderState} from '../SliderReducers.js';
+import {SliderSelectors} from '../SliderSelectors.js';
 
 describe('SliderSelectors', () => {
     describe('getSliderValue', () => {

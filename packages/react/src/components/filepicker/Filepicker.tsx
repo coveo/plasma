@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import {ChangeEvent, FunctionComponent, InputHTMLAttributes, MouseEventHandler, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils';
-import {FileMetadata, FileUtils} from '../../utils/FileUtils';
-import {FilepickerActions} from './FilepickerActions';
-import {FilepickerSelectors} from './FilepickerSelectors';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch} from '../../utils/index.js';
+import {FileMetadata, FileUtils} from '../../utils/FileUtils.js';
+import {FilepickerActions} from './FilepickerActions.js';
+import {FilepickerSelectors} from './FilepickerSelectors.js';
 
 export interface FilepickerProps extends InputHTMLAttributes<HTMLInputElement> {
     /**

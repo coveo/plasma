@@ -2,9 +2,9 @@ import {scaleBand} from 'd3-scale';
 import {range} from 'd3-array';
 import {FunctionComponent, PropsWithChildren, useContext} from 'react';
 
-import {ChartUtils} from './ChartUtils';
+import {ChartUtils} from './ChartUtils.js';
 
-import {XYChartContext, XYPoint, XYSerie} from './XYChart';
+import {XYChartContext, XYPoint, XYSerie} from './XYChart.js';
 
 export interface BarSeriesProps {
     barRatio?: number;

@@ -2,18 +2,18 @@ import {Component, ComponentType, PropsWithChildren, ReactNode} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
-import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {turnOffLoading} from '../loading/LoadingActions';
-import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
-import {NavigationConnected} from '../navigation/NavigationConnected';
-import {NavigationSelectors} from '../navigation/NavigationSelectors';
-import {TableWithPaginationActions} from './actions/TableWithPaginationActions';
-import {ITableHOCOwnProps} from './TableHOC';
-import {TableSelectors} from './TableSelectors';
-import {TableHOCUtils} from './utils/TableHOCUtils';
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState.js';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {turnOffLoading} from '../loading/LoadingActions.js';
+import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation.js';
+import {NavigationConnected} from '../navigation/NavigationConnected.js';
+import {NavigationSelectors} from '../navigation/NavigationSelectors.js';
+import {TableWithPaginationActions} from './actions/TableWithPaginationActions.js';
+import {ITableHOCOwnProps} from './TableHOC.js';
+import {TableSelectors} from './TableSelectors.js';
+import {TableHOCUtils} from './utils/TableHOCUtils.js';
 
 export interface ITableWithPaginationConfig
     extends WithServerSideProcessingProps,

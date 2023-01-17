@@ -3,12 +3,12 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {keyCode} from '../../../utils/InputUtils';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {AutocompleteConnected, IAutocompleteProps} from '../AutocompleteConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {keyCode} from '../../../utils/InputUtils.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IItemBoxProps} from '../../itemBox/ItemBox.js';
+import {AutocompleteConnected, IAutocompleteProps} from '../AutocompleteConnected.js';
 
 describe('Autocomplete', () => {
     describe('<AutocompleteConnected />', () => {

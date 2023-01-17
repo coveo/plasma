@@ -3,12 +3,12 @@ import classNames from 'classnames';
 import {ChangeEvent, HTMLProps, KeyboardEvent, PureComponent, ReactText} from 'react';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {keyCode} from '../../utils/InputUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {NumericInputActions} from './NumericInputActions';
-import {initialNumericInputState} from './NumericInputReducers';
-import {NumericInputSelectors} from './NumericInputSelectors';
+import {PlasmaState} from '../../PlasmaState.js';
+import {keyCode} from '../../utils/InputUtils.js';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils.js';
+import {NumericInputActions} from './NumericInputActions.js';
+import {initialNumericInputState} from './NumericInputReducers.js';
+import {NumericInputSelectors} from './NumericInputSelectors.js';
 
 export interface NumericInputOwnProps {
     /**

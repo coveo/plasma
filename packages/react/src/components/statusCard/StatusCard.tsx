@@ -2,7 +2,7 @@ import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {Component, ReactNode} from 'react';
 
-import {Loading} from '../loading/Loading';
+import {Loading} from '../loading/Loading.js';
 
 export interface StatusCardProps {
     title: string;

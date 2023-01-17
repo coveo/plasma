@@ -1,11 +1,11 @@
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {MatchFilter} from '../../filterBox/FilterBoxUtils';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {IListBoxState} from '../../listBox/ListBoxReducers';
-import {SelectCombiners, SelectSelector} from '../SelectSelector';
-import {ISingleSelectOwnProps} from '../SingleSelectConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {MatchFilter} from '../../filterBox/FilterBoxUtils.js';
+import {IItemBoxProps} from '../../itemBox/ItemBox.js';
+import {IListBoxState} from '../../listBox/ListBoxReducers.js';
+import {SelectCombiners, SelectSelector} from '../SelectSelector.js';
+import {ISingleSelectOwnProps} from '../SingleSelectConnected.js';
 
 describe('Select', () => {
     describe('Select Selector', () => {

@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ITabActionPayload, TabAction} from './TabActions';
-import {TabConstants} from './TabConstants';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {ITabActionPayload, TabAction} from './TabActions.js';
+import {TabConstants} from './TabConstants.js';
 
 export interface ITabState {
     id: string;

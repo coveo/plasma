@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {ILoadingDispatchProps, ILoadingOwnProps, Loading} from './Loading';
-import {addLoading, removeLoading} from './LoadingActions';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {ILoadingDispatchProps, ILoadingOwnProps, Loading} from './Loading.js';
+import {addLoading, removeLoading} from './LoadingActions.js';
 
 const mapStateToProps = () => ({});
 

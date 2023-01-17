@@ -4,7 +4,7 @@ import {
     IBoundingLimit,
     IDomPositionCalculatorReturn,
     IDropUIPosition,
-} from '../DomPositionCalculator';
+} from '../DomPositionCalculator.js';
 
 describe('DomPositionCalculator', () => {
     let validator: (

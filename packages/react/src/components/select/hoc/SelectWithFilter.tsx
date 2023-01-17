@@ -4,18 +4,22 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {PlasmaState} from '../../../PlasmaState';
-import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {UUID} from '../../../utils/UUID';
-import {IFilterBoxOwnProps} from '../../filterBox/FilterBox';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {FilterBoxSelectors} from '../../filterBox/FilterBoxSelectors';
-import {MatchFilter} from '../../filterBox/FilterBoxUtils';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {ISelectOwnProps} from '../SelectConnected';
-import {SelectSelector} from '../SelectSelector';
+import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {
+    addStringList,
+    addValueStringList,
+    removeStringList,
+} from '../../../reusableState/customList/StringListActions.js';
+import {IDispatch} from '../../../utils/ReduxUtils.js';
+import {UUID} from '../../../utils/UUID.js';
+import {IFilterBoxOwnProps} from '../../filterBox/FilterBox.js';
+import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected.js';
+import {FilterBoxSelectors} from '../../filterBox/FilterBoxSelectors.js';
+import {MatchFilter} from '../../filterBox/FilterBoxUtils.js';
+import {IItemBoxProps} from '../../itemBox/ItemBox.js';
+import {ISelectOwnProps} from '../SelectConnected.js';
+import {SelectSelector} from '../SelectSelector.js';
 
 export interface ISelectWithFilterOwnProps {
     defaultCustomValues?: string[];

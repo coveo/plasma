@@ -1,12 +1,12 @@
-import {IStringListCompositeState} from '../../../../reusableState/customList/StringListReducers';
-import {stringListInitialState} from '../../../../reusableState/customList/StringListReducers';
-import {IReduxAction} from '../../../../utils/ReduxUtils';
-import {clearListBoxOption, selectListBoxOption, unselectListBoxOption} from '../../../listBox/ListBoxActions';
+import {IStringListCompositeState} from '../../../../reusableState/customList/StringListReducers.js';
+import {stringListInitialState} from '../../../../reusableState/customList/StringListReducers.js';
+import {IReduxAction} from '../../../../utils/ReduxUtils.js';
+import {clearListBoxOption, selectListBoxOption, unselectListBoxOption} from '../../../listBox/ListBoxActions.js';
 import {
     ISelectWithFilterCompositeState,
     ISelectWithFilterPayload,
     selectWithFilterCompositeReducer,
-} from '../SelectWithFilterReducers';
+} from '../SelectWithFilterReducers.js';
 
 describe('Select', () => {
     describe('SelectWithFilter reducers', () => {

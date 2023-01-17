@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {Label} from '../Label';
+import {Label} from '../Label.js';
 
 describe('Label', () => {
     it('should render without errors', () => {

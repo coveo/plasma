@@ -1,6 +1,6 @@
-import {PlasmaState} from '../../../PlasmaState';
-import {TableSelectors, TableSelectorsProps} from '../TableSelectors';
-import {ITableHOCCompositeState, TableHOCUtils} from '../utils/TableHOCUtils';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {TableSelectors, TableSelectorsProps} from '../TableSelectors.js';
+import {ITableHOCCompositeState, TableHOCUtils} from '../utils/TableHOCUtils.js';
 
 describe('TableSelectors', () => {
     describe('isEmptyStateSet', () => {

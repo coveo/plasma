@@ -1,17 +1,17 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {convertStringListToItemsBox} from '../../reusableState/customList/StringListReducers';
-import {CherryPick} from '../../utils';
-import {DropSelectors} from '../drop/redux/DropReducers';
-import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
-import {MatchFilter} from '../filterBox/FilterBoxUtils';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {IListBoxState} from '../listBox/ListBoxReducers';
-import {ISelectWithFilterOwnProps} from './hoc/SelectWithFilter';
-import {ISelectOwnProps} from './SelectConnected';
-import {SelectConstants} from './SelectConstants';
+import {PlasmaState} from '../../PlasmaState.js';
+import {convertStringListToItemsBox} from '../../reusableState/customList/StringListReducers.js';
+import {CherryPick} from '../../utils/index.js';
+import {DropSelectors} from '../drop/redux/DropReducers.js';
+import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors.js';
+import {MatchFilter} from '../filterBox/FilterBoxUtils.js';
+import {IItemBoxProps} from '../itemBox/ItemBox.js';
+import {IListBoxState} from '../listBox/ListBoxReducers.js';
+import {ISelectWithFilterOwnProps} from './hoc/SelectWithFilter.js';
+import {ISelectOwnProps} from './SelectConnected.js';
+import {SelectConstants} from './SelectConstants.js';
 
 const getListState = (state: PlasmaState, {id}: {id: string}): string[] => state?.selectWithFilter?.[id]?.list ?? [];
 

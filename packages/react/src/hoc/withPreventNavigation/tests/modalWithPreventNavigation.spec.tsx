@@ -2,16 +2,16 @@ import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@test-utils';
 import {Component} from 'react';
 
-import {closeModal} from '../../../components/modal/ModalActions';
-import {ModalCompositeConnected} from '../../../components/modal/ModalComposite';
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
+import {closeModal} from '../../../components/modal/ModalActions.js';
+import {ModalCompositeConnected} from '../../../components/modal/ModalComposite.js';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
 import {
     IWithPreventNavigationConfig,
     IWithPreventNavigationInjectedProps,
     modalWithPreventNavigation,
     preventNavigationDefaultConfig,
-} from '../modalWithPreventNavigation';
-import {PreventNavigationPrompt, PreventNavigationPromptProps} from '../PreventNavigationPrompt';
+} from '../modalWithPreventNavigation.js';
+import {PreventNavigationPrompt, PreventNavigationPromptProps} from '../PreventNavigationPrompt.js';
 
 describe('Modal with Prevent Navigation', () => {
     let store: PlasmaMockStore;

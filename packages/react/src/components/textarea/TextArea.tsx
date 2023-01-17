@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils';
-import {ILabelProps} from '../input';
-import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/index.js';
+import {ILabelProps} from '../input/index.js';
+import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions.js';
 
 export interface ITextAreaOwnProps {
     /**

@@ -1,20 +1,19 @@
-import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from '@test-utils';
+import {ShallowWrapper} from 'enzyme';
 import * as _ from 'underscore';
 
-import {TableHOCUtils} from '..';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {PER_PAGE_NUMBERS} from '../../navigation/perPage';
-import {PaginationUtils} from '../../pagination/PaginationUtils';
-import {TablePagination} from '../../pagination/TablePagination';
-import {TableWithPaginationActions} from '../actions';
-import {TableHOC} from '../TableHOC';
+import {getStoreMock} from '../../../utils/tests/TestUtils.js';
+import {PER_PAGE_NUMBERS} from '../../index.js';
+import {PaginationUtils} from '../../pagination/PaginationUtils.js';
+import {TablePagination} from '../../pagination/TablePagination.js';
+import {TableHOCUtils, TableWithPaginationActions} from '../index.js';
+import {TableHOC} from '../TableHOC.js';
 import {
     ITableWithNewPaginationConfig,
     ITableWithNewPaginationProps,
     tableWithNewPagination,
-} from '../TableWithNewPagination';
-import {ITableWithPaginationProps} from '../TableWithPagination';
+} from '../TableWithNewPagination.js';
+import {ITableWithPaginationProps} from '../TableWithPagination.js';
 
 describe('TableWithNewPagination tests', () => {
     describe('<TableWithNewPagination />', () => {

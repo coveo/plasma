@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
 
 export const AutocompleteActions = {
     add: 'ADD_AUTOCOMPLETE',

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {ReactElement} from 'react';
-import {ITextAreaProps} from './TextArea';
+import {ITextAreaProps} from './TextArea.js';
 
 export interface ITextAreaLabelProps {
     children: ReactElement<ITextAreaProps>;

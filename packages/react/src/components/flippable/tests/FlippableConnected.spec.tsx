@@ -2,12 +2,12 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {Flippable, IFlippableProps} from '../Flippable';
-import {changeFlippableSide} from '../FlippableActions';
-import {FlippableConnected} from '../FlippableConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {Flippable, IFlippableProps} from '../Flippable.js';
+import {changeFlippableSide} from '../FlippableActions.js';
+import {FlippableConnected} from '../FlippableConnected.js';
 
 describe('Flippable', () => {
     describe('<FlippableConnected />', () => {

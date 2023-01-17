@@ -3,17 +3,17 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ITableProps, ITableRowData, Table} from '../Table';
-import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
-import {TableChildBody} from '../table-children/TableChildBody';
-import {TableChildHeader} from '../table-children/TableChildHeader';
-import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated';
-import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants';
-import {ITableData} from '../TableReducers';
-import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {ITableProps, ITableRowData, Table} from '../Table.js';
+import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate.js';
+import {TableChildBody} from '../table-children/TableChildBody.js';
+import {TableChildHeader} from '../table-children/TableChildHeader.js';
+import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated.js';
+import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants.js';
+import {ITableData} from '../TableReducers.js';
+import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon.js';
 
 const perPageNumbers = [5, 10, 20];
 

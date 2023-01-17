@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import {shallow} from 'enzyme';
 
 import {render, screen} from '@test-utils';
-import {Form} from '../Form';
+import {Form} from '../Form.js';
 
 describe('Form', () => {
     const SOME_TITLE = '🥝&👬';

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import {ClassAttributes, KeyboardEvent, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {keyCode} from '../../utils';
+import {keyCode} from '../../utils/index.js';
 
 export interface IDropdownOwnProps extends ClassAttributes<Dropdown> {
     id?: string;

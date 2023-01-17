@@ -1,5 +1,5 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import {IMultiStepBarProps, IStep, MultiStepBar, MultiStepState} from '../MultiStepBar';
+import {IMultiStepBarProps, IStep, MultiStepBar, MultiStepState} from '../MultiStepBar.js';
 
 describe('<MultiStepBar />', () => {
     const multiStepBarBackgroundContainerSelector = '.multi-step-bar-backdrop-container';

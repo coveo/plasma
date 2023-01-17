@@ -1,8 +1,8 @@
-import {PlasmaState} from '../../../PlasmaState';
-import {ISelectWithFilterOwnProps, ISingleSelectOwnProps} from '../../select';
-import {IFilterState} from '../FilterBoxReducers';
-import {FilterBoxSelectors} from '../FilterBoxSelectors';
-import {defaultListBoxMatchFilter, MatchFilter} from '../FilterBoxUtils';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {ISelectWithFilterOwnProps, ISingleSelectOwnProps} from '../../select.js';
+import {IFilterState} from '../FilterBoxReducers.js';
+import {FilterBoxSelectors} from '../FilterBoxSelectors.js';
+import {defaultListBoxMatchFilter, MatchFilter} from '../FilterBoxUtils.js';
 
 describe('FilterBox', () => {
     describe('FilterBox Selectors', () => {

@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {IInputProps} from '../../input/Input';
-import {AddInput} from '../AddInput';
+import {IInputProps} from '../../input/Input.js';
+import {AddInput} from '../AddInput.js';
 
 describe('AddInput', () => {
     it('should render without errors', () => {

@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {IInputDispatchProps, IInputOwnProps, IInputStateProps} from '../input/Input';
-import {Checkbox} from './Checkbox';
-import {addCheckbox, ICheckboxActionPayload, removeCheckbox, toggleCheckbox} from './CheckboxActions';
-import {CheckboxSelectors} from './CheckboxSelectors';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {IInputDispatchProps, IInputOwnProps, IInputStateProps} from '../input/Input.js';
+import {Checkbox} from './Checkbox.js';
+import {addCheckbox, ICheckboxActionPayload, removeCheckbox, toggleCheckbox} from './CheckboxActions.js';
+import {CheckboxSelectors} from './CheckboxSelectors.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IInputOwnProps): IInputStateProps => ({
     checked: CheckboxSelectors.getIsSelected(state, {id: ownProps.id}),

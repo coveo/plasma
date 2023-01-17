@@ -1,7 +1,7 @@
 import {FunctionComponent} from 'react';
-import {TableHOCUtils} from '../table-hoc/utils/TableHOCUtils';
-import {PaginationPagesNumber} from './PaginationPagesNumber';
-import {PaginationPerPage} from './PaginationPerPage';
+import {TableHOCUtils} from '../table-hoc/utils/TableHOCUtils.js';
+import {PaginationPagesNumber} from './PaginationPagesNumber.js';
+import {PaginationPerPage} from './PaginationPerPage.js';
 
 export interface ITablePaginationProps {
     id: string;

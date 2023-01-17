@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {HTMLProps, FunctionComponent, useContext, PropsWithChildren} from 'react';
-import {CheckboxContext, CheckboxContextProps} from '../checkbox/CheckboxContext';
+import {CheckboxContext, CheckboxContextProps} from '../checkbox/CheckboxContext.js';
 
 export interface ILabelProps {
     type?: string;

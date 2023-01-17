@@ -1,12 +1,12 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {FlatSelectActions, IFlatSelectActionPayload} from '../FlatSelectActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {FlatSelectActions, IFlatSelectActionPayload} from '../FlatSelectActions.js';
 import {
     flatSelectInitialState,
     flatSelectReducer,
     flatSelectsInitialState,
     flatSelectsReducer,
     IFlatSelectState,
-} from '../FlatSelectReducers';
+} from '../FlatSelectReducers.js';
 
 describe('FlatSelect', () => {
     const genericAction: IReduxAction<IFlatSelectActionPayload> = {

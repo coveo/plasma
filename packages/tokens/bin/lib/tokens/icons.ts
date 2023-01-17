@@ -1,10 +1,9 @@
 import {FileNodesResponse, Frame} from 'figma-js';
-import {readJson} from 'fs-extra';
+import {readJson} from 'fs-extra/esm';
 
-import {getPage} from '../figma';
-import {Token, TokenGroup} from '../formats/token';
-import {generateTokens} from '../generateTokens';
-import {PagesId} from '../mappings';
+import {getPage, PagesId} from '../figma.js';
+import {generateTokens} from './generateTokens.js';
+import {Token, TokenGroup} from './token.js';
 
 const generateIconsTokens = (tokenLibrary: FileNodesResponse, iconsMarkup: Record<string, string>) => {
     const {name, children} = getPage(tokenLibrary, PagesId.Icons[0]);

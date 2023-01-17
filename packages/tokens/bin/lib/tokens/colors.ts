@@ -1,25 +1,25 @@
-import {gl} from 'chroma-js';
+import chroma from 'chroma-js';
 import {FileNodesResponse, Node, Paint, Rectangle, Style, VectorBase} from 'figma-js';
-import {readJson} from 'fs-extra';
-import {groupBy, omit} from 'lodash';
+import {readJson} from 'fs-extra/esm';
+import {groupBy, omit} from 'lodash-es';
 
-import {getPage} from '../figma';
-import {Token, TokenGroup} from '../formats/token';
-import {generateTokens} from '../generateTokens';
-import {PagesId} from '../mappings';
+import {getPage, PagesId} from '../figma.js';
+import {generateTokens} from './generateTokens.js';
+import {Token, TokenGroup} from './token.js';
 
 type UncategorizedToken = Token & {path: string[]};
 
 const handleSolidColor = (fills: VectorBase['fills']): string | undefined => {
     const color = fills[0].color;
-    return color ? gl(color.r, color.g, color.b, color.a).hex() : undefined;
+    return color ? chroma.gl(color.r, color.g, color.b, color.a).hex() : undefined;
 };
 
 const handleLinearGradient = (fills: readonly Paint[]): string => {
     const [gradientStart, gradientEnd, gradientWidth] = fills[0].gradientHandlePositions!;
     const stops =
         fills[0]?.gradientStops?.map(
-            ({color, position}) => `${gl(color.r, color.g, color.b, color.a).hex()} ${(position * 100).toFixed(2)}%`
+            ({color, position}) =>
+                `${chroma.gl(color.r, color.g, color.b, color.a).hex()} ${(position * 100).toFixed(2)}%`
         ) ?? [];
     const angleDeg = (Math.atan2(gradientWidth.y - gradientStart.y, gradientWidth.x - gradientStart.x) * 180) / Math.PI; // angle (deg) between 2 vectors
     return `linear-gradient(${angleDeg.toFixed(2)}deg, ${stops.join(', ')})`;

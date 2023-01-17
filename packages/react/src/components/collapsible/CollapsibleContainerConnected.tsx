@@ -3,11 +3,11 @@ import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IClassName} from '../../utils/ClassNameUtils';
-import {ITooltipProps} from '../tooltip/Tooltip';
-import {CollapsibleConnected} from './CollapsibleConnected';
-import {CollapsibleHeaderIcon} from './CollapsibleHeaderIcon';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {ITooltipProps} from '../tooltip/Tooltip.js';
+import {CollapsibleConnected} from './CollapsibleConnected.js';
+import {CollapsibleHeaderIcon} from './CollapsibleHeaderIcon.js';
 
 export interface ICollapsibleContainerOwnProps {
     id: string;

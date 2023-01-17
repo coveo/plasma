@@ -1,7 +1,7 @@
 /* eslint-disable testing-library/no-container */
 import {render, screen} from '@test-utils';
 
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../InfoToken';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../InfoToken.js';
 
 describe('InfoToken', () => {
     it('renders the info icon if the specified size and type are Small and Information', async () => {

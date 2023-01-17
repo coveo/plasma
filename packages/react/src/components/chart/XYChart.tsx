@@ -2,8 +2,8 @@ import {scaleLinear, scalePoint} from 'd3-scale';
 import {FunctionComponent, createContext, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
-import {ChartBaseProps} from './ChartContainer';
-import {ChartUtils} from './ChartUtils';
+import {ChartBaseProps} from './ChartContainer.js';
+import {ChartUtils} from './ChartUtils.js';
 
 export interface XYPoint {
     x: number;

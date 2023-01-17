@@ -1,10 +1,10 @@
 import {ChangeEvent} from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {ISearchBarDispatchProps, ISearchBarOwnProps, ISearchBarStateProps, SearchBar} from './SearchBar';
-import {addSearchBar, removeSearchBar, setSearchBarValue} from './SearchBarActions';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {ISearchBarDispatchProps, ISearchBarOwnProps, ISearchBarStateProps, SearchBar} from './SearchBar.js';
+import {addSearchBar, removeSearchBar, setSearchBarValue} from './SearchBarActions.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: ISearchBarOwnProps): ISearchBarStateProps => {
     const searchBar = findWhere(state.searchBars, {id: ownProps.id});

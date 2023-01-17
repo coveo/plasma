@@ -1,10 +1,10 @@
 import userEvent from '@testing-library/user-event';
 import {render, screen} from '@test-utils';
 
-import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
-import {CodeEditor} from '../CodeEditor';
-import {CodeEditorActions} from '../CodeEditorActions';
-import {CodeMirrorModes} from '../EditorConstants';
+import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors.js';
+import {CodeEditor} from '../CodeEditor.js';
+import {CodeEditorActions} from '../CodeEditorActions.js';
+import {CodeMirrorModes} from '../EditorConstants.js';
 
 describe('CodeEditor', () => {
     beforeEach(() => {

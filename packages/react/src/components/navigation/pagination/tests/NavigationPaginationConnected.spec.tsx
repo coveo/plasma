@@ -3,14 +3,14 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../../PlasmaState';
-import {clearState} from '../../../../utils/ReduxUtils';
-import {TestUtils} from '../../../../utils/tests/TestUtils';
-import {addLoading, turnOffLoading} from '../../../loading/LoadingActions';
-import {PaginationSelect} from '../../../pagination';
-import {INavigationPaginationProps, NavigationPagination} from '../NavigationPagination';
-import {changePage, resetPaging} from '../NavigationPaginationActions';
-import {NavigationPaginationConnected} from '../NavigationPaginationConnected';
+import {PlasmaState} from '../../../../PlasmaState.js';
+import {clearState} from '../../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../../utils/tests/TestUtils.js';
+import {addLoading, turnOffLoading} from '../../../loading/LoadingActions.js';
+import {PaginationSelect} from '../../../pagination.js';
+import {INavigationPaginationProps, NavigationPagination} from '../NavigationPagination.js';
+import {changePage, resetPaging} from '../NavigationPaginationActions.js';
+import {NavigationPaginationConnected} from '../NavigationPaginationConnected.js';
 
 describe('<NavigationPaginationConnected />', () => {
     let wrapper: ReactWrapper<any, any>;

@@ -2,7 +2,7 @@ import {ArrowHeadLeftSize16Px, ArrowHeadRightSize16Px} from '@coveord/plasma-rea
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 
-import {PaginationSelect} from '../../pagination';
+import {PaginationSelect} from '../../pagination/index.js';
 
 export interface INavigationPaginationOwnProps extends ClassAttributes<NavigationPagination> {
     id?: string;

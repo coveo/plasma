@@ -2,16 +2,16 @@ import classNames from 'classnames';
 import {Component, ComponentClass, ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {PlasmaState} from '../../PlasmaState';
-import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {ReduxConnect} from '../../utils/ReduxUtils';
-import {UrlUtils} from '../../utils/UrlUtils';
-import {IDatePickerDropdownOwnProps} from '../datePicker/DatePickerDropdown';
-import {DatePickerDropdownConnected} from '../datePicker/DatePickerDropdownConnected';
-import {DatePickerSelectors} from '../datePicker/DatePickerSelectors';
-import {ITableHOCOwnProps} from './TableHOC';
-import {Params} from './TableWithUrlState';
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils.js';
+import {ReduxConnect} from '../../utils/ReduxUtils.js';
+import {UrlUtils} from '../../utils/UrlUtils.js';
+import {IDatePickerDropdownOwnProps} from '../datePicker/DatePickerDropdown.js';
+import {DatePickerDropdownConnected} from '../datePicker/DatePickerDropdownConnected.js';
+import {DatePickerSelectors} from '../datePicker/DatePickerSelectors.js';
+import {ITableHOCOwnProps} from './TableHOC.js';
+import {Params} from './TableWithUrlState.js';
 
 export interface ITableWithDatePickerConfig
     extends WithServerSideProcessingProps,

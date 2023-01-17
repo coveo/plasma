@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IToastContainerActionPayload, ToastAction} from '../ToastActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {IToastContainerActionPayload, ToastAction} from '../ToastActions.js';
 import {
     IToastsState,
     toastContainerInitialState,
@@ -8,7 +8,7 @@ import {
     toastInitialState,
     toastsContainerInitialState,
     toastsContainerReducer,
-} from '../ToastReducers';
+} from '../ToastReducers.js';
 
 describe('Reducers', () => {
     describe('toastContainers', () => {

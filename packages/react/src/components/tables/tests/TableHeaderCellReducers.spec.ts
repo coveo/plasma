@@ -1,11 +1,11 @@
-import {TableSortingOrder} from '../TableConstants';
-import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from '../TableHeaderCellActions';
+import {TableSortingOrder} from '../TableConstants.js';
+import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from '../TableHeaderCellActions.js';
 import {
     tableHeaderCellReducer,
     tableHeaderCellsInitialState,
     tableHeaderCellsReducer,
-} from '../TableHeaderCellReducers';
-import {getNextTableSortingOrder} from '../TableUtils';
+} from '../TableHeaderCellReducers.js';
+import {getNextTableSortingOrder} from '../TableUtils.js';
 
 describe('tableHeaderCellsReducer', () => {
     const testHeaderCell = {

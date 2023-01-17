@@ -1,15 +1,15 @@
 import * as _ from 'underscore';
 
-import {BasePayload, IReduxAction} from '../../../utils/ReduxUtils';
-import {PaginationActions} from '../../navigation/pagination/NavigationPaginationActions';
-import {PerPageActions} from '../../navigation/perPage/NavigationPerPageActions';
+import {BasePayload, IReduxAction} from '../../../utils/ReduxUtils.js';
+import {PaginationActions} from '../../navigation/pagination/NavigationPaginationActions.js';
+import {PerPageActions} from '../../navigation/perPage/NavigationPerPageActions.js';
 import {
     ITableRowAddPayload,
     ITableRowSelectPayload,
     ITableRowToggleCollapsiblePayload,
     TableHOCRowActionsType,
-} from '../actions/TableHOCRowActions';
-import {TableHOCUtils} from '../utils/TableHOCUtils';
+} from '../actions/TableHOCRowActions.js';
+import {TableHOCUtils} from '../utils/TableHOCUtils.js';
 
 export interface HOCTableRowState {
     id: string;

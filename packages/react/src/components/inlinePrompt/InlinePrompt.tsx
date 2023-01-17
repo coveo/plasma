@@ -4,10 +4,10 @@ import {FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {Button} from '../button';
-import {removePrompt} from './InlinePromptActions';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {Button} from '../button/index.js';
+import {removePrompt} from './InlinePromptActions.js';
 
 export interface IUserChoice {
     description?: string;

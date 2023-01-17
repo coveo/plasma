@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 
-import {Countdown} from '../Countdown';
+import {Countdown} from '../Countdown.js';
 
 describe('Countdown', () => {
     it('should render with default props', () => {

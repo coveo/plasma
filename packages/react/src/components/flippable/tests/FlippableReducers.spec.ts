@@ -1,12 +1,12 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {addFlippable, changeFlippableSide, IFlippablePayload, removeFlippable} from '../FlippableActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {addFlippable, changeFlippableSide, IFlippablePayload, removeFlippable} from '../FlippableActions.js';
 import {
     flippableInitialState,
     flippableReducer,
     flippablesInitialState,
     flippablesReducer,
     IFlippableState,
-} from '../FlippableReducers';
+} from '../FlippableReducers.js';
 
 describe('Flippable', () => {
     const FLIPPED_FLIPPABLE: IFlippableState = {

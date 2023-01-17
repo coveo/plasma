@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {BannerContainer} from '../BannerContainer';
+import {BannerContainer} from '../BannerContainer.js';
 
 describe('BannerContainer', () => {
     it('should not throw', () => {

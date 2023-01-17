@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {AddInputAction, IAddInputActionProps} from '../AddInputAction';
+import {AddInputAction, IAddInputActionProps} from '../AddInputAction.js';
 
 describe('AddInputAction', () => {
     it('should render without errors', () => {

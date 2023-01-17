@@ -1,4 +1,4 @@
-import {callIfDefined, convertUndefinedAndNullToEmptyString} from './FalsyValuesUtils';
+import {callIfDefined, convertUndefinedAndNullToEmptyString} from './FalsyValuesUtils.js';
 
 describe('FalsyValuesUtils', () => {
     it('should return empty string if the value is undefined', () => {

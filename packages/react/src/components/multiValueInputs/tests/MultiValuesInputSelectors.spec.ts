@@ -1,5 +1,5 @@
-import {PlasmaState} from '../../../PlasmaState';
-import {MultiValuesInputSelectors} from '../MultiValuesInputSelectors';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {MultiValuesInputSelectors} from '../MultiValuesInputSelectors.js';
 
 describe('MultiValuesInputSelectors', () => {
     describe('getValues', () => {

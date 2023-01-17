@@ -2,12 +2,12 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {Toast} from '../Toast';
-import {addToast} from '../ToastActions';
-import {IToastContainerProps, ToastContainer} from '../ToastContainer';
-import {ToastContainerConnected} from '../ToastContainerConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {Toast} from '../Toast.js';
+import {addToast} from '../ToastActions.js';
+import {IToastContainerProps, ToastContainer} from '../ToastContainer.js';
+import {ToastContainerConnected} from '../ToastContainerConnected.js';
 
 describe('Toasts', () => {
     describe('<ToastContainerConnected />', () => {

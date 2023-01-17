@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {BrowserPreviewError, BrowserPreviewErrorProps} from '../BrowserPreviewError';
+import {BrowserPreviewError, BrowserPreviewErrorProps} from '../BrowserPreviewError.js';
 
 describe('BrowserPreviewError', () => {
     let component: ReactWrapper<BrowserPreviewErrorProps>;

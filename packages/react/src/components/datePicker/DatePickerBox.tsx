@@ -1,16 +1,16 @@
 import classNames from 'classnames';
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
-import {slugify} from 'underscore.string';
+import s from 'underscore.string';
 
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {Calendar, ICalendarOwnProps, ICalendarProps} from '../calendar/Calendar';
-import {CalendarConnected} from '../calendar/CalendarConnected';
-import {IOption} from '../optionPicker/Option';
-import {IOptionPickerProps, OptionPicker} from '../optionPicker/OptionPicker';
-import {OptionPickerConnected} from '../optionPicker/OptionPickerConnected';
-import {DatesSelection, IDatesSelectionOwnProps, IDatesSelectionProps, IRangeLimit} from './DatesSelection';
-import {DatesSelectionConnected} from './DatesSelectionConnected';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils.js';
+import {Calendar, ICalendarOwnProps, ICalendarProps} from '../calendar/Calendar.js';
+import {CalendarConnected} from '../calendar/CalendarConnected.js';
+import {IOption} from '../optionPicker/Option.js';
+import {IOptionPickerProps, OptionPicker} from '../optionPicker/OptionPicker.js';
+import {OptionPickerConnected} from '../optionPicker/OptionPickerConnected.js';
+import {DatesSelection, IDatesSelectionOwnProps, IDatesSelectionProps, IRangeLimit} from './DatesSelection.js';
+import {DatesSelectionConnected} from './DatesSelectionConnected.js';
 
 export interface IDatesSelectionBox {
     title: string;
@@ -138,7 +138,7 @@ export class DatePickerBox extends Component<IDatePickerBoxProps, any> {
 
     private getdateSelectionBoxes(): JSX.Element[] {
         return _.map(this.props.datesSelectionBoxes, (datesSelectionBox: IDatesSelectionBox) => {
-            const boxId: string = `${this.props.id}-${slugify(datesSelectionBox.title)}`;
+            const boxId: string = `${this.props.id}-${s.slugify(datesSelectionBox.title)}`;
 
             const quickOptionsProps: IOptionPickerProps = {
                 id: boxId,

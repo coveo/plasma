@@ -1,11 +1,11 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
-import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils.js';
 
-import {ILinkSvgProps} from '../../linkSvg/LinkSvg';
-import {Title} from '../../title';
-import {Tooltip} from '../../tooltip/Tooltip';
-import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
+import {ILinkSvgProps} from '../../linkSvg/LinkSvg.js';
+import {Title} from '../../title.js';
+import {Tooltip} from '../../tooltip/Tooltip.js';
+import {IModalHeaderProps, ModalHeader} from '../ModalHeader.js';
 
 describe('ModalHeader', () => {
     const basicProps: IModalHeaderProps = {

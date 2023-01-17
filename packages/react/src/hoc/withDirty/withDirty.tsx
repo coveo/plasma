@@ -1,10 +1,10 @@
 import {ReactNode, ComponentType, ComponentClass, PureComponent, PropsWithChildren} from 'react';
 import {isBoolean} from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {WithDirtyActions} from './withDirtyActions';
-import {WithDirtySelectors} from './withDirtySelectors';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils.js';
+import {WithDirtyActions} from './withDirtyActions.js';
+import {WithDirtySelectors} from './withDirtySelectors.js';
 
 export interface IWithDirty {
     id: string;

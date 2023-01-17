@@ -1,4 +1,4 @@
-import {PaginationSelectors} from '../PaginationSelectors';
+import {PaginationSelectors} from '../PaginationSelectors.js';
 
 describe('PaginationSelectors tests', () => {
     describe('getPaginationState', () => {

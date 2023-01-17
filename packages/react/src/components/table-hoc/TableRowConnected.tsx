@@ -11,18 +11,18 @@ import {
 } from 'react';
 import * as _ from 'underscore';
 
-import {SlideY} from '../../animations/SlideY';
-import {PlasmaState} from '../../PlasmaState';
-import {UrlUtils} from '../../utils';
-import {EventUtils} from '../../utils/EventUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {IActionOptions} from '../actions/Action';
-import {addActionsToActionBar} from '../actions/ActionBarActions';
-import {Button} from '../button/Button';
-import {COLLAPSIBLE_EFFECT_DURATION} from '../collapsible/CollapsibleConnected';
-import {CollapsibleToggle} from '../collapsible/CollapsibleToggle';
-import {TableHOCRowActions} from './actions/TableHOCRowActions';
-import {TableSelectors} from './TableSelectors';
+import {SlideY} from '../../animations/SlideY.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {UrlUtils} from '../../utils/index.js';
+import {EventUtils} from '../../utils/EventUtils.js';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils.js';
+import {IActionOptions} from '../actions/Action.js';
+import {addActionsToActionBar} from '../actions/ActionBarActions.js';
+import {Button} from '../button/Button.js';
+import {COLLAPSIBLE_EFFECT_DURATION} from '../collapsible/CollapsibleConnected.js';
+import {CollapsibleToggle} from '../collapsible/CollapsibleToggle.js';
+import {TableHOCRowActions} from './actions/TableHOCRowActions.js';
+import {TableSelectors} from './TableSelectors.js';
 
 export interface CollapsibleRowProps {
     content?: ReactNode;

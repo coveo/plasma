@@ -1,6 +1,6 @@
-import {ValidationActions, ValidationActionsTypes} from '../ValidationActions';
-import {validationReducer} from '../ValidationReducer';
-import {ValidationTypes} from '../ValidationTypes';
+import {ValidationActions, ValidationActionsTypes} from '../ValidationActions.js';
+import {validationReducer} from '../ValidationReducer.js';
+import {ValidationTypes} from '../ValidationTypes.js';
 
 describe('ValidationReducer', () => {
     const componentId = '🐟';

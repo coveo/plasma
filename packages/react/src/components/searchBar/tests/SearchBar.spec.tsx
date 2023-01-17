@@ -1,8 +1,8 @@
 import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {shallow} from 'enzyme';
-import {SearchBar} from '../SearchBar';
-import {searchBarPropsScenarios} from './SearchBarPropsScenarios.mock';
+import {SearchBar} from '../SearchBar.js';
+import {searchBarPropsScenarios} from './SearchBarPropsScenarios.mock.js';
 
 describe('SearchBar', () => {
     const requiredProps = {...searchBarPropsScenarios[0]};

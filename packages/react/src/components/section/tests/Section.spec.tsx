@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {Section} from '../Section';
+import {Section} from '../Section.js';
 
 describe('Section', () => {
     const SOME_TITLE = '🎢✨🎊';

@@ -1,12 +1,12 @@
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
 import {
     ITableHeaderAddPayload,
     ITableHeaderBasePayload,
     ITableHeaderSortPayload,
     TableHeaderActionTypes,
-} from '../actions/TableHeaderActions';
+} from '../actions/TableHeaderActions.js';
 
 export interface ITableWithSortState {
     id: string;

@@ -1,6 +1,6 @@
 import {useContext, useMemo} from 'react';
-import {TextInputState} from '../textInput/TextInputReducer';
-import {FormComponent, FormContext} from './FormProvider';
+import {TextInputState} from '../textInput/TextInputReducer.js';
+import {FormComponent, FormContext} from './FormProvider.js';
 
 /**
  * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/

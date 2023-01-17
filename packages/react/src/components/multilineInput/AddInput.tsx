@@ -1,7 +1,7 @@
 import {KeyboardEvent, Component} from 'react';
 import * as _ from 'underscore';
-import {IInputProps, Input} from '../input/Input';
-import {AddInputAction} from './AddInputAction';
+import {IInputProps, Input} from '../input/Input.js';
+import {AddInputAction} from './AddInputAction.js';
 
 /**
  * @deprecated Use Mantine instead

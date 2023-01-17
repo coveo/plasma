@@ -1,11 +1,11 @@
 import {ClassAttributes, Component} from 'react';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {Loading} from '../loading/Loading';
-import {LoadingConnected} from '../loading/LoadingConnected';
-import {INavigationPaginationProps, NavigationPagination} from './pagination/NavigationPagination';
-import {NavigationPaginationConnected} from './pagination/NavigationPaginationConnected';
-import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS} from './perPage/NavigationPerPage';
-import {NavigationPerPageConnected} from './perPage/NavigationPerPageConnected';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils.js';
+import {Loading} from '../loading/Loading.js';
+import {LoadingConnected} from '../loading/LoadingConnected.js';
+import {INavigationPaginationProps, NavigationPagination} from './pagination/NavigationPagination.js';
+import {NavigationPaginationConnected} from './pagination/NavigationPaginationConnected.js';
+import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS} from './perPage/NavigationPerPage.js';
+import {NavigationPerPageConnected} from './perPage/NavigationPerPageConnected.js';
 
 export interface INavigationOwnProps extends ClassAttributes<Navigation> {
     id?: string;

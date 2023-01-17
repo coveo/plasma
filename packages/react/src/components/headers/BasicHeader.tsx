@@ -1,8 +1,8 @@
 import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {ITitleProps, Title} from '../title/Title';
-import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper';
+import {ITitleProps, Title} from '../title/Title.js';
+import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper.js';
 
 export interface IBasicHeaderProps extends IHeaderWrapperProps {
     /**

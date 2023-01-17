@@ -1,5 +1,5 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions.js';
 import {
     addTable,
     addTableDataEntry,
@@ -10,12 +10,12 @@ import {
     setIsInError,
     TableActions,
     updateTableDataEntry,
-} from '../TableActions';
-import {DEFAULT_TABLE_DATA, TableChildComponent} from '../TableConstants';
-import {sortFromHeaderCell} from '../TableHeaderCellActions';
-import {ITablesState, ITableState, tableReducer, tablesInitialState, tablesReducer} from '../TableReducers';
-import {getTableChildComponentId} from '../TableUtils';
-import {IData} from './../Table';
+} from '../TableActions.js';
+import {DEFAULT_TABLE_DATA, TableChildComponent} from '../TableConstants.js';
+import {sortFromHeaderCell} from '../TableHeaderCellActions.js';
+import {ITablesState, ITableState, tableReducer, tablesInitialState, tablesReducer} from '../TableReducers.js';
+import {getTableChildComponentId} from '../TableUtils.js';
+import {IData} from './../Table.js';
 
 describe('TableReducers', () => {
     const tableId = 'super-table';

@@ -1,2 +1,2 @@
-export * from './ModalWizard';
-export * from './ModalWizardWithValidations';
+export * from './ModalWizard.js';
+export * from './ModalWizardWithValidations.js';

@@ -1,12 +1,12 @@
 import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {TableSortingOrder} from '../TableConstants';
-import {ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell';
-import {TableHeaderCellConnected} from '../TableHeaderCellConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {TableSortingOrder} from '../TableConstants.js';
+import {ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell.js';
+import {TableHeaderCellConnected} from '../TableHeaderCellConnected.js';
 
 describe('Tables', () => {
     describe('<TableHeaderCellConnected />', () => {

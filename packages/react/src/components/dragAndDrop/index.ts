@@ -1,2 +1,2 @@
-export * from './DnDContainer';
-export * from './DnDUtils';
+export * from './DnDContainer.js';
+export * from './DnDUtils.js';

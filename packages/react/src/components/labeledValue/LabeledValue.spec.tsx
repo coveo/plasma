@@ -1,9 +1,9 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {screen, render} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Tooltip} from '../tooltip/Tooltip';
-import {LabeledValue} from './LabeledValue';
+import {TooltipPlacement} from '../../utils/TooltipUtils.js';
+import {Tooltip} from '../tooltip/Tooltip.js';
+import {LabeledValue} from './LabeledValue.js';
 
 describe('LabeledValue', () => {
     const props = {label: 'label', value: 'value'};

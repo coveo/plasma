@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {IInlinePromptOptions, InlinePrompt} from '../InlinePrompt';
+import {IInlinePromptOptions, InlinePrompt} from '../InlinePrompt.js';
 
 describe('InlinePrompt', () => {
     let options: IInlinePromptOptions;

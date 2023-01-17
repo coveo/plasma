@@ -1,10 +1,10 @@
 import {shallowWithState, shallowWithStore} from '@test-utils';
 import * as _ from 'underscore';
 
-import {StringListActions} from '../../../reusableState/customList/StringListActions';
-import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
+import {StringListActions} from '../../../reusableState/customList/StringListActions.js';
+import {RTestUtils} from '../../../utils/tests/RTestUtils.js';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox.js';
 
 describe('MultilineBox', () => {
     describe('<MultilineBox/>', () => {

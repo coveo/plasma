@@ -1,7 +1,7 @@
 import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {BrowserPreview} from '../BrowserPreview';
+import {BrowserPreview} from '../BrowserPreview.js';
 
 describe('BrowserPreview', () => {
     it('renders the specified header description as tooltip title', async () => {

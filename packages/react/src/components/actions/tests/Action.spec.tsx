@@ -2,7 +2,7 @@ import {DeleteSize24Px} from '@coveord/plasma-react-icons';
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {Action, IActionOptions} from '../Action';
+import {Action, IActionOptions} from '../Action.js';
 
 describe('Actions', () => {
     it('should have a defaultProp hideDisabled set to true', () => {

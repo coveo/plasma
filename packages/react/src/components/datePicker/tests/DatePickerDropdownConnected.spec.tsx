@@ -5,22 +5,27 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {createTestAppContainer, getStoreMock, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
-import {Button} from '../../button/Button';
-import {DEFAULT_YEARS, MONTH_PICKER_ID, YEAR_PICKER_ID} from '../../calendar/Calendar';
-import {DefaultGroupIds, DropActions} from '../../drop/redux/DropActions';
-import {DropSelectors} from '../../drop/redux/DropReducers';
-import {closeDropdown, toggleDropdown} from '../../dropdown/DropdownActions';
-import {ModalFooter} from '../../modal/ModalFooter';
-import {addOptionPicker, changeOptionPicker} from '../../optionPicker/OptionPickerActions';
-import {addOptionsCycle, changeOptionsCycle} from '../../optionsCycle/OptionsCycleActions';
-import {addDatePicker, applyDatePicker, changeDatePickerLowerLimit, DateLimits} from '../DatePickerActions';
-import {DatePickerBox} from '../DatePickerBox';
-import {DatePickerDropdown, IDatePickerDropdownOwnProps, IDatePickerDropdownProps} from '../DatePickerDropdown';
-import {DatePickerDropdownConnected} from '../DatePickerDropdownConnected';
-import {IDatePickerState} from '../DatePickerReducers';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {
+    createTestAppContainer,
+    getStoreMock,
+    removeTestAppContainer,
+    TestUtils,
+} from '../../../utils/tests/TestUtils.js';
+import {Button} from '../../button/Button.js';
+import {DEFAULT_YEARS, MONTH_PICKER_ID, YEAR_PICKER_ID} from '../../calendar/Calendar.js';
+import {DefaultGroupIds, DropActions} from '../../drop/redux/DropActions.js';
+import {DropSelectors} from '../../drop/redux/DropReducers.js';
+import {closeDropdown, toggleDropdown} from '../../dropdown/DropdownActions.js';
+import {ModalFooter} from '../../modal/ModalFooter.js';
+import {addOptionPicker, changeOptionPicker} from '../../optionPicker/OptionPickerActions.js';
+import {addOptionsCycle, changeOptionsCycle} from '../../optionsCycle/OptionsCycleActions.js';
+import {addDatePicker, applyDatePicker, changeDatePickerLowerLimit, DateLimits} from '../DatePickerActions.js';
+import {DatePickerBox} from '../DatePickerBox.js';
+import {DatePickerDropdown, IDatePickerDropdownOwnProps, IDatePickerDropdownProps} from '../DatePickerDropdown.js';
+import {DatePickerDropdownConnected} from '../DatePickerDropdownConnected.js';
+import {IDatePickerState} from '../DatePickerReducers.js';
 
 describe('Date picker', () => {
     describe('<DatePickerDropdownConnected', () => {

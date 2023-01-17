@@ -9,7 +9,7 @@ import {
     createElement,
     PropsWithChildren,
 } from 'react';
-import {LoadingSpinner} from '../loading/LoadingSpinner';
+import {LoadingSpinner} from '../loading/LoadingSpinner.js';
 
 export interface IToastProps {
     /**

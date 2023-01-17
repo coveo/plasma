@@ -4,18 +4,18 @@ import ReactModal from 'react-modal';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {Defaults} from '../../Defaults';
-import {IWithDirtyProps} from '../../hoc/withDirty/withDirty';
-import {PlasmaState} from '../../PlasmaState';
-import {IClassName} from '../../utils/ClassNameUtils';
-import {IDispatch, IReduxStatePossibleProps, ReduxUtils} from '../../utils/ReduxUtils';
-import {IModalDispatchProps, IModalOwnProps, IModalStateProps} from './Modal';
-import {addModal, closeModal, removeModal} from './ModalActions';
-import {IModalBackdropOwnProps} from './ModalBackdrop';
-import {ModalBody} from './ModalBody';
-import {IModalFooterProps, ModalFooter} from './ModalFooter';
-import {IModalHeaderDispatchProps, IModalHeaderOwnProps, IModalHeaderProps, ModalHeader} from './ModalHeader';
-import {ModalHeaderConnected} from './ModalHeaderConnected';
+import {Defaults} from '../../Defaults.js';
+import {IWithDirtyProps} from '../../hoc/withDirty/withDirty.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {IDispatch, IReduxStatePossibleProps, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {IModalDispatchProps, IModalOwnProps, IModalStateProps} from './Modal.js';
+import {addModal, closeModal, removeModal} from './ModalActions.js';
+import {IModalBackdropOwnProps} from './ModalBackdrop.js';
+import {ModalBody} from './ModalBody.js';
+import {IModalFooterProps, ModalFooter} from './ModalFooter.js';
+import {IModalHeaderDispatchProps, IModalHeaderOwnProps, IModalHeaderProps, ModalHeader} from './ModalHeader.js';
+import {ModalHeaderConnected} from './ModalHeaderConnected.js';
 
 export interface IModalCompositeOwnProps
     extends IModalOwnProps,

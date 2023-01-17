@@ -1,5 +1,5 @@
-import {RefreshCallBackActions} from '../RefeshCallbackActions';
-import {IRefreshCallbackReducerState, refreshCallBackReducer, RefreshStatus} from '../RefreshCallbackReducer';
+import {RefreshCallBackActions} from '../RefeshCallbackActions.js';
+import {IRefreshCallbackReducerState, refreshCallBackReducer, RefreshStatus} from '../RefreshCallbackReducer.js';
 
 describe('RefreshCallbackReducer', () => {
     let state: IRefreshCallbackReducerState;

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {ClassAttributes, Component, ReactNode} from 'react';
-import {SlideY} from '../../animations/SlideY';
-import {IErrorSection, TableError} from './TableError';
+import {SlideY} from '../../animations/SlideY.js';
+import {IErrorSection, TableError} from './TableError.js';
 
 export interface ITableCollapsibleRowOwnProps extends ClassAttributes<TableCollapsibleRow> {
     id: string;

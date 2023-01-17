@@ -2,13 +2,13 @@ import classNames from 'classnames';
 import {ReactNode, FunctionComponent, ReactElement, useState, Children, isValidElement} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {IDispatch, TooltipPlacement} from '../../utils';
-import {useMountedState} from '../../utils/useMountedState';
-import {Button} from '../button';
-import {ModalActions} from '../modal/ModalActions';
-import {IModalCompositeOwnProps, ModalCompositeConnected} from '../modal/ModalComposite';
-import {UnsavedChangesModalProvider} from '../modal/UnsavedChangesModalProvider';
-import {StepProgressBar} from '../stepProgressBar';
+import {IDispatch, TooltipPlacement} from '../../utils/index.js';
+import {useMountedState} from '../../utils/useMountedState.js';
+import {Button} from '../button/index.js';
+import {ModalActions} from '../modal/ModalActions.js';
+import {IModalCompositeOwnProps, ModalCompositeConnected} from '../modal/ModalComposite.js';
+import {UnsavedChangesModalProvider} from '../modal/UnsavedChangesModalProvider.js';
+import {StepProgressBar} from '../stepProgressBar/index.js';
 
 type DependsOnStep<T> = (currentStep: number, numberOfSteps: number) => T;
 

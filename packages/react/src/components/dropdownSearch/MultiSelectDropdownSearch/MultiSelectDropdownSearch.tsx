@@ -1,7 +1,7 @@
 import {KeyboardEvent} from 'react';
 import * as _ from 'underscore';
-import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
-import {MultiselectInput} from './MultiSelectInput';
+import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch.js';
+import {MultiselectInput} from './MultiSelectInput.js';
 
 export interface IMultiSelectDropdownSearchProps extends IDropdownSearchProps {
     displayedOptions: IDropdownOption[];

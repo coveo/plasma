@@ -1,8 +1,8 @@
 import {shallowWithState} from '@test-utils';
 import {ReactNode} from 'react';
 import * as _ from 'underscore';
-import {Drop} from '../Drop';
-import {dropWithDropdown} from '../hoc/DropWithDropdown';
+import {Drop} from '../Drop.js';
+import {dropWithDropdown} from '../hoc/DropWithDropdown.js';
 
 describe('DropWithDropdown', () => {
     describe('<DropWithDropdown />', () => {

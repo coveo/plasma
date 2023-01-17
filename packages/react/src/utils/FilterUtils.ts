@@ -1,7 +1,7 @@
 import escapeStringRegexp from 'escape-string-regexp';
 import {ReactNode} from 'react';
 
-import {getReactNodeTextContent} from './JSXUtils';
+import {getReactNodeTextContent} from './JSXUtils.js';
 
 const matchesString = (filterValue: string, str: string, caseSensitive = false): boolean => {
     const escapedFilterValue = escapeStringRegexp(filterValue ?? '');

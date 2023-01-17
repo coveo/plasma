@@ -1,9 +1,9 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {IsDirtyIndicator} from '../../../../utils/tests/TestUtils';
-import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
-import {IWithDirtySingleSelectHOCProps, withDirtySingleSelectHOC} from '../WithDirtySingleSelectHOC';
+import {IsDirtyIndicator} from '../../../../utils/tests/TestUtils.js';
+import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected.js';
+import {IWithDirtySingleSelectHOCProps, withDirtySingleSelectHOC} from '../WithDirtySingleSelectHOC.js';
 
 describe('SingleSelectWithDirty', () => {
     const SingleSelectWithHOC = withDirtySingleSelectHOC(SingleSelectConnected);

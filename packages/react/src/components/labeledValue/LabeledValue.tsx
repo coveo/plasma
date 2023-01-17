@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import {PureComponent, ReactNode} from 'react';
 
-import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {Tooltip} from '../tooltip/Tooltip';
+import {TooltipPlacement} from '../../utils/TooltipUtils.js';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token/index.js';
+import {Tooltip} from '../tooltip/Tooltip.js';
 
 export interface ILabeledValueProps {
     /**

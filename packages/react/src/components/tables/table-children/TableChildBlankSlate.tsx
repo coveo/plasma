@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
 
-import {BlankSlate, IBlankSlateProps} from '../../blankSlate/BlankSlate';
-import {ITableProps} from '../Table';
-import {TABLE_PREDICATE_DEFAULT_VALUE, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
+import {BlankSlate, IBlankSlateProps} from '../../blankSlate/BlankSlate.js';
+import {ITableProps} from '../Table.js';
+import {TABLE_PREDICATE_DEFAULT_VALUE, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants.js';
 
 export interface ITableChildBlankSlateProps extends ITableProps {}
 

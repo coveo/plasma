@@ -1,5 +1,5 @@
 import {ReactText} from 'react';
-import {IReduxAction} from '../../utils/ReduxUtils';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
 
 export const NumericInputActionTypes = {
     mount: 'MOUNT_NUMERIC_INPUT',

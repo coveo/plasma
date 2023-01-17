@@ -1,6 +1,6 @@
 import {FunctionComponent} from 'react';
 
-import {CollapsibleToggle} from '../collapsible';
+import {CollapsibleToggle} from '../collapsible/index.js';
 
 export interface ITableCollapsibleRowToggleProps {
     isExpanded: boolean;

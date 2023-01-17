@@ -2,12 +2,12 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {FilterBox, IFilterBoxProps} from '../FilterBox';
-import {filterThrough} from '../FilterBoxActions';
-import {FilterBoxConnected} from '../FilterBoxConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {FilterBox, IFilterBoxProps} from '../FilterBox.js';
+import {filterThrough} from '../FilterBoxActions.js';
+import {FilterBoxConnected} from '../FilterBoxConnected.js';
 
 describe('FilterBox', () => {
     describe('<FilterBoxConnected />', () => {

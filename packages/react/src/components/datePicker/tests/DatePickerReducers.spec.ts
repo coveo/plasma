@@ -1,6 +1,6 @@
 import moment from 'moment';
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
 import {
     DateLimits,
     DatePickerActions,
@@ -8,15 +8,15 @@ import {
     IChangeDatePickerPayload,
     IDatePickerPayload,
     ISelectDatePickerPayload,
-} from '../DatePickerActions';
+} from '../DatePickerActions.js';
 import {
     datePickerInitialState,
     datePickerReducer,
     datePickersInitialState,
     datePickersReducer,
     IDatePickerState,
-} from '../DatePickerReducers';
-import {IRangeLimit} from '../DatesSelection';
+} from '../DatePickerReducers.js';
+import {IRangeLimit} from '../DatesSelection.js';
 
 describe('Date picker', () => {
     const GENERIC_ACTION: IReduxAction<IDatePickerPayload> = {

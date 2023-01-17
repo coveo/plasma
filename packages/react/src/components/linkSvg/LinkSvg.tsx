@@ -2,7 +2,7 @@ import {Icon, QuestionSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {Children, FunctionComponent, PropsWithChildren} from 'react';
 
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip.js';
 
 export interface ILinkSvgProps {
     icon?: Icon;

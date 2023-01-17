@@ -1,12 +1,12 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {CheckboxActions, ICheckboxActionPayload} from '../CheckboxActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {CheckboxActions, ICheckboxActionPayload} from '../CheckboxActions.js';
 import {
     checkboxesInitialState,
     checkboxesReducer,
     checkboxInitialState,
     checkboxReducer,
     ICheckboxState,
-} from '../CheckboxReducers';
+} from '../CheckboxReducers.js';
 
 describe('Checkbox', () => {
     describe('CheckboxReducers', () => {

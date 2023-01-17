@@ -1,4 +1,4 @@
-import {FileUtils} from './FileUtils';
+import {FileUtils} from './FileUtils.js';
 
 describe('FileUtils', () => {
     describe('serialize', () => {

@@ -1,9 +1,9 @@
 import {shallow} from 'enzyme';
 
-import {ActionBar} from '../ActionBar';
-import {PrimaryAction} from '../PrimaryAction';
-import {PrimaryActionConnected} from '../PrimaryActionConnected';
-import {SecondaryActions} from '../SecondaryActions';
+import {ActionBar} from '../ActionBar.js';
+import {PrimaryAction} from '../PrimaryAction.js';
+import {PrimaryActionConnected} from '../PrimaryActionConnected.js';
+import {SecondaryActions} from '../SecondaryActions.js';
 
 describe('ActionsBar', () => {
     it('should render without errors', () => {

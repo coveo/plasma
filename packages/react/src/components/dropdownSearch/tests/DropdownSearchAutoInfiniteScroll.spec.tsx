@@ -1,12 +1,12 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
-import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils.js';
 
 import {
     DropdownSearchAutoInfiniteScroll,
     IDropdownSearchAutoInfiniteScrollProps,
-} from '../DropdownSearchAutoInfiniteScroll';
-import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions';
+} from '../DropdownSearchAutoInfiniteScroll.js';
+import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions.js';
 
 describe('DropdownSearchAutoInfiniteScroll', () => {
     let basicProps: IDropdownSearchAutoInfiniteScrollProps;

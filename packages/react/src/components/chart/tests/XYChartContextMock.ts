@@ -1,7 +1,7 @@
 import {scaleLinear, scaleOrdinal, scalePoint} from 'd3-scale';
 import * as _ from 'underscore';
 
-import {XYChartContextProps} from '../XYChart';
+import {XYChartContextProps} from '../XYChart.js';
 
 export const XYChartContextMock: XYChartContextProps = {
     width: 10,

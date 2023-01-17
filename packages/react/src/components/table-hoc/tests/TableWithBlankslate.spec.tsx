@@ -2,10 +2,10 @@ import {shallow} from 'enzyme';
 import {shallowWithState} from '@test-utils';
 import * as _ from 'underscore';
 
-import {BlankSlateWithTable} from '../../blankSlate';
-import {ITableHOCProps, TableHOC} from '../TableHOC';
-import {TableSelectors} from '../TableSelectors';
-import {tableWithBlankSlate} from '../TableWithBlankSlate';
+import {BlankSlateWithTable} from '../../blankSlate.js';
+import {ITableHOCProps, TableHOC} from '../TableHOC.js';
+import {TableSelectors} from '../TableSelectors.js';
+import {tableWithBlankSlate} from '../TableWithBlankSlate.js';
 
 describe('TableWithBlankSlate', () => {
     const TableWithBlankSlate: ReturnType<ReturnType<typeof tableWithBlankSlate>> = _.compose(tableWithBlankSlate())(

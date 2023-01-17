@@ -2,7 +2,7 @@ import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 
-import {CollapsibleConnected} from './CollapsibleConnected';
+import {CollapsibleConnected} from './CollapsibleConnected.js';
 
 export interface CollapsibleInfoBoxProps {
     id: string;

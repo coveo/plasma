@@ -2,12 +2,12 @@ import moment from 'moment';
 import classNames from 'classnames';
 import {ClassAttributes, PureComponent} from 'react';
 
-import {DateUtils} from '../../utils/DateUtils';
-import {DateLimits} from './DatePickerActions';
-import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
-import {IRangeLimit} from './DatesSelection';
-import {ISetToNowProps, SetToNowButton} from './SetToNowButton';
-import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../calendar';
+import {DateUtils} from '../../utils/DateUtils.js';
+import {DateLimits} from './DatePickerActions.js';
+import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants.js';
+import {IRangeLimit} from './DatesSelection.js';
+import {ISetToNowProps, SetToNowButton} from './SetToNowButton.js';
+import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../calendar/index.js';
 
 export interface IDatePickerProps extends ClassAttributes<DatePicker> {
     onBlur: (date: Date, isUpperLimit: boolean) => void;

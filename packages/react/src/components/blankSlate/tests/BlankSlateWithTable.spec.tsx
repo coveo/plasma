@@ -1,6 +1,6 @@
 import {shallowWithState} from '@test-utils';
 
-import {BlankSlateWithTable} from '../BlankSlatesHOC';
+import {BlankSlateWithTable} from '../BlankSlatesHOC.js';
 
 describe('BlankSlateWithTable Tests', () => {
     describe('<BlankSlateWithTable>', () => {

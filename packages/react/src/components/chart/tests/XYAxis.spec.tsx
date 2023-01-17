@@ -2,9 +2,9 @@ import {scaleLinear} from 'd3-scale';
 import {shallow} from 'enzyme';
 import * as React from 'react';
 
-import {XYAxis} from '../XYAxis';
-import {XYChartContext} from '../XYChart';
-import {XYChartContextMock} from './XYChartContextMock';
+import {XYAxis} from '../XYAxis.js';
+import {XYChartContext} from '../XYChart.js';
+import {XYChartContextMock} from './XYChartContextMock.js';
 
 jest.mock('react', () => {
     const originReact = jest.requireActual('react');

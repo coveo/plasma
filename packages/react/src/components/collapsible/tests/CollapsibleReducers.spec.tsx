@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from '../CollapsibleActions';
-import {collapsiblesInitialState, collapsiblesReducer, CollapsibleState} from '../CollapsibleReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from '../CollapsibleActions.js';
+import {collapsiblesInitialState, collapsiblesReducer, CollapsibleState} from '../CollapsibleReducers.js';
 
 describe('Reducers', () => {
     describe('CollapsiblesReducers', () => {

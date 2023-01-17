@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IFacet} from './Facet';
-import {FacetActions} from './FacetActions';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IFacet} from './Facet.js';
+import {FacetActions} from './FacetActions.js';
 
 export interface IFacetState {
     facet: string;

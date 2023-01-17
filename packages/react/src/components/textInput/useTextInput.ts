@@ -1,6 +1,6 @@
 import {useContext, Dispatch, useMemo} from 'react';
-import {TextInputAction, TextInputState, textInputDefaultState} from './TextInputReducer';
-import {FormContext} from '../form/FormProvider';
+import {TextInputAction, TextInputState, textInputDefaultState} from './TextInputReducer.js';
+import {FormContext} from '../form/FormProvider.js';
 
 /**
  * @deprecated Use Mantine use-input-state instead: https://mantine.dev/hooks/use-input-state/

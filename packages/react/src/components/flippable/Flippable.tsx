@@ -3,7 +3,7 @@ import {ReactNode, HTMLProps, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
-import {BrowserUtils} from '../../utils/BrowserUtils';
+import {BrowserUtils} from '../../utils/BrowserUtils.js';
 
 export interface IFlippableOwnProps {
     id?: string;

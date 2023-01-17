@@ -1,4 +1,4 @@
-import {IInputProps} from '../Input';
+import {IInputProps} from '../Input.js';
 
 export const inputProps: IInputProps = {
     id: 'test-input',

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import {Component} from 'react';
 
-import {JSXRenderable} from '../../utils/JSXUtils';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
+import {JSXRenderable} from '../../utils/JSXUtils.js';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils.js';
 
 export interface ISideNavProps extends IReduxStatePossibleProps {
     className?: string;

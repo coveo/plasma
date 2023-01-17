@@ -1,5 +1,10 @@
 import {createFSBackedSystem, createVirtualTypeScriptEnvironment} from '@typescript/vfs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import ts from 'typescript';
+
+// eslint-disable-next-line no-underscore-dangle
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const compilerOptions: ts.CompilerOptions = {
     jsx: ts.JsxEmit.ReactJSX,

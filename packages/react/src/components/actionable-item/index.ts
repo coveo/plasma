@@ -1,1 +1,1 @@
-export * from './ActionableItem';
+export * from './ActionableItem.js';

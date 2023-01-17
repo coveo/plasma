@@ -2,7 +2,7 @@ import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {useState} from 'react';
 
-import {Modal} from '../Modal';
+import {Modal} from '../Modal.js';
 
 describe('Modal', () => {
     it('calls onRender prop when mounting', () => {

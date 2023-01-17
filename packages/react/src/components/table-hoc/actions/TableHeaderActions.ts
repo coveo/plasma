@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
 
 export const TableHeaderActionTypes = {
     add: 'ADD_TABLE_HEADER',

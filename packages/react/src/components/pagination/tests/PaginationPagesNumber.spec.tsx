@@ -1,10 +1,10 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from '@test-utils';
 
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {PaginationReduxActions} from '../../navigation/pagination';
-import {IPaginationPagesNumberProps, PaginationPagesNumber} from '../PaginationPagesNumber';
-import {PaginationSelect} from '../PaginationSelect';
+import {getStoreMock} from '../../../utils/tests/TestUtils.js';
+import {PaginationReduxActions} from '../../navigation/pagination.js';
+import {IPaginationPagesNumberProps, PaginationPagesNumber} from '../PaginationPagesNumber.js';
+import {PaginationSelect} from '../PaginationSelect.js';
 
 describe('PaginationPagesNumber tests', () => {
     describe('<PaginationPagesNumber />', () => {

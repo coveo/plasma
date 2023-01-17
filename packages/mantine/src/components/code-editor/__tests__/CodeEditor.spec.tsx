@@ -2,8 +2,8 @@ import {useForm} from '@mantine/form';
 import {loader} from '@monaco-editor/react';
 import {render, screen, waitForElementToBeRemoved, within} from '@test-utils';
 
-import {CodeEditor} from '../CodeEditor';
-import {XML} from '../languages/xml';
+import {CodeEditor} from '../CodeEditor.js';
+import {XML} from '../languages/xml.js';
 
 describe('CodeEditor', () => {
     beforeEach(() => {

@@ -2,12 +2,12 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {addFacet, toggleMoreFacetRows} from '../FacetActions';
-import {FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle';
-import {FacetMoreToggleConnected} from '../FacetMoreToggleConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {addFacet, toggleMoreFacetRows} from '../FacetActions.js';
+import {FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle.js';
+import {FacetMoreToggleConnected} from '../FacetMoreToggleConnected.js';
 
 describe('Facets', () => {
     describe('<FacetMoreToggleConnected />', () => {

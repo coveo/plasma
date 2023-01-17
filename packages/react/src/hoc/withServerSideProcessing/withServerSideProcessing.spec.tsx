@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {withServerSideProcessing} from './withServerSideProcessing';
+import {withServerSideProcessing} from './withServerSideProcessing.js';
 
 describe('withServerSideProcessing', () => {
     const Component = () => <div>I am a component</div>;

@@ -1,7 +1,7 @@
 import {Component, ReactNode, ReactText} from 'react';
-import {OverlayInjectedProps} from 'react-bootstrap/esm/Overlay';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import BootstrapTooltip from 'react-bootstrap/Tooltip';
+import {OverlayInjectedProps} from 'react-bootstrap/esm/Overlay.js';
+import OverlayTrigger from 'react-bootstrap/esm/OverlayTrigger.js';
+import BootstrapTooltip from 'react-bootstrap/esm/Tooltip.js';
 import * as _ from 'underscore';
 
 // Copy of the OverlayTriggerProps but without the overlay prop since we are building it here

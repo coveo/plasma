@@ -1,6 +1,6 @@
-import {Loading} from '../../loading/Loading';
-import {ITableProps} from '../Table';
-import {TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
+import {Loading} from '../../loading/Loading.js';
+import {ITableProps} from '../Table.js';
+import {TOGGLE_ARROW_CELL_COUNT} from '../TableConstants.js';
 
 export interface ITableChildLoadingRowProps extends ITableProps {
     isInitialLoad?: boolean;

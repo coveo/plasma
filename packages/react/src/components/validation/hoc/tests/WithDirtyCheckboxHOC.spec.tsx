@@ -1,13 +1,13 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@test-utils';
 
-import {getStoreMock} from '../../../../utils/tests/TestUtils';
-import {ICheckboxOwnProps} from '../../../checkbox/Checkbox';
-import {CheckboxConnected} from '../../../checkbox/CheckboxConnected';
-import {IInputOwnProps} from '../../../input';
-import {ValidationActions} from '../../ValidationActions';
-import {ValidationTypes} from '../../ValidationTypes';
-import {withDirtyCheckboxHOC} from '../WithDirtyCheckboxHOC';
+import {getStoreMock} from '../../../../utils/tests/TestUtils.js';
+import {ICheckboxOwnProps} from '../../../checkbox/Checkbox.js';
+import {CheckboxConnected} from '../../../checkbox/CheckboxConnected.js';
+import {IInputOwnProps} from '../../../input.js';
+import {ValidationActions} from '../../ValidationActions.js';
+import {ValidationTypes} from '../../ValidationTypes.js';
+import {withDirtyCheckboxHOC} from '../WithDirtyCheckboxHOC.js';
 
 describe('WithDirtyCheckboxHOC', () => {
     const CheckboxWithHOC = withDirtyCheckboxHOC(CheckboxConnected);

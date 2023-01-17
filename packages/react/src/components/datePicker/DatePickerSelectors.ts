@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {IDatePickerState} from './DatePickerReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDatePickerState} from './DatePickerReducers.js';
 
 const getDatePicker = (state: PlasmaState, props: {id: string}): IDatePickerState => {
     const datePickers: IDatePickerState[] = _.map(state.datePickers || [], (datePicker: IDatePickerState) => {

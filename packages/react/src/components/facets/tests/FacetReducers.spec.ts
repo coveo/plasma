@@ -1,7 +1,7 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IFacet} from '../Facet';
-import {emptyAllFacets, FacetActions, IChangeFacetActionPayload, IFacetActionPayload} from '../FacetActions';
-import {facetInitialState, facetReducer, facetsInitialState, facetsReducer, IFacetState} from '../FacetReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {IFacet} from '../Facet.js';
+import {emptyAllFacets, FacetActions, IChangeFacetActionPayload, IFacetActionPayload} from '../FacetActions.js';
+import {facetInitialState, facetReducer, facetsInitialState, facetsReducer, IFacetState} from '../FacetReducers.js';
 
 describe('Facets', () => {
     describe('FacetReducers', () => {

@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {IToastProps, Toast} from './Toast';
-import {IToastState} from './ToastReducers';
+import {IToastProps, Toast} from './Toast.js';
+import {IToastState} from './ToastReducers.js';
 
 export interface IToastContainerOwnProps {
     id?: string;

@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IData, ITablePredicate} from './Table';
-import {ITableData, ITableState} from './TableReducers';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IData, ITablePredicate} from './Table.js';
+import {ITableData, ITableState} from './TableReducers.js';
 
 export type ITableStateModifier = (state: ITableState) => ITableState;
 

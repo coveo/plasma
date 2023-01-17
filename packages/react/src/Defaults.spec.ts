@@ -1,6 +1,6 @@
 import ReactModal from 'react-modal';
 
-import {Defaults} from './Defaults';
+import {Defaults} from './Defaults.js';
 
 describe('Defaults', () => {
     describe('APP_ELEMENT', () => {

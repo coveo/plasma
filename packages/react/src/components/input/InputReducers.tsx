@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {InputActions} from './InputActions';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {InputActions} from './InputActions.js';
 
 export interface IInputState {
     id: string;

@@ -1,8 +1,8 @@
 import {mountWithStore, shallowWithState} from '@test-utils';
-import {getStoreMock} from '../../../../utils/tests/TestUtils';
-import {ValidationActions} from '../../ValidationActions';
-import {ValidationState} from '../../ValidationState';
-import {IValidationMessageProps, ValidationMessage} from '../ValidationMessage';
+import {getStoreMock} from '../../../../utils/tests/TestUtils.js';
+import {ValidationActions} from '../../ValidationActions.js';
+import {ValidationState} from '../../ValidationState.js';
+import {IValidationMessageProps, ValidationMessage} from '../ValidationMessage.js';
 
 describe('ValidationMessage', () => {
     const defaultProps: IValidationMessageProps = {

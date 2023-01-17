@@ -2,11 +2,11 @@ import {ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {SelectSelector} from '../../select/SelectSelector';
-import {ISingleSelectOwnProps} from '../../select/SingleSelectConnected';
-import {ValidationActions} from '../ValidationActions';
-import {ValidationTypes} from '../ValidationTypes';
+import {IDispatch} from '../../../utils/ReduxUtils.js';
+import {SelectSelector} from '../../select/SelectSelector.js';
+import {ISingleSelectOwnProps} from '../../select/SingleSelectConnected.js';
+import {ValidationActions} from '../ValidationActions.js';
+import {ValidationTypes} from '../ValidationTypes.js';
 
 const mapStateToProps = createStructuredSelector({
     selectedValue: SelectSelector.getSelectedValue,

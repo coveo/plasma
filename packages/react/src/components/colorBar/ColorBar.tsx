@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import {Component} from 'react';
 import * as _ from 'underscore';
-import {IClassName} from '../../utils/ClassNameUtils';
-import {KeyValue} from '../../utils/DataStructuresUtils';
-import {Color} from '../color/Color';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {KeyValue} from '../../utils/DataStructuresUtils.js';
+import {Color} from '../color/Color.js';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip.js';
 
 export interface IColorBarProps {
     /**

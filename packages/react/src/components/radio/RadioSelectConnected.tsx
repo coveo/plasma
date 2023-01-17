@@ -1,16 +1,16 @@
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
 import {
     IRadioSelectConnectedProps,
     IRadioSelectDispatchProps,
     IRadioSelectProps,
     IRadioSelectStateProps,
     RadioSelect,
-} from './RadioSelect';
-import {removeRadioSelect, setRadioSelect} from './RadioSelectActions';
-import {RadioSelectSelectors} from './RadioSelectSelectors';
+} from './RadioSelect.js';
+import {removeRadioSelect, setRadioSelect} from './RadioSelectActions.js';
+import {RadioSelectSelectors} from './RadioSelectSelectors.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IRadioSelectProps): IRadioSelectStateProps => ({
     value: RadioSelectSelectors.getValue(state, {id: ownProps.id}),

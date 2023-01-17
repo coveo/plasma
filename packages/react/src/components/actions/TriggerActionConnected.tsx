@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import {ClassAttributes, Component, KeyboardEvent as ReactKeyboardEvent} from 'react';
 import {connect} from 'react-redux';
 
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {keyCode} from '../../utils';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {closeDropdown} from '../dropdown/DropdownActions';
-import {IUserChoice} from '../inlinePrompt/InlinePrompt';
-import {addPrompt, removePrompt} from '../inlinePrompt/InlinePromptActions';
-import {Action, IBasicActionProps, IConfirmData} from './Action';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {keyCode} from '../../utils/index.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {closeDropdown} from '../dropdown/DropdownActions.js';
+import {IUserChoice} from '../inlinePrompt/InlinePrompt.js';
+import {addPrompt, removePrompt} from '../inlinePrompt/InlinePromptActions.js';
+import {Action, IBasicActionProps, IConfirmData} from './Action.js';
 
 export interface ITriggerActionOwnProps extends ClassAttributes<TriggerAction>, IBasicActionProps {
     confirmLabel?: string;

@@ -11,16 +11,16 @@ import {
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {connect} from 'react-redux';
-import {IClassName} from '../../utils/ClassNameUtils';
-import {PropsToOmitUtils} from '../../utils/PropsToOmitUtils';
-import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Tooltip} from '../tooltip/Tooltip';
-import {IInputState} from './InputReducers';
-import {ILabelProps, Label} from './Label';
-import {PlasmaState} from '../../PlasmaState';
-import {InputSelectors} from './InputSelectors';
-import {IDispatch, ReduxUtils} from '../../utils';
-import {addInput, removeInput, changeInputValue} from './InputActions';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {PropsToOmitUtils} from '../../utils/PropsToOmitUtils.js';
+import {TooltipPlacement} from '../../utils/TooltipUtils.js';
+import {Tooltip} from '../tooltip/Tooltip.js';
+import {IInputState} from './InputReducers.js';
+import {ILabelProps, Label} from './Label.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {InputSelectors} from './InputSelectors.js';
+import {IDispatch, ReduxUtils} from '../../utils/index.js';
+import {addInput, removeInput, changeInputValue} from './InputActions.js';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
 

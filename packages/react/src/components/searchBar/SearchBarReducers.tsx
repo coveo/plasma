@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ISearchBarActionPayload, SearchBarActions} from './SearchBarActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {ISearchBarActionPayload, SearchBarActions} from './SearchBarActions.js';
 
 export interface ISearchBarState {
     id: string;

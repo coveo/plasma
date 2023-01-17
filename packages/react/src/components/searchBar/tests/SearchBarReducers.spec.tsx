@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
 import {
     addSearchBar,
     ISearchBarActionPayload,
@@ -6,8 +6,13 @@ import {
     setSearchBarValue,
     toggleSearchBarDisabled,
     toggleSearching,
-} from '../SearchBarActions';
-import {ISearchBarState, searchBarDefaultState, searchBarsInitialState, searchBarsReducer} from '../SearchBarReducers';
+} from '../SearchBarActions.js';
+import {
+    ISearchBarState,
+    searchBarDefaultState,
+    searchBarsInitialState,
+    searchBarsReducer,
+} from '../SearchBarReducers.js';
 
 describe('Reducers', () => {
     describe('SearchBarReducers', () => {

@@ -1,14 +1,14 @@
 import {shallowWithStore} from '@test-utils';
 import {ShallowWrapper} from 'enzyme';
 
-import {getStoreMock} from '../../../../utils/tests/TestUtils';
-import {IInputOwnProps, InputConnected} from '../../../input/Input';
-import {ValidationActions} from '../../ValidationActions';
-import {ValidationTypes} from '../../ValidationTypes';
+import {getStoreMock} from '../../../../utils/tests/TestUtils.js';
+import {IInputOwnProps, InputConnected} from '../../../input/Input.js';
+import {ValidationActions} from '../../ValidationActions.js';
+import {ValidationTypes} from '../../ValidationTypes.js';
 import {
     IWithNonEmptyValueInputValidationProps,
     withNonEmptyValueInputValidationHOC,
-} from '../WithNonEmptyValueInputValidationHOC';
+} from '../WithNonEmptyValueInputValidationHOC.js';
 
 describe('WithNonEmptyValueInputValidationHOC', () => {
     const InputWithHOC = withNonEmptyValueInputValidationHOC(InputConnected);

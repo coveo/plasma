@@ -2,11 +2,11 @@ import classNames from 'classnames';
 import {ReactNode, HTMLAttributes, FunctionComponent} from 'react';
 import * as _ from 'underscore';
 
-import {IContentProps} from '../../Entry';
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {ActionBarConnected} from '../actions/ActionBar';
-import {TableLoading} from '../loading/components/TableLoading';
-import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
+import {IContentProps} from '../../Entry.js';
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {ActionBarConnected} from '../actions/ActionBar.js';
+import {TableLoading} from '../loading/components/TableLoading.js';
+import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage.js';
 
 /**
  * @deprecated Use WithServerSideProcessingProps directly instead

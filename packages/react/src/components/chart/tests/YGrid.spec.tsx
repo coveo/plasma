@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {YGrid} from '../YGrid';
+import {YGrid} from '../YGrid.js';
 
 describe('<YGrid />', () => {
     it('should not throw', () => {

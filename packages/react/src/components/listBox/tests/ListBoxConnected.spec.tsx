@@ -3,12 +3,12 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IItemBoxProps, ItemBox} from '../../itemBox/ItemBox';
-import {IListBoxProps, ListBox} from '../ListBox';
-import {ListBoxConnected} from '../ListBoxConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IItemBoxProps, ItemBox} from '../../itemBox/ItemBox.js';
+import {IListBoxProps, ListBox} from '../ListBox.js';
+import {ListBoxConnected} from '../ListBoxConnected.js';
 
 describe('ListBox', () => {
     describe('<ListBoxConnected />', () => {

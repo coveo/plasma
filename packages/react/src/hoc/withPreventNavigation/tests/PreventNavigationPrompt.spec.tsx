@@ -1,8 +1,8 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import * as _ from 'underscore';
-import {ModalComposite} from '../../../components/modal/ModalComposite';
+import {ModalComposite} from '../../../components/modal/ModalComposite.js';
 
-import {PreventNavigationPrompt, PreventNavigationPromptProps} from '../PreventNavigationPrompt';
+import {PreventNavigationPrompt, PreventNavigationPromptProps} from '../PreventNavigationPrompt.js';
 
 describe('Modal with Prevent Navigation', () => {
     let component: ShallowWrapper<any, any>;

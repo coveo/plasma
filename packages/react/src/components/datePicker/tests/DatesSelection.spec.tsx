@@ -1,13 +1,13 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {DATES_SEPARATOR, DateUtils} from '../../../utils/DateUtils';
-import {DatePicker} from '../DatePicker';
+import {DATES_SEPARATOR, DateUtils} from '../../../utils/DateUtils.js';
+import {DatePicker} from '../DatePicker.js';
 import {
     DatesSelection,
     IDatesSelectionProps,
     LOWER_LIMIT_PLACEHOLDER,
     UPPER_LIMIT_PLACEHOLDER,
-} from '../DatesSelection';
+} from '../DatesSelection.js';
 
 describe('Date picker', () => {
     it('should render without errors', () => {

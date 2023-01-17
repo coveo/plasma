@@ -4,7 +4,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import {FunctionComponent, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
-import {BlankSlate, IBlankSlateProps} from '../BlankSlate';
+import {BlankSlate, IBlankSlateProps} from '../BlankSlate.js';
 
 describe('BlankSlate', () => {
     let blankSlateComponent: ReactWrapper<IBlankSlateProps, any>;

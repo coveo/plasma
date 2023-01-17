@@ -1,6 +1,6 @@
-import {PlasmaState} from '../../../PlasmaState';
-import {CodeEditorState} from '../CodeEditorReducers';
-import {CodeEditorSelectors} from '../CodeEditorSelectors';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {CodeEditorState} from '../CodeEditorReducers.js';
+import {CodeEditorSelectors} from '../CodeEditorSelectors.js';
 
 describe('CodeEditorSelectors', () => {
     describe('getValue', () => {

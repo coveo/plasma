@@ -1,3 +1,3 @@
-export * from './InlineConfirm';
-export * from './useInlineConfirm';
-export * from './InlineConfirmContext';
+export * from './InlineConfirm.js';
+export * from './useInlineConfirm.js';
+export * from './InlineConfirmContext.js';

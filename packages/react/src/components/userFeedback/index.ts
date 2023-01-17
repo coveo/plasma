@@ -1,1 +1,1 @@
-export * from './UserFeedback';
+export * from './UserFeedback.js';

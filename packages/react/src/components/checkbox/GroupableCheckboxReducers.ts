@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {GroupableCheckboxActions, IGroupableCheckboxActionPayload} from './GroupableCheckboxActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {GroupableCheckboxActions, IGroupableCheckboxActionPayload} from './GroupableCheckboxActions.js';
 import {
     addChildCheckbox,
     addParentCheckbox,
@@ -11,12 +11,12 @@ import {
     removeParentCheckbox,
     toggleChildCheckbox,
     toggleParentCheckbox,
-} from './GroupableCheckboxReducersUtils';
+} from './GroupableCheckboxReducersUtils.js';
 import {
     groupableCheckboxesInitialState,
     groupableCheckboxInitialState,
     IGroupableCheckboxesState,
-} from './GroupableCheckboxConstants';
+} from './GroupableCheckboxConstants.js';
 
 export const groupableCheckboxReducer = (
     state: IGroupableCheckboxesState = groupableCheckboxInitialState,

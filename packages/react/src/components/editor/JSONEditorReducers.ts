@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../utils';
-import {JSONEditorActionPayload, JSONEditorActionTypes} from './JSONEditorActions';
-import {JSONEditorUtils} from './JSONEditorUtils';
+import {IReduxAction} from '../../utils/index.js';
+import {JSONEditorActionPayload, JSONEditorActionTypes} from './JSONEditorActions.js';
+import {JSONEditorUtils} from './JSONEditorUtils.js';
 
 export interface JSONEditorState {
     id: string;

@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import {PureComponent} from 'react';
 import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 
-import {ModalWizard} from '../ModalWizard';
+import {ModalWizard} from '../ModalWizard.js';
 
 describe('ModalWizard', () => {
     it('closes the modal and execute the onCancel prop if passed when clicking on "cancel"', async () => {

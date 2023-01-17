@@ -1,4 +1,4 @@
-import {SearchBarSelector} from '../SearchBarSelector';
+import {SearchBarSelector} from '../SearchBarSelector.js';
 
 describe('SearchBarSelector', () => {
     const id = '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧';

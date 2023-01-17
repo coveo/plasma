@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import {HTMLAttributes, Component} from 'react';
 import {defer, omit} from 'underscore';
 
-import {keyCode} from '../../utils/InputUtils';
+import {keyCode} from '../../utils/InputUtils.js';
 
 export interface IModalBackdropOwnProps {
     /**

@@ -1,4 +1,4 @@
-import {Random} from './RandomUtils';
+import {Random} from './RandomUtils.js';
 
 describe('RandomUtils', () => {
     // Not sure how to unit test randomness ¯\_(ツ)_/¯

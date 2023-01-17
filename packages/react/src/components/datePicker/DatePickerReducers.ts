@@ -1,9 +1,9 @@
 import moment from 'moment';
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {DateLimits, DatePickerActions, IAddDatePickerPayload} from './DatePickerActions';
-import {IRangeLimit} from './DatesSelection';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {DateLimits, DatePickerActions, IAddDatePickerPayload} from './DatePickerActions.js';
+import {IRangeLimit} from './DatesSelection.js';
 
 export interface IDatePickerState {
     id: string;

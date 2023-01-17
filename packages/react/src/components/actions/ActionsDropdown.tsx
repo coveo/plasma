@@ -1,9 +1,9 @@
 import {MoreSize24Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
 
-import {DropdownConnected} from '../dropdown/DropdownConnected';
-import {IActionOptions} from './Action';
-import {ActionDropdownItem} from './ActionDropdownItem';
+import {DropdownConnected} from '../dropdown/DropdownConnected.js';
+import {IActionOptions} from './Action.js';
+import {ActionDropdownItem} from './ActionDropdownItem.js';
 
 export interface IActionsDropdownProps {
     actions: IActionOptions[];

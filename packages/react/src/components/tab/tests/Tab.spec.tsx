@@ -2,12 +2,12 @@ import {render, screen, waitFor, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
 import {RocketSize16Px} from '@coveord/plasma-react-icons';
-import {Badge, BadgeType} from '../../badge/Badge';
-import {UrlUtils} from '../../../utils';
-import {Tab, TabConnected} from '../Tab';
-import {TabContent} from '../TabContent';
-import {TabNavigation} from '../TabNavigation';
-import {TabPaneConnected} from '../TabPane';
+import {Badge, BadgeType} from '../../badge/Badge.js';
+import {UrlUtils} from '../../../utils/index.js';
+import {Tab, TabConnected} from '../Tab.js';
+import {TabContent} from '../TabContent.js';
+import {TabNavigation} from '../TabNavigation.js';
+import {TabPaneConnected} from '../TabPane.js';
 
 describe('Tab', () => {
     it('displays the tooltip text when hovering over the tab button', async () => {

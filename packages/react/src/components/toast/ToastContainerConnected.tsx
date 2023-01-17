@@ -1,14 +1,14 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {addToastContainer, removeToast, removeToastContainer} from './ToastActions';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {addToastContainer, removeToast, removeToastContainer} from './ToastActions.js';
 import {
     IToastContainerDispatchProps,
     IToastContainerOwnProps,
     IToastContainerStateProps,
     ToastContainer,
-} from './ToastContainer';
+} from './ToastContainer.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IToastContainerOwnProps): IToastContainerStateProps => {
     const container = _.findWhere(state.toastContainers, {id: ownProps.id}) || {id: null, toasts: []};

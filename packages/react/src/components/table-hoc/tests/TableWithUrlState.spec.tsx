@@ -2,27 +2,27 @@ import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@test-utils';
 import {compose} from 'underscore';
 
-import {getStoreMock, TestUtils} from '../../../utils/tests/TestUtils';
-import {UrlUtils} from '../../../utils/UrlUtils';
+import {getStoreMock, TestUtils} from '../../../utils/tests/TestUtils.js';
+import {UrlUtils} from '../../../utils/UrlUtils.js';
 import {
     applyDatePicker,
     changeDatePickerLowerLimit,
     changeDatePickerUpperLimit,
-} from '../../datePicker/DatePickerActions';
-import {filterThrough} from '../../filterBox/FilterBoxActions';
-import {selectListBoxOption} from '../../listBox/ListBoxActions';
-import {changePage} from '../../navigation/pagination/NavigationPaginationActions';
-import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions';
-import {TableHeaderActions} from '../actions/TableHeaderActions';
-import {ITableHOCOwnProps, TableHOC} from '../TableHOC';
-import {tableWithDatePicker} from '../TableWithDatePicker';
-import {tableWithFilter} from '../TableWithFilter';
-import {tableWithPagination} from '../TableWithPagination';
-import {tableWithPredicate} from '../TableWithPredicate';
-import {tableWithSort} from '../TableWithSort';
-import {tableWithUrlState} from '../TableWithUrlState';
-import {TableHOCUtils} from '../utils/TableHOCUtils';
-import {selectFlatSelect} from '../../flatSelect';
+} from '../../datePicker/DatePickerActions.js';
+import {filterThrough} from '../../filterBox/FilterBoxActions.js';
+import {selectListBoxOption} from '../../listBox/ListBoxActions.js';
+import {changePage} from '../../navigation/pagination/NavigationPaginationActions.js';
+import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions.js';
+import {TableHeaderActions} from '../actions/TableHeaderActions.js';
+import {ITableHOCOwnProps, TableHOC} from '../TableHOC.js';
+import {tableWithDatePicker} from '../TableWithDatePicker.js';
+import {tableWithFilter} from '../TableWithFilter.js';
+import {tableWithPagination} from '../TableWithPagination.js';
+import {tableWithPredicate} from '../TableWithPredicate.js';
+import {tableWithSort} from '../TableWithSort.js';
+import {tableWithUrlState} from '../TableWithUrlState.js';
+import {TableHOCUtils} from '../utils/TableHOCUtils.js';
+import {selectFlatSelect} from '../../flatSelect.js';
 
 describe('Table HOC', () => {
     describe('tableWithUrlState', () => {

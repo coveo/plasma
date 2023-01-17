@@ -1,7 +1,7 @@
 import {curveLinear, line as d3Line} from 'd3-shape';
 import {FunctionComponent, PropsWithChildren, useContext} from 'react';
 
-import {XYChartContext, XYPoint, XYSerie} from './XYChart';
+import {XYChartContext, XYPoint, XYSerie} from './XYChart.js';
 
 export interface LineSeriesProps {
     strokeWith?: number;

@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import {InputHTMLAttributes, FunctionComponent, ChangeEvent, FocusEvent, useMemo, useRef, useEffect} from 'react';
 import {omit, uniqueId} from 'underscore';
 
-import {TooltipPlacement} from '../../utils';
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {Tooltip} from '../tooltip';
-import {useTextInput} from './useTextInput';
+import {TooltipPlacement} from '../../utils/index.js';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token/index.js';
+import {Tooltip} from '../tooltip/index.js';
+import {useTextInput} from './useTextInput.js';
 
 export type InputValidator = (value: string) => {status: 'valid' | 'invalid' | 'warning'; message?: string};
 

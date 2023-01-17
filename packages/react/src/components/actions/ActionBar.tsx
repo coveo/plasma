@@ -3,22 +3,22 @@ import {ReactNode, FunctionComponent, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {Content, IContentProps} from '../content/Content';
-import {InlinePromptConnected} from '../inlinePrompt/InlinePrompt';
-import {removePrompt} from '../inlinePrompt/InlinePromptActions';
-import {IPromptState} from '../inlinePrompt/InlinePromptReducers';
-import {ITooltipProps} from '../tooltip/Tooltip';
-import {IActionOptions} from './Action';
-import {addActionBar, removeActionBar} from './ActionBarActions';
-import {IActionBarState} from './ActionBarReducers';
-import {ItemFilter} from './filters/ItemFilter';
-import {addItemFilter, filterItems, removeItemFilter} from './filters/ItemFilterActions';
-import {IItemFilterState} from './filters/ItemFilterReducers';
-import {PrimaryAction} from './PrimaryAction';
-import {PrimaryActionConnected} from './PrimaryActionConnected';
-import {SecondaryActions} from './SecondaryActions';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {Content, IContentProps} from '../content/Content.js';
+import {InlinePromptConnected} from '../inlinePrompt/InlinePrompt.js';
+import {removePrompt} from '../inlinePrompt/InlinePromptActions.js';
+import {IPromptState} from '../inlinePrompt/InlinePromptReducers.js';
+import {ITooltipProps} from '../tooltip/Tooltip.js';
+import {IActionOptions} from './Action.js';
+import {addActionBar, removeActionBar} from './ActionBarActions.js';
+import {IActionBarState} from './ActionBarReducers.js';
+import {ItemFilter} from './filters/ItemFilter.js';
+import {addItemFilter, filterItems, removeItemFilter} from './filters/ItemFilterActions.js';
+import {IItemFilterState} from './filters/ItemFilterReducers.js';
+import {PrimaryAction} from './PrimaryAction.js';
+import {PrimaryActionConnected} from './PrimaryActionConnected.js';
+import {SecondaryActions} from './SecondaryActions.js';
 
 export interface IActionBarProps {
     /**

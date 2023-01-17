@@ -14,20 +14,20 @@ import {
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {IComponentBehaviour} from '../../utils/ComponentUtils';
-import {mod} from '../../utils/DataStructuresUtils';
-import {keyCode} from '../../utils/InputUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {DropPodPosition} from '../drop/DomPositionCalculator';
-import {Drop} from '../drop/Drop';
-import {IDropPodProps} from '../drop/DropPod';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {IItemBoxPropsWithIndex, IListBoxOwnProps} from '../listBox/ListBox';
-import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
-import {ListBoxConnected} from '../listBox/ListBoxConnected';
-import {addSelect, removeSelect, toggleSelect} from './SelectActions';
-import {SelectConstants} from './SelectConstants';
-import {SelectSelector} from './SelectSelector';
+import {IComponentBehaviour} from '../../utils/ComponentUtils.js';
+import {mod} from '../../utils/DataStructuresUtils.js';
+import {keyCode} from '../../utils/InputUtils.js';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils.js';
+import {DropPodPosition} from '../drop/DomPositionCalculator.js';
+import {Drop} from '../drop/Drop.js';
+import {IDropPodProps} from '../drop/DropPod.js';
+import {IItemBoxProps} from '../itemBox/ItemBox.js';
+import {IItemBoxPropsWithIndex, IListBoxOwnProps} from '../listBox/ListBox.js';
+import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions.js';
+import {ListBoxConnected} from '../listBox/ListBoxConnected.js';
+import {addSelect, removeSelect, toggleSelect} from './SelectActions.js';
+import {SelectConstants} from './SelectConstants.js';
+import {SelectSelector} from './SelectSelector.js';
 
 export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
     /**

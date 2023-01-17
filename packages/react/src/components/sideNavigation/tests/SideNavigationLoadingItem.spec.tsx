@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {ISideNavLoadingItemProps, SideNavigationLoadingItem} from '../SideNavigationLoadingItem';
+import {ISideNavLoadingItemProps, SideNavigationLoadingItem} from '../SideNavigationLoadingItem.js';
 
 describe('<SideNavigationLoadingItem />', () => {
     let wrapper: ReactWrapper<ISideNavLoadingItemProps, any>;

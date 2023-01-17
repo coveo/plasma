@@ -1,12 +1,12 @@
-import {IReduxAction} from '../../../../utils/ReduxUtils';
-import {IChangePerPageActionPayload, IPerPageActionPayload, PerPageActions} from '../NavigationPerPageActions';
+import {IReduxAction} from '../../../../utils/ReduxUtils.js';
+import {IChangePerPageActionPayload, IPerPageActionPayload, PerPageActions} from '../NavigationPerPageActions.js';
 import {
     IPerPageState,
     perPageCompositeInitialState,
     perPageCompositeReducer,
     perPageInitialState,
     perPageReducer,
-} from '../NavigationPerPageReducers';
+} from '../NavigationPerPageReducers.js';
 
 describe('Reducers', () => {
     describe('NavigationPerPageReducers', () => {

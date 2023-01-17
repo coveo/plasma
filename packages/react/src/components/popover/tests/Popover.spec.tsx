@@ -4,9 +4,9 @@ import {render, screen} from '@test-utils';
 
 import userEvent from '@testing-library/user-event';
 import {useState} from 'react';
-import {IPopoverProps, Popover} from '../Popover';
-import {Button} from '../../button';
-import {SingleSelectConnected} from '../../select';
+import {IPopoverProps, Popover} from '../Popover.js';
+import {Button} from '../../button.js';
+import {SingleSelectConnected} from '../../select.js';
 
 describe('<Popover>', () => {
     let popoverProps: IPopoverProps;

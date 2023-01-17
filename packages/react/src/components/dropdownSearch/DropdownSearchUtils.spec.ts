@@ -1,5 +1,5 @@
-import {IDropdownOption} from './DropdownSearch';
-import {getDropdownSearchSelectedOption} from './DropdownSearchUtils';
+import {IDropdownOption} from './DropdownSearch.js';
+import {getDropdownSearchSelectedOption} from './DropdownSearchUtils.js';
 
 describe('DropdownSearchUtils', () => {
     describe('getSelectedOption', () => {

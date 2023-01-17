@@ -1,4 +1,4 @@
-import {ReduxUtils} from './ReduxUtils';
+import {ReduxUtils} from './ReduxUtils.js';
 
 describe('ReduxUtils', () => {
     it('should correctly merge all props when calling ReduxUtils.mergeProps is called', () => {

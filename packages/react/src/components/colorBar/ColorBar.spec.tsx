@@ -1,9 +1,9 @@
 import {shallow} from 'enzyme';
 import * as _ from 'underscore';
-import {KeyValue} from '../../utils/DataStructuresUtils';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
-import {ColorBar, IColorBarProps} from './ColorBar';
-import {noColorsPropsScenarios, withColorsPropsScenarios} from './ColorBarPropsScenarios.mock';
+import {KeyValue} from '../../utils/DataStructuresUtils.js';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip.js';
+import {ColorBar, IColorBarProps} from './ColorBar.js';
+import {noColorsPropsScenarios, withColorsPropsScenarios} from './ColorBarPropsScenarios.mock.js';
 
 describe('ColorBar', () => {
     it('should render without error in different prop scenarios', () => {

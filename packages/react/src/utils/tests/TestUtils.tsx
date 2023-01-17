@@ -6,11 +6,11 @@ import * as _ from 'underscore';
 import {useSelector} from 'react-redux';
 
 import {createStructuredSelector} from 'reselect';
-import {ITooltipProps} from '../../components/tooltip/Tooltip';
-import {PlasmaReducers} from '../../PlasmaReducers';
-import {PlasmaState} from '../../PlasmaState';
-import {CommonActions, IDispatch} from '../ReduxUtils';
-import {ValidationSelectors} from '../../components';
+import {ITooltipProps} from '../../components/tooltip/Tooltip.js';
+import {PlasmaReducers} from '../../PlasmaReducers.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {CommonActions, IDispatch} from '../ReduxUtils.js';
+import {ValidationSelectors} from '../../components.js';
 
 export interface IExampleRowData {
     city: string;

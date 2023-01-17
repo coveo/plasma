@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {range, uniqueId} from 'underscore';
 
-import {IClassName} from '../../utils/ClassNameUtils';
+import {IClassName} from '../../utils/ClassNameUtils.js';
 
 export interface IStepProgressBarProps {
     /**

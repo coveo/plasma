@@ -1,9 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {SlideY} from '../../../animations/SlideY';
-import {ITableCollapsibleRowProps, TableCollapsibleRow} from '../TableCollapsibleRow';
-import {TableError} from '../TableError';
+import {SlideY} from '../../../animations/SlideY.js';
+import {ITableCollapsibleRowProps, TableCollapsibleRow} from '../TableCollapsibleRow.js';
+import {TableError} from '../TableError.js';
 
 describe('Tables', () => {
     it('should render without errors', () => {

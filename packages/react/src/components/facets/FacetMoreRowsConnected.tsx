@@ -1,17 +1,17 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {filterThrough} from '../filterBox/FilterBoxActions';
-import {IFilterState} from '../filterBox/FilterBoxReducers';
-import {closeMoreFacetRows} from './FacetActions';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {filterThrough} from '../filterBox/FilterBoxActions.js';
+import {IFilterState} from '../filterBox/FilterBoxReducers.js';
+import {closeMoreFacetRows} from './FacetActions.js';
 import {
     FacetMoreRows,
     IFacetMoreRowsDispatchProps,
     IFacetMoreRowsOwnProps,
     IFacetMoreRowsStateProps,
-} from './FacetMoreRows';
-import {IFacetState} from './FacetReducers';
+} from './FacetMoreRows.js';
+import {IFacetState} from './FacetReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsStateProps => {
     const item: IFacetState = _.findWhere(state.facets, {facet: ownProps.facet});

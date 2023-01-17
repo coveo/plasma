@@ -1,7 +1,7 @@
 import {shallowWithStore} from '@test-utils';
-import {getStoreMock} from '../../../../utils/tests/TestUtils';
-import {Button, IButtonProps} from '../../../button';
-import {IWithDirtySaveButtonHOCProps, withDirtySaveButtonHOC} from '../WithDirtySaveButtonHOC';
+import {getStoreMock} from '../../../../utils/tests/TestUtils.js';
+import {Button, IButtonProps} from '../../../button.js';
+import {IWithDirtySaveButtonHOCProps, withDirtySaveButtonHOC} from '../WithDirtySaveButtonHOC.js';
 
 describe('WithDirtySaveButtonHOC', () => {
     const ButtonWithHOC = withDirtySaveButtonHOC(Button);

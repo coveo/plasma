@@ -1,6 +1,6 @@
 import moment from 'moment';
-import {IRangeLimit} from '../components';
-import {DateUtils} from './DateUtils';
+import {IRangeLimit} from '../components.js';
+import {DateUtils} from './DateUtils.js';
 
 describe('DateUtils', () => {
     describe('currentDate', () => {

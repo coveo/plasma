@@ -1,5 +1,5 @@
-import {PlasmaState} from '../../../PlasmaState';
-import {FilepickerSelectors} from '../FilepickerSelectors';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {FilepickerSelectors} from '../FilepickerSelectors.js';
 
 describe('FilepickerSelectors', () => {
     describe('getFile', () => {

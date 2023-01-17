@@ -2,7 +2,7 @@ import {DateRangePickerValue} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 import {render, screen, userEvent} from '@test-utils';
 
-import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar';
+import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar.js';
 
 // Since we're mocking the date and the animations are timer based we're mocking useReduceMotion to disable all the animations
 // I tried wrapping the components in <MantineProvider theme={{components: {Transition: {defaultProps: {duration: 0}}}}}>

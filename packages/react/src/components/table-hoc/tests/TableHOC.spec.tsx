@@ -2,10 +2,10 @@ import {render, screen} from '@test-utils';
 import {shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {ActionBarConnected} from '../../actions/ActionBar';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {TableLoading} from '../../loading/components/TableLoading';
-import {ITableHOCOwnProps, TableHOC} from '../TableHOC';
+import {ActionBarConnected} from '../../actions/ActionBar.js';
+import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected.js';
+import {TableLoading} from '../../loading/components/TableLoading.js';
+import {ITableHOCOwnProps, TableHOC} from '../TableHOC.js';
 
 describe('TableHOC', () => {
     describe('<TableHOC/>', () => {

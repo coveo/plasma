@@ -1,9 +1,10 @@
-import {appendFile, ensureDirSync, outputFile, outputFileSync} from 'fs-extra';
-import * as rimraf from 'rimraf';
+import {appendFile} from 'fs/promises';
+import {ensureDirSync, outputFile, outputFileSync} from 'fs-extra/esm';
+import {sync as deleteDirSync} from 'rimraf';
 
-import componentsList from '../src/ComponentsList';
-import {getPropsOfComponent} from './getPropsOfComponent';
-import buildTypeScriptEnvironment from './buildTypeScriptEnvironment';
+import componentsList from '../src/ComponentsList.js';
+import buildTypeScriptEnvironment from './buildTypeScriptEnvironment.js';
+import {getPropsOfComponent} from './getPropsOfComponent.js';
 
 const generateProps = async () => {
     ensureDirSync('./src/components');
@@ -21,17 +22,17 @@ const generateProps = async () => {
             outputFile(
                 `./src/components/${name}.ts`,
                 `// Don't edit this file, it is automatically generated on each build
-                import {ComponentMetadata} from '../ComponentsList';
+                import {ComponentMetadata} from '../ComponentsList.js';
                 export const ${name}Metadata: ComponentMetadata[] = ${JSON.stringify(props)};`
             )
         );
-        operations.push(appendFile('./src/components/index.ts', `export * from './${name}';\n`));
+        operations.push(appendFile('./src/components/index.ts', `export * from './${name}.js';\n`));
         return Promise.all(operations);
     });
 
     await Promise.all(promises);
 };
 
-rimraf.sync('./src/components');
+deleteDirSync('./src/components');
 
 generateProps();

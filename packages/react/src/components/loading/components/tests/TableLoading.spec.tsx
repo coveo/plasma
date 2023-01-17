@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {TableLoading} from '../TableLoading';
+import {TableLoading} from '../TableLoading.js';
 
 describe('TableLoading', () => {
     describe('<TableLoading.Table />', () => {

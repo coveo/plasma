@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {addPopover, removePopover, setPopoverIsOpen} from '../PopoverActions';
-import {popoversInitialState, popoversReducer, PopoverState} from '../PopoverReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {addPopover, removePopover, setPopoverIsOpen} from '../PopoverActions.js';
+import {popoversInitialState, popoversReducer, PopoverState} from '../PopoverReducers.js';
 
 describe('Reducers', () => {
     describe('PopoversReducers', () => {

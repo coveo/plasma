@@ -1,3 +1,3 @@
-export * from './Filepicker';
-export * from './FilepickerActions';
-export * from './FilepickerSelectors';
+export * from './Filepicker.js';
+export * from './FilepickerActions.js';
+export * from './FilepickerSelectors.js';

@@ -1,20 +1,20 @@
 import {Component, ComponentType, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils';
-import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {FlatSelectSelectors} from '../flatSelect/FlatSelectSelectors';
-import {INavigationChildrenProps, INavigationOwnProps} from '../navigation';
-import {NavigationSelectors} from '../navigation/NavigationSelectors';
-import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
-import {PaginationUtils} from '../pagination/PaginationUtils';
-import {TablePagination} from '../pagination/TablePagination';
-import {TableWithPaginationActions} from './actions/TableWithPaginationActions';
-import {ITableHOCOwnProps} from './TableHOC';
-import {TableSelectors} from './TableSelectors';
-import {TableHOCUtils} from './utils/TableHOCUtils';
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/index.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch} from '../../utils/index.js';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils.js';
+import {FlatSelectSelectors} from '../flatSelect/FlatSelectSelectors.js';
+import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/index.js';
+import {NavigationSelectors} from '../navigation/NavigationSelectors.js';
+import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage.js';
+import {PaginationUtils} from '../pagination/PaginationUtils.js';
+import {TablePagination} from '../pagination/TablePagination.js';
+import {TableWithPaginationActions} from './actions/TableWithPaginationActions.js';
+import {ITableHOCOwnProps} from './TableHOC.js';
+import {TableSelectors} from './TableSelectors.js';
+import {TableHOCUtils} from './utils/TableHOCUtils.js';
 
 const sliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
 

@@ -1,14 +1,14 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {PaginationSelect} from '../../../pagination';
+import {PaginationSelect} from '../../../pagination.js';
 import {
     INavigationPaginationProps,
     NavigationPagination,
     NEXT_LABEL,
     NUMBER_OF_PAGES_SHOWING,
     PREVIOUS_LABEL,
-} from '../NavigationPagination';
+} from '../NavigationPagination.js';
 
 describe('NavigationPagination', () => {
     const NAVIGATION_PAGINATION_BASIC_PROPS: INavigationPaginationProps = {

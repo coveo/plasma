@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITabActionPayload, TabAction} from '../TabActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {ITabActionPayload, TabAction} from '../TabActions.js';
 import {
     ITabGroupState,
     ITabState,
@@ -12,8 +12,8 @@ import {
     tabReducer,
     tabsInitialState,
     tabsReducer,
-} from '../TabReducers';
-import {TabConstants} from '../TabConstants';
+} from '../TabReducers.js';
+import {TabConstants} from '../TabConstants.js';
 
 describe('Tab', () => {
     describe('TabReducers', () => {

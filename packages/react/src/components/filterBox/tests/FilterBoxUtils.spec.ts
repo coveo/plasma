@@ -1,5 +1,5 @@
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {defaultListBoxMatchFilter} from '../FilterBoxUtils';
+import {IItemBoxProps} from '../../itemBox/ItemBox.js';
+import {defaultListBoxMatchFilter} from '../FilterBoxUtils.js';
 
 describe('defaultListBoxMatchFilter', () => {
     const defaultItemBox: IItemBoxProps = {

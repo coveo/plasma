@@ -1,3 +1,3 @@
-export * from './InlinePrompt';
-export * from './InlinePromptActions';
-export * from './InlinePromptReducers';
+export * from './InlinePrompt.js';
+export * from './InlinePromptActions.js';
+export * from './InlinePromptReducers.js';

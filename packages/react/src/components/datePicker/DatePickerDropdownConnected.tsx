@@ -1,24 +1,24 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {MONTH_PICKER_ID, YEAR_PICKER_ID} from '../calendar/Calendar';
-import {DefaultGroupIds, DropActions} from '../drop/redux/DropActions';
-import {DropSelectors} from '../drop/redux/DropReducers';
-import {addDropdown, closeDropdown, removeDropdown, toggleDropdown} from '../dropdown/DropdownActions';
-import {IDropdownState} from '../dropdown/DropdownReducers';
-import {resetOptionPickers} from '../optionPicker/OptionPickerActions';
-import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions';
-import {applyDatePicker, clearSelection, DateLimits, resetDatePickers, selectDate} from './DatePickerActions';
+import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {MONTH_PICKER_ID, YEAR_PICKER_ID} from '../calendar/Calendar.js';
+import {DefaultGroupIds, DropActions} from '../drop/redux/DropActions.js';
+import {DropSelectors} from '../drop/redux/DropReducers.js';
+import {addDropdown, closeDropdown, removeDropdown, toggleDropdown} from '../dropdown/DropdownActions.js';
+import {IDropdownState} from '../dropdown/DropdownReducers.js';
+import {resetOptionPickers} from '../optionPicker/OptionPickerActions.js';
+import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions.js';
+import {applyDatePicker, clearSelection, DateLimits, resetDatePickers, selectDate} from './DatePickerActions.js';
 import {
     DatePickerDropdown,
     IDatePickerDropdownDispatchProps,
     IDatePickerDropdownOwnProps,
     IDatePickerDropdownStateProps,
-} from './DatePickerDropdown';
-import {IDatePickerState} from './DatePickerReducers';
-import {DatePickerSelectors} from './DatePickerSelectors';
+} from './DatePickerDropdown.js';
+import {IDatePickerState} from './DatePickerReducers.js';
+import {DatePickerSelectors} from './DatePickerSelectors.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {
     const item: IDropdownState = _.findWhere(state.dropdowns, {id: ownProps.id});

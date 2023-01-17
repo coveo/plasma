@@ -1,7 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from '@test-utils';
 import * as _ from 'underscore';
-import {BreadcrumbLink, IBreadcrumbLinkProps} from '../BreadcrumbLink';
+import {BreadcrumbLink, IBreadcrumbLinkProps} from '../BreadcrumbLink.js';
 
 describe('<BreadcrumbLink/>', () => {
     const defaultProps: IBreadcrumbLinkProps = {

@@ -1,5 +1,5 @@
-import {IReduxAction} from '../../utils';
-import {CodeEditorActionPayload, CodeEditorActionTypes} from './CodeEditorActions';
+import {IReduxAction} from '../../utils/index.js';
+import {CodeEditorActionPayload, CodeEditorActionTypes} from './CodeEditorActions.js';
 
 export interface CodeEditorsState {
     [key: string]: CodeEditorState;

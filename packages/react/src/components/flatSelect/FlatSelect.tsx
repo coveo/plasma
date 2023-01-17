@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {IDispatch} from '../../utils';
-import {addFlatSelect, removeFlatSelect, selectFlatSelect} from './FlatSelectActions';
-import {FlatSelectOption, IFlatSelectOptionProps} from './FlatSelectOption';
-import {FlatSelectSelectors} from './FlatSelectSelectors';
+import {IDispatch} from '../../utils/index.js';
+import {addFlatSelect, removeFlatSelect, selectFlatSelect} from './FlatSelectActions.js';
+import {FlatSelectOption, IFlatSelectOptionProps} from './FlatSelectOption.js';
+import {FlatSelectSelectors} from './FlatSelectSelectors.js';
 
 export interface IFlatSelectOwnProps {
     /**

@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {ITableHeaderCellDispatchProps, ITableHeaderCellOwnProps, TableHeaderCell} from './TableHeaderCell';
-import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from './TableHeaderCellActions';
-import {ITableHeaderCellState} from './TableHeaderCellReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {ITableHeaderCellDispatchProps, ITableHeaderCellOwnProps, TableHeaderCell} from './TableHeaderCell.js';
+import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from './TableHeaderCellActions.js';
+import {ITableHeaderCellState} from './TableHeaderCellReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: ITableHeaderCellOwnProps) => {
     const headerCell: ITableHeaderCellState = state.tableHeaderCells[ownProps.id];

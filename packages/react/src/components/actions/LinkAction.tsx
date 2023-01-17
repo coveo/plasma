@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {ClassAttributes, AllHTMLAttributes, Component} from 'react';
-import {Action, IBasicActionProps} from './Action';
+import {Action, IBasicActionProps} from './Action.js';
 
 export interface ILinkActionProps extends ClassAttributes<LinkAction>, IBasicActionProps {}
 

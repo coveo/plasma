@@ -1,13 +1,13 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ILoadingActionPayload, LoadingActions} from '../LoadingActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {ILoadingActionPayload, LoadingActions} from '../LoadingActions.js';
 import {
     ILoadingState,
     loadingInitialState,
     loadingReducer,
     loadingsInitialState,
     loadingsReducer,
-} from '../LoadingReducers';
+} from '../LoadingReducers.js';
 
 describe('Reducers', () => {
     describe('LoadingReducers', () => {

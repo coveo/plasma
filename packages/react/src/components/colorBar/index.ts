@@ -1,1 +1,1 @@
-export * from './ColorBar';
+export * from './ColorBar.js';

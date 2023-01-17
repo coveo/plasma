@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import {XYPoint, XYSerie} from './XYChart';
+import {XYPoint, XYSerie} from './XYChart.js';
 
 const getValues = (series: XYSerie[], getValue: (point: XYPoint) => number) =>
     _.chain(series)

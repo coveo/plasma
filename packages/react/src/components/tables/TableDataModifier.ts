@@ -1,22 +1,22 @@
 import moment from 'moment';
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
-import {convertUndefinedAndNullToEmptyString} from '../../utils/FalsyValuesUtils';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {addActionsToActionBar} from '../actions/ActionBarActions';
-import {changeLastUpdated} from '../lastUpdated/LastUpdatedActions';
-import {turnOffLoading, turnOnLoading} from '../loading/LoadingActions';
-import {ITableHeadingAttribute, ITableOwnProps, ITableRowData} from './Table';
-import {ITableStateModifier, modifyState} from './TableActions';
+import s from 'underscore.string';
+import {convertUndefinedAndNullToEmptyString} from '../../utils/FalsyValuesUtils.js';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {addActionsToActionBar} from '../actions/ActionBarActions.js';
+import {changeLastUpdated} from '../lastUpdated/LastUpdatedActions.js';
+import {turnOffLoading, turnOnLoading} from '../loading/LoadingActions.js';
+import {ITableHeadingAttribute, ITableOwnProps, ITableRowData} from './Table.js';
+import {ITableStateModifier, modifyState} from './TableActions.js';
 import {
     DEFAULT_TABLE_PER_PAGE,
     TableChildComponent,
     TableSortingOrder,
     TABLE_PREDICATE_DEFAULT_VALUE,
-} from './TableConstants';
-import {ITableCompositeState, ITableState} from './TableReducers';
-import {unselectAllRows} from './TableRowActions';
-import {getTableChildComponentId, getTableLoadingIds} from './TableUtils';
+} from './TableConstants.js';
+import {ITableCompositeState, ITableState} from './TableReducers.js';
+import {unselectAllRows} from './TableRowActions.js';
+import {getTableChildComponentId, getTableLoadingIds} from './TableUtils.js';
 
 export const dispatchPreTableStateModification = (tableId: string, dispatch: IDispatch) => {
     dispatch(unselectAllRows(tableId));
@@ -68,7 +68,7 @@ export const applyFilterOnDisplayedIds = (
                     !filterFormatter && attributeFormatter
                         ? attributeFormatter(attributeValue, attributeName, tableDataById[dataId])
                         : attributeValueToUse;
-                return contains(
+                return s.contains(
                     convertUndefinedAndNullToEmptyString(attributeValueToUse).toString().toLowerCase(),
                     tableCompositeState.filter.toLowerCase()
                 );

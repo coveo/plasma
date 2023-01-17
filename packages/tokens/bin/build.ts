@@ -1,8 +1,7 @@
-import {ensureDirSync, outputFileSync} from 'fs-extra';
+import {ensureDirSync, outputFileSync} from 'fs-extra/esm';
 import rimraf from 'rimraf';
 
-import {buildColorsTokens} from './lib/tokens/colors';
-import {buildIconsTokens} from './lib/tokens/icons';
+import {buildColorsTokens, buildIconsTokens} from './lib/index.js';
 
 const cleanOutputDirectories = () => {
     rimraf.sync('./css/*');

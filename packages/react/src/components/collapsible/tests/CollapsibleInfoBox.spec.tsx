@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 
-import {CollapsibleInfoBox, CollapsibleInfoBoxProps} from '../CollapsibleInfoBox';
+import {CollapsibleInfoBox, CollapsibleInfoBoxProps} from '../CollapsibleInfoBox.js';
 
 describe('CollapsibleInfoBox', () => {
     const basicProps: CollapsibleInfoBoxProps = {

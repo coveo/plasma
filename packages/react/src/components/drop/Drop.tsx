@@ -2,11 +2,11 @@ import classNames from 'classnames';
 import {ReactNode, HTMLProps, HTMLAttributes, RefObject, CSSProperties, createRef, PureComponent} from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {defaultDropPodPosition, DropPod, IDropPodProps} from './DropPod';
-import {DefaultGroupIds, DropActions} from './redux/DropActions';
-import {DropSelectors} from './redux/DropReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils.js';
+import {defaultDropPodPosition, DropPod, IDropPodProps} from './DropPod.js';
+import {DefaultGroupIds, DropActions} from './redux/DropActions.js';
+import {DropSelectors} from './redux/DropReducers.js';
 
 export interface IDropOwnProps extends Partial<IDropPodProps> {
     id: string;

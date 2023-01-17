@@ -1,19 +1,19 @@
-import {IItemBoxProps} from '../../../components/itemBox/ItemBox';
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import {IItemBoxProps} from '../../../components/itemBox/ItemBox.js';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
 import {
     addStringList,
     addValueStringList,
     IStringListPayload,
     removeStringList,
     removeValueStringList,
-} from '../StringListActions';
+} from '../StringListActions.js';
 import {
     convertItemsBoxToStringList,
     convertStringListToItemsBox,
     IStringListCompositeState,
     stringListCompositeReducer,
     stringListInitialState,
-} from '../StringListReducers';
+} from '../StringListReducers.js';
 
 describe('StringList', () => {
     describe('StringList Reducers', () => {

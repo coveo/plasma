@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IModalActionPayload, ModalAction} from './ModalActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IModalActionPayload, ModalAction} from './ModalActions.js';
 
 export interface IModalState {
     id: string;

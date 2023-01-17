@@ -1,10 +1,10 @@
 import {PureComponent} from 'react';
 import * as _ from 'underscore';
 
-import {Input} from '../input/Input';
-import {Label} from '../input/Label';
-import {AddInputAction} from './AddInputAction';
-import {DeleteInputAction} from './DeleteInputAction';
+import {Input} from '../input/Input.js';
+import {Label} from '../input/Label.js';
+import {AddInputAction} from './AddInputAction.js';
+import {DeleteInputAction} from './DeleteInputAction.js';
 
 export interface ISplitInput {
     id: string;

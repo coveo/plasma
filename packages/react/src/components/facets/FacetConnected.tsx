@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {Facet, IFacet, IFacetDispatchProps, IFacetOwnProps, IFacetStateProps} from './Facet';
-import {addFacet, changeFacet, emptyFacet, removeFacet} from './FacetActions';
-import {IFacetState} from './FacetReducers';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {Facet, IFacet, IFacetDispatchProps, IFacetOwnProps, IFacetStateProps} from './Facet.js';
+import {addFacet, changeFacet, emptyFacet, removeFacet} from './FacetActions.js';
+import {IFacetState} from './FacetReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IFacetOwnProps): IFacetStateProps => {
     const item: IFacetState = _.findWhere(state.facets, {facet: ownProps.facet.name});

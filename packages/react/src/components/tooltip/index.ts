@@ -1,2 +1,2 @@
-export * from './Tooltip';
-export * from './DateTooltip';
+export * from './Tooltip.js';
+export * from './DateTooltip.js';

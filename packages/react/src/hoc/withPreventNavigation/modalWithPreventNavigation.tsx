@@ -1,10 +1,10 @@
 import {ReactNode, ComponentClass, PureComponent} from 'react';
 import * as _ from 'underscore';
 
-import {closeModal, IModalActionPayload} from '../../components/modal/ModalActions';
-import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
-import {IWithDirtyProps, withDirty} from '../withDirty/withDirty';
-import {PreventNavigationPrompt} from './PreventNavigationPrompt';
+import {closeModal, IModalActionPayload} from '../../components/modal/ModalActions.js';
+import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils.js';
+import {IWithDirtyProps, withDirty} from '../withDirty/withDirty.js';
+import {PreventNavigationPrompt} from './PreventNavigationPrompt.js';
 
 export interface IWithPreventNavigationConfig {
     id: string;

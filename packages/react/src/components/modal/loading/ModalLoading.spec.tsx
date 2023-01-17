@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import {ModalLoading} from './ModalLoading';
+import {ModalLoading} from './ModalLoading.js';
 
 describe('ModalLoading tests', () => {
     const id: string = 'modal';

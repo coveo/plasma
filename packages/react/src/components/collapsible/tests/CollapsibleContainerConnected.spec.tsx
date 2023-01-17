@@ -1,7 +1,7 @@
 import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
+import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected.js';
 
 describe('CollapsibleContainerConnected', () => {
     it('displays the collapsible header and its content', () => {

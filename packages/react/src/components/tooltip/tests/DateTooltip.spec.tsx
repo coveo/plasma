@@ -1,7 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import moment from 'moment';
-import {DateTooltip, DateTooltipsProps} from '../DateTooltip';
-import {Tooltip} from '../Tooltip';
+import {DateTooltip, DateTooltipsProps} from '../DateTooltip.js';
+import {Tooltip} from '../Tooltip.js';
 
 describe('Tooltip', () => {
     let tooltipWrapper: ShallowWrapper<DateTooltipsProps>;

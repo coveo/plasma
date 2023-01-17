@@ -1,9 +1,9 @@
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {TableSortingOrder} from './TableConstants';
-import {TableHeaderCellActions} from './TableHeaderCellActions';
-import {getNextTableSortingOrder} from './TableUtils';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {TableSortingOrder} from './TableConstants.js';
+import {TableHeaderCellActions} from './TableHeaderCellActions.js';
+import {getNextTableSortingOrder} from './TableUtils.js';
 
 export interface ITableHeaderCellState {
     id: string;

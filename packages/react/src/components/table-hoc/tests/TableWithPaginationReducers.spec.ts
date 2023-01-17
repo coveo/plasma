@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITableWithPaginationBasePayload, TableWithPaginationActions} from '../actions/TableWithPaginationActions';
-import {ITableWithPaginationState, TableWithPaginationReducers} from '../reducers/TableWithPaginationReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {ITableWithPaginationBasePayload, TableWithPaginationActions} from '../actions/TableWithPaginationActions.js';
+import {ITableWithPaginationState, TableWithPaginationReducers} from '../reducers/TableWithPaginationReducers.js';
 
 describe('Table HOC', () => {
     describe('TableWithPaginationReducers', () => {

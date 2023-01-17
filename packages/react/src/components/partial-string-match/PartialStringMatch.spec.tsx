@@ -2,8 +2,8 @@ import {mount, shallow} from 'enzyme';
 import {FunctionComponent, Component} from 'react';
 import {connect, Provider} from 'react-redux';
 
-import {getStoreMock} from '../../utils/tests/TestUtils';
-import {PartialStringMatch} from './PartialStringMatch';
+import {getStoreMock} from '../../utils/tests/TestUtils.js';
+import {PartialStringMatch} from './PartialStringMatch.js';
 
 describe('PartialStringMatch', () => {
     const testString = 'test-string';

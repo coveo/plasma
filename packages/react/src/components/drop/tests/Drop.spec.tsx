@@ -4,11 +4,11 @@ import {ReactNode} from 'react';
 import userEvent from '@testing-library/user-event';
 import {render, screen, waitFor} from '@test-utils';
 
-import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {Drop, IDropProps} from '../Drop';
-import {DropPod} from '../DropPod';
-import {DefaultGroupIds, DropActions} from '../redux/DropActions';
+import {RTestUtils} from '../../../utils/tests/RTestUtils.js';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {Drop, IDropProps} from '../Drop.js';
+import {DropPod} from '../DropPod.js';
+import {DefaultGroupIds, DropActions} from '../redux/DropActions.js';
 
 describe('Drop', () => {
     describe('<Drop />', () => {

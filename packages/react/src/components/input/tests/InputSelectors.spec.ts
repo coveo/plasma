@@ -1,4 +1,4 @@
-import {InputSelectors} from '../InputSelectors';
+import {InputSelectors} from '../InputSelectors.js';
 
 describe('InputSelectors', () => {
     const ownProps = {

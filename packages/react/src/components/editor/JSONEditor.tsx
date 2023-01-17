@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import {FunctionComponent, useEffect, useState} from 'react';
 
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {CodeEditor} from './CodeEditor';
-import {CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
-import {JSONEditorUtils} from './JSONEditorUtils';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token/index.js';
+import {CodeEditor} from './CodeEditor.js';
+import {CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants.js';
+import {JSONEditorUtils} from './JSONEditorUtils.js';
 
 export interface JSONEditorProps {
     /**

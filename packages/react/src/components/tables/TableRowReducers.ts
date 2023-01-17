@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ITableRowActionPayload, TableRowActions} from './TableRowActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {ITableRowActionPayload, TableRowActions} from './TableRowActions.js';
 
 export interface ITableRowState {
     id: string;

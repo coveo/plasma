@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IFilterState} from './FilterBoxReducers';
-import {defaultListBoxMatchFilter, MatchFilter} from './FilterBoxUtils';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IFilterState} from './FilterBoxReducers.js';
+import {defaultListBoxMatchFilter, MatchFilter} from './FilterBoxUtils.js';
 
 export interface GetFilterTextProps {
     id: string;

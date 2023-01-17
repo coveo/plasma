@@ -1,8 +1,8 @@
 import {ReactNode, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IToastProps} from './Toast';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IToastProps} from './Toast.js';
 
 export interface IToastContainerActionPayload {
     id: string;

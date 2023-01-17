@@ -1,7 +1,7 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {ActionableItem} from '../ActionableItem';
+import {ActionableItem} from '../ActionableItem.js';
 
 describe('ActionableItem', () => {
     it('renders the content passed down the children', () => {

@@ -1,6 +1,6 @@
-import {FileMetadata} from '../../../utils/FileUtils';
-import {FilepickerActions} from '../FilepickerActions';
-import {filepickersReducer, FilepickerState} from '../FilepickerReducers';
+import {FileMetadata} from '../../../utils/FileUtils.js';
+import {FilepickerActions} from '../FilepickerActions.js';
+import {filepickersReducer, FilepickerState} from '../FilepickerReducers.js';
 
 describe('FilepickerReducers', () => {
     it('should return an empty object if the current state is undefined', () => {

@@ -1,12 +1,12 @@
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
-import {IReduxActionsPayload} from '../../../PlasmaState';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {FilterActions} from '../../filterBox/FilterBoxActions';
-import {ListBoxActions} from '../../listBox/ListBoxActions';
-import {TableHOCUtils} from '../../table-hoc/utils/TableHOCUtils';
-import {TableActions} from '../../tables/TableActions';
-import {PaginationActions} from './NavigationPaginationActions';
+import s from 'underscore.string';
+import {IReduxActionsPayload} from '../../../PlasmaState.js';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {FilterActions} from '../../filterBox/FilterBoxActions.js';
+import {ListBoxActions} from '../../listBox/ListBoxActions.js';
+import {TableHOCUtils} from '../../table-hoc/utils/TableHOCUtils.js';
+import {TableActions} from '../../tables/TableActions.js';
+import {PaginationActions} from './NavigationPaginationActions.js';
 
 export interface IPaginationState {
     id: string;
@@ -34,14 +34,14 @@ export const paginationReducer = (
         case PaginationActions.reset:
             return state.id === action.payload.id ? {id: state.id, pageNb: action.payload.pageNb} : state;
         case TableActions.modifyState:
-            return contains(state.id, action.payload.id) && action.payload.shouldResetPage
+            return s.contains(state.id, action.payload.id) && action.payload.shouldResetPage
                 ? {...state, pageNb: 0}
                 : state;
         case FilterActions.filterThrough:
-            return contains(state.id, action.payload.id) ? {...state, pageNb: 0} : state;
+            return s.contains(state.id, action.payload.id) ? {...state, pageNb: 0} : state;
         case ListBoxActions.select: {
             const tableId = TableHOCUtils.getTableIdFromPredicateId(action.payload.id);
-            return tableId && contains(state.id, tableId) ? {...state, pageNb: 0} : state;
+            return tableId && s.contains(state.id, tableId) ? {...state, pageNb: 0} : state;
         }
         default:
             return state;

@@ -1,13 +1,13 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ILabelProps} from '../../input';
-import {validateInputValue} from '../../input/InputActions';
-import {AddInput} from '../AddInput';
-import {DeletableInput} from '../DeletableInput';
-import {IMultilineInputProps, IMultilineInputValue, MultilineInput} from '../MultilineInput';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {ILabelProps} from '../../input.js';
+import {validateInputValue} from '../../input/InputActions.js';
+import {AddInput} from '../AddInput.js';
+import {DeletableInput} from '../DeletableInput.js';
+import {IMultilineInputProps, IMultilineInputValue, MultilineInput} from '../MultilineInput.js';
 
 describe('MultilineInput', () => {
     it('should render without errors', () => {

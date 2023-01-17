@@ -2,10 +2,10 @@ import {render, screen} from '@test-utils';
 import {shallow} from 'enzyme';
 import ReactModal from 'react-modal';
 
-import {ModalBody} from '../ModalBody';
-import {ModalComposite} from '../ModalComposite';
-import {ModalFooter} from '../ModalFooter';
-import {ModalHeader} from '../ModalHeader';
+import {ModalBody} from '../ModalBody.js';
+import {ModalComposite} from '../ModalComposite.js';
+import {ModalFooter} from '../ModalFooter.js';
+import {ModalHeader} from '../ModalHeader.js';
 
 describe('ModalComposite', () => {
     it('should not throw when rendering and unmounting', () => {

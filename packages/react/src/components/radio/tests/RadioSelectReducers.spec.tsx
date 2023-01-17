@@ -1,12 +1,12 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IRadioSelectActionPayload, removeRadioSelect, setRadioSelect} from '../RadioSelectActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {IRadioSelectActionPayload, removeRadioSelect, setRadioSelect} from '../RadioSelectActions.js';
 import {
     IRadioSelectState,
     radioSelectInitialState,
     radioSelectsInitialState,
     radioSelectsReducer,
-} from '../RadioSelectReducers';
+} from '../RadioSelectReducers.js';
 
 describe('RadioSelect', () => {
     describe('RadioSelectReducers', () => {

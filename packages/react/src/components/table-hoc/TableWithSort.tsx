@@ -1,13 +1,13 @@
 import {Component, ComponentType, PropsWithChildren, ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {PlasmaState} from '../../PlasmaState';
-import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {ReduxConnect} from '../../utils/ReduxUtils';
-import {ITableWithSortState} from './reducers/TableWithSortReducers';
-import {ITableHOCOwnProps} from './TableHOC';
-import {TableSelectors} from './TableSelectors';
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils.js';
+import {ReduxConnect} from '../../utils/ReduxUtils.js';
+import {ITableWithSortState} from './reducers/TableWithSortReducers.js';
+import {ITableHOCOwnProps} from './TableHOC.js';
+import {TableSelectors} from './TableSelectors.js';
 
 export interface ITableWithSortConfig extends WithServerSideProcessingProps {
     sort?: (sortKey: string, isAsc: boolean, a: any, b: any) => number;

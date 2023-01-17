@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IMenuPayload, MenuActions} from './MenuActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IMenuPayload, MenuActions} from './MenuActions.js';
 
 export interface IMenusState {
     [id: string]: IMenuState;

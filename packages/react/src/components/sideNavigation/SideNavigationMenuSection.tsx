@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import {FunctionComponent, MouseEvent, PropsWithChildren, ReactNode, useEffect, useRef} from 'react';
 import * as _ from 'underscore';
 
-import {Collapsible} from '../collapsible/Collapsible';
-import {ISideNavigationHeaderProps} from './SideNavigationHeader';
+import {Collapsible} from '../collapsible/Collapsible.js';
+import {ISideNavigationHeaderProps} from './SideNavigationHeader.js';
 
 export interface SideNavigationHeaderProps {
     title?: ReactNode;

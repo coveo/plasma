@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import {Component, MouseEvent, ReactNode, SyntheticEvent} from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {Button, IButtonProps} from '../button/Button';
-import {addMenu, removeMenu, toggleMenu} from './MenuActions';
-import {IMenuState} from './MenuReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils.js';
+import {Button, IButtonProps} from '../button/Button.js';
+import {addMenu, removeMenu, toggleMenu} from './MenuActions.js';
+import {IMenuState} from './MenuReducers.js';
 
 export interface IMenuOwnProps {
     id: string;

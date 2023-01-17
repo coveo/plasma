@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import {ChildForm} from '../ChildForm';
+import {ChildForm} from '../ChildForm.js';
 
 describe('ChildForm', () => {
     it('should render without errors', () => {

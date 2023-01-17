@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ITextAreaActionPayload, TextAreaActions} from './TextAreaActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {ITextAreaActionPayload, TextAreaActions} from './TextAreaActions.js';
 
 export interface ITextAreaState {
     id: string;

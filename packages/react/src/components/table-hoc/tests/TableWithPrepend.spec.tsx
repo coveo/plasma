@@ -1,8 +1,8 @@
 import {shallowWithState} from '@test-utils';
 
-import {TableHOC} from '../TableHOC';
-import {TableSelectors} from '../TableSelectors';
-import {tableWithPrepend} from '../TableWithPrepend';
+import {TableHOC} from '../TableHOC.js';
+import {TableSelectors} from '../TableSelectors.js';
+import {tableWithPrepend} from '../TableWithPrepend.js';
 
 describe('TableWithPrepend', () => {
     const TableWithPrepend = tableWithPrepend(TableHOC);

@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import {Separator} from '../Separator';
+import {Separator} from '../Separator.js';
 
 describe('Separator', () => {
     it('should render without error in various scenarios', () => {

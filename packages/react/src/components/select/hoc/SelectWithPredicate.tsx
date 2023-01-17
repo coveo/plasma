@@ -3,13 +3,13 @@ import {ComponentType, FunctionComponent, PropsWithChildren, useEffect} from 're
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {PlasmaState} from '../../../PlasmaState';
-import {FlatSelectConnected} from '../../flatSelect';
-import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
-import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {ISelectOwnProps} from '../SelectConnected';
+import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {FlatSelectConnected} from '../../flatSelect/index.js';
+import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption.js';
+import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors.js';
+import {IItemBoxProps} from '../../itemBox/ItemBox.js';
+import {ISelectOwnProps} from '../SelectConnected.js';
 
 export interface ISelectWithPredicateOwnProps {
     options: IFlatSelectOptionProps[];

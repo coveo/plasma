@@ -3,6 +3,7 @@
     "compilerOptions": {
         "tsBuildInfoFile": "./dist/.tsbuildinfo",
         "declarationDir": "./dist/definitions",
+        "outDir": "dist",
         "baseUrl": ".",
         "paths": {
             "@test-utils": ["jest/utils.tsx"],

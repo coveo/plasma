@@ -8,7 +8,7 @@ import {
     ITableErrorProps,
     TableError,
     TROUBLESHOOTING_LABEL,
-} from '../TableError';
+} from '../TableError.js';
 
 describe('Tables', () => {
     const error: IErrorSection = {

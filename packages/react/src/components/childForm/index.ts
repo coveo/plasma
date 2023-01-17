@@ -1,2 +1,2 @@
-export * from './ChildForm';
-export * from './ToggleForm';
+export * from './ChildForm.js';
+export * from './ToggleForm.js';

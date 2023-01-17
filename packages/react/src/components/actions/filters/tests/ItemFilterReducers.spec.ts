@@ -1,13 +1,13 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../../utils/ReduxUtils';
-import {IItemFilterActionPayload, IItemFilteringActionPayload, ItemFilterActions} from '../ItemFilterActions';
+import {IReduxAction} from '../../../../utils/ReduxUtils.js';
+import {IItemFilterActionPayload, IItemFilteringActionPayload, ItemFilterActions} from '../ItemFilterActions.js';
 import {
     IItemFilterState,
     itemFilterOriginalState,
     itemFilterReducer,
     itemFiltersOriginalState,
     itemFiltersReducer,
-} from '../ItemFilterReducers';
+} from '../ItemFilterReducers.js';
 
 describe('Item filters', () => {
     const genericAction: IReduxAction<IItemFilterActionPayload> = {

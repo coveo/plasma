@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import {FunctionComponent, PropsWithChildren, ReactNode, useRef, useState} from 'react';
 import * as _ from 'underscore';
 
-import {ILinkSvgProps, LinkSvg} from '../linkSvg/LinkSvg';
-import {Tooltip} from '../tooltip/Tooltip';
+import {ILinkSvgProps, LinkSvg} from '../linkSvg/LinkSvg.js';
+import {Tooltip} from '../tooltip/Tooltip.js';
 
 export interface ITitleProps {
     prefix?: string;

@@ -1,13 +1,13 @@
 import * as _ from 'underscore';
-import {IDatePickerState} from '../../components/datePicker/DatePickerReducers';
-import {IListBoxState} from '../../components/listBox/ListBoxReducers';
-import {PaginationUtils} from '../../components/pagination/PaginationUtils';
+import {IDatePickerState} from '../../components/datePicker/DatePickerReducers.js';
+import {IListBoxState} from '../../components/listBox/ListBoxReducers.js';
+import {PaginationUtils} from '../../components/pagination/PaginationUtils.js';
 import {
     ITableHOCCompositeState,
     ITableHOCPredicateValue,
     TableHOCUtils,
-} from '../../components/table-hoc/utils/TableHOCUtils';
-import {PlasmaState} from '../../PlasmaState';
+} from '../../components/table-hoc/utils/TableHOCUtils.js';
+import {PlasmaState} from '../../PlasmaState.js';
 
 const createTableHOCCompositeState = <T extends PlasmaState>(
     tableId: string,

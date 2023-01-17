@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 
-import {HeaderWrapper} from '../HeaderWrapper';
-import {TabsHeader} from '../TabsHeader';
+import {HeaderWrapper} from '../HeaderWrapper.js';
+import {TabsHeader} from '../TabsHeader.js';
 
 describe('<HeaderWrapper/>', () => {
     it('should render without errors', () => {

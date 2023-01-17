@@ -33,7 +33,7 @@
             this.addAriaAndCollapsedClass(this.$element, this.$trigger);
         }
 
-        if (this.options.toggle) this.toggle();
+        if (this.options.toggle) {this.toggle();}
     };
 
     Collapse.VERSION = '3.3.5';
@@ -45,31 +45,31 @@
     };
 
     Collapse.prototype.dimension = function () {
-        var hasWidth = this.$element.hasClass('width');
+        const hasWidth = this.$element.hasClass('width');
         return hasWidth ? 'width' : 'height';
     };
 
     Collapse.prototype.show = function () {
-        if (this.transitioning || this.$element.hasClass('in')) return;
+        if (this.transitioning || this.$element.hasClass('in')) {return;}
 
-        var activesData;
-        var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing');
+        let activesData;
+        const actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing');
 
         if (actives && actives.length) {
             activesData = actives.data('bs.collapse');
-            if (activesData && activesData.transitioning) return;
+            if (activesData && activesData.transitioning) {return;}
         }
 
-        var startEvent = $.Event('show.bs.collapse');
+        const startEvent = $.Event('show.bs.collapse');
         this.$element.trigger(startEvent);
-        if (startEvent.isDefaultPrevented()) return;
+        if (startEvent.isDefaultPrevented()) {return;}
 
         if (actives && actives.length) {
             Plugin.call(actives, 'hide');
             activesData || actives.data('bs.collapse', null);
         }
 
-        var dimension = this.dimension();
+        const dimension = this.dimension();
 
         this.$element.removeClass('collapse').addClass('collapsing')[dimension](0).attr('aria-expanded', true);
 
@@ -77,15 +77,15 @@
 
         this.transitioning = 1;
 
-        var complete = function () {
+        const complete = function () {
             this.$element.removeClass('collapsing').addClass('collapse in')[dimension]('');
             this.transitioning = 0;
             this.$element.trigger('shown.bs.collapse');
         };
 
-        if (!$.support.transition) return complete.call(this);
+        if (!$.support.transition) {return complete.call(this);}
 
-        var scrollSize = $.camelCase(['scroll', dimension].join('-'));
+        const scrollSize = $.camelCase(['scroll', dimension].join('-'));
 
         this.$element
             .one('bsTransitionEnd', $.proxy(complete, this))
@@ -94,13 +94,13 @@
     };
 
     Collapse.prototype.hide = function () {
-        if (this.transitioning || !this.$element.hasClass('in')) return;
+        if (this.transitioning || !this.$element.hasClass('in')) {return;}
 
-        var startEvent = $.Event('hide.bs.collapse');
+        const startEvent = $.Event('hide.bs.collapse');
         this.$element.trigger(startEvent);
-        if (startEvent.isDefaultPrevented()) return;
+        if (startEvent.isDefaultPrevented()) {return;}
 
-        var dimension = this.dimension();
+        const dimension = this.dimension();
 
         this.$element[dimension](this.$element[dimension]())[0].offsetHeight;
 
@@ -110,12 +110,12 @@
 
         this.transitioning = 1;
 
-        var complete = function () {
+        const complete = function () {
             this.transitioning = 0;
             this.$element.removeClass('collapsing').addClass('collapse').trigger('hidden.bs.collapse');
         };
 
-        if (!$.support.transition) return complete.call(this);
+        if (!$.support.transition) {return complete.call(this);}
 
         this.$element[dimension](0)
             .one('bsTransitionEnd', $.proxy(complete, this))
@@ -131,7 +131,7 @@
             .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
             .each(
                 $.proxy(function (i, element) {
-                    var $element = $(element);
+                    const $element = $(element);
                     this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element);
                 }, this)
             )
@@ -139,15 +139,15 @@
     };
 
     Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
-        var isOpen = $element.hasClass('in');
+        const isOpen = $element.hasClass('in');
 
         $element.attr('aria-expanded', isOpen);
         $trigger.toggleClass('collapsed', !isOpen).attr('aria-expanded', isOpen);
     };
 
     function getTargetFromTrigger($trigger) {
-        var href;
-        var target =
+        let href;
+        const target =
             $trigger.attr('data-target') || ((href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')); // strip for ie7
 
         return $(target);
@@ -158,17 +158,17 @@
 
     function Plugin(option) {
         return this.each(function () {
-            var $this = $(this);
-            var data = $this.data('bs.collapse');
-            var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option);
+            const $this = $(this);
+            let data = $this.data('bs.collapse');
+            const options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option);
 
-            if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false;
-            if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)));
-            if (typeof option == 'string') data[option]();
+            if (!data && options.toggle && /show|hide/.test(option)) {options.toggle = false;}
+            if (!data) {$this.data('bs.collapse', (data = new Collapse(this, options)));}
+            if (typeof option == 'string') {data[option]();}
         });
     }
 
-    var old = $.fn.collapse;
+    const old = $.fn.collapse;
 
     $.fn.collapse = Plugin;
     $.fn.collapse.Constructor = Collapse;
@@ -185,13 +185,13 @@
     // =================
 
     $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
-        var $this = $(this);
+        const $this = $(this);
 
-        if (!$this.attr('data-target')) e.preventDefault();
+        if (!$this.attr('data-target')) {e.preventDefault();}
 
-        var $target = getTargetFromTrigger($this);
-        var data = $target.data('bs.collapse');
-        var option = data ? 'toggle' : $this.data();
+        const $target = getTargetFromTrigger($this);
+        const data = $target.data('bs.collapse');
+        const option = data ? 'toggle' : $this.data();
 
         Plugin.call($target, option);
     });

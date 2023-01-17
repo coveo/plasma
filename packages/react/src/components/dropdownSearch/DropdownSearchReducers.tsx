@@ -1,11 +1,11 @@
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
+import s from 'underscore.string';
 
-import {deepClone} from '../../utils/CloneUtils';
-import {keyCode} from '../../utils/InputUtils';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IDropdownOption} from './DropdownSearch';
-import {DropdownSearchActions, IOptionsDropdownSearchPayload} from './DropdownSearchActions';
+import {deepClone} from '../../utils/CloneUtils.js';
+import {keyCode} from '../../utils/InputUtils.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IDropdownOption} from './DropdownSearch.js';
+import {DropdownSearchActions, IOptionsDropdownSearchPayload} from './DropdownSearchActions.js';
 
 export interface IDropdownSearchState {
     id: string;
@@ -126,7 +126,7 @@ export const getFilteredOptions = (state: IDropdownSearchState, filterText?: str
     const currentFilterText: string = filterText || state.filterText || '';
     return _.filter(getDisplayedOptions(state), (option: IDropdownOption) => {
         const displayValue = option.displayValue || option.value;
-        return contains(displayValue.toLowerCase(), currentFilterText.toLowerCase());
+        return s.contains(displayValue.toLowerCase(), currentFilterText.toLowerCase());
     });
 };
 

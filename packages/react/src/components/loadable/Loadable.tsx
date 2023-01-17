@@ -1,6 +1,6 @@
 import loadable, {DefaultComponent, OptionsWithoutResolver} from '@loadable/component';
 
-import {Loading} from '../loading/Loading';
+import {Loading} from '../loading/Loading.js';
 
 /**
  * @deprecated Use Mantine instead

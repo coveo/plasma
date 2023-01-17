@@ -9,7 +9,7 @@ import {
     PropsWithChildren,
 } from 'react';
 
-import {textInputReducer} from '../textInput/TextInputReducer';
+import {textInputReducer} from '../textInput/TextInputReducer.js';
 
 /**
  * Extrapolates a reducer that manages a state of type `T` into a reducer that manages a state of type `Record<string, T>`.

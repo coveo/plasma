@@ -2,9 +2,9 @@ import {shallowWithState} from '@test-utils';
 import moment from 'moment';
 import * as _ from 'underscore';
 
-import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {ITableHOCProps, TableHOC} from '../TableHOC';
-import {FilterableTableComponent, tableWithDatePicker} from '../TableWithDatePicker';
+import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {ITableHOCProps, TableHOC} from '../TableHOC.js';
+import {FilterableTableComponent, tableWithDatePicker} from '../TableWithDatePicker.js';
 
 describe('Table HOC', () => {
     describe('TableWithDatePicker', () => {

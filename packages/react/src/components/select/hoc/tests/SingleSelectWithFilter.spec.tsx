@@ -5,21 +5,21 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {PlasmaState} from '../../../../PlasmaState';
-import {keyCode} from '../../../../utils/InputUtils';
-import {clearState} from '../../../../utils/ReduxUtils';
-import {TestUtils} from '../../../../utils/tests/TestUtils';
-import {FilterBoxSelectors} from '../../../filterBox';
-import {filterThrough} from '../../../filterBox/FilterBoxActions';
-import {FilterBoxConnected} from '../../../filterBox/FilterBoxConnected';
-import {IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox';
-import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions';
-import {toggleSelect} from '../../SelectActions';
-import {SelectConnected} from '../../SelectConnected';
-import {ISingleSelectOwnProps, SingleSelectConnected} from '../../SingleSelectConnected';
-import {SingleSelectWithFilter} from '../SelectComponents';
-import {ISelectWithFilterOwnProps, selectWithFilter} from '../SelectWithFilter';
+import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {PlasmaState} from '../../../../PlasmaState.js';
+import {keyCode} from '../../../../utils/InputUtils.js';
+import {clearState} from '../../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../../utils/tests/TestUtils.js';
+import {FilterBoxSelectors} from '../../../filterBox.js';
+import {filterThrough} from '../../../filterBox/FilterBoxActions.js';
+import {FilterBoxConnected} from '../../../filterBox/FilterBoxConnected.js';
+import {IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox.js';
+import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions.js';
+import {toggleSelect} from '../../SelectActions.js';
+import {SelectConnected} from '../../SelectConnected.js';
+import {ISingleSelectOwnProps, SingleSelectConnected} from '../../SingleSelectConnected.js';
+import {SingleSelectWithFilter} from '../SelectComponents.js';
+import {ISelectWithFilterOwnProps, selectWithFilter} from '../SelectWithFilter.js';
 
 describe('Select', () => {
     describe('<SingleSelectWithFilter/>', () => {

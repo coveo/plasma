@@ -1,17 +1,17 @@
 import moment from 'moment';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
 import {
     changeDatePickerLowerLimit,
     changeDatePickerUpperLimit,
     DateLimits,
     resetDatePickers,
     selectDate,
-} from '../datePicker/DatePickerActions';
-import {resetOptionPickers} from '../optionPicker/OptionPickerActions';
-import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions';
+} from '../datePicker/DatePickerActions.js';
+import {resetOptionPickers} from '../optionPicker/OptionPickerActions.js';
+import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions.js';
 import {
     Calendar,
     ICalendarDispatchProps,
@@ -19,7 +19,7 @@ import {
     ICalendarStateProps,
     MONTH_PICKER_ID,
     YEAR_PICKER_ID,
-} from './Calendar';
+} from './Calendar.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: ICalendarOwnProps): ICalendarStateProps => {
     const selectedMonth = _.findWhere(state.optionsCycles, {id: ownProps.id + MONTH_PICKER_ID});

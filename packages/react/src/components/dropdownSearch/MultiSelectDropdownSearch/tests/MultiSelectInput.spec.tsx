@@ -1,7 +1,7 @@
 import {mount, ReactWrapper} from 'enzyme';
 
-import {IDropdownOption} from '../../DropdownSearch';
-import {IMultiselectInputProps, MultiselectInput} from '../MultiSelectInput';
+import {IDropdownOption} from '../../DropdownSearch.js';
+import {IMultiselectInputProps, MultiselectInput} from '../MultiSelectInput.js';
 
 describe('MultiSelectInput', () => {
     const selectedOptions: IDropdownOption[] = [

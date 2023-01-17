@@ -1,21 +1,21 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../../utils/ReduxUtils';
-import {filterThrough} from '../../../filterBox/FilterBoxActions';
-import {selectListBoxOption} from '../../../listBox/ListBoxActions';
-import {TableHOCUtils} from '../../../table-hoc/utils/TableHOCUtils';
-import {modifyState} from '../../../tables/TableActions';
+import {IReduxAction} from '../../../../utils/ReduxUtils.js';
+import {filterThrough} from '../../../filterBox/FilterBoxActions.js';
+import {selectListBoxOption} from '../../../listBox/ListBoxActions.js';
+import {TableHOCUtils} from '../../../table-hoc/utils/TableHOCUtils.js';
+import {modifyState} from '../../../tables/TableActions.js';
 import {
     IChangePaginationActionPayload,
     IPaginationActionPayload,
     PaginationActions,
-} from '../NavigationPaginationActions';
+} from '../NavigationPaginationActions.js';
 import {
     IPaginationState,
     paginationCompositeInitialState,
     paginationCompositeReducer,
     paginationInitialState,
     paginationReducer,
-} from '../NavigationPaginationReducers';
+} from '../NavigationPaginationReducers.js';
 
 describe('Reducers', () => {
     describe('NavigationPaginationReducers', () => {

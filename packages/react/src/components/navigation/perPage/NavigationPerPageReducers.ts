@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../../PlasmaState';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {PerPageActions} from './NavigationPerPageActions';
+import {IReduxActionsPayload} from '../../../PlasmaState.js';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {PerPageActions} from './NavigationPerPageActions.js';
 
 export interface IPerPageState {
     id: string;

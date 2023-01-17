@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import {mount, ReactWrapper} from 'enzyme';
 import * as _ from 'underscore';
 
-import {IToastProps, Toast} from '../Toast';
+import {IToastProps, Toast} from '../Toast.js';
 
 describe('Toasts', () => {
     let toastComponent: ReactWrapper<IToastProps>;

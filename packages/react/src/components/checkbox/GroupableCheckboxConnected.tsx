@@ -1,17 +1,17 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {IInputDispatchProps, IInputStateProps} from '../input/Input';
-import {Checkbox, ICheckboxProps} from './Checkbox';
-import {ICheckboxState} from './CheckboxReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {IInputDispatchProps, IInputStateProps} from '../input/Input.js';
+import {Checkbox, ICheckboxProps} from './Checkbox.js';
+import {ICheckboxState} from './CheckboxReducers.js';
 import {
     addGroupedCheckbox,
     IGroupableCheckboxActionPayload,
     removeGroupedCheckbox,
     toggleGroupedCheckbox,
-} from './GroupableCheckboxActions';
-import {IGroupableCheckboxesState} from './GroupableCheckboxConstants';
+} from './GroupableCheckboxActions.js';
+import {IGroupableCheckboxesState} from './GroupableCheckboxConstants.js';
 
 export interface IGroupableCheckboxOwnProps extends ICheckboxProps {
     isParent?: boolean;

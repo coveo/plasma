@@ -1,5 +1,5 @@
-import {ITabProps, TabConnected} from '../tab/Tab';
-import {TabNavigation} from '../tab/TabNavigation';
+import {ITabProps, TabConnected} from '../tab/Tab.js';
+import {TabNavigation} from '../tab/TabNavigation.js';
 
 export interface ITabsHeaderProps {
     /**

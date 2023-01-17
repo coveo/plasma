@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {Flippable, IFlippableDispatchProps, IFlippableOwnProps, IFlippableStateProps} from './Flippable';
-import {addFlippable, changeFlippableSide, removeFlippable} from './FlippableActions';
-import {IFlippableState} from './FlippableReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {Flippable, IFlippableDispatchProps, IFlippableOwnProps, IFlippableStateProps} from './Flippable.js';
+import {addFlippable, changeFlippableSide, removeFlippable} from './FlippableActions.js';
+import {IFlippableState} from './FlippableReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IFlippableOwnProps): IFlippableStateProps => {
     const flippable: IFlippableState = _.findWhere(state.flippables, {id: ownProps.id});

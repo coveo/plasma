@@ -2,13 +2,13 @@ import {mount} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {NavigationConnected} from '../../navigation/NavigationConnected';
-import {ITableProps} from '../Table';
-import {TableChildNavigation} from '../table-children/TableChildNavigation';
-import {tablePropsMock} from './TableTestCommon';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {NavigationConnected} from '../../navigation/NavigationConnected.js';
+import {ITableProps} from '../Table.js';
+import {TableChildNavigation} from '../table-children/TableChildNavigation.js';
+import {tablePropsMock} from './TableTestCommon.js';
 
 describe('<TableChildNavigation />', () => {
     let store: Store<PlasmaState>;

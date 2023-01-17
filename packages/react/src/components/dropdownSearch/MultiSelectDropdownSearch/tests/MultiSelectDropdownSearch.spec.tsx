@@ -1,8 +1,8 @@
 import {mount, ReactWrapper} from 'enzyme';
 
-import {UUID} from '../../../../utils/UUID';
-import {IDropdownSearchProps} from '../../DropdownSearch';
-import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch';
+import {UUID} from '../../../../utils/UUID.js';
+import {IDropdownSearchProps} from '../../DropdownSearch.js';
+import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch.js';
 
 describe('MultiSelectDropdownSearch', () => {
     const id: string = UUID.generate();

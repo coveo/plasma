@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {IInputProps} from '../../input/Input';
-import {DeletableInput} from '../DeletableInput';
+import {IInputProps} from '../../input/Input.js';
+import {DeletableInput} from '../DeletableInput.js';
 
 describe('DeletableInput', () => {
     it('should render without errors', () => {

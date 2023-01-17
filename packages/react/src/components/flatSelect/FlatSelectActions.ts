@@ -1,5 +1,5 @@
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction} from '../../utils/ReduxUtils';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
 
 export interface IFlatSelectActionPayload extends IReduxActionsPayload {
     id: string;

@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import * as _ from 'underscore';
-import {IInputProps, Input} from '../input/Input';
-import {DeleteInputAction} from './DeleteInputAction';
+import {IInputProps, Input} from '../input/Input.js';
+import {DeleteInputAction} from './DeleteInputAction.js';
 
 /**
  * @deprecated Use Mantine instead

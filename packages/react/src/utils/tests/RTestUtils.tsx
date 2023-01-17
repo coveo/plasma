@@ -5,9 +5,9 @@ import {TestBackend} from 'react-dnd-test-backend';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {UUID} from '../UUID';
-import {TestUtils} from './TestUtils';
+import {PlasmaState} from '../../PlasmaState.js';
+import {UUID} from '../UUID.js';
+import {TestUtils} from './TestUtils.js';
 
 const mockUUID = (generatedId: string = 'id') => {
     jest.spyOn(UUID, 'generate').mockReturnValue(generatedId);

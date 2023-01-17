@@ -1,15 +1,15 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {toggleMoreFacetRows} from './FacetActions';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {toggleMoreFacetRows} from './FacetActions.js';
 import {
     FacetMoreToggle,
     IFacetMoreToggleDispatchProps,
     IFacetMoreToggleOwnProps,
     IFacetMoreToggleStateProps,
-} from './FacetMoreToggle';
-import {IFacetState} from './FacetReducers';
+} from './FacetMoreToggle.js';
+import {IFacetState} from './FacetReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IFacetMoreToggleOwnProps): IFacetMoreToggleStateProps => {
     const item: IFacetState = _.findWhere(state.facets, {facet: ownProps.facet});

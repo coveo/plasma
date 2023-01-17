@@ -1,10 +1,11 @@
-import {appendFileSync, outputFileSync} from 'fs-extra';
+import {appendFileSync} from 'fs';
+import {outputFileSync} from 'fs-extra/esm';
 
-import {formatCss} from './formats/formatCss';
-import {formatScss} from './formats/formatScss';
-import {formatSvg} from './formats/formatSvg';
-import {formatTs} from './formats/formatTs';
-import {TokenList} from './formats/token';
+import {formatCss} from '../formats/formatCss.js';
+import {formatScss} from '../formats/formatScss.js';
+import {formatSvg} from '../formats/formatSvg.js';
+import {formatTs} from '../formats/formatTs.js';
+import {TokenList} from './token.js';
 
 export const generateTokens = (name: string, tokens: TokenList) => {
     [
@@ -17,7 +18,7 @@ export const generateTokens = (name: string, tokens: TokenList) => {
             const output = formatTs(tokens);
             if (output) {
                 outputFileSync('./src/' + filePath, output);
-                appendFileSync('./src/index.ts', `export * from './${name}';\n`);
+                appendFileSync('./src/index.ts', `export * from './${name}.js';\n`);
             }
         } else if (outputFormat === 'scss') {
             const output = formatScss(tokens);

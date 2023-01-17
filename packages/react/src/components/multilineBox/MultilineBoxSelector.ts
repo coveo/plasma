@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
-import {PlasmaState} from '../../PlasmaState';
-import {IStringListState} from '../../reusableState/customList/StringListReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IStringListState} from '../../reusableState/customList/StringListReducers.js';
 
 const initialMultiBoxIDs: IStringListState = {id: undefined, list: []};
 

@@ -3,11 +3,11 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow} from '../TableHeadingRow';
-import {TableHeadingRowConnected} from '../TableHeadingRowConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow} from '../TableHeadingRow.js';
+import {TableHeadingRowConnected} from '../TableHeadingRowConnected.js';
 
 describe('Tables', () => {
     let basicTableHeadingRowProps: ITableHeadingRowOwnProps;

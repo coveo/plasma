@@ -1,11 +1,11 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {CherryPick} from '../../utils';
-import {ITabOwnProps} from './Tab';
-import {TabConstants} from './TabConstants';
-import {ITabGroupState, ITabState} from './TabReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {CherryPick} from '../../utils/index.js';
+import {ITabOwnProps} from './Tab.js';
+import {TabConstants} from './TabConstants.js';
+import {ITabGroupState, ITabState} from './TabReducers.js';
 
 const getTabGroup = (state: PlasmaState, {groupId}: CherryPick<ITabOwnProps, 'groupId'>): ITabGroupState =>
     _.findWhere(state.tabs, {id: groupId ?? TabConstants.DefaultGroupId});

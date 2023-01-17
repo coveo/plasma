@@ -1,8 +1,8 @@
 import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {Breadcrumb, IBreadcrumbProps} from '../breadcrumbs/Breadcrumb';
-import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper';
+import {Breadcrumb, IBreadcrumbProps} from '../breadcrumbs/Breadcrumb.js';
+import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper.js';
 
 export interface IBreadcrumbHeaderProps extends IHeaderWrapperProps {
     /**

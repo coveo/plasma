@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {CheckboxActions, ICheckboxActionPayload} from './CheckboxActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {CheckboxActions, ICheckboxActionPayload} from './CheckboxActions.js';
 
 export interface ICheckboxState {
     id: string;

@@ -2,7 +2,7 @@ import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import {Button, createStyles, DefaultProps, Group, Selectors, Space, Tooltip} from '@mantine/core';
 import {FunctionComponent, ReactNode} from 'react';
 
-import {useTable} from './useTable';
+import {useTable} from './useTable.js';
 
 const useStyles = createStyles((theme) => ({
     root: {

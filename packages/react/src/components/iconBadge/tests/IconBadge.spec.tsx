@@ -1,7 +1,7 @@
 import {render, screen} from '@test-utils';
 
 import {BellSize16Px} from '@coveord/plasma-react-icons';
-import {IconBadge, IconBadgeType} from '../IconBadge';
+import {IconBadge, IconBadgeType} from '../IconBadge.js';
 
 describe('IconBadge', () => {
     it('renders the specified icon with the type New, and size Medium by default', async () => {

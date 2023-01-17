@@ -2,8 +2,8 @@ import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {Children, PureComponent, ReactNode} from 'react';
 
-import {TooltipPlacement} from '../../../utils/TooltipUtils';
-import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
+import {TooltipPlacement} from '../../../utils/TooltipUtils.js';
+import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip.js';
 
 export interface ISelectedOptionProps {
     value: string;

@@ -2,7 +2,7 @@ import {useForm} from '@mantine/form';
 import {render, screen, userEvent, within} from '@test-utils';
 import {useState} from 'react';
 
-import {Collection} from '../Collection';
+import {Collection} from '../Collection.js';
 
 describe('Collection', () => {
     it('renders one item for each initial values in the form', () => {

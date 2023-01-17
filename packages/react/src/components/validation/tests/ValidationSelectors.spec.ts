@@ -1,5 +1,5 @@
-import {ValidationSelectors} from '../ValidationSelectors';
-import {ValidationState} from '../ValidationState';
+import {ValidationSelectors} from '../ValidationSelectors.js';
+import {ValidationState} from '../ValidationState.js';
 
 describe('ValidationSelectors', () => {
     const existingComponentId = '🥝';

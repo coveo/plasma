@@ -76,6 +76,9 @@
             "@types/react": "^18.0",
             "@types/react-dom": "^18.0",
             "loader-utils": "2.0.3"
+        },
+        "patchedDependencies": {
+            "react-dnd@15.1.2": "patches/react-dnd@15.1.2.patch"
         }
     }
 }

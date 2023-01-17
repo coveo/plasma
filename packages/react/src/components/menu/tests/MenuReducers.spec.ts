@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {addMenu, IMenuPayload, removeMenu, toggleMenu} from '../MenuActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {addMenu, IMenuPayload, removeMenu, toggleMenu} from '../MenuActions.js';
 import {
     IMenusState,
     IMenuState,
@@ -8,7 +8,7 @@ import {
     menuCompositeReducer,
     menuInitialState,
     menuReducer,
-} from '../MenuReducers';
+} from '../MenuReducers.js';
 
 describe('Menu', () => {
     describe('Menu Reducers', () => {

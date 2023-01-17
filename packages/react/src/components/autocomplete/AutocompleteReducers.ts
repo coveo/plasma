@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ListBoxActions} from '../listBox/ListBoxActions';
-import {AutocompleteActions, IAutocompletePayload} from './AutocompleteActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {ListBoxActions} from '../listBox/ListBoxActions.js';
+import {AutocompleteActions, IAutocompletePayload} from './AutocompleteActions.js';
 
 export interface IAutocompleteState {
     id: string;

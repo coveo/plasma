@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import {TableRowNumberHeader} from '../TableRowNumberHeader';
+import {TableRowNumberHeader} from '../TableRowNumberHeader.js';
 
 describe('TableRowNumberHeader', () => {
     it('should render without error', () => {

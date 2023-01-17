@@ -1,4 +1,4 @@
-import {HocUtils} from './HocUtils';
+import {HocUtils} from './HocUtils.js';
 
 describe('HocUtils', () => {
     describe('supplyConfig', () => {

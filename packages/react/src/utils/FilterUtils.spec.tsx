@@ -1,4 +1,4 @@
-import {FilterUtils} from './FilterUtils';
+import {FilterUtils} from './FilterUtils.js';
 
 describe('FilterUtils', () => {
     describe('matchesString', () => {

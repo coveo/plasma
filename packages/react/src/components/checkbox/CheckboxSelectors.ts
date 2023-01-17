@@ -1,9 +1,9 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {ICheckboxState} from './CheckboxReducers';
-import {IGroupableCheckboxOwnProps} from './GroupableCheckboxConnected';
-import {IGroupableCheckboxesState} from './GroupableCheckboxConstants';
+import {PlasmaState} from '../../PlasmaState.js';
+import {ICheckboxState} from './CheckboxReducers.js';
+import {IGroupableCheckboxOwnProps} from './GroupableCheckboxConnected.js';
+import {IGroupableCheckboxesState} from './GroupableCheckboxConstants.js';
 
 const get = (
     state: PlasmaState,

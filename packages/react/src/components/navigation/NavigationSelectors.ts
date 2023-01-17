@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {PER_PAGE_NUMBERS} from './perPage/NavigationPerPage';
+import {PlasmaState} from '../../PlasmaState.js';
+import {PER_PAGE_NUMBERS} from './perPage/NavigationPerPage.js';
 
 export interface GetPaginationProps {
     id: string;

@@ -3,8 +3,8 @@ import {Group, Popover, Space} from '@mantine/core';
 import {useClickOutside, useUncontrolled} from '@mantine/hooks';
 import {useState} from 'react';
 
-import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
-import {DateRangePickerPresetSelect, DateRangePickerPreset} from './DateRangePickerPresetSelect';
+import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker.js';
+import {DateRangePickerPresetSelect, DateRangePickerPreset} from './DateRangePickerPresetSelect.js';
 
 interface DateRangePickerPopoverCalendarProps<T> extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */

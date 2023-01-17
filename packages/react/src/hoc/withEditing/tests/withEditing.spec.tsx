@@ -3,14 +3,14 @@ import {Component} from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {Button} from '../../../components/button/Button';
-import {Input} from '../../../components/input/Input';
-import {StickyFooter} from '../../../components/stickyFooter/StickyFooter';
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IWithDirtyProps} from '../../withDirty/withDirty';
-import {IWithEditing, withEditing} from '../withEditing';
+import {Button} from '../../../components/button/Button.js';
+import {Input} from '../../../components/input/Input.js';
+import {StickyFooter} from '../../../components/stickyFooter/StickyFooter.js';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IWithDirtyProps} from '../../withDirty/withDirty.js';
+import {IWithEditing, withEditing} from '../withEditing.js';
 
 describe('Component with editing', () => {
     let store: Store<PlasmaState>;

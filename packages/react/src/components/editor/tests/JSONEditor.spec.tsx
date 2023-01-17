@@ -1,9 +1,9 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 
-import {CodeEditor} from '../CodeEditor';
-import {CodeMirrorModes} from '../EditorConstants';
-import {JSONEditor, JSONEditorProps} from '../JSONEditor';
-import {JSONEditorUtils} from '../JSONEditorUtils';
+import {CodeEditor} from '../CodeEditor.js';
+import {CodeMirrorModes} from '../EditorConstants.js';
+import {JSONEditor, JSONEditorProps} from '../JSONEditor.js';
+import {JSONEditorUtils} from '../JSONEditorUtils.js';
 
 describe('<JSONEditor />', () => {
     let component: ShallowWrapper;

@@ -1,11 +1,10 @@
 import {program} from 'commander';
 import fetch from 'cross-fetch';
 import {Client, Frame} from 'figma-js';
-import {writeJsonSync} from 'fs-extra';
-import {chunk} from 'lodash';
+import {writeJsonSync} from 'fs-extra/esm';
+import {chunk} from 'lodash-es';
 
-import {getPage} from './lib/figma';
-import {FilesId, LibraryName, PagesId} from './lib/mappings';
+import {FilesId, getPage, LibraryName, PagesId} from './lib/index.js';
 
 const personalAccessToken: string = process.env.FIGMA_TOKEN!;
 

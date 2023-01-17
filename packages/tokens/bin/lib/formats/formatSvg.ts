@@ -1,7 +1,7 @@
-import {camelCase} from 'lodash';
+import {camelCase} from 'lodash-es';
 import {optimize, OptimizedSvg} from 'svgo';
 
-import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from './token';
+import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from '../tokens/index.js';
 
 type SvgFormatOutput = {fileName: string; svgMarkup: string};
 

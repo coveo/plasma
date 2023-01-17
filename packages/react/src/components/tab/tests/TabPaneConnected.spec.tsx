@@ -2,11 +2,11 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {addTab} from '../TabActions';
-import {ITabPaneProps, TabPane, TabPaneConnected} from '../TabPane';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {addTab} from '../TabActions.js';
+import {ITabPaneProps, TabPane, TabPaneConnected} from '../TabPane.js';
 
 describe('TabPane', () => {
     describe('<TabPaneConnected />', () => {

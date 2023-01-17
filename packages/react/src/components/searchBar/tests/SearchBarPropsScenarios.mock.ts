@@ -1,5 +1,5 @@
 import {noop} from 'underscore';
-import {ISearchBarProps} from '../SearchBar';
+import {ISearchBarProps} from '../SearchBar.js';
 
 export const searchBarPropsScenarios: ISearchBarProps[] = [
     {

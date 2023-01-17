@@ -1,7 +1,7 @@
 import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {TextAreaConnected} from '../TextArea';
+import {TextAreaConnected} from '../TextArea.js';
 
 describe('Textarea', () => {
     it('renders a textarea', () => {

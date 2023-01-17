@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_LABEL, PER_PAGE_NUMBERS} from '../NavigationPerPage';
-import {NavigationPerPageSelect} from '../NavigationPerPageSelect';
+import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_LABEL, PER_PAGE_NUMBERS} from '../NavigationPerPage.js';
+import {NavigationPerPageSelect} from '../NavigationPerPageSelect.js';
 
 describe('NavigationPerPage', () => {
     const NAVIGATION_PER_PAGE_BASIC_PROPS: INavigationPerPageProps = {

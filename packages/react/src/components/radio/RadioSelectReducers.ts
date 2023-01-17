@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IRadioSelectActionPayload, RadioSelectActions} from './RadioSelectActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IRadioSelectActionPayload, RadioSelectActions} from './RadioSelectActions.js';
 
 export interface IRadioSelectState {
     id: string;

@@ -1,6 +1,6 @@
 import './scss/guide.scss';
 
-import {svgWrapper} from './svgWrapper';
+import {svgWrapper} from './svgWrapper.js';
 import {svg as svgEnum} from './tmp/svg.js';
 
 export const SVG = svgWrapper;

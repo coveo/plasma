@@ -1,4 +1,4 @@
-import {decodeHtml} from './InputUtils';
+import {decodeHtml} from './InputUtils.js';
 
 describe('decodeHtml', () => {
     it('should not throw when passing falsy values', () => {

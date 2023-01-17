@@ -3,16 +3,16 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {LoadingConnected} from '../../loading/LoadingConnected';
-import {PaginationSelect} from '../../pagination';
-import {INavigationProps, Navigation} from '../Navigation';
-import {NavigationConnected} from '../NavigationConnected';
-import {NavigationPaginationConnected} from '../pagination/NavigationPaginationConnected';
-import {NavigationPerPageConnected} from '../perPage/NavigationPerPageConnected';
-import {NavigationPerPageSelect} from '../perPage/NavigationPerPageSelect';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {LoadingConnected} from '../../loading/LoadingConnected.js';
+import {PaginationSelect} from '../../pagination.js';
+import {INavigationProps, Navigation} from '../Navigation.js';
+import {NavigationConnected} from '../NavigationConnected.js';
+import {NavigationPaginationConnected} from '../pagination/NavigationPaginationConnected.js';
+import {NavigationPerPageConnected} from '../perPage/NavigationPerPageConnected.js';
+import {NavigationPerPageSelect} from '../perPage/NavigationPerPageSelect.js';
 
 describe('<NavigationConnected />', () => {
     const basicNavigationProps: INavigationProps = {

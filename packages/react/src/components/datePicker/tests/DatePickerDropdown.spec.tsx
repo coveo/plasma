@@ -5,18 +5,18 @@ import * as _ from 'underscore';
 import {render, screen} from '@test-utils';
 
 import userEvent from '@testing-library/user-event';
-import {DateUtils} from '../../../utils/DateUtils';
-import {Button} from '../../button/Button';
-import {Drop} from '../../drop/Drop';
-import {DatePickerBox} from '../DatePickerBox';
+import {DateUtils} from '../../../utils/DateUtils.js';
+import {Button} from '../../button/Button.js';
+import {Drop} from '../../drop/Drop.js';
+import {DatePickerBox} from '../DatePickerBox.js';
 import {
     DatePickerDropdown,
     DEFAULT_APPLY_DATE_LABEL,
     DEFAULT_CANCEL_DATE_LABEL,
     DEFAULT_DATE_PICKER_DROPDOWN_LABEL,
     IDatePickerDropdownProps,
-} from '../DatePickerDropdown';
-import {IDatePickerState} from '../DatePickerReducers';
+} from '../DatePickerDropdown.js';
+import {IDatePickerState} from '../DatePickerReducers.js';
 
 describe('Date picker', () => {
     const DATE_PICKER_DROPDOWN_BASIC_PROPS: IDatePickerDropdownProps = {

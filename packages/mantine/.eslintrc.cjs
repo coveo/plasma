@@ -8,7 +8,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
-    ignorePatterns: ['.eslintrc.js', 'node_modules', 'dist', '.turbo', 'jest.config.js'],
+    ignorePatterns: ['.eslintrc.cjs', 'node_modules', 'dist', '.turbo', 'jest.config.cjs'],
     rules: {
         'no-underscore-dangle': 'off',
     },

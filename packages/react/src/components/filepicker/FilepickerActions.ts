@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../utils';
-import {FileMetadata} from '../../utils/FileUtils';
-import {FilepickerActionsTypes, FilepickerState} from './FilepickerReducers';
+import {IReduxAction} from '../../utils/index.js';
+import {FileMetadata} from '../../utils/FileUtils.js';
+import {FilepickerActionsTypes, FilepickerState} from './FilepickerReducers.js';
 
 const addFilepicker = (id: string): IReduxAction<{id: keyof FilepickerState}> => ({
     type: FilepickerActionsTypes.Add,

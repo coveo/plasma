@@ -1,6 +1,6 @@
 import {FunctionComponent, useContext} from 'react';
 
-import {XYChartContext} from './XYChart';
+import {XYChartContext} from './XYChart.js';
 
 export interface YGridProps {
     padding?: number;

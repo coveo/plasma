@@ -1,9 +1,9 @@
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {DropReducerActions, IDropPayload} from '../drop/redux/DropActions';
-import {ListBoxActions} from '../listBox/ListBoxActions';
-import {FilterActions} from './FilterBoxActions';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {DropReducerActions, IDropPayload} from '../drop/redux/DropActions.js';
+import {ListBoxActions} from '../listBox/ListBoxActions.js';
+import {FilterActions} from './FilterBoxActions.js';
 
 export interface IFilterState {
     id: string;

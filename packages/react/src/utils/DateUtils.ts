@@ -1,8 +1,8 @@
 import moment from 'moment';
 import * as _ from 'underscore';
-import {IRangeLimit} from '../components';
+import {IRangeLimit} from '../components/index.js';
 
-import {IDay} from '../components/calendar/CalendarDay';
+import {IDay} from '../components/calendar/CalendarDay.js';
 
 export interface IDateComponents {
     year?: number;

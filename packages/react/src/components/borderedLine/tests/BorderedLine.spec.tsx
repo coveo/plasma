@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import {BorderedLine} from '../BorderedLine';
+import {BorderedLine} from '../BorderedLine.js';
 
 describe('BorderedLine', () => {
     it('should render without error in various scenarios', () => {

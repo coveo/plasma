@@ -1,1 +1,1 @@
-export * from './LinkSvg';
+export * from './LinkSvg.js';

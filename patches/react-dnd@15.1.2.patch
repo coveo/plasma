@@ -1,0 +1,13 @@
+diff --git a/dist/esm/core/DndProvider.mjs b/dist/esm/core/DndProvider.mjs
+index 85f60c134bee29375313ba7e3a6374c3425c86e7..33b81748e064e15402a414ecd13b8275ccff8180 100644
+--- a/dist/esm/core/DndProvider.mjs
++++ b/dist/esm/core/DndProvider.mjs
+@@ -25,7 +25,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
+     }
+     return target;
+ }
+-import { jsx as _jsx } from "react/jsx-runtime.js";
++import { jsx as _jsx } from "react/jsx-runtime";
+ import { useEffect, memo } from 'react';
+ import { createDragDropManager } from 'dnd-core';
+ import { DndContext } from './DndContext.mjs';

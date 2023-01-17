@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {ReactNode, FunctionComponent} from 'react';
 import {omit} from 'underscore';
-import {IInputProps, Input} from '../input/Input';
+import {IInputProps, Input} from '../input/Input.js';
 
 export interface RadioOwnProps {
     outerContainerClass?: string;

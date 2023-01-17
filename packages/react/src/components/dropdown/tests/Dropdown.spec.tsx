@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {Dropdown, IDropdownProps} from '../Dropdown';
+import {Dropdown, IDropdownProps} from '../Dropdown.js';
 
 describe('Dropdown', () => {
     const basicDropdownProps: IDropdownProps = {

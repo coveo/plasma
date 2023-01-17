@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import {each} from 'underscore';
 
-import {SyncFeedback, SyncFeedbackState} from './SyncFeedback';
+import {SyncFeedback, SyncFeedbackState} from './SyncFeedback.js';
 
 describe('<SyncFeedback>', () => {
     it('should render without errors', () => {

@@ -1,10 +1,10 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@test-utils';
 
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {IOptionsCycleConnectedOwnProps, IOptionsCycleProps} from '../OptionsCycle';
-import {addOptionsCycle, changeOptionsCycle} from '../OptionsCycleActions';
-import {OptionsCycleConnected} from '../OptionsCycleConnected';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {IOptionsCycleConnectedOwnProps, IOptionsCycleProps} from '../OptionsCycle.js';
+import {addOptionsCycle, changeOptionsCycle} from '../OptionsCycleActions.js';
+import {OptionsCycleConnected} from '../OptionsCycleConnected.js';
 
 describe('Options cycle', () => {
     const optionsCycleBasicProps: IOptionsCycleProps & IOptionsCycleConnectedOwnProps = {

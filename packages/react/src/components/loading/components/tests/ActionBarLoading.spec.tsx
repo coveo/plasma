@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {ActionBarLoading} from '../ActionBarLoading';
+import {ActionBarLoading} from '../ActionBarLoading.js';
 
 describe('ActionBarLoading tests', () => {
     describe('<ActionBarLoading />', () => {

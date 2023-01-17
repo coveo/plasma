@@ -1,8 +1,8 @@
 import {ReactText} from 'react';
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ISetNumericInputPayload, NumericInputActionTypes} from './NumericInputActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {ISetNumericInputPayload, NumericInputActionTypes} from './NumericInputActions.js';
 
 export interface INumericInputState {
     value: ReactText;

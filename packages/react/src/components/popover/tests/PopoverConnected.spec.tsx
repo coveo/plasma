@@ -3,11 +3,11 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IPopoverProps, Popover} from '../Popover';
-import {PopoverConnected} from '../PopoverConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IPopoverProps, Popover} from '../Popover.js';
+import {PopoverConnected} from '../PopoverConnected.js';
 
 describe('<PopoverConnected />', () => {
     let store: Store<PlasmaState>;

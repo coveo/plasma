@@ -1,4 +1,4 @@
-import {ITableData} from './TableReducers';
+import {ITableData} from './TableReducers.js';
 
 export enum TableSortingOrder {
     UNSORTED = 'UNSORTED',

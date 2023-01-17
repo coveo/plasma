@@ -1,5 +1,5 @@
-import {PlasmaState} from '../../../PlasmaState';
-import {TextAreaSelectors} from '../TextAreaSelectors';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {TextAreaSelectors} from '../TextAreaSelectors.js';
 
 describe('TextAreaSelectors', () => {
     describe('getValue', () => {

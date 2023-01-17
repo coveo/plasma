@@ -13,7 +13,12 @@
             "react": {
                 "runtime": "automatic"
             }
-        }
+        },
+        // "baseUrl": ".",
+        // "paths": {
+        //     "./jsx-runtime.js": ["react/jsx-runtime"],
+        //     "./jsx-dev-runtime.js": ["react/jsx-dev-runtime"]
+        // }
     },
     "sourceMaps": true
 }

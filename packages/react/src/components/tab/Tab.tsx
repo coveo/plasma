@@ -4,11 +4,11 @@ import {ReactNode, MouseEvent, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
-import {ConnectedProps, IDispatch, UrlUtils} from '../../utils';
-import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Tooltip} from '../tooltip/Tooltip';
-import {TabActions} from './TabActions';
-import {TabSelectors} from './TabSelectors';
+import {ConnectedProps, IDispatch, UrlUtils} from '../../utils/index.js';
+import {TooltipPlacement} from '../../utils/TooltipUtils.js';
+import {Tooltip} from '../tooltip/Tooltip.js';
+import {TabActions} from './TabActions.js';
+import {TabSelectors} from './TabSelectors.js';
 
 export interface ITabOwnProps {
     /**

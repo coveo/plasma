@@ -1,6 +1,6 @@
-import {PlasmaState} from '../../PlasmaState';
-import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
-import {RefreshCallbackActionType} from './RefeshCallbackActions';
+import {PlasmaState} from '../../PlasmaState.js';
+import {BasePayload, IReduxAction} from '../../utils/ReduxUtils.js';
+import {RefreshCallbackActionType} from './RefeshCallbackActions.js';
 
 export enum RefreshStatus {
     started = 'started',

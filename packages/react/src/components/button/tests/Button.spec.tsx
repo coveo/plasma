@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {Tooltip} from '../../tooltip';
-import {Button, IButtonProps} from '../Button';
+import {Tooltip} from '../../tooltip.js';
+import {Button, IButtonProps} from '../Button.js';
 
 describe('Button', () => {
     let buttonComponent: ReactWrapper<IButtonProps, any>;

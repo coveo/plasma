@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 
-import {XYChart, XYChartContext} from '../XYChart';
-import {XYChartContextMock} from './XYChartContextMock';
+import {XYChart, XYChartContext} from '../XYChart.js';
+import {XYChartContextMock} from './XYChartContextMock.js';
 
 describe('<XYChart />', () => {
     it('should not throw', () => {

@@ -1,16 +1,16 @@
 import {ComponentType, ReactNode, Component, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {PlasmaState} from '../../PlasmaState';
-import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {ReduxConnect} from '../../utils/ReduxUtils';
-import {UrlUtils} from '../../utils/UrlUtils';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {SelectSelector} from '../select/SelectSelector';
-import {SingleSelectConnected} from '../select/SingleSelectConnected';
-import {ITableHOCOwnProps} from './TableHOC';
-import {TableHOCUtils} from './utils/TableHOCUtils';
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils.js';
+import {ReduxConnect} from '../../utils/ReduxUtils.js';
+import {UrlUtils} from '../../utils/UrlUtils.js';
+import {IItemBoxProps} from '../itemBox/ItemBox.js';
+import {SelectSelector} from '../select/SelectSelector.js';
+import {SingleSelectConnected} from '../select/SingleSelectConnected.js';
+import {ITableHOCOwnProps} from './TableHOC.js';
+import {TableHOCUtils} from './utils/TableHOCUtils.js';
 
 export interface IPredicateComponentProps
     extends Partial<ITableWithPredicateStateProps>,

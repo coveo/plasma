@@ -2,10 +2,10 @@ import {ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
-import {ValidationActions} from '../ValidationActions';
-import {ValidationTypes} from '../ValidationTypes';
+import {IDispatch} from '../../../utils/ReduxUtils.js';
+import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected.js';
+import {ValidationActions} from '../ValidationActions.js';
+import {ValidationTypes} from '../ValidationTypes.js';
 
 const mapDispatchToProps = (dispatch: IDispatch, {id}: IMultiSelectOwnProps) => ({
     setWarning: (warning: string) =>

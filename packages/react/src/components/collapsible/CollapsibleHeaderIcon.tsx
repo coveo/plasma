@@ -2,8 +2,8 @@ import {InfoSize16Px, QuestionSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 
-import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {TooltipPlacement} from '../../utils/TooltipUtils.js';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip.js';
 
 export interface CollapsibleHeaderIconProps {
     informationTooltip: ITooltipProps;

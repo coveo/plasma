@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
-import {SelectSelector} from '../../select/SelectSelector';
-import {ValidationActions} from '../ValidationActions';
+import {IDispatch} from '../../../utils/ReduxUtils.js';
+import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected.js';
+import {SelectSelector} from '../../select/SelectSelector.js';
+import {ValidationActions} from '../ValidationActions.js';
 
 const mapStateToProps = createStructuredSelector({
     selectedValues: SelectSelector.getMultiSelectSelectedValues,

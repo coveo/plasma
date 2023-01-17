@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {InputConnected, InputSelectors} from '../input';
-import {changeInputValue} from '../input/InputActions';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {InputConnected, InputSelectors} from '../input/index.js';
+import {changeInputValue} from '../input/InputActions.js';
 
 export interface LimitOwnProps {
     /**

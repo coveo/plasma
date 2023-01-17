@@ -2,10 +2,10 @@ import {DotsSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import {FunctionComponent, MouseEvent as ReactMouseEvent, PropsWithChildren} from 'react';
 
-import {DropPodPosition} from '../drop/DomPositionCalculator';
-import {Drop, IDropOwnProps} from '../drop/Drop';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {ListBox} from '../listBox/ListBox';
+import {DropPodPosition} from '../drop/DomPositionCalculator.js';
+import {Drop, IDropOwnProps} from '../drop/Drop.js';
+import {IItemBoxProps} from '../itemBox/ItemBox.js';
+import {ListBox} from '../listBox/ListBox.js';
 
 export interface IActionableItemProps {
     /**

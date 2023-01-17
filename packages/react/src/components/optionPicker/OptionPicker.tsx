@@ -1,6 +1,6 @@
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
-import {IOption, Option} from './Option';
+import {IOption, Option} from './Option.js';
 
 export interface IOptionPickerOwnProps extends ClassAttributes<OptionPicker> {
     id?: string;

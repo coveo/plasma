@@ -1,14 +1,14 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
 import {
     DropdownSearch,
     IDropdownOption,
     IDropdownSearchOwnProps,
     IDropdownSearchProps,
     IDropdownSearchStateProps,
-} from './DropdownSearch';
+} from './DropdownSearch.js';
 import {
     addDropdownSearch,
     applyFilterDropdownSearch,
@@ -19,8 +19,8 @@ import {
     toggleDropdownSearch,
     updateActiveOptionDropdownSearch,
     updateOptionsDropdownSearch,
-} from './DropdownSearchActions';
-import {IDropdownSearchState} from './DropdownSearchReducers';
+} from './DropdownSearchActions.js';
+import {IDropdownSearchState} from './DropdownSearchReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
     const dropdownSearch: IDropdownSearchState = _.findWhere(state.dropdownSearch, {id: ownProps.id});

@@ -1,5 +1,5 @@
-import {PlasmaState} from '../../../PlasmaState';
-import {JSONEditorSelectors} from '../JSONEditorSelectors';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {JSONEditorSelectors} from '../JSONEditorSelectors.js';
 
 describe('JSONEditorSelectors', () => {
     describe('getValue', () => {

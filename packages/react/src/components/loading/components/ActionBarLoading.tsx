@@ -1,4 +1,4 @@
-import {ActionBar} from '../../actions/ActionBar';
+import {ActionBar} from '../../actions/ActionBar.js';
 
 /**
  * @deprecated Use Mantine instead

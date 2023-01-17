@@ -1,5 +1,5 @@
-import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
-import {ISetSliderValuePayload, SliderActionTypes} from './SliderActions';
+import {BasePayload, IReduxAction} from '../../utils/ReduxUtils.js';
+import {ISetSliderValuePayload, SliderActionTypes} from './SliderActions.js';
 
 export interface ISlidersState {
     [key: string]: ISliderState;

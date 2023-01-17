@@ -1,10 +1,10 @@
 import * as _ from 'underscore';
-import {keyCode} from '../../../../utils/InputUtils';
-import {IReduxAction} from '../../../../utils/ReduxUtils';
-import {IDropdownOption} from '../../DropdownSearch';
-import {DropdownSearchActions, IOptionsDropdownSearchPayload} from '../../DropdownSearchActions';
-import {IDropdownSearchState} from '../../DropdownSearchReducers';
-import {multiSelectDropdownSearchReducer} from '../../DropdownSearchReducers';
+import {keyCode} from '../../../../utils/InputUtils.js';
+import {IReduxAction} from '../../../../utils/ReduxUtils.js';
+import {IDropdownOption} from '../../DropdownSearch.js';
+import {DropdownSearchActions, IOptionsDropdownSearchPayload} from '../../DropdownSearchActions.js';
+import {IDropdownSearchState} from '../../DropdownSearchReducers.js';
+import {multiSelectDropdownSearchReducer} from '../../DropdownSearchReducers.js';
 
 describe('DropdownSearch', () => {
     describe('MultiSelectDropdownSearchReducers', () => {

@@ -1,5 +1,5 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IActionOptions} from './Action';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {IActionOptions} from './Action.js';
 
 export interface IActionBarPayload {
     id: string;

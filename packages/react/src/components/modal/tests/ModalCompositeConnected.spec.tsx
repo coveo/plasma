@@ -2,11 +2,11 @@ import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from '@test-utils';
 import ReactModal from 'react-modal';
 
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {addModal, closeModal, removeModal} from '../ModalActions';
-import {IModalCompositeProps, ModalCompositeConnected} from '../ModalComposite';
-import {ModalHeader} from '../ModalHeader';
-import {ModalHeaderConnected} from '../ModalHeaderConnected';
+import {getStoreMock} from '../../../utils/tests/TestUtils.js';
+import {addModal, closeModal, removeModal} from '../ModalActions.js';
+import {IModalCompositeProps, ModalCompositeConnected} from '../ModalComposite.js';
+import {ModalHeader} from '../ModalHeader.js';
+import {ModalHeaderConnected} from '../ModalHeaderConnected.js';
 
 describe('<ModalCompositeConnected />', () => {
     const basicProps: IModalCompositeProps = {

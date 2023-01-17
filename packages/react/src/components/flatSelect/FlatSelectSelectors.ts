@@ -1,8 +1,8 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {flatSelectInitialState, IFlatSelectState} from './FlatSelectReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {flatSelectInitialState, IFlatSelectState} from './FlatSelectReducers.js';
 
 const getInput = (state: PlasmaState, ownProps: {id: string}): IFlatSelectState =>
     _.findWhere(state.flatSelect, {id: ownProps.id}) || flatSelectInitialState;

@@ -1,9 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
-import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils.js';
 
-import {TableCollapsibleRowToggle} from '../TableCollapsibleRowToggle';
-import {ITableHeadingRowProps, TableHeadingRow} from '../TableHeadingRow';
+import {TableCollapsibleRowToggle} from '../TableCollapsibleRowToggle.js';
+import {ITableHeadingRowProps, TableHeadingRow} from '../TableHeadingRow.js';
 
 describe('Tables', () => {
     let basicTableHeadingRowProps: ITableHeadingRowProps;

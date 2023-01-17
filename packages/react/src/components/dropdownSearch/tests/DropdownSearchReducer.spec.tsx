@@ -1,9 +1,9 @@
 import * as _ from 'underscore';
 
-import {keyCode} from '../../../utils/InputUtils';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IDropdownOption} from '../DropdownSearch';
-import {addDropdownSearch, DropdownSearchActions, IOptionsDropdownSearchPayload} from '../DropdownSearchActions';
+import {keyCode} from '../../../utils/InputUtils.js';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {IDropdownOption} from '../DropdownSearch.js';
+import {addDropdownSearch, DropdownSearchActions, IOptionsDropdownSearchPayload} from '../DropdownSearchActions.js';
 import {
     addUniqueSelectedOption,
     defaultSelectedOptionPlaceholder,
@@ -20,7 +20,7 @@ import {
     multiSelectOption,
     removeCustomOptions,
     shouldHideOnFilter,
-} from '../DropdownSearchReducers';
+} from '../DropdownSearchReducers.js';
 
 describe('DropdownSearch', () => {
     describe('DropdownSearchReducers', () => {

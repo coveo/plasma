@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {selectListBoxOption} from '../../listBox/ListBoxActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {selectListBoxOption} from '../../listBox/ListBoxActions.js';
 import {
     addAutocomplete,
     IAutocompletePayload,
@@ -8,14 +8,14 @@ import {
     setAutocompleteActive,
     setAutocompleteValue,
     toggleAutocomplete,
-} from '../AutocompleteActions';
+} from '../AutocompleteActions.js';
 import {
     autocompleteCompositeInitialState,
     autocompleteInitialState,
     autocompleteReducer,
     autocompletesReducer,
     IAutocompleteState,
-} from '../AutocompleteReducers';
+} from '../AutocompleteReducers.js';
 
 describe('Autocomplete', () => {
     describe('Autocomplete Reducers', () => {

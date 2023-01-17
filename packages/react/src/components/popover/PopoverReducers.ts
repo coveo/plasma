@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {PopoverActions, PopoverPayload} from './PopoverActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {PopoverActions, PopoverPayload} from './PopoverActions.js';
 
 export interface PopoverState {
     id: string;

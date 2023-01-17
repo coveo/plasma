@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {FunctionComponent, useRef, useEffect, PropsWithChildren} from 'react';
-import {addClassNameToChildren} from '../../utils/JSXUtils';
+import {addClassNameToChildren} from '../../utils/JSXUtils.js';
 
 export interface ISideNavigationItemProps {
     href: string;

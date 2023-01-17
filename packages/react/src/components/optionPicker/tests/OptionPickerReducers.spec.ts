@@ -1,13 +1,13 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IChangeOptionPayload, IOptionPickerPayload, OptionPickerActions} from '../OptionPickerActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {IChangeOptionPayload, IOptionPickerPayload, OptionPickerActions} from '../OptionPickerActions.js';
 import {
     IOptionPickerState,
     optionPickerInitialState,
     optionPickerReducer,
     optionPickersInitialState,
     optionPickersReducer,
-} from '../OptionPickerReducers';
+} from '../OptionPickerReducers.js';
 
 describe('Option picker', () => {
     const genericAction: IReduxAction<IOptionPickerPayload> = {

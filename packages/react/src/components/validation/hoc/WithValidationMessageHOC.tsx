@@ -1,5 +1,5 @@
 import {ComponentClass, FunctionComponent} from 'react';
-import {ValidationMessage} from '../components/ValidationMessage';
+import {ValidationMessage} from '../components/ValidationMessage.js';
 
 interface IWithValidationMessageHOCProps {
     id?: string;

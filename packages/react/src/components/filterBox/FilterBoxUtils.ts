@@ -1,5 +1,5 @@
-import {FilterUtils} from '../../utils/FilterUtils';
-import {IItemBoxProps} from '../itemBox/ItemBox';
+import {FilterUtils} from '../../utils/FilterUtils.js';
+import {IItemBoxProps} from '../itemBox/ItemBox.js';
 
 export type MatchFilter = (filterValue: string, item: IItemBoxProps) => boolean;
 

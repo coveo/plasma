@@ -3,15 +3,15 @@ import moment from 'moment';
 import {ClassAttributes, ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
-import {DateUtils} from '../../utils/DateUtils';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {DateLimits} from '../datePicker/DatePickerActions';
-import {IDatePickerState} from '../datePicker/DatePickerReducers';
-import {IOptionsCycleProps, OptionsCycle} from '../optionsCycle/OptionsCycle';
-import {OptionsCycleConnected} from '../optionsCycle/OptionsCycleConnected';
-import {TableHeader} from '../tables/TableHeader';
-import {ITableHeaderCellProps} from '../tables/TableHeaderCell';
-import {CalendarDay, IDay} from './CalendarDay';
+import {DateUtils} from '../../utils/DateUtils.js';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils.js';
+import {DateLimits} from '../datePicker/DatePickerActions.js';
+import {IDatePickerState} from '../datePicker/DatePickerReducers.js';
+import {IOptionsCycleProps, OptionsCycle} from '../optionsCycle/OptionsCycle.js';
+import {OptionsCycleConnected} from '../optionsCycle/OptionsCycleConnected.js';
+import {TableHeader} from '../tables/TableHeader.js';
+import {ITableHeaderCellProps} from '../tables/TableHeaderCell.js';
+import {CalendarDay, IDay} from './CalendarDay.js';
 
 export const CalendarSelectionRuleType = {
     all: 'ALL',

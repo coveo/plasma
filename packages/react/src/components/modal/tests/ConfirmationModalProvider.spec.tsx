@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event';
 import {render, screen} from '@test-utils';
 
-import {ConfirmationModalProvider} from '../ConfirmationModalProvider';
-import {ModalCompositeConnected} from '../ModalComposite';
+import {ConfirmationModalProvider} from '../ConfirmationModalProvider.js';
+import {ModalCompositeConnected} from '../ModalComposite.js';
 
 describe('ConfirmationModalProvider', () => {
     describe('when shouldConfirm prop is true:', () => {

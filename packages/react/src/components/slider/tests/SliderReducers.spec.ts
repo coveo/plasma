@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ISetSliderValuePayload, SliderActionTypes} from '../SliderActions';
-import {ISlidersState, SliderReducer} from '../SliderReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {ISetSliderValuePayload, SliderActionTypes} from '../SliderActions.js';
+import {ISlidersState, SliderReducer} from '../SliderReducers.js';
 
 describe('SliderReducers', () => {
     const wrongSliderAction: IReduxAction<ISetSliderValuePayload> = {

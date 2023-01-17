@@ -1,4 +1,4 @@
-import {IColorBarProps} from './ColorBar';
+import {IColorBarProps} from './ColorBar.js';
 
 export const noColorsPropsScenarios: IColorBarProps[] = [
     {

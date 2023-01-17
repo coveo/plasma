@@ -1,4 +1,4 @@
-import {BasePayload, IReduxAction} from '../../../utils/ReduxUtils';
+import {BasePayload, IReduxAction} from '../../../utils/ReduxUtils.js';
 
 export const TableHOCActionsType = {
     setEmptyState: 'SET_EMPTY_STATE',

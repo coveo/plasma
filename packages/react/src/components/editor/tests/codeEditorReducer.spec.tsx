@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../../utils';
-import {CodeEditorActionPayload, CodeEditorActions} from '../CodeEditorActions';
-import {CodeEditorsInitialState, codeEditorsReducer, CodeEditorsState} from '../CodeEditorReducers';
+import {IReduxAction} from '../../../utils/index.js';
+import {CodeEditorActionPayload, CodeEditorActions} from '../CodeEditorActions.js';
+import {CodeEditorsInitialState, codeEditorsReducer, CodeEditorsState} from '../CodeEditorReducers.js';
 
 describe('codeEditorReducers', () => {
     const unrelatedAction: IReduxAction<CodeEditorActionPayload> = {

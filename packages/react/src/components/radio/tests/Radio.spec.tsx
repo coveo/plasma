@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {Radio, RadioProps} from '../Radio';
+import {Radio, RadioProps} from '../Radio.js';
 
 describe('Radio', () => {
     const anId = 'patate';

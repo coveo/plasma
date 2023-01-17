@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
 import {
     addDatePicker,
     applyDatePicker,
@@ -10,13 +10,13 @@ import {
     removeDatePicker,
     resetDatePickers,
     selectDate,
-} from '../DatePickerActions';
+} from '../DatePickerActions.js';
 import {
     IAddDatePickerPayload,
     IChangeDatePickerPayload,
     IDatePickerPayload,
     ISelectDatePickerPayload,
-} from '../DatePickerActions';
+} from '../DatePickerActions.js';
 
 describe('Date picker', () => {
     describe('DatePickerActions', () => {

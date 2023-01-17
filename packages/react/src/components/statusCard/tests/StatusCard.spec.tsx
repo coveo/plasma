@@ -2,8 +2,8 @@ import {QuestionSize24Px} from '@coveord/plasma-react-icons';
 import {render, screen} from '@test-utils';
 import {shallow} from 'enzyme';
 
-import {Loading} from '../../loading/Loading';
-import {StatusCard} from '../StatusCard';
+import {Loading} from '../../loading/Loading.js';
+import {StatusCard} from '../StatusCard.js';
 
 describe('StatusCard', () => {
     it('should render without errors', () => {

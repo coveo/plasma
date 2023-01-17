@@ -3,8 +3,8 @@ import {ReactNode, FunctionComponent, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
-import {IClassName} from '../../utils/ClassNameUtils';
-import {TabSelectors} from './TabSelectors';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {TabSelectors} from './TabSelectors.js';
 
 export interface ITabPaneProps {
     groupId?: string;

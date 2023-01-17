@@ -1,4 +1,4 @@
-import {ValidationTypes} from './ValidationTypes';
+import {ValidationTypes} from './ValidationTypes.js';
 
 export const ValidationActionsTypes = {
     updateError: 'UPDATE_VALIDATION_ERROR',

@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITableHeaderBasePayload, TableHeaderActions} from '../actions/TableHeaderActions';
-import {ITableWithSortState, TableWithSortReducers} from '../reducers/TableWithSortReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {ITableHeaderBasePayload, TableHeaderActions} from '../actions/TableHeaderActions.js';
+import {ITableWithSortState, TableWithSortReducers} from '../reducers/TableWithSortReducers.js';
 
 describe('Table HOC', () => {
     describe('TableWithSortReducers', () => {

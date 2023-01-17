@@ -1,4 +1,4 @@
-import {deepClone} from './CloneUtils';
+import {deepClone} from './CloneUtils.js';
 
 describe('CloneUtils', () => {
     describe('deepClone', () => {

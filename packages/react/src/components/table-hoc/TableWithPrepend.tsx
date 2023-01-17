@@ -1,9 +1,9 @@
 import {HTMLAttributes, ReactNode, FunctionComponent, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {ITableHOCOwnProps} from './TableHOC';
-import {TableSelectors} from './TableSelectors';
+import {PlasmaState} from '../../PlasmaState.js';
+import {ITableHOCOwnProps} from './TableHOC.js';
+import {TableSelectors} from './TableSelectors.js';
 
 export interface TableWithPrependProps extends ITableHOCOwnProps, Omit<HTMLAttributes<HTMLTableElement>, 'id'> {
     prepend?: ReactNode;

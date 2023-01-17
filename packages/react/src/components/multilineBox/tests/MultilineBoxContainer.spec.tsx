@@ -1,8 +1,8 @@
 import {shallowWithState} from '@test-utils';
 import * as _ from 'underscore';
-import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {multilineBoxContainer} from '../hoc/MultilineBoxContainer';
-import {IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
+import {RTestUtils} from '../../../utils/tests/RTestUtils.js';
+import {multilineBoxContainer} from '../hoc/MultilineBoxContainer.js';
+import {IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox.js';
 
 describe('Multiline box container', () => {
     describe('<MultilineBoxContainer/>', () => {

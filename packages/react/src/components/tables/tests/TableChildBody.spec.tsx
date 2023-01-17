@@ -3,15 +3,15 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IActionOptions} from '../../actions/Action';
-import {IData} from '../Table';
-import {ITableChildBodyProps, TableChildBody} from '../table-children/TableChildBody';
-import {TableCollapsibleRow} from '../TableCollapsibleRow';
-import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
-import {TableHeadingRow} from '../TableHeadingRow';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IActionOptions} from '../../actions/Action.js';
+import {IData} from '../Table.js';
+import {ITableChildBodyProps, TableChildBody} from '../table-children/TableChildBody.js';
+import {TableCollapsibleRow} from '../TableCollapsibleRow.js';
+import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper.js';
+import {TableHeadingRow} from '../TableHeadingRow.js';
 
 describe('<TableChildBody />', () => {
     let spyOnRowClick: jest.Mock<any, any>;

@@ -3,7 +3,7 @@ import {ActionIcon, DefaultProps, Group, Selectors} from '@mantine/core';
 import {FunctionComponent, PropsWithChildren} from 'react';
 import {Draggable} from 'react-beautiful-dnd';
 
-import useStyles from './Collection.styles';
+import useStyles from './Collection.styles.js';
 
 interface CollectionItemProps extends CollectionItemSharedProps {
     draggable?: boolean;

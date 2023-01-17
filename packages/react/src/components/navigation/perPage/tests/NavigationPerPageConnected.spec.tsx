@@ -3,15 +3,15 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../../PlasmaState';
-import {clearState} from '../../../../utils/ReduxUtils';
-import {TestUtils} from '../../../../utils/tests/TestUtils';
-import {addLoading, turnOffLoading} from '../../../loading/LoadingActions';
-import {addPagination, changePage} from '../../pagination/NavigationPaginationActions';
-import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS} from '../NavigationPerPage';
-import {changePerPage} from '../NavigationPerPageActions';
-import {NavigationPerPageConnected} from '../NavigationPerPageConnected';
-import {INavigationPerPageSelectProps, NavigationPerPageSelect} from '../NavigationPerPageSelect';
+import {PlasmaState} from '../../../../PlasmaState.js';
+import {clearState} from '../../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../../utils/tests/TestUtils.js';
+import {addLoading, turnOffLoading} from '../../../loading/LoadingActions.js';
+import {addPagination, changePage} from '../../pagination/NavigationPaginationActions.js';
+import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS} from '../NavigationPerPage.js';
+import {changePerPage} from '../NavigationPerPageActions.js';
+import {NavigationPerPageConnected} from '../NavigationPerPageConnected.js';
+import {INavigationPerPageSelectProps, NavigationPerPageSelect} from '../NavigationPerPageSelect.js';
 
 describe('<NavigationPerPageConnected />', () => {
     let wrapper: ReactWrapper<any, any>;

@@ -2,14 +2,14 @@ import {shallowWithStore} from '@test-utils';
 import {ComponentType, PropsWithChildren} from 'react';
 import * as _ from 'underscore';
 
-import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {turnOffLoading} from '../../loading/LoadingActions';
-import {NavigationConnected} from '../../navigation/NavigationConnected';
-import {TableWithPaginationActions} from '../actions/TableWithPaginationActions';
-import {ITableHOCProps, TableHOC} from '../TableHOC';
-import {ITableWithPaginationProps, tableWithPagination} from '../TableWithPagination';
-import {TableHOCUtils} from '../utils/TableHOCUtils';
+import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing.js';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {turnOffLoading} from '../../loading/LoadingActions.js';
+import {NavigationConnected} from '../../navigation/NavigationConnected.js';
+import {TableWithPaginationActions} from '../actions/TableWithPaginationActions.js';
+import {ITableHOCProps, TableHOC} from '../TableHOC.js';
+import {ITableWithPaginationProps, tableWithPagination} from '../TableWithPagination.js';
+import {TableHOCUtils} from '../utils/TableHOCUtils.js';
 
 describe('Table HOC', () => {
     describe('TableWithPagination', () => {

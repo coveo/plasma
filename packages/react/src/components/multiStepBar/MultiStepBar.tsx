@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import {IClassName} from '../../utils/ClassNameUtils';
-import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip.js';
 
 export enum MultiStepState {
     ToDo = 'to-do',

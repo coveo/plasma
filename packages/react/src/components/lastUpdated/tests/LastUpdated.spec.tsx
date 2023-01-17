@@ -1,9 +1,9 @@
 import {mount, ReactWrapper, shallow, ShallowWrapper} from 'enzyme';
 import moment from 'moment';
-import {contains} from 'underscore.string';
+import s from 'underscore.string';
 
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ILastUpdatedProps, LAST_UPDATE_LABEL, LastUpdated} from '../LastUpdated';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {ILastUpdatedProps, LAST_UPDATE_LABEL, LastUpdated} from '../LastUpdated.js';
 
 describe('LastUpdated', () => {
     describe('<LastUpdated />', () => {
@@ -24,7 +24,7 @@ describe('LastUpdated', () => {
 
             lastUpdatedWrapper = shallow(<LastUpdated time={time} />);
 
-            expect(contains(lastUpdatedWrapper.html(), expectedTime)).toBe(true);
+            expect(s.contains(lastUpdatedWrapper.html(), expectedTime)).toBe(true);
         });
 
         it('should add the current time if we do not pass it the time prop', () => {
@@ -34,7 +34,7 @@ describe('LastUpdated', () => {
 
             lastUpdatedWrapper = shallow(<LastUpdated />);
 
-            expect(contains(lastUpdatedWrapper.html(), expectedTime)).toBe(true);
+            expect(s.contains(lastUpdatedWrapper.html(), expectedTime)).toBe(true);
 
             jest.clearAllTimers();
         });
@@ -42,7 +42,7 @@ describe('LastUpdated', () => {
         it('should use the default label if not defined', () => {
             lastUpdatedWrapper = shallow(<LastUpdated />);
 
-            expect(contains(lastUpdatedWrapper.html(), LAST_UPDATE_LABEL)).toBe(true);
+            expect(s.contains(lastUpdatedWrapper.html(), LAST_UPDATE_LABEL)).toBe(true);
         });
 
         it('should use the label passed as a prop to display the time', () => {

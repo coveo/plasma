@@ -1,7 +1,7 @@
 import {LockSize16Px} from '@coveord/plasma-react-icons';
 import {render, screen, within} from '@test-utils';
 
-import {Badge} from '../Badge';
+import {Badge} from '../Badge.js';
 
 describe('Badge', () => {
     it('renders a badge', async () => {

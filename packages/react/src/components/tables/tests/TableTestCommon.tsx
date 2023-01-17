@@ -2,11 +2,11 @@ import {date, internet} from 'faker/locale/en';
 import moment from 'moment';
 import * as _ from 'underscore';
 
-import {DATES_SEPARATOR} from '../../../utils';
-import {IActionOptions} from '../../actions/Action';
-import {DatePickerColors, IDatesSelectionBox} from '../../datePicker';
-import {IData, ITableProps} from '../Table';
-import {DEFAULT_TABLE_DATA} from '../TableConstants';
+import {DATES_SEPARATOR} from '../../../utils/index.js';
+import {IActionOptions} from '../../actions/Action.js';
+import {DatePickerColors, IDatesSelectionBox} from '../../datePicker/index.js';
+import {IData, ITableProps} from '../Table.js';
+import {DEFAULT_TABLE_DATA} from '../TableConstants.js';
 
 export const SELECTION_BOXES: IDatesSelectionBox[] = [
     {

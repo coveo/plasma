@@ -1,8 +1,8 @@
 import {CalendarSize24Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
-import {TooltipPlacement} from '../../utils';
+import {TooltipPlacement} from '../../utils/index.js';
 
-import {Button} from '../button';
+import {Button} from '../button/index.js';
 
 export interface ISetToNowProps {
     onClick: () => void;

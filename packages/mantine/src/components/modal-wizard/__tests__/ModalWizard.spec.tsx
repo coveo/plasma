@@ -1,5 +1,5 @@
 import {render, screen, userEvent} from '@test-utils';
-import {ModalWizard} from '../ModalWizard';
+import {ModalWizard} from '../ModalWizard.js';
 
 describe('ModalWizard', () => {
     it('navigate modal steps using footer buttons', async () => {

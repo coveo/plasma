@@ -1,6 +1,6 @@
 import {Group} from '@mantine/core';
 import {ReactElement, ReactNode} from 'react';
-import {useTable} from './useTable';
+import {useTable} from './useTable.js';
 
 interface TableActionsProps<T> {
     /**

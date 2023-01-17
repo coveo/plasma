@@ -1,12 +1,12 @@
 import {ReactNode, Children, PureComponent} from 'react';
-import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
+import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils.js';
 import {
     IMultilineBoxDispatchProps,
     IMultilineBoxOwnProps,
     IMultilineParentProps,
     IMultilineSingleBoxProps,
     MultilineBox,
-} from '../MultilineBox';
+} from '../MultilineBox.js';
 
 export interface IMultilineBoxContainerSupplierProps<T = any> {
     containerNode?: (child: ReactNode, data: Array<IMultilineSingleBoxProps<T>>, index: number) => ReactNode;

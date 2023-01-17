@@ -3,10 +3,10 @@ import {FunctionComponent, HTMLAttributes, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {TableHeaderActions} from './actions/TableHeaderActions';
-import {ITableWithSortState} from './reducers/TableWithSortReducers';
-import {useFixedWidthWhileLoading} from './utils/TableHooks';
+import {PlasmaState} from '../../PlasmaState.js';
+import {TableHeaderActions} from './actions/TableHeaderActions.js';
+import {ITableWithSortState} from './reducers/TableWithSortReducers.js';
+import {useFixedWidthWhileLoading} from './utils/TableHooks.js';
 
 export interface ITableHeaderWithSortOwnProps {
     id: string;

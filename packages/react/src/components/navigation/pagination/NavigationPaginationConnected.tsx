@@ -1,15 +1,15 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
+import {PlasmaState, IReduxActionsPayload} from '../../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils.js';
 import {
     INavigationPaginationDispatchProps,
     INavigationPaginationOwnProps,
     INavigationPaginationStateProps,
     NavigationPagination,
-} from './NavigationPagination';
-import {addPagination, changePage, removePagination} from './NavigationPaginationActions';
-import {IPaginationState} from './NavigationPaginationReducers';
+} from './NavigationPagination.js';
+import {addPagination, changePage, removePagination} from './NavigationPaginationActions.js';
+import {IPaginationState} from './NavigationPaginationReducers.js';
 
 const mapStateToProps = (
     state: PlasmaState,

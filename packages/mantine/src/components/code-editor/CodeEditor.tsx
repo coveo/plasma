@@ -17,11 +17,12 @@ import {
     useComponentDefaultProps,
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
-import Editor, {loader, Monaco} from '@monaco-editor/react';
+import monacoEditorModule, {loader, Monaco} from '@monaco-editor/react';
+const Editor = monacoEditorModule as unknown as typeof monacoEditorModule.default;
 import {FunctionComponent, useEffect, useState} from 'react';
 
-import {useParentHeight} from '../../hooks';
-import {XML} from './languages/xml';
+import {useParentHeight} from '../../hooks/index.js';
+import {XML} from './languages/xml.js';
 
 const useStyles = createStyles((theme) => ({
     root: {},

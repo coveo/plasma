@@ -2,9 +2,9 @@ import classNames from 'classnames';
 import {ReactNode, Component} from 'react';
 import * as _ from 'underscore';
 
-import {mod} from '../../utils/DataStructuresUtils';
-import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
-import {ItemBoxLoading} from '../loading/components/ItemBoxLoading';
+import {mod} from '../../utils/DataStructuresUtils.js';
+import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox.js';
+import {ItemBoxLoading} from '../loading/components/ItemBoxLoading.js';
 
 export type IItemBoxPropsWithIndex = {index?: number} & IItemBoxProps;
 

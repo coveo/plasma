@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {updateSelectedRows} from './TableActions';
-import {ITableHeadingRowOwnProps, TableHeadingRow} from './TableHeadingRow';
-import {ITableState} from './TableReducers';
-import {addRow, removeRow, selectRow, toggleRowOpened} from './TableRowActions';
-import {ITableRowState} from './TableRowReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {updateSelectedRows} from './TableActions.js';
+import {ITableHeadingRowOwnProps, TableHeadingRow} from './TableHeadingRow.js';
+import {ITableState} from './TableReducers.js';
+import {addRow, removeRow, selectRow, toggleRowOpened} from './TableRowActions.js';
+import {ITableRowState} from './TableRowReducers.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: ITableHeadingRowOwnProps) => {
     const item: ITableRowState = _.findWhere(state.rows, {id: ownProps.id});

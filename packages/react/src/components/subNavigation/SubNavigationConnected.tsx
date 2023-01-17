@@ -1,16 +1,16 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
 import {
     ISubNavigationDispatchProps,
     ISubNavigationOwnProps,
     ISubNavigationStateProps,
     SubNavigation,
-} from './SubNavigation';
-import {addSubNavigation, removeSubNavigation, selectSubNavigation} from './SubNavigationActions';
-import {SubNavigationSelector} from './SubNavigationSelector';
+} from './SubNavigation.js';
+import {addSubNavigation, removeSubNavigation, selectSubNavigation} from './SubNavigationActions.js';
+import {SubNavigationSelector} from './SubNavigationSelector.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: ISubNavigationOwnProps): ISubNavigationStateProps => ({
     selected: SubNavigationSelector.getSelectedItem(state, ownProps.id),

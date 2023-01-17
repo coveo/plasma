@@ -1,7 +1,7 @@
 import {VirtualTypeScriptEnvironment} from '@typescript/vfs';
 import ts from 'typescript';
 
-import {Component, ComponentMetadata} from '../src/ComponentsList';
+import {Component, ComponentMetadata} from '../src/ComponentsList.js';
 
 const getContent = ({name, packageName, propsType = 'auto'}: Component) => {
     if (propsType && propsType !== 'auto') {

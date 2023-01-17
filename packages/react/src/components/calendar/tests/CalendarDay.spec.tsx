@@ -2,9 +2,9 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import moment from 'moment';
 import * as _ from 'underscore';
 
-import {DateUtils} from '../../../utils/DateUtils';
-import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
-import {CalendarDay, ICalendarDayProps, IDay} from '../CalendarDay';
+import {DateUtils} from '../../../utils/DateUtils.js';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils.js';
+import {CalendarDay, ICalendarDayProps, IDay} from '../CalendarDay.js';
 
 describe('Calendar day', () => {
     const newMonth = DateUtils.currentMonth < 11 ? DateUtils.currentMonth + 1 : 0;

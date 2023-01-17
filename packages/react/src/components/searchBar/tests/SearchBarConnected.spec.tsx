@@ -1,9 +1,9 @@
 import {mountWithStore} from '@test-utils';
 
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {addSearchBar, removeSearchBar, setSearchBarValue} from '../SearchBarActions';
-import {SearchBarConnected} from '../SearchBarConnected';
-import {searchBarConnectedPropsScenarios} from './SearchBarPropsScenarios.mock';
+import {getStoreMock} from '../../../utils/tests/TestUtils.js';
+import {addSearchBar, removeSearchBar, setSearchBarValue} from '../SearchBarActions.js';
+import {SearchBarConnected} from '../SearchBarConnected.js';
+import {searchBarConnectedPropsScenarios} from './SearchBarPropsScenarios.mock.js';
 
 describe('SearchBarConnected', () => {
     const requiredProps = {...searchBarConnectedPropsScenarios[0]};

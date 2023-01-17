@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {ComponentId} from '../../utils/ComponentUtils';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {WithDirtyActionTypes} from './withDirtyActions';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {ComponentId} from '../../utils/ComponentUtils.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {WithDirtyActionTypes} from './withDirtyActions.js';
 
 export const dirtyComponentsInitialState: ComponentId[] = [];
 

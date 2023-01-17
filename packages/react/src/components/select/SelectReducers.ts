@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ISelectPayload, SelectActions} from './SelectActions';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {ISelectPayload, SelectActions} from './SelectActions.js';
 
 export interface ISelectState {
     id: string;

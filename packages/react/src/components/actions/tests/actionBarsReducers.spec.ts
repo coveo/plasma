@@ -1,19 +1,19 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {selectListBoxOption} from '../../listBox/ListBoxActions';
-import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
-import {changePage} from '../../navigation/pagination/NavigationPaginationActions';
-import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions';
-import {TableHOCUtils} from '../../table-hoc/utils/TableHOCUtils';
-import {ActionBarActions, IActionBarPayload, IChangeActionBarActionsPayload} from '../ActionBarActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {selectListBoxOption} from '../../listBox/ListBoxActions.js';
+import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions.js';
+import {changePage} from '../../navigation/pagination/NavigationPaginationActions.js';
+import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions.js';
+import {TableHOCUtils} from '../../table-hoc/utils/TableHOCUtils.js';
+import {ActionBarActions, IActionBarPayload, IChangeActionBarActionsPayload} from '../ActionBarActions.js';
 import {
     actionBarInitialState,
     actionBarReducer,
     actionBarsInitialState,
     actionBarsReducer,
     IActionBarState,
-} from '../ActionBarReducers';
-import {TableHOCRowActions} from './../../table-hoc/actions/TableHOCRowActions';
+} from '../ActionBarReducers.js';
+import {TableHOCRowActions} from './../../table-hoc/actions/TableHOCRowActions.js';
 
 describe('Actions', () => {
     describe('actionBars', () => {

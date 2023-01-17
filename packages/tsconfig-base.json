@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
-        "module": "esnext",
-        "moduleResolution": "Node",
-        "target": "es5",
+        "module": "Node16",
+        "moduleResolution": "Node16",
+        "target": "ES2020",
         "jsx": "react-jsx",
-        "lib": ["ES2017", "DOM"],
+        "lib": ["ES2020", "DOM"],
 
         "composite": false,
         "incremental": true,
@@ -24,8 +24,8 @@
         "downlevelIteration": true,
         "removeComments": false,
         "emitDecoratorMetadata": true,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": false,
+        "esModuleInterop": false,
         "importHelpers": true
     }
 }

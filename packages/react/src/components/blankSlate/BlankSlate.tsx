@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {IBaseActionOptions} from '../actions/Action';
-import {Button} from '../button/Button';
+import {IBaseActionOptions} from '../actions/Action.js';
+import {Button} from '../button/Button.js';
 
 export interface IBlankSlateProps {
     /**

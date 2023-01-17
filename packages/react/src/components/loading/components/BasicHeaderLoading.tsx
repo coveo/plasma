@@ -1,4 +1,4 @@
-import {BasicHeader} from '../../headers/BasicHeader';
+import {BasicHeader} from '../../headers/BasicHeader.js';
 
 /**
  * @deprecated Use Mantine instead

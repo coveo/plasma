@@ -1,9 +1,9 @@
 import {InfoSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent, PropsWithChildren} from 'react';
-import {truncate} from 'underscore.string';
+import s from 'underscore.string';
 
-import {TooltipPlacement} from '../../utils';
-import {Tooltip} from '../tooltip';
+import {TooltipPlacement} from '../../utils/index.js';
+import {Tooltip} from '../tooltip/index.js';
 
 export interface BrowserPreviewProps {
     /**
@@ -45,7 +45,7 @@ const BrowserPreviewHeader: FunctionComponent<PropsWithChildren<{tooltipTitle: s
             </Tooltip>
         </div>
         <div>
-            <span className="bolder">{truncate(title, TitleMaxLength)}</span>
+            <span className="bolder">{s.truncate(title, TitleMaxLength)}</span>
         </div>
         <div>
             <span className="white-dot" />

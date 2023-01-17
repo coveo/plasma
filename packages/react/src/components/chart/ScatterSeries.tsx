@@ -1,6 +1,6 @@
 import {FunctionComponent, useContext, PropsWithChildren} from 'react';
 
-import {XYChartContext, XYPoint, XYSerie} from './XYChart';
+import {XYChartContext, XYPoint, XYSerie} from './XYChart.js';
 
 export interface ScatterSeriesProps {
     radius?: number;

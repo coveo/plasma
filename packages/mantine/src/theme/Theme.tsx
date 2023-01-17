@@ -2,7 +2,7 @@ import {ArrowHeadRightSize24Px, InfoSize24Px} from '@coveord/plasma-react-icons'
 import {color} from '@coveord/plasma-tokens';
 import {ButtonStylesParams, MantineThemeOverride, ModalStylesParams} from '@mantine/core';
 
-import {PlasmaColors} from './PlasmaColors';
+import {PlasmaColors} from './PlasmaColors.js';
 
 export const plasmaTheme: MantineThemeOverride = {
     // These are overrides over https://github.com/mantinedev/mantine/blob/master/src/mantine-styles/src/theme/default-theme.ts

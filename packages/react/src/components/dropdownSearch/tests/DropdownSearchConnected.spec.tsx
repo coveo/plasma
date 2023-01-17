@@ -3,19 +3,19 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {keyCode} from '../../../utils/InputUtils';
-import {clearState} from '../../../utils/ReduxUtils';
-import {PlasmaTestState, TestUtils} from '../../../utils/tests/TestUtils';
-import {UUID} from '../../../utils/UUID';
-import {DropdownSearch, IDropdownSearchProps} from '../DropdownSearch';
+import {keyCode} from '../../../utils/InputUtils.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {PlasmaTestState, TestUtils} from '../../../utils/tests/TestUtils.js';
+import {UUID} from '../../../utils/UUID.js';
+import {DropdownSearch, IDropdownSearchProps} from '../DropdownSearch.js';
 import {
     DropdownSearchActions,
     toggleDropdownSearch,
     updateActiveOptionDropdownSearch,
     updateOptionsDropdownSearch,
-} from '../DropdownSearchActions';
-import {DropdownSearchConnected} from '../DropdownSearchConnected';
-import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
+} from '../DropdownSearchActions.js';
+import {DropdownSearchConnected} from '../DropdownSearchConnected.js';
+import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers.js';
 
 describe('DropdownSearch', () => {
     const id: string = UUID.generate();

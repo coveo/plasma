@@ -3,13 +3,13 @@ import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {reorderStringList} from '../../../reusableState/customList/StringListActions';
-import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
-import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
-import {DnDContainer, IDraggableContainerOwnProps} from '../../dragAndDrop/DnDContainer';
-import {DnDUtils} from '../../dragAndDrop/DnDUtils';
-import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {reorderStringList} from '../../../reusableState/customList/StringListActions.js';
+import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils.js';
+import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils.js';
+import {DnDContainer, IDraggableContainerOwnProps} from '../../dragAndDrop/DnDContainer.js';
+import {DnDUtils} from '../../dragAndDrop/DnDUtils.js';
+import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected.js';
 import {
     IMultilineBoxDispatchProps,
     IMultilineBoxOwnProps,
@@ -17,8 +17,8 @@ import {
     IMultilineParentProps,
     IMultilineSingleBoxProps,
     MultilineBox,
-} from '../MultilineBox';
-import {MultilineBoxSelectors} from '../MultilineBoxSelector';
+} from '../MultilineBox.js';
+import {MultilineBoxSelectors} from '../MultilineBoxSelector.js';
 
 export interface IMultilineBoxWithDnDSupplierProps {
     DnDContainerProps?: Partial<IDraggableContainerOwnProps>;

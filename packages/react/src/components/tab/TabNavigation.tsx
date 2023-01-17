@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import {HTMLAttributes, FunctionComponent, KeyboardEvent, useState, useRef, PropsWithChildren} from 'react';
-import {keyCode} from '../../utils';
+import {keyCode} from '../../utils/index.js';
 
 export interface ITabNavigationProps {
     title?: string;

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import {Component, ReactNode} from 'react';
 
-import {Defaults} from '../../Defaults';
-import {IClassName} from '../../utils/ClassNameUtils';
+import {Defaults} from '../../Defaults.js';
+import {IClassName} from '../../utils/ClassNameUtils.js';
 
 export interface IModalOwnProps {
     id?: string;

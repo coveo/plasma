@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 
-import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {Tooltip} from '../tooltip/Tooltip';
-import {InputDescription} from './InputDescription';
+import {TooltipPlacement} from '../../utils/TooltipUtils.js';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token/index.js';
+import {Tooltip} from '../tooltip/Tooltip.js';
+import {InputDescription} from './InputDescription.js';
 
 export interface ILabeledInputProps {
     label?: ReactNode;

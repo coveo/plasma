@@ -3,7 +3,7 @@ import * as Redux from 'redux';
 import {ThunkAction, ThunkDispatch} from 'redux-thunk';
 import {extend} from 'underscore';
 
-import {PlasmaState} from '../PlasmaState';
+import {PlasmaState} from '../PlasmaState.js';
 
 /**
  * use this type with an enhance function containing the connecting functions like such:

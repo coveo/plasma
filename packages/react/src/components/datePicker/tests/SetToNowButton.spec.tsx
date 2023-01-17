@@ -1,7 +1,7 @@
 import {render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {SetToNowButton} from '../SetToNowButton';
+import {SetToNowButton} from '../SetToNowButton.js';
 
 describe('SetToNowButton', () => {
     it('renders a button that has a calendar icon in it', async () => {

@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {TableSortingOrder} from '../TableConstants';
-import {ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell';
+import {TableSortingOrder} from '../TableConstants.js';
+import {ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell.js';
 
 describe('Tables', () => {
     let title: string;

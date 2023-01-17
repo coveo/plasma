@@ -1,13 +1,13 @@
 import moment from 'moment';
 import * as _ from 'underscore';
-import {reverse} from 'underscore.string';
+import s from 'underscore.string';
 
-import {addActionsToActionBar} from '../../actions/ActionBarActions';
-import {changeLastUpdated} from '../../lastUpdated/LastUpdatedActions';
-import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
-import {IData, ITableProps} from '../Table';
-import {TableActions} from '../TableActions';
-import {TableChildComponent, TableSortingOrder} from '../TableConstants';
+import {addActionsToActionBar} from '../../actions/ActionBarActions.js';
+import {changeLastUpdated} from '../../lastUpdated/LastUpdatedActions.js';
+import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions.js';
+import {IData, ITableProps} from '../Table.js';
+import {TableActions} from '../TableActions.js';
+import {TableChildComponent, TableSortingOrder} from '../TableConstants.js';
 import {
     applyDatePickerOnDisplayedIds,
     applyFilterOnDisplayedIds,
@@ -18,10 +18,10 @@ import {
     defaultTableStateModifierThunk,
     dispatchPostTableStateModification,
     dispatchPreTableStateModification,
-} from '../TableDataModifier';
-import {unselectAllRows} from '../TableRowActions';
-import {getTableChildComponentId, getTableLoadingIds} from '../TableUtils';
-import {predictableData, SELECTION_BOXES, tableOwnPropsMock, tablePropsMockWithData} from './TableTestCommon';
+} from '../TableDataModifier.js';
+import {unselectAllRows} from '../TableRowActions.js';
+import {getTableChildComponentId, getTableLoadingIds} from '../TableUtils.js';
+import {predictableData, SELECTION_BOXES, tableOwnPropsMock, tablePropsMockWithData} from './TableTestCommon.js';
 
 describe('TableDataModifier', () => {
     describe('dispatchPreTableStateModification', () => {
@@ -229,7 +229,7 @@ describe('TableDataModifier', () => {
                             attributeName: 'userName',
                             titleFormatter: _.identity,
                             attributeFormatter: _.identity,
-                            sortByMethod: (attributeValue: string) => reverse(attributeValue).toLowerCase(),
+                            sortByMethod: (attributeValue: string) => s.reverse(attributeValue).toLowerCase(),
                         },
                     ],
                 };
@@ -238,7 +238,7 @@ describe('TableDataModifier', () => {
             it('should return the same ids but sorted ascending with the custom sortByMethod by the specified attribute if sorted ASCENDING', () => {
                 const expectedOrderOfIds = _.chain(data.byId)
                     .values()
-                    .sortBy((currentData) => reverse(currentData.userName).toLowerCase())
+                    .sortBy((currentData) => s.reverse(currentData.userName).toLowerCase())
                     .map((currentData) => currentData.id)
                     .value();
 
@@ -255,7 +255,7 @@ describe('TableDataModifier', () => {
             it('should return the same ids but sorted descending with the custom sortByMethod by the specified attribute if sorted DESCENDING', () => {
                 const expectedOrderOfIds = _.chain(data.byId)
                     .values()
-                    .sortBy((currentData) => reverse(currentData.userName).toLowerCase())
+                    .sortBy((currentData) => s.reverse(currentData.userName).toLowerCase())
                     .map((currentData) => currentData.id)
                     .reverse()
                     .value();

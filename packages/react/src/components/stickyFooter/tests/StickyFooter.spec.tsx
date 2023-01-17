@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 
-import {StickyFooter} from '../StickyFooter';
+import {StickyFooter} from '../StickyFooter.js';
 
 describe('StickyFooter', () => {
     it('should render without error', () => {

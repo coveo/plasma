@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {changeOptionPicker} from '../optionPicker/OptionPickerActions';
-import {IOptionPickerState} from '../optionPicker/OptionPickerReducers';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
+import {changeOptionPicker} from '../optionPicker/OptionPickerActions.js';
+import {IOptionPickerState} from '../optionPicker/OptionPickerReducers.js';
 import {
     addDatePicker,
     changeDatePickerLowerLimit,
@@ -11,14 +11,14 @@ import {
     DateLimits,
     removeDatePicker,
     selectDate,
-} from './DatePickerActions';
-import {IDatePickerState} from './DatePickerReducers';
+} from './DatePickerActions.js';
+import {IDatePickerState} from './DatePickerReducers.js';
 import {
     DatesSelection,
     IDatesSelectionDispatchProps,
     IDatesSelectionOwnProps,
     IDatesSelectionStateProps,
-} from './DatesSelection';
+} from './DatesSelection.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IDatesSelectionOwnProps): IDatesSelectionStateProps => {
     const item: IDatePickerState = _.findWhere(state.datePickers, {id: ownProps.id});

@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 
-import {Header} from '../Header';
+import {Header} from '../Header.js';
 
 describe('Header', () => {
     it('renders no breadcrumb separator if there is only one child', () => {

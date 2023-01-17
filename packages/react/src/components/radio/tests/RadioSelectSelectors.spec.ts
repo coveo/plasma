@@ -1,5 +1,5 @@
-import {IRadioSelectState, radioSelectInitialState} from '../RadioSelectReducers';
-import {RadioSelectSelectors} from '../RadioSelectSelectors';
+import {IRadioSelectState, radioSelectInitialState} from '../RadioSelectReducers.js';
+import {RadioSelectSelectors} from '../RadioSelectSelectors.js';
 
 describe('RadioSelectSelectors', () => {
     describe('get', () => {

@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 
-import {keyCode} from '../../../utils/InputUtils';
-import {createTestAppContainer, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
-import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
+import {keyCode} from '../../../utils/InputUtils.js';
+import {createTestAppContainer, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop.js';
 
 describe('ModalBackdrop', () => {
     it('should render without errors', () => {

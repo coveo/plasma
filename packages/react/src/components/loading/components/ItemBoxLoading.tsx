@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
-import {Random} from '../../../utils/RandomUtils';
+import {Random} from '../../../utils/RandomUtils.js';
 
 const possibleWidths = ['mod-width-10', 'mod-width-20', 'mod-width-30', 'mod-width-40'];
 

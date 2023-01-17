@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import {InfoBoxLink} from '../InfoBoxLink';
+import {InfoBoxLink} from '../InfoBoxLink.js';
 
 describe('InfoBoxLink', () => {
     it('should not throw', () => {

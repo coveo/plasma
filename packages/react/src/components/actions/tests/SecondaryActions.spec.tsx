@@ -1,10 +1,10 @@
 import {shallow} from 'enzyme';
 
-import {IActionOptions} from '../Action';
-import {ACTION_SEPARATOR} from '../ActionConstants';
-import {ActionsDropdown} from '../ActionsDropdown';
-import {PrimaryActionConnected} from '../PrimaryActionConnected';
-import {SecondaryActions} from '../SecondaryActions';
+import {IActionOptions} from '../Action.js';
+import {ACTION_SEPARATOR} from '../ActionConstants.js';
+import {ActionsDropdown} from '../ActionsDropdown.js';
+import {PrimaryActionConnected} from '../PrimaryActionConnected.js';
+import {SecondaryActions} from '../SecondaryActions.js';
 
 describe('Actions', () => {
     const linkAction: IActionOptions = {

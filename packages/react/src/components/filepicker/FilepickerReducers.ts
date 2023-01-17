@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 
-import {IReduxAction} from '../../utils';
-import {FileMetadata} from '../../utils/FileUtils';
+import {IReduxAction} from '../../utils/index.js';
+import {FileMetadata} from '../../utils/FileUtils.js';
 
 export const FilepickerActionsTypes = {
     Add: 'ADD_FILE_PICKER',

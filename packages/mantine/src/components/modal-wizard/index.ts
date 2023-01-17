@@ -1,2 +1,2 @@
-export * from './ModalWizard';
-export {type ModalWizardStepProps} from './ModalWizardStep';
+export * from './ModalWizard.js';
+export {type ModalWizardStepProps} from './ModalWizardStep.js';

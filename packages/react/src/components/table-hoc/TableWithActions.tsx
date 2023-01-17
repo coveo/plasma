@@ -2,12 +2,12 @@ import {Component, ComponentClass, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc';
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {TableHOCRowActions} from './actions/TableHOCRowActions';
-import {ITableHOCOwnProps} from './TableHOC';
-import {TableSelectors} from './TableSelectors';
+import {WithServerSideProcessingProps} from '../../hoc/index.js';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IDispatch} from '../../utils/ReduxUtils.js';
+import {TableHOCRowActions} from './actions/TableHOCRowActions.js';
+import {ITableHOCOwnProps} from './TableHOC.js';
+import {TableSelectors} from './TableSelectors.js';
 
 export interface ITableWithActionsProps extends ITableHOCOwnProps {}
 

@@ -2,12 +2,12 @@ import userEvent from '@testing-library/user-event';
 import {render, screen} from '@test-utils';
 import * as _ from 'underscore';
 
-import {withServerSideProcessing} from '../../../../hoc';
-import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
-import {IItemBoxProps} from '../../../itemBox/ItemBox';
-import {IMultiSelectOwnProps, MultiSelectConnected} from '../../MultiSelectConnected';
-import {MultiSelectWithPredicate} from '../SelectComponents';
-import {ISelectWithPredicateOwnProps, selectWithPredicate} from '../SelectWithPredicate';
+import {withServerSideProcessing} from '../../../../hoc.js';
+import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption.js';
+import {IItemBoxProps} from '../../../itemBox/ItemBox.js';
+import {IMultiSelectOwnProps, MultiSelectConnected} from '../../MultiSelectConnected.js';
+import {MultiSelectWithPredicate} from '../SelectComponents.js';
+import {ISelectWithPredicateOwnProps, selectWithPredicate} from '../SelectWithPredicate.js';
 
 describe('MultiSelectWithPredicate', () => {
     const id: string = 'multi-select-with-predicate';

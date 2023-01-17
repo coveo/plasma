@@ -1,11 +1,11 @@
 import {act, render, screen} from '@test-utils';
 import {FunctionComponent, JSXElementConstructor, ReactElement} from 'react';
 
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {TableHOCActions} from '../actions/TableHOCActions';
-import {TableHOC} from '../TableHOC';
-import {TableSelectors} from '../TableSelectors';
-import {tableWithEmptyState} from '../TableWithEmptyState';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {TableHOCActions} from '../actions/TableHOCActions.js';
+import {TableHOC} from '../TableHOC.js';
+import {TableSelectors} from '../TableSelectors.js';
+import {tableWithEmptyState} from '../TableWithEmptyState.js';
 
 describe('TableWithEmptyState', () => {
     const TableWithEmptyState = tableWithEmptyState(TableHOC);

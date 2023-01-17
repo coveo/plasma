@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import {SideNavigationLoadingHeader} from '../SideNavigationLoadingHeader';
+import {SideNavigationLoadingHeader} from '../SideNavigationLoadingHeader.js';
 
 describe('<SideNavigationLoadingHeader />', () => {
     it('should render without errors', () => {

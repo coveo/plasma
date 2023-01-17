@@ -4,23 +4,23 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {DateUtils} from '../../../utils/DateUtils';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {DateUtils} from '../../../utils/DateUtils.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
 import {
     addDatePicker,
     changeDatePickerLowerLimit,
     changeDatePickerUpperLimit,
     DateLimits,
     selectDate,
-} from '../../datePicker/DatePickerActions';
-import {IDatePickerState} from '../../datePicker/DatePickerReducers';
-import {addOptionPicker, changeOptionPicker} from '../../optionPicker/OptionPickerActions';
-import {changeOptionsCycle} from '../../optionsCycle/OptionsCycleActions';
-import {OptionsCycleConnected} from '../../optionsCycle/OptionsCycleConnected';
-import {Calendar, ICalendarProps, MONTH_PICKER_ID, YEAR_PICKER_ID} from '../Calendar';
-import {CalendarConnected} from '../CalendarConnected';
+} from '../../datePicker/DatePickerActions.js';
+import {IDatePickerState} from '../../datePicker/DatePickerReducers.js';
+import {addOptionPicker, changeOptionPicker} from '../../optionPicker/OptionPickerActions.js';
+import {changeOptionsCycle} from '../../optionsCycle/OptionsCycleActions.js';
+import {OptionsCycleConnected} from '../../optionsCycle/OptionsCycleConnected.js';
+import {Calendar, ICalendarProps, MONTH_PICKER_ID, YEAR_PICKER_ID} from '../Calendar.js';
+import {CalendarConnected} from '../CalendarConnected.js';
 
 describe('Calendar', () => {
     const CALENDAR_ID: string = 'calendar';

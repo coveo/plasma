@@ -1,9 +1,9 @@
 import {CrossSize16Px, FilterAddSize16Px} from '@coveord/plasma-react-icons';
 import {KeyboardEvent, ChangeEvent, Component} from 'react';
 import * as _ from 'underscore';
-import {Tooltip} from '../../tooltip/Tooltip';
-import {IDropdownOption} from '../DropdownSearch';
-import {SelectedOption} from './SelectedOption';
+import {Tooltip} from '../../tooltip/Tooltip.js';
+import {IDropdownOption} from '../DropdownSearch.js';
+import {SelectedOption} from './SelectedOption.js';
 
 export interface IMultiselectInputProps {
     selectedOptions: IDropdownOption[];

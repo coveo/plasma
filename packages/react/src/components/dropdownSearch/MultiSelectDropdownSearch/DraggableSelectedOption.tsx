@@ -1,7 +1,7 @@
 import {DragAndDropSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent, useRef} from 'react';
 import {useDrag, useDrop} from 'react-dnd';
-import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
+import {ISelectedOptionProps, SelectedOption} from './SelectedOption.js';
 
 export interface IDraggableSelectedOptionOwnProps {
     /**

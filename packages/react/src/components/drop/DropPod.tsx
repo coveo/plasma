@@ -12,8 +12,8 @@ import {
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
-import {BrowserUtils} from '../../utils/BrowserUtils';
-import {Defaults} from '../../Defaults';
+import {BrowserUtils} from '../../utils/BrowserUtils.js';
+import {Defaults} from '../../Defaults.js';
 import {
     DomPositionCalculator,
     DropPodPosition,
@@ -21,7 +21,7 @@ import {
     IDomPositionCalculatorReturn,
     IDropUIPosition,
     OrientationByPosition,
-} from './DomPositionCalculator';
+} from './DomPositionCalculator.js';
 
 export interface IDropPodProps {
     renderDrop: (style: CSSProperties, position: IDropUIPosition | null) => ReactNode;

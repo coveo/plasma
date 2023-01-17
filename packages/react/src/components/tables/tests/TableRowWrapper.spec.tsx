@@ -1,5 +1,5 @@
 import {mount} from 'enzyme';
-import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
+import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper.js';
 
 describe('<TableCollapsibleRowWrapper />', () => {
     describe('render', () => {

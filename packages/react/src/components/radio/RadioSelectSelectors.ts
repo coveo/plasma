@@ -1,8 +1,8 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IRadioSelectState, radioSelectInitialState} from './RadioSelectReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {IRadioSelectState, radioSelectInitialState} from './RadioSelectReducers.js';
 
 const get = (state: PlasmaState, {id}: {id: string}): IRadioSelectState =>
     _.findWhere(state.radioSelects, {id}) || radioSelectInitialState;

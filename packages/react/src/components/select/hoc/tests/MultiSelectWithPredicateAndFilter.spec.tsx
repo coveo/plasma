@@ -2,13 +2,13 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../../PlasmaState';
-import {clearState} from '../../../../utils/ReduxUtils';
-import {TestUtils} from '../../../../utils/tests/TestUtils';
-import {UUID} from '../../../../utils/UUID';
-import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
-import {IItemBoxProps} from '../../../itemBox/ItemBox';
-import {MultiSelectWithPredicateAndFilter} from '../SelectComponents';
+import {PlasmaState} from '../../../../PlasmaState.js';
+import {clearState} from '../../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../../utils/tests/TestUtils.js';
+import {UUID} from '../../../../utils/UUID.js';
+import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption.js';
+import {IItemBoxProps} from '../../../itemBox/ItemBox.js';
+import {MultiSelectWithPredicateAndFilter} from '../SelectComponents.js';
 
 describe('MultiSelectWithPredicateAndFilter', () => {
     let wrapper: ReactWrapper<any, any>;

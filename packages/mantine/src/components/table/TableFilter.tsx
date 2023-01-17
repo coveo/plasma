@@ -2,7 +2,7 @@ import {SearchSize16Px} from '@coveord/plasma-react-icons';
 import {createStyles, TextInput, Selectors, DefaultProps} from '@mantine/core';
 import {TableState} from '@tanstack/react-table';
 import {ChangeEvent, FunctionComponent} from 'react';
-import {useTable} from './useTable';
+import {useTable} from './useTable.js';
 
 const useStyles = createStyles((theme) => ({
     wrapper: {

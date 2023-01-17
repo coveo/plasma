@@ -1,13 +1,13 @@
 import {ComponentClass, PureComponent} from 'react';
 import * as _ from 'underscore';
-import {SlideY} from '../../../animations/SlideY';
-import {PlasmaState} from '../../../PlasmaState';
-import {PropsToOmitUtils} from '../../../utils/PropsToOmitUtils';
-import {ReduxConnect} from '../../../utils/ReduxUtils';
-import {DropPodPosition} from '../DomPositionCalculator';
-import {Drop, IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
-import {DefaultGroupIds} from '../redux/DropActions';
-import {DropSelectors} from '../redux/DropReducers';
+import {SlideY} from '../../../animations/SlideY.js';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {PropsToOmitUtils} from '../../../utils/PropsToOmitUtils.js';
+import {ReduxConnect} from '../../../utils/ReduxUtils.js';
+import {DropPodPosition} from '../DomPositionCalculator.js';
+import {Drop, IDropOwnProps, IDropProps, IDropStateProps} from '../Drop.js';
+import {DefaultGroupIds} from '../redux/DropActions.js';
+import {DropSelectors} from '../redux/DropReducers.js';
 
 export type DropWithDropdownComponent<T = IDropProps> = ComponentClass<IDropProps>;
 

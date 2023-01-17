@@ -1,17 +1,17 @@
 import {ComponentType} from 'react';
 import {connect} from 'react-redux';
 
-import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
+import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState.js';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils.js';
 import {
     IOptionsCycleConnectedOwnProps,
     IOptionsCycleDispatchProps,
     IOptionsCycleOwnProps,
     IOptionsCycleStateProps,
     OptionsCycle,
-} from './OptionsCycle';
-import {addOptionsCycle, changeOptionsCycle, removeOptionsCycle} from './OptionsCycleActions';
-import {OptionsCycleSelectors} from './OptionsCycleSelectors';
+} from './OptionsCycle.js';
+import {addOptionsCycle, changeOptionsCycle, removeOptionsCycle} from './OptionsCycleActions.js';
+import {OptionsCycleSelectors} from './OptionsCycleSelectors.js';
 
 const mapStateToProps = (state: PlasmaState, ownProps: IOptionsCycleConnectedOwnProps): IOptionsCycleStateProps => ({
     currentOption: OptionsCycleSelectors.getCurrentOption(state, {id: ownProps.id, startAt: ownProps.startAt}),

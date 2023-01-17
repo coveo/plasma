@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import {ReactNode} from 'react';
-import {JSXRenderable} from '../../../utils/JSXUtils';
-import {ITableHeadingAttribute, ITableProps} from '../Table';
-import {TableChildComponent} from '../TableConstants';
-import {TableHeader} from '../TableHeader';
-import {ITableHeaderCellOwnProps} from '../TableHeaderCell';
-import {getTableChildComponentId} from '../TableUtils';
+import {JSXRenderable} from '../../../utils/JSXUtils.js';
+import {ITableHeadingAttribute, ITableProps} from '../Table.js';
+import {TableChildComponent} from '../TableConstants.js';
+import {TableHeader} from '../TableHeader.js';
+import {ITableHeaderCellOwnProps} from '../TableHeaderCell.js';
+import {getTableChildComponentId} from '../TableUtils.js';
 
 /**
  * @deprecated Use Mantine instead

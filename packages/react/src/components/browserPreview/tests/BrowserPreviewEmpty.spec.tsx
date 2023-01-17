@@ -2,7 +2,7 @@ import {render, screen} from '@test-utils';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {ReactNode} from 'react';
 
-import {BrowserPreviewEmpty, BrowserPreviewEmptyProps} from '../BrowserPreviewEmpty';
+import {BrowserPreviewEmpty, BrowserPreviewEmptyProps} from '../BrowserPreviewEmpty.js';
 
 describe('BrowserPreviewEmpty', () => {
     let component: ReactWrapper<BrowserPreviewEmptyProps>;

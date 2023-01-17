@@ -1,4 +1,4 @@
-import {StringUtils} from './StringUtils';
+import {StringUtils} from './StringUtils.js';
 
 describe('StringUtils', () => {
     describe('separateCamelCase', () => {

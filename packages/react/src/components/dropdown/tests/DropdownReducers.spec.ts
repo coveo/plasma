@@ -1,12 +1,12 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {DropdownActions, IDropdownActionPayload} from '../DropdownActions';
+import {IReduxAction} from '../../../utils/ReduxUtils.js';
+import {DropdownActions, IDropdownActionPayload} from '../DropdownActions.js';
 import {
     dropdownInitialState,
     dropdownReducer,
     dropdownsInitialState,
     dropdownsReducer,
     IDropdownState,
-} from '../DropdownReducers';
+} from '../DropdownReducers.js';
 
 describe('Reducers', () => {
     describe('facets', () => {

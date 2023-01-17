@@ -2,12 +2,12 @@ import {ReactNode, FunctionComponent, ChangeEvent} from 'react';
 import * as _ from 'underscore';
 
 import classNames from 'classnames';
-import {IButtonProps} from '../button/Button';
-import {IInputOwnProps} from '../input/Input';
-import {InputConnected} from '../input/Input';
-import {multilineBoxWithRemoveButton} from '../multilineBox/hoc/MultilineBoxWithRemoveButton';
-import {IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../multilineBox/MultilineBox';
-import {IClassName} from '../../utils';
+import {IButtonProps} from '../button/Button.js';
+import {IInputOwnProps} from '../input/Input.js';
+import {InputConnected} from '../input/Input.js';
+import {multilineBoxWithRemoveButton} from '../multilineBox/hoc/MultilineBoxWithRemoveButton.js';
+import {IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../multilineBox/MultilineBox.js';
+import {IClassName} from '../../utils/index.js';
 
 const MultilineBoxWithRemoveButton = _.compose(
     multilineBoxWithRemoveButton({

@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import {ReactNode, FunctionComponent} from 'react';
 import * as _ from 'underscore';
-import {UrlUtils} from '../../utils/UrlUtils';
-import {FlatSelectWithPrepend} from '../flatSelect/FlatSelectWithPrepend';
-import {Params} from '../table-hoc/TableWithUrlState';
-import {PaginationUtils} from './PaginationUtils';
-import {TablePaginationDefaultValue} from './PaginationConstants';
+import {UrlUtils} from '../../utils/UrlUtils.js';
+import {FlatSelectWithPrepend} from '../flatSelect/FlatSelectWithPrepend.js';
+import {Params} from '../table-hoc/TableWithUrlState.js';
+import {PaginationUtils} from './PaginationUtils.js';
+import {TablePaginationDefaultValue} from './PaginationConstants.js';
 
 export interface IPaginationPerPageProps {
     id: string;

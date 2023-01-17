@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 
-import {PlasmaState} from '../../PlasmaState';
-import {FilepickerState} from './FilepickerReducers';
+import {PlasmaState} from '../../PlasmaState.js';
+import {FilepickerState} from './FilepickerReducers.js';
 
 const getFile = (inputId: string): File => {
     const input = document.getElementById(inputId) as HTMLInputElement;

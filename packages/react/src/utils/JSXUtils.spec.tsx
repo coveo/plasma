@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import {ReactElement} from 'react';
 
-import {addClassNameToChildren, getReactNodeTextContent} from './JSXUtils';
+import {addClassNameToChildren, getReactNodeTextContent} from './JSXUtils.js';
 
 describe('JSXUtils', () => {
     describe('getReactNodeTextContent', () => {

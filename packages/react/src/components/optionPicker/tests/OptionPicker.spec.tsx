@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import * as _ from 'underscore';
 import {screen, render} from '@test-utils';
 
-import {IOptionPickerProps, OptionPicker} from '../OptionPicker';
+import {IOptionPickerProps, OptionPicker} from '../OptionPicker.js';
 
 describe('Option picker', () => {
     const OPTION_PICKER_BASIC_PROPS: IOptionPickerProps = {

@@ -1,15 +1,15 @@
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
-import {IReduxActionsPayload} from '../../PlasmaState';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ListBoxActions} from '../listBox/ListBoxActions';
-import {LoadingActions} from '../loading/LoadingActions';
-import {PaginationActions} from '../navigation/pagination/NavigationPaginationActions';
-import {PerPageActions} from '../navigation/perPage/NavigationPerPageActions';
-import {TableHOCRowActionsType} from '../table-hoc/actions/TableHOCRowActions';
-import {TableHOCUtils} from '../table-hoc/utils/TableHOCUtils';
-import {IActionOptions} from './Action';
-import {ActionBarActions} from './ActionBarActions';
+import s from 'underscore.string';
+import {IReduxActionsPayload} from '../../PlasmaState.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {ListBoxActions} from '../listBox/ListBoxActions.js';
+import {LoadingActions} from '../loading/LoadingActions.js';
+import {PaginationActions} from '../navigation/pagination/NavigationPaginationActions.js';
+import {PerPageActions} from '../navigation/perPage/NavigationPerPageActions.js';
+import {TableHOCRowActionsType} from '../table-hoc/actions/TableHOCRowActions.js';
+import {TableHOCUtils} from '../table-hoc/utils/TableHOCUtils.js';
+import {IActionOptions} from './Action.js';
+import {ActionBarActions} from './ActionBarActions.js';
 
 export interface IActionBarState {
     id: string;
@@ -44,7 +44,7 @@ export const actionBarReducer = (
         case ListBoxActions.select:
             return state.id === action.payload.id ||
                 TableHOCUtils.getPaginationId(state.id) === action.payload.id ||
-                contains(action.payload.id, state.id)
+                s.contains(action.payload.id, state.id)
                 ? {...state, actions: []}
                 : state;
         case TableHOCRowActionsType.remove:

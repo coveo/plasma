@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
-import {IClassName} from '../../utils/ClassNameUtils';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {ITableHeaderCellProps, TableHeaderCell} from './TableHeaderCell';
-import {TableHeaderCellConnected} from './TableHeaderCellConnected';
+import {IClassName} from '../../utils/ClassNameUtils.js';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils.js';
+import {ITableHeaderCellProps, TableHeaderCell} from './TableHeaderCell.js';
+import {TableHeaderCellConnected} from './TableHeaderCellConnected.js';
 
 export interface ITableHeaderProps extends ClassAttributes<TableHeader>, IReduxStatePossibleProps {
     columns: ITableHeaderCellProps[];

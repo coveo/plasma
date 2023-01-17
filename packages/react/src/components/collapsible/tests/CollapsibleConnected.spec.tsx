@@ -1,13 +1,13 @@
 import {ReactWrapper} from 'enzyme';
 import {mountWithStore} from '@test-utils';
 
-import {SlideY} from '../../../animations/SlideY';
-import {PlasmaState} from '../../../PlasmaState';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {setCollapsibleExpanded} from '../CollapsibleActions';
-import {CollapsibleConnected, CollapsibleOwnProps} from '../CollapsibleConnected';
-import {CollapsibleToggle} from '../CollapsibleToggle';
-import {collapsiblePossibleProps} from './CollapsibleTestCommon.mock';
+import {SlideY} from '../../../animations/SlideY.js';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {getStoreMock} from '../../../utils/tests/TestUtils.js';
+import {setCollapsibleExpanded} from '../CollapsibleActions.js';
+import {CollapsibleConnected, CollapsibleOwnProps} from '../CollapsibleConnected.js';
+import {CollapsibleToggle} from '../CollapsibleToggle.js';
+import {collapsiblePossibleProps} from './CollapsibleTestCommon.mock.js';
 
 describe('<CollapsibleConnected />', () => {
     let store: ReturnType<typeof getStoreMock>;

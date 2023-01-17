@@ -1,6 +1,6 @@
 import {render, screen, waitFor} from '@test-utils';
 
-import {CollapsibleToggle} from '../CollapsibleToggle';
+import {CollapsibleToggle} from '../CollapsibleToggle.js';
 
 describe('CollapsibleToggle', () => {
     it('should render a Svg component with the icon "arrowHeadDown" when expanded is false', async () => {

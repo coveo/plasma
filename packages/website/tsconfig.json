@@ -1,25 +1,44 @@
 {
-    "extends": "../tsconfig-base",
-    "compilerOptions": {
-        "removeComments": false,
-        "module": "esnext",
-        "target": "esnext",
-        "noUnusedLocals": false,
-        "rootDir": "src",
-        "baseUrl": ".",
-        "paths": {
-            "@examples/*": ["./src/examples/*"],
-            "@demo": ["./src/building-blocs/Demo.tsx"]
-        },
-        "lib": ["ES2020", "dom"],
-        "typeRoots": ["./types", "./node_modules/@types"],
-        "strict": false,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve"
+  "compilerOptions": {
+    "removeComments": false,
+    "module": "esnext",
+    "target": "esnext",
+    "noUnusedLocals": false,
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@examples/*": [
+        "./src/examples/*"
+      ],
+      "@demo": [
+        "./src/building-blocs/Demo.tsx"
+      ]
     },
-    "include": ["src", "docs"],
-    "exclude": ["node_modules"]
+    "lib": [
+      "ES2020",
+      "dom"
+    ],
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ],
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src",
+    "docs"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

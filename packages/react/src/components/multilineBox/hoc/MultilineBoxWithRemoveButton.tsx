@@ -3,17 +3,17 @@ import classNames from 'classnames';
 import {Children, Fragment, PureComponent, ReactNode} from 'react';
 import {connect} from 'react-redux';
 
-import {removeValueStringList} from '../../../reusableState/customList/StringListActions';
-import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {Button, IButtonProps} from '../../button/Button';
+import {removeValueStringList} from '../../../reusableState/customList/StringListActions.js';
+import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils.js';
+import {IDispatch} from '../../../utils/ReduxUtils.js';
+import {Button, IButtonProps} from '../../button/Button.js';
 import {
     IMultilineBoxDispatchProps,
     IMultilineBoxOwnProps,
     IMultilineParentProps,
     IMultilineSingleBoxProps,
     MultilineBox,
-} from '../MultilineBox';
+} from '../MultilineBox.js';
 
 export interface IMultilineBoxWithRemoveButtonSupplierProps<T = any> {
     containerNode?: (

@@ -2,9 +2,9 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {LoadingConnected} from '../LoadingConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {LoadingConnected} from '../LoadingConnected.js';
 
 describe('<LoadingConnected />', () => {
     it('should render without errors', () => {

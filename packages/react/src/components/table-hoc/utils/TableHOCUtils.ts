@@ -1,12 +1,12 @@
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {DatePickerSelectors} from '../../datePicker/DatePickerSelectors';
-import {IFilterState} from '../../filterBox/FilterBoxReducers';
-import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
-import {IListBoxState} from '../../listBox/ListBoxReducers';
-import {PaginationUtils} from '../../pagination/PaginationUtils';
-import {ITableWithSortState} from '../reducers/TableWithSortReducers';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {DatePickerSelectors} from '../../datePicker/DatePickerSelectors.js';
+import {IFilterState} from '../../filterBox/FilterBoxReducers.js';
+import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors.js';
+import {IListBoxState} from '../../listBox/ListBoxReducers.js';
+import {PaginationUtils} from '../../pagination/PaginationUtils.js';
+import {ITableWithSortState} from '../reducers/TableWithSortReducers.js';
 
 export interface ITableHOCPredicateValue {
     id: string;

@@ -5,7 +5,7 @@ import {
     DEFAULT_MODAL_PROMPT_CONFIRM_LABEL,
     IModalPromptProps,
     ModalPrompt,
-} from '../ModalPrompt';
+} from '../ModalPrompt.js';
 
 describe('ModalPrompt', () => {
     const id: string = 'modalPrompt';

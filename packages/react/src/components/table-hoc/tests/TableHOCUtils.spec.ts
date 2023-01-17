@@ -1,5 +1,5 @@
-import {PaginationUtils} from '../../pagination/PaginationUtils';
-import {TableHOCUtils} from '../utils/TableHOCUtils';
+import {PaginationUtils} from '../../pagination/PaginationUtils.js';
+import {TableHOCUtils} from '../utils/TableHOCUtils.js';
 
 describe('TableHOCUtils', () => {
     const defaultProps = {id: 'some-id', componentId: 'some-componentId', tableId: 'some-tableId'};

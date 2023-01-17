@@ -4,11 +4,11 @@ import {Component} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {PaginationReduxActions} from '../navigation/pagination/NavigationPaginationActions';
-import {PaginationSelect} from './PaginationSelect';
-import {PaginationSelectors} from './PaginationSelectors';
+import {IReduxActionsPayload, PlasmaState} from '../../PlasmaState.js';
+import {IReduxAction} from '../../utils/ReduxUtils.js';
+import {PaginationReduxActions} from '../navigation/pagination/NavigationPaginationActions.js';
+import {PaginationSelect} from './PaginationSelect.js';
+import {PaginationSelectors} from './PaginationSelectors.js';
 
 export interface IPaginationPagesNumberOwnProps {
     id: string;

@@ -3,13 +3,13 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {addModal, openModal} from '../ModalActions';
-import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
-import {ModalHeaderConnected} from '../ModalHeaderConnected';
-import {IModalState} from '../ModalReducers';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {addModal, openModal} from '../ModalActions.js';
+import {IModalHeaderProps, ModalHeader} from '../ModalHeader.js';
+import {ModalHeaderConnected} from '../ModalHeaderConnected.js';
+import {IModalState} from '../ModalReducers.js';
 
 describe('ModalHeader', () => {
     describe('<ModalHeaderConnected />', () => {

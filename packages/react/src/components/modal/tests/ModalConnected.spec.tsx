@@ -2,12 +2,12 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IModalProps, Modal} from '../Modal';
-import {closeModal, openModal} from '../ModalActions';
-import {ModalConnected} from '../ModalConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IModalProps, Modal} from '../Modal.js';
+import {closeModal, openModal} from '../ModalActions.js';
+import {ModalConnected} from '../ModalConnected.js';
 
 describe('Modal', () => {
     let modal: ReactWrapper<IModalProps, any>;

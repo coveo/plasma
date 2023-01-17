@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import {ButtonHTMLAttributes, Component} from 'react';
 import * as _ from 'underscore';
-import {TooltipPlacement} from '../../utils/TooltipUtils';
+import {TooltipPlacement} from '../../utils/TooltipUtils.js';
 
-import {IBaseActionOptions} from '../actions';
-import {LoadingSpinner} from '../loading';
-import {Tooltip} from '../tooltip';
+import {IBaseActionOptions} from '../actions/index.js';
+import {LoadingSpinner} from '../loading/index.js';
+import {Tooltip} from '../tooltip/index.js';
 
 export interface IButtonProps extends IBaseActionOptions {
     /**

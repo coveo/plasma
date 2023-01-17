@@ -1,1 +1,1 @@
-export * from './LabeledValue';
+export * from './LabeledValue.js';

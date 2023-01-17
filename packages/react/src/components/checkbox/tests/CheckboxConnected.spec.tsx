@@ -2,13 +2,13 @@ import {mount, ReactWrapper} from 'enzyme';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IInputProps} from '../../input/Input';
-import {Checkbox} from '../Checkbox';
-import {toggleCheckbox} from '../CheckboxActions';
-import {CheckboxConnected} from '../CheckboxConnected';
+import {PlasmaState} from '../../../PlasmaState.js';
+import {clearState} from '../../../utils/ReduxUtils.js';
+import {TestUtils} from '../../../utils/tests/TestUtils.js';
+import {IInputProps} from '../../input/Input.js';
+import {Checkbox} from '../Checkbox.js';
+import {toggleCheckbox} from '../CheckboxActions.js';
+import {CheckboxConnected} from '../CheckboxConnected.js';
 
 describe('Checkbox', () => {
     describe('<CheckboxConnected />', () => {

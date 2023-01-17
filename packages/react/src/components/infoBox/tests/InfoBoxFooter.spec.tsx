@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 import * as _ from 'underscore';
-import {InfoBoxFooter} from '../InfoBoxFooter';
+import {InfoBoxFooter} from '../InfoBoxFooter.js';
 
 describe('InfoBoxFooter', () => {
     it('should not throw', () => {

@@ -1,8 +1,8 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
 
-import {LineSeries} from '../LineSeries';
-import {XYChartContextMock} from './XYChartContextMock';
+import {LineSeries} from '../LineSeries.js';
+import {XYChartContextMock} from './XYChartContextMock.js';
 
 jest.mock('react', () => {
     const originReact = jest.requireActual('react');

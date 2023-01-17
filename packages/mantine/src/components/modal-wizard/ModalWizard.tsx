@@ -1,8 +1,8 @@
 import {Box, Button, createStyles, DefaultProps, Modal, ModalProps, Progress, Selectors} from '@mantine/core';
 import {Children, ReactElement, useMemo, useState} from 'react';
-import {StickyFooter} from '../sticky-footer';
-import {ModalWizardStep} from './ModalWizardStep';
-import {Header} from '../header';
+import {StickyFooter} from '../sticky-footer/index.js';
+import {ModalWizardStep} from './ModalWizardStep.js';
+import {Header} from '../header/index.js';
 
 const useStyles = createStyles(() => ({
     modal: {

@@ -1,6 +1,6 @@
 import {mount} from 'enzyme';
 
-import {ChartContainer} from '../ChartContainer';
+import {ChartContainer} from '../ChartContainer.js';
 
 describe('<ChartContainer />', () => {
     it('should not throw', () => {

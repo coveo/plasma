@@ -1,4 +1,4 @@
-import {ICheckboxState} from './CheckboxReducers';
+import {ICheckboxState} from './CheckboxReducers.js';
 
 export interface IGroupableCheckboxesState {
     total: number;

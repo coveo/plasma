@@ -2,9 +2,9 @@ import {render, screen, within} from '@test-utils';
 import {RefObject, createRef} from 'react';
 import _ from 'underscore';
 
-import {Defaults} from '../../../Defaults';
-import {DomPositionCalculator, DropPodPosition} from '../DomPositionCalculator';
-import {DropPod} from '../DropPod';
+import {Defaults} from '../../../Defaults.js';
+import {DomPositionCalculator, DropPodPosition} from '../DomPositionCalculator.js';
+import {DropPod} from '../DropPod.js';
 
 describe('DropPod', () => {
     const defaultDrop = <div>Hello world!</div>;

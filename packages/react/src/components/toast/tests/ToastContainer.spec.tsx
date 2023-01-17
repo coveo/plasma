@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as _ from 'underscore';
 
-import {Toast} from '../Toast';
-import {IToastContainerProps, ToastContainer} from '../ToastContainer';
+import {Toast} from '../Toast.js';
+import {IToastContainerProps, ToastContainer} from '../ToastContainer.js';
 
 describe('Toasts', () => {
     let component: ReactWrapper<IToastContainerProps>;

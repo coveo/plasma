@@ -3,15 +3,15 @@ import {shallowWithStore} from '@test-utils';
 import {screen, render} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 
-import {HOCTableRowState} from '..';
-import {UrlUtils} from '../../../utils';
-import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
-import {addActionsToActionBar} from '../../actions/ActionBarActions';
-import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle';
-import {TableHOCRowActions} from '../actions/TableHOCRowActions';
-import {ITableRowConnectedProps, TableRowConnected} from '../TableRowConnected';
-import {TableSelectors} from '../TableSelectors';
-import {Button} from '../../button/Button';
+import {UrlUtils} from '../../../utils/index.js';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils.js';
+import {addActionsToActionBar} from '../../actions/ActionBarActions.js';
+import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle.js';
+import {TableHOCRowActions} from '../actions/TableHOCRowActions.js';
+import {ITableRowConnectedProps, TableRowConnected} from '../TableRowConnected.js';
+import {TableSelectors} from '../TableSelectors.js';
+import {Button} from '../../button/Button.js';
+import {HOCTableRowState} from '...js';
 
 describe('Table HOC', () => {
     describe('TableRowConnected', () => {

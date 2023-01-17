@@ -1,9 +1,9 @@
 import {shallowWithState, shallowWithStore} from '@test-utils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {Button} from '../../button/Button';
-import {ButtonWithRefreshCallback, IButtonWithRefreshCallbackProps} from '../ButtonWithRefreshCallback';
-import {RefreshCallBackActions} from '../RefeshCallbackActions';
-import {RefreshStatus} from '../RefreshCallbackReducer';
+import {getStoreMock} from '../../../utils/tests/TestUtils.js';
+import {Button} from '../../button/Button.js';
+import {ButtonWithRefreshCallback, IButtonWithRefreshCallbackProps} from '../ButtonWithRefreshCallback.js';
+import {RefreshCallBackActions} from '../RefeshCallbackActions.js';
+import {RefreshStatus} from '../RefreshCallbackReducer.js';
 
 describe('ButtonWithRefreshCallback tests', () => {
     describe('<ButtonWithRefreshCallback />', () => {

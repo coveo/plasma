@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
 
-import {ModalComposite} from '../../components/modal/ModalComposite';
+import {ModalComposite} from '../../components/modal/ModalComposite.js';
 
 export interface PreventNavigationPromptProps {
     id: string;
