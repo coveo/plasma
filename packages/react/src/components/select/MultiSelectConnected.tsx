@@ -1,5 +1,5 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ComponentType, CSSProperties, PureComponent, ReactNode} from 'react';
 import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';

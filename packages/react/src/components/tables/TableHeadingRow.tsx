@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ClassAttributes, MouseEvent, Component, ReactNode} from 'react';
 
 import {EventUtils} from '../../utils/EventUtils';

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ClassAttributes, Component} from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';

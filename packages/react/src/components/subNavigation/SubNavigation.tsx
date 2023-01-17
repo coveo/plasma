@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactNode, HTMLAttributes, FunctionComponent, MouseEvent, useEffect, createElement} from 'react';
 import {map, omit} from 'underscore';
 import {SlideY} from '../../animations';

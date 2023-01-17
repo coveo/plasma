@@ -1,5 +1,5 @@
 import {InfoSize24Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 
 import {CollapsibleConnected} from './CollapsibleConnected';

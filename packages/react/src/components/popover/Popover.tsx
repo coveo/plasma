@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {RefObject, createRef, Children, Component, ReactNode} from 'react';
 import {findDOMNode} from 'react-dom';
 import TetherComponent from 'react-tether';

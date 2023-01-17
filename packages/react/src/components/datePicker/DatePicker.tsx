@@ -1,5 +1,5 @@
 import moment from 'moment';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ClassAttributes, PureComponent} from 'react';
 
 import {DateUtils} from '../../utils/DateUtils';

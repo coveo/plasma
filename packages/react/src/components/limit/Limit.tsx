@@ -1,5 +1,5 @@
 import {ChartPieSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 

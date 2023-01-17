@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Children, cloneElement, isValidElement, ReactNode} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import * as _ from 'underscore';

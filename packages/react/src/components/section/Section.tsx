@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactNode, FunctionComponent, PropsWithChildren} from 'react';
 
 type SectionMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';

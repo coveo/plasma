@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {InputHTMLAttributes, FunctionComponent, ChangeEvent, FocusEvent, useMemo, useRef, useEffect} from 'react';
 import {omit, uniqueId} from 'underscore';
 

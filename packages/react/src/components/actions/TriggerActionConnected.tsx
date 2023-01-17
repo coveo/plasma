@@ -1,5 +1,5 @@
 import {Icon} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ClassAttributes, Component, KeyboardEvent as ReactKeyboardEvent} from 'react';
 import {connect} from 'react-redux';
 

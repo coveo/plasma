@@ -37,7 +37,7 @@
         "@mantine/modals": "5.9.2",
         "@mantine/next": "5.9.2",
         "@mantine/prism": "5.9.2",
-        "classnames": "2.3.1",
+        "clsx": "1.2.1",
         "codesandbox-import-utils": "2.2.3",
         "embla-carousel-react": "7.0.4",
         "faker": "4.1.0",
@@ -66,7 +66,6 @@
         "underscore": "1.13.1"
     },
     "devDependencies": {
-        "@types/classnames": "2.3.0",
         "@types/faker": "4.1.12",
         "@types/hoist-non-react-statics": "3.3.1",
         "@types/lodash.kebabcase": "4.1.7",

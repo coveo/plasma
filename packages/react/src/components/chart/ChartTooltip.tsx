@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, CSSProperties, ReactNode, useRef, useContext, useState, Fragment} from 'react';
 
 import {DropPodPosition, IDropUIPosition} from '../drop/DomPositionCalculator';

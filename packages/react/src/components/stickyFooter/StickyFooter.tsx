@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Component, ReactNode} from 'react';
 
 export interface IStickyFooterProps {

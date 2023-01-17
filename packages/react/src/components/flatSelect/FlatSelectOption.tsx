@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Component} from 'react';
 import {Content, IContentProps} from '../content/Content';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';

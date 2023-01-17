@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactNode, FunctionComponent, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';

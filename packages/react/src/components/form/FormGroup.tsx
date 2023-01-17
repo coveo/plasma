@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
 export interface IFormGroupProps {

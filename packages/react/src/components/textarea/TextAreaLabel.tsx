@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactElement} from 'react';
 import {ITextAreaProps} from './TextArea';
 

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactElement, MouseEvent, Children, cloneElement, Component} from 'react';
 import {Input} from '../input/Input';
 import {ChildForm} from './ChildForm';

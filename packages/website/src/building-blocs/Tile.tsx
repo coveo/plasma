@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import Link from 'next/link';
 import {FunctionComponent} from 'react';
 

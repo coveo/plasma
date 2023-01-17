@@ -1,5 +1,5 @@
 import {Icon} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Component} from 'react';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';

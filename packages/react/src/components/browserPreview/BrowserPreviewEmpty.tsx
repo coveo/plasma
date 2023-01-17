@@ -1,5 +1,5 @@
 import {UndoSize32Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 
 export interface BrowserPreviewEmptyProps {

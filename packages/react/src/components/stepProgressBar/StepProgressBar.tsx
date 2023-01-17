@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {range, uniqueId} from 'underscore';
 
 import {IClassName} from '../../utils/ClassNameUtils';

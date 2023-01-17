@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';

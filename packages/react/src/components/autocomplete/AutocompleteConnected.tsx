@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {KeyboardEvent, ChangeEvent, HTMLProps, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';

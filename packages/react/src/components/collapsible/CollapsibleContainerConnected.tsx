@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';

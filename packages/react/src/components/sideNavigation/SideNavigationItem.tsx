@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, useRef, useEffect, PropsWithChildren} from 'react';
 import {addClassNameToChildren} from '../../utils/JSXUtils';
 

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import type {Editor, EditorConfiguration} from 'codemirror';
 import {Component, ComponentType, createRef} from 'react';
 import {IControlledCodeMirror} from 'react-codemirror2';

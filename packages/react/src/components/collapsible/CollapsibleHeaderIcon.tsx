@@ -1,5 +1,5 @@
 import {InfoSize16Px, QuestionSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';

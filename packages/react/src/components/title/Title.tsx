@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, PropsWithChildren, ReactNode, useRef, useState} from 'react';
 import * as _ from 'underscore';
 

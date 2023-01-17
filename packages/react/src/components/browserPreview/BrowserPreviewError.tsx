@@ -1,5 +1,5 @@
 import {svg as Icons} from '@coveord/plasma-style';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent} from 'react';
 
 export interface BrowserPreviewErrorProps {

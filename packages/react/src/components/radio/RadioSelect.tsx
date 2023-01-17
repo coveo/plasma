@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {MouseEvent, ReactElement, Children, cloneElement, PureComponent} from 'react';
 import * as _ from 'underscore';
 import {RadioCard} from '.';

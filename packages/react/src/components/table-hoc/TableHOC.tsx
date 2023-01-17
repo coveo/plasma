@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactNode, HTMLAttributes, FunctionComponent} from 'react';
 import * as _ from 'underscore';
 

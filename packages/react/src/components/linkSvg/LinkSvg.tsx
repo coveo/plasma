@@ -1,5 +1,5 @@
 import {Icon, QuestionSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Children, FunctionComponent, PropsWithChildren} from 'react';
 
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';

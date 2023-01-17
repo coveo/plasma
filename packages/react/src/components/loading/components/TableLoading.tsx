@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import * as _ from 'underscore';
 
 const Table = ({

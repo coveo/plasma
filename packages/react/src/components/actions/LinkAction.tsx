@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ClassAttributes, AllHTMLAttributes, Component} from 'react';
 import {Action, IBasicActionProps} from './Action';
 

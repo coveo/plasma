@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {HTMLAttributes, FunctionComponent, KeyboardEvent, useState, useRef, PropsWithChildren} from 'react';
 import {keyCode} from '../../utils';
 

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent} from 'react';
 
 interface LoadingSpinnerProps {

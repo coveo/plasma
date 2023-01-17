@@ -1,5 +1,5 @@
 import {Icon} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, MouseEvent, PropsWithChildren, ReactNode, useEffect, useRef} from 'react';
 import * as _ from 'underscore';
 
