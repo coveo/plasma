@@ -1,5 +1,5 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Children, PureComponent, ReactNode} from 'react';
 
 import {TooltipPlacement} from '../../../utils/TooltipUtils';

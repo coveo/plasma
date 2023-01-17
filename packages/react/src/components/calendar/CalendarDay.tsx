@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Moment} from 'moment';
 import {ClassAttributes, Component} from 'react';
 export interface IDay {

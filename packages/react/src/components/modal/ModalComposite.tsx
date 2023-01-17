@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactNode, MouseEvent, KeyboardEvent, PureComponent} from 'react';
 import ReactModal from 'react-modal';
 import {connect} from 'react-redux';

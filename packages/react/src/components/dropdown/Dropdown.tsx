@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ClassAttributes, KeyboardEvent, Component} from 'react';
 import * as ReactDOM from 'react-dom';
 

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ClassAttributes, Component, ReactNode} from 'react';
 import {SlideY} from '../../animations/SlideY';
 import {IErrorSection, TableError} from './TableError';

@@ -1,5 +1,5 @@
 import {SearchSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ChangeEvent, Component} from 'react';
 
 import {IClassName} from '../../utils/ClassNameUtils';

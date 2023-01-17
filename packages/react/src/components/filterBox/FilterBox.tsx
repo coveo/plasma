@@ -1,5 +1,5 @@
 import {CrossSize16Px, FilterSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ClassAttributes, Component, FocusEvent, FormEvent, KeyboardEvent, ReactNode} from 'react';
 
 export interface IFilterBoxOwnProps extends ClassAttributes<FilterBox> {

@@ -1,5 +1,5 @@
 import {MinusSize16Px, PlusSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ChangeEvent, HTMLProps, KeyboardEvent, PureComponent, ReactText} from 'react';
 import * as _ from 'underscore';
 

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ChangeEvent, ChangeEventHandler, FunctionComponent, PropsWithChildren, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';

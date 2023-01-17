@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import moment from 'moment';
 import {ClassAttributes, ReactNode, Component} from 'react';
 import * as _ from 'underscore';

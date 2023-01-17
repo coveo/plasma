@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactNode, FunctionComponent} from 'react';
 import {omit} from 'underscore';
 import {IInputProps, Input} from '../input/Input';

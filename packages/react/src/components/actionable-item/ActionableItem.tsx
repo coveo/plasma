@@ -1,5 +1,5 @@
 import {DotsSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, MouseEvent as ReactMouseEvent, PropsWithChildren} from 'react';
 
 import {DropPodPosition} from '../drop/DomPositionCalculator';

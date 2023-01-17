@@ -1,5 +1,5 @@
 import {RemoveSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Children, Fragment, PureComponent, ReactNode} from 'react';
 import {connect} from 'react-redux';
 

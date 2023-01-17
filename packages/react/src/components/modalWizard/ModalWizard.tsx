@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactNode, FunctionComponent, ReactElement, useState, Children, isValidElement} from 'react';
 import {useDispatch} from 'react-redux';
 

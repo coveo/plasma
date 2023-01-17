@@ -1,5 +1,5 @@
 import {Icon} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Component, createElement, KeyboardEvent, MouseEvent, ReactText} from 'react';
 import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';

@@ -1,5 +1,5 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ComponentType, FunctionComponent, MouseEvent, ReactNode, useEffect, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';

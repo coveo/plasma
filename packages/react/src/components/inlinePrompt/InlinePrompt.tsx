@@ -1,5 +1,5 @@
 import {Icon} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';

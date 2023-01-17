@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Range, SliderProps, SliderTooltip} from 'rc-slider';
 import {ComponentProps, FunctionComponent, ReactNode, useCallback, useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';

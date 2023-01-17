@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, useEffect, useState} from 'react';
 
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';

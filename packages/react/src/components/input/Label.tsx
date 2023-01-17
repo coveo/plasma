@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {HTMLProps, FunctionComponent, useContext, PropsWithChildren} from 'react';
 import {CheckboxContext, CheckboxContextProps} from '../checkbox/CheckboxContext';
 

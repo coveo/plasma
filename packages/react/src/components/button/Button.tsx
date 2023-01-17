@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ButtonHTMLAttributes, Component} from 'react';
 import * as _ from 'underscore';
 import {TooltipPlacement} from '../../utils/TooltipUtils';

@@ -1,5 +1,5 @@
 import {DotsSize24Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Component, MouseEvent, ReactNode, SyntheticEvent} from 'react';
 import * as ReactDOM from 'react-dom';
 

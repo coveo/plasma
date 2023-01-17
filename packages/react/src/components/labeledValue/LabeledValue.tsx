@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {PureComponent, ReactNode} from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';

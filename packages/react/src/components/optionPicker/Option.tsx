@@ -1,5 +1,5 @@
 import {ClassAttributes, Component} from 'react';
-import classNames from 'classnames';
+import classNames from 'clsx';
 
 export interface IOption {
     label: string;

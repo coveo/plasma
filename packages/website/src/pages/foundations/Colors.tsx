@@ -1,5 +1,5 @@
 import {color} from '@coveord/plasma-tokens';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent} from 'react';
 import kebabCase from 'lodash.kebabcase';
 

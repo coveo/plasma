@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, PropsWithChildren} from 'react';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {IInputProps, Input} from '../input/Input';

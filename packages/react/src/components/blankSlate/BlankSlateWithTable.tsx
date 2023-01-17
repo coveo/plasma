@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ComponentType, PureComponent, ComponentClass, PropsWithChildren} from 'react';
 import {IBlankSlateProps} from './BlankSlate';
 

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {FunctionComponent, FormEvent, PropsWithChildren, FormHTMLAttributes} from 'react';
 
 type FormMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';

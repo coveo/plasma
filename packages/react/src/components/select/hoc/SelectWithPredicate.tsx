@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ComponentType, FunctionComponent, PropsWithChildren, useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';

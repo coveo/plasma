@@ -1,5 +1,5 @@
 import {ArrowHeadLeftSize16Px, ArrowHeadRightSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Component} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {MouseEvent, Children, useRef, FunctionComponent, useEffect, PropsWithChildren} from 'react';
 import {IInputProps, Input} from '../input/Input';
 import {CheckboxContext} from './CheckboxContext';

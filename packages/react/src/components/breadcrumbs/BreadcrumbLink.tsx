@@ -1,5 +1,5 @@
 import {ArrowHeadRightSize24Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Component, MouseEvent, ReactNode} from 'react';
 
 export interface IBreadcrumbLinkProps {

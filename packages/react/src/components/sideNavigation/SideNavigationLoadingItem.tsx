@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 
 export interface ISideNavLoadingItemProps {
     className?: string;

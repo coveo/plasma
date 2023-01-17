@@ -1,5 +1,5 @@
 import {CrossSize24Px} from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {Component, ReactNode} from 'react';
 import * as _ from 'underscore';
 

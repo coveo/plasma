@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {HTMLAttributes, FunctionComponent} from 'react';
 
 export interface IPaginationSelectProps extends HTMLAttributes<HTMLAnchorElement> {

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {ReactNode, HTMLProps, HTMLAttributes, RefObject, CSSProperties, createRef, PureComponent} from 'react';
 import * as ReactDOM from 'react-dom';
 

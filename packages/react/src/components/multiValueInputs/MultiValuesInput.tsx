@@ -1,7 +1,7 @@
 import {ReactNode, FunctionComponent, ChangeEvent} from 'react';
 import * as _ from 'underscore';
 
-import classNames from 'classnames';
+import classNames from 'clsx';
 import {IButtonProps} from '../button/Button';
 import {IInputOwnProps} from '../input/Input';
 import {InputConnected} from '../input/Input';
