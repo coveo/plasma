@@ -41,9 +41,9 @@ const template = (variables, {tpl}) => {
     return tpl`
 ${variables.imports};
 
-import {SVGProps} from 'react';
+import {forwardRef, SVGProps} from 'react';
 
-const ${variables.componentName} = (${props}) => (${variables.jsx});
+const ${variables.componentName} = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>((${props}, ref) => (${variables.jsx}));
 
 ${variables.exports};
 `;

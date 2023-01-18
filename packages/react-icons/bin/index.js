@@ -45,6 +45,7 @@ const convertVariant = async (file) => {
                 template,
                 expandProps: false,
                 svgProps: {
+                    ref: '{ref}',
                     'aria-label': iconName,
                     role: 'img',
                     height: '{height || width || "1em"}',
