@@ -1,5 +1,5 @@
-import {ComponentType} from 'react';
+import {ForwardRefExoticComponent, SVGProps} from 'react';
 
 export * from './generated';
 
-export type Icon = ComponentType<React.SVGProps<SVGSVGElement>>;
+export type Icon = ForwardRefExoticComponent<SVGProps<SVGSVGElement>>;

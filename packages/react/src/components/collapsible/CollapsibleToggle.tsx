@@ -5,9 +5,10 @@ export interface CollapsibleToggleProps {
     expanded: boolean;
 }
 
-export const CollapsibleToggle: FunctionComponent<
-    React.PropsWithChildren<CollapsibleToggleProps & SVGProps<SVGSVGElement>>
-> = ({expanded, ...svgProps}) => {
+export const CollapsibleToggle: FunctionComponent<CollapsibleToggleProps & Omit<SVGProps<SVGSVGElement>, 'ref'>> = ({
+    expanded,
+    ...svgProps
+}) => {
     const Icon = expanded ? ArrowHeadUpSize16Px : ArrowHeadDownSize16Px;
     return <Icon height={16} {...svgProps} />;
 };

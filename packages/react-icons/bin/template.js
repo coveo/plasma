@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const t = require('@babel/types');
 
 const findSvgTag = (variables) => variables.jsx.openingElement;
