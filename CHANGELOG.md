@@ -1,3 +1,12 @@
+# 48.28.0 (2023-01-19)
+
+
+### Features
+
+* **react-icons:** add forwardRef on react icons (#3013) 824599d, closes #3013
+
+
+
 ## 48.27.5 (2023-01-18)
 
 
