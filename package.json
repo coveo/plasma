@@ -10,7 +10,7 @@
         "lintfix": "pnpm --recursive --parallel lintfix",
         "precommit": "lint-staged",
         "prepare": "husky install",
-        "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done",
+        "reconstruct": "pnpm dlx rimraf packages/*/node_modules packages/*/.turbo node_modules && npm run setup && echo done",
         "setup": "pnpm install",
         "start": "pnpm build --filter=!@coveord/plasma-website && pnpm --recursive --parallel start",
         "test": "turbo run test --concurrency=1"
