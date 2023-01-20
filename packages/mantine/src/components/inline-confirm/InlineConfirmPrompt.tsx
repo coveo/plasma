@@ -1,6 +1,7 @@
-import {Button, Group} from '@mantine/core';
+import {Group} from '@mantine/core';
 import {FunctionComponent, ReactNode, useEffect} from 'react';
 
+import {Button} from '../button';
 import {useInlineConfirm} from './useInlineConfirm';
 
 interface InlineConfirmPromptProps {

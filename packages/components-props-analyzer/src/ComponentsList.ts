@@ -111,6 +111,7 @@ const components: Component[] = [
     {
         name: 'Button',
         packageName: '@coveord/plasma-react',
+        suffix: 'Legacy',
     },
     {
         name: 'Checkbox',
@@ -306,6 +307,11 @@ const components: Component[] = [
     {
         name: 'StickyFooter',
         packageName: '@coveord/plasma-mantine',
+    },
+    {
+        name: 'Button',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'ButtonProps',
     },
 ];
 

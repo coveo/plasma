@@ -1,7 +1,6 @@
 import {AddSize16Px} from '@coveord/plasma-react-icons';
 import {
     Box,
-    Button,
     DefaultProps,
     Group,
     Input,
@@ -17,6 +16,7 @@ import {useDidUpdate, useId} from '@mantine/hooks';
 import {ReactNode} from 'react';
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 
+import {Button} from '../button';
 import useStyles from './Collection.styles';
 import {CollectionItem} from './CollectionItem';
 

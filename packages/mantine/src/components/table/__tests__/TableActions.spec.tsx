@@ -1,7 +1,7 @@
-import {Button} from '@mantine/core';
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent} from '@test-utils';
 
+import {Button} from '../../button';
 import {Table} from '../Table';
 
 type RowData = {name: string};

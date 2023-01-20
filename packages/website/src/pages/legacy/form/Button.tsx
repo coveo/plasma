@@ -1,4 +1,4 @@
-import {ButtonMetadata} from '@coveord/plasma-components-props-analyzer';
+import {ButtonLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
 import ButtonDemo from '@examples/legacy/form/button/Button.demo.tsx';
 import ButtonDisabledDemo from '@examples/legacy/form/button/Disabled.demo.tsx';
 import ButtonWithIconAndLinkDemo from '@examples/legacy/form/button/IconAndLink.demo.tsx';
@@ -28,7 +28,7 @@ const ButtonPage = () => (
             withTooltip: <ButtonWithTooltipDemo center title="With tooltip" />,
         }}
         sourcePath="/packages/react/src/components/button/Button.tsx"
-        propsMetadata={ButtonMetadata}
+        propsMetadata={ButtonLegacyMetadata}
     />
 );
 

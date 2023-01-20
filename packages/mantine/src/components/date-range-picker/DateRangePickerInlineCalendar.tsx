@@ -1,7 +1,8 @@
-import {Button, Center, Group, Space} from '@mantine/core';
+import {Center, Group, Space} from '@mantine/core';
 import {DateRangePickerValue, RangeCalendar, RangeCalendarProps} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
+import {Button} from '../button';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
