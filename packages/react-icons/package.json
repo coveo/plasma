@@ -23,7 +23,8 @@
     "module": "dist/esm/index.js",
     "types": "./dist/definitions/index.d.ts",
     "files": [
-        "dist"
+        "dist",
+        "mock"
     ],
     "scripts": {
         "build": "pnpm generate && node ../../scripts/build",
