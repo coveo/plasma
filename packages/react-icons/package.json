@@ -24,10 +24,11 @@
     "types": "./dist/definitions/index.d.ts",
     "files": [
         "dist",
-        "mock"
+        "mock/index.js"
     ],
     "scripts": {
-        "build": "pnpm generate && node ../../scripts/build",
+        "build": "pnpm generate && node ../../scripts/build && pnpm build:mock",
+        "build:mock": "swc ./mock/index.tsx --out-dir ./mock --config-file ./mock/.swcrc",
         "clean": "rimraf dist",
         "generate": "node ./bin/index.js"
     },

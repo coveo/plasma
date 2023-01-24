@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 /**
  * You can use the following mock in jest to avoid loading the actual icons during tests, it can slow down your tests if you don't.
  * Just add the following entry to your moduleNameMappter config
@@ -13,7 +15,22 @@ const formatLabel = (name: string) => {
 };
 
 const handler = {
-    get: (obj, prop: string) => (props) => <span role="img" aria-label={formatLabel(prop)} {...props}></span>,
+    get: (obj, prop: string) => {
+        const IconMock = React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
+            ({height, width, ...others}, ref) => (
+                <svg
+                    ref={ref}
+                    role="img"
+                    aria-label={formatLabel(prop)}
+                    width={width || height || '1em'}
+                    height={height || width || '1em'}
+                    {...others}
+                />
+            )
+        );
+        IconMock.displayName = prop;
+        return IconMock;
+    },
 };
 
 module.exports = new Proxy({}, handler);
