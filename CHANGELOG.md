@@ -1,3 +1,21 @@
+# 49.0.0 (2023-01-25)
+
+
+### Features
+
+* **mantine:** override getinputprops (#2989) dfceeeb, closes #2989
+
+
+### BREAKING CHANGES
+
+* **mantine:** strict type implementation will break
+
+WEB-5981
+
+Co-authored-by: Danny Gauthier <dgauthier@WKS-002169.corp.coveo.com>
+
+
+
 ## 48.28.3 (2023-01-25)
 
 
