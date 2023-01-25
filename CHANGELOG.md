@@ -1,3 +1,12 @@
+## 48.28.3 (2023-01-25)
+
+
+### Bug Fixes
+
+* **react-icons:** improve mock and convert to js (#3019) 9090786, closes #3019
+
+
+
 ## 48.28.2 (2023-01-23)
 
 
