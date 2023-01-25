@@ -1,7 +1,7 @@
-import {useForm} from '@mantine/form';
 import {render, screen, userEvent, within} from '@test-utils';
 import {useState} from 'react';
 
+import {useForm} from '../../../form';
 import {Collection} from '../Collection';
 
 describe('Collection', () => {

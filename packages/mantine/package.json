@@ -18,7 +18,8 @@
         "clean": "rimraf dist",
         "start": "node ../../scripts/start",
         "test": "jest --maxWorkers=65%",
-        "test:watch": "jest --watchAll"
+        "test:watch": "jest --watchAll",
+        "test:debug": "node --inspect-brk node_modules/jest/bin/jest --runInBand --watchAll --detectOpenHandles --forceExit"
     },
     "dependencies": {
         "@coveord/plasma-react-icons": "workspace:*",

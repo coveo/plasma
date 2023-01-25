@@ -12,12 +12,13 @@ import {
     Tooltip,
     useComponentDefaultProps,
 } from '@mantine/core';
-import {useId} from '@mantine/hooks';
+import {ReorderPayload} from '@mantine/form/lib/types';
+import {useDidUpdate, useId} from '@mantine/hooks';
 import {ReactNode} from 'react';
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-import {useControlledList} from '../../hooks';
-import {CollectionItem} from './CollectionItem';
+
 import useStyles from './Collection.styles';
+import {CollectionItem} from './CollectionItem';
 
 interface CollectionProps<T>
     extends Omit<InputWrapperBaseProps, 'inputContainer' | 'inputWrapperOrder'>,
@@ -40,10 +41,6 @@ interface CollectionProps<T>
      */
     value?: T[];
     /**
-     * The initial items of the collection (for uncontrolled usage only)
-     */
-    defaultValue?: T[];
-    /**
      * Unused, has no effect
      */
     onFocus?: () => void;
@@ -59,6 +56,19 @@ interface CollectionProps<T>
      * @param itemIndex The index of the item that was removed
      */
     onRemoveItem?: (itemIndex: number) => void;
+    /**
+     * Function that gets called whenever a collection item needs to be reordered
+     *
+     * @param payload The origin and destination index of the item to reorder
+     */
+    onReorderItem?: (payload: ReorderPayload) => void;
+    /**
+     * Function that gets called when a new item needs to be added to the collection
+     *
+     * @param value The the value of the item to insert
+     * @param index The index of the new item to insert
+     */
+    onInsertItem?: (value: T, index: number) => void;
     /**
      * Whether the collection should have drag and drop behavior enabled
      *
@@ -116,9 +126,10 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
 export const Collection = <T,>(props: CollectionProps<T>) => {
     const {
         value,
-        defaultValue,
         onChange,
         onRemoveItem,
+        onReorderItem,
+        onInsertItem,
         disabled,
         draggable,
         children,
@@ -146,12 +157,14 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
     const {classes, cx} = useStyles(null, {classNames, name: 'Collection', styles, unstyled});
     const collectionID = useId('dnd-droppable');
 
-    const [values, {append, remove, reorder}] = useControlledList({value, onChange, defaultValue});
-    const hasOnlyOneItem = values.length === 1;
-    const removeItem = (index: number) => () => {
-        remove(index);
-        onRemoveItem?.(index);
-    };
+    const hasOnlyOneItem = value.length === 1;
+
+    /**
+     * Enforcing onChange when the value is modified will make sure the errors are carried through.
+     */
+    useDidUpdate(() => {
+        onChange?.(value);
+    }, [JSON.stringify(value)]);
 
     const _label = label ? (
         <Input.Label required={required} {...labelProps}>
@@ -171,13 +184,13 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
             </Box>
         ) : null;
 
-    const items = values.map((item, index) => (
+    const items = value.map((item, index) => (
         <CollectionItem
             key={index}
             disabled={disabled}
             draggable={draggable}
             index={index}
-            onRemove={removeItem(index)}
+            onRemove={() => onRemoveItem?.(index)}
             styles={styles}
             removable={!(required && hasOnlyOneItem)}
         >
@@ -185,7 +198,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         </CollectionItem>
     ));
 
-    const addAllowed = allowAdd?.(values) ?? true;
+    const addAllowed = allowAdd?.(value) ?? true;
 
     const _addButton = disabled ? null : (
         <Group>
@@ -194,7 +207,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
                     <Button
                         variant="subtle"
                         leftIcon={<AddSize16Px height={16} />}
-                        onClick={() => append(newItem)}
+                        onClick={() => onInsertItem(newItem, value?.length ?? 0)}
                         disabled={!addAllowed}
                     >
                         {addLabel}
@@ -206,7 +219,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
 
     return (
         <DragDropContext
-            onDragEnd={({destination, source}) => reorder({from: source.index, to: destination?.index || 0})}
+            onDragEnd={({destination, source}) => onReorderItem({from: source.index, to: destination?.index || 0})}
         >
             <Droppable direction="vertical" droppableId={collectionID}>
                 {(provided) => (
