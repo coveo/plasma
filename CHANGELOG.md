@@ -1,3 +1,12 @@
+## 49.0.1 (2023-01-26)
+
+
+### Bug Fixes
+
+* **dropdown:** add a grey background on arrow selection options (#3018) 73d9776, closes #3018
+
+
+
 # 49.0.0 (2023-01-25)
 
 
