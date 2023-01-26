@@ -198,6 +198,7 @@
             &.selected-value {
                 color: var(--grey-40);
                 font-weight: var(--main-font-bold);
+                background-color: var(--navy-blue-80);
             }
 
             &.disabled {
@@ -213,7 +214,12 @@
 
         &.active {
             color: var(--grey-40);
-            background-color: var(--navy-blue-80);
+            > a,
+            > span {
+                &.enabled:not(.selected-value) {
+                    background: var(--grey-20);
+                }
+            }
         }
 
         &.divider {
