@@ -1,3 +1,12 @@
+## 49.0.2 (2023-01-27)
+
+
+### Bug Fixes
+
+* **mantine:** adjust color swatch default size (#3021) b2c483c, closes #3021
+
+
+
 ## 49.0.1 (2023-01-26)
 
 
