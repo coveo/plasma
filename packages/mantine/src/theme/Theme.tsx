@@ -180,5 +180,10 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
             },
         },
+        ColorSwatch: {
+            defaultProps: {
+                size: 8,
+            },
+        },
     },
 };
