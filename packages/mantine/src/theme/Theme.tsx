@@ -112,6 +112,7 @@ export const plasmaTheme: MantineThemeOverride = {
                 color: 'navy',
                 withArrow: true,
                 withinPortal: true,
+                multiline: true,
             },
         },
         Breadcrumbs: {
@@ -183,6 +184,12 @@ export const plasmaTheme: MantineThemeOverride = {
         ColorSwatch: {
             defaultProps: {
                 size: 8,
+                withShadow: false,
+            },
+        },
+        MenuItem: {
+            defaultProps: {
+                fw: 300,
             },
         },
     },

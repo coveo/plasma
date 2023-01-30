@@ -2,13 +2,22 @@ import {Menu as MantineMenu, MenuItemProps as MantineMenuItemProps} from '@manti
 import {forwardRef} from 'react';
 
 import {createPolymorphicComponent, overrideComponent} from '../../utils';
-import {Button, ButtonWithDisabledTooltipProps} from '../button';
+import {ButtonWithDisabledTooltipProps} from '../button';
+import {ButtonWithDisabledTooltip} from '../button/ButtonWithDisabledTooltip';
 
 export interface MenuItemProps extends MantineMenuItemProps, ButtonWithDisabledTooltipProps {}
 
-const _MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => (
-    <Button.DisabledTooltip component={MantineMenu.Item} ref={ref} {...props} />
-));
+const _MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
+    ({disabledTooltip, disabled, disabledTooltipProps, ...others}, ref) => (
+        <ButtonWithDisabledTooltip
+            disabled={disabled}
+            disabledTooltip={disabledTooltip}
+            disabledTooltipProps={disabledTooltipProps}
+        >
+            <MantineMenu.Item ref={ref} disabled={disabled} {...others} />
+        </ButtonWithDisabledTooltip>
+    )
+);
 
 const MenuItem = createPolymorphicComponent<'button', MenuItemProps>(_MenuItem);
 

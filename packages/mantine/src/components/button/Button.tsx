@@ -1,4 +1,4 @@
-import {Button as MantineButton, ButtonProps as MantineButtonProps, useMantineTheme} from '@mantine/core';
+import {Button as MantineButton, ButtonProps as MantineButtonProps} from '@mantine/core';
 import {forwardRef} from 'react';
 
 import {createPolymorphicComponent} from '../../utils';
@@ -6,22 +6,16 @@ import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from './Butto
 
 export interface ButtonProps extends MantineButtonProps, ButtonWithDisabledTooltipProps {}
 
-const _Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-    const theme = useMantineTheme();
-    return (
+const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
+    ({disabledTooltip, disabled, disabledTooltipProps, ...others}, ref) => (
         <ButtonWithDisabledTooltip
-            component={MantineButton}
-            ref={ref}
-            disabledHoverColor={theme.colors.gray[2]}
-            {...props}
-        />
-    );
-});
+            disabled={disabled}
+            disabledTooltip={disabledTooltip}
+            disabledTooltipProps={disabledTooltipProps}
+        >
+            <MantineButton ref={ref} disabled={disabled} {...others} />
+        </ButtonWithDisabledTooltip>
+    )
+);
 
-export const Button = createPolymorphicComponent<
-    'button',
-    ButtonProps,
-    {Group: typeof MantineButton.Group; DisabledTooltip: typeof ButtonWithDisabledTooltip}
->(_Button);
-
-Button.DisabledTooltip = ButtonWithDisabledTooltip;
+export const Button = createPolymorphicComponent<'button', ButtonProps, {Group: typeof MantineButton.Group}>(_Button);

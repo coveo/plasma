@@ -2,11 +2,13 @@ import {Children, FunctionComponent, PropsWithChildren, ReactElement, useState} 
 
 import {InlineConfirmButton} from './InlineConfirmButton';
 import {InlineConfirmContext} from './InlineConfirmContext';
+import {InlineConfirmMenuItem} from './InlineConfirmMenuItem';
 import {InlineConfirmPrompt} from './InlineConfirmPrompt';
 
 type InlineConfirmType = FunctionComponent<PropsWithChildren> & {
     Prompt: typeof InlineConfirmPrompt;
     Button: typeof InlineConfirmButton;
+    MenuItem: typeof InlineConfirmMenuItem;
 };
 
 export const InlineConfirm: InlineConfirmType = ({children}) => {
@@ -27,3 +29,4 @@ export const InlineConfirm: InlineConfirmType = ({children}) => {
 
 InlineConfirm.Prompt = InlineConfirmPrompt;
 InlineConfirm.Button = InlineConfirmButton;
+InlineConfirm.MenuItem = InlineConfirmMenuItem;
