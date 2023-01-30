@@ -1,5 +1,6 @@
-import {Button, ButtonProps} from '@mantine/core';
 import {HTMLAttributes, MouseEventHandler} from 'react';
+
+import {Button, ButtonProps} from '../button';
 import {useInlineConfirm} from './useInlineConfirm';
 
 interface InlineConfirmButtonProps extends ButtonProps, Omit<HTMLAttributes<HTMLButtonElement>, 'color'> {

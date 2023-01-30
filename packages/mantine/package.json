@@ -24,6 +24,7 @@
     "dependencies": {
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-tokens": "workspace:*",
+        "@mantine/utils": "5.10.1",
         "@monaco-editor/react": "4.4.5",
         "@swc/helpers": "0.4.12",
         "@tanstack/react-table": "8.5.11",
@@ -54,6 +55,7 @@
         "@types/react-beautiful-dnd": "13.1.2",
         "@types/react-dom": "18.0.6",
         "@types/testing-library__jest-dom": "5.14.5",
+        "csstype": "3.1.1",
         "embla-carousel-react": "7.0.4",
         "eslint-plugin-jest": "27.1.1",
         "eslint-plugin-testing-library": "5.7.2",
@@ -70,13 +72,13 @@
     },
     "peerDependencies": {
         "@emotion/react": "^11.10.0",
-        "@mantine/carousel": "5.8.3",
+        "@mantine/carousel": "^5.8.3",
         "@mantine/core": "^5.6.2",
         "@mantine/dates": "^5.6.2",
         "@mantine/form": "^5.6.2",
         "@mantine/hooks": "^5.6.2",
         "@mantine/modals": "^5.6.2",
-        "embla-carousel-react": "7.0.4",
+        "embla-carousel-react": "^7.0.4",
         "react": ">= 18.0.0",
         "react-dom": ">= 18.0.0"
     }

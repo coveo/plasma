@@ -9,3 +9,5 @@ export * from './table';
 export * from './prompt';
 export * from './modal';
 export * from './modal-wizard';
+export * from './button';
+export * from './menu';

@@ -109,6 +109,7 @@ importers:
       '@mantine/form': 5.9.2
       '@mantine/hooks': 5.9.2
       '@mantine/modals': 5.9.2
+      '@mantine/utils': 5.10.1
       '@monaco-editor/react': 4.4.5
       '@swc/cli': 0.1.57
       '@swc/core': 1.3.22
@@ -126,6 +127,7 @@ importers:
       '@types/react-beautiful-dnd': 13.1.2
       '@types/react-dom': ^18.0
       '@types/testing-library__jest-dom': 5.14.5
+      csstype: 3.1.1
       dayjs: 1.11.3
       embla-carousel-react: 7.0.4
       eslint-plugin-jest: 27.1.1
@@ -146,6 +148,7 @@ importers:
     dependencies:
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-tokens': link:../tokens
+      '@mantine/utils': 5.10.1_react@18.2.0
       '@monaco-editor/react': 4.4.5_7payg3yaajmz2lehtpasnhysrm
       '@swc/helpers': 0.4.12
       '@tanstack/react-table': 8.5.11_biqbaboplfbrettd7655fr4n2y
@@ -175,6 +178,7 @@ importers:
       '@types/react-beautiful-dnd': 13.1.2
       '@types/react-dom': 18.0.9
       '@types/testing-library__jest-dom': 5.14.5
+      csstype: 3.1.1
       embla-carousel-react: 7.0.4_react@18.2.0
       eslint-plugin-jest: 27.1.1_uo52wfafpsvhxs5nuzgmkssvwi
       eslint-plugin-testing-library: 5.7.2_typescript@4.9.3
@@ -2031,6 +2035,14 @@ packages:
       csstype: 3.0.9
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+
+  /@mantine/utils/5.10.1_react@18.2.0:
+    resolution: {integrity: sha512-PfzSpbipAwF5g5zoyC2Htxf2b9TFFwP6c9dK1jlrBzqtkeQK1axZ72Vbc1jKjGWYutVBbOWuk40GKUwYoDFVTw==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@mantine/utils/5.9.2_react@18.2.0:
     resolution: {integrity: sha512-dvqqbdrK/nw4stFCXRCn38Ru12RqdWv8uzbywP5dQVCyTw8pW/Cq+T7YCWpbkFcKFea9UhOrPhBygJcjc13FgA==}
