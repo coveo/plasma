@@ -1,3 +1,12 @@
+# 49.1.0 (2023-01-30)
+
+
+### Features
+
+* **mantine:** disabled button with tooltip (#3020) 7b198b2, closes #3020
+
+
+
 ## 49.0.2 (2023-01-27)
 
 
