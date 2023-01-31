@@ -1,3 +1,12 @@
+## 49.1.2 (2023-01-31)
+
+
+### Bug Fixes
+
+* **mantine:** simplify disabled tooltip (#3022) b0be15f, closes #3022
+
+
+
 ## 49.1.1 (2023-01-31)
 
 
