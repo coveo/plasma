@@ -1,3 +1,12 @@
+## 49.1.1 (2023-01-31)
+
+
+### Bug Fixes
+
+* **mantine:** small adjustments in Collection component (#3023) d287fb6, closes #3023
+
+
+
 # 49.1.0 (2023-01-30)
 
 
