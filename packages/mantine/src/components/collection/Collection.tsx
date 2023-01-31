@@ -141,6 +141,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         allowAdd,
         label,
         labelProps,
+        withAsterisk,
         description,
         descriptionProps,
         error,
@@ -166,8 +167,9 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         onChange?.(value);
     }, [JSON.stringify(value)]);
 
+    const isRequired = typeof withAsterisk === 'boolean' ? withAsterisk : required;
     const _label = label ? (
-        <Input.Label required={required} {...labelProps}>
+        <Input.Label required={isRequired} {...labelProps}>
             {label}
         </Input.Label>
     ) : null;
@@ -178,10 +180,10 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
     const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : null;
     const _header =
         _label || _description ? (
-            <Box mb="sm">
+            <>
                 {_label}
                 {_description}
-            </Box>
+            </>
         ) : null;
 
     const items = value.map((item, index) => (
