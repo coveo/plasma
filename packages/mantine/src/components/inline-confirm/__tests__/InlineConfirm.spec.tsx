@@ -1,3 +1,4 @@
+import {Menu} from '@mantine/core';
 import {render, screen, userEvent} from '@test-utils';
 
 import {InlineConfirm} from '../InlineConfirm';
@@ -21,6 +22,30 @@ describe('InlineConfirm', () => {
         );
 
         await user.click(screen.getByRole('button', {name: 'Delete'}));
+
+        expect(onClickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('calls the onClick prop when clicking on the menu item', async () => {
+        const user = userEvent.setup({delay: null});
+        const onClickSpy = jest.fn();
+        render(
+            <InlineConfirm>
+                <Menu>
+                    <Menu.Target>
+                        <button>open menu</button>
+                    </Menu.Target>
+                    <Menu.Dropdown>
+                        <InlineConfirm.MenuItem id="delete" onClick={onClickSpy}>
+                            Delete
+                        </InlineConfirm.MenuItem>
+                    </Menu.Dropdown>
+                </Menu>
+            </InlineConfirm>
+        );
+
+        await user.click(screen.getByRole('button', {name: /open menu/i}));
+        await user.click(screen.getByRole('menuitem', {name: /delete/i}));
 
         expect(onClickSpy).toHaveBeenCalledTimes(1);
     });

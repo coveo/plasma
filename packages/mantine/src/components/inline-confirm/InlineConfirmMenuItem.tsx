@@ -1,15 +1,14 @@
-import {Button} from '@mantine/core';
 import {forwardRef, MouseEventHandler} from 'react';
 
-import {ButtonProps} from '../button';
+import {Menu, MenuItemProps} from '../menu';
 import {useInlineConfirm} from './useInlineConfirm';
 
-export interface InlineConfirmButtonProps extends ButtonProps {
+export interface InlineConfirmMenuItemProps extends MenuItemProps {
     id: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const InlineConfirmButton = forwardRef<HTMLButtonElement, InlineConfirmButtonProps>(
+export const InlineConfirmMenuItem = forwardRef<HTMLButtonElement, InlineConfirmMenuItemProps>(
     ({onClick, id, ...others}, ref) => {
         const {setConfirmingId} = useInlineConfirm();
         const handleOnClick: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -17,6 +16,6 @@ export const InlineConfirmButton = forwardRef<HTMLButtonElement, InlineConfirmBu
             onClick?.(e);
         };
 
-        return <Button ref={ref} onClick={handleOnClick} {...others} />;
+        return <Menu.Item ref={ref} onClick={handleOnClick} {...others} />;
     }
 );
