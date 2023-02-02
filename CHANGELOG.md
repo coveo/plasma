@@ -1,3 +1,12 @@
+## 49.1.3 (2023-02-02)
+
+
+### Bug Fixes
+
+* **mantine:** expose Button.Group (#3024) d8a7029, closes #3024
+
+
+
 ## 49.1.2 (2023-01-31)
 
 
