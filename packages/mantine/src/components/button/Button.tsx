@@ -19,3 +19,4 @@ const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 export const Button = createPolymorphicComponent<'button', ButtonProps, {Group: typeof MantineButton.Group}>(_Button);
+Button.Group = MantineButton.Group;
