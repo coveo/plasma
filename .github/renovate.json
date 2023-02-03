@@ -17,7 +17,7 @@
         {
             "groupName": "@tanstack table",
             "description": "Group @tanstack table packages together because they need to be updated at the same time",
-            "matchPackageNames": ["@tanstack/react-table", "@tanstack/table-core"]
+            "matchPackageNames": ["@tanstack/react-table", "@tanstack/table-core", "@tanstack/match-sorter-utils"]
         }
     ],
     "lockFileMaintenance": {

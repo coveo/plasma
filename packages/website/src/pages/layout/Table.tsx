@@ -1,6 +1,7 @@
 import {TableMetadata} from '@coveord/plasma-components-props-analyzer';
 import TableDemo from '@examples/layout/Table/Table.demo.tsx';
 import TableMultiSelectionDemo from '@examples/layout/Table/TableMultiSelection.demo.tsx';
+import TableClientSideDemo from '@examples/layout/Table/TableClientSide.demo.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -15,6 +16,9 @@ const DemoPage = () => (
         demo={<TableDemo noPadding layout="vertical" />}
         examples={{
             multiSelect: <TableMultiSelectionDemo noPadding title="Table with bulk selection of rows" />,
+            clientSide: (
+                <TableClientSideDemo noPadding title="Table with client side pagination, sorting, and filtering" />
+            ),
         }}
     />
 );

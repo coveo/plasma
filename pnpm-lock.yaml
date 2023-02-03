@@ -584,6 +584,7 @@ importers:
       '@coveord/plasma-tokens': workspace:*
       '@emotion/react': 11.10.5
       '@emotion/server': 11.10.0
+      '@faker-js/faker': 7.6.0
       '@mantine/carousel': 5.9.2
       '@mantine/core': 5.9.2
       '@mantine/dates': 5.9.2
@@ -592,7 +593,7 @@ importers:
       '@mantine/modals': 5.9.2
       '@mantine/next': 5.9.2
       '@mantine/prism': 5.9.2
-      '@types/faker': 4.1.12
+      '@tanstack/match-sorter-utils': 8.7.6
       '@types/hoist-non-react-statics': 3.3.1
       '@types/lodash.kebabcase': 4.1.7
       '@types/lorem-ipsum': 2.0.0
@@ -608,7 +609,6 @@ importers:
       clsx: 1.2.1
       codesandbox-import-utils: 2.2.3
       embla-carousel-react: 7.0.4
-      faker: 4.1.0
       flagg: 1.1.2
       lint-staged: 9.5.0
       lodash.kebabcase: 4.1.1
@@ -650,6 +650,7 @@ importers:
       '@coveord/plasma-tokens': link:../tokens
       '@emotion/react': 11.10.5_fan5qbzahqtxlm5dzefqlqx5ia
       '@emotion/server': 11.10.0
+      '@faker-js/faker': 7.6.0
       '@mantine/carousel': 5.9.2_vzbzlksjql4iqmbkce5tizjbp4
       '@mantine/core': 5.9.2_nqa2babo2zxfxcmf2phkfqk5yi
       '@mantine/dates': 5.9.2_2pltzneqv4wv27mewoeyrtq5am
@@ -658,10 +659,10 @@ importers:
       '@mantine/modals': 5.9.2_uw7trfygy6zitf2mjy7qrym72y
       '@mantine/next': 5.9.2_zr4hdbjzuvmthwg2ulf6h3lsha
       '@mantine/prism': 5.9.2_uw7trfygy6zitf2mjy7qrym72y
+      '@tanstack/match-sorter-utils': 8.7.6
       clsx: 1.2.1
       codesandbox-import-utils: 2.2.3
       embla-carousel-react: 7.0.4_react@18.2.0
-      faker: 4.1.0
       flagg: 1.1.2
       lodash.kebabcase: 4.1.1
       lorem-ipsum: 2.0.4
@@ -686,7 +687,6 @@ importers:
       reselect: 4.1.5
       underscore: 1.13.1
     devDependencies:
-      '@types/faker': 4.1.12
       '@types/hoist-non-react-statics': 3.3.1
       '@types/lodash.kebabcase': 4.1.7
       '@types/lorem-ipsum': 2.0.0
@@ -1496,6 +1496,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@faker-js/faker/7.6.0:
+    resolution: {integrity: sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
+    dev: false
 
   /@floating-ui/core/1.0.3:
     resolution: {integrity: sha512-27FDAEVHrAEQI1UV+7FIjZrFK862gBoAG0USoPMU7RoBCmaTDt6bnKVW/J2uPnOPI6TWqiWGtS7RFN+tN/k+vQ==}
@@ -2726,6 +2731,13 @@ packages:
       '@swc/core': 1.3.22
       jsonc-parser: 3.2.0
     dev: true
+
+  /@tanstack/match-sorter-utils/8.7.6:
+    resolution: {integrity: sha512-2AMpRiA6QivHOUiBpQAVxjiHAA68Ei23ZUMNaRJrN6omWiSFLoYrxGcT6BXtuzp0Jw4h6HZCmGGIM/gbwebO2A==}
+    engines: {node: '>=12'}
+    dependencies:
+      remove-accents: 0.4.2
+    dev: false
 
   /@tanstack/react-table/8.7.9_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-6MbbQn5AupSOkek1+6IYu+1yZNthAKTRZw9tW92Vi6++iRrD1GbI3lKTjJalf8lEEKOqapPzQPE20nywu0PjCA==}
@@ -7613,6 +7625,7 @@ packages:
 
   /faker/4.1.0:
     resolution: {integrity: sha512-ILKg69P6y/D8/wSmDXw35Ly0re8QzQ8pMfBCflsGiZG2ZjMUNLYNexA6lz5pkmJlepVdsiDFUxYAzPQ9/+iGLA==}
+    dev: true
 
   /fancy-log/1.3.3:
     resolution: {integrity: sha512-k9oEhlyc0FrVh25qYuSELjr8oxsCoc4/LEZfg2iJJrfEk/tZL9bCoJE47gqAvI2m/AUjluCS4+3I0eTx8n3AEw==}
@@ -14218,6 +14231,10 @@ packages:
       remark-stringify: 6.0.4
       unified: 7.1.0
     dev: true
+
+  /remove-accents/0.4.2:
+    resolution: {integrity: sha512-7pXIJqJOq5tFgG1A2Zxti3Ht8jJF337m4sowbuHsW30ZnkQFnDzy9qBNhgzX8ZLW4+UBcXiiR7SwR6pokHsxiA==}
+    dev: false
 
   /remove-bom-buffer/3.0.0:
     resolution: {integrity: sha512-8v2rWhaakv18qcvNeli2mZ/TMTL2nEyAKRvzo1WtnZBl15SHyEhrCu2/xKlJyUFKHiHgfXIyuY6g2dObJJycXQ==}

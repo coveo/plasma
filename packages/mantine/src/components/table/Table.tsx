@@ -10,7 +10,7 @@ import {
     TableState,
     useReactTable,
 } from '@tanstack/react-table';
-import {CoreOptions, InitialTableState} from '@tanstack/table-core';
+import {CoreOptions, InitialTableState, TableOptions} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, Fragment, ReactElement, ReactNode, useCallback, useEffect, useState} from 'react';
 
@@ -83,7 +83,7 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
     };
 });
 
-interface TableProps<T> {
+export interface TableProps<T> {
     /**
      * Data to display in the table
      */
@@ -153,6 +153,17 @@ interface TableProps<T> {
      * @default false
      */
     multiRowSelectionEnabled?: boolean;
+
+    options?: Omit<
+        Partial<TableOptions<T>>,
+        | 'initialState'
+        | 'data'
+        | 'columns'
+        | 'manualPagination'
+        | 'enableMultiRowSelection'
+        | 'getRowId'
+        | 'getRowCanExpand'
+    >;
 }
 
 interface TableType {
@@ -182,6 +193,7 @@ export const Table: TableType = <T,>({
     loading = false,
     doubleClickAction,
     multiRowSelectionEnabled,
+    options = {},
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
@@ -198,10 +210,11 @@ export const Table: TableType = <T,>({
         data,
         columns: multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
-        manualPagination: true,
+        manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!multiRowSelectionEnabled,
         getRowId,
         getRowCanExpand: (row: Row<T>) => !!getExpandChildren?.(row.original) ?? false,
+        ...options,
     });
     const [state, setState] = useState<TableState>(table.initialState);
     table.setOptions((prev) => ({
@@ -308,6 +321,7 @@ export const Table: TableType = <T,>({
                     form,
                     containerRef: outsideClickRef,
                     multiRowSelectionEnabled,
+                    getPageCount: table.getPageCount,
                 }}
             >
                 {header}
