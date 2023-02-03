@@ -173,6 +173,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         </Group>
     );
 
+    // console.log(loader, Editor);
     const _editor = loaded ? (
         <Box p="md" pl="xs" className={classes.editor}>
             <Editor

@@ -5,7 +5,7 @@ import {DateRangePickerPresetSelect} from '../DateRangePickerPresetSelect';
 describe('DateRangePickerPresetSelect', () => {
     it('calls onChange when selecting a preset', async () => {
         const user = userEvent.setup({delay: null});
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(
             <DateRangePickerPresetSelect
                 value={[null, null]}

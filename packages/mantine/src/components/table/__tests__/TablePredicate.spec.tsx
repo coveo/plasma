@@ -38,7 +38,7 @@ describe('Table.Predicate', () => {
     });
 
     it('calls onMount with the initial value', async () => {
-        const onMount = jest.fn();
+        const onMount = vi.fn();
         render(
             <Table
                 data={[{name: 'fruit'}, {name: 'vegetable'}]}
@@ -70,7 +70,7 @@ describe('Table.Predicate', () => {
 
     it('calls onChange when changing the predicate', async () => {
         const user = userEvent.setup({delay: null});
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(
             <Table
                 data={[{name: 'fruit'}, {name: 'vegetable'}]}

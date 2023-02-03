@@ -54,7 +54,7 @@ describe('Collection', () => {
 
     it('calls the onRemoveItem function when clicking on a remove button', async () => {
         const user = userEvent.setup({delay: null});
-        const onRemoveItemSpy = jest.fn();
+        const onRemoveItemSpy = vi.fn();
         const Fixture = () => {
             const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
             return (
@@ -128,7 +128,7 @@ describe('Collection', () => {
     });
 
     it('disables the add button whenever allowAdd callback returns false', () => {
-        const allowAdd = jest.fn().mockImplementation(() => false);
+        const allowAdd = vi.fn().mockImplementation(() => false);
         const Fixture = () => {
             const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
             return (

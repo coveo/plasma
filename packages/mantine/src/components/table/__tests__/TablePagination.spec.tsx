@@ -12,7 +12,7 @@ describe('Table.Pagination', () => {
     beforeEach(() => {
         if (!HTMLElement.prototype.scrollIntoView) {
             HTMLElement.prototype.scrollIntoView = () => {
-                jest.fn();
+                vi.fn();
             };
         }
     });
@@ -36,8 +36,7 @@ describe('Table.Pagination', () => {
     });
 
     it('calls onChange when clicking on a page number', async () => {
-        const user = userEvent.setup();
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
                 <Table.Footer>

@@ -38,7 +38,7 @@ describe('Th', () => {
             {name: 'apple', type: 'fruit', colors: ['red', 'green']},
             {name: 'potato', type: 'vegetable', colors: ['brown', 'blue', 'yellow']},
         ];
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(<Table data={data} columns={columns} onChange={onChange} />);
 
         // icons are loadable, wait for them to load

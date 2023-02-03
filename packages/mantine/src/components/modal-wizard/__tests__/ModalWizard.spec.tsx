@@ -169,7 +169,7 @@ describe('ModalWizard', () => {
         ];
 
         const isDirty = () => false;
-        const onClose = jest.fn();
+        const onClose = vi.fn();
 
         render(
             <ModalWizard isDirty={isDirty} onClose={onClose} closeButtonLabel="closebuttonlabel" opened={true}>
@@ -205,7 +205,7 @@ describe('ModalWizard', () => {
         ];
 
         const isDirty = () => false;
-        const onClose = jest.fn();
+        const onClose = vi.fn();
 
         render(
             <ModalWizard isDirty={isDirty} onClose={onClose} opened={true}>
@@ -241,8 +241,8 @@ describe('ModalWizard', () => {
         ];
 
         const isDirty = () => false;
-        const onClose = jest.fn();
-        const onFinish = jest.fn();
+        const onClose = vi.fn();
+        const onFinish = vi.fn();
 
         render(
             <ModalWizard isDirty={isDirty} onClose={onClose} onFinish={onFinish} opened={true}>
@@ -278,8 +278,8 @@ describe('ModalWizard', () => {
         ];
 
         const isDirty = () => true;
-        const onClose = jest.fn();
-        const handleDirtyState = jest.fn();
+        const onClose = vi.fn();
+        const handleDirtyState = vi.fn();
 
         render(
             <ModalWizard
@@ -323,8 +323,8 @@ describe('ModalWizard', () => {
         ];
 
         const isDirty = () => true;
-        const onClose = jest.fn();
-        const handleDirtyState = jest.fn();
+        const onClose = vi.fn();
+        const handleDirtyState = vi.fn();
 
         render(
             <ModalWizard

@@ -2,11 +2,11 @@ import {EditorProps} from '@monaco-editor/react';
 import {FunctionComponent, useEffect} from 'react';
 
 const editor: any = {
-    onDidFocusEditorText: jest.fn(),
-    onDidBlurEditorText: jest.fn(),
+    onDidFocusEditorText: vi.fn(),
+    onDidBlurEditorText: vi.fn(),
 };
 
-const monaco: any = jest.fn();
+const monaco: any = vi.fn();
 
 const MockedEditor: FunctionComponent<EditorProps> = (props) => {
     useEffect(() => {
@@ -17,8 +17,6 @@ const MockedEditor: FunctionComponent<EditorProps> = (props) => {
 
 export default MockedEditor;
 
-export const loader = {
-    config: jest.fn(),
+export const loader: any = {
+    config: vi.fn(),
 };
-
-export const useMonaco = () => jest.fn();

@@ -169,7 +169,7 @@ describe('Table', () => {
 
     it('calls an action when user double clicks on a row', async () => {
         const user = userEvent.setup();
-        const doubleClickSpy = jest.fn();
+        const doubleClickSpy = vi.fn();
         render(
             <Table<RowData>
                 data={[{firstName: 'Mario'}, {firstName: 'Luigi'}]}

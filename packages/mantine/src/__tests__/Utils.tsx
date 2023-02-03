@@ -10,6 +10,6 @@ const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>
     return render(ui, {wrapper: TestWrapper, ...options});
 };
 
-export {userEvent};
 export * from '@testing-library/react';
+export {userEvent};
 export {customRender as render};
