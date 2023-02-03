@@ -127,6 +127,46 @@ describe('Table', () => {
         expect(allRows).toHaveLength(2);
     });
 
+    it('closes the opened collapsible when using the accordion column and the user expand a different row', async () => {
+        const user = userEvent.setup({delay: null});
+        const Fixture: FunctionComponent<{row: RowData}> = ({row}) => <div>Collapsible content: {row.lastName}</div>;
+        const customColumns: Array<ColumnDef<RowData>> = [
+            columnHelper.accessor('firstName', {
+                enableSorting: false,
+            }),
+            Table.AccordionColumn as ColumnDef<RowData>,
+        ];
+        render(
+            <Table
+                data={[
+                    {firstName: 'Jack', lastName: 'Russel'},
+                    {firstName: 'Golden', lastName: 'Retriever'},
+                ]}
+                getExpandChildren={(row: RowData) => <Fixture row={row} />}
+                columns={customColumns}
+            />
+        );
+
+        // wait for the collapsible icon to show
+        await screen.findAllByRole('button', {name: 'arrowHeadDown'});
+
+        expect(screen.queryByText('Collapsible content: Russel')).not.toBeVisible();
+        expect(screen.queryByText('Collapsible content: Retriever')).not.toBeVisible();
+
+        await user.click(within(screen.getAllByRole('row')[1]).getByRole('button', {name: 'arrowHeadDown'}));
+        await waitFor(() => {
+            expect(screen.queryByText('Collapsible content: Russel')).toBeVisible();
+        });
+        expect(screen.queryByText('Collapsible content: Retriever')).not.toBeVisible();
+
+        await user.click(within(screen.getAllByRole('row')[3]).getByRole('button', {name: 'arrowHeadDown'}));
+
+        await waitFor(() => {
+            expect(screen.queryByText('Collapsible content: Retriever')).toBeVisible();
+        });
+        expect(screen.queryByText('Collapsible content: Russel')).not.toBeVisible();
+    });
+
     it('calls an action when user double clicks on a row', async () => {
         const user = userEvent.setup();
         const doubleClickSpy = jest.fn();

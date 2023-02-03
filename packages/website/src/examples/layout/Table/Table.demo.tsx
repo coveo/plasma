@@ -35,6 +35,8 @@ export default () => {
             cell: (info) => info.row.original.title,
         }),
         Table.CollapsibleColumn as ColumnDef<IExampleRowData>,
+        // or if you prefer an accordion behaviour
+        // Table.AccordionColumn as ColumnDef<IExampleRowData>,
     ];
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
