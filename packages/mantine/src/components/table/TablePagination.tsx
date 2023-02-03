@@ -5,13 +5,13 @@ import {useTable} from './useTable';
 
 interface TablePaginationProps {
     /**
-     * The total number of page
+     * The total number of page. Use null only if your table is paginated client side
      */
-    totalPages: number;
+    totalPages: number | null;
 }
 
 export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalPages}) => {
-    const {state, setState, containerRef} = useTable();
+    const {state, setState, containerRef, getPageCount} = useTable();
     const updatePage = (newPage: number) => {
         setState((prevState: TableState) => ({
             ...prevState,
@@ -20,11 +20,13 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalP
         containerRef.current.scrollIntoView({behavior: 'smooth'});
     };
 
+    const total = totalPages === null ? getPageCount() : totalPages;
+
     return (
         <Pagination
             page={state.pagination.pageIndex + 1}
             onChange={updatePage}
-            total={totalPages}
+            total={total}
             boundaries={0}
             size="md"
             getItemAriaLabel={(label) => {

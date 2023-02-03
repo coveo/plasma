@@ -60,6 +60,11 @@ type TableContextType = {
      */
     containerRef: RefObject<HTMLDivElement>;
     multiRowSelectionEnabled: boolean;
+
+    /**
+     * Function that returns the number of pages
+     */
+    getPageCount: () => number;
 };
 
 export const TableContext = createContext<TableContextType | null>(null);
