@@ -1,4 +1,4 @@
-import path from 'path';
+import {resolve} from 'path';
 import {defineConfig} from 'vitest/config';
 
 export default defineConfig({
@@ -6,7 +6,7 @@ export default defineConfig({
         alias: [
             {
                 find: '@test-utils',
-                replacement: path.resolve(__dirname, './src/__tests__/Utils.tsx'),
+                replacement: resolve(__dirname, './src/__tests__/Utils.tsx'),
             },
         ],
     },
@@ -17,7 +17,7 @@ export default defineConfig({
         alias: [
             {
                 find: /^monaco-editor$/,
-                replacement: '/node_modules/monaco-editor/esm/vs/editor/editor.api',
+                replacement: 'monaco-editor/esm/vs/editor/editor.main.js',
             },
         ],
     },

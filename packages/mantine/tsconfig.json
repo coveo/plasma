@@ -11,5 +11,5 @@
         },
         "types": ["vitest/globals"]
     },
-    "include": ["src"]
+    "include": ["src", "__mocks__"]
 }

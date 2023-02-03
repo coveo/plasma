@@ -1,4 +1,4 @@
-import {EditorProps} from '@monaco-editor/react';
+import {type EditorProps} from '@monaco-editor/react';
 import {FunctionComponent, useEffect} from 'react';
 
 const editor: any = {
