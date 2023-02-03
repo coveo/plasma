@@ -1,3 +1,13 @@
+# 49.2.0 (2023-02-03)
+
+
+### Features
+
+* **mantine, table:** allow passing options to the table (#3027) 0d38c2c, closes #3027
+* **mantine, table:** create new accordion column (#3025) 71be638, closes #3025
+
+
+
 ## 49.1.3 (2023-02-02)
 
 
