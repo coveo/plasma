@@ -1,28 +1,29 @@
 {
-  "extends": ["config:base"],
-  "timezone": "America/Montreal",
-  "schedule": [
-    "after 8pm every weekday",
-    "before 6am every weekday",
-    "every weekend"
-  ],
-  "updateNotScheduled": false,
-  "semanticCommitScope": "deps",
-  "commitBody": "UITOOL-284",
-  "packageRules": [
-    {
-        "description": "Automatically merge minor and patch-level updates",
-        "updateTypes": ["minor", "patch"],
+    "extends": ["config:base"],
+    "timezone": "America/Montreal",
+    "schedule": ["after 8pm every weekday", "before 6am every weekday", "every weekend"],
+    "updateNotScheduled": false,
+    "semanticCommitScope": "deps",
+    "commitBody": "UITOOL-284",
+    "packageRules": [
+        {
+            "description": "Automatically merge minor and patch-level updates",
+            "updateTypes": ["minor", "patch"],
+            "automerge": true,
+            "semanticCommitType": "chore",
+            "stabilityDays": 7,
+            "internalChecksFilter": "strict"
+        },
+        {
+            "groupName": "@tanstack table",
+            "description": "Group @tanstack table packages together because they need to be updated at the same time",
+            "matchPackageNames": ["@tanstack/react-table", "@tanstack/table-core"]
+        }
+    ],
+    "lockFileMaintenance": {
+        "description": "Regenerate the pnpm-lock.yaml file",
+        "enabled": true,
         "automerge": true,
-        "semanticCommitType": "chore",
-        "stabilityDays": 7,
-        "internalChecksFilter": "strict"
+        "extends": ["schedule:weekly"]
     }
-  ],
-  "lockFileMaintenance": {
-    "description": "Regenerate the pnpm-lock.yaml file",
-    "enabled": true,
-    "automerge": true,
-    "extends": ["schedule:weekly"]
-  }
 }
