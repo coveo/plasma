@@ -29,6 +29,7 @@
         "@coveord/plasma-tokens": "workspace:*",
         "@emotion/react": "11.10.5",
         "@emotion/server": "11.10.0",
+        "@faker-js/faker": "7.6.0",
         "@mantine/carousel": "5.9.2",
         "@mantine/core": "5.9.2",
         "@mantine/dates": "5.9.2",
@@ -37,10 +38,10 @@
         "@mantine/modals": "5.9.2",
         "@mantine/next": "5.9.2",
         "@mantine/prism": "5.9.2",
+        "@tanstack/match-sorter-utils": "8.7.6",
         "clsx": "1.2.1",
         "codesandbox-import-utils": "2.2.3",
         "embla-carousel-react": "7.0.4",
-        "faker": "4.1.0",
         "flagg": "1.1.2",
         "lodash.kebabcase": "4.1.1",
         "lorem-ipsum": "2.0.4",
@@ -66,7 +67,6 @@
         "underscore": "1.13.1"
     },
     "devDependencies": {
-        "@types/faker": "4.1.12",
         "@types/hoist-non-react-statics": "3.3.1",
         "@types/lodash.kebabcase": "4.1.7",
         "@types/lorem-ipsum": "2.0.0",
