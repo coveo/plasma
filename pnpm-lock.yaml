@@ -115,7 +115,7 @@ importers:
       '@swc/core': 1.3.22
       '@swc/helpers': 0.4.12
       '@swc/jest': 0.2.23
-      '@tanstack/react-table': 8.5.11
+      '@tanstack/react-table': 8.7.8
       '@tanstack/table-core': 8.5.11
       '@testing-library/dom': 8.18.1
       '@testing-library/jest-dom': 5.16.5
@@ -151,7 +151,7 @@ importers:
       '@mantine/utils': 5.10.1_react@18.2.0
       '@monaco-editor/react': 4.4.5_7payg3yaajmz2lehtpasnhysrm
       '@swc/helpers': 0.4.12
-      '@tanstack/react-table': 8.5.11_biqbaboplfbrettd7655fr4n2y
+      '@tanstack/react-table': 8.7.8_biqbaboplfbrettd7655fr4n2y
       '@tanstack/table-core': 8.5.11
       dayjs: 1.11.3
       lodash.defaultsdeep: 4.6.1
@@ -2727,20 +2727,25 @@ packages:
       jsonc-parser: 3.2.0
     dev: true
 
-  /@tanstack/react-table/8.5.11_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-bIegBJ3VPUX3Z7rMnFEnTRCRgPccTsciilQA1ib/pA6M7Qq1boTNPjNjSbEHmBKytaxPrPfcUfzkZLogYtvu3g==}
+  /@tanstack/react-table/8.7.8_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-XNfNuY9qJEk5urJWGYPWNj4POtBTuYunQNfmUla/ZUobVSS+ZIWt6wnL6kI12QNpPrf4uSVAYelUVl245nnQjQ==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@tanstack/table-core': 8.5.11
+      '@tanstack/table-core': 8.7.8
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@tanstack/table-core/8.5.11:
     resolution: {integrity: sha512-ZN61ockLaIAiiPbZfMKT2S03nbWx28OHg/nAiDnNfmN4QmAMcdwVajPn2QQwnNVGAr4jS4nbhbYzCcjq8livXQ==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /@tanstack/table-core/8.7.8:
+    resolution: {integrity: sha512-OvKx7v0qJTyPkMhqsWzVPZnARiqdGvDvEg8tZ/GSQs7t0Vb2sdtkGg7cdzUZ67sIg9o5/gSwvvT84ouSaP8euA==}
     engines: {node: '>=12'}
     dev: false
 
@@ -5624,8 +5629,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
