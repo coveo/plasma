@@ -15,7 +15,7 @@ import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, Fragment, ReactElement, ReactNode, useCallback, useEffect, useState} from 'react';
 
 import {TableActions} from './TableActions';
-import {TableCollapsibleColumn} from './TableCollapsibleColumn';
+import {TableCollapsibleColumn, TableAccordionColumn} from './TableCollapsibleColumn';
 import {onTableChangeEvent, TableContext, TableFormType} from './TableContext';
 import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
@@ -166,6 +166,7 @@ interface TableType {
     Predicate: typeof TablePredicate;
     DateRangePicker: typeof TableDateRangePicker;
     CollapsibleColumn: typeof TableCollapsibleColumn;
+    AccordionColumn: typeof TableAccordionColumn;
 }
 
 export const Table: TableType = <T,>({
@@ -345,4 +346,5 @@ Table.Predicate = TablePredicate;
 Table.PerPage = TablePerPage;
 Table.Predicate = TablePredicate;
 Table.CollapsibleColumn = TableCollapsibleColumn;
+Table.AccordionColumn = TableAccordionColumn;
 Table.DateRangePicker = TableDateRangePicker;
