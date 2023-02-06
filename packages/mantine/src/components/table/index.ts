@@ -1,3 +1,3 @@
 export * from './Table';
-export {type onTableChangeEvent} from './TableContext';
+export {type onTableChangeEvent, TableContext} from './TableContext';
 export * from './useTable';
