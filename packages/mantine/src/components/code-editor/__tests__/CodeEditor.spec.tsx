@@ -16,7 +16,7 @@ describe('CodeEditor', () => {
     it('renders the monaco editor and a copy to clipboard button', async () => {
         render(<CodeEditor label="label" description="description" />);
 
-        await waitForElementToBeRemoved(screen.queryByRole('presentation'), {timeout: 5000});
+        await waitForElementToBeRemoved(screen.queryByRole('presentation'));
 
         expect(screen.getByText(/label/)).toBeInTheDocument();
         expect(screen.getByText(/description/)).toBeInTheDocument();

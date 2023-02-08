@@ -145,7 +145,7 @@ importers:
       rimraf: 3.0.2
       tslib: 2.4.0
       typescript: 4.9.3
-      vitest: ^0.28.3
+      vitest: 0.28.3
     dependencies:
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-tokens': link:../tokens

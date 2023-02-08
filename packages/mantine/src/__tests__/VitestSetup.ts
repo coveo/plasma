@@ -1,4 +1,6 @@
-import '@testing-library/jest-dom';
+import matchers from '@testing-library/jest-dom/matchers';
+import {cleanup} from '@testing-library/react';
+expect.extend(matchers);
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: vi.fn().mockImplementation((query) => ({
@@ -19,3 +21,7 @@ window.ResizeObserver =
         observe: vi.fn(),
         unobserve: vi.fn(),
     }));
+
+afterEach(() => {
+    cleanup();
+});
