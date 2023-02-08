@@ -132,6 +132,7 @@ importers:
       embla-carousel-react: 7.0.4
       eslint-plugin-testing-library: 5.7.2
       eslint-plugin-vitest: 0.0.32
+      eslint-plugin-vitest-globals: ^1.2.0
       identity-obj-proxy: 3.0.0
       jest: 29.2.1
       jest-environment-jsdom: 29.1.2
@@ -183,6 +184,7 @@ importers:
       embla-carousel-react: 7.0.4_react@18.2.0
       eslint-plugin-testing-library: 5.7.2_typescript@4.9.3
       eslint-plugin-vitest: 0.0.32_typescript@4.9.3
+      eslint-plugin-vitest-globals: 1.2.0
       identity-obj-proxy: 3.0.0
       jest: 29.2.1
       jest-environment-jsdom: 29.1.2
@@ -7442,6 +7444,11 @@ packages:
       eslint: 8.23.1
     dev: true
 
+  /eslint-config-sets/1.8.3:
+    resolution: {integrity: sha512-X9OtGgO3olmrUB42aWMIm9rO+ehz89dysyfWBITHq8N9hB/AxHuNkqHVNU3YLT53WpbRopVCEHIBhZ2i1dMFyw==}
+    deprecated: '这个项目已停止维护，推荐使用重新开发的更现代化的@eslint-sets: https://github.com/saqqdy/eslint-sets'
+    dev: true
+
   /eslint-import-resolver-node/0.3.6:
     resolution: {integrity: sha512-0En0w03NRVMn9Uiyn8YRPDKvWjxCWkslUEhGNTdGx15RvPJYQ+lbOlqrlNI2vEAs4pDYK4f/HN2TbDmk5TP0iw==}
     dependencies:
@@ -7655,6 +7662,12 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.43.0_dkjglajki6eulfdaldi4gznbxi
       eslint: 8.23.1
       eslint-rule-composer: 0.3.0
+    dev: true
+
+  /eslint-plugin-vitest-globals/1.2.0:
+    resolution: {integrity: sha512-vINsci+UOvObny6vutsa0c9xzM0PfdKgtkhnH8lLSe4+gZPjhK9O4v26oSu5Svb1n8Rvug4iX2k6keuKBoRlOg==}
+    dependencies:
+      eslint-config-sets: 1.8.3
     dev: true
 
   /eslint-plugin-vitest/0.0.32_typescript@4.9.3:

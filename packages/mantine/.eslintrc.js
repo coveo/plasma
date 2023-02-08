@@ -17,9 +17,13 @@ module.exports = {
         {
             files: ['**/*.spec.*'],
             env: {
-                'vitest/globals': true,
+                'vitest-globals/env': true,
             },
-            extends: ['plugin:testing-library/react', 'plugin:jest-dom/recommended'],
+            extends: [
+                'plugin:vitest-globals/recommended',
+                'plugin:testing-library/react',
+                'plugin:jest-dom/recommended',
+            ],
             rules: {
                 'vitest/expect-expect': ['warn', {assertFunctionNames: ['expect*', 'assert*']}],
             },
