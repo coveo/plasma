@@ -25,7 +25,7 @@ module.exports = {
                 'plugin:jest-dom/recommended',
             ],
             rules: {
-                'vitest/expect-expect': ['warn', {assertFunctionNames: ['expect*', 'assert*']}],
+                'vitest/expect-expect': ['warn'],
             },
         },
     ],
