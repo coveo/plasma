@@ -8,19 +8,20 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
-    ignorePatterns: ['.eslintrc.js', 'node_modules', 'dist', '.turbo', 'jest.config.js'],
+    ignorePatterns: ['.eslintrc.js', 'node_modules', 'dist', '.turbo', 'vitest.config.js'],
     rules: {
         'no-underscore-dangle': 'off',
     },
+    plugins: ['vitest'],
     overrides: [
         {
             files: ['**/*.spec.*'],
             env: {
-                'jest/globals': true,
+                'vitest/globals': true,
             },
-            extends: ['plugin:jest/recommended', 'plugin:testing-library/react', 'plugin:jest-dom/recommended'],
+            extends: ['plugin:testing-library/react', 'plugin:jest-dom/recommended'],
             rules: {
-                'jest/expect-expect': ['warn', {assertFunctionNames: ['expect*', 'assert*']}],
+                'vitest/expect-expect': ['warn', {assertFunctionNames: ['expect*', 'assert*']}],
             },
         },
     ],
