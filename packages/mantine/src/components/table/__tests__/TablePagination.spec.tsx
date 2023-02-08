@@ -36,6 +36,7 @@ describe('Table.Pagination', () => {
     });
 
     it('calls onChange when clicking on a page number', async () => {
+        const user = userEvent.setup();
         const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
