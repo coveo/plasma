@@ -7,10 +7,13 @@ import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar'
 // Since we're mocking the date and the animations are timer based we're mocking useReduceMotion to disable all the animations
 // I tried wrapping the components in <MantineProvider theme={{components: {Transition: {defaultProps: {duration: 0}}}}}>
 // but the animation was still happening. :(
-jest.mock('@mantine/hooks', () => ({
-    ...jest.requireActual('@mantine/hooks'),
-    useReducedMotion: () => true,
-}));
+vi.mock('@mantine/hooks', async () => {
+    const actual = await vi.importActual('@mantine/hooks');
+    return {
+        ...actual,
+        useReduceMotion: () => true,
+    };
+});
 
 describe('DateRangePickerPopoverCalendar', () => {
     it('does not render the preset searchbox when there is no presets', () => {
@@ -49,7 +52,7 @@ describe('DateRangePickerPopoverCalendar', () => {
 
     it('calls onApply with the selected dates when clicking in the calendar', async () => {
         const user = userEvent.setup({delay: null});
-        jest.useFakeTimers().setSystemTime(new Date(2022, 0, 31));
+        vi.useFakeTimers().setSystemTime(new Date(2022, 0, 31));
         const Fixture = () => {
             const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
             return (
@@ -67,11 +70,12 @@ describe('DateRangePickerPopoverCalendar', () => {
         await user.click(screen.getAllByRole('button', {name: '14'})[0]);
 
         // hides the calendar when the second date is clicked
-        expect(screen.queryByRole('button', {name: '8'})).not.toBeInTheDocument();
+        expect(screen.queryAllByRole('button', {name: '8'})[0]).not.toBeVisible();
+        expect(screen.queryAllByRole('button', {name: '8'})[1]).not.toBeVisible();
 
         expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-01-14T00:00:00.000Z"]');
 
-        jest.useRealTimers();
+        vi.useRealTimers();
     });
 
     it('calls onApply with the selected dates when typing in the inputs', async () => {

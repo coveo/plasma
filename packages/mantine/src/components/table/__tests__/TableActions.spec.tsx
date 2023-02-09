@@ -38,7 +38,7 @@ describe('Table.Actions', () => {
     describe('when multi row selection is enabled', () => {
         it('passes down an array of selected rows', async () => {
             const user = userEvent.setup({delay: null});
-            const renderSpy = jest.fn().mockImplementation(() => <div />);
+            const renderSpy = vi.fn().mockImplementation(() => <div />);
             render(
                 <Table<RowData>
                     data={[{name: 'fruit'}, {name: 'vegetable'}, {name: 'bread'}]}

@@ -6,7 +6,7 @@ import {Modal} from '../Modal';
 describe('Modal', () => {
     it('renders title, desctiption, close button, and child', () => {
         render(
-            <Modal opened onClose={jest.fn()} title="title" description="modal description">
+            <Modal opened onClose={vi.fn()} title="title" description="modal description">
                 <Container>Children</Container>
             </Modal>
         );
@@ -22,7 +22,7 @@ describe('Modal', () => {
         render(
             <Modal
                 opened
-                onClose={jest.fn()}
+                onClose={vi.fn()}
                 title={
                     <div>
                         <QuestionSize32Px />
@@ -38,7 +38,7 @@ describe('Modal', () => {
     });
 
     it('trigger onClose function when click on the close button', () => {
-        const onClose = jest.fn();
+        const onClose = vi.fn();
         render(
             <Modal opened onClose={onClose} title="title">
                 <Container>Children</Container>

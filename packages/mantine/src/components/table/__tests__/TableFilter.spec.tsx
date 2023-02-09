@@ -10,7 +10,7 @@ const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enabl
 
 describe('Table.Filter', () => {
     it('displays the placeholder', () => {
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
                 <Table.Header>
@@ -24,7 +24,7 @@ describe('Table.Filter', () => {
 
     it('calls onChange when typing something in the filter', async () => {
         const user = userEvent.setup({delay: null});
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
                 <Table.Header>
@@ -40,7 +40,7 @@ describe('Table.Filter', () => {
 
     it('goes back to the first page when changing the filter', async () => {
         const user = userEvent.setup({delay: null});
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
                 <Table.Header>
@@ -63,7 +63,7 @@ describe('Table.Filter', () => {
     describe('when multi row selection is enabled', () => {
         it('does not unselect rows that get filtered out', async () => {
             const user = userEvent.setup({delay: null});
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             render(
                 <Table
                     data={[{name: 'fruit'}, {name: 'vegetable'}]}

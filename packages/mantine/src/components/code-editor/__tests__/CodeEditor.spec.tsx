@@ -1,24 +1,26 @@
-import {useForm} from '@mantine/form';
 import {loader} from '@monaco-editor/react';
 import {render, screen, waitForElementToBeRemoved, within} from '@test-utils';
+import {useForm} from '../../../form';
 
 import {CodeEditor} from '../CodeEditor';
 import {XML} from '../languages/xml';
 
+vi.mock('monaco-editor');
+vi.mock('@monaco-editor/react');
+
 describe('CodeEditor', () => {
     beforeEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     it('renders the monaco editor and a copy to clipboard button', async () => {
-        jest.mock('monaco-editor');
         render(<CodeEditor label="label" description="description" />);
 
         await waitForElementToBeRemoved(screen.queryByRole('presentation'));
 
         expect(screen.getByText(/label/)).toBeInTheDocument();
         expect(screen.getByText(/description/)).toBeInTheDocument();
-        expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
+        expect(await screen.findByTestId('monaco-editor')).toBeInTheDocument();
         expect(await screen.findByRole('button', {name: /copy/i})).toBeInTheDocument();
     });
 
@@ -56,7 +58,7 @@ describe('CodeEditor', () => {
     });
 
     it('loads the xml language in the monaco instance if the editor language is xml', async () => {
-        const xmlLanguageSpy = jest.spyOn(XML, 'register').mockImplementation();
+        const xmlLanguageSpy = vi.spyOn(XML, 'register').mockImplementation(vi.fn());
         render(<CodeEditor label="label" description="description" monacoLoader="cdn" language="xml" />);
         expect(xmlLanguageSpy).toHaveBeenCalledTimes(1);
     });

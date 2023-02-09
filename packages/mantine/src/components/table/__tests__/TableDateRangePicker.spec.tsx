@@ -11,20 +11,23 @@ const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enabl
 // Since we're mocking the date and the animations are timer based we're mocking useReduceMotion to disable all the animations
 // I tried wrapping the components in <MantineProvider theme={{components: {Transition: {defaultProps: {duration: 0}}}}}>
 // but the animation was still happening. :(
-jest.mock('@mantine/hooks', () => ({
-    ...jest.requireActual('@mantine/hooks'),
-    useReducedMotion: () => true,
-}));
+vi.mock('@mantine/hooks', async () => {
+    const actual = await vi.importActual('@mantine/hooks');
+    return {
+        ...actual,
+        useReduceMotion: () => true,
+    };
+});
 
 describe('Table.DateRangePicker', () => {
-    jest.setTimeout(15000);
+    // vi.setTimeout(15000);
 
     beforeEach(() => {
-        jest.useFakeTimers().setSystemTime(new Date(2022, 0, 15));
+        vi.useFakeTimers().setSystemTime(new Date(2022, 0, 15));
     });
 
     afterEach(() => {
-        jest.useRealTimers();
+        vi.useRealTimers();
     });
 
     it('displays the intial dates', async () => {
@@ -47,7 +50,7 @@ describe('Table.DateRangePicker', () => {
 
     it('displays the selected date range in the table', async () => {
         const user = userEvent.setup({delay: null});
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(
             <Table
                 data={[{name: 'fruit'}, {name: 'vegetable'}]}

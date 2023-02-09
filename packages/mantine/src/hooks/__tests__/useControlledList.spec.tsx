@@ -3,7 +3,7 @@ import {renderHook} from '@testing-library/react';
 import {useControlledList} from '../useControlledList';
 
 describe('useControlledList', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
 
     afterEach(() => {
         onChange.mockClear();

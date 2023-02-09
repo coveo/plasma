@@ -12,7 +12,7 @@ describe('InlineConfirm', () => {
 
     it('calls the onClick prop when clicking on a button', async () => {
         const user = userEvent.setup({delay: null});
-        const onClickSpy = jest.fn();
+        const onClickSpy = vi.fn();
         render(
             <InlineConfirm>
                 <InlineConfirm.Button id="delete" onClick={onClickSpy}>
@@ -28,7 +28,7 @@ describe('InlineConfirm', () => {
 
     it('calls the onClick prop when clicking on the menu item', async () => {
         const user = userEvent.setup({delay: null});
-        const onClickSpy = jest.fn();
+        const onClickSpy = vi.fn();
         render(
             <InlineConfirm>
                 <Menu>
@@ -55,7 +55,7 @@ describe('InlineConfirm', () => {
         render(
             <InlineConfirm>
                 <InlineConfirm.Button id="my-button-id">Remove</InlineConfirm.Button>
-                <InlineConfirm.Prompt id="my-button-id" label="Are you sure?" onConfirm={jest.fn()} />
+                <InlineConfirm.Prompt id="my-button-id" label="Are you sure?" onConfirm={vi.fn()} />
             </InlineConfirm>
         );
         expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
@@ -69,7 +69,7 @@ describe('InlineConfirm', () => {
 
     it('hides the prompt when the user cancel and call onConfirm when the user confirms', async () => {
         const user = userEvent.setup({delay: null});
-        const confirmSpy = jest.fn();
+        const confirmSpy = vi.fn();
         render(
             <InlineConfirm>
                 <InlineConfirm.Button id="my-button-id">Remove</InlineConfirm.Button>
@@ -103,10 +103,10 @@ describe('InlineConfirm', () => {
         render(
             <InlineConfirm>
                 <InlineConfirm.Button id="remove">Remove</InlineConfirm.Button>
-                <InlineConfirm.Prompt id="remove" label="Delete X?" onConfirm={jest.fn()} />
+                <InlineConfirm.Prompt id="remove" label="Delete X?" onConfirm={vi.fn()} />
 
                 <InlineConfirm.Button id="print">Print</InlineConfirm.Button>
-                <InlineConfirm.Prompt id="print" label="Print?" onConfirm={jest.fn()} />
+                <InlineConfirm.Prompt id="print" label="Print?" onConfirm={vi.fn()} />
             </InlineConfirm>
         );
 

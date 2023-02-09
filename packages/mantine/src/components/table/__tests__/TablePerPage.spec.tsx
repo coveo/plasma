@@ -43,7 +43,7 @@ describe('Table.PerPage', () => {
     });
 
     it('calls onMount with the initial value', () => {
-        const onMount = jest.fn();
+        const onMount = vi.fn();
         render(
             <Table
                 data={[{name: 'fruit'}, {name: 'vegetable'}]}
@@ -64,7 +64,7 @@ describe('Table.PerPage', () => {
 
     it('calls onChange when changing the number of items per page', async () => {
         const user = userEvent.setup({delay: null});
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
                 <Table.Footer>
@@ -82,7 +82,7 @@ describe('Table.PerPage', () => {
 
     it('resets page index when changing the number of items per page', async () => {
         const user = userEvent.setup({delay: null});
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         render(
             <Table
                 data={[{name: 'fruit'}, {name: 'vegetable'}]}
