@@ -1,4 +1,4 @@
-import {ArrowHeadDownSize16Px, ArrowHeadUpSize16Px} from '@coveord/plasma-react-icons';
+import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
 import {Center, createStyles, Group, Text, UnstyledButton} from '@mantine/core';
 import {defaultColumnSizing, flexRender, Header} from '@tanstack/react-table';
 
@@ -26,13 +26,15 @@ interface ThProps<T> {
 }
 
 const SortingIcons = {
-    asc: ArrowHeadDownSize16Px,
-    desc: ArrowHeadUpSize16Px,
+    asc: ArrowUpSize16Px,
+    desc: ArrowDownSize16Px,
+    none: DoubleArrowHeadVSize16Px,
 };
 
 const SortingLabels = {
     asc: 'ascending',
     desc: 'descending',
+    none: 'none',
 } as const;
 
 export const Th = <T,>({header}: ThProps<T>) => {
@@ -55,15 +57,15 @@ export const Th = <T,>({header}: ThProps<T>) => {
     }
 
     const onSort = header.column.getToggleSortingHandler();
-    const sortingOrder = header.column.getIsSorted();
-    const Icon = SortingIcons[sortingOrder || header.column.getFirstSortDir()];
+    const sortingOrder = header.column.getIsSorted() || 'none';
+    const Icon = SortingIcons[sortingOrder];
 
     return (
-        <th className={classes.th} style={{width}} aria-sort={sortingOrder ? SortingLabels[sortingOrder] : 'none'}>
+        <th className={classes.th} style={{width}} aria-sort={SortingLabels[sortingOrder]}>
             <UnstyledButton onClick={onSort} className={classes.control}>
                 <Group position="apart" noWrap>
                     <Text size="xs">{flexRender(header.column.columnDef.header, header.getContext())}</Text>
-                    <Center sx={(theme) => ({color: sortingOrder ? theme.colors.action[8] : undefined})}>
+                    <Center>
                         <Icon height={14} />
                     </Center>
                 </Group>

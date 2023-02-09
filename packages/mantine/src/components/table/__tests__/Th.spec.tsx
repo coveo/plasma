@@ -22,15 +22,11 @@ describe('Th', () => {
         ];
         render(<Table data={data} columns={columns} />);
 
-        // icons are loadable, wait for them to load
-        await screen.findByRole('img', {name: 'arrowHeadDown'});
-        await screen.findByRole('img', {name: 'arrowHeadUp'});
-
         const headers = screen.getAllByRole('button');
         expect(headers.length).toBe(2);
 
-        expect(headers[0]).toHaveAccessibleName('name arrowHeadDown');
-        expect(headers[1]).toHaveAccessibleName('type arrowHeadUp');
+        expect(headers[0]).toHaveAccessibleName(/name doubleArrowHead/i);
+        expect(headers[1]).toHaveAccessibleName(/type doubleArrowHead/i);
     });
 
     it('changes the sort icon when clicking on a table header', async () => {
@@ -41,22 +37,17 @@ describe('Th', () => {
         const onChange = vi.fn();
         render(<Table data={data} columns={columns} onChange={onChange} />);
 
-        // icons are loadable, wait for them to load
-        await screen.findAllByRole('img', {name: 'arrowHeadDown'});
-        await screen.findAllByRole('img', {name: 'arrowHeadUp'});
-
-        userEvent.click(screen.getByRole('button', {name: /name arrowheaddown/i}));
+        userEvent.click(screen.getByRole('button', {name: /name doubleArrowHead/i}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
         });
 
-        userEvent.click(screen.getByRole('button', {name: 'name arrowHeadDown'}));
+        userEvent.click(screen.getByRole('button', {name: /name arrowUp/i}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: true}]}));
         });
 
-        await waitFor(() => expect(screen.queryByRole('button', {name: 'name arrowHeadUp'})).toBeVisible());
-        userEvent.click(screen.getByRole('button', {name: 'name arrowHeadUp'}));
+        userEvent.click(screen.getByRole('button', {name: /name arrowDown/i}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
         });
