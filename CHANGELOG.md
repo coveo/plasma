@@ -1,3 +1,12 @@
+## 49.2.4 (2023-02-10)
+
+
+### Bug Fixes
+
+* **mantine:** adjust table sort icons (#3034) 7d28751, closes #3034
+
+
+
 ## 49.2.3 (2023-02-09)
 
 
