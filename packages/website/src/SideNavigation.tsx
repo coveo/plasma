@@ -86,6 +86,7 @@ const CurrentNavigation = () => {
             <CollapsibleSideSection title="Foundations">
                 <NavLink href="/foundations/Iconography" label="Iconography" />
                 <NavLink href="/foundations/Colors" label="Colors" />
+                <NavLink href="/foundations/TypeKit" label="TypeKit" />
             </CollapsibleSideSection>
             <CollapsibleSideSection title="Layout">
                 <NavLink href="/layout/Header" label="Header" />
