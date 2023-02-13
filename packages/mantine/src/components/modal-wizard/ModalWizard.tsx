@@ -20,7 +20,7 @@ const useStyles = createStyles(() => ({
 
 type ModalWizardStylesNames = Selectors<typeof useStyles>;
 
-interface ModalWizardProps
+export interface ModalWizardProps
     extends Omit<DefaultProps<ModalWizardStylesNames>, 'classNames' | 'styles'>,
         Omit<ModalProps, 'centered' | 'title'> {
     /**
