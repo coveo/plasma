@@ -8,23 +8,23 @@ describe('Header', () => {
 
         const header = screen.getByRole('heading');
         expect(header).toMatchInlineSnapshot(`
-            <h4
-              class="mantine-Text-root mantine-Title-root mantine-1kh8n4o"
+          <h4
+            class="mantine-Text-root mantine-Title-root mantine-xv5lu6"
+          >
+            <div
+              class="mantine-Group-root mantine-fila1z"
             >
               <div
-                class="mantine-Group-root mantine-fila1z"
+                class="mantine-Breadcrumbs-root mantine-16ttirm"
               >
                 <div
-                  class="mantine-Breadcrumbs-root mantine-16ttirm"
+                  class="mantine-1iqrsug mantine-Breadcrumbs-breadcrumb"
                 >
-                  <div
-                    class="mantine-1iqrsug mantine-Breadcrumbs-breadcrumb"
-                  >
-                    child 1
-                  </div>
+                  child 1
                 </div>
               </div>
-            </h4>
+            </div>
+          </h4>
         `);
     });
 

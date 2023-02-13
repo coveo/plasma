@@ -22,12 +22,12 @@ export const plasmaTheme: MantineThemeOverride = {
         fontFamily: 'canada-type-gibson, sans-serif',
         fontWeight: 500,
         sizes: {
-            h1: {fontSize: 48, lineHeight: '56px', fontWeight: undefined},
-            h2: {fontSize: 32, lineHeight: '40px', fontWeight: undefined},
-            h3: {fontSize: 28, lineHeight: '40px', fontWeight: undefined},
-            h4: {fontSize: 24, lineHeight: '32px', fontWeight: undefined},
-            h5: {fontSize: 18, lineHeight: '28px', fontWeight: undefined},
-            h6: {fontSize: 16, lineHeight: '24px', fontWeight: undefined},
+            h1: {fontSize: 48, lineHeight: '56px', fontWeight: 300},
+            h2: {fontSize: 32, lineHeight: '40px', fontWeight: 500},
+            h3: {fontSize: 24, lineHeight: '32px', fontWeight: 500},
+            h4: {fontSize: 18, lineHeight: '28px', fontWeight: 300},
+            h5: {fontSize: 14, lineHeight: '20px', fontWeight: 500},
+            h6: {fontSize: 12, lineHeight: '16px', fontWeight: 500},
         },
     },
     shadows: {
