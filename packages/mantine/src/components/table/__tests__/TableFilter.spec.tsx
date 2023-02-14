@@ -60,6 +60,20 @@ describe('Table.Filter', () => {
         );
     });
 
+    it('clears the filter when clicking on the cross icon', async () => {
+        const user = userEvent.setup({delay: null});
+        render(
+            <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} initialState={{globalFilter: 'foo'}}>
+                <Table.Header>
+                    <Table.Filter placeholder="hello fruits" />
+                </Table.Header>
+            </Table>
+        );
+        expect(screen.getByRole('textbox')).toHaveValue('foo');
+        await user.click(screen.getByRole('button', {name: /cross/i}));
+        expect(screen.getByRole('textbox')).toHaveValue('');
+    });
+
     describe('when multi row selection is enabled', () => {
         it('does not unselect rows that get filtered out', async () => {
             const user = userEvent.setup({delay: null});
