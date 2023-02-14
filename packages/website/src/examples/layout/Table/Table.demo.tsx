@@ -98,8 +98,7 @@ export default () => {
 };
 
 const NoData: FunctionComponent = () => {
-    const {state, form, clearFilters} = useTable();
-    const isFiltered = !!state.globalFilter || !!form.values.predicates.user;
+    const {clearFilters, isFiltered} = useTable();
 
     return isFiltered ? (
         <BlankSlate>

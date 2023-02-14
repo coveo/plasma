@@ -223,6 +223,11 @@ export const Table: TableType = <T,>({
         onStateChange: setState,
     }));
     const {clearSelection, getSelectedRow, getSelectedRows} = useRowSelection(table);
+    const isFiltered =
+        !!state.globalFilter ||
+        Object.keys(form.values?.predicates ?? {}).some((predicate) => !!form.values.predicates[predicate]) ||
+        !!form.values.dateRange?.[0] ||
+        !!form.values.dateRange?.[1];
 
     const triggerChange = () => onChange?.({...state, ...form.values});
 
@@ -238,7 +243,7 @@ export const Table: TableType = <T,>({
     }, [state.globalFilter, state.sorting, state.pagination, form.values]);
 
     const clearFilters = useCallback(() => {
-        form.setFieldValue('predicates', {});
+        form.setFieldValue('predicates', initialState.predicates ?? {});
         setState((prevState) => ({...prevState, globalFilter: ''}));
     }, []);
 
@@ -313,6 +318,7 @@ export const Table: TableType = <T,>({
                 value={{
                     onChange: triggerChange,
                     state,
+                    isFiltered,
                     setState,
                     clearFilters,
                     getSelectedRow,
@@ -324,28 +330,34 @@ export const Table: TableType = <T,>({
                     getPageCount: table.getPageCount,
                 }}
             >
-                {header}
-                <MantineTable className={classes.table} horizontalSpacing="sm" verticalSpacing="xs" pb="sm">
-                    <thead className={classes.header}>
-                        {table.getHeaderGroups().map((headerGroup) => (
-                            <tr key={headerGroup.id}>
-                                {headerGroup.headers.map((columnHeader) => (
-                                    <Th key={columnHeader.id} header={columnHeader} />
+                {!rows.length && !isFiltered && !loading ? (
+                    noDataChildren
+                ) : (
+                    <>
+                        {header}
+                        <MantineTable className={classes.table} horizontalSpacing="sm" verticalSpacing="xs" pb="sm">
+                            <thead className={classes.header}>
+                                {table.getHeaderGroups().map((headerGroup) => (
+                                    <tr key={headerGroup.id}>
+                                        {headerGroup.headers.map((columnHeader) => (
+                                            <Th key={columnHeader.id} header={columnHeader} />
+                                        ))}
+                                    </tr>
                                 ))}
-                            </tr>
-                        ))}
-                    </thead>
-                    <tbody>
-                        {rows.length ? (
-                            rows
-                        ) : (
-                            <tr>
-                                <td colSpan={columns.length}>{noDataChildren}</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </MantineTable>
-                {footer}
+                            </thead>
+                            <tbody>
+                                {rows.length ? (
+                                    rows
+                                ) : (
+                                    <tr>
+                                        <td colSpan={columns.length}>{noDataChildren}</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </MantineTable>
+                        {footer}
+                    </>
+                )}
             </TableContext.Provider>
         </Box>
     );

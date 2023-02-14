@@ -66,7 +66,7 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
     return (
         <div className={classes.root}>
             {title ? (
-                <Title order={6} mb="xs">
+                <Title order={5} mb="xs">
                     {title}
                 </Title>
             ) : null}

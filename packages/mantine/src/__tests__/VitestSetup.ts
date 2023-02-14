@@ -1,5 +1,10 @@
-import matchers from '@testing-library/jest-dom/matchers';
+import matchers, {TestingLibraryMatchers} from '@testing-library/jest-dom/matchers';
 import {cleanup} from '@testing-library/react';
+declare global {
+    namespace Vi {
+        interface JestAssertion<T = any> extends jest.Matchers<void, T>, TestingLibraryMatchers<T, void> {}
+    }
+}
 expect.extend(matchers);
 Object.defineProperty(window, 'matchMedia', {
     writable: true,

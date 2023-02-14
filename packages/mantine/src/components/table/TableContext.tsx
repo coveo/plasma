@@ -36,6 +36,11 @@ type TableContextType = {
      */
     setState: Dispatch<(prevState: TableState) => TableState>;
     /**
+     * Whether the table currently as any kind of filter applied.
+     * Useful to determine if the noDataChildren is an empty state or just the result of a filter
+     */
+    isFiltered: boolean;
+    /**
      * Function that clears the filter and predicates
      */
     clearFilters: () => void;
