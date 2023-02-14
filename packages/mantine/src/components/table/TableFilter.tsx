@@ -1,7 +1,8 @@
-import {SearchSize16Px} from '@coveord/plasma-react-icons';
-import {createStyles, TextInput, Selectors, DefaultProps} from '@mantine/core';
+import {CrossSize16Px, SearchSize16Px} from '@coveord/plasma-react-icons';
+import {ActionIcon, createStyles, DefaultProps, Selectors, TextInput} from '@mantine/core';
 import {TableState} from '@tanstack/react-table';
-import {ChangeEvent, FunctionComponent} from 'react';
+import {ChangeEventHandler, FunctionComponent, MouseEventHandler} from 'react';
+
 import {useTable} from './useTable';
 
 const useStyles = createStyles((theme) => ({
@@ -30,11 +31,10 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
     unstyled,
     ...others
 }) => {
-    const {classes, cx} = useStyles(null, {name: 'TableHeader', classNames, styles, unstyled});
+    const {classes} = useStyles(null, {name: 'TableHeader', classNames, styles, unstyled});
     const {state, setState} = useTable();
 
-    const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const {value} = event.currentTarget;
+    const changeFilterValue = (value: string) => {
         setState((prevState: TableState) => ({
             ...prevState,
             pagination: prevState.pagination
@@ -44,14 +44,31 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
         }));
     };
 
+    const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+        const {value} = event.currentTarget;
+        changeFilterValue(value);
+    };
+
+    const handleClear: MouseEventHandler<HTMLButtonElement> = () => {
+        changeFilterValue('');
+    };
+
     return (
         <TextInput
             className={classes.wrapper}
             placeholder={placeholder}
             mb="md"
-            rightSection={<SearchSize16Px height={14} className={cx({[classes.empty]: !state.globalFilter})} />}
+            rightSection={
+                state.globalFilter ? (
+                    <ActionIcon onClick={handleClear}>
+                        <CrossSize16Px height={16} />
+                    </ActionIcon>
+                ) : (
+                    <SearchSize16Px height={14} className={classes.empty} />
+                )
+            }
             value={state.globalFilter}
-            onChange={handleSearchChange}
+            onChange={handleChange}
             {...others}
         />
     );
