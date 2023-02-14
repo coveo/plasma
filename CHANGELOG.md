@@ -1,3 +1,12 @@
+# 49.3.0 (2023-02-14)
+
+
+### Features
+
+* **mantine:** add table filter clear button (#3038) d696dce, closes #3038
+
+
+
 ## 49.2.5 (2023-02-13)
 
 
