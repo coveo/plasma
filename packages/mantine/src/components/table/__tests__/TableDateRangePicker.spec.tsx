@@ -48,7 +48,7 @@ describe('Table.DateRangePicker', () => {
         });
     });
 
-    it.only('displays the selected date range in the table', async () => {
+    it('displays the selected date range in the table', async () => {
         const user = userEvent.setup({delay: null});
         const onChange = vi.fn();
         render(
