@@ -29,6 +29,7 @@
         "@tanstack/react-table": "8.7.9",
         "@tanstack/table-core": "8.7.9",
         "dayjs": "1.11.3",
+        "lodash.debounce": "4.0.8",
         "lodash.defaultsdeep": "4.6.1",
         "monaco-editor": "0.34.0",
         "react-beautiful-dnd": "13.1.1"
@@ -49,6 +50,7 @@
         "@testing-library/react": "13.4.0",
         "@testing-library/user-event": "14.4.3",
         "@types/jest": "29.1.2",
+        "@types/lodash.debounce": "^4.0.7",
         "@types/lodash.defaultsdeep": "4.6.7",
         "@types/react": "18.0.21",
         "@types/react-beautiful-dnd": "13.1.2",

@@ -9,6 +9,12 @@ const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
 
 describe('Table.PerPage', () => {
+    beforeEach(() => {
+        vi.useFakeTimers();
+    });
+    afterEach(() => {
+        vi.useRealTimers();
+    });
     it('displays the label', () => {
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
@@ -74,7 +80,7 @@ describe('Table.PerPage', () => {
         );
 
         await user.click(screen.queryByRole('radio', {name: '100'}));
-
+        vi.advanceTimersByTime(500);
         expect(onChange).toHaveBeenCalledWith(
             expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})})
         );
@@ -98,7 +104,7 @@ describe('Table.PerPage', () => {
         );
 
         await user.click(screen.queryByRole('radio', {name: '100'}));
-
+        vi.advanceTimersByTime(500);
         expect(onChange).toHaveBeenCalledWith(
             expect.objectContaining({pagination: expect.objectContaining({pageIndex: 0})})
         );

@@ -9,6 +9,12 @@ const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
 
 describe('Table.Predicate', () => {
+    beforeEach(() => {
+        vi.useFakeTimers();
+    });
+    afterEach(() => {
+        vi.useRealTimers();
+    });
     it('displays the intial value', async () => {
         render(
             <Table
@@ -115,6 +121,7 @@ describe('Table.Predicate', () => {
                 name: 'rank',
             })
         ).toHaveValue('First');
+        vi.advanceTimersByTime(500);
 
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({predicates: {rank: 'first'}}));
     });

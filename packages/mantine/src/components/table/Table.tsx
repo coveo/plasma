@@ -11,11 +11,12 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import {CoreOptions, InitialTableState, TableOptions} from '@tanstack/table-core';
+import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, Fragment, ReactElement, ReactNode, useCallback, useEffect, useState} from 'react';
 
 import {TableActions} from './TableActions';
-import {TableCollapsibleColumn, TableAccordionColumn} from './TableCollapsibleColumn';
+import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
 import {onTableChangeEvent, TableContext, TableFormType} from './TableContext';
 import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
@@ -231,11 +232,17 @@ export const Table: TableType = <T,>({
     }, []);
 
     useDidUpdate(() => {
-        triggerChange();
-        if (!multiRowSelectionEnabled) {
-            clearSelection();
-        }
-    }, [state.globalFilter, state.sorting, state.pagination, form.values]);
+        const debounceTable = debounce(() => {
+            triggerChange();
+            if (!multiRowSelectionEnabled) {
+                clearSelection();
+            }
+        }, 500);
+        debounceTable();
+        return () => {
+            debounceTable.cancel();
+        };
+    }, [state.globalFilter, state.pagination, state.sorting, form.values]);
 
     const clearFilters = useCallback(() => {
         form.setFieldValue('predicates', {});

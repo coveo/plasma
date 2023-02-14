@@ -9,6 +9,12 @@ const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
 
 describe('Table.Filter', () => {
+    beforeEach(() => {
+        vi.useFakeTimers();
+    });
+    afterEach(() => {
+        vi.useRealTimers();
+    });
     it('displays the placeholder', () => {
         const onChange = vi.fn();
         render(
@@ -34,6 +40,7 @@ describe('Table.Filter', () => {
         );
 
         await user.type(screen.getByRole('textbox'), 'vegetable');
+        vi.advanceTimersByTime(500);
 
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({globalFilter: 'vegetable'}));
     });
@@ -54,6 +61,7 @@ describe('Table.Filter', () => {
         );
 
         await user.type(screen.getByRole('textbox'), 'veg');
+        vi.advanceTimersByTime(500);
 
         expect(onChange).toHaveBeenCalledWith(
             expect.objectContaining({globalFilter: 'veg', pagination: {pageIndex: 0, pageSize: 50}})

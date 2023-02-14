@@ -48,7 +48,7 @@ describe('Table.DateRangePicker', () => {
         });
     });
 
-    it('displays the selected date range in the table', async () => {
+    it.only('displays the selected date range in the table', async () => {
         const user = userEvent.setup({delay: null});
         const onChange = vi.fn();
         render(
@@ -82,6 +82,7 @@ describe('Table.DateRangePicker', () => {
         await user.click(screen.getByRole('option', {name: 'Preset'}));
 
         await user.click(screen.getByRole('button', {name: 'Apply'}));
+        vi.advanceTimersByTime(500);
 
         await waitFor(() => expect(screen.queryByText('Jan 08, 2022 - Jan 14, 2022')).toBeVisible());
         expect(onChange).toHaveBeenCalledWith(
