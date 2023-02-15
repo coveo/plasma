@@ -1,3 +1,12 @@
+## 49.3.1 (2023-02-15)
+
+
+### Bug Fixes
+
+* **ModalWizard:** some fixes tothe ModalWizard (#3036) fd1fc45, closes #3036
+
+
+
 # 49.3.0 (2023-02-14)
 
 
