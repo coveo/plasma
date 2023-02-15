@@ -225,23 +225,20 @@ export const Table: TableType = <T,>({
     }));
     const {clearSelection, getSelectedRow, getSelectedRows} = useRowSelection(table);
 
-    const triggerChange = () => onChange?.({...state, ...form.values});
+    const triggerChange = () => debounce(() => onChange?.({...state, ...form.values}), 500);
 
     useEffect(() => {
         onMount?.({...state, ...form.values});
+        return () => {
+            triggerChange().cancel();
+        };
     }, []);
 
     useDidUpdate(() => {
-        const debounceTable = debounce(() => {
-            triggerChange();
-            if (!multiRowSelectionEnabled) {
-                clearSelection();
-            }
-        }, 500);
-        debounceTable();
-        return () => {
-            debounceTable.cancel();
-        };
+        triggerChange();
+        if (!multiRowSelectionEnabled) {
+            clearSelection();
+        }
     }, [state.globalFilter, state.pagination, state.sorting, form.values]);
 
     const clearFilters = useCallback(() => {
