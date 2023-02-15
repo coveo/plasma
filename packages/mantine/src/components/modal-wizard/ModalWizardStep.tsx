@@ -16,7 +16,7 @@ export interface ModalWizardStepProps {
     /**
      * A link to the documentation for the current step
      */
-    docLink: string;
+    docLink?: string;
 
     /**
      * A tooltip label for the docLink
