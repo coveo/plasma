@@ -1,3 +1,12 @@
+## 49.3.2 (2023-02-15)
+
+
+### Bug Fixes
+
+* **table:** disable row selection when table is loading (#3040) 0e1e7bd, closes #3040
+
+
+
 ## 49.3.1 (2023-02-15)
 
 
