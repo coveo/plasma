@@ -15,7 +15,7 @@ import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, Fragment, ReactElement, ReactNode, useCallback, useEffect, useState} from 'react';
 
 import {TableActions} from './TableActions';
-import {TableCollapsibleColumn, TableAccordionColumn} from './TableCollapsibleColumn';
+import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
 import {onTableChangeEvent, TableContext, TableFormType} from './TableContext';
 import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
@@ -163,6 +163,7 @@ export interface TableProps<T> {
         | 'enableMultiRowSelection'
         | 'getRowId'
         | 'getRowCanExpand'
+        | 'enableRowSelection'
     >;
 }
 
@@ -214,6 +215,7 @@ export const Table: TableType = <T,>({
         enableMultiRowSelection: !!multiRowSelectionEnabled,
         getRowId,
         getRowCanExpand: (row: Row<T>) => !!getExpandChildren?.(row.original) ?? false,
+        enableRowSelection: !loading,
         ...options,
     });
     const [state, setState] = useState<TableState>(table.initialState);

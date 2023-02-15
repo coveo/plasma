@@ -35,6 +35,22 @@ describe('Table.Actions', () => {
         expect(screen.getByRole('button', {name: 'Eat vegetable'})).toBeVisible();
     });
 
+    it('does not display the action when a loading row is selected', async () => {
+        const user = userEvent.setup({delay: null});
+        render(
+            <Table<RowData> data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} loading={true}>
+                <Table.Header>
+                    <Table.Actions>{(datum: RowData) => <Button>Eat {datum.name}</Button>}</Table.Actions>
+                </Table.Header>
+            </Table>
+        );
+        await user.click(screen.getByRole('cell', {name: 'fruit'}));
+        expect(screen.getByRole('row', {name: 'fruit', selected: false})).toBeInTheDocument();
+        expect(screen.queryByRole('button', {name: 'Eat fruit'})).not.toBeInTheDocument();
+        expect(screen.getByRole('row', {name: 'vegetable', selected: false})).toBeInTheDocument();
+        expect(screen.queryByRole('button', {name: 'Eat vegetable'})).not.toBeInTheDocument();
+    });
+
     describe('when multi row selection is enabled', () => {
         it('passes down an array of selected rows', async () => {
             const user = userEvent.setup({delay: null});
