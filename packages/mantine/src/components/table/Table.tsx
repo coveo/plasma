@@ -225,12 +225,12 @@ export const Table: TableType = <T,>({
     }));
     const {clearSelection, getSelectedRow, getSelectedRows} = useRowSelection(table);
 
-    const triggerChange = () => debounce(() => onChange?.({...state, ...form.values}), 500);
+    const triggerChange = debounce(() => onChange?.({...state, ...form.values}), 500);
 
     useEffect(() => {
         onMount?.({...state, ...form.values});
         return () => {
-            triggerChange().cancel();
+            triggerChange.cancel();
         };
     }, []);
 
