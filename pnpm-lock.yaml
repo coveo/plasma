@@ -122,6 +122,7 @@ importers:
       '@testing-library/react': 13.4.0
       '@testing-library/user-event': 14.4.3
       '@types/jest': 29.1.2
+      '@types/lodash.debounce': ^4.0.7
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/react': ^18.0
       '@types/react-beautiful-dnd': 13.1.2
@@ -137,6 +138,7 @@ importers:
       jest: 29.2.1
       jest-environment-jsdom: 29.1.2
       jest-junit: 13.2.0
+      lodash.debounce: 4.0.8
       lodash.defaultsdeep: 4.6.1
       monaco-editor: 0.34.0
       npm-run-all: 4.1.5
@@ -156,6 +158,7 @@ importers:
       '@tanstack/react-table': 8.7.9_biqbaboplfbrettd7655fr4n2y
       '@tanstack/table-core': 8.7.9
       dayjs: 1.11.3
+      lodash.debounce: 4.0.8
       lodash.defaultsdeep: 4.6.1
       monaco-editor: 0.34.0
       react-beautiful-dnd: 13.1.1_biqbaboplfbrettd7655fr4n2y
@@ -175,6 +178,7 @@ importers:
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.4.3_znccgeejomvff3jrsk3ljovfpu
       '@types/jest': 29.1.2
+      '@types/lodash.debounce': 4.0.7
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/react': 18.0.25
       '@types/react-beautiful-dnd': 13.1.2
@@ -3414,6 +3418,12 @@ packages:
     resolution: {integrity: sha512-YhoCCxyuvP2XeZNbHbi8Wb9EMaUJuA2VGHxJffcQYrJKIKSkymJrhbzsf9y4zpTmr5pExAAEh5hbF628PAZ8Dg==}
     dependencies:
       '@types/react': 18.0.25
+    dev: true
+
+  /@types/lodash.debounce/4.0.7:
+    resolution: {integrity: sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==}
+    dependencies:
+      '@types/lodash': 4.14.189
     dev: true
 
   /@types/lodash.defaultsdeep/4.6.7:
@@ -11026,6 +11036,10 @@ packages:
   /lodash.bind/4.2.1:
     resolution: {integrity: sha512-lxdsn7xxlCymgLYo1gGvVrfHmkjDiyqVv62FAeF2i5ta72BipE1SLxw8hPEPLhD4/247Ijw07UQH7Hq/chT5LA==}
     dev: true
+
+  /lodash.debounce/4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: false
 
   /lodash.deburr/4.1.0:
     resolution: {integrity: sha512-m/M1U1f3ddMCs6Hq2tAsYThTBDaAKFDX3dwDo97GEYzamXi9SqUpjWi/Rrj/gf3X2n8ktwgZrlP1z6E3v/IExQ==}

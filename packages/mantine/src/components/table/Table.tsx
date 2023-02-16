@@ -11,6 +11,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import {CoreOptions, InitialTableState, TableOptions} from '@tanstack/table-core';
+import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, Fragment, ReactElement, ReactNode, useCallback, useEffect, useState} from 'react';
 
@@ -226,10 +227,13 @@ export const Table: TableType = <T,>({
     }));
     const {clearSelection, getSelectedRow, getSelectedRows} = useRowSelection(table);
 
-    const triggerChange = () => onChange?.({...state, ...form.values});
+    const triggerChange = debounce(() => onChange?.({...state, ...form.values}), 500);
 
     useEffect(() => {
         onMount?.({...state, ...form.values});
+        return () => {
+            triggerChange.cancel();
+        };
     }, []);
 
     useDidUpdate(() => {
@@ -237,7 +241,7 @@ export const Table: TableType = <T,>({
         if (!multiRowSelectionEnabled) {
             clearSelection();
         }
-    }, [state.globalFilter, state.sorting, state.pagination, form.values]);
+    }, [state.globalFilter, state.pagination, state.sorting, form.values]);
 
     const clearFilters = useCallback(() => {
         form.setFieldValue('predicates', {});
