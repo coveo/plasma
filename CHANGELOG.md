@@ -1,3 +1,12 @@
+## 49.3.4 (2023-02-16)
+
+
+### Bug Fixes
+
+* **mantine:** hide table on unfiltered empty state (#3037) 3b75810, closes #3037
+
+
+
 ## 49.3.3 (2023-02-16)
 
 
