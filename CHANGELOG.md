@@ -1,3 +1,12 @@
+## 49.3.3 (2023-02-16)
+
+
+### Bug Fixes
+
+* **table:** +debounce on triggerChange method (#3039) 310b715, closes #3039
+
+
+
 ## 49.3.2 (2023-02-15)
 
 
