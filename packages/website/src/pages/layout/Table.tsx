@@ -2,6 +2,7 @@ import {TableMetadata} from '@coveord/plasma-components-props-analyzer';
 import TableDemo from '@examples/layout/Table/Table.demo.tsx';
 import TableMultiSelectionDemo from '@examples/layout/Table/TableMultiSelection.demo.tsx';
 import TableClientSideDemo from '@examples/layout/Table/TableClientSide.demo.tsx';
+import TableEmptyStateDemo from '@examples/layout/Table/TableEmptyState.demo.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -19,6 +20,7 @@ const DemoPage = () => (
             clientSide: (
                 <TableClientSideDemo noPadding title="Table with client side pagination, sorting, and filtering" />
             ),
+            emptyState: <TableEmptyStateDemo noPadding title="Table with empty states" />,
         }}
     />
 );

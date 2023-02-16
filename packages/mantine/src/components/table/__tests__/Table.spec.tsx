@@ -3,6 +3,7 @@ import {render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
 
 import {Table} from '../Table';
+import {useTable} from '../useTable';
 
 type RowData = {firstName: string; lastName?: string};
 
@@ -66,6 +67,67 @@ describe('Table', () => {
         render(<Table data={[]} noDataChildren={<Fixture />} columns={columns} />);
 
         expect(screen.getByRole('button', {name: 'Hello'})).toBeVisible();
+    });
+
+    it('hides the footer and header when the table is empty and not filtered', () => {
+        const NoData = () => <span data-testid="empty-state" />;
+        const customColumns: Array<ColumnDef<RowData>> = [
+            columnHelper.accessor('firstName', {
+                header: () => 'First Name',
+                cell: (info) => info.getValue().toUpperCase(),
+                enableSorting: false,
+            }),
+            columnHelper.accessor('lastName', {
+                header: () => 'Last Name',
+                cell: (info) => info.getValue().toUpperCase(),
+                enableSorting: false,
+            }),
+        ];
+        render(
+            <Table data={[]} columns={customColumns} noDataChildren={<NoData />}>
+                <Table.Header data-testid="table-header">header</Table.Header>
+                <Table.Footer data-testid="table-footer">footer</Table.Footer>
+            </Table>
+        );
+
+        expect(screen.queryByTestId('table-header')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('table-footer')).not.toBeInTheDocument();
+        expect(screen.getByTestId('empty-state')).toBeInTheDocument();
+    });
+
+    it('does not hide the footer and header when the table is empty and filtered', () => {
+        const NoData = () => {
+            const {isFiltered} = useTable();
+            return isFiltered ? <span data-testid="filtered-empty-state" /> : <span data-testid="empty-state" />;
+        };
+        const customColumns: Array<ColumnDef<RowData>> = [
+            columnHelper.accessor('firstName', {
+                header: () => 'First Name',
+                cell: (info) => info.getValue().toUpperCase(),
+                enableSorting: false,
+            }),
+            columnHelper.accessor('lastName', {
+                header: () => 'Last Name',
+                cell: (info) => info.getValue().toUpperCase(),
+                enableSorting: false,
+            }),
+        ];
+        render(
+            <Table
+                data={[]}
+                columns={customColumns}
+                noDataChildren={<NoData />}
+                initialState={{globalFilter: 'something'}}
+            >
+                <Table.Header data-testid="table-header">header</Table.Header>
+                <Table.Footer data-testid="table-footer">footer</Table.Footer>
+            </Table>
+        );
+
+        expect(screen.getByTestId('table-header')).toBeInTheDocument();
+        expect(screen.getByTestId('table-footer')).toBeInTheDocument();
+        expect(screen.getByTestId('filtered-empty-state')).toBeInTheDocument();
+        expect(screen.queryByTestId('empty-state')).not.toBeInTheDocument();
     });
 
     it('opens the collapsible rows when the user click on the toggle', async () => {
