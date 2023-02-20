@@ -6,6 +6,7 @@ import {
     createColumnHelper,
     DateRangePickerPreset,
     Table,
+    TableState,
     Title,
     useTable,
 } from '@coveord/plasma-mantine';
@@ -19,36 +20,42 @@ interface IExampleRowData {
     body: string;
 }
 
+const columnHelper = createColumnHelper<IExampleRowData>();
+
+/**
+ * Define your columns outside the component rendering the table
+ * (or memoize them) to avoid unnecessary render loops
+ */
+const columns: Array<ColumnDef<IExampleRowData>> = [
+    columnHelper.accessor('userId', {
+        header: 'User ID',
+        cell: (info) => info.row.original.userId,
+    }),
+    columnHelper.accessor('id', {
+        header: 'Post ID',
+        cell: (info) => info.row.original.id,
+    }),
+    columnHelper.accessor('title', {
+        header: 'Title',
+        cell: (info) => info.row.original.title,
+    }),
+    Table.CollapsibleColumn as ColumnDef<IExampleRowData>,
+    // or if you prefer an accordion behaviour
+    // Table.AccordionColumn as ColumnDef<IExampleRowData>,
+];
+
 export default () => {
-    const columnHelper = createColumnHelper<IExampleRowData>();
-    const columns: Array<ColumnDef<IExampleRowData>> = [
-        columnHelper.accessor('userId', {
-            header: 'User ID',
-            cell: (info) => info.row.original.userId,
-        }),
-        columnHelper.accessor('id', {
-            header: 'Post ID',
-            cell: (info) => info.row.original.id,
-        }),
-        columnHelper.accessor('title', {
-            header: 'Title',
-            cell: (info) => info.row.original.title,
-        }),
-        Table.CollapsibleColumn as ColumnDef<IExampleRowData>,
-        // or if you prefer an accordion behaviour
-        // Table.AccordionColumn as ColumnDef<IExampleRowData>,
-    ];
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [pages, setPages] = useState(1);
 
-    const fetchData = (state: any) => {
+    const fetchData = async (state: TableState<IExampleRowData>) => {
         setLoading(true);
         const searchParams = new URLSearchParams({
             _sort: state.sorting?.[0]?.id ?? 'userId',
             _order: state.sorting?.[0]?.desc ? 'desc' : 'asc',
-            _page: state.pagination.pageIndex + 1,
-            _limit: state.pagination.pageSize,
+            _page: '' + state.pagination.pageIndex + 1,
+            _limit: '' + state.pagination.pageSize,
             userId: state.predicates.user,
             title_like: state.globalFilter,
         });
@@ -58,12 +65,16 @@ export default () => {
         if (!state.globalFilter) {
             searchParams.delete('title_like');
         }
-        fetch(`https://jsonplaceholder.typicode.com/posts?${searchParams.toString()}`)
-            .then((response) => response.json())
-            .then((json) => setData(json))
-            .then(() => setPages(Math.ceil(100 / state.pagination?.pageSize)))
-            .catch((e) => console.log(e));
-        setLoading(false);
+        try {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/posts?${searchParams.toString()}`);
+            const body = await response.json();
+            setData(body);
+            setPages(Math.ceil(Number(response.headers.get('x-total-count')) / state.pagination?.pageSize));
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -72,12 +83,8 @@ export default () => {
             getRowId={({id}) => id.toString()}
             columns={columns}
             noDataChildren={<NoData />}
-            onMount={(state) => {
-                fetchData(state);
-            }}
-            onChange={(state) => {
-                fetchData(state);
-            }}
+            onMount={fetchData}
+            onChange={fetchData}
             loading={loading}
             initialState={{dateRange: [previousDay, today], predicates: {user: ''}}}
             getExpandChildren={(datum) => <Box py="xs">{datum.body}</Box>}
