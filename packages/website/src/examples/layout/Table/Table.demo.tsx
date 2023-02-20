@@ -5,8 +5,8 @@ import {
     ColumnDef,
     createColumnHelper,
     DateRangePickerPreset,
+    onTableChangeEvent,
     Table,
-    TableState,
     Title,
     useTable,
 } from '@coveord/plasma-mantine';
@@ -49,7 +49,7 @@ export default () => {
     const [loading, setLoading] = useState(true);
     const [pages, setPages] = useState(1);
 
-    const fetchData = async (state: TableState<IExampleRowData>) => {
+    const fetchData: onTableChangeEvent = async (state) => {
         setLoading(true);
         const searchParams = new URLSearchParams({
             _sort: state.sorting?.[0]?.id ?? 'userId',
