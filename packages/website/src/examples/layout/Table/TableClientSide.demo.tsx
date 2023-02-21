@@ -23,7 +23,7 @@ const makeData = (len: number): Person[] =>
     Array(len)
         .fill(0)
         .map((a, index) => ({
-            id: '' + index,
+            id: faker.datatype.uuid(),
             firstName: faker.name.firstName(),
             lastName: faker.name.lastName(),
             age: faker.datatype.number(40),

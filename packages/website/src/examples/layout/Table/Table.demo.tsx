@@ -54,8 +54,8 @@ export default () => {
         const searchParams = new URLSearchParams({
             _sort: state.sorting?.[0]?.id ?? 'userId',
             _order: state.sorting?.[0]?.desc ? 'desc' : 'asc',
-            _page: '' + state.pagination.pageIndex + 1,
-            _limit: '' + state.pagination.pageSize,
+            _page: (state.pagination.pageIndex + 1).toString(),
+            _limit: state.pagination.pageSize.toString(),
             userId: state.predicates.user,
             title_like: state.globalFilter,
         });

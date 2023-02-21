@@ -40,8 +40,8 @@ export default () => {
     const fetchData: onTableChangeEvent = async (state) => {
         setLoading(true);
         const searchParams = new URLSearchParams({
-            _page: '' + state.pagination.pageIndex + 1,
-            _limit: '' + state.pagination.pageSize,
+            _page: (state.pagination.pageIndex + 1).toString(),
+            _limit: state.pagination.pageSize.toString(),
             title_like: state.globalFilter,
         });
         if (!state.globalFilter) {
