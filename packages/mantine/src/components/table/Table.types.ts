@@ -166,6 +166,12 @@ export interface TableProps<T> {
      */
     doubleClickAction?: (datum: T) => void;
     /**
+     * Function called whenever the row selection changes
+     *
+     * @param selectedRows The selected rows
+     */
+    onRowSelectionChange?: (selectedRows: T[]) => void;
+    /**
      * Whether the user can select multiple rows in order to perform actions in bulk
      *
      * @default false
