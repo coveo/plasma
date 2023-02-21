@@ -1,29 +1,48 @@
-import {functionalUpdate, Table} from '@tanstack/table-core';
-import {useState} from 'react';
+import {useClickOutside} from '@mantine/hooks';
+import {functionalUpdate, RowSelectionState, Table} from '@tanstack/table-core';
+import isEqual from 'fast-deep-equal';
 
-export const useRowSelection = <T>(table: Table<T>) => {
-    const [rowSelection, setRowSelection] = useState<Record<string, T>>({});
+import {RowSelectionWithData, TableProps, TableState} from './Table.types';
+
+export const useRowSelection = <T>(
+    table: Table<T>,
+    {multiRowSelectionEnabled}: Pick<TableProps<T>, 'multiRowSelectionEnabled'>
+) => {
+    const outsideClickRef = useClickOutside(() => {
+        if (!multiRowSelectionEnabled) {
+            clearSelection();
+        }
+    });
 
     table.setOptions((prev) => ({
         ...prev,
         onRowSelectionChange: (rowSelectionUpdater) => {
             table.setState((old) => {
-                const selectedRowsIds = functionalUpdate(rowSelectionUpdater, old['rowSelection']);
-                setRowSelection((current) => {
-                    const currentRowsById = table.getRowModel().rowsById;
-                    return Object.keys(selectedRowsIds).reduce((memo, rowId) => {
-                        if (current[rowId]) {
-                            memo[rowId] = current[rowId];
-                        } else {
-                            memo[rowId] = currentRowsById[rowId].original;
+                const newRowSelection = functionalUpdate(
+                    rowSelectionUpdater,
+                    old['rowSelection']
+                ) as RowSelectionWithData<T>;
+
+                if (isEqual(old['rowSelection'], newRowSelection)) {
+                    return old;
+                }
+
+                const rows = table.getRowModel().rowsById;
+
+                Object.keys(newRowSelection).forEach((rowId) => {
+                    if (newRowSelection[rowId] === true) {
+                        if (!rows[rowId]) {
+                            console.error(
+                                'The table was not initialized properly, the rowSelection state should contain an object of type Record<string, TData>.'
+                            );
                         }
-                        return memo;
-                    }, {} as Record<string, T>);
+                        newRowSelection[rowId] = rows[rowId]?.original ?? (true as T);
+                    }
                 });
 
                 return {
                     ...old,
-                    rowSelection: selectedRowsIds,
+                    rowSelection: newRowSelection as RowSelectionState,
                 };
             });
         },
@@ -33,13 +52,9 @@ export const useRowSelection = <T>(table: Table<T>) => {
         table.resetRowSelection(true);
     };
 
-    const getSelectedRows = () => Object.values(rowSelection);
+    const getSelectedRows = () => Object.values((table.getState() as TableState<T>).rowSelection);
 
     const getSelectedRow = () => getSelectedRows()[0] ?? null;
 
-    return {
-        clearSelection,
-        getSelectedRow,
-        getSelectedRows,
-    };
+    return {clearSelection, getSelectedRow, getSelectedRows, outsideClickRef};
 };

@@ -5,7 +5,7 @@ import {FunctionComponent} from 'react';
 import {Table} from '../Table';
 import {useTable} from '../TableContext';
 
-type RowData = {firstName: string; lastName?: string};
+type RowData = {id: string; firstName: string; lastName?: string};
 
 const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [
@@ -15,7 +15,13 @@ const columns: Array<ColumnDef<RowData>> = [
 
 describe('Table', () => {
     it('renders the data', () => {
-        render(<Table data={[{firstName: 'first', lastName: 'last'}]} columns={columns} />);
+        render(
+            <Table
+                getRowId={({id}) => id}
+                data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
+                columns={columns}
+            />
+        );
 
         expect(screen.getByRole('columnheader', {name: 'firstName'})).toBeVisible();
         expect(screen.getByRole('columnheader', {name: 'lastName'})).toBeVisible();
@@ -45,7 +51,7 @@ describe('Table', () => {
                 enableSorting: false,
             }),
         ];
-        render(<Table data={[{firstName: 'first', lastName: 'last'}]} columns={customColumns} />);
+        render(<Table data={[{id: '🆔', firstName: 'first', lastName: 'last'}]} columns={customColumns} />);
 
         expect(screen.getByRole('columnheader', {name: 'First Name'})).toBeVisible();
         expect(screen.getByRole('columnheader', {name: 'Last Name'})).toBeVisible();
@@ -141,7 +147,8 @@ describe('Table', () => {
         ];
         render(
             <Table
-                data={[{firstName: 'first', lastName: 'last'}]}
+                getRowId={({id}) => id}
+                data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
                 getExpandChildren={(row: RowData) => <Fixture row={row} />}
                 columns={customColumns}
             />
@@ -172,10 +179,11 @@ describe('Table', () => {
         ];
         render(
             <Table
+                getRowId={({id}) => id}
                 data={[
-                    {firstName: 'Luke', lastName: 'Skywalker'},
-                    {firstName: 'Lea', lastName: 'Skywalker'},
-                    {firstName: 'Han', lastName: 'Solo'},
+                    {id: '🆔-1', firstName: 'Luke', lastName: 'Skywalker'},
+                    {id: '🆔-2', firstName: 'Lea', lastName: 'Skywalker'},
+                    {id: '🆔-3', firstName: 'Han', lastName: 'Solo'},
                 ]}
                 getExpandChildren={(row: RowData) => (row.lastName === 'Skywalker' ? <Fixture row={row} /> : null)}
                 columns={customColumns}
@@ -200,9 +208,10 @@ describe('Table', () => {
         ];
         render(
             <Table
+                getRowId={({id}) => id}
                 data={[
-                    {firstName: 'Jack', lastName: 'Russel'},
-                    {firstName: 'Golden', lastName: 'Retriever'},
+                    {id: '🆔-1', firstName: 'Jack', lastName: 'Russel'},
+                    {id: '🆔-2', firstName: 'Golden', lastName: 'Retriever'},
                 ]}
                 getExpandChildren={(row: RowData) => <Fixture row={row} />}
                 columns={customColumns}
@@ -234,14 +243,18 @@ describe('Table', () => {
         const doubleClickSpy = vi.fn();
         render(
             <Table<RowData>
-                data={[{firstName: 'Mario'}, {firstName: 'Luigi'}]}
+                getRowId={({id}) => id}
+                data={[
+                    {id: '🆔-1', firstName: 'Mario'},
+                    {id: '🆔-2', firstName: 'Luigi'},
+                ]}
                 columns={columns}
                 doubleClickAction={doubleClickSpy}
             ></Table>
         );
         await user.dblClick(screen.getByRole('cell', {name: 'Mario'}));
         expect(doubleClickSpy).toHaveBeenCalledTimes(1);
-        expect(doubleClickSpy).toHaveBeenCalledWith({firstName: 'Mario'});
+        expect(doubleClickSpy).toHaveBeenCalledWith({id: '🆔-1', firstName: 'Mario'});
     });
 
     it('reset row selection when user click outside the table', async () => {
@@ -250,9 +263,10 @@ describe('Table', () => {
             <div>
                 <div>I'm a header</div>
                 <Table
+                    getRowId={({id}) => id}
                     data={[
-                        {firstName: 'first', lastName: 'last'},
-                        {firstName: 'patate', lastName: 'king'},
+                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
                     ]}
                     columns={columns}
                 />
@@ -276,9 +290,10 @@ describe('Table', () => {
         it('displays a checkbox as the first cell of each row', () => {
             render(
                 <Table
+                    getRowId={({id}) => id}
                     data={[
-                        {firstName: 'John', lastName: 'Smith'},
-                        {firstName: 'Jane', lastName: 'Doe'},
+                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
                     ]}
                     columns={columns}
                     multiRowSelectionEnabled
@@ -293,13 +308,33 @@ describe('Table', () => {
             });
         });
 
+        it('selects the rows specified in the initial state on mount', () => {
+            render(
+                <Table
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                    ]}
+                    columns={columns}
+                    multiRowSelectionEnabled
+                    initialState={{
+                        rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}},
+                    }}
+                />
+            );
+
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+        });
+
         it('selects all rows of the current page when clicking on the checkbox that is in the column header', async () => {
             const user = userEvent.setup({delay: null});
             render(
                 <Table
+                    getRowId={({id}) => id}
                     data={[
-                        {firstName: 'John', lastName: 'Smith'},
-                        {firstName: 'Jane', lastName: 'Doe'},
+                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
                     ]}
                     columns={columns}
                     multiRowSelectionEnabled
@@ -321,9 +356,10 @@ describe('Table', () => {
                 <div>
                     <div>I'm a header</div>
                     <Table
+                        getRowId={({id}) => id}
                         data={[
-                            {firstName: 'first', lastName: 'last'},
-                            {firstName: 'patate', lastName: 'king'},
+                            {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                            {id: '🆔-2', firstName: 'patate', lastName: 'king'},
                         ]}
                         columns={columns}
                         multiRowSelectionEnabled
@@ -348,9 +384,10 @@ describe('Table', () => {
             const user = userEvent.setup({delay: null});
             render(
                 <Table
+                    getRowId={({id}) => id}
                     data={[
-                        {firstName: 'John', lastName: 'Smith'},
-                        {firstName: 'Jane', lastName: 'Doe'},
+                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
                     ]}
                     columns={columns}
                     multiRowSelectionEnabled

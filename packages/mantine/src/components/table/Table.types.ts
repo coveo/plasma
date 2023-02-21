@@ -5,7 +5,7 @@ import {
     CoreOptions,
     InitialTableState as TanstackInitialTableState,
     TableOptions,
-    TableState,
+    TableState as TanstackTableState,
 } from '@tanstack/table-core';
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
 
@@ -19,9 +19,19 @@ import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
 
-export type onTableChangeEvent = (params: TableState & TableFormType) => void;
+export type RowSelectionWithData<TData> = Record<string, TData>;
+export interface RowSelectionState<TData> {
+    rowSelection: RowSelectionWithData<TData>;
+}
 
-export interface InitialTableState extends TanstackInitialTableState, Partial<TableFormType> {}
+export interface TableState<TData> extends Omit<TanstackTableState, 'rowSelection'>, RowSelectionState<TData> {}
+
+export interface InitialTableState<TData>
+    extends Omit<TanstackInitialTableState, 'rowSelection'>,
+        Partial<RowSelectionState<TData>>,
+        Partial<TableFormType> {}
+
+export type onTableChangeEvent<TData> = (params: TableState<TData> & TableFormType) => void;
 
 export type TableFormType = {
     /**
@@ -48,11 +58,11 @@ export type TableContextType<TData> = {
      *
      * @see https://tanstack.com/table/v8/docs/api/core/table#state
      */
-    state: TableState;
+    state: TableState<TData>;
     /**
      * Function to update the table state
      */
-    setState: Dispatch<(prevState: TableState) => TableState>;
+    setState: Dispatch<(prevState: TableState<TData>) => TableState<TData>>;
     /**
      * Whether the table currently as any kind of filter applied.
      * Useful to determine if the noDataChildren is an empty state or just the result of a filter
@@ -112,13 +122,13 @@ export interface TableProps<T> {
      *
      * @param state the state of the table
      */
-    onMount?: onTableChangeEvent;
+    onMount?: onTableChangeEvent<T>;
     /**
      * Function called when the table should update
      *
      * @param state the state of the table
      */
-    onChange?: onTableChangeEvent;
+    onChange?: onTableChangeEvent<T>;
     /**
      * Function that generates the expandable content of a row
      * Return null for rows that don't need to be expandable
@@ -150,7 +160,7 @@ export interface TableProps<T> {
     /**
      * Initial state of the table
      */
-    initialState?: InitialTableState;
+    initialState?: InitialTableState<T>;
     /**
      * Action passed when user double clicks on a row
      */
