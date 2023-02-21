@@ -68,6 +68,9 @@ export default () => {
             onMount={fetchData}
             onChange={fetchData}
             loading={loading}
+            onRowSelectionChange={(selectedRows) =>
+                console.info(`Row selection changed, selected rows: ${selectedRows.map(({id}) => id).join(', ')}`)
+            }
             multiRowSelectionEnabled
             initialState={{
                 rowSelection: {
