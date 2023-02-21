@@ -1,6 +1,7 @@
-import {Select, SelectItem, Group, Text} from '@mantine/core';
+import {Group, Select, SelectItem, Text} from '@mantine/core';
 import {FunctionComponent} from 'react';
-import {useTable} from './useTable';
+
+import {useTable} from './TableContext';
 
 interface TablePredicateProps {
     /**

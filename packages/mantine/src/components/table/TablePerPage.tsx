@@ -1,8 +1,7 @@
 import {Group, SegmentedControl, Text} from '@mantine/core';
-import {TableState} from '@tanstack/react-table';
 import {FunctionComponent} from 'react';
 
-import {useTable} from './useTable';
+import {useTable} from './TableContext';
 
 interface TablePerPageProps {
     /**
@@ -26,7 +25,7 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     const {state, setState} = useTable();
 
     const updatePerPage = (newPerPage: string) => {
-        setState((prevState: TableState) => ({
+        setState((prevState) => ({
             ...prevState,
             pagination: {pageIndex: 0, pageSize: parseInt(newPerPage, 10)},
         }));

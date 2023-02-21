@@ -1,3 +1,3 @@
 export * from './Table';
-export {type onTableChangeEvent} from './TableContext';
-export * from './useTable';
+export {useTable} from './TableContext';
+export {type onTableChangeEvent, type InitialTableState, type TableProps} from './Table.types';

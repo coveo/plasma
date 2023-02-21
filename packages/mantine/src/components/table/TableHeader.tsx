@@ -3,7 +3,7 @@ import {createStyles, DefaultProps, Group, Selectors, Space, Tooltip} from '@man
 import {FunctionComponent, ReactNode} from 'react';
 
 import {Button} from '../button';
-import {useTable} from './useTable';
+import {useTable} from './TableContext';
 
 const useStyles = createStyles((theme) => ({
     root: {
