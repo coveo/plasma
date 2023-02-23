@@ -49,7 +49,7 @@ export default () => {
     const [loading, setLoading] = useState(true);
     const [pages, setPages] = useState(1);
 
-    const fetchData: onTableChangeEvent = async (state) => {
+    const fetchData: onTableChangeEvent<IExampleRowData> = async (state) => {
         setLoading(true);
         const searchParams = new URLSearchParams({
             _sort: state.sorting?.[0]?.id ?? 'userId',

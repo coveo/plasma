@@ -1,21 +1,21 @@
 import {Box, Center, Collapse, Loader, Skeleton, Table as MantineTable} from '@mantine/core';
 import {useForm} from '@mantine/form';
-import {useClickOutside, useDidUpdate} from '@mantine/hooks';
+import {useDidUpdate} from '@mantine/hooks';
 import {
     ColumnDef,
     defaultColumnSizing,
     flexRender,
     getCoreRowModel,
     Row,
+    TableState as TanstackTableState,
     useReactTable,
-    TableState,
 } from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Children, Fragment, ReactElement, useCallback, useEffect, useState} from 'react';
+import {Children, Dispatch, Fragment, ReactElement, useCallback, useEffect, useState} from 'react';
 
 import useStyles from './Table.styles';
-import {TableFormType, TableProps, TableType} from './Table.types';
+import {TableFormType, TableProps, TableState, TableType} from './Table.types';
 import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
 import {TableContext} from './TableContext';
@@ -67,13 +67,15 @@ export const Table: TableType = <T,>({
         enableRowSelection: !loading,
         ...options,
     });
-    const [state, setState] = useState<TableState>(table.initialState);
+    const [state, setState] = useState<TableState<T>>(table.initialState as TableState<T>);
     table.setOptions((prev) => ({
         ...prev,
-        state,
-        onStateChange: setState,
+        state: state as TanstackTableState,
+        onStateChange: setState as Dispatch<React.SetStateAction<TanstackTableState>>,
     }));
-    const {clearSelection, getSelectedRow, getSelectedRows} = useRowSelection(table);
+    const {clearSelection, getSelectedRow, getSelectedRows, outsideClickRef} = useRowSelection(table, {
+        multiRowSelectionEnabled,
+    });
     const isFiltered =
         !!state.globalFilter ||
         Object.keys(form.values?.predicates ?? {}).some((predicate) => !!form.values.predicates[predicate]) ||
@@ -101,12 +103,6 @@ export const Table: TableType = <T,>({
         setState((prevState) => ({...prevState, globalFilter: ''}));
     }, []);
 
-    const outsideClickRef = useClickOutside(() => {
-        if (!multiRowSelectionEnabled) {
-            clearSelection();
-        }
-    });
-
     if (!data) {
         return (
             <Center sx={{flexGrow: 1}}>
@@ -117,14 +113,15 @@ export const Table: TableType = <T,>({
 
     const rows = table.getRowModel().rows.map((row) => {
         const rowChildren = getExpandChildren?.(row.original) ?? null;
+        const isSelected = !!row.getIsSelected();
 
         return (
             <Fragment key={row.id}>
                 <tr
                     onClick={() => row.toggleSelected()}
                     onDoubleClick={() => doubleClickAction?.(row.original)}
-                    className={cx(classes.row, {[classes.rowSelected]: row.getIsSelected()})}
-                    aria-selected={row.getIsSelected()}
+                    className={cx(classes.row, {[classes.rowSelected]: isSelected})}
+                    aria-selected={isSelected}
                 >
                     {row.getVisibleCells().map((cell) => {
                         const size = cell.column.getSize();
@@ -147,7 +144,7 @@ export const Table: TableType = <T,>({
                 {rowChildren ? (
                     <tr>
                         <td
-                            colSpan={columns.length + 1}
+                            colSpan={table.getAllColumns().length}
                             style={{
                                 padding: 0,
                                 borderTop: row.getIsExpanded() ? undefined : 'none',
@@ -204,7 +201,7 @@ export const Table: TableType = <T,>({
                                     rows
                                 ) : (
                                     <tr>
-                                        <td colSpan={columns.length}>{noDataChildren}</td>
+                                        <td colSpan={table.getAllColumns().length}>{noDataChildren}</td>
                                     </tr>
                                 )}
                             </tbody>
