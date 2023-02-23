@@ -1,3 +1,12 @@
+# 49.5.0 (2023-02-23)
+
+
+### Features
+
+* **mantine:** add onRowSelectionChange prop to table (#3052) c39ef76, closes #3052
+
+
+
 # 49.4.0 (2023-02-23)
 
 
