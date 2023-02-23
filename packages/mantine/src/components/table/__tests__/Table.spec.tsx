@@ -3,7 +3,7 @@ import {render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
 
 import {Table} from '../Table';
-import {useTable} from '../useTable';
+import {useTable} from '../TableContext';
 
 type RowData = {firstName: string; lastName?: string};
 

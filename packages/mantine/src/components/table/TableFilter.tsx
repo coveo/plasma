@@ -1,9 +1,8 @@
 import {CrossSize16Px, SearchSize16Px} from '@coveord/plasma-react-icons';
 import {ActionIcon, createStyles, DefaultProps, Selectors, TextInput} from '@mantine/core';
-import {TableState} from '@tanstack/react-table';
 import {ChangeEventHandler, FunctionComponent, MouseEventHandler} from 'react';
 
-import {useTable} from './useTable';
+import {useTable} from './TableContext';
 
 const useStyles = createStyles((theme) => ({
     wrapper: {
@@ -35,7 +34,7 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
     const {state, setState} = useTable();
 
     const changeFilterValue = (value: string) => {
-        setState((prevState: TableState) => ({
+        setState((prevState) => ({
             ...prevState,
             pagination: prevState.pagination
                 ? {pageIndex: 0, pageSize: prevState.pagination.pageSize}

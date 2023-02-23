@@ -7,7 +7,7 @@ import {FunctionComponent, useState} from 'react';
 import {Button} from '../button';
 import {DateRangePickerInlineCalendar, DateRangePickerInlineCalendarProps} from '../date-range-picker';
 import {DateRangePickerPreset} from '../date-range-picker/DateRangePickerPresetSelect';
-import {useTable} from './useTable';
+import {useTable} from './TableContext';
 
 interface TableDateRangePickerProps
     extends Pick<DateRangePickerInlineCalendarProps, 'startProps' | 'endProps' | 'rangeCalendarProps'> {

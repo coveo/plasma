@@ -1,7 +1,7 @@
 import {Pagination} from '@mantine/core';
-import {TableState} from '@tanstack/react-table';
 import {FunctionComponent} from 'react';
-import {useTable} from './useTable';
+
+import {useTable} from './TableContext';
 
 interface TablePaginationProps {
     /**
@@ -13,7 +13,7 @@ interface TablePaginationProps {
 export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalPages}) => {
     const {state, setState, containerRef, getPageCount} = useTable();
     const updatePage = (newPage: number) => {
-        setState((prevState: TableState) => ({
+        setState((prevState) => ({
             ...prevState,
             pagination: {...prevState.pagination, pageIndex: newPage - 1},
         }));
