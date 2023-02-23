@@ -11,7 +11,7 @@ importers:
     specifiers:
       '@commitlint/cli': 17.1.2
       '@commitlint/config-conventional': 17.1.0
-      '@coveo/semantic-monorepo-tools': 1.5.19
+      '@coveo/semantic-monorepo-tools': 1.5.22
       '@sindresorhus/slugify': 2.1.1
       aws-sdk: 2.1222.0
       axios: 0.27.2
@@ -32,7 +32,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.1.2
       '@commitlint/config-conventional': 17.1.0
-      '@coveo/semantic-monorepo-tools': 1.5.19
+      '@coveo/semantic-monorepo-tools': 1.5.22
       '@sindresorhus/slugify': 2.1.1
       aws-sdk: 2.1222.0
       axios: 0.27.2
@@ -1333,8 +1333,8 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/semantic-monorepo-tools/1.5.19:
-    resolution: {integrity: sha512-53D+HNhaZJV7TOqY5s/YDMYRJaYhSnsXpGkWCaSCosGZ+Am9HR/8bkAo0VJ7bhCKSyAf513CH7El6mAMr+nAnQ==}
+  /@coveo/semantic-monorepo-tools/1.5.22:
+    resolution: {integrity: sha512-gff8kJXtD8PQ63c1jbVMsBRzaWv1iOb6I2L8+aYa6XakNaeqEjmV+6S5IRn8nE80r0CvxvHKBZPg8bNaW2dXMw==}
     dependencies:
       conventional-changelog-writer: 5.0.1
       conventional-commits-parser: 3.2.4
@@ -8972,7 +8972,7 @@ packages:
     engines: {node: '>=0.6.0'}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.6
     dev: true
 
   /gopd/1.0.1:
@@ -9172,7 +9172,7 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.6
       neo-async: 2.6.2
       source-map: 0.6.1
       wordwrap: 1.0.0
@@ -10881,7 +10881,7 @@ packages:
     resolution: {integrity: sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.6
     dev: true
 
   /json5/2.2.1:
@@ -12222,7 +12222,6 @@ packages:
 
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
-    dev: true
 
   /minimist/1.2.7:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
@@ -12239,7 +12238,7 @@ packages:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.6
     dev: true
 
   /mkdirp/1.0.4:
@@ -13217,7 +13216,7 @@ packages:
       fast-safe-stringify: 2.1.1
       help-me: 4.1.0
       joycon: 3.1.1
-      minimist: 1.2.7
+      minimist: 1.2.6
       on-exit-leak-free: 2.1.0
       pino-abstract-transport: 1.0.0
       pump: 3.0.0
@@ -16926,7 +16925,7 @@ packages:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.1
-      minimist: 1.2.7
+      minimist: 1.2.6
       strip-bom: 3.0.0
     dev: true
 
