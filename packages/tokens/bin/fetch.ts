@@ -41,13 +41,13 @@ const getIconsLibrary = async () => {
 
     console.info(`Detected ${iconsNodeId.length} icons, starting to fetch icons markup in chunks of size ${chunkSize}`);
 
-    const {data} = await figmaClient.fileImages(FilesId.Icons, {ids: iconsNodeId, format: 'svg'});
     const iconsChunks = {
         async *[Symbol.asyncIterator]() {
-            const chunks = chunk(Object.entries(data.images), chunkSize);
+            const chunks = chunk(iconsNodeId, chunkSize);
             for (let i = 0; i < chunks.length; i++) {
                 console.info(`Fetching chunks... (${i + 1}/${chunks.length})`);
-                yield await Promise.all(chunks[i].map(fetchIconSvgMarkup));
+                const {data} = await figmaClient.fileImages(FilesId.Icons, {ids: chunks[i], format: 'svg'});
+                yield await Promise.all(Object.entries(data.images).map(fetchIconSvgMarkup));
             }
             console.info('Icons markup done.');
         },
