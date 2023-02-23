@@ -1,19 +1,16 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
-import * as isSVG from 'is-svg';
 import {camelize, humanize} from 'underscore.string';
 
 import {svg as svgEnum} from './tmp/svg.js';
 
 const formatSvgName = (svgName) => camelize(humanize(svgName), true);
 
-const isSvgStringValid = (svgString) => isSVG(svgString);
-
 const renderSvg = (svgString, svgClass, attr) => {
     svgClass = svgClass || '';
     attr = attr || {};
 
-    if (svgString && isSvgStringValid(svgString)) {
+    if (svgString) {
         const svgHTML = $($.parseHTML(svgString));
         svgHTML[0].setAttribute('class', svgClass);
         _.mapObject(attr, (value, key) => {
