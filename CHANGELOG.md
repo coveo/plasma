@@ -1,3 +1,12 @@
+# 49.4.0 (2023-02-23)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries (#3053) d4ae943, closes #3053
+
+
+
 ## 49.3.6 (2023-02-23)
 
 
