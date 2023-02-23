@@ -1,6 +1,6 @@
-@import '~@coveord/plasma-style/dist/css/CoveoStyleGuide.css';
-@import '~@coveord/plasma-style/scss/lib/mixins';
-@import '~@coveord/plasma-style/scss/variables';
+@import '@coveord/plasma-style/dist/style.css';
+@import '@coveord/plasma-style/scss/lib/_mixins';
+@import '@coveord/plasma-style/scss/variables';
 @import 'syntax-highlighting';
 
 #App {

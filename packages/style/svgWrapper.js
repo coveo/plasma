@@ -1,5 +1,5 @@
-import * as $ from 'jquery';
-import * as _ from 'underscore';
+import $ from 'jquery';
+import _ from 'underscore';
 import {camelize, humanize} from 'underscore.string';
 
 import {svg as svgEnum} from './tmp/svg.js';
