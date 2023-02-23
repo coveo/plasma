@@ -1,3 +1,12 @@
+## 49.3.6 (2023-02-23)
+
+
+### Bug Fixes
+
+* **mantine:** rowSelection from initialState (#3047) 623b610, closes #3047
+
+
+
 ## 49.3.5 (2023-02-23)
 
 
