@@ -6,7 +6,10 @@ import {RowSelectionWithData, TableProps, TableState} from './Table.types';
 
 export const useRowSelection = <T>(
     table: Table<T>,
-    {multiRowSelectionEnabled}: Pick<TableProps<T>, 'multiRowSelectionEnabled'>
+    {
+        onRowSelectionChange,
+        multiRowSelectionEnabled,
+    }: Pick<TableProps<T>, 'onRowSelectionChange' | 'multiRowSelectionEnabled'>
 ) => {
     const outsideClickRef = useClickOutside(() => {
         if (!multiRowSelectionEnabled) {
@@ -39,6 +42,8 @@ export const useRowSelection = <T>(
                         newRowSelection[rowId] = rows[rowId]?.original ?? (true as T);
                     }
                 });
+
+                onRowSelectionChange?.(Object.values(newRowSelection));
 
                 return {
                     ...old,

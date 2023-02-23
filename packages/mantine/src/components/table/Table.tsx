@@ -43,6 +43,7 @@ export const Table: TableType = <T,>({
     loading = false,
     doubleClickAction,
     multiRowSelectionEnabled,
+    onRowSelectionChange,
     options = {},
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
@@ -75,6 +76,7 @@ export const Table: TableType = <T,>({
     }));
     const {clearSelection, getSelectedRow, getSelectedRows, outsideClickRef} = useRowSelection(table, {
         multiRowSelectionEnabled,
+        onRowSelectionChange,
     });
     const isFiltered =
         !!state.globalFilter ||

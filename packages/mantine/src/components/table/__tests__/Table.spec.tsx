@@ -350,6 +350,41 @@ describe('Table', () => {
             expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
         });
 
+        it('calls the onRowSelectionChange prop when the row selection changes', async () => {
+            const onRowSelectionChangeSpy = vi.fn();
+            const user = userEvent.setup({delay: null});
+            render(
+                <Table
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                    ]}
+                    columns={columns}
+                    multiRowSelectionEnabled
+                    onRowSelectionChange={onRowSelectionChangeSpy}
+                />
+            );
+            await user.click(screen.getByRole('row', {name: /jane doe/i}));
+            expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
+            expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([{id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}]);
+
+            onRowSelectionChangeSpy.mockClear();
+
+            await user.click(screen.getByRole('row', {name: /john smith/i}));
+            expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
+            expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+            ]);
+
+            onRowSelectionChangeSpy.mockClear();
+
+            await user.click(screen.getByRole('checkbox', {name: /unselect all from this page/i}));
+            expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
+            expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([]);
+        });
+
         it('does not clear the row selection when clicking outside the table', async () => {
             const user = userEvent.setup({delay: null});
             render(
