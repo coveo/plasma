@@ -1,3 +1,12 @@
+## 49.3.5 (2023-02-23)
+
+
+### Bug Fixes
+
+* **collection item:** icons alignment (#3045) 30574f8, closes #3045
+
+
+
 ## 49.3.4 (2023-02-16)
 
 
