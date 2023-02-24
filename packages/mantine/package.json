@@ -36,7 +36,7 @@
         "react-beautiful-dnd": "13.1.1"
     },
     "devDependencies": {
-        "@emotion/react": "11.10.5",
+        "@emotion/react": "11.10.6",
         "@mantine/carousel": "5.9.2",
         "@mantine/core": "5.9.2",
         "@mantine/dates": "5.9.2",
