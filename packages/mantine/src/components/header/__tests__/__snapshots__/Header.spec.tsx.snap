@@ -1,0 +1,58 @@
+// Vitest Snapshot v1
+
+exports[`Header > renders the specified breadcrumbs above the title 1`] = `
+<div>
+  <div
+    class="mantine-Group-root mantine-1g2mfqe"
+  >
+    <div
+      class="mantine-Stack-root mantine-1fod3h5"
+    >
+      <div
+        class="mantine-Breadcrumbs-root mantine-16ttirm"
+      >
+        <a
+          class="mantine-Text-root mantine-Anchor-root mantine-Breadcrumbs-breadcrumb mantine-ti180k"
+        >
+          One
+        </a>
+        <div
+          class="mantine-Text-root mantine-Breadcrumbs-separator mantine-1mwmxa2"
+        >
+          /
+        </div>
+        <a
+          class="mantine-Text-root mantine-Anchor-root mantine-Breadcrumbs-breadcrumb mantine-ti180k"
+        >
+          Two
+        </a>
+        <div
+          class="mantine-Text-root mantine-Breadcrumbs-separator mantine-1mwmxa2"
+        >
+          /
+        </div>
+        <a
+          class="mantine-Text-root mantine-Anchor-root mantine-Breadcrumbs-breadcrumb mantine-ti180k"
+        >
+          Three
+        </a>
+      </div>
+      <div
+        class="mantine-xg7kom"
+      >
+        <h1
+          class="mantine-Text-root mantine-Title-root mantine-1viemj4"
+        >
+          Title
+        </h1>
+      </div>
+      <div
+        class="mantine-Text-root mantine-1x936t8"
+      />
+    </div>
+    <div
+      class="mantine-Group-root mantine-5f6x53"
+    />
+  </div>
+</div>
+`;

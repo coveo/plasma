@@ -1,44 +1,49 @@
+import {Anchor} from '@mantine/core';
 import {render, screen} from '@test-utils';
 
 import {Header} from '../Header';
 
 describe('Header', () => {
-    it('renders no breadcrumb separator if there is only one child', () => {
-        render(<Header>child 1</Header>);
+    it('renders a heading of level 1 with the specified children within', () => {
+        render(<Header>child</Header>);
 
         const header = screen.getByRole('heading');
         expect(header).toMatchInlineSnapshot(`
-          <h4
-            class="mantine-Text-root mantine-Title-root mantine-xv5lu6"
+          <h1
+            class="mantine-Text-root mantine-Title-root mantine-1viemj4"
           >
-            <div
-              class="mantine-Group-root mantine-fila1z"
-            >
-              <div
-                class="mantine-Breadcrumbs-root mantine-16ttirm"
-              >
-                <div
-                  class="mantine-1iqrsug mantine-Breadcrumbs-breadcrumb"
-                >
-                  child 1
-                </div>
-              </div>
-            </div>
-          </h4>
+            child
+          </h1>
         `);
     });
 
-    it('renders a arrow head icon between each children', async () => {
-        render(
+    it('renders the specified breadcrumbs above the title', async () => {
+        const {container, rerender} = render(
             <Header>
-                <span>A</span>
-                <span>B</span>
-                <span>C</span>
+                Title
+                <Header.Breadcrumbs>
+                    <Anchor>One</Anchor>
+                    <Anchor>Two</Anchor>
+                    <Anchor>Three</Anchor>
+                </Header.Breadcrumbs>
             </Header>
         );
+        const titleFirst = container;
 
-        const separators = await screen.findAllByRole('img', {name: /arrowHeadRight/i});
-        expect(separators).toHaveLength(2);
+        rerender(
+            <Header>
+                <Header.Breadcrumbs>
+                    <Anchor>One</Anchor>
+                    <Anchor>Two</Anchor>
+                    <Anchor>Three</Anchor>
+                </Header.Breadcrumbs>
+                Title
+            </Header>
+        );
+        const breadcrumbsFirst = container;
+
+        expect(titleFirst).toMatchSnapshot();
+        expect(breadcrumbsFirst).toEqual(titleFirst);
     });
 
     it('renders a doc link icon if a doc link url is provided', async () => {

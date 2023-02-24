@@ -1,6 +1,6 @@
-import {QuestionSize24Px} from '@coveord/plasma-react-icons';
-import {Anchor, Breadcrumbs, DefaultProps, Divider, Group, Stack, Text, Title, Tooltip} from '@mantine/core';
-import {FunctionComponent, ReactNode} from 'react';
+import {QuestionSize16Px} from '@coveord/plasma-react-icons';
+import {Anchor, Breadcrumbs, DefaultProps, Divider, Flex, Group, Stack, Text, Title, Tooltip} from '@mantine/core';
+import {Children, FunctionComponent, ReactElement, ReactNode} from 'react';
 
 export interface HeaderProps extends DefaultProps {
     /**
@@ -31,7 +31,12 @@ export interface HeaderProps extends DefaultProps {
     children: ReactNode;
 }
 
-export const Header: FunctionComponent<HeaderProps> = ({
+interface HeaderType {
+    (props: HeaderProps): ReactElement;
+    Breadcrumbs: typeof HeaderBreadcrumbs;
+}
+
+export const Header: HeaderType = ({
     description,
     actions,
     borderBottom,
@@ -39,26 +44,47 @@ export const Header: FunctionComponent<HeaderProps> = ({
     docLinkTooltipLabel,
     children,
     ...others
-}) => (
-    <>
-        <Group position="apart" py="md" px="xl" {...others}>
-            <Stack spacing="xs">
-                <Title order={4}>
-                    <Group spacing={0}>
-                        <Breadcrumbs>{children}</Breadcrumbs>
+}) => {
+    const convertedChildren = Children.toArray(children) as ReactElement[];
+    const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
+    const childrenWithoutBreadcrumbs = convertedChildren.filter((child) => child.type !== HeaderBreadcrumbs);
+    return (
+        <>
+            <Group position="apart" p="xl" pb="lg" {...others}>
+                <Stack spacing={0}>
+                    {breadcrumbs}
+                    <Flex align="center">
+                        <Title order={1} color="gray.5">
+                            {childrenWithoutBreadcrumbs}
+                        </Title>
                         {docLink ? (
-                            <Tooltip label={docLinkTooltipLabel} disabled={!docLinkTooltipLabel} position="bottom">
+                            <Tooltip label={docLinkTooltipLabel} disabled={!docLinkTooltipLabel} position="right">
                                 <Anchor inline href={docLink} target="_blank" ml="xs">
-                                    <QuestionSize24Px height={24} />
+                                    <QuestionSize16Px height={16} />
                                 </Anchor>
                             </Tooltip>
                         ) : null}
-                    </Group>
-                </Title>
-                <Text size="sm">{description}</Text>
-            </Stack>
-            <Group spacing="xs">{actions}</Group>
-        </Group>
-        {borderBottom ? <Divider size="xs" /> : null}
-    </>
+                    </Flex>
+                    <Text size="md" color="gray.6">
+                        {description}
+                    </Text>
+                </Stack>
+                <Group spacing="sm">{actions}</Group>
+            </Group>
+            {borderBottom ? <Divider size="xs" /> : null}
+        </>
+    );
+};
+
+const HeaderBreadcrumbs: FunctionComponent<{children: ReactNode}> = ({children}) => (
+    <Breadcrumbs
+        styles={(theme) => ({
+            breadcrumb: {fontSize: theme.fontSizes.sm},
+            separator: {color: theme.colors.gray[5]},
+        })}
+    >
+        {children}
+    </Breadcrumbs>
 );
+
+Header.Breadcrumbs = HeaderBreadcrumbs;

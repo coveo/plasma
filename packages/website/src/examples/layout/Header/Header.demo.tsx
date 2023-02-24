@@ -1,4 +1,4 @@
-import {Button, Header} from '@coveord/plasma-mantine';
+import {Anchor, Button, Header} from '@coveord/plasma-mantine';
 
 export default () => (
     <Header
@@ -8,13 +8,16 @@ export default () => (
         borderBottom
         actions={
             <>
-                <Button variant="outline">Action 2</Button>
-                <Button>Action 1</Button>
+                <Button>Primary</Button>
+                <Button variant="outline">Secondary</Button>
             </>
         }
     >
-        <span>One</span>
-        <span>Two</span>
-        <span>Three</span>
+        Title
+        <Header.Breadcrumbs>
+            <Anchor>One</Anchor>
+            <Anchor>Two</Anchor>
+            <Anchor>Three</Anchor>
+        </Header.Breadcrumbs>
     </Header>
 );

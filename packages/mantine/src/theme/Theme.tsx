@@ -1,4 +1,4 @@
-import {ArrowHeadRightSize24Px, InfoSize24Px} from '@coveord/plasma-react-icons';
+import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {ButtonStylesParams, MantineThemeOverride, ModalStylesParams} from '@mantine/core';
 
@@ -53,9 +53,14 @@ export const plasmaTheme: MantineThemeOverride = {
         Title: {
             styles: (theme) => ({
                 root: {
-                    '&:is(h1,h2,h3,h4,h5,h6)': {letterSpacing: '0.011em', color: theme.colors.gray[9]},
+                    '&:is(h1,h2,h3,h4,h5,h6)': {letterSpacing: '0.011em'},
                 },
             }),
+        },
+        Text: {
+            defaultProps: {
+                weight: 300,
+            },
         },
         Button: {
             styles: (theme, params: ButtonStylesParams) => ({
@@ -115,11 +120,6 @@ export const plasmaTheme: MantineThemeOverride = {
                 multiline: true,
             },
         },
-        Breadcrumbs: {
-            defaultProps: {
-                separator: <ArrowHeadRightSize24Px height={24} />,
-            },
-        },
         Loader: {
             defaultProps: {
                 variant: 'dots',
@@ -139,6 +139,7 @@ export const plasmaTheme: MantineThemeOverride = {
             },
             styles: (theme) => ({
                 root: {
+                    fontWeight: 300,
                     ...theme.fn.hover({
                         textDecoration: 'underline',
                         color: theme.colors.action[8],
