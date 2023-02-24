@@ -19,7 +19,7 @@ interface CollectionItemSharedProps extends DefaultProps<Selectors<typeof useSty
 const RemoveButton: FunctionComponent<{
     onClick: React.MouseEventHandler<HTMLButtonElement>;
 }> = ({onClick}) => (
-    <ActionIcon variant="subtle" onClick={onClick} color="action">
+    <ActionIcon sx={{alignSelf: 'center'}} variant="subtle" onClick={onClick} color="action">
         <RemoveSize16Px height={16} />
     </ActionIcon>
 );
@@ -69,7 +69,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
                     {...provided.draggableProps}
                     className={cx(classes.item, {[classes.itemDragging]: isDragging})}
                 >
-                    <div {...provided.dragHandleProps}>
+                    <div {...provided.dragHandleProps} style={{alignSelf: 'center'}}>
                         <DragAndDropSize16Px height={16} />
                     </div>
                     {children}

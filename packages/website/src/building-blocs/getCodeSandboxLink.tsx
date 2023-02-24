@@ -74,7 +74,7 @@ import {Provider} from 'react-redux';
 import Demo from './Demo';
 import Store from './Store';
 import {Defaults} from '@coveord/plasma-react';
-import '@coveord/plasma-style/dist/css/CoveoStyleGuide.css';
+import '@coveord/plasma-style/dist/style.css';
 import './font.css';
 
 const root = createRoot(document.getElementById('App'));

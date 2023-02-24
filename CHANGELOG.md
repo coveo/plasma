@@ -1,3 +1,43 @@
+## 49.5.1 (2023-02-24)
+
+
+
+# 49.5.0 (2023-02-23)
+
+
+### Features
+
+* **mantine:** add onRowSelectionChange prop to table (#3052) c39ef76, closes #3052
+
+
+
+# 49.4.0 (2023-02-23)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries (#3053) d4ae943, closes #3053
+
+
+
+## 49.3.6 (2023-02-23)
+
+
+### Bug Fixes
+
+* **mantine:** rowSelection from initialState (#3047) 623b610, closes #3047
+
+
+
+## 49.3.5 (2023-02-23)
+
+
+### Bug Fixes
+
+* **collection item:** icons alignment (#3045) 30574f8, closes #3045
+
+
+
 ## 49.3.4 (2023-02-16)
 
 

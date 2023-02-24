@@ -69,7 +69,7 @@
                 position: absolute;
                 top: var(--svg-checked-top);
                 left: var(--svg-checked-left);
-                content: url('../../resources/icons/svg/content/checkbox.svg');
+                content: url('/icons/svg/content/checkbox.svg');
             }
 
             &:disabled {
@@ -84,7 +84,7 @@
                 position: absolute;
                 top: var(--svg-underterminate-top);
                 left: var(--svg-underterminate-left);
-                content: url('../../resources/icons/svg/content/undeterminate-checkbox.svg');
+                content: url('/icons/svg/content/undeterminate-checkbox.svg');
             }
 
             &:disabled {
@@ -103,13 +103,13 @@
             &:checked {
                 & + button:before {
                     position: absolute;
-                    content: url('../../resources/icons/svg/content/disabled-checkbox.svg');
+                    content: url('/icons/svg/content/disabled-checkbox.svg');
                 }
             }
 
             &:indeterminate + button:before {
                 position: absolute;
-                content: url('../../resources/icons/svg/content/disabled-undeterminate-checkbox.svg');
+                content: url('/icons/svg/content/disabled-undeterminate-checkbox.svg');
             }
 
             & ~ .help-text,

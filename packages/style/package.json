@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-style",
-    "version": "49.0.1",
+    "version": "49.5.1",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -16,7 +16,8 @@
     },
     "license": "Apache-2.0",
     "author": "Coveo",
-    "main": "dist/js/PlasmaStyle.js",
+    "main": "dist/PlasmaStyle.umd.js",
+    "module": "dist/PlasmaStyle.mjs",
     "types": "index.d.ts",
     "files": [
         "dist",
@@ -30,14 +31,13 @@
         "SvgName.d.ts"
     ],
     "scripts": {
-        "build": "gulp clean && gulp && webpack",
+        "build": "gulp clean && gulp && vite build",
         "clean": "gulp clean",
         "lintfix": "../../node_modules/.bin/stylelint --custom-syntax postcss-scss --fix \"**/*.scss\" && ../../node_modules/.bin/prettier --write \"**/*.{scss,js,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"**/*.js\" --fix",
-        "start": "concurrently \"gulp watch\" \"webpack --watch\""
+        "start": "concurrently \"gulp watch\" \"vite build --watch\""
     },
     "dependencies": {
         "codemirror": "5.59.4",
-        "is-svg": "4.3.2",
         "rc-slider": "8.7.1",
         "react-diff-view": "2.4.10"
     },
@@ -46,11 +46,8 @@
         "autosize": "5.0.1",
         "concurrently": "7.1.0",
         "coveo-png-sprite": "1.0.1",
-        "css-loader": "3.6.0",
-        "cssnano": "4.1.11",
         "del": "6.0.0",
         "fancy-log": "2.0.0",
-        "file-loader": "6.2.0",
         "gulp": "4.0.2",
         "gulp-cheerio": "0.6.3",
         "gulp-concat": "2.6.1",
@@ -63,19 +60,13 @@
         "jquery": "3.6.0",
         "lint-staged": "9.5.0",
         "merge-stream": "1.0.1",
-        "mini-css-extract-plugin": "0.12.0",
         "minimist": "1.2.6",
         "postcss": "8.4.4",
-        "postcss-loader": "7.0.2",
         "postcss-scss": "4.0.4",
-        "resolve-url-loader": "5.0.0",
         "rimraf": "3.0.2",
         "sass": "1.51.0",
-        "sass-loader": "13.2.0",
-        "style-loader": "3.3.1",
         "underscore": "1.13.1",
         "underscore.string": "3.3.6",
-        "webpack": "5.75.0",
-        "webpack-cli": "5.0.1"
+        "vite": "4.1.4"
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-components-props-analyzer",
-    "version": "49.3.4",
+    "version": "49.5.1",
     "private": true,
     "description": "",
     "keywords": [],
@@ -22,8 +22,8 @@
         "@coveord/plasma-react": "workspace:*"
     },
     "devDependencies": {
-        "@swc/cli": "0.1.61",
-        "@swc/core": "1.3.31",
+        "@swc/cli": "0.1.62",
+        "@swc/core": "1.3.35",
         "@types/fs-extra": "9.0.13",
         "@types/lz-string": "1.3.34",
         "@types/node": "16.11.32",

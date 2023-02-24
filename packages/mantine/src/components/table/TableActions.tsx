@@ -1,6 +1,7 @@
 import {Group} from '@mantine/core';
 import {ReactElement, ReactNode} from 'react';
-import {useTable} from './useTable';
+
+import {useTable} from './TableContext';
 
 interface TableActionsProps<T> {
     /**
@@ -26,12 +27,18 @@ interface TableActionsProps<T> {
 }
 
 export const TableActions = <T,>({children}: TableActionsProps<T>): ReactElement => {
-    const {getSelectedRows, multiRowSelectionEnabled} = useTable();
+    const {getSelectedRows, multiRowSelectionEnabled} = useTable<T>();
     const selectedRows = getSelectedRows();
 
     if (selectedRows.length <= 0) {
         return null;
     }
 
-    return <Group spacing="xs">{children(multiRowSelectionEnabled ? selectedRows : selectedRows[0])}</Group>;
+    return (
+        <Group spacing="xs">
+            {multiRowSelectionEnabled
+                ? (children as (data: T[]) => ReactNode)(selectedRows)
+                : (children as (datum: T) => ReactNode)(selectedRows[0])}
+        </Group>
+    );
 };

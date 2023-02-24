@@ -37,7 +37,7 @@ export default () => {
     const [loading, setLoading] = useState(true);
     const [pages, setPages] = useState(1);
 
-    const fetchData: onTableChangeEvent = async (state) => {
+    const fetchData: onTableChangeEvent<IExampleRowData> = async (state) => {
         setLoading(true);
         const searchParams = new URLSearchParams({
             _page: (state.pagination.pageIndex + 1).toString(),
@@ -68,7 +68,26 @@ export default () => {
             onMount={fetchData}
             onChange={fetchData}
             loading={loading}
+            onRowSelectionChange={(selectedRows) =>
+                console.info(`Row selection changed, selected rows: ${selectedRows.map(({id}) => id).join(', ')}`)
+            }
             multiRowSelectionEnabled
+            initialState={{
+                rowSelection: {
+                    '1': {
+                        userId: 1,
+                        id: 1,
+                        title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
+                        body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto',
+                    },
+                    '2': {
+                        userId: 1,
+                        id: 2,
+                        title: 'qui est esse',
+                        body: 'est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla',
+                    },
+                },
+            }}
         >
             <Table.Header>
                 <Table.Actions>

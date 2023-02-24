@@ -15,7 +15,7 @@ export const color = {
             9: '#282829',
         },
         navy: {
-            0: '#f1f2ff',
+            0: '#f5f6ff',
             1: '#d6d7fd',
             2: '#aeb0f1',
             3: '#8787db',
@@ -29,7 +29,7 @@ export const color = {
         pureWhite: '#ffffff',
     },
     secondary: {
-        lime: {0: '#d3fce9', 6: '#12a344', 9: '#004a20'},
+        lime: {0: '#f2fff9', 6: '#12a344', 9: '#004a20'},
         indigo: {
             0: '#f2f3ff',
             1: '#ced4f4',
@@ -93,7 +93,7 @@ export const color = {
             9: '#003148',
         },
         yellow: {
-            0: '#fffcdb',
+            0: '#fffdea',
             1: '#fff7ba',
             2: '#ffef70',
             3: '#ffe300',
@@ -101,11 +101,11 @@ export const color = {
             5: '#eac10b',
             6: '#e2b104',
             7: '#bd9403',
-            8: '#836602',
+            8: '#8f7000',
             9: '#493b08',
         },
         red: {
-            0: '#fff2f1',
+            0: '#fff8f8',
             1: '#ffd7d3',
             2: '#f3b4ae',
             3: '#ee8279',

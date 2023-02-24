@@ -15,6 +15,8 @@ export {
     Header,
     Table,
     type TableProps,
+    type TableState,
+    type InitialTableState,
     type HeaderProps,
     Modal,
     Button,

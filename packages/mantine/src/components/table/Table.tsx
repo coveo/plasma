@@ -1,23 +1,24 @@
-import {Box, Center, Collapse, createStyles, Loader, Skeleton, Table as MantineTable} from '@mantine/core';
+import {Box, Center, Collapse, Loader, Skeleton, Table as MantineTable} from '@mantine/core';
 import {useForm} from '@mantine/form';
-import {useClickOutside, useDidUpdate} from '@mantine/hooks';
+import {useDidUpdate} from '@mantine/hooks';
 import {
     ColumnDef,
     defaultColumnSizing,
     flexRender,
     getCoreRowModel,
     Row,
-    TableState,
+    TableState as TanstackTableState,
     useReactTable,
 } from '@tanstack/react-table';
-import {CoreOptions, InitialTableState, TableOptions} from '@tanstack/table-core';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Children, Fragment, ReactElement, ReactNode, useCallback, useEffect, useState} from 'react';
+import {Children, Dispatch, Fragment, ReactElement, useCallback, useEffect, useState} from 'react';
 
+import useStyles from './Table.styles';
+import {TableFormType, TableProps, TableState, TableType} from './Table.types';
 import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
-import {onTableChangeEvent, TableContext, TableFormType} from './TableContext';
+import {TableContext} from './TableContext';
 import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
 import {TableFooter} from './TableFooter';
@@ -28,159 +29,6 @@ import {TablePredicate} from './TablePredicate';
 import {TableSelectableColumn} from './TableSelectableColumn';
 import {Th} from './Th';
 import {useRowSelection} from './useRowSelection';
-
-interface TableStylesParams {
-    hasHeader: boolean;
-    multiRowSelectionEnabled: boolean;
-}
-
-const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, multiRowSelectionEnabled}) => {
-    const rowBackgroundColor =
-        theme.colorScheme === 'dark'
-            ? theme.fn.rgba(theme.colors[theme.primaryColor][7], 0.2)
-            : theme.colors[theme.primaryColor][0];
-    return {
-        table: {
-            width: '100%',
-            '& td:first-of-type, th:first-of-type > *': {
-                paddingLeft: theme.spacing.xl,
-            },
-            '& tbody td': {
-                verticalAlign: 'top',
-            },
-        },
-
-        header: {
-            position: 'sticky',
-            top: hasHeader ? 69 : 0,
-            backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
-            transition: 'box-shadow 150ms ease',
-            zIndex: 12, // skeleton is 11
-
-            '&::after': {
-                content: '""',
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: 0,
-                borderBottom: `1px solid ${theme.colors.gray[2]}`,
-            },
-        },
-
-        rowSelected: {
-            backgroundColor: multiRowSelectionEnabled ? undefined : rowBackgroundColor,
-        },
-
-        rowCollapsibleButtonCell: {
-            textAlign: 'right',
-            padding: `${theme.spacing.xs / 2}px ${theme.spacing.sm}px !important`,
-        },
-
-        row: {
-            '&:hover': {
-                backgroundColor: rowBackgroundColor,
-            },
-        },
-    };
-});
-
-export interface TableProps<T> {
-    /**
-     * Data to display in the table
-     */
-    data: T[];
-    /**
-     * Defines how each row is uniquely identified. It is highly recommended that you specify this prop to an ID that makes sense.
-     */
-    getRowId?: CoreOptions<T>['getRowId'];
-    /**
-     * Columns to display in the table.
-     *
-     * @see https://tanstack.com/table/v8/docs/guide/column-defs
-     */
-    columns: Array<ColumnDef<T>>;
-    /**
-     * Function called when the table mounts
-     *
-     * @param state the state of the table
-     */
-    onMount?: onTableChangeEvent;
-    /**
-     * Function called when the table should update
-     *
-     * @param state the state of the table
-     */
-    onChange?: onTableChangeEvent;
-    /**
-     * Function that generates the expandable content of a row
-     * Return null for rows that don't need to be expandable
-     *
-     * @param datum the row for which the children should be generated.
-     */
-    getExpandChildren?: (datum: T) => ReactNode;
-    /**
-     * React children to show when the table has no rows to show. You can leverage useTable to get the state of the table
-     */
-    noDataChildren?: ReactNode;
-    /**
-     * Whether the table is loading or not
-     *
-     * @default false
-     */
-    loading?: boolean;
-    /**
-     * Childrens to display in the table. They need to be wrap in either `Table.Header` or `Table.Footer`
-     *
-     * @example
-     * <Table ...>
-     *     <Table.Header>
-     *         <div>Hello</div>
-     *     </Table.Header>
-     * </Table>
-     */
-    children?: ReactNode;
-
-    /**
-     * Initial state of the table
-     */
-    initialState?: InitialTableState & Partial<TableFormType>;
-    /**
-     * Action passed when user double clicks on a row
-     */
-    doubleClickAction?: (datum: T) => void;
-    /**
-     * Whether the user can select multiple rows in order to perform actions in bulk
-     *
-     * @default false
-     */
-    multiRowSelectionEnabled?: boolean;
-
-    options?: Omit<
-        Partial<TableOptions<T>>,
-        | 'initialState'
-        | 'data'
-        | 'columns'
-        | 'manualPagination'
-        | 'enableMultiRowSelection'
-        | 'getRowId'
-        | 'getRowCanExpand'
-        | 'enableRowSelection'
-    >;
-}
-
-interface TableType {
-    <T>(props: TableProps<T>): ReactElement;
-    Actions: typeof TableActions;
-    Filter: typeof TableFilter;
-    Footer: typeof TableFooter;
-    Header: typeof TableHeader;
-    Pagination: typeof TablePagination;
-    PerPage: typeof TablePerPage;
-    Predicate: typeof TablePredicate;
-    DateRangePicker: typeof TableDateRangePicker;
-    CollapsibleColumn: typeof TableCollapsibleColumn;
-    AccordionColumn: typeof TableAccordionColumn;
-}
 
 export const Table: TableType = <T,>({
     data,
@@ -195,6 +43,7 @@ export const Table: TableType = <T,>({
     loading = false,
     doubleClickAction,
     multiRowSelectionEnabled,
+    onRowSelectionChange,
     options = {},
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
@@ -219,13 +68,16 @@ export const Table: TableType = <T,>({
         enableRowSelection: !loading,
         ...options,
     });
-    const [state, setState] = useState<TableState>(table.initialState);
+    const [state, setState] = useState<TableState<T>>(table.initialState as TableState<T>);
     table.setOptions((prev) => ({
         ...prev,
-        state,
-        onStateChange: setState,
+        state: state as TanstackTableState,
+        onStateChange: setState as Dispatch<React.SetStateAction<TanstackTableState>>,
     }));
-    const {clearSelection, getSelectedRow, getSelectedRows} = useRowSelection(table);
+    const {clearSelection, getSelectedRow, getSelectedRows, outsideClickRef} = useRowSelection(table, {
+        multiRowSelectionEnabled,
+        onRowSelectionChange,
+    });
     const isFiltered =
         !!state.globalFilter ||
         Object.keys(form.values?.predicates ?? {}).some((predicate) => !!form.values.predicates[predicate]) ||
@@ -253,12 +105,6 @@ export const Table: TableType = <T,>({
         setState((prevState) => ({...prevState, globalFilter: ''}));
     }, []);
 
-    const outsideClickRef = useClickOutside(() => {
-        if (!multiRowSelectionEnabled) {
-            clearSelection();
-        }
-    });
-
     if (!data) {
         return (
             <Center sx={{flexGrow: 1}}>
@@ -269,14 +115,15 @@ export const Table: TableType = <T,>({
 
     const rows = table.getRowModel().rows.map((row) => {
         const rowChildren = getExpandChildren?.(row.original) ?? null;
+        const isSelected = !!row.getIsSelected();
 
         return (
             <Fragment key={row.id}>
                 <tr
                     onClick={() => row.toggleSelected()}
                     onDoubleClick={() => doubleClickAction?.(row.original)}
-                    className={cx(classes.row, {[classes.rowSelected]: row.getIsSelected()})}
-                    aria-selected={row.getIsSelected()}
+                    className={cx(classes.row, {[classes.rowSelected]: isSelected})}
+                    aria-selected={isSelected}
                 >
                     {row.getVisibleCells().map((cell) => {
                         const size = cell.column.getSize();
@@ -299,7 +146,7 @@ export const Table: TableType = <T,>({
                 {rowChildren ? (
                     <tr>
                         <td
-                            colSpan={columns.length + 1}
+                            colSpan={table.getAllColumns().length}
                             style={{
                                 padding: 0,
                                 borderTop: row.getIsExpanded() ? undefined : 'none',
@@ -356,7 +203,7 @@ export const Table: TableType = <T,>({
                                     rows
                                 ) : (
                                     <tr>
-                                        <td colSpan={columns.length}>{noDataChildren}</td>
+                                        <td colSpan={table.getAllColumns().length}>{noDataChildren}</td>
                                     </tr>
                                 )}
                             </tbody>
