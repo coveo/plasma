@@ -1,7 +1,7 @@
-import {Button} from '@coveord/plasma-mantine';
+import {Button, showNotification} from '@coveord/plasma-mantine';
 
 export default () => (
-    <Button variant="outline" onClick={() => alert('button clicked')}>
+    <Button variant="outline" onClick={() => showNotification({message: 'Button clicked'})}>
         Secondary button
     </Button>
 );
