@@ -518,7 +518,7 @@ importers:
 
   packages/tokens:
     specifiers:
-      '@types/chroma-js': 2.1.4
+      '@types/chroma-js': 2.4.0
       '@types/fs-extra': 9.0.13
       '@types/lodash': 4.14.186
       '@types/node': 16.11.32
@@ -540,7 +540,7 @@ importers:
       tslib: 2.3.1
       typescript: 4.9.3
     devDependencies:
-      '@types/chroma-js': 2.1.4
+      '@types/chroma-js': 2.4.0
       '@types/fs-extra': 9.0.13
       '@types/lodash': 4.14.186
       '@types/node': 16.11.32
@@ -3091,8 +3091,8 @@ packages:
       '@types/node': 18.11.9
     dev: true
 
-  /@types/chroma-js/2.1.4:
-    resolution: {integrity: sha512-l9hWzP7cp7yleJUI7P2acmpllTJNYf5uU6wh50JzSIZt3fFHe+w2FM6w9oZGBTYzjjm2qHdnQvI+fF/JF/E5jQ==}
+  /@types/chroma-js/2.4.0:
+    resolution: {integrity: sha512-JklMxityrwjBTjGY2anH8JaTx3yjRU3/sEHSblLH1ba5lqcSh1LnImXJZO5peJfXyqKYWjHTGy4s5Wz++hARrw==}
     dev: true
 
   /@types/codemirror/0.0.109:

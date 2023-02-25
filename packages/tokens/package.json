@@ -23,7 +23,7 @@
         "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "devDependencies": {
-        "@types/chroma-js": "2.1.4",
+        "@types/chroma-js": "2.4.0",
         "@types/fs-extra": "9.0.13",
         "@types/lodash": "4.14.186",
         "@types/node": "16.11.32",
