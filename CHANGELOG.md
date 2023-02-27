@@ -1,3 +1,12 @@
+# 49.6.0 (2023-02-27)
+
+
+### Features
+
+* **mantine button:** add async handler (#3060) f259a62, closes #3060
+
+
+
 ## 49.5.3 (2023-02-25)
 
 
