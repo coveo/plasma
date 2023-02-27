@@ -6,18 +6,16 @@ export default () => (
         docLink="https://about:blank"
         docLinkTooltipLabel="Tooltip text"
         borderBottom
-        actions={
-            <>
-                <Button>Primary</Button>
-                <Button variant="outline">Secondary</Button>
-            </>
-        }
     >
-        Title
         <Header.Breadcrumbs>
             <Anchor>One</Anchor>
             <Anchor>Two</Anchor>
             <Anchor>Three</Anchor>
         </Header.Breadcrumbs>
+        Title
+        <Header.Actions>
+            <Button>Primary</Button>
+            <Button variant="outline">Secondary</Button>
+        </Header.Actions>
     </Header>
 );

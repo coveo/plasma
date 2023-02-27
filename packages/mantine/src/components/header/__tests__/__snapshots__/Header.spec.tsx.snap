@@ -12,27 +12,27 @@ exports[`Header > renders the specified breadcrumbs above the title 1`] = `
         class="mantine-Breadcrumbs-root mantine-16ttirm"
       >
         <a
-          class="mantine-Text-root mantine-Anchor-root mantine-Breadcrumbs-breadcrumb mantine-ti180k"
+          class="mantine-Text-root mantine-Anchor-root mantine-Breadcrumbs-breadcrumb mantine-1cehd6q"
         >
           One
         </a>
         <div
-          class="mantine-Text-root mantine-Breadcrumbs-separator mantine-1mwmxa2"
+          class="mantine-Text-root mantine-Breadcrumbs-separator mantine-1mpiak2"
         >
           /
         </div>
         <a
-          class="mantine-Text-root mantine-Anchor-root mantine-Breadcrumbs-breadcrumb mantine-ti180k"
+          class="mantine-Text-root mantine-Anchor-root mantine-Breadcrumbs-breadcrumb mantine-1cehd6q"
         >
           Two
         </a>
         <div
-          class="mantine-Text-root mantine-Breadcrumbs-separator mantine-1mwmxa2"
+          class="mantine-Text-root mantine-Breadcrumbs-separator mantine-1mpiak2"
         >
           /
         </div>
         <a
-          class="mantine-Text-root mantine-Anchor-root mantine-Breadcrumbs-breadcrumb mantine-ti180k"
+          class="mantine-Text-root mantine-Anchor-root mantine-Breadcrumbs-breadcrumb mantine-1cehd6q"
         >
           Three
         </a>
@@ -41,18 +41,15 @@ exports[`Header > renders the specified breadcrumbs above the title 1`] = `
         class="mantine-xg7kom"
       >
         <h1
-          class="mantine-Text-root mantine-Title-root mantine-1viemj4"
+          class="mantine-Text-root mantine-Title-root mantine-jqzr1h"
         >
           Title
         </h1>
       </div>
       <div
-        class="mantine-Text-root mantine-1x936t8"
+        class="mantine-Text-root mantine-1qppuo4"
       />
     </div>
-    <div
-      class="mantine-Group-root mantine-5f6x53"
-    />
   </div>
 </div>
 `;

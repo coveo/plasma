@@ -10,7 +10,7 @@ describe('Header', () => {
         const header = screen.getByRole('heading');
         expect(header).toMatchInlineSnapshot(`
           <h1
-            class="mantine-Text-root mantine-Title-root mantine-1viemj4"
+            class="mantine-Text-root mantine-Title-root mantine-jqzr1h"
           >
             child
           </h1>
@@ -66,15 +66,12 @@ describe('Header', () => {
 
     it('renders provided actions in the header', () => {
         render(
-            <Header
-                actions={
-                    <>
-                        <span>action 1</span>
-                        <span>action 2</span>
-                    </>
-                }
-            >
+            <Header>
                 title
+                <Header.Actions>
+                    <span>action 1</span>
+                    <span>action 2</span>
+                </Header.Actions>
             </Header>
         );
 

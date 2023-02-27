@@ -8,10 +8,6 @@ export interface HeaderProps extends DefaultProps {
      */
     description?: ReactNode;
     /**
-     * Action buttons that can be displayed on the right of the header
-     */
-    actions?: ReactNode;
-    /**
      * Whether the header should have a border on the bottom
      */
     borderBottom?: boolean;
@@ -34,20 +30,16 @@ export interface HeaderProps extends DefaultProps {
 interface HeaderType {
     (props: HeaderProps): ReactElement;
     Breadcrumbs: typeof HeaderBreadcrumbs;
+    Actions: typeof HeaderActions;
 }
 
-export const Header: HeaderType = ({
-    description,
-    actions,
-    borderBottom,
-    docLink,
-    docLinkTooltipLabel,
-    children,
-    ...others
-}) => {
+export const Header: HeaderType = ({description, borderBottom, docLink, docLinkTooltipLabel, children, ...others}) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
-    const childrenWithoutBreadcrumbs = convertedChildren.filter((child) => child.type !== HeaderBreadcrumbs);
+    const actions = convertedChildren.find((child) => child.type === HeaderActions);
+    const childrenWithoutBreadcrumbs = convertedChildren.filter(
+        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions
+    );
     return (
         <>
             <Group position="apart" p="xl" pb="lg" {...others}>
@@ -69,7 +61,7 @@ export const Header: HeaderType = ({
                         {description}
                     </Text>
                 </Stack>
-                <Group spacing="sm">{actions}</Group>
+                {actions}
             </Group>
             {borderBottom ? <Divider size="xs" /> : null}
         </>
@@ -79,7 +71,7 @@ export const Header: HeaderType = ({
 const HeaderBreadcrumbs: FunctionComponent<{children: ReactNode}> = ({children}) => (
     <Breadcrumbs
         styles={(theme) => ({
-            breadcrumb: {fontSize: theme.fontSizes.sm},
+            breadcrumb: {fontSize: theme.fontSizes.sm, fontWeight: 300},
             separator: {color: theme.colors.gray[5]},
         })}
     >
@@ -87,4 +79,7 @@ const HeaderBreadcrumbs: FunctionComponent<{children: ReactNode}> = ({children})
     </Breadcrumbs>
 );
 
+const HeaderActions: FunctionComponent<{children: ReactNode}> = ({children}) => <Group spacing="sm">{children}</Group>;
+
 Header.Breadcrumbs = HeaderBreadcrumbs;
+Header.Actions = HeaderActions;

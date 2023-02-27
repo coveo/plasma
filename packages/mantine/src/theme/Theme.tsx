@@ -138,7 +138,6 @@ export const plasmaTheme: MantineThemeOverride = {
             },
             styles: (theme) => ({
                 root: {
-                    fontWeight: 300,
                     ...theme.fn.hover({
                         textDecoration: 'underline',
                         color: theme.colors.action[8],
