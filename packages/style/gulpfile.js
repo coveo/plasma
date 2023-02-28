@@ -90,7 +90,7 @@ gulp.task('sprites', () => {
             pngSprite.gulp({
                 cssPath: 'sprites.scss',
                 pngPath: '../dist/images/CoveoStyleGuide.Sprites.png',
-                relPath: '/images/CoveoStyleGuide.Sprites.png',
+                relPath: '../dist/images/CoveoStyleGuide.Sprites.png',
                 eachTemplate: template,
                 namespace: 'coveo-sprites',
             })
