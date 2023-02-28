@@ -1,3 +1,12 @@
+## 49.6.1 (2023-02-28)
+
+
+### Bug Fixes
+
+* **style:** inline svgs and fonts in generated stylesheet (#3065) 9be905b, closes #3065
+
+
+
 # 49.6.0 (2023-02-27)
 
 
