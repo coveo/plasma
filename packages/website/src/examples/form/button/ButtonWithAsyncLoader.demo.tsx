@@ -1,11 +1,9 @@
 import {Button, showNotification} from '@coveord/plasma-mantine';
 import {CheckmarkSize24Px} from '@coveord/plasma-react-icons';
-import {color} from '@coveord/plasma-tokens';
 
 const somethingAsync = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const promise = async () => {
-    console.log(color.secondary.lime[6]);
     await somethingAsync(3000);
     showNotification({
         title: 'Saved successfully',
