@@ -46,8 +46,13 @@ describe('Header', () => {
         expect(breadcrumbsFirst).toEqual(titleFirst);
     });
 
-    it('renders a doc link icon if a doc link url is provided', async () => {
-        render(<Header docLink="/some/path">title</Header>);
+    it('renders a doc link icon if a doc anchor is provided', async () => {
+        render(
+            <Header>
+                title
+                <Header.DocAnchor href="/some/path" />
+            </Header>
+        );
 
         const docLink = await screen.findByRole('link', {name: /question/i});
         expect(docLink).toHaveAttribute('href', '/some/path');

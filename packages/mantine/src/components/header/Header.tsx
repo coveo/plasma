@@ -11,18 +11,9 @@ export interface HeaderProps extends DefaultProps {
      * Whether the header should have a border on the bottom
      */
     borderBottom?: boolean;
-    /**
-     * A href pointing to documentation related to the current panel.
-     * When provided, an info icon is rendered next to the title as link to this documentation
-     */
-    docLink?: string;
-    /**
-     * The tooltip text shown when hovering over the doc link icon
-     */
-    docLinkTooltipLabel?: string;
+    variant?: 'page' | 'modal';
     /**
      * The title of the header.
-     * If more than one children are provided, each of them act as parts of a breadcrumb
      */
     children: ReactNode;
 }
@@ -31,33 +22,34 @@ interface HeaderType {
     (props: HeaderProps): ReactElement;
     Breadcrumbs: typeof HeaderBreadcrumbs;
     Actions: typeof HeaderActions;
+    DocAnchor: typeof HeaderDocAnchor;
 }
 
-export const Header: HeaderType = ({description, borderBottom, docLink, docLinkTooltipLabel, children, ...others}) => {
+export const Header: HeaderType = ({description, borderBottom, children, variant = 'page', ...others}) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
     const actions = convertedChildren.find((child) => child.type === HeaderActions);
+    const docAnchor = convertedChildren.find((child) => child.type === HeaderDocAnchor);
     const childrenWithoutBreadcrumbs = convertedChildren.filter(
-        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions
+        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor
     );
     return (
         <>
-            <Group position="apart" p="xl" pb="lg" {...others}>
+            <Group
+                position="apart"
+                p={variant === 'page' ? 'xl' : undefined}
+                pb={variant === 'page' ? 'lg' : undefined}
+                {...others}
+            >
                 <Stack spacing={0}>
                     {breadcrumbs}
                     <Flex align="center">
-                        <Title order={1} color="gray.5">
+                        <Title order={variant === 'page' ? 1 : 3} color={variant === 'page' ? 'gray.5' : undefined}>
                             {childrenWithoutBreadcrumbs}
                         </Title>
-                        {docLink ? (
-                            <Tooltip label={docLinkTooltipLabel} disabled={!docLinkTooltipLabel} position="right">
-                                <Anchor inline href={docLink} target="_blank" ml="xs">
-                                    <QuestionSize16Px height={16} />
-                                </Anchor>
-                            </Tooltip>
-                        ) : null}
+                        {docAnchor}
                     </Flex>
-                    <Text size="md" color="gray.6">
+                    <Text size={variant === 'page' ? 'md' : 'sm'} color="gray.6">
                         {description}
                     </Text>
                 </Stack>
@@ -81,5 +73,26 @@ const HeaderBreadcrumbs: FunctionComponent<{children: ReactNode}> = ({children})
 
 const HeaderActions: FunctionComponent<{children: ReactNode}> = ({children}) => <Group spacing="sm">{children}</Group>;
 
+export interface HeaderDocAnchorProps {
+    /**
+     * A href pointing to documentation related to the current panel.
+     * When provided, an info icon is rendered next to the title as link to this documentation
+     */
+    href?: string;
+    /**
+     * The tooltip text shown when hovering over the doc link icon
+     */
+    label?: string;
+}
+
+const HeaderDocAnchor: FunctionComponent<HeaderDocAnchorProps> = ({href: docLink, label: docLinkTooltipLabel}) => (
+    <Tooltip label={docLinkTooltipLabel} disabled={!docLinkTooltipLabel} position="right">
+        <Anchor inline href={docLink} target="_blank" ml="xs">
+            <QuestionSize16Px height={16} />
+        </Anchor>
+    </Tooltip>
+);
+
 Header.Breadcrumbs = HeaderBreadcrumbs;
 Header.Actions = HeaderActions;
+Header.DocAnchor = HeaderDocAnchor;
