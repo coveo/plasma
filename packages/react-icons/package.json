@@ -33,7 +33,7 @@
         "generate": "node ./bin/index.js"
     },
     "dependencies": {
-        "@swc/helpers": "0.4.12"
+        "@swc/helpers": "0.4.14"
     },
     "devDependencies": {
         "@babel/types": "7.17.10",
