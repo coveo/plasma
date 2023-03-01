@@ -1,6 +1,7 @@
 import {FunctionComponent, PropsWithChildren, ReactNode} from 'react';
 
 type DependsOnStep<T> = (currentStep: number, numberOfSteps: number) => T;
+export type ResolveStep<P> = P extends infer T | DependsOnStep<infer T> ? T : never;
 
 export interface ModalWizardStepProps {
     /**

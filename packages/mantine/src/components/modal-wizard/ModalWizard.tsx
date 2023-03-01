@@ -4,7 +4,7 @@ import {Children, ReactElement, useEffect, useMemo, useState} from 'react';
 import {Button} from '../button';
 import {Header} from '../header';
 import {StickyFooter} from '../sticky-footer';
-import {ModalWizardStep} from './ModalWizardStep';
+import {ModalWizardStep, ModalWizardStepProps, ResolveStep} from './ModalWizardStep';
 
 const useStyles = createStyles(() => ({
     modal: {
@@ -156,6 +156,13 @@ export const ModalWizard: ModalWizardType = ({
         return (validSteps / numberOfStepsCountAsProgress) * 100;
     };
 
+    const resolveStepDependentProp = <P extends keyof ModalWizardStepProps>(
+        prop: P
+    ): ResolveStep<ModalWizardStepProps[P]> =>
+        typeof currentStep.props[prop] === 'function'
+            ? currentStep.props[prop](currentStepIndex + 1, numberOfSteps)
+            : currentStep.props[prop];
+
     const getProgressMemo = useMemo(() => getProgress(currentStepIndex), [currentStepIndex]);
     return (
         <Modal
@@ -167,20 +174,14 @@ export const ModalWizard: ModalWizardType = ({
             padding={0}
             {...modalProps}
         >
-            <Header
-                p="lg"
-                pr="md"
-                variant="modal"
-                description={
-                    typeof currentStep.props.description === 'function'
-                        ? currentStep.props.description(currentStepIndex + 1, numberOfSteps)
-                        : currentStep.props.description
-                }
-            >
-                {typeof currentStep.props.title === 'function'
-                    ? currentStep.props.title(currentStepIndex + 1, numberOfSteps)
-                    : currentStep.props.title}
-                <Header.DocAnchor />
+            <Header p="lg" pr="md" variant="modal" description={resolveStepDependentProp('description')}>
+                {resolveStepDependentProp('title')}
+                {resolveStepDependentProp('docLink') ? (
+                    <Header.DocAnchor
+                        href={resolveStepDependentProp('docLink')}
+                        label={resolveStepDependentProp('docLinkTooltipLabel')}
+                    />
+                ) : null}
                 <Header.Actions>
                     <CloseButton aria-label={modalProps.closeButtonLabel} onClick={() => handleClose(true)} />
                 </Header.Actions>

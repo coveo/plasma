@@ -13,6 +13,8 @@ export interface HeaderProps extends DefaultProps {
     borderBottom?: boolean;
     /**
      * Use the modal variant when displaying the header inside a modal
+     *
+     * @default 'page'
      */
     variant?: 'page' | 'modal';
     /**
@@ -33,7 +35,7 @@ export const Header: HeaderType = ({description, borderBottom, children, variant
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
     const actions = convertedChildren.find((child) => child.type === HeaderActions);
     const docAnchor = convertedChildren.find((child) => child.type === HeaderDocAnchor);
-    const childrenWithoutBreadcrumbs = convertedChildren.filter(
+    const otherChildren = convertedChildren.filter(
         (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor
     );
     return (
@@ -48,7 +50,7 @@ export const Header: HeaderType = ({description, borderBottom, children, variant
                     {breadcrumbs}
                     <Flex align="center">
                         <Title order={variant === 'page' ? 1 : 3} color={variant === 'page' ? 'gray.5' : undefined}>
-                            {childrenWithoutBreadcrumbs}
+                            {otherChildren}
                         </Title>
                         {docAnchor}
                     </Flex>
@@ -81,7 +83,7 @@ export interface HeaderDocAnchorProps {
      * A href pointing to documentation related to the current panel.
      * When provided, an info icon is rendered next to the title as link to this documentation
      */
-    href?: string;
+    href: string;
     /**
      * The tooltip text shown when hovering over the doc link icon
      */
