@@ -9,11 +9,11 @@ export interface ButtonProps extends MantineButtonProps, ButtonWithDisabledToolt
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const useLoadingHandler = (handler: MouseEventHandler<HTMLButtonElement>) => {
+const useLoadingHandler = (handler?: MouseEventHandler<HTMLButtonElement>) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
-        const possiblePromise: unknown = handler(event);
+        const possiblePromise: unknown = handler?.(event);
         try {
             if (possiblePromise instanceof Promise) {
                 setIsLoading(true);
