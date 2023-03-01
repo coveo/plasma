@@ -522,7 +522,7 @@ importers:
     specifiers:
       '@types/chroma-js': 2.4.0
       '@types/fs-extra': 9.0.13
-      '@types/lodash': 4.14.186
+      '@types/lodash': 4.14.191
       '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
@@ -544,7 +544,7 @@ importers:
     devDependencies:
       '@types/chroma-js': 2.4.0
       '@types/fs-extra': 9.0.13
-      '@types/lodash': 4.14.186
+      '@types/lodash': 4.14.191
       '@types/node': 16.11.32
       '@types/rimraf': 3.0.2
       '@types/svgo': 2.6.3
@@ -3439,15 +3439,15 @@ packages:
   /@types/lodash.kebabcase/4.1.7:
     resolution: {integrity: sha512-qzrcpK5uiADZ9OyZaegalM0b9Y3WetoBQ04RAtP3xZFGC5ul1UxmbjZ3j6suCh0BDkvgQmoMh8t5e9cVrdJYMw==}
     dependencies:
-      '@types/lodash': 4.14.189
-    dev: true
-
-  /@types/lodash/4.14.186:
-    resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==}
+      '@types/lodash': 4.14.191
     dev: true
 
   /@types/lodash/4.14.189:
     resolution: {integrity: sha512-kb9/98N6X8gyME9Cf7YaqIMvYGnBSWqEci6tiettE6iJWH1XdJz/PO8LB0GtLCG7x8dU3KWhZT+lA1a35127tA==}
+    dev: true
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
   /@types/lorem-ipsum/2.0.0:
