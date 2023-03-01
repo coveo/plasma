@@ -219,5 +219,16 @@ export const plasmaTheme: MantineThemeOverride = {
                 fw: 300,
             },
         },
+        Notification: {
+            styles: (theme) => ({
+                root: {
+                    borderColor: theme.colors.gray[3],
+                    backgroundColor: theme.colors.gray[0],
+                },
+                icon: {
+                    marginRight: 18,
+                },
+            }),
+        },
     },
 };
