@@ -1,4 +1,4 @@
-import {Modal, Button} from '@coveord/plasma-mantine';
+import {Modal, Button, Header, StickyFooter} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 export default () => {
@@ -8,22 +8,24 @@ export default () => {
         <>
             <Modal
                 opened={opened}
+                title={
+                    <Header variant="modal" description="Modal description">
+                        Modal Title
+                        <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
+                    </Header>
+                }
                 onClose={() => setOpened(false)}
-                title="Modal title"
-                description="Modal description"
-                header={{
-                    actions: (
-                        <>
-                            <Button>Action 1</Button>
-                            <Button variant="outline">Action 2</Button>
-                        </>
-                    ),
-                }}
             >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim. Phasellus
                 lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit. Cras vitae ipsum
                 sit amet nibh efficitur imperdiet. Praesent scelerisque erat est. Cras dictum sodales tellus sed pretium
+                <StickyFooter p={0} pt="lg">
+                    <Button variant="outline" onClick={() => setOpened(false)}>
+                        Cancel
+                    </Button>
+                    <Button onClick={() => setOpened(false)}>Accept</Button>
+                </StickyFooter>
             </Modal>
             <Button onClick={() => setOpened(true)}>Open Modal</Button>
         </>

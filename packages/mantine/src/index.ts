@@ -20,7 +20,6 @@ export {
     type TableProps,
     type TableState,
     type InitialTableState,
-    Modal,
     Button,
     type ButtonProps,
     Menu,

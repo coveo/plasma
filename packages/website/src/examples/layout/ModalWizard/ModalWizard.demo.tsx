@@ -1,12 +1,5 @@
-import {Button, ModalWizard} from '@coveord/plasma-mantine';
+import {Box, Button, ModalWizard} from '@coveord/plasma-mantine';
 import {useState} from 'react';
-
-const divStyles = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: 100,
-};
 
 export default () => {
     const [opened, setOpened] = useState(false);
@@ -18,26 +11,29 @@ export default () => {
                 <ModalWizard.Step
                     docLink="https://coveo.com"
                     title="Current Step is 1"
+                    description="Description of step 1"
                     validateStep={() => ({isValid: true})}
                     docLinkTooltipLabel="Tooltip label"
                 >
-                    <div style={divStyles}> Slide 1</div>
+                    <Box mih={300}>Slide 1</Box>
                 </ModalWizard.Step>
                 <ModalWizard.Step
                     docLink="https://coveo.com"
                     title="Current Step is 2"
+                    description="Description of step 2"
                     validateStep={() => ({isValid: true})}
                     docLinkTooltipLabel="Tooltip label"
                 >
-                    <div style={divStyles}> Slide 2</div>
+                    <Box mih={300}>Slide 2</Box>
                 </ModalWizard.Step>
                 <ModalWizard.Step
                     docLink="https://coveo.com"
                     title="Current Step is 3"
+                    description="Description of step 3"
                     validateStep={() => ({isValid: true})}
                     docLinkTooltipLabel="Tooltip label"
                 >
-                    <div style={divStyles}> Slide 3</div>
+                    <Box mih={300}>Slide 3</Box>
                 </ModalWizard.Step>
             </ModalWizard>
         </>

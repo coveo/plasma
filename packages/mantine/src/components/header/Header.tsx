@@ -11,6 +11,9 @@ export interface HeaderProps extends DefaultProps {
      * Whether the header should have a border on the bottom
      */
     borderBottom?: boolean;
+    /**
+     * Use the modal variant when displaying the header inside a modal
+     */
     variant?: 'page' | 'modal';
     /**
      * The title of the header.
