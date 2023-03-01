@@ -77,7 +77,9 @@ export const plasmaTheme: MantineThemeOverride = {
                     width: fullScreen
                         ? undefined
                         : theme.fn.size({size, sizes: {xs: 440, sm: 550, md: 800, lg: 1334, xl: '85%'}}),
+                    overflow: 'auto',
                 },
+                title: {width: '100%'},
             }),
             defaultProps: {
                 overlayColor: color.primary.navy[9],
