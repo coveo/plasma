@@ -10,7 +10,7 @@ export * from '@mantine/hooks';
 export * from '@tanstack/table-core';
 export * from './components';
 export * from '@mantine/form';
-export {NotificationProps} from '@mantine/notifications';
+export {type NotificationProps} from '@mantine/notifications';
 export {Pagination} from '@mantine/core';
 // explicitly overriding mantine components
 export {
