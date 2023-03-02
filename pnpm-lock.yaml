@@ -222,7 +222,7 @@ importers:
       '@types/codemirror': 0.0.109
       '@types/d3': 7.4.0
       '@types/d3-array': 3.0.3
-      '@types/d3-scale': 4.0.2
+      '@types/d3-scale': 4.0.3
       '@types/d3-shape': 3.1.0
       '@types/enzyme': 3.10.12
       '@types/escape-string-regexp': 1.0.0
@@ -352,7 +352,7 @@ importers:
       '@testing-library/user-event': 14.4.3_znccgeejomvff3jrsk3ljovfpu
       '@types/d3': 7.4.0
       '@types/d3-array': 3.0.3
-      '@types/d3-scale': 4.0.2
+      '@types/d3-scale': 4.0.3
       '@types/d3-shape': 3.1.0
       '@types/enzyme': 3.10.12
       '@types/escape-string-regexp': 1.0.0
@@ -3221,8 +3221,8 @@ packages:
     resolution: {integrity: sha512-dsoJGEIShosKVRBZB0Vo3C8nqSDqVGujJU6tPznsBJxNJNwMF8utmS83nvCBKQYPpjCzaaHcrf66iTRpZosLPw==}
     dev: true
 
-  /@types/d3-scale/4.0.2:
-    resolution: {integrity: sha512-Yk4htunhPAwN0XGlIwArRomOjdoBFXC3+kCxK2Ubg7I9shQlVSJy/pG/Ht5ASN+gdMIalpk8TJ5xV74jFsetLA==}
+  /@types/d3-scale/4.0.3:
+    resolution: {integrity: sha512-PATBiMCpvHJSMtZAMEhc2WyL+hnzarKzI6wAHYjhsonjWJYGq5BXTzQjv4l8m2jO183/4wZ90rKvSeT7o72xNQ==}
     dependencies:
       '@types/d3-time': 3.0.0
     dev: true
@@ -3286,7 +3286,7 @@ packages:
       '@types/d3-polygon': 3.0.0
       '@types/d3-quadtree': 3.0.2
       '@types/d3-random': 3.0.1
-      '@types/d3-scale': 4.0.2
+      '@types/d3-scale': 4.0.3
       '@types/d3-scale-chromatic': 3.0.0
       '@types/d3-selection': 3.0.3
       '@types/d3-shape': 3.1.0
