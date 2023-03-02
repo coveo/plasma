@@ -1,5 +1,6 @@
 import {ModalMetadata} from '@coveord/plasma-components-props-analyzer';
 import ModalDemo from '@examples/layout/Modal/Modal.demo.tsx';
+import ModalWithTabsDemo from '@examples/layout/Modal/ModalWithTabs.demo.tsx';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -12,5 +13,8 @@ export default () => (
         id="Modal"
         propsMetadata={ModalMetadata}
         demo={<ModalDemo />}
+        examples={{
+            withTabs: <ModalWithTabsDemo title="Modal with tabs and footer" />,
+        }}
     />
 );

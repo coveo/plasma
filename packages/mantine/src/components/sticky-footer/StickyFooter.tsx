@@ -28,7 +28,7 @@ export const StickyFooter: FunctionComponent<PropsWithChildren<StickyFooterProps
         <>
             {borderTop ? <Divider size="xs" /> : null}
             <Box className={classes.footer}>
-                <Group position="right" spacing="xs" pt="md" pb="md" px="xl" {...others}>
+                <Group position="right" spacing="sm" p="lg" {...others}>
                     {children}
                 </Group>
             </Box>

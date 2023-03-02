@@ -1,10 +1,10 @@
-import {Box, createStyles, DefaultProps, Modal, ModalProps, Progress, Selectors} from '@mantine/core';
-import {Children, ReactElement, useMemo, useState} from 'react';
+import {Box, CloseButton, createStyles, DefaultProps, Modal, ModalProps, Progress, Selectors} from '@mantine/core';
+import {Children, ReactElement, useEffect, useMemo, useState} from 'react';
 
 import {Button} from '../button';
 import {Header} from '../header';
 import {StickyFooter} from '../sticky-footer';
-import {ModalWizardStep} from './ModalWizardStep';
+import {ModalWizardStep, ModalWizardStepProps, ResolveStep} from './ModalWizardStep';
 
 const useStyles = createStyles(() => ({
     modal: {
@@ -129,14 +129,24 @@ export const ModalWizard: ModalWizardType = ({
     const currentStep = modalSteps.filter((step: ReactElement, index: number) => index === currentStepIndex)[0];
 
     const {isValid} = currentStep?.props?.validateStep?.(currentStepIndex, numberOfSteps) ?? {isValid: true};
-    const isModalDirty = isDirty && isDirty();
 
-    const closeModalWizard = () => {
-        if (isModalDirty && handleDirtyState) {
-            handleDirtyState() && onClose?.();
-        } else {
-            onClose?.();
+    useEffect(() => {
+        if (opened) {
+            setCurrentStepIndex(0);
         }
+    }, [opened]);
+
+    const handleClose = (confirmDirty: boolean) => {
+        if (confirmDirty) {
+            const isModalDirty = isDirty?.() ?? false;
+            if (isModalDirty) {
+                const discardChanges = handleDirtyState?.() ?? true;
+                if (!discardChanges) {
+                    return;
+                }
+            }
+        }
+        onClose?.();
     };
 
     const getProgress = (currStepIndex: number) => {
@@ -146,46 +156,52 @@ export const ModalWizard: ModalWizardType = ({
         return (validSteps / numberOfStepsCountAsProgress) * 100;
     };
 
+    const resolveStepDependentProp = <P extends keyof ModalWizardStepProps>(
+        prop: P
+    ): ResolveStep<ModalWizardStepProps[P]> =>
+        typeof currentStep.props[prop] === 'function'
+            ? currentStep.props[prop](currentStepIndex + 1, numberOfSteps)
+            : currentStep.props[prop];
+
     const getProgressMemo = useMemo(() => getProgress(currentStepIndex), [currentStepIndex]);
     return (
         <Modal
             opened={opened}
             classNames={{modal: cx(modal, classNames?.modal), body: cx(body, classNames?.body)}}
             centered
-            title={
-                <Header
-                    docLink={currentStep.props.docLink}
-                    docLinkTooltipLabel={currentStep.props.docLinkTooltipLabel}
-                    description={
-                        typeof currentStep.props.description === 'function'
-                            ? currentStep.props.description(currentStepIndex + 1, numberOfSteps)
-                            : currentStep.props.description
-                    }
-                    py={0}
-                    px={0}
-                >
-                    {typeof currentStep.props.title === 'function'
-                        ? currentStep.props.title(currentStepIndex + 1, numberOfSteps)
-                        : currentStep.props.title}
-                </Header>
-            }
-            onClose={closeModalWizard}
+            onClose={() => handleClose(true)}
+            withCloseButton={false}
+            padding={0}
             {...modalProps}
         >
-            {currentStep.props.showProgressBar && <Progress color="teal" size="lg" value={getProgressMemo} />}
-            {currentStep}
+            <Header p="lg" pr="md" variant="modal" description={resolveStepDependentProp('description')}>
+                {resolveStepDependentProp('title')}
+                {resolveStepDependentProp('docLink') ? (
+                    <Header.DocAnchor
+                        href={resolveStepDependentProp('docLink')}
+                        label={resolveStepDependentProp('docLinkTooltipLabel')}
+                    />
+                ) : null}
+                <Header.Actions>
+                    <CloseButton aria-label={modalProps.closeButtonLabel} onClick={() => handleClose(true)} />
+                </Header.Actions>
+            </Header>
+            {currentStep.props.showProgressBar && (
+                <Progress color="navy.5" size="sm" radius={0} value={getProgressMemo} />
+            )}
+            <Box p="lg">{currentStep}</Box>
             <Box
-                sx={(theme) => ({
+                sx={{
                     marginTop: 'auto',
-                })}
+                }}
             >
-                <StickyFooter px={0} pt="sm" pb={0} borderTop>
+                <StickyFooter borderTop>
                     <Button
                         name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
                         variant="outline"
                         onClick={() => {
                             if (isFirstStep) {
-                                closeModalWizard();
+                                handleClose(true);
                             } else {
                                 onPrevious?.();
                                 setCurrentStepIndex(currentStepIndex - 1);
@@ -199,7 +215,7 @@ export const ModalWizard: ModalWizardType = ({
                         disabled={!isValid}
                         onClick={() => {
                             if (isLastStep) {
-                                onFinish ? onFinish() : onClose();
+                                onFinish?.() ?? handleClose(false);
                             } else {
                                 onNext?.();
                                 setCurrentStepIndex(currentStepIndex + 1);

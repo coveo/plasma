@@ -15,12 +15,11 @@ export {Pagination} from '@mantine/core';
 // explicitly overriding mantine components
 export {
     Header,
+    type HeaderProps,
     Table,
     type TableProps,
     type TableState,
     type InitialTableState,
-    type HeaderProps,
-    Modal,
     Button,
     type ButtonProps,
     Menu,

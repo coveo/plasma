@@ -1,20 +1,17 @@
-import {Button, Header} from '@coveord/plasma-mantine';
+import {Anchor, Button, Header} from '@coveord/plasma-mantine';
 
 export default () => (
-    <Header
-        description="The header description"
-        docLink="https://about:blank"
-        docLinkTooltipLabel="Tooltip text"
-        borderBottom
-        actions={
-            <>
-                <Button variant="outline">Action 2</Button>
-                <Button>Action 1</Button>
-            </>
-        }
-    >
-        <span>One</span>
-        <span>Two</span>
-        <span>Three</span>
+    <Header description="The header description" borderBottom>
+        <Header.Breadcrumbs>
+            <Anchor>One</Anchor>
+            <Anchor>Two</Anchor>
+            <Anchor>Three</Anchor>
+        </Header.Breadcrumbs>
+        Title
+        <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
+        <Header.Actions>
+            <Button>Primary</Button>
+            <Button variant="outline">Secondary</Button>
+        </Header.Actions>
     </Header>
 );
