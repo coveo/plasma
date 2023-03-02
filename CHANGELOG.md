@@ -1,3 +1,36 @@
+# 50.0.0 (2023-03-02)
+
+
+### Features
+
+* **mantine:** header redesign & modal adjustments (#3068) 5bb81b3, closes #3068
+
+
+### BREAKING CHANGES
+
+* **mantine:** header breadcrumbs have been moved out of the header children
+
+Use the new Header.Breadcrumbs to render breadcrumbs properly
+
+refactor(mantine): apply Gustavo's Header suggestions
+
+* refactor(mantine): set line height to 1.5
+
+* feat(mantine): move header actions into sub component
+* **mantine:** header actions have been moved out of the props into a
+static component <Header.Actions>
+
+* refactor(mantine): move header doc link into sub component
+* **mantine:** docLink props on the header were removed. Use Header.DocAnchor component instead
+
+* feat(mantine): delete modal component override
+* **mantine:** modal doesn't have a description prop anymore.
+Use Header component inside the modal title instead (see demo page)
+
+* refactor(mantine): apply suggestions
+
+
+
 ## 49.6.7 (2023-03-02)
 
 
