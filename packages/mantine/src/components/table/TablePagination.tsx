@@ -1,7 +1,7 @@
-import {Pagination} from '@mantine/core';
-import {FunctionComponent} from 'react';
+import { Pagination } from '@mantine/core';
+import { FunctionComponent } from 'react';
 
-import {useTable} from './TableContext';
+import { useTable } from './TableContext';
 
 interface TablePaginationProps {
     /**

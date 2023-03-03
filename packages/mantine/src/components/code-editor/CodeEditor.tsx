@@ -1,4 +1,4 @@
-import {CheckSize16Px, CopySize16Px} from '@coveord/plasma-react-icons';
+import { CheckSize16Px, CopySize16Px } from '@coveord/plasma-react-icons';
 import {
     ActionIcon,
     Box,
@@ -15,14 +15,14 @@ import {
     Space,
     Stack,
     Tooltip,
-    useComponentDefaultProps,
+    useComponentDefaultProps
 } from '@mantine/core';
-import {useUncontrolled} from '@mantine/hooks';
-import Editor, {loader, Monaco} from '@monaco-editor/react';
-import {FunctionComponent, useEffect, useState} from 'react';
+import { useUncontrolled } from '@mantine/hooks';
+import Editor, { loader, Monaco } from '@monaco-editor/react';
+import { FunctionComponent, useEffect, useState } from 'react';
 
-import {useParentHeight} from '../../hooks';
-import {XML} from './languages/xml';
+import { useParentHeight } from '../../hooks';
+import { XML } from './languages/xml';
 
 const useStyles = createStyles((theme) => ({
     root: {},
