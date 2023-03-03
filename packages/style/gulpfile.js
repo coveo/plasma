@@ -7,7 +7,6 @@
 
 const path = require('path');
 const del = require('del');
-const pngSprite = require('coveo-png-sprite');
 const gulp = require('gulp');
 const fs = require('fs');
 const colors = require('ansi-colors');
@@ -75,29 +74,6 @@ gulp.task('copy:fonts', () => gulp.src('./resources/fonts/**/*').pipe(gulp.dest(
 
 gulp.task('copy:js', () => gulp.src('./resources/js/**/*').pipe(gulp.dest('./dist/js/')));
 
-gulp.task('sprites', () => {
-    const template =
-        '<%= "i." + node.className + ", ." + node.className %> {\
-      background-position:<%= -node.x / ratio %>px <%= -node.y / ratio %>px;\
-      width:<%= node.width / ratio %>px;\
-      height:<%= node.height / ratio %>px;\
-      text-indent:<%= node.width / ratio %>px;\
-    }';
-
-    return gulp
-        .src('./resources/sprites/**/*.png')
-        .pipe(
-            pngSprite.gulp({
-                cssPath: 'sprites.scss',
-                pngPath: '../dist/images/CoveoStyleGuide.Sprites.png',
-                relPath: '../dist/images/CoveoStyleGuide.Sprites.png',
-                eachTemplate: template,
-                namespace: 'coveo-sprites',
-            })
-        )
-        .pipe(gulp.dest('scss'));
-});
-
 const svgTemplate = (key, svgString, unformattedKey) => `
     ${key}: {
         name: "${key}",
@@ -164,7 +140,7 @@ gulp.task(
 
 gulp.task('svg', gulp.series('svg:enum'));
 
-gulp.task('default', gulp.series('lib', 'sprites', gulp.parallel('copy:images', 'copy:fonts', 'copy:js'), 'svg'));
+gulp.task('default', gulp.series('lib', gulp.parallel('copy:images', 'copy:fonts', 'copy:js'), 'svg'));
 
 gulp.task('watch', () => {
     gulp.watch('./resources/js/*.js', gulp.series('copy:js'));

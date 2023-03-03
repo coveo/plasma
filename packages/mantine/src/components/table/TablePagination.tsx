@@ -31,17 +31,17 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalP
             size="md"
             getItemProps={(page) => ({
                 component: 'button',
-                arialabel: `${page}`,
+                'aria-label': `${page}`,
             })}
             getControlProps={(control) => {
                 switch (control) {
                     case 'previous':
                         return {
                             component: 'button',
-                            arialabel: 'previous page',
+                            'aria-label': 'previous page',
                         };
                     case 'next':
-                        return {component: 'button', arialabel: 'next page'};
+                        return {component: 'button', 'aria-label': 'next page'};
                     default:
                         return {};
                 }
