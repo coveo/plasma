@@ -1,11 +1,12 @@
 import {Center, Group, Space} from '@mantine/core';
-import {DateRangePickerValue, RangeCalendar, RangeCalendarProps} from '@mantine/dates';
+import {CalendarBaseProps, DatePicker} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
 import {Button} from '../button';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
+export type DateRangePickerValue = [Date | null, Date | null];
 export interface DateRangePickerInlineCalendarProps
     extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /**
@@ -36,7 +37,10 @@ export interface DateRangePickerInlineCalendarProps
     /**
      * Props for RangeCalendar displayed in the popover
      */
-    rangeCalendarProps?: Omit<RangeCalendarProps, 'value' | 'onChange'>;
+    rangeCalendarProps?: Omit<
+        CalendarBaseProps,
+        'value' | 'onChange' | 'isDateInRange' | 'isDateFirstInRange' | 'isDateLastInRange'
+    >;
 }
 
 export const DateRangePickerInlineCalendar = ({
@@ -84,10 +88,11 @@ export const DateRangePickerInlineCalendar = ({
             </Group>
 
             <Center py="sm" px="md">
-                <RangeCalendar
-                    amountOfMonths={2}
-                    styles={{cell: {textAlign: 'center'}}}
-                    firstDayOfWeek="sunday"
+                <DatePicker
+                    numberOfColumns={2}
+                    type="range"
+                    styles={{calendar: {cell: {textAlign: 'center'}}}}
+                    firstDayOfWeek={0}
                     allowSingleDateInRange
                     {...rangeCalendarProps}
                     {...calendarInputProps}

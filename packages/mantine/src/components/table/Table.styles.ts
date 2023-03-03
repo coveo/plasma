@@ -1,4 +1,4 @@
-import {createStyles} from '@mantine/core';
+import {createStyles, px} from '@mantine/core';
 
 interface TableStylesParams {
     hasHeader: boolean;
@@ -44,7 +44,7 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
 
         rowCollapsibleButtonCell: {
             textAlign: 'right',
-            padding: `${theme.spacing.xs / 2}px ${theme.spacing.sm}px !important`,
+            padding: `calc(${px(theme.spacing.xs) / 2}) ${px(theme.spacing.sm)} !important`,
         },
 
         row: {

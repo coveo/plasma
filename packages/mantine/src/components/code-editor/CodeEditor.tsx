@@ -184,7 +184,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     wrappingStrategy: 'advanced',
                     scrollBeyondLastLine: false,
                     formatOnPaste: true,
-                    fontSize: theme.fontSizes.xs,
+                    fontSize: 12,
                     readOnly: disabled,
                     tabSize: 2,
                 }}

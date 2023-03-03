@@ -1,7 +1,7 @@
-import {DateRangePickerValue, isSameDate} from '@mantine/dates';
 import {Select, SelectItem, SelectProps} from '@mantine/core';
-import {useState, useEffect} from 'react';
 import dayjs from 'dayjs';
+import {useEffect, useState} from 'react';
+import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
 
 export interface DateRangePickerPreset {
     label: string;
@@ -26,7 +26,7 @@ export const DateRangePickerPresetSelect = <T extends unknown>({
     const getSelectedPreset = () => {
         if (value[0] !== null && value[1] !== null && dayjs(value[0]).unix() !== dayjs(value[1]).unix()) {
             const selected = Object.entries(presets).find(
-                ([id, {range}]) => dayjs(range[0]!).isSame(value[0]) && isSameDate(range[1]!, value[1]!)
+                ([id, {range}]) => dayjs(range[0]!).isSame(value[0]) && dayjs(value[1]!).isSame(value[1]!)
             );
             if (selected) {
                 return selected[0];

@@ -7,7 +7,7 @@ import {StickyFooter} from '../sticky-footer';
 import {ModalWizardStep, ModalWizardStepProps, ResolveStep} from './ModalWizardStep';
 
 const useStyles = createStyles(() => ({
-    modal: {
+    content: {
         display: 'flex',
         flexDirection: 'column',
     },
@@ -103,14 +103,13 @@ export const ModalWizard: ModalWizardType = ({
     isDirty,
     handleDirtyState,
     classNames,
-    className,
     styles,
     unstyled,
     children,
     ...modalProps
 }) => {
     const {
-        classes: {modal, body},
+        classes: {content, body},
         cx,
     } = useStyles(null, {
         name: 'ModalWizard',
@@ -167,7 +166,7 @@ export const ModalWizard: ModalWizardType = ({
     return (
         <Modal
             opened={opened}
-            classNames={{modal: cx(modal, classNames?.modal), body: cx(body, classNames?.body)}}
+            classNames={{content: cx(content, classNames?.content), body: cx(body, classNames?.body)}}
             centered
             onClose={() => handleClose(true)}
             withCloseButton={false}

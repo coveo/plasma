@@ -24,19 +24,26 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalP
 
     return (
         <Pagination
-            page={state.pagination.pageIndex + 1}
+            value={state.pagination.pageIndex + 1}
             onChange={updatePage}
             total={total}
             boundaries={0}
             size="md"
-            getItemAriaLabel={(label) => {
-                switch (label) {
-                    case 'prev':
-                        return 'previous page';
+            getItemProps={(page) => ({
+                component: 'button',
+                arialabel: `${page}`,
+            })}
+            getControlProps={(control) => {
+                switch (control) {
+                    case 'previous':
+                        return {
+                            component: 'button',
+                            arialabel: 'previous page',
+                        };
                     case 'next':
-                        return 'next page';
+                        return {component: 'button', arialabel: 'next page'};
                     default:
-                        return `${label}`;
+                        return {};
                 }
             }}
         />

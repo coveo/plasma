@@ -1,6 +1,6 @@
 import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
-import {ButtonStylesParams, MantineThemeOverride, ModalStylesParams} from '@mantine/core';
+import {MantineThemeOverride} from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';
 
@@ -12,23 +12,23 @@ export const plasmaTheme: MantineThemeOverride = {
     defaultRadius: 8,
     lineHeight: 1.5,
     spacing: {
-        xs: 8,
-        sm: 16,
-        md: 24,
-        lg: 32,
-        xl: 40,
+        xs: '8px',
+        sm: '16px',
+        md: '24px',
+        lg: '32px',
+        xl: '40px',
     },
     primaryColor: 'action',
     headings: {
         fontFamily: 'canada-type-gibson, sans-serif',
         fontWeight: 500,
         sizes: {
-            h1: {fontSize: 48, lineHeight: undefined, fontWeight: 300},
-            h2: {fontSize: 32, lineHeight: undefined, fontWeight: 500},
-            h3: {fontSize: 24, lineHeight: undefined, fontWeight: 500},
-            h4: {fontSize: 18, lineHeight: undefined, fontWeight: 300},
-            h5: {fontSize: 14, lineHeight: undefined, fontWeight: 500},
-            h6: {fontSize: 12, lineHeight: undefined, fontWeight: 500},
+            h1: {fontSize: '48px', lineHeight: undefined, fontWeight: 300},
+            h2: {fontSize: '32px', lineHeight: undefined, fontWeight: 500},
+            h3: {fontSize: '24px', lineHeight: undefined, fontWeight: 500},
+            h4: {fontSize: '18px', lineHeight: undefined, fontWeight: 300},
+            h5: {fontSize: '14px', lineHeight: undefined, fontWeight: 500},
+            h6: {fontSize: '12px', lineHeight: undefined, fontWeight: 500},
         },
     },
     shadows: {
@@ -64,19 +64,22 @@ export const plasmaTheme: MantineThemeOverride = {
             },
         },
         Button: {
-            styles: (theme, params: ButtonStylesParams) => ({
+            styles: () => ({
                 root: {
                     fontWeight: 400,
-                    backgroundColor: params.variant === 'outline' ? 'white' : undefined,
                 },
             }),
+            variants: {
+                outline: () => ({
+                    root: {
+                        backgroundColor: 'white',
+                    },
+                }),
+            },
         },
         Modal: {
-            styles: (theme, {size, fullScreen}: ModalStylesParams) => ({
+            styles: (theme) => ({
                 modal: {
-                    width: fullScreen
-                        ? undefined
-                        : theme.fn.size({size, sizes: {xs: 440, sm: 550, md: 800, lg: 1334, xl: '85%'}}),
                     overflow: 'auto',
                 },
                 title: {width: '100%'},
@@ -84,6 +87,33 @@ export const plasmaTheme: MantineThemeOverride = {
             defaultProps: {
                 overlayColor: color.primary.navy[9],
                 overlayOpacity: 0.9,
+            },
+            sizes: {
+                xs: () => ({
+                    root: {
+                        width: 400,
+                    },
+                }),
+                sm: () => ({
+                    root: {
+                        width: 550,
+                    },
+                }),
+                md: () => ({
+                    root: {
+                        width: 800,
+                    },
+                }),
+                lg: () => ({
+                    root: {
+                        width: 1334,
+                    },
+                }),
+                xl: () => ({
+                    root: {
+                        width: '85%',
+                    },
+                }),
             },
         },
         InputWrapper: {
