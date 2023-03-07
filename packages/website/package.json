@@ -41,6 +41,7 @@
         "@tanstack/match-sorter-utils": "8.7.6",
         "clsx": "1.2.1",
         "codesandbox-import-utils": "2.2.3",
+        "dayjs": "1.11.3",
         "embla-carousel-react": "7.0.4",
         "flagg": "1.1.2",
         "lodash.kebabcase": "4.1.1",

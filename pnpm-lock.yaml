@@ -600,6 +600,7 @@ importers:
       '@types/webpack-env': 1.16.4
       clsx: 1.2.1
       codesandbox-import-utils: 2.2.3
+      dayjs: 1.11.3
       embla-carousel-react: 7.0.4
       flagg: 1.1.2
       lint-staged: 9.5.0
@@ -645,7 +646,7 @@ importers:
       '@faker-js/faker': 7.6.0
       '@mantine/carousel': 5.9.2_vzbzlksjql4iqmbkce5tizjbp4
       '@mantine/core': 5.9.2_uwo7cluufwlxrxqmkyjahngi5e
-      '@mantine/dates': 5.9.2_2pltzneqv4wv27mewoeyrtq5am
+      '@mantine/dates': 5.9.2_3lkixb5xamc3m3co656vo6rimq
       '@mantine/form': 5.9.2_react@18.2.0
       '@mantine/hooks': 5.9.2_react@18.2.0
       '@mantine/modals': 5.9.2_uw7trfygy6zitf2mjy7qrym72y
@@ -654,6 +655,7 @@ importers:
       '@tanstack/match-sorter-utils': 8.7.6
       clsx: 1.2.1
       codesandbox-import-utils: 2.2.3
+      dayjs: 1.11.3
       embla-carousel-react: 7.0.4_react@18.2.0
       flagg: 1.1.2
       lodash.kebabcase: 4.1.1
@@ -2139,7 +2141,7 @@ packages:
       - '@types/react'
     dev: true
 
-  /@mantine/dates/5.9.2_2pltzneqv4wv27mewoeyrtq5am:
+  /@mantine/dates/5.9.2_3lkixb5xamc3m3co656vo6rimq:
     resolution: {integrity: sha512-xfUvE5IHHrQe30GNQFUi41EgikqEYnrhsKojbfIvTGXjUtrcHGCXoSTLn/K0cNrrmTCveePZzWIHSgS+6jK5Gg==}
     peerDependencies:
       '@mantine/core': 5.9.2
@@ -2150,6 +2152,7 @@ packages:
       '@mantine/core': 5.9.2_uwo7cluufwlxrxqmkyjahngi5e
       '@mantine/hooks': 5.9.2_react@18.2.0
       '@mantine/utils': 5.9.2_react@18.2.0
+      dayjs: 1.11.3
       react: 18.2.0
     dev: false
 

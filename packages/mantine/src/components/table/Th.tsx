@@ -12,7 +12,7 @@ const useStyles = createStyles((theme) => ({
 
     control: {
         width: '100%',
-        padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
+        padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
         whiteSpace: 'nowrap',
 
         '&:hover': {

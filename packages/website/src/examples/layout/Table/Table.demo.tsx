@@ -11,6 +11,7 @@ import {
     useTable,
 } from '@coveord/plasma-mantine';
 import {EditSize16Px} from '@coveord/plasma-react-icons';
+import dayjs from 'dayjs';
 import {FunctionComponent, useState} from 'react';
 
 interface IExampleRowData {
@@ -119,10 +120,9 @@ const NoData: FunctionComponent = () => {
     );
 };
 
-const today: Date = new Date();
-const previous: Date = new Date(new Date().getTime());
-const previousDay: Date = new Date(previous.setDate(previous.getDate() - 1));
-const previousWeek: Date = new Date(previous.setDate(previous.getDate() - 7));
+const today: Date = dayjs().startOf('day').toDate();
+const previousDay: Date = dayjs().subtract(1, 'day').endOf('day').toDate();
+const previousWeek: Date = dayjs().subtract(1, 'week').endOf('day').toDate();
 
 const DatePickerPresets: Record<string, DateRangePickerPreset> = {
     lastDay: {label: 'Last 24 hours', range: [previousDay, today]},
