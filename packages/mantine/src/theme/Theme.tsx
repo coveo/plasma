@@ -178,6 +178,15 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
             },
         },
+        DateInput: {
+            styles: {
+                root: {
+                    dropdown: {
+                        display: 'none',
+                    },
+                },
+            },
+        },
         Anchor: {
             defaultProps: {
                 color: 'action.6',
