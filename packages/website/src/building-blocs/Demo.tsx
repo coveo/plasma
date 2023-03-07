@@ -72,7 +72,7 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
             ) : null}
             <SimpleGrid className={classes.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
                 <Box component={center ? Center : 'div'} className={classes.preview}>
-                    <ScrollArea.Autosize maxHeight={MAX_HEIGHT}>
+                    <ScrollArea.Autosize mah={MAX_HEIGHT}>
                         <div className={classes.previewWrapper}>{children}</div>
                     </ScrollArea.Autosize>
                 </Box>
