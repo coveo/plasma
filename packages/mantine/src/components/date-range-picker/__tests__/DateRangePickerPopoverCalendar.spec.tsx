@@ -50,7 +50,7 @@ describe('DateRangePickerPopoverCalendar', () => {
         expect(screen.getByTestId('json')).toHaveTextContent('["1999-12-31T00:00:00.000Z","2000-01-01T00:00:00.000Z"]');
     });
 
-    it.only('calls onApply with the selected dates when clicking in the calendar', async () => {
+    it('calls onApply with the selected dates when clicking in the calendar', async () => {
         const user = userEvent.setup({delay: null});
         vi.useFakeTimers().setSystemTime(new Date(2022, 0, 31));
         const Fixture = () => {
@@ -65,16 +65,15 @@ describe('DateRangePickerPopoverCalendar', () => {
         render(<Fixture />);
 
         await user.click(screen.getByRole('textbox', {name: 'Start'}));
-        screen.logTestingPlaygroundURL();
         // click once for the start, once for the end
         await user.click(screen.getByRole('button', {name: '8 January 2022'}));
-        await user.click(screen.getByRole('button', {name: '14 January 2022'}));
+        await user.click(screen.getByRole('button', {name: '14 February 2022'}));
 
         // hides the calendar when the second date is clicked
-        // expect(screen.queryByRole('button', {name: '8 January 2022'})).not.toBeVisible();
-        // expect(screen.queryByRole('button', {name: '8 Febuary 2022'})).not.toBeVisible();
+        expect(await screen.findByRole('button', {name: '8 January 2022'})).not.toBeVisible();
+        expect(await screen.findByRole('button', {name: '8 February 2022'})).not.toBeVisible();
 
-        // expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-01-14T00:00:00.000Z"]');
+        expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-02-14T00:00:00.000Z"]');
 
         vi.useRealTimers();
     });

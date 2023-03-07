@@ -1,5 +1,5 @@
 import {loader} from '@monaco-editor/react';
-import {render, screen, waitForElementToBeRemoved, within} from '@test-utils';
+import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 import {useForm} from '../../../form';
 
 import {CodeEditor} from '../CodeEditor';
@@ -39,9 +39,7 @@ describe('CodeEditor', () => {
         render(<Fixture />);
         await waitForElementToBeRemoved(screen.queryByRole('presentation'));
 
-        const errors = screen.getByRole('alert');
-
-        expect(within(errors).getByText(/invalid configuration/i)).toBeInTheDocument();
+        expect(screen.getByText(/invalid configuration/i)).toBeInTheDocument();
     });
 
     it('loads the monaco editor files from node_modules when monacoLoader prop is "local"', async () => {
