@@ -1,4 +1,4 @@
-import {Box, createStyles, DefaultProps, Modal, ModalProps, Progress, Selectors} from '@mantine/core';
+import {Box, CloseButton, createStyles, DefaultProps, Modal, ModalProps, Progress, Selectors} from '@mantine/core';
 import {Children, ReactElement, useEffect, useMemo, useState} from 'react';
 
 import {Button} from '../button';
@@ -164,7 +164,7 @@ export const ModalWizard: ModalWizardType = ({
 
     const getProgressMemo = useMemo(() => getProgress(currentStepIndex), [currentStepIndex]);
     return (
-        <Modal.Root
+        <Modal
             opened={opened}
             classNames={{content: cx(content, classNames?.content), body: cx(body, classNames?.body)}}
             centered
@@ -173,64 +173,59 @@ export const ModalWizard: ModalWizardType = ({
             padding={0}
             {...modalProps}
         >
-            <Modal.Overlay />
-            <Modal.Content>
-                <Modal.Header>
-                    <Modal.Title>
-                        {resolveStepDependentProp('title')}
-                        {resolveStepDependentProp('docLink') ? (
-                            <Header.DocAnchor
-                                href={resolveStepDependentProp('docLink')}
-                                label={resolveStepDependentProp('docLinkTooltipLabel')}
-                            />
-                        ) : null}
-                    </Modal.Title>
-                    <Modal.CloseButton onClick={() => handleClose(true)} {...{'aria-label': 'close-modal'}} />
-                    {currentStep.props.showProgressBar && (
-                        <Progress color="navy.5" size="sm" radius={0} value={getProgressMemo} />
-                    )}
-                </Modal.Header>
-                <Modal.Body>
-                    <Box p="lg">{currentStep}</Box>
-                    <Box
-                        sx={{
-                            marginTop: 'auto',
+            <Header p="lg" pr="md" variant="modal" description={resolveStepDependentProp('description')}>
+                {resolveStepDependentProp('title')}
+                {resolveStepDependentProp('docLink') ? (
+                    <Header.DocAnchor
+                        href={resolveStepDependentProp('docLink')}
+                        label={resolveStepDependentProp('docLinkTooltipLabel')}
+                    />
+                ) : null}
+                <Header.Actions>
+                    <CloseButton aria-label={'close-modal'} onClick={() => handleClose(true)} />
+                </Header.Actions>
+            </Header>
+            {currentStep.props.showProgressBar && (
+                <Progress color="navy.5" size="sm" radius={0} value={getProgressMemo} />
+            )}
+            <Box p="lg">{currentStep}</Box>
+            <Box
+                sx={{
+                    marginTop: 'auto',
+                }}
+            >
+                <StickyFooter borderTop>
+                    <Button
+                        name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
+                        variant="outline"
+                        onClick={() => {
+                            if (isFirstStep) {
+                                handleClose(true);
+                            } else {
+                                onPrevious?.();
+                                setCurrentStepIndex(currentStepIndex - 1);
+                            }
                         }}
                     >
-                        <StickyFooter borderTop>
-                            <Button
-                                name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
-                                variant="outline"
-                                onClick={() => {
-                                    if (isFirstStep) {
-                                        handleClose(true);
-                                    } else {
-                                        onPrevious?.();
-                                        setCurrentStepIndex(currentStepIndex - 1);
-                                    }
-                                }}
-                            >
-                                {isFirstStep ? cancelButtonLabel : previousButtonLabel}
-                            </Button>
+                        {isFirstStep ? cancelButtonLabel : previousButtonLabel}
+                    </Button>
 
-                            <Button
-                                disabled={!isValid}
-                                onClick={() => {
-                                    if (isLastStep) {
-                                        onFinish?.() ?? handleClose(false);
-                                    } else {
-                                        onNext?.();
-                                        setCurrentStepIndex(currentStepIndex + 1);
-                                    }
-                                }}
-                            >
-                                {isLastStep ? finishButtonLabel : nextButtonLabel}
-                            </Button>
-                        </StickyFooter>
-                    </Box>
-                </Modal.Body>
-            </Modal.Content>
-        </Modal.Root>
+                    <Button
+                        disabled={!isValid}
+                        onClick={() => {
+                            if (isLastStep) {
+                                onFinish?.() ?? handleClose(false);
+                            } else {
+                                onNext?.();
+                                setCurrentStepIndex(currentStepIndex + 1);
+                            }
+                        }}
+                    >
+                        {isLastStep ? finishButtonLabel : nextButtonLabel}
+                    </Button>
+                </StickyFooter>
+            </Box>
+        </Modal>
     );
 };
 

@@ -1,6 +1,6 @@
 import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
-import {MantineThemeOverride} from '@mantine/core';
+import {getSize, MantineThemeOverride, ModalProps, rem} from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';
 
@@ -78,42 +78,29 @@ export const plasmaTheme: MantineThemeOverride = {
             },
         },
         Modal: {
-            styles: (theme) => ({
-                modal: {
+            styles: (theme, {size, fullScreen}: ModalProps) => ({
+                content: {
+                    flex: fullScreen
+                        ? '0 0 100%'
+                        : `0 0 ${getSize({
+                              size: size!,
+                              sizes: {
+                                  xs: rem(440),
+                                  sm: rem(550),
+                                  md: rem(800),
+                                  lg: rem(1334),
+                                  xl: rem('85%'),
+                              },
+                          })}`,
                     overflow: 'auto',
                 },
                 title: {width: '100%'},
             }),
             defaultProps: {
-                overlayColor: color.primary.navy[9],
-                overlayOpacity: 0.9,
-            },
-            sizes: {
-                xs: () => ({
-                    root: {
-                        width: 400,
-                    },
-                }),
-                sm: () => ({
-                    root: {
-                        width: 550,
-                    },
-                }),
-                md: () => ({
-                    root: {
-                        width: 800,
-                    },
-                }),
-                lg: () => ({
-                    root: {
-                        width: 1334,
-                    },
-                }),
-                xl: () => ({
-                    root: {
-                        width: '85%',
-                    },
-                }),
+                overlayProps: {
+                    color: color.primary.navy[9],
+                    opacity: 0.9,
+                },
             },
         },
         InputWrapper: {
