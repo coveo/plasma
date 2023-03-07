@@ -1,8 +1,8 @@
-import { InfoSize24Px } from '@coveord/plasma-react-icons';
-import { color } from '@coveord/plasma-tokens';
-import { getSize, MantineThemeOverride, ModalProps, rem } from '@mantine/core';
+import {InfoSize24Px} from '@coveord/plasma-react-icons';
+import {color} from '@coveord/plasma-tokens';
+import {getSize, MantineThemeOverride, ModalProps, rem} from '@mantine/core';
 
-import { PlasmaColors } from './PlasmaColors';
+import {PlasmaColors} from './PlasmaColors';
 
 export const plasmaTheme: MantineThemeOverride = {
     // These are overrides over https://github.com/mantinedev/mantine/blob/master/src/mantine-styles/src/theme/default-theme.ts
@@ -101,33 +101,6 @@ export const plasmaTheme: MantineThemeOverride = {
                     color: color.primary.navy[9],
                     opacity: 0.9,
                 },
-            },
-            sizes: {
-                xs: () => ({
-                    root: {
-                        width: 400,
-                    },
-                }),
-                sm: () => ({
-                    root: {
-                        width: 550,
-                    },
-                }),
-                md: () => ({
-                    root: {
-                        width: 800,
-                    },
-                }),
-                lg: () => ({
-                    root: {
-                        width: 1334,
-                    },
-                }),
-                xl: () => ({
-                    root: {
-                        width: '85%',
-                    },
-                }),
             },
         },
         InputWrapper: {
