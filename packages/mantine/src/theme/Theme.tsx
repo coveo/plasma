@@ -83,7 +83,7 @@ export const plasmaTheme: MantineThemeOverride = {
                     flex: fullScreen
                         ? '0 0 100%'
                         : `0 0 ${getSize({
-                              size: size!,
+                              size: size,
                               sizes: {
                                   xs: rem(440),
                                   sm: rem(550),
@@ -151,18 +151,9 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
             },
         },
-        DateInput: {
-            styles: {
-                root: {
-                    dropdown: {
-                        display: 'none',
-                    },
-                },
-            },
-        },
         Anchor: {
             defaultProps: {
-                color: 'action',
+                color: 'action.6',
             },
             styles: (theme) => ({
                 root: {

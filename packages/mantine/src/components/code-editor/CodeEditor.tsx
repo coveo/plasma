@@ -10,6 +10,7 @@ import {
     Input,
     InputWrapperBaseProps,
     Loader,
+    px,
     Selectors,
     Space,
     Stack,
@@ -184,7 +185,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     wrappingStrategy: 'advanced',
                     scrollBeyondLastLine: false,
                     formatOnPaste: true,
-                    fontSize: 12,
+                    fontSize: px(theme.fontSizes.xs),
                     readOnly: disabled,
                     tabSize: 2,
                 }}
