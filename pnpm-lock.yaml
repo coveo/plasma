@@ -251,7 +251,7 @@ importers:
       '@typescript-eslint/parser': 5.21.0
       '@wojtekmaj/enzyme-adapter-react-17': 0.6.7
       ansi-colors: 4.1.3
-      autoprefixer: 10.4.2
+      autoprefixer: 10.4.13
       clsx: 1.2.1
       codecov: 3.8.2
       codemirror: 5.63.3
@@ -381,7 +381,7 @@ importers:
       '@typescript-eslint/parser': 5.21.0_typescript@4.9.3
       '@wojtekmaj/enzyme-adapter-react-17': 0.6.7_todk22eekuihjg65rlnudp4qdi
       ansi-colors: 4.1.3
-      autoprefixer: 10.4.2_postcss@8.4.13
+      autoprefixer: 10.4.13_postcss@8.4.13
       codecov: 3.8.2
       del: 6.0.0
       enzyme: 3.11.0
@@ -4823,8 +4823,8 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: false
 
-  /autoprefixer/10.4.2_postcss@8.4.13:
-    resolution: {integrity: sha512-9fOPpHKuDW1w/0EKfRmVnxTDt8166MAnLI3mgZ1JCnhNtYWxcJ6Ud5CO/AVOZi/AvFa8DY9RTy3h3+tFBlrrdQ==}
+  /autoprefixer/10.4.13_postcss@8.4.13:
+    resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
