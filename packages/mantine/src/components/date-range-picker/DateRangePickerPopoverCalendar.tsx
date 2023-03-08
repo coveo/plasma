@@ -1,10 +1,11 @@
-import {DateRangePickerValue, RangeCalendar, RangeCalendarProps} from '@mantine/dates';
 import {Group, Popover, Space} from '@mantine/core';
+import {CalendarBaseProps, DatePicker} from '@mantine/dates';
 import {useClickOutside, useUncontrolled} from '@mantine/hooks';
 import {useState} from 'react';
 
+import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
+import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
-import {DateRangePickerPresetSelect, DateRangePickerPreset} from './DateRangePickerPresetSelect';
 
 interface DateRangePickerPopoverCalendarProps<T> extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */
@@ -28,7 +29,10 @@ interface DateRangePickerPopoverCalendarProps<T> extends Pick<EditableDateRangeP
     /**
      * Props for RangeCalendar
      */
-    rangeCalendarProps?: Omit<RangeCalendarProps, 'value' | 'onChange'>;
+    rangeCalendarProps?: Omit<
+        CalendarBaseProps,
+        'value' | 'onChange' | 'isDateInRange' | 'isDateFirstInRange' | 'isDateLastInRange'
+    >;
 }
 
 export const DateRangePickerPopoverCalendar = <T extends unknown>({
@@ -77,11 +81,12 @@ export const DateRangePickerPopoverCalendar = <T extends unknown>({
 
             <Popover opened={opened} onChange={setOpened} trapFocus>
                 <Popover.Dropdown>
-                    <RangeCalendar
+                    <DatePicker
                         ref={ref}
-                        styles={{cell: {textAlign: 'center'}}}
-                        amountOfMonths={2}
-                        firstDayOfWeek="sunday"
+                        type="range"
+                        styles={{calendar: {cell: {textAlign: 'center'}}}}
+                        numberOfColumns={2}
+                        firstDayOfWeek={0}
                         allowSingleDateInRange
                         value={_value}
                         onChange={onCalendarChange}

@@ -1,6 +1,6 @@
-import {ArrowHeadRightSize24Px, InfoSize24Px} from '@coveord/plasma-react-icons';
+import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
-import {ButtonStylesParams, MantineThemeOverride, ModalStylesParams} from '@mantine/core';
+import {getSize, MantineThemeOverride, ModalProps, rem} from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';
 
@@ -10,24 +10,25 @@ export const plasmaTheme: MantineThemeOverride = {
     fontFamily: 'canada-type-gibson, sans-serif',
     black: color.primary.gray[9],
     defaultRadius: 8,
+    lineHeight: 1.5,
     spacing: {
-        xs: 8,
-        sm: 16,
-        md: 24,
-        lg: 32,
-        xl: 40,
+        xs: '8px',
+        sm: '16px',
+        md: '24px',
+        lg: '32px',
+        xl: '40px',
     },
     primaryColor: 'action',
     headings: {
         fontFamily: 'canada-type-gibson, sans-serif',
         fontWeight: 500,
         sizes: {
-            h1: {fontSize: 48, lineHeight: '56px', fontWeight: 300},
-            h2: {fontSize: 32, lineHeight: '40px', fontWeight: 500},
-            h3: {fontSize: 24, lineHeight: '32px', fontWeight: 500},
-            h4: {fontSize: 18, lineHeight: '28px', fontWeight: 300},
-            h5: {fontSize: 14, lineHeight: '20px', fontWeight: 500},
-            h6: {fontSize: 12, lineHeight: '16px', fontWeight: 500},
+            h1: {fontSize: '48px', lineHeight: undefined, fontWeight: 300},
+            h2: {fontSize: '32px', lineHeight: undefined, fontWeight: 500},
+            h3: {fontSize: '24px', lineHeight: undefined, fontWeight: 500},
+            h4: {fontSize: '18px', lineHeight: undefined, fontWeight: 300},
+            h5: {fontSize: '14px', lineHeight: undefined, fontWeight: 500},
+            h6: {fontSize: '12px', lineHeight: undefined, fontWeight: 500},
         },
     },
     shadows: {
@@ -53,29 +54,53 @@ export const plasmaTheme: MantineThemeOverride = {
         Title: {
             styles: (theme) => ({
                 root: {
-                    '&:is(h1,h2,h3,h4,h5,h6)': {letterSpacing: '0.011em', color: theme.colors.gray[9]},
+                    '&:is(h1,h2,h3,h4,h5,h6)': {letterSpacing: '0.011em'},
                 },
             }),
+        },
+        Text: {
+            defaultProps: {
+                weight: 300,
+            },
         },
         Button: {
-            styles: (theme, params: ButtonStylesParams) => ({
+            styles: () => ({
                 root: {
                     fontWeight: 400,
-                    backgroundColor: params.variant === 'outline' ? 'white' : undefined,
                 },
             }),
+            variants: {
+                outline: () => ({
+                    root: {
+                        backgroundColor: 'white',
+                    },
+                }),
+            },
         },
         Modal: {
-            styles: (theme, {size, fullScreen}: ModalStylesParams) => ({
-                modal: {
-                    width: fullScreen
-                        ? undefined
-                        : theme.fn.size({size, sizes: {xs: 440, sm: 550, md: 800, lg: 1334, xl: '85%'}}),
+            styles: (theme, {size, fullScreen}: ModalProps) => ({
+                content: {
+                    flex: fullScreen
+                        ? '0 0 100%'
+                        : `0 0 ${getSize({
+                              size: size,
+                              sizes: {
+                                  xs: rem(440),
+                                  sm: rem(550),
+                                  md: rem(800),
+                                  lg: rem(1334),
+                                  xl: rem('85%'),
+                              },
+                          })}`,
+                    overflow: 'auto',
                 },
+                title: {width: '100%'},
             }),
             defaultProps: {
-                overlayColor: color.primary.navy[9],
-                overlayOpacity: 0.9,
+                overlayProps: {
+                    color: color.primary.navy[9],
+                    opacity: 0.9,
+                },
             },
         },
         InputWrapper: {
@@ -85,10 +110,8 @@ export const plasmaTheme: MantineThemeOverride = {
             styles: (theme) => ({
                 label: {
                     marginBottom: theme.spacing.xs,
-                    lineHeight: '20px',
                 },
                 description: {
-                    lineHeight: '20px',
                     fontSize: theme.fontSizes.sm,
                     color: theme.colors.gray[7],
                     marginBottom: theme.spacing.xs,
@@ -115,11 +138,6 @@ export const plasmaTheme: MantineThemeOverride = {
                 multiline: true,
             },
         },
-        Breadcrumbs: {
-            defaultProps: {
-                separator: <ArrowHeadRightSize24Px height={24} />,
-            },
-        },
         Loader: {
             defaultProps: {
                 variant: 'dots',
@@ -135,7 +153,7 @@ export const plasmaTheme: MantineThemeOverride = {
         },
         Anchor: {
             defaultProps: {
-                color: 'action',
+                color: 'action.6',
             },
             styles: (theme) => ({
                 root: {

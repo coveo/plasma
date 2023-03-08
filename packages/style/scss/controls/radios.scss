@@ -63,7 +63,7 @@ $labelIndent: $radio-button-size + $radio-button-option-height;
                 z-index: 1;
                 width: $radio-button-option-height;
                 height: $radio-button-option-height;
-                content: url('/icons/svg/content/radiocheck.svg');
+                content: url('../resources/icons/svg/content/radiocheck.svg');
             }
 
             &:hover {
@@ -94,7 +94,7 @@ $labelIndent: $radio-button-size + $radio-button-option-height;
                     z-index: 1;
                     width: $radio-button-option-height;
                     height: $radio-button-option-height;
-                    content: url('/icons/svg/content/disabled-radiocheck.svg');
+                    content: url('../resources/icons/svg/content/disabled-radiocheck.svg');
                 }
             }
         }

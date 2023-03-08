@@ -52,12 +52,6 @@
                 z-index: -1;
                 display: inline-block;
                 content: '\00a0';
-
-                @extend .coveo-sprites-misc-panel-expended;
-            }
-
-            a.collapsed + i.toggle-icon {
-                @extend .coveo-sprites-misc-panel-collapsed;
             }
         }
 

@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "49.4.0",
+    "version": "50.0.2",
     "description": "Design tokens of the Plasma Design System",
     "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
     "repository": {
@@ -23,12 +23,12 @@
         "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "devDependencies": {
-        "@types/chroma-js": "2.1.4",
+        "@types/chroma-js": "2.4.0",
         "@types/fs-extra": "9.0.13",
-        "@types/lodash": "4.14.186",
+        "@types/lodash": "4.14.191",
         "@types/node": "16.11.32",
         "@types/rimraf": "3.0.2",
-        "@types/svgo": "2.6.3",
+        "@types/svgo": "2.6.4",
         "chroma-js": "2.4.2",
         "commander": "9.2.0",
         "cross-fetch": "3.1.5",

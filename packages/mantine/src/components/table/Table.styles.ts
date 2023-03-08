@@ -44,7 +44,7 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
 
         rowCollapsibleButtonCell: {
             textAlign: 'right',
-            padding: `${theme.spacing.xs / 2}px ${theme.spacing.sm}px !important`,
+            padding: `calc(${theme.spacing.xs}/2) ${theme.spacing.sm} !important`,
         },
 
         row: {

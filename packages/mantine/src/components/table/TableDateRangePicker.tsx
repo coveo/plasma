@@ -1,12 +1,15 @@
 import {CalendarSize24Px} from '@coveord/plasma-react-icons';
 import {Popover} from '@mantine/core';
-import {DateRangePickerValue} from '@mantine/dates';
 import dayjs from 'dayjs';
 import {FunctionComponent, useState} from 'react';
 
 import {Button} from '../button';
-import {DateRangePickerInlineCalendar, DateRangePickerInlineCalendarProps} from '../date-range-picker';
-import {DateRangePickerPreset} from '../date-range-picker/DateRangePickerPresetSelect';
+import {
+    DateRangePickerInlineCalendar,
+    DateRangePickerInlineCalendarProps,
+    DateRangePickerPreset,
+    DateRangePickerValue,
+} from '../date-range-picker';
 import {useTable} from './TableContext';
 
 interface TableDateRangePickerProps

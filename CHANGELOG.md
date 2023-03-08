@@ -1,3 +1,110 @@
+# 51.0.0 (2023-03-08)
+
+
+* chore(mantine)!: bump mantine to v6 d345d6e
+
+
+### BREAKING CHANGES
+
+* Mantine was bumped from v5 to v6, to use the new version of plasma mantine you must update your mantine dependencies
+
+
+
+## 50.0.3 (2023-03-07)
+
+
+
+## 50.0.2 (2023-03-04)
+
+
+
+## 50.0.1 (2023-03-03)
+
+
+
+# 50.0.0 (2023-03-02)
+
+
+### Features
+
+* **mantine:** header redesign & modal adjustments (#3068) 5bb81b3, closes #3068
+
+
+### BREAKING CHANGES
+
+* **mantine:** header breadcrumbs have been moved out of the header children
+
+Use the new Header.Breadcrumbs to render breadcrumbs properly
+
+refactor(mantine): apply Gustavo's Header suggestions
+
+* refactor(mantine): set line height to 1.5
+
+* feat(mantine): move header actions into sub component
+* **mantine:** header actions have been moved out of the props into a
+static component <Header.Actions>
+
+* refactor(mantine): move header doc link into sub component
+* **mantine:** docLink props on the header were removed. Use Header.DocAnchor component instead
+
+* feat(mantine): delete modal component override
+* **mantine:** modal doesn't have a description prop anymore.
+Use Header component inside the modal title instead (see demo page)
+
+* refactor(mantine): apply suggestions
+
+
+
+## 49.6.7 (2023-03-02)
+
+
+
+## 49.6.6 (2023-03-02)
+
+
+
+## 49.6.5 (2023-03-01)
+
+
+
+## 49.6.4 (2023-03-01)
+
+
+
+## 49.6.3 (2023-03-01)
+
+
+
+## 49.6.2 (2023-03-01)
+
+
+
+## 49.6.1 (2023-02-28)
+
+
+### Bug Fixes
+
+* **style:** inline svgs and fonts in generated stylesheet (#3065) 9be905b, closes #3065
+
+
+
+# 49.6.0 (2023-02-27)
+
+
+### Features
+
+* **mantine button:** add async handler (#3060) f259a62, closes #3060
+
+
+
+## 49.5.3 (2023-02-25)
+
+
+
+## 49.5.2 (2023-02-25)
+
+
+
 ## 49.5.1 (2023-02-24)
 
 

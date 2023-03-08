@@ -36,7 +36,6 @@ describe('ModalWizard', () => {
 
         render(
             <ModalWizard
-                closeButtonLabel="closebuttonlabel"
                 isDirty={isDirty}
                 handleDirtyState={() => confirm('Are you sure you want to close?')}
                 opened={true}
@@ -64,7 +63,7 @@ describe('ModalWizard', () => {
 
         expect(
             screen.getByRole('button', {
-                name: /closebuttonlabel/i,
+                name: /close-modal/i,
             })
         ).toBeInTheDocument();
 
@@ -83,7 +82,7 @@ describe('ModalWizard', () => {
 
         expect(
             screen.getByRole('button', {
-                name: /closebuttonlabel/i,
+                name: /close-modal/i,
             })
         ).toBeInTheDocument();
 
@@ -110,7 +109,7 @@ describe('ModalWizard', () => {
 
         expect(
             screen.getByRole('button', {
-                name: /closebuttonlabel/i,
+                name: /close-modal/i,
             })
         ).toBeInTheDocument();
 
@@ -143,7 +142,7 @@ describe('ModalWizard', () => {
 
         expect(
             screen.getByRole('button', {
-                name: /closebuttonlabel/i,
+                name: /close-modal/i,
             })
         ).toBeInTheDocument();
 
@@ -172,7 +171,7 @@ describe('ModalWizard', () => {
         const onClose = vi.fn();
 
         render(
-            <ModalWizard isDirty={isDirty} onClose={onClose} closeButtonLabel="closebuttonlabel" opened={true}>
+            <ModalWizard isDirty={isDirty} onClose={onClose} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
@@ -186,7 +185,7 @@ describe('ModalWizard', () => {
         );
 
         const closeButton = screen.getByRole('button', {
-            name: /closebuttonlabel/i,
+            name: /close-modal/i,
         });
         await user.click(closeButton);
 
@@ -282,13 +281,7 @@ describe('ModalWizard', () => {
         const handleDirtyState = vi.fn();
 
         render(
-            <ModalWizard
-                isDirty={isDirty}
-                onClose={onClose}
-                handleDirtyState={handleDirtyState}
-                closeButtonLabel="closebuttonlabel"
-                opened={true}
-            >
+            <ModalWizard isDirty={isDirty} onClose={onClose} handleDirtyState={handleDirtyState} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
@@ -301,7 +294,7 @@ describe('ModalWizard', () => {
             </ModalWizard>
         );
         const closeButton = screen.getByRole('button', {
-            name: /closebuttonlabel/i,
+            name: /close-modal/i,
         });
 
         handleDirtyState.mockReturnValueOnce(true);
@@ -327,13 +320,7 @@ describe('ModalWizard', () => {
         const handleDirtyState = vi.fn();
 
         render(
-            <ModalWizard
-                isDirty={isDirty}
-                onClose={onClose}
-                handleDirtyState={handleDirtyState}
-                closeButtonLabel="closebuttonlabel"
-                opened={true}
-            >
+            <ModalWizard isDirty={isDirty} onClose={onClose} handleDirtyState={handleDirtyState} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
                         docLink={model_item.docLink}
@@ -346,7 +333,7 @@ describe('ModalWizard', () => {
             </ModalWizard>
         );
         const closeButton = screen.getByRole('button', {
-            name: /closebuttonlabel/i,
+            name: /close-modal/i,
         });
 
         handleDirtyState.mockReturnValueOnce(false);
