@@ -1,6 +1,6 @@
 import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
-import {getSize, MantineThemeOverride, ModalProps, rem} from '@mantine/core';
+import {getSize, MantineThemeOverride, ModalProps, NotificationProps, rem} from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';
 
@@ -151,15 +151,6 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
             },
         },
-        DateInput: {
-            styles: {
-                root: {
-                    dropdown: {
-                        display: 'none',
-                    },
-                },
-            },
-        },
         Anchor: {
             defaultProps: {
                 color: 'action.6',
@@ -220,13 +211,15 @@ export const plasmaTheme: MantineThemeOverride = {
             },
         },
         Notification: {
-            styles: (theme) => ({
+            styles: (theme, {color: notificationType}: NotificationProps) => ({
                 root: {
                     borderColor: theme.colors.gray[3],
                     backgroundColor: theme.colors.gray[0],
                 },
                 icon: {
+                    backgroundColor: 'transparent',
                     marginRight: 18,
+                    color: theme.colors[notificationType][notificationType === 'info' ? 3 : 6],
                 },
             }),
         },

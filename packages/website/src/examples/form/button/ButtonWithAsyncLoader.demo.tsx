@@ -10,14 +10,7 @@ const promise = async () => {
         message: 'The save disabled was put in a loading state while it was waiting for the save to resolve.',
         autoClose: false,
         icon: <CheckmarkSize24Px height={24} />,
-        styles: (theme) => ({
-            root: {
-                '.__mantine-ref-icon': {
-                    backgroundColor: 'transparent',
-                    color: theme.colors.success[6],
-                },
-            },
-        }),
+        color: 'success',
     });
 };
 
