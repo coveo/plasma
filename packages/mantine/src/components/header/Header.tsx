@@ -68,7 +68,7 @@ export const Header: HeaderType = ({description, borderBottom, children, variant
 const HeaderBreadcrumbs: FunctionComponent<{children: ReactNode}> = ({children}) => (
     <Breadcrumbs
         styles={(theme) => ({
-            breadcrumb: {fontSize: theme.fontSizes.sm, fontWeight: 300},
+            breadcrumb: {fontSize: theme.fontSizes.sm, fontWeight: 300, color: theme.colors.action[6]},
             separator: {color: theme.colors.gray[5]},
         })}
     >

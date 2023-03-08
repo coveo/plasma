@@ -1,4 +1,3 @@
-import {DateRangePickerValue} from '@mantine/dates';
 import {UseFormReturnType} from '@mantine/form';
 import {
     ColumnDef,
@@ -8,6 +7,7 @@ import {
     TableState as TanstackTableState,
 } from '@tanstack/table-core';
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
+import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
 
 import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';

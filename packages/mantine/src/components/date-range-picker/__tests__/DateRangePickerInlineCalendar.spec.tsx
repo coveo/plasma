@@ -63,8 +63,8 @@ describe('DateRangePickerInlineCalendar', () => {
         render(<DateRangePickerInlineCalendar initialRange={[null, null]} onApply={onApply} onCancel={vi.fn()} />);
 
         // click once for the start, once for the end
-        await user.click(screen.getAllByRole('button', {name: '8'})[0]);
-        await user.click(screen.getAllByRole('button', {name: '14'})[0]);
+        await user.click(screen.getAllByRole('button', {name: /8 january 2022/i})[0]);
+        await user.click(screen.getAllByRole('button', {name: /14 january 2022/i})[0]);
 
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
@@ -78,8 +78,7 @@ describe('DateRangePickerInlineCalendar', () => {
         vi.useFakeTimers().setSystemTime(new Date(2022, 0, 31));
         const onApply = vi.fn();
         render(<DateRangePickerInlineCalendar initialRange={[null, null]} onApply={onApply} onCancel={vi.fn()} />);
-
-        await user.click(screen.getAllByRole('button', {name: '8'})[0]);
+        await user.click(screen.getAllByRole('button', {name: /8 january 2022/i})[0]);
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
         expect(onApply).toHaveBeenCalledWith([new Date(2022, 0, 8), new Date(2022, 0, 8)]);

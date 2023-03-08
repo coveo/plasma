@@ -11,7 +11,7 @@ import '../styles/props-table.scss';
 import '../styles/spacing.scss';
 import '../styles/tile.scss';
 
-import {NotificationsProvider, Plasmantine} from '@coveord/plasma-mantine';
+import {Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import {Defaults} from '@coveord/plasma-react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -67,16 +67,15 @@ const MyApp = ({Component, pageProps}: AppProps) => {
             <Provider store={Store}>
                 <EngineProvider>
                     <Plasmantine>
-                        <NotificationsProvider position="top-center">
-                            <Header />
-                            <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
-                                <Navigation />
-                                <div className="coveo-form flex-auto relative overflow-auto demo-content">
-                                    {isLegacy ? <LegacyWarningBanner /> : null}
-                                    <Component {...pageProps} />
-                                </div>
+                        <Notifications position="top-center" />
+                        <Header />
+                        <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
+                            <Navigation />
+                            <div className="coveo-form flex-auto relative overflow-auto demo-content">
+                                {isLegacy ? <LegacyWarningBanner /> : null}
+                                <Component {...pageProps} />
                             </div>
-                        </NotificationsProvider>
+                        </div>
                     </Plasmantine>
                 </EngineProvider>
             </Provider>

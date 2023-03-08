@@ -1,6 +1,6 @@
-import {DateRangePickerValue} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 import {render, screen, userEvent} from '@test-utils';
+import {DateRangePickerValue} from '../DateRangePickerInlineCalendar';
 
 import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar';
 
@@ -66,14 +66,14 @@ describe('DateRangePickerPopoverCalendar', () => {
 
         await user.click(screen.getByRole('textbox', {name: 'Start'}));
         // click once for the start, once for the end
-        await user.click(screen.getAllByRole('button', {name: '8'})[0]);
-        await user.click(screen.getAllByRole('button', {name: '14'})[0]);
+        await user.click(screen.getByRole('button', {name: '8 January 2022'}));
+        await user.click(screen.getByRole('button', {name: '14 February 2022'}));
 
         // hides the calendar when the second date is clicked
-        expect(screen.queryAllByRole('button', {name: '8'})[0]).not.toBeVisible();
-        expect(screen.queryAllByRole('button', {name: '8'})[1]).not.toBeVisible();
+        expect(await screen.findByRole('button', {name: '8 January 2022'})).not.toBeVisible();
+        expect(await screen.findByRole('button', {name: '8 February 2022'})).not.toBeVisible();
 
-        expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-01-14T00:00:00.000Z"]');
+        expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-02-14T00:00:00.000Z"]');
 
         vi.useRealTimers();
     });

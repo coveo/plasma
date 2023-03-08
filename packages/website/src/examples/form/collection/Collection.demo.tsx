@@ -31,7 +31,6 @@ export default () => {
                         // autoFocus
                         placeholder="Do something ..."
                         {...form.getInputProps(`todoList.${index}.name`)}
-                        styles={{flex: 1}}
                     />
                     <Checkbox {...form.getInputProps(`todoList.${index}.done`, {type: 'checkbox'})} />
                 </>
