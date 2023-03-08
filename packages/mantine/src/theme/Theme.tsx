@@ -219,7 +219,7 @@ export const plasmaTheme: MantineThemeOverride = {
                 icon: {
                     backgroundColor: 'transparent',
                     marginRight: 18,
-                    color: theme.colors[notificationType][notificationType === 'info' ? 3 : 6],
+                    color: theme.colors?.[notificationType]?.[notificationType === 'info' ? 3 : 6] ?? undefined,
                 },
             }),
         },
