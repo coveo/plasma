@@ -1,7 +1,7 @@
-import { DateInput, DatePickerProps } from '@mantine/dates';
+import {DateInput, DatePickerProps} from '@mantine/dates';
 import dayjs from 'dayjs';
-import { ReactNode } from 'react';
-import { DateRangePickerValue } from './DateRangePickerInlineCalendar';
+import {ReactNode} from 'react';
+import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
 
 export interface EditableDateRangePickerProps {
     value: DateRangePickerValue;
