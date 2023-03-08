@@ -1,3 +1,15 @@
+# 51.0.0 (2023-03-08)
+
+
+* chore(mantine)!: bump mantine to v6 d345d6e
+
+
+### BREAKING CHANGES
+
+* Mantine was bumped from v5 to v6, to use the new version of plasma mantine you must update your mantine dependencies
+
+
+
 ## 50.0.3 (2023-03-07)
 
 
