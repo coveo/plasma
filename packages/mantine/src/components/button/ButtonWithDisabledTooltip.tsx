@@ -17,13 +17,17 @@ export interface ButtonWithDisabledTooltipProps {
      * Additional tooltip props to set on the disabled button tooltip
      */
     disabledTooltipProps?: Omit<TooltipProps, 'disabled' | 'label' | 'children'>;
+    /**
+     * Sets button width to 100% of parent element
+     */
+    fullWidth?: boolean;
 }
 
 const _ButtonWithDisabledTooltip = forwardRef<HTMLDivElement, ButtonWithDisabledTooltipProps>(
-    ({disabledTooltip, disabled, children, disabledTooltipProps, ...others}, ref) =>
+    ({disabledTooltip, disabled, children, disabledTooltipProps, fullWidth, ...others}, ref) =>
         disabledTooltip ? (
             <Tooltip label={disabledTooltip} disabled={!disabled} {...disabledTooltipProps}>
-                <Box ref={ref} sx={{'&:hover': {cursor: 'not-allowed'}}} {...others}>
+                <Box ref={ref} sx={{'&:hover': {cursor: 'not-allowed'}, width: fullWidth && '100%'}} {...others}>
                     {children}
                 </Box>
             </Tooltip>
