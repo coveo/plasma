@@ -1,3 +1,12 @@
+# 51.1.0 (2023-03-09)
+
+
+### Features
+
+* **notification:** overrides some of the style to match new guidelines (#3069) e0c04a8, closes #3069
+
+
+
 ## 51.0.1 (2023-03-08)
 
 
