@@ -1,3 +1,12 @@
+## 51.1.1 (2023-03-09)
+
+
+### Bug Fixes
+
+* **button:** allowed fullwidth on button with tooltip button (#3079) f084762, closes #3079
+
+
+
 # 51.1.0 (2023-03-09)
 
 
