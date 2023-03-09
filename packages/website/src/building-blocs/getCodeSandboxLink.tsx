@@ -29,6 +29,7 @@ const guessDependenciesFromSnippet = (snippet: string): Dependencies => {
         dependencies['@mantine/modals'] = packageConfig.dependencies['@mantine/modals'];
         dependencies['@mantine/carousel'] = packageConfig.dependencies['@mantine/carousel'];
         dependencies['embla-carousel-react'] = packageConfig.dependencies['embla-carousel-react'];
+        dependencies['@mantine/notifications'] = packageConfig.dependencies['@mantine/notifications'];
     }
 
     if (snippetUsesPackage(snippet, '@coveord/plasma-react')) {
