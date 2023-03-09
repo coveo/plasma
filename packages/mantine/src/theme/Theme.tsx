@@ -1,6 +1,6 @@
 import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
-import {getSize, MantineThemeOverride, ModalProps, rem} from '@mantine/core';
+import {getSize, MantineThemeOverride, ModalProps, NotificationProps, rem} from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';
 
@@ -208,6 +208,32 @@ export const plasmaTheme: MantineThemeOverride = {
         MenuItem: {
             defaultProps: {
                 fw: 300,
+            },
+        },
+        Notification: {
+            styles: (theme, {color: notificationType}: NotificationProps) => ({
+                root: {
+                    borderColor: theme.colors.gray[3],
+                    backgroundColor: theme.colors.gray[0],
+                    boxShadow: theme.shadows.lg,
+                    padding: theme.spacing.sm,
+                    '&[data-with-icon]': {
+                        paddingLeft: theme.spacing.sm,
+                    },
+                },
+                icon: {
+                    backgroundColor: 'transparent',
+                    marginRight: theme.spacing.sm,
+                    color: theme.colors?.[notificationType][6],
+                },
+                closeButton: {
+                    margin: theme.spacing.xs,
+                    color: theme.colors.gray[5],
+                },
+            }),
+            defaultProps: {
+                icon: <InfoSize24Px height={24} />,
+                color: 'info',
             },
         },
     },
