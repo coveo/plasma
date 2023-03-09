@@ -1,5 +1,5 @@
 import {Button as MantineButton, ButtonProps as MantineButtonProps} from '@mantine/core';
-import {forwardRef, useState, MouseEventHandler, MouseEvent} from 'react';
+import {forwardRef, MouseEvent, MouseEventHandler, useState} from 'react';
 
 import {createPolymorphicComponent} from '../../utils';
 import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from './ButtonWithDisabledTooltip';
@@ -37,6 +37,7 @@ const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 disabled={disabled}
                 disabledTooltip={disabledTooltip}
                 disabledTooltipProps={disabledTooltipProps}
+                fullWidth={others.fullWidth}
             >
                 <MantineButton
                     loaderProps={{variant: 'oval'}}
