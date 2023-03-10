@@ -92,7 +92,7 @@
         "@types/loadable__component": "5.13.4",
         "@types/lorem-ipsum": "2.0.0",
         "@types/react": "18.0.21",
-        "@types/react-bootstrap": "0.32.29",
+        "@types/react-bootstrap": "0.32.32",
         "@types/react-codemirror": "1.0.7",
         "@types/react-color": "3.0.6",
         "@types/react-dom": "18.0.6",

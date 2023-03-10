@@ -231,7 +231,7 @@ importers:
       '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/react': ^18.0
-      '@types/react-bootstrap': 0.32.29
+      '@types/react-bootstrap': 0.32.32
       '@types/react-codemirror': 1.0.7
       '@types/react-color': 3.0.6
       '@types/react-dom': ^18.0
@@ -361,7 +361,7 @@ importers:
       '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 18.0.25
-      '@types/react-bootstrap': 0.32.29
+      '@types/react-bootstrap': 0.32.32
       '@types/react-codemirror': 1.0.7
       '@types/react-color': 3.0.6
       '@types/react-dom': 18.0.9
@@ -3653,8 +3653,8 @@ packages:
       '@types/react': 18.0.25
     dev: true
 
-  /@types/react-bootstrap/0.32.29:
-    resolution: {integrity: sha512-ynKNFi1lvLLOCC+/G3HMQ2hGE6dzfgCOt6S2+sQy6Y6jVYh2m5Qrc/e1OQN5B2DkUsQAtxr908OpW9lOup6Pgw==}
+  /@types/react-bootstrap/0.32.32:
+    resolution: {integrity: sha512-GM9UtV7v+C2F0rbqgIpMWdCKBMdX3PQURoJQobPO4vDAeFadcExNtKffi13/MjaAks+riJKVGyiMe+6OmDYT2w==}
     dependencies:
       '@types/react': 18.0.25
     dev: true
