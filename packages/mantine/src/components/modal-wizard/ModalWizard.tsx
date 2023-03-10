@@ -122,7 +122,6 @@ export const ModalWizard: ModalWizardType = ({
     const modalSteps = (Children.toArray(children) as ReactElement[]).filter((child) => child.type === ModalWizardStep);
 
     const numberOfSteps = modalSteps.length;
-    const numberOfStepsCountAsProgress = modalSteps.filter((step) => step.props.countsAsProgress).length;
     const isFirstStep = currentStepIndex === 0;
     const isLastStep = currentStepIndex === numberOfSteps - 1;
     const currentStep = modalSteps.filter((step: ReactElement, index: number) => index === currentStepIndex)[0];
@@ -148,13 +147,6 @@ export const ModalWizard: ModalWizardType = ({
         onClose?.();
     };
 
-    const getProgress = (currStepIndex: number) => {
-        const validSteps = modalSteps.filter(
-            (step, index) => step.props.countsAsProgress && index <= currStepIndex
-        ).length;
-        return (validSteps / numberOfStepsCountAsProgress) * 100;
-    };
-
     const resolveStepDependentProp = <P extends keyof ModalWizardStepProps>(
         prop: P
     ): ResolveStep<ModalWizardStepProps[P]> =>
@@ -162,7 +154,17 @@ export const ModalWizard: ModalWizardType = ({
             ? currentStep.props[prop](currentStepIndex + 1, numberOfSteps)
             : currentStep.props[prop];
 
-    const getProgressMemo = useMemo(() => getProgress(currentStepIndex), [currentStepIndex]);
+    const getProgress = useMemo(
+        () => (currStepIndex: number) => {
+            const totalNumberOfSteps = modalSteps.filter((step) => step.props.countsAsProgress).length;
+            const numberOfCompletedSteps = modalSteps.filter(
+                (step, index) => step.props.countsAsProgress && index <= currStepIndex
+            ).length;
+            return (numberOfCompletedSteps / totalNumberOfSteps) * 100;
+        },
+        []
+    );
+
     return (
         <Modal
             opened={opened}
@@ -173,7 +175,13 @@ export const ModalWizard: ModalWizardType = ({
             padding={0}
             {...modalProps}
         >
-            <Header p="lg" pr="md" variant="modal" description={resolveStepDependentProp('description')}>
+            <Header
+                p="lg"
+                pr="md"
+                variant="modal"
+                description={resolveStepDependentProp('description')}
+                borderBottom={!currentStep.props.showProgressBar}
+            >
                 {resolveStepDependentProp('title')}
                 {resolveStepDependentProp('docLink') ? (
                     <Header.DocAnchor
@@ -186,7 +194,7 @@ export const ModalWizard: ModalWizardType = ({
                 </Header.Actions>
             </Header>
             {currentStep.props.showProgressBar && (
-                <Progress color="navy.5" size="sm" radius={0} value={getProgressMemo} />
+                <Progress color="navy.5" size="sm" radius={0} value={getProgress(currentStepIndex)} />
             )}
             <Box p="lg">{currentStep}</Box>
             <Box
