@@ -1,4 +1,5 @@
-import {ReactNode, FunctionComponent} from 'react';
+import {Box, Header, Stack, Text} from '@coveord/plasma-mantine';
+import {FunctionComponent, ReactNode} from 'react';
 
 import {GithubButton} from './GithubButton';
 import {Tile, TileProps} from './Tile';
@@ -23,22 +24,25 @@ export const PageHeader: FunctionComponent<PageHeaderProps> = ({
     section,
     sourcePath,
 }) => (
-    <div className="plasma-page-header">
-        <h2 className="h5-subdued normal-white-space">{section}</h2>
-        <h1 className="h1-light normal-white-space" data-coveo-field="title">
-            {title}
-        </h1>
-        <h3 className="h4-book-subdued" data-coveo-field="description">
-            {description}
-        </h3>
-        {sourcePath && (
-            <GithubButton
-                ariaLabel="View source code on GitHub"
-                href={`https://github.com/coveo/plasma/blob/master${sourcePath}`}
-            >
-                View source
-            </GithubButton>
-        )}
-        <Tile thumbnail={thumbnail} />
-    </div>
+    <Header description={<span data-coveo-field="description">{description}</span>}>
+        <Header.Breadcrumbs>
+            <Text color="gray.6">{section}</Text>
+        </Header.Breadcrumbs>
+        <span data-coveo-field="title">{title}</span>
+        <Header.Actions>
+            <Stack spacing="sm" align="flex-end">
+                {sourcePath && (
+                    <GithubButton
+                        ariaLabel="View source code on GitHub"
+                        href={`https://github.com/coveo/plasma/blob/master${sourcePath}`}
+                    >
+                        View source
+                    </GithubButton>
+                )}
+                <Box sx={{maxWidth: 264}}>
+                    <Tile thumbnail={thumbnail} />
+                </Box>
+            </Stack>
+        </Header.Actions>
+    </Header>
 );

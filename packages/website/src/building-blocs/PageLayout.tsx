@@ -39,7 +39,7 @@ export const PageLayout = ({
             description={description}
         />
         <Tabs defaultValue="implementation">
-            <Tabs.List pl="xs">
+            <Tabs.List pl="xl">
                 <Tabs.Tab value="implementation">Implementation</Tabs.Tab>
                 <Tabs.Tab value="guide">Guidelines</Tabs.Tab>
             </Tabs.List>

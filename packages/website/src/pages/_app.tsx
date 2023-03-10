@@ -4,7 +4,6 @@ import '../styles/home.scss';
 import '../styles/iconography.scss';
 import '../styles/loading-screen.css';
 import '../styles/main.scss';
-import '../styles/page-header.scss';
 import '../styles/page-layout.scss';
 import '../styles/plasmaSearchBar.scss';
 import '../styles/props-table.scss';
