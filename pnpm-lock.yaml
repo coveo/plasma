@@ -130,7 +130,7 @@ importers:
       '@types/react-dom': ^18.0
       '@types/testing-library__jest-dom': 5.14.5
       csstype: 3.1.1
-      dayjs: 1.11.3
+      dayjs: 1.11.7
       embla-carousel-react: 7.0.4
       eslint-plugin-testing-library: 5.7.2
       eslint-plugin-vitest: 0.0.32
@@ -159,7 +159,7 @@ importers:
       '@swc/helpers': 0.4.14
       '@tanstack/react-table': 8.7.9_biqbaboplfbrettd7655fr4n2y
       '@tanstack/table-core': 8.7.9
-      dayjs: 1.11.3
+      dayjs: 1.11.7
       fast-deep-equal: 3.1.3
       lodash.debounce: 4.0.8
       lodash.defaultsdeep: 4.6.1
@@ -169,7 +169,7 @@ importers:
       '@emotion/react': 11.10.6_fan5qbzahqtxlm5dzefqlqx5ia
       '@mantine/carousel': 6.0.1_abz5y3bwnjgsx27ocdwvehmilq
       '@mantine/core': 6.0.1_fiavqfu4zh6luip2xs6dd3scke
-      '@mantine/dates': 6.0.1_yyothamfx5z7rrev6dw5qd4jia
+      '@mantine/dates': 6.0.1_7kk7ko2teecziu6wt4lvufnzpm
       '@mantine/form': 6.0.1_react@18.2.0
       '@mantine/hooks': 6.0.1_react@18.2.0
       '@mantine/modals': 6.0.1_hdfbaha3esn2nmwxggs2gvheiu
@@ -600,7 +600,7 @@ importers:
       '@types/webpack-env': 1.16.4
       clsx: 1.2.1
       codesandbox-import-utils: 2.2.3
-      dayjs: 1.11.3
+      dayjs: 1.11.7
       embla-carousel-react: 7.0.4
       flagg: 1.1.2
       lint-staged: 9.5.0
@@ -646,7 +646,7 @@ importers:
       '@faker-js/faker': 7.6.0
       '@mantine/carousel': 5.9.2_vzbzlksjql4iqmbkce5tizjbp4
       '@mantine/core': 5.9.2_uwo7cluufwlxrxqmkyjahngi5e
-      '@mantine/dates': 5.9.2_3lkixb5xamc3m3co656vo6rimq
+      '@mantine/dates': 5.9.2_awfl2nprrmzfezhvuiyuty454y
       '@mantine/form': 5.9.2_react@18.2.0
       '@mantine/hooks': 5.9.2_react@18.2.0
       '@mantine/modals': 5.9.2_uw7trfygy6zitf2mjy7qrym72y
@@ -655,7 +655,7 @@ importers:
       '@tanstack/match-sorter-utils': 8.7.6
       clsx: 1.2.1
       codesandbox-import-utils: 2.2.3
-      dayjs: 1.11.3
+      dayjs: 1.11.7
       embla-carousel-react: 7.0.4_react@18.2.0
       flagg: 1.1.2
       lodash.kebabcase: 4.1.1
@@ -2141,7 +2141,7 @@ packages:
       - '@types/react'
     dev: true
 
-  /@mantine/dates/5.9.2_3lkixb5xamc3m3co656vo6rimq:
+  /@mantine/dates/5.9.2_awfl2nprrmzfezhvuiyuty454y:
     resolution: {integrity: sha512-xfUvE5IHHrQe30GNQFUi41EgikqEYnrhsKojbfIvTGXjUtrcHGCXoSTLn/K0cNrrmTCveePZzWIHSgS+6jK5Gg==}
     peerDependencies:
       '@mantine/core': 5.9.2
@@ -2152,11 +2152,11 @@ packages:
       '@mantine/core': 5.9.2_uwo7cluufwlxrxqmkyjahngi5e
       '@mantine/hooks': 5.9.2_react@18.2.0
       '@mantine/utils': 5.9.2_react@18.2.0
-      dayjs: 1.11.3
+      dayjs: 1.11.7
       react: 18.2.0
     dev: false
 
-  /@mantine/dates/6.0.1_yyothamfx5z7rrev6dw5qd4jia:
+  /@mantine/dates/6.0.1_7kk7ko2teecziu6wt4lvufnzpm:
     resolution: {integrity: sha512-ZoKrlEN0YF96Jxr7bFSwZtYm+OSWdc/x8MHFaVmqsN4xkW0WFdv9WyWPLYW+GCeSrw5jcj+XC3dWEY2g/RCacw==}
     peerDependencies:
       '@mantine/core': 6.0.1
@@ -2167,7 +2167,7 @@ packages:
       '@mantine/core': 6.0.1_fiavqfu4zh6luip2xs6dd3scke
       '@mantine/hooks': 6.0.1_react@18.2.0
       '@mantine/utils': 6.0.1_react@18.2.0
-      dayjs: 1.11.3
+      dayjs: 1.11.7
       react: 18.2.0
     dev: true
 
@@ -6529,12 +6529,12 @@ packages:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}
     dev: false
 
-  /dayjs/1.11.3:
-    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==}
-
   /dayjs/1.11.5:
     resolution: {integrity: sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA==}
     dev: false
+
+  /dayjs/1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
