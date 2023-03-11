@@ -232,7 +232,7 @@ importers:
       '@types/lorem-ipsum': 2.0.0
       '@types/react': ^18.0
       '@types/react-bootstrap': 0.32.32
-      '@types/react-codemirror': 1.0.7
+      '@types/react-codemirror': 1.0.8
       '@types/react-color': 3.0.6
       '@types/react-dom': ^18.0
       '@types/react-infinite-scroll-component': 4.2.5
@@ -362,7 +362,7 @@ importers:
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 18.0.25
       '@types/react-bootstrap': 0.32.32
-      '@types/react-codemirror': 1.0.7
+      '@types/react-codemirror': 1.0.8
       '@types/react-color': 3.0.6
       '@types/react-dom': 18.0.9
       '@types/react-infinite-scroll-component': 4.2.5
@@ -3659,8 +3659,8 @@ packages:
       '@types/react': 18.0.25
     dev: true
 
-  /@types/react-codemirror/1.0.7:
-    resolution: {integrity: sha512-1TgVrVyw24YVHovXUCSbGOklh/ERwRAXaFhRD1UuzednOF3Ms1kSMCsYKRJPM536dYqpUqaCw+vAE7/xUFhXiQ==}
+  /@types/react-codemirror/1.0.8:
+    resolution: {integrity: sha512-E0xBatgv8iWDYcjjubuDM0FZW0PHrzmeU0suCFLCn/S9Pl10KC2qrGGufqS3Zb3x6LICRbexGD/zpXg55nocBg==}
     dependencies:
       '@types/codemirror': 0.0.109
       '@types/react': 18.0.25
