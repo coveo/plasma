@@ -1,3 +1,12 @@
+## 51.1.8 (2023-03-13)
+
+
+### Bug Fixes
+
+* **mantine:** modal wizard header border bottom (#3083) a3e34ef, closes #3083
+
+
+
 ## 51.1.7 (2023-03-11)
 
 
