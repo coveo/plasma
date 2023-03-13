@@ -11,6 +11,8 @@ export default () => {
                 <ModalWizard.Step
                     docLink="https://coveo.com"
                     title="Current Step is 1"
+                    showProgressBar={false}
+                    countsAsProgress={false}
                     description="Description of step 1"
                     validateStep={() => ({isValid: true})}
                     docLinkTooltipLabel="Tooltip label"

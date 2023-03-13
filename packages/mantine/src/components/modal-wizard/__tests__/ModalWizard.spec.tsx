@@ -1,4 +1,5 @@
 import {render, screen, userEvent} from '@test-utils';
+
 import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
@@ -340,5 +341,25 @@ describe('ModalWizard', () => {
         await user.click(closeButton);
         expect(handleDirtyState).toHaveBeenCalledTimes(1);
         expect(onClose).toHaveBeenCalledTimes(0);
+    });
+
+    it('hides the progress bar when showProgressBar is false for a given step', async () => {
+        const user = userEvent.setup();
+        render(
+            <ModalWizard opened={true} onClose={vi.fn()}>
+                <ModalWizard.Step title="Step 1" validateStep={() => ({isValid: true})} showProgressBar={false}>
+                    Content step 1
+                </ModalWizard.Step>
+                <ModalWizard.Step title="Step 2" validateStep={() => ({isValid: true})}>
+                    Content step 2
+                </ModalWizard.Step>
+            </ModalWizard>
+        );
+
+        expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole('button', {name: /next/i}));
+
+        expect(screen.getByRole('progressbar')).toBeInTheDocument();
     });
 });
