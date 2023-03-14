@@ -221,7 +221,7 @@ importers:
       '@testing-library/user-event': 14.4.3
       '@types/codemirror': 0.0.109
       '@types/d3': 7.4.0
-      '@types/d3-array': 3.0.3
+      '@types/d3-array': 3.0.4
       '@types/d3-scale': 4.0.3
       '@types/d3-shape': 3.1.0
       '@types/enzyme': 3.10.12
@@ -256,7 +256,7 @@ importers:
       codecov: 3.8.2
       codemirror: 5.63.3
       d3: 7.6.1
-      d3-array: 3.2.0
+      d3-array: 3.2.2
       d3-scale: 4.0.2
       d3-shape: 3.1.0
       del: 6.0.0
@@ -318,7 +318,7 @@ importers:
       clsx: 1.2.1
       codemirror: 5.63.3
       d3: 7.6.1
-      d3-array: 3.2.0
+      d3-array: 3.2.2
       d3-scale: 4.0.2
       d3-shape: 3.1.0
       dnd-core: 16.0.1
@@ -351,7 +351,7 @@ importers:
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.4.3_znccgeejomvff3jrsk3ljovfpu
       '@types/d3': 7.4.0
-      '@types/d3-array': 3.0.3
+      '@types/d3-array': 3.0.4
       '@types/d3-scale': 4.0.3
       '@types/d3-shape': 3.1.0
       '@types/enzyme': 3.10.12
@@ -3226,8 +3226,8 @@ packages:
     dependencies:
       '@types/tern': 0.23.4
 
-  /@types/d3-array/3.0.3:
-    resolution: {integrity: sha512-Reoy+pKnvsksN0lQUlcH6dOGjRZ/3WRwXR//m+/8lt1BXeI4xyaUZoqULNjyXXRuh0Mj4LNpkCvhUpQlY3X5xQ==}
+  /@types/d3-array/3.0.4:
+    resolution: {integrity: sha512-nwvEkG9vYOc0Ic7G7kwgviY4AQlTfYGIZ0fqB7CQHXGyYM6nO7kJh5EguSNA3jfh4rq7Sb7eMVq8isuvg2/miQ==}
     dev: true
 
   /@types/d3-axis/3.0.1:
@@ -3253,7 +3253,7 @@ packages:
   /@types/d3-contour/3.0.1:
     resolution: {integrity: sha512-C3zfBrhHZvrpAAK3YXqLWVAGo87A4SvJ83Q/zVJ8rFWJdKejUnDYaWZPkA8K84kb2vDA/g90LTQAz7etXcgoQQ==}
     dependencies:
-      '@types/d3-array': 3.0.3
+      '@types/d3-array': 3.0.4
       '@types/geojson': 7946.0.10
     dev: true
 
@@ -3373,7 +3373,7 @@ packages:
   /@types/d3/7.4.0:
     resolution: {integrity: sha512-jIfNVK0ZlxcuRDKtRS/SypEyOQ6UHaFQBKv032X45VvxSJ6Yi5G9behy9h6tNTHTDGh5Vq+KbmBjUWLgY4meCA==}
     dependencies:
-      '@types/d3-array': 3.0.3
+      '@types/d3-array': 3.0.4
       '@types/d3-axis': 3.0.1
       '@types/d3-brush': 3.0.1
       '@types/d3-chord': 3.0.1
@@ -6246,8 +6246,8 @@ packages:
       type: 1.2.0
     dev: true
 
-  /d3-array/3.2.0:
-    resolution: {integrity: sha512-3yXFQo0oG3QCxbF06rMPFyGRMGJNS7NvsV1+2joOjbBE+9xvWQ8+GcMJAjRCzw06zQ3/arXeJgbPYcjUCuC+3g==}
+  /d3-array/3.2.2:
+    resolution: {integrity: sha512-yEEyEAbDrF8C6Ob2myOBLjwBLck1Z89jMGFee0oPsn95GqjerpaOA4ch+vc2l0FNFFwMD5N7OCSEN5eAlsUbgQ==}
     engines: {node: '>=12'}
     dependencies:
       internmap: 2.0.3
@@ -6285,7 +6285,7 @@ packages:
     resolution: {integrity: sha512-7aQo0QHUTu/Ko3cP9YK9yUTxtoDEiDGwnBHyLxG5M4vqlBkO/uixMRele3nfsfj6UXOcuReVpVXzAboGraYIJw==}
     engines: {node: '>=12'}
     dependencies:
-      d3-array: 3.2.0
+      d3-array: 3.2.2
     dev: false
 
   /d3-delaunay/6.0.2:
@@ -6348,7 +6348,7 @@ packages:
     resolution: {integrity: sha512-Wt23xBych5tSy9IYAM1FR2rWIBFWa52B/oF/GYe5zbdHrg08FU8+BuI6X4PvTwPDdqdAdq04fuWJpELtsaEjeA==}
     engines: {node: '>=12'}
     dependencies:
-      d3-array: 3.2.0
+      d3-array: 3.2.2
     dev: false
 
   /d3-hierarchy/3.1.2:
@@ -6395,7 +6395,7 @@ packages:
     resolution: {integrity: sha512-GZW464g1SH7ag3Y7hXjf8RoUuAFIqklOAq3MRl4OaWabTFJY9PN/E1YklhXLh+OQ3fM9yS2nOkCoS+WLZ6kvxQ==}
     engines: {node: '>=12'}
     dependencies:
-      d3-array: 3.2.0
+      d3-array: 3.2.2
       d3-format: 3.1.0
       d3-interpolate: 3.0.1
       d3-time: 3.0.0
@@ -6425,7 +6425,7 @@ packages:
     resolution: {integrity: sha512-zmV3lRnlaLI08y9IMRXSDshQb5Nj77smnfpnd2LrBa/2K281Jijactokeak14QacHs/kKq0AQ121nidNYlarbQ==}
     engines: {node: '>=12'}
     dependencies:
-      d3-array: 3.2.0
+      d3-array: 3.2.2
     dev: false
 
   /d3-timer/3.0.1:
@@ -6462,7 +6462,7 @@ packages:
     resolution: {integrity: sha512-txMTdIHFbcpLx+8a0IFhZsbp+PfBBPt8yfbmukZTQFroKuFqIwqswF0qE5JXWefylaAVpSXFoKm3yP+jpNLFLw==}
     engines: {node: '>=12'}
     dependencies:
-      d3-array: 3.2.0
+      d3-array: 3.2.2
       d3-axis: 3.0.0
       d3-brush: 3.0.0
       d3-chord: 3.0.1
