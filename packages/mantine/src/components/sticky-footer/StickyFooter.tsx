@@ -25,13 +25,11 @@ export const StickyFooter: FunctionComponent<PropsWithChildren<StickyFooterProps
     const {classes} = useStyles();
 
     return (
-        <>
+        <Box className={classes.footer}>
             {borderTop ? <Divider size="xs" /> : null}
-            <Box className={classes.footer}>
-                <Group position="right" spacing="sm" p="lg" {...others}>
-                    {children}
-                </Group>
-            </Box>
-        </>
+            <Group position="right" spacing="sm" p="lg" {...others}>
+                {children}
+            </Group>
+        </Box>
     );
 };
