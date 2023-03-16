@@ -264,7 +264,7 @@ importers:
       enzyme: 3.11.0
       escape-string-regexp: 1.0.5
       eslint-plugin-jest: 27.0.4
-      eslint-plugin-jest-dom: 4.0.2
+      eslint-plugin-jest-dom: 4.0.3
       eslint-plugin-testing-library: 5.3.1
       faker: 4.1.0
       fancy-log: 2.0.0
@@ -387,7 +387,7 @@ importers:
       enzyme: 3.11.0
       escape-string-regexp: 1.0.5
       eslint-plugin-jest: 27.0.4_t6whlb3qfcgdysjfwmzbo6ogve
-      eslint-plugin-jest-dom: 4.0.2
+      eslint-plugin-jest-dom: 4.0.3
       eslint-plugin-testing-library: 5.3.1_typescript@4.9.3
       faker: 4.1.0
       fancy-log: 2.0.0
@@ -7411,13 +7411,13 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-jest-dom/4.0.2:
-    resolution: {integrity: sha512-Jo51Atwyo2TdcUncjmU+UQeSTKh3sc2LF/M5i/R3nTU0Djw9V65KGJisdm/RtuKhy2KH/r7eQ1n6kwYFPNdHlA==}
+  /eslint-plugin-jest-dom/4.0.3:
+    resolution: {integrity: sha512-9j+n8uj0+V0tmsoS7bYC7fLhQmIvjRqRYEcbDSi+TKPsTThLLXCyj5swMSSf/hTleeMktACnn+HFqXBr5gbcbA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6', yarn: '>=1'}
     peerDependencies:
       eslint: ^6.8.0 || ^7.0.0 || ^8.0.0
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.20.6
       '@testing-library/dom': 8.18.1
       requireindex: 1.2.0
     dev: true
