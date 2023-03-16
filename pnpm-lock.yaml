@@ -131,7 +131,7 @@ importers:
       '@types/testing-library__jest-dom': 5.14.5
       csstype: 3.1.1
       dayjs: 1.11.7
-      embla-carousel-react: 7.0.4
+      embla-carousel-react: 7.1.0
       eslint-plugin-testing-library: 5.7.2
       eslint-plugin-vitest: 0.0.32
       eslint-plugin-vitest-globals: 1.2.0
@@ -167,7 +167,7 @@ importers:
       react-beautiful-dnd: 13.1.1_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@emotion/react': 11.10.6_fan5qbzahqtxlm5dzefqlqx5ia
-      '@mantine/carousel': 6.0.1_abz5y3bwnjgsx27ocdwvehmilq
+      '@mantine/carousel': 6.0.1_7kkhvewkigwd3vx3kefwl4gr6e
       '@mantine/core': 6.0.1_fiavqfu4zh6luip2xs6dd3scke
       '@mantine/dates': 6.0.1_7kk7ko2teecziu6wt4lvufnzpm
       '@mantine/form': 6.0.1_react@18.2.0
@@ -189,7 +189,7 @@ importers:
       '@types/react-dom': 18.0.9
       '@types/testing-library__jest-dom': 5.14.5
       csstype: 3.1.1
-      embla-carousel-react: 7.0.4_react@18.2.0
+      embla-carousel-react: 7.1.0_react@18.2.0
       eslint-plugin-testing-library: 5.7.2_typescript@4.9.3
       eslint-plugin-vitest: 0.0.32_typescript@4.9.3
       eslint-plugin-vitest-globals: 1.2.0
@@ -601,7 +601,7 @@ importers:
       clsx: 1.2.1
       codesandbox-import-utils: 2.2.3
       dayjs: 1.11.7
-      embla-carousel-react: 7.0.4
+      embla-carousel-react: 7.1.0
       flagg: 1.1.2
       lint-staged: 9.5.0
       lodash.kebabcase: 4.1.1
@@ -644,7 +644,7 @@ importers:
       '@emotion/react': 11.10.6_fan5qbzahqtxlm5dzefqlqx5ia
       '@emotion/server': 11.10.0
       '@faker-js/faker': 7.6.0
-      '@mantine/carousel': 5.9.2_vzbzlksjql4iqmbkce5tizjbp4
+      '@mantine/carousel': 5.9.2_bowwlzp57qwa7n6cpqoe5de7iu
       '@mantine/core': 5.9.2_uwo7cluufwlxrxqmkyjahngi5e
       '@mantine/dates': 5.9.2_awfl2nprrmzfezhvuiyuty454y
       '@mantine/form': 5.9.2_react@18.2.0
@@ -656,7 +656,7 @@ importers:
       clsx: 1.2.1
       codesandbox-import-utils: 2.2.3
       dayjs: 1.11.7
-      embla-carousel-react: 7.0.4_react@18.2.0
+      embla-carousel-react: 7.1.0_react@18.2.0
       flagg: 1.1.2
       lodash.kebabcase: 4.1.1
       lorem-ipsum: 2.0.4
@@ -2070,7 +2070,7 @@ packages:
       react-is: 16.13.1
     dev: false
 
-  /@mantine/carousel/5.9.2_vzbzlksjql4iqmbkce5tizjbp4:
+  /@mantine/carousel/5.9.2_bowwlzp57qwa7n6cpqoe5de7iu:
     resolution: {integrity: sha512-ziASnX1l06WgzYRr0TJ+fNrcWtW0E2LoU5rPU9RXoLBf4cyDnybvFwGRvcWgY4jKIIchOnjMJ49jB+oqE4AFkw==}
     peerDependencies:
       '@mantine/core': 5.9.2
@@ -2081,11 +2081,11 @@ packages:
       '@mantine/core': 5.9.2_uwo7cluufwlxrxqmkyjahngi5e
       '@mantine/hooks': 5.9.2_react@18.2.0
       '@mantine/utils': 5.9.2_react@18.2.0
-      embla-carousel-react: 7.0.4_react@18.2.0
+      embla-carousel-react: 7.1.0_react@18.2.0
       react: 18.2.0
     dev: false
 
-  /@mantine/carousel/6.0.1_abz5y3bwnjgsx27ocdwvehmilq:
+  /@mantine/carousel/6.0.1_7kkhvewkigwd3vx3kefwl4gr6e:
     resolution: {integrity: sha512-ARwb/Ov4I7zH+3NA42YjSNnv+Tt9dX2BPsmbXaZXhwVTRi2eJZUyLQNsMh8FutlGXbrjtoWrf1DnI96v9CBkpg==}
     peerDependencies:
       '@mantine/core': 6.0.1
@@ -2096,7 +2096,7 @@ packages:
       '@mantine/core': 6.0.1_fiavqfu4zh6luip2xs6dd3scke
       '@mantine/hooks': 6.0.1_react@18.2.0
       '@mantine/utils': 6.0.1_react@18.2.0
-      embla-carousel-react: 7.0.4_react@18.2.0
+      embla-carousel-react: 7.1.0_react@18.2.0
       react: 18.2.0
     dev: true
 
@@ -7049,16 +7049,16 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /embla-carousel-react/7.0.4_react@18.2.0:
-    resolution: {integrity: sha512-pSnxrvsLMt3TwVS8uqYMZGfJvRLy+3rcg3JOImVDgvNEtEbbzXoL8tR34Dph6Jh38e/Z9IZW7jVX0igu/haLyQ==}
+  /embla-carousel-react/7.1.0_react@18.2.0:
+    resolution: {integrity: sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==}
     peerDependencies:
-      react: ^18.1.0
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      embla-carousel: 7.0.4
+      embla-carousel: 7.1.0
       react: 18.2.0
 
-  /embla-carousel/7.0.4:
-    resolution: {integrity: sha512-2/EO9Zh6yT1EiTNkCUhbYfAqe6PVODSYFZQxTeuLGFYYNTKTkHvalfuFVIdEDmtxbbGepuYtLqCmk6yzJfJeyw==}
+  /embla-carousel/7.1.0:
+    resolution: {integrity: sha512-Bh8Pa8NWzgugLkf8sAGexQlBCNDFaej5BXiKgQdRJ1mUC9NWBrw9Z23YVPVGkguWoz5LMjZXXFVGCobl3UPt/Q==}
 
   /emittery/0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
