@@ -9,7 +9,7 @@ jobs:
         permissions:
             id-token: write
         steps:
-            - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+            - uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3
             - uses: ./.github/actions/cleanup-demo
               with:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
