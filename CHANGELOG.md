@@ -1,3 +1,12 @@
+## 51.1.14 (2023-03-17)
+
+
+### Bug Fixes
+
+* **sticky footer:** top border will not dissapear (#3088) 4ed335d, closes #3088
+
+
+
 ## 51.1.13 (2023-03-17)
 
 
