@@ -136,7 +136,11 @@ export const Table: TableType = <T,>({
                                     [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
                                 })}
                             >
-                                <Skeleton visible={loading} sx={!loading ? {borderRadius: 0} : undefined}>
+                                <Skeleton
+                                    style={{display: 'inline-block'}}
+                                    visible={loading}
+                                    sx={!loading ? {borderRadius: 0} : undefined}
+                                >
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </Skeleton>
                             </td>
