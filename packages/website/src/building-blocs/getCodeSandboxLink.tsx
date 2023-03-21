@@ -52,13 +52,14 @@ const getIndexOfSnippet = (snippet: string): string => {
     if (snippetUsesPackage(snippet, '@coveord/plasma-mantine')) {
         return `
 import {createRoot} from 'react-dom/client';
-import {Container, Plasmantine} from '@coveord/plasma-mantine';
+import {Container, Plasmantine, Notifications} from '@coveord/plasma-mantine';
 import Demo from './Demo';
 import './font.css';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
     <Plasmantine>
+        <Notifications position="top-center" />
         <Container p="md">
             <Demo />
         </Container>
