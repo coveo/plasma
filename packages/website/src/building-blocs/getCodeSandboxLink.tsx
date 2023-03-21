@@ -22,14 +22,13 @@ const guessDependenciesFromSnippet = (snippet: string): Dependencies => {
     if (snippetUsesPackage(snippet, '@coveord/plasma-mantine')) {
         dependencies['@coveord/plasma-mantine'] = 'latest';
         dependencies['@emotion/react'] = packageConfig.dependencies['@emotion/react'];
-        dependencies['@mantine/core'] = packageConfig.dependencies['@mantine/core'];
-        dependencies['@mantine/dates'] = packageConfig.dependencies['@mantine/dates'];
-        dependencies['@mantine/form'] = packageConfig.dependencies['@mantine/form'];
-        dependencies['@mantine/hooks'] = packageConfig.dependencies['@mantine/hooks'];
-        dependencies['@mantine/modals'] = packageConfig.dependencies['@mantine/modals'];
-        dependencies['@mantine/carousel'] = packageConfig.dependencies['@mantine/carousel'];
         dependencies['embla-carousel-react'] = packageConfig.dependencies['embla-carousel-react'];
-        dependencies['@mantine/notifications'] = packageConfig.dependencies['@mantine/notifications'];
+        // Add all @mantine matching dependencies from package.json to the sandbox dependencies
+        Object.keys(packageConfig.dependencies).map((entry: keyof typeof packageConfig['dependencies']) => {
+            if (entry.match(/^(@mantine).*/)) {
+                dependencies[entry] = packageConfig.dependencies[entry];
+            }
+        });
     }
 
     if (snippetUsesPackage(snippet, '@coveord/plasma-react')) {
