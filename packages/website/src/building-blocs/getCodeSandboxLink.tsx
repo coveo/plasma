@@ -9,12 +9,18 @@ type Dependencies = {
 const snippetUsesPackage = (snippet: string, packageName: keyof typeof packageConfig['dependencies']): boolean =>
     snippet.indexOf(`from '${packageName}';`) > -1;
 
-const guessDependenciesFromSnippet = (snippet: string): Dependencies => {
+const getRawDependenciesFromSnippet = (snippet: string): Dependencies => {
     const dependencies: Dependencies = {
         react: packageConfig.dependencies.react,
         'react-dom': packageConfig.dependencies['react-dom'],
     };
+    snippet.match(/(?<=from ')[^']*/gm).map((entry: keyof typeof packageConfig['dependencies']) => {
+        dependencies[entry] = packageConfig.dependencies[entry];
+    });
+    return dependencies;
+};
 
+const addAndFineTuneDependencies = (snippet: string, dependencies: Dependencies): Dependencies => {
     if (snippetUsesPackage(snippet, '@coveord/plasma-react-icons')) {
         dependencies['@coveord/plasma-react-icons'] = 'latest';
     }
@@ -33,16 +39,7 @@ const guessDependenciesFromSnippet = (snippet: string): Dependencies => {
 
     if (snippetUsesPackage(snippet, '@coveord/plasma-react')) {
         dependencies['@coveord/plasma-react'] = 'latest';
-        dependencies['react-redux'] = packageConfig.dependencies['react-redux'];
-        dependencies['redux'] = packageConfig.dependencies['redux'];
-        dependencies['redux-devtools-extension'] = packageConfig.dependencies['redux-devtools-extension'];
-        dependencies['redux-promise-middleware'] = packageConfig.dependencies['redux-promise-middleware'];
-        dependencies['redux-thunk'] = packageConfig.dependencies['redux-thunk'];
         (dependencies as any)['jquery'] = 'latest';
-    }
-
-    if (snippetUsesPackage(snippet, 'lorem-ipsum')) {
-        dependencies['lorem-ipsum'] = packageConfig.dependencies['lorem-ipsum'];
     }
 
     return dependencies;
@@ -124,12 +121,13 @@ const indexHtml = `
 `;
 
 const getSandboxLink = (snippet: string): string => {
+    const dependencies = getRawDependenciesFromSnippet(snippet);
     const parameters = getParameters({
         template: 'create-react-app',
         files: {
             'package.json': {
                 content: {
-                    dependencies: guessDependenciesFromSnippet(snippet),
+                    dependencies: addAndFineTuneDependencies(snippet, dependencies),
                     devDependencies: {
                         tslib: packageConfig.devDependencies.tslib,
                         typescript: packageConfig.devDependencies.typescript,
