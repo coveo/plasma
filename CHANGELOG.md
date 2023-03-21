@@ -1,3 +1,12 @@
+## 51.1.16 (2023-03-21)
+
+
+### Bug Fixes
+
+* **mantine, table:** table cells alignment (#3094) 3314b84, closes #3094
+
+
+
 ## 51.1.15 (2023-03-20)
 
 
