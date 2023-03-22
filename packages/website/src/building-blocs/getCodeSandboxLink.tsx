@@ -6,7 +6,9 @@ type Dependencies = {
     [Dep in keyof Partial<typeof packageConfig['dependencies']>]: string;
 };
 
-const snippetUsesPackage = (snippet: string, packageName: keyof typeof packageConfig['dependencies']): boolean =>
+type PackageDependencies = keyof typeof packageConfig['dependencies'];
+
+const snippetUsesPackage = (snippet: string, packageName: PackageDependencies): boolean =>
     snippet.indexOf(`from '${packageName}';`) > -1;
 
 const getRawDependenciesFromSnippet = (snippet: string): Dependencies => {
@@ -14,7 +16,7 @@ const getRawDependenciesFromSnippet = (snippet: string): Dependencies => {
         react: packageConfig.dependencies.react,
         'react-dom': packageConfig.dependencies['react-dom'],
     };
-    snippet.match(/(?<=from ')[^']*/gm)?.map((entry: keyof typeof packageConfig['dependencies']) => {
+    snippet.match(/(?<=from ')[^']*/gm)?.map((entry: PackageDependencies) => {
         dependencies[entry] = packageConfig.dependencies[entry];
     });
     return dependencies;
@@ -30,7 +32,7 @@ const addAndFineTuneDependencies = (snippet: string, dependencies: Dependencies)
         dependencies['@emotion/react'] = packageConfig.dependencies['@emotion/react'];
         dependencies['embla-carousel-react'] = packageConfig.dependencies['embla-carousel-react'];
         // Add all @mantine matching dependencies from package.json to the sandbox dependencies
-        Object.keys(packageConfig.dependencies)?.map((entry: keyof typeof packageConfig['dependencies']) => {
+        Object.keys(packageConfig.dependencies)?.map((entry: PackageDependencies) => {
             if (entry.match(/^(@mantine).*/)) {
                 dependencies[entry] = packageConfig.dependencies[entry];
             }
