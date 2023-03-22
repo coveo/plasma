@@ -6,15 +6,23 @@ type Dependencies = {
     [Dep in keyof Partial<typeof packageConfig['dependencies']>]: string;
 };
 
-const snippetUsesPackage = (snippet: string, packageName: keyof typeof packageConfig['dependencies']): boolean =>
+type PackageDependencies = keyof typeof packageConfig['dependencies'];
+
+const snippetUsesPackage = (snippet: string, packageName: PackageDependencies): boolean =>
     snippet.indexOf(`from '${packageName}';`) > -1;
 
-const guessDependenciesFromSnippet = (snippet: string): Dependencies => {
+const getRawDependenciesFromSnippet = (snippet: string): Dependencies => {
     const dependencies: Dependencies = {
         react: packageConfig.dependencies.react,
         'react-dom': packageConfig.dependencies['react-dom'],
     };
+    snippet.match(/(?<=from ')[^']*/gm)?.map((entry: PackageDependencies) => {
+        dependencies[entry] = packageConfig.dependencies[entry];
+    });
+    return dependencies;
+};
 
+const addAndFineTuneDependencies = (snippet: string, dependencies: Dependencies): Dependencies => {
     if (snippetUsesPackage(snippet, '@coveord/plasma-react-icons')) {
         dependencies['@coveord/plasma-react-icons'] = 'latest';
     }
@@ -22,13 +30,13 @@ const guessDependenciesFromSnippet = (snippet: string): Dependencies => {
     if (snippetUsesPackage(snippet, '@coveord/plasma-mantine')) {
         dependencies['@coveord/plasma-mantine'] = 'latest';
         dependencies['@emotion/react'] = packageConfig.dependencies['@emotion/react'];
-        dependencies['@mantine/core'] = packageConfig.dependencies['@mantine/core'];
-        dependencies['@mantine/dates'] = packageConfig.dependencies['@mantine/dates'];
-        dependencies['@mantine/form'] = packageConfig.dependencies['@mantine/form'];
-        dependencies['@mantine/hooks'] = packageConfig.dependencies['@mantine/hooks'];
-        dependencies['@mantine/modals'] = packageConfig.dependencies['@mantine/modals'];
-        dependencies['@mantine/carousel'] = packageConfig.dependencies['@mantine/carousel'];
         dependencies['embla-carousel-react'] = packageConfig.dependencies['embla-carousel-react'];
+        // Add all @mantine matching dependencies from package.json to the sandbox dependencies
+        Object.keys(packageConfig.dependencies)?.map((entry: PackageDependencies) => {
+            if (entry.match(/^(@mantine).*/)) {
+                dependencies[entry] = packageConfig.dependencies[entry];
+            }
+        });
     }
 
     if (snippetUsesPackage(snippet, '@coveord/plasma-react')) {
@@ -41,10 +49,6 @@ const guessDependenciesFromSnippet = (snippet: string): Dependencies => {
         (dependencies as any)['jquery'] = 'latest';
     }
 
-    if (snippetUsesPackage(snippet, 'lorem-ipsum')) {
-        dependencies['lorem-ipsum'] = packageConfig.dependencies['lorem-ipsum'];
-    }
-
     return dependencies;
 };
 
@@ -52,13 +56,14 @@ const getIndexOfSnippet = (snippet: string): string => {
     if (snippetUsesPackage(snippet, '@coveord/plasma-mantine')) {
         return `
 import {createRoot} from 'react-dom/client';
-import {Container, Plasmantine} from '@coveord/plasma-mantine';
+import {Container, Plasmantine, Notifications} from '@coveord/plasma-mantine';
 import Demo from './Demo';
 import './font.css';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
     <Plasmantine>
+        <Notifications position="top-center" />
         <Container p="md">
             <Demo />
         </Container>
@@ -123,12 +128,13 @@ const indexHtml = `
 `;
 
 const getSandboxLink = (snippet: string): string => {
+    const dependencies = getRawDependenciesFromSnippet(snippet);
     const parameters = getParameters({
         template: 'create-react-app',
         files: {
             'package.json': {
                 content: {
-                    dependencies: guessDependenciesFromSnippet(snippet),
+                    dependencies: addAndFineTuneDependencies(snippet, dependencies),
                     devDependencies: {
                         tslib: packageConfig.devDependencies.tslib,
                         typescript: packageConfig.devDependencies.typescript,
