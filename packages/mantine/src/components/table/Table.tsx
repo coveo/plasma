@@ -1,4 +1,4 @@
-import {Box, Center, Collapse, Loader, Skeleton, Table as MantineTable} from '@mantine/core';
+import {Box, Center, Collapse, Loader, Skeleton, SkeletonProps, Table as MantineTable} from '@mantine/core';
 import {useForm} from '@mantine/form';
 import {useDidUpdate} from '@mantine/hooks';
 import {
@@ -12,7 +12,7 @@ import {
 } from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Children, Dispatch, Fragment, ReactElement, useCallback, useEffect, useState} from 'react';
+import {Children, Dispatch, FC, Fragment, ReactElement, useCallback, useEffect, useState} from 'react';
 
 import useStyles from './Table.styles';
 import {TableFormType, TableProps, TableState, TableType} from './Table.types';
@@ -29,6 +29,12 @@ import {TablePredicate} from './TablePredicate';
 import {TableSelectableColumn} from './TableSelectableColumn';
 import {Th} from './Th';
 import {useRowSelection} from './useRowSelection';
+
+const LoadingSkeleton: FC<SkeletonProps> = (props) => (
+    <Skeleton style={{display: 'inline-block'}} {...props} sx={!props.visible ? {borderRadius: 0} : undefined}>
+        {props.children}
+    </Skeleton>
+);
 
 export const Table: TableType = <T,>({
     data,
@@ -136,13 +142,9 @@ export const Table: TableType = <T,>({
                                     [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
                                 })}
                             >
-                                <Skeleton
-                                    style={{display: 'inline-block'}}
-                                    visible={loading}
-                                    sx={!loading ? {borderRadius: 0} : undefined}
-                                >
+                                <LoadingSkeleton visible={loading}>
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </Skeleton>
+                                </LoadingSkeleton>
                             </td>
                         );
                     })}
@@ -207,7 +209,9 @@ export const Table: TableType = <T,>({
                                     rows
                                 ) : (
                                     <tr>
-                                        <td colSpan={table.getAllColumns().length}>{noDataChildren}</td>
+                                        <td colSpan={table.getAllColumns().length}>
+                                            <LoadingSkeleton visible={loading}>{noDataChildren}</LoadingSkeleton>
+                                        </td>
                                     </tr>
                                 )}
                             </tbody>
