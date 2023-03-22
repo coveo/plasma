@@ -14,7 +14,7 @@ const getRawDependenciesFromSnippet = (snippet: string): Dependencies => {
         react: packageConfig.dependencies.react,
         'react-dom': packageConfig.dependencies['react-dom'],
     };
-    snippet.match(/(?<=from ')[^']*/gm).map((entry: keyof typeof packageConfig['dependencies']) => {
+    snippet.match(/(?<=from ')[^']*/gm)?.map((entry: keyof typeof packageConfig['dependencies']) => {
         dependencies[entry] = packageConfig.dependencies[entry];
     });
     return dependencies;
@@ -30,7 +30,7 @@ const addAndFineTuneDependencies = (snippet: string, dependencies: Dependencies)
         dependencies['@emotion/react'] = packageConfig.dependencies['@emotion/react'];
         dependencies['embla-carousel-react'] = packageConfig.dependencies['embla-carousel-react'];
         // Add all @mantine matching dependencies from package.json to the sandbox dependencies
-        Object.keys(packageConfig.dependencies).map((entry: keyof typeof packageConfig['dependencies']) => {
+        Object.keys(packageConfig.dependencies)?.map((entry: keyof typeof packageConfig['dependencies']) => {
             if (entry.match(/^(@mantine).*/)) {
                 dependencies[entry] = packageConfig.dependencies[entry];
             }
@@ -39,6 +39,11 @@ const addAndFineTuneDependencies = (snippet: string, dependencies: Dependencies)
 
     if (snippetUsesPackage(snippet, '@coveord/plasma-react')) {
         dependencies['@coveord/plasma-react'] = 'latest';
+        dependencies['react-redux'] = packageConfig.dependencies['react-redux'];
+        dependencies['redux'] = packageConfig.dependencies['redux'];
+        dependencies['redux-devtools-extension'] = packageConfig.dependencies['redux-devtools-extension'];
+        dependencies['redux-promise-middleware'] = packageConfig.dependencies['redux-promise-middleware'];
+        dependencies['redux-thunk'] = packageConfig.dependencies['redux-thunk'];
         (dependencies as any)['jquery'] = 'latest';
     }
 
