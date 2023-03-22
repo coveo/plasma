@@ -12,7 +12,7 @@ const useStyles = createStyles(() => ({
     footer: {
         position: 'sticky',
         bottom: 0,
-        zIndex: 1,
+        zIndex: 15,
         backgroundColor: 'white',
     },
 }));
