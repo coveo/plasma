@@ -38,7 +38,7 @@ runs:
               SNYK_TOKEN: ${{ inputs.SNYK_TOKEN }}
           run: npx snyk code test --org=coveo-admin-ui --file=./snyk/scan-me/package-lock.json --sarif-file-output=./sarifs/snyk-code.sarif
         - name: Upload result to GitHub Code Scanning
-          uses: github/codeql-action/upload-sarif@17573ee1cc1b9d061760f3a006fc4aac4f944fd5 # v2
+          uses: github/codeql-action/upload-sarif@67a35a08586135a9573f4327e904ecbf517a882d # v2
           with:
               sarif_file: ./sarifs
         - name: Cleanup
