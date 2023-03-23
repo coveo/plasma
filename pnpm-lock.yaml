@@ -425,7 +425,7 @@ importers:
       '@types/react': ^18.0
       '@types/react-dom': ^18.0
       fs-extra: 10.1.0
-      glob: 7.2.0
+      glob: 7.2.3
       lodash.groupby: 4.6.0
       lodash.upperfirst: 4.3.1
       npm-run-all: 4.1.5
@@ -445,7 +445,7 @@ importers:
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.9
       fs-extra: 10.1.0
-      glob: 7.2.0
+      glob: 7.2.3
       lodash.groupby: 4.6.0
       lodash.upperfirst: 4.3.1
       npm-run-all: 4.1.5
@@ -8421,17 +8421,6 @@ packages:
       object.defaults: 1.1.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /glob/7.2.0:
-    resolution: {integrity: sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==}
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 3.1.2
-      once: 1.4.0
-      path-is-absolute: 1.0.1
     dev: true
 
   /glob/7.2.3:
