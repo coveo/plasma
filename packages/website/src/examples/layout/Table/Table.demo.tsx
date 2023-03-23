@@ -95,7 +95,10 @@ export default () => {
                 <Table.Actions>{(datum: IExampleRowData) => <TableActions datum={datum} />}</Table.Actions>
                 <UserPredicate />
                 <Table.Filter placeholder="Search posts by title" />
-                <Table.DateRangePicker presets={DatePickerPresets} />
+                <Table.DateRangePicker
+                    rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
+                    presets={DatePickerPresets}
+                />
             </Table.Header>
             <Table.Footer>
                 <Table.PerPage />

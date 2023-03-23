@@ -37,7 +37,7 @@ export interface DateRangePickerInlineCalendarProps
     /**
      * Props for RangeCalendar displayed in the popover
      */
-    rangeCalendarProps?: Omit<
+    rangeCalendarProps?: {maxDate?: Date} & Omit<
         CalendarBaseProps,
         'value' | 'onChange' | 'isDateInRange' | 'isDateFirstInRange' | 'isDateLastInRange'
     >;
