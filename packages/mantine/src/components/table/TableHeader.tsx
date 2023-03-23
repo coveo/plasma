@@ -9,7 +9,7 @@ const useStyles = createStyles((theme) => ({
     root: {
         position: 'sticky',
         top: 0,
-        zIndex: 13, // skeleton is 11
+        zIndex: 1,
         backgroundColor: theme.colors.gray[1],
         borderBottom: `1px solid ${theme.colors.gray[3]}`,
     },
