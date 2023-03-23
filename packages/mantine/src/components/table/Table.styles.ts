@@ -26,7 +26,6 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
             top: hasHeader ? 69 : 0,
             backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
             transition: 'box-shadow 150ms ease',
-            zIndex: 12, // skeleton is 11
 
             '&::after': {
                 content: '""',

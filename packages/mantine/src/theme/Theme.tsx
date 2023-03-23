@@ -236,5 +236,20 @@ export const plasmaTheme: MantineThemeOverride = {
                 color: 'info',
             },
         },
+        Skeleton: {
+            styles: {
+                visible: {
+                    '&::before': {zIndex: 'unset'},
+                    '&::after': {zIndex: 'unset'},
+                },
+            },
+        },
+        Segmented: {
+            styles: {
+                control: {
+                    zIndex: 'unset',
+                },
+            },
+        },
     },
 };
