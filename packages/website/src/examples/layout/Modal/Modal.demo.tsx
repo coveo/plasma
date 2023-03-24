@@ -1,4 +1,4 @@
-import {Modal, Button, Header, StickyFooter} from '@coveord/plasma-mantine';
+import {Button, Header, Modal, StickyFooter} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 export default () => {
@@ -15,6 +15,7 @@ export default () => {
                     </Header>
                 }
                 onClose={() => setOpened(false)}
+                size="lg"
             >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim. Phasellus
