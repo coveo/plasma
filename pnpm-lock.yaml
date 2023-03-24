@@ -272,7 +272,7 @@ importers:
       jest: 29.0.3
       jest-environment-jsdom: 29.0.3
       lint-staged: 9.5.0
-      lorem-ipsum: 2.0.4
+      lorem-ipsum: 2.0.8
       minimist: 1.2.8
       moment: 2.29.4
       postcss: 8.4.13
@@ -395,7 +395,7 @@ importers:
       jest: 29.0.3
       jest-environment-jsdom: 29.0.3
       lint-staged: 9.5.0
-      lorem-ipsum: 2.0.4
+      lorem-ipsum: 2.0.8
       minimist: 1.2.8
       postcss: 8.4.13
       react: 18.2.0
@@ -606,7 +606,7 @@ importers:
       flagg: 1.1.2
       lint-staged: 9.5.0
       lodash.kebabcase: 4.1.1
-      lorem-ipsum: 2.0.4
+      lorem-ipsum: 2.0.8
       moment: 2.29.4
       next: 12.1.5
       next-compose-plugins: 2.2.1
@@ -661,7 +661,7 @@ importers:
       embla-carousel-react: 7.1.0_react@18.2.0
       flagg: 1.1.2
       lodash.kebabcase: 4.1.1
-      lorem-ipsum: 2.0.4
+      lorem-ipsum: 2.0.8
       moment: 2.29.4
       next: 12.1.5_rsipxlg7vsrviqwuacepww44dy
       next-compose-plugins: 2.2.1
@@ -3445,7 +3445,7 @@ packages:
     resolution: {integrity: sha512-CCOaS3QbRyc3DD6/YK/HXtIR4Nymae1GkYA+JJsHmXgTRD6eJc94x0ndiGzQHCMYnZZhrIrNFJIeVnR2fXVzmA==}
     deprecated: This is a stub types definition. lorem-ipsum provides its own type definitions, so you do not need this installed.
     dependencies:
-      lorem-ipsum: 2.0.4
+      lorem-ipsum: 2.0.8
     dev: true
 
   /@types/lz-string/1.3.34:
@@ -5669,6 +5669,7 @@ packages:
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
+    dev: true
 
   /commander/7.2.0:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
@@ -5682,7 +5683,6 @@ packages:
   /commander/9.4.1:
     resolution: {integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==}
     engines: {node: ^12.20.0 || >=14}
-    dev: true
 
   /comment-parser/1.3.1:
     resolution: {integrity: sha512-B52sN2VNghyq5ofvUsqZjmk6YkihBX5vMSChmSK9v4ShjKf3Vk5Xcmgpw4o+iIgtrnM/u5FiMpz9VKb8lpBveA==}
@@ -11017,12 +11017,12 @@ packages:
     dependencies:
       js-tokens: 4.0.0
 
-  /lorem-ipsum/2.0.4:
-    resolution: {integrity: sha512-TD+ERYfxjYiUfOyaKU6OH4euumNVeKoo3BxIhokb7bGmoCULsME48onF9NVxYK3CU1z9L5ALnkDkW8lIkHvMNQ==}
+  /lorem-ipsum/2.0.8:
+    resolution: {integrity: sha512-5RIwHuCb979RASgCJH0VKERn9cQo/+NcAi2BMe9ddj+gp7hujl6BI+qdOG4nVsLDpwWEJwTVYXNKP6BGgbcoGA==}
     engines: {node: '>= 8.x', npm: '>= 5.x'}
     hasBin: true
     dependencies:
-      commander: 2.20.3
+      commander: 9.4.1
 
   /loud-rejection/1.6.0:
     resolution: {integrity: sha512-RPNliZOFkqFumDhvYqOaNY4Uz9oJM2K9tC6JWsJJsNdhuONW4LQHRBpb0qf4pJApVffI5N39SwzWZJuEhfd7eQ==}
