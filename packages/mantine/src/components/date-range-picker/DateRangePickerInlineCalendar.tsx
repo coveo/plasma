@@ -1,5 +1,5 @@
 import {Center, Group, Space} from '@mantine/core';
-import {CalendarBaseProps, DatePicker} from '@mantine/dates';
+import {DatePicker, DatePickerBaseProps} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
 import {Button} from '../button';
@@ -37,8 +37,8 @@ export interface DateRangePickerInlineCalendarProps
     /**
      * Props for RangeCalendar displayed in the popover
      */
-    rangeCalendarProps?: {maxDate?: Date} & Omit<
-        CalendarBaseProps,
+    rangeCalendarProps?: Omit<
+        DatePickerBaseProps,
         'value' | 'onChange' | 'isDateInRange' | 'isDateFirstInRange' | 'isDateLastInRange'
     >;
 }
