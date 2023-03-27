@@ -1,6 +1,6 @@
 import {InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
-import {getSize, MantineThemeOverride, ModalProps, NotificationProps, rem} from '@mantine/core';
+import {getSize, MantineThemeOverride, NotificationProps, rem} from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';
 
@@ -78,7 +78,7 @@ export const plasmaTheme: MantineThemeOverride = {
             },
         },
         Modal: {
-            styles: (theme, {fullScreen}: ModalProps, {size}) => ({
+            styles: (theme, {fullScreen}, {size}) => ({
                 content: {
                     flex: fullScreen
                         ? '0 0 100%'
