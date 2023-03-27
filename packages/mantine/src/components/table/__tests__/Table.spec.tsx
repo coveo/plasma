@@ -3,6 +3,7 @@ import {render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
 
 import {Table} from '../Table';
+import {TableProps} from '../Table.types';
 import {useTable} from '../TableContext';
 
 type RowData = {id: string; firstName: string; lastName?: string};
@@ -134,6 +135,53 @@ describe('Table', () => {
         expect(screen.getByTestId('table-footer')).toBeInTheDocument();
         expect(screen.getByTestId('filtered-empty-state')).toBeInTheDocument();
         expect(screen.queryByTestId('empty-state')).not.toBeInTheDocument();
+    });
+
+    describe('shows a loading animation', () => {
+        const doRender = (props: Omit<TableProps<RowData>, 'columns'>) => {
+            const NoData = () => {
+                const {isFiltered, clearFilters} = useTable();
+                return isFiltered ? (
+                    <button data-testid="filtered-empty-state" onClick={clearFilters}></button>
+                ) : (
+                    <span data-testid="empty-state" />
+                );
+            };
+
+            const customColumns: Array<ColumnDef<RowData>> = [
+                columnHelper.accessor('firstName', {
+                    header: () => 'First Name',
+                    cell: (info) => info.getValue().toUpperCase(),
+                    enableSorting: false,
+                }),
+                columnHelper.accessor('lastName', {
+                    header: () => 'Last Name',
+                    cell: (info) => info.getValue().toUpperCase(),
+                    enableSorting: false,
+                }),
+            ];
+            render(
+                <Table columns={customColumns} noDataChildren={<NoData />} {...props}>
+                    <Table.Header>
+                        <Table.Filter data-testid="table-filter" />
+                    </Table.Header>
+                </Table>
+            );
+        };
+
+        it('when the table filtered, empty and loading', () => {
+            doRender({loading: true, data: [], initialState: {globalFilter: 'something'}});
+            expect(screen.getByTestId('filtered-empty-state').parentElement).toHaveClass(
+                'mantine-Skeleton-root mantine-Skeleton-visible'
+            );
+        });
+
+        it('when the table not filtered, empty and loading', () => {
+            doRender({data: [], loading: true});
+            expect(screen.getByTestId('empty-state').parentElement).toHaveClass(
+                'mantine-Skeleton-root mantine-Skeleton-visible'
+            );
+        });
     });
 
     it('opens the collapsible rows when the user click on the toggle', async () => {
