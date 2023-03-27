@@ -1,3 +1,12 @@
+## 51.1.24 (2023-03-27)
+
+
+### Bug Fixes
+
+* **modal:** reverse to pixel in theme modal content custom size (#3105) c33ecf2, closes #3105
+
+
+
 ## 51.1.23 (2023-03-27)
 
 
