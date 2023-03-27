@@ -1,3 +1,13 @@
+## 51.1.23 (2023-03-27)
+
+
+### Bug Fixes
+
+* **datepicker:** +maxDate prop to rangeDatePickerProps since the new … (#3099) 28a3d56, closes #3099
+* **mantine table:** add loading state for no data children (#3096) 63bc60d, closes #3096
+
+
+
 ## 51.1.22 (2023-03-24)
 
 
