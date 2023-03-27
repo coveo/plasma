@@ -1,4 +1,4 @@
-import {Modal, Button, Header, StickyFooter} from '@coveord/plasma-mantine';
+import {Button, Header, Modal, StickyFooter} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 export default () => {
