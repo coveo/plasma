@@ -473,7 +473,7 @@ importers:
       gulp-rename: 1.4.0
       gulp-svgmin: 3.0.0
       gulp-uglify: 3.0.2
-      jquery: 3.6.0
+      jquery: 3.6.4
       lint-staged: 9.5.0
       merge-stream: 1.0.1
       minimist: 1.2.8
@@ -506,7 +506,7 @@ importers:
       gulp-rename: 1.4.0
       gulp-svgmin: 3.0.0
       gulp-uglify: 3.0.2
-      jquery: 3.6.0
+      jquery: 3.6.4
       lint-staged: 9.5.0
       merge-stream: 1.0.1
       minimist: 1.2.8
@@ -10308,8 +10308,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /jquery/3.6.0:
-    resolution: {integrity: sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==}
+  /jquery/3.6.4:
+    resolution: {integrity: sha512-v28EW9DWDFpzcD9O5iyJXg3R3+q+mET5JhnjJzQUZMHOv67bpSIHq81GEYpPNZHG+XXHsfSme3nxp/hndKEcsQ==}
     dev: true
 
   /js-sdsl/4.1.5:
