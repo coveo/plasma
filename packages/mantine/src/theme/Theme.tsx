@@ -52,11 +52,11 @@ export const plasmaTheme: MantineThemeOverride = {
             },
         },
         Title: {
-            styles: (theme) => ({
+            styles: {
                 root: {
                     '&:is(h1,h2,h3,h4,h5,h6)': {letterSpacing: '0.011em'},
                 },
-            }),
+            },
         },
         Text: {
             defaultProps: {
@@ -168,6 +168,12 @@ export const plasmaTheme: MantineThemeOverride = {
             defaultProps: {
                 radius: 'sm',
             },
+            styles: (theme) => ({
+                label: {
+                    fontSize: theme.fontSizes.sm,
+                    fontWeight: 300,
+                },
+            }),
         },
         List: {
             styles: () => ({
