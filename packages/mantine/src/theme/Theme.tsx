@@ -62,6 +62,11 @@ export const plasmaTheme: MantineThemeOverride = {
             defaultProps: {
                 weight: 300,
             },
+            styles: (theme, {}, {size}) => ({
+                root: {
+                    fontSize: size === undefined ? rem(14) : getSize({size, sizes: theme.fontSizes}),
+                },
+            }),
         },
         Button: {
             styles: () => ({
