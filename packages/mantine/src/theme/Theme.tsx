@@ -64,7 +64,10 @@ export const plasmaTheme: MantineThemeOverride = {
             },
             styles: (theme, {}, {size}) => ({
                 root: {
-                    fontSize: size === undefined ? rem(14) : getSize({size, sizes: theme.fontSizes}),
+                    fontSize:
+                        size === undefined
+                            ? getSize({size: 'sm', sizes: theme.fontSizes})
+                            : getSize({size, sizes: theme.fontSizes}),
                 },
             }),
         },
