@@ -62,6 +62,11 @@ export const plasmaTheme: MantineThemeOverride = {
             defaultProps: {
                 weight: 300,
             },
+            styles: (theme, {}, {size}) => ({
+                root: {
+                    fontSize: getSize({size: size ?? 'sm', sizes: theme.fontSizes}),
+                },
+            }),
         },
         Button: {
             styles: () => ({
@@ -94,7 +99,12 @@ export const plasmaTheme: MantineThemeOverride = {
                           })}`,
                     overflow: 'auto',
                 },
-                title: {width: '100%'},
+                title: {
+                    width: '100%',
+                    fontSize: theme.headings.sizes.h3.fontSize,
+                    lineHeight: theme.headings.sizes.h3.lineHeight,
+                    fontWeight: 500,
+                },
             }),
             defaultProps: {
                 overlayProps: {
