@@ -1,3 +1,12 @@
+## 51.1.30 (2023-03-31)
+
+
+### Reverts
+
+* **typekit:** revert typekit.scss changes (#3116) 1429c29, closes #3116
+
+
+
 ## 51.1.29 (2023-03-29)
 
 
