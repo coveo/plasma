@@ -1,35 +1,36 @@
+import {color} from '@coveord/plasma-tokens';
 import {createStyles, Modal, ModalProps} from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
 import {PromptFooter} from './PromptFooter';
 
-const useStyles = createStyles((theme) => {
-    const white = '#fff';
-    return {
-        body: {
-            padding: 0,
-        },
-        modalType: {overflow: 'hidden', width: 550},
-        innerBody: {
-            padding: `${theme.spacing.md}px ${theme.spacing.xl}px ${theme.spacing.lg}px`,
-        },
-        header: {
-            padding: `${theme.spacing.md}px ${theme.spacing.xl}px`,
-            width: '100%',
-            borderBottom: `1px solid ${theme.colors.gray[3]}`,
-            fontSize: theme.headings.sizes.h4.fontSize,
-            lineHeight: theme.headings.sizes.h4.fontSize,
-        },
-        default: {},
-        success: {backgroundColor: theme.colors.lime[6], color: white},
-        warning: {backgroundColor: theme.colors.yellow[5], color: white},
-        critical: {
-            backgroundColor: theme.colors.red[6],
-            color: white,
-        },
-        info: {backgroundColor: theme.colors.navy[5], color: white},
-        whiteClose: {color: white, '&:hover': {backgroundColor: 'transparent'}},
-    };
-});
+const useStyles = createStyles((theme) => ({
+    body: {
+        padding: 0,
+    },
+    modalType: {overflow: 'hidden', width: 550},
+    innerBody: {
+        padding: `${theme.spacing.md} ${theme.spacing.xl} ${theme.spacing.lg}`,
+    },
+    header: {
+        padding: `${theme.spacing.md} ${theme.spacing.xl}`,
+        width: '100%',
+        borderBottom: `1px solid ${theme.colors.gray[3]}`,
+        fontSize: theme.headings.sizes.h3.fontSize,
+        lineHeight: theme.headings.sizes.h3.lineHeight,
+    },
+    default: {},
+    success: {backgroundColor: theme.colors.lime[6], color: color.primary.pureWhite},
+    warning: {backgroundColor: theme.colors.yellow[5], color: color.primary.pureWhite},
+    critical: {
+        backgroundColor: theme.colors.red[6],
+        color: color.primary.pureWhite,
+    },
+    info: {backgroundColor: theme.colors.navy[5], color: color.primary.pureWhite},
+    whiteClose: {color: color.primary.pureWhite, '&:hover': {backgroundColor: 'transparent'}},
+    title: {
+        color: color.primary.pureWhite,
+    },
+}));
 
 export interface PromptProps extends ModalProps {
     variant: 'default' | 'success' | 'warning' | 'critical' | 'info';
@@ -53,6 +54,7 @@ export const Prompt: PromptType = ({children, variant, size, ...otherProps}) => 
         close: !defaultVariant && classes.whiteClose,
         body: classes.body,
         modal: !defaultVariant && classes.modalType,
+        title: classes.title,
     };
 
     return (
