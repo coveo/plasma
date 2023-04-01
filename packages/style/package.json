@@ -61,7 +61,7 @@
         "lint-staged": "9.5.0",
         "merge-stream": "1.0.1",
         "minimist": "1.2.8",
-        "postcss": "8.4.4",
+        "postcss": "8.4.21",
         "postcss-scss": "4.0.4",
         "rimraf": "3.0.2",
         "sass": "1.51.0",
