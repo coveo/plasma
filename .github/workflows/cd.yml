@@ -1,10 +1,6 @@
 name: CD
 
-on:
-    push:
-        branches:
-            - master
-            - next
+on: workflow_dispatch
 
 concurrency:
     group: ${{ github.ref_name }}
@@ -12,7 +8,8 @@ concurrency:
 
 jobs:
     cd:
-        name: Continous Delivery
+        name: Continuous Delivery
+        if: github.ref_name == 'master' || github.ref_name == 'next'
         runs-on: ubuntu-latest
         environment: production
         permissions:
@@ -46,7 +43,7 @@ jobs:
             - name: Publish
               uses: ./.github/actions/publish
               env:
-                  DEBUG: "*"
+                  DEBUG: '*'
                   DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Deploy
