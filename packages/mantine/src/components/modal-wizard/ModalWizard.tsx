@@ -164,7 +164,7 @@ export const ModalWizard: ModalWizardType = ({
         },
         []
     );
-    console.log('currentStep', currentStepIndex);
+
     return (
         <Modal
             opened={opened}
