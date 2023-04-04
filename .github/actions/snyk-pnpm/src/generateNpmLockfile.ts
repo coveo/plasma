@@ -1,4 +1,4 @@
-import {Lockfile} from '@pnpm/lockfile-types';
+import {LockfileV6} from '@pnpm/lockfile-types';
 
 import {
     NpmLockedPackageDependency,
@@ -10,7 +10,7 @@ import {
 } from './Interfaces';
 import {getDependencyFullname, getPathPackageDesc} from './processPnpmLockfile';
 
-function getPackage(lockfile: Lockfile, packageDesc: PnpmPackageDesc): NpmLockedPackageDependency {
+function getPackage(lockfile: LockfileV6, packageDesc: PnpmPackageDesc): NpmLockedPackageDependency {
     const snapshot = (lockfile.packages || {})[packageDesc.fullname];
     if (snapshot === undefined) {
         throw new Error(`Failed to lookup ${packageDesc.fullname} in packages`);
@@ -50,7 +50,7 @@ function getSubdependencyFromDependency(dep: NpmLockedPackageDependency): NpmLoc
     return subdep;
 }
 
-export function generateNpmLock(lockfile: Lockfile): NpmPackageLock {
+export function generateNpmLock(lockfile: LockfileV6): NpmPackageLock {
     const deps = {} as NpmLockedPackageDependencyMap;
     const subdeps = {} as NpmLockedPackageDependencyMap;
 
@@ -72,7 +72,7 @@ export function generateNpmLock(lockfile: Lockfile): NpmPackageLock {
                 const fullname = getDependencyFullname(name, version);
                 const snapshot = (lockfile.packages || {})[fullname];
                 if (snapshot === undefined) {
-                    throw new Error(`Failed to lookup ${name} in packages`);
+                    throw new Error(`Failed to lookup ${fullname} in packages`);
                 }
                 const packageDesc = getPathPackageDesc(fullname, snapshot);
                 // secondary dependencies are declared in the 'dependencies' of a package
