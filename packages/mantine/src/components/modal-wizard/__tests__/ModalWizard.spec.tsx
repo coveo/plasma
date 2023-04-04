@@ -34,6 +34,8 @@ describe('ModalWizard', () => {
         ];
 
         const isDirty = () => false;
+        const onNextSpy = vi.fn();
+        const onPreviousSpy = vi.fn();
 
         render(
             <ModalWizard
@@ -41,6 +43,8 @@ describe('ModalWizard', () => {
                 handleDirtyState={() => confirm('Are you sure you want to close?')}
                 opened={true}
                 onClose={undefined}
+                onNext={onNextSpy}
+                onPrevious={onPreviousSpy}
             >
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
@@ -75,6 +79,8 @@ describe('ModalWizard', () => {
 
         await user.click(nextButton);
 
+        expect(onNextSpy).toHaveBeenCalledWith(1);
+
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 2/i,
@@ -101,6 +107,8 @@ describe('ModalWizard', () => {
         expect(nextButton).toBeInTheDocument();
 
         await user.click(nextButton);
+
+        expect(onNextSpy).toHaveBeenCalledWith(2);
 
         expect(
             screen.getByRole('heading', {
@@ -134,6 +142,8 @@ describe('ModalWizard', () => {
                 name: /previous/i,
             })
         );
+
+        expect(onNextSpy).toHaveBeenCalledWith(1);
 
         expect(
             screen.getByRole('heading', {
