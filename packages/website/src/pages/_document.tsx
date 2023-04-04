@@ -11,6 +11,7 @@ export default class Document extends NextDocument {
             <Html>
                 <Head>
                     <link rel="stylesheet" href="https://use.typekit.net/wqe4zqp.css" />
+                    <link rel="stylesheet" href="https://static.cloud.coveo.com/atomic/v2/themes/coveo.css"></link>
                 </Head>
                 <body className="coveo-styleguide">
                     <div id="App">
