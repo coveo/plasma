@@ -1,4 +1,4 @@
-import BorderedLineDemo from '@examples/legacy/layout/BorderedLine/BorderedLine.demo.tsx';
+import BorderedLineDemo from '@examples/legacy/layout/BorderedLine/BorderedLine.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

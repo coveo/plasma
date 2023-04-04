@@ -1,6 +1,6 @@
 import {RadioSelectConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import RadioButtonDemo from '@examples/legacy/form/RadioButton/main.demo.tsx';
-import RadioCard from '@examples/legacy/form/RadioButton/radioCard.demo.tsx';
+import RadioButtonDemo from '@examples/legacy/form/RadioButton/main.demo?demo';
+import RadioCard from '@examples/legacy/form/RadioButton/radioCard.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

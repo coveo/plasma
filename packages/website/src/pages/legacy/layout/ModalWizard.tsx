@@ -1,6 +1,6 @@
 import {ModalWizardLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
-import ModalWizardDemo from '@examples/legacy/layout/ModalWizard/ModalWizard.demo.tsx';
-import ModalWizardWithValidationIdsDemo from '@examples/legacy/layout/ModalWizard/ModalWizardWithValidationIds.demo.tsx';
+import ModalWizardDemo from '@examples/legacy/layout/ModalWizard/ModalWizard.demo?demo';
+import ModalWizardWithValidationIdsDemo from '@examples/legacy/layout/ModalWizard/ModalWizardWithValidationIds.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

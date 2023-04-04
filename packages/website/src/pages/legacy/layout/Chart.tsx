@@ -1,10 +1,10 @@
 import {ChartContainerMetadata} from '@coveord/plasma-components-props-analyzer';
-import BarChartDemo from '@examples/legacy/layout/Chart/BarChart.demo.tsx';
-import BarChartWithDatesDemo from '@examples/legacy/layout/Chart/BarChartWithDates.demo.tsx';
-import ChartDemo from '@examples/legacy/layout/Chart/Chart.demo.tsx';
-import ChartWithInfoLinesDemo from '@examples/legacy/layout/Chart/ChartWithInfoLines.demo.tsx';
-import ComplexChartDemo from '@examples/legacy/layout/Chart/ComplexChart.demo.tsx';
-import ScatterChartDemo from '@examples/legacy/layout/Chart/ScatterChart.demo.tsx';
+import BarChartDemo from '@examples/legacy/layout/Chart/BarChart.demo?demo';
+import BarChartWithDatesDemo from '@examples/legacy/layout/Chart/BarChartWithDates.demo?demo';
+import ChartDemo from '@examples/legacy/layout/Chart/Chart.demo?demo';
+import ChartWithInfoLinesDemo from '@examples/legacy/layout/Chart/ChartWithInfoLines.demo?demo';
+import ComplexChartDemo from '@examples/legacy/layout/Chart/ComplexChart.demo?demo';
+import ScatterChartDemo from '@examples/legacy/layout/Chart/ScatterChart.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

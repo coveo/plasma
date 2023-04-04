@@ -1,6 +1,6 @@
 import {OptionsCycleConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import OptionsCycleDemo from '@examples/legacy/advanced/OptionsCycle/OptionsCycle.demo.tsx';
-import OptionsCycleButtonDemo from '@examples/legacy/advanced/OptionsCycle/OptionsCycleButton.demo.tsx';
+import OptionsCycleDemo from '@examples/legacy/advanced/OptionsCycle/OptionsCycle.demo?demo';
+import OptionsCycleButtonDemo from '@examples/legacy/advanced/OptionsCycle/OptionsCycleButton.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

@@ -1,6 +1,6 @@
 import {TabMetadata} from '@coveord/plasma-components-props-analyzer';
-import TabDemo from '@examples/legacy/navigation/Tabs/Tab.demo.tsx';
-import TabWithIconDemo from '@examples/legacy/navigation/Tabs/TabWithIcon.demo.tsx';
+import TabDemo from '@examples/legacy/navigation/Tabs/Tab.demo?demo';
+import TabWithIconDemo from '@examples/legacy/navigation/Tabs/TabWithIcon.demo?demo';
 import {FunctionComponent} from 'react';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';

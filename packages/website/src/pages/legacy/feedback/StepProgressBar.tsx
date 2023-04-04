@@ -1,5 +1,5 @@
 import {StepProgressBarMetadata} from '@coveord/plasma-components-props-analyzer';
-import StepProgressBarDemo from '@examples/legacy/feedback/StepProgressBar/StepProgressBar.demo.tsx';
+import StepProgressBarDemo from '@examples/legacy/feedback/StepProgressBar/StepProgressBar.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

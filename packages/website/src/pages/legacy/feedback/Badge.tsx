@@ -1,7 +1,7 @@
 import {BadgeMetadata} from '@coveord/plasma-components-props-analyzer';
-import BadgeDemo from '@examples/legacy/feedback/Badge/Badge.demo.tsx';
-import BadgeSmallDemo from '@examples/legacy/feedback/Badge/BadgeSmall.demo.tsx';
-import BadgeWithIconsDemo from '@examples/legacy/feedback/Badge/BadgeWithIcons.demo.tsx';
+import BadgeDemo from '@examples/legacy/feedback/Badge/Badge.demo?demo';
+import BadgeSmallDemo from '@examples/legacy/feedback/Badge/BadgeSmall.demo?demo';
+import BadgeWithIconsDemo from '@examples/legacy/feedback/Badge/BadgeWithIcons.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

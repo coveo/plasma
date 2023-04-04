@@ -1,6 +1,6 @@
 import {BasicHeaderMetadata} from '@coveord/plasma-components-props-analyzer';
-import PageHeaderLoadingDemo from '@examples/legacy/layout/Header/loading.demo.tsx';
-import PageHeaderDemo from '@examples/legacy/layout/Header/main.demo.tsx';
+import PageHeaderLoadingDemo from '@examples/legacy/layout/Header/loading.demo?demo';
+import PageHeaderDemo from '@examples/legacy/layout/Header/main.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

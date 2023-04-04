@@ -1,9 +1,9 @@
 import {BrowserPreviewMetadata} from '@coveord/plasma-components-props-analyzer';
-import BrowserPreviewDemo from '@examples/legacy/layout/BrowserPreview/BrowserPreview.demo.tsx';
-import BrowserPreviewWithEmptyStateDemo from '@examples/legacy/layout/BrowserPreview/BrowserPreviewWithEmptyState.demo.tsx';
+import BrowserPreviewDemo from '@examples/legacy/layout/BrowserPreview/BrowserPreview.demo?demo';
+import BrowserPreviewWithEmptyStateDemo from '@examples/legacy/layout/BrowserPreview/BrowserPreviewWithEmptyState.demo?demo';
 import dynamic from 'next/dynamic';
 const BrowserPreviewWithErrorDemo = dynamic(
-    () => import('@examples/legacy/layout/BrowserPreview/BrowserPreviewWithError.demo.tsx'),
+    () => import('@examples/legacy/layout/BrowserPreview/BrowserPreviewWithError.demo?demo'),
     {ssr: false}
 );
 import {Suspense} from 'react';

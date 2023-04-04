@@ -1,4 +1,4 @@
-import TypekitDemo from '@examples/legacy/foundations/Typekit/Typekit.demo.tsx';
+import TypekitDemo from '@examples/legacy/foundations/Typekit/Typekit.demo?demo';
 import classNames from 'clsx';
 import {FunctionComponent, PropsWithChildren} from 'react';
 

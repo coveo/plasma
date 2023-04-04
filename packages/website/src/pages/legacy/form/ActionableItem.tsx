@@ -1,5 +1,5 @@
 import {ActionableItemMetadata} from '@coveord/plasma-components-props-analyzer';
-import ActionableItemDemo from '@examples/legacy/form/ActionableItem/ActionableItem.demo.tsx';
+import ActionableItemDemo from '@examples/legacy/form/ActionableItem/ActionableItem.demo?demo';
 import {FunctionComponent} from 'react';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';

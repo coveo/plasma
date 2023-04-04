@@ -1,7 +1,7 @@
 import {CodeEditorMetadata} from '@coveord/plasma-components-props-analyzer';
-import CodeEditorDemo from '@examples/form/code-editor/CodeEditor.demo.tsx';
-import CodeEditorPythonDemo from '@examples/form/code-editor/CodeEditorPython.demo.tsx';
-import CodeEditorXMLDemo from '@examples/form/code-editor/CodeEditorXML.demo.tsx';
+import CodeEditorDemo from '@examples/form/code-editor/CodeEditor.demo?demo';
+import CodeEditorPythonDemo from '@examples/form/code-editor/CodeEditorPython.demo?demo';
+import CodeEditorXMLDemo from '@examples/form/code-editor/CodeEditorXML.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

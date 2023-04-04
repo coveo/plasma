@@ -1,8 +1,8 @@
 import {SubNavigationMetadata} from '@coveord/plasma-components-props-analyzer';
-import SubNavigationCustomDemo from '@examples/legacy/navigation/SubNavigation/custom.demo.tsx';
-import SubNavigationCustomWithDescDemo from '@examples/legacy/navigation/SubNavigation/customWithDesc.demo.tsx';
-import SubNavigationDefaultSelectedDemo from '@examples/legacy/navigation/SubNavigation/defaultSelected.demo.tsx';
-import SubNavigationDemo from '@examples/legacy/navigation/SubNavigation/main.demo.tsx';
+import SubNavigationCustomDemo from '@examples/legacy/navigation/SubNavigation/custom.demo?demo';
+import SubNavigationCustomWithDescDemo from '@examples/legacy/navigation/SubNavigation/customWithDesc.demo?demo';
+import SubNavigationDefaultSelectedDemo from '@examples/legacy/navigation/SubNavigation/defaultSelected.demo?demo';
+import SubNavigationDemo from '@examples/legacy/navigation/SubNavigation/main.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

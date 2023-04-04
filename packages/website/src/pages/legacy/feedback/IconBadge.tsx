@@ -1,5 +1,5 @@
 import {IconBadgeMetadata} from '@coveord/plasma-components-props-analyzer';
-import IconBadgeDemo from '@examples/legacy/feedback/IconBadge/IconBadge.demo.tsx';
+import IconBadgeDemo from '@examples/legacy/feedback/IconBadge/IconBadge.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

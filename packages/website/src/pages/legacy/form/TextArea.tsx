@@ -1,5 +1,5 @@
 import {TextAreaMetadata} from '@coveord/plasma-components-props-analyzer';
-import TextAreaDemo from '@examples/legacy/form/TextArea/main.demo.tsx';
+import TextAreaDemo from '@examples/legacy/form/TextArea/main.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

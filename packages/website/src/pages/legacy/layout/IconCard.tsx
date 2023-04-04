@@ -1,9 +1,9 @@
 import {IconCardMetadata} from '@coveord/plasma-components-props-analyzer';
-import IconCardDemo from '@examples/legacy/layout/IconCard/IconCard.demo.tsx';
-import IconCardDisabledDemo from '@examples/legacy/layout/IconCard/IconCardDisabled.demo.tsx';
-import IconCardSmallDemo from '@examples/legacy/layout/IconCard/IconCardSmall.demo.tsx';
-import IconCardWithBadgesDemo from '@examples/legacy/layout/IconCard/IconCardWithBadges.demo.tsx';
-import IconCardWithChoicesDemo from '@examples/legacy/layout/IconCard/IconCardWithChoices.demo.tsx';
+import IconCardDemo from '@examples/legacy/layout/IconCard/IconCard.demo?demo';
+import IconCardDisabledDemo from '@examples/legacy/layout/IconCard/IconCardDisabled.demo?demo';
+import IconCardSmallDemo from '@examples/legacy/layout/IconCard/IconCardSmall.demo?demo';
+import IconCardWithBadgesDemo from '@examples/legacy/layout/IconCard/IconCardWithBadges.demo?demo';
+import IconCardWithChoicesDemo from '@examples/legacy/layout/IconCard/IconCardWithChoices.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

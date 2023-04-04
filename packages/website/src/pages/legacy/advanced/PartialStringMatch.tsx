@@ -1,5 +1,5 @@
 import {PartialStringMatchMetadata} from '@coveord/plasma-components-props-analyzer';
-import PartialStringMatchDemo from '@examples/legacy/advanced/PartialStringMatch/PartialStringMatch.demo.tsx';
+import PartialStringMatchDemo from '@examples/legacy/advanced/PartialStringMatch/PartialStringMatch.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

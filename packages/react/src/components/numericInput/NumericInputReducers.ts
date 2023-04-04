@@ -46,7 +46,7 @@ const NumericInputReducers: {[key: string]: (...args: any[]) => INumericInputSta
     [NumericInputActionTypes.set]: set,
 };
 
-const validateValueError = (value: ReactText, min: number, max: number) => {
+const validateValueError = (value: number, min: number, max: number) => {
     let hasError = false;
     if (!_.isUndefined(min) && value < min) {
         hasError = true;

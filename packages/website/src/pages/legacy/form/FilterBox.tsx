@@ -1,7 +1,7 @@
 import {FilterBoxConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import FilterBoxDemo from '@examples/legacy/form/FilterBox/FilterBox.demo.tsx';
-import FilterBoxDisabledDemo from '@examples/legacy/form/FilterBox/FilterBoxDisabled.demo.tsx';
-import FilterBoxMaxWidthDemo from '@examples/legacy/form/FilterBox/FilterBoxMaxWidth.demo.tsx';
+import FilterBoxDemo from '@examples/legacy/form/FilterBox/FilterBox.demo?demo';
+import FilterBoxDisabledDemo from '@examples/legacy/form/FilterBox/FilterBoxDisabled.demo?demo';
+import FilterBoxMaxWidthDemo from '@examples/legacy/form/FilterBox/FilterBoxMaxWidth.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
