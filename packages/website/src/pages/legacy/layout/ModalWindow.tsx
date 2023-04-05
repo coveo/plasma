@@ -1,9 +1,9 @@
 import {ModalCompositeConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import ModalLoadingDemo from '@examples/legacy/layout/ModalWindow/ModalLoading.demo.tsx';
-import ModalPromptDemo from '@examples/legacy/layout/ModalWindow/ModalPrompt.demo.tsx';
-import ModalWindowDemo from '@examples/legacy/layout/ModalWindow/ModalWindow.demo.tsx';
-import ModalWithDirtyDemo from '@examples/legacy/layout/ModalWindow/ModalWithDirty.demo.tsx';
-import ModalWithPropsDemo from '@examples/legacy/layout/ModalWindow/ModalWithProps.demo.tsx';
+import ModalLoadingDemo from '@examples/legacy/layout/ModalWindow/ModalLoading.demo?demo';
+import ModalPromptDemo from '@examples/legacy/layout/ModalWindow/ModalPrompt.demo?demo';
+import ModalWindowDemo from '@examples/legacy/layout/ModalWindow/ModalWindow.demo?demo';
+import ModalWithDirtyDemo from '@examples/legacy/layout/ModalWindow/ModalWithDirty.demo?demo';
+import ModalWithPropsDemo from '@examples/legacy/layout/ModalWindow/ModalWithProps.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

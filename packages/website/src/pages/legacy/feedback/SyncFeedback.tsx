@@ -1,6 +1,6 @@
 import {SyncFeedbackMetadata} from '@coveord/plasma-components-props-analyzer';
-import SyncFeedbackDemo from '@examples/legacy/feedback/SyncFeedback/SyncFeedback.demo.tsx';
-import SyncFeedbackLabelDemo from '@examples/legacy/feedback/SyncFeedback/SyncFeedbackLabel.demo.tsx';
+import SyncFeedbackDemo from '@examples/legacy/feedback/SyncFeedback/SyncFeedback.demo?demo';
+import SyncFeedbackLabelDemo from '@examples/legacy/feedback/SyncFeedback/SyncFeedbackLabel.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

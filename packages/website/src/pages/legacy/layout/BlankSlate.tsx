@@ -1,8 +1,8 @@
 import {BlankSlateMetadata} from '@coveord/plasma-components-props-analyzer';
-import BlankslateDemo from '@examples/legacy/layout/Blankslate/Blankslate.demo.tsx';
-import BlankslateInErrorDemo from '@examples/legacy/layout/Blankslate/BlankslateInError.demo.tsx';
-import BlankslateWithTableDemo from '@examples/legacy/layout/Blankslate/BlankslateWithTable.demo.tsx';
-import BlankslateWithTableErrorDemo from '@examples/legacy/layout/Blankslate/BlankslateWithTableError.demo.tsx';
+import BlankslateDemo from '@examples/legacy/layout/Blankslate/Blankslate.demo?demo';
+import BlankslateInErrorDemo from '@examples/legacy/layout/Blankslate/BlankslateInError.demo?demo';
+import BlankslateWithTableDemo from '@examples/legacy/layout/Blankslate/BlankslateWithTable.demo?demo';
+import BlankslateWithTableErrorDemo from '@examples/legacy/layout/Blankslate/BlankslateWithTableError.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

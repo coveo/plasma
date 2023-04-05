@@ -1,7 +1,7 @@
 import {LabeledValueMetadata} from '@coveord/plasma-components-props-analyzer';
-import LabelledValueDemo from '@examples/legacy/layout/LabelledValue/LabelledValue.demo.tsx';
-import LabelledValueFullRowDemo from '@examples/legacy/layout/LabelledValue/LabelledValueFullRow.demo.tsx';
-import LabelledValueWithInformationDemo from '@examples/legacy/layout/LabelledValue/LabelledValueWithInformation.demo.tsx';
+import LabelledValueDemo from '@examples/legacy/layout/LabelledValue/LabelledValue.demo?demo';
+import LabelledValueFullRowDemo from '@examples/legacy/layout/LabelledValue/LabelledValueFullRow.demo?demo';
+import LabelledValueWithInformationDemo from '@examples/legacy/layout/LabelledValue/LabelledValueWithInformation.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

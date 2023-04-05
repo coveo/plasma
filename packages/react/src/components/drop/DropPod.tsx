@@ -187,13 +187,13 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
 
             const {style} = newDomPosition;
             if (style) {
-                if (style.top < boundingLimit.minY) {
+                if (+style.top < boundingLimit.minY) {
                     style.top = Math.max(boundingLimit.minY, style.top as number);
                 } else {
                     style.top =
                         Math.min(boundingLimit.maxY, (style.top as number) + dropOffset.height) - dropOffset.height;
                 }
-                if (style.left < boundingLimit.minX) {
+                if (+style.left < boundingLimit.minX) {
                     style.left = Math.max(boundingLimit.minX, style.left as number);
                 } else {
                     style.left =

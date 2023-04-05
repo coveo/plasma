@@ -1,5 +1,5 @@
 import {TooltipMetadata} from '@coveord/plasma-components-props-analyzer';
-import TooltipDemo from '@examples/legacy/feedback/Tooltip/Tooltip.demo.tsx';
+import TooltipDemo from '@examples/legacy/feedback/Tooltip/Tooltip.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

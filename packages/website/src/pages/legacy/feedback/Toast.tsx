@@ -1,7 +1,7 @@
 import {ToastMetadata} from '@coveord/plasma-components-props-analyzer';
-import DownloadToastDemo from '@examples/legacy/feedback/Toast/DownloadToast.demo.tsx';
-import ToastDemo from '@examples/legacy/feedback/Toast/Toast.demo.tsx';
-import ToastNotifierDemo from '@examples/legacy/feedback/Toast/ToastNotifier.demo.tsx';
+import DownloadToastDemo from '@examples/legacy/feedback/Toast/DownloadToast.demo?demo';
+import ToastDemo from '@examples/legacy/feedback/Toast/Toast.demo?demo';
+import ToastNotifierDemo from '@examples/legacy/feedback/Toast/ToastNotifier.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

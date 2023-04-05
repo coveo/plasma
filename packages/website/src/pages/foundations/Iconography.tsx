@@ -2,7 +2,7 @@
 import {ITableHOCProps, TableHOC, tableWithFilter, TableWithFilterProps} from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import {HTMLAttributes, ComponentType, FunctionComponent} from 'react';
-import IconographyDemo from '@examples/foundations/Iconography/Iconography.demo.tsx';
+import IconographyDemo from '@examples/foundations/Iconography/Iconography.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

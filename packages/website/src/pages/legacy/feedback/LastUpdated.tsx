@@ -1,6 +1,6 @@
 import {LastUpdatedMetadata} from '@coveord/plasma-components-props-analyzer';
-import LastUpdatedDemo from '@examples/legacy/feedback/LastUpdated/LastUpdated.demo.tsx';
-import LastUpdatedSpecificTimeDemo from '@examples/legacy/feedback/LastUpdated/LastUpdatedSpecifiedTime.demo.tsx';
+import LastUpdatedDemo from '@examples/legacy/feedback/LastUpdated/LastUpdated.demo?demo';
+import LastUpdatedSpecificTimeDemo from '@examples/legacy/feedback/LastUpdated/LastUpdatedSpecifiedTime.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

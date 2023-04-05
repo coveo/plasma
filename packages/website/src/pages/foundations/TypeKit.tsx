@@ -1,10 +1,10 @@
 import {Stack, Title} from '@coveord/plasma-mantine';
-import H1Demo from '@examples/foundations/TypeKit/H1.demo.tsx';
-import H2Demo from '@examples/foundations/TypeKit/H2.demo.tsx';
-import H3Demo from '@examples/foundations/TypeKit/H3.demo.tsx';
-import H4Demo from '@examples/foundations/TypeKit/H4.demo.tsx';
-import H5Demo from '@examples/foundations/TypeKit/H5.demo.tsx';
-import H6Demo from '@examples/foundations/TypeKit/H6.demo.tsx';
+import H1Demo from '@examples/foundations/TypeKit/H1.demo?demo';
+import H2Demo from '@examples/foundations/TypeKit/H2.demo?demo';
+import H3Demo from '@examples/foundations/TypeKit/H3.demo?demo';
+import H4Demo from '@examples/foundations/TypeKit/H4.demo?demo';
+import H5Demo from '@examples/foundations/TypeKit/H5.demo?demo';
+import H6Demo from '@examples/foundations/TypeKit/H6.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

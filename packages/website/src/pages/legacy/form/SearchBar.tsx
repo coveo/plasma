@@ -1,5 +1,5 @@
 import {SearchBarMetadata} from '@coveord/plasma-components-props-analyzer';
-import SearchBarDemo from '@examples/legacy/form/SearchBar/main.demo.tsx';
+import SearchBarDemo from '@examples/legacy/form/SearchBar/main.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

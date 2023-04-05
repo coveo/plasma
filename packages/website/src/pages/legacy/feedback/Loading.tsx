@@ -1,9 +1,9 @@
 import {LoadingMetadata} from '@coveord/plasma-components-props-analyzer';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
-import LoadingDemo from '../../../examples/legacy/feedback/Loading/Loading.demo.tsx';
-import LoadingFullContentDemo from '../../../examples/legacy/feedback/Loading/LoadingFullcontent.demo.tsx';
-import LoadingSpinnerDemo from '../../../examples/legacy/feedback/Loading/LoadingSpinner.demo.tsx';
+import LoadingDemo from '../../../examples/legacy/feedback/Loading/Loading.demo?demo';
+import LoadingFullContentDemo from '../../../examples/legacy/feedback/Loading/LoadingFullcontent.demo?demo';
+import LoadingSpinnerDemo from '../../../examples/legacy/feedback/Loading/LoadingSpinner.demo?demo';
 
 const DemoPage = () => (
     <PageLayout
