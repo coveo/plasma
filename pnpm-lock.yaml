@@ -735,8 +735,8 @@ importers:
         specifier: 8.4.21
         version: 8.4.21
       postcss-scss:
-        specifier: 4.0.4
-        version: 4.0.4(postcss@8.4.21)
+        specifier: 4.0.6
+        version: 4.0.6(postcss@8.4.21)
       rimraf:
         specifier: 3.0.2
         version: 3.0.2
@@ -13587,11 +13587,11 @@ packages:
       postcss: 7.0.39
     dev: true
 
-  /postcss-scss@4.0.4(postcss@8.4.21):
-    resolution: {integrity: sha512-aBBbVyzA8b3hUL0MGrpydxxXKXFZc5Eqva0Q3V9qsBOLEMsjb6w49WfpsoWzpEgcqJGW4t7Rio8WXVU9Gd8vWg==}
+  /postcss-scss@4.0.6(postcss@8.4.21):
+    resolution: {integrity: sha512-rLDPhJY4z/i4nVFZ27j9GqLxj1pwxE80eAzUNRMXtcpipFYIeowerzBgG3yJhMtObGEXidtIgbUpQ3eLDsf5OQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
-      postcss: ^8.3.3
+      postcss: ^8.4.19
     dependencies:
       postcss: 8.4.21
     dev: true
