@@ -54,12 +54,12 @@ export interface ModalWizardProps
     /**
      * A callback function that is executed when the user clicks on the next button
      */
-    onNext?: () => unknown;
+    onNext?: (newStep: number) => unknown;
 
     /**
      * A callback function that is executed when the user clicks on the previous button
      */
-    onPrevious?: () => unknown;
+    onPrevious?: (newStep: number) => unknown;
 
     /**
      * A function that is executed when user completes all the steps.
@@ -210,7 +210,7 @@ export const ModalWizard: ModalWizardType = ({
                             if (isFirstStep) {
                                 handleClose(true);
                             } else {
-                                onPrevious?.();
+                                onPrevious?.(currentStepIndex - 1);
                                 setCurrentStepIndex(currentStepIndex - 1);
                             }
                         }}
@@ -224,7 +224,7 @@ export const ModalWizard: ModalWizardType = ({
                             if (isLastStep) {
                                 onFinish?.() ?? handleClose(false);
                             } else {
-                                onNext?.();
+                                onNext?.(currentStepIndex + 1);
                                 setCurrentStepIndex(currentStepIndex + 1);
                             }
                         }}
