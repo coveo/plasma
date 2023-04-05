@@ -11,11 +11,6 @@ declare module '*.md' {
     export default content;
 }
 
-declare module '*.example.tsx' {
-    const content: string;
-    export default content;
-}
-
 interface DemoComponentProps {
     center?: boolean;
     grow?: boolean;
@@ -24,7 +19,7 @@ interface DemoComponentProps {
     layout?: 'horizontal' | 'vertical';
 }
 
-declare module '*.demo.tsx' {
+declare module '*?demo' {
     const DemoComponent: (props: DemoComponentProps) => JSX.Element;
     export default DemoComponent;
 }

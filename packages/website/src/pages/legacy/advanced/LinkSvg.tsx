@@ -1,5 +1,5 @@
 import {LinkSvgMetadata} from '@coveord/plasma-components-props-analyzer';
-import LinkSvgDemo from '@examples/legacy/advanced/LinkSvg/LinkSvg.demo.tsx';
+import LinkSvgDemo from '@examples/legacy/advanced/LinkSvg/LinkSvg.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

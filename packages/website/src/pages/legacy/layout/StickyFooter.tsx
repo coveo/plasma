@@ -1,5 +1,5 @@
 import {StickyFooterLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
-import StickyFooterDemo from '@examples/legacy/layout/StickyFooter/StickyFooter.demo.tsx';
+import StickyFooterDemo from '@examples/legacy/layout/StickyFooter/StickyFooter.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

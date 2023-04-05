@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "51.1.30",
+    "version": "51.2.0",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -142,8 +142,8 @@
         "rimraf": "3.0.2",
         "sass": "1.51.0",
         "ts-jest": "29.0.1",
-        "tslib": "2.3.1",
-        "typescript": "4.9.3"
+        "tslib": "2.5.0",
+        "typescript": "5.0.3"
     },
     "peerDependencies": {
         "@types/react": "^18.0",

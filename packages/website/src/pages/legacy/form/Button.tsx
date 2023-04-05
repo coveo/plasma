@@ -1,12 +1,12 @@
 import {ButtonLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
-import ButtonDemo from '@examples/legacy/form/button/Button.demo.tsx';
-import ButtonDisabledDemo from '@examples/legacy/form/button/Disabled.demo.tsx';
-import ButtonWithIconAndLinkDemo from '@examples/legacy/form/button/IconAndLink.demo.tsx';
-import ButtonLoadingDemo from '@examples/legacy/form/button/Loading.demo.tsx';
-import ButtonPrependDemo from '@examples/legacy/form/button/Prepend.demo.tsx';
-import ButtonPrimaryDemo from '@examples/legacy/form/button/Primary.demo.tsx';
-import ButtonSmallDemo from '@examples/legacy/form/button/Small.demo.tsx';
-import ButtonWithTooltipDemo from '@examples/legacy/form/button/WithTooltip.demo.tsx';
+import ButtonDemo from '@examples/legacy/form/button/Button.demo?demo';
+import ButtonDisabledDemo from '@examples/legacy/form/button/Disabled.demo?demo';
+import ButtonWithIconAndLinkDemo from '@examples/legacy/form/button/IconAndLink.demo?demo';
+import ButtonLoadingDemo from '@examples/legacy/form/button/Loading.demo?demo';
+import ButtonPrependDemo from '@examples/legacy/form/button/Prepend.demo?demo';
+import ButtonPrimaryDemo from '@examples/legacy/form/button/Primary.demo?demo';
+import ButtonSmallDemo from '@examples/legacy/form/button/Small.demo?demo';
+import ButtonWithTooltipDemo from '@examples/legacy/form/button/WithTooltip.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

@@ -1,8 +1,8 @@
 import {CheckboxMetadata} from '@coveord/plasma-components-props-analyzer';
-import CheckboxDemo from '@examples/legacy/form/Checkbox/Checkbox.demo.tsx';
-import CheckboxConnectedDemo from '@examples/legacy/form/Checkbox/CheckboxConnected.demo.tsx';
-import CheckboxDisabledDemo from '@examples/legacy/form/Checkbox/CheckboxDisabled.demo.tsx';
-import GroupableCheckboxDemo from '@examples/legacy/form/Checkbox/GroupableCheckbox.demo.tsx';
+import CheckboxDemo from '@examples/legacy/form/Checkbox/Checkbox.demo?demo';
+import CheckboxConnectedDemo from '@examples/legacy/form/Checkbox/CheckboxConnected.demo?demo';
+import CheckboxDisabledDemo from '@examples/legacy/form/Checkbox/CheckboxDisabled.demo?demo';
+import GroupableCheckboxDemo from '@examples/legacy/form/Checkbox/GroupableCheckbox.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

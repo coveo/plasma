@@ -1,4 +1,3 @@
-import {ReactText} from 'react';
 import {IReduxAction} from '../../utils/ReduxUtils';
 
 export const NumericInputActionTypes = {
@@ -25,12 +24,12 @@ const unmount = (id: string): IReduxAction<{id: string}> => ({
 
 export interface ISetNumericInputPayload {
     id: string;
-    value: ReactText;
+    value: number;
     min?: number;
     max?: number;
 }
 
-const setValue = (id: string, value: ReactText, min?: number, max?: number): IReduxAction<ISetNumericInputPayload> => ({
+const setValue = (id: string, value: number, min?: number, max?: number): IReduxAction<ISetNumericInputPayload> => ({
     type: NumericInputActionTypes.set,
     payload: {id, value, min, max},
 });

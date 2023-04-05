@@ -1,9 +1,9 @@
 import {MultilineBoxMetadata} from '@coveord/plasma-components-props-analyzer';
-import MultilineBoxDemo from '@examples/legacy/form/multiline-box/MultilineBox.demo.tsx';
-import MultilineBoxComplexDemo from '@examples/legacy/form/multiline-box/MultilineBoxComplex.demo.tsx';
-import MultilineBoxWithContainerDemo from '@examples/legacy/form/multiline-box/MultilineBoxWithContainer.demo.tsx';
-import MultilineBoxWithDragAndDropDemo from '@examples/legacy/form/multiline-box/MultilineBoxWithDragAndDrop.demo.tsx';
-import MultilineBoxWithRemoveDemo from '@examples/legacy/form/multiline-box/MultilineBoxWithRemove.demo.tsx';
+import MultilineBoxDemo from '@examples/legacy/form/multiline-box/MultilineBox.demo?demo';
+import MultilineBoxComplexDemo from '@examples/legacy/form/multiline-box/MultilineBoxComplex.demo?demo';
+import MultilineBoxWithContainerDemo from '@examples/legacy/form/multiline-box/MultilineBoxWithContainer.demo?demo';
+import MultilineBoxWithDragAndDropDemo from '@examples/legacy/form/multiline-box/MultilineBoxWithDragAndDrop.demo?demo';
+import MultilineBoxWithRemoveDemo from '@examples/legacy/form/multiline-box/MultilineBoxWithRemove.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

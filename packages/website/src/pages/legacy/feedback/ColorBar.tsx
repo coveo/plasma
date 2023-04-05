@@ -1,7 +1,7 @@
 import {ColorBarMetadata} from '@coveord/plasma-components-props-analyzer';
-import ColorBarDemo from '@examples/legacy/feedback/ColorBar/ColorBar.demo.tsx';
-import ColorBarOverflowDemo from '@examples/legacy/feedback/ColorBar/ColorBarOverflow.demo.tsx';
-import ColorBarPartialDemo from '@examples/legacy/feedback/ColorBar/ColorBarPartial.demo.tsx';
+import ColorBarDemo from '@examples/legacy/feedback/ColorBar/ColorBar.demo?demo';
+import ColorBarOverflowDemo from '@examples/legacy/feedback/ColorBar/ColorBarOverflow.demo?demo';
+import ColorBarPartialDemo from '@examples/legacy/feedback/ColorBar/ColorBarPartial.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

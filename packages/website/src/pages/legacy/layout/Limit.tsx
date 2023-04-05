@@ -1,9 +1,9 @@
 import {LimitMetadata} from '@coveord/plasma-components-props-analyzer';
-import LimitDemo from '@examples/legacy/layout/Limit/Limit.demo.tsx';
-import LimitEditableDemo from '@examples/legacy/layout/Limit/LimitEditable.demo.tsx';
-import LimitWithCustomValueDemo from '@examples/legacy/layout/Limit/LimitWithCustomValue.demo.tsx';
-import LimitWithGoalDemo from '@examples/legacy/layout/Limit/LimitWithGoal.demo.tsx';
-import LimitWithHistoryDemo from '@examples/legacy/layout/Limit/LimitWithHistory.demo.tsx';
+import LimitDemo from '@examples/legacy/layout/Limit/Limit.demo?demo';
+import LimitEditableDemo from '@examples/legacy/layout/Limit/LimitEditable.demo?demo';
+import LimitWithCustomValueDemo from '@examples/legacy/layout/Limit/LimitWithCustomValue.demo?demo';
+import LimitWithGoalDemo from '@examples/legacy/layout/Limit/LimitWithGoal.demo?demo';
+import LimitWithHistoryDemo from '@examples/legacy/layout/Limit/LimitWithHistory.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

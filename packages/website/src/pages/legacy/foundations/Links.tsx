@@ -1,6 +1,6 @@
-import ButtonLinkDemo from '@examples/legacy/foundations/Links/ButtonLink.demo.tsx';
-import LinkDemo from '@examples/legacy/foundations/Links/Link.demo.tsx';
-import LinkDisabledDemo from '@examples/legacy/foundations/Links/LinkDisabled.demo.tsx';
+import ButtonLinkDemo from '@examples/legacy/foundations/Links/ButtonLink.demo?demo';
+import LinkDemo from '@examples/legacy/foundations/Links/Link.demo?demo';
+import LinkDisabledDemo from '@examples/legacy/foundations/Links/LinkDisabled.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

@@ -1,12 +1,11 @@
 const withPlugins = require('next-compose-plugins');
 const withImages = require('next-images');
 const {patchWebpackConfig} = require('next-global-css');
-const withTM = require('next-transpile-modules')(['@coveo/atomic-react']);
 const path = require('path');
 
 const basePath = require('./build/getBasePath');
 
-module.exports = withPlugins([withTM, withImages], {
+module.exports = withPlugins([withImages], {
     basePath: basePath.replace(/\/$/, ''), // remove last slash
     env: {
         basePath,

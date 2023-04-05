@@ -1,7 +1,7 @@
 import {FacetMetadata} from '@coveord/plasma-components-props-analyzer';
-import FacetDemo from '@examples/legacy/form/Facet/Facet.demo.tsx';
-import FacetWithExcludeDemo from '@examples/legacy/form/Facet/FacetWithExclude.demo.tsx';
-import FacetWithMoreDemo from '@examples/legacy/form/Facet/FacetWithMore.demo.tsx';
+import FacetDemo from '@examples/legacy/form/Facet/Facet.demo?demo';
+import FacetWithExcludeDemo from '@examples/legacy/form/Facet/FacetWithExclude.demo?demo';
+import FacetWithMoreDemo from '@examples/legacy/form/Facet/FacetWithMore.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

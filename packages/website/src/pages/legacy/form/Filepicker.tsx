@@ -1,5 +1,5 @@
 import {FilepickerMetadata} from '@coveord/plasma-components-props-analyzer';
-import FilepickerDemo from '@examples/legacy/form/Filepicker/Filepicker.demo.tsx';
+import FilepickerDemo from '@examples/legacy/form/Filepicker/Filepicker.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

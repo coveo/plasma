@@ -1,7 +1,7 @@
 import {SideNavigationMetadata} from '@coveord/plasma-components-props-analyzer';
-import SideNavigationCollapsibleDemo from '@examples/legacy/navigation/SideNavigation/collapsible.demo.tsx';
-import SideNavigationLoadingDemo from '@examples/legacy/navigation/SideNavigation/loading.demo.tsx';
-import SideNavigationDemo from '@examples/legacy/navigation/SideNavigation/main.demo.tsx';
+import SideNavigationCollapsibleDemo from '@examples/legacy/navigation/SideNavigation/collapsible.demo?demo';
+import SideNavigationLoadingDemo from '@examples/legacy/navigation/SideNavigation/loading.demo?demo';
+import SideNavigationDemo from '@examples/legacy/navigation/SideNavigation/main.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

@@ -1,6 +1,6 @@
 import {NumericInputConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import NumericInputDemo from '@examples/legacy/form/NumericInput/NumericInput.demo.tsx';
-import NumericInputDisabledDemo from '@examples/legacy/form/NumericInput/NumericInputDisabled.demo.tsx';
+import NumericInputDemo from '@examples/legacy/form/NumericInput/NumericInput.demo?demo';
+import NumericInputDisabledDemo from '@examples/legacy/form/NumericInput/NumericInputDisabled.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
