@@ -485,7 +485,7 @@ importers:
         version: 1.0.3
       '@types/redux-promise-middleware':
         specifier: 6.0.0
-        version: 6.0.0(redux@4.2.0)
+        version: 6.0.0(redux@4.2.1)
       '@types/testing-library__jest-dom':
         specifier: 5.14.5
         version: 5.14.5
@@ -571,8 +571,8 @@ importers:
         specifier: 7.2.6
         version: 7.2.6(react-dom@18.2.0)(react@18.2.0)
       redux:
-        specifier: 4.2.0
-        version: 4.2.0
+        specifier: 4.2.1
+        version: 4.2.1
       redux-logger:
         specifier: 3.0.6
         version: 3.0.6
@@ -581,10 +581,10 @@ importers:
         version: 1.5.4
       redux-promise-middleware:
         specifier: 6.1.2
-        version: 6.1.2(redux@4.2.0)
+        version: 6.1.2(redux@4.2.1)
       redux-thunk:
         specifier: 2.4.1
-        version: 2.4.1(redux@4.2.0)
+        version: 2.4.1(redux@4.2.1)
       regenerator-runtime:
         specifier: 0.13.9
         version: 0.13.9
@@ -942,17 +942,17 @@ importers:
         specifier: 7.2.6
         version: 7.2.6(react-dom@18.2.0)(react@18.2.0)
       redux:
-        specifier: 4.2.0
-        version: 4.2.0
+        specifier: 4.2.1
+        version: 4.2.1
       redux-devtools-extension:
         specifier: 2.13.9
-        version: 2.13.9(redux@4.2.0)
+        version: 2.13.9(redux@4.2.1)
       redux-promise-middleware:
         specifier: 6.1.2
-        version: 6.1.2(redux@4.2.0)
+        version: 6.1.2(redux@4.2.1)
       redux-thunk:
         specifier: 2.4.1
-        version: 2.4.1(redux@4.2.0)
+        version: 2.4.1(redux@4.2.1)
       remark-gfm:
         specifier: 3.0.1
         version: 3.0.1
@@ -992,7 +992,7 @@ importers:
         version: 7.1.22
       '@types/redux-promise-middleware':
         specifier: 6.0.0
-        version: 6.0.0(redux@4.2.0)
+        version: 6.0.0(redux@4.2.1)
       '@types/underscore':
         specifier: 1.8.10
         version: 1.8.10
@@ -3063,8 +3063,8 @@ packages:
       immer: 9.0.16
       react: 18.2.0
       react-redux: 7.2.6(react-dom@18.2.0)(react@18.2.0)
-      redux: 4.2.0
-      redux-thunk: 2.4.1(redux@4.2.0)
+      redux: 4.2.1
+      redux-thunk: 2.4.1(redux@4.2.1)
       reselect: 4.1.5
     dev: false
 
@@ -4110,7 +4110,7 @@ packages:
       '@types/hoist-non-react-statics': 3.3.1
       '@types/react': 18.0.25
       hoist-non-react-statics: 3.3.2
-      redux: 4.2.0
+      redux: 4.2.1
 
   /@types/react-redux@7.1.24:
     resolution: {integrity: sha512-7FkurKcS1k0FHZEtdbbgN8Oc6b+stGSfZYjQGicofJ0j4U0qIn/jaSvnP2pLwZKiai3/17xqqxkkrxTgN8UNbQ==}
@@ -4118,7 +4118,7 @@ packages:
       '@types/hoist-non-react-statics': 3.3.1
       '@types/react': 18.0.25
       hoist-non-react-statics: 3.3.2
-      redux: 4.2.0
+      redux: 4.2.1
     dev: false
 
   /@types/react-tether@0.5.5:
@@ -4162,19 +4162,19 @@ packages:
   /@types/redux-logger@3.0.9:
     resolution: {integrity: sha512-cwYhVbYNgH01aepeMwhd0ABX6fhVB2rcQ9m80u8Fl50ZODhsZ8RhQArnLTkE7/Zrfq4Sz/taNoF7DQy9pCZSKg==}
     dependencies:
-      redux: 4.2.0
+      redux: 4.2.1
     dev: true
 
   /@types/redux-mock-store@1.0.3:
     resolution: {integrity: sha512-Wqe3tJa6x9MxMN4DJnMfZoBRBRak1XTPklqj4qkVm5VBpZnC8PSADf4kLuFQ9NAdHaowfWoEeUMz7NWc2GMtnA==}
     dependencies:
-      redux: 4.2.0
+      redux: 4.2.1
 
-  /@types/redux-promise-middleware@6.0.0(redux@4.2.0):
+  /@types/redux-promise-middleware@6.0.0(redux@4.2.1):
     resolution: {integrity: sha512-G4MvO6popCiZtlWKbGNkV2S0vnp7ENhKTZj2uUl2yEfcP2oAaFTaqQg3lGvc4uEemsr3VCoCgj4XkF9YIs1nOw==}
     deprecated: This is a stub types definition. redux-promise-middleware provides its own type definitions, so you do not need this installed.
     dependencies:
-      redux-promise-middleware: 6.1.2(redux@4.2.0)
+      redux-promise-middleware: 6.1.2(redux@4.2.1)
     transitivePeerDependencies:
       - redux
     dev: true
@@ -7368,7 +7368,7 @@ packages:
     dependencies:
       '@react-dnd/asap': 5.0.2
       '@react-dnd/invariant': 4.0.2
-      redux: 4.2.0
+      redux: 4.2.1
 
   /doctrine@2.1.0:
     resolution: {integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==}
@@ -14674,13 +14674,13 @@ packages:
       strip-indent: 4.0.0
     dev: true
 
-  /redux-devtools-extension@2.13.9(redux@4.2.0):
+  /redux-devtools-extension@2.13.9(redux@4.2.1):
     resolution: {integrity: sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A==}
     deprecated: Package moved to @redux-devtools/extension.
     peerDependencies:
       redux: ^3.1.0 || ^4.0.0
     dependencies:
-      redux: 4.2.0
+      redux: 4.2.1
     dev: false
 
   /redux-logger@3.0.6:
@@ -14694,12 +14694,12 @@ packages:
     dependencies:
       lodash.isplainobject: 4.0.6
 
-  /redux-promise-middleware@6.1.2(redux@4.2.0):
+  /redux-promise-middleware@6.1.2(redux@4.2.1):
     resolution: {integrity: sha512-ZqZu/nnSzGgwTtNbGoGVontpk7LjTOv0kigtt3CcgXI9gpq+8WlfXTXRZD0WTD5yaohRq0q2nYmJXSTjwXs83Q==}
     peerDependencies:
       redux: ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
-      redux: 4.2.0
+      redux: 4.2.1
 
   /redux-thunk@2.4.1(redux@4.2.0):
     resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
@@ -14707,11 +14707,25 @@ packages:
       redux: ^4
     dependencies:
       redux: 4.2.0
+    dev: false
+
+  /redux-thunk@2.4.1(redux@4.2.1):
+    resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
+    peerDependencies:
+      redux: ^4
+    dependencies:
+      redux: 4.2.1
 
   /redux@4.2.0:
     resolution: {integrity: sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==}
     dependencies:
       '@babel/runtime': 7.20.1
+    dev: false
+
+  /redux@4.2.1:
+    resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==}
+    dependencies:
+      '@babel/runtime': 7.20.6
 
   /regenerator-runtime@0.11.1:
     resolution: {integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==}

@@ -133,7 +133,7 @@
         "react-dnd-test-backend": "16.0.1",
         "react-dom": "18.2.0",
         "react-redux": "7.2.6",
-        "redux": "4.2.0",
+        "redux": "4.2.1",
         "redux-logger": "3.0.6",
         "redux-mock-store": "1.5.4",
         "redux-promise-middleware": "6.1.2",
