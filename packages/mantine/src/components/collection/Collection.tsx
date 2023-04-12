@@ -41,6 +41,15 @@ interface CollectionProps<T>
      */
     value?: T[];
     /**
+     * Defines how each item is uniquely identified. It is highly recommended that you specify this prop to an ID that makes sense.
+     *
+     * This method is required when using this component with ReactHookForm
+     * @see {@link https://react-hook-form.com/api/usefieldarray/} for using a collection with ReactHookForm
+     *
+     * @param originalItem The original item
+     */
+    getItemId?: (originalItem: T) => string;
+    /**
      * Unused, has no effect
      */
     onFocus?: () => void;
@@ -146,6 +155,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         descriptionProps,
         error,
         errorProps,
+        getItemId,
 
         // Style props
         classNames,
@@ -188,7 +198,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
 
     const items = value.map((item, index) => (
         <CollectionItem
-            key={index}
+            key={getItemId(item) || index}
             disabled={disabled}
             draggable={draggable}
             index={index}
