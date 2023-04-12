@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 
-import {CopyToClipboard, CopyToClipboardVariant} from '../CopyToClipboard';
+import {CopyToClipboard} from '../CopyToClipboard';
 
 describe('CopyToClipboard', () => {
     it('should display only a button by default', () => {
@@ -12,25 +12,14 @@ describe('CopyToClipboard', () => {
         expect(document.querySelector('input')).not.toBeInTheDocument();
     });
 
-    describe('when the variant is of type "text"', () => {
+    describe('when "isLabel" is true', () => {
         it('should display an input element', () => {
             const testValue = 'text value';
-            render(<CopyToClipboard value={testValue} variant={CopyToClipboardVariant.Text} />);
+            render(<CopyToClipboard value={testValue} withLabel />);
 
             expect(screen.getByDisplayValue(testValue)).toBeVisible();
             expect(screen.getByRole('button', {name: /copy/i})).toBeVisible();
             expect(document.querySelector('input')).toBeInTheDocument();
-        });
-    });
-
-    describe('when the variant is of type "textarea"', () => {
-        it('should display a textarea element', () => {
-            const testValue = 'text value';
-            render(<CopyToClipboard value={testValue} variant={CopyToClipboardVariant.TextArea} />);
-
-            expect(screen.getByDisplayValue(testValue)).toBeVisible();
-            expect(screen.getByRole('button', {name: /copy/i})).toBeVisible();
-            expect(document.querySelector('textarea')).toBeInTheDocument();
         });
     });
 });
