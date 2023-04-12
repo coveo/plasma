@@ -583,8 +583,8 @@ importers:
         specifier: 6.1.3
         version: 6.1.3(redux@4.2.1)
       redux-thunk:
-        specifier: 2.4.1
-        version: 2.4.1(redux@4.2.1)
+        specifier: 2.4.2
+        version: 2.4.2(redux@4.2.1)
       regenerator-runtime:
         specifier: 0.13.9
         version: 0.13.9
@@ -951,8 +951,8 @@ importers:
         specifier: 6.1.3
         version: 6.1.3(redux@4.2.1)
       redux-thunk:
-        specifier: 2.4.1
-        version: 2.4.1(redux@4.2.1)
+        specifier: 2.4.2
+        version: 2.4.2(redux@4.2.1)
       remark-gfm:
         specifier: 3.0.1
         version: 3.0.1
@@ -3064,7 +3064,7 @@ packages:
       react: 18.2.0
       react-redux: 7.2.6(react-dom@18.2.0)(react@18.2.0)
       redux: 4.2.1
-      redux-thunk: 2.4.1(redux@4.2.1)
+      redux-thunk: 2.4.2(redux@4.2.1)
       reselect: 4.1.7
     dev: false
 
@@ -14709,8 +14709,8 @@ packages:
       redux: 4.2.0
     dev: false
 
-  /redux-thunk@2.4.1(redux@4.2.1):
-    resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
+  /redux-thunk@2.4.2(redux@4.2.1):
+    resolution: {integrity: sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==}
     peerDependencies:
       redux: ^4
     dependencies:
