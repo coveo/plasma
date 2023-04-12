@@ -137,6 +137,31 @@ describe('Table', () => {
         expect(screen.queryByTestId('empty-state')).not.toBeInTheDocument();
     });
 
+    it('updates the table when a component in Table.Consumer triggers a change', async () => {
+        const user = userEvent.setup();
+        const spy = vi.fn();
+        const Fixture = () => {
+            const {onChange} = useTable();
+            return <button onClick={() => onChange()}>Click me</button>;
+        };
+        render(
+            <Table onChange={spy} data={[{id: '🆔', firstName: 'first', lastName: 'last'}]} columns={columns}>
+                <Table.Consumer>
+                    <Fixture />
+                </Table.Consumer>
+            </Table>
+        );
+
+        expect(screen.getByRole('button', {name: 'Click me'})).toBeVisible();
+        expect(spy).not.toHaveBeenCalled();
+
+        await user.click(screen.getByRole('button', {name: 'Click me'}));
+
+        await waitFor(() => {
+            expect(spy).toHaveBeenCalledTimes(1);
+        });
+    });
+
     describe('shows a loading animation', () => {
         const doRender = (props: Omit<TableProps<RowData>, 'columns'>) => {
             const NoData = () => {

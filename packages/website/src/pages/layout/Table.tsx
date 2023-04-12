@@ -3,6 +3,7 @@ import TableDemo from '@examples/layout/Table/Table.demo?demo';
 import TableMultiSelectionDemo from '@examples/layout/Table/TableMultiSelection.demo?demo';
 import TableClientSideDemo from '@examples/layout/Table/TableClientSide.demo?demo';
 import TableEmptyStateDemo from '@examples/layout/Table/TableEmptyState.demo?demo';
+import TableConsumerDemo from '@examples/layout/Table/TableConsumer.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -21,6 +22,7 @@ const DemoPage = () => (
                 <TableClientSideDemo noPadding title="Table with client side pagination, sorting, and filtering" />
             ),
             emptyState: <TableEmptyStateDemo noPadding title="Table with empty states" />,
+            consumer: <TableConsumerDemo noPadding title="Table with a child component using the hook to re-fetch" />,
         }}
     />
 );
