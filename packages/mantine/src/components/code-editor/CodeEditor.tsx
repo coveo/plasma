@@ -1,9 +1,6 @@
-import {CheckSize16Px, CopySize16Px} from '@coveord/plasma-react-icons';
 import {
-    ActionIcon,
     Box,
     Center,
-    CopyButton,
     createStyles,
     DefaultProps,
     Group,
@@ -14,7 +11,6 @@ import {
     Selectors,
     Space,
     Stack,
-    Tooltip,
     useComponentDefaultProps,
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
@@ -23,6 +19,7 @@ import {FunctionComponent, useEffect, useState} from 'react';
 
 import {useParentHeight} from '../../hooks';
 import {XML} from './languages/xml';
+import {CopyToClipboard} from '../copyToClipboard';
 
 const useStyles = createStyles((theme) => ({
     root: {},
@@ -162,15 +159,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
 
     const _copyButton = (
         <Group position="right">
-            <CopyButton value={_value} timeout={2000}>
-                {({copied, copy}) => (
-                    <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="right">
-                        <ActionIcon color={copied ? 'lime' : 'gray'} onClick={copy}>
-                            {copied ? <CheckSize16Px height={16} /> : <CopySize16Px height={16} />}
-                        </ActionIcon>
-                    </Tooltip>
-                )}
-            </CopyButton>
+            <CopyToClipboard value={_value} />
         </Group>
     );
 

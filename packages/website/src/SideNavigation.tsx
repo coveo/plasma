@@ -99,6 +99,7 @@ const CurrentNavigation = () => {
                 <NavLink href="/form/Button" label="Button" />
                 <NavLink href="/form/CodeEditor" label="Code editor" />
                 <NavLink href="/form/Collection" label="Collection" />
+                <NavLink href="/form/CopyToClipboard" label="Copy to Clipboard" />
             </CollapsibleSideSection>
             <SideNavigationMenuSection title={<NavLink href="/legacy" label="Legacy documentation" />} />
         </SideNavigation>

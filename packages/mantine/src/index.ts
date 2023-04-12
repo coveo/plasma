@@ -24,6 +24,9 @@ export {
     type ButtonProps,
     Menu,
     type MenuItemProps,
+    CopyToClipboard,
+    CopyToClipboardVariant,
+    type CopyToClipboardProps,
 } from './components';
 export {useForm, createFormContext} from './form';
 
