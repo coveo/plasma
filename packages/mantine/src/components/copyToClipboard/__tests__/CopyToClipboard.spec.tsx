@@ -7,12 +7,12 @@ describe('CopyToClipboard', () => {
         const testValue = 'text value';
         render(<CopyToClipboard value={testValue} />);
 
-        expect(screen.queryByDisplayValue(testValue)).not.toBeInTheDocument();
         expect(screen.getByRole('button', {name: /copy/i})).toBeVisible();
+        expect(screen.queryByDisplayValue(testValue)).not.toBeInTheDocument();
         expect(document.querySelector('input')).not.toBeInTheDocument();
     });
 
-    describe('when the variant is of type "Text"', () => {
+    describe('when the variant is of type "text"', () => {
         it('should display an input element', () => {
             const testValue = 'text value';
             render(<CopyToClipboard value={testValue} variant={CopyToClipboardVariant.Text} />);
@@ -23,7 +23,7 @@ describe('CopyToClipboard', () => {
         });
     });
 
-    describe('when the variant is of type "TextArea"', () => {
+    describe('when the variant is of type "textarea"', () => {
         it('should display a textarea element', () => {
             const testValue = 'text value';
             render(<CopyToClipboard value={testValue} variant={CopyToClipboardVariant.TextArea} />);
