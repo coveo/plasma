@@ -1,5 +1,6 @@
 import {CollectionMetadata} from '@coveord/plasma-components-props-analyzer';
 import CollectionDemo from '@examples/form/collection/Collection.demo?demo';
+import CollectionWithReactHookFormDemo from '@examples/form/collection/CollectionWithReactHookForm.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -12,5 +13,8 @@ export default () => (
         id="Collection"
         demo={<CollectionDemo />}
         propsMetadata={CollectionMetadata}
+        examples={{
+            reactHookForm: <CollectionWithReactHookFormDemo title="Collection with ReactHookForm" />,
+        }}
     />
 );

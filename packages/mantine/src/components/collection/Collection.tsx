@@ -12,8 +12,8 @@ import {
     useComponentDefaultProps,
 } from '@mantine/core';
 import {ReorderPayload} from '@mantine/form/lib/types';
-import {useDidUpdate, useId} from '@mantine/hooks';
-import {ReactNode} from 'react';
+import {useDidUpdate} from '@mantine/hooks';
+import {ReactNode, useId} from 'react';
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 
 import {Button} from '../button';
@@ -40,6 +40,16 @@ interface CollectionProps<T>
      * @default []
      */
     value?: T[];
+    /**
+     * Defines how each item is uniquely identified. It is highly recommended that you specify this prop to an ID that makes sense.
+     *
+     * This method is required when using this component with ReactHookForm.
+     *
+     * @see {@link https://react-hook-form.com/api/usefieldarray/} for using a collection with ReactHookForm.
+     *
+     * @param originalItem The original item
+     */
+    getItemId?: (originalItem: T) => string;
     /**
      * Unused, has no effect
      */
@@ -146,6 +156,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         descriptionProps,
         error,
         errorProps,
+        getItemId,
 
         // Style props
         classNames,
@@ -156,7 +167,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         ...others
     } = useComponentDefaultProps('Collection', defaultProps as CollectionProps<T>, props);
     const {classes, cx} = useStyles(null, {classNames, name: 'Collection', styles, unstyled});
-    const collectionID = useId('dnd-droppable');
+    const collectionID = useId();
 
     const hasOnlyOneItem = value.length === 1;
 
@@ -188,7 +199,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
 
     const items = value.map((item, index) => (
         <CollectionItem
-            key={index}
+            key={(getItemId?.(item) ?? index) as string}
             disabled={disabled}
             draggable={draggable}
             index={index}
