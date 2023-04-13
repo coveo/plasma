@@ -24,7 +24,7 @@ export default () => {
             newItem={{name: '', done: false}}
             {...form.getInputProps('todoList')}
         >
-            {(task, index) => (
+            {(_task, index) => (
                 <>
                     <TextInput
                         // Autofocus is annoying when playing with the sandbox but you should have this on otherwise
