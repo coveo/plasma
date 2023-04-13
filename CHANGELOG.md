@@ -1,3 +1,26 @@
+# 52.0.0 (2023-04-13)
+
+
+### chore
+
+* **npm:** update typescript to version 5 (#3121) f733d7d, closes #3121
+
+
+### Features
+
+* **copy-to-clip:** added copy to clipboard button (#3139) 7d87b19, closes #3139
+* **mantine, collection:** added getItemId props for ReactHookForm - CTCORE-9124 (#3140) 8e986c1, closes #3140
+* **mantine, modalwizard:** add step parameter to onPrevious and onNext props (#3120) 6a4c5dc, closes #3120
+* **mantine, table:** create a consumer semantic component (#3141) 8a1c1a2, closes #3141
+* **tokens:** extract design tokens from figma libraries (#3145) 24c5850, closes #3145
+
+
+### BREAKING CHANGES
+
+* **npm:** some typings had to change because of typescript 5
+
+
+
 # 51.2.0 (2023-04-04)
 
 
