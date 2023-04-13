@@ -26,6 +26,7 @@ import {TableHeader} from './TableHeader';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
+import {TableConsumer} from './TableConsumer';
 import {TableSelectableColumn} from './TableSelectableColumn';
 import {Th} from './Th';
 import {useRowSelection} from './useRowSelection';
@@ -55,6 +56,7 @@ export const Table: TableType = <T,>({
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
     const footer = convertedChildren.find((child) => child.type === TableFooter);
+    const consumer = convertedChildren.find((child) => child.type === TableConsumer);
 
     const {predicates, dateRange, ...initialStateWithoutForm} = initialState;
     const form = useForm<TableFormType>({
@@ -189,6 +191,7 @@ export const Table: TableType = <T,>({
                     getPageCount: table.getPageCount,
                 }}
             >
+                {consumer}
                 {!rows.length && !isFiltered && !loading ? (
                     noDataChildren
                 ) : (
@@ -235,3 +238,4 @@ Table.Predicate = TablePredicate;
 Table.CollapsibleColumn = TableCollapsibleColumn;
 Table.AccordionColumn = TableAccordionColumn;
 Table.DateRangePicker = TableDateRangePicker;
+Table.Consumer = TableConsumer;

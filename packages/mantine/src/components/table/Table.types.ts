@@ -7,8 +7,8 @@ import {
     TableState as TanstackTableState,
 } from '@tanstack/table-core';
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
-import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
 
+import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
 import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
 import {TableDateRangePicker} from './TableDateRangePicker';
@@ -18,6 +18,7 @@ import {TableHeader} from './TableHeader';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
+import {TableConsumer} from './TableConsumer';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -206,4 +207,5 @@ export interface TableType {
     DateRangePicker: typeof TableDateRangePicker;
     CollapsibleColumn: typeof TableCollapsibleColumn;
     AccordionColumn: typeof TableAccordionColumn;
+    Consumer: typeof TableConsumer;
 }
