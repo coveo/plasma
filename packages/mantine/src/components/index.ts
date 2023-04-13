@@ -10,3 +10,4 @@ export * from './prompt';
 export * from './modal-wizard';
 export * from './button';
 export * from './menu';
+export * from './copyToClipboard';
