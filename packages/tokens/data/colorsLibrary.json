@@ -1,8 +1,8 @@
 {
     "name": "Colors - PDS",
-    "lastModified": "2023-02-23T14:37:09Z",
-    "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/b00a2de5-d94a-461d-963e-67721ac561cc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCQKQGDLNP%2F20230223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230223T000000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=334d60fa498c3b0b3b587632b6f2d2655b9d37fce888479098cb704900f630d5",
-    "version": "3065140944",
+    "lastModified": "2023-04-07T22:32:32Z",
+    "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/218c565d-4d27-4926-8bb5-3f3ac0f6b574?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZNNUQCOE%2F20230413%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230413T000000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3aabccf9f9287ba1ecb12b160234d6631284d562f8858ee774599399bba983c0",
+    "version": "3305775559",
     "role": "viewer",
     "editorType": "figma",
     "linkAccess": "org_view",
