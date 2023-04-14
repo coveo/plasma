@@ -37,7 +37,7 @@
         "start": "concurrently \"gulp watch\" \"vite build --watch\""
     },
     "dependencies": {
-        "codemirror": "5.59.4",
+        "codemirror": "5.65.12",
         "rc-slider": "8.7.1",
         "react-diff-view": "2.4.10"
     },
