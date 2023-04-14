@@ -146,6 +146,7 @@ export const plasmaTheme: MantineThemeOverride = {
                 withArrow: true,
                 withinPortal: true,
                 multiline: true,
+                zIndex: 10000,
             },
         },
         Loader: {
