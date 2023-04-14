@@ -1,9 +1,9 @@
-import {render, screen} from '@test-utils';
+import {render, screen, userEvent} from '@test-utils';
 
 import {CopyToClipboard} from '../CopyToClipboard';
 
 describe('CopyToClipboard', () => {
-    it('should display only a button by default', () => {
+    it('displays only a button by default', () => {
         const testValue = 'text value';
         render(<CopyToClipboard value={testValue} />);
 
@@ -21,5 +21,15 @@ describe('CopyToClipboard', () => {
             expect(screen.getByRole('button', {name: /copy/i})).toBeVisible();
             expect(document.querySelector('input')).toBeInTheDocument();
         });
+    });
+
+    it('calls onCopy callback when the users copy the value to the clipboard', async () => {
+        const onCopySpy = vi.fn();
+        const user = userEvent.setup();
+        render(<CopyToClipboard value="whatever" onCopy={onCopySpy} />);
+
+        await user.click(screen.getByRole('button', {name: /copy/i}));
+
+        expect(onCopySpy).toHaveBeenCalled();
     });
 });

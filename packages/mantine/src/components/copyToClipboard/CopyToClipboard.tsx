@@ -1,7 +1,5 @@
-import React from 'react';
-
-import {CheckSize24Px, CopySize24Px} from '@coveord/plasma-react-icons';
-import {TextInput, CopyButton, Tooltip, ActionIcon, createStyles} from '@mantine/core';
+import {CheckSize16Px, CopySize16Px} from '@coveord/plasma-react-icons';
+import {ActionIcon, CopyButton, createStyles, TextInput, Tooltip} from '@mantine/core';
 
 export interface CopyToClipboardProps {
     /**
@@ -14,6 +12,10 @@ export interface CopyToClipboardProps {
      * @default false
      */
     withLabel?: boolean;
+    /**
+     * Called each time the value is copied to the clipboard
+     */
+    onCopy?: () => void;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -22,19 +24,25 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-const CopyToClipboardButton: React.FunctionComponent<{value: string}> = ({value}) => (
+const CopyToClipboardButton: React.FunctionComponent<Omit<CopyToClipboardProps, 'withLabel'>> = ({value, onCopy}) => (
     <CopyButton value={value} timeout={2000}>
         {({copied, copy}) => (
-            <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="top">
-                <ActionIcon color={copied ? 'teal' : 'gray'} onClick={copy}>
-                    {copied ? <CheckSize24Px /> : <CopySize24Px />}
+            <Tooltip label={copied ? 'Copied' : 'Copy'}>
+                <ActionIcon
+                    color={copied ? 'success' : 'gray'}
+                    onClick={() => {
+                        copy();
+                        onCopy?.();
+                    }}
+                >
+                    {copied ? <CheckSize16Px height={16} /> : <CopySize16Px height={16} />}
                 </ActionIcon>
             </Tooltip>
         )}
     </CopyButton>
 );
 
-export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = ({value, withLabel}) => {
+export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = ({withLabel, ...others}) => {
     const {classes} = useStyles();
 
     return withLabel ? (
@@ -42,11 +50,11 @@ export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = ({
             classNames={{
                 input: classes.input,
             }}
-            value={value}
+            value={others.value}
             readOnly
-            rightSection={<CopyToClipboardButton value={value} />}
+            rightSection={<CopyToClipboardButton {...others} />}
         />
     ) : (
-        <CopyToClipboardButton value={value} />
+        <CopyToClipboardButton {...others} />
     );
 };
