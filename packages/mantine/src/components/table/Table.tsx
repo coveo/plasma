@@ -18,6 +18,7 @@ import useStyles from './Table.styles';
 import {TableFormType, TableProps, TableState, TableType} from './Table.types';
 import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
+import {TableConsumer} from './TableConsumer';
 import {TableContext} from './TableContext';
 import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
@@ -26,7 +27,6 @@ import {TableHeader} from './TableHeader';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
-import {TableConsumer} from './TableConsumer';
 import {TableSelectableColumn} from './TableSelectableColumn';
 import {Th} from './Th';
 import {useRowSelection} from './useRowSelection';
@@ -62,7 +62,7 @@ export const Table: TableType = <T,>({
     const form = useForm<TableFormType>({
         initialValues: {predicates: initialState?.predicates ?? {}, dateRange: initialState?.dateRange ?? [null, null]},
     });
-    const {cx, classes} = useStyles({hasHeader: !!header, multiRowSelectionEnabled});
+    const {cx, classes} = useStyles({multiRowSelectionEnabled});
 
     const table = useReactTable({
         initialState: defaultsDeep(initialStateWithoutForm, {pagination: {pageSize: TablePerPage.DEFAULT_SIZE}}),
@@ -196,11 +196,17 @@ export const Table: TableType = <T,>({
                     noDataChildren
                 ) : (
                     <>
-                        {header}
                         <MantineTable className={classes.table} horizontalSpacing="sm" verticalSpacing="xs" pb="sm">
                             <thead className={classes.header}>
+                                {!!header ? (
+                                    <tr>
+                                        <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
+                                            {header}
+                                        </th>
+                                    </tr>
+                                ) : null}
                                 {table.getHeaderGroups().map((headerGroup) => (
-                                    <tr key={headerGroup.id}>
+                                    <tr key={headerGroup.id} className={classes.headerColumns}>
                                         {headerGroup.headers.map((columnHeader) => (
                                             <Th key={columnHeader.id} header={columnHeader} />
                                         ))}

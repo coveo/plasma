@@ -1,5 +1,5 @@
 import {CalendarSize24Px} from '@coveord/plasma-react-icons';
-import {Popover} from '@mantine/core';
+import {Grid, Group, Popover, Text} from '@mantine/core';
 import dayjs from 'dayjs';
 import {FunctionComponent, useState} from 'react';
 
@@ -10,6 +10,7 @@ import {
     DateRangePickerPreset,
     DateRangePickerValue,
 } from '../date-range-picker';
+import {TableComponentsOrder} from './Table.styles';
 import {useTable} from './TableContext';
 
 interface TableDateRangePickerProps
@@ -47,24 +48,26 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
     const formatedRange = `${formatDate(form.values.dateRange[0])} - ${formatDate(form.values.dateRange[1])}`;
 
     return (
-        <>
-            {formatedRange}
-            <Popover opened={opened} onChange={setOpened}>
-                <Popover.Target>
-                    <Button variant="outline" color="gray" onClick={() => setOpened(true)} px="xs">
-                        <CalendarSize24Px width={24} height={24} />
-                    </Button>
-                </Popover.Target>
-                <Popover.Dropdown p={0}>
-                    <DateRangePickerInlineCalendar
-                        initialRange={form.values.dateRange}
-                        onApply={onApply}
-                        onCancel={onCancel}
-                        presets={presets}
-                        rangeCalendarProps={rangeCalendarProps}
-                    />
-                </Popover.Dropdown>
-            </Popover>
-        </>
+        <Grid.Col span="content" order={TableComponentsOrder.DateRangePicker} py="sm">
+            <Group spacing="xs">
+                <Text span>{formatedRange}</Text>
+                <Popover opened={opened} onChange={setOpened}>
+                    <Popover.Target>
+                        <Button variant="outline" color="gray" onClick={() => setOpened(true)} px="xs">
+                            <CalendarSize24Px width={24} height={24} />
+                        </Button>
+                    </Popover.Target>
+                    <Popover.Dropdown p={0}>
+                        <DateRangePickerInlineCalendar
+                            initialRange={form.values.dateRange}
+                            onApply={onApply}
+                            onCancel={onCancel}
+                            presets={presets}
+                            rangeCalendarProps={rangeCalendarProps}
+                        />
+                    </Popover.Dropdown>
+                </Popover>
+            </Group>
+        </Grid.Col>
     );
 };
