@@ -1,3 +1,12 @@
+# 52.1.0 (2023-04-17)
+
+
+### Features
+
+* **mantine:** add onCopy callback to CopyToClipboard (#3150) 3f66f51, closes #3150
+
+
+
 # 52.0.0 (2023-04-13)
 
 
