@@ -825,8 +825,8 @@ importers:
         specifier: 6.0.2
         version: 6.0.2
       '@coveo/atomic-react':
-        specifier: 2.2.1
-        version: 2.2.1(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.2.5
+        version: 2.2.5(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)(react-dom@18.2.0)(react@18.2.0)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -1745,14 +1745,14 @@ packages:
     resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
     dev: false
 
-  /@coveo/atomic-react@2.2.1(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-R8mnCIgKIKDhjcuWsg0sakvD3Np/JZSJ8u8CmVXQ4tMNqaxn4YBNPHnzw5SttB0W5e/0dDTEtQ+G2CfORAGZMw==}
+  /@coveo/atomic-react@2.2.5(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-RCifn3QhVTyEvyFeSS0xX1PLLo0/IjSVd7kCzLKc7+hjKVcEoe5RuGqKtCL3P9ty+/+c6FsjslaZ29TpdiACjQ==}
     peerDependencies:
       '@coveo/headless': ^2.0.0
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@coveo/atomic': 2.21.1(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)
+      '@coveo/atomic': 2.22.1(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)
       '@coveo/headless': 2.10.1(encoding@0.1.13)(pino-pretty@6.0.0)(react-redux@7.2.6)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -1761,8 +1761,8 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/atomic@2.21.1(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21):
-    resolution: {integrity: sha512-TA8exmmPooWENdFtAXJ7Pt4f3LDsCZ5ZEjMft8xOou8weOvF0EeOmNiS23BAu42U+SxnM1Twk2BxlzrSn5qF1Q==}
+  /@coveo/atomic@2.22.1(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21):
+    resolution: {integrity: sha512-yQku7CGNwBAt+4bcQTT69ckEpV89dJnO/z83ytcWBUJvpWgbgv2oD7Ib0HOeTZ+7EeVS1hxhlVD4TVEL4L1kCQ==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
       '@coveo/headless': ^2.0.0
