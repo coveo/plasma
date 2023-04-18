@@ -37,15 +37,11 @@ exports[`Header > renders the specified breadcrumbs above the title 1`] = `
           Three
         </a>
       </div>
-      <div
-        class="mantine-xg7kom"
+      <h1
+        class="mantine-Text-root mantine-Title-root mantine-d1yoif"
       >
-        <h1
-          class="mantine-Text-root mantine-Title-root mantine-d1yoif"
-        >
-          Title
-        </h1>
-      </div>
+        Title
+      </h1>
       <div
         class="mantine-Text-root mantine-1w25z6f"
       />
