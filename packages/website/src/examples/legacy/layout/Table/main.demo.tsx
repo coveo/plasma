@@ -4,7 +4,7 @@ import {loremIpsum} from 'lorem-ipsum';
 
 const TABLE_ID: string = 'mainExampleTableId';
 
-export default () => (
+const Demo = () => (
     <TableHOC
         id={TABLE_ID}
         className="table"
@@ -15,6 +15,7 @@ export default () => (
         showBorderBottom
     />
 );
+export default Demo;
 
 const renderHeader = () => (
     <thead>

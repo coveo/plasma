@@ -1,7 +1,7 @@
 import {ListBox} from '@coveord/plasma-react';
 import {ClockSize24Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <div style={{width: 300}}>
         <ListBox
             items={[
@@ -27,3 +27,4 @@ export default () => (
         />
     </div>
 );
+export default Demo;

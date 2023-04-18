@@ -1,6 +1,6 @@
 import {Badge, BadgeType, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <>
         <TabNavigation>
             <TabConnected groupId="patate" id="tab2" title="Gyarados" tooltip="I have a toolip!" />
@@ -23,3 +23,4 @@ export default () => (
         </TabContent>
     </>
 );
+export default Demo;

@@ -1,4 +1,4 @@
-export default () => (
+const Demo = () => (
     <>
         <span className="inline-flex label">
             <i className="color-dot mr1" />
@@ -6,3 +6,4 @@ export default () => (
         </span>
     </>
 );
+export default Demo;

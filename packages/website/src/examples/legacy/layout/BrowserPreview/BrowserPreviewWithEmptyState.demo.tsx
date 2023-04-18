@@ -1,6 +1,6 @@
 import {BrowserPreview, BrowserPreviewEmpty} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <BrowserPreview>
         <BrowserPreviewEmpty onClick={() => alert('Clicked!')}>
             <span>
@@ -10,3 +10,4 @@ export default () => (
         </BrowserPreviewEmpty>
     </BrowserPreview>
 );
+export default Demo;

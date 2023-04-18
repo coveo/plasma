@@ -1,6 +1,6 @@
 import {CollapsibleConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <CollapsibleConnected
         id="collapsible-example-1"
         headerContent={<h6 className="p2">Q: Why can't you trust an atom?</h6>}
@@ -8,3 +8,4 @@ export default () => (
         <div className="p2">A: Because they make up everything</div>
     </CollapsibleConnected>
 );
+export default Demo;

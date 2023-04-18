@@ -5,7 +5,7 @@ import {EditSize24Px} from '@coveord/plasma-react-icons';
 
 const TABLE_ID: string = 'withActionsTableId';
 
-export default () => (
+const Demo = () => (
     <TableComposed
         id={TABLE_ID}
         className="table"
@@ -16,6 +16,7 @@ export default () => (
         showBorderBottom
     />
 );
+export default Demo;
 
 const TableComposed = compose<any>(tableWithActions())(TableHOC);
 

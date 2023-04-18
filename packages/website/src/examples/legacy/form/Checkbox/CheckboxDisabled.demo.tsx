@@ -1,7 +1,8 @@
 import {Checkbox, Label} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <Checkbox disabled>
         <Label>Label</Label>
     </Checkbox>
 );
+export default Demo;

@@ -18,7 +18,7 @@ const columns: Array<ColumnDef<PostData>> = [
     }),
 ];
 
-export default () => {
+const Demo = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -55,6 +55,7 @@ export default () => {
         </Table>
     );
 };
+export default Demo;
 
 const IntervalRefresh: FunctionComponent<{every: number}> = ({every}) => {
     const {onChange} = useTable();

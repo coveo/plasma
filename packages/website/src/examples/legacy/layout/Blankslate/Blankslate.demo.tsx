@@ -1,7 +1,7 @@
 import {BlankSlate} from '@coveord/plasma-react';
 import {IdeaSize32Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <BlankSlate
         icon={IdeaSize32Px}
         title="Title of the blank slate"
@@ -22,3 +22,4 @@ export default () => (
         ]}
     />
 );
+export default Demo;

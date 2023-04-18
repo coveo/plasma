@@ -1,4 +1,4 @@
-export default () => (
+const Demo = () => (
     <>
         <i className="color-dot mr1" />
         <i className="color-dot state-critical mr1" />
@@ -24,3 +24,4 @@ export default () => (
         <i className="color-dot mod-small state-maintenance" />
     </>
 );
+export default Demo;

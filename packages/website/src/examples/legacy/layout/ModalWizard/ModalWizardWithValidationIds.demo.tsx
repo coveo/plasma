@@ -16,7 +16,7 @@ import {useDispatch} from 'react-redux';
 const NonEmptyInput = withNonEmptyValueInputValidationHOC(withDirtyInputHOC(InputConnected));
 const NonEmptySelect = withDirtySingleSelectHOC(withNonEmptySingleSelectHOC(SingleSelectConnected));
 
-export default () => {
+const Demo = () => {
     const dispatch: IDispatch = useDispatch();
 
     return (
@@ -56,3 +56,4 @@ export default () => {
         </>
     );
 };
+export default Demo;

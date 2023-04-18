@@ -1,7 +1,7 @@
 import {TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
 import {HeartSize16Px, LightningSize16Px, RocketSize16Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <>
         <TabNavigation>
             <TabConnected groupId="banane" id="tab5" title="Pikachu" icon={LightningSize16Px} />
@@ -21,3 +21,4 @@ export default () => (
         </TabContent>
     </>
 );
+export default Demo;

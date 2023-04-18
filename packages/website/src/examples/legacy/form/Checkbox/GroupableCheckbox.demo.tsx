@@ -1,6 +1,6 @@
 import {GroupableCheckboxConnected, Label} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <>
         <GroupableCheckboxConnected id="parent-id" isParent clearSides classes="mb1">
             <Label>Parent</Label>
@@ -16,3 +16,4 @@ export default () => (
         </GroupableCheckboxConnected>
     </>
 );
+export default Demo;

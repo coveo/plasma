@@ -1,6 +1,6 @@
 import {FlatSelectConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <FlatSelectConnected
         id="flat-select-id"
         options={[
@@ -29,3 +29,4 @@ export default () => (
         ]}
     />
 );
+export default Demo;

@@ -1,6 +1,6 @@
 import {Badge, BadgeType} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <>
         <Badge isSmall label="Default" type={BadgeType.Default} />
         <Badge isSmall label="Beta" type={BadgeType.Beta} extraClasses={['ml1']} />
@@ -11,3 +11,4 @@ export default () => (
         <Badge isSmall label="Information" type={BadgeType.Information} extraClasses={['ml1']} />
     </>
 );
+export default Demo;

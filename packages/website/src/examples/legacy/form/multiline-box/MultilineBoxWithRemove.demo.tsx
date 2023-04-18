@@ -28,7 +28,7 @@ const MultilineBoxWithRemove = compose(
     })
 )(MultilineBox);
 
-export default () => (
+const Demo = () => (
     <FormProvider>
         <MultilineBoxWithRemove
             id="multiline-box-remove-id"
@@ -55,3 +55,4 @@ export default () => (
         />
     </FormProvider>
 );
+export default Demo;

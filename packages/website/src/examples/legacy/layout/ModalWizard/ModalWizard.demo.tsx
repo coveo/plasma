@@ -16,7 +16,7 @@ import {
 
 const containsCoveo = (str: string) => str.trim().toLowerCase().includes('coveo');
 
-export default () => {
+const Demo = () => {
     const selectedPath = useSelector((state: PlasmaState) =>
         RadioSelectSelectors.getValue(state, {id: 'radio-step-1'})
     );
@@ -101,3 +101,4 @@ export default () => {
         </>
     );
 };
+export default Demo;

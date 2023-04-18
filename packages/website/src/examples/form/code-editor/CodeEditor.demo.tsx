@@ -1,6 +1,6 @@
 import {CodeEditor, useForm} from '@coveord/plasma-mantine';
 
-export default () => {
+const Demo = () => {
     const form = useForm({
         initialValues: {
             config: '{"key":"value"}',
@@ -31,3 +31,4 @@ export default () => {
         />
     );
 };
+export default Demo;

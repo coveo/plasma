@@ -1,6 +1,6 @@
 import {SingleSelectWithFilter} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <SingleSelectWithFilter
         id="single-select-2"
         items={[
@@ -12,3 +12,4 @@ export default () => (
         ]}
     />
 );
+export default Demo;

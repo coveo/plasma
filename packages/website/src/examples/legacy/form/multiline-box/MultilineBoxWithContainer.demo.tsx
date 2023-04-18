@@ -21,7 +21,7 @@ const containerNode = (child: ReactNode, data: Array<IMultilineSingleBoxProps<My
 
 const MultilineBoxWithContainer = compose(multilineBoxContainer({containerNode}))(MultilineBox);
 
-export default () => (
+const Demo = () => (
     <FormProvider>
         <div className="highlight-padding highlight-margin">
             <MultilineBoxWithContainer
@@ -50,3 +50,4 @@ export default () => (
         </div>
     </FormProvider>
 );
+export default Demo;

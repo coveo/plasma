@@ -1,6 +1,6 @@
 import {IconCard} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <IconCard
         title="Card title"
         icon={<img src="https://placeholder.pics/svg/72x72/DEDEDE/FFFFFF-FFFFFF" />}
@@ -8,3 +8,4 @@ export default () => (
         onClick={() => alert('You clicked the card')}
     />
 );
+export default Demo;

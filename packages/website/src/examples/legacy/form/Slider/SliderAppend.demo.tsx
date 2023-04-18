@@ -8,7 +8,7 @@ const AppendLabel: FunctionComponent<{value: string; label: string}> = ({value, 
     </div>
 );
 
-export default () => {
+const Demo = () => {
     const appendValueFormatter = (value: number, side: string) => {
         let formattedValue = `${value + 50}%`;
         let valueLabel = 'Right Label';
@@ -31,3 +31,4 @@ export default () => {
         />
     );
 };
+export default Demo;

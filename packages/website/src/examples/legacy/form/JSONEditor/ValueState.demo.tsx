@@ -3,7 +3,7 @@ import {JSONEditorConnected, JSONToString, JSONEditorSelectors, PlasmaState} fro
 
 const defaultValue = JSONToString({hello: 'world', thisIsANumber: 42, andThisAMap: {a: 'a', b: 'b'}});
 
-export default () => {
+const Demo = () => {
     const content = useSelector((state: PlasmaState) => JSONEditorSelectors.getValue(state, 'example-4'));
     return (
         <>
@@ -12,3 +12,4 @@ export default () => {
         </>
     );
 };
+export default Demo;

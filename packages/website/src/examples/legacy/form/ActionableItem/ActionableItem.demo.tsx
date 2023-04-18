@@ -1,6 +1,6 @@
 import {ActionableItem} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <ActionableItem
         id="🆔"
         onItemClick={() => alert('you triggered the main button')}
@@ -12,3 +12,4 @@ export default () => (
         click on the dots
     </ActionableItem>
 );
+export default Demo;

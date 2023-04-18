@@ -1,7 +1,7 @@
 import {Button, Header, Modal, StickyFooter} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
-export default () => {
+const Demo = () => {
     const [opened, setOpened] = useState(false);
 
     return (
@@ -31,3 +31,4 @@ export default () => {
         </>
     );
 };
+export default Demo;

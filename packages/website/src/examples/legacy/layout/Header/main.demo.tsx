@@ -1,6 +1,6 @@
 import {BasicHeader} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <BasicHeader
         title={{
             text: 'Charmeleon title',
@@ -13,3 +13,4 @@ export default () => (
         ]}
     />
 );
+export default Demo;

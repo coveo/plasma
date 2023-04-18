@@ -1,7 +1,8 @@
 import {ListBox} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <div style={{width: 300}}>
         <ListBox isLoading />
     </div>
 );
+export default Demo;

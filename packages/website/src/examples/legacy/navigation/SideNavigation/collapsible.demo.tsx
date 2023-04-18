@@ -2,7 +2,7 @@ import {SideNavigation, SideNavigationItem, SideNavigationMenuSection} from '@co
 import {CoveoIconSize16Px} from '@coveord/plasma-react-icons';
 import {useState} from 'react';
 
-export default () => {
+const Demo = () => {
     const [isExpanded, setIsExpanded] = useState(true);
     return (
         <SideNavigation>
@@ -27,3 +27,4 @@ export default () => {
         </SideNavigation>
     );
 };
+export default Demo;

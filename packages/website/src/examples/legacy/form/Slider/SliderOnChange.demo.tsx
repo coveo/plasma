@@ -1,7 +1,7 @@
 import {Slider} from '@coveord/plasma-react';
 import {useState} from 'react';
 
-export default () => {
+const Demo = () => {
     const initialValue = 0;
     const [value, setValue] = useState(initialValue);
     return (
@@ -29,3 +29,4 @@ export default () => {
         </>
     );
 };
+export default Demo;

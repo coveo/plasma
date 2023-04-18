@@ -16,7 +16,7 @@ const ServerSideSingleSelect: ComponentType<
     React.PropsWithChildren<ISingleSelectOwnProps & SelectWithInfiniteScrollProps>
 > = compose<any>(withServerSideProcessing, selectWithFilter, selectWithInfiniteScroll)(SingleSelectConnected);
 
-export default () => {
+const Demo = () => {
     const filterValue = useSelector((state) => FilterBoxSelectors.getFilterText(state, {id: 'single-select-4'}));
     const [photos, totalEntries, fetchPhotos] = usePhotosAPIMock();
     const [pageNbr, setPage] = useState(1);
@@ -52,6 +52,7 @@ export default () => {
         />
     );
 };
+export default Demo;
 
 export interface PhotoProps {
     albumId: string;

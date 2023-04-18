@@ -1,6 +1,6 @@
 import {DiffViewer} from '@coveord/plasma-react';
 
-export default () => {
+const Demo = () => {
     const diffText = `
 --- PRIMARY
 +++ CURRENT_STATE
@@ -26,3 +26,4 @@ export default () => {
 
     return <DiffViewer difference={diffText} />;
 };
+export default Demo;
