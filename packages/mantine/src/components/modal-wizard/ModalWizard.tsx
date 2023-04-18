@@ -54,7 +54,7 @@ export interface ModalWizardProps
     /**
      * A callback function that is executed when the user clicks on the next button
      */
-    onNext?: (newStep: number, setIsValid?: React.Dispatch<number>) => unknown;
+    onNext?: (newStep: number, setCurrentStep?: React.Dispatch<number>) => unknown;
 
     /**
      * A callback function that is executed when the user clicks on the previous button
@@ -86,6 +86,8 @@ export interface ModalWizardProps
     /**
      * Indicates if step validation should be performed when clicking on to the next step
      * If true, the next step will always be enabled
+     *
+     * @default false
      */
     isStepValidatedOnNext?: boolean;
 }
@@ -233,10 +235,9 @@ export const ModalWizard: ModalWizardType = ({
                             if (isLastStep) {
                                 onFinish?.() ?? handleClose(false);
                             } else {
-                                if (isStepValidatedOnNext && onNext) {
-                                    onNext?.(currentStepIndex, setCurrentStepIndex);
-                                } else {
-                                    onNext?.(currentStepIndex + 1);
+                                onNext?.(currentStepIndex + 1, setCurrentStepIndex);
+
+                                if (!isStepValidatedOnNext) {
                                     setCurrentStepIndex(currentStepIndex + 1);
                                 }
                             }

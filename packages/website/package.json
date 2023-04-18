@@ -30,7 +30,6 @@
         "@emotion/react": "11.10.6",
         "@emotion/server": "11.10.0",
         "@faker-js/faker": "7.6.0",
-        "@hookform/resolvers": "3.0.0",
         "@mantine/carousel": "6.0.6",
         "@mantine/core": "6.0.6",
         "@mantine/dates": "6.0.6",
@@ -67,8 +66,7 @@
         "redux-thunk": "2.4.2",
         "remark-gfm": "3.0.1",
         "reselect": "4.1.7",
-        "underscore": "1.13.1",
-        "zod": "3.18.0"
+        "underscore": "1.13.1"
     },
     "devDependencies": {
         "@types/hoist-non-react-statics": "3.3.1",

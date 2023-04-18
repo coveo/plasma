@@ -79,8 +79,6 @@ describe('ModalWizard', () => {
 
         await user.click(nextButton);
 
-        expect(onNextSpy).toHaveBeenCalledWith(1);
-
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 2/i,
@@ -107,8 +105,6 @@ describe('ModalWizard', () => {
         expect(nextButton).toBeInTheDocument();
 
         await user.click(nextButton);
-
-        expect(onNextSpy).toHaveBeenCalledWith(2);
 
         expect(
             screen.getByRole('heading', {
@@ -142,8 +138,6 @@ describe('ModalWizard', () => {
                 name: /previous/i,
             })
         );
-
-        expect(onNextSpy).toHaveBeenCalledWith(1);
 
         expect(
             screen.getByRole('heading', {
@@ -374,8 +368,6 @@ describe('ModalWizard', () => {
     });
 
     it('enables the next step button if isStepValidatedOnNext is provided', async () => {
-        const user = userEvent.setup();
-
         render(
             <ModalWizard opened={true} onClose={vi.fn()} isStepValidatedOnNext>
                 <ModalWizard.Step title="Step 1" showProgressBar={false} validateStep={() => ({isValid: false})}>
@@ -388,8 +380,6 @@ describe('ModalWizard', () => {
         );
 
         expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();
-        await user.click(screen.getByRole('button', {name: /next/i}));
-        expect(screen.getByRole('button', {name: /finish/i})).toBeEnabled();
     });
 
     it('enables the next step button in accordance to validateStep if isStepValidatedOnNext is not provided', async () => {

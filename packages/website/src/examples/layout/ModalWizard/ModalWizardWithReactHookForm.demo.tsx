@@ -1,26 +1,16 @@
 import {Button, Flex, ModalWizard, ModalWizardStepProps, TextInput, Title} from '@coveord/plasma-mantine';
-import {zodResolver} from '@hookform/resolvers/zod';
 import {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {z} from 'zod';
 
 export default () => {
     const [opened, setOpened] = useState(false);
-
-    const validationSchema = z.object({
-        firstName: z.string().min(2),
-        lastName: z.string().min(2),
-        email: z.string().email(),
-    });
 
     const form = useForm({
         defaultValues: {
             firstName: '',
             lastName: '',
-            email: '',
         },
         mode: 'onBlur',
-        resolver: zodResolver(validationSchema),
     });
 
     const Steps: Array<Omit<ModalWizardStepProps, 'children'> & {element: JSX.Element}> = [
@@ -30,20 +20,17 @@ export default () => {
             docLinkTooltipLabel: 'Tooltip label',
             element: (
                 <Flex direction="column" gap="sm">
-                    <Title order={5}>Name</Title>
+                    <Title order={5}>First Name</Title>
 
                     <Controller
                         control={form.control}
                         name="firstName"
+                        rules={{
+                            required: {value: true, message: 'First name is required'},
+                            minLength: {value: 2, message: 'Minimum 2 characters required'},
+                        }}
                         render={({field, fieldState: {error}}) => (
-                            <TextInput {...field} placeholder="First Name" error={error?.message} />
-                        )}
-                    />
-                    <Controller
-                        control={form.control}
-                        name="lastName"
-                        render={({field, fieldState: {error}}) => (
-                            <TextInput {...field} placeholder="Last Name" error={error?.message} />
+                            <TextInput {...field} placeholder="Enter first name" error={error?.message} />
                         )}
                     />
                 </Flex>
@@ -55,13 +42,16 @@ export default () => {
             docLinkTooltipLabel: 'Tooltip label',
             element: (
                 <Flex direction="column" gap="sm">
-                    <Title order={5}>Email</Title>
-
+                    <Title order={5}>Last Name</Title>
                     <Controller
                         control={form.control}
-                        name="email"
+                        name="lastName"
+                        rules={{
+                            required: {value: true, message: 'Last name is required'},
+                            minLength: {value: 2, message: 'Minimum 2 characters required'},
+                        }}
                         render={({field, fieldState: {error}}) => (
-                            <TextInput {...field} placeholder="Email" error={error?.message} />
+                            <TextInput {...field} placeholder="Enter last name" error={error?.message} />
                         )}
                     />
                 </Flex>
@@ -83,21 +73,16 @@ export default () => {
                 }}
                 opened={opened}
                 onFinish={async () => {
-                    await form.trigger(['email']);
-                    if (!form.getFieldState('email').invalid && form.getFieldState('email').isDirty) {
+                    await form.trigger(['lastName']);
+                    if (!form.getFieldState('lastName').invalid && form.getFieldState('lastName').isDirty) {
                         setOpened(false);
                         form.reset();
                     }
                 }}
-                onNext={async (currentStepIndex, setCurrentStepIndex) => {
+                onNext={async (newStepIndex, setCurrentStepIndex) => {
                     await form.trigger(['firstName', 'lastName']);
-                    if (
-                        !form.getFieldState('firstName').invalid &&
-                        form.getFieldState('firstName').isDirty &&
-                        !form.getFieldState('lastName').invalid &&
-                        form.getFieldState('lastName').isDirty
-                    ) {
-                        setCurrentStepIndex(currentStepIndex + 1);
+                    if (!form.getFieldState('firstName').invalid && form.getFieldState('firstName').isDirty) {
+                        setCurrentStepIndex(newStepIndex);
                     }
                 }}
             >
