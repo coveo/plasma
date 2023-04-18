@@ -1,5 +1,5 @@
 import {QuestionSize16Px} from '@coveord/plasma-react-icons';
-import {Anchor, Breadcrumbs, DefaultProps, Divider, Flex, Group, Stack, Text, Title, Tooltip} from '@mantine/core';
+import {Anchor, Breadcrumbs, DefaultProps, Divider, Group, Stack, Text, Title, Tooltip} from '@mantine/core';
 import {Children, FunctionComponent, ReactElement, ReactNode} from 'react';
 
 export interface HeaderProps extends DefaultProps {
@@ -48,12 +48,10 @@ export const Header: HeaderType = ({description, borderBottom, children, variant
             >
                 <Stack spacing={0}>
                     {breadcrumbs}
-                    <Flex align="center">
-                        <Title order={variant === 'page' ? 1 : 3} color={variant === 'page' ? 'gray.5' : undefined}>
-                            {otherChildren}
-                        </Title>
+                    <Title order={variant === 'page' ? 1 : 3} color={variant === 'page' ? 'gray.5' : undefined}>
+                        {otherChildren}
                         {docAnchor}
-                    </Flex>
+                    </Title>
                     <Text size={variant === 'page' ? 'md' : 'sm'} color="gray.6">
                         {description}
                     </Text>
@@ -92,7 +90,7 @@ export interface HeaderDocAnchorProps {
 
 const HeaderDocAnchor: FunctionComponent<HeaderDocAnchorProps> = ({href: docLink, label: docLinkTooltipLabel}) => (
     <Tooltip label={docLinkTooltipLabel} disabled={!docLinkTooltipLabel} position="right">
-        <Anchor inline href={docLink} target="_blank" ml="xs">
+        <Anchor inline href={docLink} target="_blank" ml="xs" style={{verticalAlign: 'middle'}}>
             <QuestionSize16Px height={16} />
         </Anchor>
     </Tooltip>
