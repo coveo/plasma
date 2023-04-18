@@ -193,7 +193,7 @@ const getSandboxLink = (snippet: string): string => {
                 : {}),
         },
     });
-    return `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&query=module=/src/Demo.tsx`;
+    return `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&json=1`;
 };
 
 export default getSandboxLink;
