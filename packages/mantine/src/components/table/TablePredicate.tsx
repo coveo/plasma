@@ -1,5 +1,6 @@
-import {Group, Select, SelectItem, Text} from '@mantine/core';
+import {Grid, Group, Select, SelectItem, Text} from '@mantine/core';
 import {FunctionComponent} from 'react';
+import {TableComponentsOrder} from './Table.styles';
 
 import {useTable} from './TableContext';
 
@@ -29,16 +30,18 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data
     };
 
     return (
-        <Group spacing="xs">
-            {label ? <Text>{label}:</Text> : null}
-            <Select
-                withinPortal
-                value={form.values.predicates[id]}
-                onChange={onUpdate}
-                data={data}
-                aria-label={label ?? id}
-                searchable={data.length > 7}
-            />
-        </Group>
+        <Grid.Col span="content" order={TableComponentsOrder.Predicate} py="sm">
+            <Group spacing="xs">
+                {label ? <Text>{label}:</Text> : null}
+                <Select
+                    withinPortal
+                    value={form.values.predicates[id]}
+                    onChange={onUpdate}
+                    data={data}
+                    aria-label={label ?? id}
+                    searchable={data.length > 7}
+                />
+            </Group>
+        </Grid.Col>
     );
 };
