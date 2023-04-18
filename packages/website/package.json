@@ -39,7 +39,7 @@
         "@mantine/next": "6.0.6",
         "@mantine/notifications": "6.0.6",
         "@mantine/prism": "6.0.6",
-        "@tanstack/match-sorter-utils": "8.7.6",
+        "@tanstack/match-sorter-utils": "8.8.4",
         "clsx": "1.2.1",
         "codesandbox-import-utils": "2.2.3",
         "dayjs": "1.11.7",
