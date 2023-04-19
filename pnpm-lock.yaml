@@ -354,8 +354,8 @@ importers:
         specifier: 2.4.10
         version: 2.4.10(prop-types@15.8.1)(react@18.2.0)
       react-dnd:
-        specifier: 16.0.0
-        version: 16.0.0(@types/node@16.11.32)(@types/react@18.0.25)(react@18.2.0)
+        specifier: 16.0.1
+        version: 16.0.1(@types/node@16.11.32)(@types/react@18.0.25)(react@18.2.0)
       react-dnd-html5-backend:
         specifier: 16.0.1
         version: 16.0.1
@@ -14090,8 +14090,8 @@ packages:
       dnd-core: 16.0.1
     dev: true
 
-  /react-dnd@16.0.0(@types/node@16.11.32)(@types/react@18.0.25)(react@18.2.0):
-    resolution: {integrity: sha512-RCoeWRWhuwSoqdLaJV8N/weARLyXqsf43OC3QiBWPORIIGGovF/EqI8ckf14ca3bl6oZNI/igtxX49+IDmNDeQ==}
+  /react-dnd@16.0.1(@types/node@16.11.32)(@types/react@18.0.25)(react@18.2.0):
+    resolution: {integrity: sha512-QeoM/i73HHu2XF9aKksIUuamHPDvRglEwdHL4jsp784BgUuWcg6mzfxT0QDdQz8Wj0qyRKx2eMg8iZtWvU4E2Q==}
     peerDependencies:
       '@types/hoist-non-react-statics': '>= 3.3.1'
       '@types/node': '>= 12'
