@@ -1,3 +1,4 @@
 import {Filepicker} from '@coveord/plasma-react';
 
-export default () => <Filepicker id="input-id" accept=".jpg,.png,.csv,.txt" placeholder="Choose a file..." />;
+const Demo = () => <Filepicker id="input-id" accept=".jpg,.png,.csv,.txt" placeholder="Choose a file..." />;
+export default Demo;

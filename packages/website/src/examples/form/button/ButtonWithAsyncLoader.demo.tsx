@@ -14,4 +14,5 @@ const promise = async () => {
     });
 };
 
-export default () => <Button onClick={promise}>Save</Button>;
+const Demo = () => <Button onClick={promise}>Save</Button>;
+export default Demo;

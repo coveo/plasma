@@ -1,3 +1,4 @@
 import {LabeledValue} from '@coveord/plasma-react';
 
-export default () => <LabeledValue label="Super cool label" value="Value under the super cool label" />;
+const Demo = () => <LabeledValue label="Super cool label" value="Value under the super cool label" />;
+export default Demo;

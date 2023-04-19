@@ -66,7 +66,7 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
         try {
             const res = await fetch(getCodeSandboxLink(snippet));
             const {sandbox_id} = await res.json();
-            window.open(`https://codesandbox.io/p/sandbox/${sandbox_id}?file=module=%2Fsrc%2FDemo.tsx`, '_blank');
+            window.open(`https://codesandbox.io/p/sandbox/${sandbox_id}?file=%2Fsrc%2FDemo.tsx`, '_blank');
         } catch (e) {
             console.error(e);
         }

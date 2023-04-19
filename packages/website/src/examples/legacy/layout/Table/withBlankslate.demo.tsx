@@ -12,7 +12,8 @@ import {compose} from 'redux';
 
 const TABLE_ID: string = 'withBlankslateTableId';
 
-export default () => <WithBlankSlate />;
+const Demo = () => <WithBlankSlate />;
+export default Demo;
 
 const WithBlankSlate: FunctionComponent = () => (
     <>
