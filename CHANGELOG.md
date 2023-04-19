@@ -1,3 +1,12 @@
+# 52.3.0 (2023-04-19)
+
+
+### Features
+
+* **mantine, modal-wizard:** enable performing step validation on next button click (#3146) 60f8de0, closes #3146
+
+
+
 # 52.2.0 (2023-04-19)
 
 
