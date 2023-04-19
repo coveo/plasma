@@ -1,5 +1,6 @@
 import {ModalWizardMetadata} from '@coveord/plasma-components-props-analyzer';
 import ModalWizardDemo from '@examples/layout/ModalWizard/ModalWizard.demo';
+import ModalWizardWithFormValidation from '@examples/layout/ModalWizard/ModalWizardWithFormValidation.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -12,5 +13,8 @@ export default () => (
         id="ModalWizard"
         propsMetadata={ModalWizardMetadata}
         demo={<ModalWizardDemo />}
+        examples={{
+            formValidation: <ModalWizardWithFormValidation noPadding title="Modal Wizard with Form Validation" />,
+        }}
     />
 );

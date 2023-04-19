@@ -27,7 +27,7 @@ export interface ModalWizardStepProps {
     /**
      * A function to validate the current step, it determines if the next step should be enabled or not.
      */
-    validateStep: (currentStep: any, numberOfSteps: any) => {isValid: boolean; messsage?: unknown};
+    validateStep?: (currentStep: any, numberOfSteps: any) => {isValid: boolean; messsage?: unknown};
 
     /**
      * Show progress bar at this step

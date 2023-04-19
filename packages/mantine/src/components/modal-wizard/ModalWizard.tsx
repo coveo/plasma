@@ -54,7 +54,7 @@ export interface ModalWizardProps
     /**
      * A callback function that is executed when the user clicks on the next button
      */
-    onNext?: (newStep: number) => unknown;
+    onNext?: (newStep: number, setCurrentStep?: React.Dispatch<number>) => unknown;
 
     /**
      * A callback function that is executed when the user clicks on the previous button
@@ -82,6 +82,14 @@ export interface ModalWizardProps
      * Children to display in modal wizard
      * */
     children?: Array<ReturnType<typeof ModalWizardStep>>;
+
+    /**
+     * Indicates if step validation should be performed when clicking on to the next step
+     * If true, the next step will always be enabled
+     *
+     * @default false
+     */
+    isStepValidatedOnNext?: boolean;
 }
 
 interface ModalWizardType {
@@ -106,6 +114,7 @@ export const ModalWizard: ModalWizardType = ({
     styles,
     unstyled,
     children,
+    isStepValidatedOnNext,
     ...modalProps
 }) => {
     const {
@@ -126,7 +135,9 @@ export const ModalWizard: ModalWizardType = ({
     const isLastStep = currentStepIndex === numberOfSteps - 1;
     const currentStep = modalSteps.filter((step: ReactElement, index: number) => index === currentStepIndex)[0];
 
-    const {isValid} = currentStep?.props?.validateStep?.(currentStepIndex, numberOfSteps) ?? {isValid: true};
+    const {isValid} = isStepValidatedOnNext
+        ? {isValid: true}
+        : currentStep?.props?.validateStep?.(currentStepIndex, numberOfSteps) ?? {isValid: true};
 
     useEffect(() => {
         if (opened) {
@@ -224,8 +235,11 @@ export const ModalWizard: ModalWizardType = ({
                             if (isLastStep) {
                                 onFinish?.() ?? handleClose(false);
                             } else {
-                                onNext?.(currentStepIndex + 1);
-                                setCurrentStepIndex(currentStepIndex + 1);
+                                onNext?.(currentStepIndex + 1, setCurrentStepIndex);
+
+                                if (!isStepValidatedOnNext) {
+                                    setCurrentStepIndex(currentStepIndex + 1);
+                                }
                             }
                         }}
                     >
