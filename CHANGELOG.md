@@ -1,3 +1,17 @@
+# 52.2.0 (2023-04-19)
+
+
+### Bug Fixes
+
+* **mantine, header:** move the DocAnchor in the title to avoid wrapping issues (#3158) 472f6ec, closes #3158
+
+
+### Features
+
+* **mantine, table:** update the style of the table header (#3152) ed7d30c, closes #3152
+
+
+
 # 52.1.0 (2023-04-17)
 
 
