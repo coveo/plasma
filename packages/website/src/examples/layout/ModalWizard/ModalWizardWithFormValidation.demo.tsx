@@ -1,16 +1,18 @@
-import {Button, Flex, ModalWizard, ModalWizardStepProps, TextInput, Title} from '@coveord/plasma-mantine';
+import {Button, Flex, ModalWizard, ModalWizardStepProps, TextInput, Title, useForm} from '@coveord/plasma-mantine';
 import {useState} from 'react';
-import {Controller, useForm} from 'react-hook-form';
 
 export default () => {
     const [opened, setOpened] = useState(false);
 
     const form = useForm({
-        defaultValues: {
+        initialValues: {
             firstName: '',
             lastName: '',
         },
-        mode: 'onBlur',
+        validate: {
+            firstName: (value) => (value.length < 2 ? 'Minimum 2 characters required' : null),
+            lastName: (value) => (value.length < 2 ? 'Minimum 2 characters required' : null),
+        },
     });
 
     const Steps: Array<Omit<ModalWizardStepProps, 'children'> & {element: JSX.Element}> = [
@@ -22,17 +24,7 @@ export default () => {
                 <Flex direction="column" gap="sm">
                     <Title order={5}>First Name</Title>
 
-                    <Controller
-                        control={form.control}
-                        name="firstName"
-                        rules={{
-                            required: {value: true, message: 'First name is required'},
-                            minLength: {value: 2, message: 'Minimum 2 characters required'},
-                        }}
-                        render={({field, fieldState: {error}}) => (
-                            <TextInput {...field} placeholder="Enter first name" error={error?.message} />
-                        )}
-                    />
+                    <TextInput {...form.getInputProps('firstName')} placeholder="Enter first name" />
                 </Flex>
             ),
         },
@@ -43,17 +35,7 @@ export default () => {
             element: (
                 <Flex direction="column" gap="sm">
                     <Title order={5}>Last Name</Title>
-                    <Controller
-                        control={form.control}
-                        name="lastName"
-                        rules={{
-                            required: {value: true, message: 'Last name is required'},
-                            minLength: {value: 2, message: 'Minimum 2 characters required'},
-                        }}
-                        render={({field, fieldState: {error}}) => (
-                            <TextInput {...field} placeholder="Enter last name" error={error?.message} />
-                        )}
-                    />
+                    <TextInput {...form.getInputProps('lastName')} placeholder="Enter last name" />
                 </Flex>
             ),
         },
@@ -73,15 +55,15 @@ export default () => {
                 }}
                 opened={opened}
                 onFinish={async () => {
-                    await form.trigger(['lastName']);
-                    if (!form.getFieldState('lastName').invalid && form.getFieldState('lastName').isDirty) {
+                    form.validateField('lastName');
+                    if (form.isValid('lastName') && form.isDirty('lastName')) {
                         setOpened(false);
                         form.reset();
                     }
                 }}
                 onNext={async (newStepIndex, setCurrentStepIndex) => {
-                    await form.trigger(['firstName', 'lastName']);
-                    if (!form.getFieldState('firstName').invalid && form.getFieldState('firstName').isDirty) {
+                    form.validateField('firstName');
+                    if (form.isValid('firstName') && form.isDirty('firstName')) {
                         setCurrentStepIndex(newStepIndex);
                     }
                 }}
