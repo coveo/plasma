@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "@braintree/sanitize-url": "6.0.2",
-        "@coveo/atomic-react": "2.2.5",
+        "@coveo/atomic-react": "2.2.9",
         "@coveord/plasma-components-props-analyzer": "workspace:*",
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react": "workspace:*",
