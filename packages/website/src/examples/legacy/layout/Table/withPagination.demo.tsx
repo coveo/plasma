@@ -4,7 +4,7 @@ import {loremIpsum} from 'lorem-ipsum';
 
 const TABLE_ID: string = 'withPaginationTableId';
 
-export default () => (
+const Demo = () => (
     <TableComposed
         id={TABLE_ID}
         className="table"
@@ -15,6 +15,7 @@ export default () => (
         showBorderBottom
     />
 );
+export default Demo;
 
 const TableComposed = compose<any>(tableWithNewPagination({perPageNumbers: [3, 5, 10]}))(TableHOC);
 

@@ -1,6 +1,6 @@
 import {DiffViewer} from '@coveord/plasma-react';
 
-export default () => {
+const Demo = () => {
     const diffText = ``;
 
     return (
@@ -11,3 +11,4 @@ export default () => {
         />
     );
 };
+export default Demo;

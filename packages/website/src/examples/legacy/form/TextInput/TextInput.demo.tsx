@@ -15,7 +15,7 @@ const nonEmptyValidation: InputValidator = (value: string) => {
     return {status: 'valid'};
 };
 
-export default () => (
+const Demo = () => (
     <FormProvider>
         <TextInput
             required
@@ -30,3 +30,4 @@ export default () => (
         />
     </FormProvider>
 );
+export default Demo;

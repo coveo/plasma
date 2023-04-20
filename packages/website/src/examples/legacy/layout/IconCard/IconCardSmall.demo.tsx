@@ -1,7 +1,7 @@
 import {IconCard} from '@coveord/plasma-react';
 import {CloudSize24Px, DatabaseSize24Px, CrawlingBotSize24Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <IconCard
         small
         title="Web"
@@ -15,3 +15,4 @@ export default () => (
         style={{width: '368px'}}
     />
 );
+export default Demo;

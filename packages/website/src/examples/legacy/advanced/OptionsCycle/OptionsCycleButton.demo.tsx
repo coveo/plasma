@@ -1,6 +1,6 @@
 import {OptionsCycleConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <OptionsCycleConnected
         id="Cycle-1"
         options={['Option 1', 'Option 2', 'Option 3', 'Option 4']}
@@ -9,3 +9,4 @@ export default () => (
         nextClassName="btn mod-border ml1 w4 center"
     />
 );
+export default Demo;

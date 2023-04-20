@@ -1,6 +1,6 @@
 import {Slider} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <Slider
         id="🍄"
         hasTooltip
@@ -14,3 +14,4 @@ export default () => (
         appendValueFormatter={(value: number) => `${value}$`}
     />
 );
+export default Demo;

@@ -12,7 +12,7 @@ import {
     WithDirtyActions,
 } from '@coveord/plasma-react';
 
-export default () => {
+const Demo = () => {
     const id = 'ModalWithDirty';
     const isDirty = useSelector((state: PlasmaState) => WithDirtySelectors.getIsDirty(state, {id}));
     const dispatch: IDispatch = useDispatch();
@@ -57,3 +57,4 @@ export default () => {
         </>
     );
 };
+export default Demo;

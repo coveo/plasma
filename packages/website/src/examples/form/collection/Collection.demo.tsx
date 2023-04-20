@@ -1,6 +1,6 @@
 import {Checkbox, Collection, TextInput, useForm} from '@coveord/plasma-mantine';
 
-export default () => {
+const Demo = () => {
     const form = useForm({
         validateInputOnChange: true,
         initialValues: {
@@ -38,3 +38,4 @@ export default () => {
         </Collection>
     );
 };
+export default Demo;

@@ -1,6 +1,6 @@
 import {Button} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <>
         <Button isLoading enabled={false}>
             Disabled
@@ -10,3 +10,4 @@ export default () => (
         </Button>
     </>
 );
+export default Demo;

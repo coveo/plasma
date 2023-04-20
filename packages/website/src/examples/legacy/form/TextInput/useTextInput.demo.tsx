@@ -25,7 +25,7 @@ const InteractiveButtons: FunctionComponent = () => {
     );
 };
 
-export default () => (
+const Demo = () => (
     <FormProvider>
         <TextInput
             id="favorite-dish"
@@ -43,3 +43,4 @@ export default () => (
         <InteractiveButtons />
     </FormProvider>
 );
+export default Demo;

@@ -1,7 +1,7 @@
 import {Badge, BadgeIconPlacement} from '@coveord/plasma-react';
 import {LockSize16Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <div className="flex">
         <Badge
             icon={LockSize16Px}
@@ -32,3 +32,4 @@ export default () => (
         <Badge isSmall icon={LockSize16Px} iconPlacement={BadgeIconPlacement.Right} extraClasses={['ml1']} />
     </div>
 );
+export default Demo;

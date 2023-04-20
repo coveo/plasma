@@ -1,6 +1,6 @@
 import {BreadcrumbHeader} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <BreadcrumbHeader
         breadcrumb={{
             title: {
@@ -17,3 +17,4 @@ export default () => (
         hasBorderBottom={false}
     />
 );
+export default Demo;

@@ -1,3 +1,4 @@
 import {Button} from '@coveord/plasma-react';
 
-export default () => <Button small>Hello World!</Button>;
+const Demo = () => <Button small>Hello World!</Button>;
+export default Demo;

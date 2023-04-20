@@ -1,7 +1,7 @@
 import {IconCard} from '@coveord/plasma-react';
 import {CloudSize24Px, DatabaseSize24Px, CrawlingBotSize24Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <IconCard
         title="Web"
         description="Enter a starting URL and automatically index all the pages of this site."
@@ -14,3 +14,4 @@ export default () => (
         onClick={(choice) => alert(choice)}
     />
 );
+export default Demo;

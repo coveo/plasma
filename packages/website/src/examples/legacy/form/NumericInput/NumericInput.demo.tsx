@@ -1,6 +1,6 @@
 import {NumericInputConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <NumericInputConnected
         id="numeric-1"
         initialValue={500}
@@ -11,3 +11,4 @@ export default () => (
         invalidMessage="The value must be between 25 and 950."
     />
 );
+export default Demo;

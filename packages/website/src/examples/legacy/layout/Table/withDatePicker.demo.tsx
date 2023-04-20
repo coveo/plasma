@@ -12,7 +12,7 @@ import {loremIpsum} from 'lorem-ipsum';
 
 const TABLE_ID: string = 'withDatePickerTableId';
 
-export default () => (
+const Demo = () => (
     <TableComposed
         id={TABLE_ID}
         className="table"
@@ -23,6 +23,7 @@ export default () => (
         showBorderBottom
     />
 );
+export default Demo;
 
 const selectionOptions: IDatesSelectionBox[] = [
     {

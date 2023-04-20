@@ -62,7 +62,16 @@ const useStyles = createStyles((theme, {grow, noPadding}: DemoComponentProps) =>
 const Demo = ({children, snippet, center = false, grow = false, title, layout, noPadding}: DemoProps) => {
     const {classes} = useStyles({center, grow, noPadding});
     const clipboard = useClipboard();
-    const sandboxLink = getCodeSandboxLink(snippet);
+    const createSandbox = async () => {
+        try {
+            const res = await fetch(getCodeSandboxLink(snippet));
+            const {sandbox_id} = await res.json();
+            window.open(`https://codesandbox.io/p/sandbox/${sandbox_id}?file=%2Fsrc%2FDemo.tsx`, '_blank');
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
     return (
         <div className={classes.root}>
             {title ? (
@@ -97,7 +106,7 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
                         </Tooltip>
 
                         <Tooltip label="Open in CodeSanbox" position="left">
-                            <ActionIcon<'a'> radius="sm" href={sandboxLink} target="_blank" component="a">
+                            <ActionIcon radius="sm" onClick={createSandbox}>
                                 <PlaySize16Px height={16} />
                             </ActionIcon>
                         </Tooltip>

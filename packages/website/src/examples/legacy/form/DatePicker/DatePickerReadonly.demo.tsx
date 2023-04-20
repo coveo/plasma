@@ -1,6 +1,6 @@
 import {DatePickerDropdownConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <DatePickerDropdownConnected
         id="readonly-date-picker"
         datesSelectionBoxes={[
@@ -13,3 +13,4 @@ export default () => (
         readonly
     />
 );
+export default Demo;

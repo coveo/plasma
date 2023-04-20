@@ -1,3 +1,4 @@
 import {NumericInputConnected} from '@coveord/plasma-react';
 
-export default () => <NumericInputConnected id="numeric-2" initialValue={100} disabled />;
+const Demo = () => <NumericInputConnected id="numeric-2" initialValue={100} disabled />;
+export default Demo;

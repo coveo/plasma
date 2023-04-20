@@ -1,3 +1,4 @@
 import {Toast} from '@coveord/plasma-react';
 
-export default () => <Toast title="Hello World!" type="success" />;
+const Demo = () => <Toast title="Hello World!" type="success" />;
+export default Demo;

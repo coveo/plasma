@@ -4,4 +4,5 @@ const defaultValue = `from math import pi as PI
 print(PI) // 3.141592653589793
 `;
 
-export default () => <CodeEditor value={defaultValue} mode={CodeMirrorModes.Python} readOnly />;
+const Demo = () => <CodeEditor value={defaultValue} mode={CodeMirrorModes.Python} readOnly />;
+export default Demo;

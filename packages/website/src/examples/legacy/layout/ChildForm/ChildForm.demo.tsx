@@ -1,8 +1,9 @@
 import {ChildForm} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <>
         Parent
         <ChildForm>Child</ChildForm>
     </>
 );
+export default Demo;

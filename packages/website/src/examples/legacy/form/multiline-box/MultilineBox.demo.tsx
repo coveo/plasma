@@ -11,7 +11,7 @@ interface MyData {
     name: string;
 }
 
-export default () => (
+const Demo = () => (
     <FormProvider>
         <MultilineBox<MyData>
             id="multiline-box-id"
@@ -38,3 +38,4 @@ export default () => (
         />
     </FormProvider>
 );
+export default Demo;

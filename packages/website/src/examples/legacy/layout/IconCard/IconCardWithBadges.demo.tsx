@@ -1,6 +1,6 @@
 import {IconCard, BadgeType} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <IconCard
         title="Simple builder"
         description="For lightweight usage, prototyping, and testing the search experience. Hosted by Coveo."
@@ -17,3 +17,4 @@ export default () => (
         onClick={() => alert('You clicked the card')}
     />
 );
+export default Demo;

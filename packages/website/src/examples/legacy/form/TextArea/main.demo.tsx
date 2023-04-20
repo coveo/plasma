@@ -1,7 +1,7 @@
 import {Label, TextArea} from '@coveord/plasma-react';
 import {useState} from 'react';
 
-export default () => {
+const Demo = () => {
     const [value, setValue] = useState('');
 
     return (
@@ -20,3 +20,4 @@ export default () => {
         </div>
     );
 };
+export default Demo;

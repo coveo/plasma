@@ -1,7 +1,7 @@
 import {BlankSlateWithTable} from '@coveord/plasma-react';
 import {IdeaSize32Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <table className="table">
         <thead>
             <tr>
@@ -15,3 +15,4 @@ export default () => (
         </tbody>
     </table>
 );
+export default Demo;

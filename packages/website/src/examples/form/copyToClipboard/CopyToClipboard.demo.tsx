@@ -1,3 +1,4 @@
 import {CopyToClipboard} from '@coveord/plasma-mantine';
 
-export default () => <CopyToClipboard value="Copy me!" />;
+const Demo = () => <CopyToClipboard value="Copy me!" />;
+export default Demo;

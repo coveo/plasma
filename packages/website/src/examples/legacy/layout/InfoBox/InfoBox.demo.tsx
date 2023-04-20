@@ -1,3 +1,4 @@
 import {InfoBox} from '@coveord/plasma-react';
 
-export default () => <InfoBox>Some contextual information.</InfoBox>;
+const Demo = () => <InfoBox>Some contextual information.</InfoBox>;
+export default Demo;

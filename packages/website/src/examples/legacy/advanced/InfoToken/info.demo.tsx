@@ -1,6 +1,6 @@
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <>
         <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Small} mode={InfoTokenMode.Filled} />
         <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Medium} mode={InfoTokenMode.Filled} />
@@ -10,3 +10,4 @@ export default () => (
         <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Large} mode={InfoTokenMode.Stroked} />
     </>
 );
+export default Demo;

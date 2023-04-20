@@ -1,7 +1,7 @@
 import {Checkbox, Collection, TextInput} from '@coveord/plasma-mantine';
 import {Controller, useForm, useFieldArray} from 'react-hook-form';
 
-export default () => {
+const Demo = () => {
     const {control} = useForm({
         defaultValues: {
             todoList: [
@@ -65,3 +65,4 @@ export default () => {
         />
     );
 };
+export default Demo;

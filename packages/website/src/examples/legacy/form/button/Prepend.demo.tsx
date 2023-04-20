@@ -1,8 +1,9 @@
 import {Button} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <Button classes={['mod-prepend']}>
         <span className="btn-prepend">P</span>
         Hello World!
     </Button>
 );
+export default Demo;

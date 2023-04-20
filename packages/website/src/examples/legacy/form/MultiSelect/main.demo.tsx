@@ -1,6 +1,6 @@
 import {MultiSelectConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <MultiSelectConnected
         id="mutli-select-1"
         items={[
@@ -10,3 +10,4 @@ export default () => (
         ]}
     />
 );
+export default Demo;

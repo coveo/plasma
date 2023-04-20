@@ -7,15 +7,15 @@ function capitalizeFirstLetter(string) {
 module.exports = function (source) {
     const name = capitalizeFirstLetter(path.basename(this.resourcePath).split('.')[0]);
     const content = `
-import Demo from '@demo';
+import DemoContainer from '@demo';
 
 ${source.replace('export default', `const ${name}Preview =`)}
 
 const snippet = \`${source.replace(/\\|`|\$/g, '\\$&')}\`;
 const ${name}Demo = (props: DemoComponentProps) => (
-    <Demo snippet={snippet} {...props}>
+    <DemoContainer snippet={snippet} {...props}>
         <${name}Preview />
-    </Demo>
+    </DemoContainer>
 );
 export default ${name}Demo;
 `;

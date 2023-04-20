@@ -1,6 +1,6 @@
 import {CollapsibleContainerConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <CollapsibleContainerConnected
         id="collapsible-container-example-3"
         title="Collapsible Container disabled"
@@ -13,3 +13,4 @@ export default () => (
         something!
     </CollapsibleContainerConnected>
 );
+export default Demo;

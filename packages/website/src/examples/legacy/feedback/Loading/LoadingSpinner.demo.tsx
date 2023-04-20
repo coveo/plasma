@@ -1,9 +1,10 @@
 import {LoadingSpinner} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <>
         <LoadingSpinner size={16} />
         <LoadingSpinner />
         <LoadingSpinner size={32} />
     </>
 );
+export default Demo;

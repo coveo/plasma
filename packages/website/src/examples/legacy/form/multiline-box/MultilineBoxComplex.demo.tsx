@@ -40,7 +40,7 @@ const ComplexMultilineBox = compose(
     })
 )(MultilineBox);
 
-export default () => (
+const Demo = () => (
     <FormProvider>
         <ComplexMultilineBox
             id="multiline-box-complex-id"
@@ -67,3 +67,4 @@ export default () => (
         />
     </FormProvider>
 );
+export default Demo;

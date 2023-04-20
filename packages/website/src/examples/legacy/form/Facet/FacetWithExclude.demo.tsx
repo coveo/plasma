@@ -1,6 +1,6 @@
 import {FacetConnected, IFacet} from '@coveord/plasma-react';
 
-export default () => {
+const Demo = () => {
     const facet: IFacet = {name: 'facet-2', formattedName: 'Facet with exclude'};
 
     const facetRows: IFacet[] = [
@@ -15,3 +15,4 @@ export default () => {
     ];
     return <FacetConnected facet={facet} facetRows={facetRows} enableExclusions />;
 };
+export default Demo;

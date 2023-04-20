@@ -6,7 +6,7 @@ import {
 } from '@coveord/plasma-react';
 import moment from 'moment';
 
-export default () => (
+const Demo = () => (
     <DatePickerDropdownConnected
         id="single-date-picker"
         datesSelectionBoxes={selectionOptions}
@@ -17,6 +17,7 @@ export default () => (
         isLinkedToDateRange={false}
     />
 );
+export default Demo;
 
 const selectionOptions: IDatesSelectionBox[] = [
     {

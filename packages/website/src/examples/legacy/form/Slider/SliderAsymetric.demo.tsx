@@ -1,6 +1,6 @@
 import {Slider} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <Slider
         id="asymetric-slider"
         min={-2000}
@@ -11,3 +11,4 @@ export default () => (
         appendValue
     />
 );
+export default Demo;

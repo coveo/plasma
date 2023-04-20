@@ -1,7 +1,7 @@
 import {useDispatch} from 'react-redux';
 import {Button, IDispatch, openModal, closeModal, ModalCompositeConnected} from '@coveord/plasma-react';
 
-export default () => {
+const Demo = () => {
     const dispatch: IDispatch = useDispatch();
     const open = (id: string) => () => dispatch(openModal(id));
     const close = (id: string) => () => dispatch(closeModal(id));
@@ -69,3 +69,4 @@ export default () => {
         </>
     );
 };
+export default Demo;

@@ -1,6 +1,6 @@
 import {LabeledValue, TooltipPlacement} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <LabeledValue
         label="Super cool label"
         value="Value under the super cool label"
@@ -8,3 +8,4 @@ export default () => (
         informationPlacement={TooltipPlacement.Bottom}
     />
 );
+export default Demo;

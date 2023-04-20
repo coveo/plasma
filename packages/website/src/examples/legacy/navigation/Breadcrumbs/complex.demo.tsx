@@ -22,7 +22,7 @@ const defaultBreadcrumb: IBreadcrumbProps = {
     ],
 };
 
-export default () => (
+const Demo = () => (
     <BreadcrumbHeader
         breadcrumb={defaultBreadcrumb}
         description="Simple description for the title"
@@ -33,3 +33,4 @@ export default () => (
         ]}
     />
 );
+export default Demo;

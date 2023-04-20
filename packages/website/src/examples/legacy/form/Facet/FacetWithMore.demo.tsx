@@ -1,6 +1,6 @@
 import {FacetConnected, IFacet} from '@coveord/plasma-react';
 
-export default () => {
+const Demo = () => {
     const facet: IFacet = {name: 'facet-3', formattedName: 'Facet with more'};
 
     const facetRows: IFacet[] = [
@@ -23,3 +23,4 @@ export default () => {
     ];
     return <FacetConnected facet={facet} facetRows={facetRows} maxRowsToShow={2} />;
 };
+export default Demo;
