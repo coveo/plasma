@@ -825,8 +825,8 @@ importers:
         specifier: 6.0.2
         version: 6.0.2
       '@coveo/atomic-react':
-        specifier: 2.2.5
-        version: 2.2.5(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.2.9
+        version: 2.2.9(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)(react-dom@18.2.0)(react@18.2.0)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -1676,14 +1676,14 @@ packages:
     resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
     dev: false
 
-  /@coveo/atomic-react@2.2.5(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-RCifn3QhVTyEvyFeSS0xX1PLLo0/IjSVd7kCzLKc7+hjKVcEoe5RuGqKtCL3P9ty+/+c6FsjslaZ29TpdiACjQ==}
+  /@coveo/atomic-react@2.2.9(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-wy4ry3hGFtWIa6Z6COA+uP6q3g+OPBKnmPZ+FsDgA/v7QQgfAj6WvFxRnyW5QMOm+Sphpz2Mef999LvoVGOe2g==}
     peerDependencies:
       '@coveo/headless': ^2.0.0
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@coveo/atomic': 2.22.1(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)
+      '@coveo/atomic': 2.23.3(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21)
       '@coveo/headless': 2.10.1(encoding@0.1.13)(pino-pretty@6.0.0)(react-redux@7.2.6)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -1692,8 +1692,8 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/atomic@2.22.1(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21):
-    resolution: {integrity: sha512-yQku7CGNwBAt+4bcQTT69ckEpV89dJnO/z83ytcWBUJvpWgbgv2oD7Ib0HOeTZ+7EeVS1hxhlVD4TVEL4L1kCQ==}
+  /@coveo/atomic@2.23.3(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.21):
+    resolution: {integrity: sha512-vPZD+TBNUfHAFUIpM65/cUIPoNXNYjmHbh6JumgBri19xcJE3Kxc73CJ7OpJj2IWuzds8HuRVZyZfNzydM6ung==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
       '@coveo/headless': ^2.0.0
@@ -1708,8 +1708,8 @@ packages:
       dompurify: 2.3.10
       escape-html: 1.0.3
       focus-visible: 5.2.0
-      i18next: 20.6.1
-      i18next-http-backend: 1.4.1(encoding@0.1.13)
+      i18next: 22.4.13
+      i18next-http-backend: 2.2.0(encoding@0.1.13)
       stencil-inline-svg: 1.1.0
       ts-debounce: 4.0.0
     transitivePeerDependencies:
@@ -9606,16 +9606,16 @@ packages:
     hasBin: true
     dev: true
 
-  /i18next-http-backend@1.4.1(encoding@0.1.13):
-    resolution: {integrity: sha512-s4Q9hK2jS29iyhniMP82z+yYY8riGTrWbnyvsSzi5TaF7Le4E7b5deTmtuaRuab9fdDcYXtcwdBgawZG+JCEjA==}
+  /i18next-http-backend@2.2.0(encoding@0.1.13):
+    resolution: {integrity: sha512-Z4sM7R6tzdLknSPER9GisEBxKPg5FkI07UrQniuroZmS15PHQrcCPLyuGKj8SS68tf+O2aEDYSUnmy1TZqZSbw==}
     dependencies:
       cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /i18next@20.6.1:
-    resolution: {integrity: sha512-yCMYTMEJ9ihCwEQQ3phLo7I/Pwycf8uAx+sRHwwk5U9Aui/IZYgQRyMqXafQOw5QQ7DM1Z+WyEXWIqSuJHhG2A==}
+  /i18next@22.4.13:
+    resolution: {integrity: sha512-GX7flMHRRqQA0I1yGLmaZ4Hwt1JfLqagk8QPDPZsqekbKtXsuIngSVWM/s3SLgNkrEXjA+0sMGNuOEkkmyqmWg==}
     dependencies:
       '@babel/runtime': 7.20.6
     dev: false
