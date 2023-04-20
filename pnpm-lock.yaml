@@ -16,8 +16,8 @@ importers:
         specifier: 17.4.4
         version: 17.4.4
       '@coveo/semantic-monorepo-tools':
-        specifier: 1.7.1
-        version: 1.7.1
+        specifier: 1.7.2
+        version: 1.7.2
       '@sindresorhus/slugify':
         specifier: 2.1.1
         version: 2.1.1
@@ -1751,8 +1751,8 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/semantic-monorepo-tools@1.7.1:
-    resolution: {integrity: sha512-tS7DUVhO/VggkJ47BbLRrQ1rcjH12YFyP+l3M8CZVBHBxfBplLbUFDRVaio0S2Fsp7Ga9wqZgGhYtcD0wTxl1Q==}
+  /@coveo/semantic-monorepo-tools@1.7.2:
+    resolution: {integrity: sha512-x8Oi/qBegULlbPbPzc5xex0t8e5Rt5zLAFUXkErBQTxEJn65otzyHfCNcGWuV6Vg4Ds/XnDxY1bGgyeT1ZmhUQ==}
     dependencies:
       conventional-changelog-writer: 5.0.1
       conventional-commits-parser: 3.2.4
