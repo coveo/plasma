@@ -91,7 +91,7 @@
         "@types/jest": "29.0.3",
         "@types/loadable__component": "5.13.4",
         "@types/lorem-ipsum": "2.0.0",
-        "@types/react": "18.0.37",
+        "@types/react": "18.0.38",
         "@types/react-bootstrap": "0.32.32",
         "@types/react-codemirror": "1.0.8",
         "@types/react-color": "3.0.6",
