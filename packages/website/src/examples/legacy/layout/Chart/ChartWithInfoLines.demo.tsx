@@ -1,6 +1,6 @@
 import {LineSeries, InfoLine, ChartContainer, XGrid, YGrid, XYAxis, XYChart} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <div style={{height: 400}}>
         <ChartContainer
             renderChart={(width, height) => (
@@ -17,6 +17,7 @@ export default () => (
         />
     </div>
 );
+export default Demo;
 
 const data = [
     {

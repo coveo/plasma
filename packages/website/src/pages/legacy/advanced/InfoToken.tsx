@@ -1,11 +1,11 @@
 import {InfoTokenMetadata} from '@coveord/plasma-components-props-analyzer';
-import InfoTokenCriticalDemo from '@examples/legacy/advanced/InfoToken/critical.demo.tsx';
-import InfoTokenInfoDemo from '@examples/legacy/advanced/InfoToken/info.demo.tsx';
-import InfoTokenDemo from '@examples/legacy/advanced/InfoToken/main.demo.tsx';
-import InfoTokenQuestionDemo from '@examples/legacy/advanced/InfoToken/question.demo.tsx';
-import InfoTokenSuccessDemo from '@examples/legacy/advanced/InfoToken/success.demo.tsx';
-import InfoTokenTipDemo from '@examples/legacy/advanced/InfoToken/tip.demo.tsx';
-import InfoTokenWarningDemo from '@examples/legacy/advanced/InfoToken/warning.demo.tsx';
+import InfoTokenCriticalDemo from '@examples/legacy/advanced/InfoToken/critical.demo?demo';
+import InfoTokenInfoDemo from '@examples/legacy/advanced/InfoToken/info.demo?demo';
+import InfoTokenDemo from '@examples/legacy/advanced/InfoToken/main.demo?demo';
+import InfoTokenQuestionDemo from '@examples/legacy/advanced/InfoToken/question.demo?demo';
+import InfoTokenSuccessDemo from '@examples/legacy/advanced/InfoToken/success.demo?demo';
+import InfoTokenTipDemo from '@examples/legacy/advanced/InfoToken/tip.demo?demo';
+import InfoTokenWarningDemo from '@examples/legacy/advanced/InfoToken/warning.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

@@ -1,7 +1,7 @@
 import {SubNavigationConnected} from '@coveord/plasma-react';
 import {ThumbsDownSize16Px, ThumbsUpSize16Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <SubNavigationConnected
         id="third-sub-nav"
         items={[
@@ -55,3 +55,4 @@ export default () => (
         defaultSelected="titanic"
     />
 );
+export default Demo;

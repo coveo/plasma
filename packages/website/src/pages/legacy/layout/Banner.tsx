@@ -1,4 +1,4 @@
-import BannerDemo from '@examples/legacy/layout/Banner/Banner.demo.tsx';
+import BannerDemo from '@examples/legacy/layout/Banner/Banner.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

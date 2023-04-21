@@ -1,7 +1,7 @@
 import {SideNavigation, SideNavigationItem, SideNavigationMenuSection} from '@coveord/plasma-react';
 import {CoveoIconSize16Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <SideNavigation>
         <SideNavigationMenuSection title="Regular Section" icon={CoveoIconSize16Px}>
             <SideNavigationItem isActive>
@@ -17,3 +17,4 @@ export default () => (
         </SideNavigationMenuSection>
     </SideNavigation>
 );
+export default Demo;

@@ -1,6 +1,6 @@
 import {CodeEditor, useForm} from '@coveord/plasma-mantine';
 
-export default () => {
+const Demo = () => {
     const form = useForm({
         initialValues: {
             code: 'def my_extension():\n\tprint("Not implemented yet.")\n\nmy_extension()',
@@ -17,3 +17,4 @@ export default () => {
         />
     );
 };
+export default Demo;

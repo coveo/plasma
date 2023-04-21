@@ -1,3 +1,4 @@
 import {Countdown} from '@coveord/plasma-react';
 
-export default () => <Countdown />;
+const Demo = () => <Countdown />;
+export default Demo;

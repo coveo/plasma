@@ -1,3 +1,4 @@
 import {LastUpdated} from '@coveord/plasma-react';
 
-export default () => <LastUpdated />;
+const Demo = () => <LastUpdated />;
+export default Demo;

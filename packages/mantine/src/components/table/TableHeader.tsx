@@ -1,17 +1,20 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import {createStyles, DefaultProps, Group, Selectors, Space, Tooltip} from '@mantine/core';
+import {createStyles, DefaultProps, Grid, Selectors, Tooltip} from '@mantine/core';
 import {FunctionComponent, ReactNode} from 'react';
 
 import {Button} from '../button';
+import {TableComponentsOrder} from './Table.styles';
 import {useTable} from './TableContext';
 
 const useStyles = createStyles((theme) => ({
     root: {
-        position: 'sticky',
-        top: 0,
-        zIndex: 1,
-        backgroundColor: theme.colors.gray[1],
+        flexDirection: 'row-reverse',
+        flexWrap: 'wrap-reverse',
+        background: `repeating-linear-gradient(${theme.colors.gray[1]}, ${theme.colors.gray[1]} 68px, ${theme.colors.gray[3]} 68px, ${theme.colors.gray[3]} 69px)`,
         borderBottom: `1px solid ${theme.colors.gray[3]}`,
+    },
+    multiSelectInfo: {
+        justifySelf: 'flex-start',
     },
 }));
 
@@ -30,24 +33,33 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({
     const {getSelectedRows, multiRowSelectionEnabled, clearSelection} = useTable();
     const {classes} = useStyles(null, {name: 'TableHeader', classNames, styles, unstyled});
     const selectedRows = getSelectedRows();
-    return multiRowSelectionEnabled ? (
-        <Group position="apart" className={classes.root}>
-            {selectedRows.length > 0 ? (
-                <Tooltip label="Unselect all">
-                    <Button onClick={clearSelection} ml="lg" variant="subtle" leftIcon={<CrossSize16Px height={16} />}>
-                        {selectedRows.length} selected
-                    </Button>
-                </Tooltip>
-            ) : (
-                <Space />
-            )}
-            <Group position="right" spacing="lg" px="md" py="sm" {...others}>
-                {children}
-            </Group>
-        </Group>
-    ) : (
-        <Group position="right" spacing="lg" px="md" py="sm" className={classes.root} {...others}>
+    return (
+        <Grid
+            justify="flex-start"
+            align="center"
+            gutter="sm"
+            p={0}
+            pl="md"
+            pr="lg"
+            m={0}
+            className={classes.root}
+            {...others}
+        >
+            {multiRowSelectionEnabled && selectedRows.length > 0 ? (
+                <Grid.Col
+                    span="auto"
+                    py="sm"
+                    className={classes.multiSelectInfo}
+                    order={TableComponentsOrder.MultiSelectInfo}
+                >
+                    <Tooltip label="Unselect all">
+                        <Button onClick={clearSelection} variant="subtle" leftIcon={<CrossSize16Px height={16} />}>
+                            {selectedRows.length} selected
+                        </Button>
+                    </Tooltip>
+                </Grid.Col>
+            ) : null}
             {children}
-        </Group>
+        </Grid>
     );
 };

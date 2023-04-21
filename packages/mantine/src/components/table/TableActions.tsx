@@ -1,5 +1,6 @@
-import {Group} from '@mantine/core';
+import {Grid, Group} from '@mantine/core';
 import {ReactElement, ReactNode} from 'react';
+import {TableComponentsOrder} from './Table.styles';
 
 import {useTable} from './TableContext';
 
@@ -35,10 +36,12 @@ export const TableActions = <T,>({children}: TableActionsProps<T>): ReactElement
     }
 
     return (
-        <Group spacing="xs">
-            {multiRowSelectionEnabled
-                ? (children as (data: T[]) => ReactNode)(selectedRows)
-                : (children as (datum: T) => ReactNode)(selectedRows[0])}
-        </Group>
+        <Grid.Col span="content" order={TableComponentsOrder.Actions} py="sm">
+            <Group spacing="xs" style={{display: 'inline-flex'}}>
+                {multiRowSelectionEnabled
+                    ? (children as (data: T[]) => ReactNode)(selectedRows)
+                    : (children as (datum: T) => ReactNode)(selectedRows[0])}
+            </Group>
+        </Grid.Col>
     );
 };

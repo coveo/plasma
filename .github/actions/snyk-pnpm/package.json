@@ -11,9 +11,9 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
-        "@pnpm/lockfile-file": "5.2.0",
-        "@pnpm/types": "8.4.0",
-        "@types/node": "18.6.1",
+        "@pnpm/lockfile-file": "8.0.1",
+        "@pnpm/types": "9.0.0",
+        "@types/node": "18.15.11",
         "read-yaml-file": "2.1.0",
         "ts-node": "10.9.1",
         "type-fest": "2.17.0",

@@ -1,7 +1,7 @@
 import {useSelector} from 'react-redux';
 import {ColorPicker, PlasmaState, InputSelectors} from '@coveord/plasma-react';
 
-export default () => {
+const Demo = () => {
     const selected = useSelector((state: PlasmaState) =>
         InputSelectors.getValue(state, {
             id: 'color-picker-id-3',
@@ -14,3 +14,4 @@ export default () => {
         </>
     );
 };
+export default Demo;

@@ -1,6 +1,7 @@
 import {CrossSize16Px, SearchSize16Px} from '@coveord/plasma-react-icons';
-import {ActionIcon, createStyles, DefaultProps, Selectors, TextInput} from '@mantine/core';
+import {ActionIcon, createStyles, DefaultProps, Grid, Selectors, TextInput} from '@mantine/core';
 import {ChangeEventHandler, FunctionComponent, MouseEventHandler} from 'react';
+import {TableComponentsOrder} from './Table.styles';
 
 import {useTable} from './TableContext';
 
@@ -53,22 +54,24 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
     };
 
     return (
-        <TextInput
-            className={classes.wrapper}
-            placeholder={placeholder}
-            mb="md"
-            rightSection={
-                state.globalFilter ? (
-                    <ActionIcon onClick={handleClear}>
-                        <CrossSize16Px height={16} />
-                    </ActionIcon>
-                ) : (
-                    <SearchSize16Px height={14} className={classes.empty} />
-                )
-            }
-            value={state.globalFilter}
-            onChange={handleChange}
-            {...others}
-        />
+        <Grid.Col span="content" order={TableComponentsOrder.Filter} py="sm">
+            <TextInput
+                className={classes.wrapper}
+                placeholder={placeholder}
+                mb="md"
+                rightSection={
+                    state.globalFilter ? (
+                        <ActionIcon onClick={handleClear}>
+                            <CrossSize16Px height={16} />
+                        </ActionIcon>
+                    ) : (
+                        <SearchSize16Px height={14} className={classes.empty} />
+                    )
+                }
+                value={state.globalFilter}
+                onChange={handleChange}
+                {...others}
+            />
+        </Grid.Col>
     );
 };

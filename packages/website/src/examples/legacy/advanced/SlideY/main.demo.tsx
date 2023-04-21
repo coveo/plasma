@@ -4,7 +4,7 @@ import {useState} from 'react';
 
 const content = loremIpsum({count: 20});
 
-export default () => {
+const Demo = () => {
     const [opened, setOpened] = useState(false);
     return (
         <>
@@ -15,3 +15,4 @@ export default () => {
         </>
     );
 };
+export default Demo;

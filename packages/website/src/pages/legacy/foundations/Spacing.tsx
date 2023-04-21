@@ -1,4 +1,4 @@
-import SpacingDemo from '@examples/legacy/foundations/Spacing/Spacing.demo.tsx';
+import SpacingDemo from '@examples/legacy/foundations/Spacing/Spacing.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

@@ -52,16 +52,21 @@ export const plasmaTheme: MantineThemeOverride = {
             },
         },
         Title: {
-            styles: (theme) => ({
+            styles: {
                 root: {
                     '&:is(h1,h2,h3,h4,h5,h6)': {letterSpacing: '0.011em'},
                 },
-            }),
+            },
         },
         Text: {
             defaultProps: {
                 weight: 300,
             },
+            styles: (theme, {}, {size}) => ({
+                root: {
+                    fontSize: getSize({size: size ?? 'sm', sizes: theme.fontSizes}),
+                },
+            }),
         },
         Button: {
             styles: () => ({
@@ -94,7 +99,12 @@ export const plasmaTheme: MantineThemeOverride = {
                           })}`,
                     overflow: 'auto',
                 },
-                title: {width: '100%'},
+                title: {
+                    width: '100%',
+                    fontSize: theme.headings.sizes.h3.fontSize,
+                    lineHeight: theme.headings.sizes.h3.lineHeight,
+                    fontWeight: 500,
+                },
             }),
             defaultProps: {
                 overlayProps: {
@@ -136,6 +146,7 @@ export const plasmaTheme: MantineThemeOverride = {
                 withArrow: true,
                 withinPortal: true,
                 multiline: true,
+                zIndex: 10000,
             },
         },
         Loader: {
@@ -168,6 +179,12 @@ export const plasmaTheme: MantineThemeOverride = {
             defaultProps: {
                 radius: 'sm',
             },
+            styles: (theme) => ({
+                label: {
+                    fontSize: theme.fontSizes.sm,
+                    fontWeight: 300,
+                },
+            }),
         },
         List: {
             styles: () => ({

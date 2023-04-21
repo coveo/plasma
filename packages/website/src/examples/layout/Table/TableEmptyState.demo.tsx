@@ -23,7 +23,7 @@ const NoData = () => {
     );
 };
 
-export default () => (
+const Demo = () => (
     <Table
         data={[]}
         columns={columns}
@@ -39,6 +39,7 @@ export default () => (
         </Table.Footer>
     </Table>
 );
+export default Demo;
 
 const columnHelper = createColumnHelper<Person>();
 

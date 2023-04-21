@@ -1,14 +1,14 @@
 import {TableHOCMetadata} from '@coveord/plasma-components-props-analyzer';
-import TableDemo from '@examples/legacy/layout/Table/main.demo.tsx';
-import TableWithActionDemo from '@examples/legacy/layout/Table/withAction.demo.tsx';
-import TableWithBlankslateDemo from '@examples/legacy/layout/Table/withBlankslate.demo.tsx';
-import TableWithDatePickerDemo from '@examples/legacy/layout/Table/withDatePicker.demo.tsx';
-import TableWithFilterDemo from '@examples/legacy/layout/Table/withFilter.demo.tsx';
-import TableWithLoadingDemo from '@examples/legacy/layout/Table/withLoading.demo.tsx';
-import TableWithPaginationDemo from '@examples/legacy/layout/Table/withPagination.demo.tsx';
-import TableWithPredicateDemo from '@examples/legacy/layout/Table/withPredicate.demo.tsx';
-import TableWithServerDemo from '@examples/legacy/layout/Table/withServer.demo.tsx';
-import TableWithSortDemo from '@examples/legacy/layout/Table/withSort.demo.tsx';
+import TableDemo from '@examples/legacy/layout/Table/main.demo?demo';
+import TableWithActionDemo from '@examples/legacy/layout/Table/withAction.demo?demo';
+import TableWithBlankslateDemo from '@examples/legacy/layout/Table/withBlankslate.demo?demo';
+import TableWithDatePickerDemo from '@examples/legacy/layout/Table/withDatePicker.demo?demo';
+import TableWithFilterDemo from '@examples/legacy/layout/Table/withFilter.demo?demo';
+import TableWithLoadingDemo from '@examples/legacy/layout/Table/withLoading.demo?demo';
+import TableWithPaginationDemo from '@examples/legacy/layout/Table/withPagination.demo?demo';
+import TableWithPredicateDemo from '@examples/legacy/layout/Table/withPredicate.demo?demo';
+import TableWithServerDemo from '@examples/legacy/layout/Table/withServer.demo?demo';
+import TableWithSortDemo from '@examples/legacy/layout/Table/withSort.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

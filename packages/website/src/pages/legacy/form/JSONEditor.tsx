@@ -1,8 +1,8 @@
 import {JSONEditorConnectedMetadata} from '@coveord/plasma-components-props-analyzer';
-import JSONEditorInErrorDemo from '@examples/legacy/form/JSONEditor/InError.demo.tsx';
-import JSONEditorDemo from '@examples/legacy/form/JSONEditor/JSONEditor.demo.tsx';
-import JSONEditorReadOnlyDemo from '@examples/legacy/form/JSONEditor/ReadOnly.demo.tsx';
-import JSONEditorStateDemo from '@examples/legacy/form/JSONEditor/ValueState.demo.tsx';
+import JSONEditorInErrorDemo from '@examples/legacy/form/JSONEditor/InError.demo?demo';
+import JSONEditorDemo from '@examples/legacy/form/JSONEditor/JSONEditor.demo?demo';
+import JSONEditorReadOnlyDemo from '@examples/legacy/form/JSONEditor/ReadOnly.demo?demo';
+import JSONEditorStateDemo from '@examples/legacy/form/JSONEditor/ValueState.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

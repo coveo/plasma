@@ -62,7 +62,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : null;
 
     return (
-        <Draggable index={index} draggableId={index.toString()}>
+        <Draggable key={index} index={index} draggableId={index.toString()}>
             {(provided, {isDragging}) => (
                 <Group
                     ref={provided.innerRef}

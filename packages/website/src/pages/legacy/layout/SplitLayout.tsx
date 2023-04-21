@@ -1,6 +1,6 @@
 import {SplitLayoutMetadata} from '@coveord/plasma-components-props-analyzer';
-import SplitLayoutDemo from '@examples/legacy/layout/SplitLayout/SplitLayout.demo.tsx';
-import SplitLayoutBorderlessDemo from '@examples/legacy/layout/SplitLayout/SplitLayoutBorderless.demo.tsx';
+import SplitLayoutDemo from '@examples/legacy/layout/SplitLayout/SplitLayout.demo?demo';
+import SplitLayoutBorderlessDemo from '@examples/legacy/layout/SplitLayout/SplitLayoutBorderless.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

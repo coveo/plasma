@@ -1,6 +1,6 @@
 import {SyncFeedback, SyncFeedbackState} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <table className="table">
         <tr>
             <td>NONE</td>
@@ -30,3 +30,4 @@ export default () => (
         </tr>
     </table>
 );
+export default Demo;

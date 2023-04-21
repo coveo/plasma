@@ -1,7 +1,7 @@
 import {ColorPickerMetadata} from '@coveord/plasma-components-props-analyzer';
-import ColorPickerDemo from '@examples/legacy/form/ColorPicker/ColorPicker.demo.tsx';
-import ColorPickerHiddenControlsDemo from '@examples/legacy/form/ColorPicker/ColorPickerHiddenControls.demo.tsx';
-import ColorPickerSelectorDemo from '@examples/legacy/form/ColorPicker/ColorPickerSelector.demo.tsx';
+import ColorPickerDemo from '@examples/legacy/form/ColorPicker/ColorPicker.demo?demo';
+import ColorPickerHiddenControlsDemo from '@examples/legacy/form/ColorPicker/ColorPickerHiddenControls.demo?demo';
+import ColorPickerSelectorDemo from '@examples/legacy/form/ColorPicker/ColorPickerSelector.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

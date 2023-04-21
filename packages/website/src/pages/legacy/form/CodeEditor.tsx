@@ -1,6 +1,6 @@
 import {CodeEditorLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
-import CodeEditorDemo from '@examples/legacy/form/CodeEditor/CodeEditor.demo.tsx';
-import CodeEditorReadonlyDemo from '@examples/legacy/form/CodeEditor/CodeEditorReadonly.demo.tsx';
+import CodeEditorDemo from '@examples/legacy/form/CodeEditor/CodeEditor.demo?demo';
+import CodeEditorReadonlyDemo from '@examples/legacy/form/CodeEditor/CodeEditorReadonly.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

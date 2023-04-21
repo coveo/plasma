@@ -1,3 +1,4 @@
 import {StepProgressBar} from '@coveord/plasma-react';
 
-export default () => <StepProgressBar numberOfSteps={5} currentStep={2} />;
+const Demo = () => <StepProgressBar numberOfSteps={5} currentStep={2} />;
+export default Demo;

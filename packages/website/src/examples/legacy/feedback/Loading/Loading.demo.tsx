@@ -1,3 +1,4 @@
 import {Loading} from '@coveord/plasma-react';
 
-export default () => <Loading />;
+const Demo = () => <Loading />;
+export default Demo;

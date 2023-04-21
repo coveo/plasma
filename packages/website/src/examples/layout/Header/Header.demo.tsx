@@ -1,6 +1,6 @@
 import {Anchor, Button, Header} from '@coveord/plasma-mantine';
 
-export default () => (
+const Demo = () => (
     <Header description="The header description" borderBottom>
         <Header.Breadcrumbs>
             <Anchor>One</Anchor>
@@ -15,3 +15,4 @@ export default () => (
         </Header.Actions>
     </Header>
 );
+export default Demo;

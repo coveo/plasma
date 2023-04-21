@@ -3,7 +3,7 @@ import {CloudSize16Px} from '@coveord/plasma-react-icons';
 
 const TABLE_ID: string = 'withLoadingTableId';
 
-export default () => (
+const Demo = () => (
     <TableHOC
         id={TABLE_ID}
         className="table"
@@ -21,6 +21,7 @@ export default () => (
         }}
     />
 );
+export default Demo;
 
 const renderHeader = () => (
     <thead>

@@ -8,8 +8,8 @@
         "rootDir": "src",
         "baseUrl": ".",
         "paths": {
-            "@examples/*": ["./src/examples/*"],
-            "@demo": ["./src/building-blocs/Demo.tsx"]
+            "@examples/*": ["src/examples/*"],
+            "@demo": ["src/building-blocs/Demo.tsx"]
         },
         "lib": ["ES2020", "dom"],
         "typeRoots": ["./types", "./node_modules/@types"],

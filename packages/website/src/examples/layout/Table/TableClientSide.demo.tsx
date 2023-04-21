@@ -55,7 +55,7 @@ const options: TableProps<Person>['options'] = {
     getSortedRowModel: getSortedRowModel(),
 };
 
-export default () => {
+const Demo = () => {
     const data = useMemo(() => makeData(45), []);
     return (
         <Table
@@ -75,3 +75,4 @@ export default () => {
         </Table>
     );
 };
+export default Demo;

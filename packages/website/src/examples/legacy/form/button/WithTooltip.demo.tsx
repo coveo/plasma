@@ -1,7 +1,8 @@
 import {Button, TooltipPlacement} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <Button primary tooltip="Hello there!" tooltipPlacement={TooltipPlacement.Top}>
         Hover me!
     </Button>
 );
+export default Demo;

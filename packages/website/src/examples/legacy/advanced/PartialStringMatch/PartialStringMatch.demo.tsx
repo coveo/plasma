@@ -1,6 +1,6 @@
 import {PartialStringMatch} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <PartialStringMatch partialMatch="pirate">
         <div className="p1">
             I’d love to drop anchor in your lagoon. And that was done without a single drop of rum… A pirate is a man
@@ -15,3 +15,4 @@ export default () => (
         </div>
     </PartialStringMatch>
 );
+export default Demo;

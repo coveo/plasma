@@ -1,3 +1,4 @@
 import {Title} from '@coveord/plasma-mantine';
 
-export default () => <Title order={1}>The Relevance Company</Title>;
+const Demo = () => <Title order={1}>The Relevance Company</Title>;
+export default Demo;

@@ -50,9 +50,9 @@
         ]
     },
     "devDependencies": {
-        "@commitlint/cli": "17.1.2",
-        "@commitlint/config-conventional": "17.1.0",
-        "@coveo/semantic-monorepo-tools": "1.5.22",
+        "@commitlint/cli": "17.5.1",
+        "@commitlint/config-conventional": "17.4.4",
+        "@coveo/semantic-monorepo-tools": "1.7.2",
         "@sindresorhus/slugify": "2.1.1",
         "aws-sdk": "2.1222.0",
         "axios": "0.27.2",
@@ -67,7 +67,7 @@
         "sort-package-json": "1.57.0",
         "stylelint": "14.12.1",
         "tsjs": "4.2.1",
-        "turbo": "1.5.6",
+        "turbo": "1.8.8",
         "underscore": "1.13.4",
         "walkdir": "0.4.1"
     },

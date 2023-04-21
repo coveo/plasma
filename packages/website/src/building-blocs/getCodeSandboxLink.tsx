@@ -120,22 +120,41 @@ const indexHtml = `
 <!DOCTYPE html>
 <html>
 <body class="coveo-styleguide">
+    <div id="root" />
     <div id="Modals" />
     <div id="plasma-dropdowns" />
     <div id="App" />
+    <script type="module" src="./src/index.tsx"></script>
 </body>
 </html>
+`;
+
+const viteConfig = `
+import { defineConfig } from 'vite'
+import reactRefresh from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [reactRefresh()]
+})
 `;
 
 const getSandboxLink = (snippet: string): string => {
     const dependencies = getRawDependenciesFromSnippet(snippet);
     const parameters = getParameters({
-        template: 'create-react-app',
+        template: 'node',
         files: {
             'package.json': {
                 content: {
+                    scripts: {
+                        dev: 'vite',
+                        build: 'tsc && vite build',
+                        serve: 'vite preview',
+                    },
                     dependencies: addAndFineTuneDependencies(snippet, dependencies),
                     devDependencies: {
+                        vite: '^4.2.1',
+                        '@vitejs/plugin-react': '^3.1.0',
                         tslib: packageConfig.devDependencies.tslib,
                         typescript: packageConfig.devDependencies.typescript,
                         '@types/react': packageConfig.devDependencies['@types/react'],
@@ -156,12 +175,16 @@ const getSandboxLink = (snippet: string): string => {
                 content: '@import url("https://use.typekit.net/wqe4zqp.css");',
                 isBinary: false,
             },
+            'vite.config.ts': {
+                content: viteConfig,
+                isBinary: false,
+            },
+            'index.html': {
+                content: indexHtml,
+                isBinary: false,
+            },
             ...(snippetUsesPackage(snippet, '@coveord/plasma-react')
                 ? {
-                      'public/index.html': {
-                          content: indexHtml,
-                          isBinary: false,
-                      },
                       'src/Store.ts': {
                           content: storeTs,
                           isBinary: false,
@@ -170,7 +193,7 @@ const getSandboxLink = (snippet: string): string => {
                 : {}),
         },
     });
-    return `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&query=module=/src/Demo.tsx`;
+    return `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&json=1`;
 };
 
 export default getSandboxLink;

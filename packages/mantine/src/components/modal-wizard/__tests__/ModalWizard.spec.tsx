@@ -34,6 +34,8 @@ describe('ModalWizard', () => {
         ];
 
         const isDirty = () => false;
+        const onNextSpy = vi.fn();
+        const onPreviousSpy = vi.fn();
 
         render(
             <ModalWizard
@@ -41,6 +43,8 @@ describe('ModalWizard', () => {
                 handleDirtyState={() => confirm('Are you sure you want to close?')}
                 opened={true}
                 onClose={undefined}
+                onNext={onNextSpy}
+                onPrevious={onPreviousSpy}
             >
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
@@ -361,5 +365,39 @@ describe('ModalWizard', () => {
         await user.click(screen.getByRole('button', {name: /next/i}));
 
         expect(screen.getByRole('progressbar')).toBeInTheDocument();
+    });
+
+    it('enables the next step button if isStepValidatedOnNext is provided', async () => {
+        render(
+            <ModalWizard opened={true} onClose={vi.fn()} isStepValidatedOnNext>
+                <ModalWizard.Step title="Step 1" showProgressBar={false} validateStep={() => ({isValid: false})}>
+                    Content step 1
+                </ModalWizard.Step>
+                <ModalWizard.Step title="Step 2" validateStep={() => ({isValid: false})}>
+                    Content step 2
+                </ModalWizard.Step>
+            </ModalWizard>
+        );
+
+        expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();
+    });
+
+    it('enables the next step button in accordance to validateStep if isStepValidatedOnNext is not provided', async () => {
+        const user = userEvent.setup();
+
+        render(
+            <ModalWizard opened={true} onClose={vi.fn()}>
+                <ModalWizard.Step title="Step 1" showProgressBar={false} validateStep={() => ({isValid: true})}>
+                    Content step 1
+                </ModalWizard.Step>
+                <ModalWizard.Step title="Step 2" validateStep={() => ({isValid: false})}>
+                    Content step 2
+                </ModalWizard.Step>
+            </ModalWizard>
+        );
+
+        expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();
+        await user.click(screen.getByRole('button', {name: /next/i}));
+        expect(screen.getByRole('button', {name: /finish/i})).toBeDisabled();
     });
 });

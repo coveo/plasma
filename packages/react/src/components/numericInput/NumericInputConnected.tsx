@@ -69,8 +69,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: NumericInputOwnProps): Nu
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: NumericInputOwnProps): NumericInputDispatchProps => ({
     mount: (value: number) => dispatch(NumericInputActions.mount(ownProps.id, value, ownProps.min, ownProps.max)),
     unmount: () => dispatch(NumericInputActions.unmount(ownProps.id)),
-    setValue: (value: ReactText) =>
-        dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
+    setValue: (value: number) => dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
 });
 
 const inputPropsToOmit = [

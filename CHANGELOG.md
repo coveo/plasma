@@ -1,3 +1,80 @@
+# 52.3.0 (2023-04-19)
+
+
+### Features
+
+* **mantine, modal-wizard:** enable performing step validation on next button click (#3146) 60f8de0, closes #3146
+
+
+
+# 52.2.0 (2023-04-19)
+
+
+### Bug Fixes
+
+* **mantine, header:** move the DocAnchor in the title to avoid wrapping issues (#3158) 472f6ec, closes #3158
+
+
+### Features
+
+* **mantine, table:** update the style of the table header (#3152) ed7d30c, closes #3152
+
+
+
+# 52.1.0 (2023-04-17)
+
+
+### Features
+
+* **mantine:** add onCopy callback to CopyToClipboard (#3150) 3f66f51, closes #3150
+
+
+
+# 52.0.0 (2023-04-13)
+
+
+### chore
+
+* **npm:** update typescript to version 5 (#3121) f733d7d, closes #3121
+
+
+### Features
+
+* **copy-to-clip:** added copy to clipboard button (#3139) 7d87b19, closes #3139
+* **mantine, collection:** added getItemId props for ReactHookForm - CTCORE-9124 (#3140) 8e986c1, closes #3140
+* **mantine, modalwizard:** add step parameter to onPrevious and onNext props (#3120) 6a4c5dc, closes #3120
+* **mantine, table:** create a consumer semantic component (#3141) 8a1c1a2, closes #3141
+* **tokens:** extract design tokens from figma libraries (#3145) 24c5850, closes #3145
+
+
+### BREAKING CHANGES
+
+* **npm:** some typings had to change because of typescript 5
+
+
+
+# 51.2.0 (2023-04-04)
+
+
+### Features
+
+* **checkbox label:** style (#3115) 1f52c7c, closes #3115
+
+
+
+## 51.1.30 (2023-03-31)
+
+
+### Reverts
+
+* **typekit:** revert typekit.scss changes (#3116) 1429c29, closes #3116
+
+
+
+## 51.1.29 (2023-03-29)
+
+
+
 ## 51.1.28 (2023-03-28)
 
 

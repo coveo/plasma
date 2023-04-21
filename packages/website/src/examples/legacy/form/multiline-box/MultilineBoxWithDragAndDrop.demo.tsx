@@ -15,7 +15,7 @@ interface MyData {
 
 const MultilineBoxWithDragAndDrop = compose(multilineBoxWithDnD())(MultilineBox);
 
-export default () => (
+const Demo = () => (
     <FormProvider>
         <MultilineBoxWithDragAndDrop
             id="multiline-box-dnd-id"
@@ -42,3 +42,4 @@ export default () => (
         />
     </FormProvider>
 );
+export default Demo;

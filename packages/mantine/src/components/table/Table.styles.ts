@@ -1,11 +1,10 @@
 import {createStyles} from '@mantine/core';
 
 interface TableStylesParams {
-    hasHeader: boolean;
     multiRowSelectionEnabled: boolean;
 }
 
-const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, multiRowSelectionEnabled}) => {
+const useStyles = createStyles<string, TableStylesParams>((theme, {multiRowSelectionEnabled}) => {
     const rowBackgroundColor =
         theme.colorScheme === 'dark'
             ? theme.fn.rgba(theme.colors[theme.primaryColor][7], 0.2)
@@ -13,7 +12,10 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
     return {
         table: {
             width: '100%',
-            '& td:first-of-type, th:first-of-type > *': {
+            '& thead tr th': {
+                borderBottom: 'none',
+            },
+            '& td:first-of-type': {
                 paddingLeft: theme.spacing.xl,
             },
             '& tbody td': {
@@ -23,9 +25,10 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
 
         header: {
             position: 'sticky',
-            top: hasHeader ? 69 : 0,
+            top: 0,
             backgroundColor: theme.colorScheme === 'dark' ? theme.black : theme.white,
             transition: 'box-shadow 150ms ease',
+            zIndex: 1,
 
             '&::after': {
                 content: '""',
@@ -33,7 +36,13 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
                 left: 0,
                 right: 0,
                 bottom: 0,
-                borderBottom: `1px solid ${theme.colors.gray[2]}`,
+                borderBottom: `1px solid ${theme.colors.gray[3]}`,
+            },
+        },
+
+        headerColumns: {
+            '& th:first-of-type > *': {
+                paddingLeft: theme.spacing.xl,
             },
         },
 
@@ -53,5 +62,13 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {hasHeader, mu
         },
     };
 });
+
+export const TableComponentsOrder = {
+    MultiSelectInfo: 5,
+    Actions: 4,
+    Predicate: 3,
+    Filter: 2,
+    DateRangePicker: 1,
+};
 
 export default useStyles;

@@ -1,6 +1,6 @@
 import {RadioSelectConnected, Radio, Label} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <RadioSelectConnected
         id="radio-select-id"
         valueOnMount="1"
@@ -19,3 +19,4 @@ export default () => (
         </Radio>
     </RadioSelectConnected>
 );
+export default Demo;

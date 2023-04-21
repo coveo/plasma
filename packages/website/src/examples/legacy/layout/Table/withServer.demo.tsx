@@ -12,7 +12,7 @@ import {compose} from 'redux';
 const TABLE_ID: string = 'withServerTableId';
 const ServerTableComposed = compose<any>(withServerSideProcessing, tableWithUrlState)(TableHOC);
 
-export default () => {
+const Demo = () => {
     const [users, totalEntries, fetchUsers] = useAPIMock();
 
     const updateUrl = (query: string) => {
@@ -37,6 +37,7 @@ export default () => {
         />
     );
 };
+export default Demo;
 
 const clean = <T extends Record<string, unknown>>(object: T) => {
     Object.keys(object).forEach((key) => (object[key] === undefined ? delete object[key] : {}));

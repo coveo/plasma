@@ -1,6 +1,6 @@
 import {InfoBox, CollapsibleConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <InfoBox className="py0">
         <CollapsibleConnected
             headerClasses="py2"
@@ -15,3 +15,4 @@ export default () => (
         </CollapsibleConnected>
     </InfoBox>
 );
+export default Demo;

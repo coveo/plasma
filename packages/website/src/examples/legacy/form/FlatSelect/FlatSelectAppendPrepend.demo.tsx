@@ -1,7 +1,7 @@
 import {FlatSelectConnected} from '@coveord/plasma-react';
 import {ZombieSize16Px} from '@coveord/plasma-react-icons';
 
-export default () => (
+const Demo = () => (
     <FlatSelectConnected
         id="flat-select-append-prepend-id"
         options={[
@@ -24,3 +24,4 @@ export default () => (
         ]}
     />
 );
+export default Demo;

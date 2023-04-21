@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-style",
-    "version": "51.1.26",
+    "version": "52.0.0",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -61,8 +61,8 @@
         "lint-staged": "9.5.0",
         "merge-stream": "1.0.1",
         "minimist": "1.2.8",
-        "postcss": "8.4.4",
-        "postcss-scss": "4.0.4",
+        "postcss": "8.4.21",
+        "postcss-scss": "4.0.6",
         "rimraf": "3.0.2",
         "sass": "1.51.0",
         "underscore": "1.13.1",

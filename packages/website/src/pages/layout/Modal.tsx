@@ -1,6 +1,6 @@
 import {ModalMetadata} from '@coveord/plasma-components-props-analyzer';
-import ModalDemo from '@examples/layout/Modal/Modal.demo.tsx';
-import ModalWithTabsDemo from '@examples/layout/Modal/ModalWithTabs.demo.tsx';
+import ModalDemo from '@examples/layout/Modal/Modal.demo?demo';
+import ModalWithTabsDemo from '@examples/layout/Modal/ModalWithTabs.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 

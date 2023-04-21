@@ -1,6 +1,6 @@
 import {BlankSlateWithTableInError, ButtonWithRefreshCallback} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <table className="table">
         <thead>
             <tr>
@@ -34,3 +34,4 @@ export default () => (
         </tbody>
     </table>
 );
+export default Demo;

@@ -1,6 +1,6 @@
 import {CollapsibleContainerConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <CollapsibleContainerConnected
         id="collapsible-container-example-1"
         title="Collapsible Container expanded on mount"
@@ -13,3 +13,4 @@ export default () => (
         I am expanded on mount!
     </CollapsibleContainerConnected>
 );
+export default Demo;

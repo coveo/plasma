@@ -1,6 +1,6 @@
 import {IItemBoxProps, MultiSelectWithPredicate} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <MultiSelectWithPredicate
         id="multi-select-3"
         items={[
@@ -28,3 +28,4 @@ export default () => (
         }}
     />
 );
+export default Demo;

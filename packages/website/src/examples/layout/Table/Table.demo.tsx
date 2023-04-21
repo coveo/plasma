@@ -45,7 +45,7 @@ const columns: Array<ColumnDef<IExampleRowData>> = [
     // Table.AccordionColumn as ColumnDef<IExampleRowData>,
 ];
 
-export default () => {
+const Demo = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [pages, setPages] = useState(1);
@@ -107,6 +107,7 @@ export default () => {
         </Table>
     );
 };
+export default Demo;
 
 const NoData: FunctionComponent = () => {
     const {clearFilters, isFiltered} = useTable();

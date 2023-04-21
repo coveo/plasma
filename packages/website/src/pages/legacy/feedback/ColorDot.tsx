@@ -1,6 +1,6 @@
-import ColorDotDemo from '@examples/legacy/feedback/ColorDot/ColorDot.demo.tsx';
-import ColorDotExecutingDemo from '@examples/legacy/feedback/ColorDot/ColorDotExecuting.demo.tsx';
-import ColorDotSizeDemo from '@examples/legacy/feedback/ColorDot/ColorDotSize.demo.tsx';
+import ColorDotDemo from '@examples/legacy/feedback/ColorDot/ColorDot.demo?demo';
+import ColorDotExecutingDemo from '@examples/legacy/feedback/ColorDot/ColorDotExecuting.demo?demo';
+import ColorDotSizeDemo from '@examples/legacy/feedback/ColorDot/ColorDotSize.demo?demo';
 
 import {PageLayout} from '../../../building-blocs/PageLayout';
 

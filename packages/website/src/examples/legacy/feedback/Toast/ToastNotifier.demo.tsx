@@ -19,9 +19,10 @@ const ShowToastButton: React.FunctionComponent = () => {
     );
 };
 
-export default () => (
+const Demo = () => (
     <>
         <ToastContainerConnected id="toast-container-id" />
         <ShowToastButton />
     </>
 );
+export default Demo;

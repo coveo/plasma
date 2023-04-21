@@ -1,6 +1,6 @@
 import {Checkbox, Collection, TextInput, useForm} from '@coveord/plasma-mantine';
 
-export default () => {
+const Demo = () => {
     const form = useForm({
         validateInputOnChange: true,
         initialValues: {
@@ -24,7 +24,7 @@ export default () => {
             newItem={{name: '', done: false}}
             {...form.getInputProps('todoList')}
         >
-            {(task, index) => (
+            {(_task, index) => (
                 <>
                     <TextInput
                         // Autofocus is annoying when playing with the sandbox but you should have this on otherwise
@@ -38,3 +38,4 @@ export default () => {
         </Collection>
     );
 };
+export default Demo;

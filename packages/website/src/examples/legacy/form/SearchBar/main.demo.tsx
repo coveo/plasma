@@ -1,7 +1,7 @@
 import {SearchBar} from '@coveord/plasma-react';
 import {useState} from 'react';
 
-export default () => {
+const Demo = () => {
     const [isSearching, setSearching] = useState(false);
     const [value, setValue] = useState('');
 
@@ -22,3 +22,4 @@ export default () => {
         />
     );
 };
+export default Demo;

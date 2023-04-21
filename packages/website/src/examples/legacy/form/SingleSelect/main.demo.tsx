@@ -1,6 +1,6 @@
 import {SingleSelectConnected} from '@coveord/plasma-react';
 
-export default () => (
+const Demo = () => (
     <SingleSelectConnected
         id="single-select-1"
         items={[
@@ -10,3 +10,4 @@ export default () => (
         ]}
     />
 );
+export default Demo;

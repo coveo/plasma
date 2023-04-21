@@ -1,3 +1,4 @@
 import {BasicHeaderLoading} from '@coveord/plasma-react';
 
-export default () => <BasicHeaderLoading />;
+const Demo = () => <BasicHeaderLoading />;
+export default Demo;

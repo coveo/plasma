@@ -13,7 +13,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const MY_ID = 'action-bar-id';
 
-export default () => {
+const Demo = () => {
     const dispatch: IDispatch = useDispatch();
 
     const actions = useSelector(
@@ -37,6 +37,7 @@ export default () => {
         </>
     );
 };
+export default Demo;
 
 const BIG_LIST_OF_ACTIONS: IActionOptions[] = [
     ACTION_SEPARATOR,

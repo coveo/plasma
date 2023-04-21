@@ -18,6 +18,7 @@ import useStyles from './Table.styles';
 import {TableFormType, TableProps, TableState, TableType} from './Table.types';
 import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
+import {TableConsumer} from './TableConsumer';
 import {TableContext} from './TableContext';
 import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
@@ -55,12 +56,13 @@ export const Table: TableType = <T,>({
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
     const footer = convertedChildren.find((child) => child.type === TableFooter);
+    const consumer = convertedChildren.find((child) => child.type === TableConsumer);
 
     const {predicates, dateRange, ...initialStateWithoutForm} = initialState;
     const form = useForm<TableFormType>({
         initialValues: {predicates: initialState?.predicates ?? {}, dateRange: initialState?.dateRange ?? [null, null]},
     });
-    const {cx, classes} = useStyles({hasHeader: !!header, multiRowSelectionEnabled});
+    const {cx, classes} = useStyles({multiRowSelectionEnabled});
 
     const table = useReactTable({
         initialState: defaultsDeep(initialStateWithoutForm, {pagination: {pageSize: TablePerPage.DEFAULT_SIZE}}),
@@ -189,15 +191,22 @@ export const Table: TableType = <T,>({
                     getPageCount: table.getPageCount,
                 }}
             >
+                {consumer}
                 {!rows.length && !isFiltered && !loading ? (
                     noDataChildren
                 ) : (
                     <>
-                        {header}
                         <MantineTable className={classes.table} horizontalSpacing="sm" verticalSpacing="xs" pb="sm">
                             <thead className={classes.header}>
+                                {!!header ? (
+                                    <tr>
+                                        <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
+                                            {header}
+                                        </th>
+                                    </tr>
+                                ) : null}
                                 {table.getHeaderGroups().map((headerGroup) => (
-                                    <tr key={headerGroup.id}>
+                                    <tr key={headerGroup.id} className={classes.headerColumns}>
                                         {headerGroup.headers.map((columnHeader) => (
                                             <Th key={columnHeader.id} header={columnHeader} />
                                         ))}
@@ -235,3 +244,4 @@ Table.Predicate = TablePredicate;
 Table.CollapsibleColumn = TableCollapsibleColumn;
 Table.AccordionColumn = TableAccordionColumn;
 Table.DateRangePicker = TableDateRangePicker;
+Table.Consumer = TableConsumer;
