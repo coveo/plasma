@@ -1,8 +1,7 @@
 {
     "extends": ["config:base"],
     "timezone": "America/Montreal",
-    "schedule": ["after 8pm every weekday", "before 6am every weekday", "every weekend"],
-    "updateNotScheduled": false,
+    "schedule": ["at any time"],
     "semanticCommitScope": "deps",
     "commitBody": "UITOOL-284",
     "packageRules": [
@@ -11,7 +10,6 @@
             "updateTypes": ["minor", "patch"],
             "automerge": true,
             "semanticCommitType": "chore",
-            "stabilityDays": 7,
             "internalChecksFilter": "strict"
         },
         {
