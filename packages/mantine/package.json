@@ -14,7 +14,7 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/plasma.git",
-        "directory": "packages/react-icons"
+        "directory": "packages/mantine"
     },
     "license": "Apache-2.0",
     "author": "Coveo",
