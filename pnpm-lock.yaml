@@ -427,8 +427,8 @@ importers:
         specifier: 3.1.0
         version: 3.1.0
       '@types/enzyme':
-        specifier: 3.10.12
-        version: 3.10.12
+        specifier: 3.10.13
+        version: 3.10.13
       '@types/escape-string-regexp':
         specifier: 1.0.0
         version: 1.0.0
@@ -3617,8 +3617,8 @@ packages:
       '@types/ms': 0.7.31
     dev: false
 
-  /@types/enzyme@3.10.12:
-    resolution: {integrity: sha512-xryQlOEIe1TduDWAOphR0ihfebKFSWOXpIsk+70JskCfRfW+xALdnJ0r1ZOTo85F9Qsjk6vtlU7edTYHbls9tA==}
+  /@types/enzyme@3.10.13:
+    resolution: {integrity: sha512-FCtoUhmFsud0Yx9fmZk179GkdZ4U9B0GFte64/Md+W/agx0L5SxsIIbhLBOxIb9y2UfBA4WQnaG1Od/UsUQs9Q==}
     dependencies:
       '@types/cheerio': 0.22.31
       '@types/react': 18.0.25
