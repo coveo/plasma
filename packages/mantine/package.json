@@ -8,6 +8,14 @@
         "components",
         "coveo"
     ],
+    "bugs": {
+        "url": "https://github.com/coveo/plasma/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/coveo/plasma.git",
+        "directory": "packages/mantine"
+    },
     "license": "Apache-2.0",
     "author": "Coveo",
     "main": "./dist/cjs/index.js",
