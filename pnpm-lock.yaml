@@ -825,8 +825,8 @@ importers:
         specifier: 6.0.2
         version: 6.0.2
       '@coveo/atomic-react':
-        specifier: 2.2.10
-        version: 2.2.10(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.23)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.2.14
+        version: 2.2.14(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.23)(react-dom@18.2.0)(react@18.2.0)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -1544,14 +1544,14 @@ packages:
     resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
     dev: false
 
-  /@coveo/atomic-react@2.2.10(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.23)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-JksazfCvaCgpyuDvD0Yme/hX5suMkU8jpgnYGcB24MN6XPHthaHVN5bsEAY+fap0lW5XP6hzyKOxk1jVKzUlFQ==}
+  /@coveo/atomic-react@2.2.14(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.23)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-DRFA4ynazAm9NMkBbKU7wbWiWVTl+cUoEoss0i8KS3m3wkiVNbxPp0pRbqolI0LU/gPx/JW7YYv60X7yNfOVEg==}
     peerDependencies:
       '@coveo/headless': ^2.0.0
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@coveo/atomic': 2.23.4(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.23)
+      '@coveo/atomic': 2.25.2(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.23)
       '@coveo/headless': 2.10.1(encoding@0.1.13)(pino-pretty@6.0.0)(react-redux@7.2.6)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -1560,8 +1560,8 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/atomic@2.23.4(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.23):
-    resolution: {integrity: sha512-OL0mSK2ynQxPp7Ya+DVQ64OmvDFNoCuuCLxVWVlDaTVX7PF5agRw4Diac0hF98uRYqZFkooea8rlqhgc0R34QA==}
+  /@coveo/atomic@2.25.2(@coveo/headless@2.10.1)(encoding@0.1.13)(postcss@8.4.23):
+    resolution: {integrity: sha512-BZbGEzzRsDD3vB6IFE8q058bdzU0xTdhq5/dGVULgz/aq4e7ofgoOeugIfUrdujcU7Xky3U/CzwZe/0O2ABMUg==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
       '@coveo/headless': ^2.0.0
@@ -8654,7 +8654,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
