@@ -327,8 +327,8 @@ importers:
         specifier: 4.0.2
         version: 4.0.2
       d3-shape:
-        specifier: 3.1.0
-        version: 3.1.0
+        specifier: 3.2.0
+        version: 3.2.0
       dnd-core:
         specifier: 16.0.1
         version: 16.0.1
@@ -424,8 +424,8 @@ importers:
         specifier: 4.0.3
         version: 4.0.3
       '@types/d3-shape':
-        specifier: 3.1.0
-        version: 3.1.0
+        specifier: 3.1.1
+        version: 3.1.1
       '@types/enzyme':
         specifier: 3.10.13
         version: 3.10.13
@@ -3545,8 +3545,8 @@ packages:
     resolution: {integrity: sha512-Mw5cf6nlW1MlefpD9zrshZ+DAWL4IQ5LnWfRheW6xwsdaWOb6IRRu2H7XPAQcyXEx1D7XQWgdoKR83ui1/HlEA==}
     dev: true
 
-  /@types/d3-shape@3.1.0:
-    resolution: {integrity: sha512-jYIYxFFA9vrJ8Hd4Se83YI6XF+gzDL1aC5DCsldai4XYYiVNdhtpGbA/GM6iyQ8ayhSp3a148LY34hy7A4TxZA==}
+  /@types/d3-shape@3.1.1:
+    resolution: {integrity: sha512-6Uh86YFF7LGg4PQkuO2oG6EMBRLuW9cbavUW46zkIO5kuS2PfTqo2o9SkgtQzguBHbLgNnU90UNsITpsX1My+A==}
     dependencies:
       '@types/d3-path': 3.0.0
     dev: true
@@ -3603,7 +3603,7 @@ packages:
       '@types/d3-scale': 4.0.3
       '@types/d3-scale-chromatic': 3.0.0
       '@types/d3-selection': 3.0.3
-      '@types/d3-shape': 3.1.0
+      '@types/d3-shape': 3.1.1
       '@types/d3-time': 3.0.0
       '@types/d3-time-format': 4.0.0
       '@types/d3-timer': 3.0.0
@@ -6569,7 +6569,7 @@ packages:
     resolution: {integrity: sha512-VE5S6TNa+j8msksl7HwjxMHDM2yNK3XCkusIlpX5kwauBfXuyLAtNg9jCp/iHH61tgI4sb6R/EIMWCqEIdjT/g==}
     engines: {node: '>=12'}
     dependencies:
-      d3-path: 3.0.1
+      d3-path: 3.1.0
     dev: false
 
   /d3-color@3.1.0:
@@ -6664,6 +6664,11 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
+  /d3-path@3.1.0:
+    resolution: {integrity: sha512-p3KP5HCf/bvjBSSKuXid6Zqijx7wIfNW+J/maPs+iwR35at5JCbLUT0LzF1cnjbCHWhqzQTIN2Jpe8pRebIEFQ==}
+    engines: {node: '>=12'}
+    dev: false
+
   /d3-polygon@3.0.1:
     resolution: {integrity: sha512-3vbA7vXYwfe1SYhED++fPUQlWSYTTGmFmQiany/gdbiWgU/iEyQzyymwL9SkJjFFuCS4902BSzewVGsHHmHtXg==}
     engines: {node: '>=12'}
@@ -6703,11 +6708,11 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /d3-shape@3.1.0:
-    resolution: {integrity: sha512-tGDh1Muf8kWjEDT/LswZJ8WF85yDZLvVJpYU9Nq+8+yW1Z5enxrmXOhTArlkaElU+CTn0OTVNli+/i+HP45QEQ==}
+  /d3-shape@3.2.0:
+    resolution: {integrity: sha512-SaLBuwGm3MOViRq2ABk3eLoxwZELpH6zhl3FbAoJ7Vm1gofKx6El1Ib5z23NUEhF9AsGl7y+dzLe5Cw2AArGTA==}
     engines: {node: '>=12'}
     dependencies:
-      d3-path: 3.0.1
+      d3-path: 3.1.0
     dev: false
 
   /d3-time-format@4.1.0:
@@ -6782,7 +6787,7 @@ packages:
       d3-scale: 4.0.2
       d3-scale-chromatic: 3.0.0
       d3-selection: 3.0.0
-      d3-shape: 3.1.0
+      d3-shape: 3.2.0
       d3-time: 3.0.0
       d3-time-format: 4.1.0
       d3-timer: 3.0.1
