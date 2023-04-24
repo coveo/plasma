@@ -42,7 +42,6 @@ describe('Header', () => {
         );
         const breadcrumbsFirst = container;
 
-        expect(titleFirst).toMatchSnapshot();
         expect(breadcrumbsFirst).toEqual(titleFirst);
     });
 

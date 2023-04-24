@@ -3,7 +3,6 @@
     "compilerOptions": {
         "outDir": "./dist",
         "declarationDir": "./dist/definitions",
-        "rootDir": "src",
         "tsBuildInfoFile": "./dist/.tsbuildinfo",
         "baseUrl": ".",
         "paths": {
@@ -11,5 +10,5 @@
         },
         "types": ["vitest/globals"]
     },
-    "include": ["src", "__mocks__"]
+    "exclude": ["node_modules", "dist", ".turbo"]
 }

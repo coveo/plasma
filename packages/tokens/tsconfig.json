@@ -1,17 +1,4 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "lib": ["es2019"],
-        "module": "commonjs",
-        "strict": true,
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-        "forceConsistentCasingInFileNames": true,
-        "declaration": true,
-        "types": [],
-        "preserveSymlinks": true,
-        "outDir": "./dist",
-        "importHelpers": true
-    },
+    "extends": "../tsconfig-base.json",
     "include": ["src"]
 }

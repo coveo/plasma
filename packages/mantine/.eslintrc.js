@@ -15,6 +15,7 @@ module.exports = {
     plugins: ['vitest'],
     overrides: [
         {
+            ignorePatterns: ['*.vizreg.spec.*'],
             files: ['**/*.spec.*'],
             env: {
                 'vitest-globals/env': true,
