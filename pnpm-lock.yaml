@@ -318,8 +318,8 @@ importers:
         specifier: 5.63.3
         version: 5.63.3
       d3:
-        specifier: 7.6.1
-        version: 7.6.1
+        specifier: 7.8.4
+        version: 7.8.4
       d3-array:
         specifier: 3.2.3
         version: 3.2.3
@@ -6754,8 +6754,8 @@ packages:
       d3-transition: 3.0.1(d3-selection@3.0.0)
     dev: false
 
-  /d3@7.6.1:
-    resolution: {integrity: sha512-txMTdIHFbcpLx+8a0IFhZsbp+PfBBPt8yfbmukZTQFroKuFqIwqswF0qE5JXWefylaAVpSXFoKm3yP+jpNLFLw==}
+  /d3@7.8.4:
+    resolution: {integrity: sha512-q2WHStdhiBtD8DMmhDPyJmXUxr6VWRngKyiJ5EfXMxPw+tqT6BhNjhJZ4w3BHsNm3QoVfZLY8Orq/qPFczwKRA==}
     engines: {node: '>=12'}
     dependencies:
       d3-array: 3.2.3
