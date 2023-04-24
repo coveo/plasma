@@ -107,8 +107,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1
       '@typescript/vfs':
-        specifier: 1.3.5
-        version: 1.3.5
+        specifier: 1.4.0
+        version: 1.4.0
       cross-fetch:
         specifier: 3.1.5
         version: 3.1.5(encoding@0.1.13)
@@ -4403,14 +4403,6 @@ packages:
       '@typescript/vfs': 1.4.0
       debug: 4.3.4
       lz-string: 1.4.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /@typescript/vfs@1.3.5:
-    resolution: {integrity: sha512-pI8Saqjupf9MfLw7w2+og+fmb0fZS0J6vsKXXrp4/PDXEFvntgzXmChCXC/KefZZS0YGS6AT8e0hGAJcTsdJlg==}
-    dependencies:
-      debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
     dev: true
