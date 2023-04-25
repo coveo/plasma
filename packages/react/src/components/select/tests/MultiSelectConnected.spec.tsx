@@ -1,6 +1,6 @@
-/* eslint-disable testing-library/no-container */
 import {fireEvent, render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
+
 import {MultiSelectConnected} from '../MultiSelectConnected';
 
 describe('Select', () => {
@@ -219,18 +219,13 @@ describe('Select', () => {
         it('allows custom toggleClasses on the dropdown', () => {
             const {container} = render(<MultiSelectConnected id={id} items={[]} toggleClasses="coulili-zazou" />);
 
+            // eslint-disable-next-line testing-library/no-container
             expect(container.querySelector('.coulili-zazou')).toBeVisible();
         });
 
         describe('Sortable', () => {
-            const dragAndDrop = (source: Element, position: number) => {
-                // We must query the listitem role again on each event because it gets reordered during the drag and drop process
-                const eventData: any = {dataTransfer: {files: []}};
-                fireEvent.dragStart(source, eventData);
-                fireEvent.dragEnter(screen.getAllByRole('listitem')[position], eventData);
-                fireEvent.dragOver(screen.getAllByRole('listitem')[position], eventData);
-                fireEvent.drop(screen.getAllByRole('listitem')[position], eventData);
-            };
+            // testing drag and drop is impossible with jest due to jsdom getClientBoundingRect limitations
+            // it should be tested in a real browser environment using something like cypress or playwright
 
             it('does not have the drag icon if the component is not sortable', () => {
                 const items = [{value: '🌱', selected: true}];
@@ -244,29 +239,6 @@ describe('Select', () => {
                 expect(dragIcons).not.toBeInTheDocument();
             });
 
-            it('is possible to reorder items', async () => {
-                const items = [
-                    {value: '🌱', selected: true},
-                    {value: '🥔', selected: true},
-                    {value: '🍟', selected: true},
-                ];
-
-                render(<MultiSelectConnected id={id} items={items} sortable />);
-
-                let listitems = screen.getAllByRole('listitem');
-                expect(listitems[0]).toHaveTextContent('🌱');
-                expect(listitems[1]).toHaveTextContent('🥔');
-                expect(listitems[2]).toHaveTextContent('🍟');
-
-                const dragIcons = await screen.findAllByRole('img', {name: /draganddrop/i});
-                dragAndDrop(dragIcons[1], 2);
-
-                listitems = screen.getAllByRole('listitem');
-                expect(listitems[0]).toHaveTextContent('🌱');
-                expect(listitems[1]).toHaveTextContent('🍟');
-                expect(listitems[2]).toHaveTextContent('🥔');
-            });
-
             it('is possible to remove a selected item', async () => {
                 const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
                 render(<MultiSelectConnected id={id} items={items} sortable />);
@@ -275,51 +247,11 @@ describe('Select', () => {
                 expect(listitems[0]).toHaveTextContent('🌱');
                 expect(listitems[1]).toHaveTextContent('🥔');
 
-                await userEvent.click(within(listitems[0]).getByRole('button'));
+                await userEvent.click(within(listitems[0]).getByRole('button', {name: 'cross'}));
 
                 listitems = screen.getAllByRole('listitem');
                 expect(listitems.length).toBe(1);
                 expect(listitems[0]).toHaveTextContent('🥔');
-            });
-
-            it('does not allow to drag items across different multi selects', async () => {
-                render(
-                    <>
-                        <MultiSelectConnected
-                            id="fruits"
-                            items={[
-                                {value: '🍌', selected: true},
-                                {value: '🍊', selected: true},
-                            ]}
-                            sortable
-                        />
-                        ;
-                        <MultiSelectConnected
-                            id="tools"
-                            items={[
-                                {value: '🔨', selected: true},
-                                {value: '🔧', selected: true},
-                            ]}
-                            sortable
-                        />
-                        ;
-                    </>
-                );
-
-                let listitems = screen.getAllByRole('listitem');
-                expect(listitems[0]).toHaveTextContent('🍌');
-                expect(listitems[1]).toHaveTextContent('🍊');
-                expect(listitems[2]).toHaveTextContent('🔨');
-                expect(listitems[3]).toHaveTextContent('🔧');
-
-                const dragIcons = await screen.findAllByRole('img', {name: /drag/i});
-                dragAndDrop(dragIcons[1], 2);
-
-                listitems = screen.getAllByRole('listitem');
-                expect(listitems[0]).toHaveTextContent('🍌');
-                expect(listitems[1]).toHaveTextContent('🍊');
-                expect(listitems[2]).toHaveTextContent('🔨');
-                expect(listitems[3]).toHaveTextContent('🔧');
             });
         });
     });

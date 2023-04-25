@@ -1,4 +1,7 @@
 import {AddSize16Px} from '@coveord/plasma-react-icons';
+import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
+import {restrictToParentElement, restrictToVerticalAxis} from '@dnd-kit/modifiers';
+import {SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from '@dnd-kit/sortable';
 import {
     Box,
     DefaultProps,
@@ -13,8 +16,7 @@ import {
 } from '@mantine/core';
 import {ReorderPayload} from '@mantine/form/lib/types';
 import {useDidUpdate} from '@mantine/hooks';
-import {ReactNode, useId} from 'react';
-import {DragDropContext, Droppable} from 'react-beautiful-dnd';
+import {ReactNode} from 'react';
 
 import {Button} from '../button';
 import useStyles from './Collection.styles';
@@ -131,6 +133,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     disabled: false,
     spacing: 'xs',
     required: false,
+    getItemId: ({id}: any) => id,
 };
 
 export const Collection = <T,>(props: CollectionProps<T>) => {
@@ -167,7 +170,12 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         ...others
     } = useComponentDefaultProps('Collection', defaultProps as CollectionProps<T>, props);
     const {classes, cx} = useStyles(null, {classNames, name: 'Collection', styles, unstyled});
-    const collectionID = useId();
+    const sensors = useSensors(
+        useSensor(PointerSensor),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates,
+        })
+    );
 
     const hasOnlyOneItem = value.length === 1;
 
@@ -197,17 +205,19 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
             </>
         ) : null;
 
-    const items = value.map((item, index) => (
+    const standardizedItems = value.map((item, index) => ({id: getItemId?.(item) ?? String(index), data: item}));
+
+    const items = standardizedItems.map((item, index) => (
         <CollectionItem
-            key={(getItemId?.(item) ?? index) as string}
+            key={item.id}
+            id={item.id}
             disabled={disabled}
             draggable={draggable}
-            index={index}
             onRemove={() => onRemoveItem?.(index)}
             styles={styles}
             removable={!(required && hasOnlyOneItem)}
         >
-            {children(item, index)}
+            {children(item.data, index)}
         </CollectionItem>
     ));
 
@@ -230,28 +240,34 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         </Group>
     );
 
+    const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);
+
+    const handleDragEnd = ({over, active}: DragEndEvent): void => {
+        if (over) {
+            const activeIndex = getIndex(String(active.id));
+            const overIndex = getIndex(String(over.id));
+            if (activeIndex !== overIndex) {
+                onReorderItem?.({from: activeIndex, to: overIndex});
+            }
+        }
+    };
+
     return (
-        <DragDropContext
-            onDragEnd={({destination, source}) => onReorderItem({from: source.index, to: destination?.index || 0})}
+        <DndContext
+            onDragEnd={handleDragEnd}
+            sensors={sensors}
+            modifiers={[restrictToVerticalAxis, restrictToParentElement]}
         >
-            <Droppable direction="vertical" droppableId={collectionID}>
-                {(provided) => (
-                    <Box
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
-                        className={cx(classes.root, className)}
-                        {...others}
-                    >
-                        {_header}
-                        <Stack spacing={spacing}>
-                            {items}
-                            {provided.placeholder}
-                            {_addButton}
-                            {_error}
-                        </Stack>
-                    </Box>
-                )}
-            </Droppable>
-        </DragDropContext>
+            <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
+                <Box className={cx(classes.root, className)} {...others}>
+                    {_header}
+                    <Stack spacing={spacing}>
+                        {items}
+                        {_addButton}
+                        {_error}
+                    </Stack>
+                </Box>
+            </SortableContext>
+        </DndContext>
     );
 };

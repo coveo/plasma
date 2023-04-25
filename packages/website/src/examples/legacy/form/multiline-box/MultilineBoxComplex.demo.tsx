@@ -5,7 +5,6 @@ import {
     IMultilineParentProps,
     IMultilineSingleBoxProps,
     MultilineBox,
-    multilineBoxContainer,
     multilineBoxWithDnD,
     multilineBoxWithRemoveButton,
     TextInput,
@@ -17,14 +16,7 @@ interface MyData {
     name: string;
 }
 
-const containerNodeExample = (child: ReactNode, data: Array<IMultilineSingleBoxProps<MyData>>, index: number) => (
-    <div key={`${data[index].id}Container`} className="p1">
-        {child}
-    </div>
-);
-
 const ComplexMultilineBox = compose(
-    multilineBoxWithDnD(),
     multilineBoxWithRemoveButton({
         containerNode: (child: ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode) => (
             <div className="inline-flex center-align">
@@ -35,9 +27,7 @@ const ComplexMultilineBox = compose(
             </div>
         ),
     }),
-    multilineBoxContainer({
-        containerNode: containerNodeExample,
-    })
+    multilineBoxWithDnD()
 )(MultilineBox);
 
 const Demo = () => (

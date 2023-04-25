@@ -1,15 +1,13 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
 import {ComponentType, CSSProperties, PureComponent, ReactNode} from 'react';
-import {DndProvider} from 'react-dnd';
-import {HTML5Backend} from 'react-dnd-html5-backend';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {CollapsibleToggle} from '../collapsible';
-import {DnDUtils} from '../dragAndDrop';
+import {Sortable} from '../dragAndDrop';
 import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
@@ -106,7 +104,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
     };
 
     render() {
-        const select = (
+        return (
             <SelectConnected
                 id={this.props.id}
                 key={this.props.id}
@@ -117,21 +115,24 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
                 {this.props.children}
             </SelectConnected>
         );
-        return this.props.sortable ? <DndProvider backend={HTML5Backend}>{select}</DndProvider> : select;
     }
 
     private getSelectedOptionComponents(): ReactNode {
         const selected = this.getSelectedOptions();
 
         if (selected.length) {
-            return selected.map((item: IItemBoxProps, index: number) =>
-                this.props.sortable ? this.renderDraggableOption(item, index) : this.renderOption(item)
+            return this.props.sortable ? (
+                <Sortable items={this.props.selected} onReorder={this.props.onReorder}>
+                    {selected.map(this.renderDraggableOption)}
+                </Sortable>
+            ) : (
+                selected.map(this.renderOption)
             );
         }
         return <span className="multiselect-empty">{this.props.emptyPlaceholder}</span>;
     }
 
-    private renderOption(item: IItemBoxProps): JSX.Element {
+    private renderOption = (item: IItemBoxProps): JSX.Element => {
         const displayValue = item.selectedDisplayValue ?? item.displayValue ?? item.value;
         return (
             <SelectedOption
@@ -145,32 +146,26 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
                 {displayValue}
             </SelectedOption>
         );
-    }
+    };
 
-    private renderDraggableOption(item: IItemBoxProps, index: number): JSX.Element {
-        return (
-            <div
-                className={classNames('flex flex-row flex-center sortable-selected-option', {
-                    readOnly: this.props.readOnly,
-                })}
-                key={item.value}
-            >
-                <span className="mr1">{index + 1}</span>
-                <DraggableSelectedOption
-                    parentId={this.props.id}
-                    label={item.selectedDisplayValue ?? item.displayValue ?? item.value}
-                    selectedTooltip={item.selectedTooltip}
-                    value={item.value}
-                    onRemoveClick={() => this.props.onRemoveClick(item)}
-                    readOnly={this.props.readOnly}
-                    onMoveOver={(draggedValue: string) => {
-                        const newOrder = DnDUtils.reorder(draggedValue, item.value, this.props.selected);
-                        this.props.onReorder(newOrder);
-                    }}
-                />
-            </div>
-        );
-    }
+    private renderDraggableOption = (item: IItemBoxProps, index: number): JSX.Element => (
+        <div
+            className={classNames('flex flex-row flex-center sortable-selected-option', {
+                readOnly: this.props.readOnly,
+            })}
+            key={item.value}
+        >
+            <span className="mr1">{index + 1}</span>
+            <DraggableSelectedOption
+                parentId={this.props.id}
+                label={item.selectedDisplayValue ?? item.displayValue ?? item.value}
+                selectedTooltip={item.selectedTooltip}
+                value={item.value}
+                onRemoveClick={() => this.props.onRemoveClick(item)}
+                readOnly={this.props.readOnly}
+            />
+        </div>
+    );
 
     private getRemoveAllSelectedOptionsButton(): JSX.Element {
         return this.getSelectedOptions().length > 1 && !this.props.readOnly ? (

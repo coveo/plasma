@@ -39,5 +39,5 @@ module.exports = {
     testMatch: ['<rootDir>/src/**/*.spec.{ts,tsx}'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'scss'],
     testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
-    transformIgnorePatterns: ['<rootDir>/node_modules/(?!(react-dnd|dnd-core|react-dnd-html5-backend)/)'],
+    transformIgnorePatterns: ['<rootDir>/node_modules'],
 };
