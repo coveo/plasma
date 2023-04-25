@@ -258,8 +258,8 @@ importers:
         specifier: 0.0.57
         version: 0.0.57(eslint@8.39.0)(typescript@5.0.3)
       eslint-plugin-vitest-globals:
-        specifier: 1.2.0
-        version: 1.2.0
+        specifier: 1.3.1
+        version: 1.3.1
       identity-obj-proxy:
         specifier: 3.0.0
         version: 3.0.0
@@ -7684,11 +7684,6 @@ packages:
       eslint: 8.39.0
     dev: true
 
-  /eslint-config-sets@1.8.3:
-    resolution: {integrity: sha512-X9OtGgO3olmrUB42aWMIm9rO+ehz89dysyfWBITHq8N9hB/AxHuNkqHVNU3YLT53WpbRopVCEHIBhZ2i1dMFyw==}
-    deprecated: '这个项目已停止维护，推荐使用重新开发的更现代化的@eslint-sets: https://github.com/saqqdy/eslint-sets'
-    dev: true
-
   /eslint-import-resolver-node@0.3.6:
     resolution: {integrity: sha512-0En0w03NRVMn9Uiyn8YRPDKvWjxCWkslUEhGNTdGx15RvPJYQ+lbOlqrlNI2vEAs4pDYK4f/HN2TbDmk5TP0iw==}
     dependencies:
@@ -7895,10 +7890,8 @@ packages:
       eslint-rule-composer: 0.3.0
     dev: true
 
-  /eslint-plugin-vitest-globals@1.2.0:
-    resolution: {integrity: sha512-vINsci+UOvObny6vutsa0c9xzM0PfdKgtkhnH8lLSe4+gZPjhK9O4v26oSu5Svb1n8Rvug4iX2k6keuKBoRlOg==}
-    dependencies:
-      eslint-config-sets: 1.8.3
+  /eslint-plugin-vitest-globals@1.3.1:
+    resolution: {integrity: sha512-ELBqLfu/ZAwVHE1uEvj+Z06o4WnaD+5IcwW/OHQ5qVPA7i7mZexnUBj+04BF60rY7pb3ljRgJRsK+rCTmSS/5g==}
     dev: true
 
   /eslint-plugin-vitest@0.0.57(eslint@8.39.0)(typescript@5.0.3):
