@@ -514,8 +514,8 @@ importers:
         specifier: 3.8.2
         version: 3.8.2
       del:
-        specifier: 6.0.0
-        version: 6.0.0
+        specifier: 6.1.1
+        version: 6.1.1
       enzyme:
         specifier: 3.11.0
         version: 3.11.0
@@ -687,8 +687,8 @@ importers:
         specifier: 1.0.1
         version: 1.0.1
       del:
-        specifier: 6.0.0
-        version: 6.0.0
+        specifier: 6.1.1
+        version: 6.1.1
       fancy-log:
         specifier: 2.0.0
         version: 2.0.0
@@ -7041,20 +7041,6 @@ packages:
       is-path-cwd: 2.2.0
       is-path-inside: 3.0.3
       p-map: 3.0.0
-      rimraf: 3.0.2
-      slash: 3.0.0
-    dev: true
-
-  /del@6.0.0:
-    resolution: {integrity: sha512-1shh9DQ23L16oXSZKB2JxpL7iMy2E0S9d517ptA1P8iw0alkPtQcrKH7ru31rYtKwF499HkTu+DRzq3TCKDFRQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      globby: 11.1.0
-      graceful-fs: 4.2.10
-      is-glob: 4.0.3
-      is-path-cwd: 2.2.0
-      is-path-inside: 3.0.3
-      p-map: 4.0.0
       rimraf: 3.0.2
       slash: 3.0.0
     dev: true

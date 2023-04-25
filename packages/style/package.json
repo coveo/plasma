@@ -46,7 +46,7 @@
         "autosize": "5.0.2",
         "concurrently": "7.6.0",
         "coveo-png-sprite": "1.0.1",
-        "del": "6.0.0",
+        "del": "6.1.1",
         "fancy-log": "2.0.0",
         "gulp": "4.0.2",
         "gulp-cheerio": "0.6.3",
