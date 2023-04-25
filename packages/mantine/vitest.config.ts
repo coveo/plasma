@@ -20,5 +20,8 @@ export default defineConfig({
                 replacement: 'monaco-editor/esm/vs/editor/editor.main.js',
             },
         ],
+        deps: {
+            registerNodeLoader: true,
+        },
     },
 });

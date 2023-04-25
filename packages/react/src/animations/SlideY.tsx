@@ -2,7 +2,7 @@
 // implemented with the new react-transition-group https://github.com/reactjs/react-transition-group
 
 import {PureComponent, ReactNode} from 'react';
-import Transition from 'react-transition-group/Transition';
+import {Transition} from 'react-transition-group';
 
 export interface SlideYProps {
     id?: string;

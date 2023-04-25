@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
         "module": "esnext",
-        "moduleResolution": "Node",
-        "target": "es5",
+        "moduleResolution": "node",
+        "target": "esnext",
         "jsx": "react-jsx",
-        "lib": ["ES2017", "DOM"],
+        "lib": ["ESNext", "DOM"],
 
         "composite": false,
         "incremental": true,

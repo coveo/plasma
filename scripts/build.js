@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const {spawn} = require('child_process');
 const path = require('path');
-
+const {writeFileSync} = require('node:fs');
 process.on('unhandledRejection', (err) => {
     throw err;
 });
@@ -22,9 +22,9 @@ const onExit = (childProcess) => {
 const build = async ({watch = false}) => {
     // compile with swc and tsc
     try {
-        console.info('starting typescript compilation');
-
         const tscArgs = ['-p', './tsconfig.build.json', '--emitDeclarationOnly'];
+        const tscESMArgs = [...tscArgs, '--declarationDir', './dist/esm'];
+        const tscCJSArgs = [...tscArgs, '--declarationDir', './dist/cjs', '--target', 'es5', '--module', 'commonjs'];
         const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
 
         if (watch) {
@@ -42,12 +42,19 @@ const build = async ({watch = false}) => {
         ];
         const swcES6Args = [...swcArgs, '--config', 'module.type=es6', 'jsc.target=es2020', '--out-dir', './dist/esm'];
 
-        const dts = spawn('tsc', tscArgs, {stdio: 'inherit', shell: true});
+        const dtsESM = spawn('tsc', tscESMArgs, {stdio: 'inherit', shell: true});
+        const dtsCJS = spawn('tsc', tscCJSArgs, {stdio: 'inherit', shell: true});
         const commonJs = spawn('swc', swcCJSArgs, {stdio: 'inherit', shell: true});
         const esm = spawn('swc', swcES6Args, {stdio: 'inherit', shell: true});
-        await Promise.all([onExit(dts), onExit(commonJs), onExit(esm)]);
+        await Promise.all([onExit(dtsESM), onExit(dtsCJS), onExit(commonJs), onExit(esm)]);
 
-        console.info('typescript compilation ended');
+        // Ensure NodeJS resolves dist/cjs/**/*.js as dist/cjs/**/*.cjs
+        writeFileSync('dist/cjs/package.json', JSON.stringify({type: 'commonjs'}));
+
+        // Ensure NodeJS resolves dist/esm/**/*.js as dist/esm/**/*.mjs
+        writeFileSync('dist/esm/package.json', JSON.stringify({type: 'module'}));
+
+        console.info('✅');
     } catch (error) {
         console.error(error);
         process.exit(1);

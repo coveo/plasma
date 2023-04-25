@@ -15,7 +15,7 @@ const formatLabel = (name: string) => {
 };
 
 const handler = {
-    get: (obj, prop: string) => {
+    get: (obj: any, prop: string) => {
         const IconMock = React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
             ({height, width, ...others}, ref) => (
                 <svg

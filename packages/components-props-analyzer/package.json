@@ -6,9 +6,14 @@
     "keywords": [],
     "license": "Apache-2.0",
     "author": "Coveo",
+    "exports": {
+        ".": {
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/esm/index.js"
+        }
+    },
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
-    "types": "./dist/definitions/index.d.ts",
     "scripts": {
         "build": "pnpm gen:props && pnpm prettify && pnpm compile",
         "clean": "rimraf dist",
