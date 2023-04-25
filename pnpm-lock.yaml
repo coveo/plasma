@@ -22,8 +22,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0
       aws-sdk:
-        specifier: 2.1363.0
-        version: 2.1363.0
+        specifier: 2.1364.0
+        version: 2.1364.0
       axios:
         specifier: 0.27.2
         version: 0.27.2
@@ -5161,8 +5161,8 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-sdk@2.1363.0:
-    resolution: {integrity: sha512-M2MZZXehgi/EMQv5GlzRkn3TlhoOYHg2cYdSAAqhjv67WaEG50MjaQy5vRvfN1i8XvB24aJFJ5pCrx69TaCaIg==}
+  /aws-sdk@2.1364.0:
+    resolution: {integrity: sha512-PFoq9Rnu0DVi07wZ/SjKlrJDwso8AxE5q/ufLdNtINZPaSkB92OqKYVdlfQ4srsH2ala2NCrg8gFX98SCmqW3w==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
