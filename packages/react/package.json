@@ -116,7 +116,7 @@
         "codecov": "3.8.2",
         "del": "6.0.0",
         "enzyme": "3.11.0",
-        "escape-string-regexp": "1.0.5",
+        "escape-string-regexp": "5.0.0",
         "eslint-plugin-jest": "27.2.1",
         "eslint-plugin-jest-dom": "4.0.3",
         "eslint-plugin-testing-library": "5.3.1",
