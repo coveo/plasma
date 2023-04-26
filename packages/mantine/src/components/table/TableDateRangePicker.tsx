@@ -51,7 +51,7 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
         <Grid.Col span="content" order={TableComponentsOrder.DateRangePicker} py="sm">
             <Group spacing="xs">
                 <Text span>{formatedRange}</Text>
-                <Popover opened={opened} onChange={setOpened}>
+                <Popover opened={opened} onChange={setOpened} withinPortal>
                     <Popover.Target>
                         <Button variant="outline" color="gray" onClick={() => setOpened(true)} px="xs">
                             <CalendarSize24Px width={24} height={24} />
