@@ -363,8 +363,8 @@ importers:
         specifier: 4.5.3
         version: 4.5.3(prop-types@15.8.1)(react@18.2.0)
       react-modal:
-        specifier: 3.15.1
-        version: 3.15.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.16.1
+        version: 3.16.1(react-dom@18.2.0)(react@18.2.0)
       react-tether:
         specifier: 1.0.5
         version: 1.0.5(react-dom@18.2.0)(react@18.2.0)
@@ -463,8 +463,8 @@ importers:
         specifier: 4.2.5
         version: 4.2.5
       '@types/react-modal':
-        specifier: 3.13.1
-        version: 3.13.1
+        specifier: 3.16.0
+        version: 3.16.0
       '@types/react-redux':
         specifier: 7.1.22
         version: 7.1.22
@@ -988,8 +988,8 @@ importers:
         specifier: ^18.0
         version: 18.0.9
       '@types/react-modal':
-        specifier: 3.13.1
-        version: 3.13.1
+        specifier: 3.16.0
+        version: 3.16.0
       '@types/react-redux':
         specifier: 7.1.22
         version: 7.1.22
@@ -3916,8 +3916,8 @@ packages:
       '@types/react': 18.0.25
     dev: true
 
-  /@types/react-modal@3.13.1:
-    resolution: {integrity: sha512-iY/gPvTDIy6Z+37l+ibmrY+GTV4KQTHcCyR5FIytm182RQS69G5ps4PH2FxtC7bAQ2QRHXMevsBgck7IQruHNg==}
+  /@types/react-modal@3.16.0:
+    resolution: {integrity: sha512-iphdqXAyUfByLbxJn5j6d+yh93dbMgshqGP0IuBeaKbZXx0aO+OXsvEkt6QctRdxjeM9/bR+Gp3h9F9djVWTQQ==}
     dependencies:
       '@types/react': 18.0.25
     dev: true
@@ -14197,8 +14197,8 @@ packages:
       - supports-color
     dev: false
 
-  /react-modal@3.15.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-duB9bxOaYg7Zt6TMFldIFxQRtSP+Dg3F1ZX3FXxSUn+3tZZ/9JCgeAQKDg7rhZSAqopq8TFRw3yIbnx77gyFTw==}
+  /react-modal@3.16.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-VStHgI3BVcGo7OXczvnJN7yT2TWHJPDXZWyI/a0ssFNhGZWsPmB8cF0z33ewDXq4VfYMO1vXgiv/g8Nj9NDyWg==}
     engines: {node: '>=8'}
     peerDependencies:
       react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18

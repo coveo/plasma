@@ -76,7 +76,7 @@
         "@types/react": "18.0.38",
         "@types/react-color": "3.0.6",
         "@types/react-dom": "18.0.11",
-        "@types/react-modal": "3.13.1",
+        "@types/react-modal": "3.16.0",
         "@types/react-redux": "7.1.22",
         "@types/redux-promise-middleware": "6.0.0",
         "@types/underscore": "1.8.10",
