@@ -351,8 +351,8 @@ importers:
         specifier: 2.19.3
         version: 2.19.3(react@18.2.0)
       react-diff-view:
-        specifier: 2.4.10
-        version: 2.4.10(prop-types@15.8.1)(react@18.2.0)
+        specifier: 2.6.0
+        version: 2.6.0(prop-types@15.8.1)(react@18.2.0)
       react-dnd:
         specifier: 16.0.1
         version: 16.0.1(@types/node@16.18.24)(@types/react@18.0.25)(react@18.2.0)
@@ -671,8 +671,8 @@ importers:
         specifier: 8.7.1
         version: 8.7.1(react-dom@18.2.0)(react@18.2.0)
       react-diff-view:
-        specifier: 2.4.10
-        version: 2.4.10(prop-types@15.8.1)(react@18.2.0)
+        specifier: 2.6.0
+        version: 2.6.0(prop-types@15.8.1)(react@18.2.0)
     devDependencies:
       ansi-colors:
         specifier: 4.1.3
@@ -930,8 +930,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0
       react-diff-view:
-        specifier: 2.4.10
-        version: 2.4.10(prop-types@15.8.1)(react@18.2.0)
+        specifier: 2.6.0
+        version: 2.6.0(prop-types@15.8.1)(react@18.2.0)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -14066,17 +14066,17 @@ packages:
       tinycolor2: 1.4.2
     dev: false
 
-  /react-diff-view@2.4.10(prop-types@15.8.1)(react@18.2.0):
-    resolution: {integrity: sha512-H9cyh+a002RyP4BMkSaL4OOBDNhkVpaCA+8oHeb6kS3X9Sj8cZymRHf/CyVkTmm+je/qWMa8Po0VBwSnktQ79w==}
+  /react-diff-view@2.6.0(prop-types@15.8.1)(react@18.2.0):
+    resolution: {integrity: sha512-TkyMcEv97uIPlxolbatLL99p//4G4xlGBismQaF/6iZeIX+ni9CRBE9ayXt1Tn1cWFDn9tXY6fp06T231gfjlQ==}
     peerDependencies:
       prop-types: '>=15.6'
       react: '>=16.8'
     dependencies:
-      classnames: 2.3.1
+      classnames: 2.3.2
       diff-match-patch: 1.0.5
       prop-types: 15.8.1
       react: 18.2.0
-      shallow-equal: 1.2.1
+      shallow-equal: 3.1.0
       warning: 4.0.3
     dev: false
 
@@ -15163,8 +15163,8 @@ packages:
       split-string: 3.1.0
     dev: true
 
-  /shallow-equal@1.2.1:
-    resolution: {integrity: sha512-S4vJDjHHMBaiZuT9NPb616CSmLf618jawtv3sufLl6ivK8WocjAo58cXwbRV1cgqxH0Qbv+iUt6m05eqEa2IRA==}
+  /shallow-equal@3.1.0:
+    resolution: {integrity: sha512-pfVOw8QZIXpMbhBWvzBISicvToTiM5WBF1EeAUZDDSb5Dt29yl4AYbyywbJFSEsRUMr7gJaxqCdr4L3tQf9wVg==}
     dev: false
 
   /shallowequal@1.1.0:
