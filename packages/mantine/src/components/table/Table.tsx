@@ -200,7 +200,11 @@ export const Table: TableType = <T,>({
                             <thead className={classes.header}>
                                 {!!header ? (
                                     <tr>
-                                        <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
+                                        <th
+                                            // need to use inline style because Mantine define style on `.mantine-{id} thead tr th`
+                                            style={{padding: 0, fontWeight: 'unset'}}
+                                            colSpan={table.getAllColumns().length}
+                                        >
                                             {header}
                                         </th>
                                     </tr>
