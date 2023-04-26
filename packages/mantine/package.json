@@ -81,7 +81,7 @@
         "rimraf": "3.0.2",
         "tslib": "2.5.0",
         "typescript": "5.0.3",
-        "vitest": "0.28.3"
+        "vitest": "0.30.1"
     },
     "peerDependencies": {
         "@emotion/react": "^11.10.0",
