@@ -65,7 +65,7 @@
         "mime-types": "2.1.35",
         "prettier": "2.7.1",
         "sort-package-json": "1.57.0",
-        "stylelint": "14.12.1",
+        "stylelint": "14.16.1",
         "tsjs": "4.2.1",
         "turbo": "1.8.8",
         "underscore": "1.13.4",
