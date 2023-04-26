@@ -1,3 +1,12 @@
+## 52.3.1 (2023-04-26)
+
+
+### Bug Fixes
+
+* **mantine, table:** style of components shown in Table.Header (#3220) 2f9f4f3, closes #3220
+
+
+
 # 52.3.0 (2023-04-19)
 
 
