@@ -1,6 +1,8 @@
-import {DragAndDropSize16Px} from '@coveord/plasma-react-icons';
-import {FunctionComponent, useRef} from 'react';
-import {useDrag, useDrop} from 'react-dnd';
+import {DragAndDropSize24Px} from '@coveord/plasma-react-icons';
+import {useSortable} from '@dnd-kit/sortable';
+import {CSS} from '@dnd-kit/utilities';
+import {CSSProperties, FunctionComponent} from 'react';
+
 import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
 export interface IDraggableSelectedOptionOwnProps {
@@ -16,35 +18,24 @@ export interface IDraggableSelectedOptionOwnProps {
     parentId: string;
 }
 
-type DragItem = Pick<ISelectedOptionProps, 'value'>;
-
 /**
  * @deprecated use Mantine instead
  */
 export const DraggableSelectedOption: FunctionComponent<
     React.PropsWithChildren<IDraggableSelectedOptionOwnProps & ISelectedOptionProps>
-> = ({label, selectedTooltip, readOnly, value, parentId, onMoveOver, onRemoveClick}) => {
-    const DraggableItemType = `MULTI_SELECT_OPTION_${parentId}`;
-    const dropRef = useRef<HTMLDivElement>();
-    const [, drop] = useDrop(() => ({
-        accept: DraggableItemType,
-        hover: ({value: draggedValue}: DragItem) => {
-            if (draggedValue !== value) {
-                onMoveOver(draggedValue);
-            }
-        },
-    }));
-    const [{isDragging}, drag, dragPreview] = useDrag(() => ({
-        type: DraggableItemType,
-        item: (): DragItem => ({value}),
-        collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
-        }),
-    }));
-    const opacity = isDragging ? 0 : 1;
-    drop(dragPreview(dropRef));
+> = ({label, selectedTooltip, readOnly, value, onRemoveClick}) => {
+    const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
+        id: value,
+    });
+    const style: CSSProperties = {
+        transform: CSS.Transform.toString(transform),
+        transition: transform ? transition : undefined,
+        backgroundColor: 'white',
+        boxShadow: isDragging ? 'var(--medium-elevation-on-light)' : undefined,
+        zIndex: isDragging ? 2 : 1,
+    };
     return (
-        <div style={{opacity}} ref={dropRef}>
+        <div style={style} ref={setNodeRef}>
             <SelectedOption
                 value={value}
                 label={isDragging ? null : label}
@@ -55,10 +46,11 @@ export const DraggableSelectedOption: FunctionComponent<
                     !readOnly && (
                         <div
                             className="move-option cursor-move p1 mod-border-right"
-                            aria-grabbed={isDragging}
-                            ref={drag}
+                            ref={setActivatorNodeRef}
+                            {...attributes}
+                            {...listeners}
                         >
-                            <DragAndDropSize16Px height={16} />
+                            <DragAndDropSize24Px height={16} />
                         </div>
                     )
                 }

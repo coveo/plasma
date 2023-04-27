@@ -1,14 +1,12 @@
-import {ReactNode, Children, PureComponent} from 'react';
-import {DndProvider} from 'react-dnd';
-import {HTML5Backend} from 'react-dnd-html5-backend';
+import {Children, PureComponent, ReactNode} from 'react';
 import {createStructuredSelector} from 'reselect';
 
 import {PlasmaState} from '../../../PlasmaState';
 import {reorderStringList} from '../../../reusableState/customList/StringListActions';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
+import {Sortable} from '../../dragAndDrop';
 import {DnDContainer, IDraggableContainerOwnProps} from '../../dragAndDrop/DnDContainer';
-import {DnDUtils} from '../../dragAndDrop/DnDUtils';
 import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
 import {
     IMultilineBoxDispatchProps,
@@ -66,44 +64,43 @@ export const multilineBoxWithDnD =
 
             private getDnDWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
                 const supplierProps: IMultilineBoxWithDnDSupplierProps = {
-                    ...{
-                        DnDContainerProps: {},
-                    },
+                    DnDContainerProps: {},
                     ...HocUtils.supplyConfig(supplier),
                 };
-                return Children.map(children, (child: ReactNode, index: number) => {
-                    const isLast = index === data.length - 1;
-                    const id: string = (data.length && data[index].id) || index.toString();
-                    return (
-                        <DnDContainer
-                            id={id}
-                            parentId={this.props.id}
-                            key={`${id}DnD`}
-                            onMoveOver={(draggedId: string) => {
-                                // Triggered when another box is dragged over the current box
-                                const newOrder = DnDUtils.reorder(draggedId, id, this.props.multilineBoxIds);
-                                this.props.onReorder(newOrder);
-                            }}
-                            isDraggable={!isLast}
-                            {...supplierProps.DnDContainerProps}
-                        >
-                            {child}
-                        </DnDContainer>
-                    );
-                });
+
+                const getId = (item: IMultilineSingleBoxProps<T>, index: number) => item?.id || index.toString();
+
+                return (
+                    <Sortable items={data.map(getId)} onReorder={this.props.onReorder}>
+                        {Children.map(children, (child: ReactNode, index: number) => {
+                            const isLast = index === data.length - 1;
+                            const id = getId(data[index], index);
+                            return (
+                                <DnDContainer
+                                    id={id}
+                                    parentId={this.props.id}
+                                    key={`${id}DnD`}
+                                    isDraggable={!isLast}
+                                    onMoveOver={() => null}
+                                    {...supplierProps.DnDContainerProps}
+                                >
+                                    {child}
+                                </DnDContainer>
+                            );
+                        })}
+                    </Sortable>
+                );
             }
 
             render() {
                 return (
-                    <DndProvider backend={HTML5Backend}>
-                        <Component
-                            {...this.props}
-                            renderBody={(
-                                boxProps: Array<IMultilineSingleBoxProps<T>>,
-                                parentProps: IMultilineParentProps
-                            ) => this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
-                        />
-                    </DndProvider>
+                    <Component
+                        {...this.props}
+                        renderBody={(
+                            boxProps: Array<IMultilineSingleBoxProps<T>>,
+                            parentProps: IMultilineParentProps
+                        ) => this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
+                    />
                 );
             }
         }

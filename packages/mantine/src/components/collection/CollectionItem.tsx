@@ -1,7 +1,8 @@
-import {DragAndDropSize16Px, RemoveSize16Px} from '@coveord/plasma-react-icons';
+import {DragAndDropSize24Px, RemoveSize16Px} from '@coveord/plasma-react-icons';
+import {useSortable} from '@dnd-kit/sortable';
+import {CSS} from '@dnd-kit/utilities';
 import {ActionIcon, DefaultProps, Group, Selectors} from '@mantine/core';
 import {FunctionComponent, PropsWithChildren} from 'react';
-import {Draggable} from 'react-beautiful-dnd';
 
 import useStyles from './Collection.styles';
 
@@ -11,7 +12,7 @@ interface CollectionItemProps extends CollectionItemSharedProps {
 }
 
 interface CollectionItemSharedProps extends DefaultProps<Selectors<typeof useStyles>> {
-    index: number;
+    id: string;
     onRemove?: React.MouseEventHandler<HTMLButtonElement>;
     removable?: boolean;
 }
@@ -52,7 +53,7 @@ const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItem
 };
 
 const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
-    index,
+    id,
     onRemove,
     removable = true,
     styles,
@@ -60,23 +61,29 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
 }) => {
     const {classes, cx} = useStyles(null, {name: 'Collection', styles});
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : null;
+    const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
+        id,
+    });
 
     return (
-        <Draggable key={index} index={index} draggableId={index.toString()}>
-            {(provided, {isDragging}) => (
-                <Group
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    className={cx(classes.item, {[classes.itemDragging]: isDragging})}
-                >
-                    <div {...provided.dragHandleProps} style={{alignSelf: 'center'}}>
-                        <DragAndDropSize16Px height={16} />
-                    </div>
-                    {children}
-                    {removeButton}
-                </Group>
-            )}
-        </Draggable>
+        <Group
+            ref={setNodeRef}
+            className={cx(classes.item, {[classes.itemDragging]: isDragging})}
+            sx={
+                transform
+                    ? {
+                          transform: CSS.Transform.toString(transform),
+                          transition,
+                      }
+                    : undefined
+            }
+        >
+            <div ref={setActivatorNodeRef} {...listeners} {...attributes} className={classes.dragHandle}>
+                <DragAndDropSize24Px height={16} />
+            </div>
+            {children}
+            {removeButton}
+        </Group>
     );
 };
 
