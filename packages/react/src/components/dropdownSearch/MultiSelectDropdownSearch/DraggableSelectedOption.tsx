@@ -7,6 +7,12 @@ import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
 export interface IDraggableSelectedOptionOwnProps {
     /**
+     * A function triggered when another option is dragged over the current option
+     *
+     * @param value the unique value of the option dragged over the current option
+     */
+    onMoveOver: (value: ISelectedOptionProps['value']) => void;
+    /**
      * The unique identifier of the parent MultiSelect component
      */
     parentId: string;
@@ -17,7 +23,7 @@ export interface IDraggableSelectedOptionOwnProps {
  */
 export const DraggableSelectedOption: FunctionComponent<
     React.PropsWithChildren<IDraggableSelectedOptionOwnProps & ISelectedOptionProps>
-> = ({label, selectedTooltip, readOnly, value, parentId, onRemoveClick}) => {
+> = ({label, selectedTooltip, readOnly, value, onRemoveClick}) => {
     const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
         id: value,
     });

@@ -163,6 +163,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
                 value={item.value}
                 onRemoveClick={() => this.props.onRemoveClick(item)}
                 readOnly={this.props.readOnly}
+                onMoveOver={() => null}
             />
         </div>
     );

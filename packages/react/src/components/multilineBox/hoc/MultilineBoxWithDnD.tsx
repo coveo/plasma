@@ -81,6 +81,7 @@ export const multilineBoxWithDnD =
                                     parentId={this.props.id}
                                     key={`${id}DnD`}
                                     isDraggable={!isLast}
+                                    onMoveOver={() => null}
                                     {...supplierProps.DnDContainerProps}
                                 >
                                     {child}

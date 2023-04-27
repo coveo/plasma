@@ -6,6 +6,12 @@ import {CSSProperties, FunctionComponent, HTMLProps, PropsWithChildren, ReactNod
 export interface IDraggableContainerOwnProps {
     id: string;
     parentId: string;
+    /**
+     * A function triggered when another box is dragged over the current box
+     *
+     * @param movingId the unique identifier of the box being dragged over the current box
+     */
+    onMoveOver: (movingId: string) => void;
     draggableContainerProps?: Partial<HTMLProps<HTMLDivElement>>;
     draggableIconProps?: HTMLProps<HTMLDivElement>;
     icon?: ReactNode;
