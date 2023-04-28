@@ -9,7 +9,14 @@
         "directory": "packages/tokens"
     },
     "license": "Apache-2.0",
-    "main": "./dist/index.js",
+    "exports": {
+        ".": {
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/esm/index.js"
+        }
+    },
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
     "files": [
         "dist",
         "icons",
@@ -17,12 +24,14 @@
         "css"
     ],
     "scripts": {
-        "build": "rimraf dist && tsc --project tsconfig.json",
+        "build": "rimraf dist && node ../../scripts/build",
         "tokens:build": "ts-node ./bin/build.ts --project ./bin/tsconfig.json && pnpm tokens:lint",
         "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
         "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "devDependencies": {
+        "@swc/cli": "0.1.62",
+        "@swc/core": "1.3.53",
         "@types/chroma-js": "2.4.0",
         "@types/fs-extra": "9.0.13",
         "@types/lodash": "4.14.194",

@@ -1,6 +1,6 @@
 {
     "$schema": "https://json.schemastore.org/swcrc",
-    "exclude": [".*\\.spec\\..*"],
+    "exclude": [".*\\.spec\\..*", "__tests__"],
     "jsc": {
         "externalHelpers": true,
         "parser": {

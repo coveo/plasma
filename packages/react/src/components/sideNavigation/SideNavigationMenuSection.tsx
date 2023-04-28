@@ -34,7 +34,7 @@ const HeaderIcon: FunctionComponent<SideNavigationHeaderProps> = ({icon: IconNam
     );
 
 const SideNavigationHeader: FunctionComponent<
-    React.PropsWithChildren<SideNavigationHeaderProps & Pick<ISideNavigationSectionProps, 'expandable'>>
+    PropsWithChildren<SideNavigationHeaderProps & Pick<ISideNavigationSectionProps, 'expandable'>>
 > = ({customIcon, onClick, children, expandable, isLink, className, ...iconProps}) => (
     <div
         className={classNames(
@@ -77,7 +77,7 @@ export const SideNavigationMenuSection: FunctionComponent<PropsWithChildren<ISid
 
     const sectionClasses = classNames('navigation-menu-section-link', {'state-active': isActive});
     const headerTitle = title || (header && header.title);
-    const sectionHeader = headerTitle && (
+    const sectionHeader = headerTitle ? (
         <SideNavigationHeader
             {..._.extend({}, header, headerProps)}
             expandable={expandable}
@@ -86,7 +86,7 @@ export const SideNavigationMenuSection: FunctionComponent<PropsWithChildren<ISid
         >
             {headerTitle}
         </SideNavigationHeader>
-    );
+    ) : null;
 
     const items = children ? (
         <div className={classNames('navigation-menu-section-items', itemsClassName)}>{children}</div>

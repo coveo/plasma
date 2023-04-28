@@ -19,16 +19,20 @@
     "license": "ISC",
     "author": "",
     "sideEffects": false,
+    "exports": {
+        ".": {
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/esm/index.js"
+        }
+    },
     "main": "./dist/cjs/index.js",
-    "module": "dist/esm/index.js",
-    "types": "./dist/definitions/index.d.ts",
+    "module": "./dist/esm/index.js",
     "files": [
         "dist",
-        "mock/index.js"
+        "mock"
     ],
     "scripts": {
-        "build": "pnpm generate && node ../../scripts/build && pnpm build:mock",
-        "build:mock": "swc ./mock/index.tsx --out-dir ./mock --config-file ./mock/.swcrc",
+        "build": "pnpm generate && node ../../scripts/build",
         "clean": "rimraf dist",
         "generate": "node ./bin/index.js"
     },
