@@ -1,3 +1,12 @@
+# 52.4.0 (2023-04-28)
+
+
+### Features
+
+* **npm:** improve esm & cjs compatibility (#3234) 3d0ec78, closes #3234
+
+
+
 ## 52.3.1 (2023-04-26)
 
 
