@@ -1,3 +1,12 @@
+## 52.4.2 (2023-05-01)
+
+
+### Bug Fixes
+
+* **react-icons,tokens:** add missing swc/helpers dependency (#3239) bf834fa, closes #3239
+
+
+
 ## 52.4.1 (2023-05-01)
 
 
