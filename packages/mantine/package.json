@@ -31,7 +31,8 @@
         "clean": "rimraf dist",
         "start": "node ../../scripts/start",
         "test": "TZ=UTC vitest run",
-        "test:watch": "TZ=UTC vitest"
+        "test:watch": "TZ=UTC vitest",
+        "prepublishOnly": "publint"
     },
     "dependencies": {
         "@coveord/plasma-react-icons": "workspace:*",
@@ -83,6 +84,7 @@
         "jest-environment-jsdom": "29.1.2",
         "jest-junit": "13.2.0",
         "npm-run-all": "4.1.5",
+        "publint": "0.1.11",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "rimraf": "3.0.2",

@@ -25,6 +25,7 @@
     ],
     "scripts": {
         "build": "rimraf dist && node ../../scripts/build",
+        "prepublishOnly": "publint",
         "tokens:build": "ts-node ./bin/build.ts --project ./bin/tsconfig.json && pnpm tokens:lint",
         "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
         "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
@@ -47,6 +48,7 @@
         "lint-staged": "9.5.0",
         "lodash": "4.17.21",
         "prettier": "2.4.1",
+        "publint": "0.1.11",
         "rimraf": "3.0.2",
         "sass": "1.62.1",
         "svgo": "2.8.0",
