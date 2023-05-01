@@ -1,3 +1,12 @@
+## 52.4.1 (2023-05-01)
+
+
+### Bug Fixes
+
+* **react-icons:** bring back compiled mock (#3236) 82dce33, closes #3236
+
+
+
 # 52.4.0 (2023-04-28)
 
 
