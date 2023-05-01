@@ -31,11 +31,12 @@
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
     "files": [
-        "dist/*"
+        "dist/*",
+        "mock/index.js"
     ],
     "scripts": {
         "build": "pnpm generate && node ../../scripts/build && pnpm build:mock",
-        "build:mock": "swc ./mock/index.tsx -o ./dist/cjs/mock/index.js --config-file ./mock/.swcrc",
+        "build:mock": "swc ./mock/index.tsx -o ./dist/cjs/mock/index.js --config-file ./mock/.swcrc && cp ./dist/cjs/mock/index.js ./mock/index.js",
         "clean": "rimraf dist",
         "generate": "node ./bin/index.js"
     },
