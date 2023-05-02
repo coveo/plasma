@@ -45,7 +45,7 @@
         "@swc/helpers": "0.5.1"
     },
     "devDependencies": {
-        "@babel/types": "7.21.4",
+        "@babel/types": "7.21.5",
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "6.5.1",
         "@swc/cli": "0.1.62",
