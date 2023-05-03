@@ -28,7 +28,7 @@ const componentReducers = {
 };
 
 export type FormComponent = keyof typeof componentReducers;
-type FormComponentReducer = typeof componentReducers[FormComponent];
+type FormComponentReducer = (typeof componentReducers)[FormComponent];
 type FormAction = {type: FormComponent} & ReducerAction<FormComponentReducer>;
 type FormState = Record<FormComponent, ReducerState<FormComponentReducer>>;
 

@@ -3,10 +3,10 @@ import {getParameters} from 'codesandbox-import-utils/lib/api/define';
 import packageConfig from '../../package.json';
 
 type Dependencies = {
-    [Dep in keyof Partial<typeof packageConfig['dependencies']>]: string;
+    [Dep in keyof Partial<(typeof packageConfig)['dependencies']>]: string;
 };
 
-type PackageDependencies = keyof typeof packageConfig['dependencies'];
+type PackageDependencies = keyof (typeof packageConfig)['dependencies'];
 
 const snippetUsesPackage = (snippet: string, packageName: PackageDependencies): boolean =>
     snippet.indexOf(`from '${packageName}';`) > -1;
