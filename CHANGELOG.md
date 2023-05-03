@@ -1,3 +1,12 @@
+## 52.4.3 (2023-05-03)
+
+
+### Bug Fixes
+
+* **tokens:** add missing exports specifiers for scss, css and icons (#3247) 9eb6f08, closes #3247
+
+
+
 ## 52.4.2 (2023-05-01)
 
 
