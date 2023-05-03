@@ -13,7 +13,11 @@
         ".": {
             "require": "./dist/cjs/index.js",
             "import": "./dist/esm/index.js"
-        }
+        },
+        "./scss": "./scss/index.scss",
+        "./scss/*": "./scss/*",
+        "./css/*": "./css/*",
+        "./icons/*": "./icons/*"
     },
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
