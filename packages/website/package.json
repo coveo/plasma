@@ -72,7 +72,7 @@
         "@types/hoist-non-react-statics": "3.3.1",
         "@types/lodash.kebabcase": "4.1.7",
         "@types/lorem-ipsum": "2.0.0",
-        "@types/prettier": "1.19.1",
+        "@types/prettier": "2.7.2",
         "@types/react": "18.2.0",
         "@types/react-color": "3.0.6",
         "@types/react-dom": "18.2.1",
