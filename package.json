@@ -63,7 +63,7 @@
         "husky": "8.0.3",
         "lint-staged": "13.0.3",
         "mime-types": "2.1.35",
-        "prettier": "2.7.1",
+        "prettier": "2.8.8",
         "sort-package-json": "1.57.0",
         "stylelint": "14.16.1",
         "tsjs": "4.2.1",
