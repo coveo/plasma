@@ -1,43 +1,37 @@
-import {shallow} from 'enzyme';
-import * as React from 'react';
-
+import {render, screen} from '../../../../jest/utils';
 import {XGrid} from '../XGrid';
+import {XYChartContext} from '../XYChart';
 import {XYChartContextMock} from './XYChartContextMock';
 
-jest.mock('react', () => {
-    const originReact = jest.requireActual('react');
-    return {
-        ...originReact,
-        useContext: jest.fn(),
-    };
-});
-
-const mockedReact = jest.mocked(React);
-
 describe('<XGrid />', () => {
-    beforeAll(() => {
-        mockedReact.useContext.mockReturnValue(XYChartContextMock);
-    });
-
-    it('should not throw with the default context', () => {
-        expect(() => {
-            shallow(<XGrid />);
-            shallow(<XGrid padding={10} />);
-            shallow(<XGrid padding={30} color="red" />);
-        }).not.toThrow();
-    });
-
-    it('should not throw with a custom context', () => {
-        expect(() => {
-            shallow(<XGrid />);
-            shallow(<XGrid padding={10} />);
-            shallow(<XGrid padding={30} color="red" />);
-        }).not.toThrow();
-    });
-
     it('should render a line', () => {
-        const component = shallow(<XGrid />);
+        render(
+            <XYChartContext.Provider value={XYChartContextMock}>
+                <svg role="application" width={XYChartContextMock.width} height={XYChartContextMock.height}>
+                    <XGrid />
+                </svg>
+            </XYChartContext.Provider>
+        );
 
-        expect(component.find('line').exists()).toBe(true);
+        expect(screen.getByRole('application')).toMatchInlineSnapshot(`
+            <svg
+              height="50"
+              role="application"
+              width="10"
+            >
+              <line
+                stroke="rgba(0,0,0,0.2)"
+                x1="0"
+                x2="0"
+                y1="50"
+                y2="0"
+              />
+              <line
+                stroke="rgba(0,0,0,0.2)"
+                y1="50"
+                y2="0"
+              />
+            </svg>
+        `);
     });
 });

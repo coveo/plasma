@@ -1,41 +1,41 @@
-import {shallow} from 'enzyme';
-import * as React from 'react';
-
+import {render, screen} from '../../../../jest/utils';
 import {LineSeries} from '../LineSeries';
+import {XYChartContext} from '../XYChart';
 import {XYChartContextMock} from './XYChartContextMock';
 
-jest.mock('react', () => {
-    const originReact = jest.requireActual('react');
-    return {
-        ...originReact,
-        useContext: jest.fn(),
-    };
-});
-
-const mockedReact = jest.mocked(React);
-
 describe('<LineSeries />', () => {
-    beforeAll(() => {
-        mockedReact.useContext.mockReturnValue(XYChartContextMock);
-    });
+    it('should render a graph', () => {
+        render(
+            <XYChartContext.Provider value={XYChartContextMock}>
+                <svg role="application" width={XYChartContextMock.width} height={XYChartContextMock.height}>
+                    <LineSeries />
+                </svg>
+            </XYChartContext.Provider>
+        );
 
-    it('should not throw', () => {
-        expect(() => {
-            shallow(<LineSeries />);
-            shallow(<LineSeries interpolate="monotone" strokeWith={2} />);
-        }).not.toThrow();
-    });
-
-    it('should render a <g>', () => {
-        const component = shallow(<LineSeries />);
-
-        expect(component.find('g').exists()).toBe(true);
-    });
-
-    it('should render a path for every serie', () => {
-        const {series} = XYChartContextMock;
-        const component = shallow(<LineSeries />);
-
-        expect(component.find('path').length).toBe(series.length);
+        expect(screen.getByRole('application')).toMatchInlineSnapshot(`
+            <svg
+              height="50"
+              role="application"
+              width="10"
+            >
+              <g
+                class="line-series"
+              >
+                <path
+                  d="M0,1.5L2,1.5L4,3L6,1L8,6L10,4"
+                  fill="none"
+                  stroke="blue"
+                  stroke-width="2"
+                />
+                <path
+                  d="M0,2.5L2,2L4,0L6,3L8,3.5L10,2"
+                  fill="none"
+                  stroke="green"
+                  stroke-width="2"
+                />
+              </g>
+            </svg>
+        `);
     });
 });

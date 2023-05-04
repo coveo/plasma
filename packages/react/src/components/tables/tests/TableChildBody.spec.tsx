@@ -20,7 +20,7 @@ describe('<TableChildBody />', () => {
     let tableChildBodyProps: ITableChildBodyProps;
     let store: Store<PlasmaState>;
 
-    beforeAll(() => {
+    beforeEach(() => {
         document.body.innerHTML += '<div id="App"></div>';
         spyOnRowClick = jest.fn();
         spyHandleOnRowClick = jest.fn();
@@ -53,9 +53,6 @@ describe('<TableChildBody />', () => {
             ],
             isMultiSelect: false,
         };
-    });
-
-    beforeEach(() => {
         store = TestUtils.buildStore();
     });
 
