@@ -6,7 +6,6 @@ const useStyles = createStyles((theme) => ({
     th: {
         fontWeight: '400 !important' as any,
         padding: '0 !important',
-        color: theme.black + '!important',
         verticalAlign: 'middle',
     },
 
@@ -14,9 +13,11 @@ const useStyles = createStyles((theme) => ({
         width: '100%',
         padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
         whiteSpace: 'nowrap',
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[0],
+        color: theme.colors.gray[6],
 
         '&:hover': {
-            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[6] : theme.colors.gray[2],
+            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[7] : theme.colors.gray[1],
         },
     },
 }));
@@ -49,7 +50,7 @@ export const Th = <T,>({header}: ThProps<T>) => {
     if (!header.column.getCanSort()) {
         return (
             <th className={classes.th} style={{width}}>
-                <Text size="xs" py="xs" px="sm">
+                <Text size="xs" py="xs" px="sm" fw={500}>
                     {flexRender(header.column.columnDef.header, header.getContext())}
                 </Text>
             </th>
@@ -64,7 +65,9 @@ export const Th = <T,>({header}: ThProps<T>) => {
         <th className={classes.th} style={{width}} aria-sort={SortingLabels[sortingOrder]}>
             <UnstyledButton onClick={onSort} className={classes.control}>
                 <Group position="apart" noWrap>
-                    <Text size="xs">{flexRender(header.column.columnDef.header, header.getContext())}</Text>
+                    <Text size="xs" fw={500}>
+                        {flexRender(header.column.columnDef.header, header.getContext())}
+                    </Text>
                     <Center>
                         <Icon height={14} />
                     </Center>
