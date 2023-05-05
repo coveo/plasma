@@ -1,18 +1,18 @@
-import {Box, Center, Collapse, Loader, Skeleton, SkeletonProps, Table as MantineTable} from '@mantine/core';
+import {Box, Center, Collapse, Loader, Table as MantineTable, Skeleton, SkeletonProps} from '@mantine/core';
 import {useForm} from '@mantine/form';
 import {useDidUpdate} from '@mantine/hooks';
 import {
     ColumnDef,
+    Row,
+    TableState as TanstackTableState,
     defaultColumnSizing,
     flexRender,
     getCoreRowModel,
-    Row,
-    TableState as TanstackTableState,
     useReactTable,
 } from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Children, Dispatch, FC, Fragment, ReactElement, useCallback, useEffect, useState} from 'react';
+import {Children, Dispatch, FC, Fragment, ReactElement, useCallback, useEffect, useRef, useState} from 'react';
 
 import useStyles from './Table.styles';
 import {TableFormType, TableProps, TableState, TableType} from './Table.types';
@@ -101,6 +101,8 @@ export const Table: TableType = <T,>({
         };
     }, []);
 
+    const rowRef = useRef<HTMLTableRowElement>(null);
+
     useDidUpdate(() => {
         triggerChange();
         if (!multiRowSelectionEnabled) {
@@ -128,7 +130,12 @@ export const Table: TableType = <T,>({
         return (
             <Fragment key={row.id}>
                 <tr
-                    onClick={() => row.toggleSelected()}
+                    ref={rowRef}
+                    onClick={() =>
+                        rowRef.current.querySelectorAll('.mantine-Table-root input[type=checkbox]:disabled').length > 0
+                            ? undefined
+                            : row.toggleSelected()
+                    }
                     onDoubleClick={() => doubleClickAction?.(row.original)}
                     className={cx(classes.row, {[classes.rowSelected]: isSelected})}
                     aria-selected={isSelected}
