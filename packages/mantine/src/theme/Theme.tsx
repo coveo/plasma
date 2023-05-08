@@ -1,6 +1,6 @@
-import {InfoSize24Px} from '@coveord/plasma-react-icons';
+import {InfoSize24Px, CheckSize16Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
-import {getSize, MantineThemeOverride, NotificationProps, rem} from '@mantine/core';
+import {getSize, MantineThemeOverride, NotificationProps, rem, type StepperStylesParams} from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';
 
@@ -275,6 +275,61 @@ export const plasmaTheme: MantineThemeOverride = {
                     zIndex: 'unset',
                 },
             },
+        },
+        Stepper: {
+            defaultProps: {
+                size: 'xs',
+                completedIcon: <CheckSize16Px />,
+            },
+            styles: (theme, {}: StepperStylesParams, {size}) => ({
+                step: {
+                    '&[disabled]': {
+                        color: theme.colors.gray[5],
+                        '& .mantine-Stepper-stepDescription': {
+                            color: theme.colors.gray[5],
+                        },
+                        '& .mantine-Stepper-stepIcon': {
+                            borderColor: theme.colors.gray[1],
+                        },
+                    },
+                },
+                stepIcon: {
+                    fontWeight: 500,
+                    backgroundColor: theme.colors.gray[1],
+                    color: 'inherit',
+                    border: `${rem(1)} solid ${theme.colors.gray[3]}`,
+                    '&[data-progress]': {
+                        backgroundColor: theme.white,
+                    },
+
+                    '&[data-completed]': {
+                        backgroundColor: theme.white,
+                        borderColor: theme.colors.lime[6],
+                        color: theme.colors.lime[6],
+                    },
+                },
+                stepCompletedIcon: {
+                    color: theme.colors.lime[6],
+                    fontSize: rem(16),
+                },
+                stepDescription: {
+                    color: theme.colors.gray[7],
+                    fontSize: getSize({size, sizes: theme.fontSizes}),
+                },
+                separator: {
+                    height: rem(1),
+                    backgroundColor: theme.colors.gray[3],
+                },
+                separatorActive: {
+                    backgroundColor: theme.colors.gray[3],
+                },
+                verticalSeparator: {
+                    borderLeft: `${rem(1)} solid ${theme.colors.gray[3]}`,
+                },
+                verticalSeparatorActive: {
+                    borderColor: theme.colors.gray[3],
+                },
+            }),
         },
     },
 };
