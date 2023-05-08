@@ -1,42 +1,18 @@
-import {shallow} from 'enzyme';
-import * as React from 'react';
-
-import {ChartUtils} from '../ChartUtils';
+import {render, screen} from '../../../../jest/utils';
 import {ScatterSeries} from '../ScatterSeries';
+import {XYChartContext} from '../XYChart';
 import {XYChartContextMock} from './XYChartContextMock';
 
-jest.mock('react', () => {
-    const originReact = jest.requireActual('react');
-    return {
-        ...originReact,
-        useContext: jest.fn(),
-    };
-});
-
-const mockedReact = jest.mocked(React);
-
 describe('<ScatterSeries />', () => {
-    beforeAll(() => {
-        mockedReact.useContext.mockReturnValue(XYChartContextMock);
-    });
-
-    it('should not throw', () => {
-        expect(() => {
-            shallow(<ScatterSeries />);
-            shallow(<ScatterSeries radius={1337} />);
-        }).not.toThrow();
-    });
-
-    it('should render a <g>', () => {
-        const component = shallow(<ScatterSeries />);
-
-        expect(component.find('g').exists()).toBe(true);
-    });
-
     it('should render a circle per point in every series', () => {
-        const {series} = XYChartContextMock;
-        const component = shallow(<ScatterSeries />);
+        render(
+            <XYChartContext.Provider value={XYChartContextMock}>
+                <svg role="application" width={XYChartContextMock.width} height={XYChartContextMock.height}>
+                    <ScatterSeries />
+                </svg>
+            </XYChartContext.Provider>
+        );
 
-        expect(component.find('circle').length).toBe(ChartUtils.getXValues(series).length * series.length);
+        expect(screen.getByRole('application')).toMatchSnapshot();
     });
 });

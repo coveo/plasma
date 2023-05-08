@@ -34,7 +34,7 @@ export const XYChartContextMock: XYChartContextProps = {
     ],
     colorPattern: ['blue', 'green', 'yellow'],
     color: (serie: number, pattern: string[]) => pattern[serie],
-    xScale: scalePoint<number>().domain([20, 30, 40]).range([0, 10]),
+    xScale: scalePoint<number>().domain([0, 1, 2, 3, 4, 5]).range([0, 10]),
     yScale: scaleLinear().domain([100, 0]).range([50, 0]),
     xFormat: _.identity,
     yFormat: _.identity,

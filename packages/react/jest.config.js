@@ -1,3 +1,4 @@
+const isCI = !!process.env.CI;
 module.exports = {
     verbose: true,
     moduleNameMapper: {
@@ -13,7 +14,7 @@ module.exports = {
     setupFilesAfterEnv: ['<rootDir>/jest/entry.tsx'],
     extensionsToTreatAsEsm: ['.ts', '.tsx'],
     testEnvironment: '<rootDir>/jest/preSetup.ts', // custom environement
-    reporters: ['default'],
+    reporters: [isCI ? '@matteoh2o1999/github-actions-jest-reporter' : 'default'],
     transform: {
         '^.+\\.(t|j)sx?$': [
             '@swc/jest',
@@ -38,6 +39,6 @@ module.exports = {
     },
     testMatch: ['<rootDir>/src/**/*.spec.{ts,tsx}'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'scss'],
-    testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
+    testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]', '/dist/'],
     transformIgnorePatterns: ['<rootDir>/node_modules'],
 };
