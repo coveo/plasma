@@ -83,7 +83,7 @@ export const plasmaTheme: MantineThemeOverride = {
             },
         },
         Modal: {
-            styles: (theme, {fullScreen}, {size}) => ({
+            styles: (theme, {fullScreen, padding}, {size, variant}) => ({
                 content: {
                     flex: fullScreen
                         ? '0 0 100%'
@@ -104,6 +104,14 @@ export const plasmaTheme: MantineThemeOverride = {
                     fontSize: theme.headings.sizes.h3.fontSize,
                     lineHeight: theme.headings.sizes.h3.lineHeight,
                     fontWeight: 500,
+                },
+                header: {
+                    borderBottom: variant !== 'prompt' ? `1px solid ${color.primary.gray[3]}` : null,
+                },
+                body: {
+                    '&:not(:only-child)': {
+                        paddingTop: variant === 'prompt' ? 0 : getSize({size: padding, sizes: plasmaTheme.spacing}),
+                    },
                 },
             }),
             defaultProps: {

@@ -18,7 +18,6 @@ const useStyles = createStyles((theme) => ({
         fontSize: theme.headings.sizes.h3.fontSize,
         lineHeight: theme.headings.sizes.h3.lineHeight,
     },
-    default: {},
     success: {backgroundColor: theme.colors.lime[6], color: color.primary.pureWhite},
     warning: {backgroundColor: theme.colors.yellow[5], color: color.primary.pureWhite},
     critical: {
@@ -33,7 +32,12 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export interface PromptProps extends ModalProps {
-    variant: 'default' | 'success' | 'warning' | 'critical' | 'info';
+    /**
+     * Controls prompt appearance
+     *
+     * @default "info"
+     */
+    variant?: 'success' | 'warning' | 'critical' | 'info';
     children: ReactNode;
 }
 interface PromptType {
@@ -41,9 +45,8 @@ interface PromptType {
     Footer: typeof PromptFooter;
 }
 
-export const Prompt: PromptType = ({children, variant, size, ...otherProps}) => {
+export const Prompt: PromptType = ({children, variant = 'info', ...otherProps}) => {
     const {classes, cx} = useStyles();
-    const defaultVariant = variant === 'default';
     const convertedChildren = Children.toArray(children) as ReactElement[];
 
     const otherChildren = convertedChildren.filter((child) => child.type !== PromptFooter);
@@ -51,14 +54,14 @@ export const Prompt: PromptType = ({children, variant, size, ...otherProps}) => 
 
     const classNames = {
         header: cx(classes.header, classes[variant]),
-        close: !defaultVariant && classes.whiteClose,
+        close: classes.whiteClose,
         body: classes.body,
-        modal: !defaultVariant && classes.modalType,
+        modal: classes.modalType,
         title: classes.title,
     };
 
     return (
-        <Modal padding={0} classNames={classNames} size={defaultVariant ? size : 'sm'} {...otherProps}>
+        <Modal variant="prompt" padding={0} classNames={classNames} size={'sm'} {...otherProps}>
             <div className={classes.innerBody}>{otherChildren}</div>
             {footer}
         </Modal>

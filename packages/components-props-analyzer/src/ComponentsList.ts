@@ -318,6 +318,10 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
         propsType: 'CopyToClipboardProps',
     },
+    {
+        name: 'Prompt',
+        packageName: '@coveord/plasma-mantine',
+    },
 ];
 
 export default components;
