@@ -42,7 +42,7 @@
         "@dnd-kit/sortable": "7.0.2",
         "@dnd-kit/utilities": "3.2.1",
         "@mantine/utils": "6.0.10",
-        "@monaco-editor/react": "4.5.0",
+        "@monaco-editor/react": "4.5.1",
         "@swc/helpers": "0.5.1",
         "@tanstack/react-table": "8.8.5",
         "@tanstack/table-core": "8.8.5",
