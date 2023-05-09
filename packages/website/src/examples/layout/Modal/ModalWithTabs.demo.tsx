@@ -14,7 +14,7 @@ const Demo = () => {
                     Modal Title
                     <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
                 </Header>
-                <Tabs defaultValue="tab-1" mih={500} orientation="vertical">
+                <Tabs defaultValue="tab-1" mih={500}>
                     <Tabs.List pl="xs">
                         <Tabs.Tab value="tab-1">Tab 1</Tabs.Tab>
                         <Tabs.Tab value="tab-2">Tab 2</Tabs.Tab>
