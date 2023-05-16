@@ -255,8 +255,8 @@ importers:
         specifier: 7.1.0
         version: 7.1.0(react@18.2.0)
       eslint-plugin-testing-library:
-        specifier: 5.10.3
-        version: 5.10.3(eslint@8.40.0)(typescript@5.0.3)
+        specifier: 5.11.0
+        version: 5.11.0(eslint@8.40.0)(typescript@5.0.3)
       eslint-plugin-vitest:
         specifier: 0.1.4
         version: 0.1.4(eslint@8.40.0)(typescript@5.0.3)
@@ -538,8 +538,8 @@ importers:
         specifier: 4.0.3
         version: 4.0.3(eslint@8.40.0)
       eslint-plugin-testing-library:
-        specifier: 5.10.3
-        version: 5.10.3(eslint@8.40.0)(typescript@5.0.3)
+        specifier: 5.11.0
+        version: 5.11.0(eslint@8.40.0)(typescript@5.0.3)
       faker:
         specifier: 4.1.0
         version: 4.1.0
@@ -7897,13 +7897,13 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-testing-library@5.10.3(eslint@8.40.0)(typescript@5.0.3):
-    resolution: {integrity: sha512-0yhsKFsjHLud5PM+f2dWr9K3rqYzMy4cSHs3lcmFYMa1CdSzRvHGgXvsFarBjZ41gU8jhTdMIkg8jHLxGJqLqw==}
+  /eslint-plugin-testing-library@5.11.0(eslint@8.40.0)(typescript@5.0.3):
+    resolution: {integrity: sha512-ELY7Gefo+61OfXKlQeXNIDVVLPcvKTeiQOoMZG9TeuWa7Ln4dUNRv8JdRWBQI9Mbb427XGlVB1aa1QPZxBJM8Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6'}
     peerDependencies:
       eslint: ^7.5.0 || ^8.0.0
     dependencies:
-      '@typescript-eslint/utils': 5.59.1(eslint@8.40.0)(typescript@5.0.3)
+      '@typescript-eslint/utils': 5.59.5(eslint@8.40.0)(typescript@5.0.3)
       eslint: 8.40.0
     transitivePeerDependencies:
       - supports-color
