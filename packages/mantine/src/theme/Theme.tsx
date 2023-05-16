@@ -121,11 +121,11 @@ export const plasmaTheme: MantineThemeOverride = {
                     },
                 },
             }),
+        },
+        ModalOverlay: {
             defaultProps: {
-                overlayProps: {
-                    color: color.primary.navy[9],
-                    opacity: 0.9,
-                },
+                color: color.primary.navy[9],
+                opacity: 0.9,
             },
         },
         InputWrapper: {
