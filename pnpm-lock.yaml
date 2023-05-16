@@ -732,8 +732,8 @@ importers:
         specifier: 3.0.2
         version: 3.0.2
       jquery:
-        specifier: 3.6.4
-        version: 3.6.4
+        specifier: 3.7.0
+        version: 3.7.0
       lint-staged:
         specifier: 9.5.0
         version: 9.5.0
@@ -10789,8 +10789,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /jquery@3.6.4:
-    resolution: {integrity: sha512-v28EW9DWDFpzcD9O5iyJXg3R3+q+mET5JhnjJzQUZMHOv67bpSIHq81GEYpPNZHG+XXHsfSme3nxp/hndKEcsQ==}
+  /jquery@3.7.0:
+    resolution: {integrity: sha512-umpJ0/k8X0MvD1ds0P9SfowREz2LenHsQaxSohMZ5OMNEU2r0tf8pdeEFTHMFxWVxKNyU9rTtK3CWzUCTKJUeQ==}
     dev: true
 
   /js-sdsl@4.1.5:
