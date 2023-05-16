@@ -110,8 +110,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0
       cross-fetch:
-        specifier: 3.1.5
-        version: 3.1.5(encoding@0.1.13)
+        specifier: 3.1.6
+        version: 3.1.6(encoding@0.1.13)
       fs-extra:
         specifier: 10.1.0
         version: 10.1.0
@@ -805,8 +805,8 @@ importers:
         specifier: 9.5.0
         version: 9.5.0
       cross-fetch:
-        specifier: 3.1.5
-        version: 3.1.5(encoding@0.1.13)
+        specifier: 3.1.6
+        version: 3.1.6(encoding@0.1.13)
       dotenv-safe:
         specifier: 8.2.0
         version: 8.2.0
@@ -6413,7 +6413,7 @@ packages:
   /coveo.analytics@2.23.8(encoding@0.1.13):
     resolution: {integrity: sha512-wLtQEVUmtaydbhcPxoS0Yizl5wHwyscgjnj7rUFoqgk8D2OFaJfihT/+cNt9PLz3zE6isy5VLiFJT6B0brLREA==}
     dependencies:
-      cross-fetch: 3.1.5(encoding@0.1.13)
+      cross-fetch: 3.1.6(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -6426,6 +6426,14 @@ packages:
     resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
     dependencies:
       node-fetch: 2.6.7(encoding@0.1.13)
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /cross-fetch@3.1.6(encoding@0.1.13):
+    resolution: {integrity: sha512-riRvo06crlE8HiqOwIpQhxwdOk4fOeR7FVM/wXoxchFEqMNUjvbs3bfo4OTgMEMHzppd4DxFBDbyySj8Cv781g==}
+    dependencies:
+      node-fetch: 2.6.11(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
 
@@ -12557,6 +12565,18 @@ packages:
     resolution: {integrity: sha512-79PYeJuj6S9+yOHirR0JBLFOgjB6sQCir10uN6xRx25iD+ZD4ULqgRn3MwWBRaQGB0vEgReJzWwJo42T1R6YbQ==}
     dev: false
 
+  /node-fetch@2.6.11(encoding@0.1.13):
+    resolution: {integrity: sha512-4I6pdBY1EthSqDmJkiNk3JIT8cswwR9nfeW/cPdUagJYEQG7R95WRH74wpz7ma8Gh/9dI9FP+OU+0E4FvtA55w==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      encoding: 0.1.13
+      whatwg-url: 5.0.0
+
   /node-fetch@2.6.7(encoding@0.1.13):
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
     engines: {node: 4.x || >=6.0.0}
@@ -12568,6 +12588,7 @@ packages:
     dependencies:
       encoding: 0.1.13
       whatwg-url: 5.0.0
+    dev: false
 
   /node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
@@ -16103,7 +16124,7 @@ packages:
     dependencies:
       http-proxy-agent: 4.0.1
       https-proxy-agent: 5.0.1
-      node-fetch: 2.6.7(encoding@0.1.13)
+      node-fetch: 2.6.11(encoding@0.1.13)
       stream-events: 1.0.5
       uuid: 8.3.2
     transitivePeerDependencies:
