@@ -51,7 +51,7 @@ export const Header: HeaderType = ({description, borderBottom, children, variant
                     <Title
                         order={variant === 'page' ? 1 : 3}
                         color={variant === 'page' ? 'gray.5' : undefined}
-                        style={{wordBreak: 'break-all'}}
+                        sx={{wordBreak: 'break-word'}}
                     >
                         {otherChildren}
                         {docAnchor}
