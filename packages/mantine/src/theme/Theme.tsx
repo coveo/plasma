@@ -1,6 +1,13 @@
-import {InfoSize24Px, CheckSize16Px} from '@coveord/plasma-react-icons';
+import {CheckSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
-import {getSize, MantineThemeOverride, NotificationProps, rem, type StepperStylesParams} from '@mantine/core';
+import {
+    getSize,
+    rem,
+    type MantineThemeOverride,
+    type NotificationProps,
+    type StepperStylesParams,
+    type TabsStylesParams,
+} from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';
 
@@ -114,11 +121,11 @@ export const plasmaTheme: MantineThemeOverride = {
                     },
                 },
             }),
+        },
+        ModalOverlay: {
             defaultProps: {
-                overlayProps: {
-                    color: color.primary.navy[9],
-                    opacity: 0.9,
-                },
+                color: color.primary.navy[9],
+                opacity: 0.9,
             },
         },
         InputWrapper: {
@@ -328,6 +335,19 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
                 verticalSeparatorActive: {
                     borderColor: theme.colors.gray[3],
+                },
+            }),
+        },
+        Tabs: {
+            styles: (theme, {orientation}: TabsStylesParams) => ({
+                tabsList: {
+                    [orientation === 'horizontal' ? 'borderBottom' : 'borderRight']: `${rem(1)} solid ${
+                        theme.colors.gray[3]
+                    }`,
+                },
+                tab: {
+                    [orientation === 'horizontal' ? 'borderBottom' : 'borderRight']: `${rem(1)} solid transparent`,
+                    [orientation === 'horizontal' ? 'marginBottom' : 'marginRight']: rem(-1),
                 },
             }),
         },
