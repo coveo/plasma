@@ -54,17 +54,15 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {multiRowSelec
             textAlign: 'right',
             padding: `calc(${theme.spacing.xs}/2) ${theme.spacing.sm} !important`,
 
-            '&:has(button:disabled)': {
-                button: {
-                    pointerEvents: 'auto',
-                    cursor: 'pointer',
-                    backgroundColor: 'transparent',
-                    borderColor: 'transparent',
-                    color: `${theme.colors.gray[6]}`,
+            '& button:disabled': {
+                pointerEvents: 'auto',
+                cursor: 'pointer',
+                backgroundColor: 'transparent',
+                borderColor: 'transparent',
+                color: `${theme.colors.gray[6]}`,
 
-                    '&:hover': {
-                        backgroundColor: `${theme.colors.gray[0]}`,
-                    },
+                '&:hover': {
+                    backgroundColor: `${theme.colors.gray[0]}`,
                 },
             },
         },
