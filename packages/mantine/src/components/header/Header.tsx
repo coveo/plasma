@@ -48,7 +48,11 @@ export const Header: HeaderType = ({description, borderBottom, children, variant
             >
                 <Stack spacing={0}>
                     {breadcrumbs}
-                    <Title order={variant === 'page' ? 1 : 3} color={variant === 'page' ? 'gray.5' : undefined}>
+                    <Title
+                        order={variant === 'page' ? 1 : 3}
+                        color={variant === 'page' ? 'gray.5' : undefined}
+                        style={{wordBreak: 'break-all'}}
+                    >
                         {otherChildren}
                         {docAnchor}
                     </Title>
