@@ -1,3 +1,17 @@
+# 52.5.0 (2023-05-17)
+
+
+### Bug Fixes
+
+* **mantine, table:** update style of the th elements (#3254) cb0c313, closes #3254
+
+
+### Features
+
+* **mantine, stepper:** update style of component (#3259) b554951, closes #3259
+
+
+
 ## 52.4.3 (2023-05-03)
 
 
