@@ -2,8 +2,8 @@ import {UseFormReturnType} from '@mantine/form';
 import {
     ColumnDef,
     CoreOptions,
-    InitialTableState as TanstackInitialTableState,
     TableOptions,
+    InitialTableState as TanstackInitialTableState,
     TableState as TanstackTableState,
 } from '@tanstack/table-core';
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
@@ -11,6 +11,7 @@ import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
 import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
 import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
+import {TableConsumer} from './TableConsumer';
 import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
 import {TableFooter} from './TableFooter';
@@ -18,7 +19,6 @@ import {TableHeader} from './TableHeader';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
-import {TableConsumer} from './TableConsumer';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -97,6 +97,11 @@ export type TableContextType<TData> = {
      * Whether multi row selection is activated
      */
     multiRowSelectionEnabled: boolean;
+    /**
+     * Whether row selection is enabled or not
+     *
+     */
+    disableRowSelection: boolean;
     /**
      * Function that returns the number of pages
      */
@@ -178,6 +183,12 @@ export interface TableProps<T> {
      * @default false
      */
     multiRowSelectionEnabled?: boolean;
+    /**
+     * Whether row selection is enabled or not
+     *
+     * @default false
+     */
+    disableRowSelection?: boolean;
     /**
      * Additional options that can be passed to the table
      */

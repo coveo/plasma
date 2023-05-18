@@ -30,7 +30,7 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({
     children,
     ...others
 }) => {
-    const {getSelectedRows, multiRowSelectionEnabled, clearSelection} = useTable();
+    const {getSelectedRows, multiRowSelectionEnabled, clearSelection, disableRowSelection} = useTable();
     const {classes} = useStyles(null, {name: 'TableHeader', classNames, styles, unstyled});
     const selectedRows = getSelectedRows();
     return (
@@ -45,7 +45,7 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({
             className={classes.root}
             {...others}
         >
-            {multiRowSelectionEnabled && selectedRows.length > 0 ? (
+            {multiRowSelectionEnabled && !disableRowSelection && selectedRows.length > 0 ? (
                 <Grid.Col
                     span="auto"
                     py="sm"

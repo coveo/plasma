@@ -1,13 +1,13 @@
-import {Box, Center, Collapse, Loader, Skeleton, SkeletonProps, Table as MantineTable} from '@mantine/core';
+import {Box, Center, Collapse, Loader, Table as MantineTable, Skeleton, SkeletonProps} from '@mantine/core';
 import {useForm} from '@mantine/form';
 import {useDidUpdate} from '@mantine/hooks';
 import {
     ColumnDef,
+    Row,
+    TableState as TanstackTableState,
     defaultColumnSizing,
     flexRender,
     getCoreRowModel,
-    Row,
-    TableState as TanstackTableState,
     useReactTable,
 } from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
@@ -50,6 +50,7 @@ export const Table: TableType = <T,>({
     loading = false,
     doubleClickAction,
     multiRowSelectionEnabled,
+    disableRowSelection,
     onRowSelectionChange,
     options = {},
 }: TableProps<T>) => {
@@ -62,7 +63,7 @@ export const Table: TableType = <T,>({
     const form = useForm<TableFormType>({
         initialValues: {predicates: initialState?.predicates ?? {}, dateRange: initialState?.dateRange ?? [null, null]},
     });
-    const {cx, classes} = useStyles({multiRowSelectionEnabled});
+    const {cx, classes} = useStyles({multiRowSelectionEnabled, disableRowSelection});
 
     const table = useReactTable({
         initialState: defaultsDeep(initialStateWithoutForm, {pagination: {pageSize: TablePerPage.DEFAULT_SIZE}}),
@@ -76,6 +77,7 @@ export const Table: TableType = <T,>({
         enableRowSelection: !loading,
         ...options,
     });
+
     const [state, setState] = useState<TableState<T>>(table.initialState as TableState<T>);
     table.setOptions((prev) => ({
         ...prev,
@@ -128,9 +130,12 @@ export const Table: TableType = <T,>({
         return (
             <Fragment key={row.id}>
                 <tr
-                    onClick={() => row.toggleSelected()}
+                    onClick={() => (disableRowSelection ? undefined : row.toggleSelected())}
                     onDoubleClick={() => doubleClickAction?.(row.original)}
-                    className={cx(classes.row, {[classes.rowSelected]: isSelected})}
+                    className={cx(classes.row, {
+                        [classes.rowSelected]: isSelected,
+                        [classes.rowUnselectable]: disableRowSelection,
+                    })}
                     aria-selected={isSelected}
                 >
                     {row.getVisibleCells().map((cell) => {
@@ -189,6 +194,7 @@ export const Table: TableType = <T,>({
                     containerRef: outsideClickRef,
                     multiRowSelectionEnabled,
                     getPageCount: table.getPageCount,
+                    disableRowSelection,
                 }}
             >
                 {consumer}
