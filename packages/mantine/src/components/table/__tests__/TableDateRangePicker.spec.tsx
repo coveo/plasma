@@ -48,7 +48,22 @@ describe('Table.DateRangePicker', () => {
         });
     });
 
+    it('opens the dialog when clicking on the calendar button', async () => {
+        // Otherwise, css transition is not triggered in Mantine component
+        vi.useRealTimers();
+        const user = userEvent.setup({delay: null});
+        render(basicTableWithDateRangePicker);
+
+        await screen.findByRole('button', {name: 'calendar'});
+        await act(async () => {
+            await user.click(screen.getByRole('button', {name: 'calendar'}));
+        });
+        expect(screen.queryByRole('dialog')).toBeVisible();
+    });
+
     it('closes the dialog when clicking back on the calendar button', async () => {
+        // Otherwise, css transition is not triggered in Mantine component
+        vi.useRealTimers();
         const user = userEvent.setup({delay: null});
         render(basicTableWithDateRangePicker);
 
@@ -57,7 +72,6 @@ describe('Table.DateRangePicker', () => {
             await user.click(screen.getByRole('button', {name: 'calendar'}));
             await user.click(screen.getByRole('button', {name: 'calendar'}));
         });
-
         expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
 
