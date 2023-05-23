@@ -514,7 +514,6 @@ describe('Table', () => {
 
             render(
                 <div>
-                    <div>I'm a header</div>
                     <Table
                         getRowId={({id}) => id}
                         data={[

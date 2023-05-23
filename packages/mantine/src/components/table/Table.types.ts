@@ -99,7 +99,6 @@ export type TableContextType<TData> = {
     multiRowSelectionEnabled: boolean;
     /**
      * Whether row selection is enabled or not
-     *
      */
     disableRowSelection: boolean;
     /**
