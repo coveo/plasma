@@ -279,8 +279,8 @@ importers:
         specifier: 4.1.5
         version: 4.1.5
       publint:
-        specifier: 0.1.11
-        version: 0.1.11
+        specifier: 0.1.12
+        version: 0.1.12
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -568,8 +568,8 @@ importers:
         specifier: 8.4.23
         version: 8.4.23
       publint:
-        specifier: 0.1.11
-        version: 0.1.11
+        specifier: 0.1.12
+        version: 0.1.12
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -656,8 +656,8 @@ importers:
         specifier: 4.1.5
         version: 4.1.5
       publint:
-        specifier: 0.1.11
-        version: 0.1.11
+        specifier: 0.1.12
+        version: 0.1.12
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -750,8 +750,8 @@ importers:
         specifier: 4.0.6
         version: 4.0.6(postcss@8.4.23)
       publint:
-        specifier: 0.1.11
-        version: 0.1.11
+        specifier: 0.1.12
+        version: 0.1.12
       rimraf:
         specifier: 3.0.2
         version: 3.0.2
@@ -826,8 +826,8 @@ importers:
         specifier: 2.8.8
         version: 2.8.8
       publint:
-        specifier: 0.1.11
-        version: 0.1.11
+        specifier: 0.1.12
+        version: 0.1.12
       rimraf:
         specifier: 3.0.2
         version: 3.0.2
@@ -13724,8 +13724,8 @@ packages:
     resolution: {integrity: sha512-77DZwxQmxKnu3aR542U+X8FypNzbfJ+C5XQDk3uWjWxn6151aIMGthWYRXTqT1E5oJvg+ljaa2OJi+VfvCOQ8w==}
     dev: true
 
-  /publint@0.1.11:
-    resolution: {integrity: sha512-sD0rtIEadks83MkpomJswBO/YHExJLkta1TyqUhb0/aVV+o3ZlVnwsDPjCAow8tpfxmLGutCSLWq32yfhPB98w==}
+  /publint@0.1.12:
+    resolution: {integrity: sha512-8LxkO430t/SOhUl0qXQWdXq34m6oyLcPhE4Kc8eXhOEnB82vCHcShPQ2kH53n/ksC7jWdRWDP7MPGxKJbntQfg==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
