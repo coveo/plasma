@@ -129,7 +129,7 @@
         "lorem-ipsum": "2.0.8",
         "minimist": "1.2.8",
         "postcss": "8.4.23",
-        "publint": "0.1.11",
+        "publint": "0.1.12",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-redux": "7.2.6",
