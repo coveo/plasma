@@ -18,7 +18,7 @@ const Demo = () => {
                         <Modal.CloseButton />
                     </Modal.Header>
                     <Tabs defaultValue="tab-1" mih={500}>
-                        <Tabs.List pl="xs">
+                        <Tabs.List pl="lg">
                             <Tabs.Tab value="tab-1">Tab 1</Tabs.Tab>
                             <Tabs.Tab value="tab-2">Tab 2</Tabs.Tab>
                             <Tabs.Tab value="tab-3">Tab 3</Tabs.Tab>
