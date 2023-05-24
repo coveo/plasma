@@ -97,11 +97,11 @@ export const plasmaTheme: MantineThemeOverride = {
                         : `0 0 ${getSize({
                               size,
                               sizes: {
-                                  xs: rem(440),
-                                  sm: rem(550),
-                                  md: rem(800),
-                                  lg: rem(1334),
-                                  xl: rem('85%'),
+                                  xs: rem(432),
+                                  sm: rem(664),
+                                  md: rem(896),
+                                  lg: rem(1120),
+                                  xl: rem('88%'),
                               },
                           })}`,
                     overflow: 'auto',
