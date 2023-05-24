@@ -47,7 +47,8 @@
     "devDependencies": {
         "@babel/types": "7.21.5",
         "@coveord/plasma-tokens": "workspace:*",
-        "@svgr/core": "6.5.1",
+        "@svgr/core": "8.0.0",
+        "@svgr/plugin-jsx": "8.0.1",
         "@swc/cli": "0.1.62",
         "@swc/core": "1.3.59",
         "@types/react": "18.2.6",

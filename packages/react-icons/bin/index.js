@@ -38,6 +38,7 @@ const convertVariant = async (file) => {
         const tsCode = await svgr.transform(
             fileContent.toString('utf8'),
             {
+                plugins: ['@svgr/plugin-jsx'],
                 typescript: true,
                 jsxRuntime: 'automatic',
                 exportType: 'default',
