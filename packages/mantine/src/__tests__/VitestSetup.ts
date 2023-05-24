@@ -1,12 +1,14 @@
-import matchers, {TestingLibraryMatchers} from '@testing-library/jest-dom/matchers';
+import type {TestingLibraryMatchers} from '@testing-library/jest-dom/matchers';
+import matchers from '@testing-library/jest-dom/matchers';
 import {cleanup} from '@testing-library/react';
+import {expect} from 'vitest';
 
-declare global {
-    namespace Vi {
-        interface JestAssertion<T = any> extends jest.Matchers<void, T>, TestingLibraryMatchers<T, void> {}
-    }
+declare module 'vitest' {
+    interface Assertion<T = any> extends jest.Matchers<void, T>, TestingLibraryMatchers<T, void> {}
 }
+
 expect.extend(matchers);
+
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: vi.fn().mockImplementation((query) => ({
