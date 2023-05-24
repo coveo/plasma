@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-website",
-    "version": "52.4.3",
+    "version": "52.5.0",
     "private": true,
     "description": "Plasma Design System",
     "homepage": "https://plasma.coveo.com/",
@@ -20,15 +20,15 @@
     },
     "dependencies": {
         "@braintree/sanitize-url": "6.0.2",
-        "@coveo/atomic-react": "2.2.28",
+        "@coveo/atomic-react": "2.2.33",
         "@coveord/plasma-components-props-analyzer": "workspace:*",
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-style": "workspace:*",
         "@coveord/plasma-tokens": "workspace:*",
-        "@emotion/react": "11.10.8",
-        "@emotion/server": "11.10.0",
+        "@emotion/react": "11.11.0",
+        "@emotion/server": "11.11.0",
         "@faker-js/faker": "7.6.0",
         "@mantine/carousel": "6.0.11",
         "@mantine/core": "6.0.11",
@@ -86,7 +86,7 @@
         "raw-loader": "4.0.2",
         "rimraf": "3.0.2",
         "sass": "1.62.1",
-        "tslib": "2.5.0",
+        "tslib": "2.5.2",
         "typescript": "5.0.3"
     }
 }
