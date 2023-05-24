@@ -1,8 +1,9 @@
 import {CalendarSize24Px} from '@coveord/plasma-react-icons';
 import {Grid, Group, Popover, Text} from '@mantine/core';
 import dayjs from 'dayjs';
-import {FunctionComponent, useState} from 'react';
+import {FunctionComponent} from 'react';
 
+import {useToggle} from '@mantine/hooks';
 import {Button} from '../button';
 import {
     DateRangePickerInlineCalendar,
@@ -33,15 +34,15 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
     presets = {},
     rangeCalendarProps,
 }) => {
-    const [opened, setOpened] = useState(false);
+    const [opened, toggleOpened] = useToggle();
     const {form} = useTable();
 
     const onApply = (dates: DateRangePickerValue) => {
         form.setFieldValue('dateRange', dates);
-        setOpened(false);
+        toggleOpened(false);
     };
     const onCancel = () => {
-        setOpened(false);
+        toggleOpened(false);
     };
 
     const formatDate = (date: Date) => dayjs(date).format('MMM DD, YYYY');
@@ -51,9 +52,9 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
         <Grid.Col span="content" order={TableComponentsOrder.DateRangePicker} py="sm">
             <Group spacing="xs">
                 <Text span>{formattedRange}</Text>
-                <Popover opened={opened} onChange={setOpened} withinPortal>
+                <Popover opened={opened} onChange={toggleOpened} withinPortal>
                     <Popover.Target>
-                        <Button variant="outline" color="gray" onClick={() => setOpened((o) => !o)} px="xs">
+                        <Button variant="outline" color="gray" onClick={() => toggleOpened()} px="xs">
                             <CalendarSize24Px width={24} height={24} />
                         </Button>
                     </Popover.Target>
