@@ -108,11 +108,11 @@ export const DateRangePickerInlineCalendar = ({
                     borderTop: `1px solid ${theme.colors.gray[2]}`,
                 })}
             >
-                <Button size="xs" onClick={onCalendarApply}>
-                    Apply
-                </Button>
                 <Button variant="outline" size="xs" onClick={onCancel}>
                     Cancel
+                </Button>
+                <Button size="xs" onClick={onCalendarApply}>
+                    Apply
                 </Button>
             </Group>
         </>
