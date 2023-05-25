@@ -1,3 +1,20 @@
+# 52.6.0 (2023-05-25)
+
+
+### Bug Fixes
+
+* add word break for header title (#3284) 2815eb9, closes #3284
+* **mantine, tabledaterangepicker:** close datepicker when clicking back on calendar button (#3286) 655c8cc, closes #3286
+* order date range picker buttons (#3285) a065747, closes #3285
+
+
+### Features
+
+* **mantine, table:** add disableRowSelection property (#3287) 49d945e, closes #3287
+* **mantine:** update modal sizes (#3295) 754b436, closes #3295
+
+
+
 # 52.5.0 (2023-05-17)
 
 
