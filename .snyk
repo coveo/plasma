@@ -1,7 +1,0 @@
-# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.0.0
-ignore: {}
-patch: {}
-exclude:
-  global:
-    - packages/react/src/components/tables/tests/TableTestCommon.tsx # contains mocks for tests but cannot be converted to .mock.ts
