@@ -508,5 +508,77 @@ describe('Table', () => {
             await user.click(screen.getByRole('button', {name: /2 selected/i}));
             expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
         });
+
+        it('prevents row selection if disableRowSelection is true', async () => {
+            const user = userEvent.setup({delay: null});
+
+            render(
+                <div>
+                    <Table
+                        getRowId={({id}) => id}
+                        data={[
+                            {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                            {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+                        ]}
+                        columns={columns}
+                        multiRowSelectionEnabled
+                        disableRowSelection
+                    />
+                </div>
+            );
+
+            await user.click(screen.getByRole('row', {name: /patate king/i}));
+            expect(screen.getByRole('row', {name: /patate king/i, selected: false})).toBeInTheDocument();
+            expect(screen.queryByRole('row', {name: /patate king/i, selected: true})).not.toBeInTheDocument();
+
+            await user.click(screen.getByRole('row', {name: /first last/i}));
+            expect(screen.getByRole('row', {name: /first last/i, selected: false})).toBeInTheDocument();
+            expect(screen.queryByRole('row', {name: /first last/i, selected: true})).not.toBeInTheDocument();
+        });
+
+        it('prevents click on checkboxes if disableRowSelection is true', async () => {
+            const user = userEvent.setup({delay: null});
+
+            render(
+                <Table
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                    ]}
+                    columns={columns}
+                    multiRowSelectionEnabled
+                    disableRowSelection
+                />
+            );
+
+            expect(screen.getByRole('checkbox', {name: /select all/i})).toHaveStyle('pointerEvents: none');
+
+            const rows = screen.getAllByRole('row');
+            rows.forEach(async (row) => {
+                const checkbox = within(row).getByRole('checkbox', {name: /select/i});
+                expect(checkbox).toHaveStyle('pointerEvents: none');
+            });
+        });
+
+        it('does not display number of selected rows if disableRowSelection is true', async () => {
+            render(
+                <Table
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                    ]}
+                    columns={columns}
+                    multiRowSelectionEnabled
+                    initialState={{
+                        rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}},
+                    }}
+                />
+            );
+
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+            expect(screen.queryByRole('button', {name: /1 selected/i})).not.toBeInTheDocument();
+        });
     });
 });

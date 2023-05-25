@@ -30,9 +30,10 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({
     children,
     ...others
 }) => {
-    const {getSelectedRows, multiRowSelectionEnabled, clearSelection} = useTable();
+    const {getSelectedRows, multiRowSelectionEnabled, clearSelection, disableRowSelection} = useTable();
     const {classes} = useStyles(null, {name: 'TableHeader', classNames, styles, unstyled});
     const selectedRows = getSelectedRows();
+
     return (
         <Grid
             justify="flex-start"
@@ -53,7 +54,12 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({
                     order={TableComponentsOrder.MultiSelectInfo}
                 >
                     <Tooltip label="Unselect all">
-                        <Button onClick={clearSelection} variant="subtle" leftIcon={<CrossSize16Px height={16} />}>
+                        <Button
+                            onClick={clearSelection}
+                            variant="subtle"
+                            disabled={disableRowSelection}
+                            leftIcon={<CrossSize16Px height={16} />}
+                        >
                             {selectedRows.length} selected
                         </Button>
                     </Tooltip>
