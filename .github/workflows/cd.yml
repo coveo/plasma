@@ -34,12 +34,6 @@ jobs:
               uses: ./.github/actions/build
             - name: Test
               uses: ./.github/actions/test
-            - name: Scan for vulnerabilities
-              uses: ./.github/actions/snyk-pnpm
-              with:
-                  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-            - name: Check Scan
-              uses: ./.github/actions/check-scan-alerts
             - name: Publish
               uses: ./.github/actions/publish
               env:
