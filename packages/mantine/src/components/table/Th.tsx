@@ -7,6 +7,7 @@ const useStyles = createStyles((theme) => ({
         fontWeight: '400 !important' as any,
         padding: '0 !important',
         verticalAlign: 'middle',
+        whiteSpace: 'nowrap',
     },
 
     control: {
