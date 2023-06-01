@@ -52,7 +52,7 @@ export const Table: TableType = <T,>({
         initialValues: {
             predicates: initialState?.predicates ?? {},
             dateRange: initialState?.dateRange ?? [null, null],
-            layout: layouts[0].name,
+            layout: initialState?.layout ?? layouts[0].name,
         },
     });
     const {classes} = useStyles();
@@ -207,3 +207,4 @@ Table.AccordionColumn = TableAccordionColumn;
 Table.DateRangePicker = TableDateRangePicker;
 Table.Consumer = TableConsumer;
 Table.Loading = TableLoading;
+Table.Layouts = TableLayouts;

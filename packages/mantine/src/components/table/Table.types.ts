@@ -22,6 +22,7 @@ import {TableLoading} from './TableLoading';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
+import {TableLayouts} from './layouts/TableLayouts';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -175,7 +176,7 @@ export interface TableProps<T> {
     /**
      * Available layouts
      *
-     * @default [TableLayout.Rows]
+     * @default [Table.Layouts.Rows]
      */
     layouts?: TableLayout[];
     /**
@@ -275,4 +276,5 @@ export interface TableType {
     AccordionColumn: typeof TableAccordionColumn;
     Consumer: typeof TableConsumer;
     Loading: typeof TableLoading;
+    Layouts: typeof TableLayouts;
 }

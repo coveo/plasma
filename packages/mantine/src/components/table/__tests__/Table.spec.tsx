@@ -3,6 +3,7 @@ import {render, screen, userEvent, waitFor} from '@test-utils';
 
 import {Table} from '../Table';
 import {useTable} from '../TableContext';
+import {TableLayout} from '../Table.types';
 
 type RowData = {id: string; firstName: string; lastName?: string};
 
@@ -141,6 +142,19 @@ describe('Table', () => {
     });
 
     describe('with multiple layouts', () => {
+        const layouts: TableLayout[] = [
+            {
+                name: 'Layout 1',
+                Header: () => <tr data-testid="layout1-header" />,
+                Body: () => <tr data-testid="layout1-body" />,
+            },
+            {
+                name: 'Layout 2',
+                Header: () => <tr data-testid="layout2-header" />,
+                Body: () => <tr data-testid="layout2-body" />,
+            },
+        ];
+
         it('handles switching layout', async () => {
             const user = userEvent.setup();
             render(
@@ -148,18 +162,7 @@ describe('Table', () => {
                     getRowId={({id}) => id}
                     data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
                     columns={columns}
-                    layouts={[
-                        {
-                            name: 'Layout 1',
-                            Header: () => <tr data-testid="layout1-header" />,
-                            Body: () => <tr data-testid="layout1-body" />,
-                        },
-                        {
-                            name: 'Layout 2',
-                            Header: () => <tr data-testid="layout2-header" />,
-                            Body: () => <tr data-testid="layout2-body" />,
-                        },
-                    ]}
+                    layouts={layouts}
                 >
                     <Table.Header data-testid="table-header" />
                 </Table>
@@ -191,18 +194,7 @@ describe('Table', () => {
                     columns={columns}
                     onMount={fetchDataSpy}
                     onChange={fetchDataSpy}
-                    layouts={[
-                        {
-                            name: 'Layout 1',
-                            Header: () => <tr data-testid="layout1-header" />,
-                            Body: () => <tr data-testid="layout1-body" />,
-                        },
-                        {
-                            name: 'Layout 2',
-                            Header: () => <tr data-testid="layout2-header" />,
-                            Body: () => <tr data-testid="layout2-body" />,
-                        },
-                    ]}
+                    layouts={layouts}
                 >
                     <Table.Header data-testid="table-header" />
                 </Table>
@@ -211,6 +203,27 @@ describe('Table', () => {
             await user.click(screen.getByRole('radio', {name: /layout 2/i}));
             await user.click(screen.getByRole('radio', {name: /layout 1/i}));
             expect(fetchDataSpy).toHaveBeenCalledTimes(1);
+        });
+
+        it('renders the layout specified in the initialState', () => {
+            render(
+                <Table
+                    getRowId={({id}) => id}
+                    data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
+                    columns={columns}
+                    layouts={layouts}
+                    initialState={{layout: 'Layout 2'}}
+                >
+                    <Table.Header data-testid="table-header" />
+                </Table>
+            );
+
+            expect(screen.getByRole('radio', {name: /layout 2/i})).toBeChecked();
+            expect(screen.getByTestId('layout2-header')).toBeInTheDocument();
+            expect(screen.getByTestId('layout2-body')).toBeInTheDocument();
+            expect(screen.getByRole('radio', {name: /layout 1/i})).not.toBeChecked();
+            expect(screen.queryByTestId('layout1-header')).not.toBeInTheDocument();
+            expect(screen.queryByTestId('layout1-body')).not.toBeInTheDocument();
         });
     });
 
