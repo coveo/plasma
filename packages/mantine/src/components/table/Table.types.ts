@@ -2,12 +2,14 @@ import {UseFormReturnType} from '@mantine/form';
 import {
     ColumnDef,
     CoreOptions,
+    Table,
     TableOptions,
     InitialTableState as TanstackInitialTableState,
     TableState as TanstackTableState,
 } from '@tanstack/table-core';
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
 
+import {Icon} from '@coveord/plasma-react-icons';
 import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
 import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
@@ -16,9 +18,11 @@ import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
 import {TableFooter} from './TableFooter';
 import {TableHeader} from './TableHeader';
+import {TableLoading} from './TableLoading';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
+import {TableLayouts} from './layouts/TableLayouts';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -34,6 +38,45 @@ export interface InitialTableState<TData>
 
 export type onTableChangeEvent<TData> = (params: TableState<TData> & TableFormType) => void;
 
+export interface TableLayout {
+    /**
+     * Name of the layout.
+     * Will be displayed in the layout control
+     */
+    name: string;
+    /**
+     * Icon illustrating the layout.
+     * Will be displayed in the layout control
+     */
+    icon?: Icon;
+    /**
+     * Header portion of the table.
+     * In the standard row layout that is where column headers would be displayed.
+     */
+    Header: <T>(props: TableLayoutProps<T>) => ReactElement;
+    /**
+     * Body portion of the table.
+     * In the standard row layout that is where the rows would be displayed.
+     */
+    Body: <T>(props: TableLayoutProps<T>) => ReactElement;
+}
+
+export interface TableLayoutProps<T = unknown> {
+    table: Table<T>;
+    loading?: boolean;
+    /**
+     * Action passed when user double clicks on a row
+     */
+    doubleClickAction?: (datum: T) => void;
+    /**
+     * Function that generates the expandable content of a row
+     * Return null for rows that don't need to be expandable
+     *
+     * @param datum the row for which the children should be generated.
+     */
+    getExpandChildren?: (datum: T) => ReactNode;
+}
+
 export type TableFormType = {
     /**
      * Object containing the table predicates and their selected values
@@ -47,6 +90,10 @@ export type TableFormType = {
      * @example [new Date(2022, 0, 1), new Date(2022, 0, 31)]
      */
     dateRange: DateRangePickerValue;
+    /**
+     * Selected layout name
+     */
+    layout: TableLayout['name'];
 };
 
 export type TableContextType<TData> = {
@@ -105,6 +152,10 @@ export type TableContextType<TData> = {
      * Function that returns the number of pages
      */
     getPageCount: () => number;
+    /**
+     * Available layouts. When more than one layout is provided, it will display a layout control to switch between them.
+     */
+    layouts: TableLayout[];
 };
 
 export interface TableProps<T> {
@@ -122,6 +173,12 @@ export interface TableProps<T> {
      * @see https://tanstack.com/table/v8/docs/guide/column-defs
      */
     columns: Array<ColumnDef<T>>;
+    /**
+     * Available layouts
+     *
+     * @default [Table.Layouts.Rows]
+     */
+    layouts?: TableLayout[];
     /**
      * Function called when the table mounts
      *
@@ -218,4 +275,6 @@ export interface TableType {
     CollapsibleColumn: typeof TableCollapsibleColumn;
     AccordionColumn: typeof TableAccordionColumn;
     Consumer: typeof TableConsumer;
+    Loading: typeof TableLoading;
+    Layouts: typeof TableLayouts;
 }

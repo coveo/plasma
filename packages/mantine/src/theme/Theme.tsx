@@ -276,12 +276,12 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
             },
         },
-        Segmented: {
-            styles: {
-                control: {
-                    zIndex: 'unset',
+        SegmentedControl: {
+            styles: (theme) => ({
+                root: {
+                    backgroundColor: theme.colors.gray[2],
                 },
-            },
+            }),
         },
         Stepper: {
             defaultProps: {

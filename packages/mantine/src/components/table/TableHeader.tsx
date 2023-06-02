@@ -5,6 +5,7 @@ import {FunctionComponent, ReactNode} from 'react';
 import {Button} from '../button';
 import {TableComponentsOrder} from './Table.styles';
 import {useTable} from './TableContext';
+import {TableLayoutControl} from './TableLayoutControl';
 
 const useStyles = createStyles((theme) => ({
     root: {
@@ -66,6 +67,7 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({
                 </Grid.Col>
             ) : null}
             {children}
+            <TableLayoutControl />
         </Grid>
     );
 };

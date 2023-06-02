@@ -1,18 +1,10 @@
-import {Box, Center, Collapse, Loader, Table as MantineTable, Skeleton, SkeletonProps} from '@mantine/core';
+import {Box, Center, Loader, Table as MantineTable} from '@mantine/core';
 import {useForm} from '@mantine/form';
 import {useDidUpdate} from '@mantine/hooks';
-import {
-    ColumnDef,
-    Row,
-    TableState as TanstackTableState,
-    defaultColumnSizing,
-    flexRender,
-    getCoreRowModel,
-    useReactTable,
-} from '@tanstack/react-table';
+import {ColumnDef, Row, TableState as TanstackTableState, getCoreRowModel, useReactTable} from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Children, Dispatch, FC, Fragment, ReactElement, useCallback, useEffect, useState} from 'react';
+import {Children, Dispatch, ReactElement, useCallback, useEffect, useState} from 'react';
 
 import useStyles from './Table.styles';
 import {TableFormType, TableProps, TableState, TableType} from './Table.types';
@@ -28,14 +20,9 @@ import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
 import {TableSelectableColumn} from './TableSelectableColumn';
-import {Th} from './Th';
 import {useRowSelection} from './useRowSelection';
-
-const LoadingSkeleton: FC<SkeletonProps> = (props) => (
-    <Skeleton style={{display: 'inline-block'}} {...props} sx={!props.visible ? {borderRadius: 0} : undefined}>
-        {props.children}
-    </Skeleton>
-);
+import {TableLoading} from './TableLoading';
+import {TableLayouts} from './layouts/TableLayouts';
 
 export const Table: TableType = <T,>({
     data,
@@ -44,6 +31,7 @@ export const Table: TableType = <T,>({
     getExpandChildren,
     initialState = {},
     columns,
+    layouts = [TableLayouts.Rows],
     onMount,
     onChange,
     children,
@@ -61,9 +49,13 @@ export const Table: TableType = <T,>({
 
     const {predicates, dateRange, ...initialStateWithoutForm} = initialState;
     const form = useForm<TableFormType>({
-        initialValues: {predicates: initialState?.predicates ?? {}, dateRange: initialState?.dateRange ?? [null, null]},
+        initialValues: {
+            predicates: initialState?.predicates ?? {},
+            dateRange: initialState?.dateRange ?? [null, null],
+            layout: initialState?.layout ?? layouts[0].name,
+        },
     });
-    const {cx, classes} = useStyles({multiRowSelectionEnabled, disableRowSelection});
+    const {classes} = useStyles();
 
     const table = useReactTable({
         initialState: defaultsDeep(initialStateWithoutForm, {pagination: {pageSize: TablePerPage.DEFAULT_SIZE}}),
@@ -108,7 +100,13 @@ export const Table: TableType = <T,>({
         if (!multiRowSelectionEnabled) {
             clearSelection();
         }
-    }, [state.globalFilter, state.pagination, state.sorting, form.values]);
+    }, [
+        state.globalFilter,
+        state.pagination,
+        state.sorting,
+        JSON.stringify(form.values.dateRange),
+        JSON.stringify(form.values.predicates),
+    ]);
 
     const clearFilters = useCallback(() => {
         form.setFieldValue('predicates', initialState.predicates ?? {});
@@ -123,60 +121,8 @@ export const Table: TableType = <T,>({
         );
     }
 
-    const rows = table.getRowModel().rows.map((row) => {
-        const rowChildren = getExpandChildren?.(row.original) ?? null;
-        const isSelected = !!row.getIsSelected();
-
-        return (
-            <Fragment key={row.id}>
-                <tr
-                    onClick={() => (disableRowSelection ? undefined : row.toggleSelected())}
-                    onDoubleClick={() => doubleClickAction?.(row.original)}
-                    className={cx(classes.row, {
-                        [classes.rowSelected]: isSelected,
-                        [classes.rowUnselectable]: disableRowSelection,
-                    })}
-                    aria-selected={isSelected}
-                >
-                    {row.getVisibleCells().map((cell) => {
-                        const size = cell.column.getSize();
-                        const width = size !== defaultColumnSizing.size ? size : undefined;
-                        return (
-                            <td
-                                key={cell.id}
-                                style={{width}}
-                                className={cx({
-                                    [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
-                                })}
-                            >
-                                <LoadingSkeleton visible={loading}>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </LoadingSkeleton>
-                            </td>
-                        );
-                    })}
-                </tr>
-                {rowChildren ? (
-                    <tr>
-                        <td
-                            colSpan={table.getAllColumns().length}
-                            style={{
-                                padding: 0,
-                                borderTop: row.getIsExpanded() ? undefined : 'none',
-                                borderBottom: row.getIsExpanded() ? undefined : 'none',
-                            }}
-                        >
-                            <Collapse in={row.getIsExpanded()}>
-                                <Box px="sm" py="xs">
-                                    {rowChildren}
-                                </Box>
-                            </Collapse>
-                        </td>
-                    </tr>
-                ) : null}
-            </Fragment>
-        );
-    });
+    const Layout = layouts.find(({name}) => name === form.values.layout);
+    const hasRows = table.getRowModel().rows.length > 0;
 
     return (
         <Box ref={outsideClickRef}>
@@ -195,10 +141,11 @@ export const Table: TableType = <T,>({
                     multiRowSelectionEnabled,
                     getPageCount: table.getPageCount,
                     disableRowSelection,
+                    layouts,
                 }}
             >
                 {consumer}
-                {!rows.length && !isFiltered && !loading ? (
+                {!hasRows && !isFiltered && !loading ? (
                     noDataChildren
                 ) : (
                     <>
@@ -215,21 +162,25 @@ export const Table: TableType = <T,>({
                                         </th>
                                     </tr>
                                 ) : null}
-                                {table.getHeaderGroups().map((headerGroup) => (
-                                    <tr key={headerGroup.id} className={classes.headerColumns}>
-                                        {headerGroup.headers.map((columnHeader) => (
-                                            <Th key={columnHeader.id} header={columnHeader} />
-                                        ))}
-                                    </tr>
-                                ))}
+                                <Layout.Header
+                                    table={table}
+                                    doubleClickAction={doubleClickAction}
+                                    getExpandChildren={getExpandChildren}
+                                    loading={loading}
+                                />
                             </thead>
                             <tbody>
-                                {rows.length ? (
-                                    rows
+                                {hasRows ? (
+                                    <Layout.Body
+                                        table={table}
+                                        doubleClickAction={doubleClickAction}
+                                        getExpandChildren={getExpandChildren}
+                                        loading={loading}
+                                    />
                                 ) : (
                                     <tr>
                                         <td colSpan={table.getAllColumns().length}>
-                                            <LoadingSkeleton visible={loading}>{noDataChildren}</LoadingSkeleton>
+                                            <TableLoading visible={loading}>{noDataChildren}</TableLoading>
                                         </td>
                                     </tr>
                                 )}
@@ -255,3 +206,5 @@ Table.CollapsibleColumn = TableCollapsibleColumn;
 Table.AccordionColumn = TableAccordionColumn;
 Table.DateRangePicker = TableDateRangePicker;
 Table.Consumer = TableConsumer;
+Table.Loading = TableLoading;
+Table.Layouts = TableLayouts;
