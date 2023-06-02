@@ -1,3 +1,18 @@
+# 52.7.0 (2023-06-02)
+
+
+### Bug Fixes
+
+* remove th padding (#3305) 104d872, closes #3305
+
+
+### Features
+
+* **mantine, table:** add style API support on header components (#3315) 36b516c, closes #3315
+* **mantine:** enable table to have multiple layouts (#3314) c239018, closes #3314
+
+
+
 # 52.6.0 (2023-05-25)
 
 
