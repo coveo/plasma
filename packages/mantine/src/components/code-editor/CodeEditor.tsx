@@ -126,8 +126,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     };
 
     const handleSearch = () => {
-        editorRef?.current.focus();
-        editorRef?.current.trigger('editor', 'actions.find', '');
+        editorRef.current.focus();
+        editorRef.current.trigger('editor', 'actions.find', '');
     };
 
     useEffect(() => {
