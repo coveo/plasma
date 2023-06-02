@@ -1,10 +1,19 @@
-import {Grid, Group} from '@mantine/core';
+import {createStyles, DefaultProps, Grid, Group, Selectors} from '@mantine/core';
 import {ReactElement, ReactNode} from 'react';
-import {TableComponentsOrder} from './Table.styles';
 
+import {TableComponentsOrder} from './Table.styles';
 import {useTable} from './TableContext';
 
-interface TableActionsProps<T> {
+const useStyles = createStyles((theme) => ({
+    root: {},
+    wrapper: {
+        display: 'inline-flex',
+    },
+}));
+
+type TableActionsStylesNames = Selectors<typeof useStyles>;
+
+interface TableActionsProps<T> extends DefaultProps<TableActionsStylesNames> {
     /**
      * Function that return components for the selected row or selected rows when multi row selection is enabled
      *
@@ -27,7 +36,14 @@ interface TableActionsProps<T> {
     children: ((datum: T) => ReactNode) | ((data: T[]) => ReactNode);
 }
 
-export const TableActions = <T,>({children}: TableActionsProps<T>): ReactElement => {
+export const TableActions = <T,>({
+    children,
+    classNames,
+    styles,
+    unstyled,
+    ...others
+}: TableActionsProps<T>): ReactElement => {
+    const {classes} = useStyles(null, {name: 'TableActions', classNames, styles, unstyled});
     const {getSelectedRows, multiRowSelectionEnabled} = useTable<T>();
     const selectedRows = getSelectedRows();
 
@@ -36,8 +52,8 @@ export const TableActions = <T,>({children}: TableActionsProps<T>): ReactElement
     }
 
     return (
-        <Grid.Col span="content" order={TableComponentsOrder.Actions} py="sm">
-            <Group spacing="xs" style={{display: 'inline-flex'}}>
+        <Grid.Col span="content" order={TableComponentsOrder.Actions} py="sm" className={classes.root} {...others}>
+            <Group spacing="xs" className={classes.wrapper}>
                 {multiRowSelectionEnabled
                     ? (children as (data: T[]) => ReactNode)(selectedRows)
                     : (children as (datum: T) => ReactNode)(selectedRows[0])}

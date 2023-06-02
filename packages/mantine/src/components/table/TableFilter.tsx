@@ -1,11 +1,12 @@
 import {CrossSize16Px, SearchSize16Px} from '@coveord/plasma-react-icons';
 import {ActionIcon, createStyles, DefaultProps, Grid, Selectors, TextInput} from '@mantine/core';
 import {ChangeEventHandler, FunctionComponent, MouseEventHandler} from 'react';
-import {TableComponentsOrder} from './Table.styles';
 
+import {TableComponentsOrder} from './Table.styles';
 import {useTable} from './TableContext';
 
 const useStyles = createStyles((theme) => ({
+    root: {},
     wrapper: {
         marginBottom: '0 !important',
     },
@@ -31,7 +32,7 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
     unstyled,
     ...others
 }) => {
-    const {classes} = useStyles(null, {name: 'TableHeader', classNames, styles, unstyled});
+    const {classes} = useStyles(null, {name: 'TableFilter', classNames, styles, unstyled});
     const {state, setState} = useTable();
 
     const changeFilterValue = (value: string) => {
@@ -54,7 +55,7 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
     };
 
     return (
-        <Grid.Col span="content" order={TableComponentsOrder.Filter} py="sm">
+        <Grid.Col span="content" order={TableComponentsOrder.Filter} py="sm" className={classes.root}>
             <TextInput
                 className={classes.wrapper}
                 placeholder={placeholder}
