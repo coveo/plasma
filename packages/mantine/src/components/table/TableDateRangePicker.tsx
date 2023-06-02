@@ -1,9 +1,9 @@
 import {CalendarSize24Px} from '@coveord/plasma-react-icons';
-import {Grid, Group, Popover, Text} from '@mantine/core';
+import {createStyles, DefaultProps, Grid, Group, Popover, Selectors, Text} from '@mantine/core';
+import {useToggle} from '@mantine/hooks';
 import dayjs from 'dayjs';
 import {FunctionComponent} from 'react';
 
-import {useToggle} from '@mantine/hooks';
 import {Button} from '../button';
 import {
     DateRangePickerInlineCalendar,
@@ -14,8 +14,16 @@ import {
 import {TableComponentsOrder} from './Table.styles';
 import {useTable} from './TableContext';
 
+const useStyles = createStyles((theme) => ({
+    root: {},
+    wrapper: {},
+    label: {},
+}));
+
+type TableDateRangePickerStylesNames = Selectors<typeof useStyles>;
 interface TableDateRangePickerProps
-    extends Pick<DateRangePickerInlineCalendarProps, 'startProps' | 'endProps' | 'rangeCalendarProps'> {
+    extends Pick<DateRangePickerInlineCalendarProps, 'startProps' | 'endProps' | 'rangeCalendarProps'>,
+        DefaultProps<TableDateRangePickerStylesNames> {
     /**
      * An object containing date presets.
      * If empty the preset dropdown won't be shown
@@ -33,7 +41,12 @@ interface TableDateRangePickerProps
 export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> = ({
     presets = {},
     rangeCalendarProps,
+    classNames,
+    styles,
+    unstyled,
+    ...others
 }) => {
+    const {classes} = useStyles(null, {name: 'TableDateRangePicker', classNames, styles, unstyled});
     const [opened, toggleOpened] = useToggle();
     const {form} = useTable();
 
@@ -49,9 +62,17 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
     const formattedRange = `${formatDate(form.values.dateRange[0])} - ${formatDate(form.values.dateRange[1])}`;
 
     return (
-        <Grid.Col span="content" order={TableComponentsOrder.DateRangePicker} py="sm">
-            <Group spacing="xs">
-                <Text span>{formattedRange}</Text>
+        <Grid.Col
+            span="content"
+            order={TableComponentsOrder.DateRangePicker}
+            py="sm"
+            className={classes.root}
+            {...others}
+        >
+            <Group spacing="xs" className={classes.wrapper}>
+                <Text span className={classes.label}>
+                    {formattedRange}
+                </Text>
                 <Popover opened={opened} onChange={toggleOpened} withinPortal>
                     <Popover.Target>
                         <Button variant="outline" color="gray" onClick={() => toggleOpened()} px="xs">

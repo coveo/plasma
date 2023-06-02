@@ -1,10 +1,18 @@
-import {Grid, Group, Select, SelectItem, Text} from '@mantine/core';
+import {createStyles, DefaultProps, Grid, Group, Select, SelectItem, Selectors, Text} from '@mantine/core';
 import {FunctionComponent} from 'react';
-import {TableComponentsOrder} from './Table.styles';
 
+import {TableComponentsOrder} from './Table.styles';
 import {useTable} from './TableContext';
 
-interface TablePredicateProps {
+const useStyles = createStyles((theme) => ({
+    root: {},
+    wrapper: {},
+    label: {},
+}));
+
+type TablePredicateStylesNames = Selectors<typeof useStyles>;
+
+interface TablePredicateProps extends DefaultProps<TablePredicateStylesNames> {
     /**
      * Unique identifier for this predicate. Will be used to access the selected value in the table state
      */
@@ -21,7 +29,16 @@ interface TablePredicateProps {
     label?: string;
 }
 
-export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data, label}) => {
+export const TablePredicate: FunctionComponent<TablePredicateProps> = ({
+    id,
+    data,
+    label,
+    classNames,
+    styles,
+    unstyled,
+    ...others
+}) => {
+    const {classes} = useStyles(null, {name: 'TablePredicate', classNames, styles, unstyled});
     const {onChange, form} = useTable();
 
     const onUpdate = (newValue: string) => {
@@ -30,9 +47,9 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data
     };
 
     return (
-        <Grid.Col span="content" order={TableComponentsOrder.Predicate} py="sm">
-            <Group spacing="xs">
-                {label ? <Text>{label}:</Text> : null}
+        <Grid.Col span="content" order={TableComponentsOrder.Predicate} py="sm" className={classes.root} {...others}>
+            <Group spacing="xs" className={classes.wrapper}>
+                {label ? <Text className={classes.label}>{label}:</Text> : null}
                 <Select
                     withinPortal
                     value={form.values.predicates[id]}
