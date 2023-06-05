@@ -8,3 +8,4 @@ export {
     type TableLayout,
     type TableLayoutProps,
 } from './Table.types';
+export {flexRender as renderTableCell} from '@tanstack/react-table';
