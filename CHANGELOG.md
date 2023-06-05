@@ -1,3 +1,12 @@
+## 52.7.1 (2023-06-05)
+
+
+### Bug Fixes
+
+* **mantine:** export table layout types (#3316) 32d9345, closes #3316
+
+
+
 # 52.7.0 (2023-06-02)
 
 
