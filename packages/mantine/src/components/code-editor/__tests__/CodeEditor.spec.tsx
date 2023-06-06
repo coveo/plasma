@@ -1,5 +1,5 @@
 import {loader} from '@monaco-editor/react';
-import {render, screen, waitForElementToBeRemoved} from '@test-utils';
+import {render, screen, userEvent, waitForElementToBeRemoved} from '@test-utils';
 import {useForm} from '../../../form';
 
 import {CodeEditor} from '../CodeEditor';
@@ -60,5 +60,13 @@ describe('CodeEditor', () => {
         const xmlLanguageSpy = vi.spyOn(XML, 'register').mockImplementation(vi.fn());
         render(<CodeEditor label="label" description="description" monacoLoader="cdn" language="xml" />);
         expect(xmlLanguageSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('focus and triggers search on the Monaco editor when handleSearch is called', async () => {
+        const user = userEvent.setup();
+        render(<CodeEditor />);
+        await user.click(screen.getByRole('button', {name: /search/i}));
+        expect(screen.getByTestId('monaco-editor')).toHaveAttribute('focus');
+        expect(screen.getByTestId('monaco-editor')).toHaveAttribute('trigger');
     });
 });
