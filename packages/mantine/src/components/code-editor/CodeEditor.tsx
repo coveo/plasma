@@ -15,11 +15,12 @@ import {
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
 import Editor, {loader, Monaco} from '@monaco-editor/react';
-import {FunctionComponent, useEffect, useState} from 'react';
+import {FunctionComponent, useEffect, useState, useRef} from 'react';
 
 import {useParentHeight} from '../../hooks';
 import {XML} from './languages/xml';
 import {CopyToClipboard} from '../copyToClipboard';
+import {Search} from './search';
 
 const useStyles = createStyles((theme) => ({
     root: {},
@@ -110,6 +111,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         finalValue: '',
     });
     const [parentHeight, ref] = useParentHeight();
+    const editorRef = useRef(null);
 
     const loadLocalMonaco = async () => {
         const monacoInstance = await import('monaco-editor');
@@ -121,6 +123,11 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         if (monaco && language === 'xml') {
             XML.register(monaco);
         }
+    };
+
+    const handleSearch = () => {
+        editorRef.current.focus();
+        editorRef.current.trigger('editor', 'actions.find', '');
     };
 
     useEffect(() => {
@@ -157,8 +164,9 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             </Box>
         ) : null;
 
-    const _copyButton = (
-        <Group position="right">
+    const _buttons = (
+        <Group position="right" spacing={0}>
+            <Search handleSearch={handleSearch} />
             <CopyToClipboard value={_value} />
         </Group>
     );
@@ -181,6 +189,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 value={_value}
                 onChange={handleChange}
                 onMount={(editor, monaco) => {
+                    editorRef.current = editor;
                     registerLanguages(monaco);
                     editor.onDidFocusEditorText(onFocus);
                     editor.onDidBlurEditorText(async () => {
@@ -205,7 +214,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             {...others}
         >
             {_header}
-            {_copyButton}
+            {_buttons}
             {_editor}
             {_error}
         </Stack>
