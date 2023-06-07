@@ -20,7 +20,7 @@ import {FunctionComponent, useEffect, useState, useRef} from 'react';
 import {useParentHeight} from '../../hooks';
 import {XML} from './languages/xml';
 import {CopyToClipboard} from '../copyToClipboard';
-import {Search} from '../search';
+import {Search} from './search';
 
 const useStyles = createStyles((theme) => ({
     root: {},
