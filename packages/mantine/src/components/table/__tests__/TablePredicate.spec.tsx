@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, waitFor} from '@test-utils';
+import {act, render, screen, userEvent, waitFor} from '@test-utils';
 
 import {Table} from '../Table';
 
@@ -75,7 +75,7 @@ describe('Table.Predicate', () => {
     });
 
     it('calls onChange when changing the predicate', async () => {
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
         const onChange = vi.fn();
         render(
             <Table
@@ -96,33 +96,18 @@ describe('Table.Predicate', () => {
             </Table>
         );
 
-        await waitFor(() => {
-            expect(
-                screen.getByRole('searchbox', {
-                    name: 'rank',
-                })
-            ).toHaveValue('Second');
+        expect(screen.getByRole('searchbox', {name: 'rank'})).toHaveValue('Second');
+
+        await user.click(screen.getByRole('searchbox', {name: 'rank'}));
+
+        await user.click(screen.getByRole('option', {name: 'First'}));
+
+        expect(screen.getByRole('searchbox', {name: 'rank'})).toHaveValue('First');
+        act(() => {
+            vi.advanceTimersByTime(500);
         });
 
-        await user.click(
-            screen.getByRole('searchbox', {
-                name: 'rank',
-            })
-        );
-
-        await user.click(
-            screen.getByRole('option', {
-                name: 'First',
-            })
-        );
-
-        expect(
-            screen.getByRole('searchbox', {
-                name: 'rank',
-            })
-        ).toHaveValue('First');
-        vi.advanceTimersByTime(500);
-
+        expect(onChange).toHaveBeenCalledTimes(1);
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({predicates: {rank: 'first'}}));
     });
 });

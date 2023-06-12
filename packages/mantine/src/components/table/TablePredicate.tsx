@@ -39,11 +39,10 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({
     ...others
 }) => {
     const {classes} = useStyles(null, {name: 'TablePredicate', classNames, styles, unstyled});
-    const {onChange, form} = useTable();
+    const {form} = useTable();
 
     const onUpdate = (newValue: string) => {
         form.setFieldValue('predicates', {...form.values.predicates, [id]: newValue});
-        onChange?.();
     };
 
     return (
