@@ -1,3 +1,12 @@
+# 52.8.0 (2023-06-12)
+
+
+### Features
+
+* **content-browser:** add search action in code editor (#3318) d3790b0, closes #3318
+
+
+
 ## 52.7.1 (2023-06-05)
 
 
