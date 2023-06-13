@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -860,8 +860,8 @@ importers:
         specifier: 6.0.2
         version: 6.0.2
       '@coveo/atomic-react':
-        specifier: 2.2.33
-        version: 2.2.33(@coveo/headless@2.17.1)(encoding@0.1.13)(postcss@8.4.24)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.2.38
+        version: 2.2.38(@coveo/headless@2.18.4)(encoding@0.1.13)(postcss@8.4.24)(react-dom@18.2.0)(react@18.2.0)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -2589,15 +2589,15 @@ packages:
     resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
     dev: false
 
-  /@coveo/atomic-react@2.2.33(@coveo/headless@2.17.1)(encoding@0.1.13)(postcss@8.4.24)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-CU6++b9IFAVOfArFLbCIKfJvJm0PXXDcfdAzLot3x7Z9Wow/BE/Ov1D0IuJeGMMfKHXrWXOMt1QliyoYQeEZdg==}
+  /@coveo/atomic-react@2.2.38(@coveo/headless@2.18.4)(encoding@0.1.13)(postcss@8.4.24)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-sLFXj5D6SyWv/2/QG69NzLKLUWIEgPO9EVkHNpWnsN0+IFIpy1zvFI/HpY0HvB9bICPA9rrjZV09WSXtrwW3/g==}
     peerDependencies:
-      '@coveo/headless': 2.17.1
+      '@coveo/headless': 2.18.4
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@coveo/atomic': 2.30.1(@coveo/headless@2.17.1)(encoding@0.1.13)(postcss@8.4.24)
-      '@coveo/headless': 2.17.1(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.8)(react-redux@7.2.6)(react@18.2.0)
+      '@coveo/atomic': 2.31.4(@coveo/headless@2.18.4)(encoding@0.1.13)(postcss@8.4.24)
+      '@coveo/headless': 2.18.4(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.8)(react-redux@7.2.6)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -2605,14 +2605,14 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/atomic@2.30.1(@coveo/headless@2.17.1)(encoding@0.1.13)(postcss@8.4.24):
-    resolution: {integrity: sha512-L+Do3C60qD/P6Im30DUejs1GbSrlzl8ifeyWor8PdyyKmKN30bhDeLDJyuqIBwxpJns4rJPz8kQW7gsOpl0y5w==}
+  /@coveo/atomic@2.31.4(@coveo/headless@2.18.4)(encoding@0.1.13)(postcss@8.4.24):
+    resolution: {integrity: sha512-Is3hKv4YMuxfIIxSlL0p7yAM5HeqCtR5KMHyAqzfHhJb6wprPiMm6VAOg7c44NqyvBFSY120YR+emvfZqQ4NTw==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
-      '@coveo/headless': 2.17.1
+      '@coveo/headless': 2.18.4
     dependencies:
-      '@coveo/bueno': 0.43.2
-      '@coveo/headless': 2.17.1(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.8)(react-redux@7.2.6)(react@18.2.0)
+      '@coveo/bueno': 0.43.6
+      '@coveo/headless': 2.18.4(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.8)(react-redux@7.2.6)(react@18.2.0)
       '@popperjs/core': 2.11.6
       '@salesforce-ux/design-system': 2.19.0(postcss@8.4.24)
       '@stencil/core': 2.17.3
@@ -2630,17 +2630,17 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/bueno@0.43.2:
-    resolution: {integrity: sha512-9ePaVcd6DfOqqzNhNOqhlp1olVAgvSGmKMWRXVqVb6SS9RBJw/4+jca1ppJhSmHE7DPilxccRni2qUYRwzaA5w==}
+  /@coveo/bueno@0.43.6:
+    resolution: {integrity: sha512-eD1qjaMwWvvdEQHtq3RdTAXdkhQqNZHApcexKXRbw0koFOJft9gyFkZfR7ciJ61ihMhOU1h6lXs57yA1Da2RKA==}
     dev: false
 
-  /@coveo/headless@2.17.1(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.8)(react-redux@7.2.6)(react@18.2.0):
-    resolution: {integrity: sha512-4zktUCPJ5QYtFWDhhDdRa4i8m9tCvKxsAv/xHlQwNLQ5lMdPcQ57Nq54eOVpeTwcOjahnT4POnimaZVKyzhqYg==}
+  /@coveo/headless@2.18.4(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.8)(react-redux@7.2.6)(react@18.2.0):
+    resolution: {integrity: sha512-T7N1Ffv+fIuASXxmyzSKhFAOrvtpRq8zieFpclb1a27wfeHJdhDmEc7WIwYITGrQYOMKm/jHr3OVrhwH6Re/Eg==}
     peerDependencies:
       encoding: ^0.1.13
       pino-pretty: ^6.0.0
     dependencies:
-      '@coveo/bueno': 0.43.2
+      '@coveo/bueno': 0.43.6
       '@reduxjs/toolkit': 1.8.5(react-redux@7.2.6)(react@18.2.0)
       '@types/pino': 6.3.12
       '@types/redux-mock-store': 1.0.3
