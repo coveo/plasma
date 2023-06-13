@@ -1,3 +1,12 @@
+## 52.8.1 (2023-06-13)
+
+
+### Bug Fixes
+
+* **mantine:** fix table predicate onChange (#3320) 7700a24, closes #3320
+
+
+
 # 52.8.0 (2023-06-12)
 
 
