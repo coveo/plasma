@@ -20,12 +20,10 @@ const NavLink: FunctionComponent<PropsWithChildren<NavLinkProps>> = ({href = '',
                     <span>{label}</span>
                 </div>
             ) : (
-                <Link href={href} prefetch={false}>
-                    <a href={href} className="navigation-menu-section-item-link">
-                        <div className="navigation-menu-section">
-                            <span>{label}</span>
-                        </div>
-                    </a>
+                <Link href={href} prefetch={false} className="navigation-menu-section-item-link">
+                    <div className="navigation-menu-section">
+                        <span>{label}</span>
+                    </div>
                 </Link>
             )}
         </SideNavigationItem>

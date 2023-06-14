@@ -74,11 +74,9 @@ export const Tile: FunctionComponent<TileProps> = ({
 
     if (href && href.length > 0) {
         return (
-            <Link href={href} prefetch={false}>
-                <a href={href} className={className} onClick={sendAnalytics}>
-                    {tileIcon}
-                    {tileInfo}
-                </a>
+            <Link href={href} prefetch={false} className={className} onClick={sendAnalytics}>
+                {tileIcon}
+                {tileInfo}
             </Link>
         );
     }
