@@ -17,15 +17,14 @@ jobs:
               with:
                   WORKFLOW: 'ci'
     test:
-        name: Build and Test
+        name: Test
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
             - uses: ./.github/actions/setup
-            - uses: ./.github/actions/build
             - uses: ./.github/actions/test
     demo:
-        name: Deploy Demo
+        name: Build & Deploy Demo
         runs-on: ubuntu-latest
         permissions:
             pull-requests: write
