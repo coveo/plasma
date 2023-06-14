@@ -7,7 +7,7 @@
             "outputMode": "new-only"
         },
         "test": {
-            "dependsOn": ["build"],
+            "dependsOn": ["^build"],
             "outputs": [],
             "inputs": ["src/**/*.spec.*"],
             "outputMode": "new-only"
