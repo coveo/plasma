@@ -351,5 +351,25 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
             }),
         },
+        Select: {
+            styles: (theme) => ({
+                input: {
+                    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+                },
+                item: {
+                    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+
+                    '&[data-hovered]': {
+                        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[1],
+                    },
+
+                    '&[data-selected]': {
+                        backgroundColor: theme.fn.variant({variant: 'light'}).background,
+                        color: theme.fn.variant({variant: 'light'}).color,
+                        ...theme.fn.hover({backgroundColor: theme.fn.variant({variant: 'light'}).hover}),
+                    },
+                },
+            }),
+        },
     },
 };
