@@ -27,7 +27,7 @@
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-style": "workspace:*",
         "@coveord/plasma-tokens": "workspace:*",
-        "@emotion/react": "11.11.0",
+        "@emotion/react": "11.11.1",
         "@emotion/server": "11.11.0",
         "@faker-js/faker": "7.6.0",
         "@mantine/carousel": "6.0.11",
