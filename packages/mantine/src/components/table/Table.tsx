@@ -16,13 +16,13 @@ import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
 import {TableFooter} from './TableFooter';
 import {TableHeader} from './TableHeader';
+import {TableLoading} from './TableLoading';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
 import {TableSelectableColumn} from './TableSelectableColumn';
-import {useRowSelection} from './useRowSelection';
-import {TableLoading} from './TableLoading';
 import {TableLayouts} from './layouts/TableLayouts';
+import {useRowSelection} from './useRowSelection';
 
 export const Table: TableType = <T,>({
     data,
@@ -86,7 +86,9 @@ export const Table: TableType = <T,>({
         !!form.values.dateRange?.[0] ||
         !!form.values.dateRange?.[1];
 
-    const triggerChange = debounce(() => onChange?.({...state, ...form.values}), 500);
+    const triggerChange = debounce(() => {
+        onChange?.({...state, ...form.values});
+    }, 500);
 
     useEffect(() => {
         onMount?.({...state, ...form.values});
@@ -110,6 +112,7 @@ export const Table: TableType = <T,>({
 
     const clearFilters = useCallback(() => {
         form.setFieldValue('predicates', initialState.predicates ?? {});
+        form.setFieldValue('dateRange', initialState.dateRange ?? [null, null]);
         setState((prevState) => ({...prevState, globalFilter: ''}));
     }, []);
 
