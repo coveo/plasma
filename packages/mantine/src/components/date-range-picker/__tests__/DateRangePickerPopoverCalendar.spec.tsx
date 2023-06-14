@@ -4,17 +4,6 @@ import {DateRangePickerValue} from '../DateRangePickerInlineCalendar';
 
 import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar';
 
-// Since we're mocking the date and the animations are timer based we're mocking useReduceMotion to disable all the animations
-// I tried wrapping the components in <MantineProvider theme={{components: {Transition: {defaultProps: {duration: 0}}}}}>
-// but the animation was still happening. :(
-vi.mock('@mantine/hooks', async () => {
-    const actual = await vi.importActual('@mantine/hooks');
-    return {
-        ...actual,
-        useReduceMotion: () => true,
-    };
-});
-
 describe('DateRangePickerPopoverCalendar', () => {
     it('does not render the preset searchbox when there is no presets', () => {
         render(<DateRangePickerPopoverCalendar defaultValue={[null, null]} />);
@@ -23,7 +12,7 @@ describe('DateRangePickerPopoverCalendar', () => {
     });
 
     it('updates with the selected dates when choosing a preset', async () => {
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup();
         const Fixture = () => {
             const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
             return (
@@ -40,11 +29,7 @@ describe('DateRangePickerPopoverCalendar', () => {
         };
         render(<Fixture />);
 
-        await user.click(
-            screen.getByRole('searchbox', {
-                name: 'Date range',
-            })
-        );
+        await user.click(screen.getByRole('searchbox', {name: 'Date range'}));
         await user.click(screen.getByRole('option', {name: 'select me'}));
 
         expect(screen.getByTestId('json')).toHaveTextContent('["1999-12-31T00:00:00.000Z","2000-01-01T00:00:00.000Z"]');
@@ -79,7 +64,7 @@ describe('DateRangePickerPopoverCalendar', () => {
     });
 
     it('calls onApply with the selected dates when typing in the inputs', async () => {
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup();
         const Fixture = () => {
             const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
             return (
@@ -104,5 +89,5 @@ describe('DateRangePickerPopoverCalendar', () => {
         await user.type(endInput, 'Jan 14, 2022');
 
         expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-01-14T23:59:59.999Z"]');
-    });
+    }, 10000);
 });

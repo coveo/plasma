@@ -30,6 +30,18 @@ window.ResizeObserver =
         unobserve: vi.fn(),
     }));
 
+// Temporarily workaround for bug in @testing-library/react when use user-event with `vi.useFakeTimers()`
+beforeAll(() => {
+    const _jest = (globalThis as any).jest;
+
+    (globalThis as any).jest = {
+        ...(globalThis as any).jest,
+        advanceTimersByTime: vi.advanceTimersByTime.bind(vi),
+    };
+
+    return () => void ((globalThis as any).jest = _jest);
+});
+
 afterEach(() => {
     cleanup();
 });

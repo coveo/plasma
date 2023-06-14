@@ -58,7 +58,10 @@ export const Table: TableType = <T,>({
     const {classes} = useStyles();
 
     const table = useReactTable({
-        initialState: defaultsDeep(initialStateWithoutForm, {pagination: {pageSize: TablePerPage.DEFAULT_SIZE}}),
+        initialState: defaultsDeep(initialStateWithoutForm, {
+            pagination: {pageSize: TablePerPage.DEFAULT_SIZE},
+            globalFilter: '',
+        }),
         data,
         columns: multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),

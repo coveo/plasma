@@ -65,6 +65,7 @@ describe('CodeEditor', () => {
     it('focus and triggers search on the Monaco editor when handleSearch is called', async () => {
         const user = userEvent.setup();
         render(<CodeEditor />);
+        expect(await screen.findByTestId('monaco-editor')).toBeInTheDocument();
         await user.click(screen.getByRole('button', {name: /search/i}));
         expect(screen.getByTestId('monaco-editor')).toHaveAttribute('focus');
         expect(screen.getByTestId('monaco-editor')).toHaveAttribute('trigger');
