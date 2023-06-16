@@ -1,3 +1,12 @@
+# 52.9.0 (2023-06-16)
+
+
+### Features
+
+* **mantine:** update style of the Select component (#3326) 6c2443c, closes #3326
+
+
+
 ## 52.8.1 (2023-06-13)
 
 
