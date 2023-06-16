@@ -4,8 +4,9 @@ import {useDidUpdate} from '@mantine/hooks';
 import {ColumnDef, Row, TableState as TanstackTableState, getCoreRowModel, useReactTable} from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Children, Dispatch, ReactElement, useCallback, useEffect, useState} from 'react';
+import {Children, cloneElement, Dispatch, ReactElement, useCallback, useEffect, useState} from 'react';
 
+import {TableLayouts} from './layouts/TableLayouts';
 import useStyles from './Table.styles';
 import {TableFormType, TableProps, TableState, TableType} from './Table.types';
 import {TableActions} from './TableActions';
@@ -16,13 +17,13 @@ import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
 import {TableFooter} from './TableFooter';
 import {TableHeader} from './TableHeader';
+import {TableLastUpdated} from './TableLastUpdated';
+import {TableLoading} from './TableLoading';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
 import {TableSelectableColumn} from './TableSelectableColumn';
 import {useRowSelection} from './useRowSelection';
-import {TableLoading} from './TableLoading';
-import {TableLayouts} from './layouts/TableLayouts';
 
 export const Table: TableType = <T,>({
     data,
@@ -46,6 +47,7 @@ export const Table: TableType = <T,>({
     const header = convertedChildren.find((child) => child.type === TableHeader);
     const footer = convertedChildren.find((child) => child.type === TableFooter);
     const consumer = convertedChildren.find((child) => child.type === TableConsumer);
+    const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
 
     const {predicates, dateRange, ...initialStateWithoutForm} = initialState;
     const form = useForm<TableFormType>({
@@ -187,6 +189,11 @@ export const Table: TableType = <T,>({
                             </tbody>
                         </MantineTable>
                         {footer}
+                        {lastUpdated
+                            ? cloneElement(lastUpdated, {
+                                  dependencies: [data, ...(lastUpdated.props.dependencies ?? [])],
+                              })
+                            : null}
                     </>
                 )}
             </TableContext.Provider>
@@ -198,6 +205,7 @@ Table.Actions = TableActions;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;
 Table.Header = TableHeader;
+Table.LastUpdated = TableLastUpdated;
 Table.Pagination = TablePagination;
 Table.Predicate = TablePredicate;
 Table.PerPage = TablePerPage;

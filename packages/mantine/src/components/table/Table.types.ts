@@ -1,16 +1,17 @@
+import {Icon} from '@coveord/plasma-react-icons';
 import {UseFormReturnType} from '@mantine/form';
 import {
     ColumnDef,
     CoreOptions,
+    InitialTableState as TanstackInitialTableState,
     Table,
     TableOptions,
-    InitialTableState as TanstackInitialTableState,
     TableState as TanstackTableState,
 } from '@tanstack/table-core';
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
 
-import {Icon} from '@coveord/plasma-react-icons';
 import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
+import {TableLayouts} from './layouts/TableLayouts';
 import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
 import {TableConsumer} from './TableConsumer';
@@ -18,11 +19,11 @@ import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
 import {TableFooter} from './TableFooter';
 import {TableHeader} from './TableHeader';
+import {TableLastUpdated} from './TableLastUpdated';
 import {TableLoading} from './TableLoading';
 import {TablePagination} from './TablePagination';
 import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
-import {TableLayouts} from './layouts/TableLayouts';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -268,6 +269,7 @@ export interface TableType {
     Filter: typeof TableFilter;
     Footer: typeof TableFooter;
     Header: typeof TableHeader;
+    LastUpdated: typeof TableLastUpdated;
     Pagination: typeof TablePagination;
     PerPage: typeof TablePerPage;
     Predicate: typeof TablePredicate;
