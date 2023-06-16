@@ -8,7 +8,7 @@ const LegacyWarningBanner = () => (
         <Code>@coveord/plasma-react</Code> and <Code>@coveord/plasma-style</Code> packages. Those packages are
         deprecated and replaced by the <Code>@coveord/plasma-mantine</Code> package.{' '}
         <Text>
-            <Link href="/" passHref>
+            <Link href="/" passHref legacyBehavior>
                 <Anchor>
                     <ArrowLeftSize16Px height={16} /> Return to the latest documentation
                 </Anchor>

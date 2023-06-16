@@ -29,10 +29,8 @@ import {Store} from '../Store';
 
 const Header = () => (
     <div id="header" className="demo-header">
-        <Link href="/">
-            <a className="header-logo-link">
-                <img src={logo} className="header-logo" alt="Plasma Design System" />
-            </a>
+        <Link href="/" className="header-logo-link">
+            <img src={logo} className="header-logo" alt="Plasma Design System" />
         </Link>
         <StandaloneSearchBar />
         <div className="right-side">
