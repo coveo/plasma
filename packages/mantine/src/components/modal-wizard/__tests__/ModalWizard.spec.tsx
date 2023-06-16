@@ -8,24 +8,28 @@ describe('ModalWizard', () => {
 
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
             {
+                id: 'step2',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
                 element: <div> Slide 2</div>,
             },
             {
+                id: 'step3',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: false}),
                 element: <div> Slide 3</div>,
             },
             {
+                id: 'step4',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: false}),
@@ -46,13 +50,14 @@ describe('ModalWizard', () => {
                 onNext={onNextSpy}
                 onPrevious={onPreviousSpy}
             >
-                {modelSteps.map((model_item) => (
+                {modelSteps.map((step) => (
                     <ModalWizard.Step
-                        docLink={model_item.docLink}
+                        key={step.id}
+                        docLink={step.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
-                        validateStep={model_item.validateStep}
+                        validateStep={step.validateStep}
                     >
-                        {model_item.element}
+                        {step.element}
                     </ModalWizard.Step>
                 ))}
             </ModalWizard>
@@ -165,6 +170,7 @@ describe('ModalWizard', () => {
 
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -179,6 +185,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
@@ -201,6 +208,7 @@ describe('ModalWizard', () => {
         const user = userEvent.setup();
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -215,6 +223,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
@@ -237,6 +246,7 @@ describe('ModalWizard', () => {
         const user = userEvent.setup();
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -252,6 +262,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} onFinish={onFinish} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
@@ -274,6 +285,7 @@ describe('ModalWizard', () => {
         const user = userEvent.setup();
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -289,6 +301,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} handleDirtyState={handleDirtyState} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
@@ -313,6 +326,7 @@ describe('ModalWizard', () => {
         const user = userEvent.setup();
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -328,6 +342,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} handleDirtyState={handleDirtyState} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
