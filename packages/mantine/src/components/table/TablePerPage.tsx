@@ -32,14 +32,14 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     };
 
     return (
-        <Group>
-            <Text>{label}</Text>
+        <Group spacing="sm">
+            <Text fw={500}>{label}</Text>
             <SegmentedControl
                 value={state.pagination.pageSize.toString() ?? values?.[1].toString()}
                 onChange={updatePerPage}
                 data={values.map((value) => value.toString())}
                 color="action"
-                size="md"
+                size="sm"
             />
         </Group>
     );

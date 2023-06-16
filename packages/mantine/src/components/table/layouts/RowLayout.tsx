@@ -1,12 +1,13 @@
 import {ListSize16Px} from '@coveord/plasma-react-icons';
-import {Box, Collapse, createStyles} from '@mantine/core';
+import {Box, Collapse, createStyles, rem} from '@mantine/core';
 import {flexRender} from '@tanstack/react-table';
 import {defaultColumnSizing} from '@tanstack/table-core';
-import {Fragment} from 'react';
+import {Fragment, type MouseEvent} from 'react';
 import {TableLayout, TableLayoutProps} from '../Table.types';
 import {TableCollapsibleColumn} from '../TableCollapsibleColumn';
 import {useTable} from '../TableContext';
 import {TableLoading} from '../TableLoading';
+import {TableSelectableColumn} from '../TableSelectableColumn';
 import {Th} from '../Th';
 
 interface TableStylesParams {
@@ -16,13 +17,12 @@ interface TableStylesParams {
 
 const useStyles = createStyles<string, TableStylesParams>((theme, {multiRowSelectionEnabled, disableRowSelection}) => {
     const rowBackgroundColor =
-        theme.colorScheme === 'dark'
-            ? theme.fn.rgba(theme.colors[theme.primaryColor][7], 0.2)
-            : theme.colors[theme.primaryColor][0];
+        theme.colorScheme === 'dark' ? theme.fn.rgba(theme.colors[theme.primaryColor][7], 0.2) : theme.colors.gray[1];
+    const border = `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`;
     return {
         headerColumns: {
             '& th:first-of-type > *': {
-                paddingLeft: theme.spacing.xl,
+                paddingLeft: '40px',
             },
 
             '& input[type=checkbox]': {
@@ -60,9 +60,25 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {multiRowSelec
         },
 
         row: {
+            '& td:first-of-type': {
+                paddingLeft: '40px',
+            },
             '&:hover': {
                 backgroundColor: rowBackgroundColor,
             },
+        },
+
+        cell: {
+            verticalAlign: 'middle',
+            // We must use height instead of minHeight here, otherwise it doesn't apply
+            height: '56px',
+            padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
+            borderBottom: border,
+        },
+
+        collapsible: {
+            backgroundColor: rowBackgroundColor,
+            borderBottom: border,
         },
     };
 });
@@ -84,14 +100,27 @@ const RowLayoutBody = <T,>({table, doubleClickAction, getExpandChildren, loading
     const {multiRowSelectionEnabled, disableRowSelection} = useTable();
     const {classes, cx} = useStyles({disableRowSelection, multiRowSelectionEnabled});
 
+    const toggleCollapsible = (el: HTMLTableRowElement) => {
+        const cell = el.children[el.children.length - 1] as HTMLTableCellElement;
+        cell.querySelector('button').click();
+    };
+
     const rows = table.getRowModel().rows.map((row) => {
         const rowChildren = getExpandChildren?.(row.original) ?? null;
         const isSelected = !!row.getIsSelected();
+        const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
+            if (rowChildren) {
+                toggleCollapsible(event.currentTarget);
+            }
+            if (!disableRowSelection && !multiRowSelectionEnabled) {
+                row.toggleSelected();
+            }
+        };
 
         return (
             <Fragment key={row.id}>
                 <tr
-                    onClick={() => (disableRowSelection ? undefined : row.toggleSelected())}
+                    onClick={onClick}
                     onDoubleClick={() => doubleClickAction?.(row.original)}
                     className={cx(classes.row, {
                         [classes.rowSelected]: isSelected,
@@ -102,13 +131,20 @@ const RowLayoutBody = <T,>({table, doubleClickAction, getExpandChildren, loading
                     {row.getVisibleCells().map((cell) => {
                         const size = cell.column.getSize();
                         const width = size !== defaultColumnSizing.size ? size : undefined;
+                        const onCollapsibleCellClick = (event: MouseEvent<HTMLTableCellElement>) => {
+                            if (cell.column.id === TableSelectableColumn.id && !disableRowSelection) {
+                                event.stopPropagation();
+                                row.getToggleSelectedHandler();
+                            }
+                        };
                         return (
                             <td
                                 key={cell.id}
                                 style={{width}}
-                                className={cx({
+                                className={cx(classes.cell, {
                                     [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
                                 })}
+                                onClick={onCollapsibleCellClick}
                             >
                                 <TableLoading visible={loading}>
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -123,12 +159,10 @@ const RowLayoutBody = <T,>({table, doubleClickAction, getExpandChildren, loading
                             colSpan={table.getAllColumns().length}
                             style={{
                                 padding: 0,
-                                borderTop: row.getIsExpanded() ? undefined : 'none',
-                                borderBottom: row.getIsExpanded() ? undefined : 'none',
                             }}
                         >
                             <Collapse in={row.getIsExpanded()}>
-                                <Box px="sm" py="xs">
+                                <Box className={classes.collapsible} px="sm" py="xs">
                                     {rowChildren}
                                 </Box>
                             </Collapse>

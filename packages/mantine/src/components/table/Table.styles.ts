@@ -3,15 +3,6 @@ import {createStyles} from '@mantine/core';
 const useStyles = createStyles<string>((theme) => ({
     table: {
         width: '100%',
-        '& thead tr th': {
-            borderBottom: 'none',
-        },
-        '& td:first-of-type': {
-            paddingLeft: theme.spacing.xl,
-        },
-        '& tbody td': {
-            verticalAlign: 'top',
-        },
     },
 
     header: {

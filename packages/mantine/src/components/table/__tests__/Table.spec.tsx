@@ -1,9 +1,9 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, waitFor} from '@test-utils';
+import {render, screen, userEvent, waitFor, within} from '@test-utils';
 
 import {Table} from '../Table';
-import {useTable} from '../TableContext';
 import {TableLayout} from '../Table.types';
+import {useTable} from '../TableContext';
 
 type RowData = {id: string; firstName: string; lastName?: string};
 
@@ -243,13 +243,13 @@ describe('Table', () => {
                     onRowSelectionChange={onRowSelectionChangeSpy}
                 />
             );
-            await user.click(screen.getByRole('row', {name: /jane doe/i}));
+            await user.click(within(screen.getByRole('row', {name: /jane doe/i})).getByRole('checkbox'));
             expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
             expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([{id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}]);
 
             onRowSelectionChangeSpy.mockClear();
 
-            await user.click(screen.getByRole('row', {name: /john smith/i}));
+            await user.click(within(screen.getByRole('row', {name: /john smith/i})).getByRole('checkbox'));
             expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
             expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([
                 {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
@@ -284,7 +284,7 @@ describe('Table', () => {
 
             expect(row).toBeInTheDocument();
 
-            await user.click(row);
+            await user.click(within(row).getByRole('checkbox'));
 
             expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
 

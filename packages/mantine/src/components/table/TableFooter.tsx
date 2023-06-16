@@ -5,7 +5,7 @@ interface TableFooterProps extends DefaultProps {
     children?: ReactNode;
 }
 export const TableFooter: FunctionComponent<TableFooterProps> = ({children, ...others}) => (
-    <Group position="apart" px="md" py="sm" {...others}>
+    <Group position="apart" px="xl" py="md" {...others}>
         {children}
     </Group>
 );
