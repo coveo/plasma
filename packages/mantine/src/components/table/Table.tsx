@@ -41,6 +41,7 @@ export const Table: TableType = <T,>({
     multiRowSelectionEnabled,
     disableRowSelection,
     onRowSelectionChange,
+    additionalRootNodes,
     options = {},
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
@@ -84,6 +85,7 @@ export const Table: TableType = <T,>({
     const {clearSelection, getSelectedRow, getSelectedRows, outsideClickRef} = useRowSelection(table, {
         multiRowSelectionEnabled,
         onRowSelectionChange,
+        additionalRootNodes,
     });
     const isFiltered =
         !!state.globalFilter ||

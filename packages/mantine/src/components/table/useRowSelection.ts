@@ -2,6 +2,7 @@ import {useClickOutside} from '@mantine/hooks';
 import {functionalUpdate, RowSelectionState, Table} from '@tanstack/table-core';
 import isEqual from 'fast-deep-equal';
 
+import {useRef} from 'react';
 import {RowSelectionWithData, TableProps, TableState} from './Table.types';
 
 export const useRowSelection = <T>(
@@ -9,13 +10,19 @@ export const useRowSelection = <T>(
     {
         onRowSelectionChange,
         multiRowSelectionEnabled,
-    }: Pick<TableProps<T>, 'onRowSelectionChange' | 'multiRowSelectionEnabled'>
+        additionalRootNodes = [],
+    }: Pick<TableProps<T>, 'onRowSelectionChange' | 'multiRowSelectionEnabled' | 'additionalRootNodes'>
 ) => {
-    const outsideClickRef = useClickOutside(() => {
-        if (!multiRowSelectionEnabled) {
-            clearSelection();
-        }
-    });
+    const outsideClickRef = useRef<HTMLDivElement>();
+    useClickOutside(
+        () => {
+            if (!multiRowSelectionEnabled) {
+                clearSelection();
+            }
+        },
+        null,
+        [outsideClickRef.current, ...additionalRootNodes]
+    );
 
     table.setOptions((prev) => ({
         ...prev,

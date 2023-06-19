@@ -247,6 +247,15 @@ export interface TableProps<T> {
      */
     disableRowSelection?: boolean;
     /**
+     * Nodes that are considered inside the table.
+     *
+     * Rows normally get unselected when clicking outside the table, but sometimes it has difficulties guessing what is inside or outside, for example when using modals.
+     * You can use this prop to force the table to consider some nodes to be inside the table.
+     *
+     * @see https://mantine.dev/hooks/use-click-outside/#multiple-nodes
+     */
+    additionalRootNodes?: HTMLElement[];
+    /**
      * Additional options that can be passed to the table
      */
     options?: Omit<
