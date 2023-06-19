@@ -57,6 +57,7 @@ export const DateRangePickerPresetSelect = <T extends unknown>({
             value={selectedPreset}
             onChange={onChangePreset}
             data={selectData}
+            maxDropdownHeight={240}
         />
     );
 };
