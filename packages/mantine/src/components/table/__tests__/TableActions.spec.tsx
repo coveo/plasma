@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent} from '@test-utils';
+import {render, screen, userEvent, within} from '@test-utils';
 
 import {Button} from '../../button';
 import {Table} from '../Table';
@@ -57,6 +57,7 @@ describe('Table.Actions', () => {
             const renderSpy = vi.fn().mockImplementation(() => <div />);
             render(
                 <Table<RowData>
+                    getRowId={(row) => row.name}
                     data={[{name: 'fruit'}, {name: 'vegetable'}, {name: 'bread'}]}
                     columns={columns}
                     multiRowSelectionEnabled
@@ -66,8 +67,8 @@ describe('Table.Actions', () => {
                     </Table.Header>
                 </Table>
             );
-            await user.click(screen.getByRole('cell', {name: 'fruit'}));
-            await user.click(screen.getByRole('cell', {name: 'vegetable'}));
+            await user.click(within(screen.getByRole('row', {name: /fruit/})).getByRole('checkbox'));
+            await user.click(within(screen.getByRole('row', {name: /vegetable/})).getByRole('checkbox'));
             expect(renderSpy).toHaveBeenCalledWith([{name: 'fruit'}, {name: 'vegetable'}]);
         });
     });

@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
         borderBottom: `1px solid ${theme.colors.gray[3]}`,
     },
     multiSelectInfo: {
-        justifySelf: 'flex-start',
+        display: 'flex',
     },
 }));
 

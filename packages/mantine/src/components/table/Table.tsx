@@ -1,7 +1,7 @@
-import {Box, Center, Loader, Table as MantineTable} from '@mantine/core';
+import {Box, Center, Loader} from '@mantine/core';
 import {useForm} from '@mantine/form';
 import {useDidUpdate} from '@mantine/hooks';
-import {ColumnDef, Row, TableState as TanstackTableState, getCoreRowModel, useReactTable} from '@tanstack/react-table';
+import {ColumnDef, getCoreRowModel, Row, TableState as TanstackTableState, useReactTable} from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, cloneElement, Dispatch, ReactElement, useCallback, useEffect, useState} from 'react';
@@ -154,15 +154,11 @@ export const Table: TableType = <T,>({
                     noDataChildren
                 ) : (
                     <>
-                        <MantineTable className={classes.table} horizontalSpacing="sm" verticalSpacing="xs" pb="sm">
+                        <Box component="table" className={classes.table} pb="sm">
                             <thead className={classes.header}>
                                 {!!header ? (
                                     <tr>
-                                        <th
-                                            // need to use inline style because Mantine define style on `.mantine-{id} thead tr th`
-                                            style={{padding: 0, fontWeight: 'unset'}}
-                                            colSpan={table.getAllColumns().length}
-                                        >
+                                        <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
                                             {header}
                                         </th>
                                     </tr>
@@ -190,7 +186,7 @@ export const Table: TableType = <T,>({
                                     </tr>
                                 )}
                             </tbody>
-                        </MantineTable>
+                        </Box>
                         {footer}
                         {lastUpdated
                             ? cloneElement(lastUpdated, {
