@@ -67,5 +67,5 @@ export const tableWithBlankSlate =
 
         return connect<ReturnType<typeof mapStateToProps>, ITableHOCOwnProps & ITableWithBlankSlateProps>(
             mapStateToProps
-        )(TableWithBlankSlate as any);
+        )(TableWithBlankSlate);
     };
