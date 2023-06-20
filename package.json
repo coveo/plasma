@@ -54,7 +54,7 @@
         "@commitlint/config-conventional": "17.6.5",
         "@coveo/semantic-monorepo-tools": "1.7.2",
         "@sindresorhus/slugify": "2.2.1",
-        "aws-sdk": "2.1399.0",
+        "aws-sdk": "2.1401.0",
         "axios": "0.27.2",
         "commitizen": "4.3.0",
         "conventional-changelog-angular": "5.0.13",
