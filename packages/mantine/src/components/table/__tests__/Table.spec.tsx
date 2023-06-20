@@ -1,6 +1,7 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, waitFor, within} from '@test-utils';
 
+import {useState} from 'react';
 import {Table} from '../Table';
 import {TableLayout} from '../Table.types';
 import {useTable} from '../TableContext';
@@ -139,6 +140,44 @@ describe('Table', () => {
         await user.click(screen.getByText(/i'm a header/i));
 
         expect(screen.getByRole('row', {name: 'patate king', selected: false})).toBeInTheDocument();
+    });
+
+    it('does not reset row selection when clicking within one of the specified additionalRootNodes, even if it is outside the table', async () => {
+        const user = userEvent.setup();
+
+        const Fixture = () => {
+            const [cousinNode, setCousinNode] = useState<HTMLDivElement>();
+
+            return (
+                <>
+                    <div key="inside" ref={setCousinNode} data-testid="table-cousin">
+                        clicking inside here does not clear rows selection
+                    </div>
+                    <div key="outside" data-testid="outside-element">
+                        clicking inside here clears rows selection
+                    </div>
+                    <Table
+                        getRowId={({id}) => id}
+                        data={[
+                            {id: '🆔-1', firstName: 'John', lastName: 'Doe'},
+                            {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                        ]}
+                        columns={columns}
+                        additionalRootNodes={[cousinNode]}
+                    />
+                </>
+            );
+        };
+        render(<Fixture />);
+
+        const row = screen.getByRole('row', {name: /John Doe/i, selected: false});
+        expect(row).toBeInTheDocument();
+        await user.click(row);
+        expect(screen.getByRole('row', {name: /John Doe/i, selected: true})).toBeInTheDocument();
+        await user.click(screen.getByTestId('table-cousin'));
+        expect(screen.getByRole('row', {name: /John Doe/i, selected: true})).toBeInTheDocument();
+        await user.click(screen.getByTestId('outside-element'));
+        expect(screen.getByRole('row', {name: /John Doe/i, selected: false})).toBeInTheDocument();
     });
 
     describe('with multiple layouts', () => {
