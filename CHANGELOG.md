@@ -1,3 +1,19 @@
+# 52.10.0 (2023-06-20)
+
+
+### Bug Fixes
+
+* **mantine, date picker:** change height of preset dropdown (#3344) eb416b2, closes #3344
+
+
+### Features
+
+* **mantine, table:** create a new LastUpdated component (#3341) d910ccd, closes #3341
+* **mantine, table:** improve click outside table row selection (#3347) 34ac6c2, closes #3347
+* **mantine, table:** improve the style and UX (#3342) 1da421e, closes #3342
+
+
+
 # 52.9.0 (2023-06-16)
 
 
