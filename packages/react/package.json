@@ -138,7 +138,7 @@
         "redux-thunk": "2.4.2",
         "regenerator-runtime": "0.13.11",
         "rimraf": "3.0.2",
-        "sass": "1.62.1",
+        "sass": "1.63.5",
         "ts-jest": "29.1.0",
         "tslib": "2.5.3",
         "typescript": "5.0.4"
