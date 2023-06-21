@@ -84,7 +84,7 @@
         "open-cli": "7.2.0",
         "raw-loader": "4.0.2",
         "rimraf": "3.0.2",
-        "sass": "1.62.1",
+        "sass": "1.63.5",
         "tslib": "2.5.3",
         "typescript": "5.0.4"
     }
