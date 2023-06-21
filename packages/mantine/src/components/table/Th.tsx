@@ -1,22 +1,25 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
-import {Center, createStyles, Group, Text, UnstyledButton} from '@mantine/core';
-import {defaultColumnSizing, flexRender, Header} from '@tanstack/react-table';
+import {Center, Group, Text, UnstyledButton, createStyles} from '@mantine/core';
+import {Header, defaultColumnSizing, flexRender} from '@tanstack/react-table';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, width: number) => ({
     th: {
         fontWeight: '400 !important' as any,
         padding: '0 !important',
         verticalAlign: 'middle',
         whiteSpace: 'nowrap',
+        textAlign: 'left',
+        color: theme.colors.gray[6],
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[0],
+        width,
     },
 
     control: {
+        color: 'inherit',
+        whiteSpace: 'inherit',
+        fontWeight: 'inherit',
         width: '100%',
         padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
-        whiteSpace: 'nowrap',
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[0],
-        color: theme.colors.gray[6],
-
         '&:hover': {
             backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[7] : theme.colors.gray[1],
         },
@@ -40,9 +43,9 @@ const SortingLabels = {
 } as const;
 
 export const Th = <T,>({header}: ThProps<T>) => {
-    const {classes} = useStyles();
     const size = header.column.getSize();
     const width = size !== defaultColumnSizing.size ? size : undefined;
+    const {classes} = useStyles(width);
 
     if (header.isPlaceholder) {
         return null;
@@ -50,7 +53,7 @@ export const Th = <T,>({header}: ThProps<T>) => {
 
     if (!header.column.getCanSort()) {
         return (
-            <th className={classes.th} style={{width}}>
+            <th className={classes.th}>
                 <Text size="xs" py="xs" px="sm" fw={500}>
                     {flexRender(header.column.columnDef.header, header.getContext())}
                 </Text>
@@ -63,7 +66,7 @@ export const Th = <T,>({header}: ThProps<T>) => {
     const Icon = SortingIcons[sortingOrder];
 
     return (
-        <th className={classes.th} style={{width}} aria-sort={SortingLabels[sortingOrder]}>
+        <th className={classes.th} aria-sort={SortingLabels[sortingOrder]}>
             <UnstyledButton onClick={onSort} className={classes.control}>
                 <Group position="apart" noWrap>
                     <Text size="xs" fw={500}>
