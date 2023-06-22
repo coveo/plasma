@@ -1,3 +1,12 @@
+## 52.10.1 (2023-06-22)
+
+
+### Bug Fixes
+
+* **mantine:** avoid CodeEditor errors onFocus (#3366) c11b01d, closes #3366
+
+
+
 # 52.10.0 (2023-06-20)
 
 
