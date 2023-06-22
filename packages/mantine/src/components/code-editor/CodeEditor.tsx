@@ -193,7 +193,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 onMount={(editor, monaco) => {
                     editorRef.current = editor;
                     registerLanguages(monaco);
-                    editor.onDidFocusEditorText(onFocus);
+                    editor.onDidFocusEditorText(() => onFocus?.());
                     editor.onDidBlurEditorText(async () => {
                         await editor.getAction('editor.action.formatDocument').run();
                     });
