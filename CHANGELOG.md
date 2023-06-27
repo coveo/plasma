@@ -1,3 +1,17 @@
+# 52.11.0 (2023-06-27)
+
+
+### Bug Fixes
+
+* **table:** header alignment (#3361) a6bad86, closes #3361
+
+
+### Features
+
+* **mantine, table:** add data-testid attributes on rows and cells (#3374) e1e2e99, closes #3374
+
+
+
 ## 52.10.1 (2023-06-22)
 
 
