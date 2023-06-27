@@ -58,6 +58,31 @@ describe('RowLayout', () => {
         expect(screen.getByRole('cell', {name: 'LAST'})).toBeVisible();
     });
 
+    it('adds testid on the data', () => {
+        const customColumns: Array<ColumnDef<RowData>> = [
+            columnHelper.accessor('firstName', {}),
+            columnHelper.accessor('lastName', {}),
+        ];
+        render(
+            <Table
+                getRowId={({id}) => id}
+                data={[
+                    {id: 'ash', firstName: 'Ash', lastName: 'Ketchum'},
+                    {id: 'gary', firstName: 'Gary', lastName: 'Oak'},
+                ]}
+                columns={customColumns}
+            />
+        );
+
+        expect(screen.getByTestId('ash')).toBeVisible();
+        expect(screen.getByTestId('ash_firstName')).toHaveTextContent('Ash');
+        expect(screen.getByTestId('ash_lastName')).toHaveTextContent('Ketchum');
+
+        expect(screen.getByTestId('gary')).toBeVisible();
+        expect(screen.getByTestId('gary_firstName')).toHaveTextContent('Gary');
+        expect(screen.getByTestId('gary_lastName')).toHaveTextContent('Oak');
+    });
+
     it('opens the collapsible rows when the user click on the toggle', async () => {
         const user = userEvent.setup();
         const Fixture: FunctionComponent<{row: RowData}> = ({row}) => <div>Collapsible content: {row.lastName}</div>;

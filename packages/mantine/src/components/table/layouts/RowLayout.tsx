@@ -127,6 +127,7 @@ const RowLayoutBody = <T,>({table, doubleClickAction, getExpandChildren, loading
                         [classes.rowUnselectable]: disableRowSelection,
                     })}
                     aria-selected={isSelected}
+                    data-testid={row.id}
                 >
                     {row.getVisibleCells().map((cell) => {
                         const size = cell.column.getSize();
@@ -140,6 +141,7 @@ const RowLayoutBody = <T,>({table, doubleClickAction, getExpandChildren, loading
                         return (
                             <td
                                 key={cell.id}
+                                data-testid={cell.id}
                                 style={{width}}
                                 className={cx(classes.cell, {
                                     [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
