@@ -65,8 +65,8 @@ export class Popover extends Component<IPopoverProps, IPopoverState> {
     private tetherToggle: RefObject<HTMLDivElement>;
     private tetherElement: RefObject<HTMLDivElement>;
 
-    constructor(props: IPopoverProps, state: IPopoverState) {
-        super(props, state);
+    constructor(props: IPopoverProps) {
+        super(props);
 
         this.tetherToggle = createRef();
         this.tetherElement = createRef();
