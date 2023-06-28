@@ -133,8 +133,8 @@ class MultilineBoxDisconnected<T> extends PureComponent<IMultilineBoxProps<T>> {
         defaultProps: {},
     };
 
-    constructor(props: IMultilineBoxProps<T>, state: any) {
-        super(props, state);
+    constructor(props: IMultilineBoxProps<T>) {
+        super(props);
 
         this.initialData = this.getInitialDataMappedWithBoxIDs();
     }

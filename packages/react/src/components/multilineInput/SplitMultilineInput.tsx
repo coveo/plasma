@@ -36,8 +36,8 @@ export interface ISplitMultilineInputState {
 export class SplitMultilineInput extends PureComponent<ISplitMultilineInputProps, ISplitMultilineInputState> {
     static inputLineClass: string = 'flex space-between relative pb1';
 
-    constructor(props: ISplitMultilineInputProps, state: ISplitMultilineInputState) {
-        super(props, state);
+    constructor(props: ISplitMultilineInputProps) {
+        super(props);
         this.state = {
             values: this.props.defaultValues,
         };

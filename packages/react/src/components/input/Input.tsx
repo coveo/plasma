@@ -15,7 +15,6 @@ import {IClassName} from '../../utils/ClassNameUtils';
 import {PropsToOmitUtils} from '../../utils/PropsToOmitUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
-import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
 import {PlasmaState} from '../../PlasmaState';
 import {InputSelectors} from './InputSelectors';
@@ -124,8 +123,8 @@ export class Input extends Component<IInputProps, IInputComponentState> {
         isReadOnly: false,
     };
 
-    constructor(props: IInputProps, state: IInputState) {
-        super(props, state);
+    constructor(props: IInputProps) {
+        super(props);
         this.state = {
             valid: this.props.valid,
         };
