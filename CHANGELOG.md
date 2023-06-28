@@ -1,3 +1,12 @@
+## 52.11.1 (2023-06-28)
+
+
+### Bug Fixes
+
+* **react:** type issue in component constructor (#3375) 4cc4bf6, closes #3375
+
+
+
 # 52.11.0 (2023-06-27)
 
 
