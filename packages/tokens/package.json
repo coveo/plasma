@@ -43,7 +43,7 @@
         "@types/chroma-js": "2.4.0",
         "@types/fs-extra": "9.0.13",
         "@types/lodash": "4.14.195",
-        "@types/node": "16.18.37",
+        "@types/node": "16.18.38",
         "@types/rimraf": "3.0.2",
         "@types/svgo": "2.6.4",
         "chroma-js": "2.4.2",
