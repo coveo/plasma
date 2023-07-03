@@ -67,7 +67,7 @@
         "stylelint": "14.16.1",
         "tsjs": "4.2.1",
         "turbo": "1.10.6",
-        "underscore": "1.13.4",
+        "underscore": "1.13.6",
         "walkdir": "0.4.1"
     },
     "pnpm": {

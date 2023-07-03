@@ -67,7 +67,7 @@
         "publint": "0.1.12",
         "rimraf": "3.0.2",
         "sass": "1.63.6",
-        "underscore": "1.13.1",
+        "underscore": "1.13.6",
         "underscore.string": "3.3.6",
         "vite": "4.3.9"
     }

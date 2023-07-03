@@ -65,8 +65,8 @@ importers:
         specifier: 1.10.6
         version: 1.10.6
       underscore:
-        specifier: 1.13.4
-        version: 1.13.4
+        specifier: 1.13.6
+        version: 1.13.6
       walkdir:
         specifier: 0.4.1
         version: 0.4.1
@@ -400,8 +400,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       underscore:
-        specifier: 1.13.1
-        version: 1.13.1
+        specifier: 1.13.6
+        version: 1.13.6
       underscore.string:
         specifier: 3.3.6
         version: 3.3.6
@@ -497,8 +497,8 @@ importers:
         specifier: 5.14.6
         version: 5.14.6
       '@types/underscore':
-        specifier: 1.8.10
-        version: 1.8.10
+        specifier: 1.11.5
+        version: 1.11.5
       '@types/underscore.string':
         specifier: 0.0.38
         version: 0.0.38
@@ -757,8 +757,8 @@ importers:
         specifier: 1.63.6
         version: 1.63.6
       underscore:
-        specifier: 1.13.1
-        version: 1.13.1
+        specifier: 1.13.6
+        version: 1.13.6
       underscore.string:
         specifier: 3.3.6
         version: 3.3.6
@@ -989,8 +989,8 @@ importers:
         specifier: 4.1.8
         version: 4.1.8
       underscore:
-        specifier: 1.13.1
-        version: 1.13.1
+        specifier: 1.13.6
+        version: 1.13.6
     devDependencies:
       '@types/hoist-non-react-statics':
         specifier: 3.3.1
@@ -1020,8 +1020,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0(redux@4.2.1)
       '@types/underscore':
-        specifier: 1.8.10
-        version: 1.8.10
+        specifier: 1.11.5
+        version: 1.11.5
       '@types/webpack-env':
         specifier: 1.18.1
         version: 1.18.1
@@ -5618,11 +5618,11 @@ packages:
   /@types/underscore.string@0.0.38:
     resolution: {integrity: sha512-QPMttDInBYkulH/3nON0KnYpEd/RlyE5kUrhuts5d76B/stpjXpDticq+iTluoAsVnVXuGECFhPtuX+aDJdx+A==}
     dependencies:
-      '@types/underscore': 1.8.10
+      '@types/underscore': 1.11.5
     dev: true
 
-  /@types/underscore@1.8.10:
-    resolution: {integrity: sha512-2Y+qwEb3BIBfLl+PBQaZUkgj0Wdh3+8HPFgPQLh3z5KaJI6Z85Uxk+3wzrdd26TAt8CiAUdQ5nMcsTEKykgIyg==}
+  /@types/underscore@1.11.5:
+    resolution: {integrity: sha512-b8e//LrIlhoXaaBcMC0J/s2/lIF9y5VJYKqbW4nA+tW/nqqDk1Dacd1ULLT7zgGsKs7PGbSnqCPzqEniZ0RxYg==}
     dev: true
 
   /@types/unist@2.0.6:
@@ -19266,12 +19266,8 @@ packages:
       sprintf-js: 1.1.2
       util-deprecate: 1.0.2
 
-  /underscore@1.13.1:
-    resolution: {integrity: sha512-hzSoAVtJF+3ZtiFX0VgfFPHEDRm7Y/QPjGyNo4TVdnDTdft3tr8hEkD25a1jC+TjTuE7tkHGKkhwCgs9dgBB2g==}
-
-  /underscore@1.13.4:
-    resolution: {integrity: sha512-BQFnUDuAQ4Yf/cYY5LNrK9NCJFKriaRbD9uR1fTeXnBeoa97W0i41qkZfGO9pSo8I5KzjAcSY2XYtdf0oKd7KQ==}
-    dev: true
+  /underscore@1.13.6:
+    resolution: {integrity: sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==}
 
   /undertaker-registry@1.0.1:
     resolution: {integrity: sha512-UR1khWeAjugW3548EfQmL9Z7pGMlBgXteQpr1IZeZBtnkCJQJIJ1Scj0mb9wQaPvUZ9Q17XqW6TIaPchJkyfqw==}
