@@ -59,7 +59,7 @@
         "moment": "2.29.4",
         "query-string": "7.1.3",
         "rc-slider": "9.7.5",
-        "react-bootstrap": "2.7.4",
+        "react-bootstrap": "2.8.0",
         "react-codemirror2": "7.2.1",
         "react-color": "2.19.3",
         "react-diff-view": "2.6.0",
