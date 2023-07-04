@@ -364,8 +364,8 @@ importers:
         specifier: 9.7.5
         version: 9.7.5(react-dom@18.2.0)(react@18.2.0)
       react-bootstrap:
-        specifier: 2.7.4
-        version: 2.7.4(@types/react@18.0.25)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.8.0
+        version: 2.8.0(@types/react@18.0.25)(react-dom@18.2.0)(react@18.2.0)
       react-codemirror2:
         specifier: 7.2.1
         version: 7.2.1(codemirror@5.63.3)(react@18.2.0)
@@ -16295,8 +16295,8 @@ packages:
       shallowequal: 1.1.0
     dev: false
 
-  /react-bootstrap@2.7.4(@types/react@18.0.25)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-EPKPwhfbxsKsNBhJBitJwqul9fvmlYWSft6jWE2EpqhEyjhqIqNihvQo2onE5XtS+QHOavUSNmA+8Lnv5YeAyg==}
+  /react-bootstrap@2.8.0(@types/react@18.0.25)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-e/aNtxl0Z2ozrIaR82jr6Zz7ss9GSoaXpQaxmvtDUsTZIq/XalkduR/ZXP6vbQHz2T4syvjA+4FbtwELxxmpww==}
     peerDependencies:
       '@types/react': '>=16.14.8'
       react: '>=16.14.0'
@@ -16305,7 +16305,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.22.5
       '@restart/hooks': 0.4.9(react@18.2.0)
       '@restart/ui': 1.6.3(react-dom@18.2.0)(react@18.2.0)
       '@types/react': 18.0.25
