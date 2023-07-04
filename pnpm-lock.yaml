@@ -111,8 +111,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0
       cross-fetch:
-        specifier: 3.1.6
-        version: 3.1.6(encoding@0.1.13)
+        specifier: 3.1.8
+        version: 3.1.8(encoding@0.1.13)
       fs-extra:
         specifier: 10.1.0
         version: 10.1.0
@@ -803,8 +803,8 @@ importers:
         specifier: 9.5.0
         version: 9.5.0
       cross-fetch:
-        specifier: 3.1.6
-        version: 3.1.6(encoding@0.1.13)
+        specifier: 3.1.8
+        version: 3.1.8(encoding@0.1.13)
       dotenv-safe:
         specifier: 8.2.0
         version: 8.2.0
@@ -8100,7 +8100,7 @@ packages:
   /coveo.analytics@2.27.4(encoding@0.1.13)(react-native@0.71.11):
     resolution: {integrity: sha512-moOL4KtobbzWb7bnZK1ZXN9mkGYjVM9mP5ZvIb5RdtSq6z+QNQLJQ5Jnk4O2DZbOXQts11uI2PvszS67zbwuiQ==}
     dependencies:
-      cross-fetch: 3.1.6(encoding@0.1.13)
+      cross-fetch: 3.1.8(encoding@0.1.13)
       react-native-get-random-values: 1.9.0(react-native@0.71.11)
       uuid: 9.0.0
     transitivePeerDependencies:
@@ -8120,10 +8120,10 @@ packages:
       - encoding
     dev: false
 
-  /cross-fetch@3.1.6(encoding@0.1.13):
-    resolution: {integrity: sha512-riRvo06crlE8HiqOwIpQhxwdOk4fOeR7FVM/wXoxchFEqMNUjvbs3bfo4OTgMEMHzppd4DxFBDbyySj8Cv781g==}
+  /cross-fetch@3.1.8(encoding@0.1.13):
+    resolution: {integrity: sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==}
     dependencies:
-      node-fetch: 2.6.11(encoding@0.1.13)
+      node-fetch: 2.6.12(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
 
@@ -14742,6 +14742,18 @@ packages:
 
   /node-fetch@2.6.11(encoding@0.1.13):
     resolution: {integrity: sha512-4I6pdBY1EthSqDmJkiNk3JIT8cswwR9nfeW/cPdUagJYEQG7R95WRH74wpz7ma8Gh/9dI9FP+OU+0E4FvtA55w==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      encoding: 0.1.13
+      whatwg-url: 5.0.0
+
+  /node-fetch@2.6.12(encoding@0.1.13):
+    resolution: {integrity: sha512-C/fGU2E8ToujUivIO0H+tpQ6HWo4eEmchoPIoXtxCrVghxdKq+QOHqEZW7tuP3KlV3bC8FRMO5nMCC7Zm1VP6g==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
       encoding: ^0.1.0
