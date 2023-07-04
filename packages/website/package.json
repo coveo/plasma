@@ -43,7 +43,7 @@
         "@tanstack/match-sorter-utils": "8.8.4",
         "clsx": "1.2.1",
         "codesandbox-import-utils": "2.2.3",
-        "dayjs": "1.11.8",
+        "dayjs": "1.11.9",
         "embla-carousel-react": "7.1.0",
         "flagg": "1.1.2",
         "lodash.kebabcase": "4.1.1",
