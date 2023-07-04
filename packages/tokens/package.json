@@ -48,7 +48,7 @@
         "@types/svgo": "2.6.4",
         "chroma-js": "2.4.2",
         "commander": "9.5.0",
-        "cross-fetch": "3.1.6",
+        "cross-fetch": "3.1.8",
         "dotenv-safe": "8.2.0",
         "figma-js": "1.16.0",
         "fs-extra": "10.1.0",
