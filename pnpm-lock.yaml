@@ -851,8 +851,8 @@ importers:
         specifier: 6.0.2
         version: 6.0.2
       '@coveo/atomic-react':
-        specifier: 2.3.0
-        version: 2.3.0(@coveo/headless@2.19.0)(encoding@0.1.13)(postcss@8.4.24)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.4.0
+        version: 2.4.0(@coveo/headless@2.20.0)(encoding@0.1.13)(postcss@8.4.24)(react-dom@18.2.0)(react@18.2.0)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -2907,15 +2907,15 @@ packages:
     resolution: {integrity: sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ==}
     dev: false
 
-  /@coveo/atomic-react@2.3.0(@coveo/headless@2.19.0)(encoding@0.1.13)(postcss@8.4.24)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-hbpzqjaeH9rdbYjY1ERgAs7L6ngsNzeH3RbH+aA6MwUkrOyVMCG/bHxuPuEjivLOUoKoN1hg3VlgT3rJFD+bgA==}
+  /@coveo/atomic-react@2.4.0(@coveo/headless@2.20.0)(encoding@0.1.13)(postcss@8.4.24)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-dyj3LjBpERoXRChffAACuD4YWomuitVtgjlQCT0D9iGNZDIZsq3uh+SjejynS0Xog77GUbAHuaKPWso7TNN+7g==}
     peerDependencies:
-      '@coveo/headless': 2.19.0
+      '@coveo/headless': 2.20.0
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@coveo/atomic': 2.32.0(@coveo/headless@2.19.0)(encoding@0.1.13)(postcss@8.4.24)
-      '@coveo/headless': 2.19.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)
+      '@coveo/atomic': 2.34.0(@coveo/headless@2.20.0)(encoding@0.1.13)(postcss@8.4.24)
+      '@coveo/headless': 2.20.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -2923,14 +2923,14 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/atomic@2.32.0(@coveo/headless@2.19.0)(encoding@0.1.13)(postcss@8.4.24):
-    resolution: {integrity: sha512-ntXFWx0S+Og24sqJIYUgQsiltOAOJL80d2ecSBBmg3mDH0nQwFM4yotHhl+SrPaxVTtud2lUb9UXNaSVQdXKXQ==}
+  /@coveo/atomic@2.34.0(@coveo/headless@2.20.0)(encoding@0.1.13)(postcss@8.4.24):
+    resolution: {integrity: sha512-aB4/W6FGxxxdHUd3ma7Kp+CfLBzGjkjFStKUwJ21VhdsEMOBcU4RGk4Br2JkdQxfDDzCWzHGuvYfLuyj/m5XiQ==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
-      '@coveo/headless': 2.19.0
+      '@coveo/headless': 2.20.0
     dependencies:
       '@coveo/bueno': 0.43.7
-      '@coveo/headless': 2.19.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)
+      '@coveo/headless': 2.20.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1)
       '@popperjs/core': 2.11.6
       '@salesforce-ux/design-system': 2.19.0(postcss@8.4.24)
       '@stencil/core': 2.17.3
@@ -2952,18 +2952,19 @@ packages:
     resolution: {integrity: sha512-qMBcGi1II7dDK6h+mf5j/ldAyrTM+WqOOziJvpHPyy451Qpl7z6AFcKw+Y5n0xNR81ENaubL9jkXVM96JNJAJg==}
     dev: false
 
-  /@coveo/headless@2.19.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-xaiKSST1mGE2Xkf6RUtmfsx4w6B0tuT8kF0ayv8vI3IVM1VoEnbgCW22IPc6QeoI8EGsfp/h/Yb5aXTiTo0UuQ==}
+  /@coveo/headless@2.20.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1):
+    resolution: {integrity: sha512-td/m4ZL8QWkzrrjpko33UM1cgQNQAG7bZAvIacRpqODDRqBW8yx4UKXyntteJtlARcyZgD9ujyRYgcxnRtGUqA==}
     peerDependencies:
       encoding: ^0.1.13
       pino-pretty: ^6.0.0
     dependencies:
       '@coveo/bueno': 0.43.7
+      '@microsoft/fetch-event-source': 2.0.1
       '@reduxjs/toolkit': 1.8.5(react-redux@8.1.0)(react@18.2.0)
       '@types/pino': 6.3.12
       '@types/redux-mock-store': 1.0.3
       abab: 2.0.6
-      coveo.analytics: 2.27.4(encoding@0.1.13)(react-native@0.71.11)
+      coveo.analytics: 2.28.7(encoding@0.1.13)(react-native@0.71.11)
       cross-fetch: 3.1.5(encoding@0.1.13)
       dayjs: 1.11.5
       encoding: 0.1.13
@@ -2972,15 +2973,15 @@ packages:
       node-abort-controller: 1.2.1
       pino: 8.11.0
       pino-pretty: 6.0.0
-      redux: 4.2.0
       redux-mock-store: 1.5.4
-      redux-thunk: 2.4.1(redux@4.2.0)
+      redux-thunk: 2.4.1(redux@4.2.1)
       ts-debounce: 3.0.0
       web-encoding: 1.1.5
     transitivePeerDependencies:
       - react
       - react-native
       - react-redux
+      - redux
     dev: false
 
   /@coveo/semantic-monorepo-tools@1.7.2:
@@ -3992,6 +3993,10 @@ packages:
       - supports-color
       - ts-node
     dev: true
+
+  /@microsoft/fetch-event-source@2.0.1:
+    resolution: {integrity: sha512-W6CLUJ2eBMw3Rec70qrsEW0jOm/3twwJv21mrmj2yORiaVmVYGS4sSS5yUwvQc1ZlDLYGPnClVWmUUMagKNsfA==}
+    dev: false
 
   /@mole-inc/bin-wrapper@8.0.1:
     resolution: {integrity: sha512-sTGoeZnjI8N4KS+sW2AN95gDBErhAguvkw/tWdCjeM8bvxpz5lqrnd0vOJABA1A+Ic3zED7PYoLP/RANLgVotA==}
@@ -8097,8 +8102,8 @@ packages:
       - supports-color
     dev: true
 
-  /coveo.analytics@2.27.4(encoding@0.1.13)(react-native@0.71.11):
-    resolution: {integrity: sha512-moOL4KtobbzWb7bnZK1ZXN9mkGYjVM9mP5ZvIb5RdtSq6z+QNQLJQ5Jnk4O2DZbOXQts11uI2PvszS67zbwuiQ==}
+  /coveo.analytics@2.28.7(encoding@0.1.13)(react-native@0.71.11):
+    resolution: {integrity: sha512-F7Ht261XnKzBclRl2DsJXkNQbKLud/iE4KNcaGSM7h/5zyLlHaRL49lgVGcyj4hTKXaKgENYXlDosLVX/7XVRg==}
     dependencies:
       cross-fetch: 3.1.8(encoding@0.1.13)
       react-native-get-random-values: 1.9.0(react-native@0.71.11)
@@ -16975,12 +16980,12 @@ packages:
     dependencies:
       redux: 4.2.1
 
-  /redux-thunk@2.4.1(redux@4.2.0):
+  /redux-thunk@2.4.1(redux@4.2.1):
     resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
     peerDependencies:
       redux: ^4
     dependencies:
-      redux: 4.2.0
+      redux: 4.2.1
     dev: false
 
   /redux-thunk@2.4.2(redux@4.2.1):
@@ -16989,12 +16994,6 @@ packages:
       redux: ^4
     dependencies:
       redux: 4.2.1
-
-  /redux@4.2.0:
-    resolution: {integrity: sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==}
-    dependencies:
-      '@babel/runtime': 7.22.5
-    dev: false
 
   /redux@4.2.1:
     resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==}
