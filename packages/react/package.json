@@ -139,7 +139,6 @@
         "regenerator-runtime": "0.13.11",
         "rimraf": "3.0.2",
         "sass": "1.63.6",
-        "ts-jest": "29.1.0",
         "tslib": "2.5.3",
         "typescript": "5.1.6"
     },
