@@ -55,7 +55,7 @@
         "lint-staged": "9.5.0",
         "lodash": "4.17.21",
         "prettier": "2.8.8",
-        "publint": "0.1.15",
+        "publint": "0.1.16",
         "rimraf": "3.0.2",
         "sass": "1.63.6",
         "svgo": "2.8.0",
