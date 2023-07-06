@@ -382,8 +382,8 @@ importers:
         specifier: 3.16.1
         version: 3.16.1(react-dom@18.2.0)(react@18.2.0)
       react-tether:
-        specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)
+        specifier: 3.0.1
+        version: 3.0.1(react-dom@18.2.0)(react@18.2.0)
       react-textarea-autosize:
         specifier: 8.5.0
         version: 8.5.0(@types/react@18.0.25)(react@18.2.0)
@@ -475,9 +475,6 @@ importers:
       '@types/react-modal':
         specifier: 3.16.0
         version: 3.16.0
-      '@types/react-tether':
-        specifier: 0.5.5
-        version: 0.5.5
       '@types/react-textarea-autosize':
         specifier: 4.3.6
         version: 4.3.6
@@ -3376,8 +3373,23 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
+  /@eslint-community/eslint-utils@4.4.0(eslint@8.43.0):
+    resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
+    dependencies:
+      eslint: 8.43.0
+      eslint-visitor-keys: 3.4.1
+    dev: true
+
   /@eslint-community/regexpp@4.5.0:
     resolution: {integrity: sha512-vITaYzIcNmjn5tF5uxcZ/ft7/RXGrMUIS9HalWckEOF6ESiwXKoMzAQf2UW0aVd6rnOeExTJVd5hmWXucBKGXQ==}
+    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+    dev: true
+
+  /@eslint-community/regexpp@4.5.1:
+    resolution: {integrity: sha512-Z5ba73P98O1KUYCCJTUeVpja9RcGoMdncZ6T49FCUl2lN38JtCJ+3WgIDBv0AuY4WChU5PmtJmOCTlN6FZTFKQ==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
     dev: true
 
@@ -5511,13 +5523,6 @@ packages:
       '@types/react': 18.0.25
     dev: true
 
-  /@types/react-tether@0.5.5:
-    resolution: {integrity: sha512-ZM/wd77k/kn+nPQyP3j9tnLfK1MehIG/KXAhPbZeHP4J2ZLQ/xXonzdxbeyOdQgLSQtB0hbuRZcSOUOP/VjQnw==}
-    dependencies:
-      '@types/react': 18.0.25
-      '@types/tether': 1.4.6
-    dev: true
-
   /@types/react-textarea-autosize@4.3.6:
     resolution: {integrity: sha512-cTf8tCem0c8A7CERYbTuF+bRFaqYu7N7HLCa6ZhUhDx8XnUsTpGx5udMWljt87JpciUKuUkImKPEsy6kcKhrcQ==}
     dependencies:
@@ -5607,10 +5612,6 @@ packages:
     resolution: {integrity: sha512-PFDoAbR9y8pD9+41oM1Yy0nVCkaRPlklmDZoPCXhNpR0ZO13HAYWqdNEjLtvIiveBmfB/+jdvmuOVeOXehKOaA==}
     dependencies:
       '@types/jest': 29.5.2
-    dev: true
-
-  /@types/tether@1.4.6:
-    resolution: {integrity: sha512-9nHygDpiN1VPAkTXZyKOmdVK12EPp4KLgc7kj9ji0X6qsHzzQV8e7KYEh1afrF6TTVs5d9oRJXwkmjeSWc+5Cw==}
     dev: true
 
   /@types/tough-cookie@4.0.2:
@@ -9682,8 +9683,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      '@eslint-community/eslint-utils': 4.2.0(eslint@8.43.0)
-      '@eslint-community/regexpp': 4.5.0
+      '@eslint-community/eslint-utils': 4.4.0(eslint@8.43.0)
+      '@eslint-community/regexpp': 4.5.1
       '@eslint/eslintrc': 2.0.3
       '@eslint/js': 8.43.0
       '@humanwhocodes/config-array': 0.11.10
@@ -16592,13 +16593,12 @@ packages:
       scheduler: 0.20.2
     dev: true
 
-  /react-tether@1.0.5(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-dehXHK82Xx0aXZldYiGR6dzlIAruAvnDvtp5O6AyT1EC1TTMYem/kIXNHsyjFNEA1hhhL7c98GmP6ANYVbq+GQ==}
+  /react-tether@3.0.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-c9yI50o7thRFBlgbb63RZoAfkhUUjOSwXEbiOqRUi7+QgAp5XMlGMn8ZFj2HXqA8+cm2+nFmBetWnBlypCpSwg==}
     peerDependencies:
-      react: ^0.14.0 || ^15.0.0 || ^16.0.0
-      react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0
+      react: '*'
+      react-dom: '*'
     dependencies:
-      prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tether: 1.4.7
