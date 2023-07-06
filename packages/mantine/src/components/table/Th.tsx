@@ -2,7 +2,7 @@ import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@cov
 import {Center, Group, Text, UnstyledButton, createStyles} from '@mantine/core';
 import {Header, defaultColumnSizing, flexRender} from '@tanstack/react-table';
 
-const useStyles = createStyles((theme, width: number) => ({
+const useStyles = createStyles((theme, columnSizing: {size: number; minSize: number; maxSize: number}) => ({
     th: {
         fontWeight: '400 !important' as any,
         padding: '0 !important',
@@ -11,7 +11,9 @@ const useStyles = createStyles((theme, width: number) => ({
         textAlign: 'left',
         color: theme.colors.gray[6],
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[0],
-        width,
+        width: columnSizing.size,
+        minWidth: columnSizing.minSize,
+        maxWidth: columnSizing.maxSize,
     },
 
     control: {
@@ -43,9 +45,14 @@ const SortingLabels = {
 } as const;
 
 export const Th = <T,>({header}: ThProps<T>) => {
-    const size = header.column.getSize();
-    const width = size !== defaultColumnSizing.size ? size : undefined;
-    const {classes} = useStyles(width);
+    const columnSizing = {
+        ...defaultColumnSizing,
+        size: header.column.columnDef.size,
+        minSize: header.column.columnDef.minSize,
+        maxSize: header.column.columnDef.maxSize,
+    };
+
+    const {classes} = useStyles(columnSizing);
 
     if (header.isPlaceholder) {
         return null;
