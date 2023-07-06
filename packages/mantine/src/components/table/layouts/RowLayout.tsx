@@ -130,8 +130,13 @@ const RowLayoutBody = <T,>({table, doubleClickAction, getExpandChildren, loading
                     data-testid={row.id}
                 >
                     {row.getVisibleCells().map((cell) => {
-                        const size = cell.column.getSize();
-                        const width = size !== defaultColumnSizing.size ? size : undefined;
+                        const columnSizing = {
+                            ...defaultColumnSizing,
+                            size: cell.column.columnDef.size,
+                            minSize: cell.column.columnDef.minSize,
+                            maxSize: cell.column.columnDef.maxSize,
+                        };
+
                         const onCollapsibleCellClick = (event: MouseEvent<HTMLTableCellElement>) => {
                             if (cell.column.id === TableSelectableColumn.id && !disableRowSelection) {
                                 event.stopPropagation();
@@ -142,7 +147,11 @@ const RowLayoutBody = <T,>({table, doubleClickAction, getExpandChildren, loading
                             <td
                                 key={cell.id}
                                 data-testid={cell.id}
-                                style={{width}}
+                                style={{
+                                    width: columnSizing.size,
+                                    minWidth: columnSizing.minSize,
+                                    maxWidth: columnSizing.maxSize,
+                                }}
                                 className={cx(classes.cell, {
                                     [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
                                 })}
