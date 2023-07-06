@@ -10,7 +10,7 @@ export interface GetFilterTextProps {
 
 const getFilterText = (state: PlasmaState, props: GetFilterTextProps): string => {
     const filter: IFilterState = _.findWhere(state.filters, {id: props.id});
-    return (filter && filter.filterText) || '';
+    return (filter && filter.filterText.trim()) || '';
 };
 
 export interface GetMatchFilterTextProps {
