@@ -138,7 +138,7 @@
         "regenerator-runtime": "0.13.11",
         "rimraf": "3.0.2",
         "sass": "1.63.6",
-        "tslib": "2.5.3",
+        "tslib": "2.6.0",
         "typescript": "5.1.6"
     },
     "peerDependencies": {
