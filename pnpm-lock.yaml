@@ -757,8 +757,8 @@ importers:
         specifier: 3.3.6
         version: 3.3.6
       vite:
-        specifier: 4.4.1
-        version: 4.4.1(@types/node@18.16.19)(sass@1.63.6)
+        specifier: 4.4.2
+        version: 4.4.2(@types/node@18.16.19)(sass@1.63.6)
 
   packages/tokens:
     dependencies:
@@ -17534,14 +17534,6 @@ packages:
     resolution: {integrity: sha512-ndEIpszUHiG4HtDsQLeIuMvRsDnn8c8rYStabochtUeCvfuvNptb5TUbVD68LRAILPX7p9nqQGh4xJgn3EHS/g==}
     dev: false
 
-  /rollup@3.21.0:
-    resolution: {integrity: sha512-ANPhVcyeHvYdQMUyCbczy33nbLzI7RzrBje4uvNiTDJGIMtlKoOStmympwr9OtS1LZxiDmE2wvxHyVhoLtf1KQ==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /rollup@3.26.2:
     resolution: {integrity: sha512-6umBIGVz93er97pMgQO08LuH3m6PUb3jlDUUGFsNJB6VgTCUaDFpupf5JfU30529m/UKOgmiX+uY6Sx8cOYpLA==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
@@ -19982,7 +19974,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.1(@types/node@18.16.19)(sass@1.63.6)
+      vite: 4.4.2(@types/node@18.16.19)(sass@1.63.6)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -20022,13 +20014,13 @@ packages:
       '@types/node': 18.16.19
       esbuild: 0.17.18
       postcss: 8.4.24
-      rollup: 3.21.0
+      rollup: 3.26.2
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vite@4.4.1(@types/node@18.16.19)(sass@1.63.6):
-    resolution: {integrity: sha512-8mmwPlsy7t+ZcTme7vdbVGuZ3Tri+lrLXr6hsF5UHdyYyARPPPMtM16QlqC9TZuCd5j3NmWs1rwka3cVSRHZTw==}
+  /vite@4.4.2(@types/node@18.16.19)(sass@1.63.6):
+    resolution: {integrity: sha512-zUcsJN+UvdSyHhYa277UHhiJ3iq4hUBwHavOpsNUGsTgjBeoBlK8eDt+iT09pBq0h9/knhG/SPrZiM7cGmg7NA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
