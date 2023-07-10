@@ -1,14 +1,10 @@
 {
-    "packages": [
-        "packages/*"
-    ],
+    "packages": ["packages/*"],
     "version": "5.34.4",
     "command": {
         "publish": {
             "conventionalCommits": true,
-            "allowBranch": [
-                "master"
-            ]
+            "allowBranch": ["master", "chosen-js-vuln"]
         },
         "version": {
             "conventionalCommits": true,
@@ -16,12 +12,7 @@
         },
         "bootstrap": {
             "hoist": true,
-            "nohoist": [
-                "unidiff",
-                "query-string",
-                "strict-uri-encode",
-                "split-on-first"
-            ]
+            "nohoist": ["unidiff", "query-string", "strict-uri-encode", "split-on-first"]
         }
     }
 }

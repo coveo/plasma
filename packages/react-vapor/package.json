@@ -89,7 +89,7 @@
         "@types/webpack-env": "1.15.1",
         "ansi-colors": "3.2.4",
         "autoprefixer": "9.4.0",
-        "chosen-js": "1.8.2",
+        "chosen-js": "1.8.7",
         "classnames": "2.2.6",
         "codecov": "3.2.0",
         "codemirror": "5.52.0",
