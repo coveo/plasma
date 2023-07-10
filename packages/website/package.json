@@ -73,7 +73,7 @@
         "@types/lodash.kebabcase": "4.1.7",
         "@types/lorem-ipsum": "2.0.0",
         "@types/prettier": "2.7.3",
-        "@types/react": "18.2.13",
+        "@types/react": "18.2.14",
         "@types/react-color": "3.0.6",
         "@types/react-dom": "18.2.6",
         "@types/react-modal": "3.16.0",
