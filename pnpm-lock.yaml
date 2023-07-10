@@ -682,8 +682,8 @@ importers:
         specifier: 4.1.3
         version: 4.1.3
       autosize:
-        specifier: 5.0.2
-        version: 5.0.2
+        specifier: 6.0.1
+        version: 6.0.1
       concurrently:
         specifier: 8.2.0
         version: 8.2.0
@@ -6873,8 +6873,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /autosize@5.0.2:
-    resolution: {integrity: sha512-FPVt5ynkqUAA9gcMZnJHka1XfQgr1WNd/yRfIjmj5WGmjua+u5Hl9hn8M2nU5CNy2bEIcj1ZUwXq7IOHsfZG9w==}
+  /autosize@6.0.1:
+    resolution: {integrity: sha512-f86EjiUKE6Xvczc4ioP1JBlWG7FKrE13qe/DxBCpe8GCipCq2nFw73aO8QEBKHfSbYGDN5eB9jXWKen7tspDqQ==}
     dev: true
 
   /available-typed-arrays@1.0.5:
