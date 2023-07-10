@@ -262,8 +262,8 @@ importers:
         specifier: 0.2.6
         version: 0.2.6(eslint@8.44.0)(typescript@5.1.6)
       eslint-plugin-vitest-globals:
-        specifier: 1.3.1
-        version: 1.3.1
+        specifier: 1.4.0
+        version: 1.4.0
       identity-obj-proxy:
         specifier: 3.0.0
         version: 3.0.0
@@ -9837,8 +9837,8 @@ packages:
       eslint-rule-composer: 0.3.0
     dev: true
 
-  /eslint-plugin-vitest-globals@1.3.1:
-    resolution: {integrity: sha512-ELBqLfu/ZAwVHE1uEvj+Z06o4WnaD+5IcwW/OHQ5qVPA7i7mZexnUBj+04BF60rY7pb3ljRgJRsK+rCTmSS/5g==}
+  /eslint-plugin-vitest-globals@1.4.0:
+    resolution: {integrity: sha512-WE+YlK9X9s4vf5EaYRU0Scw7WItDZStm+PapFSYlg2ABNtaQ4zIG7wEqpoUB3SlfM+SgkhgmzR0TeJOO5k3/Nw==}
     dev: true
 
   /eslint-plugin-vitest@0.2.6(eslint@8.44.0)(typescript@5.1.6):
