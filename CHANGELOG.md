@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.34.5](https://github.com/coveo/plasma/compare/v5.34.4...v5.34.5) (2023-07-10)
+
+
+### Bug Fixes
+
+* update chosen-js to 1.8.7 ([fdac98a](https://github.com/coveo/plasma/commit/fdac98a6f421c0eed9c605a0fc512e396c33a4ac))
+
+
+
+
+
 ## [5.34.4](https://github.com/coveo/react-vapor/compare/v5.34.3...v5.34.4) (2020-04-28)
 
 **Note:** Version bump only for package root
