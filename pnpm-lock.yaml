@@ -794,8 +794,8 @@ importers:
         specifier: 2.4.2
         version: 2.4.2
       commander:
-        specifier: 9.5.0
-        version: 9.5.0
+        specifier: 11.0.0
+        version: 11.0.0
       cross-fetch:
         specifier: 3.1.8
         version: 3.1.8(encoding@0.1.13)
@@ -7932,6 +7932,11 @@ packages:
 
   /command-exists@1.2.9:
     resolution: {integrity: sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==}
+
+  /commander@11.0.0:
+    resolution: {integrity: sha512-9HMlXtt/BNoYr8ooyjjNRdIilOTkVJXB+GhxMTtOKwk0R4j4lS4NpjuqmRxroBfnfTSHQIHQB7wryHhXarNjmQ==}
+    engines: {node: '>=16'}
+    dev: true
 
   /commander@2.13.0:
     resolution: {integrity: sha512-MVuS359B+YzaWqjCL/c+22gfryv+mCBPHAv3zyVI2GN8EY6IRP8VwtasXn8jyyhvvq84R4ImN1OKRtcbIasjYA==}

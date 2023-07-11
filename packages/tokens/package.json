@@ -47,7 +47,7 @@
         "@types/rimraf": "3.0.2",
         "@types/svgo": "2.6.4",
         "chroma-js": "2.4.2",
-        "commander": "9.5.0",
+        "commander": "11.0.0",
         "cross-fetch": "3.1.8",
         "dotenv-safe": "8.2.0",
         "figma-js": "1.16.0",
