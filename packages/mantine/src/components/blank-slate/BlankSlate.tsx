@@ -12,7 +12,7 @@ interface BlankSlateProps {
 
 export const BlankSlate: FunctionComponent<PropsWithChildren<BlankSlateProps>> = ({children, withBorder = true}) => (
     <Paper shadow={withBorder && 'xs'} p="xl" withBorder={withBorder}>
-        <div>bonjour</div>
+        <div>bonjour !!!</div>
         <Stack align="center">{children}</Stack>
     </Paper>
 );
