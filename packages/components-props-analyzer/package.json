@@ -37,7 +37,7 @@
         "@types/rimraf": "3.0.2",
         "@typescript/twoslash": "3.2.1",
         "@typescript/vfs": "1.4.0",
-        "cross-fetch": "3.1.8",
+        "cross-fetch": "4.0.0",
         "fs-extra": "10.1.0",
         "nodemon": "2.0.22",
         "react": "18.2.0",
