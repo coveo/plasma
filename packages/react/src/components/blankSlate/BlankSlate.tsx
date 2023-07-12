@@ -100,6 +100,7 @@ export class BlankSlate extends Component<IBlankSlateProps> {
                     {this.getDescriptionTemplate()}
                     {this.getButtonsTemplate()}
                     {this.props.additionalSection}
+                    allo
                 </div>
             </div>
         );
