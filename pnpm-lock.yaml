@@ -26,8 +26,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       aws-sdk:
-        specifier: 2.1413.0
-        version: 2.1413.0
+        specifier: 2.1414.0
+        version: 2.1414.0
       commitizen:
         specifier: 4.3.0
         version: 4.3.0
@@ -6908,8 +6908,8 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-sdk@2.1413.0:
-    resolution: {integrity: sha512-vKpjC7iRwOhgv7P0xw90mVGO//2rqVPJKyYIs7uxLzSV0JzriVD+yqktOu/Hz6/phOmAd1cMIeFgpEC9ynrppg==}
+  /aws-sdk@2.1414.0:
+    resolution: {integrity: sha512-WhqTWiTZRUxWITvUG5VMPYGdCLNAm4zOTDIiotbErR9x+uDExk2CAGbXE8HH11+tD8PhZVXyukymSiG+7rJMMg==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
