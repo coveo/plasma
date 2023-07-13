@@ -66,7 +66,7 @@
         "react-infinite-scroll-component": "4.5.3",
         "react-modal": "3.16.1",
         "react-tether": "3.0.1",
-        "react-textarea-autosize": "8.5.0",
+        "react-textarea-autosize": "8.5.2",
         "react-transition-group": "2.9.0",
         "reselect": "4.1.8",
         "split-on-first": "3.0.0",
