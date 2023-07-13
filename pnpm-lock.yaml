@@ -385,8 +385,8 @@ importers:
         specifier: 3.0.1
         version: 3.0.1(react-dom@18.2.0)(react@18.2.0)
       react-textarea-autosize:
-        specifier: 8.5.0
-        version: 8.5.0(@types/react@18.0.25)(react@18.2.0)
+        specifier: 8.5.2
+        version: 8.5.2(@types/react@18.0.25)(react@18.2.0)
       react-transition-group:
         specifier: 2.9.0
         version: 2.9.0(react-dom@18.2.0)(react@18.2.0)
@@ -16854,8 +16854,8 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
 
-  /react-textarea-autosize@8.5.0(@types/react@18.0.25)(react@18.2.0):
-    resolution: {integrity: sha512-cp488su3U9RygmHmGpJp0KEt0i/+57KCK33XVPH+50swVRBhIZYh0fGduz2YLKXwl9vSKBZ9HUXcg9PQXUXqIw==}
+  /react-textarea-autosize@8.5.2(@types/react@18.0.25)(react@18.2.0):
+    resolution: {integrity: sha512-uOkyjkEl0ByEK21eCJMHDGBAAd/BoFQBawYK5XItjAmCTeSbjxghd8qnt7nzsLYzidjnoObu6M26xts0YGKsGg==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
