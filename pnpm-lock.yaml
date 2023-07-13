@@ -845,8 +845,8 @@ importers:
         specifier: 6.0.2
         version: 6.0.2
       '@coveo/atomic-react':
-        specifier: 2.4.0
-        version: 2.4.0(@coveo/headless@2.20.0)(encoding@0.1.13)(postcss@8.4.25)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.4.1
+        version: 2.4.1(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.25)(react-dom@18.2.0)(react@18.2.0)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -2783,15 +2783,15 @@ packages:
     resolution: {integrity: sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ==}
     dev: false
 
-  /@coveo/atomic-react@2.4.0(@coveo/headless@2.20.0)(encoding@0.1.13)(postcss@8.4.25)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-dyj3LjBpERoXRChffAACuD4YWomuitVtgjlQCT0D9iGNZDIZsq3uh+SjejynS0Xog77GUbAHuaKPWso7TNN+7g==}
+  /@coveo/atomic-react@2.4.1(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.25)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-KpNEQDokzBq/jGHiJu64pBMjIvL6/xOajLIhX63xEIQIp0IF/G9bo4nPCLdW3PGOqgJLb0y0UVwnTln1HjKNkw==}
     peerDependencies:
-      '@coveo/headless': 2.20.0
+      '@coveo/headless': 2.21.0
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@coveo/atomic': 2.34.0(@coveo/headless@2.20.0)(encoding@0.1.13)(postcss@8.4.25)
-      '@coveo/headless': 2.20.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1)
+      '@coveo/atomic': 2.35.0(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.25)
+      '@coveo/headless': 2.21.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -2799,14 +2799,14 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/atomic@2.34.0(@coveo/headless@2.20.0)(encoding@0.1.13)(postcss@8.4.25):
-    resolution: {integrity: sha512-aB4/W6FGxxxdHUd3ma7Kp+CfLBzGjkjFStKUwJ21VhdsEMOBcU4RGk4Br2JkdQxfDDzCWzHGuvYfLuyj/m5XiQ==}
+  /@coveo/atomic@2.35.0(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.25):
+    resolution: {integrity: sha512-wu8WhVSE6AYVylaIz1BwpDN7YqNSPvSXeqcKliMAR4CnrJjgy1URDojQXQDAC/5Zbn1MhxqEvwzA92+Wf6EO5w==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
-      '@coveo/headless': 2.20.0
+      '@coveo/headless': 2.21.0
     dependencies:
       '@coveo/bueno': 0.43.7
-      '@coveo/headless': 2.20.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1)
+      '@coveo/headless': 2.21.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1)
       '@popperjs/core': 2.11.6
       '@salesforce-ux/design-system': 2.19.0(postcss@8.4.25)
       '@stencil/core': 2.17.3
@@ -2828,8 +2828,8 @@ packages:
     resolution: {integrity: sha512-qMBcGi1II7dDK6h+mf5j/ldAyrTM+WqOOziJvpHPyy451Qpl7z6AFcKw+Y5n0xNR81ENaubL9jkXVM96JNJAJg==}
     dev: false
 
-  /@coveo/headless@2.20.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1):
-    resolution: {integrity: sha512-td/m4ZL8QWkzrrjpko33UM1cgQNQAG7bZAvIacRpqODDRqBW8yx4UKXyntteJtlARcyZgD9ujyRYgcxnRtGUqA==}
+  /@coveo/headless@2.21.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1):
+    resolution: {integrity: sha512-adR+Kd7cc6W5i9sKXe6GiacJ/0xQ8OEe8/soLczcOv4ED7oev9lS9jo0+GwBrMd187fwTxPW/lUpo3SzmjSPIg==}
     peerDependencies:
       encoding: ^0.1.13
       pino-pretty: ^6.0.0
