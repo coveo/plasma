@@ -328,14 +328,14 @@ importers:
         specifier: 0.5.1
         version: 0.5.1
       '@types/codemirror':
-        specifier: 0.0.109
-        version: 0.0.109
+        specifier: 5.60.8
+        version: 5.60.8
       clsx:
         specifier: 1.2.1
         version: 1.2.1
       codemirror:
-        specifier: 5.63.3
-        version: 5.63.3
+        specifier: 5.65.14
+        version: 5.65.14
       d3:
         specifier: 7.8.5
         version: 7.8.5
@@ -368,7 +368,7 @@ importers:
         version: 2.8.0(@types/react@18.0.25)(react-dom@18.2.0)(react@18.2.0)
       react-codemirror2:
         specifier: 7.2.1
-        version: 7.2.1(codemirror@5.63.3)(react@18.2.0)
+        version: 7.2.1(codemirror@5.65.14)(react@18.2.0)
       react-color:
         specifier: 2.19.3
         version: 2.19.3(react@18.2.0)
@@ -669,8 +669,8 @@ importers:
   packages/style:
     dependencies:
       codemirror:
-        specifier: 5.59.4
-        version: 5.59.4
+        specifier: 5.65.14
+        version: 5.65.14
       rc-slider:
         specifier: 8.7.1
         version: 8.7.1(react-dom@18.2.0)(react@18.2.0)
@@ -5170,8 +5170,8 @@ packages:
     resolution: {integrity: sha512-JklMxityrwjBTjGY2anH8JaTx3yjRU3/sEHSblLH1ba5lqcSh1LnImXJZO5peJfXyqKYWjHTGy4s5Wz++hARrw==}
     dev: true
 
-  /@types/codemirror@0.0.109:
-    resolution: {integrity: sha512-cSdiHeeLjvGn649lRTNeYrVCDOgDrtP+bDDSFDd1TF+i0jKGPDRozno2NOJ9lTniso+taiv4kiVS8dgM8Jm5lg==}
+  /@types/codemirror@5.60.8:
+    resolution: {integrity: sha512-VjFgDF/eB+Aklcy15TtOTLQeMjTo07k7KAjql8OK5Dirr7a6sJY4T1uVBDuTVG9VEmn1uUsohOpYnVfgC6/jyw==}
     dependencies:
       '@types/tern': 0.23.4
 
@@ -5378,9 +5378,6 @@ packages:
     dependencies:
       '@types/estree': 1.0.1
       '@types/json-schema': 7.0.12
-
-  /@types/estree@1.0.0:
-    resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
@@ -5597,7 +5594,7 @@ packages:
   /@types/react-codemirror@1.0.8:
     resolution: {integrity: sha512-E0xBatgv8iWDYcjjubuDM0FZW0PHrzmeU0suCFLCn/S9Pl10KC2qrGGufqS3Zb3x6LICRbexGD/zpXg55nocBg==}
     dependencies:
-      '@types/codemirror': 0.0.109
+      '@types/codemirror': 5.60.8
       '@types/react': 18.0.25
     dev: true
 
@@ -5708,7 +5705,7 @@ packages:
   /@types/tern@0.23.4:
     resolution: {integrity: sha512-JAUw1iXGO1qaWwEOzxTKJZ/5JxVeON9kvGZ/osgZaJImBnyjyn0cjovPsf6FNLmyGY8Vw9DoXZCMlfMkMwHRWg==}
     dependencies:
-      '@types/estree': 1.0.0
+      '@types/estree': 1.0.1
 
   /@types/testing-library__jest-dom@5.14.8:
     resolution: {integrity: sha512-NRfJE9Cgpmu4fx716q9SYmU4jxxhYRU1BQo239Txt/9N3EC745XZX1Yl7h/SBIDlo1ANVOCRB4YDXjaQdoKCHQ==}
@@ -7860,12 +7857,8 @@ packages:
       - supports-color
     dev: true
 
-  /codemirror@5.59.4:
-    resolution: {integrity: sha512-achw5JBgx8QPcACDDn+EUUXmCYzx/zxEtOGXyjvLEvYY8GleUrnfm5D+Zb+UjShHggXKDT9AXrbkBZX6a0YSQg==}
-    dev: false
-
-  /codemirror@5.63.3:
-    resolution: {integrity: sha512-1C+LELr+5grgJYqwZKqxrcbPsHFHapVaVAloBsFBASbpLnQqLw1U8yXJ3gT5D+rhxIiSpo+kTqN+hQ+9ialIXw==}
+  /codemirror@5.65.14:
+    resolution: {integrity: sha512-VSNugIBDGt0OU9gDjeVr6fNkoFQznrWEUdAApMlXQNbfE8gGO19776D6MwSqF/V/w/sDwonsQ0z7KmmI9guScg==}
     dev: false
 
   /codesandbox-import-util-types@2.2.3:
@@ -16512,13 +16505,13 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /react-codemirror2@7.2.1(codemirror@5.63.3)(react@18.2.0):
+  /react-codemirror2@7.2.1(codemirror@5.65.14)(react@18.2.0):
     resolution: {integrity: sha512-t7YFmz1AXdlImgHXA9Ja0T6AWuopilub24jRaQdPVbzUJVNKIYuy3uCFZYa7CE5S3UW6SrSa5nAqVQvtzRF9gw==}
     peerDependencies:
       codemirror: 5.x
       react: '>=15.5 <=16.x'
     dependencies:
-      codemirror: 5.63.3
+      codemirror: 5.65.14
       react: 18.2.0
     dev: false
 
