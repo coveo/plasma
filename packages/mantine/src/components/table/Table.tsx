@@ -76,6 +76,8 @@ export const Table: TableType = <T,>({
         ...options,
     });
 
+    console.log(table);
+
     const [state, setState] = useState<TableState<T>>(table.initialState as TableState<T>);
     table.setOptions((prev) => ({
         ...prev,
