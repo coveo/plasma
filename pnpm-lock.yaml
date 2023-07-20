@@ -56,11 +56,11 @@ importers:
         specifier: 1.57.0
         version: 1.57.0
       stylelint:
-        specifier: 15.10.1
-        version: 15.10.1
+        specifier: 15.10.2
+        version: 15.10.2
       tsjs:
         specifier: 4.2.1
-        version: 4.2.1(prettier@2.8.8)(stylelint@15.10.1)(typescript@5.1.6)
+        version: 4.2.1(prettier@2.8.8)(stylelint@15.10.2)(typescript@5.1.6)
       turbo:
         specifier: 1.10.7
         version: 1.10.7
@@ -2637,15 +2637,6 @@ packages:
       conventional-changelog-conventionalcommits: 5.0.0
     dev: true
 
-  /@commitlint/config-validator@17.4.4:
-    resolution: {integrity: sha512-bi0+TstqMiqoBAQDvdEP4AFh0GaKyLFlPPEObgI29utoKEYoPQTvF0EYqIwYYLEoJYhj5GfMIhPHJkTJhagfeg==}
-    engines: {node: '>=v14'}
-    dependencies:
-      '@commitlint/types': 17.4.4
-      ajv: 8.12.0
-    dev: true
-    optional: true
-
   /@commitlint/config-validator@17.6.7:
     resolution: {integrity: sha512-vJSncmnzwMvpr3lIcm0I8YVVDJTzyjy7NZAeXbTXy+MPUdAr9pKyyg7Tx/ebOQ9kqzE6O9WT6jg2164br5UdsQ==}
     engines: {node: '>=v14'}
@@ -2697,31 +2688,6 @@ packages:
       '@commitlint/types': 17.4.4
     dev: true
 
-  /@commitlint/load@17.5.0:
-    resolution: {integrity: sha512-l+4W8Sx4CD5rYFsrhHH8HP01/8jEP7kKf33Xlx2Uk2out/UKoKPYMOIRcDH5ppT8UXLMV+x6Wm5osdRKKgaD1Q==}
-    engines: {node: '>=v14'}
-    requiresBuild: true
-    dependencies:
-      '@commitlint/config-validator': 17.4.4
-      '@commitlint/execute-rule': 17.4.0
-      '@commitlint/resolve-extends': 17.4.4
-      '@commitlint/types': 17.4.4
-      '@types/node': 18.16.19
-      chalk: 4.1.2
-      cosmiconfig: 8.1.3
-      cosmiconfig-typescript-loader: 4.2.0(@types/node@18.16.19)(cosmiconfig@8.1.3)(ts-node@10.9.1)(typescript@5.1.6)
-      lodash.isplainobject: 4.0.6
-      lodash.merge: 4.6.2
-      lodash.uniq: 4.5.0
-      resolve-from: 5.0.0
-      ts-node: 10.9.1(@swc/core@1.3.69)(@types/node@18.16.19)(typescript@5.1.6)
-      typescript: 5.1.6
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-    dev: true
-    optional: true
-
   /@commitlint/load@17.6.7:
     resolution: {integrity: sha512-QZ2rJTbX55BQdYrCm/p6+hh/pFBgC9nTJxfsrK6xRPe2thiQzHN0AQDBqBwAirn6gIkHrjIbCbtAE6kiDYLjrw==}
     engines: {node: '>=v14'}
@@ -2769,19 +2735,6 @@ packages:
       git-raw-commits: 2.0.11
       minimist: 1.2.8
     dev: true
-
-  /@commitlint/resolve-extends@17.4.4:
-    resolution: {integrity: sha512-znXr1S0Rr8adInptHw0JeLgumS11lWbk5xAWFVno+HUFVN45875kUtqjrI6AppmD3JI+4s0uZlqqlkepjJd99A==}
-    engines: {node: '>=v14'}
-    dependencies:
-      '@commitlint/config-validator': 17.4.4
-      '@commitlint/types': 17.4.4
-      import-fresh: 3.3.0
-      lodash.mergewith: 4.6.2
-      resolve-from: 5.0.0
-      resolve-global: 1.0.0
-    dev: true
-    optional: true
 
   /@commitlint/resolve-extends@17.6.7:
     resolution: {integrity: sha512-PfeoAwLHtbOaC9bGn/FADN156CqkFz6ZKiVDMjuC2N5N0740Ke56rKU7Wxdwya8R8xzLK9vZzHgNbuGhaOVKIg==}
@@ -8246,22 +8199,6 @@ packages:
   /core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
-  /cosmiconfig-typescript-loader@4.2.0(@types/node@18.16.19)(cosmiconfig@8.1.3)(ts-node@10.9.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-NkANeMnaHrlaSSlpKGyvn2R4rqUDeE/9E5YHx+b4nwo0R8dZyAqcih8/gxpCZvqWP9Vf6xuLpMSzSgdVEIM78g==}
-    engines: {node: '>=12', npm: '>=6'}
-    peerDependencies:
-      '@types/node': '*'
-      cosmiconfig: '>=7'
-      ts-node: '>=10'
-      typescript: '>=3'
-    dependencies:
-      '@types/node': 18.16.19
-      cosmiconfig: 8.1.3
-      ts-node: 10.9.1(@swc/core@1.3.69)(@types/node@18.16.19)(typescript@5.1.6)
-      typescript: 5.1.6
-    dev: true
-    optional: true
-
   /cosmiconfig-typescript-loader@4.2.0(@types/node@18.16.19)(cosmiconfig@8.2.0)(ts-node@10.9.1)(typescript@5.1.6):
     resolution: {integrity: sha512-NkANeMnaHrlaSSlpKGyvn2R4rqUDeE/9E5YHx+b4nwo0R8dZyAqcih8/gxpCZvqWP9Vf6xuLpMSzSgdVEIM78g==}
     engines: {node: '>=12', npm: '>=6'}
@@ -8399,8 +8336,8 @@ packages:
       component-classes: 1.2.6
     dev: false
 
-  /css-functions-list@3.1.0:
-    resolution: {integrity: sha512-/9lCvYZaUbBGvYUgYGFJ4dcYiyqdhSjG7IPVluoV8A1ILjkF7ilmhp1OGUz8n+nmBcu0RNrQAzgD8B6FJbrt2w==}
+  /css-functions-list@3.2.0:
+    resolution: {integrity: sha512-d/jBMPyYybkkLVypgtGv12R+pIFw4/f/IHtCTxWpZc8ofTYOPigIgmA6vu5rMHartZC+WuXhBUHfnyNUIQSYrg==}
     engines: {node: '>=12.22'}
     dev: true
 
@@ -8543,7 +8480,7 @@ packages:
       longest: 2.0.1
       word-wrap: 1.2.3
     optionalDependencies:
-      '@commitlint/load': 17.5.0
+      '@commitlint/load': 17.6.7
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -11087,7 +11024,7 @@ packages:
       '@types/glob': 7.2.0
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.3.0
       glob: 7.2.3
       ignore: 5.2.4
       merge2: 1.4.1
@@ -18571,14 +18508,14 @@ packages:
       react: 18.2.0
     dev: false
 
-  /stylelint-config-prettier@8.0.2(stylelint@15.10.1):
+  /stylelint-config-prettier@8.0.2(stylelint@15.10.2):
     resolution: {integrity: sha512-TN1l93iVTXpF9NJstlvP7nOu9zY2k+mN0NSFQ/VEGz15ZIP9ohdDZTtCWHs5LjctAhSAzaILULGbgiM0ItId3A==}
     engines: {node: '>= 10', npm: '>= 5'}
     hasBin: true
     peerDependencies:
       stylelint: '>=11.0.0'
     dependencies:
-      stylelint: 15.10.1
+      stylelint: 15.10.2
     dev: true
 
   /stylelint-config-rational-order@0.1.2:
@@ -18602,7 +18539,7 @@ packages:
       stylelint: 9.10.1
     dev: true
 
-  /stylelint-order@4.1.0(stylelint@15.10.1):
+  /stylelint-order@4.1.0(stylelint@15.10.2):
     resolution: {integrity: sha512-sVTikaDvMqg2aJjh4r48jsdfmqLT+nqB1MOsaBnvM3OwLx4S+WXcsxsgk5w18h/OZoxZCxuyXMh61iBHcj9Qiw==}
     peerDependencies:
       stylelint: ^10.0.1 || ^11.0.0 || ^12.0.0 || ^13.0.0
@@ -18610,10 +18547,10 @@ packages:
       lodash: 4.17.21
       postcss: 7.0.39
       postcss-sorting: 5.0.1
-      stylelint: 15.10.1
+      stylelint: 15.10.2
     dev: true
 
-  /stylelint-prettier@1.2.0(prettier@2.8.8)(stylelint@15.10.1):
+  /stylelint-prettier@1.2.0(prettier@2.8.8)(stylelint@15.10.2):
     resolution: {integrity: sha512-/MYz6W2CNgKHblPzPtk7cybu8H5dGG3c2GevL64RButERj1uJg4SdBIIat1hMfDOmN6QQpldc6tCc//ZAWh9WQ==}
     engines: {node: '>=6'}
     peerDependencies:
@@ -18622,11 +18559,11 @@ packages:
     dependencies:
       prettier: 2.8.8
       prettier-linter-helpers: 1.0.0
-      stylelint: 15.10.1
+      stylelint: 15.10.2
     dev: true
 
-  /stylelint@15.10.1:
-    resolution: {integrity: sha512-CYkzYrCFfA/gnOR+u9kJ1PpzwG10WLVnoxHDuBA/JiwGqdM9+yx9+ou6SE/y9YHtfv1mcLo06fdadHTOx4gBZQ==}
+  /stylelint@15.10.2:
+    resolution: {integrity: sha512-UxqSb3hB74g4DTO45QhUHkJMjKKU//lNUAOWyvPBVPZbCknJ5HjOWWZo+UDuhHa9FLeVdHBZXxu43eXkjyIPWg==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -18637,7 +18574,7 @@ packages:
       balanced-match: 2.0.0
       colord: 2.9.3
       cosmiconfig: 8.2.0
-      css-functions-list: 3.1.0
+      css-functions-list: 3.2.0
       css-tree: 2.3.1
       debug: 4.3.4
       fast-glob: 3.3.0
@@ -19255,7 +19192,7 @@ packages:
       strip-bom: 3.0.0
     dev: true
 
-  /tsjs@4.2.1(prettier@2.8.8)(stylelint@15.10.1)(typescript@5.1.6):
+  /tsjs@4.2.1(prettier@2.8.8)(stylelint@15.10.2)(typescript@5.1.6):
     resolution: {integrity: sha512-WrVBKiPugLXEeGEx47ZZpwUBjonSo35hwxVqlJW9jfQaLWaVATkf2UgBNPxchK+HBuRXZCT8y6HWIuHZMxwNdA==}
     peerDependencies:
       prettier: ^2.0.5
@@ -19273,11 +19210,11 @@ packages:
       eslint-plugin-react-hooks: 4.6.0(eslint@8.44.0)
       eslint-plugin-unused-imports: 2.0.0(@typescript-eslint/eslint-plugin@5.62.0)(eslint@8.44.0)
       prettier: 2.8.8
-      stylelint: 15.10.1
-      stylelint-config-prettier: 8.0.2(stylelint@15.10.1)
+      stylelint: 15.10.2
+      stylelint-config-prettier: 8.0.2(stylelint@15.10.2)
       stylelint-config-rational-order: 0.1.2
-      stylelint-order: 4.1.0(stylelint@15.10.1)
-      stylelint-prettier: 1.2.0(prettier@2.8.8)(stylelint@15.10.1)
+      stylelint-order: 4.1.0(stylelint@15.10.2)
+      stylelint-prettier: 1.2.0(prettier@2.8.8)(stylelint@15.10.2)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
