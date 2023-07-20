@@ -2,6 +2,7 @@ import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
 import {Table} from '../../Table';
+import {TableLayouts} from '../TableLayouts';
 
 describe('RowLayout', () => {
     type RowData = {id: string; firstName: string; lastName?: string};
@@ -202,6 +203,62 @@ describe('RowLayout', () => {
         await user.dblClick(screen.getByRole('cell', {name: 'Mario'}));
         expect(doubleClickSpy).toHaveBeenCalledTimes(1);
         expect(doubleClickSpy).toHaveBeenCalledWith({id: '🆔-1', firstName: 'Mario'});
+    });
+
+    it('toggles row selection when clicking on a selected row', async () => {
+        const user = userEvent.setup();
+
+        render(
+            <div>
+                <Table
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+                    ]}
+                    columns={columns}
+                />
+            </div>
+        );
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: false})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: true})).not.toBeInTheDocument();
+    });
+
+    it('prevents row toggle if forceRowSelected is true', async () => {
+        const user = userEvent.setup();
+
+        render(
+            <div>
+                <Table
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+                    ]}
+                    columns={columns}
+                    layouts={[
+                        {
+                            ...TableLayouts.Rows,
+                            Body: (props) => <TableLayouts.Rows.Body {...props} forceRowSelected />,
+                        },
+                    ]}
+                />
+            </div>
+        );
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
     });
 
     describe('when multi row selection is enabled', () => {

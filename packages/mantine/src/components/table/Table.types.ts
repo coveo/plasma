@@ -76,6 +76,10 @@ export interface TableLayoutProps<T = unknown> {
      * @param datum the row for which the children should be generated.
      */
     getExpandChildren?: (datum: T) => ReactNode;
+    /**
+     * Wether clicking on a selected row will deselect the row or not.
+     */
+    forceRowSelected?: boolean;
 }
 
 export type TableFormType = {
