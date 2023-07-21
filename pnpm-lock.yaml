@@ -111,8 +111,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0
       cross-fetch:
-        specifier: 3.1.8
-        version: 3.1.8(encoding@0.1.13)
+        specifier: 4.0.0
+        version: 4.0.0
       fs-extra:
         specifier: 10.1.0
         version: 10.1.0
@@ -794,8 +794,8 @@ importers:
         specifier: 11.0.0
         version: 11.0.0
       cross-fetch:
-        specifier: 3.1.8
-        version: 3.1.8(encoding@0.1.13)
+        specifier: 4.0.0
+        version: 4.0.0
       dotenv-safe:
         specifier: 8.2.0
         version: 8.2.0
@@ -8292,6 +8292,15 @@ packages:
       node-fetch: 2.6.12(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
+    dev: false
+
+  /cross-fetch@4.0.0:
+    resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
+    dependencies:
+      node-fetch: 2.6.12(encoding@0.1.13)
+    transitivePeerDependencies:
+      - encoding
+    dev: true
 
   /cross-spawn@5.1.0:
     resolution: {integrity: sha512-pTgQJ5KC0d2hcY8eyL1IzlBPYjTkyH72XRZPnLyKus2mBfNjQs3klqbJU2VILqZryAZUt9JOb3h/mWMy23/f5A==}
@@ -14916,18 +14925,6 @@ packages:
     dependencies:
       minimatch: 3.1.2
 
-  /node-fetch@2.6.11:
-    resolution: {integrity: sha512-4I6pdBY1EthSqDmJkiNk3JIT8cswwR9nfeW/cPdUagJYEQG7R95WRH74wpz7ma8Gh/9dI9FP+OU+0E4FvtA55w==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-    dependencies:
-      whatwg-url: 5.0.0
-    dev: true
-
   /node-fetch@2.6.12(encoding@0.1.13):
     resolution: {integrity: sha512-C/fGU2E8ToujUivIO0H+tpQ6HWo4eEmchoPIoXtxCrVghxdKq+QOHqEZW7tuP3KlV3bC8FRMO5nMCC7Zm1VP6g==}
     engines: {node: 4.x || >=6.0.0}
@@ -18801,7 +18798,7 @@ packages:
     dependencies:
       http-proxy-agent: 4.0.1
       https-proxy-agent: 5.0.1
-      node-fetch: 2.6.11
+      node-fetch: 2.6.12(encoding@0.1.13)
       stream-events: 1.0.5
       uuid: 8.3.2
     transitivePeerDependencies:
