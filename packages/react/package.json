@@ -124,7 +124,7 @@
         "lint-staged": "9.5.0",
         "lorem-ipsum": "2.0.8",
         "minimist": "1.2.8",
-        "postcss": "8.4.26",
+        "postcss": "8.4.27",
         "publint": "0.1.16",
         "react": "18.2.0",
         "react-dom": "18.2.0",

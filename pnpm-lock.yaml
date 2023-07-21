@@ -513,7 +513,7 @@ importers:
         version: 4.1.3
       autoprefixer:
         specifier: 10.4.14
-        version: 10.4.14(postcss@8.4.26)
+        version: 10.4.14(postcss@8.4.27)
       codecov:
         specifier: 3.8.2
         version: 3.8.2
@@ -554,8 +554,8 @@ importers:
         specifier: 1.2.8
         version: 1.2.8
       postcss:
-        specifier: 8.4.26
-        version: 8.4.26
+        specifier: 8.4.27
+        version: 8.4.27
       publint:
         specifier: 0.1.16
         version: 0.1.16
@@ -733,11 +733,11 @@ importers:
         specifier: 1.2.8
         version: 1.2.8
       postcss:
-        specifier: 8.4.26
-        version: 8.4.26
+        specifier: 8.4.27
+        version: 8.4.27
       postcss-scss:
         specifier: 4.0.6
-        version: 4.0.6(postcss@8.4.26)
+        version: 4.0.6(postcss@8.4.27)
       publint:
         specifier: 0.1.16
         version: 0.1.16
@@ -843,7 +843,7 @@ importers:
         version: 6.0.2
       '@coveo/atomic-react':
         specifier: 2.4.1
-        version: 2.4.1(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.26)(react-dom@18.2.0)(react@18.2.0)
+        version: 2.4.1(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.27)(react-dom@18.2.0)(react@18.2.0)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -2779,14 +2779,14 @@ packages:
     resolution: {integrity: sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ==}
     dev: false
 
-  /@coveo/atomic-react@2.4.1(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.26)(react-dom@18.2.0)(react@18.2.0):
+  /@coveo/atomic-react@2.4.1(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.27)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-KpNEQDokzBq/jGHiJu64pBMjIvL6/xOajLIhX63xEIQIp0IF/G9bo4nPCLdW3PGOqgJLb0y0UVwnTln1HjKNkw==}
     peerDependencies:
       '@coveo/headless': 2.21.0
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@coveo/atomic': 2.35.0(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.26)
+      '@coveo/atomic': 2.35.0(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.27)
       '@coveo/headless': 2.21.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2795,7 +2795,7 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/atomic@2.35.0(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.26):
+  /@coveo/atomic@2.35.0(@coveo/headless@2.21.0)(encoding@0.1.13)(postcss@8.4.27):
     resolution: {integrity: sha512-wu8WhVSE6AYVylaIz1BwpDN7YqNSPvSXeqcKliMAR4CnrJjgy1URDojQXQDAC/5Zbn1MhxqEvwzA92+Wf6EO5w==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
@@ -2804,7 +2804,7 @@ packages:
       '@coveo/bueno': 0.43.7
       '@coveo/headless': 2.21.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.71.11)(react-redux@8.1.0)(react@18.2.0)(redux@4.2.1)
       '@popperjs/core': 2.11.6
-      '@salesforce-ux/design-system': 2.19.0(postcss@8.4.26)
+      '@salesforce-ux/design-system': 2.19.0(postcss@8.4.27)
       '@stencil/core': 2.17.3
       '@stencil/store': 1.5.0(@stencil/core@2.17.3)
       dayjs: 1.11.5
@@ -4625,12 +4625,12 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /@salesforce-ux/design-system@2.19.0(postcss@8.4.26):
+  /@salesforce-ux/design-system@2.19.0(postcss@8.4.27):
     resolution: {integrity: sha512-WmMzB7eqZ67OZ9sS5A6MI3BKmyOevjwZCuizg43ahukzc7lsvlQheHX0TKuHvL8oVaZSrChFIz6gmMQk9+mmSw==}
     peerDependencies:
       postcss: ^8.3.5
     dependencies:
-      postcss: 8.4.26
+      postcss: 8.4.27
     dev: false
 
   /@samverschueren/stream-to-observable@0.3.1(rxjs@6.6.7):
@@ -6868,7 +6868,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: false
 
-  /autoprefixer@10.4.14(postcss@8.4.26):
+  /autoprefixer@10.4.14(postcss@8.4.27):
     resolution: {integrity: sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -6880,7 +6880,7 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.26
+      postcss: 8.4.27
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -15935,13 +15935,13 @@ packages:
       postcss: 7.0.39
     dev: true
 
-  /postcss-safe-parser@6.0.0(postcss@8.4.26):
+  /postcss-safe-parser@6.0.0(postcss@8.4.27):
     resolution: {integrity: sha512-FARHN8pwH+WiS2OPCxJI8FuRJpTVnn6ZNFiqAM2aeW2LwTHWWmWgIyKC6cUo0L8aeKiF/14MNvnpls6R2PBeMQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.3.3
     dependencies:
-      postcss: 8.4.26
+      postcss: 8.4.27
     dev: true
 
   /postcss-sass@0.3.5:
@@ -15958,13 +15958,13 @@ packages:
       postcss: 7.0.39
     dev: true
 
-  /postcss-scss@4.0.6(postcss@8.4.26):
+  /postcss-scss@4.0.6(postcss@8.4.27):
     resolution: {integrity: sha512-rLDPhJY4z/i4nVFZ27j9GqLxj1pwxE80eAzUNRMXtcpipFYIeowerzBgG3yJhMtObGEXidtIgbUpQ3eLDsf5OQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.4.19
     dependencies:
-      postcss: 8.4.26
+      postcss: 8.4.27
     dev: true
 
   /postcss-selector-parser@3.1.2:
@@ -16054,8 +16054,8 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
-  /postcss@8.4.26:
-    resolution: {integrity: sha512-jrXHFF8iTloAenySjM/ob3gSj7pCu0Ji49hnjqzsgSRa50hkWCKD0HQ+gMNJkW38jBI68MpAAg7ZWwHwX8NMMw==}
+  /postcss@8.4.27:
+    resolution: {integrity: sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
@@ -18588,9 +18588,9 @@ packages:
       micromatch: 4.0.5
       normalize-path: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.26
+      postcss: 8.4.27
       postcss-resolve-nested-selector: 0.1.1
-      postcss-safe-parser: 6.0.0(postcss@8.4.26)
+      postcss-safe-parser: 6.0.0(postcss@8.4.27)
       postcss-selector-parser: 6.0.13
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
@@ -20034,7 +20034,7 @@ packages:
     dependencies:
       '@types/node': 18.16.19
       esbuild: 0.17.18
-      postcss: 8.4.26
+      postcss: 8.4.27
       rollup: 3.26.2
     optionalDependencies:
       fsevents: 2.3.2
@@ -20070,7 +20070,7 @@ packages:
     dependencies:
       '@types/node': 18.16.19
       esbuild: 0.18.11
-      postcss: 8.4.26
+      postcss: 8.4.27
       rollup: 3.26.2
       sass: 1.63.6
     optionalDependencies:
