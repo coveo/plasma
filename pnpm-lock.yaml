@@ -406,6 +406,9 @@ importers:
         specifier: 3.3.6
         version: 3.3.6
     devDependencies:
+      '@faker-js/faker':
+        specifier: 8.0.2
+        version: 8.0.2
       '@matteoh2o1999/github-actions-jest-reporter':
         specifier: 2.0.0
         version: 2.0.0(@types/node@18.16.19)(ts-node@10.9.1)
@@ -442,9 +445,6 @@ importers:
       '@types/enzyme':
         specifier: 3.10.13
         version: 3.10.13
-      '@types/faker':
-        specifier: 4.1.12
-        version: 4.1.12
       '@types/jest':
         specifier: 29.5.3
         version: 29.5.3
@@ -532,9 +532,6 @@ importers:
       eslint-plugin-testing-library:
         specifier: 5.11.0
         version: 5.11.0(eslint@8.44.0)(typescript@5.1.6)
-      faker:
-        specifier: 4.1.0
-        version: 4.1.0
       fancy-log:
         specifier: 2.0.0
         version: 2.0.0
@@ -3517,6 +3514,11 @@ packages:
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: false
 
+  /@faker-js/faker@8.0.2:
+    resolution: {integrity: sha512-Uo3pGspElQW91PCvKSIAXoEgAUlRnH29sX2/p89kg7sP1m2PzCufHINd0FhTXQf6DYGiUlVncdSPa2F9wxed2A==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
+    dev: true
+
   /@floating-ui/core@1.2.2:
     resolution: {integrity: sha512-FaO9KVLFnxknZaGWGmNtjD2CVFuc0u4yeGEofoyXO2wgRA7fLtkngT6UB0vtWQWuhH3iMTZZ/Y89CMeyGfn8pA==}
 
@@ -5383,10 +5385,6 @@ packages:
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
-
-  /@types/faker@4.1.12:
-    resolution: {integrity: sha512-0MEyzJrLLs1WaOCx9ULK6FzdCSj2EuxdSP9kvuxxdBEGujZYUOZ4vkPXdgu3dhyg/pOdn7VCatelYX7k0YShlA==}
-    dev: true
 
   /@types/fs-extra@9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
@@ -10230,10 +10228,6 @@ packages:
       to-regex: 3.0.2
     transitivePeerDependencies:
       - supports-color
-
-  /faker@4.1.0:
-    resolution: {integrity: sha512-ILKg69P6y/D8/wSmDXw35Ly0re8QzQ8pMfBCflsGiZG2ZjMUNLYNexA6lz5pkmJlepVdsiDFUxYAzPQ9/+iGLA==}
-    dev: true
 
   /fancy-log@1.3.3:
     resolution: {integrity: sha512-k9oEhlyc0FrVh25qYuSELjr8oxsCoc4/LEZfg2iJJrfEk/tZL9bCoJE47gqAvI2m/AUjluCS4+3I0eTx8n3AEw==}
