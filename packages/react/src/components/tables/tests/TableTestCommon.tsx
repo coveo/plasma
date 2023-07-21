@@ -1,4 +1,4 @@
-import {date, internet} from 'faker/locale/en';
+import {faker} from '@faker-js/faker';
 import moment from 'moment';
 import * as _ from 'underscore';
 
@@ -97,11 +97,11 @@ export const predictableData: IData = {
 
 export const dataById = _.range(10).reduce(
     (byId, index) => {
-        const email = internet.email();
-        const avatar = internet.avatar();
-        const userName = internet.userName();
-        const password = internet.password();
-        const lastLogin = moment(date.recent(30)).format('YYYY-MM-DD hh:mm:ss');
+        const email = faker.internet.email();
+        const avatar = faker.internet.avatar();
+        const userName = faker.internet.userName();
+        const password = faker.internet.password();
+        const lastLogin = moment(faker.date.recent({days: 30, refDate: new Date()})).format('YYYY-MM-DD hh:mm:ss');
 
         return {
             ...byId,
@@ -112,7 +112,7 @@ export const dataById = _.range(10).reduce(
                 userName,
                 password,
                 lastLogin,
-                url: index % 2 ? internet.url() : undefined,
+                url: index % 2 ? faker.internet.url() : undefined,
             },
         };
     },
