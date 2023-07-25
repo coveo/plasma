@@ -1,4 +1,4 @@
-import {useClickOutside} from '@mantine/hooks';
+import {useClickOutside, useDidUpdate} from '@mantine/hooks';
 import {functionalUpdate, RowSelectionState, Table} from '@tanstack/table-core';
 import isEqual from 'fast-deep-equal';
 
@@ -23,6 +23,12 @@ export const useRowSelection = <T>(
         null,
         [outsideClickRef.current, ...additionalRootNodes]
     );
+
+    // Need to call this outside of the onRowSelectionChange of the table to avoid rendering conflicts if the callback queues an update in a parent component.
+    // See this warning introduced in React v.16.13.0: https://legacy.reactjs.org/blog/2020/02/26/react-v16.13.0.html#warnings-for-some-updates-during-render
+    useDidUpdate(() => {
+        onRowSelectionChange?.(getSelectedRows());
+    }, [table.getState().rowSelection]);
 
     table.setOptions((prev) => ({
         ...prev,
@@ -49,8 +55,6 @@ export const useRowSelection = <T>(
                         newRowSelection[rowId] = rows[rowId]?.original ?? (true as T);
                     }
                 });
-
-                onRowSelectionChange?.(Object.values(newRowSelection));
 
                 return {
                     ...old,
