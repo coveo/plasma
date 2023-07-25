@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent} from '@test-utils';
+import {render, screen, userEvent, waitFor} from '@test-utils';
 
 import {Table} from '../Table';
 
@@ -69,7 +69,7 @@ describe('Table.PerPage', () => {
     });
 
     it('calls onChange when changing the number of items per page', async () => {
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
         const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
@@ -87,7 +87,7 @@ describe('Table.PerPage', () => {
     });
 
     it('resets page index when changing the number of items per page', async () => {
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
         const onChange = vi.fn();
         render(
             <Table
@@ -108,5 +108,30 @@ describe('Table.PerPage', () => {
         expect(onChange).toHaveBeenCalledWith(
             expect.objectContaining({pagination: expect.objectContaining({pageIndex: 0})})
         );
+    });
+
+    it('triggers the onChangePage Callback with the right parameters', async () => {
+        const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
+        const onPerPageChange = vi.fn();
+        render(
+            <Table
+                data={[{name: 'fruit'}, {name: 'vegetable'}]}
+                columns={columns}
+                initialState={{pagination: {pageIndex: 1, pageSize: 50}}}
+            >
+                <Table.Footer>
+                    <Table.Pagination totalPages={2} />
+                    <Table.PerPage onPerPageChange={onPerPageChange} />
+                </Table.Footer>
+            </Table>
+        );
+
+        onPerPageChange.mockReset();
+
+        await user.click(screen.getByRole('radio', {name: /100/i}));
+
+        await waitFor(() => {
+            expect(onPerPageChange).toHaveBeenCalledWith(100);
+        });
     });
 });
