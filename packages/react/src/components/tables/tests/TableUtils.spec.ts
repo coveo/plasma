@@ -1,4 +1,4 @@
-import * as faker from 'faker/locale/en';
+import {faker} from '@faker-js/faker';
 import * as _ from 'underscore';
 import {TableChildComponent, TableSortingOrder} from '../TableConstants';
 import {
@@ -78,12 +78,12 @@ describe('TableUtils', () => {
         it('should convert a collection into a dataById format', () => {
             const collection = [
                 {
-                    companyName: faker.company.companyName(),
+                    companyName: faker.company.name(),
                     catchPhrase: faker.company.catchPhrase(),
                     id: 'a',
                 },
                 {
-                    companyName: faker.company.companyName(),
+                    companyName: faker.company.name(),
                     catchPhrase: faker.company.catchPhrase(),
                     id: 'b',
                 },

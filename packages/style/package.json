@@ -47,7 +47,7 @@
         "autosize": "5.0.2",
         "concurrently": "8.2.0",
         "coveo-png-sprite": "1.0.1",
-        "del": "6.1.1",
+        "del": "7.0.0",
         "fancy-log": "2.0.0",
         "gulp": "4.0.2",
         "gulp-cheerio": "0.6.3",
@@ -62,13 +62,13 @@
         "lint-staged": "9.5.0",
         "merge-stream": "1.0.1",
         "minimist": "1.2.8",
-        "postcss": "8.4.26",
+        "postcss": "8.4.27",
         "postcss-scss": "4.0.6",
         "publint": "0.1.16",
         "rimraf": "3.0.2",
         "sass": "1.63.6",
         "underscore": "1.13.1",
         "underscore.string": "3.3.6",
-        "vite": "4.4.3"
+        "vite": "4.4.6"
     }
 }
