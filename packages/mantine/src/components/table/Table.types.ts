@@ -79,7 +79,7 @@ export interface TableLayoutProps<T = unknown> {
     /**
      * Whether clicking on a selected row will deselect the row or not.
      */
-    disableRowDeselection?: boolean;
+    keepSelection?: boolean;
 }
 
 export type TableFormType = {
