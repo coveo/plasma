@@ -77,7 +77,7 @@ export interface TableLayoutProps<T = unknown> {
      */
     getExpandChildren?: (datum: T) => ReactNode;
     /**
-     * Wether clicking on a selected row will deselect the row or not.
+     * Whether clicking on a selected row will deselect the row or not.
      */
     disableRowDeselection?: boolean;
 }
