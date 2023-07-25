@@ -101,7 +101,7 @@ const RowLayoutBody = <T,>({
     doubleClickAction,
     getExpandChildren,
     loading,
-    disableRowDeselection,
+    keepSelection,
 }: TableLayoutProps<T>) => {
     const {multiRowSelectionEnabled, disableRowSelection} = useTable();
     const {classes, cx} = useStyles({disableRowSelection, multiRowSelectionEnabled});
@@ -114,12 +114,12 @@ const RowLayoutBody = <T,>({
     const rows = table.getRowModel().rows.map((row) => {
         const rowChildren = getExpandChildren?.(row.original) ?? null;
         const isSelected = !!row.getIsSelected();
-        const shouldDisableRowDeselection = disableRowDeselection && row.getIsSelected();
+        const shouldKeepSelection = keepSelection && isSelected;
         const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
             if (rowChildren) {
                 toggleCollapsible(event.currentTarget);
             }
-            if (!disableRowSelection && !multiRowSelectionEnabled && !shouldDisableRowDeselection) {
+            if (!disableRowSelection && !multiRowSelectionEnabled && !shouldKeepSelection) {
                 row.toggleSelected();
             }
         };

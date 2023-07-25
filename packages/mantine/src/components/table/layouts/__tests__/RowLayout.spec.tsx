@@ -230,7 +230,7 @@ describe('RowLayout', () => {
         expect(screen.queryByRole('row', {name: /patate king/i, selected: true})).not.toBeInTheDocument();
     });
 
-    it('prevents row toggle if disableRowDeselection is true', async () => {
+    it('prevents row toggle if keepSelection is true', async () => {
         const user = userEvent.setup();
 
         render(
@@ -245,7 +245,7 @@ describe('RowLayout', () => {
                     layouts={[
                         {
                             ...TableLayouts.Rows,
-                            Body: (props) => <TableLayouts.Rows.Body {...props} disableRowDeselection />,
+                            Body: (props) => <TableLayouts.Rows.Body {...props} keepSelection />,
                         },
                     ]}
                 />
@@ -261,7 +261,7 @@ describe('RowLayout', () => {
         expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
     });
 
-    it('allows selection of another row if disableRowDeselection is true', async () => {
+    it('allows selection of another row if keepSelection is true', async () => {
         const user = userEvent.setup();
 
         render(
@@ -276,7 +276,7 @@ describe('RowLayout', () => {
                     layouts={[
                         {
                             ...TableLayouts.Rows,
-                            Body: (props) => <TableLayouts.Rows.Body {...props} disableRowDeselection />,
+                            Body: (props) => <TableLayouts.Rows.Body {...props} keepSelection />,
                         },
                     ]}
                 />
