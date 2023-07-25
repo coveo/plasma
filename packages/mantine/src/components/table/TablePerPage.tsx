@@ -29,7 +29,7 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     values = [25, 50, 100],
     onPerPageChange,
 }) => {
-    const {state, setState} = useTable();
+    const {state, setState, getPageCount} = useTable();
 
     const updatePerPage = (newPerPage: string) => {
         onPerPageChange?.(Number(newPerPage));
@@ -39,7 +39,7 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
         }));
     };
 
-    return (
+    return getPageCount() > 0 ? (
         <Group spacing="sm">
             <Text fw={500}>{label}</Text>
             <SegmentedControl
@@ -50,7 +50,7 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
                 size="sm"
             />
         </Group>
-    );
+    ) : null;
 };
 
 TablePerPage.DEFAULT_SIZE = 50;

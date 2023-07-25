@@ -134,4 +134,15 @@ describe('Table.PerPage', () => {
             expect(onPerPageChange).toHaveBeenCalledWith(100);
         });
     });
+
+    it('renders nothing when there are no pages to show', () => {
+        render(
+            <Table data={[]} columns={columns} initialState={{globalFilter: 'filter'}}>
+                <Table.Footer data-testid="table-footer">
+                    <Table.PerPage />
+                </Table.Footer>
+            </Table>
+        );
+        expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
+    });
 });
