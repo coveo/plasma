@@ -114,7 +114,7 @@ const RowLayoutBody = <T,>({
     const rows = table.getRowModel().rows.map((row) => {
         const rowChildren = getExpandChildren?.(row.original) ?? null;
         const isSelected = !!row.getIsSelected();
-        const shouldDisableRowDeselection = disableRowDeselection && row.getIsSelected();
+        const shouldDisableRowDeselection = disableRowDeselection && isSelected;
         const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
             if (rowChildren) {
                 toggleCollapsible(event.currentTarget);
