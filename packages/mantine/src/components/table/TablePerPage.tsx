@@ -16,15 +16,23 @@ interface TablePerPageProps {
      * @default [25, 50, 100]
      */
     values?: number[];
+    /**
+     * The callback if the entries per page is changed.
+     *
+     * @param perPage the new number of entries per page
+     */
+    onPerPageChange?: (perPage: number) => void;
 }
 
 export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE: number} = ({
     label = 'Results per page',
     values = [25, 50, 100],
+    onPerPageChange,
 }) => {
     const {state, setState} = useTable();
 
     const updatePerPage = (newPerPage: string) => {
+        onPerPageChange?.(Number(newPerPage));
         setState((prevState) => ({
             ...prevState,
             pagination: {pageIndex: 0, pageSize: parseInt(newPerPage, 10)},

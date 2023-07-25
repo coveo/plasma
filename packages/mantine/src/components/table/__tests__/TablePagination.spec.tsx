@@ -101,4 +101,26 @@ describe('Table.Pagination', () => {
         expect(screen.getByText('protein foods')).toBeVisible();
         expect(screen.getByText('dairy')).toBeVisible();
     });
+
+    it('triggers the onChangePage Callback with the right parameters', async () => {
+        const user = userEvent.setup();
+        const onChangePage = vi.fn();
+        render(
+            <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
+                <Table.Footer>
+                    <Table.PerPage />
+                    <Table.Pagination totalPages={5} onPageChange={onChangePage} />
+                </Table.Footer>
+            </Table>
+        );
+
+        onChangePage.mockReset();
+
+        await user.click(screen.getByRole('radio', {name: /100/i}));
+        await user.click(screen.queryByRole('button', {name: '2'}));
+
+        await waitFor(() => {
+            expect(onChangePage).toHaveBeenCalledWith(1);
+        });
+    });
 });
