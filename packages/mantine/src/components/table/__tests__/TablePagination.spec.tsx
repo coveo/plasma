@@ -123,4 +123,15 @@ describe('Table.Pagination', () => {
             expect(onChangePage).toHaveBeenCalledWith(1);
         });
     });
+
+    it('renders nothing when there are no pages to show', () => {
+        render(
+            <Table data={[]} columns={columns} initialState={{globalFilter: 'filter'}}>
+                <Table.Footer data-testid="table-footer">
+                    <Table.Pagination totalPages={0} />
+                </Table.Footer>
+            </Table>
+        );
+        expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
+    });
 });
