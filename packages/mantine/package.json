@@ -76,7 +76,7 @@
         "csstype": "3.1.2",
         "embla-carousel-react": "7.1.0",
         "eslint-plugin-testing-library": "5.11.0",
-        "eslint-plugin-vitest": "0.2.6",
+        "eslint-plugin-vitest": "0.2.8",
         "eslint-plugin-vitest-globals": "1.4.0",
         "identity-obj-proxy": "3.0.0",
         "jest": "29.6.1",
