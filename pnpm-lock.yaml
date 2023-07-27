@@ -694,8 +694,8 @@ importers:
         specifier: 4.0.2
         version: 4.0.2
       gulp-cheerio:
-        specifier: 0.6.3
-        version: 0.6.3
+        specifier: 1.0.0
+        version: 1.0.0
       gulp-concat:
         specifier: 2.6.1
         version: 2.6.1
@@ -8080,7 +8080,7 @@ packages:
     dependencies:
       buffer-from: 1.1.2
       inherits: 2.0.4
-      readable-stream: 2.3.7
+      readable-stream: 2.3.8
       typedarray: 0.0.6
     dev: true
 
@@ -10655,7 +10655,7 @@ packages:
     resolution: {integrity: sha512-3Z4XhFZ3992uIq0XOqb9AreonueSYphE6oYbpt5+3u06JWklbsPkNv3ZKkP9Bz/r+1MWCaMoSQ28P85+1Yc77w==}
     dependencies:
       inherits: 2.0.4
-      readable-stream: 2.3.7
+      readable-stream: 2.3.8
     dev: true
 
   /focus-visible@5.2.0:
@@ -10926,7 +10926,7 @@ packages:
       is-negated-glob: 1.0.0
       ordered-read-streams: 1.0.1
       pumpify: 1.5.1
-      readable-stream: 2.3.7
+      readable-stream: 2.3.8
       remove-trailing-separator: 1.1.0
       to-absolute-glob: 2.0.2
       unique-stream: 2.3.1
@@ -11147,8 +11147,8 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
-  /gulp-cheerio@0.6.3:
-    resolution: {integrity: sha512-ZuRAq48qT9u2E8QUz1pHQZOq9500tQojOfGXzAER91CGYf8a3U5+fHuLWk5wvJ0iwrriaApg5Honvt3r5XMcNg==}
+  /gulp-cheerio@1.0.0:
+    resolution: {integrity: sha512-4dgOVngKJK0+Re+prT/nuXtKM7+F92XeidxjuCeOpOlmYA5rkVaoKrH+xMN/JWOd2iI5OP/NJ6BIjWxeU+ozXQ==}
     dependencies:
       cheerio: 0.22.0
       plugin-error: 0.1.2
@@ -13150,7 +13150,7 @@ packages:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
     engines: {node: '>= 0.6.3'}
     dependencies:
-      readable-stream: 2.3.7
+      readable-stream: 2.3.8
     dev: true
 
   /lcid@1.0.0:
@@ -15438,7 +15438,7 @@ packages:
   /ordered-read-streams@1.0.1:
     resolution: {integrity: sha512-Z87aSjx3r5c0ZB7bcJqIgIRX5bxR7A4aSzvIbaxd0oTkWBCOoKfuGHiKj60CHVUgg1Phm5yMZzBdt8XqRs73Mw==}
     dependencies:
-      readable-stream: 2.3.7
+      readable-stream: 2.3.8
     dev: true
 
   /os-filter-obj@2.0.0:
@@ -17126,7 +17126,7 @@ packages:
     dependencies:
       graceful-fs: 4.2.11
       micromatch: 3.1.10
-      readable-stream: 2.3.7
+      readable-stream: 2.3.8
     transitivePeerDependencies:
       - supports-color
     dev: true

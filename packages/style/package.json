@@ -50,7 +50,7 @@
         "del": "7.0.0",
         "fancy-log": "2.0.0",
         "gulp": "4.0.2",
-        "gulp-cheerio": "0.6.3",
+        "gulp-cheerio": "1.0.0",
         "gulp-concat": "2.6.1",
         "gulp-files-to-json": "0.2.1",
         "gulp-gzip": "1.4.2",
