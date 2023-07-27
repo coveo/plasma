@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs-extra');
-const glob = require('glob');
+const {globSync} = require('glob');
 const svgr = require('@svgr/core');
 const groupBy = require('lodash.groupby');
 const upperFirst = require('lodash.upperfirst');
@@ -76,11 +76,7 @@ const listIconVariants = async (grouped) => {
     return fs.appendFile(`${outDirPath}/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
 };
 
-const handleSvgFiles = (err, files) => {
-    if (err) {
-        console.error(err);
-    }
-
+const handleSvgFiles = (files) => {
     const grouped = groupBy(files, findIconName);
     Promise.all([convertIcons(grouped), listIconVariants(grouped)]);
 };
@@ -88,4 +84,6 @@ const handleSvgFiles = (err, files) => {
 rmSync(outDirPath, {recursive: true, force: true});
 rmSync('./dist', {recursive: true, force: true});
 fs.ensureDirSync(outDirPath);
-glob(`${iconsSourceDirPath}/**/*.svg`, handleSvgFiles);
+
+const svgs = globSync(`${iconsSourceDirPath}/**/*.svg`);
+handleSvgFiles(svgs);
