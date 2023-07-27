@@ -105,8 +105,8 @@ importers:
         specifier: 3.0.2
         version: 3.0.2
       '@typescript/twoslash':
-        specifier: 3.2.1
-        version: 3.2.1
+        specifier: 3.2.4
+        version: 3.2.4(typescript@5.1.6)
       '@typescript/vfs':
         specifier: 1.4.0
         version: 1.4.0
@@ -6087,18 +6087,30 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
-  /@typescript/twoslash@3.2.1:
-    resolution: {integrity: sha512-tS4gLwOe1WCDspqBXhQCb2ESUqzEd1tOkmKpiZ1O+W1x+9l+9njETuXFkLErtH9is/uD1GSvClDjk/tEOJktjQ==}
+  /@typescript/twoslash@3.2.4(typescript@5.1.6):
+    resolution: {integrity: sha512-/TCIOuPQaKltzUUT1qJo6mplYwjbAxkaSFvkeZD3FeFt3Ovt+HJi8xisu8rcLyDRmM3VJ0+jAx+AAICwn4Zlhw==}
+    peerDependencies:
+      typescript: '*'
     dependencies:
-      '@typescript/vfs': 1.4.0
+      '@types/lz-string': 1.3.34
+      '@typescript/vfs': 1.5.0
       debug: 4.3.4
-      lz-string: 1.4.4
+      lz-string: 1.5.0
+      typescript: 5.1.6
     transitivePeerDependencies:
       - supports-color
     dev: true
 
   /@typescript/vfs@1.4.0:
     resolution: {integrity: sha512-Pood7yv5YWMIX+yCHo176OnF8WUlKGImFG7XlsuH14Zb1YN5+dYD3uUtS7lqZtsH7tAveNUi2NzdpQCN0yRbaw==}
+    dependencies:
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@typescript/vfs@1.5.0:
+    resolution: {integrity: sha512-AJS307bPgbsZZ9ggCT3wwpg3VbTKMFNHfaY/uF0ahSkYYrPF2dSSKDNIDIQAHm9qJqbLvCsSJH7yN4Vs/CsMMg==}
     dependencies:
       debug: 4.3.4
     transitivePeerDependencies:
@@ -13734,6 +13746,7 @@ packages:
   /lz-string@1.4.4:
     resolution: {integrity: sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==}
     hasBin: true
+    dev: false
 
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
