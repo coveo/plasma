@@ -274,8 +274,8 @@ importers:
         specifier: 29.6.1
         version: 29.6.1
       jest-junit:
-        specifier: 13.2.0
-        version: 13.2.0
+        specifier: 16.0.0
+        version: 16.0.0
       npm-run-all:
         specifier: 4.1.5
         version: 4.1.5
@@ -12640,8 +12640,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /jest-junit@13.2.0:
-    resolution: {integrity: sha512-B0XNlotl1rdsvFZkFfoa19mc634+rrd8E4Sskb92Bb8MmSXeWV9XJGUyctunZS1W410uAxcyYuPUGVnbcOH8cg==}
+  /jest-junit@16.0.0:
+    resolution: {integrity: sha512-A94mmw6NfJab4Fg/BlvVOUXzXgF0XIH6EmTgJ5NDPp4xoKq0Kr7sErb+4Xs9nZvu58pJojz5RFGpqnZYJTrRfQ==}
     engines: {node: '>=10.12.0'}
     dependencies:
       mkdirp: 1.0.4
