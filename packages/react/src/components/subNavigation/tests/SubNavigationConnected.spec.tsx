@@ -31,7 +31,7 @@ describe('SubNavigation', () => {
                 <Provider store={store}>
                     <SubNavigationConnected {...basicProps} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             act(() => {
                 wrapper.update();
@@ -69,7 +69,7 @@ describe('SubNavigation', () => {
 
         it('should set the selected property of the sub navigation on item click', () => {
             expect(findWhere(store.getState().subNavigations, {id: basicProps.id}).selected).toBe(
-                basicProps.defaultSelected
+                basicProps.defaultSelected,
             );
 
             const li = subNavigation
@@ -96,7 +96,7 @@ describe('SubNavigation', () => {
             <Provider store={store}>
                 <SubNavigationConnected {...props} />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         act(() => {
             wrapper.update();
@@ -118,8 +118,8 @@ describe('SubNavigation', () => {
                 <Provider store={store}>
                     <SubNavigationConnected {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
-            ).unmount()
+                {attachTo: document.getElementById('App')},
+            ).unmount(),
         ).not.toThrow();
     });
 });

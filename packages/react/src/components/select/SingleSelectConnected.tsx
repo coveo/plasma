@@ -132,7 +132,7 @@ export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
                     </button>
                 );
             },
-        [props.canClear, props.disabled, props.toggleClasses, props.noFixedWidth, props.buttonPrepend]
+        [props.canClear, props.disabled, props.toggleClasses, props.noFixedWidth, props.buttonPrepend],
     );
 
     return (

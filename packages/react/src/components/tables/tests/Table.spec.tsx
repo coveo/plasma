@@ -33,7 +33,7 @@ describe('<Table />', () => {
             <Provider store={store}>
                 <Table {...props} />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
 
     describe('on instantiation', () => {
@@ -219,7 +219,7 @@ describe('<Table />', () => {
 
         it('should render as many <TableChildBody /> as there are displayed ids', () => {
             expect(mountComponentWithProps(tablePropsMockWithData).find(TableChildBody).length).toBe(
-                tablePropsMockWithData.tableCompositeState.data.displayedIds.length
+                tablePropsMockWithData.tableCompositeState.data.displayedIds.length,
             );
         });
 
@@ -270,7 +270,7 @@ describe('<Table />', () => {
                 expect(onModifyDataSpy).toHaveBeenCalledWith(
                     shouldResetPage,
                     nextProps.tableCompositeState,
-                    tableProps.tableCompositeState
+                    tableProps.tableCompositeState,
                 );
             });
 
@@ -290,7 +290,7 @@ describe('<Table />', () => {
                 expect(onModifyDataSpy).toHaveBeenCalledWith(
                     shouldResetPage,
                     nextProps.tableCompositeState,
-                    tableProps.tableCompositeState
+                    tableProps.tableCompositeState,
                 );
             });
 
@@ -310,7 +310,7 @@ describe('<Table />', () => {
                 expect(onModifyDataSpy).toHaveBeenCalledWith(
                     shouldResetPage,
                     nextProps.tableCompositeState,
-                    tableProps.tableCompositeState
+                    tableProps.tableCompositeState,
                 );
             });
 
@@ -324,8 +324,8 @@ describe('<Table />', () => {
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
-                            tableProps.tableCompositeState
-                        )
+                            tableProps.tableCompositeState,
+                        ),
                     ).toBe(false);
                 });
 
@@ -338,8 +338,8 @@ describe('<Table />', () => {
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
-                            nextTableCompositeState
-                        )
+                            nextTableCompositeState,
+                        ),
                     ).toBe(true);
                 });
 
@@ -352,8 +352,8 @@ describe('<Table />', () => {
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
-                            nextTableCompositeState
-                        )
+                            nextTableCompositeState,
+                        ),
                     ).toBe(true);
                 });
 
@@ -366,8 +366,8 @@ describe('<Table />', () => {
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
-                            nextTableCompositeState
-                        )
+                            nextTableCompositeState,
+                        ),
                     ).toBe(true);
                 });
 
@@ -380,8 +380,8 @@ describe('<Table />', () => {
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
-                            nextTableCompositeState
-                        )
+                            nextTableCompositeState,
+                        ),
                     ).toBe(true);
                 });
 
@@ -394,8 +394,8 @@ describe('<Table />', () => {
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
-                            nextTableCompositeState
-                        )
+                            nextTableCompositeState,
+                        ),
                     ).toBe(true);
                 });
 
@@ -411,8 +411,8 @@ describe('<Table />', () => {
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
-                            nextTableCompositeState
-                        )
+                            nextTableCompositeState,
+                        ),
                     ).toBe(true);
                 });
 
@@ -428,8 +428,8 @@ describe('<Table />', () => {
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
-                            nextTableCompositeState
-                        )
+                            nextTableCompositeState,
+                        ),
                     ).toBe(true);
                 });
 
@@ -444,8 +444,8 @@ describe('<Table />', () => {
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
-                            nextTableCompositeState
-                        )
+                            nextTableCompositeState,
+                        ),
                     ).toBe(true);
                 });
 
@@ -465,7 +465,7 @@ describe('<Table />', () => {
                     };
 
                     expect(tableAsAny.hasTableCompositeStateChanged(tableCompositeState, nextTableCompositeState)).toBe(
-                        true
+                        true,
                     );
                 });
             });

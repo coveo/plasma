@@ -50,7 +50,7 @@ export const tableWithDatePicker =
 
         const mapStateToProps = (
             state: PlasmaState,
-            ownProps: ITableWithDatePickerProps
+            ownProps: ITableWithDatePickerProps,
         ): ITableWithDatePickerStateProps | ITableHOCOwnProps => {
             const [lowerLimit, upperLimit] = DatePickerSelectors.getDatePickerLimits(state, {id: ownProps.id});
             const matchDates = config.matchDates || defaultMatchDates;

@@ -29,5 +29,5 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IToastContainerOwnPro
 export const ToastContainerConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(ToastContainer);

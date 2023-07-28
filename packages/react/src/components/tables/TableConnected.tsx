@@ -34,7 +34,7 @@ export const getTableCompositeState = (state: PlasmaState, id: string): ITableCo
         (tableState &&
             _.reject(
                 state.dropdownSearch,
-                (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)
+                (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id),
             )) ||
         [];
     const datePickerState: IDatePickerState =
@@ -56,7 +56,7 @@ export const getTableCompositeState = (state: PlasmaState, id: string): ITableCo
         predicates: predicateStates.reduce((currentPredicates, nextPredicate: IDropdownSearchState) => {
             // the attribute name is stored in the id of the dropdownSearch
             const attributeName = nextPredicate.id.split(
-                getTableChildComponentId(id, TableChildComponent.PREDICATE)
+                getTableChildComponentId(id, TableChildComponent.PREDICATE),
             )[1];
             const selectedOption = _.findWhere(nextPredicate.options, {selected: true});
             return {
@@ -82,7 +82,7 @@ const getFinalActions = (
     byId: ITableById,
     selectedIds: string[],
     isMultiSelect: boolean,
-    getActions: (rowData?: IData) => IActionOptions[]
+    getActions: (rowData?: IData) => IActionOptions[],
 ): IActionOptions[] =>
     getActions && selectedIds.length
         ? getActions(byId[selectedIds[0]]).filter((action) => !isMultiSelect || (isMultiSelect && !!action.grouped))
@@ -93,7 +93,7 @@ const actionsSelector = createSelector(
     getSelectedIds,
     getMultiSelect,
     getGetActionsMethod,
-    getFinalActions
+    getFinalActions,
 );
 
 const mapStateToProps = (state: PlasmaState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
@@ -119,7 +119,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
     onModifyData: (
         shouldResetPage: boolean,
         tableCompositeState: ITableCompositeState,
-        previousTableCompositeState: ITableCompositeState
+        previousTableCompositeState: ITableCompositeState,
     ) => {
         if (ownProps.manual) {
             dispatch(ownProps.manual(ownProps, shouldResetPage, tableCompositeState, previousTableCompositeState));

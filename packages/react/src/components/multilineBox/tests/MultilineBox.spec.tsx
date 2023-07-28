@@ -21,7 +21,7 @@ describe('MultilineBox', () => {
                 shallowWithState(<MultilineBox {...defaultProps} />, {})
                     .dive()
                     .dive()
-                    .dive()
+                    .dive(),
             ).not.toThrow();
         });
 
@@ -82,7 +82,7 @@ describe('MultilineBox', () => {
                                 return <div />;
                             }}
                         />,
-                        store
+                        store,
                     )
                         .dive()
                         .dive()
@@ -101,7 +101,7 @@ describe('MultilineBox', () => {
                                 return <div />;
                             }}
                         />,
-                        store
+                        store,
                     )
                         .dive()
                         .dive()
@@ -121,7 +121,7 @@ describe('MultilineBox', () => {
                                 return <div />;
                             }}
                         />,
-                        store
+                        store,
                     )
                         .dive()
                         .dive()
@@ -153,7 +153,7 @@ describe('MultilineBox', () => {
                                     list: [testId],
                                 },
                             },
-                        }
+                        },
                     )
                         .dive()
                         .dive()
@@ -181,7 +181,7 @@ describe('MultilineBox', () => {
                                     list: [testId, '1234'],
                                 },
                             },
-                        }
+                        },
                     )
                         .dive()
                         .dive()
@@ -210,7 +210,7 @@ describe('MultilineBox', () => {
                                     list: [testId],
                                 },
                             },
-                        }
+                        },
                     )
                         .dive()
                         .dive()
@@ -239,7 +239,7 @@ describe('MultilineBox', () => {
                                     list: ['uniqueID'],
                                 },
                             },
-                        }
+                        },
                     )
                         .dive()
                         .dive()
@@ -271,7 +271,7 @@ describe('MultilineBox', () => {
                                     list: ['uniqueID'],
                                 },
                             },
-                        }
+                        },
                     )
                         .dive()
                         .dive()
@@ -299,7 +299,7 @@ describe('MultilineBox', () => {
                                     list: ['uniqueID'],
                                 },
                             },
-                        }
+                        },
                     )
                         .dive()
                         .dive()
@@ -330,7 +330,7 @@ describe('MultilineBox', () => {
                     store = getStoreMock();
                     const wrapper = shallowWithStore(
                         <MultilineBox {...defaultProps} data={[{name: 'princess'}]} />,
-                        store
+                        store,
                     )
                         .dive()
                         .dive()

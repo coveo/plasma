@@ -23,7 +23,7 @@ describe('Menu', () => {
                 <Provider store={store}>
                     <MenuConnected id={id} {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('app')}
+                {attachTo: document.getElementById('app')},
             );
             menuWrapper = wrapper.find(MenuConnected).first();
         };

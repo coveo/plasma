@@ -26,7 +26,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IPaginationPagesNumberOwn
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IPaginationPagesNumberOwnProps
+    ownProps: IPaginationPagesNumberOwnProps,
 ) => ({
     onRender: () => dispatch(PaginationReduxActions.addPagination(ownProps.id)),
     onDestroy: () => dispatch(PaginationReduxActions.removePagination(ownProps.id)),
@@ -101,7 +101,7 @@ class PaginationPagesNumberDisconnected extends Component<IPaginationPagesNumber
                         pageNb={nbr}
                         selected={nbr === currentPage}
                         disabled={this.props.disabled}
-                    />
+                    />,
                 );
             });
         }
@@ -141,5 +141,5 @@ export const PaginationPagesNumber = connect<
     IPaginationPagesNumberOwnProps
 >(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(PaginationPagesNumberDisconnected as any);

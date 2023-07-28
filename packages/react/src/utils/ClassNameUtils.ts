@@ -18,5 +18,5 @@ export const getAdditionalClasses = (additionalClasses: IAdditionalClass[], data
             ? {
                   [additionalClass.className]: additionalClass.condition(dataToUse),
               }
-            : additionalClass.className
+            : additionalClass.className,
     );

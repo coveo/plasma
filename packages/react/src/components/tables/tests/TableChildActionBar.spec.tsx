@@ -33,7 +33,7 @@ describe('<TableChildActionBar />', () => {
                 <Provider store={store}>
                     <TableChildActionBar {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
         describe('render without error', () => {
@@ -113,7 +113,7 @@ describe('<TableChildActionBar />', () => {
 
             it('should render with an action bar if there is an actionBar prop', () => {
                 expect(
-                    mountComponentWithProps({...tablePropsMock, actionBar: true}).find(ActionBarConnected).length
+                    mountComponentWithProps({...tablePropsMock, actionBar: true}).find(ActionBarConnected).length,
                 ).toBe(1);
             });
 
@@ -199,7 +199,7 @@ describe('<TableChildActionBar />', () => {
                 });
 
                 expect(
-                    tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).prop('defaultSelectedOption')
+                    tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).prop('defaultSelectedOption'),
                 ).toEqual({value: TABLE_PREDICATE_DEFAULT_VALUE});
             });
 
@@ -218,7 +218,7 @@ describe('<TableChildActionBar />', () => {
                 });
 
                 expect(
-                    tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).prop('defaultSelectedOption')
+                    tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).prop('defaultSelectedOption'),
                 ).toEqual({value: customDefaultValue});
             });
         });

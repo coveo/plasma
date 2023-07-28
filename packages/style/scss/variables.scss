@@ -116,6 +116,7 @@ $multi-filter-picker-border-bottom: 2px solid var(--white);
 $multi-filter-picker-add-icon-width: 20px;
 $filters-margin-right: 5px;
 $filterbox-filters-container-padding: 4px 4px 3px;
+
 // Single filter variables
 $filter-padding: 6px 25px;
 $string-filter-padding-top: 30px;
@@ -134,6 +135,7 @@ $filter-where-margin-right: 5px;
 $filter-where-margin-bottom: 0;
 $filter-where-margin-left: 4px;
 $filter-where-line-height: 34px;
+
 // filter form
 $filter-pop-up-width: 292px;
 $filter-pop-up-search-input-height: 30px;
@@ -242,7 +244,6 @@ $navigation-loading-item-border-radius: 10px;
 $navigation-loading-background-size: 300% 104px;
 $navigation-loading-bullet-width: 12px;
 $navigation-toggle-duration: 0.1s;
-
 $sidenavigation-padding-left: 30px;
 
 // Application
@@ -286,7 +287,7 @@ $table-border-button: $table-border-width solid transparent;
 $table-selected-border-width: 5px;
 $table-column-draggable-width: 25px;
 $table-column-draggable-padding: 7px 10px;
-$table-row-drag-over-color: rgba(var(--deprecated-medium-grey-rgb), $transparency-3);
+$table-row-drag-over-color: rgb(var(--deprecated-medium-grey-rgb) $transparency-3);
 $big-table-blankslate-section-padding: 20px 40px 20px 35px;
 $big-table-row-height: 36px;
 $big-table-icon-margin: 20px;
@@ -376,7 +377,7 @@ $dropdown-option-append-width: 60px;
 $dropdown-toggle-right-padding: $button-padding-x + $dropdown-arrow-icon-size + $dropdown-icon-text-spacing;
 $dropdown-toggle-with-append-right-padding: $default-margin + $dropdown-toggle-append-width;
 
-//Dropdown Multiselect
+// Dropdown Multiselect
 $dropdown-multiselect-padding: 5px 10px 5px 5px;
 $dropdown-multiselect-margin: 2px;
 $dropdown-multiselect-items-margin: 6px;
@@ -440,7 +441,7 @@ $splash-wizard-width: 1025px;
 $splash-wizard-padding-top: 145px;
 $splash-large-wizard-width: 1400px;
 $splash-vertical-padding: 70px;
-$splash-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+$splash-box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
 $splash-min-height: 45px;
 $splash-mobile-min-height: 60px;
 
@@ -456,7 +457,7 @@ $selected-date-height: 28px;
 $calendar-limit-border-width: 2px;
 $calendar-limit-border-length: 5px;
 $calendar-max-height: 336px;
-$date-picker-button-hover-bg: rgba(var(--deprecated-dark-grey-rgb), $transparency-3);
+$date-picker-button-hover-bg: rgb(var(--deprecated-dark-grey-rgb) $transparency-3);
 $countdown-cell-height: 28px;
 
 // Home card
@@ -516,12 +517,12 @@ $ribbon-rotation-angle: 45deg;
 $flippable-perspective: 1000px;
 $flippable-z-index: 1;
 $flippable-transition-duration: 0.8s;
-$flippable-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
+$flippable-shadow: 0 2px 8px 0 rgb(0 0 0 / 30%);
 
 // Material Card
-$material-card-shadow: 0 2px 20px 0 rgba(var(--black-rgb), 0.1);
-$material-card-shadow-hover: 0 2px 30px 0 rgba(var(--black-rgb), 0.3);
-$material-card-shadow-active: 0 2px 20px 0 rgba(var(--black-rgb), 0.3);
+$material-card-shadow: 0 2px 20px 0 rgb(var(--black-rgb) 0.1);
+$material-card-shadow-hover: 0 2px 30px 0 rgb(var(--black-rgb) 0.3);
+$material-card-shadow-active: 0 2px 20px 0 rgb(var(--black-rgb) 0.3);
 $material-card-colored-border-height: 5px;
 
 // Content placeholder
@@ -583,8 +584,9 @@ $banner-content-height: 165px;
 $banner-content-padding: 50px;
 $banner-right-width: 300px;
 $banner-warning-icon-fix: 2px;
-$banner-box-shadow: inset 0 5px 10px 0 rgba(var(--black-rgb), $transparency-5),
-    inset 0 -10px 50px 0 rgba(var(--black-rgb), 0.2);
+$banner-box-shadow:
+    inset 0 5px 10px 0 rgb(var(--black-rgb) $transparency-5),
+    inset 0 -10px 50px 0 rgb(var(--black-rgb) 0.2);
 
 // Status Cards
 $status-card-border-width: 4px;

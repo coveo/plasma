@@ -17,7 +17,7 @@ describe('<LoadingConnected />', () => {
                         <LoadingConnected id="loading" />
                     </div>
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             wrapper.unmount();
         }).not.toThrow();

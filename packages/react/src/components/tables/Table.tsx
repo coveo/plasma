@@ -99,7 +99,7 @@ export interface ITableOwnProps extends ClassAttributes<Table>, ITableBodyInheri
         tableOwnProps?: Partial<ITableOwnProps>,
         shouldResetPage?: boolean,
         tableCompositeState?: ITableCompositeState,
-        previousTableCompositeState?: ITableCompositeState
+        previousTableCompositeState?: ITableCompositeState,
     ) => IThunkAction;
 }
 
@@ -115,7 +115,7 @@ export interface ITableDispatchProps {
     onModifyData?: (
         shouldResetPage: boolean,
         tableCompositeState: ITableCompositeState,
-        previousTableCompositeState?: ITableCompositeState
+        previousTableCompositeState?: ITableCompositeState,
     ) => void;
     onPredicateOptionClick?: (predicateId: string, option: IDropdownOption) => void;
     onRowClick?: (actions: IActionOptions[], numberOfSelectedIds: number) => void;
@@ -202,7 +202,7 @@ export class Table extends Component<ITableProps> {
                 'mod-loading-content': !!(this.props.tableCompositeState && this.props.tableCompositeState.isLoading),
                 'loading-component': this.isInitialLoad && !this.props.tableCompositeState.isInError,
             },
-            this.props.tableClasses
+            this.props.tableClasses,
         );
 
         const tableBodyNode: ReactNode = this.shouldShowTableBody() ? (
@@ -227,7 +227,7 @@ export class Table extends Component<ITableProps> {
                         <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
                         {!this.props.asCard || this.shouldShowTableBody() ? <TableChildHeader {...this.props} /> : null}
                         {tableBodyNode}
-                    </table>
+                    </table>,
                 )}
                 <TableChildNavigation {...this.props} />
                 {tableChildLastUpdatedNode}
@@ -247,7 +247,7 @@ export class Table extends Component<ITableProps> {
 
     private hasTableCompositeStateChanged(
         currentTableCompositeState: ITableCompositeState,
-        nextTableCompositeState: ITableCompositeState
+        nextTableCompositeState: ITableCompositeState,
     ): boolean {
         return (
             !!currentTableCompositeState &&
@@ -260,7 +260,7 @@ export class Table extends Component<ITableProps> {
                 _.some(
                     currentTableCompositeState.predicates,
                     (attributeValue: any, attributeName: string) =>
-                        attributeValue !== nextTableCompositeState.predicates[attributeName]
+                        attributeValue !== nextTableCompositeState.predicates[attributeName],
                 ) ||
                 currentTableCompositeState.from !== nextTableCompositeState.from ||
                 currentTableCompositeState.to !== nextTableCompositeState.to ||

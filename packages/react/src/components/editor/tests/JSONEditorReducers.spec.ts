@@ -37,7 +37,7 @@ describe('JSONEditorReducers', () => {
     describe('addJSONEditor', () => {
         const getNewJSONEditor = (
             state: JSONEditorState[],
-            action: IReduxAction<JSONEditorActionPayload>
+            action: IReduxAction<JSONEditorActionPayload>,
         ): JSONEditorState[] => state.filter((jsonEditor) => jsonEditor.id === action.payload.id);
 
         it('should return the old state with one more jsonEditor', () => {

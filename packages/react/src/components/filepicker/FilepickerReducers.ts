@@ -23,7 +23,7 @@ const addFilepicker = (state: FilepickerState, action: IReduxAction<{id: string}
 
 const setSelectedFile = (
     state: FilepickerState,
-    action: IReduxAction<{id: string; selectedFile: FileMetadata}>
+    action: IReduxAction<{id: string; selectedFile: FileMetadata}>,
 ): FilepickerState => {
     if (action?.payload?.id) {
         return {

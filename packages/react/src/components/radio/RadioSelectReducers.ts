@@ -13,7 +13,7 @@ export const radioSelectsInitialState: IRadioSelectState[] = [];
 
 export const radioSelectsReducer = (
     state: IRadioSelectState[] = radioSelectsInitialState,
-    action: IReduxAction<IRadioSelectActionPayload>
+    action: IReduxAction<IRadioSelectActionPayload>,
 ): IRadioSelectState[] => {
     switch (action.type) {
         case RadioSelectActions.set:

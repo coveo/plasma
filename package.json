@@ -28,7 +28,7 @@
             "prettier --write"
         ],
         "**/*.scss": [
-            "stylelint --custom-syntax postcss-scss --fix",
+            "stylelint --fix",
             "prettier --write"
         ]
     },
@@ -46,8 +46,16 @@
     "prettier": "tsjs/prettier-config",
     "stylelint": {
         "extends": [
-            "tsjs/stylelint-config"
-        ]
+            "stylelint-config-standard-scss"
+        ],
+        "rules": {
+            "keyframes-name-pattern": [
+                "^[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$",
+                {
+                    "message": "Expected keyframes names to be camelCase"
+                }
+            ]
+        }
     },
     "devDependencies": {
         "@commitlint/cli": "17.6.7",
@@ -59,12 +67,14 @@
         "conventional-changelog-angular": "6.0.0",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "8.45.0",
+        "eslint-plugin-prettier": "5.0.0",
         "husky": "8.0.3",
         "lint-staged": "13.0.3",
         "mime-types": "2.1.35",
-        "prettier": "2.8.8",
+        "prettier": "3.0.0",
         "sort-package-json": "2.5.1",
         "stylelint": "15.10.2",
+        "stylelint-config-standard-scss": "10.0.0",
         "tsjs": "4.2.1",
         "turbo": "1.10.9",
         "underscore": "1.13.4",

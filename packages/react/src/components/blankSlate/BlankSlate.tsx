@@ -89,7 +89,7 @@ export class BlankSlate extends Component<IBlankSlateProps> {
         const blankSlateClasses: string = `blankslate ${marginClasses} ${this.props.classes.join(' ')}`;
         const modalClasses: string = classNames(
             {'mod-header-padding': this.props.withModal},
-            this.props.containerClasses
+            this.props.containerClasses,
         );
 
         return (

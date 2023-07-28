@@ -7,7 +7,7 @@ import {FormContext} from '../form/FormProvider';
  */
 export const useTextInput = (
     id: string,
-    initialValue?: string
+    initialValue?: string,
 ): {state: TextInputState; dispatch: Dispatch<TextInputAction>} => {
     const formContext = useContext(FormContext);
     if (formContext === undefined) {

@@ -131,7 +131,7 @@ const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActi
 
 export const datePickerReducer = (
     state: IDatePickerState = datePickerInitialState(),
-    action: IReduxAction<any>
+    action: IReduxAction<any>,
 ): IDatePickerState => {
     switch (action.type) {
         case DatePickerActions.add:
@@ -155,7 +155,7 @@ export const datePickerReducer = (
 
 export const datePickersReducer = (
     state: IDatePickerState[] = datePickersInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IDatePickerState[] => {
     switch (action.type) {
         case DatePickerActions.add:

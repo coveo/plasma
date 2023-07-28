@@ -35,7 +35,7 @@ describe('<NavigationConnected />', () => {
                     <NavigationConnected {...basicNavigationProps} />
                 </div>
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         navigation = wrapper.find(Navigation).first();
     });
@@ -75,21 +75,21 @@ describe('<NavigationConnected />', () => {
         wrapper.find(PaginationSelect).last().simulate('click');
 
         expect(
-            _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb
+            _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb,
         ).toBe(6);
 
         navigation.find(NavigationPerPageSelect).last().simulate('click');
         wrapper.update();
 
         expect(
-            _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb
+            _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb,
         ).toBe(0);
 
         wrapper.find(PaginationSelect).at(1).simulate('click');
         wrapper.find(NavigationPerPageSelect).first().simulate('click');
 
         expect(
-            _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb
+            _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb,
         ).toBe(9);
     });
 });

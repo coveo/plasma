@@ -52,7 +52,7 @@ describe('PaginationPagesNumber tests', () => {
                     const label = 'label';
                     wrapper = shallowPaginationPagesNumber(
                         {previousLabel: label},
-                        {paginationComposite: [{id, pageNb: 5}]}
+                        {paginationComposite: [{id, pageNb: 5}]},
                     )
                         .dive()
                         .dive();
@@ -116,7 +116,7 @@ describe('PaginationPagesNumber tests', () => {
                 it('should not extend the numberOfPagesToShow defined as prop', () => {
                     wrapper = shallowPaginationPagesNumber(
                         {totalPages: 12, numberOfPagesToShow: 5},
-                        {paginationComposite: [{id, pageNb: 2}]}
+                        {paginationComposite: [{id, pageNb: 2}]},
                     )
                         .dive()
                         .dive();

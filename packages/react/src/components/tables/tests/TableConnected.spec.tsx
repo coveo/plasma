@@ -31,7 +31,7 @@ describe('<TableConnected />', () => {
             <Provider store={store}>
                 <TableConnected {...props} />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
 
     describe('render', () => {

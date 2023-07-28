@@ -31,7 +31,7 @@ describe('withEditing', () => {
                 const expectedState: ComponentId[] = [payload[0]];
 
                 expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(
-                    expectedState
+                    expectedState,
                 );
             });
 
@@ -40,7 +40,7 @@ describe('withEditing', () => {
                 const expectedState: ComponentId[] = [payload[0]];
 
                 expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(
-                    expectedState
+                    expectedState,
                 );
             });
         });
@@ -53,7 +53,7 @@ describe('withEditing', () => {
                 const expectedState: ComponentId[] = [];
 
                 expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(
-                    expectedState
+                    expectedState,
                 );
             });
 
@@ -62,7 +62,7 @@ describe('withEditing', () => {
                 const expectedState: ComponentId[] = [];
 
                 expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(
-                    expectedState
+                    expectedState,
                 );
             });
         });

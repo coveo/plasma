@@ -8,7 +8,7 @@ describe('ValidComponentChildren', () => {
             () => {
                 counter++;
             },
-            null
+            null,
         );
 
         expect(counter).toBe(1);
@@ -21,7 +21,7 @@ describe('ValidComponentChildren', () => {
             () => {
                 counter++;
             },
-            null
+            null,
         );
 
         expect(counter).toBe(0);

@@ -135,7 +135,7 @@ export class NumericInputConnected extends PureComponent<NumericInputProps & HTM
                                         _.isNumber(this.props.maxLength) && this.props.maxLength > 0,
                                     disabled: this.props.disabled,
                                 },
-                                this.props.className
+                                this.props.className,
                             )}
                             value={this.props.value}
                             onChange={this.onChange}

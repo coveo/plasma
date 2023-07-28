@@ -142,7 +142,7 @@ export class SplitMultilineInput extends PureComponent<ISplitMultilineInputProps
             {
                 values,
             },
-            this.handleChange
+            this.handleChange,
         );
     }
 
@@ -163,7 +163,7 @@ export class SplitMultilineInput extends PureComponent<ISplitMultilineInputProps
                 {
                     values: [...this.state.values, newValue],
                 },
-                this.handleChange
+                this.handleChange,
             );
             _.each(inputRefs, (inputRef: Input) => inputRef.reset());
         }
@@ -177,7 +177,7 @@ export class SplitMultilineInput extends PureComponent<ISplitMultilineInputProps
                 {
                     values,
                 },
-                this.handleChange
+                this.handleChange,
             );
         } else {
             inputRef.validate();

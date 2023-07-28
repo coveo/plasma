@@ -32,8 +32,8 @@ describe('SplitLayout', () => {
                     className={testClassesString}
                     leftContainerClassName={testClassesString}
                     rightContainerClassName={testClassesString}
-                />
-            )
+                />,
+            ),
         ).not.toThrow();
     });
 
@@ -45,8 +45,8 @@ describe('SplitLayout', () => {
                     className={testClassesArray}
                     leftContainerClassName={testClassesArray}
                     rightContainerClassName={testClassesArray}
-                />
-            )
+                />,
+            ),
         ).not.toThrow();
     });
 

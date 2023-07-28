@@ -26,7 +26,7 @@ describe('Limit', () => {
         expect(
             screen.getByRole('spinbutton', {
                 name: /limit/i,
-            })
+            }),
         ).toBeInTheDocument();
     });
 

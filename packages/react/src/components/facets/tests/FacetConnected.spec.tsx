@@ -64,7 +64,7 @@ describe('Facets', () => {
                         maxRowsToShow={maxRowsToShow}
                     />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             facetComponent = wrapper.find(Facet);
         });
@@ -140,7 +140,7 @@ describe('Facets', () => {
                 {
                     name: 'row6',
                     formattedName: 'Row 6',
-                }
+                },
             );
 
             newRow = (
@@ -173,7 +173,7 @@ describe('Facets', () => {
                 {
                     name: 'row6',
                     formattedName: 'Row 6',
-                }
+                },
             );
 
             newRow = (

@@ -34,7 +34,7 @@ describe('CheckboxSelectors', () => {
                 expect(() => {
                     CheckboxSelectors.getIsSelected(
                         {groupableCheckboxes: [{total: 100, nbChecked: 0, checkboxes: [], parentId: ''}]},
-                        {id: '', isGroupableState: true, groupableCheckboxProps: {parentId: ''}}
+                        {id: '', isGroupableState: true, groupableCheckboxProps: {parentId: ''}},
                     );
                     CheckboxSelectors.getIsSelected(
                         {groupableCheckboxes: [{total: 100, nbChecked: 0, checkboxes: [], parentId: ''}]},
@@ -42,7 +42,7 @@ describe('CheckboxSelectors', () => {
                             id: 'I do not exist in the state',
                             isGroupableState: true,
                             groupableCheckboxProps: {parentId: ''},
-                        }
+                        },
                     );
                 }).not.toThrow();
             });
@@ -65,7 +65,7 @@ describe('CheckboxSelectors', () => {
                         id,
                         isGroupableState: true,
                         groupableCheckboxProps: {parentId: 'parentId'},
-                    })
+                    }),
                 ).toBe(false);
             });
 
@@ -87,7 +87,7 @@ describe('CheckboxSelectors', () => {
                         id,
                         isGroupableState: true,
                         groupableCheckboxProps: {parentId: 'parentId'},
-                    })
+                    }),
                 ).toBe(true);
             });
         });

@@ -44,7 +44,7 @@ const SelectWithFilterPropsToOmit = [
  * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
-    WrappedComponent: ComponentType
+    WrappedComponent: ComponentType,
 ): ComponentClass<P & ISelectWithFilterOwnProps> => {
     type OwnProps = P & ISelectWithFilterOwnProps;
     type Props = OwnProps & ReturnType<ReturnType<typeof makeMapStateToProps>> & ReturnType<typeof mapDispatchToProps>;
@@ -145,7 +145,7 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
 
             let noResultItem: any = this.props.noResultItem || this.noResultFilter();
             let items = this.props.items.map(
-                (item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue})
+                (item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue}),
             );
 
             if (this.isDuplicateValue()) {

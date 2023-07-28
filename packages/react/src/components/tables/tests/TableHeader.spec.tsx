@@ -83,17 +83,17 @@ describe('Tables', () => {
                 tableHeader = mount(
                     <Provider store={store}>
                         <TableHeader columns={_.values(currentColumns)} withReduxState />
-                    </Provider>
+                    </Provider>,
                 );
 
                 expect(tableHeader.find(TableHeaderCellConnected).length).toBe(1);
 
                 expect(tableHeader.find(TableHeaderCellConnected).first().text()).toBe(
-                    currentColumns.cellWithAttributeToSort.title as string
+                    currentColumns.cellWithAttributeToSort.title as string,
                 );
 
                 expect(tableHeader.find(TableHeaderCell).last().text()).toBe(
-                    currentColumns.cellWithoutAttributeToSort.title as string
+                    currentColumns.cellWithoutAttributeToSort.title as string,
                 );
             });
 
@@ -101,17 +101,17 @@ describe('Tables', () => {
                 tableHeader = mount(
                     <Provider store={store}>
                         <TableHeader columns={_.values(currentColumns)} />
-                    </Provider>
+                    </Provider>,
                 );
 
                 expect(tableHeader.find(TableHeaderCellConnected).length).toBe(0);
 
                 expect(tableHeader.find(TableHeaderCell).first().text()).toBe(
-                    currentColumns.cellWithAttributeToSort.title as string
+                    currentColumns.cellWithAttributeToSort.title as string,
                 );
 
                 expect(tableHeader.find(TableHeaderCell).last().text()).toBe(
-                    currentColumns.cellWithoutAttributeToSort.title as string
+                    currentColumns.cellWithoutAttributeToSort.title as string,
                 );
             });
         });

@@ -58,7 +58,7 @@ describe('Facets', () => {
             facetMoreToggle = mount(<FacetMoreToggle {...newFacetMoreToggleProps} />);
             const newHandleOnChangeSpy: jest.SpyInstance = jest.spyOn(
                 facetMoreToggle.instance() as any,
-                'handleOnChange'
+                'handleOnChange',
             );
 
             facetMoreToggle.find('input').simulate('change');

@@ -22,7 +22,7 @@ export const collapsiblesInitialState: CollapsibleState[] = [];
 
 export const collapsiblesReducer = (
     state: CollapsibleState[] = collapsiblesInitialState,
-    action: IReduxAction<CollapsiblePayload>
+    action: IReduxAction<CollapsiblePayload>,
 ): CollapsibleState[] => {
     switch (action.type) {
         case CollapsibleActions.add:
@@ -31,7 +31,7 @@ export const collapsiblesReducer = (
             return _.reject(state, (collapsible: CollapsibleState) => collapsible.id === action.payload.id);
         case CollapsibleActions.setExpanded:
             return state.map((collapsible: CollapsibleState) =>
-                collapsible.id === action.payload.id ? (action.payload as CollapsibleState) : collapsible
+                collapsible.id === action.payload.id ? (action.payload as CollapsibleState) : collapsible,
             );
         default:
             return state;

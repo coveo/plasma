@@ -45,7 +45,7 @@ const Body = ({
                 />
             ) : (
                 <TableRow key={`table-row-loading-${nColumn}`} numberOfColumns={numberOfColumns} nColumn={nColumn} />
-            )
+            ),
         )}
     </tbody>
 );

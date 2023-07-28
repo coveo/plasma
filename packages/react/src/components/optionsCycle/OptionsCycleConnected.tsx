@@ -19,7 +19,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IOptionsCycleConnectedOwn
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IOptionsCycleConnectedOwnProps
+    ownProps: IOptionsCycleConnectedOwnProps,
 ): IOptionsCycleDispatchProps => ({
     onRender: () => dispatch(addOptionsCycle(ownProps.id, ownProps.startAt)),
     onDestroy: () => dispatch(removeOptionsCycle(ownProps.id)),
@@ -32,5 +32,5 @@ const mapDispatchToProps = (
 export const OptionsCycleConnected: ComponentType<IOptionsCycleOwnProps & IOptionsCycleConnectedOwnProps> = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(OptionsCycle);

@@ -9,7 +9,7 @@ describe('<Loadable />', () => {
             () =>
                 new Promise<FunctionComponent>((resolve) => {
                     setTimeout(() => resolve(Fixture), 100);
-                })
+                }),
         );
         render(<LoadableComponent />);
 

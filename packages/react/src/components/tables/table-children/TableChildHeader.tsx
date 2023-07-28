@@ -17,7 +17,7 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
                 headingAttribute.attributeName
             }`;
             const title: ReactNode = (headingAttribute.titleFormatter as (args: string) => JSXRenderable)(
-                headingAttribute.attributeName
+                headingAttribute.attributeName,
             );
             const className = headingAttribute.headerClasses;
             const tableSortInformation = !!headingAttribute.sort
@@ -31,7 +31,7 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
                 withFixedHeader: props.withFixedHeader,
                 ...tableSortInformation,
             } as ITableHeaderCellOwnProps;
-        }
+        },
     );
 
     const headerClass = classNames(props.tableHeaderClasses, 'mod-no-border-top', {

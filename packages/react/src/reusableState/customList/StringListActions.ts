@@ -29,7 +29,7 @@ export const removeStringList = (id: string): IReduxAction<IStringListPayload> =
 export const addValueStringList = (
     id: string,
     value: string,
-    reset: boolean = false
+    reset: boolean = false,
 ): IReduxAction<IStringListPayload> => ({
     type: StringListActions.addValue,
     payload: {id, value, reset},

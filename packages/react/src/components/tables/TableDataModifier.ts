@@ -32,7 +32,7 @@ export const dispatchPostTableStateModification = (tableId: string, dispatch: ID
 export const applyPredicatesOnDisplayedIds = (
     nextDisplayedIds: string[],
     tableDataById: ITableRowData,
-    tableCompositeState: ITableCompositeState
+    tableCompositeState: ITableCompositeState,
 ): string[] => {
     if (!_.isEmpty(tableCompositeState.predicates)) {
         _.pairs(tableCompositeState.predicates).forEach((keyValuePair: string[]) => {
@@ -41,7 +41,7 @@ export const applyPredicatesOnDisplayedIds = (
 
             if (attributeValue !== TABLE_PREDICATE_DEFAULT_VALUE) {
                 nextDisplayedIds = nextDisplayedIds.filter(
-                    (dataId: string) => tableDataById[dataId][attributeName] === attributeValue
+                    (dataId: string) => tableDataById[dataId][attributeName] === attributeValue,
                 );
             }
         });
@@ -54,7 +54,7 @@ export const applyFilterOnDisplayedIds = (
     nextDisplayedIds: string[],
     tableDataById: ITableRowData,
     tableCompositeState: ITableCompositeState,
-    tableOwnProps: ITableOwnProps
+    tableOwnProps: ITableOwnProps,
 ): string[] => {
     if (tableCompositeState.filter) {
         const filterDefault = (dataId: string): boolean =>
@@ -70,7 +70,7 @@ export const applyFilterOnDisplayedIds = (
                         : attributeValueToUse;
                 return contains(
                     convertUndefinedAndNullToEmptyString(attributeValueToUse).toString().toLowerCase(),
-                    tableCompositeState.filter.toLowerCase()
+                    tableCompositeState.filter.toLowerCase(),
                 );
             });
 
@@ -89,13 +89,13 @@ export const applyDatePickerOnDisplayedIds = (
     nextDisplayedIds: string[],
     tableDataById: ITableRowData,
     tableCompositeState: ITableCompositeState,
-    tableOwnProps: ITableOwnProps
+    tableOwnProps: ITableOwnProps,
 ): string[] => {
     const {from, to} = tableCompositeState;
     const {datePicker} = tableOwnProps;
     if (from && to && datePicker && datePicker.attributeName) {
         nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean =>
-            moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to)
+            moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to),
         );
     }
 
@@ -106,7 +106,7 @@ export const applySortOnDisplayedIds = (
     nextDisplayedIds: string[],
     tableDataById: ITableRowData,
     tableCompositeState: ITableCompositeState,
-    tableOwnProps: ITableOwnProps
+    tableOwnProps: ITableOwnProps,
 ): string[] => {
     const {sortState} = tableCompositeState;
     if (sortState && sortState.order !== TableSortingOrder.UNSORTED && !_.isUndefined(sortState.attribute)) {
@@ -121,21 +121,21 @@ export const applySortOnDisplayedIds = (
                 headingAttributeToSort.sortMethod(
                     _.map(nextDisplayedIds, (displayedId: string) => tableDataById[displayedId]),
                     sortState.attribute,
-                    sortState.order === TableSortingOrder.ASCENDING
+                    sortState.order === TableSortingOrder.ASCENDING,
                 ),
-                'id'
+                'id',
             );
         } else if (hasCustomSortByMethod) {
             nextDisplayedIds = _.sortBy(nextDisplayedIds, (displayedId: string): string => {
                 const cleanAttributeValue = convertUndefinedAndNullToEmptyString(
-                    tableDataById[displayedId][sortState.attribute]
+                    tableDataById[displayedId][sortState.attribute],
                 );
                 return headingAttributeToSort.sortByMethod(cleanAttributeValue, tableDataById[displayedId]);
             });
         } else {
             const defaultSortByMethod = (displayedId: string) => {
                 const cleanAttributeValue = convertUndefinedAndNullToEmptyString(
-                    tableDataById[displayedId][sortState.attribute]
+                    tableDataById[displayedId][sortState.attribute],
                 );
                 return cleanAttributeValue.toString().toLowerCase();
             };
@@ -153,7 +153,7 @@ export const applySortOnDisplayedIds = (
 
 export const applyPaginationOnDisplayedIds = (
     nextDisplayedIds: string[],
-    tableCompositeState: ITableCompositeState
+    tableCompositeState: ITableCompositeState,
 ): string[] => {
     const startingIndex = (tableCompositeState.page || 0) * (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
     const endingIndex = startingIndex + (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
@@ -172,13 +172,13 @@ export const defaultTableStateModifier =
             nextDisplayedIds,
             tableDataById,
             tableCompositeState,
-            tableOwnProps
+            tableOwnProps,
         );
         nextDisplayedIds = applyDatePickerOnDisplayedIds(
             nextDisplayedIds,
             tableDataById,
             tableCompositeState,
-            tableOwnProps
+            tableOwnProps,
         );
 
         const totalEntries = nextDisplayedIds.length;

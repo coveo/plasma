@@ -45,7 +45,7 @@ describe('Options cycle', () => {
             expect(optionsCyclesState.length).toBe(oldState.length + 1);
             expect(
                 optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(1);
 
             oldState = optionsCyclesState;
@@ -55,7 +55,7 @@ describe('Options cycle', () => {
             expect(optionsCyclesState.length).toBe(oldState.length + 1);
             expect(
                 optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(1);
         });
 
@@ -85,7 +85,7 @@ describe('Options cycle', () => {
             expect(optionsCyclesState.length).toBe(oldState.length - 1);
             expect(
                 optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(0);
 
             oldState = optionsCyclesState;
@@ -95,7 +95,7 @@ describe('Options cycle', () => {
             expect(optionsCyclesState.length).toBe(oldState.length - 1);
             expect(
                 optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(0);
         });
 
@@ -125,7 +125,7 @@ describe('Options cycle', () => {
             expect(optionsCyclesState.length).toBe(oldState.length);
             expect(
                 optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(0);
         });
 
@@ -154,7 +154,7 @@ describe('Options cycle', () => {
             const optionsCyclesState: IOptionsCycleState[] = optionsCyclesReducer(oldState, action);
 
             expect(_.findWhere(optionsCyclesState, {id: action.payload.id}).currentOption).toBe(
-                action.payload.currentOption
+                action.payload.currentOption,
             );
         });
 

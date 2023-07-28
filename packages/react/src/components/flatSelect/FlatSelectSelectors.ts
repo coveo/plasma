@@ -9,7 +9,7 @@ const getInput = (state: PlasmaState, ownProps: {id: string}): IFlatSelectState 
 
 const getSelectedOptionId = createSelector(
     getInput,
-    (flatSelectState: IFlatSelectState): string => flatSelectState && flatSelectState.selectedOptionId
+    (flatSelectState: IFlatSelectState): string => flatSelectState && flatSelectState.selectedOptionId,
 );
 
 export const FlatSelectSelectors = {

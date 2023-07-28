@@ -26,7 +26,7 @@ describe('ColorPicker', () => {
             const selected = useSelector((state: PlasmaState) =>
                 InputSelectors.getValue(state, {
                     id: 'foo',
-                })
+                }),
             );
             return <div>Selected:{selected}</div>;
         };
@@ -34,7 +34,7 @@ describe('ColorPicker', () => {
             <>
                 <ColorPicker id="foo" defaultColor="#abc" />
                 <Child />
-            </>
+            </>,
         );
 
         expect(screen.getByText('Selected:#abc')).toBeVisible();

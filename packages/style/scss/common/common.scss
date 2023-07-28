@@ -5,8 +5,8 @@ html {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
     box-sizing: inherit;
 }
 
@@ -14,9 +14,9 @@ body {
     display: flex;
     flex-flow: column nowrap;
     align-content: flex-start;
+
     // Base font size for the entire app
     font-size: 13px;
-
     font-family: var(--main-font);
     -webkit-font-smoothing: antialiased;
 }

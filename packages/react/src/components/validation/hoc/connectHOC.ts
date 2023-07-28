@@ -18,7 +18,7 @@ export type InferableComponentEnhancer<TInjectedProps> = InferableComponentEnhan
 >;
 
 export interface InferableComponentEnhancerWithProps<TInjectedProps, TNeedsProps> {
-    <P extends TInjectedProps>(component: ComponentType<P>): ComponentClass<
-        Omit<P, keyof TInjectedProps> & TNeedsProps
-    > & {WrappedComponent: Component<P>};
+    <P extends TInjectedProps>(
+        component: ComponentType<P>,
+    ): ComponentClass<Omit<P, keyof TInjectedProps> & TNeedsProps> & {WrappedComponent: Component<P>};
 }

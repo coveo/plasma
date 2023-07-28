@@ -45,7 +45,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IGroupableCheckboxOwnProp
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IGroupableCheckboxActionPayload>) => void,
-    ownProps: IGroupableCheckboxOwnProps
+    ownProps: IGroupableCheckboxOwnProps,
 ): IInputDispatchProps => ({
     onRender: () =>
         dispatch(
@@ -54,8 +54,8 @@ const mapDispatchToProps = (
                 ownProps.defaultChecked,
                 !!ownProps.defaultDisabled,
                 ownProps.parentId,
-                !!ownProps.isParent
-            )
+                !!ownProps.isParent,
+            ),
         ),
     onDestroy: () => dispatch(removeGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
     onClick: () => dispatch(toggleGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),

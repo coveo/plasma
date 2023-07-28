@@ -2,9 +2,9 @@
     font-weight: var(--main-font-regular);
     font-family: 'source_code_pro_regular';
     font-style: normal;
-
     src: url('../resources/fonts/SourceCodePro-Regular.eot');
-    src: url('../resources/fonts/SourceCodePro-Regular.eot?#iefix') format('embedded-opentype'),
+    src:
+        url('../resources/fonts/SourceCodePro-Regular.eot?#iefix') format('embedded-opentype'),
         url('../resources/fonts/SourceCodePro-Regular.woff') format('woff'),
         url('../resources/fonts/SourceCodePro-Regular.ttf') format('truetype');
 }

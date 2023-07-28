@@ -17,8 +17,8 @@ describe('SlideY', () => {
             mount(
                 <SlideY in timeout={dummyTimeout}>
                     {testElement}
-                </SlideY>
-            )
+                </SlideY>,
+            ),
         ).not.toThrow();
     });
 
@@ -27,8 +27,8 @@ describe('SlideY', () => {
             mount(
                 <SlideY in={false} timeout={dummyTimeout}>
                     {testElement}
-                </SlideY>
-            )
+                </SlideY>,
+            ),
         ).not.toThrow();
     });
 
@@ -37,7 +37,7 @@ describe('SlideY', () => {
             <SlideY in={false} timeout={dummyTimeout}>
                 {testElement}
             </SlideY>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
 
         expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
@@ -49,7 +49,7 @@ describe('SlideY', () => {
             <SlideY in={true} timeout={dummyTimeout}>
                 {testElement}
             </SlideY>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         const component = wrapper.find(SlideY).first();
 
@@ -62,7 +62,7 @@ describe('SlideY', () => {
             <SlideY in={false} timeout={dummyTimeout}>
                 {testElement}
             </SlideY>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         const component = wrapper.find(SlideY).first();
 
@@ -88,7 +88,7 @@ describe('SlideY', () => {
                 <SlideY in={isIn} timeout={timeout} duration={duration}>
                     {testElement}
                 </SlideY>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             component = wrapper.find(SlideY).first();
         };
@@ -99,7 +99,7 @@ describe('SlideY', () => {
                 new Event('transitionend', {
                     bubbles: true,
                     cancelable: true,
-                })
+                }),
             );
         };
 
@@ -161,7 +161,7 @@ describe('SlideY', () => {
             mountAndWrap(false, expectedDuration);
 
             expect(wrapper.find('.slide-y').first().prop('style').transitionDuration).toContain(
-                expectedDuration.toString()
+                expectedDuration.toString(),
             );
         });
 
@@ -169,7 +169,7 @@ describe('SlideY', () => {
             render(
                 <SlideY in={false}>
                     <button>my children</button>
-                </SlideY>
+                </SlideY>,
             );
             // The element is not accessible since aria-hidden is true
             expect(screen.queryByRole('button', {name: 'my children'})).not.toBeInTheDocument();
@@ -182,7 +182,7 @@ describe('SlideY', () => {
             render(
                 <SlideY in>
                     <button>my children</button>
-                </SlideY>
+                </SlideY>,
             );
             expect(screen.getByRole('button', {name: 'my children'})).toBeVisible();
         });

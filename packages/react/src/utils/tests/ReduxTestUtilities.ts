@@ -12,7 +12,7 @@ import {PlasmaState} from '../../PlasmaState';
 const createTableHOCCompositeState = <T extends PlasmaState>(
     tableId: string,
     state: ITableHOCCompositeState,
-    currentState = {} as T
+    currentState = {} as T,
 ) => ({
     tableHOCHeader: state.sortKey
         ? [
@@ -58,7 +58,7 @@ const createTableHOCCompositeState = <T extends PlasmaState>(
                       id: TableHOCUtils.getPredicateId(tableId, predicate.id),
                       selected: [predicate.value],
                       active: 1,
-                  })
+                  }),
               )
               .concat(currentState.listBoxes || [])
               .value()

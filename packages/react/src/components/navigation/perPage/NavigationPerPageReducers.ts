@@ -17,7 +17,7 @@ export const perPageCompositeInitialState: IPerPageState[] = [];
 
 export const perPageReducer = (
     state: IPerPageState = perPageInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IPerPageState => {
     switch (action.type) {
         case PerPageActions.add:
@@ -31,7 +31,7 @@ export const perPageReducer = (
 
 export const perPageCompositeReducer = (
     state: IPerPageState[] = perPageCompositeInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IPerPageState[] => {
     switch (action.type) {
         case PerPageActions.add:

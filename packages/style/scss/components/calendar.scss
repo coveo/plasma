@@ -97,8 +97,8 @@
         .upper-limit {
             width: calc(#{$calendar-cell-dimensions} - #{$selected-date-offset} - #{$calendar-limit-border-width});
 
-            &:before,
-            &:after {
+            &::before,
+            &::after {
                 position: absolute;
                 display: block;
                 width: $calendar-limit-border-length;
@@ -107,11 +107,11 @@
                 content: '';
             }
 
-            &:before {
+            &::before {
                 top: -#{$selected-date-offset};
             }
 
-            &:after {
+            &::after {
                 bottom: -#{$selected-date-offset};
             }
         }
@@ -120,8 +120,8 @@
             left: calc(#{$selected-date-offset} + #{$calendar-limit-border-width});
             border-left: $calendar-limit-border-width solid var(--navy-blue-80);
 
-            &:before,
-            &:after {
+            &::before,
+            &::after {
                 left: -#{$calendar-limit-border-width};
             }
         }
@@ -129,8 +129,8 @@
         .upper-limit {
             border-right: $calendar-limit-border-width solid var(--navy-blue-80);
 
-            &:before,
-            &:after {
+            &::before,
+            &::after {
                 right: -#{$calendar-limit-border-width};
             }
         }
@@ -141,8 +141,8 @@
             );
 
             span {
-                &:before,
-                &:after {
+                &::before,
+                &::after {
                     position: absolute;
                     right: -#{$calendar-limit-border-width};
                     display: block;
@@ -152,11 +152,11 @@
                     content: '';
                 }
 
-                &:before {
+                &::before {
                     top: -#{$calendar-limit-border-width};
                 }
 
-                &:after {
+                &::after {
                     bottom: -#{$calendar-limit-border-width};
                 }
             }
@@ -199,8 +199,8 @@
 
                     &.lower-limit,
                     &.upper-limit {
-                        &:before,
-                        &:after {
+                        &::before,
+                        &::after {
                             display: none;
                         }
                     }
@@ -216,8 +216,8 @@
 
                         &.lower-limit,
                         &.upper-limit {
-                            &:before,
-                            &:after {
+                            &::before,
+                            &::after {
                                 display: none;
                             }
                         }
@@ -257,7 +257,6 @@
     padding: 0;
     background-color: var(--white);
     border: none;
-
     cursor: pointer;
 
     &.mod-border {
@@ -282,12 +281,12 @@
             border-top-color: transparent;
             border-left-color: transparent;
             outline: none;
-
             cursor: pointer;
 
             &.disabled {
                 background-color: var(--grey-40);
             }
+
             &.disabled:hover {
                 background-color: var(--grey-40);
             }
@@ -346,7 +345,7 @@
         border-radius: $border-radius;
         outline: none;
 
-        &:not(.picking-date):not(.date-picked) {
+        &:not(.picking-date, .date-picked) {
             border: $default-border;
         }
 
@@ -369,7 +368,6 @@
 
     > span {
         order: 1;
-
         margin-left: $default-margin;
     }
 }

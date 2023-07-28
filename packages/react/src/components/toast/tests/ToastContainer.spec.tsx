@@ -18,16 +18,16 @@ describe('Toasts', () => {
             shallow(
                 <ToastContainer>
                     <a href="#">Hello</a>
-                </ToastContainer>
-            )
+                </ToastContainer>,
+            ),
         ).not.toThrow();
 
         expect(() =>
             shallow(
                 <ToastContainer>
                     <Toast title="test" />
-                </ToastContainer>
-            )
+                </ToastContainer>,
+            ),
         ).not.toThrow();
     });
 

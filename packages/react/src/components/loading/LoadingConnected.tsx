@@ -8,7 +8,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ILoadingOwnProps
+    ownProps: ILoadingOwnProps,
 ): ILoadingDispatchProps => ({
     onRender: () => dispatch(addLoading(ownProps.id)),
     onDestroy: () => dispatch(removeLoading(ownProps.id)),

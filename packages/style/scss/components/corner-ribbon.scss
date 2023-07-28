@@ -24,9 +24,11 @@
 
     &.top {
         top: $ribbon-y-offset;
+
         &.right {
             transform: rotate($ribbon-rotation-angle);
         }
+
         &.left {
             transform: rotate(-$ribbon-rotation-angle);
         }
@@ -34,9 +36,11 @@
 
     &.bottom {
         bottom: $ribbon-y-offset;
+
         &.right {
             transform: rotate(-$ribbon-rotation-angle);
         }
+
         &.left {
             transform: rotate($ribbon-rotation-angle);
         }

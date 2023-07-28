@@ -14,5 +14,5 @@ const mapDispatchToProps = () => ({});
 export const PrimaryActionConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(PrimaryAction);

@@ -14,7 +14,7 @@ export const promptsInitialState: IPromptState[] = [];
 
 export const promptReducer = (
     state: IPromptState = promptInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IPromptState => {
     switch (action.type) {
         case PromptActions.add:
@@ -29,7 +29,7 @@ export const promptReducer = (
 
 export const promptsReducer = (
     state: IPromptState[] = promptsInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IPromptState[] => {
     switch (action.type) {
         case PromptActions.add:

@@ -16,7 +16,7 @@
     margin-bottom: $home-card-margin;
     padding: 2 * $spacing;
     background: var(--white);
-    border: 1px solid rgba(var(--deprecated-heather-rgb), 0.3);
+    border: 1px solid rgb(var(--deprecated-heather-rgb) 0.3);
     border-radius: $home-card-radius;
     box-shadow: $material-card-shadow;
 }
@@ -52,12 +52,11 @@
     background: none;
     border: none;
     outline: none;
-
     cursor: pointer;
 }
 
 .home-card-footer-link {
-    &:after {
+    &::after {
         content: ' >';
     }
 }

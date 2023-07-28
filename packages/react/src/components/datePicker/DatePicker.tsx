@@ -83,7 +83,7 @@ export class DatePicker extends PureComponent<IDatePickerProps, {isSelected: boo
                 ?.filter(
                     (rule: ICalendarSelectionRule) =>
                         (rule.isFor === CalendarSelectionRuleType.all && this.props.isSelecting === DateLimits.lower) ||
-                        (rule.isFor === CalendarSelectionRuleType.all && this.props.isSelecting === DateLimits.upper)
+                        (rule.isFor === CalendarSelectionRuleType.all && this.props.isSelecting === DateLimits.upper),
                 )
                 .forEach((rule: ICalendarSelectionRule) => {
                     isDatePermitted = rule.test(date);

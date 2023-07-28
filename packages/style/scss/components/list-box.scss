@@ -5,20 +5,19 @@
     z-index: 1000;
     min-width: 100%;
     max-height: $list-box-max-height;
-
     margin: 0;
     padding: var(--padding);
     overflow-y: auto;
     background-color: var(--background-color);
     border: $default-border;
     border-radius: 8px;
-
     box-shadow: $list-box-box-shadow;
 
     @include slim-scroll(var(--grey-20), var(--grey-50));
 
     &.list-box-with-footer {
         --padding: 8px 0 0 0;
+
         border-bottom: none;
         border-radius: 8px 8px 0 0;
         box-shadow: none;
@@ -34,7 +33,6 @@
 
     gap: 9px;
     min-width: 0;
-
     height: var(--height);
     padding: var(--padding);
     color: var(--color);
@@ -51,12 +49,14 @@
     &.selected {
         --background-color: var(--digital-blue-10);
         --color: var(--digital-blue-80);
+
         border-top: 1px solid var(--digital-blue-20);
         border-bottom: 1px solid var(--digital-blue-20);
     }
 
     &.active:not(.selected) {
         --background-color: var(--grey-20);
+
         border-top: 1px solid var(--digital-blue-20);
         border-bottom: 1px solid var(--digital-blue-20);
     }
@@ -80,6 +80,7 @@
         --padding: 0;
         --cursor: default;
         --background-color: var(--grey-50);
+
         margin: $item-box-vertical-spacing 0;
     }
 
@@ -106,19 +107,15 @@
     display: flex;
     gap: 9px;
     align-content: center;
-
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
-
     overflow: hidden;
     color: var(--grey-100);
-
     white-space: nowrap;
     text-overflow: ellipsis;
     list-style: none;
     background-color: var(--white);
     border: 1px solid var(--grey-40);
     border-radius: 0 0 8px 8px;
-
     box-shadow: $list-box-box-shadow;
     fill: var(--grey-100);
 }

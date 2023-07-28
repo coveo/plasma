@@ -26,6 +26,7 @@ a {
         --color: var(--grey-60);
         --fill: var(--grey-60);
         --stroke: var(--grey-60);
+
         cursor: default;
         pointer-events: none;
     }
@@ -38,6 +39,7 @@ a {
         --color: var(--digital-blue-80);
         --fill: var(--digital-blue-80);
         --stroke: var(--digital-blue-80);
+
         text-decoration: underline;
     }
 
@@ -45,6 +47,7 @@ a {
         --color: var(--digital-blue-100);
         --fill: var(--digital-blue-100);
         --stroke: var(--digital-blue-100);
+
         text-decoration: underline;
     }
 
@@ -52,6 +55,7 @@ a {
         --color: var(--links-color);
         --fill: var(--links-color);
         --stroke: var(--links-color);
+
         text-decoration: underline;
     }
 }

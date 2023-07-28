@@ -1,13 +1,13 @@
 $datepicker-border-color: #f6f6f6;
 $datepicker-dayofweeks-color: var(--deprecated-dark-grey);
-$datepicker-day-hover-background-color: #eeeeee;
+$datepicker-day-hover-background-color: #eee;
 $datepicker-day-color: var(--deprecated-dark-grey);
 $datepicker-day-selected-notinmonth-color: var(--deprecated-dark-grey);
 $datepicker-day-selected-notinmonth-background-color: #d2dce6;
 $datepicker-day-selected-background-color: var(--deprecated-medium-blue);
 $datepicker-day-notinmonth-background-color: var(--deprecated-dark-grey);
 $datepicker-day-disabled-background-color: #e6e6e6;
-$datepicker-day-disabled-color: #666666;
+$datepicker-day-disabled-color: #666;
 
 .inline .datepicker {
     box-sizing: border-box;
@@ -45,6 +45,7 @@ $datepicker-day-disabled-color: #666666;
                         padding: 2px 0;
                         border-bottom: 1px solid var(--deprecated-medium-grey);
                     }
+
                     span {
                         color: var(--deprecated-medium-grey);
                         font-size: 9px;
@@ -59,13 +60,13 @@ $datepicker-day-disabled-color: #666666;
                 a:hover {
                     text-decoration: none;
                     background: var(--deprecated-medium-grey);
-
                     cursor: pointer;
                 }
 
                 .datepickerMonth {
                     width: calc(100% - 74px);
                     margin: 0 37px;
+
                     &:hover {
                         text-decoration: underline;
                         background-color: transparent;
@@ -113,6 +114,7 @@ $datepicker-day-disabled-color: #666666;
 
                         &.datepickerNotInMonth {
                             background-color: var(--deprecated-medium-grey);
+
                             a {
                                 color: var(--deprecated-dark-grey);
                             }
@@ -126,12 +128,14 @@ $datepicker-day-disabled-color: #666666;
                     &.datepickerFuture {
                         &.datepickerNotInMonth {
                             background-color: var(--deprecated-light-grey);
+
                             a {
                                 cursor: default;
                             }
 
                             &.datepickerDisabled {
                                 background-color: var(--deprecated-light-grey);
+
                                 a {
                                     color: var(--deprecated-medium-grey);
                                     cursor: default;

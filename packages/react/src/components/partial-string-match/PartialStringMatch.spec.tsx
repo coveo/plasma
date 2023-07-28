@@ -26,16 +26,16 @@ describe('PartialStringMatch', () => {
     it('should render the wholeString unchanged if partialMatch is not in the wholeString', () => {
         expect(
             shallow(<PartialStringMatch wholeString={testString} partialMatch="i am not in whole string" />).find(
-                'Highlight'
-            ).length
+                'Highlight',
+            ).length,
         ).toBe(0);
     });
 
     it('should render the wholeString unchanged if partialMatch is in the wholeString but with different casing (if case sensitive)', () => {
         expect(
             shallow(<PartialStringMatch wholeString={testString} partialMatch={testString.toUpperCase()} />).find(
-                'Highlight'
-            ).length
+                'Highlight',
+            ).length,
         ).toBe(0);
     });
 
@@ -58,7 +58,7 @@ describe('PartialStringMatch', () => {
     it('should highlight the partialString in bold regardless of casing, when caseInsensitive is passed as prop', () => {
         const partialMatch = testString.substr(3, 5);
         const component = shallow(
-            <PartialStringMatch wholeString={testString} partialMatch={partialMatch.toUpperCase()} caseInsensitive />
+            <PartialStringMatch wholeString={testString} partialMatch={partialMatch.toUpperCase()} caseInsensitive />,
         );
 
         expect(component.find('Highlight').length).toBe(1);
@@ -80,7 +80,7 @@ describe('PartialStringMatch', () => {
                 spans
                 <br />
                 <div>Or they can be in a div, like this match</div>
-            </PartialStringMatch>
+            </PartialStringMatch>,
         );
 
         expect(component.find('Highlight').length).toBe(2);
@@ -89,7 +89,7 @@ describe('PartialStringMatch', () => {
     it('should highlight matches by rendering them in bold', () => {
         const matcher = 'bacon';
         const component = shallow(
-            <PartialStringMatch partialMatch={matcher}>bacon is my favorite vegetable</PartialStringMatch>
+            <PartialStringMatch partialMatch={matcher}>bacon is my favorite vegetable</PartialStringMatch>,
         );
 
         expect(component.find('Highlight').dive().hasClass('bolder')).toBe(true);
@@ -101,7 +101,7 @@ describe('PartialStringMatch', () => {
         const component = shallow(
             <PartialStringMatch partialMatch={matcher}>
                 <Porkchop />
-            </PartialStringMatch>
+            </PartialStringMatch>,
         );
 
         expect(component.find('Highlight').length).toBe(2);
@@ -116,7 +116,7 @@ describe('PartialStringMatch', () => {
                 <PartialStringMatch partialMatch={matcher}>
                     <ConnectedPorkchop />
                 </PartialStringMatch>
-            </Provider>
+            </Provider>,
         );
 
         expect(component.find('Highlight').length).toBe(0);
@@ -133,7 +133,7 @@ describe('PartialStringMatch', () => {
             shallow(
                 <PartialStringMatch partialMatch="a">
                     <ClassComponent />
-                </PartialStringMatch>
+                </PartialStringMatch>,
             );
         }).not.toThrow();
     });
@@ -145,7 +145,7 @@ describe('PartialStringMatch', () => {
                     <Provider store={getStoreMock()}>
                         <div>Something here</div>
                     </Provider>
-                </PartialStringMatch>
+                </PartialStringMatch>,
             );
         }).not.toThrow();
     });

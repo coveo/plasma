@@ -56,7 +56,7 @@ describe('MultiSelectWithInitialValues', () => {
                     },
                 ]}
                 initialValues={[ONE_VALUE]}
-            />
+            />,
         );
         expect(within(screen.queryByRole('list', {name: 'warnings'})).queryByRole('listitem')).not.toBeInTheDocument();
     });
@@ -78,7 +78,7 @@ describe('MultiSelectWithInitialValues', () => {
                     },
                 ]}
                 initialValues={[ONE_VALUE]}
-            />
+            />,
         );
 
         expect(within(screen.getAllByRole('list')[1]).queryByText(ONE_VALUE)).toBeVisible();

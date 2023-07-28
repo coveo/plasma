@@ -24,7 +24,7 @@ export const PaginationSelect: FunctionComponent<IPaginationSelectProps> = ({
                 selectable: !selected,
                 disabled: disabled,
             },
-            className
+            className,
         )}
         data-page={pageNb}
         onClick={() => onPageClick(pageNb)}

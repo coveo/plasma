@@ -146,7 +146,7 @@ describe('WithDirtySaveButtonHOC', () => {
                     {
                         errorMessage: (e) => (e?.length > 1 ? messageMultipleError : message),
                     },
-                    storeWithErrorsAndDirty
+                    storeWithErrorsAndDirty,
                 );
 
                 const tooltip = buttonWrapper.find(Button).prop('tooltip');
@@ -161,7 +161,7 @@ describe('WithDirtySaveButtonHOC', () => {
                     {
                         errorMessage: (e) => (e?.length > 1 ? messageMultipleErrors : message),
                     },
-                    storeWithMultipleErrorsAndDirty
+                    storeWithMultipleErrorsAndDirty,
                 );
 
                 const tooltip = buttonWrapper.find(Button).prop('tooltip');
@@ -175,7 +175,7 @@ describe('WithDirtySaveButtonHOC', () => {
                     {
                         warningMessage: () => message,
                     },
-                    storeWithWarningsAndDirty
+                    storeWithWarningsAndDirty,
                 );
 
                 const tooltip = buttonWrapper.find(Button).prop('tooltip');
@@ -189,7 +189,7 @@ describe('WithDirtySaveButtonHOC', () => {
                     {
                         dirtyMessage: () => message,
                     },
-                    getStoreMock()
+                    getStoreMock(),
                 );
 
                 const tooltip = buttonWrapper.find(Button).prop('tooltip');
@@ -204,7 +204,7 @@ describe('WithDirtySaveButtonHOC', () => {
                         skipDirty: true,
                         dirtyMessage: () => message,
                     },
-                    getStoreMock()
+                    getStoreMock(),
                 );
 
                 const tooltip = buttonWrapper.find(Button).prop('tooltip');
@@ -227,7 +227,7 @@ describe('WithDirtySaveButtonHOC', () => {
                     {
                         warningMessage: () => message,
                     },
-                    storeWithOnlyWarning
+                    storeWithOnlyWarning,
                 );
 
                 const tooltip = buttonWrapper.find(Button).prop('tooltip');

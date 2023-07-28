@@ -41,15 +41,15 @@ describe('Table HOC', () => {
             expect(() =>
                 shallowWithStore(<TableRowConnected id="a" tableId="b" />, store)
                     .dive()
-                    .dive()
+                    .dive(),
             ).not.toThrow();
             expect(() =>
                 shallowWithStore(
                     <TableRowConnected id="b" tableId="c" actions={[{enabled: false, name: 'test'}]} />,
-                    store
+                    store,
                 )
                     .dive()
-                    .dive()
+                    .dive(),
             ).not.toThrow();
         });
 
@@ -162,7 +162,7 @@ describe('Table HOC', () => {
 
             const wrapper = shallowWithStore(
                 <TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -225,7 +225,7 @@ describe('Table HOC', () => {
                             name
                         </div>
                     </td>
-                </TableRowConnected>
+                </TableRowConnected>,
             );
 
             await userEvent.click(screen.getByRole('button', {name: 'name'}));
@@ -238,7 +238,7 @@ describe('Table HOC', () => {
 
             const wrapper = shallowWithStore(
                 <TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]} isMultiselect />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -261,7 +261,7 @@ describe('Table HOC', () => {
                         {...defaultProps}
                         actions={[{enabled: true, name: 'action', callOnDoubleClick: true, trigger: triggerActionSpy}]}
                     />,
-                    store
+                    store,
                 )
                     .dive()
                     .dive();
@@ -287,7 +287,7 @@ describe('Table HOC', () => {
                             },
                         ]}
                     />,
-                    store
+                    store,
                 )
                     .dive()
                     .dive();
@@ -311,7 +311,7 @@ describe('Table HOC', () => {
                             },
                         ]}
                     />,
-                    store
+                    store,
                 )
                     .dive()
                     .dive();
@@ -353,7 +353,7 @@ describe('Table HOC', () => {
                         {[]}
                         {false}
                     </TableRowConnected>,
-                    store
+                    store,
                 )
                     .dive()
                     .dive();
@@ -383,7 +383,7 @@ describe('Table HOC', () => {
                         {null}
                         {[]}
                         {false}
-                    </TableRowConnected>
+                    </TableRowConnected>,
                 );
 
                 expect(document.querySelector('tr.collapsible-row td')).toHaveAttribute('colSpan', '4');
@@ -472,7 +472,7 @@ describe('Table HOC', () => {
                         expandOnMount: true,
                     }}
                 />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -500,7 +500,7 @@ describe('Table HOC', () => {
                     tableId={defaultProps.tableId}
                     collapsible={{expandOnMount: true}}
                 />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -533,7 +533,7 @@ describe('Table HOC', () => {
 
             const row = shallowWithStore(
                 <TableRowConnected id={defaultProps.id} tableId={defaultProps.tableId} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -571,7 +571,7 @@ describe('Table HOC', () => {
                         onToggleCollapsible: spy,
                     }}
                 />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -603,7 +603,7 @@ describe('Table HOC', () => {
                         onToggleCollapsible: spy,
                     }}
                 />,
-                store
+                store,
             )
                 .dive()
                 .dive();

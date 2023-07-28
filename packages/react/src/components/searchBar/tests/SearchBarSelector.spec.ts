@@ -10,8 +10,8 @@ describe('SearchBarSelector', () => {
                     {
                         searchBars: [],
                     },
-                    id
-                )
+                    id,
+                ),
             ).toEqual('');
         });
 
@@ -28,8 +28,8 @@ describe('SearchBarSelector', () => {
                             },
                         ],
                     },
-                    id
-                )
+                    id,
+                ),
             ).toEqual('');
         });
 
@@ -48,8 +48,8 @@ describe('SearchBarSelector', () => {
                             },
                         ],
                     },
-                    id
-                )
+                    id,
+                ),
             ).toEqual(value);
         });
     });

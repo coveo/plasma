@@ -12,7 +12,7 @@ export interface ISliderState {
 
 export const SliderReducer = (
     state: ISlidersState = null,
-    action: IReduxAction<ISetSliderValuePayload> | IReduxAction<BasePayload>
+    action: IReduxAction<ISetSliderValuePayload> | IReduxAction<BasePayload>,
 ) => {
     if (action?.type === SliderActionTypes.setValue) {
         const {id, value} = action.payload as ISetSliderValuePayload;

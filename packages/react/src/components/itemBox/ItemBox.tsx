@@ -68,7 +68,7 @@ export class ItemBox extends Component<IItemBoxProps> {
                 hidden: this.props.hidden,
                 divider: this.props.divider,
             },
-            this.props.classes
+            this.props.classes,
         );
     }
 

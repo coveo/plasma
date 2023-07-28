@@ -116,7 +116,7 @@ export const dataById = _.range(10).reduce(
             },
         };
     },
-    {[predictableData.userName]: {...predictableData}}
+    {[predictableData.userName]: {...predictableData}},
 );
 
 export const tablePropsMockWithData = {

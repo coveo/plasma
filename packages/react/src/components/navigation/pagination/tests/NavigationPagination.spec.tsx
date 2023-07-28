@@ -41,7 +41,7 @@ describe('NavigationPagination', () => {
 
             navigationPagination = mount(
                 <NavigationPagination {...NAVIGATION_PAGINATION_BASIC_PROPS} onRender={renderSpy} />,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
             expect(renderSpy).toHaveBeenCalledTimes(1);
@@ -56,7 +56,7 @@ describe('NavigationPagination', () => {
 
             navigationPagination = mount(
                 <NavigationPagination {...NAVIGATION_PAGINATION_BASIC_PROPS} onDestroy={destroySpy} />,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             navigationPagination.unmount();
 
@@ -71,7 +71,7 @@ describe('NavigationPagination', () => {
                 const newNavigationPaginationProps: INavigationPaginationProps = _.extend(
                     {},
                     NAVIGATION_PAGINATION_BASIC_PROPS,
-                    {onPageClick: clickSpy}
+                    {onPageClick: clickSpy},
                 );
 
                 expect(() => {
@@ -103,7 +103,7 @@ describe('NavigationPagination', () => {
                 navigationPagination.find('.mod-link').last().simulate('click');
 
                 expect(clickSpy).toHaveBeenCalledTimes(2);
-            }
+            },
         );
 
         it('should show the previous label sent as a prop else show the default one', () => {
@@ -111,7 +111,7 @@ describe('NavigationPagination', () => {
             const newNavigationPaginationProps: INavigationPaginationProps = _.extend(
                 {},
                 NAVIGATION_PAGINATION_BASIC_PROPS,
-                {previousLabel: expectedLabel}
+                {previousLabel: expectedLabel},
             );
 
             expect(navigationPagination.html()).toContain(PREVIOUS_LABEL);
@@ -126,7 +126,7 @@ describe('NavigationPagination', () => {
             const newNavigationPaginationProps: INavigationPaginationProps = _.extend(
                 {},
                 NAVIGATION_PAGINATION_BASIC_PROPS,
-                {nextLabel: expectedLabel}
+                {nextLabel: expectedLabel},
             );
 
             expect(navigationPagination.html()).toContain(NEXT_LABEL);
@@ -141,7 +141,7 @@ describe('NavigationPagination', () => {
             const newNavigationPaginationProps: INavigationPaginationProps = _.extend(
                 {},
                 NAVIGATION_PAGINATION_BASIC_PROPS,
-                {numberOfPagesToShow: 2}
+                {numberOfPagesToShow: 2},
             );
 
             expect(navigationPagination.find(PaginationSelect).length).toBe(NUMBER_OF_PAGES_SHOWING);
@@ -155,7 +155,7 @@ describe('NavigationPagination', () => {
             const newNavigationPaginationProps: INavigationPaginationProps = _.extend(
                 {},
                 NAVIGATION_PAGINATION_BASIC_PROPS,
-                {hidePages: true}
+                {hidePages: true},
             );
 
             expect(navigationPagination.find(PaginationSelect).length).toBeGreaterThan(0);

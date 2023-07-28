@@ -68,7 +68,7 @@ describe('InlinePrompt', () => {
 
         it('should render as many choice buttons as there are choices', () => {
             expect(inlinePrompt.find('button.mod-danger').length).toBe(
-                Object.values(options.userChoice.choices).length
+                Object.values(options.userChoice.choices).length,
             );
         });
 

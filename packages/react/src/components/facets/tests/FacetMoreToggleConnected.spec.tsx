@@ -23,7 +23,7 @@ describe('Facets', () => {
                 <Provider store={store}>
                     <FacetMoreToggleConnected facet={facet} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             store.dispatch(addFacet(facet));
             wrapper.update();

@@ -17,7 +17,7 @@ describe('ValidationMessage', () => {
             error: [],
             warning: [],
             ...validation,
-        } as ValidationState);
+        }) as ValidationState;
     const getStateForExistingComponent = (validation: Partial<ValidationState>) => ({
         validation: {
             [defaultProps.id]: getValidationState(validation),
@@ -72,7 +72,7 @@ describe('ValidationMessage', () => {
                         value: 'wow',
                     },
                 ],
-            })
+            }),
         )
             .dive()
             .dive();
@@ -95,7 +95,7 @@ describe('ValidationMessage', () => {
                         value: 'bloup',
                     },
                 ],
-            })
+            }),
         )
             .dive()
             .dive();
@@ -120,7 +120,7 @@ describe('ValidationMessage', () => {
                         value: 'ohno',
                     },
                 ],
-            })
+            }),
         )
             .dive()
             .dive();
@@ -150,7 +150,7 @@ describe('ValidationMessage', () => {
                             value: 'ohno',
                         },
                     ],
-                })
+                }),
             )
                 .dive()
                 .dive();
@@ -177,7 +177,7 @@ describe('ValidationMessage', () => {
                             value: 'wow',
                         },
                     ],
-                })
+                }),
             )
                 .dive()
                 .dive();

@@ -35,7 +35,7 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: Component
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
             },
-            []
+            [],
         );
 
         return (
@@ -55,6 +55,6 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: Component
 
     return connect<StateProps, DispatchProps, T & IWithDirtyInputOwnProps>(
         mapStateToProps,
-        mapDispatchToProps
+        mapDispatchToProps,
     )(WrappedInput as any);
 };

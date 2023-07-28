@@ -19,7 +19,7 @@ const ResultListRenderer = dynamic(
     {
         ssr: false,
         loading: () => <PlasmaLoading />,
-    }
+    },
 );
 
 const ResultList = () => {

@@ -26,7 +26,7 @@ describe('ModalWizardWithValidations', () => {
                         },
                     },
                 },
-            }
+            },
         );
 
         expect(screen.getByRole('button', {name: 'Next'})).toBeEnabled();
@@ -53,7 +53,7 @@ describe('ModalWizardWithValidations', () => {
                         },
                     },
                 },
-            }
+            },
         );
 
         expect(screen.queryByText('Unsaved Changes')).not.toBeInTheDocument();
@@ -72,7 +72,7 @@ describe('ModalWizardWithValidations', () => {
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizardWithValidations>,
-            {initialState: {modals: [{id: '🌶🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🌶🧙‍♂️', isOpened: true}]}},
         );
 
         await userEvent.click(screen.getByRole('dialog'));

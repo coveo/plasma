@@ -15,7 +15,7 @@ describe('ModalWizard', () => {
                     <div>Step 3</div>
                 </ModalWizard>
             </div>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByRole('dialog')).toBeInTheDocument();
@@ -44,7 +44,7 @@ describe('ModalWizard', () => {
                 <FunctionComponentStep />
                 <ClassComponentStep />
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByText(/Step 1/)).toBeVisible();
@@ -79,7 +79,7 @@ describe('ModalWizard', () => {
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByRole('button', {name: 'Next'})).toBeDisabled();
@@ -92,7 +92,7 @@ describe('ModalWizard', () => {
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.queryByText('Unsaved Changes')).not.toBeInTheDocument();
@@ -111,7 +111,7 @@ describe('ModalWizard', () => {
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         await userEvent.click(screen.getByRole('dialog'));
@@ -127,7 +127,7 @@ describe('ModalWizard', () => {
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByRole('heading', {name: /title 1/i})).toBeVisible();
@@ -150,7 +150,7 @@ describe('ModalWizard', () => {
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByText(/footer children 1/i)).toBeVisible();

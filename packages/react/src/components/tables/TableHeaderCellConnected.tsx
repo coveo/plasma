@@ -15,7 +15,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: ITableHeaderCellOwnProps)
 
 const mapDispatchToProps = (
     dispatch: IDispatch,
-    ownProps: ITableHeaderCellOwnProps
+    ownProps: ITableHeaderCellOwnProps,
 ): ITableHeaderCellDispatchProps => ({
     onMount: () => dispatch(addHeaderCell(ownProps.id, ownProps.attributeToSort, ownProps.tableId)),
     onSort: () => dispatch(sortFromHeaderCell(ownProps.id, ownProps.attributeToSort, ownProps.tableId)),
@@ -28,5 +28,5 @@ const mapDispatchToProps = (
 export const TableHeaderCellConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(TableHeaderCell);

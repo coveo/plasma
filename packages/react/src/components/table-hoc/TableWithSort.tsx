@@ -40,7 +40,7 @@ export const tableWithSort =
 
         const mapStateToProps = (
             state: PlasmaState,
-            ownProps: ITableWithSortProps
+            ownProps: ITableWithSortProps,
         ): ITableWithSortStateProps | ITableHOCOwnProps => {
             const tableSort: ITableWithSortState = TableSelectors.getSort(state, ownProps);
             const sort = config.sort || defaultSort;

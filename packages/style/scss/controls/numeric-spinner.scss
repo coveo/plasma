@@ -1,7 +1,7 @@
 .admin-numeric-spinner.input-group {
     *,
-    *:before,
-    *:after {
+    *::before,
+    *::after {
         box-sizing: border-box;
     }
 
@@ -17,7 +17,6 @@
         div {
             padding: 0 6px;
             border-radius: 3px;
-
             cursor: pointer;
 
             &:hover {

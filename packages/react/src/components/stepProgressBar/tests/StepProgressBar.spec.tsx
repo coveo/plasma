@@ -41,20 +41,20 @@ describe('StepProgressBar', () => {
 
         it('should render the current step after the last done step', () => {
             expect(
-                stepProgressBar.find(`${stepProgressBarDoneSelector} + ${stepProgressBarDoingSelector}`).length
+                stepProgressBar.find(`${stepProgressBarDoneSelector} + ${stepProgressBarDoingSelector}`).length,
             ).toBe(1);
         });
 
         it('should render with steps to-do above the current step', () => {
             expect(
-                stepProgressBar.find(`${stepProgressBarDoingSelector} + ${stepProgressBarToDoSelector}`).length
+                stepProgressBar.find(`${stepProgressBarDoingSelector} + ${stepProgressBarToDoSelector}`).length,
             ).toBe(1);
             const currentStepAndDoneStepsCombined =
                 stepProgressBar.find(stepProgressBarDoneSelector).length +
                 stepProgressBar.find(stepProgressBarDoingSelector).length;
 
             expect(stepProgressBar.find(stepProgressBarToDoSelector).length).toBe(
-                testProps.numberOfSteps - currentStepAndDoneStepsCombined
+                testProps.numberOfSteps - currentStepAndDoneStepsCombined,
             );
         });
 
@@ -68,7 +68,7 @@ describe('StepProgressBar', () => {
 
             testClasses.forEach((testClass: string) => {
                 expect(stepProgressBarWithClasses.find(stepProgressBarContainerSelector).hasClass(testClass)).toBe(
-                    true
+                    true,
                 );
             });
         });
@@ -79,7 +79,7 @@ describe('StepProgressBar', () => {
 
             testClasses.split(' ').forEach((testClass: string) => {
                 expect(stepProgressBarWithClasses.find(stepProgressBarContainerSelector).hasClass(testClass)).toBe(
-                    true
+                    true,
                 );
             });
         });

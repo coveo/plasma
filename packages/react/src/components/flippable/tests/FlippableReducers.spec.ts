@@ -84,7 +84,7 @@ describe('Flippable', () => {
 
                 expect(newFlippables.length).toBe(SOME_FLIPPABLES.length);
                 expect(newFlippables.filter(filterById(action.payload.id)).length).toBe(0);
-            }
+            },
         );
 
         it(
@@ -97,7 +97,7 @@ describe('Flippable', () => {
                 expect(newFlippables.length).toBe(SOME_FLIPPABLES.length);
                 expect(newFlippables.filter(filterById(action.payload.id))[0].flipped).toBe(true);
                 expect(newFlippables.filter(filterById(ANOTHER_UNFLIPPED_FLIPPABLE.id))[0].flipped).toBe(false);
-            }
+            },
         );
 
         it(
@@ -110,7 +110,7 @@ describe('Flippable', () => {
                 expect(newFlippables.length).toBe(SOME_FLIPPABLES.length);
                 expect(newFlippables.filter(filterById(action.payload.id))[0].flipped).toBe(false);
                 expect(newFlippables.filter(filterById(ANOTHER_FLIPPED_FLIPPABLE.id))[0].flipped).toBe(true);
-            }
+            },
         );
     });
 
@@ -151,7 +151,7 @@ describe('Flippable', () => {
 
                 expect(newFlippable).not.toBe(UNFLIPPED_FLIPPABLE);
                 expect(newFlippable.flipped).toBe(action.payload.flipped);
-            }
+            },
         );
 
         it(
@@ -163,7 +163,7 @@ describe('Flippable', () => {
 
                 expect(newFlippable).not.toBe(FLIPPED_FLIPPABLE);
                 expect(newFlippable.flipped).toBe(action.payload.flipped);
-            }
+            },
         );
     });
 });

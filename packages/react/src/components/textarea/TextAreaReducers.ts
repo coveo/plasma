@@ -18,7 +18,7 @@ export const textAreasInitialState: ITextAreaState[] = [];
 
 export const textAreasReducer = (
     state: ITextAreaState[] = textAreasInitialState,
-    action: IReduxAction<ITextAreaActionPayload>
+    action: IReduxAction<ITextAreaActionPayload>,
 ): ITextAreaState[] => {
     switch (action.type) {
         case TextAreaActions.add:
@@ -28,7 +28,7 @@ export const textAreasReducer = (
         case TextAreaActions.changeValue:
         case TextAreaActions.setDisabled:
             return state.map((textArea: ITextAreaState) =>
-                textArea.id === action.payload.id ? {...textArea, ...action.payload} : textArea
+                textArea.id === action.payload.id ? {...textArea, ...action.payload} : textArea,
             );
         default:
             return state;

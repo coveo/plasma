@@ -51,7 +51,7 @@ describe('WithDirtyCheckboxHOC', () => {
             const shallowCheckbox = (props?: Partial<ICheckboxOwnProps & IInputOwnProps>) =>
                 shallowWithStore<typeof CheckboxWithHOC>(
                     <CheckboxWithHOC {...CHECKBOX_PROPS} {...props} handleOnClick={handleOnClickSpy} />,
-                    store
+                    store,
                 ).dive();
 
             beforeEach(() => {
@@ -63,7 +63,7 @@ describe('WithDirtyCheckboxHOC', () => {
                 triggerCheck();
 
                 expect(store.getActions()).toContainEqual(
-                    ValidationActions.setDirty(CHECKBOX_PROPS.id, true, ValidationTypes.wrongInitialValue)
+                    ValidationActions.setDirty(CHECKBOX_PROPS.id, true, ValidationTypes.wrongInitialValue),
                 );
             });
 
@@ -71,7 +71,7 @@ describe('WithDirtyCheckboxHOC', () => {
                 triggerUncheck();
 
                 expect(store.getActions()).toContainEqual(
-                    ValidationActions.setDirty(CHECKBOX_PROPS.id, false, ValidationTypes.wrongInitialValue)
+                    ValidationActions.setDirty(CHECKBOX_PROPS.id, false, ValidationTypes.wrongInitialValue),
                 );
             });
 
@@ -82,7 +82,7 @@ describe('WithDirtyCheckboxHOC', () => {
                 triggerUncheck();
 
                 expect(store.getActions()).toContainEqual(
-                    ValidationActions.setDirty(CHECKBOX_PROPS.id, true, ValidationTypes.wrongInitialValue)
+                    ValidationActions.setDirty(CHECKBOX_PROPS.id, true, ValidationTypes.wrongInitialValue),
                 );
             });
 
@@ -93,7 +93,7 @@ describe('WithDirtyCheckboxHOC', () => {
                 triggerCheck();
 
                 expect(store.getActions()).toContainEqual(
-                    ValidationActions.setDirty(CHECKBOX_PROPS.id, false, ValidationTypes.wrongInitialValue)
+                    ValidationActions.setDirty(CHECKBOX_PROPS.id, false, ValidationTypes.wrongInitialValue),
                 );
             });
 
