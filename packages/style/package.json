@@ -60,7 +60,7 @@
         "gulp-uglify": "3.0.2",
         "jquery": "3.7.0",
         "lint-staged": "9.5.0",
-        "merge-stream": "1.0.1",
+        "merge-stream": "2.0.0",
         "minimist": "1.2.8",
         "postcss": "8.4.27",
         "postcss-scss": "4.0.6",
