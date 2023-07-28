@@ -1,3 +1,12 @@
+## 52.12.1 (2023-07-28)
+
+
+### Bug Fixes
+
+* **table,defaultcolumn:** set column width to auto by default (#3468) b86dbb7, closes #3468
+
+
+
 # 52.12.0 (2023-07-26)
 
 

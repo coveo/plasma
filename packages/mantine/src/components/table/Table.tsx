@@ -1,7 +1,14 @@
 import {Box, Center, Loader} from '@mantine/core';
 import {useForm} from '@mantine/form';
 import {useDidUpdate} from '@mantine/hooks';
-import {ColumnDef, getCoreRowModel, Row, TableState as TanstackTableState, useReactTable} from '@tanstack/react-table';
+import {
+    ColumnDef,
+    defaultColumnSizing,
+    getCoreRowModel,
+    Row,
+    TableState as TanstackTableState,
+    useReactTable,
+} from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, cloneElement, Dispatch, ReactElement, useCallback, useEffect, useState} from 'react';
@@ -73,6 +80,11 @@ export const Table: TableType = <T,>({
         getRowId,
         getRowCanExpand: (row: Row<T>) => !!getExpandChildren?.(row.original) ?? false,
         enableRowSelection: !loading,
+        defaultColumn: {
+            size: undefined,
+            minSize: defaultColumnSizing.minSize,
+            maxSize: defaultColumnSizing.maxSize,
+        },
         ...options,
     });
 
