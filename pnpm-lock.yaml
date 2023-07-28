@@ -715,8 +715,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       gulp-rename:
-        specifier: 1.4.0
-        version: 1.4.0
+        specifier: 2.0.0
+        version: 2.0.0
       gulp-svgmin:
         specifier: 3.0.0
         version: 3.0.0
@@ -10853,8 +10853,8 @@ packages:
       minimatch: 3.1.2
     dev: true
 
-  /gulp-rename@1.4.0:
-    resolution: {integrity: sha512-swzbIGb/arEoFK89tPY58vg3Ok1bw+d35PfUNwWqdo7KM4jkmuGA78JiDNqR+JeZFaeeHnRg9N7aihX3YPmsyg==}
+  /gulp-rename@2.0.0:
+    resolution: {integrity: sha512-97Vba4KBzbYmR5VBs9mWmK+HwIf5mj+/zioxfZhOKeXtx5ZjBk57KFlePf5nxq9QsTtFl0ejnHE3zTC9MHXqyQ==}
     engines: {node: '>=4'}
     dev: true
 
