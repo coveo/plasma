@@ -14,13 +14,13 @@ export const stringListInitialState: IStringListCompositeState = {};
 
 export const convertStringListToItemsBox = (
     list: string[],
-    itemsBoxParams: Partial<IItemBoxProps> = {}
+    itemsBoxParams: Partial<IItemBoxProps> = {},
 ): IItemBoxProps[] => _.map(list, (value: string) => ({...itemsBoxParams, value}));
 export const convertItemsBoxToStringList = (items: IItemBoxProps[]): string[] => _.pluck(items, 'value');
 
 export const stringListCompositeReducer = (
     state: IStringListCompositeState = stringListInitialState,
-    action: IReduxAction<IStringListPayload>
+    action: IReduxAction<IStringListPayload>,
 ): IStringListCompositeState => {
     if (
         !action.payload ||

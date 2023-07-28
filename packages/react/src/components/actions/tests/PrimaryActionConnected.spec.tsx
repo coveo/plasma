@@ -31,7 +31,7 @@ describe('Actions', () => {
                 <Provider store={store}>
                     <PrimaryActionConnected action={action} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             primaryAction = wrapper.find(PrimaryAction).first();
         });

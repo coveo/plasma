@@ -22,7 +22,7 @@ const getSelectedRows = (rows: IFacet[], selectedRows: IFacet[]): IFacet[] =>
         _.map(rows, (row: IFacet) => {
             const selectedRow: IFacet = _.findWhere(selectedRows, {name: row.name});
             return selectedRow && {...selectedRow, ...row};
-        })
+        }),
     );
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IFacetDispatchProps => ({

@@ -24,7 +24,7 @@ describe('RadioSelectConnected', () => {
             <Provider store={store}>
                 <RadioSelectConnected {...props} />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
 
     const radioSelectProps = {
@@ -42,14 +42,14 @@ describe('RadioSelectConnected', () => {
                 mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onMount')(
                     radioSelectProps.id,
                     'somevalue',
-                    []
-                )
+                    [],
+                ),
             ).not.toThrow();
         });
 
         it('should not throw when calling onUnmount', () => {
             expect(() =>
-                mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onUnmount')(radioSelectProps.id)
+                mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onUnmount')(radioSelectProps.id),
             ).not.toThrow();
         });
 
@@ -57,8 +57,8 @@ describe('RadioSelectConnected', () => {
             expect(() =>
                 mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onChange')(
                     'somevalue',
-                    radioSelectProps.id
-                )
+                    radioSelectProps.id,
+                ),
             ).not.toThrow();
         });
     });

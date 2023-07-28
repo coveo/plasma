@@ -13,7 +13,7 @@ export const RadioSelectActions = {
 
 export const setRadioSelect = (
     id: string,
-    state: {value?: string; disabledValues?: string[]}
+    state: {value?: string; disabledValues?: string[]},
 ): IReduxAction<IRadioSelectActionPayload> => ({
     type: RadioSelectActions.set,
     payload: {

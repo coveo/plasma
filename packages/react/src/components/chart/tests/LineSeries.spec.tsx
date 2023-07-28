@@ -10,7 +10,7 @@ describe('<LineSeries />', () => {
                 <svg role="application" width={XYChartContextMock.width} height={XYChartContextMock.height}>
                     <LineSeries />
                 </svg>
-            </XYChartContext.Provider>
+            </XYChartContext.Provider>,
         );
 
         expect(screen.getByRole('application')).toMatchInlineSnapshot(`

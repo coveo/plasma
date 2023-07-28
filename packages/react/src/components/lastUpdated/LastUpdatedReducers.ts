@@ -13,7 +13,7 @@ export const lastUpdatedCompositeInitialState: ILastUpdatedState[] = [];
 
 export const lastUpdatedReducer = (
     state: ILastUpdatedState = lastUpdatedInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): ILastUpdatedState => {
     switch (action.type) {
         case LastUpdatedActions.addLastUpdated:
@@ -35,7 +35,7 @@ export const lastUpdatedReducer = (
 
 export const lastUpdatedCompositeReducer = (
     state: ILastUpdatedState[] = lastUpdatedCompositeInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): ILastUpdatedState[] => {
     switch (action.type) {
         case LastUpdatedActions.addLastUpdated:

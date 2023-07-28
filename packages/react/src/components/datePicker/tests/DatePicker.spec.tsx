@@ -90,7 +90,7 @@ describe('Date picker', () => {
                 datePicker.update();
 
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(false);
-            }
+            },
         );
 
         it('should have the classes "date-picked" on the input if we are not selecting the picker and there is a date set in the input', () => {
@@ -189,7 +189,7 @@ describe('Date picker', () => {
 
             expect(DATE_PICKER_BASIC_PROPS.onBlur).toHaveBeenCalledWith(
                 DateUtils.getDateFromSimpleDateString(simpleDate),
-                DATE_PICKER_BASIC_PROPS.upperLimit
+                DATE_PICKER_BASIC_PROPS.upperLimit,
             );
         });
 
@@ -203,7 +203,7 @@ describe('Date picker', () => {
 
             expect(withTimeProps.onBlur).toHaveBeenCalledWith(
                 DateUtils.getDateFromTimeString(fullDate),
-                withTimeProps.upperLimit
+                withTimeProps.upperLimit,
             );
         });
 
@@ -222,7 +222,7 @@ describe('Date picker', () => {
                 datePicker.setProps(dateProps);
 
                 expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getDateWithTimeString(newDate));
-            }
+            },
         );
 
         it('should set an empty value in the date input when passing it a null date as prop', () => {

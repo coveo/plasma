@@ -71,7 +71,7 @@ describe('Date picker', () => {
 
                 expect(newDatePickers.length).toBe(oldDatePickers.length + 1);
                 expect(
-                    newDatePickers.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id).length
+                    newDatePickers.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id).length,
                 ).toBe(1);
 
                 action.payload.id = 'some-date-picker2';
@@ -79,7 +79,8 @@ describe('Date picker', () => {
 
                 expect(newDatePickers2.length).toBe(newDatePickers.length + 1);
                 expect(
-                    newDatePickers2.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id).length
+                    newDatePickers2.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id)
+                        .length,
                 ).toBe(1);
             });
 
@@ -131,7 +132,7 @@ describe('Date picker', () => {
 
             expect(newDatePickers.length).toBe(oldDatePickers.length - 1);
             expect(
-                newDatePickers.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id).length
+                newDatePickers.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id).length,
             ).toBe(0);
 
             oldDatePickers = newDatePickers;
@@ -140,7 +141,7 @@ describe('Date picker', () => {
 
             expect(newDatePickers.length).toBe(oldDatePickers.length - 1);
             expect(
-                newDatePickers.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id).length
+                newDatePickers.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id).length,
             ).toBe(0);
         });
 
@@ -160,7 +161,7 @@ describe('Date picker', () => {
 
             expect(newDatePickers.length).toBe(oldDatePickers.length);
             expect(
-                newDatePickers.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id).length
+                newDatePickers.filter((datePicker: IDatePickerState) => datePicker.id === action.payload.id).length,
             ).toBe(0);
         });
 
@@ -277,7 +278,7 @@ describe('Date picker', () => {
 
                 expect(newDatePicker.lowerLimit).toBe(action.payload.date);
                 expect(newDatePicker.selected).toBe('');
-            }
+            },
         );
 
         it(
@@ -302,7 +303,7 @@ describe('Date picker', () => {
 
                 expect(newDatePicker.upperLimit).toBe(action.payload.date);
                 expect(newDatePicker.selected).toBe('');
-            }
+            },
         );
 
         it('should not change the original state', () => {
@@ -372,7 +373,7 @@ describe('Date picker', () => {
                 expect(newDatePicker.appliedUpperLimit).toBeNull();
                 expect(newDatePicker.inputLowerLimit).toBeNull();
                 expect(newDatePicker.inputUpperLimit).toBeNull();
-            }
+            },
         );
 
         it('should return a new date picker with the rangeLimit when the action is "ADD_DATE_PICKER"', () => {
@@ -412,7 +413,7 @@ describe('Date picker', () => {
                 const newDatePicker: IDatePickerState = datePickerReducer(oldDatePicker, action);
 
                 expect(newDatePicker.lowerLimit).toBe(oldDatePicker.lowerLimit);
-            }
+            },
         );
 
         it(
@@ -430,7 +431,7 @@ describe('Date picker', () => {
                 const newDatePicker: IDatePickerState = datePickerReducer(oldDatePicker, action);
 
                 expect(newDatePicker.upperLimit).toBe(oldDatePicker.upperLimit);
-            }
+            },
         );
 
         it(
@@ -448,7 +449,7 @@ describe('Date picker', () => {
                 const newDatePicker: IDatePickerState = datePickerReducer(oldDatePicker, action);
 
                 expect(newDatePicker.lowerLimit).toBe(action.payload.date);
-            }
+            },
         );
 
         it(
@@ -469,7 +470,7 @@ describe('Date picker', () => {
                 const newDatePicker: IDatePickerState = datePickerReducer(oldDatePicker, action);
 
                 expect(newDatePicker.selected).toBe(DateLimits.upper);
-            }
+            },
         );
 
         it(
@@ -499,7 +500,7 @@ describe('Date picker', () => {
                 expect(newDatePicker.upperLimit).toBeNull();
                 expect(newDatePicker.inputUpperLimit).toBeNull();
                 expect(newDatePicker.selected).toBe(DateLimits.upper);
-            }
+            },
         );
 
         it('should return the state with the lower limit selected when the date picker is simple and the action is "CHANGE_LOWER_LIMIT"', () => {
@@ -534,7 +535,7 @@ describe('Date picker', () => {
                 const newDatePicker: IDatePickerState = datePickerReducer(oldDatePicker, action);
 
                 expect(newDatePicker.upperLimit).toBe(action.payload.date);
-            }
+            },
         );
 
         it(
@@ -552,7 +553,7 @@ describe('Date picker', () => {
 
                 expect(newDatePicker.lowerLimit).toBe(oldDatePicker.lowerLimit);
                 expect(newDatePicker.upperLimit).toBe(oldDatePicker.upperLimit);
-            }
+            },
         );
 
         it(
@@ -572,7 +573,7 @@ describe('Date picker', () => {
                 expect(newDatePicker.lowerLimit).not.toBe(oldDatePicker.lowerLimit);
                 expect(newDatePicker.upperLimit).toBe(oldDatePicker.appliedUpperLimit);
                 expect(newDatePicker.upperLimit).not.toBe(oldDatePicker.upperLimit);
-            }
+            },
         );
 
         it(
@@ -590,7 +591,7 @@ describe('Date picker', () => {
 
                 expect(newDatePicker.appliedLowerLimit).toBe(oldDatePicker.appliedLowerLimit);
                 expect(newDatePicker.appliedUpperLimit).toBe(oldDatePicker.appliedUpperLimit);
-            }
+            },
         );
 
         it(
@@ -610,7 +611,7 @@ describe('Date picker', () => {
                 expect(newDatePicker.appliedLowerLimit).toBe(oldDatePicker.lowerLimit);
                 expect(newDatePicker.appliedUpperLimit).not.toBe(oldDatePicker.appliedUpperLimit);
                 expect(newDatePicker.appliedUpperLimit).toBe(oldDatePicker.upperLimit);
-            }
+            },
         );
 
         it(
@@ -632,7 +633,7 @@ describe('Date picker', () => {
                 expect(newDatePicker.appliedLowerLimit).toBe(oldDatePicker.lowerLimit);
                 expect(newDatePicker.appliedUpperLimit).not.toBe(oldDatePicker.appliedUpperLimit);
                 expect(newDatePicker.appliedUpperLimit).toBe(oldDatePicker.lowerLimit);
-            }
+            },
         );
 
         it('should apply the input limit if the new limits are not valid', () => {
@@ -690,7 +691,7 @@ describe('Date picker', () => {
 
                 expect(newDatePicker.selected).toBe(oldDatePicker.selected);
                 expect(newDatePicker.upperLimit).toBeDefined();
-            }
+            },
         );
 
         it(
@@ -709,7 +710,7 @@ describe('Date picker', () => {
 
                 expect(newDatePicker.selected).toBe(action.payload.limit);
                 expect(newDatePicker.upperLimit).toBe(oldDatePicker.upperLimit);
-            }
+            },
         );
 
         it('should set the limits to null and select the lower limit when the action is "CLEAR_SELECTION', () => {
@@ -747,7 +748,7 @@ describe('Date picker', () => {
                 const newDatePicker: IDatePickerState = datePickerReducer(oldDatePicker, action);
 
                 expect(newDatePicker).toBe(oldDatePicker);
-            }
+            },
         );
 
         it(
@@ -762,7 +763,7 @@ describe('Date picker', () => {
                 const newDatePicker: IDatePickerState = datePickerReducer(BASE_DATE_PICKER_STATE, action);
 
                 expect(newDatePicker).toBe(BASE_DATE_PICKER_STATE);
-            }
+            },
         );
 
         it('should not change the original state', () => {

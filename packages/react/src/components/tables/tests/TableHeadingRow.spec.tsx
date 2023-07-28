@@ -36,7 +36,7 @@ describe('Tables', () => {
                         <div className="dropdown" />
                     </td>
                 </TableHeadingRow>,
-                {attachTo: document.getElementById('AppTableBody')}
+                {attachTo: document.getElementById('AppTableBody')},
             );
             tableHeadingRowInstance = tableHeadingRow.instance() as TableHeadingRow;
         });

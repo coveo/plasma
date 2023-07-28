@@ -59,7 +59,7 @@ describe('MultiValuesInput', () => {
                 inputProps={{classes: 'potato', innerInputClasses: 'potatoes'}}
                 dataLimit={12}
                 data={['🚕', '🚌', '🚒']}
-            />
+            />,
         );
 
         expect(document.querySelectorAll('.potato').length).toBe(3 + 1);
@@ -74,7 +74,7 @@ describe('MultiValuesInput', () => {
                 disabledInputClasses={'disabled-selector'}
                 dataLimit={2}
                 data={['🚕', '🚌', '🚒', '⌚', '⏰']}
-            />
+            />,
         );
 
         expect(document.querySelectorAll('.disabled-inner-selector').length).toBe(4);
@@ -88,7 +88,7 @@ describe('MultiValuesInput', () => {
                 disabledTooltipTitle={'You have no power here'}
                 dataLimit={3}
                 data={['🚕', '🚌', '🚒', '⌚', '⏰']}
-            />
+            />,
         );
 
         expect(screen.getAllByRole('textbox')[3].parentElement).toHaveAttribute('aria-labelledby');
@@ -104,7 +104,7 @@ describe('MultiValuesInput', () => {
                 disabledTooltipTitle={'You have no power here'}
                 dataLimit={3}
                 data={['🚕', '🚌', '🚒', '⌚', '⏰']}
-            />
+            />,
         );
         expect(screen.getAllByRole('textbox')[2].parentElement).not.toHaveAttribute('aria-labelledby');
     });
@@ -116,7 +116,7 @@ describe('MultiValuesInput', () => {
                 disabledTooltipTitle={'You have no power here'}
                 dataLimit={1}
                 data={['🚕', '']}
-            />
+            />,
         );
 
         expect(screen.getAllByRole('textbox')[1].parentElement).not.toHaveAttribute('aria-labelledby');
@@ -129,7 +129,7 @@ describe('MultiValuesInput', () => {
                 inputProps={{placeholder: 'This is my seat'}}
                 dataLimit={3}
                 data={['🚕', '🚌', '🚒', '⌚', '⏰']}
-            />
+            />,
         );
 
         expect(screen.getAllByPlaceholderText('This is my seat').length).toBe(3);
@@ -143,7 +143,7 @@ describe('MultiValuesInput', () => {
                 reachedLimitPlaceholder="No it is mine"
                 dataLimit={2}
                 data={['🚕', '🚌', '🚒', '⌚', '⏰']}
-            />
+            />,
         );
 
         expect(screen.getAllByPlaceholderText('No it is mine').length).toBe(3);
@@ -157,7 +157,7 @@ describe('MultiValuesInput', () => {
                 reachedLimitPlaceholder="No it is mine"
                 dataLimit={2}
                 data={['🚕', '🚌']}
-            />
+            />,
         );
 
         expect(screen.getAllByRole('textbox')[2].parentElement).not.toHaveAttribute('placeholder');
@@ -180,7 +180,7 @@ describe('MultiValuesInput', () => {
                     labelProps: {invalidMessage: 'too much food'},
                 }}
                 data={['🍍', '🍓']}
-            />
+            />,
         );
         await userEvent.type(screen.getAllByRole('textbox')[1], '🍎🍐🍒🍉🍍');
         expect(screen.getAllByRole('textbox')[1]).toHaveClass('invalid');
@@ -194,7 +194,7 @@ describe('MultiValuesInput', () => {
                 reachedLimitPlaceholder={undefined}
                 dataLimit={1}
                 data={['🚕']}
-            />
+            />,
         );
         expect(screen.getAllByRole('textbox')[1].parentElement).not.toHaveAttribute('aria-labelledby');
     });

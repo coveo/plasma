@@ -20,7 +20,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IFacetMoreToggleOwnProps)
 };
 
 const mapDispatchToProps = (
-    dispatch: (action: IReduxAction<IReduxActionsPayload>) => void
+    dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
 ): IFacetMoreToggleDispatchProps => ({
     onToggleMore: (facet: string) => dispatch(toggleMoreFacetRows(facet)),
 });
@@ -31,5 +31,5 @@ const mapDispatchToProps = (
 export const FacetMoreToggleConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(FacetMoreToggle);

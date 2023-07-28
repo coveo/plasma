@@ -47,7 +47,7 @@ describe('Facets', () => {
                 <Provider store={store}>
                     <FacetMoreRowsConnected facet={facet} facetRows={facetRows} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             store.dispatch(addFacet(facet));
             wrapper.update();

@@ -83,7 +83,7 @@ export class Dropdown extends Component<IDropdownProps, any> {
                 open: this.props.isOpened,
                 'cursor-default': this.props.disabled,
             },
-            this.props.className
+            this.props.className,
         );
 
         return (

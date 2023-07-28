@@ -81,7 +81,7 @@ describe('Option picker', () => {
             await await userEvent.click(optionButton);
             expect(onClickSpy).toHaveBeenCalledWith(
                 OPTION_PICKER_BASIC_PROPS.options[0].value(),
-                OPTION_PICKER_BASIC_PROPS.options[0].label
+                OPTION_PICKER_BASIC_PROPS.options[0].label,
             );
         });
     });

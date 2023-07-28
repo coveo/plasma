@@ -34,7 +34,7 @@ describe('<RadioSelect />', () => {
                 <RadioSelect {...props}>
                     <Radio id="radio1" value={firstRadioValue} onClick={spy} disabledTooltip={specialDisabledTooltip} />
                     <Radio id="radio2" value={secondRadioValue} name={radioName} />
-                </RadioSelect>
+                </RadioSelect>,
             );
         };
 
@@ -49,7 +49,7 @@ describe('<RadioSelect />', () => {
                         disabledTooltip={specialDisabledTooltip}
                     />
                     <RadioCard id="radio2" value={secondRadioValue} name={radioName} />
-                </RadioSelect>
+                </RadioSelect>,
             );
         };
 
@@ -126,7 +126,7 @@ describe('<RadioSelect />', () => {
                     });
 
                     expect(radioSelect.find(variation.radioFC).first().props().disabledTooltip).toBe(
-                        specialDisabledTooltip
+                        specialDisabledTooltip,
                     );
                     expect(radioSelect.find(variation.radioFC).last().props().disabledTooltip).toBe(disabledTooltip);
                 });

@@ -6,7 +6,7 @@ describe('PaginationSelectors tests', () => {
             const paginationState = {id: 'test', pageNb: 2};
 
             expect(
-                PaginationSelectors.getPaginationState({paginationComposite: [paginationState]}, {id: 'test'})
+                PaginationSelectors.getPaginationState({paginationComposite: [paginationState]}, {id: 'test'}),
             ).toEqual(paginationState);
         });
 
@@ -14,7 +14,7 @@ describe('PaginationSelectors tests', () => {
             const paginationState = {id: 'aaaaa', pageNb: 2};
 
             expect(
-                PaginationSelectors.getPaginationState({paginationComposite: [paginationState]}, {id: 'test'})
+                PaginationSelectors.getPaginationState({paginationComposite: [paginationState]}, {id: 'test'}),
             ).not.toEqual(paginationState);
         });
     });
@@ -24,7 +24,7 @@ describe('PaginationSelectors tests', () => {
             const paginationState = {id: 'test', pageNb: 2};
 
             expect(
-                PaginationSelectors.getPaginationPageNumber({paginationComposite: [paginationState]}, {id: 'test'})
+                PaginationSelectors.getPaginationPageNumber({paginationComposite: [paginationState]}, {id: 'test'}),
             ).toEqual(paginationState.pageNb);
         });
 
@@ -32,7 +32,7 @@ describe('PaginationSelectors tests', () => {
             const paginationState = {id: 'aaaaa', pageNb: 2};
 
             expect(
-                PaginationSelectors.getPaginationPageNumber({paginationComposite: [paginationState]}, {id: 'test'})
+                PaginationSelectors.getPaginationPageNumber({paginationComposite: [paginationState]}, {id: 'test'}),
             ).not.toEqual(paginationState.pageNb);
         });
     });

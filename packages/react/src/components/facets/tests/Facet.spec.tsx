@@ -208,7 +208,7 @@ describe('Facets', () => {
 
                 expect(facetComponent.find('FacetMoreRows').length).toBe(0);
                 expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
-            }
+            },
         );
 
         it('should display the last facet if the component has one more facet than allowed', () => {
@@ -350,11 +350,11 @@ describe('Facets', () => {
             expect(facetComponent.find(FacetRow).at(0).props().facetRow).toEqual(expect.objectContaining(selected[1]));
             expect(facetComponent.find(FacetRow).at(1).props().facetRow).toEqual(expect.objectContaining(selected[0]));
             expect(facetComponent.find(FacetRow).at(2).props().facetRow).toEqual(
-                expect.objectContaining(unselected[1])
+                expect.objectContaining(unselected[1]),
             );
 
             expect(facetComponent.find(FacetRow).at(3).props().facetRow).toEqual(
-                expect.objectContaining(unselected[0])
+                expect.objectContaining(unselected[0]),
             );
         });
     });

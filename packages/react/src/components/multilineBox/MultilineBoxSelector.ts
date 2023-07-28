@@ -11,7 +11,7 @@ const multiBoxIDsCombiner = (multiBoxState: IStringListState): string[] => multi
 
 const getMultiBoxIDsList: (state: Partial<PlasmaState>, props: {id: string}) => string[] = createSelector(
     getMultiBoxIDs,
-    multiBoxIDsCombiner
+    multiBoxIDsCombiner,
 );
 
 export const MultilineBoxSelectors = {

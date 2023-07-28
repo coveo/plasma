@@ -16,7 +16,7 @@ const ReactCodeMirror = Loadable<IControlledCodeMirror>(
     () => import('./CodeMirror').then((mod: typeof import('./CodeMirror')) => mod.Controlled),
     {
         ssr: false,
-    }
+    },
 );
 
 export interface ICodeEditorProps {
@@ -194,5 +194,5 @@ class CodeEditorDisconnect extends Component<
  */
 export const CodeEditor: ComponentType<ICodeEditorProps> = connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(CodeEditorDisconnect);

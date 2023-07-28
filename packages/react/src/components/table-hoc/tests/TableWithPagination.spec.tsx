@@ -33,14 +33,14 @@ describe('Table HOC', () => {
 
         it('should not throw', () => {
             expect(() =>
-                shallowWithStore(<TableWithPagination id="a" data={[]} renderBody={_.identity} />, store).dive()
+                shallowWithStore(<TableWithPagination id="a" data={[]} renderBody={_.identity} />, store).dive(),
             ).not.toThrow();
 
             expect(() =>
                 shallowWithStore(
                     <TableWithPagination id="b" data={[{value: 'a'}]} renderBody={_.identity} />,
-                    store
-                ).dive()
+                    store,
+                ).dive(),
             ).not.toThrow();
         });
 
@@ -94,7 +94,7 @@ describe('Table HOC', () => {
         it('should slice the data according to the perPageNumbers specified in the HOC config', () => {
             const expectedPerPageNumbers = [2, 3, 4];
             const MyTable: ComponentType<PropsWithChildren<ITableWithPaginationProps>> = _.compose(
-                tableWithPagination({perPageNumbers: expectedPerPageNumbers})
+                tableWithPagination({perPageNumbers: expectedPerPageNumbers}),
             )(TableHOC);
             const table = shallowWithStore(<MyTable {...defaultProps} />, getStoreMock())
                 .dive()
@@ -125,7 +125,7 @@ describe('Table HOC', () => {
                 expect(() =>
                     shallowWithStore(<TableWithPagination {...defaultProps} data={null} />, store)
                         .dive()
-                        .dive()
+                        .dive(),
                 ).not.toThrow();
             });
 
@@ -167,7 +167,7 @@ describe('Table HOC', () => {
                     store = getStoreWithPage(initialPage, initialPerPage);
                     const wrapper = shallowWithStore(
                         <TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />,
-                        store
+                        store,
                     )
                         .dive()
                         .dive()
@@ -190,7 +190,7 @@ describe('Table HOC', () => {
                     store = getStoreWithPage(1, 10);
                     const wrapper = shallowWithStore(
                         <TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />,
-                        store
+                        store,
                     )
                         .dive()
                         .dive()

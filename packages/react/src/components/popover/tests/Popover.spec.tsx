@@ -23,7 +23,7 @@ describe('<Popover>', () => {
             <Popover {...props}>
                 <span id={popoverToggleId}>Toggle</span>
                 <span id={popoverElementId}>Tether element</span>
-            </Popover>
+            </Popover>,
         ));
 
     beforeEach(() => {
@@ -44,8 +44,8 @@ describe('<Popover>', () => {
                 <Popover {...popoverProps}>
                     <span>Toggle</span>
                     <span>Tether element</span>
-                </Popover>
-            )
+                </Popover>,
+            ),
         ).not.toThrow();
     });
 
@@ -55,8 +55,8 @@ describe('<Popover>', () => {
                 <Popover {...popoverProps} style={{'margin-left': '10px'}}>
                     <span>Toggle</span>
                     <span>Tether element</span>
-                </Popover>
-            )
+                </Popover>,
+            ),
         ).not.toThrow();
     });
 
@@ -76,7 +76,7 @@ describe('<Popover>', () => {
                 shallow(
                     <Popover {...popoverProps}>
                         <span>Toggle</span>
-                    </Popover>
+                    </Popover>,
                 );
             }).not.toThrow();
         });

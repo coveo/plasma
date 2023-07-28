@@ -19,6 +19,7 @@
     user-select: none;
 
     @include slim-scroll(var(--grey-20), var(--grey-40));
+
     &::-webkit-scrollbar,
     ::-webkit-scrollbar {
         width: $slim-scroll-bar-width + $navigation-border-for-scroll-bar * 2;
@@ -26,8 +27,8 @@
     }
 
     *,
-    *:before,
-    *:after {
+    *::before,
+    *::after {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
     }
@@ -56,16 +57,19 @@
             .navigation-menu-section {
                 .navigation-menu-section-link {
                     border-left: $navigation-active-border-width solid transparent;
+
                     &:hover {
                         background-color: var(--grey-20);
                         opacity: 1;
                     }
+
                     &.state-active {
                         background-color: var(--grey-20);
                         border-left-color: var(--digital-blue-80);
                         opacity: 1;
                     }
                 }
+
                 .navigation-menu-section-header {
                     position: relative;
                     display: flex;
@@ -73,9 +77,9 @@
                     height: 55px;
                     color: var(--navy-blue-80);
                     font-weight: var(--main-font-bolder);
-
                     font-size: $navigation-section-font-size;
                     cursor: pointer;
+
                     &.no-collapse {
                         cursor: default;
                     }
@@ -88,6 +92,7 @@
                         width: $navigation-section-icon-size;
                         height: $navigation-section-icon-size;
                         margin: 0 $navigation-section-icon-margin-right 0 $navigation-section-icon-margin-left;
+
                         &.mod-fill {
                             fill: var(--navy-blue-80);
                         }
@@ -97,6 +102,7 @@
                             stroke: var(--navy-blue-80);
                         }
                     }
+
                     .navigation-menu-section-header-no-icon {
                         height: $navigation-menu-section-height;
                         padding-left: $sidenavigation-padding-left + $navigation-active-border-width;
@@ -117,9 +123,11 @@
 
                         &.disabled {
                             cursor: default;
+
                             .navigation-menu-section-item-link {
                                 color: var(--grey-60);
                             }
+
                             &:hover {
                                 background: none;
                             }
@@ -140,12 +148,13 @@
                             border-radius: 8px;
 
                             &:focus-visible {
-                                @include focus-border(var(--navy-blue-10), 0px, 2px);
+                                @include focus-border(var(--navy-blue-10), 0, 2px);
                             }
 
                             &.state-locked {
                                 color: $navigation-locked-color;
                             }
+
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
                                 opacity: 1;
@@ -176,6 +185,7 @@
                         &.state-active {
                             background-color: var(--grey-20);
                             border-left-color: var(--digital-blue-80);
+
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
                                 opacity: 1;
@@ -184,6 +194,7 @@
 
                         &:hover {
                             background-color: var(--grey-20);
+
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
                                 opacity: 1;

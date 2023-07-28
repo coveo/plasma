@@ -40,7 +40,7 @@ describe('<MultiStepBar />', () => {
 
     it('should render without error with a steps with a tooltip', () => {
         expect(() =>
-            shallow(<MultiStepBar steps={[{state: MultiStepState.Doing, tooltip: {title: 'Some Tooltip'}}]} />)
+            shallow(<MultiStepBar steps={[{state: MultiStepState.Doing, tooltip: {title: 'Some Tooltip'}}]} />),
         ).not.toThrow();
     });
 
@@ -55,7 +55,7 @@ describe('<MultiStepBar />', () => {
                 eachPossibleStepSelectors.forEach((state) => {
                     expect(
                         multiStepBar.find(`${multiStepBarBackgroundContainerSelector} ${multiStepBarDoneSelector}`)
-                            .length
+                            .length,
                     ).toBe(1);
                 });
             });
@@ -85,11 +85,11 @@ describe('<MultiStepBar />', () => {
                 eachPossibleStepSelectors.forEach((state) => {
                     expect(
                         multiStepBar.find(`${multiStepBarBackgroundContainerSelector} ${multiStepBarDoneSelector}`)
-                            .length
+                            .length,
                     ).toBe(1);
 
                     expect(
-                        multiStepBar.find(`${multiStepBarContainerSelector} ${multiStepBarDoneSelector}`).length
+                        multiStepBar.find(`${multiStepBarContainerSelector} ${multiStepBarDoneSelector}`).length,
                     ).toBe(1);
                 });
             });

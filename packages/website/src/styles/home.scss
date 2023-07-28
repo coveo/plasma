@@ -41,7 +41,7 @@
                 #08b7ea 100%
             );
             background-size: 400% 400%;
-            -webkit-background-clip: text;
+            background-clip: text;
             animation: moveBackground 12s linear infinite;
             -webkit-text-fill-color: transparent;
         }
@@ -65,6 +65,7 @@
     0% {
         background-position: 100% 0%;
     }
+
     100% {
         background-position: 33.7% 100%;
     }

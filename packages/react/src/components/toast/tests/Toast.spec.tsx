@@ -32,7 +32,7 @@ describe('Toasts', () => {
         const newToastAttributes = _.extend({}, toastBasicAttributes, {onDestroy: destroySpy});
 
         expect(() =>
-            mount(<Toast {...newToastAttributes} />, {attachTo: document.getElementById('App')}).unmount()
+            mount(<Toast {...newToastAttributes} />, {attachTo: document.getElementById('App')}).unmount(),
         ).not.toThrow();
 
         expect(destroySpy).toHaveBeenCalledTimes(1);
@@ -132,7 +132,7 @@ describe('Toasts', () => {
             toastComponent
                 .find(descriptionContainer)
                 .children()
-                .equals(<div>{expectedChildren}</div>)
+                .equals(<div>{expectedChildren}</div>),
         ).toBe(true);
     });
 
@@ -232,7 +232,7 @@ describe('Toasts', () => {
                 },
                 {
                     timeout: dismissDelay,
-                }
+                },
             );
         });
     });
@@ -248,7 +248,7 @@ describe('Toasts', () => {
             toastComponent = mount(
                 <Toast title="Preparing file for download..." type="download">
                     <div>Some file.csv</div>
-                </Toast>
+                </Toast>,
             );
 
             expect(toastComponent.find('.toast-title').text()).toBe('Preparing file for download...');
@@ -258,7 +258,7 @@ describe('Toasts', () => {
             render(
                 <Toast title="a" type="download">
                     <div>Some file.csv</div>
-                </Toast>
+                </Toast>,
             );
 
             expect(screen.getByRole('alert')).toBeInTheDocument();

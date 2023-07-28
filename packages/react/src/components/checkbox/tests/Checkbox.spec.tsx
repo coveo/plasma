@@ -113,7 +113,7 @@ describe('Checkbox', () => {
                     <Checkbox id="my-other-test">
                         <Label>even awesomer label</Label>
                     </Checkbox>
-                </>
+                </>,
             );
             expect(screen.getByRole('checkbox', {name: 'awesome label'})).toBeVisible();
             expect(screen.getByRole('checkbox', {name: 'even awesomer label'})).toBeVisible();
@@ -124,7 +124,7 @@ describe('Checkbox', () => {
                 <>
                     <Checkbox id="my-test" aria-labelledby="my-id" />
                     <Label id="my-id">custom label</Label>
-                </>
+                </>,
             );
             expect(screen.getByRole('checkbox', {name: 'custom label'})).toBeVisible();
         });

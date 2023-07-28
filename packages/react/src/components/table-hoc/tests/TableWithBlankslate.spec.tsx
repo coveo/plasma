@@ -9,7 +9,7 @@ import {tableWithBlankSlate} from '../TableWithBlankSlate';
 
 describe('TableWithBlankSlate', () => {
     const TableWithBlankSlate: ReturnType<ReturnType<typeof tableWithBlankSlate>> = _.compose(tableWithBlankSlate())(
-        TableHOC
+        TableHOC,
     );
 
     const basicProps: ITableHOCProps = {
@@ -55,7 +55,7 @@ describe('TableWithBlankSlate', () => {
                     .dive()
                     .dive()
                     .prop<() => React.ReactNode>('renderBody')()}
-            </div>
+            </div>,
         ).children();
 
         expect(renderedBody.type()).toBe(BlankSlateWithTable);
@@ -69,7 +69,7 @@ describe('TableWithBlankSlate', () => {
                     .dive()
                     .dive()
                     .prop<() => React.ReactNode>('renderBody')()}
-            </div>
+            </div>,
         ).children();
 
         expect(renderedBody.type()).toBe(MyCustomBlankslate);
@@ -79,7 +79,7 @@ describe('TableWithBlankSlate', () => {
         const renderSpy = jest.fn();
         const wrapper = shallowWithState(
             <TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} renderBody={renderSpy} />,
-            {}
+            {},
         )
             .dive()
             .dive();
@@ -112,7 +112,7 @@ describe('TableWithBlankSlate', () => {
         const expectedTitle = 'First';
         const TableWithDoubleBlankSlate = _.compose(
             tableWithBlankSlate({title: expectedTitle}),
-            tableWithBlankSlate({title: 'Second'})
+            tableWithBlankSlate({title: 'Second'}),
         )(TableHOC);
 
         const wrapper = shallowWithState(<TableWithDoubleBlankSlate {...basicProps} />, {})
@@ -165,7 +165,7 @@ describe('TableWithBlankSlate', () => {
             const renderSpy = jest.fn();
             const wrapper = shallowWithState(
                 <TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} renderBody={renderSpy} />,
-                {}
+                {},
             )
                 .dive()
                 .dive();

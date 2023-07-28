@@ -51,7 +51,7 @@ export const tableWithPredicateGeneric =
 
         const mapStateToProps = (
             state: PlasmaState,
-            ownProps: ITableWithPredicateProps
+            ownProps: ITableWithPredicateProps,
         ): ITableWithPredicateStateProps | ITableHOCOwnProps => {
             const predicate =
                 SelectSelector.getListBoxSelected(state, {

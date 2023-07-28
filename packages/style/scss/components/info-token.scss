@@ -18,14 +18,17 @@
     &.filled {
         &,
         [fill] {
-            fill: currentColor;
+            fill: currentcolor;
         }
+
         &,
         [stroke] {
             stroke: var(--white);
         }
+
         &.mod-warning {
             stroke: var(--black);
+
             [stroke] {
                 stroke: var(--black);
             }

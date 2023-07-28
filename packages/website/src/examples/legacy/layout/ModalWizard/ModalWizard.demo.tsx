@@ -18,10 +18,10 @@ const containsCoveo = (str: string) => str.trim().toLowerCase().includes('coveo'
 
 const Demo = () => {
     const selectedPath = useSelector((state: PlasmaState) =>
-        RadioSelectSelectors.getValue(state, {id: 'radio-step-1'})
+        RadioSelectSelectors.getValue(state, {id: 'radio-step-1'}),
     );
     const inputTwoValue = useSelector(
-        (state: PlasmaState) => InputSelectors.getValue(state, {id: 'input-step-2'}) || ''
+        (state: PlasmaState) => InputSelectors.getValue(state, {id: 'input-step-2'}) || '',
     );
     const dispatch: IDispatch = useDispatch();
 

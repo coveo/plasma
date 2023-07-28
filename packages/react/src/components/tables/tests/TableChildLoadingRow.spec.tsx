@@ -40,7 +40,7 @@ describe('<TableChildLoadingRow />', () => {
                     isInitialLoad: true,
                 })
                     .find('td')
-                    .prop('colSpan')
+                    .prop('colSpan'),
             ).toBe(tablePropsMock.headingAttributes.length);
         });
 
@@ -55,9 +55,9 @@ describe('<TableChildLoadingRow />', () => {
                         collapsibleFormatter: () => null,
                     })
                         .find('td')
-                        .prop('colSpan')
+                        .prop('colSpan'),
                 ).toBe(tablePropsMock.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT);
-            }
+            },
         );
     });
 });

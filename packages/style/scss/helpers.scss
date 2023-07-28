@@ -2,16 +2,18 @@
 
 $browser-context: 13; // Default
 
-//converter
+// converter
 @function pxtoem($target, $context: $browser-context) {
-    @return math.div($target, $context) + 0em;
+    @return math.div($target, $context) + 0;
 }
 
-//border
+// border
 @mixin button-border($vertical, $horizontal, $border: false) {
     $property: border-#{$vertical}-#{$horizontal}-radius;
+
     button {
         #{$property}: $border-radius;
+
         @if $border {
             border-top: $default-border;
         }
@@ -19,9 +21,7 @@ $browser-context: 13; // Default
 }
 
 @mixin focus-outline($offset: 0) {
-    outline-width: 2px;
-    outline-style: auto;
-    outline-color: var(--cerulean-blue-50);
+    outline: var(--cerulean-blue-50) auto 2px;
     outline-offset: $offset;
 }
 

@@ -95,7 +95,7 @@ export const tablesInitialState: {[tableId: string]: ITableState} = {};
 export const updateSelectedIDs = (state: ITableState, oldSelectedIds: string[]): ITableState => {
     const newSelectedIds = _.reject(
         oldSelectedIds,
-        (selectedId: string) => !_.contains(state.data.displayedIds, selectedId)
+        (selectedId: string) => !_.contains(state.data.displayedIds, selectedId),
     );
     return {
         ...state,
@@ -109,7 +109,7 @@ export const updateSelectedIDs = (state: ITableState, oldSelectedIds: string[]):
 
 export const tableReducer = (
     state: ITableState = tableInitialState,
-    action: IReduxAction<ITableActionPayload>
+    action: IReduxAction<ITableActionPayload>,
 ): ITableState => {
     switch (action.type) {
         case TableActions.add:
@@ -124,7 +124,7 @@ export const tableReducer = (
                     (predicate: ITablePredicate) =>
                         `${getTableChildComponentId(action.payload.id, TableChildComponent.PREDICATE)}${
                             predicate.attributeName
-                        }`
+                        }`,
                 ),
                 datePickerId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER),
                 datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
@@ -231,7 +231,7 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
             const currentTableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
                 ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
                 : _.findKey(tablesState, (tableState, tableId: string) =>
-                      contains(action.payload && action.payload.id, tableId)
+                      contains(action.payload && action.payload.id, tableId),
                   );
 
             return currentTableId

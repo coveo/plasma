@@ -41,6 +41,6 @@ export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Componen
 
     return connect<StateProps, DispatchProps, T & IMultiSelectWithDirtyOwnProps>(
         mapStateToProps,
-        mapDispatchToProps
+        mapDispatchToProps,
     )(WrappedMultiSelect as any);
 };

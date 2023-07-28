@@ -15,7 +15,7 @@ describe('withDirty', () => {
 
     it('renders the component as not dirty on mount', () => {
         const ComponentWithDirty = withDirty({id: '🆔', showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean')})(
-            Fixture
+            Fixture,
         );
 
         render(<ComponentWithDirty />);
@@ -26,7 +26,7 @@ describe('withDirty', () => {
 
     it('renders the component as dirty if it is identified as such', async () => {
         const ComponentWithDirty = withDirty({id: '🆔', showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean')})(
-            Fixture
+            Fixture,
         );
 
         render(<ComponentWithDirty />);

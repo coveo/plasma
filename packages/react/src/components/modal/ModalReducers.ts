@@ -12,7 +12,7 @@ export const modalsInitialState: IModalState[] = [];
 
 export const modalReducer = (
     state: IModalState = modalInitialState,
-    action: IReduxAction<IModalActionPayload>
+    action: IReduxAction<IModalActionPayload>,
 ): IModalState => {
     switch (action.type) {
         case ModalAction.addModal:
@@ -42,7 +42,7 @@ export const modalReducer = (
 
 export const modalsReducer = (
     state: IModalState[] = modalsInitialState,
-    action: IReduxAction<IModalActionPayload>
+    action: IReduxAction<IModalActionPayload>,
 ): IModalState[] => {
     switch (action.type) {
         case ModalAction.addModal:

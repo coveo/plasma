@@ -13,7 +13,7 @@ import {IPaginationState} from './NavigationPaginationReducers';
 
 const mapStateToProps = (
     state: PlasmaState,
-    ownProps: INavigationPaginationOwnProps
+    ownProps: INavigationPaginationOwnProps,
 ): INavigationPaginationStateProps => {
     const item: IPaginationState = _.findWhere(state.paginationComposite, {id: ownProps.id});
 
@@ -24,7 +24,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: INavigationPaginationOwnProps
+    ownProps: INavigationPaginationOwnProps,
 ): INavigationPaginationDispatchProps => ({
     onRender: () => dispatch(addPagination(ownProps.id)),
     onDestroy: () => dispatch(removePagination(ownProps.id)),
@@ -37,5 +37,5 @@ const mapDispatchToProps = (
 export const NavigationPaginationConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(NavigationPagination);

@@ -68,7 +68,7 @@ describe('Reducers', () => {
             ];
             let newState: ISearchBarState[] = searchBarsReducer(
                 oldState,
-                toggleSearching('search-bar', !oldState[0].searching)
+                toggleSearching('search-bar', !oldState[0].searching),
             );
 
             expect(newState[0].searching).toBe(!oldState[0].searching);
@@ -94,7 +94,7 @@ describe('Reducers', () => {
             ];
             let newState: ISearchBarState[] = searchBarsReducer(
                 oldState,
-                toggleSearchBarDisabled('search-bar', !oldState[0].disabled)
+                toggleSearchBarDisabled('search-bar', !oldState[0].disabled),
             );
 
             expect(newState[0].disabled).toBe(!oldState[0].disabled);
@@ -120,7 +120,7 @@ describe('Reducers', () => {
             ];
             const newState: ISearchBarState[] = searchBarsReducer(
                 oldState,
-                setSearchBarValue('search-bar', 'new value')
+                setSearchBarValue('search-bar', 'new value'),
             );
 
             expect(newState[0].value).toBe('new value');

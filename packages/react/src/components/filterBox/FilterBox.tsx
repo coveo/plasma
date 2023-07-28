@@ -143,7 +143,7 @@ export class FilterBox extends Component<IFilterBoxProps, any> {
         const filterBoxContainerClasses = classNames(
             'flex filter-container',
             {disabled: this.props.disabled},
-            this.props.containerClasses
+            this.props.containerClasses,
         );
         const filterInputClasses = classNames('flex filter-box', {truncate: this.props.truncate});
 

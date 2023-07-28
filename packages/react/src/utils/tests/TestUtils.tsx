@@ -96,7 +96,7 @@ export const IsDirtyIndicator: FunctionComponent<{id: string; label?: string}> =
     const {isDirty} = useSelector(
         createStructuredSelector({
             isDirty: ValidationSelectors.isDirty([id]),
-        })
+        }),
     );
     return isDirty && <div>{label}</div>;
 };

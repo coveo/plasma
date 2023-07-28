@@ -22,7 +22,7 @@ describe('MultiSelectWithDirty', () => {
                 <MultiSelectWithDirty {...defaultProps} initialValues={[]} />
                 <IsDirtyIndicator id={defaultProps.id} label="is dirty" />
             </>,
-            {initialState}
+            {initialState},
         );
 
         expect(screen.getByText('is dirty')).toBeVisible();
@@ -36,7 +36,7 @@ describe('MultiSelectWithDirty', () => {
                 <MultiSelectWithDirty {...defaultProps} initialValues={[ONE_VALUE, ANOTHER_VALUE]} />
                 <IsDirtyIndicator id={defaultProps.id} label="is dirty" />
             </>,
-            {initialState}
+            {initialState},
         );
         expect(screen.getByText('is dirty')).toBeVisible();
     });
@@ -49,7 +49,7 @@ describe('MultiSelectWithDirty', () => {
                 <MultiSelectWithDirty {...defaultProps} initialValues={[ONE_VALUE]} />
                 <IsDirtyIndicator id={defaultProps.id} label="is dirty" />
             </>,
-            {initialState}
+            {initialState},
         );
 
         expect(screen.queryByText('is dirty')).not.toBeInTheDocument();
@@ -63,7 +63,7 @@ describe('MultiSelectWithDirty', () => {
                 <MultiSelectWithDirty {...defaultProps} initialValues={[]} />
                 <IsDirtyIndicator id={defaultProps.id} label="is dirty" />
             </>,
-            {initialState}
+            {initialState},
         );
 
         expect(screen.queryByText('is dirty')).not.toBeInTheDocument();

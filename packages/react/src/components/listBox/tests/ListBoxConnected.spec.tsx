@@ -23,7 +23,7 @@ describe('ListBox', () => {
                 <Provider store={store}>
                     <ListBoxConnected id={id} items={items} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             listBox = wrapper.find(ListBox).first();
         };

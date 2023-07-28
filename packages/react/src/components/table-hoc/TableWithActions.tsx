@@ -62,6 +62,6 @@ export const tableWithActions = () => (WrappedComponent: TableWithActionsCompone
         PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
     >(
         mapStateToProps,
-        mapDispatchToProps
+        mapDispatchToProps,
     )(TableWithActions as any);
 };

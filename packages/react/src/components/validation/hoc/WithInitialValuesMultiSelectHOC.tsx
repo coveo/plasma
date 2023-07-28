@@ -41,7 +41,7 @@ export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
             initialValues?.length &&
             _.difference(
                 initialValues,
-                items.map((item) => item.value)
+                items.map((item) => item.value),
             );
 
         const newItems = items.map((item) => ({
@@ -53,7 +53,7 @@ export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
             () => () => {
                 props.resetInitialValueWarningOnUnmount && clearWarning();
             },
-            []
+            [],
         );
 
         useEffect(() => {
@@ -66,6 +66,6 @@ export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
 
     return connect<null, DispatchProps, T & IMultiSelectWithInitialValuesOwnProps>(
         null,
-        mapDispatchToProps
+        mapDispatchToProps,
     )(WrappedMultiSelect as any);
 };

@@ -33,14 +33,15 @@
         transition: color 0.2s ease;
     }
 
-    &:-ms-input-placeholder {
-        // IE11 treats input placeholders like input text. It styles them according to
-        // the "color" property inside an input selector.
-        //
-        // Adding !important allows consumers of Vapor to customize the colour of input text without affecting
-        // the visibility of the placeholder inside IE11.
-        //
-        // https://stackoverflow.com/questions/22199047/placeholder-css-not-being-applied-in-ie-11
+    &:input-placeholder {
+        /*
+        * IE11 treats input placeholders like input text. It styles them according to
+        * the "color" property inside an input selector.
+        *
+        * Adding !important allows consumers of Vapor to customize the colour of input text without affecting
+        * the visibility of the placeholder inside IE11.
+        *
+        * https://stackoverflow.com/questions/22199047/placeholder-css-not-being-applied-in-ie-11 */
         color: $text-color !important;
     }
 }

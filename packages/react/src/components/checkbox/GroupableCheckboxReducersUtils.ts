@@ -9,7 +9,7 @@ export const calculateTotalCheckboxesChecked = (checkboxes: ICheckboxState[]): n
 
 export const addParentCheckbox = (
     state: IGroupableCheckboxesState,
-    action: IReduxAction<IGroupableCheckboxActionPayload>
+    action: IReduxAction<IGroupableCheckboxActionPayload>,
 ): IGroupableCheckboxesState => {
     const newState: IGroupableCheckboxesState = {
         ...state,
@@ -29,7 +29,7 @@ export const addParentCheckbox = (
 
 export const addChildCheckbox = (
     state: IGroupableCheckboxesState,
-    action: IReduxAction<IGroupableCheckboxActionPayload>
+    action: IReduxAction<IGroupableCheckboxActionPayload>,
 ): IGroupableCheckboxesState => {
     const newState: IGroupableCheckboxesState = {
         ...state,
@@ -54,13 +54,13 @@ export const addChildCheckbox = (
 
 export const removeParentCheckbox = (
     state: IGroupableCheckboxesState[],
-    action: IReduxAction<IGroupableCheckboxActionPayload>
+    action: IReduxAction<IGroupableCheckboxActionPayload>,
 ): IGroupableCheckboxesState[] =>
     _.reject(state, (checkboxState: IGroupableCheckboxesState) => action.payload.id === checkboxState.parentId);
 
 export const removeChildCheckbox = (
     state: IGroupableCheckboxesState,
-    action: IReduxAction<IGroupableCheckboxActionPayload>
+    action: IReduxAction<IGroupableCheckboxActionPayload>,
 ) => {
     const checkboxState: ICheckboxState = _.findWhere(state.checkboxes, {id: action.payload.id});
     if (checkboxState) {
@@ -75,7 +75,7 @@ export const removeChildCheckbox = (
 
 export const toggleChildCheckbox = (
     state: IGroupableCheckboxesState,
-    action: IReduxAction<IGroupableCheckboxActionPayload>
+    action: IReduxAction<IGroupableCheckboxActionPayload>,
 ) => {
     let isChecked: boolean;
     const checkboxes: ICheckboxState[] = _.map(state.checkboxes, (checkbox: ICheckboxState) => {
@@ -105,7 +105,7 @@ export const toggleChildCheckbox = (
 
 export const toggleParentCheckbox = (
     state: IGroupableCheckboxesState,
-    action: IReduxAction<IGroupableCheckboxActionPayload>
+    action: IReduxAction<IGroupableCheckboxActionPayload>,
 ) => {
     const isChecked: boolean = !state.parent.checked;
     const newCheckboxes: ICheckboxState[] = _.map(state.checkboxes, (checkbox: ICheckboxState) => ({
@@ -126,7 +126,7 @@ export const toggleParentCheckbox = (
 
 export const disabledParentCheckbox = (
     state: IGroupableCheckboxesState,
-    action: IReduxAction<IGroupableCheckboxActionPayload>
+    action: IReduxAction<IGroupableCheckboxActionPayload>,
 ) => {
     const isDisabled: boolean = !state.parent.disabled;
     return {
@@ -141,7 +141,7 @@ export const disabledParentCheckbox = (
 
 export const disabledChildCheckbox = (
     state: IGroupableCheckboxesState,
-    action: IReduxAction<IGroupableCheckboxActionPayload>
+    action: IReduxAction<IGroupableCheckboxActionPayload>,
 ) => {
     const checkboxes: ICheckboxState[] = _.map(state.checkboxes, (checkbox: ICheckboxState) => {
         if (checkbox.id === action.payload.id) {
@@ -161,7 +161,7 @@ export const disabledChildCheckbox = (
 
 export const disabledAllCheckbox = (
     state: IGroupableCheckboxesState,
-    action: IReduxAction<IGroupableCheckboxActionPayload>
+    action: IReduxAction<IGroupableCheckboxActionPayload>,
 ) => {
     const disabled: boolean = action.payload.disabled || !state.parent.disabled;
     return {

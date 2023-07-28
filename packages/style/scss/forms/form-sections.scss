@@ -58,8 +58,8 @@
         color: var(--deprecated-medium-grey);
         text-transform: uppercase;
 
-        &:before,
-        &:after {
+        &::before,
+        &::after {
             position: absolute;
             top: 4px;
             width: 235px;
@@ -67,12 +67,12 @@
             content: ' ';
         }
 
-        &:before {
+        &::before {
             left: 0;
             border-image: linear-gradient(to left, var(--deprecated-medium-grey), white) 1;
         }
 
-        &:after {
+        &::after {
             left: 265px;
             border-image: linear-gradient(to right, var(--deprecated-medium-grey), white) 1;
         }

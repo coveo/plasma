@@ -18,6 +18,7 @@
         background-color: var(--deprecated-orange);
         border-radius: 100%;
         animation: bouncedelay 1.7s infinite ease-in-out;
+
         /* Prevent first frame from flickering when animation starts */
         animation-fill-mode: both;
     }
@@ -79,7 +80,6 @@
         z-index: 999;
         display: block;
         transform: translate(-50%, -50%);
-
         opacity: 1;
     }
 }
@@ -93,7 +93,7 @@
 }
 
 .loading-spinner {
-    @include spinner();
+    @include spinner;
 }
 
 @keyframes rotationAnimation {

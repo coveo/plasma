@@ -35,7 +35,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: ICalendarOwnProps): ICale
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ICalendarOwnProps
+    ownProps: ICalendarOwnProps,
 ): ICalendarDispatchProps => ({
     onClick: (pickerId: string, isUpperLimit: boolean, value: Date) => {
         dispatch(resetOptionPickers(pickerId));

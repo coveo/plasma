@@ -38,7 +38,7 @@ export const tabReducer = (state: ITabState = tabInitialState, action: IReduxAct
 
 export const tabsReducer = (
     state: ITabState[] = tabsInitialState,
-    action: IReduxAction<ITabActionPayload>
+    action: IReduxAction<ITabActionPayload>,
 ): ITabState[] => {
     switch (action.type) {
         case TabAction.addTab:
@@ -58,7 +58,7 @@ export const tabsReducer = (
 
 export const tabGroupReducer = (
     state: ITabGroupState = tabGroupInitialState,
-    action: IReduxAction<ITabActionPayload>
+    action: IReduxAction<ITabActionPayload>,
 ): ITabGroupState => {
     switch (action.type) {
         case TabAction.addTab:
@@ -81,7 +81,7 @@ const findGroup = (state: ITabGroupState[], id: string) => _.find(state, (group:
 
 export const tabGroupsReducer = (
     state: ITabGroupState[] = tabGroupsInitialState,
-    action: IReduxAction<ITabActionPayload>
+    action: IReduxAction<ITabActionPayload>,
 ): ITabGroupState[] => {
     switch (action.type) {
         case TabAction.addTab:

@@ -45,7 +45,7 @@ describe('<SliderHandle/>', () => {
             <SliderHandle
                 handleProps={handleProps}
                 handleCustomProps={{...handleCustomProps, customTooltip: customToolTip}}
-            />
+            />,
         );
 
         expect(shallowedSliderHandle.prop('overlay')).toEqual(customToolTip);
@@ -59,7 +59,7 @@ describe('<SliderHandle/>', () => {
 
     it('should set the tooltip visible prop to false if the hasTooltip prop is not passed even if the handle is dragging', () => {
         shallowedSliderHandle = shallow(
-            <SliderHandle handleProps={handleProps} handleCustomProps={{...handleCustomProps, hasTooltip: false}} />
+            <SliderHandle handleProps={handleProps} handleCustomProps={{...handleCustomProps, hasTooltip: false}} />,
         );
 
         expect(shallowedSliderHandle.prop('visible')).toBeFalsy();

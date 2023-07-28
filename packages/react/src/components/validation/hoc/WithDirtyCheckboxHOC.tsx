@@ -28,7 +28,7 @@ export const withDirtyCheckboxHOC = <T extends ICheckboxOwnProps & IInputOwnProp
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
             },
-            []
+            [],
         );
 
         return (

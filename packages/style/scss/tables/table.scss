@@ -106,8 +106,9 @@
             opacity: 0.4;
         }
 
-        &:not(.no-hover):not(.collapsible-row):not(.empty):hover {
+        &:not(.no-hover, .collapsible-row, .empty):hover {
             background-color: var(--grey-20);
+
             td {
                 background-color: var(--grey-20);
             }
@@ -121,6 +122,7 @@
         &.selected:not(.no-selection-indicator) {
             &:not(:hover) {
                 background-color: var(--grey-20);
+
                 td {
                     background-color: var(--grey-20);
                 }
@@ -133,6 +135,7 @@
 
         &.blankslate-rows:hover {
             background-color: var(--white);
+
             td {
                 background-color: var(--white);
             }
@@ -195,14 +198,14 @@
     &.confirm-delete {
         .row-selected td,
         &.row-selected:hover td {
-            background-color: rgba(var(--deprecated-red-rgb), $transparency-5);
+            background-color: rgb(var(--deprecated-red-rgb) $transparency-5);
             border-color: var(--critical-70);
             transition: background-color 300ms;
         }
     }
 
     &.mod-deleting tbody tr.selected td {
-        background-color: rgba(var(--deprecated-red-rgb), $transparency-5);
+        background-color: rgb(var(--deprecated-red-rgb) $transparency-5);
     }
 
     .mod-card-list {
@@ -241,7 +244,7 @@
 
     .mod-card {
         border-radius: $big-border-radius;
-        box-shadow: 0px 2px 10px rgba(var(--black-rgb), 0.2);
+        box-shadow: 0 2px 10px rgb(var(--black-rgb) 0.2);
         cursor: pointer;
 
         &:hover {
@@ -276,7 +279,6 @@
     &.table-card {
         overflow: hidden;
         border-radius: $border-radius;
-
         box-shadow: $table-shadow;
     }
 }
@@ -284,6 +286,7 @@
 .state-icon-row {
     width: $table-state-icon-size;
     height: $table-state-icon-size;
+
     svg {
         width: inherit;
         height: inherit;
@@ -301,6 +304,7 @@ $row-style: (
         > td:first-child {
             color: $color;
             border-left-color: $color;
+
             svg {
                 fill: $color;
             }

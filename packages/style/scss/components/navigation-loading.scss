@@ -13,7 +13,6 @@
 .navigation-loading-animation {
     transform: translate3d(0, 0, 0);
     animation-name: move-background-horizontal;
-
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -23,7 +22,6 @@
 .navigation-loading-item {
     position: relative;
     max-width: 90%;
-
     height: var(--default-font-size);
     margin: $default-margin 0;
     background-size: $navigation-loading-background-size;

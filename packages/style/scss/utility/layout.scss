@@ -33,13 +33,13 @@
     overflow: auto;
 }
 
-.clearfix:before,
-.clearfix:after {
+.clearfix::before,
+.clearfix::after {
     display: table;
     content: ' ';
 }
 
-.clearfix:after {
+.clearfix::after {
     clear: both;
 }
 
@@ -176,13 +176,16 @@
 
 .background {
     --background-color: var(--white);
+
     background-color: var(--background-color);
 
     &.mod-light {
         --background-color: var(--grey-20);
     }
+
     &.mod-medium {
         --background-color: var(--grey-40);
     }
+
     // TODO: add mod-error, mod-dark etc.
 }

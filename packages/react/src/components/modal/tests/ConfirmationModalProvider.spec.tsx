@@ -30,7 +30,7 @@ describe('ConfirmationModalProvider', () => {
                         />
                     )}
                 </ConfirmationModalProvider>,
-                {initialState: {modals: [{id: '👾', isOpened: true}]}}
+                {initialState: {modals: [{id: '👾', isOpened: true}]}},
             );
             expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
             await userEvent.click(screen.getByRole('button', {name: 'prompt confirmation modal'}));
@@ -63,7 +63,7 @@ describe('ConfirmationModalProvider', () => {
                         />
                     )}
                 </ConfirmationModalProvider>,
-                {initialState: {modals: [{id: '👾', isOpened: true}]}}
+                {initialState: {modals: [{id: '👾', isOpened: true}]}},
             );
             expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
             await userEvent.click(screen.getByRole('button', {name: 'prompt confirmation modal'}));

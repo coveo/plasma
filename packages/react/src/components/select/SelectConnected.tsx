@@ -244,7 +244,7 @@ export class SelectConnected extends PureComponent<ISelectProps> {
                     (item: IItemBoxProps) =>
                         !item.hidden &&
                         (!this.props.multi || !_.contains(this.props.selectedValues, item.value)) &&
-                        !item.disabled
+                        !item.disabled,
                 )
                 .map((item: IItemBoxProps) => ({...item, index: realIndex++}))
                 .value();

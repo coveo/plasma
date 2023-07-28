@@ -4,7 +4,6 @@ div.datepicker {
     left: 0;
     z-index: 5555;
     display: none;
-
     box-sizing: content-box;
     width: 196px;
     font-size: 12px;
@@ -49,7 +48,7 @@ div.datepicker table td {
 
 div.datepicker th {
     padding: 0;
-    color: #666666;
+    color: #666;
     font-weight: var(--main-font-regular);
     text-align: center;
 }
@@ -81,7 +80,7 @@ div.datepicker tbody a {
 }
 
 td.datepickerNotInMonth a {
-    color: #666666;
+    color: #666;
 }
 
 tbody.datepickerDays td.datepickerSelected {
@@ -127,7 +126,7 @@ div.datepicker th a.datepickerGoNext,
 div.datepicker th a.datepickerGoPrev {
     display: none;
     width: 20px;
-    color: #666666;
+    color: #666;
 }
 
 div.datepicker th a.datepickerMonth {
@@ -172,24 +171,24 @@ table.datepickerViewYears tr.datepickerDoW {
 
 td.datepickerDisabled a,
 td.datepickerDisabled.datepickerNotInMonth a {
-    color: #555555;
+    color: #555;
 }
 
 /* Not used by default, calendar cells can be marked as special if desired (doesn't seem to be totally working) */
 div.datepicker tbody.datepickerDays td.datepickerSpecial a {
     color: white;
-    background: #770000;
+    background: #700;
 }
 
 div.datepicker tbody.datepickerDays td.datepickerSpecial.datepickerSelected a {
-    background: #aa0000;
+    background: #a00;
 }
 
 /* Datepicker border styling */
 .datepicker {
     padding: 10px;
     background-color: #f7f7f7;
-    border: 1px solid #cccccc;
+    border: 1px solid #ccc;
 }
 
 /* Tighten up the spacing between multiple calendars */
@@ -210,7 +209,7 @@ div.datepicker th {
 
 /* grey underline beneath day of week row */
 div.datepicker table thead tr.datepickerDoW th {
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #ccc;
 }
 
 /* Black text, white background, and grey borders around day cells */
@@ -231,12 +230,12 @@ div.datepicker table tbody.datepickerDays td {
 
 /* blue cell color for selected days */
 tbody.datepickerDays td.datepickerSelected {
-    background-color: #0077cc;
+    background-color: #07c;
 }
 
 /* yellow cell background on hover */
 div.datepicker tbody.datepickerDays td:hover {
-    background-color: #ffcc33;
+    background-color: #fc3;
 }
 
 /* Bold today's date */

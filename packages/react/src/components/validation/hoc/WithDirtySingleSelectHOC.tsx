@@ -35,7 +35,7 @@ export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Compon
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
             },
-            []
+            [],
         );
 
         useEffect(() => {
@@ -49,6 +49,6 @@ export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Compon
 
     return connect<StateProps, DispatchProps, T & IWithDirtySingleSelectHOCProps>(
         mapStateToProps,
-        mapDispatchToProps
+        mapDispatchToProps,
     )(WrapperSingleSelect as any);
 };

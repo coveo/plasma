@@ -17,7 +17,7 @@
 @import 'utility/shadow';
 @import 'utility/transitions';
 
-//Progress bar
+// Progress bar
 @import 'elements/progress-bar';
 
 // Buttons
@@ -42,7 +42,7 @@
 @import 'controls/flat-select';
 @import 'controls/inputs';
 @import 'controls/numeric-spinner';
-@import 'controls/radios.scss';
+@import 'controls/radios';
 @import 'controls/slide-toggle';
 @import 'controls/slide-toggle-double';
 @import 'controls/splash';
@@ -60,10 +60,10 @@
 
 // Components
 @import 'components/list-box';
-@import 'components/breadcrumbs.scss';
-@import 'components/drop.scss';
-@import 'components/filepicker.scss';
-@import 'components/info-token.scss';
+@import 'components/breadcrumbs';
+@import 'components/drop';
+@import 'components/filepicker';
+@import 'components/info-token';
 
 .coveo-styleguide {
     // Tables
@@ -78,6 +78,7 @@
     @import 'tables/table-alternating-rows';
     @import 'tables/table-drag-and-drop';
     @import 'tables/table-loading';
+
     // Components
     @import 'components/prompt';
     @import 'components/header';
@@ -111,7 +112,7 @@
     @import 'components/step-progress-bar';
     @import 'components/badge';
     @import 'components/corner-ribbon';
-    @import 'components/code-editor.scss';
+    @import 'components/code-editor';
     @import 'components/icon-badge';
     @import 'components/icon-card';
     @import 'components/flippable';
@@ -129,6 +130,7 @@
     @import 'components/table-hoc';
     @import 'components/modal-wizard';
     @import 'components/diff-viewer';
+
     // Forms
     @import 'forms/form-sections';
     @import 'forms/form-child';
@@ -137,6 +139,7 @@
     @import 'forms/table-form';
     @import 'forms/form-validation';
     @import 'controls/half-input';
+
     // Utility
     @import 'typography/utility';
     @import 'typography/lists';

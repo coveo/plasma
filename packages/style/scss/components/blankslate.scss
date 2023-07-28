@@ -23,6 +23,7 @@
 
     &.mod-small {
         padding: $blankslate-padding-small;
+
         h1 {
             margin-top: $blankslate-small-h1-margin-top;
             margin-bottom: $blankslate-margin;
@@ -37,8 +38,9 @@
 
     // deprecated use .mod-error instead
     &.mod-danger {
-        background-color: rgba(var(--deprecated-red-rgb), $transparency-5);
+        background-color: rgb(var(--deprecated-red-rgb) $transparency-5);
         border-color: var(--critical-70);
+
         h1,
         p {
             color: var(--critical-70);
@@ -46,14 +48,14 @@
     }
 
     &.mod-error {
-        background-color: rgba(var(--deprecated-tango-rgb), $transparency-5);
+        background-color: rgb(var(--deprecated-tango-rgb) $transparency-5);
         border-color: var(--deprecated-red);
 
         h1 {
             color: var(--deprecated-red);
 
             svg {
-                fill: currentColor;
+                fill: currentcolor;
             }
         }
     }

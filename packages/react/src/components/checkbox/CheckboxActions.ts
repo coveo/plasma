@@ -24,7 +24,7 @@ export const toggleCheckbox = (id: string, checked?: boolean): IReduxAction<IChe
 export const addCheckbox = (
     id: string,
     checked: boolean,
-    disabled?: boolean
+    disabled?: boolean,
 ): IReduxAction<ICheckboxActionPayload> => ({
     type: CheckboxActions.add,
     payload: {

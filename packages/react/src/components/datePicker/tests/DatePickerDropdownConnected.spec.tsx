@@ -37,7 +37,7 @@ describe('Date picker', () => {
                 return mount(
                     <Provider store={store}>
                         <DatePickerDropdownConnected {...DATE_PICKER_DROPDOWN_BASIC_PROPS} withDrop {...props} />
-                    </Provider>
+                    </Provider>,
                 );
             };
 
@@ -56,7 +56,7 @@ describe('Date picker', () => {
                 wrapperFooter.find(Button).last().props().onClick();
 
                 expect(store.getActions()).toContainEqual(
-                    DropActions.toggle(DATE_PICKER_DROPDOWN_BASIC_PROPS.id, DefaultGroupIds.default, false)
+                    DropActions.toggle(DATE_PICKER_DROPDOWN_BASIC_PROPS.id, DefaultGroupIds.default, false),
                 );
             });
 
@@ -68,7 +68,7 @@ describe('Date picker', () => {
                 wrapperFooter.find(Button).first().props().onClick();
 
                 expect(store.getActions()).toContainEqual(
-                    DropActions.toggle(DATE_PICKER_DROPDOWN_BASIC_PROPS.id, DefaultGroupIds.default, false)
+                    DropActions.toggle(DATE_PICKER_DROPDOWN_BASIC_PROPS.id, DefaultGroupIds.default, false),
                 );
             });
         });
@@ -82,7 +82,7 @@ describe('Date picker', () => {
                 wrapper = mount(
                     <Provider store={store}>
                         <DatePickerDropdownConnected {...props} />
-                    </Provider>
+                    </Provider>,
                 );
                 datePickerDropdown = wrapper.find(DatePickerDropdown).first();
             };
@@ -224,13 +224,13 @@ describe('Date picker', () => {
 
             it('should toggle the open property of the dropdown when calling the onClick prop', () => {
                 expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
-                    false
+                    false,
                 );
 
                 datePickerDropdown.props().onClick(datePickerDropdown.props().datePicker);
 
                 expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
-                    true
+                    true,
                 );
             });
 
@@ -252,13 +252,13 @@ describe('Date picker', () => {
                 store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
 
                 expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
-                    true
+                    true,
                 );
 
                 datePickerDropdown.props().onDocumentClick();
 
                 expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
-                    false
+                    false,
                 );
             });
 
@@ -272,7 +272,7 @@ describe('Date picker', () => {
                 datePickerDropdown.props().onApply();
 
                 expect(_.findWhere(store.getState().datePickers, {id: pickerId}).appliedLowerLimit).toEqual(
-                    newLowerLimit
+                    newLowerLimit,
                 );
             });
 
@@ -295,13 +295,13 @@ describe('Date picker', () => {
                 store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
 
                 expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
-                    true
+                    true,
                 );
 
                 datePickerDropdown.props().onApply();
 
                 expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
-                    false
+                    false,
                 );
             });
 
@@ -309,13 +309,13 @@ describe('Date picker', () => {
                 store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
 
                 expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
-                    true
+                    true,
                 );
 
                 datePickerDropdown.props().onCancel(1, 1, true);
 
                 expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
-                    false
+                    false,
                 );
             });
 
@@ -381,11 +381,11 @@ describe('Date picker', () => {
                 datePickerDropdown.find(ModalFooter).find(Button).first().simulate('click');
 
                 expect(_.findWhere(store.getState().optionsCycles, {id: monthCycleId}).currentOption).toBe(
-                    newLowerLimit.getMonth()
+                    newLowerLimit.getMonth(),
                 );
 
                 expect(_.findWhere(store.getState().optionsCycles, {id: yearCycleId}).currentOption).toBe(
-                    DEFAULT_YEARS.indexOf(newLowerLimit.getFullYear().toString())
+                    DEFAULT_YEARS.indexOf(newLowerLimit.getFullYear().toString()),
                 );
             });
 
@@ -409,11 +409,11 @@ describe('Date picker', () => {
                 datePickerDropdown.props().onCancel(1, 1, false);
 
                 expect(_.findWhere(store.getState().optionsCycles, {id: monthCycleId}).currentOption).toBe(
-                    expectedValue
+                    expectedValue,
                 );
 
                 expect(_.findWhere(store.getState().optionsCycles, {id: yearCycleId}).currentOption).toBe(
-                    expectedValue
+                    expectedValue,
                 );
 
                 expect(_.findWhere(store.getState().optionPickers, {id: pickerId}).selectedValue).toBe(newValue);

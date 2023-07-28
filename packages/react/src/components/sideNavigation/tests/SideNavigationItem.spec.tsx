@@ -34,7 +34,7 @@ describe('SideNavigationItem', () => {
         item = shallow(
             <SideNavigationItem>
                 <a href="http://www.perdu.com">Perdu ?</a>
-            </SideNavigationItem>
+            </SideNavigationItem>,
         );
 
         expect(item.type()).toBe('div');

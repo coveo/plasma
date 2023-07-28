@@ -23,7 +23,7 @@ const getItems = (state: PlasmaState, {items}: {items: IItemBoxProps[]}): IItemB
 const itemsWithFilterCombiner = (
     items: IItemBoxProps[],
     filterText: string,
-    matchFilter: MatchFilter
+    matchFilter: MatchFilter,
 ): IItemBoxProps[] =>
     _.map(items, (item: IItemBoxProps) => ({...item, hidden: !matchFilter(filterText, item) || !!item.hidden}));
 
@@ -32,7 +32,7 @@ const getItemsWithFilter = createSelector(
     (state: PlasmaState, {id}: CherryPick<ISelectOwnProps, 'id'>) => FilterBoxSelectors.getFilterText(state, {id}),
     (state: PlasmaState, {matchFilter}: Pick<ISelectWithFilterOwnProps, 'matchFilter'>) =>
         FilterBoxSelectors.getMatchFilter(state, {matchFilter}),
-    itemsWithFilterCombiner
+    itemsWithFilterCombiner,
 );
 
 const customItemsCombiner = (items: IItemBoxProps[], listState: string[]): IItemBoxProps[] => {
@@ -45,13 +45,13 @@ const getCustomItems = createSelector([getItems, getListState], customItemsCombi
 const getCustomItemsWithFilter = createSelector(
     getItemsWithFilter,
     getCustomItems,
-    (filteredItems: IItemBoxProps[], customItems: IItemBoxProps[]) => [...filteredItems, ...customItems]
+    (filteredItems: IItemBoxProps[], customItems: IItemBoxProps[]) => [...filteredItems, ...customItems],
 );
 
 const getServerFilteredItems = createSelector(
     getItems,
     getCustomItems,
-    (serverSideProcessedItems, customValuesFiltered) => [...serverSideProcessedItems, ...customValuesFiltered]
+    (serverSideProcessedItems, customValuesFiltered) => [...serverSideProcessedItems, ...customValuesFiltered],
 );
 
 const listBoxSelectedCombiner = (listBox: IListBoxState): string[] => listBox?.selected ?? [];
@@ -72,7 +72,7 @@ const multiSelectSelectedValuesCombiner = (listBoxSelected: string[], listState:
 const getMultiSelectSelectedValues = createSelector(
     getListBoxSelected,
     getListState,
-    multiSelectSelectedValuesCombiner
+    multiSelectSelectedValuesCombiner,
 );
 
 export const SelectSelector = {

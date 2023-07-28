@@ -126,8 +126,8 @@ describe('DropdownSearch', () => {
             expect(
                 _.findWhere(
                     _.reject(updatedState.options, (option) => option.custom || option.hidden),
-                    {value: selectedOptionValue}
-                )
+                    {value: selectedOptionValue},
+                ),
             ).toBeDefined();
         });
 
@@ -178,7 +178,7 @@ describe('DropdownSearch', () => {
 
                 const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(
                     stateWithFilterTextPresent,
-                    action
+                    action,
                 );
 
                 expect(_.where(updatedState.options, {selected: true, value: customValue}).length).toBe(1);
@@ -220,7 +220,7 @@ describe('DropdownSearch', () => {
 
                 const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(
                     stateWithFilterTextPresent,
-                    action
+                    action,
                 );
 
                 expect(updatedState.options).toEqual(expectedOptions);
@@ -243,7 +243,7 @@ describe('DropdownSearch', () => {
 
                 const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(
                     stateWithFilterTextPresent,
-                    action
+                    action,
                 );
 
                 expect(_.where(updatedState.options, {selected: true})).toEqual(expectedSelectedOptions);

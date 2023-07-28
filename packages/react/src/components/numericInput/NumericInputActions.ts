@@ -11,7 +11,7 @@ const mount = (
     id: string,
     initialValue: number,
     min?: number,
-    max?: number
+    max?: number,
 ): IReduxAction<ISetNumericInputPayload> => ({
     type: NumericInputActionTypes.mount,
     payload: {id, value: initialValue, min, max},

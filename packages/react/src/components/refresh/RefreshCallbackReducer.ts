@@ -16,7 +16,7 @@ export const refreshCallbackInitialState: IRefreshCallbackReducerState = {};
 
 export const refreshCallBackReducer = (
     state: IRefreshCallbackReducerState = refreshCallbackInitialState,
-    action: IReduxAction<BasePayload>
+    action: IReduxAction<BasePayload>,
 ): IRefreshCallbackReducerState => {
     switch (action.type) {
         case RefreshCallbackActionType.start:

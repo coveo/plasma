@@ -29,7 +29,7 @@ const WithBlankSlate: FunctionComponent = () => (
 
 const TableComposed = compose(
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),
-    tableWithNewPagination()
+    tableWithNewPagination(),
 )(TableHOC);
 
 const renderHeader = () => (

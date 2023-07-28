@@ -13,7 +13,7 @@ export const optionsCyclesInitialState: IOptionsCycleState[] = [];
 
 export const optionsCycleReducer = (
     state: IOptionsCycleState = optionsCycleInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IOptionsCycleState => {
     switch (action.type) {
         case OptionsCycleActions.change:
@@ -37,7 +37,7 @@ export const optionsCycleReducer = (
 
 export const optionsCyclesReducer = (
     state: IOptionsCycleState[] = optionsCyclesInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IOptionsCycleState[] => {
     switch (action.type) {
         case OptionsCycleActions.change:

@@ -21,7 +21,7 @@ describe('CodeEditor', () => {
 
     it('does not set the code-editor-no-cursor class when readOnly is false', async () => {
         const {container} = render(
-            <CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} readOnly={false} />
+            <CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} readOnly={false} />,
         );
 
         await screen.findByRole('textbox');

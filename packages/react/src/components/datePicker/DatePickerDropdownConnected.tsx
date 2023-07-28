@@ -40,7 +40,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IDatePickerDropdownOwnPro
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IDatePickerDropdownOwnProps
+    ownProps: IDatePickerDropdownOwnProps,
 ): IDatePickerDropdownDispatchProps => ({
     onRender: () => dispatch(addDropdown(ownProps.id)),
     onDestroy: () => dispatch(removeDropdown(ownProps.id)),
@@ -68,7 +68,7 @@ const mapDispatchToProps = (
             dispatch(closeDropdown(ownProps.id));
             ownProps.withDrop &&
                 dispatch(
-                    DropActions.toggle(ownProps.id, ownProps?.dropOptions?.groupId ?? DefaultGroupIds.default, false)
+                    DropActions.toggle(ownProps.id, ownProps?.dropOptions?.groupId ?? DefaultGroupIds.default, false),
                 );
         }
     },
@@ -83,5 +83,5 @@ const mapDispatchToProps = (
 export const DatePickerDropdownConnected: React.ComponentType<IDatePickerDropdownOwnProps> = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(DatePickerDropdown);

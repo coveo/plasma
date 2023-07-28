@@ -47,7 +47,7 @@ export const tableWithNewPagination =
                     FlatSelectSelectors.getSelectedOptionId(state, {
                         id: PaginationUtils.getPaginationPerPageId(ownProps.id),
                     }),
-                    10
+                    10,
                 ) || PER_PAGE_NUMBERS[1];
 
             const isServer = ownProps.isServer || config.isServer;
@@ -114,6 +114,6 @@ export const tableWithNewPagination =
             ITableWithNewPaginationProps
         >(
             mapStateToProps,
-            mapDispatchToProps
+            mapDispatchToProps,
         )(TableWithNewPaginationDisconnected as any);
     };

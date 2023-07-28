@@ -23,7 +23,7 @@ export class BasicHeader extends Component<IBasicHeaderProps> {
             },
             classes: [],
         },
-        HeaderWrapper.defaultProps
+        HeaderWrapper.defaultProps,
     );
 
     render() {

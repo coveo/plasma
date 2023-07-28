@@ -66,7 +66,7 @@ gulp.task('clean', (done) => {
             del(filesToDelete).then((deletedFiles) => {
                 log(colors.green('Files deleted:', deletedFiles.join(', ')));
                 done();
-            })
+            }),
         );
 });
 
@@ -118,7 +118,7 @@ gulp.task('svg:concat', () => {
     const src = merge(
         gulp.src('./resources/icons/svg/*.svg'),
         // taken from https://github.com/coveo/search-ui/tree/master/image/svg/filetypes . Update as needed.
-        gulp.src('./resources/icons/svg/coveo-search-ui-filetypes/*.svg').pipe(rename({prefix: 'ft-'}))
+        gulp.src('./resources/icons/svg/coveo-search-ui-filetypes/*.svg').pipe(rename({prefix: 'ft-'})),
     );
 
     return src.pipe(filesToJson('CoveoStyleGuideSvg.json')).pipe(gulp.dest('dist/svg'));
@@ -137,7 +137,7 @@ gulp.task(
         dict.generateSvgNamesTypescriptType('SvgName.d.ts');
 
         done();
-    })
+    }),
 );
 
 gulp.task('svg', gulp.series('svg:enum'));

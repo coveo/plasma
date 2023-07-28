@@ -50,7 +50,7 @@ export const addDatePicker = (
     isClearable = false,
     simple = false,
     initialDateRange?: DatePickerDateRange,
-    minimalRangeLimit: IRangeLimit = undefined
+    minimalRangeLimit: IRangeLimit = undefined,
 ): IReduxAction<IAddDatePickerPayload> => ({
     type: DatePickerActions.add,
     payload: {

@@ -102,14 +102,14 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
             autoInfiniteScroll = mount(<DropdownSearchAutoInfiniteScroll {...basicProps} />);
 
             expect(autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.endMessage).toBe(
-                basicProps.endMessage
+                basicProps.endMessage,
             );
 
             const newOptions = getOptions('Other options', optionsPerPage - 1);
             autoInfiniteScroll.setProps({options: newOptions});
 
             expect(
-                autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.endMessage
+                autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.endMessage,
             ).toBeNull();
         });
     });

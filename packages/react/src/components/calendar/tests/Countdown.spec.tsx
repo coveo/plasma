@@ -12,7 +12,7 @@ describe('Countdown', () => {
         expect(
             screen.getByRole('heading', {
                 name: /11 days left/i,
-            })
+            }),
         ).toBeInTheDocument();
     });
 
@@ -24,7 +24,7 @@ describe('Countdown', () => {
         expect(
             screen.getByRole('heading', {
                 name: /last day/i,
-            })
+            }),
         ).toBeInTheDocument();
     });
 });

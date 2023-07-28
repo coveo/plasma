@@ -14,7 +14,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IInputOwnProps): IInputSt
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<ICheckboxActionPayload>) => void,
-    ownProps: IInputOwnProps
+    ownProps: IInputOwnProps,
 ): IInputDispatchProps => ({
     onRender: () => dispatch(addCheckbox(ownProps.id, ownProps.defaultChecked)),
     onDestroy: () => dispatch(removeCheckbox(ownProps.id)),

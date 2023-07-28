@@ -61,7 +61,7 @@ describe('Table HOC', () => {
                         onUpdateUrl={onUpdateUrlSpy}
                         renderBody={renderBodySpy}
                     />,
-                    store
+                    store,
                 )
                     .dive()
                     .dive();
@@ -76,7 +76,7 @@ describe('Table HOC', () => {
             const TableWithUrlState = tableWithUrlState(TableHOC);
             table = shallowWithStore(
                 <TableWithUrlState id={'table'} data={[]} onUpdateUrl={onUpdateUrlSpy} renderBody={renderBodySpy} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -222,7 +222,7 @@ describe('Table HOC', () => {
                     .dive();
 
                 expect(store.getActions()).toContainEqual(
-                    changeDatePickerLowerLimit(TableHOCUtils.getDatePickerId('🏦'), lowerLimit)
+                    changeDatePickerLowerLimit(TableHOCUtils.getDatePickerId('🏦'), lowerLimit),
                 );
 
                 expect(store.getActions()).toContainEqual(applyDatePicker('🏦'));
@@ -235,7 +235,7 @@ describe('Table HOC', () => {
                     .dive();
 
                 expect(store.getActions()).toContainEqual(
-                    changeDatePickerUpperLimit(TableHOCUtils.getDatePickerId('🏥'), upperLimit)
+                    changeDatePickerUpperLimit(TableHOCUtils.getDatePickerId('🏥'), upperLimit),
                 );
 
                 expect(store.getActions()).toContainEqual(applyDatePicker('🏥'));
@@ -252,7 +252,7 @@ describe('Table HOC', () => {
                 tableWithPredicate({
                     id: 'topping',
                     values: [],
-                })
+                }),
             )(TableHOC);
 
             it('should set the selected predicate values in the url using the each predicate id as param name', () => {
@@ -277,11 +277,11 @@ describe('Table HOC', () => {
                     .dive();
 
                 expect(store.getActions()).toContainEqual(
-                    selectListBoxOption(TableHOCUtils.getPredicateId('🍕', 'size'), false, '12 inches')
+                    selectListBoxOption(TableHOCUtils.getPredicateId('🍕', 'size'), false, '12 inches'),
                 );
 
                 expect(store.getActions()).toContainEqual(
-                    selectListBoxOption(TableHOCUtils.getPredicateId('🍕', 'topping'), false, 'pepperoni')
+                    selectListBoxOption(TableHOCUtils.getPredicateId('🍕', 'topping'), false, 'pepperoni'),
                 );
             });
         });

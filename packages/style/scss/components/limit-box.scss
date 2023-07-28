@@ -29,6 +29,7 @@ $limit-progress-bar-height: 10px;
     width: 100%;
     height: $limit-progress-bar-height;
     background-color: var(--deprecated-light-grey);
+
     &.no-limit {
         background-color: var(--white);
     }
@@ -46,6 +47,7 @@ $limit-progress-bar-height: 10px;
         @if $i >= 75 {
             background-color: var(--deprecated-orange);
         }
+
         @if $i == 100 {
             background-color: var(--critical-70);
         }

@@ -66,7 +66,7 @@ export type INumericInputPayload = {id: string} | ISetNumericInputPayload;
 
 export const numericInputReducer = (
     state: INumericInputsState = initialNumericInputsState,
-    action?: IReduxAction<INumericInputPayload>
+    action?: IReduxAction<INumericInputPayload>,
 ) => {
     if (!_.isUndefined(NumericInputsReducers[action.type])) {
         return NumericInputsReducers[action.type](state, action);

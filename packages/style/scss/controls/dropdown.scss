@@ -43,7 +43,6 @@
     overflow: hidden;
     white-space: nowrap;
     text-transform: none;
-
     text-overflow: ellipsis;
 
     &.with-append {
@@ -108,6 +107,7 @@
             fill: var(--grey-80);
         }
     }
+
     .dropdown-toggle-arrow-size {
         width: $dropdown-arrow-icon-size;
         height: $dropdown-arrow-icon-size;
@@ -149,7 +149,6 @@
     z-index: 1000;
     display: none;
     float: left;
-
     box-sizing: border-box;
     min-width: 100%;
     max-height: $dropdown-menu-max-height;
@@ -158,11 +157,10 @@
     overflow-y: auto;
     color: var(--title-text-color);
     list-style: none;
-
     background-color: var(--white);
     border: $default-border;
     border-radius: 0 0 2px 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 41%);
 
     @include slim-scroll(var(--white), var(--grey-20));
 
@@ -214,6 +212,7 @@
 
         &.active {
             color: var(--grey-40);
+
             > a,
             > span {
                 &.enabled:not(.selected-value) {
@@ -226,7 +225,6 @@
             height: 1px;
             margin: 8px 0;
             background-color: var(--grey-60);
-
             cursor: default;
         }
 
@@ -236,6 +234,7 @@
 
         .dropdown-option-append {
             width: $dropdown-option-append-width;
+
             @extend %dropdown-option-line-style;
         }
     }
@@ -272,7 +271,7 @@
         border-radius: 8px 8px 0 0;
 
         ~ .list-box {
-            padding: 0 0 8px 0;
+            padding: 0 0 8px;
             border-radius: 0 0 8px 8px;
         }
     }

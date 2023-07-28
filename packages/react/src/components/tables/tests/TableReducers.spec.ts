@@ -131,7 +131,7 @@ describe('TableReducers', () => {
             const newStateFromModifier = tableDataModifier(oldState[tableId]);
 
             expect(tablesReducer(oldState, modifyState(tableId, tableDataModifier, true))[tableId]).toEqual(
-                newStateFromModifier
+                newStateFromModifier,
             );
         });
 
@@ -140,7 +140,7 @@ describe('TableReducers', () => {
             const tableDataModifier = (state: ITableState) => ({...state, isLoading: true});
 
             expect(tablesReducer(oldState, modifyState('some other id', tableDataModifier, true))[tableId]).toEqual(
-                oldState[tableId]
+                oldState[tableId],
             );
         });
     });

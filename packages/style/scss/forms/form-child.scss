@@ -15,7 +15,7 @@ $child-arrow-height: 10px;
         margin-top: $child-arrow-height + $child-parent-spacing;
     }
 
-    &:before {
+    &::before {
         position: absolute;
         top: -$child-arrow-height;
         left: 0;
@@ -32,7 +32,7 @@ $child-arrow-height: 10px;
         margin-left: $child-arrow-height + $child-parent-spacing;
         border-top-left-radius: $border-radius;
 
-        &:before {
+        &::before {
             top: calc(50% - #{$child-arrow-height});
             left: -$child-arrow-height - ($child-arrow-width * 0.5);
             border-top: $child-arrow-width * 0.5 solid transparent;
@@ -48,7 +48,7 @@ $child-arrow-height: 10px;
     &.mod-pure-white {
         background-color: var(--white);
 
-        &:before {
+        &::before {
             border-bottom-color: var(--white);
         }
     }
@@ -56,7 +56,7 @@ $child-arrow-height: 10px;
     &.mod-light {
         background-color: var(--grey-20);
 
-        &:before {
+        &::before {
             border-bottom-color: var(--grey-20);
         }
     }

@@ -87,7 +87,7 @@ export class NavigationPagination extends Component<INavigationPaginationProps, 
                         onPageClick={this.handlePageClick}
                         pageNb={p}
                         selected={p === currentPage}
-                    />
+                    />,
                 );
             });
         }

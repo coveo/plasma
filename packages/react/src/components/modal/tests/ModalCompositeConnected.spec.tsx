@@ -17,7 +17,7 @@ describe('<ModalCompositeConnected />', () => {
     it('should get withReduxState set to true as a prop', () => {
         const modalCompositeConnected = shallowWithStore(
             <ModalCompositeConnected {...basicProps} />,
-            getStoreMock()
+            getStoreMock(),
         ).dive();
 
         expect(modalCompositeConnected.prop('withReduxState')).toBe(true);
@@ -75,7 +75,7 @@ describe('<ModalCompositeConnected />', () => {
         const store = getStoreMock();
         const modalCompositeConnected: ShallowWrapper<ReactModal.Props> = shallowWithStore(
             <ModalCompositeConnected {...basicProps} isOpened />,
-            store
+            store,
         )
             .dive()
             .dive();
@@ -88,7 +88,7 @@ describe('<ModalCompositeConnected />', () => {
     it('should not render a <ModalHeader /> or <ModalHeaderConnected /> if the title is not defined', () => {
         const modalCompositeConnected: ShallowWrapper<ReactModal.Props> = shallowWithState(
             <ModalCompositeConnected id="id" isOpened />,
-            {}
+            {},
         )
             .dive()
             .dive();

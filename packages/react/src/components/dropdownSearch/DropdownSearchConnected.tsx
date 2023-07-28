@@ -49,8 +49,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IDropdownSearchOwnPro
                 ownProps.id,
                 ownProps.defaultOptions,
                 ownProps.defaultSelectedOption,
-                ownProps.supportSingleCustomOption
-            )
+                ownProps.supportSingleCustomOption,
+            ),
         );
 
         // TODO: remove this once the component is refactored and the DropdownSearchReducer is not overwriting the defaultSelectedOption passed above anymore.
@@ -79,5 +79,5 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IDropdownSearchOwnPro
 export const DropdownSearchConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(DropdownSearch);

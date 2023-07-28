@@ -36,7 +36,7 @@ describe('<NavigationPaginationConnected />', () => {
                     <NavigationPaginationConnected id="few-pages-navigation-pagination" totalPages={3} />
                 </div>
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         navigationPagination = wrapper.find(NavigationPagination).first();
         fewPagesNavigationPagination = wrapper.find(NavigationPagination).last();
@@ -74,11 +74,11 @@ describe('<NavigationPaginationConnected />', () => {
 
     it('should render no more <PaginationSelect /> than the total number of pages', () => {
         expect(navigationPagination.find(PaginationSelect).length).toBeLessThan(
-            basicNavigationPaginationProps.totalPages + 1
+            basicNavigationPaginationProps.totalPages + 1,
         );
 
         expect(fewPagesNavigationPagination.find(PaginationSelect).length).toBeLessThan(
-            basicNavigationPaginationProps.totalPages + 1
+            basicNavigationPaginationProps.totalPages + 1,
         );
     });
 
@@ -98,21 +98,21 @@ describe('<NavigationPaginationConnected />', () => {
 
     it('should set the next arrow to disabled if on last page', () => {
         expect(wrapper.find(NavigationPagination).first().find('.flat-select-option').last().hasClass('disabled')).toBe(
-            false
+            false,
         );
 
         store.dispatch(changePage(basicNavigationPaginationProps.id, 3));
         wrapper.update();
 
         expect(wrapper.find(NavigationPagination).first().find('.flat-select-option').last().hasClass('disabled')).toBe(
-            false
+            false,
         );
 
         store.dispatch(changePage(basicNavigationPaginationProps.id, basicNavigationPaginationProps.totalPages - 1));
         wrapper.update();
 
         expect(wrapper.find(NavigationPagination).first().find('.flat-select-option').last().hasClass('disabled')).toBe(
-            true
+            true,
         );
     });
 
@@ -134,19 +134,21 @@ describe('<NavigationPaginationConnected />', () => {
 
     it('should change the current page on page click', () => {
         expect(_.findWhere(store.getState().paginationComposite, {id: basicNavigationPaginationProps.id}).pageNb).toBe(
-            0
+            0,
         );
 
         navigationPagination.find('.flat-select-option').last().simulate('click');
 
         expect(
-            _.findWhere(store.getState().paginationComposite, {id: basicNavigationPaginationProps.id}).pageNb
+            _.findWhere(store.getState().paginationComposite, {id: basicNavigationPaginationProps.id}).pageNb,
         ).not.toBe(0);
     });
 
     it('should return to the first page when resetting the pagination', () => {
         store.dispatch(
-            store.dispatch(changePage(basicNavigationPaginationProps.id, basicNavigationPaginationProps.totalPages - 4))
+            store.dispatch(
+                changePage(basicNavigationPaginationProps.id, basicNavigationPaginationProps.totalPages - 4),
+            ),
         );
         wrapper.update();
 

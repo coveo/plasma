@@ -18,7 +18,7 @@ describe('Select', () => {
                         {value: duplicateText, selected: true},
                         {value: duplicateText, selected: true},
                     ]}
-                />
+                />,
             );
 
             await userEvent.click(screen.getByText(/select an option/i));
@@ -50,7 +50,7 @@ describe('Select', () => {
                         {value: 'a', selected: true},
                         {value: 'b', selected: true},
                     ]}
-                />
+                />,
             );
 
             await userEvent.click(screen.getByText(/select an option/i));

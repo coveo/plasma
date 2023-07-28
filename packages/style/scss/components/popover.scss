@@ -3,7 +3,7 @@
     background-color: var(--white);
     border: $default-border;
     border-radius: $border-radius;
-    box-shadow: 0 2px 4px rgba(var(--deprecated-stratos-rgb), 0.4);
+    box-shadow: 0 2px 4px rgb(var(--deprecated-stratos-rgb) 0.4);
 }
 
 .popover-body {
@@ -29,7 +29,6 @@
     background-color: var(--white);
     border-right: $default-border;
     border-radius: $popover-navigation-section-border-radius;
-
     cursor: pointer;
 
     .back {

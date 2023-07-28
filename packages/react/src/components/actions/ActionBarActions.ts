@@ -32,7 +32,7 @@ export const removeActionBar = (id: string): IReduxAction<IActionBarPayload> => 
 
 export const addActionsToActionBar = (
     id: string,
-    actions: IActionOptions[]
+    actions: IActionOptions[],
 ): IReduxAction<IChangeActionBarActionsPayload> => ({
     type: ActionBarActions.addActions,
     payload: {

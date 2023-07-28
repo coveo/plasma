@@ -26,7 +26,7 @@ describe('LastUpdated', () => {
                 <Provider store={store}>
                     <LastUpdatedConnected id={id} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             lastUpdated = wrapper.find(LastUpdated).first();
         });
@@ -75,7 +75,7 @@ describe('LastUpdated', () => {
             store.dispatch(changeLastUpdated(id));
 
             expect(store.getState().lastUpdatedComposite.filter((timer) => timer.id === id)[0].time).not.toBe(
-                storedTime
+                storedTime,
             );
         });
 

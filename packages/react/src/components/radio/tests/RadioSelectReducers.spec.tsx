@@ -66,7 +66,7 @@ describe('RadioSelect', () => {
                 expect(radioSelectsState.length).toBe(oldState.length);
                 expect(_.findWhere(radioSelectsState, {id: action.payload.id}).value).toBe(action.payload.value);
                 expect(_.reject(radioSelectsState, (radio) => radio.id === action.payload.id)).toEqual(
-                    _.reject(oldState, (radio) => radio.id === action.payload.id)
+                    _.reject(oldState, (radio) => radio.id === action.payload.id),
                 );
             });
 
