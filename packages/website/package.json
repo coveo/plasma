@@ -83,7 +83,7 @@
         "lint-staged": "9.5.0",
         "open-cli": "7.2.0",
         "raw-loader": "4.0.2",
-        "rimraf": "3.0.2",
+        "rimraf": "5.0.1",
         "sass": "1.63.6",
         "tslib": "2.6.0",
         "typescript": "5.1.6"
