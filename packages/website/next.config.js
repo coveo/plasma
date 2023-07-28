@@ -9,7 +9,6 @@ const plugins = [withImages];
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     basePath: basePath.replace(/\/$/, ''), // remove last slash
-    swcMinify: false,
     env: {
         basePath,
     },
