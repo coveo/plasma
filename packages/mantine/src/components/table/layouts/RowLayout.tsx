@@ -155,7 +155,7 @@ const RowLayoutBody = <T,>({
                                 key={cell.id}
                                 data-testid={cell.id}
                                 style={{
-                                    width: columnSizing.size,
+                                    width: columnSizing.size ?? 'auto',
                                     minWidth: columnSizing.minSize,
                                     maxWidth: columnSizing.maxSize,
                                 }}
