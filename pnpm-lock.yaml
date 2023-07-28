@@ -691,8 +691,8 @@ importers:
         specifier: 4.0.2
         version: 4.0.2
       gulp-cheerio:
-        specifier: 0.6.3
-        version: 0.6.3
+        specifier: 1.0.0
+        version: 1.0.0
       gulp-concat:
         specifier: 2.6.1
         version: 2.6.1
@@ -10461,8 +10461,8 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
-  /gulp-cheerio@0.6.3:
-    resolution: {integrity: sha512-ZuRAq48qT9u2E8QUz1pHQZOq9500tQojOfGXzAER91CGYf8a3U5+fHuLWk5wvJ0iwrriaApg5Honvt3r5XMcNg==}
+  /gulp-cheerio@1.0.0:
+    resolution: {integrity: sha512-4dgOVngKJK0+Re+prT/nuXtKM7+F92XeidxjuCeOpOlmYA5rkVaoKrH+xMN/JWOd2iI5OP/NJ6BIjWxeU+ozXQ==}
     dependencies:
       cheerio: 0.22.0
       plugin-error: 0.1.2
