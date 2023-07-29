@@ -48,7 +48,7 @@
         "@loadable/component": "5.15.3",
         "@swc/helpers": "0.5.1",
         "@types/codemirror": "0.0.109",
-        "clsx": "1.2.1",
+        "clsx": "2.0.0",
         "codemirror": "5.63.3",
         "d3": "7.8.5",
         "d3-array": "3.2.4",
