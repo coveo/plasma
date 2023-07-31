@@ -10,8 +10,9 @@ import '../styles/props-table.scss';
 import '../styles/spacing.scss';
 import '../styles/tile.scss';
 
-import {Notifications, Plasmantine} from '@coveord/plasma-mantine';
+import {AppShell, Group, Image, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import {Defaults} from '@coveord/plasma-react';
+import {Header as MantineHeader, ScrollArea} from '@mantine/core';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -21,24 +22,30 @@ import {Provider} from 'react-redux';
 import type {AppProps} from 'next/app';
 import githubLogo from '../../resources/github-mark.svg';
 import logo from '../../resources/plasma-logo.svg';
-import LegacyWarningBanner from '../building-blocs/LegacyWarningBanner';
-import {EngineProvider} from '../search/engine/EngineProvider';
-import StandaloneSearchBar from '../search/StandaloneSearchBar';
 import {Navigation} from '../SideNavigation';
 import {Store} from '../Store';
+import LegacyWarningBanner from '../building-blocs/LegacyWarningBanner';
+import StandaloneSearchBar from '../search/StandaloneSearchBar';
+import {EngineProvider} from '../search/engine/EngineProvider';
 
 const Header = () => (
-    <div id="header" className="demo-header">
-        <Link href="/" className="header-logo-link">
-            <img src={logo} className="header-logo" alt="Plasma Design System" />
-        </Link>
-        <StandaloneSearchBar />
-        <div className="right-side">
+    <MantineHeader height={100}>
+        <Group
+            position="apart"
+            px="lg"
+            py="xs"
+            sx={(theme) => ({backgroundColor: theme.colors.navy[7], height: '100%'})}
+            noWrap
+        >
+            <Link href="/" className="header-logo-link">
+                <Image src={logo} className="header-logo" height={80} fit="contain" alt="Plasma Design System" />
+            </Link>
+            <StandaloneSearchBar />
             <a href="https://github.com/coveo/plasma#readme" aria-label="README" target="_blank">
-                <img src={githubLogo} width={32} height={32} className="invert" />
+                <Image src={githubLogo} width={32} height={32} sx={{filter: 'invert(1)'}} />
             </a>
-        </div>
-    </div>
+        </Group>
+    </MantineHeader>
 );
 
 const MyApp = ({Component, pageProps}: AppProps) => {
@@ -65,14 +72,12 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                 <EngineProvider>
                     <Plasmantine>
                         <Notifications position="top-center" />
-                        <Header />
-                        <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
-                            <Navigation />
-                            <div className="coveo-form flex-auto relative overflow-auto demo-content">
+                        <AppShell navbar={<Navigation />} header={<Header />} padding={0}>
+                            <ScrollArea>
                                 {isLegacy ? <LegacyWarningBanner /> : null}
                                 <Component {...pageProps} />
-                            </div>
-                        </div>
+                            </ScrollArea>
+                        </AppShell>
                     </Plasmantine>
                 </EngineProvider>
             </Provider>
