@@ -80,11 +80,11 @@ export class Flippable extends Component<IFlippableProps & HTMLProps<HTMLDivElem
         const containerClassName = classNames(
             BrowserUtils.isIE() ? 'flippable-ie' : Flippable.CONTAINER_CLASSNAME,
             this.props.isFlipped ? 'show-on-top' : '',
-            this.props.className
+            this.props.className,
         );
         const flipperClassName = classNames(
             Flippable.FLIPPER_CLASSNAME,
-            this.props.isFlipped ? Flippable.triggers.BACK : Flippable.triggers.FRONT
+            this.props.isFlipped ? Flippable.triggers.BACK : Flippable.triggers.FRONT,
         );
 
         return (

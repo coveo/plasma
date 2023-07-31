@@ -63,8 +63,8 @@ describe('WithNonEmptyValueInputValidationHOC', () => {
                         ValidationActions.setError(
                             INPUT_PROPS.id,
                             INPUT_PROPS.validationMessage,
-                            ValidationTypes.nonEmpty
-                        )
+                            ValidationTypes.nonEmpty,
+                        ),
                     );
                 });
             });
@@ -73,7 +73,7 @@ describe('WithNonEmptyValueInputValidationHOC', () => {
                 inputWrapper.prop('validate')('some correct value');
 
                 expect(store.getActions()).not.toContain(
-                    ValidationActions.setError(INPUT_PROPS.id, INPUT_PROPS.validationMessage, ValidationTypes.nonEmpty)
+                    ValidationActions.setError(INPUT_PROPS.id, INPUT_PROPS.validationMessage, ValidationTypes.nonEmpty),
                 );
             });
         });

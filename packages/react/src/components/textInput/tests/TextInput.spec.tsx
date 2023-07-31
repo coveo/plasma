@@ -17,7 +17,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <TextInput type="text" label="Label" defaultValue="🌶" />
-            </FormProvider>
+            </FormProvider>,
         );
 
         const textInput = screen.getByRole('textbox', {name: /label/i});
@@ -29,7 +29,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <TextInput type="text" label="Label" title="🍌" />
-            </FormProvider>
+            </FormProvider>,
         );
 
         expect(screen.getByRole('heading', {name: '🍌'})).toBeInTheDocument();
@@ -39,7 +39,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <TextInput type="text" label="Label" description="🍌" />
-            </FormProvider>
+            </FormProvider>,
         );
 
         expect(screen.getByText('🍌')).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <TextInput type="text" label="Label" helpText="🍌" />
-            </FormProvider>
+            </FormProvider>,
         );
 
         expect(screen.getByText('🍌')).toBeInTheDocument();
@@ -59,7 +59,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <TextInput type="text" label="Label" tooltip="🍌" />
-            </FormProvider>
+            </FormProvider>,
         );
         await waitFor(() => screen.findByRole('img', {name: 'question'}));
         const icon = screen.getByRole('img', {name: /question/i});
@@ -72,7 +72,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <TextInput type="text" label="Label" disabled />
-            </FormProvider>
+            </FormProvider>,
         );
 
         expect(screen.getByRole('textbox', {name: /label/i})).toBeDisabled();
@@ -92,7 +92,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <TextInput type="text" label="💬" required validate={validator} showValidationOnBlur />
-            </FormProvider>
+            </FormProvider>,
         );
 
         const textinput = screen.getByRole('textbox', {name: '💬'});
@@ -138,7 +138,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <TextInput type="text" label="💬" required validate={validator} showValidationOnMount />
-            </FormProvider>
+            </FormProvider>,
         );
         await waitFor(() => screen.findByRole('img', {name: 'critical'}));
         expect(screen.getByRole('textbox', {name: '💬'})).toBeInvalid();
@@ -153,7 +153,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <TextInput type="text" label="💬" required validate={validator} showValidationOnChange />
-            </FormProvider>
+            </FormProvider>,
         );
 
         const textinput = screen.getByRole('textbox', {name: '💬'});
@@ -184,7 +184,7 @@ describe('TextInput', () => {
             <FormProvider>
                 <TextInput type="text" label="first name" required validate={validator} />
                 <TextInput type="text" label="last name" required validate={validator} />
-            </FormProvider>
+            </FormProvider>,
         );
 
         const firstNameInput = screen.getByRole('textbox', {name: 'first name'});
@@ -219,7 +219,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <Fixture />
-            </FormProvider>
+            </FormProvider>,
         );
 
         await userEvent.type(screen.getByRole('textbox', {name: /name/i}), 'some value');
@@ -243,7 +243,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <Fixture />
-            </FormProvider>
+            </FormProvider>,
         );
 
         const nameInput = screen.getByRole('textbox', {name: /name/i});
@@ -269,7 +269,7 @@ describe('TextInput', () => {
         render(
             <FormProvider>
                 <Fixture />
-            </FormProvider>
+            </FormProvider>,
         );
 
         const nameInput = screen.getByRole('textbox', {name: /name/i});

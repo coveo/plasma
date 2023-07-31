@@ -47,7 +47,7 @@ describe('Numeric Input', () => {
         it('should disable the decrement button when the value is lower than the min', () => {
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} min={initialValue} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -69,7 +69,7 @@ describe('Numeric Input', () => {
             const step = 10;
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -86,7 +86,7 @@ describe('Numeric Input', () => {
             beforeEach(() => {
                 const component = shallowWithStore(
                     <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
-                    store
+                    store,
                 )
                     .dive()
                     .dive();
@@ -116,7 +116,7 @@ describe('Numeric Input', () => {
         it('should disable the increment button when the value is greater than the max', () => {
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} max={initialValue} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -129,7 +129,7 @@ describe('Numeric Input', () => {
             const min = initialValue - 1;
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} step={step} min={min} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -153,7 +153,7 @@ describe('Numeric Input', () => {
             const step = 10;
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -168,7 +168,7 @@ describe('Numeric Input', () => {
             const max = initialValue + 1;
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} step={step} max={max} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -187,7 +187,7 @@ describe('Numeric Input', () => {
             });
             const component = shallowWithStore(
                 <NumericInputConnected id={id} invalidMessage={expectedMessage} />,
-                store
+                store,
             )
                 .dive()
                 .dive();
@@ -223,7 +223,7 @@ describe('Numeric Input', () => {
                 component.find('button').at(0).prop<any>('onClick')();
 
                 expect(store.getActions()).toContainEqual(
-                    NumericInputActions.setValue(id, initialNumericInputState.value)
+                    NumericInputActions.setValue(id, initialNumericInputState.value),
                 );
             });
 
@@ -235,7 +235,7 @@ describe('Numeric Input', () => {
                 component.find('button').at(1).prop<any>('onClick')();
 
                 expect(store.getActions()).toContainEqual(
-                    NumericInputActions.setValue(id, initialNumericInputState.value)
+                    NumericInputActions.setValue(id, initialNumericInputState.value),
                 );
             });
 

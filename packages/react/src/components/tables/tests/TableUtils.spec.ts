@@ -1,4 +1,4 @@
-import * as faker from 'faker/locale/en';
+import {faker} from '@faker-js/faker';
 import * as _ from 'underscore';
 import {TableChildComponent, TableSortingOrder} from '../TableConstants';
 import {
@@ -45,19 +45,19 @@ describe('TableUtils', () => {
 
         it('should return the "loading-" prefix following by the table id and the navigation child component suffix for the LOADING_NAVIGATION component', () => {
             expect(getTableChildComponentId(tableId, TableChildComponent.LOADING_NAVIGATION)).toBe(
-                `loading-${tableId}${TableChildComponent.NAVIGATION}`
+                `loading-${tableId}${TableChildComponent.NAVIGATION}`,
             );
         });
 
         it('should return the "pagination-" prefix following by the table id and the navigation child component suffix for the PAGINATION component', () => {
             expect(getTableChildComponentId(tableId, TableChildComponent.PAGINATION)).toBe(
-                `pagination-${tableId}${TableChildComponent.NAVIGATION}`
+                `pagination-${tableId}${TableChildComponent.NAVIGATION}`,
             );
         });
 
         it('should return the table id and the navigation child component suffix for the PER_PAGE component', () => {
             expect(getTableChildComponentId(tableId, TableChildComponent.PER_PAGE)).toBe(
-                `${tableId}${TableChildComponent.NAVIGATION}`
+                `${tableId}${TableChildComponent.NAVIGATION}`,
             );
         });
     });
@@ -78,12 +78,12 @@ describe('TableUtils', () => {
         it('should convert a collection into a dataById format', () => {
             const collection = [
                 {
-                    companyName: faker.company.companyName(),
+                    companyName: faker.company.name(),
                     catchPhrase: faker.company.catchPhrase(),
                     id: 'a',
                 },
                 {
-                    companyName: faker.company.companyName(),
+                    companyName: faker.company.name(),
                     catchPhrase: faker.company.catchPhrase(),
                     id: 'b',
                 },

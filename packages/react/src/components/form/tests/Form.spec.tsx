@@ -40,7 +40,7 @@ describe('Form', () => {
             const form = shallow(
                 <Form>
                     <SomeComponent />
-                </Form>
+                </Form>,
             );
 
             expect(form.find(SomeComponent)).toBeDefined();
@@ -69,7 +69,7 @@ describe('Form', () => {
                 <Form>
                     <input defaultValue="" name="patate" />
                     <input type="submit" value="submit" />
-                </Form>
+                </Form>,
             );
 
             await userEvent.type(screen.getByRole('textbox'), 'hello world');

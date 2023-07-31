@@ -13,7 +13,7 @@ export interface ITableWithPaginationState {
 
 const addTableWithPaginationReducer = (
     state: ITableWithPaginationState[],
-    action: IReduxAction<ITableWithPaginationBasePayload>
+    action: IReduxAction<ITableWithPaginationBasePayload>,
 ) => [
     ...state,
     {
@@ -24,17 +24,17 @@ const addTableWithPaginationReducer = (
 
 const removeTableWithPaginationReducer = (
     state: ITableWithPaginationState[],
-    action: IReduxAction<ITableWithPaginationBasePayload>
+    action: IReduxAction<ITableWithPaginationBasePayload>,
 ) => _.reject(state, (header: ITableWithPaginationState) => header.id === action.payload.id);
 
 const setTableWithPaginationCountReducer = (
     state: ITableWithPaginationState[],
-    action: IReduxAction<ITableWithPaginationSetCountPayload>
+    action: IReduxAction<ITableWithPaginationSetCountPayload>,
 ) => {
     const current = _.findWhere(state, {id: action.payload.id});
     if (current) {
         return _.map(state, (pagination: ITableWithPaginationState) =>
-            pagination.id === current.id ? {...pagination, count: action.payload.count} : pagination
+            pagination.id === current.id ? {...pagination, count: action.payload.count} : pagination,
         );
     }
     return state;
@@ -49,7 +49,7 @@ const TableWithPaginationActionReducers: {[key: string]: (...args: any[]) => any
 type ITableHeaderPayload = ITableWithPaginationBasePayload | ITableWithPaginationSetCountPayload;
 export const TableWithPaginationReducers = (
     state: ITableWithPaginationState[] = [],
-    action: IReduxAction<ITableHeaderPayload>
+    action: IReduxAction<ITableHeaderPayload>,
 ) => {
     if (!_.isUndefined(TableWithPaginationActionReducers[action.type])) {
         return TableWithPaginationActionReducers[action.type](state, action);

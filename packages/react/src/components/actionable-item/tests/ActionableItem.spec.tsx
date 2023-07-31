@@ -15,7 +15,7 @@ describe('ActionableItem', () => {
         render(
             <ActionableItem id="🆔" onItemClick={onClickSpy}>
                 the content
-            </ActionableItem>
+            </ActionableItem>,
         );
         await userEvent.click(screen.getByRole('button', {name: /the content/i}));
         expect(onClickSpy).toHaveBeenCalledTimes(1);
@@ -32,7 +32,7 @@ describe('ActionableItem', () => {
                 ]}
             >
                 the content
-            </ActionableItem>
+            </ActionableItem>,
         );
         await userEvent.click(await screen.findByRole('button', {name: /dots/i}));
         await userEvent.click(screen.getByText(/action 2/i));
@@ -44,7 +44,7 @@ describe('ActionableItem', () => {
         render(
             <ActionableItem id="🆔" actions={[{value: 'action 1'}, {value: 'action 2'}]}>
                 the content
-            </ActionableItem>
+            </ActionableItem>,
         );
         const dotsButton = await screen.findByRole('button', {name: /dots/i});
         await userEvent.click(dotsButton);

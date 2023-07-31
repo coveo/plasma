@@ -31,7 +31,7 @@ describe('<InputConnected />', () => {
             <Provider store={store}>
                 <InputConnected {...props} />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
     };
 
@@ -152,7 +152,7 @@ describe('<InputConnected />', () => {
             const changeDirtyStateSpy = jest.fn();
             const wrapperInputConnected: ShallowWrapper<IInputProps> = shallowWithState(
                 <InputConnected changeDirtyState={changeDirtyStateSpy} />,
-                {}
+                {},
             ).dive();
 
             wrapperInputConnected.props().onChange();

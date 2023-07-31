@@ -12,6 +12,7 @@
     color: var(--white);
     font-size: $medium-title-font-size;
     text-align: center;
+
     button {
         margin-left: 20px;
         border: none;
@@ -62,7 +63,7 @@
 }
 
 .banner-right {
-    color: rgba(var(--white-rgb), $transparency-2);
+    color: rgb(var(--white-rgb) $transparency-2);
     font-size: var(--default-font-size);
 }
 

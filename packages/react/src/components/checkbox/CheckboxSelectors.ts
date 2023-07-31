@@ -11,7 +11,7 @@ const get = (
         id,
         isGroupableState,
         groupableCheckboxProps,
-    }: {id: string; isGroupableState?: boolean; groupableCheckboxProps?: IGroupableCheckboxOwnProps}
+    }: {id: string; isGroupableState?: boolean; groupableCheckboxProps?: IGroupableCheckboxOwnProps},
 ): ICheckboxState | undefined => {
     if (!isGroupableState) {
         return _.findWhere(state.checkboxes, {id});

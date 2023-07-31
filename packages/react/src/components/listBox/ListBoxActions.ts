@@ -35,7 +35,7 @@ export const selectListBoxOption = (
     id: string,
     multi: boolean,
     value: string,
-    index?: number
+    index?: number,
 ): IReduxAction<IListBoxPayload> => ({
     type: ListBoxActions.select,
     payload: {id, multi, value, index},

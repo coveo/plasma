@@ -12,7 +12,7 @@ describe('BorderedLine', () => {
         expect(
             shallow(<BorderedLine />)
                 .find('div')
-                .prop('className')
+                .prop('className'),
         ).toBe(BorderedLine.defaultClassName);
     });
 

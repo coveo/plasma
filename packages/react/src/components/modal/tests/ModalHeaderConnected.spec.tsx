@@ -29,7 +29,7 @@ describe('ModalHeader', () => {
                 <Provider store={store}>
                     <ModalHeaderConnected id={id} title={title} lastOpened />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             modalHeader = wrapper.find(ModalHeader).first();
         });

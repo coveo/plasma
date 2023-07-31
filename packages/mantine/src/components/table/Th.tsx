@@ -11,7 +11,7 @@ const useStyles = createStyles((theme, columnSizing: {size: number; minSize: num
         textAlign: 'left',
         color: theme.colors.gray[6],
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[0],
-        width: columnSizing.size,
+        width: columnSizing.size ?? 'auto',
         minWidth: columnSizing.minSize,
         maxWidth: columnSizing.maxSize,
     },

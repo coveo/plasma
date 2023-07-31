@@ -36,7 +36,7 @@ describe('<BreadcrumbHeader/>', () => {
 
             expect(breadcrumbHeaderComponent.length).toBe(1);
             expect((breadcrumbHeaderComponent.props() as IBreadcrumbProps).title.text).toBe(
-                defaultProps.breadcrumb.title.text
+                defaultProps.breadcrumb.title.text,
             );
         });
 

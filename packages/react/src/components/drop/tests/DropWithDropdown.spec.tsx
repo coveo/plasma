@@ -19,7 +19,7 @@ describe('DropWithDropdown', () => {
         it('should unmount without errors', () => {
             const wrapper = shallowWithState(
                 <DropWithDropdown id={'test'} renderOpenButton={() => defaultButton} />,
-                {}
+                {},
             ).dive();
 
             expect(() => {

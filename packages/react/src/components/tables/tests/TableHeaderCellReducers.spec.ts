@@ -35,8 +35,8 @@ describe('tableHeaderCellsReducer', () => {
         expect(
             tableHeaderCellsReducer(
                 undefined,
-                addHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, testHeaderCell.tableId)
-            )
+                addHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, testHeaderCell.tableId),
+            ),
         ).toEqual(newState);
     });
 
@@ -63,8 +63,8 @@ describe('tableHeaderCellsReducer', () => {
             expect(
                 tableHeaderCellsReducer(
                     currentState,
-                    sortFromHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, testHeaderCell.tableId)
-                )
+                    sortFromHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, testHeaderCell.tableId),
+                ),
             ).toEqual(nextState);
         });
 
@@ -80,8 +80,8 @@ describe('tableHeaderCellsReducer', () => {
             expect(
                 tableHeaderCellsReducer(
                     currentState,
-                    sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, testHeaderCell.tableId)
-                )
+                    sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, testHeaderCell.tableId),
+                ),
             ).toEqual(nextState);
         });
 
@@ -93,8 +93,8 @@ describe('tableHeaderCellsReducer', () => {
             expect(
                 tableHeaderCellsReducer(
                     currentState,
-                    sortFromHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, 'differentTableId')
-                )
+                    sortFromHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, 'differentTableId'),
+                ),
             ).toEqual(currentState);
         });
 
@@ -106,8 +106,8 @@ describe('tableHeaderCellsReducer', () => {
             expect(
                 tableHeaderCellsReducer(
                     currentState,
-                    sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, 'differentTableId')
-                )
+                    sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, 'differentTableId'),
+                ),
             ).toEqual(currentState);
         });
     });

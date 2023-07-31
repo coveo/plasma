@@ -22,7 +22,7 @@ describe('<CollapsibleConnected />', () => {
             <CollapsibleConnected {...collapsibleProps} {...props}>
                 dummy children
             </CollapsibleConnected>,
-            store
+            store,
         );
     };
 

@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
  * @deprecated Use Mantine instead
  */
 export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
-    Component: ComponentClass<T> | FunctionComponent<T>
+    Component: ComponentClass<T> | FunctionComponent<T>,
 ) => {
     type NewOwnProps = T & IWithNonEmptyValueInputValidationProps;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
@@ -37,7 +37,7 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
             () => () => {
                 resetErrorOnUnmount && clearError(props.id);
             },
-            [props.id, resetErrorOnUnmount]
+            [props.id, resetErrorOnUnmount],
         );
 
         return (
@@ -57,6 +57,6 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
 
     return connect<null, DispatchProps, T & IWithNonEmptyValueInputValidationProps>(
         null,
-        mapDispatchToProps
+        mapDispatchToProps,
     )(WrappedInput as any);
 };

@@ -192,7 +192,7 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
                 : {disabled: this.props.disabled};
         const buttonClasses = classNames(
             'btn dropdown-toggle multiselect-add dropdown-toggle-placeholder space-between',
-            this.props.toggleClasses
+            this.props.toggleClasses,
         );
         return (
             <div className={classes} style={this.props.multiSelectStyle}>

@@ -45,7 +45,7 @@ export const ColorPicker: FunctionComponent<IColorPickerProps> = ({
             onChangeComplete?.(colorPicked, event);
             dispatch(changeInputValue(id, colorPicked.hex, true));
         },
-        []
+        [],
     );
 
     return (

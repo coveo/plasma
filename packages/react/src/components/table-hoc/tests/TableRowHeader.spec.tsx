@@ -9,7 +9,7 @@ describe('TableRowHeader', () => {
                 <TableRowHeader>
                     <span />
                 </TableRowHeader>,
-                {}
+                {},
             );
             wrapper.unmount();
         }).not.toThrow();

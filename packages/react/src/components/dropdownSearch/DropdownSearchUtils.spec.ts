@@ -9,7 +9,7 @@ describe('DropdownSearchUtils', () => {
 
         it('should return undefined if the dropdown does exist in the state but have no selected option', () => {
             expect(
-                getDropdownSearchSelectedOption('existing-dropdown', [{options: [], id: 'existing-dropdown'}])
+                getDropdownSearchSelectedOption('existing-dropdown', [{options: [], id: 'existing-dropdown'}]),
             ).toBeUndefined();
         });
 
@@ -19,7 +19,7 @@ describe('DropdownSearchUtils', () => {
             expect(
                 getDropdownSearchSelectedOption('existing-dropdown', [
                     {options: [selectedOption], id: 'existing-dropdown'},
-                ])
+                ]),
             ).toEqual(selectedOption);
         });
     });

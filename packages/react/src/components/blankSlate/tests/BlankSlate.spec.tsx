@@ -130,7 +130,7 @@ describe('BlankSlate', () => {
                     ]}
                     withModal={false}
                     icon={TipSize32Px}
-                />
+                />,
             );
 
             expect(await screen.findByRole('img', {name: /tip/i})).toBeVisible();
@@ -155,7 +155,7 @@ describe('BlankSlate', () => {
                     ]}
                     withModal={false}
                     icon={svgChild}
-                />
+                />,
             );
 
             expect(screen.getByRole('img', {name: /shrug icon/i})).toBeVisible();

@@ -20,7 +20,7 @@ export const jsonEditorsInitialState: JSONEditorState[] = [];
 
 export const jsonEditorsReducer = (
     state: JSONEditorState[] = jsonEditorsInitialState,
-    action: IReduxAction<JSONEditorActionPayload>
+    action: IReduxAction<JSONEditorActionPayload>,
 ): JSONEditorState[] => {
     switch (action.type) {
         case JSONEditorActionTypes.add:
@@ -34,7 +34,7 @@ export const jsonEditorsReducer = (
             return state.map((jsonEditor: JSONEditorState) =>
                 jsonEditor.id === action.payload.id
                     ? {...jsonEditor, ...action.payload, valid: JSONEditorUtils.validateValue(action.payload.value)}
-                    : jsonEditor
+                    : jsonEditor,
             );
         default:
             return state;

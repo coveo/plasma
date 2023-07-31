@@ -10,7 +10,7 @@ describe('ContentLoadingPlaceholder tests', () => {
                     <ContentLoadingPlaceholder>
                         <div>Test</div>
                     </ContentLoadingPlaceholder>,
-                    {}
+                    {},
                 );
                 wrapper.unmount();
             }).not.toThrow();

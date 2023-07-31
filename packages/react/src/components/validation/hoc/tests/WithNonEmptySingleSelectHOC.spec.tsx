@@ -29,7 +29,7 @@ describe('SingleSelectWithNonEmpty', () => {
                 <SingleSelectWithNonEmpty {...DEFAULT_PROPS} />
                 <ErrorList id={DEFAULT_PROPS.id} />
             </>,
-            {initialState}
+            {initialState},
         );
 
         expect(screen.getByText(DEFAULT_PROPS.nonEmptyValidationMessage)).toBeVisible();
@@ -43,7 +43,7 @@ describe('SingleSelectWithNonEmpty', () => {
                 <SingleSelectWithNonEmpty {...DEFAULT_PROPS} />
                 <ErrorList id={DEFAULT_PROPS.id} />
             </>,
-            {initialState}
+            {initialState},
         );
 
         expect(screen.queryByText(DEFAULT_PROPS.nonEmptyValidationMessage)).not.toBeInTheDocument();

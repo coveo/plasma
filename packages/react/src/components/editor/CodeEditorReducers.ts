@@ -14,7 +14,7 @@ export const CodeEditorsInitialState: CodeEditorsState = null;
 
 export const codeEditorsReducer = (
     state: CodeEditorsState = CodeEditorsInitialState,
-    action: IReduxAction<CodeEditorActionPayload>
+    action: IReduxAction<CodeEditorActionPayload>,
 ): CodeEditorsState => {
     switch (action.type) {
         case CodeEditorActionTypes.update:

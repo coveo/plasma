@@ -45,7 +45,7 @@ describe('TableHOC', () => {
                     id="a"
                     data={data}
                     renderBody={(d: any[]) => _.map(d, ({value}) => <tr className={`row-${value}`}></tr>)}
-                />
+                />,
             );
             _.each(data, ({value}) => {
                 expect(wrapper.find(`tr.row-${value}`).exists()).toBe(true);
@@ -116,7 +116,7 @@ describe('TableHOC', () => {
 
         it('should render an ActionBarConnected if the table prop hasActionButtons is false but the table have some actions', () => {
             const wrapper = shallow(
-                <TableHOC {...defaultProps} actions={[<FilterBoxConnected />]} hasActionButtons={false} />
+                <TableHOC {...defaultProps} actions={[<FilterBoxConnected />]} hasActionButtons={false} />,
             );
 
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
@@ -161,7 +161,7 @@ describe('TableHOC', () => {
 
         it('should not disabled actions on loading is off', () => {
             const wrapper = shallow(
-                <TableHOC {...defaultProps} actions={[<div />]} hasActionButtons isLoading={false} />
+                <TableHOC {...defaultProps} actions={[<div />]} hasActionButtons isLoading={false} />,
             );
 
             expect(wrapper.find(ActionBarConnected).props().disabled).toBe(false);

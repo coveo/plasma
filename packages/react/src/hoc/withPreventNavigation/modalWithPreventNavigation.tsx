@@ -41,7 +41,7 @@ export const modalWithPreventNavigation =
     <T, R = any>(config: IWithPreventNavigationConfig) =>
     (Component: ComponentClass<T, R>): ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
         const mapDispatchToProps = (
-            dispatch: (action: IReduxAction<IModalActionPayload>) => void
+            dispatch: (action: IReduxAction<IModalActionPayload>) => void,
         ): IWithPreventNavigationDispatchProps => ({
             closeModal: (id: string) => dispatch(closeModal(id)),
         });

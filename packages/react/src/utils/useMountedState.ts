@@ -10,7 +10,7 @@ export const useMountedState = () => {
         () => () => {
             isMountedRef.current = false;
         },
-        []
+        [],
     );
     return unref;
 };

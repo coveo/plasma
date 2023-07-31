@@ -16,7 +16,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IDropdownOwnProps): IDrop
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IDropdownOwnProps
+    ownProps: IDropdownOwnProps,
 ): IDropdownDispatchProps => ({
     onRender: () => dispatch(addDropdown(ownProps.id)),
     onDestroy: () => dispatch(removeDropdown(ownProps.id)),

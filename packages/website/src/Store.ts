@@ -31,7 +31,7 @@ const persistedState =
 export const Store = createStore(
     combineReducers(PlasmaReducers),
     persistedState,
-    composeEnhancers(applyMiddleware<IDispatch>(...middlewares))
+    composeEnhancers(applyMiddleware<IDispatch>(...middlewares)),
 );
 
 if (process.env.NODE_ENV === 'development') {

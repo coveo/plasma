@@ -17,7 +17,7 @@ describe('RadioSelectSelectors', () => {
             };
             const radioSelect = RadioSelectSelectors.get(
                 {radioSelects: [expectedRadioSelect]},
-                {id: expectedRadioSelect.id}
+                {id: expectedRadioSelect.id},
             );
 
             expect(radioSelect).toEqual(expectedRadioSelect);
@@ -28,7 +28,7 @@ describe('RadioSelectSelectors', () => {
         it('should return undefined when the radio select does not exist in the state', () => {
             const selectedValue = RadioSelectSelectors.getValue(
                 {radioSelects: []},
-                {id: 'I-do-not-exist-in-the-state'}
+                {id: 'I-do-not-exist-in-the-state'},
             );
 
             expect(selectedValue).toBeUndefined();
@@ -42,7 +42,7 @@ describe('RadioSelectSelectors', () => {
             };
             const selectedValue = RadioSelectSelectors.getValue(
                 {radioSelects: [expectedRadioSelect]},
-                {id: expectedRadioSelect.id}
+                {id: expectedRadioSelect.id},
             );
 
             expect(selectedValue).toBe(expectedRadioSelect.value);
@@ -53,7 +53,7 @@ describe('RadioSelectSelectors', () => {
         it('should return undefined when the radio select does not exist in the state', () => {
             const disabledValue = RadioSelectSelectors.getDisabledValue(
                 {radioSelects: []},
-                {id: 'I-do-not-exist-in-the-state'}
+                {id: 'I-do-not-exist-in-the-state'},
             );
 
             expect(disabledValue).toBeUndefined();
@@ -67,7 +67,7 @@ describe('RadioSelectSelectors', () => {
             };
             const disabledValues = RadioSelectSelectors.getDisabledValue(
                 {radioSelects: [expectedRadioSelect]},
-                {id: expectedRadioSelect.id}
+                {id: expectedRadioSelect.id},
             );
 
             expect(disabledValues).toBe(expectedRadioSelect.disabledValues);

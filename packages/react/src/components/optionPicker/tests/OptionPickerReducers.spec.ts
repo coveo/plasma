@@ -46,7 +46,7 @@ describe('Option picker', () => {
             expect(optionPickersState.length).toBe(oldState.length + 1);
             expect(
                 optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(1);
 
             oldState = optionPickersState;
@@ -56,7 +56,7 @@ describe('Option picker', () => {
             expect(optionPickersState.length).toBe(oldState.length + 1);
             expect(
                 optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(1);
         });
 
@@ -89,7 +89,7 @@ describe('Option picker', () => {
             expect(optionPickersState.length).toBe(oldState.length - 1);
             expect(
                 optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(0);
 
             oldState = optionPickersState;
@@ -99,7 +99,7 @@ describe('Option picker', () => {
             expect(optionPickersState.length).toBe(oldState.length - 1);
             expect(
                 optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(0);
         });
 
@@ -132,7 +132,7 @@ describe('Option picker', () => {
             expect(optionPickersState.length).toBe(oldState.length);
             expect(
                 optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
-                    .length
+                    .length,
             ).toBe(0);
         });
 
@@ -168,13 +168,13 @@ describe('Option picker', () => {
                 const optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, action);
 
                 expect(_.findWhere(optionPickersState, {id: action.payload.id}).selectedValue).toBe(
-                    action.payload.value
+                    action.payload.value,
                 );
 
                 expect(_.findWhere(optionPickersState, {id: action.payload.id}).selectedLabel).toBe(
-                    action.payload.label
+                    action.payload.label,
                 );
-            }
+            },
         );
 
         it('should reset all option pickers starting with the action id if the action is "RESET_OPTION_PICKERS"', () => {

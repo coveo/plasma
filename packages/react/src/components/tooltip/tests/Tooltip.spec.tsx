@@ -32,7 +32,7 @@ describe('Tooltip', () => {
         render(
             <Tooltip title="the title" placement={TooltipPlacement.Right}>
                 hover me
-            </Tooltip>
+            </Tooltip>,
         );
 
         await userEvent.hover(screen.getByText(/hover me/i));
@@ -44,7 +44,7 @@ describe('Tooltip', () => {
         render(
             <Tooltip title="the title" placement={TooltipPlacement.Bottom}>
                 hover me
-            </Tooltip>
+            </Tooltip>,
         );
 
         await userEvent.hover(screen.getByText(/hover me/i));
@@ -56,7 +56,7 @@ describe('Tooltip', () => {
         render(
             <Tooltip title="the title" placement={TooltipPlacement.Left}>
                 hover me
-            </Tooltip>
+            </Tooltip>,
         );
 
         await userEvent.hover(screen.getByText(/hover me/i));
@@ -68,7 +68,7 @@ describe('Tooltip', () => {
         render(
             <Tooltip title="the title" placement={TooltipPlacement.Top}>
                 hover me
-            </Tooltip>
+            </Tooltip>,
         );
 
         await userEvent.hover(screen.getByText(/hover me/i));

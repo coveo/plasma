@@ -38,7 +38,7 @@ describe('Option picker', () => {
                 <Provider store={store}>
                     <OptionPickerConnected {...OPTION_PICKER_BASIC_PROPS} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             optionPicker = wrapper.find(OptionPicker).first();
         });
@@ -92,7 +92,7 @@ describe('Option picker', () => {
             const expectedSelectedLabel: string = 'our label';
 
             store.dispatch(
-                changeOptionPicker(OPTION_PICKER_BASIC_PROPS.id, expectedSelectedLabel, expectedSelectedValue)
+                changeOptionPicker(OPTION_PICKER_BASIC_PROPS.id, expectedSelectedLabel, expectedSelectedValue),
             );
             wrapper.update();
 

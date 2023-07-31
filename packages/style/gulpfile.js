@@ -5,8 +5,6 @@
 // --gzip                       Flag to enable gziphication                                         Default: false
 // --all                        Flag to remove all compiled files                                   Default: false
 
-const path = require('path');
-const del = require('del');
 const gulp = require('gulp');
 const fs = require('fs');
 const colors = require('ansi-colors');
@@ -62,10 +60,14 @@ gulp.task('clean', (done) => {
     if (cleanAll) {
         filesToDelete.concat(['**/*.orig', '**/*.rej', 'node_modules']);
     }
-    return del(filesToDelete).then((deletedFiles) => {
-        log(colors.green('Files deleted:', deletedFiles.join(', ')));
-        done();
-    });
+    return import('del')
+        .then((module) => module.deleteAsync)
+        .then((del) =>
+            del(filesToDelete).then((deletedFiles) => {
+                log(colors.green('Files deleted:', deletedFiles.join(', ')));
+                done();
+            }),
+        );
 });
 
 gulp.task('copy:images', () => gulp.src('./resources/images/**/*').pipe(gulp.dest('./dist/images/')));
@@ -116,7 +118,7 @@ gulp.task('svg:concat', () => {
     const src = merge(
         gulp.src('./resources/icons/svg/*.svg'),
         // taken from https://github.com/coveo/search-ui/tree/master/image/svg/filetypes . Update as needed.
-        gulp.src('./resources/icons/svg/coveo-search-ui-filetypes/*.svg').pipe(rename({prefix: 'ft-'}))
+        gulp.src('./resources/icons/svg/coveo-search-ui-filetypes/*.svg').pipe(rename({prefix: 'ft-'})),
     );
 
     return src.pipe(filesToJson('CoveoStyleGuideSvg.json')).pipe(gulp.dest('dist/svg'));
@@ -135,7 +137,7 @@ gulp.task(
         dict.generateSvgNamesTypescriptType('SvgName.d.ts');
 
         done();
-    })
+    }),
 );
 
 gulp.task('svg', gulp.series('svg:enum'));

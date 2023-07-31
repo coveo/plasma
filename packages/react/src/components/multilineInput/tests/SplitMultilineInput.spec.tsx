@@ -95,8 +95,8 @@ describe('SplitMultilineInput', () => {
                                 third: 'where does this value go?',
                             },
                         ],
-                    })
-                )
+                    }),
+                ),
             ).not.toThrow();
         });
 
@@ -114,7 +114,7 @@ describe('SplitMultilineInput', () => {
         it('should call changeValue when an existing input is changed', () => {
             const changeValueSpy: jest.SpyInstance = jest.spyOn<any, string>(
                 splitMultilineInputInstance,
-                'changeValue'
+                'changeValue',
             );
             const expectedValue: string = 'a new value';
 
@@ -127,7 +127,7 @@ describe('SplitMultilineInput', () => {
                 true,
                 0,
                 _.keys(defaultValue)[0],
-                expect.anything()
+                expect.anything(),
             );
         });
 
@@ -176,7 +176,7 @@ describe('SplitMultilineInput', () => {
                             second: 'second input of the second value',
                         },
                     ],
-                })
+                }),
             );
 
             expect(splitMultilineInput.state().values.length).toBe(2);

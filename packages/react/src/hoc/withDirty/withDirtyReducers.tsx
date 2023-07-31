@@ -8,7 +8,7 @@ export const dirtyComponentsInitialState: ComponentId[] = [];
 
 export const withDirtyReducer = (
     state: ComponentId[] = dirtyComponentsInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): ComponentId[] => {
     switch (action.type) {
         case WithDirtyActionTypes.toggle:

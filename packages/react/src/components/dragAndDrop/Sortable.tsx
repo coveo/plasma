@@ -14,7 +14,7 @@ export const Sortable = (props: SortableProps) => {
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
-        })
+        }),
     );
 
     const getIndex = (id: string) => props.items.indexOf(id);

@@ -36,7 +36,7 @@ describe('Component with editing', () => {
         return mount(
             <Provider store={store}>
                 <SomeInputWithEditingHOC />
-            </Provider>
+            </Provider>,
         );
     };
 

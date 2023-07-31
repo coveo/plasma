@@ -144,7 +144,7 @@ export class SearchBar extends Component<ISearchBarProps> {
                 'search-bar-disabled': this.props.disabled,
                 'search-bar-loading': this.props.searching,
             },
-            this.props.containerClassNames
+            this.props.containerClassNames,
         );
     }
 

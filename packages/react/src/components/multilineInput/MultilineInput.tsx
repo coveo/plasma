@@ -91,7 +91,7 @@ export class MultilineInput extends Component<IMultilineInputProps, any> {
     render() {
         const deletableInputs: JSX.Element[] = this.props.values
             ? this.props.values.map((input: IMultilineInputValue, index: number) =>
-                  this.getDeletableInput(input, index)
+                  this.getDeletableInput(input, index),
               )
             : null;
 

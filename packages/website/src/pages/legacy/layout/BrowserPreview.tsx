@@ -4,7 +4,7 @@ import BrowserPreviewWithEmptyStateDemo from '@examples/legacy/layout/BrowserPre
 import dynamic from 'next/dynamic';
 const BrowserPreviewWithErrorDemo = dynamic(
     () => import('@examples/legacy/layout/BrowserPreview/BrowserPreviewWithError.demo?demo'),
-    {ssr: false}
+    {ssr: false},
 );
 import {Suspense} from 'react';
 

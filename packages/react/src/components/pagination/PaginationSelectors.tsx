@@ -7,7 +7,7 @@ const getPaginationState = (state: PlasmaState, {id}: {id: string}) => _.findWhe
 
 const getPaginationPageNumber = createSelector(
     getPaginationState,
-    (paginationState: IPaginationState): number => paginationState?.pageNb ?? 0
+    (paginationState: IPaginationState): number => paginationState?.pageNb ?? 0,
 );
 
 export const PaginationSelectors = {

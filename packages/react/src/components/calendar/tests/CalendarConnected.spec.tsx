@@ -41,7 +41,7 @@ describe('Calendar', () => {
                 <Provider store={store}>
                     <CalendarConnected id={CALENDAR_ID} {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             calendar = wrapper.find(Calendar).first();
         };
@@ -170,7 +170,7 @@ describe('Calendar', () => {
                 calendar.props().onClick(PICKER_ID, false, new Date());
 
                 expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).selected).toBe('');
-            }
+            },
         );
 
         it('should reset the date picker if on click is called without a value', () => {
@@ -198,7 +198,7 @@ describe('Calendar', () => {
 
             expect(_.findWhere(store.getState().optionPickers, {id: PICKER_ID}).selectedValue).toBe(pickerSelected);
             expect(_.findWhere(store.getState().optionPickers, {id: PICKER_ID}).selectedLabel).toBe(
-                pickerLabelSelected
+                pickerLabelSelected,
             );
 
             calendar.props().onClick(PICKER_ID, false, new Date());
@@ -219,7 +219,7 @@ describe('Calendar', () => {
             calendar.props().onClick(PICKER_ID, true, newLimit);
 
             expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).upperLimit).toEqual(
-                moment(newLimit).endOf('day').toDate()
+                moment(newLimit).endOf('day').toDate(),
             );
         });
 
@@ -294,7 +294,7 @@ describe('Calendar', () => {
             store.dispatch(changeDatePickerLowerLimit(PICKER_ID, moment().endOf('hour').toDate()));
 
             expect(_.findWhere(store.getState().optionsCycles, {id: monthId}).currentOption).toBe(
-                DateUtils.currentMonth
+                DateUtils.currentMonth,
             );
 
             expect(_.findWhere(store.getState().optionsCycles, {id: yearId}).currentOption).not.toBe(secondYear);

@@ -22,7 +22,7 @@ export const paginationCompositeInitialState: IPaginationState[] = [];
 
 export const paginationReducer = (
     state: IPaginationState = paginationInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IPaginationState => {
     switch (action.type) {
         case PaginationActions.add:
@@ -50,7 +50,7 @@ export const paginationReducer = (
 
 export const paginationCompositeReducer = (
     state: IPaginationState[] = paginationCompositeInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IPaginationState[] => {
     switch (action.type) {
         case PaginationActions.add:

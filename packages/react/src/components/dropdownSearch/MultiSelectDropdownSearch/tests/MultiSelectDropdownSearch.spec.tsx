@@ -75,7 +75,7 @@ describe('MultiSelectDropdownSearch', () => {
                 });
 
                 expect(multiSelectDropdownSearch.find('li span').text()).toEqual(
-                    multiSelectDropdownSearch.props().noResultText
+                    multiSelectDropdownSearch.props().noResultText,
                 );
             });
 

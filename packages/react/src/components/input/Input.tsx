@@ -216,13 +216,13 @@ export class Input extends Component<IInputProps, IInputComponentState> {
             {
                 'input-field': contains(validatedInputTypes, this.props.type),
             },
-            this.props.classes
+            this.props.classes,
         );
         const innerInputClasses = classNames(
             {
                 invalid: !this.state.valid && contains(validatedInputTypes, this.props.type),
             },
-            this.props.innerInputClasses
+            this.props.innerInputClasses,
         );
 
         let additionalProps: {disabled?: boolean} = {};

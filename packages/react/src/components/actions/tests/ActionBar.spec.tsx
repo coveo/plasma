@@ -34,14 +34,14 @@ describe('ActionsBar', () => {
             shallow(<ActionBar actions={[{enabled: true, primary: true}]} />)
                 .childAt(1)
                 .dive()
-                .find(PrimaryAction).length
+                .find(PrimaryAction).length,
         ).toBe(1);
 
         expect(
             shallow(<ActionBar actions={[{enabled: true, primary: false}]} />)
                 .childAt(1)
                 .dive()
-                .find(PrimaryAction).length
+                .find(PrimaryAction).length,
         ).toBe(0);
     });
 
@@ -91,7 +91,7 @@ describe('ActionsBar', () => {
                 .childAt(1)
                 .dive()
                 .find(SecondaryActions)
-                .exists()
+                .exists(),
         ).toBe(true);
 
         expect(
@@ -99,7 +99,7 @@ describe('ActionsBar', () => {
                 .childAt(1)
                 .dive()
                 .find(SecondaryActions)
-                .exists()
+                .exists(),
         ).toBe(false);
     });
 

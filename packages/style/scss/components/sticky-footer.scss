@@ -11,11 +11,12 @@
     overflow: hidden;
     background-color: var(--white);
     border-radius: 0 0 $border-radius $border-radius;
-
     transform: translate3d(0, 100%, 0);
     visibility: hidden;
     opacity: 0;
-    transition: transform $navigation-toggle-duration ease-in-out, width $navigation-toggle-duration ease-in-out,
+    transition:
+        transform $navigation-toggle-duration ease-in-out,
+        width $navigation-toggle-duration ease-in-out,
         opacity $navigation-toggle-duration ease-in-out;
     will-change: transform;
 

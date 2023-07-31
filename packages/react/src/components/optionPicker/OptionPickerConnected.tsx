@@ -16,7 +16,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IOptionPickerOwnProps): I
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IOptionPickerOwnProps
+    ownProps: IOptionPickerOwnProps,
 ): IOptionPickerDispatchProps => ({
     onRender: () => dispatch(addOptionPicker(ownProps.id)),
     onDestroy: () => dispatch(removeOptionPicker(ownProps.id)),

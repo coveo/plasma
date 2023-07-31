@@ -35,7 +35,7 @@ export const tableWithFilter =
         supplier: ConfigSupplier<ITableWithFilterConfig> = {
             blankSlate: {title: 'No results'},
             filter: {isAutoFocus: true},
-        }
+        },
     ) =>
     (WrappedTable: typeof TableHOC) => {
         type OwnProps = ITableHOCOwnProps & TableWithFilterProps & WithServerSideProcessingProps;

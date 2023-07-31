@@ -8,7 +8,7 @@ export interface WithServerSideProcessingProps {
  * @deprecated Use Mantine instead
  */
 export const withServerSideProcessing = <T extends Record<string, unknown>>(
-    Component: ComponentType<PropsWithChildren<T>>
+    Component: ComponentType<PropsWithChildren<T>>,
 ): ComponentType<PropsWithChildren<T & WithServerSideProcessingProps>> => {
     const WrappedComponent: FunctionComponent<PropsWithChildren<T>> = (props) => <Component {...props} isServer />;
     WrappedComponent.displayName = `withServerSideProcessing(${Component.displayName})`;

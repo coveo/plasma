@@ -51,7 +51,7 @@ export const multilineBoxWithDnD =
 
         const mapDispatchToProps = (
             dispatch: IDispatch,
-            ownProps: IMultilineBoxOwnProps
+            ownProps: IMultilineBoxOwnProps,
         ): IMultilineBoxWithDnDDispatchProps => ({
             onReorder: (list: string[]) => dispatch(reorderStringList(ownProps.id, list)),
         });
@@ -98,7 +98,7 @@ export const multilineBoxWithDnD =
                         {...this.props}
                         renderBody={(
                             boxProps: Array<IMultilineSingleBoxProps<T>>,
-                            parentProps: IMultilineParentProps
+                            parentProps: IMultilineParentProps,
                         ) => this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
                     />
                 );

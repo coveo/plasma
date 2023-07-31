@@ -75,8 +75,8 @@ describe('FilterUtils', () => {
                             <p>we need to go deeper</p>
                             <span>💎</span>
                         </div>
-                    </div>
-                )
+                    </div>,
+                ),
             ).toBe(true);
         });
 

@@ -68,13 +68,13 @@ export const XYAxis: FunctionComponent<PropsWithChildren<XYAxisProps>> = ({x, y,
 
     const xLinearScale = scaleLinear().range(newXScale.range()).domain(xDomain);
     const xNumberOfTicks = xLinearScale.ticks(
-        xAxis.tickTextSize === 0 ? xTicksCount : Math.floor(newWidth / xAxis.tickTextSize)
+        xAxis.tickTextSize === 0 ? xTicksCount : Math.floor(newWidth / xAxis.tickTextSize),
     ).length;
     const ticks = _.chunk(newXScale.domain(), Math.floor(newXScale.domain().length / xNumberOfTicks))
         // filter out the last array if it contains only one value and other arrays are bigger
         .filter(
             (arr: number[], index: number, arrays: number[][]) =>
-                index < arrays.length - 1 || arr.length > 1 || arrays[0].length === 1
+                index < arrays.length - 1 || arr.length > 1 || arrays[0].length === 1,
         )
         // get the element in the middle of the chunk
         .map((values: number[]) => values[Math.floor((values.length - 1) / 2)]);

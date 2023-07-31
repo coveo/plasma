@@ -48,7 +48,7 @@
     font-size: 12px;
 
     &.bottom {
-        margin: 10px 0 0 0;
+        margin: 10px 0 0;
     }
 }
 
@@ -71,6 +71,7 @@
     &-error {
         color: var(--critical-70);
     }
+
     &-warning {
         color: var(--warning-70);
     }

@@ -34,7 +34,7 @@ export const multilineBoxContainer =
 
             private getWrapper(children: ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
                 return Children.map(children, (child: ReactNode, index: number) =>
-                    HocUtils.supplyConfig(supplier).containerNode(child, data, index)
+                    HocUtils.supplyConfig(supplier).containerNode(child, data, index),
                 );
             }
 
@@ -44,7 +44,7 @@ export const multilineBoxContainer =
                         {...this.props}
                         renderBody={(
                             boxProps: Array<IMultilineSingleBoxProps<T>>,
-                            parentProps: IMultilineParentProps
+                            parentProps: IMultilineParentProps,
                         ) => this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
                     />
                 );

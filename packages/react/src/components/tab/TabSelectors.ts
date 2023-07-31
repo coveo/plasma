@@ -12,13 +12,13 @@ const getTabGroup = (state: PlasmaState, {groupId}: CherryPick<ITabOwnProps, 'gr
 
 const getSelectedTab = createSelector(
     getTabGroup,
-    (tabGroup: ITabGroupState): ITabState => _.findWhere(tabGroup?.tabs, {isSelected: true})
+    (tabGroup: ITabGroupState): ITabState => _.findWhere(tabGroup?.tabs, {isSelected: true}),
 );
 
 const getTab = createSelector(
     getTabGroup,
     (state: any, {id}: CherryPick<ITabOwnProps, 'id'>) => id,
-    (tabGroup: ITabGroupState, id: string): ITabState => _.findWhere(tabGroup?.tabs, {id})
+    (tabGroup: ITabGroupState, id: string): ITabState => _.findWhere(tabGroup?.tabs, {id}),
 );
 
 const getIsTabSelected = createSelector(getTab, (tab) => tab?.isSelected ?? false);

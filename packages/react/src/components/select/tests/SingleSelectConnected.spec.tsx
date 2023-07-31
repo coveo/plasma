@@ -35,7 +35,7 @@ describe('Select', () => {
                 <SingleSelectConnected
                     id={id}
                     items={[{value: 'a'}, {value: 'dis 1', displayValue: 'dis 2', selected: true}]}
-                />
+                />,
             );
 
             expect(screen.getByRole('button', {name: /dis 2/})).toBeVisible();
@@ -53,7 +53,7 @@ describe('Select', () => {
                     id={id}
                     toggleClasses="some-class"
                     items={[{value: 'a'}, {value: 'selected value', selected: true}]}
-                />
+                />,
             );
 
             expect(screen.getByRole('button', {name: /selected value/})).toHaveClass('some-class');
@@ -65,7 +65,7 @@ describe('Select', () => {
                     id={id}
                     disabled
                     items={[{value: 'a'}, {value: 'selected value', selected: true}]}
-                />
+                />,
             );
 
             expect(screen.getByRole('button', {name: /selected value/})).toBeDisabled();
@@ -78,7 +78,7 @@ describe('Select', () => {
                     id={id}
                     buttonPrepend={expectedPrepend}
                     items={[{value: 'a'}, {value: 'selected value', selected: true}]}
-                />
+                />,
             );
 
             expect(screen.getByText('some prepended text')).toBeVisible();
@@ -94,7 +94,7 @@ describe('Select', () => {
                         {value: 'a', selected: true, prepend: {content: prepend}, append: {content: append}},
                         {value: 'b', selected: false},
                     ]}
-                />
+                />,
             );
             expect(screen.getByRole('button', {name: /pre a post/})).toBeVisible();
         });
@@ -109,7 +109,7 @@ describe('Select', () => {
                         {value: 'a', selected: false, prepend: {content: prepend}, append: {content: append}},
                         {value: 'b', selected: true},
                     ]}
-                />
+                />,
             );
             expect(screen.queryByRole('button', {name: /pre a post/})).not.toBeInTheDocument();
         });
@@ -135,7 +135,7 @@ describe('Select', () => {
                     placeholder="select one"
                     items={[{value: 'my value', selected: false}]}
                     canClear
-                />
+                />,
             );
 
             expect(screen.getByRole('button', {name: /select one/})).not.toHaveClass('mod-append');
@@ -150,7 +150,7 @@ describe('Select', () => {
                     items={[{value: 'my value', selected: false}]}
                     canClear
                     disabled
-                />
+                />,
             );
 
             expect(screen.getByRole('button', {name: /select one/})).not.toHaveClass('mod-append');
@@ -164,7 +164,7 @@ describe('Select', () => {
                     placeholder="select one"
                     items={[{value: 'my value', selected: true}]}
                     canClear
-                />
+                />,
             );
 
             expect(screen.queryByRole('button', {name: /select one/})).not.toBeInTheDocument();
@@ -187,7 +187,7 @@ describe('Select', () => {
                         },
                         {value: 'b', selected: false},
                     ]}
-                />
+                />,
             );
             expect(screen.queryByRole('button', {name: /Another selected value bites the dust/})).toBeVisible();
         });
@@ -200,7 +200,7 @@ describe('Select', () => {
                     id={id}
                     items={[{value: 'a'}, {value: 'b', displayValue: 'to select value'}]}
                     onSelectOptionCallback={onSelectOptionCallbackSpy}
-                />
+                />,
             );
 
             await userEvent.click(screen.getByRole('button'));

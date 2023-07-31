@@ -21,7 +21,7 @@ const TableComposed = compose<any>(
     tableWithFilter({filter: {isAutoFocus: false}}), // using the default matchfilter
     tableWithBlankSlate({
         title: 'No results',
-    })
+    }),
 )(TableHOC);
 
 const renderHeader = () => (

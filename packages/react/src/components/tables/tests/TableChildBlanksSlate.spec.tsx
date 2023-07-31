@@ -133,13 +133,13 @@ describe('<TableChildBlankSlate />', () => {
         describe('render content', () => {
             it('should render the default blankslate if no results without actions and without table being in error', () => {
                 expect(mountComponentWithProps(tablePropsMock).text()).toContain(
-                    tablePropsMock.blankSlateDefault.title as string
+                    tablePropsMock.blankSlateDefault.title as string,
                 );
             });
 
             it('should render the default blanslate that spans accross all table columns', () => {
                 expect(mountComponentWithProps(tablePropsMock).find('td').prop('colSpan')).toBe(
-                    tablePropsMock.headingAttributes.length
+                    tablePropsMock.headingAttributes.length,
                 );
             });
 
@@ -153,9 +153,9 @@ describe('<TableChildBlankSlate />', () => {
                             collapsibleFormatter: () => null,
                         })
                             .find('td')
-                            .prop('colSpan')
+                            .prop('colSpan'),
                     ).toBe(tablePropsMock.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT);
-                }
+                },
             );
 
             it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and filter is non empty', () => {
@@ -166,7 +166,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         blankSlateNoResultsOnAction: {title: blankslateTitleOnAction},
                         tableCompositeState: {filter: 'non empty'},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(blankslateTitleOnAction);
             });
 
@@ -178,7 +178,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         blankSlateNoResultsOnAction: {title: blankslateTitleOnAction},
                         tableCompositeState: {from: Date.now()},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(blankslateTitleOnAction);
             });
 
@@ -190,7 +190,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         blankSlateNoResultsOnAction: {title: blankslateTitleOnAction},
                         tableCompositeState: {to: Date.now()},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(blankslateTitleOnAction);
             });
 
@@ -202,7 +202,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         blankSlateNoResultsOnAction: {title: blankslateTitleOnAction},
                         tableCompositeState: {predicates: [{attribute1: 'non default value'}]},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(blankslateTitleOnAction);
             });
 
@@ -211,7 +211,7 @@ describe('<TableChildBlankSlate />', () => {
                     mountComponentWithProps({
                         ...tablePropsMock,
                         tableCompositeState: {filter: 'non empty'},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
 
@@ -220,7 +220,7 @@ describe('<TableChildBlankSlate />', () => {
                     mountComponentWithProps({
                         ...tablePropsMock,
                         tableCompositeState: {from: Date.now()},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
 
@@ -229,7 +229,7 @@ describe('<TableChildBlankSlate />', () => {
                     mountComponentWithProps({
                         ...tablePropsMock,
                         tableCompositeState: {to: Date.now()},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
 
@@ -238,7 +238,7 @@ describe('<TableChildBlankSlate />', () => {
                     mountComponentWithProps({
                         ...tablePropsMock,
                         tableCompositeState: {predicates: [{attribute1: 'non default value'}]},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
 
@@ -250,7 +250,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         blankSlateOnError: {title: blankslateTitleOnAction},
                         tableCompositeState: {isInError: true},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(blankslateTitleOnAction);
             });
 
@@ -259,7 +259,7 @@ describe('<TableChildBlankSlate />', () => {
                     mountComponentWithProps({
                         ...tablePropsMock,
                         tableCompositeState: {isInError: true},
-                    } as any).text()
+                    } as any).text(),
                 ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
         });

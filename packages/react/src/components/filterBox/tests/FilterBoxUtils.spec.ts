@@ -51,7 +51,7 @@ describe('defaultListBoxMatchFilter', () => {
 
         it('should return true if the item displayValue contain a exact match with the filterValue', () => {
             expect(
-                defaultListBoxMatchFilter(itemBoxWithDisplayValue.displayValue as string, itemBoxWithDisplayValue)
+                defaultListBoxMatchFilter(itemBoxWithDisplayValue.displayValue as string, itemBoxWithDisplayValue),
             ).toBe(true);
         });
 

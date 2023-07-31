@@ -57,7 +57,7 @@ describe('ButtonWithRefreshCallback tests', () => {
                     <ButtonWithRefreshCallback {...defaultProps} callback={() => ''} />,
                     {
                         refreshCallback: {[defaultProps.id]: RefreshStatus.stopped},
-                    }
+                    },
                 )
                     .dive()
                     .dive();

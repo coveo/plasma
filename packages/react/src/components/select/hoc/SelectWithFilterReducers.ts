@@ -14,7 +14,7 @@ export const selectWithFilterInitialState: ISelectWithFilterCompositeState = {};
 
 export const selectWithFilterCompositeReducer = (
     state: ISelectWithFilterCompositeState = selectWithFilterInitialState,
-    action: IReduxAction<ISelectWithFilterPayload>
+    action: IReduxAction<ISelectWithFilterPayload>,
 ): ISelectWithFilterCompositeState => {
     if (_.contains(StringListActions, action.type)) {
         return stringListCompositeReducer(state, action);

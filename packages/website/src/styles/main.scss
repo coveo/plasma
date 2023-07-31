@@ -1,16 +1,18 @@
 @import '@coveord/plasma-style/dist/style.css';
-@import '@coveord/plasma-style/scss/lib/_mixins';
+@import '@coveord/plasma-style/scss/lib/mixins';
 @import '@coveord/plasma-style/scss/variables';
 @import 'syntax-highlighting';
 
+/* stylelint-disable-next-line selector-id-pattern */
 #App {
     overflow: hidden;
+
     .demo-header {
         display: grid;
         grid-template-columns: 261px 1fr 261px;
         place-items: center;
         min-width: 100%;
-        padding: 0.5rem 2rem 0.5rem 2rem;
+        padding: 0.5rem 2rem;
         background-color: var(--navy-blue-80);
 
         .header-logo-link {
@@ -26,7 +28,7 @@
         justify-self: end;
     }
 
-    @media (max-width: 1240px) {
+    @media (width <= 1240px) {
         .demo-header {
             grid-template-columns: 261px 1fr 2rem;
         }
@@ -42,7 +44,12 @@
 
     .demo-content {
         @include slim-scroll(var(--deprecated-grey-2), var(--deprecated-grey-4));
+
         overflow-y: overlay;
+    }
+
+    .tab {
+        text-transform: capitalize;
     }
 
     .top-navigation .tab {
@@ -53,10 +60,6 @@
         }
     }
 
-    .tab {
-        text-transform: capitalize;
-    }
-
     @media (max-width: $breakpoint-desktop-small) {
         .demo-content {
             margin-left: 0;
@@ -65,11 +68,13 @@
 
     @for $i from 7 through 10 {
         $size: $i * 10;
+
         @media (max-width: $breakpoint-desktop-large) {
             &.mod-width-#{$size} {
                 width: 95%;
             }
         }
+
         @media (max-width: $breakpoint-desktop-small) {
             &.mod-width-#{$size} {
                 width: 99%;

@@ -125,7 +125,7 @@ describe('Calendar', () => {
             const startingDay: number = 3;
             let firstDayOfSecondWeek: number = parseInt(
                 calendar.find('tbody').find('tr').at(1).find('td').first().text(),
-                10
+                10,
             );
 
             expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[0]);
@@ -136,7 +136,7 @@ describe('Calendar', () => {
 
             expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[startingDay]);
             expect(new Date(DateUtils.currentYear, DateUtils.currentMonth, firstDayOfSecondWeek).getDay()).toBe(
-                startingDay
+                startingDay,
             );
 
             _.each(DEFAULT_DAYS, (day: string) => {
@@ -250,7 +250,7 @@ describe('Calendar', () => {
                 calendarInstance['handleInvalidDateSelected'].call(calendarInstance);
 
                 expect(onSelectUnselectableSpy).toHaveBeenCalledWith('id2');
-            }
+            },
         );
 
         it('should call handleClick on <CalendarDay /> click', () => {

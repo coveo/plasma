@@ -30,7 +30,7 @@ describe('<PopoverConnected />', () => {
                     <div>popover</div>
                 </PopoverConnected>
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
 
     it('should not throw when calling onMount', () => {
@@ -75,7 +75,7 @@ describe('<PopoverConnected />', () => {
                 popover.find('.toggler').simulate('click');
 
                 expect(findWhere(store.getState().popovers, {id: basicPopoverProps.id}).isOpen).toBe(
-                    !isOpenBeforeClick
+                    !isOpenBeforeClick,
                 );
 
                 popover.find('.toggler').simulate('click');

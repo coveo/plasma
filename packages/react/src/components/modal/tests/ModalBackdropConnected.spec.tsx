@@ -25,7 +25,7 @@ describe('ModalBackdrop', () => {
             <Provider store={store}>
                 <ModalBackdropConnected />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         modalBackdrop = wrapper.find(ModalBackdrop).first();
     });
@@ -69,7 +69,7 @@ describe('<ModalBackdropConnected /> with displayFor', () => {
             <Provider store={store}>
                 <ModalBackdropConnected displayFor={[modal1Id]} />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         modalBackdrop = wrapper.find(ModalBackdrop).first();
     });

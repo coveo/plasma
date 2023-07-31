@@ -32,7 +32,7 @@ describe('MultiSelectWithPredicateAndFilter', () => {
                     options={defaultFlatSelectOptions}
                     matchPredicate={matchPredicate}
                 />
-            </Provider>
+            </Provider>,
         );
     };
 

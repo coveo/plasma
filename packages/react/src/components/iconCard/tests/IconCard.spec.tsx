@@ -41,7 +41,7 @@ describe('IconCard', () => {
                     {label: 'Badge1', type: BadgeType.Success},
                     {label: 'Badge2', type: BadgeType.Success},
                 ]}
-            />
+            />,
         );
 
         const badges = screen.getAllByLabelText('badge');
@@ -96,7 +96,7 @@ describe('IconCard', () => {
                     {label: '🍎', value: 'apple'},
                 ]}
                 onClick={jest.fn()}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -114,7 +114,7 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -132,7 +132,7 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana', icon: RemoveSize16Px},
                     {label: '🍎', value: 'apple', icon: AddSize16Px},
                 ]}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -151,7 +151,7 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -170,7 +170,7 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         // Open the drawer
@@ -194,7 +194,7 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
         // Open the drawer
         await userEvent.click(screen.getByRole('button', {name: /title/i}));
@@ -215,7 +215,7 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana', disabled: true},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         // Open the drawer
@@ -240,7 +240,7 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana', disabled: true},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -253,7 +253,7 @@ describe('IconCard', () => {
         render(
             <IconCard title="Title" icon={icon} small>
                 child
-            </IconCard>
+            </IconCard>,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -290,7 +290,7 @@ describe('IconCard', () => {
                 icon={icon}
                 badges={[{label: badgeLabel, type: BadgeType.Success}]}
                 placeBadgesAbove
-            />
+            />,
         );
 
         const contentContainer = screen.getByTestId('main-content');
@@ -315,7 +315,7 @@ describe('IconCard', () => {
                         <li>Banana</li>
                     </ul>
                 }
-            />
+            />,
         );
 
         expect(screen.getAllByRole('listitem')).toHaveLength(2);

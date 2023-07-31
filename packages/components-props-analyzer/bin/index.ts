@@ -1,5 +1,5 @@
 import {appendFile, ensureDirSync, outputFile, outputFileSync} from 'fs-extra';
-import * as rimraf from 'rimraf';
+import {rimrafSync} from 'rimraf';
 
 import componentsList from '../src/ComponentsList';
 import {getPropsOfComponent} from './getPropsOfComponent';
@@ -32,6 +32,6 @@ const generateProps = async () => {
     await Promise.all(promises);
 };
 
-rimraf.sync('./src/components');
+rimrafSync('./src/components');
 
 generateProps();

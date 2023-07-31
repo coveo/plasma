@@ -74,7 +74,7 @@ export class OptionsCycle extends Component<IOptionsCycleProps> {
                     type="button"
                     className={classNames(
                         'options-cycle-button previous-option inline-flex',
-                        this.props.previousClassName
+                        this.props.previousClassName,
                     )}
                     onClick={() => this.goToPreviousOption()}
                     disabled={!this.props.wrapAround && this.props.currentOption === 0}

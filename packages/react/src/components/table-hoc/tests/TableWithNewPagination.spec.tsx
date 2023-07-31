@@ -32,7 +32,7 @@ describe('TableWithNewPagination tests', () => {
             const shallowTableWithNewPagination = (
                 config: Partial<ITableWithNewPaginationConfig> = {},
                 props: Partial<ITableWithNewPaginationProps> = {},
-                state = {}
+                state = {},
             ) => {
                 const TableWithNewPagination = _.compose(tableWithNewPagination(config))(TableHOC);
                 return shallowWithState(<TableWithNewPagination {...props} />, state).dive();
@@ -64,7 +64,7 @@ describe('TableWithNewPagination tests', () => {
                     {
                         flatSelect: [{id: PaginationUtils.getPaginationPerPageId('test'), selectedOptionId: 2}],
                         paginationComposite: [{id: TableHOCUtils.getPaginationId('test'), pageNb: 2}],
-                    }
+                    },
                 ).dive();
 
                 wrapper.setProps({pageNb: 2, perPage: 2});
@@ -80,7 +80,7 @@ describe('TableWithNewPagination tests', () => {
                     {
                         flatSelect: [{id: PaginationUtils.getPaginationPerPageId('test'), selectedOptionId: 2}],
                         paginationComposite: [{id: TableHOCUtils.getPaginationId('test'), pageNb: 2}],
-                    }
+                    },
                 ).dive();
 
                 wrapper.setProps({pageNb: 3, perPage: 2});
@@ -96,7 +96,7 @@ describe('TableWithNewPagination tests', () => {
                     {
                         flatSelect: [{id: PaginationUtils.getPaginationPerPageId('test'), selectedOptionId: 2}],
                         paginationComposite: [{id: TableHOCUtils.getPaginationId('test'), pageNb: 2}],
-                    }
+                    },
                 ).dive();
 
                 wrapper.setProps({pageNb: 2, perPage: 2});
@@ -112,7 +112,7 @@ describe('TableWithNewPagination tests', () => {
                     {
                         flatSelect: [{id: PaginationUtils.getPaginationPerPageId('test'), selectedOptionId: 2}],
                         paginationComposite: [{id: TableHOCUtils.getPaginationId('test'), pageNb: 2}],
-                    }
+                    },
                 ).dive();
 
                 wrapper.setProps({pageNb: 2, perPage: 3});
@@ -125,7 +125,7 @@ describe('TableWithNewPagination tests', () => {
             const shallowTableWithNewPaginationWithStore = (
                 store: ReturnType<typeof getStoreMock>,
                 config: Partial<ITableWithNewPaginationConfig> = {},
-                props: Partial<ITableWithNewPaginationProps> = {}
+                props: Partial<ITableWithNewPaginationProps> = {},
             ) => {
                 const TableWithNewPagination = _.compose(tableWithNewPagination(config))(TableHOC);
                 return shallowWithStore(<TableWithNewPagination {...props} />, store).dive();
@@ -143,7 +143,7 @@ describe('TableWithNewPagination tests', () => {
                 const wrapper = shallowTableWithNewPaginationWithStore(
                     store,
                     {perPageNumbers: []},
-                    {id: 'test'}
+                    {id: 'test'},
                 ).dive();
                 wrapper.unmount();
 

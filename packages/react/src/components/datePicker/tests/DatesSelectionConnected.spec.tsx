@@ -28,7 +28,7 @@ describe('Date picker', () => {
             wrapper = mount(
                 <Provider store={store}>
                     <DatesSelectionConnected id={DATES_SELECTION_ID} {...props} />
-                </Provider>
+                </Provider>,
             );
             wrapper.update();
             datesSelection = wrapper.find(DatesSelection).first();
@@ -237,11 +237,11 @@ describe('Date picker', () => {
             datesSelection.props().onBlur(new Date(), true, true);
 
             expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedValue).toBe(
-                expectedValue
+                expectedValue,
             );
 
             expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedLabel).toBe(
-                expectedLabel
+                expectedLabel,
             );
 
             datesSelection.props().onBlur(new Date(), true, false);

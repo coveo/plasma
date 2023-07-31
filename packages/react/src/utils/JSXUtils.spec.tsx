@@ -22,8 +22,8 @@ describe('JSXUtils', () => {
                             {" Can't you see me? "}
                             <span>I can.</span>
                         </span>
-                    </div>
-                )
+                    </div>,
+                ),
             ).toBe("Hello there! Can't you see me? I can.");
         });
     });
@@ -40,7 +40,7 @@ describe('JSXUtils', () => {
         it('should add the new className to existing ones if the children a react element', () => {
             const resultingChildren = addClassNameToChildren(
                 <span className="old-class">Hello Plasma!</span>,
-                'new-class'
+                'new-class',
             );
             const component = shallow(resultingChildren[0] as ReactElement);
 

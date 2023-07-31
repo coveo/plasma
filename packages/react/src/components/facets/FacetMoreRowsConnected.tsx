@@ -26,7 +26,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IFacetMoreRowsOwnProps): 
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IFacetMoreRowsOwnProps
+    ownProps: IFacetMoreRowsOwnProps,
 ): IFacetMoreRowsDispatchProps => ({
     onOpen: () => dispatch(filterThrough('filter-' + ownProps.facet, '')),
     onDocumentClick: () => dispatch(closeMoreFacetRows()),
@@ -38,5 +38,5 @@ const mapDispatchToProps = (
 export const FacetMoreRowsConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(FacetMoreRows);

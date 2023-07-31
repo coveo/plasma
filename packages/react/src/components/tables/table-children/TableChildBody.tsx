@@ -58,7 +58,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
                     <div className="wrapper">{headingRowContent}</div>
                 </td>
             );
-        }
+        },
     );
     const collapsibleData = props.collapsibleFormatter?.(props.rowData);
     const collapsibleRow = collapsibleData ? (
@@ -80,7 +80,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
             'no-hover': !!props.withoutHoverOnRow,
             'row-disabled': props.disabled,
         },
-        getAdditionalClasses(props.additionalRowClasses, props.rowData)
+        getAdditionalClasses(props.additionalRowClasses, props.rowData),
     );
     const actions = props.getActions?.(props.rowData) ?? [];
 
@@ -120,7 +120,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
 const handleOnClick = (
     event: MouseEvent<HTMLTableDataCellElement>,
     headingAttributes: ITableHeadingAttribute,
-    childBodyProps: ITableChildBodyProps
+    childBodyProps: ITableChildBodyProps,
 ) => {
     headingAttributes.onClickCell?.(event, childBodyProps);
 };

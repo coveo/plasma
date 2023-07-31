@@ -105,7 +105,7 @@ export const FlatSelect: FunctionComponent<IFlatSelectProps> = ({
                     'mod-option-picker': optionPicker,
                 },
                 classes,
-                className
+                className,
             )}
         >
             {choices}

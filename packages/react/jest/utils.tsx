@@ -43,7 +43,7 @@ const customRender = (
         store = createStore(
             combineReducers<PlasmaState>(PlasmaReducers),
             initialState,
-            applyMiddleware(thunk, promise)
+            applyMiddleware(thunk, promise),
         ),
         container = document.getElementById(TEST_CONTAINER_ID),
         ...renderOptions
@@ -52,7 +52,7 @@ const customRender = (
         store?: Store<PlasmaState, AnyAction> & {
             dispatch: IDispatch<PlasmaState>;
         };
-    } = {}
+    } = {},
 ): RenderResult => {
     const TestWrapper: React.FunctionComponent<PropsWithChildren<unknown>> = ({children}) => (
         <Provider store={store}>{children}</Provider>

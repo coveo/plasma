@@ -19,7 +19,8 @@
 
     label {
         visibility: hidden;
-        &:after {
+
+        &::after {
             visibility: visible;
         }
 
@@ -51,7 +52,7 @@
 
         &:not(:empty) + .input-wrapper {
             input {
-                @include placeholder();
+                @include placeholder;
             }
 
             label.first-label {
@@ -96,7 +97,7 @@
             }
 
             &.delete-action {
-                &:before {
+                &::before {
                     position: relative;
                     top: 6px;
                     left: 2px;
@@ -131,7 +132,7 @@
 
         &.add-action,
         &.delete-action {
-            &:before {
+            &::before {
                 position: relative;
                 top: 6px;
                 left: 2px;
@@ -146,11 +147,11 @@
         &.add-action {
             border-color: var(--digital-blue-60);
 
-            &:before {
+            &::before {
                 background-color: var(--digital-blue-60);
             }
 
-            &:after {
+            &::after {
                 position: absolute;
                 top: 2px;
                 left: 6px;

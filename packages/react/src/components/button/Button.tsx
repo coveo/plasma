@@ -113,7 +113,7 @@ export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLBu
                 'mod-small': this.props.small,
                 'state-disabled disabled': !this.props.enabled,
             },
-            this.props.classes
+            this.props.classes,
         );
     }
 }

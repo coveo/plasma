@@ -50,5 +50,5 @@ const buttonWithRefreshCallbackDisconnected: FunctionComponent<
  */
 export const ButtonWithRefreshCallback = connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(buttonWithRefreshCallbackDisconnected);

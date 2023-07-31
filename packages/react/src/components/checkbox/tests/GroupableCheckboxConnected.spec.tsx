@@ -23,13 +23,13 @@ describe('GroupableCheckbox', () => {
 
         const renderChildCheckbox = (
             props: IGroupableCheckboxOwnProps = {},
-            attachToElementName: string = defaultElementApp
+            attachToElementName: string = defaultElementApp,
         ) => {
             wrapper = mount(
                 <Provider store={store}>
                     <GroupableCheckboxConnected id={parentId + '1'} parentId={parentId} isParent={false} {...props} />
                 </Provider>,
-                {attachTo: document.getElementById(attachToElementName)}
+                {attachTo: document.getElementById(attachToElementName)},
             );
             groupableCheckbox = wrapper.find(Checkbox).first();
 
@@ -38,13 +38,13 @@ describe('GroupableCheckbox', () => {
 
         const renderParentCheckbox = (
             props: IGroupableCheckboxOwnProps = {},
-            attachToElementName: string = defaultElementApp
+            attachToElementName: string = defaultElementApp,
         ) => {
             wrapper = mount(
                 <Provider store={store}>
                     <GroupableCheckboxConnected id={parentId} isParent={true} {...props} />
                 </Provider>,
-                {attachTo: document.getElementById(attachToElementName)}
+                {attachTo: document.getElementById(attachToElementName)},
             );
             groupableCheckbox = wrapper.find(Checkbox).first();
 
@@ -216,7 +216,7 @@ describe('GroupableCheckbox', () => {
                 getView();
 
                 wrappers.push(
-                    renderChildCheckbox({id: parentId + '4', defaultChecked: true}, divTemplateClasses.checkbox4)
+                    renderChildCheckbox({id: parentId + '4', defaultChecked: true}, divTemplateClasses.checkbox4),
                 );
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
                 groupableCheckboxState = groupableChekboxesState[0];
@@ -231,7 +231,7 @@ describe('GroupableCheckbox', () => {
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
 
                 expect(
-                    _.every(groupableChekboxesState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.checked)
+                    _.every(groupableChekboxesState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.checked),
                 ).toBe(true);
 
                 expect(groupableChekboxesState[0].nbChecked).toBe(2);
@@ -245,7 +245,7 @@ describe('GroupableCheckbox', () => {
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
 
                 expect(
-                    _.every(groupableChekboxesState[0].checkboxes, (checkbox: ICheckboxState) => !checkbox.checked)
+                    _.every(groupableChekboxesState[0].checkboxes, (checkbox: ICheckboxState) => !checkbox.checked),
                 ).toBe(true);
 
                 expect(groupableChekboxesState[0].nbChecked).toBe(0);

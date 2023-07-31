@@ -42,7 +42,7 @@ const Demo = () => {
                 (photo: PhotoProps): IItemBoxProps => ({
                     value: photo.id,
                     displayValue: <PhotoItem {...photo} />,
-                })
+                }),
             )}
             totalEntries={totalEntries}
             next={fetchNextPage}

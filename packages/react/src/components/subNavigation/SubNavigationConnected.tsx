@@ -18,14 +18,14 @@ const mapStateToProps = (state: PlasmaState, ownProps: ISubNavigationOwnProps): 
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ISubNavigationOwnProps
+    ownProps: ISubNavigationOwnProps,
 ): ISubNavigationDispatchProps => ({
     onRender: () =>
         dispatch(
             addSubNavigation(
                 ownProps.id,
-                ownProps.defaultSelected ? [ownProps.defaultSelected] : _.pluck(ownProps.items, 'id')
-            )
+                ownProps.defaultSelected ? [ownProps.defaultSelected] : _.pluck(ownProps.items, 'id'),
+            ),
         ),
     onDestroy: () => dispatch(removeSubNavigation(ownProps.id)),
     onClickItem: (itemId) => dispatch(selectSubNavigation(ownProps.id, itemId)),
@@ -37,5 +37,5 @@ const mapDispatchToProps = (
 export const SubNavigationConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(SubNavigation);

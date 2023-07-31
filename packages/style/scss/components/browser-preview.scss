@@ -2,13 +2,13 @@
     height: 720px;
     border: $default-border;
     border-radius: $big-border-radius;
-    box-shadow: 0px 4px 16px 0px rgba(#e5e8e8, 0.75);
+    box-shadow: 0 4px 16px 0 rgba(#e5e8e8, 0.75);
 
     &__header {
         color: var(--white);
         font-size: 15px;
         background-color: var(--navy-blue-60);
-        border-radius: $big-border-radius $big-border-radius 0px 0px;
+        border-radius: $big-border-radius $big-border-radius 0 0;
 
         .white-dot {
             display: inline-block;

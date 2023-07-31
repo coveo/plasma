@@ -24,7 +24,7 @@ describe('ModalPrompt', () => {
                     cancelLabel={cancelLabel}
                     message={message}
                     onConfirm={() => 1}
-                />
+                />,
             );
         }).not.toThrow();
     });
@@ -70,7 +70,7 @@ describe('ModalPrompt', () => {
                     message={message}
                     onConfirm={() => 1}
                 />,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
         });
 

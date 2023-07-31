@@ -19,7 +19,7 @@ export const addInput = (
     id: string,
     value = '',
     valid = true,
-    disabled = false
+    disabled = false,
 ): IReduxAction<IInputActionPayload> => ({
     type: InputActions.add,
     payload: {id, value, valid, disabled},

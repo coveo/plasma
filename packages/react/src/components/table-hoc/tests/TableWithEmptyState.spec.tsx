@@ -41,7 +41,7 @@ describe('TableWithEmptyState', () => {
                 <TableWithEmptyState id="🌶" data={[]} renderBody={() => null} emptyState={<EmptyState />} isLoading />,
                 {
                     store,
-                }
+                },
             );
             update = rerender;
         });
@@ -62,7 +62,7 @@ describe('TableWithEmptyState', () => {
                 <TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />,
                 {
                     store,
-                }
+                },
             );
             update = rerender;
         });

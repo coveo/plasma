@@ -79,7 +79,7 @@ describe('Item filter', () => {
             itemFilterComponent.setProps(cropProps);
 
             expect(itemFilterComponent.find('.item-filter-item').text().length).toBe(
-                ELLIPSIS.length + Math.abs(cropProps.crop)
+                ELLIPSIS.length + Math.abs(cropProps.crop),
             );
 
             cropProps = _.extend({}, ITEM_FILTER_BASIC_PROPS, {crop: longItem.length, item: longItem});

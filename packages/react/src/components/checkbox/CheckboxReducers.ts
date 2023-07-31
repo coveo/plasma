@@ -14,7 +14,7 @@ export const checkboxesInitialState: ICheckboxState[] = [];
 
 export const checkboxReducer = (
     state: ICheckboxState = checkboxInitialState,
-    action: IReduxAction<ICheckboxActionPayload>
+    action: IReduxAction<ICheckboxActionPayload>,
 ): ICheckboxState => {
     switch (action.type) {
         case CheckboxActions.add:
@@ -44,7 +44,7 @@ export const checkboxReducer = (
 
 export const checkboxesReducer = (
     state: ICheckboxState[] = checkboxesInitialState,
-    action: IReduxAction<ICheckboxActionPayload>
+    action: IReduxAction<ICheckboxActionPayload>,
 ): ICheckboxState[] => {
     switch (action.type) {
         case CheckboxActions.add:

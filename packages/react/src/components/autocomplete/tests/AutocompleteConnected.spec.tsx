@@ -23,7 +23,7 @@ describe('Autocomplete', () => {
                 <Provider store={store}>
                     <AutocompleteConnected id={id} items={items} {...otherProps} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             autocomplete = wrapper.find(AutocompleteConnected).first();
         };

@@ -25,7 +25,7 @@ describe('WithDirtyStickyFooter', () => {
             expect(() =>
                 shallowWithStore(<StickyFooterWithHOC {...STICKY_FOOTER_PROPS} />, store)
                     .dive()
-                    .dive()
+                    .dive(),
             ).not.toThrow();
         });
 
@@ -82,7 +82,7 @@ describe('WithDirtyStickyFooter', () => {
 
                 const stickyFooter = shallowWithStore(
                     <StickyFooterWithHOC {...STICKY_FOOTER_PROPS} isOpened={true} />,
-                    storeWithDirty
+                    storeWithDirty,
                 )
                     .dive()
                     .dive();

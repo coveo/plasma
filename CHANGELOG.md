@@ -1,3 +1,30 @@
+## 52.12.1 (2023-07-28)
+
+
+### Bug Fixes
+
+* **table,defaultcolumn:** set column width to auto by default (#3468) b86dbb7, closes #3468
+
+
+
+# 52.12.0 (2023-07-26)
+
+
+### Bug Fixes
+
+* **mantine:** remove table pagination when there are no pages (#3450) b0ddf4f, closes #3450
+* **table, onrowselectionchange:** call onRowSelectionChange callback in hook (#3449) 556bdf4, closes #3449
+* **table:** column width (#3379) 31a7ee3, closes #3379
+* trim whitespaces from filter box input (#3396) 1659fa0, closes #3396
+
+
+### Features
+
+* **table, layouts:** add prop to table layouts to disable row selection toggle (#3431) d62130e, closes #3431
+* **table:** pagination callbacks (#3427) 19b5e4c, closes #3427
+
+
+
 ## 52.11.1 (2023-06-28)
 
 

@@ -108,5 +108,5 @@ export const RefreshCallback = connect<
     IRefreshCallbackOwnProps
 >(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(RefreshCallbackDisconnected as any);

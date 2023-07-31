@@ -191,7 +191,7 @@ describe('InfoToken', () => {
                 mode={InfoTokenMode.Stroked}
                 size={InfoTokenSize.Large}
                 className="my-class"
-            />
+            />,
         );
 
         const largeToken = await screen.findByRole('img', {name: 'tip'});

@@ -9,7 +9,7 @@
     }
 }
 
-@media (max-width: 495px) {
+@media (width <= 495px) {
     .splash-header {
         height: 100vh;
     }
@@ -93,9 +93,9 @@
 .splash-footer {
     z-index: 1;
     min-height: $splash-min-height;
-    padding: 10px 20px 10px;
+    padding: 10px 20px;
 
-    @media (max-width: 580px) {
+    @media (width <= 580px) {
         min-height: $splash-mobile-min-height;
     }
 

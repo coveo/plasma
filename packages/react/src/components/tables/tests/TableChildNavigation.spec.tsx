@@ -27,7 +27,7 @@ describe('<TableChildNavigation />', () => {
                 <Provider store={store}>
                     <TableChildNavigation {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
         it('should render without error if basic props are passed', () => {
@@ -54,13 +54,13 @@ describe('<TableChildNavigation />', () => {
 
         it('should render NavigationConnected if passed as boolean', () => {
             expect(
-                mountComponentWithProps({...tablePropsMock, navigation: true}).find(NavigationConnected).length
+                mountComponentWithProps({...tablePropsMock, navigation: true}).find(NavigationConnected).length,
             ).toBe(1);
         });
 
         it('should render NavigationConnected is passed as NavigationChildrenProps', () => {
             expect(mountComponentWithProps({...tablePropsMock, navigation: {}}).find(NavigationConnected).length).toBe(
-                1
+                1,
             );
         });
     });

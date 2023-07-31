@@ -34,7 +34,7 @@ export const menuReducer = (state: IMenuState = menuInitialState, action: IRedux
 
 export const menuCompositeReducer = (
     state: IMenusState = menuCompositeInitialState,
-    action: IReduxAction<IMenuPayload>
+    action: IReduxAction<IMenuPayload>,
 ): IMenusState => {
     switch (action.type) {
         case MenuActions.add:

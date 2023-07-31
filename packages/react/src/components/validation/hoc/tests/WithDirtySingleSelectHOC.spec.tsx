@@ -30,7 +30,11 @@ describe('SingleSelectWithDirty', () => {
     it('should update the items prop to select the initial value', () => {
         const initialValue = 'my value';
         render(
-            <SingleSelectWithHOC id="🍎" items={[{value: 'my value'}, {value: 'potato'}]} initialValue={initialValue} />
+            <SingleSelectWithHOC
+                id="🍎"
+                items={[{value: 'my value'}, {value: 'potato'}]}
+                initialValue={initialValue}
+            />,
         );
 
         expect(screen.getByRole('button', {name: /my value/})).toBeVisible();
@@ -41,7 +45,7 @@ describe('SingleSelectWithDirty', () => {
             <>
                 <SingleSelectWithHOC id="🍎" items={[{value: 'new value'}, {value: 'some value'}]} initialValue="" />
                 <IsDirtyIndicator id="🍎" label="is dirty" />
-            </>
+            </>,
         );
 
         await userEvent.click(screen.getByRole('button'));
@@ -60,7 +64,7 @@ describe('SingleSelectWithDirty', () => {
                     initialValue="old value"
                 />
                 <IsDirtyIndicator id="🍎" label="is dirty" />
-            </>
+            </>,
         );
 
         await userEvent.click(screen.getByRole('button', {name: /old value/i}));
@@ -79,7 +83,7 @@ describe('SingleSelectWithDirty', () => {
                     initialValue="current value"
                 />
                 <IsDirtyIndicator id={DEFAULT_PROPS.id} label="is dirty" />
-            </>
+            </>,
         );
 
         expect(screen.queryByText('is dirty')).not.toBeInTheDocument();

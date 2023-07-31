@@ -1,7 +1,6 @@
 .multiselect-input {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
     width: $dropdown-button-min-width;
@@ -34,6 +33,7 @@
     .sortable-selected-option {
         margin: 0 $dropdown-multiselect-margin $dropdown-multiselect-margin 0;
     }
+
     &.readOnly {
         .selected-option,
         .multiselect-empty,
@@ -65,7 +65,6 @@
 
 .remove-all-selected-options {
     align-self: flex-start;
-
     padding: $dropdown-multiselect-items-margin;
 }
 

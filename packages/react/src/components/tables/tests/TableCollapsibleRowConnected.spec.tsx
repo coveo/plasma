@@ -40,7 +40,7 @@ describe('Tables', () => {
                         </tbody>
                     </table>
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             store.dispatch(addRow(basicTableCollapsibleRowProps.id));
 
