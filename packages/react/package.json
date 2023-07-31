@@ -120,7 +120,7 @@
         "identity-obj-proxy": "3.0.0",
         "jest": "29.6.1",
         "jest-environment-jsdom": "29.6.1",
-        "lint-staged": "9.5.0",
+        "lint-staged": "13.2.3",
         "lorem-ipsum": "2.0.8",
         "minimist": "1.2.8",
         "postcss": "8.4.27",
