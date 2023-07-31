@@ -41,7 +41,7 @@
         "@mantine/prism": "6.0.17",
         "@swc/helpers": "0.5.1",
         "@tanstack/match-sorter-utils": "8.8.4",
-        "clsx": "1.2.1",
+        "clsx": "2.0.0",
         "codesandbox-import-utils": "2.2.3",
         "dayjs": "1.11.9",
         "embla-carousel-react": "7.1.0",
