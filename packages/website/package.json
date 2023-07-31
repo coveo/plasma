@@ -29,7 +29,7 @@
         "@coveord/plasma-tokens": "workspace:*",
         "@emotion/react": "11.11.1",
         "@emotion/server": "11.11.0",
-        "@faker-js/faker": "7.6.0",
+        "@faker-js/faker": "8.0.2",
         "@mantine/carousel": "6.0.17",
         "@mantine/core": "6.0.17",
         "@mantine/dates": "6.0.17",
