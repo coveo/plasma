@@ -57,7 +57,7 @@
         "dnd-core": "16.0.1",
         "escape-string-regexp": "5.0.0",
         "moment": "2.29.4",
-        "query-string": "7.1.3",
+        "query-string": "8.1.0",
         "rc-slider": "9.7.5",
         "react-bootstrap": "2.8.0",
         "react-codemirror2": "7.2.1",
