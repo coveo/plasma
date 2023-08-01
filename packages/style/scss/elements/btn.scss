@@ -124,7 +124,7 @@
         &:focus {
             background-color: var(--pomegranate-red-60);
             border: $button-border-width solid var(--pomegranate-red-60);
-            box-shadow: 0 0 0 4px rgb(var(--pomegranate-red-70-rgb) 0.2);
+            box-shadow: 0 0 0 4px rgb(var(--pomegranate-red-70-rgb) / 20%);
         }
 
         &:hover {

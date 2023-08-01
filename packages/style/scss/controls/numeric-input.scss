@@ -20,7 +20,7 @@ $numeric-input-digit-padding: 10px;
         text-overflow: ellipsis;
         border: $default-border;
         border-radius: $border-radius;
-        box-shadow: inset 0 0 3px 0 rgb(var(--black-rgb) $transparency-5);
+        box-shadow: inset 0 0 3px 0 rgb(var(--black-rgb) / $transparency-5);
 
         &:focus {
             @include focus-outline;

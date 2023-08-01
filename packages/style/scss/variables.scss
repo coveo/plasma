@@ -287,7 +287,7 @@ $table-border-button: $table-border-width solid transparent;
 $table-selected-border-width: 5px;
 $table-column-draggable-width: 25px;
 $table-column-draggable-padding: 7px 10px;
-$table-row-drag-over-color: rgb(var(--deprecated-medium-grey-rgb) $transparency-3);
+$table-row-drag-over-color: rgb(var(--deprecated-medium-grey-rgb) / $transparency-3);
 $big-table-blankslate-section-padding: 20px 40px 20px 35px;
 $big-table-row-height: 36px;
 $big-table-icon-margin: 20px;
@@ -457,7 +457,7 @@ $selected-date-height: 28px;
 $calendar-limit-border-width: 2px;
 $calendar-limit-border-length: 5px;
 $calendar-max-height: 336px;
-$date-picker-button-hover-bg: rgb(var(--deprecated-dark-grey-rgb) $transparency-3);
+$date-picker-button-hover-bg: rgb(var(--deprecated-dark-grey-rgb) / $transparency-3);
 $countdown-cell-height: 28px;
 
 // Home card
@@ -520,9 +520,9 @@ $flippable-transition-duration: 0.8s;
 $flippable-shadow: 0 2px 8px 0 rgb(0 0 0 / 30%);
 
 // Material Card
-$material-card-shadow: 0 2px 20px 0 rgb(var(--black-rgb) 0.1);
-$material-card-shadow-hover: 0 2px 30px 0 rgb(var(--black-rgb) 0.3);
-$material-card-shadow-active: 0 2px 20px 0 rgb(var(--black-rgb) 0.3);
+$material-card-shadow: 0 2px 20px 0 rgb(var(--black-rgb) / 10%);
+$material-card-shadow-hover: 0 2px 30px 0 rgb(var(--black-rgb) / 30%);
+$material-card-shadow-active: 0 2px 20px 0 rgb(var(--black-rgb) / 30%);
 $material-card-colored-border-height: 5px;
 
 // Content placeholder
@@ -585,8 +585,8 @@ $banner-content-padding: 50px;
 $banner-right-width: 300px;
 $banner-warning-icon-fix: 2px;
 $banner-box-shadow:
-    inset 0 5px 10px 0 rgb(var(--black-rgb) $transparency-5),
-    inset 0 -10px 50px 0 rgb(var(--black-rgb) 0.2);
+    inset 0 5px 10px 0 rgb(var(--black-rgb) / $transparency-5),
+    inset 0 -10px 50px 0 rgb(var(--black-rgb) / 20%);
 
 // Status Cards
 $status-card-border-width: 4px;

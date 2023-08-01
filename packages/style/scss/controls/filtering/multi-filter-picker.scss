@@ -13,7 +13,7 @@
 
         .add-container {
             overflow: auto;
-            background-color: rgb(var(--deprecated-white-rgb) 0.4);
+            background-color: rgb(var(--deprecated-white-rgb) / 40%);
 
             .add {
                 padding: $multi-filterpickerbox-add-padding;
