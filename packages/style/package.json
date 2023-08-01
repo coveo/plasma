@@ -59,7 +59,7 @@
     "dependencies": {
         "codemirror": "5.59.4",
         "rc-slider": "8.7.1",
-        "react-diff-view": "2.6.0"
+        "react-diff-view": "3.0.3"
     },
     "devDependencies": {
         "@csstools/postcss-sass": "5.0.1",

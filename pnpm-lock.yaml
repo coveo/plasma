@@ -379,8 +379,8 @@ importers:
         specifier: 2.19.3
         version: 2.19.3(react@18.2.0)
       react-diff-view:
-        specifier: 2.6.0
-        version: 2.6.0(prop-types@15.8.1)(react@18.2.0)
+        specifier: 3.0.3
+        version: 3.0.3(prop-types@15.8.1)(react@18.2.0)
       react-infinite-scroll-component:
         specifier: 4.5.3
         version: 4.5.3(prop-types@15.8.1)(react@18.2.0)
@@ -675,8 +675,8 @@ importers:
         specifier: 8.7.1
         version: 8.7.1(react-dom@18.2.0)(react@18.2.0)
       react-diff-view:
-        specifier: 2.6.0
-        version: 2.6.0(prop-types@15.8.1)(react@18.2.0)
+        specifier: 3.0.3
+        version: 3.0.3(prop-types@15.8.1)(react@18.2.0)
     devDependencies:
       '@csstools/postcss-sass':
         specifier: 5.0.1
@@ -947,8 +947,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0
       react-diff-view:
-        specifier: 2.6.0
-        version: 2.6.0(prop-types@15.8.1)(react@18.2.0)
+        specifier: 3.0.3
+        version: 3.0.3(prop-types@15.8.1)(react@18.2.0)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -16009,8 +16009,8 @@ packages:
       - bufferutil
       - utf-8-validate
 
-  /react-diff-view@2.6.0(prop-types@15.8.1)(react@18.2.0):
-    resolution: {integrity: sha512-TkyMcEv97uIPlxolbatLL99p//4G4xlGBismQaF/6iZeIX+ni9CRBE9ayXt1Tn1cWFDn9tXY6fp06T231gfjlQ==}
+  /react-diff-view@3.0.3(prop-types@15.8.1)(react@18.2.0):
+    resolution: {integrity: sha512-orETYmQbptfMbOnbkSHH61Ew5RBTYWAO2M1MDx2ZvsEDHPygn6U8mWh7kUCm/z40YzVKmd3+8hpH872Y0uioIg==}
     peerDependencies:
       prop-types: '>=15.6'
       react: '>=16.8'
