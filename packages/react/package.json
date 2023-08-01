@@ -63,7 +63,7 @@
         "react-codemirror2": "7.2.1",
         "react-color": "2.19.3",
         "react-diff-view": "3.0.3",
-        "react-infinite-scroll-component": "4.5.3",
+        "react-infinite-scroll-component": "6.1.0",
         "react-modal": "3.16.1",
         "react-tether": "3.0.1",
         "react-textarea-autosize": "8.5.2",
