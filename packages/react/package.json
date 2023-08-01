@@ -55,7 +55,7 @@
         "d3-scale": "4.0.2",
         "d3-shape": "3.2.0",
         "dnd-core": "16.0.1",
-        "escape-string-regexp": "4.0.0",
+        "escape-string-regexp": "5.0.0",
         "moment": "2.29.4",
         "query-string": "7.1.3",
         "rc-slider": "9.7.5",
