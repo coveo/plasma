@@ -382,8 +382,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3(prop-types@15.8.1)(react@18.2.0)
       react-infinite-scroll-component:
-        specifier: 4.5.3
-        version: 4.5.3(prop-types@15.8.1)(react@18.2.0)
+        specifier: 6.1.0
+        version: 6.1.0(react@18.2.0)
       react-modal:
         specifier: 3.16.1
         version: 3.16.1(react-dom@18.2.0)(react@18.2.0)
@@ -475,9 +475,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.0
         version: 18.0.9
-      '@types/react-infinite-scroll-component':
-        specifier: 4.2.5
-        version: 4.2.5
       '@types/react-modal':
         specifier: 3.16.0
         version: 3.16.0
@@ -5450,12 +5447,6 @@ packages:
     resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
     dependencies:
       '@types/react': 18.0.25
-
-  /@types/react-infinite-scroll-component@4.2.5:
-    resolution: {integrity: sha512-Vo2ykqsvATeFgAAz0IBvO7fgpx9Q2kHG/KJJRNTrdWL06ghTG0t/l/+oY1Z5Zl5PJoLArEHu8D4Yq0kD8jx8ow==}
-    dependencies:
-      '@types/react': 18.0.25
-    dev: true
 
   /@types/react-modal@3.16.0:
     resolution: {integrity: sha512-iphdqXAyUfByLbxJn5j6d+yh93dbMgshqGP0IuBeaKbZXx0aO+OXsvEkt6QctRdxjeM9/bR+Gp3h9F9djVWTQQ==}
@@ -15986,14 +15977,13 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-infinite-scroll-component@4.5.3(prop-types@15.8.1)(react@18.2.0):
-    resolution: {integrity: sha512-8O0PIeYZx0xFVS1ChLlLl/1obn64vylzXeheLsm+t0qUibmet7U6kDaKFg6jVRQJwDikWBTcyqEFFsxrbFCO5w==}
+  /react-infinite-scroll-component@6.1.0(react@18.2.0):
+    resolution: {integrity: sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==}
     peerDependencies:
-      prop-types: ^15.0.0
-      react: '>=0.14.0'
+      react: '>=16.0.0'
     dependencies:
-      prop-types: 15.8.1
       react: 18.2.0
+      throttle-debounce: 2.3.0
     dev: false
 
   /react-is@16.13.1:
@@ -18284,6 +18274,11 @@ packages:
 
   /throat@5.0.0:
     resolution: {integrity: sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA==}
+
+  /throttle-debounce@2.3.0:
+    resolution: {integrity: sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==}
+    engines: {node: '>=8'}
+    dev: false
 
   /through2-filter@3.0.0:
     resolution: {integrity: sha512-jaRjI2WxN3W1V8/FMZ9HKIBXixtiqs3SQSX4/YGIiP3gL6djW48VoZq9tDqeCWs3MT8YY5wb/zli8VW8snY1CA==}
