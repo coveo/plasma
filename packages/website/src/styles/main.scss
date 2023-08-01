@@ -5,65 +5,8 @@
 
 /* stylelint-disable-next-line selector-id-pattern */
 #App {
-    overflow: hidden;
-
-    .demo-header {
-        display: grid;
-        grid-template-columns: 261px 1fr 261px;
-        place-items: center;
-        min-width: 100%;
-        padding: 0.5rem 2rem;
-        background-color: var(--navy-blue-80);
-
-        .header-logo-link {
-            justify-self: flex-start;
-        }
-
-        .header-logo {
-            width: 229px;
-        }
-    }
-
-    .right-side {
-        justify-self: end;
-    }
-
-    @media (width <= 1240px) {
-        .demo-header {
-            grid-template-columns: 261px 1fr 2rem;
-        }
-
-        .right-side {
-            display: none;
-        }
-    }
-
-    .header-height {
-        height: auto;
-    }
-
-    .demo-content {
-        @include slim-scroll(var(--deprecated-grey-2), var(--deprecated-grey-4));
-
-        overflow-y: overlay;
-    }
-
     .tab {
         text-transform: capitalize;
-    }
-
-    .top-navigation .tab {
-        font-weight: var(--main-font-regular);
-
-        &.active {
-            font-weight: var(--main-font-bold);
-        }
-    }
-
-    @media (max-width: $breakpoint-desktop-small) {
-        .demo-content {
-            margin-left: 0;
-        }
     }
 
     @for $i from 7 through 10 {
@@ -114,8 +57,4 @@
     &::first-letter {
         text-transform: uppercase;
     }
-}
-
-img.invert {
-    filter: invert(1);
 }

@@ -7,6 +7,7 @@ import {
     type NotificationProps,
     type StepperStylesParams,
     type TabsStylesParams,
+    getStylesRef,
 } from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';
@@ -367,6 +368,23 @@ export const plasmaTheme: MantineThemeOverride = {
                         backgroundColor: theme.fn.variant({variant: 'light'}).background,
                         color: theme.fn.variant({variant: 'light'}).color,
                         ...theme.fn.hover({backgroundColor: theme.fn.variant({variant: 'light'}).hover}),
+                    },
+                },
+            }),
+        },
+        NavLink: {
+            styles: (theme) => ({
+                root: {
+                    color: theme.colors.gray[6],
+                    borderRadius: `${theme.defaultRadius}px 0px 0px ${theme.defaultRadius}px`,
+                },
+                label: {
+                    ref: getStylesRef('label'),
+                    fontWeight: 500,
+                },
+                children: {
+                    [`.${getStylesRef('label')}`]: {
+                        fontWeight: 300,
                     },
                 },
             }),
