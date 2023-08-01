@@ -96,7 +96,6 @@
         "@types/react-codemirror": "1.0.8",
         "@types/react-color": "3.0.6",
         "@types/react-dom": "18.2.7",
-        "@types/react-infinite-scroll-component": "4.2.5",
         "@types/react-modal": "3.16.0",
         "@types/react-textarea-autosize": "4.3.6",
         "@types/react-transition-group": "2.9.2",
