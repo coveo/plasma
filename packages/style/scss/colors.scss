@@ -165,7 +165,7 @@ $deprecated: (
 );
 
 @function toRGB($color) {
-    @return red($color), green($color), blue($color);
+    @return red($color) green($color) blue($color);
 }
 
 @mixin spreadPalette($palette) {

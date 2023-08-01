@@ -12,7 +12,7 @@
     margin: $facet-margin-y 0;
     padding-bottom: $facet-spacing;
     background: var(--white);
-    border: 1px solid rgb(var(--deprecated-heather-rgb) 0.3);
+    border: 1px solid rgb(var(--deprecated-heather-rgb) / 30%);
     border-radius: $big-border-radius;
     box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
 }
@@ -239,7 +239,7 @@
     overflow-y: auto;
     list-style: none;
     background-color: var(--white);
-    border: 1px solid rgb(var(--deprecated-heather-rgb) 0.3);
+    border: 1px solid rgb(var(--deprecated-heather-rgb) / 30%);
     border-radius: $big-border-radius;
 
     @include slim-scroll(var(--deprecated-light-grey), var(--deprecated-medium-grey));
