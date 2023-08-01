@@ -47,6 +47,10 @@ interface CodeEditorProps
     value?: string;
     /** onChange value for controlled input */
     onChange?(value: string): void;
+    /** Called whenever the search icon is clicked  */
+    onSearch?(): void;
+    /** Called whenever the copy icon is clicked */
+    onCopy?(): void;
     /** Called whenever the code editor gets the focus */
     onFocus?(): void;
     /**
@@ -87,6 +91,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         language,
         defaultValue,
         onChange,
+        onCopy,
+        onSearch,
         onFocus,
         value,
         label,
@@ -129,6 +135,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         if (editorRef.current) {
             editorRef.current.focus();
             editorRef.current.trigger('editor', 'actions.find', '');
+            onSearch?.();
         }
     };
 
@@ -169,7 +176,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     const _buttons = (
         <Group position="right" spacing={0}>
             <Search handleSearch={handleSearch} />
-            <CopyToClipboard value={_value} />
+            <CopyToClipboard value={_value} onCopy={() => onCopy?.()} />
         </Group>
     );
 
