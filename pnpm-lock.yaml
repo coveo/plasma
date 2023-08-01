@@ -7,7 +7,7 @@ settings:
 overrides:
   '@types/react': ^18.0
   '@types/react-dom': ^18.0
-  loader-utils: 2.0.3
+  loader-utils: 2.0.4
 
 importers:
 
@@ -9884,7 +9884,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
-      loader-utils: 2.0.3
+      loader-utils: 2.0.4
       schema-utils: 3.3.0
       webpack: 5.88.2
     dev: false
@@ -12781,8 +12781,8 @@ packages:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
     engines: {node: '>=6.11.5'}
 
-  /loader-utils@2.0.3:
-    resolution: {integrity: sha512-THWqIsn8QRnvLl0shHYVBN9syumU8pYWEHPTmkiVGd+7K5eFNVSY6AJhRvgGF70gg1Dz+l/k8WicvFCxdEs60A==}
+  /loader-utils@2.0.4:
+    resolution: {integrity: sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==}
     engines: {node: '>=8.9.0'}
     dependencies:
       big.js: 5.2.2
@@ -15736,7 +15736,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
-      loader-utils: 2.0.3
+      loader-utils: 2.0.4
       schema-utils: 3.3.0
       webpack: 5.88.2
     dev: true
@@ -19072,7 +19072,7 @@ packages:
         optional: true
     dependencies:
       file-loader: 6.2.0(webpack@5.88.2)
-      loader-utils: 2.0.3
+      loader-utils: 2.0.4
       mime-types: 2.1.35
       schema-utils: 3.3.0
       webpack: 5.88.2
