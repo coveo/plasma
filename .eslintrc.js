@@ -1,4 +1,4 @@
 module.exports = {
-    extends: [require.resolve('tsjs/eslint-config')],
+    extends: ['plasma'],
     ignorePatterns: ['scripts'],
 };
