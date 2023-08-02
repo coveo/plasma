@@ -36,7 +36,7 @@ const getIconsLibrary = async () => {
     const {children} = getPage(iconsLibrary, PagesId.Icons[0]);
     const iconsNodeId = (children as Frame[])?.reduce<string[]>(
         (memo, set) => memo.concat(set.children.map(({id}) => id)),
-        []
+        [],
     );
 
     console.info(`Detected ${iconsNodeId.length} icons, starting to fetch icons markup in chunks of size ${chunkSize}`);

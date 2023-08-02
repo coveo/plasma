@@ -18,7 +18,7 @@ describe('InlineConfirm', () => {
                 <InlineConfirm.Button id="delete" onClick={onClickSpy}>
                     Delete
                 </InlineConfirm.Button>
-            </InlineConfirm>
+            </InlineConfirm>,
         );
 
         await user.click(screen.getByRole('button', {name: 'Delete'}));
@@ -41,7 +41,7 @@ describe('InlineConfirm', () => {
                         </InlineConfirm.MenuItem>
                     </Menu.Dropdown>
                 </Menu>
-            </InlineConfirm>
+            </InlineConfirm>,
         );
 
         await user.click(screen.getByRole('button', {name: /open menu/i}));
@@ -56,7 +56,7 @@ describe('InlineConfirm', () => {
             <InlineConfirm>
                 <InlineConfirm.Button id="my-button-id">Remove</InlineConfirm.Button>
                 <InlineConfirm.Prompt id="my-button-id" label="Are you sure?" onConfirm={vi.fn()} />
-            </InlineConfirm>
+            </InlineConfirm>,
         );
         expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
         expect(screen.getByRole('button', {name: 'Remove'})).toBeVisible();
@@ -80,7 +80,7 @@ describe('InlineConfirm', () => {
                     cancelLabel="I changed my mind"
                     onConfirm={confirmSpy}
                 />
-            </InlineConfirm>
+            </InlineConfirm>,
         );
 
         await user.click(screen.getByRole('button', {name: 'Remove'}));
@@ -107,7 +107,7 @@ describe('InlineConfirm', () => {
 
                 <InlineConfirm.Button id="print">Print</InlineConfirm.Button>
                 <InlineConfirm.Prompt id="print" label="Print?" onConfirm={vi.fn()} />
-            </InlineConfirm>
+            </InlineConfirm>,
         );
 
         await user.click(screen.getByRole('button', {name: 'Remove'}));

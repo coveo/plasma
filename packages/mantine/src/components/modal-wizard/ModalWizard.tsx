@@ -159,7 +159,7 @@ export const ModalWizard: ModalWizardType = ({
     };
 
     const resolveStepDependentProp = <P extends keyof ModalWizardStepProps>(
-        prop: P
+        prop: P,
     ): ResolveStep<ModalWizardStepProps[P]> =>
         typeof currentStep.props[prop] === 'function'
             ? currentStep.props[prop](currentStepIndex + 1, numberOfSteps)
@@ -169,11 +169,11 @@ export const ModalWizard: ModalWizardType = ({
         () => (currStepIndex: number) => {
             const totalNumberOfSteps = modalSteps.filter((step) => step.props.countsAsProgress).length;
             const numberOfCompletedSteps = modalSteps.filter(
-                (step, index) => step.props.countsAsProgress && index <= currStepIndex
+                (step, index) => step.props.countsAsProgress && index <= currStepIndex,
             ).length;
             return (numberOfCompletedSteps / totalNumberOfSteps) * 100;
         },
-        []
+        [],
     );
 
     return (

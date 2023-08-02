@@ -21,7 +21,7 @@ describe('Table.PerPage', () => {
                 <Table.Footer>
                     <Table.PerPage label="Per page" />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         expect(screen.getByText('Per page')).toBeVisible();
@@ -37,7 +37,7 @@ describe('Table.PerPage', () => {
                 <Table.Footer>
                     <Table.PerPage label="Per page" values={[2, 7, 12, 17]} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         const radios = screen.getAllByRole('radio');
@@ -60,11 +60,11 @@ describe('Table.PerPage', () => {
                 <Table.Footer>
                     <Table.PerPage />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         expect(onMount).toHaveBeenCalledWith(
-            expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})})
+            expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})}),
         );
     });
 
@@ -76,13 +76,13 @@ describe('Table.PerPage', () => {
                 <Table.Footer>
                     <Table.PerPage />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         await user.click(screen.queryByRole('radio', {name: '100'}));
         vi.advanceTimersByTime(500);
         expect(onChange).toHaveBeenCalledWith(
-            expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})})
+            expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})}),
         );
     });
 
@@ -100,13 +100,13 @@ describe('Table.PerPage', () => {
                     <Table.Pagination totalPages={2} />
                     <Table.PerPage />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         await user.click(screen.queryByRole('radio', {name: '100'}));
         vi.advanceTimersByTime(500);
         expect(onChange).toHaveBeenCalledWith(
-            expect.objectContaining({pagination: expect.objectContaining({pageIndex: 0})})
+            expect.objectContaining({pagination: expect.objectContaining({pageIndex: 0})}),
         );
     });
 
@@ -123,7 +123,7 @@ describe('Table.PerPage', () => {
                     <Table.Pagination totalPages={2} />
                     <Table.PerPage onPerPageChange={onPerPageChange} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         onPerPageChange.mockReset();
@@ -141,7 +141,7 @@ describe('Table.PerPage', () => {
                 <Table.Footer data-testid="table-footer">
                     <Table.PerPage />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
         expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
     });

@@ -7,7 +7,7 @@ describe('Prompt', () => {
             <Prompt variant="default" opened onClose={vi.fn()} title="title modal">
                 content modal
                 <Prompt.Footer>footer content</Prompt.Footer>
-            </Prompt>
+            </Prompt>,
         );
         expect(screen.getByText(/content modal/i)).toBeInTheDocument();
         expect(screen.getByText(/footer content/i)).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('Prompt', () => {
         render(
             <Prompt variant="default" opened onClose={onClose} title="title modal">
                 content modal
-            </Prompt>
+            </Prompt>,
         );
 
         screen.getByRole('button').click();

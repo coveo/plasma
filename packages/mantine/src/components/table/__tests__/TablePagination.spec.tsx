@@ -23,7 +23,7 @@ describe('Table.Pagination', () => {
                 <Table.Footer>
                     <Table.Pagination totalPages={3} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         const buttons = screen.getAllByRole('button');
@@ -43,7 +43,7 @@ describe('Table.Pagination', () => {
                 <Table.Footer>
                     <Table.Pagination totalPages={5} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         onChange.mockReset();
@@ -52,7 +52,7 @@ describe('Table.Pagination', () => {
 
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(
-                expect.objectContaining({pagination: expect.objectContaining({pageIndex: 1})})
+                expect.objectContaining({pagination: expect.objectContaining({pageIndex: 1})}),
             );
         });
     });
@@ -77,7 +77,7 @@ describe('Table.Pagination', () => {
                 <Table.Footer>
                     <Table.Pagination totalPages={null} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         expect(screen.getByText('fruits')).toBeVisible();
@@ -111,7 +111,7 @@ describe('Table.Pagination', () => {
                     <Table.PerPage />
                     <Table.Pagination totalPages={5} onPageChange={onChangePage} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         onChangePage.mockReset();
@@ -130,7 +130,7 @@ describe('Table.Pagination', () => {
                 <Table.Footer data-testid="table-footer">
                     <Table.Pagination totalPages={0} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
         expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
     });

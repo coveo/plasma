@@ -22,7 +22,7 @@ describe('Table.LastUpdated', () => {
         const {rerender} = render(
             <Table data={[{name: 'fruit'}]} columns={columns}>
                 <Table.LastUpdated />
-            </Table>
+            </Table>,
         );
 
         expect(screen.getByText('Last update:')).toBeVisible();
@@ -31,7 +31,7 @@ describe('Table.LastUpdated', () => {
         rerender(
             <Table data={[{name: 'fruit'}]} columns={columns}>
                 <Table.LastUpdated label="CUSTOM label:" />
-            </Table>
+            </Table>,
         );
 
         expect(screen.queryByText('Last update:')).not.toBeInTheDocument();

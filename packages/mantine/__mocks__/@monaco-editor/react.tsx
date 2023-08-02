@@ -7,12 +7,12 @@ const editor: any = {
     focus: vi
         .fn()
         .mockImplementation(() =>
-            document.querySelector('[data-testid="monaco-editor"]').setAttribute('focus', 'true')
+            document.querySelector('[data-testid="monaco-editor"]').setAttribute('focus', 'true'),
         ),
     trigger: vi
         .fn()
         .mockImplementation(() =>
-            document.querySelector('[data-testid="monaco-editor"]').setAttribute('trigger', 'true')
+            document.querySelector('[data-testid="monaco-editor"]').setAttribute('trigger', 'true'),
         ),
 };
 

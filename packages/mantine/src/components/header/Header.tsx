@@ -36,7 +36,7 @@ export const Header: HeaderType = ({description, borderBottom, children, variant
     const actions = convertedChildren.find((child) => child.type === HeaderActions);
     const docAnchor = convertedChildren.find((child) => child.type === HeaderDocAnchor);
     const otherChildren = convertedChildren.filter(
-        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor
+        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor,
     );
     return (
         <>
