@@ -16,11 +16,11 @@ describe('Button', () => {
                 <>
                     <Button loading={true}>I am loading</Button>
                     <Button loading={false}>I am not loading</Button>
-                </>
+                </>,
             );
             expect(within(screen.getByRole('button', {name: /I am loading/i})).getByRole('presentation')).toBeVisible();
             expect(
-                within(screen.queryByRole('button', {name: /I am not loading/i})).queryByRole('presentation')
+                within(screen.queryByRole('button', {name: /I am not loading/i})).queryByRole('presentation'),
             ).not.toBeInTheDocument();
         });
 
@@ -40,7 +40,7 @@ describe('Button', () => {
             userEvent.click(screen.getByRole('button', {name: /promise handler/i}));
 
             expect(
-                await within(screen.getByRole('button', {name: /promise handler/i})).findByRole('presentation')
+                await within(screen.getByRole('button', {name: /promise handler/i})).findByRole('presentation'),
             ).toBeVisible();
 
             resolve();
@@ -50,7 +50,7 @@ describe('Button', () => {
             });
 
             expect(
-                within(screen.queryByRole('button', {name: /promise handler/i})).queryByRole('presentation')
+                within(screen.queryByRole('button', {name: /promise handler/i})).queryByRole('presentation'),
             ).not.toBeInTheDocument();
         });
 
@@ -70,7 +70,7 @@ describe('Button', () => {
             userEvent.click(screen.getByRole('button', {name: /promise handler/i}));
 
             expect(
-                await within(screen.getByRole('button', {name: /promise handler/i})).findByRole('presentation')
+                await within(screen.getByRole('button', {name: /promise handler/i})).findByRole('presentation'),
             ).toBeVisible();
 
             reject();
@@ -80,7 +80,7 @@ describe('Button', () => {
             });
 
             expect(
-                within(screen.queryByRole('button', {name: /promise handler/i})).queryByRole('presentation')
+                within(screen.queryByRole('button', {name: /promise handler/i})).queryByRole('presentation'),
             ).not.toBeInTheDocument();
         });
     });

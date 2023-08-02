@@ -11,7 +11,7 @@ export const useRowSelection = <T>(
         onRowSelectionChange,
         multiRowSelectionEnabled,
         additionalRootNodes = [],
-    }: Pick<TableProps<T>, 'onRowSelectionChange' | 'multiRowSelectionEnabled' | 'additionalRootNodes'>
+    }: Pick<TableProps<T>, 'onRowSelectionChange' | 'multiRowSelectionEnabled' | 'additionalRootNodes'>,
 ) => {
     const outsideClickRef = useRef<HTMLDivElement>();
     useClickOutside(
@@ -21,7 +21,7 @@ export const useRowSelection = <T>(
             }
         },
         null,
-        [outsideClickRef.current, ...additionalRootNodes]
+        [outsideClickRef.current, ...additionalRootNodes],
     );
 
     // Need to call this outside of the onRowSelectionChange of the table to avoid rendering conflicts if the callback queues an update in a parent component.
@@ -36,7 +36,7 @@ export const useRowSelection = <T>(
             table.setState((old) => {
                 const newRowSelection = functionalUpdate(
                     rowSelectionUpdater,
-                    old['rowSelection']
+                    old['rowSelection'],
                 ) as RowSelectionWithData<T>;
 
                 if (isEqual(old['rowSelection'], newRowSelection)) {
@@ -49,7 +49,7 @@ export const useRowSelection = <T>(
                     if (newRowSelection[rowId] === true) {
                         if (!rows[rowId]) {
                             console.error(
-                                'The table was not initialized properly, the rowSelection state should contain an object of type Record<string, TData>.'
+                                'The table was not initialized properly, the rowSelection state should contain an object of type Record<string, TData>.',
                             );
                         }
                         newRowSelection[rowId] = rows[rowId]?.original ?? (true as T);

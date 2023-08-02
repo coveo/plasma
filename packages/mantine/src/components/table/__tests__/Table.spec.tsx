@@ -26,7 +26,7 @@ describe('Table', () => {
                 <Table data={[]} columns={columns} noDataChildren={<EmptyState />}>
                     <Table.Header data-testid="table-header">header</Table.Header>
                     <Table.Footer data-testid="table-footer">footer</Table.Footer>
-                </Table>
+                </Table>,
             );
 
             expect(screen.queryByTestId('table-header')).not.toBeInTheDocument();
@@ -44,7 +44,7 @@ describe('Table', () => {
                 >
                     <Table.Header data-testid="table-header">header</Table.Header>
                     <Table.Footer data-testid="table-footer">footer</Table.Footer>
-                </Table>
+                </Table>,
             );
 
             expect(screen.getByTestId('table-header')).toBeVisible();
@@ -66,7 +66,7 @@ describe('Table', () => {
                 <Table.Consumer>
                     <Fixture />
                 </Table.Consumer>
-            </Table>
+            </Table>,
         );
 
         expect(screen.getByRole('button', {name: 'Click me'})).toBeVisible();
@@ -92,10 +92,10 @@ describe('Table', () => {
                     <Table.Header>
                         <Table.Filter data-testid="table-filter" />
                     </Table.Header>
-                </Table>
+                </Table>,
             );
             expect(screen.getByTestId('filtered-empty-state').parentElement).toHaveClass(
-                'mantine-Skeleton-root mantine-Skeleton-visible'
+                'mantine-Skeleton-root mantine-Skeleton-visible',
             );
         });
 
@@ -105,10 +105,10 @@ describe('Table', () => {
                     <Table.Header>
                         <Table.Filter data-testid="table-filter" />
                     </Table.Header>
-                </Table>
+                </Table>,
             );
             expect(screen.getByTestId('empty-state').parentElement).toHaveClass(
-                'mantine-Skeleton-root mantine-Skeleton-visible'
+                'mantine-Skeleton-root mantine-Skeleton-visible',
             );
         });
     });
@@ -126,7 +126,7 @@ describe('Table', () => {
                     ]}
                     columns={columns}
                 />
-            </div>
+            </div>,
         );
 
         const row = screen.getByRole('row', {name: 'patate king', selected: false});
@@ -204,7 +204,7 @@ describe('Table', () => {
                     layouts={layouts}
                 >
                     <Table.Header data-testid="table-header" />
-                </Table>
+                </Table>,
             );
             expect(screen.getByRole('radio', {name: /layout 1/i})).toBeChecked();
             expect(screen.getByTestId('layout1-header')).toBeInTheDocument();
@@ -236,7 +236,7 @@ describe('Table', () => {
                     layouts={layouts}
                 >
                     <Table.Header data-testid="table-header" />
-                </Table>
+                </Table>,
             );
 
             await user.click(screen.getByRole('radio', {name: /layout 2/i}));
@@ -254,7 +254,7 @@ describe('Table', () => {
                     initialState={{layout: 'Layout 2'}}
                 >
                     <Table.Header data-testid="table-header" />
-                </Table>
+                </Table>,
             );
 
             expect(screen.getByRole('radio', {name: /layout 2/i})).toBeChecked();
@@ -280,7 +280,7 @@ describe('Table', () => {
                     columns={columns}
                     multiRowSelectionEnabled
                     onRowSelectionChange={onRowSelectionChangeSpy}
-                />
+                />,
             );
             await user.click(within(screen.getByRole('row', {name: /jane doe/i})).getByRole('checkbox'));
             expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
@@ -316,7 +316,7 @@ describe('Table', () => {
                         columns={columns}
                         multiRowSelectionEnabled
                     />
-                </div>
+                </div>,
             );
 
             const row = screen.getByRole('row', {name: /patate king/i, selected: false});
@@ -345,7 +345,7 @@ describe('Table', () => {
                     multiRowSelectionEnabled
                 >
                     <Table.Header />
-                </Table>
+                </Table>,
             );
 
             await user.click(screen.getByRole('checkbox', {name: /select all/i}));
@@ -366,7 +366,7 @@ describe('Table', () => {
                     initialState={{
                         rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}},
                     }}
-                />
+                />,
             );
 
             expect(screen.queryByRole('button', {name: /1 selected/i})).not.toBeInTheDocument();

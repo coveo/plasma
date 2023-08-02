@@ -13,13 +13,13 @@ describe('DateRangePickerPresetSelect', () => {
                 presets={{
                     year2k: {label: 'select me', range: [new Date(1999, 11, 31), new Date(2000, 0, 1)]},
                 }}
-            />
+            />,
         );
 
         await user.click(
             screen.getByRole('searchbox', {
                 name: 'Date range',
-            })
+            }),
         );
         await user.click(screen.getByRole('option', {name: 'select me'}));
 
@@ -33,7 +33,7 @@ describe('DateRangePickerPresetSelect', () => {
                 presets={{
                     year2k: {label: 'select me', range: [new Date(1999, 11, 31), new Date(2000, 0, 1)]},
                 }}
-            />
+            />,
         );
 
         // by default no value
@@ -45,7 +45,7 @@ describe('DateRangePickerPresetSelect', () => {
                 presets={{
                     year2k: {label: 'select me', range: [new Date(1999, 11, 31), new Date(2000, 0, 1)]},
                 }}
-            />
+            />,
         );
 
         // if a preset match the value, it selects it

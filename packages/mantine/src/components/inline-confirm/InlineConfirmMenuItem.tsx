@@ -17,5 +17,5 @@ export const InlineConfirmMenuItem = forwardRef<HTMLButtonElement, InlineConfirm
         };
 
         return <Menu.Item ref={ref} onClick={handleOnClick} {...others} />;
-    }
+    },
 );

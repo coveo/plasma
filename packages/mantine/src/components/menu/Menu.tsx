@@ -16,7 +16,7 @@ const _MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
         >
             <MantineMenu.Item ref={ref} disabled={disabled} {...others} />
         </ButtonWithDisabledTooltip>
-    )
+    ),
 );
 
 const MenuItem = createPolymorphicComponent<'button', MenuItemProps>(_MenuItem);

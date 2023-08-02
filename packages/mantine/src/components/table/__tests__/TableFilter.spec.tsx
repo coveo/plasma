@@ -22,7 +22,7 @@ describe('Table.Filter', () => {
                 <Table.Header>
                     <Table.Filter placeholder="hello fruits" />
                 </Table.Header>
-            </Table>
+            </Table>,
         );
 
         expect(screen.getByPlaceholderText('hello fruits')).toBeVisible();
@@ -36,7 +36,7 @@ describe('Table.Filter', () => {
                 <Table.Header>
                     <Table.Filter />
                 </Table.Header>
-            </Table>
+            </Table>,
         );
 
         await user.type(screen.getByRole('textbox'), 'vegetable');
@@ -57,14 +57,14 @@ describe('Table.Filter', () => {
                     <Table.PerPage />
                     <Table.Pagination totalPages={2} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         await user.type(screen.getByRole('textbox'), 'veg');
         vi.advanceTimersByTime(500);
 
         expect(onChange).toHaveBeenCalledWith(
-            expect.objectContaining({globalFilter: 'veg', pagination: {pageIndex: 0, pageSize: 50}})
+            expect.objectContaining({globalFilter: 'veg', pagination: {pageIndex: 0, pageSize: 50}}),
         );
     });
 
@@ -75,7 +75,7 @@ describe('Table.Filter', () => {
                 <Table.Header>
                     <Table.Filter placeholder="hello fruits" />
                 </Table.Header>
-            </Table>
+            </Table>,
         );
         expect(screen.getByRole('textbox')).toHaveValue('foo');
         await user.click(screen.getByRole('button', {name: /cross/i}));
@@ -96,11 +96,11 @@ describe('Table.Filter', () => {
                     <Table.Header>
                         <Table.Filter />
                     </Table.Header>
-                </Table>
+                </Table>,
             );
 
             await user.click(
-                within(screen.getByRole('row', {name: /fruit/i})).getByRole('checkbox', {name: /select row/i})
+                within(screen.getByRole('row', {name: /fruit/i})).getByRole('checkbox', {name: /select row/i}),
             );
             await user.type(screen.getByRole('textbox'), 'veg');
             expect(screen.getByRole('button', {name: /1 selected/i})).toBeInTheDocument();

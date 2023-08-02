@@ -42,13 +42,13 @@ describe('DateRangePickerInlineCalendar', () => {
                 initialRange={[null, null]}
                 onApply={onApply}
                 onCancel={vi.fn()}
-            />
+            />,
         );
 
         await user.click(
             screen.getByRole('searchbox', {
                 name: 'Date range',
-            })
+            }),
         );
         await user.click(screen.getByRole('option', {name: 'select me'}));
         await user.click(screen.getByRole('button', {name: 'Apply'}));
@@ -107,8 +107,12 @@ describe('DateRangePickerInlineCalendar', () => {
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
         expect(onApply).toHaveBeenCalledWith([
-            dayjs(new Date(2022, 0, 8)).startOf('day').toDate(),
-            dayjs(new Date(2022, 0, 14)).endOf('day').toDate(),
+            dayjs(new Date(2022, 0, 8))
+                .startOf('day')
+                .toDate(),
+            dayjs(new Date(2022, 0, 14))
+                .endOf('day')
+                .toDate(),
         ]);
         vi.useRealTimers();
     });

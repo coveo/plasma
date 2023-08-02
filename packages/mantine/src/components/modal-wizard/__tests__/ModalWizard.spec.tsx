@@ -60,13 +60,13 @@ describe('ModalWizard', () => {
                         {step.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 1/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(screen.getByText(/slide 1/i)).toBeInTheDocument();
@@ -74,7 +74,7 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('button', {
                 name: /close-modal/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         let nextButton = screen.getByRole('button', {
@@ -87,13 +87,13 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 2/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(
             screen.getByRole('button', {
                 name: /close-modal/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(screen.getByText(/slide 2/i)).toBeInTheDocument();
@@ -101,7 +101,7 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('button', {
                 name: /previous/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         nextButton = screen.getByRole('button', {
@@ -114,13 +114,13 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 3/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(
             screen.getByRole('button', {
                 name: /close-modal/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(screen.getByText(/slide 3/i)).toBeInTheDocument();
@@ -128,7 +128,7 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('button', {
                 name: /previous/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         nextButton = screen.getByRole('button', {
@@ -141,19 +141,19 @@ describe('ModalWizard', () => {
         await user.click(
             screen.getByRole('button', {
                 name: /previous/i,
-            })
+            }),
         );
 
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 2/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(
             screen.getByRole('button', {
                 name: /close-modal/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(screen.getByText(/slide 2/i)).toBeInTheDocument();
@@ -161,7 +161,7 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('button', {
                 name: /previous/i,
-            })
+            }),
         ).toBeInTheDocument();
     });
 
@@ -193,7 +193,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         const closeButton = screen.getByRole('button', {
@@ -231,7 +231,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         const cancelButton = screen.getByRole('button', {
@@ -270,7 +270,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         const finishButton = screen.getByRole('button', {
@@ -309,7 +309,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
         const closeButton = screen.getByRole('button', {
             name: /close-modal/i,
@@ -350,7 +350,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
         const closeButton = screen.getByRole('button', {
             name: /close-modal/i,
@@ -372,7 +372,7 @@ describe('ModalWizard', () => {
                 <ModalWizard.Step title="Step 2" validateStep={() => ({isValid: true})}>
                     Content step 2
                 </ModalWizard.Step>
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
@@ -391,7 +391,7 @@ describe('ModalWizard', () => {
                 <ModalWizard.Step title="Step 2" validateStep={() => ({isValid: false})}>
                     Content step 2
                 </ModalWizard.Step>
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();
@@ -408,7 +408,7 @@ describe('ModalWizard', () => {
                 <ModalWizard.Step title="Step 2" validateStep={() => ({isValid: false})}>
                     Content step 2
                 </ModalWizard.Step>
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();
