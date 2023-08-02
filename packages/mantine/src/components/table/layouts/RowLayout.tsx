@@ -158,6 +158,7 @@ const RowLayoutBody = <T,>({
                                     width: columnSizing.size ?? 'auto',
                                     minWidth: columnSizing.minSize,
                                     maxWidth: columnSizing.maxSize,
+                                    overflowWrap: 'break-word',
                                 }}
                                 className={cx(classes.cell, {
                                     [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
