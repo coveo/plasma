@@ -1,3 +1,26 @@
+# 52.13.0 (2023-08-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @faker-js/faker to v8 (#3478) 9dcbb21, closes #3478
+* **deps:** update dependency clsx to v2 (#3480) 3ad702a, closes #3480
+* **deps:** update dependency escape-string-regexp to v5 (#3482) e4fb8db, closes #3482
+* **deps:** update dependency query-string to v8 (#3484) a9a3b71, closes #3484
+* **deps:** update dependency react-diff-view to v3 (#3487) 8f9d511, closes #3487
+* **deps:** update dependency react-infinite-scroll-component to v6 (#3488) 57ffb61, closes #3488
+* **deps:** update dependency react-markdown to v8 (#3489) b5fb03c, closes #3489
+* **deps:** update dependency react-transition-group to v4 (#3492) 11d8536, closes #3492
+* **plasma-style:** fix rgb function misusage (#3490) 7d9e548, closes #3490
+* **vuln:** enforce loader-utils 2.0.4 (#3494) 53dbca1, closes #3494 #31 #34
+
+
+### Features
+
+* **codeeditor:** add copy and search callbacks in code editor props (#3495) 573f3e1, closes #3495
+
+
+
 ## 52.12.1 (2023-07-28)
 
 
