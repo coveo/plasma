@@ -1,13 +1,13 @@
 :root {
-    --low-elevation-on-light: 0px 2px 8px rgb(var(--shadow-on-light-rgb) 0.75);
-    --medium-elevation-on-light: 0px 6px 16px rgb(var(--shadow-on-light-rgb) 0.75);
-    --high-elevation-on-light: 0px 10px 25px rgb(var(--shadow-on-light-rgb) 0.6);
-    --low-elevation-on-neutral: 0px 2px 5px rgb(var(--shadow-on-neutral-rgb) 0.13);
-    --medium-elevation-on-neutral: 0px 8px 17px rgb(var(--shadow-on-neutral-rgb) 0.22);
-    --high-elevation-on-neutral: 0px 14px 26px rgb(var(--shadow-on-neutral-rgb) 0.16);
-    --low-elevation-on-dark: 0px 2px 8px rgb(var(--shadow-on-dark-rgb) 0.5);
-    --medium-elevation-on-dark: 0px 4px 16px rgb(var(--shadow-on-dark-rgb) 0.5);
-    --high-elevation-on-dark: 0px 8px 24px rgb(var(--shadow-on-dark-rgb) 0.6);
+    --low-elevation-on-light: 0px 2px 8px rgb(var(--shadow-on-light-rgb) / 75%);
+    --medium-elevation-on-light: 0px 6px 16px rgb(var(--shadow-on-light-rgb) / 75%);
+    --high-elevation-on-light: 0px 10px 25px rgb(var(--shadow-on-light-rgb) / 60%);
+    --low-elevation-on-neutral: 0px 2px 5px rgb(var(--shadow-on-neutral-rgb) / 13%);
+    --medium-elevation-on-neutral: 0px 8px 17px rgb(var(--shadow-on-neutral-rgb) / 22%);
+    --high-elevation-on-neutral: 0px 14px 26px rgb(var(--shadow-on-neutral-rgb) / 16%);
+    --low-elevation-on-dark: 0px 2px 8px rgb(var(--shadow-on-dark-rgb) / 50%);
+    --medium-elevation-on-dark: 0px 4px 16px rgb(var(--shadow-on-dark-rgb) / 50%);
+    --high-elevation-on-dark: 0px 8px 24px rgb(var(--shadow-on-dark-rgb) / 60%);
 }
 
 .shadow-1 {

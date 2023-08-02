@@ -1,5 +1,5 @@
 .tooltip {
-    --tooltip-color: rgb(var(--navy-blue-60-rgb) 0.94);
+    --tooltip-color: rgb(var(--navy-blue-60-rgb) / 94%);
     --arrow-size: 4px;
     --tooltip-gap: 8px;
 
@@ -91,7 +91,7 @@
         background-color: var(--tooltip-color);
         border-color: var(--tooltip-color);
         border-radius: 8px;
-        filter: drop-shadow(0 8px 24px rgb(var(--navy-blue-70-rgb) 0.53));
+        filter: drop-shadow(0 8px 24px rgb(var(--navy-blue-70-rgb) / 53%));
         backdrop-filter: blur(2px);
     }
 }
@@ -108,7 +108,7 @@ $chart-tooltip-content-size: 3px;
     font-size: $small-font-size;
     background-color: var(--white);
     border: $default-border;
-    box-shadow: 0 0 $chart-tooltip-content-size 0 rgb(var(--black-rgb) $transparency-4);
+    box-shadow: 0 0 $chart-tooltip-content-size 0 rgb(var(--black-rgb) / $transparency-4);
 }
 
 .chart-tooltip-color {

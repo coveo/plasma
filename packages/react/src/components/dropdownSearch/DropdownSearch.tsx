@@ -1,7 +1,7 @@
 import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
 import {Component, createElement, KeyboardEvent, MouseEvent, ReactText} from 'react';
-import {InfiniteScrollProps} from 'react-infinite-scroll-component';
+import {type Props as InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
 
@@ -61,7 +61,7 @@ export interface IDropdownSearchOwnProps {
     onClickCallBack?: () => void;
     supportSingleCustomOption?: boolean;
     searchThresold?: number;
-    infiniteScroll?: InfiniteScrollProps;
+    infiniteScroll?: Omit<InfiniteScrollProps, 'children'>;
     hasMoreItems?: () => boolean;
     customFiltering?: (filterText: string) => void;
     autoInfiniteScroll?: IDropdownSearchAutoInfiniteScrollOptions;

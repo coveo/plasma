@@ -1,7 +1,7 @@
 /* eslint-disable testing-library/no-render-in-setup */
 import {CrossSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {InfiniteScrollProps} from 'react-infinite-scroll-component';
+import {type Props as InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 
 import {keyCode} from '../../../utils/InputUtils';
@@ -38,7 +38,7 @@ describe('DropdownSearch', () => {
         searchThresold: 1,
     };
 
-    const infiniteScrollProps: InfiniteScrollProps = {
+    const infiniteScrollProps: Omit<InfiniteScrollProps, 'children'> = {
         dataLength: 2,
         hasMore: true,
         next: jest.fn(),

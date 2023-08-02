@@ -1,12 +1,12 @@
 import {Component} from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll, {type Props as InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 
 export interface DropdownSearchInfiniteScrollOptionsProps {
     onMouseEnter: () => void;
     options: JSX.Element[];
     ulElementRefFunction: (menu: HTMLElement) => void;
-    infiniteScroll: InfiniteScroll.InfiniteScrollProps;
+    infiniteScroll: Omit<InfiniteScrollProps, 'children'>;
 }
 
 /**

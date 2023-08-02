@@ -123,6 +123,7 @@ export class Tooltip extends Component<ITooltipProps> {
                 id={id}
                 {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
                 {...injectedProps}
+                style={{...injectedProps.style, margin: 0}}
                 className="react-vapor-tooltip"
             >
                 {this.props.title}

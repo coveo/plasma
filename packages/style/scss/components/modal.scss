@@ -42,7 +42,7 @@ $icon-size: 24px;
 
 .modal-backdrop {
     z-index: $base-backdrop-z-index;
-    background: rgb(var(--deprecated-purple-blue-rgb) $transparency-1);
+    background: rgb(var(--deprecated-purple-blue-rgb) / $transparency-1);
     opacity: 1;
     transition: all 0.3s;
 
