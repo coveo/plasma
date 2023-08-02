@@ -4,10 +4,11 @@ module.exports = {
     },
     extends: ['plasma'],
     parserOptions: {
-        project: './tsconfig.json',
+        project: './tsconfig.eslint.json',
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
+    ignorePatterns: ['.eslintrc.js', 'dist', 'node_modules', 'coverage'],
     overrides: [
         {
             files: ['**/*.spec.*'],

@@ -8,7 +8,7 @@ const formatVariable = (name: string, value: string | number): string => `$${nam
 
 const formatClass = (name: string, value: Record<string, string | number>): string => {
     const styles = Object.entries(value).map(
-        ([propertyName, propertyValue]) => `${kebabCase(propertyName)}: ${propertyValue};`
+        ([propertyName, propertyValue]) => `${kebabCase(propertyName)}: ${propertyValue};`,
     );
     return `.${name} {\n\t${styles.join('\n\t')}\n}`;
 };

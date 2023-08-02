@@ -16,10 +16,10 @@ const handleSolidColor = (fills: VectorBase['fills']): string | undefined => {
 };
 
 const handleLinearGradient = (fills: readonly Paint[]): string => {
-    const [gradientStart, gradientEnd, gradientWidth] = fills[0].gradientHandlePositions!;
+    const [gradientStart, _gradientEnd, gradientWidth] = fills[0].gradientHandlePositions!;
     const stops =
         fills[0]?.gradientStops?.map(
-            ({color, position}) => `${gl(color.r, color.g, color.b, color.a).hex()} ${(position * 100).toFixed(2)}%`
+            ({color, position}) => `${gl(color.r, color.g, color.b, color.a).hex()} ${(position * 100).toFixed(2)}%`,
         ) ?? [];
     const angleDeg = (Math.atan2(gradientWidth.y - gradientStart.y, gradientWidth.x - gradientStart.x) * 180) / Math.PI; // angle (deg) between 2 vectors
     return `linear-gradient(${angleDeg.toFixed(2)}deg, ${stops.join(', ')})`;
