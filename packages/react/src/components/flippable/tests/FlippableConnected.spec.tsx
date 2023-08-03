@@ -24,7 +24,7 @@ describe('Flippable', () => {
                 <Provider store={store}>
                     <FlippableConnected {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             flippable = wrapper.find(Flippable).first();
         };

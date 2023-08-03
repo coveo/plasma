@@ -20,10 +20,10 @@ $numeric-input-digit-padding: 10px;
         text-overflow: ellipsis;
         border: $default-border;
         border-radius: $border-radius;
-        box-shadow: inset 0 0 3px 0 rgba(var(--black-rgb), $transparency-5);
+        box-shadow: inset 0 0 3px 0 rgb(var(--black-rgb) / $transparency-5);
 
         &:focus {
-            @include focus-outline();
+            @include focus-outline;
         }
     }
 
@@ -49,9 +49,10 @@ $numeric-input-digit-padding: 10px;
 
     input:focus,
     button:focus {
-        @include focus-outline();
+        @include focus-outline;
     }
 }
+
 // override the style of the focus for numeric inputs in Firefox
 @supports (-moz-appearance: none) {
     .numeric-input {

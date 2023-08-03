@@ -81,7 +81,7 @@ describe('NavigationPerPage', () => {
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onRender={onRenderSpy} />,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
             expect(onRenderSpy).toHaveBeenCalled();
@@ -92,7 +92,7 @@ describe('NavigationPerPage', () => {
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onDestroy={onDestroySpy} />,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             navigationPerPage.unmount();
 
@@ -158,7 +158,7 @@ describe('NavigationPerPage', () => {
             const expectedSelected: number = 2;
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} initialPosition={expectedSelected} />,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
             expect(navigationPerPage.find(NavigationPerPageSelect).at(expectedSelected).props().selected).toBe(true);
@@ -167,14 +167,14 @@ describe('NavigationPerPage', () => {
         it('should select the middle option if initialPosition prop is not defined on first render', () => {
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} perPageNumbers={[1, 2, 3, 4, 5]} />,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
             expect(navigationPerPage.find(NavigationPerPageSelect).at(2).props().selected).toBe(true);
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} perPageNumbers={[1, 2]} />,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
             expect(navigationPerPage.find(NavigationPerPageSelect).at(0).props().selected).toBe(true);

@@ -66,17 +66,17 @@ describe('Select', () => {
             expect(
                 screen.getByRole('option', {
                     name: /🌱/i,
-                })
+                }),
             ).toBeVisible();
             expect(
                 screen.getByRole('option', {
                     name: /🌱/i,
-                })
+                }),
             ).toBeVisible();
             expect(
                 screen.getByRole('option', {
                     name: /🍟/i,
-                })
+                }),
             ).toBeVisible();
         });
 
@@ -90,7 +90,7 @@ describe('Select', () => {
             expect(
                 screen.queryByRole('option', {
                     name: /first/i,
-                })
+                }),
             ).not.toBeInTheDocument();
         });
 
@@ -155,19 +155,19 @@ describe('Select', () => {
             expect(
                 screen.getByRole('option', {
                     name: /🌱/i,
-                })
+                }),
             ).toBeInTheDocument();
             expect(
                 screen.getByRole('option', {
                     name: /🍟/i,
-                })
+                }),
             ).toBeInTheDocument();
 
             // select 🍟
             await userEvent.click(
                 screen.getByRole('option', {
                     name: /🍟/i,
-                })
+                }),
             );
             expect(screen.getByText(/🥔/i)).toBeInTheDocument();
             expect(screen.getByText(/🍟/i)).toBeInTheDocument();
@@ -178,17 +178,17 @@ describe('Select', () => {
             expect(
                 screen.getByRole('option', {
                     name: /🌱/i,
-                })
+                }),
             ).toBeVisible();
             expect(
                 screen.queryByRole('option', {
                     name: /🥔/i,
-                })
+                }),
             ).not.toBeInTheDocument();
             expect(
                 screen.queryByRole('option', {
                     name: /🍟/i,
-                })
+                }),
             ).not.toBeInTheDocument();
         });
 

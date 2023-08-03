@@ -62,7 +62,7 @@ describe('Actions', () => {
                 <Provider store={store}>
                     <ActionBarConnected id={id} itemFilterLabel={itemFilterLabel} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             store.dispatch(addActionsToActionBar(id, actions));
             store.dispatch(filterItems(id, itemFilter));
@@ -87,7 +87,7 @@ describe('Actions', () => {
 
             expect(actionsProp).toBeDefined();
             expect(actionsProp.length).toBe(
-                actions.filter((action) => action.enabled || action.hideDisabled === false).length
+                actions.filter((action) => action.enabled || action.hideDisabled === false).length,
             );
 
             expect(actionsProp[0]).toEqual(expect.objectContaining(actions[0]));
@@ -184,7 +184,7 @@ describe('Actions', () => {
                         onClearItemFilter={onClearItemFilterSpy}
                     />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             actionBar = wrapper.find(ActionBar).first();
 

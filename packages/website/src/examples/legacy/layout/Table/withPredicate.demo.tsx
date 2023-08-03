@@ -72,5 +72,5 @@ const TableComposed = compose<any>(
     tableWithPredicate({
         ...predicateSetup,
         matchPredicate,
-    })
+    }),
 )(TableHOC);

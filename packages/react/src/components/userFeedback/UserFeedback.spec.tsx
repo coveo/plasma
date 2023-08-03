@@ -9,7 +9,7 @@ describe('<UserFeedback>', () => {
         feedbackText: string,
         state: string,
         extraClasses?: string[],
-        displayOnShow?: string
+        displayOnShow?: string,
     ): ShallowWrapper<IUserFeedbackProps, any> => {
         let props: IUserFeedbackProps = {
             feedbackText,
@@ -36,15 +36,15 @@ describe('<UserFeedback>', () => {
                 expect(() => getShallowOutput('hello', UserFeedbackState.WARNING, ['m1'])).not.toThrow();
                 expect(() => getShallowOutput('hello', UserFeedbackState.ERROR, ['m1'])).not.toThrow();
                 expect(() =>
-                    getShallowOutput('hello', UserFeedbackState.VALID, ['m1'], DisplayClass.BLOCK)
+                    getShallowOutput('hello', UserFeedbackState.VALID, ['m1'], DisplayClass.BLOCK),
                 ).not.toThrow();
 
                 expect(() =>
-                    getShallowOutput('hello', UserFeedbackState.WARNING, ['m1'], DisplayClass.BLOCK)
+                    getShallowOutput('hello', UserFeedbackState.WARNING, ['m1'], DisplayClass.BLOCK),
                 ).not.toThrow();
 
                 expect(() =>
-                    getShallowOutput('hello', UserFeedbackState.ERROR, ['m1'], DisplayClass.BLOCK)
+                    getShallowOutput('hello', UserFeedbackState.ERROR, ['m1'], DisplayClass.BLOCK),
                 ).not.toThrow();
             });
         });
@@ -81,14 +81,14 @@ describe('<UserFeedback>', () => {
                 it('should be invisible on state VALID, even with prop displayOnShow provided', () => {
                     expect(
                         getShallowOutput('', UserFeedbackState.VALID, [], DisplayClass.BLOCK).hasClass(
-                            DisplayClass.HIDDEN
-                        )
+                            DisplayClass.HIDDEN,
+                        ),
                     ).toBe(true);
 
                     expect(
                         getShallowOutput('', UserFeedbackState.VALID, [], DisplayClass.BLOCK).hasClass(
-                            DisplayClass.BLOCK
-                        )
+                            DisplayClass.BLOCK,
+                        ),
                     ).toBe(false);
                 });
             });
@@ -102,14 +102,14 @@ describe('<UserFeedback>', () => {
                 it('should have a display class equal to the value of the displayOnShow prop', () => {
                     expect(
                         getShallowOutput('', UserFeedbackState.WARNING, [], DisplayClass.INLINE_BLOCK).hasClass(
-                            DisplayClass.INLINE_BLOCK
-                        )
+                            DisplayClass.INLINE_BLOCK,
+                        ),
                     ).toBe(true);
 
                     expect(
                         getShallowOutput('', UserFeedbackState.WARNING, [], DisplayClass.INLINE_BLOCK).hasClass(
-                            DisplayClass.HIDDEN
-                        )
+                            DisplayClass.HIDDEN,
+                        ),
                     ).toBe(false);
                 });
             });
@@ -123,14 +123,14 @@ describe('<UserFeedback>', () => {
                 it('should have a display class equal to the value of the displayOnShow prop', () => {
                     expect(
                         getShallowOutput('', UserFeedbackState.ERROR, [], DisplayClass.INLINE_BLOCK).hasClass(
-                            DisplayClass.INLINE_BLOCK
-                        )
+                            DisplayClass.INLINE_BLOCK,
+                        ),
                     ).toBe(true);
 
                     expect(
                         getShallowOutput('', UserFeedbackState.ERROR, [], DisplayClass.INLINE_BLOCK).hasClass(
-                            DisplayClass.HIDDEN
-                        )
+                            DisplayClass.HIDDEN,
+                        ),
                     ).toBe(false);
                 });
 
@@ -151,7 +151,7 @@ describe('<UserFeedback>', () => {
 
                 const areClassesAddedToElement = (
                     currentExtraClasses: string[],
-                    shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>
+                    shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>,
                 ): boolean => {
                     const allClasses: string[] = currentExtraClasses;
                     allClasses.unshift(DisplayClass.HIDDEN);

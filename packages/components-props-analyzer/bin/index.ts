@@ -1,5 +1,5 @@
 import {appendFile, ensureDirSync, outputFile, outputFileSync} from 'fs-extra';
-import * as rimraf from 'rimraf';
+import {rimrafSync} from 'rimraf';
 
 import componentsList from '../src/ComponentsList';
 import {getPropsOfComponent} from './getPropsOfComponent';
@@ -9,7 +9,7 @@ const generateProps = async () => {
     ensureDirSync('./src/components');
     outputFileSync(
         './src/components/index.ts',
-        "// Don't edit this file, it is automatically generated on each build\n"
+        "// Don't edit this file, it is automatically generated on each build\n",
     );
     const env = buildTypeScriptEnvironment();
 
@@ -22,8 +22,8 @@ const generateProps = async () => {
                 `./src/components/${name}.ts`,
                 `// Don't edit this file, it is automatically generated on each build
                 import {ComponentMetadata} from '../ComponentsList';
-                export const ${name}Metadata: ComponentMetadata[] = ${JSON.stringify(props)};`
-            )
+                export const ${name}Metadata: ComponentMetadata[] = ${JSON.stringify(props)};`,
+            ),
         );
         operations.push(appendFile('./src/components/index.ts', `export * from './${name}';\n`));
         return Promise.all(operations);
@@ -32,6 +32,6 @@ const generateProps = async () => {
     await Promise.all(promises);
 };
 
-rimraf.sync('./src/components');
+rimrafSync('./src/components');
 
 generateProps();

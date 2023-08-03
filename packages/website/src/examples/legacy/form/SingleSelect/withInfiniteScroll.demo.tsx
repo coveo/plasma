@@ -42,7 +42,7 @@ const Demo = () => {
                 (photo: PhotoProps): IItemBoxProps => ({
                     value: photo.id,
                     displayValue: <PhotoItem {...photo} />,
-                })
+                }),
             )}
             totalEntries={totalEntries}
             next={fetchNextPage}
@@ -62,7 +62,7 @@ export interface PhotoProps {
     thumbnailUrl: string;
 }
 
-const PhotoItem: FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => (
+const PhotoItem: FunctionComponent<PhotoProps> = ({url, title, thumbnailUrl}) => (
     <div className="flex flex-center">
         <a href={url} target="__blank" className="mr2 flex">
             <img src={thumbnailUrl} alt={title} width={IMG_SIZE} height={IMG_SIZE} />

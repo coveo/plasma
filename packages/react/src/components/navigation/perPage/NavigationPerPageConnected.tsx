@@ -32,7 +32,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: INavigationPerPageOwnProp
 
 const mapDispatchToProps = (
     dispatch: IDispatch,
-    ownProps: INavigationPerPageOwnProps
+    ownProps: INavigationPerPageOwnProps,
 ): INavigationPerPageDispatchProps => ({
     onRender: (perPageNb: number) => dispatch(addPerPage(ownProps.id, perPageNb)),
     onDestroy: () => dispatch(removePerPage(ownProps.id)),
@@ -48,5 +48,5 @@ const mapDispatchToProps = (
 export const NavigationPerPageConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(NavigationPerPage);

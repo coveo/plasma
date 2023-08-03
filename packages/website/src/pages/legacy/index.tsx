@@ -7,7 +7,7 @@ import {FunctionComponent} from 'react';
 import {Tile} from '../../building-blocs/Tile';
 
 export const Index: NextPage = () => (
-    <Section className="home flex-auto overflow-auto demo-content">
+    <Section className="home flex-auto overflow-auto">
         <Head>
             <title>Plasma Design System</title>
             <meta property="og:title" content="Plasma Design System" key="title" />

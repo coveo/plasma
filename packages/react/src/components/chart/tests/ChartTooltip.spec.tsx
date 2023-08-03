@@ -12,7 +12,7 @@ describe('<ChartTooltip />', () => {
                 <svg role="application" width={XYChartContextMock.width} height={XYChartContextMock.height}>
                     <ChartTooltip />
                 </svg>
-            </XYChartContext.Provider>
+            </XYChartContext.Provider>,
         );
 
         expect(screen.getByRole('application')).toMatchSnapshot();

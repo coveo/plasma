@@ -55,7 +55,6 @@
                 font-size: $title-font-size;
                 font-family: var(--main-font);
                 background-color: var(--white);
-
                 opacity: 0.4;
             }
 
@@ -119,7 +118,6 @@
                     background-color: transparent;
                     border: none;
                     box-shadow: none;
-
                     cursor: pointer;
                     opacity: 1;
 
@@ -139,7 +137,7 @@
                     overflow-y: auto;
                     text-align: left;
 
-                    @include slim-scroll();
+                    @include slim-scroll;
 
                     li {
                         a i {
@@ -164,7 +162,7 @@
                 box-shadow: none;
                 resize: vertical;
 
-                @include slim-scroll();
+                @include slim-scroll;
             }
         }
     }

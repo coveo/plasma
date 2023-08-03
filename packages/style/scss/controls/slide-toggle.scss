@@ -6,11 +6,10 @@ input[type='checkbox'].coveo-slide-toggle {
         width: 32px;
         height: 20px;
         border: none;
-
         cursor: pointer;
 
-        &:before,
-        &:after {
+        &::before,
+        &::after {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -23,7 +22,7 @@ input[type='checkbox'].coveo-slide-toggle {
             content: ' ';
         }
 
-        &:after {
+        &::after {
             top: 2px;
             bottom: 2px;
             width: 18px;
@@ -33,18 +32,17 @@ input[type='checkbox'].coveo-slide-toggle {
     }
 
     &:checked {
-        + button:before {
+        + button::before {
             background-color: var(--deprecated-orange);
         }
 
-        + button:after {
+        + button::after {
             margin-left: 12px;
         }
     }
 
     &:disabled + button {
         outline: none;
-
         cursor: default;
         opacity: 0.4;
     }

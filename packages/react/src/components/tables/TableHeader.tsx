@@ -23,7 +23,7 @@ export class TableHeader extends Component<ITableHeaderProps, any> {
                     this.props.withReduxState && column.attributeToSort ? TableHeaderCellConnected : TableHeaderCell;
 
                 return <TableHeaderCellClass key={`th-${column.id || index}`} {...column} />;
-            }
+            },
         );
 
         return (

@@ -157,7 +157,7 @@ describe('Reducers', () => {
             };
 
             expect(
-                paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb
+                paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb,
             ).toBe(0);
         });
 
@@ -170,7 +170,7 @@ describe('Reducers', () => {
             };
 
             expect(
-                paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb
+                paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb,
             ).toBe(oldState.pageNb);
         });
 
@@ -183,7 +183,7 @@ describe('Reducers', () => {
             };
 
             expect(
-                paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb
+                paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb,
             ).toBe(oldState.pageNb);
         });
 
@@ -221,7 +221,7 @@ describe('Reducers', () => {
             const action = selectListBoxOption(
                 TableHOCUtils.getPredicateId(tableId, 'componentId'),
                 false,
-                'new predicate value'
+                'new predicate value',
             );
 
             expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(0);
@@ -237,7 +237,7 @@ describe('Reducers', () => {
             const action = selectListBoxOption(
                 TableHOCUtils.getPredicateId(tableId, 'componentId'),
                 false,
-                'new predicate value'
+                'new predicate value',
             );
 
             expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(oldState.pageNb);

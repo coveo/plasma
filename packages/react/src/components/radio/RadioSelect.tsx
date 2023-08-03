@@ -110,7 +110,7 @@ export class RadioSelect extends PureComponent<IRadioSelectAllProps> {
                     child.props.onClick && child.props.onClick(e);
                     this.handleToggle(child.props.value, e);
                 },
-            })
+            }),
         );
 
         return <div className={classNames('form-control radio-select', this.props.className)}>{children}</div>;

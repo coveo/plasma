@@ -10,7 +10,7 @@ const StandaloneSearchBar = () => {
     const router = useRouter();
 
     return (
-        <div className="plasmaSearchBar">
+        <div className="plasma-search-bar">
             <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
                 <AtomicSearchInterface engine={engine} reflectStateInUrl={false}>
                     <AtomicSearchBox numberOfQueries={5} redirectionUrl={`${router.basePath}/Search`} />

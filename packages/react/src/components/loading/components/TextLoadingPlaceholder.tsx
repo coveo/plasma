@@ -16,7 +16,7 @@ export const TextLoadingPlaceholder = ({small, word, large, className = ''}: ITe
                 'mod-word': word,
                 'mod-large': large,
             },
-            className
+            className,
         )}
     />
 );

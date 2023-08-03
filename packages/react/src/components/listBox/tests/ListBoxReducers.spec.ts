@@ -150,7 +150,7 @@ describe('ListBox', () => {
                 const oldState: IListBoxState[] = defaultState;
                 const newState: IListBoxState[] = listBoxesReducer(
                     oldState,
-                    selectListBoxOption(id, false, expectedValue)
+                    selectListBoxOption(id, false, expectedValue),
                 );
 
                 expect(newState.length).toBe(oldState.length);
@@ -177,7 +177,7 @@ describe('ListBox', () => {
                 const oldState: IListBoxState[] = defaultState;
                 const newState: IListBoxState[] = listBoxesReducer(
                     oldState,
-                    selectListBoxOption(id, false, expectedValue, 2)
+                    selectListBoxOption(id, false, expectedValue, 2),
                 );
 
                 expect(newState.length).toBe(oldState.length);
@@ -193,7 +193,7 @@ describe('ListBox', () => {
                 const oldState: IListBoxState[] = defaultState;
                 const newState: IListBoxState[] = listBoxesReducer(
                     oldState,
-                    selectListBoxOption(id, true, newValue, 2)
+                    selectListBoxOption(id, true, newValue, 2),
                 );
 
                 expect(newState.length).toBe(oldState.length);
@@ -227,7 +227,7 @@ describe('ListBox', () => {
                 const oldState: IListBoxState[] = defaultState;
                 const newState: IListBoxState[] = listBoxesReducer(
                     oldState,
-                    setAutocompleteValue(id, expectedValue, false)
+                    setAutocompleteValue(id, expectedValue, false),
                 );
 
                 expect(newState.length).toBe(oldState.length);

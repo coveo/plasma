@@ -18,7 +18,7 @@ const Demo = () => {
 
     const actions = useSelector(
         (state: PlasmaState) =>
-            state.actionBars.find((actionBar: IActionBarState) => actionBar.id === MY_ID)?.actions ?? []
+            state.actionBars.find((actionBar: IActionBarState) => actionBar.id === MY_ID)?.actions ?? [],
     );
 
     const toggleActions = () => {

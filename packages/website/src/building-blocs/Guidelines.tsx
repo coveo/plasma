@@ -27,7 +27,7 @@ const Emphasis: Components['em'] = ({children}) => <em className="body-m-book-it
 
 const Strong: Components['strong'] = ({children}) => <strong className="body-m">{children}</strong>;
 
-const Link: Components['a'] = ({title, href, children, node, ...props}) => (
+const Link: Components['a'] = ({title, href, children, ...props}) => (
     <Tooltip title={title || ''}>
         <a target={href && href.match(/^http/) ? '_blank' : ''} className="link" href={href} {...props}>
             {children}

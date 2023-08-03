@@ -43,7 +43,7 @@ const SideNavigationHeader: FunctionComponent<
                 'no-collapse': !expandable && !isLink,
                 'no-icon': !customIcon && !iconProps.icon,
             },
-            className
+            className,
         )}
         onClick={onClick}
     >

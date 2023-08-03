@@ -1,11 +1,12 @@
 module.exports = {
-    extends: [require.resolve('tsjs/eslint-config')],
+    extends: ['plasma'],
     parserOptions: {
-        project: './tsconfig.json',
+        project: './tsconfig.eslint.json',
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
     rules: {
         'no-console': 'off',
     },
+    ignorePatterns: ['.eslintrc.js', 'dist', 'node_modules'],
 };

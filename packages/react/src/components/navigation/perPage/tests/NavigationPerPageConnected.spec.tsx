@@ -36,7 +36,7 @@ describe('<NavigationPerPageConnected />', () => {
                     <NavigationPerPageConnected {...basicNavigationPerPageProps} />
                 </div>
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         navigationPerPage = wrapper.find(NavigationPerPage).first();
     });
@@ -70,7 +70,7 @@ describe('<NavigationPerPageConnected />', () => {
                     <NavigationPerPageConnected {...basicNavigationPerPageProps} perPageNumbers={perPageNumber} />
                 </div>
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         store.dispatch(clearState());
         wrapper.update();
@@ -112,7 +112,7 @@ describe('<NavigationPerPageConnected />', () => {
         perPageSelected.simulate('click');
 
         expect(
-            _.findWhere(store.getState().perPageComposite, {id: basicNavigationPerPageProps.id}).perPage.toString()
+            _.findWhere(store.getState().perPageComposite, {id: basicNavigationPerPageProps.id}).perPage.toString(),
         ).toBe(perPageSelected.find('span').text());
     });
 
@@ -149,7 +149,7 @@ describe('<NavigationPerPageConnected />', () => {
                 .at(1) as ReactWrapper<INavigationPerPageSelectProps, any>;
             const startingPage: number = 4;
             const expectedPage: number = Math.floor(
-                (startingPage * firstPerPage.props().perPageNb) / secondPerPage.props().perPageNb
+                (startingPage * firstPerPage.props().perPageNb) / secondPerPage.props().perPageNb,
             );
 
             store.dispatch(addPagination(paginationId));
@@ -162,6 +162,6 @@ describe('<NavigationPerPageConnected />', () => {
             firstPerPage.find('a').simulate('click');
 
             expect(_.findWhere(store.getState().paginationComposite, {id: paginationId}).pageNb).toBe(startingPage);
-        }
+        },
     );
 });

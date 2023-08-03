@@ -17,7 +17,7 @@ const mapStateToProps = (state: PlasmaState, {validationIds}: IWithDirtyStickyFo
  * @deprecated Use Mantine instead
  */
 export const withDirtyStickyFooterHOC = <T extends IStickyFooterProps>(
-    Component: ComponentClass<T> | FunctionComponent<T>
+    Component: ComponentClass<T> | FunctionComponent<T>,
 ) => {
     type NewOwnProps = Omit<T, 'isOpened'> & IWithDirtyStickyFooterOwnProps;
     type StateProps = ReturnType<typeof mapStateToProps>;

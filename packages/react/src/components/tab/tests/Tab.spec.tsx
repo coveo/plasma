@@ -31,7 +31,7 @@ describe('Tab', () => {
         expect(
             screen.getByRole('tab', {
                 name: /title badge/i,
-            })
+            }),
         ).toBeInTheDocument();
         expect(screen.getByText(/tag/i)).toBeInTheDocument();
     });
@@ -63,7 +63,7 @@ describe('Tab', () => {
                     <TabConnected groupId="Y" id="A" title="Tab 3" />
                     <TabConnected groupId="Y" id="B" title="Tab 4" />
                 </TabNavigation>
-            </div>
+            </div>,
         );
 
         const tab1 = screen.getByRole('tab', {name: /Tab 1/i});
@@ -100,7 +100,7 @@ describe('Tab', () => {
                         <TabPaneConnected id="C">Content tab 3</TabPaneConnected>
                         <TabPaneConnected id="D">Content tab 4</TabPaneConnected>
                     </TabContent>
-                </div>
+                </div>,
             );
 
         it('displays the first panel by default', () => {

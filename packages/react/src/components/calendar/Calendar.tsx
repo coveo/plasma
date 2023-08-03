@@ -149,7 +149,7 @@ export class Calendar extends Component<ICalendarProps, any> {
                 if (calendarSelection.selected) {
                     return calendarSelection;
                 }
-            }
+            },
         ).filter(Boolean);
 
         return selectedDatePickers.length ? selectedDatePickers[0] : null;
@@ -195,7 +195,7 @@ export class Calendar extends Component<ICalendarProps, any> {
                         this.props.onDateChange(this.props.id + MONTH_PICKER_ID, limitToChange.getMonth());
                         this.props.onDateChange(
                             this.props.id + YEAR_PICKER_ID,
-                            this.props.years.indexOf(limitToChange.getFullYear().toString())
+                            this.props.years.indexOf(limitToChange.getFullYear().toString()),
                         );
                     }
                 }
@@ -330,7 +330,7 @@ export class Calendar extends Component<ICalendarProps, any> {
                 'mod-width-50': !this.props.simple,
                 'countdown-calendar': this.props.countdown,
             },
-            this.props.wrapperClassNames
+            this.props.wrapperClassNames,
         );
 
         if (this.props.countdown) {

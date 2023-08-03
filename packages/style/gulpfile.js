@@ -15,10 +15,10 @@ const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const merge = require('merge-stream');
-const filesToJson = require('gulp-files-to-json');
 const parseArgs = require('minimist');
 const _ = require('underscore');
 const s = require('underscore.string');
+const path = require('path');
 
 const config = {
     gzipOptions: {
@@ -66,7 +66,7 @@ gulp.task('clean', (done) => {
             del(filesToDelete).then((deletedFiles) => {
                 log(colors.green('Files deleted:', deletedFiles.join(', ')));
                 done();
-            })
+            }),
         );
 });
 
@@ -118,10 +118,25 @@ gulp.task('svg:concat', () => {
     const src = merge(
         gulp.src('./resources/icons/svg/*.svg'),
         // taken from https://github.com/coveo/search-ui/tree/master/image/svg/filetypes . Update as needed.
-        gulp.src('./resources/icons/svg/coveo-search-ui-filetypes/*.svg').pipe(rename({prefix: 'ft-'}))
+        gulp.src('./resources/icons/svg/coveo-search-ui-filetypes/*.svg').pipe(rename({prefix: 'ft-'})),
     );
+    const data = {};
 
-    return src.pipe(filesToJson('CoveoStyleGuideSvg.json')).pipe(gulp.dest('dist/svg'));
+    return src
+        .on('data', function (file) {
+            const fileName = path.basename(file.path, '.svg'); // Extract the filename without extension
+            const fileContent = file.contents.toString();
+            data[fileName] = fileContent;
+        })
+        .on('end', () => {
+            if (!fs.existsSync('dist')) {
+                fs.mkdirSync('dist');
+            }
+            if (!fs.existsSync('dist/svg')) {
+                fs.mkdirSync('dist/svg');
+            }
+            fs.writeFileSync('dist/svg/CoveoStyleGuideSvg.json', JSON.stringify(data, null, 2));
+        });
 });
 
 gulp.task(
@@ -137,7 +152,7 @@ gulp.task(
         dict.generateSvgNamesTypescriptType('SvgName.d.ts');
 
         done();
-    })
+    }),
 );
 
 gulp.task('svg', gulp.series('svg:enum'));

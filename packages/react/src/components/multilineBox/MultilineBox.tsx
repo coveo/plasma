@@ -83,7 +83,7 @@ export interface IMultilineBoxOwnProps<T = any> {
     renderWrapper?: (
         children: ReactNode,
         boxProps: IMultilineSingleBoxProps<T>,
-        parentProps: IMultilineParentProps
+        parentProps: IMultilineParentProps,
     ) => ReactNode;
     /**
      * Whether this component is disabled
@@ -204,9 +204,9 @@ export const MultilineBox = <T extends any>(props: IMultilineBoxOwnProps<T>) => 
         () =>
             connect<IMultilineBoxStateProps, IMultilineBoxDispatchProps, IMultilineBoxOwnProps<T>>(
                 makeMapStateToProps,
-                mapDispatchToProps
+                mapDispatchToProps,
             )(MultilineBoxDisconnected),
-        []
+        [],
     );
     return <Connected {...props} />;
 };

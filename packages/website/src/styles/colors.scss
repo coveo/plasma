@@ -2,6 +2,20 @@
     gap: 8px;
 }
 
+.color-details {
+    max-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition:
+        max-height 0.15s ease-in 0,
+        max-width 0.15s ease-in 0;
+
+    td:first-child {
+        padding-right: 8px;
+    }
+}
+
 .color-box {
     &:hover .color-details {
         max-width: 300px;
@@ -17,19 +31,4 @@
     min-width: 50px;
     height: 50px;
     border-radius: 8px;
-}
-
-.color-details {
-    max-width: 0;
-    max-height: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    transition-delay: 0;
-    transition-timing-function: ease-in;
-    transition-duration: 0.15s;
-    transition-property: max-height, max-width;
-
-    td:first-child {
-        padding-right: 8px;
-    }
 }

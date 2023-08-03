@@ -32,7 +32,7 @@ describe('DropdownSearch', () => {
                 <Provider store={store}>
                     <DropdownSearchConnected id={id} defaultOptions={defaultOptions} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             dropdownSearch = wrapper.find(DropdownSearch).first();
         };
@@ -74,7 +74,7 @@ describe('DropdownSearch', () => {
                             defaultSelectedOption={defaultSelectedOptionPlaceholder}
                         />
                     </Provider>,
-                    {attachTo: document.getElementById('App')}
+                    {attachTo: document.getElementById('App')},
                 );
 
                 expect(store.getState().lastAction.type).toBe(DropdownSearchActions.update);

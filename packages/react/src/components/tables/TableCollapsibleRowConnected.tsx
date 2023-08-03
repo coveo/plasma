@@ -21,5 +21,5 @@ const mapDispatchToProps = () => ({});
 export const TableCollapsibleRowConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(TableCollapsibleRow);

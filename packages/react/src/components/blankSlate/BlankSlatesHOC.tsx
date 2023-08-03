@@ -17,7 +17,7 @@ export const BlankSlateWithTable: FunctionComponent<PropsWithChildren<IBlankSlat
  */
 export const BlankSlateWithTableInError: FunctionComponent<PropsWithChildren<IBlankSlateWithTable>> = _.compose(
     blankSlateWithTable,
-    blankSlateWithError
+    blankSlateWithError,
 )(BlankSlate);
 
 /**

@@ -20,7 +20,7 @@ export const searchBarsInitialState: ISearchBarState[] = [];
 
 export const searchBarsReducer = (
     state: ISearchBarState[] = searchBarsInitialState,
-    action: IReduxAction<ISearchBarActionPayload>
+    action: IReduxAction<ISearchBarActionPayload>,
 ): ISearchBarState[] => {
     switch (action.type) {
         case SearchBarActions.add:
@@ -38,7 +38,7 @@ export const searchBarsReducer = (
         case SearchBarActions.toggleDisabled:
         case SearchBarActions.setValue:
             return state.map((searchBarState: ISearchBarState) =>
-                searchBarState.id === action.payload.id ? {...searchBarState, ...action.payload} : searchBarState
+                searchBarState.id === action.payload.id ? {...searchBarState, ...action.payload} : searchBarState,
             );
         default:
             return state;

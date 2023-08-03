@@ -54,7 +54,7 @@ describe('DropPod', () => {
                     ({
                         paddingLeft: '10',
                         paddingRight: '10',
-                    } as CSSStyleDeclaration)
+                    }) as CSSStyleDeclaration,
             );
 
             buttonRef = {
@@ -106,7 +106,7 @@ describe('DropPod', () => {
                             <div data-testid="custom" className="custom-selector" />
                             <div className="do-not-render-in-this" />
                             <DropPod renderDrop={() => '🍟'} selector=".custom-selector" />
-                        </>
+                        </>,
                     );
 
                     const container = screen.getByTestId('custom');
@@ -121,7 +121,7 @@ describe('DropPod', () => {
                         <>
                             <div data-testid="custom" className="custom-container" />
                             <DropPod renderDrop={() => '🍔'} />
-                        </>
+                        </>,
                     );
 
                     expect(screen.getByText(/🍔/i)).toBeVisible();
@@ -161,7 +161,7 @@ describe('DropPod', () => {
                         {
                             left: 100,
                             top: 200,
-                        }
+                        },
                     );
                     render(
                         <DropPod
@@ -169,7 +169,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {top, left} = screen.getByText('🚀').style;
@@ -190,7 +190,7 @@ describe('DropPod', () => {
                         {
                             top: 20,
                             left: 100,
-                        }
+                        },
                     );
                     render(
                         <DropPod
@@ -198,7 +198,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {top} = screen.getByText('🚀').style;
@@ -218,7 +218,7 @@ describe('DropPod', () => {
                         {
                             top: 100,
                             left: 100,
-                        }
+                        },
                     );
                     render(
                         <DropPod
@@ -226,7 +226,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {top} = screen.getByText('🚀').style;
@@ -246,7 +246,7 @@ describe('DropPod', () => {
                         {
                             top: 600,
                             left: 100,
-                        }
+                        },
                     );
 
                     render(
@@ -255,7 +255,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {top} = screen.getByText('🚀').style;
@@ -275,7 +275,7 @@ describe('DropPod', () => {
                         {
                             top: 450,
                             left: 100,
-                        }
+                        },
                     );
                     render(
                         <DropPod
@@ -283,7 +283,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {top} = screen.getByText('🚀').style;
@@ -303,7 +303,7 @@ describe('DropPod', () => {
                         {
                             top: 100,
                             left: 20,
-                        }
+                        },
                     );
                     render(
                         <DropPod
@@ -311,7 +311,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {left} = screen.getByText('🚀').style;
@@ -331,7 +331,7 @@ describe('DropPod', () => {
                         {
                             top: 100,
                             left: 50,
-                        }
+                        },
                     );
                     render(
                         <DropPod
@@ -339,7 +339,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {left} = screen.getByText('🚀').style;
@@ -359,7 +359,7 @@ describe('DropPod', () => {
                         {
                             top: 100,
                             left: 550,
-                        }
+                        },
                     );
                     render(
                         <DropPod
@@ -367,7 +367,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {left} = screen.getByText('🚀').style;
@@ -387,7 +387,7 @@ describe('DropPod', () => {
                         {
                             top: 100,
                             left: 450,
-                        }
+                        },
                     );
                     render(
                         <DropPod
@@ -395,7 +395,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {left} = screen.getByText('🚀').style;
@@ -420,7 +420,7 @@ describe('DropPod', () => {
                         },
                         {
                             width: 100,
-                        }
+                        },
                     );
                     render(
                         <DropPod
@@ -429,7 +429,7 @@ describe('DropPod', () => {
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
                             hasSameWidth
-                        />
+                        />,
                     );
 
                     const {width} = screen.getByText('🚀').style;
@@ -446,7 +446,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {maxWidth} = screen.getByText('🚀').style;
@@ -463,7 +463,7 @@ describe('DropPod', () => {
                             renderDrop={(styleCalculated) => <div style={styleCalculated}>🚀</div>}
                             positions={[DropPodPosition.bottom]}
                             ref={buttonRef}
-                        />
+                        />,
                     );
 
                     const {maxWidth} = screen.getByText('🚀').style;
@@ -480,7 +480,7 @@ describe('DropPod', () => {
                     const spy = jest.spyOn(window, 'removeEventListener');
 
                     const {unmount} = render(
-                        <DropPod isOpen renderDrop={() => '🚀'} positions={[DropPodPosition.bottom]} />
+                        <DropPod isOpen renderDrop={() => '🚀'} positions={[DropPodPosition.bottom]} />,
                     );
 
                     spy.mockClear();
@@ -494,7 +494,7 @@ describe('DropPod', () => {
                     const spy = jest.spyOn(window, 'addEventListener');
 
                     const {rerender} = render(
-                        <DropPod isOpen={false} renderDrop={() => '🚀'} positions={[DropPodPosition.bottom]} />
+                        <DropPod isOpen={false} renderDrop={() => '🚀'} positions={[DropPodPosition.bottom]} />,
                     );
 
                     spy.mockClear();
@@ -508,7 +508,7 @@ describe('DropPod', () => {
                     const spy = jest.spyOn(window, 'removeEventListener');
 
                     const {rerender} = render(
-                        <DropPod isOpen={true} renderDrop={() => '🚀'} positions={[DropPodPosition.bottom]} />
+                        <DropPod isOpen={true} renderDrop={() => '🚀'} positions={[DropPodPosition.bottom]} />,
                     );
 
                     spy.mockClear();

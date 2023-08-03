@@ -8,7 +8,7 @@ import {tableWithSort} from '../TableWithSort';
 describe('Table HOC', () => {
     describe('TableWithSort', () => {
         const TableWithSort = _.compose(
-            tableWithSort({sort: (sortKey: string, isAsc: boolean, a: any, b: any) => b.value - a.value})
+            tableWithSort({sort: (sortKey: string, isAsc: boolean, a: any, b: any) => b.value - a.value}),
         )(TableHOC);
 
         const defaultProps: ITableHOCProps = {
@@ -64,7 +64,7 @@ describe('Table HOC', () => {
 
             const wrapper = shallowWithState(
                 <TableWithDefaultSort {...defaultProps} />,
-                getStateWithSort(true, 'value')
+                getStateWithSort(true, 'value'),
             )
                 .dive()
                 .dive();
@@ -79,7 +79,7 @@ describe('Table HOC', () => {
             it('should not sort elements', () => {
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} />,
-                    getStateWithSort(true, 'value')
+                    getStateWithSort(true, 'value'),
                 )
                     .dive()
                     .dive()
@@ -94,7 +94,7 @@ describe('Table HOC', () => {
                 const updateSpy = jest.fn();
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
-                    getStateWithSort(true, 'value')
+                    getStateWithSort(true, 'value'),
                 )
                     .dive()
                     .dive()
@@ -110,7 +110,7 @@ describe('Table HOC', () => {
                 const updateSpy = jest.fn();
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
-                    getStateWithSort(true, 'value')
+                    getStateWithSort(true, 'value'),
                 )
                     .dive()
                     .dive()

@@ -154,7 +154,7 @@ describe('Actions', () => {
 
                 expect(triggerSpy).toHaveBeenCalled();
                 expect(onConfirmSpy).toHaveBeenCalled();
-            }
+            },
         );
 
         it('should not thrown on the function sent when the trigger of the action or the onConfirm prop are not set', () => {
@@ -186,7 +186,7 @@ describe('Actions', () => {
             expect(triggerSpy).toHaveBeenCalled();
 
             expect(triggerSpy.mock.instances[0].requiresConfirmation.confirmLabel).toEqual(
-                newAction.requiresConfirmation.confirmLabel
+                newAction.requiresConfirmation.confirmLabel,
             );
         });
     });

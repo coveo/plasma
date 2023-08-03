@@ -64,7 +64,7 @@ describe('Date picker', () => {
         const shallowComponent = (props?: Partial<IDatePickerDropdownProps>) => {
             datePickerDropdown = shallowWithState(
                 <DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} {...props} />,
-                {}
+                {},
             );
             datePickerDropdownInstance = datePickerDropdown.instance() as DatePickerDropdown;
         };
@@ -218,7 +218,7 @@ describe('Date picker', () => {
                     datesSelectionBoxes={newProps.datesSelectionBoxes}
                     datePicker={newProps.datePicker}
                     readonly
-                />
+                />,
             );
 
             expect(screen.getByText(new RegExp(DateUtils.getDateWithTimeString(rightNow)))).toBeVisible();
@@ -246,7 +246,7 @@ describe('Date picker', () => {
                     datePicker={newDatePicker}
                     label="EMPTY_LABEL"
                     isClearable
-                />
+                />,
             );
 
             expect(screen.getByText('EMPTY_LABEL')).toBeVisible();
@@ -277,7 +277,7 @@ describe('Date picker', () => {
                     datePicker={datePicker}
                     label="EMPTY_LABEL"
                     isClearable
-                />
+                />,
             );
 
             expect(screen.getByText(formattedNow)).toBeVisible();
@@ -440,7 +440,7 @@ describe('Date picker', () => {
                 datePickerBoxWrapper.find(Button).first().props().onClick();
 
                 expect(onCancelSpy).toHaveBeenCalledWith(DateUtils.currentMonth, 0, true);
-            }
+            },
         );
 
         it('should call onClear prop if set when calling handleClear', () => {
@@ -477,7 +477,7 @@ describe('Date picker', () => {
                                 message: 'test',
                             },
                         },
-                        newState
+                        newState,
                     ),
                 });
             };

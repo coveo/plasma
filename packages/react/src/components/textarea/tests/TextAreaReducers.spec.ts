@@ -38,7 +38,7 @@ describe('Reducers', () => {
         describe('addTextArea', () => {
             const getNewTextArea = (
                 state: ITextAreaState[],
-                action: IReduxAction<ITextAreaActionPayload>
+                action: IReduxAction<ITextAreaActionPayload>,
             ): ITextAreaState[] => state.filter((textArea) => textArea.id === action.payload.id);
 
             it('should return the old state with one more TextArea', () => {

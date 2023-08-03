@@ -27,7 +27,7 @@ export const actionBarsInitialState: IActionBarState[] = [];
 
 export const actionBarReducer = (
     state: IActionBarState = actionBarInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IActionBarState => {
     switch (action.type) {
         case ActionBarActions.addActions:
@@ -60,7 +60,7 @@ export const actionBarReducer = (
 
 export const actionBarsReducer = (
     state: IActionBarState[] = actionBarsInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IActionBarState[] => {
     switch (action.type) {
         case ActionBarActions.addActions:

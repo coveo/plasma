@@ -33,9 +33,9 @@ const _ButtonWithDisabledTooltip = forwardRef<HTMLDivElement, ButtonWithDisabled
             </Tooltip>
         ) : (
             <>{children}</>
-        )
+        ),
 );
 
 export const ButtonWithDisabledTooltip = createPolymorphicComponent<'div', ButtonWithDisabledTooltipProps>(
-    _ButtonWithDisabledTooltip
+    _ButtonWithDisabledTooltip,
 );

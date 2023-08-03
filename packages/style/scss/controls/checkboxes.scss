@@ -2,7 +2,6 @@
     --border: solid 2px var(--navy-blue-80);
     --background-color: var(--white);
     --checked-color: var(--digital-blue-60);
-
     --svg-underterminate-top: -4px;
     --svg-underterminate-left: 3px;
     --svg-checked-top: 1px;
@@ -18,7 +17,6 @@
         border: var(--border);
         border-radius: 4px;
         outline: none;
-
         cursor: pointer;
         transition: all 200ms;
     }
@@ -29,7 +27,7 @@
         & + button {
             @extend .checkbox-button;
 
-            &:after {
+            &::after {
                 position: absolute;
                 top: 7px;
                 left: 7px;
@@ -46,7 +44,7 @@
                 --border: solid 2px var(--digital-blue-60);
             }
 
-            &:focus:after {
+            &:focus::after {
                 top: -6px;
                 left: -6px;
                 display: inline-block;
@@ -65,7 +63,7 @@
                 --border: solid 2px var(--digital-blue-80);
             }
 
-            &:before {
+            &::before {
                 position: absolute;
                 top: var(--svg-checked-top);
                 left: var(--svg-checked-left);
@@ -80,7 +78,7 @@
         &:indeterminate + button {
             position: relative;
 
-            &:before {
+            &::before {
                 position: absolute;
                 top: var(--svg-underterminate-top);
                 left: var(--svg-underterminate-left);
@@ -97,17 +95,18 @@
             & + button:hover {
                 --background-color: var(--grey-20);
                 --border: solid 2px var(--grey-50);
+
                 cursor: default;
             }
 
             &:checked {
-                & + button:before {
+                & + button::before {
                     position: absolute;
                     content: url('../resources/icons/svg/content/disabled-checkbox.svg');
                 }
             }
 
-            &:indeterminate + button:before {
+            &:indeterminate + button::before {
                 position: absolute;
                 content: url('../resources/icons/svg/content/disabled-undeterminate-checkbox.svg');
             }

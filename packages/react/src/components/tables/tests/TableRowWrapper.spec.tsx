@@ -15,7 +15,7 @@ describe('<TableCollapsibleRowWrapper />', () => {
                     <TableCollapsibleRowWrapper>
                         <div>Hello World</div>
                     </TableCollapsibleRowWrapper>,
-                    {attachTo: document.getElementById('App')}
+                    {attachTo: document.getElementById('App')},
                 );
             }).not.toThrow();
         });
@@ -25,7 +25,7 @@ describe('<TableCollapsibleRowWrapper />', () => {
                 <TableCollapsibleRowWrapper>
                     <div>Hello World</div>
                 </TableCollapsibleRowWrapper>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
             expect(tableRowWrapper.find('tbody').exists()).toBe(true);

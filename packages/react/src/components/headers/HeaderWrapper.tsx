@@ -72,7 +72,7 @@ export class HeaderWrapper extends Component<IHeaderWrapperProps> {
                 'mod-no-border-bottom': !this.props.hasBorderBottom || this.props.tabs,
                 px0: !this.props.hasPadding,
             },
-            this.props.classes
+            this.props.classes,
         );
     }
 

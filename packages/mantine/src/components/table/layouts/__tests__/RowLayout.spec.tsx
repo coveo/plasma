@@ -19,7 +19,7 @@ describe('RowLayout', () => {
                 getRowId={({id}) => id}
                 data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
                 columns={columns}
-            />
+            />,
         );
 
         expect(screen.getByRole('columnheader', {name: 'firstName'})).toBeVisible();
@@ -28,12 +28,12 @@ describe('RowLayout', () => {
         expect(
             screen.getByRole('cell', {
                 name: /first/i,
-            })
+            }),
         ).toBeVisible();
         expect(
             screen.getByRole('cell', {
                 name: /last/i,
-            })
+            }),
         ).toBeVisible();
     });
 
@@ -72,7 +72,7 @@ describe('RowLayout', () => {
                     {id: 'gary', firstName: 'Gary', lastName: 'Oak'},
                 ]}
                 columns={customColumns}
-            />
+            />,
         );
 
         expect(screen.getByTestId('ash')).toBeVisible();
@@ -99,7 +99,7 @@ describe('RowLayout', () => {
                 data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
                 getExpandChildren={(row: RowData) => <Fixture row={row} />}
                 columns={customColumns}
-            />
+            />,
         );
 
         // wait for the collapsible icon to show
@@ -135,7 +135,7 @@ describe('RowLayout', () => {
                 ]}
                 getExpandChildren={(row: RowData) => (row.lastName === 'Skywalker' ? <Fixture row={row} /> : null)}
                 columns={customColumns}
-            />
+            />,
         );
 
         // wait for the collapsible icon to show
@@ -163,7 +163,7 @@ describe('RowLayout', () => {
                 ]}
                 getExpandChildren={(row: RowData) => <Fixture row={row} />}
                 columns={customColumns}
-            />
+            />,
         );
 
         // wait for the collapsible icon to show
@@ -198,7 +198,7 @@ describe('RowLayout', () => {
                 ]}
                 columns={columns}
                 doubleClickAction={doubleClickSpy}
-            ></Table>
+            ></Table>,
         );
         await user.dblClick(screen.getByRole('cell', {name: 'Mario'}));
         expect(doubleClickSpy).toHaveBeenCalledTimes(1);
@@ -218,7 +218,7 @@ describe('RowLayout', () => {
                     ]}
                     columns={columns}
                 />
-            </div>
+            </div>,
         );
 
         await user.click(screen.getByRole('row', {name: /patate king/i}));
@@ -249,7 +249,7 @@ describe('RowLayout', () => {
                         },
                     ]}
                 />
-            </div>
+            </div>,
         );
 
         await user.click(screen.getByRole('row', {name: /patate king/i}));
@@ -280,7 +280,7 @@ describe('RowLayout', () => {
                         },
                     ]}
                 />
-            </div>
+            </div>,
         );
 
         await user.click(screen.getByRole('row', {name: /patate king/i}));
@@ -305,7 +305,7 @@ describe('RowLayout', () => {
                     ]}
                     columns={columns}
                     multiRowSelectionEnabled
-                />
+                />,
             );
 
             expect(screen.getByRole('columnheader', {name: /select all from this page/i})).toBeInTheDocument();
@@ -329,7 +329,7 @@ describe('RowLayout', () => {
                     initialState={{
                         rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}},
                     }}
-                />
+                />,
             );
 
             expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
@@ -346,7 +346,7 @@ describe('RowLayout', () => {
                     ]}
                     columns={columns}
                     multiRowSelectionEnabled
-                />
+                />,
             );
 
             const selectAll = screen.getByRole('checkbox', {name: /select all from this page/i});
@@ -373,7 +373,7 @@ describe('RowLayout', () => {
                         multiRowSelectionEnabled
                         disableRowSelection
                     />
-                </div>
+                </div>,
             );
 
             await user.click(screen.getByRole('row', {name: /patate king/i}));
@@ -396,7 +396,7 @@ describe('RowLayout', () => {
                     columns={columns}
                     multiRowSelectionEnabled
                     disableRowSelection
-                />
+                />,
             );
 
             expect(screen.getByRole('checkbox', {name: /select all/i})).toHaveStyle('pointerEvents: none');

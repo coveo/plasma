@@ -36,7 +36,7 @@ describe('Tables', () => {
                         </thead>
                     </table>
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             tableHeaderCell = wrapper.find(TableHeaderCell).first();
         });

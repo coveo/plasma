@@ -7,14 +7,14 @@ $borders: border-top border-bottom border-left border-right;
 
     @for $i from 1 through length($transparencies) {
         .mod-#{$border}-transparency-#{$i} {
-            #{$border}: $default-border-size solid rgba(var(--deprecated-medium-grey-rgb), nth($transparencies, $i));
+            #{$border}: $default-border-size solid rgb(var(--deprecated-medium-grey-rgb) / nth($transparencies, $i));
         }
     }
 }
 
 @for $i from 1 through length($transparencies) {
     .mod-border-transparency-#{$i} {
-        border: $default-border-size solid rgba(var(--deprecated-medium-grey-rgb), nth($transparencies, $i));
+        border: $default-border-size solid rgb(var(--deprecated-medium-grey-rgb) / nth($transparencies, $i));
     }
 }
 

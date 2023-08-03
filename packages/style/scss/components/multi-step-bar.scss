@@ -1,13 +1,16 @@
 .multi-step-bar-container {
     position: relative;
+
     &.mod-small {
         .multi-step-bar {
             min-height: $multi-step-small-height;
         }
+
         .multi-step-bar-text {
             padding: $multi-step-bar-mod-small-text-padding;
         }
     }
+
     &.mod-multi-step-bar-in-progress-sliding-animation {
         .multi-step-bar-doing {
             z-index: 1;
@@ -24,18 +27,17 @@
             animation: slide-background 0.4s linear infinite;
         }
     }
+
     &.mod-multi-step-bar-in-progress-shine-animation {
         .multi-step-bar-doing {
             animation: shine-background 5s linear reverse infinite;
         }
     }
+
     &.mod-multi-step-bar-flare-animation {
-        &:after {
+        &::after {
             position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            inset: 0;
             background-image: linear-gradient(
                 90deg,
                 transparent,
@@ -50,6 +52,7 @@
             content: '';
         }
     }
+
     &.mod-multi-step-bar-separated {
         .multi-step-bar:not(:last-child) {
             margin-right: $multi-step-bar-separation;
@@ -68,7 +71,6 @@
 
 .multi-step-bar-text {
     flex: 1;
-
     padding: $multi-step-bar-text-padding;
     text-align: center;
     cursor: default;
@@ -82,10 +84,7 @@
 
 .multi-step-bar-content-container {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     z-index: 1;
     color: var(--title-text-color);
 }
@@ -94,29 +93,37 @@
     overflow: hidden;
     color: transparent;
     pointer-events: none;
+
     .multi-step-bar {
         transform: skewX(-20deg);
+
         &:first-child {
             margin-left: -$default-margin;
             padding-left: $default-margin;
         }
+
         &:last-child {
             margin-right: -$default-margin;
             padding-right: $default-margin;
         }
     }
+
     .multi-step-bar-to-do {
         background-color: $multi-step-to-do-color;
     }
+
     .multi-step-bar-doing {
         background-color: $multi-step-doing-color;
     }
+
     .multi-step-bar-done {
         background-color: $multi-step-done-color;
     }
+
     .multi-step-bar-error {
         background-color: $multi-step-error-color;
     }
+
     .multi-step-bar-warning {
         background-color: $multi-step-warning-color;
     }
@@ -126,6 +133,7 @@
     0% {
         background-position: -25% 0;
     }
+
     100% {
         background-position: 125% 0;
     }
@@ -135,6 +143,7 @@
     0% {
         background-position: 0 0;
     }
+
     100% {
         background-position: $multi-step-sliding-animation-background-width 0;
     }
@@ -144,9 +153,11 @@
     0% {
         opacity: 0;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }

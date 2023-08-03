@@ -1,7 +1,7 @@
 /* eslint-disable testing-library/no-render-in-setup */
 import {CrossSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {InfiniteScrollProps} from 'react-infinite-scroll-component';
+import {type Props as InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 
 import {keyCode} from '../../../utils/InputUtils';
@@ -38,7 +38,7 @@ describe('DropdownSearch', () => {
         searchThresold: 1,
     };
 
-    const infiniteScrollProps: InfiniteScrollProps = {
+    const infiniteScrollProps: Omit<InfiniteScrollProps, 'children'> = {
         dataLength: 2,
         hasMore: true,
         next: jest.fn(),
@@ -253,7 +253,7 @@ describe('DropdownSearch', () => {
                 jest.spyOn(DropdownSearch.prototype as any, 'isSearchOn').mockReturnValue(false);
                 const handleOnOptionClickOnKeyDownSpy = jest.spyOn(
                     DropdownSearch.prototype as any,
-                    'handleOnOptionClickOnKeyDown'
+                    'handleOnOptionClickOnKeyDown',
                 );
 
                 dropdownSearch.find('button.dropdown-toggle').simulate('keydown');
@@ -265,7 +265,7 @@ describe('DropdownSearch', () => {
                 jest.spyOn(DropdownSearch.prototype as any, 'isSearchOn').mockReturnValue(true);
                 const handleOnOptionClickOnKeyDownSpy = jest.spyOn(
                     DropdownSearch.prototype as any,
-                    'handleOnOptionClickOnKeyDown'
+                    'handleOnOptionClickOnKeyDown',
                 );
 
                 dropdownSearch.find('button.dropdown-toggle').simulate('keydown');
@@ -289,10 +289,10 @@ describe('DropdownSearch', () => {
                 it('should return a non null append jsx.element if append is defined', () => {
                     expect(
                         shallow(
-                            dropdownSearchInstanceAsAny.getDropdownOptionAppend({value: 'test', append: 'test append'})
+                            dropdownSearchInstanceAsAny.getDropdownOptionAppend({value: 'test', append: 'test append'}),
                         )
                             .find('.dropdown-option-append')
-                            .text()
+                            .text(),
                     ).toBe('test append');
                 });
 
@@ -389,7 +389,7 @@ describe('DropdownSearch', () => {
                     });
 
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(
-                        DropdownSearchInfiniteScrollOptions
+                        DropdownSearchInfiniteScrollOptions,
                     );
                 });
 
@@ -488,7 +488,7 @@ describe('DropdownSearch', () => {
                         searchThresold={infiniteSearchThreshold}
                         isOpened
                         supportSingleCustomOption={false}
-                    />
+                    />,
                 );
 
                 expect(dropdown.find('button.dropdown-toggle').length).toBe(1);
@@ -591,7 +591,7 @@ describe('DropdownSearch', () => {
                         <li key="noResultDropdownSearch">
                             <span className="no-search-results">{dropdownSearchInstance.props.noResultText}</span>
                         </li>,
-                    ])
+                    ]),
                 );
             });
 

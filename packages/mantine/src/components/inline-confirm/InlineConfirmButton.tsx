@@ -18,5 +18,5 @@ export const InlineConfirmButton = forwardRef<HTMLButtonElement, InlineConfirmBu
         };
 
         return <Button ref={ref} onClick={handleOnClick} {...others} />;
-    }
+    },
 );

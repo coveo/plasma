@@ -2,7 +2,7 @@ module.exports = {
     env: {
         browser: true,
     },
-    extends: [require.resolve('tsjs/eslint-config')],
+    extends: ['plasma'],
     parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,

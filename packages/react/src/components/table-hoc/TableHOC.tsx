@@ -136,7 +136,7 @@ export const TableHOC: FunctionComponent<
                         {
                             'mod-border-top': showBorderTop,
                             'mod-border-bottom': showBorderBottom,
-                        }
+                        },
                     ).split(' ')}
                     disabled={isLoading}
                     prefixContent={actionBarPrefixContent}

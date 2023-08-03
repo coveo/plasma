@@ -123,7 +123,7 @@ export const Toast: FunctionComponent<PropsWithChildren<IToastProps>> = ({
             'mod-download': type === 'download',
             'mod-animated': animate,
         },
-        className
+        className,
     );
 
     const closeButton = (

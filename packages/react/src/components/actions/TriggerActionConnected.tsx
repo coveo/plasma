@@ -22,7 +22,7 @@ export const CONFIRM_LABEL: string = 'Are you sure?';
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ITriggerActionOwnProps
+    ownProps: ITriggerActionOwnProps,
 ) => ({
     onTriggerConfirm: (onClick: () => void, userChoice: IUserChoice, className: string) => {
         dispatch(addPrompt(ownProps.parentId, {onClick, userChoice, isOpened: false, className}));
@@ -58,7 +58,7 @@ export class TriggerAction extends Component<ITriggerActionProps> {
                         confirm: confirmData.buttonLabels.confirm,
                     },
                 },
-                confirmData.confirmType
+                confirmData.confirmType,
             );
         } else {
             if (this.props.action.trigger) {
@@ -103,5 +103,5 @@ export class TriggerAction extends Component<ITriggerActionProps> {
  */
 export const TriggerActionConnected = connect<null, ReturnType<typeof mapDispatchToProps>, ITriggerActionOwnProps>(
     undefined,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(TriggerAction as any);

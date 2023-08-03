@@ -30,7 +30,7 @@ describe('GroupableCheckbox', () => {
             const oldState: IGroupableCheckboxesState[] = undefined;
             const groupableCheckboxState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                 oldState,
-                genericAction
+                genericAction,
             );
 
             expect(groupableCheckboxState).toBe(groupableCheckboxesInitialState);
@@ -47,7 +47,7 @@ describe('GroupableCheckbox', () => {
             const oldState: IGroupableCheckboxesState[] = [groupableCheckboxInitialState];
             const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                 oldState,
-                genericAction
+                genericAction,
             );
 
             expect(groupableCheckboxsState).toBe(oldState);
@@ -57,7 +57,7 @@ describe('GroupableCheckbox', () => {
             const oldState: IGroupableCheckboxesState = groupableCheckboxInitialState;
             const groupableCheckboxsState: IGroupableCheckboxesState = groupableCheckboxReducer(
                 oldState,
-                genericAction
+                genericAction,
             );
 
             expect(groupableCheckboxsState).toBe(oldState);
@@ -72,7 +72,7 @@ describe('GroupableCheckbox', () => {
                 const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     oldState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(oldState);
@@ -86,7 +86,7 @@ describe('GroupableCheckbox', () => {
                 ];
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     oldState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(oldState);
@@ -97,7 +97,7 @@ describe('GroupableCheckbox', () => {
                 const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     oldState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState.length).toBe(1);
@@ -109,7 +109,7 @@ describe('GroupableCheckbox', () => {
                 const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     oldState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState.length).toBe(1);
@@ -121,7 +121,7 @@ describe('GroupableCheckbox', () => {
                 const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     oldState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState.length).toBe(1);
@@ -133,7 +133,7 @@ describe('GroupableCheckbox', () => {
                 const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     oldState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState.length).toBe(1);
@@ -145,7 +145,7 @@ describe('GroupableCheckbox', () => {
                 const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     oldState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(oldState);
@@ -156,7 +156,7 @@ describe('GroupableCheckbox', () => {
                 const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     oldState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState.length).toBe(1);
@@ -188,7 +188,7 @@ describe('GroupableCheckbox', () => {
                     action = addGroupedCheckbox(parentId, false, false, undefined, true);
                     const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                         currentState,
-                        action
+                        action,
                     );
 
                     expect(groupableCheckboxsState).not.toBe(currentState);
@@ -198,7 +198,7 @@ describe('GroupableCheckbox', () => {
                     action = addGroupedCheckbox(parentId, false, false, undefined, true);
                     const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                         currentState,
-                        action
+                        action,
                     );
 
                     expect(groupableCheckboxsState.length).toBe(1);
@@ -210,7 +210,7 @@ describe('GroupableCheckbox', () => {
                     action = addGroupedCheckbox('id', false, false, parentId);
                     const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                         currentState,
-                        action
+                        action,
                     );
 
                     expect(groupableCheckboxsState).not.toBe(currentState);
@@ -220,7 +220,7 @@ describe('GroupableCheckbox', () => {
                     action = addGroupedCheckbox('id', false, false, parentId);
                     const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                         currentState,
-                        action
+                        action,
                     );
 
                     expect(groupableCheckboxsState.length).toBe(1);
@@ -231,7 +231,7 @@ describe('GroupableCheckbox', () => {
                     action = addGroupedCheckbox('id', false, false, parentId);
                     const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                         currentState,
-                        action
+                        action,
                     );
 
                     expect(groupableCheckboxsState.length).toBe(1);
@@ -242,7 +242,7 @@ describe('GroupableCheckbox', () => {
                     action = addGroupedCheckbox('id', true, false, parentId);
                     const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                         currentState,
-                        action
+                        action,
                     );
 
                     expect(groupableCheckboxsState.length).toBe(1);
@@ -291,7 +291,7 @@ describe('GroupableCheckbox', () => {
                 action = addGroupedCheckbox('id', false, false, parentId);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(currentState);
@@ -301,7 +301,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleGroupedCheckbox(childId, parentId);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].checkboxes[0].checked).toBe(true);
@@ -311,7 +311,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleGroupedCheckbox(childId, parentId);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].nbChecked).toBe(1);
@@ -321,7 +321,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleGroupedCheckbox(parentId, undefined, true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(currentState);
@@ -331,7 +331,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleGroupedCheckbox(parentId, undefined, true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].parent.checked).toBe(true);
@@ -341,7 +341,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleGroupedCheckbox(parentId, undefined, true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].checkboxes[0].checked).toBe(true);
@@ -351,7 +351,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleGroupedCheckbox(parentId, undefined, true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].nbChecked).toBe(1);
@@ -404,7 +404,7 @@ describe('GroupableCheckbox', () => {
                 action = removeGroupedCheckbox(childId, 'notParentId');
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(currentState);
@@ -418,7 +418,7 @@ describe('GroupableCheckbox', () => {
                 ];
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     oldState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(oldState);
@@ -428,7 +428,7 @@ describe('GroupableCheckbox', () => {
                 action = removeGroupedCheckbox(childId, 'notParentId');
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).toEqual(currentState);
@@ -438,7 +438,7 @@ describe('GroupableCheckbox', () => {
                 action = removeGroupedCheckbox(childId, parentId);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].checkboxes.length).toBe(1);
@@ -448,7 +448,7 @@ describe('GroupableCheckbox', () => {
                 action = removeGroupedCheckbox(childId, parentId);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].checkboxes.length).toBe(1);
@@ -458,7 +458,7 @@ describe('GroupableCheckbox', () => {
                 action = removeGroupedCheckbox(childId, parentId);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].checkboxes.length).toBe(1);
@@ -468,7 +468,7 @@ describe('GroupableCheckbox', () => {
                 action = removeGroupedCheckbox(parentId, undefined, true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(currentState);
@@ -478,7 +478,7 @@ describe('GroupableCheckbox', () => {
                 action = removeGroupedCheckbox(parentId, undefined, true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState.length).toBe(0);
@@ -523,7 +523,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleDisabledGroupedCheckbox(childId, parentId);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(currentState);
@@ -533,7 +533,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleDisabledGroupedCheckbox(parentId, undefined, true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(currentState);
@@ -543,7 +543,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleDisabledGroupedCheckbox(childId, 'notParentId');
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).toEqual(currentState);
@@ -555,7 +555,7 @@ describe('GroupableCheckbox', () => {
                 expect(currentState[0].checkboxes[0].disabled).toBe(false);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].checkboxes[0].disabled).toBe(true);
@@ -567,7 +567,7 @@ describe('GroupableCheckbox', () => {
                 expect(currentState[0].parent.disabled).toBe(false);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].parent.disabled).toBe(true);
@@ -638,7 +638,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleDisabledAllGroupedCheckbox(childId, parentId);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(currentState);
@@ -648,7 +648,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleDisabledAllGroupedCheckbox(parentId, undefined, true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).not.toBe(currentState);
@@ -658,7 +658,7 @@ describe('GroupableCheckbox', () => {
                 action = toggleDisabledAllGroupedCheckbox(childId, 'notParentId');
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState).toEqual(currentState);
@@ -670,12 +670,12 @@ describe('GroupableCheckbox', () => {
                 expect(currentState[0].parent.disabled).toBe(false);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].parent.disabled).toBe(true);
                 expect(
-                    _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled)
+                    _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled),
                 ).toBe(true);
             });
 
@@ -685,12 +685,12 @@ describe('GroupableCheckbox', () => {
                 expect(currentStateAllDisabled[0].parent.disabled).toBe(true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentStateAllDisabled,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].parent.disabled).toBe(false);
                 expect(
-                    _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled)
+                    _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled),
                 ).toBe(false);
             });
 
@@ -700,12 +700,12 @@ describe('GroupableCheckbox', () => {
                 expect(currentState[0].parent.disabled).toBe(false);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].parent.disabled).toBe(true);
                 expect(
-                    _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled)
+                    _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled),
                 ).toBe(true);
             });
 
@@ -715,12 +715,12 @@ describe('GroupableCheckbox', () => {
                 expect(currentStateAllDisabled[0].parent.disabled).toBe(true);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentStateAllDisabled,
-                    action
+                    action,
                 );
 
                 expect(groupableCheckboxsState[0].parent.disabled).toBe(false);
                 expect(
-                    _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled)
+                    _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled),
                 ).toBe(false);
             });
         });

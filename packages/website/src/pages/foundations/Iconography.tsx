@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {ITableHOCProps, TableHOC, tableWithFilter, TableWithFilterProps} from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import {HTMLAttributes, ComponentType, FunctionComponent} from 'react';

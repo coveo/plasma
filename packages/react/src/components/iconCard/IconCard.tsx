@@ -135,7 +135,7 @@ export const IconCard: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLDi
                     open: isOpen,
                     disabled,
                 },
-                className
+                className,
             )}
             {...restProps}
         >
@@ -147,7 +147,7 @@ export const IconCard: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLDi
                             'cursor-pointer': (!!onClick || hasChoices) && !disabled && !isOpen,
                             'mod-small': !!small,
                         },
-                        cardClassName
+                        cardClassName,
                     )}
                     onClick={handleCardClick}
                     aria-expanded={isOpen}

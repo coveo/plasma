@@ -12,8 +12,8 @@ describe('InputSelectors', () => {
                     {
                         inputs: [{id: 'ham man', value: 'man', valid: true, disabled: false}],
                     },
-                    ownProps
-                )
+                    ownProps,
+                ),
             ).toBeUndefined();
         });
 
@@ -23,8 +23,8 @@ describe('InputSelectors', () => {
                     {
                         inputs: [{id: ownProps.id, value: undefined, valid: true, disabled: false}],
                     },
-                    ownProps
-                )
+                    ownProps,
+                ),
             ).toBeUndefined();
         });
 
@@ -36,8 +36,8 @@ describe('InputSelectors', () => {
                     {
                         inputs: [{id: ownProps.id, value: expectedValue, valid: true, disabled: false}],
                     },
-                    ownProps
-                )
+                    ownProps,
+                ),
             ).toBe(expectedValue);
         });
     });
@@ -49,8 +49,8 @@ describe('InputSelectors', () => {
                     {
                         inputs: [{id: 'ham man', value: 'man', valid: true, disabled: false}],
                     },
-                    ownProps
-                )
+                    ownProps,
+                ),
             ).toBe(false);
         });
 
@@ -60,8 +60,8 @@ describe('InputSelectors', () => {
                     {
                         inputs: [{id: ownProps.id, value: 'bacon', valid: false, disabled: false}],
                     },
-                    ownProps
-                )
+                    ownProps,
+                ),
             ).toBe(false);
         });
 
@@ -71,8 +71,8 @@ describe('InputSelectors', () => {
                     {
                         inputs: [{id: ownProps.id, value: 'bacon', valid: true, disabled: false}],
                     },
-                    ownProps
-                )
+                    ownProps,
+                ),
             ).toBe(true);
         });
     });

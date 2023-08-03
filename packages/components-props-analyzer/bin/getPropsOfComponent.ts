@@ -28,7 +28,7 @@ export const getPropsOfComponent = (component: Component, env: VirtualTypeScript
                 fileName,
                 content.length,
                 entry.name,
-                entry.source
+                entry.source,
             );
             if (symbol) {
                 const node = symbol.valueDeclaration || symbol.declarations?.[0];

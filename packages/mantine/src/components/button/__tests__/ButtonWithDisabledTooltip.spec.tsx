@@ -7,7 +7,7 @@ describe('ButtonWithDisabledTooltip', () => {
         render(
             <ButtonWithDisabledTooltip disabled disabledTooltip="tooltip message">
                 <button disabled>save</button>
-            </ButtonWithDisabledTooltip>
+            </ButtonWithDisabledTooltip>,
         );
         const button = screen.getByRole('button', {name: /save/i});
         expect(button).toBeDisabled();
@@ -21,7 +21,7 @@ describe('ButtonWithDisabledTooltip', () => {
         render(
             <ButtonWithDisabledTooltip disabledTooltip="tooltip message">
                 <button>save</button>
-            </ButtonWithDisabledTooltip>
+            </ButtonWithDisabledTooltip>,
         );
         const button = screen.getByRole('button', {name: /save/i});
         expect(screen.queryByRole('tooltip', {name: /tooltip message/i})).not.toBeInTheDocument();
@@ -33,7 +33,7 @@ describe('ButtonWithDisabledTooltip', () => {
         const {container} = render(
             <ButtonWithDisabledTooltip>
                 <button>save</button>
-            </ButtonWithDisabledTooltip>
+            </ButtonWithDisabledTooltip>,
         );
         expect(container).toMatchInlineSnapshot(`
             <div>

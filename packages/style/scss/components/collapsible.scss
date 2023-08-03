@@ -16,7 +16,6 @@
         border: none;
         border-bottom: $default-border;
         outline: none;
-
         cursor: pointer;
 
         &.active {
@@ -50,6 +49,7 @@
 
     &.container {
         transition: background-color $collapsible-timeout ease-in-out;
+
         &:hover {
             background-color: var(--white);
         }

@@ -26,7 +26,7 @@ describe('<TableChildLastUpdated />', () => {
                 <Provider store={store}>
                     <TableChildLastUpdated {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
         describe('render without error', () => {

@@ -21,7 +21,7 @@ export const ScatterSeries: FunctionComponent<PropsWithChildren<ScatterSeriesPro
                 r={radius}
                 fill={color(i, colorPattern, point)}
             />
-        ))
+        )),
     );
 
     return (

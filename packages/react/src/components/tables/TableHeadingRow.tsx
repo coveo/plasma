@@ -58,7 +58,7 @@ export class TableHeadingRow extends Component<ITableHeadingRowProps, any> {
                 selected: this.props.selected,
                 opened: this.props.opened,
             },
-            this.props.className
+            this.props.className,
         );
 
         return (

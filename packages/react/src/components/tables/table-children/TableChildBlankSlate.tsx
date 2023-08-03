@@ -20,7 +20,7 @@ export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Ele
         tableCompositeState.filter ||
         _.some(
             tableCompositeState.predicates,
-            (value: any) => !_.isUndefined(value) && value !== TABLE_PREDICATE_DEFAULT_VALUE
+            (value: any) => !_.isUndefined(value) && value !== TABLE_PREDICATE_DEFAULT_VALUE,
         ) ||
         tableCompositeState.from ||
         tableCompositeState.to

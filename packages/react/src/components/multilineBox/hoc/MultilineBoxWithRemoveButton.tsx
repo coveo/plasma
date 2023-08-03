@@ -20,7 +20,7 @@ export interface IMultilineBoxWithRemoveButtonSupplierProps<T = any> {
         child: ReactNode,
         getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode,
         data: Array<IMultilineSingleBoxProps<T>>,
-        index: number
+        index: number,
     ) => ReactNode;
 }
 
@@ -33,7 +33,7 @@ const defaultContainerNode = (
     child: ReactNode,
     getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode,
     data: IMultilineSingleBoxProps[],
-    index: number
+    index: number,
 ) => (
     <Fragment key={`${(data.length && data[index].id) || index}RemoveButton`}>
         {child}
@@ -63,7 +63,7 @@ export const multilineBoxWithRemoveButton =
             private getRemoveButtonNode(
                 data: Array<Partial<IMultilineSingleBoxProps<T>>>,
                 props: Partial<IButtonProps> = {},
-                index: number
+                index: number,
             ) {
                 const isLastMeaningfulEntry = data.length <= 1;
                 const isDisabled = this.props.disabled || isLastMeaningfulEntry || data[index].isLast;
@@ -93,8 +93,8 @@ export const multilineBoxWithRemoveButton =
                         child,
                         (props?: Partial<IButtonProps>) => this.getRemoveButtonNode(data, props, index),
                         data,
-                        index
-                    )
+                        index,
+                    ),
                 );
             }
 
@@ -104,7 +104,7 @@ export const multilineBoxWithRemoveButton =
                         {...this.props}
                         renderBody={(
                             boxProps: Array<IMultilineSingleBoxProps<T>>,
-                            parentProps: IMultilineParentProps
+                            parentProps: IMultilineParentProps,
                         ) => this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
                     />
                 );
@@ -113,6 +113,6 @@ export const multilineBoxWithRemoveButton =
 
         return connect<null, ReturnType<typeof mapDispatchToProps>, IMultilineBoxWithRemoveButtonProps<any>>(
             undefined,
-            mapDispatchToProps
+            mapDispatchToProps,
         )(MultilineBoxWithRemoveButton as any);
     };

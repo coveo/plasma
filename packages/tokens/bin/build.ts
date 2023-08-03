@@ -1,14 +1,14 @@
 import {ensureDirSync, outputFileSync} from 'fs-extra';
-import rimraf from 'rimraf';
+import {rimrafSync} from 'rimraf';
 
 import {buildColorsTokens} from './lib/tokens/colors';
 import {buildIconsTokens} from './lib/tokens/icons';
 
 const cleanOutputDirectories = () => {
-    rimraf.sync('./css/*');
-    rimraf.sync('./scss/*');
-    rimraf.sync('./src/*');
-    rimraf.sync('./icons/*');
+    rimrafSync('./css/*');
+    rimrafSync('./scss/*');
+    rimrafSync('./src/*');
+    rimrafSync('./icons/*');
     ensureDirSync('./css');
     ensureDirSync('./scss');
     ensureDirSync('./src');

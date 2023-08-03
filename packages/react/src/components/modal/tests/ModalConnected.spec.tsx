@@ -24,7 +24,7 @@ describe('Modal', () => {
             <Provider store={store}>
                 <ModalConnected id={id} />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         modal = wrapper.find(Modal).first();
     });
@@ -72,7 +72,7 @@ describe('Modal', () => {
             <Provider store={store}>
                 <ModalConnected id={id} openOnMount />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
 
         const modalInState = store.getState().modals.filter((currentModal) => currentModal.id === id);

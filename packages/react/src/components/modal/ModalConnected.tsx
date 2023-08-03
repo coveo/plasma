@@ -10,7 +10,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IModalOwnProps): IModalSt
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IModalOwnProps
+    ownProps: IModalOwnProps,
 ): IModalDispatchProps => ({
     onRender: () => dispatch(addModal(ownProps.id, ownProps.openOnMount)),
     onDestroy: () => dispatch(removeModal(ownProps.id)),

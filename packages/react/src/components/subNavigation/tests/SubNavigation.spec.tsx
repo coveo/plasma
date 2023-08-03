@@ -16,8 +16,8 @@ describe('SubNavigation', () => {
                         {id: 'b', label: 'B'},
                     ]}
                     selected="b"
-                />
-            )
+                />,
+            ),
         ).not.toThrow();
 
         expect(() =>
@@ -29,12 +29,12 @@ describe('SubNavigation', () => {
                     ]}
                     selected="b"
                     description="alphabet soup"
-                />
-            )
+                />,
+            ),
         ).not.toThrow();
 
         expect(() =>
-            shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected="not-existing-id" />)
+            shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected="not-existing-id" />),
         ).not.toThrow();
     });
 
@@ -95,7 +95,7 @@ describe('SubNavigation', () => {
             subNavigation = shallow(<SubNavigation {...propsWithDescription} />);
             expect(subNavigation.find('div').length).toBe(3);
             expect(subNavigation.find('div').first().hasClass('sub-navigation-item-link-with-description-label')).toBe(
-                true
+                true,
             );
         });
 
@@ -103,7 +103,7 @@ describe('SubNavigation', () => {
             subNavigation = shallow(<SubNavigation {...propsWithCustomLabel} />);
             expect(subNavigation.find('div').length).toBe(2);
             expect(
-                subNavigation.find('div').last().hasClass('sub-navigation-item-description body-m-book-subdued')
+                subNavigation.find('div').last().hasClass('sub-navigation-item-description body-m-book-subdued'),
             ).toBe(true);
             expect(subNavigation.find('h1').length).toBe(1);
         });
@@ -117,7 +117,7 @@ describe('SubNavigation', () => {
                 subNavigation
                     .find('li')
                     .findWhere((node) => node.key() === selectedItem)
-                    .hasClass('mod-selected')
+                    .hasClass('mod-selected'),
             ).toBe(true);
         });
 

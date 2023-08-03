@@ -57,12 +57,14 @@
 
             &:not(.disabled-input) {
                 @include placeholder(var(--deprecated-dark-grey));
+
                 -webkit-text-fill-color: var(--deprecated-dark-grey);
             }
 
             &.disabled-input {
                 margin-left: 1 * $spacing;
                 background-color: transparent;
+
                 &::placeholder {
                     color: var(--critical-70);
                     font-size: 12px;
@@ -114,11 +116,11 @@
     > textarea {
         min-height: $input-height;
         padding: 5px 0 2px;
-
         -ms-overflow-y: hidden !important;
         overflow-y: hidden; // ie
         transition: height ease 0.2s;
         resize: none;
+
         @include placeholder(transparent);
     }
 
@@ -137,7 +139,9 @@
     &.validate > textarea,
     .validate > textarea,
     &.validate .input {
-        transition: 0.2s margin-bottom ease, 0.2s color ease;
+        transition:
+            0.2s margin-bottom ease,
+            0.2s color ease;
 
         &.valid,
         &.invalid {
@@ -147,7 +151,7 @@
         &.valid {
             border-bottom-color: var(--bright-turquoise-40);
 
-            & + label:after {
+            & + label::after {
                 color: var(--bright-turquoise-40);
                 opacity: 1;
                 content: attr(data-valid-message);
@@ -158,7 +162,7 @@
             border-bottom-color: var(--critical-70);
         }
 
-        &.invalid + label:after {
+        &.invalid + label::after {
             color: var(--critical-70);
             opacity: 1;
             content: attr(data-invalid-message);
@@ -167,7 +171,7 @@
         & + label {
             width: 100%;
 
-            &:after {
+            &::after {
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -178,7 +182,7 @@
             }
 
             &.active {
-                &:after {
+                &::after {
                     margin-top: $input-message-position * 0.5;
                 }
             }
@@ -192,12 +196,12 @@
     // For multiline input validation feedback
     .input-wrapper.validate > input {
         & + label {
-            &:after {
+            &::after {
                 margin-top: $input-message-position * 1.5;
             }
 
             &.active {
-                &:after {
+                &::after {
                     margin-top: $input-message-position;
                 }
             }
@@ -211,6 +215,7 @@
 
     &.validate .generic-form-error {
         display: block;
+
         // Make it look like the input > label:after error
         margin-top: 3px;
         margin-bottom: 0;

@@ -21,7 +21,7 @@ describe('Multiline box with remove button', () => {
         const shallowComponent = (
             Component: any,
             props: Partial<IMultilineBoxOwnProps> = {},
-            state = {}
+            state = {},
         ): ShallowWrapper =>
             shallowWithState(<Component {...props} id={id} />, state)
                 .dive()
@@ -35,7 +35,7 @@ describe('Multiline box with remove button', () => {
                     data: [],
                     renderBody: () => _.identity,
                     defaultProps: {},
-                })
+                }),
             ).not.toThrow();
         });
 
@@ -68,8 +68,8 @@ describe('Multiline box with remove button', () => {
                                 list: [testId],
                             },
                         },
-                    }
-                )
+                    },
+                ),
             ).not.toThrow();
         });
 
@@ -90,8 +90,8 @@ describe('Multiline box with remove button', () => {
                                 list: [testId],
                             },
                         },
-                    }
-                )
+                    },
+                ),
             ).not.toThrow();
         });
 
@@ -99,7 +99,7 @@ describe('Multiline box with remove button', () => {
             const shallowComponentWithStore = (
                 Component: any,
                 props: Partial<IMultilineBoxOwnProps> = {},
-                s: any
+                s: any,
             ): ShallowWrapper =>
                 shallowWithStore(<Component {...props} id={id} />, s)
                     .dive()
@@ -116,7 +116,7 @@ describe('Multiline box with remove button', () => {
                     {
                         data: [],
                     },
-                    store
+                    store,
                 );
 
                 expect(wrapper.find(Button).length).toBe(1);
@@ -140,7 +140,7 @@ describe('Multiline box with remove button', () => {
                     {
                         data: [{name: 'potatos'}],
                     },
-                    store
+                    store,
                 );
 
                 wrapper.find(Button).first().props().onClick();
@@ -153,14 +153,14 @@ describe('Multiline box with remove button', () => {
                     multilineBoxWithRemoveButton({
                         containerNode: (
                             child: ReactNode,
-                            getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode
+                            getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode,
                         ): ReactNode => (
                             <div className={'pick-me-plz'}>
                                 {child}
                                 {getRemoveButton({})}
                             </div>
                         ),
-                    })
+                    }),
                 )(MultilineBox);
 
                 it('should render the container node', () => {
@@ -181,7 +181,7 @@ describe('Multiline box with remove button', () => {
                         {
                             data: [{name: 'potatos'}],
                         },
-                        store
+                        store,
                     );
 
                     expect(wrapper.find('.pick-me-plz').length).toBe(1);
@@ -197,7 +197,7 @@ describe('Multiline box with remove button', () => {
                                 {name: 'help', displayName: 'me'},
                             ]}
                             renderBody={(data: IMultilineSingleBoxProps[]) => data.map((test) => <div>mommy</div>)}
-                        />
+                        />,
                     );
                     const dragButtons = await screen.findAllByRole('button', {name: /remove/i});
                     expect(dragButtons.length).toBe(3);
@@ -209,7 +209,7 @@ describe('Multiline box with remove button', () => {
                             id="allo"
                             data={[]}
                             renderBody={(data: IMultilineSingleBoxProps[]) => data.map((test) => <div>{'mommy'}</div>)}
-                        />
+                        />,
                     );
                     expect(screen.queryAllByRole('button', {name: /remove icon/i}).length).toBe(0);
                 });

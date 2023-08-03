@@ -6,32 +6,41 @@
 
 .text {
     --color: var(--default-text-color);
+
     color: var(--color);
 
     &.mod-emphasized {
         --color: var(--title-text-color);
     }
+
     &.mod-disabled {
         --color: var(--grey-60);
     }
+
     &.mod-success {
         --color: var(--success-60);
     }
+
     &.mod-error {
         --color: var(--critical-70);
     }
+
     &.mod-major {
         --color: var(--sienna-orange-60);
     }
+
     &.mod-warning {
         --color: var(--warning-70);
     }
+
     &.mod-info {
         --color: var(--info-60);
     }
+
     &.mod-link {
         --color: var(--digital-blue-60);
     }
+
     &.mod-white {
         --color: var(--white);
     }

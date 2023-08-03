@@ -13,7 +13,7 @@ describe('ReduxTestUtilities', () => {
             });
             const compositeState = TableHOCUtils.getCompositeState(
                 tableId,
-                ReduxTestUtilities.getStateWithType<PlasmaState>(state)
+                ReduxTestUtilities.getStateWithType<PlasmaState>(state),
             );
 
             expect(compositeState.sortAscending).toBe(true);
@@ -26,7 +26,7 @@ describe('ReduxTestUtilities', () => {
             });
             const compositeState = TableHOCUtils.getCompositeState(
                 tableId,
-                ReduxTestUtilities.getStateWithType<PlasmaState>(state)
+                ReduxTestUtilities.getStateWithType<PlasmaState>(state),
             );
 
             expect(compositeState.perPage).toBe(10);
@@ -38,7 +38,7 @@ describe('ReduxTestUtilities', () => {
             });
             const compositeState = TableHOCUtils.getCompositeState(
                 tableId,
-                ReduxTestUtilities.getStateWithType<PlasmaState>(state)
+                ReduxTestUtilities.getStateWithType<PlasmaState>(state),
             );
 
             expect(compositeState.filter).toBe('test');
@@ -50,7 +50,7 @@ describe('ReduxTestUtilities', () => {
             });
             const compositeState = TableHOCUtils.getCompositeState(
                 tableId,
-                ReduxTestUtilities.getStateWithType<PlasmaState>(state)
+                ReduxTestUtilities.getStateWithType<PlasmaState>(state),
             );
 
             expect(compositeState.pageNb).toBe(2);
@@ -62,7 +62,7 @@ describe('ReduxTestUtilities', () => {
             });
             const compositeState = TableHOCUtils.getCompositeState(
                 tableId,
-                ReduxTestUtilities.getStateWithType<PlasmaState>(state)
+                ReduxTestUtilities.getStateWithType<PlasmaState>(state),
             );
 
             expect(compositeState.predicates[0].value).toBe('val1');
@@ -75,7 +75,7 @@ describe('ReduxTestUtilities', () => {
             });
             const compositeState = TableHOCUtils.getCompositeState(
                 tableId,
-                ReduxTestUtilities.getStateWithType<PlasmaState>(state)
+                ReduxTestUtilities.getStateWithType<PlasmaState>(state),
             );
 
             expect(compositeState.dateLimits[0]).toBe(newDate);

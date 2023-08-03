@@ -46,7 +46,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {other: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.mount(id, expectedValue)
+                    NumericInputActions.mount(id, expectedValue),
                 );
 
                 expect(_.keys(newState).length).toBe(_.keys(oldState).length + 1);
@@ -98,7 +98,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {other: initialNumericInputState, [id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.setValue(id, expectedValue)
+                    NumericInputActions.setValue(id, expectedValue),
                 );
 
                 expect(newState[id].value).toBe(expectedValue);
@@ -109,7 +109,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {other: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.setValue(id, 25)
+                    NumericInputActions.setValue(id, 25),
                 );
 
                 expect(newState[id]).toBeUndefined();
@@ -120,7 +120,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {[id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.setValue(id, expectedValue)
+                    NumericInputActions.setValue(id, expectedValue),
                 );
 
                 expect(newState[id].hasError).toBe(true);
@@ -134,7 +134,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {[id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.setValue(id, expectedValue, min)
+                    NumericInputActions.setValue(id, expectedValue, min),
                 );
 
                 expect(newState[id].hasError).toBe(true);
@@ -148,7 +148,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {[id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.mount(id, expectedValue, min)
+                    NumericInputActions.mount(id, expectedValue, min),
                 );
 
                 expect(newState[id].hasError).toBe(true);
@@ -162,7 +162,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {[id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.setValue(id, expectedValue, undefined, max)
+                    NumericInputActions.setValue(id, expectedValue, undefined, max),
                 );
 
                 expect(newState[id].hasError).toBe(true);
@@ -176,7 +176,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {[id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.mount(id, expectedValue, undefined, max)
+                    NumericInputActions.mount(id, expectedValue, undefined, max),
                 );
 
                 expect(newState[id].hasError).toBe(true);
@@ -190,7 +190,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {[id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.setValue(id, expectedValue, min)
+                    NumericInputActions.setValue(id, expectedValue, min),
                 );
 
                 expect(newState[id].hasError).toBe(false);
@@ -204,7 +204,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {[id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.mount(id, expectedValue, min)
+                    NumericInputActions.mount(id, expectedValue, min),
                 );
 
                 expect(newState[id].hasError).toBe(false);
@@ -218,7 +218,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {[id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.setValue(id, expectedValue, undefined, max)
+                    NumericInputActions.setValue(id, expectedValue, undefined, max),
                 );
 
                 expect(newState[id].hasError).toBe(false);
@@ -232,7 +232,7 @@ describe('Numeric Input', () => {
                 const oldState: INumericInputsState = {[id]: initialNumericInputState};
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
-                    NumericInputActions.mount(id, expectedValue, undefined, max)
+                    NumericInputActions.mount(id, expectedValue, undefined, max),
                 );
 
                 expect(newState[id].hasError).toBe(false);

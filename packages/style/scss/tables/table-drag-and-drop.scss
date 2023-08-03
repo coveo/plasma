@@ -1,7 +1,6 @@
 table.drag-and-drop-table-view {
     [draggable] {
         user-select: none;
-
         -webkit-user-drag: element;
     }
 
@@ -35,7 +34,6 @@ table.drag-and-drop-table-view {
 
         .icon {
             pointer-events: none;
-
             fill: var(--deprecated-medium-grey);
         }
     }

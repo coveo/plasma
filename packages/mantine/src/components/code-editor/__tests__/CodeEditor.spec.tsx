@@ -70,4 +70,21 @@ describe('CodeEditor', () => {
         expect(screen.getByTestId('monaco-editor')).toHaveAttribute('focus');
         expect(screen.getByTestId('monaco-editor')).toHaveAttribute('trigger');
     });
+
+    it('calls the onCopy callback when clicking on the copy button', async () => {
+        const user = userEvent.setup();
+        const onCopySpy = vi.fn();
+        render(<CodeEditor onCopy={onCopySpy} />);
+        await user.click(screen.getByRole('button', {name: /copy/i}));
+
+        expect(onCopySpy).toHaveBeenCalledTimes(1);
+    });
+    it('calls the onSearch callback when clicking on the search button', async () => {
+        const user = userEvent.setup();
+        const onSearchSpy = vi.fn();
+        render(<CodeEditor onSearch={onSearchSpy} />);
+        await user.click(screen.getByRole('button', {name: /search/i}));
+
+        expect(onSearchSpy).toHaveBeenCalledTimes(1);
+    });
 });

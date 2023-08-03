@@ -16,7 +16,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: ILastUpdatedOwnProps): IL
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ILastUpdatedOwnProps
+    ownProps: ILastUpdatedOwnProps,
 ): ILastUpdatedDispatchProps => ({
     onRender: () => dispatch(addLastUpdated(ownProps.id)),
     onDestroy: () => dispatch(removeLastUpdated(ownProps.id)),

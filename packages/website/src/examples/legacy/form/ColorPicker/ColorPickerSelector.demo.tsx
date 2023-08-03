@@ -5,7 +5,7 @@ const Demo = () => {
     const selected = useSelector((state: PlasmaState) =>
         InputSelectors.getValue(state, {
             id: 'color-picker-id-3',
-        })
+        }),
     );
     return (
         <>

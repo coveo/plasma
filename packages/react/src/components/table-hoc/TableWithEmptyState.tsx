@@ -18,7 +18,7 @@ const UPDATE_DELAY = 50; // ms
  * @deprecated Use Mantine instead
  */
 export const tableWithEmptyState = (
-    Component: FunctionComponent<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>
+    Component: FunctionComponent<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>,
 ) => {
     const mapStateToProps = (state: PlasmaState, ownProps: ITableHOCOwnProps) => {
         const isTrulyEmpty = TableSelectors.getIsTrulyEmpty(state, ownProps);
@@ -45,7 +45,7 @@ export const tableWithEmptyState = (
         const [shouldRenderEmptyState, setShouldRenderEmptyState_immediate] = useState(false);
 
         const setShouldRenderEmptyState_debounced = useRef(
-            _.debounce((value: boolean) => setShouldRenderEmptyState_immediate(value), UPDATE_DELAY)
+            _.debounce((value: boolean) => setShouldRenderEmptyState_immediate(value), UPDATE_DELAY),
         ).current;
 
         // Cancelling the debounced function on unmount to prevent calling setState on an unmounted component
@@ -68,6 +68,6 @@ export const tableWithEmptyState = (
         ITableHOCOwnProps & TableWithEmptyStateProps
     >(
         mapStateToProps,
-        mapDispatchToProps
+        mapDispatchToProps,
     )(TableEmptyState as any);
 };

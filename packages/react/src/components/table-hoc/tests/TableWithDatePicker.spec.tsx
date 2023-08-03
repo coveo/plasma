@@ -54,7 +54,7 @@ describe('Table HOC', () => {
         it('should not filter the rows if no function is sent in the config', () => {
             const wrapper = shallowWithState(
                 <TableWithDatePicker {...defaultProps} />,
-                getStateWithDatePicker(new Date())
+                getStateWithDatePicker(new Date()),
             )
                 .dive()
                 .dive();
@@ -92,7 +92,7 @@ describe('Table HOC', () => {
 
                 shallowWithState(
                     <TableWithDatePickerAndMatch {...defaultProps} />,
-                    getStateWithDatePicker(lowerLimit, upperLimit)
+                    getStateWithDatePicker(lowerLimit, upperLimit),
                 )
                     .dive()
                     .dive();
@@ -110,7 +110,7 @@ describe('Table HOC', () => {
             it('should not filter out elements if the date picker is server side', () => {
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} />,
-                    getStateWithDatePicker(new Date())
+                    getStateWithDatePicker(new Date()),
                 )
                     .dive()
                     .dive()
@@ -126,7 +126,7 @@ describe('Table HOC', () => {
                 const lowerLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
-                    getStateWithDatePicker(lowerLimit)
+                    getStateWithDatePicker(lowerLimit),
                 )
                     .dive()
                     .dive()
@@ -144,7 +144,7 @@ describe('Table HOC', () => {
                 const upperLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
-                    getStateWithDatePicker(lowerLimit, upperLimit)
+                    getStateWithDatePicker(lowerLimit, upperLimit),
                 )
                     .dive()
                     .dive()
@@ -161,7 +161,7 @@ describe('Table HOC', () => {
                 const lowerLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
-                    getStateWithDatePicker(lowerLimit, new Date())
+                    getStateWithDatePicker(lowerLimit, new Date()),
                 )
                     .dive()
                     .dive()

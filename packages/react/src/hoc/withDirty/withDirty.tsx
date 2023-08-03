@@ -32,7 +32,7 @@ export interface IWithDirtyProps
 export const withDirty =
     <T, R = any>(config: Partial<IWithDirty> = {}) =>
     (
-        Component: ComponentType<PropsWithChildren<Partial<IWithDirtyProps> & T>>
+        Component: ComponentType<PropsWithChildren<Partial<IWithDirtyProps> & T>>,
     ): ComponentClass<Partial<IWithDirtyProps> & T, R> => {
         const mapStateToProps = (state: PlasmaState, ownProps: IWithDirty): IWithDirtyStateProps => ({
             isDirty: isBoolean(config.isDirty)

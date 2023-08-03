@@ -8,10 +8,10 @@
  */
 export const overrideComponent = <
     Component extends (...args: Parameters<Component>) => ReturnType<Component>,
-    StaticProperties = Record<keyof Component, never>
+    StaticProperties = Record<keyof Component, never>,
 >(
     component: Component,
-    properties: StaticProperties
+    properties: StaticProperties,
 ): ((...args: Parameters<Component>) => ReturnType<Component>) & Component & StaticProperties => {
     const componentClone = (...args: Parameters<Component>) => component(...args);
     return Object.assign(componentClone, component, properties);

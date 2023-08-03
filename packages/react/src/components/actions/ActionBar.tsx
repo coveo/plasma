@@ -242,5 +242,5 @@ export const ActionBarConnected = connect<
     IActionBarProps
 >(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(ActionBar as any);

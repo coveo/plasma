@@ -15,7 +15,7 @@ const MultilineBoxWithRemoveButton = _.compose(
             child: ReactNode,
             getRemoveButton: (props?: Partial<IButtonProps>) => ReactNode,
             data: Array<IMultilineSingleBoxProps<string>>,
-            index: number
+            index: number,
         ) => (
             <div key={`${data[index].id}`} className="flex">
                 <div className="flex-auto">{child}</div>
@@ -24,7 +24,7 @@ const MultilineBoxWithRemoveButton = _.compose(
                 })}
             </div>
         ),
-    })
+    }),
 )(MultilineBox);
 
 export interface MultiValuesInputProps {

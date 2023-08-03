@@ -8,7 +8,7 @@ describe('CollapsibleContainerConnected', () => {
         render(
             <CollapsibleContainerConnected id="🆔" title="the title">
                 content
-            </CollapsibleContainerConnected>
+            </CollapsibleContainerConnected>,
         );
 
         expect(screen.getByText('the title')).toBeVisible();
@@ -21,7 +21,7 @@ describe('CollapsibleContainerConnected', () => {
         render(
             <CollapsibleContainerConnected id="🆔" title="the title" informationUrl="http://perdu.com">
                 content
-            </CollapsibleContainerConnected>
+            </CollapsibleContainerConnected>,
         );
         await waitFor(() => screen.findByRole('img', {name: /question/i}));
 
@@ -32,7 +32,7 @@ describe('CollapsibleContainerConnected', () => {
         render(
             <CollapsibleContainerConnected id="🆔" title="the title" informationTooltip={{title: 'tooltip!'}}>
                 content
-            </CollapsibleContainerConnected>
+            </CollapsibleContainerConnected>,
         );
 
         await waitFor(() => screen.findByRole('img', {name: /info/i}));
@@ -46,7 +46,7 @@ describe('CollapsibleContainerConnected', () => {
         render(
             <CollapsibleContainerConnected id="🆔" title="the title" onClick={functionToBeCalled}>
                 content
-            </CollapsibleContainerConnected>
+            </CollapsibleContainerConnected>,
         );
 
         await userEvent.click(screen.getByText(/the title/i));

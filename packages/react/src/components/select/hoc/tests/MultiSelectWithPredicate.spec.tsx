@@ -35,7 +35,7 @@ describe('MultiSelectWithPredicate', () => {
         expect(
             screen.getByRole('option', {
                 name: /first/i,
-            })
+            }),
         ).toBeVisible();
 
         // select the none flat select
@@ -44,12 +44,12 @@ describe('MultiSelectWithPredicate', () => {
         expect(
             screen.queryByRole('option', {
                 name: /first/i,
-            })
+            }),
         ).not.toBeInTheDocument();
         expect(
             screen.getByRole('option', {
                 name: /no items/i,
-            })
+            }),
         ).toBeVisible();
     });
 
@@ -72,24 +72,24 @@ describe('MultiSelectWithPredicate', () => {
         expect(
             screen.queryByRole('option', {
                 name: /🐝/i,
-            })
+            }),
         ).not.toBeInTheDocument();
         expect(
             screen.getByRole('option', {
                 name: /🍻/i,
-            })
+            }),
         ).toBeVisible();
         expect(
             screen.queryByRole('option', {
                 name: /🥩/i,
-            })
+            }),
         ).not.toBeInTheDocument();
     });
 
     describe('with predicates processed server side', () => {
         const ServerSideMultiSelectWithPredicates = _.compose(
             withServerSideProcessing,
-            selectWithPredicate
+            selectWithPredicate,
         )(MultiSelectConnected);
 
         it('should not filter the items based on any predicate because it is done on the server', async () => {
@@ -105,17 +105,17 @@ describe('MultiSelectWithPredicate', () => {
             expect(
                 screen.getByRole('option', {
                     name: /first/i,
-                })
+                }),
             ).toBeVisible();
             expect(
                 screen.getByRole('option', {
                     name: /second/i,
-                })
+                }),
             ).toBeVisible();
             expect(
                 screen.getByRole('option', {
                     name: /third/i,
-                })
+                }),
             ).toBeVisible();
         });
 

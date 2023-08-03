@@ -28,7 +28,6 @@
             color: var(--deprecated-dark-grey);
             font-size: $filter-badge-font-size;
             background-color: var(--white);
-
             cursor: pointer;
 
             .edit-filter {
@@ -44,6 +43,7 @@
                 &.mod-negative {
                     color: var(--critical-70);
                 }
+
                 &.mod-positive {
                     color: var(--bright-turquoise-40);
                 }
@@ -63,7 +63,6 @@
 
         .filterbox-filters-container {
             flex-grow: 2;
-
             padding: $filterbox-filters-container-padding;
             background-color: var(--deprecated-medium-grey);
         }

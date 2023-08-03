@@ -16,7 +16,7 @@ describe('EventUtils', () => {
                             </div>
                         </li>
                     </ul>
-                </div>
+                </div>,
             );
         };
 
@@ -65,15 +65,15 @@ describe('EventUtils', () => {
                 });
 
                 wrapper.find('.div2').simulate('click');
-            }
+            },
         );
 
         it('should not throw and return false when the event target is null', () => {
             expect(
                 EventUtils.isClickingInsideElementWithClassname(
                     {target: null, currentTarget: {}} as MouseEvent,
-                    'whatever'
-                )
+                    'whatever',
+                ),
             ).toBe(false);
         });
     });

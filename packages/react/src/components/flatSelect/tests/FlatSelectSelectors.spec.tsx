@@ -16,7 +16,7 @@ describe('FlatSelectSelectors', () => {
             };
             const selectedFlatSelect = FlatSelectSelectors.getInput(
                 {flatSelect: [expectedSelectedFlatSelect]},
-                {id: expectedSelectedFlatSelect.id}
+                {id: expectedSelectedFlatSelect.id},
             );
 
             expect(selectedFlatSelect).toEqual(expectedSelectedFlatSelect);
@@ -27,7 +27,7 @@ describe('FlatSelectSelectors', () => {
         it('should return undefined state if no other value is chosen in the state', () => {
             const selectedOptionId = FlatSelectSelectors.getSelectedOptionId(
                 {flatSelect: []},
-                {id: 'nothing-is-selected-by-the-user'}
+                {id: 'nothing-is-selected-by-the-user'},
             );
 
             expect(selectedOptionId).toBeUndefined();
@@ -40,7 +40,7 @@ describe('FlatSelectSelectors', () => {
             };
             const selectedFlatSelectOptionId = FlatSelectSelectors.getSelectedOptionId(
                 {flatSelect: [expectedSelectedFlatSelect]},
-                {id: expectedSelectedFlatSelect.id}
+                {id: expectedSelectedFlatSelect.id},
             );
 
             expect(expectedSelectedFlatSelect.selectedOptionId).toEqual(selectedFlatSelectOptionId);

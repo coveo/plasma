@@ -36,7 +36,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IDatesSelectionOwnProps):
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IDatesSelectionOwnProps
+    ownProps: IDatesSelectionOwnProps,
 ): IDatesSelectionDispatchProps => ({
     onRender: () => {
         dispatch(
@@ -49,8 +49,8 @@ const mapDispatchToProps = (
                 ownProps.isClearable,
                 undefined,
                 ownProps.initialDateRange,
-                ownProps.minimalRangeLimit
-            )
+                ownProps.minimalRangeLimit,
+            ),
         );
     },
     onDestroy: () => dispatch(removeDatePicker(ownProps.id)),
@@ -79,5 +79,5 @@ const mapDispatchToProps = (
 export const DatesSelectionConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(DatesSelection);

@@ -14,7 +14,7 @@ describe('TablePagination', () => {
                         defaultPerPageSelected={1}
                         totalEntries={1}
                     />,
-                    {}
+                    {},
                 );
 
                 wrapper.unmount();
@@ -31,7 +31,7 @@ describe('TablePagination', () => {
                         defaultPerPageSelected={1}
                         totalEntries={1}
                     />,
-                    {}
+                    {},
                 );
 
                 expect(wrapper.find(PaginationPerPage).props().hidden).toBe(true);
@@ -46,7 +46,7 @@ describe('TablePagination', () => {
                         defaultPerPageSelected={1}
                         totalEntries={1}
                     />,
-                    {}
+                    {},
                 );
 
                 expect(wrapper.find(PaginationPerPage).props().hidden).toBe(true);

@@ -5,9 +5,9 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
-
     box-sizing: content-box; // Make sure $table-actions-container-height is respected with or without the mod-border-top class.
     min-height: $table-actions-container-height;
+
     // Workaround to make the action bar have a border between multiple rows
 
     background: repeating-linear-gradient(
@@ -25,7 +25,6 @@
 .coveo-table-actions {
     display: flex;
     align-items: center;
-
     box-sizing: border-box; // Cancel the box-sizing: content-box for coveo-table-actions-container children.
     height: $table-actions-container-height;
     padding: 0 $table-actions-margin;
@@ -45,7 +44,6 @@
         line-height: 0; // Fix to make sure the action respect its children height.
         border: 1px solid transparent;
         border-radius: 2px;
-
         cursor: pointer;
         user-select: none;
 
@@ -133,7 +131,6 @@
     background: none;
     border: none;
     outline: none;
-
     cursor: pointer;
 }
 

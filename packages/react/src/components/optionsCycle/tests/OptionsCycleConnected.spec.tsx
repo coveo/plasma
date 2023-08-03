@@ -19,7 +19,7 @@ describe('Options cycle', () => {
         const shallowCycleWithProps = (props: Partial<IOptionsCycleProps & IOptionsCycleConnectedOwnProps> = {}) =>
             shallowWithStore(
                 <OptionsCycleConnected {...optionsCycleBasicProps} {...props} />,
-                store
+                store,
             ).dive() as ShallowWrapper<IOptionsCycleProps>;
 
         beforeEach(() => {
@@ -106,7 +106,7 @@ describe('Options cycle', () => {
             wrapper.find('.previous-option').simulate('click');
 
             expect(store.getActions()).toContainEqual(
-                changeOptionsCycle(optionsCycleBasicProps.id, optionsCycleBasicProps.options.length - 1)
+                changeOptionsCycle(optionsCycleBasicProps.id, optionsCycleBasicProps.options.length - 1),
             );
         });
 

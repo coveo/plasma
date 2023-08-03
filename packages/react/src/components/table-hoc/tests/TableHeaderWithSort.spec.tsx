@@ -47,7 +47,7 @@ describe('Table HOC', () => {
                 <TableHeaderWithSort {...defaultProps}>
                     <div data-testid="batman" />
                 </TableHeaderWithSort>,
-                {}
+                {},
             );
 
             expect(screen.getByTestId('batman')).toBeInTheDocument();

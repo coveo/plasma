@@ -44,7 +44,7 @@ export const DropdownSearchActions = {
 
 export const applyFilterDropdownSearch = (
     id: string,
-    filterText: string
+    filterText: string,
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.filter,
     payload: {
@@ -57,7 +57,7 @@ export const updateOptionsDropdownSearch = (
     id: string,
     dropdownOptions: IDropdownOption[],
     defaultSelectedOption?: IDropdownOption,
-    selectAValue: boolean = true
+    selectAValue: boolean = true,
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.update,
     payload: {
@@ -84,7 +84,7 @@ export const openDropdownSearch = (id: string): IReduxAction<IDefaultDropdownSea
 
 export const closeDropdownSearch = (
     id: string,
-    dropdownOptions: IDropdownOption[] = []
+    dropdownOptions: IDropdownOption[] = [],
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.close,
     payload: {
@@ -98,7 +98,7 @@ export const addDropdownSearch = (
     id: string,
     dropdownOptions: IDropdownOption[],
     defaultSelectedOption?: IDropdownOption,
-    supportSingleCustomOption?: boolean
+    supportSingleCustomOption?: boolean,
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.add,
     payload: {
@@ -111,7 +111,7 @@ export const addDropdownSearch = (
 
 export const addMultiSelectDropdownSearch = (
     id: string,
-    dropdownOptions: IDropdownOption[]
+    dropdownOptions: IDropdownOption[],
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.addMultiSelect,
     payload: {
@@ -130,7 +130,7 @@ export const removeDropdownSearch = (id: string): IReduxAction<IDefaultDropdownS
 export const selectOptionDropdownSearch = (
     id: string,
     addedSelectedOption: IDropdownOption,
-    setFocusOnDropdown = false
+    setFocusOnDropdown = false,
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.select,
     payload: {
@@ -142,7 +142,7 @@ export const selectOptionDropdownSearch = (
 
 export const multiSelectOptionDropdownSearch = (
     id: string,
-    addedSelectedOption: IDropdownOption
+    addedSelectedOption: IDropdownOption,
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.multiSelect,
     payload: {
@@ -153,7 +153,7 @@ export const multiSelectOptionDropdownSearch = (
 
 export const addCustomSelectedOption = (
     id: string,
-    selectedOptionValue: string
+    selectedOptionValue: string,
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.addCustomSelectedOption,
     payload: {
@@ -164,7 +164,7 @@ export const addCustomSelectedOption = (
 
 export const deselectOptionDropdownSearch = (
     id: string,
-    selectedOptionValue: string
+    selectedOptionValue: string,
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.deselectOption,
     payload: {
@@ -174,7 +174,7 @@ export const deselectOptionDropdownSearch = (
 });
 
 export const deselectAllOptionsMultiselectDropdownSearch = (
-    id: string
+    id: string,
 ): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.deselectAllOptions,
     payload: {
@@ -185,7 +185,7 @@ export const deselectAllOptionsMultiselectDropdownSearch = (
 export const updateActiveOptionDropdownSearch = (
     id: string,
     keyCode: number,
-    activeOption?: IDropdownOption
+    activeOption?: IDropdownOption,
 ): IReduxAction<IInputDrodownSearchPayload> => ({
     type: DropdownSearchActions.active,
     payload: {
@@ -197,7 +197,7 @@ export const updateActiveOptionDropdownSearch = (
 
 export const keyDownMultiselectDropdownSearch = (
     id: string,
-    keyCode: number
+    keyCode: number,
 ): IReduxAction<IInputDrodownSearchPayload> => ({
     type: DropdownSearchActions.onKeyDownMultiselect,
     payload: {

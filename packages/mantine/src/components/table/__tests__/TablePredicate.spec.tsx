@@ -27,7 +27,7 @@ describe('Table.Predicate', () => {
                         ]}
                     />
                 </Table.Header>
-            </Table>
+            </Table>,
         );
 
         await waitFor(() => {
@@ -50,7 +50,7 @@ describe('Table.Predicate', () => {
                         ]}
                     />
                 </Table.Header>
-            </Table>
+            </Table>,
         );
 
         await user.click(screen.getByRole('searchbox', {name: 'rank'}));

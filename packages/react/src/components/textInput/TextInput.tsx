@@ -141,7 +141,7 @@ export const TextInput: FunctionComponent<
                     empty: !state.value,
                     [state.status]: state.visibleStatus,
                 },
-                className
+                className,
             )}
         >
             {inputProps.title && <h6>{inputProps.title}</h6>}

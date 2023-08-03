@@ -17,7 +17,7 @@ describe('Table.Actions', () => {
                 <Table.Header>
                     <Table.Actions>{(datum: RowData) => <Button>Eat {datum.name}</Button>}</Table.Actions>
                 </Table.Header>
-            </Table>
+            </Table>,
         );
 
         // no row is selected, no actions should be visible
@@ -42,7 +42,7 @@ describe('Table.Actions', () => {
                 <Table.Header>
                     <Table.Actions>{(datum: RowData) => <Button>Eat {datum.name}</Button>}</Table.Actions>
                 </Table.Header>
-            </Table>
+            </Table>,
         );
         await user.click(screen.getByRole('cell', {name: 'fruit'}));
         expect(screen.getByRole('row', {name: 'fruit', selected: false})).toBeInTheDocument();
@@ -65,7 +65,7 @@ describe('Table.Actions', () => {
                     <Table.Header>
                         <Table.Actions>{renderSpy}</Table.Actions>
                     </Table.Header>
-                </Table>
+                </Table>,
             );
             await user.click(within(screen.getByRole('row', {name: /fruit/})).getByRole('checkbox'));
             await user.click(within(screen.getByRole('row', {name: /vegetable/})).getByRole('checkbox'));

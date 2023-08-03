@@ -15,7 +15,7 @@ export const autocompleteCompositeInitialState: IAutocompleteState[] = [];
 
 export const autocompleteReducer = (
     state: IAutocompleteState = autocompleteInitialState,
-    action: IReduxAction<IAutocompletePayload>
+    action: IReduxAction<IAutocompletePayload>,
 ): IAutocompleteState => {
     if (state.id !== action.payload.id && action.type !== AutocompleteActions.add) {
         return state;
@@ -50,7 +50,7 @@ export const autocompleteReducer = (
 
 export const autocompletesReducer = (
     state: IAutocompleteState[] = autocompleteCompositeInitialState,
-    action: IReduxAction<IAutocompletePayload>
+    action: IReduxAction<IAutocompletePayload>,
 ): IAutocompleteState[] => {
     switch (action.type) {
         case AutocompleteActions.add:

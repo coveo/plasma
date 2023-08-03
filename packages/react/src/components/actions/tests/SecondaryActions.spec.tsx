@@ -36,7 +36,7 @@ describe('Actions', () => {
         expect(
             shallow(<SecondaryActions actions={actions} />)
                 .children()
-                .type()
+                .type(),
         ).toBe(ActionsDropdown);
     });
 
@@ -44,7 +44,7 @@ describe('Actions', () => {
         expect(
             shallow(<SecondaryActions actions={[linkAction]} />)
                 .children()
-                .type()
+                .type(),
         ).toBe(PrimaryActionConnected);
     });
 
@@ -52,7 +52,7 @@ describe('Actions', () => {
         const wrapper = shallow(
             <SecondaryActions
                 actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
-            />
+            />,
         );
 
         expect(wrapper.find(ActionsDropdown).props().disabled).toBe(false);
@@ -63,7 +63,7 @@ describe('Actions', () => {
             <SecondaryActions
                 actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
                 disabled
-            />
+            />,
         );
 
         expect(wrapper.find(ActionsDropdown).props().disabled).toBe(true);
@@ -73,7 +73,7 @@ describe('Actions', () => {
         const wrapper = shallow(
             <SecondaryActions
                 actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
-            />
+            />,
         );
 
         expect(wrapper.find('span.dropdown').props()).toMatchObject({
@@ -88,7 +88,7 @@ describe('Actions', () => {
             <SecondaryActions
                 actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
                 disabled
-            />
+            />,
         );
 
         expect(wrapper.find('span.dropdown').props()).toMatchObject({
@@ -137,7 +137,7 @@ describe('Actions', () => {
                     triggerAction,
                     ACTION_SEPARATOR,
                     ACTION_SEPARATOR,
-                ])
+                ]),
             ).toEqual([linkAction, ACTION_SEPARATOR, triggerAction]);
         });
 
@@ -150,8 +150,8 @@ describe('Actions', () => {
                             ACTION_SEPARATOR,
                             {...triggerAction, enabled: false},
                         ]}
-                    />
-                ).isEmptyRender()
+                    />,
+                ).isEmptyRender(),
             ).toBe(true);
         });
 
@@ -161,7 +161,7 @@ describe('Actions', () => {
                     {...linkAction, enabled: false, hideDisabled: false},
                     ACTION_SEPARATOR,
                     {...triggerAction, enabled: false, hideDisabled: false},
-                ])
+                ]),
             ).toEqual([
                 {...linkAction, enabled: false, hideDisabled: false},
                 ACTION_SEPARATOR,
@@ -177,13 +177,13 @@ describe('Actions', () => {
                     ACTION_SEPARATOR,
                     {...triggerAction, enabled: false},
                     triggerAction,
-                ])
+                ]),
             ).toEqual([linkAction, ACTION_SEPARATOR, triggerAction]);
         });
 
         it('should render a primary action if thre is only one action remaining after removing disabled actions and separators', () => {
             const rendered = shallow(
-                <SecondaryActions actions={[linkAction, ACTION_SEPARATOR, {...triggerAction, enabled: false}]} />
+                <SecondaryActions actions={[linkAction, ACTION_SEPARATOR, {...triggerAction, enabled: false}]} />,
             ).children();
 
             expect(rendered.type()).toBe(PrimaryActionConnected);

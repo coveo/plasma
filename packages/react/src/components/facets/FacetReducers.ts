@@ -85,7 +85,7 @@ const emptyFacet = (state: IFacetState, action: IReduxAction<IReduxActionsPayloa
 
 export const facetReducer = (
     state: IFacetState = facetInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IFacetState => {
     switch (action.type) {
         case FacetActions.toggleMoreFacetRows:
@@ -107,7 +107,7 @@ export const facetReducer = (
 
 export const facetsReducer = (
     state: IFacetState[] = facetsInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IFacetState[] => {
     switch (action.type) {
         case FacetActions.changeFacet:

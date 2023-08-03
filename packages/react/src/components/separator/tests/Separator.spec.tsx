@@ -11,7 +11,7 @@ describe('Separator', () => {
         expect(
             shallow(<Separator />)
                 .find('span')
-                .prop('className')
+                .prop('className'),
         ).toBe(Separator.defaultClassName);
     });
 

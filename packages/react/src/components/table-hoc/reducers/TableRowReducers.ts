@@ -31,7 +31,7 @@ const addTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITab
 const removeTableRowReducer = (state: HOCTableRowState[], {payload}: IReduxAction<ITableRowAddPayload>) =>
     _.reject(
         state,
-        ({tableId, id}: HOCTableRowState) => (!payload.tableId || payload.tableId === tableId) && id === payload.id
+        ({tableId, id}: HOCTableRowState) => (!payload.tableId || payload.tableId === tableId) && id === payload.id,
     );
 
 const selectTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
@@ -52,7 +52,7 @@ const selectTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<I
 
 const toggleCollasibleTableRowReducer = (
     state: HOCTableRowState[],
-    action: IReduxAction<ITableRowToggleCollapsiblePayload>
+    action: IReduxAction<ITableRowToggleCollapsiblePayload>,
 ) => {
     const current = _.findWhere(state, {id: action.payload.id});
     if (current) {
@@ -71,7 +71,7 @@ const toggleCollasibleTableRowReducer = (
 
 const closeAllRowsReducer = (
     state: HOCTableRowState[],
-    _action: IReduxAction<unknown>
+    _action: IReduxAction<unknown>,
 ): ITableRowToggleCollapsiblePayload[] =>
     state.map((row: HOCTableRowState) => ({
         ...row,
@@ -82,7 +82,7 @@ const deselectTableRowReducer = (state: HOCTableRowState[], action: IReduxAction
     _.map(state, (row: HOCTableRowState) =>
         row.tableId === action.payload.id || TableHOCUtils.getPaginationId(row.tableId) === action.payload.id
             ? {...row, selected: false}
-            : row
+            : row,
     );
 
 const TableRowActionReducers: {[key: string]: (...args: any[]) => any} = {

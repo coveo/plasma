@@ -12,7 +12,7 @@ describe('StickyFooter', () => {
         render(
             <StickyFooter>
                 <div>im the children</div>
-            </StickyFooter>
+            </StickyFooter>,
         );
 
         expect(screen.getByText('im the children')).toBeInTheDocument();

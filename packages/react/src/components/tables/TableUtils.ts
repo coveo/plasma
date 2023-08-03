@@ -28,7 +28,7 @@ export const getTableLoadingIds = (tableId: string): string[] => [
 
 export const convertInitialCollectionToDataById = (
     collection: Array<{[key: string]: any}>,
-    attributeNameForId: string
+    attributeNameForId: string,
 ): ITableRowData =>
     collection.reduce(
         (finalData: ITableRowData, model: {[key: string]: any}) => ({
@@ -39,12 +39,12 @@ export const convertInitialCollectionToDataById = (
                 ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION: model.id,
             },
         }),
-        DEFAULT_TABLE_DATA.byId
+        DEFAULT_TABLE_DATA.byId,
     );
 
 export const convertDataByIdToCollection = (
     dataById: ITableRowData,
-    keepIdAttribute = true
+    keepIdAttribute = true,
 ): Array<{[key: string]: any}> =>
     _.values(dataById).map((data: IData) => {
         const model: {[key: string]: any} = {

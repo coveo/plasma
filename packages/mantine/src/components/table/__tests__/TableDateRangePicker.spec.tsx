@@ -59,7 +59,7 @@ describe('Table.DateRangePicker', () => {
                         presets={{preset: {label: 'Preset', range: [new Date(2022, 0, 8), new Date(2022, 0, 14)]}}}
                     />
                 </Table.Header>
-            </Table>
+            </Table>,
         );
         const tableHeader = screen.getByTestId('table-header');
 
@@ -77,7 +77,7 @@ describe('Table.DateRangePicker', () => {
             expect(onChange).toHaveBeenCalledTimes(1);
         });
         expect(onChange).toHaveBeenCalledWith(
-            expect.objectContaining({dateRange: [new Date(2022, 0, 8), new Date(2022, 0, 14)]})
+            expect.objectContaining({dateRange: [new Date(2022, 0, 8), new Date(2022, 0, 14)]}),
         );
         expect(within(tableHeader).getByText('Jan 08, 2022 - Jan 14, 2022')).toBeInTheDocument();
 

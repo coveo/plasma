@@ -27,7 +27,7 @@ export const tableHeaderCellsInitialState: ITableHeaderCellsState = {};
 
 export const tableHeaderCellReducer = (
     state: ITableHeaderCellState = tableHeaderCellInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): ITableHeaderCellState => {
     switch (action.type) {
         case TableHeaderCellActions.add:
@@ -53,7 +53,7 @@ export const tableHeaderCellReducer = (
 
 export const tableHeaderCellsReducer = (
     state: ITableHeaderCellsState = tableHeaderCellsInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): ITableHeaderCellsState => {
     switch (action.type) {
         case TableHeaderCellActions.add:
@@ -65,7 +65,7 @@ export const tableHeaderCellsReducer = (
             return _.omit(state, action.payload.id);
         case TableHeaderCellActions.sort:
             return _.mapObject(state, (headerCell: ITableHeaderCellState) =>
-                tableHeaderCellReducer(headerCell, action)
+                tableHeaderCellReducer(headerCell, action),
             );
         default:
             return state;

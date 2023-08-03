@@ -15,7 +15,7 @@ export const filtersInitialState: IFilterState[] = [];
 
 export const filterBoxReducer = (
     state: IFilterState = filterBoxInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IFilterState => {
     if (state.id !== action.payload.id && action.type !== FilterActions.addFilter) {
         return state;
@@ -52,7 +52,7 @@ export const filterBoxReducer = (
 
 export const filterBoxesReducer = (
     state: IFilterState[] = filtersInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IFilterState[] => {
     switch (action.type) {
         case ListBoxActions.select:

@@ -33,7 +33,7 @@ describe('<TabsHeader/>', () => {
                 <Provider store={store}>
                     <TabsHeader />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
         });
 
@@ -62,7 +62,7 @@ describe('<TabsHeader/>', () => {
                 <Provider store={store}>
                     <TabsHeader {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
         };
 

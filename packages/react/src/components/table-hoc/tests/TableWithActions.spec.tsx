@@ -27,7 +27,7 @@ describe('Table HOC', () => {
                             ))
                         }
                     />
-                </>
+                </>,
             );
 
             await userEvent.click(screen.getByText('🍎'));
@@ -53,7 +53,7 @@ describe('Table HOC', () => {
                     }
                 >
                     <button>inside</button>
-                </TableWithActions>
+                </TableWithActions>,
             );
 
             await userEvent.click(screen.getByText('🍎'));
@@ -83,7 +83,7 @@ describe('Table HOC', () => {
                     }
                 >
                     <button>inside</button>
-                </TableWithActions>
+                </TableWithActions>,
             );
 
             expect(screen.queryByRole('button', {name: /first one/i})).not.toBeInTheDocument();
@@ -130,7 +130,7 @@ describe('Table HOC', () => {
                     }
                 >
                     <button>inside</button>
-                </TableWithActions>
+                </TableWithActions>,
             );
 
             expect(screen.queryByRole('button', {name: /third one/i})).not.toBeInTheDocument();

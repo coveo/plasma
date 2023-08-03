@@ -13,7 +13,7 @@ const TABLE_ID: string = 'withServerTableId';
 const ServerTableComposed = compose<any>(withServerSideProcessing, tableWithUrlState)(TableHOC);
 
 const Demo = () => {
-    const [users, totalEntries, fetchUsers] = useAPIMock();
+    const [users, _totalEntries, fetchUsers] = useAPIMock();
 
     const updateUrl = (query: string) => {
         window.location.href = `${window.location.pathname}?search=${query}`;

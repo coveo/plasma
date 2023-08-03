@@ -52,7 +52,7 @@ const enhance = connect(
         onRender: (): void => void dispatch(TabActions.addTab(ownProps.id, ownProps.groupId)),
         onDestroy: (): void => void dispatch(TabActions.removeTab(ownProps.id, ownProps.groupId)),
         selectTab: (): void => void dispatch(TabActions.selectTab(ownProps.id, ownProps.groupId)),
-    })
+    }),
 );
 
 export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof enhance>> {}

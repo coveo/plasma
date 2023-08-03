@@ -6,7 +6,7 @@ export const useForm: typeof useMantineForm = (options) => {
 
     const getInputProps: GetInputProps<Record<string, unknown>> = (
         path,
-        {type = 'input', withError = type === 'input', withFocus = true} = {}
+        {type = 'input', withError = type === 'input', withFocus = true} = {},
     ) => {
         const originalPayload = form.getInputProps(path, {type, withError, withFocus});
         if (Array.isArray(originalPayload.value)) {

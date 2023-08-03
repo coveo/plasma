@@ -52,7 +52,7 @@ describe('Table HOC', () => {
                 const filterText = 'b';
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} />,
-                    getStateWithFilter(filterText)
+                    getStateWithFilter(filterText),
                 )
                     .dive()
                     .dive()
@@ -68,7 +68,7 @@ describe('Table HOC', () => {
                 const filterText = 'b';
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} onUpdate={updateSpy} />,
-                    getStateWithFilter(filterText)
+                    getStateWithFilter(filterText),
                 )
                     .dive()
                     .dive()
@@ -85,7 +85,7 @@ describe('Table HOC', () => {
                 const filterText = 'b';
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} onUpdate={updateSpy} />,
-                    getStateWithFilter(filterText)
+                    getStateWithFilter(filterText),
                 )
                     .dive()
                     .dive()
@@ -101,11 +101,11 @@ describe('Table HOC', () => {
                 jest.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValueOnce(true);
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} data={null} />,
-                    getStateWithFilter('filterText')
+                    getStateWithFilter('filterText'),
                 );
 
                 const wrapperRenderBody: ShallowWrapper<IBlankSlateProps> = shallow(
-                    (wrapper as any).dive().dive().dive().props().renderBody()
+                    (wrapper as any).dive().dive().dive().props().renderBody(),
                 );
 
                 expect((wrapperRenderBody.instance().props as IBlankSlateProps).title).toBeDefined();

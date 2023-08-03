@@ -203,7 +203,7 @@ describe('Facets', () => {
             expect(facetsState.length).toBe(oldState.length);
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(0);
             expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(
-                selectedRows.length
+                selectedRows.length,
             );
         });
 
@@ -320,12 +320,12 @@ describe('Facets', () => {
 
             expect(facetsState.length).toBe(oldState.length);
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(
-                selectedRows.length + 1
+                selectedRows.length + 1,
             );
 
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected[0].name).toBe(newRow.name);
             expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(
-                selectedRows.length
+                selectedRows.length,
             );
 
             action = {
@@ -338,11 +338,11 @@ describe('Facets', () => {
             facetsState = facetsReducer(facetsState, action);
 
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(
-                selectedRows.length
+                selectedRows.length,
             );
 
             expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(
-                selectedRows.length
+                selectedRows.length,
             );
         });
     });

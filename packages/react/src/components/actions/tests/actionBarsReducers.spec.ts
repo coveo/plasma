@@ -140,11 +140,11 @@ describe('Actions', () => {
 
                 expect(actionBarsState.length).toBe(oldState.length);
                 expect(
-                    actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0].actions
+                    actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0].actions,
                 ).toBeDefined();
 
                 expect(
-                    actionBarsState.filter((actionBar) => actionBar.id !== action.payload.id)[0].actions
+                    actionBarsState.filter((actionBar) => actionBar.id !== action.payload.id)[0].actions,
                 ).toBeUndefined();
             });
 
@@ -153,7 +153,7 @@ describe('Actions', () => {
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).isLoading).toBe(true);
                 expect(actionBarsState.filter((actionBar) => actionBar.id !== oldState[2].id)).toEqual(
-                    oldState.filter((actionBar) => actionBar.id !== oldState[2].id)
+                    oldState.filter((actionBar) => actionBar.id !== oldState[2].id),
                 );
             });
 
@@ -162,14 +162,14 @@ describe('Actions', () => {
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).isLoading).toBe(false);
                 expect(actionBarsState.filter((actionBar) => actionBar.id !== oldState[2].id)).toEqual(
-                    oldState.filter((actionBar) => actionBar.id !== oldState[2].id)
+                    oldState.filter((actionBar) => actionBar.id !== oldState[2].id),
                 );
             });
 
             it('should remove the actions when remove row action is dispatched and selected', () => {
                 const actionBarsState = actionBarsReducer(
                     oldState,
-                    TableHOCRowActions.remove('fieldId', oldState[2].id, true)
+                    TableHOCRowActions.remove('fieldId', oldState[2].id, true),
                 );
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual([]);
@@ -178,7 +178,7 @@ describe('Actions', () => {
             it('should not remove the actions when remove row action is dispatched and not selected', () => {
                 const actionBarsState = actionBarsReducer(
                     oldState,
-                    TableHOCRowActions.remove('fieldId', oldState[2].id, false)
+                    TableHOCRowActions.remove('fieldId', oldState[2].id, false),
                 );
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual(oldState[2].actions);
@@ -195,7 +195,7 @@ describe('Actions', () => {
                 const newPage = 5;
                 const actionBarsState = actionBarsReducer(
                     oldState,
-                    changePage(TableHOCUtils.getPaginationId(oldState[2].id), newPage)
+                    changePage(TableHOCUtils.getPaginationId(oldState[2].id), newPage),
                 );
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual([]);
@@ -204,7 +204,7 @@ describe('Actions', () => {
             it('should remove the actions when a change select action is dispatched and contain its id', () => {
                 const actionBarsState = actionBarsReducer(
                     oldState,
-                    selectListBoxOption(oldState[2].id, false, 'new-value')
+                    selectListBoxOption(oldState[2].id, false, 'new-value'),
                 );
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual([]);
