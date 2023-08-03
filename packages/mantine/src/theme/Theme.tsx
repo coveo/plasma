@@ -141,6 +141,7 @@ export const plasmaTheme: MantineThemeOverride = {
                     fontSize: theme.fontSizes.sm,
                     color: theme.colors.gray[7],
                     marginBottom: theme.spacing.xs,
+                    lineHeight: theme.lineHeight,
                 },
                 invalid: {
                     color: theme.colors.red[9],
@@ -148,6 +149,7 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
                 error: {
                     color: theme.colors.red[9],
+                    lineHeight: theme.lineHeight,
                 },
             }),
         },
