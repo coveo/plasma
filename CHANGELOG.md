@@ -1,3 +1,13 @@
+## 52.13.1 (2023-08-03)
+
+
+### Bug Fixes
+
+* **mantine:** make sure input components have uniform line-height (#3498) 30b341d, closes #3498
+* **table:** break long words (#3497) 70065d9, closes #3497
+
+
+
 # 52.13.0 (2023-08-02)
 
 
