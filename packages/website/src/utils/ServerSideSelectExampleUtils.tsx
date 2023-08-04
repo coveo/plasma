@@ -11,7 +11,7 @@ export interface PhotoProps {
 
 const IMG_SIZE = 50;
 
-const clean = <T extends Record<string, unknown>>(object: T) => _.pick(object, _.identity);
+const clean = <T extends Record<string, unknown>>(object: T) => _.pick(object, _.identity as any);
 
 export const usePhotosAPIMock = (): [any[], number, (params?: any, overwrite?: boolean) => void] => {
     const [photos, setPhotos] = useState([]);

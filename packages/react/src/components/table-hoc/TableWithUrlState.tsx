@@ -1,4 +1,4 @@
-import {ComponentType, PropsWithChildren, PureComponent} from 'react';
+import {ComponentType, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 
@@ -35,7 +35,7 @@ export const Params = {
     filter: 'q',
 };
 
-function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType<PropsWithChildren<P>>) {
+function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType<any>) {
     type Props = P &
         TableWithUrlStateProps &
         ReturnType<typeof mapStateToProps> &
@@ -54,7 +54,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType
 
         render() {
             const wrappedProps = omit(this.props, 'onUpdate', 'onUpdateUrl', 'query', 'initializeFromUrl');
-            return <Component {...(wrappedProps as P)} onUpdate={this.onUpdate} />;
+            return <Component {...wrappedProps} onUpdate={this.onUpdate} />;
         }
 
         componentDidMount() {
