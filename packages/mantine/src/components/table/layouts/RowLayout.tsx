@@ -66,6 +66,7 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {multiRowSelec
             '&:hover': {
                 backgroundColor: rowBackgroundColor,
             },
+            overflowWrap: 'anywhere',
         },
 
         cell: {
@@ -158,7 +159,6 @@ const RowLayoutBody = <T,>({
                                     width: columnSizing.size ?? 'auto',
                                     minWidth: columnSizing.minSize,
                                     maxWidth: columnSizing.maxSize,
-                                    overflowWrap: 'break-word',
                                 }}
                                 className={cx(classes.cell, {
                                     [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
