@@ -1,5 +1,4 @@
 import {program} from 'commander';
-import fetch from 'cross-fetch';
 import {Client, Frame} from 'figma-js';
 import {writeJsonSync} from 'fs-extra';
 import {chunk} from 'lodash';

@@ -811,9 +811,6 @@ importers:
       commander:
         specifier: 11.0.0
         version: 11.0.0
-      cross-fetch:
-        specifier: 4.0.0
-        version: 4.0.0
       dotenv-safe:
         specifier: 8.2.0
         version: 8.2.0

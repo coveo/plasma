@@ -1,47 +1,62 @@
 import {camelCase} from 'lodash';
-import {optimize, OptimizedSvg} from 'svgo';
+import {optimize} from 'svgo';
 
 import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from './token';
 
 type SvgFormatOutput = {fileName: string; svgMarkup: string};
 
 const cleanSvgMarkup = (name: string, svgMarkup: string): string => {
-    const result = optimize(svgMarkup, {
-        multipass: true,
-        plugins: [
-            {name: 'removeViewBox', active: false},
-            {name: 'removeDimensions', active: true},
-            {
-                name: 'addAttributesToSVGElement',
-                active: true,
-                params: {attributes: [{width: '1em'}, {height: '1em'}]},
-            },
-            {
-                type: 'visitor',
-                name: 'replace-values',
-                fn: () => ({
-                    element: {
-                        enter: (node: any) => {
-                            if (node.attributes.fill && node.attributes.fill !== 'none') {
-                                node.attributes.fill = 'currentColor';
-                            }
-                            if (node.attributes.stroke && node.attributes.stroke !== 'none') {
-                                node.attributes.stroke = 'currentColor';
-                            }
+    try {
+        const result = optimize(svgMarkup, {
+            multipass: true,
+            plugins: [
+                {
+                    name: 'preset-default',
+                    params: {
+                        overrides: {
+                            removeViewBox: false,
                         },
                     },
-                }),
-            } as any,
-        ],
-    });
-
-    if (result.error) {
+                },
+                'removeDimensions',
+                {
+                    name: 'prefixIds',
+                    params: {
+                        prefix: formatSvgName(name),
+                    },
+                },
+                {
+                    name: 'addAttributesToSVGElement',
+                    params: {attributes: [{width: '1em'}, {height: '1em'}]},
+                },
+                {
+                    type: 'visitor',
+                    name: 'replace-values',
+                    fn: () => ({
+                        element: {
+                            enter: (node: any) => {
+                                if (node.attributes.fill && node.attributes.fill !== 'none' && node.name !== 'mask') {
+                                    node.attributes.fill = 'currentColor';
+                                }
+                                if (
+                                    node.attributes.stroke &&
+                                    node.attributes.stroke !== 'none' &&
+                                    node.name !== 'mask'
+                                ) {
+                                    node.attributes.stroke = 'currentColor';
+                                }
+                            },
+                        },
+                    }),
+                } as any,
+            ],
+        });
+        return result.data;
+    } catch (error) {
         console.error(`Could not parse SVG markup for icon ${name}.`);
-        console.error(result.error);
+        console.error(error);
         return '';
     }
-
-    return (result as OptimizedSvg).data;
 };
 
 const formatSvgName = (name: string, prefix?: string): string =>
