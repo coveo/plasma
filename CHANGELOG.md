@@ -1,3 +1,13 @@
+## 52.13.2 (2023-08-04)
+
+
+### Bug Fixes
+
+* **dependencies update:** type ajustments 0262976
+* **table:** word wrap (#3501) 7601238, closes #3501
+
+
+
 ## 52.13.1 (2023-08-03)
 
 
