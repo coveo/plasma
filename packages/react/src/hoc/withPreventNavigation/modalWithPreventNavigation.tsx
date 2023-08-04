@@ -1,4 +1,4 @@
-import {ReactNode, ComponentClass, PureComponent} from 'react';
+import {ComponentClass, PureComponent, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {closeModal, IModalActionPayload} from '../../components/modal/ModalActions';
@@ -51,9 +51,7 @@ export const modalWithPreventNavigation =
             IWithPreventNavigationDispatchProps,
             IWithPreventNavigationState
         > {
-            private ComponentWithDirty: ComponentClass<
-                IWithDirtyProps & T & Partial<IWithPreventNavigationInjectedProps>
-            >;
+            private ComponentWithDirty: ComponentClass<any>;
 
             constructor(props: IWithPreventNavigationDispatchProps) {
                 super(props);

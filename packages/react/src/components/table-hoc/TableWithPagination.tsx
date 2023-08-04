@@ -54,7 +54,7 @@ const sliceData = (data: any[], startingIndex: number, endingIndex: number) => d
  */
 export const tableWithPagination =
     (supplier: ConfigSupplier<ITableWithPaginationConfig> = {}) =>
-    (WrappedComponent: ComponentType<PropsWithChildren<ITableWithPaginationProps>>) => {
+    (WrappedComponent: ComponentType<any>) => {
         const config = HocUtils.supplyConfig(supplier);
         const mapStateToProps = (
             state: PlasmaState,

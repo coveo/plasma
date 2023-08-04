@@ -5,14 +5,20 @@ import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {IDispatch, IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {CollapsibleToggle} from '../collapsible';
 import {Sortable} from '../dragAndDrop';
 import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
+import {
+    clearListBoxOption,
+    IListBoxPayload,
+    reorderListBoxOption,
+    unselectListBoxOption,
+} from '../listBox/ListBoxActions';
 import {Tooltip} from '../tooltip/Tooltip';
+import {ISelectPayload} from './SelectActions';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
@@ -51,32 +57,20 @@ export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button' | '
      * Whether the multiselect is in read only mode. When in read only mode, only the selected option are displayed, greyed out.
      */
     readOnly?: boolean;
+    addSelect?: () => IReduxAction<ISelectPayload>;
+    removeSelect?: () => IReduxAction<ISelectPayload>;
+    toggleDropdown?: () => IReduxAction<ISelectPayload>;
+    selectValue?: (value: string, isMulti: boolean, index?: number) => void;
+    setActive?: (diff: number) => IReduxAction<IListBoxPayload>;
+    selectedValues?: string[];
+    isOpened?: boolean;
+    active?: number;
 }
 
 export interface IMultiSelectProps
     extends IMultiSelectOwnProps,
         ReturnType<ReturnType<typeof makeMapStateToProps>>,
         ReturnType<typeof mapDispatchToProps> {}
-
-const selectPropsKeys = [
-    'button',
-    'classes',
-    'disabled',
-    'dropClasses',
-    'dropOption',
-    'footer',
-    'hasFocusableChild',
-    'id',
-    'isLoading',
-    'items',
-    'noActive',
-    'noResultItem',
-    'onUpdate',
-    'placeholder',
-    'selectClasses',
-    'toggleClasses',
-    'wrapItems',
-];
 
 const makeMapStateToProps = () =>
     createStructuredSelector({
@@ -108,7 +102,34 @@ class MultiSelect extends PureComponent<IMultiSelectProps & {connectDropTarget: 
             <SelectConnected
                 id={this.props.id}
                 key={this.props.id}
-                {..._.pick(this.props, selectPropsKeys)}
+                {..._.pick(
+                    this.props,
+                    'button',
+                    'classes',
+                    'disabled',
+                    'dropClasses',
+                    'dropOption',
+                    'footer',
+                    'hasFocusableChild',
+                    'id',
+                    'isLoading',
+                    'items',
+                    'noActive',
+                    'noResultItem',
+                    'onUpdate',
+                    'placeholder',
+                    'selectClasses',
+                    'toggleClasses',
+                    'wrapItems',
+                    'addSelect',
+                    'removeSelect',
+                    'toggleDropdown',
+                    'setActive',
+                    'selectValue',
+                    'selectedValues',
+                    'isOpened',
+                    'active',
+                )}
                 button={this.Toggle}
                 multi
             >

@@ -1,5 +1,5 @@
 import classNames from 'clsx';
-import {Component, ComponentClass, ReactNode} from 'react';
+import {Component, ComponentClass, ComponentType, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -45,7 +45,7 @@ const defaultMatchDates = () => true;
  */
 export const tableWithDatePicker =
     (supplier: ConfigSupplier<ITableWithDatePickerConfig> = {}) =>
-    (WrappedComponent: FilterableTableComponent): FilterableTableComponent => {
+    (WrappedComponent: ComponentType<any>): FilterableTableComponent => {
         const config = HocUtils.supplyConfig(supplier);
 
         const mapStateToProps = (

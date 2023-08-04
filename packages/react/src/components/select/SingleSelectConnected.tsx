@@ -7,12 +7,13 @@ import * as _ from 'underscore';
 import {PlasmaState} from '../../PlasmaState';
 import {TooltipPlacement} from '../../utils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
-import {IDispatch} from '../../utils/ReduxUtils';
+import {IDispatch, IReduxAction} from '../../utils/ReduxUtils';
 import {CollapsibleToggle} from '../collapsible';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {clearListBoxOption} from '../listBox/ListBoxActions';
+import {IListBoxPayload, clearListBoxOption} from '../listBox/ListBoxActions';
 import {Tooltip} from '../tooltip/Tooltip';
+import {ISelectPayload} from './SelectActions';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
@@ -43,27 +44,15 @@ export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button' | 
      * A component to render instead of the default button. The button is what is displayed when the dropdown is not opened and used to open it.
      */
     customButton?: ComponentType<ISelectButtonProps>;
+    addSelect?: () => IReduxAction<ISelectPayload>;
+    removeSelect?: () => IReduxAction<ISelectPayload>;
+    toggleDropdown?: () => IReduxAction<ISelectPayload>;
+    selectValue?: (value: string, isMulti: boolean, index?: number) => void;
+    setActive?: (diff: number) => IReduxAction<IListBoxPayload>;
+    selectedValues?: string[];
+    isOpened?: boolean;
+    active?: number;
 }
-
-const selectPropsKeys = [
-    'button',
-    'classes',
-    'disabled',
-    'dropClasses',
-    'dropOption',
-    'footer',
-    'hasFocusableChild',
-    'id',
-    'isLoading',
-    'items',
-    'noActive',
-    'noResultItem',
-    'onUpdate',
-    'placeholder',
-    'selectClasses',
-    'toggleClasses',
-    'wrapItems',
-];
 
 export type ISingleSelectProps = ISingleSelectOwnProps;
 
@@ -137,7 +126,34 @@ export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
 
     return (
         <SelectConnected
-            {..._.pick(props, selectPropsKeys)}
+            {..._.pick(
+                props,
+                'button',
+                'classes',
+                'disabled',
+                'dropClasses',
+                'dropOption',
+                'footer',
+                'hasFocusableChild',
+                'id',
+                'isLoading',
+                'items',
+                'noActive',
+                'noResultItem',
+                'onUpdate',
+                'placeholder',
+                'selectClasses',
+                'toggleClasses',
+                'wrapItems',
+                'addSelect',
+                'removeSelect',
+                'toggleDropdown',
+                'setActive',
+                'selectValue',
+                'selectedValues',
+                'isOpened',
+                'active',
+            )}
             placeholder={placeholder}
             button={props.customButton ?? Toggle}
             isLoading={props.isLoading}

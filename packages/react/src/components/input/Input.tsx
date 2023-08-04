@@ -1,25 +1,24 @@
 import classNames from 'clsx';
 import {
     AllHTMLAttributes,
-    ReactNode,
     ChangeEventHandler,
-    MouseEvent,
-    KeyboardEvent,
     Component,
+    KeyboardEvent,
+    MouseEvent,
     MutableRefObject,
+    ReactNode,
 } from 'react';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
-import {connect} from 'react-redux';
+import {PlasmaState} from '../../PlasmaState';
+import {IDispatch, ReduxUtils} from '../../utils';
 import {IClassName} from '../../utils/ClassNameUtils';
-import {PropsToOmitUtils} from '../../utils/PropsToOmitUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
-import {ILabelProps, Label} from './Label';
-import {PlasmaState} from '../../PlasmaState';
+import {addInput, changeInputValue, removeInput} from './InputActions';
 import {InputSelectors} from './InputSelectors';
-import {IDispatch, ReduxUtils} from '../../utils';
-import {addInput, removeInput, changeInputValue} from './InputActions';
+import {ILabelProps, Label} from './Label';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
 
@@ -74,31 +73,6 @@ export interface IInputDispatchProps {
     onClick?: (e: MouseEvent<HTMLElement>) => void;
     changeDirtyState?: (value?: string, valid?: boolean) => void;
 }
-
-const inputPropsToOmit = [
-    'changeDirtyState',
-    'classes',
-    'defaultValue',
-    'disabledOnMount',
-    'disabledTooltip',
-    'id',
-    'indeterminate',
-    'innerInputClasses',
-    'isReadOnly',
-    'labelProps',
-    'labelTitle',
-    'maximum',
-    'minimum',
-    'onBlur',
-    'onChange',
-    'onClick',
-    'onDestroy',
-    'onRender',
-    'valid',
-    'validate',
-    'validateOnChange',
-    'validateOnMount',
-];
 
 export interface IInputOwnProps extends IInputAdditionalOwnProps, IInputNativeTagOwnProps {}
 
@@ -243,7 +217,32 @@ export class Input extends Component<IInputProps, IInputComponentState> {
                 min={this.props.minimum}
                 max={this.props.maximum}
                 autoComplete="off"
-                {..._.omit(this.props, [...PropsToOmitUtils.input, ...inputPropsToOmit])}
+                {..._.omit(
+                    this.props,
+                    'changeDirtyState',
+                    'classes',
+                    'defaultValue',
+                    'disabledOnMount',
+                    'disabledTooltip',
+                    'id',
+                    'indeterminate',
+                    'innerInputClasses',
+                    'isReadOnly',
+                    'labelProps',
+                    'labelTitle',
+                    'maximum',
+                    'minimum',
+                    'onBlur',
+                    'onChange',
+                    'onClick',
+                    'onDestroy',
+                    'onRender',
+                    'valid',
+                    'validate',
+                    'validateOnChange',
+                    'validateOnMount',
+                    'children',
+                )}
                 {...additionalProps}
             />,
             this.getLabel(),

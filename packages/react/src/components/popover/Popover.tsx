@@ -55,6 +55,7 @@ export interface IPopoverProps extends IPopoverDispatchProps, ITetherComponentCo
 }
 
 export interface IPopoverState {
+    id?: string;
     isOpen?: boolean;
 }
 
@@ -93,7 +94,7 @@ export class Popover extends Component<IPopoverProps, IPopoverState> {
 
         return (
             <TetherComponent
-                {..._.omit(this.props, 'children', 'onToggle', 'onMount', 'onUnmount')}
+                {..._.omit(this.props, 'children', 'onToggle', 'onMount', 'onUnmount', 'renderElementTo')}
                 renderTarget={(ref) => {
                     this.tetherToggle = ref;
                     return (
