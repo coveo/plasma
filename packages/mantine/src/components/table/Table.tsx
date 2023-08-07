@@ -31,7 +31,7 @@ import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
 import {useRowSelection} from './useRowSelection';
 
-const TableSelectableColumn: ColumnDef<unknown> = {
+export const TableSelectableColumn: ColumnDef<unknown> = {
     id: 'select',
     enableSorting: false,
     header: ({table}) => {
