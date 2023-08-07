@@ -31,7 +31,7 @@ import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
 import {useRowSelection} from './useRowSelection';
 
-export const TableSelectableColumn: ColumnDef<unknown> = {
+const TableSelectableColumn: ColumnDef<unknown> = {
     id: 'select',
     enableSorting: false,
     header: ({table}) => {
@@ -100,7 +100,39 @@ export const Table: TableType = <T,>({
             globalFilter: '',
         }),
         data,
-        columns: multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
+        columns: multiRowSelectionEnabled
+            ? [
+                  {
+                      id: 'select',
+                      enableSorting: false,
+                      header: ({table: tableContext}) => {
+                          const label = tableContext.getIsAllRowsSelected()
+                              ? 'Unselect all from this page'
+                              : 'Select all from this page';
+                          return (
+                              <Tooltip label={label}>
+                                  <Checkbox
+                                      checked={table.getIsAllPageRowsSelected()}
+                                      indeterminate={table.getIsSomePageRowsSelected()}
+                                      onChange={table.getToggleAllPageRowsSelectedHandler()}
+                                      sx={{display: 'flex'}}
+                                      aria-label={label}
+                                  />
+                              </Tooltip>
+                          );
+                      },
+                      cell: ({row}) => (
+                          <Checkbox
+                              checked={row.getIsSelected()}
+                              indeterminate={row.getIsSomeSelected()}
+                              onChange={row.getToggleSelectedHandler()}
+                              sx={{display: 'flex'}}
+                              aria-label="Select row"
+                          />
+                      ),
+                  } as ColumnDef<T>,
+              ].concat(columns)
+            : columns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!multiRowSelectionEnabled,
