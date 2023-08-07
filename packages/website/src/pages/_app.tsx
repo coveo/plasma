@@ -13,13 +13,13 @@ import '../styles/tile.scss';
 import {AppShell, Group, Image, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import {Defaults} from '@coveord/plasma-react';
 import {Header as MantineHeader, ScrollArea} from '@mantine/core';
+import type {AppProps} from 'next/app';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 import {Provider} from 'react-redux';
 
-import type {AppProps} from 'next/app';
 import githubLogo from '../../resources/github-mark.svg';
 import logo from '../../resources/plasma-logo.svg';
 import {Navigation} from '../SideNavigation';

@@ -117,6 +117,10 @@ const MantineNavigation = () => (
                 <InternalNavLink href="/form/Collection" label="Collection" />
                 <InternalNavLink href="/form/CopyToClipboard" label="Copy to Clipboard" />
             </NavLink>
+            <NavLink label="Plasmantine" icon={<ClickSize16Px height={16} />}>
+                <InternalNavLink href="/plasmantine#typography" label="Typography" />
+                <InternalNavLink href="/plasmantine#form" label="Form" />
+            </NavLink>
         </Navbar.Section>
         <Divider />
         <Navbar.Section>
