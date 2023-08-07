@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, within} from '@test-utils';
+import {act, render, screen, userEvent, within} from '@test-utils';
 
 import {Table} from '../Table';
 
@@ -29,7 +29,7 @@ describe('Table.Filter', () => {
     });
 
     it('calls onChange when typing something in the filter', async () => {
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
         const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
@@ -40,13 +40,21 @@ describe('Table.Filter', () => {
         );
 
         await user.type(screen.getByRole('textbox'), 'vegetable');
-        vi.advanceTimersByTime(500);
+
+        act(() => {
+            // 300 ms debounce on TableFilter input
+            vi.advanceTimersByTime(300);
+        });
+        act(() => {
+            // 500 ms debounce on Table onChange callback
+            vi.advanceTimersByTime(500);
+        });
 
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({globalFilter: 'vegetable'}));
     });
 
     it('goes back to the first page when changing the filter', async () => {
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
         const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
@@ -61,7 +69,14 @@ describe('Table.Filter', () => {
         );
 
         await user.type(screen.getByRole('textbox'), 'veg');
-        vi.advanceTimersByTime(500);
+        act(() => {
+            // 300 ms debounce on TableFilter input
+            vi.advanceTimersByTime(300);
+        });
+        act(() => {
+            // 500 ms debounce on Table onChange callback
+            vi.advanceTimersByTime(500);
+        });
 
         expect(onChange).toHaveBeenCalledWith(
             expect.objectContaining({globalFilter: 'veg', pagination: {pageIndex: 0, pageSize: 50}}),
