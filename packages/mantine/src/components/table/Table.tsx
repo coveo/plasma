@@ -31,34 +31,6 @@ import {TablePerPage} from './TablePerPage';
 import {TablePredicate} from './TablePredicate';
 import {useRowSelection} from './useRowSelection';
 
-const TableSelectableColumn: ColumnDef<unknown> = {
-    id: 'select',
-    enableSorting: false,
-    header: ({table}) => {
-        const label = table.getIsAllRowsSelected() ? 'Unselect all from this page' : 'Select all from this page';
-        return (
-            <Tooltip label={label}>
-                <Checkbox
-                    checked={table.getIsAllPageRowsSelected()}
-                    indeterminate={table.getIsSomePageRowsSelected()}
-                    onChange={table.getToggleAllPageRowsSelectedHandler()}
-                    sx={{display: 'flex'}}
-                    aria-label={label}
-                />
-            </Tooltip>
-        );
-    },
-    cell: ({row}) => (
-        <Checkbox
-            checked={row.getIsSelected()}
-            indeterminate={row.getIsSomeSelected()}
-            onChange={row.getToggleSelectedHandler()}
-            sx={{display: 'flex'}}
-            aria-label="Select row"
-        />
-    ),
-};
-
 export const Table: TableType = <T,>({
     data,
     getRowId,
