@@ -1,12 +1,12 @@
 module.exports = {
     extends: ['plasma'],
     parserOptions: {
-        project: './tsconfig.eslint.json',
+        project: 'tsconfig.json',
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
     rules: {
         'no-console': 'off',
     },
-    ignorePatterns: ['.eslintrc.js', 'dist', 'node_modules'],
+    ignorePatterns: ['build', '.eslintrc.js', 'next.config.js', 'next', 'node_modules', 'out', 'resources', '.turbo'],
 };
