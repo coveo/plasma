@@ -1,17 +1,17 @@
 import classNames from 'clsx';
-import {ReactNode, HTMLProps, HTMLAttributes, RefObject, CSSProperties, createRef, PureComponent} from 'react';
+import {CSSProperties, HTMLAttributes, HTMLProps, PureComponent, ReactNode, RefObject, createRef} from 'react';
 import * as ReactDOM from 'react-dom';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {defaultDropPodPosition, DropPod, IDropPodProps} from './DropPod';
+import {DropPod, IDropPodProps, defaultDropPodPosition} from './DropPod';
 import {DefaultGroupIds, DropActions} from './redux/DropActions';
 import {DropSelectors} from './redux/DropReducers';
 
 export interface IDropOwnProps extends Partial<IDropPodProps> {
-    id: string;
+    id?: string;
     groupId?: string;
-    renderOpenButton: (onClick: () => void, isOpen: boolean) => ReactNode;
+    renderOpenButton?: (onClick: () => void, isOpen: boolean) => ReactNode;
     buttonContainerProps?: HTMLProps<HTMLDivElement>;
     listContainerProps?: HTMLAttributes<HTMLDivElement>;
     closeOnClickOutside?: boolean;

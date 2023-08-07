@@ -25,7 +25,7 @@ const convertIcon = async ([iconName, variants]) => {
     await fs.ensureDir(`${outDirPath}/${iconName}`);
     return Promise.all(
         variants.map(convertVariant),
-        fs.appendFile(`${outDirPath}/index.ts`, `export * from './${iconName}';\n`)
+        fs.appendFile(`${outDirPath}/index.ts`, `export * from './${iconName}';\n`),
     );
 };
 
@@ -53,12 +53,12 @@ const convertVariant = async (file) => {
                     width: '{width || height || "1em"}',
                 },
             },
-            {componentName}
+            {componentName},
         );
         return Promise.all([
             fs.appendFile(
                 `${outDirPath}/${iconName}/index.ts`,
-                `export {default as ${componentName}} from './${variantName}';\n`
+                `export {default as ${componentName}} from './${variantName}';\n`,
             ),
             fs.outputFile(`${outDirPath}/${iconName}/${variantName}.tsx`, tsCode),
         ]);
@@ -69,10 +69,12 @@ const convertVariant = async (file) => {
 };
 
 const listIconVariants = async (grouped) => {
-    const list = Object.entries(grouped).map(([iconName, variantsPaths]) => ({
-        iconName,
-        variants: variantsPaths.map(getComponentName),
-    }));
+    const list = Object.entries(grouped)
+        .map(([iconName, variantsPaths]) => ({
+            iconName,
+            variants: variantsPaths.map(getComponentName),
+        }))
+        .sort((a, b) => a.iconName.localeCompare(b.iconName));
     return fs.appendFile(`${outDirPath}/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
 };
 

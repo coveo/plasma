@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-style",
-    "version": "52.13.0",
+    "version": "52.13.2",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -57,7 +57,7 @@
         }
     },
     "dependencies": {
-        "codemirror": "5.59.4",
+        "codemirror": "5.65.14",
         "rc-slider": "8.7.1",
         "react-diff-view": "3.0.3"
     },
@@ -80,11 +80,11 @@
         "merge-stream": "2.0.0",
         "minimist": "1.2.8",
         "postcss": "8.4.27",
-        "publint": "0.1.16",
+        "publint": "0.2.0",
         "rimraf": "5.0.1",
-        "sass": "1.63.6",
-        "underscore": "1.13.1",
+        "sass": "1.64.2",
+        "underscore": "1.13.6",
         "underscore.string": "3.3.6",
-        "vite": "4.4.7"
+        "vite": "4.4.8"
     }
 }

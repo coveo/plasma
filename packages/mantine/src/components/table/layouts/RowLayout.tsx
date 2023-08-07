@@ -66,6 +66,7 @@ const useStyles = createStyles<string, TableStylesParams>((theme, {multiRowSelec
             '&:hover': {
                 backgroundColor: rowBackgroundColor,
             },
+            overflowWrap: 'anywhere',
         },
 
         cell: {

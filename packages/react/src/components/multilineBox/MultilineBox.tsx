@@ -1,4 +1,4 @@
-import {ReactNode, PureComponent, useMemo} from 'react';
+import {PureComponent, ReactNode, useMemo} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -12,8 +12,10 @@ import {
     updateValueStringList,
 } from '../../reusableState/customList/StringListActions';
 import {deepClone} from '../../utils/CloneUtils';
-import {IDispatch} from '../../utils/ReduxUtils';
+import {IDispatch, IReduxAction} from '../../utils/ReduxUtils';
 import {UUID} from '../../utils/UUID';
+import {IListBoxPayload} from '../listBox';
+import {ISelectPayload} from '../select';
 import {IMultiSelectOwnProps} from '../select/MultiSelectConnected';
 import {MultilineBoxSelectors} from './MultilineBoxSelector';
 
@@ -89,6 +91,14 @@ export interface IMultilineBoxOwnProps<T = any> {
      * Whether this component is disabled
      */
     disabled?: boolean;
+    addSelect?: () => IReduxAction<ISelectPayload>;
+    removeSelect?: () => IReduxAction<ISelectPayload>;
+    toggleDropdown?: () => IReduxAction<ISelectPayload>;
+    selectValue?: (value: string, isMulti: boolean, index?: number) => void;
+    setActive?: (diff: number) => IReduxAction<IListBoxPayload>;
+    selectedValues?: string[];
+    isOpened?: boolean;
+    active?: number;
 }
 
 export interface IMultilineBoxStateProps {
