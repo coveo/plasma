@@ -1,7 +1,6 @@
 import '../styles/colors.scss';
 import '../styles/github-button.scss';
 import '../styles/home.scss';
-import '../styles/iconography.scss';
 import '../styles/loading-screen.css';
 import '../styles/main.scss';
 import '../styles/page-layout.scss';
@@ -12,10 +11,9 @@ import '../styles/tile.scss';
 
 import {AppShell, Group, Image, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import {Defaults} from '@coveord/plasma-react';
-import {Header as MantineHeader, ScrollArea} from '@mantine/core';
+import {Header as MantineHeader} from '@mantine/core';
 import Head from 'next/head';
 import Link from 'next/link';
-import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 import {Provider} from 'react-redux';
 
@@ -24,9 +22,9 @@ import githubLogo from '../../resources/github-mark.svg';
 import logo from '../../resources/plasma-logo.svg';
 import {Navigation} from '../SideNavigation';
 import {Store} from '../Store';
-import LegacyWarningBanner from '../building-blocs/LegacyWarningBanner';
 import StandaloneSearchBar from '../search/StandaloneSearchBar';
 import {EngineProvider} from '../search/engine/EngineProvider';
+import LegacyWarningBanner from '../building-blocs/LegacyWarningBanner';
 
 const Header = () => (
     <MantineHeader height={100}>
@@ -34,7 +32,10 @@ const Header = () => (
             position="apart"
             px="lg"
             py="xs"
-            sx={(theme) => ({backgroundColor: theme.colors.navy[7], height: '100%'})}
+            sx={(theme) => ({
+                background: `linear-gradient(217deg, ${theme.colors.purple[6]} 0%, ${theme.colors.navy[7]} 74.62%, ${theme.colors.navy[7]} 100%)`,
+                height: '100%',
+            })}
             noWrap
         >
             <Link href="/" className="header-logo-link">
@@ -49,9 +50,6 @@ const Header = () => (
 );
 
 const MyApp = ({Component, pageProps}: AppProps) => {
-    const {pathname} = useRouter();
-    const isLegacy = /^\/legacy*/.test(pathname);
-
     useEffect(() => {
         Defaults.APP_ELEMENT = '#App';
         Defaults.MODAL_ROOT = '#Modals';
@@ -73,10 +71,8 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                     <Plasmantine>
                         <Notifications position="top-center" />
                         <AppShell navbar={<Navigation />} header={<Header />} padding={0}>
-                            <ScrollArea>
-                                {isLegacy ? <LegacyWarningBanner /> : null}
-                                <Component {...pageProps} />
-                            </ScrollArea>
+                            <LegacyWarningBanner />
+                            <Component {...pageProps} />
                         </AppShell>
                     </Plasmantine>
                 </EngineProvider>
