@@ -44,7 +44,7 @@
         "@types/chroma-js": "2.4.0",
         "@types/fs-extra": "11.0.1",
         "@types/lodash": "4.14.196",
-        "@types/node": "18.17.3",
+        "@types/node": "18.17.4",
         "@types/rimraf": "3.0.2",
         "chroma-js": "2.4.2",
         "commander": "11.0.0",
