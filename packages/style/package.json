@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-style",
-    "version": "52.13.2",
+    "version": "52.14.0",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -85,6 +85,6 @@
         "sass": "1.64.2",
         "underscore": "1.13.6",
         "underscore.string": "3.3.6",
-        "vite": "4.4.8"
+        "vite": "4.4.9"
     }
 }

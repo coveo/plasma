@@ -44,6 +44,7 @@ export const Header: HeaderType = ({description, borderBottom, children, variant
                 position="apart"
                 p={variant === 'page' ? 'xl' : undefined}
                 pb={variant === 'page' ? 'lg' : undefined}
+                noWrap
                 {...others}
             >
                 <Stack spacing={0}>

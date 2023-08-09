@@ -52,6 +52,7 @@ export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = ({
             }}
             value={others.value}
             readOnly
+            autoComplete="off"
             rightSection={<CopyToClipboardButton {...others} />}
         />
     ) : (

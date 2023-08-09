@@ -1,3 +1,22 @@
+# 52.14.0 (2023-08-08)
+
+
+### Bug Fixes
+
+* **broken dep:** override nwsapi 2.2.2 890de28
+* **mantine:** add noWrap on Header a5da767
+* **type:** propswithchildren generic 516705f
+
+
+### Features
+
+* **mantine:** add autocomplete off on CopyToClipboard f0dbef1
+* **mantine:** debounce TableFilter input changes 0c0c6bc
+* **website:** center page content ce908c2
+* **website:** improve Iconography section fd910da
+
+
+
 ## 52.13.2 (2023-08-04)
 
 

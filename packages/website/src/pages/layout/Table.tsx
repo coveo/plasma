@@ -18,13 +18,27 @@ const DemoPage = () => (
         propsMetadata={TableMetadata}
         demo={<TableDemo noPadding layout="vertical" />}
         examples={{
-            multiSelect: <TableMultiSelectionDemo noPadding title="Table with bulk selection of rows" />,
-            disableRowSelection: <TableDisableRowSelection noPadding title="Table with disabled row selection" />,
-            clientSide: (
-                <TableClientSideDemo noPadding title="Table with client side pagination, sorting, and filtering" />
+            multiSelect: (
+                <TableMultiSelectionDemo noPadding layout="vertical" title="Table with bulk selection of rows" />
             ),
-            emptyState: <TableEmptyStateDemo noPadding title="Table with empty states" />,
-            consumer: <TableConsumerDemo noPadding title="Table with a child component using the hook to re-fetch" />,
+            disableRowSelection: (
+                <TableDisableRowSelection noPadding layout="vertical" title="Table with disabled row selection" />
+            ),
+            clientSide: (
+                <TableClientSideDemo
+                    noPadding
+                    layout="vertical"
+                    title="Table with client side pagination, sorting, and filtering"
+                />
+            ),
+            emptyState: <TableEmptyStateDemo noPadding layout="vertical" title="Table with empty states" />,
+            consumer: (
+                <TableConsumerDemo
+                    noPadding
+                    layout="vertical"
+                    title="Table with a child component using the hook to re-fetch"
+                />
+            ),
         }}
     />
 );

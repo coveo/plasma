@@ -1,7 +1,8 @@
 import {CrossSize16Px, SearchSize16Px} from '@coveord/plasma-react-icons';
-import {ActionIcon, createStyles, DefaultProps, Grid, Selectors, TextInput} from '@mantine/core';
-import {ChangeEventHandler, FunctionComponent, MouseEventHandler} from 'react';
+import {ActionIcon, DefaultProps, Grid, Selectors, TextInput, createStyles} from '@mantine/core';
+import {ChangeEventHandler, FunctionComponent, MouseEventHandler, useState} from 'react';
 
+import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
 import {TableComponentsOrder} from './Table.styles';
 import {useTable} from './TableContext';
 
@@ -34,24 +35,27 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
 }) => {
     const {classes} = useStyles(null, {name: 'TableFilter', classNames, styles, unstyled});
     const {state, setState} = useTable();
+    const [filter, setFilter] = useState(state.globalFilter);
+    const [debounced, cancel] = useDebouncedValue(filter, 300);
 
-    const changeFilterValue = (value: string) => {
+    useDidUpdate(() => {
         setState((prevState) => ({
             ...prevState,
             pagination: prevState.pagination
                 ? {pageIndex: 0, pageSize: prevState.pagination.pageSize}
                 : prevState.pagination,
-            globalFilter: value,
+            globalFilter: debounced,
         }));
-    };
+        return cancel;
+    }, [debounced]);
 
     const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
         const {value} = event.currentTarget;
-        changeFilterValue(value);
+        setFilter(value);
     };
 
     const handleClear: MouseEventHandler<HTMLButtonElement> = () => {
-        changeFilterValue('');
+        setFilter('');
     };
 
     return (
@@ -59,17 +63,18 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
             <TextInput
                 className={classes.wrapper}
                 placeholder={placeholder}
+                autoComplete="off"
                 mb="md"
                 rightSection={
-                    state.globalFilter ? (
+                    filter ? (
                         <ActionIcon onClick={handleClear}>
                             <CrossSize16Px height={16} />
                         </ActionIcon>
                     ) : (
-                        <SearchSize16Px height={14} className={classes.empty} />
+                        <SearchSize16Px height={16} className={classes.empty} />
                     )
                 }
-                value={state.globalFilter}
+                value={filter}
                 onChange={handleChange}
                 {...others}
             />

@@ -5,7 +5,7 @@ import {InlineConfirmContext} from './InlineConfirmContext';
 import {InlineConfirmMenuItem} from './InlineConfirmMenuItem';
 import {InlineConfirmPrompt} from './InlineConfirmPrompt';
 
-type InlineConfirmType = FunctionComponent<PropsWithChildren> & {
+type InlineConfirmType = FunctionComponent<PropsWithChildren<unknown>> & {
     Prompt: typeof InlineConfirmPrompt;
     Button: typeof InlineConfirmButton;
     MenuItem: typeof InlineConfirmMenuItem;
