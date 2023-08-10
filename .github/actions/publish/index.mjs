@@ -94,7 +94,7 @@ export default async ({github, context, exec}, {
 
                 if (remote) {
                     console.info(`Pushing version ${versionTag} on git`);
-                    await gitPush(GIT_SSH_REMOTE);
+                    await gitPush({remote: GIT_SSH_REMOTE});
                     await gitPushTags();
                 }
 
