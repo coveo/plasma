@@ -27,8 +27,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       aws-sdk:
-        specifier: 2.1433.0
-        version: 2.1433.0
+        specifier: 2.1434.0
+        version: 2.1434.0
       commitizen:
         specifier: 4.3.0
         version: 4.3.0
@@ -858,8 +858,8 @@ importers:
         specifier: 6.0.4
         version: 6.0.4
       '@coveo/atomic-react':
-        specifier: 2.5.2
-        version: 2.5.2(@coveo/headless@2.24.0)(encoding@0.1.13)(postcss@8.4.27)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.5.4
+        version: 2.5.4(@coveo/headless@2.25.1)(encoding@0.1.13)(postcss@8.4.27)(react-dom@18.2.0)(react@18.2.0)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -2572,15 +2572,15 @@ packages:
     resolution: {integrity: sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ==}
     dev: false
 
-  /@coveo/atomic-react@2.5.2(@coveo/headless@2.24.0)(encoding@0.1.13)(postcss@8.4.27)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-sNxop7kNWqPaJbRRmTjkxH/019rFd5XUnx58iF+vwNdYAkxufIyXnF8+7h22ihfRiUMMEERWIBuAnhzWUPQqtw==}
+  /@coveo/atomic-react@2.5.4(@coveo/headless@2.25.1)(encoding@0.1.13)(postcss@8.4.27)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-vZujEsR4drBhu9OVW5Ej/Pk4mRQRqMpspFs6F1HFwZLpwxPNUbuYCJIpJw4zOQHXjPad0dc6RIr8F/fBY7d0vw==}
     peerDependencies:
-      '@coveo/headless': 2.24.0
+      '@coveo/headless': 2.25.1
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@coveo/atomic': 2.38.0(@coveo/headless@2.24.0)(encoding@0.1.13)(postcss@8.4.27)
-      '@coveo/headless': 2.24.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.72.3)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1)
+      '@coveo/atomic': 2.40.0(@coveo/headless@2.25.1)(encoding@0.1.13)(postcss@8.4.27)
+      '@coveo/headless': 2.25.1(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.72.3)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -2588,14 +2588,14 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/atomic@2.38.0(@coveo/headless@2.24.0)(encoding@0.1.13)(postcss@8.4.27):
-    resolution: {integrity: sha512-KVXsVcVJ72C3dutcmKtNWdirkAJ4t0DbJTysrUutwbZdmvR/pfja6T4iJdUsQG8Wcw1taTn1Zm0NEsPxvYK0LA==}
+  /@coveo/atomic@2.40.0(@coveo/headless@2.25.1)(encoding@0.1.13)(postcss@8.4.27):
+    resolution: {integrity: sha512-Iug87EOzL5Hz0Nfx/7rAFIhQJCYqrUivY+QZaJs+rY1clELxhkRkdkd8ZEr6WquaUmQ5wFLCODwPXtktePRKbg==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
-      '@coveo/headless': 2.24.0
+      '@coveo/headless': 2.25.1
     dependencies:
       '@coveo/bueno': 0.43.7
-      '@coveo/headless': 2.24.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.72.3)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1)
+      '@coveo/headless': 2.25.1(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.72.3)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1)
       '@popperjs/core': 2.11.8
       '@salesforce-ux/design-system': 2.21.5(postcss@8.4.27)
       '@stencil/core': 2.17.3
@@ -2617,8 +2617,9 @@ packages:
     resolution: {integrity: sha512-qMBcGi1II7dDK6h+mf5j/ldAyrTM+WqOOziJvpHPyy451Qpl7z6AFcKw+Y5n0xNR81ENaubL9jkXVM96JNJAJg==}
     dev: false
 
-  /@coveo/headless@2.24.0(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.72.3)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1):
-    resolution: {integrity: sha512-NWVSXlxZjh6wsKqwiOFlbLUQSz9Rrds1hS8iL+Use51sAazD6nnuKzTXMRvP9Sw5qO53b1fkt/8Jmz4rom0Tag==}
+  /@coveo/headless@2.25.1(encoding@0.1.13)(pino-pretty@6.0.0)(react-native@0.72.3)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1):
+    resolution: {integrity: sha512-yy4mNsVmz+BuaIVqngmvqicxVQtoDhfKx+kBdEVmtNO2TOfMz5k1W2bJ02iijF4Rs8Ei7Y5U4YIj4o9GqeNtdg==}
+    engines: {node: '>=12'}
     peerDependencies:
       encoding: ^0.1.13
       pino-pretty: ^6.0.0
@@ -6327,8 +6328,8 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-sdk@2.1433.0:
-    resolution: {integrity: sha512-QLZLC8eAk4+l8x9kUbrWPjuyWchE3Ho18llm0Qx5aNcoOq/el4+NxzYeqKjwjGjNJuJ/AeX3J+BzazazrNv9BQ==}
+  /aws-sdk@2.1434.0:
+    resolution: {integrity: sha512-8Y4RsmmKe99mpk9nFDX9kdmXqpe089OiJcxwPzZ+rB/IErF96/yUQwY7Lboeh78r2bp59AMMMhsxIKgoOfwIzQ==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
