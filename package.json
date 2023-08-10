@@ -59,7 +59,7 @@
     "devDependencies": {
         "@commitlint/cli": "17.7.1",
         "@commitlint/config-conventional": "17.7.0",
-        "@coveo/semantic-monorepo-tools": "1.7.2",
+        "@coveo/semantic-monorepo-tools": "2.1.11",
         "@sindresorhus/slugify": "2.2.1",
         "aws-sdk": "2.1433.0",
         "commitizen": "4.3.0",
