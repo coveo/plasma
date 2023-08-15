@@ -8,6 +8,7 @@ const useStyles = createStyles((theme) => ({
     root: {},
     wrapper: {},
     label: {},
+    select: {}
 }));
 
 type TablePredicateStylesNames = Selectors<typeof useStyles>;
@@ -56,6 +57,7 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({
                     data={data}
                     aria-label={label ?? id}
                     searchable={data.length > 7}
+                    className={classes.select}
                 />
             </Group>
         </Grid.Col>
