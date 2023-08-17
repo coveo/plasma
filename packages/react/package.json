@@ -117,7 +117,7 @@
         "identity-obj-proxy": "3.0.0",
         "jest": "29.6.2",
         "jest-environment-jsdom": "29.6.2",
-        "lint-staged": "13.3.0",
+        "lint-staged": "14.0.0",
         "lorem-ipsum": "2.0.8",
         "minimist": "1.2.8",
         "postcss": "8.4.28",
