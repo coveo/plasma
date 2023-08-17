@@ -158,6 +158,7 @@ describe('Select', () => {
         });
 
         it('should clear the selected value when the deselect is clicked', async () => {
+            const user = userEvent.setup();
             render(
                 <SingleSelectConnected
                     id={id}
@@ -169,7 +170,7 @@ describe('Select', () => {
 
             expect(screen.queryByRole('button', {name: /select one/})).not.toBeInTheDocument();
 
-            await userEvent.click(await screen.findByRole('img', {name: /cross/}));
+            await user.click(await screen.findByRole('img', {name: /cross/}));
 
             expect(screen.getByRole('button', {name: /select one/})).toBeInTheDocument();
         });
@@ -193,6 +194,7 @@ describe('Select', () => {
         });
 
         it('should call with the selected option the onSelectOptionCallback prop when defined', async () => {
+            const user = userEvent.setup();
             const onSelectOptionCallbackSpy = jest.fn();
 
             render(
@@ -203,9 +205,9 @@ describe('Select', () => {
                 />,
             );
 
-            await userEvent.click(screen.getByRole('button'));
+            await user.click(screen.getByRole('button'));
 
-            await userEvent.click(screen.getByText('to select value'));
+            await user.click(screen.getByText('to select value'));
 
             expect(onSelectOptionCallbackSpy).toHaveBeenCalledTimes(1);
             expect(onSelectOptionCallbackSpy).toHaveBeenCalledWith('b');
@@ -245,12 +247,13 @@ describe('Select', () => {
         });
         describe('footer props', () => {
             it('displays the footer when the dropdown is opened', async () => {
+                const user = userEvent.setup();
                 const footer: ReactElement = <span id="some-footer">👢</span>;
                 render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} footer={footer} />);
 
                 expect(screen.queryByText('👢')).not.toBeVisible();
 
-                await userEvent.click(screen.getByRole('button'));
+                await user.click(screen.getByRole('button'));
 
                 expect(screen.getByText('👢')).toBeVisible();
             });

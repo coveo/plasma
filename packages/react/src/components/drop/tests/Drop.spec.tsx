@@ -133,6 +133,7 @@ describe('Drop', () => {
             });
 
             it('closes the drop if the click happen inside of it', async () => {
+                const user = userEvent.setup();
                 render(
                     <Drop
                         id={id}
@@ -142,16 +143,17 @@ describe('Drop', () => {
                     </Drop>,
                 );
 
-                await userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
+                await user.click(screen.getByRole('button', {name: 'toggle drop'}));
 
                 await waitFor(() => expect(screen.getByRole('button', {name: 'children button'})).toBeVisible());
 
-                await userEvent.click(screen.getByRole('button', {name: 'children button'}));
+                await user.click(screen.getByRole('button', {name: 'children button'}));
 
                 expect(screen.queryByRole('button', {name: 'children button'})).not.toBeInTheDocument();
             });
 
             it('does not close the drop if the click happen inside and closeOnClickDrop is false', async () => {
+                const user = userEvent.setup();
                 render(
                     <Drop
                         id={id}
@@ -162,11 +164,11 @@ describe('Drop', () => {
                     </Drop>,
                 );
 
-                await userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
+                await user.click(screen.getByRole('button', {name: 'toggle drop'}));
 
                 await waitFor(() => expect(screen.getByRole('button', {name: 'children button'})).toBeVisible());
 
-                await userEvent.click(screen.getByRole('button', {name: 'children button'}));
+                await user.click(screen.getByRole('button', {name: 'children button'}));
 
                 expect(screen.getByRole('button', {name: 'children button'})).toBeVisible();
             });

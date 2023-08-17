@@ -48,44 +48,48 @@ describe('SearchBar', () => {
     });
 
     it('calls onSearch when user click on the search icon', async () => {
+        const user = userEvent.setup();
         const searchSpy = jest.fn();
 
         render(<SearchBar onSearch={searchSpy} />);
-        await userEvent.click(await screen.findByRole('img', {name: 'search'}));
+        await user.click(await screen.findByRole('img', {name: 'search'}));
 
         await waitFor(() => expect(searchSpy).toHaveBeenCalledTimes(1));
     });
 
     it('dont call onSearch will the user is typing', async () => {
+        const user = userEvent.setup();
         const searchSpy = jest.fn();
 
         render(<SearchBar onSearch={searchSpy} />);
-        await userEvent.click(screen.getByRole('textbox'));
-        await userEvent.keyboard('Hello darkness my old friend');
+        await user.click(screen.getByRole('textbox'));
+        await user.keyboard('Hello darkness my old friend');
 
         expect(searchSpy).not.toHaveBeenCalled();
     });
 
     it('dont calls onSearch if the search bar is disabled', async () => {
+        const user = userEvent.setup();
         const searchSpy = jest.fn();
 
         render(<SearchBar onSearch={searchSpy} disabled />);
-        await userEvent.click(await screen.findByRole('img', {name: 'search'}));
+        await user.click(await screen.findByRole('img', {name: 'search'}));
 
         expect(searchSpy).toHaveBeenCalledTimes(0);
 
-        await userEvent.click(screen.getByRole('textbox'));
-        await userEvent.keyboard('{enter}');
+        await user.click(screen.getByRole('textbox'));
+        await user.keyboard('{enter}');
 
         expect(searchSpy).toHaveBeenCalledTimes(0);
     });
 
     it('call onChange on input change if it is defined', async () => {
+        const user = userEvent.setup();
         const onChangeSpy = jest.fn();
 
         render(<SearchBar onChange={onChangeSpy} />);
-        await userEvent.click(screen.getByRole('textbox'));
-        await userEvent.keyboard('hello darkness'); // 14 characters
+        await user.click(screen.getByRole('textbox'));
+        await user.keyboard('hello darkness'); // 14 characters
 
         expect(onChangeSpy).toHaveBeenCalledTimes(14);
     });

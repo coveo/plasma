@@ -58,13 +58,13 @@ describe('MultiSelectWithInitialValues', () => {
                 initialValues={[ONE_VALUE]}
             />,
         );
-        expect(within(screen.queryByRole('list', {name: 'warnings'})).queryByRole('listitem')).not.toBeInTheDocument();
+        expect(within(screen.getByRole('list', {name: 'warnings'})).queryByRole('listitem')).not.toBeInTheDocument();
     });
 
     it('displays no warning state when there is no initial value and selected value', () => {
         render(<MultiSelectWithInitialValuesAndWarnings {...defaultProps} initialValues={[]} />);
 
-        expect(within(screen.queryByRole('list', {name: 'warnings'})).queryByRole('listitem')).not.toBeInTheDocument();
+        expect(within(screen.getByRole('list', {name: 'warnings'})).queryByRole('listitem')).not.toBeInTheDocument();
     });
 
     it('selects the item', () => {

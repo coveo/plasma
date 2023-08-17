@@ -14,9 +14,10 @@ describe('Filepicker', () => {
     });
 
     it('displays the name of the uploaded file', async () => {
+        const user = userEvent.setup();
         render(<Filepicker id="🆔" placeholder="choose a file" />);
         const input = screen.getByLabelText(/choose a file/i);
-        await userEvent.upload(input, file);
+        await user.upload(input, file);
 
         expect(screen.getByText(/hello\.png/i)).toBeInTheDocument();
         expect(FilepickerSelectors.getFile('🆔')).toStrictEqual(file);
@@ -24,12 +25,13 @@ describe('Filepicker', () => {
 
     // eslint-disable-next-line jest/no-disabled-tests
     it.skip('removes the selected file when clicking on the cross button', async () => {
+        const user = userEvent.setup();
         render(<Filepicker id="🆔" placeholder="choose a file" />);
         const input = screen.getByLabelText(/choose a file/i);
-        await userEvent.upload(input, file);
+        await user.upload(input, file);
 
         const clearButton = await screen.findByRole('button', {name: /cross/i});
-        await userEvent.click(clearButton);
+        await user.click(clearButton);
 
         expect(screen.getByText(/choose a file/i)).toBeInTheDocument();
     });

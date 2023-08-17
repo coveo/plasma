@@ -285,10 +285,11 @@ describe('Date picker', () => {
         });
 
         it('should call onClick when clicking the dropdown toggle', async () => {
+            const user = userEvent.setup();
             const onClickSpy = jest.fn();
             render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} onClick={onClickSpy} />);
 
-            await userEvent.click(screen.getByRole('button'));
+            await user.click(screen.getByRole('button'));
             expect(onClickSpy).toHaveBeenCalled();
         });
 

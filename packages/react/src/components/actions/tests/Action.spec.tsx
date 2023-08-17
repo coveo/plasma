@@ -52,6 +52,7 @@ describe('Actions', () => {
     });
 
     it('display a <Tooltip /> if the action has a tooltip', async () => {
+        const user = userEvent.setup();
         const actionWithToolip = {
             name: 'action',
             trigger: jest.fn(),
@@ -61,7 +62,7 @@ describe('Actions', () => {
 
         render(<Action action={actionWithToolip} />);
 
-        await userEvent.hover(screen.getByText(/action/i));
+        await user.hover(screen.getByText(/action/i));
 
         expect(screen.getByText('A useful tooltip')).toBeInTheDocument();
     });

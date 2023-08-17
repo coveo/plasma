@@ -30,6 +30,7 @@ describe('Th', () => {
     });
 
     it('changes the sort icon when clicking on a table header', async () => {
+        const user = userEvent.setup();
         const data: RowData[] = [
             {name: 'apple', type: 'fruit', colors: ['red', 'green']},
             {name: 'potato', type: 'vegetable', colors: ['brown', 'blue', 'yellow']},
@@ -37,17 +38,17 @@ describe('Th', () => {
         const onChange = vi.fn();
         render(<Table data={data} columns={columns} onChange={onChange} />);
 
-        userEvent.click(screen.getByRole('button', {name: /name doubleArrowHead/i}));
+        await user.click(screen.getByRole('button', {name: /name doubleArrowHead/i}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
         });
 
-        userEvent.click(screen.getByRole('button', {name: /name arrowUp/i}));
+        await user.click(screen.getByRole('button', {name: /name arrowUp/i}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: true}]}));
         });
 
-        userEvent.click(screen.getByRole('button', {name: /name arrowDown/i}));
+        await user.click(screen.getByRole('button', {name: /name arrowDown/i}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
         });

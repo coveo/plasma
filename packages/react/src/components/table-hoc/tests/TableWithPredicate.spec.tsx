@@ -197,6 +197,7 @@ describe('Table HOC', () => {
         });
 
         it('should show values when opened', async () => {
+            const user = userEvent.setup();
             render(<TableWithPredicate {...defaultProps} />);
 
             expect(
@@ -211,7 +212,7 @@ describe('Table HOC', () => {
             ).not.toBeInTheDocument();
 
             // Click on the dropdown
-            await userEvent.click(screen.getByRole('button'));
+            await user.click(screen.getByRole('button'));
 
             expect(
                 screen.getByRole('option', {
