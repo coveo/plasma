@@ -9,12 +9,13 @@ describe('SelectWithInfiniteScroll', () => {
     const id = 'to-infinity-and-beyond';
 
     it('contains the items', async () => {
+        const user = userEvent.setup();
         const items = [{value: '🏹'}, {value: '💘'}, {value: '👼'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={5000} items={items} />);
 
         // open the dropdown
-        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await user.click(screen.getByRole('button', {name: /select an option/i}));
 
         const listitems = screen.getAllByRole('option');
         expect(listitems.length).toBe(3);
@@ -24,13 +25,14 @@ describe('SelectWithInfiniteScroll', () => {
     });
 
     it('calls the next prop when the user scrolls to the bottom of the list', async () => {
+        const user = userEvent.setup();
         const nextSpy = jest.fn();
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={5000} items={items} />);
 
         // open the dropdown
-        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await user.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');
@@ -40,13 +42,14 @@ describe('SelectWithInfiniteScroll', () => {
     });
 
     it('does not call the next prop when there is no more items and the user scrolls to the bottom of the list', async () => {
+        const user = userEvent.setup();
         const nextSpy = jest.fn();
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={3} items={items} />);
 
         // open the dropdown
-        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await user.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');
@@ -56,12 +59,13 @@ describe('SelectWithInfiniteScroll', () => {
     });
 
     it('does not displays a loading when the user scrolls to the bottom of the list and there is no more items to display', async () => {
+        const user = userEvent.setup();
         const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
         render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={3} items={items} />);
 
         // open the dropdown
-        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await user.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');

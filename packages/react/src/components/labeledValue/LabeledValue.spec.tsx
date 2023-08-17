@@ -76,10 +76,11 @@ describe('LabeledValue', () => {
         });
 
         it('renders an info icon if additional information is provided in the information prop', async () => {
+            const user = userEvent.setup();
             render(<LabeledValue label="name" value="Joe" information="more info" />);
             const infoIcon = await screen.findByRole('img', {name: /info/i});
             expect(infoIcon).toBeInTheDocument();
-            await userEvent.hover(infoIcon);
+            await user.hover(infoIcon);
             expect(await screen.findByText(/more info/i)).toBeInTheDocument();
         });
 

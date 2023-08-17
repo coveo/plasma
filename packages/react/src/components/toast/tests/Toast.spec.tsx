@@ -137,11 +137,12 @@ describe('Toasts', () => {
     });
 
     it('calls the onClose prop when the toast is dismissed', async () => {
+        const user = userEvent.setup();
         const onCloseSpy = jest.fn();
         render(<Toast title="hello world!" onClose={onCloseSpy} />);
 
         expect(screen.getByText(/hello world!/i)).toBeInTheDocument();
-        await userEvent.click(await screen.findByRole('button', {name: /cross/i}));
+        await user.click(await screen.findByRole('button', {name: /cross/i}));
         expect(screen.queryByText(/hello world!/i)).not.toBeInTheDocument();
         expect(onCloseSpy).toHaveBeenCalledTimes(1);
     });

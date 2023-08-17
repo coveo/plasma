@@ -7,6 +7,7 @@ import {ModalCompositeConnected} from '../ModalComposite';
 describe('ConfirmationModalProvider', () => {
     describe('when shouldConfirm prop is true:', () => {
         it('should open the ConfirmationModal to interrupt the leaving action if isDirty is true', async () => {
+            const user = userEvent.setup();
             render(
                 <ConfirmationModalProvider
                     shouldConfirm
@@ -33,13 +34,14 @@ describe('ConfirmationModalProvider', () => {
                 {initialState: {modals: [{id: '👾', isOpened: true}]}},
             );
             expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
-            await userEvent.click(screen.getByRole('button', {name: 'prompt confirmation modal'}));
+            await user.click(screen.getByRole('button', {name: 'prompt confirmation modal'}));
             expect(screen.getByText('Are you sure?')).toBeVisible();
         });
     });
 
     describe('when shouldConfirm prop is false:', () => {
         it('should not open the ConfirmationModal to interrupt the leaving action if isDirty is true', async () => {
+            const user = userEvent.setup();
             render(
                 <ConfirmationModalProvider
                     shouldConfirm={false}
@@ -66,7 +68,7 @@ describe('ConfirmationModalProvider', () => {
                 {initialState: {modals: [{id: '👾', isOpened: true}]}},
             );
             expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
-            await userEvent.click(screen.getByRole('button', {name: 'prompt confirmation modal'}));
+            await user.click(screen.getByRole('button', {name: 'prompt confirmation modal'}));
             expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
         });
     });

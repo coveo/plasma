@@ -63,6 +63,7 @@ describe('Form', () => {
         });
 
         it('does not change the url when the user press enter inside a form', async () => {
+            const user = userEvent.setup();
             const initialHREF = window.location.href;
 
             render(
@@ -72,8 +73,8 @@ describe('Form', () => {
                 </Form>,
             );
 
-            await userEvent.type(screen.getByRole('textbox'), 'hello world');
-            await userEvent.click(screen.getByRole('button'));
+            await user.type(screen.getByRole('textbox'), 'hello world');
+            await user.click(screen.getByRole('button'));
 
             expect(window.location.href).toBe(initialHREF);
         });
