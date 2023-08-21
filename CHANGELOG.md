@@ -1,3 +1,17 @@
+# 52.15.0 (2023-08-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint-config-prettier to v9 (#3503) 65e39bc, closes #3503
+
+
+### Features
+
+* **mantine, prompt:** add word wrap to header object (#3520) a661f21, closes #3520
+
+
+
 ## 52.14.1 (2023-08-15)
 
 
