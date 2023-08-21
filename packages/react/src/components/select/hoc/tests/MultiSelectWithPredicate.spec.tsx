@@ -25,12 +25,13 @@ describe('MultiSelectWithPredicate', () => {
     };
 
     it('hides items when they do not match the predicates', async () => {
+        const user = userEvent.setup();
         const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
 
         render(<MultiSelectWithPredicate {...basicProps} items={items} />, {});
         // open the dropdown
-        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
-        await userEvent.click(screen.getByText(/all/i));
+        await user.click(screen.getByRole('button', {name: /select an option/i}));
+        await user.click(screen.getByText(/all/i));
 
         expect(
             screen.getByRole('option', {
@@ -39,7 +40,7 @@ describe('MultiSelectWithPredicate', () => {
         ).toBeVisible();
 
         // select the none flat select
-        await userEvent.click(screen.getByText('None'));
+        await user.click(screen.getByText('None'));
 
         expect(
             screen.queryByRole('option', {
@@ -54,6 +55,7 @@ describe('MultiSelectWithPredicate', () => {
     });
 
     it('shows items that match the predicates', async () => {
+        const user = userEvent.setup();
         const options: IFlatSelectOptionProps[] = [
             {id: 'my_real_id_01', option: {content: 'All'}, selected: true},
             {id: 'my_real_id_02', option: {content: 'Beer'}},
@@ -64,10 +66,10 @@ describe('MultiSelectWithPredicate', () => {
 
         render(<MultiSelectWithPredicate id={id} options={options} items={items} matchPredicate={matcher} />);
         // open the dropdown
-        await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        await user.click(screen.getByRole('button', {name: /select an option/i}));
 
         // select the all flat select
-        await userEvent.click(screen.getByText('Beer'));
+        await user.click(screen.getByText('Beer'));
 
         expect(
             screen.queryByRole('option', {
@@ -93,14 +95,15 @@ describe('MultiSelectWithPredicate', () => {
         )(MultiSelectConnected);
 
         it('should not filter the items based on any predicate because it is done on the server', async () => {
+            const user = userEvent.setup();
             const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
 
             render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} />, {});
             // open the dropdown
-            await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+            await user.click(screen.getByRole('button', {name: /select an option/i}));
 
             // select the none flat select
-            await userEvent.click(screen.getByText('None'));
+            await user.click(screen.getByText('None'));
 
             expect(
                 screen.getByRole('option', {
@@ -120,18 +123,19 @@ describe('MultiSelectWithPredicate', () => {
         });
 
         it('triggers the onUpdate prop when the selected predicate changes', async () => {
+            const user = userEvent.setup();
             const onUpdateSpy = jest.fn();
 
             const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
 
             render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} onUpdate={onUpdateSpy} />);
             // open the dropdown
-            await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+            await user.click(screen.getByRole('button', {name: /select an option/i}));
 
             onUpdateSpy.mockReset();
 
             // select the none flat select
-            await userEvent.click(screen.getByText('None'));
+            await user.click(screen.getByText('None'));
 
             expect(onUpdateSpy).toHaveBeenCalledTimes(1);
         });

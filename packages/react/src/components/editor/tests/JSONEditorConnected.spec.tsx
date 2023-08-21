@@ -34,12 +34,13 @@ describe('<JSONEditorConnected />', () => {
     });
 
     it('should not throw when content changes', async () => {
+        const user = userEvent.setup();
         render(<JSONEditorConnected id="💙" defaultValue={'{}'} />);
 
         await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 
-        expect(() => {
-            userEvent.type(screen.getByRole('textbox'), 'hello');
+        expect(async () => {
+            await user.type(screen.getByRole('textbox'), 'hello');
         }).not.toThrow();
     });
 

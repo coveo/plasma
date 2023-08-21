@@ -82,6 +82,7 @@ describe('MultiValuesInput', () => {
     });
 
     it('includes a tooltip for inputs with an index equal or above the dataLimit', async () => {
+        const user = userEvent.setup();
         render(
             <MultiValuesInput
                 {...defaultProps}
@@ -92,7 +93,7 @@ describe('MultiValuesInput', () => {
         );
 
         expect(screen.getAllByRole('textbox')[3].parentElement).toHaveAttribute('aria-labelledby');
-        await userEvent.hover(screen.getAllByRole('textbox')[3].parentElement);
+        await user.hover(screen.getAllByRole('textbox')[3].parentElement);
 
         expect(await screen.findByText('You have no power here')).toBeVisible();
     });
@@ -171,6 +172,7 @@ describe('MultiValuesInput', () => {
     });
 
     it("validates all the inputs' content", async () => {
+        const user = userEvent.setup();
         render(
             <MultiValuesInput
                 {...defaultProps}
@@ -182,7 +184,7 @@ describe('MultiValuesInput', () => {
                 data={['🍍', '🍓']}
             />,
         );
-        await userEvent.type(screen.getAllByRole('textbox')[1], '🍎🍐🍒🍉🍍');
+        await user.type(screen.getAllByRole('textbox')[1], '🍎🍐🍒🍉🍍');
         expect(screen.getAllByRole('textbox')[1]).toHaveClass('invalid');
     });
 

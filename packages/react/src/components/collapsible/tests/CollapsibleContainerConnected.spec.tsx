@@ -41,6 +41,7 @@ describe('CollapsibleContainerConnected', () => {
     });
 
     it('calls the onClick event when the collapsible is clicked if the prop is set', async () => {
+        const user = userEvent.setup();
         const functionToBeCalled = jest.fn();
 
         render(
@@ -49,7 +50,7 @@ describe('CollapsibleContainerConnected', () => {
             </CollapsibleContainerConnected>,
         );
 
-        await userEvent.click(screen.getByText(/the title/i));
+        await user.click(screen.getByText(/the title/i));
 
         expect(functionToBeCalled).toHaveBeenCalledTimes(1);
     });

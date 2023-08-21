@@ -22,6 +22,7 @@ describe('Modal', () => {
     });
 
     it('should call the prop closeCallback if it exists when closing the modal', async () => {
+        const user = userEvent.setup();
         const closeCallbackSpy = jest.fn();
         const ModalFixture = () => {
             const [isOpened, setIsOpened] = useState(true);
@@ -33,7 +34,7 @@ describe('Modal', () => {
             );
         };
         render(<ModalFixture />);
-        await userEvent.click(screen.getByRole('button', {name: /close/i}));
+        await user.click(screen.getByRole('button', {name: /close/i}));
 
         await waitFor(() => expect(closeCallbackSpy).toHaveBeenCalledTimes(1));
     });

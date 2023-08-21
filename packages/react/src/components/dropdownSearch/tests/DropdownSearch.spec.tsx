@@ -1,4 +1,3 @@
-/* eslint-disable testing-library/no-render-in-setup */
 import {CrossSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import {type Props as InfiniteScrollProps} from 'react-infinite-scroll-component';
@@ -70,6 +69,7 @@ describe('DropdownSearch', () => {
 
         describe('default props', () => {
             beforeEach(() => {
+                // eslint-disable-next-line testing-library/no-render-in-lifecycle
                 renderDropdownSearch(ownProps);
             });
 
@@ -94,6 +94,7 @@ describe('DropdownSearch', () => {
 
         describe('event props', () => {
             beforeEach(() => {
+                // eslint-disable-next-line testing-library/no-render-in-lifecycle
                 renderDropdownSearch(ownProps);
             });
 

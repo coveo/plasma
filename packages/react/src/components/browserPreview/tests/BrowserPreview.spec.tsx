@@ -5,10 +5,11 @@ import {BrowserPreview} from '../BrowserPreview';
 
 describe('BrowserPreview', () => {
     it('renders the specified header description as tooltip title', async () => {
+        const user = userEvent.setup();
         const headerDescription = '🥰';
         render(<BrowserPreview headerDescription={headerDescription} />);
         await waitFor(() => screen.findByRole('img', {name: /info/i}));
-        await userEvent.hover(screen.getByRole('img', {name: /info/i}));
+        await user.hover(screen.getByRole('img', {name: /info/i}));
 
         expect(await screen.findByText(headerDescription)).toBeVisible();
     });

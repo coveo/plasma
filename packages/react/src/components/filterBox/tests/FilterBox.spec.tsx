@@ -32,72 +32,78 @@ describe('<FilterBox />', () => {
     });
 
     it('calls onFilter when the filter input value has changed and prop is set', async () => {
+        const user = userEvent.setup();
         const filterSpy = jest.fn();
 
         render(<FilterBox onFilter={filterSpy} />);
-        await userEvent.click(screen.getByRole('textbox'));
+        await user.click(screen.getByRole('textbox'));
 
-        await userEvent.keyboard('{enter}');
+        await user.keyboard('{enter}');
 
         expect(filterSpy).not.toHaveBeenCalled();
 
-        await userEvent.type(await screen.findByRole('textbox'), 'F');
+        await user.type(await screen.findByRole('textbox'), 'F');
 
         expect(filterSpy).toHaveBeenCalled();
     });
 
     it('calls onFilterCallback when the filter input value has changed and prop is set', async () => {
+        const user = userEvent.setup();
         const onFilterCallbackSpy = jest.fn();
 
         render(<FilterBox onFilterCallback={onFilterCallbackSpy} />);
-        await userEvent.click(screen.getByRole('textbox'));
-        await userEvent.keyboard('{enter}');
+        await user.click(screen.getByRole('textbox'));
+        await user.keyboard('{enter}');
 
         expect(onFilterCallbackSpy).not.toHaveBeenCalled();
 
-        await userEvent.type(await screen.findByRole('textbox'), 'F');
+        await user.type(await screen.findByRole('textbox'), 'F');
 
         expect(onFilterCallbackSpy).toHaveBeenCalled();
     });
 
     it('calls onBlur when the input loose focus', async () => {
+        const user = userEvent.setup();
         const onBlur = jest.fn();
 
         render(<FilterBox onBlur={onBlur} />);
 
-        await userEvent.click(screen.getByRole('textbox'));
-        await userEvent.keyboard('{enter}');
-        await userEvent.tab(); // remove focus from the input
+        await user.click(screen.getByRole('textbox'));
+        await user.keyboard('{enter}');
+        await user.tab(); // remove focus from the input
 
         expect(onBlur).toHaveBeenCalled();
     });
 
     it('calls onKeyDown when the input get a key down event', async () => {
+        const user = userEvent.setup();
         const onKeyDownSpy = jest.fn();
 
         render(<FilterBox onKeyDown={onKeyDownSpy} />);
-        await userEvent.click(await screen.findByRole('textbox'));
-        await userEvent.keyboard('F');
+        await user.click(await screen.findByRole('textbox'));
+        await user.keyboard('F');
 
         expect(onKeyDownSpy).toHaveBeenCalled();
     });
 
     it('calls onKeyUp when the input get a key up event', async () => {
+        const user = userEvent.setup();
         const onKeyUpSpy = jest.fn();
 
         render(<FilterBox onKeyUp={onKeyUpSpy} />);
-        await userEvent.click(await screen.findByRole('textbox'));
-        await userEvent.keyboard('F');
+        await user.click(await screen.findByRole('textbox'));
+        await user.keyboard('F');
 
         expect(onKeyUpSpy).toHaveBeenCalled();
     });
 
     it('calls placeCursorAtEndOfInputValue when a focus event is triggered on the filter box', async () => {
+        const user = userEvent.setup();
         const placeCursorAtEndOfInputValueSpy = jest.spyOn(FilterBox.prototype, 'placeCursorAtEndOfInputValue');
 
         render(<FilterBox />);
 
-        await userEvent.click(screen.getByRole('textbox'));
+        await user.click(screen.getByRole('textbox'));
 
         expect(placeCursorAtEndOfInputValueSpy).toHaveBeenCalledTimes(1);
     });
