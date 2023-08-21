@@ -17,6 +17,7 @@ const useStyles = createStyles((theme) => ({
         borderBottom: `1px solid ${theme.colors.gray[3]}`,
         fontSize: theme.headings.sizes.h3.fontSize,
         lineHeight: theme.headings.sizes.h3.lineHeight,
+        wordWrap: 'break-word',
     },
     success: {backgroundColor: theme.colors.lime[6], color: color.primary.pureWhite},
     warning: {backgroundColor: theme.colors.yellow[5], color: color.primary.pureWhite},
