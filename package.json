@@ -63,7 +63,7 @@
         "@sindresorhus/slugify": "2.2.1",
         "aws-sdk": "2.1441.0",
         "commitizen": "4.3.0",
-        "conventional-changelog-angular": "6.0.0",
+        "conventional-changelog-angular": "7.0.0",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "8.47.0",
         "eslint-config-plasma": "workspace:*",
