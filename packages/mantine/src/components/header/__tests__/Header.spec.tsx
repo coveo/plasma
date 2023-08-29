@@ -10,7 +10,7 @@ describe('Header', () => {
         const header = screen.getByRole('heading');
         expect(header).toMatchInlineSnapshot(`
           <h1
-            class="mantine-Text-root mantine-Title-root mantine-m67b81"
+            class="mantine-Text-root mantine-Title-root mantine-PlasmaHeader-title mantine-1o7jx33"
           >
             child
           </h1>
