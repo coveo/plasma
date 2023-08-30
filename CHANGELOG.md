@@ -1,3 +1,12 @@
+# 52.16.0 (2023-08-30)
+
+
+### Features
+
+* **mantine, header:** make component theme-able (#3530) 22ad0d9, closes #3530
+
+
+
 # 52.15.0 (2023-08-21)
 
 
