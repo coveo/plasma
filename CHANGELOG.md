@@ -1,3 +1,12 @@
+## 52.16.1 (2023-08-31)
+
+
+### Bug Fixes
+
+* **mantine, header:** add missing exports (#3531) 889bb0d, closes #3531
+
+
+
 # 52.16.0 (2023-08-30)
 
 
