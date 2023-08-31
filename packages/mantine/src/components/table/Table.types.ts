@@ -3,27 +3,27 @@ import {UseFormReturnType} from '@mantine/form';
 import {
     ColumnDef,
     CoreOptions,
-    InitialTableState as TanstackInitialTableState,
     Table,
     TableOptions,
+    InitialTableState as TanstackInitialTableState,
     TableState as TanstackTableState,
 } from '@tanstack/table-core';
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
 
 import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
-import {TableLayouts} from './layouts/TableLayouts';
-import {TableActions} from './TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
-import {TableConsumer} from './TableConsumer';
-import {TableDateRangePicker} from './TableDateRangePicker';
 import {TableFilter} from './TableFilter';
-import {TableFooter} from './TableFooter';
 import {TableHeader} from './TableHeader';
-import {TableLastUpdated} from './TableLastUpdated';
-import {TableLoading} from './TableLoading';
-import {TablePagination} from './TablePagination';
-import {TablePerPage} from './TablePerPage';
-import {TablePredicate} from './TablePredicate';
+import {TableLayouts} from './layouts/TableLayouts';
+import {TableActions} from './table-actions/TableActions';
+import {TableConsumer} from './table-consumer/TableConsumer';
+import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
+import {TableFooter} from './table-footer/TableFooter';
+import {TableLastUpdated} from './table-last-updated/TableLastUpdated';
+import {TableLoading} from './table-loading/TableLoading';
+import {TablePagination} from './table-pagination/TablePagination';
+import {TablePerPage} from './table-per-page/TablePerPage';
+import {TablePredicate} from './table-predicate/TablePredicate';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {

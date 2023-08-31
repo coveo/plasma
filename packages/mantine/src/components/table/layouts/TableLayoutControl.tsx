@@ -1,6 +1,6 @@
 import {Box, Center, Grid, SegmentedControl, Space} from '@mantine/core';
-import {TableComponentsOrder} from './Table.styles';
-import {useTable} from './TableContext';
+import {TableComponentsOrder} from '../Table.styles';
+import {useTable} from '../TableContext';
 
 export const TableLayoutControl = () => {
     const {form, layouts} = useTable();

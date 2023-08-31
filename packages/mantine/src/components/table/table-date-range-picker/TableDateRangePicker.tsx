@@ -4,15 +4,15 @@ import {useToggle} from '@mantine/hooks';
 import dayjs from 'dayjs';
 import {FunctionComponent} from 'react';
 
-import {Button} from '../button';
+import {Button} from '../../button';
 import {
     DateRangePickerInlineCalendar,
     DateRangePickerInlineCalendarProps,
     DateRangePickerPreset,
     DateRangePickerValue,
-} from '../date-range-picker';
-import {TableComponentsOrder} from './Table.styles';
-import {useTable} from './TableContext';
+} from '../../date-range-picker';
+import {TableComponentsOrder} from '../Table.styles';
+import {useTable} from '../TableContext';
 
 const useStyles = createStyles((theme) => ({
     root: {},

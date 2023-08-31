@@ -3,8 +3,8 @@ import {ActionIcon, DefaultProps, Grid, Selectors, TextInput, createStyles} from
 import {ChangeEventHandler, FunctionComponent, MouseEventHandler, useState} from 'react';
 
 import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
-import {TableComponentsOrder} from './Table.styles';
-import {useTable} from './TableContext';
+import {TableComponentsOrder} from '../Table.styles';
+import {useTable} from '../TableContext';
 
 const useStyles = createStyles((theme) => ({
     root: {},

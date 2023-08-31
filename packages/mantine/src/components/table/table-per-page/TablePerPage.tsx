@@ -1,7 +1,7 @@
 import {Group, SegmentedControl, Text} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
-import {useTable} from './TableContext';
+import {useTable} from '../TableContext';
 
 interface TablePerPageProps {
     /**

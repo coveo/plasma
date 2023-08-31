@@ -1,8 +1,8 @@
 import {createStyles, DefaultProps, Grid, Group, Selectors} from '@mantine/core';
 import {ReactElement, ReactNode} from 'react';
 
-import {TableComponentsOrder} from './Table.styles';
-import {useTable} from './TableContext';
+import {TableComponentsOrder} from '../Table.styles';
+import {useTable} from '../TableContext';
 
 const useStyles = createStyles((theme) => ({
     root: {},

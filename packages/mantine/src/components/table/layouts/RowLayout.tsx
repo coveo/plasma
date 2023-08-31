@@ -4,11 +4,11 @@ import {flexRender} from '@tanstack/react-table';
 import {defaultColumnSizing} from '@tanstack/table-core';
 import {Fragment, type MouseEvent} from 'react';
 import {TableLayout, TableLayoutProps} from '../Table.types';
-import {TableCollapsibleColumn} from '../TableCollapsibleColumn';
 import {useTable} from '../TableContext';
-import {TableLoading} from '../TableLoading';
-import {TableSelectableColumn} from '../TableSelectableColumn';
-import {Th} from '../Th';
+import {TableCollapsibleColumn} from '../table-column/TableCollapsibleColumn';
+import {TableSelectableColumn} from '../table-column/TableSelectableColumn';
+import {Th} from '../table-header/Th';
+import {TableLoading} from '../table-loading/TableLoading';
 
 interface TableStylesParams {
     multiRowSelectionEnabled: boolean;

@@ -2,7 +2,7 @@ import {createStyles, DefaultProps, Group, Selectors, Text} from '@mantine/core'
 import {useDidUpdate} from '@mantine/hooks';
 import dayjs from 'dayjs';
 import {FunctionComponent, useState} from 'react';
-import {useTable} from './TableContext';
+import {useTable} from '../TableContext';
 
 const useStyles = createStyles((theme) => ({
     root: {
