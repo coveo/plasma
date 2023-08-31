@@ -3,7 +3,7 @@ import {Anchor, DefaultProps, Selectors, Tooltip, TooltipProps, useComponentDefa
 import {FunctionComponent, ReactNode} from 'react';
 import {HeaderDocAnchorStylesParams, useStyles} from './HeaderDocAnchor.styles';
 
-type HeaderDocAnchorStylesNames = Selectors<typeof useStyles>;
+export type HeaderDocAnchorStylesNames = Selectors<typeof useStyles>;
 
 const defaultProps: Partial<HeaderDocAnchorProps> = {
     position: 'right',

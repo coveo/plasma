@@ -2,7 +2,7 @@ import {Breadcrumbs, BreadcrumbsProps, DefaultProps, Selectors} from '@mantine/c
 import {FunctionComponent} from 'react';
 import {HeaderBreadcrumbsStylesParams, useStyles} from './HeaderBreadcrumbs.styles';
 
-type HeaderBreadcrumbsStylesNames = Selectors<typeof useStyles>;
+export type HeaderBreadcrumbsStylesNames = Selectors<typeof useStyles>;
 
 export type HeaderBreadcrumbsProps = BreadcrumbsProps &
     DefaultProps<HeaderBreadcrumbsStylesNames, HeaderBreadcrumbsStylesParams>;
