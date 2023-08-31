@@ -16,7 +16,10 @@ import {HeaderActions} from './HeaderActions/HeaderActions';
 import {HeaderBreadcrumbs} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 import {HeaderDocAnchor} from './HeaderDocAnchor/HeaderDocAnchor';
 
-type HeaderStylesNames = Selectors<typeof useStyles>;
+export type {HeaderDocAnchorProps, HeaderDocAnchorStylesNames} from './HeaderDocAnchor/HeaderDocAnchor';
+export type {HeaderBreadcrumbsProps, HeaderBreadcrumbsStylesNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
+export type {HeaderActionsProps, HeaderActionsStylesNames} from './HeaderActions/HeaderActions';
+export type HeaderStylesNames = Selectors<typeof useStyles>;
 
 export interface HeaderProps extends Omit<GroupProps, 'styles'>, DefaultProps<HeaderStylesNames, HeaderStylesParams> {
     /**

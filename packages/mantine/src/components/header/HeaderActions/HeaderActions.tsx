@@ -2,7 +2,7 @@ import {DefaultProps, Group, GroupProps, Selectors, useComponentDefaultProps} fr
 import {FunctionComponent} from 'react';
 import {HeaderActionsStylesParams, useStyles} from './HeaderActions.styles';
 
-type HeaderActionsStylesNames = Selectors<typeof useStyles>;
+export type HeaderActionsStylesNames = Selectors<typeof useStyles>;
 
 export type HeaderActionsProps = GroupProps & DefaultProps<HeaderActionsStylesNames, HeaderActionsStylesParams>;
 
