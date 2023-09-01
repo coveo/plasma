@@ -379,6 +379,9 @@ export const plasmaTheme: MantineThemeOverride = {
                 root: {
                     color: theme.colors.gray[6],
                     borderRadius: `${theme.defaultRadius}px 0px 0px ${theme.defaultRadius}px`,
+                    ...theme.fn.hover({
+                        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[1],
+                    }),
                 },
                 label: {
                     ref: getStylesRef('label'),
@@ -390,6 +393,30 @@ export const plasmaTheme: MantineThemeOverride = {
                     },
                 },
             }),
+        },
+        Navbar: {
+            styles: (theme) => ({
+                root: {
+                    borderColor: theme.colors.gray[3],
+                },
+            }),
+        },
+        ScrollArea: {
+            styles: {
+                viewport: {
+                    // https://github.com/radix-ui/primitives/issues/926
+                    '&[data-radix-scroll-area-viewport]': {
+                        '& > :first-of-type': {
+                            display: 'block !important',
+                        },
+                    },
+                },
+            },
+        },
+        Divider: {
+            defaultProps: {
+                color: 'gray.3',
+            },
         },
     },
 };
