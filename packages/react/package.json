@@ -47,7 +47,7 @@
         "@dnd-kit/utilities": "3.2.1",
         "@loadable/component": "5.15.3",
         "@swc/helpers": "0.5.1",
-        "@types/codemirror": "0.0.109",
+        "@types/codemirror": "5.60.10",
         "clsx": "2.0.0",
         "codemirror": "5.65.14",
         "d3": "7.8.5",
