@@ -27,7 +27,7 @@ import {EngineProvider} from '../search/engine/EngineProvider';
 import LegacyWarningBanner from '../building-blocs/LegacyWarningBanner';
 
 const Header = () => (
-    <MantineHeader height={100}>
+    <MantineHeader height={100} withBorder={false}>
         <Group
             position="apart"
             px="lg"
