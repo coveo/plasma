@@ -1,16 +1,16 @@
-import {CheckSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
-import {color} from '@coveord/plasma-tokens';
+import { CheckSize16Px, InfoSize24Px } from '@coveord/plasma-react-icons';
+import { color } from '@coveord/plasma-tokens';
 import {
     getSize,
+    getStylesRef,
     rem,
     type MantineThemeOverride,
     type NotificationProps,
     type StepperStylesParams,
     type TabsStylesParams,
-    getStylesRef,
 } from '@mantine/core';
 
-import {PlasmaColors} from './PlasmaColors';
+import { PlasmaColors } from './PlasmaColors';
 
 export const plasmaTheme: MantineThemeOverride = {
     // These are overrides over https://github.com/mantinedev/mantine/blob/master/src/mantine-styles/src/theme/default-theme.ts

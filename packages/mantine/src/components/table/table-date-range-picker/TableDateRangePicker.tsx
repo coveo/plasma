@@ -1,42 +1,15 @@
 import {CalendarSize24Px} from '@coveord/plasma-react-icons';
-import {createStyles, DefaultProps, Grid, Group, Popover, Selectors, Text} from '@mantine/core';
+import {Grid, Group, Popover, Text} from '@mantine/core';
 import {useToggle} from '@mantine/hooks';
 import dayjs from 'dayjs';
 import {FunctionComponent} from 'react';
 
 import {Button} from '../../button';
-import {
-    DateRangePickerInlineCalendar,
-    DateRangePickerInlineCalendarProps,
-    DateRangePickerPreset,
-    DateRangePickerValue,
-} from '../../date-range-picker';
+import {DateRangePickerInlineCalendar, DateRangePickerValue} from '../../date-range-picker';
 import {TableComponentsOrder} from '../Table.styles';
 import {useTable} from '../TableContext';
-
-const useStyles = createStyles((theme) => ({
-    root: {},
-    wrapper: {},
-    label: {},
-}));
-
-type TableDateRangePickerStylesNames = Selectors<typeof useStyles>;
-interface TableDateRangePickerProps
-    extends Pick<DateRangePickerInlineCalendarProps, 'startProps' | 'endProps' | 'rangeCalendarProps'>,
-        DefaultProps<TableDateRangePickerStylesNames> {
-    /**
-     * An object containing date presets.
-     * If empty the preset dropdown won't be shown
-     *
-     * @example
-     * {
-     *     january: {label: 'January', range: [new Date(2022, 0, 1), new Date(2022, 0, 31)]},
-     *     february: {label: 'February', range: [new Date(2022, 1, 1), new Date(2022, 1, 28)]}
-     * }
-     * @default {}
-     */
-    presets?: Record<string, DateRangePickerPreset>;
-}
+import useStyles from './TableDateRangePicker.styles';
+import {TableDateRangePickerProps} from './TableDateRangePicker.types';
 
 export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> = ({
     presets = {},

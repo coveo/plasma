@@ -1,30 +1,12 @@
 import {CrossSize16Px, SearchSize16Px} from '@coveord/plasma-react-icons';
-import {ActionIcon, DefaultProps, Grid, Selectors, TextInput, createStyles} from '@mantine/core';
+import {ActionIcon, Grid, TextInput} from '@mantine/core';
 import {ChangeEventHandler, FunctionComponent, MouseEventHandler, useState} from 'react';
 
 import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
 import {TableComponentsOrder} from '../Table.styles';
 import {useTable} from '../TableContext';
-
-const useStyles = createStyles((theme) => ({
-    root: {},
-    wrapper: {
-        marginBottom: '0 !important',
-    },
-    empty: {
-        color: theme.colors.gray[4],
-    },
-}));
-
-type TableFilterStylesNames = Selectors<typeof useStyles>;
-interface TableFilterProps extends DefaultProps<TableFilterStylesNames> {
-    /**
-     * The placeholder for the filter input
-     *
-     * @default "Search by any field"
-     */
-    placeholder?: string;
-}
+import useStyles from './TableFilter.styles';
+import {TableFilterProps} from './TableFilter.types';
 
 export const TableFilter: FunctionComponent<TableFilterProps> = ({
     placeholder = 'Search by any field',

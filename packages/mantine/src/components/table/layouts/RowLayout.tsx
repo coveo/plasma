@@ -1,88 +1,16 @@
 import {ListSize16Px} from '@coveord/plasma-react-icons';
-import {Box, Collapse, createStyles, rem} from '@mantine/core';
+import {Box, Collapse} from '@mantine/core';
 import {flexRender} from '@tanstack/react-table';
 import {defaultColumnSizing} from '@tanstack/table-core';
 import {Fragment, type MouseEvent} from 'react';
-import {TableLayout, TableLayoutProps} from '../Table.types';
+import {TableLayout} from '../Table.types';
 import {useTable} from '../TableContext';
 import {TableCollapsibleColumn} from '../table-column/TableCollapsibleColumn';
 import {TableSelectableColumn} from '../table-column/TableSelectableColumn';
 import {Th} from '../table-header/Th';
 import {TableLoading} from '../table-loading/TableLoading';
-
-interface TableStylesParams {
-    multiRowSelectionEnabled: boolean;
-    disableRowSelection: boolean;
-}
-
-const useStyles = createStyles<string, TableStylesParams>((theme, {multiRowSelectionEnabled, disableRowSelection}) => {
-    const rowBackgroundColor =
-        theme.colorScheme === 'dark' ? theme.fn.rgba(theme.colors[theme.primaryColor][7], 0.2) : theme.colors.gray[1];
-    const border = `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`;
-    return {
-        headerColumns: {
-            '& th:first-of-type > *': {
-                paddingLeft: '40px',
-            },
-
-            '& input[type=checkbox]': {
-                backgroundColor: disableRowSelection ? `${theme.colors.gray[2]}` : undefined,
-                borderColor: disableRowSelection ? `${theme.colors.gray[3]}` : `${theme.colors.gray[4]}`,
-                pointerEvents: disableRowSelection ? 'none' : 'auto',
-                cursor: disableRowSelection ? 'not-allowed' : 'default',
-
-                '& + svg': {
-                    color: disableRowSelection ? `${theme.colors.gray[5]}` : 'inherit',
-                },
-            },
-        },
-
-        rowSelected: {
-            backgroundColor: multiRowSelectionEnabled ? undefined : rowBackgroundColor,
-        },
-
-        rowUnselectable: {
-            '& input[type=checkbox]': {
-                backgroundColor: `${theme.colors.gray[2]}`,
-                borderColor: `${theme.colors.gray[3]}`,
-                pointerEvents: 'none',
-                cursor: 'not-allowed',
-
-                '&:checked + svg': {
-                    color: `${theme.colors.gray[5]}`,
-                },
-            },
-        },
-
-        rowCollapsibleButtonCell: {
-            textAlign: 'right',
-            padding: `calc(${theme.spacing.xs}/2) ${theme.spacing.sm} !important`,
-        },
-
-        row: {
-            '& td:first-of-type': {
-                paddingLeft: '40px',
-            },
-            '&:hover': {
-                backgroundColor: rowBackgroundColor,
-            },
-            overflowWrap: 'anywhere',
-        },
-
-        cell: {
-            verticalAlign: 'middle',
-            // We must use height instead of minHeight here, otherwise it doesn't apply
-            height: '56px',
-            padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
-            borderBottom: border,
-        },
-
-        collapsible: {
-            backgroundColor: rowBackgroundColor,
-            borderBottom: border,
-        },
-    };
-});
+import useStyles from './RowLayout.styles';
+import {TableLayoutProps} from './RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
 
 const RowLayoutHeader = <T,>({table}: TableLayoutProps<T>) => {
     const {multiRowSelectionEnabled, disableRowSelection} = useTable();
@@ -103,9 +31,16 @@ const RowLayoutBody = <T,>({
     getExpandChildren,
     loading,
     keepSelection,
+    classNames,
+    styles,
+    unstyled,
+    ...others
 }: TableLayoutProps<T>) => {
     const {multiRowSelectionEnabled, disableRowSelection} = useTable();
-    const {classes, cx} = useStyles({disableRowSelection, multiRowSelectionEnabled});
+    const {classes, cx} = useStyles(
+        {disableRowSelection, multiRowSelectionEnabled},
+        {name: 'RowLayout', classNames, styles, unstyled},
+    );
 
     const toggleCollapsible = (el: HTMLTableRowElement) => {
         const cell = el.children[el.children.length - 1] as HTMLTableCellElement;

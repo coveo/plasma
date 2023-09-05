@@ -1,11 +1,11 @@
-export * from './Table';
-export {useTable} from './TableContext';
-export {
-    type onTableChangeEvent,
-    type InitialTableState,
-    type TableState,
-    type TableProps,
-    type TableLayout,
-    type TableLayoutProps,
-} from './Table.types';
 export {flexRender as renderTableCell} from '@tanstack/react-table';
+export * from './Table';
+export {
+    type InitialTableState,
+    type TableLayout,
+    type TableProps,
+    type TableState,
+    type onTableChangeEvent,
+} from './Table.types';
+export {useTable} from './TableContext';
+export {type TableLayoutProps} from './layouts/RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
