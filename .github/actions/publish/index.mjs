@@ -1,19 +1,19 @@
 import {
     generateChangelog,
-    getNextVersion,
     getCommits,
+    getNextVersion,
     getRemoteName,
+    gitCommit,
     gitPush,
     gitPushTags,
+    gitSetupSshRemote,
+    gitSetupUser,
     gitTag,
-    gitCommit,
     parseCommits,
     pnpmBumpVersion,
     pnpmGetChangedPackages,
     pnpmPublish,
     writeChangelog,
-    gitSetupSshRemote,
-    gitSetupUser,
 } from '@coveo/semantic-monorepo-tools';
 import angularChangelogConvention from 'conventional-changelog-angular';
 
@@ -43,7 +43,7 @@ export default async ({github, context, exec}, {
     await gitSetupSshRemote(context.repo.owner, context.repo.repo, process.env.DEPLOY_KEY, GIT_SSH_REMOTE);
     await gitSetupUser(GIT_USERNAME, GIT_EMAIL);
 
-    const convention = await angularChangelogConvention;
+    const convention = await angularChangelogConvention();
 
     const lastTag = await getLastTag();
     console.info('Last tag: %s', lastTag);
