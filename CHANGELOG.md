@@ -1,3 +1,13 @@
+## 52.16.2 (2023-09-06)
+
+
+### Bug Fixes
+
+* **mantine:** minor adjustments to the theme (#3532) eab8605, closes #3532
+* **table:** +reset page on predicate change, +unit tests (#3538) 0eb9910, closes #3538
+
+
+
 ## 52.16.1 (2023-08-31)
 
 
