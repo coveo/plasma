@@ -62,4 +62,35 @@ describe('Table.Predicate', () => {
         });
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({predicates: {rank: 'first'}}));
     });
+
+    it('goes back to the first page when changing the predicate', async () => {
+        const user = userEvent.setup();
+        const onChange = vi.fn();
+        render(
+            <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
+                <Table.Header>
+                    <Table.Predicate
+                        id="rank"
+                        data={[
+                            {value: 'first', label: 'First'},
+                            {value: 'second', label: 'Second'},
+                        ]}
+                    />
+                </Table.Header>
+                <Table.Footer>
+                    <Table.PerPage />
+                    <Table.Pagination totalPages={2} />
+                </Table.Footer>
+            </Table>,
+        );
+        await user.click(screen.getByRole('searchbox', {name: 'rank'}));
+        await user.click(screen.getByRole('option', {name: 'First'}));
+        expect(screen.getByRole('searchbox', {name: 'rank'})).toHaveValue('First');
+        await waitFor(() => {
+            expect(onChange).toHaveBeenCalledTimes(1);
+        });
+        expect(onChange).toHaveBeenCalledWith(
+            expect.objectContaining({predicates: {rank: 'first'}, pagination: {pageIndex: 0, pageSize: 50}}),
+        );
+    });
 });
