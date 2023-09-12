@@ -3,34 +3,34 @@ import {useForm} from '@mantine/form';
 import {useDidUpdate} from '@mantine/hooks';
 import {
     ColumnDef,
-    defaultColumnSizing,
-    getCoreRowModel,
     Row,
     TableState as TanstackTableState,
+    defaultColumnSizing,
+    getCoreRowModel,
     useReactTable,
 } from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Children, cloneElement, Dispatch, ReactElement, useCallback, useEffect, useState} from 'react';
+import {Children, Dispatch, ReactElement, cloneElement, useCallback, useEffect, useState} from 'react';
 
-import {TableLayouts} from './layouts/TableLayouts';
+import {useRowSelection} from '../../hooks/useRowSelection';
 import useStyles from './Table.styles';
 import {TableFormType, TableProps, TableState, TableType} from './Table.types';
-import {TableActions} from './TableActions';
-import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
-import {TableConsumer} from './TableConsumer';
 import {TableContext} from './TableContext';
-import {TableDateRangePicker} from './TableDateRangePicker';
-import {TableFilter} from './TableFilter';
-import {TableFooter} from './TableFooter';
-import {TableHeader} from './TableHeader';
-import {TableLastUpdated} from './TableLastUpdated';
-import {TableLoading} from './TableLoading';
-import {TablePagination} from './TablePagination';
-import {TablePerPage} from './TablePerPage';
-import {TablePredicate} from './TablePredicate';
-import {TableSelectableColumn} from './TableSelectableColumn';
-import {useRowSelection} from './useRowSelection';
+import {TableLayouts} from './layouts/TableLayouts';
+import {TableActions} from './table-actions/TableActions';
+import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/TableCollapsibleColumn';
+import {TableSelectableColumn} from './table-column/TableSelectableColumn';
+import {TableConsumer} from './table-consumer/TableConsumer';
+import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
+import {TableFilter} from './table-filter/TableFilter';
+import {TableFooter} from './table-footer/TableFooter';
+import {TableHeader} from './table-header/TableHeader';
+import {TableLastUpdated} from './table-last-updated/TableLastUpdated';
+import {TableLoading} from './table-loading/TableLoading';
+import {TablePagination} from './table-pagination/TablePagination';
+import {TablePerPage} from './table-per-page/TablePerPage';
+import {TablePredicate} from './table-predicate/TablePredicate';
 
 export const Table: TableType = <T,>({
     data,

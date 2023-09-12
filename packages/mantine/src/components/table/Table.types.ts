@@ -3,27 +3,27 @@ import {UseFormReturnType} from '@mantine/form';
 import {
     ColumnDef,
     CoreOptions,
-    InitialTableState as TanstackInitialTableState,
-    Table,
     TableOptions,
+    InitialTableState as TanstackInitialTableState,
     TableState as TanstackTableState,
 } from '@tanstack/table-core';
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
 
 import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
+import {TableLayoutProps} from './layouts/RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
 import {TableLayouts} from './layouts/TableLayouts';
-import {TableActions} from './TableActions';
-import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
-import {TableConsumer} from './TableConsumer';
-import {TableDateRangePicker} from './TableDateRangePicker';
-import {TableFilter} from './TableFilter';
-import {TableFooter} from './TableFooter';
-import {TableHeader} from './TableHeader';
-import {TableLastUpdated} from './TableLastUpdated';
-import {TableLoading} from './TableLoading';
-import {TablePagination} from './TablePagination';
-import {TablePerPage} from './TablePerPage';
-import {TablePredicate} from './TablePredicate';
+import {TableActions} from './table-actions/TableActions';
+import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/TableCollapsibleColumn';
+import {TableConsumer} from './table-consumer/TableConsumer';
+import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
+import {TableFilter} from './table-filter/TableFilter';
+import {TableFooter} from './table-footer/TableFooter';
+import {TableHeader} from './table-header/TableHeader';
+import {TableLastUpdated} from './table-last-updated/TableLastUpdated';
+import {TableLoading} from './table-loading/TableLoading';
+import {TablePagination} from './table-pagination/TablePagination';
+import {TablePerPage} from './table-per-page/TablePerPage';
+import {TablePredicate} from './table-predicate/TablePredicate';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -60,26 +60,6 @@ export interface TableLayout {
      * In the standard row layout that is where the rows would be displayed.
      */
     Body: <T>(props: TableLayoutProps<T>) => ReactElement;
-}
-
-export interface TableLayoutProps<T = unknown> {
-    table: Table<T>;
-    loading?: boolean;
-    /**
-     * Action passed when user double clicks on a row
-     */
-    doubleClickAction?: (datum: T) => void;
-    /**
-     * Function that generates the expandable content of a row
-     * Return null for rows that don't need to be expandable
-     *
-     * @param datum the row for which the children should be generated.
-     */
-    getExpandChildren?: (datum: T) => ReactNode;
-    /**
-     * Whether clicking on a selected row will deselect the row or not.
-     */
-    keepSelection?: boolean;
 }
 
 export type TableFormType = {

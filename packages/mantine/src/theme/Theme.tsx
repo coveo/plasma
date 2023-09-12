@@ -2,12 +2,12 @@ import {CheckSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
     getSize,
+    getStylesRef,
     rem,
     type MantineThemeOverride,
     type NotificationProps,
     type StepperStylesParams,
     type TabsStylesParams,
-    getStylesRef,
 } from '@mantine/core';
 
 import {PlasmaColors} from './PlasmaColors';

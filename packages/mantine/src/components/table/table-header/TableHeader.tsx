@@ -1,29 +1,14 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import {createStyles, DefaultProps, Grid, Selectors, Tooltip} from '@mantine/core';
-import {FunctionComponent, ReactNode} from 'react';
+import {Grid, Tooltip} from '@mantine/core';
+import {FunctionComponent} from 'react';
 
-import {Button} from '../button';
-import {TableComponentsOrder} from './Table.styles';
-import {useTable} from './TableContext';
-import {TableLayoutControl} from './TableLayoutControl';
+import {Button} from '../../button';
+import {TableLayoutControl} from '../layouts/TableLayoutControl';
+import {TableComponentsOrder} from '../Table.styles';
+import {useTable} from '../TableContext';
+import useStyles from './TableHeader.styles';
+import {TableHeaderProps} from './TableHeader.types';
 
-const useStyles = createStyles((theme) => ({
-    root: {
-        flexDirection: 'row-reverse',
-        flexWrap: 'wrap-reverse',
-        background: `repeating-linear-gradient(${theme.colors.gray[1]}, ${theme.colors.gray[1]} 68px, ${theme.colors.gray[3]} 68px, ${theme.colors.gray[3]} 69px)`,
-        borderBottom: `1px solid ${theme.colors.gray[3]}`,
-    },
-    multiSelectInfo: {
-        display: 'flex',
-    },
-}));
-
-type TableHeaderStylesNames = Selectors<typeof useStyles>;
-interface TableHeaderProps extends DefaultProps<TableHeaderStylesNames> {
-    /* Children of header (ie: actions, datepicker, etc.) */
-    children?: ReactNode;
-}
 export const TableHeader: FunctionComponent<TableHeaderProps> = ({
     classNames,
     styles,

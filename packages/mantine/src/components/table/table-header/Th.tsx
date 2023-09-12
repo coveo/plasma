@@ -1,36 +1,8 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
-import {Center, Group, Text, UnstyledButton, createStyles} from '@mantine/core';
-import {Header, defaultColumnSizing, flexRender} from '@tanstack/react-table';
-
-const useStyles = createStyles((theme, columnSizing: {size: number; minSize: number; maxSize: number}) => ({
-    th: {
-        fontWeight: '400 !important' as any,
-        padding: '0 !important',
-        verticalAlign: 'middle',
-        whiteSpace: 'nowrap',
-        textAlign: 'left',
-        color: theme.colors.gray[6],
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[0],
-        width: columnSizing.size ?? 'auto',
-        minWidth: columnSizing.minSize,
-        maxWidth: columnSizing.maxSize,
-    },
-
-    control: {
-        color: 'inherit',
-        whiteSpace: 'inherit',
-        fontWeight: 'inherit',
-        width: '100%',
-        padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
-        '&:hover': {
-            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[7] : theme.colors.gray[1],
-        },
-    },
-}));
-
-interface ThProps<T> {
-    header: Header<T, unknown>;
-}
+import {Center, Group, Text, UnstyledButton} from '@mantine/core';
+import {defaultColumnSizing, flexRender} from '@tanstack/react-table';
+import useStyles from './Th.styles';
+import {ThProps} from './Th.types';
 
 const SortingIcons = {
     asc: ArrowUpSize16Px,

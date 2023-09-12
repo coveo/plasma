@@ -1,34 +1,10 @@
-import {createStyles, DefaultProps, Grid, Group, Select, SelectItem, Selectors, Text} from '@mantine/core';
+import {Grid, Group, Select, Text} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
-import {TableComponentsOrder} from './Table.styles';
-import {useTable} from './TableContext';
-
-const useStyles = createStyles((theme) => ({
-    root: {},
-    wrapper: {},
-    label: {},
-    select: {},
-}));
-
-type TablePredicateStylesNames = Selectors<typeof useStyles>;
-
-interface TablePredicateProps extends DefaultProps<TablePredicateStylesNames> {
-    /**
-     * Unique identifier for this predicate. Will be used to access the selected value in the table state
-     */
-    id: string;
-    /**
-     * The values to display in the predicate
-     */
-    data: SelectItem[];
-    /**
-     * Input label (not displayed for now)
-     *
-     * @default default to the predicate id
-     */
-    label?: string;
-}
+import {TableComponentsOrder} from '../Table.styles';
+import {useTable} from '../TableContext';
+import useStyles from './TablePredicate.styles';
+import {TablePredicateProps} from './TablePredicate.types';
 
 export const TablePredicate: FunctionComponent<TablePredicateProps> = ({
     id,
