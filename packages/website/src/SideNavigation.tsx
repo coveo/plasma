@@ -112,6 +112,7 @@ const MantineNavigation = () => (
                 <InternalNavLink href="/layout/StickyFooter" label="Sticky footer" />
             </NavLink>
             <NavLink label="Form" icon={<ClickSize16Px height={16} />} defaultOpened>
+                <InternalNavLink href="/form/ActionIcon" label="Action Icon" />
                 <InternalNavLink href="/form/Button" label="Button" />
                 <InternalNavLink href="/form/CodeEditor" label="Code editor" />
                 <InternalNavLink href="/form/Collection" label="Collection" />
