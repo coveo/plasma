@@ -1,35 +1,67 @@
-import {Box, createStyles, DefaultProps, Divider, Group} from '@mantine/core';
-import {FunctionComponent, PropsWithChildren} from 'react';
+import {
+    Box,
+    createStyles,
+    DefaultProps,
+    Divider,
+    Group,
+    GroupPosition,
+    MantineNumberSize,
+    Selectors,
+    useComponentDefaultProps,
+} from '@mantine/core';
+import {forwardRef, ReactNode} from 'react';
 
-export interface StickyFooterProps extends DefaultProps {
+export interface StickyFooterProps extends DefaultProps<Selectors<typeof useStyles>> {
     /**
      * Whether a border is render on top of the footer
      */
     borderTop?: boolean;
+    /**
+     * Position of the children within the footer
+     *
+     * @default 'right'
+     */
+    position?: GroupPosition;
+    /**
+     * Defines the spacing between footer children
+     *
+     * @default 'sm'
+     */
+    spacing?: MantineNumberSize;
+    /**
+     * Footer's children, usually buttons
+     */
+    children?: ReactNode;
 }
 
-const useStyles = createStyles(() => ({
+const useStyles = createStyles((theme) => ({
+    root: {},
     footer: {
         position: 'sticky',
         bottom: 0,
         zIndex: 10,
         backgroundColor: 'white',
+        padding: theme.spacing.lg,
     },
+    divider: {},
 }));
 
-export const StickyFooter: FunctionComponent<PropsWithChildren<StickyFooterProps>> = ({
-    borderTop,
-    children,
-    ...others
-}) => {
-    const {classes} = useStyles();
+const defaultProps: Partial<StickyFooterProps> = {
+    spacing: 'sm',
+    position: 'right',
+};
+
+export const StickyFooter = forwardRef<HTMLDivElement, StickyFooterProps>((props, ref) => {
+    const {borderTop, spacing, position, children, className, classNames, styles, unstyled, ...others} =
+        useComponentDefaultProps('StickyFooter', defaultProps, props);
+    const {classes, cx} = useStyles(null, {name: 'StickyFooter', classNames, styles, unstyled});
 
     return (
-        <Box className={classes.footer}>
-            {borderTop ? <Divider size="xs" /> : null}
-            <Group position="right" spacing="sm" p="lg" {...others}>
+        <Box ref={ref} className={cx(classes.root, className)}>
+            {borderTop ? <Divider size="xs" className={classes.divider} /> : null}
+            <Group position={position} spacing={spacing} className={classes.footer} {...others}>
                 {children}
             </Group>
         </Box>
     );
-};
+});
