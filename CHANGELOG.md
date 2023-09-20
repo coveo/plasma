@@ -1,3 +1,19 @@
+# 52.17.0 (2023-09-20)
+
+
+### Bug Fixes
+
+* **mantine:** fix SegmentedControl overlapping StickyFooter (#3542) 8828246, closes #3542
+* **react:** fix type error in MultilineBoxWithRemoveButton e497a76
+
+
+### Features
+
+* **mantine:** make StickyFooter more flexible (#3547) 4b62dfd, closes #3547
+* **mantine:** simplifying disabled tooltips on ActionIcon (#3549) 11e858e, closes #3549
+
+
+
 ## 52.16.2 (2023-09-06)
 
 
