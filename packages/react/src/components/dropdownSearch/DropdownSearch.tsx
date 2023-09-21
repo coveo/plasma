@@ -1,7 +1,7 @@
 import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
 import {Component, createElement, KeyboardEvent, MouseEvent, ReactText} from 'react';
-import {InfiniteScrollProps} from 'react-infinite-scroll-component';
+import {type Props as InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
 
@@ -61,7 +61,7 @@ export interface IDropdownSearchOwnProps {
     onClickCallBack?: () => void;
     supportSingleCustomOption?: boolean;
     searchThresold?: number;
-    infiniteScroll?: InfiniteScrollProps;
+    infiniteScroll?: Omit<InfiniteScrollProps, 'children'>;
     hasMoreItems?: () => boolean;
     customFiltering?: (filterText: string) => void;
     autoInfiniteScroll?: IDropdownSearchAutoInfiniteScrollOptions;
@@ -192,7 +192,7 @@ export class DropdownSearch extends Component<IDropdownSearchProps> {
                             {valueToShow}
                         </span>
                         {this.getDropdownOptionAppend(opt)}
-                    </>
+                    </>,
                 );
 
                 return opt.disabled && opt.disabledTooltip ? (
@@ -251,8 +251,8 @@ export class DropdownSearch extends Component<IDropdownSearchProps> {
                         text.substring(index, index + this.props.filterText.length),
                         originalText,
                         highlightIndexKey,
-                        'bold'
-                    )
+                        'bold',
+                    ),
                 );
                 text = text.substring(index + this.props.filterText.length);
                 index = text.toLowerCase().indexOf(this.props.filterText.toLowerCase());
@@ -270,7 +270,7 @@ export class DropdownSearch extends Component<IDropdownSearchProps> {
         subText: string,
         text: string,
         highlightIndexKey: number,
-        className: string = ''
+        className: string = '',
     ): JSX.Element {
         return (
             <span key={`${text}-${highlightIndexKey}`} className={className}>
@@ -348,7 +348,7 @@ export class DropdownSearch extends Component<IDropdownSearchProps> {
     protected getDisplayedOptions(): IDropdownOption[] {
         return _.reject(
             this.props.options,
-            (option) => (!this.props.supportSingleCustomOption && option.custom) || option.hidden
+            (option) => (!this.props.supportSingleCustomOption && option.custom) || option.hidden,
         );
     }
 
@@ -378,7 +378,7 @@ export class DropdownSearch extends Component<IDropdownSearchProps> {
                 open: this.props.isOpened,
                 'mod-menu': this.props.modMenu,
             },
-            ...(this.props.containerClasses || [])
+            ...(this.props.containerClasses || []),
         );
     }
 

@@ -12,10 +12,7 @@ $icon-size: 24px;
 .modal-backdrop,
 .modal-container {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -45,12 +42,12 @@ $icon-size: 24px;
 
 .modal-backdrop {
     z-index: $base-backdrop-z-index;
-    background: rgba(var(--deprecated-purple-blue-rgb), $transparency-1);
-
+    background: rgb(var(--deprecated-purple-blue-rgb) / $transparency-1);
     opacity: 1;
     transition: all 0.3s;
 
     @include generate-layers(10, $base-backdrop-z-index);
+
     &.--react-modal {
         opacity: 0;
     }
@@ -58,12 +55,10 @@ $icon-size: 24px;
     &.prompt-backdrop {
         position: absolute;
         opacity: 0.5;
+
         .mask {
             position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            inset: 0;
         }
     }
 
@@ -110,7 +105,6 @@ $icon-size: 24px;
         width: $modal-width;
         height: $modal-height;
         transform: translate3d(0, 0, 0); // Required for drag and drop positioning with dragula inside the modal.
-
         opacity: 0;
         pointer-events: auto; // Required to reverse "pointer-events: none" effects on modal-content. Known issue: wont work on IE 10.
     }
@@ -226,10 +220,8 @@ $icon-size: 24px;
 .modal-body {
     flex-basis: 0;
     flex-grow: 1;
-
     overflow: auto;
     background-color: var(--white);
-
     -webkit-overflow-scrolling: touch;
 
     .tab-content {

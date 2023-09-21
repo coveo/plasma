@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent} from '@test-utils';
+import {render, screen, userEvent, waitFor} from '@test-utils';
 
 import {Table} from '../Table';
 
@@ -21,7 +21,7 @@ describe('Table.PerPage', () => {
                 <Table.Footer>
                     <Table.PerPage label="Per page" />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         expect(screen.getByText('Per page')).toBeVisible();
@@ -37,7 +37,7 @@ describe('Table.PerPage', () => {
                 <Table.Footer>
                     <Table.PerPage label="Per page" values={[2, 7, 12, 17]} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         const radios = screen.getAllByRole('radio');
@@ -60,34 +60,34 @@ describe('Table.PerPage', () => {
                 <Table.Footer>
                     <Table.PerPage />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         expect(onMount).toHaveBeenCalledWith(
-            expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})})
+            expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})}),
         );
     });
 
     it('calls onChange when changing the number of items per page', async () => {
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
         const onChange = vi.fn();
         render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} onChange={onChange}>
                 <Table.Footer>
                     <Table.PerPage />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         await user.click(screen.queryByRole('radio', {name: '100'}));
         vi.advanceTimersByTime(500);
         expect(onChange).toHaveBeenCalledWith(
-            expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})})
+            expect.objectContaining({pagination: expect.objectContaining({pageSize: 100})}),
         );
     });
 
     it('resets page index when changing the number of items per page', async () => {
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
         const onChange = vi.fn();
         render(
             <Table
@@ -100,13 +100,49 @@ describe('Table.PerPage', () => {
                     <Table.Pagination totalPages={2} />
                     <Table.PerPage />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         await user.click(screen.queryByRole('radio', {name: '100'}));
         vi.advanceTimersByTime(500);
         expect(onChange).toHaveBeenCalledWith(
-            expect.objectContaining({pagination: expect.objectContaining({pageIndex: 0})})
+            expect.objectContaining({pagination: expect.objectContaining({pageIndex: 0})}),
         );
+    });
+
+    it('triggers the onChangePage Callback with the right parameters', async () => {
+        const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
+        const onPerPageChange = vi.fn();
+        render(
+            <Table
+                data={[{name: 'fruit'}, {name: 'vegetable'}]}
+                columns={columns}
+                initialState={{pagination: {pageIndex: 1, pageSize: 50}}}
+            >
+                <Table.Footer>
+                    <Table.Pagination totalPages={2} />
+                    <Table.PerPage onPerPageChange={onPerPageChange} />
+                </Table.Footer>
+            </Table>,
+        );
+
+        onPerPageChange.mockReset();
+
+        await user.click(screen.getByRole('radio', {name: /100/i}));
+
+        await waitFor(() => {
+            expect(onPerPageChange).toHaveBeenCalledWith(100);
+        });
+    });
+
+    it('renders nothing when there are no pages to show', () => {
+        render(
+            <Table data={[]} columns={columns} initialState={{globalFilter: 'filter'}}>
+                <Table.Footer data-testid="table-footer">
+                    <Table.PerPage />
+                </Table.Footer>
+            </Table>,
+        );
+        expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
     });
 });

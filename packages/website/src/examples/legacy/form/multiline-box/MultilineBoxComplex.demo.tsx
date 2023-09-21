@@ -27,7 +27,7 @@ const ComplexMultilineBox = compose(
             </div>
         ),
     }),
-    multilineBoxWithDnD()
+    multilineBoxWithDnD(),
 )(MultilineBox);
 
 const Demo = () => (

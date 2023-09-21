@@ -10,7 +10,7 @@ describe('ValidationReducer', () => {
     it('should ignore a random action type', () => {
         const newState = validationReducer(
             {},
-            {type: 'sorandom', payload: {id: 'jenkins', validationType: 'wow', value: 'bloup'}}
+            {type: 'sorandom', payload: {id: 'jenkins', validationType: 'wow', value: 'bloup'}},
         );
 
         expect(newState).toEqual({});
@@ -27,7 +27,7 @@ describe('ValidationReducer', () => {
                         validationType: nonEmptyValidationType,
                         value: aMessage,
                     },
-                }
+                },
             );
 
             expect(newState[componentId].error).toContainEqual({
@@ -57,7 +57,7 @@ describe('ValidationReducer', () => {
                         validationType: nonEmptyValidationType,
                         value: aMessage,
                     },
-                }
+                },
             );
 
             expect(newState[componentId].error.length).toBe(2);
@@ -84,7 +84,7 @@ describe('ValidationReducer', () => {
                         validationType: nonEmptyValidationType,
                         value: aMessage,
                     },
-                }
+                },
             );
 
             expect(newState[componentId].error[0]).toEqual({
@@ -105,7 +105,7 @@ describe('ValidationReducer', () => {
                         validationType: nonEmptyValidationType,
                         value: aMessage,
                     },
-                }
+                },
             );
 
             expect(newState[componentId].warning).toContainEqual({
@@ -135,7 +135,7 @@ describe('ValidationReducer', () => {
                         validationType: nonEmptyValidationType,
                         value: aMessage,
                     },
-                }
+                },
             );
 
             expect(newState[componentId].warning.length).toBe(2);
@@ -162,7 +162,7 @@ describe('ValidationReducer', () => {
                         validationType: nonEmptyValidationType,
                         value: aMessage,
                     },
-                }
+                },
             );
 
             expect(newState[componentId].warning[0]).toEqual({
@@ -183,7 +183,7 @@ describe('ValidationReducer', () => {
                         validationType: nonEmptyValidationType,
                         value: true,
                     },
-                }
+                },
             );
 
             expect(newState[componentId].isDirty).toContainEqual({
@@ -213,7 +213,7 @@ describe('ValidationReducer', () => {
                         validationType: nonEmptyValidationType,
                         value: false,
                     },
-                }
+                },
             );
 
             expect(newState[componentId].isDirty.length).toBe(2);
@@ -240,7 +240,7 @@ describe('ValidationReducer', () => {
                         validationType: nonEmptyValidationType,
                         value: true,
                     },
-                }
+                },
             );
 
             expect(newState[componentId].isDirty[0]).toEqual({
@@ -261,7 +261,7 @@ describe('ValidationReducer', () => {
                         warning: [],
                     },
                 },
-                ValidationActions.cleanMessage(id)
+                ValidationActions.cleanMessage(id),
             );
 
             expect(newState[id]).toBeUndefined();

@@ -23,7 +23,6 @@ $prompt-message-line-height: 20px;
                 // Reset flex-basis and flex-grow values so autosize based on content can work.
                 flex-basis: inherit;
                 flex-grow: initial;
-
                 min-height: $modal-prompt-body-min-height-ie;
                 min-height: $modal-prompt-body-min-height;
 

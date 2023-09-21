@@ -219,7 +219,7 @@ describe('Tables', () => {
 
                 expect(rowsState.filter((row) => row.id === action.payload.id)[0].selected).toBe(true);
                 expect(rowsState.filter((row) => row.id !== action.payload.id).every((row) => !row.selected)).toBe(
-                    true
+                    true,
                 );
             });
 
@@ -229,7 +229,7 @@ describe('Tables', () => {
 
                 expect(rowsState.filter((row) => row.id === action.payload.id)[0].selected).toBe(true);
                 expect(rowsState.filter((row) => row.id !== action.payload.id).every((row) => !row.selected)).toBe(
-                    true
+                    true,
                 );
             });
 
@@ -240,7 +240,7 @@ describe('Tables', () => {
 
                 expect(rowsState.filter((row) => row.id === action2.payload.id)[0].selected).toBe(true);
                 expect(rowsState.filter((row) => row.id !== action2.payload.id).every((row) => !row.selected)).toBe(
-                    true
+                    true,
                 );
             });
 

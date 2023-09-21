@@ -64,7 +64,7 @@ describe('ModalComposite', () => {
             <>
                 <ModalComposite id="first" isOpened title="first modal title" />
                 <ModalComposite id="second" isOpened title="second modal title" />
-            </>
+            </>,
         );
 
         expect(screen.getByRole('dialog', {name: 'first modal title'})).toBeVisible();
@@ -74,7 +74,7 @@ describe('ModalComposite', () => {
     it('should render modal header children inside the modal header', () => {
         const modalHeaderChildren = <span>A bird in the hand is worth two in the bush.</span>;
         const modalComposite = shallow(
-            <ModalComposite isOpened modalHeaderChildren={modalHeaderChildren} title={'patate'} />
+            <ModalComposite isOpened modalHeaderChildren={modalHeaderChildren} title={'patate'} />,
         );
 
         expect(modalComposite.find(ModalHeader).contains(modalHeaderChildren)).toBe(true);

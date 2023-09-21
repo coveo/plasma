@@ -14,7 +14,7 @@ describe('Multiline box container', () => {
                 shallowWithState(<MultilineBoxContainer id={id} />, {})
                     .dive()
                     .dive()
-                    .dive()
+                    .dive(),
             ).not.toThrow();
         });
 
@@ -32,11 +32,11 @@ describe('Multiline box container', () => {
                                 list: [testId],
                             },
                         },
-                    }
+                    },
                 )
                     .dive()
                     .dive()
-                    .dive()
+                    .dive(),
             ).not.toThrow();
         });
 
@@ -58,11 +58,11 @@ describe('Multiline box container', () => {
                                 list: [testId],
                             },
                         },
-                    }
+                    },
                 )
                     .dive()
                     .dive()
-                    .dive()
+                    .dive(),
             ).not.toThrow();
         });
 
@@ -70,18 +70,18 @@ describe('Multiline box container', () => {
             expect(() =>
                 shallowWithState(
                     <MultilineBoxContainer id={id} data={[]} renderBody={_.identity} defaultProps={{}} />,
-                    {}
+                    {},
                 )
                     .dive()
                     .dive()
-                    .dive()
+                    .dive(),
             ).not.toThrow();
         });
 
         it('should unmount without errors', () => {
             const wrapper = shallowWithState(
                 <MultilineBoxContainer id={id} data={[]} renderBody={_.identity} defaultProps={{}} />,
-                {}
+                {},
             )
                 .dive()
                 .dive()
@@ -100,7 +100,7 @@ describe('Multiline box container', () => {
                 MultilineBoxContainerWithSpy = _.compose(
                     multilineBoxContainer({
                         containerNode: spyContainerNode,
-                    })
+                    }),
                 )(MultilineBox);
             });
 
@@ -119,7 +119,7 @@ describe('Multiline box container', () => {
                                 list: ['imNotAnId'],
                             },
                         },
-                    }
+                    },
                 )
                     .dive()
                     .dive()

@@ -9,7 +9,7 @@ jobs:
         name: Lint Changed Files
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+            - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
@@ -17,22 +17,21 @@ jobs:
               with:
                   WORKFLOW: 'ci'
     test:
-        name: Build and Test
+        name: Test
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+            - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
             - uses: ./.github/actions/setup
-            - uses: ./.github/actions/build
             - uses: ./.github/actions/test
     demo:
-        name: Deploy Demo
+        name: Build & Deploy Demo
         runs-on: ubuntu-latest
         permissions:
             pull-requests: write
             id-token: write
             contents: read
         steps:
-            - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+            - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
             - uses: ./.github/actions/setup
             - uses: ./.github/actions/build
             - uses: ./.github/actions/deploy

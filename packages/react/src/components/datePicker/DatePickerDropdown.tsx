@@ -212,7 +212,7 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
             this.props.extraDropdownToggleClasses,
             {
                 'dropdown-toggle-placeholder': !this.props.datePicker || !this.props.datePicker.appliedLowerLimit,
-            }
+            },
         );
 
         if (this.props.withDrop) {
@@ -329,7 +329,7 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
         const limit: number = DateUtils.convertRangeToMinutes(range);
         const diff: number = moment(this.props.datePicker.inputUpperLimit).diff(
             moment(this.props.datePicker.inputLowerLimit),
-            'minutes'
+            'minutes',
         );
         return {limit, diff};
     }

@@ -10,7 +10,7 @@ const ShowToastButton: React.FunctionComponent = () => {
                     addToast('toast-container-id', 'Hello World!', {
                         dismiss: 3000,
                         type: 'error',
-                    })
+                    }),
                 );
             }}
         >

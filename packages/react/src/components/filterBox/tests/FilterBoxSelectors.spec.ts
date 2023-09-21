@@ -23,7 +23,7 @@ describe('FilterBox', () => {
                 const filter: IFilterState = {id, filterText: 'text'};
 
                 expect(FilterBoxSelectors.getFilterText({filters: [filter]}, defaultOwnProps)).toEqual(
-                    filter.filterText
+                    filter.filterText,
                 );
             });
         });
@@ -31,7 +31,7 @@ describe('FilterBox', () => {
         describe('getMatchFilter', () => {
             it('should return the defaultListBoxMatchFilter if the matchFilter is not defined in the ownProps', () => {
                 expect(FilterBoxSelectors.getMatchFilter(defaultState, defaultOwnProps)).toEqual(
-                    defaultListBoxMatchFilter
+                    defaultListBoxMatchFilter,
                 );
             });
 

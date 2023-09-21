@@ -1,11 +1,13 @@
-const withPlugins = require('next-compose-plugins');
 const withImages = require('next-images');
 const {patchWebpackConfig} = require('next-global-css');
 const path = require('path');
 
 const basePath = require('./build/getBasePath');
 
-module.exports = withPlugins([withImages], {
+const plugins = [withImages];
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
     basePath: basePath.replace(/\/$/, ''), // remove last slash
     env: {
         basePath,
@@ -22,4 +24,6 @@ module.exports = withPlugins([withImages], {
         config.experiments = {topLevelAwait: true};
         return config;
     },
-});
+};
+
+module.exports = () => plugins.reduce((memo, plugin) => plugin(memo), nextConfig);

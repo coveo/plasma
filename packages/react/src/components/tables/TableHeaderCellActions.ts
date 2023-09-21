@@ -15,7 +15,7 @@ export interface ITableHeaderCellActionPayload {
 export const addHeaderCell = (
     id: string,
     attributeToSort: string,
-    tableId: string
+    tableId: string,
 ): IReduxAction<ITableHeaderCellActionPayload> => ({
     type: TableHeaderCellActions.add,
     payload: {
@@ -35,7 +35,7 @@ export const removeHeaderCell = (id: string): IReduxAction<ITableHeaderCellActio
 export const sortFromHeaderCell = (
     id: string,
     attributeToSort: string,
-    tableId: string
+    tableId: string,
 ): IReduxAction<ITableHeaderCellActionPayload> => ({
     type: TableHeaderCellActions.sort,
     payload: {

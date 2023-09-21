@@ -26,7 +26,7 @@ describe('Limit', () => {
         expect(
             screen.getByRole('spinbutton', {
                 name: /limit/i,
-            })
+            }),
         ).toBeInTheDocument();
     });
 
@@ -38,10 +38,11 @@ describe('Limit', () => {
     });
 
     it('calls the onClick method on history icon onClick', async () => {
+        const user = userEvent.setup();
         const clickSpy = jest.fn();
         render(<Limit id="🆔" title="My limit" limit={100} isHistoryIncluded onHistoryIconClick={clickSpy} />);
         const historyIcon = await screen.findByRole('button', {name: /chartpie/i});
-        await userEvent.click(historyIcon);
+        await user.click(historyIcon);
 
         expect(clickSpy).toHaveBeenCalled();
     });

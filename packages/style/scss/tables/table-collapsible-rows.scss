@@ -6,6 +6,7 @@ table {
                     .state-expanded {
                         display: none;
                     }
+
                     .state-collapsed {
                         display: inline;
                     }
@@ -15,6 +16,7 @@ table {
                     .state-expanded {
                         display: inline;
                     }
+
                     .state-collapsed {
                         display: none;
                     }
@@ -78,7 +80,6 @@ table {
                         .label {
                             padding: 5px 0;
                             font-weight: var(--main-font-regular);
-
                             font-size: 12px;
                         }
 

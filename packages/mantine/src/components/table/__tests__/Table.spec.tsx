@@ -1,9 +1,10 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, waitFor} from '@test-utils';
+import {render, screen, userEvent, waitFor, within} from '@test-utils';
 
+import {useState} from 'react';
 import {Table} from '../Table';
-import {useTable} from '../TableContext';
 import {TableLayout} from '../Table.types';
+import {useTable} from '../TableContext';
 
 type RowData = {id: string; firstName: string; lastName?: string};
 
@@ -25,7 +26,7 @@ describe('Table', () => {
                 <Table data={[]} columns={columns} noDataChildren={<EmptyState />}>
                     <Table.Header data-testid="table-header">header</Table.Header>
                     <Table.Footer data-testid="table-footer">footer</Table.Footer>
-                </Table>
+                </Table>,
             );
 
             expect(screen.queryByTestId('table-header')).not.toBeInTheDocument();
@@ -43,7 +44,7 @@ describe('Table', () => {
                 >
                     <Table.Header data-testid="table-header">header</Table.Header>
                     <Table.Footer data-testid="table-footer">footer</Table.Footer>
-                </Table>
+                </Table>,
             );
 
             expect(screen.getByTestId('table-header')).toBeVisible();
@@ -65,7 +66,7 @@ describe('Table', () => {
                 <Table.Consumer>
                     <Fixture />
                 </Table.Consumer>
-            </Table>
+            </Table>,
         );
 
         expect(screen.getByRole('button', {name: 'Click me'})).toBeVisible();
@@ -91,10 +92,10 @@ describe('Table', () => {
                     <Table.Header>
                         <Table.Filter data-testid="table-filter" />
                     </Table.Header>
-                </Table>
+                </Table>,
             );
             expect(screen.getByTestId('filtered-empty-state').parentElement).toHaveClass(
-                'mantine-Skeleton-root mantine-Skeleton-visible'
+                'mantine-Skeleton-root mantine-Skeleton-visible',
             );
         });
 
@@ -104,10 +105,10 @@ describe('Table', () => {
                     <Table.Header>
                         <Table.Filter data-testid="table-filter" />
                     </Table.Header>
-                </Table>
+                </Table>,
             );
             expect(screen.getByTestId('empty-state').parentElement).toHaveClass(
-                'mantine-Skeleton-root mantine-Skeleton-visible'
+                'mantine-Skeleton-root mantine-Skeleton-visible',
             );
         });
     });
@@ -125,7 +126,7 @@ describe('Table', () => {
                     ]}
                     columns={columns}
                 />
-            </div>
+            </div>,
         );
 
         const row = screen.getByRole('row', {name: 'patate king', selected: false});
@@ -139,6 +140,44 @@ describe('Table', () => {
         await user.click(screen.getByText(/i'm a header/i));
 
         expect(screen.getByRole('row', {name: 'patate king', selected: false})).toBeInTheDocument();
+    });
+
+    it('does not reset row selection when clicking within one of the specified additionalRootNodes, even if it is outside the table', async () => {
+        const user = userEvent.setup();
+
+        const Fixture = () => {
+            const [cousinNode, setCousinNode] = useState<HTMLDivElement>();
+
+            return (
+                <>
+                    <div key="inside" ref={setCousinNode} data-testid="table-cousin">
+                        clicking inside here does not clear rows selection
+                    </div>
+                    <div key="outside" data-testid="outside-element">
+                        clicking inside here clears rows selection
+                    </div>
+                    <Table
+                        getRowId={({id}) => id}
+                        data={[
+                            {id: '🆔-1', firstName: 'John', lastName: 'Doe'},
+                            {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                        ]}
+                        columns={columns}
+                        additionalRootNodes={[cousinNode]}
+                    />
+                </>
+            );
+        };
+        render(<Fixture />);
+
+        const row = screen.getByRole('row', {name: /John Doe/i, selected: false});
+        expect(row).toBeInTheDocument();
+        await user.click(row);
+        expect(screen.getByRole('row', {name: /John Doe/i, selected: true})).toBeInTheDocument();
+        await user.click(screen.getByTestId('table-cousin'));
+        expect(screen.getByRole('row', {name: /John Doe/i, selected: true})).toBeInTheDocument();
+        await user.click(screen.getByTestId('outside-element'));
+        expect(screen.getByRole('row', {name: /John Doe/i, selected: false})).toBeInTheDocument();
     });
 
     describe('with multiple layouts', () => {
@@ -165,7 +204,7 @@ describe('Table', () => {
                     layouts={layouts}
                 >
                     <Table.Header data-testid="table-header" />
-                </Table>
+                </Table>,
             );
             expect(screen.getByRole('radio', {name: /layout 1/i})).toBeChecked();
             expect(screen.getByTestId('layout1-header')).toBeInTheDocument();
@@ -197,7 +236,7 @@ describe('Table', () => {
                     layouts={layouts}
                 >
                     <Table.Header data-testid="table-header" />
-                </Table>
+                </Table>,
             );
 
             await user.click(screen.getByRole('radio', {name: /layout 2/i}));
@@ -215,7 +254,7 @@ describe('Table', () => {
                     initialState={{layout: 'Layout 2'}}
                 >
                     <Table.Header data-testid="table-header" />
-                </Table>
+                </Table>,
             );
 
             expect(screen.getByRole('radio', {name: /layout 2/i})).toBeChecked();
@@ -241,15 +280,15 @@ describe('Table', () => {
                     columns={columns}
                     multiRowSelectionEnabled
                     onRowSelectionChange={onRowSelectionChangeSpy}
-                />
+                />,
             );
-            await user.click(screen.getByRole('row', {name: /jane doe/i}));
+            await user.click(within(screen.getByRole('row', {name: /jane doe/i})).getByRole('checkbox'));
             expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
             expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([{id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}]);
 
             onRowSelectionChangeSpy.mockClear();
 
-            await user.click(screen.getByRole('row', {name: /john smith/i}));
+            await user.click(within(screen.getByRole('row', {name: /john smith/i})).getByRole('checkbox'));
             expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
             expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([
                 {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
@@ -277,14 +316,14 @@ describe('Table', () => {
                         columns={columns}
                         multiRowSelectionEnabled
                     />
-                </div>
+                </div>,
             );
 
             const row = screen.getByRole('row', {name: /patate king/i, selected: false});
 
             expect(row).toBeInTheDocument();
 
-            await user.click(row);
+            await user.click(within(row).getByRole('checkbox'));
 
             expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
 
@@ -306,7 +345,7 @@ describe('Table', () => {
                     multiRowSelectionEnabled
                 >
                     <Table.Header />
-                </Table>
+                </Table>,
             );
 
             await user.click(screen.getByRole('checkbox', {name: /select all/i}));
@@ -327,7 +366,7 @@ describe('Table', () => {
                     initialState={{
                         rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}},
                     }}
-                />
+                />,
             );
 
             expect(screen.queryByRole('button', {name: /1 selected/i})).not.toBeInTheDocument();

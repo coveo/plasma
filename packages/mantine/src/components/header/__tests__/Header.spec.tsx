@@ -10,7 +10,7 @@ describe('Header', () => {
         const header = screen.getByRole('heading');
         expect(header).toMatchInlineSnapshot(`
           <h1
-            class="mantine-Text-root mantine-Title-root mantine-m67b81"
+            class="mantine-Text-root mantine-Title-root mantine-PlasmaHeader-title mantine-1o7jx33"
           >
             child
           </h1>
@@ -26,7 +26,7 @@ describe('Header', () => {
                     <Anchor>Two</Anchor>
                     <Anchor>Three</Anchor>
                 </Header.Breadcrumbs>
-            </Header>
+            </Header>,
         );
         const titleFirst = container;
 
@@ -38,7 +38,7 @@ describe('Header', () => {
                     <Anchor>Three</Anchor>
                 </Header.Breadcrumbs>
                 Title
-            </Header>
+            </Header>,
         );
         const breadcrumbsFirst = container;
 
@@ -51,7 +51,7 @@ describe('Header', () => {
             <Header>
                 title
                 <Header.DocAnchor href="/some/path" />
-            </Header>
+            </Header>,
         );
 
         const docLink = await screen.findByRole('link', {name: /question/i});
@@ -77,7 +77,7 @@ describe('Header', () => {
                     <span>action 1</span>
                     <span>action 2</span>
                 </Header.Actions>
-            </Header>
+            </Header>,
         );
 
         expect(screen.getByText('action 1')).toBeInTheDocument();

@@ -152,7 +152,7 @@ describe('FilterBox', () => {
 
             expect(filtersState.length).toBe(oldState.length);
             expect(filtersState.filter((filterBox) => filterBox.id === action.payload.id)[0].filterText).toBe(
-                newFilter
+                newFilter,
             );
         });
 
@@ -166,7 +166,7 @@ describe('FilterBox', () => {
             ];
             const filtersState: IFilterState[] = filterBoxesReducer(
                 oldState,
-                selectListBoxOption(id, true, 'new value')
+                selectListBoxOption(id, true, 'new value'),
             );
 
             expect(filtersState[0].filterText).toBe('');

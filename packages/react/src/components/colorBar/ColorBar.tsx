@@ -70,7 +70,7 @@ export class ColorBar extends Component<IColorBarProps> {
         const totalColoredWidth = _.reduce(
             nonZeroWidthColors,
             (totalWidth: number, width: number) => width + totalWidth,
-            0
+            0,
         );
 
         if (totalColoredWidth === 0) {

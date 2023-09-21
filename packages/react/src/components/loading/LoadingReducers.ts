@@ -17,7 +17,7 @@ export const loadingsInitialState: ILoadingState[] = [];
 
 export const loadingReducer = (
     state: ILoadingState = loadingInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): ILoadingState => {
     switch (action.type) {
         case LoadingActions.add:
@@ -50,7 +50,7 @@ export const loadingReducer = (
 
 export const loadingsReducer = (
     state: ILoadingState[] = loadingsInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): ILoadingState[] => {
     switch (action.type) {
         case LoadingActions.add:

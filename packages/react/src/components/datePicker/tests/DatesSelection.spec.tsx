@@ -96,7 +96,7 @@ describe('Date picker', () => {
                 datesSelection.find(DatePicker).first().props().onBlur(expectedDate, expectedIsUpperLimit);
 
                 expect(onDateChangeSpy).toHaveBeenCalledWith(expectedDate, expectedIsUpperLimit);
-            }
+            },
         );
 
         it(
@@ -109,7 +109,7 @@ describe('Date picker', () => {
                 datesSelection.find(DatePicker).first().props().onClick(expectedIsUpperLimit);
 
                 expect(onDateClickSpy).toHaveBeenCalledWith(expectedIsUpperLimit);
-            }
+            },
         );
 
         it('should call onBlur prop if defined when calling onDateChange', () => {

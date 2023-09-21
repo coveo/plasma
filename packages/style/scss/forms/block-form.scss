@@ -65,6 +65,7 @@ form {
             .panel-heading a {
                 padding-left: 18px;
             }
+
             .toggle-icon {
                 left: 0;
             }
@@ -79,6 +80,7 @@ form {
             > :not(:first-child) {
                 margin-top: $scaledSpacing;
             }
+
             > .labeled-input {
                 > .input-field {
                     margin-top: $scaledSpacing + $inputFieldLabelSpacing;
@@ -88,15 +90,18 @@ form {
                     margin-top: 0.5rem;
                 }
             }
+
             > .btn {
                 + .input-field {
                     margin-top: $scaledSpacing + $inputFieldLabelSpacing;
                 }
             }
+
             > .vapor-slider.input-field {
                 margin-top: $scaledSpacing + $plasmaSliderTopSpacing;
                 margin-bottom: 0.75rem;
             }
+
             > .input-field {
                 margin-top: $scaledSpacing + $inputFieldLabelSpacing;
             }
@@ -120,9 +125,11 @@ form {
             &.level-1 {
                 @include section-mixin(1);
             }
+
             &.level-2 {
                 @include section-mixin(2);
             }
+
             &.level-3 {
                 @include section-mixin(3);
             }

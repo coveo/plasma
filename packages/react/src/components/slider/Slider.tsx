@@ -88,7 +88,7 @@ export const Slider: FunctionComponent<SliderOwnProps> = (props) => {
         () => () => {
             dispatch(SliderActions.remove(props.id));
         },
-        []
+        [],
     );
 
     useEffect(() => {
@@ -101,7 +101,7 @@ export const Slider: FunctionComponent<SliderOwnProps> = (props) => {
             setRightHandlePosition(crossingPoint);
             setLeftHandlePosition(handlePositions[0]);
         },
-        [crossingPoint]
+        [crossingPoint],
     );
 
     const jumpValueFromLowToHighRange = useCallback(
@@ -109,7 +109,7 @@ export const Slider: FunctionComponent<SliderOwnProps> = (props) => {
             setLeftHandlePosition(crossingPoint);
             setRightHandlePosition(handlePositions[1]);
         },
-        [crossingPoint]
+        [crossingPoint],
     );
 
     const computeNewLeftHandlePosition = useCallback(
@@ -117,7 +117,7 @@ export const Slider: FunctionComponent<SliderOwnProps> = (props) => {
             const newPosition = handleb < crossingPoint ? handleb : handleA;
             setLeftHandlePosition(newPosition);
         },
-        [crossingPoint]
+        [crossingPoint],
     );
 
     const computeNewRightHandlePosition = useCallback(
@@ -125,7 +125,7 @@ export const Slider: FunctionComponent<SliderOwnProps> = (props) => {
             const newPosition = handleA > crossingPoint ? handleA : handleB;
             setRightHandlePosition(newPosition);
         },
-        [crossingPoint]
+        [crossingPoint],
     );
 
     const setHandlePosition = useCallback(
@@ -155,7 +155,7 @@ export const Slider: FunctionComponent<SliderOwnProps> = (props) => {
             jumpValueFromHighToLowRange,
             jumpValueFromLowToHighRange,
             leftHandlePosition,
-        ]
+        ],
     );
 
     useEffect(() => {

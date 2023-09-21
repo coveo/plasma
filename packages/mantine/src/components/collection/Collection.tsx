@@ -174,7 +174,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
-        })
+        }),
     );
 
     const hasOnlyOneItem = value.length === 1;

@@ -68,7 +68,7 @@ describe('Section', () => {
             const form = shallow(
                 <Section>
                     <SomeComponent />
-                </Section>
+                </Section>,
             );
 
             expect(form.find(SomeComponent)).toBeDefined();

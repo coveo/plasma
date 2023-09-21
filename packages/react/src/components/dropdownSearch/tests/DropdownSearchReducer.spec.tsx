@@ -101,8 +101,8 @@ describe('DropdownSearch', () => {
             expect(dropdownSearchState.length).toBe(oldState.length + 1);
             expect(
                 dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                ).length
+                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id,
+                ).length,
             ).toBe(1);
 
             oldState = dropdownSearchState;
@@ -112,8 +112,8 @@ describe('DropdownSearch', () => {
             expect(dropdownSearchState.length).toBe(oldState.length + 1);
             expect(
                 dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                ).length
+                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id,
+                ).length,
             ).toBe(1);
         });
 
@@ -128,11 +128,11 @@ describe('DropdownSearch', () => {
 
             const dropdownSearch = _.find(
                 dropdownSearchState,
-                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id,
             );
 
             expect(
-                _.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value).selected
+                _.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value).selected,
             ).toBe(true);
         });
 
@@ -146,11 +146,11 @@ describe('DropdownSearch', () => {
 
             const dropdownSearch = _.find(
                 dropdownSearchState,
-                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id,
             );
 
             expect(
-                _.find(dropdownSearch.options, (option) => option.value === defaultSelectedOptionPlaceholder.value)
+                _.find(dropdownSearch.options, (option) => option.value === defaultSelectedOptionPlaceholder.value),
             ).toBeDefined();
         });
 
@@ -165,11 +165,11 @@ describe('DropdownSearch', () => {
 
             const dropdownSearch = _.find(
                 dropdownSearchState,
-                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id,
             );
 
             expect(
-                _.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value).selected
+                _.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value).selected,
             ).toBe(true);
         });
 
@@ -178,13 +178,13 @@ describe('DropdownSearch', () => {
             const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(
                 defaultPayload.id,
                 [],
-                undefined
+                undefined,
             );
             const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
             const dropdownSearch = _.find(
                 dropdownSearchState,
-                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id,
             );
 
             expect(dropdownSearch.supportSingleCustomOption).toBe(false);
@@ -196,13 +196,13 @@ describe('DropdownSearch', () => {
                 defaultPayload.id,
                 [],
                 undefined,
-                false
+                false,
             );
             const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
             const dropdownSearch = _.find(
                 dropdownSearchState,
-                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id,
             );
 
             expect(dropdownSearch.supportSingleCustomOption).toBe(false);
@@ -214,13 +214,13 @@ describe('DropdownSearch', () => {
                 defaultPayload.id,
                 [],
                 undefined,
-                true
+                true,
             );
             const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
             const dropdownSearch = _.find(
                 dropdownSearchState,
-                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+                (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id,
             );
 
             expect(dropdownSearch.supportSingleCustomOption).toBe(true);
@@ -236,7 +236,7 @@ describe('DropdownSearch', () => {
 
             expect(dropdownSearchState.length).toBe(oldState.length - 1);
             expect(dropdownSearchState.filter((dropdownSearch) => dropdownSearch.id === action.payload.id).length).toBe(
-                0
+                0,
             );
 
             oldState = dropdownSearchState;
@@ -245,7 +245,7 @@ describe('DropdownSearch', () => {
 
             expect(dropdownSearchState.length).toBe(oldState.length - 1);
             expect(dropdownSearchState.filter((dropdownSearch) => dropdownSearch.id === action.payload.id).length).toBe(
-                0
+                0,
             );
         });
 
@@ -260,8 +260,8 @@ describe('DropdownSearch', () => {
             expect(dropdownSearchState.length).toBe(oldState.length);
             expect(
                 dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                ).length
+                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id,
+                ).length,
             ).toBe(0);
         });
 
@@ -279,8 +279,8 @@ describe('DropdownSearch', () => {
                     (dropdownSearch: IDropdownSearchState) =>
                         dropdownSearch.id === action.payload.id &&
                         _.isEmpty(dropdownSearch.filterText) &&
-                        dropdownSearch.isOpened
-                ).length
+                        dropdownSearch.isOpened,
+                ).length,
             ).toBe(1);
         });
 
@@ -308,8 +308,8 @@ describe('DropdownSearch', () => {
             expect(dropdownSearchState.length).toBe(oldState.length);
             expect(
                 dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                )[0].options
+                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id,
+                )[0].options,
             ).toEqual(newDropdownOption);
         });
 
@@ -335,8 +335,8 @@ describe('DropdownSearch', () => {
                 dropdownSearchState.filter(
                     (currentDropdownSearch: IDropdownSearchState) =>
                         currentDropdownSearch.id === action.payload.id &&
-                        currentDropdownSearch.filterText === newFilterText
-                ).length
+                        currentDropdownSearch.filterText === newFilterText,
+                ).length,
             ).toBe(1);
         });
 
@@ -375,8 +375,8 @@ describe('DropdownSearch', () => {
                     dropdownSearchState.filter(
                         (currentDropdownSearch: IDropdownSearchState) =>
                             currentDropdownSearch.id === action.payload.id &&
-                            currentDropdownSearch.options[1] === undefined
-                    ).length
+                            currentDropdownSearch.options[1] === undefined,
+                    ).length,
                 ).toBe(1);
             });
 
@@ -393,8 +393,8 @@ describe('DropdownSearch', () => {
                     dropdownSearchState.filter(
                         (currentDropdownSearch: IDropdownSearchState) =>
                             currentDropdownSearch.id === action.payload.id &&
-                            currentDropdownSearch.options[0].custom === true
-                    ).length
+                            currentDropdownSearch.options[0].custom === true,
+                    ).length,
                 ).toBe(1);
             });
 
@@ -411,8 +411,8 @@ describe('DropdownSearch', () => {
                     dropdownSearchState.filter(
                         (currentDropdownSearch: IDropdownSearchState) =>
                             currentDropdownSearch.id === action.payload.id &&
-                            currentDropdownSearch.options[0].value === newFilterText
-                    ).length
+                            currentDropdownSearch.options[0].value === newFilterText,
+                    ).length,
                 ).toBe(1);
             });
         });
@@ -437,8 +437,8 @@ describe('DropdownSearch', () => {
                 dropdownSearchState.filter(
                     (currentDropdownSearch: IDropdownSearchState) =>
                         currentDropdownSearch.id === action.payload.id &&
-                        _.where(currentDropdownSearch.options, {value: selectedOption.value})
-                ).length
+                        _.where(currentDropdownSearch.options, {value: selectedOption.value}),
+                ).length,
             ).toBe(1);
         });
 
@@ -488,10 +488,10 @@ describe('DropdownSearch', () => {
             expect(
                 _.findWhere(
                     dropdownSearchState.filter(
-                        (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+                        (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id,
                     )[0].options,
-                    {custom: true}
-                )
+                    {custom: true},
+                ),
             ).toBeUndefined();
         });
 
@@ -509,8 +509,8 @@ describe('DropdownSearch', () => {
                         currentDropdownSearch.id === action.payload.id &&
                         currentDropdownSearch.activeOption.value === options[0].value &&
                         !currentDropdownSearch.setFocusOnDropdownButton &&
-                        currentDropdownSearch.isOpened
-                ).length
+                        currentDropdownSearch.isOpened,
+                ).length,
             ).toBe(1);
         });
 
@@ -528,8 +528,8 @@ describe('DropdownSearch', () => {
                         currentDropdownSearch.id === action.payload.id &&
                         currentDropdownSearch.activeOption.value === options[0].value &&
                         !currentDropdownSearch.setFocusOnDropdownButton &&
-                        currentDropdownSearch.isOpened
-                ).length
+                        currentDropdownSearch.isOpened,
+                ).length,
             ).toBe(1);
         });
 
@@ -555,8 +555,8 @@ describe('DropdownSearch', () => {
                         currentDropdownSearch.id === action.payload.id &&
                         currentDropdownSearch.activeOption.value === options[1].value &&
                         !currentDropdownSearch.setFocusOnDropdownButton &&
-                        currentDropdownSearch.isOpened
-                ).length
+                        currentDropdownSearch.isOpened,
+                ).length,
             ).toBe(1);
         });
 
@@ -582,8 +582,8 @@ describe('DropdownSearch', () => {
                         currentDropdownSearch.id === action.payload.id &&
                         currentDropdownSearch.activeOption.value === options[0].value &&
                         !currentDropdownSearch.setFocusOnDropdownButton &&
-                        currentDropdownSearch.isOpened
-                ).length
+                        currentDropdownSearch.isOpened,
+                ).length,
             ).toBe(1);
         });
 
@@ -612,8 +612,8 @@ describe('DropdownSearch', () => {
                         currentDropdownSearch.activeOption &&
                         currentDropdownSearch.activeOption.value === options[options.length - 1].value &&
                         !currentDropdownSearch.setFocusOnDropdownButton &&
-                        currentDropdownSearch.isOpened
-                ).length
+                        currentDropdownSearch.isOpened,
+                ).length,
             ).toBe(1);
         });
 
@@ -638,8 +638,8 @@ describe('DropdownSearch', () => {
                     (currentDropdownSearch: IDropdownSearchState) =>
                         currentDropdownSearch.id === action.payload.id &&
                         !currentDropdownSearch.isOpened &&
-                        currentDropdownSearch.setFocusOnDropdownButton
-                ).length
+                        currentDropdownSearch.setFocusOnDropdownButton,
+                ).length,
             ).toBe(1);
         });
 
@@ -661,8 +661,8 @@ describe('DropdownSearch', () => {
             expect(
                 dropdownSearchState.filter(
                     (currentDropdownSearch: IDropdownSearchState) =>
-                        currentDropdownSearch.id === action.payload.id && !currentDropdownSearch.isOpened
-                ).length
+                        currentDropdownSearch.id === action.payload.id && !currentDropdownSearch.isOpened,
+                ).length,
             ).toBe(1);
         });
 
@@ -686,7 +686,7 @@ describe('DropdownSearch', () => {
                 _.extend({}, oldState[0], {
                     activeOption: undefined,
                     setFocusOnDropdownButton: false,
-                })
+                }),
             );
         });
 
@@ -786,7 +786,7 @@ describe('DropdownSearch', () => {
                     const value = 'Display value';
 
                     expect(
-                        _.findWhere(addUniqueSelectedOption(opts, value), {value, selected: true, custom: true})
+                        _.findWhere(addUniqueSelectedOption(opts, value), {value, selected: true, custom: true}),
                     ).toBeDefined();
                 });
 
@@ -848,7 +848,7 @@ describe('DropdownSearch', () => {
                             value: options[0].value,
                             selected: false,
                             hidden: false,
-                        }).length
+                        }).length,
                     ).toBe(1);
                 });
 
@@ -860,7 +860,7 @@ describe('DropdownSearch', () => {
                     ];
 
                     expect(
-                        _.find(deselectOption(optionsToDeselect, options[2].value), {value: options[2].value})
+                        _.find(deselectOption(optionsToDeselect, options[2].value), {value: options[2].value}),
                     ).toBeUndefined();
                 });
             });
@@ -921,13 +921,13 @@ describe('DropdownSearch', () => {
                 describe('with supportSingleCustomOption', () => {
                     it('should return only the non custom options by default', () => {
                         expect(removeCustomOptions(testOptions, supportSingleCustomOption)).toEqual(
-                            testOptions.filter((option: IDropdownOption) => !option.custom)
+                            testOptions.filter((option: IDropdownOption) => !option.custom),
                         );
                     });
 
                     it('should return the non custom options with the selected custom option if includeSelected is set to false', () => {
                         expect(removeCustomOptions(testOptions, supportSingleCustomOption, false)).toEqual(
-                            testOptions.filter((option: IDropdownOption) => !option.custom || option.selected)
+                            testOptions.filter((option: IDropdownOption) => !option.custom || option.selected),
                         );
                     });
                 });

@@ -42,6 +42,7 @@
             --color: var(--grey-80);
             --background-color: var(--white);
             --border: 1px solid var(--grey-40);
+
             cursor: pointer;
 
             &:hover {
@@ -50,6 +51,7 @@
 
             &.disabled {
                 cursor: default;
+
                 --background-color: var(--grey-40);
                 --color: var(--grey-80);
                 --border: 1px solid var(--grey-40);
@@ -88,10 +90,12 @@
 
     &.mod-btn-group {
         --gap: 0;
+
         border-radius: 8px;
 
         .flat-select-option {
             @extend .flat-select-option;
+
             flex-grow: 1;
             border-radius: 0;
 

@@ -106,7 +106,7 @@ export const CollapsibleDisconnected: FunctionComponent<
         {
             'mod-border-bottom mod-border-top': withBorders,
         },
-        {disabled}
+        {disabled},
     );
 
     return (

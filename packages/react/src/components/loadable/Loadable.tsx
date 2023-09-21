@@ -17,5 +17,5 @@ const loadable = unwrap(loadableModule);
  */
 export const Loadable = <T extends unknown>(
     doImport: (props: T) => Promise<DefaultComponent<T>>,
-    options?: OptionsWithoutResolver<T>
+    options?: OptionsWithoutResolver<T>,
 ) => loadable<T>(doImport, {fallback: <Loading fullContent />, ...options});

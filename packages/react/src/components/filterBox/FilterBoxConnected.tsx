@@ -9,7 +9,7 @@ import {FilterBoxSelectors} from './FilterBoxSelectors';
 const FILTER_THROUGH_DEBOUNCE = 400;
 export const debouncedFilterThrough = _.debounce(
     (dispatch: IDispatch, id: string, filterText: string) => dispatch(filterThrough(id, filterText)),
-    FILTER_THROUGH_DEBOUNCE
+    FILTER_THROUGH_DEBOUNCE,
 );
 
 const mapStateToProps = (state: PlasmaState, ownProps: IFilterBoxOwnProps): IFilterBoxStateProps => ({
@@ -32,5 +32,5 @@ export const FilterBoxConnected = connect<
 >(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(FilterBox as any);

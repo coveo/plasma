@@ -1,10 +1,12 @@
 .content-placeholder {
     @extend .mod-rounded-border-2;
+
     background-color: var(--grey-40);
 }
 
 .text-content-placeholder {
     @extend .mod-rounded-border-2;
+
     width: $text-content-placeholder-medium-width;
     height: $text-content-placeholder-height;
 
@@ -30,9 +32,11 @@
     0% {
         opacity: $content-placeholder-opacity-see-through;
     }
+
     50% {
         opacity: $content-placeholder-opacity-full;
     }
+
     100% {
         opacity: $content-placeholder-opacity-see-through;
     }

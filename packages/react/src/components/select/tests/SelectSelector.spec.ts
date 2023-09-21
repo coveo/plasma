@@ -29,7 +29,7 @@ describe('Select', () => {
 
             it('should return the current list in the state if the id is in the state', () => {
                 expect(SelectSelector.getListState({selectWithFilter: {[id]: {id, list}}}, defaultOwnProps)).toEqual(
-                    list
+                    list,
                 );
             });
         });
@@ -68,7 +68,7 @@ describe('Select', () => {
 
             it('should return nothing if no selected', () => {
                 expect(SelectSelector.getSelectedValue({listBoxes: [{id, selected: []}]}, defaultOwnProps)).toBe(
-                    undefined
+                    undefined,
                 );
             });
         });
@@ -83,7 +83,7 @@ describe('Select', () => {
 
             it('should return nothing if no selected', () => {
                 expect(SelectSelector.getSelectedValues({listBoxes: [{id, selected: []}]}, defaultOwnProps)).toEqual(
-                    []
+                    [],
                 );
             });
         });

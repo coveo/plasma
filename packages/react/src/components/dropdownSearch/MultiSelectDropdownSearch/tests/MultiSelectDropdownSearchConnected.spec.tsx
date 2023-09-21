@@ -39,7 +39,7 @@ describe('MultiSelectDropdownSearch', () => {
             wrapper = mount(
                 <Provider store={store}>
                     <MultiSelectDropdownSearchConnected {...currentProps} />
-                </Provider>
+                </Provider>,
             );
             multiSelectDropdownSearchConnected = wrapper.find(MultiSelectDropdownSearch).first();
         };
@@ -231,7 +231,7 @@ describe('MultiSelectDropdownSearch', () => {
                 multiSelectDropdownSearchConnected.props().onRemoveSelectedOption(selectedOptionValue);
 
                 expect(
-                    _.find(store.getState().dropdownSearch[0].options, {value: selectedOptionValue})
+                    _.find(store.getState().dropdownSearch[0].options, {value: selectedOptionValue}),
                 ).toBeUndefined();
             });
 

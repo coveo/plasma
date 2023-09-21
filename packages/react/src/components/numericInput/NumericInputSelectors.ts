@@ -9,12 +9,12 @@ const getNumericInput = (state: PlasmaState, ownProps: {id: string}): INumericIn
 
 const getValue: (state: PlasmaState, ownProps: {id: string}) => ReactText = createSelector(
     getNumericInput,
-    (numericInput: INumericInputState) => numericInput.value
+    (numericInput: INumericInputState) => numericInput.value,
 );
 
 const getHasError: (state: PlasmaState, ownProps: {id: string}) => boolean = createSelector(
     getNumericInput,
-    (numericInput: INumericInputState) => numericInput.hasError
+    (numericInput: INumericInputState) => numericInput.hasError,
 );
 
 export const NumericInputSelectors = {

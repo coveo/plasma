@@ -1,8 +1,27 @@
-import {QuestionSize16Px} from '@coveord/plasma-react-icons';
-import {Anchor, Breadcrumbs, DefaultProps, Divider, Group, Stack, Text, Title, Tooltip} from '@mantine/core';
-import {Children, FunctionComponent, ReactElement, ReactNode} from 'react';
+import {
+    DefaultProps,
+    Divider,
+    Group,
+    GroupProps,
+    Selectors,
+    Stack,
+    Text,
+    Title,
+    useComponentDefaultProps,
+} from '@mantine/core';
+import {Children, ReactElement, ReactNode} from 'react';
 
-export interface HeaderProps extends DefaultProps {
+import {HeaderStylesParams, useStyles} from './Header.styles';
+import {HeaderActions} from './HeaderActions/HeaderActions';
+import {HeaderBreadcrumbs} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
+import {HeaderDocAnchor} from './HeaderDocAnchor/HeaderDocAnchor';
+
+export type {HeaderDocAnchorProps, HeaderDocAnchorStylesNames} from './HeaderDocAnchor/HeaderDocAnchor';
+export type {HeaderBreadcrumbsProps, HeaderBreadcrumbsStylesNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
+export type {HeaderActionsProps, HeaderActionsStylesNames} from './HeaderActions/HeaderActions';
+export type HeaderStylesNames = Selectors<typeof useStyles>;
+
+export interface HeaderProps extends Omit<GroupProps, 'styles'>, DefaultProps<HeaderStylesNames, HeaderStylesParams> {
     /**
      * The description text displayed inside the header underneath the title
      */
@@ -30,75 +49,43 @@ interface HeaderType {
     DocAnchor: typeof HeaderDocAnchor;
 }
 
-export const Header: HeaderType = ({description, borderBottom, children, variant = 'page', ...others}) => {
+const defaultProps: Partial<HeaderProps> = {
+    variant: 'page',
+    position: 'apart',
+    noWrap: true,
+};
+
+export const Header: HeaderType = (props: HeaderProps) => {
+    const {classNames, styles, unstyled, className, description, borderBottom, variant, children, ...others} =
+        useComponentDefaultProps('PlasmaHeader', defaultProps, props);
+    const {classes, cx} = useStyles({variant}, {name: 'PlasmaHeader', classNames, styles, unstyled});
+
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
     const actions = convertedChildren.find((child) => child.type === HeaderActions);
     const docAnchor = convertedChildren.find((child) => child.type === HeaderDocAnchor);
     const otherChildren = convertedChildren.filter(
-        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor
+        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor,
     );
     return (
         <>
-            <Group
-                position="apart"
-                p={variant === 'page' ? 'xl' : undefined}
-                pb={variant === 'page' ? 'lg' : undefined}
-                {...others}
-            >
+            <Group className={cx(className, classes.root)} {...others}>
                 <Stack spacing={0}>
                     {breadcrumbs}
-                    <Title
-                        order={variant === 'page' ? 1 : 3}
-                        color={variant === 'page' ? 'gray.5' : undefined}
-                        sx={{wordBreak: 'break-word'}}
-                    >
+                    <Title order={variant === 'page' ? 1 : 3} className={classes.title}>
                         {otherChildren}
                         {docAnchor}
                     </Title>
-                    <Text size={variant === 'page' ? 'md' : 'sm'} color="gray.6">
+                    <Text className={classes.description} size={variant === 'page' ? 'md' : 'sm'}>
                         {description}
                     </Text>
                 </Stack>
                 {actions}
             </Group>
-            {borderBottom ? <Divider size="xs" /> : null}
+            {borderBottom ? <Divider className={classes.divider} size="xs" /> : null}
         </>
     );
 };
-
-const HeaderBreadcrumbs: FunctionComponent<{children: ReactNode}> = ({children}) => (
-    <Breadcrumbs
-        styles={(theme) => ({
-            breadcrumb: {fontSize: theme.fontSizes.sm, fontWeight: 300},
-            separator: {color: theme.colors.gray[5]},
-        })}
-    >
-        {children}
-    </Breadcrumbs>
-);
-
-const HeaderActions: FunctionComponent<{children: ReactNode}> = ({children}) => <Group spacing="sm">{children}</Group>;
-
-export interface HeaderDocAnchorProps {
-    /**
-     * A href pointing to documentation related to the current panel.
-     * When provided, an info icon is rendered next to the title as link to this documentation
-     */
-    href: string;
-    /**
-     * The tooltip text shown when hovering over the doc link icon
-     */
-    label?: string;
-}
-
-const HeaderDocAnchor: FunctionComponent<HeaderDocAnchorProps> = ({href: docLink, label: docLinkTooltipLabel}) => (
-    <Tooltip label={docLinkTooltipLabel} disabled={!docLinkTooltipLabel} position="right">
-        <Anchor inline href={docLink} target="_blank" ml="xs" style={{verticalAlign: 'middle'}}>
-            <QuestionSize16Px height={16} />
-        </Anchor>
-    </Tooltip>
-);
 
 Header.Breadcrumbs = HeaderBreadcrumbs;
 Header.Actions = HeaderActions;

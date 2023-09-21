@@ -34,7 +34,7 @@ describe('<TriggerActionConnected />', () => {
             <Provider store={store}>
                 <TriggerActionConnected action={action} simple={simple} parentId={parentId} />
             </Provider>,
-            {attachTo: document.getElementById('App')}
+            {attachTo: document.getElementById('App')},
         );
         triggerAction = wrapper.find(TriggerAction).first();
     });
@@ -81,7 +81,7 @@ describe('<TriggerActionConnected />', () => {
                 userChoice: {},
                 isOpened: false,
                 className: 'someClass',
-            })
+            }),
         );
 
         expect(store.getState().prompts.length).toBe(1);

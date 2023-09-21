@@ -11,7 +11,7 @@ const getValue = createSelector(get, (radioSelect: IRadioSelectState) => radioSe
 
 const getDisabledValue = createSelector(
     get,
-    (radioSelect: IRadioSelectState) => radioSelect && radioSelect.disabledValues
+    (radioSelect: IRadioSelectState) => radioSelect && radioSelect.disabledValues,
 );
 export const RadioSelectSelectors = {
     get,

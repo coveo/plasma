@@ -119,7 +119,7 @@ export class DateUtils {
     static isDifferent(
         firstDate: moment.MomentInput,
         secondDate: moment.MomentInput,
-        granularity?: moment.unitOfTime.StartOf
+        granularity?: moment.unitOfTime.StartOf,
     ): boolean {
         return !moment(firstDate).isSame(secondDate, granularity) && (!!firstDate || !!secondDate);
     }

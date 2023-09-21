@@ -36,7 +36,7 @@ export const BarSeries: FunctionComponent<PropsWithChildren<BarSeriesProps>> = (
                     y={barHeight}
                 />
             );
-        })
+        }),
     );
     return (
         <g className="bar-series">

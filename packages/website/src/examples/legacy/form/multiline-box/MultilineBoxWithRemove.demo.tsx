@@ -25,7 +25,7 @@ const MultilineBoxWithRemove = compose(
                 })}
             </div>
         ),
-    })
+    }),
 )(MultilineBox);
 
 const Demo = () => (

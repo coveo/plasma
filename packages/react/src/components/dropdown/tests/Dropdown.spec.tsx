@@ -162,7 +162,7 @@ describe('Dropdown', () => {
         it('should not trigger the onClick if disabled', () => {
             const spy = jest.fn();
             const wrapper = shallow(
-                <Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} onClick={spy} disabled />
+                <Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} onClick={spy} disabled />,
             );
             wrapper.find('.dropdown-toggle').simulate('click');
 

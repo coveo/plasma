@@ -43,7 +43,7 @@ export const toggleRowOpened = (
     id: string,
     tableId?: string,
     rowId?: string,
-    opened?: boolean
+    opened?: boolean,
 ): IReduxAction<ITableRowActionPayload> => ({
     type: TableRowActions.toggleOpen,
     payload: {

@@ -34,7 +34,7 @@ export class FlatSelectOption extends Component<IFlatSelectOptionProps, any> {
                 selectable: !this.props.selected,
                 disabled: this.props.disabled,
             },
-            this.props.classes
+            this.props.classes,
         );
 
         return (

@@ -41,7 +41,7 @@ describe('IconCard', () => {
                     {label: 'Badge1', type: BadgeType.Success},
                     {label: 'Badge2', type: BadgeType.Success},
                 ]}
-            />
+            />,
         );
 
         const badges = screen.getAllByLabelText('badge');
@@ -51,30 +51,33 @@ describe('IconCard', () => {
     });
 
     it('displays the specified tooltip when hovering over the card', async () => {
+        const user = userEvent.setup();
         render(<IconCard title="Title" icon={icon} tooltip={{title: 'the tooltip'}} />);
 
-        await userEvent.hover(screen.getByRole('button', {name: /title/i}));
+        await user.hover(screen.getByRole('button', {name: /title/i}));
 
         expect(await screen.findByText('the tooltip')).toBeVisible();
     });
 
     it('calls the "onClick" prop when clicking on the card', async () => {
+        const user = userEvent.setup();
         const mockOnClick = jest.fn();
         render(<IconCard title="Title" icon={icon} onClick={mockOnClick} />);
 
         const card = screen.getByRole('button', {name: /title/i});
-        await userEvent.click(card);
+        await user.click(card);
 
         expect(card).toHaveClass('cursor-pointer');
         expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
 
     it('does not call the "onClick" prop when clicking on the card if it is disabled', async () => {
+        const user = userEvent.setup();
         const mockOnClick = jest.fn();
         render(<IconCard title="Title" icon={icon} onClick={mockOnClick} disabled />);
 
         const card = screen.getByRole('button', {name: /title/i});
-        await userEvent.click(card);
+        await user.click(card);
 
         expect(card).not.toHaveClass('cursor-pointer');
         expect(mockOnClick).not.toHaveBeenCalled();
@@ -87,6 +90,7 @@ describe('IconCard', () => {
     });
 
     it('does not have a pointer cursor if the drawer is opened', async () => {
+        const user = userEvent.setup();
         render(
             <IconCard
                 title="Title"
@@ -96,16 +100,17 @@ describe('IconCard', () => {
                     {label: '🍎', value: 'apple'},
                 ]}
                 onClick={jest.fn()}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
         expect(card).toHaveClass('cursor-pointer');
-        await userEvent.click(card);
+        await user.click(card);
         expect(card).not.toHaveClass('cursor-pointer');
     });
 
     it('expands the drawer when clicking on it', async () => {
+        const user = userEvent.setup();
         render(
             <IconCard
                 title="Title"
@@ -114,16 +119,17 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
         expect(card).toHaveAttribute('aria-expanded', 'false');
-        await userEvent.click(card);
+        await user.click(card);
         expect(card).toHaveAttribute('aria-expanded', 'true');
     });
 
     it('shows icons in the drawer when clicking on it', async () => {
+        const user = userEvent.setup();
         render(
             <IconCard
                 title="Title"
@@ -132,17 +138,18 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana', icon: RemoveSize16Px},
                     {label: '🍎', value: 'apple', icon: AddSize16Px},
                 ]}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
-        await userEvent.click(card);
+        await user.click(card);
 
         expect(await screen.findByRole('img', {name: /add/i})).toBeVisible();
         expect(await screen.findByRole('img', {name: /remove/i})).toBeVisible();
     });
 
     it('collapses the drawer when the mouse leaves the icon card', async () => {
+        const user = userEvent.setup();
         const {container} = render(
             <IconCard
                 title="Title"
@@ -151,17 +158,18 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
-        await userEvent.click(card);
+        await user.click(card);
         expect(card).toHaveAttribute('aria-expanded', 'true');
         fireEvent.mouseLeave(container.querySelector('.icon-card'));
         expect(card).toHaveAttribute('aria-expanded', 'false');
     });
 
     it('renders all the specified choices in a drawer', async () => {
+        const user = userEvent.setup();
         render(
             <IconCard
                 title="Title"
@@ -170,11 +178,11 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         // Open the drawer
-        await userEvent.click(screen.getByRole('button', {name: /title/i}));
+        await user.click(screen.getByRole('button', {name: /title/i}));
 
         const drawer = screen.getByRole('list');
         expect(drawer).toBeInTheDocument();
@@ -184,6 +192,7 @@ describe('IconCard', () => {
     });
 
     it('calls the onClick prop with the choice value when clicking on one of them', async () => {
+        const user = userEvent.setup();
         const mockOnClick = jest.fn();
         render(
             <IconCard
@@ -194,17 +203,18 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana'},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
         // Open the drawer
-        await userEvent.click(screen.getByRole('button', {name: /title/i}));
+        await user.click(screen.getByRole('button', {name: /title/i}));
 
-        await userEvent.click(screen.getByRole('button', {name: '🍌'}));
+        await user.click(screen.getByRole('button', {name: '🍌'}));
         expect(mockOnClick).toHaveBeenCalledTimes(1);
         expect(mockOnClick).toHaveBeenCalledWith('banana');
     });
 
     it('renders disabled buttons for disabled choices', async () => {
+        const user = userEvent.setup();
         const mockOnClick = jest.fn();
         render(
             <IconCard
@@ -215,17 +225,17 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana', disabled: true},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         // Open the drawer
-        await userEvent.click(screen.getByRole('button', {name: /title/i}));
+        await user.click(screen.getByRole('button', {name: /title/i}));
 
         const button = screen.queryByRole('button', {name: '🍌'});
         expect(button).toBeInTheDocument();
         expect(button).toBeDisabled();
 
-        await userEvent.click(button);
+        await user.click(button);
 
         expect(mockOnClick).not.toHaveBeenCalled();
     });
@@ -240,7 +250,7 @@ describe('IconCard', () => {
                     {label: '🍌', value: 'banana', disabled: true},
                     {label: '🍎', value: 'apple'},
                 ]}
-            />
+            />,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -253,7 +263,7 @@ describe('IconCard', () => {
         render(
             <IconCard title="Title" icon={icon} small>
                 child
-            </IconCard>
+            </IconCard>,
         );
 
         const card = screen.getByRole('button', {name: /title/i});
@@ -290,7 +300,7 @@ describe('IconCard', () => {
                 icon={icon}
                 badges={[{label: badgeLabel, type: BadgeType.Success}]}
                 placeBadgesAbove
-            />
+            />,
         );
 
         const contentContainer = screen.getByTestId('main-content');
@@ -315,7 +325,7 @@ describe('IconCard', () => {
                         <li>Banana</li>
                     </ul>
                 }
-            />
+            />,
         );
 
         expect(screen.getAllByRole('listitem')).toHaveLength(2);

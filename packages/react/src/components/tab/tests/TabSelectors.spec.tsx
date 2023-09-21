@@ -20,7 +20,7 @@ describe('TabSelector', () => {
                         },
                     ],
                 },
-                ownProps
+                ownProps,
             );
 
             expect(tabGroup).toBe(undefined);

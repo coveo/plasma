@@ -8,24 +8,28 @@ describe('ModalWizard', () => {
 
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
                 element: <div> Slide 1</div>,
             },
             {
+                id: 'step2',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
                 element: <div> Slide 2</div>,
             },
             {
+                id: 'step3',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: false}),
                 element: <div> Slide 3</div>,
             },
             {
+                id: 'step4',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: false}),
@@ -46,22 +50,23 @@ describe('ModalWizard', () => {
                 onNext={onNextSpy}
                 onPrevious={onPreviousSpy}
             >
-                {modelSteps.map((model_item) => (
+                {modelSteps.map((step) => (
                     <ModalWizard.Step
-                        docLink={model_item.docLink}
+                        key={step.id}
+                        docLink={step.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
-                        validateStep={model_item.validateStep}
+                        validateStep={step.validateStep}
                     >
-                        {model_item.element}
+                        {step.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 1/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(screen.getByText(/slide 1/i)).toBeInTheDocument();
@@ -69,7 +74,7 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('button', {
                 name: /close-modal/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         let nextButton = screen.getByRole('button', {
@@ -82,13 +87,13 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 2/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(
             screen.getByRole('button', {
                 name: /close-modal/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(screen.getByText(/slide 2/i)).toBeInTheDocument();
@@ -96,7 +101,7 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('button', {
                 name: /previous/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         nextButton = screen.getByRole('button', {
@@ -109,13 +114,13 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 3/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(
             screen.getByRole('button', {
                 name: /close-modal/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(screen.getByText(/slide 3/i)).toBeInTheDocument();
@@ -123,7 +128,7 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('button', {
                 name: /previous/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         nextButton = screen.getByRole('button', {
@@ -136,19 +141,19 @@ describe('ModalWizard', () => {
         await user.click(
             screen.getByRole('button', {
                 name: /previous/i,
-            })
+            }),
         );
 
         expect(
             screen.getByRole('heading', {
                 name: /current step is: 2/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(
             screen.getByRole('button', {
                 name: /close-modal/i,
-            })
+            }),
         ).toBeInTheDocument();
 
         expect(screen.getByText(/slide 2/i)).toBeInTheDocument();
@@ -156,7 +161,7 @@ describe('ModalWizard', () => {
         expect(
             screen.getByRole('button', {
                 name: /previous/i,
-            })
+            }),
         ).toBeInTheDocument();
     });
 
@@ -165,6 +170,7 @@ describe('ModalWizard', () => {
 
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -179,6 +185,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
@@ -186,7 +193,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         const closeButton = screen.getByRole('button', {
@@ -201,6 +208,7 @@ describe('ModalWizard', () => {
         const user = userEvent.setup();
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -215,6 +223,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
@@ -222,7 +231,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         const cancelButton = screen.getByRole('button', {
@@ -237,6 +246,7 @@ describe('ModalWizard', () => {
         const user = userEvent.setup();
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -252,6 +262,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} onFinish={onFinish} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
@@ -259,7 +270,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         const finishButton = screen.getByRole('button', {
@@ -274,6 +285,7 @@ describe('ModalWizard', () => {
         const user = userEvent.setup();
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -289,6 +301,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} handleDirtyState={handleDirtyState} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
@@ -296,7 +309,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
         const closeButton = screen.getByRole('button', {
             name: /close-modal/i,
@@ -313,6 +326,7 @@ describe('ModalWizard', () => {
         const user = userEvent.setup();
         const modelSteps = [
             {
+                id: 'step1',
                 docLink: 'https://google.com',
                 title: (currentStep: string) => 'Current Step is: ' + currentStep,
                 validateStep: () => ({isValid: true}),
@@ -328,6 +342,7 @@ describe('ModalWizard', () => {
             <ModalWizard isDirty={isDirty} onClose={onClose} handleDirtyState={handleDirtyState} opened={true}>
                 {modelSteps.map((model_item) => (
                     <ModalWizard.Step
+                        key={model_item.id}
                         docLink={model_item.docLink}
                         title={(currentStep) => 'Current Step is: ' + currentStep}
                         validateStep={model_item.validateStep}
@@ -335,7 +350,7 @@ describe('ModalWizard', () => {
                         {model_item.element}
                     </ModalWizard.Step>
                 ))}
-            </ModalWizard>
+            </ModalWizard>,
         );
         const closeButton = screen.getByRole('button', {
             name: /close-modal/i,
@@ -357,7 +372,7 @@ describe('ModalWizard', () => {
                 <ModalWizard.Step title="Step 2" validateStep={() => ({isValid: true})}>
                     Content step 2
                 </ModalWizard.Step>
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
@@ -376,7 +391,7 @@ describe('ModalWizard', () => {
                 <ModalWizard.Step title="Step 2" validateStep={() => ({isValid: false})}>
                     Content step 2
                 </ModalWizard.Step>
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();
@@ -393,7 +408,7 @@ describe('ModalWizard', () => {
                 <ModalWizard.Step title="Step 2" validateStep={() => ({isValid: false})}>
                     Content step 2
                 </ModalWizard.Step>
-            </ModalWizard>
+            </ModalWizard>,
         );
 
         expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();

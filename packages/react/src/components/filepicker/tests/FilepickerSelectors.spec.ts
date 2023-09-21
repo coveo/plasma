@@ -12,8 +12,8 @@ describe('FilepickerSelectors', () => {
             expect(
                 FilepickerSelectors.isEmpty(
                     {filepickers: {'🍩': {id: '🍩', isEmpty: true, selectedFile: null}}} as PlasmaState,
-                    {id: '📜'}
-                )
+                    {id: '📜'},
+                ),
             ).toBeUndefined();
         });
 
@@ -26,8 +26,8 @@ describe('FilepickerSelectors', () => {
                             '📜': {id: '📜', isEmpty: true, selectedFile: null},
                         },
                     } as PlasmaState,
-                    {id: '📜'}
-                )
+                    {id: '📜'},
+                ),
             ).toBe(true);
         });
 
@@ -49,8 +49,8 @@ describe('FilepickerSelectors', () => {
                             },
                         },
                     } as PlasmaState,
-                    {id: '📜'}
-                )
+                    {id: '📜'},
+                ),
             ).toBe(false);
         });
     });
@@ -62,8 +62,8 @@ describe('FilepickerSelectors', () => {
             expect(
                 FilepickerSelectors.getFileMetadata(
                     {filepickers: {'🍩': {id: '🍩', isEmpty: true, selectedFile: null}}} as PlasmaState,
-                    {id: '📜'}
-                )
+                    {id: '📜'},
+                ),
             ).toBeUndefined();
         });
 
@@ -76,8 +76,8 @@ describe('FilepickerSelectors', () => {
                             '📜': {id: '📜', isEmpty: true, selectedFile: null},
                         },
                     } as PlasmaState,
-                    {id: '📜'}
-                )
+                    {id: '📜'},
+                ),
             ).toBeNull();
         });
 
@@ -101,8 +101,8 @@ describe('FilepickerSelectors', () => {
                             },
                         },
                     } as PlasmaState,
-                    {id: '📜'}
-                )
+                    {id: '📜'},
+                ),
             ).toEqual(fileMetaData);
         });
     });

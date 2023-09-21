@@ -42,5 +42,5 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHeadingRowOwnPr
 export const TableHeadingRowConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(TableHeadingRow);

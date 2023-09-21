@@ -6,6 +6,7 @@ import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
     it('closes the modal and execute the onCancel prop if passed when clicking on "cancel"', async () => {
+        const user = userEvent.setup();
         const cancelSpy = jest.fn();
         render(
             <div>
@@ -15,12 +16,12 @@ describe('ModalWizard', () => {
                     <div>Step 3</div>
                 </ModalWizard>
             </div>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByRole('dialog')).toBeInTheDocument();
 
-        await userEvent.click(screen.getByRole('button', {name: 'Cancel'}));
+        await user.click(screen.getByRole('button', {name: 'Cancel'}));
 
         await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
         expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
@@ -28,6 +29,7 @@ describe('ModalWizard', () => {
     });
 
     it('navigates properly through the steps when clicking on "next" and "previous" buttons', async () => {
+        const user = userEvent.setup();
         const nextSpy = jest.fn();
         const previousSpy = jest.fn();
 
@@ -44,26 +46,26 @@ describe('ModalWizard', () => {
                 <FunctionComponentStep />
                 <ClassComponentStep />
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByText(/Step 1/)).toBeVisible();
         expect(screen.getByText(/Step 2/)).not.toBeVisible();
         expect(screen.getByText(/Step 3/)).not.toBeVisible();
 
-        await userEvent.click(screen.getByRole('button', {name: 'Next'}));
+        await user.click(screen.getByRole('button', {name: 'Next'}));
 
         expect(screen.getByText(/Step 1/)).not.toBeVisible();
         expect(screen.getByText(/Step 2/)).toBeVisible();
         expect(screen.getByText(/Step 3/)).not.toBeVisible();
 
-        await userEvent.click(screen.getByRole('button', {name: 'Next'}));
+        await user.click(screen.getByRole('button', {name: 'Next'}));
 
         expect(screen.getByText(/Step 1/)).not.toBeVisible();
         expect(screen.getByText(/Step 2/)).not.toBeVisible();
         expect(screen.getByText(/Step 3/)).toBeVisible();
 
-        await userEvent.click(screen.getByRole('button', {name: 'Previous'}));
+        await user.click(screen.getByRole('button', {name: 'Previous'}));
 
         expect(screen.getByText(/Step 1/)).not.toBeVisible();
         expect(screen.getByText(/Step 2/)).toBeVisible();
@@ -79,7 +81,7 @@ describe('ModalWizard', () => {
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByRole('button', {name: 'Next'})).toBeDisabled();
@@ -87,18 +89,19 @@ describe('ModalWizard', () => {
 
     // eslint-disable-next-line jest/no-disabled-tests
     it.skip('prevents from closing the modal accidently if it has pending changes', async () => {
+        const user = userEvent.setup();
         render(
             <ModalWizard id="🧙‍♂️" isDirty>
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.queryByText('Unsaved Changes')).not.toBeInTheDocument();
 
-        await userEvent.click(screen.getByRole('dialog'));
-        await userEvent.keyboard('{Escape}');
+        await user.click(screen.getByRole('dialog'));
+        await user.keyboard('{Escape}');
 
         expect(screen.getByText('Unsaved Changes')).toBeVisible();
         expect(screen.getByText('Step 1')).toBeVisible();
@@ -106,40 +109,43 @@ describe('ModalWizard', () => {
 
     // eslint-disable-next-line jest/no-disabled-tests
     it.skip('does not prevent from closing the modal accidently if it has no pending changes', async () => {
+        const user = userEvent.setup();
         render(
             <ModalWizard id="🧙‍♂️" isDirty={false}>
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
-        await userEvent.click(screen.getByRole('dialog'));
-        await userEvent.keyboard('{Escape}');
+        await user.click(screen.getByRole('dialog'));
+        await user.keyboard('{Escape}');
 
         await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
         expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
 
     it('changes the title depending on the step if a function was provided as title', async () => {
+        const user = userEvent.setup();
         render(
             <ModalWizard id="🧙‍♂️" title={(currentStep: number) => (currentStep === 0 ? 'Title 1' : 'Title 2')}>
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByRole('heading', {name: /title 1/i})).toBeVisible();
         expect(screen.queryByRole('heading', {name: /title 2/i})).not.toBeInTheDocument();
 
-        await userEvent.click(screen.getByRole('button', {name: 'Next'}));
+        await user.click(screen.getByRole('button', {name: 'Next'}));
 
         expect(screen.queryByRole('heading', {name: /title 1/i})).not.toBeInTheDocument();
         expect(screen.getByRole('heading', {name: /title 2/i})).toBeVisible();
     });
 
     it('changes the footer depending on the step if a function was provided as modalFooterChildren', async () => {
+        const user = userEvent.setup();
         render(
             <ModalWizard
                 id="🧙‍♂️"
@@ -150,13 +156,13 @@ describe('ModalWizard', () => {
                 <div>Step 1</div>
                 <div>Step 2</div>
             </ModalWizard>,
-            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
         expect(screen.getByText(/footer children 1/i)).toBeVisible();
         expect(screen.queryByText(/footer children 2/i)).not.toBeInTheDocument();
 
-        await userEvent.click(screen.getByRole('button', {name: 'Next'}));
+        await user.click(screen.getByRole('button', {name: 'Next'}));
 
         expect(screen.queryByText(/footer children 1/i)).not.toBeInTheDocument();
         expect(screen.getByText(/footer children 2/i)).toBeVisible();

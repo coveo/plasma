@@ -27,7 +27,7 @@ export interface ITableWithBlankSlateProps extends Partial<ITableWithBlankSlateS
 export const tableWithBlankSlate =
     (supplier: ConfigSupplier<IBlankSlateWithTableProps> = {}) =>
     (
-        Component: ComponentClass<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>
+        Component: ComponentClass<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>,
     ): ComponentType<
         React.PropsWithChildren<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps>
     > => {
@@ -66,6 +66,6 @@ export const tableWithBlankSlate =
         };
 
         return connect<ReturnType<typeof mapStateToProps>, ITableHOCOwnProps & ITableWithBlankSlateProps>(
-            mapStateToProps
-        )(TableWithBlankSlate as any);
+            mapStateToProps,
+        )(TableWithBlankSlate);
     };

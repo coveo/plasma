@@ -1,16 +1,17 @@
 .icon-badge {
     position: relative;
     display: inline-block;
+
     --fill: var(--grey-80);
     --stroke: var(--grey-80);
 
-    &:after {
+    &::after {
         position: absolute;
         border-radius: 50%;
         content: '';
     }
 
-    &.mod-24:after {
+    &.mod-24::after {
         top: 4px;
         right: 2px;
         width: 8px;
@@ -23,30 +24,33 @@
             stroke: var(--white);
         }
 
-        &:after {
+        &::after {
             width: 10px;
             height: 10px;
             border: 2px solid var(--grape-purple-70);
         }
     }
 
-    &.mod-new:after {
+    &.mod-new::after {
         background-color: var(--bright-turquoise-30);
     }
-    &.mod-info:after {
+
+    &.mod-info::after {
         background-color: var(--navy-blue-20);
     }
-    &.mod-warning:after {
+
+    &.mod-warning::after {
         background-color: var(--turbo-yellow-50);
     }
-    &.mod-major:after {
+
+    &.mod-major::after {
         background-color: var(--critical-70);
     }
 }
 
 .header-section.mod-icon.open,
 .header-section.mod-icon:hover {
-    .icon-badge.mod-navigation:after {
+    .icon-badge.mod-navigation::after {
         border: 2px solid var(--navy-blue-100);
     }
 }

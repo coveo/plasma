@@ -12,7 +12,7 @@ export interface IBlankSlateWithTableProps extends IBlankSlateProps {
  * @deprecated Use Plasmantine Blank-slate instead
  */
 export const blankSlateWithTable = <P extends IBlankSlateProps>(
-    Component: ComponentType<PropsWithChildren<P>>
+    Component: ComponentType<PropsWithChildren<P>>,
 ): ComponentClass<IBlankSlateWithTableProps & P> => {
     class ComponentBlankSlateWithTable extends PureComponent<IBlankSlateWithTableProps & P> {
         static defaultProps: Partial<IBlankSlateWithTableProps & P> = {

@@ -151,7 +151,7 @@ describe('FlatSelect', () => {
 
         expect(
             flatSelectState.filter((flatSelect) => flatSelect.selectedOptionId === action.payload.selectedOptionId)
-                .length
+                .length,
         ).toBe(1);
     });
 
@@ -182,7 +182,7 @@ describe('FlatSelect', () => {
 
         expect(
             flatSelectState.filter((flatSelect) => flatSelect.selectedOptionId === action.payload.selectedOptionId)
-                .length
+                .length,
         ).toBe(0);
     });
 });

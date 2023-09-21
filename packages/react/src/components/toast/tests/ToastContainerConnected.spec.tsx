@@ -23,7 +23,7 @@ describe('Toasts', () => {
                 <Provider store={store}>
                     <ToastContainerConnected id={containerId} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             component = wrapper.find(ToastContainer).first();
         });

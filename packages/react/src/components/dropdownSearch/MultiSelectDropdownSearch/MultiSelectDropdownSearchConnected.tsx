@@ -43,7 +43,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IDropdownSearchProps): ID
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IDropdownSearchOwnProps
+    ownProps: IDropdownSearchOwnProps,
 ): IDropdownSearchDispatchProps => ({
     onMount: () => dispatch(addMultiSelectDropdownSearch(ownProps.id, ownProps.defaultOptions)),
     onDestroy: () => dispatch(removeDropdownSearch(ownProps.id)),
@@ -65,5 +65,5 @@ const mapDispatchToProps = (
 export const MultiSelectDropdownSearchConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(MultiSelectDropdownSearch);

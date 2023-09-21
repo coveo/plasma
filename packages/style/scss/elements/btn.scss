@@ -18,7 +18,6 @@
     background-color: var(--white);
     border: $button-border-width solid var(--digital-blue-80);
     border-radius: $button-border-radius;
-
     cursor: pointer;
 
     .icon:not(.documentation-link) {
@@ -35,7 +34,8 @@
     }
 
     &:focus {
-        @include focus-border();
+        @include focus-border;
+
         text-decoration: none;
         background-color: var(--white);
     }
@@ -124,7 +124,7 @@
         &:focus {
             background-color: var(--pomegranate-red-60);
             border: $button-border-width solid var(--pomegranate-red-60);
-            box-shadow: 0 0 0 4px rgba(var(--pomegranate-red-70-rgb), 0.2);
+            box-shadow: 0 0 0 4px rgb(var(--pomegranate-red-70-rgb) / 20%);
         }
 
         &:hover {
@@ -172,7 +172,7 @@
         transition: background-color 0.2s ease;
         user-select: none;
 
-        &:before {
+        &::before {
             position: absolute;
             top: $button-height + 6px;
             font-size: 11px;
@@ -183,11 +183,11 @@
             animation-fill-mode: forwards;
         }
 
-        &.mod-confirm-right:before {
+        &.mod-confirm-right::before {
             right: 0;
         }
 
-        &.mod-confirm-left:before {
+        &.mod-confirm-left::before {
             left: 0;
         }
 
@@ -216,7 +216,7 @@
             outline-color: var(--bright-turquoise-40);
         }
 
-        &:before {
+        &::before {
             color: var(--bright-turquoise-40);
             content: attr(data-confirm-success);
         }
@@ -236,7 +236,7 @@
             outline-color: var(--critical-70);
         }
 
-        &:before {
+        &::before {
             color: var(--critical-70);
             content: attr(data-confirm-error);
         }

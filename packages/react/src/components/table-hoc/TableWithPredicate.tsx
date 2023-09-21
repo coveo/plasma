@@ -1,4 +1,4 @@
-import {ComponentType, ReactNode, Component, PropsWithChildren} from 'react';
+import {Component, ComponentType, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -19,7 +19,7 @@ export interface IPredicateComponentProps
     id: string;
 }
 
-type PredicateComponentType = ComponentType<PropsWithChildren<IPredicateComponentProps>>;
+type PredicateComponentType = ComponentType<any>;
 
 export interface ITableWithPredicateGenericConfig extends WithServerSideProcessingProps {
     id: string;
@@ -42,7 +42,7 @@ const TableWithPredicatePropsToOmit = ['predicate', 'urlPredicate'];
 const defaultMatchPredicate = (predicate: string, datum: any) =>
     !predicate || _.some(_.values(datum), (value: string) => value === predicate);
 
-type TableWithPredicateComponent = ComponentType<PropsWithChildren<ITableWithPredicateProps>>;
+type TableWithPredicateComponent = ComponentType<any>;
 export const tableWithPredicateGeneric =
     (supplier: ConfigSupplier<ITableWithPredicateGenericConfig>) =>
     (PredicateComponent: PredicateComponentType) =>
@@ -51,7 +51,7 @@ export const tableWithPredicateGeneric =
 
         const mapStateToProps = (
             state: PlasmaState,
-            ownProps: ITableWithPredicateProps
+            ownProps: ITableWithPredicateProps,
         ): ITableWithPredicateStateProps | ITableHOCOwnProps => {
             const predicate =
                 SelectSelector.getListBoxSelected(state, {

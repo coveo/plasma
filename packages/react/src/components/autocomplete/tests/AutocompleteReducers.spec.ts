@@ -164,7 +164,7 @@ describe('Autocomplete', () => {
                 const oldState: IAutocompleteState[] = defaultState;
                 const newState: IAutocompleteState[] = autocompletesReducer(
                     oldState,
-                    setAutocompleteValue(id, expectedValue, true)
+                    setAutocompleteValue(id, expectedValue, true),
                 );
 
                 expect(newState.length).toBe(oldState.length);
@@ -174,7 +174,7 @@ describe('Autocomplete', () => {
 
                 const newerState: IAutocompleteState[] = autocompletesReducer(
                     oldState,
-                    setAutocompleteValue(id, expectedValue, false)
+                    setAutocompleteValue(id, expectedValue, false),
                 );
 
                 expect(newerState.length).toBe(oldState.length);
@@ -206,7 +206,7 @@ describe('Autocomplete', () => {
                 const oldState: IAutocompleteState[] = defaultState;
                 const newState: IAutocompleteState[] = autocompletesReducer(
                     oldState,
-                    setAutocompleteActive(id, expectedValue)
+                    setAutocompleteActive(id, expectedValue),
                 );
 
                 expect(newState.length).toBe(oldState.length);
@@ -261,7 +261,7 @@ describe('Autocomplete', () => {
                 const oldState: IAutocompleteState[] = defaultState;
                 const newState: IAutocompleteState[] = autocompletesReducer(
                     oldState,
-                    selectListBoxOption(id, false, 'anything')
+                    selectListBoxOption(id, false, 'anything'),
                 );
 
                 expect(newState.length).toBe(oldState.length);
@@ -277,7 +277,7 @@ describe('Autocomplete', () => {
                 let newState: IAutocompleteState[] = [];
 
                 expect(
-                    () => (newState = autocompletesReducer(oldState, selectListBoxOption(id, false, 'value')))
+                    () => (newState = autocompletesReducer(oldState, selectListBoxOption(id, false, 'value'))),
                 ).not.toThrow();
 
                 expect(newState.length).toBe(oldState.length);

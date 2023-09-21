@@ -17,6 +17,7 @@ table.mod-align-header {
         .container {
             margin-right: -$header-padding;
             margin-left: -$header-padding;
+
             // fix so that elements can take the full width of the table during animation
             padding-right: $header-padding;
             padding-left: $header-padding;

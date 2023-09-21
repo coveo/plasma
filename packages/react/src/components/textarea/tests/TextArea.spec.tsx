@@ -16,10 +16,11 @@ describe('Textarea', () => {
     });
 
     it('calls the onChangeCallback when the user changes the textarea value', async () => {
+        const user = userEvent.setup();
         const onChangeSpy = jest.fn();
         render(<TextAreaConnected id="🆔" onChangeCallback={onChangeSpy} />);
         const textarea = screen.getByRole('textbox');
-        await userEvent.type(textarea, 'abc');
+        await user.type(textarea, 'abc');
         expect(onChangeSpy).toHaveBeenCalledTimes(3);
     });
 

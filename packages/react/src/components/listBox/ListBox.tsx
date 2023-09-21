@@ -87,7 +87,7 @@ export class ListBox extends Component<IListBoxProps> {
             !item.hidden && (!this.props.multi || !_.contains(this.props.selected, item.value));
         const visibleLength = _.filter(
             this.props.items,
-            (item: IItemBoxProps) => shouldShow(item) && !item.disabled
+            (item: IItemBoxProps) => shouldShow(item) && !item.disabled,
         ).length;
 
         let realIndex = 0;

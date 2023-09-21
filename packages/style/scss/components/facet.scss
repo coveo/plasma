@@ -10,18 +10,16 @@
 .facet {
     position: relative;
     margin: $facet-margin-y 0;
-
     padding-bottom: $facet-spacing;
     background: var(--white);
-    border: 1px solid rgba(var(--deprecated-heather-rgb), 0.3);
+    border: 1px solid rgb(var(--deprecated-heather-rgb) / 30%);
     border-radius: $big-border-radius;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
 }
 
 .facet-header {
     position: relative;
     clear: both;
-
     padding: $button-padding-x;
     background: var(--grey-20);
     border-top-left-radius: $big-border-radius;
@@ -68,7 +66,6 @@
 .facet-value {
     position: relative;
     margin: 0;
-
     padding: 0 $facet-spacing;
 
     &:hover {
@@ -97,7 +94,6 @@
         flex-grow: 1;
         overflow: hidden;
         white-space: nowrap;
-
         text-overflow: ellipsis;
     }
 
@@ -142,6 +138,7 @@
 
 .exclude-button {
     display: none;
+
     svg {
         color: var(--grey-60);
     }
@@ -168,7 +165,7 @@
         background: var(--white);
         border: $checkbox-default-border;
 
-        &:before {
+        &::before {
             content: none;
         }
 
@@ -193,8 +190,8 @@
         margin-left: $checkbox-label-margin;
     }
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -204,12 +201,12 @@
         content: '';
     }
 
-    &:before {
+    &::before {
         width: $facet-checkbox-line-width;
         height: $facet-checkbox-mark-size;
     }
 
-    &:after {
+    &::after {
         width: $facet-checkbox-mark-size;
         height: $facet-checkbox-line-width;
     }
@@ -241,9 +238,8 @@
     overflow-x: hidden;
     overflow-y: auto;
     list-style: none;
-
     background-color: var(--white);
-    border: 1px solid rgba(var(--deprecated-heather-rgb), 0.3);
+    border: 1px solid rgb(var(--deprecated-heather-rgb) / 30%);
     border-radius: $big-border-radius;
 
     @include slim-scroll(var(--deprecated-light-grey), var(--deprecated-medium-grey));

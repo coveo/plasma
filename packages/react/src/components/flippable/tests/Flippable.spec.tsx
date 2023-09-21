@@ -167,7 +167,7 @@ describe('Flippable', () => {
                 document.getElementById('App').click();
 
                 expect(onUnflipSpy).toHaveBeenCalledTimes(1);
-            }
+            },
         );
 
         it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns false', () => {

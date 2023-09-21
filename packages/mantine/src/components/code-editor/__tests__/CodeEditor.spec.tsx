@@ -1,5 +1,5 @@
 import {loader} from '@monaco-editor/react';
-import {render, screen, waitForElementToBeRemoved} from '@test-utils';
+import {render, screen, userEvent, waitForElementToBeRemoved} from '@test-utils';
 import {useForm} from '../../../form';
 
 import {CodeEditor} from '../CodeEditor';
@@ -13,7 +13,7 @@ describe('CodeEditor', () => {
         vi.clearAllMocks();
     });
 
-    it('renders the monaco editor and a copy to clipboard button', async () => {
+    it('renders the monaco editor, a copy to clipboard button and a search button', async () => {
         render(<CodeEditor label="label" description="description" />);
 
         await waitForElementToBeRemoved(screen.queryByRole('presentation'));
@@ -22,6 +22,7 @@ describe('CodeEditor', () => {
         expect(screen.getByText(/description/)).toBeInTheDocument();
         expect(await screen.findByTestId('monaco-editor')).toBeInTheDocument();
         expect(await screen.findByRole('button', {name: /copy/i})).toBeInTheDocument();
+        expect(await screen.findByRole('button', {name: /search/i})).toBeInTheDocument();
     });
 
     it('shows validation errors underneath the code editor', async () => {
@@ -59,5 +60,31 @@ describe('CodeEditor', () => {
         const xmlLanguageSpy = vi.spyOn(XML, 'register').mockImplementation(vi.fn());
         render(<CodeEditor label="label" description="description" monacoLoader="cdn" language="xml" />);
         expect(xmlLanguageSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('focus and triggers search on the Monaco editor when handleSearch is called', async () => {
+        const user = userEvent.setup();
+        render(<CodeEditor />);
+        expect(await screen.findByTestId('monaco-editor')).toBeInTheDocument();
+        await user.click(screen.getByRole('button', {name: /search/i}));
+        expect(screen.getByTestId('monaco-editor')).toHaveAttribute('focus');
+        expect(screen.getByTestId('monaco-editor')).toHaveAttribute('trigger');
+    });
+
+    it('calls the onCopy callback when clicking on the copy button', async () => {
+        const user = userEvent.setup();
+        const onCopySpy = vi.fn();
+        render(<CodeEditor onCopy={onCopySpy} />);
+        await user.click(screen.getByRole('button', {name: /copy/i}));
+
+        expect(onCopySpy).toHaveBeenCalledTimes(1);
+    });
+    it('calls the onSearch callback when clicking on the search button', async () => {
+        const user = userEvent.setup();
+        const onSearchSpy = vi.fn();
+        render(<CodeEditor onSearch={onSearchSpy} />);
+        await user.click(screen.getByRole('button', {name: /search/i}));
+
+        expect(onSearchSpy).toHaveBeenCalledTimes(1);
     });
 });

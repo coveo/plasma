@@ -1,7 +1,8 @@
 .box {
     &.padded {
         padding: 5px $collapsible-box-padding;
-        > div.flex.flex-center  {
+
+        > div.flex.flex-center {
             align-items: baseline;
         }
     }
@@ -13,7 +14,7 @@
     }
 
     .label {
-        padding: 5px 0px 5px 5px;
+        padding: 5px 0 5px 5px;
         font-size: $form-control-label-font-size;
     }
 

@@ -1,5 +1,5 @@
 import classNames from 'clsx';
-import {RefObject, createRef, Children, Component, ReactNode} from 'react';
+import {Children, Component, ReactNode, RefObject} from 'react';
 import {findDOMNode} from 'react-dom';
 import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
@@ -55,6 +55,7 @@ export interface IPopoverProps extends IPopoverDispatchProps, ITetherComponentCo
 }
 
 export interface IPopoverState {
+    id?: string;
     isOpen?: boolean;
 }
 
@@ -65,11 +66,8 @@ export class Popover extends Component<IPopoverProps, IPopoverState> {
     private tetherToggle: RefObject<HTMLDivElement>;
     private tetherElement: RefObject<HTMLDivElement>;
 
-    constructor(props: IPopoverProps, state: IPopoverState) {
-        super(props, state);
-
-        this.tetherToggle = createRef();
-        this.tetherElement = createRef();
+    constructor(props: IPopoverProps) {
+        super(props);
 
         // If onToggle wasn't passed, Popover is uncontrolled and we set an initial state.
         if (!_.isFunction(this.props.onToggle)) {
@@ -95,18 +93,31 @@ export class Popover extends Component<IPopoverProps, IPopoverState> {
         const isOpen: boolean = (this.state && this.state.isOpen) || this.props.isOpen;
 
         return (
-            <TetherComponent {..._.omit(this.props, 'children')}>
-                <div ref={this.tetherToggle} onClick={() => this.toggleOpened(!isOpen)}>
-                    {children[0]}
-                </div>
-                <div
-                    ref={this.tetherElement}
-                    className={classNames({hide: !isOpen}, 'shadow-2')}
-                    aria-hidden={!this.props.isOpen}
-                >
-                    {children[1]}
-                </div>
-            </TetherComponent>
+            <TetherComponent
+                {..._.omit(this.props, 'children', 'onToggle', 'onMount', 'onUnmount', 'renderElementTo')}
+                renderTarget={(ref) => {
+                    this.tetherToggle = ref;
+                    return (
+                        <div ref={ref} onClick={() => this.toggleOpened(!isOpen)}>
+                            {children[0]}
+                        </div>
+                    );
+                }}
+                renderElement={(ref) => {
+                    this.tetherElement = ref;
+                    return (
+                        isOpen && (
+                            <div
+                                ref={ref}
+                                className={classNames({hide: !isOpen}, 'shadow-2')}
+                                aria-hidden={!this.props.isOpen}
+                            >
+                                {children[1]}
+                            </div>
+                        )
+                    );
+                }}
+            />
         );
     }
 
@@ -130,7 +141,7 @@ export class Popover extends Component<IPopoverProps, IPopoverState> {
             const dropdownsContainer = document.querySelector(Defaults.DROP_ROOT);
             const clickedInsideADropdown = dropdownsContainer.contains(target);
 
-            if (!tetherElement.contains(target) && !tetherToggle.contains(target) && !clickedInsideADropdown) {
+            if (!tetherElement?.contains(target) && !tetherToggle?.contains(target) && !clickedInsideADropdown) {
                 if (this.props.isModal) {
                     event.stopImmediatePropagation();
                     event.preventDefault();

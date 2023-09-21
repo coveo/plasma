@@ -21,7 +21,7 @@ export const inputsInitialState: IInputState[] = [];
 
 export const inputReducer = (
     state: IInputState = inputInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IInputState => {
     switch (action.type) {
         case InputActions.add:
@@ -47,7 +47,7 @@ export const inputReducer = (
 
 export const inputsReducer = (
     state: IInputState[] = inputsInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IInputState[] => {
     switch (action.type) {
         case InputActions.add:

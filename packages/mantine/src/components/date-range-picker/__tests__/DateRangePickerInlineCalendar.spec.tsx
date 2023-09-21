@@ -42,13 +42,13 @@ describe('DateRangePickerInlineCalendar', () => {
                 initialRange={[null, null]}
                 onApply={onApply}
                 onCancel={vi.fn()}
-            />
+            />,
         );
 
         await user.click(
             screen.getByRole('searchbox', {
                 name: 'Date range',
-            })
+            }),
         );
         await user.click(screen.getByRole('option', {name: 'select me'}));
         await user.click(screen.getByRole('button', {name: 'Apply'}));
@@ -87,6 +87,7 @@ describe('DateRangePickerInlineCalendar', () => {
     });
 
     it('calls onApply with the selected dates when typing in the inputs', async () => {
+        vi.useFakeTimers().setSystemTime(new Date(2022, 0, 31));
         const user = userEvent.setup({delay: null});
         const onApply = vi.fn();
         render(<DateRangePickerInlineCalendar initialRange={[null, null]} onApply={onApply} onCancel={vi.fn()} />);
@@ -106,8 +107,13 @@ describe('DateRangePickerInlineCalendar', () => {
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
         expect(onApply).toHaveBeenCalledWith([
-            dayjs(new Date(2022, 0, 8)).startOf('day').toDate(),
-            dayjs(new Date(2022, 0, 14)).endOf('day').toDate(),
+            dayjs(new Date(2022, 0, 8))
+                .startOf('day')
+                .toDate(),
+            dayjs(new Date(2022, 0, 14))
+                .endOf('day')
+                .toDate(),
         ]);
+        vi.useRealTimers();
     });
 });

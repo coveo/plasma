@@ -28,7 +28,7 @@ describe('Dropdown', () => {
                 <Provider store={store}>
                     <DropdownConnected {...basicDropdownProps} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             dropdown = wrapper.find(Dropdown);
         });

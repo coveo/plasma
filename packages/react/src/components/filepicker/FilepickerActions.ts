@@ -9,7 +9,7 @@ const addFilepicker = (id: string): IReduxAction<{id: keyof FilepickerState}> =>
 
 const setSelectedFile = (
     id: string,
-    selectedFile: FileMetadata
+    selectedFile: FileMetadata,
 ): IReduxAction<{id: string; selectedFile: FileMetadata}> => ({
     type: FilepickerActionsTypes.SetValue,
     payload: {

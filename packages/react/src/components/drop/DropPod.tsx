@@ -110,7 +110,7 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
 
         if (portalRoot === null) {
             throw new Error(
-                `Plasma dropdowns' root element at "${rootSelector}" does not exist in the DOM. Make sure this element exists or change Defaults.DROP_ROOT to something else. More info at https://github.com/coveo/plasma/blob/master/packages/react/README.md#dropdowns`
+                `Plasma dropdowns' root element at "${rootSelector}" does not exist in the DOM. Make sure this element exists or change Defaults.DROP_ROOT to something else. More info at https://github.com/coveo/plasma/blob/master/packages/react/README.md#dropdowns`,
             );
         }
         portalRoot.appendChild(element);
@@ -157,7 +157,7 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
                     buttonOffset,
                     dropOffsetPrime,
                     boundingLimit,
-                    lastPosition
+                    lastPosition,
                 );
             }
 
@@ -173,7 +173,7 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
                         buttonOffset,
                         dropOffsetPrime,
                         boundingLimit,
-                        lastPosition
+                        lastPosition,
                     );
                 } else {
                     const position = positions?.[0] ?? DropPodPosition.bottom;
@@ -256,5 +256,5 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
  * @deprecated Use Mantine instead
  */
 export const DropPod: ForwardRefExoticComponent<IDropPodProps & RefAttributes<HTMLElement>> = forwardRef(
-    (props: IDropPodProps, ref: RefObject<HTMLElement>) => <RDropPod {...props} buttonRef={ref} />
+    (props: IDropPodProps, ref: RefObject<HTMLElement>) => <RDropPod {...props} buttonRef={ref} />,
 );

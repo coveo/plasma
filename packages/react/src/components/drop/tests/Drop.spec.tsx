@@ -66,7 +66,7 @@ describe('Drop', () => {
             const mountDropWithStore = (
                 props?: Partial<IDropProps>,
                 store?: PlasmaMockStore,
-                child: ReactNode = null
+                child: ReactNode = null,
             ) => {
                 wrapper = mountWithStore(
                     <Drop
@@ -78,7 +78,7 @@ describe('Drop', () => {
                     >
                         {child}
                     </Drop>,
-                    store || getStoreMock()
+                    store || getStoreMock(),
                 );
                 return wrapper;
             };
@@ -124,7 +124,7 @@ describe('Drop', () => {
                     {
                         closeOnClickOutside: false,
                     },
-                    store
+                    store,
                 );
 
                 RTestUtils.clickOnElement();
@@ -133,25 +133,27 @@ describe('Drop', () => {
             });
 
             it('closes the drop if the click happen inside of it', async () => {
+                const user = userEvent.setup();
                 render(
                     <Drop
                         id={id}
                         renderOpenButton={(onClick: () => void) => <button onClick={onClick}>toggle drop</button>}
                     >
                         <button>children button</button>
-                    </Drop>
+                    </Drop>,
                 );
 
-                await userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
+                await user.click(screen.getByRole('button', {name: 'toggle drop'}));
 
                 await waitFor(() => expect(screen.getByRole('button', {name: 'children button'})).toBeVisible());
 
-                await userEvent.click(screen.getByRole('button', {name: 'children button'}));
+                await user.click(screen.getByRole('button', {name: 'children button'}));
 
                 expect(screen.queryByRole('button', {name: 'children button'})).not.toBeInTheDocument();
             });
 
             it('does not close the drop if the click happen inside and closeOnClickDrop is false', async () => {
+                const user = userEvent.setup();
                 render(
                     <Drop
                         id={id}
@@ -159,14 +161,14 @@ describe('Drop', () => {
                         closeOnClickDrop={false}
                     >
                         <button>children button</button>
-                    </Drop>
+                    </Drop>,
                 );
 
-                await userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
+                await user.click(screen.getByRole('button', {name: 'toggle drop'}));
 
                 await waitFor(() => expect(screen.getByRole('button', {name: 'children button'})).toBeVisible());
 
-                await userEvent.click(screen.getByRole('button', {name: 'children button'}));
+                await user.click(screen.getByRole('button', {name: 'children button'}));
 
                 expect(screen.getByRole('button', {name: 'children button'})).toBeVisible();
             });
@@ -181,7 +183,7 @@ describe('Drop', () => {
                         },
                     },
                     store,
-                    <div id={'Drop'} className={'drop'}></div>
+                    <div id={'Drop'} className={'drop'}></div>,
                 );
 
                 expect(store.getActions()).toContainEqual(DropActions.toggle(id, DefaultGroupIds.default, true));
@@ -195,7 +197,7 @@ describe('Drop', () => {
                         .find(DropPod)
                         .props()
                         .renderDrop({} as any, {} as any, {} as any) as any,
-                    {}
+                    {},
                 );
 
                 expect(shallowWrapperDropPod.prop('data-open')).toBe(false);
@@ -209,7 +211,7 @@ describe('Drop', () => {
                         .find(DropPod)
                         .props()
                         .renderDrop({} as any, {} as any) as any,
-                    {}
+                    {},
                 );
 
                 expect(shallowWrapperDropPod.prop('data-open')).toBe(true);
@@ -220,7 +222,7 @@ describe('Drop', () => {
                     const spy = jest.spyOn(document, 'addEventListener');
                     const shallowWrapper = shallowWithState(
                         <Drop id={'test'} renderOpenButton={() => defaultButton} />,
-                        {}
+                        {},
                     )
                         .dive()
                         .dive();
@@ -236,7 +238,7 @@ describe('Drop', () => {
                     const spy = jest.spyOn(document, 'removeEventListener');
                     const shallowWrapper = shallowWithState(
                         <Drop id={'test'} renderOpenButton={() => defaultButton} />,
-                        {}
+                        {},
                     )
                         .dive()
                         .dive();

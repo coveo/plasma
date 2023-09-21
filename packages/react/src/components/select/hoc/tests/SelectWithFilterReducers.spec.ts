@@ -56,7 +56,7 @@ describe('Select', () => {
             it('should add the value in the list if multi and the id exist in the state', () => {
                 const newState: IStringListCompositeState = selectWithFilterCompositeReducer(
                     oldState,
-                    selectListBoxOption(stateId, true, newValue)
+                    selectListBoxOption(stateId, true, newValue),
                 );
 
                 expect(newState[stateId].list.length).toBe(2);
@@ -66,7 +66,7 @@ describe('Select', () => {
             it('should add only the value in the list if no multi and the id exist in the state', () => {
                 const newState: IStringListCompositeState = selectWithFilterCompositeReducer(
                     oldState,
-                    selectListBoxOption(stateId, false, newValue)
+                    selectListBoxOption(stateId, false, newValue),
                 );
 
                 expect(newState[stateId].list.length).toBe(1);
@@ -80,7 +80,7 @@ describe('Select', () => {
 
                 const newState: IStringListCompositeState = selectWithFilterCompositeReducer(
                     oldState,
-                    unselectListBoxOption(stateId, stateValue)
+                    unselectListBoxOption(stateId, stateValue),
                 );
 
                 expect(newState[stateId].list.length).toBe(0);
@@ -98,7 +98,7 @@ describe('Select', () => {
             it('should clear the list if the id exist in the state', () => {
                 const newState: IStringListCompositeState = selectWithFilterCompositeReducer(
                     oldStateTest,
-                    clearListBoxOption(stateId)
+                    clearListBoxOption(stateId),
                 );
 
                 expect(newState[stateId].list.length).toBe(0);

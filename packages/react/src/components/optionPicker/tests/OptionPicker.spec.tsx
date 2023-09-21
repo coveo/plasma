@@ -71,6 +71,7 @@ describe('Option picker', () => {
         });
 
         it('should call onClick if defined when clicking an option', async () => {
+            const user = userEvent.setup();
             const onClickSpy: jest.SpyInstance = jest.fn();
             const withOnClickProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {
                 onClick: onClickSpy,
@@ -78,10 +79,10 @@ describe('Option picker', () => {
 
             render(<OptionPicker {...withOnClickProps} />);
             const optionButton = screen.getByRole('button', {name: /Option 1/i});
-            await await userEvent.click(optionButton);
+            await await user.click(optionButton);
             expect(onClickSpy).toHaveBeenCalledWith(
                 OPTION_PICKER_BASIC_PROPS.options[0].value(),
-                OPTION_PICKER_BASIC_PROPS.options[0].label
+                OPTION_PICKER_BASIC_PROPS.options[0].label,
             );
         });
     });

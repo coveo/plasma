@@ -5,7 +5,7 @@ import {InlineConfirmContext} from './InlineConfirmContext';
 import {InlineConfirmMenuItem} from './InlineConfirmMenuItem';
 import {InlineConfirmPrompt} from './InlineConfirmPrompt';
 
-type InlineConfirmType = FunctionComponent<PropsWithChildren> & {
+type InlineConfirmType = FunctionComponent<PropsWithChildren<unknown>> & {
     Prompt: typeof InlineConfirmPrompt;
     Button: typeof InlineConfirmButton;
     MenuItem: typeof InlineConfirmMenuItem;
@@ -16,7 +16,7 @@ export const InlineConfirm: InlineConfirmType = ({children}) => {
 
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const prompt = convertedChildren.find(
-        (child) => child.type === InlineConfirmPrompt && child.props.id === confirmingId
+        (child) => child.type === InlineConfirmPrompt && child.props.id === confirmingId,
     );
     const clearConfirm = () => setConfirmingId(null);
 

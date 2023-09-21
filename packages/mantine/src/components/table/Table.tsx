@@ -1,28 +1,36 @@
-import {Box, Center, Loader, Table as MantineTable} from '@mantine/core';
+import {Box, Center, Loader} from '@mantine/core';
 import {useForm} from '@mantine/form';
 import {useDidUpdate} from '@mantine/hooks';
-import {ColumnDef, Row, TableState as TanstackTableState, getCoreRowModel, useReactTable} from '@tanstack/react-table';
+import {
+    ColumnDef,
+    Row,
+    TableState as TanstackTableState,
+    defaultColumnSizing,
+    getCoreRowModel,
+    useReactTable,
+} from '@tanstack/react-table';
 import debounce from 'lodash.debounce';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Children, Dispatch, ReactElement, useCallback, useEffect, useState} from 'react';
+import {Children, Dispatch, ReactElement, cloneElement, useCallback, useEffect, useState} from 'react';
 
+import {useRowSelection} from '../../hooks/useRowSelection';
 import useStyles from './Table.styles';
 import {TableFormType, TableProps, TableState, TableType} from './Table.types';
-import {TableActions} from './TableActions';
-import {TableAccordionColumn, TableCollapsibleColumn} from './TableCollapsibleColumn';
-import {TableConsumer} from './TableConsumer';
 import {TableContext} from './TableContext';
-import {TableDateRangePicker} from './TableDateRangePicker';
-import {TableFilter} from './TableFilter';
-import {TableFooter} from './TableFooter';
-import {TableHeader} from './TableHeader';
-import {TablePagination} from './TablePagination';
-import {TablePerPage} from './TablePerPage';
-import {TablePredicate} from './TablePredicate';
-import {TableSelectableColumn} from './TableSelectableColumn';
-import {useRowSelection} from './useRowSelection';
-import {TableLoading} from './TableLoading';
 import {TableLayouts} from './layouts/TableLayouts';
+import {TableActions} from './table-actions/TableActions';
+import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/TableCollapsibleColumn';
+import {TableSelectableColumn} from './table-column/TableSelectableColumn';
+import {TableConsumer} from './table-consumer/TableConsumer';
+import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
+import {TableFilter} from './table-filter/TableFilter';
+import {TableFooter} from './table-footer/TableFooter';
+import {TableHeader} from './table-header/TableHeader';
+import {TableLastUpdated} from './table-last-updated/TableLastUpdated';
+import {TableLoading} from './table-loading/TableLoading';
+import {TablePagination} from './table-pagination/TablePagination';
+import {TablePerPage} from './table-per-page/TablePerPage';
+import {TablePredicate} from './table-predicate/TablePredicate';
 
 export const Table: TableType = <T,>({
     data,
@@ -40,12 +48,14 @@ export const Table: TableType = <T,>({
     multiRowSelectionEnabled,
     disableRowSelection,
     onRowSelectionChange,
+    additionalRootNodes,
     options = {},
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
     const footer = convertedChildren.find((child) => child.type === TableFooter);
     const consumer = convertedChildren.find((child) => child.type === TableConsumer);
+    const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
 
     const {predicates, dateRange, ...initialStateWithoutForm} = initialState;
     const form = useForm<TableFormType>({
@@ -58,7 +68,10 @@ export const Table: TableType = <T,>({
     const {classes} = useStyles();
 
     const table = useReactTable({
-        initialState: defaultsDeep(initialStateWithoutForm, {pagination: {pageSize: TablePerPage.DEFAULT_SIZE}}),
+        initialState: defaultsDeep(initialStateWithoutForm, {
+            pagination: {pageSize: TablePerPage.DEFAULT_SIZE},
+            globalFilter: '',
+        }),
         data,
         columns: multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
@@ -67,6 +80,11 @@ export const Table: TableType = <T,>({
         getRowId,
         getRowCanExpand: (row: Row<T>) => !!getExpandChildren?.(row.original) ?? false,
         enableRowSelection: !loading,
+        defaultColumn: {
+            size: undefined,
+            minSize: defaultColumnSizing.minSize,
+            maxSize: defaultColumnSizing.maxSize,
+        },
         ...options,
     });
 
@@ -79,6 +97,7 @@ export const Table: TableType = <T,>({
     const {clearSelection, getSelectedRow, getSelectedRows, outsideClickRef} = useRowSelection(table, {
         multiRowSelectionEnabled,
         onRowSelectionChange,
+        additionalRootNodes,
     });
     const isFiltered =
         !!state.globalFilter ||
@@ -149,15 +168,11 @@ export const Table: TableType = <T,>({
                     noDataChildren
                 ) : (
                     <>
-                        <MantineTable className={classes.table} horizontalSpacing="sm" verticalSpacing="xs" pb="sm">
+                        <Box component="table" className={classes.table} pb="sm">
                             <thead className={classes.header}>
                                 {!!header ? (
                                     <tr>
-                                        <th
-                                            // need to use inline style because Mantine define style on `.mantine-{id} thead tr th`
-                                            style={{padding: 0, fontWeight: 'unset'}}
-                                            colSpan={table.getAllColumns().length}
-                                        >
+                                        <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
                                             {header}
                                         </th>
                                     </tr>
@@ -185,8 +200,13 @@ export const Table: TableType = <T,>({
                                     </tr>
                                 )}
                             </tbody>
-                        </MantineTable>
+                        </Box>
                         {footer}
+                        {lastUpdated
+                            ? cloneElement(lastUpdated, {
+                                  dependencies: [data, ...(lastUpdated.props.dependencies ?? [])],
+                              })
+                            : null}
                     </>
                 )}
             </TableContext.Provider>
@@ -198,6 +218,7 @@ Table.Actions = TableActions;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;
 Table.Header = TableHeader;
+Table.LastUpdated = TableLastUpdated;
 Table.Pagination = TablePagination;
 Table.Predicate = TablePredicate;
 Table.PerPage = TablePerPage;

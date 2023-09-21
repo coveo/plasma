@@ -11,7 +11,7 @@ describe('<XYAxis />', () => {
                 <svg role="application" width={XYChartContextMock.width} height={XYChartContextMock.height}>
                     <XYAxis x={{show: true}} y={{show: false}} />
                 </svg>
-            </XYChartContext.Provider>
+            </XYChartContext.Provider>,
         );
 
         expect(screen.getByRole('application')).toMatchSnapshot();
@@ -23,7 +23,7 @@ describe('<XYAxis />', () => {
                 <svg role="application" width={XYChartContextMock.width} height={XYChartContextMock.height}>
                     <XYAxis x={{show: false}} y={{show: true}} />
                 </svg>
-            </XYChartContext.Provider>
+            </XYChartContext.Provider>,
         );
 
         expect(screen.getByRole('application')).toMatchSnapshot();

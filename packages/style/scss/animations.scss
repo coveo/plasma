@@ -2,6 +2,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -11,6 +12,7 @@
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -20,9 +22,9 @@
     0% {
         transform: scale(0);
     }
+
     100% {
         transform: scale(1);
-
         opacity: 0;
     }
 }
@@ -31,10 +33,10 @@
     0% {
         transform: scale(0);
     }
+
     100% {
         // Since opacity is 0 at 100% we need to add the extra .1 so that it appears 100% in size.
         transform: scale(1.1);
-
         opacity: 0;
     }
 }
@@ -45,6 +47,7 @@
     100% {
         transform: scale(0);
     }
+
     40% {
         transform: scale(1);
     }
@@ -53,7 +56,6 @@
 @keyframes slideInLeft {
     0% {
         transform: translateX(-2000px);
-
         opacity: 0;
     }
 
@@ -70,6 +72,7 @@
     0% {
         background-position: 100% 0;
     }
+
     100% {
         background-position: -100% 0;
     }
@@ -79,6 +82,7 @@
     0% {
         transform: translate(-50%, -50%) rotate(0deg);
     }
+
     100% {
         transform: translate(-50%, -50%) rotate(360deg);
     }

@@ -32,7 +32,7 @@ describe('TableDataModifier', () => {
                 unselectAllRows(tableOwnPropsMock.id),
                 addActionsToActionBar(
                     getTableChildComponentId(tableOwnPropsMock.id, TableChildComponent.ACTION_BAR),
-                    []
+                    [],
                 ),
                 turnOnLoading(getTableLoadingIds(tableOwnPropsMock.id)),
             ];
@@ -73,11 +73,11 @@ describe('TableDataModifier', () => {
 
         it('should return the same ids if the tableCompositeState has no predicates', () => {
             expect(applyPredicatesOnDisplayedIds([...displayedIds], tableCompositeState, data.byId)).toEqual(
-                displayedIds
+                displayedIds,
             );
 
             expect(applyPredicatesOnDisplayedIds([...displayedIds], data.byId, tableCompositeState)).toEqual(
-                displayedIds
+                displayedIds,
             );
         });
 
@@ -86,21 +86,21 @@ describe('TableDataModifier', () => {
                 applyPredicatesOnDisplayedIds([...displayedIds], data.byId, {
                     ...tableCompositeState,
                     predicates: {userName: predictableData.userName},
-                })
+                }),
             ).toEqual([predictableData.id]);
 
             expect(
                 applyPredicatesOnDisplayedIds([...displayedIds], data.byId, {
                     ...tableCompositeState,
                     predicates: {email: predictableData.email},
-                })
+                }),
             ).toEqual([predictableData.id]);
 
             expect(
                 applyPredicatesOnDisplayedIds([...displayedIds], data.byId, {
                     ...tableCompositeState,
                     predicates: {email: predictableData.email, userName: predictableData.userName},
-                })
+                }),
             ).toEqual([predictableData.id]);
         });
     });
@@ -112,7 +112,7 @@ describe('TableDataModifier', () => {
 
         it('should return the same ids if the tableCompositeState has no filter', () => {
             expect(
-                applyFilterOnDisplayedIds([...displayedIds], tableCompositeState, data.byId, tablePropsMockWithData)
+                applyFilterOnDisplayedIds([...displayedIds], tableCompositeState, data.byId, tablePropsMockWithData),
             ).toEqual(displayedIds);
         });
 
@@ -122,8 +122,8 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, filter: predictableData.password},
-                    tablePropsMockWithData
-                )
+                    tablePropsMockWithData,
+                ),
             ).toEqual([predictableData.id]);
 
             expect(
@@ -131,8 +131,8 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, filter: 'no rows has this content in their heading attribute'},
-                    tablePropsMockWithData
-                )
+                    tablePropsMockWithData,
+                ),
             ).toEqual([]);
         });
 
@@ -142,8 +142,8 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, filter: predictableData.password},
-                    {...tablePropsMockWithData, filterMethod: Boolean}
-                )
+                    {...tablePropsMockWithData, filterMethod: Boolean},
+                ),
             ).toEqual(displayedIds);
         });
     });
@@ -159,8 +159,8 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, sortState: undefined},
-                    tablePropsMockWithData
-                )
+                    tablePropsMockWithData,
+                ),
             ).toEqual(displayedIds);
         });
 
@@ -170,8 +170,8 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, sortState: {order: TableSortingOrder.UNSORTED, attribute: 'userName'}},
-                    tablePropsMockWithData
-                )
+                    tablePropsMockWithData,
+                ),
             ).toEqual(displayedIds);
         });
 
@@ -181,14 +181,14 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, sortState: {order: TableSortingOrder.ASCENDING, attribute: undefined}},
-                    tablePropsMockWithData
-                )
+                    tablePropsMockWithData,
+                ),
             ).toEqual(displayedIds);
         });
 
         it('should return the same ids but sorted ascending by the specified attribute if sorted ASCENDING', () => {
             const expectedOrderOfIds = _.sortBy(_.values(data.byId), (currentData) =>
-                currentData.userName.toLowerCase()
+                currentData.userName.toLowerCase(),
             ).map((currentData) => currentData.id);
 
             expect(
@@ -196,14 +196,14 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, sortState: {order: TableSortingOrder.ASCENDING, attribute: 'userName'}},
-                    tablePropsMockWithData
-                )
+                    tablePropsMockWithData,
+                ),
             ).toEqual(expectedOrderOfIds);
         });
 
         it('should return the same ids but sorted descending by the specified attribute if sorted DESCENDING', () => {
             const expectedOrderOfIds = _.sortBy(_.values(data.byId), (currentData) =>
-                currentData.userName.toLowerCase()
+                currentData.userName.toLowerCase(),
             )
                 .reverse()
                 .map((currentData) => currentData.id);
@@ -213,8 +213,8 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, sortState: {order: TableSortingOrder.DESCENDING, attribute: 'userName'}},
-                    tablePropsMockWithData
-                )
+                    tablePropsMockWithData,
+                ),
             ).toEqual(expectedOrderOfIds);
         });
 
@@ -246,7 +246,7 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, sortState: {order: TableSortingOrder.ASCENDING, attribute: 'userName'}},
-                    tablePropsWithSortBy
+                    tablePropsWithSortBy,
                 );
 
                 expect(resultIds).toEqual(expectedOrderOfIds);
@@ -264,7 +264,7 @@ describe('TableDataModifier', () => {
                     [...displayedIds],
                     data.byId,
                     {...tableCompositeState, sortState: {order: TableSortingOrder.DESCENDING, attribute: 'userName'}},
-                    tablePropsWithSortBy
+                    tablePropsWithSortBy,
                 );
 
                 expect(resultIds).toEqual(expectedOrderOfIds);
@@ -297,7 +297,7 @@ describe('TableDataModifier', () => {
 
             it('should return the same ids but sorted by the specified custom sortMethod function', () => {
                 const expectedOrderOfIds = _.sortBy(_.values(data.byId), testColumnAttribute).map(
-                    (currentData) => currentData.id
+                    (currentData) => currentData.id,
                 );
 
                 expect(
@@ -308,8 +308,8 @@ describe('TableDataModifier', () => {
                             ...tableCompositeState,
                             sortState: {order: TableSortingOrder.ASCENDING, attribute: testColumnAttribute},
                         },
-                        tableProps
-                    )
+                        tableProps,
+                    ),
                 ).toEqual(expectedOrderOfIds);
             });
         });
@@ -326,13 +326,13 @@ describe('TableDataModifier', () => {
 
         it('should skip the first 5 ids if perPage is 5 and page is 1', () => {
             expect(
-                applyPaginationOnDisplayedIds([...displayedIds], {...tableCompositeState, perPage: 5, page: 1})
+                applyPaginationOnDisplayedIds([...displayedIds], {...tableCompositeState, perPage: 5, page: 1}),
             ).toEqual(displayedIds.slice(5 * 1, 5 * 1 + 5));
         });
 
         it('should keep the first 5 only if perPage is 5 and page is 0', () => {
             expect(
-                applyPaginationOnDisplayedIds([...displayedIds], {...tableCompositeState, perPage: 5, page: 0})
+                applyPaginationOnDisplayedIds([...displayedIds], {...tableCompositeState, perPage: 5, page: 0}),
             ).toEqual(displayedIds.slice(5 * 0, 5 * 0 + 5));
         });
     });
@@ -344,7 +344,12 @@ describe('TableDataModifier', () => {
 
         it('should return the same ids if the tableCompositeState has no from/to', () => {
             expect(
-                applyDatePickerOnDisplayedIds([...displayedIds], tableCompositeState, data.byId, tablePropsMockWithData)
+                applyDatePickerOnDisplayedIds(
+                    [...displayedIds],
+                    tableCompositeState,
+                    data.byId,
+                    tablePropsMockWithData,
+                ),
             ).toEqual(displayedIds);
         });
 
@@ -360,8 +365,8 @@ describe('TableDataModifier', () => {
                     {
                         ...tablePropsMockWithData,
                         datePicker: {datesSelectionBoxes: SELECTION_BOXES, attributeName: 'lastLogin'},
-                    }
-                )
+                    },
+                ),
             ).toEqual([predictableData.id]);
         });
     });
@@ -375,7 +380,7 @@ describe('TableDataModifier', () => {
 
         it('should not throw on calling the returned function', () => {
             expect(() =>
-                defaultTableStateModifier(tablePropsMockWithData, tableCompositeState)(tableCompositeState)
+                defaultTableStateModifier(tablePropsMockWithData, tableCompositeState)(tableCompositeState),
             ).not.toThrow();
         });
 
@@ -404,7 +409,7 @@ describe('TableDataModifier', () => {
 
         it('should not throw', () => {
             expect(() =>
-                defaultTableStateModifierThunk(tablePropsMockWithData, true, tableCompositeState)
+                defaultTableStateModifierThunk(tablePropsMockWithData, true, tableCompositeState),
             ).not.toThrow();
         });
 

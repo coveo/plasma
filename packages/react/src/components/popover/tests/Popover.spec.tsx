@@ -23,7 +23,7 @@ describe('<Popover>', () => {
             <Popover {...props}>
                 <span id={popoverToggleId}>Toggle</span>
                 <span id={popoverElementId}>Tether element</span>
-            </Popover>
+            </Popover>,
         ));
 
     beforeEach(() => {
@@ -44,8 +44,8 @@ describe('<Popover>', () => {
                 <Popover {...popoverProps}>
                     <span>Toggle</span>
                     <span>Tether element</span>
-                </Popover>
-            )
+                </Popover>,
+            ),
         ).not.toThrow();
     });
 
@@ -55,8 +55,8 @@ describe('<Popover>', () => {
                 <Popover {...popoverProps} style={{'margin-left': '10px'}}>
                     <span>Toggle</span>
                     <span>Tether element</span>
-                </Popover>
-            )
+                </Popover>,
+            ),
         ).not.toThrow();
     });
 
@@ -76,7 +76,7 @@ describe('<Popover>', () => {
                 shallow(
                     <Popover {...popoverProps}>
                         <span>Toggle</span>
-                    </Popover>
+                    </Popover>,
                 );
             }).not.toThrow();
         });
@@ -195,6 +195,7 @@ describe('<Popover>', () => {
             });
 
             it('does not close the popover when clicking on children dropdown values', async () => {
+                const user = userEvent.setup();
                 const Fixture = () => {
                     const [isOpen, setOpen] = useState(false);
                     return (
@@ -220,9 +221,9 @@ describe('<Popover>', () => {
                 };
                 render(<Fixture />);
 
-                await userEvent.click(screen.getByRole('button', {name: /toggle/i}));
-                await userEvent.click(screen.getByRole('button', {name: /select an option/i}));
-                await userEvent.click(screen.getByRole('option', {name: /option 2/i}));
+                await user.click(screen.getByRole('button', {name: /toggle/i}));
+                await user.click(screen.getByRole('button', {name: /select an option/i}));
+                await user.click(screen.getByRole('option', {name: /option 2/i}));
                 expect(screen.getByRole('button', {name: /option 2/i})).toBeInTheDocument();
             });
         });

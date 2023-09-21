@@ -91,7 +91,7 @@ export const SubNavigation: FunctionComponent<
                                   {
                                       className: 'sub-navigation-item-link-with-description-label',
                                   },
-                                  `${label}`
+                                  `${label}`,
                               )
                             : label}
                     </a>

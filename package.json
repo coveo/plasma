@@ -28,7 +28,7 @@
             "prettier --write"
         ],
         "**/*.scss": [
-            "stylelint --custom-syntax postcss-scss --fix",
+            "stylelint --fix",
             "prettier --write"
         ]
     },
@@ -43,39 +43,48 @@
         "IE 11",
         "not dead"
     ],
-    "prettier": "tsjs/prettier-config",
     "stylelint": {
         "extends": [
-            "tsjs/stylelint-config"
-        ]
+            "stylelint-config-standard-scss"
+        ],
+        "rules": {
+            "keyframes-name-pattern": [
+                "^[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$",
+                {
+                    "message": "Expected keyframes names to be camelCase"
+                }
+            ]
+        }
     },
     "devDependencies": {
-        "@commitlint/cli": "17.6.3",
-        "@commitlint/config-conventional": "17.6.3",
-        "@coveo/semantic-monorepo-tools": "1.7.2",
+        "@commitlint/cli": "17.7.1",
+        "@commitlint/config-conventional": "17.7.0",
+        "@coveo/semantic-monorepo-tools": "2.1.14",
         "@sindresorhus/slugify": "2.2.1",
-        "aws-sdk": "2.1379.0",
-        "axios": "0.27.2",
+        "aws-sdk": "2.1441.0",
         "commitizen": "4.3.0",
-        "conventional-changelog-angular": "5.0.13",
+        "conventional-changelog-angular": "7.0.0",
         "cz-conventional-changelog": "3.3.0",
-        "eslint": "8.41.0",
+        "eslint": "8.47.0",
+        "eslint-config-plasma": "workspace:*",
+        "eslint-plugin-prettier": "5.0.0",
         "husky": "8.0.3",
-        "lint-staged": "13.0.3",
+        "lint-staged": "14.0.1",
         "mime-types": "2.1.35",
-        "prettier": "2.8.8",
-        "sort-package-json": "1.57.0",
-        "stylelint": "14.16.1",
-        "tsjs": "4.2.1",
-        "turbo": "1.9.6",
-        "underscore": "1.13.4",
+        "prettier": "3.0.2",
+        "sort-package-json": "2.5.1",
+        "stylelint": "15.10.3",
+        "stylelint-config-standard-scss": "11.0.0",
+        "turbo": "1.10.12",
+        "underscore": "1.13.6",
         "walkdir": "0.4.1"
     },
     "pnpm": {
         "overrides": {
             "@types/react": "^18.0",
             "@types/react-dom": "^18.0",
-            "loader-utils": "2.0.3"
+            "loader-utils": "2.0.4",
+            "nwsapi": "2.2.4"
         }
     }
 }

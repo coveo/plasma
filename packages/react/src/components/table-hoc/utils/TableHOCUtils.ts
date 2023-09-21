@@ -28,7 +28,7 @@ const PREDICATE_SEPARATOR = '--';
 const getCompositeState = (id: string, state: PlasmaState): ITableHOCCompositeState => {
     const tableSort: ITableWithSortState = _.find(
         state.tableHOCHeader,
-        (v: ITableWithSortState) => v.tableId === id && _.isBoolean(v.isAsc)
+        (v: ITableWithSortState) => v.tableId === id && _.isBoolean(v.isAsc),
     );
 
     const perPage =
@@ -36,7 +36,7 @@ const getCompositeState = (id: string, state: PlasmaState): ITableHOCCompositeSt
             FlatSelectSelectors.getSelectedOptionId(state, {
                 id: PaginationUtils.getPaginationPerPageId(id),
             }),
-            10
+            10,
         ) || undefined;
 
     const filter: IFilterState = _.findWhere(state.filters, {id});

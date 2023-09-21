@@ -23,7 +23,7 @@ describe('Table.Pagination', () => {
                 <Table.Footer>
                     <Table.Pagination totalPages={3} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         const buttons = screen.getAllByRole('button');
@@ -43,7 +43,7 @@ describe('Table.Pagination', () => {
                 <Table.Footer>
                     <Table.Pagination totalPages={5} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         onChange.mockReset();
@@ -52,7 +52,7 @@ describe('Table.Pagination', () => {
 
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(
-                expect.objectContaining({pagination: expect.objectContaining({pageIndex: 1})})
+                expect.objectContaining({pagination: expect.objectContaining({pageIndex: 1})}),
             );
         });
     });
@@ -77,7 +77,7 @@ describe('Table.Pagination', () => {
                 <Table.Footer>
                     <Table.Pagination totalPages={null} />
                 </Table.Footer>
-            </Table>
+            </Table>,
         );
 
         expect(screen.getByText('fruits')).toBeVisible();
@@ -100,5 +100,38 @@ describe('Table.Pagination', () => {
         expect(screen.queryByText('grains')).not.toBeInTheDocument();
         expect(screen.getByText('protein foods')).toBeVisible();
         expect(screen.getByText('dairy')).toBeVisible();
+    });
+
+    it('triggers the onChangePage Callback with the right parameters', async () => {
+        const user = userEvent.setup();
+        const onChangePage = vi.fn();
+        render(
+            <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
+                <Table.Footer>
+                    <Table.PerPage />
+                    <Table.Pagination totalPages={5} onPageChange={onChangePage} />
+                </Table.Footer>
+            </Table>,
+        );
+
+        onChangePage.mockReset();
+
+        await user.click(screen.getByRole('radio', {name: /100/i}));
+        await user.click(screen.queryByRole('button', {name: '2'}));
+
+        await waitFor(() => {
+            expect(onChangePage).toHaveBeenCalledWith(1);
+        });
+    });
+
+    it('renders nothing when there are no pages to show', () => {
+        render(
+            <Table data={[]} columns={columns} initialState={{globalFilter: 'filter'}}>
+                <Table.Footer data-testid="table-footer">
+                    <Table.Pagination totalPages={0} />
+                </Table.Footer>
+            </Table>,
+        );
+        expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
     });
 });

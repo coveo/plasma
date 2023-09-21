@@ -67,7 +67,7 @@ export class MultiselectInput extends Component<IMultiselectInputProps, any> {
                     label={selectedOption.displayValue}
                     key={selectedOption.value}
                     onRemoveClick={this.props.onRemoveClick}
-                />
+                />,
             );
         });
 

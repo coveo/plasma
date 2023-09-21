@@ -25,7 +25,8 @@
 
         &:focus-within {
             --border-color: var(--digital-blue-40);
-            box-shadow: 0px 0px 0px 4px #c7e4ff;
+
+            box-shadow: 0 0 0 4px #c7e4ff;
         }
 
         &::before {
@@ -88,6 +89,7 @@
 
     .caption-label {
         @extend .caption-book-subdued;
+
         line-height: 12px;
     }
 }

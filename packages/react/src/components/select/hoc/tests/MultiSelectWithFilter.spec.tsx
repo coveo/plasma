@@ -8,6 +8,7 @@ describe('Select', () => {
         const id: string = 'multi-select-with-filter';
 
         it('should add a duplicate if the filterValue is already selected', async () => {
+            const user = userEvent.setup();
             const duplicateText: string = 'a';
 
             render(
@@ -18,10 +19,10 @@ describe('Select', () => {
                         {value: duplicateText, selected: true},
                         {value: duplicateText, selected: true},
                     ]}
-                />
+                />,
             );
 
-            await userEvent.click(screen.getByText(/select an option/i));
+            await user.click(screen.getByText(/select an option/i));
 
             const listItems = screen.getAllByRole('listitem');
 
@@ -30,15 +31,17 @@ describe('Select', () => {
         });
 
         it('should open the dropdown even if the list is empty with customValue', async () => {
+            const user = userEvent.setup();
             const noItemsText = 'not an item text';
 
             render(<MultiSelectWithFilter id={id} noItemsText={noItemsText} customValues items={[]} />);
-            await userEvent.click(screen.getByText(/select an option/i));
+            await user.click(screen.getByText(/select an option/i));
 
             expect(screen.getByRole('option')).toHaveTextContent(noItemsText);
         });
 
         it('should set the noItemsText in noResultItem if items is not empty and all values are selected', async () => {
+            const user = userEvent.setup();
             const noItemsText = 'not an item text';
 
             render(
@@ -50,10 +53,10 @@ describe('Select', () => {
                         {value: 'a', selected: true},
                         {value: 'b', selected: true},
                     ]}
-                />
+                />,
             );
 
-            await userEvent.click(screen.getByText(/select an option/i));
+            await user.click(screen.getByText(/select an option/i));
 
             expect(screen.getByRole('option', {name: noItemsText})).toBeInTheDocument();
         });

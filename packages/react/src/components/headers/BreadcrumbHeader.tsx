@@ -25,7 +25,7 @@ export class BreadcrumbHeader extends Component<IBreadcrumbHeaderProps> {
             },
             classes: [],
         },
-        HeaderWrapper.defaultProps
+        HeaderWrapper.defaultProps,
     );
 
     render() {

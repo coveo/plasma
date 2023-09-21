@@ -1,6 +1,6 @@
 input,
 textarea {
-    @include placeholder();
+    @include placeholder;
 }
 
 input[type='text'],
@@ -13,20 +13,23 @@ textarea {
         resize: none;
     }
 
-    &:-ms-input-placeholder {
+    &:input-placeholder {
         color: var(--deprecated-medium-grey);
         font-size: inherit;
         font-family: var(--main-font);
         text-transform: none;
         transition: color 0.2s ease;
     }
+
     &.disabled-input {
         background-color: transparent;
+
         &::placeholder {
             color: var(--critical-70);
             font-size: 12px;
         }
     }
+
     &:disabled {
         color: var(--grey-60);
     }
@@ -40,6 +43,7 @@ textarea {
     input {
         height: 30px;
     }
+
     .add-on {
         display: inline-block;
         height: 30px;

@@ -11,7 +11,7 @@ export const selectCompositeInitialState: ISelectState[] = [];
 
 export const selectReducer = (
     state: ISelectState = selectInitialState,
-    action: IReduxAction<ISelectPayload>
+    action: IReduxAction<ISelectPayload>,
 ): ISelectState => {
     if (state.id !== action.payload.id && action.type !== SelectActions.add) {
         return state;
@@ -27,7 +27,7 @@ export const selectReducer = (
 
 export const selectCompositeReducer = (
     state: ISelectState[] = selectCompositeInitialState,
-    action: IReduxAction<ISelectPayload>
+    action: IReduxAction<ISelectPayload>,
 ): ISelectState[] => {
     switch (action.type) {
         case SelectActions.add:

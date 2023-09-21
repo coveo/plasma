@@ -1,3 +1,238 @@
+# 52.17.0 (2023-09-20)
+
+
+### Bug Fixes
+
+* **mantine:** fix SegmentedControl overlapping StickyFooter (#3542) 8828246, closes #3542
+* **react:** fix type error in MultilineBoxWithRemoveButton e497a76
+
+
+### Features
+
+* **mantine:** make StickyFooter more flexible (#3547) 4b62dfd, closes #3547
+* **mantine:** simplifying disabled tooltips on ActionIcon (#3549) 11e858e, closes #3549
+
+
+
+## 52.16.2 (2023-09-06)
+
+
+### Bug Fixes
+
+* **mantine:** minor adjustments to the theme (#3532) eab8605, closes #3532
+* **table:** +reset page on predicate change, +unit tests (#3538) 0eb9910, closes #3538
+
+
+
+## 52.16.1 (2023-08-31)
+
+
+### Bug Fixes
+
+* **mantine, header:** add missing exports (#3531) 889bb0d, closes #3531
+
+
+
+# 52.16.0 (2023-08-30)
+
+
+### Features
+
+* **mantine, header:** make component theme-able (#3530) 22ad0d9, closes #3530
+
+
+
+# 52.15.0 (2023-08-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint-config-prettier to v9 (#3503) 65e39bc, closes #3503
+
+
+### Features
+
+* **mantine, prompt:** add word wrap to header object (#3520) a661f21, closes #3520
+
+
+
+## 52.14.1 (2023-08-15)
+
+
+
+# 52.14.0 (2023-08-08)
+
+
+### Bug Fixes
+
+* **broken dep:** override nwsapi 2.2.2 890de28
+* **mantine:** add noWrap on Header a5da767
+* **type:** propswithchildren generic 516705f
+
+
+### Features
+
+* **mantine:** add autocomplete off on CopyToClipboard f0dbef1
+* **mantine:** debounce TableFilter input changes 0c0c6bc
+* **website:** center page content ce908c2
+* **website:** improve Iconography section fd910da
+
+
+
+## 52.13.2 (2023-08-04)
+
+
+### Bug Fixes
+
+* **dependencies update:** type ajustments 0262976
+* **table:** word wrap (#3501) 7601238, closes #3501
+
+
+
+## 52.13.1 (2023-08-03)
+
+
+### Bug Fixes
+
+* **mantine:** make sure input components have uniform line-height (#3498) 30b341d, closes #3498
+* **table:** break long words (#3497) 70065d9, closes #3497
+
+
+
+# 52.13.0 (2023-08-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @faker-js/faker to v8 (#3478) 9dcbb21, closes #3478
+* **deps:** update dependency clsx to v2 (#3480) 3ad702a, closes #3480
+* **deps:** update dependency escape-string-regexp to v5 (#3482) e4fb8db, closes #3482
+* **deps:** update dependency query-string to v8 (#3484) a9a3b71, closes #3484
+* **deps:** update dependency react-diff-view to v3 (#3487) 8f9d511, closes #3487
+* **deps:** update dependency react-infinite-scroll-component to v6 (#3488) 57ffb61, closes #3488
+* **deps:** update dependency react-markdown to v8 (#3489) b5fb03c, closes #3489
+* **deps:** update dependency react-transition-group to v4 (#3492) 11d8536, closes #3492
+* **plasma-style:** fix rgb function misusage (#3490) 7d9e548, closes #3490
+* **vuln:** enforce loader-utils 2.0.4 (#3494) 53dbca1, closes #3494 #31 #34
+
+
+### Features
+
+* **codeeditor:** add copy and search callbacks in code editor props (#3495) 573f3e1, closes #3495
+
+
+
+## 52.12.1 (2023-07-28)
+
+
+### Bug Fixes
+
+* **table,defaultcolumn:** set column width to auto by default (#3468) b86dbb7, closes #3468
+
+
+
+# 52.12.0 (2023-07-26)
+
+
+### Bug Fixes
+
+* **mantine:** remove table pagination when there are no pages (#3450) b0ddf4f, closes #3450
+* **table, onrowselectionchange:** call onRowSelectionChange callback in hook (#3449) 556bdf4, closes #3449
+* **table:** column width (#3379) 31a7ee3, closes #3379
+* trim whitespaces from filter box input (#3396) 1659fa0, closes #3396
+
+
+### Features
+
+* **table, layouts:** add prop to table layouts to disable row selection toggle (#3431) d62130e, closes #3431
+* **table:** pagination callbacks (#3427) 19b5e4c, closes #3427
+
+
+
+## 52.11.1 (2023-06-28)
+
+
+### Bug Fixes
+
+* **react:** type issue in component constructor (#3375) 4cc4bf6, closes #3375
+
+
+
+# 52.11.0 (2023-06-27)
+
+
+### Bug Fixes
+
+* **table:** header alignment (#3361) a6bad86, closes #3361
+
+
+### Features
+
+* **mantine, table:** add data-testid attributes on rows and cells (#3374) e1e2e99, closes #3374
+
+
+
+## 52.10.1 (2023-06-22)
+
+
+### Bug Fixes
+
+* **mantine:** avoid CodeEditor errors onFocus (#3366) c11b01d, closes #3366
+
+
+
+# 52.10.0 (2023-06-20)
+
+
+### Bug Fixes
+
+* **mantine, date picker:** change height of preset dropdown (#3344) eb416b2, closes #3344
+
+
+### Features
+
+* **mantine, table:** create a new LastUpdated component (#3341) d910ccd, closes #3341
+* **mantine, table:** improve click outside table row selection (#3347) 34ac6c2, closes #3347
+* **mantine, table:** improve the style and UX (#3342) 1da421e, closes #3342
+
+
+
+# 52.9.0 (2023-06-16)
+
+
+### Features
+
+* **mantine:** update style of the Select component (#3326) 6c2443c, closes #3326
+
+
+
+## 52.8.1 (2023-06-13)
+
+
+### Bug Fixes
+
+* **mantine:** fix table predicate onChange (#3320) 7700a24, closes #3320
+
+
+
+# 52.8.0 (2023-06-12)
+
+
+### Features
+
+* **content-browser:** add search action in code editor (#3318) d3790b0, closes #3318
+
+
+
+## 52.7.1 (2023-06-05)
+
+
+### Bug Fixes
+
+* **mantine:** export table layout types (#3316) 32d9345, closes #3316
+
+
+
 # 52.7.0 (2023-06-02)
 
 

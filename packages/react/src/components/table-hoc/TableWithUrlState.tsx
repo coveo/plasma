@@ -1,4 +1,4 @@
-import {ComponentType, PropsWithChildren, PureComponent} from 'react';
+import {ComponentType, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 
@@ -35,7 +35,7 @@ export const Params = {
     filter: 'q',
 };
 
-function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType<PropsWithChildren<P>>) {
+function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType<any>) {
     type Props = P &
         TableWithUrlStateProps &
         ReturnType<typeof mapStateToProps> &
@@ -54,7 +54,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType
 
         render() {
             const wrappedProps = omit(this.props, 'onUpdate', 'onUpdateUrl', 'query', 'initializeFromUrl');
-            return <Component {...(wrappedProps as P)} onUpdate={this.onUpdate} />;
+            return <Component {...wrappedProps} onUpdate={this.onUpdate} />;
         }
 
         componentDidMount() {
@@ -71,7 +71,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: ComponentType
 
     return connect(
         mapStateToProps,
-        mapDispatchToProps
+        mapDispatchToProps,
         // @ts-ignore
     )(WrappedComponentDisconnected as any);
 }
@@ -97,7 +97,7 @@ const getQuery = (state: PlasmaState, tableId: string): string => {
                 ...memo,
                 [id]: value,
             }),
-            {}
+            {},
         ),
         [Params.lowerDateLimit]: from || undefined,
         [Params.upperDateLimit]: to || undefined,
@@ -113,15 +113,15 @@ const updateTableStateFromUrl =
         Object.keys(urlParams)
             .filter((key) => possiblePredicates.includes(key))
             .forEach((key) =>
-                dispatch(selectListBoxOption(TableHOCUtils.getPredicateId(tableId, key), false, urlParams[key]))
+                dispatch(selectListBoxOption(TableHOCUtils.getPredicateId(tableId, key), false, urlParams[key])),
             );
 
         if (urlParams.hasOwnProperty(Params.lowerDateLimit)) {
             dispatch(
                 changeDatePickerLowerLimit(
                     TableHOCUtils.getDatePickerId(tableId),
-                    new Date(urlParams[Params.lowerDateLimit])
-                )
+                    new Date(urlParams[Params.lowerDateLimit]),
+                ),
             );
         }
 
@@ -129,8 +129,8 @@ const updateTableStateFromUrl =
             dispatch(
                 changeDatePickerUpperLimit(
                     TableHOCUtils.getDatePickerId(tableId),
-                    new Date(urlParams[Params.upperDateLimit])
-                )
+                    new Date(urlParams[Params.upperDateLimit]),
+                ),
             );
         }
 
@@ -146,15 +146,15 @@ const updateTableStateFromUrl =
             dispatch(
                 TableHeaderActions.sortTable(
                     urlParams[Params.sortKey],
-                    urlParams[Params.sortOrder] === SortOrderValues.ascending
-                )
+                    urlParams[Params.sortOrder] === SortOrderValues.ascending,
+                ),
             );
         }
 
         if (urlParams.hasOwnProperty(Params.pageSize)) {
             dispatch(changePerPage(tableId, urlParams[Params.pageSize]));
             dispatch(
-                selectFlatSelect(PaginationUtils.getPaginationPerPageId(tableId), urlParams[Params.pageSize] + '')
+                selectFlatSelect(PaginationUtils.getPaginationPerPageId(tableId), urlParams[Params.pageSize] + ''),
             );
         }
 

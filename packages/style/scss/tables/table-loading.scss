@@ -38,6 +38,7 @@ td.table-card-loading {
 
 .card-cell-row-loading {
     @extend .table-cell-loading;
+
     width: 100%;
 
     .card-cell-content-loading {
@@ -45,6 +46,7 @@ td.table-card-loading {
 
         width: 60%;
         min-width: 60%;
+
         &.mod-half {
             width: 48%;
             min-width: 48%;

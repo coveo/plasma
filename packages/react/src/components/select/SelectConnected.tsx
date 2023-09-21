@@ -1,15 +1,15 @@
 import classNames from 'clsx';
 import {
-    ComponentType,
-    MouseEvent,
-    KeyboardEvent,
-    ReactElement,
-    SyntheticEvent,
-    createRef,
     Children,
-    cloneElement,
+    ComponentType,
+    KeyboardEvent,
+    MouseEvent,
     PureComponent,
+    ReactElement,
     ReactNode,
+    SyntheticEvent,
+    cloneElement,
+    createRef,
 } from 'react';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -111,8 +111,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISelectOwnProps) => (
 });
 
 export type ISelectProps = ISelectOwnProps &
-    ReturnType<typeof mapDispatchToProps> &
-    ReturnType<ReturnType<typeof makeMapStateToProps>>;
+    Partial<ReturnType<typeof mapDispatchToProps>> &
+    Partial<ReturnType<ReturnType<typeof makeMapStateToProps>>>;
 
 /**
  * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
@@ -244,7 +244,7 @@ export class SelectConnected extends PureComponent<ISelectProps> {
                     (item: IItemBoxProps) =>
                         !item.hidden &&
                         (!this.props.multi || !_.contains(this.props.selectedValues, item.value)) &&
-                        !item.disabled
+                        !item.disabled,
                 )
                 .map((item: IItemBoxProps) => ({...item, index: realIndex++}))
                 .value();

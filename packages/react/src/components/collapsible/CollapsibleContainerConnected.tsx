@@ -51,7 +51,7 @@ export const CollapsibleContainerDisconnected: FunctionComponent<
     const contentClasses = classNames(
         {'collapsible-container content': !withoutContentPadding},
         collapsibleBodyClassName,
-        'mod-border-bottom'
+        'mod-border-bottom',
     );
 
     const headerClasses = classNames('caps p2 bold ml3', collapsibleHeaderClassName);

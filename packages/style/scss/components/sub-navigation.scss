@@ -24,9 +24,11 @@
 
                     &-label {
                         @extend .body-l;
+
                         padding: 16px 0;
                     }
                 }
+
                 &.disabled {
                     color: var(--deprecated-medium-grey);
                     cursor: default;
@@ -41,7 +43,7 @@
             &.mod-selected {
                 background-color: var(--grey-20);
 
-                &:before {
+                &::before {
                     position: absolute;
                     top: 0;
                     left: 0;

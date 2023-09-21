@@ -18,7 +18,7 @@ export const optionPickersInitialState: IOptionPickerState[] = [];
 
 export const optionPickerReducer = (
     state: IOptionPickerState = optionPickerInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IOptionPickerState => {
     switch (action.type) {
         case OptionPickerActions.add:
@@ -49,7 +49,7 @@ export const optionPickerReducer = (
 
 export const optionPickersReducer = (
     state: IOptionPickerState[] = optionPickersInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IOptionPickerState[] => {
     switch (action.type) {
         case OptionPickerActions.add:

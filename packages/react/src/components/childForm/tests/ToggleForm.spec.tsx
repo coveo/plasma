@@ -20,7 +20,7 @@ describe('ToggleForm', () => {
                     <Radio id="id" />
                     <ChildForm />
                 </ToggleForm>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
         });
 

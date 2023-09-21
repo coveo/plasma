@@ -10,7 +10,7 @@ import {IDropdownSearchState} from './DropdownSearchReducers';
  */
 export const getDropdownSearchSelectedOption = (
     id: string,
-    dropdownSearchState: IDropdownSearchState[] = []
+    dropdownSearchState: IDropdownSearchState[] = [],
 ): IDropdownOption => {
     const dropdown = _.findWhere(dropdownSearchState, {id});
     return dropdown ? _.findWhere(dropdown.options, {selected: true}) : undefined;

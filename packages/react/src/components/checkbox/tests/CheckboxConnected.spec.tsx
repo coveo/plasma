@@ -26,7 +26,7 @@ describe('Checkbox', () => {
                 <Provider store={store}>
                     <CheckboxConnected id={id} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             checkbox = wrapper.find(Checkbox).first();
         });
@@ -44,7 +44,7 @@ describe('Checkbox', () => {
 
         it('should get checked false as a prop', () => {
             expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(
-                false
+                false,
             );
         });
 
@@ -67,26 +67,26 @@ describe('Checkbox', () => {
         it('should toggle the checkbox in the store when dispatching a "toggleCheckbox" action', () => {
             expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id).length).toBe(1);
             expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(
-                false
+                false,
             );
 
             store.dispatch(toggleCheckbox(id));
 
             expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(
-                true
+                true,
             );
         });
 
         it('should toggle the checkbox in the store when clicking on it', () => {
             expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id).length).toBe(1);
             expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(
-                false
+                false,
             );
 
             checkbox.props().onClick(null);
 
             expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(
-                true
+                true,
             );
         });
 

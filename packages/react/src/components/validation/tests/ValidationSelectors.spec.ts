@@ -10,7 +10,7 @@ describe('ValidationSelectors', () => {
             error: [],
             warning: [],
             ...validation,
-        } as ValidationState);
+        }) as ValidationState;
     const getStateForExistingComponent = (validation: Partial<ValidationState>) => ({
         validation: {
             [existingComponentId]: getValidationState(validation),
@@ -37,7 +37,7 @@ describe('ValidationSelectors', () => {
                             value: errorValue,
                         },
                     ],
-                })
+                }),
             );
 
             expect(result.length).toBe(1);
@@ -57,7 +57,7 @@ describe('ValidationSelectors', () => {
                             value: '',
                         },
                     ],
-                })
+                }),
             );
 
             expect(result.length).toBe(0);
@@ -84,7 +84,7 @@ describe('ValidationSelectors', () => {
                             value: warningValue,
                         },
                     ],
-                })
+                }),
             );
 
             expect(result.length).toBe(1);
@@ -104,7 +104,7 @@ describe('ValidationSelectors', () => {
                             value: '',
                         },
                     ],
-                })
+                }),
             );
 
             expect(result.length).toBe(0);
@@ -130,7 +130,7 @@ describe('ValidationSelectors', () => {
                             value: true,
                         },
                     ],
-                })
+                }),
             );
 
             expect(result.length).toBe(1);
@@ -150,7 +150,7 @@ describe('ValidationSelectors', () => {
                             value: false,
                         },
                     ],
-                })
+                }),
             );
 
             expect(result.length).toBe(1);

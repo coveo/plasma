@@ -1,4 +1,5 @@
 import {LinkSvg, Section} from '@coveord/plasma-react';
+import {Container} from '@coveord/plasma-mantine';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {NextPage} from 'next';
 import Head from 'next/head';
@@ -7,7 +8,7 @@ import {FunctionComponent} from 'react';
 import {Tile} from '../building-blocs/Tile';
 
 export const Index: NextPage = () => (
-    <Section className="home flex-auto overflow-auto demo-content">
+    <Container size="xl" className="home">
         <Head>
             <title>Plasma Design System</title>
             <meta property="og:title" content="Plasma Design System" key="title" />
@@ -16,7 +17,7 @@ export const Index: NextPage = () => (
         <FoundationsPages />
         <LayoutPages />
         <FormPages />
-    </Section>
+    </Container>
 );
 
 const WelcomeToPlasma: FunctionComponent = () => (

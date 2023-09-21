@@ -70,7 +70,7 @@ describe('<TableChildBody />', () => {
                 <Provider store={store}>
                     <TableChildBody {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             return wrapper.find(TableChildBody);
         };
@@ -127,8 +127,8 @@ describe('<TableChildBody />', () => {
                 mountComponentWithProps(
                     _.extend({}, tableChildBodyProps, {
                         collapsibleFormatter: () => <div></div>,
-                    })
-                ).find(TableCollapsibleRowWrapper).length
+                    }),
+                ).find(TableCollapsibleRowWrapper).length,
             ).toBe(1);
         });
 

@@ -1,7 +1,6 @@
 import '../styles/colors.scss';
 import '../styles/github-button.scss';
 import '../styles/home.scss';
-import '../styles/iconography.scss';
 import '../styles/loading-screen.css';
 import '../styles/main.scss';
 import '../styles/page-layout.scss';
@@ -10,43 +9,47 @@ import '../styles/props-table.scss';
 import '../styles/spacing.scss';
 import '../styles/tile.scss';
 
-import {Notifications, Plasmantine} from '@coveord/plasma-mantine';
+import {AppShell, Group, Image, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import {Defaults} from '@coveord/plasma-react';
+import {Header as MantineHeader} from '@mantine/core';
 import Head from 'next/head';
 import Link from 'next/link';
-import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 import {Provider} from 'react-redux';
 
 import type {AppProps} from 'next/app';
 import githubLogo from '../../resources/github-mark.svg';
 import logo from '../../resources/plasma-logo.svg';
-import LegacyWarningBanner from '../building-blocs/LegacyWarningBanner';
-import {EngineProvider} from '../search/engine/EngineProvider';
-import StandaloneSearchBar from '../search/StandaloneSearchBar';
 import {Navigation} from '../SideNavigation';
 import {Store} from '../Store';
+import StandaloneSearchBar from '../search/StandaloneSearchBar';
+import {EngineProvider} from '../search/engine/EngineProvider';
+import LegacyWarningBanner from '../building-blocs/LegacyWarningBanner';
 
 const Header = () => (
-    <div id="header" className="demo-header">
-        <Link href="/">
-            <a className="header-logo-link">
-                <img src={logo} className="header-logo" alt="Plasma Design System" />
-            </a>
-        </Link>
-        <StandaloneSearchBar />
-        <div className="right-side">
+    <MantineHeader height={100} withBorder={false}>
+        <Group
+            position="apart"
+            px="lg"
+            py="xs"
+            sx={(theme) => ({
+                background: `linear-gradient(217deg, ${theme.colors.purple[6]} 0%, ${theme.colors.navy[7]} 74.62%, ${theme.colors.navy[7]} 100%)`,
+                height: '100%',
+            })}
+            noWrap
+        >
+            <Link href="/" className="header-logo-link">
+                <Image src={logo} className="header-logo" height={80} fit="contain" alt="Plasma Design System" />
+            </Link>
+            <StandaloneSearchBar />
             <a href="https://github.com/coveo/plasma#readme" aria-label="README" target="_blank">
-                <img src={githubLogo} width={32} height={32} className="invert" />
+                <Image src={githubLogo} width={32} height={32} sx={{filter: 'invert(1)'}} />
             </a>
-        </div>
-    </div>
+        </Group>
+    </MantineHeader>
 );
 
 const MyApp = ({Component, pageProps}: AppProps) => {
-    const {pathname} = useRouter();
-    const isLegacy = /^\/legacy*/.test(pathname);
-
     useEffect(() => {
         Defaults.APP_ELEMENT = '#App';
         Defaults.MODAL_ROOT = '#Modals';
@@ -67,14 +70,10 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                 <EngineProvider>
                     <Plasmantine>
                         <Notifications position="top-center" />
-                        <Header />
-                        <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
-                            <Navigation />
-                            <div className="coveo-form flex-auto relative overflow-auto demo-content">
-                                {isLegacy ? <LegacyWarningBanner /> : null}
-                                <Component {...pageProps} />
-                            </div>
-                        </div>
+                        <AppShell navbar={<Navigation />} header={<Header />} padding={0}>
+                            <LegacyWarningBanner />
+                            <Component {...pageProps} />
+                        </AppShell>
                     </Plasmantine>
                 </EngineProvider>
             </Provider>

@@ -34,13 +34,14 @@ describe('Option picker', () => {
         });
 
         it('should call the onClick prop with the result of the option value when clicking the button', async () => {
+            const user = userEvent.setup();
             render(<Option {...OPTION_BASIC_PROPS} />);
             const optionButton = screen.getByRole('button', {name: /Option 1/i});
-            await userEvent.click(optionButton);
+            await user.click(optionButton);
 
             expect(OPTION_BASIC_PROPS.onClick).toHaveBeenCalledWith(
                 OPTION_BASIC_PROPS.option.value(),
-                OPTION_BASIC_PROPS.option.label
+                OPTION_BASIC_PROPS.option.label,
             );
         });
 
@@ -50,7 +51,7 @@ describe('Option picker', () => {
                     option={{label: 'Option 1', value: () => 'optionValue', disabled: true}}
                     isActive={false}
                     onClick={() => jest.fn()}
-                />
+                />,
             );
             expect(screen.getByRole('button')).toBeDisabled();
         });

@@ -1,6 +1,6 @@
 import {Component, ReactNode, ReactText} from 'react';
 import {OverlayInjectedProps} from 'react-bootstrap/esm/Overlay';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import OverlayTrigger, {OverlayTriggerType} from 'react-bootstrap/OverlayTrigger';
 import BootstrapTooltip from 'react-bootstrap/Tooltip';
 import * as _ from 'underscore';
 
@@ -18,10 +18,10 @@ export interface IOverlayTriggerProps {
     onExited?: (...args: any[]) => void;
     onExiting?: (...args: any[]) => void;
     onClick?: (...args: any[]) => void;
-    placement?: string;
-    container?: string;
+    placement?: any;
+    container?: any;
     rootClose?: boolean;
-    trigger?: string | string[];
+    trigger?: OverlayTriggerType | OverlayTriggerType[];
     children?: ReactNode;
 }
 
@@ -29,7 +29,7 @@ export interface ITooltipProps extends IOverlayTriggerProps {
     /**
      * The text displayed inside the tooltip
      */
-    title: ReactNode;
+    title: any;
     /**
      * Additionnal CSS class the tooltip should have
      */
@@ -49,7 +49,7 @@ export interface ITooltipProps extends IOverlayTriggerProps {
     /**
      * The position of the tooltip should have - Use the TooltipPlacement enum from TooltipUtils
      */
-    placement?: string;
+    placement?: any;
     /**
      * @deprecated Do not use
      */
@@ -123,6 +123,7 @@ export class Tooltip extends Component<ITooltipProps> {
                 id={id}
                 {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
                 {...injectedProps}
+                style={{...injectedProps.style, margin: 0}}
                 className="react-vapor-tooltip"
             >
                 {this.props.title}

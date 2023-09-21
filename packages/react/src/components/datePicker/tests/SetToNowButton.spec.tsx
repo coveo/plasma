@@ -13,10 +13,11 @@ describe('SetToNowButton', () => {
     });
 
     it('calls the onClick prop when clicking on the button', async () => {
+        const user = userEvent.setup();
         const onClickSpy = jest.fn();
         render(<SetToNowButton onClick={onClickSpy} />);
 
-        await userEvent.click(screen.getByRole('button'));
+        await user.click(screen.getByRole('button'));
         expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
 });

@@ -21,7 +21,7 @@ describe('Table HOC', () => {
         const TableWithPredicate = _.compose(
             tableWithPredicateGeneric({id: predicateId})((props) => (
                 <SingleSelectWithFilter id={props.id} items={predicateValues} />
-            ))
+            )),
         )(TableHOC);
 
         const defaultProps: ITableHOCProps = {
@@ -76,14 +76,14 @@ describe('Table HOC', () => {
         describe('when server side', () => {
             const TableWithPredicateServer = _.compose(
                 withServerSideProcessing,
-                tableWithPredicate({id: predicateId, values: predicateValues})
+                tableWithPredicate({id: predicateId, values: predicateValues}),
             )(TableHOC);
 
             it('should not filter out elements', () => {
                 const predicate = predicateValues[1].value;
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} />,
-                    getStateWithPredicate(predicate)
+                    getStateWithPredicate(predicate),
                 )
                     .dive()
                     .dive()
@@ -99,7 +99,7 @@ describe('Table HOC', () => {
                 const predicate = predicateValues[1].value;
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
-                    getStateWithPredicate(predicate)
+                    getStateWithPredicate(predicate),
                 )
                     .dive()
                     .dive()
@@ -116,7 +116,7 @@ describe('Table HOC', () => {
                 const predicate = predicateValues[1].value;
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
-                    getStateWithPredicate(predicate)
+                    getStateWithPredicate(predicate),
                 )
                     .dive()
                     .dive()
@@ -162,7 +162,7 @@ describe('Table HOC', () => {
                 shallowWithState(<TableWithPredicate id="a" data={[]} renderBody={_.identity} />, {}).dive();
                 shallowWithState(
                     <TableWithPredicate id="b" data={[{value: 'a'}]} renderBody={_.identity} />,
-                    {}
+                    {},
                 ).dive();
             }).not.toThrow();
         });
@@ -197,31 +197,32 @@ describe('Table HOC', () => {
         });
 
         it('should show values when opened', async () => {
+            const user = userEvent.setup();
             render(<TableWithPredicate {...defaultProps} />);
 
             expect(
                 screen.queryByRole('option', {
                     name: /all/i,
-                })
+                }),
             ).not.toBeInTheDocument();
             expect(
                 screen.queryByRole('option', {
                     name: /test/i,
-                })
+                }),
             ).not.toBeInTheDocument();
 
             // Click on the dropdown
-            await userEvent.click(screen.getByRole('button'));
+            await user.click(screen.getByRole('button'));
 
             expect(
                 screen.getByRole('option', {
                     name: /all/i,
-                })
+                }),
             ).toBeInTheDocument();
             expect(
                 screen.getByRole('option', {
                     name: /test/i,
-                })
+                }),
             ).toBeInTheDocument();
         });
     });

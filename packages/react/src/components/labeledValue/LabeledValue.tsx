@@ -72,7 +72,7 @@ export class LabeledValue extends PureComponent<ILabeledValueProps> {
                 className={classNames(
                     'box',
                     {padded: this.props.padding, 'full-content-x': !!this.props.fullRow},
-                    this.props.className
+                    this.props.className,
                 )}
             >
                 <div className="flex flex-center">

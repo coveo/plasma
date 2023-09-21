@@ -34,7 +34,7 @@ describe('WithDirtyInputHOC', () => {
             expect(() =>
                 shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store)
                     .dive()
-                    .dive()
+                    .dive(),
             ).not.toThrow();
         });
 
@@ -73,7 +73,7 @@ describe('WithDirtyInputHOC', () => {
                 inputWrapper.prop('validate')('🍕');
 
                 expect(store.getActions()).toContainEqual(
-                    ValidationActions.setDirty(INPUT_PROPS.id, true, ValidationTypes.wrongInitialValue)
+                    ValidationActions.setDirty(INPUT_PROPS.id, true, ValidationTypes.wrongInitialValue),
                 );
             });
 
@@ -86,7 +86,7 @@ describe('WithDirtyInputHOC', () => {
                 inputWrapper.prop('validate')(INPUT_PROPS.defaultValue);
 
                 expect(store.getActions()).toContainEqual(
-                    ValidationActions.setDirty(INPUT_PROPS.id, false, ValidationTypes.wrongInitialValue)
+                    ValidationActions.setDirty(INPUT_PROPS.id, false, ValidationTypes.wrongInitialValue),
                 );
             });
 
@@ -116,7 +116,7 @@ describe('WithDirtyInputHOC', () => {
                 const validateSpy = jest.fn().mockReturnValue(true);
                 inputWrapper = shallowWithStore<typeof InputWithHOC>(
                     <InputWithHOC {...INPUT_PROPS} validate={validateSpy} />,
-                    store
+                    store,
                 )
                     .dive()
                     .dive();

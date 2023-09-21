@@ -71,7 +71,7 @@ describe('LabeledInput', () => {
             const form = shallow(
                 <LabeledInput>
                     <SomeComponent />
-                </LabeledInput>
+                </LabeledInput>,
             );
 
             expect(form.find(SomeComponent)).toBeDefined();

@@ -11,7 +11,7 @@ export interface PhotoProps {
 
 const IMG_SIZE = 50;
 
-const clean = <T extends Record<string, unknown>>(object: T) => _.pick(object, _.identity);
+const clean = <T extends Record<string, unknown>>(object: T) => _.pick(object, _.identity as any);
 
 export const usePhotosAPIMock = (): [any[], number, (params?: any, overwrite?: boolean) => void] => {
     const [photos, setPhotos] = useState([]);
@@ -40,7 +40,7 @@ export const usePhotosAPIMock = (): [any[], number, (params?: any, overwrite?: b
     return [photos, totalEntries, fetchPhotos];
 };
 
-export const PhotoItem: FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => (
+export const PhotoItem: FunctionComponent<PhotoProps> = ({url, title, thumbnailUrl}) => (
     <div className="flex flex-center">
         <a href={url} target="__blank" className="mr2 flex">
             <img src={thumbnailUrl} alt={title} width={IMG_SIZE} height={IMG_SIZE} />

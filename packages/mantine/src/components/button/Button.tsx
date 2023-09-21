@@ -49,7 +49,7 @@ const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 />
             </ButtonWithDisabledTooltip>
         );
-    }
+    },
 );
 
 export const Button = createPolymorphicComponent<'button', ButtonProps, {Group: typeof MantineButton.Group}>(_Button);

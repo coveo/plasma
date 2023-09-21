@@ -15,7 +15,7 @@ describe('withDirty', () => {
 
     it('renders the component as not dirty on mount', () => {
         const ComponentWithDirty = withDirty({id: '🆔', showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean')})(
-            Fixture
+            Fixture,
         );
 
         render(<ComponentWithDirty />);
@@ -25,18 +25,20 @@ describe('withDirty', () => {
     });
 
     it('renders the component as dirty if it is identified as such', async () => {
+        const user = userEvent.setup();
         const ComponentWithDirty = withDirty({id: '🆔', showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean')})(
-            Fixture
+            Fixture,
         );
 
         render(<ComponentWithDirty />);
-        await userEvent.type(screen.getByRole('textbox'), 'dirty');
+        await user.type(screen.getByRole('textbox'), 'dirty');
 
         expect(screen.queryByText('clean')).not.toBeInTheDocument();
         expect(screen.getByText('dirty')).toBeInTheDocument();
     });
 
     it('always renders the component as not dirty if isDirty is set to false in the config', async () => {
+        const user = userEvent.setup();
         const ComponentWithDirty = withDirty({
             id: '🆔',
             showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean'),
@@ -47,12 +49,13 @@ describe('withDirty', () => {
 
         expect(screen.getByText('clean')).toBeInTheDocument();
         expect(screen.queryByText('dirty')).not.toBeInTheDocument();
-        await userEvent.type(screen.getByRole('textbox'), 'dirty');
+        await user.type(screen.getByRole('textbox'), 'dirty');
         expect(screen.getByText('clean')).toBeInTheDocument();
         expect(screen.queryByText('dirty')).not.toBeInTheDocument();
     });
 
     it('always renders the component not dirty if isDirty is set to true in the config', async () => {
+        const user = userEvent.setup();
         const ComponentWithDirty = withDirty({
             id: '🆔',
             showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean'),
@@ -62,7 +65,7 @@ describe('withDirty', () => {
         render(<ComponentWithDirty />);
         expect(screen.queryByText('clean')).not.toBeInTheDocument();
         expect(screen.getByText('dirty')).toBeInTheDocument();
-        await userEvent.type(screen.getByRole('textbox'), 'clean');
+        await user.type(screen.getByRole('textbox'), 'clean');
         expect(screen.queryByText('clean')).not.toBeInTheDocument();
         expect(screen.getByText('dirty')).toBeInTheDocument();
     });

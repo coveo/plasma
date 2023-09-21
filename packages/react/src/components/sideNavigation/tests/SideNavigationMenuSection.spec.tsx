@@ -75,7 +75,7 @@ describe('SideNavigationMenuSection', () => {
                 <div>Item 1</div>
                 <div>Item 2</div>
                 <div>Item 3</div>
-            </SideNavigationMenuSection>
+            </SideNavigationMenuSection>,
         );
 
         expect(section.find('.navigation-menu-section-items').children().length).toBe(3);

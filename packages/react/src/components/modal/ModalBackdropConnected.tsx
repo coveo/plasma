@@ -25,7 +25,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: IModalBackdropOwnProps): 
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IModalBackdropOwnProps
+    ownProps: IModalBackdropOwnProps,
 ): IModalBackdropDispatchProps => ({
     onClick: () => dispatch(closeModals(ownProps.displayFor)),
 });
@@ -36,5 +36,5 @@ const mapDispatchToProps = (
 export const ModalBackdropConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(ModalBackdrop);

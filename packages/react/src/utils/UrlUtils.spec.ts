@@ -37,7 +37,7 @@ describe('UrlUtils', () => {
             const favoriteBaconFlavor = 'smoked maple';
 
             expect(UrlUtils.toQueryString({flavor: favoriteBaconFlavor})).toBe(
-                `flavor=${encodeURIComponent(favoriteBaconFlavor)}`
+                `flavor=${encodeURIComponent(favoriteBaconFlavor)}`,
             );
 
             expect(UrlUtils.toQueryString({flavor: favoriteBaconFlavor})).not.toBe(`flavor=${favoriteBaconFlavor}`);

@@ -47,7 +47,7 @@ describe('Table HOC', () => {
                 <TableHeaderWithSort {...defaultProps}>
                     <div data-testid="batman" />
                 </TableHeaderWithSort>,
-                {}
+                {},
             );
 
             expect(screen.getByTestId('batman')).toBeInTheDocument();
@@ -70,10 +70,11 @@ describe('Table HOC', () => {
         });
 
         it('should dispatch an sortTable on click', async () => {
+            const user = userEvent.setup();
             const expectedAction = TableHeaderActions.sortTable(defaultProps.id);
 
             render(<TableHeaderWithSort {...defaultProps} />, {store});
-            await userEvent.click(screen.getByRole('columnheader'));
+            await user.click(screen.getByRole('columnheader'));
 
             expect(store.getActions()).toContainEqual(expectedAction);
         });
@@ -85,22 +86,24 @@ describe('Table HOC', () => {
         });
 
         it('renders arrow up icon when the user click one time on the arrows', async () => {
+            const user = userEvent.setup();
             render(<TableHeaderWithSort id={'patate'} tableId={'id'} isLoading={false} />);
 
             const btn = await screen.findByRole('img', {name: /doubleArrowHeadV/i});
-            await userEvent.click(btn);
+            await user.click(btn);
 
             expect(await screen.findByRole('img', {name: /arrowUp/i})).toBeInTheDocument();
         });
 
         it('renders arrow down icon the user click two time on the arrows', async () => {
+            const user = userEvent.setup();
             render(<TableHeaderWithSort id={'patate'} tableId={'id'} isLoading={false} />);
 
             const btn1 = await screen.findByRole('img', {name: /doubleArrowHeadV/i});
-            await userEvent.click(btn1);
+            await user.click(btn1);
 
             const btn2 = await screen.findByRole('img', {name: /arrowUp/i});
-            await userEvent.click(btn2);
+            await user.click(btn2);
 
             expect(await screen.findByRole('img', {name: /arrowDown/i})).toBeInTheDocument();
         });

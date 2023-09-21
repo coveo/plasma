@@ -19,5 +19,5 @@ export const addClassNameToChildren = (children: ReactNode, className: string) =
             })
         ) : (
             <span className={className}>{child}</span>
-        )
+        ),
     );

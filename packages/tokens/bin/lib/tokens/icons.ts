@@ -17,9 +17,9 @@ const generateIconsTokens = (tokenLibrary: FileNodesResponse, iconsMarkup: Recor
                     name: iconVariant.name,
                     type: 'svg',
                     value: iconsMarkup[iconVariant.id],
-                })
+                }),
             ),
-        })
+        }),
     );
 
     generateTokens(name, [{name: 'icons', children: iconSvgTokens}]);

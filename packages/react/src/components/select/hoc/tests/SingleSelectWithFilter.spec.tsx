@@ -37,7 +37,7 @@ describe('Select', () => {
                 <Provider store={store}>
                     <SingleSelectWithFilter {...basicProps} {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             singleSelect = wrapper.find(SelectConnected).first();
         };
@@ -233,13 +233,13 @@ describe('Select', () => {
 
         describe('With CustomValue Props', () => {
             const mountSingleSelectCustomValues = (
-                props: Partial<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = {}
+                props: Partial<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = {},
             ) => {
                 wrapper = mount(
                     <Provider store={store}>
                         <SingleSelectWithFilter {...basicProps} {...props} customValues />
                     </Provider>,
-                    {attachTo: document.getElementById('App')}
+                    {attachTo: document.getElementById('App')},
                 );
 
                 store.dispatch(toggleSelect(id, true));
@@ -297,7 +297,7 @@ describe('Select', () => {
                 jest.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('a');
                 const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
                     <ServerSideSingleSelectWithFilter {...basicProps} items={items} />,
-                    store
+                    store,
                 )
                     .dive()
                     .dive();
@@ -310,7 +310,7 @@ describe('Select', () => {
                 jest.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('current-filter-value');
                 const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
                     <ServerSideSingleSelectWithFilter {...basicProps} items={items} onUpdate={onUpdateSpy} />,
-                    store
+                    store,
                 )
                     .dive()
                     .dive()

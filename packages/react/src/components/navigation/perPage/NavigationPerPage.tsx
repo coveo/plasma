@@ -81,7 +81,7 @@ export class NavigationPerPage extends Component<INavigationPerPageProps> {
                         />
                     );
                 }
-            }
+            },
         );
 
         return (

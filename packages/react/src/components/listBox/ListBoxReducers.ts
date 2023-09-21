@@ -15,7 +15,7 @@ export const listBoxesInitialState: IListBoxState[] = [];
 
 export const listBoxReducer = (
     state: IListBoxState = listBoxInitialState,
-    action: IReduxAction<IListBoxPayload>
+    action: IReduxAction<IListBoxPayload>,
 ): IListBoxState => {
     if (state.id !== action.payload.id && action.type !== ListBoxActions.add) {
         return state;
@@ -77,7 +77,7 @@ export const listBoxReducer = (
 
 export const listBoxesReducer = (
     state: IListBoxState[] = listBoxesInitialState,
-    action: IReduxAction<IListBoxPayload>
+    action: IReduxAction<IListBoxPayload>,
 ): IListBoxState[] => {
     switch (action.type) {
         case ListBoxActions.add:

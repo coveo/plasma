@@ -2,6 +2,7 @@ import {CheckSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
     getSize,
+    getStylesRef,
     rem,
     type MantineThemeOverride,
     type NotificationProps,
@@ -140,6 +141,7 @@ export const plasmaTheme: MantineThemeOverride = {
                     fontSize: theme.fontSizes.sm,
                     color: theme.colors.gray[7],
                     marginBottom: theme.spacing.xs,
+                    lineHeight: theme.lineHeight,
                 },
                 invalid: {
                     color: theme.colors.red[9],
@@ -147,6 +149,7 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
                 error: {
                     color: theme.colors.red[9],
+                    lineHeight: theme.lineHeight,
                 },
             }),
         },
@@ -350,6 +353,70 @@ export const plasmaTheme: MantineThemeOverride = {
                     [orientation === 'horizontal' ? 'marginBottom' : 'marginRight']: rem(-1),
                 },
             }),
+        },
+        Select: {
+            styles: (theme) => ({
+                input: {
+                    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+                },
+                item: {
+                    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+
+                    '&[data-hovered]': {
+                        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[1],
+                    },
+
+                    '&[data-selected]': {
+                        backgroundColor: theme.fn.variant({variant: 'light'}).background,
+                        color: theme.fn.variant({variant: 'light'}).color,
+                        ...theme.fn.hover({backgroundColor: theme.fn.variant({variant: 'light'}).hover}),
+                    },
+                },
+            }),
+        },
+        NavLink: {
+            styles: (theme) => ({
+                root: {
+                    color: theme.colors.gray[6],
+                    borderRadius: `${theme.defaultRadius}px 0px 0px ${theme.defaultRadius}px`,
+                    ...theme.fn.hover({
+                        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[1],
+                    }),
+                },
+                label: {
+                    ref: getStylesRef('label'),
+                    fontWeight: 500,
+                },
+                children: {
+                    [`.${getStylesRef('label')}`]: {
+                        fontWeight: 300,
+                    },
+                },
+            }),
+        },
+        Navbar: {
+            styles: (theme) => ({
+                root: {
+                    borderColor: theme.colors.gray[3],
+                },
+            }),
+        },
+        ScrollArea: {
+            styles: {
+                viewport: {
+                    // https://github.com/radix-ui/primitives/issues/926
+                    '&[data-radix-scroll-area-viewport]': {
+                        '& > :first-of-type': {
+                            display: 'block !important',
+                        },
+                    },
+                },
+            },
+        },
+        Divider: {
+            defaultProps: {
+                color: 'gray.3',
+            },
         },
     },
 };

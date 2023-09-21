@@ -40,7 +40,7 @@ const ButtonPropsToOmit = [
 /**
  * @deprecated Use Mantine Button instead: https://mantine.dev/core/button/
  */
-export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> {
+export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>> {
     static defaultProps: Partial<IButtonProps> = {
         enabled: true,
         isLoading: false,
@@ -113,7 +113,7 @@ export class Button extends Component<IButtonProps & ButtonHTMLAttributes<HTMLBu
                 'mod-small': this.props.small,
                 'state-disabled disabled': !this.props.enabled,
             },
-            this.props.classes
+            this.props.classes,
         );
     }
 }

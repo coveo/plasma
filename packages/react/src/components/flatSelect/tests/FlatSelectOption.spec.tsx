@@ -45,7 +45,7 @@ describe('FlatSelect', () => {
             renderFlatSelectOption(
                 _.extend({}, defaultProps, {
                     selected: true,
-                })
+                }),
             );
 
             const optionElement = flatSelect.find('a');
@@ -57,7 +57,7 @@ describe('FlatSelect', () => {
             renderFlatSelectOption(
                 _.extend({}, defaultProps, {
                     selected: false,
-                })
+                }),
             );
 
             const optionElement = flatSelect.find('a');
@@ -69,7 +69,7 @@ describe('FlatSelect', () => {
             renderFlatSelectOption(
                 _.extend({}, defaultProps, {
                     disabled: true,
-                })
+                }),
             );
 
             const optionElement = flatSelect.find('a');
@@ -87,7 +87,7 @@ describe('FlatSelect', () => {
             renderFlatSelectOption(
                 _.extend({}, defaultProps, {
                     prepend: content,
-                })
+                }),
             );
 
             expect(flatSelect.find(Content).length).toBe(2);
@@ -97,7 +97,7 @@ describe('FlatSelect', () => {
             renderFlatSelectOption(
                 _.extend({}, defaultProps, {
                     append: content,
-                })
+                }),
             );
 
             expect(flatSelect.find(Content).length).toBe(2);

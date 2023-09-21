@@ -29,7 +29,7 @@ describe('<TableChildHeader />', () => {
                 <Provider store={store}>
                     <TableChildHeader {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
 
         it('should render without error if basic props are passed', () => {
@@ -64,7 +64,7 @@ describe('<TableChildHeader />', () => {
         it('should render with class name if defined', () => {
             const newClassToAdd = 'wow';
             const tableHeader = mountComponentWithProps({...tablePropsMock, tableHeaderClasses: [newClassToAdd]}).find(
-                TableHeader
+                TableHeader,
             );
 
             expect(tableHeader.props().headerClass).toContain(newClassToAdd);

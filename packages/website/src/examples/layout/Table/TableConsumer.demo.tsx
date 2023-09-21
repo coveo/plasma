@@ -52,6 +52,7 @@ const Demo = () => {
                 {/* Refresh the component every 10s, look at your network tab to validate it works */}
                 <IntervalRefresh every={10 * 1000} />
             </Table.Consumer>
+            <Table.LastUpdated />
         </Table>
     );
 };

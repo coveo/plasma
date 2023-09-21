@@ -244,5 +244,5 @@ export const ModalCompositeConnected = connect<
 >(
     mapStateToProps,
     mapDispatchToProps,
-    ReduxUtils.mergeProps
+    ReduxUtils.mergeProps,
 )(ModalComposite as any);

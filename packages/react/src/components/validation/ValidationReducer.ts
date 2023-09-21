@@ -32,7 +32,7 @@ export const validationReducer = (state: ValidationsState = {}, action: Validati
 
 const oneValidationReducer = (
     state: ValidationState = {error: [], isDirty: [], warning: []},
-    action: ValidationActions
+    action: ValidationActions,
 ): ValidationState => {
     switch (action.type) {
         case ValidationActionsTypes.updateError:

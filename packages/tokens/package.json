@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "52.7.0",
+    "version": "52.16.0",
     "description": "Design tokens of the Plasma Design System",
     "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
     "repository": {
@@ -29,6 +29,7 @@
     ],
     "scripts": {
         "build": "rimraf dist && node ../../scripts/build",
+        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"bin/**/*.{ts,tsx}\" --fix",
         "prepublishOnly": "publint",
         "tokens:build": "ts-node ./bin/build.ts --project ./bin/tsconfig.json && pnpm tokens:lint",
         "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
@@ -39,28 +40,26 @@
     },
     "devDependencies": {
         "@swc/cli": "0.1.62",
-        "@swc/core": "1.3.60",
+        "@swc/core": "1.3.78",
         "@types/chroma-js": "2.4.0",
-        "@types/fs-extra": "9.0.13",
-        "@types/lodash": "4.14.195",
-        "@types/node": "16.18.32",
+        "@types/fs-extra": "11.0.1",
+        "@types/lodash": "4.14.197",
+        "@types/node": "18.17.7",
         "@types/rimraf": "3.0.2",
-        "@types/svgo": "2.6.4",
         "chroma-js": "2.4.2",
-        "commander": "9.5.0",
-        "cross-fetch": "3.1.6",
+        "commander": "11.0.0",
         "dotenv-safe": "8.2.0",
         "figma-js": "1.16.0",
-        "fs-extra": "10.1.0",
-        "lint-staged": "9.5.0",
+        "fs-extra": "11.1.1",
+        "lint-staged": "14.0.1",
         "lodash": "4.17.21",
-        "prettier": "2.8.8",
-        "publint": "0.1.12",
-        "rimraf": "3.0.2",
-        "sass": "1.62.1",
-        "svgo": "2.8.0",
+        "prettier": "3.0.2",
+        "publint": "0.2.2",
+        "rimraf": "5.0.1",
+        "sass": "1.66.1",
+        "svgo": "3.0.2",
         "ts-node": "10.9.1",
-        "tslib": "2.5.2",
-        "typescript": "5.0.4"
+        "tslib": "2.6.2",
+        "typescript": "5.1.6"
     }
 }

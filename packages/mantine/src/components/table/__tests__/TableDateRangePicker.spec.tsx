@@ -1,6 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, waitFor} from '@test-utils';
-import {act} from 'react-dom/test-utils';
+import {render, screen, userEvent, waitFor, within} from '@test-utils';
 
 import {Table} from '../Table';
 
@@ -20,62 +19,32 @@ const basicTableWithDateRangePicker = (
     </Table>
 );
 
-// Since we're mocking the date and the animations are timer based we're mocking useReduceMotion to disable all the animations
-// I tried wrapping the components in <MantineProvider theme={{components: {Transition: {defaultProps: {duration: 0}}}}}>
-// but the animation was still happening. :(
-vi.mock('@mantine/hooks', async () => {
-    const actual = await vi.importActual('@mantine/hooks');
-    return {
-        ...actual,
-        useReduceMotion: () => true,
-    };
-});
-
 describe('Table.DateRangePicker', () => {
-    beforeEach(() => {
-        vi.useFakeTimers().setSystemTime(new Date(2022, 0, 15));
-    });
-
-    afterEach(() => {
-        vi.useRealTimers();
-    });
-
     it('displays the initial dates', async () => {
         render(basicTableWithDateRangePicker);
 
-        await waitFor(() => {
-            expect(screen.getByText('Jan 01, 2022 - Jan 07, 2022')).toBeVisible();
-        });
+        expect(screen.getByText('Jan 01, 2022 - Jan 07, 2022')).toBeVisible();
     });
 
     it('opens the dialog when clicking on the calendar button', async () => {
-        // Otherwise, css transition is not triggered in Mantine component
-        vi.useRealTimers();
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup();
         render(basicTableWithDateRangePicker);
 
-        await screen.findByRole('button', {name: 'calendar'});
-        await act(async () => {
-            await user.click(screen.getByRole('button', {name: 'calendar'}));
-        });
-        expect(screen.queryByRole('dialog')).toBeVisible();
+        await user.click(screen.getByRole('button', {name: 'calendar'}));
+        expect(screen.getByRole('dialog', {name: 'calendar'})).toBeVisible();
     });
 
     it('closes the dialog when clicking back on the calendar button', async () => {
-        // Otherwise, css transition is not triggered in Mantine component
-        vi.useRealTimers();
-        const user = userEvent.setup({delay: null});
+        const user = userEvent.setup();
         render(basicTableWithDateRangePicker);
 
-        await screen.findByRole('button', {name: 'calendar'});
-        await act(async () => {
-            await user.click(screen.getByRole('button', {name: 'calendar'}));
-            await user.click(screen.getByRole('button', {name: 'calendar'}));
-        });
-        expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    });
+        await user.click(screen.getByRole('button', {name: 'calendar'}));
+        await user.click(screen.getByRole('button', {name: 'calendar'}));
+        expect(screen.queryByRole('dialog', {name: 'calendar'})).not.toBeInTheDocument();
+    }, 10000);
 
     it('displays the selected date range in the table', async () => {
+        vi.useFakeTimers().setSystemTime(new Date(2022, 0, 15));
         const user = userEvent.setup({delay: null});
         const onChange = vi.fn();
         render(
@@ -85,35 +54,33 @@ describe('Table.DateRangePicker', () => {
                 onChange={onChange}
                 initialState={{dateRange: [new Date(2022, 0, 1), new Date(2022, 0, 7)]}}
             >
-                <Table.Header>
+                <Table.Header data-testid="table-header">
                     <Table.DateRangePicker
                         presets={{preset: {label: 'Preset', range: [new Date(2022, 0, 8), new Date(2022, 0, 14)]}}}
                     />
                 </Table.Header>
-            </Table>
+            </Table>,
         );
+        const tableHeader = screen.getByTestId('table-header');
 
-        await screen.findByText('Jan 01, 2022 - Jan 07, 2022');
-        await screen.findByRole('button', {name: 'calendar'});
+        expect(within(tableHeader).getByText('Jan 01, 2022 - Jan 07, 2022')).toBeInTheDocument();
+        await user.click(within(tableHeader).getByRole('button', {name: 'calendar'}));
 
-        await user.click(screen.getByRole('button', {name: 'calendar'}));
-
-        await screen.findByRole('dialog');
+        const calendar = await screen.findByRole('dialog', {name: 'calendar'});
 
         // select a preset
-        await user.click(
-            screen.getByRole('searchbox', {
-                name: 'Date range',
-            })
-        );
-        await user.click(screen.getByRole('option', {name: 'Preset'}));
+        await user.click(within(calendar).getByRole('searchbox', {name: 'Date range'}));
+        await user.click(within(calendar).getByRole('option', {name: 'Preset'}));
+        await user.click(within(calendar).getByRole('button', {name: 'Apply'}));
 
-        await user.click(screen.getByRole('button', {name: 'Apply'}));
-        vi.advanceTimersByTime(500);
-
-        await waitFor(() => expect(screen.queryByText('Jan 08, 2022 - Jan 14, 2022')).toBeVisible());
+        await waitFor(() => {
+            expect(onChange).toHaveBeenCalledTimes(1);
+        });
         expect(onChange).toHaveBeenCalledWith(
-            expect.objectContaining({dateRange: [new Date(2022, 0, 8), new Date(2022, 0, 14)]})
+            expect.objectContaining({dateRange: [new Date(2022, 0, 8), new Date(2022, 0, 14)]}),
         );
-    });
+        expect(within(tableHeader).getByText('Jan 08, 2022 - Jan 14, 2022')).toBeInTheDocument();
+
+        vi.useRealTimers();
+    }, 20000);
 });

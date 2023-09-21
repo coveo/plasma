@@ -28,7 +28,7 @@ export class BreadcrumbLink extends Component<IBreadcrumbLinkProps> {
             {
                 link: this.props.link,
             },
-            this.props.classes
+            this.props.classes,
         );
         const TagName = this.props.link ? 'a' : 'span';
         return (

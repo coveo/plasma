@@ -43,7 +43,7 @@ describe('Modal with Prevent Navigation', () => {
         shallowWithProps({onStay: spy});
 
         const footer = shallow(
-            <div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>
+            <div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>,
         );
         footer.find('.js-stay').simulate('click');
 
@@ -55,7 +55,7 @@ describe('Modal with Prevent Navigation', () => {
         shallowWithProps({onClose: spy});
 
         const footer = shallow(
-            <div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>
+            <div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>,
         );
         footer.find('.js-exit').simulate('click');
 

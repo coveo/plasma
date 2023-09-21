@@ -68,7 +68,7 @@ describe('StringList', () => {
             it('should return the oldState if the id is already in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeReducer(
                     oldState,
-                    addStringList(stateId)
+                    addStringList(stateId),
                 );
 
                 expect(newState).toBe(oldState);
@@ -90,7 +90,7 @@ describe('StringList', () => {
                 const newList: string[] = ['a', 'b', 'c'];
                 const newState: IStringListCompositeState = stringListCompositeReducer(
                     oldState,
-                    addStringList(newId, newList)
+                    addStringList(newId, newList),
                 );
 
                 expect(newState[newId].list).toEqual(newList);
@@ -103,7 +103,7 @@ describe('StringList', () => {
             it('should remove nothing if the id is not in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeReducer(
                     oldState,
-                    removeStringList(newId)
+                    removeStringList(newId),
                 );
 
                 expect(newState).toBe(oldState);
@@ -112,7 +112,7 @@ describe('StringList', () => {
             it('should remove the list if the id is in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeReducer(
                     oldState,
-                    removeStringList(stateId)
+                    removeStringList(stateId),
                 );
 
                 expect(newState).not.toEqual(oldState);
@@ -126,7 +126,7 @@ describe('StringList', () => {
             it('should return the oldState if the id where to add the value is not in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeReducer(
                     oldState,
-                    addValueStringList(newId, newValue)
+                    addValueStringList(newId, newValue),
                 );
 
                 expect(newState).toBe(oldState);
@@ -135,7 +135,7 @@ describe('StringList', () => {
             it('should add the value at the end of the list if the id is in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeReducer(
                     oldState,
-                    addValueStringList(stateId, newValue)
+                    addValueStringList(stateId, newValue),
                 );
 
                 const newStateListLength: number = newState[stateId].list.length;
@@ -154,7 +154,7 @@ describe('StringList', () => {
 
                 const newState: IStringListCompositeState = stringListCompositeReducer(
                     oldStateWithValues,
-                    addValueStringList(stateId, newValue, true)
+                    addValueStringList(stateId, newValue, true),
                 );
 
                 expect(newState[stateId].list.length).toBe(1);
@@ -169,7 +169,7 @@ describe('StringList', () => {
             it('should return the oldState if the id where to remove the value is not in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeReducer(
                     oldState,
-                    removeValueStringList(newId, newValue)
+                    removeValueStringList(newId, newValue),
                 );
 
                 expect(newState).toBe(oldState);
@@ -179,7 +179,7 @@ describe('StringList', () => {
                 const oldStateWithList: IStringListCompositeState = {[stateId]: {id: stateId, list: [newValue]}};
                 const newState: IStringListCompositeState = stringListCompositeReducer(
                     oldStateWithList,
-                    removeValueStringList(stateId, newValue)
+                    removeValueStringList(stateId, newValue),
                 );
 
                 const newStateListLength: number = newState[stateId].list.length;

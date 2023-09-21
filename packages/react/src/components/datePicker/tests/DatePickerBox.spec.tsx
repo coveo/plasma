@@ -53,7 +53,7 @@ describe('Date picker', () => {
             });
 
             expect(datePickerBox.find('DatesSelection').length).toBe(
-                DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length
+                DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length,
             );
 
             datePickerBox.setProps(moreBoxesProps);
@@ -67,7 +67,7 @@ describe('Date picker', () => {
             });
 
             expect(datePickerBox.find('OptionPicker').length).toBe(
-                DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length
+                DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length,
             );
 
             datePickerBox.setProps(moreBoxesProps);
@@ -154,7 +154,7 @@ describe('Date picker', () => {
                 <Provider store={TestUtils.buildStore()}>
                     <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} withReduxState withoutBoxResize />
                 </Provider>,
-                {attachTo: document.getElementById('App')}
+                {attachTo: document.getElementById('App')},
             );
             datePickerBox = wrapper.find(DatePickerBox).first();
         });

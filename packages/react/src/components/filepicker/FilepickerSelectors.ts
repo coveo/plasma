@@ -12,12 +12,12 @@ const getFilePicker = (state: PlasmaState, {id}: {id: string}) => state.filepick
 
 const getFileMetadata = createSelector(
     getFilePicker,
-    (filepicker: FilepickerState[keyof FilepickerState]) => filepicker?.selectedFile
+    (filepicker: FilepickerState[keyof FilepickerState]) => filepicker?.selectedFile,
 );
 
 const isEmpty = createSelector(
     getFilePicker,
-    (filepicker: FilepickerState[keyof FilepickerState]) => filepicker?.isEmpty
+    (filepicker: FilepickerState[keyof FilepickerState]) => filepicker?.isEmpty,
 );
 
 export const FilepickerSelectors = {

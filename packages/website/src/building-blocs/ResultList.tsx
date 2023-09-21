@@ -32,7 +32,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
                     </Section>
                 </AtomicSearchInterface>
             ) : (
-                <Section className="home flex-auto overflow-auto demo-content">
+                <Section className="home flex-auto overflow-auto">
                     <Section className="section">
                         <AtomicSearchInterface engine={engine as any}>
                             <AtomicQuerySummary />

@@ -33,7 +33,7 @@ export const toastsContainerInitialState: IToastsState[] = [];
 
 export const toastContainerReducer = (
     state: IToastsState = toastContainerInitialState,
-    action: IReduxAction<IToastContainerActionPayload>
+    action: IReduxAction<IToastContainerActionPayload>,
 ): IToastsState => {
     switch (action.type) {
         case ToastAction.addToastContainer:
@@ -58,7 +58,7 @@ const toastsReducer = (state: IToastState[], action: IReduxAction<IToastActionPa
 
 export const toastsContainerReducer = (
     state: IToastsState[] = toastsContainerInitialState,
-    action: IReduxAction<IToastContainerActionPayload>
+    action: IReduxAction<IToastContainerActionPayload>,
 ): IToastsState[] => {
     switch (action.type) {
         case ToastAction.addToastContainer:

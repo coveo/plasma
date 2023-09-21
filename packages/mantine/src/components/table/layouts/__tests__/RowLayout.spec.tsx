@@ -2,6 +2,7 @@ import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
 import {Table} from '../../Table';
+import {TableLayouts} from '../TableLayouts';
 
 describe('RowLayout', () => {
     type RowData = {id: string; firstName: string; lastName?: string};
@@ -18,7 +19,7 @@ describe('RowLayout', () => {
                 getRowId={({id}) => id}
                 data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
                 columns={columns}
-            />
+            />,
         );
 
         expect(screen.getByRole('columnheader', {name: 'firstName'})).toBeVisible();
@@ -27,12 +28,12 @@ describe('RowLayout', () => {
         expect(
             screen.getByRole('cell', {
                 name: /first/i,
-            })
+            }),
         ).toBeVisible();
         expect(
             screen.getByRole('cell', {
                 name: /last/i,
-            })
+            }),
         ).toBeVisible();
     });
 
@@ -58,6 +59,31 @@ describe('RowLayout', () => {
         expect(screen.getByRole('cell', {name: 'LAST'})).toBeVisible();
     });
 
+    it('adds testid on the data', () => {
+        const customColumns: Array<ColumnDef<RowData>> = [
+            columnHelper.accessor('firstName', {}),
+            columnHelper.accessor('lastName', {}),
+        ];
+        render(
+            <Table
+                getRowId={({id}) => id}
+                data={[
+                    {id: 'ash', firstName: 'Ash', lastName: 'Ketchum'},
+                    {id: 'gary', firstName: 'Gary', lastName: 'Oak'},
+                ]}
+                columns={customColumns}
+            />,
+        );
+
+        expect(screen.getByTestId('ash')).toBeVisible();
+        expect(screen.getByTestId('ash_firstName')).toHaveTextContent('Ash');
+        expect(screen.getByTestId('ash_lastName')).toHaveTextContent('Ketchum');
+
+        expect(screen.getByTestId('gary')).toBeVisible();
+        expect(screen.getByTestId('gary_firstName')).toHaveTextContent('Gary');
+        expect(screen.getByTestId('gary_lastName')).toHaveTextContent('Oak');
+    });
+
     it('opens the collapsible rows when the user click on the toggle', async () => {
         const user = userEvent.setup();
         const Fixture: FunctionComponent<{row: RowData}> = ({row}) => <div>Collapsible content: {row.lastName}</div>;
@@ -73,7 +99,7 @@ describe('RowLayout', () => {
                 data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
                 getExpandChildren={(row: RowData) => <Fixture row={row} />}
                 columns={customColumns}
-            />
+            />,
         );
 
         // wait for the collapsible icon to show
@@ -109,7 +135,7 @@ describe('RowLayout', () => {
                 ]}
                 getExpandChildren={(row: RowData) => (row.lastName === 'Skywalker' ? <Fixture row={row} /> : null)}
                 columns={customColumns}
-            />
+            />,
         );
 
         // wait for the collapsible icon to show
@@ -137,7 +163,7 @@ describe('RowLayout', () => {
                 ]}
                 getExpandChildren={(row: RowData) => <Fixture row={row} />}
                 columns={customColumns}
-            />
+            />,
         );
 
         // wait for the collapsible icon to show
@@ -172,11 +198,100 @@ describe('RowLayout', () => {
                 ]}
                 columns={columns}
                 doubleClickAction={doubleClickSpy}
-            ></Table>
+            ></Table>,
         );
         await user.dblClick(screen.getByRole('cell', {name: 'Mario'}));
         expect(doubleClickSpy).toHaveBeenCalledTimes(1);
         expect(doubleClickSpy).toHaveBeenCalledWith({id: '🆔-1', firstName: 'Mario'});
+    });
+
+    it('toggles row selection when clicking on a selected row', async () => {
+        const user = userEvent.setup();
+
+        render(
+            <div>
+                <Table
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+                    ]}
+                    columns={columns}
+                />
+            </div>,
+        );
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: false})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: true})).not.toBeInTheDocument();
+    });
+
+    it('prevents row toggle if keepSelection is true', async () => {
+        const user = userEvent.setup();
+
+        render(
+            <div>
+                <Table
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+                    ]}
+                    columns={columns}
+                    layouts={[
+                        {
+                            ...TableLayouts.Rows,
+                            Body: (props) => <TableLayouts.Rows.Body {...props} keepSelection />,
+                        },
+                    ]}
+                />
+            </div>,
+        );
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
+    });
+
+    it('allows selection of another row if keepSelection is true', async () => {
+        const user = userEvent.setup();
+
+        render(
+            <div>
+                <Table
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+                    ]}
+                    columns={columns}
+                    layouts={[
+                        {
+                            ...TableLayouts.Rows,
+                            Body: (props) => <TableLayouts.Rows.Body {...props} keepSelection />,
+                        },
+                    ]}
+                />
+            </div>,
+        );
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole('row', {name: /first last/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: false})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: true})).not.toBeInTheDocument();
+        expect(screen.getByRole('row', {name: /first last/i, selected: true})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /first last/i, selected: false})).not.toBeInTheDocument();
     });
 
     describe('when multi row selection is enabled', () => {
@@ -190,7 +305,7 @@ describe('RowLayout', () => {
                     ]}
                     columns={columns}
                     multiRowSelectionEnabled
-                />
+                />,
             );
 
             expect(screen.getByRole('columnheader', {name: /select all from this page/i})).toBeInTheDocument();
@@ -214,7 +329,7 @@ describe('RowLayout', () => {
                     initialState={{
                         rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}},
                     }}
-                />
+                />,
             );
 
             expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
@@ -231,7 +346,7 @@ describe('RowLayout', () => {
                     ]}
                     columns={columns}
                     multiRowSelectionEnabled
-                />
+                />,
             );
 
             const selectAll = screen.getByRole('checkbox', {name: /select all from this page/i});
@@ -258,7 +373,7 @@ describe('RowLayout', () => {
                         multiRowSelectionEnabled
                         disableRowSelection
                     />
-                </div>
+                </div>,
             );
 
             await user.click(screen.getByRole('row', {name: /patate king/i}));
@@ -281,7 +396,7 @@ describe('RowLayout', () => {
                     columns={columns}
                     multiRowSelectionEnabled
                     disableRowSelection
-                />
+                />,
             );
 
             expect(screen.getByRole('checkbox', {name: /select all/i})).toHaveStyle('pointerEvents: none');

@@ -41,6 +41,7 @@
         .title {
             filter: opacity(0.5);
         }
+
         .card {
             box-shadow: none;
         }
@@ -48,7 +49,7 @@
 
     &.animateOnHover {
         &:hover {
-            transform: translate3d(0px, -8px, 0px);
+            transform: translate3d(0, -8px, 0);
 
             .card {
                 box-shadow: var(--medium-elevation-on-light);
@@ -63,7 +64,7 @@
 
 .icon-card-drawer {
     justify-content: space-between;
-    padding: 40px 36px 32px 36px;
+    padding: 40px 36px 32px;
     background-color: var(--grey-20);
     border-right: $default-border;
     border-bottom: $default-border;
@@ -78,7 +79,7 @@
     &.mod-small {
         flex-direction: column;
         align-items: flex-start;
-        padding: 30px 24px 22px 24px;
+        padding: 30px 24px 22px;
 
         .icon-card-drawer-choice {
             margin: 0.5rem 0;

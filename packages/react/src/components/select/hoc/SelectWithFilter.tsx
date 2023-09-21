@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {PlasmaState} from '../../../PlasmaState';
+import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
@@ -44,7 +44,7 @@ const SelectWithFilterPropsToOmit = [
  * @deprecated Use Mantine Select instead: https://mantine.dev/core/select/
  */
 export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
-    WrappedComponent: ComponentType
+    WrappedComponent: ComponentType<any>,
 ): ComponentClass<P & ISelectWithFilterOwnProps> => {
     type OwnProps = P & ISelectWithFilterOwnProps;
     type Props = OwnProps & ReturnType<ReturnType<typeof makeMapStateToProps>> & ReturnType<typeof mapDispatchToProps>;
@@ -127,8 +127,8 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
             return (
                 _.chain(this.props.items)
                     .pluck('value')
-                    .concat(this.props.selected)
-                    .indexOf(this.props.filterValue)
+                    .concat(this.props.selected as any)
+                    .indexOf(this.props.filterValue as any)
                     .value() !== -1
             );
         }
@@ -145,7 +145,7 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
 
             let noResultItem: any = this.props.noResultItem || this.noResultFilter();
             let items = this.props.items.map(
-                (item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue})
+                (item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue}),
             );
 
             if (this.isDuplicateValue()) {

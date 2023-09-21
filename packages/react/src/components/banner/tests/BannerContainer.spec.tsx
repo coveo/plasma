@@ -12,7 +12,7 @@ describe('BannerContainer', () => {
             shallow(
                 <BannerContainer className="test" onClick={_.noop}>
                     Hello
-                </BannerContainer>
+                </BannerContainer>,
             );
         }).not.toThrow();
     });
@@ -22,7 +22,7 @@ describe('BannerContainer', () => {
         const wrapper = shallow(
             <BannerContainer>
                 <div id={id} />
-            </BannerContainer>
+            </BannerContainer>,
         );
 
         expect(wrapper.find(`#${id}`).exists()).toBe(true);

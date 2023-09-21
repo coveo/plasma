@@ -18,7 +18,7 @@ export const flippablesInitialState: IFlippableState[] = [];
 
 export const flippableReducer = (
     state: IFlippableState = flippableInitialState,
-    action: IReduxAction<any>
+    action: IReduxAction<any>,
 ): IFlippableState => {
     switch (action.type) {
         case FlippableAction.add:
@@ -32,7 +32,7 @@ export const flippableReducer = (
 
 export const flippablesReducer = (
     state: IFlippableState[] = flippablesInitialState,
-    action: IReduxAction<IReduxActionsPayload>
+    action: IReduxAction<IReduxActionsPayload>,
 ): IFlippableState[] => {
     switch (action.type) {
         case FlippableAction.add:

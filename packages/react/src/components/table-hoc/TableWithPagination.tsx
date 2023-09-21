@@ -30,7 +30,7 @@ export interface ITableWithPaginationStateProps {
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ITableHOCOwnProps & WithServerSideProcessingProps
+    ownProps: ITableHOCOwnProps & WithServerSideProcessingProps,
 ) => ({
     onMount: () => {
         dispatch(turnOffLoading([`loading-${ownProps.id}`]));
@@ -54,11 +54,11 @@ const sliceData = (data: any[], startingIndex: number, endingIndex: number) => d
  */
 export const tableWithPagination =
     (supplier: ConfigSupplier<ITableWithPaginationConfig> = {}) =>
-    (WrappedComponent: ComponentType<PropsWithChildren<ITableWithPaginationProps>>) => {
+    (WrappedComponent: ComponentType<any>) => {
         const config = HocUtils.supplyConfig(supplier);
         const mapStateToProps = (
             state: PlasmaState,
-            ownProps: ITableHOCOwnProps & WithServerSideProcessingProps
+            ownProps: ITableHOCOwnProps & WithServerSideProcessingProps,
         ): ITableWithPaginationStateProps | ITableHOCOwnProps => {
             const pageNb = NavigationSelectors.getPaginationPage(state, {
                 id: TableHOCUtils.getPaginationId(ownProps.id),
@@ -123,6 +123,6 @@ export const tableWithPagination =
             PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
         >(
             mapStateToProps,
-            mapDispatchToProps
+            mapDispatchToProps,
         )(TableWithPagination as any);
     };
