@@ -35,12 +35,13 @@ export interface StickyFooterProps extends DefaultProps<Selectors<typeof useStyl
 }
 
 const useStyles = createStyles((theme) => ({
-    root: {},
-    footer: {
+    root: {
         position: 'sticky',
         bottom: 0,
         zIndex: 10,
         backgroundColor: 'white',
+    },
+    footer: {
         padding: theme.spacing.lg,
     },
     divider: {},
