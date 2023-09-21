@@ -230,6 +230,7 @@ export const ModalWizard: ModalWizardType = ({
                     </Button>
 
                     <Button
+                        disabledTooltip={currentStep.props.disabledTooltipLabel}
                         disabled={!isValid}
                         onClick={() => {
                             if (isLastStep) {

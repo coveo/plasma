@@ -42,6 +42,12 @@ export interface ModalWizardStepProps {
      * @default true
      */
     countsAsProgress?: boolean;
+
+    /**
+     *  Tooltip label of the next button when disabled
+     *
+     */
+    disabledTooltipLabel?: string;
 }
 
 const ModalWizardStep: FunctionComponent<PropsWithChildren<ModalWizardStepProps>> = ({children}) => <>{children}</>;
