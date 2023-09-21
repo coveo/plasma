@@ -44,7 +44,7 @@ export interface ModalWizardStepProps {
     countsAsProgress?: boolean;
 
     /**
-     *  Tooltip label of the next button when disabled
+     * Tooltip label of the next button when disabled
      *
      */
     disabledTooltipLabel?: string;
