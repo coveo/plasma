@@ -1,3 +1,12 @@
+## 52.17.2 (2023-09-21)
+
+
+### Bug Fixes
+
+* **mantine:** sticky footer doesn't stick anymore (#3551) 37e7f4e, closes #3551
+
+
+
 ## 52.17.1 (2023-09-21)
 
 
