@@ -465,12 +465,11 @@ describe('ModalWizard', () => {
             await user.click(screen.getByRole('button', {name: /next/i}));
             const finishButton = screen.getByRole('button', {name: /finish/i});
             expect(finishButton).toBeDisabled();
-            await user.hover(finishButton);
+            await user.hover(finishButton.parentElement);
             expect(screen.getByText('test tooltip label')).toBeVisible();
         });
         it('does not display the tooltip if the step is validated even if the props is passed', async () => {
             const user = userEvent.setup();
-
             render(
                 <ModalWizard opened={true} onClose={vi.fn()}>
                     <ModalWizard.Step title="Step 1" showProgressBar={false} validateStep={() => ({isValid: true})}>
@@ -490,7 +489,7 @@ describe('ModalWizard', () => {
             await user.click(screen.getByRole('button', {name: /next/i}));
             const finishButton = screen.getByRole('button', {name: /finish/i});
             expect(finishButton).toBeEnabled();
-            await user.hover(finishButton);
+            await user.hover(finishButton.parentElement);
             expect(screen.queryByText('test tooltip label')).not.toBeInTheDocument();
         });
     });
