@@ -45,7 +45,6 @@ export interface ModalWizardStepProps {
 
     /**
      * Tooltip label of the next button when disabled
-     *
      */
     disabledTooltipLabel?: string;
 }
