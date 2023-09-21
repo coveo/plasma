@@ -416,32 +416,6 @@ describe('ModalWizard', () => {
         expect(screen.getByRole('button', {name: /finish/i})).toBeDisabled();
     });
 
-    it('display a tooltip when a step is invalid and a label is passed', async () => {
-        const user = userEvent.setup();
-
-        render(
-            <ModalWizard opened={true} onClose={vi.fn()}>
-                <ModalWizard.Step title="Step 1" showProgressBar={false} validateStep={() => ({isValid: true})}>
-                    Content step 1
-                </ModalWizard.Step>
-                <ModalWizard.Step
-                    title="Step 2"
-                    validateStep={() => ({isValid: false})}
-                    disabledTooltipLabel="test tooltip label"
-                >
-                    Content step 2
-                </ModalWizard.Step>
-            </ModalWizard>,
-        );
-
-        expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();
-        await user.click(screen.getByRole('button', {name: /next/i}));
-        const finishButton = screen.getByRole('button', {name: /finish/i});
-        expect(finishButton).toBeDisabled();
-        await user.hover(finishButton);
-        expect(screen.getByText('test tooltip label')).toBeVisible();
-    });
-
     describe('disabledTooltipLabel props', () => {
         it('display a tooltip when a step is invalid and a label is passed', async () => {
             const user = userEvent.setup();
