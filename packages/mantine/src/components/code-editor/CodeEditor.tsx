@@ -188,7 +188,6 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 options={{
                     minimap: {enabled: false},
                     wordWrap: 'on',
-                    wrappingStrategy: 'advanced',
                     scrollBeyondLastLine: false,
                     formatOnPaste: true,
                     fontSize: px(theme.fontSizes.xs),
