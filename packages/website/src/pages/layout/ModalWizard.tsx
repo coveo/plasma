@@ -1,6 +1,7 @@
 import {ModalWizardMetadata} from '@coveord/plasma-components-props-analyzer';
 import ModalWizardDemo from '@examples/layout/ModalWizard/ModalWizard.demo';
 import ModalWizardWithFormValidation from '@examples/layout/ModalWizard/ModalWizardWithFormValidation.demo?demo';
+import ModalWizardWithTooltip from '@examples/layout/ModalWizard/ModalWizardWithTooltip.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -15,6 +16,7 @@ export default () => (
         demo={<ModalWizardDemo />}
         examples={{
             formValidation: <ModalWizardWithFormValidation noPadding title="Modal Wizard with Form Validation" />,
+            tooltip: <ModalWizardWithTooltip noPadding title="Modal Wizard with tooltip on next button" />,
         }}
     />
 );
