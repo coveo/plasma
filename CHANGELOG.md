@@ -1,3 +1,12 @@
+## 52.17.3 (2023-09-25)
+
+
+### Bug Fixes
+
+* **mantine:** performance issue in CodeEditor (#3554) fb1f8f6, closes #3554
+
+
+
 ## 52.17.2 (2023-09-21)
 
 
