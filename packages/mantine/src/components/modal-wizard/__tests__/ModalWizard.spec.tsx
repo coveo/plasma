@@ -442,6 +442,7 @@ describe('ModalWizard', () => {
             await user.hover(finishButton.parentElement);
             expect(screen.getByText('test tooltip label')).toBeVisible();
         });
+
         it('does not display the tooltip if the step is validated even if the props is passed', async () => {
             const user = userEvent.setup();
             render(
