@@ -1,3 +1,12 @@
+# 52.18.0 (2023-09-26)
+
+
+### Features
+
+* **mantine:** addition of tooltip management on the modal button in plasma (#3550) 420d93a, closes #3550
+
+
+
 ## 52.17.3 (2023-09-25)
 
 
