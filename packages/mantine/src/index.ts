@@ -14,6 +14,7 @@ export {type NotificationProps} from '@mantine/notifications';
 export {Pagination} from '@mantine/core';
 // explicitly overriding mantine components
 export {
+    BrowserPreview,
     Header,
     type HeaderProps,
     Table,

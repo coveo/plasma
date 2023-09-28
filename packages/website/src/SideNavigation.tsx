@@ -105,6 +105,7 @@ const MantineNavigation = () => (
             </NavLink>
             <NavLink label="Layout" icon={<RichUiSize16Px height={16} />} defaultOpened>
                 <InternalNavLink href="/layout/Header" label="Header" />
+                <InternalNavLink href="/layout/BrowserPreview" label="Browser Preview" />
                 <InternalNavLink href="/layout/Table" label="Table" />
                 <InternalNavLink href="/layout/Modal" label="Modal" />
                 <InternalNavLink href="/layout/ModalWizard" label="ModalWizard" />
