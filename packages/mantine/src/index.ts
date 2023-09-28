@@ -21,6 +21,8 @@ export {
     type TableProps,
     type TableState,
     type InitialTableState,
+    ActionIcon,
+    type ActionIconProps,
     Button,
     type ButtonProps,
     Menu,

@@ -114,5 +114,5 @@ export const multilineBoxWithRemoveButton =
         return connect<null, ReturnType<typeof mapDispatchToProps>, IMultilineBoxWithRemoveButtonProps<any>>(
             undefined,
             mapDispatchToProps,
-        )(MultilineBoxWithRemoveButton as any);
+        )(MultilineBoxWithRemoveButton) as typeof MultilineBox;
     };

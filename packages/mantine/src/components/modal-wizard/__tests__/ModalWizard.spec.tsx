@@ -415,4 +415,57 @@ describe('ModalWizard', () => {
         await user.click(screen.getByRole('button', {name: /next/i}));
         expect(screen.getByRole('button', {name: /finish/i})).toBeDisabled();
     });
+
+    describe('disabledTooltipLabel props', () => {
+        it('display a tooltip when a step is invalid and a label is passed', async () => {
+            const user = userEvent.setup();
+
+            render(
+                <ModalWizard opened={true} onClose={vi.fn()}>
+                    <ModalWizard.Step title="Step 1" showProgressBar={false} validateStep={() => ({isValid: true})}>
+                        Content step 1
+                    </ModalWizard.Step>
+                    <ModalWizard.Step
+                        title="Step 2"
+                        validateStep={() => ({isValid: false})}
+                        disabledTooltipLabel="test tooltip label"
+                    >
+                        Content step 2
+                    </ModalWizard.Step>
+                </ModalWizard>,
+            );
+
+            expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();
+            await user.click(screen.getByRole('button', {name: /next/i}));
+            const finishButton = screen.getByRole('button', {name: /finish/i});
+            expect(finishButton).toBeDisabled();
+            await user.hover(finishButton.parentElement);
+            expect(screen.getByText('test tooltip label')).toBeVisible();
+        });
+
+        it('does not display the tooltip if the step is validated even if the props is passed', async () => {
+            const user = userEvent.setup();
+            render(
+                <ModalWizard opened={true} onClose={vi.fn()}>
+                    <ModalWizard.Step title="Step 1" showProgressBar={false} validateStep={() => ({isValid: true})}>
+                        Content step 1
+                    </ModalWizard.Step>
+                    <ModalWizard.Step
+                        title="Step 2"
+                        validateStep={() => ({isValid: true})}
+                        disabledTooltipLabel="test tooltip label"
+                    >
+                        Content step 2
+                    </ModalWizard.Step>
+                </ModalWizard>,
+            );
+
+            expect(screen.getByRole('button', {name: /next/i})).toBeEnabled();
+            await user.click(screen.getByRole('button', {name: /next/i}));
+            const finishButton = screen.getByRole('button', {name: /finish/i});
+            expect(finishButton).toBeEnabled();
+            await user.hover(finishButton.parentElement);
+            expect(screen.queryByText('test tooltip label')).not.toBeInTheDocument();
+        });
+    });
 });

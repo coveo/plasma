@@ -6,7 +6,7 @@ import {PageLayout} from '../../building-blocs/PageLayout';
 export default () => (
     <PageLayout
         section="Layout"
-        title="StickyFooter"
+        title="Sticky Footer"
         sourcePath="/packages/mantine/src/components/sticky-footer/StickyFooter.tsx"
         description="A page footer that sticks to the bottom of the screen."
         id="StickyFooter"

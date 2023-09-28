@@ -1,3 +1,50 @@
+# 52.18.0 (2023-09-26)
+
+
+### Features
+
+* **mantine:** addition of tooltip management on the modal button in plasma (#3550) 420d93a, closes #3550
+
+
+
+## 52.17.3 (2023-09-25)
+
+
+### Bug Fixes
+
+* **mantine:** performance issue in CodeEditor (#3554) fb1f8f6, closes #3554
+
+
+
+## 52.17.2 (2023-09-21)
+
+
+### Bug Fixes
+
+* **mantine:** sticky footer doesn't stick anymore (#3551) 37e7f4e, closes #3551
+
+
+
+## 52.17.1 (2023-09-21)
+
+
+
+# 52.17.0 (2023-09-20)
+
+
+### Bug Fixes
+
+* **mantine:** fix SegmentedControl overlapping StickyFooter (#3542) 8828246, closes #3542
+* **react:** fix type error in MultilineBoxWithRemoveButton e497a76
+
+
+### Features
+
+* **mantine:** make StickyFooter more flexible (#3547) 4b62dfd, closes #3547
+* **mantine:** simplifying disabled tooltips on ActionIcon (#3549) 11e858e, closes #3549
+
+
+
 ## 52.16.2 (2023-09-06)
 
 
