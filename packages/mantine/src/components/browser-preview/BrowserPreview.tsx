@@ -1,5 +1,5 @@
 import {InfoSize16Px} from '@coveord/plasma-react-icons';
-import {Box, ColorSwatch, Group, Stack, Text, Title, Tooltip, useMantineTheme} from '@mantine/core';
+import {Box, ColorSwatch, Flex, Group, Stack, Text, Title, Tooltip, useMantineTheme} from '@mantine/core';
 import {PropsWithChildren} from 'react';
 
 export interface BrowserPreviewProps {
@@ -23,12 +23,12 @@ export const BrowserPreview = ({
 }: PropsWithChildren<BrowserPreviewProps>) => {
     const theme = useMantineTheme();
     return (
-        <Stack spacing={0} h={762} maw={544} style={{boxShadow: theme.shadows.md, borderRadius: '8px'}}>
+        <Stack spacing={0} h={762} maw={544} style={{boxShadow: theme.shadows.md, borderRadius: theme.defaultRadius}}>
             <Box>
                 <Group
                     position="apart"
-                    px={16}
-                    py={8}
+                    px="sm"
+                    py="xs"
                     bg="gray.1"
                     style={{boxShadow: theme.shadows.xs, borderRadius: '8px 8px 0 0'}}
                     noWrap
@@ -51,9 +51,9 @@ export const BrowserPreview = ({
                     </Group>
                 </Group>
             </Box>
-            <Box py="xl" px="lg" style={{overflowY: 'auto', display: 'flex', flexDirection: 'column', flexGrow: 1}}>
+            <Flex py="xl" px="lg" direction="column" style={{overflowY: 'auto', flexGrow: 1}}>
                 {children}
-            </Box>
+            </Flex>
         </Stack>
     );
 };
