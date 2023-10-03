@@ -319,6 +319,11 @@ const components: Component[] = [
         propsType: 'ActionIconProps',
     },
     {
+        name: 'BrowserPreviewMantine',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'BrowserPreviewProps',
+    },
+    {
         name: 'CopyToClipboard',
         packageName: '@coveord/plasma-mantine',
         propsType: 'CopyToClipboardProps',
