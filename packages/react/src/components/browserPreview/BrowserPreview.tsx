@@ -20,7 +20,7 @@ export interface BrowserPreviewProps {
 }
 
 /**
- * @deprecated Use Mantine instead
+ * @deprecated Use `BrowserPreview` from `@coveord/plasma-mantine` instead.
  */
 export const BrowserPreview: FunctionComponent<PropsWithChildren<BrowserPreviewProps>> = ({
     children,
