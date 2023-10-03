@@ -59,7 +59,7 @@ const useStyles = createStyles((theme, {grow, noPadding}: DemoComponentProps) =>
     },
 }));
 
-const Demo = ({children, snippet, center = false, grow = false, title, layout, noPadding}: DemoProps) => {
+const Demo = ({children, snippet, center = false, grow = false, title, layout, noPadding, maxHeight}: DemoProps) => {
     const {classes} = useStyles({center, grow, noPadding});
     const clipboard = useClipboard();
     const createSandbox = async () => {
@@ -81,7 +81,7 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
             ) : null}
             <SimpleGrid className={classes.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
                 <Box component={center ? Center : 'div'} className={classes.preview}>
-                    <ScrollArea.Autosize mah={MAX_HEIGHT}>
+                    <ScrollArea.Autosize mah={maxHeight ?? MAX_HEIGHT}>
                         <div className={classes.previewWrapper}>{children}</div>
                     </ScrollArea.Autosize>
                 </Box>

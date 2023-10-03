@@ -37,7 +37,7 @@ export const BrowserPreview = ({
                         <Title color="gray.6" order={4}>
                             Preview
                         </Title>
-                        <Tooltip label={headerTooltip} position="right" maw={400} multiline>
+                        <Tooltip label={headerTooltip} position="right" maw={400}>
                             <InfoSize16Px height={16} style={{color: theme.colors.gray[5]}} />
                         </Tooltip>
                     </Group>

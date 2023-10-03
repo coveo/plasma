@@ -17,6 +17,7 @@ interface DemoComponentProps {
     title?: string;
     noPadding?: boolean;
     layout?: 'horizontal' | 'vertical';
+    maxHeight?: number | 'none';
 }
 
 declare module '*?demo' {
