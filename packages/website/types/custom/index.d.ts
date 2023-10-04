@@ -17,6 +17,9 @@ interface DemoComponentProps {
     title?: string;
     noPadding?: boolean;
     layout?: 'horizontal' | 'vertical';
+    /**
+     * Will render in a flex container with the specified max-height instead of a scroll area.
+     */
     maxHeight?: number | 'none';
 }
 

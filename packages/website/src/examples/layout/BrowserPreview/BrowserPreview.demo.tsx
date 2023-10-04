@@ -22,7 +22,7 @@ const makeData = (len: number): Product[] =>
             price: faker.commerce.price(),
         }));
 
-const Demo = ({pageSize = 7, numberOfItems = 40}: DemoProps) => {
+const Demo = ({pageSize = 5, numberOfItems = 40}: DemoProps) => {
     const [page, setPage] = useState(1);
     const data: Product[][] = makeData(40).reduce((all, one, i) => {
         const ch = Math.floor(i / pageSize);
@@ -34,7 +34,7 @@ const Demo = ({pageSize = 7, numberOfItems = 40}: DemoProps) => {
     return (
         <BrowserPreview>
             <Stack style={{flexGrow: 1}}>
-                <Stack spacing="sm" justify="space-between">
+                <Stack spacing="xl" pb="sm">
                     {data[page - 1].map((product) => (
                         <Stack spacing={0}>
                             <Text size="md" color="gray.7">

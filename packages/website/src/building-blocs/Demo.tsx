@@ -3,6 +3,7 @@ import {
     Box,
     Center,
     createStyles,
+    Flex,
     ScrollArea,
     SimpleGrid,
     Stack,
@@ -47,10 +48,18 @@ const useStyles = createStyles((theme, {grow, noPadding}: DemoComponentProps) =>
     preview: {
         backgroundColor: 'white',
         minHeight: 100,
+        display: 'flex',
+        flexDirection: 'column',
     },
     previewWrapper: {
         padding: noPadding ? 0 : theme.spacing.md,
         height: grow ? MAX_HEIGHT : '100%',
+    },
+    flexPreviewWrapper: {
+        padding: noPadding ? 0 : theme.spacing.md,
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: 0,
     },
     code: {
         minHeight: 100,
@@ -81,9 +90,15 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
             ) : null}
             <SimpleGrid className={classes.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
                 <Box component={center ? Center : 'div'} className={classes.preview}>
-                    <ScrollArea.Autosize mah={maxHeight ?? MAX_HEIGHT}>
-                        <div className={classes.previewWrapper}>{children}</div>
-                    </ScrollArea.Autosize>
+                    {!!maxHeight ? (
+                        <Flex direction={'column'} mah={maxHeight} style={{flex: 1}}>
+                            <div className={classes.flexPreviewWrapper}>{children}</div>
+                        </Flex>
+                    ) : (
+                        <ScrollArea.Autosize mah={MAX_HEIGHT}>
+                            <div className={classes.previewWrapper}>{children}</div>
+                        </ScrollArea.Autosize>
+                    )}
                 </Box>
                 <div className={classes.code}>
                     <Prism

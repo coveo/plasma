@@ -13,12 +13,12 @@ export default () => (
         thumbnail="placeholder"
         propsMetadata={BrowserPreviewMetadata}
         id="BrowserPreview"
-        demo={<BrowserPreviewDemo maxHeight="none" />}
+        demo={<BrowserPreviewDemo maxHeight={750} />}
         examples={{
             withTitleAndCustomTooltip: (
-                <BrowserPreviewWithTitleAndDescriptionDemo maxHeight="none" title="Custom title and tooltip" />
+                <BrowserPreviewWithTitleAndDescriptionDemo maxHeight="none" grow title="Custom title and tooltip" />
             ),
-            withMaximumHeight: <BrowserPreviewOverflowDemo maxHeight="none" title="Maxium height" />,
+            withOverflowingContent: <BrowserPreviewOverflowDemo maxHeight={700} title="Overflowing content" />,
         }}
     />
 );

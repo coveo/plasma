@@ -14,26 +14,26 @@ export interface BrowserPreviewProps {
      * Title of the browser preview.
      */
     title?: string;
-    /**
-     * Maximum height of the window.
-     *
-     */
-    maxHeight?: number;
 }
 
 export const BrowserPreview = ({
     children,
     headerTooltip = 'The final look in your search page may differ due to the customization you made in your page.',
     title,
-    maxHeight,
 }: PropsWithChildren<BrowserPreviewProps>) => {
     const theme = useMantineTheme();
     return (
         <Stack
             spacing={0}
-            style={{boxShadow: theme.shadows.md, borderRadius: theme.defaultRadius}}
-            mah={maxHeight ?? 'none'}
+            style={{
+                boxShadow: theme.shadows.md,
+                borderRadius: theme.defaultRadius,
+                border: '1px solid',
+                borderColor: theme.colors.gray[3],
+                flex: 1,
+            }}
             maw={544}
+            mih={0}
         >
             <Box>
                 <Group
@@ -62,7 +62,7 @@ export const BrowserPreview = ({
                     </Group>
                 </Group>
             </Box>
-            <Flex py="xl" px="lg" direction="column" style={{overflowY: 'auto', flexGrow: 1}}>
+            <Flex p="xl" direction="column" style={{overflow: 'auto', flexGrow: 1}}>
                 {children}
             </Flex>
         </Stack>
