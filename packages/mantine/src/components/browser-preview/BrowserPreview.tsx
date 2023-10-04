@@ -33,7 +33,7 @@ export const BrowserPreview = ({
             spacing={0}
             style={{boxShadow: theme.shadows.md, borderRadius: theme.defaultRadius}}
             mah={maxHeight ?? 'none'}
-            w={544}
+            maw={544}
         >
             <Box>
                 <Group
