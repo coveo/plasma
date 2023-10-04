@@ -4,7 +4,7 @@ import {faker} from '@faker-js/faker';
 const Demo = () => {
     const content = faker.lorem.paragraphs(20);
     return (
-        <BrowserPreview>
+        <BrowserPreview maxHeight={750}>
             <Stack spacing="xs">
                 <Title order={3} align="center">
                     Hello World !

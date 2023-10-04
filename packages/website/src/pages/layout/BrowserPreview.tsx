@@ -18,7 +18,7 @@ export default () => (
             withTitleAndCustomTooltip: (
                 <BrowserPreviewWithTitleAndDescriptionDemo maxHeight="none" title="Custom title and tooltip" />
             ),
-            withOverflowingContent: <BrowserPreviewOverflowDemo maxHeight="none" title="Overflowing content" />,
+            withMaximumHeight: <BrowserPreviewOverflowDemo maxHeight="none" title="Maxium height" />,
         }}
     />
 );
