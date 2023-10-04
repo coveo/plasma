@@ -60,6 +60,7 @@ const useStyles = createStyles((theme, {grow, noPadding}: DemoComponentProps) =>
         display: 'flex',
         flexDirection: 'column',
         minHeight: 0,
+        flex: 1,
     },
     code: {
         minHeight: 100,
