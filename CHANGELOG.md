@@ -1,3 +1,12 @@
+# 52.19.0 (2023-10-04)
+
+
+### Features
+
+* **mantine:** improve error rendering of code editor : CTCORE-9443 (#3558) 19a8c25, closes #3558
+
+
+
 # 52.18.0 (2023-09-26)
 
 
