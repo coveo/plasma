@@ -11,7 +11,7 @@ export interface BrowserPreviewProps {
      */
     headerTooltip?: string;
     /**
-     * Title of the browser preview.
+     * Custom title to be displayed at the center of the header.
      */
     title?: string;
 }
@@ -25,6 +25,8 @@ export const BrowserPreview = ({
     return (
         <Stack
             spacing={0}
+            maw={544}
+            mih={0}
             style={{
                 boxShadow: theme.shadows.md,
                 borderRadius: theme.defaultRadius,
@@ -32,8 +34,6 @@ export const BrowserPreview = ({
                 borderColor: theme.colors.gray[3],
                 flex: 1,
             }}
-            maw={544}
-            mih={0}
         >
             <Box>
                 <Group

@@ -20,7 +20,7 @@ export const BrowserPreviewDemos = () => (
         description="A browser preview shows the result of configuration changes in a simplified representation of a browser interface."
         sourcePath="/packages/react/src/components/browserPreview/BrowserPreview.tsx"
         propsMetadata={BrowserPreviewLegacyMetadata}
-        demo={<BrowserPreviewDemo maxHeight="none" />}
+        demo={<BrowserPreviewDemo />}
         examples={{
             withError: (
                 <Suspense fallback={<PlasmaLoading />}>
