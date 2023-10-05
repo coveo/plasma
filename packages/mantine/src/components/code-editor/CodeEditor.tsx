@@ -14,21 +14,25 @@ import {
     useComponentDefaultProps,
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
+import {editor as monacoEditor} from 'monaco-editor';
 import Editor, {loader, Monaco} from '@monaco-editor/react';
-import {FunctionComponent, useEffect, useState, useRef} from 'react';
+import {FunctionComponent, useEffect, useRef, useState} from 'react';
 
 import {useParentHeight} from '../../hooks';
 import {XML} from './languages/xml';
 import {CopyToClipboard} from '../copyToClipboard';
 import {Search} from './search';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, {error}: {error?: boolean}) => ({
     root: {},
     editor: {
         border: `1px solid ${theme.colors.gray[2]}`,
         borderRadius: theme.defaultRadius,
         backgroundColor: theme.colorScheme === 'light' ? theme.white : theme.black,
         height: '100%',
+        outlineColor: error ? theme.colors.red[6] : null,
+        outlineStyle: error ? 'solid' : 'none',
+        outlineWidth: 'thin',
     },
 }));
 
@@ -109,7 +113,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         ...others
     } = useComponentDefaultProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
-    const {classes, theme} = useStyles();
+    const [containsError, setContainsError] = useState(false);
+    const {classes, theme} = useStyles({error: containsError});
     const [_value, handleChange] = useUncontrolled<string>({
         value,
         defaultValue,
@@ -118,7 +123,6 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     });
     const [parentHeight, ref] = useParentHeight();
     const editorRef = useRef(null);
-
     const loadLocalMonaco = async () => {
         const monacoInstance = await import('monaco-editor');
         loader.config({monaco: monacoInstance});
@@ -146,6 +150,12 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             setLoaded(true);
         }
     }, []);
+
+    const handleValidate = (markers: monacoEditor.IMarker[]) => {
+        setContainsError(
+            markers.some((marker) => marker.severity === loader.__getMonacoInstance().MarkerSeverity.Error),
+        );
+    };
 
     const _label = label ? (
         <Input.Label required={required} {...labelProps}>
@@ -183,6 +193,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     const _editor = loaded ? (
         <Box p="md" pl="xs" className={classes.editor}>
             <Editor
+                onValidate={handleValidate}
                 defaultLanguage={language}
                 theme={theme.colorScheme === 'light' ? 'light' : 'vs-dark'}
                 options={{

@@ -1,5 +1,6 @@
 import {CodeEditorMetadata} from '@coveord/plasma-components-props-analyzer';
 import CodeEditorDemo from '@examples/form/code-editor/CodeEditor.demo?demo';
+import CodeEditorErrorDemo from '@examples/form/code-editor/CodeEditorError.demo?demo';
 import CodeEditorPythonDemo from '@examples/form/code-editor/CodeEditorPython.demo?demo';
 import CodeEditorXMLDemo from '@examples/form/code-editor/CodeEditorXML.demo?demo';
 
@@ -18,6 +19,7 @@ const CodeEditorPage = () => (
         examples={{
             python: <CodeEditorPythonDemo grow title="Python language" />,
             xml: <CodeEditorXMLDemo grow title="XML language" />,
+            error: <CodeEditorErrorDemo grow title="Validation" />,
         }}
     />
 );
