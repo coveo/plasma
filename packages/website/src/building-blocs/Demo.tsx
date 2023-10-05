@@ -110,7 +110,7 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
                         radius={0}
                         noCopy
                         scrollAreaComponent={ScrollArea.Autosize}
-                        styles={{scrollArea: {maxHeight: MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
+                        styles={{scrollArea: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
                     >
                         {snippet}
                     </Prism>

@@ -99,18 +99,18 @@ const MantineNavigation = () => (
                 rightSection={<ExternalSize16Px height={16} />}
             />
             <NavLink label="Foundations" icon={<LayeringTechniquesSize16Px height={16} />} defaultOpened>
-                <InternalNavLink href="/foundations/Iconography" label="Iconography" />
                 <InternalNavLink href="/foundations/Colors" label="Colors" />
+                <InternalNavLink href="/foundations/Iconography" label="Iconography" />
                 <InternalNavLink href="/foundations/TypeKit" label="TypeKit" />
             </NavLink>
             <NavLink label="Layout" icon={<RichUiSize16Px height={16} />} defaultOpened>
-                <InternalNavLink href="/layout/Header" label="Header" />
                 <InternalNavLink href="/layout/BrowserPreview" label="Browser Preview" />
-                <InternalNavLink href="/layout/Table" label="Table" />
+                <InternalNavLink href="/layout/Header" label="Header" />
                 <InternalNavLink href="/layout/Modal" label="Modal" />
                 <InternalNavLink href="/layout/ModalWizard" label="ModalWizard" />
                 <InternalNavLink href="/layout/Prompt" label="Prompt" />
                 <InternalNavLink href="/layout/StickyFooter" label="Sticky footer" />
+                <InternalNavLink href="/layout/Table" label="Table" />
             </NavLink>
             <NavLink label="Form" icon={<ClickSize16Px height={16} />} defaultOpened>
                 <InternalNavLink href="/form/ActionIcon" label="Action Icon" />

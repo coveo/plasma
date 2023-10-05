@@ -3,19 +3,10 @@ import {render, screen, waitFor} from '@testing-library/react';
 import {BrowserPreview} from '../BrowserPreview';
 
 describe('BrowserPreview', () => {
-    it('renders the default tooltip content when none specified', async () => {
-        const user = userEvent.setup();
-
+    it('shows no tooltip when none specified', async () => {
         render(<BrowserPreview />);
 
-        await waitFor(() => screen.findByRole('img', {name: /info/i}));
-        await user.hover(screen.getByRole('img', {name: /info/i}));
-
-        expect(
-            await screen.findByText(
-                'The final look in your search page may differ due to the customization you made in your page.',
-            ),
-        ).toBeVisible();
+        expect(screen.queryByRole('img', {name: /info/i})).not.toBeInTheDocument();
     });
     it('renders the specified text as the header tooltip content', async () => {
         const user = userEvent.setup();

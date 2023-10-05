@@ -1,12 +1,23 @@
 import {InfoSize16Px} from '@coveord/plasma-react-icons';
-import {Box, ColorSwatch, Flex, Group, Stack, Text, Title, Tooltip, useMantineTheme} from '@mantine/core';
+import {
+    Box,
+    ColorSwatch,
+    DefaultProps,
+    Flex,
+    Group,
+    Selectors,
+    Stack,
+    Text,
+    Title,
+    Tooltip,
+    useMantineTheme,
+} from '@mantine/core';
 import {PropsWithChildren} from 'react';
+import useStyles from './BrowserPreview.styles';
 
-export interface BrowserPreviewProps {
+export interface BrowserPreviewProps extends DefaultProps<Selectors<typeof useStyles>> {
     /**
-     * Text that will be displayed in the tooltip on the info icon
-     *
-     * @default The final look in your search page may differ due to the customization you made in your page.
+     * Text to display in a tooltip in the header.
      *
      */
     headerTooltip?: string;
@@ -18,39 +29,29 @@ export interface BrowserPreviewProps {
 
 export const BrowserPreview = ({
     children,
-    headerTooltip = 'The final look in your search page may differ due to the customization you made in your page.',
+    headerTooltip,
     title,
+    // Style props
+    classNames,
+    className,
+    styles,
+    unstyled,
 }: PropsWithChildren<BrowserPreviewProps>) => {
     const theme = useMantineTheme();
+    const {classes, cx} = useStyles(null, {classNames, name: 'BrowserPreview', styles, unstyled});
     return (
-        <Stack
-            spacing={0}
-            maw={544}
-            mih={0}
-            style={{
-                boxShadow: theme.shadows.md,
-                borderRadius: theme.defaultRadius,
-                border: '1px solid',
-                borderColor: theme.colors.gray[3],
-                flex: 1,
-            }}
-        >
+        <Stack className={cx(classes.root, className)} spacing={0} maw={544} mih={0}>
             <Box>
-                <Group
-                    position="apart"
-                    px="sm"
-                    py="xs"
-                    bg="gray.1"
-                    style={{boxShadow: theme.shadows.xs, borderRadius: '8px 8px 0 0'}}
-                    noWrap
-                >
+                <Group className={classes.header} position="apart" px="sm" py="xs" bg="gray.1" noWrap>
                     <Group spacing="xs" noWrap>
                         <Title color="gray.6" order={4}>
                             Preview
                         </Title>
-                        <Tooltip label={headerTooltip} position="right" maw={400}>
-                            <InfoSize16Px height={16} style={{color: theme.colors.gray[5]}} />
-                        </Tooltip>
+                        {!!headerTooltip && (
+                            <Tooltip label={headerTooltip} position="right" maw={400}>
+                                <InfoSize16Px height={16} style={{color: theme.colors.gray[5]}} />
+                            </Tooltip>
+                        )}
                     </Group>
                     <Text lineClamp={1} color="gray.6">
                         {title}
@@ -62,7 +63,7 @@ export const BrowserPreview = ({
                     </Group>
                 </Group>
             </Box>
-            <Flex p="xl" direction="column" style={{overflow: 'auto', flexGrow: 1}}>
+            <Flex className={classes.content} p="xl" direction="column">
                 {children}
             </Flex>
         </Stack>
