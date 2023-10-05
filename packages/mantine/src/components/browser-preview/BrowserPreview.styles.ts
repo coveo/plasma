@@ -1,8 +1,6 @@
-// MyComponent.styles.ts
 import {createStyles} from '@mantine/core';
 
 export default createStyles((theme) => ({
-    // add all styles as usual
     root: {
         boxShadow: theme.shadows.md,
         borderRadius: theme.defaultRadius,
