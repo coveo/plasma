@@ -36,11 +36,12 @@ export const BrowserPreview = ({
     className,
     styles,
     unstyled,
+    ...others
 }: PropsWithChildren<BrowserPreviewProps>) => {
     const theme = useMantineTheme();
     const {classes, cx} = useStyles(null, {classNames, name: 'BrowserPreview', styles, unstyled});
     return (
-        <Stack className={cx(classes.root, className)} spacing={0} maw={544} mih={0}>
+        <Stack className={cx(classes.root, className)} spacing={0} maw={544} mih={0} {...others}>
             <Box>
                 <Group className={classes.header} position="apart" px="sm" py="xs" bg="gray.1" noWrap>
                     <Group spacing="xs" noWrap>
@@ -49,7 +50,7 @@ export const BrowserPreview = ({
                         </Title>
                         {!!headerTooltip && (
                             <Tooltip label={headerTooltip} position="right" maw={400}>
-                                <InfoSize16Px height={16} style={{color: theme.colors.gray[5]}} />
+                                <InfoSize16Px height={16} className={classes.infoIcon} />
                             </Tooltip>
                         )}
                     </Group>

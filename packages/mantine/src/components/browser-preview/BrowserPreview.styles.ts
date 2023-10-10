@@ -8,6 +8,7 @@ export default createStyles((theme) => ({
         borderColor: theme.colors.gray[3],
         flex: 1,
     },
-    header: {boxShadow: theme.shadows.xs, borderRadius: '8px 8px 0 0'},
+    header: {boxShadow: theme.shadows.xs, borderRadius: `${theme.defaultRadius}px ${theme.defaultRadius}px 0 0`},
     content: {overflow: 'auto', flexGrow: 1},
+    infoIcon: {color: theme.colors.gray[5]},
 }));
