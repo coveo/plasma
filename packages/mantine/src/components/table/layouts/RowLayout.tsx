@@ -12,9 +12,12 @@ import {TableLoading} from '../table-loading/TableLoading';
 import useStyles from './RowLayout.styles';
 import {TableLayoutProps} from './RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
 
-const RowLayoutHeader = <T,>({table}: TableLayoutProps<T>) => {
+const RowLayoutHeader = <T,>({table, classNames, styles, unstyled}: TableLayoutProps<T>) => {
     const {multiRowSelectionEnabled, disableRowSelection} = useTable();
-    const {classes} = useStyles({disableRowSelection, multiRowSelectionEnabled});
+    const {classes} = useStyles(
+        {disableRowSelection, multiRowSelectionEnabled},
+        {name: 'RowLayout', classNames, styles, unstyled},
+    );
     const headers = table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id} className={classes.headerColumns}>
             {headerGroup.headers.map((columnHeader) => (

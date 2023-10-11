@@ -21,6 +21,8 @@ const useStyles = createStyles<string>((theme) => ({
             borderBottom: `1px solid ${theme.colors.gray[3]}`,
         },
     },
+
+    body: {},
 }));
 
 export const TableComponentsOrder = {

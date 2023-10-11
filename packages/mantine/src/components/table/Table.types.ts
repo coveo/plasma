@@ -1,4 +1,5 @@
 import {Icon} from '@coveord/plasma-react-icons';
+import {DefaultProps, Selectors} from '@mantine/core';
 import {UseFormReturnType} from '@mantine/form';
 import {
     ColumnDef,
@@ -24,6 +25,7 @@ import {TableLoading} from './table-loading/TableLoading';
 import {TablePagination} from './table-pagination/TablePagination';
 import {TablePerPage} from './table-per-page/TablePerPage';
 import {TablePredicate} from './table-predicate/TablePredicate';
+import useStyles from './Table.styles';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -143,7 +145,9 @@ export type TableContextType<TData> = {
     layouts: TableLayout[];
 };
 
-export interface TableProps<T> {
+type TableStylesNames = Selectors<typeof useStyles>;
+
+export interface TableProps<T> extends DefaultProps<TableStylesNames> {
     /**
      * Data to display in the table
      */
