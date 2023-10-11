@@ -1,7 +1,7 @@
 import {createStyles} from '@mantine/core';
 
 export default createStyles((theme) => ({
-    root: {},
+    root: {maxWidth: '100%'},
     wrapper: {
         display: 'inline-flex',
     },
