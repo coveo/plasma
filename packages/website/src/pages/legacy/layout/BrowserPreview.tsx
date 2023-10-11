@@ -1,4 +1,3 @@
-import {BrowserPreviewMetadata} from '@coveord/plasma-components-props-analyzer';
 import BrowserPreviewDemo from '@examples/legacy/layout/BrowserPreview/BrowserPreview.demo?demo';
 import BrowserPreviewWithEmptyStateDemo from '@examples/legacy/layout/BrowserPreview/BrowserPreviewWithEmptyState.demo?demo';
 import dynamic from 'next/dynamic';
@@ -8,6 +7,7 @@ const BrowserPreviewWithErrorDemo = dynamic(
 );
 import {Suspense} from 'react';
 
+import {BrowserPreviewLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
 import {PageLayout} from '../../../building-blocs/PageLayout';
 import {PlasmaLoading} from '../../../building-blocs/PlasmaLoading';
 
@@ -19,7 +19,7 @@ export const BrowserPreviewDemos = () => (
         thumbnail="placeholder"
         description="A browser preview shows the result of configuration changes in a simplified representation of a browser interface."
         sourcePath="/packages/react/src/components/browserPreview/BrowserPreview.tsx"
-        propsMetadata={BrowserPreviewMetadata}
+        propsMetadata={BrowserPreviewLegacyMetadata}
         demo={<BrowserPreviewDemo />}
         examples={{
             withError: (

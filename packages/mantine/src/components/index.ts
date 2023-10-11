@@ -1,4 +1,5 @@
 export * from './blank-slate';
+export * from './browser-preview';
 export * from './code-editor';
 export * from './collection';
 export * from './date-range-picker';

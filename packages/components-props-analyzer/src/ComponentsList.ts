@@ -50,7 +50,7 @@ const components: Component[] = [
         packageName: '@coveord/plasma-react',
     },
     {
-        name: 'BrowserPreview',
+        name: 'BrowserPreviewLegacy',
         packageName: '@coveord/plasma-react',
     },
     {
@@ -317,6 +317,11 @@ const components: Component[] = [
         name: 'ActionIcon',
         packageName: '@coveord/plasma-mantine',
         propsType: 'ActionIconProps',
+    },
+    {
+        name: 'BrowserPreview',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'BrowserPreviewProps',
     },
     {
         name: 'CopyToClipboard',
