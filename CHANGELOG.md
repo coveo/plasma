@@ -1,3 +1,18 @@
+# 52.20.0 (2023-10-11)
+
+
+### Bug Fixes
+
+* **table inline prompt:** overflow (#3565) e54a7cf, closes #3565
+
+
+### Features
+
+* **commerce-hub:** make RowLayoutHeader respect Mantine theme MHUB-263 (#3564) 570329c, closes #3564
+* **mantine, browserpreview:** add new Mantine BrowserPreview component (#3557) c996eac, closes #3557
+
+
+
 # 52.19.0 (2023-10-04)
 
 
