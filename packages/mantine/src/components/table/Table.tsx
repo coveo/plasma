@@ -49,6 +49,9 @@ export const Table: TableType = <T,>({
     disableRowSelection,
     onRowSelectionChange,
     additionalRootNodes,
+    classNames,
+    styles,
+    unstyled,
     options = {},
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
@@ -65,7 +68,7 @@ export const Table: TableType = <T,>({
             layout: initialState?.layout ?? layouts[0].name,
         },
     });
-    const {classes} = useStyles();
+    const {classes} = useStyles(null, {name: 'PlasmaTable', classNames, styles, unstyled});
 
     const table = useReactTable({
         initialState: defaultsDeep(initialStateWithoutForm, {
@@ -184,7 +187,7 @@ export const Table: TableType = <T,>({
                                     loading={loading}
                                 />
                             </thead>
-                            <tbody>
+                            <tbody className={classes.body}>
                                 {hasRows ? (
                                     <Layout.Body
                                         table={table}
