@@ -161,9 +161,10 @@ export const plasmaTheme: MantineThemeOverride = {
         Tooltip: {
             defaultProps: {
                 color: 'navy',
+                maw: 300,
+                multiline: true,
                 withArrow: true,
                 withinPortal: true,
-                multiline: true,
                 zIndex: 10000,
             },
         },
