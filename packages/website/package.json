@@ -80,7 +80,7 @@
         "@types/redux-promise-middleware": "6.0.0",
         "@types/underscore": "1.11.6",
         "@types/webpack-env": "1.18.1",
-        "lint-staged": "14.0.1",
+        "lint-staged": "15.0.1",
         "open-cli": "7.2.0",
         "raw-loader": "4.0.2",
         "rimraf": "5.0.1",
