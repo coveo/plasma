@@ -16,14 +16,13 @@ import {Prism} from '@mantine/prism';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import vsLight from 'prism-react-renderer/themes/vsLight';
 import {ReactNode} from 'react';
-
 import getCodeSandboxLink from './getCodeSandboxLink';
 
 const MAX_HEIGHT = 500;
 const MIN_HEIGHT = 100;
 
 interface DemoProps extends DemoComponentProps {
-    snippet?: string;
+    snippet: string;
     children?: ReactNode;
 }
 
@@ -90,8 +89,8 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
                 </Title>
             ) : null}
             <SimpleGrid className={classes.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
-                <Box component={center ? Center : 'div'} className={classes.preview}>
-                    {!!maxHeight ? (
+                <Box<'div' | typeof Center> component={center ? Center : 'div'} className={classes.preview}>
+                    {maxHeight ? (
                         <Flex direction={'column'} mah={maxHeight} style={{flex: 1}}>
                             <div className={classes.flexPreviewWrapper}>{children}</div>
                         </Flex>

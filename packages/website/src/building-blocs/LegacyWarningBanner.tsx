@@ -1,10 +1,9 @@
 import {Alert, Anchor, Code, Text} from '@coveord/plasma-mantine';
 import {ArrowLeftSize16Px, WarningSize24Px} from '@coveord/plasma-react-icons';
-import Link from 'next/link';
-import {useRouter} from 'next/router';
+import {Link, useLocation} from 'react-router-dom';
 
 const LegacyWarningBanner = () => {
-    const {pathname} = useRouter();
+    const {pathname} = useLocation();
     const isLegacy = /^\/legacy*/.test(pathname);
     return isLegacy ? (
         <Alert color="warning" m="sm" icon={<WarningSize24Px height={24} />}>
@@ -12,11 +11,9 @@ const LegacyWarningBanner = () => {
             <Code>@coveord/plasma-react</Code> and <Code>@coveord/plasma-style</Code> packages. Those packages are
             deprecated and replaced by the <Code>@coveord/plasma-mantine</Code> package.{' '}
             <Text>
-                <Link href="/" passHref legacyBehavior>
-                    <Anchor>
-                        <ArrowLeftSize16Px height={16} /> Return to the latest documentation
-                    </Anchor>
-                </Link>
+                <Anchor component={Link} to="/">
+                    <ArrowLeftSize16Px height={16} /> Return to the latest documentation
+                </Anchor>
             </Text>
         </Alert>
     ) : null;
