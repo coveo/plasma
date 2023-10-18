@@ -1,3 +1,13 @@
+# 52.21.0 (2023-10-18)
+
+
+### Features
+
+* **mantine:** set tooltip default max width of 300 px (#3566) cf2204b, closes #3566
+* **MLX:** allow possibility to override classnames in prompt (#3570) a9d7a0f, closes #3570
+
+
+
 # 52.20.0 (2023-10-11)
 
 
