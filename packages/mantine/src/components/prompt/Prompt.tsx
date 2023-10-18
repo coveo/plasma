@@ -62,7 +62,13 @@ export const Prompt: PromptType = ({children, variant = 'info', ...otherProps}) 
     };
 
     return (
-        <Modal variant="prompt" padding={0} classNames={classNames} size={'sm'} {...otherProps}>
+        <Modal
+            variant="prompt"
+            padding={0}
+            classNames={{...classNames, ...otherProps?.classNames}}
+            size={'sm'}
+            {...otherProps}
+        >
             <div className={classes.innerBody}>{otherChildren}</div>
             {footer}
         </Modal>
