@@ -1,3 +1,12 @@
+# 52.22.0 (2023-10-19)
+
+
+### Features
+
+* **MLX:** allow possibility to override classnames in prompt v2 (#3571) 826d231, closes #3571
+
+
+
 # 52.21.0 (2023-10-18)
 
 
