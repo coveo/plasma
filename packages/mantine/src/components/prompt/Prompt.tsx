@@ -47,6 +47,7 @@ interface PromptType {
 }
 
 export const Prompt: PromptType = ({children, variant = 'info', ...otherProps}) => {
+    const {classNames: classesProps, ...otherPropsWithoutClasses} = otherProps;
     const {classes, cx} = useStyles();
     const convertedChildren = Children.toArray(children) as ReactElement[];
 
@@ -65,9 +66,9 @@ export const Prompt: PromptType = ({children, variant = 'info', ...otherProps}) 
         <Modal
             variant="prompt"
             padding={0}
-            classNames={{...classNames, ...otherProps?.classNames}}
+            classNames={{...classNames, ...classesProps}}
             size={'sm'}
-            {...otherProps}
+            {...otherPropsWithoutClasses}
         >
             <div className={classes.innerBody}>{otherChildren}</div>
             {footer}
