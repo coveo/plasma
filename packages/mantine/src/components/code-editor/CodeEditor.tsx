@@ -44,7 +44,7 @@ interface CodeEditorProps
      *
      * @default 'plaintext'
      */
-    language?: 'plaintext' | 'json' | 'markdown' | 'python' | 'xml';
+    language?: 'plaintext' | 'json' | 'markdown' | 'python' | 'xml' | (string & unknown);
     /** Default value for uncontrolled input */
     defaultValue?: string;
     /** Value for controlled input */
