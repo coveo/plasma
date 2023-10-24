@@ -1,17 +1,11 @@
 import {LinkSvg, Section} from '@coveord/plasma-react';
-import {ExternalSize16Px} from '@coveord/plasma-react-icons';
-import {NextPage} from 'next';
-import Head from 'next/head';
+import {ExternalSize16Px, Icon} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
 
 import {Tile} from '../../building-blocs/Tile';
 
-export const Index: NextPage = () => (
+export const Index = () => (
     <Section className="home flex-auto overflow-auto">
-        <Head>
-            <title>Plasma Design System</title>
-            <meta property="og:title" content="Plasma Design System" key="title" />
-        </Head>
         <WelcomeToPlasma />
         <FoundationsPages />
         <LayoutPages />
@@ -29,14 +23,14 @@ const WelcomeToPlasma: FunctionComponent = () => (
             <div>Coveo’s platform design system & ionized Vapor.</div>
             <div>
                 Learn more about our brand, our values and our story by visiting our{' '}
-                <LinkSvg icon={ExternalSize16Px} url="https://brand.coveo.com/">
+                <LinkSvg icon={ExternalSize16Px as Icon} url="https://brand.coveo.com/">
                     brand page
                 </LinkSvg>
                 .
             </div>
             <div>
                 Be part of the progress! Contribute to Plasma on{' '}
-                <LinkSvg icon={ExternalSize16Px} url="https://github.com/coveo/plasma#readme">
+                <LinkSvg icon={ExternalSize16Px as Icon} url="https://github.com/coveo/plasma#readme">
                     GitHub
                 </LinkSvg>
                 .

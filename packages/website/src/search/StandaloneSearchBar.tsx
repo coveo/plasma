@@ -1,19 +1,21 @@
 import {AtomicSearchBox, AtomicSearchInterface} from '@coveo/atomic-react';
-
 import {useContext} from 'react';
-import {useRouter} from 'next/router';
-
+import {useHref} from 'react-router-dom';
 import {EngineContext} from './engine/EngineContext';
 
 const StandaloneSearchBar = () => {
     const engine = useContext(EngineContext);
-    const router = useRouter();
+    const toSearch = useHref('/search');
+
+    if (!engine) {
+        return null;
+    }
 
     return (
         <div className="plasma-search-bar">
             <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
-                <AtomicSearchInterface engine={engine} reflectStateInUrl={false}>
-                    <AtomicSearchBox numberOfQueries={5} redirectionUrl={`${router.basePath}/Search`} />
+                <AtomicSearchInterface engine={engine} reflectStateInUrl>
+                    <AtomicSearchBox numberOfQueries={5} redirectionUrl={toSearch} />
                 </AtomicSearchInterface>
             </form>
         </div>

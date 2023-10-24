@@ -1,5 +1,4 @@
 import {getParameters} from 'codesandbox-import-utils/lib/api/define';
-// @ts-ignore
 import packageConfig from '../../package.json';
 
 type Dependencies = {
@@ -16,7 +15,8 @@ const getRawDependenciesFromSnippet = (snippet: string): Dependencies => {
         react: packageConfig.dependencies.react,
         'react-dom': packageConfig.dependencies['react-dom'],
     };
-    snippet.match(/(?<=from ')[^']*/gm)?.map((entry: PackageDependencies) => {
+    snippet.match(/(?<=from ')[^']*/gm)?.forEach((value) => {
+        const entry = value as PackageDependencies;
         dependencies[entry] = packageConfig.dependencies[entry];
     });
     return dependencies;
@@ -32,7 +32,8 @@ const addAndFineTuneDependencies = (snippet: string, dependencies: Dependencies)
         dependencies['@emotion/react'] = packageConfig.dependencies['@emotion/react'];
         dependencies['embla-carousel-react'] = packageConfig.dependencies['embla-carousel-react'];
         // Add all @mantine matching dependencies from package.json to the sandbox dependencies
-        Object.keys(packageConfig.dependencies)?.map((entry: PackageDependencies) => {
+        Object.keys(packageConfig.dependencies)?.forEach((value) => {
+            const entry = value as PackageDependencies;
             if (entry.match(/^(@mantine).*/)) {
                 dependencies[entry] = packageConfig.dependencies[entry];
             }
@@ -46,7 +47,7 @@ const addAndFineTuneDependencies = (snippet: string, dependencies: Dependencies)
         dependencies['redux-devtools-extension'] = packageConfig.dependencies['redux-devtools-extension'];
         dependencies['redux-promise-middleware'] = packageConfig.dependencies['redux-promise-middleware'];
         dependencies['redux-thunk'] = packageConfig.dependencies['redux-thunk'];
-        (dependencies as any)['jquery'] = 'latest';
+        dependencies['jquery'] = 'latest';
     }
 
     return dependencies;

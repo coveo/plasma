@@ -6,4 +6,4 @@ if (isCI && branchName !== 'master') {
     basePath = `/feature/${branchName}/`;
 }
 
-module.exports = basePath;
+export default basePath;

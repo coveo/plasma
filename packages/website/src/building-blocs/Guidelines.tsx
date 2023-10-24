@@ -1,31 +1,42 @@
 import {Tooltip} from '@coveord/plasma-react';
+import {ReactNode} from 'react';
 import {Components} from 'react-markdown';
 
 const MarkdownFiles = new Map();
 
-const importAll = (context: __WebpackModuleApi.RequireContext) => {
-    context.keys().forEach((key) => {
-        const [, formattedKey] = /.*\/(\w+)\.md$/.exec(key);
-        MarkdownFiles.set(formattedKey, context(key).default);
-    });
-};
+const guidelines = import.meta.glob('../docs/**/*.md', {as: 'raw', eager: true});
 
-importAll(require.context('!raw-loader!../../docs', false, /\.md$/));
+for (const filePath in guidelines) {
+    if (Object.hasOwn(guidelines, filePath)) {
+        const key = filePath.split('/').at(-1)?.replace(/\.md$/, '');
+        MarkdownFiles.set(key, guidelines[filePath]);
+    }
+}
 
 export const Guidelines = {
     exists: (fileName: string): boolean => MarkdownFiles.has(fileName),
     get: (fileName: string): string => MarkdownFiles.get(fileName),
 };
 
-const Table: Components['table'] = ({children}) => <table className="table my2">{children}</table>;
+const Table: Components['table'] = ({children}: {children: ReactNode}) => (
+    <table className="table my2">{children}</table>
+);
 
-const OrderedList: Components['ol'] = ({children}) => <ol className="list-decimal mt1">{children}</ol>;
+const OrderedList: Components['ol'] = ({children}: {children: ReactNode}) => (
+    <ol className="list-decimal mt1">{children}</ol>
+);
 
-const UnorderedList: Components['ul'] = ({children}) => <ul className="list-disc mt1">{children}</ul>;
+const UnorderedList: Components['ul'] = ({children}: {children: ReactNode}) => (
+    <ul className="list-disc mt1">{children}</ul>
+);
 
-const Emphasis: Components['em'] = ({children}) => <em className="body-m-book-italic">{children}</em>;
+const Emphasis: Components['em'] = ({children}: {children: ReactNode}) => (
+    <em className="body-m-book-italic">{children}</em>
+);
 
-const Strong: Components['strong'] = ({children}) => <strong className="body-m">{children}</strong>;
+const Strong: Components['strong'] = ({children}: {children: ReactNode}) => (
+    <strong className="body-m">{children}</strong>
+);
 
 const Link: Components['a'] = ({title, href, children, ...props}) => (
     <Tooltip title={title || ''}>
@@ -35,9 +46,11 @@ const Link: Components['a'] = ({title, href, children, ...props}) => (
     </Tooltip>
 );
 
-const Heading1: Components['h1'] = ({children}) => <h1 className="h4-book mt5 mb1">{children}</h1>;
+const Heading1: Components['h1'] = ({children}: {children: ReactNode}) => (
+    <h1 className="h4-book mt5 mb1">{children}</h1>
+);
 
-const Heading2: Components['h2'] = ({children}) => <h2 className="h6 mt2 mb1">{children}</h2>;
+const Heading2: Components['h2'] = ({children}: {children: ReactNode}) => <h2 className="h6 mt2 mb1">{children}</h2>;
 
 const Heading: Components['h3' | 'h4' | 'h5' | 'h6'] = ({level, children, ...props}) => {
     const Hx = `h${level + 3}` as 'h3' | 'h4' | 'h5' | 'h6';

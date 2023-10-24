@@ -1,4 +1,4 @@
-import {Container} from '@coveord/plasma-mantine';
+import {Box, Container} from '@coveord/plasma-mantine';
 import {FunctionComponent} from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -7,9 +7,9 @@ import {GithubButton} from './GithubButton';
 import {Guidelines, MarkdownOverrides} from './Guidelines';
 
 export const GuidelinesTab: FunctionComponent<{id: string}> = ({id}) => (
-    <Container fluid>
+    <Container size="xl">
         {Guidelines.exists(id) ? (
-            <>
+            <Box px="sm">
                 <Markdown remarkPlugins={[remarkGfm]} components={MarkdownOverrides}>
                     {Guidelines.get(id)}
                 </Markdown>
@@ -20,7 +20,7 @@ export const GuidelinesTab: FunctionComponent<{id: string}> = ({id}) => (
                 >
                     Edit guidelines
                 </GithubButton>
-            </>
+            </Box>
         ) : (
             <div className="mt5">
                 <p>

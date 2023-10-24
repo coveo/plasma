@@ -42,5 +42,5 @@ jobs:
             - name: Add demo link as a commment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
-                  message: ':heavy_check_mark: [Live demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ github.head_ref }}/index.html).'
+                  message: ':heavy_check_mark: [Live demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ github.head_ref }}/).'
                   avoidRepostsWith: Live demo of your latest successful build available here

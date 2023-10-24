@@ -1,10 +1,8 @@
 import {buildHistoryManager, HistoryManager, HistoryManagerState, SearchEngine} from '@coveo/atomic-react';
 import {Button} from '@coveord/plasma-react';
-
 import {FunctionComponent, useEffect, useState} from 'react';
-
-import {useRouter} from 'next/router';
-import results_empty_state from '../../resources/results_empty_state.png';
+import {useNavigate} from 'react-router-dom';
+import results_empty_state from '../assets/results_empty_state.png';
 
 interface NoResultTemplateProps {
     engine: SearchEngine;
@@ -13,16 +11,12 @@ interface NoResultTemplateProps {
 
 export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = (props) => {
     const {engine, query} = props;
-    const router = useRouter();
+    const navigate = useNavigate();
 
     const historyManager: HistoryManager = buildHistoryManager(engine);
     const [state, setState] = useState<HistoryManagerState>(historyManager.state);
 
     useEffect(() => historyManager.subscribe(() => setState(historyManager.state)), []);
-
-    const resetSearch = () => {
-        router.push(`/`);
-    };
 
     return (
         <div className="grid item-center">
@@ -40,7 +34,7 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
                         if (state.past.length !== 0) {
                             historyManager.backOnNoResults();
                         } else {
-                            resetSearch();
+                            navigate('/');
                         }
                     }}
                 >
