@@ -20,7 +20,6 @@ const TopBar = () => (
                 <Image src={plasmaLogo} className="header-logo" height={80} fit="contain" alt="Plasma Design System" />
             </div>
             <StandaloneSearchBar />
-            {/* <div style={{color: 'white'}}>search bar goes here</div> */}
             <a href="https://github.com/coveo/plasma#readme" aria-label="README" target="_blank">
                 <Image src={githubLogo} width={32} height={32} sx={{filter: 'invert(1)'}} />
             </a>
