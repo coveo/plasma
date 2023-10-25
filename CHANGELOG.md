@@ -1,3 +1,12 @@
+# 52.23.0 (2023-10-25)
+
+
+### Features
+
+* **mantine, code editor:** allow dev to use more language (#3574) 2b939f4, closes #3574
+
+
+
 # 52.22.0 (2023-10-19)
 
 
