@@ -35,6 +35,7 @@ jobs:
             - uses: ./.github/actions/setup
             - uses: ./.github/actions/build
             - uses: ./.github/actions/deploy
+              id: deploy-demo
               with:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
@@ -42,5 +43,5 @@ jobs:
             - name: Add demo link as a commment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
-                  message: ':heavy_check_mark: [Live demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ github.head_ref }}/).'
+                  message: ':heavy_check_mark: [Live demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ steps.deploy-demo.outputs.demo-output-path }}/).'
                   avoidRepostsWith: Live demo of your latest successful build available here

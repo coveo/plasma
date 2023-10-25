@@ -3,7 +3,7 @@ const branchName = process.env.BRANCH_NAME || process.env.GITHUB_HEAD_REF || pro
 
 let basePath = '/';
 if (isCI && branchName !== 'master') {
-    basePath = `/feature/${branchName}/`;
+    basePath = `/feature/${branchName.replace('/', '-')}/`;
 }
 
 export default basePath;
