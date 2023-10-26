@@ -1,3 +1,12 @@
+## 52.23.1 (2023-10-26)
+
+
+### Bug Fixes
+
+* **website:** update @coveo/atomic-react (#3579) 4e26c9e, closes #3579
+
+
+
 # 52.23.0 (2023-10-25)
 
 
