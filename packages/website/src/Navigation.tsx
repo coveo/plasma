@@ -10,9 +10,8 @@ import {
     LayeringTechniquesSize16Px,
     RichUiSize16Px,
 } from '@coveord/plasma-react-icons';
-import Link from 'next/link';
-import {useRouter} from 'next/router';
 import {ComponentProps, FunctionComponent, PropsWithChildren, useState} from 'react';
+import {Link, useLocation, useMatch} from 'react-router-dom';
 
 interface LegacyNavLinkProps {
     href?: string;
@@ -27,7 +26,7 @@ const LegacyNavLink: FunctionComponent<PropsWithChildren<LegacyNavLinkProps>> = 
     disabled,
     isActive,
 }) => {
-    const {pathname} = useRouter();
+    const {pathname} = useLocation();
     return (
         <SideNavigationItem disabled={disabled} href={href} isActive={isActive ?? pathname.endsWith(href)}>
             {disabled ? (
@@ -35,7 +34,7 @@ const LegacyNavLink: FunctionComponent<PropsWithChildren<LegacyNavLinkProps>> = 
                     <span>{label}</span>
                 </div>
             ) : (
-                <Link href={href} prefetch={false} className="navigation-menu-section-item-link">
+                <Link to={href} className="navigation-menu-section-item-link">
                     <div className="navigation-menu-section">
                         <span>{label}</span>
                     </div>
@@ -65,7 +64,7 @@ const CollapsibleSideSection: FunctionComponent<PropsWithChildren<{title: string
 };
 
 export const Navigation: FunctionComponent = () => {
-    const {pathname} = useRouter();
+    const {pathname} = useLocation();
     const isLegacy = /^\/legacy*/.test(pathname);
 
     return isLegacy ? <LegacyNavigation /> : <MantineNavigation />;
@@ -74,14 +73,14 @@ export const Navigation: FunctionComponent = () => {
 const InternalNavLink: FunctionComponent<ComponentProps<typeof Link> & Omit<NavLinkProps, 'component' | 'active'>> = (
     props,
 ) => {
-    const {pathname} = useRouter();
-    return <NavLink active={pathname === props.href} component={Link} {...props} />;
+    const match = useMatch(`${props.to}/*`);
+    return <NavLink component={Link} active={!!match} {...props} />;
 };
 
 const MantineNavigation = () => (
     <Navbar width={{base: 245}} py="sm">
         <Navbar.Section grow component={ScrollArea} pl="xs">
-            <InternalNavLink label="Home" href="/" icon={<HomeSize16Px height={16} />} />
+            <InternalNavLink label="Home" to="/" icon={<HomeSize16Px height={16} />} />
             <NavLink
                 label="Brand"
                 component="a"
@@ -99,36 +98,36 @@ const MantineNavigation = () => (
                 rightSection={<ExternalSize16Px height={16} />}
             />
             <NavLink label="Foundations" icon={<LayeringTechniquesSize16Px height={16} />} defaultOpened>
-                <InternalNavLink href="/foundations/Colors" label="Colors" />
-                <InternalNavLink href="/foundations/Iconography" label="Iconography" />
-                <InternalNavLink href="/foundations/TypeKit" label="TypeKit" />
+                <InternalNavLink to="/foundations/Colors" label="Colors" />
+                <InternalNavLink to="/foundations/Iconography" label="Iconography" />
+                <InternalNavLink to="/foundations/TypeKit" label="TypeKit" />
             </NavLink>
             <NavLink label="Layout" icon={<RichUiSize16Px height={16} />} defaultOpened>
-                <InternalNavLink href="/layout/BrowserPreview" label="Browser Preview" />
-                <InternalNavLink href="/layout/Header" label="Header" />
-                <InternalNavLink href="/layout/Modal" label="Modal" />
-                <InternalNavLink href="/layout/ModalWizard" label="ModalWizard" />
-                <InternalNavLink href="/layout/Prompt" label="Prompt" />
-                <InternalNavLink href="/layout/StickyFooter" label="Sticky footer" />
-                <InternalNavLink href="/layout/Table" label="Table" />
+                <InternalNavLink to="/layout/BrowserPreview" label="Browser Preview" />
+                <InternalNavLink to="/layout/Header" label="Header" />
+                <InternalNavLink to="/layout/Modal" label="Modal" />
+                <InternalNavLink to="/layout/ModalWizard" label="ModalWizard" />
+                <InternalNavLink to="/layout/Prompt" label="Prompt" />
+                <InternalNavLink to="/layout/StickyFooter" label="Sticky footer" />
+                <InternalNavLink to="/layout/Table" label="Table" />
             </NavLink>
             <NavLink label="Form" icon={<ClickSize16Px height={16} />} defaultOpened>
-                <InternalNavLink href="/form/ActionIcon" label="Action Icon" />
-                <InternalNavLink href="/form/Button" label="Button" />
-                <InternalNavLink href="/form/CodeEditor" label="Code editor" />
-                <InternalNavLink href="/form/Collection" label="Collection" />
-                <InternalNavLink href="/form/CopyToClipboard" label="Copy to Clipboard" />
+                <InternalNavLink to="/form/ActionIcon" label="Action Icon" />
+                <InternalNavLink to="/form/Button" label="Button" />
+                <InternalNavLink to="/form/CodeEditor" label="Code editor" />
+                <InternalNavLink to="/form/Collection" label="Collection" />
+                <InternalNavLink to="/form/CopyToClipboard" label="Copy to Clipboard" />
             </NavLink>
         </Navbar.Section>
         <Divider />
         <Navbar.Section>
-            <InternalNavLink href="/legacy" label="Deprecated components" icon={<DeleteSize16Px height={16} />} />
+            <InternalNavLink to="/legacy" label="Deprecated components" icon={<DeleteSize16Px height={16} />} />
         </Navbar.Section>
     </Navbar>
 );
 
 const LegacyNavigation = () => {
-    const {pathname} = useRouter();
+    const {pathname} = useLocation();
     return (
         <Navbar width={{base: 246}}>
             <Navbar.Section grow component={ScrollArea}>

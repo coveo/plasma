@@ -7,6 +7,10 @@ inputs:
         description: The AWS region in which to deploy the website.
     AWS_BUCKET:
         description: The AWS S3 bucket in which to deploy the website.
+outputs:
+    demo-output-path:
+        description: 'Path to the directory where the website was deployed'
+        value: ${{ steps.s3-push.outputs.demo-output-path }}
 runs:
     using: composite
     steps:
@@ -16,5 +20,6 @@ runs:
               role-to-assume: ${{ inputs.AWS_ROLE }}
               aws-region: ${{ inputs.AWS_REGION }}
         - name: Push distribution code to s3 demo folder
+          id: s3-push
           shell: bash
           run: bash ./.github/actions/deploy/deploy.sh ${{ github.head_ref || github.ref_name }} ${{ inputs.AWS_BUCKET }}
