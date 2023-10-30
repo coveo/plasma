@@ -83,6 +83,7 @@ const mapStateToProps = (state: PlasmaState, ownProps: ITableRowOwnProps) => {
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps) => {
     const refreshActionBarActions = (isMulti: boolean) => {
+        console.log('refreshactionbar');
         if (!_.isEmpty(ownProps.actions)) {
             dispatch(addActionsToActionBar(ownProps.tableId, ownProps.actions));
             dispatch(TableHOCRowActions.select(ownProps.id, isMulti));

@@ -23,6 +23,15 @@ export class LinkAction extends Component<ILinkActionProps> {
             opts.rel = 'noopener noreferrer';
         }
 
-        return <a className={actionClasses} href={href} title={this.props.action.name} role="button" {...opts} />;
+        return (
+            <a
+                className={actionClasses}
+                href={href}
+                title={this.props.action.name}
+                role="button"
+                {...opts}
+                onClickCapture={this.props.action.onClickCapture}
+            />
+        );
     }
 }

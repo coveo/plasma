@@ -5,11 +5,14 @@ import {IActionOptions} from '../Action';
 import {ILinkActionProps, LinkAction} from '../LinkAction';
 
 describe('Actions', () => {
+    const captureAction = jest.fn();
+
     const action: IActionOptions = {
         name: 'action',
         link: 'http://coveo.com',
         target: '_blank',
         enabled: true,
+        onClickCapture: captureAction,
     };
 
     it('should render without errors', () => {
@@ -89,6 +92,12 @@ describe('Actions', () => {
 
         it('shoud not have the state-disabled class if the action is enabled', () => {
             expect(linkAction.find('a').hasClass('state-disabled')).toBe(false);
+        });
+
+        it('should call the onClickCapture callback when clicked', () => {
+            expect(captureAction).toHaveBeenCalledTimes(0);
+            linkAction.find('a').simulate('click');
+            expect(captureAction).toHaveBeenCalledTimes(1);
         });
 
         describe('disabled action', () => {

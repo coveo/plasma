@@ -40,6 +40,7 @@ export interface IActionOptions extends IBaseActionOptions {
     grouped?: boolean;
     subActions?: IActionOptions[];
     hidden?: boolean;
+    onClickCapture?: () => void;
 }
 
 export interface IBasicActionProps {
