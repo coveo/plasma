@@ -40,6 +40,9 @@ export interface IActionOptions extends IBaseActionOptions {
     grouped?: boolean;
     subActions?: IActionOptions[];
     hidden?: boolean;
+    /**
+     * This option only works for actions using `link`.
+     */
     onClickCapture?: () => void;
 }
 
