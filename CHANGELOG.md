@@ -1,3 +1,12 @@
+# 52.24.0 (2023-10-31)
+
+
+### Features
+
+* **react, actions:** add onClickCapture option to link actions in plasma-react table (#3580) fc2d027, closes #3580
+
+
+
 ## 52.23.1 (2023-10-26)
 
 
