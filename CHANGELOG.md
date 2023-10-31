@@ -1,3 +1,40 @@
+## 52.23.1 (2023-10-26)
+
+
+### Bug Fixes
+
+* **website:** update @coveo/atomic-react (#3579) 4e26c9e, closes #3579
+
+
+
+# 52.23.0 (2023-10-25)
+
+
+### Features
+
+* **mantine, code editor:** allow dev to use more language (#3574) 2b939f4, closes #3574
+
+
+
+# 52.22.0 (2023-10-19)
+
+
+### Features
+
+* **MLX:** allow possibility to override classnames in prompt v2 (#3571) 826d231, closes #3571
+
+
+
+# 52.21.0 (2023-10-18)
+
+
+### Features
+
+* **mantine:** set tooltip default max width of 300 px (#3566) cf2204b, closes #3566
+* **MLX:** allow possibility to override classnames in prompt (#3570) a9d7a0f, closes #3570
+
+
+
 # 52.20.0 (2023-10-11)
 
 

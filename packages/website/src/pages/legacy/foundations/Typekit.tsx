@@ -262,7 +262,7 @@ export const Typekit = () => (
                         </thead>
                         <tbody>
                             {variants.map(({selectors, renderer: Preview}) => (
-                                <tr key={Buffer.from(selectors.join('-')).toString('base64')}>
+                                <tr key={selectors.join(';')}>
                                     <td className="mod-no-border-bottom">
                                         {selectors.map((selector, i) => (
                                             <span

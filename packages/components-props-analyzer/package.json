@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-components-props-analyzer",
-    "version": "52.20.0",
+    "version": "52.23.1",
     "private": true,
     "description": "",
     "keywords": [],
@@ -46,6 +46,6 @@
         "rimraf": "5.0.1",
         "ts-node": "10.9.1",
         "tslib": "2.6.2",
-        "typescript": "5.1.6"
+        "typescript": "5.2.2"
     }
 }

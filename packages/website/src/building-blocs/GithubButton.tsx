@@ -2,7 +2,7 @@ import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
 import {FunctionComponent} from 'react';
 
-import githubLogo from '../../resources/github-mark.svg';
+import githubLogo from '../assets/github-mark.svg';
 
 export const GithubButton: FunctionComponent<
     React.PropsWithChildren<{href: string; ariaLabel: string; className?: string}>

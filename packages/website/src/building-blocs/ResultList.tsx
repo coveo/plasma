@@ -26,15 +26,15 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
     return (
         <>
             {!state.hasResults && !state.isLoading ? (
-                <AtomicSearchInterface engine={engine as any}>
-                    <Section className="section">
+                <div style={{width: '100%'}}>
+                    <AtomicSearchInterface engine={engine}>
                         <NoSearchResultTemplate engine={engine} query={query} />
-                    </Section>
-                </AtomicSearchInterface>
+                    </AtomicSearchInterface>
+                </div>
             ) : (
                 <Section className="home flex-auto overflow-auto">
                     <Section className="section">
-                        <AtomicSearchInterface engine={engine as any}>
+                        <AtomicSearchInterface engine={engine}>
                             <AtomicQuerySummary />
                         </AtomicSearchInterface>
                         <div className="tile-grid">

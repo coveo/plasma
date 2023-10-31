@@ -1,8 +1,0 @@
-dist/*
-built/*
-node_modules/*
-CHANGELOG.md
-.ultra.cache.json
-.next/*
-.swc/*
-out/*

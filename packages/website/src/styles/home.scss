@@ -21,7 +21,7 @@
             display: inline-block;
             height: 133px;
             padding-top: 8px;
-            color: var(--navy-blue-60);
+            color: transparent;
 
             // hero 174 thin does not exist in typekit
             font-weight: 200;
@@ -41,8 +41,8 @@
                 #08b7ea 100%
             );
             background-size: 400% 400%;
-            background-clip: text;
             animation: moveBackground 12s linear infinite;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 

@@ -1,25 +1,29 @@
 {
-    "extends": "../tsconfig-base",
     "compilerOptions": {
-        "removeComments": false,
-        "module": "esnext",
-        "target": "esnext",
-        "noUnusedLocals": false,
-        "rootDir": "src",
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "lib": ["ES2022", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "skipLibCheck": true,
+        "typeRoots": ["./types", "./node_modules/@types"],
         "baseUrl": ".",
         "paths": {
             "@examples/*": ["src/examples/*"],
             "@demo": ["src/building-blocs/Demo.tsx"]
         },
-        "lib": ["ES2020", "dom"],
-        "typeRoots": ["./types", "./node_modules/@types"],
-        "strict": false,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
+
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "jsx": "preserve"
+        "noEmit": true,
+        "jsx": "react-jsx",
+
+        /* Linting */
+        "noUnusedLocals": true,
+        "noFallthroughCasesInSwitch": true
     },
-    "include": ["src", "docs"],
-    "exclude": ["node_modules"]
+    "include": ["src"],
+    "references": [{"path": "./tsconfig.node.json"}]
 }
