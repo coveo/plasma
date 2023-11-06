@@ -107,7 +107,7 @@ describe('Table.Filter', () => {
             return <Button data-testId="clear-button" onClick={clearFilters} />;
         };
 
-        await render(
+        render(
             <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} initialState={{globalFilter: 'foo'}}>
                 <Table.Header>
                     <Table.Consumer>
