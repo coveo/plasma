@@ -1,22 +1,33 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
-import {Center, Group, Text, UnstyledButton} from '@mantine/core';
+import {Group, UnstyledButton, useComponentDefaultProps} from '@mantine/core';
 import {defaultColumnSizing, flexRender} from '@tanstack/react-table';
+import {AriaAttributes} from 'react';
 import useStyles from './Th.styles';
-import {ThProps} from './Th.types';
+import {SortState, ThProps} from './Th.types';
 
-const SortingIcons = {
+const SortingIcons: ThProps['sortingIcons'] = {
     asc: ArrowUpSize16Px,
     desc: ArrowDownSize16Px,
     none: DoubleArrowHeadVSize16Px,
 };
 
-const SortingLabels = {
+const SortingLabels: Record<SortState, AriaAttributes['aria-sort']> = {
     asc: 'ascending',
     desc: 'descending',
     none: 'none',
 } as const;
 
-export const Th = <T,>({header}: ThProps<T>) => {
+const defaultProps: Partial<ThProps> = {
+    sortingIcons: SortingIcons,
+};
+
+export const Th = <T,>(props: ThProps<T>) => {
+    const {header, classNames, styles, unstyled, sortingIcons, ...others} = useComponentDefaultProps(
+        'PlasmaTableColumnHeader',
+        defaultProps as Partial<ThProps<T>>,
+        props,
+    );
+
     const columnSizing = {
         ...defaultColumnSizing,
         size: header.column.columnDef.size,
@@ -24,38 +35,32 @@ export const Th = <T,>({header}: ThProps<T>) => {
         maxSize: header.column.columnDef.maxSize,
     };
 
-    const {classes} = useStyles(columnSizing);
+    const {classes, cx} = useStyles(columnSizing, {name: 'PlasmaTableColumnHeader', classNames, styles, unstyled});
 
     if (header.isPlaceholder) {
         return null;
     }
 
     if (!header.column.getCanSort()) {
-        return (
-            <th className={classes.th}>
-                <Text size="xs" py="xs" px="sm" fw={500}>
-                    {flexRender(header.column.columnDef.header, header.getContext())}
-                </Text>
-            </th>
-        );
+        return <th className={classes.root}>{flexRender(header.column.columnDef.header, header.getContext())}</th>;
     }
 
     const onSort = header.column.getToggleSortingHandler();
     const sortingOrder = header.column.getIsSorted() || 'none';
-    const Icon = SortingIcons[sortingOrder];
+    const Icon = sortingIcons[sortingOrder];
 
     return (
-        <th className={classes.th} aria-sort={SortingLabels[sortingOrder]}>
-            <UnstyledButton onClick={onSort} className={classes.control}>
-                <Group position="apart" noWrap>
-                    <Text size="xs" fw={500}>
-                        {flexRender(header.column.columnDef.header, header.getContext())}
-                    </Text>
-                    <Center>
-                        <Icon height={14} />
-                    </Center>
-                </Group>
-            </UnstyledButton>
-        </th>
+        <UnstyledButton
+            component="th"
+            onClick={onSort}
+            className={cx(classes.root, classes.control)}
+            aria-sort={SortingLabels[sortingOrder]}
+            {...others}
+        >
+            <Group noWrap spacing="xs">
+                {flexRender(header.column.columnDef.header, header.getContext())}
+                <Icon height={16} width={16} />
+            </Group>
+        </UnstyledButton>
     );
 };

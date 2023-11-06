@@ -22,9 +22,7 @@ describe('Th', () => {
         ];
         render(<Table data={data} columns={columns} />);
 
-        const headers = screen.getAllByRole('button');
-        expect(headers.length).toBe(2);
-
+        const headers = screen.getAllByRole('columnheader');
         expect(headers[0]).toHaveAccessibleName(/name doubleArrowHead/i);
         expect(headers[1]).toHaveAccessibleName(/type doubleArrowHead/i);
     });
@@ -38,17 +36,17 @@ describe('Th', () => {
         const onChange = vi.fn();
         render(<Table data={data} columns={columns} onChange={onChange} />);
 
-        await user.click(screen.getByRole('button', {name: /name doubleArrowHead/i}));
+        await user.click(screen.getByRole('columnheader', {name: /name doubleArrowHead/i}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
         });
 
-        await user.click(screen.getByRole('button', {name: /name arrowUp/i}));
+        await user.click(screen.getByRole('columnheader', {name: /name arrowUp/i}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: true}]}));
         });
 
-        await user.click(screen.getByRole('button', {name: /name arrowDown/i}));
+        await user.click(screen.getByRole('columnheader', {name: /name arrowDown/i}));
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
         });
