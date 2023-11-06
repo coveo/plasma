@@ -1,7 +1,9 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {act, render, screen, userEvent, within} from '@test-utils';
 
+import {Button} from '@mantine/core';
 import {Table} from '../Table';
+import {useTable} from '../TableContext';
 
 type RowData = {name: string};
 
@@ -94,6 +96,29 @@ describe('Table.Filter', () => {
         );
         expect(screen.getByRole('textbox')).toHaveValue('foo');
         await user.click(screen.getByRole('button', {name: /cross/i}));
+        expect(screen.getByRole('textbox')).toHaveValue('');
+    });
+
+    it('clear the filter if the global state filter is cleared', async () => {
+        const user = userEvent.setup({delay: null});
+
+        const Fixture = () => {
+            const {clearFilters} = useTable();
+            return <Button data-testId="clear-button" onClick={clearFilters} />;
+        };
+
+        await render(
+            <Table data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns} initialState={{globalFilter: 'foo'}}>
+                <Table.Header>
+                    <Table.Consumer>
+                        <Fixture />
+                    </Table.Consumer>
+                    <Table.Filter />
+                </Table.Header>
+            </Table>,
+        );
+        expect(screen.getByRole('textbox')).toHaveValue('foo');
+        await user.click(screen.getByTestId('clear-button'));
         expect(screen.getByRole('textbox')).toHaveValue('');
     });
 
