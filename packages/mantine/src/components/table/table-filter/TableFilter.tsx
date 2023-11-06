@@ -1,6 +1,6 @@
 import {CrossSize16Px, SearchSize16Px} from '@coveord/plasma-react-icons';
 import {ActionIcon, Grid, TextInput} from '@mantine/core';
-import {ChangeEventHandler, FunctionComponent, MouseEventHandler, useState} from 'react';
+import {ChangeEventHandler, FunctionComponent, MouseEventHandler, useEffect, useState} from 'react';
 
 import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
 import {TableComponentsOrder} from '../Table.styles';
@@ -39,6 +39,10 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
     const handleClear: MouseEventHandler<HTMLButtonElement> = () => {
         setFilter('');
     };
+
+    useEffect(() => {
+        setFilter(state.globalFilter);
+    }, [state.globalFilter]);
 
     return (
         <Grid.Col span="content" order={TableComponentsOrder.Filter} py="sm" className={classes.root}>
