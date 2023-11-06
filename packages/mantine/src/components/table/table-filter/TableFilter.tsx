@@ -42,7 +42,7 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
 
     useEffect(() => {
         setFilter(state.globalFilter);
-    }, [state]);
+    }, [state.globalFilter]);
 
     return (
         <Grid.Col span="content" order={TableComponentsOrder.Filter} py="sm" className={classes.root}>
