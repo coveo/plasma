@@ -10,10 +10,6 @@ export default createStyles<string, RowLayoutStylesParams>((theme, {multiRowSele
     const border = `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`;
     return {
         headerColumns: {
-            '& th:first-of-type > *': {
-                paddingLeft: '40px',
-            },
-
             '& input[type=checkbox]': {
                 backgroundColor: disableRowSelection ? `${theme.colors.gray[2]}` : undefined,
                 borderColor: disableRowSelection ? `${theme.colors.gray[3]}` : `${theme.colors.gray[4]}`,
