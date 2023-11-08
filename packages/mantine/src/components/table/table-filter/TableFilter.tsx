@@ -1,4 +1,4 @@
-import {CrossSize16Px, SearchSize16Px} from '@coveord/plasma-react-icons';
+import {CrossSize16Px, FilterSize16Px} from '@coveord/plasma-react-icons';
 import {ActionIcon, Grid, TextInput} from '@mantine/core';
 import {ChangeEventHandler, FunctionComponent, MouseEventHandler, useEffect, useState} from 'react';
 
@@ -57,7 +57,7 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
                             <CrossSize16Px height={16} />
                         </ActionIcon>
                     ) : (
-                        <SearchSize16Px height={16} className={classes.empty} />
+                        <FilterSize16Px height={16} className={classes.empty} />
                     )
                 }
                 value={filter}
