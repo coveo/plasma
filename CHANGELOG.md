@@ -1,3 +1,12 @@
+# 52.25.0 (2023-11-08)
+
+
+### Features
+
+* **mantine:** allow table column header customization (#3583) 71d626c, closes #3583
+
+
+
 ## 52.24.1 (2023-11-06)
 
 
