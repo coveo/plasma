@@ -1,3 +1,12 @@
+# 52.26.0 (2023-11-13)
+
+
+### Features
+
+* **mantine:** replace search icon with filter (#3584) 9a672ed, closes #3584
+
+
+
 # 52.25.0 (2023-11-08)
 
 
