@@ -16,7 +16,7 @@ import {
 import {useUncontrolled} from '@mantine/hooks';
 import {editor as monacoEditor} from 'monaco-editor';
 import Editor, {loader, Monaco} from '@monaco-editor/react';
-import {FunctionComponent, useEffect, useMemo, useRef, useState} from 'react';
+import {FunctionComponent, useEffect, useRef, useState} from 'react';
 
 import {useParentHeight} from '../../hooks';
 import {XML} from './languages/xml';
