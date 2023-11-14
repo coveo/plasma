@@ -6,6 +6,7 @@ const svgr = require('@svgr/core');
 const groupBy = require('lodash.groupby');
 const upperFirst = require('lodash.upperfirst');
 const {rmSync} = require('fs-extra');
+const path = require('path');
 const template = require('./template');
 
 const iconsSourceDirPath = 'node_modules/@coveord/plasma-tokens/icons';
@@ -87,5 +88,5 @@ rmSync(outDirPath, {recursive: true, force: true});
 rmSync('./dist', {recursive: true, force: true});
 fs.ensureDirSync(outDirPath);
 
-const svgs = globSync(`${iconsSourceDirPath}/**/*.svg`);
+const svgs = globSync(`${iconsSourceDirPath}/**/*.svg`).map((svgPath) => svgPath.split(path.sep).join(path.posix.sep));
 handleSvgFiles(svgs);

@@ -16,7 +16,7 @@ import {
 import {useUncontrolled} from '@mantine/hooks';
 import {editor as monacoEditor} from 'monaco-editor';
 import Editor, {loader, Monaco} from '@monaco-editor/react';
-import {FunctionComponent, useEffect, useRef, useState} from 'react';
+import {FunctionComponent, useEffect, useMemo, useRef, useState} from 'react';
 
 import {useParentHeight} from '../../hooks';
 import {XML} from './languages/xml';
@@ -85,7 +85,7 @@ interface CodeEditorProps
 
 const defaultProps: Partial<CodeEditorProps> = {
     language: 'plaintext',
-    monacoLoader: 'local',
+    monacoLoader: 'cdn',
     defaultValue: '',
     minHeight: 300,
 };
@@ -113,8 +113,6 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         ...others
     } = useComponentDefaultProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
-    const [containsError, setContainsError] = useState(false);
-    const {classes, theme} = useStyles({error: containsError});
     const [_value, handleChange] = useUncontrolled<string>({
         value,
         defaultValue,
@@ -143,6 +141,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         }
     };
 
+    const [hasMonacoError, setHasMonacoError] = useState(false);
+    const renderErrorOutline = useMemo(() => !!error || hasMonacoError, [hasMonacoError, error]);
+    const {classes, theme} = useStyles({error: renderErrorOutline});
+
     useEffect(() => {
         if (monacoLoader === 'local') {
             loadLocalMonaco();
@@ -152,7 +154,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     }, []);
 
     const handleValidate = (markers: monacoEditor.IMarker[]) => {
-        setContainsError(
+        setHasMonacoError(
             markers.some((marker) => marker.severity === loader.__getMonacoInstance().MarkerSeverity.Error),
         );
     };
