@@ -142,8 +142,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     };
 
     const [hasMonacoError, setHasMonacoError] = useState(false);
-    const renderErrorOutline = useMemo(() => !!error || hasMonacoError, [hasMonacoError, error]);
-    const {classes, theme} = useStyles({error: renderErrorOutline});
+    const renderErrorOutline = !!error || hasMonacoError;
+    const {classes, theme} = useStyles({error: renderErrorOutline}, {name: 'CodeEditor'});
 
     useEffect(() => {
         if (monacoLoader === 'local') {
