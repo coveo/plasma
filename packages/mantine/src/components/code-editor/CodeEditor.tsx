@@ -85,7 +85,7 @@ interface CodeEditorProps
 
 const defaultProps: Partial<CodeEditorProps> = {
     language: 'plaintext',
-    monacoLoader: 'cdn',
+    monacoLoader: 'local',
     defaultValue: '',
     minHeight: 300,
 };
