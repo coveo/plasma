@@ -41,6 +41,7 @@ describe('CodeEditor', () => {
         await waitForElementToBeRemoved(screen.queryByRole('presentation'));
 
         expect(screen.getByText(/invalid configuration/i)).toBeInTheDocument();
+        expect(screen.getByTestId('editor-wrapper')).toHaveStyle('outline-color: #cd2113');
     });
 
     it('loads the monaco editor files from node_modules when monacoLoader prop is "local"', async () => {
@@ -79,6 +80,7 @@ describe('CodeEditor', () => {
 
         expect(onCopySpy).toHaveBeenCalledTimes(1);
     });
+
     it('calls the onSearch callback when clicking on the search button', async () => {
         const user = userEvent.setup();
         const onSearchSpy = vi.fn();

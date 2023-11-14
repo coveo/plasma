@@ -193,7 +193,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     );
 
     const _editor = loaded ? (
-        <Box p="md" pl="xs" className={classes.editor}>
+        <Box p="md" pl="xs" className={classes.editor} data-testid="editor-wrapper">
             <Editor
                 onValidate={handleValidate}
                 defaultLanguage={language}
