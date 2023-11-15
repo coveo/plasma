@@ -113,8 +113,6 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         ...others
     } = useComponentDefaultProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
-    const [containsError, setContainsError] = useState(false);
-    const {classes, theme} = useStyles({error: containsError});
     const [_value, handleChange] = useUncontrolled<string>({
         value,
         defaultValue,
@@ -143,6 +141,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         }
     };
 
+    const [hasMonacoError, setHasMonacoError] = useState(false);
+    const renderErrorOutline = !!error || hasMonacoError;
+    const {classes, theme} = useStyles({error: renderErrorOutline}, {name: 'CodeEditor'});
+
     useEffect(() => {
         if (monacoLoader === 'local') {
             loadLocalMonaco();
@@ -152,7 +154,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     }, []);
 
     const handleValidate = (markers: monacoEditor.IMarker[]) => {
-        setContainsError(
+        setHasMonacoError(
             markers.some((marker) => marker.severity === loader.__getMonacoInstance().MarkerSeverity.Error),
         );
     };
@@ -191,7 +193,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     );
 
     const _editor = loaded ? (
-        <Box p="md" pl="xs" className={classes.editor}>
+        <Box p="md" pl="xs" className={classes.editor} data-testid="editor-wrapper">
             <Editor
                 onValidate={handleValidate}
                 defaultLanguage={language}
