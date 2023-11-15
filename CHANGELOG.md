@@ -1,3 +1,12 @@
+## 52.26.1 (2023-11-15)
+
+
+### Bug Fixes
+
+* **WEB-6600:** add error outline in CodeEditor when form is in error and fix windows build process (#3585) 5e92372, closes #3585
+
+
+
 # 52.26.0 (2023-11-13)
 
 
