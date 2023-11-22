@@ -28,19 +28,21 @@ In a `.jsx` context:
 
 ```jsx
 const React = require('react');
-const ReactDom = require('react-dom');
+const createRoot = require('react-dom/client').createRoot;
 const Badge = require('@coveord/plasma-react').Badge;
 
-ReactDom.render(<Badge label="Hello Plasma!" />, document.getElementById('SomewhereInYourApp'));
+const root = createRoot(document.getElementById('SomewhereInYourApp'));
+root.render(<Badge label="Hello Plasma!" />);
 ```
 
 In a `.tsx` context:
 
 ```jsx
-import * as ReactDom from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import {Badge} from '@coveord/plasma-react';
 
-ReactDom.render(<Badge label="Hello Plasma!" />, document.getElementById('SomewhereInYourApp'));
+const root = createRoot(document.getElementById('SomewhereInYourApp'));
+root.render(<Badge label="Hello Plasma!" />);
 ```
 
 #### Dropdowns
