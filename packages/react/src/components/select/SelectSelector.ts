@@ -13,7 +13,10 @@ import {ISelectWithFilterOwnProps} from './hoc/SelectWithFilter';
 import {ISelectOwnProps} from './SelectConnected';
 import {SelectConstants} from './SelectConstants';
 
-const getListState = (state: PlasmaState, {id}: {id: string}): string[] => state?.selectWithFilter?.[id]?.list ?? [];
+const getListState = createSelector(
+    [(state: PlasmaState, {id}: {id: string}) => state?.selectWithFilter?.[id]?.list],
+    (list) => list ?? [],
+);
 
 const getListBox = (state: PlasmaState, {id}: {id: string}): Partial<IListBoxState> =>
     _.findWhere(state.listBoxes, {id}) || {};

@@ -59,9 +59,9 @@ const isANumber = (n: any): n is number => typeof n === 'number' && !Number.isNa
  * @deprecated Use Mantine instead
  */
 export const Limit: FunctionComponent<LimitOwnProps> = (props) => {
-    const {currentLimit} = useSelector((state: PlasmaState) => ({
-        currentLimit: +InputSelectors.getValue(state, {id: props.id}) || props.limit,
-    }));
+    const currentLimit = useSelector(
+        (state: PlasmaState) => +InputSelectors.getValue(state, {id: props.id}) || props.limit,
+    );
 
     return (
         <div className={classNames('limit-box mb2', props.className)}>

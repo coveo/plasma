@@ -22,13 +22,6 @@ const setup = () => {
     Defaults.APP_ELEMENT = '#' + TEST_CONTAINER_ID;
     Defaults.MODAL_ROOT = '#' + MODAL_ROOT_ID;
     Defaults.MODAL_TIMEOUT = 0;
-    console.error = (...args) => {
-        if (/Warning: ReactDOM.render is no longer supported in React 18./.test(args[0])) {
-            return;
-        } else {
-            originalError.call(console, ...args);
-        }
-    };
 };
 
 const cleanup = () => {

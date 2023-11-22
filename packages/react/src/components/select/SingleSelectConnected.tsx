@@ -65,11 +65,8 @@ export const SingleSelectConnected: FunctionComponent<ISingleSelectProps> = ({
     ...props
 }) => {
     const dispatch: IDispatch = useDispatch();
-
-    const {customSelected, defaultSelected} = useSelector((state: PlasmaState) => ({
-        customSelected: SelectSelector.getListState(state, props),
-        defaultSelected: SelectSelector.getListBoxSelected(state, props)[0],
-    }));
+    const customSelected = useSelector((state: PlasmaState) => SelectSelector.getListState(state, {id: props.id}));
+    const defaultSelected = useSelector((state: PlasmaState) => SelectSelector.getListBoxSelected(state, props)[0]);
 
     const selectedOption = customSelected.length ? customSelected[customSelected.length - 1] : defaultSelected;
 
