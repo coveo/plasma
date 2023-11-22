@@ -1,3 +1,12 @@
+## 52.26.2 (2023-11-22)
+
+
+### Bug Fixes
+
+* **plasma-react,SingleSelect:** memoize selectors (#3589) 5383e96, closes #3589
+
+
+
 ## 52.26.1 (2023-11-15)
 
 
