@@ -1,7 +1,6 @@
-import {Button} from '@mantine/core';
 import {forwardRef, MouseEventHandler} from 'react';
+import {Button, ButtonProps} from '../button';
 
-import {ButtonProps} from '../button';
 import {useInlineConfirm} from './useInlineConfirm';
 
 export interface InlineConfirmButtonProps extends ButtonProps {
