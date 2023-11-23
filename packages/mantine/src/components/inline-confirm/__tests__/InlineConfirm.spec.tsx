@@ -120,4 +120,24 @@ describe('InlineConfirm', () => {
         expect(screen.queryByText('Delete X?')).not.toBeInTheDocument();
         expect(screen.getByText('Print?')).toBeVisible();
     });
+
+    it('shows tooltip when button is disabled', async () => {
+        const user = userEvent.setup();
+        const onClickSpy = vi.fn();
+        render(
+            <InlineConfirm>
+                <InlineConfirm.Button id="delete" onClick={onClickSpy} disabled disabledTooltip="You shall not pass">
+                    Delete
+                </InlineConfirm.Button>
+            </InlineConfirm>,
+        );
+
+        const deleteButton = screen.getByRole('button', {name: 'Delete'});
+        expect(deleteButton).toBeDisabled();
+        expect(screen.queryByRole('tooltip', {name: /You shall not pass/i})).not.toBeInTheDocument();
+
+        await user.hover(deleteButton.parentElement);
+
+        expect(screen.getByRole('tooltip', {name: /You shall not pass/i})).toBeInTheDocument();
+    });
 });
