@@ -6,7 +6,7 @@ export default defineConfig({
     publicDir: 'resources',
     build: {
         lib: {
-            entry: resolve(__dirname, 'index.js'),
+            entry: resolve(__dirname, 'index.mjs'),
             name: 'PlasmaStyle',
             fileName: 'PlasmaStyle',
         },

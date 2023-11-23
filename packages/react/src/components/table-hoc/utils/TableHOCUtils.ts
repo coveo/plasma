@@ -1,11 +1,13 @@
 import * as _ from 'underscore';
 
+import {isValidElement} from 'react';
 import {PlasmaState} from '../../../PlasmaState';
 import {DatePickerSelectors} from '../../datePicker/DatePickerSelectors';
 import {IFilterState} from '../../filterBox/FilterBoxReducers';
 import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
 import {PaginationUtils} from '../../pagination/PaginationUtils';
+import {ITableRowOwnProps} from '../TableRowConnected';
 import {ITableWithSortState} from '../reducers/TableWithSortReducers';
 
 export interface ITableHOCPredicateValue {
@@ -87,6 +89,12 @@ const getTablePredicates = (tableId: string, state: PlasmaState): ITableHOCPredi
         .value();
 
 const getDatePickerId = (tableId: string) => `${tableId}-date-range`;
+
+export const isRowCollapsible = (props: ITableRowOwnProps): boolean =>
+    props.collapsible &&
+    (isValidElement(props.collapsible.content) ||
+        _.isString(props.collapsible.content) ||
+        _.isNull(props.collapsible.content));
 
 export const TableHOCUtils = {
     getCompositeState,

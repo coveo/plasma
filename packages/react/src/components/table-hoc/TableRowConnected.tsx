@@ -6,8 +6,8 @@ import {
     isValidElement,
     PureComponent,
     ReactChild,
-    ReactNode,
     MouseEvent as ReactMouseEvent,
+    ReactNode,
 } from 'react';
 import * as _ from 'underscore';
 
@@ -23,6 +23,7 @@ import {COLLAPSIBLE_EFFECT_DURATION} from '../collapsible/CollapsibleConnected';
 import {CollapsibleToggle} from '../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from './actions/TableHOCRowActions';
 import {TableSelectors} from './TableSelectors';
+import {isRowCollapsible} from './utils/TableHOCUtils';
 
 export interface CollapsibleRowProps {
     content?: ReactNode;
@@ -67,12 +68,6 @@ const TableRowPropsToOmit = [
     'tableId',
 ];
 
-const isCollapsible = (props: ITableRowOwnProps): boolean =>
-    props.collapsible &&
-    (isValidElement(props.collapsible.content) ||
-        _.isString(props.collapsible.content) ||
-        _.isNull(props.collapsible.content));
-
 const mapStateToProps = (state: PlasmaState, ownProps: ITableRowOwnProps) => {
     const {selected, opened} = TableSelectors.getTableRow(state, {id: ownProps.id}) || {selected: false, opened: false};
     return {
@@ -92,7 +87,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps) =>
     return {
         onMount: () => {
             dispatch(TableHOCRowActions.add(ownProps.id, ownProps.tableId));
-            if (isCollapsible(ownProps) && ownProps.collapsible.expandOnMount) {
+            if (isRowCollapsible(ownProps) && ownProps.collapsible.expandOnMount) {
                 dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id, true));
             }
         },
@@ -123,7 +118,7 @@ class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttr
     static defaultProps: Partial<ITableRowOwnProps>;
 
     componentDidUpdate(prevProps: ITableRowConnectedProps) {
-        if (!isCollapsible(prevProps) && isCollapsible(this.props)) {
+        if (!isRowCollapsible(prevProps) && isRowCollapsible(this.props)) {
             this.props.onUpdateToCollapsibleRow();
         }
 
@@ -141,7 +136,7 @@ class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttr
     }
 
     render() {
-        const rowIsCollapsible = isCollapsible(this.props);
+        const rowIsCollapsible = isRowCollapsible(this.props);
         let collapsibleContentRow = null;
         let collapsibleRowToggle: ReactNode = null;
         if (rowIsCollapsible) {
