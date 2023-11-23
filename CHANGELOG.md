@@ -1,3 +1,12 @@
+## 52.26.3 (2023-11-23)
+
+
+### Bug Fixes
+
+* **mantine:** fix disabled tooltips for inline confim buttons (#3590) 4f9ed9b, closes #3590
+
+
+
 ## 52.26.2 (2023-11-22)
 
 
