@@ -1,42 +1,44 @@
-import {Tuple} from '@mantine/core';
+import {MantineColorsTuple} from '@mantine/core';
 
+import '@mantine/core/styles.css';
 import {PlasmaColors} from './theme/PlasmaColors';
 
-export * from '@mantine/notifications';
 export * from '@mantine/carousel';
 export * from '@mantine/core';
+export {Pagination} from '@mantine/core';
+export * from '@mantine/form';
 export type {FormValidateInput} from '@mantine/form/lib/types';
 export * from '@mantine/hooks';
+export * from '@mantine/notifications';
+export {type NotificationsProps} from '@mantine/notifications';
 export * from '@tanstack/table-core';
 export * from './components';
-export * from '@mantine/form';
-export {type NotificationProps} from '@mantine/notifications';
-export {Pagination} from '@mantine/core';
+
 // explicitly overriding mantine components
 export {
+    ActionIcon,
     BrowserPreview,
+    Button,
+    CopyToClipboard,
     Header,
-    type HeaderProps,
+    Menu,
     Table,
+    type ActionIconProps,
+    type ButtonProps,
+    type CopyToClipboardProps,
+    type HeaderProps,
+    type InitialTableState,
+    type MenuItemProps,
     type TableProps,
     type TableState,
-    type InitialTableState,
-    ActionIcon,
-    type ActionIconProps,
-    Button,
-    type ButtonProps,
-    Menu,
-    type MenuItemProps,
-    CopyToClipboard,
-    type CopyToClipboardProps,
 } from './components';
-export {useForm, createFormContext} from './form';
+export {createFormContext, useForm} from './form';
 
 export * from './theme';
 
 declare module '@mantine/core' {
     export interface MantineThemeColorsOverride {
         // eslint-disable-next-line @typescript-eslint/ban-types
-        colors: Record<keyof typeof PlasmaColors | (string & {}), Tuple<string, 10>>;
+        colors: Record<keyof typeof PlasmaColors | (string & {}), MantineColorsTuple>;
     }
 }

@@ -1,0 +1,17 @@
+.content {
+}
+
+.title {
+    width: '100%';
+}
+
+.header {
+}
+
+.body {
+    &:not(:only-child) {
+        &[data-variant='prompt'] {
+            padding-top: 0;
+        }
+    }
+}

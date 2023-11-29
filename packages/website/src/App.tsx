@@ -1,4 +1,5 @@
 import {AppShell, Notifications, Plasmantine} from '@coveord/plasma-mantine';
+import '@mantine/core/styles.css';
 import {Provider} from 'react-redux';
 import {Outlet} from 'react-router-dom';
 import {Navigation} from './Navigation';

@@ -1,24 +1,28 @@
 import {CheckSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
+    Button,
+    MantineThemeOverride,
+    Text,
+    createTheme,
     getSize,
-    getStylesRef,
     rem,
-    type MantineThemeOverride,
     type NotificationProps,
     type StepperStylesParams,
     type TabsStylesParams,
+    Modal,
 } from '@mantine/core';
+import buttonClasses from '../styles/Button.module.css';
+import textClasses from '../styles/Text.module.css';
 
 import {PlasmaColors} from './PlasmaColors';
 
-export const plasmaTheme: MantineThemeOverride = {
+export const plasmaTheme: MantineThemeOverride = createTheme({
     // These are overrides over https://github.com/mantinedev/mantine/blob/master/src/mantine-styles/src/theme/default-theme.ts
-    colorScheme: 'light',
     fontFamily: 'canada-type-gibson, sans-serif',
     black: color.primary.gray[9],
     defaultRadius: 8,
-    lineHeight: 1.5,
+    lineHeights: {md: '1.5'},
     spacing: {
         xs: '8px',
         sm: '16px',
@@ -29,14 +33,14 @@ export const plasmaTheme: MantineThemeOverride = {
     primaryColor: 'action',
     headings: {
         fontFamily: 'canada-type-gibson, sans-serif',
-        fontWeight: 500,
+        fontWeight: '500',
         sizes: {
-            h1: {fontSize: '48px', lineHeight: undefined, fontWeight: 300},
-            h2: {fontSize: '32px', lineHeight: undefined, fontWeight: 500},
-            h3: {fontSize: '24px', lineHeight: undefined, fontWeight: 500},
-            h4: {fontSize: '18px', lineHeight: undefined, fontWeight: 300},
-            h5: {fontSize: '14px', lineHeight: undefined, fontWeight: 500},
-            h6: {fontSize: '12px', lineHeight: undefined, fontWeight: 500},
+            h1: {fontSize: '48px', lineHeight: undefined, fontWeight: '300'},
+            h2: {fontSize: '32px', lineHeight: undefined, fontWeight: '500'},
+            h3: {fontSize: '24px', lineHeight: undefined, fontWeight: '500'},
+            h4: {fontSize: '18px', lineHeight: undefined, fontWeight: '300'},
+            h5: {fontSize: '14px', lineHeight: undefined, fontWeight: '500'},
+            h6: {fontSize: '12px', lineHeight: undefined, fontWeight: '500'},
         },
     },
     shadows: {
@@ -66,63 +70,49 @@ export const plasmaTheme: MantineThemeOverride = {
                 },
             },
         },
-        Text: {
-            defaultProps: {
-                weight: 300,
-            },
+        Text: Text.extend({
+            classNames: {root: textClasses.root},
             styles: (theme, {}, {size}) => ({
                 root: {
                     fontSize: getSize({size: size ?? 'sm', sizes: theme.fontSizes}),
                 },
             }),
-        },
-        Button: {
-            styles: () => ({
-                root: {
-                    fontWeight: 400,
-                },
-            }),
-            variants: {
-                outline: () => ({
-                    root: {
-                        backgroundColor: 'white',
-                    },
-                }),
-            },
-        },
-        Modal: {
-            styles: (theme, {fullScreen, padding}, {size, variant}) => ({
-                content: {
-                    flex: fullScreen
-                        ? '0 0 100%'
-                        : `0 0 ${getSize({
-                              size,
-                              sizes: {
-                                  xs: rem(432),
-                                  sm: rem(664),
-                                  md: rem(896),
-                                  lg: rem(1120),
-                                  xl: rem('88%'),
-                              },
-                          })}`,
-                    overflow: 'auto',
-                },
-                title: {
-                    width: '100%',
-                    fontSize: theme.headings.sizes.h3.fontSize,
-                    lineHeight: theme.headings.sizes.h3.lineHeight,
-                    fontWeight: 500,
-                },
-                header: {
-                    borderBottom: variant !== 'prompt' ? `1px solid ${color.primary.gray[3]}` : null,
-                },
-                body: {
-                    '&:not(:only-child)': {
-                        paddingTop: variant === 'prompt' ? 0 : getSize({size: padding, sizes: plasmaTheme.spacing}),
-                    },
-                },
-            }),
-        },
+        }),
+        Button: Button.extend({
+            classNames: {root: buttonClasses.root},
+        }),
+        Modal: Modal.extend({}),
+        // styles: (theme, {fullScreen, padding}, {size, variant}) => ({
+        //     content: {
+        //         flex: fullScreen
+        //             ? '0 0 100%'
+        //             : `0 0 ${getSize({
+        //                   size,
+        //                   sizes: {
+        //                       xs: rem(432),
+        //                       sm: rem(664),
+        //                       md: rem(896),
+        //                       lg: rem(1120),
+        //                       xl: rem('88%'),
+        //                   },
+        //               })}`,
+        //         overflow: 'auto',
+        //     },
+        //     title: {
+        //         width: '100%',
+        //         fontSize: theme.headings.sizes.h3.fontSize,
+        //         lineHeight: theme.headings.sizes.h3.lineHeight,
+        //         fontWeight: 500,
+        //     },
+        //     header: {
+        //         borderBottom: variant !== 'prompt' ? `1px solid ${color.primary.gray[3]}` : null,
+        //     },
+        //     body: {
+        //         '&:not(:only-child)': {
+        //             paddingTop: variant === 'prompt' ? 0 : getSize({size: padding, sizes: plasmaTheme.spacing}),
+        //         },
+        //     },
+        // }),
         ModalOverlay: {
             defaultProps: {
                 color: color.primary.navy[9],
@@ -420,4 +410,4 @@ export const plasmaTheme: MantineThemeOverride = {
             },
         },
     },
-};
+});
