@@ -33,7 +33,6 @@
         "@mantine/prism": "6.0.19",
         "@swc/helpers": "0.5.1",
         "@tanstack/match-sorter-utils": "8.8.4",
-        "@vitejs/plugin-react": "4.2.0",
         "clsx": "2.0.0",
         "codesandbox-import-utils": "2.2.3",
         "dayjs": "1.11.9",
