@@ -1,0 +1,13 @@
+.input {
+    color: var(--mantine-color-gray-7);
+}
+
+.option {
+    color: var(--mantine-color-gray-7);
+    &[data-hovered] {
+        color: var(--mantine-color-gray-1);
+    }
+    &[data-selected] {
+        /* background-color */
+    }
+}

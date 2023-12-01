@@ -1,20 +1,52 @@
 import {CheckSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
+    Alert,
+    Anchor,
+    Badge,
     Button,
+    Checkbox,
+    ColorSwatch,
+    Divider,
+    InputWrapper,
+    List,
+    Loader,
     MantineThemeOverride,
-    Text,
-    createTheme,
-    getSize,
-    rem,
-    type NotificationProps,
-    type StepperStylesParams,
-    type TabsStylesParams,
+    MenuItem,
     Modal,
+    ModalOverlay,
+    Notification,
+    Popover,
+    Radio,
+    SegmentedControl,
+    Skeleton,
+    Stepper,
+    Tabs,
+    Text,
+    TextInput,
+    Title,
+    Tooltip,
+    createTheme,
 } from '@mantine/core';
-import buttonClasses from '../styles/Button.module.css';
-import textClasses from '../styles/Text.module.css';
+import {DatePicker} from '@mantine/dates';
+import AlertClasses from '../styles/Alert.module.css';
+import AnchorClasses from '../styles/Anchor.module.css';
+import BadgeClasses from '../styles/Badge.module.css';
+import ButtonClasses from '../styles/Button.module.css';
+import CheckboxClasses from '../styles/Checkbox.module.css';
+import DatePickerClasses from '../styles/DatePicker.module.css';
+import InputWrapperClasses from '../styles/InputWrapper.module.css';
+import ListClasses from '../styles/List.module.css';
+import NotificationClasses from '../styles/Notification.module.css';
+import RadioClasses from '../styles/Radio.module.css';
+import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
+import SkeletonClasses from '../styles/Skeleton.module.css';
+import StepperClasses from '../styles/Stepper.module.css';
+import TabsClasses from '../styles/Tabs.module.css';
+import TitleClasses from '../styles/Title.module.css';
 
+import TextClasses from '../styles/Text.module.css';
+import {NotificationVars} from '../vars/Notification.vars';
 import {PlasmaColors} from './PlasmaColors';
 
 export const plasmaTheme: MantineThemeOverride = createTheme({
@@ -52,34 +84,22 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     },
     colors: PlasmaColors,
     components: {
-        Alert: {
+        Alert: Alert.extend({
             defaultProps: {
                 icon: <InfoSize24Px height={24} />,
                 color: 'navy',
             },
-            styles: {
-                title: {
-                    fontWeight: 500,
-                },
-            },
-        },
-        Title: {
-            styles: {
-                root: {
-                    '&:is(h1,h2,h3,h4,h5,h6)': {letterSpacing: '0.011em'},
-                },
-            },
-        },
+            classNames: {title: AlertClasses.title},
+        }),
+        Title: Title.extend({
+            classNames: {root: TitleClasses.root},
+        }),
         Text: Text.extend({
-            classNames: {root: textClasses.root},
-            styles: (theme, {}, {size}) => ({
-                root: {
-                    fontSize: getSize({size: size ?? 'sm', sizes: theme.fontSizes}),
-                },
-            }),
+            classNames: TextClasses.root, // essayer l'ajout de data-size dans module
+            // vars: TextVars,
         }),
         Button: Button.extend({
-            classNames: {root: buttonClasses.root},
+            classNames: {root: ButtonClasses.root},
         }),
         Modal: Modal.extend({}),
         // styles: (theme, {fullScreen, padding}, {size, variant}) => ({
@@ -113,42 +133,25 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         //         },
         //     },
         // }),
-        ModalOverlay: {
+        ModalOverlay: ModalOverlay.extend({
             defaultProps: {
                 color: color.primary.navy[9],
                 opacity: 0.9,
             },
-        },
-        InputWrapper: {
-            defaultProps: {
-                withAsterisk: false,
+        }),
+        InputWrapper: InputWrapper.extend({
+            classNames: {
+                label: InputWrapperClasses.label,
+                description: InputWrapperClasses.description,
+                error: InputWrapperClasses.error,
             },
-            styles: (theme) => ({
-                label: {
-                    marginBottom: theme.spacing.xs,
-                },
-                description: {
-                    fontSize: theme.fontSizes.sm,
-                    color: theme.colors.gray[7],
-                    marginBottom: theme.spacing.xs,
-                    lineHeight: theme.lineHeight,
-                },
-                invalid: {
-                    color: theme.colors.red[9],
-                    borderColor: theme.colors.red[6],
-                },
-                error: {
-                    color: theme.colors.red[9],
-                    lineHeight: theme.lineHeight,
-                },
-            }),
-        },
-        TextInput: {
+        }),
+        TextInput: TextInput.extend({
             defaultProps: {
                 radius: 8,
             },
-        },
-        Tooltip: {
+        }),
+        Tooltip: Tooltip.extend({
             defaultProps: {
                 color: 'navy',
                 maw: 300,
@@ -157,194 +160,89 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 withinPortal: true,
                 zIndex: 10000,
             },
-        },
-        Loader: {
+        }),
+        Loader: Loader.extend({
             defaultProps: {
-                variant: 'dots',
+                type: 'dots',
                 color: 'action',
             },
-        },
-        DateRangePicker: {
-            styles: {
-                cell: {
-                    textAlign: 'center',
-                },
-            },
-        },
-        Anchor: {
+        }),
+        DatePicker: DatePicker.extend({
+            classNames: {monthCell: DatePickerClasses.monthCell},
+        }),
+        Anchor: Anchor.extend({
             defaultProps: {
                 color: 'action.6',
             },
-            styles: (theme) => ({
-                root: {
-                    ...theme.fn.hover({
-                        textDecoration: 'underline',
-                        color: theme.colors.action[8],
-                    }),
-                },
-            }),
-        },
-        Checkbox: {
+            classNames: {root: AnchorClasses.root},
+        }),
+        Checkbox: Checkbox.extend({
             defaultProps: {
                 radius: 'sm',
             },
-            styles: (theme) => ({
-                label: {
-                    fontSize: theme.fontSizes.sm,
-                    fontWeight: 300,
-                },
-            }),
-        },
-        List: {
-            styles: () => ({
-                root: {
-                    listStyleType: 'disc',
-                },
-            }),
-        },
-        Radio: {
-            styles: {
-                labelWrapper: {
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                },
-            },
-        },
-        Popover: {
+            classNames: {label: CheckboxClasses.label},
+        }),
+        List: List.extend({
+            classNames: {root: ListClasses.root},
+        }),
+        Radio: Radio.extend({
+            classNames: {labelWrapper: RadioClasses.labelWrapper},
+        }),
+        Popover: Popover.extend({
             defaultProps: {
                 shadow: 'md',
                 withArrow: true,
             },
-        },
-        Badge: {
-            styles: {
-                root: {
-                    textTransform: 'none',
-                    padding: '4px 8px',
-                    fontWeight: 500,
-                },
-            },
-        },
-        ColorSwatch: {
+        }),
+        Badge: Badge.extend({
+            classNames: {root: BadgeClasses.root},
+        }),
+        ColorSwatch: ColorSwatch.extend({
             defaultProps: {
                 size: 8,
                 withShadow: false,
             },
-        },
-        MenuItem: {
+        }),
+        MenuItem: MenuItem.extend({
             defaultProps: {
                 fw: 300,
             },
-        },
-        Notification: {
-            styles: (theme, {color: notificationType}: NotificationProps) => ({
-                root: {
-                    borderColor: theme.colors.gray[3],
-                    backgroundColor: theme.colors.gray[0],
-                    boxShadow: theme.shadows.lg,
-                    padding: theme.spacing.sm,
-                    '&[data-with-icon]': {
-                        paddingLeft: theme.spacing.sm,
-                    },
-                },
-                icon: {
-                    backgroundColor: 'transparent',
-                    marginRight: theme.spacing.sm,
-                    color: theme.colors?.[notificationType][6],
-                },
-                closeButton: {
-                    margin: theme.spacing.xs,
-                    color: theme.colors.gray[5],
-                },
-            }),
+        }),
+        Notification: Notification.extend({
             defaultProps: {
                 icon: <InfoSize24Px height={24} />,
                 color: 'info',
             },
-        },
-        Skeleton: {
-            styles: {
-                visible: {
-                    '&::before': {zIndex: 'unset'},
-                    '&::after': {zIndex: 'unset'},
-                },
+            classNames: {
+                root: NotificationClasses.root,
+                icon: NotificationClasses.icon,
+                closeButton: NotificationClasses.closeButton,
             },
-        },
-        SegmentedControl: {
-            styles: (theme) => ({
-                root: {
-                    backgroundColor: theme.colors.gray[2],
-                },
-            }),
-        },
-        Stepper: {
+            vars: NotificationVars,
+        }),
+        Skeleton: Skeleton.extend({
+            classNames: {root: SkeletonClasses.root},
+        }),
+        SegmentedControl: SegmentedControl.extend({
+            classNames: {root: SegmentedControlClasses.root},
+        }),
+        Stepper: Stepper.extend({
             defaultProps: {
                 size: 'xs',
                 completedIcon: <CheckSize16Px />,
             },
-            styles: (theme, {}: StepperStylesParams, {size}) => ({
-                step: {
-                    '&[disabled]': {
-                        color: theme.colors.gray[5],
-                        '& .mantine-Stepper-stepDescription': {
-                            color: theme.colors.gray[5],
-                        },
-                        '& .mantine-Stepper-stepIcon': {
-                            borderColor: theme.colors.gray[1],
-                        },
-                    },
-                },
-                stepIcon: {
-                    fontWeight: 500,
-                    backgroundColor: theme.colors.gray[1],
-                    color: 'inherit',
-                    border: `${rem(1)} solid ${theme.colors.gray[3]}`,
-                    '&[data-progress]': {
-                        backgroundColor: theme.white,
-                    },
-
-                    '&[data-completed]': {
-                        backgroundColor: theme.white,
-                        borderColor: theme.colors.lime[6],
-                        color: theme.colors.lime[6],
-                    },
-                },
-                stepCompletedIcon: {
-                    color: theme.colors.lime[6],
-                    fontSize: rem(16),
-                },
-                stepDescription: {
-                    color: theme.colors.gray[7],
-                    fontSize: getSize({size, sizes: theme.fontSizes}),
-                },
-                separator: {
-                    height: rem(1),
-                    backgroundColor: theme.colors.gray[3],
-                },
-                separatorActive: {
-                    backgroundColor: theme.colors.gray[3],
-                },
-                verticalSeparator: {
-                    borderLeft: `${rem(1)} solid ${theme.colors.gray[3]}`,
-                },
-                verticalSeparatorActive: {
-                    borderColor: theme.colors.gray[3],
-                },
-            }),
-        },
-        Tabs: {
-            styles: (theme, {orientation}: TabsStylesParams) => ({
-                tabsList: {
-                    [orientation === 'horizontal' ? 'borderBottom' : 'borderRight']: `${rem(1)} solid ${
-                        theme.colors.gray[3]
-                    }`,
-                },
-                tab: {
-                    [orientation === 'horizontal' ? 'borderBottom' : 'borderRight']: `${rem(1)} solid transparent`,
-                    [orientation === 'horizontal' ? 'marginBottom' : 'marginRight']: rem(-1),
-                },
-            }),
-        },
+            classNames: {
+                step: StepperClasses.step,
+                stepIcon: StepperClasses.stepIcon,
+                stepCompletedIcon: StepperClasses.stepCompletedIcon,
+                stepDescription: StepperClasses.stepDescription,
+                separator: StepperClasses.separator,
+                verticalSeparator: StepperClasses.verticalSeparator,
+            },
+        }),
+        Tabs: Tabs.extend({
+            classNames: {list: TabsClasses.list, tab: TabsClasses.tab},
+        }),
         Select: {
             styles: (theme) => ({
                 input: {
@@ -404,10 +302,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 },
             },
         },
-        Divider: {
+        Divider: Divider.extend({
             defaultProps: {
                 color: 'gray.3',
             },
-        },
+        }),
     },
 });

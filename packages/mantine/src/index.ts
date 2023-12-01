@@ -1,6 +1,6 @@
+import '@mantine/core/styles.css';
 import {MantineColorsTuple} from '@mantine/core';
 
-import '@mantine/core/styles.css';
 import {PlasmaColors} from './theme/PlasmaColors';
 
 export * from '@mantine/carousel';

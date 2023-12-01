@@ -1,11 +1,26 @@
 .content {
+    &[data-full-screen] {
+        flex: 0 0 100%;
+    }
+
+    /* --modal-size-xs: rem(432);
+    --modal-size-sm: rem(664);
+    --modal-size-md: rem(896);
+    --modal-size-lg: rem(1120);
+    --modal-size-xl: rem('88%'); */
 }
 
 .title {
     width: '100%';
+    font-size: var(--mantine-h3-font-size);
+    line-height: var(--mantine-h3-line-height);
+    font-weight: 500;
 }
 
 .header {
+    &[data-variant='prompt'] {
+        border-bottom: var(--lime);
+    }
 }
 
 .body {

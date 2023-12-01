@@ -1,3 +1,6 @@
 .root {
-    /* font-weight: var(--font-weight-light); */
+    font-weight: var(--font-weight-light);
+    &:not([data-size]) {
+        font-size: var(--mantine-font-size-sm);
+    }
 }

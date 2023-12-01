@@ -1,0 +1,6 @@
+.root {
+    &:hover {
+        text-decoration: 'underline';
+        color: var(--mantine-colors-action-8);
+    }
+}

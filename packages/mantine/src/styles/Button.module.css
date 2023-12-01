@@ -1,7 +1,6 @@
 .root {
     font-weight: var(--font-weight-book);
     &[data-variant='outline'] {
-        backgroundcolor: 'white';
+        background-color: 'white';
     }
-    /* color: var(--font); */
 }

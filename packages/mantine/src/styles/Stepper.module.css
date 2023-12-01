@@ -1,0 +1,54 @@
+.step {
+    &[disabled] {
+        color: var(--mantine-color-gray-5);
+        &.mantine-Stepper-stepDescription {
+            color: var(--mantine-color-gray-5);
+        }
+        &.mantine-Stepper-stepIcon: {
+            border-color: var(--mantine-color-gray-1);
+        }
+    }
+}
+.stepIcon: {
+    font-weight: 500;
+    background-color: var(--mantine-color-gray-1);
+    color: 'inherit';
+    border: rem(1) solid var(--mantine-color-gray-3);
+    &[data-progress] {
+        background-color: var(--mantine-color-white);
+    }
+    &[data-completed] {
+        background-color: var(--mantine-color-white);
+        border-color: var(--mantine-color-lime-6);
+        color: var(--mantine-color-lime-6);
+    }
+}
+.stepCompletedIcon: {
+    color: var(--mantine-color-lime-6);
+    font-size: rem(16);
+}
+.stepDescription: {
+    color: var(--mantine-color-gray-7);
+    &[data-size='xs'] {
+        font-size: var(--mantine-font-size-xs);
+    }
+    &[data-size='sm'] {
+        font-size: var(--mantine-font-size-sm);
+    }
+    &[data-size='md'] {
+        font-size: var(--mantine-font-size-md);
+    }
+    &[data-size='lg'] {
+        font-size: var(--mantine-font-size-lg);
+    }
+    &[data-size='xl'] {
+        font-size: var(--mantine-font-size-xl);
+    }
+}
+.separator: {
+    height: rem(1);
+    background-color: var(--mantine-color-gray-3);
+}
+.verticalSeparator: {
+    border-left: rem(1) solid var(--mantine-color-gray-3);
+}

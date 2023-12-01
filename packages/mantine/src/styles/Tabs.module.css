@@ -1,0 +1,19 @@
+.list {
+    &[data-orientation='horizontal'] {
+        border-bottom: rem(1) solid var(--mantine-color-gray-3);
+    }
+    &[data-orientation='vertical'] {
+        border-right: rem(1) solid var(--mantine-color-gray-3);
+    }
+}
+
+.tab {
+    &[data-orientation='horizontal'] {
+        border-bottom: rem(1) solid transparent;
+        margin-bottom: rem(-1);
+    }
+    &[data-orientation='vertical'] {
+        border-right: rem(1) solid transparent;
+        margin-right: rem(-1);
+    }
+}
