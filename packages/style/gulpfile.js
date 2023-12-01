@@ -98,7 +98,7 @@ function Dictionary(from) {
     };
 
     this.writeSvgEnumFile = (to) => {
-        let code = 'import {svgWrapper} from "../svgWrapper.js";\n';
+        let code = 'import {svgWrapper} from "../svgWrapper.mjs";\n';
         code += 'export var svg = {';
         const that = this;
         Object.keys(this.json).forEach((key) => {

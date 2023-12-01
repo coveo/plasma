@@ -1,9 +1,9 @@
 import react from '@vitejs/plugin-react-swc';
+import autoprefixer from 'autoprefixer';
 import path from 'node:path';
 import {defineConfig} from 'vite';
-import autoprefixer from 'autoprefixer';
-import demoSnippets from './build/vite-plugin-demo-snippets';
 import basePath from './build/getBasePath';
+import demoSnippets from './build/vite-plugin-demo-snippets';
 
 // https://vitejs.dev/config/
 export default defineConfig({

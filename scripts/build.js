@@ -36,11 +36,20 @@ const build = async ({watch = false}) => {
             ...swcArgs,
             '--config',
             'module.type=commonjs',
+            '--config',
             'jsc.target=es5',
             '--out-dir',
             './dist/cjs',
         ];
-        const swcES6Args = [...swcArgs, '--config', 'module.type=es6', 'jsc.target=es2020', '--out-dir', './dist/esm'];
+        const swcES6Args = [
+            ...swcArgs,
+            '--config',
+            'module.type=es6',
+            '--config',
+            'jsc.target=es2020',
+            '--out-dir',
+            './dist/esm',
+        ];
 
         const dtsESM = spawn('tsc', tscESMArgs, {stdio: 'inherit', shell: true});
         const dtsCJS = spawn('tsc', tscCJSArgs, {stdio: 'inherit', shell: true});
