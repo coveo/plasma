@@ -119,6 +119,7 @@ export class NumericInputConnected extends PureComponent<NumericInputProps & HTM
             <div className="numeric-input flex flex-column">
                 <div className="flex flex-row">
                     <button
+                        type="button"
                         className="js-decrement mr1"
                         disabled={!decrementEnabled || this.props.disabled}
                         onClick={this.onDecrement}
@@ -144,6 +145,7 @@ export class NumericInputConnected extends PureComponent<NumericInputProps & HTM
                         />
                     </div>
                     <button
+                        type="button"
                         className="js-increment ml1"
                         disabled={!incrementEnabled || this.props.disabled}
                         onClick={this.onIncrement}
