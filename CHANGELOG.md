@@ -1,3 +1,13 @@
+## 52.26.4 (2023-12-05)
+
+
+### Bug Fixes
+
+* **deps:** update dnd-kit monorepo (#3592) dd3c16c, closes #3592
+* **react, numeric input:** add buttons type (#3595) c89e360, closes #3595
+
+
+
 ## 52.26.3 (2023-11-23)
 
 
