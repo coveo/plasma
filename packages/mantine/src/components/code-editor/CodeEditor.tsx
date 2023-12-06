@@ -1,44 +1,34 @@
 import {
     Box,
     Center,
-    createStyles,
-    DefaultProps,
     Group,
     Input,
-    InputWrapperBaseProps,
+    InputWrapperProps,
     Loader,
     px,
-    Selectors,
     Space,
     Stack,
-    useComponentDefaultProps,
+    StackProps,
+    useMantineTheme,
+    useProps,
 } from '@mantine/core';
-import {useUncontrolled} from '@mantine/hooks';
-import {editor as monacoEditor} from 'monaco-editor';
+import {useColorScheme, useUncontrolled} from '@mantine/hooks';
 import Editor, {loader, Monaco} from '@monaco-editor/react';
+import {editor as monacoEditor} from 'monaco-editor';
 import {FunctionComponent, useEffect, useRef, useState} from 'react';
 
+import cx from 'clsx';
 import {useParentHeight} from '../../hooks';
-import {XML} from './languages/xml';
 import {CopyToClipboard} from '../copyToClipboard';
+import CodeEditorClasses from './CodeEditor.module.css';
+import {XML} from './languages/xml';
 import {Search} from './search';
-
-const useStyles = createStyles((theme, {error}: {error?: boolean}) => ({
-    root: {},
-    editor: {
-        border: `1px solid ${theme.colors.gray[2]}`,
-        borderRadius: theme.defaultRadius,
-        backgroundColor: theme.colorScheme === 'light' ? theme.white : theme.black,
-        height: '100%',
-        outlineColor: error ? theme.colors.red[6] : null,
-        outlineStyle: error ? 'solid' : 'none',
-        outlineWidth: 'thin',
-    },
-}));
-
 interface CodeEditorProps
-    extends Omit<InputWrapperBaseProps, 'inputContainer' | 'inputWrapperOrder'>,
-        DefaultProps<Selectors<typeof useStyles>> {
+    extends Omit<
+            InputWrapperProps,
+            'inputContainer' | 'inputWrapperOrder' | 'classNames' | 'styles' | 'vars' | 'onChange'
+        >,
+        StackProps {
     /**
      * The language syntax of the editor
      *
@@ -111,7 +101,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         disabled,
         monacoLoader,
         ...others
-    } = useComponentDefaultProps('CodeEditor', defaultProps, props);
+    } = useProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
     const [_value, handleChange] = useUncontrolled<string>({
         value,
@@ -143,7 +133,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
 
     const [hasMonacoError, setHasMonacoError] = useState(false);
     const renderErrorOutline = !!error || hasMonacoError;
-    const {classes, theme} = useStyles({error: renderErrorOutline}, {name: 'CodeEditor'});
+    const theme = useMantineTheme();
+    const colorScheme = useColorScheme();
 
     useEffect(() => {
         if (monacoLoader === 'local') {
@@ -186,24 +177,33 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         ) : null;
 
     const _buttons = (
-        <Group position="right" spacing={0}>
+        <Group justify="right" gap={0}>
             <Search handleSearch={handleSearch} />
             <CopyToClipboard value={_value} onCopy={() => onCopy?.()} />
         </Group>
     );
 
     const _editor = loaded ? (
-        <Box p="md" pl="xs" className={classes.editor} data-testid="editor-wrapper">
+        <Box
+            p="md"
+            pl="xs"
+            className={cx(
+                CodeEditorClasses.editor,
+                {[CodeEditorClasses.valid]: !renderErrorOutline},
+                {[CodeEditorClasses.error]: renderErrorOutline},
+            )}
+            data-testid="editor-wrapper"
+        >
             <Editor
                 onValidate={handleValidate}
                 defaultLanguage={language}
-                theme={theme.colorScheme === 'light' ? 'light' : 'vs-dark'}
+                theme={colorScheme === 'light' ? 'light' : 'vs-dark'}
                 options={{
                     minimap: {enabled: false},
                     wordWrap: 'on',
                     scrollBeyondLastLine: false,
                     formatOnPaste: true,
-                    fontSize: px(theme.fontSizes.xs),
+                    fontSize: px(theme.fontSizes.xs) as number,
                     readOnly: disabled,
                     tabSize: 2,
                 }}
@@ -220,7 +220,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             />
         </Box>
     ) : (
-        <Center className={classes.editor}>
+        <Center className={CodeEditorClasses.editor}>
             <Loader />
         </Center>
     );
@@ -228,9 +228,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     return (
         <Stack
             justify="flex-start"
-            className={classes.root}
-            spacing={0}
-            sx={{height: Math.max(parentHeight, minHeight), maxHeight}}
+            gap={0}
+            style={{height: Math.max(parentHeight, minHeight), maxHeight}}
             ref={ref}
             {...others}
         >

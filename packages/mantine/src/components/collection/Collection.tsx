@@ -2,29 +2,18 @@ import {AddSize16Px} from '@coveord/plasma-react-icons';
 import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
 import {restrictToParentElement, restrictToVerticalAxis} from '@dnd-kit/modifiers';
 import {SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from '@dnd-kit/sortable';
-import {
-    Box,
-    DefaultProps,
-    Group,
-    Input,
-    InputWrapperBaseProps,
-    MantineNumberSize,
-    Selectors,
-    Stack,
-    Tooltip,
-    useComponentDefaultProps,
-} from '@mantine/core';
+import {Box, Group, Input, InputWrapperProps, MantineSpacing, Stack, Tooltip, useProps} from '@mantine/core';
 import {ReorderPayload} from '@mantine/form/lib/types';
 import {useDidUpdate} from '@mantine/hooks';
 import {ReactNode} from 'react';
 
+import cx from 'clsx';
 import {Button} from '../button';
-import useStyles from './Collection.styles';
+import CollectionClasses from './Collection.module.css';
 import {CollectionItem} from './CollectionItem';
 
 interface CollectionProps<T>
-    extends Omit<InputWrapperBaseProps, 'inputContainer' | 'inputWrapperOrder'>,
-        DefaultProps<Selectors<typeof useStyles>> {
+    extends Omit<InputWrapperProps, 'children' | 'inputContainer' | 'inputWrapperOrder' | 'onChange'> {
     /**
      * The default value each new item should have
      */
@@ -113,11 +102,11 @@ interface CollectionProps<T>
      */
     addDisabledTooltip?: string;
     /**
-     * The spacing between the colleciton items
+     * The gap between the colleciton items
      *
      * @default 'xs'
      */
-    spacing?: MantineNumberSize;
+    gap?: MantineSpacing;
     /**
      * Whether the collection is required. When required is true, the collection will hide the remove button if there is only one item
      *
@@ -131,7 +120,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     addLabel: 'Add item',
     addDisabledTooltip: 'There is already an empty item',
     disabled: false,
-    spacing: 'xs',
+    gap: 'xs',
     required: false,
     getItemId: ({id}: any) => id,
 };
@@ -146,7 +135,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         disabled,
         draggable,
         children,
-        spacing,
+        gap,
         required,
         newItem,
         addLabel,
@@ -162,14 +151,11 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         getItemId,
 
         // Style props
-        classNames,
         className,
+        classNames,
         styles,
-        unstyled,
-
         ...others
-    } = useComponentDefaultProps('Collection', defaultProps as CollectionProps<T>, props);
-    const {classes, cx} = useStyles(null, {classNames, name: 'Collection', styles, unstyled});
+    } = useProps('Collection', defaultProps as CollectionProps<T>, props);
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -214,7 +200,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
             disabled={disabled}
             draggable={draggable}
             onRemove={() => onRemoveItem?.(index)}
-            styles={styles}
+            // classNames={classNames} what
             removable={!(required && hasOnlyOneItem)}
         >
             {children(item.data, index)}
@@ -229,7 +215,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
                 <Box>
                     <Button
                         variant="subtle"
-                        leftIcon={<AddSize16Px height={16} />}
+                        leftSection={<AddSize16Px height={16} />}
                         onClick={() => onInsertItem(newItem, value?.length ?? 0)}
                         disabled={!addAllowed}
                     >
@@ -259,9 +245,9 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
             modifiers={[restrictToVerticalAxis, restrictToParentElement]}
         >
             <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
-                <Box className={cx(classes.root, className)} {...others}>
+                <Box className={cx(CollectionClasses.root, className)} {...others}>
                     {_header}
-                    <Stack spacing={spacing}>
+                    <Stack gap={gap}>
                         {items}
                         {_addButton}
                         {_error}

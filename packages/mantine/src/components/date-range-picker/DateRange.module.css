@@ -1,0 +1,7 @@
+.picker {
+    border-bottom: 1px solid var(--mantine-color-gray-2);
+}
+
+.save {
+    border-top: 1px solid var(--mantine-color-gray-2);
+}

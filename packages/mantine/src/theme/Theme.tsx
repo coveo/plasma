@@ -3,6 +3,7 @@ import {color} from '@coveord/plasma-tokens';
 import {
     Alert,
     Anchor,
+    AppShellNavbar,
     Badge,
     Button,
     Checkbox,
@@ -15,10 +16,13 @@ import {
     MenuItem,
     Modal,
     ModalOverlay,
+    NavLink,
     Notification,
     Popover,
     Radio,
+    ScrollArea,
     SegmentedControl,
+    Select,
     Skeleton,
     Stepper,
     Tabs,
@@ -31,15 +35,20 @@ import {
 import {DatePicker} from '@mantine/dates';
 import AlertClasses from '../styles/Alert.module.css';
 import AnchorClasses from '../styles/Anchor.module.css';
+import AppShellNavBarClasses from '../styles/AppShellNavBar.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import DatePickerClasses from '../styles/DatePicker.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
+import ModalClasses from '../styles/Modal.module.css';
+import NavLinkClasses from '../styles/NavLink.module.css';
 import NotificationClasses from '../styles/Notification.module.css';
 import RadioClasses from '../styles/Radio.module.css';
+import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
+import SelectClasses from '../styles/Select.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
@@ -101,38 +110,14 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Button: Button.extend({
             classNames: {root: ButtonClasses.root},
         }),
-        Modal: Modal.extend({}),
-        // styles: (theme, {fullScreen, padding}, {size, variant}) => ({
-        //     content: {
-        //         flex: fullScreen
-        //             ? '0 0 100%'
-        //             : `0 0 ${getSize({
-        //                   size,
-        //                   sizes: {
-        //                       xs: rem(432),
-        //                       sm: rem(664),
-        //                       md: rem(896),
-        //                       lg: rem(1120),
-        //                       xl: rem('88%'),
-        //                   },
-        //               })}`,
-        //         overflow: 'auto',
-        //     },
-        //     title: {
-        //         width: '100%',
-        //         fontSize: theme.headings.sizes.h3.fontSize,
-        //         lineHeight: theme.headings.sizes.h3.lineHeight,
-        //         fontWeight: 500,
-        //     },
-        //     header: {
-        //         borderBottom: variant !== 'prompt' ? `1px solid ${color.primary.gray[3]}` : null,
-        //     },
-        //     body: {
-        //         '&:not(:only-child)': {
-        //             paddingTop: variant === 'prompt' ? 0 : getSize({size: padding, sizes: plasmaTheme.spacing}),
-        //         },
-        //     },
-        // }),
+        Modal: Modal.extend({
+            classNames: {
+                content: ModalClasses.content,
+                title: ModalClasses.title,
+                header: ModalClasses.header,
+                body: ModalClasses.body,
+            },
+        }),
         ModalOverlay: ModalOverlay.extend({
             defaultProps: {
                 color: color.primary.navy[9],
@@ -157,7 +142,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 maw: 300,
                 multiline: true,
                 withArrow: true,
-                withinPortal: true,
                 zIndex: 10000,
             },
         }),
@@ -243,65 +227,18 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Tabs: Tabs.extend({
             classNames: {list: TabsClasses.list, tab: TabsClasses.tab},
         }),
-        Select: {
-            styles: (theme) => ({
-                input: {
-                    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-                },
-                item: {
-                    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-
-                    '&[data-hovered]': {
-                        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[1],
-                    },
-
-                    '&[data-selected]': {
-                        backgroundColor: theme.fn.variant({variant: 'light'}).background,
-                        color: theme.fn.variant({variant: 'light'}).color,
-                        ...theme.fn.hover({backgroundColor: theme.fn.variant({variant: 'light'}).hover}),
-                    },
-                },
-            }),
-        },
-        NavLink: {
-            styles: (theme) => ({
-                root: {
-                    color: theme.colors.gray[6],
-                    borderRadius: `${theme.defaultRadius}px 0px 0px ${theme.defaultRadius}px`,
-                    ...theme.fn.hover({
-                        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[1],
-                    }),
-                },
-                label: {
-                    ref: getStylesRef('label'),
-                    fontWeight: 500,
-                },
-                children: {
-                    [`.${getStylesRef('label')}`]: {
-                        fontWeight: 300,
-                    },
-                },
-            }),
-        },
-        Navbar: {
-            styles: (theme) => ({
-                root: {
-                    borderColor: theme.colors.gray[3],
-                },
-            }),
-        },
-        ScrollArea: {
-            styles: {
-                viewport: {
-                    // https://github.com/radix-ui/primitives/issues/926
-                    '&[data-radix-scroll-area-viewport]': {
-                        '& > :first-of-type': {
-                            display: 'block !important',
-                        },
-                    },
-                },
-            },
-        },
+        Select: Select.extend({
+            classNames: {input: SelectClasses.input, option: SelectClasses.option},
+        }),
+        NavLink: NavLink.extend({
+            classNames: {root: NavLinkClasses.root, label: NavLinkClasses.label, children: NavLinkClasses.children},
+        }),
+        AppShellNavbar: AppShellNavbar.extend({
+            classNames: {navbar: AppShellNavBarClasses.navbar},
+        }),
+        ScrollArea: ScrollArea.extend({
+            classNames: {viewport: ScrollAreaClasses.viewport},
+        }),
         Divider: Divider.extend({
             defaultProps: {
                 color: 'gray.3',

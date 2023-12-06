@@ -3,18 +3,14 @@ import {useDidUpdate} from '@mantine/hooks';
 import dayjs from 'dayjs';
 import {FunctionComponent, useState} from 'react';
 import {useTable} from '../TableContext';
-import useStyles from './TableLastUpdated.styles';
+import TableLAstUpdatedClasses from './TableLastUpdated.module.css';
 import {TableLastUpdatedProps} from './TableLastUpdated.types';
 
 export const TableLastUpdated: FunctionComponent<TableLastUpdatedProps & {dependencies?: never}> = ({
     label = 'Last update:',
     dependencies,
-    classNames,
-    styles,
-    unstyled,
     ...others
 }) => {
-    const {classes} = useStyles(null, {name: 'TableLastUpdated', classNames, styles, unstyled});
     const {state} = useTable();
     const [time, setTime] = useState(new Date());
 
@@ -23,8 +19,8 @@ export const TableLastUpdated: FunctionComponent<TableLastUpdatedProps & {depend
     }, [state, ...dependencies]);
 
     return (
-        <Group className={classes.root} px="xl" position="right">
-            <Text size="xs" className={classes.label} {...others}>
+        <Group className={TableLAstUpdatedClasses.root} px="xl" justify="right">
+            <Text size="xs" className={TableLAstUpdatedClasses.label} {...others}>
                 {label}
                 <span role="timer">{dayjs(time).format('h:mm:ss A')}</span>
             </Text>

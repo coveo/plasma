@@ -1,13 +1,30 @@
 .input {
-    color: var(--mantine-color-gray-7);
+    @mixin light {
+        color: var(--mantine-color-gray-7);
+    }
+    @mixin dark {
+        color: var(--mantine-color-dark-0);
+    }
 }
 
 .option {
-    color: var(--mantine-color-gray-7);
-    &[data-hovered] {
-        color: var(--mantine-color-gray-1);
+    @mixin light {
+        color: var(--mantine-color-gray-7);
+        @mixin hover {
+            color: var(--mantine-color-gray-1);
+        }
+    }
+    @mixin dark {
+        color: var(--mantine-color-dark-0);
+        @mixin hover {
+            color: var(--mantine-color-dark-4);
+        }
     }
     &[data-selected] {
-        /* background-color */
+        background-color: var(--mantine-color-action-1);
+        color: var(--mantine-color-action-6);
+        @mixin hover {
+            background-color: var(--mantine-color-action-1) 0.65;
+        }
     }
 }

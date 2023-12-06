@@ -2,12 +2,21 @@
     &[data-full-screen] {
         flex: 0 0 100%;
     }
-
-    /* --modal-size-xs: rem(432);
-    --modal-size-sm: rem(664);
-    --modal-size-md: rem(896);
-    --modal-size-lg: rem(1120);
-    --modal-size-xl: rem('88%'); */
+    &[data-size='xs'] {
+        flex: 0 0 rem(432);
+    }
+    &[data-size='sm'] {
+        flex: 0 0 rem(664);
+    }
+    &[data-size='md'] {
+        flex: 0 0 rem(896);
+    }
+    &[data-size='lg'] {
+        flex: 0 0 rem(1120);
+    }
+    &[data-size='xl'] {
+        flex: 0 0 rem('88%');
+    }
 }
 
 .title {

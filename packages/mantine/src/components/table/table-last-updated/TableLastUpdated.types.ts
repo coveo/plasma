@@ -1,9 +1,6 @@
-import {DefaultProps, Selectors} from '@mantine/core';
-import useStyles from './TableLastUpdated.styles';
+import {TextProps} from '@mantine/core';
 
-type TableLastUpdatedStylesNames = Selectors<typeof useStyles>;
-
-export interface TableLastUpdatedProps extends DefaultProps<TableLastUpdatedStylesNames> {
+export interface TableLastUpdatedProps extends TextProps {
     /**
      * Label to contextualize the date
      *

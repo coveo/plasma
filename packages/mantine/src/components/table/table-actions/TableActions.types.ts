@@ -1,10 +1,6 @@
-import {DefaultProps, Selectors} from '@mantine/core';
 import {ReactNode} from 'react';
-import useStyles from './TableActions.styles';
 
-type TableActionsStylesNames = Selectors<typeof useStyles>;
-
-export interface TableActionsProps<T> extends DefaultProps<TableActionsStylesNames> {
+export interface TableActionsProps<T> {
     /**
      * Function that return components for the selected row or selected rows when multi row selection is enabled
      *

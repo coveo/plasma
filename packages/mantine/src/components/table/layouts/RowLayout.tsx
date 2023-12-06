@@ -10,7 +10,6 @@ import {TableSelectableColumn} from '../table-column/TableSelectableColumn';
 import {Th} from '../table-header/Th';
 import {TableLoading} from '../table-loading/TableLoading';
 import useStyles from './RowLayout.styles';
-import {TableLayoutProps} from './RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
 
 const RowLayoutHeader = <T,>({table, classNames, styles, unstyled}: TableLayoutProps<T>) => {
     const {multiRowSelectionEnabled, disableRowSelection} = useTable();

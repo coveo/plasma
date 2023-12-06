@@ -15,7 +15,7 @@ export const TableSelectableColumn: ColumnDef<unknown> = {
                     checked={table.getIsAllPageRowsSelected()}
                     indeterminate={table.getIsSomePageRowsSelected()}
                     onChange={table.getToggleAllPageRowsSelectedHandler()}
-                    sx={{display: 'flex'}}
+                    style={{display: 'flex'}}
                     aria-label={label}
                 />
             </Tooltip>
@@ -26,7 +26,7 @@ export const TableSelectableColumn: ColumnDef<unknown> = {
             checked={row.getIsSelected()}
             indeterminate={row.getIsSomeSelected()}
             onChange={row.getToggleSelectedHandler()}
-            sx={{display: 'flex'}}
+            style={{display: 'flex'}}
             aria-label="Select row"
         />
     ),

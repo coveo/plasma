@@ -20,7 +20,7 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     };
 
     return getPageCount() > 0 ? (
-        <Group spacing="sm">
+        <Group gap="sm">
             <Text fw={500}>{label}</Text>
             <SegmentedControl
                 value={state.pagination.pageSize.toString() ?? values?.[1].toString()}

@@ -1,21 +1,12 @@
 import {Grid, Group, Select, Text} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
-import {TableComponentsOrder} from '../Table.styles';
+import {TableComponentsOrder} from '../Table';
 import {useTable} from '../TableContext';
-import useStyles from './TablePredicate.styles';
+import TablePredicateClasses from './TablePredicate.module.css';
 import {TablePredicateProps} from './TablePredicate.types';
 
-export const TablePredicate: FunctionComponent<TablePredicateProps> = ({
-    id,
-    data,
-    label,
-    classNames,
-    styles,
-    unstyled,
-    ...others
-}) => {
-    const {classes} = useStyles(null, {name: 'TablePredicate', classNames, styles, unstyled});
+export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data, label, ...others}) => {
     const {form, setState} = useTable();
 
     const handleChange = (newValue: string) => {
@@ -29,17 +20,23 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({
     };
 
     return (
-        <Grid.Col span="content" order={TableComponentsOrder.Predicate} py="sm" className={classes.root} {...others}>
-            <Group spacing="xs" className={classes.wrapper}>
-                {label ? <Text className={classes.label}>{label}:</Text> : null}
+        <Grid.Col
+            span="content"
+            order={TableComponentsOrder.Predicate}
+            py="sm"
+            className={TablePredicateClasses.root}
+            {...others}
+        >
+            <Group gap="xs" className={TablePredicateClasses.wrapper}>
+                {label ? <Text className={TablePredicateClasses.label}>{label}:</Text> : null}
                 <Select
-                    withinPortal
+                    // withinPortal what
                     value={form.values.predicates[id]}
                     onChange={handleChange}
                     data={data}
                     aria-label={label ?? id}
                     searchable={data.length > 7}
-                    className={classes.select}
+                    className={TablePredicateClasses.select}
                 />
             </Group>
         </Grid.Col>

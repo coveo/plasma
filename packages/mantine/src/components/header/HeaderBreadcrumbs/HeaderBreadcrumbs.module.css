@@ -1,0 +1,7 @@
+.breadcrumb {
+    fontsize: var(--mantine-font-size-sm);
+    fontweight: 300;
+}
+.separator {
+    color: var(--mantine-color-gray-5);
+}

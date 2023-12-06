@@ -1,5 +1,5 @@
-import userEvent from '@testing-library/user-event';
 import {render, screen, waitFor} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import {BrowserPreview} from '../BrowserPreview';
 
 describe('BrowserPreview', () => {

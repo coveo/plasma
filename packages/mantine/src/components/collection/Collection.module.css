@@ -1,0 +1,19 @@
+.root {
+    position: 'relative';
+}
+.item {
+    @mixin light {
+        background-color: var(--mantine-color-white);
+    }
+    @mixin dark {
+        background-color: var(--mantine-color-black);
+    }
+    align-items: 'baseline';
+}
+.itemDragging {
+    box-shadow: var(--mantine-shadow-md);
+    zindex: 2;
+}
+.dragHandle {
+    cursor: 'move';
+}
