@@ -1,3 +1,12 @@
+## 52.26.5 (2023-12-07)
+
+
+### Bug Fixes
+
+* **react, table:** export missing interfaces (#3599) b82d35c, closes #3599
+
+
+
 ## 52.26.4 (2023-12-05)
 
 
