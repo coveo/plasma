@@ -1,16 +1,18 @@
-import {Container} from '@coveord/plasma-mantine';
+import {AppShell, Container} from '@coveord/plasma-mantine';
 import {LinkSvg, Section} from '@coveord/plasma-react';
 import {ExternalSize16Px, Icon} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
 import {Tile} from '../building-blocs/Tile';
 
 export const Home = () => (
-    <Container size="xl" className="home">
-        <WelcomeToPlasma />
-        <FoundationsPages />
-        <LayoutPages />
-        <FormPages />
-    </Container>
+    <AppShell.Main>
+        <Container size="xl" className="home">
+            <WelcomeToPlasma />
+            <FoundationsPages />
+            <LayoutPages />
+            <FormPages />
+        </Container>
+    </AppShell.Main>
 );
 
 const WelcomeToPlasma: FunctionComponent = () => (

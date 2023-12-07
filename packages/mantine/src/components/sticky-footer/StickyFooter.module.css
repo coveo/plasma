@@ -1,8 +1,8 @@
 .root {
     position: 'sticky';
     bottom: 0;
-    zindex: 10;
-    backgroundcolor: 'white';
+    z-index: 10;
+    background-color: 'white';
 }
 .footer {
     padding: var(--mantine-spacing-lg);

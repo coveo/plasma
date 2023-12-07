@@ -30,7 +30,7 @@ export const PageHeader: FunctionComponent<PageHeaderProps> = ({
         </Header.Breadcrumbs>
         <span data-coveo-field="title">{title}</span>
         <Header.Actions>
-            <Stack spacing="sm" align="flex-end">
+            <Stack gap="sm" align="flex-end">
                 {sourcePath && (
                     <GithubButton
                         ariaLabel="View source code on GitHub"
@@ -39,7 +39,7 @@ export const PageHeader: FunctionComponent<PageHeaderProps> = ({
                         View source
                     </GithubButton>
                 )}
-                <Box sx={{maxWidth: 264}}>
+                <Box style={{maxWidth: 264}}>
                     <Tile thumbnail={thumbnail} />
                 </Box>
             </Stack>

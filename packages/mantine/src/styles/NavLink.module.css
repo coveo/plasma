@@ -1,5 +1,5 @@
 .root {
-    color: var(mantine-color-gray-6);
+    color: var(--mantine-color-gray-6);
     border-radius: var(--mantine-radius-default) 0px 0px var(--mantine-radius-default);
     @mixin hover {
         @mixin light {

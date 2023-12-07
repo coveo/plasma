@@ -12,7 +12,7 @@
 }
 
 .content {
-    overflow: 'auto';
+    overflow: auto;
     flex-grow: 1;
 }
 

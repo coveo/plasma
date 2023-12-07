@@ -20,7 +20,7 @@
 }
 
 .title {
-    width: '100%';
+    width: 100%;
     font-size: var(--mantine-h3-font-size);
     line-height: var(--mantine-h3-line-height);
     font-weight: 500;

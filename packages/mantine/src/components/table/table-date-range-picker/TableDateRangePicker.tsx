@@ -8,6 +8,7 @@ import {Button} from '../../button';
 import {DateRangePickerInlineCalendar, DateRangePickerValue} from '../../date-range-picker';
 import {TableComponentsOrder} from '../Table';
 import {useTable} from '../TableContext';
+import TableDateRangePickerClasses from './TableDateRangePicker.module.css';
 import {TableDateRangePickerProps} from './TableDateRangePicker.types';
 
 export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> = ({
@@ -30,9 +31,17 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
     const formattedRange = `${formatDate(form.values.dateRange[0])} - ${formatDate(form.values.dateRange[1])}`;
 
     return (
-        <Grid.Col span="content" order={TableComponentsOrder.DateRangePicker} py="sm" {...others}>
-            <Group gap="xs">
-                <Text span>{formattedRange}</Text>
+        <Grid.Col
+            span="content"
+            order={TableComponentsOrder.DateRangePicker}
+            className={TableDateRangePickerClasses.root}
+            py="sm"
+            {...others}
+        >
+            <Group gap="xs" className={TableDateRangePickerClasses.wrapper}>
+                <Text span className={TableDateRangePickerClasses.label}>
+                    {formattedRange}
+                </Text>
                 <Popover opened={opened} onChange={toggleOpened} withinPortal>
                     <Popover.Target>
                         <Button variant="outline" color="gray" onClick={() => toggleOpened()} px="xs">

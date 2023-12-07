@@ -1,12 +1,12 @@
 .table {
-    width: '100%';
+    width: 100%;
 }
 
 .header {
-    position: 'sticky';
+    position: sticky;
     top: 0;
-    transition: 'box-shadow 150ms ease';
-    zindex: 1;
+    transition: box-shadow 150ms ease;
+    z-index: 1;
     @mixin light {
         background-color: var(--mantine-color-white);
     }
@@ -15,8 +15,8 @@
     }
 
     &::after {
-        content: '""';
-        position: 'absolute';
+        content: '';
+        position: absolute;
         left: 0;
         right: 0;
         bottom: 0;

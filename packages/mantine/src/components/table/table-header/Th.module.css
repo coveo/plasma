@@ -1,0 +1,35 @@
+.root {
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: left;
+    color: var(--mantine-color-gray-6);
+    height: var(--mantine-spacing-xl);
+    font-weight: 500;
+    font-size: var(--mantine-font-size-xs);
+
+    &:first-of-type {
+        padding-left: var(--mantine-spacing-xl);
+    }
+
+    &:last-of-type {
+        padding-right: var(--mantine-spacing-xl);
+    }
+    @mixin light {
+        background-color: var(--mantine-color-gray-0);
+    }
+    @mixin dark {
+        background-color: var(--mantine-color-gray-8);
+    }
+}
+
+.control {
+    &:hover {
+        @mixin light {
+            background-color: var(--mantine-color-gray-1);
+        }
+        @mixin dark {
+            background-color: var(--mantine-color-gray-7);
+        }
+    }
+}

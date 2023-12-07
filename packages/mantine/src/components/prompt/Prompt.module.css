@@ -2,7 +2,7 @@
     padding: 0;
 }
 .modalType {
-    overflow: 'hidden';
+    overflow: hidden;
     width: 550;
 }
 .innerBody {
@@ -10,31 +10,31 @@
 }
 .header {
     padding: var(--mantine-spacing-md) var(--mantine-spacing-xl);
-    width: '100%';
-    borderbottom: `1px solid var(--mantine-color-gray-3);
-    fontsize: var(--mantine-h3-font-size);
-    lineheight: var(--mantine-h3-line-height);
-    overflowwrap: 'anywhere';
+    width: 100%;
+    border-bottom: `1px solid var(--mantine-color-gray-3);
+    font-size: var(--mantine-h3-font-size);
+    line-height: var(--mantine-h3-line-height);
+    overflow-wrap: anywhere;
     &[data-variant='success'] {
-        backgroundcolor: var(--mantine-color-lime-6);
+        background-color: var(--mantine-color-lime-6);
         color: var(--plasma-color-primary-pure-white);
     }
     &[data-variant='warning'] {
-        backgroundcolor: var(--mantine-color-yellow-5);
+        background-color: var(--mantine-color-yellow-5);
         color: var(--plasma-color-primary-pure-white);
     }
     &[data-variant='critical'] {
-        backgroundcolor: var(--mantine-color-red-6);
+        background-color: var(--mantine-color-red-6);
         color: var(--plasma-color-primary-pure-white);
     }
     &[data-variant='info'] {
-        backgroundcolor: var(--mantine-color-navy-5);
+        background-color: var(--mantine-color-navy-5);
         color: var(--plasma-color-primary-pure-white);
     }
 }
 .whiteClose {
     color: var(--plasma-color-primary-pure-white);
-    '&:hover': {
+    &:hover {
         backgroundcolor: 'transparent';
     }
 }

@@ -1,5 +1,5 @@
 .root {
-    position: 'relative';
+    position: relative;
 }
 .item {
     @mixin light {
@@ -8,12 +8,12 @@
     @mixin dark {
         background-color: var(--mantine-color-black);
     }
-    align-items: 'baseline';
+    align-items: baseline;
 }
 .itemDragging {
     box-shadow: var(--mantine-shadow-md);
-    zindex: 2;
+    z-index: 2;
 }
 .dragHandle {
-    cursor: 'move';
+    cursor: move;
 }

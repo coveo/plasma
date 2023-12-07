@@ -35,7 +35,7 @@ import {
 import {DatePicker} from '@mantine/dates';
 import AlertClasses from '../styles/Alert.module.css';
 import AnchorClasses from '../styles/Anchor.module.css';
-import AppShellNavBarClasses from '../styles/AppShellNavBar.css';
+import AppShellNavBarClasses from '../styles/AppShellNavBar.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';

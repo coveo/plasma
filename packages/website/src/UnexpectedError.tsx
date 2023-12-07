@@ -7,12 +7,12 @@ export const UnexpectedError = () => {
     return (
         <Center>
             <Container size="xl">
-                <Stack spacing="xs">
+                <Stack gap="xs">
                     <Title order={3}>{error.message || 'Unexpected error'}</Title>
                     <Text size="sm">
                         <div>💥 An error occurred while rendering the page 👇</div>
                     </Text>
-                    <Code block sx={{overflowWrap: 'break-word', whiteSpace: 'pre-wrap'}}>
+                    <Code block style={{overflowWrap: 'break-word', whiteSpace: 'pre-wrap'}}>
                         {error.stack}
                     </Code>
                     <Text size="sm">

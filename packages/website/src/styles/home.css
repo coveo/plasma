@@ -23,7 +23,7 @@
             padding-top: 8px;
             color: transparent;
 
-            // hero 174 thin does not exist in typekit
+            /* hero 174 thin does not exist in typekit*/
             font-weight: 200;
             font-size: 140px;
             line-height: 95%;
@@ -62,11 +62,11 @@
 }
 
 @keyframes moveBackground {
-    0% {
+    from {
         background-position: 100% 0%;
     }
 
-    100% {
+    to {
         background-position: 33.7% 100%;
     }
 }

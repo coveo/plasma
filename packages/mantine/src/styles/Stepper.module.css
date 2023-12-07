@@ -4,15 +4,15 @@
         &.mantine-Stepper-stepDescription {
             color: var(--mantine-color-gray-5);
         }
-        &.mantine-Stepper-stepIcon: {
+        &.mantine-Stepper-stepIcon {
             border-color: var(--mantine-color-gray-1);
         }
     }
 }
-.stepIcon: {
+.stepIcon {
     font-weight: 500;
     background-color: var(--mantine-color-gray-1);
-    color: 'inherit';
+    color: inherit;
     border: rem(1) solid var(--mantine-color-gray-3);
     &[data-progress] {
         background-color: var(--mantine-color-white);
@@ -23,11 +23,11 @@
         color: var(--mantine-color-lime-6);
     }
 }
-.stepCompletedIcon: {
+.stepCompletedIcon {
     color: var(--mantine-color-lime-6);
     font-size: rem(16);
 }
-.stepDescription: {
+.stepDescription {
     color: var(--mantine-color-gray-7);
     &[data-size='xs'] {
         font-size: var(--mantine-font-size-xs);
@@ -45,10 +45,10 @@
         font-size: var(--mantine-font-size-xl);
     }
 }
-.separator: {
+.separator {
     height: rem(1);
     background-color: var(--mantine-color-gray-3);
 }
-.verticalSeparator: {
+.verticalSeparator {
     border-left: rem(1) solid var(--mantine-color-gray-3);
 }

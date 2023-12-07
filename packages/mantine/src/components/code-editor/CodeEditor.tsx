@@ -28,7 +28,7 @@ interface CodeEditorProps
             InputWrapperProps,
             'inputContainer' | 'inputWrapperOrder' | 'classNames' | 'styles' | 'vars' | 'onChange'
         >,
-        StackProps {
+        Omit<StackProps, 'onChange'> {
     /**
      * The language syntax of the editor
      *

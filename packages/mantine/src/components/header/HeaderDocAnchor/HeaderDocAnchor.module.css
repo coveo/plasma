@@ -1,6 +1,6 @@
 .tooltip {
 }
 .anchor {
-    marginleft: var(--mantine-spacing-xs);
-    verticalalign: 'middle';
+    margin-left: var(--mantine-spacing-xs);
+    vertical-align: middle;
 }

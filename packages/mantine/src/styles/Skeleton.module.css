@@ -1,10 +1,10 @@
 .root {
     &[data-visible] {
         &::before {
-            z-index: 'unset';
+            z-index: unset;
         }
         &::after {
-            z-index: 'unset';
+            z-index: unset;
         }
     }
 }

@@ -1,6 +1,6 @@
 .root {
-    flexdirection: 'row-reverse';
-    flexwrap: 'wrap-reverse';
+    flexdirection: row-reverse;
+    flexwrap: wrap-reverse;
     background: repeating-linear-gradient(
         var(--mantine-color-gray-1),
         var(--mantine-color-gray-1) 68px,
@@ -10,5 +10,5 @@
     borderbottom: 1px solid var(--mantine-color-gray-3);
 }
 .multiSelectInfo {
-    display: 'flex';
+    display: flex;
 }

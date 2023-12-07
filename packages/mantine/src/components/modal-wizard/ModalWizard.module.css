@@ -1,10 +1,10 @@
 .content {
-    display: 'flex';
-    flex-direction: 'column';
+    display: flex;
+    flex-direction: column;
 }
 
 .body {
     flex: 1;
-    display: 'flex';
-    flexdirection: 'column';
+    display: flex;
+    flex-direction: column;
 }

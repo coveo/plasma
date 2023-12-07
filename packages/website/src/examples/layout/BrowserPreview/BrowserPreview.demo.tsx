@@ -34,20 +34,20 @@ const Demo = ({pageSize = 5, numberOfItems = 40}: DemoProps) => {
     return (
         <BrowserPreview>
             <Stack style={{flexGrow: 1}}>
-                <Stack spacing="xl" pb="sm">
+                <Stack gap="xl" pb="sm">
                     {data[page - 1].map((product) => (
-                        <Stack spacing={0}>
+                        <Stack gap={0}>
                             <Text size="md" color="gray.7">
                                 {product.name}
                             </Text>
                             <Text size="xs" color="gray.6" span>
-                                <Text size="xs" weight={500} span>
+                                <Text size="xs" fw={500} span>
                                     Dept:{' '}
                                 </Text>
                                 {product.department}
                             </Text>
                             <Text size="xs" color="gray.6" span>
-                                <Text size="xs" weight={500} span>
+                                <Text size="xs" fw={500} span>
                                     Price:{' '}
                                 </Text>
                                 {product.price}$
@@ -56,7 +56,7 @@ const Demo = ({pageSize = 5, numberOfItems = 40}: DemoProps) => {
                     ))}
                 </Stack>
                 <Flex align="flex-end" justify="center" style={{flexGrow: 1}}>
-                    <Pagination value={page} total={numberOfPages} onChange={setPage} align="center" />
+                    <Pagination value={page} total={numberOfPages} onChange={setPage} style={{align: 'center'}} />
                 </Flex>
             </Stack>
         </BrowserPreview>

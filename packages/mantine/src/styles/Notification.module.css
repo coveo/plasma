@@ -9,7 +9,7 @@
 }
 
 .icon {
-    barckground-color: 'transparent';
+    barckground-color: transparent;
     margin-right: var(--mantine-spacing-sm);
 }
 

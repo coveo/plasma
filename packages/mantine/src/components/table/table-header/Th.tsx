@@ -1,8 +1,9 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
-import {Group, UnstyledButton, useComponentDefaultProps} from '@mantine/core';
+import {Group, UnstyledButton, useProps} from '@mantine/core';
 import {defaultColumnSizing, flexRender} from '@tanstack/react-table';
+import cx from 'clsx';
 import {AriaAttributes} from 'react';
-import useStyles from './Th.styles';
+import ThClasses from './Th.module.css';
 import {SortState, ThProps} from './Th.types';
 
 const SortingIcons: ThProps['sortingIcons'] = {
@@ -22,7 +23,7 @@ const defaultProps: Partial<ThProps> = {
 };
 
 export const Th = <T,>(props: ThProps<T>) => {
-    const {header, classNames, styles, unstyled, sortingIcons, ...others} = useComponentDefaultProps(
+    const {header, sortingIcons, ...others} = useProps(
         'PlasmaTableColumnHeader',
         defaultProps as Partial<ThProps<T>>,
         props,
@@ -35,14 +36,23 @@ export const Th = <T,>(props: ThProps<T>) => {
         maxSize: header.column.columnDef.maxSize,
     };
 
-    const {classes, cx} = useStyles(columnSizing, {name: 'PlasmaTableColumnHeader', classNames, styles, unstyled});
-
     if (header.isPlaceholder) {
         return null;
     }
 
     if (!header.column.getCanSort()) {
-        return <th className={classes.root}>{flexRender(header.column.columnDef.header, header.getContext())}</th>;
+        return (
+            <th
+                className={ThClasses.root}
+                style={{
+                    width: columnSizing.size ?? 'auto',
+                    minWidth: columnSizing.minSize,
+                    maxWidth: columnSizing.maxSize,
+                }}
+            >
+                {flexRender(header.column.columnDef.header, header.getContext())}
+            </th>
+        );
     }
 
     const onSort = header.column.getToggleSortingHandler();
@@ -53,11 +63,11 @@ export const Th = <T,>(props: ThProps<T>) => {
         <UnstyledButton
             component="th"
             onClick={onSort}
-            className={cx(classes.root, classes.control)}
+            className={cx(ThClasses.root, ThClasses.control)}
             aria-sort={SortingLabels[sortingOrder]}
             {...others}
         >
-            <Group noWrap spacing="xs">
+            <Group wrap="nowrap" gap="xs">
                 {flexRender(header.column.columnDef.header, header.getContext())}
                 <Icon height={16} width={16} />
             </Group>

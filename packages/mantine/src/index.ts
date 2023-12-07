@@ -1,6 +1,7 @@
-import '@mantine/core/styles.css';
 import {MantineColorsTuple} from '@mantine/core';
+import '@mantine/core/styles.css';
 
+import {noop} from '@mantine/core';
 import {PlasmaColors} from './theme/PlasmaColors';
 
 export * from '@mantine/carousel';
@@ -13,6 +14,7 @@ export * from '@mantine/notifications';
 export {type NotificationsProps} from '@mantine/notifications';
 export * from '@tanstack/table-core';
 export * from './components';
+export {noop};
 
 // explicitly overriding mantine components
 export {

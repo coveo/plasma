@@ -2,7 +2,6 @@ import {
     ActionIcon,
     Box,
     Center,
-    createStyles,
     Flex,
     ScrollArea,
     SimpleGrid,
@@ -12,64 +11,21 @@ import {
     useClipboard,
 } from '@coveord/plasma-mantine';
 import {CheckSize16Px, CopySize16Px, PlaySize16Px} from '@coveord/plasma-react-icons';
-import {Prism} from '@mantine/prism';
-import vsDark from 'prism-react-renderer/themes/vsDark';
-import vsLight from 'prism-react-renderer/themes/vsLight';
+import {CodeHighlight} from '@mantine/code-highlight';
 import {ReactNode} from 'react';
+import DemoClasses from './Demo.module.css';
 import getCodeSandboxLink from './getCodeSandboxLink';
 
 const MAX_HEIGHT = 500;
-const MIN_HEIGHT = 100;
+// const MIN_HEIGHT = 100;
 
 interface DemoProps extends DemoComponentProps {
     snippet: string;
     children?: ReactNode;
 }
 
-const useStyles = createStyles((theme, {grow, noPadding}: DemoComponentProps) => ({
-    root: {},
-    sandbox: {
-        border: `1px solid ${theme.colors.gray[3]}`,
-        borderRadius: theme.radius.md,
-        overflow: 'hidden',
-    },
-    actions: {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        zIndex: 2,
-        padding: theme.spacing.xs,
-        backgroundColor: '#1E1E1E',
-        'button:hover, a:hover': {
-            backgroundColor: theme.colors.gray[8],
-        },
-    },
-    preview: {
-        backgroundColor: 'white',
-        minHeight: 100,
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    previewWrapper: {
-        padding: noPadding ? 0 : theme.spacing.md,
-        height: grow ? MAX_HEIGHT : '100%',
-    },
-    flexPreviewWrapper: {
-        padding: noPadding ? 0 : theme.spacing.md,
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: 0,
-        flex: 1,
-    },
-    code: {
-        minHeight: 100,
-        position: 'relative',
-        backgroundColor: '#1E1E1E',
-    },
-}));
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Demo = ({children, snippet, center = false, grow = false, title, layout, noPadding, maxHeight}: DemoProps) => {
-    const {classes} = useStyles({center, grow, noPadding});
     const clipboard = useClipboard();
     const createSandbox = async () => {
         try {
@@ -82,38 +38,37 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
     };
 
     return (
-        <div className={classes.root}>
+        <div className={DemoClasses.root}>
             {title ? (
                 <Title order={5} mb="xs">
                     {title}
                 </Title>
             ) : null}
-            <SimpleGrid className={classes.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
-                <Box<'div' | typeof Center> component={center ? Center : 'div'} className={classes.preview}>
+            <SimpleGrid className={DemoClasses.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
+                <Box<'div' | typeof Center> component={center ? Center : 'div'} className={DemoClasses.preview}>
                     {maxHeight ? (
                         <Flex direction={'column'} mah={maxHeight} style={{flex: 1}}>
-                            <div className={classes.flexPreviewWrapper}>{children}</div>
+                            <div className={DemoClasses.flexPreviewWrapper}>{children}</div>
                         </Flex>
                     ) : (
                         <ScrollArea.Autosize mah={MAX_HEIGHT}>
-                            <div className={classes.previewWrapper}>{children}</div>
+                            <div className={DemoClasses.previewWrapper}>{children}</div>
                         </ScrollArea.Autosize>
                     )}
                 </Box>
-                <div className={classes.code}>
-                    <Prism
-                        withLineNumbers
+                <div className={DemoClasses.code}>
+                    <CodeHighlight
+                        // withLineNumbers
                         language="tsx"
-                        colorScheme="dark"
-                        getPrismTheme={(_theme, colorScheme) => (colorScheme === 'light' ? vsLight : vsDark)}
-                        radius={0}
-                        noCopy
-                        scrollAreaComponent={ScrollArea.Autosize}
-                        styles={{scrollArea: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
-                    >
-                        {snippet}
-                    </Prism>
-                    <Stack className={classes.actions} spacing="xs">
+                        // colorScheme="dark"
+                        code={snippet}
+                        // getPrismTheme={(_theme, colorScheme) => (colorScheme === 'light' ? vsLight : vsDark)}
+                        // radius={0}
+                        withCopyButton={false}
+                        // scrollAreaComponent={ScrollArea.Autosize}
+                        // styles={{scrollArea: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
+                    />
+                    <Stack className={DemoClasses.actions} gap="xs">
                         <Tooltip label={clipboard.copied ? 'Copied' : 'Copy'} position="left">
                             <ActionIcon radius="sm" onClick={() => clipboard.copy(snippet)}>
                                 {clipboard.copied ? <CheckSize16Px height={16} /> : <CopySize16Px height={16} />}

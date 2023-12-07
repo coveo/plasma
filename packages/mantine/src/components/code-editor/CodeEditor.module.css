@@ -11,15 +11,15 @@
         background-color: var(--mantine-color-black);
     }
     height: 100%;
-    outline-width: 'thin';
+    outline-width: thin;
 }
 
 .valid {
     outline-color: auto;
-    outline-style: 'none';
+    outline-style: none;
 }
 
 .error {
     outline-color: var(--mantine-color-red-6);
-    outline-style: 'solid';
+    outline-style: solid;
 }

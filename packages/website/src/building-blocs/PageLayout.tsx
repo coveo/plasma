@@ -1,4 +1,4 @@
-import {Box, Container, Divider, Stack, Tabs} from '@coveord/plasma-mantine';
+import {AppShell, Box, Container, Divider, Stack, Tabs} from '@coveord/plasma-mantine';
 import {Fragment, FunctionComponent, ReactNode} from 'react';
 
 import {GuidelinesTab} from './GuidelinesTab';
@@ -30,39 +30,41 @@ export const PageLayout = ({
     sourcePath,
     ...contentProps
 }: PageLayoutProps) => (
-    <Tabs
-        defaultValue="implementation"
-        styles={{tabsList: {borderBottom: 'none'}, root: {display: 'flex', height: '100%'}}}
-    >
-        <Stack spacing={0} align="stretch" sx={{flexBasis: 'auto', flexGrow: 1}}>
-            <Container size="xl" w="100%">
-                <PageHeader
-                    sourcePath={sourcePath}
-                    section={section}
-                    thumbnail={thumbnail}
-                    title={title}
-                    description={description}
-                />
-                <Tabs.List pl="xl">
-                    <Tabs.Tab value="implementation">Implementation</Tabs.Tab>
-                    <Tabs.Tab value="guide">Guidelines</Tabs.Tab>
-                </Tabs.List>
-            </Container>
-            <Divider />
-            <Box bg="gray.0" sx={{flexBasis: 'auto', flexGrow: 1}}>
-                <Container size="xl">
-                    <Tabs.Panel value="implementation">
-                        <Content id={id} {...contentProps}>
-                            {children}
-                        </Content>
-                    </Tabs.Panel>
-                    <Tabs.Panel value="guide">
-                        <GuidelinesTab id={id} />
-                    </Tabs.Panel>
+    <AppShell.Main>
+        <Tabs
+            defaultValue="implementation"
+            styles={{list: {borderBottom: 'none'}, root: {display: 'flex', height: '100%'}}}
+        >
+            <Stack gap={0} align="stretch" style={{flexBasis: 'auto', flexGrow: 1}}>
+                <Container size="xl" w="100%">
+                    <PageHeader
+                        sourcePath={sourcePath}
+                        section={section}
+                        thumbnail={thumbnail}
+                        title={title}
+                        description={description}
+                    />
+                    <Tabs.List pl="xl">
+                        <Tabs.Tab value="implementation">Implementation</Tabs.Tab>
+                        <Tabs.Tab value="guide">Guidelines</Tabs.Tab>
+                    </Tabs.List>
                 </Container>
-            </Box>
-        </Stack>
-    </Tabs>
+                <Divider />
+                <Box bg="gray.0" style={{flexBasis: 'auto', flexGrow: 1}}>
+                    <Container size="xl">
+                        <Tabs.Panel value="implementation">
+                            <Content id={id} {...contentProps}>
+                                {children}
+                            </Content>
+                        </Tabs.Panel>
+                        <Tabs.Panel value="guide">
+                            <GuidelinesTab id={id} />
+                        </Tabs.Panel>
+                    </Container>
+                </Box>
+            </Stack>
+        </Tabs>
+    </AppShell.Main>
 );
 
 const Content: FunctionComponent<
