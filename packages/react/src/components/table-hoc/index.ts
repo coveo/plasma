@@ -18,4 +18,4 @@ export * from './TableWithSort';
 export * from './TableWithUrlState';
 export * from './actions';
 export * from './reducers';
-export {TableHOCUtils} from './utils/TableHOCUtils';
+export {TableHOCUtils, type ITableHOCCompositeState, type ITableHOCPredicateValue} from './utils/TableHOCUtils';
