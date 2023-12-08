@@ -19,7 +19,7 @@ import DemoClasses from './Demo.module.css';
 import getCodeSandboxLink from './getCodeSandboxLink';
 
 const MAX_HEIGHT = 500;
-// const MIN_HEIGHT = 100;
+const MIN_HEIGHT = 100;
 
 interface DemoProps extends DemoComponentProps {
     snippet: string;

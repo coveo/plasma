@@ -12,6 +12,12 @@ export const resolver: CSSVariablesResolver = (theme) => ({
         '--mantine-color-primary-7': theme.colors[theme.primaryColor][7],
         '--mantine-color-primary-8': theme.colors[theme.primaryColor][8],
         '--mantine-color-primary-9': theme.colors[theme.primaryColor][9],
+        '--modal-size-xs': theme.other.modalSizeXS, // NOT SEEM TO WORK HAHA
+        '--modal-size-sm': theme.other.modalSizeSM,
+        '--modal-size-md': theme.other.modalSizeMD,
+        '--modal-size-lg': theme.other.modalSizeLG,
+        '--modal-size-xl': theme.other.modalSizeXL,
+        '--modal-size': theme.other.modalSizeMD,
     },
     light: {},
     dark: {},

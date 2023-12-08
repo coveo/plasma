@@ -32,6 +32,7 @@ import {
     Title,
     Tooltip,
     createTheme,
+    rem,
 } from '@mantine/core';
 import {DatePicker} from '@mantine/dates';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
@@ -259,5 +260,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 color: 'gray.3',
             },
         }),
+    },
+    other: {
+        modalSizeXS: rem(432),
+        modalSizeSM: rem(664),
+        modalSizeMD: rem(896),
+        modalSizeLG: rem(1120),
+        modalSizeXL: rem('88%'),
     },
 });
