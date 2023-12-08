@@ -26,7 +26,7 @@ export const PageHeader: FunctionComponent<PageHeaderProps> = ({
 }) => (
     <Header description={<span data-coveo-field="description">{description}</span>}>
         <Header.Breadcrumbs>
-            <Text color="gray.6">{section}</Text>
+            <Text c="gray.6">{section}</Text>
         </Header.Breadcrumbs>
         <span data-coveo-field="title">{title}</span>
         <Header.Actions>

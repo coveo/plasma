@@ -17,6 +17,7 @@
     &[data-size='xl'] {
         flex: 0 0 rem('88%');
     }
+    overflow: auto;
 }
 
 .title {
@@ -28,7 +29,7 @@
 
 .header {
     &[data-variant='prompt'] {
-        border-bottom: var(--lime);
+        border-bottom: 1px solid var(--mantine-color-gray-3);
     }
 }
 

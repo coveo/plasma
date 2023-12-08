@@ -1,5 +1,5 @@
 .root {
     &:is(h1, h2, h3, h4, h5, h6) {
-        letterspacing: 0.011em;
+        letter-spacing: 0.011em;
     }
 }

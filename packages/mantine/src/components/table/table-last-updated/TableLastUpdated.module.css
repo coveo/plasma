@@ -1,5 +1,5 @@
 .root {
-    minheight: 98px;
+    min-height: 98px;
 }
 .label {
     color: var(--mantine-color-gray-6);

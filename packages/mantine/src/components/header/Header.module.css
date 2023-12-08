@@ -9,13 +9,14 @@
     }
 }
 .title {
-    word-break: 'break-word';
+    word-break: break-word;
     &[data-variant='page'] {
         color: var(--mantine-color-gray-5);
     }
     &[data-variant='modal'] {
         color: undefined;
     }
+    line-height: var(--mantine-line-height-md);
 }
 .description {
     color: var(--mantine-color-gray-6);

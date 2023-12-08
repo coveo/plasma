@@ -2,7 +2,7 @@
 }
 .sandbox {
     border: 1px solid var(--mantine-color-gray-3);
-    borderradius: var(--mantine-radius-md);
+    border-radius: var(--mantine-radius-md);
     overflow: hidden;
 }
 .actions {
@@ -19,23 +19,19 @@
 }
 .preview {
     background-color: white;
-    min-height: 100;
+    min-height: 100px;
     display: flex;
     flex-direction: column;
 }
-.previewWrapper {
-    /*padding: noPadding ? 0 : theme.spacing.md;*/
-    /*height: grow ? MAX_HEIGHT : '100%';*/
-}
+
 .flexPreviewWrapper {
-    /*padding: noPadding ? 0 : theme.spacing.md;*/
     display: flex;
     flex-direction: column;
     min-height: 0;
     flex: 1;
 }
 .code {
-    min-height: 100;
+    min-height: 100px;
     position: relative;
     background-color: '#1E1E1E';
 }

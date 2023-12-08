@@ -41,7 +41,7 @@ interface HeaderType {
 
 const defaultProps: Partial<HeaderProps> = {
     variant: 'page',
-    justify: 'apart',
+    justify: 'space-between',
     wrap: 'nowrap',
 };
 
@@ -61,10 +61,10 @@ export const Header: HeaderType = (props: HeaderProps) => {
     );
     return (
         <>
-            <Group className={cx(className, HeaderClasses.root)} {...others}>
+            <Group variant={variant} className={cx(className, HeaderClasses.root)} {...others}>
                 <Stack gap={0}>
                     {breadcrumbs}
-                    <Title order={variant === 'page' ? 1 : 3} className={HeaderClasses.title}>
+                    <Title variant={variant} order={variant === 'page' ? 1 : 3} className={HeaderClasses.title}>
                         {otherChildren}
                         {docAnchor}
                     </Title>

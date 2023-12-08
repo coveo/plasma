@@ -35,7 +35,7 @@
 .whiteClose {
     color: var(--plasma-color-primary-pure-white);
     &:hover {
-        backgroundcolor: 'transparent';
+        background-color: transparent;
     }
 }
 .title {

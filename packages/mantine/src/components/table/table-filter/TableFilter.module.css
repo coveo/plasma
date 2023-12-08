@@ -1,7 +1,7 @@
 .root {
 }
 .wrapper {
-    marginbottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 .empty {
     color: var(--mantine-color-gray-4);
