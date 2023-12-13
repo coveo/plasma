@@ -18,18 +18,13 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({children, ...o
             justify="flex-start"
             align="center"
             gutter="sm"
-            p={0}
-            pl="md"
-            pr="lg"
-            m={0}
-            className={TableHeaderClasses.root}
+            classNames={{inner: TableHeaderClasses.inner}}
             {...others}
         >
             {multiRowSelectionEnabled && selectedRows.length > 0 ? (
                 <Grid.Col
                     span="auto"
-                    py="sm"
-                    className={TableHeaderClasses.multiSelectInfo}
+                    classNames={{col: {...TableHeaderClasses.multiSelectInfo, ...TableHeaderClasses.col}}}
                     order={TableComponentsOrder.MultiSelectInfo}
                 >
                     <Tooltip label="Unselect all">

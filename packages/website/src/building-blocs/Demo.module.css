@@ -12,13 +12,12 @@
     z-index: 2;
     padding: var(--mantine-spacing-xs);
     background-color: '#1E1E1E';
-    &button:hover,
-    &a:hover {
+    & button:hover,
+    & a:hover {
         background-color: var(--mantine-color-gray-8);
     }
 }
 .preview {
-    background-color: white;
     min-height: 100px;
     display: flex;
     flex-direction: column;

@@ -25,6 +25,7 @@ export const Prompt: PromptType = ({children, ...otherProps}) => {
     const footer = convertedChildren.find((child) => child.type === PromptFooter);
 
     const classNames = {
+        root: PromptClasses.root,
         header: PromptClasses.header,
         close: PromptClasses.whiteClose,
         body: PromptClasses.body,

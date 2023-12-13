@@ -23,6 +23,7 @@ const CopyToClipboardButton: React.FunctionComponent<Omit<CopyToClipboardProps, 
         {({copied, copy}) => (
             <Tooltip label={copied ? 'Copied' : 'Copy'}>
                 <ActionIcon
+                    variant="subtle"
                     color={copied ? 'success' : 'gray'}
                     onClick={() => {
                         copy();

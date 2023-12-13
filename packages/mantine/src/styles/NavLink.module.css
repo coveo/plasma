@@ -1,4 +1,5 @@
 .root {
+    line-height: var(--mantine-line-height);
     color: var(--mantine-color-gray-6);
     border-radius: var(--mantine-radius-default) 0px 0px var(--mantine-radius-default);
     @mixin hover {

@@ -27,7 +27,7 @@ export const BrowserPreview = ({
     return (
         <Stack className={cx(BrowserPreviewClasses.root, className)} gap={0} maw={544} mih={0} {...others}>
             <Box>
-                <Group className={BrowserPreviewClasses.header} justify="apart" px="sm" py="xs" bg="gray.1">
+                <Group className={BrowserPreviewClasses.header} justify="space-between" px="sm" py="xs" bg="gray.1">
                     <Group gap="xs">
                         <Title c="gray.6" order={4}>
                             Preview

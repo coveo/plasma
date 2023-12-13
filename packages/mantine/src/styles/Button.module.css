@@ -3,4 +3,7 @@
     &[data-variant='outline'] {
         background-color: var(--mantine-color-white);
     }
+    &[data-disabled] {
+        background-color: var(--mantine-color-gray-2);
+    }
 }

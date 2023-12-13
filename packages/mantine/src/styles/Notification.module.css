@@ -1,6 +1,6 @@
 .root {
     border-color: var(--mantine-color-gray-3);
-    barckground-color: var(--mantine-color-gray-0);
+    background-color: var(--mantine-color-gray-0);
     box-shadow: var(--mantine-shadow-lg);
     padding: var(--mantine-spacing-sm);
     &[data-with-icon] {
@@ -9,7 +9,7 @@
 }
 
 .icon {
-    barckground-color: transparent;
+    background-color: transparent;
     margin-right: var(--mantine-spacing-sm);
 }
 

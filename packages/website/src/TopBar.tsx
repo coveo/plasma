@@ -5,7 +5,7 @@ import StandaloneSearchBar from './search/StandaloneSearchBar';
 
 const TopBar = () => (
     <Group
-        justify="apart"
+        justify="space-between"
         px="lg"
         py="xs"
         style={(theme) => ({

@@ -1,6 +1,7 @@
 import {CheckSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
+    ActionIcon,
     Alert,
     Anchor,
     AppShellNavbar,
@@ -31,9 +32,9 @@ import {
     Title,
     Tooltip,
     createTheme,
-    rem,
 } from '@mantine/core';
 import {DatePicker} from '@mantine/dates';
+import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import AnchorClasses from '../styles/Anchor.module.css';
 import AppShellNavBarClasses from '../styles/AppShellNavBar.module.css';
@@ -94,6 +95,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     },
     colors: PlasmaColors,
     components: {
+        ActionIcon: ActionIcon.extend({
+            classNames: {root: ActionIconClasses.root},
+        }),
         Alert: Alert.extend({
             defaultProps: {
                 icon: <InfoSize24Px height={24} />,
@@ -246,12 +250,5 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 color: 'gray.3',
             },
         }),
-    },
-    other: {
-        modalSizeXS: rem(432),
-        modalSizeSM: rem(664),
-        modalSizeMD: rem(896),
-        modalSizeLG: rem(1120),
-        modalSizeXL: rem('88%'),
     },
 });

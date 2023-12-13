@@ -1,5 +1,4 @@
 import react from '@vitejs/plugin-react-swc';
-import autoprefixer from 'autoprefixer';
 import path from 'node:path';
 import {defineConfig} from 'vite';
 import basePath from './build/getBasePath';
@@ -21,10 +20,5 @@ export default defineConfig({
             {find: /@examples\/(.*)/, replacement: path.resolve(__dirname, 'src/examples/$1')},
             {find: '@demo', replacement: path.resolve(__dirname, 'src/building-blocs/Demo.tsx')},
         ],
-    },
-    css: {
-        postcss: {
-            plugins: [autoprefixer()],
-        },
     },
 });

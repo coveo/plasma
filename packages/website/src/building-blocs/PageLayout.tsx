@@ -33,7 +33,10 @@ export const PageLayout = ({
     <AppShell.Main>
         <Tabs
             defaultValue="implementation"
-            styles={{list: {borderBottom: 'none'}, root: {display: 'flex', height: '100%'}}}
+            styles={{
+                list: {borderBottom: 'none'},
+                root: {display: 'flex', height: '100%'},
+            }}
         >
             <Stack gap={0} align="stretch" style={{flexBasis: 'auto', flexGrow: 1}}>
                 <Container size="xl" w="100%">

@@ -79,7 +79,7 @@ const InternalNavLink: FunctionComponent<ComponentProps<typeof Link> & Omit<NavL
 
 const MantineNavigation = () => (
     <>
-        <AppShell.Section grow component={ScrollArea} pl="xs">
+        <AppShell.Section grow component={ScrollArea} pl="xs" pt="sm">
             <InternalNavLink label="Home" to="/" leftSection={<HomeSize16Px height={16} />} />
             <NavLink
                 label="Brand"
@@ -120,7 +120,7 @@ const MantineNavigation = () => (
             </NavLink>
         </AppShell.Section>
         <Divider />
-        <AppShell.Section>
+        <AppShell.Section pb="sm">
             <InternalNavLink to="/legacy" label="Deprecated components" leftSection={<DeleteSize16Px height={16} />} />
         </AppShell.Section>
     </>
@@ -130,7 +130,7 @@ const LegacyNavigation = () => {
     const {pathname} = useLocation();
     return (
         <>
-            <AppShell.Section grow component={ScrollArea}>
+            <AppShell.Section grow component={ScrollArea} pt="sm">
                 <SideNavigation>
                     <SideNavigationMenuSection
                         isActive={pathname === '/legacy'}

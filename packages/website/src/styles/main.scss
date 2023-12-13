@@ -3,6 +3,10 @@
 @import '@coveord/plasma-style/scss/variables';
 @import './_syntax-highlighting.css';
 
+body {
+    font-size: 16px;
+}
+
 .sentence-case {
     text-transform: lowercase;
 

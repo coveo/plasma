@@ -1,11 +1,12 @@
 import {AppShell, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import {Provider} from 'react-redux';
 import {Outlet} from 'react-router-dom';
+import {resolver} from './CSSVariableResolver';
 import {Navigation} from './Navigation';
 import {Store} from './Store';
 import TopBar from './TopBar';
-import LegacyWarningBanner from './building-blocs/LegacyWarningBanner';
 import {EngineProvider} from './search/engine/EngineProvider';
 import './styles/colors.css';
 import './styles/github-button.css';
@@ -21,12 +22,11 @@ import './styles/tile.css';
 const App = () => (
     <EngineProvider>
         <Provider store={Store}>
-            <Plasmantine>
+            <Plasmantine resolver={resolver}>
                 <Notifications position="top-center" />
                 <AppShell navbar={{width: 245, breakpoint: 'sm'}} header={{height: 100}}>
                     <AppShell.Header>
                         <TopBar />
-                        <LegacyWarningBanner />
                     </AppShell.Header>
                     <AppShell.Navbar>
                         <Navigation />
