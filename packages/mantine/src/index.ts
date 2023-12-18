@@ -1,5 +1,4 @@
 import {MantineColorsTuple} from '@mantine/core';
-import '@mantine/core/styles.css';
 
 import {noop} from '@mantine/core';
 import {PlasmaColors} from './theme/PlasmaColors';
