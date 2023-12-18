@@ -19,7 +19,7 @@ export const TableActions = <T,>({children, ...others}: TableActionsProps<T>): R
             span="content"
             order={TableComponentsOrder.Actions}
             py="sm"
-            className={TableActionsClasses.root}
+            classNames={{col: TableActionsClasses.col}}
             {...others}
         >
             <Group gap="xs" className={TableActionsClasses.wrapper}>

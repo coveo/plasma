@@ -67,9 +67,9 @@ const RowLayoutBody = <T,>({
                     onClick={onClick}
                     onDoubleClick={() => doubleClickAction?.(row.original)}
                     className={cx(RowLayoutClasses.row, {
+                        [RowLayoutClasses.rowUnselectable]: disableRowSelection,
                         [RowLayoutClasses.rowSelectedMultiSelecEnabled]: isSelected && multiRowSelectionEnabled,
                         [RowLayoutClasses.rowSelectedMultiSelecDisabled]: isSelected && !multiRowSelectionEnabled,
-                        [RowLayoutClasses.rowUnselectable]: disableRowSelection,
                     })}
                     aria-selected={isSelected}
                     data-testid={row.id}

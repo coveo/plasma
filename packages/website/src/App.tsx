@@ -1,5 +1,6 @@
 import {AppShell, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
 import {Provider} from 'react-redux';
 import {Outlet} from 'react-router-dom';
@@ -24,7 +25,7 @@ const App = () => (
         <Provider store={Store}>
             <Plasmantine resolver={resolver}>
                 <Notifications position="top-center" />
-                <AppShell navbar={{width: 245, breakpoint: 'sm'}} header={{height: 100}}>
+                <AppShell navbar={{width: 245, breakpoint: undefined}} header={{height: 100}}>
                     <AppShell.Header>
                         <TopBar />
                     </AppShell.Header>

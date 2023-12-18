@@ -8,23 +8,25 @@
 }
 
 .option {
+    padding: 12px 16px;
     @mixin light {
         color: var(--mantine-color-gray-7);
         @mixin hover {
-            color: var(--mantine-color-gray-1);
+            background-color: var(--mantine-color-gray-1);
         }
     }
     @mixin dark {
         color: var(--mantine-color-dark-0);
         @mixin hover {
-            color: var(--mantine-color-dark-4);
+            background-color: var(--mantine-color-dark-4);
         }
     }
-    &[data-selected] {
+    &[aria-selected='true'] {
         background-color: var(--mantine-color-action-1);
         color: var(--mantine-color-action-6);
         @mixin hover {
-            background-color: var(--mantine-color-action-1) 0.65;
+            color: var(--mantine-color-action-6);
+            background-color: rgb(237, 246, 255, 0.65);
         }
     }
 }

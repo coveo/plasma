@@ -18,7 +18,7 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({children, ...o
             justify="flex-start"
             align="center"
             gutter="sm"
-            classNames={{inner: TableHeaderClasses.inner}}
+            classNames={{root: TableHeaderClasses.root, inner: TableHeaderClasses.inner}}
             {...others}
         >
             {multiRowSelectionEnabled && selectedRows.length > 0 ? (

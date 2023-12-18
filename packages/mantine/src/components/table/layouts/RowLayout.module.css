@@ -32,7 +32,7 @@
     }
 }
 .rowUnselectable {
-    &input[type='checkbox'] {
+    & input[type='checkbox'] {
         background-color: var(--mantine-color-gray-2);
         border-color: var(--mantine-color-gray-3);
         pointer-events: none;
@@ -47,7 +47,7 @@
     padding: calc(var(--mantine-spacing-xs) / 2) var(--mantine-spacing-sm) !important;
 }
 .row {
-    &td:first-of-type {
+    & td:first-of-type {
         padding-left: 40px;
     }
     &:hover {
@@ -65,7 +65,7 @@
     /* We must use height instead of minHeight here, otherwise it doesn’t apply*/
     height: 56px;
     padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
-    border-bottom: border;
+    border-bottom: rem(1) solid var(--mantine-color-gray-3);
 }
 .collapsible {
     @mixin light {

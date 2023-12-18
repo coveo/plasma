@@ -10,7 +10,7 @@
     @mixin light {
         background-color: var(--mantine-color-white);
     }
-    @mixin light {
+    @mixin dark {
         background-color: var(--mantine-color-black);
     }
 

@@ -1,4 +1,5 @@
 .theme {
+    height: 100%;
     color: var(--mantine-color-dark-1);
     background: #1e1e1e;
 

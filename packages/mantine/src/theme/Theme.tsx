@@ -78,12 +78,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         fontFamily: 'canada-type-gibson, sans-serif',
         fontWeight: '500',
         sizes: {
-            h1: {fontSize: '48px', lineHeight: undefined, fontWeight: '300'},
-            h2: {fontSize: '32px', lineHeight: undefined, fontWeight: '500'},
-            h3: {fontSize: '24px', lineHeight: undefined, fontWeight: '500'},
-            h4: {fontSize: '18px', lineHeight: undefined, fontWeight: '300'},
-            h5: {fontSize: '14px', lineHeight: undefined, fontWeight: '500'},
-            h6: {fontSize: '12px', lineHeight: undefined, fontWeight: '500'},
+            h1: {fontSize: '48px', lineHeight: '1.5', fontWeight: '300'},
+            h2: {fontSize: '32px', lineHeight: '1.5', fontWeight: '500'},
+            h3: {fontSize: '24px', lineHeight: '1.5', fontWeight: '500'},
+            h4: {fontSize: '18px', lineHeight: '1.5', fontWeight: '300'},
+            h5: {fontSize: '14px', lineHeight: '1.5', fontWeight: '500'},
+            h6: {fontSize: '12px', lineHeight: '1.5', fontWeight: '500'},
         },
     },
     shadows: {
@@ -234,6 +234,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: {list: TabsClasses.list, tab: TabsClasses.tab},
         }),
         Select: Select.extend({
+            defaultProps: {withCheckIcon: false, allowDeselect: false},
             classNames: {input: SelectClasses.input, option: SelectClasses.option},
         }),
         NavLink: NavLink.extend({

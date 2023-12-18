@@ -1,6 +1,7 @@
 import {Grid, Group, Select, Text} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
+import SelectClasses from '../../../styles/Select.module.css';
 import {TableComponentsOrder} from '../Table';
 import {useTable} from '../TableContext';
 import TablePredicateClasses from './TablePredicate.module.css';
@@ -24,11 +25,11 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data
             span="content"
             order={TableComponentsOrder.Predicate}
             py="sm"
-            className={TablePredicateClasses.root}
+            classNames={{col: TablePredicateClasses.root}}
             {...others}
         >
-            <Group gap="xs" className={TablePredicateClasses.wrapper}>
-                {label ? <Text className={TablePredicateClasses.label}>{label}:</Text> : null}
+            <Group gap="xs" classNames={{root: TablePredicateClasses.wrapper}}>
+                {label ? <Text classNames={{root: TablePredicateClasses.label}}>{label}:</Text> : null}
                 <Select
                     // withinPortal what
                     value={form.values.predicates[id]}
@@ -36,7 +37,7 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data
                     data={data}
                     aria-label={label ?? id}
                     searchable={data.length > 7}
-                    className={TablePredicateClasses.select}
+                    classNames={{input: SelectClasses.input, option: SelectClasses.option}}
                 />
             </Group>
         </Grid.Col>
