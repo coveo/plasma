@@ -11,10 +11,6 @@
         }
         border-right: rem(1) solid var(--mantine-color-gray-3);
     }
-    &::before {
-        all: unset;
-        border-bottom: blue;
-    }
 }
 
 .tab {

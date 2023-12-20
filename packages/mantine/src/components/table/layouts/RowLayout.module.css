@@ -9,6 +9,7 @@
         }
     }
 }
+
 .headerColumnsDisabled {
     & input[type='checkbox'] {
         background-color: var(--mantine-color-gray-2);
