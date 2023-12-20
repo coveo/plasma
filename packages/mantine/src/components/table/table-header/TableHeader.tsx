@@ -17,7 +17,7 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({children, ...o
         <Grid
             justify="flex-start"
             align="center"
-            gutter="sm"
+            gutter="10px 0"
             classNames={{root: TableHeaderClasses.root, inner: TableHeaderClasses.inner}}
             {...others}
         >

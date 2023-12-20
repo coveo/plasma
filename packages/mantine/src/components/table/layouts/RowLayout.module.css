@@ -9,6 +9,7 @@
         }
     }
 }
+
 .headerColumnsDisabled {
     & input[type='checkbox'] {
         background-color: var(--mantine-color-gray-2);
@@ -20,10 +21,10 @@
         }
     }
 }
-.rowSelectedMultiSelecEnabled {
-    background-color: undefined;
+.rowSelectedMultiSelectEnabled {
+    background-color: transparent;
 }
-.rowSelectedMultiSelecDisabled {
+.rowSelectedMultiSelectDisabled {
     @mixin light {
         background-color: var(--mantine-color-gray-1);
     }

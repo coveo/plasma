@@ -7,6 +7,10 @@
         padding: undefined;
         padding-bottom: undefined;
     }
+    & .description {
+        color: var(--mantine-color-gray-6);
+        font-weight: 300;
+    }
 }
 .title {
     word-break: break-word;
@@ -17,10 +21,6 @@
         color: undefined;
     }
     line-height: var(--mantine-line-height-md);
-}
-.description {
-    color: var(--mantine-color-gray-6);
-    font-weight: 300;
 }
 .divider {
 }

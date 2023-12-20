@@ -1,10 +1,10 @@
 .step {
     &[disabled] {
         color: var(--mantine-color-gray-5);
-        &.mantine-Stepper-stepDescription {
+        & .mantine-Stepper-stepDescription {
             color: var(--mantine-color-gray-5);
         }
-        &.mantine-Stepper-stepIcon {
+        & .mantine-Stepper-stepIcon {
             border-color: var(--mantine-color-gray-1);
         }
     }

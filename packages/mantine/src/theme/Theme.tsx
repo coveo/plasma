@@ -58,10 +58,11 @@ import TitleClasses from '../styles/Title.module.css';
 
 import TextClasses from '../styles/Text.module.css';
 import {NotificationVars} from '../vars/Notification.vars';
+import {TextVars} from '../vars/Text.vars';
 import {PlasmaColors} from './PlasmaColors';
 
 export const plasmaTheme: MantineThemeOverride = createTheme({
-    // These are overrides over https://github.com/mantinedev/mantine/blob/master/src/mantine-styles/src/theme/default-theme.ts
+    // These are overrides over https://github.com/mantinedev/mantine/blob/master/packages/%40mantine/core/src/core/MantineProvider/default-theme.ts
     fontFamily: 'canada-type-gibson, sans-serif',
     black: color.primary.gray[9],
     defaultRadius: 8,
@@ -110,10 +111,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Text: Text.extend({
             classNames: TextClasses.root, // essayer l'ajout de data-size dans module
-            // vars: TextVars,
+            vars: TextVars,
         }),
         Button: Button.extend({
-            classNames: {root: ButtonClasses.root},
+            classNames: {root: ButtonClasses.root, label: ButtonClasses.label},
         }),
         Modal: Modal.extend({
             classNames: {
@@ -170,7 +171,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 radius: 'sm',
             },
-            classNames: {label: CheckboxClasses.label},
+            classNames: {label: CheckboxClasses.label, input: CheckboxClasses.input},
         }),
         List: List.extend({
             classNames: {root: ListClasses.root},
@@ -238,7 +239,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: {input: SelectClasses.input, option: SelectClasses.option},
         }),
         NavLink: NavLink.extend({
-            classNames: {root: NavLinkClasses.root, label: NavLinkClasses.label, children: NavLinkClasses.children},
+            classNames: {
+                root: NavLinkClasses.root,
+                label: NavLinkClasses.label,
+                section: NavLinkClasses.section,
+                body: NavLinkClasses.body,
+                children: NavLinkClasses.children,
+            },
         }),
         AppShellNavbar: AppShellNavbar.extend({
             classNames: {navbar: AppShellNavBarClasses.navbar},

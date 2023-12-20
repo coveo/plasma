@@ -19,11 +19,11 @@ const RowLayoutHeader = <T,>({table}: RowLayoutProps<T>) => {
     const headers = table.getHeaderGroups().map((headerGroup) => (
         <tr
             key={headerGroup.id}
-            className={cx({
+            className={cx(RowLayoutClasses.headerColumns, {
                 [RowLayoutClasses.headerColumnsEnabled]: !disableRowSelection,
                 [RowLayoutClasses.headerColumnsDisabled]: disableRowSelection,
-                [RowLayoutClasses.rowSelectedMultiSelecEnabled]: multiRowSelectionEnabled,
-                [RowLayoutClasses.rowSelectedMultiSelecDisabled]: !multiRowSelectionEnabled,
+                [RowLayoutClasses.rowSelectedMultiSelectEnabled]: multiRowSelectionEnabled,
+                [RowLayoutClasses.rowSelectedMultiSelectDisabled]: !multiRowSelectionEnabled,
             })}
         >
             {headerGroup.headers.map((columnHeader) => (
@@ -68,8 +68,8 @@ const RowLayoutBody = <T,>({
                     onDoubleClick={() => doubleClickAction?.(row.original)}
                     className={cx(RowLayoutClasses.row, {
                         [RowLayoutClasses.rowUnselectable]: disableRowSelection,
-                        [RowLayoutClasses.rowSelectedMultiSelecEnabled]: isSelected && multiRowSelectionEnabled,
-                        [RowLayoutClasses.rowSelectedMultiSelecDisabled]: isSelected && !multiRowSelectionEnabled,
+                        [RowLayoutClasses.rowSelectedMultiSelectEnabled]: isSelected && multiRowSelectionEnabled,
+                        [RowLayoutClasses.rowSelectedMultiSelectDisabled]: isSelected && !multiRowSelectionEnabled,
                     })}
                     aria-selected={isSelected}
                     data-testid={row.id}

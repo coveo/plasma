@@ -5,15 +5,16 @@ import {
     Input,
     InputWrapperProps,
     Loader,
-    px,
     Space,
     Stack,
     StackProps,
+    px,
+    useMantineColorScheme,
     useMantineTheme,
     useProps,
 } from '@mantine/core';
-import {useColorScheme, useUncontrolled} from '@mantine/hooks';
-import Editor, {loader, Monaco} from '@monaco-editor/react';
+import {useUncontrolled} from '@mantine/hooks';
+import Editor, {Monaco, loader} from '@monaco-editor/react';
 import {editor as monacoEditor} from 'monaco-editor';
 import {FunctionComponent, useEffect, useRef, useState} from 'react';
 
@@ -134,7 +135,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     const [hasMonacoError, setHasMonacoError] = useState(false);
     const renderErrorOutline = !!error || hasMonacoError;
     const theme = useMantineTheme();
-    const colorScheme = useColorScheme();
+    const {colorScheme} = useMantineColorScheme();
 
     useEffect(() => {
         if (monacoLoader === 'local') {

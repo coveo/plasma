@@ -68,7 +68,7 @@ export const Header: HeaderType = (props: HeaderProps) => {
                         {otherChildren}
                         {docAnchor}
                     </Title>
-                    <Text className={HeaderClasses.description} size={variant === 'page' ? 'md' : 'sm'}>
+                    <Text classNames={{root: HeaderClasses.description}} size={variant === 'page' ? 'md' : 'sm'}>
                         {description}
                     </Text>
                 </Stack>

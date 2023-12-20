@@ -1,4 +1,9 @@
 .root {
+    &[data-disabled] {
+        background-color: var(--mantine-color-gray-2);
+    }
+}
+.label {
     font-weight: var(--font-weight-book);
     &[data-variant='outline'] {
         background-color: var(--mantine-color-white);

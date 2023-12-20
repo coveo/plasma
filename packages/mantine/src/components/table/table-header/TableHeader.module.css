@@ -12,10 +12,11 @@
     );
     padding-left: var(--mantine-spacing-xl);
     padding-right: var(--mantine-spacing-lg);
-    & .col {
-        padding: var(--mantine-spacing-md) var(--mantine-spacing-xs);
-    }
 }
 .multiSelectInfo {
     display: flex;
+}
+.col {
+    padding: var(--mantine-spacing-md) var(--mantine-spacing-xs);
+    padding-left: 100px;
 }

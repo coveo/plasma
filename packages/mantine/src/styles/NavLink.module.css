@@ -1,6 +1,5 @@
 .root {
     line-height: var(--mantine-line-height);
-    color: var(--mantine-color-gray-6);
     border-radius: var(--mantine-radius-default) 0px 0px var(--mantine-radius-default);
     @mixin hover {
         @mixin light {
@@ -10,6 +9,11 @@
             background-color: var(--mantine-color-dark-6);
         }
     }
+}
+
+.section,
+.body {
+    color: var(--mantine-color-gray-6);
 }
 
 .label {

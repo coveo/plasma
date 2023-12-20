@@ -63,8 +63,8 @@ export const Th = <T,>(props: ThProps<T>) => {
         <UnstyledButton
             component="th"
             onClick={onSort}
-            className={cx(ThClasses.root, ThClasses.control)}
             aria-sort={SortingLabels[sortingOrder]}
+            classNames={{root: cx(ThClasses.root, ThClasses.control)}}
             {...others}
         >
             <Group wrap="nowrap" gap="xs">

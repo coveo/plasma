@@ -1,13 +1,15 @@
 .list {
     &[data-orientation='horizontal'] {
+        &::before {
+            border-style: none;
+        }
         border-bottom: rem(1) solid var(--mantine-color-gray-3);
     }
     &[data-orientation='vertical'] {
+        &::before {
+            border-style: none;
+        }
         border-right: rem(1) solid var(--mantine-color-gray-3);
-    }
-    &::before {
-        all: unset;
-        border-bottom: blue;
     }
 }
 
