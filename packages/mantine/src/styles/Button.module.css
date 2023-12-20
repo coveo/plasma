@@ -2,6 +2,12 @@
     &[data-disabled] {
         background-color: var(--mantine-color-gray-2);
     }
+    &[data-variant='outline'],
+    &[data-variant='subtle'] {
+        @mixin hover {
+            background-color: var(--mantine-color-action-1);
+        }
+    }
 }
 .label {
     font-weight: var(--font-weight-book);

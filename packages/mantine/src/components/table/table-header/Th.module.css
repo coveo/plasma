@@ -24,7 +24,7 @@
 }
 
 .control {
-    &:hover {
+    @mixin hover {
         @mixin light {
             background-color: var(--mantine-color-gray-1);
         }

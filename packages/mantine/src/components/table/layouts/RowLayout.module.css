@@ -51,7 +51,7 @@
     & td:first-of-type {
         padding-left: 40px;
     }
-    &:hover {
+    @mixin hover {
         @mixin light {
             background-color: var(--mantine-color-gray-1);
         }

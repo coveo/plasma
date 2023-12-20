@@ -47,7 +47,7 @@
 .whiteClose {
     @mixin light {
         color: var(--mantine-color-white);
-        &:hover {
+        @mixin hover {
             background-color: transparent;
         }
     }

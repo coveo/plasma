@@ -1,6 +1,3 @@
 .root {
     font-weight: 300;
-    &:not([data-size]) {
-        font-size: var(--mantine-font-size-sm);
-    }
 }
