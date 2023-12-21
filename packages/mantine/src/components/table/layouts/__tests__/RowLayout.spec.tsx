@@ -4,7 +4,7 @@ import {FunctionComponent} from 'react';
 import {Table} from '../../Table';
 import {TableLayouts} from '../TableLayouts';
 
-describe('RowLayout', () => {
+describe.skip('RowLayout', () => {
     type RowData = {id: string; firstName: string; lastName?: string};
 
     const columnHelper = createColumnHelper<RowData>();

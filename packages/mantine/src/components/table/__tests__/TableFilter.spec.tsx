@@ -104,7 +104,7 @@ describe('Table.Filter', () => {
 
         const Fixture = () => {
             const {clearFilters} = useTable();
-            return <Button data-testId="clear-button" onClick={clearFilters} />;
+            return <Button data-testid="clear-button" onClick={clearFilters} />;
         };
 
         render(

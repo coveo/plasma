@@ -156,6 +156,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 type: 'dots',
                 color: 'action',
+                role: 'presentation',
             },
         }),
         DatePicker: DatePicker.extend({
