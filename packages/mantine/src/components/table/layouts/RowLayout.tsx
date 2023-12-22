@@ -2,6 +2,7 @@ import {ListSize16Px} from '@coveord/plasma-react-icons';
 import {Box, Collapse} from '@mantine/core';
 import {flexRender} from '@tanstack/react-table';
 import {defaultColumnSizing} from '@tanstack/table-core';
+import cx from 'clsx';
 import {Fragment, type MouseEvent} from 'react';
 import {TableLayout} from '../Table.types';
 import {useTable} from '../TableContext';
@@ -9,17 +10,22 @@ import {TableCollapsibleColumn} from '../table-column/TableCollapsibleColumn';
 import {TableSelectableColumn} from '../table-column/TableSelectableColumn';
 import {Th} from '../table-header/Th';
 import {TableLoading} from '../table-loading/TableLoading';
-import useStyles from './RowLayout.styles';
-import {TableLayoutProps} from './RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
+import RowLayoutClasses from './RowLayout.module.css';
+import {RowLayoutProps} from './RowLayout.types';
 
-const RowLayoutHeader = <T,>({table, classNames, styles, unstyled}: TableLayoutProps<T>) => {
+const RowLayoutHeader = <T,>({table}: RowLayoutProps<T>) => {
     const {multiRowSelectionEnabled, disableRowSelection} = useTable();
-    const {classes} = useStyles(
-        {disableRowSelection, multiRowSelectionEnabled},
-        {name: 'RowLayout', classNames, styles, unstyled},
-    );
+
     const headers = table.getHeaderGroups().map((headerGroup) => (
-        <tr key={headerGroup.id} className={classes.headerColumns}>
+        <tr
+            key={headerGroup.id}
+            className={cx(RowLayoutClasses.headerColumns, {
+                [RowLayoutClasses.headerColumnsEnabled]: !disableRowSelection,
+                [RowLayoutClasses.headerColumnsDisabled]: disableRowSelection,
+                [RowLayoutClasses.rowSelectedMultiSelectEnabled]: multiRowSelectionEnabled,
+                [RowLayoutClasses.rowSelectedMultiSelectDisabled]: !multiRowSelectionEnabled,
+            })}
+        >
             {headerGroup.headers.map((columnHeader) => (
                 <Th key={columnHeader.id} header={columnHeader} />
             ))}
@@ -34,17 +40,9 @@ const RowLayoutBody = <T,>({
     getExpandChildren,
     loading,
     keepSelection,
-    classNames,
-    styles,
-    unstyled,
     ...others
-}: TableLayoutProps<T>) => {
+}: RowLayoutProps<T>) => {
     const {multiRowSelectionEnabled, disableRowSelection} = useTable();
-    const {classes, cx} = useStyles(
-        {disableRowSelection, multiRowSelectionEnabled},
-        {name: 'RowLayout', classNames, styles, unstyled},
-    );
-
     const toggleCollapsible = (el: HTMLTableRowElement) => {
         const cell = el.children[el.children.length - 1] as HTMLTableCellElement;
         cell.querySelector('button').click();
@@ -68,9 +66,10 @@ const RowLayoutBody = <T,>({
                 <tr
                     onClick={onClick}
                     onDoubleClick={() => doubleClickAction?.(row.original)}
-                    className={cx(classes.row, {
-                        [classes.rowSelected]: isSelected,
-                        [classes.rowUnselectable]: disableRowSelection,
+                    className={cx(RowLayoutClasses.row, {
+                        [RowLayoutClasses.rowUnselectable]: disableRowSelection,
+                        [RowLayoutClasses.rowSelectedMultiSelectEnabled]: isSelected && multiRowSelectionEnabled,
+                        [RowLayoutClasses.rowSelectedMultiSelectDisabled]: isSelected && !multiRowSelectionEnabled,
                     })}
                     aria-selected={isSelected}
                     data-testid={row.id}
@@ -98,8 +97,9 @@ const RowLayoutBody = <T,>({
                                     minWidth: columnSizing.minSize,
                                     maxWidth: columnSizing.maxSize,
                                 }}
-                                className={cx(classes.cell, {
-                                    [classes.rowCollapsibleButtonCell]: cell.column.id === TableCollapsibleColumn.id,
+                                className={cx(RowLayoutClasses.cell, {
+                                    [RowLayoutClasses.rowCollapsibleButtonCell]:
+                                        cell.column.id === TableCollapsibleColumn.id,
                                 })}
                                 onClick={onCollapsibleCellClick}
                             >
@@ -119,7 +119,7 @@ const RowLayoutBody = <T,>({
                             }}
                         >
                             <Collapse in={row.getIsExpanded()}>
-                                <Box className={classes.collapsible} px="sm" py="xs">
+                                <Box className={RowLayoutClasses.collapsible} px="sm" py="xs">
                                     {rowChildren}
                                 </Box>
                             </Collapse>

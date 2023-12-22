@@ -1,0 +1,14 @@
+.label {
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 300;
+}
+
+.input {
+    &[data-indeterminate] {
+        background-color: var(--mantine-color-pureWhite);
+        border-color: var(--mantine-color-gray-4);
+        & + svg {
+            color: var(--mantine-color-gray-6);
+        }
+    }
+}

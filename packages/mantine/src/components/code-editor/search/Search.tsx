@@ -6,7 +6,7 @@ export interface SearchProps {
 }
 
 const SearchButton: React.FunctionComponent<SearchProps> = ({handleSearch}) => (
-    <ActionIcon onClick={handleSearch}>
+    <ActionIcon onClick={handleSearch} variant="subtle" color="gray">
         <SearchSize16Px height={16}></SearchSize16Px>
     </ActionIcon>
 );

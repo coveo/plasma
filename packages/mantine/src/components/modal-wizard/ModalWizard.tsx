@@ -1,28 +1,13 @@
-import {Box, CloseButton, createStyles, DefaultProps, Modal, ModalProps, Progress, Selectors} from '@mantine/core';
+import {Box, CloseButton, Modal, ModalProps, Progress} from '@mantine/core';
 import {Children, ReactElement, useEffect, useMemo, useState} from 'react';
 
 import {Button} from '../button';
 import {Header} from '../header';
 import {StickyFooter} from '../sticky-footer';
+import ModalWizardClasses from './ModalWizard.module.css';
 import {ModalWizardStep, ModalWizardStepProps, ResolveStep} from './ModalWizardStep';
 
-const useStyles = createStyles(() => ({
-    content: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    body: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-    },
-}));
-
-type ModalWizardStylesNames = Selectors<typeof useStyles>;
-
-export interface ModalWizardProps
-    extends Omit<DefaultProps<ModalWizardStylesNames>, 'classNames' | 'styles'>,
-        Omit<ModalProps, 'centered' | 'title'> {
+export interface ModalWizardProps extends Omit<ModalProps, 'centered' | 'title'> {
     /**
      * The label of the cancel button
      *
@@ -110,23 +95,10 @@ export const ModalWizard: ModalWizardType = ({
     onFinish,
     isDirty,
     handleDirtyState,
-    classNames,
-    styles,
-    unstyled,
     children,
     isStepValidatedOnNext,
     ...modalProps
 }) => {
-    const {
-        classes: {content, body},
-        cx,
-    } = useStyles(null, {
-        name: 'ModalWizard',
-        classNames,
-        styles,
-        unstyled,
-    });
-
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const modalSteps = (Children.toArray(children) as ReactElement[]).filter((child) => child.type === ModalWizardStep);
 
@@ -179,7 +151,7 @@ export const ModalWizard: ModalWizardType = ({
     return (
         <Modal
             opened={opened}
-            classNames={{content: cx(content, classNames?.content), body: cx(body, classNames?.body)}}
+            classNames={{content: ModalWizardClasses.content, body: ModalWizardClasses.body}}
             centered
             onClose={() => handleClose(true)}
             withCloseButton={false}
@@ -208,11 +180,7 @@ export const ModalWizard: ModalWizardType = ({
                 <Progress color="navy.5" size="sm" radius={0} value={getProgress(currentStepIndex)} />
             )}
             <Box p="lg">{currentStep}</Box>
-            <Box
-                sx={{
-                    marginTop: 'auto',
-                }}
-            >
+            <Box mt={'auto'}>
                 <StickyFooter borderTop>
                     <Button
                         name={isFirstStep ? cancelButtonLabel : previousButtonLabel}

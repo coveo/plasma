@@ -1,54 +1,11 @@
 @import '@coveord/plasma-style/dist/style.css';
 @import '@coveord/plasma-style/scss/lib/mixins';
 @import '@coveord/plasma-style/scss/variables';
-@import 'syntax-highlighting';
+@import './_syntax-highlighting.css';
 
-/* stylelint-disable-next-line selector-id-pattern */
-#App {
-    .tab {
-        text-transform: capitalize;
-    }
-
-    @for $i from 7 through 10 {
-        $size: $i * 10;
-
-        @media (max-width: $breakpoint-desktop-large) {
-            &.mod-width-#{$size} {
-                width: 95%;
-            }
-        }
-
-        @media (max-width: $breakpoint-desktop-small) {
-            &.mod-width-#{$size} {
-                width: 99%;
-            }
-        }
-    }
-}
-
-.progress-bar-example-container {
-    display: flex;
-    padding: 30px 0;
-
-    .progress-bar {
-        margin: auto;
-    }
-}
-
-.codepen-form {
-    position: absolute;
-    right: 1.5rem;
-    bottom: 2.4rem;
-}
-
-.child-form-exemple-container {
-    background-color: var(--grey-40);
-}
-
-#multiselect-examples {
-    .form-control-label {
-        display: block;
-    }
+body {
+    font-size: 16px;
+    line-height: 1.25rem;
 }
 
 .sentence-case {

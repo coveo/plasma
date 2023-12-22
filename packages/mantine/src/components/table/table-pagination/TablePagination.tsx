@@ -24,7 +24,7 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalP
             total={total}
             boundaries={0}
             size="md"
-            spacing="xs"
+            gap="xs"
             getControlProps={(control) => {
                 switch (control) {
                     case 'previous':

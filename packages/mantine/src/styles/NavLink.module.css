@@ -1,0 +1,37 @@
+.root {
+    line-height: var(--mantine-line-height);
+    border-radius: var(--mantine-radius-default) 0px 0px var(--mantine-radius-default);
+    &[data-active] {
+        background-color: var(--mantine-color-action-1);
+    }
+    @mixin hover {
+        @mixin light {
+            background-color: var(--mantine-color-gray-1);
+            &[data-active] {
+                background-color: var(--mantine-color-action-1);
+            }
+        }
+    }
+}
+
+.section,
+.body {
+    color: var(--mantine-color-gray-6);
+}
+
+.label {
+    font-weight: 500;
+}
+
+.children {
+    & a {
+        &[data-active] {
+            & .label {
+                color: var(--mantine-color-action-6);
+            }
+        }
+    }
+    & .label {
+        font-weight: 300;
+    }
+}

@@ -139,7 +139,7 @@ const TableActions: FunctionComponent<{datum: IExampleRowData}> = ({datum}) => {
     return (
         <>
             {actionCondition ? (
-                <Button variant="subtle" onClick={pressedAction} leftIcon={<EditSize16Px height={16} />}>
+                <Button variant="subtle" onClick={pressedAction} leftSection={<EditSize16Px height={16} />}>
                     Edit
                 </Button>
             ) : null}

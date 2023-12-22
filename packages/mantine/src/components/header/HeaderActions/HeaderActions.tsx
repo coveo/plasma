@@ -1,25 +1,21 @@
-import {DefaultProps, Group, GroupProps, Selectors, useComponentDefaultProps} from '@mantine/core';
+import {Group, GroupProps, useProps} from '@mantine/core';
+import cx from 'clsx';
 import {FunctionComponent} from 'react';
-import {HeaderActionsStylesParams, useStyles} from './HeaderActions.styles';
+import HeaderActionsClasses from './HeaderActions.module.css';
 
-export type HeaderActionsStylesNames = Selectors<typeof useStyles>;
-
-export type HeaderActionsProps = GroupProps & DefaultProps<HeaderActionsStylesNames, HeaderActionsStylesParams>;
+export interface HeaderActionsProps extends GroupProps {
+    children: React.ReactNode;
+}
 
 const defaultProps: Partial<HeaderActionsProps> = {
-    spacing: 'sm',
+    gap: 'sm',
 };
 
-export const HeaderActions: FunctionComponent<HeaderActionsProps> = (props: HeaderActionsProps) => {
-    const {classNames, styles, unstyled, className, children, ...others} = useComponentDefaultProps(
-        'PlasmaHeaderActions',
-        defaultProps,
-        props,
-    );
-    const {classes, cx} = useStyles({}, {name: 'PlasmaHeaderActions', classNames, styles, unstyled});
+export const HeaderActions: FunctionComponent<HeaderActionsProps> = ({children}, props: HeaderActionsProps) => {
+    const {gap, className, ...others} = useProps('HeaderActions', defaultProps, props);
 
     return (
-        <Group className={cx(className, classes.root)} {...others}>
+        <Group gap={gap} className={cx(className, HeaderActionsClasses.root)} {...others}>
             {children}
         </Group>
     );

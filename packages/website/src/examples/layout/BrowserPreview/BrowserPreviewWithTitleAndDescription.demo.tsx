@@ -6,8 +6,8 @@ const Demo = () => {
     const content = faker.lorem.paragraph(10);
     return (
         <BrowserPreview title={title} headerTooltip="This is a custom tooltip message.">
-            <Stack spacing="xs">
-                <Title order={3} align="center">
+            <Stack gap="xs">
+                <Title order={3} style={{align: 'center'}}>
                     Hello World !
                 </Title>
                 <Text>{content}</Text>

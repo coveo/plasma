@@ -15,7 +15,7 @@ const promise = async () => {
 };
 
 const Demo = () => (
-    <ActionIcon onClick={promise} color="red" size="lg">
+    <ActionIcon onClick={promise} variant={'subtle'} color="red" size="lg">
         <DeleteSize16Px height={16} />
     </ActionIcon>
 );

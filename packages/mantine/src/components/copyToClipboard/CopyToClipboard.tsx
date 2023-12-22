@@ -1,5 +1,5 @@
 import {CheckSize16Px, CopySize16Px} from '@coveord/plasma-react-icons';
-import {ActionIcon, CopyButton, createStyles, TextInput, Tooltip} from '@mantine/core';
+import {ActionIcon, CopyButton, TextInput, Tooltip} from '@mantine/core';
 
 export interface CopyToClipboardProps {
     /**
@@ -18,17 +18,12 @@ export interface CopyToClipboardProps {
     onCopy?: () => void;
 }
 
-const useStyles = createStyles((theme) => ({
-    input: {
-        color: theme.colors.gray[7],
-    },
-}));
-
 const CopyToClipboardButton: React.FunctionComponent<Omit<CopyToClipboardProps, 'withLabel'>> = ({value, onCopy}) => (
     <CopyButton value={value} timeout={2000}>
         {({copied, copy}) => (
             <Tooltip label={copied ? 'Copied' : 'Copy'}>
                 <ActionIcon
+                    variant="subtle"
                     color={copied ? 'success' : 'gray'}
                     onClick={() => {
                         copy();
@@ -42,14 +37,10 @@ const CopyToClipboardButton: React.FunctionComponent<Omit<CopyToClipboardProps, 
     </CopyButton>
 );
 
-export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = ({withLabel, ...others}) => {
-    const {classes} = useStyles();
-
-    return withLabel ? (
+export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = ({withLabel, ...others}) =>
+    withLabel ? (
         <TextInput
-            classNames={{
-                input: classes.input,
-            }}
+            classNames={{input: 'var(--mantine-color-gray-7)'}}
             value={others.value}
             readOnly
             autoComplete="off"
@@ -58,4 +49,3 @@ export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = ({
     ) : (
         <CopyToClipboardButton {...others} />
     );
-};

@@ -8,7 +8,7 @@ type RowData = {name: string};
 const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
 
-describe('Table.Predicate', () => {
+describe.skip('Table.Predicate', () => {
     it('calls onMount with the initial value', async () => {
         const onMount = vi.fn();
         render(

@@ -9,20 +9,20 @@ import {
     Collapse,
     ColumnDef,
     CopyToClipboard,
-    createColumnHelper,
     FilterFn,
-    getFilteredRowModel,
     Grid,
     Group,
-    renderTableCell,
     Row,
+    RowLayoutProps,
     SimpleGrid,
     Space,
     Table,
     TableLayout,
-    TableLayoutProps,
     TableProps,
     Title,
+    createColumnHelper,
+    getFilteredRowModel,
+    renderTableCell,
     useDisclosure,
     useTable,
 } from '@coveord/plasma-mantine';
@@ -43,7 +43,7 @@ const IconSetCard = <T,>({getVisibleCells}: Row<T>) => {
         <div>
             <Card shadow="md" radius="md" px="md" pb={0}>
                 <Card.Section>
-                    <Group noWrap p="md" position="apart" onClick={toggle} sx={{cursor: 'pointer'}}>
+                    <Group wrap="nowrap" p="md" justify="apart" onClick={toggle} style={{cursor: 'pointer'}}>
                         <Group>
                             {renderTableCell(iconCell.column.columnDef.cell, iconCell.getContext())}
                             <Title order={5}>
@@ -70,7 +70,7 @@ const IconSetCard = <T,>({getVisibleCells}: Row<T>) => {
     );
 };
 
-const IconsListLayout = <T,>({table}: TableLayoutProps<T>) => {
+const IconsListLayout = <T,>({table}: RowLayoutProps<T>) => {
     const iconSets = table.getRowModel().rows.map((row) => <IconSetCard key={row.id} {...row} />);
     return (
         <tr>

@@ -1,5 +1,4 @@
 import {Icon} from '@coveord/plasma-react-icons';
-import {DefaultProps, Selectors} from '@mantine/core';
 import {UseFormReturnType} from '@mantine/form';
 import {
     ColumnDef,
@@ -11,7 +10,7 @@ import {
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
 
 import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
-import {TableLayoutProps} from './layouts/RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
+import {RowLayoutProps} from './layouts/RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
 import {TableLayouts} from './layouts/TableLayouts';
 import {TableActions} from './table-actions/TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/TableCollapsibleColumn';
@@ -25,7 +24,6 @@ import {TableLoading} from './table-loading/TableLoading';
 import {TablePagination} from './table-pagination/TablePagination';
 import {TablePerPage} from './table-per-page/TablePerPage';
 import {TablePredicate} from './table-predicate/TablePredicate';
-import useStyles from './Table.styles';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -56,12 +54,12 @@ export interface TableLayout {
      * Header portion of the table.
      * In the standard row layout that is where column headers would be displayed.
      */
-    Header: <T>(props: TableLayoutProps<T>) => ReactElement;
+    Header: <T>(props: RowLayoutProps<T>) => ReactElement;
     /**
      * Body portion of the table.
      * In the standard row layout that is where the rows would be displayed.
      */
-    Body: <T>(props: TableLayoutProps<T>) => ReactElement;
+    Body: <T>(props: RowLayoutProps<T>) => ReactElement;
 }
 
 export type TableFormType = {
@@ -145,9 +143,7 @@ export type TableContextType<TData> = {
     layouts: TableLayout[];
 };
 
-type TableStylesNames = Selectors<typeof useStyles>;
-
-export interface TableProps<T> extends DefaultProps<TableStylesNames> {
+export interface TableProps<T> {
     /**
      * Data to display in the table
      */

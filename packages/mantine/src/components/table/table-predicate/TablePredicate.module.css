@@ -1,0 +1,10 @@
+.root {
+}
+.wrapper {
+}
+.label {
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 300;
+}
+.select {
+}

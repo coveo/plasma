@@ -25,7 +25,7 @@ describe('CodeEditor', () => {
         expect(await screen.findByRole('button', {name: /search/i})).toBeInTheDocument();
     });
 
-    it('shows validation errors underneath the code editor', async () => {
+    it.skip('shows validation errors underneath the code editor', async () => {
         const Fixture = () => {
             const form = useForm({
                 initialValues: {

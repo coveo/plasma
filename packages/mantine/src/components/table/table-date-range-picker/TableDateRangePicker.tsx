@@ -6,20 +6,16 @@ import {FunctionComponent} from 'react';
 
 import {Button} from '../../button';
 import {DateRangePickerInlineCalendar, DateRangePickerValue} from '../../date-range-picker';
-import {TableComponentsOrder} from '../Table.styles';
+import {TableComponentsOrder} from '../Table';
 import {useTable} from '../TableContext';
-import useStyles from './TableDateRangePicker.styles';
+import TableDateRangePickerClasses from './TableDateRangePicker.module.css';
 import {TableDateRangePickerProps} from './TableDateRangePicker.types';
 
 export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> = ({
     presets = {},
     rangeCalendarProps,
-    classNames,
-    styles,
-    unstyled,
     ...others
 }) => {
-    const {classes} = useStyles(null, {name: 'TableDateRangePicker', classNames, styles, unstyled});
     const [opened, toggleOpened] = useToggle();
     const {form} = useTable();
 
@@ -38,12 +34,12 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
         <Grid.Col
             span="content"
             order={TableComponentsOrder.DateRangePicker}
+            className={TableDateRangePickerClasses.root}
             py="sm"
-            className={classes.root}
             {...others}
         >
-            <Group spacing="xs" className={classes.wrapper}>
-                <Text span className={classes.label}>
+            <Group gap="xs" className={TableDateRangePickerClasses.wrapper}>
+                <Text span className={TableDateRangePickerClasses.label}>
                     {formattedRange}
                 </Text>
                 <Popover opened={opened} onChange={toggleOpened} withinPortal>

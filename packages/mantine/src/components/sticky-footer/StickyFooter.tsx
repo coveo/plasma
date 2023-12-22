@@ -1,17 +1,9 @@
-import {
-    Box,
-    createStyles,
-    DefaultProps,
-    Divider,
-    Group,
-    GroupPosition,
-    MantineNumberSize,
-    Selectors,
-    useComponentDefaultProps,
-} from '@mantine/core';
-import {forwardRef, ReactNode} from 'react';
+import {Box, Divider, Group, GroupProps, MantineSpacing, useProps} from '@mantine/core';
+import cx from 'clsx';
+import {ReactNode, forwardRef} from 'react';
+import StickyFooterClasses from './StickyFooter.module.css';
 
-export interface StickyFooterProps extends DefaultProps<Selectors<typeof useStyles>> {
+export interface StickyFooterProps extends GroupProps {
     /**
      * Whether a border is render on top of the footer
      */
@@ -21,46 +13,30 @@ export interface StickyFooterProps extends DefaultProps<Selectors<typeof useStyl
      *
      * @default 'right'
      */
-    position?: GroupPosition;
+    justify?: 'right' | 'left' | 'center' | 'apart';
     /**
      * Defines the spacing between footer children
      *
      * @default 'sm'
      */
-    spacing?: MantineNumberSize;
+    gap?: MantineSpacing;
     /**
      * Footer's children, usually buttons
      */
     children?: ReactNode;
 }
 
-const useStyles = createStyles((theme) => ({
-    root: {
-        position: 'sticky',
-        bottom: 0,
-        zIndex: 10,
-        backgroundColor: 'white',
-    },
-    footer: {
-        padding: theme.spacing.lg,
-    },
-    divider: {},
-}));
-
 const defaultProps: Partial<StickyFooterProps> = {
-    spacing: 'sm',
-    position: 'right',
+    gap: 'sm',
+    justify: 'right',
 };
 
 export const StickyFooter = forwardRef<HTMLDivElement, StickyFooterProps>((props, ref) => {
-    const {borderTop, spacing, position, children, className, classNames, styles, unstyled, ...others} =
-        useComponentDefaultProps('StickyFooter', defaultProps, props);
-    const {classes, cx} = useStyles(null, {name: 'StickyFooter', classNames, styles, unstyled});
-
+    const {borderTop, justify, gap, children, className, ...others} = useProps('StickyFooter', defaultProps, props);
     return (
-        <Box ref={ref} className={cx(classes.root, className)}>
-            {borderTop ? <Divider size="xs" className={classes.divider} /> : null}
-            <Group position={position} spacing={spacing} className={classes.footer} {...others}>
+        <Box ref={ref} className={cx(StickyFooterClasses.root, className)}>
+            {borderTop ? <Divider size="xs" className={StickyFooterClasses.divider} /> : null}
+            <Group justify={justify} gap={gap} className={StickyFooterClasses.footer} {...others}>
                 {children}
             </Group>
         </Box>
