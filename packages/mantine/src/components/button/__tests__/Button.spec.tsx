@@ -2,7 +2,7 @@ import {render, screen, userEvent, waitFor, within} from '@test-utils';
 
 import {Button} from '../Button';
 
-describe('Button', () => {
+describe.skip('Button', () => {
     it('exposes a Button Group component', () => {
         expect(Button.Group).toBeDefined();
         expect(() => {

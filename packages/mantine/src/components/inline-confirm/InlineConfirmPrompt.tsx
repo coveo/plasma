@@ -34,7 +34,7 @@ export const InlineConfirmPrompt: FunctionComponent<InlineConfirmPromptProps> = 
 
     if (confirmingId === id) {
         return (
-            <Group spacing="xs" noWrap>
+            <Group gap="xs" wrap={'nowrap'}>
                 {label}
                 <Button onClick={onClickConfirm} color="red">
                     {confirmLabel}

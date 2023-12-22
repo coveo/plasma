@@ -14,5 +14,9 @@ const promise = async () => {
     });
 };
 
-const Demo = () => <Button onClick={promise}>Save</Button>;
+const Demo = () => (
+    <Button loading loaderProps={{type: 'oval'}} onClick={promise}>
+        Save
+    </Button>
+);
 export default Demo;

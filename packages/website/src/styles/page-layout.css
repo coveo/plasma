@@ -1,0 +1,6 @@
+.plasma-page-layout__section {
+    padding: 32px 24px;
+}
+.plasma-page-layout__section + .plasma-page-layout__section {
+    margin-top: 40px;
+}

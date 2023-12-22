@@ -8,7 +8,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
-    ignorePatterns: ['.eslintrc.js', 'node_modules', 'dist', '.turbo', 'vitest.config.ts'],
+    ignorePatterns: ['.eslintrc.js', 'node_modules', 'dist', '.turbo', 'vitest.config.ts', 'postcss.config.cjs'],
     rules: {
         'no-underscore-dangle': 'off',
     },

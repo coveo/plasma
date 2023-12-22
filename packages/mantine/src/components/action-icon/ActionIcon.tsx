@@ -1,5 +1,5 @@
 import {ActionIcon as MantineActionIcon, type ActionIconProps as MantineActionIconProps} from '@mantine/core';
-import {forwardRef, MouseEvent, MouseEventHandler, useState} from 'react';
+import {MouseEvent, MouseEventHandler, forwardRef, useState} from 'react';
 
 import {createPolymorphicComponent} from '../../utils';
 import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from '../button/ButtonWithDisabledTooltip';
@@ -40,7 +40,7 @@ const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
                 fullWidth={others.fullWidth}
             >
                 <MantineActionIcon
-                    loaderProps={{variant: 'oval'}}
+                    loaderProps={{type: 'oval'}}
                     ref={ref}
                     loading={isLoading || loading}
                     onClick={handleClick}

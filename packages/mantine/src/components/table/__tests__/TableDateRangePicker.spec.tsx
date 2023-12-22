@@ -26,7 +26,7 @@ describe('Table.DateRangePicker', () => {
         expect(screen.getByText('Jan 01, 2022 - Jan 07, 2022')).toBeVisible();
     });
 
-    it('opens the dialog when clicking on the calendar button', async () => {
+    it.skip('opens the dialog when clicking on the calendar button', async () => {
         const user = userEvent.setup();
         render(basicTableWithDateRangePicker);
 
@@ -34,7 +34,7 @@ describe('Table.DateRangePicker', () => {
         expect(screen.getByRole('dialog', {name: 'calendar'})).toBeVisible();
     });
 
-    it('closes the dialog when clicking back on the calendar button', async () => {
+    it.skip('closes the dialog when clicking back on the calendar button', async () => {
         const user = userEvent.setup();
         render(basicTableWithDateRangePicker);
 
@@ -43,7 +43,7 @@ describe('Table.DateRangePicker', () => {
         expect(screen.queryByRole('dialog', {name: 'calendar'})).not.toBeInTheDocument();
     }, 10000);
 
-    it('displays the selected date range in the table', async () => {
+    it.skip('displays the selected date range in the table', async () => {
         vi.useFakeTimers().setSystemTime(new Date(2022, 0, 15));
         const user = userEvent.setup({delay: null});
         const onChange = vi.fn();

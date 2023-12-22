@@ -1,31 +1,13 @@
-import {Breadcrumbs, BreadcrumbsProps, DefaultProps, Selectors} from '@mantine/core';
+import {Breadcrumbs, BreadcrumbsProps} from '@mantine/core';
 import {FunctionComponent} from 'react';
-import {HeaderBreadcrumbsStylesParams, useStyles} from './HeaderBreadcrumbs.styles';
+import HeaderBreadcumbsClasses from './HeaderBreadcrumbs.module.css';
 
-export type HeaderBreadcrumbsStylesNames = Selectors<typeof useStyles>;
-
-export type HeaderBreadcrumbsProps = BreadcrumbsProps &
-    DefaultProps<HeaderBreadcrumbsStylesNames, HeaderBreadcrumbsStylesParams>;
-
-export const HeaderBreadcrumbs: FunctionComponent<HeaderBreadcrumbsProps> = ({
-    classNames,
-    styles,
-    unstyled,
-    children,
-    ...others
-}) => {
-    const {classes} = useStyles(
-        {},
-        {
-            name: 'PlasmaHeaderBreadcrumbs',
-            classNames,
-            styles,
-            unstyled,
-        },
-    );
-    return (
-        <Breadcrumbs classNames={{breadcrumb: classes.breadcrumb, separator: classes.separator}} {...others}>
-            {children}
-        </Breadcrumbs>
-    );
-};
+export type HeaderBreadcrumbsProps = BreadcrumbsProps;
+export const HeaderBreadcrumbs: FunctionComponent<HeaderBreadcrumbsProps> = ({children, ...others}) => (
+    <Breadcrumbs
+        classNames={{breadcrumb: HeaderBreadcumbsClasses.breadcrumb, separator: HeaderBreadcumbsClasses.separator}}
+        {...others}
+    >
+        {children}
+    </Breadcrumbs>
+);

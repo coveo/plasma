@@ -1,18 +1,15 @@
 import {QuestionSize16Px} from '@coveord/plasma-react-icons';
-import {Anchor, DefaultProps, Selectors, Tooltip, TooltipProps, useComponentDefaultProps} from '@mantine/core';
+import {Anchor, Tooltip, TooltipProps, useProps} from '@mantine/core';
+import cx from 'clsx';
 import {FunctionComponent, ReactNode} from 'react';
-import {HeaderDocAnchorStylesParams, useStyles} from './HeaderDocAnchor.styles';
-
-export type HeaderDocAnchorStylesNames = Selectors<typeof useStyles>;
+import HeaderDocAnchorClasses from './HeaderDocAnchor.module.css';
 
 const defaultProps: Partial<HeaderDocAnchorProps> = {
     position: 'right',
     children: <QuestionSize16Px height={16} />,
 };
 
-export interface HeaderDocAnchorProps
-    extends Pick<TooltipProps, 'position'>,
-        DefaultProps<HeaderDocAnchorStylesNames, HeaderDocAnchorStylesParams> {
+export interface HeaderDocAnchorProps extends Pick<TooltipProps, 'position' | 'className'> {
     /**
      * A href pointing to documentation related to the current panel.
      * When provided, an info icon is rendered next to the title as link to this documentation
@@ -30,24 +27,21 @@ export interface HeaderDocAnchorProps
 
 export const HeaderDocAnchor: FunctionComponent<HeaderDocAnchorProps> = (props: HeaderDocAnchorProps) => {
     const {
-        classNames,
-        styles,
-        unstyled,
         className,
         children,
         href: docLink,
         label: docLinkTooltipLabel,
         ...others
-    } = useComponentDefaultProps('PlasmaHeaderActions', defaultProps, props);
-    const {classes, cx} = useStyles({}, {name: 'PlasmaHeaderActions', classNames, styles, unstyled});
+    } = useProps('PlasmaHeaderActions', defaultProps, props);
+
     return (
         <Tooltip
-            className={cx(className, classes.tooltip)}
+            className={cx(className, HeaderDocAnchorClasses.tooltip)}
             label={docLinkTooltipLabel}
             disabled={!docLinkTooltipLabel}
             {...others}
         >
-            <Anchor className={classes.anchor} inline href={docLink} target="_blank">
+            <Anchor className={HeaderDocAnchorClasses.anchor} inline href={docLink} target="_blank">
                 {children}
             </Anchor>
         </Tooltip>

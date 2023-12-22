@@ -14,7 +14,7 @@ import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, Dispatch, ReactElement, cloneElement, useCallback, useEffect, useState} from 'react';
 
 import {useRowSelection} from '../../hooks/useRowSelection';
-import useStyles from './Table.styles';
+import TableClasses from './Table.module.css';
 import {TableFormType, TableProps, TableState, TableType} from './Table.types';
 import {TableContext} from './TableContext';
 import {TableLayouts} from './layouts/TableLayouts';
@@ -50,9 +50,6 @@ export const Table: TableType = <T,>({
     disableRowSelection,
     onRowSelectionChange,
     additionalRootNodes,
-    classNames,
-    styles,
-    unstyled,
     options = {},
 }: TableProps<T>) => {
     const convertedChildren = Children.toArray(children) as ReactElement[];
@@ -69,7 +66,6 @@ export const Table: TableType = <T,>({
             layout: initialState?.layout ?? layouts[0].name,
         },
     });
-    const {classes} = useStyles(null, {name: 'PlasmaTable', classNames, styles, unstyled});
 
     const table = useReactTable({
         initialState: defaultsDeep(initialStateWithoutForm, {
@@ -140,7 +136,7 @@ export const Table: TableType = <T,>({
 
     if (!data) {
         return (
-            <Center sx={{flexGrow: 1}}>
+            <Center style={{flexGrow: 1}}>
                 <Loader />
             </Center>
         );
@@ -175,8 +171,8 @@ export const Table: TableType = <T,>({
                     noDataChildren
                 ) : (
                     <>
-                        <Box component="table" className={classes.table} pb="sm">
-                            <thead className={classes.header}>
+                        <Box component="table" className={TableClasses.table} pb="sm">
+                            <thead className={TableClasses.header}>
                                 {!!header ? (
                                     <tr>
                                         <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
@@ -191,7 +187,7 @@ export const Table: TableType = <T,>({
                                     loading={loading}
                                 />
                             </thead>
-                            <tbody className={classes.body}>
+                            <tbody className={TableClasses.body}>
                                 {hasRows ? (
                                     <Layout.Body
                                         table={table}
@@ -221,7 +217,16 @@ export const Table: TableType = <T,>({
     );
 };
 
-Table.ColumnsSelector = TableColumnsSelector;
+export const TableComponentsOrder = {
+    MultiSelectInfo: 7,
+    Actions: 6,
+    Predicate: 5,
+    Filter: 4,
+    DateRangePicker: 3,
+    ColumnsSelector: 2,
+    LayoutControl: 1,
+};
+
 Table.Actions = TableActions;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;
@@ -236,4 +241,5 @@ Table.AccordionColumn = TableAccordionColumn;
 Table.DateRangePicker = TableDateRangePicker;
 Table.Consumer = TableConsumer;
 Table.Loading = TableLoading;
+Table.ColumnsSelector = TableColumnsSelector;
 Table.Layouts = TableLayouts;

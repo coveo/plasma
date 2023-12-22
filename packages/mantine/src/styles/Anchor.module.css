@@ -1,0 +1,6 @@
+.root {
+    @mixin hover {
+        text-decoration: underline;
+        color: var(--mantine-color-action-8);
+    }
+}

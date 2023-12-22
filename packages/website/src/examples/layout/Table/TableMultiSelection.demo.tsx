@@ -125,7 +125,7 @@ const TableActions: FunctionComponent<{data: IExampleRowData[]}> = ({data}) => {
             <Button
                 variant="subtle"
                 onClick={() => alert(`Action triggered on a single row: ${data[0].id}`)}
-                leftIcon={<EditSize16Px height={16} />}
+                leftSection={<EditSize16Px height={16} />}
             >
                 Single row action
             </Button>
@@ -136,7 +136,7 @@ const TableActions: FunctionComponent<{data: IExampleRowData[]}> = ({data}) => {
             <Button
                 variant="subtle"
                 onClick={() => alert(`Bulk action triggered on multiple rows: ${data.map(({id}) => id).join(', ')}`)}
-                leftIcon={<DeleteSize16Px height={16} />}
+                leftSection={<DeleteSize16Px height={16} />}
             >
                 Bulk action
             </Button>

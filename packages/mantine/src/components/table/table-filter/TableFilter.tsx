@@ -3,19 +3,12 @@ import {ActionIcon, Grid, TextInput} from '@mantine/core';
 import {ChangeEventHandler, FunctionComponent, MouseEventHandler, useEffect, useState} from 'react';
 
 import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
-import {TableComponentsOrder} from '../Table.styles';
+import {TableComponentsOrder} from '../Table';
 import {useTable} from '../TableContext';
-import useStyles from './TableFilter.styles';
+import TableFilterClasses from './TableFilter.module.css';
 import {TableFilterProps} from './TableFilter.types';
 
-export const TableFilter: FunctionComponent<TableFilterProps> = ({
-    placeholder = 'Search by any field',
-    classNames,
-    styles,
-    unstyled,
-    ...others
-}) => {
-    const {classes} = useStyles(null, {name: 'TableFilter', classNames, styles, unstyled});
+export const TableFilter: FunctionComponent<TableFilterProps> = ({placeholder = 'Search by any field', ...others}) => {
     const {state, setState} = useTable();
     const [filter, setFilter] = useState(state.globalFilter);
     const [debounced, cancel] = useDebouncedValue(filter, 300);
@@ -45,9 +38,9 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
     }, [state.globalFilter]);
 
     return (
-        <Grid.Col span="content" order={TableComponentsOrder.Filter} py="sm" className={classes.root}>
+        <Grid.Col span="content" order={TableComponentsOrder.Filter} py="sm" className={TableFilterClasses.root}>
             <TextInput
-                className={classes.wrapper}
+                className={TableFilterClasses.wrapper}
                 placeholder={placeholder}
                 autoComplete="off"
                 mb="md"
@@ -57,7 +50,7 @@ export const TableFilter: FunctionComponent<TableFilterProps> = ({
                             <CrossSize16Px height={16} />
                         </ActionIcon>
                     ) : (
-                        <FilterSize16Px height={16} className={classes.empty} />
+                        <FilterSize16Px height={16} className={TableFilterClasses.empty} />
                     )
                 }
                 value={filter}

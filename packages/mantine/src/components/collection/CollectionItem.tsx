@@ -1,17 +1,18 @@
 import {DragAndDropSize24Px, RemoveSize16Px} from '@coveord/plasma-react-icons';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {ActionIcon, DefaultProps, Group, Selectors} from '@mantine/core';
+import {ActionIcon, Group, GroupProps} from '@mantine/core';
+import cx from 'clsx';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
-import useStyles from './Collection.styles';
+import CollectionClasses from './Collection.module.css';
 
 interface CollectionItemProps extends CollectionItemSharedProps {
     draggable?: boolean;
     disabled: boolean;
 }
 
-interface CollectionItemSharedProps extends DefaultProps<Selectors<typeof useStyles>> {
+interface CollectionItemSharedProps extends GroupProps {
     id: string;
     onRemove?: React.MouseEventHandler<HTMLButtonElement>;
     removable?: boolean;
@@ -20,7 +21,7 @@ interface CollectionItemSharedProps extends DefaultProps<Selectors<typeof useSty
 const RemoveButton: FunctionComponent<{
     onClick: React.MouseEventHandler<HTMLButtonElement>;
 }> = ({onClick}) => (
-    <ActionIcon sx={{alignSelf: 'center'}} variant="subtle" onClick={onClick} color="action">
+    <ActionIcon style={{alignSelf: 'center'}} variant="subtle" onClick={onClick} color="action">
         <RemoveSize16Px height={16} />
     </ActionIcon>
 );
@@ -30,36 +31,28 @@ const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
 const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     onRemove,
     removable = true,
-    styles,
     children,
 }) => {
-    const {classes, cx} = useStyles(null, {name: 'Collection', styles});
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : <RemoveButtonPlaceholder />;
 
     return (
-        <Group className={cx(classes.item)}>
+        <Group className={CollectionClasses.item}>
             {children}
             {removeButton}
         </Group>
     );
 };
 
-const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
-    children,
-    styles,
-}) => {
-    const {classes, cx} = useStyles(null, {name: 'Collection', styles});
-    return <Group className={cx(classes.item)}>{children}</Group>;
-};
+const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({children}) => (
+    <Group className={CollectionClasses.item}>{children}</Group>
+);
 
 const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     id,
     onRemove,
     removable = true,
-    styles,
     children,
 }) => {
-    const {classes, cx} = useStyles(null, {name: 'Collection', styles});
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : null;
     const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
         id,
@@ -68,17 +61,19 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
     return (
         <Group
             ref={setNodeRef}
-            className={cx(classes.item, {[classes.itemDragging]: isDragging})}
-            sx={
+            className={cx(CollectionClasses.item, {[CollectionClasses.itemDragging]: isDragging})}
+            styles={
                 transform
                     ? {
-                          transform: CSS.Transform.toString(transform),
-                          transition,
+                          root: {
+                              transform: CSS.Transform.toString(transform),
+                              transition,
+                          },
                       }
-                    : undefined
+                    : undefined // what
             }
         >
-            <div ref={setActivatorNodeRef} {...listeners} {...attributes} className={classes.dragHandle}>
+            <div ref={setActivatorNodeRef} {...listeners} {...attributes} className={CollectionClasses.dragHandle}>
                 <DragAndDropSize24Px height={16} />
             </div>
             {children}

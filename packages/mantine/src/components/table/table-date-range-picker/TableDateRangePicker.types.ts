@@ -1,12 +1,7 @@
-import {DefaultProps, Selectors} from '@mantine/core';
 import {DateRangePickerInlineCalendarProps, DateRangePickerPreset} from '../../date-range-picker';
-import useStyles from './TableDateRangePicker.styles';
-
-type TableDateRangePickerStylesNames = Selectors<typeof useStyles>;
 
 export interface TableDateRangePickerProps
-    extends Pick<DateRangePickerInlineCalendarProps, 'startProps' | 'endProps' | 'rangeCalendarProps'>,
-        DefaultProps<TableDateRangePickerStylesNames> {
+    extends Pick<DateRangePickerInlineCalendarProps, 'startProps' | 'endProps' | 'rangeCalendarProps'> {
     /**
      * An object containing date presets.
      * If empty the preset dropdown won't be shown

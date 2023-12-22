@@ -1,27 +1,17 @@
-import {
-    DefaultProps,
-    Divider,
-    Group,
-    GroupProps,
-    Selectors,
-    Stack,
-    Text,
-    Title,
-    useComponentDefaultProps,
-} from '@mantine/core';
+import {Divider, Group, GroupProps, Stack, Text, Title, useProps} from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
 
-import {HeaderStylesParams, useStyles} from './Header.styles';
+import cx from 'clsx';
+import HeaderClasses from './Header.module.css';
 import {HeaderActions} from './HeaderActions/HeaderActions';
 import {HeaderBreadcrumbs} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 import {HeaderDocAnchor} from './HeaderDocAnchor/HeaderDocAnchor';
 
-export type {HeaderDocAnchorProps, HeaderDocAnchorStylesNames} from './HeaderDocAnchor/HeaderDocAnchor';
-export type {HeaderBreadcrumbsProps, HeaderBreadcrumbsStylesNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
-export type {HeaderActionsProps, HeaderActionsStylesNames} from './HeaderActions/HeaderActions';
-export type HeaderStylesNames = Selectors<typeof useStyles>;
+export type {HeaderActionsProps} from './HeaderActions/HeaderActions';
+export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
+export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor';
 
-export interface HeaderProps extends Omit<GroupProps, 'styles'>, DefaultProps<HeaderStylesNames, HeaderStylesParams> {
+export interface HeaderProps extends Omit<GroupProps, 'styles'> {
     /**
      * The description text displayed inside the header underneath the title
      */
@@ -51,14 +41,16 @@ interface HeaderType {
 
 const defaultProps: Partial<HeaderProps> = {
     variant: 'page',
-    position: 'apart',
-    noWrap: true,
+    justify: 'space-between',
+    wrap: 'nowrap',
 };
 
 export const Header: HeaderType = (props: HeaderProps) => {
-    const {classNames, styles, unstyled, className, description, borderBottom, variant, children, ...others} =
-        useComponentDefaultProps('PlasmaHeader', defaultProps, props);
-    const {classes, cx} = useStyles({variant}, {name: 'PlasmaHeader', classNames, styles, unstyled});
+    const {className, description, borderBottom, variant, children, ...others} = useProps(
+        'Header',
+        defaultProps,
+        props,
+    );
 
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
@@ -69,20 +61,20 @@ export const Header: HeaderType = (props: HeaderProps) => {
     );
     return (
         <>
-            <Group className={cx(className, classes.root)} {...others}>
-                <Stack spacing={0}>
+            <Group variant={variant} className={cx(className, HeaderClasses.root)} {...others}>
+                <Stack gap={0}>
                     {breadcrumbs}
-                    <Title order={variant === 'page' ? 1 : 3} className={classes.title}>
+                    <Title variant={variant} order={variant === 'page' ? 1 : 3} className={HeaderClasses.title}>
                         {otherChildren}
                         {docAnchor}
                     </Title>
-                    <Text className={classes.description} size={variant === 'page' ? 'md' : 'sm'}>
+                    <Text classNames={{root: HeaderClasses.description}} size={variant === 'page' ? 'md' : 'sm'}>
                         {description}
                     </Text>
                 </Stack>
                 {actions}
             </Group>
-            {borderBottom ? <Divider className={classes.divider} size="xs" /> : null}
+            {borderBottom ? <Divider className={HeaderClasses.divider} size="xs" /> : null}
         </>
     );
 };

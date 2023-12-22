@@ -8,7 +8,7 @@ const Demo = () => {
             <Modal.Root size="lg" opened={opened} padding={0} onClose={() => setOpened(false)}>
                 <Modal.Overlay />
                 <Modal.Content>
-                    <Modal.Header p="lg" sx={{borderBottom: 'none'}}>
+                    <Modal.Header p="lg" style={{borderBottom: 'none'}}>
                         <Modal.Title>
                             <Header variant="modal" description="Modal description">
                                 Modal Title

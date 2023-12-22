@@ -1,9 +1,6 @@
-import {DefaultProps, SelectItem, Selectors} from '@mantine/core';
-import useStyles from './TablePredicate.styles';
+import {ComboboxData, GridColProps} from '@mantine/core';
 
-type TablePredicateStylesNames = Selectors<typeof useStyles>;
-
-export interface TablePredicateProps extends DefaultProps<TablePredicateStylesNames> {
+export interface TablePredicateProps extends GridColProps {
     /**
      * Unique identifier for this predicate. Will be used to access the selected value in the table state
      */
@@ -11,7 +8,7 @@ export interface TablePredicateProps extends DefaultProps<TablePredicateStylesNa
     /**
      * The values to display in the predicate
      */
-    data: SelectItem[];
+    data: ComboboxData;
     /**
      * Input label (not displayed for now)
      *

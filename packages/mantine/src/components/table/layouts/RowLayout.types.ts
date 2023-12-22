@@ -1,12 +1,8 @@
-import {DefaultProps, Selectors} from '@mantine/core';
 import {Table} from '@tanstack/table-core';
 import {ReactNode} from 'react';
-import useStyles, {RowLayoutStylesParams} from './RowLayout.styles';
-
-type RowLayoutStylesNames = Selectors<typeof useStyles>;
 
 // TODO https://coveord.atlassian.net/browse/ADUI-9182
-export interface TableLayoutProps<T = unknown> extends DefaultProps<RowLayoutStylesNames, RowLayoutStylesParams> {
+export interface RowLayoutProps<T = unknown> {
     table: Table<T>;
     loading?: boolean;
     /**

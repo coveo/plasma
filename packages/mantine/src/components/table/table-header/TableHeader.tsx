@@ -3,40 +3,28 @@ import {Grid, Tooltip} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
 import {Button} from '../../button';
-import {TableLayoutControl} from '../layouts/TableLayoutControl';
-import {TableComponentsOrder} from '../Table.styles';
+import {TableComponentsOrder} from '../Table';
 import {useTable} from '../TableContext';
-import useStyles from './TableHeader.styles';
+import {TableLayoutControl} from '../layouts/TableLayoutControl';
+import TableHeaderClasses from './TableHeader.module.css';
 import {TableHeaderProps} from './TableHeader.types';
 
-export const TableHeader: FunctionComponent<TableHeaderProps> = ({
-    classNames,
-    styles,
-    unstyled,
-    children,
-    ...others
-}) => {
+export const TableHeader: FunctionComponent<TableHeaderProps> = ({children, ...others}) => {
     const {getSelectedRows, multiRowSelectionEnabled, clearSelection, disableRowSelection} = useTable();
-    const {classes} = useStyles(null, {name: 'TableHeader', classNames, styles, unstyled});
     const selectedRows = getSelectedRows();
 
     return (
         <Grid
             justify="flex-start"
             align="center"
-            gutter="sm"
-            p={0}
-            pl="md"
-            pr="lg"
-            m={0}
-            className={classes.root}
+            gutter="10px 0"
+            classNames={{root: TableHeaderClasses.root, inner: TableHeaderClasses.inner}}
             {...others}
         >
             {multiRowSelectionEnabled && selectedRows.length > 0 ? (
                 <Grid.Col
                     span="auto"
-                    py="sm"
-                    className={classes.multiSelectInfo}
+                    classNames={{col: {...TableHeaderClasses.multiSelectInfo, ...TableHeaderClasses.col}}}
                     order={TableComponentsOrder.MultiSelectInfo}
                 >
                     <Tooltip label="Unselect all">
@@ -44,7 +32,7 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({
                             onClick={clearSelection}
                             variant="subtle"
                             disabled={disableRowSelection}
-                            leftIcon={<CrossSize16Px height={16} />}
+                            leftSection={<CrossSize16Px height={16} />}
                         >
                             {selectedRows.length} selected
                         </Button>

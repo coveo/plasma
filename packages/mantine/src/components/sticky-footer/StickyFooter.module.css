@@ -1,0 +1,11 @@
+.root {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background-color: white;
+}
+.footer {
+    padding: var(--mantine-spacing-lg);
+}
+.divider {
+}

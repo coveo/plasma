@@ -3,6 +3,7 @@ import {DatePicker, DatePickerBaseProps} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
 import {Button} from '../button';
+import DateRangeClasses from './DateRange.module.css';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
@@ -68,16 +69,7 @@ export const DateRangePickerInlineCalendar = ({
 
     return (
         <>
-            <Group
-                align="center"
-                spacing="xs"
-                grow
-                px="md"
-                py="sm"
-                sx={(theme) => ({
-                    borderBottom: `1px solid ${theme.colors.gray[2]}`,
-                })}
-            >
+            <Group align="center" gap="xs" grow px="md" py="sm" className={DateRangeClasses.picker}>
                 <EditableDateRangePicker {...calendarInputProps} startProps={startProps} endProps={endProps} />
                 {presets ? (
                     <>
@@ -91,7 +83,7 @@ export const DateRangePickerInlineCalendar = ({
                 <DatePicker
                     numberOfColumns={2}
                     type="range"
-                    styles={{calendar: {cell: {textAlign: 'center'}}}}
+                    styles={{day: {textAlign: 'center'}}}
                     firstDayOfWeek={0}
                     allowSingleDateInRange
                     {...rangeCalendarProps}
@@ -99,15 +91,7 @@ export const DateRangePickerInlineCalendar = ({
                 />
             </Center>
 
-            <Group
-                position="right"
-                spacing="xs"
-                px="md"
-                py="sm"
-                sx={(theme) => ({
-                    borderTop: `1px solid ${theme.colors.gray[2]}`,
-                })}
-            >
+            <Group justify="right" gap="xs" px="md" py="sm" className={DateRangeClasses.save}>
                 <Button variant="outline" size="xs" onClick={onCancel}>
                     Cancel
                 </Button>

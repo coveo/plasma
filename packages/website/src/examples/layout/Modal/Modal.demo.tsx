@@ -7,6 +7,7 @@ const Demo = () => {
     return (
         <>
             <Modal
+                size="md"
                 opened={opened}
                 title={
                     <Header variant="modal" description="Modal description">
