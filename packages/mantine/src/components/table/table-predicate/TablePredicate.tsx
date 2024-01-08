@@ -31,7 +31,7 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data
             <Group gap="xs" classNames={{root: TablePredicateClasses.wrapper}}>
                 {label ? <Text classNames={{root: TablePredicateClasses.label}}>{label}:</Text> : null}
                 <Select
-                    // withinPortal what
+                    comboboxProps={{withinPortal: true}}
                     value={form.values.predicates[id]}
                     onChange={handleChange}
                     data={data}

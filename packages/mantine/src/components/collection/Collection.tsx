@@ -2,7 +2,17 @@ import {AddSize16Px} from '@coveord/plasma-react-icons';
 import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
 import {restrictToParentElement, restrictToVerticalAxis} from '@dnd-kit/modifiers';
 import {SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from '@dnd-kit/sortable';
-import {Box, Group, Input, InputWrapperProps, MantineSpacing, Stack, Tooltip, useProps} from '@mantine/core';
+import {
+    Box,
+    Group,
+    GroupProps,
+    Input,
+    InputWrapperProps,
+    MantineSpacing,
+    Stack,
+    Tooltip,
+    useProps,
+} from '@mantine/core';
 import {ReorderPayload} from '@mantine/form/lib/types';
 import {useDidUpdate} from '@mantine/hooks';
 import {ReactNode} from 'react';
@@ -13,7 +23,11 @@ import CollectionClasses from './Collection.module.css';
 import {CollectionItem} from './CollectionItem';
 
 interface CollectionProps<T>
-    extends Omit<InputWrapperProps, 'children' | 'inputContainer' | 'inputWrapperOrder' | 'onChange'> {
+    extends Omit<
+            InputWrapperProps,
+            'children' | 'inputContainer' | 'inputWrapperOrder' | 'onChange' | 'classNames' | 'vars' | 'styles'
+        >,
+        Omit<GroupProps, 'children' | 'onChange'> {
     /**
      * The default value each new item should have
      */
@@ -66,7 +80,7 @@ interface CollectionProps<T>
     /**
      * Function that gets called when a new item needs to be added to the collection
      *
-     * @param value The the value of the item to insert
+     * @param value The value of the item to insert
      * @param index The index of the new item to insert
      */
     onInsertItem?: (value: T, index: number) => void;
@@ -200,7 +214,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
             disabled={disabled}
             draggable={draggable}
             onRemove={() => onRemoveItem?.(index)}
-            // classNames={classNames} what
+            classNames={classNames}
             removable={!(required && hasOnlyOneItem)}
         >
             {children(item.data, index)}
