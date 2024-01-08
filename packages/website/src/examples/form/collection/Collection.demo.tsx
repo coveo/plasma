@@ -22,7 +22,7 @@ const Demo = () => {
             description="These will have to be done by next week"
             label="List of tasks"
             newItem={{name: '', done: false}}
-            {...form.getInputProps('todoList')}
+            {...form.getInputProps('todoList', {type: 'collection'})}
         >
             {(_task, index) => (
                 <>
