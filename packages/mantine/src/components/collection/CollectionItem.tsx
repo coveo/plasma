@@ -70,7 +70,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
                               transition,
                           },
                       }
-                    : undefined // what
+                    : undefined
             }
         >
             <div ref={setActivatorNodeRef} {...listeners} {...attributes} className={CollectionClasses.dragHandle}>

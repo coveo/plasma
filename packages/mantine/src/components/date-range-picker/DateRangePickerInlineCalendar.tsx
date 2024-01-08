@@ -74,7 +74,11 @@ export const DateRangePickerInlineCalendar = ({
                 {presets ? (
                     <>
                         <Space w="sm" />
-                        <DateRangePickerPresetSelect presets={presets} {...calendarInputProps} />
+                        <DateRangePickerPresetSelect
+                            presets={presets}
+                            {...calendarInputProps}
+                            selectProps={{comboboxProps: {withinPortal: false}}}
+                        />
                     </>
                 ) : null}
             </Group>
