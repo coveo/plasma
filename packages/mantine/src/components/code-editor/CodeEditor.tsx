@@ -230,7 +230,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         <Stack
             justify="flex-start"
             gap={0}
-            style={{height: Math.max(parentHeight, minHeight), maxHeight}} // wat
+            style={{height: Math.max(parentHeight, minHeight), maxHeight}}
             ref={ref}
             {...others}
         >
