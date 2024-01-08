@@ -31,7 +31,7 @@ export const useForm = <
         {type = 'input', withError = type === 'input', withFocus = true} = {},
     ) => {
         const originalPayload = form.getInputProps(path, {
-            type: type === 'collection' || 'input' ? 'input' : 'checkbox',
+            type: type === 'collection' ? 'input' : type,
             withError,
             withFocus,
         });
