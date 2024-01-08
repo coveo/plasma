@@ -14,7 +14,6 @@ const Demo = () => {
             todoList: (value) => (value.length < 2 ? `Don't be lazy, add just ${2 - value.length} more tasks` : null),
         },
     });
-    console.log(form.getInputProps('todoList.0.done', {type: 'checkbox'}));
 
     return (
         <Collection<{name: string; done: boolean}>
