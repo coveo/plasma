@@ -23,10 +23,10 @@ const makeData = (len: number): Person[] =>
     Array(len)
         .fill(0)
         .map(() => ({
-            id: faker.datatype.uuid(),
-            firstName: faker.name.firstName(),
-            lastName: faker.name.lastName(),
-            age: faker.datatype.number(40),
+            id: faker.string.uuid(),
+            firstName: faker.person.firstName(),
+            lastName: faker.person.lastName(),
+            age: faker.number.int(40),
         }));
 
 const fuzzyFilter: FilterFn<Person> = (row, columnId, value) => rankItem(row.getValue(columnId), value).passed;
