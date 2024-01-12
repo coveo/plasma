@@ -21,4 +21,7 @@ export default defineConfig({
             {find: '@demo', replacement: path.resolve(__dirname, 'src/building-blocs/Demo.tsx')},
         ],
     },
+    build: {
+        sourcemap: true,
+    },
 });

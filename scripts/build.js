@@ -2,6 +2,7 @@
 const {spawn} = require('child_process');
 const path = require('path');
 const {writeFileSync} = require('node:fs');
+const {generateCoreCSS} = require('./generate-css.cjs');
 process.on('unhandledRejection', (err) => {
     throw err;
 });
@@ -62,6 +63,8 @@ const build = async ({watch = false}) => {
 
         // Ensure NodeJS resolves dist/esm/**/*.js as dist/esm/**/*.mjs
         writeFileSync('dist/esm/package.json', JSON.stringify({type: 'module'}));
+
+        await generateCoreCSS();
 
         console.info('✅');
     } catch (error) {

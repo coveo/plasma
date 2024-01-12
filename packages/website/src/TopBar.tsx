@@ -9,7 +9,7 @@ const TopBar = () => (
         px="lg"
         py="xs"
         style={(theme) => ({
-            background: `linear-gradient(217deg, ${theme.colors.purple[6]} 0%, ${theme.colors.navy[7]} 74.62%, ${theme.colors.navy[7]} 100%)`,
+            background: `linear-gradient(217deg, ${theme.colors.blue[6]} 0%, ${theme.colors.blue[7]} 74.62%, ${theme.colors.blue[7]} 100%)`,
             height: '100%',
         })}
         wrap="nowrap"

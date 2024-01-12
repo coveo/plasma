@@ -6,7 +6,6 @@ import {
     Anchor,
     AppShellNavbar,
     Badge,
-    Button,
     Checkbox,
     ColorSwatch,
     Divider,
@@ -39,7 +38,7 @@ import AlertClasses from '../styles/Alert.module.css';
 import AnchorClasses from '../styles/Anchor.module.css';
 import AppShellNavBarClasses from '../styles/AppShellNavBar.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
-import ButtonClasses from '../styles/Button.module.css';
+// import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import DatePickerClasses from '../styles/DatePicker.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
@@ -64,6 +63,7 @@ import {PlasmaColors} from './PlasmaColors';
 export const plasmaTheme: MantineThemeOverride = createTheme({
     // These are overrides over https://github.com/mantinedev/mantine/blob/master/packages/%40mantine/core/src/core/MantineProvider/default-theme.ts
     fontFamily: 'canada-type-gibson, sans-serif',
+    white: color.primary.pureWhite,
     black: color.primary.gray[9],
     defaultRadius: 8,
     lineHeights: {md: '1.5'},
@@ -113,9 +113,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: TextClasses.root,
             vars: TextVars,
         }),
-        Button: Button.extend({
-            classNames: {root: ButtonClasses.root, label: ButtonClasses.label},
-        }),
+        // Button: Button.extend({
+        //     classNames: {root: ButtonClasses.root, label: ButtonClasses.label},
+        // }),
         Modal: Modal.extend({
             classNames: {
                 root: ModalClasses.root,
