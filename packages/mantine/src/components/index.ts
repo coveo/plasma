@@ -3,6 +3,7 @@ export * from './browser-preview';
 export * from './code-editor';
 export * from './collection';
 export * from './date-range-picker';
+export * from './extended-multi-select';
 export * from './sticky-footer';
 export * from './header';
 export * from './inline-confirm';

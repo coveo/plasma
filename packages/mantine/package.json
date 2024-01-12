@@ -42,6 +42,7 @@
         "@dnd-kit/modifiers": "7.0.0",
         "@dnd-kit/sortable": "8.0.0",
         "@dnd-kit/utilities": "3.2.1",
+        "@mantine/styles": "6.0.19",
         "@mantine/utils": "6.0.19",
         "@monaco-editor/react": "4.5.1",
         "@swc/helpers": "0.5.1",
