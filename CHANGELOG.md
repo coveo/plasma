@@ -1,3 +1,12 @@
+## 52.26.6-next.0 (2024-01-15)
+
+
+### Bug Fixes
+
+* **mantine:** cleared up some changes in v7 and fix them (#3601) 47dad99, closes #3601
+
+
+
 ## 52.26.5 (2023-12-07)
 
 
