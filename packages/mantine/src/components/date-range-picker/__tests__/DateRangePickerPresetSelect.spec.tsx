@@ -2,7 +2,7 @@ import {render, screen, userEvent} from '@test-utils';
 
 import {DateRangePickerPresetSelect} from '../DateRangePickerPresetSelect';
 
-describe.skip('DateRangePickerPresetSelect', () => {
+describe('DateRangePickerPresetSelect', () => {
     it('calls onChange when selecting a preset', async () => {
         const user = userEvent.setup({delay: null});
         const onChange = vi.fn();
@@ -17,7 +17,7 @@ describe.skip('DateRangePickerPresetSelect', () => {
         );
 
         await user.click(
-            screen.getByRole('searchbox', {
+            screen.getByRole('textbox', {
                 name: 'Date range',
             }),
         );
@@ -37,7 +37,7 @@ describe.skip('DateRangePickerPresetSelect', () => {
         );
 
         // by default no value
-        expect(screen.getByRole('searchbox', {name: 'Date range'})).toHaveValue('');
+        expect(screen.getByRole('textbox', {name: 'Date range'})).toHaveValue('');
 
         rerender(
             <DateRangePickerPresetSelect
@@ -49,6 +49,6 @@ describe.skip('DateRangePickerPresetSelect', () => {
         );
 
         // if a preset match the value, it selects it
-        expect(screen.getByRole('searchbox', {name: 'Date range'})).toHaveValue('select me');
+        expect(screen.getByRole('textbox', {name: 'Date range'})).toHaveValue('select me');
     });
 });

@@ -4,7 +4,7 @@ import {FunctionComponent} from 'react';
 import {Table} from '../../Table';
 import {TableLayouts} from '../TableLayouts';
 
-describe.skip('RowLayout', () => {
+describe('RowLayout', () => {
     type RowData = {id: string; firstName: string; lastName?: string};
 
     const columnHelper = createColumnHelper<RowData>();
@@ -386,6 +386,7 @@ describe.skip('RowLayout', () => {
         });
 
         it('prevents click on checkboxes if disableRowSelection is true', async () => {
+            const onClick = vi.fn();
             render(
                 <Table
                     getRowId={({id}) => id}
@@ -398,13 +399,14 @@ describe.skip('RowLayout', () => {
                     disableRowSelection
                 />,
             );
-
-            expect(screen.getByRole('checkbox', {name: /select all/i})).toHaveStyle('pointerEvents: none');
+            screen.getByRole('checkbox', {name: /select all/i}).click();
+            expect(onClick).not.toHaveBeenCalled();
 
             const rows = screen.getAllByRole('row');
             rows.forEach(async (row) => {
                 const checkbox = within(row).getByRole('checkbox', {name: /select/i});
-                expect(checkbox).toHaveStyle('pointerEvents: none');
+                checkbox.click();
+                expect(onClick).not.toHaveBeenCalled();
             });
         });
     });
