@@ -386,6 +386,7 @@ describe('RowLayout', () => {
         });
 
         it('prevents click on checkboxes if disableRowSelection is true', async () => {
+            const user = userEvent.setup();
             const onClick = vi.fn();
             render(
                 <Table
@@ -404,8 +405,8 @@ describe('RowLayout', () => {
 
             const rows = screen.getAllByRole('row');
             rows.forEach(async (row) => {
-                const checkbox = within(row).getByRole('checkbox', {name: /select/i});
-                checkbox.click();
+                await user.click(within(row).getByRole('checkbox', {name: /select/i}));
+
                 expect(onClick).not.toHaveBeenCalled();
             });
         });

@@ -45,8 +45,8 @@ const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     loading={isLoading || loading}
                     onClick={handleClick}
                     disabled={disabled}
-                    {...others}
                     data-loading={isLoading || loading}
+                    {...others}
                 />
             </ButtonWithDisabledTooltip>
         );
