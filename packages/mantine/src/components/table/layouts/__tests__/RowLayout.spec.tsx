@@ -400,7 +400,7 @@ describe('RowLayout', () => {
                     disableRowSelection
                 />,
             );
-            screen.getByRole('checkbox', {name: /select all/i}).click();
+            await user.click(screen.getByRole('checkbox', {name: /select all/i}));
             expect(onClick).not.toHaveBeenCalled();
 
             const rows = screen.getAllByRole('row');
