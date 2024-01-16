@@ -1,8 +1,8 @@
-import {render, screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import {render, screen, waitFor} from '../../../__tests__/Utils';
 import {BrowserPreview} from '../BrowserPreview';
 
-describe.skip('BrowserPreview', () => {
+describe('BrowserPreview', () => {
     it('shows no tooltip when none specified', async () => {
         render(<BrowserPreview />);
 

@@ -79,7 +79,7 @@ describe('Table', () => {
         });
     });
 
-    describe.skip('when it is loading', () => {
+    describe('when it is loading', () => {
         it('shows a loading animation over the no data children (filtered)', () => {
             render(
                 <Table
@@ -94,9 +94,8 @@ describe('Table', () => {
                     </Table.Header>
                 </Table>,
             );
-            expect(screen.getByTestId('filtered-empty-state').parentElement).toHaveClass(
-                'mantine-Skeleton-root mantine-Skeleton-visible',
-            );
+            expect(screen.getByTestId('filtered-empty-state').parentElement).toBeVisible();
+            expect(screen.getByTestId('filtered-empty-state').parentElement).toHaveClass('mantine-Skeleton-root');
         });
 
         it('shows a loading animation over the no data children (unfiltered)', () => {
@@ -107,9 +106,8 @@ describe('Table', () => {
                     </Table.Header>
                 </Table>,
             );
-            expect(screen.getByTestId('empty-state').parentElement).toHaveClass(
-                'mantine-Skeleton-root mantine-Skeleton-visible',
-            );
+            expect(screen.getByTestId('empty-state').parentElement).toBeVisible();
+            expect(screen.getByTestId('empty-state').parentElement).toHaveClass('mantine-Skeleton-root');
         });
     });
 
