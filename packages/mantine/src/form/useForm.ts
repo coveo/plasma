@@ -1,22 +1,5 @@
-import {useForm as useMantineForm} from '@mantine/form';
-import {LooseKeys, UseFormInput, _TransformValues} from '@mantine/form/lib/types';
-
-type InputTypes = 'input' | 'checkbox' | 'collection';
-
-type GetInputProps<Values> = <Field extends LooseKeys<Values>>(
-    path: Field,
-    options?: {type?: InputTypes; withError?: boolean; withFocus?: boolean},
-) => {
-    value: any;
-    onChange: any;
-    checked?: any;
-    error?: any;
-    onFocus?: any;
-    onBlur?: any;
-    onReorderItem?: any;
-    onRemoveItem?: any;
-    onInsertItem?: any;
-};
+import {useForm as useMantineForm, UseFormInput, GetInputProps} from '@mantine/form';
+import {_TransformValues} from '@mantine/form/lib/types';
 
 export const useForm = <
     Values = Record<string, unknown>,

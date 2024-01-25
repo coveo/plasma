@@ -70,11 +70,17 @@ export const DateRangePickerInlineCalendar = ({
     return (
         <>
             <Group align="center" gap="xs" grow px="md" py="sm" className={DateRangeClasses.picker}>
-                <EditableDateRangePicker {...calendarInputProps} startProps={startProps} endProps={endProps} />
+                <EditableDateRangePicker
+                    value={calendarInputProps.value}
+                    {...calendarInputProps}
+                    startProps={startProps}
+                    endProps={endProps}
+                />
                 {presets ? (
                     <>
                         <Space w="sm" />
                         <DateRangePickerPresetSelect
+                            value={calendarInputProps.value}
                             presets={presets}
                             {...calendarInputProps}
                             selectProps={{comboboxProps: {withinPortal: false}}}
