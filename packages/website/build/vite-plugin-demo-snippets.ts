@@ -6,7 +6,7 @@ const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str
 const demoSnippets = (): Plugin => ({
     name: 'demo-snippets',
     transform: (source, id) => {
-        if (/\.demo\.tsx\?demo$/.test(id)) {
+        if (/\.demo(\.\w+)?\.tsx\?demo$/.test(id)) {
             const name = capitalizeFirstLetter(path.basename(id).split('.')[0]);
             const content = `
 import DemoContainer from '@demo';

@@ -1,11 +1,12 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import {Grid, Tooltip} from '@mantine/core';
+import clsx from 'clsx';
 import {FunctionComponent} from 'react';
 
 import {Button} from '../../button';
+import {TableLayoutControl} from '../layouts/TableLayoutControl';
 import {TableComponentsOrder} from '../Table';
 import {useTable} from '../TableContext';
-import {TableLayoutControl} from '../layouts/TableLayoutControl';
 import TableHeaderClasses from './TableHeader.module.css';
 import {TableHeaderProps} from './TableHeader.types';
 
@@ -24,7 +25,7 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({children, ...o
             {multiRowSelectionEnabled && selectedRows.length > 0 ? (
                 <Grid.Col
                     span="auto"
-                    classNames={{col: {...TableHeaderClasses.multiSelectInfo, ...TableHeaderClasses.col}}}
+                    classNames={{col: clsx(TableHeaderClasses.multiSelectInfo, TableHeaderClasses.col)}}
                     order={TableComponentsOrder.MultiSelectInfo}
                 >
                     <Tooltip label="Unselect all">

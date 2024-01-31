@@ -4,4 +4,6 @@ runs:
     using: composite
     steps:
         - shell: bash
+          run: pnpm --recursive mantine:fetch
+        - shell: bash
           run: pnpm build

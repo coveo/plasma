@@ -1,4 +1,4 @@
-import {AppShell, Divider, NavLink, NavLinkProps, ScrollArea} from '@coveord/plasma-mantine';
+import {AppShell, Divider, Image, NavLink, NavLinkProps, ScrollArea} from '@coveord/plasma-mantine';
 import {SideNavigation, SideNavigationItem, SideNavigationMenuSection} from '@coveord/plasma-react';
 import {
     AnnouncementSize16Px,
@@ -12,6 +12,8 @@ import {
 } from '@coveord/plasma-react-icons';
 import {ComponentProps, FunctionComponent, PropsWithChildren, useState} from 'react';
 import {Link, useLocation, useMatch} from 'react-router-dom';
+
+import MantineLogo from './assets/mantine-logo.svg';
 
 interface LegacyNavLinkProps {
     href?: string;
@@ -70,6 +72,8 @@ export const Navigation: FunctionComponent = () => {
     return isLegacy ? <LegacyNavigation /> : <MantineNavigation />;
 };
 
+const mantinePages = import.meta.glob<() => JSX.Element>('./pages/mantine/**/*.tsx', {import: 'default'});
+
 const InternalNavLink: FunctionComponent<ComponentProps<typeof Link> & Omit<NavLinkProps, 'component' | 'active'>> = (
     props,
 ) => {
@@ -117,6 +121,13 @@ const MantineNavigation = () => (
                 <InternalNavLink to="/form/CodeEditor" label="Code editor" />
                 <InternalNavLink to="/form/Collection" label="Collection" />
                 <InternalNavLink to="/form/CopyToClipboard" label="Copy to Clipboard" />
+            </NavLink>
+            <NavLink label="Mantine" leftSection={<Image src={MantineLogo} height={16} />} defaultOpened>
+                {Object.keys(mantinePages).map((filePath) => {
+                    const parts = filePath.split('/');
+                    const fileName = parts[parts.length - 1].replace(/\.tsx$/, '');
+                    return <InternalNavLink key={fileName} to={`/mantine/${fileName}`} label={fileName} />;
+                })}
             </NavLink>
         </AppShell.Section>
         <Divider />
