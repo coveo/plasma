@@ -13,7 +13,7 @@ import {
 import {CheckSize16Px, CopySize16Px, PlaySize16Px} from '@coveord/plasma-react-icons';
 import {CodeHighlight} from '@mantine/code-highlight';
 import '@mantine/code-highlight/styles.css';
-import {ReactNode} from 'react';
+import {ReactNode, Component} from 'react';
 import CodeHighlightClassesThemeClasses from '../styles/CodeHighlight.theme.module.css';
 import DemoClasses from './Demo.module.css';
 import getCodeSandboxLink from './getCodeSandboxLink';
@@ -26,7 +26,6 @@ interface DemoProps extends DemoComponentProps {
     children?: ReactNode;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Demo = ({children, snippet, center = false, grow = false, title, layout, noPadding, maxHeight}: DemoProps) => {
     const clipboard = useClipboard();
     const createSandbox = async () => {
@@ -46,29 +45,31 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
                 </Title>
             ) : null}
             <SimpleGrid className={DemoClasses.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
-                <Box<'div' | typeof Center> component={center ? Center : 'div'} className={DemoClasses.preview}>
-                    {maxHeight ? (
-                        <Flex direction={'column'} mah={maxHeight} style={{flex: 1}}>
-                            <div
-                                className={DemoClasses.flexPreviewWrapper}
-                                style={{padding: noPadding ? 0 : 'var(--mantine-spacing-md)'}}
-                            >
-                                {children}
-                            </div>
-                        </Flex>
-                    ) : (
-                        <ScrollArea.Autosize mah={MAX_HEIGHT}>
-                            <div
-                                style={{
-                                    padding: noPadding ? 0 : 'var(--mantine-spacing-md)',
-                                    height: grow ? MAX_HEIGHT : '100%',
-                                }}
-                            >
-                                {children}
-                            </div>
-                        </ScrollArea.Autosize>
-                    )}
-                </Box>
+                <ErrorBoundary>
+                    <Box<'div' | typeof Center> component={center ? Center : 'div'} className={DemoClasses.preview}>
+                        {maxHeight ? (
+                            <Flex direction={'column'} mah={maxHeight} style={{flex: 1}}>
+                                <div
+                                    className={DemoClasses.flexPreviewWrapper}
+                                    style={{padding: noPadding ? 0 : 'var(--mantine-spacing-md)'}}
+                                >
+                                    {children}
+                                </div>
+                            </Flex>
+                        ) : (
+                            <ScrollArea.Autosize mah={MAX_HEIGHT}>
+                                <div
+                                    style={{
+                                        padding: noPadding ? 0 : 'var(--mantine-spacing-md)',
+                                        height: grow ? MAX_HEIGHT : '100%',
+                                    }}
+                                >
+                                    {children}
+                                </div>
+                            </ScrollArea.Autosize>
+                        )}
+                    </Box>
+                </ErrorBoundary>
                 <div className={DemoClasses.code}>
                     <CodeHighlight
                         language="tsx"
@@ -106,4 +107,35 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
         </div>
     );
 };
+
+class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean}> {
+    constructor(props) {
+        super(props);
+        this.state = {hasError: false};
+    }
+
+    static getDerivedStateFromError() {
+        // Update state so the next render will show the fallback UI.
+        return {hasError: true};
+    }
+
+    componentDidCatch(error, info) {
+        // Example "componentStack":
+        //   in ComponentThatThrows (created by App)
+        //   in ErrorBoundary (created by App)
+        //   in div (created by App)
+        //   in App
+        console.error(error, info.componentStack);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            // You can render any custom fallback UI
+            return null;
+        }
+
+        return this.props.children;
+    }
+}
+
 export default Demo;

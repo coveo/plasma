@@ -1,0 +1,14 @@
+{
+    "ts-node": {"files": true},
+    "compilerOptions": {
+        "strict": true,
+        "types": ["Node"],
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "Node",
+        "target": "ES2017",
+        "lib": ["ES2017"]
+    },
+    "include": ["**/*.ts"]
+}

@@ -118,7 +118,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: {root: TitleClasses.root},
         }),
         Text: Text.extend({
-            classNames: TextClasses.root,
+            classNames: TextClasses,
             vars: TextVars,
         }),
         Button: Button.extend({
