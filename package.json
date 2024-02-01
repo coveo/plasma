@@ -74,7 +74,7 @@
         "mime-types": "2.1.35",
         "prettier": "3.0.2",
         "sort-package-json": "2.5.1",
-        "stylelint": "15.10.3",
+        "stylelint": "16.2.1",
         "stylelint-config-standard-scss": "11.0.0",
         "turbo": "1.10.12",
         "underscore": "1.13.6",
