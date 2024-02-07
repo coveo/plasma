@@ -94,7 +94,7 @@ const Demo = () => {
             <Table.Header>
                 <Table.EditColumnsVisibility />
                 <Table.Actions>{(datum: IExampleRowData) => <TableActions datum={datum} />}</Table.Actions>
-                {/* <UserPredicate /> */}
+                <UserPredicate />
                 <Table.Filter placeholder="Search posts by title" />
                 <Table.DateRangePicker
                     rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}

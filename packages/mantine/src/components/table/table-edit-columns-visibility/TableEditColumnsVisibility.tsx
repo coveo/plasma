@@ -1,4 +1,4 @@
-import {Button, Checkbox, Grid, Popover, Stack} from '@mantine/core';
+import {Button, Checkbox, Divider, Grid, Popover, Stack, Text} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
 import {TableComponentsOrder} from '../Table.styles';
@@ -19,26 +19,34 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
     if (columns.length <= 0) {
         return null;
     }
+    const idsToExclude = ['collapsible', 'select']; // Remplacez par les id que vous voulez exclure
 
     return (
-        // change the order, add edit columns?
-        <Grid.Col span="content" order={TableComponentsOrder.Actions} py="sm" className={classes.root}>
-            <Popover width={200} position="bottom" withArrow shadow="md">
+        <Grid.Col span="content" order={TableComponentsOrder.EditColumnsVisibility} py="sm" className={classes.root}>
+            <Popover width={200} position="bottom" shadow="md">
                 <Popover.Target>
-                    <Button variant="filled">Edit columns</Button>
+                    {/* mettre le count des colonnes visibles ou carrément le label en options? */}
+                    <Button variant="outline">{`Edit columns`}</Button>
                 </Popover.Target>
                 <Popover.Dropdown>
                     <Stack>
-                        {columns.map((column) => (
-                            <Checkbox
-                                key={column.id}
-                                label={column.id}
-                                name={column.id}
-                                checked={column.getIsVisible()}
-                                onChange={column.getToggleVisibilityHandler()}
-                            />
-                        ))}
+                        {/* enlever les columns qui n'en sonnt pas vraiment  */}
+                        {columns
+                            .filter((column) => !idsToExclude.includes(column.id))
+                            .map((column) => (
+                                <Checkbox
+                                    // disabled some box how?
+                                    key={column.id}
+                                    label={column.id}
+                                    name={column.id}
+                                    checked={column.getIsVisible()}
+                                    onChange={column.getToggleVisibilityHandler()}
+                                />
+                            ))}
                     </Stack>
+                    <Divider mb="xs" mt="sm" />
+                    <Text>coucou chuis l'footer</Text>
+                    {/* ajouter le tit footer pour recs - optionnal */}
                 </Popover.Dropdown>
             </Popover>
         </Grid.Col>
