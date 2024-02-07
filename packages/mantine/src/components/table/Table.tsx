@@ -23,6 +23,7 @@ import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/Table
 import {TableSelectableColumn} from './table-column/TableSelectableColumn';
 import {TableConsumer} from './table-consumer/TableConsumer';
 import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
+import {TableEditColumnsVisibility} from './table-edit-columns-visibility/TableEditColumnsVisibility';
 import {TableFilter} from './table-filter/TableFilter';
 import {TableFooter} from './table-footer/TableFooter';
 import {TableHeader} from './table-header/TableHeader';
@@ -78,6 +79,7 @@ export const Table: TableType = <T,>({
         data,
         columns: multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
+        enableHiding: true,
         manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!multiRowSelectionEnabled,
         getRowId,
@@ -90,6 +92,8 @@ export const Table: TableType = <T,>({
         },
         ...options,
     });
+
+    const getAllColumns = table.getAllFlatColumns;
 
     const [state, setState] = useState<TableState<T>>(table.initialState as TableState<T>);
     table.setOptions((prev) => ({
@@ -164,6 +168,7 @@ export const Table: TableType = <T,>({
                     getPageCount: table.getPageCount,
                     disableRowSelection,
                     layouts,
+                    getAllColumns,
                 }}
             >
                 {consumer}
@@ -217,6 +222,7 @@ export const Table: TableType = <T,>({
     );
 };
 
+Table.EditColumnsVisibility = TableEditColumnsVisibility;
 Table.Actions = TableActions;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;

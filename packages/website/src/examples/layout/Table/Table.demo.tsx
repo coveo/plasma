@@ -92,8 +92,9 @@ const Demo = () => {
         >
             {/* you can override background color with: sx={{backgroundColor: 'white'}} for Header and Footer */}
             <Table.Header>
+                <Table.EditColumnsVisibility />
                 <Table.Actions>{(datum: IExampleRowData) => <TableActions datum={datum} />}</Table.Actions>
-                <UserPredicate />
+                {/* <UserPredicate /> */}
                 <Table.Filter placeholder="Search posts by title" />
                 <Table.DateRangePicker
                     rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}

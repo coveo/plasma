@@ -2,6 +2,7 @@ import {Icon} from '@coveord/plasma-react-icons';
 import {DefaultProps, Selectors} from '@mantine/core';
 import {UseFormReturnType} from '@mantine/form';
 import {
+    Column,
     ColumnDef,
     CoreOptions,
     TableOptions,
@@ -26,6 +27,7 @@ import {TablePagination} from './table-pagination/TablePagination';
 import {TablePerPage} from './table-per-page/TablePerPage';
 import {TablePredicate} from './table-predicate/TablePredicate';
 import useStyles from './Table.styles';
+import {TableEditColumnsVisibility} from './table-edit-columns-visibility/TableEditColumnsVisibility';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -84,6 +86,8 @@ export type TableFormType = {
 };
 
 export type TableContextType<TData> = {
+    // ajoute une description Arie
+    getAllColumns: () => Array<Column<TData, unknown>>;
     /**
      * Function to call when the table needs an update
      */
@@ -262,6 +266,7 @@ export interface TableProps<T> extends DefaultProps<TableStylesNames> {
 
 export interface TableType {
     <T>(props: TableProps<T>): ReactElement;
+    EditColumnsVisibility: typeof TableEditColumnsVisibility;
     Actions: typeof TableActions;
     Filter: typeof TableFilter;
     Footer: typeof TableFooter;
