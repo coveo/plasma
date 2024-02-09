@@ -8,14 +8,12 @@ import {
     Factory,
     Group,
     Input,
-    InputDescriptionProps,
-    InputErrorProps,
-    InputLabelProps,
     MantineComponent,
     MantineSpacing,
     Stack,
     StylesApiProps,
     Tooltip,
+    __InputWrapperProps,
     useProps,
     useStyles,
 } from '@mantine/core';
@@ -28,7 +26,7 @@ import classes from './Collection.module.css';
 import {CollectionProvider} from './CollectionContext';
 import {CollectionItem} from './CollectionItem';
 
-interface CollectionProps<T> extends BoxProps, StylesApiProps<CollectionFactory> {
+interface CollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiProps<CollectionFactory> {
     /**
      * The default value each new item should have
      */
@@ -131,31 +129,6 @@ interface CollectionProps<T> extends BoxProps, StylesApiProps<CollectionFactory>
     /**
      * Input label, displayed above the collection. If not provided, the label will not be rendered
      */
-    label?: React.ReactNode;
-    /**
-     * Props passed down to the collection input label.
-     */
-    labelProps?: InputLabelProps;
-    /**
-     * Determines whether required asterisk should be rendered, overrides required prop, does not add required attribute to the input
-     */
-    withAsterisk?: boolean;
-    /**
-     * Input description, displayed below the collection. If not provided, the description will not be rendered
-     */
-    description?: string;
-    /**
-     * Props passed down to the collection description.
-     */
-    descriptionProps?: InputDescriptionProps;
-    /**
-     * Determines whether the input should have error styles and aria-invalid attribute
-     */
-    error?: React.ReactNode;
-    /**
-     * Props passed down to the collection error.
-     */
-    errorProps?: InputErrorProps;
 }
 
 export type CollectionStylesNames = 'root' | 'item' | 'itemDragging' | 'dragHandle';
@@ -176,152 +149,153 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     getItemId: ({id}: any) => id,
 };
 
-export const Collection = forwardRef(<T,>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
-    const {
-        value,
-        onChange,
-        onRemoveItem,
-        onReorderItem,
-        onInsertItem,
-        disabled,
-        draggable,
-        children,
-        gap,
-        required,
-        newItem,
-        addLabel,
-        addDisabledTooltip,
-        allowAdd,
-        label,
-        labelProps,
-        withAsterisk,
-        description,
-        descriptionProps,
-        error,
-        errorProps,
-        getItemId,
+export const Collection = forwardRef<HTMLDivElement, CollectionProps<unknown>>(
+    <T,>(props: CollectionProps<T>, ref: ForwardedRef<HTMLDivElement>) => {
+        const {
+            value,
+            onChange,
+            onRemoveItem,
+            onReorderItem,
+            onInsertItem,
+            disabled,
+            draggable,
+            children,
+            gap,
+            required,
+            newItem,
+            addLabel,
+            addDisabledTooltip,
+            allowAdd,
+            label,
+            labelProps,
+            withAsterisk,
+            description,
+            descriptionProps,
+            error,
+            errorProps,
+            getItemId,
 
-        // Style props
-        style,
-        className,
-        classNames,
-        styles,
-        unstyled,
-        ref,
-        ...others
-    } = useProps('Collection', defaultProps as CollectionProps<T>, props);
+            // Style props
+            style,
+            className,
+            classNames,
+            styles,
+            unstyled,
+            ...others
+        } = useProps('Collection', defaultProps as CollectionProps<T>, props);
 
-    const getStyles = useStyles<CollectionFactory>({
-        name: 'Collection',
-        classes,
-        props,
-        className,
-        style,
-        classNames,
-        styles,
-        unstyled,
-    });
-    const sensors = useSensors(
-        useSensor(PointerSensor),
-        useSensor(KeyboardSensor, {
-            coordinateGetter: sortableKeyboardCoordinates,
-        }),
-    );
+        const getStyles = useStyles<CollectionFactory>({
+            name: 'Collection',
+            classes,
+            props,
+            className,
+            style,
+            classNames,
+            styles,
+            unstyled,
+        });
+        const sensors = useSensors(
+            useSensor(PointerSensor),
+            useSensor(KeyboardSensor, {
+                coordinateGetter: sortableKeyboardCoordinates,
+            }),
+        );
 
-    const hasOnlyOneItem = value.length === 1;
+        const hasOnlyOneItem = value.length === 1;
 
-    /**
-     * Enforcing onChange when the value is modified will make sure the errors are carried through.
-     */
-    useDidUpdate(() => {
-        onChange?.(value);
-    }, [JSON.stringify(value)]);
+        /**
+         * Enforcing onChange when the value is modified will make sure the errors are carried through.
+         */
+        useDidUpdate(() => {
+            onChange?.(value);
+        }, [JSON.stringify(value)]);
 
-    const isRequired = typeof withAsterisk === 'boolean' ? withAsterisk : required;
-    const _label = label ? (
-        <Input.Label required={isRequired} {...labelProps}>
-            {label}
-        </Input.Label>
-    ) : null;
-
-    const _description = description ? (
-        <Input.Description {...descriptionProps}>{description}</Input.Description>
-    ) : null;
-    const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : null;
-    const _header =
-        _label || _description ? (
-            <>
-                {_label}
-                {_description}
-            </>
+        const isRequired = typeof withAsterisk === 'boolean' ? withAsterisk : required;
+        const _label = label ? (
+            <Input.Label required={isRequired} {...labelProps}>
+                {label}
+            </Input.Label>
         ) : null;
 
-    const standardizedItems = value.map((item, index) => ({id: getItemId?.(item) ?? String(index), data: item}));
+        const _description = description ? (
+            <Input.Description {...descriptionProps}>{description}</Input.Description>
+        ) : null;
+        const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : null;
+        const _header =
+            _label || _description ? (
+                <>
+                    {_label}
+                    {_description}
+                </>
+            ) : null;
 
-    const items = standardizedItems.map((item, index) => (
-        <CollectionItem
-            key={item.id}
-            id={item.id}
-            disabled={disabled}
-            draggable={draggable}
-            onRemove={() => onRemoveItem?.(index)}
-            removable={!(required && hasOnlyOneItem)}
-        >
-            {children(item.data, index)}
-        </CollectionItem>
-    ));
+        const standardizedItems = value.map((item, index) => ({id: getItemId?.(item) ?? String(index), data: item}));
 
-    const addAllowed = allowAdd?.(value) ?? true;
-
-    const _addButton = disabled ? null : (
-        <Group>
-            <Tooltip label={addDisabledTooltip} disabled={addAllowed}>
-                <Box>
-                    <Button
-                        variant="subtle"
-                        leftSection={<AddSize16Px height={16} />}
-                        onClick={() => onInsertItem(newItem, value?.length ?? 0)}
-                        disabled={!addAllowed}
-                    >
-                        {addLabel}
-                    </Button>
-                </Box>
-            </Tooltip>
-        </Group>
-    );
-
-    const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);
-
-    const handleDragEnd = ({over, active}: DragEndEvent): void => {
-        if (over) {
-            const activeIndex = getIndex(String(active.id));
-            const overIndex = getIndex(String(over.id));
-            if (activeIndex !== overIndex) {
-                onReorderItem?.({from: activeIndex, to: overIndex});
-            }
-        }
-    };
-
-    return (
-        <CollectionProvider value={{getStyles}}>
-            <DndContext
-                onDragEnd={handleDragEnd}
-                sensors={sensors}
-                modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+        const items = standardizedItems.map((item, index) => (
+            <CollectionItem
+                key={item.id}
+                id={item.id}
+                disabled={disabled}
+                draggable={draggable}
+                onRemove={() => onRemoveItem?.(index)}
+                removable={!(required && hasOnlyOneItem)}
             >
-                <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
-                    <Box ref={ref} {...others} {...getStyles('root')}>
-                        {_header}
-                        <Stack gap={gap}>
-                            {items}
-                            {_addButton}
-                            {_error}
-                        </Stack>
+                {children(item.data, index)}
+            </CollectionItem>
+        ));
+
+        const addAllowed = allowAdd?.(value) ?? true;
+
+        const _addButton = disabled ? null : (
+            <Group>
+                <Tooltip label={addDisabledTooltip} disabled={addAllowed}>
+                    <Box>
+                        <Button
+                            variant="subtle"
+                            leftSection={<AddSize16Px height={16} />}
+                            onClick={() => onInsertItem(newItem, value?.length ?? 0)}
+                            disabled={!addAllowed}
+                        >
+                            {addLabel}
+                        </Button>
                     </Box>
-                </SortableContext>
-            </DndContext>
-        </CollectionProvider>
-    );
-}) as MantineComponent<CollectionFactory>;
+                </Tooltip>
+            </Group>
+        );
+
+        const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);
+
+        const handleDragEnd = ({over, active}: DragEndEvent): void => {
+            if (over) {
+                const activeIndex = getIndex(String(active.id));
+                const overIndex = getIndex(String(over.id));
+                if (activeIndex !== overIndex) {
+                    onReorderItem?.({from: activeIndex, to: overIndex});
+                }
+            }
+        };
+
+        return (
+            <CollectionProvider value={{getStyles}}>
+                <DndContext
+                    onDragEnd={handleDragEnd}
+                    sensors={sensors}
+                    modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+                >
+                    <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
+                        <Box ref={ref} {...others} {...getStyles('root')}>
+                            {_header}
+                            <Stack gap={gap}>
+                                {items}
+                                {_addButton}
+                                {_error}
+                            </Stack>
+                        </Box>
+                    </SortableContext>
+                </DndContext>
+            </CollectionProvider>
+        );
+    },
+) as MantineComponent<CollectionFactory>;
 
 Collection.extend = <T,>(value: T) => value;
