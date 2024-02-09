@@ -4,30 +4,30 @@ import {restrictToParentElement, restrictToVerticalAxis} from '@dnd-kit/modifier
 import {SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from '@dnd-kit/sortable';
 import {
     Box,
+    BoxProps,
+    Factory,
     Group,
-    GroupProps,
     Input,
-    InputWrapperProps,
+    InputDescriptionProps,
+    InputErrorProps,
+    InputLabelProps,
     MantineSpacing,
     Stack,
+    StylesApiProps,
     Tooltip,
     useProps,
+    useStyles,
 } from '@mantine/core';
 import {ReorderPayload} from '@mantine/form/lib/types';
 import {useDidUpdate} from '@mantine/hooks';
-import {ReactNode} from 'react';
+import {ForwardedRef, ReactNode} from 'react';
 
-import cx from 'clsx';
 import {Button} from '../button';
-import CollectionClasses from './Collection.module.css';
+import classes from './Collection.module.css';
+import {CollectionProvider} from './CollectionContext';
 import {CollectionItem} from './CollectionItem';
 
-interface CollectionProps<T>
-    extends Omit<
-            InputWrapperProps,
-            'children' | 'inputContainer' | 'inputWrapperOrder' | 'onChange' | 'classNames' | 'vars' | 'styles'
-        >,
-        Omit<GroupProps, 'children' | 'onChange'> {
+interface CollectionProps<T> extends BoxProps, StylesApiProps<CollectionFactory> {
     /**
      * The default value each new item should have
      */
@@ -127,7 +127,22 @@ interface CollectionProps<T>
      * @default false
      */
     required?: boolean;
+    label: string;
+    labelProps?: InputLabelProps;
+    withAsterisk?: boolean;
+    description?: string;
+    descriptionProps?: InputDescriptionProps;
+    error?: string;
+    errorProps?: InputErrorProps;
 }
+
+export type CollectionStylesNames = 'root' | 'item' | 'itemDragging' | 'dragHandle';
+
+export type CollectionFactory = Factory<{
+    props: CollectionProps<unknown>;
+    ref: HTMLDivElement;
+    stylesNames: CollectionStylesNames;
+}>;
 
 const defaultProps: Partial<CollectionProps<unknown>> = {
     draggable: false,
@@ -139,7 +154,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     getItemId: ({id}: any) => id,
 };
 
-export const Collection = <T,>(props: CollectionProps<T>) => {
+export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
         value,
         onChange,
@@ -165,11 +180,25 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         getItemId,
 
         // Style props
+        style,
         className,
         classNames,
         styles,
+        unstyled,
+        ref,
         ...others
     } = useProps('Collection', defaultProps as CollectionProps<T>, props);
+
+    const getStyles = useStyles<CollectionFactory>({
+        name: 'Collection',
+        classes,
+        props,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+    });
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -214,7 +243,6 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
             disabled={disabled}
             draggable={draggable}
             onRemove={() => onRemoveItem?.(index)}
-            classNames={classNames}
             removable={!(required && hasOnlyOneItem)}
         >
             {children(item.data, index)}
@@ -253,21 +281,25 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
     };
 
     return (
-        <DndContext
-            onDragEnd={handleDragEnd}
-            sensors={sensors}
-            modifiers={[restrictToVerticalAxis, restrictToParentElement]}
-        >
-            <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
-                <Box className={cx(CollectionClasses.root, className)} {...others}>
-                    {_header}
-                    <Stack gap={gap}>
-                        {items}
-                        {_addButton}
-                        {_error}
-                    </Stack>
-                </Box>
-            </SortableContext>
-        </DndContext>
+        <CollectionProvider value={{getStyles}}>
+            <DndContext
+                onDragEnd={handleDragEnd}
+                sensors={sensors}
+                modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+            >
+                <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
+                    <Box ref={ref} {...others} {...getStyles('root')}>
+                        {_header}
+                        <Stack gap={gap}>
+                            {items}
+                            {_addButton}
+                            {_error}
+                        </Stack>
+                    </Box>
+                </SortableContext>
+            </DndContext>
+        </CollectionProvider>
     );
 };
+
+Collection.extend = <T,>(value: T) => value;
