@@ -126,9 +126,6 @@ interface CollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiPro
      * @default false
      */
     required?: boolean;
-    /**
-     * Input label, displayed above the collection. If not provided, the label will not be rendered
-     */
 }
 
 export type CollectionStylesNames = 'root' | 'item' | 'itemDragging' | 'dragHandle';
