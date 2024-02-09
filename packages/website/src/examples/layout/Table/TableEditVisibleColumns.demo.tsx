@@ -60,6 +60,7 @@ const Demo = () => {
 
     return (
         <Table
+            initialState={{columnVisibility: {hireDate: false, salary: false}}}
             data={data}
             getRowId={({employeeId}) => employeeId?.toString()}
             columns={columns}
@@ -73,6 +74,7 @@ const Demo = () => {
                     nonHideableColumns={['employeeId']}
                     maxSelectableColumns={5}
                     showVisibleCountLabel
+                    columnNames={columnNames}
                 />
             </Table.Header>
         </Table>
@@ -192,3 +194,15 @@ const employeesData: IEmployeeData[] = [
         body: 'coucou',
     },
 ];
+
+const columnNames: Record<string, string> = {
+    fullName: 'Name',
+    employeeId: 'Employee ID',
+    departmentId: 'Department ID',
+    email: 'Email',
+    isFullTime: 'Full Time',
+    salary: 'Salary',
+    jobTitle: 'Job Title',
+    hireDate: 'Hire Date',
+    body: 'Body',
+};

@@ -24,4 +24,8 @@ export interface TableEditColumnsVisibilityProps extends DefaultProps<TableEditC
      * If defined a footer will render with the remaining number of columns that can be selected.
      */
     maxSelectableColumns?: number;
+    /**
+     * A dictionary of column ids and names to use for the checkbox labels.
+     */
+    columnNames: Record<string, string>;
 }

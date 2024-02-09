@@ -16,6 +16,7 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
     showVisibleCountLabel = false,
     nonHideableColumns,
     maxSelectableColumns,
+    columnNames,
 }) => {
     const {classes} = useStyles(null, {name: 'TableEditColumnsVisibility', classNames, styles, unstyled});
     const {getAllColumns} = useTable();
@@ -46,7 +47,7 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
 
     return (
         <Grid.Col span="content" order={TableComponentsOrder.EditColumnsVisibility} py="sm" className={classes.root}>
-            <Popover width={200} position="bottom" shadow="md">
+            <Popover position="bottom" shadow="md">
                 <Popover.Target>
                     <Button variant="outline">{`${label}${
                         showVisibleCountLabel ? ` (${selectedColumnsCount})` : ''
@@ -62,7 +63,7 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
                             .map((column) => (
                                 <Checkbox
                                     key={column.id}
-                                    label={column.id}
+                                    label={columnNames?.[column.id] || column.id}
                                     name={column.id}
                                     checked={nonHideableColumns?.includes(column.id) ? true : column.getIsVisible()}
                                     disabled={
