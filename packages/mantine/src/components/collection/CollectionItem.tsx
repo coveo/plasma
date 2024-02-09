@@ -59,7 +59,6 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
     const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
         id,
     });
-    console.log(isDragging, transform);
 
     return (
         <Group

@@ -127,12 +127,33 @@ interface CollectionProps<T> extends BoxProps, StylesApiProps<CollectionFactory>
      * @default false
      */
     required?: boolean;
-    label: string;
+    /**
+     * Input label, displayed above the collection. If not provided, the label will not be rendered
+     */
+    label?: React.ReactNode;
+    /**
+     * Props passed down to the collection input label.
+     */
     labelProps?: InputLabelProps;
+    /**
+     * Determines whether required asterisk should be rendered, overrides required prop, does not add required attribute to the input
+     */
     withAsterisk?: boolean;
+    /**
+     * Input description, displayed below the collection. If not provided, the description will not be rendered
+     */
     description?: string;
+    /**
+     * Props passed down to the collection description.
+     */
     descriptionProps?: InputDescriptionProps;
-    error?: string;
+    /**
+     * Determines whether the input should have error styles and aria-invalid attribute
+     */
+    error?: React.ReactNode;
+    /**
+     * Props passed down to the collection error.
+     */
     errorProps?: InputErrorProps;
 }
 
