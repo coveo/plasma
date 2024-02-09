@@ -50,7 +50,7 @@ const RowLayoutBody = <T,>({
         cell.querySelector('button').click();
     };
 
-    const rows = table.getRowModel().rows.map((row) => {
+    const rows = table.getRowModel()?.rows.map((row) => {
         const rowChildren = getExpandChildren?.(row.original) ?? null;
         const isSelected = !!row.getIsSelected();
         const shouldKeepSelection = keepSelection && isSelected;

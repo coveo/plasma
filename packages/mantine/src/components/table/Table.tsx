@@ -148,7 +148,7 @@ export const Table: TableType = <T,>({
     }
 
     const Layout = layouts.find(({name}) => name === form.values.layout);
-    const hasRows = table.getRowModel().rows.length > 0;
+    const hasRows = table.getRowModel()?.rows.length > 0;
 
     return (
         <Box ref={outsideClickRef}>
