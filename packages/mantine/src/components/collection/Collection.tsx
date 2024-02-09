@@ -11,6 +11,7 @@ import {
     InputDescriptionProps,
     InputErrorProps,
     InputLabelProps,
+    MantineComponent,
     MantineSpacing,
     Stack,
     StylesApiProps,
@@ -20,7 +21,7 @@ import {
 } from '@mantine/core';
 import {ReorderPayload} from '@mantine/form/lib/types';
 import {useDidUpdate} from '@mantine/hooks';
-import {ForwardedRef, ReactNode} from 'react';
+import {ForwardedRef, ReactNode, forwardRef} from 'react';
 
 import {Button} from '../button';
 import classes from './Collection.module.css';
@@ -175,7 +176,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     getItemId: ({id}: any) => id,
 };
 
-export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
+export const Collection = forwardRef(<T,>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
         value,
         onChange,
@@ -321,6 +322,6 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
             </DndContext>
         </CollectionProvider>
     );
-};
+}) as MantineComponent<CollectionFactory>;
 
 Collection.extend = <T,>(value: T) => value;
