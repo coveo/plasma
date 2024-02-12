@@ -1,3 +1,17 @@
+## 52.26.6-next.1 (2024-02-12)
+
+
+### Bug Fixes
+
+* **plasma:** fixed the test with mantine v7 bump (#3604) 0f18373, closes #3604
+
+
+### Features
+
+* **website:** create script to generate mantine core example (#3611) dc380d0, closes #3611
+
+
+
 ## 52.26.6-next.0 (2024-01-15)
 
 
