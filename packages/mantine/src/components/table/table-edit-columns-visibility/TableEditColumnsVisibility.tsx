@@ -1,4 +1,4 @@
-import {Button, Checkbox, Divider, Grid, Popover, Stack} from '@mantine/core';
+import {Button, Checkbox, Divider, Grid, Popover, ScrollArea, Stack} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
 import {TableComponentsOrder} from '../Table.styles';
@@ -38,7 +38,7 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
     } else if (adjustedMaxSelectableColumns && selectedColumnsCount >= adjustedMaxSelectableColumns) {
         footerText = 'Maximum columns selected';
     } else {
-        footerText = `you can choose ${remainingColumnsCount} more`;
+        footerText = `You can choose ${remainingColumnsCount} more`;
     }
 
     if (filteredColumns.length <= 0) {
@@ -53,27 +53,30 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
                         showVisibleCountLabel ? ` (${selectedColumnsCount})` : ''
                     }`}</Button>
                 </Popover.Target>
-                <Popover.Dropdown>
-                    <Stack>
-                        {filteredColumns
-                            .sort((a, b) =>
-                                // sort to render nonHideableColumns first
-                                nonHideableColumns?.includes(a.id) && !nonHideableColumns?.includes(b.id) ? -1 : 1,
-                            )
-                            .map((column) => (
-                                <Checkbox
-                                    key={column.id}
-                                    label={columnNames?.[column.id] || column.id}
-                                    name={column.id}
-                                    checked={nonHideableColumns?.includes(column.id) ? true : column.getIsVisible()}
-                                    disabled={
-                                        nonHideableColumns?.includes(column.id) ||
-                                        (selectedColumnsCount >= adjustedMaxSelectableColumns && !column.getIsVisible())
-                                    }
-                                    onChange={column.getToggleVisibilityHandler()}
-                                />
-                            ))}
-                    </Stack>
+                <Popover.Dropdown miw={240}>
+                    <ScrollArea.Autosize mah={154}>
+                        <Stack>
+                            {filteredColumns
+                                .sort((a, b) =>
+                                    // sort to render nonHideableColumns first
+                                    nonHideableColumns?.includes(a.id) && !nonHideableColumns?.includes(b.id) ? -1 : 1,
+                                )
+                                .map((column) => (
+                                    <Checkbox
+                                        key={column.id}
+                                        label={columnNames?.[column.id] || column.id}
+                                        name={column.id}
+                                        checked={nonHideableColumns?.includes(column.id) ? true : column.getIsVisible()}
+                                        disabled={
+                                            nonHideableColumns?.includes(column.id) ||
+                                            (selectedColumnsCount >= adjustedMaxSelectableColumns &&
+                                                !column.getIsVisible())
+                                        }
+                                        onChange={column.getToggleVisibilityHandler()}
+                                    />
+                                ))}
+                        </Stack>
+                    </ScrollArea.Autosize>
                     {maxSelectableColumns && (
                         <>
                             <Divider mb="xs" mt="sm" />

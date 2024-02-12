@@ -3,7 +3,7 @@ import TableDemo from '@examples/layout/Table/Table.demo?demo';
 import TableClientSideDemo from '@examples/layout/Table/TableClientSide.demo?demo';
 import TableConsumerDemo from '@examples/layout/Table/TableConsumer.demo?demo';
 import TableDisableRowSelection from '@examples/layout/Table/TableDisabledRowSelection.demo?demo';
-import TableEditVisibleColumnsDemo from '@examples/layout/Table/TableEditVisibleColumns.demo';
+import TableEditVisibleColumnsDemo from '@examples/layout/Table/TableEditVisibleColumns.demo?demo';
 import TableEmptyStateDemo from '@examples/layout/Table/TableEmptyState.demo?demo';
 import TableMultiSelectionDemo from '@examples/layout/Table/TableMultiSelection.demo?demo';
 
@@ -44,7 +44,7 @@ const DemoPage = () => (
                 <TableEditVisibleColumnsDemo
                     noPadding
                     layout="vertical"
-                    title="Table with a child component using the hook to re-fetch"
+                    title="Table with the ability to edit visible columns"
                 />
             ),
         }}
