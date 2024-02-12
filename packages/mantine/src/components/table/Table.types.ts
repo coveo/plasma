@@ -12,12 +12,14 @@ import {
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
 
 import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
+import useStyles from './Table.styles';
 import {TableLayoutProps} from './layouts/RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
 import {TableLayouts} from './layouts/TableLayouts';
 import {TableActions} from './table-actions/TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/TableCollapsibleColumn';
 import {TableConsumer} from './table-consumer/TableConsumer';
 import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
+import {TableEditColumnsVisibility} from './table-edit-columns-visibility/TableEditColumnsVisibility';
 import {TableFilter} from './table-filter/TableFilter';
 import {TableFooter} from './table-footer/TableFooter';
 import {TableHeader} from './table-header/TableHeader';
@@ -26,8 +28,6 @@ import {TableLoading} from './table-loading/TableLoading';
 import {TablePagination} from './table-pagination/TablePagination';
 import {TablePerPage} from './table-per-page/TablePerPage';
 import {TablePredicate} from './table-predicate/TablePredicate';
-import useStyles from './Table.styles';
-import {TableEditColumnsVisibility} from './table-edit-columns-visibility/TableEditColumnsVisibility';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -86,7 +86,9 @@ export type TableFormType = {
 };
 
 export type TableContextType<TData> = {
-    // ajoute une description Arie
+    /**
+     * Returns all flat columns in the table.
+     */
     getAllColumns: () => Array<Column<TData, unknown>>;
     /**
      * Function to call when the table needs an update
