@@ -1,3 +1,12 @@
+## 52.26.6-next.3 (2024-02-12)
+
+
+### Bug Fixes
+
+* **mantine:** override get input props types (#3618) 04faf5e, closes #3618
+
+
+
 ## 52.26.6-next.2 (2024-02-12)
 
 
