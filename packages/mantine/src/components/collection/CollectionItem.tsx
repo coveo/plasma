@@ -2,10 +2,9 @@ import {DragAndDropSize24Px, RemoveSize16Px} from '@coveord/plasma-react-icons';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 import {ActionIcon, Group, GroupProps} from '@mantine/core';
-import cx from 'clsx';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
-import CollectionClasses from './Collection.module.css';
+import {useCollectionContext} from './CollectionContext';
 
 interface CollectionItemProps extends CollectionItemSharedProps {
     draggable?: boolean;
@@ -33,19 +32,21 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
     removable = true,
     children,
 }) => {
+    const ctx = useCollectionContext();
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : <RemoveButtonPlaceholder />;
 
     return (
-        <Group className={CollectionClasses.item}>
+        <Group {...ctx.getStyles('item')}>
             {children}
             {removeButton}
         </Group>
     );
 };
 
-const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({children}) => (
-    <Group className={CollectionClasses.item}>{children}</Group>
-);
+const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({children}) => {
+    const ctx = useCollectionContext();
+    return <Group {...ctx.getStyles('item')}>{children}</Group>;
+};
 
 const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     id,
@@ -53,6 +54,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
     removable = true,
     children,
 }) => {
+    const ctx = useCollectionContext();
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : null;
     const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
         id,
@@ -61,19 +63,17 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
     return (
         <Group
             ref={setNodeRef}
-            className={cx(CollectionClasses.item, {[CollectionClasses.itemDragging]: isDragging})}
-            styles={
-                transform
+            {...ctx.getStyles('item', {
+                style: transform
                     ? {
-                          root: {
-                              transform: CSS.Transform.toString(transform),
-                              transition,
-                          },
+                          transform: CSS.Transform.toString(transform),
+                          transition,
                       }
-                    : undefined
-            }
+                    : undefined,
+            })}
+            data-isdragging={isDragging}
         >
-            <div ref={setActivatorNodeRef} {...listeners} {...attributes} className={CollectionClasses.dragHandle}>
+            <div ref={setActivatorNodeRef} {...listeners} {...attributes} {...ctx.getStyles('dragHandle')}>
                 <DragAndDropSize24Px height={16} />
             </div>
             {children}
