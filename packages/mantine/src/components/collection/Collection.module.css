@@ -9,11 +9,12 @@
         background-color: var(--mantine-color-black);
     }
     align-items: baseline;
+    &[data-isdragging='true'] {
+        box-shadow: var(--mantine-shadow-md);
+        z-index: 2;
+    }
 }
-.itemDragging {
-    box-shadow: var(--mantine-shadow-md);
-    z-index: 2;
-}
+
 .dragHandle {
     cursor: move;
 }
