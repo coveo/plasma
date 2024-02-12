@@ -152,8 +152,9 @@ const employeesData: IEmployeeData[] = [
     {
         employeeId: 7,
         departmentId: 107,
-        fullName: 'Emily Clark',
-        jobTitle: 'Marketing Specialist',
+        fullName: 'Emily Clarke',
+        jobTitle:
+            'First of Her Name, Queen of the Andals and the First Men, Protector of the Seven Kingdoms, the Mother of Dragons, the Khaleesi of the Great Grass Sea, the Unburnt, the Breaker of Chains',
         hireDate: new Date('2019-07-20'),
         salary: 70000,
         isFullTime: true,
