@@ -15,6 +15,8 @@ export * from '@tanstack/table-core';
 export * from './components';
 export {noop};
 
+export {identity as customIdentity, type CustomComponentThemeExtend} from './utils';
+
 // explicitly overriding mantine components
 export {
     ActionIcon,
