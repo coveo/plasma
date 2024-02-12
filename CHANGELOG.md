@@ -1,27 +1,23 @@
-## 52.27.1 (2024-02-16)
+## 52.26.6-next.1 (2024-02-12)
 
 
 ### Bug Fixes
 
-* **mantine:** adjust default font styles (#3621) 77c98e2, closes #3621
-
-
-
-# 52.27.0 (2024-02-16)
+* **plasma:** fixed the test with mantine v7 bump (#3604) 0f18373, closes #3604
 
 
 ### Features
 
-* **Mantine, Table:** adding edit columns visibility button (#3617) 67a19f8, closes #3617
+* **website:** create script to generate mantine core example (#3611) dc380d0, closes #3611
 
 
 
-## 52.26.6 (2024-02-07)
+## 52.26.6-next.0 (2024-01-15)
 
 
 ### Bug Fixes
 
-* **filterbox:** do not trim end of string to avoid weird UX when typing (#3614) 0144cba, closes #3614
+* **mantine:** cleared up some changes in v7 and fix them (#3601) 47dad99, closes #3601
 
 
 
