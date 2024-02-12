@@ -1,3 +1,12 @@
+## 52.26.6-next.2 (2024-02-12)
+
+
+### Features
+
+* **collection:** use getStyles, fixed collection (#3616) ebac9b9, closes #3616
+
+
+
 ## 52.26.6-next.1 (2024-02-12)
 
 
