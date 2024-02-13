@@ -69,7 +69,7 @@ const Demo = () => {
             getExpandChildren={(datum) => <Box py="xs">{datum.body}</Box>}
         >
             <Table.Header>
-                <Table.EditColumnsVisibility
+                <Table.ColumnsSelector
                     label={'Edit columns'}
                     nonHideableColumns={['employeeId']}
                     maxSelectableColumns={5}

@@ -1,10 +1,10 @@
 import {DefaultProps, Selectors} from '@mantine/core';
 import {ReactNode} from 'react';
-import useStyles from './TableEditColumnsVisibility.styles';
+import useStyles from './TableColumnsSelector.styles';
 
-type TableEditColumnsVisibilityStylesNames = Selectors<typeof useStyles>;
+type TableColumnsSelectorStylesNames = Selectors<typeof useStyles>;
 
-export interface TableEditColumnsVisibilityProps extends DefaultProps<TableEditColumnsVisibilityStylesNames> {
+export interface TableColumnsSelectorProps extends DefaultProps<TableColumnsSelectorStylesNames> {
     /**
      * The label of the button
      * @default 'Edit columns'

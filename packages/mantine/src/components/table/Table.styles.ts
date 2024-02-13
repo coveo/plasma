@@ -26,7 +26,7 @@ const useStyles = createStyles<string>((theme) => ({
 }));
 
 export const TableComponentsOrder = {
-    EditColumnsVisibility: 7,
+    ColumnsSelector: 7,
     MultiSelectInfo: 6,
     Actions: 5,
     Predicate: 4,

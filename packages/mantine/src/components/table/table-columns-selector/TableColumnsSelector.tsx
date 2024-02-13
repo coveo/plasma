@@ -3,12 +3,12 @@ import {FunctionComponent} from 'react';
 
 import {TableComponentsOrder} from '../Table.styles';
 import {useTable} from '../TableContext';
-import useStyles from './TableEditColumnsVisibility.styles';
-import {TableEditColumnsVisibilityProps} from './TableEditColumnsVisibility.types';
+import useStyles from './TableColumnsSelector.styles';
+import {TableColumnsSelectorProps} from './TableColumnsSelector.types';
 
 const COLUMNS_IDS_TO_EXCLUDE = ['collapsible', 'select'];
 
-export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisibilityProps> = ({
+export const TableColumnsSelector: FunctionComponent<TableColumnsSelectorProps> = ({
     classNames,
     styles,
     unstyled,
@@ -19,7 +19,7 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
     maxSelectableColumns,
     columnNames,
 }) => {
-    const {classes} = useStyles(null, {name: 'TableEditColumnsVisibility', classNames, styles, unstyled});
+    const {classes} = useStyles(null, {name: 'TableColumnsSelector', classNames, styles, unstyled});
     const {getAllColumns} = useTable();
 
     const filteredColumns = getAllColumns().filter((column) => !COLUMNS_IDS_TO_EXCLUDE.includes(column.id));
@@ -47,7 +47,7 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
     }
 
     return (
-        <Grid.Col span="content" order={TableComponentsOrder.EditColumnsVisibility} py="sm" className={classes.root}>
+        <Grid.Col span="content" order={TableComponentsOrder.ColumnsSelector} py="sm" className={classes.root}>
             <Popover position="bottom" shadow="md">
                 <Popover.Target>
                     <Button variant={buttonVariant}>{`${label}${

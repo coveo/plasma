@@ -21,9 +21,9 @@ import {TableLayouts} from './layouts/TableLayouts';
 import {TableActions} from './table-actions/TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/TableCollapsibleColumn';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn';
+import {TableColumnsSelector} from './table-columns-selector/TableColumnsSelector';
 import {TableConsumer} from './table-consumer/TableConsumer';
 import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
-import {TableEditColumnsVisibility} from './table-edit-columns-visibility/TableEditColumnsVisibility';
 import {TableFilter} from './table-filter/TableFilter';
 import {TableFooter} from './table-footer/TableFooter';
 import {TableHeader} from './table-header/TableHeader';
@@ -222,7 +222,7 @@ export const Table: TableType = <T,>({
     );
 };
 
-Table.EditColumnsVisibility = TableEditColumnsVisibility;
+Table.ColumnsSelector = TableColumnsSelector;
 Table.Actions = TableActions;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;

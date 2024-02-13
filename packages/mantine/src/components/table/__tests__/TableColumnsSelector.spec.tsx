@@ -2,7 +2,7 @@ import {Box} from '@mantine/core';
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent} from '@test-utils';
 import {Table} from '../Table';
-import {TableEditColumnsVisibility} from '../table-edit-columns-visibility/TableEditColumnsVisibility';
+import {TableColumnsSelector} from '../table-columns-selector/TableColumnsSelector';
 
 type RowData = {
     name: string;
@@ -21,12 +21,12 @@ const columns: Array<ColumnDef<RowData>> = [
     Table.CollapsibleColumn as ColumnDef<RowData>,
 ];
 
-describe('TableEditColumnsVisibility', () => {
+describe('TableColumnsSelector', () => {
     it('render the edit button in the table header', () => {
         render(
             <Table data={mockData} columns={columns}>
                 <Table.Header>
-                    <TableEditColumnsVisibility columnNames={columnNames} />
+                    <TableColumnsSelector columnNames={columnNames} />
                 </Table.Header>
             </Table>,
         );
@@ -39,7 +39,7 @@ describe('TableEditColumnsVisibility', () => {
         render(
             <Table data={mockData} columns={columns}>
                 <Table.Header>
-                    <TableEditColumnsVisibility columnNames={columnNames} label="Custom label" />
+                    <TableColumnsSelector columnNames={columnNames} label="Custom label" />
                 </Table.Header>
             </Table>,
         );
@@ -51,7 +51,7 @@ describe('TableEditColumnsVisibility', () => {
         render(
             <Table data={mockData} columns={columns}>
                 <Table.Header>
-                    <TableEditColumnsVisibility columnNames={columnNames} showVisibleCountLabel />
+                    <TableColumnsSelector columnNames={columnNames} showVisibleCountLabel />
                 </Table.Header>
             </Table>,
         );
@@ -69,7 +69,7 @@ describe('TableEditColumnsVisibility', () => {
                 getExpandChildren={(datum) => <Box py="xs">{datum.body}</Box>}
             >
                 <Table.Header>
-                    <TableEditColumnsVisibility columnNames={columnNames} />
+                    <TableColumnsSelector columnNames={columnNames} />
                 </Table.Header>
             </Table>,
         );
@@ -95,7 +95,7 @@ describe('TableEditColumnsVisibility', () => {
         render(
             <Table data={mockData} columns={columns}>
                 <Table.Header>
-                    <TableEditColumnsVisibility columnNames={columnNames} />
+                    <TableColumnsSelector columnNames={columnNames} />
                 </Table.Header>
             </Table>,
         );
@@ -113,7 +113,7 @@ describe('TableEditColumnsVisibility', () => {
         render(
             <Table data={mockData} columns={columns}>
                 <Table.Header>
-                    <TableEditColumnsVisibility columnNames={columnNames} nonHideableColumns={['name']} />
+                    <TableColumnsSelector columnNames={columnNames} nonHideableColumns={['name']} />
                 </Table.Header>
             </Table>,
         );
@@ -131,7 +131,7 @@ describe('TableEditColumnsVisibility', () => {
         render(
             <Table data={mockData} columns={columns} initialState={{columnVisibility: {email: false}}}>
                 <Table.Header>
-                    <TableEditColumnsVisibility columnNames={columnNames} />
+                    <TableColumnsSelector columnNames={columnNames} />
                 </Table.Header>
             </Table>,
         );
@@ -149,7 +149,7 @@ describe('TableEditColumnsVisibility', () => {
         render(
             <Table data={mockData} columns={columns} initialState={{columnVisibility: {email: false}}}>
                 <Table.Header>
-                    <TableEditColumnsVisibility columnNames={columnNames} maxSelectableColumns={3} />
+                    <TableColumnsSelector columnNames={columnNames} maxSelectableColumns={3} />
                 </Table.Header>
             </Table>,
         );
@@ -181,7 +181,7 @@ describe('TableEditColumnsVisibility', () => {
             render(
                 <Table data={mockData} columns={columns}>
                     <Table.Header>
-                        <TableEditColumnsVisibility columnNames={columnNames} maxSelectableColumns={4} />
+                        <TableColumnsSelector columnNames={columnNames} maxSelectableColumns={4} />
                     </Table.Header>
                 </Table>,
             );
@@ -196,7 +196,7 @@ describe('TableEditColumnsVisibility', () => {
             render(
                 <Table data={mockData} columns={columns} initialState={{columnVisibility: {name: false, email: false}}}>
                     <Table.Header>
-                        <TableEditColumnsVisibility columnNames={columnNames} maxSelectableColumns={3} />
+                        <TableColumnsSelector columnNames={columnNames} maxSelectableColumns={3} />
                     </Table.Header>
                 </Table>,
             );
@@ -212,7 +212,7 @@ describe('TableEditColumnsVisibility', () => {
             render(
                 <Table data={mockData} columns={columns} initialState={{columnVisibility: {name: false, email: false}}}>
                     <Table.Header>
-                        <TableEditColumnsVisibility columnNames={columnNames} maxSelectableColumns={3} />
+                        <TableColumnsSelector columnNames={columnNames} maxSelectableColumns={3} />
                     </Table.Header>
                 </Table>,
             );

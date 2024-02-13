@@ -17,9 +17,9 @@ import {TableLayoutProps} from './layouts/RowLayout.types'; // TODO https://cove
 import {TableLayouts} from './layouts/TableLayouts';
 import {TableActions} from './table-actions/TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/TableCollapsibleColumn';
+import {TableColumnsSelector} from './table-columns-selector/TableColumnsSelector';
 import {TableConsumer} from './table-consumer/TableConsumer';
 import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
-import {TableEditColumnsVisibility} from './table-edit-columns-visibility/TableEditColumnsVisibility';
 import {TableFilter} from './table-filter/TableFilter';
 import {TableFooter} from './table-footer/TableFooter';
 import {TableHeader} from './table-header/TableHeader';
@@ -268,7 +268,7 @@ export interface TableProps<T> extends DefaultProps<TableStylesNames> {
 
 export interface TableType {
     <T>(props: TableProps<T>): ReactElement;
-    EditColumnsVisibility: typeof TableEditColumnsVisibility;
+    ColumnsSelector: typeof TableColumnsSelector;
     Actions: typeof TableActions;
     Filter: typeof TableFilter;
     Footer: typeof TableFooter;
