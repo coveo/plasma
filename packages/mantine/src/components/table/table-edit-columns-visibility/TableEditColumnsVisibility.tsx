@@ -13,6 +13,7 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
     styles,
     unstyled,
     label = 'Edit columns',
+    buttonVariant = 'outline',
     showVisibleCountLabel = false,
     nonHideableColumns,
     maxSelectableColumns,
@@ -49,7 +50,7 @@ export const TableEditColumnsVisibility: FunctionComponent<TableEditColumnsVisib
         <Grid.Col span="content" order={TableComponentsOrder.EditColumnsVisibility} py="sm" className={classes.root}>
             <Popover position="bottom" shadow="md">
                 <Popover.Target>
-                    <Button variant="outline">{`${label}${
+                    <Button variant={buttonVariant}>{`${label}${
                         showVisibleCountLabel ? ` (${selectedColumnsCount})` : ''
                     }`}</Button>
                 </Popover.Target>

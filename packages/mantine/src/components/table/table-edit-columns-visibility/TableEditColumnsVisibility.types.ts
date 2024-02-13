@@ -11,6 +11,11 @@ export interface TableEditColumnsVisibilityProps extends DefaultProps<TableEditC
      */
     label?: ReactNode;
     /**
+     * The style variant of the button
+     * @default 'outline'
+     */
+    buttonVariant?: string;
+    /**
      * An array of column ids that the user cannot hide. This is useful for columns that are required for the table to function properly.
      */
     nonHideableColumns?: string[];
