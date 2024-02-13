@@ -79,7 +79,6 @@ export const Table: TableType = <T,>({
         data,
         columns: multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
-        enableHiding: true,
         manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!multiRowSelectionEnabled,
         getRowId,

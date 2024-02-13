@@ -3,9 +3,9 @@ import TableDemo from '@examples/layout/Table/Table.demo?demo';
 import TableClientSideDemo from '@examples/layout/Table/TableClientSide.demo?demo';
 import TableConsumerDemo from '@examples/layout/Table/TableConsumer.demo?demo';
 import TableDisableRowSelection from '@examples/layout/Table/TableDisabledRowSelection.demo?demo';
-import TableEditVisibleColumnsDemo from '@examples/layout/Table/TableEditVisibleColumns.demo?demo';
 import TableEmptyStateDemo from '@examples/layout/Table/TableEmptyState.demo?demo';
 import TableMultiSelectionDemo from '@examples/layout/Table/TableMultiSelection.demo?demo';
+import TableColumnsSelectorDemo from '../../examples/layout/Table/TableColumnsSelector.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -41,7 +41,7 @@ const DemoPage = () => (
                 />
             ),
             editColumnsVisibility: (
-                <TableEditVisibleColumnsDemo
+                <TableColumnsSelectorDemo
                     noPadding
                     layout="vertical"
                     title="Table with the ability to edit visible columns"

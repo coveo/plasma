@@ -67,6 +67,7 @@ const Demo = () => {
             onMount={fetchData}
             onChange={fetchData}
             getExpandChildren={(datum) => <Box py="xs">{datum.body}</Box>}
+            options={{enableHiding: true}}
         >
             <Table.Header>
                 <Table.ColumnsSelector
