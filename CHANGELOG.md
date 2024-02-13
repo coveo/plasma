@@ -1,3 +1,12 @@
+## 52.26.6 (2024-02-07)
+
+
+### Bug Fixes
+
+* **filterbox:** do not trim end of string to avoid weird UX when typing (#3614) 0144cba, closes #3614
+
+
+
 ## 52.26.5 (2023-12-07)
 
 
