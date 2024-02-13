@@ -26,7 +26,7 @@ import classes from './Collection.module.css';
 import {CollectionProvider} from './CollectionContext';
 import {CollectionItem} from './CollectionItem';
 
-interface CollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiProps<CollectionFactory> {
+export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiProps<CollectionFactory> {
     /**
      * The default value each new item should have
      */

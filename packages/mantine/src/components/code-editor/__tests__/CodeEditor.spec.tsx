@@ -1,7 +1,6 @@
+import {useForm} from '@mantine/form';
 import {loader} from '@monaco-editor/react';
 import {render, screen, userEvent, waitForElementToBeRemoved} from '@test-utils';
-import {useForm} from '../../../form';
-
 import {CodeEditor} from '../CodeEditor';
 import {XML} from '../languages/xml';
 
