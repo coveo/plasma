@@ -40,11 +40,11 @@ const DemoPage = () => (
                     title="Table with a child component using the hook to re-fetch"
                 />
             ),
-            editColumnsVisibility: (
+            columnSelector: (
                 <TableColumnsSelectorDemo
                     noPadding
                     layout="vertical"
-                    title="Table with the ability to edit visible columns"
+                    title="Table with the ability to select columns"
                 />
             ),
         }}

@@ -101,7 +101,7 @@ const makeData = (length: number): IEmployeeData[] =>
             body: faker.lorem.paragraph(),
         }));
 
-const columnNames: Record<string, string> = {
+const columnNames: Partial<Record<keyof IEmployeeData, string>> = {
     fullName: 'Name',
     employeeId: 'Employee ID',
     departmentId: 'Department ID',
