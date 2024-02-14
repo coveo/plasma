@@ -207,7 +207,7 @@ describe('TableColumnsSelector', () => {
                     <TableColumnsSelector
                         columnNames={columnNames}
                         maxSelectableColumns={3}
-                        tooltip="You can display up to 3 columns"
+                        limitReachedTooltip="You can display up to 3 columns"
                     />
                 </Table.Header>
             </Table>,

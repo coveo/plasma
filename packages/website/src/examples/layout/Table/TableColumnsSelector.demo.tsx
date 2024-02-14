@@ -78,7 +78,7 @@ const Demo = () => {
                     showVisibleCountLabel
                     columnNames={columnNames}
                     footer={<Text variant="dimmed">You can display up to 5 columns</Text>}
-                    tooltip="You have reached the maximum display limit of 5 columns. Uncheck a column to display another one."
+                    limitReachedTooltip="You have reached the maximum display limit of 5 columns. Uncheck a column to display another one."
                 />
             </Table.Header>
         </Table>

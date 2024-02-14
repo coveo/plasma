@@ -42,5 +42,5 @@ export interface TableColumnsSelectorProps extends DefaultProps<TableColumnsSele
      * The tooltip to display when the user hovers over a disabled checkbox.
      * @default 'You have reached the maximum display limit.'
      */
-    tooltip?: string;
+    limitReachedTooltip?: string;
 }

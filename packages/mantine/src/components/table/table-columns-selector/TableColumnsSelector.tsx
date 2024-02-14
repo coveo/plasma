@@ -18,7 +18,7 @@ export const TableColumnsSelector: FunctionComponent<TableColumnsSelectorProps> 
     nonHideableColumns = [],
     maxSelectableColumns,
     footer,
-    tooltip = 'You have reached the maximum display limit.',
+    limitReachedTooltip = 'You have reached the maximum display limit.',
     columnNames,
 }) => {
     const {classes} = useStyles(null, {name: 'TableColumnsSelector', classNames, styles, unstyled});
@@ -60,7 +60,7 @@ export const TableColumnsSelector: FunctionComponent<TableColumnsSelectorProps> 
                                 );
 
                                 return isDisabled ? (
-                                    <Tooltip label={tooltip} position="left">
+                                    <Tooltip label={limitReachedTooltip} position="left">
                                         <div>{checkbox}</div>
                                     </Tooltip>
                                 ) : (
