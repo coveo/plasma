@@ -33,4 +33,14 @@ export interface TableColumnsSelectorProps extends DefaultProps<TableColumnsSele
      * A dictionary of column ids and names to use for the checkbox labels.
      */
     columnNames: Record<string, string>;
+    /**
+     * The label to display in the footer when all available columns are selected.
+     * @default 'All available columns selected'
+     */
+    allColumnsSelectedFooterLabel?: string;
+    /**
+     * The label to display in the footer when the maximum number of columns are selected.
+     * @default 'Maximum columns selected'
+     */
+    maxSelectedColumnsFooterLabel?: string;
 }

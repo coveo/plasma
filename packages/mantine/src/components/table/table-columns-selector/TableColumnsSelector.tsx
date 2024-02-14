@@ -17,6 +17,8 @@ export const TableColumnsSelector: FunctionComponent<TableColumnsSelectorProps> 
     showVisibleCountLabel = false,
     nonHideableColumns,
     maxSelectableColumns,
+    allColumnsSelectedFooterLabel = 'All available columns selected',
+    maxSelectedColumnsFooterLabel = 'Maximum columns selected',
     columnNames,
 }) => {
     const {classes} = useStyles(null, {name: 'TableColumnsSelector', classNames, styles, unstyled});
@@ -35,9 +37,9 @@ export const TableColumnsSelector: FunctionComponent<TableColumnsSelectorProps> 
 
     let footerText;
     if (selectedColumnsCount === filteredColumns.length) {
-        footerText = 'All available columns selected';
+        footerText = allColumnsSelectedFooterLabel;
     } else if (adjustedMaxSelectableColumns && selectedColumnsCount >= adjustedMaxSelectableColumns) {
-        footerText = 'Maximum columns selected';
+        footerText = maxSelectedColumnsFooterLabel;
     } else {
         footerText = `You can choose ${remainingColumnsCount} more`;
     }
@@ -81,7 +83,7 @@ export const TableColumnsSelector: FunctionComponent<TableColumnsSelectorProps> 
                     {maxSelectableColumns && (
                         <>
                             <Divider mb="xs" mt="sm" />
-                            <div>{footerText}</div>
+                            {footerText}
                         </>
                     )}
                 </Popover.Dropdown>
