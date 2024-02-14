@@ -1,4 +1,4 @@
-import {Box, ColumnDef, createColumnHelper, onTableChangeEvent, Table} from '@coveord/plasma-mantine';
+import {Box, ColumnDef, createColumnHelper, onTableChangeEvent, Table, Text} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import {useState} from 'react';
 
@@ -77,6 +77,8 @@ const Demo = () => {
                     maxSelectableColumns={5}
                     showVisibleCountLabel
                     columnNames={columnNames}
+                    footer={<Text variant="dimmed">You can display up to 5 columns</Text>}
+                    tooltip="You have reached the maximum display limit of 5 columns. Uncheck a column to display another one."
                 />
             </Table.Header>
         </Table>

@@ -59,7 +59,7 @@ describe('TableColumnsSelector', () => {
         expect(screen.getByRole('button', {name: 'Edit columns (4)'})).toBeVisible();
     });
 
-    it('renders all columns in the dropdown, except the collapsible and the multiselectRow', async () => {
+    it('renders all columns in the dropdown, except the collapsible and the multiselectRow by default', async () => {
         const user = userEvent.setup();
         render(
             <Table
@@ -108,7 +108,7 @@ describe('TableColumnsSelector', () => {
         expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeChecked();
     });
 
-    it('renders disabled checkbox for the coloumns that cannot be hidden', async () => {
+    it('does not render the checkboxes for the columns that are in the nonHideableColumns prop', async () => {
         const user = userEvent.setup();
         render(
             <Table data={mockData} columns={columns}>
@@ -120,10 +120,10 @@ describe('TableColumnsSelector', () => {
 
         await user.click(screen.getByRole('button', {name: 'Edit columns'}));
 
-        expect(screen.getByRole('checkbox', {name: 'Name'})).toBeDisabled();
-        expect(screen.getByRole('checkbox', {name: 'Age'})).toBeEnabled();
-        expect(screen.getByRole('checkbox', {name: 'Email'})).toBeEnabled();
-        expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeEnabled();
+        expect(screen.queryByRole('checkbox', {name: 'Name'})).not.toBeInTheDocument();
+        expect(screen.getByRole('checkbox', {name: 'Age'})).toBeChecked();
+        expect(screen.getByRole('checkbox', {name: 'Email'})).toBeChecked();
+        expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeChecked();
     });
 
     it('renders unchecked checkboxes for the columns that are not visible in the inital state of the table', async () => {
@@ -144,7 +144,7 @@ describe('TableColumnsSelector', () => {
         expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeChecked();
     });
 
-    it('renders disabled checkboxes when the maxSelectableColumns is set and the maximum number of columns is selected', async () => {
+    it('renders disabled checkboxes when the maxSelectableColumns is set and the maximum number of columns is checked', async () => {
         const user = userEvent.setup();
         render(
             <Table data={mockData} columns={columns} initialState={{columnVisibility: {email: false}}}>
@@ -175,51 +175,62 @@ describe('TableColumnsSelector', () => {
         expect(nameCheckBox).toBeEnabled();
     });
 
+    it('renders a tooltip when the maxSelectableColumns is set and the maximum number of columns is checked and the user hover a disabled checkbox', async () => {
+        const user = userEvent.setup();
+        render(
+            <Table data={mockData} columns={columns} initialState={{columnVisibility: {email: false}}}>
+                <Table.Header>
+                    <TableColumnsSelector
+                        columnNames={columnNames}
+                        maxSelectableColumns={3}
+                        tooltip="You can display up to 3 columns"
+                    />
+                </Table.Header>
+            </Table>,
+        );
+
+        await user.click(screen.getByRole('button', {name: 'Edit columns'}));
+
+        const emailCheckBoxWrapper = screen.getByRole('checkbox', {name: /email/i}).parentElement;
+
+        await user.hover(emailCheckBoxWrapper);
+
+        expect(screen.getByText('You can display up to 3 columns')).toBeVisible();
+    });
+
     describe('footer', () => {
-        it('renders "All available columns selected" when all columns are selected', async () => {
+        it('does not render the footer when maxSelectableColumns is not defined', async () => {
             const user = userEvent.setup();
             render(
                 <Table data={mockData} columns={columns}>
                     <Table.Header>
-                        <TableColumnsSelector columnNames={columnNames} maxSelectableColumns={4} />
+                        <TableColumnsSelector columnNames={columnNames} />
                     </Table.Header>
                 </Table>,
             );
 
             await user.click(screen.getByRole('button', {name: 'Edit columns'}));
 
-            expect(screen.getByText('All available columns selected')).toBeVisible();
+            expect(screen.queryByText('You can display up to 3 columns')).not.toBeInTheDocument();
         });
 
-        it('renders "Maximum columns selected" when maxSelectableColumns is set and all columns are selected', async () => {
+        it('renders the footer when maxSelectableColumns is defined and footer is defined', async () => {
             const user = userEvent.setup();
             render(
-                <Table data={mockData} columns={columns} initialState={{columnVisibility: {name: false, email: false}}}>
+                <Table data={mockData} columns={columns}>
                     <Table.Header>
-                        <TableColumnsSelector columnNames={columnNames} maxSelectableColumns={3} />
-                    </Table.Header>
-                </Table>,
-            );
-
-            await user.click(screen.getByRole('button', {name: 'Edit columns'}));
-            await user.click(screen.getByRole('checkbox', {name: /name/i}));
-
-            expect(screen.getByText('Maximum columns selected')).toBeVisible();
-        });
-
-        it('renders "You can choose x more" when not all columns are selected', async () => {
-            const user = userEvent.setup();
-            render(
-                <Table data={mockData} columns={columns} initialState={{columnVisibility: {name: false, email: false}}}>
-                    <Table.Header>
-                        <TableColumnsSelector columnNames={columnNames} maxSelectableColumns={3} />
+                        <TableColumnsSelector
+                            columnNames={columnNames}
+                            maxSelectableColumns={3}
+                            footer="You can display so many patate"
+                        />
                     </Table.Header>
                 </Table>,
             );
 
             await user.click(screen.getByRole('button', {name: 'Edit columns'}));
 
-            expect(screen.getByText('You can choose 1 more')).toBeVisible();
+            expect(screen.getByText('You can display so many patate')).toBeVisible();
         });
     });
 });

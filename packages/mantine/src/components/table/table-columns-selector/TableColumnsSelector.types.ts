@@ -17,6 +17,7 @@ export interface TableColumnsSelectorProps extends DefaultProps<TableColumnsSele
     buttonVariant?: string;
     /**
      * An array of column ids that the user cannot hide. This is useful for columns that are required for the table to function properly.
+     * @default []
      */
     nonHideableColumns?: string[];
     /**
@@ -34,13 +35,12 @@ export interface TableColumnsSelectorProps extends DefaultProps<TableColumnsSele
      */
     columnNames: Record<string, string>;
     /**
-     * The label to display in the footer when all available columns are selected.
-     * @default 'All available columns selected'
+     * The content to display in the footer when maxSelectableColumns is defined.
      */
-    allColumnsSelectedFooterLabel?: string;
+    footer?: ReactNode;
     /**
-     * The label to display in the footer when the maximum number of columns are selected.
-     * @default 'Maximum columns selected'
+     * The tooltip to display when the user hovers over a disabled checkbox.
+     * @default 'You have reached the maximum display limit.'
      */
-    maxSelectedColumnsFooterLabel?: string;
+    tooltip?: string;
 }
