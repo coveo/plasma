@@ -4,6 +4,30 @@ import {render, screen, userEvent} from '@test-utils';
 import {Table} from '../Table';
 import {TableColumnsSelector} from '../table-columns-selector/TableColumnsSelector';
 
+const mockData = [
+    {
+        name: 'John Doe',
+        age: 30,
+        email: 'john.doe@example.com',
+        phone: '123-456-7890',
+        body: 'coucou',
+    },
+    {
+        name: 'Jane Doe',
+        age: 25,
+        email: 'jane.doe@example.com',
+        phone: '098-765-4321',
+        body: 'coucou 2',
+    },
+];
+
+const columnNames: Record<string, string> = {
+    name: 'Name',
+    age: 'Age',
+    email: 'Email',
+    phone: 'Phone',
+};
+
 type RowData = {
     name: string;
     age: number;
@@ -234,27 +258,3 @@ describe('TableColumnsSelector', () => {
         });
     });
 });
-
-const mockData = [
-    {
-        name: 'John Doe',
-        age: 30,
-        email: 'john.doe@example.com',
-        phone: '123-456-7890',
-        body: 'coucou',
-    },
-    {
-        name: 'Jane Doe',
-        age: 25,
-        email: 'jane.doe@example.com',
-        phone: '098-765-4321',
-        body: 'coucou 2',
-    },
-];
-
-const columnNames: Record<string, string> = {
-    name: 'Name',
-    age: 'Age',
-    email: 'Email',
-    phone: 'Phone',
-};
