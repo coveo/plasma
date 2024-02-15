@@ -1,0 +1,133 @@
+.table {
+    width: 100%;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    transition: box-shadow 150ms ease;
+    z-index: 1;
+    @mixin light {
+        background-color: var(--mantine-color-white);
+    }
+    @mixin dark {
+        background-color: var(--mantine-color-black);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-bottom: 1px solid var(--mantine-color-gray-3);
+    }
+}
+
+.body {
+}
+
+/* Table.Actions */
+.actionsRoot {
+}
+
+.actionsGroup {
+    display: inline-flex;
+}
+
+/* Table.DateRange */
+.dateRangeRoot {
+}
+.dateRangeWrapper {
+}
+.dateRangeLabel {
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 300;
+}
+
+/* Table.Filter */
+.filterRoot {
+}
+.filterWrapper {
+    margin-bottom: 0 !important;
+}
+.filterEmpty {
+    color: var(--mantine-color-gray-4);
+}
+
+/* Table.Header */
+.headerRoot {
+    border-bottom: 1px solid var(--mantine-color-gray-3);
+}
+.headerGridInner {
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+    background: repeating-linear-gradient(
+        var(--mantine-color-gray-1),
+        var(--mantine-color-gray-1) 60px,
+        var(--mantine-color-gray-3) 60px,
+        var(--mantine-color-gray-3) 61px
+    );
+    padding-left: var(--mantine-spacing-xl);
+    padding-right: var(--mantine-spacing-lg);
+}
+
+.headerCol {
+    padding: 0 var(--mantine-spacing-xs);
+    display: flex;
+}
+
+.th {
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: left;
+    color: var(--mantine-color-gray-6);
+    height: var(--mantine-spacing-xl);
+    font-weight: 500;
+    font-size: var(--mantine-font-size-xs);
+
+    &:first-of-type {
+        padding-left: var(--mantine-spacing-xl);
+    }
+
+    &:last-of-type {
+        padding-right: var(--mantine-spacing-xl);
+    }
+    @mixin light {
+        background-color: var(--mantine-color-gray-0);
+    }
+    @mixin dark {
+        background-color: var(--mantine-color-gray-8);
+    }
+
+    &[data-control='true'] {
+        @mixin hover {
+            @mixin light {
+                background-color: var(--mantine-color-gray-1);
+            }
+            @mixin dark {
+                background-color: var(--mantine-color-gray-7);
+            }
+        }
+    }
+}
+
+.lastUpdatedRoot {
+    min-height: 98px;
+}
+.lastUpdatedLabel {
+    color: var(--mantine-color-gray-6);
+}
+
+/* Table.Predicate */
+.predicate {
+}
+.predicateWrapper {
+}
+.predicateLabel {
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 300;
+}
+.predicateSelect {
+}

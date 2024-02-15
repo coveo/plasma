@@ -8,4 +8,4 @@ export {
     type onTableChangeEvent,
 } from './Table.types';
 export {useTable} from './TableContext';
-export {type RowLayoutProps} from './layouts/RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
+export {type TableLayoutProps} from './layouts/TableLayouts';

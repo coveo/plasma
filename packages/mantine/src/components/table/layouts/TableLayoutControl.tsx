@@ -8,8 +8,8 @@ export const TableLayoutControl = () => {
         <Grid.Col order={TableComponentsOrder.LayoutControl} span="content">
             <SegmentedControl
                 color="action"
-                data={layouts.map(({name, icon: Icon}) => ({
-                    value: name,
+                data={layouts.map(({displayName, Icon}) => ({
+                    value: displayName,
                     label: (
                         <Center>
                             {Icon ? (
@@ -18,7 +18,7 @@ export const TableLayoutControl = () => {
                                     <Space w="xs" />
                                 </>
                             ) : null}
-                            <Box>{name}</Box>
+                            <Box>{displayName}</Box>
                         </Center>
                     ),
                 }))}

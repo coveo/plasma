@@ -1,9 +1,13 @@
 import {ArrowHeadDownSize24Px, ArrowHeadUpSize24Px} from '@coveord/plasma-react-icons';
-import {ActionIcon} from '@mantine/core';
+import {Factory, factory, useProps} from '@mantine/core';
 import {CellContext, ColumnDef} from '@tanstack/table-core';
-import {FunctionComponent, MouseEvent as ReactMouseEvent} from 'react';
+import {MouseEvent as ReactMouseEvent, ReactNode} from 'react';
+import {ActionIcon, ActionIconProps} from '../../action-icon';
+import {useTableStyles} from '../TableContext';
 
-const defaultProps: ColumnDef<unknown> = {
+export type TableCollapsibleColumnStylesNames = 'collapsibleIcon';
+
+const sharedProps: ColumnDef<unknown> = {
     id: 'collapsible',
     enableSorting: false,
     header: '',
@@ -14,7 +18,7 @@ const defaultProps: ColumnDef<unknown> = {
  * Generic column to use when your table needs collapsible rows
  */
 export const TableCollapsibleColumn: ColumnDef<unknown> = {
-    ...defaultProps,
+    ...sharedProps,
     cell: (info) => <CollapsibleIcon info={info} />,
 };
 
@@ -22,7 +26,7 @@ export const TableCollapsibleColumn: ColumnDef<unknown> = {
  * Generic column to use when your table needs an accordion (collapsible rows, but only one open at the time)
  */
 export const TableAccordionColumn: ColumnDef<unknown> = {
-    ...defaultProps,
+    ...sharedProps,
     cell: (info) => {
         const onToggle = () => {
             // close all other rows when the current row not is expanded
@@ -35,10 +39,32 @@ export const TableAccordionColumn: ColumnDef<unknown> = {
     },
 };
 
-const CollapsibleIcon: FunctionComponent<{
+interface CollapsibleIconProps extends ActionIconProps {
     info: CellContext<unknown, unknown>;
     onToggle?: (e: ReactMouseEvent<HTMLButtonElement>) => void;
-}> = ({info, onToggle}) => {
+    iconExpanded?: ReactNode;
+    iconCollapsed?: ReactNode;
+}
+
+type TableCollapsibleColumnFactory = Factory<{
+    props: CollapsibleIconProps;
+    ref: HTMLButtonElement;
+    stylesNames: TableCollapsibleColumnStylesNames;
+    compound: true;
+}>;
+
+const defaultProps: Partial<CollapsibleIconProps> = {
+    iconExpanded: <ArrowHeadUpSize24Px />,
+    iconCollapsed: <ArrowHeadDownSize24Px />,
+};
+
+const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
+    const ctx = useTableStyles();
+    const {info, onToggle, iconExpanded, iconCollapsed, classNames, className, style, styles, ...others} = useProps(
+        'PlasmaTableCollapsibleColumn',
+        defaultProps,
+        props,
+    );
     const handler = info.row.getToggleExpandedHandler();
     const onClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
@@ -46,8 +72,15 @@ const CollapsibleIcon: FunctionComponent<{
         handler();
     };
     return info.row.getCanExpand() ? (
-        <ActionIcon onClick={onClick} variant="subtle" radius="sm">
-            {info.row.getIsExpanded() ? <ArrowHeadUpSize24Px /> : <ArrowHeadDownSize24Px />}
+        <ActionIcon
+            ref={ref}
+            onClick={onClick}
+            variant="subtle"
+            radius="sm"
+            {...ctx.getStyles('collapsibleIcon', {className, classNames, styles, style})}
+            {...others}
+        >
+            {info.row.getIsExpanded() ? iconExpanded : iconCollapsed}
         </ActionIcon>
     ) : null;
-};
+});

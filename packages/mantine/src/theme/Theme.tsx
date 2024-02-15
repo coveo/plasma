@@ -9,6 +9,7 @@ import {
     Button,
     Checkbox,
     ColorSwatch,
+    createTheme,
     Divider,
     InputWrapper,
     List,
@@ -31,9 +32,10 @@ import {
     TextInput,
     Title,
     Tooltip,
-    createTheme,
 } from '@mantine/core';
 import {DatePicker} from '@mantine/dates';
+import {Table} from '../components';
+import {RowLayout} from '../components/table/layouts/row-layout/RowLayout';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import AnchorClasses from '../styles/Anchor.module.css';
@@ -53,13 +55,14 @@ import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
 import SelectClasses from '../styles/Select.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
+import TableClasses from '../styles/Table.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
-import TitleClasses from '../styles/Title.module.css';
-
 import TextClasses from '../styles/Text.module.css';
+import TitleClasses from '../styles/Title.module.css';
 import {NotificationVars} from '../vars/Notification.vars';
 import {TextVars} from '../vars/Text.vars';
 import {PlasmaColors} from './PlasmaColors';
+import RowLayoutClasses from '../styles/RowLayout.module.css';
 
 export const plasmaTheme: MantineThemeOverride = createTheme({
     // These are overrides over https://github.com/mantinedev/mantine/blob/master/packages/%40mantine/core/src/core/MantineProvider/default-theme.ts
@@ -220,6 +223,8 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
             vars: NotificationVars,
         }),
+        PlasmaTable: Table.extend({classNames: TableClasses}),
+        RowLayout: RowLayout.extend({classNames: RowLayoutClasses}),
         Skeleton: Skeleton.extend({
             classNames: {root: SkeletonClasses.root},
         }),

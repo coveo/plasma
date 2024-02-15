@@ -1,6 +1,5 @@
-import {ExtendComponent, FactoryPayload} from '@mantine/core';
-import {ThemeExtend} from '@mantine/core/lib/core/factory/factory';
+import {ExtendComponent, FactoryPayload, MantineThemeComponent} from '@mantine/core';
 
 export const identity = <T>(value: T): T => value;
 
-export type CustomComponentThemeExtend<T extends FactoryPayload> = (props: ExtendComponent<T>) => ThemeExtend<T>;
+export type CustomComponentThemeExtend<T extends FactoryPayload> = (props: ExtendComponent<T>) => MantineThemeComponent;
