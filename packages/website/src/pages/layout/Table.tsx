@@ -5,6 +5,7 @@ import TableConsumerDemo from '@examples/layout/Table/TableConsumer.demo?demo';
 import TableDisableRowSelection from '@examples/layout/Table/TableDisabledRowSelection.demo?demo';
 import TableEmptyStateDemo from '@examples/layout/Table/TableEmptyState.demo?demo';
 import TableMultiSelectionDemo from '@examples/layout/Table/TableMultiSelection.demo?demo';
+import TableColumnsSelectorDemo from '../../examples/layout/Table/TableColumnsSelector.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -37,6 +38,13 @@ const DemoPage = () => (
                     noPadding
                     layout="vertical"
                     title="Table with a child component using the hook to re-fetch"
+                />
+            ),
+            columnSelector: (
+                <TableColumnsSelectorDemo
+                    noPadding
+                    layout="vertical"
+                    title="Table with the ability to select columns"
                 />
             ),
         }}

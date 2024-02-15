@@ -21,6 +21,7 @@ import {TableLayouts} from './layouts/TableLayouts';
 import {TableActions} from './table-actions/TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/TableCollapsibleColumn';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn';
+import {TableColumnsSelector} from './table-columns-selector/TableColumnsSelector';
 import {TableConsumer} from './table-consumer/TableConsumer';
 import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
 import {TableFilter} from './table-filter/TableFilter';
@@ -91,6 +92,8 @@ export const Table: TableType = <T,>({
         ...options,
     });
 
+    const getAllColumns = table.getAllFlatColumns;
+
     const [state, setState] = useState<TableState<T>>(table.initialState as TableState<T>);
     table.setOptions((prev) => ({
         ...prev,
@@ -144,7 +147,7 @@ export const Table: TableType = <T,>({
     }
 
     const Layout = layouts.find(({name}) => name === form.values.layout);
-    const hasRows = table.getRowModel().rows.length > 0;
+    const hasRows = table.getRowModel()?.rows.length > 0;
 
     return (
         <Box ref={outsideClickRef}>
@@ -164,6 +167,7 @@ export const Table: TableType = <T,>({
                     getPageCount: table.getPageCount,
                     disableRowSelection,
                     layouts,
+                    getAllColumns,
                 }}
             >
                 {consumer}
@@ -217,6 +221,7 @@ export const Table: TableType = <T,>({
     );
 };
 
+Table.ColumnsSelector = TableColumnsSelector;
 Table.Actions = TableActions;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;

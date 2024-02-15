@@ -2,6 +2,7 @@ import {Icon} from '@coveord/plasma-react-icons';
 import {DefaultProps, Selectors} from '@mantine/core';
 import {UseFormReturnType} from '@mantine/form';
 import {
+    Column,
     ColumnDef,
     CoreOptions,
     TableOptions,
@@ -11,10 +12,12 @@ import {
 import {Dispatch, ReactElement, ReactNode, RefObject} from 'react';
 
 import {DateRangePickerValue} from '../date-range-picker/DateRangePickerInlineCalendar';
+import useStyles from './Table.styles';
 import {TableLayoutProps} from './layouts/RowLayout.types'; // TODO https://coveord.atlassian.net/browse/ADUI-9182
 import {TableLayouts} from './layouts/TableLayouts';
 import {TableActions} from './table-actions/TableActions';
 import {TableAccordionColumn, TableCollapsibleColumn} from './table-column/TableCollapsibleColumn';
+import {TableColumnsSelector} from './table-columns-selector/TableColumnsSelector';
 import {TableConsumer} from './table-consumer/TableConsumer';
 import {TableDateRangePicker} from './table-date-range-picker/TableDateRangePicker';
 import {TableFilter} from './table-filter/TableFilter';
@@ -25,7 +28,6 @@ import {TableLoading} from './table-loading/TableLoading';
 import {TablePagination} from './table-pagination/TablePagination';
 import {TablePerPage} from './table-per-page/TablePerPage';
 import {TablePredicate} from './table-predicate/TablePredicate';
-import useStyles from './Table.styles';
 
 export type RowSelectionWithData<TData> = Record<string, TData>;
 export interface RowSelectionState<TData> {
@@ -84,6 +86,10 @@ export type TableFormType = {
 };
 
 export type TableContextType<TData> = {
+    /**
+     * Returns all flat columns in the table.
+     */
+    getAllColumns: () => Array<Column<TData, unknown>>;
     /**
      * Function to call when the table needs an update
      */
@@ -262,6 +268,7 @@ export interface TableProps<T> extends DefaultProps<TableStylesNames> {
 
 export interface TableType {
     <T>(props: TableProps<T>): ReactElement;
+    ColumnsSelector: typeof TableColumnsSelector;
     Actions: typeof TableActions;
     Filter: typeof TableFilter;
     Footer: typeof TableFooter;

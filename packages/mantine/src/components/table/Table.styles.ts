@@ -26,11 +26,12 @@ const useStyles = createStyles<string>((theme) => ({
 }));
 
 export const TableComponentsOrder = {
-    MultiSelectInfo: 6,
-    Actions: 5,
-    Predicate: 4,
-    Filter: 3,
-    DateRangePicker: 2,
+    MultiSelectInfo: 7,
+    Actions: 6,
+    Predicate: 5,
+    Filter: 4,
+    DateRangePicker: 3,
+    ColumnsSelector: 2,
     LayoutControl: 1,
 };
 
