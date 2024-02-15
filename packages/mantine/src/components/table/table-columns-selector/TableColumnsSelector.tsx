@@ -48,23 +48,19 @@ export const TableColumnsSelector: FunctionComponent<TableColumnsSelectorProps> 
                             {filteredColumns.map((column) => {
                                 const isDisabled =
                                     selectedColumnsCount >= maxSelectableColumns && !column.getIsVisible();
-                                const checkbox = (
-                                    <Checkbox
-                                        key={column.id}
-                                        label={columnNames?.[column.id] || column.id}
-                                        name={column.id}
-                                        checked={column.getIsVisible()}
-                                        disabled={isDisabled}
-                                        onChange={column.getToggleVisibilityHandler()}
-                                    />
-                                );
-
-                                return isDisabled ? (
-                                    <Tooltip label={limitReachedTooltip} position="left">
-                                        <div>{checkbox}</div>
+                                return (
+                                    <Tooltip label={limitReachedTooltip} disabled={!isDisabled} position="left">
+                                        <div>
+                                            <Checkbox
+                                                key={column.id}
+                                                label={columnNames?.[column.id] || column.id}
+                                                name={column.id}
+                                                checked={column.getIsVisible()}
+                                                disabled={isDisabled}
+                                                onChange={column.getToggleVisibilityHandler()}
+                                            />
+                                        </div>
                                     </Tooltip>
-                                ) : (
-                                    checkbox
                                 );
                             })}
                         </Stack>
