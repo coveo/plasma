@@ -1,3 +1,12 @@
+## 52.27.1 (2024-02-16)
+
+
+### Bug Fixes
+
+* **mantine:** adjust default font styles (#3621) 77c98e2, closes #3621
+
+
+
 # 52.27.0 (2024-02-16)
 
 
