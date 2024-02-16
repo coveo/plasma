@@ -294,4 +294,4 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     );
 };
 
-Collection.extend = identity as unknown as CustomComponentThemeExtend<CollectionFactory>;
+Collection.extend = identity as CustomComponentThemeExtend<CollectionFactory>;

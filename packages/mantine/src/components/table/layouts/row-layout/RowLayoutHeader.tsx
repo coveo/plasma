@@ -48,4 +48,4 @@ export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: Forw
     ));
     return <>{headers}</>;
 };
-RowLayoutHeader.extend = identity as unknown as CustomComponentThemeExtend<RowLayoutHeaderFactory>;
+RowLayoutHeader.extend = identity as CustomComponentThemeExtend<RowLayoutHeaderFactory>;

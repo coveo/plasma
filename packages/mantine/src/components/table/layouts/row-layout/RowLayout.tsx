@@ -1,6 +1,7 @@
 import {factory, Factory, StylesApiProps, useProps, useStyles} from '@mantine/core';
 import {ReactNode} from 'react';
-import classes from '../../../../styles/RowLayout.module.css';
+import classes from './RowLayout.module.css';
+import {TableLayout} from '../../Table.types';
 import {RowLayoutBody, RowLayoutBodyStylesNames} from './RowLayoutBody';
 import {RowLayoutProvider} from './RowLayoutContext';
 import {RowLayoutHeader, RowLayoutHeaderStyleNames} from './RowLayoutHeader';
@@ -14,18 +15,20 @@ export interface RowLayoutProps extends StylesApiProps<RowLayoutFactory> {
 export type RowLayoutFactory = Factory<{
     props: RowLayoutProps;
     stylesNames: RowLayoutStylesNames;
-    staticComponents: {
-        name: string;
-        Header: typeof RowLayoutHeader;
-        Body: typeof RowLayoutBody;
-        Icon: typeof RowLayoutIcon;
-    };
+    staticComponents: TableLayout;
 }>;
 const defaultProps: Partial<RowLayoutProps> = {};
 
 export const RowLayout = factory<RowLayoutFactory>((props, ref) => {
     const {children, styles, classNames, unstyled} = useProps('PlasmaRowLayout', defaultProps, props);
-    const getStyles = useStyles<RowLayoutFactory>({name: 'RowLayout', classes, props, styles, classNames, unstyled});
+    const getStyles = useStyles<RowLayoutFactory>({
+        name: 'PlasmaRowLayout',
+        classes,
+        props,
+        styles,
+        classNames,
+        unstyled,
+    });
 
     return <RowLayoutProvider value={{getStyles}}>{children}</RowLayoutProvider>;
 });
@@ -33,4 +36,4 @@ export const RowLayout = factory<RowLayoutFactory>((props, ref) => {
 RowLayout.Body = RowLayoutBody;
 RowLayout.Header = RowLayoutHeader;
 RowLayout.Icon = RowLayoutIcon;
-RowLayout.name = 'RowLayout';
+RowLayout.displayName = 'Rows';

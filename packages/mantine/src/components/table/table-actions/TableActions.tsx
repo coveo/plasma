@@ -20,7 +20,7 @@ export interface TableActionsProps<T> extends Omit<GridColProps, 'children'> {
      *             to={`edit/${datum.id}`}
      *             leftIcon={<EditSize24Px />}
      *             variant="subtle"
-     *             color="navyBlue.8"
+     *             color="navy.8"
      *         >
      *             Edit
      *         </Button>
@@ -70,4 +70,4 @@ export const TableActions = <T,>(props: TableActionsProps<T> & {ref?: ForwardedR
     );
 };
 
-TableActions.extend = identity as unknown as CustomComponentThemeExtend<TableActionsFactory>;
+TableActions.extend = identity as CustomComponentThemeExtend<TableActionsFactory>;

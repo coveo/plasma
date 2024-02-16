@@ -14,7 +14,6 @@ import defaultsDeep from 'lodash.defaultsdeep';
 import {Children, cloneElement, Dispatch, ForwardedRef, ReactElement, useCallback, useEffect, useState} from 'react';
 
 import {useRowSelection} from '../../hooks/useRowSelection';
-import classes from '../../styles/Table.module.css';
 import {CustomComponentThemeExtend, identity} from '../../utils';
 import {TableLayouts} from './layouts/TableLayouts';
 import {TableActions, TableActionsStylesNames} from './table-actions/TableActions';
@@ -36,6 +35,7 @@ import {TableLoading} from './table-loading/TableLoading';
 import {TablePagination} from './table-pagination/TablePagination';
 import {TablePerPage} from './table-per-page/TablePerPage';
 import {TablePredicate, TablePredicateStylesNames} from './table-predicate/TablePredicate';
+import classes from './Table.module.css';
 import {TableFormType, TableLayout, TableProps, TableState} from './Table.types';
 import {TableContext, TableStylesProvider} from './TableContext';
 
@@ -316,4 +316,5 @@ Table.Consumer = TableConsumer;
 Table.Loading = TableLoading;
 Table.ColumnsSelector = TableColumnsSelector;
 Table.Layouts = TableLayouts;
-Table.extend = identity as unknown as CustomComponentThemeExtend<PlasmaTableFactory>;
+
+Table.extend = identity as CustomComponentThemeExtend<PlasmaTableFactory>;

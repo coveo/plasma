@@ -58,18 +58,19 @@
 /* Table.Header */
 .headerRoot {
     border-bottom: 1px solid var(--mantine-color-gray-3);
+    background: repeating-linear-gradient(
+        var(--mantine-color-gray-1),
+        var(--mantine-color-gray-1) 68px,
+        var(--mantine-color-gray-3) 68px,
+        var(--mantine-color-gray-3) 69px
+    );
+    padding-left: var(--mantine-spacing-xl);
+    padding-right: var(--mantine-spacing-lg);
+    position: relative;
 }
 .headerGridInner {
     flex-direction: row-reverse;
     flex-wrap: wrap-reverse;
-    background: repeating-linear-gradient(
-        var(--mantine-color-gray-1),
-        var(--mantine-color-gray-1) 60px,
-        var(--mantine-color-gray-3) 60px,
-        var(--mantine-color-gray-3) 61px
-    );
-    padding-left: var(--mantine-spacing-xl);
-    padding-right: var(--mantine-spacing-lg);
 }
 
 .headerCol {

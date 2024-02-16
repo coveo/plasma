@@ -130,4 +130,4 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
     return <>{rows}</>;
 };
 
-RowLayoutBody.extend = identity as unknown as CustomComponentThemeExtend<RowLayoutBodyFactory>;
+RowLayoutBody.extend = identity as CustomComponentThemeExtend<RowLayoutBodyFactory>;

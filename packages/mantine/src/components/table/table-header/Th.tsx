@@ -96,4 +96,4 @@ export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElem
         </UnstyledButton>
     );
 };
-Th.extend = identity as unknown as CustomComponentThemeExtend<TableThFactory>;
+Th.extend = identity as CustomComponentThemeExtend<TableThFactory>;
