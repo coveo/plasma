@@ -1,3 +1,12 @@
+# 52.27.0 (2024-02-16)
+
+
+### Features
+
+* **Mantine, Table:** adding edit columns visibility button (#3617) 67a19f8, closes #3617
+
+
+
 ## 52.26.6 (2024-02-07)
 
 
