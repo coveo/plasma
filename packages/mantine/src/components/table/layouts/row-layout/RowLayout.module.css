@@ -1,17 +1,14 @@
-.headerColumnsEnabled {
-    & input[type='checkbox'] {
-        background-color: undefined;
+.headerRow {
+    &[data-selectable='true'] input[type='checkbox'] {
         border-color: var(--mantine-color-gray-4);
         pointer-events: auto;
         cursor: default;
         & + svg {
-            color: inerhit;
+            color: inherit;
         }
     }
-}
 
-.headerColumnsDisabled {
-    & input[type='checkbox'] {
+    &[data-selectable='false'] input[type='checkbox'] {
         background-color: var(--mantine-color-gray-2);
         border-color: var(--mantine-color-gray-3);
         pointer-events: none;
@@ -21,33 +18,9 @@
         }
     }
 }
-.rowSelectedMultiSelectEnabled {
-    background-color: transparent;
-}
-.rowSelectedMultiSelectDisabled {
-    @mixin light {
-        background-color: var(--mantine-color-gray-1);
-    }
-    @mixin dark {
-        background-color: rgba(var(--mantine-color-primary-7), 0.2);
-    }
-}
-.rowUnselectable {
-    & input[type='checkbox'] {
-        background-color: var(--mantine-color-gray-2);
-        border-color: var(--mantine-color-gray-3);
-        pointer-events: none;
-        cursor: not-allowed;
-        &:checked + svg {
-            color: var(--mantine-color-gray-5);
-        }
-    }
-}
-.rowCollapsibleButtonCell {
-    text-align: right;
-    padding: calc(var(--mantine-spacing-xs) / 2) var(--mantine-spacing-sm) !important;
-}
+
 .row {
+    overflow-wrap: anywhere;
     & td:first-of-type {
         padding-left: 40px;
     }
@@ -59,8 +32,36 @@
             background-color: rgba(var(--mantine-color-primary-7), 0.2);
         }
     }
-    overflow-wrap: anywhere;
+
+    &[data-selectable='false'] input[type='checkbox'] {
+        background-color: var(--mantine-color-gray-2);
+        border-color: var(--mantine-color-gray-3);
+        pointer-events: none;
+        cursor: not-allowed;
+        &:checked + svg {
+            color: var(--mantine-color-gray-5);
+        }
+    }
+    &[data-selected='true'] {
+        &[data-multi-selection='false'] {
+            @mixin light {
+                background-color: var(--mantine-color-gray-1);
+            }
+            @mixin dark {
+                background-color: rgba(var(--mantine-color-primary-7), 0.2);
+            }
+        }
+        &[data-multi-selection='true'] {
+            background-color: transparent;
+        }
+    }
+
+    &[data-collapsible-cell='true'] {
+        text-align: right;
+        padding: calc(var(--mantine-spacing-xs) / 2) var(--mantine-spacing-sm) !important;
+    }
 }
+
 .cell {
     vertical-align: middle;
     /* We must use height instead of minHeight here, otherwise it doesn’t apply*/
@@ -68,7 +69,8 @@
     padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
     border-bottom: rem(1) solid var(--mantine-color-gray-3);
 }
-.collapsible {
+
+.collapsibleWrapper {
     @mixin light {
         border-bottom: rem(1) solid var(--mantine-color-gray-3);
         background-color: var(--mantine-color-gray-1);

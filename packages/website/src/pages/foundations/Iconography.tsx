@@ -13,7 +13,7 @@ import {
     Grid,
     Group,
     Row,
-    RowLayoutProps,
+    TableLayoutProps,
     SimpleGrid,
     Space,
     Table,
@@ -70,7 +70,7 @@ const IconSetCard = <T,>({getVisibleCells}: Row<T>) => {
     );
 };
 
-const IconsListLayout = <T,>({table}: RowLayoutProps<T>) => {
+const IconsListLayout = <T,>({table}: TableLayoutProps<T>) => {
     const iconSets = table.getRowModel().rows.map((row) => <IconSetCard key={row.id} {...row} />);
     return (
         <tr>
@@ -83,11 +83,10 @@ const IconsListLayout = <T,>({table}: RowLayoutProps<T>) => {
     );
 };
 
-const CardLayout: TableLayout = {
-    name: 'Cards',
-    Body: IconsListLayout,
-    Header: () => null,
-};
+const CardLayout: TableLayout = ({children}) => <>{children}</>;
+CardLayout.displayName = 'Cards';
+CardLayout.Body = IconsListLayout;
+CardLayout.Header = () => null;
 
 const fuzzyFilter: FilterFn<IconSet> = (row, columnId, value, addMeta) => {
     const itemRank = rankItem(row.getValue('name'), value);

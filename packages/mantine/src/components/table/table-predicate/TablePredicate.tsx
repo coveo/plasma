@@ -1,13 +1,45 @@
-import {Grid, Group, Select, Text} from '@mantine/core';
+import {BoxProps, ComboboxData, factory, Factory, Grid, Group, Select, Text, useProps} from '@mantine/core';
+import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
 import {FunctionComponent} from 'react';
 
-import SelectClasses from '../../../styles/Select.module.css';
 import {TableComponentsOrder} from '../Table';
-import {useTable} from '../TableContext';
-import TablePredicateClasses from './TablePredicate.module.css';
-import {TablePredicateProps} from './TablePredicate.types';
+import {useTable, useTableStyles} from '../TableContext';
 
-export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data, label, ...others}) => {
+export type TablePredicateStylesNames = 'predicate' | 'predicateWrapper' | 'predicateLabel' | 'predicateSelect';
+
+export interface TablePredicateProps extends BoxProps, CompoundStylesApiProps<TablePredicateFactory> {
+    /**
+     * Unique identifier for this predicate. Will be used to access the selected value in the table state
+     */
+    id: string;
+    /**
+     * The values to display in the predicate
+     */
+    data: ComboboxData;
+    /**
+     * Input label (not displayed for now)
+     *
+     * @default default to the predicate id
+     */
+    label?: string;
+}
+
+export type TablePredicateFactory = Factory<{
+    props: TablePredicateProps;
+    ref: HTMLDivElement;
+    stylesNames: TablePredicateStylesNames;
+    compound: true;
+}>;
+
+const defaultProps: Partial<TablePredicateProps> = {};
+
+export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<TablePredicateFactory>((props, ref) => {
+    const ctx = useTableStyles();
+    const {id, data, label, classNames, className, styles, style, vars, ...others} = useProps(
+        'PlasmaTablePredicate',
+        defaultProps,
+        props,
+    );
     const {form, setState} = useTable();
 
     const handleChange = (newValue: string) => {
@@ -20,16 +52,18 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data
         }));
     };
 
+    const stylesApiProps = {classNames, styles};
+
     return (
         <Grid.Col
             span="content"
             order={TableComponentsOrder.Predicate}
-            py="sm"
-            classNames={{col: TablePredicateClasses.root}}
+            ref={ref}
+            {...ctx.getStyles('predicate', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Group gap="xs" classNames={{root: TablePredicateClasses.wrapper}}>
-                {label ? <Text classNames={{root: TablePredicateClasses.label}}>{label}:</Text> : null}
+            <Group gap="xs" {...ctx.getStyles('predicateWrapper', stylesApiProps)}>
+                {label ? <Text {...ctx.getStyles('predicateLabel', stylesApiProps)}>{label}:</Text> : null}
                 <Select
                     comboboxProps={{withinPortal: true}}
                     value={form.values.predicates[id]}
@@ -37,9 +71,9 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = ({id, data
                     data={data}
                     aria-label={label ?? id}
                     searchable={data.length > 7}
-                    classNames={{input: SelectClasses.input, option: SelectClasses.option}}
+                    {...ctx.getStyles('predicateSelect', stylesApiProps)}
                 />
             </Group>
         </Grid.Col>
     );
-};
+});

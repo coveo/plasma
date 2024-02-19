@@ -1,21 +1,57 @@
 import {CalendarSize24Px} from '@coveord/plasma-react-icons';
-import {Grid, Group, Popover, Text} from '@mantine/core';
+import {BoxProps, factory, Factory, Grid, Group, Popover, Text, useProps} from '@mantine/core';
+import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
 import {useToggle} from '@mantine/hooks';
 import dayjs from 'dayjs';
-import {FunctionComponent} from 'react';
 
 import {Button} from '../../button';
-import {DateRangePickerInlineCalendar, DateRangePickerValue} from '../../date-range-picker';
+import {
+    DateRangePickerInlineCalendar,
+    DateRangePickerInlineCalendarProps,
+    DateRangePickerPreset,
+    DateRangePickerValue,
+} from '../../date-range-picker';
 import {TableComponentsOrder} from '../Table';
-import {useTable} from '../TableContext';
-import TableDateRangePickerClasses from './TableDateRangePicker.module.css';
-import {TableDateRangePickerProps} from './TableDateRangePicker.types';
+import {useTable, useTableStyles} from '../TableContext';
 
-export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> = ({
-    presets = {},
-    rangeCalendarProps,
-    ...others
-}) => {
+export type TableDateRangePickerStylesNames = 'dateRangeRoot' | 'dateRangeWrapper' | 'dateRangeLabel';
+
+export interface TableDateRangePickerProps
+    extends BoxProps,
+        CompoundStylesApiProps<TableDateRangePickerFactory>,
+        Pick<DateRangePickerInlineCalendarProps, 'startProps' | 'endProps' | 'rangeCalendarProps'> {
+    /**
+     * An object containing date presets.
+     * If empty the preset dropdown won't be shown
+     *
+     * @example
+     * {
+     *     january: {label: 'January', range: [new Date(2022, 0, 1), new Date(2022, 0, 31)]},
+     *     february: {label: 'February', range: [new Date(2022, 1, 1), new Date(2022, 1, 28)]}
+     * }
+     * @default {}
+     */
+    presets?: Record<string, DateRangePickerPreset>;
+}
+
+export type TableDateRangePickerFactory = Factory<{
+    props: TableDateRangePickerProps;
+    ref: HTMLDivElement;
+    stylesNames: TableDateRangePickerStylesNames;
+    compound: true;
+}>;
+
+const defaultProps: Partial<TableDateRangePickerProps> = {
+    presets: {},
+};
+
+export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props, ref) => {
+    const ctx = useTableStyles();
+    const {presets, rangeCalendarProps, classNames, className, styles, style, vars, ...others} = useProps(
+        'PlasmaTableDateRangePicker',
+        defaultProps,
+        props,
+    );
     const [opened, toggleOpened] = useToggle();
     const {form} = useTable();
 
@@ -30,16 +66,19 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
     const formatDate = (date: Date) => dayjs(date).format('MMM DD, YYYY');
     const formattedRange = `${formatDate(form.values.dateRange[0])} - ${formatDate(form.values.dateRange[1])}`;
 
+    const stylesApiProps = {classNames, styles};
+
     return (
         <Grid.Col
             span="content"
             order={TableComponentsOrder.DateRangePicker}
-            className={TableDateRangePickerClasses.root}
             py="sm"
+            ref={ref}
+            {...ctx.getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Group gap="xs" className={TableDateRangePickerClasses.wrapper}>
-                <Text span className={TableDateRangePickerClasses.label}>
+            <Group gap="xs" {...ctx.getStyles('dateRangeWrapper', stylesApiProps)}>
+                <Text span {...ctx.getStyles('dateRangeLabel', stylesApiProps)}>
                     {formattedRange}
                 </Text>
                 <Popover opened={opened} onChange={toggleOpened} withinPortal>
@@ -61,4 +100,4 @@ export const TableDateRangePicker: FunctionComponent<TableDateRangePickerProps> 
             </Group>
         </Grid.Col>
     );
-};
+});

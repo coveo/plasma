@@ -9,6 +9,7 @@ import {
     Button,
     Checkbox,
     ColorSwatch,
+    createTheme,
     Divider,
     InputWrapper,
     List,
@@ -31,7 +32,6 @@ import {
     TextInput,
     Title,
     Tooltip,
-    createTheme,
 } from '@mantine/core';
 import {DatePicker} from '@mantine/dates';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
@@ -54,9 +54,8 @@ import SelectClasses from '../styles/Select.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
-import TitleClasses from '../styles/Title.module.css';
-
 import TextClasses from '../styles/Text.module.css';
+import TitleClasses from '../styles/Title.module.css';
 import {NotificationVars} from '../vars/Notification.vars';
 import {TextVars} from '../vars/Text.vars';
 import {PlasmaColors} from './PlasmaColors';
@@ -74,14 +73,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         lg: '32px',
         xl: '40px',
     },
-    globalStyles: (theme) => ({
-        body: {
-            ...theme.fn.fontStyles(),
-            fontSize: theme.fontSizes.sm,
-            lineHeight: theme.lineHeight,
-            fontWeight: 300,
-        },
-    }),
     primaryColor: 'action',
     headings: {
         fontFamily: 'canada-type-gibson, sans-serif',

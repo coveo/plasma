@@ -1,10 +1,19 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
-import {Group, UnstyledButton, useProps} from '@mantine/core';
-import {defaultColumnSizing, flexRender} from '@tanstack/react-table';
-import cx from 'clsx';
-import {AriaAttributes} from 'react';
-import ThClasses from './Th.module.css';
-import {SortState, ThProps} from './Th.types';
+import {BoxProps, Factory, Group, UnstyledButton, useProps} from '@mantine/core';
+import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {defaultColumnSizing, flexRender, Header} from '@tanstack/react-table';
+import {AriaAttributes, ComponentType, ForwardedRef, SVGProps} from 'react';
+import {CustomComponentThemeExtend, identity} from '../../../utils';
+import {useTableStyles} from '../TableContext';
+
+export type TableThStylesNames = 'th';
+
+export type SortState = 'asc' | 'desc' | 'none';
+
+export interface ThProps<T = unknown> extends BoxProps, CompoundStylesApiProps<TableThFactory> {
+    header: Header<T, unknown>;
+    sortingIcons?: Record<SortState, ComponentType<SVGProps<SVGSVGElement>>>;
+}
 
 const SortingIcons: ThProps['sortingIcons'] = {
     asc: ArrowUpSize16Px,
@@ -18,13 +27,21 @@ const SortingLabels: Record<SortState, AriaAttributes['aria-sort']> = {
     none: 'none',
 } as const;
 
+export type TableThFactory = Factory<{
+    props: ThProps;
+    ref: HTMLTableCellElement;
+    stylesNames: TableThStylesNames;
+    compound: true;
+}>;
+
 const defaultProps: Partial<ThProps> = {
     sortingIcons: SortingIcons,
 };
 
-export const Th = <T,>(props: ThProps<T>) => {
-    const {header, sortingIcons, ...others} = useProps(
-        'PlasmaTableColumnHeader',
+export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElement>}) => {
+    const ctx = useTableStyles();
+    const {header, sortingIcons, classNames, className, styles, style, vars, ...others} = useProps(
+        'PlasmaTableTh',
         defaultProps as Partial<ThProps<T>>,
         props,
     );
@@ -36,6 +53,8 @@ export const Th = <T,>(props: ThProps<T>) => {
         maxSize: header.column.columnDef.maxSize,
     };
 
+    const thStyles = ctx.getStyles('th', {classNames, className, styles, style});
+
     if (header.isPlaceholder) {
         return null;
     }
@@ -43,12 +62,14 @@ export const Th = <T,>(props: ThProps<T>) => {
     if (!header.column.getCanSort()) {
         return (
             <th
-                className={ThClasses.root}
+                className={thStyles.className}
                 style={{
+                    ...thStyles.style,
                     width: columnSizing.size ?? 'auto',
                     minWidth: columnSizing.minSize,
                     maxWidth: columnSizing.maxSize,
                 }}
+                {...others}
             >
                 {flexRender(header.column.columnDef.header, header.getContext())}
             </th>
@@ -64,7 +85,8 @@ export const Th = <T,>(props: ThProps<T>) => {
             component="th"
             onClick={onSort}
             aria-sort={SortingLabels[sortingOrder]}
-            classNames={{root: cx(ThClasses.root, ThClasses.control)}}
+            data-control={true}
+            {...thStyles}
             {...others}
         >
             <Group wrap="nowrap" gap="xs">
@@ -74,3 +96,4 @@ export const Th = <T,>(props: ThProps<T>) => {
         </UnstyledButton>
     );
 };
+Th.extend = identity as CustomComponentThemeExtend<TableThFactory>;
