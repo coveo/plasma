@@ -155,9 +155,9 @@ type TableStylesNames = Selectors<typeof useStyles>;
 
 export interface TableProps<T> extends DefaultProps<TableStylesNames> {
     /**
-     * Data to display in the table
+     * Data to display in the table. Use `null` when the table is initially loading.
      */
-    data: T[];
+    data: T[] | null;
     /**
      * Defines how each row is uniquely identified. It is highly recommended that you specify this prop to an ID that makes sense.
      */
