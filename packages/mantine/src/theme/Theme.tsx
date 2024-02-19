@@ -73,14 +73,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         lg: '32px',
         xl: '40px',
     },
-    globalStyles: (theme) => ({
-        body: {
-            ...theme.fn.fontStyles(),
-            fontSize: theme.fontSizes.sm,
-            lineHeight: theme.lineHeight,
-            fontWeight: 300,
-        },
-    }),
     primaryColor: 'action',
     headings: {
         fontFamily: 'canada-type-gibson, sans-serif',

@@ -7,7 +7,7 @@ import {useTable, useTableStyles} from '../TableContext';
 
 export type TablePredicateStylesNames = 'predicate' | 'predicateWrapper' | 'predicateLabel' | 'predicateSelect';
 
-export interface TablePredicateProps extends BoxProps, CompoundStylesApiProps<any> {
+export interface TablePredicateProps extends BoxProps, CompoundStylesApiProps<TablePredicateFactory> {
     /**
      * Unique identifier for this predicate. Will be used to access the selected value in the table state
      */

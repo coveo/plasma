@@ -23,7 +23,7 @@ import {
     TableCollapsibleColumnStylesNames,
 } from './table-column/TableCollapsibleColumn';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn';
-import {TableColumnsSelector} from './table-columns-selector/TableColumnsSelector';
+import {TableColumnsSelector, TableColumnsSelectorStylesNames} from './table-columns-selector/TableColumnsSelector';
 import {TableConsumer} from './table-consumer/TableConsumer';
 import {TableDateRangePicker, TableDateRangePickerStylesNames} from './table-date-range-picker/TableDateRangePicker';
 import {TableFilter, TableFilterStylesNames} from './table-filter/TableFilter';
@@ -51,7 +51,8 @@ type TableStylesNames =
     | TableHeaderStylesNames
     | TableThStylesNames
     | TableLastUpdatedStylesNames
-    | TablePredicateStylesNames;
+    | TablePredicateStylesNames
+    | TableColumnsSelectorStylesNames;
 
 export type PlasmaTableFactory = Factory<{
     props: TableProps<unknown>;
@@ -68,6 +69,7 @@ export type PlasmaTableFactory = Factory<{
         Predicate: typeof TablePredicate;
         DateRangePicker: typeof TableDateRangePicker;
         CollapsibleColumn: typeof TableCollapsibleColumn;
+        ColumnsSelector: typeof TableColumnsSelector;
         AccordionColumn: typeof TableAccordionColumn;
         Consumer: typeof TableConsumer;
         Loading: typeof TableLoading;

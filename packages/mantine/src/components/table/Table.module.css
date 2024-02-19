@@ -132,3 +132,8 @@
 }
 .predicateSelect {
 }
+
+/* Table.ColumnsSelector */
+.columnSelector {
+    max-width: 100%;
+}

@@ -10,7 +10,7 @@ export type TableThStylesNames = 'th';
 
 export type SortState = 'asc' | 'desc' | 'none';
 
-export interface ThProps<T = unknown> extends BoxProps, CompoundStylesApiProps<any> {
+export interface ThProps<T = unknown> extends BoxProps, CompoundStylesApiProps<TableThFactory> {
     header: Header<T, unknown>;
     sortingIcons?: Record<SortState, ComponentType<SVGProps<SVGSVGElement>>>;
 }
@@ -40,7 +40,7 @@ const defaultProps: Partial<ThProps> = {
 
 export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElement>}) => {
     const ctx = useTableStyles();
-    const {header, sortingIcons, classNames, className, styles, style, ...others} = useProps(
+    const {header, sortingIcons, classNames, className, styles, style, vars, ...others} = useProps(
         'PlasmaTableTh',
         defaultProps as Partial<ThProps<T>>,
         props,
