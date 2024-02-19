@@ -1,9 +1,20 @@
-import {Box, Divider, Group, GroupProps, MantineSpacing, useProps} from '@mantine/core';
-import cx from 'clsx';
-import {ReactNode, forwardRef} from 'react';
-import StickyFooterClasses from './StickyFooter.module.css';
+import {
+    Box,
+    BoxProps,
+    Divider,
+    Factory,
+    Group,
+    MantineSpacing,
+    StylesApiProps,
+    factory,
+    useProps,
+    useStyles,
+} from '@mantine/core';
+import {ReactNode} from 'react';
+import classes from './StickyFooter.module.css';
+import {StickyFooterProvider} from './StickyFooterContext';
 
-export interface StickyFooterProps extends GroupProps {
+export interface StickyFooterProps extends BoxProps, StylesApiProps<StickyFooterFactory> {
     /**
      * Whether a border is render on top of the footer
      */
@@ -26,19 +37,44 @@ export interface StickyFooterProps extends GroupProps {
     children?: ReactNode;
 }
 
+export type StickyFooterStylesNames = 'root' | 'footer' | 'divider';
+
+export type StickyFooterFactory = Factory<{
+    props: StickyFooterProps;
+    ref: HTMLDivElement;
+    stylesNames: StickyFooterStylesNames;
+}>;
+
 const defaultProps: Partial<StickyFooterProps> = {
     gap: 'sm',
     justify: 'right',
 };
 
-export const StickyFooter = forwardRef<HTMLDivElement, StickyFooterProps>((props, ref) => {
-    const {borderTop, justify, gap, children, className, ...others} = useProps('StickyFooter', defaultProps, props);
+export const StickyFooter = factory<StickyFooterFactory>((props, ref) => {
+    const {borderTop, justify, gap, children, className, classNames, style, styles, unstyled, ...others} = useProps(
+        'StickyFooter',
+        defaultProps,
+        props,
+    );
+    const getStyles = useStyles<StickyFooterFactory>({
+        name: 'StickyFooter',
+        classes,
+        props,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+    });
+
     return (
-        <Box ref={ref} className={cx(StickyFooterClasses.root, className)}>
-            {borderTop ? <Divider size="xs" className={StickyFooterClasses.divider} /> : null}
-            <Group justify={justify} gap={gap} className={StickyFooterClasses.footer} {...others}>
-                {children}
-            </Group>
-        </Box>
+        <StickyFooterProvider value={{getStyles}}>
+            <Box ref={ref} {...getStyles('root')} {...others}>
+                {borderTop ? <Divider size="xs" {...getStyles('divider')} /> : null}
+                <Group justify={justify} gap={gap} {...getStyles('footer')}>
+                    {children}
+                </Group>
+            </Box>
+        </StickyFooterProvider>
     );
 });
