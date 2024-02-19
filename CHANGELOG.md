@@ -1,3 +1,12 @@
+## 52.27.2 (2024-02-19)
+
+
+### Bug Fixes
+
+* **mantine:** add null to table data prop type (#3623) 5cdac8c, closes #3623
+
+
+
 ## 52.27.1 (2024-02-16)
 
 
