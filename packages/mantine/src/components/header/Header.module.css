@@ -3,10 +3,6 @@
         padding: var(--mantine-spacing-xl);
         padding-bottom: var(--mantine-spacing-lg);
     }
-    &[data-variant='modal'] {
-        padding: undefined;
-        padding-bottom: undefined;
-    }
     & .description {
         color: var(--mantine-color-gray-6);
         font-weight: 300;
@@ -17,10 +13,5 @@
     &[data-variant='page'] {
         color: var(--mantine-color-gray-5);
     }
-    &[data-variant='modal'] {
-        color: undefined;
-    }
     line-height: var(--mantine-line-height-md);
-}
-.divider {
 }

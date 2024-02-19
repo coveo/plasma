@@ -24,30 +24,18 @@
     }
 }
 
-.body {
-}
-
 /* Table.Actions */
-.actionsRoot {
-}
-
 .actionsGroup {
     display: inline-flex;
 }
 
 /* Table.DateRange */
-.dateRangeRoot {
-}
-.dateRangeWrapper {
-}
 .dateRangeLabel {
     font-size: var(--mantine-font-size-sm);
     font-weight: 300;
 }
 
 /* Table.Filter */
-.filterRoot {
-}
 .filterWrapper {
     margin-bottom: 0 !important;
 }
@@ -122,15 +110,9 @@
 }
 
 /* Table.Predicate */
-.predicate {
-}
-.predicateWrapper {
-}
 .predicateLabel {
     font-size: var(--mantine-font-size-sm);
     font-weight: 300;
-}
-.predicateSelect {
 }
 
 /* Table.ColumnsSelector */

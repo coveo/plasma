@@ -70,9 +70,6 @@
     border-bottom: rem(1) solid var(--mantine-color-gray-3);
 }
 
-.collapsibleRow {
-}
-
 .collapsibleWrapper {
     @mixin light {
         border-bottom: rem(1) solid var(--mantine-color-gray-3);
@@ -82,7 +79,4 @@
         border-bottom: rem(1) solid var(--mantine-color-dark-4);
         background-color: rgba(var(--mantine-color-primary-7), 0.2);
     }
-}
-
-.icon {
 }
