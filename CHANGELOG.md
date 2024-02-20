@@ -1,3 +1,12 @@
+## 52.27.2-next.1 (2024-02-20)
+
+
+### Bug Fixes
+
+* **mantine:** make code-highlight and notifications peerDeps 5223696
+
+
+
 ## 52.27.2-next.0 (2024-02-20)
 
 
