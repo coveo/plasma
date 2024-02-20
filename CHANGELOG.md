@@ -1,3 +1,21 @@
+## 52.27.2-next.0 (2024-02-20)
+
+
+### Bug Fixes
+
+* **mantine:** cleared up some changes in v7 and fix them (#3601) f00b29b, closes #3601
+* **mantine:** override get input props types (#3618) 77bbf03, closes #3618
+* **plasma:** fixed the test with mantine v7 bump (#3604) c0764b8, closes #3604
+
+
+### Features
+
+* **collection:** use getStyles, fixed collection (#3616) 34c1509, closes #3616
+* **stickyFooter:** fix rebase mess (#3622) ea954d7, closes #3622
+* **website:** create script to generate mantine core example (#3611) fe1d7b8, closes #3611
+
+
+
 ## 52.26.6-next.4 (2024-02-13)
 
 
