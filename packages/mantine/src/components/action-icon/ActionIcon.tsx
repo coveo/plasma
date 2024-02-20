@@ -1,7 +1,15 @@
-import {ActionIcon as MantineActionIcon, type ActionIconProps as MantineActionIconProps} from '@mantine/core';
-import {MouseEvent, MouseEventHandler, forwardRef, useState} from 'react';
-
-import {createPolymorphicComponent} from '../../utils';
+import {
+    ActionIcon as MantineActionIcon,
+    ActionIconCssVariables,
+    ActionIconGroup,
+    type ActionIconProps as MantineActionIconProps,
+    ActionIconStylesNames,
+    ActionIconVariant,
+    Factory,
+    polymorphicFactory,
+} from '@mantine/core';
+import {MouseEventHandler} from 'react';
+import {useClickWithLoading} from '../../hooks/useClickWithLoading';
 import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from '../button/ButtonWithDisabledTooltip';
 
 export interface ActionIconProps extends MantineActionIconProps, ButtonWithDisabledTooltipProps {
@@ -9,29 +17,21 @@ export interface ActionIconProps extends MantineActionIconProps, ButtonWithDisab
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const useLoadingHandler = (handler?: MouseEventHandler<HTMLButtonElement>) => {
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
-        const possiblePromise: unknown = handler?.(event);
-        try {
-            if (possiblePromise instanceof Promise) {
-                setIsLoading(true);
-                await possiblePromise;
-                setIsLoading(false);
-            }
-        } catch (err) {
-            setIsLoading(false);
-            console.error(err);
-        }
+type ActionIconOverloadFactory = Factory<{
+    props: ActionIconProps;
+    defaultRef: HTMLButtonElement;
+    defaultComponent: 'button';
+    stylesNames: ActionIconStylesNames;
+    vars: ActionIconCssVariables;
+    variant: ActionIconVariant;
+    staticComponents: {
+        Group: typeof ActionIconGroup;
     };
+}>;
 
-    return {isLoading, handleClick};
-};
-
-const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
+export const ActionIcon = polymorphicFactory<ActionIconOverloadFactory>(
     ({disabledTooltip, disabled, disabledTooltipProps, loading, onClick, ...others}, ref) => {
-        const {isLoading, handleClick} = useLoadingHandler(onClick);
+        const {isLoading, handleClick} = useClickWithLoading(onClick);
         return (
             <ButtonWithDisabledTooltip
                 disabled={disabled}
@@ -51,10 +51,4 @@ const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
         );
     },
 );
-
-export const ActionIcon = createPolymorphicComponent<
-    'button',
-    ActionIconProps,
-    {Group: typeof MantineActionIcon.Group}
->(_ActionIcon);
 ActionIcon.Group = MantineActionIcon.Group;
