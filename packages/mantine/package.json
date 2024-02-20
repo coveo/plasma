@@ -102,11 +102,13 @@
     "peerDependencies": {
         "@emotion/react": "^11.10.0",
         "@mantine/carousel": "^7.0.1",
+        "@mantine/code-highlight": "^7.0.1",
         "@mantine/core": "^7.0.1",
         "@mantine/dates": "^7.0.1",
         "@mantine/form": "^7.0.1",
         "@mantine/hooks": "^7.0.1",
         "@mantine/modals": "^7.0.1",
+        "@mantine/notifications": "^7.0.1",
         "embla-carousel-react": "^7.0.4",
         "react": ">= 18.0.0",
         "react-dom": ">= 18.0.0"
