@@ -21,7 +21,7 @@ export interface HeaderDocAnchorProps
     /**
      * The tooltip text shown when hovering over the doc link icon
      */
-    label?: string;
+    label?: ReactNode;
     /**
      * React component to add the tooltip and anchor on
      */
