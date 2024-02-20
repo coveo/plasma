@@ -1,6 +1,7 @@
 import {ActionIcon as MantineActionIcon, type ActionIconProps as MantineActionIconProps} from '@mantine/core';
-import {forwardRef, MouseEvent, MouseEventHandler, useState} from 'react';
+import {MouseEventHandler, forwardRef} from 'react';
 
+import {useLoadingHandler} from '../../hooks';
 import {createPolymorphicComponent} from '../../utils';
 import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from '../button/ButtonWithDisabledTooltip';
 
@@ -8,26 +9,6 @@ export interface ActionIconProps extends MantineActionIconProps, ButtonWithDisab
     /* Handler executed on click */
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
-
-const useLoadingHandler = (handler?: MouseEventHandler<HTMLButtonElement>) => {
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
-        const possiblePromise: unknown = handler?.(event);
-        try {
-            if (possiblePromise instanceof Promise) {
-                setIsLoading(true);
-                await possiblePromise;
-                setIsLoading(false);
-            }
-        } catch (err) {
-            setIsLoading(false);
-            console.error(err);
-        }
-    };
-
-    return {isLoading, handleClick};
-};
 
 const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
     ({disabledTooltip, disabled, disabledTooltipProps, loading, onClick, ...others}, ref) => {
