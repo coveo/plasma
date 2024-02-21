@@ -1,3 +1,12 @@
+## 52.27.3 (2024-02-21)
+
+
+### Bug Fixes
+
+* **mantine, header:** change HeaderDocAnchor label type to ReactNode (#3625) 909913e, closes #3625
+
+
+
 ## 52.27.2 (2024-02-19)
 
 
