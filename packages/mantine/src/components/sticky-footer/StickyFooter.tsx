@@ -42,7 +42,10 @@ const useStyles = createStyles((theme) => ({
         backgroundColor: 'white',
     },
     footer: {
-        padding: theme.spacing.lg,
+        paddingLeft: theme.spacing.lg,
+        paddingRight: theme.spacing.lg,
+        paddingTop: theme.spacing.md,
+        paddingBottom: theme.spacing.md,
     },
     divider: {},
 }));
