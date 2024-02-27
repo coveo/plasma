@@ -42,28 +42,28 @@
         "prepublishOnly": "publint"
     },
     "dependencies": {
-        "@swc/helpers": "0.5.1"
+        "@swc/helpers": "0.5.6"
     },
     "devDependencies": {
-        "@babel/types": "7.22.10",
+        "@babel/types": "7.23.9",
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "8.1.0",
         "@svgr/plugin-jsx": "8.1.0",
-        "@swc/cli": "0.1.62",
-        "@swc/core": "1.3.78",
-        "@types/react": "18.2.20",
-        "@types/react-dom": "18.2.7",
-        "fs-extra": "11.1.1",
-        "glob": "10.3.3",
+        "@swc/cli": "0.3.9",
+        "@swc/core": "1.4.2",
+        "@types/react": "18.2.60",
+        "@types/react-dom": "18.2.19",
+        "fs-extra": "11.2.0",
+        "glob": "10.3.10",
         "lodash.groupby": "4.6.0",
         "lodash.upperfirst": "4.3.1",
         "npm-run-all2": "5.0.0",
-        "publint": "0.2.2",
+        "publint": "0.2.7",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "rimraf": "5.0.1",
+        "rimraf": "5.0.5",
         "tslib": "2.6.2",
-        "typescript": "5.2.2"
+        "typescript": "5.3.3"
     },
     "peerDependencies": {
         "react": ">= 18.0",
