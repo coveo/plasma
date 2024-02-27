@@ -1,5 +1,5 @@
-import {FunctionComponent, ReactNode} from 'react';
-import {parseDiff, Decoration, Diff, Hunk} from 'react-diff-view';
+import {FunctionComponent} from 'react';
+import {Decoration, Diff, Hunk, HunkData, parseDiff} from 'react-diff-view';
 
 import {BlankSlate} from '../blankSlate';
 
@@ -8,26 +8,8 @@ enum DIFF_VIEWER_VIEW_TYPE {
     UNIFIED = 'unified',
 }
 
-interface HunkModel {
-    oldStart: number;
-    oldLines: number;
-    newStart: number;
-    newLines: number;
-    content: string;
-    changes: Array<{
-        type: 'delete' | 'insert' | 'normal';
-        content: string | ReactNode;
-        isNormal?: boolean;
-        isInsert?: boolean;
-        isDelete?: boolean;
-        lineNumber?: number;
-        oldLineNumber?: number;
-        newLineNumber?: number;
-    }>;
-}
-
 interface DiffByFileProps {
-    hunks: HunkModel[];
+    hunks: HunkData[];
     newRevision: string;
     oldRevision: string;
     type: 'add' | 'delete' | 'modify' | 'rename' | 'copy';
@@ -36,8 +18,8 @@ interface DiffByFileProps {
 
 const DiffByFile: FunctionComponent<DiffByFileProps> = ({oldRevision, newRevision, hunks, type, viewType}) => (
     <Diff key={`${oldRevision}-${newRevision}`} diffType={type} hunks={hunks} viewType={viewType}>
-        {(collectionHunk: HunkModel[]) =>
-            collectionHunk.map((hunk: HunkModel) => (
+        {(collectionHunk: HunkData[]) =>
+            collectionHunk.map((hunk: HunkData) => (
                 <>
                     <Decoration key={`decoration-${hunk.content}`}>
                         <span />
