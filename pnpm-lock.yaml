@@ -240,29 +240,29 @@ importers:
         specifier: 11.11.1
         version: 11.11.1(@types/react@18.2.55)(react@18.2.0)
       '@mantine/carousel':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(embla-carousel-react@7.1.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(embla-carousel-react@7.1.0)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/code-highlight':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/core':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/hooks@7.5.0)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/hooks@7.6.1)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/dates':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(dayjs@1.11.9)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(dayjs@1.11.9)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/form':
-        specifier: 7.5.0
-        version: 7.5.0(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(react@18.2.0)
       '@mantine/hooks':
-        specifier: 7.5.0
-        version: 7.5.0(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(react@18.2.0)
       '@mantine/modals':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/notifications':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(react-dom@18.2.0)(react@18.2.0)
       '@swc/cli':
         specifier: 0.1.62
         version: 0.1.62(@swc/core@1.3.78)(chokidar@3.5.3)
@@ -913,29 +913,29 @@ importers:
         specifier: 8.0.2
         version: 8.0.2
       '@mantine/carousel':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(embla-carousel-react@7.1.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(embla-carousel-react@7.1.0)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/code-highlight':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/core':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/hooks@7.5.0)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/hooks@7.6.1)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/dates':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(dayjs@1.11.9)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(dayjs@1.11.9)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/form':
-        specifier: 7.5.0
-        version: 7.5.0(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(react@18.2.0)
       '@mantine/hooks':
-        specifier: 7.5.0
-        version: 7.5.0(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(react@18.2.0)
       '@mantine/modals':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/notifications':
-        specifier: 7.5.0
-        version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.6.1
+        version: 7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(react-dom@18.2.0)(react@18.2.0)
       '@swc/helpers':
         specifier: 0.5.1
         version: 0.5.1
@@ -3288,14 +3288,14 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  /@floating-ui/react@0.24.8(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-AuYeDoaR8jtUlUXtZ1IJ/6jtBkGnSpJXbGNzokBL87VDJ8opMq1Bgrc0szhK482ReQY6KZsMoZCVSb4xwalkBA==}
+  /@floating-ui/react@0.26.9(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-p86wynZJVEkEq2BBjY/8p2g3biQ6TlgT4o/3KgFKyTWoJLU1GZ8wpctwRqtkEl2tseYA+kw7dBAIDFcednfI5w==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@floating-ui/react-dom': 2.0.8(react-dom@18.2.0)(react@18.2.0)
-      aria-hidden: 1.2.3
+      '@floating-ui/utils': 0.2.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tabbable: 6.2.0
@@ -3674,46 +3674,46 @@ packages:
       react-is: 16.13.1
     dev: false
 
-  /@mantine/carousel@7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(embla-carousel-react@7.1.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-wUc+55yNKYRoRSEZV/KDi+S1dQp++e0T7O3D4injSGc0YyAX6CD6nYqnNf2Oo80aWj/hTPqx0RQAMt5ZxB/BqQ==}
+  /@mantine/carousel@7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(embla-carousel-react@7.1.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-tPxvS2LieczcpBzAhdp0k71bQ7Owp/Y5iO93aJcdUsFJXe2tbQKMRRImJf9rZhzXnszstxWm0kFPAjHnzprazg==}
     peerDependencies:
-      '@mantine/core': 7.5.0
-      '@mantine/hooks': 7.5.0
+      '@mantine/core': 7.6.1
+      '@mantine/hooks': 7.6.1
       embla-carousel-react: '>=7.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@mantine/core': 7.5.0(@mantine/hooks@7.5.0)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
-      '@mantine/hooks': 7.5.0(react@18.2.0)
+      '@mantine/core': 7.6.1(@mantine/hooks@7.6.1)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
+      '@mantine/hooks': 7.6.1(react@18.2.0)
       embla-carousel-react: 7.1.0(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  /@mantine/code-highlight@7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-PDoVffYyaImZOxh80yXhUg5shad6VcXGvSv380pyW1ae+Dgf0sDFz2lsuFgTwcK3Xzi52GaZlc9OcJ0SxdNsPQ==}
+  /@mantine/code-highlight@7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-FDgbDQzlB+ldJzkWEscCtNyE5hqE1DgBjlrw3EeOhdK0FRijzXrUpABjnmZZPuoMAbxBaBPaguL4VwrHCzEOmg==}
     peerDependencies:
-      '@mantine/core': 7.5.0
-      '@mantine/hooks': 7.5.0
+      '@mantine/core': 7.6.1
+      '@mantine/hooks': 7.6.1
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@mantine/core': 7.5.0(@mantine/hooks@7.5.0)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
-      '@mantine/hooks': 7.5.0(react@18.2.0)
-      clsx: 2.0.0
+      '@mantine/core': 7.6.1(@mantine/hooks@7.6.1)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
+      '@mantine/hooks': 7.6.1(react@18.2.0)
+      clsx: 2.1.0
       highlight.js: 11.9.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  /@mantine/core@7.5.0(@mantine/hooks@7.5.0)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-0Qfn4oLCs6Qrli+JK6Q325xhNblVEPSKOB4sDMUkvKYUlCt/2lsIhwUXarVBgiIV3X+rKccf0/LcEWmpn/dYuw==}
+  /@mantine/core@7.6.1(@mantine/hooks@7.6.1)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-52BgYXAMD+E6vDiGIGOJlLBc0pdT2+gzrB0g+v7c7xeiNXqHEG5cEplLErfNBHh9kMQHiDHCiCb5Su9jqoUlXw==}
     peerDependencies:
-      '@mantine/hooks': 7.5.0
+      '@mantine/hooks': 7.6.1
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@floating-ui/react': 0.24.8(react-dom@18.2.0)(react@18.2.0)
-      '@mantine/hooks': 7.5.0(react@18.2.0)
-      clsx: 2.0.0
+      '@floating-ui/react': 0.26.9(react-dom@18.2.0)(react@18.2.0)
+      '@mantine/hooks': 7.6.1(react@18.2.0)
+      clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-number-format: 5.3.1(react-dom@18.2.0)(react@18.2.0)
@@ -3723,24 +3723,24 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
 
-  /@mantine/dates@7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(dayjs@1.11.9)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-zFbV+s1ChatO7OBCXHlk6mzcagCG+sSHJ0HNT0XzeCAjnhfVabYEjih5RaaxFedEa2jxUOMkQi/rPlfbGeYooQ==}
+  /@mantine/dates@7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(dayjs@1.11.9)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-xHe5sINtFuqptmZCXfp0aeurC8wjiycBzHvk87CqfhLIGWBTSAkrCKk3KzdUeEKfVsLY1l21cFb7Sv7mr4lfTw==}
     peerDependencies:
-      '@mantine/core': 7.5.0
-      '@mantine/hooks': 7.5.0
+      '@mantine/core': 7.6.1
+      '@mantine/hooks': 7.6.1
       dayjs: '>=1.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@mantine/core': 7.5.0(@mantine/hooks@7.5.0)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
-      '@mantine/hooks': 7.5.0(react@18.2.0)
-      clsx: 2.0.0
+      '@mantine/core': 7.6.1(@mantine/hooks@7.6.1)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
+      '@mantine/hooks': 7.6.1(react@18.2.0)
+      clsx: 2.1.0
       dayjs: 1.11.9
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  /@mantine/form@7.5.0(react@18.2.0):
-    resolution: {integrity: sha512-Bp2ZYwt+oYXNUm7ySPwst5C9S44YvrdsiFXjUzjX1QaoznAWern1W0dtyF7vJ3KWOoY9+7XXx+Ou4pHTOIq/hQ==}
+  /@mantine/form@7.6.1(react@18.2.0):
+    resolution: {integrity: sha512-S0pdvFohRX3ahzhrCGM+d2sBaSHH88UkQhbzyOAGJ7xqNjPJ11Bh/xb4Mc+NXXxaq9MjPrRVe6fgpKJtXszBpQ==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -3748,43 +3748,43 @@ packages:
       klona: 2.0.6
       react: 18.2.0
 
-  /@mantine/hooks@7.5.0(react@18.2.0):
-    resolution: {integrity: sha512-KCL/RRMO+9HRIaNww3RIykifWL9XHovnANAyaCU2YUHOPyGCLSXs1UfFxsKNU71HaZ7cHwqSd7J0rR8JpVYLxw==}
+  /@mantine/hooks@7.6.1(react@18.2.0):
+    resolution: {integrity: sha512-zsOGzFRcQZuER2rzAjfrAqp98W7WCFA43nF1QZUKV7AHTq8q1mtr3DOhFfO3/CA+t1lai68gp1guVcIhP4lrwQ==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
       react: 18.2.0
 
-  /@mantine/modals@7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-JygJtVzAZRedk9HkZu3vqjNMXh4vZZtS3+OEzk4Sgeja41oAdn3hNpguueVNESRMbMxK7MnoB1B6NiSoGN4B8A==}
+  /@mantine/modals@7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-bXCViyQpXEbPGaq/UjCqe/jExku6I6i93okayN54diKZEKbjKAQjQVCowP7axUzMQNhhVRCVtSZPYbkiiEh3Ug==}
     peerDependencies:
-      '@mantine/core': 7.5.0
-      '@mantine/hooks': 7.5.0
+      '@mantine/core': 7.6.1
+      '@mantine/hooks': 7.6.1
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@mantine/core': 7.5.0(@mantine/hooks@7.5.0)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
-      '@mantine/hooks': 7.5.0(react@18.2.0)
+      '@mantine/core': 7.6.1(@mantine/hooks@7.6.1)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
+      '@mantine/hooks': 7.6.1(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  /@mantine/notifications@7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-43+PwX1WTTffmRjAAH/42Zk0ffXny5DMIry+WGfyNQdoN1JPL1w9eulpWhPFMUn2fm7wHyrKTRpiZdfp8ry2Ow==}
+  /@mantine/notifications@7.6.1(@mantine/core@7.6.1)(@mantine/hooks@7.6.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Aiui/faUBVQVgDPW9poCe8WdRZkXmIe9aFTnmf+WTopMWK/zfLBp02IjLY1f59zs5NeF/vfXaMxiuQq+KH2hTQ==}
     peerDependencies:
-      '@mantine/core': 7.5.0
-      '@mantine/hooks': 7.5.0
+      '@mantine/core': 7.6.1
+      '@mantine/hooks': 7.6.1
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@mantine/core': 7.5.0(@mantine/hooks@7.5.0)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
-      '@mantine/hooks': 7.5.0(react@18.2.0)
-      '@mantine/store': 7.5.0(react@18.2.0)
+      '@mantine/core': 7.6.1(@mantine/hooks@7.6.1)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
+      '@mantine/hooks': 7.6.1(react@18.2.0)
+      '@mantine/store': 7.6.1(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
 
-  /@mantine/store@7.5.0(react@18.2.0):
-    resolution: {integrity: sha512-NvPS6ERKxHGnkIEY8ip/v3ySYYPQlJq6KtSSXALlJ/BdyezBTsBrkEkEgJxJcYK5H4TYr9jDjLYNL3PQy4GHxg==}
+  /@mantine/store@7.6.1(react@18.2.0):
+    resolution: {integrity: sha512-UqSsJLlAL53OSSUNK/aTXpkss9DX0TppTbtBKXPyflYfq0B9vKwQKumxEsg3UGVC4cjiQq2VD4mjGT94r+deug==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -6330,12 +6330,6 @@ packages:
     deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dev: true
 
-  /aria-hidden@1.2.3:
-    resolution: {integrity: sha512-xcLxITLe2HYa1cnYnwCjkOO1PqUHQpozB8x9AR0OgWN2woOBi5kSDVxKfd0b7sb1hw5qFeJhXm9H1nu3xSfLeQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      tslib: 2.6.2
-
   /aria-query@5.1.3:
     resolution: {integrity: sha512-R5iJ5lkuHybztUfuOAznmboyjWq8O6sqNqtK7CLOqdydi54VNbORp49mb14KbWgG1QD3JFO9hJdZ+y4KutfdOQ==}
     dependencies:
@@ -7429,6 +7423,11 @@ packages:
 
   /clsx@2.0.0:
     resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
+    dev: false
+
+  /clsx@2.1.0:
+    resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
     engines: {node: '>=6'}
 
   /co@4.6.0:
