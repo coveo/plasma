@@ -140,9 +140,9 @@ export type TableContextType<TData> = {
 
 export interface TableProps<T> extends BoxProps, StylesApiProps<PlasmaTableFactory> {
     /**
-     * Data to display in the table
+     * Data to display in the table. Use `null` when the table is initially loading.
      */
-    data: T[];
+    data: T[] | null;
     /**
      * Defines how each row is uniquely identified. It is highly recommended that you specify this prop to an ID that makes sense.
      */
