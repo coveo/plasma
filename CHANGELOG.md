@@ -1,12 +1,3 @@
-## 52.27.2-next.2 (2024-02-29)
-
-
-### Features
-
-* **plasma:** merge master in next (#3628) 3827dbb, closes #3628
-
-
-
 ## 52.27.3 (2024-02-21)
 
 
