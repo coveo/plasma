@@ -1,4 +1,22 @@
-## 52.27.2-next.1 (2024-02-20)
+## 52.27.3 (2024-02-21)
+
+
+### Bug Fixes
+
+* **mantine, header:** change HeaderDocAnchor label type to ReactNode (#3625) 909913e, closes #3625
+
+
+
+## 52.27.2 (2024-02-19)
+
+
+### Bug Fixes
+
+* **mantine:** add null to table data prop type (#3623) 5cdac8c, closes #3623
+
+
+
+## 52.27.1 (2024-02-16)
 
 
 ### Bug Fixes

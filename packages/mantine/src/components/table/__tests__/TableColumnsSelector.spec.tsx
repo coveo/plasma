@@ -1,6 +1,6 @@
 import {Box} from '@mantine/core';
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent} from '@test-utils';
+import {render, screen, userEvent, waitFor} from '@test-utils';
 import {Table} from '../Table';
 import {TableColumnsSelector} from '../table-columns-selector/TableColumnsSelector';
 
@@ -104,10 +104,10 @@ describe('TableColumnsSelector', () => {
         expect(screen.getAllByRole('button', {name: /arrowheaddown/i})).toHaveLength(2);
         expect(screen.getAllByRole('checkbox', {name: /select row/i})).toHaveLength(2);
 
-        expect(screen.getByRole('checkbox', {name: 'Name'})).toBeVisible();
-        expect(screen.getByRole('checkbox', {name: 'Age'})).toBeVisible();
-        expect(screen.getByRole('checkbox', {name: 'Email'})).toBeVisible();
-        expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeVisible();
+        await waitFor(() => expect(screen.getByRole('checkbox', {name: 'Name'})).toBeVisible());
+        await waitFor(() => expect(screen.getByRole('checkbox', {name: 'Age'})).toBeVisible());
+        await waitFor(() => expect(screen.getByRole('checkbox', {name: 'Email'})).toBeVisible());
+        await waitFor(() => expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeVisible());
 
         // columns are not in the dropdown
         expect(screen.queryByRole('checkbox', {name: /collapsible/i})).not.toBeInTheDocument();
@@ -219,7 +219,7 @@ describe('TableColumnsSelector', () => {
 
         await user.hover(emailCheckBoxWrapper);
 
-        expect(screen.getByText('You can display up to 3 columns')).toBeVisible();
+        await waitFor(() => expect(screen.getByText('You can display up to 3 columns')).toBeVisible());
     });
 
     describe('footer', () => {
@@ -254,7 +254,7 @@ describe('TableColumnsSelector', () => {
 
             await user.click(screen.getByRole('button', {name: 'Edit columns'}));
 
-            expect(screen.getByText('You can display so many patate')).toBeVisible();
+            await waitFor(() => expect(screen.getByText('You can display so many patate')).toBeVisible());
         });
     });
 });

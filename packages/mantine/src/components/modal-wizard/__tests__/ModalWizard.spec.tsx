@@ -1,4 +1,4 @@
-import {render, screen, userEvent} from '@test-utils';
+import {render, screen, userEvent, waitFor} from '@test-utils';
 
 import {ModalWizard} from '../ModalWizard';
 
@@ -440,7 +440,7 @@ describe('ModalWizard', () => {
             const finishButton = screen.getByRole('button', {name: /finish/i});
             expect(finishButton).toBeDisabled();
             await user.hover(finishButton.parentElement);
-            expect(screen.getByText('test tooltip label')).toBeVisible();
+            await waitFor(() => expect(screen.getByText('test tooltip label')).toBeVisible());
         });
 
         it('does not display the tooltip if the step is validated even if the props is passed', async () => {
