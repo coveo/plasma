@@ -235,8 +235,7 @@
     max-height: $facet-more-height;
     margin: $facet-search-results-margin-y 0;
     padding: $dropdown-choices-top-bottom-margin 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden auto;
     list-style: none;
     background-color: var(--white);
     border: 1px solid rgb(var(--deprecated-heather-rgb) / 30%);
