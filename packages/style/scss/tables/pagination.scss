@@ -74,6 +74,16 @@
             .icon {
                 fill: currentcolor;
             }
+
+            &.disabled {
+                color: var(--deprecated-medium-grey);
+                cursor: default;
+                pointer-events: none;
+
+                .icon {
+                    fill: var(--deprecated-medium-grey);
+                }
+            }
         }
     }
 }
