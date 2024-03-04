@@ -9,7 +9,7 @@ import {
     Button,
     Checkbox,
     ColorSwatch,
-    createTheme,
+    Combobox,
     Divider,
     InputWrapper,
     List,
@@ -32,6 +32,7 @@ import {
     TextInput,
     Title,
     Tooltip,
+    createTheme,
 } from '@mantine/core';
 import {DatePicker} from '@mantine/dates';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
@@ -237,6 +238,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Select: Select.extend({
             defaultProps: {withCheckIcon: false, allowDeselect: false},
             classNames: {input: SelectClasses.input, option: SelectClasses.option},
+        }),
+        Combobox: Combobox.extend({
+            classNames: {option: SelectClasses.option},
         }),
         NavLink: NavLink.extend({
             classNames: {
