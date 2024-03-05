@@ -8,10 +8,25 @@
         font-weight: 300;
     }
 }
+
 .title {
     word-break: break-word;
     &[data-variant='page'] {
         color: var(--mantine-color-gray-5);
     }
     line-height: var(--mantine-line-height-md);
+}
+
+.docAnchor {
+    margin-left: var(--mantine-spacing-xs);
+    vertical-align: middle;
+}
+
+.breadcrumbs {
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 300;
+}
+
+.breadcrumbsSeparator {
+    color: var(--mantine-color-gray-5);
 }

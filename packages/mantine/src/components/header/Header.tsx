@@ -1,17 +1,26 @@
-import {Divider, Group, GroupProps, Stack, Text, Title, useProps} from '@mantine/core';
+import {Divider, Factory, Group, GroupProps, Stack, Text, Title, factory, useProps, useStyles} from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
-
-import cx from 'clsx';
-import HeaderClasses from './Header.module.css';
-import {HeaderActions} from './HeaderActions/HeaderActions';
-import {HeaderBreadcrumbs} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
-import {HeaderDocAnchor} from './HeaderDocAnchor/HeaderDocAnchor';
+import classes from './Header.module.css';
+import {HeaderActions, HeaderActionsStyleNames} from './HeaderActions/HeaderActions';
+import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
+import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
+import {HeaderProvider} from './Header.context';
 
 export type {HeaderActionsProps} from './HeaderActions/HeaderActions';
 export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor';
 
-export interface HeaderProps extends Omit<GroupProps, 'styles'> {
+export type HeaderVariant = 'page' | 'modal';
+export type HeaderStyleNames =
+    | 'root'
+    | 'title'
+    | 'description'
+    | 'divider'
+    | HeaderDocAnchorStyleNames
+    | HeaderBreadcrumbsStyleNames
+    | HeaderActionsStyleNames;
+
+export interface HeaderProps extends GroupProps {
     /**
      * The description text displayed inside the header underneath the title
      */
@@ -32,12 +41,17 @@ export interface HeaderProps extends Omit<GroupProps, 'styles'> {
     children: ReactNode;
 }
 
-interface HeaderType {
-    (props: HeaderProps): ReactElement;
-    Breadcrumbs: typeof HeaderBreadcrumbs;
-    Actions: typeof HeaderActions;
-    DocAnchor: typeof HeaderDocAnchor;
-}
+export type HeaderFactory = Factory<{
+    props: HeaderProps;
+    ref: HTMLDivElement;
+    variant: HeaderVariant;
+    stylesNames: HeaderStyleNames;
+    staticComponents: {
+        Breadcrumbs: typeof HeaderBreadcrumbs;
+        Actions: typeof HeaderActions;
+        DocAnchor: typeof HeaderDocAnchor;
+    };
+}>;
 
 const defaultProps: Partial<HeaderProps> = {
     variant: 'page',
@@ -45,12 +59,33 @@ const defaultProps: Partial<HeaderProps> = {
     wrap: 'nowrap',
 };
 
-export const Header: HeaderType = (props: HeaderProps) => {
-    const {className, description, borderBottom, variant, children, ...others} = useProps(
-        'Header',
-        defaultProps,
+export const Header = factory<HeaderFactory>((_props, ref) => {
+    const props = useProps('PlasmaHeader', defaultProps, _props);
+    const {
+        className,
+        description,
+        borderBottom,
+        variant,
+        children,
+        style,
+        classNames,
+        unstyled,
+        vars,
+        styles,
+        ...others
+    } = props;
+    const getStyles = useStyles<HeaderFactory>({
+        name: 'PlasmaHeader',
         props,
-    );
+        classes,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+        vars,
+    });
+    const stylesApiProps = {classNames, styles};
 
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
@@ -60,24 +95,24 @@ export const Header: HeaderType = (props: HeaderProps) => {
         (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor,
     );
     return (
-        <>
-            <Group variant={variant} className={cx(className, HeaderClasses.root)} {...others}>
+        <HeaderProvider value={{getStyles}}>
+            <Group variant={variant} {...getStyles('root')} {...others}>
                 <Stack gap={0}>
                     {breadcrumbs}
-                    <Title variant={variant} order={variant === 'page' ? 1 : 3} className={HeaderClasses.title}>
+                    <Title variant={variant} order={variant === 'page' ? 1 : 3} {...getStyles('title', stylesApiProps)}>
                         {otherChildren}
                         {docAnchor}
                     </Title>
-                    <Text classNames={{root: HeaderClasses.description}} size={variant === 'page' ? 'md' : 'sm'}>
+                    <Text {...getStyles('description', stylesApiProps)} size={variant === 'page' ? 'md' : 'sm'}>
                         {description}
                     </Text>
                 </Stack>
                 {actions}
             </Group>
-            {borderBottom ? <Divider className={HeaderClasses.divider} size="xs" /> : null}
-        </>
+            {borderBottom ? <Divider {...getStyles('divider', stylesApiProps)} size="xs" /> : null}
+        </HeaderProvider>
     );
-};
+});
 
 Header.Breadcrumbs = HeaderBreadcrumbs;
 Header.Actions = HeaderActions;
