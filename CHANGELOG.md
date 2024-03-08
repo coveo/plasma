@@ -1,3 +1,27 @@
+## 52.27.2-next.3 (2024-03-08)
+
+
+### Bug Fixes
+
+* **mantine, header:** change HeaderDocAnchor label type to ReactNode (#3625) 909913e, closes #3625
+* **mantine:** add null to table data prop type (#3623) 5cdac8c, closes #3623
+
+
+### Features
+
+* **mantine:** factorize header component (#3632) ca5f56e, closes #3632
+* **theme:** combobox options (#3629) 50d97e6, closes #3629
+* **tokens:** extract design tokens from figma libraries (#3500) 8ccdd72, closes #3500
+
+
+### BREAKING CHANGES
+
+* **tokens:** CartNew icon renamed to Cart
+
+Co-authored-by: Jenkins CI <jenkins@coveo.com>
+
+
+
 ## 52.27.3 (2024-02-21)
 
 
