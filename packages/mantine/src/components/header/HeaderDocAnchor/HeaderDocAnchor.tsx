@@ -1,15 +1,23 @@
 import {QuestionSize16Px} from '@coveord/plasma-react-icons';
-import {Anchor, Tooltip, TooltipProps, useProps} from '@mantine/core';
-import cx from 'clsx';
-import {FunctionComponent, ReactNode} from 'react';
-import HeaderDocAnchorClasses from './HeaderDocAnchor.module.css';
+import {
+    Anchor,
+    AnchorProps,
+    CompoundStylesApiProps,
+    Factory,
+    Tooltip,
+    TooltipProps,
+    factory,
+    useProps,
+} from '@mantine/core';
+import {ReactNode} from 'react';
+import {useHeaderContext} from '../Header.context';
 
-const defaultProps: Partial<HeaderDocAnchorProps> = {
-    position: 'right',
-    children: <QuestionSize16Px height={16} />,
-};
+export type HeaderDocAnchorStyleNames = 'docAnchorTooltip' | 'docAnchor';
 
-export interface HeaderDocAnchorProps extends Pick<TooltipProps, 'position' | 'className'> {
+export interface HeaderDocAnchorProps
+    extends Pick<TooltipProps, 'position'>,
+        CompoundStylesApiProps<HeaderDocAnchorFactory>,
+        Omit<AnchorProps, 'classNames' | 'styles' | 'variant' | 'vars'> {
     /**
      * A href pointing to documentation related to the current panel.
      * When provided, an info icon is rendered next to the title as link to this documentation
@@ -25,25 +33,40 @@ export interface HeaderDocAnchorProps extends Pick<TooltipProps, 'position' | 'c
     children?: ReactNode;
 }
 
-export const HeaderDocAnchor: FunctionComponent<HeaderDocAnchorProps> = (props: HeaderDocAnchorProps) => {
-    const {
-        className,
-        children,
-        href: docLink,
-        label: docLinkTooltipLabel,
-        ...others
-    } = useProps('PlasmaHeaderActions', defaultProps, props);
+export type HeaderDocAnchorFactory = Factory<{
+    props: HeaderDocAnchorProps;
+    ref: HTMLAnchorElement;
+    stylesNames: HeaderDocAnchorStyleNames;
+    compound: true;
+}>;
+
+const defaultProps: Partial<HeaderDocAnchorProps> = {
+    position: 'right',
+    children: <QuestionSize16Px height={16} />,
+};
+
+export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => {
+    const props = useProps('PlasmaHeaderActions', defaultProps, _props);
+    const {className, classNames, styles, style, children, label, position, vars, ...others} = props;
+
+    const ctx = useHeaderContext();
 
     return (
         <Tooltip
-            className={cx(className, HeaderDocAnchorClasses.tooltip)}
-            label={docLinkTooltipLabel}
-            disabled={!docLinkTooltipLabel}
-            {...others}
+            label={label}
+            disabled={!label}
+            position={position}
+            classNames={{tooltip: ctx.getStyles('docAnchorTooltip', {classNames, styles, props}).className}}
         >
-            <Anchor className={HeaderDocAnchorClasses.anchor} inline href={docLink} target="_blank">
+            <Anchor
+                ref={ref}
+                inline
+                target="_blank"
+                {...ctx.getStyles('docAnchor', {classNames, styles, props, style, className})}
+                {...others}
+            >
                 {children}
             </Anchor>
         </Tooltip>
     );
-};
+});

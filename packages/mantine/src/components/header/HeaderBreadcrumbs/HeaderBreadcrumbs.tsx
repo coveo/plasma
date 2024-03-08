@@ -1,13 +1,32 @@
-import {Breadcrumbs, BreadcrumbsProps} from '@mantine/core';
-import {FunctionComponent} from 'react';
-import HeaderBreadcumbsClasses from './HeaderBreadcrumbs.module.css';
+import {Breadcrumbs, BreadcrumbsProps, CompoundStylesApiProps, Factory, factory} from '@mantine/core';
+import {useHeaderContext} from '../Header.context';
 
-export type HeaderBreadcrumbsProps = BreadcrumbsProps;
-export const HeaderBreadcrumbs: FunctionComponent<HeaderBreadcrumbsProps> = ({children, ...others}) => (
-    <Breadcrumbs
-        classNames={{breadcrumb: HeaderBreadcumbsClasses.breadcrumb, separator: HeaderBreadcumbsClasses.separator}}
-        {...others}
-    >
-        {children}
-    </Breadcrumbs>
-);
+export type HeaderBreadcrumbsStyleNames = 'breadcrumbsRoot' | 'breadcrumbsSeparator';
+export interface HeaderBreadcrumbsProps
+    extends Omit<BreadcrumbsProps, 'classNames' | 'styles' | 'vars'>,
+        CompoundStylesApiProps<HeaderBreadcrumbsFactory> {}
+
+export type HeaderBreadcrumbsFactory = Factory<{
+    props: BreadcrumbsProps;
+    ref: HTMLDivElement;
+    stylesNames: HeaderBreadcrumbsStyleNames;
+    compound: true;
+}>;
+
+export const HeaderBreadcrumbs = factory<HeaderBreadcrumbsFactory>((props, ref) => {
+    const {children, className, classNames, styles, style, ...others} = props;
+    const ctx = useHeaderContext();
+
+    return (
+        <Breadcrumbs
+            ref={ref}
+            classNames={{
+                breadcrumb: ctx.getStyles('breadcrumbsRoot', {className, classNames, styles, style, props}).className,
+                separator: ctx.getStyles('breadcrumbsSeparator', {classNames, styles, props}).className,
+            }}
+            {...others}
+        >
+            {children}
+        </Breadcrumbs>
+    );
+});
