@@ -59,6 +59,7 @@
 .headerGridInner {
     flex-direction: row-reverse;
     flex-wrap: wrap-reverse;
+    margin: 0;
 }
 
 .headerCol {
