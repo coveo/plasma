@@ -1,22 +1,19 @@
 .root {
+    color: var(--mantine-color-gray-6);
     line-height: var(--mantine-line-height);
     border-radius: var(--mantine-radius-default) 0px 0px var(--mantine-radius-default);
+
     &[data-active] {
-        background-color: var(--mantine-color-action-1);
+        color: var(--mantine-primary-color-6);
+        background-color: var(--mantine-primary-color-1);
     }
     @mixin hover {
         @mixin light {
-            background-color: var(--mantine-color-gray-1);
-            &[data-active] {
-                background-color: var(--mantine-color-action-1);
+            &:where(:not([data-active])) {
+                background-color: var(--mantine-color-gray-1);
             }
         }
     }
-}
-
-.section,
-.body {
-    color: var(--mantine-color-gray-6);
 }
 
 .label {
@@ -24,13 +21,6 @@
 }
 
 .children {
-    & a {
-        &[data-active] {
-            & .label {
-                color: var(--mantine-color-action-6);
-            }
-        }
-    }
     & .label {
         font-weight: 300;
     }
