@@ -13,6 +13,7 @@ const TABLE_ID: string = 'withServerTableId';
 const ServerTableComposed = compose<any>(withServerSideProcessing, tableWithUrlState)(TableHOC);
 
 const Demo = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [users, _totalEntries, fetchUsers] = useAPIMock();
 
     const updateUrl = (query: string) => {
