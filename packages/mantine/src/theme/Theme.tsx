@@ -242,15 +242,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Combobox: Combobox.extend({
             classNames: {option: SelectClasses.option},
         }),
-        NavLink: NavLink.extend({
-            classNames: {
-                root: NavLinkClasses.root,
-                label: NavLinkClasses.label,
-                section: NavLinkClasses.section,
-                body: NavLinkClasses.body,
-                children: NavLinkClasses.children,
-            },
-        }),
+        NavLink: NavLink.extend({classNames: NavLinkClasses}),
         AppShellNavbar: AppShellNavbar.extend({
             classNames: {navbar: AppShellNavBarClasses.navbar},
         }),
