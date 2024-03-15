@@ -1,4 +1,4 @@
-import {ArrowHeadDownSize24Px, ArrowHeadUpSize24Px} from '@coveord/plasma-react-icons';
+import {ArrowHeadDownSize16Px, ArrowHeadUpSize16Px} from '@coveord/plasma-react-icons';
 import {Factory, factory, useProps} from '@mantine/core';
 import {CellContext, ColumnDef} from '@tanstack/table-core';
 import {MouseEvent as ReactMouseEvent, ReactNode} from 'react';
@@ -54,8 +54,8 @@ type TableCollapsibleColumnFactory = Factory<{
 }>;
 
 const defaultProps: Partial<CollapsibleIconProps> = {
-    iconExpanded: <ArrowHeadUpSize24Px height={24} />,
-    iconCollapsed: <ArrowHeadDownSize24Px height={24} />,
+    iconExpanded: <ArrowHeadUpSize16Px height={16} />,
+    iconCollapsed: <ArrowHeadDownSize16Px height={16} />,
 };
 
 const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
@@ -76,6 +76,7 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
             ref={ref}
             onClick={onClick}
             variant="subtle"
+            color="gray"
             radius="sm"
             {...ctx.getStyles('collapsibleIcon', {className, classNames, styles, style})}
             {...others}
