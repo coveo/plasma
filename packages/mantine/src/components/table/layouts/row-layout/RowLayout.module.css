@@ -3,9 +3,6 @@
         border-color: var(--mantine-color-gray-4);
         pointer-events: auto;
         cursor: default;
-        & + svg {
-            color: inherit;
-        }
     }
 
     &[data-selectable='false'] input[type='checkbox'] {
