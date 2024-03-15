@@ -82,7 +82,7 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
                 mb="md"
                 rightSection={
                     filter ? (
-                        <ActionIcon onClick={handleClear}>
+                        <ActionIcon onClick={handleClear} c="gray" variant="subtle">
                             <CrossSize16Px height={16} />
                         </ActionIcon>
                     ) : (
