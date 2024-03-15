@@ -1,4 +1,4 @@
-import {CheckSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
+import {CheckSize16Px, FilterSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
     ActionIcon,
@@ -10,6 +10,7 @@ import {
     Checkbox,
     ColorSwatch,
     Combobox,
+    ComboboxSearch,
     Divider,
     InputWrapper,
     List,
@@ -43,6 +44,7 @@ import AppShellNavBarClasses from '../styles/AppShellNavBar.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
+import ComboboxClasses from '../styles/Combobox.module.css';
 import DatePickerClasses from '../styles/DatePicker.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
@@ -245,7 +247,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: {input: SelectClasses.input, option: SelectClasses.option},
         }),
         Combobox: Combobox.extend({
-            classNames: {option: SelectClasses.option},
+            classNames: {option: SelectClasses.option, search: ComboboxClasses.search},
+        }),
+        ComboboxSearch: ComboboxSearch.extend({
+            defaultProps: {
+                placeholder: 'Search...',
+                rightSection: <FilterSize16Px height={16} color="gray.5" />,
+            },
         }),
         NavLink: NavLink.extend({classNames: NavLinkClasses}),
         AppShellNavbar: AppShellNavbar.extend({
