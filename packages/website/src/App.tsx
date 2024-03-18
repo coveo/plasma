@@ -1,10 +1,9 @@
+import {AppShell, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
-import {AppShell, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import {Provider} from 'react-redux';
 import {Outlet} from 'react-router-dom';
-import {resolver} from './CSSVariableResolver';
 import {Navigation} from './Navigation';
 import {Store} from './Store';
 import TopBar from './TopBar';
@@ -23,7 +22,7 @@ import './styles/tile.css';
 const App = () => (
     <EngineProvider>
         <Provider store={Store}>
-            <Plasmantine resolver={resolver}>
+            <Plasmantine>
                 <Notifications position="top-center" />
                 <AppShell navbar={{width: 245, breakpoint: undefined}} header={{height: 100}}>
                     <AppShell.Header>

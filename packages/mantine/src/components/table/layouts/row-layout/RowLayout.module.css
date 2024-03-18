@@ -26,7 +26,7 @@
             background-color: var(--mantine-color-gray-1);
         }
         @mixin dark {
-            background-color: rgba(var(--mantine-color-primary-7), 0.2);
+            background-color: rgba(var(--mantine-primary-color-7), 0.2);
         }
     }
 
@@ -45,7 +45,7 @@
                 background-color: var(--mantine-color-gray-1);
             }
             @mixin dark {
-                background-color: rgba(var(--mantine-color-primary-7), 0.2);
+                background-color: rgba(var(--mantine-primary-color-7), 0.2);
             }
         }
         &[data-multi-selection='true'] {
@@ -74,6 +74,6 @@
     }
     @mixin dark {
         border-bottom: rem(1) solid var(--mantine-color-dark-4);
-        background-color: rgba(var(--mantine-color-primary-7), 0.2);
+        background-color: rgba(var(--mantine-primary-color-7), 0.2);
     }
 }
