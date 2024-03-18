@@ -38,6 +38,7 @@
 /* Table.Filter */
 .filterWrapper {
     margin-bottom: 0 !important;
+    width: 20rem;
 }
 .filterEmpty {
     color: var(--mantine-color-gray-4);
@@ -113,7 +114,6 @@
 /* Table.Predicate */
 .predicateLabel {
     font-size: var(--mantine-font-size-sm);
-    font-weight: 300;
 }
 
 /* Table.ColumnsSelector */
