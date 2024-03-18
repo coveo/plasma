@@ -1,12 +1,10 @@
 .search {
-    &.input {
-        margin: 0;
-        border-radius: 8;
-        border: '1px solid';
-        width: '100%';
-        bordercolor: var(--mantine-color-gray-4);
-        &:focus {
-            bordercolor: var(--mantine-color-primary);
-        }
+    margin: 0;
+    border-radius: 8px;
+    border: 1px solid;
+    width: 100%;
+    border-color: var(--mantine-color-gray-4);
+    &:focus {
+        border-color: var(--mantine-primary-color-filled);
     }
 }
