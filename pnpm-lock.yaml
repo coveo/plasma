@@ -601,8 +601,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       react-redux:
-        specifier: 8.1.2
-        version: 8.1.2(@types/react-dom@18.2.7)(@types/react@18.2.23)(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)(redux@4.2.1)
+        specifier: 9.1.0
+        version: 9.1.0(@types/react@18.2.23)(react-native@0.72.6)(react@18.2.0)(redux@4.2.1)
       redux:
         specifier: 4.2.1
         version: 4.2.1
@@ -866,7 +866,7 @@ importers:
         version: 2.6.6(@coveo/headless@2.37.0)(encoding@0.1.13)(postcss@8.4.31)(react-dom@18.2.0)(react@18.2.0)
       '@coveo/headless':
         specifier: 2.37.0
-        version: 2.37.0(encoding@0.1.13)(pino-pretty@10.2.3)(react-native@0.72.6)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1)
+        version: 2.37.0(encoding@0.1.13)(pino-pretty@10.2.3)(react-native@0.72.6)(react-redux@9.1.0)(react@18.2.0)(redux@4.2.1)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -985,8 +985,8 @@ importers:
         specifier: 8.0.7
         version: 8.0.7(@types/react@18.2.23)(react@18.2.0)
       react-redux:
-        specifier: 8.1.2
-        version: 8.1.2(@types/react-dom@18.2.7)(@types/react@18.2.23)(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)(redux@4.2.1)
+        specifier: 9.1.0
+        version: 9.1.0(@types/react@18.2.23)(react-native@0.72.6)(react@18.2.0)(redux@4.2.1)
       react-router-dom:
         specifier: 6.16.0
         version: 6.16.0(react-dom@18.2.0)(react@18.2.0)
@@ -2800,7 +2800,7 @@ packages:
       react-dom: '>=18.0.0'
     dependencies:
       '@coveo/atomic': 2.47.0(@coveo/headless@2.37.0)(encoding@0.1.13)(postcss@8.4.31)
-      '@coveo/headless': 2.37.0(encoding@0.1.13)(pino-pretty@10.2.3)(react-native@0.72.6)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1)
+      '@coveo/headless': 2.37.0(encoding@0.1.13)(pino-pretty@10.2.3)(react-native@0.72.6)(react-redux@9.1.0)(react@18.2.0)(redux@4.2.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -2815,7 +2815,7 @@ packages:
       '@coveo/headless': 2.37.0
     dependencies:
       '@coveo/bueno': 0.44.3
-      '@coveo/headless': 2.37.0(encoding@0.1.13)(pino-pretty@10.2.3)(react-native@0.72.6)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1)
+      '@coveo/headless': 2.37.0(encoding@0.1.13)(pino-pretty@10.2.3)(react-native@0.72.6)(react-redux@9.1.0)(react@18.2.0)(redux@4.2.1)
       '@popperjs/core': 2.11.8
       '@salesforce-ux/design-system': 2.22.0(postcss@8.4.31)
       '@stencil/core': 4.6.0
@@ -2837,7 +2837,7 @@ packages:
     resolution: {integrity: sha512-w4kiWJkwuOSx57wdTKdUjVlGhnH98SnVq3wYggmWjl7Mj1lRMrb1bQkswiIbIMtxHJ5p05+J2doSRoE8zTjnFA==}
     dev: false
 
-  /@coveo/headless@2.37.0(encoding@0.1.13)(pino-pretty@10.2.3)(react-native@0.72.6)(react-redux@8.1.2)(react@18.2.0)(redux@4.2.1):
+  /@coveo/headless@2.37.0(encoding@0.1.13)(pino-pretty@10.2.3)(react-native@0.72.6)(react-redux@9.1.0)(react@18.2.0)(redux@4.2.1):
     resolution: {integrity: sha512-FtZQLWx9ba5iYD8Tiu0jcOJzzv4oPcJ6JQLUxKUVtiQ9LFqEI5nvkYK2dUjh3JAPl1S8dZ5tvjz+i3HExQ7GCw==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -2847,7 +2847,7 @@ packages:
       '@coveo/bueno': 0.44.3
       '@coveo/relay': 0.6.2
       '@microsoft/fetch-event-source': 2.0.1
-      '@reduxjs/toolkit': 1.9.7(react-redux@8.1.2)(react@18.2.0)
+      '@reduxjs/toolkit': 1.9.7(react-redux@9.1.0)(react@18.2.0)
       '@types/redux-mock-store': 1.0.5
       abab: 2.0.6
       coveo.analytics: 2.28.20(encoding@0.1.13)(react-native@0.72.6)
@@ -4436,7 +4436,7 @@ packages:
       redux: 4.2.1
     dev: false
 
-  /@reduxjs/toolkit@1.9.7(react-redux@8.1.2)(react@18.2.0):
+  /@reduxjs/toolkit@1.9.7(react-redux@9.1.0)(react@18.2.0):
     resolution: {integrity: sha512-t7v8ZPxhhKgOKtU+uyJT13lu4vL7az5aFi4IdoDs/eS548edn2M8Ik9h8fxgvMjGoAUVFSt6ZC1P5cWmQ014QQ==}
     peerDependencies:
       react: ^16.9.0 || ^17.0.0 || ^18
@@ -4449,7 +4449,7 @@ packages:
     dependencies:
       immer: 9.0.21
       react: 18.2.0
-      react-redux: 8.1.2(@types/react-dom@18.2.7)(@types/react@18.2.23)(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)(redux@4.2.1)
+      react-redux: 9.1.0(@types/react@18.2.23)(react-native@0.72.6)(react@18.2.0)(redux@4.2.1)
       redux: 4.2.1
       redux-thunk: 2.4.2(redux@4.2.1)
       reselect: 4.1.8
@@ -5477,12 +5477,6 @@ packages:
       '@types/unist': 2.0.8
     dev: false
 
-  /@types/hoist-non-react-statics@3.3.1:
-    resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
-    dependencies:
-      '@types/react': 18.2.23
-      hoist-non-react-statics: 3.3.2
-
   /@types/http-cache-semantics@4.0.2:
     resolution: {integrity: sha512-FD+nQWA2zJjh4L9+pFXqWOi0Hs1ryBCfI+985NjluQ1p8EYtoLvjLOKidXBtZ4/IcxDX4o8/E8qDS3540tNliw==}
     dev: true
@@ -5643,6 +5637,7 @@ packages:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
       '@types/react': 18.2.23
+    dev: true
 
   /@types/react-modal@3.16.0:
     resolution: {integrity: sha512-iphdqXAyUfByLbxJn5j6d+yh93dbMgshqGP0IuBeaKbZXx0aO+OXsvEkt6QctRdxjeM9/bR+Gp3h9F9djVWTQQ==}
@@ -15690,36 +15685,24 @@ packages:
     resolution: {integrity: sha512-kzmNjIgU32mO4mmH5+iUyrqlpFQhF8K2k7eZ4fdLSOPFrD1XgEuSBv9LDEgxRXTMBqMd8ppT0x6TIzqE5pdGdw==}
     dev: false
 
-  /react-redux@8.1.2(@types/react-dom@18.2.7)(@types/react@18.2.23)(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)(redux@4.2.1):
-    resolution: {integrity: sha512-xJKYI189VwfsFc4CJvHqHlDrzyFTY/3vZACbE+rr/zQ34Xx1wQfB4OTOSeOSNrF6BDVe8OOdxIrAnMGXA3ggfw==}
+  /react-redux@9.1.0(@types/react@18.2.23)(react-native@0.72.6)(react@18.2.0)(redux@4.2.1):
+    resolution: {integrity: sha512-6qoDzIO+gbrza8h3hjMA9aq4nwVFCKFtY2iLxCtVT38Swyy2C/dJCGBXHeHLtx6qlg/8qzc2MrhOeduf5K32wQ==}
     peerDependencies:
       '@types/react': ^18.0
-      '@types/react-dom': ^18.0
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
-      react-native: '>=0.59'
-      redux: ^4 || ^5.0.0-beta.0
+      react: ^18.0
+      react-native: '>=0.69'
+      redux: ^5.0.0
     peerDependenciesMeta:
       '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
-      react-dom:
         optional: true
       react-native:
         optional: true
       redux:
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.1
-      '@types/hoist-non-react-statics': 3.3.1
       '@types/react': 18.2.23
-      '@types/react-dom': 18.2.7
       '@types/use-sync-external-store': 0.0.3
-      hoist-non-react-statics: 3.3.2
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-is: 18.2.0
       react-native: 0.72.6(@babel/core@7.23.3)(@babel/preset-env@7.23.2)(encoding@0.1.13)(react@18.2.0)
       redux: 4.2.1
       use-sync-external-store: 1.2.0(react@18.2.0)
