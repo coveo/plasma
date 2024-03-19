@@ -5,8 +5,8 @@
 
     &[data-active] {
         color: var(--mantine-primary-color-6);
-        background-color: var(--mantine-primary-color-1);
     }
+
     @mixin hover {
         @mixin light {
             &:where(:not([data-active])) {

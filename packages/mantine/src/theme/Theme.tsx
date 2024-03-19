@@ -195,6 +195,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Badge: Badge.extend({
             classNames: {root: BadgeClasses.root},
+            defaultProps: {
+                variant: 'light',
+            },
         }),
         ColorSwatch: ColorSwatch.extend({
             defaultProps: {
