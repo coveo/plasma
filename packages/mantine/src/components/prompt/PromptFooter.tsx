@@ -4,5 +4,7 @@ import {StickyFooter, StickyFooterProps} from '../sticky-footer';
 export interface PromptFooterProps extends StickyFooterProps {}
 
 export const PromptFooter: FunctionComponent<PropsWithChildren<PromptFooterProps>> = ({children, ...otherProps}) => (
-    <StickyFooter {...otherProps}>{children}</StickyFooter>
+    <StickyFooter p={0} {...otherProps}>
+        {children}
+    </StickyFooter>
 );

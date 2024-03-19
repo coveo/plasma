@@ -1,43 +1,22 @@
-import {
-    Box,
-    BoxProps,
-    Divider,
-    Factory,
-    Group,
-    MantineSpacing,
-    StylesApiProps,
-    factory,
-    useProps,
-    useStyles,
-} from '@mantine/core';
+import {Factory, Group, GroupProps, StylesApiProps, factory, useProps, useStyles} from '@mantine/core';
+import clsx from 'clsx';
 import {ReactNode} from 'react';
 import classes from './StickyFooter.module.css';
-import {StickyFooterProvider} from './StickyFooterContext';
 
-export interface StickyFooterProps extends BoxProps, StylesApiProps<StickyFooterFactory> {
+export interface StickyFooterProps
+    extends Omit<GroupProps, 'classNames' | 'styles' | 'vars'>,
+        StylesApiProps<StickyFooterFactory> {
     /**
      * Whether a border is render on top of the footer
      */
     borderTop?: boolean;
-    /**
-     * Position of the children within the footer
-     *
-     * @default 'right'
-     */
-    justify?: 'right' | 'left' | 'center' | 'apart';
-    /**
-     * Defines the spacing between footer children
-     *
-     * @default 'sm'
-     */
-    gap?: MantineSpacing;
     /**
      * Footer's children, usually buttons
      */
     children?: ReactNode;
 }
 
-export type StickyFooterStylesNames = 'root' | 'footer' | 'divider';
+export type StickyFooterStylesNames = 'root';
 
 export type StickyFooterFactory = Factory<{
     props: StickyFooterProps;
@@ -47,15 +26,12 @@ export type StickyFooterFactory = Factory<{
 
 const defaultProps: Partial<StickyFooterProps> = {
     gap: 'sm',
-    justify: 'right',
+    justify: 'flex-end',
 };
 
 export const StickyFooter = factory<StickyFooterFactory>((props, ref) => {
-    const {borderTop, justify, gap, children, className, classNames, style, styles, unstyled, ...others} = useProps(
-        'StickyFooter',
-        defaultProps,
-        props,
-    );
+    const {borderTop, justify, gap, children, className, classNames, style, styles, unstyled, vars, ...others} =
+        useProps('StickyFooter', defaultProps, props);
     const getStyles = useStyles<StickyFooterFactory>({
         name: 'StickyFooter',
         classes,
@@ -67,14 +43,18 @@ export const StickyFooter = factory<StickyFooterFactory>((props, ref) => {
         unstyled,
     });
 
+    const css = getStyles('root');
+
     return (
-        <StickyFooterProvider value={{getStyles}}>
-            <Box ref={ref} {...getStyles('root')} {...others}>
-                {borderTop ? <Divider size="xs" {...getStyles('divider')} /> : null}
-                <Group justify={justify} gap={gap} {...getStyles('footer')}>
-                    {children}
-                </Group>
-            </Box>
-        </StickyFooterProvider>
+        <Group
+            justify={justify}
+            gap={gap}
+            className={clsx(css.className, {[classes.border]: !!borderTop})}
+            style={css.style}
+            ref={ref}
+            {...others}
+        >
+            {children}
+        </Group>
     );
 });

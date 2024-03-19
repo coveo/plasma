@@ -5,10 +5,10 @@ const Demo = () => {
     const [opened, setOpened] = useState(false);
     return (
         <>
-            <Modal.Root size="lg" opened={opened} padding={0} onClose={() => setOpened(false)}>
+            <Modal.Root opened={opened} onClose={() => setOpened(false)}>
                 <Modal.Overlay />
                 <Modal.Content>
-                    <Modal.Header p="lg" style={{borderBottom: 'none'}}>
+                    <Modal.Header style={{borderBottom: 'none'}}>
                         <Modal.Title>
                             <Header variant="modal" description="Modal description">
                                 Modal Title
@@ -17,21 +17,17 @@ const Demo = () => {
                         </Modal.Title>
                         <Modal.CloseButton />
                     </Modal.Header>
-                    <Tabs defaultValue="tab-1" mih={500}>
+                    <Tabs defaultValue="tab-1">
                         <Tabs.List pl="lg">
                             <Tabs.Tab value="tab-1">Tab 1</Tabs.Tab>
                             <Tabs.Tab value="tab-2">Tab 2</Tabs.Tab>
                             <Tabs.Tab value="tab-3">Tab 3</Tabs.Tab>
                         </Tabs.List>
-                        <Tabs.Panel value="tab-1" p="lg">
-                            Tab 1 content
-                        </Tabs.Panel>
-                        <Tabs.Panel value="tab-2" p="lg">
-                            Tab 2 content
-                        </Tabs.Panel>
-                        <Tabs.Panel value="tab-3" p="lg">
-                            Tab 3 content
-                        </Tabs.Panel>
+                        <Modal.Body mih={500} pt="lg">
+                            <Tabs.Panel value="tab-1">Tab 1 content</Tabs.Panel>
+                            <Tabs.Panel value="tab-2">Tab 2 content</Tabs.Panel>
+                            <Tabs.Panel value="tab-3">Tab 3 content</Tabs.Panel>
+                        </Modal.Body>
                     </Tabs>
                     <StickyFooter borderTop>
                         <Button variant="outline" onClick={() => setOpened(false)}>

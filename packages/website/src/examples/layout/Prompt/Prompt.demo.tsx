@@ -6,7 +6,7 @@ const Demo = () => {
 
     return (
         <>
-            <Prompt variant="warning" opened={opened} title={'Prompt title'} onClose={() => setOpened(false)}>
+            <Prompt variant="warning" opened={opened} title="Prompt title" onClose={() => setOpened(false)}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim.
                 <Prompt.Footer>
