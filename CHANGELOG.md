@@ -1,3 +1,26 @@
+## 52.27.2-next.4 (2024-03-19)
+
+
+### Bug Fixes
+
+* **line height:** 1.5 (#3639) 9ddd101, closes #3639
+* **mantine table:** header row svg (#3635) 5c01b9d, closes #3635
+* **mantine:** adjust NavLink styles (#3638) 6cbab8c, closes #3638
+* **mantine:** table collapsible icon size and color (#3637) 6481bca, closes #3637
+* **mantine:** table header margin problem (#3636) 78acdc0, closes #3636
+* **plasma react table:** pagination style (#3631) 207a3ec, closes #3631
+* **popover:** zindex (#3642) ec5bfb3, closes #3642
+* **style:** lintfix (#3630) 3f5b0b6, closes #3630
+* **table filter:** clear button subtle (#3640) 9a75cdb, closes #3640
+* **tabs:** fixed the typo in css variable (#3643) 4fb106a, closes #3643
+
+
+### Features
+
+* **stickyFooter:** adjust padding (#3633) 7763e3c, closes #3633
+
+
+
 ## 52.27.2-next.3 (2024-03-08)
 
 
