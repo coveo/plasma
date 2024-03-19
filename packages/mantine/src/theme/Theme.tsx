@@ -14,6 +14,7 @@ import {
     InputWrapper,
     List,
     Loader,
+    LoadingOverlay,
     MantineThemeOverride,
     MenuItem,
     Modal,
@@ -116,6 +117,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Button: Button.extend({
             classNames: {root: ButtonClasses.root, label: ButtonClasses.label},
         }),
+        LoadingOverlay: LoadingOverlay.extend({
+            defaultProps: {zIndex: 1400},
+        }),
         Modal: Modal.extend({
             classNames: {
                 root: ModalClasses.root,
@@ -184,6 +188,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 shadow: 'md',
                 withArrow: true,
+                zIndex: 1300,
             },
         }),
         Badge: Badge.extend({
