@@ -79,6 +79,10 @@ export type PlasmaTableFactory = Factory<{
 
 const defaultProps: Partial<TableProps<unknown>> = {
     layouts: [TableLayouts.Rows as TableLayout],
+    loading: false,
+    multiRowSelectionEnabled: false,
+    initialState: {},
+    options: {},
 };
 
 export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
@@ -87,19 +91,19 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         getRowId,
         noDataChildren,
         getExpandChildren,
-        initialState = {},
+        initialState,
         columns,
         layouts,
         onMount,
         onChange,
         children,
-        loading = false,
+        loading,
         doubleClickAction,
         multiRowSelectionEnabled,
         disableRowSelection,
         onRowSelectionChange,
         additionalRootNodes,
-        options = {},
+        options,
         ref,
 
         // Style props
