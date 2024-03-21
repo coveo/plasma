@@ -1,3 +1,14 @@
+## 52.27.2-next.5 (2024-03-21)
+
+
+### Bug Fixes
+
+* **mantine:** add custom css variable resolver (#3650) a63144c, closes #3650
+* **mantine:** modal spacing (#3647) 9870c51, closes #3647
+* **reset:** line-height (#3648) 4db5265, closes #3648
+
+
+
 ## 52.27.2-next.4 (2024-03-19)
 
 
