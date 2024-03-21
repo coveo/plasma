@@ -1,4 +1,5 @@
 import {Pagination} from '@mantine/core';
+import {useDidUpdate} from '@mantine/hooks';
 import {FunctionComponent} from 'react';
 
 import {useTable} from '../TableContext';
@@ -6,6 +7,7 @@ import {TablePaginationProps} from './TablePagination.types';
 
 export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalPages, onPageChange}) => {
     const {state, setState, containerRef, getPageCount} = useTable();
+
     const updatePage = (newPage: number) => {
         onPageChange?.(newPage - 1);
         setState((prevState) => ({
@@ -16,6 +18,12 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalP
     };
 
     const total = totalPages === null ? getPageCount() : totalPages;
+
+    useDidUpdate(() => {
+        if (state.pagination.pageIndex + 1 > total && total > 0) {
+            updatePage(total);
+        }
+    }, [state.pagination.pageIndex, total]);
 
     return (
         <Pagination
