@@ -162,6 +162,7 @@ export const ModalWizard: ModalWizardType = ({
                 p="lg"
                 pr="md"
                 variant="modal"
+                align="flex-start"
                 description={resolveStepDependentProp('description')}
                 borderBottom={!currentStep.props.showProgressBar}
             >

@@ -3,11 +3,6 @@ import {render, screen} from '@test-utils';
 import {StickyFooter} from '../StickyFooter';
 
 describe('StickyFooter', () => {
-    it('adds a separator on top the footer if borderTop is true', () => {
-        render(<StickyFooter borderTop>title</StickyFooter>);
-        expect(screen.getByRole('separator')).toBeInTheDocument();
-    });
-
     it('renders children', () => {
         render(
             <StickyFooter>

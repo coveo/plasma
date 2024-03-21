@@ -1,47 +1,38 @@
 .root {
-    &[data-variant]&[data-size] {
-        & .title {
-            color: var(--mantine-color-white);
-        }
-        & .body {
-            padding: 0;
-        }
-    }
     &[data-variant='success']&[data-size] {
-        & .header {
+        .header {
             background-color: var(--mantine-color-lime-6);
         }
     }
     &[data-variant='warning']&[data-size] {
-        & .header {
+        .header {
             background-color: var(--mantine-color-yellow-5);
         }
     }
     &[data-variant='critical']&[data-size] {
-        & .header {
+        .header {
             background-color: var(--mantine-color-red-6);
         }
     }
     &[data-variant='info']&[data-size] {
-        & .header {
+        .header {
             background-color: var(--mantine-color-navy-5);
         }
     }
 }
-.modalType {
-    overflow: hidden;
-    width: 550;
+
+.title {
+    color: var(--mantine-color-white);
 }
-.innerBody {
-    padding: var(--mantine-spacing-md) var(--mantine-spacing-xl) var(--mantine-spacing-lg);
-}
+
 .header {
-    padding: var(--mantine-spacing-md) var(--mantine-spacing-xl);
     width: 100%;
-    border-bottom: `1px solid var(--mantine-color-gray-3);
+    border-bottom: 1px solid var(--mantine-color-gray-3);
     font-size: var(--mantine-h3-font-size);
     line-height: var(--mantine-h3-line-height);
     overflow-wrap: anywhere;
+    padding-top: var(--mantine-spacing-md);
+    padding-bottom: var(--mantine-spacing-md);
 }
 
 .whiteClose {

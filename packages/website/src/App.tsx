@@ -1,6 +1,7 @@
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
+
 import {AppShell, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import {Provider} from 'react-redux';
 import {Outlet} from 'react-router-dom';

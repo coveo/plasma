@@ -1,70 +1,48 @@
 .root {
     &[data-full-screen] {
-        & .content {
+        .content {
             flex: 0 0 100%;
-        }
-        & .body {
-            padding-top: var(--mantine-spacing-md);
         }
     }
     &[data-size='xs'] {
-        & .content {
+        .content {
             flex: 0 0 rem(432px);
-        }
-        & .body {
-            padding-top: var(--mantine-spacing-xs);
         }
     }
     &[data-size='sm'] {
-        & .content {
+        .content {
             flex: 0 0 rem(664px);
-        }
-        & .body {
-            padding-top: var(--mantine-spacing-sm);
         }
     }
     &[data-size='md'] {
-        & .content {
+        .content {
             flex: 0 0 rem(896px);
-        }
-        & .body {
-            padding-top: var(--mantine-spacing-md);
         }
     }
     &[data-size='lg'] {
-        & .content {
+        .content {
             flex: 0 0 rem(1120px);
-        }
-        & .body {
-            padding-top: var(--mantine-spacing-lg);
         }
     }
     &[data-size='xl'] {
-        & .content {
+        .content {
             flex: 0 0 rem(88%);
-        }
-        & .body {
-            padding-top: var(--mantine-spacing-xl);
         }
     }
     &:not([data-size]) {
-        & .content {
+        .content {
             flex: 0 0 rem(896px);
         }
-        & .body {
-            padding-top: var(--mantine-spacing-md);
-        }
-    }
-    & .body {
-        font-size: var(--mantine-font-size-md);
     }
 }
 
 .content {
     overflow: auto;
 }
+
 .header {
     border-bottom: 1px solid var(--mantine-color-gray-3);
+    align-items: flex-start;
 }
 
 .title {
@@ -72,10 +50,4 @@
     font-size: var(--mantine-h3-font-size);
     line-height: var(--mantine-h3-line-height);
     font-weight: 500;
-}
-
-.body {
-    line-height: 1.5;
-    font-size: rem(1);
-    font-weight: 300;
 }

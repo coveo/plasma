@@ -1,4 +1,4 @@
-import {CheckSize16Px, FilterSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
+import {CheckSize16Px, CrossSize16Px, FilterSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
     ActionIcon,
@@ -8,6 +8,7 @@ import {
     Badge,
     Button,
     Checkbox,
+    CloseButton,
     ColorSwatch,
     Combobox,
     ComboboxSearch,
@@ -19,7 +20,6 @@ import {
     MantineThemeOverride,
     MenuItem,
     Modal,
-    ModalOverlay,
     NavLink,
     Notification,
     Popover,
@@ -122,19 +122,23 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         LoadingOverlay: LoadingOverlay.extend({
             defaultProps: {zIndex: 1400},
         }),
-        Modal: Modal.extend({
-            classNames: {
-                root: ModalClasses.root,
-                content: ModalClasses.content,
-                title: ModalClasses.title,
-                header: ModalClasses.header,
-                body: ModalClasses.body,
+        CloseButton: CloseButton.extend({
+            defaultProps: {
+                icon: <CrossSize16Px height={16} />,
             },
         }),
-        ModalOverlay: ModalOverlay.extend({
+        Modal: Modal.extend({
+            classNames: ModalClasses,
+        }),
+        ModalRoot: Modal.Root.extend({
+            defaultProps: {
+                padding: 'lg',
+            },
+        }),
+        ModalOverlay: Modal.Overlay.extend({
             defaultProps: {
                 color: color.primary.navy[9],
-                opacity: 0.9,
+                backgroundOpacity: 0.9,
             },
         }),
         InputWrapper: InputWrapper.extend({
