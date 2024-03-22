@@ -2,12 +2,6 @@
     position: relative;
 }
 .item {
-    @mixin light {
-        background-color: var(--mantine-color-white);
-    }
-    @mixin dark {
-        background-color: var(--mantine-color-black);
-    }
     align-items: baseline;
     &[data-isdragging='true'] {
         box-shadow: var(--mantine-shadow-md);

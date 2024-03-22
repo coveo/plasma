@@ -22,12 +22,7 @@
         padding-left: 40px;
     }
     @mixin hover {
-        @mixin light {
-            background-color: var(--mantine-color-gray-1);
-        }
-        @mixin dark {
-            background-color: rgba(var(--mantine-primary-color-7), 0.2);
-        }
+        background-color: var(--mantine-color-gray-1);
     }
 
     &[data-selectable='false'] input[type='checkbox'] {
@@ -41,12 +36,7 @@
     }
     &[data-selected='true'] {
         &[data-multi-selection='false'] {
-            @mixin light {
-                background-color: var(--mantine-color-gray-1);
-            }
-            @mixin dark {
-                background-color: rgba(var(--mantine-primary-color-7), 0.2);
-            }
+            background-color: var(--mantine-color-gray-1);
         }
         &[data-multi-selection='true'] {
             background-color: transparent;
@@ -68,12 +58,6 @@
 }
 
 .collapsibleWrapper {
-    @mixin light {
-        border-bottom: rem(1) solid var(--mantine-color-gray-3);
-        background-color: var(--mantine-color-gray-1);
-    }
-    @mixin dark {
-        border-bottom: rem(1) solid var(--mantine-color-dark-4);
-        background-color: rgba(var(--mantine-primary-color-7), 0.2);
-    }
+    border-bottom: rem(1) solid var(--mantine-color-gray-3);
+    background-color: var(--mantine-color-gray-1);
 }

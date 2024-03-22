@@ -7,12 +7,6 @@
     top: 0;
     transition: box-shadow 150ms ease;
     z-index: 1;
-    @mixin light {
-        background-color: var(--mantine-color-white);
-    }
-    @mixin dark {
-        background-color: var(--mantine-color-black);
-    }
 
     &::after {
         content: '';
@@ -85,21 +79,12 @@
     &:last-of-type {
         padding-right: var(--mantine-spacing-xl);
     }
-    @mixin light {
-        background-color: var(--mantine-color-gray-0);
-    }
-    @mixin dark {
-        background-color: var(--mantine-color-gray-8);
-    }
+
+    background-color: var(--mantine-color-gray-0);
 
     &[data-control='true'] {
         @mixin hover {
-            @mixin light {
-                background-color: var(--mantine-color-gray-1);
-            }
-            @mixin dark {
-                background-color: var(--mantine-color-gray-7);
-            }
+            background-color: var(--mantine-color-gray-1);
         }
     }
 }
