@@ -1,3 +1,15 @@
+## 52.27.4 (2024-03-22)
+
+
+### Bug Fixes
+
+* **deps:** replace dependency redux-devtools-extension with @redux-devtools/extension 3.0.0 (#3615) 2e390f5, closes #3615
+* **mantine, table:** automatically update page when needed (#3652) 1115971, closes #3652
+* **plasma react table:** pagination style (#3631) 207a3ec, closes #3631
+* **style:** lintfix (#3630) 3f5b0b6, closes #3630
+
+
+
 ## 52.27.3 (2024-02-21)
 
 

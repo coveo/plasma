@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-mantine",
-    "version": "52.27.3",
+    "version": "52.27.4",
     "description": "A Plasma flavoured Mantine theme",
     "keywords": [
         "plasma",
@@ -30,10 +30,10 @@
         "build": "node ../../scripts/build",
         "clean": "rimraf dist",
         "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"src/**/*.{ts,tsx}\" --fix",
+        "prepublishOnly": "publint",
         "start": "node ../../scripts/start",
         "test": "TZ=UTC vitest run",
-        "test:watch": "TZ=UTC vitest",
-        "prepublishOnly": "publint"
+        "test:watch": "TZ=UTC vitest"
     },
     "dependencies": {
         "@coveord/plasma-react-icons": "workspace:*",
