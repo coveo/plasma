@@ -124,7 +124,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         CloseButton: CloseButton.extend({
             defaultProps: {
-                icon: <CrossSize16Px height={16} />,
+                icon: <CrossSize16Px height={16} aria-label="close" />,
             },
         }),
         Modal: Modal.extend({
