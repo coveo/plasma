@@ -1,3 +1,13 @@
+## 52.27.2-next.7 (2024-03-25)
+
+
+### Bug Fixes
+
+* **mantine:** add back modal body padding top (#3661) 5cb962f, closes #3661
+* **mantine:** button loading data attribute (#3660) 11459a1, closes #3660
+
+
+
 ## 52.27.2-next.6 (2024-03-25)
 
 
