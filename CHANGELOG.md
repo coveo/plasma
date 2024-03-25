@@ -1,3 +1,24 @@
+## 52.27.2-next.6 (2024-03-25)
+
+
+### Bug Fixes
+
+* **mantine:** adjust Input styles (#3659) c5edc49, closes #3659
+* **mantine:** table selected row highlight (#3653) 913a266, closes #3653
+* **table:** column sizing (#3658) 2d3b4d2, closes #3658
+
+
+### Features
+
+* **close-button:** +aria-label for unit tests purpose (#3657) e86892b, closes #3657
+
+
+### Reverts
+
+* Revert "fix(reset): line-height (#3648)" (#3656) 337b481, closes #3648 #3656
+
+
+
 ## 52.27.2-next.5 (2024-03-21)
 
 
