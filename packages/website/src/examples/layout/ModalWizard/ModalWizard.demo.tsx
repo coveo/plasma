@@ -6,7 +6,7 @@ const Demo = () => {
 
     return (
         <>
-            <Button onClick={() => setOpened(true)}> Open ModalWizard </Button>
+            <Button onClick={() => setOpened(true)}>Open ModalWizard</Button>
             <ModalWizard onClose={() => setOpened(false)} opened={opened} onFinish={() => setOpened(false)}>
                 <ModalWizard.Step
                     docLink="https://coveo.com"
