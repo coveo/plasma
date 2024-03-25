@@ -119,7 +119,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             vars: TextVars,
         }),
         Button: Button.extend({
-            classNames: {root: ButtonClasses.root, label: ButtonClasses.label},
+            classNames: ButtonClasses,
         }),
         LoadingOverlay: LoadingOverlay.extend({
             defaultProps: {zIndex: 1400},
