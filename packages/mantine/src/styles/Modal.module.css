@@ -51,3 +51,9 @@
     line-height: var(--mantine-h3-line-height);
     font-weight: 500;
 }
+
+.body {
+    &:where(:not(:only-child)) {
+        padding-top: var(--mb-padding, var(--mantine-spacing-md));
+    }
+}

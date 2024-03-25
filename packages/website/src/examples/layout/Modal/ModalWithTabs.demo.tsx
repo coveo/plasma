@@ -23,7 +23,7 @@ const Demo = () => {
                             <Tabs.Tab value="tab-2">Tab 2</Tabs.Tab>
                             <Tabs.Tab value="tab-3">Tab 3</Tabs.Tab>
                         </Tabs.List>
-                        <Modal.Body mih={500} pt="lg">
+                        <Modal.Body mih={500}>
                             <Tabs.Panel value="tab-1">Tab 1 content</Tabs.Panel>
                             <Tabs.Panel value="tab-2">Tab 2 content</Tabs.Panel>
                             <Tabs.Panel value="tab-3">Tab 3 content</Tabs.Panel>

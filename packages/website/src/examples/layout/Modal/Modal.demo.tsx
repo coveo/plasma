@@ -1,4 +1,4 @@
-import {Box, Button, Header, Modal, StickyFooter} from '@coveord/plasma-mantine';
+import {Button, Header, Modal, StickyFooter} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 const Demo = () => {
@@ -17,14 +17,11 @@ const Demo = () => {
                 }
                 onClose={() => setOpened(false)}
             >
-                <Box py="lg">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada
-                    id sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim.
-                    Phasellus lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit.
-                    Cras vitae ipsum sit amet nibh efficitur imperdiet. Praesent scelerisque erat est. Cras dictum
-                    sodales tellus sed pretium
-                </Box>
-                <StickyFooter p={0}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
+                sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim. Phasellus
+                lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit. Cras vitae ipsum
+                sit amet nibh efficitur imperdiet. Praesent scelerisque erat est. Cras dictum sodales tellus sed pretium
+                <StickyFooter p={0} pt="lg">
                     <Button variant="outline" onClick={() => setOpened(false)}>
                         Cancel
                     </Button>

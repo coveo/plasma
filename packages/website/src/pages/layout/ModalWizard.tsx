@@ -1,11 +1,11 @@
 import {ModalWizardMetadata} from '@coveord/plasma-components-props-analyzer';
-import ModalWizardDemo from '@examples/layout/ModalWizard/ModalWizard.demo';
+import ModalWizardDemo from '@examples/layout/ModalWizard/ModalWizard.demo?demo';
 import ModalWizardWithFormValidation from '@examples/layout/ModalWizard/ModalWizardWithFormValidation.demo?demo';
 import ModalWizardWithTooltip from '@examples/layout/ModalWizard/ModalWizardWithTooltip.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-export default () => (
+const DemoPage = () => (
     <PageLayout
         section="Layout"
         title="ModalWizard"
@@ -20,3 +20,5 @@ export default () => (
         }}
     />
 );
+
+export default DemoPage;

@@ -34,9 +34,7 @@ export const Prompt: PromptType = ({children, ...otherProps}) => {
 
     return (
         <Modal variant="prompt" classNames={{...classNames, ...classesProps}} size="sm" {...otherPropsWithoutClasses}>
-            <Box py="md" className={PromptClasses.innerBody}>
-                {otherChildren}
-            </Box>
+            <Box className={PromptClasses.innerBody}>{otherChildren}</Box>
             {footer}
         </Modal>
     );
