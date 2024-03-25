@@ -87,17 +87,19 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                                 row.getToggleSelectedHandler();
                             }
                         };
+
                         return (
                             <td
                                 key={cell.id}
                                 data-testid={cell.id}
+                                className={ctx.getStyles('cell', {classNames, styles}).className}
                                 style={{
-                                    width: columnSizing.size ?? 'auto',
-                                    minWidth: columnSizing.minSize,
-                                    maxWidth: columnSizing.maxSize,
+                                    width: `${columnSizing.size}px` ?? 'auto',
+                                    minWidth: `${columnSizing.minSize}px`,
+                                    maxWidth: `${columnSizing.maxSize}px`,
+                                    ...ctx.getStyles('cell', {classNames, styles}).style,
                                 }}
                                 data-collapsible-cell={cell.column.id === TableCollapsibleColumn.id}
-                                {...ctx.getStyles('cell', {classNames, styles})}
                                 onClick={onCollapsibleCellClick}
                             >
                                 <TableLoading visible={loading}>
