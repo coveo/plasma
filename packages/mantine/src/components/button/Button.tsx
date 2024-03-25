@@ -43,7 +43,7 @@ export const Button = polymorphicFactory<ButtonOverloadFactory>(
                     loading={isLoading || loading}
                     onClick={handleClick}
                     disabled={disabled}
-                    data-loading={isLoading || loading}
+                    data-loading={isLoading || loading || undefined}
                     {...others}
                 />
             </ButtonWithDisabledTooltip>
