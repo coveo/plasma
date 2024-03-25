@@ -7,9 +7,10 @@
     color: var(--mantine-color-gray-7);
     margin-bottom: var(--mantine-spacing-xs);
     line-height: var(--mantine-line-height);
+    font-weight: 300;
 }
 
 .error {
-    color: var(--mantine-color-red-9);
     line-height: var(--mantine-line-height);
+    font-weight: 300;
 }
