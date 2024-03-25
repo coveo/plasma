@@ -13,6 +13,7 @@ import {
     Combobox,
     ComboboxSearch,
     Divider,
+    Input,
     InputWrapper,
     List,
     Loader,
@@ -46,6 +47,7 @@ import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
 import DatePickerClasses from '../styles/DatePicker.module.css';
+import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
@@ -141,12 +143,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 backgroundOpacity: 0.9,
             },
         }),
+        Input: Input.extend({
+            classNames: InputClasses,
+        }),
         InputWrapper: InputWrapper.extend({
-            classNames: {
-                label: InputWrapperClasses.label,
-                description: InputWrapperClasses.description,
-                error: InputWrapperClasses.error,
-            },
+            classNames: InputWrapperClasses,
         }),
         TextInput: TextInput.extend({
             defaultProps: {
