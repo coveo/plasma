@@ -6,10 +6,11 @@ import {copyDemoFiles} from './copyDemoFiles';
 import {findTsxAndCssModule} from './findTsxAndCssModule';
 import {generatePage} from './generatePage';
 import {groupFilesByComponent} from './groupFilesByComponent';
+import packageJson from '../package.json';
 
 const cloneRepository = async (repoUrl: string, destinationFolder: string): Promise<void> => {
     const git: SimpleGit = simpleGit();
-    await git.clone(repoUrl, destinationFolder);
+    await git.clone(repoUrl, destinationFolder, ['-b', packageJson.dependencies['@mantine/core'], '--single-branch']);
 };
 
 const main = async (): Promise<void> => {
