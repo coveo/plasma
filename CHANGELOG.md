@@ -1,3 +1,13 @@
+## 52.27.2-next.8 (2024-03-26)
+
+
+### Bug Fixes
+
+* **mantine:** subtle button hover background color (#3662) e85df40, closes #3662
+* **website:** pin mantine version when cloning examples (#3663) 249de20, closes #3663
+
+
+
 ## 52.27.2-next.7 (2024-03-25)
 
 
