@@ -21,6 +21,7 @@ import {
     MantineThemeOverride,
     MenuItem,
     Modal,
+    MultiSelect,
     NavLink,
     Notification,
     Popover,
@@ -111,73 +112,23 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
             classNames: {title: AlertClasses.title},
         }),
-        Title: Title.extend({
-            classNames: {root: TitleClasses.root},
-        }),
-        Text: Text.extend({
-            classNames: TextClasses,
-            vars: TextVars,
-        }),
-        Button: Button.extend({
-            classNames: ButtonClasses,
-        }),
-        LoadingOverlay: LoadingOverlay.extend({
-            defaultProps: {zIndex: 1400},
-        }),
-        CloseButton: CloseButton.extend({
-            defaultProps: {
-                icon: <CrossSize16Px height={16} aria-label="close" />,
-            },
-        }),
-        Modal: Modal.extend({
-            classNames: ModalClasses,
-        }),
-        ModalRoot: Modal.Root.extend({
-            defaultProps: {
-                padding: 'lg',
-            },
-        }),
-        ModalOverlay: Modal.Overlay.extend({
-            defaultProps: {
-                color: color.primary.navy[9],
-                backgroundOpacity: 0.9,
-            },
-        }),
-        Input: Input.extend({
-            classNames: InputClasses,
-        }),
-        InputWrapper: InputWrapper.extend({
-            classNames: InputWrapperClasses,
-        }),
-        TextInput: TextInput.extend({
-            defaultProps: {
-                radius: 8,
-            },
-        }),
-        Tooltip: Tooltip.extend({
-            defaultProps: {
-                color: 'navy',
-                maw: 300,
-                multiline: true,
-                withArrow: true,
-                zIndex: 10000,
-            },
-        }),
-        Loader: Loader.extend({
-            defaultProps: {
-                type: 'dots',
-                color: 'action',
-                role: 'presentation',
-            },
-        }),
-        DatePicker: DatePicker.extend({
-            classNames: {monthCell: DatePickerClasses.monthCell},
-        }),
         Anchor: Anchor.extend({
             defaultProps: {
                 color: 'action.6',
             },
             classNames: {root: AnchorClasses.root},
+        }),
+        AppShellNavbar: AppShellNavbar.extend({
+            classNames: {navbar: AppShellNavBarClasses.navbar},
+        }),
+        Badge: Badge.extend({
+            classNames: {root: BadgeClasses.root},
+            defaultProps: {
+                variant: 'light',
+            },
+        }),
+        Button: Button.extend({
+            classNames: ButtonClasses,
         }),
         Checkbox: Checkbox.extend({
             defaultProps: {
@@ -185,23 +136,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
             classNames: {label: CheckboxClasses.label, input: CheckboxClasses.input},
         }),
-        List: List.extend({
-            classNames: {root: ListClasses.root},
-        }),
-        Radio: Radio.extend({
-            classNames: {labelWrapper: RadioClasses.labelWrapper},
-        }),
-        Popover: Popover.extend({
+        CloseButton: CloseButton.extend({
             defaultProps: {
-                shadow: 'md',
-                withArrow: true,
-                zIndex: 1300,
-            },
-        }),
-        Badge: Badge.extend({
-            classNames: {root: BadgeClasses.root},
-            defaultProps: {
-                variant: 'light',
+                icon: <CrossSize16Px height={16} aria-label="close" />,
             },
         }),
         ColorSwatch: ColorSwatch.extend({
@@ -210,11 +147,63 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 withShadow: false,
             },
         }),
+        Combobox: Combobox.extend({
+            classNames: {option: SelectClasses.option, search: ComboboxClasses.search},
+        }),
+        ComboboxSearch: ComboboxSearch.extend({
+            defaultProps: {
+                placeholder: 'Search...',
+                rightSection: <FilterSize16Px height={16} color="gray.5" />,
+            },
+        }),
+        DatePicker: DatePicker.extend({
+            classNames: {monthCell: DatePickerClasses.monthCell},
+        }),
+        Divider: Divider.extend({
+            defaultProps: {
+                color: 'gray.3',
+            },
+        }),
+        Input: Input.extend({
+            classNames: InputClasses,
+        }),
+        InputWrapper: InputWrapper.extend({
+            classNames: InputWrapperClasses,
+        }),
+        Loader: Loader.extend({
+            defaultProps: {
+                type: 'dots',
+                color: 'action',
+                role: 'presentation',
+            },
+        }),
+        LoadingOverlay: LoadingOverlay.extend({
+            defaultProps: {zIndex: 1400},
+        }),
+        List: List.extend({
+            classNames: {root: ListClasses.root},
+        }),
         MenuItem: MenuItem.extend({
             defaultProps: {
                 fw: 300,
             },
         }),
+        Modal: Modal.extend({
+            classNames: ModalClasses,
+        }),
+        ModalOverlay: Modal.Overlay.extend({
+            defaultProps: {
+                color: color.primary.navy[9],
+                backgroundOpacity: 0.9,
+            },
+        }),
+        ModalRoot: Modal.Root.extend({
+            defaultProps: {
+                padding: 'lg',
+            },
+        }),
+        MultiSelect: MultiSelect.extend({defaultProps: {hidePickedOptions: true}}),
+        NavLink: NavLink.extend({classNames: NavLinkClasses}),
         Notification: Notification.extend({
             defaultProps: {
                 icon: <InfoSize24Px height={24} />,
@@ -227,11 +216,28 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
             vars: NotificationVars,
         }),
-        Skeleton: Skeleton.extend({
-            classNames: {root: SkeletonClasses.root},
+        Popover: Popover.extend({
+            defaultProps: {
+                shadow: 'md',
+                withArrow: true,
+                zIndex: 1300,
+            },
+        }),
+        Radio: Radio.extend({
+            classNames: {labelWrapper: RadioClasses.labelWrapper},
+        }),
+        ScrollArea: ScrollArea.extend({
+            classNames: {viewport: ScrollAreaClasses.viewport},
         }),
         SegmentedControl: SegmentedControl.extend({
             classNames: {root: SegmentedControlClasses.root},
+        }),
+        Select: Select.extend({
+            defaultProps: {withCheckIcon: false, allowDeselect: false},
+            classNames: {input: SelectClasses.input, option: SelectClasses.option},
+        }),
+        Skeleton: Skeleton.extend({
+            classNames: {root: SkeletonClasses.root},
         }),
         Stepper: Stepper.extend({
             defaultProps: {
@@ -250,29 +256,25 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Tabs: Tabs.extend({
             classNames: {list: TabsClasses.list, tab: TabsClasses.tab},
         }),
-        Select: Select.extend({
-            defaultProps: {withCheckIcon: false, allowDeselect: false},
-            classNames: {input: SelectClasses.input, option: SelectClasses.option},
+        Text: Text.extend({
+            classNames: TextClasses,
+            vars: TextVars,
         }),
-        Combobox: Combobox.extend({
-            classNames: {option: SelectClasses.option, search: ComboboxClasses.search},
-        }),
-        ComboboxSearch: ComboboxSearch.extend({
+        TextInput: TextInput.extend({
             defaultProps: {
-                placeholder: 'Search...',
-                rightSection: <FilterSize16Px height={16} color="gray.5" />,
+                radius: 8,
             },
         }),
-        NavLink: NavLink.extend({classNames: NavLinkClasses}),
-        AppShellNavbar: AppShellNavbar.extend({
-            classNames: {navbar: AppShellNavBarClasses.navbar},
+        Title: Title.extend({
+            classNames: {root: TitleClasses.root},
         }),
-        ScrollArea: ScrollArea.extend({
-            classNames: {viewport: ScrollAreaClasses.viewport},
-        }),
-        Divider: Divider.extend({
+        Tooltip: Tooltip.extend({
             defaultProps: {
-                color: 'gray.3',
+                color: 'navy',
+                maw: 300,
+                multiline: true,
+                withArrow: true,
+                zIndex: 10000,
             },
         }),
     },
