@@ -16,6 +16,7 @@
     border: rem(1) solid var(--mantine-color-gray-3);
     &[data-progress] {
         background-color: var(--mantine-color-white);
+        border-color: var(--step-color);
     }
     &[data-completed] {
         background-color: var(--mantine-color-white);
