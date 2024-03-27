@@ -1,3 +1,12 @@
+## 52.27.2-next.9 (2024-03-27)
+
+
+### Bug Fixes
+
+* **mantine:** header props type (#3664) 39ff6ca, closes #3664
+
+
+
 ## 52.27.2-next.8 (2024-03-26)
 
 
