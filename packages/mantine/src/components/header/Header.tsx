@@ -1,4 +1,16 @@
-import {Divider, Factory, Group, GroupProps, Stack, Text, Title, factory, useProps, useStyles} from '@mantine/core';
+import {
+    Divider,
+    Factory,
+    Group,
+    GroupProps,
+    Stack,
+    StylesApiProps,
+    Text,
+    Title,
+    factory,
+    useProps,
+    useStyles,
+} from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
 import classes from './Header.module.css';
 import {HeaderActions, HeaderActionsStyleNames} from './HeaderActions/HeaderActions';
@@ -20,7 +32,7 @@ export type HeaderStyleNames =
     | HeaderBreadcrumbsStyleNames
     | HeaderActionsStyleNames;
 
-export interface HeaderProps extends GroupProps {
+export interface HeaderProps extends StylesApiProps<HeaderFactory>, Omit<GroupProps, 'classNames' | 'styles' | 'vars'> {
     /**
      * The description text displayed inside the header underneath the title
      */
