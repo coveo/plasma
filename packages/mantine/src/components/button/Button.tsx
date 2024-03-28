@@ -1,8 +1,8 @@
 import {
-    Button as MantineButton,
     ButtonGroup,
-    ButtonProps as MantineButtonProps,
     Factory,
+    Button as MantineButton,
+    ButtonProps as MantineButtonProps,
     polymorphicFactory,
 } from '@mantine/core';
 import {ButtonCssVariables, ButtonStylesNames, ButtonVariant} from '@mantine/core/lib/components/Button/Button';
@@ -32,7 +32,7 @@ export const Button = polymorphicFactory<ButtonOverloadFactory>(
         const {isLoading, handleClick} = useClickWithLoading(onClick);
         return (
             <ButtonWithDisabledTooltip
-                disabled={disabled}
+                disabled={disabled || others['data-disabled']}
                 disabledTooltip={disabledTooltip}
                 disabledTooltipProps={disabledTooltipProps}
                 fullWidth={others.fullWidth}
@@ -41,7 +41,7 @@ export const Button = polymorphicFactory<ButtonOverloadFactory>(
                     loaderProps={{variant: 'oval'}}
                     ref={ref}
                     loading={isLoading || loading}
-                    onClick={handleClick}
+                    onClick={others['data-disabled'] ? (e) => e.preventDefault() : handleClick}
                     disabled={disabled}
                     data-loading={isLoading || loading || undefined}
                     {...others}
