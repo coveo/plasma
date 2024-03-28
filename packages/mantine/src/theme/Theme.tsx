@@ -152,7 +152,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         ComboboxSearch: ComboboxSearch.extend({
             defaultProps: {
-                placeholder: 'Search...',
+                placeholder: 'Search',
                 rightSection: <FilterSize16Px height={16} color="gray.5" />,
             },
         }),
