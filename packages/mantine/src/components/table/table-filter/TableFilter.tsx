@@ -70,7 +70,6 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
         <Grid.Col
             span="content"
             order={TableComponentsOrder.Filter}
-            py="sm"
             ref={ref}
             {...ctx.getStyles('filterRoot', {className, style, ...stylesApiProps})}
             {...others}
@@ -79,10 +78,9 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
                 {...ctx.getStyles('filterWrapper', stylesApiProps)}
                 placeholder={placeholder}
                 autoComplete="off"
-                mb="md"
                 rightSection={
                     filter ? (
-                        <ActionIcon onClick={handleClear} c="gray" variant="subtle">
+                        <ActionIcon onClick={handleClear} color="gray" variant="subtle">
                             <CrossSize16Px height={16} />
                         </ActionIcon>
                     ) : (

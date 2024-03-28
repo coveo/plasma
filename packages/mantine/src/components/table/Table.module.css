@@ -31,34 +31,26 @@
 
 /* Table.Filter */
 .filterWrapper {
-    margin-bottom: 0 !important;
     width: 20rem;
 }
 .filterEmpty {
-    color: var(--mantine-color-gray-4);
+    color: var(--mantine-color-gray-5);
 }
 
 /* Table.Header */
 .headerRoot {
     border-bottom: 1px solid var(--mantine-color-gray-3);
-    background: repeating-linear-gradient(
-        var(--mantine-color-gray-1),
-        var(--mantine-color-gray-1) 68px,
-        var(--mantine-color-gray-3) 68px,
-        var(--mantine-color-gray-3) 69px
-    );
+    background-color: var(--mantine-color-gray-1);
     padding-left: var(--mantine-spacing-xl);
     padding-right: var(--mantine-spacing-lg);
     position: relative;
 }
+
 .headerGridInner {
     flex-direction: row-reverse;
-    flex-wrap: wrap-reverse;
-    margin: 0;
 }
 
 .headerCol {
-    padding: 0 var(--mantine-spacing-xs);
     display: flex;
 }
 

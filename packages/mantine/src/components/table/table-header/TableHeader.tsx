@@ -1,5 +1,5 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import {factory, Factory, Grid, GridProps, Tooltip, useProps} from '@mantine/core';
+import {Box, BoxProps, factory, Factory, Grid, Tooltip, useProps} from '@mantine/core';
 import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
 import {ReactNode} from 'react';
 
@@ -8,10 +8,10 @@ import {TableLayoutControl} from '../layouts/TableLayoutControl';
 import {TableComponentsOrder} from '../Table';
 import {useTable, useTableStyles} from '../TableContext';
 
-export type TableHeaderStylesNames = 'headerRoot' | 'headerGridInner' | 'headerCol';
+export type TableHeaderStylesNames = 'headerRoot' | 'headerGrid' | 'headerGridInner' | 'headerCol';
 
 export interface TableHeaderProps
-    extends Omit<GridProps, 'classNames' | 'styles' | 'vars'>,
+    extends Omit<BoxProps, 'classNames' | 'styles' | 'vars'>,
         CompoundStylesApiProps<TableHeaderFactory> {
     /* Children of header (ie: actions, datepicker, etc.) */
     children?: ReactNode;
@@ -40,38 +40,43 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
 
     const stylesApiProps = {classNames, styles};
     const innerStyles = ctx.getStyles('headerGridInner', stylesApiProps);
+    const gridStyles = ctx.getStyles('headerGrid', stylesApiProps);
 
     return (
-        <Grid
-            justify="flex-start"
-            align="center"
-            gutter="sm"
+        <Box
+            py="sm"
+            px="lg"
             ref={ref}
             {...ctx.getStyles('headerRoot', {className, style, ...stylesApiProps})}
-            classNames={{inner: innerStyles.className}}
-            styles={{inner: innerStyles.style}}
             {...others}
         >
-            {multiRowSelectionEnabled && selectedRows.length > 0 ? (
-                <Grid.Col
-                    span="auto"
-                    {...ctx.getStyles('headerCol', stylesApiProps)}
-                    order={TableComponentsOrder.MultiSelectInfo}
-                >
-                    <Tooltip label={unselectAllLabel}>
-                        <Button
-                            onClick={clearSelection}
-                            variant="subtle"
-                            disabled={disableRowSelection}
-                            leftSection={<CrossSize16Px height={16} />}
-                        >
-                            {selectedCountLabel(selectedRows.length)}
-                        </Button>
-                    </Tooltip>
-                </Grid.Col>
-            ) : null}
-            {children}
-            <TableLayoutControl />
-        </Grid>
+            <Grid
+                justify="flex-start"
+                align="center"
+                classNames={{inner: innerStyles.className, root: gridStyles.className}}
+                styles={{inner: innerStyles.style, root: gridStyles.style}}
+            >
+                {multiRowSelectionEnabled && selectedRows.length > 0 ? (
+                    <Grid.Col
+                        span="auto"
+                        {...ctx.getStyles('headerCol', stylesApiProps)}
+                        order={TableComponentsOrder.MultiSelectInfo}
+                    >
+                        <Tooltip label={unselectAllLabel}>
+                            <Button
+                                onClick={clearSelection}
+                                variant="subtle"
+                                disabled={disableRowSelection}
+                                leftSection={<CrossSize16Px height={16} />}
+                            >
+                                {selectedCountLabel(selectedRows.length)}
+                            </Button>
+                        </Tooltip>
+                    </Grid.Col>
+                ) : null}
+                {children}
+                <TableLayoutControl />
+            </Grid>
+        </Box>
     );
 });

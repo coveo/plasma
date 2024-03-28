@@ -43,7 +43,7 @@ const IconSetCard = <T,>({getVisibleCells}: Row<T>) => {
         <div>
             <Card shadow="md" radius="md" px="md" pb={0}>
                 <Card.Section>
-                    <Group wrap="nowrap" p="md" justify="apart" onClick={toggle} style={{cursor: 'pointer'}}>
+                    <Group wrap="nowrap" p="md" justify="space-between" onClick={toggle} style={{cursor: 'pointer'}}>
                         <Group>
                             {renderTableCell(iconCell.column.columnDef.cell, iconCell.getContext())}
                             <Title order={5}>
