@@ -113,7 +113,6 @@ export const TableColumnsSelector = factory<TableColumnsSelectorFactory>((props,
         <Grid.Col
             span="content"
             order={TableComponentsOrder.ColumnsSelector}
-            py="sm"
             {...ctx.getStyles('columnSelector', {className, style, ...stylesApiProps})}
             {...others}
         >

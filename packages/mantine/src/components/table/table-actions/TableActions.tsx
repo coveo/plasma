@@ -54,13 +54,7 @@ export const TableActions = <T,>(props: TableActionsProps<T> & {ref?: ForwardedR
     }
 
     return (
-        <Grid.Col
-            span="content"
-            order={TableComponentsOrder.Actions}
-            py="sm"
-            {...ctx.getStyles('actionsRoot', {})}
-            {...others}
-        >
+        <Grid.Col span="content" order={TableComponentsOrder.Actions} {...ctx.getStyles('actionsRoot', {})} {...others}>
             <Group gap="xs" {...ctx.getStyles('actionsGroup', {})}>
                 {multiRowSelectionEnabled
                     ? (children as (data: T[]) => ReactNode)(selectedRows)

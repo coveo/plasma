@@ -73,6 +73,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     black: color.primary.gray[9],
     defaultRadius: 8,
     lineHeights: {md: '1.5'},
+    fontSmoothing: false,
     spacing: {
         xs: '8px',
         sm: '16px',

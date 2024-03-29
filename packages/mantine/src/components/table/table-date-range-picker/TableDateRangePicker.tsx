@@ -72,7 +72,6 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
         <Grid.Col
             span="content"
             order={TableComponentsOrder.DateRangePicker}
-            py="sm"
             ref={ref}
             {...ctx.getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
