@@ -45,7 +45,7 @@ export const Button = polymorphicFactory<ButtonOverloadFactory>(
                     ref={ref}
                     loading={isLoading || loading}
                     onClick={dataDisabled ? (e) => e.preventDefault() : handleClick}
-                    disabled={disabled}
+                    disabled={disabled || dataDisabled}
                     data-loading={isLoading || loading || undefined}
                     {...others}
                 />
