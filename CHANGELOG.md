@@ -1,3 +1,18 @@
+## 52.27.2-next.10 (2024-03-29)
+
+
+### Bug Fixes
+
+* **button:** prevent default onclick for link button (#3667) 6a0948f, closes #3667
+* **mantine:** table header stacking styles (#3668) 76d0601, closes #3668
+
+
+### Features
+
+* **multiselect:** +hidePickedOptions ttrue by default (#3665) cdf0be6, closes #3665
+
+
+
 ## 52.27.2-next.9 (2024-03-27)
 
 
