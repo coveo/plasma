@@ -1,3 +1,12 @@
+## 52.27.2-next.11 (2024-04-04)
+
+
+### Bug Fixes
+
+* **mantine, combobox:** add small margin under Combobox.Search (#3669) 9118de5, closes #3669
+
+
+
 ## 52.27.2-next.10 (2024-03-29)
 
 
