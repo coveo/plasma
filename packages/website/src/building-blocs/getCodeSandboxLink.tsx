@@ -42,9 +42,9 @@ const addAndFineTuneDependencies = (snippet: string, dependencies: Dependencies)
 
     if (snippetUsesPackage(snippet, '@coveord/plasma-react')) {
         dependencies['@coveord/plasma-react'] = 'latest';
+        dependencies['@redux-devtools/extension'] = packageConfig.dependencies['@redux-devtools/extension'];
         dependencies['react-redux'] = packageConfig.dependencies['react-redux'];
         dependencies['redux'] = packageConfig.dependencies['redux'];
-        dependencies['redux-devtools-extension'] = packageConfig.dependencies['redux-devtools-extension'];
         dependencies['redux-promise-middleware'] = packageConfig.dependencies['redux-promise-middleware'];
         dependencies['redux-thunk'] = packageConfig.dependencies['redux-thunk'];
         dependencies['jquery'] = 'latest';
@@ -108,7 +108,7 @@ root.render(<Demo />);
 const storeTs = `
 import {IDispatch, PlasmaReducers} from '@coveord/plasma-react';
 import {applyMiddleware, combineReducers, createStore} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import {composeWithDevTools} from '@redux-devtools/extension';
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 

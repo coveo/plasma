@@ -1,7 +1,9 @@
 import {ColumnDef, createColumnHelper, getPaginationRowModel} from '@tanstack/table-core';
 import {render, screen, userEvent, waitFor} from '@test-utils';
+import {useState} from 'react';
 
 import {Table} from '../Table';
+import {useTable} from '../TableContext';
 
 type RowData = {name: string};
 
@@ -133,5 +135,80 @@ describe('Table.Pagination', () => {
             </Table>,
         );
         expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
+    });
+
+    it('changes page when the current page is greater than the total number of pages', async () => {
+        const user = userEvent.setup();
+        const onChangePage = vi.fn();
+        const Fixture = () => {
+            const {state} = useTable();
+            const [totalPages, setTotalPages] = useState(state.pagination.pageIndex + 1);
+            const removeAPage = () => setTotalPages(totalPages - 1);
+
+            return (
+                <>
+                    <button data-testid="remove-page" onClick={removeAPage}>
+                        change total pages
+                    </button>
+                    <Table.Pagination totalPages={totalPages} onPageChange={onChangePage} />
+                </>
+            );
+        };
+        render(
+            <Table data={[{name: 'grains'}]} columns={columns} initialState={{pagination: {pageSize: 1, pageIndex: 2}}}>
+                <Table.Footer>
+                    <Fixture />
+                </Table.Footer>
+            </Table>,
+        );
+
+        expect(screen.getByRole('cell', {name: 'grains'})).toBeVisible();
+        let buttons = screen.getAllByRole('button');
+        expect(buttons).toHaveLength(6);
+        expect(buttons[0]).toHaveAccessibleName('change total pages');
+        expect(buttons[1]).toHaveAccessibleName('previous page');
+        expect(buttons[2]).toHaveAccessibleName('1');
+        expect(buttons[3]).toHaveAccessibleName('2');
+        expect(buttons[4]).toHaveAccessibleName('3');
+        expect(buttons[5]).toHaveAccessibleName('next page');
+
+        // remove a page
+        await user.click(screen.getByTestId('remove-page'));
+
+        // The page is 2, but the index is 1
+        expect(onChangePage).toHaveBeenCalledWith(1);
+
+        buttons = screen.getAllByRole('button');
+        expect(buttons).toHaveLength(5);
+        expect(buttons[0]).toHaveAccessibleName('change total pages');
+        expect(buttons[1]).toHaveAccessibleName('previous page');
+        expect(buttons[2]).toHaveAccessibleName('1');
+        expect(buttons[3]).toHaveAccessibleName('2');
+        expect(buttons[4]).toHaveAccessibleName('next page');
+
+        // remove a page
+        await user.click(screen.getByTestId('remove-page'));
+
+        // The page is 1, but the index is 0
+        expect(onChangePage).toHaveBeenCalledWith(0);
+
+        buttons = screen.getAllByRole('button');
+        expect(buttons).toHaveLength(4);
+        expect(buttons[0]).toHaveAccessibleName('change total pages');
+        expect(buttons[1]).toHaveAccessibleName('previous page');
+        expect(buttons[2]).toHaveAccessibleName('1');
+        expect(buttons[3]).toHaveAccessibleName('next page');
+
+        onChangePage.mockReset();
+
+        // remove a page
+        await user.click(screen.getByTestId('remove-page'));
+
+        // There is no more pages
+        expect(onChangePage).not.toHaveBeenCalled();
+
+        buttons = screen.getAllByRole('button');
+        expect(buttons).toHaveLength(1);
+        expect(buttons[0]).toHaveAccessibleName('change total pages');
     });
 });
