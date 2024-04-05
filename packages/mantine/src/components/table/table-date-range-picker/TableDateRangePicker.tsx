@@ -1,10 +1,9 @@
-import {CalendarSize24Px} from '@coveord/plasma-react-icons';
-import {BoxProps, factory, Factory, Grid, Group, Popover, Text, useProps} from '@mantine/core';
+import {CalendarSize16Px} from '@coveord/plasma-react-icons';
+import {BoxProps, Factory, Grid, Popover, factory, useProps} from '@mantine/core';
 import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
 import {useToggle} from '@mantine/hooks';
-import dayjs from 'dayjs';
 
-import {Button} from '../../button';
+import {DatePickerInput} from '@mantine/dates';
 import {
     DateRangePickerInlineCalendar,
     DateRangePickerInlineCalendarProps,
@@ -14,7 +13,7 @@ import {
 import {TableComponentsOrder} from '../Table';
 import {useTable, useTableStyles} from '../TableContext';
 
-export type TableDateRangePickerStylesNames = 'dateRangeRoot' | 'dateRangeWrapper' | 'dateRangeLabel';
+export type TableDateRangePickerStylesNames = 'dateRangeRoot';
 
 export interface TableDateRangePickerProps
     extends BoxProps,
@@ -63,9 +62,6 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
         toggleOpened(false);
     };
 
-    const formatDate = (date: Date) => dayjs(date).format('MMM DD, YYYY');
-    const formattedRange = `${formatDate(form.values.dateRange[0])} - ${formatDate(form.values.dateRange[1])}`;
-
     const stylesApiProps = {classNames, styles};
 
     return (
@@ -76,27 +72,28 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
             {...ctx.getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Group gap="xs" {...ctx.getStyles('dateRangeWrapper', stylesApiProps)}>
-                <Text span {...ctx.getStyles('dateRangeLabel', stylesApiProps)}>
-                    {formattedRange}
-                </Text>
-                <Popover opened={opened} onChange={toggleOpened} withinPortal>
-                    <Popover.Target>
-                        <Button variant="outline" color="gray" onClick={() => toggleOpened()} px="xs">
-                            <CalendarSize24Px width={24} height={24} />
-                        </Button>
-                    </Popover.Target>
-                    <Popover.Dropdown p={0}>
-                        <DateRangePickerInlineCalendar
-                            initialRange={form.values.dateRange}
-                            onApply={onApply}
-                            onCancel={onCancel}
-                            presets={presets}
-                            rangeCalendarProps={rangeCalendarProps}
-                        />
-                    </Popover.Dropdown>
-                </Popover>
-            </Group>
+            <Popover opened={opened} onChange={toggleOpened} withinPortal>
+                <Popover.Target>
+                    <DatePickerInput
+                        type="range"
+                        valueFormat="MMM DD, YYYY"
+                        placeholder="Pick date range"
+                        clearable
+                        {...form.getInputProps('dateRange')}
+                        leftSection={<CalendarSize16Px height={16} />}
+                        miw={220}
+                    />
+                </Popover.Target>
+                <Popover.Dropdown p={0}>
+                    <DateRangePickerInlineCalendar
+                        initialRange={form.values.dateRange}
+                        onApply={onApply}
+                        onCancel={onCancel}
+                        presets={presets}
+                        rangeCalendarProps={rangeCalendarProps}
+                    />
+                </Popover.Dropdown>
+            </Popover>
         </Grid.Col>
     );
 });
