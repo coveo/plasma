@@ -1,9 +1,9 @@
 import {CalendarSize16Px} from '@coveord/plasma-react-icons';
-import {BoxProps, Factory, Grid, Popover, factory, useProps} from '@mantine/core';
+import {BoxProps, Factory, Grid, InputBase, Popover, factory, useProps} from '@mantine/core';
 import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
-import {useToggle} from '@mantine/hooks';
+import dayjs from 'dayjs';
 
-import {DatePickerInput} from '@mantine/dates';
+import {useState} from 'react';
 import {
     DateRangePickerInlineCalendar,
     DateRangePickerInlineCalendarProps,
@@ -51,16 +51,20 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
         defaultProps,
         props,
     );
-    const [opened, toggleOpened] = useToggle();
+    const [opened, setOpened] = useState(false);
     const {form} = useTable();
 
     const onApply = (dates: DateRangePickerValue) => {
         form.setFieldValue('dateRange', dates);
-        toggleOpened(false);
+        setOpened(false);
     };
     const onCancel = () => {
-        toggleOpened(false);
+        setOpened(false);
     };
+
+    const formatDate = (date: Date) => dayjs(date).format('MMM DD, YYYY');
+    const formattedRange = `${formatDate(form.values.dateRange[0])} - ${formatDate(form.values.dateRange[1])}`;
+    const dateRangeInitialized = form.values.dateRange.every((date) => date instanceof Date);
 
     const stylesApiProps = {classNames, styles};
 
@@ -72,17 +76,16 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
             {...ctx.getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Popover opened={opened} onChange={toggleOpened} withinPortal>
+            <Popover withinPortal opened={opened}>
                 <Popover.Target>
-                    <DatePickerInput
-                        type="range"
-                        valueFormat="MMM DD, YYYY"
-                        placeholder="Pick date range"
-                        clearable
-                        {...form.getInputProps('dateRange')}
+                    <InputBase
+                        component="button"
                         leftSection={<CalendarSize16Px height={16} />}
                         miw={220}
-                    />
+                        onClick={() => setOpened(true)}
+                    >
+                        {dateRangeInitialized ? formattedRange : 'Select date range'}
+                    </InputBase>
                 </Popover.Target>
                 <Popover.Dropdown p={0}>
                     <DateRangePickerInlineCalendar
