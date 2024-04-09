@@ -110,7 +110,6 @@ const MantineNavigation = () => (
                 <InternalNavLink to="/layout/BrowserPreview" label="Browser Preview" />
                 <InternalNavLink to="/layout/Header" label="Header" />
                 <InternalNavLink to="/layout/Modal" label="Modal" />
-                <InternalNavLink to="/layout/ModalWizard" label="ModalWizard" />
                 <InternalNavLink to="/layout/Prompt" label="Prompt" />
                 <InternalNavLink to="/layout/StickyFooter" label="Sticky footer" />
                 <InternalNavLink to="/layout/Table" label="Table" />
