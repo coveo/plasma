@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, waitFor} from '@test-utils';
+import {render, screen} from '@test-utils';
 
 import {Table} from '../Table';
 
@@ -23,12 +23,10 @@ describe('Table.DateRangePicker', () => {
     it('displays the initial dates', async () => {
         render(basicTableWithDateRangePicker);
 
-        await waitFor(() =>
-            expect(
-                screen.getByRole('button', {
-                    name: /jan 01, 2022 – jan 07, 2022/i,
-                }),
-            ).toBeVisible(),
-        );
+        expect(
+            screen.getByRole('button', {
+                name: /jan 01, 2022 \- jan 07, 2022/i,
+            }),
+        ).toBeVisible();
     });
 });
