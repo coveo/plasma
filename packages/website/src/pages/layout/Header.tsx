@@ -1,5 +1,6 @@
 import {HeaderMetadata} from '@coveord/plasma-components-props-analyzer';
 import HeaderDemo from '@examples/layout/Header/Header.demo?demo';
+import HeaderContentDemo from '@examples/layout/Header/HeaderContent.demo?demo';
 import HeaderModalDemo from '@examples/layout/Header/HeaderModal.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
@@ -16,6 +17,7 @@ export default () => (
         demo={<HeaderDemo />}
         examples={{
             modalVariant: <HeaderModalDemo grow title="Modal variant" />,
+            contentVariant: <HeaderContentDemo grow title="Content variant" />,
         }}
     />
 );

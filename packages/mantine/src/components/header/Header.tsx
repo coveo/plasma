@@ -12,11 +12,11 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
+import {HeaderProvider} from './Header.context';
 import classes from './Header.module.css';
 import {HeaderActions, HeaderActionsStyleNames} from './HeaderActions/HeaderActions';
 import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
-import {HeaderProvider} from './Header.context';
 
 export type {HeaderActionsProps} from './HeaderActions/HeaderActions';
 export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
@@ -46,7 +46,7 @@ export interface HeaderProps extends StylesApiProps<HeaderFactory>, Omit<GroupPr
      *
      * @default 'page'
      */
-    variant?: 'page' | 'modal';
+    variant?: 'page' | 'modal' | 'content';
     /**
      * The title of the header.
      */
