@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-website",
-    "version": "52.27.2-next.11",
+    "version": "52.27.4-next.11",
     "private": true,
     "type": "module",
     "scripts": {
@@ -34,7 +34,7 @@
         "@redux-devtools/extension": "3.3.0",
         "@swc/helpers": "0.5.1",
         "@tabler/icons-react": "2.46.0",
-        "@tanstack/match-sorter-utils": "8.11.7",
+        "@tanstack/match-sorter-utils": "8.11.8",
         "clsx": "2.0.0",
         "codesandbox-import-utils": "2.2.3",
         "dayjs": "1.11.9",

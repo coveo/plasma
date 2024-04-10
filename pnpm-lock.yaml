@@ -946,8 +946,8 @@ importers:
         specifier: 2.46.0
         version: 2.46.0(react@18.2.0)
       '@tanstack/match-sorter-utils':
-        specifier: 8.11.7
-        version: 8.11.7
+        specifier: 8.11.8
+        version: 8.11.8
       clsx:
         specifier: 2.0.0
         version: 2.0.0
@@ -4808,8 +4808,8 @@ packages:
     resolution: {integrity: sha512-Q5G8Pj5IO+Uhc6pszpu5/hGYY018JwEzzvmuqr+gKJtfIvAHA3umpwUilMRLEy89p+WCP+YsDhicMhfBCCv1qA==}
     dev: false
 
-  /@tanstack/match-sorter-utils@8.11.7:
-    resolution: {integrity: sha512-4PUKgaaFpiB7MK406N5VAiLu2VUhDumojGWhEC8kNQ767RGU2vsJDI7Xp4D8lMBzijqswRWz3U8ioa2zUKnFeQ==}
+  /@tanstack/match-sorter-utils@8.11.8:
+    resolution: {integrity: sha512-3VPh0SYMGCa5dWQEqNab87UpCMk+ANWHDP4ALs5PeEW9EpfTAbrezzaOk/OiM52IESViefkoAOYuxdoa04p6aA==}
     engines: {node: '>=12'}
     dependencies:
       remove-accents: 0.4.2
