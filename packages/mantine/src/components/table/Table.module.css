@@ -23,12 +23,6 @@
     display: inline-flex;
 }
 
-/* Table.DateRange */
-.dateRangeLabel {
-    font-size: var(--mantine-font-size-sm);
-    font-weight: 300;
-}
-
 /* Table.Filter */
 .filterWrapper {
     width: 20rem;
