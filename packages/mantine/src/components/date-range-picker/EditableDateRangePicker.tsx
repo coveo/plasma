@@ -1,13 +1,11 @@
 import {DateInput, DatePickerProps} from '@mantine/dates';
 import dayjs from 'dayjs';
-import {ReactNode} from 'react';
 import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
 
 export interface EditableDateRangePickerProps {
     value: DateRangePickerValue;
     onChange?(value: DateRangePickerValue): void;
     onFocus?: () => void;
-    separator?: ReactNode;
     /**
      * Props for the start input
      */
@@ -22,7 +20,6 @@ export const EditableDateRangePicker = ({
     value,
     onChange,
     onFocus,
-    separator = 'to',
     startProps = {},
     endProps = {},
 }: EditableDateRangePickerProps) => {
@@ -44,7 +41,6 @@ export const EditableDateRangePicker = ({
                 popoverProps={{styles: {dropdown: {display: 'none'}}}}
                 styles={{...startProps.styles}}
             />
-            {separator}
             <DateInput
                 clearable={false}
                 label="End"
