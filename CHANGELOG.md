@@ -1,3 +1,24 @@
+## 52.27.2-next.12 (2024-04-11)
+
+
+### Bug Fixes
+
+* **datepicker:** removed label to (#3679) bb82a1e, closes #3679
+* **deps:** replace dependency redux-devtools-extension with @redux-devtools/extension 3.0.0 (#3615) 2e390f5, closes #3615
+* **mantine, code editor:** scrollbar z-index (#3675) 9f45807, closes #3675
+* **mantine, table:** automatically update page when needed (#3652) 1115971, closes #3652
+* **stepper:** border color (#3666) f5ae6ce, closes #3666
+* **style:** add missing reset rules to reset.css (#3677) 8a2c264, closes #3677
+
+
+### Features
+
+* **header:** +content variant +example (#3676) d750c55, closes #3676
+* **next:** merge master in next (#3672) 97b5600, closes #3672
+* **table:** visual update on datepicker (#3673) 14e6d4d, closes #3673
+
+
+
 ## 52.27.2-next.11 (2024-04-04)
 ## 52.27.4 (2024-03-22)
 
