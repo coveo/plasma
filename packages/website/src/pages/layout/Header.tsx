@@ -1,5 +1,6 @@
 import {HeaderMetadata} from '@coveord/plasma-components-props-analyzer';
 import HeaderDemo from '@examples/layout/Header/Header.demo?demo';
+import HeaderSecondaryDemo from '@examples/layout/Header/HeaderSecondary.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
