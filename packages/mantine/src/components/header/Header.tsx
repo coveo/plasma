@@ -42,7 +42,7 @@ export interface HeaderProps extends StylesApiProps<HeaderFactory>, Omit<GroupPr
      */
     borderBottom?: boolean;
     /**
-     * Use the secondary variant when displaying the header not at the top of the page
+     * Use the primary variant for page header and secondary variant elsewhere
      *
      * @default 'primary'
      */

@@ -1,5 +1,5 @@
 .root {
-    &[data-variant='page'] {
+    &[data-variant='primary'] {
         padding: var(--mantine-spacing-xl);
         padding-bottom: var(--mantine-spacing-lg);
     }
@@ -11,7 +11,7 @@
 
 .title {
     word-break: break-word;
-    &[data-variant='page'] {
+    &[data-variant='primary'] {
         color: var(--mantine-color-gray-5);
     }
     line-height: var(--mantine-line-height-md);
