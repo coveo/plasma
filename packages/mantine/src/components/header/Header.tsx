@@ -12,17 +12,17 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
+import {HeaderProvider} from './Header.context';
 import classes from './Header.module.css';
 import {HeaderActions, HeaderActionsStyleNames} from './HeaderActions/HeaderActions';
 import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
-import {HeaderProvider} from './Header.context';
 
 export type {HeaderActionsProps} from './HeaderActions/HeaderActions';
 export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor';
 
-export type HeaderVariant = 'page' | 'modal';
+export type HeaderVariant = 'primary' | 'secondary';
 export type HeaderStyleNames =
     | 'root'
     | 'title'
@@ -42,11 +42,11 @@ export interface HeaderProps extends StylesApiProps<HeaderFactory>, Omit<GroupPr
      */
     borderBottom?: boolean;
     /**
-     * Use the modal variant when displaying the header inside a modal
+     * Use the primary variant for page header and secondary variant elsewhere
      *
-     * @default 'page'
+     * @default 'primary'
      */
-    variant?: 'page' | 'modal';
+    variant?: 'primary' | 'secondary';
     /**
      * The title of the header.
      */
@@ -66,7 +66,7 @@ export type HeaderFactory = Factory<{
 }>;
 
 const defaultProps: Partial<HeaderProps> = {
-    variant: 'page',
+    variant: 'primary',
     justify: 'space-between',
     wrap: 'nowrap',
 };
@@ -111,11 +111,15 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
             <Group ref={ref} variant={variant} {...getStyles('root')} {...others}>
                 <Stack gap={0}>
                     {breadcrumbs}
-                    <Title variant={variant} order={variant === 'page' ? 1 : 3} {...getStyles('title', stylesApiProps)}>
+                    <Title
+                        variant={variant}
+                        order={variant === 'primary' ? 1 : 3}
+                        {...getStyles('title', stylesApiProps)}
+                    >
                         {otherChildren}
                         {docAnchor}
                     </Title>
-                    <Text {...getStyles('description', stylesApiProps)} size={variant === 'page' ? 'md' : 'sm'}>
+                    <Text {...getStyles('description', stylesApiProps)} size={variant === 'primary' ? 'md' : 'sm'}>
                         {description}
                     </Text>
                 </Stack>

@@ -1,7 +1,7 @@
 import {CloseButton, Header} from '@coveord/plasma-mantine';
 
 const Demo = () => (
-    <Header variant="modal">
+    <Header variant="secondary">
         Title
         <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
         <Header.Actions>
