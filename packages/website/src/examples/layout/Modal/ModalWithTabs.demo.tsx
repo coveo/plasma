@@ -10,7 +10,7 @@ const Demo = () => {
                 <Modal.Content>
                     <Modal.Header style={{borderBottom: 'none'}}>
                         <Modal.Title>
-                            <Header variant="modal" description="Modal description">
+                            <Header variant="secondary" description="Modal description">
                                 Modal Title
                                 <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
                             </Header>
