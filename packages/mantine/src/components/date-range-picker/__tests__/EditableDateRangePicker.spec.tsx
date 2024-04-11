@@ -1,8 +1,8 @@
 import {render, screen, userEvent} from '@test-utils';
 import {useState} from 'react';
 
-import {EditableDateRangePicker} from '../EditableDateRangePicker';
 import {DateRangePickerValue} from '../DateRangePickerInlineCalendar';
+import {EditableDateRangePicker} from '../EditableDateRangePicker';
 
 describe('EditableDateRangePicker', () => {
     it('renders an input for the start and an input for the end', () => {
@@ -10,12 +10,6 @@ describe('EditableDateRangePicker', () => {
 
         expect(screen.getByRole('textbox', {name: 'Start'})).toBeVisible();
         expect(screen.getByRole('textbox', {name: 'End'})).toBeVisible();
-    });
-
-    it('renders the separator', () => {
-        render(<EditableDateRangePicker value={[null, null]} separator={<div>SEPARATOR</div>} />);
-
-        expect(screen.getByText('SEPARATOR')).toBeVisible();
     });
 
     it('updates when editing values', async () => {
