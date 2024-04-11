@@ -44,7 +44,6 @@ export const EditableDateRangePicker = ({
                 popoverProps={{styles: {dropdown: {display: 'none'}}}}
                 styles={{...startProps.styles}}
             />
-            {separator}
             <DateInput
                 clearable={false}
                 label="End"
