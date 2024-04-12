@@ -1,17 +1,33 @@
-import {Children, FunctionComponent, PropsWithChildren, ReactElement, useState} from 'react';
-
-import {InlineConfirmButton} from './InlineConfirmButton';
-import {InlineConfirmContext} from './InlineConfirmContext';
-import {InlineConfirmMenuItem} from './InlineConfirmMenuItem';
+import {factory, Factory, StylesApiProps, useProps} from '@mantine/core';
+import {Children, ReactElement, ReactNode, useState} from 'react';
+import {InlineConfirmProvider} from './InlineConfirmContext';
 import {InlineConfirmPrompt} from './InlineConfirmPrompt';
 
-type InlineConfirmType = FunctionComponent<PropsWithChildren<unknown>> & {
-    Prompt: typeof InlineConfirmPrompt;
-    Button: typeof InlineConfirmButton;
-    MenuItem: typeof InlineConfirmMenuItem;
-};
+import {InlineConfirmTarget} from './InlineConfirmTarget';
 
-export const InlineConfirm: InlineConfirmType = ({children}) => {
+export type InlineConfirmStyleNames = 'root';
+
+export interface InlineConfirmProps extends StylesApiProps<InlineConfirmFactory> {
+    /**
+     * The content of the component. Should contain at least one `InlineConfirm.Target` and one `InlineConfirm.Prompt` with matching ids
+     */
+    children: ReactNode;
+}
+
+export type InlineConfirmFactory = Factory<{
+    props: InlineConfirmProps;
+    ref: never;
+    stylesNames: InlineConfirmStyleNames;
+    staticComponents: {
+        Prompt: typeof InlineConfirmPrompt;
+        Target: typeof InlineConfirmTarget;
+    };
+}>;
+
+const defaultProps: Partial<InlineConfirmProps> = {};
+
+export const InlineConfirm = factory<InlineConfirmFactory>((_props) => {
+    const {children} = useProps('InlineConfirm', defaultProps, _props);
     const [confirmingId, setConfirmingId] = useState<string | null>(null);
 
     const convertedChildren = Children.toArray(children) as ReactElement[];
@@ -21,12 +37,11 @@ export const InlineConfirm: InlineConfirmType = ({children}) => {
     const clearConfirm = () => setConfirmingId(null);
 
     return (
-        <InlineConfirmContext.Provider value={{confirmingId, setConfirmingId, clearConfirm}}>
+        <InlineConfirmProvider value={{confirmingId, setConfirmingId, clearConfirm}}>
             {prompt ?? children}
-        </InlineConfirmContext.Provider>
+        </InlineConfirmProvider>
     );
-};
+});
 
 InlineConfirm.Prompt = InlineConfirmPrompt;
-InlineConfirm.Button = InlineConfirmButton;
-InlineConfirm.MenuItem = InlineConfirmMenuItem;
+InlineConfirm.Target = InlineConfirmTarget;

@@ -332,6 +332,10 @@ const components: Component[] = [
         name: 'Prompt',
         packageName: '@coveord/plasma-mantine',
     },
+    {
+        name: 'InlineConfirm',
+        packageName: '@coveord/plasma-mantine',
+    },
 ];
 
 export default components;

@@ -1,4 +1,4 @@
-import {Menu} from '@mantine/core';
+import {Button, Menu, MenuItem} from '@mantine/core';
 import {render, screen, userEvent} from '@test-utils';
 
 import {InlineConfirm} from '../InlineConfirm';
@@ -15,9 +15,9 @@ describe('InlineConfirm', () => {
         const onClickSpy = vi.fn();
         render(
             <InlineConfirm>
-                <InlineConfirm.Button id="delete" onClick={onClickSpy}>
+                <InlineConfirm.Target id="delete" onClick={onClickSpy}>
                     Delete
-                </InlineConfirm.Button>
+                </InlineConfirm.Target>
             </InlineConfirm>,
         );
 
@@ -36,9 +36,9 @@ describe('InlineConfirm', () => {
                         <button>open menu</button>
                     </Menu.Target>
                     <Menu.Dropdown>
-                        <InlineConfirm.MenuItem id="delete" onClick={onClickSpy}>
+                        <InlineConfirm.Target component={MenuItem} id="delete" onClick={onClickSpy}>
                             Delete
-                        </InlineConfirm.MenuItem>
+                        </InlineConfirm.Target>
                     </Menu.Dropdown>
                 </Menu>
             </InlineConfirm>,
@@ -54,8 +54,8 @@ describe('InlineConfirm', () => {
         const user = userEvent.setup({delay: null});
         render(
             <InlineConfirm>
-                <InlineConfirm.Button id="my-button-id">Remove</InlineConfirm.Button>
-                <InlineConfirm.Prompt id="my-button-id" label="Are you sure?" onConfirm={vi.fn()} />
+                <InlineConfirm.Target id="my-button-id">Remove</InlineConfirm.Target>
+                <InlineConfirm.Prompt id="my-button-id" />
             </InlineConfirm>,
         );
         expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
@@ -72,29 +72,28 @@ describe('InlineConfirm', () => {
         const confirmSpy = vi.fn();
         render(
             <InlineConfirm>
-                <InlineConfirm.Button id="my-button-id">Remove</InlineConfirm.Button>
+                <InlineConfirm.Target id="my-button-id">Remove</InlineConfirm.Target>
                 <InlineConfirm.Prompt
                     id="my-button-id"
-                    label="Are you sure?"
-                    confirmLabel="I confirm"
-                    cancelLabel="I changed my mind"
-                    onConfirm={confirmSpy}
+                    label="Remove?"
+                    confirm={<Button onClick={confirmSpy}>I confirm</Button>}
+                    cancel={<Button>I changed my mind</Button>}
                 />
             </InlineConfirm>,
         );
 
         await user.click(screen.getByRole('button', {name: 'Remove'}));
-        expect(screen.getByText('Are you sure?')).toBeVisible();
+        expect(screen.getByText('Remove?')).toBeVisible();
 
         await user.click(screen.getByRole('button', {name: 'I changed my mind'}));
-        expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
+        expect(screen.queryByText('Remove?')).not.toBeInTheDocument();
         expect(confirmSpy).not.toHaveBeenCalled();
 
         await user.click(screen.getByRole('button', {name: 'Remove'}));
-        expect(screen.getByText('Are you sure?')).toBeVisible();
+        expect(screen.getByText('Remove?')).toBeVisible();
 
         await user.click(screen.getByRole('button', {name: 'I confirm'}));
-        expect(screen.queryByText('Are you sure?')).not.toBeInTheDocument();
+        expect(screen.queryByText('Remove?')).not.toBeInTheDocument();
         expect(confirmSpy).toHaveBeenCalledTimes(1);
     });
 
@@ -102,11 +101,21 @@ describe('InlineConfirm', () => {
         const user = userEvent.setup({delay: null});
         render(
             <InlineConfirm>
-                <InlineConfirm.Button id="remove">Remove</InlineConfirm.Button>
-                <InlineConfirm.Prompt id="remove" label="Delete X?" onConfirm={vi.fn()} />
+                <InlineConfirm.Target id="remove">Remove</InlineConfirm.Target>
+                <InlineConfirm.Prompt
+                    id="remove"
+                    label="Delete X?"
+                    confirm={<Button>I confirm</Button>}
+                    cancel={<Button>Cancel</Button>}
+                />
 
-                <InlineConfirm.Button id="print">Print</InlineConfirm.Button>
-                <InlineConfirm.Prompt id="print" label="Print?" onConfirm={vi.fn()} />
+                <InlineConfirm.Target id="print">Print</InlineConfirm.Target>
+                <InlineConfirm.Prompt
+                    id="print"
+                    label="Print?"
+                    confirm={<Button>Yes</Button>}
+                    cancel={<Button>No, save the trees</Button>}
+                />
             </InlineConfirm>,
         );
 
@@ -126,9 +135,9 @@ describe('InlineConfirm', () => {
         const onClickSpy = vi.fn();
         render(
             <InlineConfirm>
-                <InlineConfirm.Button id="delete" onClick={onClickSpy} disabled disabledTooltip="You shall not pass">
+                <InlineConfirm.Target id="delete" onClick={onClickSpy} disabled disabledTooltip="You shall not pass">
                     Delete
-                </InlineConfirm.Button>
+                </InlineConfirm.Target>
             </InlineConfirm>,
         );
 
