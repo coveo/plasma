@@ -1,4 +1,4 @@
-import {createContext} from 'react';
+import {createSafeContext} from '@mantine/core';
 
 type InlineConfirmContextType = {
     confirmingId: string;
@@ -6,4 +6,6 @@ type InlineConfirmContextType = {
     clearConfirm: () => void;
 };
 
-export const InlineConfirmContext = createContext<InlineConfirmContextType | null>(null);
+export const [InlineConfirmProvider, useInlineConfirm] = createSafeContext<InlineConfirmContextType>(
+    'InlineConfirm component was not found in tree',
+);
