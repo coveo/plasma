@@ -1,5 +1,5 @@
 import {Factory, factory, Group, GroupProps, isElement, useProps} from '@mantine/core';
-import {cloneElement, ReactNode, useEffect} from 'react';
+import {cloneElement, ReactElement, ReactNode, useEffect} from 'react';
 
 import {useInlineConfirm} from './InlineConfirmContext';
 import {Button} from '../button/Button';
@@ -20,13 +20,13 @@ interface InlineConfirmPromptProps extends Omit<GroupProps, 'children'> {
      *
      * @default <Button color="red">Delete</Button>
      */
-    confirm?: ReactNode;
+    confirm?: ReactElement;
     /**
      * Cancel button element
      *
      * @default <Button variant="outline">Cancel</Button>
      */
-    cancel?: ReactNode;
+    cancel?: ReactElement;
     /**
      * Function called when the confirm button is clicked
      */
