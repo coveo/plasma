@@ -1,6 +1,6 @@
 import {CSSVariablesResolver, ConvertCSSVariablesInput, keys} from '@mantine/core';
 
-export const resolver: CSSVariablesResolver = (theme) => {
+export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
     const result: ConvertCSSVariablesInput = {
         variables: {},
         dark: {},
