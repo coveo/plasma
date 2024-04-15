@@ -1,3 +1,12 @@
+## 52.27.2-next.13 (2024-04-15)
+
+
+### Features
+
+* **mantine:** make Plasmantine extensible (#3681) d3a3abf, closes #3681
+
+
+
 ## 52.27.2-next.12 (2024-04-11)
 
 
