@@ -1,5 +1,5 @@
 .viewport {
-    /* https://github.com/radix-ui/primitives/issues/926*/
+    /* https://github.com/radix-ui/primitives/issues/926 */
     &[data-radix-scroll-area-viewport] {
         & > :first-of-type {
             display: block !important;
