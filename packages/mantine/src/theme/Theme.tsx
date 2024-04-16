@@ -17,7 +17,6 @@ import {
     InputWrapper,
     List,
     Loader,
-    LoadingOverlay,
     MantineThemeOverride,
     MenuItem,
     Modal,
@@ -178,9 +177,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 role: 'presentation',
             },
         }),
-        LoadingOverlay: LoadingOverlay.extend({
-            defaultProps: {zIndex: 1400},
-        }),
         List: List.extend({
             classNames: {root: ListClasses.root},
         }),
@@ -221,7 +217,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 shadow: 'md',
                 withArrow: true,
-                zIndex: 1300,
             },
         }),
         Radio: Radio.extend({
