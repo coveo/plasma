@@ -1,3 +1,133 @@
+# 53.0.0 (2024-04-16)
+
+
+* feat!: mantine 7 support (#3678) 51d463c, closes #3678 #3679 #3623
+
+
+### BREAKING CHANGES
+
+* ## Mantine version 7 support
+
+From now on, `plasma-mantine` package will only work with Mantine version 7. You can follow [the migration guide](https://mantine.dev/guides/6x-to-7x/) available on the Mantine website to migrate your app.
+
+All our custom components like the Table, Collection, Header, etc. now follow the CSS modules paradigm introduced by Mantine components. So expect changes around how styles are loaded into components.
+
+## Header component variants
+
+`<Header>` component variants have changed name:
+
+- `'page'` is now called `'primary'`
+- `'modal'` is now called `'secondary'`
+
+## StickyFooter classNames changed
+
+`StickyFooter` component no longer has a `divider` class name available. You can still use the `borderTop` prop so that the footer has a top border.
+
+## ModalWizard no longer exists
+
+The modal wizard component was removed from the plasma codebase, because it can easily be reproduced using a `Stepper` component inside a `Modal`.
+
+## Collection enhanceWithCollectionProps utility
+
+Better integration of the `Collection` within mantine forms can now be achieved using the `enhanceWithCollectionProps` utility. If you use the Collection component with a Mantine form, it is recommended to use that utility. [See mantine documentation to learn more](https://mantine.dev/form/get-input-props/#enhancegetinputprops).
+
+Before
+
+```tsx
+const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+
+<Collection {...form.getInputProps('fruits', {type: 'collection'})}>
+   ...
+</Collection>
+```
+
+After
+
+```tsx
+const form = useForm({
+    initialValues: {fruits: ['banana', 'orange']}
+    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+});
+
+<Collection {...form.getInputProps('fruits')}>
+   ...
+</Collection>
+```
+
+## InlineConfirm renaming
+
+InlineConfirm is a bit different to use:
+- `InlineConfirm.Button` changed to `InlineConfirm.Target`
+- Removed the necessity to pass a label
+- `InlineConfirm.Target` and `InlineConfirm.Prompt` will throw an error if there's no parent `InlineConfirm`
+- `InlineConfirm.MenuItem` was removed, use `<InlineConfirm.Target component={MenuItem}>` instead
+
+Before:
+```tsx
+<InlineConfirm>
+  <InlineConfirm.Button id="a">Remove</InlineConfirm.Button>
+  <InlineConfirm.Prompt id="a" label="Are you sure?" onConfirm={onConfirm} />
+
+  <InlineConfirm.Button id="b">Remove</InlineConfirm.Button>
+  <InlineConfirm.Prompt
+    id="b"
+    label="Remove?"
+    confirmLabel="I confirm"
+    cancelLabel="I changed my mind"
+  />
+</InlineConfirm>
+```
+
+After:
+```tsx
+<InlineConfirm>
+  <InlineConfirm.Target id="my-button-id">Remove</InlineConfirm.Button>
+  <InlineConfirm.Prompt id="my-button-id" onConfirm={onConfirm} />
+
+  <InlineConfirm.Target id="b">Remove</InlineConfirm.Target>
+  <InlineConfirm.Prompt
+    id="b"
+    label="Remove?"
+    confirm={<Button onClick={confirmSpy}>I confirm</Button>}
+    cancel={<Button>I changed my mind</Button>}
+  />
+</InlineConfirm>
+```
+
+## Icons changes
+
+- `CartNew` icon was renamed to `Cart`
+
+# New features
+
+## Plasmantine is now extensible
+
+```tsx
+const theme = createTheme({
+    ...
+});
+
+<Plasmantine theme={theme}>
+    <App />
+</Plasmantine>
+```
+
+## Header.DocAnchor accepts ReactNode as label
+
+Previously the `<Header.DocAnchor>` only accepted type string as label. Now the label will accept any ReactNode. The label is the content of the tooltip displayed when hovering over the `Header.DocAnchor`.
+
+```tsx
+<Header.DocAnchor label={<span>Tooltip content</span>} />
+```
+
+## Plasma website now has Mantine components demo pages
+
+The plasma demo website now has demo pages for the default mantine components. Those demos are automatically pulled and generated from the mantine repository. These are useful to see how our theme impact those components. For example here's the pages for the Button component https://plasma.coveo.com/mantine/Button.
+
+# Bug fixes
+
+
+
 ## 52.27.2-next.13 (2024-04-15)
 
 
