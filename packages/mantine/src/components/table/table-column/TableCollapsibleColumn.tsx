@@ -11,7 +11,7 @@ const sharedProps: ColumnDef<unknown> = {
     id: 'collapsible',
     enableSorting: false,
     header: '',
-    size: 62,
+    size: 84, // 16px padding left + 28px ActionIcon + 40px padding right
 };
 
 /**

@@ -43,13 +43,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
     const gridStyles = ctx.getStyles('headerGrid', stylesApiProps);
 
     return (
-        <Box
-            py="sm"
-            px="lg"
-            ref={ref}
-            {...ctx.getStyles('headerRoot', {className, style, ...stylesApiProps})}
-            {...others}
-        >
+        <Box ref={ref} {...ctx.getStyles('headerRoot', {className, style, ...stylesApiProps})} {...others}>
             <Grid
                 justify="flex-start"
                 align="center"
