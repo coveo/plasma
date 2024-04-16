@@ -94,9 +94,8 @@ describe('Table', () => {
                     </Table.Header>
                 </Table>,
             );
-            expect(screen.getByTestId('filtered-empty-state').parentElement).toHaveClass(
-                'mantine-Skeleton-root mantine-Skeleton-visible',
-            );
+            expect(screen.getByTestId('filtered-empty-state').parentElement).toBeVisible();
+            expect(screen.getByTestId('filtered-empty-state').parentElement).toHaveClass('mantine-Skeleton-root');
         });
 
         it('shows a loading animation over the no data children (unfiltered)', () => {
@@ -107,9 +106,8 @@ describe('Table', () => {
                     </Table.Header>
                 </Table>,
             );
-            expect(screen.getByTestId('empty-state').parentElement).toHaveClass(
-                'mantine-Skeleton-root mantine-Skeleton-visible',
-            );
+            expect(screen.getByTestId('empty-state').parentElement).toBeVisible();
+            expect(screen.getByTestId('empty-state').parentElement).toHaveClass('mantine-Skeleton-root');
         });
     });
 
@@ -181,18 +179,17 @@ describe('Table', () => {
     });
 
     describe('with multiple layouts', () => {
-        const layouts: TableLayout[] = [
-            {
-                name: 'Layout 1',
-                Header: () => <tr data-testid="layout1-header" />,
-                Body: () => <tr data-testid="layout1-body" />,
-            },
-            {
-                name: 'Layout 2',
-                Header: () => <tr data-testid="layout2-header" />,
-                Body: () => <tr data-testid="layout2-body" />,
-            },
-        ];
+        const Layout1: TableLayout = ({children}) => <>{children}</>;
+        Layout1.displayName = 'Layout 1';
+        Layout1.Header = () => <tr data-testid="layout1-header" />;
+        Layout1.Body = () => <tr data-testid="layout1-body" />;
+
+        const Layout2: TableLayout = ({children}) => <>{children}</>;
+        Layout2.displayName = 'Layout 2';
+        Layout2.Header = () => <tr data-testid="layout2-header" />;
+        Layout2.Body = () => <tr data-testid="layout2-body" />;
+
+        const layouts: TableLayout[] = [Layout1, Layout2];
 
         it('handles switching layout', async () => {
             const user = userEvent.setup();

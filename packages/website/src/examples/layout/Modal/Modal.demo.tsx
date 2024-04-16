@@ -7,9 +7,10 @@ const Demo = () => {
     return (
         <>
             <Modal
+                size="md"
                 opened={opened}
                 title={
-                    <Header variant="modal" description="Modal description">
+                    <Header variant="primary" description="Modal description">
                         Modal Title
                         <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
                     </Header>

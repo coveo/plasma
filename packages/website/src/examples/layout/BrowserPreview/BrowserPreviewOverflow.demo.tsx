@@ -5,8 +5,8 @@ const Demo = () => {
     const content = faker.lorem.paragraphs(20);
     return (
         <BrowserPreview>
-            <Stack spacing="xs">
-                <Title order={3} align="center">
+            <Stack gap="xs">
+                <Title order={3} style={{align: 'center'}}>
                     Hello World !
                 </Title>
                 <Text>{content}</Text>

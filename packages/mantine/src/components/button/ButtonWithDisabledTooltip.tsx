@@ -1,5 +1,5 @@
 import {Box, Tooltip, TooltipProps} from '@mantine/core';
-import {forwardRef, ReactNode} from 'react';
+import {ReactNode, forwardRef} from 'react';
 
 import {createPolymorphicComponent} from '../../utils';
 
@@ -27,7 +27,7 @@ const _ButtonWithDisabledTooltip = forwardRef<HTMLDivElement, ButtonWithDisabled
     ({disabledTooltip, disabled, children, disabledTooltipProps, fullWidth, ...others}, ref) =>
         disabledTooltip ? (
             <Tooltip label={disabledTooltip} disabled={!disabled} {...disabledTooltipProps}>
-                <Box ref={ref} sx={{'&:hover': {cursor: 'not-allowed'}, width: fullWidth && '100%'}} {...others}>
+                <Box ref={ref} style={{'&:hover': {cursor: 'not-allowed'}, width: fullWidth && '100%'}} {...others}>
                     {children}
                 </Box>
             </Tooltip>

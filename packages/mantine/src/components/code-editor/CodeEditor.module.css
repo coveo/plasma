@@ -1,0 +1,24 @@
+.editor {
+    border: 1px solid var(--mantine-color-gray-3);
+    border-radius: var(--mantine-radius-default);
+    z-index: 1;
+    height: 100%;
+    outline-width: thin;
+
+    @mixin light {
+        background-color: var(--mantine-color-white);
+    }
+    @mixin dark {
+        background-color: var(--mantine-color-black);
+    }
+}
+
+.valid {
+    outline-color: auto;
+    outline-style: none;
+}
+
+.error {
+    outline-color: var(--mantine-color-red-6);
+    outline-style: solid;
+}

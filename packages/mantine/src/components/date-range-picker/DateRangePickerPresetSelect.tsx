@@ -1,4 +1,4 @@
-import {Select, SelectItem, SelectProps} from '@mantine/core';
+import {ComboboxItem, Select, SelectProps} from '@mantine/core';
 import dayjs from 'dayjs';
 import {useEffect, useState} from 'react';
 import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
@@ -21,7 +21,7 @@ export const DateRangePickerPresetSelect = <T extends unknown>({
     onChange,
     selectProps = {},
 }: DateRangePickerPresetsSelectProps<T>) => {
-    const selectData: SelectItem[] = Object.entries(presets).map(([val, {label}]) => ({value: val, label}));
+    const selectData: ComboboxItem[] = Object.entries(presets).map(([val, {label}]) => ({value: val, label}));
 
     const getSelectedPreset = () => {
         if (value[0] !== null && value[1] !== null && dayjs(value[0]).unix() !== dayjs(value[1]).unix()) {

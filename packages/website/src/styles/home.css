@@ -1,0 +1,72 @@
+.home {
+    padding-top: 48px;
+    padding-left: 24px;
+
+    .section {
+        position: relative;
+        margin-bottom: 112px;
+        text-align: left;
+
+        .intro {
+            height: 257px;
+        }
+
+        .welcome-to {
+            width: 98px;
+            height: 28px;
+            color: var(--navy-blue-80);
+        }
+
+        .page-title {
+            display: inline-block;
+            height: 133px;
+            padding-top: 8px;
+            color: transparent;
+
+            /* hero 174 thin does not exist in typekit*/
+            font-weight: 200;
+            font-size: 140px;
+            line-height: 95%;
+            letter-spacing: -0.01em;
+            background: none;
+            background: linear-gradient(
+                260deg,
+                #f9463a 0%,
+                #fadf4a 19.235%,
+                #03dec8 33.245%,
+                #08b7ea 45.86%,
+                #f9463a 50%,
+                #fadf4a 69.235%,
+                #03dec8 83.245%,
+                #08b7ea 100%
+            );
+            background-size: 400% 400%;
+            animation: moveBackground 12s linear infinite;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .plasma-description {
+            padding-top: 8px;
+            color: var(--grey-80);
+            white-space: pre-line;
+        }
+    }
+
+    .tile-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
+        gap: 24px;
+        margin-right: 24px;
+    }
+}
+
+@keyframes moveBackground {
+    from {
+        background-position: 100% 0%;
+    }
+
+    to {
+        background-position: 33.7% 100%;
+    }
+}

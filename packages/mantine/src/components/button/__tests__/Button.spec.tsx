@@ -1,4 +1,4 @@
-import {render, screen, userEvent, waitFor, within} from '@test-utils';
+import {render, screen, userEvent, waitFor} from '@test-utils';
 
 import {Button} from '../Button';
 
@@ -12,16 +12,10 @@ describe('Button', () => {
 
     describe('onClick Promise handler', () => {
         it('uses the native loading prop if passed', () => {
-            render(
-                <>
-                    <Button loading={true}>I am loading</Button>
-                    <Button loading={false}>I am not loading</Button>
-                </>,
-            );
-            expect(within(screen.getByRole('button', {name: /I am loading/i})).getByRole('presentation')).toBeVisible();
-            expect(
-                within(screen.getByRole('button', {name: /I am not loading/i})).queryByRole('presentation'),
-            ).not.toBeInTheDocument();
+            const {rerender} = render(<Button loading={true} />);
+            expect(screen.getByRole('button')).toHaveAttribute('data-loading');
+            rerender(<Button />);
+            expect(screen.getByRole('button')).not.toHaveAttribute('data-loading');
         });
 
         it('shows a loader while the promise is waiting to be resolved', async () => {
@@ -40,9 +34,7 @@ describe('Button', () => {
 
             await user.click(screen.getByRole('button', {name: /promise handler/i}));
 
-            expect(
-                await within(screen.getByRole('button', {name: /promise handler/i})).findByRole('presentation'),
-            ).toBeVisible();
+            expect(screen.getByRole('button', {name: /promise handler/i})).toHaveAttribute('data-loading');
 
             resolve();
 
@@ -50,9 +42,7 @@ describe('Button', () => {
                 expect(isResolved).toBeTruthy();
             });
 
-            expect(
-                within(screen.getByRole('button', {name: /promise handler/i})).queryByRole('presentation'),
-            ).not.toBeInTheDocument();
+            expect(screen.getByRole('button', {name: /promise handler/i})).not.toHaveAttribute('data-loading');
         });
 
         it('removes the loading if a promise is rejected', async () => {
@@ -71,9 +61,7 @@ describe('Button', () => {
 
             await user.click(screen.getByRole('button', {name: /promise handler/i}));
 
-            expect(
-                await within(screen.getByRole('button', {name: /promise handler/i})).findByRole('presentation'),
-            ).toBeVisible();
+            expect(screen.getByRole('button', {name: /promise handler/i})).toHaveAttribute('data-loading');
 
             reject();
 
@@ -81,9 +69,7 @@ describe('Button', () => {
                 expect(isRejected).toBeTruthy();
             });
 
-            expect(
-                within(screen.getByRole('button', {name: /promise handler/i})).queryByRole('presentation'),
-            ).not.toBeInTheDocument();
+            expect(screen.getByRole('button', {name: /promise handler/i})).not.toHaveAttribute('data-loading');
         });
     });
 });

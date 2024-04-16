@@ -1,8 +1,163 @@
+## 52.27.2-next.13 (2024-04-15)
+
+
+### Features
+
+* **mantine:** make Plasmantine extensible (#3681) d3a3abf, closes #3681
+
+
+
+## 52.27.2-next.12 (2024-04-11)
+
+
+### Bug Fixes
+
+* **datepicker:** removed label to (#3679) bb82a1e, closes #3679
+* **deps:** replace dependency redux-devtools-extension with @redux-devtools/extension 3.0.0 (#3615) 2e390f5, closes #3615
+* **mantine, code editor:** scrollbar z-index (#3675) 9f45807, closes #3675
+* **mantine, table:** automatically update page when needed (#3652) 1115971, closes #3652
+* **stepper:** border color (#3666) f5ae6ce, closes #3666
+* **style:** add missing reset rules to reset.css (#3677) 8a2c264, closes #3677
+
+
+### Features
+
+* **header:** +content variant +example (#3676) d750c55, closes #3676
+* **next:** merge master in next (#3672) 97b5600, closes #3672
+* **table:** visual update on datepicker (#3673) 14e6d4d, closes #3673
+
+
+
+## 52.27.2-next.11 (2024-04-04)
 ## 52.27.4 (2024-03-22)
 
 
 ### Bug Fixes
 
+* **mantine, combobox:** add small margin under Combobox.Search (#3669) 9118de5, closes #3669
+
+
+
+## 52.27.2-next.10 (2024-03-29)
+
+
+### Bug Fixes
+
+* **button:** prevent default onclick for link button (#3667) 6a0948f, closes #3667
+* **mantine:** table header stacking styles (#3668) 76d0601, closes #3668
+
+
+### Features
+
+* **multiselect:** +hidePickedOptions ttrue by default (#3665) cdf0be6, closes #3665
+
+
+
+## 52.27.2-next.9 (2024-03-27)
+
+
+### Bug Fixes
+
+* **mantine:** header props type (#3664) 39ff6ca, closes #3664
+
+
+
+## 52.27.2-next.8 (2024-03-26)
+
+
+### Bug Fixes
+
+* **mantine:** subtle button hover background color (#3662) e85df40, closes #3662
+* **website:** pin mantine version when cloning examples (#3663) 249de20, closes #3663
+
+
+
+## 52.27.2-next.7 (2024-03-25)
+
+
+### Bug Fixes
+
+* **mantine:** add back modal body padding top (#3661) 5cb962f, closes #3661
+* **mantine:** button loading data attribute (#3660) 11459a1, closes #3660
+
+
+
+## 52.27.2-next.6 (2024-03-25)
+
+
+### Bug Fixes
+
+* **mantine:** adjust Input styles (#3659) c5edc49, closes #3659
+* **mantine:** table selected row highlight (#3653) 913a266, closes #3653
+* **table:** column sizing (#3658) 2d3b4d2, closes #3658
+
+
+### Features
+
+* **close-button:** +aria-label for unit tests purpose (#3657) e86892b, closes #3657
+
+
+### Reverts
+
+* Revert "fix(reset): line-height (#3648)" (#3656) 337b481, closes #3648 #3656
+
+
+
+## 52.27.2-next.5 (2024-03-21)
+
+
+### Bug Fixes
+
+* **mantine:** add custom css variable resolver (#3650) a63144c, closes #3650
+* **mantine:** modal spacing (#3647) 9870c51, closes #3647
+* **reset:** line-height (#3648) 4db5265, closes #3648
+
+
+
+## 52.27.2-next.4 (2024-03-19)
+
+
+### Bug Fixes
+
+* **line height:** 1.5 (#3639) 9ddd101, closes #3639
+* **mantine table:** header row svg (#3635) 5c01b9d, closes #3635
+* **mantine:** adjust NavLink styles (#3638) 6cbab8c, closes #3638
+* **mantine:** table collapsible icon size and color (#3637) 6481bca, closes #3637
+* **mantine:** table header margin problem (#3636) 78acdc0, closes #3636
+* **plasma react table:** pagination style (#3631) 207a3ec, closes #3631
+* **popover:** zindex (#3642) ec5bfb3, closes #3642
+* **style:** lintfix (#3630) 3f5b0b6, closes #3630
+* **table filter:** clear button subtle (#3640) 9a75cdb, closes #3640
+* **tabs:** fixed the typo in css variable (#3643) 4fb106a, closes #3643
+
+
+### Features
+
+* **stickyFooter:** adjust padding (#3633) 7763e3c, closes #3633
+
+
+
+## 52.27.2-next.3 (2024-03-08)
+
+
+### Bug Fixes
+
+* **mantine, header:** change HeaderDocAnchor label type to ReactNode (#3625) 909913e, closes #3625
+* **mantine:** add null to table data prop type (#3623) 5cdac8c, closes #3623
+
+
+### Features
+
+* **mantine:** factorize header component (#3632) ca5f56e, closes #3632
+* **theme:** combobox options (#3629) 50d97e6, closes #3629
+* **tokens:** extract design tokens from figma libraries (#3500) 8ccdd72, closes #3500
+
+
+### BREAKING CHANGES
+
+* **tokens:** CartNew icon renamed to Cart
+
+Co-authored-by: Jenkins CI <jenkins@coveo.com>
 * **deps:** replace dependency redux-devtools-extension with @redux-devtools/extension 3.0.0 (#3615) 2e390f5, closes #3615
 * **mantine, table:** automatically update page when needed (#3652) 1115971, closes #3652
 * **plasma react table:** pagination style (#3631) 207a3ec, closes #3631
@@ -33,25 +188,70 @@
 
 ### Bug Fixes
 
-* **mantine:** adjust default font styles (#3621) 77c98e2, closes #3621
+* **mantine:** make code-highlight and notifications peerDeps 5223696
 
 
 
-# 52.27.0 (2024-02-16)
-
-
-### Features
-
-* **Mantine, Table:** adding edit columns visibility button (#3617) 67a19f8, closes #3617
-
-
-
-## 52.26.6 (2024-02-07)
+## 52.27.2-next.0 (2024-02-20)
 
 
 ### Bug Fixes
 
-* **filterbox:** do not trim end of string to avoid weird UX when typing (#3614) 0144cba, closes #3614
+* **mantine:** cleared up some changes in v7 and fix them (#3601) f00b29b, closes #3601
+* **mantine:** override get input props types (#3618) 77bbf03, closes #3618
+* **plasma:** fixed the test with mantine v7 bump (#3604) c0764b8, closes #3604
+
+
+### Features
+
+* **collection:** use getStyles, fixed collection (#3616) 34c1509, closes #3616
+* **stickyFooter:** fix rebase mess (#3622) ea954d7, closes #3622
+* **website:** create script to generate mantine core example (#3611) fe1d7b8, closes #3611
+
+
+
+## 52.26.6-next.4 (2024-02-13)
+
+
+
+## 52.26.6-next.3 (2024-02-12)
+
+
+### Bug Fixes
+
+* **mantine:** override get input props types (#3618) 04faf5e, closes #3618
+
+
+
+## 52.26.6-next.2 (2024-02-12)
+
+
+### Features
+
+* **collection:** use getStyles, fixed collection (#3616) ebac9b9, closes #3616
+
+
+
+## 52.26.6-next.1 (2024-02-12)
+
+
+### Bug Fixes
+
+* **plasma:** fixed the test with mantine v7 bump (#3604) 0f18373, closes #3604
+
+
+### Features
+
+* **website:** create script to generate mantine core example (#3611) dc380d0, closes #3611
+
+
+
+## 52.26.6-next.0 (2024-01-15)
+
+
+### Bug Fixes
+
+* **mantine:** cleared up some changes in v7 and fix them (#3601) 47dad99, closes #3601
 
 
 

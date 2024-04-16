@@ -2,17 +2,22 @@ import {LinkSvg, Section} from '@coveord/plasma-react';
 import {ExternalSize16Px, Icon} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
 
+import {AppShell} from '@mantine/core';
+import LegacyWarningBanner from '../../building-blocs/LegacyWarningBanner';
 import {Tile} from '../../building-blocs/Tile';
 
 export const Index = () => (
-    <Section className="home flex-auto overflow-auto">
-        <WelcomeToPlasma />
-        <FoundationsPages />
-        <LayoutPages />
-        <FormPages />
-        <NavigationPages />
-        <FeedbackPages />
-    </Section>
+    <AppShell.Main>
+        <LegacyWarningBanner />
+        <Section className="home flex-auto overflow-auto">
+            <WelcomeToPlasma />
+            <FoundationsPages />
+            <LayoutPages />
+            <FormPages />
+            <NavigationPages />
+            <FeedbackPages />
+        </Section>
+    </AppShell.Main>
 );
 
 const WelcomeToPlasma: FunctionComponent = () => (

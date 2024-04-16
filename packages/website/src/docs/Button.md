@@ -21,8 +21,6 @@ In such case, the primary button must correspond to an action that moves the use
 
 For example, in the [Sticky footer](https://plasma.coveo.com/layout/StickyFooter) of a page where the user edits a configuration, order buttons as follows: "Cancel" (secondary), then "Save" (primary).
 
-Similarly, in the footer of a [modal wizard](https://plasma.coveo.com/layout/ModalWizard), navigation buttons must be ordered as follows: "Previous" (secondary), then "Next" (primary). At the last step, the “Next” button must be replaced with a primary button with a label indicating the resulting action. For example, an appropriate label would be “Add filter” rather than “Save”.
-
 In a [page header](https://plasma.coveo.com/layout/PageHeader), **the primary button should appear on the left** and the secondary button should be to the right of the primary button. The primary action usually relates to the creation of new elements, while secondary actions are usually used to trigger troubleshooting or management actions, such as activity review. If multiple secondary actions are required, group them using an [actionable item](https://plasma.coveo.com/form/ActionableItem) on the rightmost side of the header.
 
 # Variants

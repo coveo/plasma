@@ -1,4 +1,4 @@
-import {Divider, NavLink, NavLinkProps, Navbar, ScrollArea} from '@coveord/plasma-mantine';
+import {AppShell, Divider, Image, NavLink, NavLinkProps, ScrollArea} from '@coveord/plasma-mantine';
 import {SideNavigation, SideNavigationItem, SideNavigationMenuSection} from '@coveord/plasma-react';
 import {
     AnnouncementSize16Px,
@@ -12,6 +12,8 @@ import {
 } from '@coveord/plasma-react-icons';
 import {ComponentProps, FunctionComponent, PropsWithChildren, useState} from 'react';
 import {Link, useLocation, useMatch} from 'react-router-dom';
+
+import MantineLogo from './assets/mantine-logo.svg';
 
 interface LegacyNavLinkProps {
     href?: string;
@@ -70,6 +72,8 @@ export const Navigation: FunctionComponent = () => {
     return isLegacy ? <LegacyNavigation /> : <MantineNavigation />;
 };
 
+const mantinePages = import.meta.glob<() => JSX.Element>('./pages/mantine/**/*.tsx', {import: 'default'});
+
 const InternalNavLink: FunctionComponent<ComponentProps<typeof Link> & Omit<NavLinkProps, 'component' | 'active'>> = (
     props,
 ) => {
@@ -78,15 +82,15 @@ const InternalNavLink: FunctionComponent<ComponentProps<typeof Link> & Omit<NavL
 };
 
 const MantineNavigation = () => (
-    <Navbar width={{base: 245}} py="sm">
-        <Navbar.Section grow component={ScrollArea} pl="xs">
-            <InternalNavLink label="Home" to="/" icon={<HomeSize16Px height={16} />} />
+    <>
+        <AppShell.Section grow component={ScrollArea} pl="xs" pt="sm">
+            <InternalNavLink label="Home" to="/" leftSection={<HomeSize16Px height={16} />} />
             <NavLink
                 label="Brand"
                 component="a"
                 href="https://brand.coveo.com/"
                 target="_blank"
-                icon={<AnnouncementSize16Px height={16} />}
+                leftSection={<AnnouncementSize16Px height={16} />}
                 rightSection={<ExternalSize16Px height={16} />}
             />
             <NavLink
@@ -94,43 +98,50 @@ const MantineNavigation = () => (
                 component="a"
                 href="https://coveord.atlassian.net/wiki/spaces/UX/pages/2993946801/Design+principles"
                 target="_blank"
-                icon={<DiamondSize16Px height={16} />}
+                leftSection={<DiamondSize16Px height={16} />}
                 rightSection={<ExternalSize16Px height={16} />}
             />
-            <NavLink label="Foundations" icon={<LayeringTechniquesSize16Px height={16} />} defaultOpened>
+            <NavLink label="Foundations" leftSection={<LayeringTechniquesSize16Px height={16} />} defaultOpened>
                 <InternalNavLink to="/foundations/Colors" label="Colors" />
                 <InternalNavLink to="/foundations/Iconography" label="Iconography" />
                 <InternalNavLink to="/foundations/TypeKit" label="TypeKit" />
             </NavLink>
-            <NavLink label="Layout" icon={<RichUiSize16Px height={16} />} defaultOpened>
+            <NavLink label="Layout" leftSection={<RichUiSize16Px height={16} />} defaultOpened>
                 <InternalNavLink to="/layout/BrowserPreview" label="Browser Preview" />
                 <InternalNavLink to="/layout/Header" label="Header" />
                 <InternalNavLink to="/layout/Modal" label="Modal" />
-                <InternalNavLink to="/layout/ModalWizard" label="ModalWizard" />
                 <InternalNavLink to="/layout/Prompt" label="Prompt" />
                 <InternalNavLink to="/layout/StickyFooter" label="Sticky footer" />
                 <InternalNavLink to="/layout/Table" label="Table" />
             </NavLink>
-            <NavLink label="Form" icon={<ClickSize16Px height={16} />} defaultOpened>
+            <NavLink label="Form" leftSection={<ClickSize16Px height={16} />} defaultOpened>
                 <InternalNavLink to="/form/ActionIcon" label="Action Icon" />
                 <InternalNavLink to="/form/Button" label="Button" />
                 <InternalNavLink to="/form/CodeEditor" label="Code editor" />
                 <InternalNavLink to="/form/Collection" label="Collection" />
                 <InternalNavLink to="/form/CopyToClipboard" label="Copy to Clipboard" />
+                <InternalNavLink to="/form/InlineConfirm" label="Inline confirm" />
             </NavLink>
-        </Navbar.Section>
+            <NavLink label="Mantine" leftSection={<Image src={MantineLogo} height={16} />} defaultOpened>
+                {Object.keys(mantinePages).map((filePath) => {
+                    const parts = filePath.split('/');
+                    const fileName = parts[parts.length - 1].replace(/\.tsx$/, '');
+                    return <InternalNavLink key={fileName} to={`/mantine/${fileName}`} label={fileName} />;
+                })}
+            </NavLink>
+        </AppShell.Section>
         <Divider />
-        <Navbar.Section>
-            <InternalNavLink to="/legacy" label="Deprecated components" icon={<DeleteSize16Px height={16} />} />
-        </Navbar.Section>
-    </Navbar>
+        <AppShell.Section pb="sm">
+            <InternalNavLink to="/legacy" label="Deprecated components" leftSection={<DeleteSize16Px height={16} />} />
+        </AppShell.Section>
+    </>
 );
 
 const LegacyNavigation = () => {
     const {pathname} = useLocation();
     return (
-        <Navbar width={{base: 246}}>
-            <Navbar.Section grow component={ScrollArea}>
+        <>
+            <AppShell.Section grow component={ScrollArea} pt="sm">
                 <SideNavigation>
                     <SideNavigationMenuSection
                         isActive={pathname === '/legacy'}
@@ -213,7 +224,7 @@ const LegacyNavigation = () => {
                         <LegacyNavLink href="/legacy/advanced/SlideY" label="Slide Y" />
                     </CollapsibleSideSection>
                 </SideNavigation>
-            </Navbar.Section>
-        </Navbar>
+            </AppShell.Section>
+        </>
     );
 };

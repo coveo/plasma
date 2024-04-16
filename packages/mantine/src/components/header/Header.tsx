@@ -1,27 +1,38 @@
 import {
-    DefaultProps,
     Divider,
+    Factory,
     Group,
     GroupProps,
-    Selectors,
     Stack,
+    StylesApiProps,
     Text,
     Title,
-    useComponentDefaultProps,
+    factory,
+    useProps,
+    useStyles,
 } from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
+import {HeaderProvider} from './Header.context';
+import classes from './Header.module.css';
+import {HeaderActions, HeaderActionsStyleNames} from './HeaderActions/HeaderActions';
+import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
+import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
 
-import {HeaderStylesParams, useStyles} from './Header.styles';
-import {HeaderActions} from './HeaderActions/HeaderActions';
-import {HeaderBreadcrumbs} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
-import {HeaderDocAnchor} from './HeaderDocAnchor/HeaderDocAnchor';
+export type {HeaderActionsProps} from './HeaderActions/HeaderActions';
+export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
+export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor';
 
-export type {HeaderDocAnchorProps, HeaderDocAnchorStylesNames} from './HeaderDocAnchor/HeaderDocAnchor';
-export type {HeaderBreadcrumbsProps, HeaderBreadcrumbsStylesNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
-export type {HeaderActionsProps, HeaderActionsStylesNames} from './HeaderActions/HeaderActions';
-export type HeaderStylesNames = Selectors<typeof useStyles>;
+export type HeaderVariant = 'primary' | 'secondary';
+export type HeaderStyleNames =
+    | 'root'
+    | 'title'
+    | 'description'
+    | 'divider'
+    | HeaderDocAnchorStyleNames
+    | HeaderBreadcrumbsStyleNames
+    | HeaderActionsStyleNames;
 
-export interface HeaderProps extends Omit<GroupProps, 'styles'>, DefaultProps<HeaderStylesNames, HeaderStylesParams> {
+export interface HeaderProps extends StylesApiProps<HeaderFactory>, Omit<GroupProps, 'classNames' | 'styles' | 'vars'> {
     /**
      * The description text displayed inside the header underneath the title
      */
@@ -31,34 +42,62 @@ export interface HeaderProps extends Omit<GroupProps, 'styles'>, DefaultProps<He
      */
     borderBottom?: boolean;
     /**
-     * Use the modal variant when displaying the header inside a modal
+     * Use the primary variant for page header and secondary variant elsewhere
      *
-     * @default 'page'
+     * @default 'primary'
      */
-    variant?: 'page' | 'modal';
+    variant?: 'primary' | 'secondary';
     /**
      * The title of the header.
      */
     children: ReactNode;
 }
 
-interface HeaderType {
-    (props: HeaderProps): ReactElement;
-    Breadcrumbs: typeof HeaderBreadcrumbs;
-    Actions: typeof HeaderActions;
-    DocAnchor: typeof HeaderDocAnchor;
-}
+export type HeaderFactory = Factory<{
+    props: HeaderProps;
+    ref: HTMLDivElement;
+    variant: HeaderVariant;
+    stylesNames: HeaderStyleNames;
+    staticComponents: {
+        Breadcrumbs: typeof HeaderBreadcrumbs;
+        Actions: typeof HeaderActions;
+        DocAnchor: typeof HeaderDocAnchor;
+    };
+}>;
 
 const defaultProps: Partial<HeaderProps> = {
-    variant: 'page',
-    position: 'apart',
-    noWrap: true,
+    variant: 'primary',
+    justify: 'space-between',
+    wrap: 'nowrap',
 };
 
-export const Header: HeaderType = (props: HeaderProps) => {
-    const {classNames, styles, unstyled, className, description, borderBottom, variant, children, ...others} =
-        useComponentDefaultProps('PlasmaHeader', defaultProps, props);
-    const {classes, cx} = useStyles({variant}, {name: 'PlasmaHeader', classNames, styles, unstyled});
+export const Header = factory<HeaderFactory>((_props, ref) => {
+    const props = useProps('PlasmaHeader', defaultProps, _props);
+    const {
+        className,
+        description,
+        borderBottom,
+        variant,
+        children,
+        style,
+        classNames,
+        unstyled,
+        vars,
+        styles,
+        ...others
+    } = props;
+    const getStyles = useStyles<HeaderFactory>({
+        name: 'PlasmaHeader',
+        props,
+        classes,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+        vars,
+    });
+    const stylesApiProps = {classNames, styles};
 
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
@@ -68,24 +107,28 @@ export const Header: HeaderType = (props: HeaderProps) => {
         (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor,
     );
     return (
-        <>
-            <Group className={cx(className, classes.root)} {...others}>
-                <Stack spacing={0}>
+        <HeaderProvider value={{getStyles}}>
+            <Group ref={ref} variant={variant} {...getStyles('root')} {...others}>
+                <Stack gap={0}>
                     {breadcrumbs}
-                    <Title order={variant === 'page' ? 1 : 3} className={classes.title}>
+                    <Title
+                        variant={variant}
+                        order={variant === 'primary' ? 1 : 3}
+                        {...getStyles('title', stylesApiProps)}
+                    >
                         {otherChildren}
                         {docAnchor}
                     </Title>
-                    <Text className={classes.description} size={variant === 'page' ? 'md' : 'sm'}>
+                    <Text {...getStyles('description', stylesApiProps)} size={variant === 'primary' ? 'md' : 'sm'}>
                         {description}
                     </Text>
                 </Stack>
                 {actions}
             </Group>
-            {borderBottom ? <Divider className={classes.divider} size="xs" /> : null}
-        </>
+            {borderBottom ? <Divider {...getStyles('divider', stylesApiProps)} size="xs" /> : null}
+        </HeaderProvider>
     );
-};
+});
 
 Header.Breadcrumbs = HeaderBreadcrumbs;
 Header.Actions = HeaderActions;

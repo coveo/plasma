@@ -8,7 +8,6 @@ export * from './header';
 export * from './inline-confirm';
 export * from './table';
 export * from './prompt';
-export * from './modal-wizard';
 export * from './button';
 export * from './action-icon';
 export * from './menu';

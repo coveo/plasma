@@ -1,8 +1,8 @@
 {
     "name": "Colors - PDS",
-    "lastModified": "2023-04-07T22:32:32Z",
-    "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/218c565d-4d27-4926-8bb5-3f3ac0f6b574?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCZNNUQCOE%2F20230413%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230413T000000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3aabccf9f9287ba1ecb12b160234d6631284d562f8858ee774599399bba983c0",
-    "version": "3305775559",
+    "lastModified": "2024-02-13T19:38:23Z",
+    "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/7e61fc29-6222-406d-8ce2-1459151f7e05?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCXBZQTRO6%2F20240225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240225T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dca79527cfb76f0b4d4b4ef67cfd00d8695e6b63700147a9429a7f0a53c630c5",
+    "version": "5147211765",
     "role": "viewer",
     "editorType": "figma",
     "linkAccess": "org_view",
@@ -10910,7 +10910,7 @@
             "schemaVersion": 0,
             "styles": {
                 "3:89": {
-                    "key": "d5f48b4f01d02aaad4a60bec5c9066eda9e2f8f0",
+                    "key": "a759251a7009a6a84d9711c06ac793a984cb4cdf",
                     "name": "Primary/Gray/9 - T",
                     "styleType": "FILL",
                     "remote": false,
@@ -10924,238 +10924,238 @@
                     "description": ""
                 },
                 "3:3": {
-                    "key": "1aa85625aaeb997589b77caa0f8713454ac2f23c",
+                    "key": "8583c3477ba99db52a3bc3c20b90e31cc0cae5bf",
                     "name": "Primary/Gradient",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "4px max height line use only.\nNo background use."
                 },
                 "3:128": {
-                    "key": "356e8ebf273b20206b500504a8bdf5ba4ee1c438",
+                    "key": "67a28d83629af3b3ee4f6d1fca1a858d61079b2f",
                     "name": "Secondary/Lime/0",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Success: Lightest color\nOnly for Ui purposes. "
                 },
                 "3:130": {
-                    "key": "41370dacf729a936debbfe3599b3ac9d8932ff33",
+                    "key": "83ff86e4a3b3cccbafe8b423cb04fc5d1dc92c25",
                     "name": "Secondary/Lime/6 - Main",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Success: Medium color\nOnly for Ui purposes. "
                 },
                 "3:129": {
-                    "key": "75d05e714c239299aeb5bd82bc1829ea3979ee05",
+                    "key": "7332475d8061b5fe752e9d6a19350f6512f277f0",
                     "name": "Secondary/Lime/9 - Sem",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Success: Darkest\nOnly for Ui purposes. "
                 },
                 "3:147": {
-                    "key": "f0f9eea109d38127b8c027fe4caab8710fdd0ba3",
+                    "key": "473e17580f389b7cd35106747a58067aa78baba5",
                     "name": "Secondary/Indigo/0",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:146": {
-                    "key": "e1ab8f7936cf8904bcd294f60203de6b23aa4356",
+                    "key": "7254da07122c8c539d032c8d0612f103ff7eda9c",
                     "name": "Secondary/Indigo/1",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "To be used in light background"
                 },
                 "3:145": {
-                    "key": "ecfefb68c3fbf3f8816e6cc57cba1175efcebdc4",
+                    "key": "0b436c0c28ffc92a8d4a56a77a1f66afbc08bd2e",
                     "name": "Secondary/Indigo/2",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:144": {
-                    "key": "4c3ad5c303d1d2cb1ba51c0b4bed1df6e38d42fe",
+                    "key": "04fc34b2bfd767e5e5b22ad2d5d98b457e6fde29",
                     "name": "Secondary/Indigo/3",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:143": {
-                    "key": "bfe7b0814f47f044159e811b9f99ba369ec31b87",
+                    "key": "dc7deec8cd3b71d83db752132f246098ca15f3d8",
                     "name": "Secondary/Indigo/4",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:142": {
-                    "key": "377419a54938a17bbdf4de99edcb63c37c50668a",
+                    "key": "a9dc99d2c85782a916d95c3e693439c40ec71915",
                     "name": "Secondary/Indigo/5",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Backgrounds and Data Viz"
                 },
                 "3:141": {
-                    "key": "eb788eacde01352356670ea5c3985136afed8274",
+                    "key": "9bfc6a2998da49461281747694a3f1e813910aad",
                     "name": "Secondary/Indigo/6",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:118": {
-                    "key": "90cd25587524e96a41ab0a14ee9348448ab2f970",
+                    "key": "1d475b22e6af25458a4940af4740039d24e0f0f2",
                     "name": "Secondary/Indigo/7",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:140": {
-                    "key": "788b7b1c2b2f0bc66ca746f09322f8439de6153f",
+                    "key": "d59abf8fa9f7b54b267a2ac9c1f89455d2d5c266",
                     "name": "Secondary/Indigo/8",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Main hue for backgrounds"
                 },
                 "3:139": {
-                    "key": "a2772a86c2ffa8af59ca1f93375f0990cb1ee6f2",
+                    "key": "76ca02b24c252921a021665875e1a67c7cddd91e",
                     "name": "Secondary/Indigo/9",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:159": {
-                    "key": "d0de9e2e027032816e8cbb7e940ee49267161447",
+                    "key": "81190d8793e0d612342fd282e3d0b245cf521980",
                     "name": "Secondary/Green/0",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:158": {
-                    "key": "66d5db502e18a555629a1c4e58b618f423a08cba",
+                    "key": "523bd2e26eab46e1afac4ae28ee8ad4326cd728a",
                     "name": "Secondary/Green/1",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "To be used in light backgrounds"
                 },
                 "3:157": {
-                    "key": "979eefd3f748fa09d8390486b7ea91741a62928f",
+                    "key": "d49a989108f8c2c8eed4433da826719be9ffd439",
                     "name": "Secondary/Green/2",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:156": {
-                    "key": "4b974569416cbb413c130e25936184a52547439b",
+                    "key": "1266e6431d6a861f7e4c2cda9cccd04e1897086b",
                     "name": "Secondary/Green/3",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:152": {
-                    "key": "367ee21bbab489c0621a59b3b08add83f8147242",
+                    "key": "252a604e089a76b2c1b6710b05ca1644c4cd4750",
                     "name": "Secondary/Green/4",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:151": {
-                    "key": "f9ec7f8f1688ab355a7cd906511f814f14fb0ab5",
+                    "key": "059d93cc9dc406da7a1f5504f621222e156eee91",
                     "name": "Secondary/Green/5 - Main",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:150": {
-                    "key": "03bdb8a98de125c95770f3ac9b5ed2e086d15331",
+                    "key": "a42a13e64d30aceb0890bb8e15e965b829caa513",
                     "name": "Secondary/Green/6",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:154": {
-                    "key": "51fc88846f2fe38aa81aabbb197247f399baf1d3",
+                    "key": "9a5646b5b58144b2443911b9f464f26f6a87a274",
                     "name": "Secondary/Green/7",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:153": {
-                    "key": "2521175f1a2822e4aebd2889a3e1d874f89fdbe4",
+                    "key": "3fb62a3b8b9cb9163c3fa01a06ba7102d918c5d0",
                     "name": "Secondary/Green/8",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Main hue for backgrounds"
                 },
                 "3:155": {
-                    "key": "a07b7eaebb9a98fb53a64eecd073bb78e32d44f3",
+                    "key": "5a6bb415cbb3012c0b430e1ab61ef3900c954819",
                     "name": "Secondary/Green/9",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:101": {
-                    "key": "17daa12226f12d2b540e341a34f62db3229134b5",
+                    "key": "3180d8c85ca2186d3c77053bdfc175f1a1b93832",
                     "name": "Secondary/Purple/0",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:103": {
-                    "key": "4e4c952edc1f8d8505c9056d38faefbd3956c670",
+                    "key": "43c3a4c0424395cbca1cadca830e3d94b5a5fc19",
                     "name": "Secondary/Purple/1",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "To be used for light backgrounds"
                 },
                 "3:105": {
-                    "key": "5b84ace111901a8ddf3cba7212417c14b3b44406",
+                    "key": "00e4728df0650964b4b86258b3de8f7db0b4a42c",
                     "name": "Secondary/Purple/2",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Visited state color for links"
                 },
                 "3:107": {
-                    "key": "9bfa1135d008211d80949a6a5e70d7d2e6dbc4e5",
+                    "key": "5ca82b55b5c0055c9de2755ba3d105a0f8c566ad",
                     "name": "Secondary/Purple/3",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:109": {
-                    "key": "6415f83babe2f5d4d1f830a2773ceac38e41f0c4",
+                    "key": "6d70d58e367b02851b7661f2e9953a58b553e905",
                     "name": "Secondary/Purple/4",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "To be used in backgrounds too"
                 },
                 "3:102": {
-                    "key": "5ee7fdcdbe9f683017e75d71cb34089aaf660a8a",
+                    "key": "693dd39c2c6298d1ec67d4ea9960d31ee924d69b",
                     "name": "Secondary/Purple/5",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:104": {
-                    "key": "2a1ab528c5de399d121f1aef09095f5d001c119e",
+                    "key": "e87bddcc5da7cc6663130ea13ea1ce286f93da68",
                     "name": "Secondary/Purple/6 - Main",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:106": {
-                    "key": "f4ae6151a9a0290d090b20d6f7bd00e163eb9e37",
+                    "key": "1768a7f9d1038c93dc22acf2d3479c6fb388927b",
                     "name": "Secondary/Purple/7",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:108": {
-                    "key": "c32b88276b36ac278033d33d9862320004b53e98",
+                    "key": "bf053cc1bf9b7bfa790088c0f07f199e7e418083",
                     "name": "Secondary/Purple/8",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Main hue for backgrounds"
                 },
                 "3:110": {
-                    "key": "271192b9e6cbb060c6ce7bd6f8a0d381b3767022",
+                    "key": "120512daac3da9faacc907d2e211861d22cd356a",
                     "name": "Secondary/Purple/9",
                     "styleType": "FILL",
                     "remote": false,
@@ -11169,322 +11169,322 @@
                     "description": ""
                 },
                 "3:183": {
-                    "key": "07a46166994d8c6dad6d655d3a8cafe3905984a9",
+                    "key": "9b4d8533c19c992c714e8659fe0d29336a648db9",
                     "name": "Primary/Action/2",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:184": {
-                    "key": "c668f99a1be97a48fed29b196e76cc8d3650ad52",
+                    "key": "96b8047231d691e5b9e63dd32ededc1d2c6ec9d5",
                     "name": "Primary/Action/3",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:185": {
-                    "key": "9e207aa9672a6a67e16d5c10fde21d6fe2c4d2d0",
+                    "key": "090b09f310229d11b31dd7b704040c73449cb421",
                     "name": "Primary/Action/4",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Main actions (in Dark): CTA, Links"
                 },
                 "3:186": {
-                    "key": "cef3bd74b075cc8c91c1b6d1faf32c2670ef4e48",
+                    "key": "137d231693e7d41c8c53fd99780e63bad6968673",
                     "name": "Primary/Action/6 - Main",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Main actions (in Light): CTA, Links"
                 },
                 "3:187": {
-                    "key": "f6e0c23f50c037165f98a6d661b8abfb2fc00203",
+                    "key": "7c5ad2bdad16ee6a2b8036185b7352fe6ff0de3e",
                     "name": "Primary/Action/8",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Hover color for button and links"
                 },
                 "3:188": {
-                    "key": "dcb071e57fd4df0a6ae6777ec82ff0c552ce36d2",
+                    "key": "95613b8e8d8793fd7c1850bc9ef056e98e97fda6",
                     "name": "Primary/Action/9",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Pressed state for link and buttons"
                 },
                 "3:88": {
-                    "key": "4c4ca9654d000fbde129913ea151b3364f106378",
+                    "key": "a34cb19f9f5fd8babd9d0a1f0eb24cb64fd73000",
                     "name": "Accent/Teal/0",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:93": {
-                    "key": "e2e9d72d1975d71c08189be70898a4322c75a3fc",
+                    "key": "ffcee15b3b869a2deae1c49774c03e3ab618f7fb",
                     "name": "Accent/Teal/1",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:95": {
-                    "key": "b1cbc3ad57e0f672b0efbf951c1139eb4b6a0317",
+                    "key": "29a2af86a473d0e190f1ee8130ab535fe53d70a4",
                     "name": "Accent/Teal/2",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:97": {
-                    "key": "0fae1388207658535985c40b2cb6e4460738a988",
+                    "key": "6df337923d72ae8343f63a8fe62cc29f73341eeb",
                     "name": "Accent/Teal/3",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "A secondary accent color"
                 },
                 "3:99": {
-                    "key": "ad336a298020d6203edea187a8904444a366869f",
+                    "key": "7d240f7305f916d40f177747e1c10b9a868783b7",
                     "name": "Accent/Teal/4 - Main",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Main color"
                 },
                 "3:91": {
-                    "key": "a9b27774345868c318b1c2c4f0386d4acecd96b2",
+                    "key": "b41552bedda2ea883ae278b68ed8e7170da63b7e",
                     "name": "Accent/Teal/5",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:94": {
-                    "key": "0aa0a0703d4e98a90affb3817efbe28117a6cffd",
+                    "key": "749c26da3b610fee47e951a0eb1f228b61d8ed21",
                     "name": "Accent/Teal/6",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "To be used in Data Viz and Illustrations"
                 },
                 "3:96": {
-                    "key": "f270673ea1af23cad103a11d6f103d38f946e872",
+                    "key": "1ae502fc2450e9ff08c640b05b50ab4a99cbc392",
                     "name": "Accent/Teal/7",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:98": {
-                    "key": "8ee55f1460ed8b7df38b3489ab293921593218be",
+                    "key": "b08c9d0a635a7216a6bbf633b56f4a487dd05ce1",
                     "name": "Accent/Teal/8",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:100": {
-                    "key": "86d0b1d7a5bfd865f2b759dfcabb722fc910e7c5",
+                    "key": "9002699d1dc4a4e83b104c411f4c3b17c857811f",
                     "name": "Accent/Teal/9",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:174": {
-                    "key": "7287e317f80ab45eaa66bc60173438f775a46b88",
+                    "key": "50485c124b60ad110fca0e3f3e77efdbdf701b68",
                     "name": "Accent/Blue/0",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:173": {
-                    "key": "218355bf97a6f3726ba652f0632060a32a6ddc96",
+                    "key": "5f7dd8ff5ff1b365412ded2009856a1b5d0e6232",
                     "name": "Accent/Blue/1",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:172": {
-                    "key": "f2f322784d882d1024013f1d0d98b1fce2e75572",
+                    "key": "6499521a27a87b7532b9dd0da59db60d0360358a",
                     "name": "Accent/Blue/2",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:171": {
-                    "key": "3fcfa8a07e7a6e0cda693c448f7aa10709141c5f",
+                    "key": "e4675ffd970423a6e5c22c55fc23853abbfd80cd",
                     "name": "Accent/Blue/3",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:123": {
-                    "key": "14d17c23a37242cb396b4f5bb0c2be3227bcf1a0",
+                    "key": "484e57cffdad021b3e1a635643202808f410a033",
                     "name": "Accent/Blue/4 - Main",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Main color"
                 },
                 "3:119": {
-                    "key": "291b0993d2cbc14e997ac09030a8e49861623aa6",
+                    "key": "d019f0ceae24f63dde528d48763f2a0692f7bcfd",
                     "name": "Accent/Blue/5",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "To be used in Data Viz and Illustration"
                 },
                 "3:170": {
-                    "key": "ec2502fa67e9b4b5d5c117fa5f5e5df6b20d7a21",
+                    "key": "c1deda161f9b8a59151d576e74e652f39bdf1070",
                     "name": "Accent/Blue/6",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:169": {
-                    "key": "4ba8ff3644b90a7d86b29d11cb4aef3ebdb7c3c1",
+                    "key": "df201f25918f11f1833978158ba76816f6d69290",
                     "name": "Accent/Blue/7",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:168": {
-                    "key": "7f9639dc1d35991409863348c8b5d5eefea12cfb",
+                    "key": "f76ebb6f7028acceaf66a6997d9f92567500d33e",
                     "name": "Accent/Blue/8",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:167": {
-                    "key": "0e3b6c1dea835128745f6384bf4731b53d5e7c12",
+                    "key": "9d714d2d8beb8ba4d91897b501ab8f03117c5892",
                     "name": "Accent/Blue/9",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:166": {
-                    "key": "9428a055b37255f799c1635837fc3c14cf8418d0",
+                    "key": "95da8230e2486cb3ffdb26a087a178b970100166",
                     "name": "Accent/Yellow/0 - Sem",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Warning: Lightest color"
                 },
                 "3:165": {
-                    "key": "406e10fd17c795e33bbacb949460f97a2d7fa125",
+                    "key": "7b149b005ef861281b762466bb9f82a20e20ea2b",
                     "name": "Accent/Yellow/1",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:164": {
-                    "key": "9e8438b809f4b4b88fedfad478428fbcd322f76e",
+                    "key": "a4c73fe06d1530b42b88f00c1c5288511aacc54d",
                     "name": "Accent/Yellow/2",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:121": {
-                    "key": "da5b405e1b331606bcc322f57bb8dc3c8965bc7c",
+                    "key": "bf56e7f5c805aa57af1b14c641075ce74b4ff103",
                     "name": "Accent/Yellow/3 - Main",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Main color"
                 },
                 "3:116": {
-                    "key": "8cee2b5fe980ab94ac8c272a8e81c68bc877338b",
+                    "key": "067bedf2c9e4b58dc4845a226c35ed3ee5e0743d",
                     "name": "Accent/Yellow/4",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:163": {
-                    "key": "243593abaf42506bde8a82d7a672630fa622ae05",
+                    "key": "a149e4e55a7c04752973ee3b82f5d5c30e1ccc1d",
                     "name": "Accent/Yellow/5",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:162": {
-                    "key": "2703f2896a4d99f3293a1bf8f0052618d0cc37f0",
+                    "key": "b5d3d17dfb72e327187ebe3052ea47c5fa4abb7a",
                     "name": "Accent/Yellow/6 - Sem",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Warning: Medium color"
                 },
                 "3:120": {
-                    "key": "210d906fc0df0996fecbdbcb7617c64332d4cbc3",
+                    "key": "e2f28fc694f97c8f3b6132de9c8a83158b132846",
                     "name": "Accent/Yellow/7",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:161": {
-                    "key": "50c231c4433e50fd8ac321e2188808e1e424e9dc",
+                    "key": "18c1d57d1fcdb04c9577895de8623a051f231f0b",
                     "name": "Accent/Yellow/8 - Sem",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Warning: Darkest color"
                 },
                 "3:160": {
-                    "key": "928503dfb5e2a975c211d681cdefeac18c621d8f",
+                    "key": "e261cdf6114578f2c0edfd3ad3f1af0f8b9eda7a",
                     "name": "Accent/Yellow/9",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:182": {
-                    "key": "1ca99cee2582216c6655029d79f0a95db9ffcc00",
+                    "key": "a72baadb8f3cd0b05c400ab1f34e14098465d95e",
                     "name": "Accent/Red/0 - Sem",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Destructive: Lightest color"
                 },
                 "3:181": {
-                    "key": "37ad16a8906aa75e5fc175754238f0e7327fe0f5",
+                    "key": "abb30c1cc1d509bd8de55d3c6a1d6f7e5f672df8",
                     "name": "Accent/Red/1",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:180": {
-                    "key": "4a6458a8dac18aba633ecc5f9390764ddd9e1d8f",
+                    "key": "3aab3e959ed44443195db015ac363163e4292f4c",
                     "name": "Accent/Red/2",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:771": {
-                    "key": "a347ac86d1db15328a0222481b69dcfc271bc6ec",
+                    "key": "64a05945463f84524f98431c319c3f40f2fd254c",
                     "name": "Accent/Red/3",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Derivate from Pomegranate Red"
                 },
                 "3:115": {
-                    "key": "61beea135356ac7a16491077238191bfd4237b0b",
+                    "key": "a76884c9b6f462d40f4094c76276c130cda80f1c",
                     "name": "Accent/Red/4 - Main",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Main color"
                 },
                 "3:179": {
-                    "key": "1831d9e8b3b01d7d4e83995ee0c8f0e3225bab1a",
+                    "key": "2b817bcd68fa783711abdabaad82c4f4df124c19",
                     "name": "Accent/Red/5",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:178": {
-                    "key": "1c4462fff993fbd946329d75c75e1820bff53c1a",
+                    "key": "aeef607c77bd5abb2019b15e1214c5a9091948a6",
                     "name": "Accent/Red/6 - Sem",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Destructive: Medium color"
                 },
                 "3:770": {
-                    "key": "98c5ffc71cb9231074b5302707a3bc6cc61db678",
+                    "key": "b712f6226e710c9847c6f76bb7bfda3a083d1e8c",
                     "name": "Accent/Red/7",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:176": {
-                    "key": "d7c8c89b5244aacbdc12a6a2c718ae4158b72c00",
+                    "key": "e42fb798edc2d4e6b553a510344d8030f67e3def",
                     "name": "Accent/Red/8",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:175": {
-                    "key": "445aa3caf66f45b0d98ec5ee2d67f970e9116d8a",
+                    "key": "74ce164b831cd9880945563090b369fb94f7c14c",
                     "name": "Accent/Red/9 - Sem",
                     "styleType": "FILL",
                     "remote": false,
@@ -11498,7 +11498,7 @@
                     "description": ""
                 },
                 "3:189": {
-                    "key": "82ea34007d8b1f603992072c3279665031179893",
+                    "key": "b68575afb9acdd752f788b1bd039cf6db0ac3ee0",
                     "name": "Primary/Gray/1",
                     "styleType": "FILL",
                     "remote": false,
@@ -11512,14 +11512,14 @@
                     "description": ""
                 },
                 "3:149": {
-                    "key": "597123277264c51d06d0f8cdf4a77e05837bb39a",
+                    "key": "53ef2c547cb5995d16a642fd8b5fecb94fd4e595",
                     "name": "Primary/Gray/3",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:190": {
-                    "key": "544883646d2078915a10d4b67867fd2e31ad212a",
+                    "key": "e7f1863394cfa6cabf3fdf737198f0dbff47fff2",
                     "name": "Primary/Gray/4",
                     "styleType": "FILL",
                     "remote": false,
@@ -11533,14 +11533,14 @@
                     "description": ""
                 },
                 "3:191": {
-                    "key": "a893673d64228d1efa43f6e9fecdec22d5e3d15c",
+                    "key": "b979b1ab332151d14e5f157f0d387bcfdc1a757c",
                     "name": "Primary/Gray/6",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Use this color for Disabled text and similar instances"
                 },
                 "3:148": {
-                    "key": "ee1de65ecd0dfce3cad5a7bd28e9c05bdf54de20",
+                    "key": "0471978d11706f314530fc97b7fbc3c77fe28ed8",
                     "name": "Primary/Gray/7 - p",
                     "styleType": "FILL",
                     "remote": false,
@@ -11554,77 +11554,77 @@
                     "description": ""
                 },
                 "3:198": {
-                    "key": "4800fdb9b86838705b067bd87d0ae69c3eecea45",
+                    "key": "943d1408b8ea1227023836ced8c5ca169ddc0ae0",
                     "name": "Primary/Navy/0 - Sem",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Information: Lightest color"
                 },
                 "3:197": {
-                    "key": "1d868d5709ac1a7e58c1d090b4bc5a366dfba5ca",
+                    "key": "f4eec0ede38a851646fa6357db0125982a8a141e",
                     "name": "Primary/Navy/1",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:196": {
-                    "key": "87596131e61d82af14fc438d5222fbd2e01aa6c8",
+                    "key": "d5feb4c140d2d9dd3be07e9250937117922ab9c4",
                     "name": "Primary/Navy/2",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:117": {
-                    "key": "ca1289f877a668753486ba98ea3e9c32b92e0d99",
+                    "key": "be03472d26e3b263e5a1c1c603ba54e7fbcf40aa",
                     "name": "Primary/Navy/3",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Only to be used for Data Viz and Illustrations"
                 },
                 "3:195": {
-                    "key": "91227eb7348751f8d03e52f5f0c41f2eb622628d",
+                    "key": "87e90affc3a9cd7fa8947f86ce8605bfe7d4e920",
                     "name": "Primary/Navy/4",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:194": {
-                    "key": "f0aa81574f455eb9704fa747a2c3dcfd1849e22b",
+                    "key": "caa0fa45c1041a78ef5c7b4b9ca9858e43b00260",
                     "name": "Primary/Navy/5 - Sem",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Information: Medium color"
                 },
                 "3:193": {
-                    "key": "0f35ba70de4a1957b64f95794a87dd719184004b",
+                    "key": "80728b2d2b659fe9934b97dbbd370be66f2c00ab",
                     "name": "Primary/Navy/6",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:192": {
-                    "key": "d8f56628620158ba9e64a715cb791d0925a8e297",
+                    "key": "ade9783e7088e2da6ccec96364791b6ce7151e64",
                     "name": "Primary/Navy/7 - Main",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Our primary Navy Blue color"
                 },
                 "3:114": {
-                    "key": "ab3462b381e7376e8590e70921991f4e4225a4dd",
+                    "key": "26cffdd08ab5ccb302975c7d3b053b67cf66f240",
                     "name": "Primary/Navy/8",
                     "styleType": "FILL",
                     "remote": false,
                     "description": ""
                 },
                 "3:4": {
-                    "key": "a52150767c8da41d9fe667c3107bb57e202e4145",
+                    "key": "7c3280a9d0f55c870edd522a61734eb58aac3116",
                     "name": "Primary/Navy/9 - Sem",
                     "styleType": "FILL",
                     "remote": false,
                     "description": "Semantic Information: Darkest color"
                 },
                 "3:92": {
-                    "key": "609ef97a79ecb507a1d25cfef7af77c7bf88b7ac",
+                    "key": "99f19617147e32e8e03aba7d4be5b195593945a4",
                     "name": "Primary/Pure White",
                     "styleType": "FILL",
                     "remote": false,

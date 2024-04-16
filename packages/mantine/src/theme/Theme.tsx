@@ -1,24 +1,78 @@
-import {CheckSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
+import {CheckSize16Px, CrossSize16Px, FilterSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
-    getSize,
-    getStylesRef,
-    rem,
-    type MantineThemeOverride,
-    type NotificationProps,
-    type StepperStylesParams,
-    type TabsStylesParams,
+    ActionIcon,
+    Alert,
+    Anchor,
+    AppShellNavbar,
+    Badge,
+    Button,
+    Checkbox,
+    CloseButton,
+    ColorSwatch,
+    Combobox,
+    ComboboxSearch,
+    Divider,
+    Input,
+    InputWrapper,
+    List,
+    Loader,
+    MantineThemeOverride,
+    MenuItem,
+    Modal,
+    MultiSelect,
+    NavLink,
+    Notification,
+    Popover,
+    Radio,
+    ScrollArea,
+    SegmentedControl,
+    Select,
+    Skeleton,
+    Stepper,
+    Tabs,
+    Text,
+    TextInput,
+    Title,
+    Tooltip,
+    createTheme,
 } from '@mantine/core';
-
+import {DatePicker} from '@mantine/dates';
+import ActionIconClasses from '../styles/ActionIcon.module.css';
+import AlertClasses from '../styles/Alert.module.css';
+import AnchorClasses from '../styles/Anchor.module.css';
+import AppShellNavBarClasses from '../styles/AppShellNavBar.module.css';
+import BadgeClasses from '../styles/Badge.module.css';
+import ButtonClasses from '../styles/Button.module.css';
+import CheckboxClasses from '../styles/Checkbox.module.css';
+import ComboboxClasses from '../styles/Combobox.module.css';
+import DatePickerClasses from '../styles/DatePicker.module.css';
+import InputClasses from '../styles/Input.module.css';
+import InputWrapperClasses from '../styles/InputWrapper.module.css';
+import ListClasses from '../styles/List.module.css';
+import ModalClasses from '../styles/Modal.module.css';
+import NavLinkClasses from '../styles/NavLink.module.css';
+import NotificationClasses from '../styles/Notification.module.css';
+import RadioClasses from '../styles/Radio.module.css';
+import ScrollAreaClasses from '../styles/ScrollArea.module.css';
+import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
+import SelectClasses from '../styles/Select.module.css';
+import SkeletonClasses from '../styles/Skeleton.module.css';
+import StepperClasses from '../styles/Stepper.module.css';
+import TabsClasses from '../styles/Tabs.module.css';
+import TextClasses from '../styles/Text.module.css';
+import TitleClasses from '../styles/Title.module.css';
+import {NotificationVars} from '../vars/Notification.vars';
+import {TextVars} from '../vars/Text.vars';
 import {PlasmaColors} from './PlasmaColors';
 
-export const plasmaTheme: MantineThemeOverride = {
-    // These are overrides over https://github.com/mantinedev/mantine/blob/master/src/mantine-styles/src/theme/default-theme.ts
-    colorScheme: 'light',
+export const plasmaTheme: MantineThemeOverride = createTheme({
+    // These are overrides over https://github.com/mantinedev/mantine/blob/master/packages/%40mantine/core/src/core/MantineProvider/default-theme.ts
     fontFamily: 'canada-type-gibson, sans-serif',
     black: color.primary.gray[9],
     defaultRadius: 8,
-    lineHeight: 1.5,
+    lineHeights: {md: '1.5'},
+    fontSmoothing: false,
     spacing: {
         xs: '8px',
         sm: '16px',
@@ -26,25 +80,17 @@ export const plasmaTheme: MantineThemeOverride = {
         lg: '32px',
         xl: '40px',
     },
-    globalStyles: (theme) => ({
-        body: {
-            ...theme.fn.fontStyles(),
-            fontSize: theme.fontSizes.sm,
-            lineHeight: theme.lineHeight,
-            fontWeight: 300,
-        },
-    }),
     primaryColor: 'action',
     headings: {
         fontFamily: 'canada-type-gibson, sans-serif',
-        fontWeight: 500,
+        fontWeight: '500',
         sizes: {
-            h1: {fontSize: '48px', lineHeight: undefined, fontWeight: 300},
-            h2: {fontSize: '32px', lineHeight: undefined, fontWeight: 500},
-            h3: {fontSize: '24px', lineHeight: undefined, fontWeight: 500},
-            h4: {fontSize: '18px', lineHeight: undefined, fontWeight: 300},
-            h5: {fontSize: '14px', lineHeight: undefined, fontWeight: 500},
-            h6: {fontSize: '12px', lineHeight: undefined, fontWeight: 500},
+            h1: {fontSize: '48px', lineHeight: '1.5', fontWeight: '300'},
+            h2: {fontSize: '32px', lineHeight: '1.5', fontWeight: '500'},
+            h3: {fontSize: '24px', lineHeight: '1.5', fontWeight: '500'},
+            h4: {fontSize: '18px', lineHeight: '1.5', fontWeight: '300'},
+            h5: {fontSize: '14px', lineHeight: '1.5', fontWeight: '500'},
+            h6: {fontSize: '12px', lineHeight: '1.5', fontWeight: '500'},
         },
     },
     shadows: {
@@ -56,376 +102,176 @@ export const plasmaTheme: MantineThemeOverride = {
     },
     colors: PlasmaColors,
     components: {
-        Alert: {
+        ActionIcon: ActionIcon.extend({
+            classNames: {root: ActionIconClasses.root},
+        }),
+        Alert: Alert.extend({
             defaultProps: {
                 icon: <InfoSize24Px height={24} />,
                 color: 'navy',
             },
-            styles: {
-                title: {
-                    fontWeight: 500,
-                },
-            },
-        },
-        Title: {
-            styles: {
-                root: {
-                    '&:is(h1,h2,h3,h4,h5,h6)': {letterSpacing: '0.011em'},
-                },
-            },
-        },
-        Text: {
+            classNames: {title: AlertClasses.title},
+        }),
+        Anchor: Anchor.extend({
             defaultProps: {
-                weight: 300,
+                color: 'action.6',
             },
-            styles: (theme, {}, {size}) => ({
-                root: {
-                    fontSize: getSize({size: size ?? 'sm', sizes: theme.fontSizes}),
-                },
-            }),
-        },
-        Button: {
-            styles: () => ({
-                root: {
-                    fontWeight: 400,
-                },
-            }),
-            variants: {
-                outline: () => ({
-                    root: {
-                        backgroundColor: 'white',
-                    },
-                }),
+            classNames: {root: AnchorClasses.root},
+        }),
+        AppShellNavbar: AppShellNavbar.extend({
+            classNames: {navbar: AppShellNavBarClasses.navbar},
+        }),
+        Badge: Badge.extend({
+            classNames: {root: BadgeClasses.root},
+            defaultProps: {
+                variant: 'light',
             },
-        },
-        Modal: {
-            styles: (theme, {fullScreen, padding}, {size, variant}) => ({
-                content: {
-                    flex: fullScreen
-                        ? '0 0 100%'
-                        : `0 0 ${getSize({
-                              size,
-                              sizes: {
-                                  xs: rem(432),
-                                  sm: rem(664),
-                                  md: rem(896),
-                                  lg: rem(1120),
-                                  xl: rem('88%'),
-                              },
-                          })}`,
-                    overflow: 'auto',
-                },
-                title: {
-                    width: '100%',
-                    fontSize: theme.headings.sizes.h3.fontSize,
-                    lineHeight: theme.headings.sizes.h3.lineHeight,
-                    fontWeight: 500,
-                },
-                header: {
-                    borderBottom: variant !== 'prompt' ? `1px solid ${color.primary.gray[3]}` : null,
-                },
-                body: {
-                    '&:not(:only-child)': {
-                        paddingTop: variant === 'prompt' ? 0 : getSize({size: padding, sizes: plasmaTheme.spacing}),
-                    },
-                },
-            }),
-        },
-        ModalOverlay: {
+        }),
+        Button: Button.extend({
+            classNames: ButtonClasses,
+        }),
+        Checkbox: Checkbox.extend({
+            defaultProps: {
+                radius: 'sm',
+            },
+            classNames: {label: CheckboxClasses.label, input: CheckboxClasses.input},
+        }),
+        CloseButton: CloseButton.extend({
+            defaultProps: {
+                icon: <CrossSize16Px height={16} aria-label="close" />,
+            },
+        }),
+        ColorSwatch: ColorSwatch.extend({
+            defaultProps: {
+                size: 8,
+                withShadow: false,
+            },
+        }),
+        Combobox: Combobox.extend({
+            classNames: {option: SelectClasses.option, search: ComboboxClasses.search},
+        }),
+        ComboboxSearch: ComboboxSearch.extend({
+            defaultProps: {
+                placeholder: 'Search',
+                rightSection: <FilterSize16Px height={16} color="gray.5" />,
+            },
+        }),
+        DatePicker: DatePicker.extend({
+            classNames: {monthCell: DatePickerClasses.monthCell},
+        }),
+        Divider: Divider.extend({
+            defaultProps: {
+                color: 'gray.3',
+            },
+        }),
+        Input: Input.extend({
+            classNames: InputClasses,
+        }),
+        InputWrapper: InputWrapper.extend({
+            classNames: InputWrapperClasses,
+        }),
+        Loader: Loader.extend({
+            defaultProps: {
+                type: 'dots',
+                color: 'action',
+                role: 'presentation',
+            },
+        }),
+        List: List.extend({
+            classNames: {root: ListClasses.root},
+        }),
+        MenuItem: MenuItem.extend({
+            defaultProps: {
+                fw: 300,
+            },
+        }),
+        Modal: Modal.extend({
+            classNames: ModalClasses,
+        }),
+        ModalOverlay: Modal.Overlay.extend({
             defaultProps: {
                 color: color.primary.navy[9],
-                opacity: 0.9,
+                backgroundOpacity: 0.9,
             },
-        },
-        InputWrapper: {
+        }),
+        ModalRoot: Modal.Root.extend({
             defaultProps: {
-                withAsterisk: false,
+                padding: 'lg',
             },
-            styles: (theme) => ({
-                label: {
-                    marginBottom: theme.spacing.xs,
-                },
-                description: {
-                    fontSize: theme.fontSizes.sm,
-                    color: theme.colors.gray[7],
-                    marginBottom: theme.spacing.xs,
-                    lineHeight: theme.lineHeight,
-                },
-                invalid: {
-                    color: theme.colors.red[9],
-                    borderColor: theme.colors.red[6],
-                },
-                error: {
-                    color: theme.colors.red[9],
-                    lineHeight: theme.lineHeight,
-                },
-            }),
-        },
-        TextInput: {
+        }),
+        MultiSelect: MultiSelect.extend({defaultProps: {hidePickedOptions: true}}),
+        NavLink: NavLink.extend({classNames: NavLinkClasses}),
+        Notification: Notification.extend({
+            defaultProps: {
+                icon: <InfoSize24Px height={24} />,
+                color: 'info',
+            },
+            classNames: {
+                root: NotificationClasses.root,
+                icon: NotificationClasses.icon,
+                closeButton: NotificationClasses.closeButton,
+            },
+            vars: NotificationVars,
+        }),
+        Popover: Popover.extend({
+            defaultProps: {
+                shadow: 'md',
+                withArrow: true,
+            },
+        }),
+        Radio: Radio.extend({
+            classNames: {labelWrapper: RadioClasses.labelWrapper},
+        }),
+        ScrollArea: ScrollArea.extend({
+            classNames: {viewport: ScrollAreaClasses.viewport},
+        }),
+        SegmentedControl: SegmentedControl.extend({
+            classNames: {root: SegmentedControlClasses.root},
+        }),
+        Select: Select.extend({
+            defaultProps: {withCheckIcon: false, allowDeselect: false},
+            classNames: {input: SelectClasses.input, option: SelectClasses.option},
+        }),
+        Skeleton: Skeleton.extend({
+            classNames: {root: SkeletonClasses.root},
+        }),
+        Stepper: Stepper.extend({
+            defaultProps: {
+                size: 'xs',
+                completedIcon: <CheckSize16Px />,
+            },
+            classNames: {
+                step: StepperClasses.step,
+                stepIcon: StepperClasses.stepIcon,
+                stepCompletedIcon: StepperClasses.stepCompletedIcon,
+                stepDescription: StepperClasses.stepDescription,
+                separator: StepperClasses.separator,
+                verticalSeparator: StepperClasses.verticalSeparator,
+            },
+        }),
+        Tabs: Tabs.extend({
+            classNames: {list: TabsClasses.list, tab: TabsClasses.tab},
+        }),
+        Text: Text.extend({
+            classNames: TextClasses,
+            vars: TextVars,
+        }),
+        TextInput: TextInput.extend({
             defaultProps: {
                 radius: 8,
             },
-        },
-        Tooltip: {
+        }),
+        Title: Title.extend({
+            classNames: {root: TitleClasses.root},
+        }),
+        Tooltip: Tooltip.extend({
             defaultProps: {
                 color: 'navy',
                 maw: 300,
                 multiline: true,
                 withArrow: true,
-                withinPortal: true,
                 zIndex: 10000,
             },
-        },
-        Loader: {
-            defaultProps: {
-                variant: 'dots',
-                color: 'action',
-            },
-        },
-        DateRangePicker: {
-            styles: {
-                cell: {
-                    textAlign: 'center',
-                },
-            },
-        },
-        Anchor: {
-            defaultProps: {
-                color: 'action.6',
-            },
-            styles: (theme) => ({
-                root: {
-                    ...theme.fn.hover({
-                        textDecoration: 'underline',
-                        color: theme.colors.action[8],
-                    }),
-                },
-            }),
-        },
-        Checkbox: {
-            defaultProps: {
-                radius: 'sm',
-            },
-            styles: (theme) => ({
-                label: {
-                    fontSize: theme.fontSizes.sm,
-                    fontWeight: 300,
-                },
-            }),
-        },
-        List: {
-            styles: () => ({
-                root: {
-                    listStyleType: 'disc',
-                },
-            }),
-        },
-        Radio: {
-            styles: {
-                labelWrapper: {
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                },
-            },
-        },
-        Popover: {
-            defaultProps: {
-                shadow: 'md',
-                withArrow: true,
-            },
-        },
-        Badge: {
-            styles: {
-                root: {
-                    textTransform: 'none',
-                    padding: '4px 8px',
-                    fontWeight: 500,
-                },
-            },
-        },
-        ColorSwatch: {
-            defaultProps: {
-                size: 8,
-                withShadow: false,
-            },
-        },
-        MenuItem: {
-            defaultProps: {
-                fw: 300,
-            },
-        },
-        Notification: {
-            styles: (theme, {color: notificationType}: NotificationProps) => ({
-                root: {
-                    borderColor: theme.colors.gray[3],
-                    backgroundColor: theme.colors.gray[0],
-                    boxShadow: theme.shadows.lg,
-                    padding: theme.spacing.sm,
-                    '&[data-with-icon]': {
-                        paddingLeft: theme.spacing.sm,
-                    },
-                },
-                icon: {
-                    backgroundColor: 'transparent',
-                    marginRight: theme.spacing.sm,
-                    color: theme.colors?.[notificationType][6],
-                },
-                closeButton: {
-                    margin: theme.spacing.xs,
-                    color: theme.colors.gray[5],
-                },
-            }),
-            defaultProps: {
-                icon: <InfoSize24Px height={24} />,
-                color: 'info',
-            },
-        },
-        Skeleton: {
-            styles: {
-                visible: {
-                    '&::before': {zIndex: 'unset'},
-                    '&::after': {zIndex: 'unset'},
-                },
-            },
-        },
-        SegmentedControl: {
-            styles: (theme) => ({
-                root: {
-                    backgroundColor: theme.colors.gray[2],
-                },
-            }),
-        },
-        Stepper: {
-            defaultProps: {
-                size: 'xs',
-                completedIcon: <CheckSize16Px />,
-            },
-            styles: (theme, {}: StepperStylesParams, {size}) => ({
-                step: {
-                    '&[disabled]': {
-                        color: theme.colors.gray[5],
-                        '& .mantine-Stepper-stepDescription': {
-                            color: theme.colors.gray[5],
-                        },
-                        '& .mantine-Stepper-stepIcon': {
-                            borderColor: theme.colors.gray[1],
-                        },
-                    },
-                },
-                stepIcon: {
-                    fontWeight: 500,
-                    backgroundColor: theme.colors.gray[1],
-                    color: 'inherit',
-                    border: `${rem(1)} solid ${theme.colors.gray[3]}`,
-                    '&[data-progress]': {
-                        backgroundColor: theme.white,
-                    },
-
-                    '&[data-completed]': {
-                        backgroundColor: theme.white,
-                        borderColor: theme.colors.lime[6],
-                        color: theme.colors.lime[6],
-                    },
-                },
-                stepCompletedIcon: {
-                    color: theme.colors.lime[6],
-                    fontSize: rem(16),
-                },
-                stepDescription: {
-                    color: theme.colors.gray[7],
-                    fontSize: getSize({size, sizes: theme.fontSizes}),
-                },
-                separator: {
-                    height: rem(1),
-                    backgroundColor: theme.colors.gray[3],
-                },
-                separatorActive: {
-                    backgroundColor: theme.colors.gray[3],
-                },
-                verticalSeparator: {
-                    borderLeft: `${rem(1)} solid ${theme.colors.gray[3]}`,
-                },
-                verticalSeparatorActive: {
-                    borderColor: theme.colors.gray[3],
-                },
-            }),
-        },
-        Tabs: {
-            styles: (theme, {orientation}: TabsStylesParams) => ({
-                tabsList: {
-                    [orientation === 'horizontal' ? 'borderBottom' : 'borderRight']: `${rem(1)} solid ${
-                        theme.colors.gray[3]
-                    }`,
-                },
-                tab: {
-                    [orientation === 'horizontal' ? 'borderBottom' : 'borderRight']: `${rem(1)} solid transparent`,
-                    [orientation === 'horizontal' ? 'marginBottom' : 'marginRight']: rem(-1),
-                },
-            }),
-        },
-        Select: {
-            styles: (theme) => ({
-                input: {
-                    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-                },
-                item: {
-                    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-
-                    '&[data-hovered]': {
-                        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[1],
-                    },
-
-                    '&[data-selected]': {
-                        backgroundColor: theme.fn.variant({variant: 'light'}).background,
-                        color: theme.fn.variant({variant: 'light'}).color,
-                        ...theme.fn.hover({backgroundColor: theme.fn.variant({variant: 'light'}).hover}),
-                    },
-                },
-            }),
-        },
-        NavLink: {
-            styles: (theme) => ({
-                root: {
-                    color: theme.colors.gray[6],
-                    borderRadius: `${theme.defaultRadius}px 0px 0px ${theme.defaultRadius}px`,
-                    ...theme.fn.hover({
-                        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[1],
-                    }),
-                },
-                label: {
-                    ref: getStylesRef('label'),
-                    fontWeight: 500,
-                },
-                children: {
-                    [`.${getStylesRef('label')}`]: {
-                        fontWeight: 300,
-                    },
-                },
-            }),
-        },
-        Navbar: {
-            styles: (theme) => ({
-                root: {
-                    borderColor: theme.colors.gray[3],
-                },
-            }),
-        },
-        ScrollArea: {
-            styles: {
-                viewport: {
-                    // https://github.com/radix-ui/primitives/issues/926
-                    '&[data-radix-scroll-area-viewport]': {
-                        '& > :first-of-type': {
-                            display: 'block !important',
-                        },
-                    },
-                },
-            },
-        },
-        Divider: {
-            defaultProps: {
-                color: 'gray.3',
-            },
-        },
+        }),
     },
-};
+});

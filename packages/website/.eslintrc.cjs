@@ -8,7 +8,7 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:react-hooks/recommended',
     ],
-    ignorePatterns: ['dist', '.eslintrc.cjs', '.turbo'],
+    ignorePatterns: ['dist', '.eslintrc.cjs', '.turbo', 'src/examples/mantine/**', 'src/pages/mantine/**'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         project: ['tsconfig.json', 'tsconfig.node.json'],

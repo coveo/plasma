@@ -1,26 +1,39 @@
-import {DefaultProps, Group, GroupProps, Selectors, useComponentDefaultProps} from '@mantine/core';
-import {FunctionComponent} from 'react';
-import {HeaderActionsStylesParams, useStyles} from './HeaderActions.styles';
+import {CompoundStylesApiProps, Factory, Group, GroupProps, factory, useProps} from '@mantine/core';
+import {ReactNode} from 'react';
+import {useHeaderContext} from '../Header.context';
 
-export type HeaderActionsStylesNames = Selectors<typeof useStyles>;
+export type HeaderActionsStyleNames = 'actions';
 
-export type HeaderActionsProps = GroupProps & DefaultProps<HeaderActionsStylesNames, HeaderActionsStylesParams>;
+export interface HeaderActionsProps
+    extends Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'children'>,
+        CompoundStylesApiProps<HeaderActionsFactory> {
+    children: ReactNode;
+}
+
+export type HeaderActionsFactory = Factory<{
+    props: HeaderActionsProps;
+    ref: HTMLDivElement;
+    stylesNames: HeaderActionsStyleNames;
+    compound: true;
+}>;
 
 const defaultProps: Partial<HeaderActionsProps> = {
-    spacing: 'sm',
+    gap: 'sm',
 };
 
-export const HeaderActions: FunctionComponent<HeaderActionsProps> = (props: HeaderActionsProps) => {
-    const {classNames, styles, unstyled, className, children, ...others} = useComponentDefaultProps(
-        'PlasmaHeaderActions',
-        defaultProps,
-        props,
-    );
-    const {classes, cx} = useStyles({}, {name: 'PlasmaHeaderActions', classNames, styles, unstyled});
+export const HeaderActions = factory<HeaderActionsFactory>((_props, ref) => {
+    const props = useProps('HeaderActions', defaultProps, _props);
+    const {gap, className, classNames, styles, style, children, vars, ...others} = props;
+    const ctx = useHeaderContext();
 
     return (
-        <Group className={cx(className, classes.root)} {...others}>
+        <Group
+            ref={ref}
+            gap={gap}
+            {...ctx.getStyles('actions', {className, style, classNames, styles, props})}
+            {...others}
+        >
             {children}
         </Group>
     );
-};
+});

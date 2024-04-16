@@ -1,20 +1,39 @@
-import {Group, Text} from '@mantine/core';
+import {BoxProps, factory, Factory, Group, Text, useProps} from '@mantine/core';
+import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
 import {useDidUpdate} from '@mantine/hooks';
 import dayjs from 'dayjs';
-import {FunctionComponent, useState} from 'react';
-import {useTable} from '../TableContext';
-import useStyles from './TableLastUpdated.styles';
-import {TableLastUpdatedProps} from './TableLastUpdated.types';
+import {useState} from 'react';
+import {useTable, useTableStyles} from '../TableContext';
 
-export const TableLastUpdated: FunctionComponent<TableLastUpdatedProps & {dependencies?: never}> = ({
-    label = 'Last update:',
-    dependencies,
-    classNames,
-    styles,
-    unstyled,
-    ...others
-}) => {
-    const {classes} = useStyles(null, {name: 'TableLastUpdated', classNames, styles, unstyled});
+export type TableLastUpdatedStylesNames = 'lastUpdatedRoot' | 'lastUpdatedLabel';
+
+export interface TableLastUpdatedProps extends BoxProps, CompoundStylesApiProps<TableLastUpdatedFactory> {
+    /**
+     * Label to contextualize the date
+     *
+     * @default "Last update:"
+     */
+    label?: string;
+    dependencies?: never;
+}
+export type TableLastUpdatedFactory = Factory<{
+    props: TableLastUpdatedProps;
+    ref: HTMLDivElement;
+    stylesNames: TableLastUpdatedStylesNames;
+    compound: true;
+}>;
+
+const defaultProps: Partial<TableLastUpdatedProps> = {
+    label: 'Last update:',
+};
+
+export const TableLastUpdated = factory<TableLastUpdatedFactory>((props, ref) => {
+    const ctx = useTableStyles();
+    const {label, dependencies, classNames, className, styles, style, vars, ...others} = useProps(
+        'PlasmaTableLastUpdated',
+        defaultProps,
+        props,
+    );
     const {state} = useTable();
     const [time, setTime] = useState(new Date());
 
@@ -22,12 +41,20 @@ export const TableLastUpdated: FunctionComponent<TableLastUpdatedProps & {depend
         setTime(new Date());
     }, [state, ...dependencies]);
 
+    const stylesApiProps = {classNames, styles};
+
     return (
-        <Group className={classes.root} px="xl" position="right">
-            <Text size="xs" className={classes.label} {...others}>
+        <Group
+            px="xl"
+            justify="right"
+            ref={ref}
+            {...ctx.getStyles('lastUpdatedRoot', {className, style, ...stylesApiProps})}
+            {...others}
+        >
+            <Text size="xs" {...ctx.getStyles('lastUpdatedLabel', {className, style, ...stylesApiProps})}>
                 {label}
                 <span role="timer">{dayjs(time).format('h:mm:ss A')}</span>
             </Text>
         </Group>
     );
-};
+});

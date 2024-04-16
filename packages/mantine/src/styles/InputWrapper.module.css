@@ -1,0 +1,16 @@
+.label {
+    margin-bottom: var(--mantine-spacing-xs);
+}
+
+.description {
+    font-size: var(--mantine-font-size-sm);
+    color: var(--mantine-color-gray-7);
+    margin-bottom: var(--mantine-spacing-xs);
+    line-height: var(--mantine-line-height);
+    font-weight: 300;
+}
+
+.error {
+    line-height: var(--mantine-line-height);
+    font-weight: 300;
+}

@@ -1,31 +1,32 @@
-import {Breadcrumbs, BreadcrumbsProps, DefaultProps, Selectors} from '@mantine/core';
-import {FunctionComponent} from 'react';
-import {HeaderBreadcrumbsStylesParams, useStyles} from './HeaderBreadcrumbs.styles';
+import {Breadcrumbs, BreadcrumbsProps, CompoundStylesApiProps, Factory, factory} from '@mantine/core';
+import {useHeaderContext} from '../Header.context';
 
-export type HeaderBreadcrumbsStylesNames = Selectors<typeof useStyles>;
+export type HeaderBreadcrumbsStyleNames = 'breadcrumbsRoot' | 'breadcrumbsSeparator';
+export interface HeaderBreadcrumbsProps
+    extends Omit<BreadcrumbsProps, 'classNames' | 'styles' | 'vars'>,
+        CompoundStylesApiProps<HeaderBreadcrumbsFactory> {}
 
-export type HeaderBreadcrumbsProps = BreadcrumbsProps &
-    DefaultProps<HeaderBreadcrumbsStylesNames, HeaderBreadcrumbsStylesParams>;
+export type HeaderBreadcrumbsFactory = Factory<{
+    props: BreadcrumbsProps;
+    ref: HTMLDivElement;
+    stylesNames: HeaderBreadcrumbsStyleNames;
+    compound: true;
+}>;
 
-export const HeaderBreadcrumbs: FunctionComponent<HeaderBreadcrumbsProps> = ({
-    classNames,
-    styles,
-    unstyled,
-    children,
-    ...others
-}) => {
-    const {classes} = useStyles(
-        {},
-        {
-            name: 'PlasmaHeaderBreadcrumbs',
-            classNames,
-            styles,
-            unstyled,
-        },
-    );
+export const HeaderBreadcrumbs = factory<HeaderBreadcrumbsFactory>((props, ref) => {
+    const {children, className, classNames, styles, style, ...others} = props;
+    const ctx = useHeaderContext();
+
     return (
-        <Breadcrumbs classNames={{breadcrumb: classes.breadcrumb, separator: classes.separator}} {...others}>
+        <Breadcrumbs
+            ref={ref}
+            classNames={{
+                breadcrumb: ctx.getStyles('breadcrumbsRoot', {className, classNames, styles, style, props}).className,
+                separator: ctx.getStyles('breadcrumbsSeparator', {classNames, styles, props}).className,
+            }}
+            {...others}
+        >
             {children}
         </Breadcrumbs>
     );
-};
+});

@@ -9,20 +9,20 @@ import {
     Collapse,
     ColumnDef,
     CopyToClipboard,
-    createColumnHelper,
     FilterFn,
-    getFilteredRowModel,
     Grid,
     Group,
-    renderTableCell,
     Row,
+    TableLayoutProps,
     SimpleGrid,
     Space,
     Table,
     TableLayout,
-    TableLayoutProps,
     TableProps,
     Title,
+    createColumnHelper,
+    getFilteredRowModel,
+    renderTableCell,
     useDisclosure,
     useTable,
 } from '@coveord/plasma-mantine';
@@ -43,7 +43,7 @@ const IconSetCard = <T,>({getVisibleCells}: Row<T>) => {
         <div>
             <Card shadow="md" radius="md" px="md" pb={0}>
                 <Card.Section>
-                    <Group noWrap p="md" position="apart" onClick={toggle} sx={{cursor: 'pointer'}}>
+                    <Group wrap="nowrap" p="md" justify="space-between" onClick={toggle} style={{cursor: 'pointer'}}>
                         <Group>
                             {renderTableCell(iconCell.column.columnDef.cell, iconCell.getContext())}
                             <Title order={5}>
@@ -83,11 +83,10 @@ const IconsListLayout = <T,>({table}: TableLayoutProps<T>) => {
     );
 };
 
-const CardLayout: TableLayout = {
-    name: 'Cards',
-    Body: IconsListLayout,
-    Header: () => null,
-};
+const CardLayout: TableLayout = ({children}) => <>{children}</>;
+CardLayout.displayName = 'Cards';
+CardLayout.Body = IconsListLayout;
+CardLayout.Header = () => null;
 
 const fuzzyFilter: FilterFn<IconSet> = (row, columnId, value, addMeta) => {
     const itemRank = rankItem(row.getValue('name'), value);

@@ -1,8 +1,8 @@
 import {color} from '@coveord/plasma-tokens';
-import {Tuple} from '@mantine/core';
+import {MantineColorsTuple} from '@mantine/core';
 
-const toMantineColor = (plasmaColor: Record<string, string>): Tuple<string, 10> =>
-    Object.values(plasmaColor) as Tuple<string, 10>;
+const toMantineColor = (plasmaColor: Record<string, string>): MantineColorsTuple =>
+    Object.values(plasmaColor) as unknown as MantineColorsTuple;
 
 const navy = toMantineColor(color.primary.navy);
 const red = toMantineColor(color.accent.red);
@@ -19,7 +19,7 @@ const lime = [
     color.secondary.lime[9],
     color.secondary.lime[9],
     color.secondary.lime[9],
-] as Tuple<string, 10>;
+] as MantineColorsTuple;
 
 export const PlasmaColors = {
     // Primary
@@ -35,7 +35,7 @@ export const PlasmaColors = {
         color.primary.action[8],
         color.primary.action[8],
         color.primary.action[9],
-    ] as Tuple<string, 10>,
+    ] as MantineColorsTuple,
     navy,
     info: navy,
     // Accent

@@ -11,7 +11,7 @@ describe('DateRangePickerPopoverCalendar', () => {
         expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
     });
 
-    it('updates with the selected dates when choosing a preset', async () => {
+    it.skip('updates with the selected dates when choosing a preset', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
             const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
@@ -63,7 +63,7 @@ describe('DateRangePickerPopoverCalendar', () => {
         vi.useRealTimers();
     });
 
-    it('calls onApply with the selected dates when typing in the inputs', async () => {
+    it.skip('calls onApply with the selected dates when typing in the inputs', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
             const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});

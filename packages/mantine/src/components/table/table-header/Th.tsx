@@ -1,9 +1,19 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
-import {Group, UnstyledButton, useComponentDefaultProps} from '@mantine/core';
-import {defaultColumnSizing, flexRender} from '@tanstack/react-table';
-import {AriaAttributes} from 'react';
-import useStyles from './Th.styles';
-import {SortState, ThProps} from './Th.types';
+import {BoxProps, Factory, Group, UnstyledButton, useProps} from '@mantine/core';
+import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {defaultColumnSizing, flexRender, Header} from '@tanstack/react-table';
+import {AriaAttributes, ComponentType, ForwardedRef, SVGProps} from 'react';
+import {CustomComponentThemeExtend, identity} from '../../../utils';
+import {useTableStyles} from '../TableContext';
+
+export type TableThStylesNames = 'th';
+
+export type SortState = 'asc' | 'desc' | 'none';
+
+export interface ThProps<T = unknown> extends BoxProps, CompoundStylesApiProps<TableThFactory> {
+    header: Header<T, unknown>;
+    sortingIcons?: Record<SortState, ComponentType<SVGProps<SVGSVGElement>>>;
+}
 
 const SortingIcons: ThProps['sortingIcons'] = {
     asc: ArrowUpSize16Px,
@@ -17,13 +27,21 @@ const SortingLabels: Record<SortState, AriaAttributes['aria-sort']> = {
     none: 'none',
 } as const;
 
+export type TableThFactory = Factory<{
+    props: ThProps;
+    ref: HTMLTableCellElement;
+    stylesNames: TableThStylesNames;
+    compound: true;
+}>;
+
 const defaultProps: Partial<ThProps> = {
     sortingIcons: SortingIcons,
 };
 
-export const Th = <T,>(props: ThProps<T>) => {
-    const {header, classNames, styles, unstyled, sortingIcons, ...others} = useComponentDefaultProps(
-        'PlasmaTableColumnHeader',
+export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElement>}) => {
+    const ctx = useTableStyles();
+    const {header, sortingIcons, classNames, className, styles, style, vars, ...others} = useProps(
+        'PlasmaTableTh',
         defaultProps as Partial<ThProps<T>>,
         props,
     );
@@ -35,14 +53,27 @@ export const Th = <T,>(props: ThProps<T>) => {
         maxSize: header.column.columnDef.maxSize,
     };
 
-    const {classes, cx} = useStyles(columnSizing, {name: 'PlasmaTableColumnHeader', classNames, styles, unstyled});
+    const thStyles = ctx.getStyles('th', {classNames, className, styles, style});
 
     if (header.isPlaceholder) {
         return null;
     }
 
     if (!header.column.getCanSort()) {
-        return <th className={classes.root}>{flexRender(header.column.columnDef.header, header.getContext())}</th>;
+        return (
+            <th
+                className={thStyles.className}
+                style={{
+                    ...thStyles.style,
+                    width: columnSizing.size ?? 'auto',
+                    minWidth: columnSizing.minSize,
+                    maxWidth: columnSizing.maxSize,
+                }}
+                {...others}
+            >
+                {flexRender(header.column.columnDef.header, header.getContext())}
+            </th>
+        );
     }
 
     const onSort = header.column.getToggleSortingHandler();
@@ -53,14 +84,16 @@ export const Th = <T,>(props: ThProps<T>) => {
         <UnstyledButton
             component="th"
             onClick={onSort}
-            className={cx(classes.root, classes.control)}
             aria-sort={SortingLabels[sortingOrder]}
+            data-control={true}
+            {...thStyles}
             {...others}
         >
-            <Group noWrap spacing="xs">
+            <Group wrap="nowrap" gap="xs">
                 {flexRender(header.column.columnDef.header, header.getContext())}
                 <Icon height={16} width={16} />
             </Group>
         </UnstyledButton>
     );
 };
+Th.extend = identity as CustomComponentThemeExtend<TableThFactory>;

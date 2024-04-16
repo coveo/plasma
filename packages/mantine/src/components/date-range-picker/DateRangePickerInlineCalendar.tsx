@@ -3,6 +3,7 @@ import {DatePicker, DatePickerBaseProps} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
 import {Button} from '../button';
+import DateRangeClasses from './DateRange.module.css';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
@@ -68,21 +69,22 @@ export const DateRangePickerInlineCalendar = ({
 
     return (
         <>
-            <Group
-                align="center"
-                spacing="xs"
-                grow
-                px="md"
-                py="sm"
-                sx={(theme) => ({
-                    borderBottom: `1px solid ${theme.colors.gray[2]}`,
-                })}
-            >
-                <EditableDateRangePicker {...calendarInputProps} startProps={startProps} endProps={endProps} />
+            <Group align="center" gap="xs" grow px="md" py="sm" className={DateRangeClasses.picker}>
+                <EditableDateRangePicker
+                    value={calendarInputProps.value}
+                    {...calendarInputProps}
+                    startProps={startProps}
+                    endProps={endProps}
+                />
                 {presets ? (
                     <>
                         <Space w="sm" />
-                        <DateRangePickerPresetSelect presets={presets} {...calendarInputProps} />
+                        <DateRangePickerPresetSelect
+                            value={calendarInputProps.value}
+                            presets={presets}
+                            {...calendarInputProps}
+                            selectProps={{comboboxProps: {withinPortal: false}}}
+                        />
                     </>
                 ) : null}
             </Group>
@@ -91,7 +93,7 @@ export const DateRangePickerInlineCalendar = ({
                 <DatePicker
                     numberOfColumns={2}
                     type="range"
-                    styles={{calendar: {cell: {textAlign: 'center'}}}}
+                    styles={{day: {textAlign: 'center'}}}
                     firstDayOfWeek={0}
                     allowSingleDateInRange
                     {...rangeCalendarProps}
@@ -99,15 +101,7 @@ export const DateRangePickerInlineCalendar = ({
                 />
             </Center>
 
-            <Group
-                position="right"
-                spacing="xs"
-                px="md"
-                py="sm"
-                sx={(theme) => ({
-                    borderTop: `1px solid ${theme.colors.gray[2]}`,
-                })}
-            >
+            <Group justify="right" gap="xs" px="md" py="sm" className={DateRangeClasses.save}>
                 <Button variant="outline" size="xs" onClick={onCancel}>
                     Cancel
                 </Button>

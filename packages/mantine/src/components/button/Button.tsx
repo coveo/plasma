@@ -1,7 +1,13 @@
-import {Button as MantineButton, ButtonProps as MantineButtonProps} from '@mantine/core';
-import {forwardRef, MouseEvent, MouseEventHandler, useState} from 'react';
-
-import {createPolymorphicComponent} from '../../utils';
+import {
+    ButtonGroup,
+    Factory,
+    Button as MantineButton,
+    ButtonProps as MantineButtonProps,
+    polymorphicFactory,
+} from '@mantine/core';
+import {ButtonCssVariables, ButtonStylesNames, ButtonVariant} from '@mantine/core/lib/components/Button/Button';
+import {MouseEventHandler} from 'react';
+import {useClickWithLoading} from '../../hooks/useClickWithLoading';
 import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from './ButtonWithDisabledTooltip';
 
 export interface ButtonProps extends MantineButtonProps, ButtonWithDisabledTooltipProps {
@@ -9,32 +15,27 @@ export interface ButtonProps extends MantineButtonProps, ButtonWithDisabledToolt
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const useLoadingHandler = (handler?: MouseEventHandler<HTMLButtonElement>) => {
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
-        const possiblePromise: unknown = handler?.(event);
-        try {
-            if (possiblePromise instanceof Promise) {
-                setIsLoading(true);
-                await possiblePromise;
-                setIsLoading(false);
-            }
-        } catch (err) {
-            setIsLoading(false);
-            console.error(err);
-        }
+type ButtonOverloadFactory = Factory<{
+    props: ButtonProps;
+    defaultRef: HTMLButtonElement;
+    defaultComponent: 'button';
+    stylesNames: ButtonStylesNames;
+    vars: ButtonCssVariables;
+    variant: ButtonVariant;
+    staticComponents: {
+        Group: typeof ButtonGroup;
     };
+}>;
 
-    return {isLoading, handleClick};
-};
-
-const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    ({disabledTooltip, disabled, disabledTooltipProps, loading, onClick, ...others}, ref) => {
-        const {isLoading, handleClick} = useLoadingHandler(onClick);
+export const Button = polymorphicFactory<ButtonOverloadFactory>(
+    (
+        {disabledTooltip, disabled, disabledTooltipProps, loading, onClick, 'data-disabled': dataDisabled, ...others},
+        ref,
+    ) => {
+        const {isLoading, handleClick} = useClickWithLoading(onClick);
         return (
             <ButtonWithDisabledTooltip
-                disabled={disabled}
+                disabled={disabled || dataDisabled}
                 disabledTooltip={disabledTooltip}
                 disabledTooltipProps={disabledTooltipProps}
                 fullWidth={others.fullWidth}
@@ -43,14 +44,13 @@ const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     loaderProps={{variant: 'oval'}}
                     ref={ref}
                     loading={isLoading || loading}
-                    onClick={handleClick}
-                    disabled={disabled}
+                    onClick={dataDisabled ? (e) => e.preventDefault() : handleClick}
+                    disabled={disabled || dataDisabled}
+                    data-loading={isLoading || loading || undefined}
                     {...others}
                 />
             </ButtonWithDisabledTooltip>
         );
     },
 );
-
-export const Button = createPolymorphicComponent<'button', ButtonProps, {Group: typeof MantineButton.Group}>(_Button);
 Button.Group = MantineButton.Group;

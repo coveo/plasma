@@ -31,7 +31,7 @@ describe('Table.Predicate', () => {
         );
 
         await waitFor(() => {
-            expect(screen.getByRole('searchbox', {name: 'rank'})).toHaveValue('Second');
+            expect(screen.getByRole('textbox', {name: 'rank'})).toHaveValue('Second');
         });
         expect(onMount).toHaveBeenCalledWith(expect.objectContaining({predicates: {rank: 'second'}}));
     });
@@ -53,10 +53,10 @@ describe('Table.Predicate', () => {
             </Table>,
         );
 
-        await user.click(screen.getByRole('searchbox', {name: 'rank'}));
+        await user.click(screen.getByRole('textbox', {name: 'rank'}));
         await user.click(screen.getByRole('option', {name: 'First'}));
 
-        expect(screen.getByRole('searchbox', {name: 'rank'})).toHaveValue('First');
+        expect(screen.getByRole('textbox', {name: 'rank'})).toHaveValue('First');
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledTimes(1);
         });
@@ -83,9 +83,9 @@ describe('Table.Predicate', () => {
                 </Table.Footer>
             </Table>,
         );
-        await user.click(screen.getByRole('searchbox', {name: 'rank'}));
+        await user.click(screen.getByRole('textbox', {name: 'rank'}));
         await user.click(screen.getByRole('option', {name: 'First'}));
-        expect(screen.getByRole('searchbox', {name: 'rank'})).toHaveValue('First');
+        expect(screen.getByRole('textbox', {name: 'rank'})).toHaveValue('First');
         await waitFor(() => {
             expect(onChange).toHaveBeenCalledTimes(1);
         });

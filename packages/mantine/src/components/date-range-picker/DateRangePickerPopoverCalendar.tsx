@@ -84,7 +84,7 @@ export const DateRangePickerPopoverCalendar = <T extends unknown>({
                     <DatePicker
                         ref={ref}
                         type="range"
-                        styles={{calendar: {cell: {textAlign: 'center'}}}}
+                        styles={{day: {textAlign: 'center'}}}
                         numberOfColumns={2}
                         firstDayOfWeek={0}
                         allowSingleDateInRange

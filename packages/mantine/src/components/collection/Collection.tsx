@@ -4,27 +4,29 @@ import {restrictToParentElement, restrictToVerticalAxis} from '@dnd-kit/modifier
 import {SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from '@dnd-kit/sortable';
 import {
     Box,
-    DefaultProps,
+    BoxProps,
+    Factory,
     Group,
     Input,
-    InputWrapperBaseProps,
-    MantineNumberSize,
-    Selectors,
+    MantineSpacing,
     Stack,
+    StylesApiProps,
     Tooltip,
-    useComponentDefaultProps,
+    __InputWrapperProps,
+    useProps,
+    useStyles,
 } from '@mantine/core';
 import {ReorderPayload} from '@mantine/form/lib/types';
 import {useDidUpdate} from '@mantine/hooks';
-import {ReactNode} from 'react';
+import {ForwardedRef, ReactNode} from 'react';
 
+import {CustomComponentThemeExtend, identity} from '../../utils';
 import {Button} from '../button';
-import useStyles from './Collection.styles';
+import classes from './Collection.module.css';
+import {CollectionProvider} from './CollectionContext';
 import {CollectionItem} from './CollectionItem';
 
-interface CollectionProps<T>
-    extends Omit<InputWrapperBaseProps, 'inputContainer' | 'inputWrapperOrder'>,
-        DefaultProps<Selectors<typeof useStyles>> {
+export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiProps<CollectionFactory> {
     /**
      * The default value each new item should have
      */
@@ -77,7 +79,7 @@ interface CollectionProps<T>
     /**
      * Function that gets called when a new item needs to be added to the collection
      *
-     * @param value The the value of the item to insert
+     * @param value The value of the item to insert
      * @param index The index of the new item to insert
      */
     onInsertItem?: (value: T, index: number) => void;
@@ -113,11 +115,11 @@ interface CollectionProps<T>
      */
     addDisabledTooltip?: string;
     /**
-     * The spacing between the colleciton items
+     * The gap between the colleciton items
      *
      * @default 'xs'
      */
-    spacing?: MantineNumberSize;
+    gap?: MantineSpacing;
     /**
      * Whether the collection is required. When required is true, the collection will hide the remove button if there is only one item
      *
@@ -126,17 +128,25 @@ interface CollectionProps<T>
     required?: boolean;
 }
 
+export type CollectionStylesNames = 'root' | 'item' | 'itemDragging' | 'dragHandle';
+
+export type CollectionFactory = Factory<{
+    props: CollectionProps<unknown>;
+    ref: HTMLDivElement;
+    stylesNames: CollectionStylesNames;
+}>;
+
 const defaultProps: Partial<CollectionProps<unknown>> = {
     draggable: false,
     addLabel: 'Add item',
     addDisabledTooltip: 'There is already an empty item',
     disabled: false,
-    spacing: 'xs',
+    gap: 'xs',
     required: false,
     getItemId: ({id}: any) => id,
 };
 
-export const Collection = <T,>(props: CollectionProps<T>) => {
+export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
         value,
         onChange,
@@ -146,7 +156,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         disabled,
         draggable,
         children,
-        spacing,
+        gap,
         required,
         newItem,
         addLabel,
@@ -160,16 +170,27 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
         error,
         errorProps,
         getItemId,
+        ref,
 
         // Style props
-        classNames,
+        style,
         className,
+        classNames,
         styles,
         unstyled,
-
         ...others
-    } = useComponentDefaultProps('Collection', defaultProps as CollectionProps<T>, props);
-    const {classes, cx} = useStyles(null, {classNames, name: 'Collection', styles, unstyled});
+    } = useProps('Collection', defaultProps as CollectionProps<T>, props);
+
+    const getStyles = useStyles<CollectionFactory>({
+        name: 'Collection',
+        classes,
+        props,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+    });
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -214,7 +235,6 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
             disabled={disabled}
             draggable={draggable}
             onRemove={() => onRemoveItem?.(index)}
-            styles={styles}
             removable={!(required && hasOnlyOneItem)}
         >
             {children(item.data, index)}
@@ -229,7 +249,7 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
                 <Box>
                     <Button
                         variant="subtle"
-                        leftIcon={<AddSize16Px height={16} />}
+                        leftSection={<AddSize16Px height={16} />}
                         onClick={() => onInsertItem(newItem, value?.length ?? 0)}
                         disabled={!addAllowed}
                     >
@@ -253,21 +273,25 @@ export const Collection = <T,>(props: CollectionProps<T>) => {
     };
 
     return (
-        <DndContext
-            onDragEnd={handleDragEnd}
-            sensors={sensors}
-            modifiers={[restrictToVerticalAxis, restrictToParentElement]}
-        >
-            <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
-                <Box className={cx(classes.root, className)} {...others}>
-                    {_header}
-                    <Stack spacing={spacing}>
-                        {items}
-                        {_addButton}
-                        {_error}
-                    </Stack>
-                </Box>
-            </SortableContext>
-        </DndContext>
+        <CollectionProvider value={{getStyles}}>
+            <DndContext
+                onDragEnd={handleDragEnd}
+                sensors={sensors}
+                modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+            >
+                <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
+                    <Box ref={ref} {...others} {...getStyles('root')}>
+                        {_header}
+                        <Stack gap={gap}>
+                            {items}
+                            {_addButton}
+                            {_error}
+                        </Stack>
+                    </Box>
+                </SortableContext>
+            </DndContext>
+        </CollectionProvider>
     );
 };
+
+Collection.extend = identity as CustomComponentThemeExtend<CollectionFactory>;

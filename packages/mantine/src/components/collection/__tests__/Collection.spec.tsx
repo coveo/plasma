@@ -1,13 +1,16 @@
+import {useForm} from '@mantine/form';
 import {render, screen, userEvent, within} from '@test-utils';
 import {useState} from 'react';
-
-import {useForm} from '../../../form';
 import {Collection} from '../Collection';
+import {enhanceWithCollectionProps} from '../enhanceWithCollectionProps';
 
 describe('Collection', () => {
     it('renders one item for each initial values in the form', () => {
         const Fixture = () => {
-            const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
             return (
                 <Collection<string> newItem="" {...form.getInputProps('fruits')}>
                     {(name) => <span data-testid="item">{name}</span>}
@@ -26,7 +29,10 @@ describe('Collection', () => {
     it('removes the item when clicking on its remove button', async () => {
         const user = userEvent.setup({delay: null});
         const Fixture = () => {
-            const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
             return (
                 <>
                     <Collection newItem="" {...form.getInputProps('fruits')}>
@@ -56,7 +62,10 @@ describe('Collection', () => {
         const user = userEvent.setup({delay: null});
         const onRemoveItemSpy = vi.fn();
         const Fixture = () => {
-            const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
             return (
                 <Collection newItem="" {...form.getInputProps('fruits')} onRemoveItem={onRemoveItemSpy}>
                     {(name) => <span data-testid="item">{name}</span>}
@@ -84,7 +93,10 @@ describe('Collection', () => {
         const user = userEvent.setup({delay: null});
         const Fixture = () => {
             const [disabled, setDisabled] = useState(false);
-            const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
             return (
                 <>
                     <button onClick={() => setDisabled(true)}>disable</button>
@@ -104,7 +116,10 @@ describe('Collection', () => {
     it('adds a new item when clicking on the add button', async () => {
         const user = userEvent.setup({delay: null});
         const Fixture = () => {
-            const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
             return (
                 <>
                     <Collection newItem="new" {...form.getInputProps('fruits')}>
@@ -130,7 +145,10 @@ describe('Collection', () => {
     it('disables the add button whenever allowAdd callback returns false', () => {
         const allowAdd = vi.fn().mockImplementation(() => false);
         const Fixture = () => {
-            const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
             return (
                 <>
                     <Collection newItem="new" {...form.getInputProps('fruits')} allowAdd={allowAdd}>
@@ -153,7 +171,10 @@ describe('Collection', () => {
     describe('when required is true', () => {
         it("doesn't render the remove button on one item", async () => {
             const Fixture = () => {
-                const form = useForm({initialValues: {fruits: ['banana']}});
+                const form = useForm({
+                    initialValues: {fruits: ['banana']},
+                    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+                });
                 return (
                     <Collection data-testid="collection" {...form.getInputProps('fruits')} newItem="new" required>
                         {(name) => <span data-testid="item">{name}</span>}
@@ -173,7 +194,10 @@ describe('Collection', () => {
 
         it('render the remove button on the first row if length is 2', async () => {
             const Fixture = () => {
-                const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+                const form = useForm({
+                    initialValues: {fruits: ['banana', 'orange']},
+                    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+                });
                 return (
                     <Collection data-testid="collection" {...form.getInputProps('fruits')} newItem="new" required>
                         {(name) => <span data-testid="item">{name}</span>}
@@ -196,7 +220,10 @@ describe('Collection', () => {
         it('not render the remove button after removing an item from a collection containing two items', async () => {
             const user = userEvent.setup({delay: null});
             const Fixture = () => {
-                const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+                const form = useForm({
+                    initialValues: {fruits: ['banana', 'orange']},
+                    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+                });
                 return (
                     <Collection data-testid="collection" {...form.getInputProps('fruits')} newItem="new" required>
                         {(name) => <span data-testid="item">{name}</span>}
@@ -225,7 +252,10 @@ describe('Collection', () => {
     describe('when the Collection is draggable', () => {
         it('renders drag n drop icons for each item', async () => {
             const Fixture = () => {
-                const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+                const form = useForm({
+                    initialValues: {fruits: ['banana', 'orange']},
+                    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+                });
                 return (
                     <>
                         <Collection newItem="new" {...form.getInputProps('fruits')} draggable>
@@ -245,7 +275,10 @@ describe('Collection', () => {
             it('not render the remove button after removing an item from a collection containing two items', async () => {
                 const user = userEvent.setup({delay: null});
                 const Fixture = () => {
-                    const form = useForm({initialValues: {fruits: ['banana', 'orange']}});
+                    const form = useForm({
+                        initialValues: {fruits: ['banana', 'orange']},
+                        enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+                    });
                     return (
                         <Collection
                             data-testid="collection"

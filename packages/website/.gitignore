@@ -13,6 +13,10 @@ dist-ssr
 *.local
 .next
 
+# Mantine examples
+src/examples/mantine
+src/pages/mantine
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

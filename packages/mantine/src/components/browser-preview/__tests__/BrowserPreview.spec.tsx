@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import {render, screen, waitFor} from '@testing-library/react';
+import {render, screen, waitFor} from '../../../__tests__/Utils';
 import {BrowserPreview} from '../BrowserPreview';
 
 describe('BrowserPreview', () => {
@@ -17,7 +17,7 @@ describe('BrowserPreview', () => {
         await waitFor(() => screen.findByRole('img', {name: /info/i}));
         await user.hover(screen.getByRole('img', {name: /info/i}));
 
-        expect(await screen.findByText(headerTooltip)).toBeVisible();
+        await waitFor(() => expect(screen.getByText(headerTooltip)).toBeVisible());
     });
 
     it('renders the specific title when provided', () => {
