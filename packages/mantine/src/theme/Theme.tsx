@@ -226,7 +226,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: {viewport: ScrollAreaClasses.viewport},
         }),
         SegmentedControl: SegmentedControl.extend({
-            classNames: {root: SegmentedControlClasses.root},
+            classNames: SegmentedControlClasses,
         }),
         Select: Select.extend({
             defaultProps: {withCheckIcon: false, allowDeselect: false},

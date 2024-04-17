@@ -964,7 +964,7 @@ importers:
         specifier: 1.1.2
         version: 1.1.2
       highlight.js:
-        specifier: ^11.9.0
+        specifier: 11.9.0
         version: 11.9.0
       jquery:
         specifier: 3.7.0
@@ -1079,7 +1079,7 @@ importers:
         specifier: 8.4.32
         version: 8.4.32
       postcss-preset-mantine:
-        specifier: ^1.11.0
+        specifier: 1.11.0
         version: 1.11.0(postcss@8.4.32)
       simple-git:
         specifier: 3.22.0
