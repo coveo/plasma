@@ -1,11 +1,10 @@
-import {factory, Factory, StylesApiProps, useProps} from '@mantine/core';
+import {Factory, StylesApiProps, useProps} from '@mantine/core';
+import {MantineComponent} from '@mantine/core/lib/core/factory/factory';
 import {Children, ReactElement, ReactNode, useState} from 'react';
 import {InlineConfirmProvider} from './InlineConfirmContext';
 import {InlineConfirmPrompt} from './InlineConfirmPrompt';
 
 import {InlineConfirmTarget} from './InlineConfirmTarget';
-
-export type InlineConfirmStyleNames = 'root';
 
 export interface InlineConfirmProps extends StylesApiProps<InlineConfirmFactory> {
     /**
@@ -17,7 +16,6 @@ export interface InlineConfirmProps extends StylesApiProps<InlineConfirmFactory>
 export type InlineConfirmFactory = Factory<{
     props: InlineConfirmProps;
     ref: never;
-    stylesNames: InlineConfirmStyleNames;
     staticComponents: {
         Prompt: typeof InlineConfirmPrompt;
         Target: typeof InlineConfirmTarget;
@@ -26,7 +24,7 @@ export type InlineConfirmFactory = Factory<{
 
 const defaultProps: Partial<InlineConfirmProps> = {};
 
-export const InlineConfirm = factory<InlineConfirmFactory>((_props) => {
+export const InlineConfirm = ((_props) => {
     const {children} = useProps('InlineConfirm', defaultProps, _props);
     const [confirmingId, setConfirmingId] = useState<string | null>(null);
 
@@ -41,7 +39,7 @@ export const InlineConfirm = factory<InlineConfirmFactory>((_props) => {
             {prompt ?? children}
         </InlineConfirmProvider>
     );
-});
+}) as MantineComponent<InlineConfirmFactory>;
 
 InlineConfirm.Prompt = InlineConfirmPrompt;
 InlineConfirm.Target = InlineConfirmTarget;

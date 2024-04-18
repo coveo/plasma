@@ -26,11 +26,8 @@ const defaultProps: Partial<RowLayoutHeaderProps<unknown>> = {};
 
 export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: ForwardedRef<HTMLTableRowElement>}) => {
     const ctx = useRowLayout();
-    const {table, getExpandChildren, loading, className, style, classNames, styles, ...others} = useProps(
-        'RowLayoutHeader',
-        defaultProps as RowLayoutHeaderProps<T>,
-        props,
-    );
+    const {table, getExpandChildren, loading, doubleClickAction, className, style, classNames, styles, ...others} =
+        useProps('RowLayoutHeader', defaultProps as RowLayoutHeaderProps<T>, props);
     const {multiRowSelectionEnabled, disableRowSelection} = useTable();
 
     const headers = table.getHeaderGroups().map((headerGroup) => (
