@@ -1,4 +1,11 @@
-import {CheckSize16Px, CrossSize16Px, FilterSize16Px, InfoSize24Px} from '@coveord/plasma-react-icons';
+import {
+    ArrowHeadLeftSize16Px,
+    ArrowHeadRightSize16Px,
+    CheckSize16Px,
+    CrossSize16Px,
+    FilterSize16Px,
+    InfoSize24Px,
+} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
     ActionIcon,
@@ -23,6 +30,7 @@ import {
     MultiSelect,
     NavLink,
     Notification,
+    Pagination,
     Popover,
     Radio,
     ScrollArea,
@@ -53,6 +61,7 @@ import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
 import NotificationClasses from '../styles/Notification.module.css';
+import PaginationClasses from '../styles/Pagination.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
@@ -213,6 +222,14 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
             vars: NotificationVars,
         }),
+        Pagination: Pagination.extend({
+            classNames: PaginationClasses,
+            vars: () => ({root: {'--pagination-control-fz': 'var(--mantine-font-size-sm)'}}),
+            defaultProps: {
+                nextIcon: ArrowHeadRightSize16Px,
+                previousIcon: ArrowHeadLeftSize16Px,
+            },
+        }),
         Popover: Popover.extend({
             defaultProps: {
                 shadow: 'md',
@@ -226,7 +243,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: {viewport: ScrollAreaClasses.viewport},
         }),
         SegmentedControl: SegmentedControl.extend({
-            classNames: {root: SegmentedControlClasses.root},
+            classNames: SegmentedControlClasses,
         }),
         Select: Select.extend({
             defaultProps: {withCheckIcon: false, allowDeselect: false},

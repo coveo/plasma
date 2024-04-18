@@ -26,7 +26,6 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
                 value={state.pagination.pageSize.toString() ?? values?.[1].toString()}
                 onChange={updatePerPage}
                 data={values.map((value) => value.toString())}
-                color="action"
                 size="sm"
             />
         </Group>
