@@ -1,4 +1,4 @@
-import {Button, Menu, MenuItem} from '@mantine/core';
+import {Button, Menu} from '@mantine/core';
 import {render, screen, userEvent} from '@test-utils';
 
 import {InlineConfirm} from '../InlineConfirm';
@@ -36,7 +36,7 @@ describe('InlineConfirm', () => {
                         <button>open menu</button>
                     </Menu.Target>
                     <Menu.Dropdown>
-                        <InlineConfirm.Target component={MenuItem} id="delete" onClick={onClickSpy}>
+                        <InlineConfirm.Target component={Menu.Item} id="delete" onClick={onClickSpy}>
                             Delete
                         </InlineConfirm.Target>
                     </Menu.Dropdown>
