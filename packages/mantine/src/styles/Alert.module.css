@@ -1,3 +1,33 @@
+.root {
+    padding: var(--mantine-spacing-sm);
+    &:not(&[data-variant]) {
+        border-color: color-mix(in srgb, var(--alert-color), var(--alert-bg) 85%);
+    }
+}
+
+.wrapper {
+    gap: var(--mantine-spacing-sm);
+}
+
 .title {
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 0;
+}
+
+.message {
+    @mixin light {
+        color: var(--mantine-color-gray-7);
+        &:where([data-variant='filled']) {
+            color: var(--alert-color);
+        }
+    }
+
+    &:where([data-variant='white']) {
+        color: var(--mantine-color-black);
+    }
 }

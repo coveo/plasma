@@ -4,6 +4,7 @@ import {
     CheckSize16Px,
     CrossSize16Px,
     FilterSize16Px,
+    InfoSize16Px,
     InfoSize24Px,
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
@@ -116,10 +117,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Alert: Alert.extend({
             defaultProps: {
-                icon: <InfoSize24Px height={24} />,
+                icon: <InfoSize16Px height={16} />,
                 color: 'navy',
             },
-            classNames: {title: AlertClasses.title},
+            classNames: AlertClasses,
         }),
         Anchor: Anchor.extend({
             defaultProps: {
