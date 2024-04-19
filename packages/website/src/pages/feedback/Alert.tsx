@@ -21,7 +21,7 @@ const AlertPage = () => (
             warning: <AlertWarningDemo center title="Warning" />,
             critical: <AlertCriticalDemo center title="Critical" />,
         }}
-        sourcePath="/packages/mantine/src/components/button/Button.tsx"
+        sourcePath="/packages/mantine/src/styles/Alert.module.css"
         propsMetadata={AlertMetadata}
     />
 );
