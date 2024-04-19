@@ -1,3 +1,15 @@
+## 53.0.1 (2024-04-19)
+
+
+### Bug Fixes
+
+* **mantine, inline-confirm:** stop using forwardRef on InlineConfirm a538952
+* **mantine,table:** table header alignment issues (#3684) e21b069, closes #3684
+* **mantine:** adjust Alert visual look (#3686) 6212a50, closes #3686
+* **mantine:** adjust Table.PerPage and Table.Pagination styles (#3685) 0eb6d9d, closes #3685
+
+
+
 # 53.0.0 (2024-04-16)
 
 
