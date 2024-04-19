@@ -35,8 +35,7 @@
 .headerRoot {
     border-bottom: 1px solid var(--mantine-color-gray-3);
     background-color: var(--mantine-color-gray-1);
-    padding-left: var(--mantine-spacing-xl);
-    padding-right: var(--mantine-spacing-lg);
+    padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
     position: relative;
 }
 
