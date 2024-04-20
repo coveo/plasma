@@ -58,7 +58,7 @@
     },
     "dependencies": {
         "codemirror": "5.65.14",
-        "rc-slider": "8.7.1",
+        "rc-slider": "10.6.2",
         "react-diff-view": "3.0.3"
     },
     "devDependencies": {

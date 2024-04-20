@@ -58,7 +58,7 @@
         "escape-string-regexp": "5.0.0",
         "moment": "2.29.4",
         "query-string": "8.1.0",
-        "rc-slider": "9.7.5",
+        "rc-slider": "10.6.2",
         "react-bootstrap": "2.8.0",
         "react-codemirror2": "7.2.1",
         "react-color": "2.19.3",
