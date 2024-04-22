@@ -34,7 +34,7 @@
         "@redux-devtools/extension": "3.3.0",
         "@swc/helpers": "0.5.1",
         "@tabler/icons-react": "2.46.0",
-        "@tanstack/match-sorter-utils": "8.11.8",
+        "@tanstack/match-sorter-utils": "8.15.1",
         "clsx": "2.0.0",
         "codesandbox-import-utils": "2.2.3",
         "dayjs": "1.11.9",
