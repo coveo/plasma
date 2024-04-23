@@ -9,3 +9,11 @@
 .border {
     border-top: 1px solid var(--mantine-color-gray-3);
 }
+
+.modalFooter {
+    padding-bottom: 0;
+    margin-top: var(--mb-padding);
+    margin-bottom: calc(var(--mantine-spacing-md) - var(--mb-padding));
+    margin-left: calc(-1 * var(--mb-padding));
+    margin-right: calc(-1 * var(--mb-padding));
+}

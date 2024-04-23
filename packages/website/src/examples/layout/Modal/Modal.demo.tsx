@@ -10,7 +10,7 @@ const Demo = () => {
                 size="md"
                 opened={opened}
                 title={
-                    <Header variant="primary" description="Modal description">
+                    <Header variant="secondary" description="Modal description">
                         Modal Title
                         <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
                     </Header>
@@ -21,7 +21,7 @@ const Demo = () => {
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim. Phasellus
                 lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit. Cras vitae ipsum
                 sit amet nibh efficitur imperdiet. Praesent scelerisque erat est. Cras dictum sodales tellus sed pretium
-                <StickyFooter p={0} pt="lg">
+                <StickyFooter borderTop removeModalPadding>
                     <Button variant="outline" onClick={() => setOpened(false)}>
                         Cancel
                     </Button>

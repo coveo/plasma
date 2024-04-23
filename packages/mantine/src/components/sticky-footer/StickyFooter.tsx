@@ -4,7 +4,7 @@ import {ReactNode} from 'react';
 import classes from './StickyFooter.module.css';
 
 export interface StickyFooterProps
-    extends Omit<GroupProps, 'classNames' | 'styles' | 'vars'>,
+    extends Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
         StylesApiProps<StickyFooterFactory> {
     /**
      * Whether a border is render on top of the footer
@@ -14,6 +14,12 @@ export interface StickyFooterProps
      * Footer's children, usually buttons
      */
     children?: ReactNode;
+    /**
+     * Set this to `true` when rendering the `StickyFooter` inside `Modal`.
+     *
+     * When true, removes the modal's default padding so that the footer properly hugs the bottom of the modal.
+     */
+    removeModalPadding?: boolean;
 }
 
 export type StickyFooterStylesNames = 'root';
@@ -30,8 +36,20 @@ const defaultProps: Partial<StickyFooterProps> = {
 };
 
 export const StickyFooter = factory<StickyFooterFactory>((props, ref) => {
-    const {borderTop, justify, gap, children, className, classNames, style, styles, unstyled, vars, ...others} =
-        useProps('StickyFooter', defaultProps, props);
+    const {
+        borderTop,
+        removeModalPadding,
+        justify,
+        gap,
+        children,
+        className,
+        classNames,
+        style,
+        styles,
+        unstyled,
+        vars,
+        ...others
+    } = useProps('StickyFooter', defaultProps, props);
     const getStyles = useStyles<StickyFooterFactory>({
         name: 'StickyFooter',
         classes,
@@ -49,7 +67,10 @@ export const StickyFooter = factory<StickyFooterFactory>((props, ref) => {
         <Group
             justify={justify}
             gap={gap}
-            className={clsx(css.className, {[classes.border]: !!borderTop})}
+            className={clsx(css.className, {
+                [classes.border]: !!borderTop,
+                [classes.modalFooter]: !!removeModalPadding,
+            })}
             style={css.style}
             ref={ref}
             {...others}
