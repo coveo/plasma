@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "53.0.0",
+    "version": "53.1.0",
     "description": "Design tokens of the Plasma Design System",
     "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
     "repository": {

@@ -1,3 +1,12 @@
+# 53.1.0 (2024-04-24)
+
+
+### Features
+
+* **mantine:** add variant modal-footer to StickyFooter (#3690) a61ddf4, closes #3690
+
+
+
 ## 53.0.1 (2024-04-19)
 
 
