@@ -538,8 +538,8 @@ importers:
         specifier: 3.16.0
         version: 3.16.0
       '@types/react-textarea-autosize':
-        specifier: 4.3.6
-        version: 4.3.6
+        specifier: 8.0.0
+        version: 8.0.0(@types/react@18.2.55)(react@18.2.0)
       '@types/react-transition-group':
         specifier: 4.4.6
         version: 4.4.6
@@ -5395,10 +5395,14 @@ packages:
       '@types/react': 18.2.55
     dev: true
 
-  /@types/react-textarea-autosize@4.3.6:
-    resolution: {integrity: sha512-cTf8tCem0c8A7CERYbTuF+bRFaqYu7N7HLCa6ZhUhDx8XnUsTpGx5udMWljt87JpciUKuUkImKPEsy6kcKhrcQ==}
+  /@types/react-textarea-autosize@8.0.0(@types/react@18.2.55)(react@18.2.0):
+    resolution: {integrity: sha512-KVqk+/+RMQB3ZDpk7ZTpYHauU3Ue+Y0f09POvGaEpaGb+izzbpoM47tkDGlbF37iT7JYZ8QFwLzqiOPYbQaztA==}
+    deprecated: This is a stub types definition. react-textarea-autosize provides its own type definitions, so you do not need this installed.
     dependencies:
-      '@types/react': 18.2.55
+      react-textarea-autosize: 8.5.2(@types/react@18.2.55)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - react
     dev: true
 
   /@types/react-transition-group@4.4.6:
@@ -15313,7 +15317,6 @@ packages:
       use-latest: 1.2.1(@types/react@18.2.55)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
-    dev: false
 
   /react-textarea-autosize@8.5.3(@types/react@18.2.55)(react@18.2.0):
     resolution: {integrity: sha512-XT1024o2pqCuZSuBt9FwHlaDeNtVrtCXu0Rnz88t1jUGheCLa3PhjE1GH8Ctm2axEtvdCl5SUHYschyQ0L5QHQ==}
