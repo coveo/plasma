@@ -35,7 +35,7 @@
         "@types/node": "20.11.29",
         "@types/react": "18.2.20",
         "@types/react-dom": "18.2.7",
-        "@types/rimraf": "3.0.2",
+        "@types/rimraf": "4.0.5",
         "@typescript/twoslash": "3.2.4",
         "@typescript/vfs": "1.5.0",
         "cross-fetch": "4.0.0",
