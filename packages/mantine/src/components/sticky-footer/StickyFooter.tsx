@@ -4,7 +4,7 @@ import {ReactNode} from 'react';
 import classes from './StickyFooter.module.css';
 
 export interface StickyFooterProps
-    extends Omit<GroupProps, 'classNames' | 'styles' | 'vars'>,
+    extends Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
         StylesApiProps<StickyFooterFactory> {
     /**
      * Whether a border is render on top of the footer
@@ -14,6 +14,13 @@ export interface StickyFooterProps
      * Footer's children, usually buttons
      */
     children?: ReactNode;
+    /**
+     * Use variant 'modal-footer' when rendering the `StickyFooter` inside `Modal`.
+     *
+     * The 'modal-footer' removes the modal's default padding so that the footer properly hugs the bottom of the modal.
+     * It also adds a border on top of the footer.
+     */
+    variant?: 'default' | 'modal-footer';
 }
 
 export type StickyFooterStylesNames = 'root';
