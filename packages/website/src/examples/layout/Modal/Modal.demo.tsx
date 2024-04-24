@@ -21,7 +21,7 @@ const Demo = () => {
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim. Phasellus
                 lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit. Cras vitae ipsum
                 sit amet nibh efficitur imperdiet. Praesent scelerisque erat est. Cras dictum sodales tellus sed pretium
-                <StickyFooter borderTop removeModalPadding>
+                <StickyFooter variant="modal-footer">
                     <Button variant="outline" onClick={() => setOpened(false)}>
                         Cancel
                     </Button>

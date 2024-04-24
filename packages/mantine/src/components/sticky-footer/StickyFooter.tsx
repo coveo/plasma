@@ -15,11 +15,12 @@ export interface StickyFooterProps
      */
     children?: ReactNode;
     /**
-     * Set this to `true` when rendering the `StickyFooter` inside `Modal`.
+     * Use variant 'modal-footer' when rendering the `StickyFooter` inside `Modal`.
      *
-     * When true, removes the modal's default padding so that the footer properly hugs the bottom of the modal.
+     * The 'modal-footer' removes the modal's default padding so that the footer properly hugs the bottom of the modal.
+     * It also adds a border on top of the footer.
      */
-    removeModalPadding?: boolean;
+    variant?: 'default' | 'modal-footer';
 }
 
 export type StickyFooterStylesNames = 'root';
@@ -36,20 +37,8 @@ const defaultProps: Partial<StickyFooterProps> = {
 };
 
 export const StickyFooter = factory<StickyFooterFactory>((props, ref) => {
-    const {
-        borderTop,
-        removeModalPadding,
-        justify,
-        gap,
-        children,
-        className,
-        classNames,
-        style,
-        styles,
-        unstyled,
-        vars,
-        ...others
-    } = useProps('StickyFooter', defaultProps, props);
+    const {borderTop, justify, gap, children, className, classNames, style, styles, unstyled, vars, ...others} =
+        useProps('StickyFooter', defaultProps, props);
     const getStyles = useStyles<StickyFooterFactory>({
         name: 'StickyFooter',
         classes,
@@ -67,10 +56,7 @@ export const StickyFooter = factory<StickyFooterFactory>((props, ref) => {
         <Group
             justify={justify}
             gap={gap}
-            className={clsx(css.className, {
-                [classes.border]: !!borderTop,
-                [classes.modalFooter]: !!removeModalPadding,
-            })}
+            className={clsx(css.className, {[classes.border]: !!borderTop})}
             style={css.style}
             ref={ref}
             {...others}
