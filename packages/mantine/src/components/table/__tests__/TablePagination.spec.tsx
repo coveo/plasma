@@ -137,6 +137,28 @@ describe('Table.Pagination', () => {
         expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
     });
 
+    it('renders nothing if pages is null', () => {
+        render(
+            <Table data={[]} columns={columns} initialState={{globalFilter: 'filter'}}>
+                <Table.Footer data-testid="table-footer">
+                    <Table.Pagination totalPages={null} />
+                </Table.Footer>
+            </Table>,
+        );
+        expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
+    });
+
+    it('renders nothing if pages is undefined', () => {
+        render(
+            <Table data={[]} columns={columns} initialState={{globalFilter: 'filter'}}>
+                <Table.Footer data-testid="table-footer">
+                    <Table.Pagination totalPages={undefined} />
+                </Table.Footer>
+            </Table>,
+        );
+        expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
+    });
+
     it('changes page when the current page is greater than the total number of pages', async () => {
         const user = userEvent.setup();
         const onChangePage = vi.fn();
