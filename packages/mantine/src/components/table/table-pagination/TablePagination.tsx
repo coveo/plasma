@@ -17,7 +17,7 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({totalP
         containerRef.current.scrollIntoView({behavior: 'smooth'});
     };
 
-    const total = totalPages === null ? getPageCount() : totalPages;
+    const total = totalPages == null ? getPageCount() : totalPages;
 
     useDidUpdate(() => {
         if (state.pagination.pageIndex + 1 > total && total > 0) {
