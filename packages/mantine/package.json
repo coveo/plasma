@@ -55,6 +55,7 @@
         "monaco-editor": "0.46.0"
     },
     "devDependencies": {
+        "@emotion/react": "11.11.3",
         "@mantine/carousel": "7.6.1",
         "@mantine/code-highlight": "7.6.1",
         "@mantine/core": "7.6.1",
@@ -63,10 +64,9 @@
         "@mantine/hooks": "7.6.1",
         "@mantine/modals": "7.6.1",
         "@mantine/notifications": "7.6.1",
+        "@swc/cli": "0.3.12",
+        "@swc/core": "1.5.0",
         "@swc/jest": "0.2.29",
-        "@emotion/react": "11.11.3",
-        "@swc/cli": "0.3.9",
-        "@swc/core": "1.4.2",
         "@testing-library/jest-dom": "6.4.2",
         "@testing-library/react": "14.2.1",
         "@testing-library/user-event": "14.5.2",
