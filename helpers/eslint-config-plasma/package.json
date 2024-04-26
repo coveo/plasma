@@ -1,6 +1,6 @@
 {
     "name": "eslint-config-plasma",
-    "version": "52.16.0",
+    "version": "53.1.1",
     "private": true,
     "license": "Apache-2.0",
     "author": "Coveo",
