@@ -102,7 +102,7 @@
         "@types/redux-logger": "3.0.13",
         "@types/redux-mock-store": "1.0.6",
         "@types/redux-promise-middleware": "6.0.0",
-        "@types/testing-library__jest-dom": "5.14.9",
+        "@types/testing-library__jest-dom": "6.0.0",
         "@types/underscore": "1.11.15",
         "@types/underscore.string": "0.0.41",
         "@wojtekmaj/enzyme-adapter-react-17": "0.8.0",
