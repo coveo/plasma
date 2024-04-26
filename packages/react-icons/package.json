@@ -35,7 +35,7 @@
         "mock/index.js"
     ],
     "scripts": {
-        "build": "pnpm generate && node ../../scripts/build && pnpm build:mock",
+        "build": "pnpm generate && node ../../scripts/build",
         "build:mock": "swc ./mock/index.tsx -o ./mock/index.js --config-file ./mock/.swcrc",
         "clean": "rimraf dist",
         "generate": "node ./bin/index.js",
@@ -49,8 +49,8 @@
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "8.1.0",
         "@svgr/plugin-jsx": "8.1.0",
-        "@swc/cli": "0.3.9",
-        "@swc/core": "1.4.2",
+        "@swc/cli": "0.3.12",
+        "@swc/core": "1.5.0",
         "@types/react": "18.2.60",
         "@types/react-dom": "18.2.19",
         "fs-extra": "11.2.0",

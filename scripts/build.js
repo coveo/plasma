@@ -40,6 +40,7 @@ const build = async ({watch = false}) => {
             'jsc.target=es5',
             '--out-dir',
             './dist/cjs',
+            '--strip-leading-paths',
         ];
         const swcES6Args = [
             ...swcArgs,
@@ -49,6 +50,7 @@ const build = async ({watch = false}) => {
             'jsc.target=es2020',
             '--out-dir',
             './dist/esm',
+            '--strip-leading-paths',
         ];
 
         const dtsESM = spawn('tsc', tscESMArgs, {stdio: 'inherit', shell: true});
