@@ -76,7 +76,7 @@
     },
     "devDependencies": {
         "@faker-js/faker": "8.4.1",
-        "@matteoh2o1999/github-actions-jest-reporter": "2.0.0",
+        "@matteoh2o1999/github-actions-jest-reporter": "3.0.0",
         "@swc/cli": "0.3.12",
         "@swc/core": "1.5.0",
         "@swc/jest": "0.2.36",
