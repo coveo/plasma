@@ -19,7 +19,6 @@ export default defineConfig({
         alias: [
             {find: /@examples\/(.*)/, replacement: path.resolve(__dirname, 'src/examples/$1')},
             {find: '@demo', replacement: path.resolve(__dirname, 'src/building-blocs/Demo.tsx')},
-            // {find: '@coveord/plasma-react-icons', replacement: path.resolve(__dirname, './node_modules/@coveord/plasma-react-icons/dist/esm/src/index.js')},
         ],
     },
 });
