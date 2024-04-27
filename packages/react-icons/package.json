@@ -35,7 +35,7 @@
         "mock/index.js"
     ],
     "scripts": {
-        "build": "pnpm generate && node ../../scripts/build",
+        "build": "pnpm generate && node ../../scripts/build && pnpm build:mock",
         "build:mock": "swc ./mock/index.tsx -o ./mock/index.js --config-file ./mock/.swcrc",
         "clean": "rimraf dist",
         "generate": "node ./bin/index.js",
