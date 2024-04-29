@@ -14,6 +14,11 @@ runs:
                         tag: 'next',
                         branch: 'next',
                     });
+                  } else if (context.ref === 'refs/heads/v53') {
+                    await publishNewVersion({github, context, exec}, {
+                        tag: 'v53',
+                        branch: 'v53',
+                    });
                   } else {
                     await publishNewVersion({github, context, exec});
                   }
