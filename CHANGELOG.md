@@ -1,3 +1,12 @@
+## 53.1.3 (2024-04-29)
+
+
+### Bug Fixes
+
+* **plasma-react, multiselect:** fix margin for selected options (#3704) 7b2bfd6, closes #3704
+
+
+
 ## 53.1.2 (2024-04-29)
 
 
