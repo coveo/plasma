@@ -1,5 +1,6 @@
 import {Center, Code, Container, Stack, Text, Title} from '@coveord/plasma-mantine';
 import {useRouteError} from 'react-router-dom';
+import classes from './styles/UnexpectedError.module.css';
 
 export const UnexpectedError = () => {
     const error = useRouteError() as Error;
@@ -12,7 +13,7 @@ export const UnexpectedError = () => {
                     <Text size="sm">
                         <div>💥 An error occurred while rendering the page 👇</div>
                     </Text>
-                    <Code block style={{overflowWrap: 'break-word', whiteSpace: 'pre-wrap'}}>
+                    <Code block className={classes.code}>
                         {error.stack}
                     </Code>
                     <Text size="sm">

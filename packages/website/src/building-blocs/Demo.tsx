@@ -13,7 +13,7 @@ import {
 import {CheckSize16Px, CopySize16Px, PlaySize16Px} from '@coveord/plasma-react-icons';
 import {CodeHighlight} from '@mantine/code-highlight';
 import '@mantine/code-highlight/styles.css';
-import {ReactNode, Component} from 'react';
+import {Component, ReactNode} from 'react';
 import CodeHighlightClassesThemeClasses from '../styles/CodeHighlight.theme.module.css';
 import DemoClasses from './Demo.module.css';
 import getCodeSandboxLink from './getCodeSandboxLink';
@@ -48,24 +48,16 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
                 <ErrorBoundary>
                     <Box<'div' | typeof Center> component={center ? Center : 'div'} className={DemoClasses.preview}>
                         {maxHeight ? (
-                            <Flex direction={'column'} mah={maxHeight} style={{flex: 1}}>
-                                <div
-                                    className={DemoClasses.flexPreviewWrapper}
-                                    style={{padding: noPadding ? 0 : 'var(--mantine-spacing-md)'}}
-                                >
+                            <Flex direction={'column'} mah={maxHeight} flex={1}>
+                                <Box className={DemoClasses.flexPreviewWrapper} p={noPadding ? 0 : 'md'}>
                                     {children}
-                                </div>
+                                </Box>
                             </Flex>
                         ) : (
                             <ScrollArea.Autosize mah={MAX_HEIGHT}>
-                                <div
-                                    style={{
-                                        padding: noPadding ? 0 : 'var(--mantine-spacing-md)',
-                                        height: grow ? MAX_HEIGHT : '100%',
-                                    }}
-                                >
+                                <Box p={noPadding ? 0 : 'md'} h={grow ? MAX_HEIGHT : '100%'}>
                                     {children}
-                                </div>
+                                </Box>
                             </ScrollArea.Autosize>
                         )}
                     </Box>
