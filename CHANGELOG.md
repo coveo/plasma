@@ -1,3 +1,12 @@
+## 53.1.2 (2024-04-29)
+
+
+### Bug Fixes
+
+* **plasma:** fix the build and remove dead code (#3700) 6ddbaff, closes #3700
+
+
+
 ## 53.1.1 (2024-04-26)
 
 
