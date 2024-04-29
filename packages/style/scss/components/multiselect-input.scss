@@ -28,6 +28,7 @@
 .selected-options-container {
     display: inline-flex;
     flex-flow: row wrap;
+    margin-bottom: $spacing;
 
     .selected-option,
     .sortable-selected-option {
@@ -53,14 +54,8 @@
 }
 
 .multiselect-empty {
-    margin-bottom: $spacing;
     color: var(--deprecated-medium-grey);
     line-height: $button-small-height + 2 * $button-border-width;
-}
-
-.selected-option:last-child,
-.sortable-selected-option:last-child {
-    margin-bottom: $spacing;
 }
 
 .remove-all-selected-options {

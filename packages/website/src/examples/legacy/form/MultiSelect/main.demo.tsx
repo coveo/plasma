@@ -3,6 +3,7 @@ import {MultiSelectConnected} from '@coveord/plasma-react';
 const Demo = () => (
     <MultiSelectConnected
         id="mutli-select-1"
+        multiSelectStyle={{width: '100%', maxWidth: '400px'}}
         items={[
             {value: 'one', displayValue: 'Option 1'},
             {value: 'two', displayValue: 'Option 2'},
