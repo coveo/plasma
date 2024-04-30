@@ -1,44 +1,27 @@
 .tile {
     position: relative;
-    min-width: 264px;
-    background: var(--white);
+}
+
+a.tile {
+    border: 2px solid var(--mantine-color-gray-3);
 }
 
 a.tile:hover {
-    border: 2px solid var(--digital-blue-60);
-    box-shadow: var(--medium-elevation-on-light);
+    border: 2px solid var(--mantine-color-action-6);
 }
 
 .tile-information {
     position: absolute;
-    bottom: 0.25px;
+    bottom: 0;
     width: 100%;
-    height: 51.75px;
+    height: 65px;
     padding: 12px 14px;
     overflow: hidden;
-    background: var(--white);
     border-radius: 8px;
     transition: height 300ms;
 }
 
-.tile-title {
-    width: 100%;
-    height: 51.75px;
-    text-align: left;
-}
-
 .tile.mod-drawer:hover > .tile-information {
-    height: 131.75px;
+    height: 152px;
     box-shadow: 0 -6px 41px rgb(142 149 157 / 29%);
-
-    .tile-title {
-        height: 27.75px;
-        overflow: hidden;
-        transition: height 300ms;
-    }
-}
-
-.tile-description {
-    width: 100%;
-    height: 100%;
 }

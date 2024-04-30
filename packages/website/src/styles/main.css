@@ -1,6 +1,3 @@
-@import '@coveord/plasma-style/dist/style.css';
-@import '@coveord/plasma-style/scss/lib/mixins';
-@import '@coveord/plasma-style/scss/variables';
 @import './_syntax-highlighting.css';
 
 body {

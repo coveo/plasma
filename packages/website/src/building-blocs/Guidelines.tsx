@@ -1,10 +1,10 @@
-import {Tooltip} from '@coveord/plasma-react';
+import {Tooltip} from '@coveord/plasma-mantine';
 import {ReactNode} from 'react';
 import {Components} from 'react-markdown';
 
 const MarkdownFiles = new Map();
 
-const guidelines = import.meta.glob('../docs/**/*.md', {as: 'raw', eager: true});
+const guidelines = import.meta.glob('../docs/**/*.md', {query: '?raw', import: 'default', eager: true});
 
 for (const filePath in guidelines) {
     if (Object.hasOwn(guidelines, filePath)) {
@@ -39,7 +39,7 @@ const Strong: Components['strong'] = ({children}: {children: ReactNode}) => (
 );
 
 const Link: Components['a'] = ({title, href, children, ...props}) => (
-    <Tooltip title={title || ''}>
+    <Tooltip label={title || ''}>
         <a target={href && href.match(/^http/) ? '_blank' : ''} className="link" href={href} {...props}>
             {children}
         </a>

@@ -40,16 +40,6 @@ const addAndFineTuneDependencies = (snippet: string, dependencies: Dependencies)
         });
     }
 
-    if (snippetUsesPackage(snippet, '@coveord/plasma-react')) {
-        dependencies['@coveord/plasma-react'] = 'latest';
-        dependencies['@redux-devtools/extension'] = packageConfig.dependencies['@redux-devtools/extension'];
-        dependencies['react-redux'] = packageConfig.dependencies['react-redux'];
-        dependencies['redux'] = packageConfig.dependencies['redux'];
-        dependencies['redux-promise-middleware'] = packageConfig.dependencies['redux-promise-middleware'];
-        dependencies['redux-thunk'] = packageConfig.dependencies['redux-thunk'];
-        dependencies['jquery'] = 'latest';
-    }
-
     return dependencies;
 };
 
@@ -73,28 +63,6 @@ root.render(
         `;
     }
 
-    if (snippetUsesPackage(snippet, '@coveord/plasma-react')) {
-        return `
-import {createRoot} from 'react-dom/client';
-import {Provider} from 'react-redux';
-import Demo from './Demo';
-import Store from './Store';
-import {Defaults} from '@coveord/plasma-react';
-import '@coveord/plasma-style/dist/style.css';
-import './font.css';
-
-const root = createRoot(document.getElementById('App'));
-Defaults.APP_ELEMENT = '#App';
-Defaults.MODAL_ROOT = '#Modals';
-
-root.render(
-    <Provider store={Store}>
-        <Demo />
-    </Provider>
-);
-        `;
-    }
-
     return `
 import {createRoot} from 'react-dom/client';
 import Demo from './Demo';
@@ -104,18 +72,6 @@ const root = createRoot(document.getElementById('root'));
 root.render(<Demo />);
     `;
 };
-
-const storeTs = `
-import {IDispatch, PlasmaReducers} from '@coveord/plasma-react';
-import {applyMiddleware, combineReducers, createStore} from 'redux';
-import {composeWithDevTools} from '@redux-devtools/extension';
-import promise from 'redux-promise-middleware';
-import thunk from 'redux-thunk';
-
-const composeEnhancers = composeWithDevTools({name: 'Plasma Sandbox Store'});
-const Store = createStore(combineReducers(PlasmaReducers), {}, composeEnhancers(applyMiddleware<IDispatch>(...[thunk, promise])));
-export default Store;
-`;
 
 const indexHtml = `
 <!DOCTYPE html>
@@ -184,14 +140,6 @@ const getSandboxLink = (snippet: string): string => {
                 content: indexHtml,
                 isBinary: false,
             },
-            ...(snippetUsesPackage(snippet, '@coveord/plasma-react')
-                ? {
-                      'src/Store.ts': {
-                          content: storeTs,
-                          isBinary: false,
-                      },
-                  }
-                : {}),
         },
     });
     return `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&json=1`;
