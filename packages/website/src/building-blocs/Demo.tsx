@@ -27,7 +27,6 @@ interface DemoProps extends DemoComponentProps {
 }
 
 const Demo = ({children, snippet, center = false, grow = false, title, layout, noPadding, maxHeight}: DemoProps) => {
-    console.log(snippet);
     const clipboard = useClipboard();
     const createSandbox = async () => {
         try {
