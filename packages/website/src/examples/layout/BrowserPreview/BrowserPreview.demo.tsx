@@ -33,7 +33,7 @@ const Demo = ({pageSize = 5, numberOfItems = 40}: DemoProps) => {
 
     return (
         <BrowserPreview>
-            <Stack style={{flexGrow: 1}}>
+            <Stack flex={1}>
                 <Stack gap="xl" pb="sm">
                     {data[page - 1].map((product) => (
                         <Stack gap={0}>
@@ -55,8 +55,8 @@ const Demo = ({pageSize = 5, numberOfItems = 40}: DemoProps) => {
                         </Stack>
                     ))}
                 </Stack>
-                <Flex align="flex-end" justify="center" style={{flexGrow: 1}}>
-                    <Pagination value={page} total={numberOfPages} onChange={setPage} style={{align: 'center'}} />
+                <Flex align="flex-end" justify="center" flex={1}>
+                    <Pagination value={page} total={numberOfPages} onChange={setPage} />
                 </Flex>
             </Stack>
         </BrowserPreview>

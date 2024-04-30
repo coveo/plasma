@@ -7,9 +7,7 @@ const Demo = () => {
     return (
         <BrowserPreview title={title} headerTooltip="This is a custom tooltip message.">
             <Stack gap="xs">
-                <Title order={3} style={{align: 'center'}}>
-                    Hello World !
-                </Title>
+                <Title order={3}>Hello World !</Title>
                 <Text>{content}</Text>
             </Stack>
         </BrowserPreview>

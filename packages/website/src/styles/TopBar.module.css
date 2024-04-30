@@ -1,0 +1,11 @@
+.topBar {
+    background: linear-gradient(
+        217deg,
+        var(--mantine-color-purple-6) 0%,
+        var(--mantine-color-navy-7) 74.62%,
+        var(--mantine-color-navy-7) 100%
+    );
+}
+.githubImage {
+    filter: invert(1);
+}

@@ -39,7 +39,7 @@ export const PageHeader: FunctionComponent<PageHeaderProps> = ({
                         View source
                     </GithubButton>
                 )}
-                <Box style={{maxWidth: 264}}>
+                <Box maw={264}>
                     <Tile thumbnail={thumbnail} />
                 </Box>
             </Stack>
