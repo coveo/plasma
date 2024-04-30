@@ -1,3 +1,12 @@
+## 53.1.4 (2024-04-30)
+
+
+### Bug Fixes
+
+* **website:** remove custom style with props and module css (#3703) 9a6b436, closes #3703
+
+
+
 ## 53.1.3 (2024-04-29)
 
 
