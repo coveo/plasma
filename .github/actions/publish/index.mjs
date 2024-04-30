@@ -22,6 +22,7 @@ import getLastTag from './getLastTag.mjs';
 const VERSION_PREFIX = 'v';
 const PATH = '.';
 const BUMP_TYPES = ['major', 'minor', 'patch', 'prerelease'];
+const DEFAULT_BRANCH = 'master';
 
 /**
  * @param options Optional options to use when publishing
@@ -30,12 +31,10 @@ const BUMP_TYPES = ['major', 'minor', 'patch', 'prerelease'];
  *   * `branch: string`: Branch name used to publish the new version (default `"master"`)
  *   * `bump: BUMP_TYPES`: Force a specific version bump instead of relying on the commit message
  */
-export default async ({github, context, exec}, {
-    dry = false, 
-    tag = 'latest', 
-    branch = 'master', 
-    bump = null
-} = {}) => {
+export default async (
+    {github, context, exec},
+    {dry = false, tag = 'latest', branch = DEFAULT_BRANCH, bump = null} = {},
+) => {
     const GIT_USERNAME = 'coveobot';
     const GIT_EMAIL = 'coveobot@coveo.com';
     const GIT_SSH_REMOTE = 'deploy';
@@ -66,6 +65,10 @@ export default async ({github, context, exec}, {
             bumpInfo = convention.recommendedBumpOpts.whatBump(parsedCommits);
         }
 
+        if (bumpInfo.type === 'major' && branch !== DEFAULT_BRANCH) {
+            throw new Error(`Cannot bump a major version on a branch other than ${DEFAULT_BRANCH}`);
+        }
+
         const currentVersion = lastTag.replace(VERSION_PREFIX, '');
         const newVersion = getNextVersion(currentVersion, bumpInfo);
 
@@ -73,7 +76,7 @@ export default async ({github, context, exec}, {
             console.info('Bumping %s to version %s', changedPackages.join(', '), newVersion);
             await pnpmBumpVersion(newVersion, lastTag, ['root']);
 
-            let changelog = ''
+            let changelog = '';
             if (parsedCommits.length > 0) {
                 changelog = await generateChangelog(
                     parsedCommits,
@@ -82,7 +85,7 @@ export default async ({github, context, exec}, {
                         ...context.repo,
                         host: 'https://github.com',
                     },
-                    convention.writerOpts
+                    convention.writerOpts,
                 );
                 await writeChangelog(PATH, changelog);
             }
