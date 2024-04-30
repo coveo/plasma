@@ -2,6 +2,14 @@ import {Button, Header, Modal, StickyFooter, Tabs} from '@coveord/plasma-mantine
 import {useState} from 'react';
 import classes from './ModalWithTabs.module.css';
 
+/**
+import classes from ./ModalWithTabs.module.css
+ 
+.headerWithTabs {
+     border-bottom: none;
+};
+ */
+
 const Demo = () => {
     const [opened, setOpened] = useState(false);
     return (
