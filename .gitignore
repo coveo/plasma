@@ -36,4 +36,5 @@ travis-deploy-key
 .turbo
 
 # environment variables
-.env
+.env*.local
+.env.local

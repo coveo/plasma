@@ -38,7 +38,7 @@ export const Logotype = () => {
 
     useEffect(() => {
         axios
-            .get(`${import.meta.env.VITE_BASE_URL}/api/brand-articles?${query}`, {
+            .get(`${import.meta.env.VITE_ADMIN_API_URL}/brand-articles?${query}`, {
                 headers: {
                     Authorization: `Bearer ${import.meta.env.VITE_BEARER_TOKEN}`,
                 },
