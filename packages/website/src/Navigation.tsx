@@ -85,14 +85,9 @@ const MantineNavigation = () => (
     <>
         <AppShell.Section grow component={ScrollArea} pl="xs" pt="sm">
             <InternalNavLink label="Home" to="/" leftSection={<HomeSize16Px height={16} />} />
-            <NavLink
-                label="Brand"
-                component="a"
-                href="https://brand.coveo.com/"
-                target="_blank"
-                leftSection={<AnnouncementSize16Px height={16} />}
-                rightSection={<ExternalSize16Px height={16} />}
-            />
+            <NavLink label="Brand" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>
+                <InternalNavLink to="/brand/Logotype" label="Logotype" />
+            </NavLink>
             <NavLink
                 label="Design principles"
                 component="a"

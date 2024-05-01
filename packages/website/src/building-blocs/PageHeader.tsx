@@ -8,7 +8,7 @@ export interface PageHeaderProps {
     title: string;
     thumbnail?: TileProps['thumbnail'];
     description?: ReactNode;
-    section: 'Foundations' | 'Layout' | 'Form' | 'Navigation' | 'Feedback' | 'Advanced' | 'Mantine';
+    section: 'Foundations' | 'Layout' | 'Form' | 'Navigation' | 'Feedback' | 'Advanced' | 'Mantine' | 'Brand';
     /**
      * Path to a relevant source file in the repo
      *
