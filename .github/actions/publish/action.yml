@@ -16,7 +16,7 @@ runs:
                     });
                   } else if (context.ref === 'refs/heads/v53') {
                     await publishNewVersion({github, context, exec}, {
-                        tag: 'v53',
+                        tag: 'legacy',
                         branch: 'v53',
                     });
                   } else {
