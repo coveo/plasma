@@ -19,7 +19,21 @@ Make sure you have
 
 -   [Node.js](https://nodejs.org/)'s LTS version
 -   [NPM](https://www.npmjs.com/package/npm)'s LTS version
--   [PNPM](https://pnpm.io/installation) >= 5
+-   [PNPM](https://pnpm.io/installation) >= 8
+
+### Releasing a new version of `@coveord/plasma-style` or `@coveord/plasma-react`
+
+If you need to fix something in either `@coveord/plasma-style` or `@coveord/plasma-react`, you can do so by following those steps:
+
+1. Create your branch, starting from the `v53` branch.
+2. Make your changes.
+3. Open a pull request that targets the `v53` branch.
+4. Once the PR is approved, merge it. Make sure your commit message follows [Conventional Commits](https://www.conventionalcommits.org/) and is not a breaking change, otherwise the pipeline will fail.
+5. Open the [`CD` workflow action](https://github.com/coveo/plasma/actions/workflows/cd.yml) in the actions tab of the repository. Click on `Run workflow`, and in the dropdown that opens, in the dropdown `Use workflow from` choose the `v53` branch. Click on the green `Run workflow` button.
+6. Once the workflow is done, the new version will be available on NPM and a new tag will be added to the `v53` branch.
+7. You can now update the `@coveord/plasma-style` and `@coveord/plasma-react` version in the project that needs the fix.
+
+_Those packages are in maintenance mode and only fixes will be accepted._
 
 ## Setup
 
@@ -53,16 +67,15 @@ Alternatively, you can run it directly from the `packages/react` package, which 
 
 1. First, make sure you're in the `packages/react` package.
 2. To watch your tests:
-   1. run `pnpm test:watch`, wait for it to start up then hit any key. This will show you the menu. 
-   2. Then, for example, to focus on a particular spec file, hit `p` to filter by a filename regex pattern, then the name of a spec file (eg `SingleSelectConnected`). 
-   3. Then you can use `fdescribe` and `fit` to focus on individual suites and tests respectively
+    1. run `pnpm test:watch`, wait for it to start up then hit any key. This will show you the menu.
+    2. Then, for example, to focus on a particular spec file, hit `p` to filter by a filename regex pattern, then the name of a spec file (eg `SingleSelectConnected`).
+    3. Then you can use `fdescribe` and `fit` to focus on individual suites and tests respectively
 3. To debug your tests:
-   1. run `pnpm test:debug`, wait for it to start up then hit any key to pause. 
-   2. In a Chromium browser (Chrome / Brave), go to chrome://inspect and you should see the process under `node_modules/jest/bin/jest`. Click inspect.
-   3. From here, you can add a `debugger` in a test, save the file, focus on the suite using `p` and then the spec file name
-   4. When the file is saved and rerun, the debugger should open in the dev tools!
-   5. You will need to close the dev tools for the process to disconnect
-
+    1. run `pnpm test:debug`, wait for it to start up then hit any key to pause.
+    2. In a Chromium browser (Chrome / Brave), go to chrome://inspect and you should see the process under `node_modules/jest/bin/jest`. Click inspect.
+    3. From here, you can add a `debugger` in a test, save the file, focus on the suite using `p` and then the spec file name
+    4. When the file is saved and rerun, the debugger should open in the dev tools!
+    5. You will need to close the dev tools for the process to disconnect
 
 ### Committing your changes
 
