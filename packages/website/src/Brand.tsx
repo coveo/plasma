@@ -1,4 +1,4 @@
-import {Stack, Text, Title} from '@coveord/plasma-mantine';
+import {Divider, Stack, Text, Title} from '@coveord/plasma-mantine';
 import axios from 'axios';
 import qs from 'qs';
 import {useEffect, useState} from 'react';
@@ -72,10 +72,11 @@ export const Brand = () => {
                             return;
                         }
 
-                        return article?.attributes?.sections?.map(({content, title}) => (
+                        return article?.attributes?.sections?.map(({content, title}, index) => (
                             <Stack>
                                 <Title order={2}>{title}</Title>
                                 <Text dangerouslySetInnerHTML={{__html: content}} />
+                                {article?.attributes?.sections.length !== index + 1 ? <Divider /> : null}
                             </Stack>
                         ));
                     })}
