@@ -1,0 +1,23 @@
+{
+    "generic/color/text/actionOnEmphasis": "primitive/color/blue/0",
+    "generic/color/icon/actionOnEmphasis": "primitive/color/blue/0",
+    "generic/color/background/default": "primitive/color/white/pureWhite",
+    "generic/color/border/actionEmphasis": "primitive/color/blue/7",
+    "generic/color/text/action": "primitive/color/blue/7",
+    "generic/color/icon/action": "primitive/color/blue/7",
+    "generic/color/background/actionMuted": "primitive/color/blue/0",
+    "generic/color/background/criticalEmphasis": "primitive/color/red/7",
+    "generic/color/text/criticalOnEmphasis": "primitive/color/red/0",
+    "generic/color/icon/criticalOnEmphasis": "primitive/color/red/0",
+    "generic/color/background/neutral-disabled": "primitive/color/gray/0",
+    "generic/color/text/action-disabled": "primitive/color/gray/5",
+    "generic/color/icon/action-disabled": "primitive/color/gray/5",
+    "generic/color/text/neutral-disabled": "primitive/color/gray/5",
+    "generic/color/icon/neutral-disabled": "primitive/color/gray/5",
+    "generic/color/background/actionEmphasis": "primitive/color/blue/7",
+    "generic/color/background/actionEmphasis-hover": "primitive/color/blue/8",
+    "generic/color/background/default-hover": "primitive/color/gray/0",
+    "generic/color/background/criticalEmphasis-hover": "primitive/color/red/8",
+    "generic/color/text/action-hover": "primitive/color/blue/8",
+    "generic/color/icon/action-hover": "primitive/color/blue/8"
+}

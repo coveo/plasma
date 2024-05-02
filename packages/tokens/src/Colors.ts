@@ -1,7 +1,15 @@
 export const color = {
     primary: {
         gradient: 'linear-gradient(78.21deg, #fadf4a 0.00%, #f9463a 30.73%, #08b7ea 67.19%, #03dec8 94.57%)',
-        action: {1: '#edf6ff', 2: '#c7e4ff', 3: '#8bc7ff', 4: '#399ffe', 6: '#1372ec', 8: '#1a50ad', 9: '#062d70'},
+        action: {
+            1: 'var(red)',
+            2: 'var(red)',
+            3: 'var(red)',
+            4: 'var(--primitive-color-red-7)',
+            6: 'var(red)',
+            8: 'var(red)',
+            9: 'var(red)',
+        },
         gray: {
             0: '#fcfcfc',
             1: '#f9f9f9',

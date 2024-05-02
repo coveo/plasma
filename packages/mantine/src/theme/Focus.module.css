@@ -1,0 +1,27 @@
+.focus {
+    &[data-variant='primary'] {
+        &:focus-visible {
+            background: #0d5cc0;
+            color: #f5f7ff;
+        }
+    }
+    &[data-variant='outline'] {
+        &:focus-visible {
+            background: #ffffff;
+            color: #0d5cc0;
+            border: 1px solid #0d5cc0;
+        }
+    }
+    &[data-variant='subtle'] {
+        &:focus-visible {
+            background: #f5f7ff;
+            color: #0d5cc0;
+        }
+    }
+    &[data-variant='destructive'] {
+        &:focus-visible {
+            background: #af3226;
+            color: #fefef5;
+        }
+    }
+}

@@ -1,3 +1,21 @@
+.root {
+    &[data-variant='destructive'] {
+        &:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
+            cursor: not-allowed;
+            border: rem(1px) solid transparent;
+            transform: none;
+            color: #9ea4b2; /* controle inner (text, rightSection & leftSection (icon)) */
+            background: #f7f7f8;
+        }
+    }
+}
 .label {
+    /* 
+    // Impossible -> data-variant est au root
+    &[data-variant='destructive'] {
+        &:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
+            color: red;
+        }
+    } */
     font-weight: 400;
 }

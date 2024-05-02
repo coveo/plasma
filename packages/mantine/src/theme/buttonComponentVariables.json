@@ -1,0 +1,160 @@
+{
+    "button": [
+        {
+            "button/color/text/primary-focus": "#F5F7FF"
+        },
+        {
+            "button/color/icon/primary-focus": "#F5F7FF"
+        },
+        {
+            "button/color/background/outline-focus": "#FFFFFF"
+        },
+        {
+            "button/color/border/outline-focus": "#0D5CC0"
+        },
+        {
+            "button/color/text/outline-focus": "#0D5CC0"
+        },
+        {
+            "button/color/icon/outline-focus": "#0D5CC0"
+        },
+        {
+            "button/color/background/subtle-focus": "#F5F7FF"
+        },
+        {
+            "button/color/text/subtle-focus": "#0D5CC0"
+        },
+        {
+            "button/color/icon/subtle-focus": "#0D5CC0"
+        },
+        {
+            "button/color/background/desctructive-focus": "#AF3226"
+        },
+        {
+            "button/color/text/desctructive-focus": "#FEF5F5"
+        },
+        {
+            "button/color/icon/desctructive-focus": "#FEF5F5"
+        },
+        {
+            "button/color/background/primary-disabled": "#F7F7F8"
+        },
+        {
+            "button/color/text/primary-disabled": "#9EA4B2"
+        },
+        {
+            "button/color/icon/primary-disabled": "#9EA4B2"
+        },
+        {
+            "button/color/background/outline-disabled": "#F7F7F8"
+        },
+        {
+            "button/color/text/outline-disabled": "#9EA4B2"
+        },
+        {
+            "button/color/icon/outline-disabled": "#9EA4B2"
+        },
+        {
+            "button/color/background/subtle-disabled": "#F7F7F8"
+        },
+        {
+            "button/color/text/subtle-disabled": "#9EA4B2"
+        },
+        {
+            "button/color/icon/subtle-disabled": "#9EA4B2"
+        },
+        {
+            "button/color/background/desctructive-disabled": "#F7F7F8"
+        },
+        {
+            "button/color/text/desctructive-disabled": "#9EA4B2"
+        },
+        {
+            "button/color/icon/desctructive-disabled": "#9EA4B2"
+        },
+        {
+            "button/color/background/primary-default": "#0D5CC0"
+        },
+        {
+            "button/color/background/outline-default": "#FFFFFF"
+        },
+        {
+            "button/color/background/subtle-default": "#F5F7FF"
+        },
+        {
+            "button/color/background/desctructive-default": "#AF3226"
+        },
+        {
+            "button/color/background/primary-hover": "#074390"
+        },
+        {
+            "button/color/background/outline-hover": "#F7F7F8"
+        },
+        {
+            "button/color/background/subtle-hover": "#F7F7F8"
+        },
+        {
+            "button/color/background/desctructive-hover": "#83231A"
+        },
+        {
+            "button/color/background/primary-focus": "#0D5CC0"
+        },
+        {
+            "button/color/text/primary-default": "#F5F7FF"
+        },
+        {
+            "button/color/text/outline-default": "#0D5CC0"
+        },
+        {
+            "button/color/text/subtle-default": "#0D5CC0"
+        },
+        {
+            "button/color/text/desctructive-default": "#FEF5F5"
+        },
+        {
+            "button/color/text/primary-hover": "#F5F7FF"
+        },
+        {
+            "button/color/text/outline-hover": "#074390"
+        },
+        {
+            "button/color/text/subtle-hover": "#074390"
+        },
+        {
+            "button/color/text/desctructive-hover": "#FEF5F5"
+        },
+        {
+            "button/color/icon/primary-default": "#F5F7FF"
+        },
+        {
+            "button/color/icon/outline-default": "#0D5CC0"
+        },
+        {
+            "button/color/icon/subtle-default": "#0D5CC0"
+        },
+        {
+            "button/color/icon/desctructive-default": "#FEF5F5"
+        },
+        {
+            "button/color/icon/primary-hover": "#F5F7FF"
+        },
+        {
+            "button/color/icon/outline-hover": "#074390"
+        },
+        {
+            "button/color/icon/subtle-hover": "#074390"
+        },
+        {
+            "button/color/icon/desctructive-hover": "#FEF5F5"
+        },
+        {
+            "button/color/border/outline-default": "#0D5CC0"
+        },
+        {
+            "button/color/border/subtle-default": "#0D5CC0"
+        },
+        {
+            "button/color/border/outline-hover": "#0D5CC0"
+        }
+    ]
+}

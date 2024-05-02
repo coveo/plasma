@@ -72,8 +72,10 @@ import StepperClasses from '../styles/Stepper.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
 import TextClasses from '../styles/Text.module.css';
 import TitleClasses from '../styles/Title.module.css';
+import {ButtonVars} from '../vars/Button.vars';
 import {NotificationVars} from '../vars/Notification.vars';
 import {TextVars} from '../vars/Text.vars';
+import focusClasses from './Focus.module.css';
 import {PlasmaColors} from './PlasmaColors';
 
 export const plasmaTheme: MantineThemeOverride = createTheme({
@@ -90,6 +92,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         lg: '32px',
         xl: '40px',
     },
+    focusClassName: focusClasses.focus,
     primaryColor: 'action',
     headings: {
         fontFamily: 'canada-type-gibson, sans-serif',
@@ -139,6 +142,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Button: Button.extend({
             classNames: ButtonClasses,
+            vars: ButtonVars,
         }),
         Checkbox: Checkbox.extend({
             defaultProps: {
