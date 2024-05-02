@@ -1,8 +1,7 @@
-import {AppShell, Divider, Image, NavLink, NavLinkProps, ScrollArea} from '@coveord/plasma-mantine';
+import {AppShell, Image, NavLink, NavLinkProps, ScrollArea} from '@coveord/plasma-mantine';
 import {
     AnnouncementSize16Px,
     ClickSize16Px,
-    DeleteSize16Px,
     DiamondSize16Px,
     ExternalSize16Px,
     HomeSize16Px,
@@ -24,60 +23,54 @@ const InternalNavLink: FunctionComponent<
 };
 
 export const Navigation = () => (
-    <>
-        <AppShell.Section grow component={ScrollArea} pl="xs" pt="sm">
-            <InternalNavLink label="Home" to="/" leftSection={<HomeSize16Px height={16} />} />
-            <NavLink
-                label="Brand"
-                component="a"
-                href="https://brand.coveo.com/"
-                target="_blank"
-                leftSection={<AnnouncementSize16Px height={16} />}
-                rightSection={<ExternalSize16Px height={16} />}
-            />
-            <NavLink
-                label="Design principles"
-                component="a"
-                href="https://coveord.atlassian.net/wiki/spaces/UX/pages/2993946801/Design+principles"
-                target="_blank"
-                leftSection={<DiamondSize16Px height={16} />}
-                rightSection={<ExternalSize16Px height={16} />}
-            />
-            <NavLink label="Foundations" leftSection={<LayeringTechniquesSize16Px height={16} />} defaultOpened>
-                <InternalNavLink to="/foundations/Colors" label="Colors" />
-                <InternalNavLink to="/foundations/Iconography" label="Iconography" />
-                <InternalNavLink to="/foundations/TypeKit" label="TypeKit" />
-            </NavLink>
-            <NavLink label="Layout" leftSection={<RichUiSize16Px height={16} />} defaultOpened>
-                <InternalNavLink to="/layout/BrowserPreview" label="Browser Preview" />
-                <InternalNavLink to="/layout/Header" label="Header" />
-                <InternalNavLink to="/layout/Modal" label="Modal" />
-                <InternalNavLink to="/layout/Prompt" label="Prompt" />
-                <InternalNavLink to="/layout/StickyFooter" label="Sticky footer" />
-                <InternalNavLink to="/layout/Table" label="Table" />
-            </NavLink>
-            <NavLink label="Form" leftSection={<ClickSize16Px height={16} />} defaultOpened>
-                <InternalNavLink to="/form/ActionIcon" label="Action Icon" />
-                <InternalNavLink to="/form/Button" label="Button" />
-                <InternalNavLink to="/form/CodeEditor" label="Code editor" />
-                <InternalNavLink to="/form/Collection" label="Collection" />
-                <InternalNavLink to="/form/CopyToClipboard" label="Copy to Clipboard" />
-                <InternalNavLink to="/form/InlineConfirm" label="Inline confirm" />
-            </NavLink>
-            <NavLink label="Feedback" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>
-                <InternalNavLink to="/feedback/Alert" label="Alert" />
-            </NavLink>
-            <NavLink label="Mantine" leftSection={<Image src={MantineLogo} height={16} />} defaultOpened>
-                {Object.keys(mantinePages).map((filePath) => {
-                    const parts = filePath.split('/');
-                    const fileName = parts[parts.length - 1].replace(/\.tsx$/, '');
-                    return <InternalNavLink key={fileName} to={`/mantine/${fileName}`} label={fileName} />;
-                })}
-            </NavLink>
-        </AppShell.Section>
-        <Divider />
-        <AppShell.Section pb="sm">
-            <InternalNavLink to="/legacy" label="Deprecated components" leftSection={<DeleteSize16Px height={16} />} />
-        </AppShell.Section>
-    </>
+    <AppShell.Section grow component={ScrollArea} pl="xs" pt="sm">
+        <InternalNavLink label="Home" to="/" leftSection={<HomeSize16Px height={16} />} />
+        <NavLink
+            label="Brand"
+            component="a"
+            href="https://brand.coveo.com/"
+            target="_blank"
+            leftSection={<AnnouncementSize16Px height={16} />}
+            rightSection={<ExternalSize16Px height={16} />}
+        />
+        <NavLink
+            label="Design principles"
+            component="a"
+            href="https://coveord.atlassian.net/wiki/spaces/UX/pages/2993946801/Design+principles"
+            target="_blank"
+            leftSection={<DiamondSize16Px height={16} />}
+            rightSection={<ExternalSize16Px height={16} />}
+        />
+        <NavLink label="Foundations" leftSection={<LayeringTechniquesSize16Px height={16} />} defaultOpened>
+            <InternalNavLink to="/foundations/Colors" label="Colors" />
+            <InternalNavLink to="/foundations/Iconography" label="Iconography" />
+            <InternalNavLink to="/foundations/TypeKit" label="TypeKit" />
+        </NavLink>
+        <NavLink label="Layout" leftSection={<RichUiSize16Px height={16} />} defaultOpened>
+            <InternalNavLink to="/layout/BrowserPreview" label="Browser Preview" />
+            <InternalNavLink to="/layout/Header" label="Header" />
+            <InternalNavLink to="/layout/Modal" label="Modal" />
+            <InternalNavLink to="/layout/Prompt" label="Prompt" />
+            <InternalNavLink to="/layout/StickyFooter" label="Sticky footer" />
+            <InternalNavLink to="/layout/Table" label="Table" />
+        </NavLink>
+        <NavLink label="Form" leftSection={<ClickSize16Px height={16} />} defaultOpened>
+            <InternalNavLink to="/form/ActionIcon" label="Action Icon" />
+            <InternalNavLink to="/form/Button" label="Button" />
+            <InternalNavLink to="/form/CodeEditor" label="Code editor" />
+            <InternalNavLink to="/form/Collection" label="Collection" />
+            <InternalNavLink to="/form/CopyToClipboard" label="Copy to Clipboard" />
+            <InternalNavLink to="/form/InlineConfirm" label="Inline confirm" />
+        </NavLink>
+        <NavLink label="Feedback" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>
+            <InternalNavLink to="/feedback/Alert" label="Alert" />
+        </NavLink>
+        <NavLink label="Mantine" leftSection={<Image src={MantineLogo} height={16} />} defaultOpened>
+            {Object.keys(mantinePages).map((filePath) => {
+                const parts = filePath.split('/');
+                const fileName = parts[parts.length - 1].replace(/\.tsx$/, '');
+                return <InternalNavLink key={fileName} to={`/mantine/${fileName}`} label={fileName} />;
+            })}
+        </NavLink>
+    </AppShell.Section>
 );
