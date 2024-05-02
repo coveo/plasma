@@ -1,3 +1,4 @@
+import {Card, Image, Text} from '@coveord/plasma-mantine';
 import classNames from 'clsx';
 import {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
@@ -56,34 +57,47 @@ export const Tile: FunctionComponent<TileProps> = ({
     sendAnalytics,
 }) => {
     const tileIcon = (
-        <img
-            src={thumbnails[thumbnail]}
-            className="full-content-x"
-            data-coveo-field="thumbnail"
-            data-thumbnail-name={thumbnail}
-        />
+        <Card.Section>
+            <Image src={thumbnails[thumbnail]} h={190} data-coveo-field="thumbnail" data-thumbnail-name={thumbnail} />
+        </Card.Section>
     );
     const tileInfo = (title || description) && (
-        <div className="tile-information">
-            {title && <div className="tile-title h6-subdued sentence-case">{title}</div>}
-            {description && <div className="tile-description body-m-book-subdued">{description}</div>}
-        </div>
+        <Card.Section className="tile-information" bg="white">
+            {title && (
+                <Text fw={500} fz="md">
+                    {title}
+                </Text>
+            )}
+            {description && (
+                <Text fz="sm" c="dimmed">
+                    {description}
+                </Text>
+            )}
+        </Card.Section>
     );
-    const className = classNames('tile card', {'mod-drawer': description});
+    const className = classNames('tile', {'mod-drawer': description});
 
     if (href && href.length > 0) {
         return (
-            <Link to={href} className={className} onClick={sendAnalytics}>
+            <Card
+                miw={264}
+                shadow="sm"
+                withBorder
+                component={Link}
+                to={href}
+                className={className}
+                onClick={sendAnalytics}
+            >
                 {tileIcon}
                 {tileInfo}
-            </Link>
+            </Card>
         );
     }
 
     return (
-        <div className={className}>
+        <Card miw={264} shadow="sm" withBorder className={className}>
             {tileIcon}
             {tileInfo}
-        </div>
+        </Card>
     );
 };

@@ -11,12 +11,6 @@
             height: 257px;
         }
 
-        .welcome-to {
-            width: 98px;
-            height: 28px;
-            color: var(--navy-blue-80);
-        }
-
         .page-title {
             display: inline-block;
             height: 133px;
@@ -44,12 +38,6 @@
             animation: moveBackground 12s linear infinite;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .plasma-description {
-            padding-top: 8px;
-            color: var(--grey-80);
-            white-space: pre-line;
         }
     }
 

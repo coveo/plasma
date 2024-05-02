@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 29 43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
-    <style type="text/css">
-        .svgArrowTopSlimPaths {stroke: #282829;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none;}
-    </style>
-    <path class="svgArrowTopSlimPaths" d="M14.4,41.2v-39"/>
-    <path class="svgArrowTopSlimPaths" d="M2.1,15.7L14.4,2.2l12.3,13.5"/>
-</svg>
