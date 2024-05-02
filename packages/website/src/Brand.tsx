@@ -1,4 +1,4 @@
-import {Header, Stack, Text} from '@coveord/plasma-mantine';
+import {Stack, Text, Title} from '@coveord/plasma-mantine';
 import axios from 'axios';
 import qs from 'qs';
 import {useEffect, useState} from 'react';
@@ -58,7 +58,13 @@ export const Brand = () => {
     }, [pathname, category]);
 
     return (
-        <BrandLayout id="Logotype" section="Brand" title={category?.title} description={category?.related?.subtitle}>
+        <BrandLayout
+            id="Logotype"
+            isPrivate={category?.related?.isPrivate}
+            section="Brand"
+            title={category?.title}
+            description={category?.related?.subtitle}
+        >
             <div className="plasma-page-layout__section pl5">
                 <Stack>
                     {articles.map((article) => {
@@ -68,7 +74,7 @@ export const Brand = () => {
 
                         return article?.attributes?.sections?.map(({content, title}) => (
                             <Stack>
-                                <Header>{title}</Header>
+                                <Title order={2}>{title}</Title>
                                 <Text dangerouslySetInnerHTML={{__html: content}} />
                             </Stack>
                         ));

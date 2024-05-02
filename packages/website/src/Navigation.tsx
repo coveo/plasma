@@ -1,19 +1,16 @@
-import {AppShell, Divider, Image, NavLink, NavLinkProps, ScrollArea} from '@coveord/plasma-mantine';
+import {AppShell, Divider, NavLink, NavLinkProps, ScrollArea} from '@coveord/plasma-mantine';
 import {SideNavigation, SideNavigationItem, SideNavigationMenuSection} from '@coveord/plasma-react';
 import {
-    AnnouncementSize16Px,
-    ClickSize16Px,
     DeleteSize16Px,
     DiamondSize16Px,
     ExternalSize16Px,
     HomeSize16Px,
     LayeringTechniquesSize16Px,
-    RichUiSize16Px,
+    LockSize16Px,
 } from '@coveord/plasma-react-icons';
 import {ComponentProps, FunctionComponent, PropsWithChildren, Suspense, lazy, useEffect, useState} from 'react';
 import {Link, useLocation, useMatch} from 'react-router-dom';
 
-import MantineLogo from './assets/mantine-logo.svg';
 import axios from 'axios';
 
 interface LegacyNavLinkProps {
@@ -82,14 +79,14 @@ const InternalNavLink: FunctionComponent<ComponentProps<typeof Link> & Omit<NavL
     return <NavLink component={Link} active={!!match} {...props} />;
 };
 
-const generateNavigation = (menu?: any[] = []) => {
-    return menu?.map(({icon, path, title, items}) => ({
+const generateNavigation = (menu: any[] = []) =>
+    menu?.map(({icon, path, title, items, isPrivate}) => ({
         icon,
         path,
         title,
+        isPrivate,
         children: items.length !== 0 ? generateNavigation(items) : undefined,
     }));
-};
 
 const MantineNavigation = () => {
     const [navigation, setNavigation] = useState();
@@ -136,38 +133,42 @@ const MantineNavigation = () => {
                             }
                             defaultOpened
                         >
-                            {children?.map(({title: childTitle, path: childPath}) => (
-                                <InternalNavLink to={childPath} label={childTitle} />
+                            {children?.map(({title: childTitle, path: childPath, isPrivate}) => (
+                                <InternalNavLink
+                                    to={childPath}
+                                    label={childTitle}
+                                    rightSection={isPrivate ? <LockSize16Px height={16} /> : null}
+                                />
                             ))}
                         </NavLink>
                     );
                 })}
-                {/*<NavLink label="Layout" leftSection={<RichUiSize16Px height={16} />} defaultOpened>*/}
+                {/* <NavLink label="Layout" leftSection={<RichUiSize16Px height={16} />} defaultOpened>*/}
                 {/*    <InternalNavLink to="/layout/BrowserPreview" label="Browser Preview" />*/}
                 {/*    <InternalNavLink to="/layout/Header" label="Header" />*/}
                 {/*    <InternalNavLink to="/layout/Modal" label="Modal" />*/}
                 {/*    <InternalNavLink to="/layout/Prompt" label="Prompt" />*/}
                 {/*    <InternalNavLink to="/layout/StickyFooter" label="Sticky footer" />*/}
                 {/*    <InternalNavLink to="/layout/Table" label="Table" />*/}
-                {/*</NavLink>*/}
-                {/*<NavLink label="Form" leftSection={<ClickSize16Px height={16} />} defaultOpened>*/}
+                {/* </NavLink>*/}
+                {/* <NavLink label="Form" leftSection={<ClickSize16Px height={16} />} defaultOpened>*/}
                 {/*    <InternalNavLink to="/form/ActionIcon" label="Action Icon" />*/}
                 {/*    <InternalNavLink to="/form/Button" label="Button" />*/}
                 {/*    <InternalNavLink to="/form/CodeEditor" label="Code editor" />*/}
                 {/*    <InternalNavLink to="/form/Collection" label="Collection" />*/}
                 {/*    <InternalNavLink to="/form/CopyToClipboard" label="Copy to Clipboard" />*/}
                 {/*    <InternalNavLink to="/form/InlineConfirm" label="Inline confirm" />*/}
-                {/*</NavLink>*/}
-                {/*<NavLink label="Feedback" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>*/}
+                {/* </NavLink>*/}
+                {/* <NavLink label="Feedback" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>*/}
                 {/*    <InternalNavLink to="/feedback/Alert" label="Alert" />*/}
-                {/*</NavLink>*/}
-                {/*<NavLink label="Mantine" leftSection={<Image src={MantineLogo} height={16} />} defaultOpened>*/}
+                {/* </NavLink>*/}
+                {/* <NavLink label="Mantine" leftSection={<Image src={MantineLogo} height={16} />} defaultOpened>*/}
                 {/*    {Object.keys(mantinePages).map((filePath) => {*/}
                 {/*        const parts = filePath.split('/');*/}
                 {/*        const fileName = parts[parts.length - 1].replace(/\.tsx$/, '');*/}
                 {/*        return <InternalNavLink key={fileName} to={`/mantine/${fileName}`} label={fileName} />;*/}
                 {/*    })}*/}
-                {/*</NavLink>*/}
+                {/* </NavLink>*/}
             </AppShell.Section>
             <Divider />
             <AppShell.Section pb="sm">

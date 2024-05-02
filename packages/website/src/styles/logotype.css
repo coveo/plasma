@@ -1,0 +1,12 @@
+.image_resized,
+.image-style-side img {
+    height: 30%;
+    width: 30%;
+}
+
+.ck-table-resized {
+    img {
+        height: 80%;
+        width: 80%;
+    }
+}
