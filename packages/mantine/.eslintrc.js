@@ -19,11 +19,7 @@ module.exports = {
             env: {
                 'vitest-globals/env': true,
             },
-            extends: [
-                'plugin:vitest-globals/recommended',
-                'plugin:testing-library/react',
-                'plugin:jest-dom/recommended',
-            ],
+            extends: ['plugin:vitest-globals/recommended', 'plugin:testing-library/react'],
             rules: {
                 'vitest/expect-expect': ['warn'],
             },

@@ -1,18 +1,12 @@
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css';
-import '@mantine/notifications/styles.css';
-
 import {AppShell, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import {Outlet} from 'react-router-dom';
 import {Navigation} from './Navigation';
 import TopBar from './TopBar';
 import {EngineProvider} from './search/engine/EngineProvider';
 import './styles/colors.css';
-import './styles/github-button.css';
 import './styles/home.css';
 import './styles/loading-screen.css';
 import './styles/main.css';
-import './styles/page-layout.css';
 import './styles/plasmaSearchBar.css';
 import './styles/props-table.css';
 import './styles/spacing.css';

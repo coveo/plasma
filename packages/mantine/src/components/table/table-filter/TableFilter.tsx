@@ -1,6 +1,5 @@
 import {CrossSize16Px, FilterSize16Px} from '@coveord/plasma-react-icons';
-import {ActionIcon, BoxProps, factory, Factory, Grid, TextInput, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {ActionIcon, BoxProps, CompoundStylesApiProps, Factory, Grid, TextInput, factory, useProps} from '@mantine/core';
 import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
 import {ChangeEventHandler, MouseEventHandler, useEffect, useState} from 'react';
 

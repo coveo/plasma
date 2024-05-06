@@ -1,5 +1,4 @@
-import {Factory, StylesApiProps, useProps} from '@mantine/core';
-import {MantineComponent} from '@mantine/core/lib/core/factory/factory';
+import {Factory, MantineComponent, StylesApiProps, useProps} from '@mantine/core';
 import {Children, ReactElement, ReactNode, useState} from 'react';
 import {InlineConfirmProvider} from './InlineConfirmContext';
 import {InlineConfirmPrompt} from './InlineConfirmPrompt';

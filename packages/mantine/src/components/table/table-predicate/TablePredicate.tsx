@@ -1,5 +1,15 @@
-import {BoxProps, ComboboxData, factory, Factory, Grid, Group, Select, Text, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {
+    BoxProps,
+    ComboboxData,
+    CompoundStylesApiProps,
+    factory,
+    Factory,
+    Grid,
+    Group,
+    Select,
+    Text,
+    useProps,
+} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
 import {TableComponentsOrder} from '../Table';
