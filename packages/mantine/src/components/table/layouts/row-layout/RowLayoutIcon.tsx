@@ -1,6 +1,5 @@
 import {Icon as IconType, ListSize16Px} from '@coveord/plasma-react-icons';
-import {factory, Factory, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {CompoundStylesApiProps, factory, Factory, useProps} from '@mantine/core';
 import {useRowLayout} from './RowLayoutContext';
 
 export type RowLayoutIconStylesNames = 'icon';

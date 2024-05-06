@@ -2,6 +2,7 @@ import {
     BoxProps,
     Button,
     Checkbox,
+    CompoundStylesApiProps,
     Divider,
     factory,
     Factory,
@@ -12,7 +13,6 @@ import {
     Tooltip,
     useProps,
 } from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
 import {ReactNode} from 'react';
 
 import {TableComponentsOrder} from '../Table';

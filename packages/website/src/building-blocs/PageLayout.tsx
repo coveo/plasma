@@ -1,4 +1,4 @@
-import {AppShell, Box, Container, Divider, Stack, Tabs} from '@coveord/plasma-mantine';
+import {AppShell, Box, Container, Divider, Flex, Stack, Tabs, Title} from '@coveord/plasma-mantine';
 import {Fragment, FunctionComponent, ReactNode} from 'react';
 
 import {GuidelinesTab} from './GuidelinesTab';
@@ -35,11 +35,11 @@ export const PageLayout = ({
             defaultValue="implementation"
             styles={{
                 list: {borderBottom: 'none'},
-                root: {display: 'flex', height: '100%'},
             }}
+            h="100%"
         >
-            <Stack gap={0} align="stretch" style={{flexBasis: 'auto', flexGrow: 1}}>
-                <Container size="xl" w="100%">
+            <Flex direction="column" h="100%">
+                <Container size="xl" w="100%" px={0}>
                     <PageHeader
                         sourcePath={sourcePath}
                         section={section}
@@ -53,8 +53,8 @@ export const PageLayout = ({
                     </Tabs.List>
                 </Container>
                 <Divider />
-                <Box bg="gray.0" style={{flexBasis: 'auto', flexGrow: 1}}>
-                    <Container size="xl">
+                <Box bg="gray.0" h="100%">
+                    <Container size="xl" py="xl">
                         <Tabs.Panel value="implementation">
                             <Content id={id} {...contentProps}>
                                 {children}
@@ -65,7 +65,7 @@ export const PageLayout = ({
                         </Tabs.Panel>
                     </Container>
                 </Box>
-            </Stack>
+            </Flex>
         </Tabs>
     </AppShell.Main>
 );
@@ -76,33 +76,33 @@ const Content: FunctionComponent<
         'demo' | 'examples' | 'id' | 'relatedComponents' | 'withPropsTable' | 'propsMetadata' | 'children'
     >
 > = ({demo: mainDemo, examples, id, relatedComponents, withPropsTable = true, propsMetadata, children}) => (
-    <>
-        {mainDemo && <div className="plasma-page-layout__main-code plasma-page-layout__section">{mainDemo}</div>}
+    <Stack gap="xl">
+        {mainDemo && <div>{mainDemo}</div>}
 
         {withPropsTable && (
-            <div className="plasma-page-layout__section">
-                <h4 className="h2 mb1">Props</h4>
+            <Stack gap="xs">
+                <Title order={2}>Props</Title>
                 <PropsTable propsMetadata={propsMetadata} />
-            </div>
+            </Stack>
         )}
         {examples && (
-            <div className="plasma-page-layout__section">
-                <h4 className="h2 mb5">Examples</h4>
+            <Stack gap="xs">
+                <Title order={2}>Examples</Title>
                 <Stack>
                     {Object.entries(examples).map(([exampleId, example]) => (
                         <Fragment key={id + exampleId}>{example}</Fragment>
                     ))}
                 </Stack>
-            </div>
+            </Stack>
         )}
         {relatedComponents && relatedComponents.length > 0 && (
-            <div className="plasma-page-layout__section">
-                <h4 className="h2 mb5">Related Components</h4>
+            <Stack gap="xs">
+                <Title order={2}>Related Components</Title>
                 {relatedComponents.map((tileProps) => (
                     <Tile key={tileProps.title} {...tileProps} />
                 ))}
-            </div>
+            </Stack>
         )}
         {children}
-    </>
+    </Stack>
 );

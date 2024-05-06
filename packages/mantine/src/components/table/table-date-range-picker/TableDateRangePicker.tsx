@@ -1,6 +1,5 @@
 import {CalendarSize16Px} from '@coveord/plasma-react-icons';
-import {BoxProps, Factory, Grid, InputBase, Popover, factory, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {BoxProps, CompoundStylesApiProps, Factory, Grid, InputBase, Popover, factory, useProps} from '@mantine/core';
 import dayjs from 'dayjs';
 
 import {useState} from 'react';

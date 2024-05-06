@@ -5,8 +5,8 @@ import {Tile} from '../building-blocs/Tile';
 
 export const Home = () => (
     <AppShell.Main>
-        <Container size="xl" className="home">
-            <Stack gap="lg">
+        <Container size="xl" py="xl">
+            <Stack gap="xl">
                 <WelcomeToPlasma />
                 <FoundationsPages />
                 <LayoutPages />
@@ -17,8 +17,8 @@ export const Home = () => (
 );
 
 const WelcomeToPlasma: FunctionComponent = () => (
-    <div className="section intro">
-        <Title order={1} className="welcome-to">
+    <>
+        <Title order={1}>
             <Text fz="lg" fw={500} inherit>
                 Welcome to
             </Text>{' '}
@@ -41,7 +41,7 @@ const WelcomeToPlasma: FunctionComponent = () => (
                 .
             </Text>
         </Stack>
-    </div>
+    </>
 );
 
 const FoundationsPages: FunctionComponent = () => (

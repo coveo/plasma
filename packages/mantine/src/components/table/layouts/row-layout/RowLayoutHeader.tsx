@@ -1,5 +1,4 @@
-import {BoxProps, Factory, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {BoxProps, CompoundStylesApiProps, Factory, useProps} from '@mantine/core';
 import {ForwardedRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils';
 import {Th} from '../../table-header/Th';

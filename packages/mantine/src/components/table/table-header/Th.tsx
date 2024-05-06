@@ -1,6 +1,5 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
-import {BoxProps, Factory, Group, UnstyledButton, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {BoxProps, CompoundStylesApiProps, Factory, Group, UnstyledButton, useProps} from '@mantine/core';
 import {defaultColumnSizing, flexRender, Header} from '@tanstack/react-table';
 import {AriaAttributes, ComponentType, ForwardedRef, SVGProps} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../utils';

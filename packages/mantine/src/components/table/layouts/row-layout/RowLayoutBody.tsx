@@ -1,5 +1,4 @@
-import {Box, BoxProps, Collapse, Factory, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {Box, BoxProps, Collapse, CompoundStylesApiProps, Factory, useProps} from '@mantine/core';
 import {flexRender} from '@tanstack/react-table';
 import {defaultColumnSizing} from '@tanstack/table-core';
 import {ForwardedRef, Fragment, type MouseEvent} from 'react';

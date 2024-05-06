@@ -1,6 +1,5 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import {Box, BoxProps, factory, Factory, Grid, Tooltip, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {Box, BoxProps, CompoundStylesApiProps, factory, Factory, Grid, Tooltip, useProps} from '@mantine/core';
 import {ReactNode} from 'react';
 
 import {Button} from '../../button';

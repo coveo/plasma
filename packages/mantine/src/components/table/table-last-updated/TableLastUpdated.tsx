@@ -1,5 +1,4 @@
-import {BoxProps, factory, Factory, Group, Text, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {BoxProps, CompoundStylesApiProps, factory, Factory, Group, Text, useProps} from '@mantine/core';
 import {useDidUpdate} from '@mantine/hooks';
 import dayjs from 'dayjs';
 import {useState} from 'react';
