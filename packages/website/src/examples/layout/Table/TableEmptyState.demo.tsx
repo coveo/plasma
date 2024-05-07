@@ -1,5 +1,6 @@
 import {BlankSlate, Button, ColumnDef, createColumnHelper, Table, Title, useTable} from '@coveord/plasma-mantine';
 import {NoContentSize32Px} from '@coveord/plasma-react-icons';
+import {FunctionComponent} from 'react';
 
 export type Person = {
     firstName: string;
@@ -7,12 +8,14 @@ export type Person = {
     age: number;
 };
 
-const NoData = () => {
-    const {isFiltered, clearFilters, state} = useTable();
-
-    return isFiltered ? (
+const EmptyState: FunctionComponent<{isFiltered: boolean; clearFilters: () => void; filter: string}> = ({
+    clearFilters,
+    isFiltered,
+    filter,
+}) =>
+    isFiltered ? (
         <BlankSlate>
-            <Title order={4}>No data found for filter "{state.globalFilter}"</Title>
+            <Title order={4}>No data found for filter "{filter}"</Title>
             <Button onClick={clearFilters}>Clear filter</Button>
         </BlankSlate>
     ) : (
@@ -21,24 +24,28 @@ const NoData = () => {
             <Title order={4}>Hello Empty State</Title>
         </BlankSlate>
     );
-};
 
-const Demo = () => (
-    <Table
-        data={[]}
-        columns={columns}
-        noDataChildren={<NoData />}
-        initialState={{globalFilter: 'foo', pagination: {pageSize: 5}}}
-    >
-        <Table.Header>
-            <Table.Filter placeholder="Search" />
-        </Table.Header>
-        <Table.Footer>
-            <Table.PerPage values={[5, 10, 25]} />
-            <Table.Pagination totalPages={null} />
-        </Table.Footer>
-    </Table>
-);
+const Demo = () => {
+    const table = useTable<Person>({initialState: {globalFilter: 'foo', pagination: {pageSize: 5}}});
+    return (
+        <Table store={table} data={[]} columns={columns}>
+            <Table.Header>
+                <Table.Filter placeholder="Search" />
+            </Table.Header>
+            <Table.NoData>
+                <EmptyState
+                    filter={table.state.globalFilter}
+                    isFiltered={table.isFiltered}
+                    clearFilters={table.clearFilters}
+                />
+            </Table.NoData>
+            <Table.Footer>
+                <Table.PerPage values={[5, 10, 25]} />
+                <Table.Pagination />
+            </Table.Footer>
+        </Table>
+    );
+};
 export default Demo;
 
 const columnHelper = createColumnHelper<Person>();

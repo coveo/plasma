@@ -3,16 +3,20 @@ import {
     Button,
     ColumnDef,
     createColumnHelper,
-    onTableChangeEvent,
+    FilterFn,
+    getFilteredRowModel,
+    getPaginationRowModel,
     Table,
     Title,
     useTable,
 } from '@coveord/plasma-mantine';
-import {FunctionComponent, useState} from 'react';
+import {faker} from '@faker-js/faker';
+import {rankItem} from '@tanstack/match-sorter-utils';
+import {FunctionComponent, useMemo} from 'react';
 
 interface IExampleRowData {
     userId: number;
-    id: number;
+    id: string;
     title: string;
     body: string;
 }
@@ -32,79 +36,43 @@ const columns: Array<ColumnDef<IExampleRowData>> = [
 ];
 
 const Demo = () => {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [pages, setPages] = useState(1);
-
-    const fetchData: onTableChangeEvent<IExampleRowData> = async (state) => {
-        setLoading(true);
-        const searchParams = new URLSearchParams({
-            _page: (state.pagination.pageIndex + 1).toString(),
-            _limit: state.pagination.pageSize.toString(),
-            title_like: state.globalFilter,
-        });
-        if (!state.globalFilter) {
-            searchParams.delete('title_like');
-        }
-        try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/posts?${searchParams.toString()}`);
-            const body = await response.json();
-            setData(body);
-            setPages(Math.ceil(Number(response.headers.get('x-total-count')) / state.pagination?.pageSize));
-        } catch (e) {
-            console.error(e);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const data = useMemo(() => makeData(10), []);
+    const table = useTable<IExampleRowData>({
+        enableMultiRowSelection: true,
+        enableRowSelection: false,
+        initialState: {
+            rowSelection: {
+                [data[0].id]: data[0],
+                [data[1].id]: data[1],
+            },
+        },
+    });
 
     return (
         <Table<IExampleRowData>
+            store={table}
             data={data}
             getRowId={({id}) => id.toString()}
             columns={columns}
-            noDataChildren={<NoData />}
-            onMount={fetchData}
-            onChange={fetchData}
-            loading={loading}
-            onRowSelectionChange={(selectedRows) =>
-                console.info(`Row selection changed, selected rows: ${selectedRows.map(({id}) => id).join(', ')}`)
-            }
-            multiRowSelectionEnabled
-            disableRowSelection
-            initialState={{
-                rowSelection: {
-                    '1': {
-                        userId: 1,
-                        id: 1,
-                        title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-                        body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto',
-                    },
-                    '2': {
-                        userId: 1,
-                        id: 2,
-                        title: 'qui est esse',
-                        body: 'est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla',
-                    },
-                },
-            }}
+            options={options}
         >
             <Table.Header>
                 <Table.Filter placeholder="Search posts by title" />
             </Table.Header>
+            <Table.NoData>
+                <EmptyState isFiltered={table.isFiltered} clearFilters={table.clearFilters} />
+            </Table.NoData>
             <Table.Footer>
                 <Table.PerPage />
-                <Table.Pagination totalPages={pages} />
+                <Table.Pagination />
             </Table.Footer>
         </Table>
     );
 };
 export default Demo;
 
-const NoData: FunctionComponent = () => {
-    const {isFiltered, clearFilters} = useTable();
-
-    return isFiltered ? (
+const EmptyState: FunctionComponent<{isFiltered: boolean; clearFilters: () => void}> = ({isFiltered, clearFilters}) =>
+    isFiltered ? (
         <BlankSlate>
             <Title order={4}>No data found for those filters</Title>
             <Button onClick={clearFilters}>Clear filters</Button>
@@ -114,4 +82,21 @@ const NoData: FunctionComponent = () => {
             <Title order={4}>No Data</Title>
         </BlankSlate>
     );
+
+const makeData = (length: number): IExampleRowData[] =>
+    Array(length)
+        .fill(0)
+        .map(() => ({
+            id: faker.string.uuid(),
+            title: faker.lorem.sentence(),
+            userId: faker.number.int(),
+            body: faker.lorem.paragraph(),
+        }));
+
+const fuzzyFilter: FilterFn<IExampleRowData> = (row, columnId, value) => rankItem(row.getValue(columnId), value).passed;
+
+const options = {
+    globalFilterFn: fuzzyFilter,
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
 };

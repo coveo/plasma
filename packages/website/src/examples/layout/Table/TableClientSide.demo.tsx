@@ -7,6 +7,7 @@ import {
     getSortedRowModel,
     Table,
     TableProps,
+    useTable,
 } from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import {rankItem} from '@tanstack/match-sorter-utils';
@@ -57,20 +58,15 @@ const options: TableProps<Person>['options'] = {
 
 const Demo = () => {
     const data = useMemo(() => makeData(45), []);
+    const table = useTable<Person>({initialState: {pagination: {pageSize: 5}}});
     return (
-        <Table
-            data={data}
-            columns={columns}
-            options={options}
-            initialState={{pagination: {pageSize: 5}}}
-            getRowId={({id}) => id}
-        >
+        <Table<Person> store={table} data={data} columns={columns} options={options} getRowId={({id}) => id}>
             <Table.Header>
                 <Table.Filter placeholder="Search" />
             </Table.Header>
             <Table.Footer>
                 <Table.PerPage values={[5, 10, 25]} />
-                <Table.Pagination totalPages={null} />
+                <Table.Pagination />
             </Table.Footer>
         </Table>
     );
