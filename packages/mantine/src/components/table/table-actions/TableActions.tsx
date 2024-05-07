@@ -3,7 +3,7 @@ import {ForwardedRef, ReactElement, ReactNode} from 'react';
 
 import {CustomComponentThemeExtend, identity} from '../../../utils';
 import {TableComponentsOrder} from '../Table';
-import {useTable, useTableStyles} from '../TableContext';
+import {useTableContext} from '../TableContext';
 
 export type TableActionsStylesNames = 'actionsRoot' | 'actionsGroup';
 
@@ -40,23 +40,22 @@ type TableActionsFactory = Factory<{
 const defaultProps: Partial<TableActionsProps<unknown>> = {};
 
 export const TableActions = <T,>(props: TableActionsProps<T> & {ref?: ForwardedRef<HTMLDivElement>}): ReactElement => {
-    const ctx = useTableStyles();
-    const {getSelectedRows, multiRowSelectionEnabled} = useTable<T>();
+    const {store, getStyles} = useTableContext<T>();
     const {style, className, classNames, styles, children, ...others} = useProps(
         'PlasmaTableActions',
         defaultProps,
         props,
     );
-    const selectedRows = getSelectedRows();
+    const selectedRows = store.getSelectedRows();
 
     if (selectedRows.length <= 0) {
         return null;
     }
 
     return (
-        <Grid.Col span="content" order={TableComponentsOrder.Actions} {...ctx.getStyles('actionsRoot', {})} {...others}>
-            <Group gap="xs" {...ctx.getStyles('actionsGroup', {})}>
-                {multiRowSelectionEnabled
+        <Grid.Col span="content" order={TableComponentsOrder.Actions} {...getStyles('actionsRoot', {})} {...others}>
+            <Group gap="xs" {...getStyles('actionsGroup', {})}>
+                {store.multiRowSelectionEnabled
                     ? (children as (data: T[]) => ReactNode)(selectedRows)
                     : (children as (datum: T) => ReactNode)(selectedRows[0])}
             </Group>
