@@ -27,7 +27,6 @@ export {
     type ButtonProps,
     type CopyToClipboardProps,
     type HeaderProps,
-    type InitialTableState,
     type MenuItemProps,
     type TableProps,
     type TableState,
