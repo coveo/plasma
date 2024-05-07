@@ -4,7 +4,7 @@ import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
 import {ChangeEventHandler, MouseEventHandler, useEffect, useState} from 'react';
 
 import {TableComponentsOrder} from '../Table';
-import {useTable, useTableStyles} from '../TableContext';
+import {useTableContext} from '../TableContext';
 
 export type TableFilterStylesNames = 'filterRoot' | 'filterWrapper' | 'filterEmpty';
 
@@ -29,24 +29,19 @@ const defaultProps: Partial<TableFilterProps> = {
 };
 
 export const TableFilter = factory<TableFilterFactory>((props, ref) => {
-    const ctx = useTableStyles();
+    const {store, getStyles} = useTableContext();
     const {placeholder, classNames, className, styles, style, vars, ...others} = useProps(
         'PlasmaTableFilter',
         defaultProps,
         props,
     );
-    const {state, setState} = useTable();
-    const [filter, setFilter] = useState(state.globalFilter);
+    const [filter, setFilter] = useState(store.state.globalFilter);
     const [debounced, cancel] = useDebouncedValue(filter, 300);
 
     useDidUpdate(() => {
-        setState((prevState) => ({
-            ...prevState,
-            pagination: prevState.pagination
-                ? {pageIndex: 0, pageSize: prevState.pagination.pageSize}
-                : prevState.pagination,
-            globalFilter: debounced,
-        }));
+        store.setGlobalFilter(debounced);
+        store.setPagination({pageIndex: 0, pageSize: store.state.pagination.pageSize});
+
         return cancel;
     }, [debounced]);
 
@@ -60,8 +55,8 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
     };
 
     useEffect(() => {
-        setFilter(state.globalFilter);
-    }, [state.globalFilter]);
+        setFilter(store.state.globalFilter);
+    }, [store.state.globalFilter]);
 
     const stylesApiProps = {classNames, styles};
 
@@ -70,11 +65,11 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
             span="content"
             order={TableComponentsOrder.Filter}
             ref={ref}
-            {...ctx.getStyles('filterRoot', {className, style, ...stylesApiProps})}
+            {...getStyles('filterRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
             <TextInput
-                {...ctx.getStyles('filterWrapper', stylesApiProps)}
+                {...getStyles('filterWrapper', stylesApiProps)}
                 placeholder={placeholder}
                 autoComplete="off"
                 rightSection={
@@ -83,7 +78,7 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
                             <CrossSize16Px height={16} />
                         </ActionIcon>
                     ) : (
-                        <FilterSize16Px height={16} {...ctx.getStyles('filterEmpty', stylesApiProps)} />
+                        <FilterSize16Px height={16} {...getStyles('filterEmpty', stylesApiProps)} />
                     )
                 }
                 value={filter}
