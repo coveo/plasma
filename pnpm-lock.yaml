@@ -524,6 +524,9 @@ importers:
       '@tanstack/match-sorter-utils':
         specifier: 8.15.1
         version: 8.15.1
+      '@tanstack/react-query':
+        specifier: 5.32.0
+        version: 5.32.0(react@18.3.1)
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -4001,6 +4004,19 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       remove-accents: 0.5.0
+    dev: false
+
+  /@tanstack/query-core@5.32.0:
+    resolution: {integrity: sha512-Z3flEgCat55DRXU5UMwYU1U+DgFZKA3iufyOKs+II7iRAo0uXkeU7PH5e6sOH1CGEag0IpKmZxlUFpCg6roSKw==}
+    dev: false
+
+  /@tanstack/react-query@5.32.0(react@18.3.1):
+    resolution: {integrity: sha512-+E3UudQtarnx9A6xhpgMZapyF+aJfNBGFMgI459FnduEZqT/9KhOWnMOneZahLRt52yzskSA0AuOyLkXHK0yBA==}
+    peerDependencies:
+      react: ^18.0.0
+    dependencies:
+      '@tanstack/query-core': 5.32.0
+      react: 18.3.1
     dev: false
 
   /@tanstack/react-table@8.15.0(react-dom@18.3.1)(react@18.3.1):
