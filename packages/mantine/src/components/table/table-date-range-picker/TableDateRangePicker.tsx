@@ -10,7 +10,7 @@ import {
     DateRangePickerValue,
 } from '../../date-range-picker';
 import {TableComponentsOrder} from '../Table';
-import {useTable, useTableStyles} from '../TableContext';
+import {useTableContext} from '../TableContext';
 
 export type TableDateRangePickerStylesNames = 'dateRangeRoot';
 
@@ -44,17 +44,16 @@ const defaultProps: Partial<TableDateRangePickerProps> = {
 };
 
 export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props, ref) => {
-    const ctx = useTableStyles();
+    const {store, getStyles} = useTableContext();
     const {presets, rangeCalendarProps, classNames, className, styles, style, vars, ...others} = useProps(
         'PlasmaTableDateRangePicker',
         defaultProps,
         props,
     );
     const [opened, setOpened] = useState(false);
-    const {form} = useTable();
 
     const onApply = (dates: DateRangePickerValue) => {
-        form.setFieldValue('dateRange', dates);
+        store.setDateRange(dates);
         setOpened(false);
     };
     const onCancel = () => {
@@ -62,8 +61,8 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
     };
 
     const formatDate = (date: Date) => dayjs(date).format('MMM DD, YYYY');
-    const formattedRange = `${formatDate(form.values.dateRange[0])} - ${formatDate(form.values.dateRange[1])}`;
-    const dateRangeInitialized = form.values.dateRange.every((date) => date instanceof Date);
+    const formattedRange = `${formatDate(store.state.dateRange[0])} - ${formatDate(store.state.dateRange[1])}`;
+    const dateRangeInitialized = store.state.dateRange.every((date) => date instanceof Date);
 
     const stylesApiProps = {classNames, styles};
 
@@ -72,7 +71,7 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
             span="content"
             order={TableComponentsOrder.DateRangePicker}
             ref={ref}
-            {...ctx.getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
+            {...getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
             <Popover withinPortal opened={opened}>
@@ -88,7 +87,7 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
                 </Popover.Target>
                 <Popover.Dropdown p={0}>
                     <DateRangePickerInlineCalendar
-                        initialRange={form.values.dateRange}
+                        initialRange={store.state.dateRange}
                         onApply={onApply}
                         onCancel={onCancel}
                         presets={presets}
