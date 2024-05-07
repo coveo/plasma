@@ -3,13 +3,17 @@ import {Factory, factory, useProps} from '@mantine/core';
 import {CellContext, ColumnDef} from '@tanstack/table-core';
 import {MouseEvent as ReactMouseEvent, ReactNode} from 'react';
 import {ActionIcon, ActionIconProps} from '../../action-icon';
-import {useTableStyles} from '../TableContext';
+import {useTableContext} from '../TableContext';
 
 export type TableCollapsibleColumnStylesNames = 'collapsibleIcon';
 
 const sharedProps: ColumnDef<unknown> = {
     id: 'collapsible',
     enableSorting: false,
+    enableHiding: false,
+    meta: {
+        controlColumn: true,
+    },
     header: '',
     size: 84, // 16px padding left + 28px ActionIcon + 40px padding right
 };
@@ -59,7 +63,7 @@ const defaultProps: Partial<CollapsibleIconProps> = {
 };
 
 const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
-    const ctx = useTableStyles();
+    const {getStyles} = useTableContext();
     const {info, onToggle, iconExpanded, iconCollapsed, classNames, className, style, styles, ...others} = useProps(
         'PlasmaTableCollapsibleColumn',
         defaultProps,
@@ -78,7 +82,7 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
             variant="subtle"
             color="gray"
             radius="sm"
-            {...ctx.getStyles('collapsibleIcon', {className, classNames, styles, style})}
+            {...getStyles('collapsibleIcon', {className, classNames, styles, style})}
             {...others}
         >
             {info.row.getIsExpanded() ? iconExpanded : iconCollapsed}

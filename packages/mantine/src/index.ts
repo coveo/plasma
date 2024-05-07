@@ -40,3 +40,14 @@ declare module '@mantine/core' {
         colors: Record<keyof typeof PlasmaColors | (string & {}), MantineColorsTuple>;
     }
 }
+
+declare module '@tanstack/react-table' {
+    interface ColumnMeta<TData extends unknown, TValue> {
+        /**
+         * Whether the column is a control column.
+         * Control columns are columns that are not part of the data but are used to control the table.
+         * For example, a column that contains checkboxes to select rows.
+         */
+        controlColumn: boolean;
+    }
+}

@@ -1,6 +1,6 @@
-import {Box, ColumnDef, createColumnHelper, onTableChangeEvent, Table, Text} from '@coveord/plasma-mantine';
+import {Box, ColumnDef, createColumnHelper, Table, Text, useTable} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
-import {useState} from 'react';
+import {useMemo} from 'react';
 
 interface IEmployeeData {
     employeeId: string;
@@ -17,13 +17,14 @@ interface IEmployeeData {
 const columnHelper = createColumnHelper<IEmployeeData>();
 
 const columns: Array<ColumnDef<IEmployeeData>> = [
-    columnHelper.accessor('fullName', {
-        header: 'Name',
-        cell: (info) => info.row.original.fullName,
-    }),
     columnHelper.accessor('employeeId', {
         header: 'Employee ID',
         cell: (info) => info.row.original.employeeId,
+        enableHiding: false, // you can disable hiding for specific columns
+    }),
+    columnHelper.accessor('fullName', {
+        header: 'Name',
+        cell: (info) => info.row.original.fullName,
     }),
     columnHelper.accessor('departmentId', {
         header: 'Department ID',
@@ -53,30 +54,26 @@ const columns: Array<ColumnDef<IEmployeeData>> = [
 ];
 
 const Demo = () => {
-    const [data, setData] = useState(null);
-
-    const fetchData: onTableChangeEvent<IEmployeeData> = async () => {
-        setData(makeData(10));
-    };
+    const data = useMemo(() => makeData(10), []);
+    const table = useTable<IEmployeeData>({
+        initialState: {
+            columnVisibility: {hireDate: false, salary: false, email: false, isFullTime: false},
+        },
+    });
 
     return (
         <Table
-            initialState={{columnVisibility: {hireDate: false, salary: false}}}
+            store={table}
             data={data}
             getRowId={({employeeId}) => employeeId?.toString()}
             columns={columns}
-            onMount={fetchData}
-            onChange={fetchData}
             getExpandChildren={(datum) => <Box py="xs">{datum.body}</Box>}
-            options={{enableHiding: true}}
         >
             <Table.Header>
                 <Table.ColumnsSelector
-                    label={'Edit columns'}
-                    nonHideableColumns={['employeeId']}
+                    label="Edit columns"
                     maxSelectableColumns={5}
                     showVisibleCountLabel
-                    columnNames={columnNames}
                     footer={<Text variant="dimmed">You can display up to 5 columns</Text>}
                     limitReachedTooltip="You have reached the maximum display limit of 5 columns. Uncheck a column to display another one."
                 />
@@ -100,15 +97,3 @@ const makeData = (length: number): IEmployeeData[] =>
             email: faker.internet.email(),
             body: faker.lorem.paragraph(),
         }));
-
-const columnNames: Partial<Record<keyof IEmployeeData, string>> = {
-    fullName: 'Name',
-    employeeId: 'Employee ID',
-    departmentId: 'Department ID',
-    email: 'Email',
-    isFullTime: 'Full Time',
-    salary: 'Salary',
-    jobTitle: 'Job Title',
-    hireDate: 'Hire Date',
-    body: 'Body',
-};
