@@ -13,7 +13,6 @@ import {
     Grid,
     Group,
     Row,
-    TableLayoutProps,
     SimpleGrid,
     Space,
     Table,
@@ -25,6 +24,7 @@ import {
     renderTableCell,
     useDisclosure,
     useTable,
+    useTableContext,
 } from '@coveord/plasma-mantine';
 import {rankItem} from '@tanstack/match-sorter-utils';
 import {PageLayout} from '../../building-blocs/PageLayout';
@@ -70,7 +70,8 @@ const IconSetCard = <T,>({getVisibleCells}: Row<T>) => {
     );
 };
 
-const IconsListLayout = <T,>({table}: TableLayoutProps<T>) => {
+const IconsListLayout = () => {
+    const {table} = useTableContext<IconSet>();
     const iconSets = table.getRowModel().rows.map((row) => <IconSetCard key={row.id} {...row} />);
     return (
         <tr>
@@ -148,34 +149,37 @@ const columns: Array<ColumnDef<IconSet>> = [
     }),
 ];
 
-const EmptyState = () => {
-    const {state} = useTable();
+const EmptyState = ({filter}: {filter: string}) => (
+    <Box mih={500}>
+        <Center p="lg">
+            <Group>
+                <Icons.BrokenSearchSize32Px height={32} />
+                <Title order={5}>No icons match the filter "{filter}".</Title>
+            </Group>
+        </Center>
+    </Box>
+);
+
+const IconsTable: FunctionComponent = () => {
+    const table = useTable<IconSet>();
     return (
-        <Box mih={500}>
-            <Center p="lg">
-                <Group>
-                    <Icons.BrokenSearchSize32Px height={32} />
-                    <Title order={5}>No icons match the filter "{state.globalFilter}".</Title>
-                </Group>
-            </Center>
-        </Box>
+        <Table
+            store={table}
+            data={iconsList}
+            layouts={[CardLayout]}
+            columns={columns}
+            getRowId={({iconName}) => iconName}
+            options={options}
+        >
+            <Table.Header bg="gray.0">
+                <Table.Filter placeholder="Search icon" />
+            </Table.Header>
+            <Table.NoData>
+                <EmptyState filter={table.state.globalFilter} />
+            </Table.NoData>
+        </Table>
     );
 };
-
-const IconsTable: FunctionComponent = () => (
-    <Table
-        data={iconsList}
-        layouts={[CardLayout]}
-        columns={columns}
-        getRowId={({iconName}) => iconName}
-        options={options}
-        noDataChildren={<EmptyState />}
-    >
-        <Table.Header bg="gray.0">
-            <Table.Filter placeholder="Search icon" />
-        </Table.Header>
-    </Table>
-);
 
 export const IconographyExamples = () => (
     <PageLayout
