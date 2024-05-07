@@ -1,9 +1,9 @@
 import {BoxProps, CompoundStylesApiProps, Factory, useProps} from '@mantine/core';
 import {ForwardedRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils';
+import {TableLayoutProps} from '../../Table.types';
+import {useTableContext} from '../../TableContext';
 import {Th} from '../../table-header/Th';
-import {useTable} from '../../TableContext';
-import {type TableLayoutProps} from '../TableLayouts';
 import {RowLayoutBodyFactory} from './RowLayoutBody';
 import {useRowLayout} from './RowLayoutContext';
 
@@ -25,15 +25,18 @@ const defaultProps: Partial<RowLayoutHeaderProps<unknown>> = {};
 
 export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: ForwardedRef<HTMLTableRowElement>}) => {
     const ctx = useRowLayout();
-    const {table, getExpandChildren, loading, doubleClickAction, className, style, classNames, styles, ...others} =
-        useProps('RowLayoutHeader', defaultProps as RowLayoutHeaderProps<T>, props);
-    const {multiRowSelectionEnabled, disableRowSelection} = useTable();
+    const {getExpandChildren, loading, doubleClickAction, className, style, classNames, styles, ...others} = useProps(
+        'RowLayoutHeader',
+        defaultProps as RowLayoutHeaderProps<T>,
+        props,
+    );
+    const {table, store} = useTableContext<T>();
 
     const headers = table.getHeaderGroups().map((headerGroup) => (
         <tr
             key={headerGroup.id}
-            data-selectable={!disableRowSelection}
-            data-multi-selection={multiRowSelectionEnabled}
+            data-selectable={store.rowSelectionEnabled}
+            data-multi-selection={store.multiRowSelectionEnabled}
             {...ctx.getStyles('headerRow', {className, classNames, styles, style})}
             {...others}
         >

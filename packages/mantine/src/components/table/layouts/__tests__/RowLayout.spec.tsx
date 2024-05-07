@@ -2,7 +2,7 @@ import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
 import {Table} from '../../Table';
-import {TableLayouts} from '../TableLayouts';
+import {useTable} from '../../use-table';
 
 describe('RowLayout', () => {
     type RowData = {id: string; firstName: string; lastName?: string};
@@ -14,13 +14,12 @@ describe('RowLayout', () => {
     ];
 
     it('renders the data using the RowLayout by default', () => {
-        render(
-            <Table
-                getRowId={({id}) => id}
-                data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
-                columns={columns}
-            />,
-        );
+        const data: RowData[] = [{id: '🆔', firstName: 'first', lastName: 'last'}];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+        };
+        render(<Fixture />);
 
         expect(screen.getByRole('columnheader', {name: 'firstName'})).toBeVisible();
         expect(screen.getByRole('columnheader', {name: 'lastName'})).toBeVisible();
@@ -50,7 +49,12 @@ describe('RowLayout', () => {
                 enableSorting: false,
             }),
         ];
-        render(<Table data={[{id: '🆔', firstName: 'first', lastName: 'last'}]} columns={customColumns} />);
+        const data: RowData[] = [{id: '🆔', firstName: 'first', lastName: 'last'}];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return <Table store={store} data={data} columns={customColumns} />;
+        };
+        render(<Fixture />);
 
         expect(screen.getByRole('columnheader', {name: 'First Name'})).toBeVisible();
         expect(screen.getByRole('columnheader', {name: 'Last Name'})).toBeVisible();
@@ -64,16 +68,15 @@ describe('RowLayout', () => {
             columnHelper.accessor('firstName', {}),
             columnHelper.accessor('lastName', {}),
         ];
-        render(
-            <Table
-                getRowId={({id}) => id}
-                data={[
-                    {id: 'ash', firstName: 'Ash', lastName: 'Ketchum'},
-                    {id: 'gary', firstName: 'Gary', lastName: 'Oak'},
-                ]}
-                columns={customColumns}
-            />,
-        );
+        const data: RowData[] = [
+            {id: 'ash', firstName: 'Ash', lastName: 'Ketchum'},
+            {id: 'gary', firstName: 'Gary', lastName: 'Oak'},
+        ];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return <Table store={store} getRowId={({id}) => id} data={data} columns={customColumns} />;
+        };
+        render(<Fixture />);
 
         expect(screen.getByTestId('ash')).toBeVisible();
         expect(screen.getByTestId('ash_firstName')).toHaveTextContent('Ash');
@@ -86,21 +89,26 @@ describe('RowLayout', () => {
 
     it('opens the collapsible rows when the user click on the toggle', async () => {
         const user = userEvent.setup();
-        const Fixture: FunctionComponent<{row: RowData}> = ({row}) => <div>Collapsible content: {row.lastName}</div>;
         const customColumns: Array<ColumnDef<RowData>> = [
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
             Table.CollapsibleColumn as ColumnDef<RowData>,
         ];
-        render(
-            <Table
-                getRowId={({id}) => id}
-                data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
-                getExpandChildren={(row: RowData) => <Fixture row={row} />}
-                columns={customColumns}
-            />,
-        );
+        const data: RowData[] = [{id: '🆔', firstName: 'first', lastName: 'last'}];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={data}
+                    getExpandChildren={(row) => <div>Collapsible content: {row.lastName}</div>}
+                    columns={customColumns}
+                />
+            );
+        };
+        render(<Fixture />);
 
         // wait for the collapsible icon to show
         await screen.findByRole('button', {name: 'arrowHeadDown'});
@@ -114,29 +122,36 @@ describe('RowLayout', () => {
     });
 
     it('renders the collapsible button only for rows that can be expanded', async () => {
-        const Fixture: FunctionComponent<{row: RowData}> = ({row}) => (
+        const Content: FunctionComponent<{row: RowData}> = ({row}) => (
             <div>
                 Collapsible content: {row.firstName} {row.lastName}
             </div>
         );
+
         const customColumns: Array<ColumnDef<RowData>> = [
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
             Table.CollapsibleColumn as ColumnDef<RowData>,
         ];
-        render(
-            <Table
-                getRowId={({id}) => id}
-                data={[
-                    {id: '🆔-1', firstName: 'Luke', lastName: 'Skywalker'},
-                    {id: '🆔-2', firstName: 'Lea', lastName: 'Skywalker'},
-                    {id: '🆔-3', firstName: 'Han', lastName: 'Solo'},
-                ]}
-                getExpandChildren={(row: RowData) => (row.lastName === 'Skywalker' ? <Fixture row={row} /> : null)}
-                columns={customColumns}
-            />,
-        );
+        const data: RowData[] = [
+            {id: '🆔-1', firstName: 'Luke', lastName: 'Skywalker'},
+            {id: '🆔-2', firstName: 'Lea', lastName: 'Skywalker'},
+            {id: '🆔-3', firstName: 'Han', lastName: 'Solo'},
+        ];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={data}
+                    getExpandChildren={(row: RowData) => (row.lastName === 'Skywalker' ? <Content row={row} /> : null)}
+                    columns={customColumns}
+                />
+            );
+        };
+        render(<Fixture />);
 
         // wait for the collapsible icon to show
         await screen.findAllByRole('button', {name: 'arrowHeadDown'});
@@ -147,24 +162,30 @@ describe('RowLayout', () => {
 
     it('closes the opened collapsible when using the accordion column and the user expand a different row', async () => {
         const user = userEvent.setup();
-        const Fixture: FunctionComponent<{row: RowData}> = ({row}) => <div>Collapsible content: {row.lastName}</div>;
+        const Content: FunctionComponent<{row: RowData}> = ({row}) => <div>Collapsible content: {row.lastName}</div>;
         const customColumns: Array<ColumnDef<RowData>> = [
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
             Table.AccordionColumn as ColumnDef<RowData>,
         ];
-        render(
-            <Table
-                getRowId={({id}) => id}
-                data={[
-                    {id: '🆔-1', firstName: 'Jack', lastName: 'Russel'},
-                    {id: '🆔-2', firstName: 'Golden', lastName: 'Retriever'},
-                ]}
-                getExpandChildren={(row: RowData) => <Fixture row={row} />}
-                columns={customColumns}
-            />,
-        );
+        const data: RowData[] = [
+            {id: '🆔-1', firstName: 'Jack', lastName: 'Russel'},
+            {id: '🆔-2', firstName: 'Golden', lastName: 'Retriever'},
+        ];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={data}
+                    getExpandChildren={(row: RowData) => <Content row={row} />}
+                    columns={customColumns}
+                />
+            );
+        };
+        render(<Fixture />);
 
         // wait for the collapsible icon to show
         await screen.findAllByRole('button', {name: 'arrowHeadDown'});
@@ -189,17 +210,23 @@ describe('RowLayout', () => {
     it('calls an action when user double clicks on a row', async () => {
         const user = userEvent.setup();
         const doubleClickSpy = vi.fn();
-        render(
-            <Table<RowData>
-                getRowId={({id}) => id}
-                data={[
-                    {id: '🆔-1', firstName: 'Mario'},
-                    {id: '🆔-2', firstName: 'Luigi'},
-                ]}
-                columns={columns}
-                doubleClickAction={doubleClickSpy}
-            ></Table>,
-        );
+        const data: RowData[] = [
+            {id: '🆔-1', firstName: 'Mario'},
+            {id: '🆔-2', firstName: 'Luigi'},
+        ];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={data}
+                    columns={columns}
+                    doubleClickAction={doubleClickSpy}
+                />
+            );
+        };
+        render(<Fixture />);
         await user.dblClick(screen.getByRole('cell', {name: 'Mario'}));
         expect(doubleClickSpy).toHaveBeenCalledTimes(1);
         expect(doubleClickSpy).toHaveBeenCalledWith({id: '🆔-1', firstName: 'Mario'});
@@ -207,19 +234,15 @@ describe('RowLayout', () => {
 
     it('toggles row selection when clicking on a selected row', async () => {
         const user = userEvent.setup();
-
-        render(
-            <div>
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
-                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
-                    ]}
-                    columns={columns}
-                />
-            </div>,
-        );
+        const data: RowData[] = [
+            {id: '🆔-1', firstName: 'first', lastName: 'last'},
+            {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+        ];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+        };
+        render(<Fixture />);
 
         await user.click(screen.getByRole('row', {name: /patate king/i}));
         expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
@@ -230,27 +253,17 @@ describe('RowLayout', () => {
         expect(screen.queryByRole('row', {name: /patate king/i, selected: true})).not.toBeInTheDocument();
     });
 
-    it('prevents row toggle if keepSelection is true', async () => {
+    it('prevents row deselection if row selection is forced', async () => {
         const user = userEvent.setup();
-
-        render(
-            <div>
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
-                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
-                    ]}
-                    columns={columns}
-                    layouts={[
-                        {
-                            ...TableLayouts.Rows,
-                            Body: (props) => <TableLayouts.Rows.Body {...props} keepSelection />,
-                        },
-                    ]}
-                />
-            </div>,
-        );
+        const data: RowData[] = [
+            {id: '🆔-1', firstName: 'first', lastName: 'last'},
+            {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+        ];
+        const Fixture = () => {
+            const store = useTable<RowData>({forceSelection: true});
+            return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+        };
+        render(<Fixture />);
 
         await user.click(screen.getByRole('row', {name: /patate king/i}));
         expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
@@ -261,27 +274,17 @@ describe('RowLayout', () => {
         expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
     });
 
-    it('allows selection of another row if keepSelection is true', async () => {
+    it('allows selection of a different row if row selection is forced', async () => {
         const user = userEvent.setup();
-
-        render(
-            <div>
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
-                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
-                    ]}
-                    columns={columns}
-                    layouts={[
-                        {
-                            ...TableLayouts.Rows,
-                            Body: (props) => <TableLayouts.Rows.Body {...props} keepSelection />,
-                        },
-                    ]}
-                />
-            </div>,
-        );
+        const data: RowData[] = [
+            {id: '🆔-1', firstName: 'first', lastName: 'last'},
+            {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+        ];
+        const Fixture = () => {
+            const store = useTable<RowData>({forceSelection: true});
+            return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+        };
+        render(<Fixture />);
 
         await user.click(screen.getByRole('row', {name: /patate king/i}));
         expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
@@ -296,17 +299,15 @@ describe('RowLayout', () => {
 
     describe('when multi row selection is enabled', () => {
         it('displays a checkbox as the first cell of each row', () => {
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
-                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
-                    ]}
-                    columns={columns}
-                    multiRowSelectionEnabled
-                />,
-            );
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
 
             expect(screen.getByRole('columnheader', {name: /select all from this page/i})).toBeInTheDocument();
 
@@ -317,37 +318,33 @@ describe('RowLayout', () => {
         });
 
         it('selects the rows specified in the initial state on mount', () => {
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
-                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
-                    ]}
-                    columns={columns}
-                    multiRowSelectionEnabled
-                    initialState={{
-                        rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}},
-                    }}
-                />,
-            );
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    initialState: {rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}}},
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
 
             expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
         });
 
         it('selects all rows of the current page when clicking on the checkbox that is in the column header', async () => {
             const user = userEvent.setup();
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
-                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
-                    ]}
-                    columns={columns}
-                    multiRowSelectionEnabled
-                />,
-            );
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
 
             const selectAll = screen.getByRole('checkbox', {name: /select all from this page/i});
             await user.click(selectAll);
@@ -360,21 +357,15 @@ describe('RowLayout', () => {
 
         it('prevents row selection if disableRowSelection is true', async () => {
             const user = userEvent.setup();
-
-            render(
-                <div>
-                    <Table
-                        getRowId={({id}) => id}
-                        data={[
-                            {id: '🆔-1', firstName: 'first', lastName: 'last'},
-                            {id: '🆔-2', firstName: 'patate', lastName: 'king'},
-                        ]}
-                        columns={columns}
-                        multiRowSelectionEnabled
-                        disableRowSelection
-                    />
-                </div>,
-            );
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true, enableRowSelection: false});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
 
             await user.click(screen.getByRole('row', {name: /patate king/i}));
             expect(screen.getByRole('row', {name: /patate king/i, selected: false})).toBeInTheDocument();
@@ -388,18 +379,15 @@ describe('RowLayout', () => {
         it('prevents click on checkboxes if disableRowSelection is true', async () => {
             const user = userEvent.setup();
             const onClick = vi.fn();
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
-                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
-                    ]}
-                    columns={columns}
-                    multiRowSelectionEnabled
-                    disableRowSelection
-                />,
-            );
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true, enableRowSelection: false});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
             await user.click(screen.getByRole('checkbox', {name: /select all/i}));
             expect(onClick).not.toHaveBeenCalled();
 

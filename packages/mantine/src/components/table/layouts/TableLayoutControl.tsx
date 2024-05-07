@@ -1,13 +1,12 @@
 import {Box, Center, Grid, SegmentedControl, Space} from '@mantine/core';
 import {TableComponentsOrder} from '../Table';
-import {useTable} from '../TableContext';
+import {useTableContext} from '../TableContext';
 
 export const TableLayoutControl = () => {
-    const {form, layouts} = useTable();
+    const {layouts, store} = useTableContext();
     return layouts.length > 1 ? (
         <Grid.Col order={TableComponentsOrder.LayoutControl} span="content">
             <SegmentedControl
-                color="action"
                 data={layouts.map(({displayName, Icon}) => ({
                     value: displayName,
                     label: (
@@ -22,7 +21,8 @@ export const TableLayoutControl = () => {
                         </Center>
                     ),
                 }))}
-                {...form.getInputProps('layout')}
+                value={store.state.layout === null ? layouts[0].displayName : store.state.layout}
+                onChange={store.setLayout}
             />
         </Grid.Col>
     ) : null;
