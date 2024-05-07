@@ -1,5 +1,5 @@
 .root {
-    background-color: white;
+    background-color: var(--mantine-color-gray-0);
 }
 .sandbox {
     border: 1px solid var(--mantine-color-gray-3);
@@ -22,6 +22,7 @@
     min-height: 100px;
     display: flex;
     flex-direction: column;
+    background-color: white;
 }
 
 .flexPreviewWrapper {
