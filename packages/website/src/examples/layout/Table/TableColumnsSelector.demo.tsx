@@ -18,7 +18,7 @@ const columnHelper = createColumnHelper<IEmployeeData>();
 
 const columns: Array<ColumnDef<IEmployeeData>> = [
     columnHelper.accessor('employeeId', {
-        header: 'Employee ID',
+        header: 'Employee ID', // the column header is used to display the name of the checkbox in the column selector
         cell: (info) => info.row.original.employeeId,
         enableHiding: false, // you can disable hiding for specific columns
     }),
