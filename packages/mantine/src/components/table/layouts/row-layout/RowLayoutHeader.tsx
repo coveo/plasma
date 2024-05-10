@@ -25,11 +25,17 @@ const defaultProps: Partial<RowLayoutHeaderProps<unknown>> = {};
 
 export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: ForwardedRef<HTMLTableRowElement>}) => {
     const ctx = useRowLayout();
-    const {getExpandChildren, loading, doubleClickAction, className, style, classNames, styles, ...others} = useProps(
-        'RowLayoutHeader',
-        defaultProps as RowLayoutHeaderProps<T>,
-        props,
-    );
+    const {
+        getExpandChildren,
+        loading,
+        doubleClickAction,
+        className,
+        style,
+        classNames,
+        styles,
+        getRowAttributes,
+        ...others
+    } = useProps('RowLayoutHeader', defaultProps as RowLayoutHeaderProps<T>, props);
     const {table, store} = useTableContext<T>();
 
     const headers = table.getHeaderGroups().map((headerGroup) => (

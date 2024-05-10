@@ -19,6 +19,10 @@ export interface TableLayoutProps<TData = unknown> {
      * @param datum the row for which the children should be generated.
      */
     getExpandChildren?: (datum: TData) => ReactNode;
+    /**
+     * Function that can be used to add additional attributes on rows
+     */
+    getRowAttributes?: (datum: TData) => Record<string, unknown>;
 }
 
 export interface TableLayout {
@@ -55,6 +59,10 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      * Defines how each row is uniquely identified. It is highly recommended that you specify this prop to an ID that makes sense.
      */
     getRowId?: CoreOptions<TData>['getRowId'];
+    /**
+     * Allows to define html attributes that will be passed down to each row.
+     */
+    getRowAttributes?: (row: TData) => Record<string, unknown>;
     /**
      * Columns to display in the table.
      *

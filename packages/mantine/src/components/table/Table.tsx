@@ -87,6 +87,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         store,
         data,
         getRowId,
+        getRowAttributes,
         getExpandChildren,
         columns,
         layouts,
@@ -233,6 +234,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                         doubleClickAction={doubleClickAction}
                                         getExpandChildren={getExpandChildren}
                                         loading={loading}
+                                        getRowAttributes={getRowAttributes}
                                         {...layoutProps}
                                     />
                                 </thead>
@@ -242,6 +244,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                             doubleClickAction={doubleClickAction}
                                             getExpandChildren={getExpandChildren}
                                             loading={loading}
+                                            getRowAttributes={getRowAttributes}
                                             {...layoutProps}
                                         />
                                     ) : (
