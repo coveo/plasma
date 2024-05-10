@@ -1,18 +1,6 @@
-import {
-    BlankSlate,
-    Box,
-    Button,
-    ColumnDef,
-    createColumnHelper,
-    DateRangePickerPreset,
-    Table,
-    Title,
-    useTable,
-} from '@coveord/plasma-mantine';
-import {EditSize16Px} from '@coveord/plasma-react-icons';
-import dayjs from 'dayjs';
+import {BlankSlate, Button, ColumnDef, createColumnHelper, Table, Title, useTable} from '@coveord/plasma-mantine';
+import {keepPreviousData, useQuery} from '@tanstack/react-query';
 import {FunctionComponent} from 'react';
-import {useQuery, keepPreviousData} from '@tanstack/react-query';
 
 interface IExampleRowData {
     userId: number;
@@ -23,10 +11,6 @@ interface IExampleRowData {
 
 const columnHelper = createColumnHelper<IExampleRowData>();
 
-/**
- * Define your columns outside the component rendering the table
- * (or memoize them) to avoid unnecessary render loops
- */
 const columns: Array<ColumnDef<IExampleRowData>> = [
     columnHelper.accessor('userId', {
         header: 'User ID',
@@ -40,64 +24,47 @@ const columns: Array<ColumnDef<IExampleRowData>> = [
         header: 'Title',
         cell: (info) => info.row.original.title,
     }),
-    Table.CollapsibleColumn as ColumnDef<IExampleRowData>,
-    // or if you prefer an accordion behaviour
-    // Table.AccordionColumn as ColumnDef<IExampleRowData>,
 ];
 
 const Demo = () => {
-    const table = useTable<IExampleRowData>({
-        initialState: {dateRange: [previousDay, today], predicates: {user: ''}},
-    });
+    const table = useTable<IExampleRowData>();
 
     const query = useQuery<IExampleRowData[]>({
-        queryKey: [
-            'posts',
-            table.state.sorting,
-            table.state.pagination,
-            table.state.predicates,
-            table.state.globalFilter,
-        ],
+        queryKey: ['posts', table.state.sorting, table.state.pagination, table.state.globalFilter],
         queryFn: async () => {
             const searchParams = new URLSearchParams({
                 _sort: table.state.sorting?.[0]?.id ?? 'userId',
                 _order: table.state.sorting?.[0]?.desc ? 'desc' : 'asc',
                 _page: (table.state.pagination.pageIndex + 1).toString(),
                 _limit: table.state.pagination.pageSize.toString(),
-                userId: table.state.predicates.user,
                 title_like: table.state.globalFilter,
             });
-            if (table.state.predicates.user === '') {
-                searchParams.delete('userId');
-            }
             if (!table.state.globalFilter) {
                 searchParams.delete('title_like');
             }
             const response = await fetch(`https://jsonplaceholder.typicode.com/posts?${searchParams.toString()}`);
             const body = await response.json();
+            // Give the total number of entries to the table
+            // This number is used to determine the total number of pages and the empty states
             table.setTotalEntries(Number(response.headers.get('x-total-count')));
             return body;
         },
+        // Keeping the previous data while fetching provides a smoother experience
         placeholderData: keepPreviousData,
+        // If you want to refresh the data every 10 seconds
+        // refetchInterval: 10 * 1000
     });
 
     return (
         <Table<IExampleRowData>
             store={table}
-            loading={query.isLoading || query.isFetching}
             data={query.data}
-            getRowId={({id}) => id.toString()}
             columns={columns}
-            getExpandChildren={(datum) => <Box py="xs">{datum.body}</Box>}
+            loading={query.isLoading || query.isFetching}
+            getRowId={({id}) => id.toString()}
         >
             <Table.Header>
-                <UserPredicate />
                 <Table.Filter placeholder="Search posts by title" />
-                <Table.DateRangePicker
-                    rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
-                    presets={DatePickerPresets}
-                />
-                <Table.Actions>{(datum: IExampleRowData) => <TableActions datum={datum} />}</Table.Actions>
             </Table.Header>
             <Table.NoData>
                 <NoData isFiltered={table.isFiltered} clearFilters={table.clearFilters} />
@@ -122,49 +89,3 @@ const NoData: FunctionComponent<{isFiltered: boolean; clearFilters: () => void}>
             <Title order={4}>No Data</Title>
         </BlankSlate>
     );
-
-const today: Date = dayjs().startOf('day').toDate();
-const previousDay: Date = dayjs().subtract(1, 'day').endOf('day').toDate();
-const previousWeek: Date = dayjs().subtract(1, 'week').endOf('day').toDate();
-
-const DatePickerPresets: Record<string, DateRangePickerPreset> = {
-    lastDay: {label: 'Last 24 hours', range: [previousDay, today]},
-    lastWeek: {label: 'Last week', range: [previousWeek, today]},
-};
-
-const TableActions: FunctionComponent<{datum: IExampleRowData}> = ({datum}) => {
-    const actionCondition = datum.id % 2 === 0 ? true : false;
-    const pressedAction = () => alert('Edit action is triggered!');
-    return (
-        <>
-            {actionCondition ? (
-                <Button variant="subtle" onClick={pressedAction} leftSection={<EditSize16Px height={16} />}>
-                    Edit
-                </Button>
-            ) : null}
-        </>
-    );
-};
-
-const UserPredicate: FunctionComponent = () => (
-    <Table.Predicate
-        id="user"
-        label="User"
-        data={[
-            {
-                value: '',
-                label: 'All',
-            },
-            {value: '1', label: '1'},
-            {value: '2', label: '2'},
-            {value: '3', label: '3'},
-            {value: '4', label: '4'},
-            {value: '5', label: '5'},
-            {value: '6', label: '6'},
-            {value: '7', label: '7'},
-            {value: '8', label: '8'},
-            {value: '9', label: '9'},
-            {value: '10', label: '10'},
-        ]}
-    />
-);

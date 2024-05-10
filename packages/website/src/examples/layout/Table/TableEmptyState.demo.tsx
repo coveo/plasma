@@ -1,4 +1,4 @@
-import {BlankSlate, Button, ColumnDef, createColumnHelper, Table, Title, useTable} from '@coveord/plasma-mantine';
+import {BlankSlate, ColumnDef, createColumnHelper, Table, Title, useTable} from '@coveord/plasma-mantine';
 import {NoContentSize32Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
 
@@ -8,41 +8,30 @@ export type Person = {
     age: number;
 };
 
-const EmptyState: FunctionComponent<{isFiltered: boolean; clearFilters: () => void; filter: string}> = ({
-    clearFilters,
-    isFiltered,
-    filter,
-}) =>
-    isFiltered ? (
-        <BlankSlate>
-            <Title order={4}>No data found for filter "{filter}"</Title>
-            <Button onClick={clearFilters}>Clear filter</Button>
-        </BlankSlate>
-    ) : (
-        <BlankSlate withBorder={false}>
-            <NoContentSize32Px height={64} />
-            <Title order={4}>Hello Empty State</Title>
-        </BlankSlate>
-    );
+const EmptyState: FunctionComponent = () => (
+    <BlankSlate withBorder={false}>
+        <NoContentSize32Px height={64} />
+        <Title order={4}>Empty State</Title>
+        This table is vacant, in other words it has no data even when no filter is applied.
+    </BlankSlate>
+);
 
 const Demo = () => {
-    const table = useTable<Person>({initialState: {globalFilter: 'foo', pagination: {pageSize: 5}}});
+    /**
+     * In order to determine properly when to display the empty state, the table needs to know the `totalEntries`.
+     * Be sure to set it either in the `initialState` or by using `store.setTotalEntries()`
+     */
+    const data: Person[] = [];
+    const table = useTable<Person>({
+        initialState: {
+            totalEntries: data.length,
+        },
+    });
     return (
         <Table store={table} data={[]} columns={columns}>
-            <Table.Header>
-                <Table.Filter placeholder="Search" />
-            </Table.Header>
             <Table.NoData>
-                <EmptyState
-                    filter={table.state.globalFilter}
-                    isFiltered={table.isFiltered}
-                    clearFilters={table.clearFilters}
-                />
+                <EmptyState />
             </Table.NoData>
-            <Table.Footer>
-                <Table.PerPage values={[5, 10, 25]} />
-                <Table.Pagination />
-            </Table.Footer>
         </Table>
     );
 };

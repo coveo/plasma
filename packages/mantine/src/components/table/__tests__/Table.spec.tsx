@@ -18,10 +18,10 @@ const EmptyState = (props: {isFiltered: boolean}) =>
     props.isFiltered ? <span data-testid="filtered-empty-state" /> : <span data-testid="empty-state" />;
 
 describe('Table', () => {
-    describe('when it has no data', () => {
+    describe('when it is vacant', () => {
         it('hides the footer and header if the table is not filtered', () => {
             const Fixture = () => {
-                const store = useTable<RowData>();
+                const store = useTable<RowData>({initialState: {totalEntries: 0}});
                 return (
                     <Table data={[]} store={store} columns={columns}>
                         <Table.Header data-testid="table-header">header</Table.Header>

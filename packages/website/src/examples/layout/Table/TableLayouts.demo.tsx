@@ -3,24 +3,18 @@ import {
     Button,
     ColumnDef,
     createColumnHelper,
-    FilterFn,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
     Paper,
     renderTableCell,
     SimpleGrid,
     Table,
     TableLayout,
     TableLayoutProps,
-    TableProps,
     Title,
     useTable,
     useTableContext,
 } from '@coveord/plasma-mantine';
 import {CardSize16Px} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
-import {rankItem} from '@tanstack/match-sorter-utils';
 import {useMemo} from 'react';
 
 const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
@@ -78,14 +72,13 @@ CardLayout.Body = TableCards;
 CardLayout.Icon = CardSize16Px;
 
 const Demo = () => {
-    const data = useMemo(() => makeData(45), []);
+    const data = useMemo(() => makeData(10), []);
     const table = useTable<Person>({initialState: {pagination: {pageSize: 10}}});
     return (
         <Table<Person>
             store={table}
             data={data}
             columns={columns}
-            options={options}
             getRowId={({id}) => id}
             layouts={[Table.Layouts.Rows, CardLayout]}
             doubleClickAction={(person) => alert(`Double clicked ${person.firstName}`)}
@@ -99,10 +92,6 @@ const Demo = () => {
                     )}
                 </Table.Actions>
             </Table.Header>
-            <Table.Footer>
-                <Table.PerPage values={[5, 10, 25]} />
-                <Table.Pagination />
-            </Table.Footer>
         </Table>
     );
 };
@@ -138,12 +127,3 @@ const makeData = (len: number): Person[] =>
             lastName: faker.person.lastName(),
             age: faker.number.int(40),
         }));
-
-const fuzzyFilter: FilterFn<Person> = (row, columnId, value) => rankItem(row.getValue(columnId), value).passed;
-
-const options: TableProps<Person>['options'] = {
-    globalFilterFn: fuzzyFilter,
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-};
