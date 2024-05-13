@@ -1,3 +1,41 @@
+## 53.1.4-next.0 (2024-05-13)
+
+
+### Bug Fixes
+
+* **deps:** cleanup dependencies 2dbc521
+* **website:** demo container has the wrong background color 97830e5
+* **website:** remove custom style with props and module css (#3703) 9a6b436, closes #3703
+* **website:** small visual adjustments 09051f9
+
+
+* refactor(mantine)!: adjust Table.Pagination & Table.PerPage to the breaking changes 303dcca
+* refactor(mantine)!: extracting the table state out into a hook fcdf1ee
+
+
+### Features
+
+* **mantine:** rework how Table.ColumnsSelector work f77aa8e
+* **website:** add a Table demo with React Query 505a760
+
+
+### BREAKING CHANGES
+
+* **mantine:** TableColumnsSelector no longer accept columnNames prop.
+Use enableHiding: false in the column definition instead.
+ TableColumnsSelector no longer accept nonHideableColumns prop.
+The ColumnsSelector component now auto determine the column names from the
+column definition (header property).
+* Table.PerPage no longer accept totalPages prop.
+Use the table store to set the total number of entries instead.
+* The table component now expect a store as prop.
+This store can be created with the new use-table hook.
+The Table.Consumer no longer exist.
+Components that require access to the table state no longer require to be rendered within the table.
+noDataChildren prop was replaced by the compound component Table.NoData
+
+
+
 ## 53.1.3 (2024-04-29)
 
 
