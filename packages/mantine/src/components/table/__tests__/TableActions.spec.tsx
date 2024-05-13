@@ -17,9 +17,10 @@ describe('Table.Actions', () => {
             const store = useTable<RowData>();
             return (
                 <Table<RowData> store={store} data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
-                    <Table.Header>
-                        <Table.Actions>{(datum: RowData) => <Button>Eat {datum.name}</Button>}</Table.Actions>
-                    </Table.Header>
+                    <Table.Actions>
+                        {(datum: RowData) => [<Table.ActionItem primary>Eat {datum.name}</Table.ActionItem>]}
+                    </Table.Actions>
+                    <Table.Header />
                 </Table>
             );
         };

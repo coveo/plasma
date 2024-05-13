@@ -9,6 +9,7 @@ export interface TableContextValue<TData = unknown> {
     getStyles: GetStylesApi<PlasmaTableFactory>;
     store: TableStore<TData>;
     layouts: TableLayout[];
+    actions: ReactElement;
     table: Table<TData>;
     containerRef: MutableRefObject<HTMLDivElement>;
 }

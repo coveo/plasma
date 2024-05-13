@@ -1,21 +1,26 @@
-import {Box, Center, Factory, Loader, useProps, useStyles} from '@mantine/core';
+import {Box, Center, Factory, Loader, Menu, useProps, useStyles} from '@mantine/core';
 import {useClickOutside, useMergedRef} from '@mantine/hooks';
 import {
     ColumnDef,
-    Row,
-    RowSelectionState,
     defaultColumnSizing,
     getCoreRowModel,
+    Row,
+    RowSelectionState,
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, useRef} from 'react';
+import {Children, cloneElement, ForwardedRef, ReactElement, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils';
-import classes from './Table.module.css';
-import {TableLayout, TableProps} from './Table.types';
-import {TableProvider} from './TableContext';
 import {TableLayouts} from './layouts/TableLayouts';
-import {TableActions, TableActionsStylesNames} from './table-actions/TableActions';
+import {
+    TableActionItem,
+    TableActionItemStylesNames,
+    TableActions,
+    TableActionsStylesNames,
+    TableHeaderActions,
+    TableHeaderActionsStylesNames,
+} from './table-actions';
+import {TableActionsColumn} from './table-column/TableActionsColumn';
 import {
     TableAccordionColumn,
     TableCollapsibleColumn,
@@ -34,6 +39,9 @@ import {TableNoData} from './table-no-data/TableNoData';
 import {TablePagination} from './table-pagination/TablePagination';
 import {TablePerPage} from './table-per-page/TablePerPage';
 import {TablePredicate, TablePredicateStylesNames} from './table-predicate/TablePredicate';
+import classes from './Table.module.css';
+import {TableLayout, TableProps} from './Table.types';
+import {TableProvider} from './TableContext';
 import {TableState} from './use-table';
 
 type TableStylesNames =
@@ -41,6 +49,8 @@ type TableStylesNames =
     | 'table'
     | 'header'
     | 'body'
+    | TableHeaderActionsStylesNames
+    | TableActionItemStylesNames
     | TableActionsStylesNames
     | TableCollapsibleColumnStylesNames
     | TableDateRangePickerStylesNames
@@ -58,6 +68,10 @@ export type PlasmaTableFactory = Factory<{
     staticComponents: {
         AccordionColumn: typeof TableAccordionColumn;
         Actions: typeof TableActions;
+        ActionsColumn: typeof TableActionsColumn;
+        ActionItem: typeof TableActionItem;
+        ActionLabel: typeof Menu.Label;
+        ActionDivider: typeof Menu.Divider;
         CollapsibleColumn: typeof TableCollapsibleColumn;
         ColumnsSelector: typeof TableColumnsSelector;
         DateRangePicker: typeof TableDateRangePicker;
@@ -123,6 +137,23 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const footer = convertedChildren.find((child) => child.type === TableFooter);
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
+    const actions = convertedChildren.find((child) => child.type === TableActions);
+
+    const actionsForHeader = !!actions ? cloneElement(actions, {...actions.props, variant: 'split'}) : null;
+    // clone the header and add the actions to it
+    const headerWithActions = !!header
+        ? cloneElement(header, {
+              ...header.props,
+              children: !!actions ? (
+                  <>
+                      {header.props.children}
+                      <TableHeaderActions>{actionsForHeader}</TableHeaderActions>
+                  </>
+              ) : (
+                  header.props.children
+              ),
+          })
+        : null;
 
     const table = useReactTable({
         data,
@@ -214,7 +245,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
 
     return (
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
-            <TableProvider<T> value={{getStyles, store, table, layouts, containerRef}}>
+            <TableProvider<T> value={{getStyles, actions, store, table, layouts, containerRef}}>
                 <Layout>
                     {store.isVacant && !store.isFiltered ? (
                         noData
@@ -225,7 +256,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                     {!!header ? (
                                         <tr>
                                             <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
-                                                {header}
+                                                {headerWithActions}
                                             </th>
                                         </tr>
                                     ) : null}
@@ -277,6 +308,10 @@ export const TableComponentsOrder = {
 
 Table.AccordionColumn = TableAccordionColumn;
 Table.Actions = TableActions;
+Table.ActionsColumn = TableActionsColumn;
+Table.ActionItem = TableActionItem;
+Table.ActionLabel = Menu.Label;
+Table.ActionDivider = Menu.Divider;
 Table.CollapsibleColumn = TableCollapsibleColumn;
 Table.ColumnsSelector = TableColumnsSelector;
 Table.DateRangePicker = TableDateRangePicker;

@@ -7,6 +7,7 @@ import {
     getFilteredRowModel,
     getPaginationRowModel,
     Table,
+    TableActionsItems,
     Title,
     useDidUpdate,
     useTable,
@@ -35,6 +36,7 @@ const columns: Array<ColumnDef<IExampleRowData>> = [
         cell: (info) => info.row.original.title,
         enableSorting: false,
     }),
+    Table.ActionsColumn as ColumnDef<IExampleRowData>,
 ];
 
 const Demo = () => {
@@ -62,10 +64,8 @@ const Demo = () => {
 
     return (
         <Table<IExampleRowData> store={table} data={data} getRowId={({id}) => id} columns={columns} options={options}>
+            <Table.Actions>{rowActions}</Table.Actions>
             <Table.Header>
-                <Table.Actions>
-                    {(selectedRows: IExampleRowData[]) => <TableActions data={selectedRows} />}
-                </Table.Actions>
                 <Table.Filter placeholder="Search posts by title" />
             </Table.Header>
             <Table.NoData>
@@ -92,27 +92,31 @@ const EmptyState: FunctionComponent<{isFiltered: boolean; clearFilters: () => vo
         </BlankSlate>
     );
 
-const TableActions: FunctionComponent<{data: IExampleRowData[]}> = ({data}) => {
-    if (data.length === 1) {
+const rowActions = (selected: IExampleRowData | IExampleRowData[]): TableActionsItems => {
+    const selectedAsArr = selected instanceof Array ? selected : [selected];
+    if (selectedAsArr.length === 1) {
         return (
-            <Button
-                variant="subtle"
-                onClick={() => alert(`Action triggered on a single row: ${data[0].id}`)}
+            <Table.ActionItem
+                primary
+                onClick={() => alert(`Action triggered on a single row: ${selectedAsArr[0].id}`)}
                 leftSection={<EditSize16Px height={16} />}
             >
                 Single row action
-            </Button>
+            </Table.ActionItem>
         );
     }
-    if (data.length > 1) {
+    if (selectedAsArr.length > 1) {
         return (
-            <Button
+            <Table.ActionItem
+                primary
                 variant="subtle"
-                onClick={() => alert(`Bulk action triggered on multiple rows: ${data.map(({id}) => id).join(', ')}`)}
+                onClick={() =>
+                    alert(`Bulk action triggered on multiple rows: ${selectedAsArr.map(({id}) => id).join(', ')}`)
+                }
                 leftSection={<DeleteSize16Px height={16} />}
             >
                 Bulk action
-            </Button>
+            </Table.ActionItem>
         );
     }
 
