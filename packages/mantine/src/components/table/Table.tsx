@@ -9,7 +9,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, cloneElement, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils';
 import classes from './Table.module.css';
 import {TableLayout, TableProps} from './Table.types';
@@ -148,6 +148,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             minSize: defaultColumnSizing.minSize,
             maxSize: defaultColumnSizing.maxSize,
         },
+        rowCount: store.state.totalEntries,
         ...options,
     });
 
@@ -215,7 +216,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
             <TableProvider<T> value={{getStyles, store, table, layouts, containerRef}}>
                 <Layout>
-                    {!hasRows && !store.isFiltered && !loading ? (
+                    {store.isVacant && !store.isFiltered ? (
                         noData
                     ) : (
                         <>
@@ -246,18 +247,16 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                     ) : (
                                         <tr>
                                             <td colSpan={table.getAllColumns().length}>
-                                                <TableLoading visible={loading}>{noData}</TableLoading>
+                                                <TableLoading visible={loading || !store.isFiltered}>
+                                                    {noData}
+                                                </TableLoading>
                                             </td>
                                         </tr>
                                     )}
                                 </tbody>
                             </Box>
                             {footer}
-                            {lastUpdated
-                                ? cloneElement(lastUpdated, {
-                                      dependencies: [data, ...(lastUpdated.props.dependencies ?? [])],
-                                  })
-                                : null}
+                            {lastUpdated}
                         </>
                     )}
                 </Layout>

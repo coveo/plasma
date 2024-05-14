@@ -1,4 +1,4 @@
-import {Box, ColumnDef, createColumnHelper, Table, Text, useTable} from '@coveord/plasma-mantine';
+import {ColumnDef, createColumnHelper, Table, Text, useTable} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
 
@@ -50,7 +50,6 @@ const columns: Array<ColumnDef<IEmployeeData>> = [
         header: 'Hire Date',
         cell: (info) => info.row.original.hireDate?.toDateString(),
     }),
-    Table.CollapsibleColumn as ColumnDef<IEmployeeData>,
 ];
 
 const Demo = () => {
@@ -62,13 +61,7 @@ const Demo = () => {
     });
 
     return (
-        <Table
-            store={table}
-            data={data}
-            getRowId={({employeeId}) => employeeId?.toString()}
-            columns={columns}
-            getExpandChildren={(datum) => <Box py="xs">{datum.body}</Box>}
-        >
+        <Table store={table} data={data} getRowId={({employeeId}) => employeeId?.toString()} columns={columns}>
             <Table.Header>
                 <Table.ColumnsSelector
                     label="Edit columns"

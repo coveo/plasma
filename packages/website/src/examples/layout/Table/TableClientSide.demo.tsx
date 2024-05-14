@@ -1,4 +1,6 @@
 import {
+    BlankSlate,
+    Button,
     ColumnDef,
     createColumnHelper,
     FilterFn,
@@ -7,6 +9,7 @@ import {
     getSortedRowModel,
     Table,
     TableProps,
+    Title,
     useTable,
 } from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
@@ -50,15 +53,21 @@ const columns: Array<ColumnDef<Person>> = [
 ];
 
 const options: TableProps<Person>['options'] = {
-    globalFilterFn: fuzzyFilter,
+    // Specify the row models you need in the table options
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    globalFilterFn: fuzzyFilter, // defines how the filter should operate
 };
 
 const Demo = () => {
     const data = useMemo(() => makeData(45), []);
-    const table = useTable<Person>({initialState: {pagination: {pageSize: 5}}});
+    const table = useTable<Person>({
+        initialState: {
+            pagination: {pageSize: 5},
+            totalEntries: data.length,
+        },
+    });
     return (
         <Table<Person> store={table} data={data} columns={columns} options={options} getRowId={({id}) => id}>
             <Table.Header>
@@ -68,6 +77,12 @@ const Demo = () => {
                 <Table.PerPage values={[5, 10, 25]} />
                 <Table.Pagination />
             </Table.Footer>
+            <Table.NoData>
+                <BlankSlate>
+                    <Title order={4}>Nothing found for "{table.state.globalFilter}"</Title>
+                    <Button onClick={table.clearFilters}>Clear filter</Button>
+                </BlankSlate>
+            </Table.NoData>
         </Table>
     );
 };

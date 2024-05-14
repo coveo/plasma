@@ -116,6 +116,12 @@ export interface TableStore<TData = unknown> {
      */
     isFiltered: boolean;
     /**
+     * Whether the table has data when unfiltered.
+     *
+     * This is derived from the totalEntries so make sure you set that number correctly, even if you're using a client side table.
+     */
+    isVacant: boolean;
+    /**
      * Clear currently applied filters.
      */
     clearFilters: () => void;
@@ -174,6 +180,7 @@ export interface UseTableOptions<TData = unknown> {
 const defaultOptions: UseTableOptions = {
     enableRowSelection: true,
     enableMultiRowSelection: false,
+    forceSelection: false,
 };
 
 const defaultState: Partial<TableState> = {
@@ -198,7 +205,10 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
     const [pagination, setPagination] = useState<TableState<TData>['pagination']>(
         initialState.pagination as PaginationState,
     );
-    const [totalEntries, setTotalEntries] = useState<TableState<TData>['totalEntries']>(initialState.totalEntries);
+    const [totalEntries, _setTotalEntries] = useState<TableState<TData>['totalEntries']>(initialState.totalEntries);
+    const [unfilteredTotalEntries, setUnfilteredTotalEntries] = useState<TableState<TData>['totalEntries']>(
+        initialState.totalEntries,
+    );
     const [sorting, setSorting] = useState<TableState<TData>['sorting']>(initialState.sorting as SortingState);
     const [globalFilter, setGlobalFilter] = useState<TableState<TData>['globalFilter']>(initialState.globalFilter);
     const [predicates, setPredicates] = useState<TableState<TData>['predicates']>(initialState.predicates);
@@ -214,6 +224,21 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         Object.keys(predicates).some((predicate) => !!predicates[predicate]) ||
         !!dateRange?.[0] ||
         !!dateRange?.[1];
+
+    const isVacant = unfilteredTotalEntries === 0;
+
+    const setTotalEntries: typeof _setTotalEntries = useCallback(
+        (updater) => {
+            _setTotalEntries((old) => {
+                const newTotalEntries = updater instanceof Function ? updater(old) : updater;
+                if (!isFiltered) {
+                    setUnfilteredTotalEntries(newTotalEntries);
+                }
+                return newTotalEntries;
+            });
+        },
+        [isFiltered],
+    );
 
     const clearFilters = useCallback(() => {
         setPredicates(initialState.predicates);
@@ -271,6 +296,7 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         setRowSelection,
         setColumnVisibility,
         isFiltered,
+        isVacant,
         clearFilters,
         clearRowSelection,
         getSelectedRows,

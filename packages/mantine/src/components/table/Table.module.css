@@ -37,6 +37,7 @@
     background-color: var(--mantine-color-gray-1);
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
     position: relative;
+    min-height: 69px;
 }
 
 .headerGridInner {
