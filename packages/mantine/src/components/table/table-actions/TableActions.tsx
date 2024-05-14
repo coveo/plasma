@@ -18,7 +18,7 @@ export interface TableActionsProps<T> {
      * @param datum the data of the selected row(s)
      * @example
      * <Table.Actions<MyType>>
-     *     {(datum: MyType) => [
+     *     {(datum: MyType) => (
      *         <Table.ActionItem
      *             component={Link}
      *             to={`edit/${datum.id}`}
@@ -26,7 +26,7 @@ export interface TableActionsProps<T> {
      *         >
      *             Edit
      *         </Table.ActionItem>
-     *     ]}
+     *     )}
      * </Table.Actions>
      */
     children: ((datum: T) => TableActionsItems) | ((data: T[]) => TableActionsItems);

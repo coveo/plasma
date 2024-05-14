@@ -83,15 +83,15 @@ const Demo = () => {
             doubleClickAction={(person) => alert(`Double clicked ${person.firstName}`)}
         >
             <Table.Actions>
-                {(selected: Person) => [
+                {(selected: Person) => (
                     <Table.ActionItem
                         primary
                         onClick={() => alert(`Clicked ${selected.firstName}`)}
                         leftSection={<EditSize16Px height={16} />}
                     >
                         Action 1
-                    </Table.ActionItem>,
-                ]}
+                    </Table.ActionItem>
+                )}
             </Table.Actions>
             <Table.Header />
         </Table>

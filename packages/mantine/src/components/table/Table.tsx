@@ -139,18 +139,15 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const noData = convertedChildren.find((child) => child.type === TableNoData);
     const actions = convertedChildren.find((child) => child.type === TableActions);
 
-    const actionsForHeader = !!actions ? cloneElement(actions, {...actions.props, variant: 'split'}) : null;
     // clone the header and add the actions to it
     const headerWithActions = !!header
         ? cloneElement(header, {
               ...header.props,
-              children: !!actions ? (
+              children: (
                   <>
                       {header.props.children}
-                      <TableHeaderActions>{actionsForHeader}</TableHeaderActions>
+                      <TableHeaderActions>{actions}</TableHeaderActions>
                   </>
-              ) : (
-                  header.props.children
               ),
           })
         : null;

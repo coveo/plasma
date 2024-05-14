@@ -27,7 +27,7 @@ export const TableHeaderActions = factory<TableHeaderActionsFactory>(
         );
         const selectedRows = store.getSelectedRows();
 
-        if (selectedRows.length <= 0) {
+        if (selectedRows.length <= 0 || !props.children) {
             return null;
         }
 
