@@ -10,6 +10,8 @@ const filterJson = () => {
     const genericVariables = generics.collections[2].modes[0].variables.map((generic) => ({
         [generic.name]: generic.value.name,
     }));
+    console.log(generics.collections[0].modes[0].variables.length);
+    console.log(generics.collections[0].modes[1].variables.length);
     let interimGeneric;
     let primitive;
     const mappingButton: {[key: string]: any} = {};

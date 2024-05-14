@@ -13,6 +13,8 @@ var filterJson = function () {
         var _a;
         return (_a = {}), (_a[generic.name] = generic.value.name), _a;
     });
+    console.log(generics.collections[0].modes[0].variables.length);
+    console.log(generics.collections[0].modes[1].variables.length);
     var interimGeneric;
     var primitive;
     var mappingButton = {};

@@ -6,7 +6,7 @@ const Demo = () => (
         variant="destructive"
         // loading
         // loaderProps={{type: 'oval'}}
-        disabled
+        // disabled
         onClick={() => showNotification({message: 'Button clicked', autoClose: false})}
         leftSection={<CrossSize16Px />}
     >
