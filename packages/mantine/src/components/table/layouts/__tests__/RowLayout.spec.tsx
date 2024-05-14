@@ -5,7 +5,7 @@ import {Table} from '../../Table';
 import {useTable} from '../../use-table';
 
 describe('RowLayout', () => {
-    type RowData = {id: string; firstName: string; lastName?: string};
+    type RowData = {id: string; firstName: string; lastName?: string; disabled?: boolean};
 
     const columnHelper = createColumnHelper<RowData>();
     const columns: Array<ColumnDef<RowData>> = [
@@ -398,5 +398,39 @@ describe('RowLayout', () => {
                 expect(onClick).not.toHaveBeenCalled();
             });
         });
+    });
+
+    it('passes down attributes given by getRowAttributes function to the row element', () => {
+        const customColumns: Array<ColumnDef<RowData>> = [
+            columnHelper.accessor('firstName', {
+                header: () => 'First Name',
+                cell: (info) => info.getValue().toUpperCase(),
+                enableSorting: false,
+            }),
+            columnHelper.accessor('lastName', {
+                header: () => 'Last Name',
+                cell: (info) => info.getValue().toUpperCase(),
+                enableSorting: false,
+            }),
+        ];
+        const data: RowData[] = [
+            {id: '1', firstName: 'Alberto', lastName: 'Contador'},
+            {id: '2', firstName: 'Lance', lastName: 'Armstrong', disabled: true},
+        ];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    data={data}
+                    columns={customColumns}
+                    getRowAttributes={({disabled}) => ({'data-disabled': disabled})}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        expect(screen.getByRole('row', {name: /alberto contador/i})).not.toHaveAttribute('data-disabled');
+        expect(screen.getByRole('row', {name: /lance armstrong/i})).toHaveAttribute('data-disabled');
     });
 });

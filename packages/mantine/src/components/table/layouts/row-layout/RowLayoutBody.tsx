@@ -28,11 +28,17 @@ const defaultProps: Partial<RowLayoutBodyProps<unknown>> = {};
 
 export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLTableRowElement>}) => {
     const ctx = useRowLayout();
-    const {doubleClickAction, getExpandChildren, loading, classNames, className, styles, style, ...others} = useProps(
-        'RowLayoutBody',
-        defaultProps as RowLayoutBodyProps<T>,
-        props,
-    );
+    const {
+        doubleClickAction,
+        getExpandChildren,
+        loading,
+        classNames,
+        className,
+        styles,
+        style,
+        getRowAttributes,
+        ...others
+    } = useProps('RowLayoutBody', defaultProps as RowLayoutBodyProps<T>, props);
     const {table, store} = useTableContext<T>();
     const toggleCollapsible = (el: HTMLTableRowElement) => {
         const cell = el.children[el.children.length - 1] as HTMLTableCellElement;
@@ -63,6 +69,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     aria-selected={isSelected}
                     data-testid={row.id}
                     {...ctx.getStyles('row', {classNames, className, styles, style})}
+                    {...(getRowAttributes?.(row.original) ?? {})}
                     {...others}
                 >
                     {row.getVisibleCells().map((cell) => {
