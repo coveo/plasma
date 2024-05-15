@@ -1,3 +1,13 @@
+## 53.1.4-next.1 (2024-05-15)
+
+
+### Features
+
+* **mantine:** add getRowAttributes prop on table (#3719) e7bee4f, closes #3719
+* **website:** clarify table examples (#3718) 9ecc38b, closes #3718
+
+
+
 ## 53.1.4-next.0 (2024-05-13)
 
 
