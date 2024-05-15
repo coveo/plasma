@@ -9,7 +9,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, cloneElement, ForwardedRef, ReactElement, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils';
 import {TableLayouts} from './layouts/TableLayouts';
 import {
@@ -17,7 +17,6 @@ import {
     TableActionItemStylesNames,
     TableActions,
     TableActionsStylesNames,
-    TableHeaderActions,
     TableHeaderActionsStylesNames,
 } from './table-actions';
 import {TableActionsColumn} from './table-column/TableActionsColumn';
@@ -139,19 +138,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const noData = convertedChildren.find((child) => child.type === TableNoData);
     const actions = convertedChildren.find((child) => child.type === TableActions);
 
-    // clone the header and add the actions to it
-    const headerWithActions = !!header
-        ? cloneElement(header, {
-              ...header.props,
-              children: (
-                  <>
-                      {header.props.children}
-                      <TableHeaderActions>{actions}</TableHeaderActions>
-                  </>
-              ),
-          })
-        : null;
-
     const table = useReactTable({
         data,
         state: {
@@ -253,7 +239,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                     {!!header ? (
                                         <tr>
                                             <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
-                                                {headerWithActions}
+                                                {header}
                                             </th>
                                         </tr>
                                     ) : null}

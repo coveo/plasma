@@ -1,7 +1,6 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, within} from '@test-utils';
 
-import {Button} from '../../button';
 import {Table} from '../Table';
 import {useTable} from '../use-table';
 
@@ -18,7 +17,7 @@ describe('Table.Actions', () => {
             return (
                 <Table<RowData> store={store} data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
                     <Table.Actions>
-                        {(datum: RowData) => [<Table.ActionItem primary>Eat {datum.name}</Table.ActionItem>]}
+                        {(datum: RowData) => <Table.ActionItem primary>Eat {datum.name}</Table.ActionItem>}
                     </Table.Actions>
                     <Table.Header />
                 </Table>
@@ -52,15 +51,37 @@ describe('Table.Actions', () => {
                     columns={columns}
                     loading={true}
                 >
-                    <Table.Header>
-                        <Table.Actions>{(datum: RowData) => <Button>Eat {datum.name}</Button>}</Table.Actions>
-                    </Table.Header>
+                    <Table.Actions>
+                        {(datum: RowData) => <Table.ActionItem>Eat {datum.name}</Table.ActionItem>}
+                    </Table.Actions>
+                    <Table.Header />
                 </Table>
             );
         };
         render(<Fixture />);
         await user.click(screen.getByRole('cell', {name: 'fruit'}));
         expect(screen.getByRole('row', {name: 'fruit', selected: false})).toBeInTheDocument();
+        expect(screen.queryByRole('button', {name: 'Eat fruit'})).not.toBeInTheDocument();
+        expect(screen.getByRole('row', {name: 'vegetable', selected: false})).toBeInTheDocument();
+        expect(screen.queryByRole('button', {name: 'Eat vegetable'})).not.toBeInTheDocument();
+    });
+
+    it('does not display the action in the header when the header showActions prop is false', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table<RowData> store={store} data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
+                    <Table.Actions>
+                        {(datum: RowData) => <Table.ActionItem>Eat {datum.name}</Table.ActionItem>}
+                    </Table.Actions>
+                    <Table.Header showActions={false} />
+                </Table>
+            );
+        };
+        render(<Fixture />);
+        await user.click(screen.getByRole('cell', {name: 'fruit'}));
+        expect(screen.getByRole('row', {name: 'fruit'})).toBeInTheDocument();
         expect(screen.queryByRole('button', {name: 'Eat fruit'})).not.toBeInTheDocument();
         expect(screen.getByRole('row', {name: 'vegetable', selected: false})).toBeInTheDocument();
         expect(screen.queryByRole('button', {name: 'Eat vegetable'})).not.toBeInTheDocument();
@@ -79,9 +100,8 @@ describe('Table.Actions', () => {
                         data={[{name: 'fruit'}, {name: 'vegetable'}, {name: 'bread'}]}
                         columns={columns}
                     >
-                        <Table.Header>
-                            <Table.Actions>{renderSpy}</Table.Actions>
-                        </Table.Header>
+                        <Table.Actions>{renderSpy}</Table.Actions>
+                        <Table.Header />
                     </Table>
                 );
             };
