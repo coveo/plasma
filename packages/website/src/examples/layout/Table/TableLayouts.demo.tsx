@@ -1,6 +1,5 @@
 import {
     Box,
-    Button,
     ColumnDef,
     createColumnHelper,
     Paper,
@@ -13,7 +12,7 @@ import {
     useTable,
     useTableContext,
 } from '@coveord/plasma-mantine';
-import {CardSize16Px} from '@coveord/plasma-react-icons';
+import {CardSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
 
@@ -83,15 +82,18 @@ const Demo = () => {
             layouts={[Table.Layouts.Rows, CardLayout]}
             doubleClickAction={(person) => alert(`Double clicked ${person.firstName}`)}
         >
-            <Table.Header>
-                <Table.Actions>
-                    {(selected) => (
-                        <Button variant="subtle" onClick={() => alert(`Clicked ${selected.firstName}`)}>
-                            Action 1
-                        </Button>
-                    )}
-                </Table.Actions>
-            </Table.Header>
+            <Table.Actions>
+                {(selected: Person) => (
+                    <Table.ActionItem
+                        primary
+                        onClick={() => alert(`Clicked ${selected.firstName}`)}
+                        leftSection={<EditSize16Px height={16} />}
+                    >
+                        Action 1
+                    </Table.ActionItem>
+                )}
+            </Table.Actions>
+            <Table.Header />
         </Table>
     );
 };

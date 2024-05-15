@@ -1,13 +1,17 @@
-import {Factory, Grid, GridColProps, Group, useProps} from '@mantine/core';
+import {Factory, useProps} from '@mantine/core';
 import {ForwardedRef, ReactElement, ReactNode} from 'react';
 
 import {CustomComponentThemeExtend, identity} from '../../../utils';
-import {TableComponentsOrder} from '../Table';
+import {Table} from '../Table';
 import {useTableContext} from '../TableContext';
+import {TableActionsList} from './TableActionsList';
 
-export type TableActionsStylesNames = 'actionsRoot' | 'actionsGroup';
+export type TableActionsStylesNames = 'actionsTarget' | 'actionsDropdown' | 'actionsTooltip';
 
-export interface TableActionsProps<T> extends Omit<GridColProps, 'children'> {
+export type TableActionsItemElements = typeof Table.ActionItem | typeof Table.ActionLabel | typeof Table.ActionDivider;
+export type TableActionsItems = TableActionsItemElements | Iterable<TableActionsItemElements> | null;
+
+export interface TableActionsProps<T> {
     /**
      * Function that return components for the selected row or selected rows when multi row selection is enabled
      *
@@ -15,19 +19,22 @@ export interface TableActionsProps<T> extends Omit<GridColProps, 'children'> {
      * @example
      * <Table.Actions<MyType>>
      *     {(datum: MyType) => (
-     *         <Button
+     *         <Table.ActionItem
      *             component={Link}
      *             to={`edit/${datum.id}`}
      *             leftIcon={<EditSize24Px />}
-     *             variant="subtle"
-     *             color="navy.8"
      *         >
      *             Edit
-     *         </Button>
+     *         </Table.ActionItem>
      *     )}
      * </Table.Actions>
      */
-    children: ((datum: T) => ReactNode) | ((data: T[]) => ReactNode);
+    children: ((datum: T) => TableActionsItems) | ((data: T[]) => TableActionsItems);
+    /**
+     * Label for the more menu
+     * @default 'More' when variant is 'split', 'Actions' when variant is 'combined'
+     */
+    moreMenuLabel?: string;
 }
 
 type TableActionsFactory = Factory<{
@@ -40,27 +47,19 @@ type TableActionsFactory = Factory<{
 const defaultProps: Partial<TableActionsProps<unknown>> = {};
 
 export const TableActions = <T,>(props: TableActionsProps<T> & {ref?: ForwardedRef<HTMLDivElement>}): ReactElement => {
-    const {store, getStyles} = useTableContext<T>();
-    const {style, className, classNames, styles, children, ...others} = useProps(
-        'PlasmaTableActions',
-        defaultProps,
-        props,
-    );
+    const {store} = useTableContext<T>();
+    const {children, moreMenuLabel} = useProps('PlasmaTableActions', defaultProps, props);
     const selectedRows = store.getSelectedRows();
 
     if (selectedRows.length <= 0) {
         return null;
     }
 
-    return (
-        <Grid.Col span="content" order={TableComponentsOrder.Actions} {...getStyles('actionsRoot', {})} {...others}>
-            <Group gap="xs" {...getStyles('actionsGroup', {})}>
-                {store.multiRowSelectionEnabled
-                    ? (children as (data: T[]) => ReactNode)(selectedRows)
-                    : (children as (datum: T) => ReactNode)(selectedRows[0])}
-            </Group>
-        </Grid.Col>
-    );
+    const actions = store.multiRowSelectionEnabled
+        ? (children as (data: T[]) => ReactNode)(selectedRows)
+        : (children as (datum: T) => ReactNode)(selectedRows[0]);
+
+    return <TableActionsList actions={actions} variant="split" label={moreMenuLabel} />;
 };
 
 TableActions.extend = identity as CustomComponentThemeExtend<TableActionsFactory>;

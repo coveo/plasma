@@ -5,6 +5,7 @@ import {ReactNode} from 'react';
 import {Button} from '../../button';
 import {TableLayoutControl} from '../layouts/TableLayoutControl';
 import {TableComponentsOrder} from '../Table';
+import {TableHeaderActions} from '../table-actions';
 import {useTableContext} from '../TableContext';
 
 export type TableHeaderStylesNames = 'headerRoot' | 'headerGrid' | 'headerGridInner' | 'headerCol';
@@ -16,6 +17,12 @@ export interface TableHeaderProps
     children?: ReactNode;
     unselectAllLabel?: string;
     selectedCountLabel?: (count: number) => string;
+    /**
+     * Whether to show actions when rows are selected
+     *
+     * default true
+     */
+    showActions?: boolean;
 }
 
 export type TableHeaderFactory = Factory<{
@@ -28,12 +35,23 @@ export type TableHeaderFactory = Factory<{
 const defaultProps: Partial<TableHeaderProps> = {
     unselectAllLabel: 'Unselect all',
     selectedCountLabel: (count) => `${count} selected`,
+    showActions: true,
 };
 
 export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
-    const {store, getStyles} = useTableContext();
-    const {unselectAllLabel, selectedCountLabel, children, classNames, className, styles, style, vars, ...others} =
-        useProps('PlasmaTableHeader', defaultProps, props);
+    const {store, actions, getStyles} = useTableContext();
+    const {
+        showActions,
+        unselectAllLabel,
+        selectedCountLabel,
+        children,
+        classNames,
+        className,
+        styles,
+        style,
+        vars: _vars,
+        ...others
+    } = useProps('PlasmaTableHeader', defaultProps, props);
     const selectedRows = store.getSelectedRows();
 
     const stylesApiProps = {classNames, styles};
@@ -67,6 +85,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
                     </Grid.Col>
                 ) : null}
                 {children}
+                {showActions ? <TableHeaderActions>{actions}</TableHeaderActions> : null}
                 <TableLayoutControl />
             </Grid>
         </Box>

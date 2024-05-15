@@ -1,4 +1,5 @@
-import {Button, ColumnDef, createColumnHelper, Table, useTable} from '@coveord/plasma-mantine';
+import {ColumnDef, createColumnHelper, Table, useTable} from '@coveord/plasma-mantine';
+import {AbTestingSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
 
@@ -37,26 +38,26 @@ const Demo = () => {
 
     return (
         <Table<Person> store={table} data={data} columns={columns} getRowId={({id}) => id.toString()}>
-            <Table.Header>
-                <Table.Actions>
-                    {(selectedRow: Person) => (
-                        <>
-                            <Button
-                                variant="subtle"
-                                onClick={() => alert(`Action 1 triggered for row: ${selectedRow.id}`)}
-                            >
-                                Action 1
-                            </Button>
-                            <Button
-                                variant="subtle"
-                                onClick={() => alert(`Action 2 triggered for row: ${selectedRow.id}`)}
-                            >
-                                Action 2
-                            </Button>
-                        </>
-                    )}
-                </Table.Actions>
-            </Table.Header>
+            <Table.Actions>
+                {(selectedRow: Person) => (
+                    <>
+                        <Table.ActionItem
+                            primary
+                            onClick={() => alert(`Action 1 triggered for row: ${selectedRow.id}`)}
+                            leftSection={<EditSize16Px height={16} />}
+                        >
+                            Action 1
+                        </Table.ActionItem>
+                        <Table.ActionItem
+                            onClick={() => alert(`Action 2 triggered for row: ${selectedRow.id}`)}
+                            leftSection={<AbTestingSize16Px height={16} />}
+                        >
+                            Action 2
+                        </Table.ActionItem>
+                    </>
+                )}
+            </Table.Actions>
+            <Table.Header />
         </Table>
     );
 };
