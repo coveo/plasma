@@ -46,7 +46,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
     };
 
     const rows = table.getRowModel()?.rows.map((row) => {
-        const rowChildren = getExpandChildren?.(row.original) ?? null;
+        const rowChildren = getExpandChildren?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
         const shouldKeepSelection = store.rowSelectionForced && isSelected;
         const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
@@ -62,14 +62,14 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
             <Fragment key={row.id}>
                 <tr
                     onClick={onClick}
-                    onDoubleClick={() => doubleClickAction?.(row.original)}
+                    onDoubleClick={() => doubleClickAction?.(row.original, row.index, row)}
                     data-selectable={store.rowSelectionEnabled}
                     data-selected={isSelected}
                     data-multi-selection={store.multiRowSelectionEnabled}
                     aria-selected={isSelected}
                     data-testid={row.id}
                     {...ctx.getStyles('row', {classNames, className, styles, style})}
-                    {...(getRowAttributes?.(row.original) ?? {})}
+                    {...(getRowAttributes?.(row.original, row.index, row) ?? {})}
                     {...others}
                 >
                     {row.getVisibleCells().map((cell) => {

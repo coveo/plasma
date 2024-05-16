@@ -156,7 +156,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
         getRowId,
-        getRowCanExpand: (row: Row<T>) => !!getExpandChildren?.(row.original) ?? false,
+        getRowCanExpand: (row: Row<T>) => !!getExpandChildren?.(row.original, row.index, row) ?? false,
         enableRowSelection: !loading,
         defaultColumn: {
             size: undefined,

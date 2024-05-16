@@ -229,7 +229,11 @@ describe('RowLayout', () => {
         render(<Fixture />);
         await user.dblClick(screen.getByRole('cell', {name: 'Mario'}));
         expect(doubleClickSpy).toHaveBeenCalledTimes(1);
-        expect(doubleClickSpy).toHaveBeenCalledWith({id: '🆔-1', firstName: 'Mario'});
+        expect(doubleClickSpy).toHaveBeenCalledWith(
+            {id: '🆔-1', firstName: 'Mario'},
+            0,
+            expect.objectContaining({id: '🆔-1'}),
+        );
     });
 
     it('toggles row selection when clicking on a selected row', async () => {
