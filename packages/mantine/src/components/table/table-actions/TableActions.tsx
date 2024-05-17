@@ -2,13 +2,19 @@ import {Factory, useProps} from '@mantine/core';
 import {ForwardedRef, ReactElement, ReactNode} from 'react';
 
 import {CustomComponentThemeExtend, identity} from '../../../utils';
+import {InlineConfirm} from '../../inline-confirm';
 import {Table} from '../Table';
 import {useTableContext} from '../TableContext';
 import {TableActionsList} from './TableActionsList';
 
 export type TableActionsStylesNames = 'actionsTarget' | 'actionsDropdown' | 'actionsTooltip';
 
-export type TableActionsItemElements = typeof Table.ActionItem | typeof Table.ActionLabel | typeof Table.ActionDivider;
+export type TableActionsItemElements =
+    | typeof Table.ActionItem
+    | typeof Table.ActionLabel
+    | typeof Table.ActionDivider
+    | typeof InlineConfirm.Target
+    | typeof InlineConfirm.Prompt;
 export type TableActionsItems = TableActionsItemElements | Iterable<TableActionsItemElements> | null;
 
 export interface TableActionsProps<T> {

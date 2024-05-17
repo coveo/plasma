@@ -11,6 +11,7 @@ import {
     useProps,
 } from '@mantine/core';
 import {Children, Fragment, MouseEventHandler, ReactElement, ReactNode, useState} from 'react';
+import {InlineConfirm} from '../../inline-confirm';
 import {useTableContext} from '../TableContext';
 
 export type TableActionsListStylesNames = 'actionsTarget' | 'actionsDropdown' | 'actionsTooltip';
@@ -71,11 +72,15 @@ export const TableActionsList = (props: TableActionsListProps) => {
     }
 
     if (variant === 'split') {
-        const primaryActions = childrenArray.filter((child) => child.props.primary);
-        const secondaryActions = childrenArray.filter((child) => !child.props.primary);
+        const primaryActions = childrenArray.filter(
+            (child) => child.props.primary || child.type === InlineConfirm.Prompt,
+        );
+        const secondaryActions = childrenArray.filter(
+            (child) => !child.props.primary && child.type !== InlineConfirm.Prompt,
+        );
 
         return (
-            <>
+            <InlineConfirm>
                 {primaryActions}
                 {secondaryActions.length > 0 ? (
                     <Menu withinPortal={false} {...others}>
@@ -93,26 +98,35 @@ export const TableActionsList = (props: TableActionsListProps) => {
                         </Menu.Dropdown>
                     </Menu>
                 ) : null}
-            </>
+            </InlineConfirm>
         );
     }
 
-    const menuItems = childrenArray.map((child) => (child.props.primary ? <Menu.Item {...child.props} /> : child));
+    const prompts = childrenArray.filter((child) => child.type === InlineConfirm.Prompt);
+    const menuItems = childrenArray
+        .filter((child) => child.type !== InlineConfirm.Prompt)
+        .map((child) => {
+            const {primary, ...childProps} = child.props;
+            return primary ? <Menu.Item {...childProps} /> : child;
+        });
     return (
-        <Menu opened={opened} onChange={onChange} {...others}>
-            <Menu.Target>
-                <Tooltip label={label} {...getStyles('actionsTooltip', {styles, classNames})}>
-                    <ActionIcon
-                        onClick={onClick}
-                        variant="subtle"
-                        {...getStyles('actionsTarget', {styles, classNames})}
-                    >
-                        {icon}
-                    </ActionIcon>
-                </Tooltip>
-            </Menu.Target>
-            <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>{menuItems}</Menu.Dropdown>
-        </Menu>
+        <InlineConfirm>
+            {prompts}
+            <Menu opened={opened} onChange={onChange} {...others}>
+                <Menu.Target>
+                    <Tooltip label={label} {...getStyles('actionsTooltip', {styles, classNames})}>
+                        <ActionIcon
+                            onClick={onClick}
+                            variant="subtle"
+                            {...getStyles('actionsTarget', {styles, classNames})}
+                        >
+                            {icon}
+                        </ActionIcon>
+                    </Tooltip>
+                </Menu.Target>
+                <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>{menuItems}</Menu.Dropdown>
+            </Menu>
+        </InlineConfirm>
     );
 };
 

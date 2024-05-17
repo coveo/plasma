@@ -10,6 +10,7 @@ import TableLayoutsDemo from '@examples/layout/Table/TableLayouts.demo?demo';
 import TableMultiSelectionDemo from '@examples/layout/Table/TableMultiSelection.demo?demo';
 import TablePredicateDemo from '@examples/layout/Table/TablePredicate.demo?demo';
 import TableReactQuery from '@examples/layout/Table/TableReactQuery.demo?demo';
+import TableConfirmAction from '@examples/layout/Table/TableConfirmAction.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -55,6 +56,9 @@ const DemoPage = () => (
                 />
             ),
             layouts: <TableLayoutsDemo noPadding layout="vertical" title="Table with multiple layouts" />,
+            confirmAction: (
+                <TableConfirmAction noPadding layout="vertical" title="Table with inline confirmation in actions" />
+            ),
         }}
     />
 );
