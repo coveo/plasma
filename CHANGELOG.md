@@ -1,3 +1,12 @@
+## 53.1.4-next.2 (2024-05-17)
+
+
+### Features
+
+* **mantine, table:** allow InlineConfirm actions in table (#3721) ef7f822, closes #3721
+
+
+
 ## 53.1.4-next.1 (2024-05-15)
 
 
