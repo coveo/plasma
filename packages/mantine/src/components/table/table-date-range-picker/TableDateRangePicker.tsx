@@ -74,7 +74,7 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
             {...getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Popover withinPortal opened={opened}>
+            <Popover withinPortal opened={opened} onChange={setOpened}>
                 <Popover.Target>
                     <InputBase
                         component="button"

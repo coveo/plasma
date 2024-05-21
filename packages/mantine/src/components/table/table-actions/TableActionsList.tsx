@@ -101,14 +101,14 @@ export const TableActionsList = (props: TableActionsListProps) => {
             </InlineConfirm>
         );
     }
-
     const prompts = childrenArray.filter((child) => child.type === InlineConfirm.Prompt);
-    const menuItems = childrenArray
-        .filter((child) => child.type !== InlineConfirm.Prompt)
-        .map((child) => {
-            const {primary, ...childProps} = child.props;
-            return primary ? <Menu.Item {...childProps} /> : child;
-        });
+    const menuItems = Children.map(childrenArray, (child) => {
+        if (child.type === InlineConfirm.Prompt) {
+            return null;
+        }
+        const {primary, ...childProps} = child.props;
+        return primary ? <Menu.Item {...childProps} /> : child;
+    });
     return (
         <InlineConfirm>
             {prompts}
