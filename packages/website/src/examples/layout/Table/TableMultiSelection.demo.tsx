@@ -7,7 +7,6 @@ import {
     getFilteredRowModel,
     getPaginationRowModel,
     Table,
-    TableActionsItems,
     Title,
     useDidUpdate,
     useTable,
@@ -15,7 +14,7 @@ import {
 import {DeleteSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import {rankItem} from '@tanstack/match-sorter-utils';
-import {FunctionComponent, useMemo} from 'react';
+import {FunctionComponent, ReactNode, useMemo} from 'react';
 
 interface IExampleRowData {
     userId: number;
@@ -92,7 +91,7 @@ const EmptyState: FunctionComponent<{isFiltered: boolean; clearFilters: () => vo
         </BlankSlate>
     );
 
-const rowActions = (selected: IExampleRowData | IExampleRowData[]): TableActionsItems => {
+const rowActions = (selected: IExampleRowData | IExampleRowData[]): ReactNode => {
     const selectedAsArr = selected instanceof Array ? selected : [selected];
     if (selectedAsArr.length === 1) {
         return (
