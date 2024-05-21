@@ -1,6 +1,6 @@
 import {Icon} from '@coveord/plasma-react-icons';
 import {BoxProps, StylesApiProps} from '@mantine/core';
-import {ColumnDef, CoreOptions, TableOptions} from '@tanstack/table-core';
+import {ColumnDef, CoreOptions, Row, TableOptions} from '@tanstack/table-core';
 import {ReactElement, ReactNode} from 'react';
 
 import {type PlasmaTableFactory} from './Table';
@@ -11,18 +11,18 @@ export interface TableLayoutProps<TData = unknown> {
     /**
      * Action passed when user double-clicks on a row
      */
-    doubleClickAction?: (datum: TData) => void;
+    doubleClickAction?: (datum: TData, index: number, row: Row<TData>) => void;
     /**
      * Function that generates the expandable content of a row
      * Return null for rows that don't need to be expandable
      *
      * @param datum the row for which the children should be generated.
      */
-    getExpandChildren?: (datum: TData) => ReactNode;
+    getExpandChildren?: (datum: TData, index: number, row: Row<TData>) => ReactNode;
     /**
      * Function that can be used to add additional attributes on rows
      */
-    getRowAttributes?: (datum: TData) => Record<string, unknown>;
+    getRowAttributes?: (datum: TData, index: number, row: Row<TData>) => Record<string, unknown>;
 }
 
 export interface TableLayout {
@@ -62,7 +62,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
     /**
      * Allows to define html attributes that will be passed down to each row.
      */
-    getRowAttributes?: (row: TData) => Record<string, unknown>;
+    getRowAttributes?: (datum: TData, index: number, row: Row<TData>) => Record<string, unknown>;
     /**
      * Columns to display in the table.
      *
@@ -85,7 +85,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      *
      * @param datum the row for which the children should be generated.
      */
-    getExpandChildren?: (datum: TData) => ReactNode;
+    getExpandChildren?: (datum: TData, index: number, row: Row<TData>) => ReactNode;
     /**
      * Whether the table is loading or not
      *

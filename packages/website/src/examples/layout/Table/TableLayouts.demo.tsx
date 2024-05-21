@@ -35,7 +35,7 @@ const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
                     if (event.detail <= 1) {
                         row.toggleSelected(true);
                     } else {
-                        props.doubleClickAction(row.original);
+                        props.doubleClickAction(row.original, row.index, row);
                     }
                 }}
             >

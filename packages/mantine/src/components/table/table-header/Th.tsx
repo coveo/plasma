@@ -70,7 +70,9 @@ export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElem
                 }}
                 {...others}
             >
-                {flexRender(header.column.columnDef.header, header.getContext())}
+                <Group wrap="nowrap" gap="xs">
+                    {flexRender(header.column.columnDef.header, header.getContext())}
+                </Group>
             </th>
         );
     }
