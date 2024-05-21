@@ -1,3 +1,12 @@
+## 53.1.4-next.3 (2024-05-21)
+
+
+### Features
+
+* **mantine:** pass down row object to getRow* props (#3722) 1375b58, closes #3722
+
+
+
 ## 53.1.4-next.2 (2024-05-17)
 
 
