@@ -30,10 +30,10 @@ const defaultProps: Partial<TableActionsColumnProps> = {
 };
 
 const ActionsMenu: FunctionComponent<TableActionsColumnProps> = (props) => {
-    const {actions} = useTableContext();
+    const {getRowActions} = useTableContext();
 
     const {info, ...others} = useProps('PlasmaTableActionsColumn', defaultProps, props);
 
-    const actionsElements = actions.props.children(info.row.original);
+    const actionsElements = getRowActions(info.row.original);
     return <TableActionsList actions={actionsElements} variant="combined" {...others} />;
 };

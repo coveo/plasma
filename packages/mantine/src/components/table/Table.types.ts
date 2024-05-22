@@ -6,24 +6,10 @@ import {ReactElement, ReactNode} from 'react';
 import {type PlasmaTableFactory} from './Table';
 import {TableStore} from './use-table';
 
-export interface TableLayoutProps<TData = unknown> {
-    loading?: boolean;
-    /**
-     * Action passed when user double-clicks on a row
-     */
-    doubleClickAction?: (datum: TData, index: number, row: Row<TData>) => void;
-    /**
-     * Function that generates the expandable content of a row
-     * Return null for rows that don't need to be expandable
-     *
-     * @param datum the row for which the children should be generated.
-     */
-    getExpandChildren?: (datum: TData, index: number, row: Row<TData>) => ReactNode;
-    /**
-     * Function that can be used to add additional attributes on rows
-     */
-    getRowAttributes?: (datum: TData, index: number, row: Row<TData>) => Record<string, unknown>;
-}
+export type TableLayoutProps<TData = unknown> = Pick<
+    TableProps<TData>,
+    'getRowExpandedContent' | 'getRowAttributes' | 'getRowActions' | 'getMultiSelectionRowActions' | 'loading'
+>;
 
 export interface TableLayout {
     (props: {children: ReactNode}): ReactElement;
@@ -64,6 +50,29 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      */
     getRowAttributes?: (datum: TData, index: number, row: Row<TData>) => Record<string, unknown>;
     /**
+     * Function that generates the expandable content of a row
+     * Return null for rows that don't need to be expandable
+     *
+     * @param datum the row for which the children should be generated.
+     */
+    getRowExpandedContent?: (datum: TData, index: number, row: Row<TData>) => ReactNode;
+    /**
+     * Function that generates the actions of a row
+     * Return an empty array for rows that don't have actions
+     *
+     * @param datum the row for which the children should be generated.
+     * @default []
+     */
+    getRowActions?: (datum: TData) => Array<TableAction<TData>>;
+    /**
+     * Function that generates the actions when multiple rows are selected
+     * Return an empty array if no actions are available for multi selection
+     *
+     * @param datum the row for which the children should be generated.
+     * @default []
+     */
+    getMultiSelectionRowActions?: (datum: TData[]) => Array<TableAction<TData>>;
+    /**
      * Columns to display in the table.
      *
      * @see https://tanstack.com/table/v8/docs/guide/column-defs
@@ -80,20 +89,13 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      */
     layoutProps?: Record<string, any>;
     /**
-     * Function that generates the expandable content of a row
-     * Return null for rows that don't need to be expandable
-     *
-     * @param datum the row for which the children should be generated.
-     */
-    getExpandChildren?: (datum: TData, index: number, row: Row<TData>) => ReactNode;
-    /**
      * Whether the table is loading or not
      *
      * @default false
      */
     loading?: boolean;
     /**
-     * Childrens to display in the table. They need to be wrap in either `Table.Header` or `Table.Footer`
+     * Children to display in the table. They need to be wrap in either `Table.Header` or `Table.Footer`
      *
      * @example
      * <Table ...>
@@ -103,10 +105,6 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      * </Table>
      */
     children?: ReactNode;
-    /**
-     * Action passed when user double clicks on a row
-     */
-    doubleClickAction?: (datum: TData) => void;
     /**
      * Nodes that are considered inside the table.
      *
@@ -131,4 +129,24 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
         | 'enableRowSelection'
         | 'onRowSelectionChange'
     >;
+}
+
+export interface TableAction<TData = unknown> {
+    /**
+     * Group to which the action belongs
+     * $$primary is reserved for primary actions
+     * $$confirmPrompt is reserved for InlineConfirm.Prompt, it will hide other actions when prompt is opened
+     * other string will be considered secondary custom group
+     */
+    group: '$$primary' | '$$confirmPrompt' | (string & unknown);
+    /**
+     * Component to render, should be either `Table.PrimaryAction` or `Table.SecondaryAction`
+     */
+    component: ReactNode;
+    /**
+     * Whether the action is triggered on a double click on the row
+     *
+     * @default false
+     */
+    onRowDoubleClick?: (datum: TData, index: number, row: Row<TData>) => void;
 }
