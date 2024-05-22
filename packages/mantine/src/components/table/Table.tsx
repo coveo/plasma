@@ -1,4 +1,4 @@
-import {Box, Center, Factory, Loader, Menu, useProps, useStyles} from '@mantine/core';
+import {Box, Center, Factory, Loader, useProps, useStyles} from '@mantine/core';
 import {useClickOutside, useMergedRef} from '@mantine/hooks';
 import {
     ColumnDef,
@@ -63,8 +63,6 @@ export type PlasmaTableFactory = Factory<{
         AccordionColumn: typeof TableAccordionColumn;
         ActionsColumn: typeof TableActionsColumn;
         ActionItem: typeof TableActionItem;
-        ActionLabel: typeof Menu.Label;
-        ActionDivider: typeof Menu.Divider;
         CollapsibleColumn: typeof TableCollapsibleColumn;
         ColumnsSelector: typeof TableColumnsSelector;
         DateRangePicker: typeof TableDateRangePicker;
