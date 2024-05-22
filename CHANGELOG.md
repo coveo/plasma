@@ -1,3 +1,17 @@
+## 53.1.4-next.4 (2024-05-22)
+
+
+### Bug Fixes
+
+* **mantine:** close date range picker on click outside (#3724) cb7d66b, closes #3724
+
+
+### Features
+
+* **mantine, table:** rework actions again (#3725) b78bd6b, closes #3725
+
+
+
 ## 53.1.4-next.3 (2024-05-21)
 
 
