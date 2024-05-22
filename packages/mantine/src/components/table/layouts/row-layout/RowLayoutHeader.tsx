@@ -27,6 +27,7 @@ export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: Forw
     const ctx = useRowLayout();
     const {
         getRowExpandedContent: _getRowExpandedContent,
+        getRowActions: _getRowActions,
         loading: _loading,
         className,
         style,

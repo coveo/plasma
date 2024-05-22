@@ -10,7 +10,7 @@ import {
     Tooltip,
     useProps,
 } from '@mantine/core';
-import {MouseEventHandler, ReactNode, useState} from 'react';
+import {Fragment, MouseEventHandler, ReactNode, useState} from 'react';
 import {InlineConfirm} from '../../inline-confirm';
 import {TableAction} from '../Table.types';
 import {useTableContext} from '../TableContext';
@@ -107,7 +107,7 @@ export const TableActionsList = (props: TableActionsListProps) => {
             <InlineConfirm>
                 {confirmPrompts}
                 <TableActionProvider value={{primary: true}}>{primaryActions}</TableActionProvider>
-                {secondaryGroupCount > 0 ? (
+                {actionsGroups.secondary.length > 0 ? (
                     <TableActionProvider value={{primary: false}}>
                         <Menu withinPortal={false} {...others}>
                             <Menu.Target>
@@ -121,11 +121,11 @@ export const TableActionsList = (props: TableActionsListProps) => {
                             </Menu.Target>
                             <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>
                                 {Object.entries(secondaryActions).map(([group, groupActions], index) => (
-                                    <>
-                                        {index > 0 ? <Menu.Divider key={group} /> : null}
-                                        {secondaryGroupCount > 1 ? <Menu.Label key={group}>{group}</Menu.Label> : null}
+                                    <Fragment key={group}>
+                                        {index > 0 ? <Menu.Divider /> : null}
+                                        {secondaryGroupCount > 1 ? <Menu.Label>{group}</Menu.Label> : null}
                                         {groupActions}
-                                    </>
+                                    </Fragment>
                                 ))}
                             </Menu.Dropdown>
                         </Menu>

@@ -49,6 +49,7 @@ const Demo = () => {
                         <Table.ActionItem
                             onClick={() => alert(`Action 1 triggered for row: ${datum.id}`)}
                             leftSection={<EditSize16Px height={16} />}
+                            key="action-1"
                         >
                             Action 1
                         </Table.ActionItem>
@@ -60,6 +61,7 @@ const Demo = () => {
                         <Table.ActionItem
                             onClick={() => alert(`Action 2 triggered for row: ${datum.id}`)}
                             leftSection={<AbTestingSize16Px height={16} />}
+                            key="action-2"
                         >
                             Action 2
                         </Table.ActionItem>

@@ -75,6 +75,7 @@ const Demo = () => {
                         <Table.ActionItem
                             onClick={() => alert(`Action triggered on a single row: ${datum.id}`)}
                             leftSection={<EditSize16Px height={16} />}
+                            key="single"
                         >
                             Single row action
                         </Table.ActionItem>
@@ -92,6 +93,7 @@ const Demo = () => {
                                 )
                             }
                             leftSection={<DeleteSize16Px height={16} />}
+                            key="bulk"
                         >
                             Bulk action
                         </Table.ActionItem>
