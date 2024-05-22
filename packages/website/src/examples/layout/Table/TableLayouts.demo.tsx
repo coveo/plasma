@@ -25,6 +25,8 @@ const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
         ));
     const cards = table.getRowModel().rows.map((row) => {
         const isSelected = !!row.getIsSelected();
+        const actions = props.getRowActions(row.original);
+        const doubleClickAction = actions.find((action) => Boolean(action.onRowDoubleClick))?.onRowDoubleClick;
         return (
             <Paper
                 key={row.id}
@@ -35,7 +37,7 @@ const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
                     if (event.detail <= 1) {
                         row.toggleSelected(true);
                     } else {
-                        props.doubleClickAction(row.original, row.index, row);
+                        doubleClickAction(row.original, row.index, row);
                     }
                 }}
             >
@@ -80,19 +82,21 @@ const Demo = () => {
             columns={columns}
             getRowId={({id}) => id}
             layouts={[Table.Layouts.Rows, CardLayout]}
-            doubleClickAction={(person) => alert(`Double clicked ${person.firstName}`)}
+            getRowActions={(person) => [
+                {
+                    group: '$$primary',
+                    onRowDoubleClick: () => alert(`Double clicked ${person.firstName}`),
+                    component: (
+                        <Table.ActionItem
+                            onClick={() => alert(`Clicked ${person.firstName}`)}
+                            leftSection={<EditSize16Px height={16} />}
+                        >
+                            Action 1
+                        </Table.ActionItem>
+                    ),
+                },
+            ]}
         >
-            <Table.Actions>
-                {(selected: Person) => (
-                    <Table.ActionItem
-                        primary
-                        onClick={() => alert(`Clicked ${selected.firstName}`)}
-                        leftSection={<EditSize16Px height={16} />}
-                    >
-                        Action 1
-                    </Table.ActionItem>
-                )}
-            </Table.Actions>
             <Table.Header />
         </Table>
     );

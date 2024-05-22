@@ -14,7 +14,7 @@ import {
 import {DeleteSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import {rankItem} from '@tanstack/match-sorter-utils';
-import {FunctionComponent, ReactNode, useMemo} from 'react';
+import {FunctionComponent, useMemo} from 'react';
 
 interface IExampleRowData {
     userId: number;
@@ -62,8 +62,43 @@ const Demo = () => {
     }, [table.state.rowSelection]);
 
     return (
-        <Table<IExampleRowData> store={table} data={data} getRowId={({id}) => id} columns={columns} options={options}>
-            <Table.Actions>{rowActions}</Table.Actions>
+        <Table<IExampleRowData>
+            store={table}
+            data={data}
+            getRowId={({id}) => id}
+            columns={columns}
+            options={options}
+            getRowActions={(datum: IExampleRowData) => [
+                {
+                    group: '$$primary',
+                    component: (
+                        <Table.ActionItem
+                            onClick={() => alert(`Action triggered on a single row: ${datum.id}`)}
+                            leftSection={<EditSize16Px height={16} />}
+                        >
+                            Single row action
+                        </Table.ActionItem>
+                    ),
+                },
+            ]}
+            getMultiSelectionRowActions={(selectedData: IExampleRowData[]) => [
+                {
+                    group: '$$primary',
+                    component: (
+                        <Table.ActionItem
+                            onClick={() =>
+                                alert(
+                                    `Bulk action triggered on multiple rows: ${selectedData.map(({id}) => id).join(', ')}`,
+                                )
+                            }
+                            leftSection={<DeleteSize16Px height={16} />}
+                        >
+                            Bulk action
+                        </Table.ActionItem>
+                    ),
+                },
+            ]}
+        >
             <Table.Header>
                 <Table.Filter placeholder="Search posts by title" />
             </Table.Header>
@@ -90,37 +125,6 @@ const EmptyState: FunctionComponent<{isFiltered: boolean; clearFilters: () => vo
             <Title order={4}>No Data</Title>
         </BlankSlate>
     );
-
-const rowActions = (selected: IExampleRowData | IExampleRowData[]): ReactNode => {
-    const selectedAsArr = selected instanceof Array ? selected : [selected];
-    if (selectedAsArr.length === 1) {
-        return (
-            <Table.ActionItem
-                primary
-                onClick={() => alert(`Action triggered on a single row: ${selectedAsArr[0].id}`)}
-                leftSection={<EditSize16Px height={16} />}
-            >
-                Single row action
-            </Table.ActionItem>
-        );
-    }
-    if (selectedAsArr.length > 1) {
-        return (
-            <Table.ActionItem
-                primary
-                variant="subtle"
-                onClick={() =>
-                    alert(`Bulk action triggered on multiple rows: ${selectedAsArr.map(({id}) => id).join(', ')}`)
-                }
-                leftSection={<DeleteSize16Px height={16} />}
-            >
-                Bulk action
-            </Table.ActionItem>
-        );
-    }
-
-    return null;
-};
 
 const makeData = (length: number): IExampleRowData[] =>
     Array(length)

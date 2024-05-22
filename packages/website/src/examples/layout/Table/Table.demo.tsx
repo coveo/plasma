@@ -37,26 +37,36 @@ const Demo = () => {
     });
 
     return (
-        <Table<Person> store={table} data={data} columns={columns} getRowId={({id}) => id.toString()}>
-            <Table.Actions>
-                {(selectedRow: Person) => (
-                    <>
+        <Table<Person>
+            store={table}
+            data={data}
+            columns={columns}
+            getRowId={({id}) => id.toString()}
+            getRowActions={(datum) => [
+                {
+                    group: 'Actions',
+                    component: (
                         <Table.ActionItem
-                            primary
-                            onClick={() => alert(`Action 1 triggered for row: ${selectedRow.id}`)}
+                            onClick={() => alert(`Action 1 triggered for row: ${datum.id}`)}
                             leftSection={<EditSize16Px height={16} />}
                         >
                             Action 1
                         </Table.ActionItem>
+                    ),
+                },
+                {
+                    group: 'Danger zone',
+                    component: (
                         <Table.ActionItem
-                            onClick={() => alert(`Action 2 triggered for row: ${selectedRow.id}`)}
+                            onClick={() => alert(`Action 2 triggered for row: ${datum.id}`)}
                             leftSection={<AbTestingSize16Px height={16} />}
                         >
                             Action 2
                         </Table.ActionItem>
-                    </>
-                )}
-            </Table.Actions>
+                    ),
+                },
+            ]}
+        >
             <Table.Header />
         </Table>
     );
