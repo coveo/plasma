@@ -98,7 +98,7 @@ describe('TableColumnsSelector', () => {
                     store={store}
                     data={mockData}
                     columns={baseColumns}
-                    getExpandChildren={(datum) => <Box py="xs">{datum.body}</Box>}
+                    getRowExpandedContent={(datum) => <Box py="xs">{datum.body}</Box>}
                 >
                     <Table.Header>
                         <TableColumnsSelector />

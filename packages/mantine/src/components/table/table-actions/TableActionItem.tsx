@@ -2,6 +2,7 @@ import {BoxProps, CompoundStylesApiProps, Menu, PolymorphicFactory, polymorphicF
 import {ReactNode} from 'react';
 import {Button} from '../../button';
 import {useTableContext} from '../TableContext';
+import {useTableActionContext} from './TableActionContext';
 
 export type TableActionItemStylesNames = 'actionItemRoot';
 
@@ -14,12 +15,6 @@ export interface TableActionItemProps extends BoxProps, CompoundStylesApiProps<T
      * Content to put on the left of the label. Usually used to render an icon
      */
     leftSection: ReactNode;
-    /**
-     * Whether action is primary. Primary items are visible outside the more menu
-     *
-     * @default false
-     */
-    primary?: boolean;
 
     /**
      * Section displayed on the right side of the label
@@ -40,13 +35,12 @@ type TableActionItemFactory = PolymorphicFactory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableActionItemProps> = {
-    primary: false,
-};
+const defaultProps: Partial<TableActionItemProps> = {};
 
 export const TableActionItem = polymorphicFactory<TableActionItemFactory>(
     (props: TableActionItemProps & {component?: any}, ref) => {
         const {getStyles} = useTableContext();
+        const {primary} = useTableActionContext();
         const {
             classNames,
             className,
@@ -54,7 +48,6 @@ export const TableActionItem = polymorphicFactory<TableActionItemFactory>(
             styles,
             vars: _vars,
             children,
-            primary,
             component,
             ...others
         } = useProps('PlasmaTableActionItem', defaultProps, props);

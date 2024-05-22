@@ -12,13 +12,8 @@ import isEqual from 'fast-deep-equal';
 import {Children, ForwardedRef, ReactElement, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils';
 import {TableLayouts} from './layouts/TableLayouts';
-import {
-    TableActionItem,
-    TableActionItemStylesNames,
-    TableActions,
-    TableActionsStylesNames,
-    TableHeaderActionsStylesNames,
-} from './table-actions';
+import {TableActionItem, TableActionItemStylesNames, TableHeaderActionsStylesNames} from './table-actions';
+import {TableActionsListStylesNames} from './table-actions/TableActionsList';
 import {TableActionsColumn} from './table-column/TableActionsColumn';
 import {
     TableAccordionColumn,
@@ -49,8 +44,8 @@ type TableStylesNames =
     | 'header'
     | 'body'
     | TableHeaderActionsStylesNames
+    | TableActionsListStylesNames
     | TableActionItemStylesNames
-    | TableActionsStylesNames
     | TableCollapsibleColumnStylesNames
     | TableDateRangePickerStylesNames
     | TableFilterStylesNames
@@ -66,7 +61,6 @@ export type PlasmaTableFactory = Factory<{
     stylesNames: TableStylesNames;
     staticComponents: {
         AccordionColumn: typeof TableAccordionColumn;
-        Actions: typeof TableActions;
         ActionsColumn: typeof TableActionsColumn;
         ActionItem: typeof TableActionItem;
         ActionLabel: typeof Menu.Label;
@@ -93,6 +87,7 @@ const defaultProps: Partial<TableProps<unknown>> = {
     loading: false,
     additionalRootNodes: [],
     options: {},
+    getRowActions: () => [],
 };
 
 export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
@@ -101,13 +96,13 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         data,
         getRowId,
         getRowAttributes,
-        getExpandChildren,
+        getRowExpandedContent,
+        getRowActions,
         columns,
         layouts,
         layoutProps,
         children,
         loading,
-        doubleClickAction,
         additionalRootNodes,
         options,
         ref,
@@ -137,7 +132,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const footer = convertedChildren.find((child) => child.type === TableFooter);
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
-    const actions = convertedChildren.find((child) => child.type === TableActions);
 
     const table = useReactTable({
         data,
@@ -156,7 +150,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
         getRowId,
-        getRowCanExpand: (row: Row<T>) => !!getExpandChildren?.(row.original, row.index, row) ?? false,
+        getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row) ?? false,
         enableRowSelection: !loading,
         defaultColumn: {
             size: undefined,
@@ -229,7 +223,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
 
     return (
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
-            <TableProvider<T> value={{getStyles, actions, store, table, layouts, containerRef}}>
+            <TableProvider<T> value={{getStyles, getRowActions, store, table, layouts, containerRef}}>
                 <Layout>
                     {store.isVacant && !store.isFiltered ? (
                         noData
@@ -245,20 +239,20 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                         </tr>
                                     ) : null}
                                     <Layout.Header
-                                        doubleClickAction={doubleClickAction}
-                                        getExpandChildren={getExpandChildren}
-                                        loading={loading}
+                                        getRowExpandedContent={getRowExpandedContent}
                                         getRowAttributes={getRowAttributes}
+                                        getRowActions={getRowActions}
+                                        loading={loading}
                                         {...layoutProps}
                                     />
                                 </thead>
                                 <tbody {...getStyles('body')}>
                                     {hasRows ? (
                                         <Layout.Body
-                                            doubleClickAction={doubleClickAction}
-                                            getExpandChildren={getExpandChildren}
-                                            loading={loading}
+                                            getRowExpandedContent={getRowExpandedContent}
                                             getRowAttributes={getRowAttributes}
+                                            getRowActions={getRowActions}
+                                            loading={loading}
                                             {...layoutProps}
                                         />
                                     ) : (
@@ -293,11 +287,8 @@ export const TableComponentsOrder = {
 };
 
 Table.AccordionColumn = TableAccordionColumn;
-Table.Actions = TableActions;
 Table.ActionsColumn = TableActionsColumn;
 Table.ActionItem = TableActionItem;
-Table.ActionLabel = Menu.Label;
-Table.ActionDivider = Menu.Divider;
 Table.CollapsibleColumn = TableCollapsibleColumn;
 Table.ColumnsSelector = TableColumnsSelector;
 Table.DateRangePicker = TableDateRangePicker;
@@ -310,7 +301,6 @@ Table.Loading = TableLoading;
 Table.NoData = TableNoData;
 Table.Pagination = TablePagination;
 Table.PerPage = TablePerPage;
-Table.Predicate = TablePredicate;
 Table.Predicate = TablePredicate;
 
 Table.extend = identity as CustomComponentThemeExtend<PlasmaTableFactory>;

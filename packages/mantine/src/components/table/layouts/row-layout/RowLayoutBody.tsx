@@ -29,8 +29,8 @@ const defaultProps: Partial<RowLayoutBodyProps<unknown>> = {};
 export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLTableRowElement>}) => {
     const ctx = useRowLayout();
     const {
-        doubleClickAction,
-        getExpandChildren,
+        getRowExpandedContent,
+        getRowActions,
         loading,
         classNames,
         className,
@@ -46,7 +46,9 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
     };
 
     const rows = table.getRowModel()?.rows.map((row) => {
-        const rowChildren = getExpandChildren?.(row.original, row.index, row) ?? null;
+        const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
+        const rowActions = getRowActions?.([row.original]) ?? null;
+        const doubleClickAction = rowActions?.find((action) => Boolean(action.onRowDoubleClick))?.onRowDoubleClick;
         const isSelected = !!row.getIsSelected();
         const shouldKeepSelection = store.rowSelectionForced && isSelected;
         const onClick = (event: MouseEvent<HTMLTableRowElement>) => {

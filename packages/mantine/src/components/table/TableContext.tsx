@@ -2,14 +2,14 @@ import {createSafeContext, GetStylesApi} from '@mantine/core';
 import {Table} from '@tanstack/table-core';
 import {MutableRefObject, ReactElement} from 'react';
 import {type PlasmaTableFactory} from './Table';
-import {TableLayout} from './Table.types';
+import {TableAction, TableLayout} from './Table.types';
 import {TableStore} from './use-table';
 
 export interface TableContextValue<TData = unknown> {
     getStyles: GetStylesApi<PlasmaTableFactory>;
     store: TableStore<TData>;
     layouts: TableLayout[];
-    actions: ReactElement;
+    getRowActions: (datum: TData[]) => Array<TableAction<TData>>;
     table: Table<TData>;
     containerRef: MutableRefObject<HTMLDivElement>;
 }

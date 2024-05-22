@@ -19,8 +19,8 @@
 }
 
 /* Table.Actions */
-.actionsGroup {
-    display: inline-flex;
+.actionsDropdown {
+    text-align: left;
 }
 
 /* Table.Filter */

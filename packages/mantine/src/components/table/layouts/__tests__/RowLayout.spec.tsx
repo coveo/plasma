@@ -103,7 +103,7 @@ describe('RowLayout', () => {
                     store={store}
                     getRowId={({id}) => id}
                     data={data}
-                    getExpandChildren={(row) => <div>Collapsible content: {row.lastName}</div>}
+                    getRowExpandedContent={(row) => <div>Collapsible content: {row.lastName}</div>}
                     columns={customColumns}
                 />
             );
@@ -146,7 +146,9 @@ describe('RowLayout', () => {
                     store={store}
                     getRowId={({id}) => id}
                     data={data}
-                    getExpandChildren={(row: RowData) => (row.lastName === 'Skywalker' ? <Content row={row} /> : null)}
+                    getRowExpandedContent={(row: RowData) =>
+                        row.lastName === 'Skywalker' ? <Content row={row} /> : null
+                    }
                     columns={customColumns}
                 />
             );
@@ -180,7 +182,7 @@ describe('RowLayout', () => {
                     store={store}
                     getRowId={({id}) => id}
                     data={data}
-                    getExpandChildren={(row: RowData) => <Content row={row} />}
+                    getRowExpandedContent={(row: RowData) => <Content row={row} />}
                     columns={customColumns}
                 />
             );
@@ -222,7 +224,13 @@ describe('RowLayout', () => {
                     getRowId={({id}) => id}
                     data={data}
                     columns={columns}
-                    doubleClickAction={doubleClickSpy}
+                    getRowActions={() => [
+                        {
+                            group: 'any',
+                            component: null,
+                            onRowDoubleClick: doubleClickSpy,
+                        },
+                    ]}
                 />
             );
         };

@@ -32,7 +32,7 @@ const Demo = () => {
             getRowId={({id}) => id.toString()}
             columns={columns}
             // Define the collapsible content with getExpandChildren
-            getExpandChildren={(datum) => (
+            getRowExpandedContent={(datum) => (
                 <Group py="xs" px="md" wrap="nowrap">
                     <Avatar src={datum.pic} />
                     {datum.bio}

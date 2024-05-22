@@ -37,10 +37,15 @@ const Demo = () => {
     });
 
     return (
-        <Table<Person> store={table} data={data} columns={columns} getRowId={({id}) => id.toString()}>
-            <Table.Actions>
-                {(selectedRow: Person) => (
-                    <>
+        <Table<Person>
+            store={table}
+            data={data}
+            columns={columns}
+            getRowId={({id}) => id.toString()}
+            getRowActions={(selected: Person[]) => [
+                {
+                    group: 'other',
+                    component: (
                         <InlineConfirm.Target
                             component={Table.ActionItem}
                             id="delete"
@@ -48,15 +53,21 @@ const Demo = () => {
                         >
                             Delete
                         </InlineConfirm.Target>
+                    ),
+                },
+                {
+                    group: '$$confirmPrompt',
+                    component: (
                         <InlineConfirm.Prompt
                             id="delete"
-                            label={`Are you sure you want to delete ${selectedRow.firstName} ${selectedRow.lastName}?`}
+                            label={`Are you sure you want to delete ${selected[0].firstName} ${selected[0].lastName}?`}
                             onConfirm={() => showNotification({message: 'Confirm clicked', autoClose: true})}
                             onCancel={() => showNotification({message: 'Cancel clicked', autoClose: true})}
                         />
-                    </>
-                )}
-            </Table.Actions>
+                    ),
+                },
+            ]}
+        >
             <Table.Header />
         </Table>
     );

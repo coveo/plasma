@@ -10,21 +10,28 @@ import {
     Tooltip,
     useProps,
 } from '@mantine/core';
-import {Children, Fragment, MouseEventHandler, ReactElement, ReactNode, useState} from 'react';
+import {Fragment, MouseEventHandler, ReactNode, useState} from 'react';
 import {InlineConfirm} from '../../inline-confirm';
+import {TableAction} from '../Table.types';
 import {useTableContext} from '../TableContext';
+import {TableActionProvider} from './TableActionContext';
 
 export type TableActionsListStylesNames = 'actionsTarget' | 'actionsDropdown' | 'actionsTooltip';
 
 export interface TableActionsListProps
     extends Omit<MenuProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
         CompoundStylesApiProps<TableActionsListFactory> {
-    actions: ReactNode;
+    actions: TableAction[];
     /**
      * Label for the more menu
      * @default 'More' when variant is 'split', 'Actions' when variant is 'combined'
      */
     label?: string;
+    /**
+     * Label for the primary actions group when variant is 'combined'
+     * @default ''
+     */
+    primaryGroupLabel?: string;
     icon?: ReactNode;
 }
 
@@ -38,6 +45,7 @@ type TableActionsListFactory = Factory<{
 
 const defaultProps: Partial<TableActionsListProps> = {
     label: 'More',
+    primaryGroupLabel: '',
     icon: <MoreSize16Px height={16} />,
 };
 
@@ -47,6 +55,7 @@ export const TableActionsList = (props: TableActionsListProps) => {
         actions,
         icon,
         label,
+        primaryGroupLabel,
         classNames,
         styles,
         vars: _vars,
@@ -66,66 +75,96 @@ export const TableActionsList = (props: TableActionsListProps) => {
         }
     };
 
-    let childrenArray = Children.toArray(actions) as ReactElement[];
-    if (childrenArray.length === 1 && childrenArray[0].type === Fragment) {
-        childrenArray = Children.toArray(childrenArray[0].props.children) as ReactElement[];
-    }
+    const actionsGroups = actions.reduce<Record<'$$primary' | '$$confirmPrompt' | 'secondary', TableAction[]>>(
+        (acc, action) => {
+            if (action.group === '$$primary') {
+                acc.$$primary.push(action);
+            } else if (action.group === '$$confirmPrompt') {
+                acc.$$confirmPrompt.push(action);
+            } else {
+                acc.secondary.push(action);
+            }
+            return acc;
+        },
+        {$$primary: [], $$confirmPrompt: [], secondary: []},
+    );
+
+    const primaryActions = actionsGroups.$$primary.map((action) => action.component);
+    const confirmPrompts = actionsGroups.$$confirmPrompt.map((confirmPromptAction) => confirmPromptAction.component);
+
+    let secondaryGroupCount = 0;
+    const secondaryActions = actionsGroups.secondary.reduce<Record<string, ReactNode[]>>((acc, action) => {
+        if (acc[action.group]) {
+            acc[action.group].push(action.component);
+            return acc;
+        }
+        secondaryGroupCount++;
+        return {...acc, [action.group]: [action.component]};
+    }, {});
 
     if (variant === 'split') {
-        const primaryActions = childrenArray.filter(
-            (child) => child.props.primary || child.type === InlineConfirm.Prompt,
-        );
-        const secondaryActions = childrenArray.filter(
-            (child) => !child.props.primary && child.type !== InlineConfirm.Prompt,
-        );
-
         return (
             <InlineConfirm>
-                {primaryActions}
-                {secondaryActions.length > 0 ? (
-                    <Menu withinPortal={false} {...others}>
-                        <Menu.Target>
-                            <Button
-                                {...getStyles('actionsTarget', {styles, classNames})}
-                                variant="subtle"
-                                leftSection={icon}
-                            >
-                                {label}
-                            </Button>
-                        </Menu.Target>
-                        <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>
-                            {secondaryActions}
-                        </Menu.Dropdown>
-                    </Menu>
+                {confirmPrompts}
+                <TableActionProvider value={{primary: true}}>{primaryActions}</TableActionProvider>
+                {actionsGroups.secondary.length > 0 ? (
+                    <TableActionProvider value={{primary: false}}>
+                        <Menu withinPortal={false} {...others}>
+                            <Menu.Target>
+                                <Button
+                                    {...getStyles('actionsTarget', {styles, classNames})}
+                                    variant="subtle"
+                                    leftSection={icon}
+                                >
+                                    {label}
+                                </Button>
+                            </Menu.Target>
+                            <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>
+                                {Object.entries(secondaryActions).map(([group, groupActions], index) => (
+                                    <Fragment key={group}>
+                                        {index > 0 ? <Menu.Divider /> : null}
+                                        {secondaryGroupCount > 1 ? <Menu.Label>{group}</Menu.Label> : null}
+                                        {groupActions}
+                                    </Fragment>
+                                ))}
+                            </Menu.Dropdown>
+                        </Menu>
+                    </TableActionProvider>
                 ) : null}
             </InlineConfirm>
         );
     }
-    const prompts = childrenArray.filter((child) => child.type === InlineConfirm.Prompt);
-    const menuItems = Children.map(childrenArray, (child) => {
-        if (child.type === InlineConfirm.Prompt) {
-            return null;
-        }
-        const {primary, ...childProps} = child.props;
-        return primary ? <Menu.Item {...childProps} /> : child;
-    });
     return (
         <InlineConfirm>
-            {prompts}
-            <Menu opened={opened} onChange={onChange} {...others}>
-                <Menu.Target>
-                    <Tooltip label={label} {...getStyles('actionsTooltip', {styles, classNames})}>
-                        <ActionIcon
-                            onClick={onClick}
-                            variant="subtle"
-                            {...getStyles('actionsTarget', {styles, classNames})}
-                        >
-                            {icon}
-                        </ActionIcon>
-                    </Tooltip>
-                </Menu.Target>
-                <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>{menuItems}</Menu.Dropdown>
-            </Menu>
+            {confirmPrompts}
+            <TableActionProvider value={{primary: false}}>
+                <Menu opened={opened} onChange={onChange} {...others}>
+                    <Menu.Target>
+                        <Tooltip label={label} {...getStyles('actionsTooltip', {styles, classNames})}>
+                            <ActionIcon
+                                onClick={onClick}
+                                variant="subtle"
+                                {...getStyles('actionsTarget', {styles, classNames})}
+                            >
+                                {icon}
+                            </ActionIcon>
+                        </Tooltip>
+                    </Menu.Target>
+                    <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>
+                        {primaryGroupLabel && primaryActions.length > 0 ? (
+                            <Menu.Label>{primaryGroupLabel}</Menu.Label>
+                        ) : null}
+                        {primaryActions}
+                        {Object.entries(secondaryActions).map(([group, groupActions], index) => (
+                            <>
+                                {primaryActions.length > 0 || index > 0 ? <Menu.Divider key={group} /> : null}
+                                {secondaryGroupCount > 1 ? <Menu.Label key={group}>{group}</Menu.Label> : null}
+                                {groupActions}
+                            </>
+                        ))}
+                    </Menu.Dropdown>
+                </Menu>
+            </TableActionProvider>
         </InlineConfirm>
     );
 };

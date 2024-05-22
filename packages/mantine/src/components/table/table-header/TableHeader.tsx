@@ -39,7 +39,7 @@ const defaultProps: Partial<TableHeaderProps> = {
 };
 
 export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
-    const {store, actions, getStyles} = useTableContext();
+    const {store, getStyles} = useTableContext();
     const {
         showActions,
         unselectAllLabel,
@@ -85,7 +85,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
                     </Grid.Col>
                 ) : null}
                 {children}
-                {showActions ? <TableHeaderActions>{actions}</TableHeaderActions> : null}
+                {showActions ? <TableHeaderActions /> : null}
                 <TableLayoutControl />
             </Grid>
         </Box>

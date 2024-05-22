@@ -2,11 +2,13 @@ import {Factory, factory, Grid, GridColProps, Group, useProps} from '@mantine/co
 import {ReactElement} from 'react';
 
 import {TableComponentsOrder} from '../Table';
+import {TableAction} from '../Table.types';
 import {useTableContext} from '../TableContext';
+import {TableActionsList} from './TableActionsList';
 
 export type TableHeaderActionsStylesNames = 'headerActionsRoot' | 'headerActionsGroup';
 
-export interface TableHeaderActionsProps extends GridColProps {}
+export interface TableHeaderActionsProps extends Omit<GridColProps, 'children'> {}
 
 type TableHeaderActionsFactory = Factory<{
     props: TableHeaderActionsProps;
@@ -19,15 +21,19 @@ const defaultProps: Partial<TableHeaderActionsProps> = {};
 
 export const TableHeaderActions = factory<TableHeaderActionsFactory>(
     (props: TableHeaderActionsProps, ref): ReactElement => {
-        const {store, getStyles} = useTableContext();
-        const {style, className, classNames, styles, children, ...others} = useProps(
+        const {store, getStyles, getRowActions} = useTableContext();
+        const {style, className, classNames, styles, ...others} = useProps(
             'PlasmaTableHeaderActions',
             defaultProps,
             props,
         );
         const selectedRows = store.getSelectedRows();
+        if (selectedRows.length === 0) {
+            return null;
+        }
 
-        if (selectedRows.length <= 0 || !props.children) {
+        const actions: TableAction[] = getRowActions(selectedRows);
+        if (actions.length === 0) {
             return null;
         }
 
@@ -42,7 +48,7 @@ export const TableHeaderActions = factory<TableHeaderActionsFactory>(
                 {...others}
             >
                 <Group gap="xs" {...getStyles('headerActionsGroup', stylesApiProps)}>
-                    {children}
+                    <TableActionsList actions={actions} variant="split" />
                 </Group>
             </Grid.Col>
         );
