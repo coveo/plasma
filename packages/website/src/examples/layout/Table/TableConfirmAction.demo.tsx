@@ -42,7 +42,7 @@ const Demo = () => {
             data={data}
             columns={columns}
             getRowId={({id}) => id.toString()}
-            getRowActions={(datum: Person) => [
+            getRowActions={(selected: Person[]) => [
                 {
                     group: 'other',
                     component: (
@@ -60,7 +60,7 @@ const Demo = () => {
                     component: (
                         <InlineConfirm.Prompt
                             id="delete"
-                            label={`Are you sure you want to delete ${datum.firstName} ${datum.lastName}?`}
+                            label={`Are you sure you want to delete ${selected[0].firstName} ${selected[0].lastName}?`}
                             onConfirm={() => showNotification({message: 'Confirm clicked', autoClose: true})}
                             onCancel={() => showNotification({message: 'Cancel clicked', autoClose: true})}
                         />

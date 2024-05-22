@@ -8,7 +8,7 @@ import {TableStore} from './use-table';
 
 export type TableLayoutProps<TData = unknown> = Pick<
     TableProps<TData>,
-    'getRowExpandedContent' | 'getRowAttributes' | 'getRowActions' | 'getMultiSelectionRowActions' | 'loading'
+    'getRowExpandedContent' | 'getRowAttributes' | 'getRowActions' | 'loading'
 >;
 
 export interface TableLayout {
@@ -57,21 +57,14 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      */
     getRowExpandedContent?: (datum: TData, index: number, row: Row<TData>) => ReactNode;
     /**
-     * Function that generates the actions of a row
+     * Function that generates the actions for the selected rows
+     * If the table doesn't support multi selection, access the data[0]
      * Return an empty array for rows that don't have actions
      *
      * @param datum the row for which the children should be generated.
      * @default []
      */
-    getRowActions?: (datum: TData) => Array<TableAction<TData>>;
-    /**
-     * Function that generates the actions when multiple rows are selected
-     * Return an empty array if no actions are available for multi selection
-     *
-     * @param datum the row for which the children should be generated.
-     * @default []
-     */
-    getMultiSelectionRowActions?: (datum: TData[]) => Array<TableAction<TData>>;
+    getRowActions?: (data: TData[]) => Array<TableAction<TData>>;
     /**
      * Columns to display in the table.
      *
@@ -144,9 +137,7 @@ export interface TableAction<TData = unknown> {
      */
     component: ReactNode;
     /**
-     * Whether the action is triggered on a double click on the row
-     *
-     * @default false
+     * Callback triggered on a double click on the row
      */
     onRowDoubleClick?: (datum: TData, index: number, row: Row<TData>) => void;
 }

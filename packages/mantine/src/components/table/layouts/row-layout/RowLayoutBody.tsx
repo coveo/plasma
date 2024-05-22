@@ -47,7 +47,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
 
     const rows = table.getRowModel()?.rows.map((row) => {
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
-        const rowActions = getRowActions?.(row.original) ?? null;
+        const rowActions = getRowActions?.([row.original]) ?? null;
         const doubleClickAction = rowActions?.find((action) => Boolean(action.onRowDoubleClick))?.onRowDoubleClick;
         const isSelected = !!row.getIsSelected();
         const shouldKeepSelection = store.rowSelectionForced && isSelected;

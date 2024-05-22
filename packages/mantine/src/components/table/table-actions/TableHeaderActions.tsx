@@ -21,20 +21,18 @@ const defaultProps: Partial<TableHeaderActionsProps> = {};
 
 export const TableHeaderActions = factory<TableHeaderActionsFactory>(
     (props: TableHeaderActionsProps, ref): ReactElement => {
-        const {store, getStyles, getRowActions, getMultiSelectionRowActions} = useTableContext();
+        const {store, getStyles, getRowActions} = useTableContext();
         const {style, className, classNames, styles, ...others} = useProps(
             'PlasmaTableHeaderActions',
             defaultProps,
             props,
         );
         const selectedRows = store.getSelectedRows();
-        let actions: TableAction[] = [];
-        if (selectedRows.length === 1) {
-            actions = getRowActions(selectedRows[0]);
-        } else if (selectedRows.length > 1) {
-            actions = getMultiSelectionRowActions(selectedRows);
+        if (selectedRows.length === 0) {
+            return null;
         }
 
+        const actions: TableAction[] = getRowActions(selectedRows);
         if (actions.length === 0) {
             return null;
         }

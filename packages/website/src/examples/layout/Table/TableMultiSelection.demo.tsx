@@ -7,6 +7,7 @@ import {
     getFilteredRowModel,
     getPaginationRowModel,
     Table,
+    TableAction,
     Title,
     useDidUpdate,
     useTable,
@@ -68,38 +69,41 @@ const Demo = () => {
             getRowId={({id}) => id}
             columns={columns}
             options={options}
-            getRowActions={(datum: IExampleRowData) => [
-                {
-                    group: '$$primary',
-                    component: (
-                        <Table.ActionItem
-                            onClick={() => alert(`Action triggered on a single row: ${datum.id}`)}
-                            leftSection={<EditSize16Px height={16} />}
-                            key="single"
-                        >
-                            Single row action
-                        </Table.ActionItem>
-                    ),
-                },
-            ]}
-            getMultiSelectionRowActions={(selectedData: IExampleRowData[]) => [
-                {
-                    group: '$$primary',
-                    component: (
-                        <Table.ActionItem
-                            onClick={() =>
-                                alert(
-                                    `Bulk action triggered on multiple rows: ${selectedData.map(({id}) => id).join(', ')}`,
-                                )
-                            }
-                            leftSection={<DeleteSize16Px height={16} />}
-                            key="bulk"
-                        >
-                            Bulk action
-                        </Table.ActionItem>
-                    ),
-                },
-            ]}
+            getRowActions={(selected: IExampleRowData[]): Array<TableAction<IExampleRowData>> =>
+                selected.length === 1
+                    ? [
+                          {
+                              group: '$$primary',
+                              component: (
+                                  <Table.ActionItem
+                                      onClick={() => alert(`Action triggered on a single row: ${selected[0].id}`)}
+                                      leftSection={<EditSize16Px height={16} />}
+                                      key="single"
+                                  >
+                                      Single row action
+                                  </Table.ActionItem>
+                              ),
+                          },
+                      ]
+                    : [
+                          {
+                              group: '$$primary',
+                              component: (
+                                  <Table.ActionItem
+                                      onClick={() =>
+                                          alert(
+                                              `Bulk action triggered on multiple rows: ${selected.map(({id}) => id).join(', ')}`,
+                                          )
+                                      }
+                                      leftSection={<DeleteSize16Px height={16} />}
+                                      key="bulk"
+                                  >
+                                      Bulk action
+                                  </Table.ActionItem>
+                              ),
+                          },
+                      ]
+            }
         >
             <Table.Header>
                 <Table.Filter placeholder="Search posts by title" />

@@ -20,10 +20,10 @@ describe('Table.Actions', () => {
                     data={[{name: 'fruit'}, {name: 'vegetable'}]}
                     getRowId={(row) => row.name}
                     columns={columns}
-                    getRowActions={(datum: RowData) => [
+                    getRowActions={(selected: RowData[]) => [
                         {
                             group: '$$primary',
-                            component: <Table.ActionItem leftSection={null}>Eat {datum.name}</Table.ActionItem>,
+                            component: <Table.ActionItem leftSection={null}>Eat {selected[0].name}</Table.ActionItem>,
                         },
                     ]}
                 >
@@ -57,12 +57,12 @@ describe('Table.Actions', () => {
                     store={store}
                     data={[{name: 'fruit'}, {name: 'vegetable'}]}
                     columns={columns}
-                    getRowActions={(datum: RowData) => [
+                    getRowActions={(selected: RowData[]) => [
                         {
                             group: 'secondary',
                             component: (
                                 <Table.ActionItem key="peel" leftSection={null}>
-                                    Peel {datum.name}
+                                    Peel {selected[0].name}
                                 </Table.ActionItem>
                             ),
                         },
@@ -70,7 +70,7 @@ describe('Table.Actions', () => {
                             group: 'secondary',
                             component: (
                                 <Table.ActionItem key="chop" leftSection={null}>
-                                    Chop {datum.name}
+                                    Chop {selected[0].name}
                                 </Table.ActionItem>
                             ),
                         },
@@ -104,10 +104,10 @@ describe('Table.Actions', () => {
                     data={[{name: 'fruit'}, {name: 'vegetable'}]}
                     columns={columns}
                     loading={true}
-                    getRowActions={(datum: RowData) => [
+                    getRowActions={(selected: RowData[]) => [
                         {
                             group: '$$primary',
-                            component: <Table.ActionItem leftSection={null}>Eat {datum.name}</Table.ActionItem>,
+                            component: <Table.ActionItem leftSection={null}>Eat {selected[0].name}</Table.ActionItem>,
                         },
                     ]}
                 >
@@ -132,10 +132,10 @@ describe('Table.Actions', () => {
                     store={store}
                     data={[{name: 'fruit'}, {name: 'vegetable'}]}
                     columns={columns}
-                    getRowActions={(datum: RowData) => [
+                    getRowActions={(selected: RowData[]) => [
                         {
                             group: '$$primary',
-                            component: <Table.ActionItem leftSection={null}>Eat {datum.name}</Table.ActionItem>,
+                            component: <Table.ActionItem leftSection={null}>Eat {selected[0].name}</Table.ActionItem>,
                         },
                     ]}
                 >
@@ -162,7 +162,7 @@ describe('Table.Actions', () => {
                         getRowId={(row) => row.name}
                         data={[{name: 'fruit'}, {name: 'vegetable'}, {name: 'bread'}]}
                         columns={columns}
-                        getMultiSelectionRowActions={(data: RowData[]) => [
+                        getRowActions={(data: RowData[]) => [
                             {
                                 group: '$$primary',
                                 component: (

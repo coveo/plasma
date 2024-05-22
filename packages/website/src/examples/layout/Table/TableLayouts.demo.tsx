@@ -25,7 +25,7 @@ const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
         ));
     const cards = table.getRowModel().rows.map((row) => {
         const isSelected = !!row.getIsSelected();
-        const actions = props.getRowActions(row.original);
+        const actions = props.getRowActions([row.original]);
         const doubleClickAction = actions.find((action) => Boolean(action.onRowDoubleClick))?.onRowDoubleClick;
         return (
             <Paper
@@ -82,13 +82,13 @@ const Demo = () => {
             columns={columns}
             getRowId={({id}) => id}
             layouts={[Table.Layouts.Rows, CardLayout]}
-            getRowActions={(person) => [
+            getRowActions={(selected: Person[]) => [
                 {
                     group: '$$primary',
-                    onRowDoubleClick: () => alert(`Double clicked ${person.firstName}`),
+                    onRowDoubleClick: () => alert(`Double clicked ${selected[0].firstName}`),
                     component: (
                         <Table.ActionItem
-                            onClick={() => alert(`Clicked ${person.firstName}`)}
+                            onClick={() => alert(`Clicked ${selected[0].firstName}`)}
                             leftSection={<EditSize16Px height={16} />}
                         >
                             Action 1

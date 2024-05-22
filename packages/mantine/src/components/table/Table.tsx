@@ -87,6 +87,7 @@ const defaultProps: Partial<TableProps<unknown>> = {
     loading: false,
     additionalRootNodes: [],
     options: {},
+    getRowActions: () => [],
 };
 
 export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
@@ -96,8 +97,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         getRowId,
         getRowAttributes,
         getRowExpandedContent,
-        getRowActions = () => [],
-        getMultiSelectionRowActions = () => [],
+        getRowActions,
         columns,
         layouts,
         layoutProps,
@@ -223,9 +223,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
 
     return (
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
-            <TableProvider<T>
-                value={{getStyles, getRowActions, getMultiSelectionRowActions, store, table, layouts, containerRef}}
-            >
+            <TableProvider<T> value={{getStyles, getRowActions, store, table, layouts, containerRef}}>
                 <Layout>
                     {store.isVacant && !store.isFiltered ? (
                         noData
@@ -291,8 +289,6 @@ export const TableComponentsOrder = {
 Table.AccordionColumn = TableAccordionColumn;
 Table.ActionsColumn = TableActionsColumn;
 Table.ActionItem = TableActionItem;
-Table.ActionLabel = Menu.Label;
-Table.ActionDivider = Menu.Divider;
 Table.CollapsibleColumn = TableCollapsibleColumn;
 Table.ColumnsSelector = TableColumnsSelector;
 Table.DateRangePicker = TableDateRangePicker;
@@ -305,7 +301,6 @@ Table.Loading = TableLoading;
 Table.NoData = TableNoData;
 Table.Pagination = TablePagination;
 Table.PerPage = TablePerPage;
-Table.Predicate = TablePredicate;
 Table.Predicate = TablePredicate;
 
 Table.extend = identity as CustomComponentThemeExtend<PlasmaTableFactory>;

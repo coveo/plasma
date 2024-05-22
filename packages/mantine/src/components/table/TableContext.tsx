@@ -9,8 +9,7 @@ export interface TableContextValue<TData = unknown> {
     getStyles: GetStylesApi<PlasmaTableFactory>;
     store: TableStore<TData>;
     layouts: TableLayout[];
-    getRowActions: (datum: TData) => Array<TableAction<TData>>;
-    getMultiSelectionRowActions: (datum: TData[]) => Array<TableAction<TData>>;
+    getRowActions: (datum: TData[]) => Array<TableAction<TData>>;
     table: Table<TData>;
     containerRef: MutableRefObject<HTMLDivElement>;
 }

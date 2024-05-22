@@ -42,12 +42,12 @@ const Demo = () => {
             data={data}
             columns={columns}
             getRowId={({id}) => id.toString()}
-            getRowActions={(datum) => [
+            getRowActions={(selected: Person[]) => [
                 {
                     group: 'Actions',
                     component: (
                         <Table.ActionItem
-                            onClick={() => alert(`Action 1 triggered for row: ${datum.id}`)}
+                            onClick={() => alert(`Action 1 triggered for row: ${selected[0].id}`)}
                             leftSection={<EditSize16Px height={16} />}
                             key="action-1"
                         >
@@ -59,7 +59,7 @@ const Demo = () => {
                     group: 'Danger zone',
                     component: (
                         <Table.ActionItem
-                            onClick={() => alert(`Action 2 triggered for row: ${datum.id}`)}
+                            onClick={() => alert(`Action 2 triggered for row: ${selected[0].id}`)}
                             leftSection={<AbTestingSize16Px height={16} />}
                             key="action-2"
                         >
