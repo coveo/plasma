@@ -131,7 +131,7 @@ export interface TableAction<TData = unknown> {
      * $$confirmPrompt is reserved for InlineConfirm.Prompt, it will hide other actions when prompt is opened
      * other string will be considered secondary custom group
      */
-    group: '$$primary' | '$$confirmPrompt' | (string & unknown);
+    group: '$$primary' | '$$confirmPrompt' | (string & {});
     /**
      * Component to render, should be either `Table.PrimaryAction` or `Table.SecondaryAction`
      */

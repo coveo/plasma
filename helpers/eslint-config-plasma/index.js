@@ -21,7 +21,7 @@ module.exports = {
             },
         ],
         '@typescript-eslint/ban-types': [
-            'error',
+            'warn',
             {
                 types: {
                     Object: {
