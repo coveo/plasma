@@ -1,3 +1,13 @@
+## 53.1.4-next.5 (2024-05-23)
+
+
+### Bug Fixes
+
+* **mantine:** table actions group type (#3727) f9d428f, closes #3727
+* **tableActions:** changed interface so it extends button (#3728) 43418fd, closes #3728
+
+
+
 ## 53.1.4-next.4 (2024-05-22)
 
 

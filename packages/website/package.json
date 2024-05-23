@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-website",
-    "version": "53.1.4-next.4",
+    "version": "53.1.4-next.5",
     "private": true,
     "type": "module",
     "scripts": {
