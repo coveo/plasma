@@ -1,4 +1,11 @@
-import {CompoundStylesApiProps, Menu, PolymorphicFactory, polymorphicFactory, useProps} from '@mantine/core';
+import {
+    CompoundStylesApiProps,
+    Menu,
+    MenuItemProps,
+    PolymorphicFactory,
+    polymorphicFactory,
+    useProps,
+} from '@mantine/core';
 import {ReactNode} from 'react';
 import {Button, ButtonProps} from '../../button';
 import {useTableContext} from '../TableContext';
@@ -11,6 +18,7 @@ export interface TableActionItemProps
             ButtonProps,
             'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection' | 'disabled'
         >,
+        Omit<MenuItemProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection' | 'disabled'>,
         CompoundStylesApiProps<TableActionItemFactory> {
     /**
      * Action label
