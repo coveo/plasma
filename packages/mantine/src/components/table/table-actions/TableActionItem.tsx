@@ -14,30 +14,17 @@ import {useTableActionContext} from './TableActionContext';
 export type TableActionItemStylesNames = 'actionItemRoot';
 
 export interface TableActionItemProps
-    extends Omit<
-            ButtonProps,
-            'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection' | 'disabled'
-        >,
-        Omit<MenuItemProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection' | 'disabled'>,
+    extends Omit<ButtonProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection'>,
+        Omit<MenuItemProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'disabled'>,
         CompoundStylesApiProps<TableActionItemFactory> {
     /**
      * Action label
      */
     children: ReactNode;
     /**
-     * Content to put on the left of the label. Usually used to render an icon
+     * Content to put on the left of the label
      */
     leftSection: ReactNode;
-
-    /**
-     * Section displayed on the right side of the label
-     */
-    rightSection?: ReactNode;
-
-    /**
-     * Disables action
-     */
-    disabled?: boolean;
 }
 
 type TableActionItemFactory = PolymorphicFactory<{
