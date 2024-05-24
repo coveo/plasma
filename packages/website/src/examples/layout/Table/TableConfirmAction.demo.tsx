@@ -1,4 +1,5 @@
 import {ColumnDef, createColumnHelper, InlineConfirm, showNotification, Table, useTable} from '@coveord/plasma-mantine';
+import {InlineConfirmComponentsProps} from '@coveord/plasma-mantine';
 import {DeleteSize16Px} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
@@ -44,11 +45,11 @@ const Demo = () => {
             getRowId={({id}) => id.toString()}
             getRowActions={(selected: Person[]) => [
                 {
-                    group: 'other',
+                    group: '$$primary',
                     component: (
                         <InlineConfirm.Target
                             component={Table.ActionItem}
-                            id="delete"
+                            inlineConfirmId="delete"
                             leftSection={<DeleteSize16Px height={16} />}
                         >
                             Delete
@@ -57,14 +58,7 @@ const Demo = () => {
                 },
                 {
                     group: '$$confirmPrompt',
-                    component: (
-                        <InlineConfirm.Prompt
-                            id="delete"
-                            label={`Are you sure you want to delete ${selected[0].firstName} ${selected[0].lastName}?`}
-                            onConfirm={() => showNotification({message: 'Confirm clicked', autoClose: true})}
-                            onCancel={() => showNotification({message: 'Cancel clicked', autoClose: true})}
-                        />
-                    ),
+                    component: <MyAction inlineConfirmId="delete" person={selected[0]} />,
                 },
             ]}
         >
@@ -94,3 +88,12 @@ const makeData = (len: number): Person[] =>
             age: faker.number.int(40),
             bio: faker.lorem.sentences({min: 1, max: 5}),
         }));
+
+const MyAction = ({person, inlineConfirmId}: {person: Person} & InlineConfirmComponentsProps) => (
+    <InlineConfirm.Prompt
+        inlineConfirmId={inlineConfirmId}
+        label={`Are you sure you want to delete ${person.firstName} ${person.lastName}?`}
+        onConfirm={() => showNotification({message: 'Confirm clicked', autoClose: true})}
+        onCancel={() => showNotification({message: 'Cancel clicked', autoClose: true})}
+    />
+);

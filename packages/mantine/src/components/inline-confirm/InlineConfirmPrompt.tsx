@@ -1,14 +1,11 @@
 import {Factory, factory, Group, GroupProps, isElement, useProps} from '@mantine/core';
 import {cloneElement, ReactElement, ReactNode, useEffect} from 'react';
+import {Button} from '../button/Button';
+import {InlineConfirmComponentsProps} from './InlineConfirm';
 
 import {useInlineConfirm} from './InlineConfirmContext';
-import {Button} from '../button/Button';
 
-interface InlineConfirmPromptProps extends Omit<GroupProps, 'children'> {
-    /**
-     * Unique id to map the prompt to the target
-     */
-    id: string;
+interface InlineConfirmPromptProps extends Omit<GroupProps, 'children'>, InlineConfirmComponentsProps {
     /**
      * Label element
      *
@@ -52,7 +49,7 @@ const defaultProps: Partial<InlineConfirmPromptProps> = {
 };
 
 export const InlineConfirmPrompt = factory<InlineConfirmPromptFactory>((props, ref) => {
-    const {id, label, confirm, cancel, onConfirm, onCancel, ...others} = useProps(
+    const {inlineConfirmId, label, confirm, cancel, onConfirm, onCancel, ...others} = useProps(
         'InlineConfirmPrompt',
         defaultProps,
         props,
@@ -80,12 +77,12 @@ export const InlineConfirmPrompt = factory<InlineConfirmPromptFactory>((props, r
     });
 
     useEffect(() => {
-        if (confirmingId !== id) {
+        if (confirmingId !== inlineConfirmId) {
             clearConfirm();
         }
     }, []);
 
-    if (confirmingId === id) {
+    if (confirmingId === inlineConfirmId) {
         return (
             <Group ref={ref} {...others}>
                 {label}
