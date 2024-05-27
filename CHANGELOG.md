@@ -1,3 +1,12 @@
+## 53.1.4-next.6 (2024-05-27)
+
+
+### Bug Fixes
+
+* **mantine, inline-confirm:** allow prompt to be wrapped (#3729) 3594962, closes #3729
+
+
+
 ## 53.1.4-next.5 (2024-05-23)
 
 
