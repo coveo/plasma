@@ -1,5 +1,5 @@
 import {useDidUpdate} from '@mantine/hooks';
-import {type PaginationState, type SortingState} from '@tanstack/table-core';
+import {type PaginationState, type SortingState, type ExpandedState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {useCallback, useMemo, useState} from 'react';
 import {type DateRangePickerValue} from '../date-range-picker';
@@ -38,6 +38,13 @@ export interface TableState<TData = unknown> {
      * @default ''
      */
     globalFilter: string;
+
+    /**
+     * Current expanded state
+     *
+     * @default {}
+     */
+    expanded: ExpandedState;
     /**
      * Predicates and their current value
      *
@@ -91,6 +98,10 @@ export interface TableStore<TData = unknown> {
      * Allows to change the global filter value.
      */
     setGlobalFilter: React.Dispatch<React.SetStateAction<TableState<TData>['globalFilter']>>;
+    /**
+     * Allows to change the rows expanded state.
+     */
+    setExpanded: React.Dispatch<React.SetStateAction<TableState<TData>['expanded']>>;
     /**
      * Allows to change the predicates values.
      */
@@ -211,6 +222,7 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
     );
     const [sorting, setSorting] = useState<TableState<TData>['sorting']>(initialState.sorting as SortingState);
     const [globalFilter, setGlobalFilter] = useState<TableState<TData>['globalFilter']>(initialState.globalFilter);
+    const [expanded, setExpanded] = useState<TableState<TData>['expanded']>(initialState.expanded as ExpandedState);
     const [predicates, setPredicates] = useState<TableState<TData>['predicates']>(initialState.predicates);
     const [layout, setLayout] = useState<TableState<TData>['layout']>(initialState.layout);
     const [dateRange, setDateRange] = useState<TableState<TData>['dateRange']>(initialState.dateRange);
@@ -265,6 +277,7 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
             totalEntries,
             sorting,
             globalFilter,
+            expanded,
             predicates,
             layout,
             dateRange,
@@ -276,6 +289,7 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
             totalEntries,
             sorting,
             globalFilter,
+            expanded,
             predicates,
             layout,
             dateRange,
@@ -290,6 +304,7 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         setTotalEntries,
         setSorting,
         setGlobalFilter,
+        setExpanded,
         setPredicates,
         setLayout,
         setDateRange,
