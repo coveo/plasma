@@ -1,3 +1,12 @@
+## 53.1.4-next.7 (2024-05-28)
+
+
+### Bug Fixes
+
+* **mantine, table:** add missing property expanded from the state (#3730) aaa55b1, closes #3730
+
+
+
 ## 53.1.4-next.6 (2024-05-27)
 
 
