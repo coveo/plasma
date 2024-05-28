@@ -23,7 +23,13 @@ const columns: Array<ColumnDef<Person>> = [
 const Demo = () => {
     const data = useMemo(() => makeData(10), []);
 
-    const table = useTable<Person>({initialState: {totalEntries: data.length}});
+    const table = useTable<Person>({
+        initialState: {
+            totalEntries: data.length,
+            // Set the first row to be expanded by default
+            expanded: {[data[0].id]: true},
+        },
+    });
 
     return (
         <Table<Person>
