@@ -64,7 +64,7 @@ describe('Table', () => {
     describe('when it is loading', () => {
         it('indicates the table element as loading', () => {
             const Fixture = ({loading}: {loading: boolean}) => {
-                const store = useTable<RowData>({initialState: {globalFilter: 'something'}});
+                const store = useTable<RowData>();
                 return <Table store={store} loading={loading} data={[]} columns={columns} />;
             };
             const {rerender} = render(<Fixture loading />);
