@@ -62,6 +62,17 @@ describe('Table', () => {
     });
 
     describe('when it is loading', () => {
+        it('indicates the table element as loading', () => {
+            const Fixture = ({loading}: {loading: boolean}) => {
+                const store = useTable<RowData>();
+                return <Table store={store} loading={loading} data={[]} columns={columns} />;
+            };
+            const {rerender} = render(<Fixture loading />);
+            expect(screen.getByRole('table')).toHaveAttribute('data-loading', 'true');
+            rerender(<Fixture loading={false} />);
+            expect(screen.getByRole('table')).not.toHaveAttribute('data-loading');
+        });
+
         it('shows a loading animation over the no data children (filtered)', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({initialState: {globalFilter: 'something'}});

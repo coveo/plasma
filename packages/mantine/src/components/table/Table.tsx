@@ -229,7 +229,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                         noData
                     ) : (
                         <>
-                            <Box component="table" {...getStyles('table')} pb="sm">
+                            <Box component="table" {...getStyles('table')} pb="sm" mod={{loading}}>
                                 <thead {...getStyles('header')}>
                                     {!!header ? (
                                         <tr>
