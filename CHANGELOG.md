@@ -1,3 +1,12 @@
+## 53.1.4-next.8 (2024-05-29)
+
+
+### Bug Fixes
+
+* **mantine:** add data-loading attribute on table component (#3731) a4ad0c9, closes #3731
+
+
+
 ## 53.1.4-next.7 (2024-05-28)
 
 
