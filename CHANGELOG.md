@@ -1,3 +1,12 @@
+## 53.1.4-next.9 (2024-05-30)
+
+
+### Bug Fixes
+
+* **mantine:** table action items leftSection prop is no longer required (#3732) 378a539, closes #3732
+
+
+
 ## 53.1.4-next.8 (2024-05-29)
 
 
