@@ -1,7 +1,9 @@
 import {MoreSize16Px} from '@coveord/plasma-react-icons';
 import {
     ActionIcon,
+    Box,
     Button,
+    CSSProperties,
     CompoundStylesApiProps,
     ExtendComponent,
     Factory,
@@ -10,13 +12,20 @@ import {
     Tooltip,
     useProps,
 } from '@mantine/core';
-import {Fragment, MouseEventHandler, ReactNode, useState} from 'react';
+import {MouseEventHandler, ReactNode, useState} from 'react';
 import {InlineConfirm} from '../../inline-confirm';
 import {TableAction} from '../Table.types';
 import {useTableContext} from '../TableContext';
 import {TableActionProvider} from './TableActionContext';
 
-export type TableActionsListStylesNames = 'actionsTarget' | 'actionsDropdown' | 'actionsTooltip';
+export type TableActionsListStylesNames =
+    | 'actionsTarget'
+    | 'actionsDropdown'
+    | 'actionsTooltip'
+    | 'actionsGroup'
+    | 'actionsGroupLabel'
+    | 'actionsGroupDivider'
+    | 'actionsGroupItems';
 
 export interface TableActionsListProps
     extends Omit<MenuProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
@@ -49,6 +58,17 @@ const defaultProps: Partial<TableActionsListProps> = {
     icon: <MoreSize16Px height={16} />,
 };
 
+interface ActionsDict {
+    $$primary: TableAction[];
+    $$confirmPrompt: TableAction[];
+    secondary: Record<string, Array<TableAction['component']>>;
+}
+
+interface ActionGroup {
+    name: string;
+    actions: ReactNode[];
+}
+
 export const TableActionsList = (props: TableActionsListProps) => {
     const {getStyles} = useTableContext();
     const {
@@ -75,39 +95,39 @@ export const TableActionsList = (props: TableActionsListProps) => {
         }
     };
 
-    const actionsGroups = actions.reduce<Record<'$$primary' | '$$confirmPrompt' | 'secondary', TableAction[]>>(
+    const actionsGroups: ActionsDict = actions.reduce<ActionsDict>(
         (acc, action) => {
             if (action.group === '$$primary') {
                 acc.$$primary.push(action);
             } else if (action.group === '$$confirmPrompt') {
                 acc.$$confirmPrompt.push(action);
             } else {
-                acc.secondary.push(action);
+                if (acc.secondary[action.group]) {
+                    acc.secondary[action.group].push(action.component);
+                } else {
+                    acc.secondary[action.group] = [action.component];
+                }
             }
             return acc;
         },
-        {$$primary: [], $$confirmPrompt: [], secondary: []},
+        {$$primary: [], $$confirmPrompt: [], secondary: {}},
     );
 
     const primaryActions = actionsGroups.$$primary.map((action) => action.component);
     const confirmPrompts = actionsGroups.$$confirmPrompt.map((confirmPromptAction) => confirmPromptAction.component);
-
-    let secondaryGroupCount = 0;
-    const secondaryActions = actionsGroups.secondary.reduce<Record<string, ReactNode[]>>((acc, action) => {
-        if (acc[action.group]) {
-            acc[action.group].push(action.component);
-            return acc;
-        }
-        secondaryGroupCount++;
-        return {...acc, [action.group]: [action.component]};
-    }, {});
+    const secondaryActionGroups = Object.entries(actionsGroups.secondary).map(
+        ([group, groupActions]): ActionGroup => ({
+            name: group,
+            actions: groupActions,
+        }),
+    );
 
     if (variant === 'split') {
         return (
             <InlineConfirm>
                 {confirmPrompts}
                 <TableActionProvider value={{primary: true}}>{primaryActions}</TableActionProvider>
-                {actionsGroups.secondary.length > 0 ? (
+                {secondaryActionGroups.length > 0 ? (
                     <TableActionProvider value={{primary: false}}>
                         <Menu withinPortal={false} {...others}>
                             <Menu.Target>
@@ -120,13 +140,11 @@ export const TableActionsList = (props: TableActionsListProps) => {
                                 </Button>
                             </Menu.Target>
                             <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>
-                                {Object.entries(secondaryActions).map(([group, groupActions], index) => (
-                                    <Fragment key={group}>
-                                        {index > 0 ? <Menu.Divider /> : null}
-                                        {secondaryGroupCount > 1 ? <Menu.Label>{group}</Menu.Label> : null}
-                                        {groupActions}
-                                    </Fragment>
-                                ))}
+                                <ActionsGroupsMenuItems
+                                    classNames={classNames}
+                                    styles={styles}
+                                    actionGroups={secondaryActionGroups}
+                                />
                             </Menu.Dropdown>
                         </Menu>
                     </TableActionProvider>
@@ -151,22 +169,41 @@ export const TableActionsList = (props: TableActionsListProps) => {
                         </Tooltip>
                     </Menu.Target>
                     <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>
-                        {primaryGroupLabel && primaryActions.length > 0 ? (
-                            <Menu.Label>{primaryGroupLabel}</Menu.Label>
-                        ) : null}
-                        {primaryActions}
-                        {Object.entries(secondaryActions).map(([group, groupActions], index) => (
-                            <>
-                                {primaryActions.length > 0 || index > 0 ? <Menu.Divider key={group} /> : null}
-                                {secondaryGroupCount > 1 ? <Menu.Label key={group}>{group}</Menu.Label> : null}
-                                {groupActions}
-                            </>
-                        ))}
+                        <ActionsGroupsMenuItems
+                            classNames={classNames}
+                            styles={styles}
+                            actionGroups={
+                                primaryActions.length > 0
+                                    ? [{name: primaryGroupLabel, actions: primaryActions}, ...secondaryActionGroups]
+                                    : secondaryActionGroups
+                            }
+                        />
                     </Menu.Dropdown>
                 </Menu>
             </TableActionProvider>
         </InlineConfirm>
     );
+};
+
+interface ActionsGroupsMenuItemsProps {
+    styles: Partial<Record<TableActionsListStylesNames, CSSProperties>>;
+    classNames: Partial<Record<TableActionsListStylesNames, string>>;
+    actionGroups: ActionGroup[];
+}
+
+const ActionsGroupsMenuItems = ({styles, classNames, actionGroups}: ActionsGroupsMenuItemsProps) => {
+    const {getStyles} = useTableContext();
+    return actionGroups.map(({name, actions}, index) => (
+        <Box key={name} {...getStyles('actionsGroup', {styles, classNames})}>
+            {actionGroups.length > 1 ? (
+                <Menu.Label {...getStyles('actionsGroupLabel', {styles, classNames})}>{name}</Menu.Label>
+            ) : null}
+            <Box {...getStyles('actionsGroupItems', {styles, classNames})}>{actions}</Box>
+            {index < actionGroups.length - 1 ? (
+                <Menu.Divider {...getStyles('actionsGroupDivider', {styles, classNames})} />
+            ) : null}
+        </Box>
+    ));
 };
 
 TableActionsList.extend = (input: ExtendComponent<TableActionsListFactory>) => input;

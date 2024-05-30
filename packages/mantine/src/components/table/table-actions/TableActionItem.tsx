@@ -24,7 +24,7 @@ export interface TableActionItemProps
     /**
      * Content to put on the left of the label
      */
-    leftSection: ReactNode;
+    leftSection?: ReactNode;
 }
 
 type TableActionItemFactory = PolymorphicFactory<{
