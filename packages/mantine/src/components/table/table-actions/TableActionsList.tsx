@@ -173,7 +173,7 @@ export const TableActionsList = (props: TableActionsListProps) => {
                         {primaryActions}
                         {primaryActions.length > 0 ? <Menu.Divider key={'primary-actions-divider'} /> : null}
                         {Object.entries(secondaryActions).map(([group, groupActions], index, groups) => (
-                            <Box {...getStyles('actionsGroup', {styles, classNames})}>
+                            <Box key={group} {...getStyles('actionsGroup', {styles, classNames})}>
                                 {secondaryGroupCount > 1 ? (
                                     <Menu.Label key={group} {...getStyles('actionsGroupLabel', {styles, classNames})}>
                                         {group}
