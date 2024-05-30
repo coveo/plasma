@@ -69,7 +69,7 @@ const Demo = () => {
             getRowId={({id}) => id}
             columns={columns}
             options={options}
-            getRowActions={(selected: IExampleRowData[]): Array<TableAction<IExampleRowData>> =>
+            getRowActions={(selected: IExampleRowData[]): TableAction[] =>
                 selected.length === 1
                     ? [
                           {

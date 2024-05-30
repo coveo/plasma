@@ -2,15 +2,18 @@ import {Box, Center, Factory, Loader, useProps, useStyles} from '@mantine/core';
 import {useClickOutside, useMergedRef} from '@mantine/hooks';
 import {
     ColumnDef,
-    defaultColumnSizing,
-    getCoreRowModel,
     Row,
     RowSelectionState,
+    defaultColumnSizing,
+    getCoreRowModel,
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
 import {Children, ForwardedRef, ReactElement, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils';
+import classes from './Table.module.css';
+import {TableLayout, TableProps} from './Table.types';
+import {TableProvider} from './TableContext';
 import {TableLayouts} from './layouts/TableLayouts';
 import {TableActionItem, TableActionItemStylesNames, TableHeaderActionsStylesNames} from './table-actions';
 import {TableActionsListStylesNames} from './table-actions/TableActionsList';
@@ -33,9 +36,6 @@ import {TableNoData} from './table-no-data/TableNoData';
 import {TablePagination} from './table-pagination/TablePagination';
 import {TablePerPage} from './table-per-page/TablePerPage';
 import {TablePredicate, TablePredicateStylesNames} from './table-predicate/TablePredicate';
-import classes from './Table.module.css';
-import {TableLayout, TableProps} from './Table.types';
-import {TableProvider} from './TableContext';
 import {TableState} from './use-table';
 
 type TableStylesNames =
@@ -241,7 +241,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                     <Layout.Header
                                         getRowExpandedContent={getRowExpandedContent}
                                         getRowAttributes={getRowAttributes}
-                                        getRowActions={getRowActions}
                                         loading={loading}
                                         {...layoutProps}
                                     />
@@ -251,7 +250,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                         <Layout.Body
                                             getRowExpandedContent={getRowExpandedContent}
                                             getRowAttributes={getRowAttributes}
-                                            getRowActions={getRowActions}
                                             loading={loading}
                                             {...layoutProps}
                                         />

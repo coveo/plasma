@@ -8,8 +8,9 @@ import {TableStore} from './use-table';
 
 export type TableLayoutProps<TData = unknown> = Pick<
     TableProps<TData>,
-    'getRowExpandedContent' | 'getRowAttributes' | 'getRowActions' | 'loading'
->;
+    'getRowExpandedContent' | 'getRowAttributes' | 'loading'
+> &
+    TableProps<TData>['layoutProps'];
 
 export interface TableLayout {
     (props: {children: ReactNode}): ReactElement;
@@ -64,7 +65,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      * @param datum the row for which the children should be generated.
      * @default []
      */
-    getRowActions?: (data: TData[]) => Array<TableAction<TData>>;
+    getRowActions?: (data: TData[]) => TableAction[];
     /**
      * Columns to display in the table.
      *
@@ -80,7 +81,16 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
     /**
      * Props passed down to the active layout Header and Body components
      */
-    layoutProps?: Record<string, any>;
+    layoutProps?: {
+        /**
+         * Called by the table layout when a row is double clicked.
+         * @param selectedRow The data of the row that was double clicked
+         * @param index The index of the row that was double clicked
+         * @param row The row object that was double clicked
+         * @returns
+         */
+        onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void;
+    } & Record<string, any>;
     /**
      * Whether the table is loading or not
      *
@@ -124,7 +134,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
     >;
 }
 
-export interface TableAction<TData = unknown> {
+export interface TableAction {
     /**
      * Group to which the action belongs
      * $$primary is reserved for primary actions
@@ -136,8 +146,4 @@ export interface TableAction<TData = unknown> {
      * Component to render, should be either `Table.PrimaryAction` or `Table.SecondaryAction`
      */
     component: ReactNode;
-    /**
-     * Callback triggered on a double click on the row
-     */
-    onRowDoubleClick?: (datum: TData, index: number, row: Row<TData>) => void;
 }
