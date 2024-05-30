@@ -22,6 +22,12 @@
 .actionsDropdown {
     text-align: left;
 }
+.actionsGroup {
+    &:has(.actionsGroupItems:empty) {
+        /* Hide empty groups */
+        display: none;
+    }
+}
 
 /* Table.Filter */
 .filterWrapper {

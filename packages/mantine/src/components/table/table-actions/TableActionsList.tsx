@@ -1,6 +1,7 @@
 import {MoreSize16Px} from '@coveord/plasma-react-icons';
 import {
     ActionIcon,
+    Box,
     Button,
     CompoundStylesApiProps,
     ExtendComponent,
@@ -10,13 +11,20 @@ import {
     Tooltip,
     useProps,
 } from '@mantine/core';
-import {Fragment, MouseEventHandler, ReactNode, useState} from 'react';
+import {MouseEventHandler, ReactNode, useState} from 'react';
 import {InlineConfirm} from '../../inline-confirm';
 import {TableAction} from '../Table.types';
 import {useTableContext} from '../TableContext';
 import {TableActionProvider} from './TableActionContext';
 
-export type TableActionsListStylesNames = 'actionsTarget' | 'actionsDropdown' | 'actionsTooltip';
+export type TableActionsListStylesNames =
+    | 'actionsTarget'
+    | 'actionsDropdown'
+    | 'actionsTooltip'
+    | 'actionsGroup'
+    | 'actionsGroupLabel'
+    | 'actionsGroupDivider'
+    | 'actionsGroupItems';
 
 export interface TableActionsListProps
     extends Omit<MenuProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
@@ -120,12 +128,20 @@ export const TableActionsList = (props: TableActionsListProps) => {
                                 </Button>
                             </Menu.Target>
                             <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>
-                                {Object.entries(secondaryActions).map(([group, groupActions], index) => (
-                                    <Fragment key={group}>
-                                        {index > 0 ? <Menu.Divider /> : null}
-                                        {secondaryGroupCount > 1 ? <Menu.Label>{group}</Menu.Label> : null}
-                                        {groupActions}
-                                    </Fragment>
+                                {Object.entries(secondaryActions).map(([group, groupActions], index, groups) => (
+                                    <Box key={group} {...getStyles('actionsGroup', {styles, classNames})}>
+                                        {secondaryGroupCount > 1 ? (
+                                            <Menu.Label {...getStyles('actionsGroupLabel', {styles, classNames})}>
+                                                {group}
+                                            </Menu.Label>
+                                        ) : null}
+                                        <Box {...getStyles('actionsGroupItems', {styles, classNames})}>
+                                            {groupActions}
+                                        </Box>
+                                        {index < groups.length - 1 ? (
+                                            <Menu.Divider {...getStyles('actionsGroupDivider', {styles, classNames})} />
+                                        ) : null}
+                                    </Box>
                                 ))}
                             </Menu.Dropdown>
                         </Menu>
@@ -155,12 +171,22 @@ export const TableActionsList = (props: TableActionsListProps) => {
                             <Menu.Label>{primaryGroupLabel}</Menu.Label>
                         ) : null}
                         {primaryActions}
-                        {Object.entries(secondaryActions).map(([group, groupActions], index) => (
-                            <>
-                                {primaryActions.length > 0 || index > 0 ? <Menu.Divider key={group} /> : null}
-                                {secondaryGroupCount > 1 ? <Menu.Label key={group}>{group}</Menu.Label> : null}
-                                {groupActions}
-                            </>
+                        {primaryActions.length > 0 ? <Menu.Divider key={'primary-actions-divider'} /> : null}
+                        {Object.entries(secondaryActions).map(([group, groupActions], index, groups) => (
+                            <Box {...getStyles('actionsGroup', {styles, classNames})}>
+                                {secondaryGroupCount > 1 ? (
+                                    <Menu.Label key={group} {...getStyles('actionsGroupLabel', {styles, classNames})}>
+                                        {group}
+                                    </Menu.Label>
+                                ) : null}
+                                <Box {...getStyles('actionsGroupItems', {styles, classNames})}>{groupActions}</Box>
+                                {index < groups.length - 1 ? (
+                                    <Menu.Divider
+                                        key={group}
+                                        {...getStyles('actionsGroupDivider', {styles, classNames})}
+                                    />
+                                ) : null}
+                            </Box>
                         ))}
                     </Menu.Dropdown>
                 </Menu>
