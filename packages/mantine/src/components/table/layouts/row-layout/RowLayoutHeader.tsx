@@ -29,11 +29,12 @@ export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: Forw
         getRowExpandedContent: _getRowExpandedContent,
         getRowActions: _getRowActions,
         loading: _loading,
+        getRowAttributes: _getRowAttributes,
+        onRowDoubleClick: _onRowDoubleClick,
         className,
         style,
         classNames,
         styles,
-        getRowAttributes: _getRowAttributes,
         ...others
     } = useProps('RowLayoutHeader', defaultProps as RowLayoutHeaderProps<T>, props);
     const {table, store} = useTableContext<T>();
