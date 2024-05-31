@@ -30,7 +30,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
     const ctx = useRowLayout();
     const {
         getRowExpandedContent,
-        getRowActions,
+        onRowDoubleClick,
         loading,
         classNames,
         className,
@@ -47,8 +47,6 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
 
     const rows = table.getRowModel()?.rows.map((row) => {
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
-        const rowActions = getRowActions?.([row.original]) ?? null;
-        const doubleClickAction = rowActions?.find((action) => Boolean(action.onRowDoubleClick))?.onRowDoubleClick;
         const isSelected = !!row.getIsSelected();
         const shouldKeepSelection = store.rowSelectionForced && isSelected;
         const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
@@ -64,7 +62,9 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
             <Fragment key={row.id}>
                 <tr
                     onClick={onClick}
-                    onDoubleClick={() => doubleClickAction?.(row.original, row.index, row)}
+                    onDoubleClick={() => {
+                        onRowDoubleClick?.(row.original, row.index, row);
+                    }}
                     data-selectable={store.rowSelectionEnabled}
                     data-selected={isSelected}
                     data-multi-selection={store.multiRowSelectionEnabled}

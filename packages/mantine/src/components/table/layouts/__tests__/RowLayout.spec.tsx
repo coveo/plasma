@@ -224,13 +224,7 @@ describe('RowLayout', () => {
                     getRowId={({id}) => id}
                     data={data}
                     columns={columns}
-                    getRowActions={() => [
-                        {
-                            group: 'any',
-                            component: null,
-                            onRowDoubleClick: doubleClickSpy,
-                        },
-                    ]}
+                    layoutProps={{onRowDoubleClick: doubleClickSpy}}
                 />
             );
         };

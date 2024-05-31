@@ -42,6 +42,7 @@ const Demo = () => {
             data={data}
             columns={columns}
             getRowId={({id}) => id.toString()}
+            layoutProps={{onRowDoubleClick: (row) => alert(`Row double clicked: ${row.firstName}`)}}
             getRowActions={(selected: Person[]) => [
                 {
                     group: 'Actions',
