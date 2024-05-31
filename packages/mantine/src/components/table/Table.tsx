@@ -157,7 +157,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             minSize: defaultColumnSizing.minSize,
             maxSize: defaultColumnSizing.maxSize,
         },
-        rowCount: store.state.totalEntries,
+        rowCount: options?.getFilteredRowModel ? undefined : store.state.totalEntries,
         ...options,
     });
 
