@@ -1,3 +1,12 @@
+## 53.1.4-next.11 (2024-05-31)
+
+
+### Bug Fixes
+
+* **mantine:** stop passing onRowDoubleClick handler to tr node (#3735) 12bb191, closes #3735
+
+
+
 ## 53.1.4-next.10 (2024-05-31)
 
 
