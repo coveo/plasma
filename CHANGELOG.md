@@ -1,3 +1,13 @@
+## 53.1.4-next.10 (2024-05-31)
+
+
+### Bug Fixes
+
+* **mantine, table:** client side pagination rowCount (#3734) dab0731, closes #3734
+* **mantine:** perf fix related to double click action (#3733) 44c6f6b, closes #3733
+
+
+
 ## 53.1.4-next.9 (2024-05-30)
 
 
