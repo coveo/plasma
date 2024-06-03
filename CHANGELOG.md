@@ -1,3 +1,12 @@
+## 53.1.4-next.12 (2024-06-03)
+
+
+### Bug Fixes
+
+* **mantine:** make sure CodeEditor maxHeight prop works (#3736) 76df2ed, closes #3736
+
+
+
 ## 53.1.4-next.11 (2024-05-31)
 
 
