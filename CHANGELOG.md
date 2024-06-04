@@ -1,3 +1,28 @@
+# 54.0.0 (2024-06-04)
+
+
+### Bug Fixes
+
+* **website:** remove custom style with props and module css (#3703) 9a6b436, closes #3703
+
+
+### Features
+
+* plasma-react removed, plasma-style removed, table refactor (#3709) 7ec8a48, closes #3709
+
+
+### BREAKING CHANGES
+
+* Significant changes to the Table component for better integration with react-query and reduced code duplication.
+Introduction of a new `store` prop and `useTable` hook for the Table component.
+Deprecation of `onMount` and `onChange` props, replaced by the `useEffect` hook.
+Introduction of a new `Table.NoData` component.
+Removal of `Table.Consumer` and `Table.Actions`.
+Changes to `Table.Pagination` - `totalPages` prop removed, now computed automatically.
+Renamed `useTable` hook to `useTableContext`.
+
+
+
 ## 53.1.4-next.12 (2024-06-03)
 
 
