@@ -45,7 +45,7 @@ describe('InlineConfirm', () => {
         );
 
         await user.click(screen.getByRole('button', {name: /open menu/i}));
-        await user.click(screen.getByRole('menuitem', {name: /delete/i}));
+        await user.click(await screen.findByRole('menuitem', {name: /delete/i}));
 
         expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
@@ -172,6 +172,6 @@ describe('InlineConfirm', () => {
 
         await user.hover(deleteButton.parentElement);
 
-        expect(screen.getByRole('tooltip', {name: /You shall not pass/i})).toBeInTheDocument();
+        expect(await screen.findByRole('tooltip', {name: /You shall not pass/i})).toBeInTheDocument();
     });
 });
