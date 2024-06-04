@@ -16,6 +16,11 @@
             "groupName": "@tanstack table",
             "description": "Group @tanstack table packages together because they need to be updated at the same time",
             "matchPackagePrefixes": ["@tanstack/"]
+        },
+        {
+            "groupName": "ui-kit",
+            "description": "Group ui-kit packages together because they need to be updated at the same time",
+            "matchPackagePrefixes": ["@coveo/atomic-react", "@coveo/headless"]
         }
     ],
     "lockFileMaintenance": {
