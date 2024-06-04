@@ -78,11 +78,12 @@
         "sort-package-json": "2.10.0",
         "stylelint": "16.6.1",
         "stylelint-config-standard-scss": "13.1.0",
-        "turbo": "1.13.4",
+        "turbo": "2.0.0",
         "typescript": "5.4.5",
         "underscore": "1.13.6",
         "walkdir": "0.4.1"
     },
+    "packageManager": "pnpm@8.15.7",
     "pnpm": {
         "peerDependencyRules": {
             "ignoreMissing": [
