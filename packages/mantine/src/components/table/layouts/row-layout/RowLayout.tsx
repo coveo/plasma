@@ -5,9 +5,9 @@ import {TableLayout} from '../../Table.types';
 import {RowLayoutBody, RowLayoutBodyStylesNames} from './RowLayoutBody';
 import {RowLayoutProvider} from './RowLayoutContext';
 import {RowLayoutHeader, RowLayoutHeaderStyleNames} from './RowLayoutHeader';
-import {RowLayoutIcon, RowLayoutIconStylesNames} from './RowLayoutIcon';
+import {RowLayoutIcon} from './RowLayoutIcon';
 
-type RowLayoutStylesNames = RowLayoutHeaderStyleNames | RowLayoutIconStylesNames | RowLayoutBodyStylesNames;
+type RowLayoutStylesNames = RowLayoutHeaderStyleNames | RowLayoutBodyStylesNames;
 export interface RowLayoutProps extends StylesApiProps<RowLayoutFactory> {
     children: ReactNode;
 }

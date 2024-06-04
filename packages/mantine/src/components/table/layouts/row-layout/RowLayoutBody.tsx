@@ -1,14 +1,13 @@
-import {Box, BoxProps, Collapse, Factory, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {Box, BoxProps, Collapse, CompoundStylesApiProps, Factory, useProps} from '@mantine/core';
 import {flexRender} from '@tanstack/react-table';
 import {defaultColumnSizing} from '@tanstack/table-core';
 import {ForwardedRef, Fragment, type MouseEvent} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils';
+import {TableLayoutProps} from '../../Table.types';
+import {useTableContext} from '../../TableContext';
 import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn';
 import {TableSelectableColumn} from '../../table-column/TableSelectableColumn';
 import {TableLoading} from '../../table-loading/TableLoading';
-import {useTable} from '../../TableContext';
-import {TableLayoutProps} from '../TableLayouts';
 import {useRowLayout} from './RowLayoutContext';
 
 export type RowLayoutBodyStylesNames = 'row' | 'cell' | 'collapsibleRow' | 'collapsibleWrapper';
@@ -30,32 +29,31 @@ const defaultProps: Partial<RowLayoutBodyProps<unknown>> = {};
 export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLTableRowElement>}) => {
     const ctx = useRowLayout();
     const {
-        table,
-        doubleClickAction,
-        getExpandChildren,
+        getRowExpandedContent,
+        onRowDoubleClick,
         loading,
-        keepSelection,
         classNames,
         className,
         styles,
         style,
+        getRowAttributes,
         ...others
     } = useProps('RowLayoutBody', defaultProps as RowLayoutBodyProps<T>, props);
-    const {multiRowSelectionEnabled, disableRowSelection} = useTable();
+    const {table, store} = useTableContext<T>();
     const toggleCollapsible = (el: HTMLTableRowElement) => {
         const cell = el.children[el.children.length - 1] as HTMLTableCellElement;
         cell.querySelector('button').click();
     };
 
     const rows = table.getRowModel()?.rows.map((row) => {
-        const rowChildren = getExpandChildren?.(row.original) ?? null;
+        const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
-        const shouldKeepSelection = keepSelection && isSelected;
+        const shouldKeepSelection = store.rowSelectionForced && isSelected;
         const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
             if (rowChildren) {
                 toggleCollapsible(event.currentTarget);
             }
-            if (!disableRowSelection && !multiRowSelectionEnabled && !shouldKeepSelection) {
+            if (store.rowSelectionEnabled && !store.multiRowSelectionEnabled && !shouldKeepSelection) {
                 row.toggleSelected();
             }
         };
@@ -64,13 +62,16 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
             <Fragment key={row.id}>
                 <tr
                     onClick={onClick}
-                    onDoubleClick={() => doubleClickAction?.(row.original)}
-                    data-selectable={!disableRowSelection}
+                    onDoubleClick={() => {
+                        onRowDoubleClick?.(row.original, row.index, row);
+                    }}
+                    data-selectable={store.rowSelectionEnabled}
                     data-selected={isSelected}
-                    data-multi-selection={multiRowSelectionEnabled}
+                    data-multi-selection={store.multiRowSelectionEnabled}
                     aria-selected={isSelected}
                     data-testid={row.id}
                     {...ctx.getStyles('row', {classNames, className, styles, style})}
+                    {...(getRowAttributes?.(row.original, row.index, row) ?? {})}
                     {...others}
                 >
                     {row.getVisibleCells().map((cell) => {
@@ -82,9 +83,8 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                         };
 
                         const onCollapsibleCellClick = (event: MouseEvent<HTMLTableCellElement>) => {
-                            if (cell.column.id === TableSelectableColumn.id && !disableRowSelection) {
+                            if (cell.column.id === TableSelectableColumn.id && store.rowSelectionEnabled) {
                                 event.stopPropagation();
-                                row.getToggleSelectedHandler();
                             }
                         };
 

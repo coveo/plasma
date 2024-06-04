@@ -1,12 +1,12 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import {Box, BoxProps, factory, Factory, Grid, Tooltip, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {Box, BoxProps, CompoundStylesApiProps, factory, Factory, Grid, Tooltip, useProps} from '@mantine/core';
 import {ReactNode} from 'react';
 
 import {Button} from '../../button';
 import {TableLayoutControl} from '../layouts/TableLayoutControl';
 import {TableComponentsOrder} from '../Table';
-import {useTable, useTableStyles} from '../TableContext';
+import {TableHeaderActions} from '../table-actions';
+import {useTableContext} from '../TableContext';
 
 export type TableHeaderStylesNames = 'headerRoot' | 'headerGrid' | 'headerGridInner' | 'headerCol';
 
@@ -17,6 +17,12 @@ export interface TableHeaderProps
     children?: ReactNode;
     unselectAllLabel?: string;
     selectedCountLabel?: (count: number) => string;
+    /**
+     * Whether to show actions when rows are selected
+     *
+     * default true
+     */
+    showActions?: boolean;
 }
 
 export type TableHeaderFactory = Factory<{
@@ -29,38 +35,48 @@ export type TableHeaderFactory = Factory<{
 const defaultProps: Partial<TableHeaderProps> = {
     unselectAllLabel: 'Unselect all',
     selectedCountLabel: (count) => `${count} selected`,
+    showActions: true,
 };
 
 export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
-    const ctx = useTableStyles();
-    const {unselectAllLabel, selectedCountLabel, children, classNames, className, styles, style, vars, ...others} =
-        useProps('PlasmaTableHeader', defaultProps, props);
-    const {getSelectedRows, multiRowSelectionEnabled, clearSelection, disableRowSelection} = useTable();
-    const selectedRows = getSelectedRows();
+    const {store, getStyles} = useTableContext();
+    const {
+        showActions,
+        unselectAllLabel,
+        selectedCountLabel,
+        children,
+        classNames,
+        className,
+        styles,
+        style,
+        vars: _vars,
+        ...others
+    } = useProps('PlasmaTableHeader', defaultProps, props);
+    const selectedRows = store.getSelectedRows();
 
     const stylesApiProps = {classNames, styles};
-    const innerStyles = ctx.getStyles('headerGridInner', stylesApiProps);
-    const gridStyles = ctx.getStyles('headerGrid', stylesApiProps);
+    const innerStyles = getStyles('headerGridInner', stylesApiProps);
+    const gridStyles = getStyles('headerGrid', stylesApiProps);
 
     return (
-        <Box ref={ref} {...ctx.getStyles('headerRoot', {className, style, ...stylesApiProps})} {...others}>
+        <Box ref={ref} {...getStyles('headerRoot', {className, style, ...stylesApiProps})} {...others}>
             <Grid
                 justify="flex-start"
                 align="center"
                 classNames={{inner: innerStyles.className, root: gridStyles.className}}
                 styles={{inner: innerStyles.style, root: gridStyles.style}}
             >
-                {multiRowSelectionEnabled && selectedRows.length > 0 ? (
+                {store.multiRowSelectionEnabled && selectedRows.length > 0 ? (
                     <Grid.Col
                         span="auto"
-                        {...ctx.getStyles('headerCol', stylesApiProps)}
+                        {...getStyles('headerCol', stylesApiProps)}
                         order={TableComponentsOrder.MultiSelectInfo}
                     >
                         <Tooltip label={unselectAllLabel}>
                             <Button
-                                onClick={clearSelection}
+                                onClick={store.clearRowSelection}
                                 variant="subtle"
-                                disabled={disableRowSelection}
+                                disabled={!store.rowSelectionEnabled}
                                 leftSection={<CrossSize16Px height={16} />}
                             >
                                 {selectedCountLabel(selectedRows.length)}
@@ -69,6 +85,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
                     </Grid.Col>
                 ) : null}
                 {children}
+                {showActions ? <TableHeaderActions /> : null}
                 <TableLayoutControl />
             </Grid>
         </Box>

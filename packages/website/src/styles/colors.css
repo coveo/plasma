@@ -8,8 +8,8 @@
     overflow: hidden;
     white-space: nowrap;
     transition:
-        max-height 0.15s ease-in 0,
-        max-width 0.15s ease-in 0;
+        max-height 0.15s ease-in,
+        max-width 0.15s ease-in;
 
     td:first-child {
         padding-right: 8px;
@@ -19,7 +19,7 @@
 .color-box {
     &:hover .color-details {
         max-width: 300px;
-        max-height: 60px;
+        max-height: 95px;
         transition-delay: 0.5s;
         transition-timing-function: ease-in-out;
         transition-duration: 0.3s;

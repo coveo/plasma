@@ -19,8 +19,14 @@
 }
 
 /* Table.Actions */
+.actionsDropdown {
+    text-align: left;
+}
 .actionsGroup {
-    display: inline-flex;
+    &:has(.actionsGroupItems:empty) {
+        /* Hide empty groups */
+        display: none;
+    }
 }
 
 /* Table.Filter */
@@ -37,6 +43,7 @@
     background-color: var(--mantine-color-gray-1);
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
     position: relative;
+    min-height: 69px;
 }
 
 .headerGridInner {

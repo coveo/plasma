@@ -2,6 +2,7 @@ import {
     BoxProps,
     Button,
     Checkbox,
+    CompoundStylesApiProps,
     Divider,
     factory,
     Factory,
@@ -12,11 +13,10 @@ import {
     Tooltip,
     useProps,
 } from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
+import {flexRender, Header} from '@tanstack/react-table';
 import {ReactNode} from 'react';
-
 import {TableComponentsOrder} from '../Table';
-import {useTable, useTableStyles} from '../TableContext';
+import {useTableContext} from '../TableContext';
 
 export type TableColumnsSelectorStylesNames = 'columnSelector' | 'columnSelectorWrapper';
 
@@ -32,11 +32,6 @@ export interface TableColumnsSelectorProps extends BoxProps, CompoundStylesApiPr
      */
     buttonVariant?: string;
     /**
-     * An array of column ids that the user cannot hide. This is useful for columns that are required for the table to function properly.
-     * @default []
-     */
-    nonHideableColumns?: string[];
-    /**
      * Whether the count of visible columns is shown in the button label.
      * @default false
      */
@@ -47,18 +42,19 @@ export interface TableColumnsSelectorProps extends BoxProps, CompoundStylesApiPr
      */
     maxSelectableColumns?: number;
     /**
-     * A dictionary of column ids and names to use for the checkbox labels.
-     */
-    columnNames: Record<string, string>;
-    /**
      * The content to display in the footer when maxSelectableColumns is defined.
      */
     footer?: ReactNode;
     /**
-     * The tooltip to display when the user hovers over a disabled checkbox.
+     * The tooltip to display when the user hovers over a disabled checkbox because of the limit.
      * @default 'You have reached the maximum display limit.'
      */
     limitReachedTooltip?: string;
+    /**
+     * The tooltip to display when the user hovers over a disabled checkbox because a column cannot be hidden.
+     * @default 'This column is always visible.'
+     */
+    alwaysVisibleTooltip?: string;
 }
 
 export type TableColumnsSelectorFactory = Factory<{
@@ -68,26 +64,24 @@ export type TableColumnsSelectorFactory = Factory<{
     compound: true;
 }>;
 
-const COLUMNS_IDS_TO_EXCLUDE = ['collapsible', 'select'];
-
 const defaultProps: Partial<TableColumnsSelectorProps> = {
     label: 'Edit columns',
     buttonVariant: 'outline',
     limitReachedTooltip: 'You have reached the maximum display limit.',
+    alwaysVisibleTooltip: 'This column is always visible.',
     showVisibleCountLabel: false,
 };
 
 export const TableColumnsSelector = factory<TableColumnsSelectorFactory>((props, ref) => {
-    const ctx = useTableStyles();
+    const {getStyles} = useTableContext();
     const {
         label,
         buttonVariant,
         showVisibleCountLabel,
-        nonHideableColumns = [],
         maxSelectableColumns,
         footer,
         limitReachedTooltip,
-        columnNames,
+        alwaysVisibleTooltip,
         classNames,
         className,
         styles,
@@ -95,12 +89,11 @@ export const TableColumnsSelector = factory<TableColumnsSelectorFactory>((props,
         vars,
         ...others
     } = useProps('TableColumnsSelector', defaultProps, props);
-    const {getAllColumns} = useTable();
+    const {table} = useTableContext();
 
-    const columnsToExclude = [...nonHideableColumns, ...COLUMNS_IDS_TO_EXCLUDE];
+    const allColumns = table.getAllLeafColumns();
 
-    const filteredColumns = getAllColumns().filter((column) => !columnsToExclude.includes(column.id));
-
+    const filteredColumns = allColumns.filter((column) => !column.columnDef.meta?.controlColumn);
     const selectedColumnsCount = filteredColumns.filter((column) => column.getIsVisible()).length;
 
     if (filteredColumns.length <= 0) {
@@ -113,7 +106,7 @@ export const TableColumnsSelector = factory<TableColumnsSelectorFactory>((props,
         <Grid.Col
             span="content"
             order={TableComponentsOrder.ColumnsSelector}
-            {...ctx.getStyles('columnSelector', {className, style, ...stylesApiProps})}
+            {...getStyles('columnSelector', {className, style, ...stylesApiProps})}
             {...others}
         >
             <Popover withinPortal position="bottom" shadow="md">
@@ -124,18 +117,30 @@ export const TableColumnsSelector = factory<TableColumnsSelectorFactory>((props,
                 </Popover.Target>
                 <Popover.Dropdown miw={240}>
                     <ScrollArea.Autosize mah={154}>
-                        <Stack {...ctx.getStyles('columnSelectorWrapper', stylesApiProps)}>
+                        <Stack {...getStyles('columnSelectorWrapper', stylesApiProps)}>
                             {filteredColumns.map((column) => {
+                                const alwaysVisible = !column.getCanHide();
                                 const isDisabled =
-                                    selectedColumnsCount >= maxSelectableColumns && !column.getIsVisible();
+                                    (selectedColumnsCount >= maxSelectableColumns && !column.getIsVisible()) ||
+                                    alwaysVisible;
+
                                 return (
-                                    <Tooltip label={limitReachedTooltip} disabled={!isDisabled} position="left">
+                                    <Tooltip
+                                        label={alwaysVisible ? alwaysVisibleTooltip : limitReachedTooltip}
+                                        disabled={!isDisabled}
+                                        position="left"
+                                        key={column.id}
+                                    >
                                         <div>
                                             <Checkbox
                                                 key={column.id}
-                                                label={columnNames?.[column.id] || column.id}
+                                                label={flexRender(column.columnDef.header, {
+                                                    table,
+                                                    column,
+                                                    header: {column} as Header<unknown, unknown>,
+                                                })}
                                                 name={column.id}
-                                                checked={column.getIsVisible()}
+                                                checked={column.getIsVisible() || alwaysVisible}
                                                 disabled={isDisabled}
                                                 onChange={column.getToggleVisibilityHandler()}
                                             />

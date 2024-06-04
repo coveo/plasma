@@ -12,9 +12,6 @@ export default defineConfig({
         port: 3000,
         open: true,
     },
-    optimizeDeps: {
-        exclude: ['@coveo/atomic-react'],
-    },
     resolve: {
         alias: [
             {find: /@examples\/(.*)/, replacement: path.resolve(__dirname, 'src/examples/$1')},

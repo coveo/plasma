@@ -1,10 +1,10 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, waitFor, within} from '@test-utils';
+import {render, screen, userEvent, within} from '@test-utils';
 
 import {useState} from 'react';
 import {Table} from '../Table';
 import {TableLayout} from '../Table.types';
-import {useTable} from '../TableContext';
+import {useTable} from '../use-table';
 
 type RowData = {id: string; firstName: string; lastName?: string};
 
@@ -14,20 +14,25 @@ const columns: Array<ColumnDef<RowData>> = [
     columnHelper.accessor('lastName', {enableSorting: false}),
 ];
 
-const EmptyState = () => {
-    const {isFiltered} = useTable();
-    return isFiltered ? <span data-testid="filtered-empty-state" /> : <span data-testid="empty-state" />;
-};
+const EmptyState = (props: {isFiltered: boolean}) =>
+    props.isFiltered ? <span data-testid="filtered-empty-state" /> : <span data-testid="empty-state" />;
 
 describe('Table', () => {
-    describe('when it has no data', () => {
+    describe('when it is vacant', () => {
         it('hides the footer and header if the table is not filtered', () => {
-            render(
-                <Table data={[]} columns={columns} noDataChildren={<EmptyState />}>
-                    <Table.Header data-testid="table-header">header</Table.Header>
-                    <Table.Footer data-testid="table-footer">footer</Table.Footer>
-                </Table>,
-            );
+            const Fixture = () => {
+                const store = useTable<RowData>({initialState: {totalEntries: 0}});
+                return (
+                    <Table data={[]} store={store} columns={columns}>
+                        <Table.Header data-testid="table-header">header</Table.Header>
+                        <Table.Footer data-testid="table-footer">footer</Table.Footer>
+                        <Table.NoData>
+                            <EmptyState isFiltered={store.isFiltered} />
+                        </Table.NoData>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
 
             expect(screen.queryByTestId('table-header')).not.toBeInTheDocument();
             expect(screen.queryByTestId('table-footer')).not.toBeInTheDocument();
@@ -35,17 +40,19 @@ describe('Table', () => {
         });
 
         it('does not hide the footer and header if the table is filtered', () => {
-            render(
-                <Table
-                    data={[]}
-                    columns={columns}
-                    noDataChildren={<EmptyState />}
-                    initialState={{globalFilter: 'something'}}
-                >
-                    <Table.Header data-testid="table-header">header</Table.Header>
-                    <Table.Footer data-testid="table-footer">footer</Table.Footer>
-                </Table>,
-            );
+            const Fixture = () => {
+                const store = useTable<RowData>({initialState: {globalFilter: 'something'}});
+                return (
+                    <Table store={store} data={[]} columns={columns}>
+                        <Table.Header data-testid="table-header">header</Table.Header>
+                        <Table.Footer data-testid="table-footer">footer</Table.Footer>
+                        <Table.NoData>
+                            <EmptyState isFiltered={store.isFiltered} />
+                        </Table.NoData>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
 
             expect(screen.getByTestId('table-header')).toBeVisible();
             expect(screen.getByTestId('table-footer')).toBeVisible();
@@ -54,58 +61,52 @@ describe('Table', () => {
         });
     });
 
-    it('updates the table when a component in Table.Consumer triggers a change', async () => {
-        const user = userEvent.setup();
-        const spy = vi.fn();
-        const Fixture = () => {
-            const {onChange} = useTable();
-            return <button onClick={() => onChange()}>Click me</button>;
-        };
-        render(
-            <Table onChange={spy} data={[{id: '🆔', firstName: 'first', lastName: 'last'}]} columns={columns}>
-                <Table.Consumer>
-                    <Fixture />
-                </Table.Consumer>
-            </Table>,
-        );
-
-        expect(screen.getByRole('button', {name: 'Click me'})).toBeVisible();
-        expect(spy).not.toHaveBeenCalled();
-
-        await user.click(screen.getByRole('button', {name: 'Click me'}));
-
-        await waitFor(() => {
-            expect(spy).toHaveBeenCalledTimes(1);
-        });
-    });
-
     describe('when it is loading', () => {
+        it('indicates the table element as loading', () => {
+            const Fixture = ({loading}: {loading: boolean}) => {
+                const store = useTable<RowData>();
+                return <Table store={store} loading={loading} data={[]} columns={columns} />;
+            };
+            const {rerender} = render(<Fixture loading />);
+            expect(screen.getByRole('table')).toHaveAttribute('data-loading', 'true');
+            rerender(<Fixture loading={false} />);
+            expect(screen.getByRole('table')).not.toHaveAttribute('data-loading');
+        });
+
         it('shows a loading animation over the no data children (filtered)', () => {
-            render(
-                <Table
-                    loading
-                    data={[]}
-                    columns={columns}
-                    noDataChildren={<EmptyState />}
-                    initialState={{globalFilter: 'something'}}
-                >
-                    <Table.Header>
-                        <Table.Filter data-testid="table-filter" />
-                    </Table.Header>
-                </Table>,
-            );
+            const Fixture = () => {
+                const store = useTable<RowData>({initialState: {globalFilter: 'something'}});
+                return (
+                    <Table store={store} loading data={[]} columns={columns}>
+                        <Table.Header>
+                            <Table.Filter data-testid="table-filter" />
+                        </Table.Header>
+                        <Table.NoData>
+                            <EmptyState isFiltered={store.isFiltered} />
+                        </Table.NoData>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
             expect(screen.getByTestId('filtered-empty-state').parentElement).toBeVisible();
             expect(screen.getByTestId('filtered-empty-state').parentElement).toHaveClass('mantine-Skeleton-root');
         });
 
         it('shows a loading animation over the no data children (unfiltered)', () => {
-            render(
-                <Table loading data={[]} columns={columns} noDataChildren={<EmptyState />}>
-                    <Table.Header>
-                        <Table.Filter data-testid="table-filter" />
-                    </Table.Header>
-                </Table>,
-            );
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table store={store} loading data={[]} columns={columns}>
+                        <Table.Header>
+                            <Table.Filter data-testid="table-filter" />
+                        </Table.Header>
+                        <Table.NoData>
+                            <EmptyState isFiltered={store.isFiltered} />
+                        </Table.NoData>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
             expect(screen.getByTestId('empty-state').parentElement).toBeVisible();
             expect(screen.getByTestId('empty-state').parentElement).toHaveClass('mantine-Skeleton-root');
         });
@@ -113,19 +114,24 @@ describe('Table', () => {
 
     it('reset row selection when user click outside the table', async () => {
         const user = userEvent.setup();
-        render(
-            <div>
-                <div>I'm a header</div>
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
-                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
-                    ]}
-                    columns={columns}
-                />
-            </div>,
-        );
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <div>
+                    <div>outside table</div>
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={[
+                            {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                            {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+                        ]}
+                        columns={columns}
+                    />
+                </div>
+            );
+        };
+        render(<Fixture />);
 
         const row = screen.getByRole('row', {name: 'patate king', selected: false});
 
@@ -135,7 +141,7 @@ describe('Table', () => {
 
         expect(screen.getByRole('row', {name: 'patate king', selected: true})).toBeInTheDocument();
 
-        await user.click(screen.getByText(/i'm a header/i));
+        await user.click(screen.getByText(/outside table/i));
 
         expect(screen.getByRole('row', {name: 'patate king', selected: false})).toBeInTheDocument();
     });
@@ -145,6 +151,7 @@ describe('Table', () => {
 
         const Fixture = () => {
             const [cousinNode, setCousinNode] = useState<HTMLDivElement>();
+            const store = useTable<RowData>();
 
             return (
                 <>
@@ -155,6 +162,7 @@ describe('Table', () => {
                         clicking inside here clears rows selection
                     </div>
                     <Table
+                        store={store}
                         getRowId={({id}) => id}
                         data={[
                             {id: '🆔-1', firstName: 'John', lastName: 'Doe'},
@@ -193,16 +201,21 @@ describe('Table', () => {
 
         it('handles switching layout', async () => {
             const user = userEvent.setup();
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
-                    columns={columns}
-                    layouts={layouts}
-                >
-                    <Table.Header data-testid="table-header" />
-                </Table>,
-            );
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
+                        columns={columns}
+                        layouts={layouts}
+                    >
+                        <Table.Header data-testid="table-header" />
+                    </Table>
+                );
+            };
+            render(<Fixture />);
             expect(screen.getByRole('radio', {name: /layout 1/i})).toBeChecked();
             expect(screen.getByTestId('layout1-header')).toBeInTheDocument();
             expect(screen.getByTestId('layout1-body')).toBeInTheDocument();
@@ -220,39 +233,22 @@ describe('Table', () => {
             expect(screen.queryByTestId('layout1-body')).not.toBeInTheDocument();
         });
 
-        it('does not refetch data when switching layout', async () => {
-            const user = userEvent.setup();
-            const fetchDataSpy = vi.fn();
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
-                    columns={columns}
-                    onMount={fetchDataSpy}
-                    onChange={fetchDataSpy}
-                    layouts={layouts}
-                >
-                    <Table.Header data-testid="table-header" />
-                </Table>,
-            );
-
-            await user.click(screen.getByRole('radio', {name: /layout 2/i}));
-            await user.click(screen.getByRole('radio', {name: /layout 1/i}));
-            expect(fetchDataSpy).toHaveBeenCalledTimes(1);
-        });
-
         it('renders the layout specified in the initialState', () => {
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
-                    columns={columns}
-                    layouts={layouts}
-                    initialState={{layout: 'Layout 2'}}
-                >
-                    <Table.Header data-testid="table-header" />
-                </Table>,
-            );
+            const Fixture = () => {
+                const store = useTable<RowData>({initialState: {layout: 'Layout 2'}});
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={[{id: '🆔', firstName: 'first', lastName: 'last'}]}
+                        columns={columns}
+                        layouts={layouts}
+                    >
+                        <Table.Header data-testid="table-header" />
+                    </Table>
+                );
+            };
+            render(<Fixture />);
 
             expect(screen.getByRole('radio', {name: /layout 2/i})).toBeChecked();
             expect(screen.getByTestId('layout2-header')).toBeInTheDocument();
@@ -264,57 +260,26 @@ describe('Table', () => {
     });
 
     describe('when multi row selection is enabled', () => {
-        it('calls the onRowSelectionChange prop when the row selection changes', async () => {
-            const onRowSelectionChangeSpy = vi.fn();
-            const user = userEvent.setup();
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
-                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
-                    ]}
-                    columns={columns}
-                    multiRowSelectionEnabled
-                    onRowSelectionChange={onRowSelectionChangeSpy}
-                />,
-            );
-            await user.click(within(screen.getByRole('row', {name: /jane doe/i})).getByRole('checkbox'));
-            expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
-            expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([{id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}]);
-
-            onRowSelectionChangeSpy.mockClear();
-
-            await user.click(within(screen.getByRole('row', {name: /john smith/i})).getByRole('checkbox'));
-            expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
-            expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([
-                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
-                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
-            ]);
-
-            onRowSelectionChangeSpy.mockClear();
-
-            await user.click(screen.getByRole('checkbox', {name: /unselect all from this page/i}));
-            expect(onRowSelectionChangeSpy).toHaveBeenCalledTimes(1);
-            expect(onRowSelectionChangeSpy).toHaveBeenCalledWith([]);
-        });
-
         it('does not clear the row selection when clicking outside the table', async () => {
             const user = userEvent.setup();
-            render(
-                <div>
-                    <div>I'm a header</div>
-                    <Table
-                        getRowId={({id}) => id}
-                        data={[
-                            {id: '🆔-1', firstName: 'first', lastName: 'last'},
-                            {id: '🆔-2', firstName: 'patate', lastName: 'king'},
-                        ]}
-                        columns={columns}
-                        multiRowSelectionEnabled
-                    />
-                </div>,
-            );
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <div>
+                        <div>outside table</div>
+                        <Table
+                            store={store}
+                            getRowId={({id}) => id}
+                            data={[
+                                {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                                {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+                            ]}
+                            columns={columns}
+                        />
+                    </div>
+                );
+            };
+            render(<Fixture />);
 
             const row = screen.getByRole('row', {name: /patate king/i, selected: false});
 
@@ -324,26 +289,30 @@ describe('Table', () => {
 
             expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
 
-            await user.click(screen.getByText(/i'm a header/i));
+            await user.click(screen.getByText(/outside table/i));
 
             expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
         });
 
         it('unselects all the selected rows when clicking on the the unselect button from the table header', async () => {
             const user = userEvent.setup();
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
-                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
-                    ]}
-                    columns={columns}
-                    multiRowSelectionEnabled
-                >
-                    <Table.Header />
-                </Table>,
-            );
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={[
+                            {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                            {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                        ]}
+                        columns={columns}
+                    >
+                        <Table.Header />
+                    </Table>
+                );
+            };
+            render(<Fixture />);
 
             await user.click(screen.getByRole('checkbox', {name: /select all/i}));
             await user.click(screen.getByRole('button', {name: /2 selected/i}));
@@ -351,20 +320,27 @@ describe('Table', () => {
         });
 
         it('does not display number of selected rows if disableRowSelection is true', async () => {
-            render(
-                <Table
-                    getRowId={({id}) => id}
-                    data={[
-                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
-                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
-                    ]}
-                    columns={columns}
-                    multiRowSelectionEnabled
-                    initialState={{
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: false,
+                    initialState: {
                         rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}},
-                    }}
-                />,
-            );
+                    },
+                });
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={[
+                            {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                            {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                        ]}
+                        columns={columns}
+                    />
+                );
+            };
+            render(<Fixture />);
 
             expect(screen.queryByRole('button', {name: /1 selected/i})).not.toBeInTheDocument();
         });

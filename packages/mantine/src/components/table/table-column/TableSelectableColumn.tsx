@@ -7,6 +7,10 @@ import {ColumnDef} from '@tanstack/table-core';
 export const TableSelectableColumn: ColumnDef<unknown> = {
     id: 'select',
     enableSorting: false,
+    enableHiding: false,
+    meta: {
+        controlColumn: true,
+    },
     header: ({table}) => {
         const label = table.getIsAllRowsSelected() ? 'Unselect all from this page' : 'Select all from this page';
         return (

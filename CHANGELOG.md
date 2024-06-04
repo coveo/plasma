@@ -1,3 +1,157 @@
+## 53.1.4-next.12 (2024-06-03)
+
+
+### Bug Fixes
+
+* **mantine:** make sure CodeEditor maxHeight prop works (#3736) 76df2ed, closes #3736
+
+
+
+## 53.1.4-next.11 (2024-05-31)
+
+
+### Bug Fixes
+
+* **mantine:** stop passing onRowDoubleClick handler to tr node (#3735) 12bb191, closes #3735
+
+
+
+## 53.1.4-next.10 (2024-05-31)
+
+
+### Bug Fixes
+
+* **mantine, table:** client side pagination rowCount (#3734) dab0731, closes #3734
+* **mantine:** perf fix related to double click action (#3733) 44c6f6b, closes #3733
+
+
+
+## 53.1.4-next.9 (2024-05-30)
+
+
+### Bug Fixes
+
+* **mantine:** table action items leftSection prop is no longer required (#3732) 378a539, closes #3732
+
+
+
+## 53.1.4-next.8 (2024-05-29)
+
+
+### Bug Fixes
+
+* **mantine:** add data-loading attribute on table component (#3731) a4ad0c9, closes #3731
+
+
+
+## 53.1.4-next.7 (2024-05-28)
+
+
+### Bug Fixes
+
+* **mantine, table:** add missing property expanded from the state (#3730) aaa55b1, closes #3730
+
+
+
+## 53.1.4-next.6 (2024-05-27)
+
+
+### Bug Fixes
+
+* **mantine, inline-confirm:** allow prompt to be wrapped (#3729) 3594962, closes #3729
+
+
+
+## 53.1.4-next.5 (2024-05-23)
+
+
+### Bug Fixes
+
+* **mantine:** table actions group type (#3727) f9d428f, closes #3727
+* **tableActions:** changed interface so it extends button (#3728) 43418fd, closes #3728
+
+
+
+## 53.1.4-next.4 (2024-05-22)
+
+
+### Bug Fixes
+
+* **mantine:** close date range picker on click outside (#3724) cb7d66b, closes #3724
+
+
+### Features
+
+* **mantine, table:** rework actions again (#3725) b78bd6b, closes #3725
+
+
+
+## 53.1.4-next.3 (2024-05-21)
+
+
+### Features
+
+* **mantine:** pass down row object to getRow* props (#3722) 1375b58, closes #3722
+
+
+
+## 53.1.4-next.2 (2024-05-17)
+
+
+### Features
+
+* **mantine, table:** allow InlineConfirm actions in table (#3721) ef7f822, closes #3721
+
+
+
+## 53.1.4-next.1 (2024-05-15)
+
+
+### Features
+
+* **mantine:** add getRowAttributes prop on table (#3719) e7bee4f, closes #3719
+* **website:** clarify table examples (#3718) 9ecc38b, closes #3718
+
+
+
+## 53.1.4-next.0 (2024-05-13)
+
+
+### Bug Fixes
+
+* **deps:** cleanup dependencies 2dbc521
+* **website:** demo container has the wrong background color 97830e5
+* **website:** remove custom style with props and module css (#3703) 9a6b436, closes #3703
+* **website:** small visual adjustments 09051f9
+
+
+* refactor(mantine)!: adjust Table.Pagination & Table.PerPage to the breaking changes 303dcca
+* refactor(mantine)!: extracting the table state out into a hook fcdf1ee
+
+
+### Features
+
+* **mantine:** rework how Table.ColumnsSelector work f77aa8e
+* **website:** add a Table demo with React Query 505a760
+
+
+### BREAKING CHANGES
+
+* **mantine:** TableColumnsSelector no longer accept columnNames prop.
+Use enableHiding: false in the column definition instead.
+ TableColumnsSelector no longer accept nonHideableColumns prop.
+The ColumnsSelector component now auto determine the column names from the
+column definition (header property).
+* Table.PerPage no longer accept totalPages prop.
+Use the table store to set the total number of entries instead.
+* The table component now expect a store as prop.
+This store can be created with the new use-table hook.
+The Table.Consumer no longer exist.
+Components that require access to the table state no longer require to be rendered within the table.
+noDataChildren prop was replaced by the compound component Table.NoData
+
+
+
 ## 53.1.3 (2024-04-29)
 
 

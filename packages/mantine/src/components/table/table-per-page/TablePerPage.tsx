@@ -1,7 +1,7 @@
 import {Group, SegmentedControl, Text} from '@mantine/core';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useMemo} from 'react';
 
-import {useTable} from '../TableContext';
+import {useTableContext} from '../TableContext';
 import {TablePerPageProps} from './TablePerPage.types';
 
 export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE: number} = ({
@@ -9,23 +9,21 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     values = [25, 50, 100],
     onPerPageChange,
 }) => {
-    const {state, setState, getPageCount} = useTable();
+    const {store, table} = useTableContext();
+    const choices = useMemo(() => values.map((value) => value.toString()), [values]);
 
     const updatePerPage = (newPerPage: string) => {
         onPerPageChange?.(Number(newPerPage));
-        setState((prevState) => ({
-            ...prevState,
-            pagination: {pageIndex: 0, pageSize: parseInt(newPerPage, 10)},
-        }));
+        store.setPagination({pageIndex: 0, pageSize: parseInt(newPerPage, 10)});
     };
 
-    return getPageCount() > 0 ? (
+    return table.getPageCount() > 0 ? (
         <Group gap="sm">
             <Text fw={500}>{label}</Text>
             <SegmentedControl
-                value={state.pagination.pageSize.toString() ?? values?.[1].toString()}
+                value={store.state.pagination.pageSize.toString() ?? choices[1] ?? choices[0]}
                 onChange={updatePerPage}
-                data={values.map((value) => value.toString())}
+                data={choices}
                 size="sm"
             />
         </Group>

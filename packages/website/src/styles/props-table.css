@@ -1,10 +1,11 @@
 .props-table {
     max-height: 500px;
-    margin-left: -24px;
     overflow: auto;
+    border: 1px solid var(--mantine-color-gray-3);
+    border-radius: var(--mantine-radius-md);
 
     table {
-        color: var(--grey-100);
+        color: var(--mantine-color-black);
 
         th {
             position: sticky;
@@ -13,11 +14,12 @@
             padding: 0 24px;
             text-align: left;
             vertical-align: middle;
-            background-color: var(--white);
+            background-color: var(--mantine-color-white);
+            font-weight: 500;
         }
 
         td {
-            padding: 0 24px;
+            padding: var(--mantine-spacing-sm);
             vertical-align: middle;
         }
 
@@ -25,12 +27,12 @@
             height: 44px;
 
             &:nth-child(odd) {
-                background-color: var(--grey-20);
+                background-color: var(--mantine-color-gray-1);
             }
         }
 
         .code {
-            color: var(--grey-100);
+            color: var(--mantine-color-black);
         }
     }
 }

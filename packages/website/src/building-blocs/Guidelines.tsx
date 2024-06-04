@@ -1,10 +1,11 @@
-import {Tooltip} from '@coveord/plasma-react';
+import {List as MantineList, Text, Title, TitleOrder, Tooltip} from '@coveord/plasma-mantine';
+import {Table as MantineTable} from '@mantine/core';
 import {ReactNode} from 'react';
 import {Components} from 'react-markdown';
 
 const MarkdownFiles = new Map();
 
-const guidelines = import.meta.glob('../docs/**/*.md', {as: 'raw', eager: true});
+const guidelines = import.meta.glob('../docs/**/*.md', {query: '?raw', import: 'default', eager: true});
 
 for (const filePath in guidelines) {
     if (Object.hasOwn(guidelines, filePath)) {
@@ -18,61 +19,78 @@ export const Guidelines = {
     get: (fileName: string): string => MarkdownFiles.get(fileName),
 };
 
-const Table: Components['table'] = ({children}: {children: ReactNode}) => (
-    <table className="table my2">{children}</table>
+const Table: Components['table'] = ({children}: {children: ReactNode}) => <MantineTable>{children}</MantineTable>;
+
+const TableHeader: Components['thead'] = ({children}: {children: ReactNode}) => (
+    <MantineTable.Thead>{children}</MantineTable.Thead>
 );
 
-const OrderedList: Components['ol'] = ({children}: {children: ReactNode}) => (
-    <ol className="list-decimal mt1">{children}</ol>
+const TableBody: Components['tbody'] = ({children}: {children: ReactNode}) => (
+    <MantineTable.Tbody>{children}</MantineTable.Tbody>
 );
 
-const UnorderedList: Components['ul'] = ({children}: {children: ReactNode}) => (
-    <ul className="list-disc mt1">{children}</ul>
+const TableHeading: Components['th'] = ({children, isHeader, ...others}) => (
+    <MantineTable.Th fw={500} {...others}>
+        {children}
+    </MantineTable.Th>
 );
+
+const TableRow: Components['tr'] = ({children, isHeader, ...others}) => (
+    <MantineTable.Tr {...others}>{children}</MantineTable.Tr>
+);
+
+const TableCell: Components['td'] = ({children, ...others}) => (
+    <MantineTable.Td {...others}>{children}</MantineTable.Td>
+);
+
+const List = ({children, ordered}) => <MantineList type={ordered ? 'ordered' : 'unordered'}>{children}</MantineList>;
+
+const ListItem: Components['li'] = ({children}) => <MantineList.Item>{children}</MantineList.Item>;
 
 const Emphasis: Components['em'] = ({children}: {children: ReactNode}) => (
-    <em className="body-m-book-italic">{children}</em>
+    <Text span fs="initial">
+        {children}
+    </Text>
 );
 
 const Strong: Components['strong'] = ({children}: {children: ReactNode}) => (
-    <strong className="body-m">{children}</strong>
+    <Text span fw={500}>
+        {children}
+    </Text>
 );
 
 const Link: Components['a'] = ({title, href, children, ...props}) => (
-    <Tooltip title={title || ''}>
+    <Tooltip label={title || ''}>
         <a target={href && href.match(/^http/) ? '_blank' : ''} className="link" href={href} {...props}>
             {children}
         </a>
     </Tooltip>
 );
 
-const Heading1: Components['h1'] = ({children}: {children: ReactNode}) => (
-    <h1 className="h4-book mt5 mb1">{children}</h1>
+const Heading: Components['h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'] = ({level, children, ...props}) => (
+    <Title order={(level > 2 ? 6 : level + 2) as TitleOrder} mt="sm" {...props}>
+        {children}
+    </Title>
 );
 
-const Heading2: Components['h2'] = ({children}: {children: ReactNode}) => <h2 className="h6 mt2 mb1">{children}</h2>;
-
-const Heading: Components['h3' | 'h4' | 'h5' | 'h6'] = ({level, children, ...props}) => {
-    const Hx = `h${level + 3}` as 'h3' | 'h4' | 'h5' | 'h6';
-    return (
-        <Hx {...props} className="body-m my1">
-            {children}
-        </Hx>
-    );
-};
-
-const Divider: Components['hr'] = () => <hr className="my3" />;
+const Divider: Components['hr'] = () => <hr />;
 
 export const MarkdownOverrides: Components = {
-    h1: Heading1,
-    h2: Heading2,
+    h1: Heading,
+    h2: Heading,
     h3: Heading,
     h4: Heading,
     h5: Heading,
     h6: Heading,
     table: Table,
-    ul: UnorderedList,
-    ol: OrderedList,
+    thead: TableHeader,
+    tbody: TableBody,
+    th: TableHeading,
+    tr: TableRow,
+    td: TableCell,
+    ul: List,
+    ol: List,
+    li: ListItem,
     a: Link,
     strong: Strong,
     em: Emphasis,

@@ -1,5 +1,5 @@
 import {ComponentMetadata} from '@coveord/plasma-components-props-analyzer';
-import {Code, Text} from '@coveord/plasma-mantine';
+import {Badge, Box, Code, Text} from '@coveord/plasma-mantine';
 import {FunctionComponent} from 'react';
 
 export interface PropsTableProps {
@@ -13,8 +13,8 @@ export const PropsTable: FunctionComponent<PropsTableProps> = ({propsMetadata = 
 
     return (
         <div className="props-table">
-            <table className="full-content-x">
-                <thead className="body-m">
+            <table>
+                <thead>
                     <tr>
                         <th>Name</th>
                         <th>Type</th>
@@ -29,25 +29,33 @@ export const PropsTable: FunctionComponent<PropsTableProps> = ({propsMetadata = 
                             <tr key={name}>
                                 <td>
                                     <Code>{name}</Code>
-                                    {optional ? null : <span className="body-s-book-italic-subdued ml2">required</span>}
+                                    {optional ? null : (
+                                        <Badge color="info" ml="xs">
+                                            REQUIRED
+                                        </Badge>
+                                    )}
                                     {deprecation !== null ? (
-                                        <span className="body-s-book-italic-subdued ml2">deprecated</span>
+                                        <Badge color="warning" ml="xs">
+                                            DEPRECATED
+                                        </Badge>
                                     ) : null}
                                 </td>
                                 <td>
                                     <Code>{type}</Code>
                                 </td>
                                 <td>{defaultValue ? <Code>{defaultValue}</Code> : null}</td>
-                                <td className="py1">
-                                    <Text size="sm">
+                                <td>
+                                    <Text span size="sm">
                                         {deprecation !== null && <div>{deprecation}</div>}
                                         {description}
                                         {params?.length > 0 && (
                                             <ul>
                                                 {params.map(({parameterName, text}) => (
                                                     <li key={parameterName}>
-                                                        <span className="code">{parameterName}</span>
-                                                        <span className="mx1">&ndash;</span>
+                                                        <Code>{parameterName}</Code>
+                                                        <Box component="span" px="xs">
+                                                            &ndash;
+                                                        </Box>
                                                         {text}
                                                     </li>
                                                 ))}

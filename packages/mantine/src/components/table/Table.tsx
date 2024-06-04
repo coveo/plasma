@@ -1,22 +1,23 @@
 import {Box, Center, Factory, Loader, useProps, useStyles} from '@mantine/core';
-import {useForm} from '@mantine/form';
-import {useDidUpdate, useMergedRef} from '@mantine/hooks';
+import {useClickOutside, useMergedRef} from '@mantine/hooks';
 import {
     ColumnDef,
+    Row,
+    RowSelectionState,
     defaultColumnSizing,
     getCoreRowModel,
-    Row,
-    TableState as TanstackTableState,
     useReactTable,
 } from '@tanstack/react-table';
-import debounce from 'lodash.debounce';
-import defaultsDeep from 'lodash.defaultsdeep';
-import {Children, cloneElement, Dispatch, ForwardedRef, ReactElement, useCallback, useEffect, useState} from 'react';
-
-import {useRowSelection} from '../../hooks/useRowSelection';
+import isEqual from 'fast-deep-equal';
+import {Children, ForwardedRef, ReactElement, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils';
+import classes from './Table.module.css';
+import {TableLayout, TableProps} from './Table.types';
+import {TableProvider} from './TableContext';
 import {TableLayouts} from './layouts/TableLayouts';
-import {TableActions, TableActionsStylesNames} from './table-actions/TableActions';
+import {TableActionItem, TableActionItemStylesNames, TableHeaderActionsStylesNames} from './table-actions';
+import {TableActionsListStylesNames} from './table-actions/TableActionsList';
+import {TableActionsColumn} from './table-column/TableActionsColumn';
 import {
     TableAccordionColumn,
     TableCollapsibleColumn,
@@ -24,7 +25,6 @@ import {
 } from './table-column/TableCollapsibleColumn';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn';
 import {TableColumnsSelector, TableColumnsSelectorStylesNames} from './table-columns-selector/TableColumnsSelector';
-import {TableConsumer} from './table-consumer/TableConsumer';
 import {TableDateRangePicker, TableDateRangePickerStylesNames} from './table-date-range-picker/TableDateRangePicker';
 import {TableFilter, TableFilterStylesNames} from './table-filter/TableFilter';
 import {TableFooter} from './table-footer/TableFooter';
@@ -32,19 +32,20 @@ import {TableHeader, TableHeaderStylesNames} from './table-header/TableHeader';
 import {TableThStylesNames} from './table-header/Th';
 import {TableLastUpdated, TableLastUpdatedStylesNames} from './table-last-updated/TableLastUpdated';
 import {TableLoading} from './table-loading/TableLoading';
+import {TableNoData} from './table-no-data/TableNoData';
 import {TablePagination} from './table-pagination/TablePagination';
 import {TablePerPage} from './table-per-page/TablePerPage';
 import {TablePredicate, TablePredicateStylesNames} from './table-predicate/TablePredicate';
-import classes from './Table.module.css';
-import {TableFormType, TableLayout, TableProps, TableState} from './Table.types';
-import {TableContext, TableStylesProvider} from './TableContext';
+import {TableState} from './use-table';
 
 type TableStylesNames =
     | 'root'
     | 'table'
     | 'header'
     | 'body'
-    | TableActionsStylesNames
+    | TableHeaderActionsStylesNames
+    | TableActionsListStylesNames
+    | TableActionItemStylesNames
     | TableCollapsibleColumnStylesNames
     | TableDateRangePickerStylesNames
     | TableFilterStylesNames
@@ -59,49 +60,47 @@ export type PlasmaTableFactory = Factory<{
     ref: HTMLDivElement;
     stylesNames: TableStylesNames;
     staticComponents: {
-        Actions: typeof TableActions;
+        AccordionColumn: typeof TableAccordionColumn;
+        ActionsColumn: typeof TableActionsColumn;
+        ActionItem: typeof TableActionItem;
+        CollapsibleColumn: typeof TableCollapsibleColumn;
+        ColumnsSelector: typeof TableColumnsSelector;
+        DateRangePicker: typeof TableDateRangePicker;
         Filter: typeof TableFilter;
         Footer: typeof TableFooter;
         Header: typeof TableHeader;
         LastUpdated: typeof TableLastUpdated;
+        Layouts: typeof TableLayouts;
+        Loading: typeof TableLoading;
+        NoData: typeof TableNoData;
         Pagination: typeof TablePagination;
         PerPage: typeof TablePerPage;
         Predicate: typeof TablePredicate;
-        DateRangePicker: typeof TableDateRangePicker;
-        CollapsibleColumn: typeof TableCollapsibleColumn;
-        ColumnsSelector: typeof TableColumnsSelector;
-        AccordionColumn: typeof TableAccordionColumn;
-        Consumer: typeof TableConsumer;
-        Loading: typeof TableLoading;
-        Layouts: typeof TableLayouts;
     };
 }>;
 
 const defaultProps: Partial<TableProps<unknown>> = {
     layouts: [TableLayouts.Rows as TableLayout],
+    layoutProps: {},
     loading: false,
-    multiRowSelectionEnabled: false,
-    initialState: {},
+    additionalRootNodes: [],
     options: {},
+    getRowActions: () => [],
 };
 
 export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
+        store,
         data,
         getRowId,
-        noDataChildren,
-        getExpandChildren,
-        initialState,
+        getRowAttributes,
+        getRowExpandedContent,
+        getRowActions,
         columns,
         layouts,
-        onMount,
-        onChange,
+        layoutProps,
         children,
         loading,
-        doubleClickAction,
-        multiRowSelectionEnabled,
-        disableRowSelection,
-        onRowSelectionChange,
         additionalRootNodes,
         options,
         ref,
@@ -129,85 +128,86 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
     const footer = convertedChildren.find((child) => child.type === TableFooter);
-    const consumer = convertedChildren.find((child) => child.type === TableConsumer);
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
-
-    const {predicates, dateRange, ...initialStateWithoutForm} = initialState;
-    const form = useForm<TableFormType>({
-        initialValues: {
-            predicates: initialState?.predicates ?? {},
-            dateRange: initialState?.dateRange ?? [null, null],
-            layout: initialState?.layout ?? layouts[0].displayName,
-        },
-    });
+    const noData = convertedChildren.find((child) => child.type === TableNoData);
 
     const table = useReactTable({
-        initialState: defaultsDeep(initialStateWithoutForm, {
-            pagination: {pageSize: TablePerPage.DEFAULT_SIZE},
-            globalFilter: '',
-        }),
         data,
-        columns: multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
+        state: {
+            globalFilter: store.state.globalFilter,
+            sorting: store.state.sorting,
+            pagination: store.state.pagination,
+            columnVisibility: store.state.columnVisibility,
+            expanded: store.state.expanded,
+        },
+        onGlobalFilterChange: store.setGlobalFilter,
+        onExpandedChange: store.setExpanded,
+        onSortingChange: store.setSorting,
+        onPaginationChange: store.setPagination,
+        onColumnVisibilityChange: store.setColumnVisibility,
+        columns: store.multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options?.getPaginationRowModel === undefined,
-        enableMultiRowSelection: !!multiRowSelectionEnabled,
+        enableMultiRowSelection: !!store.multiRowSelectionEnabled,
         getRowId,
-        getRowCanExpand: (row: Row<T>) => !!getExpandChildren?.(row.original) ?? false,
+        getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row) ?? false,
         enableRowSelection: !loading,
         defaultColumn: {
             size: undefined,
             minSize: defaultColumnSizing.minSize,
             maxSize: defaultColumnSizing.maxSize,
         },
+        rowCount: options?.getFilteredRowModel ? undefined : store.state.totalEntries,
         ...options,
     });
 
-    const getAllColumns = table.getAllFlatColumns;
-
-    const [state, setState] = useState<TableState<T>>(table.initialState as TableState<T>);
     table.setOptions((prev) => ({
         ...prev,
-        state: state as TanstackTableState,
-        onStateChange: setState as Dispatch<React.SetStateAction<TanstackTableState>>,
+        state: {
+            ...prev.state,
+            rowSelection: store.state.rowSelection as RowSelectionState,
+        },
+        onRowSelectionChange: (rowSelectionUpdater) => {
+            store.setRowSelection((old) => {
+                const newRowSelection = (
+                    rowSelectionUpdater instanceof Function
+                        ? rowSelectionUpdater(old as RowSelectionState)
+                        : rowSelectionUpdater
+                ) as TableState<T>['rowSelection'];
+
+                if (isEqual(old, newRowSelection)) {
+                    return old;
+                }
+
+                const rows = table.getRowModel().rowsById;
+
+                Object.keys(newRowSelection).forEach((rowId) => {
+                    if (newRowSelection[rowId] === true) {
+                        if (!rows[rowId]) {
+                            console.error(
+                                'The table was not initialized properly, the rowSelection state should contain an object of type Record<string, TData>.',
+                            );
+                        }
+                        newRowSelection[rowId] = rows[rowId]?.original ?? (true as T);
+                    }
+                });
+
+                return newRowSelection;
+            });
+        },
     }));
-    const {clearSelection, getSelectedRow, getSelectedRows, outsideClickRef} = useRowSelection(table, {
-        multiRowSelectionEnabled,
-        onRowSelectionChange,
-        additionalRootNodes,
-    });
-    const containerRef = useMergedRef(outsideClickRef, ref);
-    const isFiltered =
-        !!state.globalFilter ||
-        Object.keys(form.values?.predicates ?? {}).some((predicate) => !!form.values.predicates[predicate]) ||
-        !!form.values.dateRange?.[0] ||
-        !!form.values.dateRange?.[1];
 
-    const triggerChange = debounce(() => onChange?.({...state, ...form.values}), 500);
-
-    useEffect(() => {
-        onMount?.({...state, ...form.values});
-        return () => {
-            triggerChange.cancel();
-        };
-    }, []);
-
-    useDidUpdate(() => {
-        triggerChange();
-        if (!multiRowSelectionEnabled) {
-            clearSelection();
-        }
-    }, [
-        state.globalFilter,
-        state.pagination,
-        state.sorting,
-        JSON.stringify(form.values.dateRange),
-        JSON.stringify(form.values.predicates),
-    ]);
-
-    const clearFilters = useCallback(() => {
-        form.setFieldValue('predicates', initialState.predicates ?? {});
-        setState((prevState) => ({...prevState, globalFilter: ''}));
-    }, []);
+    const containerRef = useRef<HTMLDivElement>();
+    useClickOutside(
+        () => {
+            if (!store.multiRowSelectionEnabled) {
+                store.clearRowSelection();
+            }
+        },
+        null,
+        [containerRef.current, ...additionalRootNodes],
+    );
+    const mergedRef = useMergedRef(containerRef, ref);
 
     if (!data) {
         return (
@@ -217,81 +217,59 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         );
     }
 
-    const Layout = layouts.find(({displayName}) => displayName === form.values.layout);
+    const Layout =
+        store.state.layout === null ? layouts[0] : layouts.find(({displayName}) => displayName === store.state.layout);
     const hasRows = table.getRowModel().rows.length > 0;
 
     return (
-        <Box ref={containerRef} {...others} {...getStyles('root')}>
-            <TableStylesProvider value={{getStyles}}>
-                <TableContext.Provider
-                    value={{
-                        onChange: triggerChange,
-                        state,
-                        isFiltered,
-                        setState,
-                        clearFilters,
-                        getSelectedRow,
-                        getSelectedRows,
-                        clearSelection,
-                        form,
-                        containerRef: outsideClickRef,
-                        multiRowSelectionEnabled,
-                        getPageCount: table.getPageCount,
-                        getAllColumns,
-                        disableRowSelection,
-                        layouts,
-                    }}
-                >
-                    <Layout>
-                        {consumer}
-                        {!hasRows && !isFiltered && !loading ? (
-                            noDataChildren
-                        ) : (
-                            <>
-                                <Box component="table" {...getStyles('table')} pb="sm">
-                                    <thead {...getStyles('header')}>
-                                        {!!header ? (
-                                            <tr>
-                                                <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
-                                                    {header}
-                                                </th>
-                                            </tr>
-                                        ) : null}
-                                        <Layout.Header
-                                            table={table}
-                                            doubleClickAction={doubleClickAction}
-                                            getExpandChildren={getExpandChildren}
+        <Box ref={mergedRef} {...others} {...getStyles('root')}>
+            <TableProvider<T> value={{getStyles, getRowActions, store, table, layouts, containerRef}}>
+                <Layout>
+                    {store.isVacant && !store.isFiltered ? (
+                        noData
+                    ) : (
+                        <>
+                            <Box component="table" {...getStyles('table')} pb="sm" mod={{loading}}>
+                                <thead {...getStyles('header')}>
+                                    {!!header ? (
+                                        <tr>
+                                            <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
+                                                {header}
+                                            </th>
+                                        </tr>
+                                    ) : null}
+                                    <Layout.Header
+                                        getRowExpandedContent={getRowExpandedContent}
+                                        getRowAttributes={getRowAttributes}
+                                        loading={loading}
+                                        {...layoutProps}
+                                    />
+                                </thead>
+                                <tbody {...getStyles('body')}>
+                                    {hasRows ? (
+                                        <Layout.Body
+                                            getRowExpandedContent={getRowExpandedContent}
+                                            getRowAttributes={getRowAttributes}
                                             loading={loading}
+                                            {...layoutProps}
                                         />
-                                    </thead>
-                                    <tbody {...getStyles('body')}>
-                                        {hasRows ? (
-                                            <Layout.Body
-                                                table={table}
-                                                doubleClickAction={doubleClickAction}
-                                                getExpandChildren={getExpandChildren}
-                                                loading={loading}
-                                            />
-                                        ) : (
-                                            <tr>
-                                                <td colSpan={table.getAllColumns().length}>
-                                                    <TableLoading visible={loading}>{noDataChildren}</TableLoading>
-                                                </td>
-                                            </tr>
-                                        )}
-                                    </tbody>
-                                </Box>
-                                {footer}
-                                {lastUpdated
-                                    ? cloneElement(lastUpdated, {
-                                          dependencies: [data, ...(lastUpdated.props.dependencies ?? [])],
-                                      })
-                                    : null}
-                            </>
-                        )}
-                    </Layout>
-                </TableContext.Provider>
-            </TableStylesProvider>
+                                    ) : (
+                                        <tr>
+                                            <td colSpan={table.getAllColumns().length}>
+                                                <TableLoading visible={loading || !store.isFiltered}>
+                                                    {noData}
+                                                </TableLoading>
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </Box>
+                            {footer}
+                            {lastUpdated}
+                        </>
+                    )}
+                </Layout>
+            </TableProvider>
         </Box>
     );
 };
@@ -306,21 +284,21 @@ export const TableComponentsOrder = {
     LayoutControl: 1,
 };
 
-Table.Actions = TableActions;
+Table.AccordionColumn = TableAccordionColumn;
+Table.ActionsColumn = TableActionsColumn;
+Table.ActionItem = TableActionItem;
+Table.CollapsibleColumn = TableCollapsibleColumn;
+Table.ColumnsSelector = TableColumnsSelector;
+Table.DateRangePicker = TableDateRangePicker;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;
 Table.Header = TableHeader;
 Table.LastUpdated = TableLastUpdated;
+Table.Layouts = TableLayouts;
+Table.Loading = TableLoading;
+Table.NoData = TableNoData;
 Table.Pagination = TablePagination;
-Table.Predicate = TablePredicate;
 Table.PerPage = TablePerPage;
 Table.Predicate = TablePredicate;
-Table.CollapsibleColumn = TableCollapsibleColumn;
-Table.AccordionColumn = TableAccordionColumn;
-Table.DateRangePicker = TableDateRangePicker;
-Table.Consumer = TableConsumer;
-Table.Loading = TableLoading;
-Table.ColumnsSelector = TableColumnsSelector;
-Table.Layouts = TableLayouts;
 
 Table.extend = identity as CustomComponentThemeExtend<PlasmaTableFactory>;

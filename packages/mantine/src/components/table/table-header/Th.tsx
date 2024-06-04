@@ -1,10 +1,9 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
-import {BoxProps, Factory, Group, UnstyledButton, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
-import {defaultColumnSizing, flexRender, Header} from '@tanstack/react-table';
+import {BoxProps, CompoundStylesApiProps, Factory, Group, UnstyledButton, useProps} from '@mantine/core';
+import {Header, defaultColumnSizing, flexRender} from '@tanstack/react-table';
 import {AriaAttributes, ComponentType, ForwardedRef, SVGProps} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../utils';
-import {useTableStyles} from '../TableContext';
+import {useTableContext} from '../TableContext';
 
 export type TableThStylesNames = 'th';
 
@@ -39,7 +38,7 @@ const defaultProps: Partial<ThProps> = {
 };
 
 export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElement>}) => {
-    const ctx = useTableStyles();
+    const {getStyles} = useTableContext();
     const {header, sortingIcons, classNames, className, styles, style, vars, ...others} = useProps(
         'PlasmaTableTh',
         defaultProps as Partial<ThProps<T>>,
@@ -53,7 +52,7 @@ export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElem
         maxSize: header.column.columnDef.maxSize,
     };
 
-    const thStyles = ctx.getStyles('th', {classNames, className, styles, style});
+    const thStyles = getStyles('th', {classNames, className, styles, style});
 
     if (header.isPlaceholder) {
         return null;
@@ -71,7 +70,9 @@ export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElem
                 }}
                 {...others}
             >
-                {flexRender(header.column.columnDef.header, header.getContext())}
+                <Group wrap="nowrap" gap="xs">
+                    {flexRender(header.column.columnDef.header, header.getContext())}
+                </Group>
             </th>
         );
     }

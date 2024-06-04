@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react-icons",
-    "version": "53.1.2",
+    "version": "53.1.4-next.0",
     "description": "Plasma iconography exposed as react components",
     "keywords": [
         "plasma",
@@ -51,16 +51,16 @@
         "@svgr/plugin-jsx": "8.1.0",
         "@swc/cli": "0.3.12",
         "@swc/core": "1.5.0",
-        "@types/react": "18.2.60",
-        "@types/react-dom": "18.2.19",
+        "@types/react": "18.3.1",
+        "@types/react-dom": "18.3.0",
         "fs-extra": "11.2.0",
         "glob": "10.3.10",
         "lodash.groupby": "4.6.0",
         "lodash.upperfirst": "4.3.1",
         "npm-run-all2": "5.0.0",
         "publint": "0.2.7",
-        "react": "18.2.0",
-        "react-dom": "18.2.0",
+        "react": "18.3.1",
+        "react-dom": "18.3.1",
         "rimraf": "5.0.5",
         "tslib": "2.6.2",
         "typescript": "5.3.3"

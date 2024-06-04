@@ -3,12 +3,12 @@ import {DeleteSize24Px, CrossSize24Px} from '@coveord/plasma-react-icons';
 
 const Demo = () => (
     <InlineConfirm>
-        <InlineConfirm.Target id="delete" variant="subtle" color="critical">
+        <InlineConfirm.Target inlineConfirmId="delete" variant="subtle" color="critical">
             <DeleteSize24Px />
         </InlineConfirm.Target>
 
         <InlineConfirm.Prompt
-            id="delete"
+            inlineConfirmId="delete"
             label={
                 <Text c="critical" fw={500}>
                     Delete?

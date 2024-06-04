@@ -7,13 +7,13 @@ const Demo = () => (
                 <Button>Menu</Button>
             </Menu.Target>
             <Menu.Dropdown>
-                <InlineConfirm.Target component={Menu.Item} id="delete">
+                <InlineConfirm.Target component={Menu.Item} inlineConfirmId="delete">
                     Delete
                 </InlineConfirm.Target>
 
                 <InlineConfirm.Target
                     component={Menu.Item}
-                    id="delete2"
+                    inlineConfirmId="delete2"
                     disabled
                     disabledTooltip="Will not trigger since its disabled"
                 >
@@ -22,11 +22,11 @@ const Demo = () => (
             </Menu.Dropdown>
         </Menu>
         <InlineConfirm.Prompt
-            id="delete"
+            inlineConfirmId="delete"
             onConfirm={() => showNotification({message: 'Confirm clicked', autoClose: true})}
             onCancel={() => showNotification({message: 'Cancel clicked', autoClose: true})}
         />
-        <InlineConfirm.Prompt id="delete2" />
+        <InlineConfirm.Prompt inlineConfirmId="delete2" />
     </InlineConfirm>
 );
 export default Demo;

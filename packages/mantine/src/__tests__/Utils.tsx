@@ -5,7 +5,9 @@ import {FunctionComponent, PropsWithChildren, ReactElement} from 'react';
 import {Plasmantine} from '../theme';
 
 const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult => {
-    const TestWrapper: FunctionComponent<PropsWithChildren> = ({children}) => <Plasmantine>{children}</Plasmantine>;
+    const TestWrapper: FunctionComponent<PropsWithChildren> = ({children}) => (
+        <Plasmantine withCssVariables={false}>{children}</Plasmantine>
+    );
 
     return render(ui, {wrapper: TestWrapper, ...options});
 };

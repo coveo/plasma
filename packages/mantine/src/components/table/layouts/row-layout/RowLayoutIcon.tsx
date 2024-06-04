@@ -1,9 +1,6 @@
 import {Icon as IconType, ListSize16Px} from '@coveord/plasma-react-icons';
-import {factory, Factory, useProps} from '@mantine/core';
-import {CompoundStylesApiProps} from '@mantine/core/lib/core/styles-api/styles-api.types';
-import {useRowLayout} from './RowLayoutContext';
+import {CompoundStylesApiProps, Factory, factory, useProps} from '@mantine/core';
 
-export type RowLayoutIconStylesNames = 'icon';
 export interface RowLayoutIconProps extends CompoundStylesApiProps<RowLayoutIconFactory> {
     icon: IconType;
 }
@@ -11,7 +8,6 @@ export interface RowLayoutIconProps extends CompoundStylesApiProps<RowLayoutIcon
 export type RowLayoutIconFactory = Factory<{
     props: RowLayoutIconProps;
     ref: SVGSVGElement;
-    stylesNames: RowLayoutIconStylesNames;
     compound: true;
 }>;
 
@@ -20,8 +16,7 @@ const defaultProps: Partial<RowLayoutIconProps> = {
 };
 
 export const RowLayoutIcon = factory<RowLayoutIconFactory>((props, ref) => {
-    const ctx = useRowLayout();
-    const {icon: Icon, classNames, styles} = useProps('RowLayoutIcon', defaultProps, props);
+    const {icon: Icon} = useProps('RowLayoutIcon', defaultProps, props);
 
-    return <Icon ref={ref} {...ctx.getStyles('icon', {styles, classNames})} />;
+    return <Icon ref={ref} />;
 });

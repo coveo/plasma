@@ -11,6 +11,11 @@ declare module '*.md' {
     export default content;
 }
 
+declare module '*.module.css' {
+    const classes: {[key: string]: string};
+    export default classes;
+}
+
 interface DemoComponentProps {
     center?: boolean;
     grow?: boolean;

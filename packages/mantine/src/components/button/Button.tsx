@@ -1,11 +1,13 @@
 import {
+    ButtonCssVariables,
     ButtonGroup,
+    ButtonStylesNames,
+    ButtonVariant,
     Factory,
     Button as MantineButton,
     ButtonProps as MantineButtonProps,
     polymorphicFactory,
 } from '@mantine/core';
-import {ButtonCssVariables, ButtonStylesNames, ButtonVariant} from '@mantine/core/lib/components/Button/Button';
 import {MouseEventHandler} from 'react';
 import {useClickWithLoading} from '../../hooks/useClickWithLoading';
 import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from './ButtonWithDisabledTooltip';

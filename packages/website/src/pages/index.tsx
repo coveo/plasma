@@ -1,47 +1,52 @@
-import {AppShell, Container} from '@coveord/plasma-mantine';
-import {LinkSvg, Section} from '@coveord/plasma-react';
-import {ExternalSize16Px, Icon} from '@coveord/plasma-react-icons';
+import {Anchor, AppShell, Container, Title, Stack, Text} from '@coveord/plasma-mantine';
+import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
 import {Tile} from '../building-blocs/Tile';
 
 export const Home = () => (
     <AppShell.Main>
-        <Container size="xl" className="home">
-            <WelcomeToPlasma />
-            <FoundationsPages />
-            <LayoutPages />
-            <FormPages />
+        <Container size="xl" py="xl">
+            <Stack gap="xl">
+                <WelcomeToPlasma />
+                <FoundationsPages />
+                <LayoutPages />
+                <FormPages />
+            </Stack>
         </Container>
     </AppShell.Main>
 );
 
 const WelcomeToPlasma: FunctionComponent = () => (
-    <div className="section intro">
-        <h5 className="welcome-to">Welcome to</h5>
-        <div className="page-title">PLASMA</div>
-        <div className="body-l-book plasma-description">
-            <div>Coveo’s platform design system & ionized Vapor.</div>
-            <div>
+    <>
+        <Title order={1}>
+            <Text fz="lg" fw={500} inherit>
+                Welcome to
+            </Text>{' '}
+            <Text className="page-title">PLASMA</Text>
+        </Title>
+        <Stack gap="xs">
+            <Text>Coveo’s platform design system & ionized Vapor.</Text>
+            <Text>
                 Learn more about our brand, our values and our story by visiting our{' '}
-                <LinkSvg icon={ExternalSize16Px as Icon} url="https://brand.coveo.com/">
-                    brand page
-                </LinkSvg>
+                <Anchor href="https://brand.coveo.com/">
+                    brand page <ExternalSize16Px style={{marginLeft: '4px'}} />
+                </Anchor>
                 .
-            </div>
-            <div>
+            </Text>
+            <Text>
                 Be part of the progress! Contribute to Plasma on{' '}
-                <LinkSvg icon={ExternalSize16Px as Icon} url="https://github.com/coveo/plasma#readme">
-                    GitHub
-                </LinkSvg>
+                <Anchor href="https://github.com/coveo/plasma#readme">
+                    GitHub <ExternalSize16Px style={{marginLeft: '4px'}} />
+                </Anchor>
                 .
-            </div>
-        </div>
-    </div>
+            </Text>
+        </Stack>
+    </>
 );
 
 const FoundationsPages: FunctionComponent = () => (
-    <Section className="section">
-        <h2>Foundations</h2>
+    <Stack gap="sm">
+        <Title order={2}>Foundations</Title>
         <div className="tile-grid">
             <Tile
                 title="Iconography"
@@ -56,12 +61,12 @@ const FoundationsPages: FunctionComponent = () => (
                 thumbnail="colors"
             />
         </div>
-    </Section>
+    </Stack>
 );
 
 const LayoutPages: FunctionComponent = () => (
-    <Section className="section">
-        <h2>Layout</h2>
+    <Stack gap="sm" className="section">
+        <Title order={2}>Layout</Title>
         <div className="tile-grid">
             <Tile
                 title="Header"
@@ -80,12 +85,12 @@ const LayoutPages: FunctionComponent = () => (
                 href="layout/Table"
             />
         </div>
-    </Section>
+    </Stack>
 );
 
 const FormPages: FunctionComponent = () => (
-    <Section className="section">
-        <h2>Form</h2>
+    <Stack gap="sm" className="section">
+        <Title order={2}>Form</Title>
         <div className="tile-grid">
             <Tile
                 title="Code Editor"
@@ -99,7 +104,7 @@ const FormPages: FunctionComponent = () => (
                 href="form/Collection"
             />
         </div>
-    </Section>
+    </Stack>
 );
 
 export default Home;

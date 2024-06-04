@@ -1,5 +1,5 @@
 import {buildHistoryManager, HistoryManager, HistoryManagerState, SearchEngine} from '@coveo/atomic-react';
-import {Button} from '@coveord/plasma-react';
+import {Button} from '@coveord/plasma-mantine';
 import {FunctionComponent, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import results_empty_state from '../assets/results_empty_state.png';
@@ -29,7 +29,6 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
                     You may want to try using different keywords, or checking for spelling mistakes.
                 </span>
                 <Button
-                    primary
                     onClick={() => {
                         if (state.past.length !== 0) {
                             historyManager.backOnNoResults();

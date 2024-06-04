@@ -4,10 +4,10 @@ const Demo = () => (
     <InlineConfirm>
         <Group gap="sm">
             <Button disabled>I will hide</Button>
-            <InlineConfirm.Target id="delete">Delete</InlineConfirm.Target>
+            <InlineConfirm.Target inlineConfirmId="delete">Delete</InlineConfirm.Target>
         </Group>
         <InlineConfirm.Prompt
-            id="delete"
+            inlineConfirmId="delete"
             onConfirm={() => showNotification({message: 'Confirm clicked', autoClose: true})}
             onCancel={() => showNotification({message: 'Cancel clicked', autoClose: true})}
         />

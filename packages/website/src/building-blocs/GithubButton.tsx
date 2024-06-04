@@ -1,23 +1,24 @@
+import {Button} from '@coveord/plasma-mantine';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
-import classNames from 'clsx';
 import {FunctionComponent} from 'react';
-
 import githubLogo from '../assets/github-mark.svg';
 
-export const GithubButton: FunctionComponent<
-    React.PropsWithChildren<{href: string; ariaLabel: string; className?: string}>
-> = ({children, className, ariaLabel, href}) => (
-    <a
+export const GithubButton: FunctionComponent<React.PropsWithChildren<{href: string; ariaLabel: string}>> = ({
+    children,
+    ariaLabel,
+    href,
+}) => (
+    <Button
+        component="a"
+        variant="outline"
+        color="gray"
         href={href}
         aria-label={ariaLabel}
         target="_blank"
-        className={classNames('github-button inline-flex flex-center p1', className)}
         rel="noopener noreferrer"
+        leftSection={<img src={githubLogo} width={16} height={16} />}
+        rightSection={<ExternalSize16Px height={16} />}
     >
-        <img src={githubLogo} width={16} height={16} className="mr1" />
-        <span className="body-m">
-            {children}
-            <ExternalSize16Px className="ml1" />
-        </span>
-    </a>
+        {children}
+    </Button>
 );

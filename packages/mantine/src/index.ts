@@ -27,7 +27,6 @@ export {
     type ButtonProps,
     type CopyToClipboardProps,
     type HeaderProps,
-    type InitialTableState,
     type MenuItemProps,
     type TableProps,
     type TableState,
@@ -39,5 +38,16 @@ declare module '@mantine/core' {
     export interface MantineThemeColorsOverride {
         // eslint-disable-next-line @typescript-eslint/ban-types
         colors: Record<keyof typeof PlasmaColors | (string & {}), MantineColorsTuple>;
+    }
+}
+
+declare module '@tanstack/react-table' {
+    interface ColumnMeta<TData extends unknown, TValue> {
+        /**
+         * Whether the column is a control column.
+         * Control columns are columns that are not part of the data but are used to control the table.
+         * For example, a column that contains checkboxes to select rows.
+         */
+        controlColumn: boolean;
     }
 }

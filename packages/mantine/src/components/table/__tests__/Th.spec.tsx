@@ -1,7 +1,8 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, waitFor} from '@test-utils';
+import {render, screen, userEvent} from '@test-utils';
 
 import {Table} from '../Table';
+import {useTable} from '../use-table';
 
 type RowData = {name: string; type: 'fruit' | 'vegetable'; colors: string[]};
 const columnHelper = createColumnHelper<RowData>();
@@ -20,7 +21,11 @@ describe('Th', () => {
             {name: 'apple', type: 'fruit', colors: ['red', 'green']},
             {name: 'potato', type: 'vegetable', colors: ['brown', 'blue', 'yellow']},
         ];
-        render(<Table data={data} columns={columns} />);
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return <Table store={store} data={data} columns={columns} />;
+        };
+        render(<Fixture />);
 
         const headers = screen.getAllByRole('columnheader');
         expect(headers[0]).toHaveAccessibleName(/name doubleArrowHead/i);
@@ -33,22 +38,22 @@ describe('Th', () => {
             {name: 'apple', type: 'fruit', colors: ['red', 'green']},
             {name: 'potato', type: 'vegetable', colors: ['brown', 'blue', 'yellow']},
         ];
-        const onChange = vi.fn();
-        render(<Table data={data} columns={columns} onChange={onChange} />);
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return <Table store={store} data={data} columns={columns} />;
+        };
+        render(<Fixture />);
 
-        await user.click(screen.getByRole('columnheader', {name: /name doubleArrowHead/i}));
-        await waitFor(() => {
-            expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
-        });
+        const unsortedRowHeader = screen.getByRole('columnheader', {name: /name doubleArrowHead/i});
+        expect(unsortedRowHeader).toBeVisible();
+        await user.click(unsortedRowHeader);
 
-        await user.click(screen.getByRole('columnheader', {name: /name arrowUp/i}));
-        await waitFor(() => {
-            expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: true}]}));
-        });
+        const sortedAscRowHeader = screen.getByRole('columnheader', {name: /name arrowUp/i});
+        expect(sortedAscRowHeader).toBeVisible();
+        await user.click(sortedAscRowHeader);
 
-        await user.click(screen.getByRole('columnheader', {name: /name arrowDown/i}));
-        await waitFor(() => {
-            expect(onChange).toHaveBeenCalledWith(expect.objectContaining({sorting: [{id: 'name', desc: false}]}));
-        });
+        const sortedDescRowHeader = screen.getByRole('columnheader', {name: /name arrowDown/i});
+        expect(sortedDescRowHeader).toBeVisible();
+        await user.click(sortedDescRowHeader);
     });
 });

@@ -227,13 +227,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     );
 
     return (
-        <Stack
-            justify="flex-start"
-            gap={0}
-            h={{height: Math.max(parentHeight, minHeight), maxHeight}}
-            ref={ref}
-            {...others}
-        >
+        <Stack justify="flex-start" gap={0} h={Math.max(parentHeight, minHeight)} mah={maxHeight} ref={ref} {...others}>
             {_header}
             {_buttons}
             {_editor}

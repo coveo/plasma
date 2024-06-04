@@ -1,0 +1,14 @@
+@import './_syntax-highlighting.css';
+
+body {
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 300;
+}
+
+.sentence-case {
+    text-transform: lowercase;
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}

@@ -1,10 +1,19 @@
-import {Factory, StylesApiProps, useProps} from '@mantine/core';
-import {MantineComponent} from '@mantine/core/lib/core/factory/factory';
+import {Factory, MantineComponent, StylesApiProps, useProps} from '@mantine/core';
 import {Children, ReactElement, ReactNode, useState} from 'react';
 import {InlineConfirmProvider} from './InlineConfirmContext';
 import {InlineConfirmPrompt} from './InlineConfirmPrompt';
 
 import {InlineConfirmTarget} from './InlineConfirmTarget';
+
+/**
+ * Direct children of InlineConfirm that wraps an InlineConfirm.Prompt need this prop
+ */
+export interface InlineConfirmComponentsProps {
+    /**
+     * Unique id to map the prompt to the target
+     */
+    inlineConfirmId: string;
+}
 
 export interface InlineConfirmProps extends StylesApiProps<InlineConfirmFactory> {
     /**
@@ -30,10 +39,9 @@ export const InlineConfirm = ((_props) => {
 
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const prompt = convertedChildren.find(
-        (child) => child.type === InlineConfirmPrompt && child.props.id === confirmingId,
+        (child) => child.type !== InlineConfirmTarget && child.props?.inlineConfirmId === confirmingId,
     );
     const clearConfirm = () => setConfirmingId(null);
-
     return (
         <InlineConfirmProvider value={{confirmingId, setConfirmingId, clearConfirm}}>
             {prompt ?? children}
