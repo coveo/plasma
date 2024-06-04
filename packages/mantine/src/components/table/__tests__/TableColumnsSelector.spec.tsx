@@ -109,7 +109,7 @@ describe('TableColumnsSelector', () => {
         render(<Fixture />);
 
         await user.click(screen.getByRole('button', {name: 'Edit columns'}));
-        const dropdown = screen.getByRole('dialog', {name: 'Edit columns'});
+        const dropdown = await screen.findByRole('dialog', {name: 'Edit columns'});
         const columnsCheckboxes = within(dropdown).getAllByRole('checkbox');
 
         expect(columnsCheckboxes).toHaveLength(4);
@@ -135,7 +135,7 @@ describe('TableColumnsSelector', () => {
 
         await user.click(screen.getByRole('button', {name: 'Edit columns'}));
 
-        expect(screen.getByRole('checkbox', {name: 'Name'})).toBeChecked();
+        expect(await screen.findByRole('checkbox', {name: 'Name'})).toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Age'})).toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Email'})).toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeChecked();
@@ -163,7 +163,7 @@ describe('TableColumnsSelector', () => {
 
         await user.click(screen.getByRole('button', {name: 'Edit columns'}));
 
-        expect(screen.queryByRole('checkbox', {name: 'Name'})).toBeChecked();
+        expect(await screen.findByRole('checkbox', {name: 'Name'})).toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Email'})).toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeChecked();
 
@@ -192,7 +192,7 @@ describe('TableColumnsSelector', () => {
 
         await user.click(screen.getByRole('button', {name: 'Edit columns'}));
 
-        expect(screen.getByRole('checkbox', {name: 'Name'})).toBeChecked();
+        expect(await screen.findByRole('checkbox', {name: 'Name'})).toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Age'})).toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Email'})).not.toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeChecked();
@@ -214,7 +214,7 @@ describe('TableColumnsSelector', () => {
 
         await user.click(screen.getByRole('button', {name: 'Edit columns'}));
 
-        const nameCheckBox = screen.getByRole('checkbox', {name: /name/i});
+        const nameCheckBox = await screen.findByRole('checkbox', {name: /name/i});
         const ageCheckBox = screen.getByRole('checkbox', {name: /age/i});
         const emailCheckBox = screen.getByRole('checkbox', {name: /email/i});
         const phoneCheckBox = screen.getByRole('checkbox', {name: /phone/i});
@@ -252,7 +252,7 @@ describe('TableColumnsSelector', () => {
 
         await user.click(screen.getByRole('button', {name: 'Edit columns'}));
 
-        const emailCheckBoxWrapper = screen.getByRole('checkbox', {name: /email/i}).parentElement;
+        const emailCheckBoxWrapper = (await screen.findByRole('checkbox', {name: /email/i})).parentElement;
 
         await user.hover(emailCheckBoxWrapper);
 
