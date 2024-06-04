@@ -204,11 +204,11 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@tanstack/react-table':
-        specifier: 8.16.0
-        version: 8.16.0(react-dom@18.3.1)(react@18.3.1)
+        specifier: 8.17.3
+        version: 8.17.3(react-dom@18.3.1)(react@18.3.1)
       '@tanstack/table-core':
-        specifier: 8.16.0
-        version: 8.16.0
+        specifier: 8.17.3
+        version: 8.17.3
       clsx:
         specifier: 2.0.0
         version: 2.0.0
@@ -525,8 +525,8 @@ importers:
         specifier: 8.15.1
         version: 8.15.1
       '@tanstack/react-query':
-        specifier: 5.32.0
-        version: 5.32.0(react@18.3.1)
+        specifier: 5.40.1
+        version: 5.40.1(react@18.3.1)
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -4006,33 +4006,33 @@ packages:
       remove-accents: 0.5.0
     dev: false
 
-  /@tanstack/query-core@5.32.0:
-    resolution: {integrity: sha512-Z3flEgCat55DRXU5UMwYU1U+DgFZKA3iufyOKs+II7iRAo0uXkeU7PH5e6sOH1CGEag0IpKmZxlUFpCg6roSKw==}
+  /@tanstack/query-core@5.40.0:
+    resolution: {integrity: sha512-eD8K8jsOIq0Z5u/QbvOmfvKKE/XC39jA7yv4hgpl/1SRiU+J8QCIwgM/mEHuunQsL87dcvnHqSVLmf9pD4CiaA==}
     dev: false
 
-  /@tanstack/react-query@5.32.0(react@18.3.1):
-    resolution: {integrity: sha512-+E3UudQtarnx9A6xhpgMZapyF+aJfNBGFMgI459FnduEZqT/9KhOWnMOneZahLRt52yzskSA0AuOyLkXHK0yBA==}
+  /@tanstack/react-query@5.40.1(react@18.3.1):
+    resolution: {integrity: sha512-gOcmu+gpFd2taHrrgMM9RemLYYEDYfsCqszxCC0xtx+csDa4R8t7Hr7SfWXQP13S2sF+mOxySo/+FNXJFYBqcA==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.32.0
+      '@tanstack/query-core': 5.40.0
       react: 18.3.1
     dev: false
 
-  /@tanstack/react-table@8.16.0(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-rKRjnt8ostqN2fercRVOIH/dq7MAmOENCMvVlKx6P9Iokhh6woBGnIZEkqsY/vEJf1jN3TqLOb34xQGLVRuhAg==}
+  /@tanstack/react-table@8.17.3(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-5gwg5SvPD3lNAXPuJJz1fOCEZYk9/GeBFH3w/hCgnfyszOIzwkwgp5I7Q4MJtn0WECp84b5STQUDdmvGi8m3nA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
     dependencies:
-      '@tanstack/table-core': 8.16.0
+      '@tanstack/table-core': 8.17.3
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     dev: false
 
-  /@tanstack/table-core@8.16.0:
-    resolution: {integrity: sha512-dCG8vQGk4js5v88/k83tTedWOwjGnIyONrKpHpfmSJB8jwFHl8GSu1sBBxbtACVAPtAQgwNxl0rw1d3RqRM1Tg==}
+  /@tanstack/table-core@8.17.3:
+    resolution: {integrity: sha512-mPBodDGVL+fl6d90wUREepHa/7lhsghg2A3vFpakEhrhtbIlgNAZiMr7ccTgak5qbHqF14Fwy+W1yFWQt+WmYQ==}
     engines: {node: '>=12'}
     dev: false
 
@@ -10882,6 +10882,7 @@ packages:
 
   /rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
