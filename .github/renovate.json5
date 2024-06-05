@@ -1,0 +1,36 @@
+{
+    extends: ['config:base', 'group:allNonMajor'],
+    timezone: 'America/Montreal',
+    schedule: ['at any time'],
+    semanticCommitScope: 'deps',
+    commitBody: 'UITOOL-284',
+    ignoreDeps: [
+        // security only approved one version of the pnpm/action-setup action. Cannot be bumped
+        'pnpm/action-setup',
+    ],
+    packageRules: [
+        {
+            description: 'Automatically merge minor and patch-level updates',
+            updateTypes: ['minor', 'patch'],
+            automerge: true,
+            semanticCommitType: 'chore',
+            internalChecksFilter: 'strict',
+        },
+        {
+            groupName: '@tanstack table',
+            description: 'Group @tanstack table packages together because they need to be updated at the same time',
+            matchPackagePrefixes: ['@tanstack/'],
+        },
+        {
+            groupName: 'ui-kit',
+            description: 'Group ui-kit packages together because they need to be updated at the same time',
+            matchPackagePrefixes: ['@coveo/atomic-react', '@coveo/headless'],
+        },
+    ],
+    lockFileMaintenance: {
+        description: 'Regenerate the pnpm-lock.yaml file',
+        enabled: true,
+        automerge: true,
+        extends: ['schedule:weekly'],
+    },
+}
