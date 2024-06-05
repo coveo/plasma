@@ -1,3 +1,12 @@
+## 53.1.6 (2024-06-05)
+
+
+### Bug Fixes
+
+* **style:** add reset stuff into a CSS layer (#3754) fb3c9ae, closes #3754
+
+
+
 ## 53.1.5 (2024-05-02)
 
 
