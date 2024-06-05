@@ -425,8 +425,8 @@ importers:
         specifier: 12.1.0
         version: 12.1.0
       dotenv-safe:
-        specifier: 8.2.0
-        version: 8.2.0
+        specifier: 9.1.0
+        version: 9.1.0(dotenv@8.6.0)
       figma-js:
         specifier: 1.16.0
         version: 1.16.0
@@ -6184,8 +6184,10 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /dotenv-safe@8.2.0:
-    resolution: {integrity: sha512-uWwWWdUQkSs5a3mySDB22UtNwyEYi0JtEQu+vDzIqr9OjbDdC2Ip13PnSpi/fctqlYmzkxCeabiyCAOROuAIaA==}
+  /dotenv-safe@9.1.0(dotenv@8.6.0):
+    resolution: {integrity: sha512-2qwVAnUN+EDpu41pIK1XiJpHXKHV9Dnti3cE1EnUXT1/BV5+B7xuSZtgZ/4LExkCpp5F6BGikraezQL+8hKCOA==}
+    peerDependencies:
+      dotenv: '>= 8.2.0'
     dependencies:
       dotenv: 8.6.0
     dev: true
