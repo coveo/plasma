@@ -26,6 +26,7 @@
         "@mantine/hooks": "7.10.1",
         "@mantine/modals": "7.10.1",
         "@mantine/notifications": "7.10.1",
+        "@mantinex/dev-icons": "1.0.2",
         "@swc/helpers": "0.5.11",
         "@tabler/icons-react": "2.47.0",
         "@tanstack/match-sorter-utils": "8.15.1",
