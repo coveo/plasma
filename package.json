@@ -59,9 +59,9 @@
     "devDependencies": {
         "@commitlint/cli": "19.3.0",
         "@commitlint/config-conventional": "19.2.2",
-        "@coveo/semantic-monorepo-tools": "2.4.33",
+        "@coveo/semantic-monorepo-tools": "2.4.34",
         "@sindresorhus/slugify": "2.2.1",
-        "aws-sdk": "2.1634.0",
+        "aws-sdk": "2.1635.0",
         "chokidar": "3.6.0",
         "commitizen": "4.3.0",
         "conventional-changelog-angular": "7.0.0",
