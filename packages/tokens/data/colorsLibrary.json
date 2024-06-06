@@ -1,8 +1,8 @@
 {
     "name": "Colors - PDS",
-    "lastModified": "2024-02-13T19:38:23Z",
-    "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/7e61fc29-6222-406d-8ce2-1459151f7e05?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCXBZQTRO6%2F20240225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240225T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dca79527cfb76f0b4d4b4ef67cfd00d8695e6b63700147a9429a7f0a53c630c5",
-    "version": "5147211765",
+    "lastModified": "2024-04-05T14:51:24Z",
+    "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/7d365bf6-8bc4-4c37-8b17-138bd01dd0b0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCSKWAAD5V%2F20240606%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240606T000000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1924450d05da5346597d7f6ac80cad546afb8e37bce09e52e6b6432fafa3f884",
+    "version": "5920160744",
     "role": "viewer",
     "editorType": "figma",
     "linkAccess": "org_view",
@@ -55,6 +55,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Gradient",
                         "style": {
@@ -164,6 +165,7 @@
                         "styles": {
                             "fill": "3:3"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -207,6 +209,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Lime 0",
                         "style": {
@@ -270,6 +273,7 @@
                         "styles": {
                             "fill": "3:128"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -313,6 +317,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Lime 6",
                         "style": {
@@ -376,6 +381,7 @@
                         "styles": {
                             "fill": "3:130"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -419,6 +425,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Lime 9",
                         "style": {
@@ -482,6 +489,7 @@
                         "styles": {
                             "fill": "3:129"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -525,6 +533,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 0",
                         "style": {
@@ -588,6 +597,7 @@
                         "styles": {
                             "fill": "3:147"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -631,6 +641,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 1",
                         "style": {
@@ -694,6 +705,7 @@
                         "styles": {
                             "fill": "3:146"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -737,6 +749,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 2",
                         "style": {
@@ -800,6 +813,7 @@
                         "styles": {
                             "fill": "3:145"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -843,6 +857,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 3",
                         "style": {
@@ -906,6 +921,7 @@
                         "styles": {
                             "fill": "3:144"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -949,6 +965,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 4",
                         "style": {
@@ -1012,6 +1029,7 @@
                         "styles": {
                             "fill": "3:143"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -1055,6 +1073,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 5",
                         "style": {
@@ -1118,6 +1137,7 @@
                         "styles": {
                             "fill": "3:142"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -1161,6 +1181,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 6",
                         "style": {
@@ -1224,6 +1245,7 @@
                         "styles": {
                             "fill": "3:141"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -1267,6 +1289,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 7",
                         "style": {
@@ -1330,6 +1353,7 @@
                         "styles": {
                             "fill": "3:118"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -1373,6 +1397,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 8",
                         "style": {
@@ -1436,6 +1461,7 @@
                         "styles": {
                             "fill": "3:140"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -1479,6 +1505,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Indigo 9",
                         "style": {
@@ -1542,6 +1569,7 @@
                         "styles": {
                             "fill": "3:139"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -1585,6 +1613,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 0",
                         "style": {
@@ -1648,6 +1677,7 @@
                         "styles": {
                             "fill": "3:159"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -1691,6 +1721,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 1",
                         "style": {
@@ -1754,6 +1785,7 @@
                         "styles": {
                             "fill": "3:158"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -1797,6 +1829,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 2",
                         "style": {
@@ -1860,6 +1893,7 @@
                         "styles": {
                             "fill": "3:157"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -1903,6 +1937,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 3",
                         "style": {
@@ -1966,6 +2001,7 @@
                         "styles": {
                             "fill": "3:156"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2009,6 +2045,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 4",
                         "style": {
@@ -2072,6 +2109,7 @@
                         "styles": {
                             "fill": "3:152"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2115,6 +2153,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 5",
                         "style": {
@@ -2178,6 +2217,7 @@
                         "styles": {
                             "fill": "3:151"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2221,6 +2261,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 6",
                         "style": {
@@ -2284,6 +2325,7 @@
                         "styles": {
                             "fill": "3:150"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2327,6 +2369,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 7",
                         "style": {
@@ -2390,6 +2433,7 @@
                         "styles": {
                             "fill": "3:154"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2433,6 +2477,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 8",
                         "style": {
@@ -2496,6 +2541,7 @@
                         "styles": {
                             "fill": "3:153"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2539,6 +2585,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Green 9",
                         "style": {
@@ -2602,6 +2649,7 @@
                         "styles": {
                             "fill": "3:155"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2645,6 +2693,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 0",
                         "style": {
@@ -2708,6 +2757,7 @@
                         "styles": {
                             "fill": "3:101"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2751,6 +2801,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 1",
                         "style": {
@@ -2814,6 +2865,7 @@
                         "styles": {
                             "fill": "3:103"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2857,6 +2909,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 2",
                         "style": {
@@ -2920,6 +2973,7 @@
                         "styles": {
                             "fill": "3:105"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -2963,6 +3017,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 3",
                         "style": {
@@ -3026,6 +3081,7 @@
                         "styles": {
                             "fill": "3:107"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -3069,6 +3125,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 4",
                         "style": {
@@ -3132,6 +3189,7 @@
                         "styles": {
                             "fill": "3:109"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -3175,6 +3233,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 5",
                         "style": {
@@ -3238,6 +3297,7 @@
                         "styles": {
                             "fill": "3:102"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -3281,6 +3341,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 6",
                         "style": {
@@ -3344,6 +3405,7 @@
                         "styles": {
                             "fill": "3:104"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -3387,6 +3449,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 7",
                         "style": {
@@ -3450,6 +3513,7 @@
                         "styles": {
                             "fill": "3:106"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -3493,6 +3557,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 8",
                         "style": {
@@ -3556,6 +3621,7 @@
                         "styles": {
                             "fill": "3:108"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -3599,6 +3665,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Purple 9",
                         "style": {
@@ -3662,6 +3729,7 @@
                         "styles": {
                             "fill": "3:110"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -3705,6 +3773,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Action 1",
                         "style": {
@@ -3768,6 +3837,7 @@
                         "styles": {
                             "fill": "60:289"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -3811,6 +3881,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Action 2",
                         "style": {
@@ -3874,6 +3945,7 @@
                         "styles": {
                             "fill": "3:183"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -3917,6 +3989,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Action 3",
                         "style": {
@@ -3980,6 +4053,7 @@
                         "styles": {
                             "fill": "3:184"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4023,6 +4097,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Action 4",
                         "style": {
@@ -4086,6 +4161,7 @@
                         "styles": {
                             "fill": "3:185"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4129,6 +4205,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Action 6",
                         "style": {
@@ -4192,6 +4269,7 @@
                         "styles": {
                             "fill": "3:186"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4235,6 +4313,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Action 8",
                         "style": {
@@ -4298,6 +4377,7 @@
                         "styles": {
                             "fill": "3:187"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4341,6 +4421,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Action 9",
                         "style": {
@@ -4404,6 +4485,7 @@
                         "styles": {
                             "fill": "3:188"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4447,6 +4529,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 0",
                         "style": {
@@ -4510,6 +4593,7 @@
                         "styles": {
                             "fill": "3:88"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4553,6 +4637,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 1",
                         "style": {
@@ -4616,6 +4701,7 @@
                         "styles": {
                             "fill": "3:93"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4659,6 +4745,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 2",
                         "style": {
@@ -4722,6 +4809,7 @@
                         "styles": {
                             "fill": "3:95"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4765,6 +4853,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 3",
                         "style": {
@@ -4828,6 +4917,7 @@
                         "styles": {
                             "fill": "3:97"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4871,6 +4961,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 4",
                         "style": {
@@ -4934,6 +5025,7 @@
                         "styles": {
                             "fill": "3:99"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -4977,6 +5069,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 5",
                         "style": {
@@ -5040,6 +5133,7 @@
                         "styles": {
                             "fill": "3:91"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -5083,6 +5177,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 6",
                         "style": {
@@ -5146,6 +5241,7 @@
                         "styles": {
                             "fill": "3:94"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -5189,6 +5285,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 7",
                         "style": {
@@ -5252,6 +5349,7 @@
                         "styles": {
                             "fill": "3:96"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -5295,6 +5393,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 8",
                         "style": {
@@ -5358,6 +5457,7 @@
                         "styles": {
                             "fill": "3:98"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -5401,6 +5501,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Teal 9",
                         "style": {
@@ -5464,6 +5565,7 @@
                         "styles": {
                             "fill": "3:100"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -5507,6 +5609,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 0",
                         "style": {
@@ -5570,6 +5673,7 @@
                         "styles": {
                             "fill": "3:174"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -5613,6 +5717,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 1",
                         "style": {
@@ -5676,6 +5781,7 @@
                         "styles": {
                             "fill": "3:173"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -5719,6 +5825,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 2",
                         "style": {
@@ -5782,6 +5889,7 @@
                         "styles": {
                             "fill": "3:172"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -5825,6 +5933,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 3",
                         "style": {
@@ -5888,6 +5997,7 @@
                         "styles": {
                             "fill": "3:171"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -5931,6 +6041,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 4",
                         "style": {
@@ -5994,6 +6105,7 @@
                         "styles": {
                             "fill": "3:123"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6037,6 +6149,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 5",
                         "style": {
@@ -6100,6 +6213,7 @@
                         "styles": {
                             "fill": "3:119"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6143,6 +6257,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 6",
                         "style": {
@@ -6206,6 +6321,7 @@
                         "styles": {
                             "fill": "3:170"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6249,6 +6365,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 7",
                         "style": {
@@ -6312,6 +6429,7 @@
                         "styles": {
                             "fill": "3:169"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6355,6 +6473,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 8",
                         "style": {
@@ -6418,6 +6537,7 @@
                         "styles": {
                             "fill": "3:168"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6461,6 +6581,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Blue 9",
                         "style": {
@@ -6524,6 +6645,7 @@
                         "styles": {
                             "fill": "3:167"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6567,6 +6689,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 0",
                         "style": {
@@ -6630,6 +6753,7 @@
                         "styles": {
                             "fill": "3:166"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6673,6 +6797,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 1",
                         "style": {
@@ -6736,6 +6861,7 @@
                         "styles": {
                             "fill": "3:165"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6779,6 +6905,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 2",
                         "style": {
@@ -6842,6 +6969,7 @@
                         "styles": {
                             "fill": "3:164"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6885,6 +7013,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 3",
                         "style": {
@@ -6948,6 +7077,7 @@
                         "styles": {
                             "fill": "3:121"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -6991,6 +7121,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 4",
                         "style": {
@@ -7054,6 +7185,7 @@
                         "styles": {
                             "fill": "3:116"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -7097,6 +7229,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 5",
                         "style": {
@@ -7160,6 +7293,7 @@
                         "styles": {
                             "fill": "3:163"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -7203,6 +7337,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 6",
                         "style": {
@@ -7266,6 +7401,7 @@
                         "styles": {
                             "fill": "3:162"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -7309,6 +7445,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 7",
                         "style": {
@@ -7372,6 +7509,7 @@
                         "styles": {
                             "fill": "3:120"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -7415,6 +7553,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 8",
                         "style": {
@@ -7478,6 +7617,7 @@
                         "styles": {
                             "fill": "3:161"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -7521,6 +7661,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Yellow 9",
                         "style": {
@@ -7584,6 +7725,7 @@
                         "styles": {
                             "fill": "3:160"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -7627,6 +7769,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 0",
                         "style": {
@@ -7690,6 +7833,7 @@
                         "styles": {
                             "fill": "3:182"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -7733,6 +7877,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 1",
                         "style": {
@@ -7796,6 +7941,7 @@
                         "styles": {
                             "fill": "3:181"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -7839,6 +7985,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 2",
                         "style": {
@@ -7902,6 +8049,7 @@
                         "styles": {
                             "fill": "3:180"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -7945,6 +8093,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 3",
                         "style": {
@@ -8008,6 +8157,7 @@
                         "styles": {
                             "fill": "3:771"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -8051,6 +8201,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 4",
                         "style": {
@@ -8114,6 +8265,7 @@
                         "styles": {
                             "fill": "3:115"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -8157,6 +8309,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 5",
                         "style": {
@@ -8220,6 +8373,7 @@
                         "styles": {
                             "fill": "3:179"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -8263,6 +8417,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 6",
                         "style": {
@@ -8326,6 +8481,7 @@
                         "styles": {
                             "fill": "3:178"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -8369,6 +8525,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 7",
                         "style": {
@@ -8432,6 +8589,7 @@
                         "styles": {
                             "fill": "3:770"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -8475,6 +8633,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 8",
                         "style": {
@@ -8538,6 +8697,7 @@
                         "styles": {
                             "fill": "3:176"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -8581,6 +8741,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Red 9",
                         "style": {
@@ -8644,6 +8805,7 @@
                         "styles": {
                             "fill": "3:175"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -8687,6 +8849,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey 0",
                         "style": {
@@ -8750,6 +8913,7 @@
                         "styles": {
                             "fill": "786:329"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -8793,6 +8957,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey 1",
                         "style": {
@@ -8856,6 +9021,7 @@
                         "styles": {
                             "fill": "3:189"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -8899,6 +9065,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey 2",
                         "style": {
@@ -8962,6 +9129,7 @@
                         "styles": {
                             "fill": "786:328"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9005,6 +9173,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey 3",
                         "style": {
@@ -9068,6 +9237,7 @@
                         "styles": {
                             "fill": "3:149"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9111,6 +9281,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey 4",
                         "style": {
@@ -9174,6 +9345,7 @@
                         "styles": {
                             "fill": "3:190"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9217,6 +9389,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey 5",
                         "style": {
@@ -9280,6 +9453,7 @@
                         "styles": {
                             "fill": "786:330"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9323,6 +9497,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey 6",
                         "style": {
@@ -9386,6 +9561,7 @@
                         "styles": {
                             "fill": "3:191"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9429,6 +9605,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey  7",
                         "style": {
@@ -9492,6 +9669,7 @@
                         "styles": {
                             "fill": "3:148"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9535,6 +9713,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey 8",
                         "style": {
@@ -9598,6 +9777,7 @@
                         "styles": {
                             "fill": "786:331"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9641,6 +9821,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Grey 9",
                         "style": {
@@ -9704,6 +9885,7 @@
                         "styles": {
                             "fill": "3:89"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9747,6 +9929,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 0",
                         "style": {
@@ -9810,6 +9993,7 @@
                         "styles": {
                             "fill": "3:198"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9853,6 +10037,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 1",
                         "style": {
@@ -9916,6 +10101,7 @@
                         "styles": {
                             "fill": "3:197"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -9959,6 +10145,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 2",
                         "style": {
@@ -10022,6 +10209,7 @@
                         "styles": {
                             "fill": "3:196"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -10065,6 +10253,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 3",
                         "style": {
@@ -10128,6 +10317,7 @@
                         "styles": {
                             "fill": "3:117"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -10171,6 +10361,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 4",
                         "style": {
@@ -10234,6 +10425,7 @@
                         "styles": {
                             "fill": "3:195"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -10277,6 +10469,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 5",
                         "style": {
@@ -10340,6 +10533,7 @@
                         "styles": {
                             "fill": "3:194"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -10383,6 +10577,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 6",
                         "style": {
@@ -10446,6 +10641,7 @@
                         "styles": {
                             "fill": "3:193"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -10489,6 +10685,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 7",
                         "style": {
@@ -10552,6 +10749,7 @@
                         "styles": {
                             "fill": "3:192"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -10595,6 +10793,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 8",
                         "style": {
@@ -10658,6 +10857,7 @@
                         "styles": {
                             "fill": "3:114"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -10701,6 +10901,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Navy 9",
                         "style": {
@@ -10764,6 +10965,7 @@
                         "styles": {
                             "fill": "3:4"
                         },
+                        "exportSettings": [],
                         "effects": []
                     },
                     {
@@ -10807,6 +11009,7 @@
                             "fill": "3:89",
                             "text": "524:290"
                         },
+                        "exportSettings": [],
                         "effects": [],
                         "characters": "Pure White",
                         "style": {
@@ -10871,6 +11074,7 @@
                             "fill": "3:92",
                             "effect": "708:309"
                         },
+                        "exportSettings": [],
                         "effects": [
                             {
                                 "type": "DROP_SHADOW",
@@ -10903,7 +11107,8 @@
                 "prototypeDevice": {
                     "type": "NONE",
                     "rotation": "NONE"
-                }
+                },
+                "exportSettings": []
             },
             "components": {},
             "componentSets": {},
