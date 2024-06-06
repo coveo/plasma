@@ -61,6 +61,7 @@
         "@commitlint/config-conventional": "19.2.2",
         "@coveo/semantic-monorepo-tools": "2.4.34",
         "@sindresorhus/slugify": "2.2.1",
+        "@types/node": "20.14.2",
         "aws-sdk": "2.1635.0",
         "chokidar": "3.6.0",
         "commitizen": "4.3.0",
@@ -72,18 +73,28 @@
         "husky": "9.0.11",
         "lint-staged": "15.2.5",
         "mime-types": "2.1.35",
+        "postcss": "8.4.38",
         "prettier": "3.3.1",
         "sort-package-json": "2.10.0",
         "stylelint": "16.6.1",
         "stylelint-config-standard-scss": "13.1.0",
         "turbo": "1.13.4",
+        "typescript": "5.4.5",
         "underscore": "1.13.6",
         "walkdir": "0.4.1"
     },
     "pnpm": {
+        "peerDependencyRules": {
+            "ignoreMissing": [
+                "react-native"
+            ]
+        },
         "overrides": {
             "@babel/traverse": "^7.23.2",
             "nwsapi": "2.2.10"
+        },
+        "patchedDependencies": {
+            "@stencil/core@4.15.0": "patches/@stencil__core@4.15.0.patch"
         }
     }
 }
