@@ -464,11 +464,11 @@ importers:
   packages/website:
     dependencies:
       '@coveo/atomic-react':
-        specifier: 2.8.13
-        version: 2.8.13(@coveo/headless@2.50.2)(encoding@0.1.13)(postcss@8.4.38)(react-dom@18.3.1)(react@18.3.1)
+        specifier: 2.9.6
+        version: 2.9.6(@coveo/headless@2.63.5)(encoding@0.1.13)(postcss@8.4.38)(react-dom@18.3.1)(react@18.3.1)
       '@coveo/headless':
-        specifier: 2.50.2
-        version: 2.50.2(encoding@0.1.13)(pino-pretty@10.3.1)(react-native@0.74.2)(react@18.3.1)(redux@4.2.1)
+        specifier: 2.63.5
+        version: 2.63.5(encoding@0.1.13)(pino-pretty@10.3.1)(react-native@0.74.2)(react@18.3.1)(redux@5.0.1)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -1549,7 +1549,7 @@ packages:
       '@babel/helper-hoist-variables': 7.24.6
       '@babel/helper-module-transforms': 7.24.6(@babel/core@7.24.6)
       '@babel/helper-plugin-utils': 7.24.6
-      '@babel/helper-validator-identifier': 7.24.6
+      '@babel/helper-validator-identifier': 7.24.7
     dev: false
 
   /@babel/plugin-transform-modules-umd@7.24.6(@babel/core@7.24.6):
@@ -2246,15 +2246,15 @@ packages:
       chalk: 5.3.0
     dev: true
 
-  /@coveo/atomic-react@2.8.13(@coveo/headless@2.50.2)(encoding@0.1.13)(postcss@8.4.38)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-WF6o9kMc2ZbKpmdW1wxQfDG1oGt4yt7PbtrA04+3jixyAu/Tx0nRXl3yyG+4eNyADwt+gq/M7jpCOugBgCMAhA==}
+  /@coveo/atomic-react@2.9.6(@coveo/headless@2.63.5)(encoding@0.1.13)(postcss@8.4.38)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-p1MKIccU3Fx7cQQr7jAuc8fYhUd+i6WLgW8Kyqpt6MxfYRhf/TspcCZ96xbMqZeLfrWniAI6rPVJ4ph9Kkkkag==}
     peerDependencies:
-      '@coveo/headless': 2.50.2
+      '@coveo/headless': 2.63.5
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@coveo/atomic': 2.58.0(@coveo/headless@2.50.2)(encoding@0.1.13)(postcss@8.4.38)
-      '@coveo/headless': 2.50.2(encoding@0.1.13)(pino-pretty@10.3.1)(react-native@0.74.2)(react@18.3.1)(redux@4.2.1)
+      '@coveo/atomic': 2.65.5(@coveo/headless@2.63.5)(encoding@0.1.13)(postcss@8.4.38)
+      '@coveo/headless': 2.63.5(encoding@0.1.13)(pino-pretty@10.3.1)(react-native@0.74.2)(react@18.3.1)(redux@5.0.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
@@ -2262,24 +2262,25 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/atomic@2.58.0(@coveo/headless@2.50.2)(encoding@0.1.13)(postcss@8.4.38):
-    resolution: {integrity: sha512-tQe+jBwwSEavLuJTT+WAQFCUy45H30uNpRTyNG+fiy3tY5wqCemQvieK9qZ+gzgWycGMgOtssb3lX30VkHDn8Q==}
+  /@coveo/atomic@2.65.5(@coveo/headless@2.63.5)(encoding@0.1.13)(postcss@8.4.38):
+    resolution: {integrity: sha512-xgisFv0S25BgJvlQvXNsi8BdY448Q0cidaB0Na1wF7fc709zGQnfmxZWDpueySzUofHhJsUZ0GkPNofshf/oQQ==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
-      '@coveo/headless': 2.50.2
+      '@coveo/headless': 2.63.5
     dependencies:
-      '@coveo/bueno': 0.45.7
-      '@coveo/headless': 2.50.2(encoding@0.1.13)(pino-pretty@10.3.1)(react-native@0.74.2)(react@18.3.1)(redux@4.2.1)
+      '@coveo/bueno': 0.45.8
+      '@coveo/headless': 2.63.5(encoding@0.1.13)(pino-pretty@10.3.1)(react-native@0.74.2)(react@18.3.1)(redux@5.0.1)
       '@popperjs/core': 2.11.8
       '@salesforce-ux/design-system': 2.22.0(postcss@8.4.38)
-      '@stencil/core': 4.12.2
-      '@stencil/store': 2.0.13(@stencil/core@4.12.2)
-      dayjs: 1.11.10
-      dompurify: 3.0.8
+      '@stencil/core': 4.15.0
+      '@stencil/store': 2.0.15(@stencil/core@4.15.0)
+      dayjs: 1.11.11
+      dompurify: 3.1.3
       escape-html: 1.0.3
       focus-visible: 5.2.0
-      i18next: 23.9.0
-      i18next-http-backend: 2.4.3(encoding@0.1.13)
+      i18next: 23.11.4
+      i18next-http-backend: 2.5.1(encoding@0.1.13)
+      marked: 12.0.2
       stencil-inline-svg: 1.1.0
       ts-debounce: 4.0.0
     transitivePeerDependencies:
@@ -2287,39 +2288,39 @@ packages:
       - postcss
     dev: false
 
-  /@coveo/bueno@0.45.7:
-    resolution: {integrity: sha512-C/pDhpBWSRX90tLzY6CNiERcLGNyaB9ADJxyut+MKYptiBSd9B+reruFWrXMYCZShTh4twhRLJngEngxhHEfuQ==}
+  /@coveo/bueno@0.45.8:
+    resolution: {integrity: sha512-yalD8HakwJVCOzjEO2V0/g7DwfWYEkf+MMzSN6iwM8jLXOxUjLFYaGQMLVy7X41HJRnJOqdPXCKZvTTI9skaGA==}
     dev: false
 
   /@coveo/explorer-messenger@0.1.1:
     resolution: {integrity: sha512-jZEtAc4BJ5MTEP9/FDwmkwM7bHVc/N3HHdnuOEJ+4vMnTBxBecndaxojFqoPcqJsINmRkD71XSUPQZUbbKXRrA==}
     dev: false
 
-  /@coveo/headless@2.50.2(encoding@0.1.13)(pino-pretty@10.3.1)(react-native@0.74.2)(react@18.3.1)(redux@4.2.1):
-    resolution: {integrity: sha512-JJcV0nAIZrHX9BSfPhkIviPKvy0BE7nvUqQ0CcfNhtyxWLlc0Q58NPeE4w2D0xzdbAygue/wqNlXN7X4mSZBfQ==}
+  /@coveo/headless@2.63.5(encoding@0.1.13)(pino-pretty@10.3.1)(react-native@0.74.2)(react@18.3.1)(redux@5.0.1):
+    resolution: {integrity: sha512-ZrM0iNQLVBV1+n2MbzpUhEF3IMgIWlKBIgoy0b0v6FPAwKNDZXBX6IRRebAExfVUTVjgk6N+crpeghO8bI8lgg==}
     engines: {node: '>=12'}
     peerDependencies:
       encoding: ^0.1.13
-      pino-pretty: ^6.0.0 || ^10.0.0
+      pino-pretty: ^6.0.0 || ^10.0.0 || ^11.0.0
     dependencies:
-      '@coveo/bueno': 0.45.7
-      '@coveo/relay': 0.7.4
+      '@coveo/bueno': 0.45.8
+      '@coveo/relay': 0.7.7
+      '@coveo/relay-event-types': 7.11.0
       '@microsoft/fetch-event-source': 2.0.1
-      '@reduxjs/toolkit': 1.9.7(react@18.3.1)
-      '@types/redux-mock-store': 1.0.6
+      '@reduxjs/toolkit': 2.2.4(react@18.3.1)
       abab: 2.0.6
-      coveo.analytics: 2.29.3(encoding@0.1.13)(react-native@0.74.2)
-      dayjs: 1.11.10
+      abortcontroller-polyfill: 1.7.5
+      coveo.analytics: 2.30.2(encoding@0.1.13)(react-native@0.74.2)
+      dayjs: 1.11.11
       encoding: 0.1.13
       exponential-backoff: 3.1.0
       fast-equals: 5.0.1
       node-abort-controller: 3.1.1
-      pino: 8.19.0
+      pino: 8.21.0
       pino-pretty: 10.3.1
-      redux-mock-store: 1.5.4
-      redux-thunk: 2.4.2(redux@4.2.1)
-      ts-debounce: 3.0.0
-      undici: 5.28.3
+      redux-thunk: 3.1.0(redux@5.0.1)
+      ts-debounce: 4.0.0
+      undici: 5.28.4
     transitivePeerDependencies:
       - react
       - react-native
@@ -2327,8 +2328,12 @@ packages:
       - redux
     dev: false
 
-  /@coveo/relay@0.7.4:
-    resolution: {integrity: sha512-crGY+StdIeYcvZCWeRbC3rqTdDI7KX1pq2YBI2gM8UU7ibeZPfNuLySlhYF49v/9kLf/ANyr4WpptWByeCffmw==}
+  /@coveo/relay-event-types@7.11.0:
+    resolution: {integrity: sha512-s9wBRFICKkKsTNmayqWOcCuVWERB2WZ/J3UdsLaaf/jNLyWgHK05WoLN6tlc6N8rGx1fCz1SdPqFLEIG3KkrYA==}
+    dev: false
+
+  /@coveo/relay@0.7.7:
+    resolution: {integrity: sha512-hTnO/GN4WEx+3qVGWx+BnM9nRLk+TLM1GaTcX2emWIZBcvm9XHWkKHBz7d8onNn+ip54zbVXvm+9Rfdq0NDGvg==}
     dependencies:
       '@coveo/explorer-messenger': 0.1.1
       uuid: 9.0.1
@@ -3471,22 +3476,22 @@ packages:
       react-native: 0.74.2(@babel/core@7.24.6)(@babel/preset-env@7.24.6)(@types/react@18.3.3)(encoding@0.1.13)(react@18.3.1)
     dev: false
 
-  /@reduxjs/toolkit@1.9.7(react@18.3.1):
-    resolution: {integrity: sha512-t7v8ZPxhhKgOKtU+uyJT13lu4vL7az5aFi4IdoDs/eS548edn2M8Ik9h8fxgvMjGoAUVFSt6ZC1P5cWmQ014QQ==}
+  /@reduxjs/toolkit@2.2.4(react@18.3.1):
+    resolution: {integrity: sha512-EoIC9iC2V/DLRBVMXRHrO/oM3QBT7RuJNeBRx8Cpnz/NHINeZBEqgI8YOxAYUjLp+KYxGgc4Wd6KoAKsaUBGhg==}
     peerDependencies:
       react: ^16.9.0 || ^17.0.0 || ^18
-      react-redux: ^7.2.1 || ^8.0.2
+      react-redux: ^7.2.1 || ^8.1.3 || ^9.0.0
     peerDependenciesMeta:
       react:
         optional: true
       react-redux:
         optional: true
     dependencies:
-      immer: 9.0.21
+      immer: 10.1.1
       react: 18.3.1
-      redux: 4.2.1
-      redux-thunk: 2.4.2(redux@4.2.1)
-      reselect: 4.1.8
+      redux: 5.0.1
+      redux-thunk: 3.1.0(redux@5.0.1)
+      reselect: 5.1.1
     dev: false
 
   /@remix-run/router@1.16.1:
@@ -3693,19 +3698,19 @@ packages:
       '@sinonjs/commons': 3.0.1
     dev: false
 
-  /@stencil/core@4.12.2:
-    resolution: {integrity: sha512-WEMpoqwMV4hY/ab2z9NxRhSeZwuKEugjyn6Vd+qA9xqZh6VNUL27QbP8vCa7IeqD4Zql4JBtKu3lVuBHutWE6w==}
+  /@stencil/core@4.15.0:
+    resolution: {integrity: sha512-C5syM3chCyxX0Os5M+ZWrBujjqwUfrTb87YiLr8RC+kMTmIpnRvvtj8/s3QYDGdDENGRxGkBpeboVh82IGqk0w==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
     dev: false
 
-  /@stencil/store@2.0.13(@stencil/core@4.12.2):
-    resolution: {integrity: sha512-chfSK/pwgFTDhx/woSZfQ8HswJKSwFQxbwaSTjeTGnbY+HRLLcs2mXAOAtdR7DDwCRMYt4eLBRZ+CLowKGebYw==}
+  /@stencil/store@2.0.15(@stencil/core@4.15.0):
+    resolution: {integrity: sha512-mIrvtqYbwLry8YRrD5JF4no+YK7L2Mcud4vAgsw7llObuxK9TR4B5S1Y3XgTeGts5eLrA6dhNKX8k/Qr+fQtyA==}
     engines: {node: '>=12.0.0', npm: '>=6.0.0'}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.12.2
+      '@stencil/core': 4.15.0
     dev: false
 
   /@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.24.6):
@@ -4333,12 +4338,6 @@ packages:
       '@types/prop-types': 15.7.12
       csstype: 3.1.3
 
-  /@types/redux-mock-store@1.0.6:
-    resolution: {integrity: sha512-eg5RDfhJTXuoJjOMyXiJbaDb1B8tfTaJixscmu+jOusj6adGC0Krntz09Tf4gJgXeCqCrM5bBMd+B7ez0izcAQ==}
-    dependencies:
-      redux: 4.2.1
-    dev: false
-
   /@types/responselike@1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
@@ -4661,6 +4660,10 @@ packages:
     engines: {node: '>=6.5'}
     dependencies:
       event-target-shim: 5.0.1
+    dev: false
+
+  /abortcontroller-polyfill@1.7.5:
+    resolution: {integrity: sha512-JMJ5soJWP18htbbxJjG7bG6yuI6pRhgJ0scHHTfkUjf6wjP912xZWvM+A4sJK3gqd9E8fcPbDnOefbA9Th/FIQ==}
     dev: false
 
   /accepts@1.3.8:
@@ -5726,8 +5729,8 @@ packages:
       typescript: 5.4.5
     dev: true
 
-  /coveo.analytics@2.29.3(encoding@0.1.13)(react-native@0.74.2):
-    resolution: {integrity: sha512-/Gv/4ZHV/UeXHUfbk+vMjaGdg7kYj0Y46dDF7e/8w8jZVvYChEMBNP3GYXSW8IUYUgM37R21tNuXUj9D+yx0NQ==}
+  /coveo.analytics@2.30.2(encoding@0.1.13)(react-native@0.74.2):
+    resolution: {integrity: sha512-nc4FdspXgWhZJs46iEOtD0T5dIqvIv/5/cE4wrD7ES/kNB1FDflVNmTBVechgx8KhfTOtdOf5SnVbiKfT/F9OA==}
     dependencies:
       '@types/uuid': 9.0.6
       cross-fetch: 3.1.8(encoding@0.1.13)
@@ -5896,10 +5899,6 @@ packages:
 
   /dateformat@4.6.3:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}
-    dev: false
-
-  /dayjs@1.11.10:
-    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: false
 
   /dayjs@1.11.11:
@@ -6121,8 +6120,8 @@ packages:
       domelementtype: 2.3.0
     dev: true
 
-  /dompurify@3.0.8:
-    resolution: {integrity: sha512-b7uwreMYL2eZhrSCRC4ahLTeZcPZxSmYfmcQGXGkXiZSNW1X85v+SDM5KsWcpivIiUBH47Ji7NtyUdpLeF5JZQ==}
+  /dompurify@3.1.3:
+    resolution: {integrity: sha512-5sOWYSNPaxz6o2MUPvtyxTTqR4D3L77pr5rUQoWgD5ROQtVIZQgJkXbo1DLlK3vj11YGw5+LnF4SYti4gZmwng==}
     dev: false
 
   /domutils@3.1.0:
@@ -7673,16 +7672,16 @@ packages:
     hasBin: true
     dev: true
 
-  /i18next-http-backend@2.4.3(encoding@0.1.13):
-    resolution: {integrity: sha512-jo2M03O6n1/DNb51WSQ8PsQ0xEELzLZRdYUTbf17mLw3rVwnJF9hwNgMXvEFSxxb+N8dT+o0vtigA6s5mGWyPA==}
+  /i18next-http-backend@2.5.1(encoding@0.1.13):
+    resolution: {integrity: sha512-+rNX1tghdVxdfjfPt0bI1sNg5ahGW9kA7OboG7b4t03Fp69NdDlRIze6yXhIbN8rbHxJ8IP4dzRm/okZ15lkQg==}
     dependencies:
       cross-fetch: 4.0.0(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /i18next@23.9.0:
-    resolution: {integrity: sha512-f3MUciKqwzNV//mHG6EtdSlC65+nqH/3zK8sOSWqNV6FVu2tmHhF/rFOp9UF8S4m1odojtuipKaKJrP0Loh60g==}
+  /i18next@23.11.4:
+    resolution: {integrity: sha512-CCUjtd5TfaCl+mLUzAA0uPSN+AVn4fP/kWCYt/hocPUwusTpMVczdrRyOBUwk6N05iH40qiKx6q1DoNJtBIwdg==}
     dependencies:
       '@babel/runtime': 7.24.6
     dev: false
@@ -7744,8 +7743,8 @@ packages:
       '@babel/runtime-corejs3': 7.24.5
     dev: false
 
-  /immer@9.0.21:
-    resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
+  /immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
     dev: false
 
   /immutable@4.3.4:
@@ -8622,6 +8621,7 @@ packages:
   /lodash.isplainobject@4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
     requiresBuild: true
+    dev: true
 
   /lodash.kebabcase@4.1.1:
     resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==}
@@ -8774,6 +8774,12 @@ packages:
 
   /markdown-table@3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
+    dev: false
+
+  /marked@12.0.2:
+    resolution: {integrity: sha512-qXUm7e/YKFoqFPYPa3Ukg9xlI5cyAtGmyEIzMfW//m6kXwCy2Ps9DYf5ioijFKQ8qyuscrHoY04iJGctu2Kg0Q==}
+    engines: {node: '>= 18'}
+    hasBin: true
     dev: false
 
   /marky@1.2.5:
@@ -10147,13 +10153,6 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /pino-abstract-transport@1.1.0:
-    resolution: {integrity: sha512-lsleG3/2a/JIWUtf9Q5gUNErBqwIu1tUKTT3dUzaf5DySw9ra1wcqKjJjLX1VTY64Wk1eEOYsVGSaGfCK85ekA==}
-    dependencies:
-      readable-stream: 4.5.2
-      split2: 4.2.0
-    dev: false
-
   /pino-abstract-transport@1.2.0:
     resolution: {integrity: sha512-Guhh8EZfPCfH+PMXAb6rKOjGQEoy0xlAIn+irODG5kgfYV+BQ0rGYYWTIel3P5mmyXqkYkPmdIkywsn6QKUR1Q==}
     dependencies:
@@ -10185,14 +10184,14 @@ packages:
     resolution: {integrity: sha512-cHjPPsE+vhj/tnhCy/wiMh3M3z3h/j15zHQX+S9GkTBgqJuTuJzYJ4gUyACLhDaJ7kk9ba9iRDmbH2tJU03OiA==}
     dev: false
 
-  /pino@8.19.0:
-    resolution: {integrity: sha512-oswmokxkav9bADfJ2ifrvfHUwad6MLp73Uat0IkQWY3iAw5xTRoznXbXksZs8oaOUMpmhVWD+PZogNzllWpJaA==}
+  /pino@8.21.0:
+    resolution: {integrity: sha512-ip4qdzjkAyDDZklUaZkcRFb2iA118H9SgRh8yzTkSQK8HilsOJF7rSY8HoW5+I0M46AZgX/pxbprf2vvzQCE0Q==}
     hasBin: true
     dependencies:
       atomic-sleep: 1.0.0
       fast-redact: 3.3.0
       on-exit-leak-free: 2.1.2
-      pino-abstract-transport: 1.1.0
+      pino-abstract-transport: 1.2.0
       pino-std-serializers: 6.2.2
       process-warning: 3.0.0
       quick-format-unescaped: 4.0.4
@@ -10826,24 +10825,16 @@ packages:
       strip-indent: 3.0.0
     dev: true
 
-  /redux-mock-store@1.5.4:
-    resolution: {integrity: sha512-xmcA0O/tjCLXhh9Fuiq6pMrJCwFRaouA8436zcikdIpYWWCjU76CRk+i2bHx8EeiSiMGnB85/lZdU3wIJVXHTA==}
-    dependencies:
-      lodash.isplainobject: 4.0.6
-    dev: false
-
-  /redux-thunk@2.4.2(redux@4.2.1):
-    resolution: {integrity: sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==}
+  /redux-thunk@3.1.0(redux@5.0.1):
+    resolution: {integrity: sha512-NW2r5T6ksUKXCabzhL9z+h206HQw/NJkcLm1GPImRQ8IzfXwRGqjVhKJGauHirT0DAuyy6hjdnMZaRoAcy0Klw==}
     peerDependencies:
-      redux: ^4
+      redux: ^5.0.0
     dependencies:
-      redux: 4.2.1
+      redux: 5.0.1
     dev: false
 
-  /redux@4.2.1:
-    resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==}
-    dependencies:
-      '@babel/runtime': 7.24.6
+  /redux@5.0.1:
+    resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
     dev: false
 
   /reflect.getprototypeof@1.0.4:
@@ -10975,8 +10966,8 @@ packages:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
     dev: true
 
-  /reselect@4.1.8:
-    resolution: {integrity: sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==}
+  /reselect@5.1.1:
+    resolution: {integrity: sha512-K/BG6eIky/SBpzfHZv/dd+9JBFiS4SWV7FIujVyJRux6e45+73RaUHXLmIR1f7WOMaQ0U1km6qwklRQxpJJY0w==}
     dev: false
 
   /resolve-alpn@1.2.1:
@@ -12126,10 +12117,6 @@ packages:
     dependencies:
       typescript: 5.4.5
 
-  /ts-debounce@3.0.0:
-    resolution: {integrity: sha512-7jiRWgN4/8IdvCxbIwnwg2W0bbYFBH6BxFqBjMKk442t7+liF2Z1H6AUCcl8e/pD93GjPru+axeiJwFmRww1WQ==}
-    dev: false
-
   /ts-debounce@4.0.0:
     resolution: {integrity: sha512-+1iDGY6NmOGidq7i7xZGA4cm8DAa6fqdYcvO5Z6yBevH++Bdo9Qt/mN0TzHUgcCcKv1gmh9+W5dHqz8pMWbCbg==}
     dev: false
@@ -12361,8 +12348,8 @@ packages:
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
-  /undici@5.28.3:
-    resolution: {integrity: sha512-3ItfzbrhDlINjaP0duwnNsKpDQk3acHI3gVJ1z4fmwMK31k5G9OVIAMLSIaP6w4FaGkaAkN6zaQO9LUvZ1t7VA==}
+  /undici@5.28.4:
+    resolution: {integrity: sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==}
     engines: {node: '>=14.0'}
     dependencies:
       '@fastify/busboy': 2.0.0
