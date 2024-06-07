@@ -24,8 +24,8 @@ importers:
         specifier: 19.2.2
         version: 19.2.2
       '@coveo/semantic-monorepo-tools':
-        specifier: 2.4.34
-        version: 2.4.34
+        specifier: 2.4.35
+        version: 2.4.35
       '@sindresorhus/slugify':
         specifier: 2.2.1
         version: 2.2.1
@@ -33,8 +33,8 @@ importers:
         specifier: 20.14.2
         version: 20.14.2
       aws-sdk:
-        specifier: 2.1635.0
-        version: 2.1635.0
+        specifier: 2.1636.0
+        version: 2.1636.0
       chokidar:
         specifier: 3.6.0
         version: 3.6.0
@@ -111,8 +111,8 @@ importers:
         specifier: 2.29.1
         version: 2.29.1(@typescript-eslint/parser@7.12.0)(eslint@8.57.0)
       eslint-plugin-jsdoc:
-        specifier: 48.2.8
-        version: 48.2.8(eslint@8.57.0)
+        specifier: 48.2.9
+        version: 48.2.9(eslint@8.57.0)
       eslint-plugin-prefer-arrow:
         specifier: 1.2.3
         version: 1.2.3(eslint@8.57.0)
@@ -1139,8 +1139,8 @@ packages:
       uuid: 9.0.1
     dev: false
 
-  /@coveo/semantic-monorepo-tools@2.4.34:
-    resolution: {integrity: sha512-BuSX/ogdXVB23ilkNOlOvfXi4Ly9TTbaRRt4krgqSzvjEzQL9+/JA/RgdDlBe5AnVrcu1rlikfmExnO6zA/IEQ==}
+  /@coveo/semantic-monorepo-tools@2.4.35:
+    resolution: {integrity: sha512-LbVWDCg8ZNaKcagSWFqRsoD6ze3jNE8K+MxZ7LsykSyt+4yAT5uNNmNmyy2fdDF7rFIKd1JYRnWVh+MRe2PVBg==}
     dependencies:
       conventional-changelog-writer: 7.0.1
       conventional-commits-parser: 5.0.0
@@ -3219,8 +3219,8 @@ packages:
     dependencies:
       possible-typed-array-names: 1.0.0
 
-  /aws-sdk@2.1635.0:
-    resolution: {integrity: sha512-zab4y8ftjgcctYao33c1fr8Yx1wMuRlEbZT7hwEXcK8Ta3+LAEXJs1wKjPpium+KUwl6zw7wxhaIdEibiz6InA==}
+  /aws-sdk@2.1636.0:
+    resolution: {integrity: sha512-0w/jOCYnwewLYjH4UCh3GTBjR/NMdvEKNrd1pnM4FvfJSmjfzCinDvmf5Qc6xeIrqPfrdYOoQh7NJhYeJScCIQ==}
     engines: {node: '>= 10.0.0'}
     requiresBuild: true
     dependencies:
@@ -4492,8 +4492,8 @@ packages:
       - supports-color
     dev: false
 
-  /eslint-plugin-jsdoc@48.2.8(eslint@8.57.0):
-    resolution: {integrity: sha512-b72WNCHxmcrtYh6ejy0Y5rQH0mJpym27fT4P3HU3fbqEo3J95/hdG7VlevOHK0PZrHk1pVnClCBH7wXw2RMIXg==}
+  /eslint-plugin-jsdoc@48.2.9(eslint@8.57.0):
+    resolution: {integrity: sha512-ErpKyr2mEUEkcdZ4nwW/cvDjClvAcvJMEXkGGll0wf8sro8h6qeQ3qlZyp1vM1dRk8Ap6rMdke8FnP94QBIaVQ==}
     engines: {node: '>=18'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
