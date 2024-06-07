@@ -11,8 +11,8 @@
         "start": "node ./build/start.js"
     },
     "dependencies": {
-        "@coveo/atomic-react": "2.9.6",
-        "@coveo/headless": "2.63.5",
+        "@coveo/atomic-react": "2.10.1",
+        "@coveo/headless": "2.65.0",
         "@coveord/plasma-components-props-analyzer": "workspace:*",
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
