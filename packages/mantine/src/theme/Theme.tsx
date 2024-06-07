@@ -42,7 +42,6 @@ import {
     Tabs,
     Text,
     TextInput,
-    Title,
     Tooltip,
     createTheme,
 } from '@mantine/core';
@@ -71,7 +70,6 @@ import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
 import TextClasses from '../styles/Text.module.css';
-import TitleClasses from '../styles/Title.module.css';
 import {NotificationVars} from '../vars/Notification.vars';
 import {TextVars} from '../vars/Text.vars';
 import {PlasmaColors} from './PlasmaColors';
@@ -277,9 +275,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 radius: 8,
             },
-        }),
-        Title: Title.extend({
-            classNames: {root: TitleClasses.root},
         }),
         Tooltip: Tooltip.extend({
             defaultProps: {
