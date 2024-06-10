@@ -28,7 +28,7 @@
     },
     "devDependencies": {
         "@swc/cli": "0.3.12",
-        "@swc/core": "1.5.25",
+        "@swc/core": "1.5.27",
         "@types/fs-extra": "11.0.4",
         "@types/node": "20.14.2",
         "@types/react": "18.3.3",
