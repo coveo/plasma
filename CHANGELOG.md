@@ -1,3 +1,15 @@
+## 54.0.1 (2024-06-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @tabler/icons-react to v3 (#3749) 6f10ee9, closes #3749
+* **deps:** update dependency eslint-plugin-jsdoc to v48 (#3751) f4c1890, closes #3751
+* **deps:** update remark (major) (#3593) adee895, closes #3593
+* **mantine, title:** remove custom letter-spacing (#3759) c19711b, closes #3759
+
+
+
 # 54.0.0 (2024-06-04)
 
 
