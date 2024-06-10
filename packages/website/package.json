@@ -8,7 +8,7 @@
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "mantine:fetch": "ts-node --project ./bin/tsconfig.json ./bin/index.ts",
         "preview": "vite preview",
-        "start": "node ./build/start.js"
+        "start": "vite"
     },
     "dependencies": {
         "@coveo/atomic-react": "2.10.1",
