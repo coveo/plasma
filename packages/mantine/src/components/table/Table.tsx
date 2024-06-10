@@ -9,7 +9,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils';
 import classes from './Table.module.css';
 import {TableLayout, TableProps} from './Table.types';
@@ -196,6 +196,22 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             });
         },
     }));
+
+    useEffect(() => {
+        // Update the selected rows data when the data prop changes
+        if (store.getSelectedRows().length > 0) {
+            store.setRowSelection((old) => {
+                const rowsById = table.getRowModel().rowsById;
+                const newSelection = {...old};
+                Object.keys(old).forEach((rowId) => {
+                    if (rowsById[rowId]) {
+                        newSelection[rowId] = rowsById[rowId].original;
+                    }
+                });
+                return isEqual(newSelection, old) ? old : newSelection;
+            });
+        }
+    }, [data]);
 
     const containerRef = useRef<HTMLDivElement>();
     useClickOutside(
