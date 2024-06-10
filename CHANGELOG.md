@@ -1,3 +1,12 @@
+## 54.0.2 (2024-06-10)
+
+
+### Bug Fixes
+
+* **mantine:** make sure rowSelection row data stays fresh (#3764) eeb6ef9, closes #3764
+
+
+
 ## 54.0.1 (2024-06-10)
 
 
