@@ -510,7 +510,6 @@ $ribbon-distance-from-corner: 3em;
 $ribbon-y-offset: calc((#{$ribbon-height} / -2) + #{$ribbon-distance-from-corner});
 $ribbon-x-offset: calc((#{$ribbon-width} / -2) + #{$ribbon-distance-from-corner});
 $ribbon-font-size: 0.8em;
-$ribbon-letter-spacing: 1px;
 $ribbon-rotation-angle: 45deg;
 
 // Flippable
