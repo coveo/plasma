@@ -65,7 +65,7 @@
         "aws-sdk": "2.1637.0",
         "chokidar": "3.6.0",
         "commitizen": "4.3.0",
-        "conventional-changelog-angular": "7.0.0",
+        "conventional-changelog-angular": "8.0.0",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "8.57.0",
         "eslint-config-plasma": "workspace:*",
