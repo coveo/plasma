@@ -19,7 +19,7 @@ importers:
     devDependencies:
       '@commitlint/cli':
         specifier: 19.3.0
-        version: 19.3.0(@types/node@20.14.5)(typescript@5.4.5)
+        version: 19.3.0(@types/node@20.14.6)(typescript@5.4.5)
       '@commitlint/config-conventional':
         specifier: 19.2.2
         version: 19.2.2
@@ -30,8 +30,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       '@types/node':
-        specifier: 20.14.5
-        version: 20.14.5
+        specifier: 20.14.6
+        version: 20.14.6
       aws-sdk:
         specifier: 2.1644.0
         version: 2.1644.0
@@ -40,13 +40,13 @@ importers:
         version: 3.6.0
       commitizen:
         specifier: 4.3.0
-        version: 4.3.0(@types/node@20.14.5)(typescript@5.4.5)
+        version: 4.3.0(@types/node@20.14.6)(typescript@5.4.5)
       conventional-changelog-angular:
         specifier: 8.0.0
         version: 8.0.0
       cz-conventional-changelog:
         specifier: 3.3.0
-        version: 3.3.0(@types/node@20.14.5)(typescript@5.4.5)
+        version: 3.3.0(@types/node@20.14.6)(typescript@5.4.5)
       eslint:
         specifier: 8.57.0
         version: 8.57.0
@@ -146,8 +146,8 @@ importers:
         specifier: 11.0.4
         version: 11.0.4
       '@types/node':
-        specifier: 20.14.5
-        version: 20.14.5
+        specifier: 20.14.6
+        version: 20.14.6
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
@@ -180,7 +180,7 @@ importers:
         version: 5.0.7
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.6.3(@swc/helpers@0.5.11))(@types/node@20.14.5)(typescript@5.4.5)
+        version: 10.9.2(@swc/core@1.6.3(@swc/helpers@0.5.11))(@types/node@20.14.6)(typescript@5.4.5)
       tslib:
         specifier: 2.6.3
         version: 2.6.3
@@ -277,7 +277,7 @@ importers:
         version: 10.1.0
       '@testing-library/jest-dom':
         specifier: 6.4.6
-        version: 6.4.6(vitest@1.6.0(@types/node@20.14.5)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))
+        version: 6.4.6(vitest@1.6.0(@types/node@20.14.6)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))
       '@testing-library/react':
         specifier: 16.0.0
         version: 16.0.0(@testing-library/dom@10.1.0)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -307,7 +307,7 @@ importers:
         version: 6.2.2(eslint@8.57.0)(typescript@5.4.5)
       eslint-plugin-vitest:
         specifier: 0.5.4
-        version: 0.5.4(eslint@8.57.0)(typescript@5.4.5)(vitest@1.6.0(@types/node@20.14.5)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))
+        version: 0.5.4(eslint@8.57.0)(typescript@5.4.5)(vitest@1.6.0(@types/node@20.14.6)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))
       eslint-plugin-vitest-globals:
         specifier: 1.5.0
         version: 1.5.0
@@ -349,7 +349,7 @@ importers:
         version: 5.4.5
       vitest:
         specifier: 1.6.0
-        version: 1.6.0(@types/node@20.14.5)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
+        version: 1.6.0(@types/node@20.14.6)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
 
   packages/react-icons:
     dependencies:
@@ -434,8 +434,8 @@ importers:
         specifier: 4.17.5
         version: 4.17.5
       '@types/node':
-        specifier: 20.14.5
-        version: 20.14.5
+        specifier: 20.14.6
+        version: 20.14.6
       chroma-js:
         specifier: 2.4.2
         version: 2.4.2
@@ -477,7 +477,7 @@ importers:
         version: 3.3.2
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.6.3(@swc/helpers@0.5.11))(@types/node@20.14.5)(typescript@5.4.5)
+        version: 10.9.2(@swc/core@1.6.3(@swc/helpers@0.5.11))(@types/node@20.14.6)(typescript@5.4.5)
       tslib:
         specifier: 2.6.3
         version: 2.6.3
@@ -597,8 +597,8 @@ importers:
         specifier: 4.1.9
         version: 4.1.9
       '@types/node':
-        specifier: 20.14.5
-        version: 20.14.5
+        specifier: 20.14.6
+        version: 20.14.6
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
@@ -613,7 +613,7 @@ importers:
         version: 7.13.1(eslint@8.57.0)(typescript@5.4.5)
       '@vitejs/plugin-react-swc':
         specifier: 3.7.0
-        version: 3.7.0(@swc/helpers@0.5.11)(vite@5.3.1(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))
+        version: 3.7.0(@swc/helpers@0.5.11)(vite@5.3.1(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -643,7 +643,7 @@ importers:
         version: 3.25.0
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.6.3(@swc/helpers@0.5.11))(@types/node@20.14.5)(typescript@5.4.5)
+        version: 10.9.2(@swc/core@1.6.3(@swc/helpers@0.5.11))(@types/node@20.14.6)(typescript@5.4.5)
       tslib:
         specifier: 2.6.3
         version: 2.6.3
@@ -652,7 +652,7 @@ importers:
         version: 5.4.5
       vite:
         specifier: 5.3.1
-        version: 5.3.1(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
+        version: 5.3.1(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
 
 packages:
 
@@ -1872,8 +1872,8 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/node@20.14.5':
-    resolution: {integrity: sha512-aoRR+fJkZT2l0aGOJhuA8frnCSoNX6W7U2mpNq63+BxBIj5BQFt8rHy627kijCmm63ijdSdwvGgpUsU6MBsZZA==}
+  '@types/node@20.14.6':
+    resolution: {integrity: sha512-JbA0XIJPL1IiNnU7PFxDXyfAwcwVVrOoqyzzyQTyMeVhBzkJVMSkC1LlVsRQ2lpqiY4n6Bb9oCS6lzDKVQxbZw==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -5993,11 +5993,11 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
 
-  '@commitlint/cli@19.3.0(@types/node@20.14.5)(typescript@5.4.5)':
+  '@commitlint/cli@19.3.0(@types/node@20.14.6)(typescript@5.4.5)':
     dependencies:
       '@commitlint/format': 19.3.0
       '@commitlint/lint': 19.2.2
-      '@commitlint/load': 19.2.0(@types/node@20.14.5)(typescript@5.4.5)
+      '@commitlint/load': 19.2.0(@types/node@20.14.6)(typescript@5.4.5)
       '@commitlint/read': 19.2.1
       '@commitlint/types': 19.0.3
       execa: 8.0.1
@@ -6044,7 +6044,7 @@ snapshots:
       '@commitlint/rules': 19.0.3
       '@commitlint/types': 19.0.3
 
-  '@commitlint/load@19.2.0(@types/node@20.14.5)(typescript@5.4.5)':
+  '@commitlint/load@19.2.0(@types/node@20.14.6)(typescript@5.4.5)':
     dependencies:
       '@commitlint/config-validator': 19.0.3
       '@commitlint/execute-rule': 19.0.0
@@ -6052,7 +6052,7 @@ snapshots:
       '@commitlint/types': 19.0.3
       chalk: 5.3.0
       cosmiconfig: 9.0.0(typescript@5.4.5)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.14.5)(cosmiconfig@9.0.0(typescript@5.4.5))(typescript@5.4.5)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.14.6)(cosmiconfig@9.0.0(typescript@5.4.5))(typescript@5.4.5)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -6881,7 +6881,7 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/jest-dom@6.4.6(vitest@1.6.0(@types/node@20.14.5)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))':
+  '@testing-library/jest-dom@6.4.6(vitest@1.6.0(@types/node@20.14.6)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))':
     dependencies:
       '@adobe/css-tools': 4.4.0
       '@babel/runtime': 7.24.7
@@ -6892,7 +6892,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
     optionalDependencies:
-      vitest: 1.6.0(@types/node@20.14.5)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
+      vitest: 1.6.0(@types/node@20.14.6)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
 
   '@testing-library/react@16.0.0(@testing-library/dom@10.1.0)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -6926,14 +6926,14 @@ snapshots:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
       '@types/responselike': 1.0.3
 
   '@types/chroma-js@2.4.4': {}
 
   '@types/conventional-commits-parser@5.0.0':
     dependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
 
   '@types/debug@4.1.12':
     dependencies:
@@ -6953,16 +6953,16 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
 
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
 
   '@types/hast@3.0.4':
     dependencies:
@@ -6976,15 +6976,15 @@ snapshots:
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
 
   '@types/klaw-sync@6.0.5':
     dependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
 
   '@types/lodash.debounce@4.0.9':
     dependencies:
@@ -7008,7 +7008,7 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@20.14.5':
+  '@types/node@20.14.6':
     dependencies:
       undici-types: 5.26.5
 
@@ -7025,7 +7025,7 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
 
   '@types/semver@7.5.8': {}
 
@@ -7213,10 +7213,10 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-react-swc@3.7.0(@swc/helpers@0.5.11)(vite@5.3.1(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))':
+  '@vitejs/plugin-react-swc@3.7.0(@swc/helpers@0.5.11)(vite@5.3.1(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)))':
     dependencies:
       '@swc/core': 1.6.3(@swc/helpers@0.5.11)
-      vite: 5.3.1(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
+      vite: 5.3.1(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -7683,10 +7683,10 @@ snapshots:
 
   comment-parser@1.4.1: {}
 
-  commitizen@4.3.0(@types/node@20.14.5)(typescript@5.4.5):
+  commitizen@4.3.0(@types/node@20.14.6)(typescript@5.4.5):
     dependencies:
       cachedir: 2.3.0
-      cz-conventional-changelog: 3.3.0(@types/node@20.14.5)(typescript@5.4.5)
+      cz-conventional-changelog: 3.3.0(@types/node@20.14.6)(typescript@5.4.5)
       dedent: 0.7.0
       detect-indent: 6.1.0
       find-node-modules: 2.1.3
@@ -7752,9 +7752,9 @@ snapshots:
 
   core-js-pure@3.37.1: {}
 
-  cosmiconfig-typescript-loader@5.0.0(@types/node@20.14.5)(cosmiconfig@9.0.0(typescript@5.4.5))(typescript@5.4.5):
+  cosmiconfig-typescript-loader@5.0.0(@types/node@20.14.6)(cosmiconfig@9.0.0(typescript@5.4.5))(typescript@5.4.5):
     dependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
       cosmiconfig: 9.0.0(typescript@5.4.5)
       jiti: 1.21.6
       typescript: 5.4.5
@@ -7850,16 +7850,16 @@ snapshots:
 
   csstype@3.1.3: {}
 
-  cz-conventional-changelog@3.3.0(@types/node@20.14.5)(typescript@5.4.5):
+  cz-conventional-changelog@3.3.0(@types/node@20.14.6)(typescript@5.4.5):
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.3.0(@types/node@20.14.5)(typescript@5.4.5)
+      commitizen: 4.3.0(@types/node@20.14.6)(typescript@5.4.5)
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
       word-wrap: 1.2.5
     optionalDependencies:
-      '@commitlint/load': 19.2.0(@types/node@20.14.5)(typescript@5.4.5)
+      '@commitlint/load': 19.2.0(@types/node@20.14.6)(typescript@5.4.5)
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -8335,12 +8335,12 @@ snapshots:
 
   eslint-plugin-vitest-globals@1.5.0: {}
 
-  eslint-plugin-vitest@0.5.4(eslint@8.57.0)(typescript@5.4.5)(vitest@1.6.0(@types/node@20.14.5)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))):
+  eslint-plugin-vitest@0.5.4(eslint@8.57.0)(typescript@5.4.5)(vitest@1.6.0(@types/node@20.14.6)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))):
     dependencies:
       '@typescript-eslint/utils': 7.13.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
     optionalDependencies:
-      vitest: 1.6.0(@types/node@20.14.5)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
+      vitest: 1.6.0(@types/node@20.14.6)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -11067,14 +11067,14 @@ snapshots:
 
   ts-debounce@4.0.0: {}
 
-  ts-node@10.9.2(@swc/core@1.6.3(@swc/helpers@0.5.11))(@types/node@20.14.5)(typescript@5.4.5):
+  ts-node@10.9.2(@swc/core@1.6.3(@swc/helpers@0.5.11))(@types/node@20.14.6)(typescript@5.4.5):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
       acorn: 8.12.0
       acorn-walk: 8.3.3
       arg: 4.1.3
@@ -11323,13 +11323,13 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite-node@1.6.0(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)):
+  vite-node@1.6.0(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)):
     dependencies:
       cac: 6.7.14
       debug: 4.3.5(supports-color@5.5.0)
       pathe: 1.1.2
       picocolors: 1.0.1
-      vite: 5.3.1(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
+      vite: 5.3.1(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -11340,29 +11340,29 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.2.13(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)):
+  vite@5.2.13(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.18.0
     optionalDependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
       fsevents: 2.3.3
       sass: 1.77.6
       sugarss: 4.0.1(postcss@8.4.38)
 
-  vite@5.3.1(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)):
+  vite@5.3.1(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.38
       rollup: 4.18.0
     optionalDependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
       fsevents: 2.3.3
       sass: 1.77.6
       sugarss: 4.0.1(postcss@8.4.38)
 
-  vitest@1.6.0(@types/node@20.14.5)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)):
+  vitest@1.6.0(@types/node@20.14.6)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38)):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
@@ -11381,11 +11381,11 @@ snapshots:
       strip-literal: 2.1.0
       tinybench: 2.8.0
       tinypool: 0.8.4
-      vite: 5.2.13(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
-      vite-node: 1.6.0(@types/node@20.14.5)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
+      vite: 5.2.13(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
+      vite-node: 1.6.0(@types/node@20.14.6)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.38))
       why-is-node-running: 2.2.2
     optionalDependencies:
-      '@types/node': 20.14.5
+      '@types/node': 20.14.6
       jsdom: 24.1.0
     transitivePeerDependencies:
       - less
