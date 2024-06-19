@@ -11,8 +11,8 @@
         "start": "vite"
     },
     "dependencies": {
-        "@coveo/atomic-react": "2.10.2",
-        "@coveo/headless": "2.66.0",
+        "@coveo/atomic-react": "2.10.3",
+        "@coveo/headless": "2.67.0",
         "@coveord/plasma-components-props-analyzer": "workspace:*",
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
