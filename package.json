@@ -62,7 +62,7 @@
         "@coveo/semantic-monorepo-tools": "2.4.37",
         "@sindresorhus/slugify": "2.2.1",
         "@types/node": "20.14.6",
-        "aws-sdk": "2.1644.0",
+        "aws-sdk": "2.1645.0",
         "chokidar": "3.6.0",
         "commitizen": "4.3.0",
         "conventional-changelog-angular": "8.0.0",
