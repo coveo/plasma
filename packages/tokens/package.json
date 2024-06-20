@@ -44,7 +44,7 @@
         "@types/chroma-js": "2.4.4",
         "@types/fs-extra": "11.0.4",
         "@types/lodash": "4.17.5",
-        "@types/node": "20.14.6",
+        "@types/node": "20.14.7",
         "chroma-js": "2.4.2",
         "commander": "12.1.0",
         "dotenv": "16.4.5",
@@ -60,6 +60,6 @@
         "svgo": "3.3.2",
         "ts-node": "10.9.2",
         "tslib": "2.6.3",
-        "typescript": "5.4.5"
+        "typescript": "5.5.2"
     }
 }
