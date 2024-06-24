@@ -27,10 +27,10 @@
         "@coveord/plasma-mantine": "workspace:*"
     },
     "devDependencies": {
-        "@swc/cli": "0.3.12",
-        "@swc/core": "1.6.3",
+        "@swc/cli": "0.3.14",
+        "@swc/core": "1.6.5",
         "@types/fs-extra": "11.0.4",
-        "@types/node": "20.14.7",
+        "@types/node": "20.14.8",
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
         "@typescript/twoslash": "3.2.7",
