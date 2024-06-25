@@ -1,3 +1,28 @@
+## <small>54.0.3 (2024-06-25)</small>
+
+* chore(deps): lock file maintenance cadf4f6
+* chore(deps): lock file maintenance f19c79e
+* chore(deps): update actions/checkout digest to 692973e (#3770) 827c72c, closes #3770
+* chore(deps): update all non-major dependencies e8af147
+* chore(deps): update all non-major dependencies 4d66e28
+* chore(deps): update all non-major dependencies ef25532
+* chore(deps): update dependency @tanstack/react-query to v5.44.0 a53ce76
+* chore(deps): update dependency @tanstack/react-query to v5.45.0 49f4331
+* chore(deps): update dependency @tanstack/react-query to v5.45.1 d186589
+* chore(deps): update dependency @tanstack/react-query to v5.48.0 a2d9e71
+* chore(deps): update dependency @types/node to v20.14.6 c1b3496
+* chore(deps): update dependency aws-sdk to v2.1645.0 dfa4dfb
+* chore(deps): update dependency conventional-changelog-angular to v8 (#3717) 3f87b53, closes #3717
+* chore(deps): update dependency nodemon to v3.1.4 e5e839e
+* chore(deps): update pnpm to v9 (#3762) aab3154, closes #3762
+* chore(deps): update ui-kit 7d41aaa
+* chore(deps): update ui-kit 978e177
+* chore(deps): update ui-kit bd05e00
+* chore(publish): fix version bump (#3784) 8606e39, closes #3784
+* fix(mantine, table): allow overrides to padding bottom 6c89c16
+
+
+
 ## 54.0.2 (2024-06-10)
 
 
