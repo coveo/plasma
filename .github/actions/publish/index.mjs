@@ -30,12 +30,7 @@ const BUMP_TYPES = ['major', 'minor', 'patch', 'prerelease'];
  *   * `branch: string`: Branch name used to publish the new version (default `"master"`)
  *   * `bump: BUMP_TYPES`: Force a specific version bump instead of relying on the commit message
  */
-export default async ({github, context, exec}, {
-    dry = false, 
-    tag = 'latest', 
-    branch = 'master', 
-    bump = null
-} = {}) => {
+export default async ({github, context, exec}, {dry = false, tag = 'latest', branch = 'master', bump = null} = {}) => {
     const GIT_USERNAME = 'coveobot';
     const GIT_EMAIL = 'coveobot@coveo.com';
     const GIT_SSH_REMOTE = 'deploy';
@@ -63,7 +58,7 @@ export default async ({github, context, exec}, {
         if (bump !== null && BUMP_TYPES.includes(bump)) {
             bumpInfo = {type: bump, preid: bump === 'prerelease' ? 'next' : undefined};
         } else {
-            bumpInfo = convention.recommendedBumpOpts.whatBump(parsedCommits);
+            bumpInfo = convention.whatBump(parsedCommits);
         }
 
         const currentVersion = lastTag.replace(VERSION_PREFIX, '');
@@ -73,7 +68,7 @@ export default async ({github, context, exec}, {
             console.info('Bumping %s to version %s', changedPackages.join(', '), newVersion);
             await pnpmBumpVersion(newVersion, lastTag, ['root']);
 
-            let changelog = ''
+            let changelog = '';
             if (parsedCommits.length > 0) {
                 changelog = await generateChangelog(
                     parsedCommits,
@@ -82,7 +77,7 @@ export default async ({github, context, exec}, {
                         ...context.repo,
                         host: 'https://github.com',
                     },
-                    convention.writerOpts
+                    convention.writerOpts,
                 );
                 await writeChangelog(PATH, changelog);
             }
