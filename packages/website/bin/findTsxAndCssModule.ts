@@ -46,6 +46,8 @@ export const findTsxAndCssModule = async (sourceFolder: string): Promise<string[
                 !file.includes('Alert.demo.configurator.tsx') &&
                 !file.includes('Anchor.demo.textProps.tsx') &&
                 !file.includes('Autocomplete.demo.dropdownOpened.tsx') &&
+                !file.includes('Avatar.demo.allowedColors.tsx') &&
+                !file.includes('Avatar.demo.initials.tsx') &&
                 !file.includes('Badge.demo.variantColorsResolver.tsx') &&
                 !file.includes('Button.demo.loading.tsx') &&
                 !file.includes('Checkbox.demo.card.tsx') &&
