@@ -1,3 +1,9 @@
+## 54.1.0 (2024-06-26)
+
+* feat: modification of the table in plasma to be able to modify the padding of the table (v2) (#3785) c808212, closes #3785
+
+
+
 ## <small>54.0.3 (2024-06-25)</small>
 
 * chore(deps): lock file maintenance cadf4f6
