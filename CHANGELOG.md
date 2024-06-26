@@ -1,3 +1,10 @@
+## <small>54.1.1 (2024-06-26)</small>
+
+* chore(deps): update all non-major dependencies e933652
+* fix(mantine, table): avoid clearing rows when no rows are selected (#3786) 540dc86, closes #3786
+
+
+
 ## 54.1.0 (2024-06-26)
 
 * feat: modification of the table in plasma to be able to modify the padding of the table (v2) (#3785) c808212, closes #3785
