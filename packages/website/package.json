@@ -61,12 +61,12 @@
         "eslint-plugin-react-refresh": "0.4.7",
         "fs-extra": "11.2.0",
         "klaw-sync": "6.0.0",
-        "postcss": "8.4.38",
+        "postcss": "8.4.39",
         "postcss-preset-mantine": "1.15.0",
         "simple-git": "3.25.0",
         "ts-node": "10.9.2",
         "tslib": "2.6.3",
         "typescript": "5.5.2",
-        "vite": "5.3.1"
+        "vite": "5.3.2"
     }
 }
