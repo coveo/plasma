@@ -1,3 +1,12 @@
+## <small>54.1.2 (2024-07-02)</small>
+
+* feat(mantine, prompt): update look of prompt component (#3791) 8d096b2, closes #3791
+* chore: fix build 1c81d0a
+* chore(deps): update all non-major dependencies 57fd922
+* chore(deps): update ui-kit d531ef3
+
+
+
 ## <small>54.1.1 (2024-06-26)</small>
 
 * chore(deps): update all non-major dependencies e933652
