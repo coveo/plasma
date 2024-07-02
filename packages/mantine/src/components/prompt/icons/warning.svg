@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 88 88">
-  <g filter="url(#a)">
-    <path fill="url(#b)" d="M38.827 17.951c1.795-3.383 6.643-3.383 8.438 0L70.37 61.495c1.688 3.181-.618 7.015-4.22 7.015H19.942c-3.6 0-5.907-3.834-4.219-7.015L38.827 17.95Z"/>
-    <path stroke="url(#c)" stroke-linecap="round" d="M39.269 18.186c1.607-3.03 5.947-3.03 7.555 0l23.104 43.543c1.511 2.848-.553 6.28-3.777 6.28H19.94c-3.224 0-5.288-3.432-3.777-6.28l23.105-43.543Z"/>
+  <g filter="url(#warning-icon-a)">
+    <path fill="url(#warning-icon-b)" d="M38.827 17.951c1.795-3.383 6.643-3.383 8.438 0L70.37 61.495c1.688 3.181-.618 7.015-4.22 7.015H19.942c-3.6 0-5.907-3.834-4.219-7.015L38.827 17.95Z"/>
+    <path stroke="url(#warning-icon-c)" stroke-linecap="round" d="M39.269 18.186c1.607-3.03 5.947-3.03 7.555 0l23.104 43.543c1.511 2.848-.553 6.28-3.777 6.28H19.94c-3.224 0-5.288-3.432-3.777-6.28l23.105-43.543Z"/>
   </g>
   <path stroke="#493B08" stroke-linecap="round" d="M43 50.986v-22M43 58.151v2"/>
   <defs>
-    <linearGradient id="b" x1="74.046" x2="37.546" y1="68.839" y2="4.839" gradientUnits="userSpaceOnUse">
+    <linearGradient id="warning-icon-b" x1="74.046" x2="37.546" y1="68.839" y2="4.839" gradientUnits="userSpaceOnUse">
       <stop stop-color="#E2B104"/>
       <stop offset="1" stop-color="#FFE300"/>
     </linearGradient>
-    <linearGradient id="c" x1="29" x2="51" y1="10" y2="72" gradientUnits="userSpaceOnUse">
+    <linearGradient id="warning-icon-c" x1="29" x2="51" y1="10" y2="72" gradientUnits="userSpaceOnUse">
       <stop stop-color="#E2B104"/>
       <stop offset="1" stop-color="#F5D029"/>
     </linearGradient>
-    <filter id="a" width="73.775" height="71.096" x="6.158" y="10.414" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+    <filter id="warning-icon-a" width="73.775" height="71.096" x="6.158" y="10.414" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
       <feOffset dy="4"/>

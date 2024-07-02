@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 88 88">
-  <g filter="url(#a)">
-    <circle cx="44" cy="44" r="28" fill="url(#b)"/>
-    <circle cx="44" cy="44" r="27.5" stroke="url(#c)" stroke-linecap="round"/>
+  <g filter="url(#success-icon-a)">
+    <circle cx="44" cy="44" r="28" fill="url(#success-icon-b)"/>
+    <circle cx="44" cy="44" r="27.5" stroke="url(#success-icon-c)" stroke-linecap="round"/>
   </g>
   <path stroke="#F2FFF9" stroke-linecap="round" stroke-linejoin="round" d="m30.571 47 7.858 7.858L59 34.286" opacity=".61"/>
   <defs>
-    <linearGradient id="b" x1="35.923" x2="74.692" y1="11.154" y2="115.615" gradientUnits="userSpaceOnUse">
+    <linearGradient id="success-icon-b" x1="35.923" x2="74.692" y1="11.154" y2="115.615" gradientUnits="userSpaceOnUse">
       <stop stop-color="#12A344"/>
       <stop offset="1" stop-color="#004A20"/>
     </linearGradient>
-    <linearGradient id="c" x1="16" x2="58" y1="-48" y2="93.5" gradientUnits="userSpaceOnUse">
+    <linearGradient id="success-icon-c" x1="16" x2="58" y1="-48" y2="93.5" gradientUnits="userSpaceOnUse">
       <stop stop-color="#004A20"/>
       <stop offset=".762" stop-color="#12A344"/>
     </linearGradient>
-    <filter id="a" width="78" height="78" x="5" y="9" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+    <filter id="success-icon-a" width="78" height="78" x="5" y="9" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
       <feOffset dy="4"/>

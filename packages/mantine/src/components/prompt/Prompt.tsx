@@ -12,7 +12,7 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
-import classes from '../header/Header.module.css';
+import classes from './Prompt.module.css';
 import Critical from './icons/critical.svg';
 import Info from './icons/info.svg';
 import Success from './icons/success.svg';
@@ -98,10 +98,15 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                 <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
                 <Modal.Content {...getStyles('content', stylesApiProps)}>
                     <Modal.Header {...getStyles('header', stylesApiProps)}>
-                        {icon ? (
+                        {icon || icon === null ? (
                             icon
                         ) : (
-                            <Image {...getStyles('icon', stylesApiProps)} src={PROMPT_VARIANT_ICONS_SRC[variant]} />
+                            <Image
+                                alt=""
+                                role="presentation"
+                                {...getStyles('icon', stylesApiProps)}
+                                src={PROMPT_VARIANT_ICONS_SRC[variant]}
+                            />
                         )}
                         <Modal.Title {...getStyles('title', stylesApiProps)}>{title}</Modal.Title>
                         <Modal.CloseButton {...getStyles('close', stylesApiProps)} />
