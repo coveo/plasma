@@ -20,6 +20,7 @@ import {
     ColorSwatch,
     Combobox,
     ComboboxSearch,
+    createTheme,
     Divider,
     Input,
     InputWrapper,
@@ -43,9 +44,10 @@ import {
     Text,
     TextInput,
     Tooltip,
-    createTheme,
 } from '@mantine/core';
 import {DatePicker} from '@mantine/dates';
+import {Prompt} from '../components';
+import PromptClasses from '../components/prompt/Prompt.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import AnchorClasses from '../styles/Anchor.module.css';
@@ -233,6 +235,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 shadow: 'md',
                 withArrow: true,
             },
+        }),
+        Prompt: Prompt.extend({
+            classNames: PromptClasses,
         }),
         Radio: Radio.extend({
             classNames: {labelWrapper: RadioClasses.labelWrapper},
