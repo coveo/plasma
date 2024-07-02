@@ -20,6 +20,7 @@ import {
     ColorSwatch,
     Combobox,
     ComboboxSearch,
+    createTheme,
     Divider,
     Input,
     InputWrapper,
@@ -43,7 +44,6 @@ import {
     Text,
     TextInput,
     Tooltip,
-    createTheme,
 } from '@mantine/core';
 import {DatePicker} from '@mantine/dates';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
