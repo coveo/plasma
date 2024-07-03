@@ -39,11 +39,11 @@
         "@swc/helpers": "0.5.11"
     },
     "devDependencies": {
-        "@swc/cli": "0.3.14",
-        "@swc/core": "1.6.5",
+        "@swc/cli": "0.4.0",
+        "@swc/core": "1.6.7",
         "@types/chroma-js": "2.4.4",
         "@types/fs-extra": "11.0.4",
-        "@types/lodash": "4.17.5",
+        "@types/lodash": "4.17.6",
         "@types/node": "20.14.9",
         "chroma-js": "2.4.2",
         "commander": "12.1.0",
@@ -60,6 +60,6 @@
         "svgo": "3.3.2",
         "ts-node": "10.9.2",
         "tslib": "2.6.3",
-        "typescript": "5.5.2"
+        "typescript": "5.5.3"
     }
 }
