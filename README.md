@@ -2,6 +2,7 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square&logo=appveyor)](https://conventionalcommits.org)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/coveo/plasma/badge)](https://scorecard.dev/viewer/?uri=github.com/coveo/plasma)
 
 Plasma is Coveo's design system used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](https://plasma.coveo.com/). The `@coveord/plasma-style` package contains the generic style classes used across the components and `@coveord/plasma-react` is a react implementation of multiple visual and behavioural components.
 
