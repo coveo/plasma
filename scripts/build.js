@@ -22,7 +22,7 @@ const onExit = (childProcess) => {
 const build = async ({watch = false}) => {
     // compile with swc and tsc
     try {
-        const tscArgs = ['-p', './tsconfig.build.json', '--emitDeclarationOnly'];
+        const tscArgs = ['--emitDeclarationOnly'];
         const tscESMArgs = [...tscArgs, '--declarationDir', './dist/esm'];
         const tscCJSArgs = [...tscArgs, '--declarationDir', './dist/cjs', '--target', 'es5', '--module', 'commonjs'];
         const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
