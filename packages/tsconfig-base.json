@@ -6,6 +6,11 @@
         "jsx": "react-jsx",
         "lib": ["ESNext", "DOM"],
 
+        "outDir": "${configDir}/dist",
+        "rootDir": "${configDir}/src",
+        "tsBuildInfoFile": "${configDir}/dist/.tsbuildinfo",
+        "baseUrl": "${configDir}",
+
         "composite": false,
         "incremental": true,
         "sourceMap": true,
@@ -27,5 +32,6 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "importHelpers": true
-    }
+    },
+    "include": ["${configDir}/src"]
 }
