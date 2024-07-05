@@ -111,8 +111,8 @@ importers:
         specifier: 2.29.1
         version: 2.29.1(@typescript-eslint/parser@7.15.0(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0)
       eslint-plugin-jsdoc:
-        specifier: 48.5.0
-        version: 48.5.0(eslint@8.57.0)
+        specifier: 48.5.2
+        version: 48.5.2(eslint@8.57.0)
       eslint-plugin-prefer-arrow:
         specifier: 1.2.3
         version: 1.2.3(eslint@8.57.0)
@@ -273,17 +273,17 @@ importers:
         specifier: 1.6.7
         version: 1.6.7(@swc/helpers@0.5.11)
       '@testing-library/dom':
-        specifier: 10.3.0
-        version: 10.3.0
+        specifier: 10.3.1
+        version: 10.3.1
       '@testing-library/jest-dom':
         specifier: 6.4.6
         version: 6.4.6(vitest@1.6.0(@types/node@20.14.9)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.39)))
       '@testing-library/react':
         specifier: 16.0.0
-        version: 16.0.0(@testing-library/dom@10.3.0)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 16.0.0(@testing-library/dom@10.3.1)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/user-event':
         specifier: 14.5.2
-        version: 14.5.2(@testing-library/dom@10.3.0)
+        version: 14.5.2(@testing-library/dom@10.3.1)
       '@types/lodash.debounce':
         specifier: 4.0.9
         version: 4.0.9
@@ -1594,8 +1594,8 @@ packages:
     resolution: {integrity: sha512-KpRjhgehIhbfH78ARm/GJDXGnpdw4bCg3qas6yjWSi7czJhI/J6pWln7NHtmBkGE9ZbohiiNtLqwGzKmBfixig==}
     engines: {node: '>=12'}
 
-  '@testing-library/dom@10.3.0':
-    resolution: {integrity: sha512-pT/TYB2+IyMYkkB6lqpkzD7VFbsR0JBJtflK3cS68sCNWxmOhWwRm1XvVHlseNEorsNcxkYsb4sRDV3aNIpttg==}
+  '@testing-library/dom@10.3.1':
+    resolution: {integrity: sha512-q/WL+vlXMpC0uXDyfsMtc1rmotzLV8Y0gq6q1gfrrDjQeHoeLrqHbxdPvPNAh1i+xuJl7+BezywcXArz7vLqKQ==}
     engines: {node: '>=18'}
 
   '@testing-library/jest-dom@6.4.6':
@@ -2764,8 +2764,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  eslint-plugin-jsdoc@48.5.0:
-    resolution: {integrity: sha512-ukXPNpGby3KjCveCizIS8t1EbuJEHYEu/tBg8GCbn/YbHcXwphyvYCdvRZ/oMRfTscGSSzfsWoZ+ZkAP0/6YMQ==}
+  eslint-plugin-jsdoc@48.5.2:
+    resolution: {integrity: sha512-VXBJFviQz30rynlOEQ+dNWLmeopjoAgutUVrWOZwm6Ki4EVDm4XkyIqAV/Zhf7FcDr0AG0aGmRn5FxxCtAF0tA==}
     engines: {node: '>=18'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -6112,7 +6112,7 @@ snapshots:
     dependencies:
       '@types/eslint': 8.56.10
       '@types/estree': 1.0.5
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 7.15.0
       comment-parser: 1.4.1
       esquery: 1.5.0
       jsdoc-type-pratt-parser: 4.0.0
@@ -6672,7 +6672,7 @@ snapshots:
 
   '@tanstack/table-core@8.19.2': {}
 
-  '@testing-library/dom@10.3.0':
+  '@testing-library/dom@10.3.1':
     dependencies:
       '@babel/code-frame': 7.24.7
       '@babel/runtime': 7.24.7
@@ -6696,19 +6696,19 @@ snapshots:
     optionalDependencies:
       vitest: 1.6.0(@types/node@20.14.9)(jsdom@24.1.0)(sass@1.77.6)(sugarss@4.0.1(postcss@8.4.39))
 
-  '@testing-library/react@16.0.0(@testing-library/dom@10.3.0)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@testing-library/react@16.0.0(@testing-library/dom@10.3.1)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.7
-      '@testing-library/dom': 10.3.0
+      '@testing-library/dom': 10.3.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@testing-library/user-event@14.5.2(@testing-library/dom@10.3.0)':
+  '@testing-library/user-event@14.5.2(@testing-library/dom@10.3.1)':
     dependencies:
-      '@testing-library/dom': 10.3.0
+      '@testing-library/dom': 10.3.1
 
   '@tokenizer/token@0.3.0': {}
 
@@ -8040,7 +8040,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-jsdoc@48.5.0(eslint@8.57.0):
+  eslint-plugin-jsdoc@48.5.2(eslint@8.57.0):
     dependencies:
       '@es-joy/jsdoccomment': 0.43.1
       are-docs-informative: 0.0.2
