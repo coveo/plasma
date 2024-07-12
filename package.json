@@ -59,10 +59,10 @@
     "devDependencies": {
         "@commitlint/cli": "19.3.0",
         "@commitlint/config-conventional": "19.2.2",
-        "@coveo/semantic-monorepo-tools": "2.4.38",
+        "@coveo/semantic-monorepo-tools": "2.4.40",
         "@sindresorhus/slugify": "2.2.1",
         "@types/node": "20.14.10",
-        "aws-sdk": "2.1655.0",
+        "aws-sdk": "2.1658.0",
         "chokidar": "3.6.0",
         "commitizen": "4.3.0",
         "conventional-changelog-angular": "8.0.0",
@@ -76,7 +76,7 @@
         "postcss": "8.4.39",
         "prettier": "3.3.2",
         "sort-package-json": "2.10.0",
-        "stylelint": "16.6.1",
+        "stylelint": "16.7.0",
         "stylelint-config-standard-scss": "13.1.0",
         "turbo": "2.0.6",
         "typescript": "5.5.3",
@@ -92,7 +92,7 @@
         },
         "overrides": {
             "@babel/traverse": "^7.23.2",
-            "nwsapi": "2.2.10"
+            "nwsapi": "2.2.12"
         },
         "patchedDependencies": {
             "@stencil/core@4.15.0": "patches/@stencil__core@4.15.0.patch"
