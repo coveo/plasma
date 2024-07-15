@@ -1,5 +1,6 @@
 .root {
     padding: var(--mantine-spacing-sm);
+
     &:not(&[data-variant]) {
         border-color: color-mix(in srgb, var(--alert-color), var(--alert-bg) 85%);
     }
@@ -22,6 +23,7 @@
 .message {
     @mixin light {
         color: var(--mantine-color-gray-7);
+
         &:where([data-variant='filled']) {
             color: var(--alert-color);
         }

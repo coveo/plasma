@@ -3,6 +3,7 @@
     background-color: var(--mantine-color-gray-0);
     box-shadow: var(--mantine-shadow-lg);
     padding: var(--mantine-spacing-sm);
+
     &[data-with-icon] {
         padding-left: var(--mantine-spacing-sm);
     }

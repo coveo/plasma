@@ -24,10 +24,10 @@
         "**/package.json": [
             "sort-package-json"
         ],
-        "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html,css}": [
+        "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
             "prettier --write"
         ],
-        "**/*.scss": [
+        "**/*.{scss,css}": [
             "stylelint --fix",
             "prettier --write"
         ]
@@ -43,19 +43,6 @@
         "IE 11",
         "not dead"
     ],
-    "stylelint": {
-        "extends": [
-            "stylelint-config-standard-scss"
-        ],
-        "rules": {
-            "keyframes-name-pattern": [
-                "^[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$",
-                {
-                    "message": "Expected keyframes names to be camelCase"
-                }
-            ]
-        }
-    },
     "devDependencies": {
         "@commitlint/cli": "19.3.0",
         "@commitlint/config-conventional": "19.2.2",

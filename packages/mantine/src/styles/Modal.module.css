@@ -4,31 +4,37 @@
             flex: 0 0 100%;
         }
     }
+
     &[data-size='xs'] {
         .content {
             flex: 0 0 rem(432px);
         }
     }
+
     &[data-size='sm'] {
         .content {
             flex: 0 0 rem(664px);
         }
     }
+
     &[data-size='md'] {
         .content {
             flex: 0 0 rem(896px);
         }
     }
+
     &[data-size='lg'] {
         .content {
             flex: 0 0 rem(1120px);
         }
     }
+
     &[data-size='xl'] {
         .content {
             flex: 0 0 rem(88%);
         }
     }
+
     &:not([data-size]) {
         .content {
             flex: 0 0 rem(896px);

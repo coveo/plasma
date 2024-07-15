@@ -8,10 +8,8 @@
     &[data-variant='modal-footer'] {
         border-top: 1px solid var(--mantine-color-gray-3);
         padding-bottom: 0;
-        margin-top: var(--mb-padding);
-        margin-bottom: calc(var(--mantine-spacing-md) - var(--mb-padding));
-        margin-left: calc(-1 * var(--mb-padding));
-        margin-right: calc(-1 * var(--mb-padding));
+        margin: var(--mb-padding) calc(-1 * var(--mb-padding)) calc(var(--mantine-spacing-md) - var(--mb-padding))
+            calc(-1 * var(--mb-padding));
     }
 }
 

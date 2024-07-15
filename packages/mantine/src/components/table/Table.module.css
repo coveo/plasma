@@ -23,6 +23,7 @@
 .actionsDropdown {
     text-align: left;
 }
+
 .actionsGroup {
     &:has(.actionsGroupItems:empty) {
         /* Hide empty groups */
@@ -34,6 +35,7 @@
 .filterWrapper {
     width: 20rem;
 }
+
 .filterEmpty {
     color: var(--mantine-color-gray-5);
 }
@@ -85,6 +87,7 @@
 .lastUpdatedRoot {
     min-height: 98px;
 }
+
 .lastUpdatedLabel {
     color: var(--mantine-color-gray-6);
 }
