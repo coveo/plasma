@@ -16,8 +16,8 @@ const deconstructSvgProps = (props) => {
     svgProps.typeAnnotation = t.tsTypeAnnotation(
         t.tsTypeReference(
             t.identifier('SVGProps'),
-            t.tsTypeParameterInstantiation([t.tsTypeReference(t.identifier('SVGSVGElement'))])
-        )
+            t.tsTypeParameterInstantiation([t.tsTypeReference(t.identifier('SVGSVGElement'))]),
+        ),
     );
     return svgProps;
 };
@@ -30,8 +30,8 @@ const template = (variables, {tpl}) => {
             t.objectExpression([
                 t.objectProperty(t.identifier('verticalAlign'), t.stringLiteral('text-bottom')),
                 t.spreadElement(t.identifier('style')),
-            ])
-        )
+            ]),
+        ),
     );
     const svgPropsAttr = t.jsxSpreadAttribute(t.identifier('svgProps'));
 

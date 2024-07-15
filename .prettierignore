@@ -1,3 +1,7 @@
-node_modules/*
+pnpm-lock.yaml
+**/node_modules
+**/dist
 CHANGELOG.md
-.ultra.cache.json
+packages/components-props-analyzer/src/components
+packages/react-icons/src/generated
+ı
