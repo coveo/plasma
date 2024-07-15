@@ -1,11 +1,13 @@
 .root {
     background-color: var(--mantine-color-gray-0);
 }
+
 .sandbox {
     border: 1px solid var(--mantine-color-gray-3);
     border-radius: var(--mantine-radius-md);
     overflow: hidden;
 }
+
 .actions {
     position: absolute;
     top: 0;
@@ -13,11 +15,13 @@
     z-index: 2;
     padding: var(--mantine-spacing-xs);
     background-color: #1e1e1e;
+
     & button:hover,
     & a:hover {
         background-color: var(--mantine-color-gray-8);
     }
 }
+
 .preview {
     min-height: 100px;
     display: flex;
@@ -31,6 +35,7 @@
     min-height: 0;
     flex: 1;
 }
+
 .code {
     min-height: 100px;
     position: relative;

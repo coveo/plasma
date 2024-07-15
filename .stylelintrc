@@ -1,0 +1,13 @@
+{
+    "$id": "https://json.schemastore.org/stylelintrc.json",
+    "extends": ["stylelint-config-standard-scss"],
+    "defaultSeverity": "warning",
+    "rules": {
+        "keyframes-name-pattern": [
+            "^[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$",
+            {
+                "message": "Expected keyframes names to be camelCase"
+            }
+        ]
+    }
+}

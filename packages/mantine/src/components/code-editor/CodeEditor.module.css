@@ -8,6 +8,7 @@
     @mixin light {
         background-color: var(--mantine-color-white);
     }
+
     @mixin dark {
         background-color: var(--mantine-color-black);
     }

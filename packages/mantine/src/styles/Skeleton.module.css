@@ -3,6 +3,7 @@
         &::before {
             z-index: unset;
         }
+
         &::after {
             z-index: unset;
         }

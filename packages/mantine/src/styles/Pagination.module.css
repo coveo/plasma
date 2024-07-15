@@ -1,5 +1,6 @@
 .root {
     --pagination-control-fz: var(--mantine-font-size-sm);
+
     color: var(--mantine-color-gray-6);
 }
 
@@ -8,6 +9,7 @@
 
     @mixin light {
         border-color: var(--mantine-color-gray-3);
+
         @mixin hover {
             &:where(:not(:disabled, [data-disabled])) {
                 background-color: var(--mantine-primary-color-1);
@@ -19,6 +21,7 @@
         @mixin light {
             border-color: var(--pagination-active-bg);
             color: var(--pagination-active-color, var(--mantine-color-white));
+
             @mixin hover {
                 background-color: var(--pagination-active-bg);
             }

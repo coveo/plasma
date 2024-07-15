@@ -1,7 +1,7 @@
 .root {
     color: var(--mantine-color-gray-6);
     line-height: var(--mantine-line-height);
-    border-radius: var(--mantine-radius-default) 0px 0px var(--mantine-radius-default);
+    border-radius: var(--mantine-radius-default) 0 0 var(--mantine-radius-default);
 
     &[data-active] {
         color: var(--mantine-primary-color-6);

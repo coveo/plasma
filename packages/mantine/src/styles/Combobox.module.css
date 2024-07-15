@@ -4,6 +4,7 @@
     border: 1px solid;
     width: 100%;
     border-color: var(--mantine-color-gray-4);
+
     &:focus {
         border-color: var(--mantine-primary-color-filled);
     }

@@ -15,6 +15,7 @@
         --code-class-color: #9cdcfe;
         --code-title-color: #dcdcaa;
     }
+
     .hljs-comment .hljs-quote {
         font-style: italic;
         color: var(--mantine-color-dark-3);
@@ -67,11 +68,13 @@
     .hljs-class {
         color: var(--code-class-color);
     }
+
     :global(.hljs-title),
     .hljs-title.function_,
     .hljs-title.class_ {
         color: var(--code-title-color);
     }
+
     .hljs-emphasis {
         font-style: italic;
     }
