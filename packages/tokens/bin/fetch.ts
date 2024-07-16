@@ -67,9 +67,9 @@ const getLibrariesData = async (libraries: LibraryName[]) => {
 
     if (libraries.includes('Icons')) {
         const librariesOtherThanIcons = libraries.filter((library) => library !== 'Icons');
-        Promise.all([getIconsLibrary(), ...librariesOtherThanIcons.map(getLibraryData)]);
+        return Promise.all([getIconsLibrary(), ...librariesOtherThanIcons.map(getLibraryData)]);
     } else {
-        Promise.all(libraries.map(getLibraryData));
+        return Promise.all(libraries.map(getLibraryData));
     }
 };
 
@@ -78,7 +78,7 @@ program.parse(process.argv);
 const options = program.opts();
 
 if (options.libraries === 'All') {
-    getLibrariesData(Object.keys(FilesId) as LibraryName[]);
+    void getLibrariesData(Object.keys(FilesId) as LibraryName[]);
 } else {
-    getLibrariesData(options.libraries as LibraryName[]);
+    void getLibrariesData(options.libraries as LibraryName[]);
 }

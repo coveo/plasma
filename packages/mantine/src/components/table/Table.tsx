@@ -150,7 +150,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
         getRowId,
-        getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row) ?? false,
+        getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row),
         enableRowSelection: !loading,
         defaultColumn: {
             size: undefined,
@@ -247,7 +247,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                         <>
                             <Box component="table" {...getStyles('table')} mod={{loading}}>
                                 <thead {...getStyles('header')}>
-                                    {!!header ? (
+                                    {header ? (
                                         <tr>
                                             <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
                                                 {header}

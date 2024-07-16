@@ -16,7 +16,7 @@ const columns: Array<ColumnDef<RowData>> = [
 ];
 
 describe('Th', () => {
-    it('displays the sort icon for every sortable column', async () => {
+    it('displays the sort icon for every sortable column', () => {
         const data: RowData[] = [
             {name: 'apple', type: 'fruit', colors: ['red', 'green']},
             {name: 'potato', type: 'vegetable', colors: ['brown', 'blue', 'yellow']},

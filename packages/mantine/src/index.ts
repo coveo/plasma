@@ -1,6 +1,5 @@
-import {MantineColorsTuple} from '@mantine/core';
-
-import {noop} from '@mantine/core';
+import {MantineColorsTuple, noop} from '@mantine/core';
+import {type RowData} from '@tanstack/table-core';
 import {PlasmaColors} from './theme/PlasmaColors';
 
 export * from '@mantine/carousel';
@@ -42,7 +41,7 @@ declare module '@mantine/core' {
 }
 
 declare module '@tanstack/react-table' {
-    interface ColumnMeta<TData extends unknown, TValue> {
+    interface ColumnMeta<TData extends RowData, TValue> {
         /**
          * Whether the column is a control column.
          * Control columns are columns that are not part of the data but are used to control the table.

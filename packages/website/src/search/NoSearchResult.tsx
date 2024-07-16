@@ -29,9 +29,9 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
                     You may want to try using different keywords, or checking for spelling mistakes.
                 </span>
                 <Button
-                    onClick={() => {
+                    onClick={async () => {
                         if (state.past.length !== 0) {
-                            historyManager.backOnNoResults();
+                            await historyManager.backOnNoResults();
                         } else {
                             navigate('/');
                         }

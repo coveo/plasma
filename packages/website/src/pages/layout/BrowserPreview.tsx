@@ -4,7 +4,7 @@ import BrowserPreviewOverflowDemo from '@examples/layout/BrowserPreview/BrowserP
 import {BrowserPreviewMetadata} from '@coveord/plasma-components-props-analyzer';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         section="Layout"
         title="Browser Preview"
@@ -22,3 +22,5 @@ export default () => (
         }}
     />
 );
+
+export default Page;

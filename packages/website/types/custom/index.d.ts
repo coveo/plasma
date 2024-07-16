@@ -29,6 +29,7 @@ interface DemoComponentProps {
 }
 
 declare module '*?demo' {
+    import {JSX} from 'react';
     const DemoComponent: (props: DemoComponentProps) => JSX.Element;
     export default DemoComponent;
 }

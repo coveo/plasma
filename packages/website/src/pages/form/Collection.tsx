@@ -4,7 +4,7 @@ import CollectionWithReactHookFormDemo from '@examples/form/collection/Collectio
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         section="Form"
         title="Collection"
@@ -18,3 +18,5 @@ export default () => (
         }}
     />
 );
+
+export default Page;

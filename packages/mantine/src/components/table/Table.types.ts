@@ -90,7 +90,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
          * @returns
          */
         onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void;
-    } & Record<string, any>;
+    } & Record<string, unknown>;
     /**
      * Whether the table is loading or not
      *

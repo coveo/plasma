@@ -19,7 +19,7 @@ export type RowLayoutFactory = Factory<{
 }>;
 const defaultProps: Partial<RowLayoutProps> = {};
 
-export const RowLayout = factory<RowLayoutFactory>((props, ref) => {
+export const RowLayout = factory<RowLayoutFactory>((props) => {
     const {children, styles, classNames, unstyled} = useProps('PlasmaRowLayout', defaultProps, props);
     const getStyles = useStyles<RowLayoutFactory>({
         name: 'PlasmaRowLayout',

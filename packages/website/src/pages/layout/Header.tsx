@@ -4,7 +4,7 @@ import HeaderSecondaryDemo from '@examples/layout/Header/HeaderSecondary.demo?de
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         section="Layout"
         title="Header"
@@ -19,3 +19,5 @@ export default () => (
         }}
     />
 );
+
+export default Page;

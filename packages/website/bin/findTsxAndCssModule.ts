@@ -1,7 +1,7 @@
 import klawSync from 'klaw-sync';
 import {CSS_MODULE_FILENAME_PATTERN, DEMO_FILENAME_PATTERN} from './constants';
 
-export const findTsxAndCssModule = async (sourceFolder: string): Promise<string[]> => {
+export const findTsxAndCssModule = (sourceFolder: string): string[] => {
     const files = klawSync(sourceFolder, {
         nodir: true,
         traverseAll: true,

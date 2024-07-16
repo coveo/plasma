@@ -34,7 +34,7 @@ describe('Table.LastUpdated', () => {
         expect(screen.getByRole('timer')).toHaveTextContent('1:05:50 PM');
     });
 
-    it('displays the label and time', () => {
+    it('displays the custom label and time', () => {
         const Fixture = () => {
             const store = useTable<RowData>();
             return (
