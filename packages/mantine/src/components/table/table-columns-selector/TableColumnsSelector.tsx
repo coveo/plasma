@@ -111,9 +111,10 @@ export const TableColumnsSelector = factory<TableColumnsSelectorFactory>((props,
         >
             <Popover withinPortal position="bottom" shadow="md">
                 <Popover.Target>
-                    <Button variant={buttonVariant}>{`${label}${
-                        showVisibleCountLabel ? ` (${selectedColumnsCount})` : ''
-                    }`}</Button>
+                    <Button variant={buttonVariant}>
+                        {label}
+                        {showVisibleCountLabel ? ` (${selectedColumnsCount})` : ''}
+                    </Button>
                 </Popover.Target>
                 <Popover.Dropdown miw={240}>
                     <ScrollArea.Autosize mah={154}>

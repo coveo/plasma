@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs-extra');
 const {globSync} = require('glob');
 const svgr = require('@svgr/core');

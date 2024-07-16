@@ -6,7 +6,7 @@ export default defineConfig({
         alias: [
             {
                 find: '@test-utils',
-                replacement: resolve(__dirname, './src/__tests__/Utils.tsx'),
+                replacement: resolve(import.meta.dirname, './src/__tests__/Utils.tsx'),
             },
         ],
     },
@@ -20,8 +20,5 @@ export default defineConfig({
                 replacement: 'monaco-editor/esm/vs/editor/editor.main.js',
             },
         ],
-        deps: {
-            registerNodeLoader: true,
-        },
     },
 });

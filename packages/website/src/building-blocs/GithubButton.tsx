@@ -1,9 +1,9 @@
 import {Button} from '@coveord/plasma-mantine';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import githubLogo from '../assets/github-mark.svg';
 
-export const GithubButton: FunctionComponent<React.PropsWithChildren<{href: string; ariaLabel: string}>> = ({
+export const GithubButton: FunctionComponent<PropsWithChildren<{href: string; ariaLabel: string}>> = ({
     children,
     ariaLabel,
     href,

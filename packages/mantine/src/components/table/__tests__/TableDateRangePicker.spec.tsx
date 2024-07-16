@@ -10,7 +10,7 @@ const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
 
 describe('Table.DateRangePicker', () => {
-    it('displays the initial dates', async () => {
+    it('displays the initial dates', () => {
         const Fixture = () => {
             const store = useTable<RowData>({initialState: {dateRange: [new Date(2022, 0, 1), new Date(2022, 0, 7)]}});
             return (
@@ -23,6 +23,6 @@ describe('Table.DateRangePicker', () => {
         };
         render(<Fixture />);
 
-        expect(screen.getByRole('button', {name: /jan 01, 2022 \- jan 07, 2022/i})).toBeVisible();
+        expect(screen.getByRole('button', {name: /jan 01, 2022 - jan 07, 2022/i})).toBeVisible();
     });
 });

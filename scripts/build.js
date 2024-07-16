@@ -8,16 +8,15 @@ process.on('unhandledRejection', (err) => {
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-const onExit = (childProcess) => {
-    return new Promise((resolve, reject) => {
-        childProcess.once('exit', (code, signal) => {
+const onExit = (childProcess) =>
+    new Promise((resolve, reject) => {
+        childProcess.once('exit', (code) => {
             code === 0 ? resolve() : reject(new Error('Exit with error code: ' + code));
         });
         childProcess.once('error', (error) => {
             reject(error);
         });
     });
-};
 
 const build = async ({watch = false}) => {
     // compile with swc and tsc

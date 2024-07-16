@@ -26,4 +26,4 @@ const build = async () => {
     }
 };
 
-build();
+void build();

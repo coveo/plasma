@@ -16,7 +16,7 @@ const Search = () => {
         return null;
     }
 
-    const query = engine?.state.query?.q ?? '';
+    const query = (engine?.state?.query?.q as string) ?? '';
     const data = localStorage.getItem('coveo-standalone-search-box-data');
     const {registerNumberOfResults} = loadPaginationActions(engine);
 

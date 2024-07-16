@@ -94,7 +94,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                                 data-testid={cell.id}
                                 className={ctx.getStyles('cell', {classNames, styles}).className}
                                 style={{
-                                    width: `${columnSizing.size}px` ?? 'auto',
+                                    width: columnSizing.size ? `${columnSizing.size}px` : 'auto',
                                     minWidth: `${columnSizing.minSize}px`,
                                     maxWidth: `${columnSizing.maxSize}px`,
                                     ...ctx.getStyles('cell', {classNames, styles}).style,

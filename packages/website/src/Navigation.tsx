@@ -8,7 +8,7 @@ import {
     LayeringTechniquesSize16Px,
     RichUiSize16Px,
 } from '@coveord/plasma-react-icons';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, JSX} from 'react';
 import {Link, LinkProps, useMatch} from 'react-router-dom';
 
 import MantineLogo from './assets/mantine-logo.svg';

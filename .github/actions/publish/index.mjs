@@ -25,10 +25,10 @@ const BUMP_TYPES = ['major', 'minor', 'patch', 'prerelease'];
 
 /**
  * @param options Optional options to use when publishing
- *   * `dry: boolean`: Dry run (default `false`)
- *   * `tag: string`: Tag to use on NPM (default `"latest"`)
- *   * `branch: string`: Branch name used to publish the new version (default `"master"`)
- *   * `bump: BUMP_TYPES`: Force a specific version bump instead of relying on the commit message
+ * * `dry: boolean`: Dry run (default `false`)
+ * * `tag: string`: Tag to use on NPM (default `"latest"`)
+ * * `branch: string`: Branch name used to publish the new version (default `"master"`)
+ * * `bump: BUMP_TYPES`: Force a specific version bump instead of relying on the commit message
  */
 export default async ({github, context, exec}, {dry = false, tag = 'latest', branch = 'master', bump = null} = {}) => {
     const GIT_USERNAME = 'coveobot';

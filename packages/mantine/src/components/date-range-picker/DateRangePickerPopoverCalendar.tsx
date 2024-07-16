@@ -7,7 +7,7 @@ import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
-interface DateRangePickerPopoverCalendarProps<T> extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
+interface DateRangePickerPopoverCalendarProps extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */
     defaultValue?: DateRangePickerValue;
     /** Value for controlled input */
@@ -35,7 +35,7 @@ interface DateRangePickerPopoverCalendarProps<T> extends Pick<EditableDateRangeP
     >;
 }
 
-export const DateRangePickerPopoverCalendar = <T extends unknown>({
+export const DateRangePickerPopoverCalendar = ({
     presets,
     value,
     defaultValue,
@@ -43,7 +43,7 @@ export const DateRangePickerPopoverCalendar = <T extends unknown>({
     startProps,
     endProps,
     rangeCalendarProps,
-}: DateRangePickerPopoverCalendarProps<T>) => {
+}: DateRangePickerPopoverCalendarProps) => {
     const [opened, setOpened] = useState(false);
     const ref = useClickOutside(() => setOpened(false));
 

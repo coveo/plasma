@@ -7,6 +7,5 @@
         },
         "types": ["vitest/globals"]
     },
-    "include": ["src", "__mocks__"],
-    "exclude": ["**/*.spec.*", "**/__tests__"]
+    "include": ["src", "__mocks__"]
 }

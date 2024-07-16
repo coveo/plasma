@@ -89,7 +89,7 @@ CardLayout.displayName = 'Cards';
 CardLayout.Body = IconsListLayout;
 CardLayout.Header = () => null;
 
-const fuzzyFilter: FilterFn<IconSet> = (row, columnId, value, addMeta) => {
+const fuzzyFilter: FilterFn<IconSet> = (row, columnId, value: string, addMeta) => {
     const itemRank = rankItem(row.getValue('name'), value);
     addMeta(itemRank);
     return itemRank.passed;

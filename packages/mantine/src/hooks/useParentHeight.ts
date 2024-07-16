@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {MutableRefObject, useEffect, useRef, useState} from 'react';
 
 const getElementInnerHeight = (el: HTMLElement): number => {
     const fullHeight = el.getBoundingClientRect().height;
@@ -11,7 +11,7 @@ const getElementInnerHeight = (el: HTMLElement): number => {
 /**
  * Computes the available height of the parent element on mount
  */
-export const useParentHeight = (): [number, React.MutableRefObject<HTMLDivElement>] => {
+export const useParentHeight = (): [number, MutableRefObject<HTMLDivElement>] => {
     const [height, setHeight] = useState(-1);
     const ref = useRef<HTMLDivElement>();
 

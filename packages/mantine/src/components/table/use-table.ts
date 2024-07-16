@@ -1,7 +1,7 @@
 import {useDidUpdate} from '@mantine/hooks';
-import {type PaginationState, type SortingState, type ExpandedState} from '@tanstack/table-core';
+import {type ExpandedState, type PaginationState, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {useCallback, useMemo, useState} from 'react';
+import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {type DateRangePickerValue} from '../date-range-picker';
 
 // Create a deeply optional version of another type
@@ -85,43 +85,43 @@ export interface TableStore<TData = unknown> {
     /**
      * Allows to change the pagination state.
      */
-    setPagination: React.Dispatch<React.SetStateAction<TableState<TData>['pagination']>>;
+    setPagination: Dispatch<SetStateAction<TableState<TData>['pagination']>>;
     /**
      * Allows to change the total number of entries.
      */
-    setTotalEntries: React.Dispatch<React.SetStateAction<TableState<TData>['totalEntries']>>;
+    setTotalEntries: Dispatch<SetStateAction<TableState<TData>['totalEntries']>>;
     /**
      * Allows to change the sorting state.
      */
-    setSorting: React.Dispatch<React.SetStateAction<TableState<TData>['sorting']>>;
+    setSorting: Dispatch<SetStateAction<TableState<TData>['sorting']>>;
     /**
      * Allows to change the global filter value.
      */
-    setGlobalFilter: React.Dispatch<React.SetStateAction<TableState<TData>['globalFilter']>>;
+    setGlobalFilter: Dispatch<SetStateAction<TableState<TData>['globalFilter']>>;
     /**
      * Allows to change the rows expanded state.
      */
-    setExpanded: React.Dispatch<React.SetStateAction<TableState<TData>['expanded']>>;
+    setExpanded: Dispatch<SetStateAction<TableState<TData>['expanded']>>;
     /**
      * Allows to change the predicates values.
      */
-    setPredicates: React.Dispatch<React.SetStateAction<TableState<TData>['predicates']>>;
+    setPredicates: Dispatch<SetStateAction<TableState<TData>['predicates']>>;
     /**
      * Allows to change the selected layout.
      */
-    setLayout: React.Dispatch<React.SetStateAction<TableState<TData>['layout']>>;
+    setLayout: Dispatch<SetStateAction<TableState<TData>['layout']>>;
     /**
      * Allows to change the selected date range.
      */
-    setDateRange: React.Dispatch<React.SetStateAction<TableState<TData>['dateRange']>>;
+    setDateRange: Dispatch<SetStateAction<TableState<TData>['dateRange']>>;
     /**
      * Allows to change the current row selection.
      */
-    setRowSelection: React.Dispatch<React.SetStateAction<TableState<TData>['rowSelection']>>;
+    setRowSelection: Dispatch<SetStateAction<TableState<TData>['rowSelection']>>;
     /**
      * Allows to change the visible columns.
      */
-    setColumnVisibility: React.Dispatch<React.SetStateAction<TableState<TData>['columnVisibility']>>;
+    setColumnVisibility: Dispatch<SetStateAction<TableState<TData>['columnVisibility']>>;
     /**
      * Whether the table is currently filtered.
      */
@@ -210,19 +210,17 @@ const defaultState: Partial<TableState> = {
 };
 
 export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): TableStore<TData> => {
-    const options: UseTableOptions<TData> = defaultsDeep({}, userOptions, defaultOptions);
-    const initialState: TableState<TData> = defaultsDeep({}, options.initialState, defaultState);
+    const options = defaultsDeep({}, userOptions, defaultOptions) as UseTableOptions<TData>;
+    const initialState = defaultsDeep({}, options.initialState, defaultState) as TableState<TData>;
 
-    const [pagination, setPagination] = useState<TableState<TData>['pagination']>(
-        initialState.pagination as PaginationState,
-    );
+    const [pagination, setPagination] = useState<TableState<TData>['pagination']>(initialState.pagination);
     const [totalEntries, _setTotalEntries] = useState<TableState<TData>['totalEntries']>(initialState.totalEntries);
     const [unfilteredTotalEntries, setUnfilteredTotalEntries] = useState<TableState<TData>['totalEntries']>(
         initialState.totalEntries,
     );
-    const [sorting, setSorting] = useState<TableState<TData>['sorting']>(initialState.sorting as SortingState);
+    const [sorting, setSorting] = useState<TableState<TData>['sorting']>(initialState.sorting);
     const [globalFilter, setGlobalFilter] = useState<TableState<TData>['globalFilter']>(initialState.globalFilter);
-    const [expanded, setExpanded] = useState<TableState<TData>['expanded']>(initialState.expanded as ExpandedState);
+    const [expanded, setExpanded] = useState<TableState<TData>['expanded']>(initialState.expanded);
     const [predicates, setPredicates] = useState<TableState<TData>['predicates']>(initialState.predicates);
     const [layout, setLayout] = useState<TableState<TData>['layout']>(initialState.layout);
     const [dateRange, setDateRange] = useState<TableState<TData>['dateRange']>(initialState.dateRange);

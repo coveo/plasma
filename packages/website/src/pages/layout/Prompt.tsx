@@ -6,7 +6,7 @@ import PromptCriticalDemo from '@examples/layout/Prompt/PromptCritical.demo?demo
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         section="Layout"
         title="Prompt"
@@ -22,3 +22,5 @@ export default () => (
         }}
     />
 );
+
+export default Page;

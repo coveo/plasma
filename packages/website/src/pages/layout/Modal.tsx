@@ -4,7 +4,7 @@ import ModalWithTabsDemo from '@examples/layout/Modal/ModalWithTabs.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         section="Layout"
         title="Modal"
@@ -18,3 +18,5 @@ export default () => (
         }}
     />
 );
+
+export default Page;

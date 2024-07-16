@@ -219,7 +219,7 @@ describe('RowLayout', () => {
         const Fixture = () => {
             const store = useTable<RowData>();
             return (
-                <Table
+                <Table<RowData>
                     store={store}
                     getRowId={({id}) => id}
                     data={data}
@@ -398,11 +398,9 @@ describe('RowLayout', () => {
             expect(onClick).not.toHaveBeenCalled();
 
             const rows = screen.getAllByRole('row');
-            rows.forEach(async (row) => {
-                await user.click(within(row).getByRole('checkbox', {name: /select/i}));
+            await user.click(within(rows[0]).getByRole('checkbox', {name: /select/i}));
 
-                expect(onClick).not.toHaveBeenCalled();
-            });
+            expect(onClick).not.toHaveBeenCalled();
         });
     });
 

@@ -3,7 +3,7 @@ import StickyFooterDemo from '@examples/layout/StickyFooter/StickyFooter.demo?de
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         section="Layout"
         title="Sticky Footer"
@@ -14,3 +14,5 @@ export default () => (
         demo={<StickyFooterDemo />}
     />
 );
+
+export default Page;
