@@ -16,10 +16,6 @@ patchedDependencies:
 importers:
 
   .:
-    dependencies:
-      eslint-plugin-import-x:
-        specifier: 3.0.1
-        version: 3.0.1(eslint@9.7.0)(typescript@5.5.3)
     devDependencies:
       '@commitlint/cli':
         specifier: 19.3.0
@@ -60,6 +56,9 @@ importers:
       eslint-config-prettier:
         specifier: 9.1.0
         version: 9.1.0(eslint@9.7.0)
+      eslint-plugin-import-x:
+        specifier: 3.0.1
+        version: 3.0.1(eslint@9.7.0)(typescript@5.5.3)
       eslint-plugin-jsdoc:
         specifier: 48.7.0
         version: 48.7.0(eslint@9.7.0)
