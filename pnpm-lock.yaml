@@ -19,7 +19,7 @@ importers:
     devDependencies:
       '@commitlint/cli':
         specifier: 19.3.0
-        version: 19.3.0(@types/node@20.14.10)(typescript@5.5.3)
+        version: 19.3.0(@types/node@20.14.11)(typescript@5.5.3)
       '@commitlint/config-conventional':
         specifier: 19.2.2
         version: 19.2.2
@@ -33,8 +33,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       '@types/node':
-        specifier: 20.14.10
-        version: 20.14.10
+        specifier: 20.14.11
+        version: 20.14.11
       aws-sdk:
         specifier: 2.1659.0
         version: 2.1659.0
@@ -43,13 +43,13 @@ importers:
         version: 3.6.0
       commitizen:
         specifier: 4.3.0
-        version: 4.3.0(@types/node@20.14.10)(typescript@5.5.3)
+        version: 4.3.0(@types/node@20.14.11)(typescript@5.5.3)
       conventional-changelog-angular:
         specifier: 8.0.0
         version: 8.0.0
       cz-conventional-changelog:
         specifier: 3.3.0
-        version: 3.3.0(@types/node@20.14.10)(typescript@5.5.3)
+        version: 3.3.0(@types/node@20.14.11)(typescript@5.5.3)
       eslint:
         specifier: 9.7.0
         version: 9.7.0
@@ -82,7 +82,7 @@ importers:
         version: 4.0.0(eslint@9.7.0)
       eslint-plugin-vitest:
         specifier: 0.5.4
-        version: 0.5.4(eslint@9.7.0)(typescript@5.5.3)(vitest@2.0.3(@types/node@20.14.10))
+        version: 0.5.4(eslint@9.7.0)(typescript@5.5.3)(vitest@2.0.3(@types/node@20.14.11))
       globals:
         specifier: 15.8.0
         version: 15.8.0
@@ -111,8 +111,8 @@ importers:
         specifier: 13.1.0
         version: 13.1.0(postcss@8.4.39)(stylelint@16.7.0(typescript@5.5.3))
       turbo:
-        specifier: 2.0.6
-        version: 2.0.6
+        specifier: 2.0.7
+        version: 2.0.7
       typescript:
         specifier: 5.5.3
         version: 5.5.3
@@ -142,8 +142,8 @@ importers:
         specifier: 11.0.4
         version: 11.0.4
       '@types/node':
-        specifier: 20.14.10
-        version: 20.14.10
+        specifier: 20.14.11
+        version: 20.14.11
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
@@ -176,7 +176,7 @@ importers:
         version: 6.0.1
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.6.13(@swc/helpers@0.5.12))(@types/node@20.14.10)(typescript@5.5.3)
+        version: 10.9.2(@swc/core@1.6.13(@swc/helpers@0.5.12))(@types/node@20.14.11)(typescript@5.5.3)
       tslib:
         specifier: 2.6.3
         version: 2.6.3
@@ -273,7 +273,7 @@ importers:
         version: 10.3.2
       '@testing-library/jest-dom':
         specifier: 6.4.6
-        version: 6.4.6(vitest@2.0.3(@types/node@20.14.10)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)))
+        version: 6.4.6(vitest@2.0.3(@types/node@20.14.11)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)))
       '@testing-library/react':
         specifier: 16.0.0
         version: 16.0.0(@testing-library/dom@10.3.2)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -311,8 +311,8 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1(postcss@8.4.39)
       publint:
-        specifier: 0.2.8
-        version: 0.2.8
+        specifier: 0.2.9
+        version: 0.2.9
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -333,7 +333,7 @@ importers:
         version: 5.5.3
       vitest:
         specifier: 2.0.3
-        version: 2.0.3(@types/node@20.14.10)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
+        version: 2.0.3(@types/node@20.14.11)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
 
   packages/react-icons:
     dependencies:
@@ -378,8 +378,8 @@ importers:
         specifier: 4.3.1
         version: 4.3.1
       publint:
-        specifier: 0.2.8
-        version: 0.2.8
+        specifier: 0.2.9
+        version: 0.2.9
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -418,8 +418,8 @@ importers:
         specifier: 4.17.7
         version: 4.17.7
       '@types/node':
-        specifier: 20.14.10
-        version: 20.14.10
+        specifier: 20.14.11
+        version: 20.14.11
       chroma-js:
         specifier: 2.4.2
         version: 2.4.2
@@ -448,8 +448,8 @@ importers:
         specifier: 3.3.3
         version: 3.3.3
       publint:
-        specifier: 0.2.8
-        version: 0.2.8
+        specifier: 0.2.9
+        version: 0.2.9
       rimraf:
         specifier: 6.0.1
         version: 6.0.1
@@ -461,7 +461,7 @@ importers:
         version: 3.3.2
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.6.13(@swc/helpers@0.5.12))(@types/node@20.14.10)(typescript@5.5.3)
+        version: 10.9.2(@swc/core@1.6.13(@swc/helpers@0.5.12))(@types/node@20.14.11)(typescript@5.5.3)
       tslib:
         specifier: 2.6.3
         version: 2.6.3
@@ -581,8 +581,8 @@ importers:
         specifier: 4.1.9
         version: 4.1.9
       '@types/node':
-        specifier: 20.14.10
-        version: 20.14.10
+        specifier: 20.14.11
+        version: 20.14.11
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
@@ -591,7 +591,7 @@ importers:
         version: 18.3.0
       '@vitejs/plugin-react-swc':
         specifier: 3.7.0
-        version: 3.7.0(@swc/helpers@0.5.12)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)))
+        version: 3.7.0(@swc/helpers@0.5.12)(vite@5.3.4(@types/node@20.14.11)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)))
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.39)
@@ -612,7 +612,7 @@ importers:
         version: 3.25.0
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.6.13(@swc/helpers@0.5.12))(@types/node@20.14.10)(typescript@5.5.3)
+        version: 10.9.2(@swc/core@1.6.13(@swc/helpers@0.5.12))(@types/node@20.14.11)(typescript@5.5.3)
       tslib:
         specifier: 2.6.3
         version: 2.6.3
@@ -621,7 +621,7 @@ importers:
         version: 5.5.3
       vite:
         specifier: 5.3.4
-        version: 5.3.4(@types/node@20.14.10)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
+        version: 5.3.4(@types/node@20.14.11)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
 
 packages:
 
@@ -1703,8 +1703,8 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/node@20.14.10':
-    resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
+  '@types/node@20.14.11':
+    resolution: {integrity: sha512-kprQpL8MMeszbz6ojB5/tU8PLN4kesnN8Gjzw349rDlNgsSzg90lAVj3llK99Dh7JON+t9AuscPPFW6mPbTnSA==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -4363,8 +4363,8 @@ packages:
   pstree.remy@1.1.8:
     resolution: {integrity: sha512-77DZwxQmxKnu3aR542U+X8FypNzbfJ+C5XQDk3uWjWxn6151aIMGthWYRXTqT1E5oJvg+ljaa2OJi+VfvCOQ8w==}
 
-  publint@0.2.8:
-    resolution: {integrity: sha512-C5MjGJ7gpanqaDpgBN+6QhjvXcoj0/YpbucoW29oO5729CGTMzfr3wZTIYcpzB1xl9ZfEqj4KL86P2Z50pt/JA==}
+  publint@0.2.9:
+    resolution: {integrity: sha512-nITKS1NSwD68PQlts0ntryhxrWObep6P0CCycwi1lgXI+K7uKyacMYRRCQi7hTae8imkI3FCi0FlgnwLxjM8yA==}
     engines: {node: '>=16'}
     hasBin: true
 
@@ -5122,38 +5122,38 @@ packages:
     peerDependencies:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
 
-  turbo-darwin-64@2.0.6:
-    resolution: {integrity: sha512-XpgBwWj3Ggmz/gQVqXdMKXHC1iFPMDiuwugLwSzE7Ih0O13JuNtYZKhQnopvbDQnFQCeRq2Vsm5OTWabg/oB/g==}
+  turbo-darwin-64@2.0.7:
+    resolution: {integrity: sha512-J1RBvQGqKeUwLJrZbfrm4tHshagdMeGAwd7rpLpfUrw0PNmGfcBazJf6dIGXG59/GHzJmS0/eAZ8qDchfVbIFA==}
     cpu: [x64]
     os: [darwin]
 
-  turbo-darwin-arm64@2.0.6:
-    resolution: {integrity: sha512-RfeZYXIAkiA21E8lsvfptGTqz/256YD+eI1x37fedfvnHFWuIMFZGAOwJxtZc6QasQunDZ9TRRREbJNI68tkIw==}
+  turbo-darwin-arm64@2.0.7:
+    resolution: {integrity: sha512-h1JK8uuEjoHx1SvvTZiottj+4kDmiv+hivnLUzNwO75qKblMsd38IsFB0J2sMRz7JacFlf+3ry8SItznBW67Xw==}
     cpu: [arm64]
     os: [darwin]
 
-  turbo-linux-64@2.0.6:
-    resolution: {integrity: sha512-92UDa0xNQQbx0HdSp9ag3YSS3xPdavhc7q9q9mxIAcqyjjD6VElA4Y85m4F/DDGE5SolCrvBz2sQhVmkOd6Caw==}
+  turbo-linux-64@2.0.7:
+    resolution: {integrity: sha512-dsr7GFeHAYVMnXWDDjhpsAQetejU4OlkNBRA5hfmnIcl2sSyOYa3EvoeJ6j5z5vTNIJ9VO4I1h0jK3lTjEoonA==}
     cpu: [x64]
     os: [linux]
 
-  turbo-linux-arm64@2.0.6:
-    resolution: {integrity: sha512-eQKu6utCVUkIH2kqOzD8OS6E0ba6COjWm6PRDTNCHQRljZW503ycaTUIdMOiJrVg1MkEjDyOReUg8s8D18aJ4Q==}
+  turbo-linux-arm64@2.0.7:
+    resolution: {integrity: sha512-bJbwXvyX1XPzY1jHgkqggls/L4yFyHVK8GGACF3kcg6x7lYV2SXkUYRyOC3WqzW7euqa9Zw/32jrIPP4Qy31Vw==}
     cpu: [arm64]
     os: [linux]
 
-  turbo-windows-64@2.0.6:
-    resolution: {integrity: sha512-+9u4EPrpoeHYCQ46dRcou9kbkSoelhOelHNcbs2d86D6ruYD/oIAHK9qgYK8LeARRz0jxhZIA/dWYdYsxJJWkw==}
+  turbo-windows-64@2.0.7:
+    resolution: {integrity: sha512-aBH+5A7IN957MqXMrw8xN0CWtH/fPFL+xTlloO6074Eaa8WfnctSAnaSujm6f4xF2T8lFx+ZprBvnO9oKvLQQQ==}
     cpu: [x64]
     os: [win32]
 
-  turbo-windows-arm64@2.0.6:
-    resolution: {integrity: sha512-rdrKL+p+EjtdDVg0wQ/7yTbzkIYrnb0Pw4IKcjsy3M0RqUM9UcEi67b94XOAyTa5a0GqJL1+tUj2ebsFGPgZbg==}
+  turbo-windows-arm64@2.0.7:
+    resolution: {integrity: sha512-ButUCpO5nTi+jyTSIY2mQ9dVz+mCGxJ6sHyn0xGlNoJWdisKXb0BtWCLAjM26gg/yp9Kt1MBowMQyYVruPV0Qw==}
     cpu: [arm64]
     os: [win32]
 
-  turbo@2.0.6:
-    resolution: {integrity: sha512-/Ftmxd5Mq//a9yMonvmwENNUN65jOVTwhhBPQjEtNZutYT9YKyzydFGLyVM1nzhpLWahQSMamRc/RDBv5EapzA==}
+  turbo@2.0.7:
+    resolution: {integrity: sha512-76iNWZpmKAKjj+yL0Wtcu2LpDIM5Nz7JS3fHOZPYS0AKuC2boJ24276VAiK4PKwbpBB//TYKDpSLuQ6cfR49pg==}
     hasBin: true
 
   type-check@0.4.0:
@@ -5700,11 +5700,11 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
 
-  '@commitlint/cli@19.3.0(@types/node@20.14.10)(typescript@5.5.3)':
+  '@commitlint/cli@19.3.0(@types/node@20.14.11)(typescript@5.5.3)':
     dependencies:
       '@commitlint/format': 19.3.0
       '@commitlint/lint': 19.2.2
-      '@commitlint/load': 19.2.0(@types/node@20.14.10)(typescript@5.5.3)
+      '@commitlint/load': 19.2.0(@types/node@20.14.11)(typescript@5.5.3)
       '@commitlint/read': 19.2.1
       '@commitlint/types': 19.0.3
       execa: 8.0.1
@@ -5751,7 +5751,7 @@ snapshots:
       '@commitlint/rules': 19.0.3
       '@commitlint/types': 19.0.3
 
-  '@commitlint/load@19.2.0(@types/node@20.14.10)(typescript@5.5.3)':
+  '@commitlint/load@19.2.0(@types/node@20.14.11)(typescript@5.5.3)':
     dependencies:
       '@commitlint/config-validator': 19.0.3
       '@commitlint/execute-rule': 19.0.0
@@ -5759,7 +5759,7 @@ snapshots:
       '@commitlint/types': 19.0.3
       chalk: 5.3.0
       cosmiconfig: 9.0.0(typescript@5.5.3)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.14.10)(cosmiconfig@9.0.0(typescript@5.5.3))(typescript@5.5.3)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.14.11)(cosmiconfig@9.0.0(typescript@5.5.3))(typescript@5.5.3)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -6516,7 +6516,7 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/jest-dom@6.4.6(vitest@2.0.3(@types/node@20.14.10)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)))':
+  '@testing-library/jest-dom@6.4.6(vitest@2.0.3(@types/node@20.14.11)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)))':
     dependencies:
       '@adobe/css-tools': 4.4.0
       '@babel/runtime': 7.24.8
@@ -6527,7 +6527,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
     optionalDependencies:
-      vitest: 2.0.3(@types/node@20.14.10)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
+      vitest: 2.0.3(@types/node@20.14.11)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
 
   '@testing-library/react@16.0.0(@testing-library/dom@10.3.2)(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -6561,14 +6561,14 @@ snapshots:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
       '@types/responselike': 1.0.3
 
   '@types/chroma-js@2.4.4': {}
 
   '@types/conventional-commits-parser@5.0.0':
     dependencies:
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
 
   '@types/debug@4.1.12':
     dependencies:
@@ -6583,16 +6583,16 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
 
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
 
   '@types/hast@3.0.4':
     dependencies:
@@ -6604,15 +6604,15 @@ snapshots:
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
 
   '@types/klaw-sync@6.0.5':
     dependencies:
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
 
   '@types/lodash.debounce@4.0.9':
     dependencies:
@@ -6638,7 +6638,7 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@20.14.10':
+  '@types/node@20.14.11':
     dependencies:
       undici-types: 5.26.5
 
@@ -6655,7 +6655,7 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
 
   '@types/semver@7.5.8': {}
 
@@ -6805,10 +6805,10 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-react-swc@3.7.0(@swc/helpers@0.5.12)(vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)))':
+  '@vitejs/plugin-react-swc@3.7.0(@swc/helpers@0.5.12)(vite@5.3.4(@types/node@20.14.11)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)))':
     dependencies:
       '@swc/core': 1.6.13(@swc/helpers@0.5.12)
-      vite: 5.3.4(@types/node@20.14.10)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
+      vite: 5.3.4(@types/node@20.14.11)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -7266,10 +7266,10 @@ snapshots:
 
   comment-parser@1.4.1: {}
 
-  commitizen@4.3.0(@types/node@20.14.10)(typescript@5.5.3):
+  commitizen@4.3.0(@types/node@20.14.11)(typescript@5.5.3):
     dependencies:
       cachedir: 2.3.0
-      cz-conventional-changelog: 3.3.0(@types/node@20.14.10)(typescript@5.5.3)
+      cz-conventional-changelog: 3.3.0(@types/node@20.14.11)(typescript@5.5.3)
       dedent: 0.7.0
       detect-indent: 6.1.0
       find-node-modules: 2.1.3
@@ -7333,9 +7333,9 @@ snapshots:
 
   core-js-pure@3.37.1: {}
 
-  cosmiconfig-typescript-loader@5.0.0(@types/node@20.14.10)(cosmiconfig@9.0.0(typescript@5.5.3))(typescript@5.5.3):
+  cosmiconfig-typescript-loader@5.0.0(@types/node@20.14.11)(cosmiconfig@9.0.0(typescript@5.5.3))(typescript@5.5.3):
     dependencies:
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
       cosmiconfig: 9.0.0(typescript@5.5.3)
       jiti: 1.21.6
       typescript: 5.5.3
@@ -7431,16 +7431,16 @@ snapshots:
 
   csstype@3.1.3: {}
 
-  cz-conventional-changelog@3.3.0(@types/node@20.14.10)(typescript@5.5.3):
+  cz-conventional-changelog@3.3.0(@types/node@20.14.11)(typescript@5.5.3):
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.3.0(@types/node@20.14.10)(typescript@5.5.3)
+      commitizen: 4.3.0(@types/node@20.14.11)(typescript@5.5.3)
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
       word-wrap: 1.2.5
     optionalDependencies:
-      '@commitlint/load': 19.2.0(@types/node@20.14.10)(typescript@5.5.3)
+      '@commitlint/load': 19.2.0(@types/node@20.14.11)(typescript@5.5.3)
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -7858,12 +7858,12 @@ snapshots:
       eslint: 9.7.0
       eslint-rule-composer: 0.3.0
 
-  eslint-plugin-vitest@0.5.4(eslint@9.7.0)(typescript@5.5.3)(vitest@2.0.3(@types/node@20.14.10)):
+  eslint-plugin-vitest@0.5.4(eslint@9.7.0)(typescript@5.5.3)(vitest@2.0.3(@types/node@20.14.11)):
     dependencies:
       '@typescript-eslint/utils': 7.16.1(eslint@9.7.0)(typescript@5.5.3)
       eslint: 9.7.0
     optionalDependencies:
-      vitest: 2.0.3(@types/node@20.14.10)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
+      vitest: 2.0.3(@types/node@20.14.11)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -9732,7 +9732,7 @@ snapshots:
 
   pstree.remy@1.1.8: {}
 
-  publint@0.2.8:
+  publint@0.2.9:
     dependencies:
       npm-packlist: 5.1.3
       picocolors: 1.0.1
@@ -10546,14 +10546,14 @@ snapshots:
 
   ts-debounce@4.0.0: {}
 
-  ts-node@10.9.2(@swc/core@1.6.13(@swc/helpers@0.5.12))(@types/node@20.14.10)(typescript@5.5.3):
+  ts-node@10.9.2(@swc/core@1.6.13(@swc/helpers@0.5.12))(@types/node@20.14.11)(typescript@5.5.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
       acorn: 8.12.1
       acorn-walk: 8.3.3
       arg: 4.1.3
@@ -10575,32 +10575,32 @@ snapshots:
       tslib: 1.14.1
       typescript: 5.5.3
 
-  turbo-darwin-64@2.0.6:
+  turbo-darwin-64@2.0.7:
     optional: true
 
-  turbo-darwin-arm64@2.0.6:
+  turbo-darwin-arm64@2.0.7:
     optional: true
 
-  turbo-linux-64@2.0.6:
+  turbo-linux-64@2.0.7:
     optional: true
 
-  turbo-linux-arm64@2.0.6:
+  turbo-linux-arm64@2.0.7:
     optional: true
 
-  turbo-windows-64@2.0.6:
+  turbo-windows-64@2.0.7:
     optional: true
 
-  turbo-windows-arm64@2.0.6:
+  turbo-windows-arm64@2.0.7:
     optional: true
 
-  turbo@2.0.6:
+  turbo@2.0.7:
     optionalDependencies:
-      turbo-darwin-64: 2.0.6
-      turbo-darwin-arm64: 2.0.6
-      turbo-linux-64: 2.0.6
-      turbo-linux-arm64: 2.0.6
-      turbo-windows-64: 2.0.6
-      turbo-windows-arm64: 2.0.6
+      turbo-darwin-64: 2.0.7
+      turbo-darwin-arm64: 2.0.7
+      turbo-linux-64: 2.0.7
+      turbo-linux-arm64: 2.0.7
+      turbo-windows-64: 2.0.7
+      turbo-windows-arm64: 2.0.7
 
   type-check@0.4.0:
     dependencies:
@@ -10800,13 +10800,13 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite-node@2.0.3(@types/node@20.14.10)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)):
+  vite-node@2.0.3(@types/node@20.14.11)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)):
     dependencies:
       cac: 6.7.14
       debug: 4.3.5(supports-color@5.5.0)
       pathe: 1.1.2
       tinyrainbow: 1.2.0
-      vite: 5.3.4(@types/node@20.14.10)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
+      vite: 5.3.4(@types/node@20.14.11)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -10817,18 +10817,18 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.3.4(@types/node@20.14.10)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)):
+  vite@5.3.4(@types/node@20.14.11)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.39
       rollup: 4.18.1
     optionalDependencies:
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
       fsevents: 2.3.3
       sass: 1.77.8
       sugarss: 4.0.1(postcss@8.4.39)
 
-  vitest@2.0.3(@types/node@20.14.10)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)):
+  vitest@2.0.3(@types/node@20.14.11)(jsdom@24.1.0)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39)):
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@vitest/expect': 2.0.3
@@ -10846,11 +10846,11 @@ snapshots:
       tinybench: 2.8.0
       tinypool: 1.0.0
       tinyrainbow: 1.2.0
-      vite: 5.3.4(@types/node@20.14.10)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
-      vite-node: 2.0.3(@types/node@20.14.10)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
+      vite: 5.3.4(@types/node@20.14.11)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
+      vite-node: 2.0.3(@types/node@20.14.11)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.39))
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 20.14.10
+      '@types/node': 20.14.11
       jsdom: 24.1.0
     transitivePeerDependencies:
       - less
