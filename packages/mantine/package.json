@@ -64,7 +64,7 @@
         "@mantine/modals": "7.11.2",
         "@mantine/notifications": "7.11.2",
         "@swc/cli": "0.4.0",
-        "@swc/core": "1.6.13",
+        "@swc/core": "1.7.0",
         "@testing-library/dom": "10.3.2",
         "@testing-library/jest-dom": "6.4.6",
         "@testing-library/react": "16.0.0",
