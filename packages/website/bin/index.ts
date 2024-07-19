@@ -28,11 +28,17 @@ const main = async (): Promise<void> => {
     await ensureDir(localCopyFolder);
     const allFilesPath = await findTsxAndCssModule(srcFolder);
     const files = await copyDemoFiles(allFilesPath, localCopyFolder);
-    const tsxFiles = files.filter((f) => f.match(DEMO_FILENAME_PATTERN)).map((f) => path.basename(f));
+    const tsxFiles = files
+        .filter(({sourcePath}) => sourcePath.match(DEMO_FILENAME_PATTERN))
+        .map(({sourcePath}) => path.basename(sourcePath));
+    const cssFileByTsxFile = files
+        .filter(({cssImport}) => cssImport !== null)
+        .reduce((acc, {sourcePath, cssImport}) => ({...acc, [path.basename(sourcePath)]: cssImport}), {});
+    console.log(cssFileByTsxFile);
     const grouppedFiles = groupFilesByComponent(tsxFiles);
 
     for (const [key, filesPath] of Object.entries(grouppedFiles)) {
-        await generatePage(key, filesPath);
+        await generatePage(key, filesPath, cssFileByTsxFile);
     }
 
     // cleanup mantine src
