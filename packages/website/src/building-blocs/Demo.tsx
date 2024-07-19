@@ -11,7 +11,7 @@ import {
     useClipboard,
 } from '@coveord/plasma-mantine';
 import {CheckSize16Px, CopySize16Px, PlaySize16Px} from '@coveord/plasma-react-icons';
-import {CodeHighlight} from '@mantine/code-highlight';
+import {CodeHighlight, CodeHighlightTabs} from '@mantine/code-highlight';
 import '@mantine/code-highlight/styles.css';
 import {Component, ReactNode} from 'react';
 import CodeHighlightClassesThemeClasses from '../styles/CodeHighlight.theme.module.css';
@@ -26,7 +26,17 @@ interface DemoProps extends DemoComponentProps {
     children?: ReactNode;
 }
 
-const Demo = ({children, snippet, center = false, grow = false, title, layout, noPadding, maxHeight}: DemoProps) => {
+const Demo = ({
+    children,
+    snippet,
+    center = false,
+    grow = false,
+    title,
+    layout,
+    noPadding,
+    maxHeight,
+    additionalFiles,
+}: DemoProps) => {
     const clipboard = useClipboard();
     const createSandbox = async () => {
         try {
@@ -63,14 +73,29 @@ const Demo = ({children, snippet, center = false, grow = false, title, layout, n
                     </Box>
                 </ErrorBoundary>
                 <div className={DemoClasses.code}>
-                    <CodeHighlight
-                        language="tsx"
-                        code={snippet}
-                        withCopyButton={false}
-                        highlightOnClient
-                        classNames={{root: CodeHighlightClassesThemeClasses.theme}}
-                        styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
-                    />
+                    {additionalFiles && additionalFiles.length > 0 ? (
+                        <CodeHighlightTabs
+                            code={[
+                                {code: snippet, language: 'tsx', fileName: 'Demo.tsx', icon: null},
+                                ...additionalFiles,
+                            ]}
+                            withCopyButton={false}
+                            classNames={{
+                                root: CodeHighlightClassesThemeClasses.theme,
+                                file: CodeHighlightClassesThemeClasses.file,
+                            }}
+                            styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
+                        />
+                    ) : (
+                        <CodeHighlight
+                            language="tsx"
+                            code={snippet}
+                            withCopyButton={false}
+                            highlightOnClient
+                            classNames={{root: CodeHighlightClassesThemeClasses.theme}}
+                            styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
+                        />
+                    )}
                     <Stack className={DemoClasses.actions} gap="xs">
                         <Tooltip label={clipboard.copied ? 'Copied' : 'Copy'} position="left">
                             <ActionIcon
