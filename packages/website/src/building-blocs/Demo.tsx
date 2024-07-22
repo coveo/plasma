@@ -1,5 +1,6 @@
 import {
     ActionIcon,
+    Anchor,
     Box,
     Center,
     Flex,
@@ -10,7 +11,7 @@ import {
     Tooltip,
     useClipboard,
 } from '@coveord/plasma-mantine';
-import {CheckSize16Px, CopySize16Px, PlaySize16Px} from '@coveord/plasma-react-icons';
+import {CheckSize16Px, CopySize16Px, LinksSize16Px, PlaySize16Px} from '@coveord/plasma-react-icons';
 import {CodeHighlight, CodeHighlightTabs} from '@mantine/code-highlight';
 import '@mantine/code-highlight/styles.css';
 import {Component, ReactNode} from 'react';
@@ -22,11 +23,13 @@ const MAX_HEIGHT = 500;
 const MIN_HEIGHT = 100;
 
 interface DemoProps extends DemoComponentProps {
+    id: string;
     snippet: string;
     children?: ReactNode;
 }
 
 const Demo = ({
+    id,
     children,
     snippet,
     center = false,
@@ -50,9 +53,12 @@ const Demo = ({
     return (
         <div className={DemoClasses.root}>
             {title ? (
-                <Title order={5} mb="xs">
-                    {title}
-                </Title>
+                <Anchor href={`#${id}`} c="gray.9" className={DemoClasses.anchor}>
+                    <Title order={5} mb="xs" id={id} className={DemoClasses.title}>
+                        {title}
+                    </Title>
+                    <LinksSize16Px className={DemoClasses.anchorIcon} height={16} />
+                </Anchor>
             ) : null}
             <SimpleGrid className={DemoClasses.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
                 <ErrorBoundary>

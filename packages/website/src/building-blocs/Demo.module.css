@@ -2,6 +2,23 @@
     background-color: var(--mantine-color-gray-0);
 }
 
+.anchor {
+    &:hover {
+        .anchorIcon {
+            opacity: 1;
+        }
+    }
+}
+
+.anchorIcon {
+    opacity: 0;
+    transition: opacity 100ms ease-in;
+}
+
+.title {
+    display: inline-block;
+}
+
 .sandbox {
     border: 1px solid var(--mantine-color-gray-3);
     border-radius: var(--mantine-radius-md);

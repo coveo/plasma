@@ -1,5 +1,6 @@
 import {AppShell, Box, Container, Divider, Flex, Stack, Tabs, Title} from '@coveord/plasma-mantine';
-import {Fragment, FunctionComponent, ReactNode} from 'react';
+import {Fragment, FunctionComponent, ReactNode, useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 
 import {GuidelinesTab} from './GuidelinesTab';
 import {PageHeader, PageHeaderProps} from './PageHeader';
@@ -56,6 +57,7 @@ export const PageLayout = ({
                 <Box bg="gray.0" h="100%">
                     <Container size="xl" py="xl">
                         <Tabs.Panel value="implementation">
+                            <ResetScroll />
                             <Content id={id} {...contentProps}>
                                 {children}
                             </Content>
@@ -106,3 +108,18 @@ const Content: FunctionComponent<
         {children}
     </Stack>
 );
+
+const ResetScroll: FunctionComponent = () => {
+    const {pathname, hash} = useLocation();
+    useEffect(() => {
+        if (hash) {
+            const el = document.getElementById(window.location.hash.slice(1));
+            if (el) {
+                el.scrollIntoView();
+            }
+        } else {
+            window.scrollTo(0, 0);
+        }
+    }, [pathname]);
+    return null;
+};

@@ -15,7 +15,7 @@ ${source.replace('export default', `const ${name}Preview =`)}
 
 const snippet = \`${source.replace(/\\|`|\$/g, '\\$&')}\`;
 const ${name}Demo = (props: DemoComponentProps) => (
-    <DemoContainer snippet={snippet} {...props}>
+    <DemoContainer id="${name}" snippet={snippet} {...props}>
         <${name}Preview />
     </DemoContainer>
 );
