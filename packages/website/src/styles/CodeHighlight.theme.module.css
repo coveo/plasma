@@ -87,3 +87,19 @@
         text-decoration: underline;
     }
 }
+
+.file {
+    &:where([data-active]) {
+        opacity: 1;
+
+        @mixin where-light {
+            background-color: var(--mantine-color-dark-6);
+            color: var(--mantine-color-white);
+        }
+    }
+
+    @mixin where-light {
+        color: var(--mantine-color-dark-0);
+        border-color: var(--mantine-color-dark-4);
+    }
+}
