@@ -46,7 +46,7 @@
     "devDependencies": {
         "@commitlint/cli": "19.3.0",
         "@commitlint/config-conventional": "19.2.2",
-        "@coveo/semantic-monorepo-tools": "2.4.42",
+        "@coveo/semantic-monorepo-tools": "2.4.43",
         "@eslint/compat": "1.1.1",
         "@sindresorhus/slugify": "2.2.1",
         "@types/node": "20.14.11",
@@ -58,13 +58,13 @@
         "eslint": "9.7.0",
         "eslint-config-prettier": "9.1.0",
         "eslint-plugin-import-x": "3.0.1",
-        "eslint-plugin-jsdoc": "48.7.0",
+        "eslint-plugin-jsdoc": "48.8.3",
         "eslint-plugin-prefer-arrow": "1.2.3",
-        "eslint-plugin-react": "7.34.4",
+        "eslint-plugin-react": "7.35.0",
         "eslint-plugin-react-hooks": "4.6.2",
-        "eslint-plugin-react-refresh": "0.4.8",
+        "eslint-plugin-react-refresh": "0.4.9",
         "eslint-plugin-testing-library": "6.2.2",
-        "eslint-plugin-unused-imports": "4.0.0",
+        "eslint-plugin-unused-imports": "4.0.1",
         "eslint-plugin-vitest": "0.5.4",
         "globals": "15.8.0",
         "husky": "9.1.1",
@@ -75,13 +75,13 @@
         "sort-package-json": "2.10.0",
         "stylelint": "16.7.0",
         "stylelint-config-standard-scss": "13.1.0",
-        "turbo": "2.0.7",
+        "turbo": "2.0.9",
         "typescript": "5.5.3",
         "typescript-eslint": "7.16.1",
         "underscore": "1.13.6",
         "walkdir": "0.4.1"
     },
-    "packageManager": "pnpm@9.5.0",
+    "packageManager": "pnpm@9.6.0",
     "pnpm": {
         "peerDependencyRules": {
             "ignoreMissing": [
