@@ -50,7 +50,7 @@
         "@svgr/core": "8.1.0",
         "@svgr/plugin-jsx": "8.1.0",
         "@swc/cli": "0.4.0",
-        "@swc/core": "1.7.0",
+        "@swc/core": "1.7.2",
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
         "fs-extra": "11.2.0",
@@ -62,7 +62,7 @@
         "react-dom": "18.3.1",
         "rimraf": "6.0.1",
         "tslib": "2.6.3",
-        "typescript": "5.5.3"
+        "typescript": "5.5.4"
     },
     "peerDependencies": {
         "react": ">= 18.0",
