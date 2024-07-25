@@ -34,7 +34,7 @@
         "dayjs": "1.11.12",
         "encoding": "0.1.13",
         "lodash.kebabcase": "4.1.1",
-        "pino-pretty": "11.2.1",
+        "pino-pretty": "11.2.2",
         "react": "18.3.1",
         "react-dom": "18.3.1",
         "react-hook-form": "7.52.1",
@@ -48,19 +48,19 @@
         "@types/fs-extra": "11.0.4",
         "@types/klaw-sync": "6.0.5",
         "@types/lodash.kebabcase": "4.1.9",
-        "@types/node": "20.14.11",
+        "@types/node": "20.14.12",
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
         "@vitejs/plugin-react-swc": "3.7.0",
         "autoprefixer": "10.4.19",
         "fs-extra": "11.2.0",
         "klaw-sync": "6.0.0",
-        "postcss": "8.4.39",
+        "postcss": "8.4.40",
         "postcss-preset-mantine": "1.17.0",
         "simple-git": "3.25.0",
         "ts-node": "10.9.2",
         "tslib": "2.6.3",
-        "typescript": "5.5.3",
-        "vite": "5.3.4"
+        "typescript": "5.5.4",
+        "vite": "5.3.5"
     }
 }
