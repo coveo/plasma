@@ -27,8 +27,7 @@ export default tsEslint.config(
         },
         languageOptions: {
             parserOptions: {
-                // https://typescript-eslint.io/packages/parser/#experimental_useprojectservice
-                EXPERIMENTAL_useProjectService: {
+                projectService: {
                     allowDefaultProjectForFiles: ['*.js'],
                 },
                 jsxPragma: 'React',
@@ -58,35 +57,8 @@ export default tsEslint.config(
                     default: 'array-simple',
                 },
             ],
-            '@typescript-eslint/ban-types': [
-                'warn',
-                {
-                    types: {
-                        Object: {
-                            message: 'Avoid using the `Object` type. Did you mean `object`?',
-                        },
-                        Function: {
-                            message:
-                                'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
-                        },
-                        // eslint-disable-next-line id-blacklist
-                        Boolean: {
-                            message: 'Avoid using the `Boolean` type. Did you mean `boolean`?',
-                        },
-                        // eslint-disable-next-line id-blacklist
-                        Number: {
-                            message: 'Avoid using the `Number` type. Did you mean `number`?',
-                        },
-                        // eslint-disable-next-line id-blacklist
-                        String: {
-                            message: 'Avoid using the `String` type. Did you mean `string`?',
-                        },
-                        Symbol: {
-                            message: 'Avoid using the `Symbol` type. Did you mean `symbol`?',
-                        },
-                    },
-                },
-            ],
+            '@typescript-eslint/no-unsafe-function-type': 'error',
+            '@typescript-eslint/no-wrapper-object-types': 'warn',
             '@typescript-eslint/consistent-type-assertions': 'error',
             '@typescript-eslint/dot-notation': 'off',
             '@typescript-eslint/explicit-member-accessibility': [
