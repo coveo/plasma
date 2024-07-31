@@ -27,8 +27,7 @@ export default tsEslint.config(
         },
         languageOptions: {
             parserOptions: {
-                // https://typescript-eslint.io/packages/parser/#experimental_useprojectservice
-                EXPERIMENTAL_useProjectService: {
+                projectService: {
                     allowDefaultProjectForFiles: ['*.js'],
                 },
                 jsxPragma: 'React',
