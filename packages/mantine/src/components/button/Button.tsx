@@ -1,11 +1,11 @@
 import {
+    Button as MantineButton,
     ButtonCssVariables,
-    ButtonGroup,
+    type ButtonGroup,
+    ButtonProps as MantineButtonProps,
     ButtonStylesNames,
     ButtonVariant,
     Factory,
-    Button as MantineButton,
-    ButtonProps as MantineButtonProps,
     polymorphicFactory,
 } from '@mantine/core';
 import {MouseEventHandler} from 'react';

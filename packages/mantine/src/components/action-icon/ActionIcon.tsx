@@ -1,7 +1,7 @@
 import {
     ActionIcon as MantineActionIcon,
     ActionIconCssVariables,
-    ActionIconGroup,
+    type ActionIconGroup,
     type ActionIconProps as MantineActionIconProps,
     ActionIconStylesNames,
     ActionIconVariant,

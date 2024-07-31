@@ -1,6 +1,6 @@
 import {MantineColorsTuple, noop} from '@mantine/core';
 import {type RowData} from '@tanstack/table-core';
-import {PlasmaColors} from './theme/PlasmaColors';
+import {type PlasmaColors} from './theme/PlasmaColors';
 
 export * from '@mantine/carousel';
 export * from '@mantine/core';
@@ -35,7 +35,6 @@ export * from './theme';
 
 declare module '@mantine/core' {
     export interface MantineThemeColorsOverride {
-        // eslint-disable-next-line @typescript-eslint/ban-types
         colors: Record<keyof typeof PlasmaColors | (string & {}), MantineColorsTuple>;
     }
 }
