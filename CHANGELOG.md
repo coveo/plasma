@@ -1,3 +1,12 @@
+## 53.1.8 (2024-07-31)
+
+
+### Bug Fixes
+
+* **style, css:** remove source code pro font (#3838) 0ea21c3, closes #3838
+
+
+
 ## 53.1.7 (2024-06-11)
 
 
