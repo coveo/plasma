@@ -28,7 +28,11 @@ export default tsEslint.config(
         languageOptions: {
             parserOptions: {
                 projectService: {
-                    allowDefaultProjectForFiles: ['*.js'],
+                    allowDefaultProject: [
+                        '*.js',
+                        'packages/react-icons/mock/index.tsx',
+                        'packages/mantine/vitest.config.ts',
+                    ],
                 },
                 jsxPragma: 'React',
             },
