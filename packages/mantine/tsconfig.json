@@ -1,11 +1,9 @@
 {
     "extends": "../tsconfig-base.json",
     "compilerOptions": {
-        "rootDir": ".",
         "paths": {
             "@test-utils": ["./src/__tests__/Utils.tsx"]
         },
         "types": ["vitest/globals"]
-    },
-    "include": ["src", "__mocks__"]
+    }
 }

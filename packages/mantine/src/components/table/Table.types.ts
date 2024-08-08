@@ -8,7 +8,7 @@ import {TableStore} from './use-table';
 
 export type TableLayoutProps<TData = unknown> = Pick<
     TableProps<TData>,
-    'getRowExpandedContent' | 'getRowAttributes' | 'loading'
+    'getRowExpandedContent' | 'getRowAttributes' | 'getRowActions' | 'loading'
 > &
     TableProps<TData>['layoutProps'];
 
