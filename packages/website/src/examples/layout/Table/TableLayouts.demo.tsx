@@ -25,8 +25,6 @@ const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
         ));
     const cards = table.getRowModel().rows.map((row) => {
         const isSelected = !!row.getIsSelected();
-        const actions = props.getRowActions([row.original]);
-        const doubleClickAction = actions.find((action) => Boolean(action.onRowDoubleClick))?.onRowDoubleClick;
         return (
             <Paper
                 key={row.id}
@@ -37,7 +35,7 @@ const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
                     if (event.detail <= 1) {
                         row.toggleSelected(true);
                     } else {
-                        doubleClickAction(row.original, row.index, row);
+                        props.onRowDoubleClick?.(row.original, row.index, row);
                     }
                 }}
             >

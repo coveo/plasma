@@ -9,9 +9,9 @@ overrides:
   nwsapi: 2.2.12
 
 patchedDependencies:
-  '@stencil/core@4.19.2':
+  '@stencil/core':
     hash: l4z4izduz5zse4eflkg54f45km
-    path: patches/@stencil__core@4.19.2.patch
+    path: patches/@stencil__core.patch
 
 importers:
 
@@ -79,10 +79,10 @@ importers:
         version: 6.2.2(eslint@9.8.0)(typescript@5.5.4)
       eslint-plugin-unused-imports:
         specifier: 4.0.1
-        version: 4.0.1(@typescript-eslint/eslint-plugin@8.0.1(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)
+        version: 4.0.1(@typescript-eslint/eslint-plugin@8.0.1(@typescript-eslint/parser@8.0.1(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)
       eslint-plugin-vitest:
         specifier: 0.5.4
-        version: 0.5.4(@typescript-eslint/eslint-plugin@8.0.1(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4)(vitest@2.0.5(@types/node@20.14.14))
+        version: 0.5.4(@typescript-eslint/eslint-plugin@8.0.1(@typescript-eslint/parser@8.0.1(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4)(vitest@2.0.5(@types/node@20.14.14)(jsdom@24.1.1)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.40)))
       globals:
         specifier: 15.9.0
         version: 15.9.0
@@ -472,11 +472,11 @@ importers:
   packages/website:
     dependencies:
       '@coveo/atomic-react':
-        specifier: 2.13.0
-        version: 2.13.0(@coveo/headless@2.75.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(encoding@0.1.13)(postcss@8.4.40)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 2.13.2
+        version: 2.13.2(@coveo/headless@2.76.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.20.0(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.40)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@coveo/headless':
-        specifier: 2.75.0
-        version: 2.75.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)
+        specifier: 2.76.0
+        version: 2.76.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -516,6 +516,9 @@ importers:
       '@mantinex/dev-icons':
         specifier: 1.0.2
         version: 1.0.2(@mantine/core@7.12.0(@mantine/hooks@7.12.0(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.12.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stencil/core':
+        specifier: 4.20.0
+        version: 4.20.0(patch_hash=l4z4izduz5zse4eflkg54f45km)
       '@swc/helpers':
         specifier: 0.5.12
         version: 0.5.12
@@ -780,18 +783,18 @@ packages:
     resolution: {integrity: sha512-tpyc+7i6bPG9mvaBbtKUeghfyZSDgWquIDfMgqYtTbmZ9Y9VzEm2je9EYcQ0aoz5o7NvGS+rcDec93yO08MHYA==}
     engines: {node: '>=v18'}
 
-  '@coveo/atomic-react@2.13.0':
-    resolution: {integrity: sha512-yUpsRnLEzJy03SIzez1TG6l5UZG42i2m7KL0/UBs3phjWkDYDDGjOCSM6BQzX/itaRLmSCKmCV82uHi6ueOuTQ==}
+  '@coveo/atomic-react@2.13.2':
+    resolution: {integrity: sha512-bL5r9KE7sBzcqahoqYRPpw8k0HnMkhpcdJboCp42qHoPcRHMD6TLW9zXlr4yQsH7HY/2I+k0z5WQ2n4EsrVOog==}
     peerDependencies:
-      '@coveo/headless': 2.75.0
+      '@coveo/headless': 2.76.0
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@coveo/atomic@2.75.0':
-    resolution: {integrity: sha512-gz7vuh2ISPIe3PqcePq5H27MmpW+ipKeKMRm/uxrYq2d0sAwdgMqCA2cqn8khxxs57iq9/tlfcq3Uelu+jcjRA==}
+  '@coveo/atomic@2.76.1':
+    resolution: {integrity: sha512-Ux2HzR7AqlNkIGlDEyFnHmZ5WhIzn0Qou+TRXAPzhMloOxrVFYP4G1bdCq8mWGhvicpjKfYWKJZWq3vHGhyZEw==}
     engines: {node: '>=12.9.0'}
     peerDependencies:
-      '@coveo/headless': 2.75.0
+      '@coveo/headless': 2.76.0
 
   '@coveo/bueno@0.46.1':
     resolution: {integrity: sha512-Y+4oEHmdGTfDWAfPrxAboZbekz1nNxBFzpuku9HrNkhDSb0w+5hiHE4VPkPwHbQNNyO89KqdC2IW9/VyC7rskQ==}
@@ -799,8 +802,8 @@ packages:
   '@coveo/explorer-messenger@0.4.0':
     resolution: {integrity: sha512-nVxwn+4Z+SZe6K94evxPaIeJWJq7hATNaUrTKznnauVptFMYcujts/nnhMplddm9ePg7NgZQjvcHwbi5kqw/EA==}
 
-  '@coveo/headless@2.75.0':
-    resolution: {integrity: sha512-x8ls9f0E2GoKO+dPMu0sfyxCFOhdCS5O+PNYRC3bcEe/8NHsLCX4Zdw/14zDihcG3coHU5cXR8GXUYCmU2HHpw==}
+  '@coveo/headless@2.76.0':
+    resolution: {integrity: sha512-eA129Zp5kWi7xiSyx470rp/BF+jgtw45fSmVT5Qk95LHtGuChCvyhQI7KmVwGFiO3r/oVRftdnQ2xcSI8Ms9aw==}
     engines: {node: '>=12'}
     peerDependencies:
       encoding: ^0.1.13
@@ -1344,8 +1347,8 @@ packages:
     resolution: {integrity: sha512-doH1gimEu3A46VX6aVxpHTeHrytJAG6HgdxntYnCFiIFHEM/ZGpG8KiZGBChchjQmG0XFIBL552kBTjVcMZXwQ==}
     engines: {node: '>=12'}
 
-  '@stencil/core@4.19.2':
-    resolution: {integrity: sha512-ZdnbHmHEl8E5vN0GWDtONe5w6j3CrSqqxZM4hNLBPkV/aouWKug7D5/Mi6RazfYO5U4fmHQYLwMz60rHcx0G4g==}
+  '@stencil/core@4.20.0':
+    resolution: {integrity: sha512-WPrTHFngvN081RY+dJPneKQLwnOFD60OMCOQGmmSHfCW0f4ujPMzzhwWU1gcSwXPWXz5O+8cBiiCaxAbJU7kAg==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
 
@@ -2270,6 +2273,9 @@ packages:
 
   core-js-pure@3.38.0:
     resolution: {integrity: sha512-8balb/HAXo06aHP58mZMtXgD8vcnXz9tUDePgqBgJgKdmTlMt+jw3ujqniuBDQXMvTzxnMpxHFeuSM3g1jWQuQ==}
+
+  core-js@3.37.1:
+    resolution: {integrity: sha512-Xn6qmxrQZyB0FFY8E3bgRXei3lWDJHhvI+u0q9TKIYM49G8pAr0FgnnrFRAmsbptZL1yxRADVXn+x5AGsbBfyw==}
 
   cosmiconfig-typescript-loader@5.0.0:
     resolution: {integrity: sha512-+8cK7jRAReYkMwMiG+bxhcNKiHJDM6bR9FD/nGBXOWdMLuYawjF5cGrtLilJ+LGd3ZjCXnJjR5DkfWPoIVlqJA==}
@@ -5750,24 +5756,25 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.0
       chalk: 5.3.0
 
-  '@coveo/atomic-react@2.13.0(@coveo/headless@2.75.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(encoding@0.1.13)(postcss@8.4.40)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@coveo/atomic-react@2.13.2(@coveo/headless@2.76.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.20.0(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.40)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@coveo/atomic': 2.75.0(@coveo/headless@2.75.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(encoding@0.1.13)(postcss@8.4.40)
-      '@coveo/headless': 2.75.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)
+      '@coveo/atomic': 2.76.1(@coveo/headless@2.76.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.20.0(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.40)
+      '@coveo/headless': 2.76.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
+      - '@stencil/core'
       - encoding
       - postcss
 
-  '@coveo/atomic@2.75.0(@coveo/headless@2.75.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(encoding@0.1.13)(postcss@8.4.40)':
+  '@coveo/atomic@2.76.1(@coveo/headless@2.76.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.20.0(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.40)':
     dependencies:
       '@coveo/bueno': 0.46.1
-      '@coveo/headless': 2.75.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)
+      '@coveo/headless': 2.76.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)
       '@popperjs/core': 2.11.8
       '@salesforce-ux/design-system': 2.24.5(postcss@8.4.40)
-      '@stencil/core': 4.19.2(patch_hash=l4z4izduz5zse4eflkg54f45km)
-      '@stencil/store': 2.0.16(@stencil/core@4.19.2(patch_hash=l4z4izduz5zse4eflkg54f45km))
+      '@stencil/store': 2.0.16(@stencil/core@4.20.0(patch_hash=l4z4izduz5zse4eflkg54f45km))
+      core-js: 3.37.1
       dayjs: 1.11.12
       dompurify: 3.1.6
       escape-html: 1.0.3
@@ -5778,6 +5785,7 @@ snapshots:
       stencil-inline-svg: 1.1.0
       ts-debounce: 4.0.0
     transitivePeerDependencies:
+      - '@stencil/core'
       - encoding
       - postcss
 
@@ -5785,7 +5793,7 @@ snapshots:
 
   '@coveo/explorer-messenger@0.4.0': {}
 
-  '@coveo/headless@2.75.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)':
+  '@coveo/headless@2.76.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)':
     dependencies:
       '@coveo/bueno': 0.46.1
       '@coveo/relay': 0.7.10
@@ -6264,11 +6272,11 @@ snapshots:
     dependencies:
       escape-string-regexp: 5.0.0
 
-  '@stencil/core@4.19.2(patch_hash=l4z4izduz5zse4eflkg54f45km)': {}
+  '@stencil/core@4.20.0(patch_hash=l4z4izduz5zse4eflkg54f45km)': {}
 
-  '@stencil/store@2.0.16(@stencil/core@4.19.2(patch_hash=l4z4izduz5zse4eflkg54f45km))':
+  '@stencil/store@2.0.16(@stencil/core@4.20.0(patch_hash=l4z4izduz5zse4eflkg54f45km))':
     dependencies:
-      '@stencil/core': 4.19.2(patch_hash=l4z4izduz5zse4eflkg54f45km)
+      '@stencil/core': 4.20.0(patch_hash=l4z4izduz5zse4eflkg54f45km)
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.25.2)':
     dependencies:
@@ -7286,6 +7294,8 @@ snapshots:
 
   core-js-pure@3.38.0: {}
 
+  core-js@3.37.1: {}
+
   cosmiconfig-typescript-loader@5.0.0(@types/node@20.14.14)(cosmiconfig@9.0.0(typescript@5.5.4))(typescript@5.5.4):
     dependencies:
       '@types/node': 20.14.14
@@ -7806,14 +7816,14 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-unused-imports@4.0.1(@typescript-eslint/eslint-plugin@8.0.1(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0):
+  eslint-plugin-unused-imports@4.0.1(@typescript-eslint/eslint-plugin@8.0.1(@typescript-eslint/parser@8.0.1(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0):
     dependencies:
       eslint: 9.8.0
       eslint-rule-composer: 0.3.0
     optionalDependencies:
       '@typescript-eslint/eslint-plugin': 8.0.1(@typescript-eslint/parser@8.0.1(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4)
 
-  eslint-plugin-vitest@0.5.4(@typescript-eslint/eslint-plugin@8.0.1(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4)(vitest@2.0.5(@types/node@20.14.14)):
+  eslint-plugin-vitest@0.5.4(@typescript-eslint/eslint-plugin@8.0.1(@typescript-eslint/parser@8.0.1(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4)(vitest@2.0.5(@types/node@20.14.14)(jsdom@24.1.1)(sass@1.77.8)(sugarss@4.0.1(postcss@8.4.40))):
     dependencies:
       '@typescript-eslint/utils': 7.18.0(eslint@9.8.0)(typescript@5.5.4)
       eslint: 9.8.0
