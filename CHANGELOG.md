@@ -1,3 +1,64 @@
+## 54.2.0 (2024-08-08)
+
+* chore: fix build cd800bc
+* chore: fix eslint config (#3842) 2eb8b57, closes #3842
+* chore: replace pnpm/action-setup (#3793) cfe2cae, closes #3793
+* chore: simplify tsconfig files (#3801) 2ee4508, closes #3801
+* chore: update patch 84c5108
+* chore(CI): Add a scorecard badge (#3800) 09fad39, closes #3800
+* chore(deps): lock file maintenance cb80b49
+* chore(deps): lock file maintenance 1134dac
+* chore(deps): lock file maintenance 95375e9
+* chore(deps): lock file maintenance cd27382
+* chore(deps): update @tanstack table a32d5cc
+* chore(deps): update @tanstack table 6a63f6e
+* chore(deps): update @tanstack table to v8.19.3 95b9e25
+* chore(deps): update actions/checkout action to v4 (#3797) d23644d, closes #3797
+* chore(deps): update actions/setup-node digest to 1e60f62 (#3810) 90a5f52, closes #3810
+* chore(deps): update actions/upload-artifact action to v4 (#3798) b2fd932, closes #3798
+* chore(deps): update actions/upload-artifact action to v4.3.4 0e8b1ec
+* chore(deps): update all non-major dependencies e154c81
+* chore(deps): update all non-major dependencies dba6380
+* chore(deps): update all non-major dependencies 394cde3
+* chore(deps): update all non-major dependencies f5a2577
+* chore(deps): update all non-major dependencies da0f206
+* chore(deps): update all non-major dependencies f903b9e
+* chore(deps): update all non-major dependencies 3657164
+* chore(deps): update all non-major dependencies 9b9bb95
+* chore(deps): update all non-major dependencies 210d961
+* chore(deps): update all non-major dependencies 641b844
+* chore(deps): update all non-major dependencies 9e51887
+* chore(deps): update all non-major dependencies 5897be2
+* chore(deps): update dependency @tanstack/react-query to v5.50.1 ce2a27e
+* chore(deps): update dependency @tanstack/react-query to v5.51.1 205524e
+* chore(deps): update dependency @tanstack/react-query to v5.51.11 7683d12
+* chore(deps): update dependency @tanstack/react-query to v5.51.14 f9de57c
+* chore(deps): update dependency @tanstack/react-query to v5.51.15 0d0c502
+* chore(deps): update dependency @tanstack/react-query to v5.51.23 0f166a3
+* chore(deps): update dependency @tanstack/react-query to v5.51.9 14f09c1
+* chore(deps): update dependency glob to v11 (#3808) 20dd4f5, closes #3808
+* chore(deps): update dependency react-router-dom to v6.25.0 58d0d47
+* chore(deps): update dependency rimraf to v6 (#3809) 47393bc, closes #3809
+* chore(deps): update dependency typescript-eslint to v8 (#3839) 237c030, closes #3839
+* chore(deps): update dependency vitest to v2 (#3806) cc4c860, closes #3806
+* chore(deps): update github/codeql-action action to v3 (#3799) a76804d, closes #3799
+* chore(deps): update github/codeql-action action to v3.25.15 63addb3
+* chore(deps): update ui-kit 6bfb10d
+* chore(deps): update ui-kit 1be8693
+* chore(deps): update ui-kit c05a462
+* chore(deps): update ui-kit 9108063
+* chore(deps): update ui-kit d1fc645
+* chore(deps): update ui-kit 1915962
+* chore(deps): update ui-kit 6ac106c
+* feat(website): add tabs in demo for other files (#3827) 7b3d233, closes #3827
+* ci: add lint css modules (#3816) 5bdcf04, closes #3816
+* ci: eslint v9 + flat config + fix errors (#3820) 8f08f4d, closes #3820
+* [StepSecurity] Apply security best practices (#3795) 84d7cab, closes #3795
+* chore(ci, depency-review): target ubuntu-latest explicitely (#3818) d955dc3, closes #3818
+* refactor: lint all files with prettier (#3817) 16d8b2d, closes #3817
+
+
+
 ## <small>54.1.2 (2024-07-02)</small>
 
 * feat(mantine, prompt): update look of prompt component (#3791) 8d096b2, closes #3791
