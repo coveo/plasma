@@ -265,7 +265,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
         }),
         Tabs: Tabs.extend({
-            classNames: {list: TabsClasses.list, tab: TabsClasses.tab},
+            classNames: TabsClasses,
+        }),
+        TabsTab: Tabs.Tab.extend({
+            defaultProps: {
+                px: 'sm',
+            },
         }),
         Text: Text.extend({
             classNames: TextClasses,
