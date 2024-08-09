@@ -5,6 +5,12 @@
         }
 
         --tabs-list-border-width: 1px;
+
+        &[data-orientation='horizontal'] {
+            .list {
+                margin-bottom: calc(-1 * var(--tabs-list-border-width));
+            }
+        }
     }
 }
 
