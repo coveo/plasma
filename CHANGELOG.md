@@ -1,3 +1,9 @@
+## <small>54.2.1 (2024-08-09)</small>
+
+* fix(mantine, tabs): vertical tabs look and small style improvements (#3848) 8abb114, closes #3848
+
+
+
 ## 54.2.0 (2024-08-08)
 
 * chore: fix build cd800bc
