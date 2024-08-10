@@ -62,6 +62,7 @@ const PROMPT_VARIANT_ICONS_SRC: Record<PromptVariant, string> = {
 
 const defaultProps: Partial<PromptProps> = {
     variant: 'info',
+    centered: true,
 };
 
 const varsResolver = createVarsResolver<PromptFactory>((_theme, {icon}) => ({
