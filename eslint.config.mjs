@@ -13,7 +13,7 @@ import vitest from 'eslint-plugin-vitest';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default tsEslint.config(
-    {ignores: ['**/dist', '**/.turbo', 'packages/react-icons/mock/index.js']},
+    {ignores: ['**/dist', '**/.turbo', 'packages/react-icons/mock/index.js', 'packages/website/src/examples/mantine']},
     {
         files: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs', '**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
         extends: [tsEslint.configs.base, reactJsxRuntime, eslintConfigPrettier],
@@ -28,11 +28,7 @@ export default tsEslint.config(
         languageOptions: {
             parserOptions: {
                 projectService: {
-                    allowDefaultProject: [
-                        '*.js',
-                        'packages/react-icons/mock/index.tsx',
-                        'packages/mantine/vitest.config.ts',
-                    ],
+                    allowDefaultProject: ['*.js'],
                 },
                 jsxPragma: 'React',
             },

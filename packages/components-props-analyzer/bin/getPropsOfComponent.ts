@@ -1,5 +1,5 @@
 import {VirtualTypeScriptEnvironment} from '@typescript/vfs';
-import ts from 'typescript';
+import ts, {CompletionEntry} from 'typescript';
 
 import {Component, ComponentMetadata} from '../src/ComponentsList';
 
@@ -17,7 +17,7 @@ export const getPropsOfComponent = (component: Component, env: VirtualTypeScript
     env.createFile(fileName, content);
     const {entries} = env.languageService.getCompletionsAtPosition(fileName, content.length + 1, {
         triggerKind: ts.CompletionTriggerKind.Invoked,
-    }) ?? {entries: []};
+    }) ?? {entries: [] as CompletionEntry[]};
 
     const checker = env.languageService.getProgram()!.getTypeChecker();
     const accumulator: ComponentMetadata[] = [];
