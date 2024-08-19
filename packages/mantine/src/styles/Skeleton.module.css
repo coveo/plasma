@@ -1,11 +1,11 @@
 .root {
-    &[data-visible] {
+    &:where([data-visible]) {
         &::before {
-            z-index: unset;
+            z-index: var(--mantine-z-index-overlay);
         }
 
         &::after {
-            z-index: unset;
+            z-index: calc(var(--mantine-z-index-overlay) + 1);
         }
     }
 }
