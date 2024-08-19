@@ -1,3 +1,24 @@
+## <small>54.2.2 (2024-08-19)</small>
+
+* chore: fix eslint configuration (#3851) 359a7d8, closes #3851
+* chore(deps): lock file maintenance a9eb19e
+* chore(deps): lock file maintenance 09d9941
+* chore(deps): update all non-major dependencies 723f4c0
+* chore(deps): update all non-major dependencies c96212a
+* chore(deps): update all non-major dependencies 0a2bcfa
+* chore(deps): update all non-major dependencies 90a3491
+* chore(deps): update all non-major dependencies 6ba7fe6
+* chore(deps): update all non-major dependencies d5459f3
+* chore(deps): update all non-major dependencies 9d43154
+* chore(deps): update dependency @tanstack/react-query to v5.51.24 6ed13ae
+* chore(deps): update dependency chroma-js to v3 (#3859) 0fc3fc6, closes #3859
+* chore(deps): update dependency eslint-plugin-jsdoc to v50 (#3845) 84102b7, closes #3845
+* chore(deps): update ui-kit 3ff8a3c
+* fix(mantine, prompt): center the prompt component by default (#3849) a1bd708, closes #3849
+* fix(mantine, skeleton): increase z-index (#3857) 462c3bb, closes #3857
+
+
+
 ## <small>54.2.1 (2024-08-09)</small>
 
 * fix(mantine, tabs): vertical tabs look and small style improvements (#3848) 8abb114, closes #3848
