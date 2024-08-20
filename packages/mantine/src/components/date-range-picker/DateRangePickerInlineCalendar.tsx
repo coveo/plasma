@@ -92,6 +92,7 @@ export const DateRangePickerInlineCalendar = ({
             <Center py="sm" px="md">
                 <DatePicker
                     numberOfColumns={2}
+                    columnsToScroll={1}
                     type="range"
                     styles={{day: {textAlign: 'center'}}}
                     firstDayOfWeek={0}
