@@ -4,4 +4,4 @@
 # review when someone opens a pull request.
 # see https://help.github.com/articles/about-codeowners/ for more details
 
-* @coveo/admin-console
+* @coveo/frontend-foundation
