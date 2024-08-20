@@ -86,6 +86,7 @@ export const DateRangePickerPopoverCalendar = ({
                         type="range"
                         styles={{day: {textAlign: 'center'}}}
                         numberOfColumns={2}
+                        columnsToScroll={1}
                         firstDayOfWeek={0}
                         allowSingleDateInRange
                         value={_value}
