@@ -234,9 +234,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 withArrow: true,
             },
         }),
-        Radio: Radio.extend({
-            classNames: {labelWrapper: RadioClasses.labelWrapper},
-        }),
+        Radio: Radio.extend({classNames: RadioClasses}),
         ScrollArea: ScrollArea.extend({
             classNames: {viewport: ScrollAreaClasses.viewport},
         }),
