@@ -1,4 +1,10 @@
 .labelWrapper {
     display: flex;
     align-items: flex-start;
+
+    &:not([data-disabled]) {
+        .label {
+            color: var(--mantine-color-gray-7);
+        }
+    }
 }
