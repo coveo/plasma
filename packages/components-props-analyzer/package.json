@@ -28,7 +28,7 @@
     },
     "devDependencies": {
         "@swc/cli": "0.4.0",
-        "@swc/core": "1.7.14",
+        "@swc/core": "1.7.18",
         "@types/fs-extra": "11.0.4",
         "@types/node": "20.16.1",
         "@types/react": "18.3.4",
@@ -42,7 +42,7 @@
         "react-dom": "18.3.1",
         "rimraf": "6.0.1",
         "ts-node": "10.9.2",
-        "tslib": "2.6.3",
+        "tslib": "2.7.0",
         "typescript": "5.5.4"
     }
 }
