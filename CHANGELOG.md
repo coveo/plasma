@@ -1,3 +1,24 @@
+## <small>54.2.3 (2024-08-27)</small>
+
+* chore: update CODEOWNERS (#3864) 4b71524, closes #3864
+* chore(deps): lock file maintenance bfe130f
+* chore(deps): update all non-major dependencies f017dc2
+* chore(deps): update all non-major dependencies 6f1ae00
+* chore(deps): update all non-major dependencies 6017266
+* chore(deps): update all non-major dependencies 53fdc7e
+* chore(deps): update all non-major dependencies 8500392
+* chore(deps): update dependency @tanstack/react-query to v5.52.0 b552f23
+* chore(deps): update dependency eslint-plugin-import-x to v4 (#3878) e72303d, closes #3878
+* chore(deps): update github/codeql-action action to v3.26.4 936777f
+* chore(deps): update ui-kit 58dce5f
+* chore(renovate): only split major versions (#3870) 0267a2c, closes #3870
+* fix(mantine): change Radio label color to gray-7 (#3871) 49f794e, closes #3871
+* fix(mantine, date picker): scroll one month instead of two (#3867) ece969a, closes #3867
+* fix(mantine, table): change the pagination boundaries (#3866) 744543b, closes #3866
+* fix(mantine, table): react warning for unused ref on RowLayout (#3865) 0bd3c1e, closes #3865
+
+
+
 ## <small>54.2.2 (2024-08-19)</small>
 
 * chore: fix eslint configuration (#3851) 359a7d8, closes #3851
