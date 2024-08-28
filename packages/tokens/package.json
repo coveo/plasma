@@ -40,11 +40,11 @@
     },
     "devDependencies": {
         "@swc/cli": "0.4.0",
-        "@swc/core": "1.7.18",
+        "@swc/core": "1.7.21",
         "@types/chroma-js": "2.4.4",
         "@types/fs-extra": "11.0.4",
         "@types/lodash": "4.17.7",
-        "@types/node": "20.16.1",
+        "@types/node": "20.16.2",
         "chroma-js": "3.0.0",
         "commander": "12.1.0",
         "dotenv": "16.4.5",
