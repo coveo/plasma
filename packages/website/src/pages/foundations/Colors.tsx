@@ -2,7 +2,7 @@ import {Group, Stack, Title} from '@coveord/plasma-mantine';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {InlineCodeHighlight} from '@mantine/code-highlight';
-import {Table as MantineTable} from '@mantine/core';
+import {Anchor, Box, Table as MantineTable} from '@mantine/core';
 import kebabCase from 'lodash.kebabcase';
 import {FunctionComponent} from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
@@ -123,14 +123,10 @@ export const ColorsExamples = () => (
         <div className="plasma-page-layout__section pl5">
             <p>
                 All colors are exposed through the{' '}
-                <a
-                    href="https://github.com/coveo/plasma/tree/master/packages/tokens#readme"
-                    target="_blank"
-                    className="link inline-flex flex-center"
-                >
+                <Anchor href="https://github.com/coveo/plasma/tree/master/packages/tokens#readme" target="_blank">
                     @coveord/plasma-tokens
-                    <ExternalSize16Px style={{marginLeft: '4px'}} />
-                </a>{' '}
+                    <Box component={ExternalSize16Px} height={16} ml="xxs" />
+                </Anchor>{' '}
                 package in 3 formats: TypeScript, Sass and CSS. Hover over any color to see its name in any of those
                 formats.
             </p>
