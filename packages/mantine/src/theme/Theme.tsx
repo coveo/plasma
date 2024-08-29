@@ -81,6 +81,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     defaultRadius: 8,
     lineHeights: {md: '1.5'},
     spacing: {
+        xxs: '4px',
         xs: '8px',
         sm: '16px',
         md: '24px',

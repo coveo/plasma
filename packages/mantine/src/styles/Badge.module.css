@@ -1,5 +1,5 @@
 .root {
     text-transform: none;
-    padding: 4px 8px;
+    padding: var(--mantine-spacing-xxs) var(--mantine-spacing-xs);
     font-weight: 500;
 }
