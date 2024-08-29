@@ -1,3 +1,11 @@
+## 54.3.0 (2024-08-29)
+
+* chore(deps): update all non-major dependencies 471eb58
+* chore(deps): update all non-major dependencies 2a59e36
+* feat(mantine): add xxs spacing size to plasma theme (#3883) 9840af9, closes #3883
+
+
+
 ## <small>54.2.3 (2024-08-27)</small>
 
 * chore: update CODEOWNERS (#3864) 4b71524, closes #3864
