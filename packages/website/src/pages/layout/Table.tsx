@@ -3,6 +3,7 @@ import TableDemo from '@examples/layout/Table/Table.demo?demo';
 import TableClientSideDemo from '@examples/layout/Table/TableClientSide.demo?demo';
 import TableCollapsibleDemo from '@examples/layout/Table/TableCollapsible.demo?demo';
 import TableColumnsSelectorDemo from '@examples/layout/Table/TableColumnsSelector.demo?demo';
+import TableConfirmAction from '@examples/layout/Table/TableConfirmAction.demo?demo';
 import TableDateRangePickerDemo from '@examples/layout/Table/TableDateRangePicker.demo?demo';
 import TableDisableRowSelection from '@examples/layout/Table/TableDisabledRowSelection.demo?demo';
 import TableEmptyStateDemo from '@examples/layout/Table/TableEmptyState.demo?demo';
@@ -10,7 +11,6 @@ import TableLayoutsDemo from '@examples/layout/Table/TableLayouts.demo?demo';
 import TableMultiSelectionDemo from '@examples/layout/Table/TableMultiSelection.demo?demo';
 import TablePredicateDemo from '@examples/layout/Table/TablePredicate.demo?demo';
 import TableReactQuery from '@examples/layout/Table/TableReactQuery.demo?demo';
-import TableConfirmAction from '@examples/layout/Table/TableConfirmAction.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -39,7 +39,13 @@ const DemoPage = () => (
                 />
             ),
             collapsible: <TableCollapsibleDemo noPadding layout="vertical" title="Table with collapsible content" />,
-            predicate: <TablePredicateDemo noPadding layout="vertical" title="Table with predicate filters" />,
+            predicate: (
+                <TablePredicateDemo
+                    noPadding
+                    layout="vertical"
+                    title="Table with predicate filters and with custom options"
+                />
+            ),
             datePicker: <TableDateRangePickerDemo noPadding layout="vertical" title="Table with date range picker" />,
             emptyState: <TableEmptyStateDemo noPadding layout="vertical" title="Table with empty states" />,
             multiSelect: (

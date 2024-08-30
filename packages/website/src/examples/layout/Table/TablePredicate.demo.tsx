@@ -1,6 +1,7 @@
-import {ColumnDef, createColumnHelper, Table, useTable} from '@coveord/plasma-mantine';
+import {Badge, ColumnDef, createColumnHelper, Group, Table, useTable} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
+import {TablePredicateProps} from '../../../../../mantine/dist/esm/components/table/table-predicate/TablePredicate';
 
 const columnHelper = createColumnHelper<Person>();
 
@@ -43,6 +44,12 @@ const Demo = () => {
         [table.state.predicates, data],
     );
 
+    const renderSelectOption: TablePredicateProps['renderOption'] = ({option, checked}) => (
+        <Group flex="1" gap="xs">
+            {option.label}
+            {checked && <Badge>Checked</Badge>}
+        </Group>
+    );
     return (
         <Table<Person> store={table} data={filteredData} columns={columns} getRowId={({id}) => id.toString()}>
             <Table.Header>
@@ -71,6 +78,7 @@ const Demo = () => {
                         {value: 'complicated', label: 'Its complicated'},
                         {value: 'single', label: 'Single'},
                     ]}
+                    renderOption={renderSelectOption}
                 />
             </Table.Header>
         </Table>
