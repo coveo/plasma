@@ -39,13 +39,7 @@ const DemoPage = () => (
                 />
             ),
             collapsible: <TableCollapsibleDemo noPadding layout="vertical" title="Table with collapsible content" />,
-            predicate: (
-                <TablePredicateDemo
-                    noPadding
-                    layout="vertical"
-                    title="Table with predicate filters and with custom options"
-                />
-            ),
+            predicate: <TablePredicateDemo noPadding layout="vertical" title="Table with predicate filters" />,
             datePicker: <TableDateRangePickerDemo noPadding layout="vertical" title="Table with date range picker" />,
             emptyState: <TableEmptyStateDemo noPadding layout="vertical" title="Table with empty states" />,
             multiSelect: (
