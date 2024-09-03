@@ -36,22 +36,22 @@
         "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "dependencies": {
-        "@swc/helpers": "0.5.12"
+        "@swc/helpers": "0.5.13"
     },
     "devDependencies": {
         "@swc/cli": "0.4.0",
-        "@swc/core": "1.7.21",
+        "@swc/core": "1.7.23",
         "@types/chroma-js": "2.4.4",
         "@types/fs-extra": "11.0.4",
         "@types/lodash": "4.17.7",
-        "@types/node": "20.16.2",
+        "@types/node": "20.16.3",
         "chroma-js": "3.0.0",
         "commander": "12.1.0",
         "dotenv": "16.4.5",
         "dotenv-safe": "9.1.0",
         "figma-js": "1.16.0",
         "fs-extra": "11.2.0",
-        "lint-staged": "15.2.9",
+        "lint-staged": "15.2.10",
         "lodash": "4.17.21",
         "prettier": "3.3.3",
         "publint": "0.2.10",

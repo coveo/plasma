@@ -28,10 +28,10 @@
     },
     "devDependencies": {
         "@swc/cli": "0.4.0",
-        "@swc/core": "1.7.21",
+        "@swc/core": "1.7.23",
         "@types/fs-extra": "11.0.4",
-        "@types/node": "20.16.2",
-        "@types/react": "18.3.4",
+        "@types/node": "20.16.3",
+        "@types/react": "18.3.5",
         "@types/react-dom": "18.3.0",
         "@typescript/twoslash": "3.2.8",
         "@typescript/vfs": "1.6.0",
