@@ -7,6 +7,7 @@ import {
     Grid,
     Group,
     Select,
+    SelectProps,
     Text,
     useProps,
 } from '@mantine/core';
@@ -17,7 +18,10 @@ import {useTableContext} from '../TableContext';
 
 export type TablePredicateStylesNames = 'predicate' | 'predicateWrapper' | 'predicateLabel' | 'predicateSelect';
 
-export interface TablePredicateProps extends BoxProps, CompoundStylesApiProps<TablePredicateFactory> {
+export interface TablePredicateProps
+    extends BoxProps,
+        Pick<SelectProps, 'renderOption'>,
+        CompoundStylesApiProps<TablePredicateFactory> {
     /**
      * Unique identifier for this predicate. Will be used to access the selected value in the table state
      */
@@ -45,7 +49,7 @@ const defaultProps: Partial<TablePredicateProps> = {};
 
 export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<TablePredicateFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();
-    const {id, data, label, classNames, className, styles, style, vars, ...others} = useProps(
+    const {id, data, label, classNames, className, styles, style, renderOption, vars, ...others} = useProps(
         'PlasmaTablePredicate',
         defaultProps,
         props,
@@ -75,6 +79,7 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<Ta
                     data={data}
                     aria-label={label ?? id}
                     searchable={data.length > 7}
+                    renderOption={renderOption}
                     {...getStyles('predicateSelect', stylesApiProps)}
                 />
             </Group>
