@@ -75,7 +75,7 @@
         "@types/react-dom": "18.3.0",
         "embla-carousel-react": "7.1.0",
         "identity-obj-proxy": "3.0.0",
-        "jsdom": "24.1.3",
+        "jsdom": "25.0.0",
         "postcss": "8.4.44",
         "postcss-preset-mantine": "^1.11.0",
         "postcss-simple-vars": "^7.0.1",
