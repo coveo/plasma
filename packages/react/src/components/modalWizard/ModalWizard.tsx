@@ -1,5 +1,14 @@
 import classNames from 'clsx';
-import {ReactNode, FunctionComponent, ReactElement, useState, Children, isValidElement} from 'react';
+import {
+    Children,
+    Dispatch,
+    FunctionComponent,
+    isValidElement,
+    ReactElement,
+    ReactNode,
+    SetStateAction,
+    useState,
+} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {IDispatch, TooltipPlacement} from '../../utils';
@@ -11,6 +20,54 @@ import {UnsavedChangesModalProvider} from '../modal/UnsavedChangesModalProvider'
 import {StepProgressBar} from '../stepProgressBar';
 
 type DependsOnStep<T> = (currentStep: number, numberOfSteps: number) => T;
+
+interface NextStepButtonProps {
+    currentStep: number;
+    finishButtonLabel?: string;
+    renderFinishButton?: (isValid: boolean) => React.ReactElement;
+    isLastStep: boolean;
+    isValid: boolean;
+    message?: string;
+    nextButtonLabel?: string;
+    onFinish?: (close: () => void) => unknown;
+    onNext?: () => unknown;
+    setCurrentStep: Dispatch<SetStateAction<number>>;
+}
+
+const NextStepButton: FunctionComponent<NextStepButtonProps> = ({
+    currentStep,
+    finishButtonLabel,
+    renderFinishButton,
+    isLastStep,
+    isValid,
+    message,
+    nextButtonLabel,
+    onFinish,
+    onNext,
+    setCurrentStep,
+}) => {
+    if (renderFinishButton && isLastStep) {
+        return renderFinishButton(isValid);
+    }
+
+    return (
+        <Button
+            primary
+            name={isLastStep ? finishButtonLabel : nextButtonLabel}
+            enabled={isValid}
+            onClick={() => {
+                if (isLastStep) {
+                    onFinish?.(close);
+                } else {
+                    onNext?.();
+                    setCurrentStep(currentStep + 1);
+                }
+            }}
+            tooltip={message}
+            tooltipPlacement={TooltipPlacement.Top}
+        />
+    );
+};
 
 export interface ModalWizardProps
     extends Omit<
@@ -72,6 +129,10 @@ export interface ModalWizardProps
      */
     finishButtonLabel?: string;
     /**
+     * Finish button to display on the last step
+     */
+    renderFinishButton?: (isValid: boolean) => React.ReactElement;
+    /**
      * A callback function that is executed when the user clicks on the next button
      */
     onNext?: () => unknown;
@@ -101,6 +162,7 @@ export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
     nextButtonLabel = 'Next',
     previousButtonLabel = 'Previous',
     finishButtonLabel = 'Finish',
+    renderFinishButton,
     onNext,
     onPrevious,
     onCancel,
@@ -153,20 +215,17 @@ export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
                                 }}
                                 enabled
                             />
-                            <Button
-                                primary
-                                name={isLastStep ? finishButtonLabel : nextButtonLabel}
-                                enabled={isValid}
-                                onClick={() => {
-                                    if (isLastStep) {
-                                        onFinish?.(close);
-                                    } else {
-                                        onNext?.();
-                                        setCurrentStep(currentStep + 1);
-                                    }
-                                }}
-                                tooltip={message}
-                                tooltipPlacement={TooltipPlacement.Top}
+                            <NextStepButton
+                                currentStep={currentStep}
+                                finishButtonLabel={finishButtonLabel}
+                                renderFinishButton={renderFinishButton}
+                                isLastStep={isLastStep}
+                                isValid={isValid}
+                                message={message}
+                                nextButtonLabel={nextButtonLabel}
+                                onFinish={onFinish}
+                                onNext={onNext}
+                                setCurrentStep={setCurrentStep}
                             />
                         </>
                     }
