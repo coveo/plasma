@@ -17,7 +17,7 @@
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-tokens": "workspace:*",
-        "@faker-js/faker": "8.4.1",
+        "@faker-js/faker": "9.0.0",
         "@mantine/code-highlight": "7.12.2",
         "@mantine/core": "7.12.2",
         "@mantine/dates": "7.12.2",
