@@ -1,5 +1,5 @@
 import classNames from 'clsx';
-import {ReactNode, FunctionComponent, ReactElement, useState, Children, isValidElement} from 'react';
+import {Children, FunctionComponent, isValidElement, ReactElement, ReactNode, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {IDispatch, TooltipPlacement} from '../../utils';
@@ -83,6 +83,10 @@ export interface ModalWizardProps
      * A callback function that is executed when the user clicks on the cancel button
      */
     onCancel?: () => unknown;
+    /**
+     * Finish button to display on the last step
+     */
+    renderFinishButton?: (isValid: boolean, close: () => void) => React.ReactElement;
     children?: ReactNode;
 }
 
@@ -104,6 +108,7 @@ export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
     onNext,
     onPrevious,
     onCancel,
+    renderFinishButton,
     ...modalProps
 }) => {
     const [currentStep, setCurrentStep] = useState(0);
@@ -153,21 +158,25 @@ export const ModalWizard: FunctionComponent<ModalWizardProps> = ({
                                 }}
                                 enabled
                             />
-                            <Button
-                                primary
-                                name={isLastStep ? finishButtonLabel : nextButtonLabel}
-                                enabled={isValid}
-                                onClick={() => {
-                                    if (isLastStep) {
-                                        onFinish?.(close);
-                                    } else {
-                                        onNext?.();
-                                        setCurrentStep(currentStep + 1);
-                                    }
-                                }}
-                                tooltip={message}
-                                tooltipPlacement={TooltipPlacement.Top}
-                            />
+                            {!!renderFinishButton && isLastStep ? (
+                                renderFinishButton?.(isValid, close)
+                            ) : (
+                                <Button
+                                    primary
+                                    name={isLastStep ? finishButtonLabel : nextButtonLabel}
+                                    enabled={isValid}
+                                    onClick={() => {
+                                        if (isLastStep) {
+                                            onFinish?.(close);
+                                        } else {
+                                            onNext?.();
+                                            setCurrentStep(currentStep + 1);
+                                        }
+                                    }}
+                                    tooltip={message}
+                                    tooltipPlacement={TooltipPlacement.Top}
+                                />
+                            )}
                         </>
                     }
                     onAfterOpen={() => {

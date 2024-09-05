@@ -1,7 +1,8 @@
+import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {PureComponent} from 'react';
-import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 
+import {Button} from '../../button';
 import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
@@ -166,5 +167,26 @@ describe('ModalWizard', () => {
 
         expect(screen.queryByText(/footer children 1/i)).not.toBeInTheDocument();
         expect(screen.getByText(/footer children 2/i)).toBeVisible();
+    });
+
+    it('replaces the finish button on the last step if a function was provided for renderFinishButton', async () => {
+        const user = userEvent.setup();
+        render(
+            <ModalWizard
+                id="🧙‍♂️"
+                renderFinishButton={(isValid: boolean, close: () => void) => (
+                    <Button primary name="We're at the last step!" enabled={isValid} onClick={() => onFinish(close)} />
+                )}
+            >
+                <div>Step 1</div>
+                <div>Step 2</div>
+            </ModalWizard>,
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
+        );
+
+        await user.click(screen.getByRole('button', {name: 'Next'}));
+
+        expect(screen.queryByText(/finish/i)).not.toBeInTheDocument();
+        expect(screen.getByText(/we\'re at the last step\!/i)).toBeVisible();
     });
 });
