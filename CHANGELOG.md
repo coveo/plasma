@@ -1,3 +1,12 @@
+# 53.2.0 (2024-09-06)
+
+
+### Features
+
+* **reac, modal-wizard:** add renderFinishButton prop (#3890) 2cd1c0e, closes #3890
+
+
+
 ## 53.1.8 (2024-07-31)
 
 
