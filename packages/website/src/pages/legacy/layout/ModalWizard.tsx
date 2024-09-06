@@ -1,7 +1,7 @@
 import {ModalWizardLegacyMetadata} from '@coveord/plasma-components-props-analyzer';
 import ModalWizardDemo from '@examples/legacy/layout/ModalWizard/ModalWizard.demo?demo';
+import ModalWizardWithProvidedFinishButtonDemo from '@examples/legacy/layout/ModalWizard/ModalWizardWithProvidedFinishButton.demo?demo';
 import ModalWizardWithValidationIdsDemo from '@examples/legacy/layout/ModalWizard/ModalWizardWithValidationIds.demo?demo';
-
 import {PageLayout} from '../../../building-blocs/PageLayout';
 
 export const ModalWizardDemos = () => (
@@ -13,7 +13,12 @@ export const ModalWizardDemos = () => (
         sourcePath="/packages/react/src/components/modalWizard/ModalWizard.tsx"
         demo={<ModalWizardDemo />}
         propsMetadata={ModalWizardLegacyMetadata}
-        examples={{withValidationIds: <ModalWizardWithValidationIdsDemo title="Using validation ids" />}}
+        examples={{
+            withValidationIds: <ModalWizardWithValidationIdsDemo title="Using validation ids" />,
+            withProvidedFinishButton: (
+                <ModalWizardWithProvidedFinishButtonDemo title="Using provided finishButton prop" />
+            ),
+        }}
     />
 );
 
