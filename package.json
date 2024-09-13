@@ -51,7 +51,7 @@
         "@sindresorhus/slugify": "2.2.1",
         "@types/node": "20.16.3",
         "aws-sdk": "2.1687.0",
-        "chokidar": "3.6.0",
+        "chokidar": "4.0.0",
         "commitizen": "4.3.0",
         "conventional-changelog-angular": "8.0.0",
         "cz-conventional-changelog": "3.3.0",
