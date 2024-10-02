@@ -1,4 +1,5 @@
 import {fixupPluginRules} from '@eslint/compat';
+import vitest from '@vitest/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginImport from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
@@ -9,7 +10,6 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import tsEslint from 'typescript-eslint';
 import eslintPluginTestingLibrary from 'eslint-plugin-testing-library';
 import globals from 'globals';
-import vitest from 'eslint-plugin-vitest';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default tsEslint.config(
