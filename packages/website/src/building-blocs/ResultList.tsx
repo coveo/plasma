@@ -1,11 +1,5 @@
-import {
-    AtomicQuerySummary,
-    AtomicSearchInterface,
-    ResultList as HeadlessResultList,
-    Result,
-    SearchEngine,
-    loadClickAnalyticsActions,
-} from '@coveo/atomic-react';
+import {AtomicQuerySummary, AtomicSearchInterface} from '@coveo/atomic-react';
+import {loadClickAnalyticsActions, Result, ResultList as HeadlessResultList, SearchEngine} from '@coveo/headless';
 import {Box, Container, Stack} from '@coveord/plasma-mantine';
 import {FunctionComponent, useEffect, useState} from 'react';
 import {Tile, TileProps} from '../building-blocs/Tile';
@@ -26,11 +20,13 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
     return (
         <>
             {!state.hasResults && !state.isLoading ? (
-                <Box w="100%">
-                    <AtomicSearchInterface engine={engine}>
-                        <NoSearchResultTemplate engine={engine} query={query} />
-                    </AtomicSearchInterface>
-                </Box>
+                <Container size="xl" className="home" pt="150">
+                    <Box w="100%">
+                        <AtomicSearchInterface engine={engine}>
+                            <NoSearchResultTemplate engine={engine} query={query} />
+                        </AtomicSearchInterface>
+                    </Box>
+                </Container>
             ) : (
                 <Container size="xl" className="home" pt="150">
                     <Stack gap="md" flex="1">
