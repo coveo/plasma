@@ -46,13 +46,13 @@
         "@swc/helpers": "0.5.13"
     },
     "devDependencies": {
-        "@babel/types": "7.25.6",
+        "@babel/types": "7.25.7",
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "8.1.0",
         "@svgr/plugin-jsx": "8.1.0",
         "@swc/cli": "0.4.0",
         "@swc/core": "1.7.28",
-        "@types/react": "18.3.10",
+        "@types/react": "18.3.11",
         "@types/react-dom": "18.3.0",
         "fs-extra": "11.2.0",
         "glob": "11.0.0",
