@@ -36,8 +36,8 @@ importers:
         specifier: 20.16.10
         version: 20.16.10
       '@vitest/eslint-plugin':
-        specifier: 1.1.5
-        version: 1.1.5(@typescript-eslint/utils@8.8.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2))(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)(vitest@2.1.2(@types/node@20.16.10)(jsdom@25.0.1)(sass@1.79.4)(sugarss@4.0.1(postcss@8.4.47)))
+        specifier: 1.1.6
+        version: 1.1.6(@typescript-eslint/utils@8.8.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2))(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)(vitest@2.1.2(@types/node@20.16.10)(jsdom@25.0.1)(sass@1.79.4)(sugarss@4.0.1(postcss@8.4.47)))
       aws-sdk:
         specifier: 2.1691.0
         version: 2.1691.0
@@ -1928,8 +1928,8 @@ packages:
     peerDependencies:
       vite: ^4 || ^5
 
-  '@vitest/eslint-plugin@1.1.5':
-    resolution: {integrity: sha512-a02F1HAJ/A1ietP96QDxkRqZROdgCJvNXSkmHAXTcTHnmj9Hh2gqi7x4M+miOj1sDIef2qGqE8zmMBb2PgTE8w==}
+  '@vitest/eslint-plugin@1.1.6':
+    resolution: {integrity: sha512-sFuAnD9iycnOzLHHhNCULXeb6ejOSo5Lcq/ODhdlUOoUrXkQPcVeYqXurZMA3neOqf+wNCQ6YuU1zyoYH/WEcg==}
     peerDependencies:
       '@typescript-eslint/utils': '>= 8.0'
       eslint: '>= 8.57.0'
@@ -6958,7 +6958,7 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitest/eslint-plugin@1.1.5(@typescript-eslint/utils@8.8.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2))(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)(vitest@2.1.2(@types/node@20.16.10)(jsdom@25.0.1)(sass@1.79.4)(sugarss@4.0.1(postcss@8.4.47)))':
+  '@vitest/eslint-plugin@1.1.6(@typescript-eslint/utils@8.8.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2))(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)(vitest@2.1.2(@types/node@20.16.10)(jsdom@25.0.1)(sass@1.79.4)(sugarss@4.0.1(postcss@8.4.47)))':
     dependencies:
       '@typescript-eslint/utils': 8.8.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)
       eslint: 9.11.1(jiti@1.21.6)
