@@ -44,7 +44,7 @@
         "@types/chroma-js": "2.4.4",
         "@types/fs-extra": "11.0.4",
         "@types/lodash": "4.17.10",
-        "@types/node": "20.16.10",
+        "@types/node": "20.16.11",
         "chroma-js": "3.1.1",
         "commander": "12.1.0",
         "dotenv": "16.4.5",
