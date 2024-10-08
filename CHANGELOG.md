@@ -1,3 +1,39 @@
+## 54.4.0 (2024-10-08)
+
+* chore(deps): lock file maintenance 7657af5
+* chore(deps): lock file maintenance 1cb0231
+* chore(deps): lock file maintenance 0b9708f
+* chore(deps): lock file maintenance 1509172
+* chore(deps): lock file maintenance c2a31d1
+* chore(deps): lock file maintenance 4eeb124
+* chore(deps): replace dependency eslint-plugin-vitest with @vitest/eslint-plugin 1.0.1 (#3905) 959489e, closes #3905
+* chore(deps): update actions/setup-node digest to 0a44ba7 (#3897) fc31532, closes #3897
+* chore(deps): update all non-major dependencies de778d9
+* chore(deps): update all non-major dependencies 0fc76b5
+* chore(deps): update all non-major dependencies b566cf9
+* chore(deps): update all non-major dependencies c63ba06
+* chore(deps): update all non-major dependencies 1dc161d
+* chore(deps): update all non-major dependencies 0cea54f
+* chore(deps): update all non-major dependencies 85ee97a
+* chore(deps): update all non-major dependencies 6f31ffe
+* chore(deps): update all non-major dependencies (#3908) f56f664, closes #3908
+* chore(deps): update all non-major dependencies (#3916) dd53e17, closes #3916
+* chore(deps): update dependency @eslint/compat to v1.2.0 aabe3d2
+* chore(deps): update dependency @types/react to v18.3.8 2ea2f4f
+* chore(deps): update dependency @vitest/eslint-plugin to v1.1.6 f0b4983
+* chore(deps): update dependency chokidar to v4 (#3892) 603b4aa, closes #3892
+* chore(deps): update dependency eslint to v9.12.0 900989a
+* chore(deps): update dependency jsdom to v25 (#3875) 1102cc4, closes #3875
+* chore(deps): update dependency vite to v5.4.6 [security] 47e7fd4
+* chore(deps): update github/codeql-action action to v3.26.11 14cdfa3
+* chore(renovate): remove automerge from config (#3915) c1ef125, closes #3915
+* fix(deps): update dependency @faker-js/faker to v9 (#3888) c76f57d, closes #3888
+* fix(deps): update ui-kit to v3 (major) (#3904) aac10cb, closes #3904
+* fix(form): +generic tranformvalue for enhancewithcollection (#3912) d076ebf, closes #3912
+* feat(mlx): update table component to be able to change options in predicate (#3885) fd46332, closes #3885
+
+
+
 ## 54.3.0 (2024-08-29)
 
 * chore(deps): update all non-major dependencies 471eb58
