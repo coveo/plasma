@@ -1,3 +1,11 @@
+## <small>54.4.1 (2024-10-09)</small>
+
+* fix(table): type only import for table predicate props (#3920) 0da755e, closes #3920
+* chore(deps): update actions/checkout digest to eef6144 (#3917) 6721c5a, closes #3917
+* chore(deps): update actions/upload-artifact action to v4.4.2 (#3918) 267b47f, closes #3918
+
+
+
 ## 54.4.0 (2024-10-08)
 
 * chore(deps): lock file maintenance 7657af5
