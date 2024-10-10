@@ -124,6 +124,25 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         }
     };
 
+    const registerThemes = (monaco: Monaco) => {
+        monaco.editor.defineTheme('light-disabled', {
+            base: 'vs',
+            inherit: true,
+            rules: [],
+            colors: {
+                'editor.background': theme.colors.gray[2],
+            },
+        });
+        monaco.editor.defineTheme('vs-dark-disabled', {
+            base: 'vs-dark',
+            inherit: true,
+            rules: [],
+            colors: {
+                'editor.background': theme.colors.navy[7],
+            },
+        });
+    };
+
     const handleSearch = () => {
         if (editorRef.current) {
             editorRef.current.focus();
@@ -183,6 +202,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             <CopyToClipboard value={_value} onCopy={() => onCopy?.()} />
         </Group>
     );
+    let editorTheme = colorScheme === 'light' ? 'light' : 'vs-dark';
+    if (disabled) {
+        editorTheme += '-disabled';
+    }
 
     const _editor = loaded ? (
         <Box
@@ -192,13 +215,14 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 CodeEditorClasses.editor,
                 {[CodeEditorClasses.valid]: !renderErrorOutline},
                 {[CodeEditorClasses.error]: renderErrorOutline},
+                {[CodeEditorClasses.disabled]: disabled},
             )}
             data-testid="editor-wrapper"
         >
             <Editor
                 onValidate={handleValidate}
                 defaultLanguage={language}
-                theme={colorScheme === 'light' ? 'light' : 'vs-dark'}
+                theme={editorTheme}
                 options={{
                     minimap: {enabled: false},
                     wordWrap: 'on',
@@ -213,6 +237,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 onMount={(editor, monaco) => {
                     editorRef.current = editor;
                     registerLanguages(monaco);
+                    registerThemes(monaco);
                     editor.onDidFocusEditorText(() => onFocus?.());
                     editor.onDidBlurEditorText(async () => {
                         await editor.getAction('editor.action.formatDocument').run();

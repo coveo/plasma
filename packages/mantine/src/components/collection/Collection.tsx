@@ -96,6 +96,12 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
      */
     disabled?: boolean;
     /**
+     * Whether the collection is readOnly. If true, the collection will not allow adding or removing items
+     *
+     * @default false
+     */
+    readOnly?: boolean;
+    /**
      * Function that determines if the add item button should be enabled given the current items of the collection.
      * The button is always enabled if this props remains undefined
      *
@@ -141,6 +147,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     addLabel: 'Add item',
     addDisabledTooltip: 'There is already an empty item',
     disabled: false,
+    readOnly: false,
     gap: 'xs',
     required: false,
     getItemId: ({id}: any) => id,
@@ -154,6 +161,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         onReorderItem,
         onInsertItem,
         disabled,
+        readOnly,
         draggable,
         children,
         gap,
@@ -198,6 +206,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         }),
     );
 
+    const canEdit = !disabled && !readOnly;
     const hasOnlyOneItem = value.length === 1;
 
     /**
@@ -232,7 +241,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         <CollectionItem
             key={item.id}
             id={item.id}
-            disabled={disabled}
+            disabled={!canEdit}
             draggable={draggable}
             onRemove={() => onRemoveItem?.(index)}
             removable={!(required && hasOnlyOneItem)}
@@ -243,7 +252,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
 
     const addAllowed = allowAdd?.(value) ?? true;
 
-    const _addButton = disabled ? null : (
+    const _addButton = canEdit ? (
         <Group>
             <Tooltip label={addDisabledTooltip} disabled={addAllowed}>
                 <Box>
@@ -258,7 +267,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                 </Box>
             </Tooltip>
         </Group>
-    );
+    ) : null;
 
     const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);
 
