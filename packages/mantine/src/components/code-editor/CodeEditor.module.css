@@ -23,3 +23,13 @@
     outline-color: var(--mantine-color-red-6);
     outline-style: solid;
 }
+
+.disabled {
+    @mixin light {
+        background-color: var(--mantine-color-gray-2);
+    }
+
+    @mixin dark {
+        background-color: var(--mantine-color-navy-7);
+    }
+}

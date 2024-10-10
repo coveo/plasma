@@ -1,0 +1,8 @@
+.input {
+    cursor: text;
+
+    --input-bd: transparent;
+    --input-bg: var(--mantine-color-gray-2);
+    --input-color: var(--mantine-color-gray-7);
+    --input-placeholder-color: var(--mantine-color-gray-7);
+}
