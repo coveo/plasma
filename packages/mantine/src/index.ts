@@ -21,6 +21,8 @@ export {
     CopyToClipboard,
     Header,
     Menu,
+    PasswordInput,
+    Select,
     Table,
     type ActionIconProps,
     type ButtonProps,

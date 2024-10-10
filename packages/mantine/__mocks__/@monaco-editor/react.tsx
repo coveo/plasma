@@ -16,7 +16,11 @@ const editor: any = {
         ),
 };
 
-const monaco: any = vi.fn();
+const monaco: any = {
+    editor: {
+        defineTheme: vi.fn(),
+    },
+};
 
 const MockedEditor: FunctionComponent<EditorProps> = (props) => {
     useEffect(() => {
