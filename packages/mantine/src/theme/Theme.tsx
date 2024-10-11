@@ -21,6 +21,7 @@ import {
     Combobox,
     ComboboxSearch,
     createTheme,
+    deepMerge,
     Divider,
     Input,
     InputWrapper,
@@ -40,6 +41,7 @@ import {
     Select,
     Skeleton,
     Stepper,
+    Switch,
     Tabs,
     Text,
     TextInput,
@@ -63,6 +65,8 @@ import NavLinkClasses from '../styles/NavLink.module.css';
 import NotificationClasses from '../styles/Notification.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
 import RadioClasses from '../styles/Radio.module.css';
+import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
+import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
 import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
 import SelectClasses from '../styles/Select.module.css';
@@ -142,7 +146,23 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 radius: 'sm',
             },
-            classNames: {label: CheckboxClasses.label, input: CheckboxClasses.input},
+            classNames: (theme, props) => {
+                if (props.readOnly && !props.disabled) {
+                    return deepMerge(CheckboxClasses, ReadOnlyStateClasses);
+                }
+                return CheckboxClasses;
+            },
+            vars: (theme, props) => {
+                if (props.readOnly && !props.disabled) {
+                    return {
+                        root: {
+                            '--checkbox-icon-color': theme.colors.gray[7],
+                            '--checkbox-color': theme.colors.gray[2],
+                        },
+                    };
+                }
+                return {root: {}};
+            },
         }),
         CloseButton: CloseButton.extend({
             defaultProps: {
@@ -173,10 +193,32 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
         }),
         Input: Input.extend({
-            classNames: InputClasses,
+            classNames: (theme, props) => {
+                const anyProps = props as any;
+                // eslint-disable-next-line no-underscore-dangle
+                if (anyProps.readOnly && !props.disabled && !['Select'].includes(anyProps.__staticSelector)) {
+                    return deepMerge(InputClasses, ReadOnlyInputClasses);
+                }
+                return InputClasses;
+            },
         }),
         InputWrapper: InputWrapper.extend({
             classNames: InputWrapperClasses,
+            vars: (theme, props) => {
+                const anyProps = props as any;
+                if (anyProps.readOnly || anyProps.disabled) {
+                    return {
+                        label: {'--input-asterisk-color': theme.colors.red[2]},
+                        error: {},
+                        description: {},
+                    };
+                }
+                return {
+                    label: {},
+                    error: {},
+                    description: {},
+                };
+            },
         }),
         Loader: Loader.extend({
             defaultProps: {
@@ -235,7 +277,25 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 withArrow: true,
             },
         }),
-        Radio: Radio.extend({classNames: RadioClasses}),
+        Radio: Radio.extend({
+            classNames: (theme, props) => {
+                if (props.readOnly && !props.disabled) {
+                    return deepMerge(RadioClasses, ReadOnlyStateClasses);
+                }
+                return RadioClasses;
+            },
+            vars: (theme, props) => {
+                if (props.readOnly && !props.disabled) {
+                    return {
+                        root: {
+                            '--radio-icon-color': theme.colors.gray[7],
+                            '--radio-color': theme.colors.gray[2],
+                        },
+                    };
+                }
+                return {root: {}};
+            },
+        }),
         ScrollArea: ScrollArea.extend({
             classNames: {viewport: ScrollAreaClasses.viewport},
         }),
@@ -261,6 +321,29 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 stepDescription: StepperClasses.stepDescription,
                 separator: StepperClasses.separator,
                 verticalSeparator: StepperClasses.verticalSeparator,
+            },
+        }),
+        Switch: Switch.extend({
+            classNames: (theme, props) => {
+                if (props.readOnly && !props.disabled) {
+                    return ReadOnlyStateClasses;
+                }
+                return {};
+            },
+            vars: (theme, props) => {
+                if (props.readOnly && !props.disabled) {
+                    return {
+                        root: {},
+                        track: {
+                            '--switch-bg': theme.colors.gray[2],
+                            '--switch-bd': 'transparent',
+                        },
+                        thumb: {
+                            '--switch-thumb-bd': 'transparent',
+                        },
+                    };
+                }
+                return {root: {}, track: {}, thumb: {}};
             },
         }),
         Tabs: Tabs.extend({

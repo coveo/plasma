@@ -1,5 +1,6 @@
 import {CheckSize16Px, CopySize16Px} from '@coveord/plasma-react-icons';
-import {ActionIcon, CopyButton, TextInput, Tooltip} from '@mantine/core';
+import {ActionIcon, CopyButton, MantineColor, TextInput, Tooltip} from '@mantine/core';
+import {FunctionComponent} from 'react';
 
 export interface CopyToClipboardProps {
     /**
@@ -16,15 +17,21 @@ export interface CopyToClipboardProps {
      * Called each time the value is copied to the clipboard
      */
     onCopy?: () => void;
+    /**
+     * The color of the icon when idle
+     *
+     * @default 'gray'
+     */
+    color?: MantineColor | (string & {});
 }
 
-const CopyToClipboardButton: React.FunctionComponent<Omit<CopyToClipboardProps, 'withLabel'>> = ({value, onCopy}) => (
+const CopyToClipboardButton: FunctionComponent<Omit<CopyToClipboardProps, 'withLabel'>> = ({value, onCopy, color}) => (
     <CopyButton value={value} timeout={2000}>
         {({copied, copy}) => (
             <Tooltip label={copied ? 'Copied' : 'Copy'}>
                 <ActionIcon
                     variant="subtle"
-                    color={copied ? 'success' : 'gray'}
+                    color={copied ? 'success' : color}
                     onClick={() => {
                         copy();
                         onCopy?.();
@@ -37,14 +44,13 @@ const CopyToClipboardButton: React.FunctionComponent<Omit<CopyToClipboardProps, 
     </CopyButton>
 );
 
-export const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = ({withLabel, ...others}) =>
+export const CopyToClipboard: FunctionComponent<CopyToClipboardProps> = ({withLabel, ...others}) =>
     withLabel ? (
         <TextInput
-            classNames={{input: 'var(--mantine-color-gray-7)'}}
             value={others.value}
             readOnly
             autoComplete="off"
-            rightSection={<CopyToClipboardButton {...others} />}
+            rightSection={<CopyToClipboardButton color="action" {...others} />}
         />
     ) : (
         <CopyToClipboardButton {...others} />
