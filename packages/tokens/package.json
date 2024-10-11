@@ -40,7 +40,7 @@
     },
     "devDependencies": {
         "@swc/cli": "0.4.0",
-        "@swc/core": "1.7.28",
+        "@swc/core": "1.7.35",
         "@types/chroma-js": "2.4.4",
         "@types/fs-extra": "11.0.4",
         "@types/lodash": "4.17.10",
@@ -56,7 +56,7 @@
         "prettier": "3.3.3",
         "publint": "0.2.11",
         "rimraf": "6.0.1",
-        "sass": "1.79.4",
+        "sass": "1.79.5",
         "svgo": "3.3.2",
         "ts-node": "10.9.2",
         "tslib": "2.7.0",
