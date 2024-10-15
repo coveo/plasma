@@ -20,6 +20,7 @@ describe('Table.Predicate', () => {
                     <Table.Header>
                         <Table.Predicate
                             id="rank"
+                            label="Rank"
                             data={[
                                 {value: 'first', label: 'First'},
                                 {value: 'second', label: 'Second'},
@@ -35,7 +36,7 @@ describe('Table.Predicate', () => {
         };
         render(<Fixture />);
         expect(screen.getByRole('button', {name: '2', current: 'page'})).toBeVisible();
-        await user.click(screen.getByRole('textbox', {name: 'rank'}));
+        await user.click(screen.getByRole('textbox', {name: 'Rank'}));
         await user.click(screen.getByRole('option', {name: 'First'}));
         expect(screen.getByRole('button', {name: '1', current: 'page'})).toBeVisible();
     });
