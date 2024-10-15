@@ -134,10 +134,10 @@ importers:
     devDependencies:
       '@swc/cli':
         specifier: 0.4.0
-        version: 0.4.0(@swc/core@1.7.35(@swc/helpers@0.5.13))(chokidar@3.6.0)
+        version: 0.4.0(@swc/core@1.7.36(@swc/helpers@0.5.13))(chokidar@3.6.0)
       '@swc/core':
-        specifier: 1.7.35
-        version: 1.7.35(@swc/helpers@0.5.13)
+        specifier: 1.7.36
+        version: 1.7.36(@swc/helpers@0.5.13)
       '@types/fs-extra':
         specifier: 11.0.4
         version: 11.0.4
@@ -176,10 +176,10 @@ importers:
         version: 6.0.1
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.7.35(@swc/helpers@0.5.13))(@types/node@20.16.11)(typescript@5.6.3)
+        version: 10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.13))(@types/node@20.16.11)(typescript@5.6.3)
       tslib:
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: 2.8.0
+        version: 2.8.0
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -264,10 +264,10 @@ importers:
         version: 7.13.2(@mantine/core@7.13.2(@mantine/hooks@7.13.2(react@18.3.1))(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.13.2(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@swc/cli':
         specifier: 0.4.0
-        version: 0.4.0(@swc/core@1.7.35(@swc/helpers@0.5.13))(chokidar@3.6.0)
+        version: 0.4.0(@swc/core@1.7.36(@swc/helpers@0.5.13))(chokidar@3.6.0)
       '@swc/core':
-        specifier: 1.7.35
-        version: 1.7.35(@swc/helpers@0.5.13)
+        specifier: 1.7.36
+        version: 1.7.36(@swc/helpers@0.5.13)
       '@testing-library/dom':
         specifier: 10.4.0
         version: 10.4.0
@@ -326,8 +326,8 @@ importers:
         specifier: 1.79.5
         version: 1.79.5
       tslib:
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: 2.8.0
+        version: 2.8.0
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -355,10 +355,10 @@ importers:
         version: 8.1.0(@svgr/core@8.1.0(typescript@5.6.3))
       '@swc/cli':
         specifier: 0.4.0
-        version: 0.4.0(@swc/core@1.7.35(@swc/helpers@0.5.13))(chokidar@3.6.0)
+        version: 0.4.0(@swc/core@1.7.36(@swc/helpers@0.5.13))(chokidar@3.6.0)
       '@swc/core':
-        specifier: 1.7.35
-        version: 1.7.35(@swc/helpers@0.5.13)
+        specifier: 1.7.36
+        version: 1.7.36(@swc/helpers@0.5.13)
       '@types/react':
         specifier: 18.3.11
         version: 18.3.11
@@ -390,8 +390,8 @@ importers:
         specifier: 6.0.1
         version: 6.0.1
       tslib:
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: 2.8.0
+        version: 2.8.0
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -404,10 +404,10 @@ importers:
     devDependencies:
       '@swc/cli':
         specifier: 0.4.0
-        version: 0.4.0(@swc/core@1.7.35(@swc/helpers@0.5.13))(chokidar@3.6.0)
+        version: 0.4.0(@swc/core@1.7.36(@swc/helpers@0.5.13))(chokidar@3.6.0)
       '@swc/core':
-        specifier: 1.7.35
-        version: 1.7.35(@swc/helpers@0.5.13)
+        specifier: 1.7.36
+        version: 1.7.36(@swc/helpers@0.5.13)
       '@types/chroma-js':
         specifier: 2.4.4
         version: 2.4.4
@@ -461,10 +461,10 @@ importers:
         version: 3.3.2
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.7.35(@swc/helpers@0.5.13))(@types/node@20.16.11)(typescript@5.6.3)
+        version: 10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.13))(@types/node@20.16.11)(typescript@5.6.3)
       tslib:
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: 2.8.0
+        version: 2.8.0
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -473,10 +473,10 @@ importers:
     dependencies:
       '@coveo/atomic-react':
         specifier: 3.1.5
-        version: 3.1.5(@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.1.5(@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@coveo/headless':
         specifier: 3.3.0
-        version: 3.3.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)
+        version: 3.3.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -529,8 +529,8 @@ importers:
         specifier: 8.19.4
         version: 8.19.4
       '@tanstack/react-query':
-        specifier: 5.59.14
-        version: 5.59.14(react@18.3.1)
+        specifier: 5.59.15
+        version: 5.59.15(react@18.3.1)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -547,8 +547,8 @@ importers:
         specifier: 4.1.1
         version: 4.1.1
       pino-pretty:
-        specifier: 11.2.2
-        version: 11.2.2
+        specifier: 11.3.0
+        version: 11.3.0
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -615,10 +615,10 @@ importers:
         version: 3.27.0
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.7.35(@swc/helpers@0.5.13))(@types/node@20.16.11)(typescript@5.6.3)
+        version: 10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.13))(@types/node@20.16.11)(typescript@5.6.3)
       tslib:
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: 2.8.0
+        version: 2.8.0
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -1628,68 +1628,68 @@ packages:
       chokidar:
         optional: true
 
-  '@swc/core-darwin-arm64@1.7.35':
-    resolution: {integrity: sha512-BQSSozVxjxS+SVQz6e3GC/+OBWGIK3jfe52pWdANmycdjF3ch7lrCKTHTU7eHwyoJ96mofszPf5AsiVJF34Fwg==}
+  '@swc/core-darwin-arm64@1.7.36':
+    resolution: {integrity: sha512-8vDczXzCgv3ceTPhEivlpGprN44YlrCK1nbfU9g2TrhV/Aiqi09W/eM5zLesdoM1Z3mJl492gc/8nlTkpDdusw==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@swc/core-darwin-x64@1.7.35':
-    resolution: {integrity: sha512-44TYdKN/EWtkU88foXR7IGki9JzhEJzaFOoPevfi9Xe7hjAD/x2+AJOWWqQNzDPMz9+QewLdUVLyR6s5okRgtg==}
+  '@swc/core-darwin-x64@1.7.36':
+    resolution: {integrity: sha512-Pa2Gao7+Wf5m3SsK4abKRtd48AtoUnJInvaC3d077swBfgZjbjUbQvcpdc2dOeQtWwo49rFqUZJonMsL0jnPgQ==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [darwin]
 
-  '@swc/core-linux-arm-gnueabihf@1.7.35':
-    resolution: {integrity: sha512-ccfA5h3zxwioD+/z/AmYtkwtKz9m4rWTV7RoHq6Jfsb0cXHrd6tbcvgqRWXra1kASlE+cDWsMtEZygs9dJRtUQ==}
+  '@swc/core-linux-arm-gnueabihf@1.7.36':
+    resolution: {integrity: sha512-3YsMWd7V+WZEjbfBnLkkz/olcRBa8nyoK0iIOnNARJBMcYaJxjkJSMZpmSojCnIVwvjA1N83CPAbUL+W+fCnHg==}
     engines: {node: '>=10'}
     cpu: [arm]
     os: [linux]
 
-  '@swc/core-linux-arm64-gnu@1.7.35':
-    resolution: {integrity: sha512-hx65Qz+G4iG/IVtxJKewC5SJdki8PAPFGl6gC/57Jb0+jA4BIoGLD/J3Q3rCPeoHfdqpkCYpahtyUq8CKx41Jg==}
+  '@swc/core-linux-arm64-gnu@1.7.36':
+    resolution: {integrity: sha512-lqM3aBB7kJazJYOwHeA5OGNLqXoQPZ/76b3dV+XcjN1GhD0CcXz6mW5PRYVin6OSN1eKrKBKJjtDA1mqADDEvw==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
 
-  '@swc/core-linux-arm64-musl@1.7.35':
-    resolution: {integrity: sha512-kL6tQL9No7UEoEvDRuPxzPTpxrvbwYteNRbdChSSP74j13/55G2/2hLmult5yFFaWuyoyU/2lvzjRL/i8OLZxg==}
+  '@swc/core-linux-arm64-musl@1.7.36':
+    resolution: {integrity: sha512-bqei2YDzvUfG0pth5W2xJaj0eG4XWYk0d/NJ75vBX6bkIzK6dC8iuKQ41jOfUWonnrAs7rTDDJW0sTn/evvRdw==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
 
-  '@swc/core-linux-x64-gnu@1.7.35':
-    resolution: {integrity: sha512-Ke4rcLQSwCQ2LHdJX1FtnqmYNQ3IX6BddKlUtS7mcK13IHkQzZWp0Dcu6MgNA3twzb/dBpKX5GLy07XdGgfmyw==}
+  '@swc/core-linux-x64-gnu@1.7.36':
+    resolution: {integrity: sha512-03maXTUyaBjeCxlDltmdzHje1ryQt1C4OWmmNgSSRXjLb+GNnAenwOJMSrcvHP/aNClD2pwsFCnYKDGy+sYE6w==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
 
-  '@swc/core-linux-x64-musl@1.7.35':
-    resolution: {integrity: sha512-T30tlLnz0kYyDFyO5RQF5EQ4ENjW9+b56hEGgFUYmfhFhGA4E4V67iEx7KIG4u0whdPG7oy3qjyyIeTb7nElEw==}
+  '@swc/core-linux-x64-musl@1.7.36':
+    resolution: {integrity: sha512-XXysqLkvjtQnXm1zHqLhy00UYPv/gk5OtwR732X+piNisnEbcJBqI8Qp9O7YvLWllRcoP8IMBGDWLGdGLSpViA==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
 
-  '@swc/core-win32-arm64-msvc@1.7.35':
-    resolution: {integrity: sha512-CfM/k8mvtuMyX+okRhemfLt784PLS0KF7Q9djA8/Dtavk0L5Ghnq+XsGltO3d8B8+XZ7YOITsB14CrjehzeHsg==}
+  '@swc/core-win32-arm64-msvc@1.7.36':
+    resolution: {integrity: sha512-k7+dmb13a/zPw+E4XYfPmLZFWJgcOcBRKIjYl9nQErtYsgsg3Ji6TBbsvJVETy23lNHyewZ17V5Vq6NzaG0hzg==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [win32]
 
-  '@swc/core-win32-ia32-msvc@1.7.35':
-    resolution: {integrity: sha512-ATB3uuH8j/RmS64EXQZJSbo2WXfRNpTnQszHME/sGaexsuxeijrp3DTYSFAA3R2Bu6HbIIX6jempe1Au8I3j+A==}
+  '@swc/core-win32-ia32-msvc@1.7.36':
+    resolution: {integrity: sha512-ridD3ay6YM2PEYHZXXFN+edYEv0FOynaqOBP+NSnGNHA35azItIjoIe+KNi4WltGtAjpKCHSpjGCNfna12wdYQ==}
     engines: {node: '>=10'}
     cpu: [ia32]
     os: [win32]
 
-  '@swc/core-win32-x64-msvc@1.7.35':
-    resolution: {integrity: sha512-iDGfQO1571NqWUXtLYDhwIELA/wadH42ioGn+J9R336nWx40YICzy9UQyslWRhqzhQ5kT+QXAW/MoCWc058N6Q==}
+  '@swc/core-win32-x64-msvc@1.7.36':
+    resolution: {integrity: sha512-j1z2Z1Ln9d0E3dHsPkC1K9XDh0ojhRPwV+GfRTu4D61PE+aYhYLvbJC6xPvL4/204QrStRS7eDu3m+BcDp3rgQ==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [win32]
 
-  '@swc/core@1.7.35':
-    resolution: {integrity: sha512-3cUteCTbr2r5jqfgx0r091sfq5Mgh6F1SQh8XAOnSvtKzwv2bC31mvBHVAieD1uPa2kHJhLav20DQgXOhpEitw==}
+  '@swc/core@1.7.36':
+    resolution: {integrity: sha512-bu7ymMX+LCJOSSrKank25Jaq66ymLVA9fOUuy4ck3/6rbXdLw+pIJPnIDKQ9uNcxww8KDxOuJk9Ui9pqR+aGFw==}
     engines: {node: '>=10'}
     peerDependencies:
       '@swc/helpers': '*'
@@ -1725,8 +1725,8 @@ packages:
   '@tanstack/query-core@5.59.13':
     resolution: {integrity: sha512-Oou0bBu/P8+oYjXsJQ11j+gcpLAMpqW42UlokQYEz4dE7+hOtVO9rVuolJKgEccqzvyFzqX4/zZWY+R/v1wVsQ==}
 
-  '@tanstack/react-query@5.59.14':
-    resolution: {integrity: sha512-2cM4x3Ka4Thl7/wnjf++EMGA2Is/RgPynn83D4kfGiJOGSjb5T2D3EEOlC8Nt6U2htLS3imOXjOSMEjC3K7JNg==}
+  '@tanstack/react-query@5.59.15':
+    resolution: {integrity: sha512-QbVlAkTI78wB4Mqgf2RDmgC0AOiJqer2c5k9STOOSXGv1S6ZkY37r/6UpE8DbQ2Du0ohsdoXgFNEyv+4eDoPEw==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -4408,8 +4408,11 @@ packages:
   pino-abstract-transport@1.2.0:
     resolution: {integrity: sha512-Guhh8EZfPCfH+PMXAb6rKOjGQEoy0xlAIn+irODG5kgfYV+BQ0rGYYWTIel3P5mmyXqkYkPmdIkywsn6QKUR1Q==}
 
-  pino-pretty@11.2.2:
-    resolution: {integrity: sha512-2FnyGir8nAJAqD3srROdrF1J5BIcMT4nwj7hHSc60El6Uxlym00UbCCd8pYIterstVBFlMyF1yFV8XdGIPbj4A==}
+  pino-abstract-transport@2.0.0:
+    resolution: {integrity: sha512-F63x5tizV6WCh4R6RHyi2Ml+M70DNRXt/+HANowMflpgGFMAym/VKm6G7ZOQRjqN7XbGxK1Lg9t6ZrtzOaivMw==}
+
+  pino-pretty@11.3.0:
+    resolution: {integrity: sha512-oXwn7ICywaZPHmu3epHGU2oJX4nPmKvHvB/bwrJHlGcbEWaVcotkpyVHMKLKmiVryWYByNp0jpgAcXpFJDXJzA==}
     hasBin: true
 
   pino-std-serializers@6.2.2:
@@ -5267,8 +5270,8 @@ packages:
   tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
 
-  tslib@2.7.0:
-    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
+  tslib@2.8.0:
+    resolution: {integrity: sha512-jWVzBLplnCmoaTr13V9dYbiQ99wvZRd0vNWaDRg+aVYRcjDF3nDksxFDE/+fkXnKhpnUUkmx5pK/v8mCtLVqZA==}
 
   tsutils@3.21.0:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
@@ -5927,10 +5930,10 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.0
       chalk: 5.3.0
 
-  '@coveo/atomic-react@3.1.5(@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@coveo/atomic-react@3.1.5(@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@coveo/atomic': 3.3.0(@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)
-      '@coveo/headless': 3.3.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)
+      '@coveo/atomic': 3.3.0(@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)
+      '@coveo/headless': 3.3.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
@@ -5938,10 +5941,10 @@ snapshots:
       - encoding
       - postcss
 
-  '@coveo/atomic@3.3.0(@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)':
+  '@coveo/atomic@3.3.0(@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)':
     dependencies:
       '@coveo/bueno': 1.0.1
-      '@coveo/headless': 3.3.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)
+      '@coveo/headless': 3.3.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)
       '@popperjs/core': 2.11.8
       '@salesforce-ux/design-system': 2.25.3(postcss@8.4.47)
       '@stencil/store': 2.0.16(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))
@@ -5964,7 +5967,7 @@ snapshots:
 
   '@coveo/explorer-messenger@0.4.0': {}
 
-  '@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.2.2)(react@18.3.1)(redux@5.0.1)':
+  '@coveo/headless@3.3.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)':
     dependencies:
       '@coveo/bueno': 1.0.1
       '@coveo/relay': 0.7.10
@@ -5980,7 +5983,7 @@ snapshots:
       navigator.sendbeacon: 0.0.20
       node-abort-controller: 3.1.1
       pino: 8.21.0
-      pino-pretty: 11.2.2
+      pino-pretty: 11.3.0
       redux-thunk: 3.1.0(redux@5.0.1)
       ts-debounce: 4.0.0
     transitivePeerDependencies:
@@ -6029,7 +6032,7 @@ snapshots:
   '@dnd-kit/accessibility@3.1.0(react@18.3.1)':
     dependencies:
       react: 18.3.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@dnd-kit/core@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -6037,26 +6040,26 @@ snapshots:
       '@dnd-kit/utilities': 3.2.2(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@dnd-kit/modifiers@7.0.0(@dnd-kit/core@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@dnd-kit/utilities': 3.2.2(react@18.3.1)
       react: 18.3.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@dnd-kit/sortable@8.0.0(@dnd-kit/core@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@dnd-kit/utilities': 3.2.2(react@18.3.1)
       react: 18.3.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@dnd-kit/utilities@3.2.2(react@18.3.1)':
     dependencies:
       react: 18.3.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@dual-bundle/import-meta-resolve@4.1.0': {}
 
@@ -6651,10 +6654,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@swc/cli@0.4.0(@swc/core@1.7.35(@swc/helpers@0.5.13))(chokidar@3.6.0)':
+  '@swc/cli@0.4.0(@swc/core@1.7.36(@swc/helpers@0.5.13))(chokidar@3.6.0)':
     dependencies:
       '@mole-inc/bin-wrapper': 8.0.1
-      '@swc/core': 1.7.35(@swc/helpers@0.5.13)
+      '@swc/core': 1.7.36(@swc/helpers@0.5.13)
       '@swc/counter': 0.1.3
       commander: 8.3.0
       fast-glob: 3.3.2
@@ -6666,58 +6669,58 @@ snapshots:
     optionalDependencies:
       chokidar: 3.6.0
 
-  '@swc/core-darwin-arm64@1.7.35':
+  '@swc/core-darwin-arm64@1.7.36':
     optional: true
 
-  '@swc/core-darwin-x64@1.7.35':
+  '@swc/core-darwin-x64@1.7.36':
     optional: true
 
-  '@swc/core-linux-arm-gnueabihf@1.7.35':
+  '@swc/core-linux-arm-gnueabihf@1.7.36':
     optional: true
 
-  '@swc/core-linux-arm64-gnu@1.7.35':
+  '@swc/core-linux-arm64-gnu@1.7.36':
     optional: true
 
-  '@swc/core-linux-arm64-musl@1.7.35':
+  '@swc/core-linux-arm64-musl@1.7.36':
     optional: true
 
-  '@swc/core-linux-x64-gnu@1.7.35':
+  '@swc/core-linux-x64-gnu@1.7.36':
     optional: true
 
-  '@swc/core-linux-x64-musl@1.7.35':
+  '@swc/core-linux-x64-musl@1.7.36':
     optional: true
 
-  '@swc/core-win32-arm64-msvc@1.7.35':
+  '@swc/core-win32-arm64-msvc@1.7.36':
     optional: true
 
-  '@swc/core-win32-ia32-msvc@1.7.35':
+  '@swc/core-win32-ia32-msvc@1.7.36':
     optional: true
 
-  '@swc/core-win32-x64-msvc@1.7.35':
+  '@swc/core-win32-x64-msvc@1.7.36':
     optional: true
 
-  '@swc/core@1.7.35(@swc/helpers@0.5.13)':
+  '@swc/core@1.7.36(@swc/helpers@0.5.13)':
     dependencies:
       '@swc/counter': 0.1.3
       '@swc/types': 0.1.13
     optionalDependencies:
-      '@swc/core-darwin-arm64': 1.7.35
-      '@swc/core-darwin-x64': 1.7.35
-      '@swc/core-linux-arm-gnueabihf': 1.7.35
-      '@swc/core-linux-arm64-gnu': 1.7.35
-      '@swc/core-linux-arm64-musl': 1.7.35
-      '@swc/core-linux-x64-gnu': 1.7.35
-      '@swc/core-linux-x64-musl': 1.7.35
-      '@swc/core-win32-arm64-msvc': 1.7.35
-      '@swc/core-win32-ia32-msvc': 1.7.35
-      '@swc/core-win32-x64-msvc': 1.7.35
+      '@swc/core-darwin-arm64': 1.7.36
+      '@swc/core-darwin-x64': 1.7.36
+      '@swc/core-linux-arm-gnueabihf': 1.7.36
+      '@swc/core-linux-arm64-gnu': 1.7.36
+      '@swc/core-linux-arm64-musl': 1.7.36
+      '@swc/core-linux-x64-gnu': 1.7.36
+      '@swc/core-linux-x64-musl': 1.7.36
+      '@swc/core-win32-arm64-msvc': 1.7.36
+      '@swc/core-win32-ia32-msvc': 1.7.36
+      '@swc/core-win32-x64-msvc': 1.7.36
       '@swc/helpers': 0.5.13
 
   '@swc/counter@0.1.3': {}
 
   '@swc/helpers@0.5.13':
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@swc/types@0.1.13':
     dependencies:
@@ -6740,7 +6743,7 @@ snapshots:
 
   '@tanstack/query-core@5.59.13': {}
 
-  '@tanstack/react-query@5.59.14(react@18.3.1)':
+  '@tanstack/react-query@5.59.15(react@18.3.1)':
     dependencies:
       '@tanstack/query-core': 5.59.13
       react: 18.3.1
@@ -7039,7 +7042,7 @@ snapshots:
 
   '@vitejs/plugin-react-swc@3.7.1(@swc/helpers@0.5.13)(vite@5.4.9(@types/node@20.16.11)(sass@1.79.5)(sugarss@4.0.1(postcss@8.4.47)))':
     dependencies:
-      '@swc/core': 1.7.35(@swc/helpers@0.5.13)
+      '@swc/core': 1.7.36(@swc/helpers@0.5.13)
       vite: 5.4.9(@types/node@20.16.11)(sass@1.79.5)(sugarss@4.0.1(postcss@8.4.47))
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -7836,7 +7839,7 @@ snapshots:
   dot-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   dot-prop@5.3.0:
     dependencies:
@@ -8044,7 +8047,7 @@ snapshots:
       minimatch: 9.0.5
       semver: 7.6.3
       stable-hash: 0.0.4
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -9135,7 +9138,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   lowercase-keys@2.0.0: {}
 
@@ -9589,7 +9592,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   node-abort-controller@3.1.1: {}
 
@@ -9825,7 +9828,11 @@ snapshots:
       readable-stream: 4.5.2
       split2: 4.2.0
 
-  pino-pretty@11.2.2:
+  pino-abstract-transport@2.0.0:
+    dependencies:
+      split2: 4.2.0
+
+  pino-pretty@11.3.0:
     dependencies:
       colorette: 2.0.20
       dateformat: 4.6.3
@@ -9835,7 +9842,7 @@ snapshots:
       joycon: 3.1.1
       minimist: 1.2.8
       on-exit-leak-free: 2.1.2
-      pino-abstract-transport: 1.2.0
+      pino-abstract-transport: 2.0.0
       pump: 3.0.2
       readable-stream: 4.5.2
       secure-json-parse: 2.7.0
@@ -10016,7 +10023,7 @@ snapshots:
     dependencies:
       react: 18.3.1
       react-style-singleton: 2.2.1(@types/react@18.3.11)(react@18.3.1)
-      tslib: 2.7.0
+      tslib: 2.8.0
     optionalDependencies:
       '@types/react': 18.3.11
 
@@ -10025,7 +10032,7 @@ snapshots:
       react: 18.3.1
       react-remove-scroll-bar: 2.3.6(@types/react@18.3.11)(react@18.3.1)
       react-style-singleton: 2.2.1(@types/react@18.3.11)(react@18.3.1)
-      tslib: 2.7.0
+      tslib: 2.8.0
       use-callback-ref: 1.3.2(@types/react@18.3.11)(react@18.3.1)
       use-sidecar: 1.1.2(@types/react@18.3.11)(react@18.3.1)
     optionalDependencies:
@@ -10048,7 +10055,7 @@ snapshots:
       get-nonce: 1.0.1
       invariant: 2.2.4
       react: 18.3.1
-      tslib: 2.7.0
+      tslib: 2.8.0
     optionalDependencies:
       '@types/react': 18.3.11
 
@@ -10252,7 +10259,7 @@ snapshots:
 
   rxjs@7.8.1:
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   sade@1.8.1:
     dependencies:
@@ -10384,7 +10391,7 @@ snapshots:
   snake-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   sonic-boom@3.8.1:
     dependencies:
@@ -10664,7 +10671,7 @@ snapshots:
   synckit@0.9.2:
     dependencies:
       '@pkgr/core': 0.1.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   tabbable@6.2.0: {}
 
@@ -10751,7 +10758,7 @@ snapshots:
 
   ts-debounce@4.0.0: {}
 
-  ts-node@10.9.2(@swc/core@1.7.35(@swc/helpers@0.5.13))(@types/node@20.16.11)(typescript@5.6.3):
+  ts-node@10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.13))(@types/node@20.16.11)(typescript@5.6.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -10769,11 +10776,11 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     optionalDependencies:
-      '@swc/core': 1.7.35(@swc/helpers@0.5.13)
+      '@swc/core': 1.7.36(@swc/helpers@0.5.13)
 
   tslib@1.14.1: {}
 
-  tslib@2.7.0: {}
+  tslib@2.8.0: {}
 
   tsutils@3.21.0(typescript@5.6.3):
     dependencies:
@@ -10931,7 +10938,7 @@ snapshots:
   use-callback-ref@1.3.2(@types/react@18.3.11)(react@18.3.1):
     dependencies:
       react: 18.3.1
-      tslib: 2.7.0
+      tslib: 2.8.0
     optionalDependencies:
       '@types/react': 18.3.11
 
@@ -10956,7 +10963,7 @@ snapshots:
     dependencies:
       detect-node-es: 1.1.0
       react: 18.3.1
-      tslib: 2.7.0
+      tslib: 2.8.0
     optionalDependencies:
       '@types/react': 18.3.11
 
