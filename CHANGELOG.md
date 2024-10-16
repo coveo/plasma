@@ -1,3 +1,20 @@
+## 55.0.0 (2024-10-16)
+
+* chore(deps): lock file maintenance (#3926) d911198, closes #3926
+* chore(deps): update all non-major dependencies (#3919) 8edca2b, closes #3919
+* chore(deps): update all non-major dependencies (#3921) bb897ec, closes #3921
+* chore(deps): update all non-major dependencies (#3924) 2d2efcf, closes #3924
+* chore(deps): update all non-major dependencies (#3925) a592916, closes #3925
+* chore(deps): update all non-major dependencies (#3928) cb06305, closes #3928
+* fix(mantine): make Table.Predicate label prop required (#3927) a49edf5, closes #3927
+* feat(mantine, read-only): add style to form components (#3922) 90ca6f0, closes #3922
+
+
+### BREAKING CHANGE
+
+* the Table.Predicate label prop is now required.
+
+
 ## <small>54.4.1 (2024-10-09)</small>
 
 * fix(table): type only import for table predicate props (#3920) 0da755e, closes #3920
