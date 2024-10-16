@@ -64,7 +64,7 @@
         "@mantine/modals": "7.13.2",
         "@mantine/notifications": "7.13.2",
         "@swc/cli": "0.4.0",
-        "@swc/core": "1.7.35",
+        "@swc/core": "1.7.36",
         "@testing-library/dom": "10.4.0",
         "@testing-library/jest-dom": "6.5.0",
         "@testing-library/react": "16.0.1",
@@ -84,7 +84,7 @@
         "react-dom": "18.3.1",
         "rimraf": "6.0.1",
         "sass": "1.79.5",
-        "tslib": "2.7.0",
+        "tslib": "2.8.0",
         "typescript": "5.6.3",
         "vitest": "2.1.3"
     },
