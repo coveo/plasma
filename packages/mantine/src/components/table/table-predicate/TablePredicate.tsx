@@ -31,11 +31,10 @@ export interface TablePredicateProps
      */
     data: ComboboxData;
     /**
-     * Input label (not displayed for now)
+     * The label to display next to the Select
      *
-     * @default default to the predicate id
      */
-    label?: string;
+    label: string;
 }
 
 export type TablePredicateFactory = Factory<{
