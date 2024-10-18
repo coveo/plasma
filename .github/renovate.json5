@@ -1,5 +1,5 @@
 {
-    extends: ['config:base', 'group:allNonMajor'],
+    extends: ['github>coveo/renovate-presets', 'group:allNonMajor'],
     timezone: 'America/Montreal',
     schedule: ['at any time'],
     semanticCommitScope: 'deps',
