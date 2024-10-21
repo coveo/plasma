@@ -206,7 +206,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: InputWrapperClasses,
             vars: (theme, props) => {
                 const anyProps = props as any;
-                if (anyProps.readOnly || anyProps.disabled) {
+                if (anyProps.disabled || (anyProps.readOnly && !['Select'].includes(anyProps.__staticSelector))) {
                     return {
                         label: {'--input-asterisk-color': theme.colors.red[2]},
                         error: {},
