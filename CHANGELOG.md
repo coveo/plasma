@@ -1,3 +1,10 @@
+## <small>55.0.1 (2024-10-21)</small>
+
+* fix(mantine): select asterisk color is too light (#3932) becce83, closes #3932
+* chore(renovate): migrate to standard renovate config [CIA-611] (#3930) 4beb51b, closes #3930
+
+
+
 ## 55.0.0 (2024-10-16)
 
 * chore(deps): lock file maintenance (#3926) d911198, closes #3926
