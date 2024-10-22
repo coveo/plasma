@@ -97,6 +97,11 @@ const components: Component[] = [
         name: 'Alert',
         packageName: '@coveord/plasma-mantine',
     },
+    {
+        name: 'EllipsisText',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'EllipsisTextProps',
+    },
 ];
 
 export default components;
