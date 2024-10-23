@@ -21,7 +21,7 @@ export interface EllipsisTextProps
         Pick<TextProps, 'variant'>,
         Omit<StylesApiProps<EllipsisTextFactory>, 'variant'> {
     children: ReactNode;
-    tooltipProps: Omit<TooltipProps, 'label' | 'opened'>;
+    tooltipProps?: Partial<Omit<TooltipProps, 'label' | 'opened' | 'children'>>;
 }
 
 type EllipsisTextFactory = Factory<{
@@ -31,7 +31,9 @@ type EllipsisTextFactory = Factory<{
     stylesNames: EllipsisTextStylesNames;
 }>;
 
-const defaultProps: Partial<EllipsisTextProps> = {};
+const defaultProps: Partial<EllipsisTextProps> = {
+    tooltipProps: {},
+};
 
 export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref) => {
     const {className, children, style, classNames, styles, unstyled, variant, tooltipProps, ...others} = useProps(
