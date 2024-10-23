@@ -74,6 +74,7 @@ import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
 import TextClasses from '../styles/Text.module.css';
+import TooltipClasses from '../styles/Tooltip.module.css';
 import {NotificationVars} from '../vars/Notification.vars';
 import {TextVars} from '../vars/Text.vars';
 import {PlasmaColors} from './PlasmaColors';
@@ -371,6 +372,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 withArrow: true,
                 zIndex: 10000,
             },
+            classNames: TooltipClasses,
         }),
     },
 });

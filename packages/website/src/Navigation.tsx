@@ -48,6 +48,7 @@ export const Navigation = () => (
         </NavLink>
         <NavLink label="Layout" leftSection={<RichUiSize16Px height={16} />} defaultOpened>
             <InternalNavLink to="/layout/BrowserPreview" label="Browser Preview" />
+            <InternalNavLink to="/layout/EllipsisText" label="Ellipsis text" />
             <InternalNavLink to="/layout/Header" label="Header" />
             <InternalNavLink to="/layout/Modal" label="Modal" />
             <InternalNavLink to="/layout/Prompt" label="Prompt" />

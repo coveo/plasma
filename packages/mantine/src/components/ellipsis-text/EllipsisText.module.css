@@ -1,0 +1,9 @@
+.root {
+    white-space: nowrap;
+}
+
+.text {
+    flex-basis: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

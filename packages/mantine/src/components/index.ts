@@ -6,6 +6,7 @@ export * from './code-editor';
 export * from './collection';
 export * from './copyToClipboard';
 export * from './date-range-picker';
+export * from './ellipsis-text';
 export * from './header';
 export * from './inline-confirm';
 export * from './menu';
