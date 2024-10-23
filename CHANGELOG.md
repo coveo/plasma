@@ -1,3 +1,10 @@
+## <small>55.0.2 (2024-10-23)</small>
+
+* feat(mantine,website): create the EllipsisText component (#3933) 6f52299, closes #3933
+* chore(deps): lock file maintenance (#3931) 908abf6, closes #3931
+
+
+
 ## <small>55.0.1 (2024-10-21)</small>
 
 * fix(mantine): select asterisk color is too light (#3932) becce83, closes #3932
