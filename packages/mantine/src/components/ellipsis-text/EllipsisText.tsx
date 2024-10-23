@@ -2,13 +2,12 @@ import {
     Box,
     type BoxProps,
     type Factory,
-    type FloatingPosition,
-    type MantineColor,
     polymorphicFactory,
     type StylesApiProps,
     Text,
     type TextProps,
     Tooltip,
+    type TooltipProps,
     useProps,
     useStyles,
 } from '@mantine/core';
@@ -22,14 +21,7 @@ export interface EllipsisTextProps
         Pick<TextProps, 'variant'>,
         Omit<StylesApiProps<EllipsisTextFactory>, 'variant'> {
     children: ReactNode;
-    /**
-     * The background color of the tooltip shown when the content is truncated.
-     */
-    tooltipColor?: MantineColor;
-    /**
-     * The position of the tooltip shown when the content is truncated.
-     */
-    tooltipPosition?: FloatingPosition;
+    tooltipProps: Omit<TooltipProps, 'label' | 'opened'>;
 }
 
 type EllipsisTextFactory = Factory<{
@@ -42,18 +34,11 @@ type EllipsisTextFactory = Factory<{
 const defaultProps: Partial<EllipsisTextProps> = {};
 
 export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref) => {
-    const {
-        className,
-        children,
-        style,
-        classNames,
-        styles,
-        unstyled,
-        variant,
-        tooltipColor,
-        tooltipPosition,
-        ...others
-    } = useProps('EllipsisText', defaultProps, props);
+    const {className, children, style, classNames, styles, unstyled, variant, tooltipProps, ...others} = useProps(
+        'EllipsisText',
+        defaultProps,
+        props,
+    );
     const getStyles = useStyles<EllipsisTextFactory>({
         name: 'EllipsisText',
         classes,
@@ -82,13 +67,7 @@ export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref)
             {...getStyles('root')}
             {...others}
         >
-            <Tooltip
-                label={children}
-                opened={showTooltip}
-                color={tooltipColor}
-                position={tooltipPosition}
-                {...getStyles('tooltip')}
-            >
+            <Tooltip label={children} opened={showTooltip} {...tooltipProps} {...getStyles('tooltip')}>
                 <Text variant={variant} ref={textRef} {...getStyles('text')}>
                     {children}
                 </Text>
