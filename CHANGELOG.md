@@ -1,3 +1,9 @@
+## <small>55.0.3 (2024-10-23)</small>
+
+* fix(mantine): make EllipsisText tooltipProps prop optional (#3935) 528a565, closes #3935
+
+
+
 ## <small>55.0.2 (2024-10-23)</small>
 
 * feat(mantine,website): create the EllipsisText component (#3933) 6f52299, closes #3933
