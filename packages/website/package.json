@@ -12,7 +12,7 @@
         "type-check": "tsc --noEmit"
     },
     "dependencies": {
-        "@coveo/atomic-react": "3.1.6",
+        "@coveo/atomic-react": "3.1.7",
         "@coveo/headless": "3.4.0",
         "@coveord/plasma-components-props-analyzer": "workspace:*",
         "@coveord/plasma-mantine": "workspace:*",
@@ -40,7 +40,7 @@
         "pino-pretty": "11.3.0",
         "react": "18.3.1",
         "react-dom": "18.3.1",
-        "react-hook-form": "7.53.0",
+        "react-hook-form": "7.53.1",
         "react-imask": "7.6.1",
         "react-markdown": "9.0.1",
         "react-router-dom": "6.27.0",
@@ -51,7 +51,7 @@
         "@types/fs-extra": "11.0.4",
         "@types/klaw-sync": "6.0.5",
         "@types/lodash.kebabcase": "4.1.9",
-        "@types/node": "20.16.12",
+        "@types/node": "20.16.13",
         "@types/react": "18.3.11",
         "@types/react-dom": "18.3.1",
         "@vitejs/plugin-react-swc": "3.7.1",
