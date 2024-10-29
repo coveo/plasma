@@ -1,3 +1,14 @@
+## <small>55.0.4 (2024-10-29)</small>
+
+* fix(mantine, list): improve style (#3938) c51156b, closes #3938
+* chore(deps): lock file maintenance (#3940) 1f93e95, closes #3940
+* chore(deps): update actions/checkout digest to 11bd719 (#3934) d7ec946, closes #3934
+* chore(deps): update actions/setup-node digest to 39370e3 (#3936) 217882e, closes #3936
+* chore(deps): update all non-major dependencies (#3929) 1441e8c, closes #3929
+* chore(deps): update all non-major dependencies (#3937) db73921, closes #3937
+
+
+
 ## <small>55.0.3 (2024-10-23)</small>
 
 * fix(mantine): make EllipsisText tooltipProps prop optional (#3935) 528a565, closes #3935
