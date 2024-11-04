@@ -1,8 +1,8 @@
-.root {
+.noWrap {
     white-space: nowrap;
 }
 
-.text {
+.ellipsis {
     flex-basis: 100%;
     overflow: hidden;
     text-overflow: ellipsis;

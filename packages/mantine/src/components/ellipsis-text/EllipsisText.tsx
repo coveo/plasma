@@ -12,13 +12,14 @@ import {
     useStyles,
 } from '@mantine/core';
 import {ReactNode, useRef, useState} from 'react';
+import clsx from 'clsx';
 import classes from './EllipsisText.module.css';
 
 export type EllipsisTextStylesNames = 'root' | 'tooltip' | 'text';
 
 export interface EllipsisTextProps
     extends BoxProps,
-        Pick<TextProps, 'variant'>,
+        Pick<TextProps, 'variant' | 'lineClamp'>,
         Omit<StylesApiProps<EllipsisTextFactory>, 'variant'> {
     children: ReactNode;
     tooltipProps?: Partial<Omit<TooltipProps, 'label' | 'opened' | 'children'>>;
@@ -36,11 +37,9 @@ const defaultProps: Partial<EllipsisTextProps> = {
 };
 
 export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref) => {
-    const {className, children, style, classNames, styles, unstyled, variant, tooltipProps, ...others} = useProps(
-        'EllipsisText',
-        defaultProps,
-        props,
-    );
+    const {className, children, style, classNames, styles, unstyled, variant, lineClamp, tooltipProps, ...others} =
+        useProps('EllipsisText', defaultProps, props);
+
     const getStyles = useStyles<EllipsisTextFactory>({
         name: 'EllipsisText',
         classes,
@@ -55,6 +54,9 @@ export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref)
     const [showTooltip, setShowTooltip] = useState(false);
     const textRef = useRef<HTMLDivElement>();
 
+    const {className: rootClass, ...rootStyles} = getStyles('root');
+    const {className: textClass, ...textStyles} = getStyles('text');
+
     return (
         <Box
             ref={ref}
@@ -66,11 +68,18 @@ export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref)
             onMouseLeave={() => setShowTooltip(false)}
             display="flex"
             w="100%"
-            {...getStyles('root')}
+            className={clsx(rootClass, {[classes.noWrap]: !lineClamp})}
+            {...rootStyles}
             {...others}
         >
             <Tooltip label={children} opened={showTooltip} {...tooltipProps} {...getStyles('tooltip')}>
-                <Text variant={variant} ref={textRef} {...getStyles('text')}>
+                <Text
+                    variant={variant}
+                    ref={textRef}
+                    className={clsx(textClass, {[classes.ellipsis]: !lineClamp})}
+                    {...(!!lineClamp && {lineClamp: lineClamp})}
+                    {...textStyles}
+                >
                     {children}
                 </Text>
             </Tooltip>
@@ -78,4 +87,4 @@ export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref)
     );
 });
 
-const isOverflowing = (h: HTMLDivElement) => h.scrollWidth > h.clientWidth;
+const isOverflowing = (h: HTMLDivElement) => h.scrollWidth > h.clientWidth || h.scrollHeight > h.clientHeight;
