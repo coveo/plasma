@@ -5,7 +5,6 @@ import EllipsisTextLineClampLongDemo from '@examples/layout/EllipsisText/Ellipsi
 import EllipsisTextLineClampShortDemo from '@examples/layout/EllipsisText/EllipsisTextLineClampShort.demo?demo';
 import EllipsisTextNoWrapContainerDemo from '@examples/layout/EllipsisText/EllipsisTextNoWrapContainer.demo?demo';
 
-import {Stack} from '@mantine/core';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const Page = () => (
@@ -17,17 +16,14 @@ const Page = () => (
         id="EllipsisText"
         propsMetadata={EllipsisTextMetadata}
         demo={<EllipsisTextDefaultLongDemo />}
-    >
-        <div className="plasma-page-layout__section">
-            <Stack>
-                <EllipsisTextDefaultLongDemo title="Default ellipsis" />
-                <EllipsisTextDefaultShortDemo title="Default no ellipsis" />
-                <EllipsisTextNoWrapContainerDemo title="Default in no wrap container" />
-                <EllipsisTextLineClampLongDemo title="Line clamp ellipsis" />
-                <EllipsisTextLineClampShortDemo title="Line clamp no ellipsis" />
-            </Stack>
-        </div>
-    </PageLayout>
+        examples={{
+            defaultLong: <EllipsisTextDefaultLongDemo title="Default ellipsis" />,
+            defaultShort: <EllipsisTextDefaultShortDemo title="Default no ellipsis" />,
+            noWrapContainer: <EllipsisTextNoWrapContainerDemo title="Default in no wrap container" />,
+            lineClampLong: <EllipsisTextLineClampLongDemo title="Line clamp ellipsis" />,
+            lineClampShort: <EllipsisTextLineClampShortDemo title="Line clamp no ellipsis" />,
+        }}
+    />
 );
 
 export default Page;
