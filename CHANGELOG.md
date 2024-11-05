@@ -1,3 +1,9 @@
+## 55.1.0 (2024-11-05)
+
+* feat(mantine): EllipsisText component supports line-clamp (#3943) 8a8da2b, closes #3943
+
+
+
 ## <small>55.0.4 (2024-10-29)</small>
 
 * fix(mantine, list): improve style (#3938) c51156b, closes #3938
