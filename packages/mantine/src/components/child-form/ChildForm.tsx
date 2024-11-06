@@ -50,10 +50,10 @@ export const ChildForm = polymorphicFactory<ChildFormFactory>((props, ref) => {
 
     return (
         <Collapse ref={ref} {...others} {...getStyles('root')}>
-            <Paper bg="gray.1" shadow="sm" p="lg" {...getStyles('paper')}>
+            <Paper bg="gray.1" p="md" {...getStyles('paper')}>
                 {(title || description) && (
                     <Stack gap={0} mb="md">
-                        {title && <Title order={4}>{title}</Title>}
+                        {title && <Title order={5}>{title}</Title>}
                         {description && <Text c="gray.7">{description}</Text>}
                     </Stack>
                 )}
