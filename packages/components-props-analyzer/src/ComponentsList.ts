@@ -102,6 +102,11 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
         propsType: 'EllipsisTextProps',
     },
+    {
+        name: 'ChildForm',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'ChildFormProps',
+    },
 ];
 
 export default components;

@@ -16,7 +16,13 @@ import classes from './ChildForm.module.css';
 export type ChildFormStylesNames = 'root' | 'paper';
 
 export interface ChildFormProps extends CollapseProps, StylesApiProps<ChildFormFactory> {
+    /**
+     * Title of the child form.
+     */
     title?: string;
+    /**
+     * Description of the child form.
+     */
     description?: string;
 }
 
