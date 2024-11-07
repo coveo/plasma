@@ -10,7 +10,7 @@ const Page = () => (
         section="Form"
         title="Child Form"
         propsMetadata={ChildFormMetadata}
-        description="A container part of a form that can be used to group fields that are conditionally displayed together."
+        description="A container, part of a form, that can be used to group fields which are conditionally displayed together."
         id="ChildFrom"
         demo={<ChildFormDemo />}
         examples={{
