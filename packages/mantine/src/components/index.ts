@@ -14,3 +14,4 @@ export * from './prompt';
 export * from './read-only';
 export * from './sticky-footer';
 export * from './table';
+export * from './child-form';

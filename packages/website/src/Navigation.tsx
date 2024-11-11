@@ -62,6 +62,7 @@ export const Navigation = () => (
             <InternalNavLink to="/form/Collection" label="Collection" />
             <InternalNavLink to="/form/CopyToClipboard" label="Copy to Clipboard" />
             <InternalNavLink to="/form/Form" label="Form" />
+            <InternalNavLink to="/form/ChildForm" label="Child Form" />
             <InternalNavLink to="/form/InlineConfirm" label="Inline confirm" />
         </NavLink>
         <NavLink label="Feedback" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>
