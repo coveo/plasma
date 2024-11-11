@@ -1,3 +1,12 @@
+## 55.2.0 (2024-11-11)
+
+* chore(deps): update dependency @types/node to v22 (#3941) a1c086a, closes #3941
+* fix(mantine): make EllipsisText style more adaptable (#3947) ad5f31e, closes #3947
+* fix(website): website search (#3948) 5d85a8e, closes #3948
+* feat(mantine): ChildForm component (#3945) 0abbbed, closes #3945
+
+
+
 ## 55.1.0 (2024-11-05)
 
 * feat(mantine): EllipsisText component supports line-clamp (#3943) 8a8da2b, closes #3943
