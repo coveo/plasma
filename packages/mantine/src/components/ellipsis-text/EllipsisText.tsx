@@ -66,14 +66,14 @@ export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref)
                 }
             }}
             onMouseLeave={() => setShowTooltip(false)}
-            display="flex"
-            w="100%"
             className={clsx(rootClass, {[classes.noWrap]: !lineClamp})}
             {...rootStyles}
             {...others}
         >
             <Tooltip label={children} opened={showTooltip} {...tooltipProps} {...getStyles('tooltip')}>
                 <Text
+                    span
+                    inherit
                     variant={variant}
                     ref={textRef}
                     className={clsx(textClass, {[classes.ellipsis]: !lineClamp})}
