@@ -58,7 +58,6 @@ const Demo = () => {
                         {value: 'between20to60', label: '20 to 60'},
                         {value: 'above60', label: 'Above 60'},
                     ]}
-                    comboboxProps={{width: 300}}
                 />
                 <Table.Predicate
                     id="status"
