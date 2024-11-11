@@ -20,7 +20,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
     return (
         <>
             {!state.hasResults && !state.isLoading ? (
-                <Container size="xl" className="home" pt="150">
+                <Container size="xl" className="home" pt="lg">
                     <Box w="100%">
                         <AtomicSearchInterface engine={engine}>
                             <NoSearchResultTemplate engine={engine} query={query} />
@@ -28,7 +28,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
                     </Box>
                 </Container>
             ) : (
-                <Container size="xl" className="home" pt="150">
+                <Container size="xl" className="home" pt="lg">
                     <Stack gap="md" flex="1">
                         <AtomicSearchInterface engine={engine}>
                             <AtomicQuerySummary />

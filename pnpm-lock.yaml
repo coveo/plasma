@@ -24,8 +24,8 @@ importers:
         specifier: 19.5.0
         version: 19.5.0
       '@coveo/semantic-monorepo-tools':
-        specifier: 2.4.59
-        version: 2.4.59
+        specifier: 2.5.4
+        version: 2.5.4
       '@eslint/compat':
         specifier: 1.2.1
         version: 1.2.1(eslint@9.13.0(jiti@1.21.6))
@@ -472,11 +472,11 @@ importers:
   packages/website:
     dependencies:
       '@coveo/atomic-react':
-        specifier: 3.1.7
-        version: 3.1.7(@coveo/headless@3.4.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 3.2.4
+        version: 3.2.4(@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@coveo/headless':
-        specifier: 3.4.0
-        version: 3.4.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)
+        specifier: 3.8.1
+        version: 3.8.1(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -779,32 +779,30 @@ packages:
     resolution: {integrity: sha512-DSHae2obMSMkAtTBSOulg5X7/z+rGLxcXQIkg3OmWvY6wifojge5uVMydfhUvs7yQj+V7jNmRZ2Xzl8GJyqRgg==}
     engines: {node: '>=v18'}
 
-  '@coveo/atomic-react@3.1.7':
-    resolution: {integrity: sha512-FkoqGOAsiXYqgsP6JZ5iknrMD6JCr703KV18nPxHATC/nbyNwQFlpL42nqC3no3bt/Yu1zFjnF0pofi1Chd/bQ==}
+  '@coveo/atomic-react@3.2.4':
+    resolution: {integrity: sha512-0pdq+gh2FFnBqGByr1f4gw8TDCkfxNQD4gO8PMSCjKnuK6vopcEmvwHbuyufDn7tFngwVCLl/rFiQgJ7k9kA2w==}
+    engines: {node: ^20.9.0 || ^22.11.0}
     peerDependencies:
-      '@coveo/headless': 3.4.1
+      '@coveo/headless': 3.8.1
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@coveo/atomic@3.4.1':
-    resolution: {integrity: sha512-MdUxAjEgL+nUiMb71lzrnGgj4z99EYIbDuhuSBzm5PqIvz4cR9FiHfVQaIHjATTeOr+9j7AnCVWAshH8CQq4lg==}
-    engines: {node: '>=12.9.0'}
+  '@coveo/atomic@3.10.1':
+    resolution: {integrity: sha512-Yd14ArondiouKijJISIcWg4ZHWdBp9E9cs5hfchgOfx5gmEtPqtxQ6q0CvWbpBWgCuTSsSX9qLEnmhE+lTcmRg==}
+    engines: {node: ^20.9.0 || ^22.11.0}
     peerDependencies:
-      '@coveo/headless': 3.4.1
+      '@coveo/headless': 3.8.1
 
-  '@coveo/bueno@0.46.3':
-    resolution: {integrity: sha512-xIxv7CqJfFQjJsY6KkMnVqjNsbRz8ezeiWS+d4CFqH9RCqJNV0ct9gklMvf8WoxOLXAICBpzMy3BaaDVjyp2pA==}
-
-  '@coveo/bueno@1.0.1':
-    resolution: {integrity: sha512-yyeWg9hHM6RX1/GE2qlU81ektWabUr3pvphwNhOEm+fa9qVO3F8jaZ/ZmeeWM6W2q8kESav3BKZX+fpFuJWLRA==}
-    engines: {node: ^20.9.0}
+  '@coveo/bueno@1.0.5':
+    resolution: {integrity: sha512-P2j0M2WFlI+VlnyDBpn/sgMIk3VeH+6xZ4RI85PPxEnqRTg/9jTgFqmLdP7iK4Ps5lgd4HAZ6hxfft77wgzCbg==}
+    engines: {node: ^20.9.0 || ^22.11.0}
 
   '@coveo/explorer-messenger@0.4.0':
     resolution: {integrity: sha512-nVxwn+4Z+SZe6K94evxPaIeJWJq7hATNaUrTKznnauVptFMYcujts/nnhMplddm9ePg7NgZQjvcHwbi5kqw/EA==}
 
-  '@coveo/headless@3.4.0':
-    resolution: {integrity: sha512-aheYW7Oht0+lAXys3QrM8SVxStuq06HQCXRyOpazpGZMaCROJblcP2irxo5QqB45T4qVY0HqurJXOYswPkqJKg==}
-    engines: {node: ^20.9.0}
+  '@coveo/headless@3.8.1':
+    resolution: {integrity: sha512-eHic21zYCQP19PIi6+iDtXnyn50uG4rdcugVMO01j5qOWlcUDy+IzOhq64M/VFhg0ZpXHYEXAMsY5mWvcpU/OA==}
+    engines: {node: ^20.9.0 || ^22.11.0}
     peerDependencies:
       encoding: ^0.1.13
       pino-pretty: ^6.0.0 || ^10.0.0 || ^11.0.0
@@ -815,8 +813,8 @@ packages:
   '@coveo/relay@0.7.10':
     resolution: {integrity: sha512-d/4Vf8wwj746M0RV9xAek7SV/rZhv3ERoQoZo6I2IKAqzMxX8r0Vyrau+UZG1sdxybd6zzo8AVIzvRFHGXxvnA==}
 
-  '@coveo/semantic-monorepo-tools@2.4.59':
-    resolution: {integrity: sha512-8vVpD8w/Ipl97y2fY0v+L3C/vpwF99TCMDUavskLlov8dyssKow5SCV/pZJjwmdlMza2M2aXWm6iqjCPdvgHKA==}
+  '@coveo/semantic-monorepo-tools@2.5.4':
+    resolution: {integrity: sha512-y0r+G2LfY25lHRAzacz7E/s+qHd6D2tPuPGDgpf0W4ucH9XL2Duenh/nnpf3y9pB/Ar2KyEHGGG0FoOJFrGMQw==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -2501,9 +2499,6 @@ packages:
   core-js-pure@3.38.1:
     resolution: {integrity: sha512-BY8Etc1FZqdw1glX0XNOq2FDwfrg/VGqoZOZCdaL+UmdaqDwQwYXkMJT4t6In+zfEfOJDcM9T0KdbBeJg8KKCQ==}
 
-  core-js@3.37.1:
-    resolution: {integrity: sha512-Xn6qmxrQZyB0FFY8E3bgRXei3lWDJHhvI+u0q9TKIYM49G8pAr0FgnnrFRAmsbptZL1yxRADVXn+x5AGsbBfyw==}
-
   cosmiconfig-typescript-loader@5.1.0:
     resolution: {integrity: sha512-7PtBB+6FdsOvZyJtlF3hEPpACq7RQX6BVGsgC7/lfVXnKMvNCu/XY3ykreqG5w/rBNdu2z8LCIKoF3kpHHdHlA==}
     engines: {node: '>=v16'}
@@ -2530,8 +2525,8 @@ packages:
       typescript:
         optional: true
 
-  coveo.analytics@2.30.39:
-    resolution: {integrity: sha512-Vce17Mq9lwoBY587ZHqLOcKCu0ufymrWpiZ1X0K6NeoDFygcBFz/7vkpn+mnihG/67AnylhGVcloDWkfRLqnEQ==}
+  coveo.analytics@2.30.42:
+    resolution: {integrity: sha512-O+S7tCJIypYRF4aqsJc6KZtUC4c7oQE5WhrMSgieJT4jSlOWwasfKCSQhhN+YJ0XgLw5kQRqxiBZFHcCU5jX5A==}
 
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
@@ -5960,10 +5955,10 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.0
       chalk: 5.3.0
 
-  '@coveo/atomic-react@3.1.7(@coveo/headless@3.4.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@coveo/atomic-react@3.2.4(@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@coveo/atomic': 3.4.1(@coveo/headless@3.4.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)
-      '@coveo/headless': 3.4.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)
+      '@coveo/atomic': 3.10.1(@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)
+      '@coveo/headless': 3.8.1(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
@@ -5971,14 +5966,13 @@ snapshots:
       - encoding
       - postcss
 
-  '@coveo/atomic@3.4.1(@coveo/headless@3.4.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)':
+  '@coveo/atomic@3.10.1(@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.47)':
     dependencies:
-      '@coveo/bueno': 0.46.3
-      '@coveo/headless': 3.4.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)
+      '@coveo/bueno': 1.0.5
+      '@coveo/headless': 3.8.1(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)
       '@popperjs/core': 2.11.8
       '@salesforce-ux/design-system': 2.25.3(postcss@8.4.47)
       '@stencil/store': 2.0.16(@stencil/core@4.22.1(patch_hash=l4z4izduz5zse4eflkg54f45km))
-      core-js: 3.37.1
       dayjs: 1.11.12
       dompurify: 3.1.6
       escape-html: 1.0.3
@@ -5993,21 +5987,19 @@ snapshots:
       - encoding
       - postcss
 
-  '@coveo/bueno@0.46.3': {}
-
-  '@coveo/bueno@1.0.1': {}
+  '@coveo/bueno@1.0.5': {}
 
   '@coveo/explorer-messenger@0.4.0': {}
 
-  '@coveo/headless@3.4.0(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)':
+  '@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@11.3.0)(react@18.3.1)(redux@5.0.1)':
     dependencies:
-      '@coveo/bueno': 1.0.1
+      '@coveo/bueno': 1.0.5
       '@coveo/relay': 0.7.10
       '@coveo/relay-event-types': 12.0.1
       '@microsoft/fetch-event-source': 2.0.1
       '@reduxjs/toolkit': 2.2.7(react@18.3.1)
       abortcontroller-polyfill: 1.7.5
-      coveo.analytics: 2.30.39(encoding@0.1.13)
+      coveo.analytics: 2.30.42(encoding@0.1.13)
       dayjs: 1.11.12
       encoding: 0.1.13
       exponential-backoff: 3.1.0
@@ -6031,7 +6023,7 @@ snapshots:
       '@coveo/explorer-messenger': 0.4.0
       uuid: 9.0.1
 
-  '@coveo/semantic-monorepo-tools@2.4.59':
+  '@coveo/semantic-monorepo-tools@2.5.4':
     dependencies:
       conventional-changelog-writer: 7.0.1
       conventional-commits-parser: 5.0.0
@@ -7656,8 +7648,6 @@ snapshots:
 
   core-js-pure@3.38.1: {}
 
-  core-js@3.37.1: {}
-
   cosmiconfig-typescript-loader@5.1.0(@types/node@20.16.13)(cosmiconfig@9.0.0(typescript@5.6.3))(typescript@5.6.3):
     dependencies:
       '@types/node': 20.16.13
@@ -7683,7 +7673,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.6.3
 
-  coveo.analytics@2.30.39(encoding@0.1.13):
+  coveo.analytics@2.30.42(encoding@0.1.13):
     dependencies:
       '@types/uuid': 9.0.8
       cross-fetch: 3.1.8(encoding@0.1.13)
