@@ -66,7 +66,7 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<Ta
             {...getStyles('predicate', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Group gap="xs" {...getStyles('predicateWrapper', stylesApiProps)}>
+            <Group gap="xs" wrap="nowrap" {...getStyles('predicateWrapper', stylesApiProps)}>
                 {label ? <Text {...getStyles('predicateLabel', stylesApiProps)}>{label}:</Text> : null}
                 <Select
                     comboboxProps={{withinPortal: true, ...comboboxProps}}
