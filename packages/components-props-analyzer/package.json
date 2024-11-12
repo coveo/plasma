@@ -30,7 +30,7 @@
         "@swc/cli": "0.5.0",
         "@swc/core": "1.8.0",
         "@types/fs-extra": "11.0.4",
-        "@types/node": "22.8.7",
+        "@types/node": "22.9.0",
         "@types/react": "18.3.12",
         "@types/react-dom": "18.3.1",
         "@typescript/twoslash": "3.2.8",
