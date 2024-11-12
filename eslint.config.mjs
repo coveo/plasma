@@ -22,7 +22,7 @@ export default tsEslint.config(
             import: eslintPluginImport,
             jsdoc,
             'prefer-arrow': preferArrow,
-            'react-hooks': fixupPluginRules(reactHooks),
+            'react-hooks': reactHooks,
             'unused-imports': unusedImports,
         },
         languageOptions: {
@@ -49,6 +49,7 @@ export default tsEslint.config(
             },
         },
         rules: {
+            ...reactHooks.configs.recommended.rules,
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'off',
             '@typescript-eslint/array-type': [
