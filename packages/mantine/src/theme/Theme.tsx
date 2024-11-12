@@ -194,9 +194,8 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
         }),
         Input: Input.extend({
-            classNames: (theme, props) => {
+            classNames: (_theme, props) => {
                 const anyProps = props as any;
-                // eslint-disable-next-line no-underscore-dangle
                 if (anyProps.readOnly && !props.disabled && !['Select'].includes(anyProps.__staticSelector)) {
                     return deepMerge(InputClasses, ReadOnlyInputClasses);
                 }
