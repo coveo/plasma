@@ -1,6 +1,5 @@
-import {Button, CompoundStylesApiProps, factory, Factory, useProps} from '@mantine/core';
-import {ButtonProps} from '../button/Button';
-import {ButtonWithDisabledTooltip} from '../button/ButtonWithDisabledTooltip';
+import {CompoundStylesApiProps, factory, Factory, useProps} from '@mantine/core';
+import {Button, ButtonProps} from '../button/Button';
 import {PromptVariant} from './Prompt';
 import {usePromptContext} from './Prompt.context';
 
@@ -43,18 +42,15 @@ export const PromptConfirmButton = factory<PromptConfirmButtonFactory>((_props, 
     } = props;
 
     return (
-        <ButtonWithDisabledTooltip
+        <Button
+            ref={ref}
+            variant="filled"
+            color={COLOR_BY_VARIANT[variant]}
             disabled={disabled}
             disabledTooltip={disabledTooltip}
             disabledTooltipProps={disabledTooltipProps}
-        >
-            <Button
-                ref={ref}
-                variant="filled"
-                color={COLOR_BY_VARIANT[variant]}
-                {...others}
-                {...getStyles('confirm', {style, styles, className, classNames})}
-            />
-        </ButtonWithDisabledTooltip>
+            {...others}
+            {...getStyles('confirm', {style, styles, className, classNames})}
+        />
     );
 });
