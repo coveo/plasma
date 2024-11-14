@@ -1,3 +1,9 @@
+## 55.3.0 (2024-11-14)
+
+* feat(prompt): +disabledwithtooltip on confirm button (#3952) 7541d78, closes #3952
+
+
+
 ## <small>55.2.1 (2024-11-14)</small>
 
 * fix(mantine, table): add combobox props on Table.Predicate (#3949) baf2888, closes #3949
