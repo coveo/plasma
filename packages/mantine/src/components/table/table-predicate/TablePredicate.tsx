@@ -20,7 +20,7 @@ export type TablePredicateStylesNames = 'predicate' | 'predicateWrapper' | 'pred
 
 export interface TablePredicateProps
     extends BoxProps,
-        Pick<SelectProps, 'renderOption'>,
+        Pick<SelectProps, 'renderOption' | 'comboboxProps'>,
         CompoundStylesApiProps<TablePredicateFactory> {
     /**
      * Unique identifier for this predicate. Will be used to access the selected value in the table state
@@ -48,11 +48,8 @@ const defaultProps: Partial<TablePredicateProps> = {};
 
 export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<TablePredicateFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();
-    const {id, data, label, classNames, className, styles, style, renderOption, vars, ...others} = useProps(
-        'PlasmaTablePredicate',
-        defaultProps,
-        props,
-    );
+    const {id, data, label, classNames, className, styles, style, renderOption, comboboxProps, vars, ...others} =
+        useProps('PlasmaTablePredicate', defaultProps, props);
 
     const handleChange = (newValue: string) => {
         store.setPredicates((prev) => ({...prev, [id]: newValue}));
@@ -69,10 +66,10 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<Ta
             {...getStyles('predicate', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Group gap="xs" {...getStyles('predicateWrapper', stylesApiProps)}>
+            <Group gap="xs" wrap="nowrap" {...getStyles('predicateWrapper', stylesApiProps)}>
                 {label ? <Text {...getStyles('predicateLabel', stylesApiProps)}>{label}:</Text> : null}
                 <Select
-                    comboboxProps={{withinPortal: true}}
+                    comboboxProps={{withinPortal: true, ...comboboxProps}}
                     value={store.state.predicates[id]}
                     onChange={handleChange}
                     data={data}
