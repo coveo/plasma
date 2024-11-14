@@ -12,19 +12,23 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
-import classes from './Prompt.module.css';
 import Critical from './icons/critical.svg';
 import Info from './icons/info.svg';
 import Success from './icons/success.svg';
 import Warning from './icons/warning.svg';
 import {PromptContextProvider} from './Prompt.context';
+import classes from './Prompt.module.css';
 import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton';
-import {PromptConfirmButton} from './PromptConfirmButton';
+import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton';
 import {PromptFooter} from './PromptFooter';
 
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
 export type PromptVars = {root: '--prompt-icon-size'};
-export type PromptStylesNames = ModalStylesNames | 'icon' | PromptCancelButtonStylesNamesVariant;
+export type PromptStylesNames =
+    | ModalStylesNames
+    | 'icon'
+    | PromptCancelButtonStylesNamesVariant
+    | PromptConfirmButtonStylesNamesVariant;
 
 export interface PromptProps
     extends StylesApiProps<PromptFactory>,
