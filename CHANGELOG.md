@@ -1,3 +1,13 @@
+## <small>55.2.1 (2024-11-14)</small>
+
+* fix(mantine, table): add combobox props on Table.Predicate (#3949) baf2888, closes #3949
+* fix(deps): update dependency pino-pretty to v12 (#3953) dda6781, closes #3953
+* chore(deps): update all non-major dependencies (#3946) 01aaa73, closes #3946
+* chore(deps): update dependency @types/node to v22.9.0 (#3950) 9c73ef6, closes #3950
+* chore(deps): update dependency eslint-plugin-react-hooks to v5 (#3923) 869887c, closes #3923
+
+
+
 ## 55.2.0 (2024-11-11)
 
 * chore(deps): update dependency @types/node to v22 (#3941) a1c086a, closes #3941
