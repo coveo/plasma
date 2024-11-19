@@ -20,14 +20,34 @@
 }
 
 /* Table.Actions */
+
+/* Hide empty menus */
+.actionsTarget {
+    display: none;
+
+    &:has(+ .actionsDropdown :global(.mantine-Menu-item)) {
+        display: block;
+    }
+}
+
 .actionsDropdown {
     text-align: left;
+}
+
+.actionsGroupDivider {
+    display: none;
 }
 
 .actionsGroup {
     &:has(.actionsGroupItems:empty) {
         /* Hide empty groups */
         display: none;
+    }
+
+    &:has(~ .actionsGroup :global(.mantine-Menu-item)) {
+        .actionsGroupDivider {
+            display: block;
+        }
     }
 }
 
