@@ -107,6 +107,16 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
         propsType: 'ChildFormProps',
     },
+    {
+        name: 'DateRangePickerPopoverCalendar',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'DateRangePickerPopoverCalendarProps',
+    },
+    {
+        name: 'DateRangePickerInlineCalendar',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'DateRangePickerInlineCalendarProps',
+    },
 ];
 
 export default components;
