@@ -12,8 +12,8 @@
         "type-check": "tsc --noEmit"
     },
     "dependencies": {
-        "@coveo/atomic-react": "3.2.4",
-        "@coveo/headless": "3.8.1",
+        "@coveo/atomic-react": "3.2.5",
+        "@coveo/headless": "3.9.0",
         "@coveord/plasma-components-props-analyzer": "workspace:*",
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",

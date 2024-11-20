@@ -472,11 +472,11 @@ importers:
   packages/website:
     dependencies:
       '@coveo/atomic-react':
-        specifier: 3.2.4
-        version: 3.2.4(@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.2(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.49)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 3.2.5
+        version: 3.2.5(@coveo/headless@3.9.0(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.2(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.49)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@coveo/headless':
-        specifier: 3.8.1
-        version: 3.8.1(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1)
+        specifier: 3.9.0
+        version: 3.9.0(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1)
       '@coveord/plasma-components-props-analyzer':
         specifier: workspace:*
         version: link:../components-props-analyzer
@@ -775,29 +775,29 @@ packages:
     resolution: {integrity: sha512-DSHae2obMSMkAtTBSOulg5X7/z+rGLxcXQIkg3OmWvY6wifojge5uVMydfhUvs7yQj+V7jNmRZ2Xzl8GJyqRgg==}
     engines: {node: '>=v18'}
 
-  '@coveo/atomic-react@3.2.4':
-    resolution: {integrity: sha512-0pdq+gh2FFnBqGByr1f4gw8TDCkfxNQD4gO8PMSCjKnuK6vopcEmvwHbuyufDn7tFngwVCLl/rFiQgJ7k9kA2w==}
+  '@coveo/atomic-react@3.2.5':
+    resolution: {integrity: sha512-LE7e3OkOwubl+WzjWg8YQAn/EzG8/KwvNt7Tti5fT5ElCziXVT81Rjro8BVp7OfCeuQZ7AbGvbZtf1DuILS90w==}
     engines: {node: ^20.9.0 || ^22.11.0}
     peerDependencies:
-      '@coveo/headless': 3.8.1
+      '@coveo/headless': 3.9.0
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@coveo/atomic@3.10.1':
-    resolution: {integrity: sha512-Yd14ArondiouKijJISIcWg4ZHWdBp9E9cs5hfchgOfx5gmEtPqtxQ6q0CvWbpBWgCuTSsSX9qLEnmhE+lTcmRg==}
+  '@coveo/atomic@3.11.0':
+    resolution: {integrity: sha512-NZnz0BT3u41HbKvrgYNOGOg0BLA9qgX/836Tdrr3fL06mkhEiwvq9bzlSeyqLqYmsYQKFMPe126keh2ZqvtH7Q==}
     engines: {node: ^20.9.0 || ^22.11.0}
     peerDependencies:
-      '@coveo/headless': 3.8.1
+      '@coveo/headless': 3.9.0
 
-  '@coveo/bueno@1.0.5':
-    resolution: {integrity: sha512-P2j0M2WFlI+VlnyDBpn/sgMIk3VeH+6xZ4RI85PPxEnqRTg/9jTgFqmLdP7iK4Ps5lgd4HAZ6hxfft77wgzCbg==}
+  '@coveo/bueno@1.0.6':
+    resolution: {integrity: sha512-JSnQWjCMcIleTHegU6nIgFBiJ8D3vS1GzlX2DqemvF2GllW77tI0HCJvUqWf4qNNSlLrR3jOcubHp9oXUEhvUw==}
     engines: {node: ^20.9.0 || ^22.11.0}
 
   '@coveo/explorer-messenger@0.4.0':
     resolution: {integrity: sha512-nVxwn+4Z+SZe6K94evxPaIeJWJq7hATNaUrTKznnauVptFMYcujts/nnhMplddm9ePg7NgZQjvcHwbi5kqw/EA==}
 
-  '@coveo/headless@3.8.1':
-    resolution: {integrity: sha512-eHic21zYCQP19PIi6+iDtXnyn50uG4rdcugVMO01j5qOWlcUDy+IzOhq64M/VFhg0ZpXHYEXAMsY5mWvcpU/OA==}
+  '@coveo/headless@3.9.0':
+    resolution: {integrity: sha512-N93C6XHSVgm5i3tYg7VJbwpqIJM8Pp5s8O943Vg2AAlZ29mDGwgUmhCl5kArdj2eOdopDpadZsFvWxV585joXA==}
     engines: {node: ^20.9.0 || ^22.11.0}
     peerDependencies:
       encoding: ^0.1.13
@@ -5965,10 +5965,10 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.0
       chalk: 5.3.0
 
-  '@coveo/atomic-react@3.2.4(@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.2(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.49)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@coveo/atomic-react@3.2.5(@coveo/headless@3.9.0(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.2(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.49)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@coveo/atomic': 3.10.1(@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.2(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.49)
-      '@coveo/headless': 3.8.1(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1)
+      '@coveo/atomic': 3.11.0(@coveo/headless@3.9.0(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.2(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.49)
+      '@coveo/headless': 3.9.0(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
@@ -5976,10 +5976,10 @@ snapshots:
       - encoding
       - postcss
 
-  '@coveo/atomic@3.10.1(@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.2(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.49)':
+  '@coveo/atomic@3.11.0(@coveo/headless@3.9.0(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1))(@stencil/core@4.22.2(patch_hash=l4z4izduz5zse4eflkg54f45km))(encoding@0.1.13)(postcss@8.4.49)':
     dependencies:
-      '@coveo/bueno': 1.0.5
-      '@coveo/headless': 3.8.1(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1)
+      '@coveo/bueno': 1.0.6
+      '@coveo/headless': 3.9.0(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1)
       '@popperjs/core': 2.11.8
       '@salesforce-ux/design-system': 2.25.3(postcss@8.4.49)
       '@stencil/store': 2.0.16(@stencil/core@4.22.2(patch_hash=l4z4izduz5zse4eflkg54f45km))
@@ -5997,13 +5997,13 @@ snapshots:
       - encoding
       - postcss
 
-  '@coveo/bueno@1.0.5': {}
+  '@coveo/bueno@1.0.6': {}
 
   '@coveo/explorer-messenger@0.4.0': {}
 
-  '@coveo/headless@3.8.1(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1)':
+  '@coveo/headless@3.9.0(encoding@0.1.13)(pino-pretty@13.0.0)(react@18.3.1)(redux@5.0.1)':
     dependencies:
-      '@coveo/bueno': 1.0.5
+      '@coveo/bueno': 1.0.6
       '@coveo/relay': 0.7.10
       '@coveo/relay-event-types': 12.0.1
       '@microsoft/fetch-event-source': 2.0.1
