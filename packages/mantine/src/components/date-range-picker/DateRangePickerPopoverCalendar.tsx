@@ -63,23 +63,24 @@ export const DateRangePickerPopoverCalendar = ({
 
     return (
         <>
-            <Group align="center">
-                <EditableDateRangePicker
-                    value={_value}
-                    onChange={handleChange}
-                    onFocus={() => setOpened(true)}
-                    startProps={startProps}
-                    endProps={endProps}
-                />
-                {presets ? (
-                    <>
-                        <Space w="sm" />
-                        <DateRangePickerPresetSelect presets={presets} value={_value} onChange={handleChange} />
-                    </>
-                ) : null}
-            </Group>
-
             <Popover opened={opened} onChange={setOpened} trapFocus>
+                <Popover.Target>
+                    <Group align="center">
+                        <EditableDateRangePicker
+                            value={_value}
+                            onChange={handleChange}
+                            onFocus={() => setOpened(true)}
+                            startProps={startProps}
+                            endProps={endProps}
+                        />
+                        {presets ? (
+                            <>
+                                <Space w="sm" />
+                                <DateRangePickerPresetSelect presets={presets} value={_value} onChange={handleChange} />
+                            </>
+                        ) : null}
+                    </Group>
+                </Popover.Target>
                 <Popover.Dropdown>
                     <DatePicker
                         ref={ref}
