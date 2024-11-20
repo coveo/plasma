@@ -1,3 +1,17 @@
+## <small>55.3.1 (2024-11-20)</small>
+
+* chore(deps): lock file maintenance (#3955) 4df13eb, closes #3955
+* chore(deps): update all non-major dependencies (#3951) eadec3e, closes #3951
+* chore(deps): update all non-major dependencies (#3956) e49e3e5, closes #3956
+* chore(deps): update all non-major dependencies (#3957) 6b647e4, closes #3957
+* chore(deps): update all non-major dependencies (#3960) 5245288, closes #3960
+* chore(deps): update dependency vitest to v2.1.5 (#3961) 0e4df1d, closes #3961
+* fix(mantine, date-range): popover opens close to dropdown (#3959) c26776e, closes #3959
+* fix(deps): update dependency pino-pretty to v13 (#3954) 84a0b9e, closes #3954
+* fix(mantine): hide table more menu if no actions are visible (#3958) 612f1dc, closes #3958
+
+
+
 ## 55.3.0 (2024-11-14)
 
 * feat(prompt): +disabledwithtooltip on confirm button (#3952) 7541d78, closes #3952
