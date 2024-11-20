@@ -129,7 +129,7 @@ export const TableActionsList = (props: TableActionsListProps) => {
                 <TableActionProvider value={{primary: true}}>{primaryActions}</TableActionProvider>
                 {secondaryActionGroups.length > 0 ? (
                     <TableActionProvider value={{primary: false}}>
-                        <Menu withinPortal={false} {...others}>
+                        <Menu withinPortal={false} {...others} keepMounted>
                             <Menu.Target>
                                 <Button
                                     {...getStyles('actionsTarget', {styles, classNames})}
@@ -156,13 +156,13 @@ export const TableActionsList = (props: TableActionsListProps) => {
         <InlineConfirm>
             {confirmPrompts}
             <TableActionProvider value={{primary: false}}>
-                <Menu opened={opened} onChange={onChange} {...others}>
+                <Menu opened={opened} onChange={onChange} {...others} keepMounted>
                     <Menu.Target>
                         <Tooltip label={label} {...getStyles('actionsTooltip', {styles, classNames})}>
                             <ActionIcon
+                                {...getStyles('actionsTarget', {styles, classNames})}
                                 onClick={onClick}
                                 variant="subtle"
-                                {...getStyles('actionsTarget', {styles, classNames})}
                             >
                                 {icon}
                             </ActionIcon>
