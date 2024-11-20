@@ -1,6 +1,7 @@
 import {AppShell, Image, NavLink, NavLinkProps, ScrollArea} from '@coveord/plasma-mantine';
 import {
     AnnouncementSize16Px,
+    CalendarSize16Px,
     ClickSize16Px,
     DiamondSize16Px,
     ExternalSize16Px,
@@ -64,6 +65,10 @@ export const Navigation = () => (
             <InternalNavLink to="/form/Form" label="Form" />
             <InternalNavLink to="/form/ChildForm" label="Child Form" />
             <InternalNavLink to="/form/InlineConfirm" label="Inline confirm" />
+        </NavLink>
+        <NavLink label="Date range" leftSection={<CalendarSize16Px height={16} />} defaultOpened>
+            <InternalNavLink to="/date-range/DateRangePickerPopoverCalendar" label="Popover calendar" />
+            <InternalNavLink to="/date-range/DateRangePickerInlineCalendar" label="Inline calendar" />
         </NavLink>
         <NavLink label="Feedback" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>
             <InternalNavLink to="/feedback/Alert" label="Alert" />
