@@ -1,6 +1,6 @@
 .root {
     position: sticky;
-    bottom: 0;
+    bottom: -1px;
     z-index: 10;
     background-color: white;
     padding: var(--mantine-spacing-md) var(--mantine-spacing-lg);
