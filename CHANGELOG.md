@@ -1,3 +1,10 @@
+## <small>55.3.2 (2024-11-27)</small>
+
+* fix(mantine): make table root have 100% width (#3965) 19f2547, closes #3965
+* chore(deps): lock file maintenance (#3964) 227f786, closes #3964
+
+
+
 ## <small>55.3.1 (2024-11-20)</small>
 
 * chore(deps): lock file maintenance (#3955) 4df13eb, closes #3955
