@@ -43,7 +43,7 @@
         "react-hook-form": "7.53.2",
         "react-imask": "7.6.1",
         "react-markdown": "9.0.1",
-        "react-router-dom": "6.28.0",
+        "react-router-dom": "7.0.1",
         "redux": "5.0.1",
         "remark-gfm": "4.0.0"
     },
