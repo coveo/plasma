@@ -2,9 +2,9 @@
 
 A slider is appropriate when providing **an exact value is not important**. Sliders typically allow users to adjust the intensity of an effect, such as a percentage of opacity, or when an approximate value is sufficient, for example when choosing a flight departure time. It helps visualize a range of allowed values. Consider the following:
 
--   Use a slider when page real estate is not an issue and when visualizing the range helps users make more informed choices.
--   The slider should have a range of up to 100 values.
--   If the range is short (i.e., 5 values or less) or large (i.e., over 50 values), consider using a [numeric input](https://plasma.coveo.com/form/NumericInput) instead.
+- Use a slider when page real estate is not an issue and when visualizing the range helps users make more informed choices.
+- The slider should have a range of up to 100 values.
+- If the range is short (i.e., 5 values or less) or large (i.e., over 50 values), consider using a [numeric input](https://plasma.coveo.com/form/NumericInput) instead.
 
 Use sliders carefully, as they can be difficult to control on smaller devices or when the range is very large but the space is limited.
 
