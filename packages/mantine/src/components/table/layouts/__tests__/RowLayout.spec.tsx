@@ -402,6 +402,32 @@ describe('RowLayout', () => {
 
             expect(onClick).not.toHaveBeenCalled();
         });
+
+        it('does not trigger the double click action when double clicking on the selection checkbox', async () => {
+            const user = userEvent.setup();
+            const doubleClickSpy = vi.fn();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'Mario'},
+                {id: '🆔-2', firstName: 'Luigi'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table<RowData>
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        layoutProps={{onRowDoubleClick: doubleClickSpy}}
+                    />
+                );
+            };
+            render(<Fixture />);
+            await user.dblClick(
+                within(screen.getByRole('row', {name: /Mario/i})).getByRole('checkbox', {name: /select row/i}),
+            );
+            expect(doubleClickSpy).not.toHaveBeenCalled();
+        });
     });
 
     it('passes down attributes given by getRowAttributes function to the row element', () => {

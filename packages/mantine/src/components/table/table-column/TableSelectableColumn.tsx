@@ -32,6 +32,10 @@ export const TableSelectableColumn: ColumnDef<unknown> = {
             onChange={row.getToggleSelectedHandler()}
             flex={1}
             aria-label="Select row"
+            onDoubleClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+            }}
         />
     ),
 };
