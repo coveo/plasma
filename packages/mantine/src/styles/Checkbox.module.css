@@ -12,4 +12,9 @@
             color: var(--mantine-color-gray-6);
         }
     }
+
+    &[readonly] {
+        background-color: var(--mantine-color-gray-2);
+        border-color: var(--mantine-color-gray-2);
+    }
 }
