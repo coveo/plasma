@@ -17,8 +17,8 @@ Help text provides extra guidance on what information to provide or how the user
 Help text should be **short, preferably on one line**.
 There are two ways to provide help text:
 
--   Written instructions (e.g., "Provide your business email.")
--   Example (e.g., "E.g., johndoe@acme.com")
+- Written instructions (e.g., "Provide your business email.")
+- Example (e.g., "E.g., johndoe@acme.com")
 
 A combination of both is also acceptable.
 
@@ -37,6 +37,6 @@ If providing the information is optional, the text input will be automatically t
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Text Area](https://plasma.coveo.com/form/TextArea) - When users need to enter longer text.
--   [Numeric input](https://plasma.coveo.com/form/NumericInput) - When only numerical characters are allowed.
--   [Single select](https://plasma.coveo.com/form/SingleSelect) - When users need to select an option from a list instead.
+- [Text Area](https://plasma.coveo.com/form/TextArea) - When users need to enter longer text.
+- [Numeric input](https://plasma.coveo.com/form/NumericInput) - When only numerical characters are allowed.
+- [Single select](https://plasma.coveo.com/form/SingleSelect) - When users need to select an option from a list instead.

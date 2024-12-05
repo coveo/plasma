@@ -32,12 +32,12 @@ Allow the addition of custom values only when it doesn't increase the risk of fa
 
 Examples:
 
--   When users select a country: do not allow custom values.
--   When users select their favorite color: allow custom values.
+- When users select a country: do not allow custom values.
+- When users select their favorite color: allow custom values.
 
 # Related Components
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Radio buttons](https://plasma.coveo.com/form/RadioButton) - When there are seven options or less.
--   [Multi select](https://plasma.coveo.com/form/MultiSelect) - When users can select multiple options from the list.
+- [Radio buttons](https://plasma.coveo.com/form/RadioButton) - When there are seven options or less.
+- [Multi select](https://plasma.coveo.com/form/MultiSelect) - When users can select multiple options from the list.

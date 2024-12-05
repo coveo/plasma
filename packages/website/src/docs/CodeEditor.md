@@ -6,8 +6,8 @@ Be **extremely careful** when allowing users to edit code, as it greatly increas
 
 The code editor should:
 
--   Preferably take the full width of the section it appears in to reduce line wrap friction.
--   Be long enough to display a significant portion of the code and allow users to review it comfortably.
+- Preferably take the full width of the section it appears in to reduce line wrap friction.
+- Be long enough to display a significant portion of the code and allow users to review it comfortably.
 
 ## Labeling
 
@@ -34,4 +34,4 @@ If possible, consider adding a way for users to test their code before moving on
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [JSON editor](https://plasma.coveo.com/form/JSONEditor) - When the user needs to input code using JSON syntax.
+- [JSON editor](https://plasma.coveo.com/form/JSONEditor) - When the user needs to input code using JSON syntax.

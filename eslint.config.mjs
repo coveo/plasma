@@ -1,4 +1,3 @@
-import {fixupPluginRules} from '@eslint/compat';
 import vitest from '@vitest/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginImport from 'eslint-plugin-import-x';
@@ -224,7 +223,7 @@ export default tsEslint.config(
     {
         files: ['**/*.spec.ts', '**/*.spec.tsx'],
         plugins: {
-            'testing-library': fixupPluginRules(eslintPluginTestingLibrary),
+            'testing-library': eslintPluginTestingLibrary,
             vitest,
         },
         settings: {
