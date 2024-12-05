@@ -27,10 +27,10 @@
         "@coveord/plasma-mantine": "workspace:*"
     },
     "devDependencies": {
-        "@swc/cli": "0.5.0",
-        "@swc/core": "1.9.2",
+        "@swc/cli": "0.5.1",
+        "@swc/core": "1.9.3",
         "@types/fs-extra": "11.0.4",
-        "@types/node": "22.9.0",
+        "@types/node": "22.10.1",
         "@types/react": "18.3.12",
         "@types/react-dom": "18.3.1",
         "@typescript/twoslash": "3.2.8",
@@ -43,6 +43,6 @@
         "rimraf": "6.0.1",
         "ts-node": "10.9.2",
         "tslib": "2.8.1",
-        "typescript": "5.6.3"
+        "typescript": "5.7.2"
     }
 }
