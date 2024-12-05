@@ -47,7 +47,6 @@
         "@commitlint/cli": "19.6.0",
         "@commitlint/config-conventional": "19.6.0",
         "@coveo/semantic-monorepo-tools": "2.5.7",
-        "@eslint/compat": "1.2.3",
         "@sindresorhus/slugify": "2.2.1",
         "@types/node": "22.10.1",
         "@vitest/eslint-plugin": "1.1.12",
