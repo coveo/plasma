@@ -1,3 +1,18 @@
+## <small>55.3.3 (2024-12-05)</small>
+
+* fix(checkbox): readOnly checkbox style (#3974) 19ae8e5, closes #3974
+* fix(deps): update dependency react-router-dom to v7 (#3966) 2486305, closes #3966
+* fix(deps): update dnd-kit monorepo (#3968) f4372f8, closes #3968
+* fix(tabel): reset pagniation when applying date filter (#3970) 5dec458, closes #3970
+* fix(table): prevent double click action on row selection checkboxes (#3973) d78b44b, closes #3973
+* chore(deps): lock file maintenance (#3969) 6464c6d, closes #3969
+* chore(deps): update all non-major dependencies (#3962) cf7e936, closes #3962
+* chore(deps): update all non-major dependencies (#3972) b3a514d, closes #3972
+* chore(deps): update dependency eslint-plugin-testing-library to v7 (#3967) 89ccad4, closes #3967
+* chore(deps): update dependency vite to v6 (#3971) c648128, closes #3971
+
+
+
 ## <small>55.3.2 (2024-11-27)</small>
 
 * fix(mantine): make table root have 100% width (#3965) 19f2547, closes #3965
