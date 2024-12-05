@@ -50,8 +50,8 @@
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "8.1.0",
         "@svgr/plugin-jsx": "8.1.0",
-        "@swc/cli": "0.5.0",
-        "@swc/core": "1.9.2",
+        "@swc/cli": "0.5.1",
+        "@swc/core": "1.9.3",
         "@types/react": "18.3.12",
         "@types/react-dom": "18.3.1",
         "fs-extra": "11.2.0",
@@ -63,7 +63,7 @@
         "react-dom": "18.3.1",
         "rimraf": "6.0.1",
         "tslib": "2.8.1",
-        "typescript": "5.6.3"
+        "typescript": "5.7.2"
     },
     "peerDependencies": {
         "react": ">= 18.0",
