@@ -69,6 +69,7 @@ const Demo = () => {
             getRowId={({id}) => id}
             columns={columns}
             options={options}
+            layoutProps={{onRowDoubleClick: (row) => alert(`Row double clicked: ${row.title}`)}}
             getRowActions={(selected: IExampleRowData[]): TableAction[] =>
                 selected.length === 1
                     ? [
