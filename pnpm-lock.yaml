@@ -33,8 +33,8 @@ importers:
         specifier: 22.10.1
         version: 22.10.1
       '@vitest/eslint-plugin':
-        specifier: 1.1.12
-        version: 1.1.12(@typescript-eslint/utils@8.16.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)(vitest@2.1.6(@types/node@22.10.1)(jiti@1.21.6)(jsdom@25.0.1)(sass@1.81.0)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1))
+        specifier: 1.1.13
+        version: 1.1.13(@typescript-eslint/utils@8.16.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)(vitest@2.1.6(@types/node@22.10.1)(jiti@1.21.6)(jsdom@25.0.1)(sass@1.81.0)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1))
       aws-sdk:
         specifier: 2.1692.0
         version: 2.1692.0
@@ -81,8 +81,8 @@ importers:
         specifier: 4.1.4
         version: 4.1.4(@typescript-eslint/eslint-plugin@8.16.0(@typescript-eslint/parser@8.16.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.16.0(jiti@1.21.6))
       globals:
-        specifier: 15.12.0
-        version: 15.12.0
+        specifier: 15.13.0
+        version: 15.13.0
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -1948,8 +1948,8 @@ packages:
     peerDependencies:
       vite: ^4 || ^5 || ^6
 
-  '@vitest/eslint-plugin@1.1.12':
-    resolution: {integrity: sha512-iv9K9fz9qRxBo9J/PGSMcLdOFIKqtFZ6THqSVG/jW8CJZFkIWLxPduCTXkbyG6FNKgL49fkv348nSgmfqCU6FA==}
+  '@vitest/eslint-plugin@1.1.13':
+    resolution: {integrity: sha512-oabbCT4fCQfmFNtH2UuDfHx1d7dzi+VD3qwCpBfECfyzQq/Re9u7qTtE2WqV/hAuAOALw3ZVRiub2mXmpTyn/Q==}
     peerDependencies:
       '@typescript-eslint/utils': '>= 8.0'
       eslint: '>= 8.57.0'
@@ -3289,8 +3289,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@15.12.0:
-    resolution: {integrity: sha512-1+gLErljJFhbOVyaetcwJiJ4+eLe45S2E7P5UiZ9xGfeq3ATQf5DOv9G7MH3gGbKQLkzmNh2DxfZwLdw+j6oTQ==}
+  globals@15.13.0:
+    resolution: {integrity: sha512-49TewVEz0UxZjr1WYYsWpPrhyC/B/pA8Bq0fUmet2n+eR7yn0IvNzNaoBwnK6mdkzcN+se7Ez9zUgULTz2QH4g==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -6998,7 +6998,7 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitest/eslint-plugin@1.1.12(@typescript-eslint/utils@8.16.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)(vitest@2.1.6(@types/node@22.10.1)(jiti@1.21.6)(jsdom@25.0.1)(sass@1.81.0)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1))':
+  '@vitest/eslint-plugin@1.1.13(@typescript-eslint/utils@8.16.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)(vitest@2.1.6(@types/node@22.10.1)(jiti@1.21.6)(jsdom@25.0.1)(sass@1.81.0)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1))':
     dependencies:
       '@typescript-eslint/utils': 8.16.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)
       eslint: 9.16.0(jiti@1.21.6)
@@ -8544,7 +8544,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@15.12.0: {}
+  globals@15.13.0: {}
 
   globalthis@1.0.4:
     dependencies:
