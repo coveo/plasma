@@ -39,7 +39,7 @@
         "@swc/helpers": "0.5.15"
     },
     "devDependencies": {
-        "@swc/cli": "0.5.1",
+        "@swc/cli": "0.5.2",
         "@swc/core": "1.9.3",
         "@types/chroma-js": "2.4.4",
         "@types/fs-extra": "11.0.4",
