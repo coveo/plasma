@@ -46,7 +46,7 @@
     "devDependencies": {
         "@commitlint/cli": "19.6.0",
         "@commitlint/config-conventional": "19.6.0",
-        "@coveo/semantic-monorepo-tools": "2.5.9",
+        "@coveo/semantic-monorepo-tools": "2.6.0",
         "@sindresorhus/slugify": "2.2.1",
         "@types/node": "22.10.1",
         "@vitest/eslint-plugin": "1.1.14",
