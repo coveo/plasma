@@ -3,13 +3,12 @@ import {type ExpandedState, type PaginationState, type SortingState} from '@tans
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {type DateRangePickerValue} from '../date-range-picker';
+import {useUrlSyncedState} from './use-url-synced-state';
 
 // Create a deeply optional version of another type
-type PartialDeep<T> = T extends object
-    ? {
-          [P in keyof T]?: PartialDeep<T[P]>;
-      }
-    : T;
+type DeepPartial<T> = {
+    [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
 
 export interface TableState<TData = unknown> {
     /**
@@ -166,7 +165,7 @@ export interface UseTableOptions<TData = unknown> {
     /**
      * Initial state of the table.
      */
-    initialState?: PartialDeep<TableState<TData>>;
+    initialState?: DeepPartial<TableState<TData>>;
     /**
      * Whether rows can be selected.
      *
@@ -186,12 +185,19 @@ export interface UseTableOptions<TData = unknown> {
      * @default false
      */
     forceSelection?: boolean;
+    /**
+     * Whether to sync the table state with the URL.
+     *
+     * @default false
+     */
+    syncWithUrl?: boolean;
 }
 
 const defaultOptions: UseTableOptions = {
     enableRowSelection: true,
     enableMultiRowSelection: false,
     forceSelection: false,
+    syncWithUrl: false,
 };
 
 const defaultState: Partial<TableState> = {
@@ -213,21 +219,120 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
     const options = defaultsDeep({}, userOptions, defaultOptions) as UseTableOptions<TData>;
     const initialState = defaultsDeep({}, options.initialState, defaultState) as TableState<TData>;
 
-    const [pagination, setPagination] = useState<TableState<TData>['pagination']>(initialState.pagination);
+    // synced with url
+    const [pagination, setPagination] = useUrlSyncedState<TableState<TData>['pagination']>({
+        initialState: initialState.pagination,
+        serializer: ({pageIndex, pageSize}) => [
+            ['page', (pageIndex + 1).toString()],
+            ['pageSize', pageSize.toString()],
+        ],
+        deserializer: (params) =>
+            defaultsDeep(
+                {
+                    pageIndex: params.get('page') ? parseInt(params.get('page'), 10) - 1 : undefined,
+                    pageSize: params.get('pageSize') ? parseInt(params.get('pageSize'), 10) : undefined,
+                },
+                initialState.pagination,
+            ),
+        sync: options.syncWithUrl,
+    });
+    const [sorting, setSorting] = useUrlSyncedState<TableState<TData>['sorting']>({
+        initialState: initialState.sorting,
+        serializer: (_sorting) => [
+            ['sortBy', _sorting.map(({id, desc}) => `${id}.${desc ? 'desc' : 'asc'}`).join(',')],
+        ],
+        deserializer: (params) => {
+            if (!params.has('sortBy')) {
+                return initialState.sorting;
+            }
+            const sorts = params.get('sortBy')?.split(',') ?? [];
+            return sorts.map((sort) => {
+                const [id, order] = sort.split('.');
+                return {id, desc: order === 'desc'};
+            });
+        },
+        sync: options.syncWithUrl,
+    });
+    const [globalFilter, setGlobalFilter] = useUrlSyncedState<TableState<TData>['globalFilter']>({
+        initialState: initialState.globalFilter,
+        serializer: (filter) => [['filter', filter]],
+        deserializer: (params) => params.get('filter') ?? initialState.globalFilter,
+        sync: options.syncWithUrl,
+    });
+    const [predicates, setPredicates] = useUrlSyncedState<TableState<TData>['predicates']>({
+        initialState: initialState.predicates,
+        serializer: (_predicates) => Object.entries(_predicates).map(([key, value]) => [key, value]),
+        deserializer: (params) =>
+            Object.keys(initialState.predicates).reduce(
+                (acc, predicateKey) => {
+                    acc[predicateKey] = params.get(predicateKey) ?? initialState.predicates[predicateKey];
+                    return acc;
+                },
+                {} as TableState<TData>['predicates'],
+            ),
+        sync: options.syncWithUrl,
+    });
+    const [layout, setLayout] = useUrlSyncedState<TableState<TData>['layout']>({
+        initialState: initialState.layout,
+        serializer: (_layout) => [['layout', _layout]],
+        deserializer: (params) => params.get('layout') ?? initialState.layout,
+        sync: options.syncWithUrl,
+    });
+    const [dateRange, setDateRange] = useUrlSyncedState<TableState<TData>['dateRange']>({
+        initialState: initialState.dateRange,
+        serializer: ([from, to]) => [
+            ['from', from?.toISOString() ?? ''],
+            ['to', to?.toISOString() ?? ''],
+        ],
+        deserializer: (params) => [
+            params.get('from') ? new Date(params.get('from') as string) : initialState.dateRange[0],
+            params.get('to') ? new Date(params.get('to') as string) : initialState.dateRange[1],
+        ],
+        sync: options.syncWithUrl,
+    });
+    const [columnVisibility, setColumnVisibility] = useUrlSyncedState<TableState<TData>['columnVisibility']>({
+        initialState: initialState.columnVisibility,
+        serializer: (columns) => [
+            [
+                'show',
+                Object.entries(columns)
+                    .filter(([, visible]) => visible === true)
+                    .map(([columnName]) => columnName)
+                    .join(','),
+            ],
+            [
+                'hide',
+                Object.entries(columns)
+                    .filter(([, visible]) => visible === false)
+                    .map(([columnName]) => columnName)
+                    .join(','),
+            ],
+        ],
+        deserializer: (params) => {
+            if (!params.has('show') && !params.has('hide')) {
+                return initialState.columnVisibility;
+            }
+            const visible = params.get('show')?.split(',') ?? [];
+            const invisible = params.get('hide')?.split(',') ?? [];
+            const columns = {} as TableState<TData>['columnVisibility'];
+            visible.forEach((column) => {
+                columns[column] = true;
+            });
+            invisible.forEach((column) => {
+                columns[column] = false;
+            });
+            return columns;
+        },
+        sync: options.syncWithUrl,
+    });
+
+    // unsynced
     const [totalEntries, _setTotalEntries] = useState<TableState<TData>['totalEntries']>(initialState.totalEntries);
     const [unfilteredTotalEntries, setUnfilteredTotalEntries] = useState<TableState<TData>['totalEntries']>(
         initialState.totalEntries,
     );
-    const [sorting, setSorting] = useState<TableState<TData>['sorting']>(initialState.sorting);
-    const [globalFilter, setGlobalFilter] = useState<TableState<TData>['globalFilter']>(initialState.globalFilter);
     const [expanded, setExpanded] = useState<TableState<TData>['expanded']>(initialState.expanded);
-    const [predicates, setPredicates] = useState<TableState<TData>['predicates']>(initialState.predicates);
-    const [layout, setLayout] = useState<TableState<TData>['layout']>(initialState.layout);
-    const [dateRange, setDateRange] = useState<TableState<TData>['dateRange']>(initialState.dateRange);
     const [rowSelection, setRowSelection] = useState<TableState<TData>['rowSelection']>(initialState.rowSelection);
-    const [columnVisibility, setColumnVisibility] = useState<TableState<TData>['columnVisibility']>(
-        initialState.columnVisibility,
-    );
 
     const isFiltered =
         !!globalFilter ||

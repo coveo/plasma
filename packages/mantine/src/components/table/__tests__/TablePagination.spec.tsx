@@ -217,4 +217,58 @@ describe('Table.Pagination', () => {
         expect(buttons).toHaveLength(1);
         expect(buttons[0]).toHaveAccessibleName('change total pages');
     });
+
+    describe('when url sync is activated', () => {
+        afterEach(() => {
+            window.history.replaceState(null, '', '/');
+        });
+
+        it('sets the current page in the url using the parameter "page" counting from 1', async () => {
+            const data = [{name: 'fruit'}, {name: 'vegetable'}];
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    initialState: {
+                        pagination: {pageSize: 1, pageIndex: 0},
+                        totalEntries: 3,
+                    },
+                    syncWithUrl: true,
+                });
+                return (
+                    <Table store={store} data={data} columns={columns}>
+                        <Table.Footer>
+                            <Table.Pagination />
+                        </Table.Footer>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+            await user.click(screen.queryByRole('button', {name: '2'}));
+            expect(window.location.search).toBe('?page=2');
+        });
+
+        it('determines the initial page index from the url', async () => {
+            window.history.replaceState(null, '', '?page=2');
+            const data = [{name: 'fruit'}, {name: 'vegetable'}];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    initialState: {
+                        pagination: {pageSize: 1, pageIndex: 0},
+                        totalEntries: 3,
+                    },
+                    syncWithUrl: true,
+                });
+                return (
+                    <Table store={store} data={data} columns={columns}>
+                        <Table.Footer>
+                            <Table.Pagination />
+                            <Table.PerPage />
+                        </Table.Footer>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+            expect(screen.getByRole('button', {name: '2', current: 'page'})).toBeVisible();
+        });
+    });
 });
