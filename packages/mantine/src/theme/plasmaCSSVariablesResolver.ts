@@ -1,4 +1,4 @@
-import {CSSVariablesResolver, ConvertCSSVariablesInput, keys} from '@mantine/core';
+import {ConvertCSSVariablesInput, CSSVariablesResolver} from '@mantine/core';
 
 export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
     const result: ConvertCSSVariablesInput = {
@@ -6,9 +6,6 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
         dark: {},
         light: {},
     };
-    keys(theme.colors).forEach((color) => {
-        result.light[`--mantine-color-${color}-light`] = theme.colors[color][color === 'gray' ? 1 : 0];
-        result.light[`--mantine-color-${color}-light-hover`] = theme.colors[color][color === 'gray' ? 2 : 1];
-    });
+    result.light['--mantine-color-error'] = theme.colors.red[5];
     return result;
 };
