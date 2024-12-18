@@ -54,7 +54,7 @@ export const PageLayout = ({
                     </Tabs.List>
                 </Container>
                 <Divider />
-                <Box bg="gray.0" h="100%">
+                <Box h="100%">
                     <Container size="xl" py="xl">
                         <Tabs.Panel value="implementation">
                             <ResetScroll />
