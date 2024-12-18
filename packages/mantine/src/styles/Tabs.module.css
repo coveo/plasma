@@ -1,9 +1,5 @@
 .root {
     &[data-variant='default'] {
-        @mixin light {
-            --tab-hover-color: var(--mantine-color-gray-1);
-        }
-
         --tabs-list-border-width: 1px;
 
         &[data-orientation='horizontal'] {
