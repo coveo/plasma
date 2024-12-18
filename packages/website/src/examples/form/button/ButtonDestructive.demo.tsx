@@ -1,8 +1,8 @@
-import {Button, showNotification} from '@coveord/plasma-mantine';
+import {ButtonDestructive, showNotification} from '@coveord/plasma-mantine';
 
 const Demo = () => (
-    <Button color="critical" onClick={() => showNotification({message: 'Button clicked', autoClose: false})}>
+    <ButtonDestructive onClick={() => showNotification({message: 'Button clicked', autoClose: false})}>
         Destructive button
-    </Button>
+    </ButtonDestructive>
 );
 export default Demo;

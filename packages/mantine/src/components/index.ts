@@ -1,4 +1,6 @@
 export * from './action-icon';
+export * from './alert';
+export * from './badge';
 export * from './blank-slate';
 export * from './browser-preview';
 export * from './button';
