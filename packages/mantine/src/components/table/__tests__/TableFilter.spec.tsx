@@ -102,4 +102,47 @@ describe('Table.Filter', () => {
             expect(screen.getByRole('button', {name: /1 selected/i})).toBeInTheDocument();
         });
     });
+
+    describe('when url sync is activated', () => {
+        afterEach(() => {
+            window.history.replaceState(null, '', '/');
+        });
+
+        it('sets the current filter value in the url using the parameter "filter"', async () => {
+            const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
+            const Fixture = () => {
+                const store = useTable<RowData>({initialState: {globalFilter: ''}, syncWithUrl: true});
+                return (
+                    <Table store={store} data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
+                        <Table.Header>
+                            <Table.Filter />
+                        </Table.Header>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+            await user.type(screen.getByRole('textbox'), 'veg');
+            act(() => {
+                // 300 ms debounce on TableFilter input
+                vi.advanceTimersByTime(300);
+            });
+            expect(window.location.search).toBe('?filter=veg');
+        });
+
+        it('determines the initial filter value from the url', async () => {
+            window.history.replaceState(null, '', '?filter=veg');
+            const Fixture = () => {
+                const store = useTable<RowData>({initialState: {globalFilter: ''}, syncWithUrl: true});
+                return (
+                    <Table store={store} data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
+                        <Table.Header>
+                            <Table.Filter />
+                        </Table.Header>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+            expect(screen.getByRole('textbox')).toHaveValue('veg');
+        });
+    });
 });

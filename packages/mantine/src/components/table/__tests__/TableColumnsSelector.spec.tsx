@@ -298,4 +298,55 @@ describe('TableColumnsSelector', () => {
             await waitFor(() => expect(screen.getByText('You can display so many patate')).toBeVisible());
         });
     });
+
+    describe('when url sync is activated', () => {
+        afterEach(() => {
+            window.history.replaceState(null, '', '/');
+        });
+
+        it('sets the current visible column ids in the url', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    syncWithUrl: true,
+                    initialState: {columnVisibility: {email: false, phone: true}},
+                });
+                return (
+                    <Table store={store} data={mockData} columns={baseColumns}>
+                        <Table.Header>
+                            <TableColumnsSelector />
+                        </Table.Header>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+            await user.click(screen.getByRole('button', {name: 'Edit columns'}));
+            const emailCheckBox = await screen.findByRole('checkbox', {name: /email/i});
+            await user.click(emailCheckBox);
+            await user.click(screen.getByRole('checkbox', {name: /phone/i}));
+            expect(window.location.search).toBe('?show=email&hide=phone');
+        });
+
+        it('determines the initial visible columns from the url', async () => {
+            window.history.replaceState(null, '', '?show=email%2Cphone');
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    syncWithUrl: true,
+                    initialState: {columnVisibility: {email: false, phone: false}},
+                });
+                return (
+                    <Table store={store} data={mockData} columns={baseColumns}>
+                        <Table.Header>
+                            <TableColumnsSelector />
+                        </Table.Header>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+            await user.click(screen.getByRole('button', {name: 'Edit columns'}));
+            expect(await screen.findByRole('checkbox', {name: /email/i})).toBeChecked();
+            expect(screen.getByRole('checkbox', {name: /phone/i})).toBeChecked();
+        });
+    });
 });
