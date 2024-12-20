@@ -13,7 +13,7 @@ const getElementInnerHeight = (el: HTMLElement): number => {
  */
 export const useParentHeight = (): [number, MutableRefObject<HTMLDivElement>] => {
     const [height, setHeight] = useState(-1);
-    const ref = useRef<HTMLDivElement>();
+    const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (ref.current) {

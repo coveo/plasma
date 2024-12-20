@@ -125,7 +125,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         unstyled,
     });
 
-    const convertedChildren = Children.toArray(children) as ReactElement[];
+    const convertedChildren = Children.toArray(children) as Array<ReactElement<any>>;
     const header = convertedChildren.find((child) => child.type === TableHeader);
     const footer = convertedChildren.find((child) => child.type === TableFooter);
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
@@ -213,7 +213,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         }
     }, [data]);
 
-    const containerRef = useRef<HTMLDivElement>();
+    const containerRef = useRef<HTMLDivElement>(null);
     useClickOutside(
         () => {
             if (!store.multiRowSelectionEnabled && store.getSelectedRows().length > 0) {

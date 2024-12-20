@@ -1,6 +1,6 @@
 import {createSafeContext, GetStylesApi} from '@mantine/core';
 import {Table} from '@tanstack/table-core';
-import {MutableRefObject, ReactElement} from 'react';
+import {MutableRefObject, ReactElement, type JSX} from 'react';
 import {type PlasmaTableFactory} from './Table';
 import {TableAction, TableLayout} from './Table.types';
 import {TableStore} from './use-table';
@@ -21,4 +21,4 @@ export interface TableProviderProps<T> {
 
 export const [TableProvider, useTableContext] = createSafeContext<TableContextValue>(
     'Table component was not found in the tree',
-) as [<TData>(props: TableProviderProps<TData>) => ReactElement, <TData>() => TableContextValue<TData>];
+) as [<TData>(props: TableProviderProps<TData>) => ReactElement<any>, <TData>() => TableContextValue<TData>];
