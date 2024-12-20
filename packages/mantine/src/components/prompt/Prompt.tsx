@@ -92,7 +92,7 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     });
     const stylesApiProps = {classNames, styles};
 
-    const convertedChildren = Children.toArray(children) as ReactElement[];
+    const convertedChildren = Children.toArray(children) as Array<ReactElement<any>>;
 
     const otherChildren = convertedChildren.filter((child) => child.type !== PromptFooter);
     const footer = convertedChildren.find((child) => child.type === PromptFooter);

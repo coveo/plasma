@@ -52,7 +52,7 @@ export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref)
     });
 
     const [showTooltip, setShowTooltip] = useState(false);
-    const textRef = useRef<HTMLDivElement>();
+    const textRef = useRef<HTMLDivElement>(null);
 
     const {className: rootClass, ...rootStyles} = getStyles('root');
     const {className: textClass, ...textStyles} = getStyles('text');

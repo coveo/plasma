@@ -17,13 +17,13 @@ interface InlineConfirmPromptProps extends Omit<GroupProps, 'children'>, InlineC
      *
      * @default <Button color="red">Delete</Button>
      */
-    confirm?: ReactElement;
+    confirm?: ReactElement<{onClick?: () => void}>;
     /**
      * Cancel button element
      *
      * @default <Button variant="outline">Cancel</Button>
      */
-    cancel?: ReactElement;
+    cancel?: ReactElement<{onClick?: () => void}>;
     /**
      * Function called when the confirm button is clicked
      */

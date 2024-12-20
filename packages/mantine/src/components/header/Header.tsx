@@ -99,7 +99,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
     });
     const stylesApiProps = {classNames, styles};
 
-    const convertedChildren = Children.toArray(children) as ReactElement[];
+    const convertedChildren = Children.toArray(children) as Array<ReactElement<any>>;
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
     const actions = convertedChildren.find((child) => child.type === HeaderActions);
     const docAnchor = convertedChildren.find((child) => child.type === HeaderDocAnchor);

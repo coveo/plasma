@@ -19,7 +19,7 @@ type TableHeaderActionsFactory = Factory<{
 const defaultProps: Partial<TableHeaderActionsProps> = {};
 
 export const TableHeaderActions = factory<TableHeaderActionsFactory>(
-    (props: TableHeaderActionsProps, ref): ReactElement => {
+    (props: TableHeaderActionsProps, ref): ReactElement<any> => {
         const {store, getStyles, getRowActions} = useTableContext();
         const {style, className, classNames, styles, ...others} = useProps(
             'PlasmaTableHeaderActions',

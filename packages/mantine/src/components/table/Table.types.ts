@@ -13,7 +13,7 @@ export type TableLayoutProps<TData = unknown> = Pick<
     TableProps<TData>['layoutProps'];
 
 export interface TableLayout {
-    (props: {children: ReactNode}): ReactElement;
+    (props: {children: ReactNode}): ReactElement<any>;
     /**
      * Name of the layout.
      * Will be displayed in the layout control
@@ -28,12 +28,12 @@ export interface TableLayout {
      * Header portion of the table.
      * In the standard row layout that is where column headers would be displayed.
      */
-    Header: <TData>(props: TableLayoutProps<TData>) => ReactElement;
+    Header: <TData>(props: TableLayoutProps<TData>) => ReactElement<any>;
     /**
      * Body portion of the table.
      * In the standard row layout that is where the rows would be displayed.
      */
-    Body: <TData>(props: TableLayoutProps<TData>) => ReactElement;
+    Body: <TData>(props: TableLayoutProps<TData>) => ReactElement<any>;
 }
 
 export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableFactory> {
