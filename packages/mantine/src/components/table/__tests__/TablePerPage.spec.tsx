@@ -122,4 +122,59 @@ describe('Table.PerPage', () => {
         render(<Fixture />);
         expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
     });
+
+    describe('when url sync is activated', () => {
+        afterEach(() => {
+            window.history.replaceState(null, '', '/');
+        });
+
+        it('sets the current page size in the url using the parameter "pageSize"', async () => {
+            const data = [{name: 'fruit'}, {name: 'vegetable'}];
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    initialState: {
+                        pagination: {pageIndex: 0, pageSize: 50},
+                        totalEntries: 52,
+                    },
+                    syncWithUrl: true,
+                });
+                return (
+                    <Table store={store} data={data} columns={columns}>
+                        <Table.Footer>
+                            <Table.Pagination />
+                            <Table.PerPage />
+                        </Table.Footer>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+            await user.click(screen.getByRole('radio', {name: '100'}));
+            expect(window.location.search).toBe('?pageSize=100');
+        });
+
+        it('determines the initial pageSize from the url', async () => {
+            window.history.replaceState(null, '', '?pageSize=100');
+            const data = [{name: 'fruit'}, {name: 'vegetable'}];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    initialState: {
+                        pagination: {pageIndex: 0, pageSize: 50},
+                        totalEntries: 52,
+                    },
+                    syncWithUrl: true,
+                });
+                return (
+                    <Table store={store} data={data} columns={columns}>
+                        <Table.Footer>
+                            <Table.Pagination />
+                            <Table.PerPage />
+                        </Table.Footer>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+            expect(screen.getByRole('radio', {name: '100'})).toBeChecked();
+        });
+    });
 });

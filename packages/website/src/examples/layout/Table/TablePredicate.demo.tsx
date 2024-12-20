@@ -30,7 +30,7 @@ const columns: Array<ColumnDef<Person>> = [
 const Demo = () => {
     const data = useMemo(() => makeData(10), []);
     const table = useTable<Person>({
-        initialState: {totalEntries: data.length, predicates: {status: '', age: ''}},
+        initialState: {totalEntries: data.length, predicates: {status: 'ALL', age: 'ANY'}},
     });
 
     // we're filtering the data ourselves here for the example,
@@ -51,7 +51,7 @@ const Demo = () => {
                     label="Age group"
                     data={[
                         {
-                            value: '',
+                            value: 'ANY',
                             label: 'Any',
                         },
                         {value: 'below20', label: 'Below 20'},
@@ -64,7 +64,7 @@ const Demo = () => {
                     label="Status"
                     data={[
                         {
-                            value: '',
+                            value: 'ALL',
                             label: 'All',
                         },
                         {value: 'relationship', label: 'In a relationship'},
@@ -121,5 +121,5 @@ const statusFilter = (row: Person, predicates: Record<string, string>) => {
     const status = row['status'];
     const filterValue = predicates['status'];
 
-    return !filterValue || status === filterValue;
+    return filterValue === 'ALL' || status === filterValue;
 };
