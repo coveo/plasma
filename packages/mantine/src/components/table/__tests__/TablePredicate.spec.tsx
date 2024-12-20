@@ -56,7 +56,7 @@ describe('Table.Predicate', () => {
             const data = [{name: 'fruit'}, {name: 'vegetable'}];
             const Fixture = () => {
                 const store = useTable<RowData>({
-                    initialState: {predicates: {rank: 'ALL'}, pagination: {pageIndex: 0}, totalEntries: 52},
+                    initialState: {predicates: {rank: 'ALL'}},
                     syncWithUrl: true,
                 });
                 return (
@@ -86,7 +86,7 @@ describe('Table.Predicate', () => {
             const data = [{name: 'fruit'}, {name: 'vegetable'}];
             const Fixture = () => {
                 const store = useTable<RowData>({
-                    initialState: {predicates: {rank: 'ALL'}, pagination: {pageIndex: 0}, totalEntries: 52},
+                    initialState: {predicates: {rank: 'ALL'}},
                     syncWithUrl: true,
                 });
                 return (
