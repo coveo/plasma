@@ -99,7 +99,7 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
 
     return (
         <PromptContextProvider value={{variant, getStyles}}>
-            <Modal.Root ref={ref} variant="prompt" size="sm" {...others} {...getStyles('root')}>
+            <Modal.Root ref={ref} variant="prompt" size="lg" {...others} {...getStyles('root')}>
                 <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
                 <Modal.Content {...getStyles('content', stylesApiProps)}>
                     <Modal.Header {...getStyles('header', stylesApiProps)}>

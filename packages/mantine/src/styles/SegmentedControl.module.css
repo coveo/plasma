@@ -1,35 +1,3 @@
-.root {
-    background-color: var(--mantine-color-gray-2);
-}
-
-.indicator {
-    border-radius: var(--sc-radius, var(--mantine-radius-sm));
-}
-
 .label {
     font-weight: 300;
-
-    @mixin light {
-        color: var(--mantine-color-gray-6);
-    }
-
-    &:where([data-disabled]) {
-        @mixin light {
-            color: var(--mantine-color-gray-5);
-        }
-    }
-
-    &:where([data-active]) {
-        @mixin light {
-            color: var(--sc-label-color, var(--mantine-color-black));
-        }
-    }
-
-    &:where(:not([data-disabled], [data-active], [data-read-only])) {
-        @mixin hover {
-            @mixin light {
-                color: var(--mantine-color-black);
-            }
-        }
-    }
 }

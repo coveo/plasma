@@ -72,6 +72,7 @@ export const Navigation = () => (
         </NavLink>
         <NavLink label="Feedback" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>
             <InternalNavLink to="/feedback/Alert" label="Alert" />
+            <InternalNavLink to="/feedback/Badge" label="Badge" />
         </NavLink>
         <NavLink label="Mantine" leftSection={<Image src={MantineLogo} height={16} />} defaultOpened>
             {Object.keys(mantinePages).map((filePath) => {

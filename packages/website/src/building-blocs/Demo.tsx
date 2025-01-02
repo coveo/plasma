@@ -51,9 +51,9 @@ const Demo = ({
         }
     };
     return (
-        <div className={DemoClasses.root}>
+        <div>
             {title ? (
-                <Anchor href={`#${id}`} c="gray.9" className={DemoClasses.anchor}>
+                <Anchor href={`#${id}`} className={DemoClasses.anchor}>
                     <Title order={5} mb="xs" id={id} className={DemoClasses.title}>
                         {title}
                     </Title>

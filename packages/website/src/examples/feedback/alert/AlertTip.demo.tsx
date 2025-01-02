@@ -1,10 +1,9 @@
-import {Alert} from '@coveord/plasma-mantine';
-import {TipSize16Px} from '@coveord/plasma-react-icons';
+import {AlertTip} from '@coveord/plasma-mantine';
 
 const Demo = () => (
-    <Alert title="Tip" withCloseButton color="gray" icon={<TipSize16Px height={16} />}>
+    <AlertTip title="Tip" withCloseButton>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
-    </Alert>
+    </AlertTip>
 );
 export default Demo;
