@@ -1,3 +1,16 @@
+## <small>55.3.4-next.0 (2025-01-02)</small>
+
+* feat(mantine): remove a lot of custom style to get a vanilla style (#3986) 354db73, closes #3986
+* chore(deps): lock file maintenance (#3978) 116e5c5, closes #3978
+* chore(deps): lock file maintenance (#3984) 34f8056, closes #3984
+* chore(deps): update all non-major dependencies (#3975) bc03a26, closes #3975
+* chore(deps): update all non-major dependencies (#3976) 51ce304, closes #3976
+* chore(deps): update all non-major dependencies (#3979) 3f07f5f, closes #3979
+* chore(deps): update all non-major dependencies (#3980) c35f070, closes #3980
+* chore(deps): update dependency stylelint-config-standard-scss to v14 (#3977) 9db7974, closes #3977
+
+
+
 ## <small>55.3.3 (2024-12-05)</small>
 
 * fix(checkbox): readOnly checkbox style (#3974) 19ae8e5, closes #3974
