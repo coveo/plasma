@@ -2,6 +2,7 @@ import {Center, Group, Space} from '@mantine/core';
 import {DatePicker, DatePickerBaseProps} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
+import dayjs from 'dayjs';
 import {Button} from '../button';
 import DateRangeClasses from './DateRange.module.css';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
@@ -44,6 +45,11 @@ export interface DateRangePickerInlineCalendarProps
     >;
 }
 
+const isDateRangePickerValue = (value: unknown): value is DateRangePickerValue =>
+    Array.isArray(value) && value.length === 2;
+
+const endOfDay = (value: Date): Date => (value ? dayjs(value).endOf('day').toDate() : value);
+
 export const DateRangePickerInlineCalendar = ({
     initialRange,
     onApply,
@@ -60,9 +66,16 @@ export const DateRangePickerInlineCalendar = ({
     });
     const calendarInputProps = form.getInputProps('dates');
 
+    const onCalendarChange = (range: Date | Date[] | DateRangePickerValue): void => {
+        const normalized = isDateRangePickerValue(range) && range[1] ? [range[0], endOfDay(range[1])] : range;
+        calendarInputProps.onChange(normalized);
+    };
+
     const onCalendarApply = () => {
+        // In case the user only clicked the start date, but not the end date,
+        // assume a single day was meant to be selected.
         if (!form.values.dates[1]) {
-            form.values.dates[1] = form.values.dates[0]; // when date range is the same day
+            form.values.dates[1] = endOfDay(form.values.dates[0]);
         }
         onApply(form.values.dates);
     };
@@ -99,6 +112,7 @@ export const DateRangePickerInlineCalendar = ({
                     allowSingleDateInRange
                     {...rangeCalendarProps}
                     {...calendarInputProps}
+                    onChange={onCalendarChange}
                 />
             </Center>
 
