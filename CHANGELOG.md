@@ -1,3 +1,19 @@
+## 55.4.0 (2025-01-03)
+
+* fix(deps): update dnd-kit monorepo (#3983) 1edb5b3, closes #3983
+* fix(table-date-picker): date range picker end date at end of day (#3988) 1b33e19, closes #3988
+* chore(deps): lock file maintenance (#3978) 116e5c5, closes #3978
+* chore(deps): lock file maintenance (#3984) 34f8056, closes #3984
+* chore(deps): lock file maintenance (#3987) 694141e, closes #3987
+* chore(deps): update all non-major dependencies (#3975) bc03a26, closes #3975
+* chore(deps): update all non-major dependencies (#3976) 51ce304, closes #3976
+* chore(deps): update all non-major dependencies (#3979) 3f07f5f, closes #3979
+* chore(deps): update all non-major dependencies (#3980) c35f070, closes #3980
+* chore(deps): update dependency stylelint-config-standard-scss to v14 (#3977) 9db7974, closes #3977
+* feat(mantine): add syncWithUrl option to table hook (#3985) 71740c9, closes #3985
+
+
+
 ## <small>55.3.3 (2024-12-05)</small>
 
 * fix(checkbox): readOnly checkbox style (#3974) 19ae8e5, closes #3974
