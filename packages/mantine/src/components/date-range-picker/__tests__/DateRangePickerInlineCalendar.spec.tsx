@@ -3,6 +3,8 @@ import dayjs from 'dayjs';
 
 import {DateRangePickerInlineCalendar} from '../DateRangePickerInlineCalendar';
 
+const endOfDay = (year: number, month: number, day: number): Date => new Date(year, month, day, 23, 59, 59, 999);
+
 describe('DateRangePickerInlineCalendar', () => {
     it('calls onApply when the user clicks on the apply button', async () => {
         const user = userEvent.setup({delay: null});
@@ -37,7 +39,7 @@ describe('DateRangePickerInlineCalendar', () => {
         render(
             <DateRangePickerInlineCalendar
                 presets={{
-                    year2k: {label: 'select me', range: [new Date(1999, 11, 31), new Date(2000, 0, 1)]},
+                    year2k: {label: 'select me', range: [new Date(1999, 11, 31), endOfDay(2000, 0, 1)]},
                 }}
                 initialRange={[null, null]}
                 onApply={onApply}
@@ -53,7 +55,7 @@ describe('DateRangePickerInlineCalendar', () => {
         await user.click(screen.getByRole('option', {name: 'select me'}));
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith([new Date(1999, 11, 31), new Date(2000, 0, 1)]);
+        expect(onApply).toHaveBeenCalledWith([new Date(1999, 11, 31), endOfDay(2000, 0, 1)]);
     });
 
     it('calls onApply with the selected dates when clicking in the calendar', async () => {
@@ -68,7 +70,7 @@ describe('DateRangePickerInlineCalendar', () => {
 
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith([new Date(2022, 0, 8), new Date(2022, 0, 14)]);
+        expect(onApply).toHaveBeenCalledWith([new Date(2022, 0, 8), endOfDay(2022, 0, 14)]);
 
         vi.useRealTimers();
     });
@@ -81,7 +83,7 @@ describe('DateRangePickerInlineCalendar', () => {
         await user.click(screen.getAllByRole('button', {name: /8 january 2022/i})[0]);
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith([new Date(2022, 0, 8), new Date(2022, 0, 8)]);
+        expect(onApply).toHaveBeenCalledWith([new Date(2022, 0, 8), endOfDay(2022, 0, 8)]);
 
         vi.useRealTimers();
     });
