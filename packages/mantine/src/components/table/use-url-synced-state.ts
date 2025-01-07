@@ -40,11 +40,18 @@ export interface UseUrlSyncedStateOptions<T> {
      * Whether the state should be synced with the url.
      * When set to false, the hook behaves just like a regular useState hook from react.
      */
-    sync?: boolean;
+    sync?:
+        | boolean
+        | {
+              getSearchParams: () => URLSearchParams;
+              setSearchParam: (key: string, value: string, initial: string) => void;
+          };
 }
 
 export const useUrlSyncedState = <T>({initialState, serializer, deserializer, sync}: UseUrlSyncedStateOptions<T>) => {
-    const [state, setState] = useState<T>(sync ? deserializer(getSearchParams()) : initialState);
+    const getParams = typeof sync === 'object' ? sync.getSearchParams : getSearchParams;
+    const setParams = typeof sync === 'object' ? sync.setSearchParam : setSearchParam;
+    const [state, setState] = useState<T>(sync ? deserializer(getParams()) : initialState);
     const enhancedSetState = useMemo(() => {
         if (sync) {
             const initialSerialized = serializer(initialState).reduce(
@@ -57,7 +64,7 @@ export const useUrlSyncedState = <T>({initialState, serializer, deserializer, sy
             return (updater: T | ((old: T) => T)) => {
                 setState((old) => {
                     const newValue = updater instanceof Function ? updater(old) : updater;
-                    serializer(newValue).forEach(([key, value]) => setSearchParam(key, value, initialSerialized[key]));
+                    serializer(newValue).forEach(([key, value]) => setParams(key, value, initialSerialized[key]));
                     return newValue;
                 });
             };

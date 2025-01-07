@@ -110,4 +110,22 @@ describe('useUrlSyncedState', () => {
         );
         expect(result.current[0]).toBe('initial');
     });
+
+    it('uses the custom url sync functions provided in the sync parameter', () => {
+        const setSearchParamSpy = vi.fn();
+        const {result} = renderHook(() =>
+            useUrlSyncedState({
+                initialState: 'initial',
+                serializer: (state) => [['key', state]],
+                deserializer: (params) => params.get('key') ?? '',
+                sync: {
+                    getSearchParams: () => new URLSearchParams('?key=value'),
+                    setSearchParam: setSearchParamSpy,
+                },
+            }),
+        );
+        expect(result.current[0]).toBe('value');
+        act(() => result.current[1]('new'));
+        expect(setSearchParamSpy).toHaveBeenCalledWith('key', 'new', 'initial');
+    });
 });

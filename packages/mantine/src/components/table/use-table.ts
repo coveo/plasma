@@ -3,7 +3,7 @@ import {type ExpandedState, type PaginationState, type SortingState} from '@tans
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {type DateRangePickerValue} from '../date-range-picker';
-import {useUrlSyncedState} from './use-url-synced-state';
+import {useUrlSyncedState, UseUrlSyncedStateOptions} from './use-url-synced-state';
 
 // Create a deeply optional version of another type
 type DeepPartial<T> = {
@@ -187,10 +187,11 @@ export interface UseTableOptions<TData = unknown> {
     forceSelection?: boolean;
     /**
      * Whether to sync the table state with the URL.
+     * You can provide a custom implementation of the getSearchParams and setSearchParam functions.
      *
      * @default false
      */
-    syncWithUrl?: boolean;
+    syncWithUrl?: UseUrlSyncedStateOptions<unknown>['sync'];
 }
 
 const defaultOptions: UseTableOptions = {
