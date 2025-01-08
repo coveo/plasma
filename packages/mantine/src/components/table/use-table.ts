@@ -218,6 +218,11 @@ const defaultState: Partial<TableState> = {
 export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): TableStore<TData> => {
     const options = defaultsDeep({}, userOptions, defaultOptions) as UseTableOptions<TData>;
     const initialState = defaultsDeep({}, options.initialState, defaultState) as TableState<TData>;
+    /**
+     * The `useUrlSyncedState` hook defaults to synchronize, but the table wants to default to not synchronize,
+     * so always pass the sync option as a resolved boolean value.
+     */
+    const sync = !!options.syncWithUrl;
 
     // synced with url
     const [pagination, setPagination] = useUrlSyncedState<TableState<TData>['pagination']>({
@@ -234,7 +239,7 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
                 },
                 initialState.pagination,
             ),
-        sync: options.syncWithUrl,
+        sync,
     });
     const [sorting, setSorting] = useUrlSyncedState<TableState<TData>['sorting']>({
         initialState: initialState.sorting,
@@ -251,13 +256,13 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
                 return {id, desc: order === 'desc'};
             });
         },
-        sync: options.syncWithUrl,
+        sync,
     });
     const [globalFilter, setGlobalFilter] = useUrlSyncedState<TableState<TData>['globalFilter']>({
         initialState: initialState.globalFilter,
         serializer: (filter) => [['filter', filter]],
         deserializer: (params) => params.get('filter') ?? initialState.globalFilter,
-        sync: options.syncWithUrl,
+        sync,
     });
     const [predicates, setPredicates] = useUrlSyncedState<TableState<TData>['predicates']>({
         initialState: initialState.predicates,
@@ -270,13 +275,13 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
                 },
                 {} as TableState<TData>['predicates'],
             ),
-        sync: options.syncWithUrl,
+        sync,
     });
     const [layout, setLayout] = useUrlSyncedState<TableState<TData>['layout']>({
         initialState: initialState.layout,
         serializer: (_layout) => [['layout', _layout]],
         deserializer: (params) => params.get('layout') ?? initialState.layout,
-        sync: options.syncWithUrl,
+        sync,
     });
     const [dateRange, setDateRange] = useUrlSyncedState<TableState<TData>['dateRange']>({
         initialState: initialState.dateRange,
@@ -288,7 +293,7 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
             params.get('from') ? new Date(params.get('from') as string) : initialState.dateRange[0],
             params.get('to') ? new Date(params.get('to') as string) : initialState.dateRange[1],
         ],
-        sync: options.syncWithUrl,
+        sync,
     });
     const [columnVisibility, setColumnVisibility] = useUrlSyncedState<TableState<TData>['columnVisibility']>({
         initialState: initialState.columnVisibility,
@@ -323,7 +328,7 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
             });
             return columns;
         },
-        sync: options.syncWithUrl,
+        sync,
     });
 
     // unsynced
