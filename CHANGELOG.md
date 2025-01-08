@@ -1,3 +1,10 @@
+## 55.5.0 (2025-01-08)
+
+* feat(mantine): export useUrlSyncedState and support hash router [ADUI-10457] (#3992) a10fbd0, closes #3992
+* chore(deps): lock file maintenance (#3989) f375705, closes #3989
+
+
+
 ## 55.4.0 (2025-01-03)
 
 * fix(deps): update dnd-kit monorepo (#3983) 1edb5b3, closes #3983
