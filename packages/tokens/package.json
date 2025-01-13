@@ -46,7 +46,7 @@
         "@types/lodash": "4.17.13",
         "@types/node": "22.10.1",
         "chroma-js": "3.1.2",
-        "commander": "12.1.0",
+        "commander": "13.0.0",
         "dotenv": "16.4.6",
         "dotenv-safe": "9.1.0",
         "figma-js": "1.16.0",
