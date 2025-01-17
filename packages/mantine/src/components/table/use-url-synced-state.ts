@@ -1,30 +1,21 @@
 import {Dispatch, SetStateAction, useMemo, useState} from 'react';
 
 /**
- * A search param entry defines the key (index 0) and value (index 1) of a search parameter.
+ * A search param entry defines the encoded value of a search parameter as `[key, value, alwaysEmit?]`.
+ * The third entry is an optional boolean that defaults to `false`.
+ * Setting `alwaysEmit` to `true` means any non-nullish value is always written to the search params,
+ * even if it matches the initial value. It is also written on initialization.
  */
-export type SearchParamEntry = [string, string | null | undefined];
+export type SearchParamEntry = [string, string | null | undefined, boolean?];
 
 /**
- * Iterates over the `SearchParamEntry` values, and applies them to `target`, optionally filtering values.
+ * Get the index of the ? in a URL that denotes the start of the "search".
+ * Performs a nested search for '#/', to detect hash router urls and take the params of the hash in that case.
  *
- * @param target The target to write values to, can be a Map (for the initial values) or `URLSearchParams`.
- * @param entries The entries to apply (as returned by the serializer).
- * @param filter Optional filter that allows to treat non-empty values as empty (e.g. to not set default values).
+ * @param url The URL to search.
+ * @returns The location of the question mark, or `-1` if not found.
  */
-const applyValues = (
-    target: Map<string, string> | URLSearchParams,
-    entries: Iterable<SearchParamEntry>,
-    filter: (entry: Readonly<SearchParamEntry>) => boolean,
-): void => {
-    for (const entry of entries) {
-        if (entry[1] && filter(entry)) {
-            target.set(entry[0], entry[1]);
-        } else {
-            target.delete(entry[0]);
-        }
-    }
-};
+const indexOfSearch = (url: string): number => url.indexOf('?', url.indexOf('#/') + 1);
 
 /**
  * Read the **current** search params from `window.location`, with support for detecting React's HashRouter.
@@ -32,21 +23,28 @@ const applyValues = (
  *
  * @returns The `URLSearchParams` instance, and a function that can be used to get an updated href.
  */
-const getSearchParams = (): [URLSearchParams, () => string] => {
+const getSearchParams = (): URLSearchParams => {
     const href = window.location.href;
-    // Search for '#/' to detect hash router urls
-    const searchStart = href.indexOf('?', href.indexOf('#/') + 1);
-    const params = new URLSearchParams(searchStart < 0 ? '' : href.substring(searchStart));
-    return [
-        params,
-        () => {
-            let result = searchStart < 0 ? href : href.substring(0, searchStart);
-            if (params.size > 0) {
-                result = result.concat('?', params.toString());
-            }
-            return result;
-        },
-    ];
+    const searchStart = indexOfSearch(href);
+    return new URLSearchParams(searchStart < 0 ? undefined : href.substring(searchStart));
+};
+
+/**
+ * Apply the search params to the current location, using `replaceState` (no navigation history).
+ * Note that only parameters in the `params` argument will be set, any other current params will be removed.
+ *
+ * @param params The parameters to apply.
+ */
+const applySearchParams = (params: URLSearchParams): void => {
+    const currentHref = window.location.href;
+    const index = indexOfSearch(currentHref);
+    let nextHref = index < 0 ? currentHref : currentHref.substring(0, index);
+    if (params.size > 0) {
+        nextHref = nextHref.concat('?', params.toString());
+    }
+    if (nextHref !== currentHref) {
+        window.history.replaceState(null, '', nextHref);
+    }
 };
 
 export interface UseUrlSyncedStateOptions<T> {
@@ -55,7 +53,7 @@ export interface UseUrlSyncedStateOptions<T> {
      * These values are also treated as defaults, and if the current state matches the initialState,
      * no value will be written to the search params.
      */
-    initialState: T extends object ? Readonly<T> : T;
+    initialState: T | (() => T);
     /**
      * The serializer function is used to determine how the state is translated to url search parameters.
      * Called each time the state changes.
@@ -72,10 +70,11 @@ export interface UseUrlSyncedStateOptions<T> {
      * May return a partial state, values that are not deserialed are taken from the `initialState`.
      * Called only once when initializing the state.
      * @param params All the search parameters of the current url.
+     * @param initialState The initialState, can be used to take defaults from.
      * @returns The initial state based on the current url.
      * @example (params) => params.get('filter') ?? '',
      */
-    deserializer: (params: URLSearchParams) => T;
+    deserializer: (params: URLSearchParams, initialState: T) => T;
     /**
      * Whether the state should be synced with the url, defaults to `true`.
      * When set to `false`, the hook behaves just like a regular `useState` hook from react.
@@ -83,38 +82,54 @@ export interface UseUrlSyncedStateOptions<T> {
     sync?: boolean;
 }
 
+const getInitialState = <T>(options: UseUrlSyncedStateOptions<T>): T =>
+    options.initialState instanceof Function ? options.initialState() : options.initialState;
+
 export const useUrlSyncedState = <T>(options: UseUrlSyncedStateOptions<T>) => {
     const sync = options.sync !== false;
-    const initialState = useMemo(
-        () => (sync ? options.deserializer(getSearchParams()[0]) : options.initialState),
-        [options.initialState, options.sync],
-    );
-    const [state, setState] = useState<T>(initialState);
-    // Capture the initial state as a map, to compare values and not set them if they match.
+    const [state, setState] = useState<T>(() => {
+        const initialState = getInitialState(options);
+        return sync ? options.deserializer(getSearchParams(), initialState) : initialState;
+    });
+    // Capture the initial state as a map (first render only!), to compare values and see if they should be set to the params.
     const initialStateSerialized = useMemo(() => {
-        const v = new Map<string, string>();
-        applyValues(v, options.serializer(options.initialState), (_) => true);
-        return v;
-    }, [initialState, options.serializer]);
-    const enhancedSetState = useMemo<Dispatch<SetStateAction<T>>>(
-        () =>
-            sync
-                ? (updater: SetStateAction<T>) => {
-                      setState((old) => {
-                          const [search, getUrl] = getSearchParams();
-                          const newValue = updater instanceof Function ? updater(old) : updater;
-                          applyValues(
-                              search,
-                              options.serializer(newValue),
-                              ([key, value]) => initialStateSerialized.get(key) !== value,
-                          );
-                          window.history.replaceState(null, '', getUrl());
-                          return newValue;
-                      });
-                  }
-                : setState,
-        [sync],
-    );
+        const stateMap = new Map<string, string>();
+        let initialize: URLSearchParams | null = null;
+        for (const [key, value, alwaysEmit] of options.serializer(getInitialState(options))) {
+            stateMap.set(key, value);
+            if (alwaysEmit && value) {
+                initialize ??= getSearchParams();
+                initialize.set(key, value);
+            }
+        }
+        if (initialize) {
+            applySearchParams(initialize);
+        }
+        return stateMap;
+    }, []);
+
+    const enhancedSetState = useMemo<Dispatch<SetStateAction<T>>>(() => {
+        if (!sync) {
+            return setState;
+        }
+        return (updater: SetStateAction<T>) => {
+            setState((old) => {
+                const newValue = updater instanceof Function ? updater(old) : updater;
+
+                const search = getSearchParams();
+                for (const [key, value, alwaysEmit] of options.serializer(newValue)) {
+                    if (value && (alwaysEmit || !Object.is(initialStateSerialized.get(key), value))) {
+                        search.set(key, value);
+                    } else {
+                        search.delete(key);
+                    }
+                }
+                applySearchParams(search);
+
+                return newValue;
+            });
+        };
+    }, [sync]);
 
     return [state, enhancedSetState] as const;
 };

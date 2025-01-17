@@ -43,7 +43,8 @@ describe('useUrlSyncedState', () => {
             useUrlSyncedState({
                 initialState: true,
                 serializer: (state) => [['key', state ? 'true' : 'false']],
-                deserializer: (params) => params.get('key') === 'true',
+                deserializer: (params, initialState) =>
+                    params.has('key') ? params.get('key') === 'true' : initialState,
                 sync: true,
             }),
         );
