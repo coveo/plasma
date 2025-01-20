@@ -21,6 +21,7 @@ export {
     CopyToClipboard,
     Header,
     Menu,
+    Modal,
     PasswordInput,
     Select,
     Table,
@@ -29,6 +30,7 @@ export {
     type CopyToClipboardProps,
     type HeaderProps,
     type MenuItemProps,
+    type ModalFactory,
     type TableProps,
     type TableState,
 } from './components';

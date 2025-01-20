@@ -1,4 +1,4 @@
-import {Button, Header, Modal, StickyFooter, Tabs} from '@coveord/plasma-mantine';
+import {Button, Header, Modal, Tabs} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 import classes from './ModalWithTabs.module.css';
 
@@ -30,12 +30,12 @@ const Demo = () => {
                             <Tabs.Panel value="tab-3">Tab 3 content</Tabs.Panel>
                         </Modal.Body>
                     </Tabs>
-                    <StickyFooter borderTop>
+                    <Modal.Footer>
                         <Button variant="outline" onClick={() => setOpened(false)}>
                             Cancel
                         </Button>
                         <Button>Save</Button>
-                    </StickyFooter>
+                    </Modal.Footer>
                 </Modal.Content>
             </Modal.Root>
             <Button onClick={() => setOpened(true)}>Open Modal</Button>
