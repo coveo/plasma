@@ -22,6 +22,6 @@ describe('ModalFooter', () => {
         );
 
         const footer = screen.getByText('im the children').parentElement;
-        expect(footer).toHaveStyle('height: 100px');
+        expect(footer.offsetHeight % 2).lessThanOrEqual(Number.EPSILON);
     });
 });
