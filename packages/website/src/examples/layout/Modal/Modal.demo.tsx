@@ -1,4 +1,4 @@
-import {Button, Header, Modal, StickyFooter} from '@coveord/plasma-mantine';
+import {Button, Header, Modal} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 const Demo = () => {
@@ -21,7 +21,7 @@ const Demo = () => {
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim. Phasellus
                 lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit. Cras vitae ipsum
                 sit amet nibh efficitur imperdiet. Praesent scelerisque erat est. Cras dictum sodales tellus sed pretium
-                <Modal.Footer>
+                <Modal.Footer sticky>
                     <Button variant="outline" onClick={() => setOpened(false)}>
                         Cancel
                     </Button>
