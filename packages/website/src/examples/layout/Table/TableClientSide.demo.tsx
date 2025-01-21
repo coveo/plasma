@@ -67,6 +67,7 @@ const Demo = () => {
             pagination: {pageSize: 5},
             totalEntries: data.length,
         },
+        syncWithUrl: true,
     });
     return (
         <Table<Person> store={table} data={data} columns={columns} options={options} getRowId={({id}) => id}>
