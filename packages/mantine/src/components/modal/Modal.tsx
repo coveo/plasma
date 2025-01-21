@@ -28,5 +28,6 @@ PlasmaModal.CloseButton = MantineModal.CloseButton;
 PlasmaModal.Stack = MantineModal.Stack;
 PlasmaModal.Footer = PlasmaModalFooter;
 
-export type ModalFactory = PlasmaModalFactory;
 export const Modal = PlasmaModal;
+
+export type ModalFactory = PlasmaModalFactory;
