@@ -76,6 +76,7 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<Ta
                     aria-label={label ?? id}
                     searchable={data.length > 7}
                     renderOption={renderOption}
+                    scrollAreaProps={{type: 'always'}}
                     {...getStyles('predicateSelect', stylesApiProps)}
                 />
             </Group>
