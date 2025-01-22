@@ -591,7 +591,7 @@ importers:
         version: 18.3.1
       '@vitejs/plugin-react-swc':
         specifier: 3.7.2
-        version: 3.7.2(@swc/helpers@0.5.15)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1))
+        version: 3.7.2(@swc/helpers@0.5.15)(vite@6.0.9(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1))
       autoprefixer:
         specifier: 10.4.20
         version: 10.4.20(postcss@8.4.49)
@@ -620,8 +620,8 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 6.0.2
-        version: 6.0.2(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1)
+        specifier: 6.0.9
+        version: 6.0.9(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1)
 
 packages:
 
@@ -5794,8 +5794,8 @@ packages:
       terser:
         optional: true
 
-  vite@6.0.2:
-    resolution: {integrity: sha512-XdQ+VsY2tJpBsKGs0wf3U/+azx8BBpYRHFAyKm5VeEZNOJZRB63q7Sc8Iup3k0TrN3KO6QgyzFf+opSbfY1y0g==}
+  vite@6.0.9:
+    resolution: {integrity: sha512-MSgUxHcaXLtnBPktkbUSoQUANApKYuxZ6DrbVENlIorbhL2dZydTLaZ01tjUoE3szeFzlFk9ANOKk0xurh4MKA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -7441,10 +7441,10 @@ snapshots:
 
   '@ungap/structured-clone@1.2.1': {}
 
-  '@vitejs/plugin-react-swc@3.7.2(@swc/helpers@0.5.15)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1))':
+  '@vitejs/plugin-react-swc@3.7.2(@swc/helpers@0.5.15)(vite@6.0.9(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1))':
     dependencies:
       '@swc/core': 1.9.3(@swc/helpers@0.5.15)
-      vite: 6.0.2(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1)
+      vite: 6.0.9(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -11621,7 +11621,7 @@ snapshots:
       sass: 1.81.1
       sugarss: 4.0.1(postcss@8.4.49)
 
-  vite@6.0.2(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1):
+  vite@6.0.9(@types/node@22.10.1)(jiti@2.4.2)(sass@1.81.1)(sugarss@4.0.1(postcss@8.4.49))(yaml@2.5.1):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.4.49
