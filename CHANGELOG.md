@@ -1,3 +1,11 @@
+## <small>55.5.1 (2025-01-21)</small>
+
+* fix(mantine,table): make table predicate scroll more visible (#3999) 78111ca, closes #3999
+* chore(deps): lock file maintenance (#3993) d4623ed, closes #3993
+* chore(deps): update dependency jsdom to v26 (#3995) 2571939, closes #3995
+
+
+
 ## 55.5.0 (2025-01-08)
 
 * feat(mantine): export useUrlSyncedState and support hash router [ADUI-10457] (#3992) a10fbd0, closes #3992
