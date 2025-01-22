@@ -121,7 +121,7 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                     <Modal.Body {...getStyles('body', stylesApiProps)}>
                         <Box {...getStyles('inner', stylesApiProps)}>{otherChildren}</Box>
                     </Modal.Body>
-                    {...footers}
+                    {footers}
                 </Modal.Content>
             </Modal.Root>
         </PromptContextProvider>
