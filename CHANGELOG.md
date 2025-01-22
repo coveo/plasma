@@ -1,3 +1,14 @@
+## <small>55.5.2-next.0 (2025-01-22)</small>
+
+* Merge branch 'master' of github.com:coveo/plasma into next 09ce65d
+* Merge branch 'master' of github.com:coveo/plasma into next 7e4c32c
+* feat(mantine): remove a lot of custom style to get a vanilla style (#3986) 354db73, closes #3986
+* feat(useUrlSyncedState): allow always emitting values (#3996) a61cb13, closes #3996
+* chore(deps): update dependency vite to v6.0.9 [security] (#4003) f36defe, closes #4003
+* chore(release): publish version v55.3.4-next.0 [skip ci] c9ab861
+
+
+
 ## <small>55.5.1 (2025-01-21)</small>
 
 * fix(mantine,table): make table predicate scroll more visible (#3999) 78111ca, closes #3999
