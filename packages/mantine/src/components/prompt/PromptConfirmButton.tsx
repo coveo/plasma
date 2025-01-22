@@ -17,10 +17,10 @@ export type PromptConfirmButtonFactory = Factory<{
 }>;
 
 const COLOR_BY_VARIANT: Record<PromptVariant, string> = {
-    success: 'action',
-    info: 'action',
-    warning: 'critical',
-    critical: 'critical',
+    success: 'var(--mantine-primary-color-filled)',
+    info: 'var(--mantine-primary-color-filled)',
+    warning: 'var(--mantine-color-error)',
+    critical: 'var(--mantine-color-error)',
 };
 
 const defaultProps: Partial<PromptConfirmButtonProps> = {};

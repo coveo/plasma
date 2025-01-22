@@ -5,18 +5,13 @@
     }
 
     & .description {
-        color: var(--mantine-color-gray-6);
+        color: var(--mantine-color-dimmed);
         font-weight: 300;
     }
 }
 
 .title {
     word-break: break-word;
-
-    &[data-variant='primary'] {
-        color: var(--mantine-color-gray-5);
-    }
-
     line-height: var(--mantine-line-height-md);
 }
 
@@ -31,5 +26,5 @@
 }
 
 .breadcrumbsSeparator {
-    color: var(--mantine-color-gray-5);
+    color: var(--mantine-color-dimmed);
 }
