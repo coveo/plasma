@@ -22,9 +22,9 @@ export type ModalFooterFactory = Factory<{
 export const ModalFooter = factory<ModalFooterFactory>(({sticky, ...props}, ref) => {
     // ADUI-10401: when the footer's height is an odd number, the footer would align towards the top and not fill the bottom completely
     // the following workaround essentially ensures that the footer's height is always an even number, on the basis of best-effort (i.e. when ref is available)
-    if (ref === null) {
-        ref = useRef<HTMLDivElement>();
-    }
+    const _ref = useRef<HTMLDivElement>();
+
+    const footerRef = ref || _ref;
 
     useEffect(() => {
         const adjustHeight = (element: HTMLElement) => {
@@ -34,12 +34,18 @@ export const ModalFooter = factory<ModalFooterFactory>(({sticky, ...props}, ref)
             }
         };
 
-        if (ref && typeof ref !== 'function' && ref.current) {
-            adjustHeight(ref.current);
+        if (typeof footerRef !== 'function' && footerRef.current) {
+            adjustHeight(footerRef.current);
         }
 
         // if ref === 'function', this is a callback ref. Haven't found any solution for adjusting the height in this case
     }, [ref, props.h]);
 
-    return <StickyFooter className={clsx(classes.footer, {[classes.sticky]: !!sticky})} ref={ref} {...props} />;
+    return (
+        <StickyFooter
+            className={clsx(classes.footer, {[classes.modalFooterSticky]: !!sticky})}
+            ref={footerRef}
+            {...props}
+        />
+    );
 });
