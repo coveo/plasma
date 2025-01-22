@@ -3,7 +3,7 @@ import {type ExpandedState, type PaginationState, type SortingState} from '@tans
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {type DateRangePickerValue} from '../date-range-picker';
-import {useUrlSyncedState} from './use-url-synced-state';
+import {useUrlSyncedState, UseUrlSyncedStateOptions} from './use-url-synced-state';
 
 // Create a deeply optional version of another type
 type DeepPartial<T> = {
@@ -215,6 +215,106 @@ const defaultState: Partial<TableState> = {
     columnVisibility: {},
 };
 
+const serialization = <K extends keyof TableState>(
+    input: Pick<UseUrlSyncedStateOptions<TableState[K]>, 'serializer' | 'deserializer'>,
+) => Object.freeze(input);
+
+const PAGINATION_SERIALIZATION = serialization<'pagination'>({
+    serializer: ({pageIndex, pageSize}) => [
+        ['page', (pageIndex + 1).toString()],
+        ['pageSize', pageSize.toString()],
+    ],
+    deserializer: (params, initialState) =>
+        defaultsDeep(
+            {
+                pageIndex: params.get('page') ? Math.max(1, parseInt(params.get('page'), 10)) - 1 : undefined,
+                pageSize: params.get('pageSize') ? parseInt(params.get('pageSize'), 10) : undefined,
+            },
+            initialState,
+        ),
+});
+
+const SORTING_SERIALIZATION = serialization<'sorting'>({
+    serializer: (sorting) => [['sortBy', sorting.map(({id, desc}) => `${id}.${desc ? 'desc' : 'asc'}`).join(',')]],
+    deserializer: (params, initialState) => {
+        if (!params.has('sortBy')) {
+            return initialState;
+        }
+        const sorts = params.get('sortBy')?.split(',') ?? [];
+        return sorts.map((sort) => {
+            const [id, order] = sort.split('.');
+            return {id, desc: order === 'desc'};
+        });
+    },
+});
+
+const GLOBAL_FILTER_SERIALIZATION = serialization<'globalFilter'>({
+    serializer: (filter) => [['filter', filter]],
+    deserializer: (params, initialState) => params.get('filter') ?? initialState,
+});
+
+const PREDICATES_SERIALIZATION = serialization<'predicates'>({
+    serializer: (predicates) => Object.entries(predicates),
+    deserializer: (params, initialState) =>
+        Object.keys(initialState).reduce(
+            (acc, predicateKey) => {
+                acc[predicateKey] = params.get(predicateKey) ?? initialState[predicateKey];
+                return acc;
+            },
+            {} as TableState['predicates'],
+        ),
+});
+
+const LAYOUT_SERIALIZATION = serialization<'layout'>({
+    serializer: (_layout) => [['layout', _layout]],
+    deserializer: (params, initialState) => params.get('layout') ?? initialState,
+});
+
+const DATE_RANGE_SERIALIZATION = serialization<'dateRange'>({
+    serializer: ([from, to]) => [
+        ['from', from?.toISOString() ?? '', true],
+        ['to', to?.toISOString() ?? '', true],
+    ],
+    deserializer: (params, initial) => [
+        params.get('from') ? new Date(params.get('from') as string) : initial[0],
+        params.get('to') ? new Date(params.get('to') as string) : initial[1],
+    ],
+});
+
+const COLUMN_VISIBILITY_SERIALIZATION = serialization<'columnVisibility'>({
+    serializer: (columns) => [
+        [
+            'show',
+            Object.entries(columns)
+                .filter(([, visible]) => visible === true)
+                .map(([columnName]) => columnName)
+                .join(','),
+        ],
+        [
+            'hide',
+            Object.entries(columns)
+                .filter(([, visible]) => visible === false)
+                .map(([columnName]) => columnName)
+                .join(','),
+        ],
+    ],
+    deserializer: (params, initial) => {
+        if (!params.has('show') && !params.has('hide')) {
+            return initial;
+        }
+        const visible = params.get('show')?.split(',') ?? [];
+        const invisible = params.get('hide')?.split(',') ?? [];
+        const columns = {} as TableState['columnVisibility'];
+        visible.forEach((column) => {
+            columns[column] = true;
+        });
+        invisible.forEach((column) => {
+            columns[column] = false;
+        });
+        return columns;
+    },
+});
+
 export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): TableStore<TData> => {
     const options = defaultsDeep({}, userOptions, defaultOptions) as UseTableOptions<TData>;
     const initialState = defaultsDeep({}, options.initialState, defaultState) as TableState<TData>;
@@ -224,110 +324,40 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
      */
     const sync = !!options.syncWithUrl;
 
-    // synced with url
+    // (Optionally) synced with url
     const [pagination, setPagination] = useUrlSyncedState<TableState<TData>['pagination']>({
+        ...PAGINATION_SERIALIZATION,
         initialState: initialState.pagination,
-        serializer: ({pageIndex, pageSize}) => [
-            ['page', (pageIndex + 1).toString()],
-            ['pageSize', pageSize.toString()],
-        ],
-        deserializer: (params) =>
-            defaultsDeep(
-                {
-                    pageIndex: params.get('page') ? parseInt(params.get('page'), 10) - 1 : undefined,
-                    pageSize: params.get('pageSize') ? parseInt(params.get('pageSize'), 10) : undefined,
-                },
-                initialState.pagination,
-            ),
         sync,
     });
     const [sorting, setSorting] = useUrlSyncedState<TableState<TData>['sorting']>({
+        ...SORTING_SERIALIZATION,
         initialState: initialState.sorting,
-        serializer: (_sorting) => [
-            ['sortBy', _sorting.map(({id, desc}) => `${id}.${desc ? 'desc' : 'asc'}`).join(',')],
-        ],
-        deserializer: (params) => {
-            if (!params.has('sortBy')) {
-                return initialState.sorting;
-            }
-            const sorts = params.get('sortBy')?.split(',') ?? [];
-            return sorts.map((sort) => {
-                const [id, order] = sort.split('.');
-                return {id, desc: order === 'desc'};
-            });
-        },
         sync,
     });
     const [globalFilter, setGlobalFilter] = useUrlSyncedState<TableState<TData>['globalFilter']>({
+        ...GLOBAL_FILTER_SERIALIZATION,
         initialState: initialState.globalFilter,
-        serializer: (filter) => [['filter', filter]],
-        deserializer: (params) => params.get('filter') ?? initialState.globalFilter,
         sync,
     });
     const [predicates, setPredicates] = useUrlSyncedState<TableState<TData>['predicates']>({
+        ...PREDICATES_SERIALIZATION,
         initialState: initialState.predicates,
-        serializer: (_predicates) => Object.entries(_predicates).map(([key, value]) => [key, value]),
-        deserializer: (params) =>
-            Object.keys(initialState.predicates).reduce(
-                (acc, predicateKey) => {
-                    acc[predicateKey] = params.get(predicateKey) ?? initialState.predicates[predicateKey];
-                    return acc;
-                },
-                {} as TableState<TData>['predicates'],
-            ),
         sync,
     });
     const [layout, setLayout] = useUrlSyncedState<TableState<TData>['layout']>({
+        ...LAYOUT_SERIALIZATION,
         initialState: initialState.layout,
-        serializer: (_layout) => [['layout', _layout]],
-        deserializer: (params) => params.get('layout') ?? initialState.layout,
         sync,
     });
     const [dateRange, setDateRange] = useUrlSyncedState<TableState<TData>['dateRange']>({
+        ...DATE_RANGE_SERIALIZATION,
         initialState: initialState.dateRange,
-        serializer: ([from, to]) => [
-            ['from', from?.toISOString() ?? ''],
-            ['to', to?.toISOString() ?? ''],
-        ],
-        deserializer: (params) => [
-            params.get('from') ? new Date(params.get('from') as string) : initialState.dateRange[0],
-            params.get('to') ? new Date(params.get('to') as string) : initialState.dateRange[1],
-        ],
         sync,
     });
     const [columnVisibility, setColumnVisibility] = useUrlSyncedState<TableState<TData>['columnVisibility']>({
+        ...COLUMN_VISIBILITY_SERIALIZATION,
         initialState: initialState.columnVisibility,
-        serializer: (columns) => [
-            [
-                'show',
-                Object.entries(columns)
-                    .filter(([, visible]) => visible === true)
-                    .map(([columnName]) => columnName)
-                    .join(','),
-            ],
-            [
-                'hide',
-                Object.entries(columns)
-                    .filter(([, visible]) => visible === false)
-                    .map(([columnName]) => columnName)
-                    .join(','),
-            ],
-        ],
-        deserializer: (params) => {
-            if (!params.has('show') && !params.has('hide')) {
-                return initialState.columnVisibility;
-            }
-            const visible = params.get('show')?.split(',') ?? [];
-            const invisible = params.get('hide')?.split(',') ?? [];
-            const columns = {} as TableState<TData>['columnVisibility'];
-            visible.forEach((column) => {
-                columns[column] = true;
-            });
-            invisible.forEach((column) => {
-                columns[column] = false;
-            });
-            return columns;
-        },
         sync,
     });
 
