@@ -19,29 +19,19 @@ export type ModalFooterFactory = Factory<{
     stylesNames: ModalFooterStylesNames;
 }>;
 
-/**
- * Round-up an HTML element's height to the nearest even number.
- * There is a known issue when the footer's height is an odd number, the footer would align 1px towards the top and not fill the bottom completely,
- * and this is a helper function for the fix.
- * @param element the HTML element to adjust.
- */
-const adjustHeight = (element: HTMLElement) => {
-    if (element) {
-        const remainder = element.offsetHeight % 2;
-        element.style.height = `${element.offsetHeight - remainder + 2}px`;
-    }
+const ensuresFooterHasEvenHeight = (footer: HTMLElement) => {
+    const remainder = footer.offsetHeight % 2;
+    footer.style.height = `${footer.offsetHeight - remainder + 2}px`;
 };
 
 export const ModalFooter = factory<ModalFooterFactory>(({sticky, ...props}, ref) => {
-    // There is a known issue when the footer's height is an odd number, the footer would align 1px towards the top and not fill the bottom completely
-    // the following workaround essentially ensures that the footer's height is always an even number, on the basis of best-effort (i.e. when ref is available)
     const _ref = useRef<HTMLDivElement>();
 
     const footerRef = ref || _ref;
 
     useEffect(() => {
         if (typeof footerRef !== 'function' && footerRef.current) {
-            adjustHeight(footerRef.current);
+            ensuresFooterHasEvenHeight(footerRef.current);
         }
 
         // if ref === 'function', this is a callback ref. Haven't found any solution for adjusting the height in this case
