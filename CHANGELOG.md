@@ -1,3 +1,11 @@
+## 55.7.0 (2025-01-23)
+
+* fix(prompt): filter footer children in one pass (#4002) a753fd3, closes #4002
+* feat(modal): implement "@coveord/plasma-mantine/Modal" (#4001) 85d2568, closes #4001
+* chore(deps): update all non-major dependencies (#3981) 056f015, closes #3981
+
+
+
 ## 55.6.0 (2025-01-22)
 
 * feat(useUrlSyncedState): allow always emitting values (#3996) a61cb13, closes #3996
