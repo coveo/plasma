@@ -91,10 +91,12 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     });
     const stylesApiProps = {classNames, styles};
 
-    const convertedChildren = Children.toArray(children) as ReactElement[];
+    const footers: ReactElement[] = [];
+    const otherChildren: ReactElement[] = [];
 
-    const otherChildren = convertedChildren.filter((child) => child.type !== Modal.Footer);
-    const footer = convertedChildren.find((child) => child.type === Modal.Footer);
+    Children.forEach(children, (child: ReactElement) => {
+        (child.type === Modal.Footer ? footers : otherChildren).push(child);
+    });
 
     return (
         <PromptContextProvider value={{variant, getStyles}}>
@@ -118,7 +120,7 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                     <Modal.Body {...getStyles('body', stylesApiProps)}>
                         <Box {...getStyles('inner', stylesApiProps)}>{otherChildren}</Box>
                     </Modal.Body>
-                    {footer}
+                    {footers}
                 </Modal.Content>
             </Modal.Root>
         </PromptContextProvider>
