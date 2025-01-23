@@ -4,7 +4,6 @@ import {
     factory,
     Factory,
     Image,
-    Modal,
     ModalRootProps,
     ModalStylesNames,
     StylesApiProps,
@@ -12,6 +11,7 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
+import {Modal} from '../modal';
 import Critical from './icons/critical.svg';
 import Info from './icons/info.svg';
 import Success from './icons/success.svg';
@@ -20,7 +20,6 @@ import {PromptContextProvider} from './Prompt.context';
 import classes from './Prompt.module.css';
 import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton';
 import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton';
-import {PromptFooter} from './PromptFooter';
 
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
 export type PromptVars = {root: '--prompt-icon-size'};
@@ -53,7 +52,7 @@ export type PromptFactory = Factory<{
     staticComponents: {
         CancelButton: typeof PromptCancelButton;
         ConfirmButton: typeof PromptConfirmButton;
-        Footer: typeof PromptFooter;
+        Footer: typeof Modal.Footer;
     };
 }>;
 
@@ -96,7 +95,7 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     const otherChildren: ReactElement[] = [];
 
     Children.forEach(children, (child: ReactElement) => {
-        (child.type === PromptFooter ? footers : otherChildren).push(child);
+        (child.type === Modal.Footer ? footers : otherChildren).push(child);
     });
 
     return (
@@ -130,4 +129,4 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
 
 Prompt.CancelButton = PromptCancelButton;
 Prompt.ConfirmButton = PromptConfirmButton;
-Prompt.Footer = PromptFooter;
+Prompt.Footer = Modal.Footer;
