@@ -1,3 +1,10 @@
+## 55.6.0 (2025-01-22)
+
+* feat(useUrlSyncedState): allow always emitting values (#3996) a61cb13, closes #3996
+* chore(deps): update dependency vite to v6.0.9 [security] (#4003) f36defe, closes #4003
+
+
+
 ## <small>55.5.1 (2025-01-21)</small>
 
 * fix(mantine,table): make table predicate scroll more visible (#3999) 78111ca, closes #3999
