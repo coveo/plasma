@@ -22,9 +22,9 @@ describe('ModalFooter', () => {
         const footer = screen.getByText('im the children').parentElement;
         expect(footer.className).contains('modalFooterSticky');
     });
-    // ADUI-10401: when the footer's height is an odd number, the footer would align towards the top and not fill the bottom completely
+    // There is a known issue when the footer's height is an odd number, the footer would align 1px towards the top and not fill the bottom completely
     // this tests an workaround we've implemented to solve the issue
-    it('has an even height value', () => {
+    it('has an even height value to ensure the footer sticks completely to the bottom', () => {
         render(
             <Modal.Footer h={99}>
                 <div>im the children</div>

@@ -20,7 +20,7 @@ export interface StickyFooterProps
      * The 'modal-footer' removes the modal's default padding so that the footer properly hugs the bottom of the modal.
      * It also adds a border on top of the footer.
      *
-     * @deprecated Use Modal.Footer in @coveord/plasma-mantine/Modal for modal footers. For other cases, the 'default' variant should suffice.
+     * @deprecated Use Modal.Footer from @coveord/plasma-mantine/Modal for modal footers. For other cases, the 'default' variant should suffice.
      */
     variant?: 'default' | 'modal-footer';
 }
