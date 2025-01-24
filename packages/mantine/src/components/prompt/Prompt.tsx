@@ -4,7 +4,6 @@ import {
     factory,
     Factory,
     Image,
-    Modal,
     ModalRootProps,
     ModalStylesNames,
     StylesApiProps,
@@ -12,6 +11,7 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
+import {Modal} from '../modal';
 import Critical from './icons/critical.svg';
 import Info from './icons/info.svg';
 import Success from './icons/success.svg';
@@ -20,7 +20,6 @@ import {PromptContextProvider} from './Prompt.context';
 import classes from './Prompt.module.css';
 import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton';
 import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton';
-import {PromptFooter} from './PromptFooter';
 
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
 export type PromptVars = {root: '--prompt-icon-size'};
@@ -53,7 +52,7 @@ export type PromptFactory = Factory<{
     staticComponents: {
         CancelButton: typeof PromptCancelButton;
         ConfirmButton: typeof PromptConfirmButton;
-        Footer: typeof PromptFooter;
+        Footer: typeof Modal.Footer;
     };
 }>;
 
@@ -92,10 +91,12 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     });
     const stylesApiProps = {classNames, styles};
 
-    const convertedChildren = Children.toArray(children) as ReactElement[];
+    const footers: ReactElement[] = [];
+    const otherChildren: ReactElement[] = [];
 
-    const otherChildren = convertedChildren.filter((child) => child.type !== PromptFooter);
-    const footer = convertedChildren.find((child) => child.type === PromptFooter);
+    Children.forEach(children, (child: ReactElement) => {
+        (child.type === Modal.Footer ? footers : otherChildren).push(child);
+    });
 
     return (
         <PromptContextProvider value={{variant, getStyles}}>
@@ -119,7 +120,7 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                     <Modal.Body {...getStyles('body', stylesApiProps)}>
                         <Box {...getStyles('inner', stylesApiProps)}>{otherChildren}</Box>
                     </Modal.Body>
-                    {footer}
+                    {footers}
                 </Modal.Content>
             </Modal.Root>
         </PromptContextProvider>
@@ -128,4 +129,4 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
 
 Prompt.CancelButton = PromptCancelButton;
 Prompt.ConfirmButton = PromptConfirmButton;
-Prompt.Footer = PromptFooter;
+Prompt.Footer = Modal.Footer;
