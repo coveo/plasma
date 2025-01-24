@@ -406,8 +406,8 @@ importers:
         specifier: 1.10.7
         version: 1.10.7(@swc/helpers@0.5.15)
       '@types/chroma-js':
-        specifier: 2.4.5
-        version: 2.4.5
+        specifier: 3.1.0
+        version: 3.1.0
       '@types/fs-extra':
         specifier: 11.0.4
         version: 11.0.4
@@ -1981,8 +1981,8 @@ packages:
   '@types/aria-query@5.0.4':
     resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==}
 
-  '@types/chroma-js@2.4.5':
-    resolution: {integrity: sha512-6ISjhzJViaPCy2q2e6PgK+8HcHQDQ0V2LDiKmYAh+jJlLqDa6HbwDh0wOevHY0kHHUx0iZwjSRbVD47WOUx5EQ==}
+  '@types/chroma-js@3.1.0':
+    resolution: {integrity: sha512-Uwl3SOtUkbQ6Ye6ZYu4q4xdLGBzmY839sEHYtOT7i691neeyd+7fXWT5VIkcUSfNwIFrIjQutNYQn9h4q5HFvg==}
 
   '@types/conventional-commits-parser@5.0.1':
     resolution: {integrity: sha512-7uz5EHdzz2TqoMfV7ee61Egf5y6NkcO4FB/1iCCQnbeiI1F3xzv3vK5dBCXUCLQgGYS+mUeigK1iKQzvED+QnQ==}
@@ -7210,7 +7210,7 @@ snapshots:
 
   '@types/aria-query@5.0.4': {}
 
-  '@types/chroma-js@2.4.5': {}
+  '@types/chroma-js@3.1.0': {}
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
