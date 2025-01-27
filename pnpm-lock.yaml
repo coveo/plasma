@@ -421,8 +421,8 @@ importers:
         specifier: 3.1.2
         version: 3.1.2
       commander:
-        specifier: 12.1.0
-        version: 12.1.0
+        specifier: 13.1.0
+        version: 13.1.0
       dotenv:
         specifier: 16.4.7
         version: 16.4.7
@@ -2624,6 +2624,10 @@ packages:
 
   commander@12.1.0:
     resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
+    engines: {node: '>=18'}
+
+  commander@13.1.0:
+    resolution: {integrity: sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==}
     engines: {node: '>=18'}
 
   commander@6.2.1:
@@ -7952,6 +7956,8 @@ snapshots:
   comma-separated-tokens@2.0.3: {}
 
   commander@12.1.0: {}
+
+  commander@13.1.0: {}
 
   commander@6.2.1: {}
 
