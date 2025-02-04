@@ -4,12 +4,12 @@ import {
     ModalFactory as MantineModalFactory,
     ModalProps as MantineModalProps,
 } from '@mantine/core';
-import {ModalFooter, ModalFooter as PlasmaModalFooter} from './ModalFooter';
+import {ModalFooter as PlasmaModalFooter} from './ModalFooter';
 
 // Need to redeclare the factory to override and add footer to the props type
 type PlasmaModalFactory = Omit<MantineModalFactory, 'staticComponents'> & {
     staticComponents: MantineModalFactory['staticComponents'] & {
-        Footer: typeof ModalFooter;
+        Footer: typeof PlasmaModalFooter;
     };
 };
 
