@@ -1,117 +1,148 @@
 import {act, renderHook} from '@test-utils';
 import {useUrlSyncedState} from '../use-url-synced-state';
 
-describe('useUrlSyncedState', () => {
-    afterEach(() => {
-        window.history.replaceState(null, '', '/');
-    });
+/**
+ * Split a url into its parts.
+ * Note that this method is purposefully different from the implementation,
+ * and it splits to an object instead of an Array.
+ *
+ * @param href The url to extract the parts from.
+ * @returns The separate parts, all are an empty string if not present.
+ */
+const extractParts = (href: string) =>
+    /^(?<pathname>[^?#]*)(?<search>\?[^#]*|)(?<hash>#[^?]*|)(?<hashSearch>\?.*|)$/.exec(href).groups as {
+        pathname: string;
+        search: string;
+        hash: string;
+        hashSearch: string;
+    };
 
-    it('serializes the state value as url parameter when the state changes', () => {
-        const {result} = renderHook(() =>
-            useUrlSyncedState({
-                initialState: '',
-                serializer: (state) => [['key', state]],
-                deserializer: (params) => params.get('key') ?? '',
-            }),
-        );
-        act(() => result.current[1]('value'));
-        expect(result.current[0]).toBe('value');
-        expect(window.location.search).toBe('?key=value');
-    });
+describe.each(['/', '/#', '/#?', '/#hash?with-question=mark', '/sub/path', '/?leave=untouched#/', '/?dev#/sub/path/'])(
+    'useUrlSyncedState with location %s',
+    (location) => {
+        const locationParts = extractParts(location);
+        const isHashRoute = locationParts.hash.startsWith('#/');
 
-    it('allows to serialize the state value into multiple parameters', () => {
-        const {result} = renderHook(() =>
-            useUrlSyncedState({
-                initialState: new Date(),
-                serializer: (state) => {
-                    const iso = state.toISOString();
-                    return [
-                        ['date', iso.substring(0, 10)],
-                        ['time', iso.substring(11, 24)],
-                    ];
-                },
-                deserializer: (params) =>
-                    new Date(`${params.get('date') ?? '2025-01-01'}T${params.get('time') ?? '00:00:00.000Z'}`),
-            }),
-        );
-        act(() => result.current[1](new Date(Date.UTC(2025, 0, 31, 12, 34, 56, 789))));
-        expect(window.location.search).toBe('?date=2025-01-31&time=12%3A34%3A56.789Z');
-    });
+        beforeEach(() => {
+            window.history.replaceState(null, '', location);
+        });
 
-    it('removes the parameter from the url if the state serializes to the same value as the initial state', () => {
-        const {result} = renderHook(() =>
-            useUrlSyncedState({
-                initialState: true,
-                serializer: (state) => [['key', state ? 'true' : 'false']],
-                deserializer: (params, initialState) =>
-                    params.has('key') ? params.get('key') === 'true' : initialState,
-                sync: true,
-            }),
-        );
-        act(() => result.current[1](false));
-        expect(window.location.search).toBe('?key=false');
-        act(() => result.current[1](true));
-        expect(window.location.search).toBe('');
-    });
+        afterEach(() => {
+            window.history.replaceState(null, '', '/');
+        });
 
-    it('removes the parameter from the url if the state serializes to the empty string', () => {
-        const {result} = renderHook(() =>
-            useUrlSyncedState({
-                initialState: 'initial',
-                serializer: (state) => [['key', state]],
-                deserializer: (params) => params.get('key') ?? '',
-            }),
-        );
-        act(() => result.current[1]('value'));
-        expect(window.location.search).toBe('?key=value');
-        act(() => result.current[1](''));
-        expect(window.location.search).toBe('');
-    });
+        /**
+         * Utility that will set the search to be a specific value, taking into account hash routes.
+         *
+         * @param search The search value to set.
+         */
+        const setSearch = (search: string) => {
+            const parts = extractParts(location);
+            if (isHashRoute) {
+                parts.hashSearch = search;
+            } else {
+                parts.search = search;
+            }
+            window.history.replaceState(null, '', `${parts.pathname}${parts.search}${parts.hash}${parts.hashSearch}`);
+        };
 
-    it('does not sync with the url if the sync parameter is set to false', () => {
-        const {result} = renderHook(() =>
-            useUrlSyncedState({
-                initialState: '',
-                serializer: (state) => [['key', state]],
-                deserializer: (params) => params.get('key') ?? '',
-                sync: false,
-            }),
-        );
-        act(() => result.current[1]('value'));
-        expect(result.current[0]).toBe('value');
-        expect(window.location.search).toBe('');
-    });
+        /**
+         * Utility expect that will automatically check either the hash route search or normal search,
+         * and also validates the other part is left as-is, if necessary.
+         *
+         * @param expectedSearch The expected search
+         */
+        const expectSearch = (expectedSearch: string) => {
+            expect(window.location.pathname).toBe(locationParts.pathname);
+            if (isHashRoute) {
+                expect(window.location.search).toBe(locationParts.search);
+                expect(window.location.hash).toBe(`${locationParts.hash}${expectedSearch}`);
+            } else {
+                expect(window.location.search).toBe(expectedSearch);
+                const hash = `${locationParts.hash}${locationParts.hashSearch}`;
+                // "fun" quirk: if the hash is only #, location.hash is empty.
+                expect(window.location.hash).toBe(hash === '#' ? '' : hash);
+            }
+        };
 
-    it('derives the initial state from the url on first render', () => {
-        window.history.replaceState(null, '', '?key=value');
+        it('serializes the state value as url parameter when the state changes', () => {
+            const {result} = renderHook(() =>
+                useUrlSyncedState({
+                    initialState: '',
+                    serializer: (state) => [['key', state]],
+                    deserializer: (params) => params.get('key') ?? '',
+                }),
+            );
+            act(() => result.current[1]('value'));
+            expect(result.current[0]).toBe('value');
+            expectSearch('?key=value');
+        });
 
-        const {result} = renderHook(() =>
-            useUrlSyncedState({
-                initialState: 'initial',
-                serializer: (state) => [['key', state]],
-                deserializer: (params) => params.get('key') ?? '',
-            }),
-        );
-        expect(result.current[0]).toBe('value');
-    });
+        it('allows to serialize the state value into multiple parameters', () => {
+            const {result} = renderHook(() =>
+                useUrlSyncedState({
+                    initialState: new Date(),
+                    serializer: (state) => {
+                        const iso = state.toISOString();
+                        return [
+                            ['date', iso.substring(0, 10)],
+                            ['time', iso.substring(11, 24)],
+                        ];
+                    },
+                    deserializer: (params) =>
+                        new Date(`${params.get('date') ?? '2025-01-01'}T${params.get('time') ?? '00:00:00.000Z'}`),
+                }),
+            );
+            act(() => result.current[1](new Date(Date.UTC(2025, 0, 31, 12, 34, 56, 789))));
+            expectSearch('?date=2025-01-31&time=12%3A34%3A56.789Z');
+        });
 
-    it('does not derive the initial state from the url on first render if sync option is false', () => {
-        window.history.replaceState(null, '', '?key=value');
+        it('removes the parameter from the url if the state serializes to the same value as the initial state', () => {
+            const {result} = renderHook(() =>
+                useUrlSyncedState({
+                    initialState: true,
+                    serializer: (state) => [['key', state ? 'true' : 'false']],
+                    deserializer: (params, initialState) =>
+                        params.has('key') ? params.get('key') === 'true' : initialState,
+                    sync: true,
+                }),
+            );
+            act(() => result.current[1](false));
+            expectSearch('?key=false');
+            act(() => result.current[1](true));
+            expectSearch('');
+        });
 
-        const {result} = renderHook(() =>
-            useUrlSyncedState({
-                initialState: 'initial',
-                serializer: (state) => [['key', state]],
-                deserializer: (params) => params.get('key') ?? '',
-                sync: false,
-            }),
-        );
-        expect(result.current[0]).toBe('initial');
-    });
+        it('removes the parameter from the url if the state serializes to the empty string', () => {
+            const {result} = renderHook(() =>
+                useUrlSyncedState({
+                    initialState: 'initial',
+                    serializer: (state) => [['key', state]],
+                    deserializer: (params) => params.get('key') ?? '',
+                }),
+            );
+            act(() => result.current[1]('value'));
+            expectSearch('?key=value');
+            act(() => result.current[1](''));
+            expectSearch('');
+        });
 
-    describe('with hash router urls', () => {
-        it('reads values from the hash parameters', () => {
-            window.history.replaceState(null, '', '?key=unexpected#/hash/route?key=value');
+        it('does not sync with the url if the sync parameter is set to false', () => {
+            const {result} = renderHook(() =>
+                useUrlSyncedState({
+                    initialState: '',
+                    serializer: (state) => [['key', state]],
+                    deserializer: (params) => params.get('key') ?? '',
+                    sync: false,
+                }),
+            );
+            act(() => result.current[1]('value'));
+            expect(result.current[0]).toBe('value');
+            expectSearch('');
+        });
+
+        it('derives the initial state from the url on first render', () => {
+            setSearch('?key=value');
 
             const {result} = renderHook(() =>
                 useUrlSyncedState({
@@ -123,45 +154,65 @@ describe('useUrlSyncedState', () => {
             expect(result.current[0]).toBe('value');
         });
 
-        it('serializes the state values to the hash route parameters', () => {
-            window.history.replaceState(null, '', '?a=untouched#/hash/route');
+        it('does not derive the initial state from the url on first render if sync option is false', () => {
+            setSearch('?key=value');
 
             const {result} = renderHook(() =>
                 useUrlSyncedState({
-                    initialState: {a: null, b: null},
-                    serializer: (state) => [
-                        ['a', state.a],
-                        ['b', state.b],
-                    ],
-                    deserializer: (params) => ({a: params.get('a') ?? '', b: params.get('b')}),
+                    initialState: 'initial',
+                    serializer: (state) => [['key', state]],
+                    deserializer: (params) => params.get('key') ?? '',
+                    sync: false,
                 }),
             );
-            act(() => result.current[1]({a: 'test', b: 'state'}));
-            expect(result.current[0]).toStrictEqual({a: 'test', b: 'state'});
-            expect(window.location.search).toBe('?a=untouched');
-            expect(window.location.hash).toBe('#/hash/route?a=test&b=state');
+            expect(result.current[0]).toBe('initial');
         });
 
-        it('removes the state values from the hash route parameters', () => {
-            window.history.replaceState(null, '', '?a=untouched&b=part-of-search#/hash/route?a=1&b=2');
+        it('does not serializes initial state for "always emit" value, if sync option is false', () => {
+            const {result} = renderHook(() =>
+                useUrlSyncedState({
+                    initialState: 'initial',
+                    serializer: (state) => [['key', state, true]],
+                    deserializer: (params) => params.get('key') ?? '',
+                    sync: false,
+                }),
+            );
+            expect(result.current[0]).toBe('initial');
+            expectSearch('');
+        });
+
+        it('serializes initial state for "always emit" value', () => {
+            setSearch('?keep=as-is');
 
             const {result} = renderHook(() =>
-                useUrlSyncedState<{a: number | null; b: number}>({
-                    initialState: {a: 13, b: 37},
+                useUrlSyncedState({
+                    initialState: 'initial',
+                    serializer: (state) => [['key', state, true]],
+                    deserializer: (params, initial) => params.get('key') ?? initial,
+                }),
+            );
+            expect(result.current[0]).toBe('initial');
+            expectSearch('?keep=as-is&key=initial');
+        });
+
+        it('deserializes initial state for "always emit" value, without changing it', () => {
+            setSearch('?text=value');
+
+            const {result} = renderHook(() =>
+                useUrlSyncedState({
+                    initialState: {text: 'initial', nr: 42},
                     serializer: (state) => [
-                        ['a', state.a?.toString()],
-                        ['b', state.b?.toString()],
+                        ['text', state.text, true],
+                        ['number', String(state.nr), true],
                     ],
-                    deserializer: (params) => ({
-                        a: Number.parseInt(params.get('a') ?? '0', 10),
-                        b: Number.parseInt(params.get('b') ?? '0', 10),
+                    deserializer: (params, initial) => ({
+                        text: params.get('text') ?? initial.text,
+                        nr: params.has('number') ? Number.parseInt(params.get('number'), 10) : initial.nr,
                     }),
                 }),
             );
-            act(() => result.current[1]({a: null, b: 37}));
-            expect(result.current[0]).toStrictEqual({a: null, b: 37});
-            expect(window.location.search).toBe('?a=untouched&b=part-of-search');
-            expect(window.location.hash).toBe('#/hash/route');
+            expect(result.current[0]).toStrictEqual({text: 'value', nr: 42});
+            expectSearch('?text=value&number=42');
         });
-    });
-});
+    },
+);
