@@ -31,21 +31,29 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
     onRemove,
     removable = true,
     children,
+    ...otherProps
 }) => {
     const ctx = useCollectionContext();
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : <RemoveButtonPlaceholder />;
 
     return (
-        <Group {...ctx.getStyles('item')}>
+        <Group {...ctx.getStyles('item')} {...otherProps}>
             {children}
             {removeButton}
         </Group>
     );
 };
 
-const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({children}) => {
+const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
+    children,
+    ...otherProps
+}) => {
     const ctx = useCollectionContext();
-    return <Group {...ctx.getStyles('item')}>{children}</Group>;
+    return (
+        <Group {...ctx.getStyles('item')} {...otherProps}>
+            {children}
+        </Group>
+    );
 };
 
 const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
@@ -53,6 +61,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
     onRemove,
     removable = true,
     children,
+    ...otherProps
 }) => {
     const ctx = useCollectionContext();
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : null;
@@ -72,6 +81,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
                     : undefined,
             })}
             data-isdragging={isDragging}
+            {...otherProps}
         >
             <div ref={setActivatorNodeRef} {...listeners} {...attributes} {...ctx.getStyles('dragHandle')}>
                 <DragAndDropSize24Px height={16} />
