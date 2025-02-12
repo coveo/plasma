@@ -4,7 +4,7 @@ import {ESLint} from 'eslint';
 const changedFiles = process.argv.slice(2);
 const changedFilesWithoutDuplicates = [...new Set(changedFiles)];
 
-const ALLOWED_EXTENSIONS = ['js', 'ts', 'jsx', 'tsx'];
+const ALLOWED_EXTENSIONS = ['js', 'ts', 'jsx', 'tsx', 'jsxt'];
 
 (async function main() {
     const eslint = new ESLint();
