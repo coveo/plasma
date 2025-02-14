@@ -1,0 +1,19 @@
+{
+    "name": "@coveord/plasma-figma-code-connect",
+    "version": "55.7.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint \"**/*.{ts,tsx}\" --fix",
+        "type-check": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@coveord/plasma-mantine": "workspace:*",
+        "@figma/code-connect": "1.3.1",
+        "react": "18.3.1"
+    },
+    "devDependencies": {
+        "@types/react": "18.3.18",
+        "typescript": "5.7.3"
+    }
+}
