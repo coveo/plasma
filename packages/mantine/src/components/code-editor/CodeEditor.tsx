@@ -72,6 +72,12 @@ interface CodeEditorProps
      * @default 'local'
      */
     monacoLoader?: 'cdn' | 'local';
+    /**
+     * Options to pass to the monaco editor.
+     * Currently only supporting [`tabSize`](https://microsoft.github.io/monaco-editor/typedoc/interfaces/editor.IStandaloneEditorConstructionOptions.html#tabSize).
+     *
+     */
+    options?: Pick<monacoEditor.IStandaloneEditorConstructionOptions, 'tabSize'>;
 }
 
 const defaultProps: Partial<CodeEditorProps> = {
@@ -101,6 +107,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         maxHeight,
         disabled,
         monacoLoader,
+        options: {tabSize} = {tabSize: 2},
         ...others
     } = useProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
@@ -230,7 +237,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     formatOnPaste: true,
                     fontSize: px(theme.fontSizes.xs) as number,
                     readOnly: disabled,
-                    tabSize: 2,
+                    tabSize,
                 }}
                 value={_value}
                 onChange={handleChange}

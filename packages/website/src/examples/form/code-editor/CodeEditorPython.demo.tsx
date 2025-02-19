@@ -11,8 +11,9 @@ const Demo = () => {
         <CodeEditor
             language="python"
             label="Extension"
-            description="Define an extension using Python"
+            description="Define an extension using Python and a custom tab size."
             monacoLoader="cdn"
+            options={{tabSize: 4}}
             {...form.getInputProps('code')}
         />
     );
