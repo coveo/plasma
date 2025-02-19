@@ -3,7 +3,7 @@ import {CodeEditor, useForm} from '@coveord/plasma-mantine';
 const Demo = () => {
     const form = useForm({
         initialValues: {
-            code: 'def my_extension():\n\tprint("Not implemented yet.")\n\nmy_extension()',
+            code: 'def my_extension():\n    print("Not implemented yet.")\n\nmy_extension()',
         },
     });
 
