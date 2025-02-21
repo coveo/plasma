@@ -1,3 +1,16 @@
+## <small>55.7.1 (2025-02-21)</small>
+
+* feat(mantine, code-editor): support custom tabSize (#4014) a4483fa, closes #4014
+* fix(modal): optimize import (#4009) b204340, closes #4009
+* fix(table): correct useUrlSyncedState serialization logic (#4011) 26d6336, closes #4011
+* chore(deps): update actions/setup-node digest to 1d0ff46 (#4006) 43eaf2c, closes #4006
+* chore(deps): update all non-major dependencies (#4005) b73ecfa, closes #4005
+* chore(deps): update dependency eslint-config-prettier to v10 (#3998) 1511c68, closes #3998
+* chore(deps): update dependency vitest to v3 (#4004) 62f90af, closes #4004
+* chore(deps): update dependency vitest to v3.0.5 [security] (#4010) 414fd96, closes #4010
+
+
+
 ## 55.7.0 (2025-01-23)
 
 * fix(prompt): filter footer children in one pass (#4002) a753fd3, closes #4002
