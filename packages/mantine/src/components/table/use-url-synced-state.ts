@@ -8,14 +8,30 @@ import {Dispatch, SetStateAction, useMemo, useState} from 'react';
  */
 export type SearchParamEntry = [string, string | null | undefined, boolean?];
 
+/** A URL split into an array of length 4, as [pathname, search, hash, hashSearch] */
+type UrlParts = [string, string, string, string];
+
+const slice = Function.prototype.call.bind(Array.prototype.slice) as <T>(
+    from: ArrayLike<T>,
+    start?: number,
+    end?: number,
+) => T[];
+
 /**
- * Get the index of the ? in a URL that denotes the start of the "search".
- * Performs a nested search for '#/', to detect hash router urls and take the params of the hash in that case.
+ * Split a url into its parts.
  *
- * @param url The URL to search.
- * @returns The location of the question mark, or `-1` if not found.
+ * @param href The url to extract the parts from.
+ * @returns The separate parts, all are an empty string if not present.
  */
-const indexOfSearch = (url: string): number => url.indexOf('?', url.indexOf('#/') + 1);
+const extractParts = (href: string) => slice(/^([^?#]*)(\?[^#]*|)(#[^?]*|)(\?.*|)$/.exec(href ?? ''), 1, 5) as UrlParts;
+
+/**
+ * The index of the search parameter to use, e.g. hashSearch for hash routes (hash starts with '#/').
+ *
+ * @param parts: The url parts, as returned by `extractParts`.
+ * @returns The index of the search parameter to use (1 or 3).
+ */
+const searchIndex = (parts: UrlParts): 1 | 3 => (/^#\//.test(parts[2]) ? 3 : 1);
 
 /**
  * Read the **current** search params from `window.location`, with support for detecting React's HashRouter.
@@ -24,9 +40,8 @@ const indexOfSearch = (url: string): number => url.indexOf('?', url.indexOf('#/'
  * @returns The `URLSearchParams` instance, and a function that can be used to get an updated href.
  */
 const getSearchParams = (): URLSearchParams => {
-    const href = window.location.href;
-    const searchStart = indexOfSearch(href);
-    return new URLSearchParams(searchStart < 0 ? undefined : href.substring(searchStart));
+    const parts = extractParts(window.location.href);
+    return new URLSearchParams(parts[searchIndex(parts)]);
 };
 
 /**
@@ -37,13 +52,12 @@ const getSearchParams = (): URLSearchParams => {
  */
 const applySearchParams = (params: URLSearchParams): void => {
     const currentHref = window.location.href;
-    const index = indexOfSearch(currentHref);
-    let nextHref = index < 0 ? currentHref : currentHref.substring(0, index);
-    if (params.size > 0) {
-        nextHref = nextHref.concat('?', params.toString());
-    }
-    if (nextHref !== currentHref) {
-        window.history.replaceState(null, '', nextHref);
+    const parts = extractParts(currentHref);
+    const search = params.size > 0 ? `?${params.toString()}` : '';
+    const index = searchIndex(parts);
+    if (parts[index] !== search) {
+        parts[index] = search;
+        window.history.replaceState(null, '', parts.join(''));
     }
 };
 
@@ -95,14 +109,18 @@ export const useUrlSyncedState = <T>(options: UseUrlSyncedStateOptions<T>) => {
     const initialStateSerialized = useMemo(() => {
         const stateMap = new Map<string, string>();
         let initialize: URLSearchParams | null = null;
+        let needsApply = false;
         for (const [key, value, alwaysEmit] of options.serializer(getInitialState(options))) {
             stateMap.set(key, value);
-            if (alwaysEmit && value) {
+            if (sync && alwaysEmit && value) {
                 initialize ??= getSearchParams();
-                initialize.set(key, value);
+                if (!initialize.has(key)) {
+                    needsApply = true;
+                    initialize.set(key, value);
+                }
             }
         }
-        if (initialize) {
+        if (needsApply) {
             applySearchParams(initialize);
         }
         return stateMap;
