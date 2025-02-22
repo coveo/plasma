@@ -10,7 +10,7 @@ overrides:
 
 patchedDependencies:
   '@stencil/core':
-    hash: l4z4izduz5zse4eflkg54f45km
+    hash: d96a845aa2fe5ed813dd4aba0089c098d2919879468a835894ae9165d6f89535
     path: patches/@stencil__core.patch
 
 importers:
@@ -515,7 +515,7 @@ importers:
         version: 1.1.0(@mantine/core@7.16.1(@mantine/hooks@7.16.1(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.16.1(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@stencil/core':
         specifier: 4.24.0
-        version: 4.24.0(patch_hash=l4z4izduz5zse4eflkg54f45km)
+        version: 4.24.0(patch_hash=d96a845aa2fe5ed813dd4aba0089c098d2919879468a835894ae9165d6f89535)
       '@swc/helpers':
         specifier: 0.5.15
         version: 0.5.15
@@ -6734,7 +6734,7 @@ snapshots:
     dependencies:
       escape-string-regexp: 5.0.0
 
-  '@stencil/core@4.24.0(patch_hash=l4z4izduz5zse4eflkg54f45km)': {}
+  '@stencil/core@4.24.0(patch_hash=d96a845aa2fe5ed813dd4aba0089c098d2919879468a835894ae9165d6f89535)': {}
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.26.0)':
     dependencies:
