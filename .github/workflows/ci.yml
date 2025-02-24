@@ -58,8 +58,17 @@ jobs:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
                   AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
-            - name: Add demo link as a commment on the PR
+            - name: Add demo link as a comment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
                   message: ':heavy_check_mark: [Live demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ steps.deploy-demo.outputs.demo-output-path }}/).'
                   avoidRepostsWith: Live demo of your latest successful build available here
+            - uses: ./.github/actions/storybook
+            - name: Push storybook code to s3 demo folder
+              id: deploy-storybook
+              run: bash ./.github/actions/storybook/deploy-storybook.sh ${{ github.head_ref || github.ref_name }} ${{ secrets.AWS_BUCKET }}
+            - name: Add Storybook demo link as a comment on the PR
+              uses: ./.github/actions/comment-on-pr
+              with:
+                  message: ':heavy_check_mark: [Live Storybook demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ steps.deploy-demo.outputs.demo-output-path }}/storybook).'
+                  avoidRepostsWith: Live Storybook demo of your latest successful build available here

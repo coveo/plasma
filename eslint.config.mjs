@@ -4,12 +4,13 @@ import eslintPluginImport from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 import preferArrow from 'eslint-plugin-prefer-arrow';
 import reactHooks from 'eslint-plugin-react-hooks';
-import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
-import unusedImports from 'eslint-plugin-unused-imports';
-import tsEslint from 'typescript-eslint';
-import eslintPluginTestingLibrary from 'eslint-plugin-testing-library';
-import globals from 'globals';
 import reactRefresh from 'eslint-plugin-react-refresh';
+import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
+import storybook from 'eslint-plugin-storybook';
+import eslintPluginTestingLibrary from 'eslint-plugin-testing-library';
+import unusedImports from 'eslint-plugin-unused-imports';
+import globals from 'globals';
+import tsEslint from 'typescript-eslint';
 
 export default tsEslint.config(
     {ignores: ['**/dist', '**/.turbo', 'packages/react-icons/mock/index.js', 'packages/website/src/examples/mantine']},
@@ -276,4 +277,5 @@ export default tsEslint.config(
             'no-console': 'off',
         },
     },
+    storybook.configs['flat/recommended'],
 );
