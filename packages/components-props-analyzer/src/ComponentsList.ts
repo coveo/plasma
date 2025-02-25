@@ -58,10 +58,6 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
     },
     {
-        name: 'ModalWizard',
-        packageName: '@coveord/plasma-mantine',
-    },
-    {
         name: 'StickyFooter',
         packageName: '@coveord/plasma-mantine',
     },

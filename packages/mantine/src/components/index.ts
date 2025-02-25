@@ -12,6 +12,7 @@ export * from './ellipsis-text';
 export * from './header';
 export * from './inline-confirm';
 export * from './menu';
+export * from './modal';
 export * from './prompt';
 export * from './read-only';
 export * from './sticky-footer';
