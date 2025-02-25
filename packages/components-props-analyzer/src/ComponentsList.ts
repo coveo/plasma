@@ -94,6 +94,10 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
     },
     {
+        name: 'Badge',
+        packageName: '@coveord/plasma-mantine',
+    },
+    {
         name: 'EllipsisText',
         packageName: '@coveord/plasma-mantine',
         propsType: 'EllipsisTextProps',

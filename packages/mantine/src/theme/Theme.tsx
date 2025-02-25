@@ -9,10 +9,7 @@ import {
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
-    ActionIcon,
     Alert,
-    Anchor,
-    AppShellNavbar,
     Badge,
     Button,
     Checkbox,
@@ -22,13 +19,11 @@ import {
     ComboboxSearch,
     createTheme,
     deepMerge,
-    Divider,
     Input,
     InputWrapper,
     List,
     Loader,
     MantineThemeOverride,
-    MenuItem,
     Modal,
     MultiSelect,
     NavLink,
@@ -44,46 +39,34 @@ import {
     Switch,
     Tabs,
     Text,
-    TextInput,
     Tooltip,
 } from '@mantine/core';
-import {DatePicker} from '@mantine/dates';
-import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
-import AnchorClasses from '../styles/Anchor.module.css';
-import AppShellNavBarClasses from '../styles/AppShellNavBar.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
-import DatePickerClasses from '../styles/DatePicker.module.css';
-import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
-import NotificationClasses from '../styles/Notification.module.css';
-import PaginationClasses from '../styles/Pagination.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
 import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
-import SelectClasses from '../styles/Select.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
 import TextClasses from '../styles/Text.module.css';
 import TooltipClasses from '../styles/Tooltip.module.css';
-import {NotificationVars} from '../vars/Notification.vars';
-import {TextVars} from '../vars/Text.vars';
 import {PlasmaColors} from './PlasmaColors';
 
 export const plasmaTheme: MantineThemeOverride = createTheme({
     // These are overrides over https://github.com/mantinedev/mantine/blob/master/packages/%40mantine/core/src/core/MantineProvider/default-theme.ts
     fontFamily: 'canada-type-gibson, sans-serif',
     black: color.primary.gray[9],
-    defaultRadius: 8,
+    defaultRadius: 'md',
     lineHeights: {md: '1.5'},
     spacing: {
         xxs: '4px',
@@ -93,18 +76,25 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         lg: '32px',
         xl: '40px',
     },
-    primaryColor: 'action',
+    primaryColor: 'blue',
     headings: {
         fontFamily: 'canada-type-gibson, sans-serif',
         fontWeight: '500',
         sizes: {
-            h1: {fontSize: '48px', lineHeight: '1.5', fontWeight: '300'},
-            h2: {fontSize: '32px', lineHeight: '1.5', fontWeight: '500'},
-            h3: {fontSize: '24px', lineHeight: '1.5', fontWeight: '500'},
-            h4: {fontSize: '18px', lineHeight: '1.5', fontWeight: '300'},
-            h5: {fontSize: '14px', lineHeight: '1.5', fontWeight: '500'},
-            h6: {fontSize: '12px', lineHeight: '1.5', fontWeight: '500'},
+            h1: {fontSize: '40px', lineHeight: '1.2', fontWeight: '500'},
+            h2: {fontSize: '32px', lineHeight: '1.25', fontWeight: '500'},
+            h3: {fontSize: '24px', lineHeight: '1.33', fontWeight: '500'},
+            h4: {fontSize: '18px', lineHeight: '1.2', fontWeight: '300'},
+            h5: {fontSize: '16px', lineHeight: '1.25', fontWeight: '500'},
+            h6: {fontSize: '12px', lineHeight: '1.33', fontWeight: '500'},
         },
+    },
+    fontSizes: {
+        xs: '12px',
+        sm: '14px',
+        md: '16px',
+        lg: '18px',
+        xl: '20px',
     },
     shadows: {
         xs: '0px 1px 0px rgba(4, 8, 31, 0.08)',
@@ -113,34 +103,27 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         lg: '0px 8px 16px rgba(7, 12, 41, 0.06)',
         xl: '0px 16px 24px rgba(4, 8, 31, 0.06)',
     },
+    primaryShade: 5,
     colors: PlasmaColors,
     components: {
-        ActionIcon: ActionIcon.extend({
-            classNames: {root: ActionIconClasses.root},
-        }),
         Alert: Alert.extend({
             defaultProps: {
                 icon: <InfoSize16Px height={16} />,
-                color: 'navy',
+                radius: 'lg',
             },
             classNames: AlertClasses,
         }),
-        Anchor: Anchor.extend({
-            defaultProps: {
-                color: 'action.6',
-            },
-            classNames: {root: AnchorClasses.root},
-        }),
-        AppShellNavbar: AppShellNavbar.extend({
-            classNames: {navbar: AppShellNavBarClasses.navbar},
-        }),
         Badge: Badge.extend({
-            classNames: {root: BadgeClasses.root},
+            classNames: BadgeClasses,
             defaultProps: {
                 variant: 'light',
             },
         }),
         Button: Button.extend({
+            defaultProps: {
+                radius: 'lg',
+                size: 'sm',
+            },
             classNames: ButtonClasses,
         }),
         Checkbox: Checkbox.extend({
@@ -177,7 +160,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
         }),
         Combobox: Combobox.extend({
-            classNames: {option: SelectClasses.option, search: ComboboxClasses.search},
+            classNames: ComboboxClasses,
         }),
         ComboboxSearch: ComboboxSearch.extend({
             defaultProps: {
@@ -185,24 +168,22 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 rightSection: <FilterSize16Px height={16} color="gray.5" />,
             },
         }),
-        DatePicker: DatePicker.extend({
-            classNames: {monthCell: DatePickerClasses.monthCell},
-        }),
-        Divider: Divider.extend({
-            defaultProps: {
-                color: 'gray.3',
-            },
-        }),
         Input: Input.extend({
+            defaultProps: {
+                size: 'sm',
+            },
             classNames: (_theme, props) => {
                 const anyProps = props as any;
                 if (anyProps.readOnly && !props.disabled && !['Select'].includes(anyProps.__staticSelector)) {
-                    return deepMerge(InputClasses, ReadOnlyInputClasses);
+                    return ReadOnlyInputClasses;
                 }
-                return InputClasses;
+                return {};
             },
         }),
         InputWrapper: InputWrapper.extend({
+            defaultProps: {
+                size: 'sm',
+            },
             classNames: InputWrapperClasses,
             vars: (theme, props) => {
                 const anyProps = props as any;
@@ -228,12 +209,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
         }),
         List: List.extend({
-            classNames: {root: ListClasses.root},
-        }),
-        MenuItem: MenuItem.extend({
-            defaultProps: {
-                fw: 300,
-            },
+            classNames: ListClasses,
         }),
         Modal: Modal.extend({
             classNames: ModalClasses,
@@ -254,18 +230,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Notification: Notification.extend({
             defaultProps: {
                 icon: <InfoSize24Px height={24} />,
-                color: 'info',
             },
-            classNames: {
-                root: NotificationClasses.root,
-                icon: NotificationClasses.icon,
-                closeButton: NotificationClasses.closeButton,
-            },
-            vars: NotificationVars,
         }),
         Pagination: Pagination.extend({
-            classNames: PaginationClasses,
-            vars: () => ({root: {'--pagination-control-fz': 'var(--mantine-font-size-sm)'}}),
             defaultProps: {
                 nextIcon: ArrowHeadRightSize16Px,
                 previousIcon: ArrowHeadLeftSize16Px,
@@ -297,31 +264,23 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
         }),
         ScrollArea: ScrollArea.extend({
-            classNames: {viewport: ScrollAreaClasses.viewport},
+            classNames: ScrollAreaClasses,
         }),
         SegmentedControl: SegmentedControl.extend({
             classNames: SegmentedControlClasses,
         }),
         Select: Select.extend({
-            defaultProps: {withCheckIcon: false, allowDeselect: false},
-            classNames: {input: SelectClasses.input, option: SelectClasses.option},
+            defaultProps: {allowDeselect: false},
         }),
         Skeleton: Skeleton.extend({
-            classNames: {root: SkeletonClasses.root},
+            classNames: SkeletonClasses,
         }),
         Stepper: Stepper.extend({
             defaultProps: {
                 size: 'xs',
                 completedIcon: <CheckSize16Px />,
             },
-            classNames: {
-                step: StepperClasses.step,
-                stepIcon: StepperClasses.stepIcon,
-                stepCompletedIcon: StepperClasses.stepCompletedIcon,
-                stepDescription: StepperClasses.stepDescription,
-                separator: StepperClasses.separator,
-                verticalSeparator: StepperClasses.verticalSeparator,
-            },
+            classNames: StepperClasses,
         }),
         Switch: Switch.extend({
             classNames: (theme, props) => {
@@ -349,19 +308,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Tabs: Tabs.extend({
             classNames: TabsClasses,
         }),
-        TabsTab: Tabs.Tab.extend({
-            defaultProps: {
-                px: 'sm',
-            },
-        }),
         Text: Text.extend({
-            classNames: TextClasses,
-            vars: TextVars,
-        }),
-        TextInput: TextInput.extend({
             defaultProps: {
-                radius: 8,
+                size: 'sm',
             },
+            classNames: TextClasses,
         }),
         Tooltip: Tooltip.extend({
             defaultProps: {
