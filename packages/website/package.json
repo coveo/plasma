@@ -12,8 +12,8 @@
         "type-check": "tsc --noEmit"
     },
     "dependencies": {
-        "@coveo/atomic-react": "3.2.19",
-        "@coveo/headless": "3.16.0",
+        "@coveo/atomic-react": "3.2.20",
+        "@coveo/headless": "3.17.0",
         "@coveord/plasma-components-props-analyzer": "workspace:*",
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
@@ -27,7 +27,7 @@
         "@mantine/modals": "7.17.0",
         "@mantine/notifications": "7.17.0",
         "@mantinex/dev-icons": "1.1.0",
-        "@stencil/core": "4.27.0",
+        "@stencil/core": "4.27.1",
         "@swc/helpers": "0.5.15",
         "@tabler/icons-react": "3.30.0",
         "@tanstack/match-sorter-utils": "8.19.4",
