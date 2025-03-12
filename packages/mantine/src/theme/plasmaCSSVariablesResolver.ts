@@ -6,8 +6,8 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
         dark: {},
         light: {
             '--mantine-color-default-border': theme.colors.gray[2],
+            '--mantine-color-error': theme.colors.red[5],
         },
     };
-    result.light['--mantine-color-error'] = theme.colors.red[5];
     return result;
 };
