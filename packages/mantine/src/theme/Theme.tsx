@@ -10,6 +10,7 @@ import {
 import {color} from '@coveord/plasma-tokens';
 import {
     Alert,
+    AppShell,
     Badge,
     Button,
     Checkbox,
@@ -76,6 +77,15 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         lg: '32px',
         xl: '40px',
     },
+    radius: {
+        none: '0px',
+        xs: '2px',
+        sm: '4px',
+        md: '8px',
+        lg: '16px',
+        xl: '24px',
+        xxl: '32px',
+    },
     primaryColor: 'blue',
     headings: {
         fontFamily: 'canada-type-gibson, sans-serif',
@@ -106,6 +116,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     primaryShade: 5,
     colors: PlasmaColors,
     components: {
+        AppShell: AppShell.extend({
+            vars: (theme) => {
+                return {
+                    root: {'--app-shell-border-color': theme.colors.gray[2]},
+                } as any;
+            },
+        }),
         Alert: Alert.extend({
             defaultProps: {
                 icon: <InfoSize16Px height={16} />,
@@ -121,7 +138,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Button: Button.extend({
             defaultProps: {
-                radius: 'lg',
                 size: 'sm',
             },
             classNames: ButtonClasses,
