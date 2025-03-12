@@ -50,7 +50,7 @@ export const CopyToClipboard: FunctionComponent<CopyToClipboardProps> = ({withLa
             value={others.value}
             readOnly
             autoComplete="off"
-            rightSection={<CopyToClipboardButton color="action" {...others} />}
+            rightSection={<CopyToClipboardButton {...others} />}
         />
     ) : (
         <CopyToClipboardButton {...others} />
