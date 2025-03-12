@@ -1,8 +1,6 @@
-import {Button, showNotification} from '@coveord/plasma-mantine';
+import {ButtonSecondary, showNotification} from '@coveord/plasma-mantine';
 
 const Demo = () => (
-    <Button variant="outline" onClick={() => showNotification({message: 'Button clicked'})}>
-        Secondary button
-    </Button>
+    <ButtonSecondary onClick={() => showNotification({message: 'Button clicked'})}>Secondary button</ButtonSecondary>
 );
 export default Demo;

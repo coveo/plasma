@@ -1,3 +1,23 @@
+## <small>55.7.2-next.1 (2025-03-12)</small>
+
+* chore: adjust theme radius and border color c0f0ea2
+* chore: fix tests cd737d2
+* chore: minor updates to theme 170046f
+* chore: remove action color usage 7139bcf
+
+
+
+## <small>55.7.2-next.0 (2025-02-25)</small>
+
+* Merge branch 'master' of github.com:coveo/plasma into next 97265bb
+* Merge branch 'master' of github.com:coveo/plasma into next 09ce65d
+* Merge branch 'master' of github.com:coveo/plasma into next 7e4c32c
+* chore(release): publish version v55.3.4-next.0 [skip ci] c9ab861
+* chore(release): publish version v55.5.2-next.0 [skip ci] 84080a1
+* feat(mantine): remove a lot of custom style to get a vanilla style (#3986) 354db73, closes #3986
+
+
+
 ## <small>55.7.1 (2025-02-21)</small>
 
 * feat(mantine, code-editor): support custom tabSize (#4014) a4483fa, closes #4014

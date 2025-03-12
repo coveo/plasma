@@ -7,7 +7,6 @@ const Demo = () => (
         disabled
         disabledTooltip="This button is disabled"
         variant="outline"
-        color="action"
         size="lg"
     >
         <ZombieSize16Px height={16} />
