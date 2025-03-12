@@ -1,3 +1,12 @@
+## <small>55.7.2-next.1 (2025-03-12)</small>
+
+* chore: adjust theme radius and border color c0f0ea2
+* chore: fix tests cd737d2
+* chore: minor updates to theme 170046f
+* chore: remove action color usage 7139bcf
+
+
+
 ## <small>55.7.2-next.0 (2025-02-25)</small>
 
 * Merge branch 'master' of github.com:coveo/plasma into next 97265bb
