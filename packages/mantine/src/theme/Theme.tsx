@@ -117,11 +117,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     colors: PlasmaColors,
     components: {
         AppShell: AppShell.extend({
-            vars: (theme) => {
-                return {
+            vars: (theme) =>
+                ({
                     root: {'--app-shell-border-color': theme.colors.gray[2]},
-                } as any;
-            },
+                }) as any,
         }),
         Alert: Alert.extend({
             defaultProps: {
@@ -220,7 +219,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Loader: Loader.extend({
             defaultProps: {
                 type: 'dots',
-                color: 'action',
                 role: 'presentation',
             },
         }),
@@ -229,6 +227,20 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Modal: Modal.extend({
             classNames: ModalClasses,
+            vars: () => {
+                const sizes = {
+                    '--modal-size-xs': '432px',
+                    '--modal-size-sm': '664px',
+                    '--modal-size-md': '896px',
+                    '--modal-size-lg': '1120px',
+                    '--modal-size-xl': '88%',
+                } as any;
+                return {
+                    root: {
+                        ...sizes,
+                    },
+                };
+            },
         }),
         ModalOverlay: Modal.Overlay.extend({
             defaultProps: {
