@@ -44,8 +44,8 @@
         "not dead"
     ],
     "devDependencies": {
-        "@commitlint/cli": "19.7.1",
-        "@commitlint/config-conventional": "19.7.1",
+        "@commitlint/cli": "19.8.0",
+        "@commitlint/config-conventional": "19.8.0",
         "@coveo/semantic-monorepo-tools": "2.6.2",
         "@sindresorhus/slugify": "2.2.1",
         "@types/node": "22.13.9",
@@ -55,8 +55,8 @@
         "commitizen": "4.3.1",
         "conventional-changelog-angular": "8.0.0",
         "cz-conventional-changelog": "3.3.0",
-        "eslint": "9.21.0",
-        "eslint-config-prettier": "10.0.2",
+        "eslint": "9.22.0",
+        "eslint-config-prettier": "10.1.1",
         "eslint-plugin-import-x": "4.6.1",
         "eslint-plugin-jsdoc": "50.6.3",
         "eslint-plugin-prefer-arrow": "1.2.3",
@@ -80,7 +80,7 @@
         "underscore": "1.13.7",
         "walkdir": "0.4.1"
     },
-    "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b",
+    "packageManager": "pnpm@10.6.1+sha512.40ee09af407fa9fbb5fbfb8e1cb40fbb74c0af0c3e10e9224d7b53c7658528615b2c92450e74cfad91e3a2dcafe3ce4050d80bda71d757756d2ce2b66213e9a3",
     "pnpm": {
         "peerDependencyRules": {
             "ignoreMissing": [
