@@ -249,6 +249,17 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     editor.onDidBlurEditorText(async () => {
                         await editor.getAction('editor.action.formatDocument').run();
                     });
+
+                    if (language === 'json') {
+                        monaco.languages.registerDocumentFormattingEditProvider('json', {
+                            provideDocumentFormattingEdits: (model) => [
+                                {
+                                    range: model.getFullModelRange(),
+                                    text: JSON.stringify(JSON.parse(model.getValue()), null, tabSize),
+                                },
+                            ],
+                        });
+                    }
                 }}
             />
         </Box>
