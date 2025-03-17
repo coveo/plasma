@@ -15,7 +15,7 @@ import {
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
 import Editor, {Monaco, loader} from '@monaco-editor/react';
-import {editor as monacoEditor} from 'monaco-editor';
+import {editor as monacoEditor, MarkerSeverity} from 'monaco-editor';
 import {FunctionComponent, useEffect, useRef, useState} from 'react';
 
 import cx from 'clsx';
@@ -172,9 +172,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     }, []);
 
     const handleValidate = (markers: monacoEditor.IMarker[]) => {
-        setHasMonacoError(
-            markers.some((marker) => marker.severity === loader.__getMonacoInstance().MarkerSeverity.Error),
-        );
+        setHasMonacoError(markers.some((marker) => marker.severity === MarkerSeverity.Error));
     };
 
     const _label = label ? (
@@ -247,19 +245,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     registerThemes(monaco);
                     editor.onDidFocusEditorText(() => onFocus?.());
                     editor.onDidBlurEditorText(async () => {
-                        await editor.getAction('editor.action.formatDocument').run();
+                        if (!hasMonacoError) {
+                            await editor.getAction('editor.action.formatDocument').run();
+                        }
                     });
-
-                    if (language === 'json') {
-                        monaco.languages.registerDocumentFormattingEditProvider('json', {
-                            provideDocumentFormattingEdits: (model) => [
-                                {
-                                    range: model.getFullModelRange(),
-                                    text: JSON.stringify(JSON.parse(model.getValue()), null, tabSize),
-                                },
-                            ],
-                        });
-                    }
                 }}
             />
         </Box>
