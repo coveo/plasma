@@ -1,3 +1,22 @@
+## <small>55.7.2 (2025-03-18)</small>
+
+* fix(mantine, CodeEditor): format text only on valid input (#4028) cbc1880, closes #4028
+* chore(deps): update actions/setup-node digest to cdca736 (#4026) b973873, closes #4026
+* chore(deps): update all non-major dependencies (#4007) 836a6d8, closes #4007
+* chore(deps): update all non-major dependencies (#4016) 24c3cf1, closes #4016
+* chore(deps): update all non-major dependencies (#4019) 4751036, closes #4019
+* chore(deps): update all non-major dependencies (#4020) d0b80bd, closes #4020
+* chore(deps): update all non-major dependencies (#4021) 8dad170, closes #4021
+* chore(deps): update all non-major dependencies (#4022) a337942, closes #4022
+* chore(deps): update all non-major dependencies (#4025) 3741e15, closes #4025
+* chore(deps): update dependency @swc/core to v1.11.6 (#4023) f7df432, closes #4023
+* chore(deps): update dependency globals to v16 (#4017) a8411c3, closes #4017
+* chore(deps): update dependency sort-package-json to v3 (#4024) 83c2a32, closes #4024
+* chore(deps): update pnpm to v10 (#4008) e6418d4, closes #4008
+* fix(deps): update dependency react-markdown to v10 (#4018) f8a7a90, closes #4018
+
+
+
 ## <small>55.7.1 (2025-02-21)</small>
 
 * feat(mantine, code-editor): support custom tabSize (#4014) a4483fa, closes #4014
