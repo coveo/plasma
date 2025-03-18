@@ -159,6 +159,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     };
 
     const [hasMonacoError, setHasMonacoError] = useState(false);
+    const hasMonacoErrorRef = useRef(false);
+
+    hasMonacoErrorRef.current = hasMonacoError;
+
     const renderErrorOutline = !!error || hasMonacoError;
     const theme = useMantineTheme();
     const {colorScheme} = useMantineColorScheme();
@@ -245,7 +249,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     registerThemes(monaco);
                     editor.onDidFocusEditorText(() => onFocus?.());
                     editor.onDidBlurEditorText(async () => {
-                        if (!hasMonacoError) {
+                        if (!hasMonacoErrorRef.current) {
                             await editor.getAction('editor.action.formatDocument').run();
                         }
                     });
