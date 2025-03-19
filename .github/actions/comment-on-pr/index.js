@@ -6,8 +6,10 @@ module.exports = async ({github, context, message, avoidRepostsWith}) => {
             ...context.repo,
             issue_number: context.issue.number,
         })) {
-            comment = comments.find((comment) => comment?.body?.includes(avoidRepostsWith));
-            if (comment) break;
+            comment = comments.find((c) => c?.body?.includes(avoidRepostsWith));
+            if (comment) {
+                break;
+            }
         }
     }
 

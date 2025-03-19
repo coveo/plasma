@@ -46,13 +46,12 @@ describe('Collection', () => {
         render(<Fixture />);
         let items = screen.getAllByTestId('item');
         expect(items).toHaveLength(2);
-        /* eslint-disable-next-line testing-library/no-node-access */
+
         const removeBanana = await within(items[0].parentElement).findByRole('button', {name: /remove/i});
 
         await user.click(removeBanana);
 
         items = screen.getAllByTestId('item');
-        // eslint-disable-next-line jest-dom/prefer-in-document
         expect(screen.getAllByTestId('item')).toHaveLength(1);
         expect(items[0]).toHaveTextContent('orange');
         expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["orange"]}');
@@ -76,7 +75,7 @@ describe('Collection', () => {
         render(<Fixture />);
         let items = screen.getAllByTestId('item');
         expect(items).toHaveLength(2);
-        /* eslint-disable-next-line testing-library/no-node-access */
+
         const removeOrange = await within(items[1].parentElement).findByRole('button', {name: /remove/i});
         await user.click(removeOrange);
 
@@ -187,7 +186,6 @@ describe('Collection', () => {
             expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
 
             const items = screen.getAllByTestId('item');
-            // eslint-disable-next-line jest-dom/prefer-in-document
             expect(items).toHaveLength(1);
             expect(items[0]).toHaveTextContent('banana');
         });
@@ -207,7 +205,7 @@ describe('Collection', () => {
 
             render(<Fixture />);
             await screen.findAllByRole('button', {name: /remove/i});
-            /* eslint-disable-next-line testing-library/no-node-access */
+
             const removeButtons = screen.queryAllByRole('button', {name: /remove/i});
             expect(removeButtons).toHaveLength(2);
 
@@ -234,7 +232,7 @@ describe('Collection', () => {
             render(<Fixture />);
 
             await screen.findAllByRole('button', {name: /remove/i});
-            /* eslint-disable-next-line testing-library/no-node-access */
+
             const removeButtons = screen.queryAllByRole('button', {name: /remove/i});
             expect(removeButtons).toHaveLength(2);
 
@@ -295,7 +293,7 @@ describe('Collection', () => {
                 render(<Fixture />);
 
                 await screen.findAllByRole('button', {name: /remove/i});
-                /* eslint-disable-next-line testing-library/no-node-access */
+
                 const removeButtons = screen.queryAllByRole('button', {name: /remove/i});
                 expect(removeButtons).toHaveLength(2);
 

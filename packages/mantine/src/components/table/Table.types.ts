@@ -8,7 +8,7 @@ import {TableStore} from './use-table';
 
 export type TableLayoutProps<TData = unknown> = Pick<
     TableProps<TData>,
-    'getRowExpandedContent' | 'getRowAttributes' | 'loading'
+    'getRowExpandedContent' | 'getRowAttributes' | 'getRowActions' | 'loading'
 > &
     TableProps<TData>['layoutProps'];
 
@@ -90,7 +90,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
          * @returns
          */
         onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void;
-    } & Record<string, any>;
+    } & Record<string, unknown>;
     /**
      * Whether the table is loading or not
      *

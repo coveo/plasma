@@ -3,7 +3,9 @@ import {
     createColumnHelper,
     DateRangePickerPreset,
     DateRangePickerValue,
+    getFilteredRowModel,
     Table,
+    TableProps,
     useTable,
 } from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
@@ -43,10 +45,14 @@ const datePickerPresets: Record<string, DateRangePickerPreset> = {
     lastWeek: {label: 'Last week', range: [previousWeek, today]},
 };
 
+const options: TableProps<Person>['options'] = {
+    getFilteredRowModel: getFilteredRowModel(),
+};
+
 const Demo = () => {
-    const data = useMemo(() => makeData(10), []);
+    const data = useMemo(() => makeData(40), []);
     const table = useTable<Person>({
-        initialState: {totalEntries: data.length, dateRange: [previousWeek, today]},
+        initialState: {totalEntries: data.length, pagination: {pageSize: 25}, dateRange: [previousWeek, today]},
     });
 
     // we're filtering the data ourselves here for the example,
@@ -57,13 +63,23 @@ const Demo = () => {
     );
 
     return (
-        <Table<Person> store={table} data={filteredData} columns={columns} getRowId={({id}) => id.toString()}>
+        <Table<Person>
+            store={table}
+            data={filteredData}
+            columns={columns}
+            options={options}
+            getRowId={({id}) => id.toString()}
+        >
             <Table.Header>
                 <Table.DateRangePicker
                     rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
                     presets={datePickerPresets}
                 />
             </Table.Header>
+            <Table.Footer>
+                <Table.PerPage />
+                <Table.Pagination />
+            </Table.Footer>
         </Table>
     );
 };

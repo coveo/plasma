@@ -9,10 +9,18 @@ const componentNameFromFileName = (fileName: string): string =>
         .map((p) => p.charAt(0).toUpperCase() + p.substring(1))
         .join('');
 
-export const generatePage = async (page: string, files: string[]): Promise<void> => {
+export const generatePage = async (
+    page: string,
+    files: string[],
+    cssFileByTsxFile: Record<string, string>,
+): Promise<void> => {
     const examplePage = `
     ${files
         .map((f) => `import ${componentNameFromFileName(f)} from '@examples/mantine/${f.replace('.tsx', '?demo')}';`)
+        .join('\n')}
+    ${files
+        .filter((f) => cssFileByTsxFile[f])
+        .map((f) => `import ${componentNameFromFileName(f)}CSS from '@examples/mantine/${cssFileByTsxFile[f]}?raw';`)
         .join('\n')}
     
     import {PageLayout} from '../../building-blocs/PageLayout';
@@ -30,7 +38,18 @@ export const generatePage = async (page: string, files: string[]): Promise<void>
                         (f) =>
                             `${componentNameFromFileName(f)}: <${componentNameFromFileName(
                                 f,
-                            )} center title="${componentNameFromFileName(f)}" />`,
+                            )} center title="${componentNameFromFileName(f)}" ${
+                                cssFileByTsxFile[f]
+                                    ? `additionalFiles={[
+                        {
+                            fileName: '${cssFileByTsxFile[f]}',
+                            code: ${componentNameFromFileName(f)}CSS,
+                            language: 'css',
+                            icon: null,
+                        },
+                    ]}`
+                                    : ''
+                            } />`,
                     )
                     .join(',\n')}
             }}

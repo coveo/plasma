@@ -4,7 +4,8 @@ import {
     loadQueryActions,
     loadSearchActions,
     loadSearchAnalyticsActions,
-} from '@coveo/atomic-react';
+} from '@coveo/headless';
+import {AppShell} from '@coveord/plasma-mantine';
 import {useContext} from 'react';
 import {ResultList} from '../building-blocs/ResultList';
 import {EngineContext} from '../search/engine/EngineContext';
@@ -16,7 +17,7 @@ const Search = () => {
         return null;
     }
 
-    const query = engine?.state.query?.q ?? '';
+    const query = (engine?.state?.query?.q as string) ?? '';
     const data = localStorage.getItem('coveo-standalone-search-box-data');
     const {registerNumberOfResults} = loadPaginationActions(engine);
 
@@ -39,7 +40,11 @@ const Search = () => {
     }
 
     const controller = buildResultList(engine);
-    return <ResultList controller={controller} engine={engine} query={query} />;
+    return (
+        <AppShell.Main>
+            <ResultList controller={controller} engine={engine} query={query} />
+        </AppShell.Main>
+    );
 };
 
 export default Search;

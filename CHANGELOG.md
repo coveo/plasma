@@ -1,3 +1,451 @@
+## <small>55.7.2-next.1 (2025-03-12)</small>
+
+* chore: adjust theme radius and border color c0f0ea2
+* chore: fix tests cd737d2
+* chore: minor updates to theme 170046f
+* chore: remove action color usage 7139bcf
+
+
+
+## <small>55.7.2-next.0 (2025-02-25)</small>
+
+* Merge branch 'master' of github.com:coveo/plasma into next 97265bb
+* Merge branch 'master' of github.com:coveo/plasma into next 09ce65d
+* Merge branch 'master' of github.com:coveo/plasma into next 7e4c32c
+* chore(release): publish version v55.3.4-next.0 [skip ci] c9ab861
+* chore(release): publish version v55.5.2-next.0 [skip ci] 84080a1
+* feat(mantine): remove a lot of custom style to get a vanilla style (#3986) 354db73, closes #3986
+
+
+
+## <small>55.7.1 (2025-02-21)</small>
+
+* feat(mantine, code-editor): support custom tabSize (#4014) a4483fa, closes #4014
+* fix(modal): optimize import (#4009) b204340, closes #4009
+* fix(table): correct useUrlSyncedState serialization logic (#4011) 26d6336, closes #4011
+* chore(deps): update actions/setup-node digest to 1d0ff46 (#4006) 43eaf2c, closes #4006
+* chore(deps): update all non-major dependencies (#4005) b73ecfa, closes #4005
+* chore(deps): update dependency eslint-config-prettier to v10 (#3998) 1511c68, closes #3998
+* chore(deps): update dependency vitest to v3 (#4004) 62f90af, closes #4004
+* chore(deps): update dependency vitest to v3.0.5 [security] (#4010) 414fd96, closes #4010
+
+
+
+## 55.7.0 (2025-01-23)
+
+* fix(prompt): filter footer children in one pass (#4002) a753fd3, closes #4002
+* feat(modal): implement "@coveord/plasma-mantine/Modal" (#4001) 85d2568, closes #4001
+* chore(deps): update all non-major dependencies (#3981) 056f015, closes #3981
+
+
+
+## 55.6.0 (2025-01-22)
+
+* feat(useUrlSyncedState): allow always emitting values (#3996) a61cb13, closes #3996
+* chore(deps): update dependency vite to v6.0.9 [security] (#4003) f36defe, closes #4003
+
+
+
+## <small>55.5.1 (2025-01-21)</small>
+
+* fix(mantine,table): make table predicate scroll more visible (#3999) 78111ca, closes #3999
+* chore(deps): lock file maintenance (#3993) d4623ed, closes #3993
+* chore(deps): update dependency jsdom to v26 (#3995) 2571939, closes #3995
+
+
+
+## 55.5.0 (2025-01-08)
+
+* feat(mantine): export useUrlSyncedState and support hash router [ADUI-10457] (#3992) a10fbd0, closes #3992
+* chore(deps): lock file maintenance (#3989) f375705, closes #3989
+
+
+
+## 55.4.0 (2025-01-03)
+
+* fix(deps): update dnd-kit monorepo (#3983) 1edb5b3, closes #3983
+* fix(table-date-picker): date range picker end date at end of day (#3988) 1b33e19, closes #3988
+* chore(deps): lock file maintenance (#3978) 116e5c5, closes #3978
+* chore(deps): lock file maintenance (#3984) 34f8056, closes #3984
+* chore(deps): lock file maintenance (#3987) 694141e, closes #3987
+* chore(deps): update all non-major dependencies (#3975) bc03a26, closes #3975
+* chore(deps): update all non-major dependencies (#3976) 51ce304, closes #3976
+* chore(deps): update all non-major dependencies (#3979) 3f07f5f, closes #3979
+* chore(deps): update all non-major dependencies (#3980) c35f070, closes #3980
+* chore(deps): update dependency stylelint-config-standard-scss to v14 (#3977) 9db7974, closes #3977
+* feat(mantine): add syncWithUrl option to table hook (#3985) 71740c9, closes #3985
+
+
+
+## <small>55.3.3 (2024-12-05)</small>
+
+* fix(checkbox): readOnly checkbox style (#3974) 19ae8e5, closes #3974
+* fix(deps): update dependency react-router-dom to v7 (#3966) 2486305, closes #3966
+* fix(deps): update dnd-kit monorepo (#3968) f4372f8, closes #3968
+* fix(tabel): reset pagniation when applying date filter (#3970) 5dec458, closes #3970
+* fix(table): prevent double click action on row selection checkboxes (#3973) d78b44b, closes #3973
+* chore(deps): lock file maintenance (#3969) 6464c6d, closes #3969
+* chore(deps): update all non-major dependencies (#3962) cf7e936, closes #3962
+* chore(deps): update all non-major dependencies (#3972) b3a514d, closes #3972
+* chore(deps): update dependency eslint-plugin-testing-library to v7 (#3967) 89ccad4, closes #3967
+* chore(deps): update dependency vite to v6 (#3971) c648128, closes #3971
+
+
+
+## <small>55.3.2 (2024-11-27)</small>
+
+* fix(mantine): make table root have 100% width (#3965) 19f2547, closes #3965
+* chore(deps): lock file maintenance (#3964) 227f786, closes #3964
+
+
+
+## <small>55.3.1 (2024-11-20)</small>
+
+* chore(deps): lock file maintenance (#3955) 4df13eb, closes #3955
+* chore(deps): update all non-major dependencies (#3951) eadec3e, closes #3951
+* chore(deps): update all non-major dependencies (#3956) e49e3e5, closes #3956
+* chore(deps): update all non-major dependencies (#3957) 6b647e4, closes #3957
+* chore(deps): update all non-major dependencies (#3960) 5245288, closes #3960
+* chore(deps): update dependency vitest to v2.1.5 (#3961) 0e4df1d, closes #3961
+* fix(mantine, date-range): popover opens close to dropdown (#3959) c26776e, closes #3959
+* fix(deps): update dependency pino-pretty to v13 (#3954) 84a0b9e, closes #3954
+* fix(mantine): hide table more menu if no actions are visible (#3958) 612f1dc, closes #3958
+
+
+
+## 55.3.0 (2024-11-14)
+
+* feat(prompt): +disabledwithtooltip on confirm button (#3952) 7541d78, closes #3952
+
+
+
+## <small>55.2.1 (2024-11-14)</small>
+
+* fix(mantine, table): add combobox props on Table.Predicate (#3949) baf2888, closes #3949
+* fix(deps): update dependency pino-pretty to v12 (#3953) dda6781, closes #3953
+* chore(deps): update all non-major dependencies (#3946) 01aaa73, closes #3946
+* chore(deps): update dependency @types/node to v22.9.0 (#3950) 9c73ef6, closes #3950
+* chore(deps): update dependency eslint-plugin-react-hooks to v5 (#3923) 869887c, closes #3923
+
+
+
+## 55.2.0 (2024-11-11)
+
+* chore(deps): update dependency @types/node to v22 (#3941) a1c086a, closes #3941
+* fix(mantine): make EllipsisText style more adaptable (#3947) ad5f31e, closes #3947
+* fix(website): website search (#3948) 5d85a8e, closes #3948
+* feat(mantine): ChildForm component (#3945) 0abbbed, closes #3945
+
+
+
+## 55.1.0 (2024-11-05)
+
+* feat(mantine): EllipsisText component supports line-clamp (#3943) 8a8da2b, closes #3943
+
+
+
+## <small>55.0.4 (2024-10-29)</small>
+
+* fix(mantine, list): improve style (#3938) c51156b, closes #3938
+* chore(deps): lock file maintenance (#3940) 1f93e95, closes #3940
+* chore(deps): update actions/checkout digest to 11bd719 (#3934) d7ec946, closes #3934
+* chore(deps): update actions/setup-node digest to 39370e3 (#3936) 217882e, closes #3936
+* chore(deps): update all non-major dependencies (#3929) 1441e8c, closes #3929
+* chore(deps): update all non-major dependencies (#3937) db73921, closes #3937
+
+
+
+## <small>55.0.3 (2024-10-23)</small>
+
+* fix(mantine): make EllipsisText tooltipProps prop optional (#3935) 528a565, closes #3935
+
+
+
+## <small>55.0.2 (2024-10-23)</small>
+
+* feat(mantine,website): create the EllipsisText component (#3933) 6f52299, closes #3933
+* chore(deps): lock file maintenance (#3931) 908abf6, closes #3931
+
+
+
+## <small>55.0.1 (2024-10-21)</small>
+
+* fix(mantine): select asterisk color is too light (#3932) becce83, closes #3932
+* chore(renovate): migrate to standard renovate config [CIA-611] (#3930) 4beb51b, closes #3930
+
+
+
+## 55.0.0 (2024-10-16)
+
+* chore(deps): lock file maintenance (#3926) d911198, closes #3926
+* chore(deps): update all non-major dependencies (#3919) 8edca2b, closes #3919
+* chore(deps): update all non-major dependencies (#3921) bb897ec, closes #3921
+* chore(deps): update all non-major dependencies (#3924) 2d2efcf, closes #3924
+* chore(deps): update all non-major dependencies (#3925) a592916, closes #3925
+* chore(deps): update all non-major dependencies (#3928) cb06305, closes #3928
+* fix(mantine): make Table.Predicate label prop required (#3927) a49edf5, closes #3927
+* feat(mantine, read-only): add style to form components (#3922) 90ca6f0, closes #3922
+
+
+### BREAKING CHANGE
+
+* the Table.Predicate label prop is now required.
+
+
+## <small>54.4.1 (2024-10-09)</small>
+
+* fix(table): type only import for table predicate props (#3920) 0da755e, closes #3920
+* chore(deps): update actions/checkout digest to eef6144 (#3917) 6721c5a, closes #3917
+* chore(deps): update actions/upload-artifact action to v4.4.2 (#3918) 267b47f, closes #3918
+
+
+
+## 54.4.0 (2024-10-08)
+
+* chore(deps): lock file maintenance 7657af5
+* chore(deps): lock file maintenance 1cb0231
+* chore(deps): lock file maintenance 0b9708f
+* chore(deps): lock file maintenance 1509172
+* chore(deps): lock file maintenance c2a31d1
+* chore(deps): lock file maintenance 4eeb124
+* chore(deps): replace dependency eslint-plugin-vitest with @vitest/eslint-plugin 1.0.1 (#3905) 959489e, closes #3905
+* chore(deps): update actions/setup-node digest to 0a44ba7 (#3897) fc31532, closes #3897
+* chore(deps): update all non-major dependencies de778d9
+* chore(deps): update all non-major dependencies 0fc76b5
+* chore(deps): update all non-major dependencies b566cf9
+* chore(deps): update all non-major dependencies c63ba06
+* chore(deps): update all non-major dependencies 1dc161d
+* chore(deps): update all non-major dependencies 0cea54f
+* chore(deps): update all non-major dependencies 85ee97a
+* chore(deps): update all non-major dependencies 6f31ffe
+* chore(deps): update all non-major dependencies (#3908) f56f664, closes #3908
+* chore(deps): update all non-major dependencies (#3916) dd53e17, closes #3916
+* chore(deps): update dependency @eslint/compat to v1.2.0 aabe3d2
+* chore(deps): update dependency @types/react to v18.3.8 2ea2f4f
+* chore(deps): update dependency @vitest/eslint-plugin to v1.1.6 f0b4983
+* chore(deps): update dependency chokidar to v4 (#3892) 603b4aa, closes #3892
+* chore(deps): update dependency eslint to v9.12.0 900989a
+* chore(deps): update dependency jsdom to v25 (#3875) 1102cc4, closes #3875
+* chore(deps): update dependency vite to v5.4.6 [security] 47e7fd4
+* chore(deps): update github/codeql-action action to v3.26.11 14cdfa3
+* chore(renovate): remove automerge from config (#3915) c1ef125, closes #3915
+* fix(deps): update dependency @faker-js/faker to v9 (#3888) c76f57d, closes #3888
+* fix(deps): update ui-kit to v3 (major) (#3904) aac10cb, closes #3904
+* fix(form): +generic tranformvalue for enhancewithcollection (#3912) d076ebf, closes #3912
+* feat(mlx): update table component to be able to change options in predicate (#3885) fd46332, closes #3885
+
+
+
+## 54.3.0 (2024-08-29)
+
+* chore(deps): update all non-major dependencies 471eb58
+* chore(deps): update all non-major dependencies 2a59e36
+* feat(mantine): add xxs spacing size to plasma theme (#3883) 9840af9, closes #3883
+
+
+
+## <small>54.2.3 (2024-08-27)</small>
+
+* chore: update CODEOWNERS (#3864) 4b71524, closes #3864
+* chore(deps): lock file maintenance bfe130f
+* chore(deps): update all non-major dependencies f017dc2
+* chore(deps): update all non-major dependencies 6f1ae00
+* chore(deps): update all non-major dependencies 6017266
+* chore(deps): update all non-major dependencies 53fdc7e
+* chore(deps): update all non-major dependencies 8500392
+* chore(deps): update dependency @tanstack/react-query to v5.52.0 b552f23
+* chore(deps): update dependency eslint-plugin-import-x to v4 (#3878) e72303d, closes #3878
+* chore(deps): update github/codeql-action action to v3.26.4 936777f
+* chore(deps): update ui-kit 58dce5f
+* chore(renovate): only split major versions (#3870) 0267a2c, closes #3870
+* fix(mantine): change Radio label color to gray-7 (#3871) 49f794e, closes #3871
+* fix(mantine, date picker): scroll one month instead of two (#3867) ece969a, closes #3867
+* fix(mantine, table): change the pagination boundaries (#3866) 744543b, closes #3866
+* fix(mantine, table): react warning for unused ref on RowLayout (#3865) 0bd3c1e, closes #3865
+
+
+
+## <small>54.2.2 (2024-08-19)</small>
+
+* chore: fix eslint configuration (#3851) 359a7d8, closes #3851
+* chore(deps): lock file maintenance a9eb19e
+* chore(deps): lock file maintenance 09d9941
+* chore(deps): update all non-major dependencies 723f4c0
+* chore(deps): update all non-major dependencies c96212a
+* chore(deps): update all non-major dependencies 0a2bcfa
+* chore(deps): update all non-major dependencies 90a3491
+* chore(deps): update all non-major dependencies 6ba7fe6
+* chore(deps): update all non-major dependencies d5459f3
+* chore(deps): update all non-major dependencies 9d43154
+* chore(deps): update dependency @tanstack/react-query to v5.51.24 6ed13ae
+* chore(deps): update dependency chroma-js to v3 (#3859) 0fc3fc6, closes #3859
+* chore(deps): update dependency eslint-plugin-jsdoc to v50 (#3845) 84102b7, closes #3845
+* chore(deps): update ui-kit 3ff8a3c
+* fix(mantine, prompt): center the prompt component by default (#3849) a1bd708, closes #3849
+* fix(mantine, skeleton): increase z-index (#3857) 462c3bb, closes #3857
+
+
+
+## <small>54.2.1 (2024-08-09)</small>
+
+* fix(mantine, tabs): vertical tabs look and small style improvements (#3848) 8abb114, closes #3848
+
+
+
+## 54.2.0 (2024-08-08)
+
+* chore: fix build cd800bc
+* chore: fix eslint config (#3842) 2eb8b57, closes #3842
+* chore: replace pnpm/action-setup (#3793) cfe2cae, closes #3793
+* chore: simplify tsconfig files (#3801) 2ee4508, closes #3801
+* chore: update patch 84c5108
+* chore(CI): Add a scorecard badge (#3800) 09fad39, closes #3800
+* chore(deps): lock file maintenance cb80b49
+* chore(deps): lock file maintenance 1134dac
+* chore(deps): lock file maintenance 95375e9
+* chore(deps): lock file maintenance cd27382
+* chore(deps): update @tanstack table a32d5cc
+* chore(deps): update @tanstack table 6a63f6e
+* chore(deps): update @tanstack table to v8.19.3 95b9e25
+* chore(deps): update actions/checkout action to v4 (#3797) d23644d, closes #3797
+* chore(deps): update actions/setup-node digest to 1e60f62 (#3810) 90a5f52, closes #3810
+* chore(deps): update actions/upload-artifact action to v4 (#3798) b2fd932, closes #3798
+* chore(deps): update actions/upload-artifact action to v4.3.4 0e8b1ec
+* chore(deps): update all non-major dependencies e154c81
+* chore(deps): update all non-major dependencies dba6380
+* chore(deps): update all non-major dependencies 394cde3
+* chore(deps): update all non-major dependencies f5a2577
+* chore(deps): update all non-major dependencies da0f206
+* chore(deps): update all non-major dependencies f903b9e
+* chore(deps): update all non-major dependencies 3657164
+* chore(deps): update all non-major dependencies 9b9bb95
+* chore(deps): update all non-major dependencies 210d961
+* chore(deps): update all non-major dependencies 641b844
+* chore(deps): update all non-major dependencies 9e51887
+* chore(deps): update all non-major dependencies 5897be2
+* chore(deps): update dependency @tanstack/react-query to v5.50.1 ce2a27e
+* chore(deps): update dependency @tanstack/react-query to v5.51.1 205524e
+* chore(deps): update dependency @tanstack/react-query to v5.51.11 7683d12
+* chore(deps): update dependency @tanstack/react-query to v5.51.14 f9de57c
+* chore(deps): update dependency @tanstack/react-query to v5.51.15 0d0c502
+* chore(deps): update dependency @tanstack/react-query to v5.51.23 0f166a3
+* chore(deps): update dependency @tanstack/react-query to v5.51.9 14f09c1
+* chore(deps): update dependency glob to v11 (#3808) 20dd4f5, closes #3808
+* chore(deps): update dependency react-router-dom to v6.25.0 58d0d47
+* chore(deps): update dependency rimraf to v6 (#3809) 47393bc, closes #3809
+* chore(deps): update dependency typescript-eslint to v8 (#3839) 237c030, closes #3839
+* chore(deps): update dependency vitest to v2 (#3806) cc4c860, closes #3806
+* chore(deps): update github/codeql-action action to v3 (#3799) a76804d, closes #3799
+* chore(deps): update github/codeql-action action to v3.25.15 63addb3
+* chore(deps): update ui-kit 6bfb10d
+* chore(deps): update ui-kit 1be8693
+* chore(deps): update ui-kit c05a462
+* chore(deps): update ui-kit 9108063
+* chore(deps): update ui-kit d1fc645
+* chore(deps): update ui-kit 1915962
+* chore(deps): update ui-kit 6ac106c
+* feat(website): add tabs in demo for other files (#3827) 7b3d233, closes #3827
+* ci: add lint css modules (#3816) 5bdcf04, closes #3816
+* ci: eslint v9 + flat config + fix errors (#3820) 8f08f4d, closes #3820
+* [StepSecurity] Apply security best practices (#3795) 84d7cab, closes #3795
+* chore(ci, depency-review): target ubuntu-latest explicitely (#3818) d955dc3, closes #3818
+* refactor: lint all files with prettier (#3817) 16d8b2d, closes #3817
+
+
+
+## <small>54.1.2 (2024-07-02)</small>
+
+* feat(mantine, prompt): update look of prompt component (#3791) 8d096b2, closes #3791
+* chore: fix build 1c81d0a
+* chore(deps): update all non-major dependencies 57fd922
+* chore(deps): update ui-kit d531ef3
+
+
+
+## <small>54.1.1 (2024-06-26)</small>
+
+* chore(deps): update all non-major dependencies e933652
+* fix(mantine, table): avoid clearing rows when no rows are selected (#3786) 540dc86, closes #3786
+
+
+
+## 54.1.0 (2024-06-26)
+
+* feat: modification of the table in plasma to be able to modify the padding of the table (v2) (#3785) c808212, closes #3785
+
+
+
+## <small>54.0.3 (2024-06-25)</small>
+
+* chore(deps): lock file maintenance cadf4f6
+* chore(deps): lock file maintenance f19c79e
+* chore(deps): update actions/checkout digest to 692973e (#3770) 827c72c, closes #3770
+* chore(deps): update all non-major dependencies e8af147
+* chore(deps): update all non-major dependencies 4d66e28
+* chore(deps): update all non-major dependencies ef25532
+* chore(deps): update dependency @tanstack/react-query to v5.44.0 a53ce76
+* chore(deps): update dependency @tanstack/react-query to v5.45.0 49f4331
+* chore(deps): update dependency @tanstack/react-query to v5.45.1 d186589
+* chore(deps): update dependency @tanstack/react-query to v5.48.0 a2d9e71
+* chore(deps): update dependency @types/node to v20.14.6 c1b3496
+* chore(deps): update dependency aws-sdk to v2.1645.0 dfa4dfb
+* chore(deps): update dependency conventional-changelog-angular to v8 (#3717) 3f87b53, closes #3717
+* chore(deps): update dependency nodemon to v3.1.4 e5e839e
+* chore(deps): update pnpm to v9 (#3762) aab3154, closes #3762
+* chore(deps): update ui-kit 7d41aaa
+* chore(deps): update ui-kit 978e177
+* chore(deps): update ui-kit bd05e00
+* chore(publish): fix version bump (#3784) 8606e39, closes #3784
+* fix(mantine, table): allow overrides to padding bottom 6c89c16
+
+
+
+## 54.0.2 (2024-06-10)
+
+
+### Bug Fixes
+
+* **mantine:** make sure rowSelection row data stays fresh (#3764) eeb6ef9, closes #3764
+
+
+
+## 54.0.1 (2024-06-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @tabler/icons-react to v3 (#3749) 6f10ee9, closes #3749
+* **deps:** update dependency eslint-plugin-jsdoc to v48 (#3751) f4c1890, closes #3751
+* **deps:** update remark (major) (#3593) adee895, closes #3593
+* **mantine, title:** remove custom letter-spacing (#3759) c19711b, closes #3759
+
+
+
+# 54.0.0 (2024-06-04)
+
+
+### Bug Fixes
+
+* **website:** remove custom style with props and module css (#3703) 9a6b436, closes #3703
+
+
+### Features
+
+* plasma-react removed, plasma-style removed, table refactor (#3709) 7ec8a48, closes #3709
+
+
+### BREAKING CHANGES
+
+* Significant changes to the Table component for better integration with react-query and reduced code duplication.
+Introduction of a new `store` prop and `useTable` hook for the Table component.
+Deprecation of `onMount` and `onChange` props, replaced by the `useEffect` hook.
+Introduction of a new `Table.NoData` component.
+Removal of `Table.Consumer` and `Table.Actions`.
+Changes to `Table.Pagination` - `totalPages` prop removed, now computed automatically.
+Renamed `useTable` hook to `useTableContext`.
+
+
+
 ## 53.1.4-next.12 (2024-06-03)
 
 

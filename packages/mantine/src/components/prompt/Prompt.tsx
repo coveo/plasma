@@ -1,43 +1,132 @@
-import {Box, Modal, ModalProps} from '@mantine/core';
+import {
+    Box,
+    createVarsResolver,
+    factory,
+    Factory,
+    Image,
+    ModalRootProps,
+    ModalStylesNames,
+    StylesApiProps,
+    useProps,
+    useStyles,
+} from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
-import PromptClasses from './Prompt.module.css';
-import {PromptFooter} from './PromptFooter';
+import {Modal} from '../modal';
+import Critical from './icons/critical.svg';
+import Info from './icons/info.svg';
+import Success from './icons/success.svg';
+import Warning from './icons/warning.svg';
+import {PromptContextProvider} from './Prompt.context';
+import classes from './Prompt.module.css';
+import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton';
+import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton';
 
-export interface PromptProps extends ModalProps {
+export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
+export type PromptVars = {root: '--prompt-icon-size'};
+export type PromptStylesNames =
+    | ModalStylesNames
+    | 'icon'
+    | PromptCancelButtonStylesNamesVariant
+    | PromptConfirmButtonStylesNamesVariant;
+
+export interface PromptProps
+    extends StylesApiProps<PromptFactory>,
+        Omit<ModalRootProps, 'classNames' | 'styles' | 'vars'> {
     /**
      * Controls prompt appearance
      *
      * @default "info"
      */
-    variant?: 'success' | 'warning' | 'critical' | 'info';
+    variant?: PromptVariant;
     children: ReactNode;
-}
-interface PromptType {
-    (props: PromptProps): ReactElement;
-    Footer: typeof PromptFooter;
+    title: ReactNode;
+    icon?: ReactNode;
 }
 
-export const Prompt: PromptType = ({children, ...otherProps}) => {
-    const {classNames: classesProps, ...otherPropsWithoutClasses} = otherProps;
-    const convertedChildren = Children.toArray(children) as ReactElement[];
-
-    const otherChildren = convertedChildren.filter((child) => child.type !== PromptFooter);
-    const footer = convertedChildren.find((child) => child.type === PromptFooter);
-
-    const classNames = {
-        root: PromptClasses.root,
-        header: PromptClasses.header,
-        close: PromptClasses.whiteClose,
-        body: PromptClasses.body,
-        title: PromptClasses.title,
+export type PromptFactory = Factory<{
+    props: PromptProps;
+    ref: HTMLDivElement;
+    vars: PromptVars;
+    variant: PromptVariant;
+    stylesNames: PromptStylesNames;
+    staticComponents: {
+        CancelButton: typeof PromptCancelButton;
+        ConfirmButton: typeof PromptConfirmButton;
+        Footer: typeof Modal.Footer;
     };
+}>;
 
-    return (
-        <Modal variant="prompt" classNames={{...classNames, ...classesProps}} size="sm" {...otherPropsWithoutClasses}>
-            <Box className={PromptClasses.innerBody}>{otherChildren}</Box>
-            {footer}
-        </Modal>
-    );
+const PROMPT_VARIANT_ICONS_SRC: Record<PromptVariant, string> = {
+    success: Success,
+    warning: Warning,
+    critical: Critical,
+    info: Info,
 };
 
-Prompt.Footer = PromptFooter;
+const defaultProps: Partial<PromptProps> = {
+    variant: 'info',
+    centered: true,
+};
+
+const varsResolver = createVarsResolver<PromptFactory>((_theme, {icon}) => ({
+    root: {
+        '--prompt-icon-size': icon ? undefined : '88px',
+    },
+}));
+
+export const Prompt = factory<PromptFactory>((_props, ref) => {
+    const props = useProps('Prompt', defaultProps, _props);
+    const {variant, title, icon, children, className, classNames, style, styles, unstyled, vars, ...others} = props;
+    const getStyles = useStyles<PromptFactory>({
+        name: 'Prompt',
+        props,
+        classes,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+        vars,
+        varsResolver,
+    });
+    const stylesApiProps = {classNames, styles};
+
+    const footers: ReactElement[] = [];
+    const otherChildren: ReactElement[] = [];
+
+    Children.forEach(children, (child: ReactElement) => {
+        (child.type === Modal.Footer ? footers : otherChildren).push(child);
+    });
+
+    return (
+        <PromptContextProvider value={{variant, getStyles}}>
+            <Modal.Root ref={ref} variant="prompt" size="lg" {...others} {...getStyles('root')}>
+                <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
+                <Modal.Content {...getStyles('content', stylesApiProps)}>
+                    <Modal.Header {...getStyles('header', stylesApiProps)}>
+                        {icon || icon === null ? (
+                            icon
+                        ) : (
+                            <Image
+                                alt=""
+                                role="presentation"
+                                {...getStyles('icon', stylesApiProps)}
+                                src={PROMPT_VARIANT_ICONS_SRC[variant]}
+                            />
+                        )}
+                        <Modal.Title {...getStyles('title', stylesApiProps)}>{title}</Modal.Title>
+                        <Modal.CloseButton {...getStyles('close', stylesApiProps)} />
+                    </Modal.Header>
+                    <Modal.Body {...getStyles('body', stylesApiProps)}>
+                        <Box {...getStyles('inner', stylesApiProps)}>{otherChildren}</Box>
+                    </Modal.Body>
+                    {footers}
+                </Modal.Content>
+            </Modal.Root>
+        </PromptContextProvider>
+    );
+});
+
+Prompt.CancelButton = PromptCancelButton;
+Prompt.ConfirmButton = PromptConfirmButton;
+Prompt.Footer = Modal.Footer;

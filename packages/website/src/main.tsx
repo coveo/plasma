@@ -1,9 +1,9 @@
-import './styles/reset.css';
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
+import './styles/reset.css';
 
-import {StrictMode} from 'react';
+import {JSX, StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import NotFound from './404.tsx';
@@ -37,7 +37,7 @@ const router = createBrowserRouter(
     {basename: import.meta.env.BASE_URL},
 );
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
     <StrictMode>
         <RouterProvider router={router} />
     </StrictMode>,

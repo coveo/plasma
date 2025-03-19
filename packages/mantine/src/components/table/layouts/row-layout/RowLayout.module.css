@@ -10,6 +10,7 @@
         border-color: var(--mantine-color-gray-3);
         pointer-events: none;
         cursor: not-allowed;
+
         & + svg {
             color: var(--mantine-color-gray-5);
         }
@@ -18,9 +19,11 @@
 
 .row {
     overflow-wrap: anywhere;
+
     & td:first-of-type {
         padding-left: 40px;
     }
+
     @mixin hover {
         background-color: var(--mantine-color-gray-1);
     }
@@ -30,14 +33,17 @@
         border-color: var(--mantine-color-gray-3);
         pointer-events: none;
         cursor: not-allowed;
+
         &:checked + svg {
             color: var(--mantine-color-gray-5);
         }
     }
+
     &[data-selected='true'] {
         &[data-multi-selection='false'] {
             background-color: var(--mantine-color-gray-1);
         }
+
         &[data-multi-selection='true'] {
             background-color: transparent;
         }
@@ -51,7 +57,8 @@
 
 .cell {
     vertical-align: middle;
-    /* We must use height instead of minHeight here, otherwise it doesn’t apply*/
+
+    /* We must use height instead of minHeight here, otherwise it doesn’t apply */
     height: 56px;
     padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
     border-bottom: rem(1) solid var(--mantine-color-gray-3);

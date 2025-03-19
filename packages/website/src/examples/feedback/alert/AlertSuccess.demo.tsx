@@ -1,10 +1,9 @@
-import {Alert} from '@coveord/plasma-mantine';
-import {CheckmarkSize16Px} from '@coveord/plasma-react-icons';
+import {AlertSuccess} from '@coveord/plasma-mantine';
 
 const Demo = () => (
-    <Alert title="Congrats!" withCloseButton color="success" icon={<CheckmarkSize16Px height={16} />}>
+    <AlertSuccess title="Congrats!" withCloseButton>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
-    </Alert>
+    </AlertSuccess>
 );
 export default Demo;

@@ -1,7 +1,7 @@
 import klawSync from 'klaw-sync';
 import {CSS_MODULE_FILENAME_PATTERN, DEMO_FILENAME_PATTERN} from './constants';
 
-export const findTsxAndCssModule = async (sourceFolder: string): Promise<string[]> => {
+export const findTsxAndCssModule = (sourceFolder: string): string[] => {
     const files = klawSync(sourceFolder, {
         nodir: true,
         traverseAll: true,
@@ -20,6 +20,7 @@ export const findTsxAndCssModule = async (sourceFolder: string): Promise<string[
                 !file.includes('TypographyStylesProvider.') &&
                 !file.includes('TagsInput.') &&
                 !file.includes('AspectRatio.') &&
+                !file.includes('Tree.') &&
                 // we don't want storybook stuff
                 !file.includes('.story.') &&
                 // our demo is not built to overlay components
@@ -45,9 +46,12 @@ export const findTsxAndCssModule = async (sourceFolder: string): Promise<string[
                 !file.includes('Alert.demo.configurator.tsx') &&
                 !file.includes('Anchor.demo.textProps.tsx') &&
                 !file.includes('Autocomplete.demo.dropdownOpened.tsx') &&
+                !file.includes('Avatar.demo.allowedColors.tsx') &&
+                !file.includes('Avatar.demo.initials.tsx') &&
                 !file.includes('Badge.demo.variantColorsResolver.tsx') &&
                 !file.includes('Button.demo.loading.tsx') &&
                 !file.includes('Checkbox.demo.card.tsx') &&
+                !file.includes('Checkbox.demo.cardGroup.tsx') &&
                 !file.includes('Checkbox.demo.customize.tsx') &&
                 !file.includes('Checkbox.demo.indeterminate.tsx') &&
                 !file.includes('Chip.demo.group.tsx') &&
@@ -64,6 +68,7 @@ export const findTsxAndCssModule = async (sourceFolder: string): Promise<string[
                 !file.includes('Popover.demo.arrow.tsx') &&
                 !file.includes('Progress.demo.usage.tsx') &&
                 !file.includes('Radio.demo.groupConfigurator.tsx') &&
+                !file.includes('Radio.demo.cardGroup.tsx') &&
                 !file.includes('RingProgress.demo.label.tsx') &&
                 !file.includes('ScrollArea.demo.autosizePopover.tsx') &&
                 !file.includes('SegmentedControl.demo.disabled.ts') &&

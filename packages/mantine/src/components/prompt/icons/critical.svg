@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 88 90">
+  <g filter="url(#critical-icon-a)">
+    <path fill="url(#critical-icon-b)" d="M54.217 15c1.155 0 2.257.489 3.032 1.346l12.694 14.031A4.089 4.089 0 0 1 71 33.121v18.856c0 .974-.348 1.916-.98 2.656L57.254 69.568A4.089 4.089 0 0 1 54.147 71H32.132a4.089 4.089 0 0 1-3.081-1.401L16.007 54.64A4.09 4.09 0 0 1 15 51.953V33.144c0-1.028.387-2.018 1.084-2.773l12.974-14.055A4.089 4.089 0 0 1 32.063 15h22.154Z"/>
+    <path stroke="url(#critical-icon-c)" stroke-linecap="round" d="M54.217 15.5a3.59 3.59 0 0 1 2.661 1.181l12.695 14.032c.597.66.927 1.518.927 2.408v18.856c0 .855-.305 1.681-.86 2.331L56.874 69.243a3.589 3.589 0 0 1-2.728 1.257H32.132a3.59 3.59 0 0 1-2.705-1.23L16.384 54.312a3.589 3.589 0 0 1-.884-2.358v-18.81c0-.902.34-1.771.952-2.434l12.974-14.055a3.589 3.589 0 0 1 2.637-1.155h22.154Z"/>
+  </g>
+  <path stroke="#FFD7D3" stroke-linecap="round" d="M44 51.91v-28"/>
+  <path stroke="#FFD7D3" stroke-linecap="round" stroke-linejoin="round" d="M44 60.088v2"/>
+  <defs>
+    <linearGradient id="critical-icon-b" x1="23" x2="97" y1="-9" y2="116.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FB8E85"/>
+      <stop offset=".314" stop-color="#E03729"/>
+      <stop offset="1" stop-color="#A11409"/>
+    </linearGradient>
+    <linearGradient id="critical-icon-c" x1="29.5" x2="43" y1="17" y2="71" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A11409"/>
+      <stop offset="1" stop-color="#CD2113"/>
+    </linearGradient>
+    <filter id="critical-icon-a" width="83.754" height="83.754" x="1.123" y="6.079" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy="4.956"/>
+      <feGaussianBlur stdDeviation="6.939"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0.879167 0 0 0 0 0.215764 0 0 0 0 0.161181 0 0 0 0.37 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_14620_3737"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow_14620_3737" result="shape"/>
+    </filter>
+  </defs>
+</svg>

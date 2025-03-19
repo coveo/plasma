@@ -12,8 +12,8 @@ You can offer a flat select as a way to switch views, but tabs should be preferr
 
 ## Labeling
 
--   Keep titles short, preferably **under three words**.
--   Make option labels consistent and easy to scan.
+- Keep titles short, preferably **under three words**.
+- Make option labels consistent and easy to scan.
 
 ## Flat Select and Tabs
 
@@ -23,6 +23,6 @@ The flat select and the tab set look similar and are both designed for view swit
 
 ## Related Components
 
--   [Radio buttons](https://plasma.coveo.com/form/RadioButton) - When the result doesn't apply immediately.
--   [Single select](https://plasma.coveo.com/form/SingleSelect) - Alternative to a flat select in the context of a form.
--   [Tabs](https://plasma.coveo.com/navigation/Tabs) - When in a navigational control context.
+- [Radio buttons](https://plasma.coveo.com/form/RadioButton) - When the result doesn't apply immediately.
+- [Single select](https://plasma.coveo.com/form/SingleSelect) - Alternative to a flat select in the context of a form.
+- [Tabs](https://plasma.coveo.com/navigation/Tabs) - When in a navigational control context.

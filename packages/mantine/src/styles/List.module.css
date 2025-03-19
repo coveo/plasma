@@ -1,3 +1,7 @@
-.root {
+ul.root {
     list-style-type: disc;
+}
+
+ol.root {
+    list-style-type: decimal;
 }

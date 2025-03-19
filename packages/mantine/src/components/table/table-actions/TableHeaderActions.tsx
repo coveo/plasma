@@ -1,8 +1,7 @@
 import {Factory, factory, Grid, GridColProps, Group, useProps} from '@mantine/core';
-import {ReactElement} from 'react';
+import {ReactElement, useMemo} from 'react';
 
 import {TableComponentsOrder} from '../Table';
-import {TableAction} from '../Table.types';
 import {useTableContext} from '../TableContext';
 import {TableActionsList} from './TableActionsList';
 
@@ -27,12 +26,15 @@ export const TableHeaderActions = factory<TableHeaderActionsFactory>(
             defaultProps,
             props,
         );
-        const selectedRows = store.getSelectedRows();
-        if (selectedRows.length === 0) {
-            return null;
-        }
 
-        const actions: TableAction[] = getRowActions(selectedRows);
+        const actions = useMemo(() => {
+            const selectedRows = store.getSelectedRows();
+            if (selectedRows.length === 0) {
+                return [];
+            }
+            return getRowActions(selectedRows);
+        }, [store.state.rowSelection]);
+
         if (actions.length === 0) {
             return null;
         }

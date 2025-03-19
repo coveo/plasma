@@ -34,4 +34,4 @@ const generateProps = async () => {
 
 rimrafSync('./src/components');
 
-generateProps();
+void generateProps();

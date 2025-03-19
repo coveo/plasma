@@ -2,8 +2,13 @@ import {outputFile, readFileSync} from 'fs-extra';
 import path from 'node:path';
 import {DEMO_FILENAME_PATTERN} from './constants';
 
-export const copyDemoFiles = async (paths: string[], destinationFolder: string): Promise<string[]> => {
-    const newFiles = [];
+interface DemoFile {
+    sourcePath: string;
+    cssImport: string | null;
+}
+
+export const copyDemoFiles = async (paths: string[], destinationFolder: string): Promise<DemoFile[]> => {
+    const newFiles: DemoFile[] = [];
     for (const sourcePath of paths) {
         const fileName = path.basename(sourcePath).replace(/^_/, '');
         const destinationPath = path.join(destinationFolder, fileName);
@@ -12,10 +17,11 @@ export const copyDemoFiles = async (paths: string[], destinationFolder: string):
         const updatedContent = fileName.match(DEMO_FILENAME_PATTERN)
             ? extractImportsAndDemoFunction(content, fileName)
             : content;
+        const cssImport = updatedContent.match(/import classes from '\.\/(.*\.module\.css)';/)?.[1] || null;
 
         if (updatedContent) {
             await outputFile(destinationPath, updatedContent);
-            newFiles.push(sourcePath);
+            newFiles.push({sourcePath, cssImport});
             console.log(`Updated: ${destinationPath}`);
         }
     }

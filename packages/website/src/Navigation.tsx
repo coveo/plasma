@@ -1,6 +1,7 @@
 import {AppShell, Image, NavLink, NavLinkProps, ScrollArea} from '@coveord/plasma-mantine';
 import {
     AnnouncementSize16Px,
+    CalendarSize16Px,
     ClickSize16Px,
     DiamondSize16Px,
     ExternalSize16Px,
@@ -8,7 +9,7 @@ import {
     LayeringTechniquesSize16Px,
     RichUiSize16Px,
 } from '@coveord/plasma-react-icons';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, JSX} from 'react';
 import {Link, LinkProps, useMatch} from 'react-router-dom';
 
 import MantineLogo from './assets/mantine-logo.svg';
@@ -48,6 +49,7 @@ export const Navigation = () => (
         </NavLink>
         <NavLink label="Layout" leftSection={<RichUiSize16Px height={16} />} defaultOpened>
             <InternalNavLink to="/layout/BrowserPreview" label="Browser Preview" />
+            <InternalNavLink to="/layout/EllipsisText" label="Ellipsis text" />
             <InternalNavLink to="/layout/Header" label="Header" />
             <InternalNavLink to="/layout/Modal" label="Modal" />
             <InternalNavLink to="/layout/Prompt" label="Prompt" />
@@ -60,10 +62,17 @@ export const Navigation = () => (
             <InternalNavLink to="/form/CodeEditor" label="Code editor" />
             <InternalNavLink to="/form/Collection" label="Collection" />
             <InternalNavLink to="/form/CopyToClipboard" label="Copy to Clipboard" />
+            <InternalNavLink to="/form/Form" label="Form" />
+            <InternalNavLink to="/form/ChildForm" label="Child Form" />
             <InternalNavLink to="/form/InlineConfirm" label="Inline confirm" />
+        </NavLink>
+        <NavLink label="Date range" leftSection={<CalendarSize16Px height={16} />} defaultOpened>
+            <InternalNavLink to="/date-range/DateRangePickerPopoverCalendar" label="Popover calendar" />
+            <InternalNavLink to="/date-range/DateRangePickerInlineCalendar" label="Inline calendar" />
         </NavLink>
         <NavLink label="Feedback" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>
             <InternalNavLink to="/feedback/Alert" label="Alert" />
+            <InternalNavLink to="/feedback/Badge" label="Badge" />
         </NavLink>
         <NavLink label="Mantine" leftSection={<Image src={MantineLogo} height={16} />} defaultOpened>
             {Object.keys(mantinePages).map((filePath) => {

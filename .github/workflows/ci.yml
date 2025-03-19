@@ -9,7 +9,12 @@ jobs:
         name: Lint Changed Files
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+            - name: Harden Runner
+              uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+              with:
+                  egress-policy: audit
+
+            - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
@@ -20,7 +25,12 @@ jobs:
         name: Test
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+            - name: Harden Runner
+              uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+              with:
+                  egress-policy: audit
+
+            - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
             - uses: ./.github/actions/setup
             - uses: ./.github/actions/test
     demo:
@@ -31,7 +41,12 @@ jobs:
             id-token: write
             contents: read
         steps:
-            - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+            - name: Harden Runner
+              uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+              with:
+                  egress-policy: audit
+
+            - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
             - uses: ./.github/actions/setup
             - uses: ./.github/actions/build
             - uses: ./.github/actions/deploy

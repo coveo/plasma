@@ -24,10 +24,10 @@
         "**/package.json": [
             "sort-package-json"
         ],
-        "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html,css}": [
+        "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
             "prettier --write"
         ],
-        "**/*.scss": [
+        "**/*.{scss,css}": [
             "stylelint --fix",
             "prettier --write"
         ]
@@ -43,48 +43,56 @@
         "IE 11",
         "not dead"
     ],
-    "stylelint": {
-        "extends": [
-            "stylelint-config-standard-scss"
-        ],
-        "rules": {
-            "keyframes-name-pattern": [
-                "^[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$",
-                {
-                    "message": "Expected keyframes names to be camelCase"
-                }
-            ]
-        }
-    },
     "devDependencies": {
-        "@commitlint/cli": "19.3.0",
-        "@commitlint/config-conventional": "19.2.2",
-        "@coveo/semantic-monorepo-tools": "2.4.18",
+        "@commitlint/cli": "19.6.1",
+        "@commitlint/config-conventional": "19.6.0",
+        "@coveo/semantic-monorepo-tools": "2.6.2",
         "@sindresorhus/slugify": "2.2.1",
-        "aws-sdk": "2.1566.0",
-        "chokidar": "3.6.0",
-        "commitizen": "4.3.0",
-        "conventional-changelog-angular": "7.0.0",
+        "@types/node": "22.10.7",
+        "@vitest/eslint-plugin": "1.1.25",
+        "aws-sdk": "2.1692.0",
+        "chokidar": "4.0.3",
+        "commitizen": "4.3.1",
+        "conventional-changelog-angular": "8.0.0",
         "cz-conventional-changelog": "3.3.0",
-        "eslint": "8.57.0",
-        "eslint-config-plasma": "workspace:*",
-        "eslint-plugin-prettier": "5.1.3",
-        "husky": "9.0.11",
-        "lint-staged": "15.2.2",
+        "eslint": "9.18.0",
+        "eslint-config-prettier": "10.0.1",
+        "eslint-plugin-import-x": "4.6.1",
+        "eslint-plugin-jsdoc": "50.6.2",
+        "eslint-plugin-prefer-arrow": "1.2.3",
+        "eslint-plugin-react": "7.37.4",
+        "eslint-plugin-react-hooks": "5.1.0",
+        "eslint-plugin-react-refresh": "0.4.18",
+        "eslint-plugin-testing-library": "7.1.1",
+        "eslint-plugin-unused-imports": "4.1.4",
+        "globals": "15.14.0",
+        "husky": "9.1.7",
+        "lint-staged": "15.4.1",
         "mime-types": "2.1.35",
-        "prettier": "3.2.5",
-        "sort-package-json": "2.8.0",
-        "stylelint": "16.2.1",
-        "stylelint-config-standard-scss": "13.0.0",
-        "turbo": "1.12.4",
-        "underscore": "1.13.6",
+        "postcss": "8.5.1",
+        "prettier": "3.4.2",
+        "sort-package-json": "2.14.0",
+        "stylelint": "16.13.2",
+        "stylelint-config-standard-scss": "14.0.0",
+        "turbo": "2.3.3",
+        "typescript": "5.7.3",
+        "typescript-eslint": "8.20.0",
+        "underscore": "1.13.7",
         "walkdir": "0.4.1"
     },
+    "packageManager": "pnpm@9.15.4",
     "pnpm": {
+        "peerDependencyRules": {
+            "ignoreMissing": [
+                "react-native"
+            ]
+        },
         "overrides": {
-            "loader-utils": "2.0.4",
-            "nwsapi": "2.2.4",
-            "@babel/traverse": "^7.23.2"
+            "@babel/traverse": "^7.23.2",
+            "nwsapi": "2.2.16"
+        },
+        "patchedDependencies": {
+            "@stencil/core": "patches/@stencil__core.patch"
         }
     }
 }

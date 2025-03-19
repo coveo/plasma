@@ -26,7 +26,7 @@ const generateIconsTokens = (tokenLibrary: FileNodesResponse, iconsMarkup: Recor
 };
 
 export const buildIconsTokens = async () => {
-    const libraryContent: FileNodesResponse = await readJson('./data/iconsLibrary.json');
-    const iconsMarkup: Record<string, string> = await readJson('./data/icons.json');
+    const libraryContent = (await readJson('./data/iconsLibrary.json')) as FileNodesResponse;
+    const iconsMarkup = (await readJson('./data/icons.json')) as Record<string, string>;
     generateIconsTokens(libraryContent, iconsMarkup);
 };

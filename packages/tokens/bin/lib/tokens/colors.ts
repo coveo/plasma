@@ -84,6 +84,6 @@ const generateColorsTokens = (tokenLibrary: FileNodesResponse) => {
 };
 
 export const buildColorsTokens = async () => {
-    const libraryContent: FileNodesResponse = await readJson('./data/colorsLibrary.json');
+    const libraryContent = (await readJson('./data/colorsLibrary.json')) as FileNodesResponse;
     generateColorsTokens(libraryContent);
 };

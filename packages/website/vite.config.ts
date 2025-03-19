@@ -14,8 +14,8 @@ export default defineConfig({
     },
     resolve: {
         alias: [
-            {find: /@examples\/(.*)/, replacement: path.resolve(__dirname, 'src/examples/$1')},
-            {find: '@demo', replacement: path.resolve(__dirname, 'src/building-blocs/Demo.tsx')},
+            {find: /@examples\/(.*)/, replacement: path.resolve(import.meta.dirname, 'src/examples/$1')},
+            {find: '@demo', replacement: path.resolve(import.meta.dirname, 'src/building-blocs/Demo.tsx')},
         ],
     },
 });

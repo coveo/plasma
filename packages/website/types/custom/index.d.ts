@@ -26,9 +26,11 @@ interface DemoComponentProps {
      * Will render in a flex container with the specified max-height instead of a scroll area.
      */
     maxHeight?: number | 'none';
+    additionalFiles?: Array<import('@mantine/code-highlight').CodeHighlightTabsCode>;
 }
 
 declare module '*?demo' {
+    import {JSX} from 'react';
     const DemoComponent: (props: DemoComponentProps) => JSX.Element;
     export default DemoComponent;
 }

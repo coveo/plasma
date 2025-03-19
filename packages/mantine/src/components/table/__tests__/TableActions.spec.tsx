@@ -1,11 +1,11 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, waitFor, within} from '@test-utils';
+import {useState} from 'react';
 
 import {Table} from '../Table';
 import {useTable} from '../use-table';
 
 type RowData = {name: string};
-
 const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
 
@@ -23,7 +23,7 @@ describe('Table.Actions', () => {
                     getRowActions={(selected: RowData[]) => [
                         {
                             group: '$$primary',
-                            component: <Table.ActionItem leftSection={null}>Eat {selected[0].name}</Table.ActionItem>,
+                            component: <Table.ActionItem>Eat {selected[0].name}</Table.ActionItem>,
                         },
                     ]}
                 >
@@ -60,19 +60,11 @@ describe('Table.Actions', () => {
                     getRowActions={(selected: RowData[]) => [
                         {
                             group: 'secondary',
-                            component: (
-                                <Table.ActionItem key="peel" leftSection={null}>
-                                    Peel {selected[0].name}
-                                </Table.ActionItem>
-                            ),
+                            component: <Table.ActionItem key="peel">Peel {selected[0].name}</Table.ActionItem>,
                         },
                         {
                             group: 'secondary',
-                            component: (
-                                <Table.ActionItem key="chop" leftSection={null}>
-                                    Chop {selected[0].name}
-                                </Table.ActionItem>
-                            ),
+                            component: <Table.ActionItem key="chop">Chop {selected[0].name}</Table.ActionItem>,
                         },
                     ]}
                 >
@@ -107,7 +99,7 @@ describe('Table.Actions', () => {
                     getRowActions={(selected: RowData[]) => [
                         {
                             group: '$$primary',
-                            component: <Table.ActionItem leftSection={null}>Eat {selected[0].name}</Table.ActionItem>,
+                            component: <Table.ActionItem>Eat {selected[0].name}</Table.ActionItem>,
                         },
                     ]}
                 >
@@ -135,7 +127,7 @@ describe('Table.Actions', () => {
                     getRowActions={(selected: RowData[]) => [
                         {
                             group: '$$primary',
-                            component: <Table.ActionItem leftSection={null}>Eat {selected[0].name}</Table.ActionItem>,
+                            component: <Table.ActionItem>Eat {selected[0].name}</Table.ActionItem>,
                         },
                     ]}
                 >
@@ -149,6 +141,56 @@ describe('Table.Actions', () => {
         expect(screen.queryByRole('button', {name: 'Eat fruit'})).not.toBeInTheDocument();
         expect(screen.getByRole('row', {name: 'vegetable', selected: false})).toBeInTheDocument();
         expect(screen.queryByRole('button', {name: 'Eat vegetable'})).not.toBeInTheDocument();
+    });
+
+    it('keeps the selected row data in sync with the data prop', async () => {
+        // When a row is selected and the data prop changes, the selected row data should be updated with the new data without having to reselect the row
+        type Food = {name: string; status: 'fresh' | 'eaten'};
+        const foodColumnHelper = createColumnHelper<Food>();
+        const myColumns: Array<ColumnDef<Food>> = [foodColumnHelper.accessor('name', {enableSorting: false})];
+        const user = userEvent.setup();
+
+        const Fixture = () => {
+            const [data, setData] = useState<Food[]>([{name: 'fruit', status: 'fresh'}]);
+            const eatFruit = () => setData([{name: 'fruit', status: 'eaten'}]);
+
+            const store = useTable<Food>();
+            return (
+                <Table<Food>
+                    store={store}
+                    data={data}
+                    columns={myColumns}
+                    getRowActions={(selected: Food[]) => [
+                        {
+                            group: '$$primary',
+                            component:
+                                selected[0].status === 'fresh' ? (
+                                    <Table.ActionItem key="eat" onClick={eatFruit}>
+                                        Eat
+                                    </Table.ActionItem>
+                                ) : null,
+                        },
+                        {
+                            group: '$$primary',
+                            component:
+                                selected[0].status === 'eaten' ? (
+                                    <Table.ActionItem key="trash">Throw away</Table.ActionItem>
+                                ) : null,
+                        },
+                    ]}
+                >
+                    <Table.Header />
+                </Table>
+            );
+        };
+        render(<Fixture />);
+        await user.click(screen.getByRole('cell', {name: 'fruit'}));
+        expect(screen.getByRole('button', {name: 'Eat'})).toBeVisible();
+        expect(screen.queryByRole('button', {name: 'Throw away'})).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole('button', {name: 'Eat'}));
+        expect(screen.queryByRole('button', {name: 'Eat'})).not.toBeInTheDocument();
+        expect(screen.getByRole('button', {name: 'Throw away'})).toBeVisible();
     });
 
     describe('when multi row selection is enabled', () => {
@@ -166,9 +208,7 @@ describe('Table.Actions', () => {
                             {
                                 group: '$$primary',
                                 component: (
-                                    <Table.ActionItem leftSection={null}>
-                                        Eat {data.map((d) => d.name).join(', ')}
-                                    </Table.ActionItem>
+                                    <Table.ActionItem>Eat {data.map((d) => d.name).join(', ')}</Table.ActionItem>
                                 ),
                             },
                         ]}

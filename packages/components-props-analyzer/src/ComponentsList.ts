@@ -15,7 +15,7 @@ export interface Component {
      *
      * @default 'auto'
      */
-    propsType?: 'auto' | string;
+    propsType?: 'auto' | (string & {});
     /**
      * Suffix to add to the exported name.
      * Useful to avoid name collisions
@@ -58,10 +58,6 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
     },
     {
-        name: 'ModalWizard',
-        packageName: '@coveord/plasma-mantine',
-    },
-    {
         name: 'StickyFooter',
         packageName: '@coveord/plasma-mantine',
     },
@@ -96,6 +92,30 @@ const components: Component[] = [
     {
         name: 'Alert',
         packageName: '@coveord/plasma-mantine',
+    },
+    {
+        name: 'Badge',
+        packageName: '@coveord/plasma-mantine',
+    },
+    {
+        name: 'EllipsisText',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'EllipsisTextProps',
+    },
+    {
+        name: 'ChildForm',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'ChildFormProps',
+    },
+    {
+        name: 'DateRangePickerPopoverCalendar',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'DateRangePickerPopoverCalendarProps',
+    },
+    {
+        name: 'DateRangePickerInlineCalendar',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'DateRangePickerInlineCalendarProps',
     },
 ];
 

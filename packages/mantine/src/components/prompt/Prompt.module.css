@@ -1,45 +1,24 @@
 .root {
-    &[data-variant='success']&[data-size] {
-        .header {
-            background-color: var(--mantine-color-lime-6);
-        }
-    }
-    &[data-variant='warning']&[data-size] {
-        .header {
-            background-color: var(--mantine-color-yellow-5);
-        }
-    }
-    &[data-variant='critical']&[data-size] {
-        .header {
-            background-color: var(--mantine-color-red-6);
-        }
-    }
-    &[data-variant='info']&[data-size] {
-        .header {
-            background-color: var(--mantine-color-navy-5);
-        }
+    --prompt-icon-size: 68px;
+
+    .body {
+        padding: 0 var(--mantine-spacing-lg) var(--mantine-spacing-lg)
+            calc(var(--prompt-icon-size) + var(--mantine-spacing-md) + var(--mantine-spacing-lg));
     }
 }
 
-.title {
-    color: var(--mantine-color-white);
+.icon {
+    width: var(--prompt-icon-size);
+    height: var(--prompt-icon-size);
 }
 
 .header {
+    gap: var(--mantine-spacing-md);
     width: 100%;
-    border-bottom: 1px solid var(--mantine-color-gray-3);
-    font-size: var(--mantine-h3-font-size);
-    line-height: var(--mantine-h3-line-height);
     overflow-wrap: anywhere;
-    padding-top: var(--mantine-spacing-md);
-    padding-bottom: var(--mantine-spacing-md);
+    padding: var(--mantine-spacing-lg) var(--mantine-spacing-md) var(--mantine-spacing-xs) var(--mantine-spacing-lg);
 }
 
-.whiteClose {
-    @mixin light {
-        color: var(--mantine-color-white);
-        @mixin hover {
-            background-color: transparent;
-        }
-    }
+.inner {
+    color: var(--mantine-color-dimmed);
 }

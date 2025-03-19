@@ -1,4 +1,4 @@
-import {List as MantineList, Text, Title, TitleOrder, Tooltip} from '@coveord/plasma-mantine';
+import {List as MantineList, Text, Title, Tooltip} from '@coveord/plasma-mantine';
 import {Table as MantineTable} from '@mantine/core';
 import {ReactNode} from 'react';
 import {Components} from 'react-markdown';
@@ -29,15 +29,13 @@ const TableBody: Components['tbody'] = ({children}: {children: ReactNode}) => (
     <MantineTable.Tbody>{children}</MantineTable.Tbody>
 );
 
-const TableHeading: Components['th'] = ({children, isHeader, ...others}) => (
+const TableHeading: Components['th'] = ({children, ...others}) => (
     <MantineTable.Th fw={500} {...others}>
         {children}
     </MantineTable.Th>
 );
 
-const TableRow: Components['tr'] = ({children, isHeader, ...others}) => (
-    <MantineTable.Tr {...others}>{children}</MantineTable.Tr>
-);
+const TableRow: Components['tr'] = ({children, ...others}) => <MantineTable.Tr {...others}>{children}</MantineTable.Tr>;
 
 const TableCell: Components['td'] = ({children, ...others}) => (
     <MantineTable.Td {...others}>{children}</MantineTable.Td>
@@ -67,21 +65,15 @@ const Link: Components['a'] = ({title, href, children, ...props}) => (
     </Tooltip>
 );
 
-const Heading: Components['h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'] = ({level, children, ...props}) => (
-    <Title order={(level > 2 ? 6 : level + 2) as TitleOrder} mt="sm" {...props}>
-        {children}
-    </Title>
-);
-
 const Divider: Components['hr'] = () => <hr />;
 
 export const MarkdownOverrides: Components = {
-    h1: Heading,
-    h2: Heading,
-    h3: Heading,
-    h4: Heading,
-    h5: Heading,
-    h6: Heading,
+    h1: (props) => <Title order={3} mt="sm" {...props} />,
+    h2: (props) => <Title order={4} mt="sm" {...props} />,
+    h3: (props) => <Title order={6} mt="sm" {...props} />,
+    h4: (props) => <Title order={6} mt="sm" {...props} />,
+    h5: (props) => <Title order={6} mt="sm" {...props} />,
+    h6: (props) => <Title order={6} mt="sm" {...props} />,
     table: Table,
     thead: TableHeader,
     tbody: TableBody,

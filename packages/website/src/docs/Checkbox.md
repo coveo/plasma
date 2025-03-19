@@ -46,6 +46,6 @@ The partially selected state is only allowed with checkboxes that have children 
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Multi select](https://plasma.coveo.com/form/MultiSelect) - When there are more than seven options.
--   [Toggle](https://plasma.coveo.com/form/FlatSelect) - When the result applies immediately, for example with a change of display.
--   [Radio button](https://plasma.coveo.com/form/RadioButton) - When options are mutually exclusive.
+- [Multi select](https://plasma.coveo.com/form/MultiSelect) - When there are more than seven options.
+- [Toggle](https://plasma.coveo.com/form/FlatSelect) - When the result applies immediately, for example with a change of display.
+- [Radio button](https://plasma.coveo.com/form/RadioButton) - When options are mutually exclusive.

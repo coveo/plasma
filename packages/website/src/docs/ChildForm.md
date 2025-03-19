@@ -5,5 +5,5 @@ If the user navigates between options within the set, keep track of their previo
 
 # Related Components
 
--   [Checkbox](https://plasma.coveo.com/form/Checkbox)
--   [Radio Buttons](https://plasma.coveo.com/form/RadioButton)
+- [Checkbox](https://plasma.coveo.com/form/Checkbox)
+- [Radio Buttons](https://plasma.coveo.com/form/RadioButton)

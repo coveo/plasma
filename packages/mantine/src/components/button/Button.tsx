@@ -1,6 +1,6 @@
 import {
     ButtonCssVariables,
-    ButtonGroup,
+    type ButtonGroup,
     ButtonStylesNames,
     ButtonVariant,
     Factory,
@@ -56,3 +56,9 @@ export const Button = polymorphicFactory<ButtonOverloadFactory>(
     },
 );
 Button.Group = MantineButton.Group;
+
+export const ButtonPrimary = Button.withProps({variant: 'filled'});
+export const ButtonSecondary = Button.withProps({variant: 'light'});
+export const ButtonTertiary = Button.withProps({variant: 'subtle'});
+export const ButtonDestructive = Button.withProps({variant: 'filled', color: 'var(--mantine-color-error)'});
+export const ButtonDestructiveSecondary = Button.withProps({variant: 'light', color: 'var(--mantine-color-error)'});

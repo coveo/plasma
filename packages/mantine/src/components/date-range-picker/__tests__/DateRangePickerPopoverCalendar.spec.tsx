@@ -1,5 +1,5 @@
 import {useForm} from '@mantine/form';
-import {render, screen, userEvent} from '@test-utils';
+import {render, screen, userEvent, waitFor} from '@test-utils';
 import {DateRangePickerValue} from '../DateRangePickerInlineCalendar';
 
 import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar';
@@ -51,12 +51,12 @@ describe('DateRangePickerPopoverCalendar', () => {
 
         await user.click(screen.getByRole('textbox', {name: 'Start'}));
         // click once for the start, once for the end
-        await user.click(screen.getByRole('button', {name: '8 January 2022'}));
+        await user.click(await screen.findByRole('button', {name: '8 January 2022'}));
         await user.click(screen.getByRole('button', {name: '14 February 2022'}));
 
         // hides the calendar when the second date is clicked
-        expect(await screen.findByRole('button', {name: '8 January 2022'})).not.toBeVisible();
-        expect(await screen.findByRole('button', {name: '8 February 2022'})).not.toBeVisible();
+        await waitFor(() => expect(screen.queryByRole('button', {name: '8 January 2022'})).not.toBeVisible());
+        expect(screen.queryByRole('button', {name: '8 February 2022'})).not.toBeVisible();
 
         expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-02-14T00:00:00.000Z"]');
 

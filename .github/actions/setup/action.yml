@@ -3,14 +3,13 @@ description: Install Node, PNPM, and dependencies using cache
 runs:
     using: composite
     steps:
-        - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
           with:
               registry-url: 'https://registry.npmjs.org'
               node-version: 20.9.0
-        - uses: pnpm/action-setup@c3b53f6a16e57305370b4ae5a540c2077a1d50dd
-          with:
-              version: 8
-              run_install: false
+        - name: Enable corepack
+          shell: bash
+          run: corepack enable
         - name: Get pnpm store directory
           id: pnpm-cache
           shell: bash

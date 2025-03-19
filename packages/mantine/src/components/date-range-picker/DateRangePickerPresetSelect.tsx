@@ -8,25 +8,25 @@ export interface DateRangePickerPreset {
     range: DateRangePickerValue;
 }
 
-interface DateRangePickerPresetsSelectProps<T> {
+interface DateRangePickerPresetsSelectProps {
     presets: Record<string, DateRangePickerPreset>;
     value: DateRangePickerValue;
     onChange?(value: DateRangePickerValue): void;
     selectProps?: Partial<Omit<SelectProps, 'data' | 'value' | 'onChange'>>;
 }
 
-export const DateRangePickerPresetSelect = <T extends unknown>({
+export const DateRangePickerPresetSelect = ({
     presets,
     value,
     onChange,
     selectProps = {},
-}: DateRangePickerPresetsSelectProps<T>) => {
+}: DateRangePickerPresetsSelectProps) => {
     const selectData: ComboboxItem[] = Object.entries(presets).map(([val, {label}]) => ({value: val, label}));
 
     const getSelectedPreset = () => {
         if (value[0] !== null && value[1] !== null && dayjs(value[0]).unix() !== dayjs(value[1]).unix()) {
             const selected = Object.entries(presets).find(
-                ([id, {range}]) => dayjs(range[0]!).isSame(value[0]) && dayjs(value[1]!).isSame(value[1]!),
+                ([, {range}]) => dayjs(range[0]).isSame(value[0]) && dayjs(value[1]).isSame(value[1]),
             );
             if (selected) {
                 return selected[0];

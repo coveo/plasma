@@ -1,52 +1,51 @@
 import {Anchor} from '@mantine/core';
-import {render, screen} from '@test-utils';
+import {render, screen, within} from '@test-utils';
 
 import {Header} from '../Header';
 
 describe('Header', () => {
     it('renders a heading of level 1 with the specified children within', () => {
-        render(<Header>child</Header>);
+        render(
+            <Header>
+                <div data-testid="child" />
+            </Header>,
+        );
 
         const header = screen.getByRole('heading');
-        expect(header).toMatchInlineSnapshot(`
-          <h1
-            class="_root_4eabcc _title_69e643 mantine-PlasmaHeader-title m-8a5d1357 mantine-Title-root"
-            data-order="1"
-            data-variant="primary"
-            style="--title-fw: var(--mantine-h1-font-weight); --title-lh: var(--mantine-h1-line-height); --title-fz: var(--mantine-h1-font-size);"
-          >
-            child
-          </h1>
-        `);
+        expect(within(header).getByTestId('child')).toBeVisible();
     });
 
     it('renders the specified breadcrumbs above the title', async () => {
-        const {container, rerender} = render(
+        const {rerender} = render(
             <Header>
-                Title
-                <Header.Breadcrumbs>
+                <Header.Breadcrumbs data-testid="breadcrumbs-after">
                     <Anchor>One</Anchor>
                     <Anchor>Two</Anchor>
                     <Anchor>Three</Anchor>
                 </Header.Breadcrumbs>
+                <div data-testid="title">Title</div>
             </Header>,
         );
-        const titleFirst = container;
+
+        // title follows breadcrumbs even if declared after
+        expect(screen.getByTestId('breadcrumbs-after').compareDocumentPosition(screen.getByTestId('title'))).toBe(
+            Node.DOCUMENT_POSITION_FOLLOWING,
+        );
 
         rerender(
             <Header>
-                <Header.Breadcrumbs>
+                <div data-testid="title">Title</div>
+                <Header.Breadcrumbs data-testid="breadcrumbs-after">
                     <Anchor>One</Anchor>
                     <Anchor>Two</Anchor>
                     <Anchor>Three</Anchor>
                 </Header.Breadcrumbs>
-                Title
             </Header>,
         );
-        const breadcrumbsFirst = container;
-
-        expect(titleFirst).toMatchSnapshot();
-        expect(breadcrumbsFirst).toEqual(titleFirst);
+        // title still follows breadcrumbs
+        expect(screen.getByTestId('breadcrumbs-after').compareDocumentPosition(screen.getByTestId('title'))).toBe(
+            Node.DOCUMENT_POSITION_FOLLOWING,
+        );
     });
 
     it('renders a doc link icon if a doc anchor is provided', async () => {

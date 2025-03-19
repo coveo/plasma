@@ -1,6 +1,0 @@
-.root {
-    &[data-disabled] {
-        color: var(--mantine-color-gray-4);
-        background-color: var(--mantine-color-gray-1);
-    }
-}

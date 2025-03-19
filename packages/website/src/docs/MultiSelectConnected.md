@@ -32,13 +32,13 @@ Allow the addition of custom values only when it doesn't increase the risk of fa
 
 Examples:
 
--   When users select countries: do not allow custom values.
--   When users build a grocery list: allow custom values so that users can request new products that may not be on the list yet.
+- When users select countries: do not allow custom values.
+- When users build a grocery list: allow custom values so that users can request new products that may not be on the list yet.
 
 # Related Components
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Multiline box](https://plasma.coveo.com/form/MultilineBox) - When space is not an issue or when legibility of the selected option is critical.
--   [Checkbox](https://plasma.coveo.com/form/Checkbox) - When there are seven options or less.
--   [Single select](https://plasma.coveo.com/form/SingleSelect) - When users can select only one option from the list.
+- [Multiline box](https://plasma.coveo.com/form/MultilineBox) - When space is not an issue or when legibility of the selected option is critical.
+- [Checkbox](https://plasma.coveo.com/form/Checkbox) - When there are seven options or less.
+- [Single select](https://plasma.coveo.com/form/SingleSelect) - When users can select only one option from the list.

@@ -1,28 +1,30 @@
 #!/usr/bin/env node
 const {spawn} = require('child_process');
 const path = require('path');
-const {writeFileSync} = require('node:fs');
+const {existsSync, writeFileSync} = require('node:fs');
 process.on('unhandledRejection', (err) => {
     throw err;
 });
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-const onExit = (childProcess) => {
-    return new Promise((resolve, reject) => {
-        childProcess.once('exit', (code, signal) => {
+const onExit = (childProcess) =>
+    new Promise((resolve, reject) => {
+        childProcess.once('exit', (code) => {
             code === 0 ? resolve() : reject(new Error('Exit with error code: ' + code));
         });
         childProcess.once('error', (error) => {
             reject(error);
         });
     });
-};
 
 const build = async ({watch = false}) => {
     // compile with swc and tsc
     try {
-        const tscArgs = ['-p', './tsconfig.build.json', '--emitDeclarationOnly'];
+        const tscArgs = ['--emitDeclarationOnly'];
+        if (existsSync('./tsconfig.build.json')) {
+            tscArgs.push('--project', './tsconfig.build.json');
+        }
         const tscESMArgs = [...tscArgs, '--declarationDir', './dist/esm'];
         const tscCJSArgs = [...tscArgs, '--declarationDir', './dist/cjs', '--target', 'es5', '--module', 'commonjs'];
         const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];

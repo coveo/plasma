@@ -42,5 +42,5 @@ When the label is hidden, add a tooltip displaying the action.
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Link](https://plasma.coveo.com/foundations/Links) - When you need to redirect users to another section or website.
--   [Actionable items](https://plasma.coveo.com/form/ActionableItem) - When you need to group several less important actions together.
+- [Link](https://plasma.coveo.com/foundations/Links) - When you need to redirect users to another section or website.
+- [Actionable items](https://plasma.coveo.com/form/ActionableItem) - When you need to group several less important actions together.

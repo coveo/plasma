@@ -1,4 +1,4 @@
-import {Anchor, AppShell, Container, Title, Stack, Text} from '@coveord/plasma-mantine';
+import {Anchor, AppShell, Box, Container, Stack, Text, Title} from '@coveord/plasma-mantine';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
 import {Tile} from '../building-blocs/Tile';
@@ -29,14 +29,16 @@ const WelcomeToPlasma: FunctionComponent = () => (
             <Text>
                 Learn more about our brand, our values and our story by visiting our{' '}
                 <Anchor href="https://brand.coveo.com/">
-                    brand page <ExternalSize16Px style={{marginLeft: '4px'}} />
+                    brand page
+                    <Box component={ExternalSize16Px} height={16} ml="xxs" />
                 </Anchor>
                 .
             </Text>
             <Text>
                 Be part of the progress! Contribute to Plasma on{' '}
                 <Anchor href="https://github.com/coveo/plasma#readme">
-                    GitHub <ExternalSize16Px style={{marginLeft: '4px'}} />
+                    GitHub
+                    <Box component={ExternalSize16Px} height={16} ml="xxs" />
                 </Anchor>
                 .
             </Text>

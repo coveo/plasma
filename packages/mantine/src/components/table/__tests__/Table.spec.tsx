@@ -319,7 +319,7 @@ describe('Table', () => {
             expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
         });
 
-        it('does not display number of selected rows if disableRowSelection is true', async () => {
+        it('does not display number of selected rows if disableRowSelection is true', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({
                     enableMultiRowSelection: true,

@@ -16,7 +16,7 @@ const columns: Array<ColumnDef<RowData>> = [
 ];
 
 describe('Th', () => {
-    it('displays the sort icon for every sortable column', async () => {
+    it('displays the sort icon for every sortable column', () => {
         const data: RowData[] = [
             {name: 'apple', type: 'fruit', colors: ['red', 'green']},
             {name: 'potato', type: 'vegetable', colors: ['brown', 'blue', 'yellow']},
@@ -55,5 +55,40 @@ describe('Th', () => {
         const sortedDescRowHeader = screen.getByRole('columnheader', {name: /name arrowDown/i});
         expect(sortedDescRowHeader).toBeVisible();
         await user.click(sortedDescRowHeader);
+    });
+
+    describe('when url sync is activated', () => {
+        afterEach(() => {
+            window.history.replaceState(null, '', '/');
+        });
+
+        it('sets the sort column and direction in the url', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {name: 'apple', type: 'fruit', colors: ['red', 'green']},
+                {name: 'potato', type: 'vegetable', colors: ['brown', 'blue', 'yellow']},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({syncWithUrl: true});
+                return <Table store={store} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+            await user.click(screen.getByRole('columnheader', {name: /name doubleArrowHead/i}));
+            expect(window.location.search).toBe('?sortBy=name.asc');
+        });
+
+        it('determines the initial visible columns from the url', () => {
+            window.history.replaceState(null, '', '?sortBy=name.desc');
+            const data: RowData[] = [
+                {name: 'apple', type: 'fruit', colors: ['red', 'green']},
+                {name: 'potato', type: 'vegetable', colors: ['brown', 'blue', 'yellow']},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({syncWithUrl: true});
+                return <Table store={store} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+            expect(screen.getByRole('columnheader', {name: /name arrowDown/i})).toBeVisible();
+        });
     });
 });

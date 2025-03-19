@@ -2,6 +2,7 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square&logo=appveyor)](https://conventionalcommits.org)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/coveo/plasma/badge)](https://scorecard.dev/viewer/?uri=github.com/coveo/plasma)
 
 Plasma is Coveo's design system used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](https://plasma.coveo.com/). The `@coveord/plasma-style` package contains the generic style classes used across the components and `@coveord/plasma-react` is a react implementation of multiple visual and behavioural components.
 
@@ -17,9 +18,9 @@ npm install @coveord/plasma-react @coveord/plasma-style
 
 Make sure you have
 
--   [Node.js](https://nodejs.org/)'s LTS version
--   [NPM](https://www.npmjs.com/package/npm)'s LTS version
--   [PNPM](https://pnpm.io/installation) >= 5
+- [Node.js](https://nodejs.org/)'s LTS version
+- [NPM](https://www.npmjs.com/package/npm)'s LTS version
+- [PNPM](https://pnpm.io/installation) >= 5
 
 ### Where are @coveord/plasma-style and @coveord/plasma-react?
 

@@ -1,10 +1,10 @@
 import {ModalMetadata} from '@coveord/plasma-components-props-analyzer';
 import ModalDemo from '@examples/layout/Modal/Modal.demo?demo';
 import ModalWithTabsDemo from '@examples/layout/Modal/ModalWithTabs.demo?demo';
-
+import ModalWithTabsCSS from '@examples/layout/Modal/ModalWithTabs.module.css?raw';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-export default () => (
+const Page = () => (
     <PageLayout
         section="Layout"
         title="Modal"
@@ -14,7 +14,22 @@ export default () => (
         propsMetadata={ModalMetadata}
         demo={<ModalDemo />}
         examples={{
-            withTabs: <ModalWithTabsDemo title="Modal with tabs and footer" />,
+            withTabs: (
+                <ModalWithTabsDemo
+                    title="Modal with tabs and footer"
+                    additionalFiles={[
+                        {
+                            fileName: 'ModalWithTabs.module.css',
+                            code: ModalWithTabsCSS,
+                            language: 'css',
+                            icon: null,
+                            // icon: tsIcon,
+                        },
+                    ]}
+                />
+            ),
         }}
     />
 );
+
+export default Page;

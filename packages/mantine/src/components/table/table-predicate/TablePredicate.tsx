@@ -7,6 +7,7 @@ import {
     Grid,
     Group,
     Select,
+    SelectProps,
     Text,
     useProps,
 } from '@mantine/core';
@@ -17,7 +18,10 @@ import {useTableContext} from '../TableContext';
 
 export type TablePredicateStylesNames = 'predicate' | 'predicateWrapper' | 'predicateLabel' | 'predicateSelect';
 
-export interface TablePredicateProps extends BoxProps, CompoundStylesApiProps<TablePredicateFactory> {
+export interface TablePredicateProps
+    extends BoxProps,
+        Pick<SelectProps, 'renderOption' | 'comboboxProps'>,
+        CompoundStylesApiProps<TablePredicateFactory> {
     /**
      * Unique identifier for this predicate. Will be used to access the selected value in the table state
      */
@@ -27,11 +31,10 @@ export interface TablePredicateProps extends BoxProps, CompoundStylesApiProps<Ta
      */
     data: ComboboxData;
     /**
-     * Input label (not displayed for now)
+     * The label to display next to the Select
      *
-     * @default default to the predicate id
      */
-    label?: string;
+    label: string;
 }
 
 export type TablePredicateFactory = Factory<{
@@ -45,11 +48,8 @@ const defaultProps: Partial<TablePredicateProps> = {};
 
 export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<TablePredicateFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();
-    const {id, data, label, classNames, className, styles, style, vars, ...others} = useProps(
-        'PlasmaTablePredicate',
-        defaultProps,
-        props,
-    );
+    const {id, data, label, classNames, className, styles, style, renderOption, comboboxProps, vars, ...others} =
+        useProps('PlasmaTablePredicate', defaultProps, props);
 
     const handleChange = (newValue: string) => {
         store.setPredicates((prev) => ({...prev, [id]: newValue}));
@@ -66,15 +66,17 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<Ta
             {...getStyles('predicate', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Group gap="xs" {...getStyles('predicateWrapper', stylesApiProps)}>
+            <Group gap="xs" wrap="nowrap" {...getStyles('predicateWrapper', stylesApiProps)}>
                 {label ? <Text {...getStyles('predicateLabel', stylesApiProps)}>{label}:</Text> : null}
                 <Select
-                    comboboxProps={{withinPortal: true}}
+                    comboboxProps={{withinPortal: true, ...comboboxProps}}
                     value={store.state.predicates[id]}
                     onChange={handleChange}
                     data={data}
                     aria-label={label ?? id}
                     searchable={data.length > 7}
+                    renderOption={renderOption}
+                    scrollAreaProps={{type: 'always'}}
                     {...getStyles('predicateSelect', stylesApiProps)}
                 />
             </Group>

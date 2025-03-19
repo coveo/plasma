@@ -9,7 +9,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils';
 import classes from './Table.module.css';
 import {TableLayout, TableProps} from './Table.types';
@@ -150,7 +150,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
         getRowId,
-        getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row) ?? false,
+        getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row),
         enableRowSelection: !loading,
         defaultColumn: {
             size: undefined,
@@ -197,10 +197,26 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         },
     }));
 
+    useEffect(() => {
+        // Update the selected rows data when the data prop changes
+        if (store.getSelectedRows().length > 0) {
+            store.setRowSelection((old) => {
+                const rowsById = table.getRowModel().rowsById;
+                const newSelection = {...old};
+                Object.keys(old).forEach((rowId) => {
+                    if (rowsById[rowId]) {
+                        newSelection[rowId] = rowsById[rowId].original;
+                    }
+                });
+                return isEqual(newSelection, old) ? old : newSelection;
+            });
+        }
+    }, [data]);
+
     const containerRef = useRef<HTMLDivElement>();
     useClickOutside(
         () => {
-            if (!store.multiRowSelectionEnabled) {
+            if (!store.multiRowSelectionEnabled && store.getSelectedRows().length > 0) {
                 store.clearRowSelection();
             }
         },
@@ -229,9 +245,9 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                         noData
                     ) : (
                         <>
-                            <Box component="table" {...getStyles('table')} pb="sm" mod={{loading}}>
+                            <Box component="table" {...getStyles('table')} mod={{loading}}>
                                 <thead {...getStyles('header')}>
-                                    {!!header ? (
+                                    {header ? (
                                         <tr>
                                             <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
                                                 {header}

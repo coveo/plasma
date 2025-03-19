@@ -26,7 +26,7 @@ const handler = {
                     height={height || width || '1em'}
                     {...others}
                 />
-            )
+            ),
         );
         IconMock.displayName = prop;
         return IconMock;

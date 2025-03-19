@@ -1,0 +1,14 @@
+.root {
+    display: flex;
+    width: 100%;
+}
+
+.noWrap {
+    white-space: nowrap;
+}
+
+.ellipsis {
+    flex-basis: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

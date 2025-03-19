@@ -13,7 +13,7 @@ describe('ButtonWithDisabledTooltip', () => {
         expect(button).toBeDisabled();
         expect(screen.queryByRole('tooltip', {name: /tooltip message/i})).not.toBeInTheDocument();
         await user.hover(button);
-        expect(screen.getByRole('tooltip', {name: /tooltip message/i})).toBeInTheDocument();
+        expect(await screen.findByRole('tooltip', {name: /tooltip message/i})).toBeInTheDocument();
     });
 
     it('does not show the tooltip when hovering over the button if it is not disabled', async () => {

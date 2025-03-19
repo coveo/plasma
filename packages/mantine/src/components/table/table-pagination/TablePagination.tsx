@@ -27,7 +27,7 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({onPage
             value={store.state.pagination.pageIndex + 1}
             onChange={updatePage}
             total={total}
-            boundaries={0}
+            boundaries={1}
             size="md"
             gap="xs"
             getControlProps={(control) => {

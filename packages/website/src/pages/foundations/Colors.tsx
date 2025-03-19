@@ -2,15 +2,19 @@ import {Group, Stack, Title} from '@coveord/plasma-mantine';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {InlineCodeHighlight} from '@mantine/code-highlight';
-import {Table as MantineTable} from '@mantine/core';
+import {Anchor, Box, Table as MantineTable} from '@mantine/core';
 import kebabCase from 'lodash.kebabcase';
 import {FunctionComponent} from 'react';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-const isColor = (value: unknown): value is string => typeof value === 'string';
-const isPalette = (value: unknown): value is Record<number, string> =>
+type Color = string;
+type ColorPalette = Record<number, Color>;
+type ColorPaletteGroup = Record<string, ColorPalette>;
+
+const isColor = (value: unknown): value is Color => typeof value === 'string';
+const isPalette = (value: unknown): value is ColorPalette =>
     typeof value === 'object' && Object.keys(value).some((key) => /^\d$/.test(key));
-const isColorGroup = (value: any) => typeof value !== 'string';
+const isColorGroup = (value: unknown): value is ColorPaletteGroup => typeof value !== 'string';
 
 const ColorBlock: FunctionComponent<{colorName: string; colorValue: string}> = ({colorName, colorValue}) => (
     <div className="color-box">
@@ -50,7 +54,10 @@ const primaryFirst = (a: string, b: string) => {
     return 0;
 };
 
-const ColorGroup: FunctionComponent<{name: string; value: any}> = ({name, value}) => {
+const ColorGroup: FunctionComponent<{
+    name: string;
+    value: Color | ColorPalette | ColorPaletteGroup;
+}> = ({name, value}) => {
     if (isColor(value)) {
         return <ColorBlock colorName={name} colorValue={value} />;
     }
@@ -94,7 +101,7 @@ const ColorGroup: FunctionComponent<{name: string; value: any}> = ({name, value}
                                 {child}
                             </Title>
                             <Stack gap="xl" pl="lg">
-                                <ColorGroup name={`${name}-${child}`} value={value[child]} />
+                                <ColorGroup name={`${name}-${child}`} value={(value as ColorPaletteGroup)[child]} />
                             </Stack>
                         </Stack>
                     );
@@ -116,14 +123,10 @@ export const ColorsExamples = () => (
         <div className="plasma-page-layout__section pl5">
             <p>
                 All colors are exposed through the{' '}
-                <a
-                    href="https://github.com/coveo/plasma/tree/master/packages/tokens#readme"
-                    target="_blank"
-                    className="link inline-flex flex-center"
-                >
+                <Anchor href="https://github.com/coveo/plasma/tree/master/packages/tokens#readme" target="_blank">
                     @coveord/plasma-tokens
-                    <ExternalSize16Px style={{marginLeft: '4px'}} />
-                </a>{' '}
+                    <Box component={ExternalSize16Px} height={16} ml="xxs" />
+                </Anchor>{' '}
                 package in 3 formats: TypeScript, Sass and CSS. Hover over any color to see its name in any of those
                 formats.
             </p>

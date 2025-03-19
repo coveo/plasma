@@ -7,7 +7,7 @@ import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
-interface DateRangePickerPopoverCalendarProps<T> extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
+interface DateRangePickerPopoverCalendarProps extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */
     defaultValue?: DateRangePickerValue;
     /** Value for controlled input */
@@ -35,7 +35,7 @@ interface DateRangePickerPopoverCalendarProps<T> extends Pick<EditableDateRangeP
     >;
 }
 
-export const DateRangePickerPopoverCalendar = <T extends unknown>({
+export const DateRangePickerPopoverCalendar = ({
     presets,
     value,
     defaultValue,
@@ -43,7 +43,7 @@ export const DateRangePickerPopoverCalendar = <T extends unknown>({
     startProps,
     endProps,
     rangeCalendarProps,
-}: DateRangePickerPopoverCalendarProps<T>) => {
+}: DateRangePickerPopoverCalendarProps) => {
     const [opened, setOpened] = useState(false);
     const ref = useClickOutside(() => setOpened(false));
 
@@ -63,29 +63,31 @@ export const DateRangePickerPopoverCalendar = <T extends unknown>({
 
     return (
         <>
-            <Group align="center">
-                <EditableDateRangePicker
-                    value={_value}
-                    onChange={handleChange}
-                    onFocus={() => setOpened(true)}
-                    startProps={startProps}
-                    endProps={endProps}
-                />
-                {presets ? (
-                    <>
-                        <Space w="sm" />
-                        <DateRangePickerPresetSelect presets={presets} value={_value} onChange={handleChange} />
-                    </>
-                ) : null}
-            </Group>
-
             <Popover opened={opened} onChange={setOpened} trapFocus>
+                <Popover.Target>
+                    <Group align="center">
+                        <EditableDateRangePicker
+                            value={_value}
+                            onChange={handleChange}
+                            onFocus={() => setOpened(true)}
+                            startProps={startProps}
+                            endProps={endProps}
+                        />
+                        {presets ? (
+                            <>
+                                <Space w="sm" />
+                                <DateRangePickerPresetSelect presets={presets} value={_value} onChange={handleChange} />
+                            </>
+                        ) : null}
+                    </Group>
+                </Popover.Target>
                 <Popover.Dropdown>
                     <DatePicker
                         ref={ref}
                         type="range"
                         styles={{day: {textAlign: 'center'}}}
                         numberOfColumns={2}
+                        columnsToScroll={1}
                         firstDayOfWeek={0}
                         allowSingleDateInRange
                         value={_value}
