@@ -91,7 +91,7 @@ export const DateRangePickerPopoverCalendar = ({
                         firstDayOfWeek={0}
                         allowSingleDateInRange
                         value={_value}
-                        onChange={onCalendarChange}
+                        onChange={(val) => onCalendarChange([new Date(val[0]), new Date(val[1])])}
                         {...rangeCalendarProps}
                     />
                 </Popover.Dropdown>

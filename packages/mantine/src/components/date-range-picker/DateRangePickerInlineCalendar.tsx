@@ -112,7 +112,7 @@ export const DateRangePickerInlineCalendar = ({
                     allowSingleDateInRange
                     {...rangeCalendarProps}
                     {...calendarInputProps}
-                    onChange={onCalendarChange}
+                    onChange={(val) => onCalendarChange([new Date(val[0]), new Date(val[1])])}
                 />
             </Center>
 

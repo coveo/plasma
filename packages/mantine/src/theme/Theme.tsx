@@ -332,6 +332,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return {root: {}, track: {}, thumb: {}};
             },
+            defaultProps: {
+                withThumbIndicator: false,
+            },
         }),
         Tabs: Tabs.extend({
             classNames: TabsClasses,
