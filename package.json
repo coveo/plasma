@@ -49,7 +49,7 @@
         "@coveo/semantic-monorepo-tools": "2.6.2",
         "@sindresorhus/slugify": "2.2.1",
         "@types/node": "22.13.10",
-        "@vitest/eslint-plugin": "1.1.36",
+        "@vitest/eslint-plugin": "1.1.37",
         "aws-sdk": "2.1692.0",
         "chokidar": "4.0.3",
         "commitizen": "4.3.1",
@@ -58,7 +58,7 @@
         "eslint": "9.22.0",
         "eslint-config-prettier": "10.1.1",
         "eslint-plugin-import-x": "4.6.1",
-        "eslint-plugin-jsdoc": "50.6.3",
+        "eslint-plugin-jsdoc": "50.6.6",
         "eslint-plugin-prefer-arrow": "1.2.3",
         "eslint-plugin-react": "7.37.4",
         "eslint-plugin-react-hooks": "5.2.0",
@@ -67,7 +67,7 @@
         "eslint-plugin-unused-imports": "4.1.4",
         "globals": "16.0.0",
         "husky": "9.1.7",
-        "lint-staged": "15.4.3",
+        "lint-staged": "15.5.0",
         "mime-types": "2.1.35",
         "postcss": "8.5.3",
         "prettier": "3.5.3",
@@ -76,11 +76,11 @@
         "stylelint-config-standard-scss": "14.0.0",
         "turbo": "2.4.4",
         "typescript": "5.8.2",
-        "typescript-eslint": "8.26.0",
+        "typescript-eslint": "8.26.1",
         "underscore": "1.13.7",
         "walkdir": "0.4.1"
     },
-    "packageManager": "pnpm@10.6.2+sha512.47870716bea1572b53df34ad8647b42962bc790ce2bf4562ba0f643237d7302a3d6a8ecef9e4bdfc01d23af1969aa90485d4cebb0b9638fa5ef1daef656f6c1b",
+    "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
     "pnpm": {
         "peerDependencyRules": {
             "ignoreMissing": [
