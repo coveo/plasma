@@ -1,3 +1,9 @@
+## <small>55.7.2-next.2 (2025-03-21)</small>
+
+* chore: minor changes to the theme 0f66d12
+
+
+
 ## <small>55.7.2-next.1 (2025-03-12)</small>
 
 * chore: adjust theme radius and border color c0f0ea2
