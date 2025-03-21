@@ -1,7 +1,5 @@
 .root {
     &[data-variant='default'] {
-        --tabs-list-border-width: 1px;
-
         &[data-orientation='horizontal'] {
             .list {
                 margin-bottom: calc(-1 * var(--tabs-list-border-width));
@@ -11,5 +9,6 @@
 }
 
 .tab {
+    font-weight: 500;
     line-height: 1.5;
 }

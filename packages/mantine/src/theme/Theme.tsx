@@ -20,6 +20,7 @@ import {
     ComboboxSearch,
     createTheme,
     deepMerge,
+    Divider,
     Input,
     InputWrapper,
     List,
@@ -38,6 +39,7 @@ import {
     Skeleton,
     Stepper,
     Switch,
+    Table,
     Tabs,
     Text,
     Tooltip,
@@ -58,6 +60,7 @@ import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
+import TableClasses from '../styles/Table.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
 import TextClasses from '../styles/Text.module.css';
 import TooltipClasses from '../styles/Tooltip.module.css';
@@ -125,7 +128,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Alert: Alert.extend({
             defaultProps: {
                 icon: <InfoSize16Px height={16} />,
-                radius: 'lg',
+                p: 'xs',
             },
             classNames: AlertClasses,
         }),
@@ -181,6 +184,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 placeholder: 'Search',
                 rightSection: <FilterSize16Px height={16} color="gray.5" />,
+            },
+        }),
+        Divider: Divider.extend({
+            defaultProps: {
+                color: 'var(--mantine-color-default-border)',
             },
         }),
         Input: Input.extend({
@@ -332,6 +340,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return {root: {}, track: {}, thumb: {}};
             },
+        }),
+        Table: Table.extend({
+            classNames: TableClasses,
         }),
         Tabs: Tabs.extend({
             classNames: TabsClasses,
