@@ -32,8 +32,8 @@
         "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint \"**/*.{ts,tsx}\" --fix",
         "prepublishOnly": "publint",
         "start": "node ../../scripts/start",
-        "test": "TZ=UTC vitest run",
-        "test:watch": "TZ=UTC vitest"
+        "test": "cross-env TZ=UTC vitest run",
+        "test:watch": "cross-env TZ=UTC vitest"
     },
     "dependencies": {
         "@coveord/plasma-react-icons": "workspace:*",
@@ -73,6 +73,7 @@
         "@types/lodash.defaultsdeep": "4.6.9",
         "@types/react": "18.3.18",
         "@types/react-dom": "18.3.5",
+        "cross-env": "7.0.3",
         "embla-carousel-react": "7.1.0",
         "identity-obj-proxy": "3.0.0",
         "jsdom": "26.0.0",
