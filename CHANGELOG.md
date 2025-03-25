@@ -1,3 +1,12 @@
+## <small>55.7.3 (2025-03-25)</small>
+
+* chore(deps): update all non-major dependencies (#4027) 971fe64, closes #4027
+* chore(deps): update dependency vite to v6.2.3 [security] (#4031) 23f67f8, closes #4031
+* chore(mantine): make test script cross-env (#4030) 1acaa01, closes #4030
+* fix(CodeEditor): do not format if editor closed (#4032) 96392ef, closes #4032
+
+
+
 ## <small>55.7.2 (2025-03-18)</small>
 
 * fix(mantine, CodeEditor): format text only on valid input (#4028) cbc1880, closes #4028
