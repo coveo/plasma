@@ -252,7 +252,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                         // monaco editor has a timeout of 500ms populating errors, we want to ensure that checking errors happen after that
                         setTimeout(async () => {
                             if (!hasMonacoErrorRef.current) {
-                                await editor.getAction('editor.action.formatDocument').run();
+                                await editor?.getAction('editor.action.formatDocument')?.run();
                             }
                         }, 550);
                     });
