@@ -97,7 +97,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             h1: {fontSize: '40px', lineHeight: '1.2', fontWeight: '500'},
             h2: {fontSize: '32px', lineHeight: '1.25', fontWeight: '500'},
             h3: {fontSize: '24px', lineHeight: '1.33', fontWeight: '500'},
-            h4: {fontSize: '18px', lineHeight: '1.2', fontWeight: '300'},
+            h4: {fontSize: '18px', lineHeight: '1.2', fontWeight: '400'},
             h5: {fontSize: '16px', lineHeight: '1.25', fontWeight: '500'},
             h6: {fontSize: '12px', lineHeight: '1.33', fontWeight: '500'},
         },

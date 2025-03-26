@@ -1,5 +1,5 @@
 .root {
-    font-weight: 300;
+    font-weight: 400;
 
     &:where([data-inherit]) {
         font-weight: inherit;

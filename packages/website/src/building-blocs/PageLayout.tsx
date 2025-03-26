@@ -48,12 +48,11 @@ export const PageLayout = ({
                         title={title}
                         description={description}
                     />
-                    <Tabs.List pl="xl">
+                    <Tabs.List mx="md">
                         <Tabs.Tab value="implementation">Implementation</Tabs.Tab>
                         <Tabs.Tab value="guide">Guidelines</Tabs.Tab>
                     </Tabs.List>
                 </Container>
-                <Divider />
                 <Box h="100%">
                     <Container size="xl" py="xl">
                         <Tabs.Panel value="implementation">
