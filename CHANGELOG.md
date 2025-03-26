@@ -1,3 +1,10 @@
+## <small>55.7.2-next.3 (2025-03-26)</small>
+
+* chore: forgot to remove the import 287ae27
+* fix(mantine): change font-weight from book to regular d00cf2d
+
+
+
 ## <small>55.7.2-next.2 (2025-03-21)</small>
 
 * chore: minor changes to the theme 0f66d12
