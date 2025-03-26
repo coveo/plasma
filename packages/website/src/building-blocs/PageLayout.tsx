@@ -1,4 +1,4 @@
-import {AppShell, Box, Container, Divider, Flex, Stack, Tabs, Title} from '@coveord/plasma-mantine';
+import {AppShell, Box, Container, Flex, Stack, Tabs, Title} from '@coveord/plasma-mantine';
 import {Fragment, FunctionComponent, ReactNode, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 
