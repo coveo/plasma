@@ -33,6 +33,12 @@
     .selected-option,
     .sortable-selected-option {
         margin: 0 $dropdown-multiselect-margin $dropdown-multiselect-margin 0;
+        overflow: hidden;
+
+        .selected-option-value {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 
     &.readOnly {
