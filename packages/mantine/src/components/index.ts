@@ -1,3 +1,4 @@
+export * from './accordion';
 export * from './action-icon';
 export * from './alert';
 export * from './badge';
