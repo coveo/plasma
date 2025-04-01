@@ -355,7 +355,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Tooltip: Tooltip.extend({
             defaultProps: {
-                color: 'navy',
                 maw: 300,
                 multiline: true,
                 withArrow: true,
