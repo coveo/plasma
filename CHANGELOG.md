@@ -1,3 +1,12 @@
+## 53.2.1 (2025-04-01)
+
+
+### Bug Fixes
+
+* **multi-select:** truncate long custom values (#4035) fe32794, closes #4035
+
+
+
 # 53.2.0 (2024-09-06)
 
 
