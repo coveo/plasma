@@ -6,6 +6,9 @@ concurrency:
     group: ${{ github.ref_name }}
     cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
     cd:
         name: Continuous Delivery
