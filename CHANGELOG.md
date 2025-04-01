@@ -1,3 +1,10 @@
+## <small>55.7.2-next.4 (2025-04-01)</small>
+
+* feat(mantine, accordion): add an Accordion.ControlDisabled component c0389c4
+* feat(mantine, tooltip): remove custom color a03c554
+
+
+
 ## <small>55.7.2-next.3 (2025-03-26)</small>
 
 * chore: forgot to remove the import 287ae27
