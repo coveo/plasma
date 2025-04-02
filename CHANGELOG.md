@@ -1,3 +1,9 @@
+## <small>55.7.2-next.5 (2025-04-02)</small>
+
+* chore: update border colors c3d3f6e
+
+
+
 ## <small>55.7.2-next.4 (2025-04-01)</small>
 
 * feat(mantine, accordion): add an Accordion.ControlDisabled component c0389c4
