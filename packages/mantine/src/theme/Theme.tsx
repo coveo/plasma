@@ -49,10 +49,12 @@ import BadgeClasses from '../styles/Badge.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
+import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
+import PaginationClasses from '../styles/Pagination.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
@@ -198,9 +200,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: (_theme, props) => {
                 const anyProps = props as any;
                 if (anyProps.readOnly && !props.disabled && !['Select'].includes(anyProps.__staticSelector)) {
-                    return ReadOnlyInputClasses;
+                    return deepMerge(InputClasses, ReadOnlyInputClasses);
                 }
-                return {};
+                return InputClasses;
             },
         }),
         InputWrapper: InputWrapper.extend({
@@ -269,6 +271,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
         }),
         Pagination: Pagination.extend({
+            classNames: PaginationClasses,
             defaultProps: {
                 nextIcon: ArrowHeadRightSize16Px,
                 previousIcon: ArrowHeadLeftSize16Px,

@@ -1,3 +1,9 @@
 .label {
     font-weight: 400;
 }
+
+.input {
+    @mixin where-light {
+        border-color: var(--mantine-color-input-border);
+    }
+}

@@ -6,6 +6,10 @@
             }
         }
     }
+
+    @mixin light {
+        --tab-border-color: var(--mantine-color-default-border);
+    }
 }
 
 .tab {
