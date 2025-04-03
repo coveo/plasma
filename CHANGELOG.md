@@ -1,3 +1,9 @@
+## <small>55.7.2-next.7 (2025-04-03)</small>
+
+* chore: revert sizing changes fa3fdcc
+
+
+
 ## <small>55.7.2-next.6 (2025-04-03)</small>
 
 * chore: fix type check c9814cf
