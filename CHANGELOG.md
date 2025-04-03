@@ -1,3 +1,9 @@
+## <small>55.7.2-next.8 (2025-04-03)</small>
+
+* chore: update border colors of Mantine table and checkbox indicator 0349c5a
+
+
+
 ## <small>55.7.2-next.7 (2025-04-03)</small>
 
 * chore: revert sizing changes fa3fdcc
