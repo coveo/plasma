@@ -34,8 +34,19 @@ export const PlasmaColors = {
         '#03275a',
         '#01193f',
         '#010e29',
-    ],
-    red: ['#fff8f8', '#feefee', '#fdd5d5', '#fca7a5', '#fb6f6c', '#d2271b', '#7e0f17', '#58050f', '#3e020a', '#280104'],
+    ] satisfies MantineColorsTuple,
+    red: [
+        '#fff8f8',
+        '#feefee',
+        '#fdd5d5',
+        '#fca7a5',
+        '#fb6f6c',
+        '#d2271b',
+        '#7e0f17',
+        '#58050f',
+        '#3e020a',
+        '#280104',
+    ] satisfies MantineColorsTuple,
     gray: [
         '#f9f9fa',
         '#f1f2f4',
@@ -47,7 +58,7 @@ export const PlasmaColors = {
         '#26292f',
         '#191b1f',
         '#0e0f12',
-    ],
+    ] satisfies MantineColorsTuple,
     dark: [
         '#c9c9c9',
         '#b8b8b8',
@@ -59,7 +70,7 @@ export const PlasmaColors = {
         '#242424',
         '#1f1f1f',
         '#141414',
-    ],
+    ] satisfies MantineColorsTuple,
     teal: [
         '#e5fff9',
         '#bffff0',
@@ -71,7 +82,7 @@ export const PlasmaColors = {
         '#012f2a',
         '#011f1b',
         '#001210',
-    ],
+    ] satisfies MantineColorsTuple,
     yellow: [
         '#fff9e5',
         '#fff2c0',
@@ -83,7 +94,7 @@ export const PlasmaColors = {
         '#3c2301',
         '#291700',
         '#180d00',
-    ],
+    ] satisfies MantineColorsTuple,
     violet: [
         '#faf8ff',
         '#f4f0ff',
@@ -95,7 +106,7 @@ export const PlasmaColors = {
         '#390076',
         '#270054',
         '#180037',
-    ],
+    ] satisfies MantineColorsTuple,
     grape: [
         '#fbf8fd',
         '#f6f0fb',
@@ -107,7 +118,7 @@ export const PlasmaColors = {
         '#3c1851',
         '#290e38',
         '#190624',
-    ],
+    ] satisfies MantineColorsTuple,
     cyan: [
         '#e3fafc',
         '#c5f6fa',
@@ -119,7 +130,7 @@ export const PlasmaColors = {
         '#1098ad',
         '#0c8599',
         '#0b7285',
-    ],
+    ] satisfies MantineColorsTuple,
     orange: [
         '#fff8f5',
         '#ffefe8',
@@ -131,7 +142,7 @@ export const PlasmaColors = {
         '#491b02',
         '#301301',
         '#1c0a00',
-    ],
+    ] satisfies MantineColorsTuple,
     indigo: [
         '#f9f9fb',
         '#f1f1f9',
@@ -143,7 +154,7 @@ export const PlasmaColors = {
         '#252547',
         '#181831',
         '#0d0d1f',
-    ],
+    ] satisfies MantineColorsTuple,
     green: [
         '#e9ffed',
         '#cdfed5',
@@ -155,7 +166,7 @@ export const PlasmaColors = {
         '#02300f',
         '#012008',
         '#001304',
-    ],
+    ] satisfies MantineColorsTuple,
     navy,
     info: navy,
     // Accent
