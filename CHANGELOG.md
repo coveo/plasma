@@ -1,3 +1,10 @@
+## <small>55.7.2-next.6 (2025-04-03)</small>
+
+* chore: fix type check c9814cf
+* chore: update variables and colors e28ad16
+
+
+
 ## <small>55.7.2-next.5 (2025-04-02)</small>
 
 * chore: update border colors c3d3f6e
