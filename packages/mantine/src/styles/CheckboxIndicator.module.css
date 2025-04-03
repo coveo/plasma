@@ -1,0 +1,5 @@
+.indicator {
+    @mixin where-light {
+        border-color: var(--mantine-color-input-border);
+    }
+}

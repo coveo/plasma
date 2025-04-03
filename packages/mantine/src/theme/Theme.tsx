@@ -48,6 +48,7 @@ import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
+import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
 import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
@@ -167,6 +168,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return {root: {}};
             },
+        }),
+        CheckboxIndicator: Checkbox.Indicator.extend({
+            defaultProps: {
+                radius: 'sm',
+            },
+            classNames: CheckboxIndicatorClasses,
         }),
         CloseButton: CloseButton.extend({
             defaultProps: {
@@ -346,6 +353,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Table: Table.extend({
             classNames: TableClasses,
+            vars: () => ({
+                table: {
+                    '--table-border-color': 'var(--mantine-color-default-border)',
+                },
+            }),
         }),
         Tabs: Tabs.extend({
             classNames: TabsClasses,
