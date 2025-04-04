@@ -1,3 +1,9 @@
+## <small>55.7.2-next.9 (2025-04-04)</small>
+
+* chore: update prompt default size 9f35705
+
+
+
 ## <small>55.7.2-next.8 (2025-04-03)</small>
 
 * chore: update border colors of Mantine table and checkbox indicator 0349c5a
