@@ -1,4 +1,4 @@
-import {AppShell, Box, Container, Divider, Flex, Stack, Tabs, Title} from '@coveord/plasma-mantine';
+import {AppShell, Box, Container, Flex, Stack, Tabs, Title} from '@coveord/plasma-mantine';
 import {Fragment, FunctionComponent, ReactNode, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 
@@ -48,12 +48,11 @@ export const PageLayout = ({
                         title={title}
                         description={description}
                     />
-                    <Tabs.List pl="xl">
+                    <Tabs.List mx="md">
                         <Tabs.Tab value="implementation">Implementation</Tabs.Tab>
                         <Tabs.Tab value="guide">Guidelines</Tabs.Tab>
                     </Tabs.List>
                 </Container>
-                <Divider />
                 <Box h="100%">
                     <Container size="xl" py="xl">
                         <Tabs.Panel value="implementation">

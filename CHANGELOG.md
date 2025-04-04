@@ -1,3 +1,48 @@
+## <small>55.7.2-next.8 (2025-04-03)</small>
+
+* chore: update border colors of Mantine table and checkbox indicator 0349c5a
+
+
+
+## <small>55.7.2-next.7 (2025-04-03)</small>
+
+* chore: revert sizing changes fa3fdcc
+
+
+
+## <small>55.7.2-next.6 (2025-04-03)</small>
+
+* chore: fix type check c9814cf
+* chore: update variables and colors e28ad16
+
+
+
+## <small>55.7.2-next.5 (2025-04-02)</small>
+
+* chore: update border colors c3d3f6e
+
+
+
+## <small>55.7.2-next.4 (2025-04-01)</small>
+
+* feat(mantine, accordion): add an Accordion.ControlDisabled component c0389c4
+* feat(mantine, tooltip): remove custom color a03c554
+
+
+
+## <small>55.7.2-next.3 (2025-03-26)</small>
+
+* chore: forgot to remove the import 287ae27
+* fix(mantine): change font-weight from book to regular d00cf2d
+
+
+
+## <small>55.7.2-next.2 (2025-03-21)</small>
+
+* chore: minor changes to the theme 0f66d12
+
+
+
 ## <small>55.7.2-next.1 (2025-03-12)</small>
 
 * chore: adjust theme radius and border color c0f0ea2

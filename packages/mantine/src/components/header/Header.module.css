@@ -6,7 +6,7 @@
 
     & .description {
         color: var(--mantine-color-dimmed);
-        font-weight: 300;
+        font-weight: 400;
     }
 }
 
@@ -22,7 +22,7 @@
 
 .breadcrumbs {
     font-size: var(--mantine-font-size-sm);
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .breadcrumbsSeparator {

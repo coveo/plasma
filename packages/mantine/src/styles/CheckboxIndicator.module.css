@@ -1,9 +1,4 @@
-.labelWrapper {
-    display: flex;
-    align-items: flex-start;
-}
-
-.radio {
+.indicator {
     @mixin where-light {
         border-color: var(--mantine-color-input-border);
     }

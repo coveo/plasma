@@ -20,6 +20,7 @@ import {
     ComboboxSearch,
     createTheme,
     deepMerge,
+    Divider,
     Input,
     InputWrapper,
     List,
@@ -38,6 +39,7 @@ import {
     Skeleton,
     Stepper,
     Switch,
+    Table,
     Tabs,
     Text,
     Tooltip,
@@ -46,11 +48,14 @@ import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
+import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
+import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
+import PaginationClasses from '../styles/Pagination.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
@@ -58,6 +63,7 @@ import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
+import TableClasses from '../styles/Table.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
 import TextClasses from '../styles/Text.module.css';
 import TooltipClasses from '../styles/Tooltip.module.css';
@@ -94,7 +100,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             h1: {fontSize: '40px', lineHeight: '1.2', fontWeight: '500'},
             h2: {fontSize: '32px', lineHeight: '1.25', fontWeight: '500'},
             h3: {fontSize: '24px', lineHeight: '1.33', fontWeight: '500'},
-            h4: {fontSize: '18px', lineHeight: '1.2', fontWeight: '300'},
+            h4: {fontSize: '18px', lineHeight: '1.2', fontWeight: '400'},
             h5: {fontSize: '16px', lineHeight: '1.25', fontWeight: '500'},
             h6: {fontSize: '12px', lineHeight: '1.33', fontWeight: '500'},
         },
@@ -125,7 +131,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Alert: Alert.extend({
             defaultProps: {
                 icon: <InfoSize16Px height={16} />,
-                radius: 'lg',
+                p: 'xs',
             },
             classNames: AlertClasses,
         }),
@@ -163,6 +169,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 return {root: {}};
             },
         }),
+        CheckboxIndicator: Checkbox.Indicator.extend({
+            defaultProps: {
+                radius: 'sm',
+            },
+            classNames: CheckboxIndicatorClasses,
+        }),
         CloseButton: CloseButton.extend({
             defaultProps: {
                 icon: <CrossSize16Px height={16} aria-label="close" />,
@@ -183,6 +195,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 rightSection: <FilterSize16Px height={16} color="gray.5" />,
             },
         }),
+        Divider: Divider.extend({
+            defaultProps: {
+                color: 'var(--mantine-color-default-border)',
+            },
+        }),
         Input: Input.extend({
             defaultProps: {
                 size: 'sm',
@@ -190,9 +207,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: (_theme, props) => {
                 const anyProps = props as any;
                 if (anyProps.readOnly && !props.disabled && !['Select'].includes(anyProps.__staticSelector)) {
-                    return ReadOnlyInputClasses;
+                    return deepMerge(InputClasses, ReadOnlyInputClasses);
                 }
-                return {};
+                return InputClasses;
             },
         }),
         InputWrapper: InputWrapper.extend({
@@ -261,6 +278,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
         }),
         Pagination: Pagination.extend({
+            classNames: PaginationClasses,
             defaultProps: {
                 nextIcon: ArrowHeadRightSize16Px,
                 previousIcon: ArrowHeadLeftSize16Px,
@@ -336,6 +354,14 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 withThumbIndicator: false,
             },
         }),
+        Table: Table.extend({
+            classNames: TableClasses,
+            vars: () => ({
+                table: {
+                    '--table-border-color': 'var(--mantine-color-default-border)',
+                },
+            }),
+        }),
         Tabs: Tabs.extend({
             classNames: TabsClasses,
         }),
@@ -347,7 +373,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Tooltip: Tooltip.extend({
             defaultProps: {
-                color: 'navy',
                 maw: 300,
                 multiline: true,
                 withArrow: true,

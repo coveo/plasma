@@ -61,10 +61,10 @@
     /* We must use height instead of minHeight here, otherwise it doesn’t apply */
     height: 56px;
     padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
-    border-bottom: rem(1) solid var(--mantine-color-gray-3);
+    border-bottom: rem(1) solid var(--mantine-color-default-border);
 }
 
 .collapsibleWrapper {
-    border-bottom: rem(1) solid var(--mantine-color-gray-3);
+    border-bottom: rem(1) solid var(--mantine-color-default-border);
     background-color: var(--mantine-color-gray-1);
 }

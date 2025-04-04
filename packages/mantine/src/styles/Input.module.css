@@ -1,0 +1,7 @@
+.wrapper {
+    @mixin light {
+        &[data-variant='default'] {
+            --input-bd: var(--mantine-color-input-border);
+        }
+    }
+}
