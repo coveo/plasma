@@ -71,14 +71,14 @@ describe('Header', () => {
         expect(screen.getByText('description')).toBeInTheDocument();
     });
 
-    it('renders provided actions in the header', () => {
+    it('renders provided components in Table.Right', () => {
         render(
             <Header>
                 title
-                <Header.Actions>
+                <Header.Right>
                     <span>action 1</span>
                     <span>action 2</span>
-                </Header.Actions>
+                </Header.Right>
             </Header>,
         );
 
