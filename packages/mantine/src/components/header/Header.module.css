@@ -5,18 +5,13 @@
     }
 
     & .description {
-        color: var(--mantine-color-gray-6);
-        font-weight: 300;
+        color: var(--mantine-color-dimmed);
+        font-weight: 400;
     }
 }
 
 .title {
     word-break: break-word;
-
-    &[data-variant='primary'] {
-        color: var(--mantine-color-gray-5);
-    }
-
     line-height: var(--mantine-line-height-md);
 }
 
@@ -27,9 +22,9 @@
 
 .breadcrumbs {
     font-size: var(--mantine-font-size-sm);
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .breadcrumbsSeparator {
-    color: var(--mantine-color-gray-5);
+    color: var(--mantine-color-dimmed);
 }

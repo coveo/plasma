@@ -1,10 +1,10 @@
 .labelWrapper {
     display: flex;
     align-items: flex-start;
+}
 
-    &:not([data-disabled]) {
-        .label {
-            color: var(--mantine-color-gray-7);
-        }
+.radio {
+    @mixin where-light {
+        border-color: var(--mantine-color-input-border);
     }
 }

@@ -16,6 +16,19 @@
         --code-title-color: #dcdcaa;
     }
 
+    @mixin dark {
+        --_color: var(--mantine-color-dark-1);
+        --_background: var(--mantine-color-dark-8);
+        --code-comment-color: #6a9955;
+        --code-keyword-color: #559cd6;
+        --code-tag-color: #4ec9b0;
+        --code-literal-color: #79c0ff;
+        --code-string-color: #ce9178;
+        --code-variable-color: #79c0ff;
+        --code-class-color: #9cdcfe;
+        --code-title-color: #dcdcaa;
+    }
+
     .hljs-comment .hljs-quote {
         font-style: italic;
         color: var(--mantine-color-dark-3);

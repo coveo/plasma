@@ -2,7 +2,7 @@
     cursor: text;
 
     --input-bd: transparent;
-    --input-bg: var(--mantine-color-gray-2);
-    --input-color: var(--mantine-color-gray-7);
-    --input-placeholder-color: var(--mantine-color-gray-7);
+    --input-bg: var(--mantine-color-dark-light);
+    --input-color: var(--mantine-color-dimmed);
+    --input-placeholder-color: var(--mantine-color-dimmed);
 }
