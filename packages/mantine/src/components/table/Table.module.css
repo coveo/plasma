@@ -61,14 +61,14 @@
 }
 
 .filterEmpty {
-    color: var(--mantine-color-gray-5);
+    color: var(--mantine-color-dimmed);
 }
 
 /* Table.Header */
 .headerRoot {
     border-bottom: 1px solid var(--mantine-color-default-border);
     border-top: 1px solid var(--mantine-color-default-border);
-    background-color: var(--mantine-color-gray-1);
+    background-color: var(--mantine-color-gray-light);
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
     position: relative;
     min-height: 69px;
@@ -100,11 +100,11 @@
         padding-right: var(--mantine-spacing-xl);
     }
 
-    background-color: var(--mantine-color-gray-0);
+    background-color: var(--mantine-color-gray-light);
 
     &[data-control='true'] {
         @mixin hover {
-            background-color: var(--mantine-color-gray-1);
+            background-color: var(--mantine-color-gray-light-hover);
         }
     }
 }
