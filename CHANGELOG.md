@@ -1,3 +1,31 @@
+## <small>55.7.2-next.10 (2025-04-04)</small>
+
+* fix(CodeEditor): do not format if editor closed (#4032) 96392ef, closes #4032
+* fix(deps): update dependency react-markdown to v10 (#4018) f8a7a90, closes #4018
+* fix(mantine): adjust border colors and table grays 54b2564
+* fix(mantine, CodeEditor): format text only on valid input (#4028) cbc1880, closes #4028
+* Merge branch 'master' of github.com:coveo/plasma into next 00e0ec7
+* chore(deps): update actions/setup-node digest to cdca736 (#4026) b973873, closes #4026
+* chore(deps): update all non-major dependencies (#4007) 836a6d8, closes #4007
+* chore(deps): update all non-major dependencies (#4016) 24c3cf1, closes #4016
+* chore(deps): update all non-major dependencies (#4019) 4751036, closes #4019
+* chore(deps): update all non-major dependencies (#4020) d0b80bd, closes #4020
+* chore(deps): update all non-major dependencies (#4021) 8dad170, closes #4021
+* chore(deps): update all non-major dependencies (#4022) a337942, closes #4022
+* chore(deps): update all non-major dependencies (#4025) 3741e15, closes #4025
+* chore(deps): update all non-major dependencies (#4027) 971fe64, closes #4027
+* chore(deps): update dependency @swc/core to v1.11.6 (#4023) f7df432, closes #4023
+* chore(deps): update dependency globals to v16 (#4017) a8411c3, closes #4017
+* chore(deps): update dependency sort-package-json to v3 (#4024) 83c2a32, closes #4024
+* chore(deps): update dependency vite to v6.2.3 [security] (#4031) 23f67f8, closes #4031
+* chore(deps): update dependency vite to v6.2.4 [security] (#4036) d645ee1, closes #4036
+* chore(deps): update pnpm to v10 (#4008) e6418d4, closes #4008
+* chore(mantine): make test script cross-env (#4030) 1acaa01, closes #4030
+* chore(release): publish version v55.7.2 [skip ci] e52aa5f
+* chore(release): publish version v55.7.3 [skip ci] b64a0c3
+
+
+
 ## <small>55.7.3 (2025-03-25)</small>
 
 * chore(deps): update all non-major dependencies (#4027) 971fe64, closes #4027
