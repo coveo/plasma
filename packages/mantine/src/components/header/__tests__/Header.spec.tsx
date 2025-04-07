@@ -86,7 +86,7 @@ describe('Header', () => {
         expect(screen.getByText('action 2')).toBeInTheDocument();
     });
 
-    it('renders provided components in Table.Right when called as Table.Actions', () => {
+    it('renders provided components in Header.Right when called as Header.Actions', () => {
         render(
             <Header>
                 title
