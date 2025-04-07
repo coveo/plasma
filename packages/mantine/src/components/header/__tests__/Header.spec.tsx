@@ -71,7 +71,7 @@ describe('Header', () => {
         expect(screen.getByText('description')).toBeInTheDocument();
     });
 
-    it('renders provided components in Table.Right', () => {
+    it('renders provided components in Header.Right', () => {
         render(
             <Header>
                 title
