@@ -71,7 +71,22 @@ describe('Header', () => {
         expect(screen.getByText('description')).toBeInTheDocument();
     });
 
-    it('renders provided actions in the header', () => {
+    it('renders provided components in Table.Right', () => {
+        render(
+            <Header>
+                title
+                <Header.Right>
+                    <span>action 1</span>
+                    <span>action 2</span>
+                </Header.Right>
+            </Header>,
+        );
+
+        expect(screen.getByText('action 1')).toBeInTheDocument();
+        expect(screen.getByText('action 2')).toBeInTheDocument();
+    });
+
+    it('renders provided components in Table.Right when called as Table.Actions', () => {
         render(
             <Header>
                 title

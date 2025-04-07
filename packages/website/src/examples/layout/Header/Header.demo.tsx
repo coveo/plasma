@@ -9,10 +9,10 @@ const Demo = () => (
         </Header.Breadcrumbs>
         Title
         <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
-        <Header.Actions>
+        <Header.Right wrap="nowrap">
             <Button>Primary</Button>
             <Button variant="outline">Secondary</Button>
-        </Header.Actions>
+        </Header.Right>
     </Header>
 );
 export default Demo;
