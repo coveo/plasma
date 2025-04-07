@@ -1,3 +1,9 @@
+## <small>55.7.2-next.11 (2025-04-07)</small>
+
+* chore(mantine, header): change name of Header.Actions to Header.Right (#4037) 8110630, closes #4037
+
+
+
 ## <small>55.7.2-next.10 (2025-04-04)</small>
 
 * fix(CodeEditor): do not format if editor closed (#4032) 96392ef, closes #4032
