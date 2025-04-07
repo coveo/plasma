@@ -16,7 +16,6 @@ import {
     Checkbox,
     CloseButton,
     ColorSwatch,
-    Combobox,
     ComboboxSearch,
     createTheme,
     deepMerge,
@@ -49,7 +48,6 @@ import BadgeClasses from '../styles/Badge.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
-import ComboboxClasses from '../styles/Combobox.module.css';
 import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
@@ -186,13 +184,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 withShadow: false,
             },
         }),
-        Combobox: Combobox.extend({
-            classNames: ComboboxClasses,
-        }),
         ComboboxSearch: ComboboxSearch.extend({
             defaultProps: {
                 placeholder: 'Search',
-                rightSection: <FilterSize16Px height={16} color="gray.5" />,
+                rightSection: <FilterSize16Px height={16} color="var(--mantine-color-placeholder)" />,
             },
         }),
         Divider: Divider.extend({

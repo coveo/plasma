@@ -61,7 +61,7 @@
 }
 
 .filterEmpty {
-    color: var(--mantine-color-dimmed);
+    color: var(--mantine-color-placeholder);
 }
 
 /* Table.Header */
