@@ -210,6 +210,9 @@ importers:
       '@swc/helpers':
         specifier: 0.5.15
         version: 0.5.15
+      '@tabler/icons-react':
+        specifier: 3.31.0
+        version: 3.31.0(react@18.3.1)
       '@tanstack/react-table':
         specifier: 8.21.2
         version: 8.21.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
