@@ -4,6 +4,6 @@
 
 .input {
     @mixin where-light {
-        border-color: var(--mantine-color-input-border);
+        border-color: var(--coveo-color-input-border);
     }
 }

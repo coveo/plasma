@@ -5,9 +5,9 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
         variables: {},
         dark: {},
         light: {
+            '--coveo-color-input-border': theme.colors.gray[3],
             '--coveo-color-title': theme.colors.gray[8],
             '--mantine-color-default-border': theme.colors.gray[2],
-            '--mantine-color-input-border': theme.colors.gray[3],
             '--mantine-color-error': theme.colors.red[5],
             '--mantine-color-text': theme.colors.gray[6],
             '--mantine-color-dimmed': theme.colors.gray[5],
