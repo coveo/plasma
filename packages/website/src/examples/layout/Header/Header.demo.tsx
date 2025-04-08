@@ -1,11 +1,11 @@
-import {Anchor, Button, Header} from '@coveord/plasma-mantine';
+import {Anchor, Button, Header, Text} from '@coveord/plasma-mantine';
 
 const Demo = () => (
     <Header description="The header description" borderBottom>
         <Header.Breadcrumbs>
-            <Anchor>One</Anchor>
+            <Anchor>Back</Anchor>
             <Anchor>Two</Anchor>
-            <Anchor>Three</Anchor>
+            <Text>This</Text>
         </Header.Breadcrumbs>
         Title
         <Header.DocAnchor href="https://about:blank" label="Tooltip text" />

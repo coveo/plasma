@@ -19,12 +19,3 @@
     margin-left: var(--mantine-spacing-xs);
     vertical-align: middle;
 }
-
-.breadcrumbs {
-    font-size: var(--mantine-font-size-sm);
-    font-weight: 400;
-}
-
-.breadcrumbsSeparator {
-    color: var(--mantine-color-dimmed);
-}
