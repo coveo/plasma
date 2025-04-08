@@ -4,7 +4,6 @@ import {
     CheckSize16Px,
     CrossSize16Px,
     FilterSize16Px,
-    InfoSize16Px,
     InfoSize24Px,
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
@@ -44,6 +43,7 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
+import {InfoToken} from '../components';
 import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import ButtonClasses from '../styles/Button.module.css';
@@ -130,8 +130,8 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Alert: Alert.extend({
             defaultProps: {
-                icon: <InfoSize16Px height={16} />,
-                p: 'xs',
+                icon: <InfoToken variant="advice" />,
+                p: 'sm',
             },
             classNames: AlertClasses,
         }),

@@ -98,6 +98,11 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
     },
     {
+        name: 'InfoToken',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'InfoTokenProps',
+    },
+    {
         name: 'EllipsisText',
         packageName: '@coveord/plasma-mantine',
         propsType: 'EllipsisTextProps',
