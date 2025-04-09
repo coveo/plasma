@@ -1,4 +1,4 @@
-import {Button, Header, Prompt, useDisclosure} from '@coveord/plasma-mantine';
+import {Button, Prompt, useDisclosure} from '@coveord/plasma-mantine';
 
 const Demo = () => {
     const [opened, {open, close}] = useDisclosure();

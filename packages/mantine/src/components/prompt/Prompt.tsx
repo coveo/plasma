@@ -25,7 +25,7 @@ import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './Prom
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
 export type PromptVars = {root: '--prompt-icon-size'};
 export type PromptStylesNames =
-    | Omit<ModalStylesNames, 'title'>
+    | Exclude<ModalStylesNames, 'title'>
     | 'icon'
     | PromptCancelButtonStylesNamesVariant
     | PromptConfirmButtonStylesNamesVariant;
