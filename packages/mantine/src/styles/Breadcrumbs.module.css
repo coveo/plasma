@@ -1,7 +1,9 @@
-.breadcrumb {
+.root {
     font-size: var(--mantine-font-size-xs);
     font-weight: var(--mantine-heading-font-weight);
+}
 
+.breadcrumb {
     &:not(a) {
         color: var(--coveo-color-title);
     }
