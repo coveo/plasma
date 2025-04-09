@@ -1,3 +1,9 @@
+## <small>55.7.2-next.13 (2025-04-09)</small>
+
+* chore: fix style issue in breadcrumbs b5b216c
+
+
+
 ## <small>55.7.2-next.12 (2025-04-09)</small>
 
 * * chore(mantine, breadcrumbs): apply new style (#4041) f7488ab, closes #4041
