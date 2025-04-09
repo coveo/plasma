@@ -1,3 +1,10 @@
+## <small>55.7.2-next.12 (2025-04-09)</small>
+
+* * chore(mantine, breadcrumbs): apply new style (#4041) f7488ab, closes #4041
+* chore(mantine): create new info token component (#4040) acb6ebb, closes #4040
+
+
+
 ## <small>55.7.2-next.11 (2025-04-07)</small>
 
 * chore(mantine, header): change name of Header.Actions to Header.Right (#4037) 8110630, closes #4037
