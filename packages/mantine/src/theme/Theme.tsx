@@ -11,6 +11,7 @@ import {
     Alert,
     AppShell,
     Badge,
+    Breadcrumbs,
     Button,
     Checkbox,
     CloseButton,
@@ -43,9 +44,11 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
+import {IconSlash} from '@tabler/icons-react';
 import {InfoToken} from '../components';
 import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
+import BreadcrumbsClasses from '../styles/Breadcrumbs.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
@@ -139,6 +142,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: BadgeClasses,
             defaultProps: {
                 variant: 'light',
+            },
+        }),
+        Breadcrumbs: Breadcrumbs.extend({
+            classNames: BreadcrumbsClasses,
+            defaultProps: {
+                separator: <IconSlash size={16} color="var(--mantine-color-dimmed)" />,
+                separatorMargin: 'xxs',
             },
         }),
         Button: Button.extend({

@@ -7,7 +7,7 @@ describe('plasmaCSSVariablesResolver', () => {
         const variables = plasmaCSSVariablesResolver({colors: PlasmaColors} as unknown as MantineTheme);
         expect(variables.light['--mantine-color-error']).toBe('#d2271b');
         expect(variables.light['--mantine-color-default-border']).toBe('#dddfe3');
-        expect(variables.light['--mantine-color-input-border']).toBe('#b9bdc7');
+        expect(variables.light['--coveo-color-input-border']).toBe('#b9bdc7');
         expect(variables.light['--mantine-color-text']).toBe('#3b3e46');
         expect(variables.light['--mantine-color-dimmed']).toBe('#676d7a');
         expect(variables.light['--mantine-color-gray-filled']).toBe('#959cab');

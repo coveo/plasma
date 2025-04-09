@@ -1,7 +1,7 @@
 .wrapper {
     @mixin light {
         &[data-variant='default'] {
-            --input-bd: var(--mantine-color-input-border);
+            --input-bd: var(--coveo-color-input-border);
         }
     }
 }
