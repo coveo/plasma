@@ -15,7 +15,7 @@ import {
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
 import Editor, {Monaco, loader} from '@monaco-editor/react';
-import {editor as monacoEditor, MarkerSeverity} from 'monaco-editor';
+import {MarkerSeverity, editor as monacoEditor} from 'monaco-editor';
 import {FunctionComponent, useEffect, useRef, useState} from 'react';
 
 import cx from 'clsx';
@@ -48,6 +48,8 @@ interface CodeEditorProps
     onCopy?(): void;
     /** Called whenever the code editor gets the focus */
     onFocus?(): void;
+    /** Ref object that provides access to the editor's functionality */
+    editorHandle?: React.MutableRefObject<monacoEditor.IStandaloneCodeEditor | null>;
     /**
      * The minimal height of the CodeEditor (label and description included)
      *
@@ -108,6 +110,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         disabled,
         monacoLoader,
         options: {tabSize} = {tabSize: 2},
+        editorHandle,
         ...others
     } = useProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
@@ -119,6 +122,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     });
     const [parentHeight, ref] = useParentHeight();
     const editorRef = useRef(null);
+
     const loadLocalMonaco = async () => {
         const monacoInstance = await import('monaco-editor');
         loader.config({monaco: monacoInstance});
@@ -245,6 +249,9 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 onChange={handleChange}
                 onMount={(editor, monaco) => {
                     editorRef.current = editor;
+                    if (editorHandle) {
+                        editorHandle.current = editor;
+                    }
                     registerLanguages(monaco);
                     registerThemes(monaco);
                     editor.onDidFocusEditorText(() => onFocus?.());
