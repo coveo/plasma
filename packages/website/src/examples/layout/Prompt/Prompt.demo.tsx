@@ -5,7 +5,7 @@ const Demo = () => {
 
     return (
         <>
-            <Prompt opened={opened} title={<Header variant="secondary">Prompt title</Header>} onClose={close}>
+            <Prompt opened={opened} title="Prompt title" onClose={close}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim.
                 <Prompt.Footer>
