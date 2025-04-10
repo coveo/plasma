@@ -46,6 +46,7 @@ const extractImportsAndDemoFunction = (content: string, fileName: string): strin
                     .replace("import React from 'react';\n", '')
                     .replace('import React, {', 'import {')
                     .replace('@mantine/core', '@coveord/plasma-mantine')
+                    .replace('@tabler/icons-react', '@coveord/plasma-react-icons')
                     .replace('function Demo() {', 'const Demo = () => {')
                     .replace(
                         "import classes from './Demo.module.css';",

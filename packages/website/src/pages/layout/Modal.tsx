@@ -23,7 +23,6 @@ const Page = () => (
                             code: ModalWithTabsCSS,
                             language: 'css',
                             icon: null,
-                            // icon: tsIcon,
                         },
                     ]}
                 />

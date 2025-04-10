@@ -43,7 +43,8 @@
         "prepublishOnly": "publint"
     },
     "dependencies": {
-        "@swc/helpers": "0.5.15"
+        "@swc/helpers": "0.5.15",
+        "@tabler/icons-react": "3.31.0"
     },
     "devDependencies": {
         "@babel/types": "7.26.10",
