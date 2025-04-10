@@ -10,12 +10,10 @@ const Demo = () => {
                 <Modal.Overlay />
                 <Modal.Content>
                     <Modal.Header className={classes.headerWithTabs}>
-                        <Modal.Title>
-                            <Header variant="secondary" description="Modal description">
-                                Modal Title
-                                <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
-                            </Header>
-                        </Modal.Title>
+                        <Header variant="secondary" description="Modal description">
+                            Modal Title
+                            <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
+                        </Header>
                         <Modal.CloseButton />
                     </Modal.Header>
                     <Tabs defaultValue="tab-1">
