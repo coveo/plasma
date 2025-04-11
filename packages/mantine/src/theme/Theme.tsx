@@ -4,6 +4,7 @@ import {
     CheckSize16Px,
     CrossSize16Px,
     FilterSize16Px,
+    IconSlash,
     InfoSize24Px,
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
@@ -44,7 +45,6 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
-import {IconSlash} from '@tabler/icons-react';
 import {InfoToken} from '../components';
 import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
