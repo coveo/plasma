@@ -1,7 +1,19 @@
 .wrapper {
+    --input-section-color: var(--mantine-color-placeholder);
+
     @mixin light {
+        --input-disabled-color: var(--coveo-color-text-disabled);
+
         &[data-variant='default'] {
             --input-bd: var(--coveo-color-input-border);
         }
     }
+
+    &[data-disabled] {
+        --input-section-color: var(--input-disabled-color);
+    }
+}
+
+.section {
+    color: var(--input-section-color);
 }
