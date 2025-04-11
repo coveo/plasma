@@ -1,3 +1,4 @@
+import {IconList} from '@coveord/plasma-react-icons';
 import {Factory, MantineComponent, StylesApiProps, useProps, useStyles} from '@mantine/core';
 import {ReactNode} from 'react';
 import {identity} from '../../../../utils';
@@ -6,7 +7,6 @@ import classes from './RowLayout.module.css';
 import {RowLayoutBody, RowLayoutBodyStylesNames} from './RowLayoutBody';
 import {RowLayoutProvider} from './RowLayoutContext';
 import {RowLayoutHeader, RowLayoutHeaderStyleNames} from './RowLayoutHeader';
-import {RowLayoutIcon} from './RowLayoutIcon';
 
 type RowLayoutStylesNames = RowLayoutHeaderStyleNames | RowLayoutBodyStylesNames;
 export interface RowLayoutProps extends StylesApiProps<RowLayoutFactory> {
@@ -37,6 +37,6 @@ export const RowLayout = ((props: RowLayoutProps) => {
 
 RowLayout.Body = RowLayoutBody;
 RowLayout.Header = RowLayoutHeader;
-RowLayout.Icon = RowLayoutIcon;
+RowLayout.Icon = IconList;
 RowLayout.displayName = 'Rows';
 RowLayout.extend = identity;
