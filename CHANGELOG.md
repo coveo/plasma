@@ -1,3 +1,11 @@
+## 55.8.0 (2025-04-11)
+
+* feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043
+* chore(deps): update all non-major dependencies (#4029) 659172f, closes #4029
+* chore(deps): update dependency vite to v6.2.4 [security] (#4036) d645ee1, closes #4036
+
+
+
 ## <small>55.7.3 (2025-03-25)</small>
 
 * chore(deps): update all non-major dependencies (#4027) 971fe64, closes #4027
