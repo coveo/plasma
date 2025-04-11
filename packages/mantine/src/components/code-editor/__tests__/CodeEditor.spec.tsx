@@ -1,6 +1,8 @@
 import {useForm} from '@mantine/form';
 import {loader} from '@monaco-editor/react';
 import {render, screen, userEvent, waitForElementToBeRemoved} from '@test-utils';
+import type {editor} from 'monaco-editor';
+import {useRef} from 'react';
 import {CodeEditor} from '../CodeEditor';
 import {XML} from '../languages/xml';
 
@@ -87,5 +89,19 @@ describe('CodeEditor', () => {
         await user.click(screen.getByRole('button', {name: /search/i}));
 
         expect(onSearchSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('defines editorHandle on mount', async () => {
+        let editorHandle: React.MutableRefObject<editor.IStandaloneCodeEditor> = null;
+        const EditorWrapper = () => {
+            editorHandle = useRef<editor.IStandaloneCodeEditor | null>(null);
+            return <CodeEditor editorHandle={editorHandle} />;
+        };
+
+        render(<EditorWrapper />);
+
+        await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+        expect(editorHandle.current).not.toBeNull();
     });
 });
