@@ -3,6 +3,10 @@
 
     --input-bd: transparent;
     --input-bg: var(--mantine-color-dark-light);
-    --input-color: var(--mantine-color-dimmed);
-    --input-placeholder-color: var(--mantine-color-dimmed);
+    --input-color: var(--mantine-color-text);
+    --input-placeholder-color: var(--mantine-color-text);
+}
+
+.section {
+    --input-section-color: var(--mantine-color-text);
 }
