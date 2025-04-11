@@ -1,3 +1,13 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mantine-spacing-xxs);
+}
+
+.label {
+    color: var(--coveo-color-title);
+}
+
 .description {
     font-weight: 400;
 }

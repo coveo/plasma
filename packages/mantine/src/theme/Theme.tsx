@@ -221,6 +221,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return InputClasses;
             },
+            vars: (theme) => ({
+                wrapper: {
+                    '--input-margin-top': theme.spacing.xxs,
+                },
+            }),
         }),
         InputWrapper: InputWrapper.extend({
             defaultProps: {
