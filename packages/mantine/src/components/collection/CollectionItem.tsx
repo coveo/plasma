@@ -20,7 +20,7 @@ interface CollectionItemSharedProps extends GroupProps {
 const RemoveButton: FunctionComponent<{
     onClick: React.MouseEventHandler<HTMLButtonElement>;
 }> = ({onClick}) => (
-    <ActionIcon style={{alignSelf: 'center'}} variant="subtle" onClick={onClick} color="action">
+    <ActionIcon style={{alignSelf: 'center'}} variant="subtle" onClick={onClick}>
         <RemoveSize16Px height={16} />
     </ActionIcon>
 );

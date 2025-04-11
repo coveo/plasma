@@ -19,7 +19,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        border-bottom: 1px solid var(--mantine-color-gray-3);
+        border-bottom: 1px solid var(--mantine-color-default-border);
     }
 }
 
@@ -61,13 +61,14 @@
 }
 
 .filterEmpty {
-    color: var(--mantine-color-gray-5);
+    color: var(--mantine-color-dimmed);
 }
 
 /* Table.Header */
 .headerRoot {
-    border-bottom: 1px solid var(--mantine-color-gray-3);
-    background-color: var(--mantine-color-gray-1);
+    border-bottom: 1px solid var(--mantine-color-default-border);
+    border-top: 1px solid var(--mantine-color-default-border);
+    background-color: var(--mantine-color-gray-light);
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
     position: relative;
     min-height: 69px;
@@ -89,7 +90,7 @@
     color: var(--mantine-color-gray-6);
     height: var(--mantine-spacing-xl);
     font-weight: 500;
-    font-size: var(--mantine-font-size-xs);
+    font-size: var(--mantine-font-size-sm);
 
     &:first-of-type {
         padding-left: var(--mantine-spacing-xl);
@@ -99,11 +100,11 @@
         padding-right: var(--mantine-spacing-xl);
     }
 
-    background-color: var(--mantine-color-gray-0);
+    background-color: var(--mantine-color-gray-light);
 
     &[data-control='true'] {
         @mixin hover {
-            background-color: var(--mantine-color-gray-1);
+            background-color: var(--mantine-color-gray-light-hover);
         }
     }
 }

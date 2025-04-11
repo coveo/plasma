@@ -1,3 +1,7 @@
-.input {
-    --input-color: var(--mantine-color-gray-7);
+.wrapper {
+    @mixin light {
+        &[data-variant='default'] {
+            --input-bd: var(--coveo-color-input-border);
+        }
+    }
 }

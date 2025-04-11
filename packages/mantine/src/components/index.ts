@@ -1,4 +1,7 @@
+export * from './accordion';
 export * from './action-icon';
+export * from './alert';
+export * from './badge';
 export * from './blank-slate';
 export * from './browser-preview';
 export * from './button';
@@ -8,6 +11,7 @@ export * from './copyToClipboard';
 export * from './date-range-picker';
 export * from './ellipsis-text';
 export * from './header';
+export * from './info-token';
 export * from './inline-confirm';
 export * from './menu';
 export * from './modal';
