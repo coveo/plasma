@@ -1,3 +1,10 @@
+## <small>55.7.2-next.16 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name (#4049) 7abbf7a, closes #4049
+* fix(mantine, input): only add margin top if there's a title or description (#4048) 6d6b58a, closes #4048
+
+
+
 ## <small>55.7.2-next.15 (2025-04-14)</small>
 
 * feat(react-icons): reexport tabler icons (#4045) 889df29, closes #4045
