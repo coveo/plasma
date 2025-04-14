@@ -115,7 +115,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
     );
     return (
         <HeaderProvider value={{getStyles}}>
-            <Group ref={ref} {...getStyles('root')} {...others}>
+            <Group ref={ref} variant={variant} {...getStyles('root')} {...others}>
                 <Stack gap={0}>
                     {breadcrumbs}
                     <Title
