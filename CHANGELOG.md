@@ -1,3 +1,10 @@
+## <small>55.7.2-next.15 (2025-04-14)</small>
+
+* feat(react-icons): reexport tabler icons (#4045) 889df29, closes #4045
+* chore(mantine, input): update the style of the input and input wrapper (#4046) 4c37039, closes #4046
+
+
+
 ## <small>55.7.2-next.14 (2025-04-11)</small>
 
 * fix(mantine, prompt): automatically add the Header if the title is a string (#4044) 029b6e6, closes #4044
