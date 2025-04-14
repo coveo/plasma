@@ -1,3 +1,9 @@
+## <small>55.7.2-next.17 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name second try 810e709
+
+
+
 ## <small>55.7.2-next.16 (2025-04-14)</small>
 
 * fix(mantine): prompt accessible name (#4049) 7abbf7a, closes #4049
