@@ -101,9 +101,16 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
 
     const titleContent =
         typeof title === 'string' ? (
-            <Header component={Modal.Title} variant="secondary">
+            <Modal.Title
+                component={Header}
+                renderRoot={(p) => (
+                    <Header variant="secondary" {...p}>
+                        {p.children}
+                    </Header>
+                )}
+            >
                 {title}
-            </Header>
+            </Modal.Title>
         ) : (
             title
         );

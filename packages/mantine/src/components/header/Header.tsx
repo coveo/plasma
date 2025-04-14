@@ -33,7 +33,9 @@ export type HeaderStyleNames =
     | HeaderBreadcrumbsStyleNames
     | HeaderRightStyleNames;
 
-export interface HeaderProps extends StylesApiProps<HeaderFactory>, Omit<GroupProps, 'classNames' | 'styles' | 'vars'> {
+export interface HeaderProps
+    extends StylesApiProps<HeaderFactory>,
+        Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant'> {
     /**
      * The description text displayed inside the header underneath the title
      */
@@ -113,7 +115,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
     );
     return (
         <HeaderProvider value={{getStyles}}>
-            <Group ref={ref} variant={variant} {...getStyles('root')} {...others}>
+            <Group ref={ref} {...getStyles('root')} {...others}>
                 <Stack gap={0}>
                     {breadcrumbs}
                     <Title
