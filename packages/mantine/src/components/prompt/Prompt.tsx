@@ -99,7 +99,14 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
         (child.type === Modal.Footer ? footers : otherChildren).push(child);
     });
 
-    const titleContent = typeof title === 'string' ? <Header variant="secondary">{title}</Header> : title;
+    const titleContent =
+        typeof title === 'string' ? (
+            <Header component={Modal.Title} variant="secondary">
+                {title}
+            </Header>
+        ) : (
+            title
+        );
 
     return (
         <PromptContextProvider value={{variant, getStyles}}>
