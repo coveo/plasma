@@ -1,3 +1,9 @@
+## <small>55.7.2-next.18 (2025-04-14)</small>
+
+* fix(mantine): revert header variant removal on root node 207b9ae
+
+
+
 ## <small>55.7.2-next.17 (2025-04-14)</small>
 
 * fix(mantine): prompt accessible name second try 810e709
