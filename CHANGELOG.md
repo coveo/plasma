@@ -1,3 +1,9 @@
+## <small>55.7.2-next.19 (2025-04-15)</small>
+
+* feat(mantine): improve CopyToClipboard component (#4050) 5a5bbfe, closes #4050
+
+
+
 ## <small>55.7.2-next.18 (2025-04-14)</small>
 
 * fix(mantine): revert header variant removal on root node 207b9ae
