@@ -1,3 +1,10 @@
+## <small>55.7.2-next.20 (2025-04-16)</small>
+
+* feat(mantine, button): update style (#4052) de3eba4, closes #4052
+* feat(mantine, modal): update overlay style (#4051) 5023f4f, closes #4051
+
+
+
 ## <small>55.7.2-next.19 (2025-04-15)</small>
 
 * feat(mantine): improve CopyToClipboard component (#4050) 5a5bbfe, closes #4050
