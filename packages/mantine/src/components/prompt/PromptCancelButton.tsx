@@ -1,5 +1,5 @@
-import {Button, CompoundStylesApiProps, factory, Factory, useProps} from '@mantine/core';
-import {ButtonProps} from '../button/Button';
+import {CompoundStylesApiProps, factory, Factory, useProps} from '@mantine/core';
+import {Button, ButtonProps} from '../button/Button';
 import {usePromptContext} from './Prompt.context';
 
 export type PromptCancelButtonStylesNamesVariant = 'cancel';
@@ -22,12 +22,5 @@ export const PromptCancelButton = factory<PromptCancelButtonFactory>((_props, re
     const props = useProps('PromptCancelButton', defaultProps, _props);
     const {className, classNames, style, styles, unstyled, vars, ...others} = props;
 
-    return (
-        <Button
-            ref={ref}
-            variant="outline"
-            {...others}
-            {...getStyles('cancel', {style, styles, className, classNames})}
-        />
-    );
+    return <Button.Tertiary ref={ref} {...others} {...getStyles('cancel', {style, styles, className, classNames})} />;
 });

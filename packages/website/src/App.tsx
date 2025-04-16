@@ -41,7 +41,7 @@ interface PlatformAppThemeProps {
 }
 
 export const PlatformAppTheme: FunctionComponent<PlatformAppThemeProps> = ({children}) => {
-    const [primaryColor, setPrimaryColor] = useState<DefaultMantineColor>('blue');
+    const [primaryColor, setPrimaryColor] = useState<DefaultMantineColor>('teal');
     const PlasmaWebsiteTheme = useMemo(
         () =>
             createTheme({

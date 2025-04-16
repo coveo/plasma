@@ -256,14 +256,13 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         <Group>
             <Tooltip label={addDisabledTooltip} disabled={addAllowed}>
                 <Box>
-                    <Button
-                        variant="subtle"
+                    <Button.Quaternary
                         leftSection={<AddSize16Px height={16} />}
                         onClick={() => onInsertItem(newItem, value?.length ?? 0)}
                         disabled={!addAllowed}
                     >
                         {addLabel}
-                    </Button>
+                    </Button.Quaternary>
                 </Box>
             </Tooltip>
         </Group>

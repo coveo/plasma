@@ -52,6 +52,7 @@ const ColorSchemePicker = () => {
 
 const PrimaryColorPicker = () => (
     <Group gap="xs">
+        <ColorPickerSwatch color="teal" />
         <ColorPickerSwatch color="blue" />
         <ColorPickerSwatch color="violet" />
     </Group>

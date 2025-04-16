@@ -10,8 +10,8 @@ const Demo = () => (
         Title
         <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
         <Header.Right wrap="nowrap">
-            <Button>Primary</Button>
-            <Button variant="outline">Secondary</Button>
+            <Button.Primary>Primary</Button.Primary>
+            <Button.Tertiary>Secondary</Button.Tertiary>
         </Header.Right>
     </Header>
 );

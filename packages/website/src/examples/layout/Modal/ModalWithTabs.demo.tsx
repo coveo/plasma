@@ -29,14 +29,12 @@ const Demo = () => {
                         </Modal.Body>
                     </Tabs>
                     <Modal.Footer>
-                        <Button variant="outline" onClick={() => setOpened(false)}>
-                            Cancel
-                        </Button>
-                        <Button>Save</Button>
+                        <Button.Tertiary onClick={() => setOpened(false)}>Cancel</Button.Tertiary>
+                        <Button.Primary>Save</Button.Primary>
                     </Modal.Footer>
                 </Modal.Content>
             </Modal.Root>
-            <Button onClick={() => setOpened(true)}>Open Modal</Button>
+            <Button.Primary onClick={() => setOpened(true)}>Open Modal</Button.Primary>
         </>
     );
 };
