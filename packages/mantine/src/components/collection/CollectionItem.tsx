@@ -22,7 +22,7 @@ const RemoveButton: FunctionComponent<{
     onClick: React.MouseEventHandler<HTMLButtonElement>;
 }> = ({onClick}) => (
     <ActionIcon.Quaternary style={{alignSelf: 'center'}} onClick={onClick}>
-        <IconCircleMinus size={20} />
+        <IconCircleMinus aria-label="Remove" size={20} />
     </ActionIcon.Quaternary>
 );
 

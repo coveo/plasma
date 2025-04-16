@@ -1,18 +1,16 @@
-import {AddSize16Px} from '@coveord/plasma-react-icons';
+import {IconCirclePlus} from '@coveord/plasma-react-icons';
 import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
 import {restrictToParentElement, restrictToVerticalAxis} from '@dnd-kit/modifiers';
 import {SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from '@dnd-kit/sortable';
 import {
+    __InputWrapperProps,
     Box,
     BoxProps,
     Factory,
-    Group,
     Input,
     MantineSpacing,
     Stack,
     StylesApiProps,
-    Tooltip,
-    __InputWrapperProps,
     useProps,
     useStyles,
 } from '@mantine/core';
@@ -253,19 +251,14 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     const addAllowed = allowAdd?.(value) ?? true;
 
     const _addButton = canEdit ? (
-        <Group>
-            <Tooltip label={addDisabledTooltip} disabled={addAllowed}>
-                <Box>
-                    <Button.Quaternary
-                        leftSection={<AddSize16Px height={16} />}
-                        onClick={() => onInsertItem(newItem, value?.length ?? 0)}
-                        disabled={!addAllowed}
-                    >
-                        {addLabel}
-                    </Button.Quaternary>
-                </Box>
-            </Tooltip>
-        </Group>
+        <Button.Quaternary
+            leftSection={<IconCirclePlus size={16} />}
+            onClick={() => onInsertItem(newItem, value?.length ?? 0)}
+            disabled={!addAllowed}
+            disabledTooltip={addDisabledTooltip}
+        >
+            {addLabel}
+        </Button.Quaternary>
     ) : null;
 
     const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);

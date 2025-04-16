@@ -58,8 +58,8 @@ type TableCollapsibleColumnFactory = Factory<{
 }>;
 
 const defaultProps: Partial<CollapsibleIconProps> = {
-    iconExpanded: <IconChevronUp size={20} />,
-    iconCollapsed: <IconChevronDown size={20} />,
+    iconExpanded: <IconChevronUp aria-label="Collapse" size={20} />,
+    iconCollapsed: <IconChevronDown aria-label="Expand" size={20} />,
 };
 
 const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {

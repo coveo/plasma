@@ -8,7 +8,7 @@ export interface SearchProps {
 
 const SearchButton: FunctionComponent<SearchProps> = ({handleSearch}) => (
     <ActionIcon.Quaternary onClick={handleSearch}>
-        <IconSearch size={20} />
+        <IconSearch aria-label="Search" size={20} />
     </ActionIcon.Quaternary>
 );
 

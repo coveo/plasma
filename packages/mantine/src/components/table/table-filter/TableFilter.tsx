@@ -76,7 +76,7 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
                 rightSection={
                     filter ? (
                         <ActionIcon.Quaternary onClick={handleClear}>
-                            <IconX size={20} />
+                            <IconX aria-label="clear" size={20} />
                         </ActionIcon.Quaternary>
                     ) : (
                         <IconSearch size={20} {...getStyles('filterEmpty', stylesApiProps)} />
