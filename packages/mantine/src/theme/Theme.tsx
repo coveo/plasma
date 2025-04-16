@@ -277,8 +277,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         ModalOverlay: Modal.Overlay.extend({
             defaultProps: {
-                color: color.primary.navy[9],
-                backgroundOpacity: 0.9,
+                color: PlasmaColors.indigo[8],
+                backgroundOpacity: 0.7,
+                blur: 2,
             },
         }),
         ModalRoot: Modal.Root.extend({
