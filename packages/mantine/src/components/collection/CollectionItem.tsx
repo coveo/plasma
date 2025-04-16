@@ -1,9 +1,10 @@
-import {DragAndDropSize24Px, RemoveSize16Px} from '@coveord/plasma-react-icons';
+import {DragAndDropSize24Px, IconCircleMinus} from '@coveord/plasma-react-icons';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {ActionIcon, Group, GroupProps} from '@mantine/core';
+import {Group, GroupProps} from '@mantine/core';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
+import {ActionIcon} from '../action-icon';
 import {useCollectionContext} from './CollectionContext';
 
 interface CollectionItemProps extends CollectionItemSharedProps {
@@ -20,9 +21,9 @@ interface CollectionItemSharedProps extends GroupProps {
 const RemoveButton: FunctionComponent<{
     onClick: React.MouseEventHandler<HTMLButtonElement>;
 }> = ({onClick}) => (
-    <ActionIcon style={{alignSelf: 'center'}} variant="subtle" onClick={onClick}>
-        <RemoveSize16Px height={16} />
-    </ActionIcon>
+    <ActionIcon.Quaternary style={{alignSelf: 'center'}} onClick={onClick}>
+        <IconCircleMinus size={20} />
+    </ActionIcon.Quaternary>
 );
 
 const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
