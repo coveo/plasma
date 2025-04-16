@@ -9,6 +9,7 @@ import {
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
+    ActionIcon,
     Alert,
     AppShell,
     Badge,
@@ -46,6 +47,7 @@ import {
     Tooltip,
 } from '@mantine/core';
 import {InfoToken} from '../components';
+import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import BreadcrumbsClasses from '../styles/Breadcrumbs.module.css';
@@ -125,6 +127,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     primaryShade: 5,
     colors: PlasmaColors,
     components: {
+        ActionIcon: ActionIcon.extend({
+            defaultProps: {
+                size: 24,
+                radius: 'sm',
+            },
+            classNames: ActionIconClasses,
+        }),
         AppShell: AppShell.extend({
             vars: (theme) =>
                 ({
