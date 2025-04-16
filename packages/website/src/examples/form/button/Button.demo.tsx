@@ -1,26 +1,20 @@
-import {
-    ButtonDestructive,
-    ButtonDestructiveSecondary,
-    ButtonPrimary,
-    ButtonSecondary,
-    ButtonTertiary,
-    Group,
-    showNotification,
-    Stack,
-} from '@coveord/plasma-mantine';
+import {Button, Group, showNotification, Stack} from '@coveord/plasma-mantine';
 
 const Demo = () => {
     const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
     return (
         <Stack gap="sm">
             <Group gap="sm">
-                <ButtonPrimary onClick={onClick}>Primary</ButtonPrimary>
-                <ButtonSecondary onClick={onClick}>Secondary</ButtonSecondary>
-                <ButtonTertiary onClick={onClick}>Tertiary</ButtonTertiary>
+                <Button.Primary onClick={onClick}>Button</Button.Primary>
+                <Button.Secondary onClick={onClick}>Button</Button.Secondary>
+                <Button.Tertiary onClick={onClick}>Button</Button.Tertiary>
+                <Button.Quaternary onClick={onClick}>Button</Button.Quaternary>
             </Group>
             <Group gap="sm">
-                <ButtonDestructive onClick={onClick}>Destructive</ButtonDestructive>
-                <ButtonDestructiveSecondary onClick={onClick}>Destructive secondary</ButtonDestructiveSecondary>
+                <Button.DestructivePrimary onClick={onClick}>Button</Button.DestructivePrimary>
+                <Button.DestructiveSecondary onClick={onClick}>Button</Button.DestructiveSecondary>
+                <Button.DestructiveTertiary onClick={onClick}>Button</Button.DestructiveTertiary>
+                <Button.DestructiveQuaternary onClick={onClick}>Button</Button.DestructiveQuaternary>
             </Group>
         </Stack>
     );

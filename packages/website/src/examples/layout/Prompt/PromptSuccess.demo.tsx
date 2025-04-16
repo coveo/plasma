@@ -12,7 +12,7 @@ const Demo = () => {
                     <Prompt.ConfirmButton onClick={close}>Continue</Prompt.ConfirmButton>
                 </Prompt.Footer>
             </Prompt>
-            <Button onClick={open}>Open Prompt</Button>
+            <Button.Primary onClick={open}>Open Prompt</Button.Primary>
         </>
     );
 };

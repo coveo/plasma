@@ -82,7 +82,7 @@ const NoData: FunctionComponent<{isFiltered: boolean; clearFilters: () => void}>
     isFiltered ? (
         <BlankSlate>
             <Title order={4}>No data found for those filters</Title>
-            <Button onClick={clearFilters}>Clear filters</Button>
+            <Button.Tertiary onClick={clearFilters}>Clear filters</Button.Tertiary>
         </BlankSlate>
     ) : (
         <BlankSlate>
