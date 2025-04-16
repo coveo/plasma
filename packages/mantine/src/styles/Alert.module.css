@@ -2,6 +2,10 @@
     font-weight: 500;
 }
 
+.icon {
+    margin-inline-end: var(--mantine-spacing-sm);
+}
+
 .closeButton {
     & svg {
         width: 20px;
