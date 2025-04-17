@@ -14,16 +14,8 @@ const Demo = () => (
                     Delete?
                 </Text>
             }
-            confirm={
-                <Button variant="outline" color="critical" leftSection={<DeleteSize24Px />}>
-                    Yes
-                </Button>
-            }
-            cancel={
-                <Button variant="outline" leftSection={<CrossSize24Px />}>
-                    No
-                </Button>
-            }
+            confirm={<Button.DestructiveTertiary leftSection={<DeleteSize24Px />}>Yes</Button.DestructiveTertiary>}
+            cancel={<Button.Tertiary leftSection={<CrossSize24Px />}>No</Button.Tertiary>}
             onConfirm={() => showNotification({message: 'Confirm clicked', autoClose: true})}
             onCancel={() => showNotification({message: 'Cancel clicked', autoClose: true})}
         />

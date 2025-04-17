@@ -73,14 +73,13 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
                         order={TableComponentsOrder.MultiSelectInfo}
                     >
                         <Tooltip label={unselectAllLabel}>
-                            <Button
+                            <Button.Quaternary
                                 onClick={store.clearRowSelection}
-                                variant="subtle"
                                 disabled={!store.rowSelectionEnabled}
                                 leftSection={<CrossSize16Px height={16} />}
                             >
                                 {selectedCountLabel(selectedRows.length)}
-                            </Button>
+                            </Button.Quaternary>
                         </Tooltip>
                     </Grid.Col>
                 ) : null}

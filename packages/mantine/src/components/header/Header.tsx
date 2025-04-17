@@ -14,11 +14,11 @@ import {
 import {Children, ReactElement, ReactNode} from 'react';
 import {HeaderProvider} from './Header.context';
 import classes from './Header.module.css';
-import {HeaderActions, HeaderActionsStyleNames} from './HeaderActions/HeaderActions';
+import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight';
 import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
 
-export type {HeaderActionsProps} from './HeaderActions/HeaderActions';
+export type {HeaderRightProps} from './HeaderRight/HeaderRight';
 export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor';
 
@@ -28,11 +28,14 @@ export type HeaderStyleNames =
     | 'title'
     | 'description'
     | 'divider'
+    | 'body'
     | HeaderDocAnchorStyleNames
     | HeaderBreadcrumbsStyleNames
-    | HeaderActionsStyleNames;
+    | HeaderRightStyleNames;
 
-export interface HeaderProps extends StylesApiProps<HeaderFactory>, Omit<GroupProps, 'classNames' | 'styles' | 'vars'> {
+export interface HeaderProps
+    extends StylesApiProps<HeaderFactory>,
+        Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant'> {
     /**
      * The description text displayed inside the header underneath the title
      */
@@ -60,8 +63,12 @@ export type HeaderFactory = Factory<{
     stylesNames: HeaderStyleNames;
     staticComponents: {
         Breadcrumbs: typeof HeaderBreadcrumbs;
-        Actions: typeof HeaderActions;
+        Right: typeof HeaderRight;
         DocAnchor: typeof HeaderDocAnchor;
+        /**
+         * @deprecated use Header.Right instead
+         */
+        Actions: typeof HeaderRight;
     };
 }>;
 
@@ -101,10 +108,10 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
 
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
-    const actions = convertedChildren.find((child) => child.type === HeaderActions);
+    const right = convertedChildren.find((child) => child.type === HeaderRight);
     const docAnchor = convertedChildren.find((child) => child.type === HeaderDocAnchor);
     const otherChildren = convertedChildren.filter(
-        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor,
+        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderRight && child.type !== HeaderDocAnchor,
     );
     return (
         <HeaderProvider value={{getStyles}}>
@@ -123,7 +130,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
                         {description}
                     </Text>
                 </Stack>
-                {actions}
+                {right}
             </Group>
             {borderBottom ? <Divider {...getStyles('divider', stylesApiProps)} size="xs" /> : null}
         </HeaderProvider>
@@ -131,5 +138,9 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
 });
 
 Header.Breadcrumbs = HeaderBreadcrumbs;
-Header.Actions = HeaderActions;
+Header.Right = HeaderRight;
 Header.DocAnchor = HeaderDocAnchor;
+/**
+ * @deprecated use Header.Right instead
+ */
+Header.Actions = HeaderRight;

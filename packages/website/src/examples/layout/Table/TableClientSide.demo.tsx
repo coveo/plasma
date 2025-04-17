@@ -81,7 +81,7 @@ const Demo = () => {
             <Table.NoData>
                 <BlankSlate>
                     <Title order={4}>Nothing found for "{table.state.globalFilter}"</Title>
-                    <Button onClick={table.clearFilters}>Clear filter</Button>
+                    <Button.Tertiary onClick={table.clearFilters}>Clear filter</Button.Tertiary>
                 </BlankSlate>
             </Table.NoData>
         </Table>

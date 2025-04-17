@@ -54,15 +54,14 @@ export const TableActionItem = polymorphicFactory<TableActionItemFactory>(
 
         if (primary) {
             return (
-                <Button
+                <Button.Quaternary
                     component={component}
                     ref={ref}
-                    variant="subtle"
                     {...others}
                     {...getStyles('actionItemRoot', {className, style, classNames, styles})}
                 >
                     {children}
-                </Button>
+                </Button.Quaternary>
             );
         }
 

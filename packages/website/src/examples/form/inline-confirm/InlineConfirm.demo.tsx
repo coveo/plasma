@@ -3,7 +3,7 @@ import {Button, Group, InlineConfirm, showNotification} from '@coveord/plasma-ma
 const Demo = () => (
     <InlineConfirm>
         <Group gap="sm">
-            <Button disabled>I will hide</Button>
+            <Button.Primary disabled>I will hide</Button.Primary>
             <InlineConfirm.Target inlineConfirmId="delete">Delete</InlineConfirm.Target>
         </Group>
         <InlineConfirm.Prompt

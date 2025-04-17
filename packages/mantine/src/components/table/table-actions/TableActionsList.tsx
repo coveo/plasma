@@ -1,10 +1,8 @@
 import {MoreSize16Px} from '@coveord/plasma-react-icons';
 import {
-    ActionIcon,
     Box,
-    Button,
-    CSSProperties,
     CompoundStylesApiProps,
+    CSSProperties,
     ExtendComponent,
     Factory,
     Menu,
@@ -13,6 +11,8 @@ import {
     useProps,
 } from '@mantine/core';
 import {MouseEventHandler, ReactNode, useState} from 'react';
+import {ActionIcon} from '../../action-icon';
+import {Button} from '../../button';
 import {InlineConfirm} from '../../inline-confirm';
 import {TableAction} from '../Table.types';
 import {useTableContext} from '../TableContext';
@@ -131,13 +131,12 @@ export const TableActionsList = (props: TableActionsListProps) => {
                     <TableActionProvider value={{primary: false}}>
                         <Menu withinPortal={false} {...others} keepMounted>
                             <Menu.Target>
-                                <Button
+                                <Button.Quaternary
                                     {...getStyles('actionsTarget', {styles, classNames})}
-                                    variant="subtle"
                                     leftSection={icon}
                                 >
                                     {label}
-                                </Button>
+                                </Button.Quaternary>
                             </Menu.Target>
                             <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>
                                 <ActionsGroupsMenuItems
@@ -159,13 +158,12 @@ export const TableActionsList = (props: TableActionsListProps) => {
                 <Menu opened={opened} onChange={onChange} {...others} keepMounted>
                     <Menu.Target>
                         <Tooltip label={label} {...getStyles('actionsTooltip', {styles, classNames})}>
-                            <ActionIcon
+                            <ActionIcon.Quaternary
                                 {...getStyles('actionsTarget', {styles, classNames})}
                                 onClick={onClick}
-                                variant="subtle"
                             >
                                 {icon}
-                            </ActionIcon>
+                            </ActionIcon.Quaternary>
                         </Tooltip>
                     </Menu.Target>
                     <Menu.Dropdown {...getStyles('actionsDropdown', {styles, classNames})}>
