@@ -1,3 +1,9 @@
+## <small>55.7.2-next.21 (2025-04-17)</small>
+
+* feat(mantine, action icon): apply style changes and create semantic components (#4053) a91accb, closes #4053
+
+
+
 ## <small>55.7.2-next.20 (2025-04-16)</small>
 
 * feat(mantine, button): update style (#4052) de3eba4, closes #4052
