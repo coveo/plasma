@@ -1,0 +1,7 @@
+.root {
+    &[data-variant='subtle'] {
+        &:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
+            background: transparent;
+        }
+    }
+}

@@ -1,6 +1,7 @@
 import {IconClipboardCheck, IconClipboardText} from '@coveord/plasma-react-icons';
-import {ActionIcon, ActionIconProps, CopyButton, MantineColor, TextInput, Tooltip} from '@mantine/core';
+import {ActionIconProps, CopyButton, MantineColor, TextInput, Tooltip} from '@mantine/core';
 import {FunctionComponent, MouseEventHandler} from 'react';
+import {ActionIcon} from '../action-icon';
 
 export interface CopyToClipboardProps extends ActionIconProps {
     /**
@@ -48,9 +49,8 @@ const CopyToClipboardButton: FunctionComponent<Omit<CopyToClipboardProps, 'withL
     <CopyButton value={value} timeout={2000}>
         {({copied, copy}) => (
             <Tooltip label={copied ? tooltipLabelCopied : tooltipLabelCopy}>
-                <ActionIcon
+                <ActionIcon.Quaternary
                     aria-label={tooltipLabelCopy}
-                    variant="subtle"
                     color={copied ? 'success' : color}
                     onClick={(clickEvent) => {
                         copy();
@@ -59,7 +59,7 @@ const CopyToClipboardButton: FunctionComponent<Omit<CopyToClipboardProps, 'withL
                     {...others}
                 >
                     {copied ? <IconClipboardCheck size={20} /> : <IconClipboardText size={20} />}
-                </ActionIcon>
+                </ActionIcon.Quaternary>
             </Tooltip>
         )}
     </CopyButton>

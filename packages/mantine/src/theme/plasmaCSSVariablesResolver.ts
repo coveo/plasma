@@ -6,7 +6,7 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
         dark: {},
         light: {
             // custom colors
-            '--coveo-color-input-border': theme.colors.gray[2],
+            '--coveo-color-input-border': theme.colors.gray[3],
             '--coveo-color-title': theme.colors.gray[8],
             '--coveo-color-text-disabled': theme.colors.gray[3],
 

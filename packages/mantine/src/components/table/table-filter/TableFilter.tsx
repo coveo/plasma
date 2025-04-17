@@ -1,8 +1,9 @@
-import {CrossSize16Px, FilterSize16Px} from '@coveord/plasma-react-icons';
-import {ActionIcon, BoxProps, CompoundStylesApiProps, Factory, Grid, TextInput, factory, useProps} from '@mantine/core';
+import {IconSearch, IconX} from '@coveord/plasma-react-icons';
+import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, TextInput, useProps} from '@mantine/core';
 import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
 import {ChangeEventHandler, MouseEventHandler, useEffect, useState} from 'react';
 
+import {ActionIcon} from '../../action-icon';
 import {TableComponentsOrder} from '../Table';
 import {useTableContext} from '../TableContext';
 
@@ -74,11 +75,11 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
                 autoComplete="off"
                 rightSection={
                     filter ? (
-                        <ActionIcon onClick={handleClear} color="gray" variant="subtle">
-                            <CrossSize16Px height={16} />
-                        </ActionIcon>
+                        <ActionIcon.Quaternary onClick={handleClear}>
+                            <IconX aria-label="clear" size={20} />
+                        </ActionIcon.Quaternary>
                     ) : (
-                        <FilterSize16Px height={16} {...getStyles('filterEmpty', stylesApiProps)} />
+                        <IconSearch size={20} {...getStyles('filterEmpty', stylesApiProps)} />
                     )
                 }
                 value={filter}
