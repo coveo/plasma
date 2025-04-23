@@ -7,6 +7,16 @@ $primary: (
     'grey-80': hsl(212deg 7% 41% / 100%),
     'grey-100': hsl(240deg 1% 16% / 100%),
     'black': hsl(0deg 0% 0% / 100%),
+    'teal-10': hsl(166deg 100% 95%),
+    'teal-20': hsl(166deg 100% 87%),
+    'teal-30': hsl(172deg 96% 55%),
+    'teal-40': hsl(172deg 80% 46%),
+    'teal-50': hsl(172deg 84% 37%),
+    'teal-60': hsl(172deg 89% 25%),
+    'teal-70': hsl(172deg 95% 14%),
+    'teal-80': hsl(173deg 96% 9%),
+    'teal-90': hsl(172deg 94% 6%),
+    'teal-100': hsl(173deg 100% 4%),
     'navy-blue-10': hsl(238deg 100% 97% / 100%),
     'navy-blue-20': hsl(238deg 91% 92% / 100%),
     'navy-blue-30': hsl(238deg 71% 81% / 100%),
@@ -181,6 +191,18 @@ $deprecated: (
     @include spreadPalette($semantic);
     @include spreadPalette($partners);
     @include spreadPalette($deprecated);
+
+    // primary color
+    --primary-color-10: var(--teal-10);
+    --primary-color-20: var(--teal-20);
+    --primary-color-30: var(--teal-30);
+    --primary-color-40: var(--teal-40);
+    --primary-color-50: var(--teal-50);
+    --primary-color-60: var(--teal-60);
+    --primary-color-70: var(--teal-70);
+    --primary-color-80: var(--teal-80);
+    --primary-color-90: var(--teal-90);
+    --primary-color-100: var(--teal-100);
 
     // semantic derivates
     --info-10: var(--navy-blue-10);

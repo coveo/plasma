@@ -4,7 +4,7 @@ $datepicker-day-hover-background-color: #eee;
 $datepicker-day-color: var(--deprecated-dark-grey);
 $datepicker-day-selected-notinmonth-color: var(--deprecated-dark-grey);
 $datepicker-day-selected-notinmonth-background-color: #d2dce6;
-$datepicker-day-selected-background-color: var(--deprecated-medium-blue);
+$datepicker-day-selected-background-color: var(--primary-color-70);
 $datepicker-day-notinmonth-background-color: var(--deprecated-dark-grey);
 $datepicker-day-disabled-background-color: #e6e6e6;
 $datepicker-day-disabled-color: #666;
@@ -66,6 +66,7 @@ $datepicker-day-disabled-color: #666;
                 .datepickerMonth {
                     width: calc(100% - 74px);
                     margin: 0 37px;
+                    color: var(--primary-color-60);
 
                     &:hover {
                         text-decoration: underline;
@@ -110,7 +111,7 @@ $datepicker-day-disabled-color: #666;
                     }
 
                     &.datepickerSelected {
-                        background-color: var(--deprecated-light-blue);
+                        background-color: var(--primary-color-60);
 
                         &.datepickerNotInMonth {
                             background-color: var(--deprecated-medium-grey);

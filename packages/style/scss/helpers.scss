@@ -21,15 +21,15 @@ $browser-context: 13; // Default
 }
 
 @mixin focus-outline($offset: 0) {
-    outline: var(--cerulean-blue-50) auto 2px;
+    outline: var(--primary-color-60) auto 2px;
     outline-offset: $offset;
 }
 
 // args are to prevent elements shifting due to differing border dimensions
 @mixin focus-border($background: var(--white), $border-radius: 8px, $border-width: 1px) {
     background: $background;
-    border: $border-width solid var(--digital-blue-60);
+    border: $border-width solid var(--primary-color-60);
     border-radius: $border-radius;
-    outline: none;
-    box-shadow: 0 0 0 4px var(--digital-blue-20);
+    outline: 2px solid var(--primary-color-60);
+    outline-offset: 2px;
 }

@@ -4,7 +4,7 @@ $radio-button-text-padding-top: 5px;
 $labelIndent: $radio-button-size + $radio-button-option-height;
 
 .radio-option {
-    --circle-stroke-color: var(--digital-blue-60);
+    --circle-stroke-color: var(--primary-color-60);
     --circle-fill-color: var(--white);
 
     position: relative;
@@ -40,7 +40,7 @@ $labelIndent: $radio-button-size + $radio-button-option-height;
             }
 
             &:hover {
-                --circle-stroke-color: var(--digital-blue-80);
+                --circle-stroke-color: var(--primary-color-80);
             }
 
             & ~ .help-text,
@@ -55,7 +55,7 @@ $labelIndent: $radio-button-size + $radio-button-option-height;
         &:checked + label {
             @extend .h6;
 
-            --circle-fill-color: var(--digital-blue-60);
+            --circle-fill-color: var(--primary-color-60);
 
             // checkmark
             &::after {
@@ -69,7 +69,7 @@ $labelIndent: $radio-button-size + $radio-button-option-height;
             }
 
             &:hover {
-                --circle-fill-color: var(--digital-blue-80);
+                --circle-fill-color: var(--primary-color-80);
             }
         }
 
@@ -136,7 +136,7 @@ $labelIndent: $radio-button-size + $radio-button-option-height;
     .card-input:checked + .radio-card {
         box-shadow:
             var(--low-elevation-on-light),
-            inset 0 0 0 2px var(--digital-blue-60);
+            inset 0 0 0 2px var(--primary-color-60);
         transform: none;
     }
 

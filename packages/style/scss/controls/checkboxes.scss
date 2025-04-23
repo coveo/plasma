@@ -1,10 +1,10 @@
 .checkbox {
     --border: solid 2px var(--navy-blue-80);
     --background-color: var(--white);
-    --checked-color: var(--digital-blue-60);
-    --svg-underterminate-top: -4px;
+    --checked-color: var(--primary-color-60);
+    --svg-underterminate-top: -6px;
     --svg-underterminate-left: 3px;
-    --svg-checked-top: 1px;
+    --svg-checked-top: 0;
     --svg-checked-left: 2px;
 
     .checkbox-button {
@@ -41,7 +41,7 @@
             }
 
             &:focus {
-                --border: solid 2px var(--digital-blue-60);
+                --border: solid 2px var(--primary-color-60);
             }
 
             &:focus::after {
@@ -54,13 +54,13 @@
         }
 
         &:checked + button {
-            --background-color: var(--digital-blue-60);
-            --border: solid 2px var(--digital-blue-60);
+            --background-color: var(--primary-color-60);
+            --border: solid 2px var(--primary-color-60);
 
             &:focus,
             &:hover {
-                --background-color: var(--digital-blue-80);
-                --border: solid 2px var(--digital-blue-80);
+                --background-color: var(--primary-color-70);
+                --border: solid 2px var(--primary-color-70);
             }
 
             &::before {

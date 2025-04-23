@@ -1,5 +1,5 @@
 .tooltip {
-    --tooltip-color: rgb(var(--navy-blue-60-rgb) / 94%);
+    --tooltip-color: var(--primary-color-100);
     --arrow-size: 4px;
     --tooltip-gap: 8px;
 
@@ -80,7 +80,7 @@
     }
 
     .tooltip-inner {
-        @extend .body-s-book;
+        @extend .body-m-book;
 
         max-width: 300px;
         padding: 8px 16px;

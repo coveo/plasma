@@ -3,12 +3,12 @@
     display: flex;
 
     // Variables
-    --color: var(--digital-blue-80);
-    --background-color: var(--digital-blue-10);
+    --color: var(--primary-color-60);
+    --background-color: var(--grey-20);
     --height: 40px;
     --padding: 10px 15px;
     --border-radius: 8px;
-    --border: 1px solid var(--digital-blue-20);
+    --border: 1px solid var(--primary-color-60);
     --gap: 16px;
 
     // Style override
@@ -39,7 +39,7 @@
         }
 
         &.selectable {
-            --color: var(--grey-80);
+            --color: var(--primary-color-60);
             --background-color: var(--white);
             --border: 1px solid var(--grey-40);
 
@@ -75,15 +75,11 @@
             border: none;
 
             .icon {
-                fill: var(--navy-blue-80);
+                fill: currentcolor;
             }
 
             &.disabled {
                 color: var(--deprecated-medium-grey);
-
-                .icon {
-                    fill: var(--deprecated-medium-grey);
-                }
             }
         }
     }
