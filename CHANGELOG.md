@@ -1,3 +1,9 @@
+## <small>55.7.2-next.22 (2025-04-24)</small>
+
+* fix(mantine, badge): font-size and text-transform (#4055) ee34551, closes #4055
+
+
+
 ## <small>55.7.2-next.21 (2025-04-17)</small>
 
 * feat(mantine, action icon): apply style changes and create semantic components (#4053) a91accb, closes #4053
