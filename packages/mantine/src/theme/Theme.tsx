@@ -151,6 +151,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: BadgeClasses,
             defaultProps: {
                 variant: 'light',
+                tt: 'none',
             },
         }),
         Breadcrumbs: Breadcrumbs.extend({
