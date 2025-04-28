@@ -5,7 +5,7 @@
     box-sizing: border-box;
     height: $button-height;
     padding: $button-padding-y $button-padding-x;
-    color: var(--digital-blue-80);
+    color: var(--primary-color-60);
     font-weight: var(--main-font-bold);
     font-size: $button-font-size;
     font-family: var(--main-font);
@@ -16,20 +16,20 @@
     text-overflow: ellipsis;
     vertical-align: middle;
     background-color: var(--white);
-    border: $button-border-width solid var(--digital-blue-80);
+    border: $button-border-width solid var(--primary-color-60);
     border-radius: $button-border-radius;
     cursor: pointer;
 
     .icon:not(.documentation-link) {
-        fill: var(--digital-blue-80);
+        fill: var(--primary-color-60);
     }
 
     &:active {
-        color: var(--digital-blue-100);
-        border-color: var(--digital-blue-100);
+        color: var(--primary-color-100);
+        border-color: var(--primary-color-100);
 
         .icon {
-            fill: var(--digital-blue-100);
+            fill: var(--primary-color-100);
         }
     }
 
@@ -41,13 +41,7 @@
     }
 
     &:hover {
-        color: var(--digital-blue-100);
-        border-color: var(--digital-blue-100);
-        outline-color: var(--digital-blue-100);
-
-        .icon {
-            fill: var(--digital-blue-100);
-        }
+        background-color: var(--grey-20);
     }
 
     &:disabled,
@@ -76,23 +70,17 @@
 
     &.mod-primary {
         color: var(--white);
-        background-color: var(--digital-blue-60);
-        border: $button-border-width solid var(--digital-blue-60);
+        background-color: var(--primary-color-60);
+        border: $button-border-width solid var(--primary-color-60);
 
         &:active {
-            background-color: var(--digital-blue-100);
-            border: $button-border-width solid var(--digital-blue-100);
-        }
-
-        &:focus {
-            background-color: var(--digital-blue-40);
-            border: $button-border-width solid var(--digital-blue-40);
+            background-color: var(--primary-color-80);
+            border: $button-border-width solid var(--primary-color-80);
         }
 
         &:hover {
-            background-color: var(--digital-blue-80);
-            border: $button-border-width solid var(--digital-blue-80);
-            outline-color: var(--digital-blue-80);
+            background-color: var(--primary-color-70);
+            border: $button-border-width solid var(--primary-color-70);
         }
 
         &:disabled,

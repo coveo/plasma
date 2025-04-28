@@ -24,9 +24,7 @@
         }
 
         &:focus-within {
-            --border-color: var(--digital-blue-40);
-
-            box-shadow: 0 0 0 4px #c7e4ff;
+            --border-color: var(--primary-color-60);
         }
 
         &::before {

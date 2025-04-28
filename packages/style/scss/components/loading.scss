@@ -15,7 +15,7 @@
         display: inline-block;
         width: $bounce-size;
         height: $bounce-size;
-        background-color: var(--deprecated-orange);
+        background-color: var(--primary-color-60);
         border-radius: 100%;
         animation: bouncedelay 1.7s infinite ease-in-out;
 
@@ -45,7 +45,7 @@
         & > div {
             width: $big-bounce-size;
             height: $big-bounce-size;
-            background-color: var(--deprecated-orange);
+            background-color: var(--primary-color-60);
         }
     }
 }

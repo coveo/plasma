@@ -64,7 +64,7 @@
 
                     &.state-active {
                         background-color: var(--grey-20);
-                        border-left-color: var(--digital-blue-80);
+                        border-left-color: var(--primary-color-70);
                         opacity: 1;
                     }
                 }
@@ -182,7 +182,7 @@
 
                         &.state-active {
                             background-color: var(--grey-20);
-                            border-left-color: var(--digital-blue-80);
+                            border-left-color: var(--primary-color-70);
 
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {

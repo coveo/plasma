@@ -41,11 +41,11 @@
 
             &:focus:not([readonly]) {
                 color: var(--deprecated-lynch);
-                border-bottom-color: var(--deprecated-azure);
+                border-bottom-color: var(--primary-color-60);
 
                 & + label,
                 & + span {
-                    color: var(--deprecated-azure);
+                    color: var(--primary-color-60);
                 }
             }
         }

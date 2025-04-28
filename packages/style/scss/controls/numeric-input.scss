@@ -33,7 +33,7 @@ $numeric-input-digit-padding: 10px;
         padding: 0 5px;
         color: var(--white);
         line-height: $numeric-input-height;
-        background-color: var(--digital-blue-80);
+        background-color: var(--primary-color-60);
         border-radius: $numeric-input-buttons-border-radius;
         cursor: pointer;
 
@@ -43,7 +43,7 @@ $numeric-input-digit-padding: 10px;
         }
 
         &:hover {
-            background-color: var(--digital-blue-100);
+            background-color: var(--primary-color-70);
         }
     }
 

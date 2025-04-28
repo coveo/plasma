@@ -1,5 +1,5 @@
 :root {
-    --links-color: var(--digital-blue-60);
+    --links-color: var(--primary-color-60);
 }
 
 a {
@@ -36,17 +36,17 @@ a {
     }
 
     &:hover {
-        --color: var(--digital-blue-80);
-        --fill: var(--digital-blue-80);
-        --stroke: var(--digital-blue-80);
+        --color: var(--primary-color-70);
+        --fill: var(--primary-color-70);
+        --stroke: var(--primary-color-70);
 
         text-decoration: underline;
     }
 
     &:active {
-        --color: var(--digital-blue-100);
-        --fill: var(--digital-blue-100);
-        --stroke: var(--digital-blue-100);
+        --color: var(--primary-color-80);
+        --fill: var(--primary-color-80);
+        --stroke: var(--primary-color-80);
 
         text-decoration: underline;
     }

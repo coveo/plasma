@@ -86,11 +86,11 @@
             height: $selected-date-height;
             color: var(--white);
             line-height: $selected-date-height;
-            background-color: var(--digital-blue-60);
+            background-color: var(--primary-color-60);
         }
 
         .selected-date.comparison-date {
-            background-color: var(--digital-blue-80);
+            background-color: var(--primary-color-70);
         }
 
         .lower-limit,
@@ -211,8 +211,8 @@
                     }
 
                     &.selected-date {
-                        color: var(--navy-blue-80);
-                        background-color: var(--navy-blue-80);
+                        color: var(--primary-color-70);
+                        background-color: var(--primary-color-70);
 
                         &.lower-limit,
                         &.upper-limit {
@@ -223,10 +223,10 @@
                         }
 
                         &.todays-date {
-                            color: var(--navy-blue-80);
+                            color: var(--primary-color-70);
                             font-size: $small-font-size;
                             background-color: var(--white);
-                            border: 1px solid var(--navy-blue-80);
+                            border: 1px solid var(--primary-color-70);
                         }
                     }
                 }
@@ -328,7 +328,7 @@
 
                 &.active:not(:disabled) {
                     color: var(--white);
-                    background-color: var(--digital-blue-60);
+                    background-color: var(--primary-color-60);
                 }
             }
         }
@@ -351,7 +351,7 @@
 
         &.picking-date,
         &.date-picked {
-            border-color: var(--digital-blue-60);
+            border-color: var(--primary-color-60);
             border-style: solid;
             border-width: 2px;
 
@@ -362,7 +362,7 @@
 
         &.date-picked {
             color: var(--white);
-            background-color: var(--digital-blue-60);
+            background-color: var(--primary-color-60);
         }
     }
 

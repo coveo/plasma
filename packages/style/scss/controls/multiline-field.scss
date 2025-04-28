@@ -145,10 +145,10 @@
         }
 
         &.add-action {
-            border-color: var(--digital-blue-60);
+            border-color: var(--primary-color-60);
 
             &::before {
-                background-color: var(--digital-blue-60);
+                background-color: var(--primary-color-60);
             }
 
             &::after {
@@ -158,7 +158,7 @@
                 display: block;
                 width: 2px;
                 height: 10px;
-                background-color: var(--digital-blue-60);
+                background-color: var(--primary-color-60);
                 content: '';
             }
         }

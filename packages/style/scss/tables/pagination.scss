@@ -57,17 +57,17 @@
 
     .flat-select .flat-select-option {
         color: var(--white);
-        background-color: var(--digital-blue-60);
-        border: 1px solid var(--digital-blue-60);
+        background-color: var(--primary-color-60);
+        border: 1px solid var(--primary-color-60);
 
         &.selectable {
-            color: var(--digital-blue-80);
+            color: var(--primary-color-70);
             background-color: var(--white);
             border: $default-border;
         }
 
         &.mod-link {
-            color: var(--digital-blue-80);
+            color: var(--primary-color-70);
             background-color: var(--white);
             border: none;
 

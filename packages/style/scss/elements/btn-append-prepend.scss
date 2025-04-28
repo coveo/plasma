@@ -6,20 +6,20 @@
         border: $button-border-width solid var(--grey-40);
 
         &:focus {
-            border-color: var(--digital-blue-60);
+            border-color: var(--primary-color-60);
 
             .btn-append,
             .btn-prepend {
-                border-color: var(--digital-blue-60);
+                border-color: var(--primary-color-60);
             }
         }
 
         &:hover {
-            border-color: var(--digital-blue-100);
+            border-color: var(--primary-color-100);
 
             .btn-append,
             .btn-prepend {
-                border-color: var(--digital-blue-100);
+                border-color: var(--primary-color-100);
             }
         }
 
@@ -80,11 +80,11 @@
         &:hover {
             &.mod-icon {
                 padding: 8px;
-                fill: var(--digital-blue-80);
+                fill: var(--primary-color-80);
             }
 
             .icon {
-                fill: var(--digital-blue-80);
+                fill: var(--primary-color-80);
             }
         }
     }

@@ -5,7 +5,7 @@
 }
 
 a.tile:hover {
-    border: 2px solid var(--digital-blue-60);
+    border: 2px solid var(--primary-color-60);
     box-shadow: var(--medium-elevation-on-light);
 }
 

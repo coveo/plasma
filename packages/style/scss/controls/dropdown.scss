@@ -22,7 +22,7 @@
         border-color: var(--default-border-color);
 
         &:focus {
-            border: 1px solid var(--digital-blue-60);
+            border: 1px solid var(--primary-color-60);
         }
     }
 }
@@ -196,7 +196,7 @@
             &.selected-value {
                 color: var(--grey-40);
                 font-weight: var(--main-font-bold);
-                background-color: var(--navy-blue-80);
+                background-color: var(--primary-color-70);
             }
 
             &.disabled {
