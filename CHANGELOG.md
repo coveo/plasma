@@ -1,3 +1,12 @@
+# 53.3.0 (2025-04-28)
+
+
+### Features
+
+* **style:** change primary color (#4054) 0acbb7b, closes #4054
+
+
+
 ## 53.2.1 (2025-04-01)
 
 
