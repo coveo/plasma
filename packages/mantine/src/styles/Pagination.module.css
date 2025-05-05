@@ -1,6 +1,6 @@
 .root {
     --pagination-active-bg: var(--mantine-primary-color-light);
-    --pagination-active-color: var(--mantine-primary-color-5);
+    --pagination-active-color: var(--mantine-primary-color-filled);
 }
 
 .control {
