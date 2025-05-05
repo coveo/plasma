@@ -46,8 +46,7 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
-import {InfoToken} from '../components';
-import {CircleLoader} from '../components/loader/CircleLoader';
+import {CheckboxIcon, CircleLoader, InfoToken} from '../components';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
@@ -171,6 +170,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Checkbox: Checkbox.extend({
             defaultProps: {
                 radius: 'sm',
+                icon: CheckboxIcon,
             },
             classNames: (theme, props) => {
                 if (props.readOnly && !props.disabled) {
@@ -182,8 +182,8 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 if (props.readOnly && !props.disabled) {
                     return {
                         root: {
-                            '--checkbox-icon-color': theme.colors.gray[7],
-                            '--checkbox-color': theme.colors.gray[2],
+                            '--checkbox-icon-color': 'var(--mantine-color-black)',
+                            '--checkbox-color': theme.colors.gray[1],
                         },
                     };
                 }
@@ -193,6 +193,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         CheckboxIndicator: Checkbox.Indicator.extend({
             defaultProps: {
                 radius: 'sm',
+                icon: CheckboxIcon,
             },
             classNames: CheckboxIndicatorClasses,
         }),
