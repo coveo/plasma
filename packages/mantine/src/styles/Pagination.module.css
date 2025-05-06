@@ -1,7 +1,6 @@
 .root {
     --pagination-active-bg: var(--mantine-primary-color-light);
     --pagination-active-color: var(--mantine-primary-color-filled);
-    --pagination-control-fz: var(--mantine-font-size-sm);
 }
 
 .control {
