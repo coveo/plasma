@@ -2,9 +2,3 @@
     display: flex;
     align-items: flex-start;
 }
-
-.radio {
-    @mixin where-light {
-        border-color: var(--coveo-color-input-border);
-    }
-}
