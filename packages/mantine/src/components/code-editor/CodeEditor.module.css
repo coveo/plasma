@@ -26,12 +26,13 @@
 
 .disabled {
     @mixin light {
-        background-color: var(--mantine-color-gray-2);
+        border: 1px solid var(--mantine-color-gray-1);
+        background-color: var(--mantine-color-gray-1);
 
         :global {
             .monaco-editor {
-                --vscode-editor-background: var(--mantine-color-gray-2);
-                --vscode-editorGutter-background: var(--mantine-color-gray-2);
+                --vscode-editor-background: var(--mantine-color-gray-1);
+                --vscode-editorGutter-background: var(--mantine-color-gray-1);
             }
         }
     }

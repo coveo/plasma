@@ -5,20 +5,6 @@ const Demo = () => {
         initialValues: {
             config: '{"key":"value"}',
         },
-        validate: {
-            config: (jsonValue) => {
-                try {
-                    const config = JSON.parse(jsonValue);
-                    if (!config.key) {
-                        return 'The key must have a value';
-                    }
-                } catch {
-                    return 'Invalid JSON';
-                }
-                return null;
-            },
-        },
-        validateInputOnBlur: true,
     });
 
     return (
