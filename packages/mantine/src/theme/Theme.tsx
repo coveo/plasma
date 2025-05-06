@@ -47,6 +47,7 @@ import {
     Tooltip,
 } from '@mantine/core';
 import {InfoToken} from '../components';
+import {CircleLoader} from '../components/loader/CircleLoader';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
@@ -261,7 +262,8 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Loader: Loader.extend({
             defaultProps: {
-                type: 'dots',
+                loaders: {...Loader.defaultLoaders, circle: CircleLoader},
+                type: 'circle',
                 role: 'presentation',
             },
         }),

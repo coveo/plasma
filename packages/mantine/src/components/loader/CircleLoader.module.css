@@ -1,0 +1,29 @@
+.root {
+    --loader-light-color: var(--mantine-primary-color-light);
+
+    display: inline-block;
+    width: var(--loader-size);
+    height: var(--loader-size);
+
+    &::after {
+        content: '';
+        display: block;
+        width: var(--loader-size);
+        height: var(--loader-size);
+        border-radius: 10000px;
+        border-width: calc(var(--loader-size) / 8);
+        border-style: solid;
+        border-color: var(--loader-light-color) var(--loader-light-color) var(--loader-light-color) var(--loader-color);
+        animation: circle-loader-animation 1.2s linear infinite;
+    }
+}
+
+@keyframes circle-loader-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
