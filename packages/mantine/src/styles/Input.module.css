@@ -15,5 +15,9 @@
 }
 
 .section {
-    color: var(--input-section-color);
+    color: var(--coveo-color-input-border);
+
+    > svg {
+        color: var(--mantine-color-gray-3);
+    }
 }

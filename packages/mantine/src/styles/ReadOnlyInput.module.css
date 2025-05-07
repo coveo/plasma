@@ -2,9 +2,9 @@
     cursor: text;
 
     --input-bd: transparent;
-    --input-bg: var(--mantine-color-dark-light);
+    --input-bg: var(--mantine-color-gray-1);
     --input-color: var(--mantine-color-text);
-    --input-placeholder-color: var(--mantine-color-text);
+    --input-placeholder-color: var(--mantine-color-placeholder);
 }
 
 .section {
