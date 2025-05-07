@@ -1,5 +1,14 @@
+.root {
+    --pagination-active-bg: var(--mantine-primary-color-light);
+    --pagination-active-color: var(--mantine-primary-color-filled);
+}
+
 .control {
     @mixin where-light {
-        border-color: var(--coveo-color-input-border);
+        border-color: var(--mantine-color-default-border);
+    }
+
+    &[data-active] {
+        border: none;
     }
 }
