@@ -5,6 +5,10 @@
 
 .control {
     @mixin where-light {
-        border-color: var(--coveo-color-input-border);
+        border-color: var(--mantine-color-default-border);
+    }
+
+    &[data-active] {
+        border: none;
     }
 }
