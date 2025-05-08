@@ -2,3 +2,16 @@
     display: flex;
     align-items: flex-start;
 }
+
+.radio {
+    @mixin where-light {
+        &[data-error='false'] {
+            border-color: var(--coveo-color-input-border);
+        }
+    }
+
+    &:disabled {
+        background-color: var(--coveo-color-bg-default-disabled);
+        border: none;
+    }
+}
