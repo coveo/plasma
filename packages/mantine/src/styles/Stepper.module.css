@@ -1,3 +1,21 @@
+.root {
+    --stepper-outline-thickness: 1px;
+    --stepper-outline-color: var(--mantine-color-default-border);
+    --stepper-icon-color: var(--mantine-primary-color-filled);
+}
+
 .stepIcon {
+    background-color: var(--mantine-color-gray-light);
     font-weight: 500;
+
+    &:where([data-completed]) {
+        --stepper-icon-color: var(--step-color);
+
+        background-color: alpha(var(--step-color), 0.1);
+        color: var(--step-color);
+    }
+
+    &:where([data-progress]) {
+        background-color: var(--mantine-color-body);
+    }
 }
