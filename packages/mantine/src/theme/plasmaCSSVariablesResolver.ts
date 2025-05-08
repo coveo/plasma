@@ -1,4 +1,4 @@
-import {ConvertCSSVariablesInput, CSSVariablesResolver, rgba} from '@mantine/core';
+import {alpha, ConvertCSSVariablesInput, CSSVariablesResolver} from '@mantine/core';
 
 export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
     const result: ConvertCSSVariablesInput = {
@@ -9,7 +9,7 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--coveo-color-input-border': theme.colors.gray[3],
             '--coveo-color-title': theme.colors.gray[8],
             '--coveo-color-text-disabled': theme.colors.gray[3],
-            '--coveo-color-bg-default-disabled': rgba(theme.colors.gray[4], 0.1),
+            '--coveo-color-bg-default-disabled': alpha(theme.colors.gray[4], 0.1),
 
             // mantine overrides
             '--mantine-color-default-border': theme.colors.gray[2],
