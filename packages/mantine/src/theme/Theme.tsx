@@ -178,17 +178,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return CheckboxClasses;
             },
-            vars: (theme, props) => {
-                if (props.readOnly && !props.disabled) {
-                    return {
-                        root: {
-                            '--checkbox-icon-color': 'var(--mantine-color-black)',
-                            '--checkbox-color': theme.colors.gray[1],
-                        },
-                    };
-                }
-                return {root: {}};
-            },
         }),
         CheckboxIndicator: Checkbox.Indicator.extend({
             defaultProps: {

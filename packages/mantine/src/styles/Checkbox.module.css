@@ -3,10 +3,43 @@
 So we are allowing ourselves some custom style to achieve the desired effect
 */
 .input {
-    @mixin where-light {
-        &[readonly] {
+    @mixin light {
+        /* targets the default checkbox without overiding mantine's base rules */
+        &:not([data-indeterminate], :checked, [readonly], :disabled, [data-error='true']) {
             border-color: var(--coveo-color-input-border);
-            background-color: var(--checkbox-color);
+        }
+
+        /* mantine doesn't have a concept of readonly checkbox */
+        &[readonly] {
+            border-color: var(--mantine-color-default-border);
+            background-color: var(--coveo-color-bg-readonly);
+            color: var(--coveo-color-text-readonly);
+
+            & + .icon {
+                color: var(--coveo-color-text-readonly);
+            }
+        }
+
+        /* mantine hardcodes disabled styles so we need to write custom styles */
+        &:disabled {
+            border-color: var(--coveo-color-bg-disabled);
+            background-color: var(--coveo-color-bg-disabled);
+            color: var(--coveo-color-text-disabled);
+
+            & + .icon {
+                color: var(--coveo-color-text-disabled);
+            }
+        }
+    }
+}
+
+.labelWrapper {
+    @mixin light {
+        &[data-disabled] {
+            .label,
+            .description {
+                color: var(--coveo-color-text-disabled);
+            }
         }
     }
 }
