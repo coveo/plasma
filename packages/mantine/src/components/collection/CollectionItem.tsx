@@ -8,20 +8,23 @@ import {ActionIcon} from '../action-icon';
 import {useCollectionContext} from './CollectionContext';
 
 interface CollectionItemProps extends CollectionItemSharedProps {
+    data_index: number;
     draggable?: boolean;
     disabled: boolean;
 }
 
 interface CollectionItemSharedProps extends GroupProps {
     id: string;
+    data_index: number;
     onRemove?: React.MouseEventHandler<HTMLButtonElement>;
     removable?: boolean;
 }
 
 const RemoveButton: FunctionComponent<{
+    data_index: number;
     onClick: React.MouseEventHandler<HTMLButtonElement>;
-}> = ({onClick}) => (
-    <ActionIcon.Quaternary style={{alignSelf: 'center'}} onClick={onClick}>
+}> = ({onClick, data_index}) => (
+    <ActionIcon.Quaternary data-testid={`remove-${data_index}`} style={{alignSelf: 'center'}} onClick={onClick}>
         <IconCircleMinus aria-label="Remove" size={20} />
     </ActionIcon.Quaternary>
 );
@@ -30,11 +33,17 @@ const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
 
 const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     onRemove,
+    data_index,
     removable = true,
     children,
 }) => {
     const ctx = useCollectionContext();
-    const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : <RemoveButtonPlaceholder />;
+    const removeButton =
+        removable && onRemove ? (
+            <RemoveButton data_index={data_index} onClick={onRemove} />
+        ) : (
+            <RemoveButtonPlaceholder />
+        );
 
     return (
         <Group {...ctx.getStyles('item')}>
@@ -52,11 +61,12 @@ const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItem
 const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     id,
     onRemove,
+    data_index,
     removable = true,
     children,
 }) => {
     const ctx = useCollectionContext();
-    const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : null;
+    const removeButton = removable && onRemove ? <RemoveButton data_index={data_index} onClick={onRemove} /> : null;
     const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
         id,
     });

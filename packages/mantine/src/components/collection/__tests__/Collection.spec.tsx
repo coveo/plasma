@@ -13,17 +13,19 @@ describe('Collection', () => {
             });
             return (
                 <Collection<string> newItem="" {...form.getInputProps('fruits')}>
-                    {(name) => <span data-testid="item">{name}</span>}
+                    {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                 </Collection>
             );
         };
 
         render(<Fixture />);
 
-        const items = screen.getAllByTestId('item');
+        const items = screen.getAllByTestId(/item-/);
         expect(items).toHaveLength(2);
         expect(items[0]).toHaveTextContent('banana');
         expect(items[1]).toHaveTextContent('orange');
+        expect(screen.getByTestId('remove-0')).toBeInTheDocument();
+        expect(screen.getByTestId('remove-1')).toBeInTheDocument();
     });
 
     it('removes the item when clicking on its remove button', async () => {
@@ -36,7 +38,7 @@ describe('Collection', () => {
             return (
                 <>
                     <Collection newItem="" {...form.getInputProps('fruits')}>
-                        {(name) => <span data-testid="item">{name}</span>}
+                        {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                     </Collection>
                     <div data-testid="form-state">{JSON.stringify(form.values)}</div>
                 </>
@@ -44,16 +46,18 @@ describe('Collection', () => {
         };
 
         render(<Fixture />);
-        let items = screen.getAllByTestId('item');
+        let items = screen.getAllByTestId(/item-/);
         expect(items).toHaveLength(2);
 
         const removeBanana = await within(items[0].parentElement).findByRole('button', {name: /remove/i});
 
         await user.click(removeBanana);
 
-        items = screen.getAllByTestId('item');
-        expect(screen.getAllByTestId('item')).toHaveLength(1);
-        expect(items[0]).toHaveTextContent('orange');
+        items = screen.getAllByTestId(/item-/);
+        expect(items).toHaveLength(1);
+        expect(screen.queryByTestId('item-1')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('remove-1')).not.toBeInTheDocument();
+        expect(screen.getByTestId('item-0')).toHaveTextContent('orange');
         expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["orange"]}');
     });
 
@@ -66,22 +70,25 @@ describe('Collection', () => {
                 enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
             });
             return (
-                <Collection newItem="" {...form.getInputProps('fruits')} onRemoveItem={onRemoveItemSpy}>
-                    {(name) => <span data-testid="item">{name}</span>}
+                <Collection
+                    data-testid="collection"
+                    newItem=""
+                    {...form.getInputProps('fruits')}
+                    onRemoveItem={onRemoveItemSpy}
+                >
+                    {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                 </Collection>
             );
         };
 
         render(<Fixture />);
-        let items = screen.getAllByTestId('item');
+        const items = screen.getAllByTestId(/item-/);
         expect(items).toHaveLength(2);
-
         const removeOrange = await within(items[1].parentElement).findByRole('button', {name: /remove/i});
         await user.click(removeOrange);
 
         expect(onRemoveItemSpy).toHaveBeenCalledWith(1);
 
-        items = screen.getAllByTestId('item');
         const removeBanana = await within(items[0].parentElement).findByRole('button', {name: /remove/i});
         await user.click(removeBanana);
 
@@ -100,7 +107,7 @@ describe('Collection', () => {
                 <>
                     <button onClick={() => setDisabled(true)}>disable</button>
                     <Collection newItem="" {...form.getInputProps('fruits')} disabled={disabled}>
-                        {(name) => <span data-testid="item">{name}</span>}
+                        {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                     </Collection>
                 </>
             );
@@ -122,7 +129,7 @@ describe('Collection', () => {
             return (
                 <>
                     <Collection newItem="new" {...form.getInputProps('fruits')}>
-                        {(name) => <span data-testid="item">{name}</span>}
+                        {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                     </Collection>
                     <div data-testid="form-state">{JSON.stringify(form.values)}</div>
                 </>
@@ -133,11 +140,12 @@ describe('Collection', () => {
         const addItem = screen.getByRole('button', {name: /add/i});
         await user.click(addItem);
 
-        const items = screen.getAllByTestId('item');
+        const items = screen.getAllByTestId(/item-/);
         expect(items).toHaveLength(3);
         expect(items[0]).toHaveTextContent('banana');
         expect(items[1]).toHaveTextContent('orange');
         expect(items[2]).toHaveTextContent('new');
+        expect(screen.getByTestId('remove-2')).toBeInTheDocument();
         expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","orange","new"]}');
     });
 
@@ -151,7 +159,7 @@ describe('Collection', () => {
             return (
                 <>
                     <Collection newItem="new" {...form.getInputProps('fruits')} allowAdd={allowAdd}>
-                        {(name) => <span data-testid="item">{name}</span>}
+                        {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                     </Collection>
                     <div data-testid="form-state">{JSON.stringify(form.values)}</div>
                 </>
@@ -176,7 +184,7 @@ describe('Collection', () => {
                 });
                 return (
                     <Collection data-testid="collection" {...form.getInputProps('fruits')} newItem="new" required>
-                        {(name) => <span data-testid="item">{name}</span>}
+                        {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                     </Collection>
                 );
             };
@@ -185,7 +193,7 @@ describe('Collection', () => {
 
             expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
 
-            const items = screen.getAllByTestId('item');
+            const items = screen.getAllByTestId(/item-/);
             expect(items).toHaveLength(1);
             expect(items[0]).toHaveTextContent('banana');
         });
@@ -198,7 +206,7 @@ describe('Collection', () => {
                 });
                 return (
                     <Collection data-testid="collection" {...form.getInputProps('fruits')} newItem="new" required>
-                        {(name) => <span data-testid="item">{name}</span>}
+                        {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                     </Collection>
                 );
             };
@@ -209,7 +217,7 @@ describe('Collection', () => {
             const removeButtons = screen.queryAllByRole('button', {name: /remove/i});
             expect(removeButtons).toHaveLength(2);
 
-            const items = screen.getAllByTestId('item');
+            const items = screen.getAllByTestId(/item-/);
             expect(items).toHaveLength(2);
             expect(items[0]).toHaveTextContent('banana');
             expect(items[1]).toHaveTextContent('orange');
@@ -224,7 +232,7 @@ describe('Collection', () => {
                 });
                 return (
                     <Collection data-testid="collection" {...form.getInputProps('fruits')} newItem="new" required>
-                        {(name) => <span data-testid="item">{name}</span>}
+                        {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                     </Collection>
                 );
             };
@@ -236,7 +244,7 @@ describe('Collection', () => {
             const removeButtons = screen.queryAllByRole('button', {name: /remove/i});
             expect(removeButtons).toHaveLength(2);
 
-            const items = screen.getAllByTestId('item');
+            const items = screen.getAllByTestId(/item-/);
             expect(items).toHaveLength(2);
             expect(items[0]).toHaveTextContent('banana');
             expect(items[1]).toHaveTextContent('orange');
@@ -257,7 +265,7 @@ describe('Collection', () => {
                 return (
                     <>
                         <Collection newItem="new" {...form.getInputProps('fruits')} draggable>
-                            {(name) => <span data-testid="item">{name}</span>}
+                            {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                         </Collection>
                     </>
                 );
@@ -285,7 +293,7 @@ describe('Collection', () => {
                             required
                             draggable
                         >
-                            {(name) => <span data-testid="item">{name}</span>}
+                            {(name, index) => <span data-testid={`item-${index}`}>{name}</span>}
                         </Collection>
                     );
                 };
@@ -297,7 +305,7 @@ describe('Collection', () => {
                 const removeButtons = screen.queryAllByRole('button', {name: /remove/i});
                 expect(removeButtons).toHaveLength(2);
 
-                const items = screen.getAllByTestId('item');
+                const items = screen.getAllByTestId(/item-/);
                 expect(items).toHaveLength(2);
                 expect(items[0]).toHaveTextContent('banana');
                 expect(items[1]).toHaveTextContent('orange');
