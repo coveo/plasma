@@ -67,6 +67,7 @@ import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
 import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
+import SelectClasses from '../styles/Select.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
 import TableClasses from '../styles/Table.module.css';
@@ -346,6 +347,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Select: Select.extend({
             defaultProps: {allowDeselect: false},
+            classNames: SelectClasses,
         }),
         Skeleton: Skeleton.extend({
             classNames: SkeletonClasses,

@@ -1,0 +1,21 @@
+.option {
+    @mixin hover {
+        &[data-disabled='false'] {
+            background-color: var(--mantine-color-default-hover);
+        }
+    }
+
+    &[data-combobox-active='true'],
+    &[aria-selected='true'] {
+        background-color: var(--mantine-primary-color-light);
+        color: var(--mantine-primary-color-5);
+
+        > svg {
+            opacity: 1;
+        }
+    }
+}
+
+.groupLabel {
+    color: var(--mantine-color-placeholder);
+}
