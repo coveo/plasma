@@ -16,7 +16,7 @@
 
 .radio {
     @mixin light {
-        &[data-error='false'] {
+        &:not([data-disabled]) {
             border-color: var(--coveo-color-input-border);
         }
 
