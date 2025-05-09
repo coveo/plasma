@@ -8,23 +8,21 @@ import {ActionIcon} from '../action-icon';
 import {useCollectionContext} from './CollectionContext';
 
 interface CollectionItemProps extends CollectionItemSharedProps {
-    data_index: number;
     draggable?: boolean;
     disabled: boolean;
 }
 
 interface CollectionItemSharedProps extends GroupProps {
     id: string;
-    data_index: number;
+    testId: string;
     onRemove?: React.MouseEventHandler<HTMLButtonElement>;
     removable?: boolean;
 }
 
 const RemoveButton: FunctionComponent<{
-    data_index: number;
     onClick: React.MouseEventHandler<HTMLButtonElement>;
-}> = ({onClick, data_index}) => (
-    <ActionIcon.Quaternary data-testid={`remove-${data_index}`} style={{alignSelf: 'center'}} onClick={onClick}>
+}> = ({onClick}) => (
+    <ActionIcon.Quaternary style={{alignSelf: 'center'}} onClick={onClick}>
         <IconCircleMinus aria-label="Remove" size={20} />
     </ActionIcon.Quaternary>
 );
@@ -33,46 +31,49 @@ const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
 
 const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     onRemove,
-    data_index,
     removable = true,
+    testId,
     children,
 }) => {
     const ctx = useCollectionContext();
-    const removeButton =
-        removable && onRemove ? (
-            <RemoveButton data_index={data_index} onClick={onRemove} />
-        ) : (
-            <RemoveButtonPlaceholder />
-        );
+    const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : <RemoveButtonPlaceholder />;
 
     return (
-        <Group {...ctx.getStyles('item')}>
+        <Group data-testid={testId} {...ctx.getStyles('item')}>
             {children}
             {removeButton}
         </Group>
     );
 };
 
-const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({children}) => {
+const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
+    children,
+    testId,
+}) => {
     const ctx = useCollectionContext();
-    return <Group {...ctx.getStyles('item')}>{children}</Group>;
+    return (
+        <Group data-testid={testId} {...ctx.getStyles('item')}>
+            {children}
+        </Group>
+    );
 };
 
 const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     id,
     onRemove,
-    data_index,
+    testId,
     removable = true,
     children,
 }) => {
     const ctx = useCollectionContext();
-    const removeButton = removable && onRemove ? <RemoveButton data_index={data_index} onClick={onRemove} /> : null;
+    const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : null;
     const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
         id,
     });
 
     return (
         <Group
+            data-testid={testId}
             ref={setNodeRef}
             {...ctx.getStyles('item', {
                 style: transform
