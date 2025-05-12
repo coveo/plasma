@@ -1,5 +1,12 @@
+/* 
+`readonly` state on checkboxes is not something that exists in Mantine.
+So we are allowing ourselves some custom style to achieve the desired effect
+*/
 .indicator {
     @mixin where-light {
-        border-color: var(--coveo-color-input-border);
+        &[readonly] {
+            border-color: var(--coveo-color-input-border);
+            background-color: var(--checkbox-color);
+        }
     }
 }
