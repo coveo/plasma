@@ -14,7 +14,6 @@ interface CollectionItemProps extends CollectionItemSharedProps {
 
 interface CollectionItemSharedProps extends GroupProps {
     id: string;
-    testId: string;
     onRemove?: React.MouseEventHandler<HTMLButtonElement>;
     removable?: boolean;
 }
@@ -32,27 +31,24 @@ const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
 const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     onRemove,
     removable = true,
-    testId,
+    id,
     children,
 }) => {
     const ctx = useCollectionContext();
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : <RemoveButtonPlaceholder />;
 
     return (
-        <Group data-testid={testId} {...ctx.getStyles('item')}>
+        <Group data-testid={`item-${id}`} {...ctx.getStyles('item')}>
             {children}
             {removeButton}
         </Group>
     );
 };
 
-const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
-    children,
-    testId,
-}) => {
+const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({id, children}) => {
     const ctx = useCollectionContext();
     return (
-        <Group data-testid={testId} {...ctx.getStyles('item')}>
+        <Group data-testid={`item-${id}`} {...ctx.getStyles('item')}>
             {children}
         </Group>
     );
@@ -61,7 +57,6 @@ const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItem
 const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     id,
     onRemove,
-    testId,
     removable = true,
     children,
 }) => {
@@ -73,7 +68,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
 
     return (
         <Group
-            data-testid={testId}
+            data-testid={`item-${id}`}
             ref={setNodeRef}
             {...ctx.getStyles('item', {
                 style: transform
