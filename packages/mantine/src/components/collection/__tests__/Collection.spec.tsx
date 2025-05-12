@@ -13,7 +13,7 @@ describe('Collection', () => {
             });
             return (
                 <Collection<string> newItem="" {...form.getInputProps('fruits')}>
-                    {(name) => <span data-testid={'item'}>{name}</span>}
+                    {(name) => <span data-testid="item">{name}</span>}
                 </Collection>
             );
         };
@@ -29,7 +29,7 @@ describe('Collection', () => {
     });
 
     it('renders one item for each initial values in the form with custom id', () => {
-        const getItemId = vi.fn((item) => `id-${item}`);
+        const getItemId = (item: any) => `id-${item}`;
 
         const Fixture = () => {
             const form = useForm({
@@ -38,7 +38,7 @@ describe('Collection', () => {
             });
             return (
                 <Collection<string> getItemId={getItemId} newItem="" {...form.getInputProps('fruits')}>
-                    {(name) => <span data-testid={'item'}>{name}</span>}
+                    {(name) => <span data-testid="item">{name}</span>}
                 </Collection>
             );
         };
@@ -63,7 +63,7 @@ describe('Collection', () => {
             return (
                 <>
                     <Collection newItem="" {...form.getInputProps('fruits')}>
-                        {(name) => <span data-testid={'item'}>{name}</span>}
+                        {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                     <div data-testid="form-state">{JSON.stringify(form.values)}</div>
                 </>
@@ -85,8 +85,8 @@ describe('Collection', () => {
     });
 
     it('removes the item when clicking on its remove button with custom id', async () => {
-        const user = userEvent.setup({delay: null});
-        const getItemId = vi.fn((item) => `id-${item}`);
+        const user = userEvent.setup();
+        const getItemId = (item: any) => `id-${item}`;
 
         const Fixture = () => {
             const form = useForm({
@@ -96,7 +96,7 @@ describe('Collection', () => {
             return (
                 <>
                     <Collection getItemId={getItemId} newItem="" {...form.getInputProps('fruits')}>
-                        {(name) => <span data-testid={'item'}>{name}</span>}
+                        {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                     <div data-testid="form-state">{JSON.stringify(form.values)}</div>
                 </>
@@ -135,7 +135,7 @@ describe('Collection', () => {
                     {...form.getInputProps('fruits')}
                     onRemoveItem={onRemoveItemSpy}
                 >
-                    {(name) => <span data-testid={'item'}>{name}</span>}
+                    {(name) => <span data-testid="item">{name}</span>}
                 </Collection>
             );
         };
@@ -166,7 +166,7 @@ describe('Collection', () => {
                 <>
                     <button onClick={() => setDisabled(true)}>disable</button>
                     <Collection newItem="" {...form.getInputProps('fruits')} disabled={disabled}>
-                        {(name) => <span data-testid={'item'}>{name}</span>}
+                        {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                 </>
             );
@@ -188,7 +188,7 @@ describe('Collection', () => {
             return (
                 <>
                     <Collection newItem="new" {...form.getInputProps('fruits')}>
-                        {(name) => <span data-testid={'item'}>{name}</span>}
+                        {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                     <div data-testid="form-state">{JSON.stringify(form.values)}</div>
                 </>
@@ -210,7 +210,7 @@ describe('Collection', () => {
 
     it('adds a new item when clicking on the add button with custom id', async () => {
         const user = userEvent.setup({delay: null});
-        const getItemId = vi.fn((item) => `id-${item}`);
+        const getItemId = (item: any) => `id-${item}`;
         const Fixture = () => {
             const form = useForm({
                 initialValues: {fruits: ['banana', 'orange']},
@@ -219,7 +219,7 @@ describe('Collection', () => {
             return (
                 <>
                     <Collection getItemId={getItemId} newItem="new" {...form.getInputProps('fruits')}>
-                        {(name) => <span data-testid={'item'}>{name}</span>}
+                        {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                     <div data-testid="form-state">{JSON.stringify(form.values)}</div>
                 </>
@@ -249,7 +249,7 @@ describe('Collection', () => {
             return (
                 <>
                     <Collection newItem="new" {...form.getInputProps('fruits')} allowAdd={allowAdd}>
-                        {(name) => <span data-testid={'item'}>{name}</span>}
+                        {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                     <div data-testid="form-state">{JSON.stringify(form.values)}</div>
                 </>
@@ -274,7 +274,7 @@ describe('Collection', () => {
                 });
                 return (
                     <Collection data-testid="collection" {...form.getInputProps('fruits')} newItem="new" required>
-                        {(name) => <span data-testid={'item'}>{name}</span>}
+                        {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                 );
             };
@@ -296,7 +296,7 @@ describe('Collection', () => {
                 });
                 return (
                     <Collection data-testid="collection" {...form.getInputProps('fruits')} newItem="new" required>
-                        {(name) => <span data-testid={'item'}>{name}</span>}
+                        {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                 );
             };
@@ -324,7 +324,7 @@ describe('Collection', () => {
                 });
                 return (
                     <Collection data-testid="collection" {...form.getInputProps('fruits')} newItem="new" required>
-                        {(name) => <span data-testid={'item'}>{name}</span>}
+                        {(name) => <span data-testid="item">{name}</span>}
                     </Collection>
                 );
             };
@@ -361,7 +361,7 @@ describe('Collection', () => {
                 return (
                     <>
                         <Collection newItem="new" {...form.getInputProps('fruits')} draggable>
-                            {(name) => <span data-testid={'item'}>{name}</span>}
+                            {(name) => <span data-testid="item">{name}</span>}
                         </Collection>
                     </>
                 );
@@ -389,7 +389,7 @@ describe('Collection', () => {
                             required
                             draggable
                         >
-                            {(name) => <span data-testid={'item'}>{name}</span>}
+                            {(name) => <span data-testid="item">{name}</span>}
                         </Collection>
                     );
                 };
