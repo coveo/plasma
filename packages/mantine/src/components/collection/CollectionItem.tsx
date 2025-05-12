@@ -31,22 +31,27 @@ const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
 const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     onRemove,
     removable = true,
+    id,
     children,
 }) => {
     const ctx = useCollectionContext();
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : <RemoveButtonPlaceholder />;
 
     return (
-        <Group {...ctx.getStyles('item')}>
+        <Group data-testid={`item-${id}`} {...ctx.getStyles('item')}>
             {children}
             {removeButton}
         </Group>
     );
 };
 
-const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({children}) => {
+const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({id, children}) => {
     const ctx = useCollectionContext();
-    return <Group {...ctx.getStyles('item')}>{children}</Group>;
+    return (
+        <Group data-testid={`item-${id}`} {...ctx.getStyles('item')}>
+            {children}
+        </Group>
+    );
 };
 
 const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
@@ -63,6 +68,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
 
     return (
         <Group
+            data-testid={`item-${id}`}
             ref={setNodeRef}
             {...ctx.getStyles('item', {
                 style: transform
