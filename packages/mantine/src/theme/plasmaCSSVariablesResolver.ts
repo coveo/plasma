@@ -25,6 +25,12 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--mantine-color-placeholder': theme.colors.gray[4],
             '--mantine-color-default-hover': theme.colors.gray[1],
             '--mantine-radius-default': theme.radius.sm,
+            /**
+             * ADUI-10725 https://coveord.atlassian.net/browse/ADUI-10725
+             * '--mantine-color-disabled'
+             * '--mantine-color-disabled-color'
+             * '--mantine-color-disabled-border'
+             */
         },
     };
     return result;

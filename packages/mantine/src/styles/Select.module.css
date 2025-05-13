@@ -22,11 +22,25 @@
                 opacity: 1;
             }
         }
+
+        &[data-combobox-selected] {
+            background-color: var(--mantine-primary-color-filled);
+            color: white;
+        }
     }
 }
 
 .groupLabel {
     @mixin light {
         color: var(--mantine-color-placeholder);
+    }
+}
+
+.input {
+    @mixin light {
+        &[data-disabled] {
+            --input-disabled-bg: var(--coveo-color-bg-disabled);
+            --input-bd: var(--mantine-color-gray-2);
+        }
     }
 }

@@ -346,7 +346,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: SegmentedControlClasses,
         }),
         Select: Select.extend({
-            defaultProps: {allowDeselect: false},
+            defaultProps: {allowDeselect: false, withCheckIcon: false},
             classNames: SelectClasses,
         }),
         Skeleton: Skeleton.extend({
