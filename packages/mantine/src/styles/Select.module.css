@@ -4,7 +4,7 @@
         border-radius: var(--mantine-radius-sm);
 
         @mixin hover {
-            &:not([data-combobox-disabled], [data-checked]) {
+            &:not([data-combobox-disabled], [data-checked], [data-combobox-selected]) {
                 background-color: var(--mantine-color-default-hover);
             }
         }

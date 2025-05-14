@@ -9,4 +9,8 @@
 
 .section {
     --input-section-color: var(--mantine-color-text);
+
+    > svg {
+        color: var(--mantine-color-gray-3);
+    }
 }

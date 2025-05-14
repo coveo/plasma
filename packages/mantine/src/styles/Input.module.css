@@ -10,13 +10,15 @@
     }
 
     &[data-disabled] {
-        --input-section-color: var(--input-disabled-color);
+        > .section {
+            > svg {
+                color: var(--input-disabled-color);
+            }
+        }
     }
 }
 
 .section {
-    color: var(--coveo-color-input-border);
-
     > svg {
         color: var(--mantine-color-gray-3);
     }
