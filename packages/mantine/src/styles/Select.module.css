@@ -16,7 +16,7 @@
 
         &[data-combobox-active='true'] {
             background-color: var(--mantine-primary-color-light);
-            color: var(--mantine-primary-color-5);
+            color: var(--mantine-primary-color-filled);
 
             + svg {
                 opacity: 1;
@@ -40,7 +40,7 @@
     @mixin light {
         &[data-disabled] {
             --input-disabled-bg: var(--coveo-color-bg-disabled);
-            --input-bd: var(--mantine-color-gray-2);
+            --input-bd: var(--mantine-color-default-border);
         }
     }
 }

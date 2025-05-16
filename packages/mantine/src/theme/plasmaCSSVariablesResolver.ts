@@ -24,7 +24,6 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--mantine-color-warning-filled': theme.colors.yellow[4],
             '--mantine-color-placeholder': theme.colors.gray[4],
             '--mantine-color-default-hover': theme.colors.gray[1],
-            '--mantine-radius-default': theme.radius.md,
             /**
              * ADUI-10725 https://coveord.atlassian.net/browse/ADUI-10725
              * '--mantine-color-disabled'

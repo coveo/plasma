@@ -1,7 +1,7 @@
 .input {
     cursor: text;
 
-    --input-bd: var(--mantine-color-gray-2);
+    --input-bd: var(--mantine-color-default-border);
     --input-bg: var(--mantine-color-gray-1);
     --input-color: var(--mantine-color-text);
     --input-placeholder-color: var(--mantine-color-placeholder);
