@@ -211,7 +211,7 @@ export default tsEslint.config(
         },
     },
     {
-        files: ['packages/website/**'],
+        files: ['packages/website/src/pages/**', 'packages/website/src/search/**', 'packages/website/src/*.tsx'],
         rules: {'i18next/no-literal-string': ['error', {mode: 'jsx-text-only'}]},
     },
     {
