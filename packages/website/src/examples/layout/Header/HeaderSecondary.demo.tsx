@@ -4,9 +4,9 @@ const Demo = () => (
     <Header variant="secondary">
         Title
         <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
-        <Header.Actions>
+        <Header.Right>
             <CloseButton />
-        </Header.Actions>
+        </Header.Right>
     </Header>
 );
 export default Demo;

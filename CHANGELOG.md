@@ -1,65 +1,97 @@
-## <small>55.7.2-next.8 (2025-04-03)</small>
+## <small>55.7.2-next.22 (2025-04-24)</small>
 
-* chore: update border colors of Mantine table and checkbox indicator 0349c5a
-
-
-
-## <small>55.7.2-next.7 (2025-04-03)</small>
-
-* chore: revert sizing changes fa3fdcc
+* fix(mantine, badge): font-size and text-transform (#4055) ee34551, closes #4055
 
 
 
-## <small>55.7.2-next.6 (2025-04-03)</small>
+## <small>55.7.2-next.21 (2025-04-17)</small>
 
-* chore: fix type check c9814cf
-* chore: update variables and colors e28ad16
-
-
-
-## <small>55.7.2-next.5 (2025-04-02)</small>
-
-* chore: update border colors c3d3f6e
+* feat(mantine, action icon): apply style changes and create semantic components (#4053) a91accb, closes #4053
 
 
 
-## <small>55.7.2-next.4 (2025-04-01)</small>
+## <small>55.7.2-next.20 (2025-04-16)</small>
 
-* feat(mantine, accordion): add an Accordion.ControlDisabled component c0389c4
-* feat(mantine, tooltip): remove custom color a03c554
-
-
-
-## <small>55.7.2-next.3 (2025-03-26)</small>
-
-* chore: forgot to remove the import 287ae27
-* fix(mantine): change font-weight from book to regular d00cf2d
+* feat(mantine, button): update style (#4052) de3eba4, closes #4052
+* feat(mantine, modal): update overlay style (#4051) 5023f4f, closes #4051
 
 
 
-## <small>55.7.2-next.2 (2025-03-21)</small>
+## <small>55.7.2-next.19 (2025-04-15)</small>
 
-* chore: minor changes to the theme 0f66d12
-
-
-
-## <small>55.7.2-next.1 (2025-03-12)</small>
-
-* chore: adjust theme radius and border color c0f0ea2
-* chore: fix tests cd737d2
-* chore: minor updates to theme 170046f
-* chore: remove action color usage 7139bcf
+* feat(mantine): improve CopyToClipboard component (#4050) 5a5bbfe, closes #4050
 
 
 
-## <small>55.7.2-next.0 (2025-02-25)</small>
+## <small>55.7.2-next.18 (2025-04-14)</small>
 
-* Merge branch 'master' of github.com:coveo/plasma into next 97265bb
-* Merge branch 'master' of github.com:coveo/plasma into next 09ce65d
-* Merge branch 'master' of github.com:coveo/plasma into next 7e4c32c
-* chore(release): publish version v55.3.4-next.0 [skip ci] c9ab861
-* chore(release): publish version v55.5.2-next.0 [skip ci] 84080a1
-* feat(mantine): remove a lot of custom style to get a vanilla style (#3986) 354db73, closes #3986
+* fix(mantine): revert header variant removal on root node 207b9ae
+
+
+
+## <small>55.7.2-next.17 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name second try 810e709
+
+
+
+## <small>55.7.2-next.16 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name (#4049) 7abbf7a, closes #4049
+* fix(mantine, input): only add margin top if there's a title or description (#4048) 6d6b58a, closes #4048
+
+
+
+## <small>55.7.2-next.15 (2025-04-14)</small>
+
+* feat(react-icons): reexport tabler icons (#4045) 889df29, closes #4045
+* chore(mantine, input): update the style of the input and input wrapper (#4046) 4c37039, closes #4046
+
+
+
+## <small>55.7.2-next.14 (2025-04-11)</small>
+
+* fix(mantine, prompt): automatically add the Header if the title is a string (#4044) 029b6e6, closes #4044
+* Merge branch 'master' of github.com:coveo/plasma into next 60ab942
+* chore(deps): update all non-major dependencies (#4029) 659172f, closes #4029
+* chore(release): publish version v55.8.0 [skip ci] b14864b
+* feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043
+
+
+
+## 55.8.0 (2025-04-11)
+
+* feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043
+* chore(deps): update all non-major dependencies (#4029) 659172f, closes #4029
+* chore(deps): update dependency vite to v6.2.4 [security] (#4036) d645ee1, closes #4036
+
+
+
+## <small>55.7.3 (2025-03-25)</small>
+
+* chore(deps): update all non-major dependencies (#4027) 971fe64, closes #4027
+* chore(deps): update dependency vite to v6.2.3 [security] (#4031) 23f67f8, closes #4031
+* chore(mantine): make test script cross-env (#4030) 1acaa01, closes #4030
+* fix(CodeEditor): do not format if editor closed (#4032) 96392ef, closes #4032
+
+
+
+## <small>55.7.2 (2025-03-18)</small>
+
+* fix(mantine, CodeEditor): format text only on valid input (#4028) cbc1880, closes #4028
+* chore(deps): update actions/setup-node digest to cdca736 (#4026) b973873, closes #4026
+* chore(deps): update all non-major dependencies (#4007) 836a6d8, closes #4007
+* chore(deps): update all non-major dependencies (#4016) 24c3cf1, closes #4016
+* chore(deps): update all non-major dependencies (#4019) 4751036, closes #4019
+* chore(deps): update all non-major dependencies (#4020) d0b80bd, closes #4020
+* chore(deps): update all non-major dependencies (#4021) 8dad170, closes #4021
+* chore(deps): update all non-major dependencies (#4022) a337942, closes #4022
+* chore(deps): update all non-major dependencies (#4025) 3741e15, closes #4025
+* chore(deps): update dependency @swc/core to v1.11.6 (#4023) f7df432, closes #4023
+* chore(deps): update dependency globals to v16 (#4017) a8411c3, closes #4017
+* chore(deps): update dependency sort-package-json to v3 (#4024) 83c2a32, closes #4024
+* chore(deps): update pnpm to v10 (#4008) e6418d4, closes #4008
+* fix(deps): update dependency react-markdown to v10 (#4018) f8a7a90, closes #4018
 
 
 

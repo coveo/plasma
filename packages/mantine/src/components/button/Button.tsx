@@ -26,6 +26,14 @@ type ButtonOverloadFactory = Factory<{
     variant: ButtonVariant;
     staticComponents: {
         Group: typeof ButtonGroup;
+        Primary: typeof ButtonPrimary;
+        Secondary: typeof ButtonSecondary;
+        Tertiary: typeof ButtonTertiary;
+        Quaternary: typeof ButtonQuaternary;
+        DestructivePrimary: typeof ButtonDestructive;
+        DestructiveSecondary: typeof ButtonDestructiveSecondary;
+        DestructiveTertiary: typeof ButtonDestructiveTertiary;
+        DestructiveQuaternary: typeof ButtonDestructiveQuaternary;
     };
 }>;
 
@@ -55,10 +63,28 @@ export const Button = polymorphicFactory<ButtonOverloadFactory>(
         );
     },
 );
-Button.Group = MantineButton.Group;
+const ButtonPrimary = Button.withProps({variant: 'filled'});
+const ButtonSecondary = Button.withProps({variant: 'light'});
+const ButtonTertiary = Button.withProps({
+    variant: 'default',
+    vars: () => ({root: {'--button-color': 'var(--mantine-primary-color-filled)'}}),
+});
+const ButtonQuaternary = Button.withProps({variant: 'subtle'});
 
-export const ButtonPrimary = Button.withProps({variant: 'filled'});
-export const ButtonSecondary = Button.withProps({variant: 'light'});
-export const ButtonTertiary = Button.withProps({variant: 'subtle'});
-export const ButtonDestructive = Button.withProps({variant: 'filled', color: 'var(--mantine-color-error)'});
-export const ButtonDestructiveSecondary = Button.withProps({variant: 'light', color: 'var(--mantine-color-error)'});
+const ButtonDestructive = Button.withProps({variant: 'filled', color: 'var(--mantine-color-error)'});
+const ButtonDestructiveSecondary = Button.withProps({variant: 'light', color: 'var(--mantine-color-error)'});
+const ButtonDestructiveTertiary = Button.withProps({
+    variant: 'default',
+    vars: () => ({root: {'--button-color': 'var(--mantine-color-error)'}}),
+});
+const ButtonDestructiveQuaternary = Button.withProps({variant: 'subtle', color: 'var(--mantine-color-error)'});
+
+Button.Group = MantineButton.Group;
+Button.Primary = ButtonPrimary;
+Button.Secondary = ButtonSecondary;
+Button.Tertiary = ButtonTertiary;
+Button.Quaternary = ButtonQuaternary;
+Button.DestructivePrimary = ButtonDestructive;
+Button.DestructiveSecondary = ButtonDestructiveSecondary;
+Button.DestructiveTertiary = ButtonDestructiveTertiary;
+Button.DestructiveQuaternary = ButtonDestructiveQuaternary;

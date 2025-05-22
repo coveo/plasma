@@ -1,0 +1,46 @@
+.option {
+    @mixin light {
+        color: var(--coveo-color-title);
+        border-radius: var(--mantine-radius-sm);
+
+        @mixin hover {
+            &:not([data-combobox-disabled], [data-checked], [data-combobox-selected]) {
+                background-color: var(--mantine-color-default-hover);
+            }
+        }
+
+        &[data-combobox-disabled] {
+            opacity: 1;
+            color: var(--coveo-color-text-disabled);
+        }
+
+        &[data-combobox-active='true'] {
+            background-color: var(--mantine-primary-color-light);
+            color: var(--mantine-primary-color-filled);
+
+            + svg {
+                opacity: 1;
+            }
+        }
+
+        &[data-combobox-selected] {
+            background-color: var(--mantine-primary-color-filled);
+            color: white;
+        }
+    }
+}
+
+.groupLabel {
+    @mixin light {
+        color: var(--mantine-color-placeholder);
+    }
+}
+
+.input {
+    @mixin light {
+        &[data-disabled] {
+            --input-disabled-bg: var(--coveo-color-bg-disabled);
+            --input-bd: var(--mantine-color-default-border);
+        }
+    }
+}

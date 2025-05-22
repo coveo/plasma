@@ -38,20 +38,20 @@ const ColorSchemePicker = () => {
     const computedColorScheme = useComputedColorScheme('light', {getInitialValueInEffect: true});
 
     return (
-        <ActionIcon
+        <ActionIcon.Quaternary
             onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
             color="white"
-            variant="subtle"
             size="xl"
             aria-label="Toggle color scheme"
         >
             {computedColorScheme === 'light' ? <MoonAndStarsSize32Px height={32} /> : <SunSize32Px height={32} />}
-        </ActionIcon>
+        </ActionIcon.Quaternary>
     );
 };
 
 const PrimaryColorPicker = () => (
     <Group gap="xs">
+        <ColorPickerSwatch color="teal" />
         <ColorPickerSwatch color="blue" />
         <ColorPickerSwatch color="violet" />
     </Group>

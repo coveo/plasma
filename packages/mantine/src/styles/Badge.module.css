@@ -1,3 +1,5 @@
 .root {
+    --badge-fz-md: 12px;
+
     font-weight: 500;
 }

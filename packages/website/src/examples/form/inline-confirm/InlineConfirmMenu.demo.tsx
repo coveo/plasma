@@ -4,7 +4,7 @@ const Demo = () => (
     <InlineConfirm>
         <Menu>
             <Menu.Target>
-                <Button>Menu</Button>
+                <Button.Primary>Menu</Button.Primary>
             </Menu.Target>
             <Menu.Dropdown>
                 <InlineConfirm.Target component={Menu.Item} inlineConfirmId="delete">

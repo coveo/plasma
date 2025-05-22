@@ -15,7 +15,7 @@ import {
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
 import Editor, {Monaco, loader} from '@monaco-editor/react';
-import {editor as monacoEditor} from 'monaco-editor';
+import {MarkerSeverity, editor as monacoEditor} from 'monaco-editor';
 import {FunctionComponent, useEffect, useRef, useState} from 'react';
 
 import cx from 'clsx';
@@ -48,6 +48,8 @@ interface CodeEditorProps
     onCopy?(): void;
     /** Called whenever the code editor gets the focus */
     onFocus?(): void;
+    /** Ref object that provides access to the editor's functionality */
+    editorHandle?: React.MutableRefObject<monacoEditor.IStandaloneCodeEditor | null>;
     /**
      * The minimal height of the CodeEditor (label and description included)
      *
@@ -108,6 +110,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         disabled,
         monacoLoader,
         options: {tabSize} = {tabSize: 2},
+        editorHandle,
         ...others
     } = useProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
@@ -119,6 +122,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     });
     const [parentHeight, ref] = useParentHeight();
     const editorRef = useRef(null);
+
     const loadLocalMonaco = async () => {
         const monacoInstance = await import('monaco-editor');
         loader.config({monaco: monacoInstance});
@@ -132,20 +136,12 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     };
 
     const registerThemes = (monaco: Monaco) => {
-        monaco.editor.defineTheme('light-disabled', {
+        monaco.editor.defineTheme('light', {
             base: 'vs',
             inherit: true,
             rules: [],
             colors: {
-                'editor.background': theme.colors.gray[2],
-            },
-        });
-        monaco.editor.defineTheme('vs-dark-disabled', {
-            base: 'vs-dark',
-            inherit: true,
-            rules: [],
-            colors: {
-                'editor.background': theme.colors.navy[7],
+                'editor.background': theme.colors.gray[0],
             },
         });
     };
@@ -159,6 +155,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     };
 
     const [hasMonacoError, setHasMonacoError] = useState(false);
+    const hasMonacoErrorRef = useRef(false);
+
+    hasMonacoErrorRef.current = hasMonacoError;
+
     const renderErrorOutline = !!error || hasMonacoError;
     const theme = useMantineTheme();
     const {colorScheme} = useMantineColorScheme();
@@ -172,9 +172,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     }, []);
 
     const handleValidate = (markers: monacoEditor.IMarker[]) => {
-        setHasMonacoError(
-            markers.some((marker) => marker.severity === loader.__getMonacoInstance().MarkerSeverity.Error),
-        );
+        setHasMonacoError(markers.some((marker) => marker.severity === MarkerSeverity.Error));
     };
 
     const _label = label ? (
@@ -187,24 +185,18 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         <Input.Description {...descriptionProps}>{description}</Input.Description>
     ) : null;
 
-    const _error = error ? (
-        <Input.Error mt="xs" {...errorProps}>
-            {error}
-        </Input.Error>
-    ) : (
-        <Space h="xs" />
-    );
+    const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : <Space h="xs" />;
 
     const _header =
         _label || _description ? (
-            <Box>
+            <Stack gap="xxs">
                 {_label}
                 {_description}
-            </Box>
+            </Stack>
         ) : null;
 
     const _buttons = (
-        <Group justify="right" gap={0}>
+        <Group justify="right" gap="xs">
             <Search handleSearch={handleSearch} />
             <CopyToClipboard value={_value} onCopy={() => onCopy?.()} />
         </Group>
@@ -241,13 +233,23 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 }}
                 value={_value}
                 onChange={handleChange}
-                onMount={(editor, monaco) => {
-                    editorRef.current = editor;
+                beforeMount={(monaco) => {
                     registerLanguages(monaco);
                     registerThemes(monaco);
+                }}
+                onMount={(editor) => {
+                    editorRef.current = editor;
+                    if (editorHandle) {
+                        editorHandle.current = editor;
+                    }
                     editor.onDidFocusEditorText(() => onFocus?.());
                     editor.onDidBlurEditorText(async () => {
-                        await editor.getAction('editor.action.formatDocument').run();
+                        // monaco editor has a timeout of 500ms populating errors, we want to ensure that checking errors happen after that
+                        setTimeout(async () => {
+                            if (!hasMonacoErrorRef.current) {
+                                await editor?.getAction('editor.action.formatDocument')?.run();
+                            }
+                        }, 550);
                     });
                 }}
             />
@@ -259,9 +261,18 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     );
 
     return (
-        <Stack justify="flex-start" gap={0} h={Math.max(parentHeight, minHeight)} mah={maxHeight} ref={ref} {...others}>
-            {_header}
-            {_buttons}
+        <Stack
+            justify="flex-start"
+            gap="sm"
+            h={Math.max(parentHeight, minHeight)}
+            mah={maxHeight}
+            ref={ref}
+            {...others}
+        >
+            <Group justify="space-between">
+                {_header}
+                {_buttons}
+            </Group>
             {_editor}
             {_error}
         </Stack>

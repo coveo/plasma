@@ -12,7 +12,7 @@ import {
     useTable,
     useTableContext,
 } from '@coveord/plasma-mantine';
-import {CardSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
+import {EditSize16Px, IconLayoutGrid} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
 
@@ -68,7 +68,7 @@ const CardLayout: TableLayout = ({children}) => <>{children}</>;
 CardLayout.Header = () => null;
 CardLayout.displayName = 'Cards';
 CardLayout.Body = TableCards;
-CardLayout.Icon = CardSize16Px;
+CardLayout.Icon = IconLayoutGrid;
 
 const Demo = () => {
     const data = useMemo(() => makeData(10), []);

@@ -4,14 +4,16 @@ import {
     CheckSize16Px,
     CrossSize16Px,
     FilterSize16Px,
-    InfoSize16Px,
+    IconSlash,
     InfoSize24Px,
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
+    ActionIcon,
     Alert,
     AppShell,
     Badge,
+    Breadcrumbs,
     Button,
     Checkbox,
     CloseButton,
@@ -44,8 +46,11 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
+import {CheckboxIcon, CircleLoader, InfoToken} from '../components';
+import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
+import BreadcrumbsClasses from '../styles/Breadcrumbs.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
@@ -61,6 +66,7 @@ import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
 import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
+import SelectClasses from '../styles/Select.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
 import TableClasses from '../styles/Table.module.css';
@@ -122,6 +128,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     primaryShade: 5,
     colors: PlasmaColors,
     components: {
+        ActionIcon: ActionIcon.extend({
+            defaultProps: {
+                size: 24,
+                radius: 'sm',
+            },
+            classNames: ActionIconClasses,
+        }),
         AppShell: AppShell.extend({
             vars: (theme) =>
                 ({
@@ -130,8 +143,8 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Alert: Alert.extend({
             defaultProps: {
-                icon: <InfoSize16Px height={16} />,
-                p: 'xs',
+                icon: <InfoToken variant="advice" />,
+                p: 'sm',
             },
             classNames: AlertClasses,
         }),
@@ -139,6 +152,14 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: BadgeClasses,
             defaultProps: {
                 variant: 'light',
+                tt: 'none',
+            },
+        }),
+        Breadcrumbs: Breadcrumbs.extend({
+            classNames: BreadcrumbsClasses,
+            defaultProps: {
+                separator: <IconSlash size={16} color="var(--mantine-color-dimmed)" />,
+                separatorMargin: 'xxs',
             },
         }),
         Button: Button.extend({
@@ -150,6 +171,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Checkbox: Checkbox.extend({
             defaultProps: {
                 radius: 'sm',
+                icon: CheckboxIcon,
             },
             classNames: (theme, props) => {
                 if (props.readOnly && !props.disabled) {
@@ -157,21 +179,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return CheckboxClasses;
             },
-            vars: (theme, props) => {
-                if (props.readOnly && !props.disabled) {
-                    return {
-                        root: {
-                            '--checkbox-icon-color': theme.colors.gray[7],
-                            '--checkbox-color': theme.colors.gray[2],
-                        },
-                    };
-                }
-                return {root: {}};
-            },
         }),
         CheckboxIndicator: Checkbox.Indicator.extend({
             defaultProps: {
                 radius: 'sm',
+                icon: CheckboxIcon,
             },
             classNames: CheckboxIndicatorClasses,
         }),
@@ -211,6 +223,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return InputClasses;
             },
+            vars: (theme, props) => ({
+                wrapper: {
+                    '--input-margin-top':
+                        props.wrapperProps?.label || props.wrapperProps?.description ? theme.spacing.xxs : undefined,
+                },
+            }),
         }),
         InputWrapper: InputWrapper.extend({
             defaultProps: {
@@ -235,7 +253,8 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Loader: Loader.extend({
             defaultProps: {
-                type: 'dots',
+                loaders: {...Loader.defaultLoaders, circle: CircleLoader},
+                type: 'circle',
                 role: 'presentation',
             },
         }),
@@ -261,8 +280,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         ModalOverlay: Modal.Overlay.extend({
             defaultProps: {
-                color: color.primary.navy[9],
-                backgroundOpacity: 0.9,
+                color: PlasmaColors.indigo[8],
+                backgroundOpacity: 0.7,
+                blur: 2,
             },
         }),
         ModalRoot: Modal.Root.extend({
@@ -316,7 +336,8 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: SegmentedControlClasses,
         }),
         Select: Select.extend({
-            defaultProps: {allowDeselect: false},
+            defaultProps: {allowDeselect: false, withCheckIcon: false},
+            classNames: SelectClasses,
         }),
         Skeleton: Skeleton.extend({
             classNames: SkeletonClasses,

@@ -1,18 +1,12 @@
 .headerRow {
-    &[data-selectable='true'] input[type='checkbox'] {
-        border-color: var(--mantine-color-gray-4);
-        pointer-events: auto;
-        cursor: default;
-    }
-
     &[data-selectable='false'] input[type='checkbox'] {
-        background-color: var(--mantine-color-gray-2);
-        border-color: var(--mantine-color-gray-3);
+        background-color: var(--mantine-color-gray-light);
+        border-color: var(--mantine-color-default-border);
         pointer-events: none;
         cursor: not-allowed;
 
         & + svg {
-            color: var(--mantine-color-gray-5);
+            color: var(--mantine-color-dimmed);
         }
     }
 }
@@ -25,23 +19,23 @@
     }
 
     @mixin hover {
-        background-color: var(--mantine-color-gray-1);
+        background-color: var(--mantine-color-gray-light-hover);
     }
 
     &[data-selectable='false'] input[type='checkbox'] {
-        background-color: var(--mantine-color-gray-2);
-        border-color: var(--mantine-color-gray-3);
+        background-color: var(--mantine-color-gray-light);
+        border-color: var(--mantine-color-default-border);
         pointer-events: none;
         cursor: not-allowed;
 
         &:checked + svg {
-            color: var(--mantine-color-gray-5);
+            color: var(--mantine-color-dimmed);
         }
     }
 
     &[data-selected='true'] {
         &[data-multi-selection='false'] {
-            background-color: var(--mantine-color-gray-1);
+            background-color: var(--mantine-color-gray-light);
         }
 
         &[data-multi-selection='true'] {
@@ -66,5 +60,5 @@
 
 .collapsibleWrapper {
     border-bottom: rem(1) solid var(--mantine-color-default-border);
-    background-color: var(--mantine-color-gray-1);
+    background-color: var(--mantine-color-gray-light);
 }

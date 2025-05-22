@@ -1,36 +1,18 @@
-import {MantineColorsTuple, MantineTheme} from '@mantine/core';
+import {MantineTheme} from '@mantine/core';
+import {PlasmaColors} from '../PlasmaColors';
 import {plasmaCSSVariablesResolver} from '../plasmaCSSVariablesResolver';
-
-const red: MantineColorsTuple = [
-    '#ffe8e8',
-    '#ffcfcf',
-    '#ff9b9c',
-    '#ff6464',
-    '#fe3837',
-    '#fe1b19',
-    '#ff0909',
-    '#e40000',
-    '#cb0000',
-    '#b10000',
-];
-
-const gray: MantineColorsTuple = [
-    '#f9f9fa',
-    '#f1f2f4',
-    '#dddfe3',
-    '#b9bdc7',
-    '#959cab',
-    '#676d7a',
-    '#3b3e46',
-    '#26292f',
-    '#191b1f',
-    '#0e0f12',
-];
 
 describe('plasmaCSSVariablesResolver', () => {
     it('updates the error color', () => {
-        const variables = plasmaCSSVariablesResolver({colors: {red, gray}} as MantineTheme);
-        expect(variables.light['--mantine-color-error']).toBe(red[5]);
-        expect(variables.light['--mantine-color-default-border']).toBe(gray[2]);
+        const variables = plasmaCSSVariablesResolver({colors: PlasmaColors} as unknown as MantineTheme);
+        expect(variables.light['--mantine-color-error']).toBe('#d2271b');
+        expect(variables.light['--mantine-color-default-border']).toBe('#dddfe3');
+        expect(variables.light['--coveo-color-input-border']).toBe('#b9bdc7');
+        expect(variables.light['--mantine-color-text']).toBe('#3b3e46');
+        expect(variables.light['--mantine-color-dimmed']).toBe('#676d7a');
+        expect(variables.light['--mantine-color-gray-filled']).toBe('#959cab');
+        expect(variables.light['--mantine-color-gray-light']).toBe('#f9f9fa');
+        expect(variables.light['--mantine-color-gray-light-hover']).toBe('#f1f2f4');
+        expect(variables.light['--mantine-color-warning-filled']).toBe('#c89300');
     });
 });
