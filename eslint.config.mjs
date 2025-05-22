@@ -8,6 +8,7 @@ import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
 import unusedImports from 'eslint-plugin-unused-imports';
 import tsEslint from 'typescript-eslint';
 import eslintPluginTestingLibrary from 'eslint-plugin-testing-library';
+import i18next from 'eslint-plugin-i18next';
 import globals from 'globals';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
@@ -19,6 +20,7 @@ export default tsEslint.config(
         name: 'plasma-eslint-config',
         plugins: {
             import: eslintPluginImport,
+            i18next,
             jsdoc,
             'prefer-arrow': preferArrow,
             'react-hooks': reactHooks,
@@ -207,6 +209,10 @@ export default tsEslint.config(
                 {vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_'},
             ],
         },
+    },
+    {
+        files: ['packages/website/**'],
+        rules: {'i18next/no-literal-string': ['error', {mode: 'jsx-text-only'}]},
     },
     {
         files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
