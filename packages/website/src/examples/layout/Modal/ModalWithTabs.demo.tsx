@@ -10,12 +10,10 @@ const Demo = () => {
                 <Modal.Overlay />
                 <Modal.Content>
                     <Modal.Header className={classes.headerWithTabs}>
-                        <Modal.Title>
-                            <Header variant="secondary" description="Modal description">
-                                Modal Title
-                                <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
-                            </Header>
-                        </Modal.Title>
+                        <Header variant="secondary" description="Modal description">
+                            Modal Title
+                            <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
+                        </Header>
                         <Modal.CloseButton />
                     </Modal.Header>
                     <Tabs defaultValue="tab-1">
@@ -31,14 +29,12 @@ const Demo = () => {
                         </Modal.Body>
                     </Tabs>
                     <Modal.Footer>
-                        <Button variant="outline" onClick={() => setOpened(false)}>
-                            Cancel
-                        </Button>
-                        <Button>Save</Button>
+                        <Button.Tertiary onClick={() => setOpened(false)}>Cancel</Button.Tertiary>
+                        <Button.Primary>Save</Button.Primary>
                     </Modal.Footer>
                 </Modal.Content>
             </Modal.Root>
-            <Button onClick={() => setOpened(true)}>Open Modal</Button>
+            <Button.Primary onClick={() => setOpened(true)}>Open Modal</Button.Primary>
         </>
     );
 };

@@ -1,3 +1,64 @@
+## <small>55.7.2-next.22 (2025-04-24)</small>
+
+* fix(mantine, badge): font-size and text-transform (#4055) ee34551, closes #4055
+
+
+
+## <small>55.7.2-next.21 (2025-04-17)</small>
+
+* feat(mantine, action icon): apply style changes and create semantic components (#4053) a91accb, closes #4053
+
+
+
+## <small>55.7.2-next.20 (2025-04-16)</small>
+
+* feat(mantine, button): update style (#4052) de3eba4, closes #4052
+* feat(mantine, modal): update overlay style (#4051) 5023f4f, closes #4051
+
+
+
+## <small>55.7.2-next.19 (2025-04-15)</small>
+
+* feat(mantine): improve CopyToClipboard component (#4050) 5a5bbfe, closes #4050
+
+
+
+## <small>55.7.2-next.18 (2025-04-14)</small>
+
+* fix(mantine): revert header variant removal on root node 207b9ae
+
+
+
+## <small>55.7.2-next.17 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name second try 810e709
+
+
+
+## <small>55.7.2-next.16 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name (#4049) 7abbf7a, closes #4049
+* fix(mantine, input): only add margin top if there's a title or description (#4048) 6d6b58a, closes #4048
+
+
+
+## <small>55.7.2-next.15 (2025-04-14)</small>
+
+* feat(react-icons): reexport tabler icons (#4045) 889df29, closes #4045
+* chore(mantine, input): update the style of the input and input wrapper (#4046) 4c37039, closes #4046
+
+
+
+## <small>55.7.2-next.14 (2025-04-11)</small>
+
+* fix(mantine, prompt): automatically add the Header if the title is a string (#4044) 029b6e6, closes #4044
+* Merge branch 'master' of github.com:coveo/plasma into next 60ab942
+* chore(deps): update all non-major dependencies (#4029) 659172f, closes #4029
+* chore(release): publish version v55.8.0 [skip ci] b14864b
+* feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043
+
+
+
 ## 55.8.0 (2025-04-11)
 
 * feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043

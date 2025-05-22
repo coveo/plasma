@@ -22,13 +22,11 @@ const Demo = () => {
                 lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit. Cras vitae ipsum
                 sit amet nibh efficitur imperdiet. Praesent scelerisque erat est. Cras dictum sodales tellus sed pretium
                 <Modal.Footer sticky>
-                    <Button variant="outline" onClick={() => setOpened(false)}>
-                        Cancel
-                    </Button>
-                    <Button onClick={() => setOpened(false)}>Accept</Button>
+                    <Button.Tertiary onClick={() => setOpened(false)}>Cancel</Button.Tertiary>
+                    <Button.Primary onClick={() => setOpened(false)}>Accept</Button.Primary>
                 </Modal.Footer>
             </Modal>
-            <Button onClick={() => setOpened(true)}>Open Modal</Button>
+            <Button.Primary onClick={() => setOpened(true)}>Open Modal</Button.Primary>
         </>
     );
 };

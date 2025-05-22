@@ -1,20 +1,45 @@
-.label {
-    font-size: var(--mantine-font-size-sm);
-    font-weight: 300;
-}
-
+/* 
+`readonly` state on checkboxes is not something that exists in Mantine.
+So we are allowing ourselves some custom style to achieve the desired effect
+*/
 .input {
-    &[data-indeterminate] {
-        background-color: var(--mantine-color-pureWhite);
-        border-color: var(--mantine-color-gray-4);
+    @mixin light {
+        /* targets the default checkbox without overiding mantine's base rules */
+        &:not([data-indeterminate], :checked, [readonly], :disabled, [data-error='true']) {
+            border-color: var(--coveo-color-input-border);
+        }
 
-        & + svg {
-            color: var(--mantine-color-gray-6);
+        /* mantine doesn't have a concept of readonly checkbox */
+        &[readonly] {
+            border-color: var(--mantine-color-default-border);
+            background-color: var(--coveo-color-bg-readonly);
+            color: var(--coveo-color-text-readonly);
+
+            & + .icon {
+                color: var(--coveo-color-text-readonly);
+            }
+        }
+
+        /* mantine hardcodes disabled styles so we need to write custom styles */
+        &:disabled {
+            border-color: var(--mantine-color-default-border);
+            background-color: var(--coveo-color-bg-disabled);
+            color: var(--coveo-color-text-disabled);
+
+            & + .icon {
+                color: var(--coveo-color-text-disabled);
+            }
         }
     }
+}
 
-    &[readonly] {
-        background-color: var(--mantine-color-gray-2);
-        border-color: var(--mantine-color-gray-2);
+.labelWrapper {
+    @mixin light {
+        &[data-disabled] {
+            .label,
+            .description {
+                color: var(--coveo-color-text-disabled);
+            }
+        }
     }
 }

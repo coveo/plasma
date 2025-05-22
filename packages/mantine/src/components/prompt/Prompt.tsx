@@ -11,6 +11,7 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
+import {Header} from '../header';
 import {Modal} from '../modal';
 import Critical from './icons/critical.svg';
 import Info from './icons/info.svg';
@@ -24,7 +25,7 @@ import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './Prom
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
 export type PromptVars = {root: '--prompt-icon-size'};
 export type PromptStylesNames =
-    | ModalStylesNames
+    | Exclude<ModalStylesNames, 'title'>
     | 'icon'
     | PromptCancelButtonStylesNamesVariant
     | PromptConfirmButtonStylesNamesVariant;
@@ -98,6 +99,22 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
         (child.type === Modal.Footer ? footers : otherChildren).push(child);
     });
 
+    const titleContent =
+        typeof title === 'string' ? (
+            <Modal.Title
+                component={Header}
+                renderRoot={(p) => (
+                    <Header variant="secondary" {...p}>
+                        {p.children}
+                    </Header>
+                )}
+            >
+                {title}
+            </Modal.Title>
+        ) : (
+            title
+        );
+
     return (
         <PromptContextProvider value={{variant, getStyles}}>
             <Modal.Root ref={ref} variant="prompt" size="sm" {...others} {...getStyles('root')}>
@@ -114,7 +131,7 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                                 src={PROMPT_VARIANT_ICONS_SRC[variant]}
                             />
                         )}
-                        <Modal.Title {...getStyles('title', stylesApiProps)}>{title}</Modal.Title>
+                        {titleContent}
                         <Modal.CloseButton {...getStyles('close', stylesApiProps)} />
                     </Modal.Header>
                     <Modal.Body {...getStyles('body', stylesApiProps)}>

@@ -1,5 +1,5 @@
 .root {
-    text-transform: none;
-    padding: var(--mantine-spacing-xxs) var(--mantine-spacing-xs);
+    --badge-fz-md: 12px;
+
     font-weight: 500;
 }

@@ -117,12 +117,8 @@ export const DateRangePickerInlineCalendar = ({
             </Center>
 
             <Group justify="right" gap="xs" px="md" py="sm" className={DateRangeClasses.save}>
-                <Button variant="outline" size="xs" onClick={onCancel}>
-                    Cancel
-                </Button>
-                <Button size="xs" onClick={onCalendarApply}>
-                    Apply
-                </Button>
+                <Button.Tertiary onClick={onCancel}>Cancel</Button.Tertiary>
+                <Button.Primary onClick={onCalendarApply}>Apply</Button.Primary>
             </Group>
         </>
     );

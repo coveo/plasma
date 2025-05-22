@@ -344,6 +344,9 @@ importers:
       '@swc/helpers':
         specifier: 0.5.15
         version: 0.5.15
+      '@tabler/icons-react':
+        specifier: 3.31.0
+        version: 3.31.0(react@18.3.1)
     devDependencies:
       '@babel/types':
         specifier: 7.27.0
@@ -526,9 +529,6 @@ importers:
       '@swc/helpers':
         specifier: 0.5.15
         version: 0.5.15
-      '@tabler/icons-react':
-        specifier: 3.31.0
-        version: 3.31.0(react@18.3.1)
       '@tanstack/match-sorter-utils':
         specifier: 8.19.4
         version: 8.19.4

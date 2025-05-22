@@ -1,16 +1,17 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mantine-spacing-xxs);
+}
+
 .label {
-    margin-bottom: var(--mantine-spacing-xs);
+    color: var(--coveo-color-title);
 }
 
 .description {
-    font-size: var(--mantine-font-size-sm);
-    color: var(--mantine-color-gray-7);
-    margin-bottom: var(--mantine-spacing-xs);
-    line-height: var(--mantine-line-height);
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .error {
-    line-height: var(--mantine-line-height);
-    font-weight: 300;
+    font-weight: 400;
 }

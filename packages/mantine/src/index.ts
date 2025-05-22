@@ -15,6 +15,7 @@ export {noop};
 
 // explicitly overriding mantine components
 export {
+    Accordion,
     ActionIcon,
     BrowserPreview,
     Button,

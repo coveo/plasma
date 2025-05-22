@@ -1,12 +1,12 @@
 .editor {
-    border: 1px solid var(--mantine-color-gray-3);
+    border: 1px solid var(--mantine-color-default-border);
     border-radius: var(--mantine-radius-default);
     z-index: 1;
     height: 100%;
     outline-width: thin;
 
     @mixin light {
-        background-color: var(--mantine-color-white);
+        background-color: var(--mantine-color-gray-0);
     }
 
     @mixin dark {
@@ -20,16 +20,20 @@
 }
 
 .error {
-    outline-color: var(--mantine-color-red-6);
+    outline-color: var(--mantine-color-error);
     outline-style: solid;
 }
 
 .disabled {
     @mixin light {
-        background-color: var(--mantine-color-gray-2);
-    }
+        border: 1px solid var(--mantine-color-gray-1);
+        background-color: var(--mantine-color-gray-1);
 
-    @mixin dark {
-        background-color: var(--mantine-color-navy-7);
+        :global {
+            .monaco-editor {
+                --vscode-editor-background: var(--mantine-color-gray-1);
+                --vscode-editorGutter-background: var(--mantine-color-gray-1);
+            }
+        }
     }
 }
