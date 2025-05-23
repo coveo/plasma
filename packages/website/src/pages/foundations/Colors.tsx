@@ -5,6 +5,7 @@ import {InlineCodeHighlight} from '@mantine/code-highlight';
 import {Anchor, Box, Table as MantineTable} from '@mantine/core';
 import kebabCase from 'lodash.kebabcase';
 import {FunctionComponent} from 'react';
+import {WithTranslation, withTranslation} from 'react-i18next';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 type Color = string;
@@ -110,7 +111,7 @@ const ColorGroup: FunctionComponent<{
     );
 };
 
-export const ColorsExamples = () => (
+export const ColorsExamples: FunctionComponent<WithTranslation> = ({t}) => (
     <PageLayout
         id="Colors"
         section="Foundations"
@@ -122,17 +123,17 @@ export const ColorsExamples = () => (
     >
         <div className="plasma-page-layout__section pl5">
             <p>
-                All colors are exposed through the{' '}
+                {t('colors_subtitle-description-start')}{' '}
                 <Anchor href="https://github.com/coveo/plasma/tree/master/packages/tokens#readme" target="_blank">
-                    @coveord/plasma-tokens
+                    {t('colors_subtitle-description-anchor')}
                     <Box component={ExternalSize16Px} height={16} ml="xxs" />
                 </Anchor>{' '}
-                package in 3 formats: TypeScript, Sass and CSS. Hover over any color to see its name in any of those
-                formats.
+                {t('colors_subtitle-description-end')}
             </p>
             <ColorGroup name="color" value={color} />
         </div>
     </PageLayout>
 );
 
-export default ColorsExamples;
+const ColorsExemples = withTranslation()(ColorsExamples);
+export default ColorsExemples;

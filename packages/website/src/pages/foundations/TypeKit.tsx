@@ -5,10 +5,11 @@ import H3Demo from '@examples/foundations/TypeKit/H3.demo?demo';
 import H4Demo from '@examples/foundations/TypeKit/H4.demo?demo';
 import H5Demo from '@examples/foundations/TypeKit/H5.demo?demo';
 import H6Demo from '@examples/foundations/TypeKit/H6.demo?demo';
-
+import {FunctionComponent} from 'react';
+import {WithTranslation} from 'react-i18next';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
-export const TypeKit = () => (
+export const TypeKit: FunctionComponent<WithTranslation> = ({t}) => (
     <PageLayout
         id="TypeKit"
         section="Foundations"
@@ -19,7 +20,7 @@ export const TypeKit = () => (
     >
         <div className="plasma-page-layout__section">
             <Title order={3} mb="xs">
-                Headings
+                {t('typekit_title')}
             </Title>
             <Stack>
                 <H1Demo center title="Level 1" />

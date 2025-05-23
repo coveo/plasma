@@ -28,6 +28,7 @@ import {
     useTableContext,
 } from '@coveord/plasma-mantine';
 import {rankItem} from '@tanstack/match-sorter-utils';
+import {withTranslation, WithTranslation} from 'react-i18next';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 const {plasmaIconsList, ...Icons} = PlasmaReactIcons;
@@ -154,18 +155,20 @@ const columns: Array<ColumnDef<IconSet>> = [
     }),
 ];
 
-const EmptyState = ({filter}: {filter: string}) => (
+const EmptyState: FunctionComponent<{filter: string} & WithTranslation> = ({t, filter}) => (
     <Box mih={500}>
         <Center p="lg">
             <Group>
                 <Icons.BrokenSearchSize32Px height={32} />
-                <Title order={5}>No icons match the filter "{filter}".</Title>
+                <Title order={5}>
+                    {t('iconography_empty-state_start')}"{filter}".
+                </Title>
             </Group>
         </Center>
     </Box>
 );
 
-const PlasmaIconsTable: FunctionComponent = () => {
+const PlasmaIconsTable: FunctionComponent<WithTranslation> = ({t, i18n, tReady}) => {
     const table = useTable<IconSet>();
     return (
         <Table
@@ -180,13 +183,13 @@ const PlasmaIconsTable: FunctionComponent = () => {
                 <Table.Filter placeholder="Search icon" />
             </Table.Header>
             <Table.NoData>
-                <EmptyState filter={table.state.globalFilter} />
+                <EmptyState t={t} i18n={i18n} tReady={tReady} filter={table.state.globalFilter} />
             </Table.NoData>
         </Table>
     );
 };
 
-export const IconographyExamples = () => (
+export const InternalIconographyExamples: FunctionComponent<WithTranslation> = ({t, i18n, tReady}) => (
     <PageLayout
         id="Iconography"
         section="Foundations"
@@ -198,24 +201,22 @@ export const IconographyExamples = () => (
     >
         <AlertAdvice title="Prefer Tabler Icons">
             <Text>
-                We use the <Code>@tabler/react-icons</Code> library for our icons. You can consult the full list of
-                icons on{' '}
+                {t('iconography_description-start')}
+                <Code>{t('iconography_description-code')}</Code> {t('iconography-description-middle')}{' '}
                 <Anchor target="_blank" href="https://tabler.io/icons" rel="noreferrer noopener">
-                    their website
+                    {t('iconography_description-icons-website')}
                 </Anchor>
-                .
             </Text>
         </AlertAdvice>
         <Accordion variant="contained">
             <Accordion.Item value="plasma-icons">
-                <Accordion.Control icon={<InfoToken variant="information" />}>In-house icons</Accordion.Control>
+                <Accordion.Control icon={<InfoToken variant="information" />}>
+                    {t('iconography-description-icons-in-house')}
+                </Accordion.Control>
                 <Accordion.Panel>
                     <Stack>
-                        <AlertWarning title="Deprecated">
-                            The icons in this list are deprected in favor of Tabler Icons. Only use the in-house icons
-                            if no icons in tabler fits your needs.
-                        </AlertWarning>
-                        <PlasmaIconsTable />
+                        <AlertWarning title="Deprecated">{t('iconography-deprecated_warning')}</AlertWarning>
+                        <PlasmaIconsTable t={t} i18n={i18n} tReady={tReady} />
                     </Stack>
                 </Accordion.Panel>
             </Accordion.Item>
@@ -223,4 +224,5 @@ export const IconographyExamples = () => (
     </PageLayout>
 );
 
+const IconographyExamples = withTranslation()(InternalIconographyExamples);
 export default IconographyExamples;

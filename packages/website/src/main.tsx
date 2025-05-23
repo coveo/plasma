@@ -2,8 +2,9 @@ import './styles/reset.css';
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
+import '../scripts/i18n';
 
-import {StrictMode, JSX} from 'react';
+import {StrictMode, JSX, Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import NotFound from './404.tsx';
@@ -33,12 +34,20 @@ const pagesRoutes = Object.entries(pages).map(([filePath, fileModule]) => {
 });
 
 const router = createBrowserRouter(
-    [{path: '/', element: <App />, children: [{path: '*', element: <NotFound />}, ...pagesRoutes]}],
+    [
+        {
+            path: '/',
+            element: <App />,
+            children: [{path: '*', element: <NotFound />}, ...pagesRoutes],
+        },
+    ],
     {basename: import.meta.env.BASE_URL},
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <StrictMode>
-        <RouterProvider router={router} />
-    </StrictMode>,
+    <Suspense fallback={<div>Loading...</div>}>
+        <StrictMode>
+            <RouterProvider router={router} />
+        </StrictMode>
+    </Suspense>,
 );

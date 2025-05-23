@@ -2,15 +2,16 @@ import {buildHistoryManager, HistoryManager, HistoryManagerState, SearchEngine} 
 import {Button, Group, Header, Image, Stack, Text} from '@coveord/plasma-mantine';
 import {FunctionComponent, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {withTranslation, WithTranslation} from 'react-i18next';
 import results_empty_state from '../assets/results_empty_state.png';
 
-interface NoResultTemplateProps {
+interface NoResultTemplateProps extends WithTranslation {
     engine: SearchEngine;
     query: string;
 }
 
-export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = (props) => {
-    const {engine, query} = props;
+export const InternalNoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = (props) => {
+    const {engine, query, t} = props;
     const navigate = useNavigate();
 
     const historyManager: HistoryManager = buildHistoryManager(engine);
@@ -21,8 +22,10 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
     return (
         <Group justify="center">
             <Stack align="flex-start">
-                <Header variant="secondary">We couldn’t find anything for “{query}”</Header>
-                <Text>You may want to try using different keywords, or checking for spelling mistakes.</Text>
+                <Header variant="secondary">
+                    {t('no_search_results-title-start')}“{query}”
+                </Header>
+                <Text>{t('no_search_results-description')}</Text>
                 <Button.Tertiary
                     onClick={async () => {
                         if (state.past.length !== 0) {
@@ -32,10 +35,12 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
                         }
                     }}
                 >
-                    Clear search
+                    {t('no_search_results-clear-button')}
                 </Button.Tertiary>
             </Stack>
             <Image maw={300} src={results_empty_state} />
         </Group>
     );
 };
+
+export const NoSearchResultTemplate = withTranslation()(InternalNoSearchResultTemplate);

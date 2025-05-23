@@ -16,10 +16,6 @@ patchedDependencies:
 importers:
 
   .:
-    dependencies:
-      eslint-plugin-i18next:
-        specifier: 6.1.1
-        version: 6.1.1
     devDependencies:
       '@commitlint/cli':
         specifier: 19.8.0
@@ -60,6 +56,9 @@ importers:
       eslint-config-prettier:
         specifier: 10.1.1
         version: 10.1.1(eslint@9.23.0(jiti@2.4.2))
+      eslint-plugin-i18next:
+        specifier: 6.1.1
+        version: 6.1.1
       eslint-plugin-import-x:
         specifier: 4.10.0
         version: 4.10.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)
@@ -547,6 +546,12 @@ importers:
       encoding:
         specifier: 0.1.13
         version: 0.1.13
+      i18next:
+        specifier: 25.2.0
+        version: 25.2.0(typescript@5.8.2)
+      i18next-http-backend:
+        specifier: 3.0.2
+        version: 3.0.2(encoding@0.1.13)
       lodash.kebabcase:
         specifier: 4.1.1
         version: 4.1.1
@@ -562,6 +567,9 @@ importers:
       react-hook-form:
         specifier: 7.55.0
         version: 7.55.0(react@18.3.1)
+      react-i18next:
+        specifier: 15.5.2
+        version: 15.5.2(i18next@25.2.0(typescript@5.8.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.2)
       react-imask:
         specifier: 7.6.1
         version: 7.6.1(react@18.3.1)
@@ -699,6 +707,10 @@ packages:
 
   '@babel/runtime@7.26.0':
     resolution: {integrity: sha512-FDSOghenHTiToteC/QRlv2q3DhPZ/oOXTBoirfWNx1Cx3TMVcGWQtMMmQcSvb/JjpNeGzx8Pq/b4fKEJuWm1sw==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/runtime@7.27.1':
+    resolution: {integrity: sha512-1x3D2xEk2fRo3PAhwQwu5UubzgiVWSXTBfWpVd2Mx2AzRqJuDJCsgaDVZ7HB5iGzDW1Hl1sWN2mFyKjmR9uAog==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.25.9':
@@ -3660,6 +3672,9 @@ packages:
     resolution: {integrity: sha512-Y22oTqIU4uuPgEemfz7NDJz6OeKf12Lsu+QC+s3BVpda64lTiMYCyGwg5ki4vFxkMwQdeZDl2adZoqUgdFuTgQ==}
     engines: {node: '>=18'}
 
+  html-parse-stringify@3.0.1:
+    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
+
   html-tags@3.3.1:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}
     engines: {node: '>=8'}
@@ -3700,6 +3715,14 @@ packages:
 
   i18next@24.2.2:
     resolution: {integrity: sha512-NE6i86lBCKRYZa5TaUDkU5S4HFgLIEJRLr3Whf2psgaxBleQ2LC1YW1Vc+SCgkAW7VEzndT6al6+CzegSUHcTQ==}
+    peerDependencies:
+      typescript: ^5
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  i18next@25.2.0:
+    resolution: {integrity: sha512-ERhJICsxkw1vE7G0lhCUYv4ZxdBEs03qblt1myJs94rYRK9loJF3xDj8mgQz3LmCyp0yYrNjbN/1/GWZTZDGCA==}
     peerDependencies:
       typescript: ^5
     peerDependenciesMeta:
@@ -4855,6 +4878,22 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
 
+  react-i18next@15.5.2:
+    resolution: {integrity: sha512-ePODyXgmZQAOYTbZXQn5rRsSBu3Gszo69jxW6aKmlSgxKAI1fOhDwSu6bT4EKHciWPKQ7v7lPrjeiadR6Gi+1A==}
+    peerDependencies:
+      i18next: '>= 23.2.3'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+      typescript: ^5
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+      typescript:
+        optional: true
+
   react-imask@7.6.1:
     resolution: {integrity: sha512-vLNfzcCz62Yzx/GRGh5tiCph9Gbh2cZu+Tz8OiO5it2eNuuhpA0DWhhSlOtVtSJ80+Bx+vFK5De8eQ9AmbkXzA==}
     engines: {npm: '>=4.0.0'}
@@ -5912,6 +5951,10 @@ packages:
       jsdom:
         optional: true
 
+  void-elements@3.1.0:
+    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
+    engines: {node: '>=0.10.0'}
+
   w3c-xmlserializer@5.0.0:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
     engines: {node: '>=18'}
@@ -6167,6 +6210,8 @@ snapshots:
   '@babel/runtime@7.26.0':
     dependencies:
       regenerator-runtime: 0.14.1
+
+  '@babel/runtime@7.27.1': {}
 
   '@babel/template@7.25.9':
     dependencies:
@@ -9343,6 +9388,10 @@ snapshots:
     dependencies:
       whatwg-encoding: 3.1.1
 
+  html-parse-stringify@3.0.1:
+    dependencies:
+      void-elements: 3.1.0
+
   html-tags@3.3.1: {}
 
   html-url-attributes@3.0.1: {}
@@ -9383,6 +9432,12 @@ snapshots:
   i18next@24.2.2(typescript@5.8.2):
     dependencies:
       '@babel/runtime': 7.26.0
+    optionalDependencies:
+      typescript: 5.8.2
+
+  i18next@25.2.0(typescript@5.8.2):
+    dependencies:
+      '@babel/runtime': 7.27.1
     optionalDependencies:
       typescript: 5.8.2
 
@@ -10694,6 +10749,16 @@ snapshots:
     dependencies:
       react: 18.3.1
 
+  react-i18next@15.5.2(i18next@25.2.0(typescript@5.8.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.2):
+    dependencies:
+      '@babel/runtime': 7.26.0
+      html-parse-stringify: 3.0.1
+      i18next: 25.2.0(typescript@5.8.2)
+      react: 18.3.1
+    optionalDependencies:
+      react-dom: 18.3.1(react@18.3.1)
+      typescript: 5.8.2
+
   react-imask@7.6.1(react@18.3.1):
     dependencies:
       imask: 7.6.1
@@ -11866,6 +11931,8 @@ snapshots:
       - terser
       - tsx
       - yaml
+
+  void-elements@3.1.0: {}
 
   w3c-xmlserializer@5.0.0:
     dependencies:

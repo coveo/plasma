@@ -1,43 +1,46 @@
 import {Anchor, AppShell, Container, Title, Stack, Text, Box} from '@coveord/plasma-mantine';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
+import {withTranslation, WithTranslation} from 'react-i18next';
 import {Tile} from '../building-blocs/Tile';
 
-export const Home = () => (
+export const Home: FunctionComponent<WithTranslation> = ({t, i18n, tReady}) => (
     <AppShell.Main>
         <Container size="xl" py="xl">
             <Stack gap="xl">
-                <WelcomeToPlasma />
-                <FoundationsPages />
-                <LayoutPages />
-                <FormPages />
+                <WelcomeToPlasma t={t} i18n={i18n} tReady={tReady} />
+                <FoundationsPages t={t} i18n={i18n} tReady={tReady} />
+                <LayoutPages t={t} i18n={i18n} tReady={tReady} />
+                <FormPages t={t} i18n={i18n} tReady={tReady} />
             </Stack>
         </Container>
     </AppShell.Main>
 );
 
-const WelcomeToPlasma: FunctionComponent = () => (
+interface WelcomeToPlasmaProps extends WithTranslation {}
+
+export const WelcomeToPlasma: FunctionComponent<WelcomeToPlasmaProps> = ({t}) => (
     <>
         <Title order={1}>
             <Text fz="lg" fw={500} inherit>
-                Welcome to
+                {t('index_plasma-title-start')}
             </Text>{' '}
-            <Text className="page-title">PLASMA</Text>
+            <Text className="page-title">{t('index_plasma-title-end')}</Text>
         </Title>
         <Stack gap="xs">
-            <Text>Coveo’s platform design system & ionized Vapor.</Text>
+            <Text>{t('index_platform-description')}</Text>
             <Text>
-                Learn more about our brand, our values and our story by visiting our{' '}
+                {t('index_brand-page')}{' '}
                 <Anchor href="https://brand.coveo.com/">
-                    brand page
+                    {t('index_brand-page-link')}
                     <Box component={ExternalSize16Px} height={16} ml="xxs" />
                 </Anchor>
                 .
             </Text>
             <Text>
-                Be part of the progress! Contribute to Plasma on{' '}
+                {t('index_contribute-github')}{' '}
                 <Anchor href="https://github.com/coveo/plasma#readme">
-                    GitHub
+                    {t('index_github-link')}
                     <Box component={ExternalSize16Px} height={16} ml="xxs" />
                 </Anchor>
                 .
@@ -46,9 +49,9 @@ const WelcomeToPlasma: FunctionComponent = () => (
     </>
 );
 
-const FoundationsPages: FunctionComponent = () => (
+const FoundationsPages: FunctionComponent<WithTranslation> = ({t}) => (
     <Stack gap="sm">
-        <Title order={2}>Foundations</Title>
+        <Title order={2}>{t('index_foundations-title')}</Title>
         <div className="tile-grid">
             <Tile
                 title="Iconography"
@@ -66,9 +69,9 @@ const FoundationsPages: FunctionComponent = () => (
     </Stack>
 );
 
-const LayoutPages: FunctionComponent = () => (
+const LayoutPages: FunctionComponent<WithTranslation> = ({t}) => (
     <Stack gap="sm" className="section">
-        <Title order={2}>Layout</Title>
+        <Title order={2}>{t('index_layout-title')}</Title>
         <div className="tile-grid">
             <Tile
                 title="Header"
@@ -90,9 +93,9 @@ const LayoutPages: FunctionComponent = () => (
     </Stack>
 );
 
-const FormPages: FunctionComponent = () => (
+const FormPages: FunctionComponent<WithTranslation> = ({t}) => (
     <Stack gap="sm" className="section">
-        <Title order={2}>Form</Title>
+        <Title order={2}>{t('index_form-title')}</Title>
         <div className="tile-grid">
             <Tile
                 title="Code Editor"
@@ -109,4 +112,5 @@ const FormPages: FunctionComponent = () => (
     </Stack>
 );
 
-export default Home;
+const HomeWithTranslation = withTranslation()(Home);
+export default HomeWithTranslation;
