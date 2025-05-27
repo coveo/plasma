@@ -53,6 +53,31 @@ describe('Collection', () => {
         expect(screen.getByTestId('item-id-banana')).toBeInTheDocument();
     });
 
+    it('renders one item for each initial values in the form with custom id based on index', () => {
+        const getItemId = (_item: string, index: number) => `index-${index}`;
+
+        const Fixture = () => {
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
+            return (
+                <Collection<string> getItemId={getItemId} newItem="" {...form.getInputProps('fruits')}>
+                    {(name) => <span>{name}</span>}
+                </Collection>
+            );
+        };
+
+        render(<Fixture />);
+
+        const items = screen.getAllByTestId(/item-/);
+        expect(items).toHaveLength(2);
+        expect(items[0]).toHaveTextContent('banana');
+        expect(items[1]).toHaveTextContent('orange');
+        expect(screen.getByTestId('item-index-0')).toBeInTheDocument();
+        expect(screen.getByTestId('item-index-1')).toBeInTheDocument();
+    });
+
     it('removes the item when clicking on its remove button', async () => {
         const user = userEvent.setup();
         const Fixture = () => {

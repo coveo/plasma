@@ -50,8 +50,9 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
      * @see {@link https://react-hook-form.com/api/usefieldarray/} for using a collection with ReactHookForm.
      *
      * @param originalItem The original item
+     * @param itemIndex The index of the original item
      */
-    getItemId?: (originalItem: T) => string;
+    getItemId?: (originalItem: T, itemIndex: number) => string;
     /**
      * Unused, has no effect
      */
@@ -148,7 +149,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     readOnly: false,
     gap: 'xs',
     required: false,
-    getItemId: ({id}: any) => id,
+    getItemId: ({id}: any, index: number) => id,
 };
 
 export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
@@ -233,7 +234,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
             </>
         ) : null;
 
-    const standardizedItems = value.map((item, index) => ({id: getItemId?.(item) ?? String(index), data: item}));
+    const standardizedItems = value.map((item, index) => ({id: getItemId?.(item, index) ?? String(index), data: item}));
 
     const items = standardizedItems.map((item, index) => (
         <CollectionItem
