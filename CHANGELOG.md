@@ -1,3 +1,16 @@
+## <small>55.7.2-next.23 (2025-05-27)</small>
+
+* fix(mantine): adjust table selected row bg color (#4068) 156f82f, closes #4068
+* Ad UI 10593 apply style radio (#4058) 1220649, closes #4058
+* Ad UI 10596 apply style changes select (#4062) bb4caaa, closes #4062
+* feat(mantine, loader): custom loader to match figma (#4060) e8a2111, closes #4060
+* feat(collection): add-data-testid-param-to-collection (#4061) fefed55, closes #4061
+* feat(mantine): update CodeEditor look (#4059) 35bb241, closes #4059
+* feat(mantine): update style of checkbox (#4057) 01ec538, closes #4057
+* feat(pagination): +active-bg +active-color (#4056) 2f715e3, closes #4056
+
+
+
 ## <small>55.7.2-next.22 (2025-04-24)</small>
 
 * fix(mantine, badge): font-size and text-transform (#4055) ee34551, closes #4055
