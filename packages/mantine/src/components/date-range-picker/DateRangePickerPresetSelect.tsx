@@ -1,17 +1,17 @@
 import {ComboboxItem, Select, SelectProps} from '@mantine/core';
+import {DatesRangeValue} from '@mantine/dates';
 import dayjs from 'dayjs';
 import {useEffect, useState} from 'react';
-import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
 
 export interface DateRangePickerPreset {
     label: string;
-    range: DateRangePickerValue;
+    range: DatesRangeValue;
 }
 
 interface DateRangePickerPresetsSelectProps {
     presets: Record<string, DateRangePickerPreset>;
-    value: DateRangePickerValue;
-    onChange?(value: DateRangePickerValue): void;
+    value: DatesRangeValue;
+    onChange?(value: DatesRangeValue): void;
     selectProps?: Partial<Omit<SelectProps, 'data' | 'value' | 'onChange'>>;
 }
 

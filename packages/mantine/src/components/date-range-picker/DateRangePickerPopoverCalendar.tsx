@@ -1,19 +1,18 @@
 import {Group, Popover, Space} from '@mantine/core';
-import {CalendarBaseProps, DatePicker} from '@mantine/dates';
+import {CalendarBaseProps, DatePicker, DatesRangeValue} from '@mantine/dates';
 import {useClickOutside, useUncontrolled} from '@mantine/hooks';
 import {useState} from 'react';
 
-import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
 interface DateRangePickerPopoverCalendarProps extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */
-    defaultValue?: DateRangePickerValue;
+    defaultValue?: DatesRangeValue;
     /** Value for controlled input */
-    value?: DateRangePickerValue;
+    value?: DatesRangeValue;
     /** onChange value for controlled input */
-    onChange?(value: DateRangePickerValue): void;
+    onChange?(value: DatesRangeValue): void;
     /**
      * The presets to display
      *
@@ -47,14 +46,14 @@ export const DateRangePickerPopoverCalendar = ({
     const [opened, setOpened] = useState(false);
     const ref = useClickOutside(() => setOpened(false));
 
-    const [_value, handleChange] = useUncontrolled<DateRangePickerValue>({
+    const [_value, handleChange] = useUncontrolled<DatesRangeValue>({
         value,
         defaultValue,
         onChange,
         finalValue: [null, null],
     });
 
-    const onCalendarChange = (dates: DateRangePickerValue) => {
+    const onCalendarChange = (dates: DatesRangeValue) => {
         handleChange?.(dates);
         if (dates[1] !== null) {
             setOpened(false);
@@ -91,7 +90,7 @@ export const DateRangePickerPopoverCalendar = ({
                         firstDayOfWeek={0}
                         allowSingleDateInRange
                         value={_value}
-                        onChange={(val) => onCalendarChange([new Date(val[0]), new Date(val[1])])}
+                        onChange={onCalendarChange}
                         {...rangeCalendarProps}
                     />
                 </Popover.Dropdown>

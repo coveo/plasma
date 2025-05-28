@@ -1,5 +1,5 @@
 import {Center, Group, Space} from '@mantine/core';
-import {DatePicker, DatePickerBaseProps} from '@mantine/dates';
+import {DatePicker, DatePickerBaseProps, DatesRangeValue, DateValue} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
 import dayjs from 'dayjs';
@@ -7,20 +7,18 @@ import {Button} from '../button';
 import DateRangeClasses from './DateRange.module.css';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
-
-export type DateRangePickerValue = [Date | null, Date | null];
 export interface DateRangePickerInlineCalendarProps
     extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /**
      * Initial selected range
      */
-    initialRange: DateRangePickerValue;
+    initialRange: DatesRangeValue;
     /**
      * Function called when the user applies the new date range
      *
      * @param range the newly selected dates
      */
-    onApply: (range: DateRangePickerValue) => void;
+    onApply: (range: DatesRangeValue) => void;
     /**
      * Function called when the user click on the cancel button
      */
@@ -45,10 +43,10 @@ export interface DateRangePickerInlineCalendarProps
     >;
 }
 
-const isDateRangePickerValue = (value: unknown): value is DateRangePickerValue =>
-    Array.isArray(value) && value.length === 2;
+const isDateRangePickerValue = (value: unknown): value is DatesRangeValue => Array.isArray(value) && value.length === 2;
 
-const endOfDay = (value: Date): Date => (value ? dayjs(value).endOf('day').toDate() : value);
+const endOfDay = (value: DateValue): DateValue =>
+    (value ? dayjs(value).endOf('day').toDate() : new Date(value)).toISOString();
 
 export const DateRangePickerInlineCalendar = ({
     initialRange,
@@ -66,7 +64,7 @@ export const DateRangePickerInlineCalendar = ({
     });
     const calendarInputProps = form.getInputProps('dates');
 
-    const onCalendarChange = (range: Date | Date[] | DateRangePickerValue): void => {
+    const onCalendarChange = (range: string | string[] | DatesRangeValue<DateValue>): void => {
         const normalized = isDateRangePickerValue(range) && range[1] ? [range[0], endOfDay(range[1])] : range;
         calendarInputProps.onChange(normalized);
     };
@@ -112,7 +110,7 @@ export const DateRangePickerInlineCalendar = ({
                     allowSingleDateInRange
                     {...rangeCalendarProps}
                     {...calendarInputProps}
-                    onChange={(val) => onCalendarChange([new Date(val[0]), new Date(val[1])])}
+                    onChange={onCalendarChange}
                 />
             </Center>
 

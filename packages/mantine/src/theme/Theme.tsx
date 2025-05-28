@@ -223,12 +223,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return InputClasses;
             },
-            vars: (theme, props) => ({
-                wrapper: {
-                    '--input-margin-top':
-                        props.wrapperProps?.label || props.wrapperProps?.description ? theme.spacing.xxs : undefined,
-                },
-            }),
         }),
         InputWrapper: InputWrapper.extend({
             defaultProps: {
@@ -245,6 +239,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                     };
                 }
                 return {
+                    root: {'--input-margin-top': props?.label || props?.description ? theme.spacing.xxs : undefined},
                     label: {},
                     error: {},
                     description: {},

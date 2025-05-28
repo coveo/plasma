@@ -2,7 +2,7 @@ import {
     ColumnDef,
     createColumnHelper,
     DateRangePickerPreset,
-    DateRangePickerValue,
+    DatesRangeValue,
     getFilteredRowModel,
     Table,
     TableProps,
@@ -102,7 +102,7 @@ const makeData = (len: number): Person[] =>
             lastActivity: faker.date.recent({days: 7}),
         }));
 
-const lastActivityDateFilter = (row: Person, dateRange: DateRangePickerValue) => {
+const lastActivityDateFilter = (row: Person, dateRange: DatesRangeValue) => {
     const lastActivity = row['lastActivity'];
 
     return dayjs(lastActivity).isAfter(dateRange[0]) && dayjs(lastActivity).isBefore(dateRange[1]);

@@ -5,6 +5,7 @@ import {type PlasmaColors} from './theme/PlasmaColors';
 export * from '@mantine/carousel';
 export * from '@mantine/core';
 export {Pagination} from '@mantine/core';
+export {type DatesRangeValue} from '@mantine/dates';
 export * from '@mantine/form';
 export * from '@mantine/hooks';
 export * from '@mantine/notifications';

@@ -1,9 +1,9 @@
-import {DateRangePickerInlineCalendar, DateRangePickerValue} from '@coveord/plasma-mantine';
+import {DateRangePickerInlineCalendar, DatesRangeValue} from '@coveord/plasma-mantine';
 import dayjs from 'dayjs';
 import {useState} from 'react';
 
 const Demo = () => {
-    const [range, setRange] = useState<DateRangePickerValue>([null, null]);
+    const [range, setRange] = useState<DatesRangeValue>([null, null]);
     const onCancel = () => console.log('Cancel');
 
     return (
