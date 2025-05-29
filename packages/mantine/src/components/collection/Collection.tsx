@@ -149,7 +149,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     readOnly: false,
     gap: 'xs',
     required: false,
-    getItemId: ({id}: any, index: number) => id,
+    getItemId: ({id}: any) => id,
 };
 
 export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
