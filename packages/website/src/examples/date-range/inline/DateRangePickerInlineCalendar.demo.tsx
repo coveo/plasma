@@ -1,4 +1,4 @@
-import {DateRangePickerInlineCalendar, DatesRangeValue} from '@coveord/plasma-mantine';
+import {DateRangePickerInlineCalendar, type DatesRangeValue} from '@coveord/plasma-mantine';
 import dayjs from 'dayjs';
 import {useState} from 'react';
 

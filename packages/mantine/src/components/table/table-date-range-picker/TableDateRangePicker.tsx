@@ -2,7 +2,7 @@ import {CalendarSize16Px} from '@coveord/plasma-react-icons';
 import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, InputBase, Popover, useProps} from '@mantine/core';
 import dayjs from 'dayjs';
 
-import {DatesRangeValue, DateValue} from '@mantine/dates';
+import {type DatesRangeValue, type DateValue} from '@mantine/dates';
 import {useState} from 'react';
 import {
     DateRangePickerInlineCalendar,
@@ -76,7 +76,7 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
             {...getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Popover withinPortal opened={opened} onChange={setOpened}>
+            <Popover opened={opened} onChange={setOpened}>
                 <Popover.Target>
                     <InputBase
                         component="button"

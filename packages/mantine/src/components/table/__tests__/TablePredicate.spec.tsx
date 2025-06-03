@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent} from '@test-utils';
+import {render, screen, userEvent, waitFor} from '@test-utils';
 
 import {Table} from '../Table';
 import {useTable} from '../use-table';
@@ -76,7 +76,13 @@ describe('Table.Predicate', () => {
                 );
             };
             render(<Fixture />);
+            await waitFor(() => {
+                expect(screen.getByText('fruit')).toBeVisible();
+            });
             await user.click(screen.getByRole('textbox', {name: 'Rank'}));
+            await waitFor(() => {
+                expect(screen.getByText('First')).toBeVisible();
+            });
             await user.click(screen.getByRole('option', {name: 'First'}));
             expect(window.location.search).toBe('?rank=first');
         });

@@ -1,8 +1,9 @@
 import {Group, Popover, Space} from '@mantine/core';
-import {CalendarBaseProps, DatePicker, DatesRangeValue} from '@mantine/dates';
+import {CalendarBaseProps, DatePicker, type DatesRangeValue} from '@mantine/dates';
 import {useClickOutside, useUncontrolled} from '@mantine/hooks';
 import {useState} from 'react';
 
+import dayjs from 'dayjs';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
@@ -54,6 +55,12 @@ export const DateRangePickerPopoverCalendar = ({
     });
 
     const onCalendarChange = (dates: DatesRangeValue) => {
+        if (dates[0] !== null) {
+            dates[0] = dayjs(dates[0]).toDate();
+        }
+        if (dates[1] !== null) {
+            dates[1] = dayjs(dates[1]).toDate();
+        }
         handleChange?.(dates);
         if (dates[1] !== null) {
             setOpened(false);

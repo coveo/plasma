@@ -1,6 +1,6 @@
 import {useForm} from '@mantine/form';
 import {render, screen, userEvent, waitFor} from '@test-utils';
-import {DatesRangeValue} from '../DateRangePickerInlineCalendar';
+import {type DatesRangeValue} from '../DateRangePickerInlineCalendar';
 
 import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar';
 

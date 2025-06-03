@@ -1,4 +1,4 @@
-import {type DatesRangeValue} from '@mantine/dates';
+import {DatesRangeValue, DateValue} from '@mantine/dates';
 import {useDidUpdate} from '@mantine/hooks';
 import {type ExpandedState, type PaginationState, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
@@ -61,7 +61,7 @@ export interface TableState<TData = unknown> {
      *
      * @default [null, null]
      */
-    dateRange: DatesRangeValue;
+    dateRange: DatesRangeValue<DateValue>;
     /**
      * Currently selected rows
      *
@@ -272,8 +272,8 @@ const LAYOUT_SERIALIZATION = serialization<'layout'>({
 
 const DATE_RANGE_SERIALIZATION = serialization<'dateRange'>({
     serializer: ([from, to]) => [
-        ['from', from ? new Date(from)?.toISOString() : '', true],
-        ['to', to ? new Date(to)?.toISOString() : '', true],
+        ['from', from ? new Date(from).toISOString() : '', true],
+        ['to', to ? new Date(to).toISOString() : '', true],
     ],
     deserializer: (params, initial) => [
         params.get('from') ? new Date(params.get('from') as string) : initial[0],

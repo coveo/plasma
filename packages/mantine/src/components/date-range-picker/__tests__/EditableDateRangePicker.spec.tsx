@@ -1,7 +1,7 @@
 import {render, screen, userEvent} from '@test-utils';
 import {useState} from 'react';
 
-import {DatesRangeValue} from '../DateRangePickerInlineCalendar';
+import {type DatesRangeValue} from '../DateRangePickerInlineCalendar';
 import {EditableDateRangePicker} from '../EditableDateRangePicker';
 
 describe('EditableDateRangePicker', () => {

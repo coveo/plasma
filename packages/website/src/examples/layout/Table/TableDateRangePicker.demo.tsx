@@ -2,7 +2,7 @@ import {
     ColumnDef,
     createColumnHelper,
     DateRangePickerPreset,
-    DatesRangeValue,
+    type DatesRangeValue,
     getFilteredRowModel,
     Table,
     TableProps,

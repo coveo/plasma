@@ -1,5 +1,5 @@
 import {Center, Group, Space} from '@mantine/core';
-import {DatePicker, DatePickerBaseProps, DatesRangeValue, DateValue} from '@mantine/dates';
+import {DatePicker, DatePickerBaseProps, type DatesRangeValue, type DateValue} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
 import dayjs from 'dayjs';
@@ -45,8 +45,7 @@ export interface DateRangePickerInlineCalendarProps
 
 const isDateRangePickerValue = (value: unknown): value is DatesRangeValue => Array.isArray(value) && value.length === 2;
 
-const endOfDay = (value: DateValue): DateValue =>
-    (value ? dayjs(value).endOf('day').toDate() : new Date(value)).toISOString();
+const endOfDay = (value: DateValue): DateValue => (value ? dayjs(value).endOf('day').toDate() : value);
 
 export const DateRangePickerInlineCalendar = ({
     initialRange,
@@ -65,7 +64,13 @@ export const DateRangePickerInlineCalendar = ({
     const calendarInputProps = form.getInputProps('dates');
 
     const onCalendarChange = (range: string | string[] | DatesRangeValue<DateValue>): void => {
-        const normalized = isDateRangePickerValue(range) && range[1] ? [range[0], endOfDay(range[1])] : range;
+        // If the current value is [null, null] and a date is selected, set [selectedValue, null]
+        if (isDateRangePickerValue(range) && range[0] && range[1] === null) {
+            calendarInputProps.onChange([dayjs(range[0]).toDate(), null]);
+            return;
+        }
+        const normalized =
+            isDateRangePickerValue(range) && range[1] ? [dayjs(range[0]).toDate(), endOfDay(range[1])] : range;
         calendarInputProps.onChange(normalized);
     };
 
@@ -121,3 +126,4 @@ export const DateRangePickerInlineCalendar = ({
         </>
     );
 };
+export {DatesRangeValue};

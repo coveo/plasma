@@ -1,5 +1,5 @@
 import {ComboboxItem, Select, SelectProps} from '@mantine/core';
-import {DatesRangeValue} from '@mantine/dates';
+import {type DatesRangeValue} from '@mantine/dates';
 import dayjs from 'dayjs';
 import {useEffect, useState} from 'react';
 
