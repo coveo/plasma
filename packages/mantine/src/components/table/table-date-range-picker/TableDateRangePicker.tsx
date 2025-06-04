@@ -1,13 +1,13 @@
 import {CalendarSize16Px} from '@coveord/plasma-react-icons';
-import {BoxProps, CompoundStylesApiProps, Factory, Grid, InputBase, Popover, factory, useProps} from '@mantine/core';
+import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, InputBase, Popover, useProps} from '@mantine/core';
 import dayjs from 'dayjs';
 
+import {type DatesRangeValue, type DateValue} from '@mantine/dates';
 import {useState} from 'react';
 import {
     DateRangePickerInlineCalendar,
     DateRangePickerInlineCalendarProps,
     DateRangePickerPreset,
-    DateRangePickerValue,
 } from '../../date-range-picker';
 import {TableComponentsOrder} from '../Table';
 import {useTableContext} from '../TableContext';
@@ -52,8 +52,8 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
     );
     const [opened, setOpened] = useState(false);
 
-    const onApply = (dates: DateRangePickerValue) => {
-        store.setDateRange(dates);
+    const onApply = (dates: DatesRangeValue) => {
+        store.setDateRange(dates.map((date) => dayjs(date).toDate()) as DatesRangeValue);
         store.setPagination({pageIndex: 0, pageSize: store.state.pagination.pageSize});
         setOpened(false);
     };
@@ -62,9 +62,9 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
         setOpened(false);
     };
 
-    const formatDate = (date: Date) => dayjs(date).format('MMM DD, YYYY');
+    const formatDate = (date: DateValue) => dayjs(date).format('MMM DD, YYYY');
     const formattedRange = `${formatDate(store.state.dateRange[0])} - ${formatDate(store.state.dateRange[1])}`;
-    const dateRangeInitialized = store.state.dateRange.every((date) => date instanceof Date);
+    const dateRangeInitialized = store.state.dateRange.every((date: DateValue) => date instanceof Date);
 
     const stylesApiProps = {classNames, styles};
 
@@ -76,7 +76,7 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
             {...getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Popover withinPortal opened={opened} onChange={setOpened}>
+            <Popover opened={opened} onChange={setOpened}>
                 <Popover.Target>
                     <InputBase
                         component="button"
