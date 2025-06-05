@@ -32,8 +32,14 @@
     line-height: 1.5;
     color: var(--mantine-color-dimmed);
 
+    &:not(:disabled, [data-disabled]) {
+        @mixin hover {
+            color: var(--coveo-color-title);
+        }
+    }
+
     &:where(:disabled, [data-disabled]) {
-        opacity: 1; /* Override Mantine's 0.5 */
+        opacity: 1 !important; /* Override Mantine's 0.5 */
         color: var(--coveo-color-text-disabled);
     }
 
