@@ -106,7 +106,8 @@ const Demo = () => {
                       ]
             }
         >
-            <Table.Header>
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false}>
                 <Table.Filter placeholder="Search posts by title" />
             </Table.Header>
             <Table.NoData>
