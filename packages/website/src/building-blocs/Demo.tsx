@@ -96,8 +96,7 @@ const Demo = ({
                             language="tsx"
                             code={snippet}
                             withCopyButton={false}
-                            highlightOnClient
-                            classNames={{root: CodeHighlightClassesThemeClasses.theme}}
+                            classNames={{codeHighlight: CodeHighlightClassesThemeClasses.theme}}
                             styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
                         />
                     )}

@@ -1,8 +1,8 @@
+import {type DatesRangeValue, type DateValue} from '@mantine/dates';
 import {useDidUpdate} from '@mantine/hooks';
 import {type ExpandedState, type PaginationState, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
-import {type DateRangePickerValue} from '../date-range-picker';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from './use-url-synced-state';
 
 // Create a deeply optional version of another type
@@ -61,7 +61,7 @@ export interface TableState<TData = unknown> {
      *
      * @default [null, null]
      */
-    dateRange: DateRangePickerValue;
+    dateRange: DatesRangeValue<DateValue>;
     /**
      * Currently selected rows
      *
@@ -272,8 +272,8 @@ const LAYOUT_SERIALIZATION = serialization<'layout'>({
 
 const DATE_RANGE_SERIALIZATION = serialization<'dateRange'>({
     serializer: ([from, to]) => [
-        ['from', from?.toISOString() ?? '', true],
-        ['to', to?.toISOString() ?? '', true],
+        ['from', from ? new Date(from).toISOString() : '', true],
+        ['to', to ? new Date(to).toISOString() : '', true],
     ],
     deserializer: (params, initial) => [
         params.get('from') ? new Date(params.get('from') as string) : initial[0],
