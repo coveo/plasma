@@ -71,7 +71,8 @@ const Demo = () => {
     });
     return (
         <Table<Person> store={table} data={data} columns={columns} options={options} getRowId={({id}) => id}>
-            <Table.Header>
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false}>
                 <Table.Filter placeholder="Search" />
             </Table.Header>
             <Table.Footer>

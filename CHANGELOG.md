@@ -1,3 +1,9 @@
+## <small>55.7.2-next.25 (2025-06-06)</small>
+
+* feat(mantine, tabs): update the style (#4071) 0b4c888, closes #4071
+
+
+
 ## <small>55.7.2-next.24 (2025-05-29)</small>
 
 * Fix/ua 10229 fix get item id on collection component (#4069) ee5236c, closes #4069
