@@ -67,11 +67,14 @@
 /* Table.Header */
 .headerRoot {
     border-bottom: 1px solid var(--mantine-color-default-border);
-    border-top: 1px solid var(--mantine-color-default-border);
     background-color: var(--mantine-color-gray-light);
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
     position: relative;
     min-height: 69px;
+
+    &:where([data-with-border-top]) {
+        border-top: 1px solid var(--mantine-color-default-border);
+    }
 }
 
 .headerGridInner {

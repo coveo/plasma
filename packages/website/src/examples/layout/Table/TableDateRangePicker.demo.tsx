@@ -70,7 +70,8 @@ const Demo = () => {
             options={options}
             getRowId={({id}) => id.toString()}
         >
-            <Table.Header>
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false}>
                 <Table.DateRangePicker
                     rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
                     presets={datePickerPresets}

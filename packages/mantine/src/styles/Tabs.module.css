@@ -1,18 +1,50 @@
 .root {
+    --tab-active-border-width: calc(3px - var(--tabs-list-border-width));
+    --tab-box-shadow: 0 calc(-1 * var(--tab-active-border-width));
+
+    &[data-inverted] {
+        --tab-box-shadow: 0 var(--tab-active-border-width);
+    }
+
+    &[data-orientation='vertical'] {
+        --tab-box-shadow: calc(-1 * var(--tab-active-border-width)) 0;
+    }
+
+    &[data-placement='right'] {
+        --tab-box-shadow: var(--tab-active-border-width) 0;
+    }
+
     &[data-variant='default'] {
-        &[data-orientation='horizontal'] {
-            .list {
-                margin-bottom: calc(-1 * var(--tabs-list-border-width));
-            }
-        }
+        --tabs-list-border-width: 1px;
     }
 
     @mixin light {
         --tab-border-color: var(--mantine-color-default-border);
+
+        &[data-variant='default'] {
+            --tab-hover-color: var(--mantine-color-default-hover);
+        }
     }
 }
 
 .tab {
     font-weight: 500;
     line-height: 1.5;
+    color: var(--mantine-color-dimmed);
+
+    &:not(:disabled, [data-disabled]) {
+        @mixin hover {
+            color: var(--coveo-color-title);
+        }
+    }
+
+    &:where(:disabled, [data-disabled]) {
+        opacity: 1 !important; /* Override Mantine's 0.5 */
+        color: var(--coveo-color-text-disabled);
+    }
+
+    &:where([data-active]) {
+        color: var(--coveo-color-title);
+        box-shadow: inset var(--tab-box-shadow) var(--tabs-color);
+    }
 }
