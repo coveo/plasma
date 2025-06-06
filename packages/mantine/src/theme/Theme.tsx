@@ -233,6 +233,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 const anyProps = props as any;
                 if (anyProps.disabled || (anyProps.readOnly && !['Select'].includes(anyProps.__staticSelector))) {
                     return {
+                        root: {
+                            '--input-margin-top': props?.label || props?.description ? theme.spacing.xxs : undefined,
+                        },
                         label: {'--input-asterisk-color': theme.colors.red[2]},
                         error: {},
                         description: {},

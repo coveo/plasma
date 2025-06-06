@@ -94,14 +94,14 @@
         "vitest": "3.1.1"
     },
     "peerDependencies": {
-        "@mantine/carousel": "8.0.2",
-        "@mantine/code-highlight": "8.0.2",
-        "@mantine/core": "8.0.2",
-        "@mantine/dates": "8.0.2",
-        "@mantine/form": "8.0.2",
-        "@mantine/hooks": "8.0.2",
-        "@mantine/modals": "8.0.2",
-        "@mantine/notifications": "8.0.2",
+        "@mantine/carousel": "^8.0.2",
+        "@mantine/code-highlight": "^8.0.2",
+        "@mantine/core": "^8.0.2",
+        "@mantine/dates": "^8.0.2",
+        "@mantine/form": "^8.0.2",
+        "@mantine/hooks": "^8.0.2",
+        "@mantine/modals": "^8.0.2",
+        "@mantine/notifications": "^8.0.2",
         "embla-carousel-react": "^8.5.2",
         "react": ">= 18.0.0",
         "react-dom": ">= 18.0.0"
