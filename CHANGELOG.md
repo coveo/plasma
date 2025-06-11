@@ -1,3 +1,10 @@
+## <small>55.7.2-next.26 (2025-06-11)</small>
+
+* fix(mantine): gray-light and gray-light-hover transparency (#4072) dd363ad, closes #4072
+* Ad UI 10500 bump mantine 8 (#4070) 02ce1b3, closes #4070
+
+
+
 ## <small>55.7.2-next.25 (2025-06-06)</small>
 
 * feat(mantine, tabs): update the style (#4071) 0b4c888, closes #4071
