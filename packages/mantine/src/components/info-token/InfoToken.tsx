@@ -62,7 +62,7 @@ const colorResolver = (variant: InfoTokenVariant): string => {
             return 'var(--mantine-color-yellow-filled)';
         case 'information':
         default:
-            return 'var(--mantine-color-gray-filled)';
+            return 'var(--mantine-color-gray-3)';
     }
 };
 

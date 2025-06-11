@@ -11,8 +11,12 @@ describe('plasmaCSSVariablesResolver', () => {
         expect(variables.light['--mantine-color-text']).toBe('#3b3e46');
         expect(variables.light['--mantine-color-dimmed']).toBe('#676d7a');
         expect(variables.light['--mantine-color-gray-filled']).toBe('#959cab');
-        expect(variables.light['--mantine-color-gray-light']).toBe('#f9f9fa');
-        expect(variables.light['--mantine-color-gray-light-hover']).toBe('#f1f2f4');
+        expect(variables.light['--mantine-color-gray-light']).toBe(
+            'color-mix(in srgb, var(--mantine-color-gray-filled), transparent 90%)',
+        );
+        expect(variables.light['--mantine-color-gray-light-hover']).toBe(
+            'color-mix(in srgb, var(--mantine-color-gray-filled), transparent 84%)',
+        );
         expect(variables.light['--mantine-color-warning-filled']).toBe('#c89300');
     });
 });
