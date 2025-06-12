@@ -223,6 +223,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return InputClasses;
             },
+            vars: (theme, props) => ({
+                wrapper: {
+                    '--input-margin-top':
+                        props.wrapperProps?.label || props.wrapperProps?.description ? theme.spacing.xxs : undefined,
+                },
+            }),
         }),
         InputWrapper: InputWrapper.extend({
             defaultProps: {
@@ -233,16 +239,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 const anyProps = props as any;
                 if (anyProps.disabled || (anyProps.readOnly && !['Select'].includes(anyProps.__staticSelector))) {
                     return {
-                        root: {
-                            '--input-margin-top': props?.label || props?.description ? theme.spacing.xxs : undefined,
-                        },
                         label: {'--input-asterisk-color': theme.colors.red[2]},
                         error: {},
                         description: {},
                     };
                 }
                 return {
-                    root: {'--input-margin-top': props?.label || props?.description ? theme.spacing.xxs : undefined},
                     label: {},
                     error: {},
                     description: {},
@@ -368,9 +370,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                     };
                 }
                 return {root: {}, track: {}, thumb: {}};
-            },
-            defaultProps: {
-                withThumbIndicator: false,
             },
         }),
         Table: Table.extend({

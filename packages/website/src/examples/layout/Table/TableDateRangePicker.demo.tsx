@@ -2,11 +2,11 @@ import {
     ColumnDef,
     createColumnHelper,
     DateRangePickerPreset,
-    type DatesRangeValue,
-    getFilteredRowModel,
+    DateRangePickerValue,
     Table,
     TableProps,
     useTable,
+    getFilteredRowModel,
 } from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import dayjs from 'dayjs';
@@ -103,7 +103,7 @@ const makeData = (len: number): Person[] =>
             lastActivity: faker.date.recent({days: 7}),
         }));
 
-const lastActivityDateFilter = (row: Person, dateRange: DatesRangeValue) => {
+const lastActivityDateFilter = (row: Person, dateRange: DateRangePickerValue) => {
     const lastActivity = row['lastActivity'];
 
     return dayjs(lastActivity).isAfter(dateRange[0]) && dayjs(lastActivity).isBefore(dateRange[1]);

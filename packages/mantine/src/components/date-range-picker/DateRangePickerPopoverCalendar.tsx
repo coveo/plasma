@@ -1,19 +1,19 @@
 import {Group, Popover, Space} from '@mantine/core';
-import {CalendarBaseProps, DatePicker, type DatesRangeValue} from '@mantine/dates';
+import {CalendarBaseProps, DatePicker} from '@mantine/dates';
 import {useClickOutside, useUncontrolled} from '@mantine/hooks';
 import {useState} from 'react';
 
-import dayjs from 'dayjs';
+import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
 interface DateRangePickerPopoverCalendarProps extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */
-    defaultValue?: DatesRangeValue;
+    defaultValue?: DateRangePickerValue;
     /** Value for controlled input */
-    value?: DatesRangeValue;
+    value?: DateRangePickerValue;
     /** onChange value for controlled input */
-    onChange?(value: DatesRangeValue): void;
+    onChange?(value: DateRangePickerValue): void;
     /**
      * The presets to display
      *
@@ -25,6 +25,7 @@ interface DateRangePickerPopoverCalendarProps extends Pick<EditableDateRangePick
      * }
      */
     presets?: Record<string, DateRangePickerPreset>;
+
     /**
      * Props for RangeCalendar
      */
@@ -46,20 +47,14 @@ export const DateRangePickerPopoverCalendar = ({
     const [opened, setOpened] = useState(false);
     const ref = useClickOutside(() => setOpened(false));
 
-    const [_value, handleChange] = useUncontrolled<DatesRangeValue>({
+    const [_value, handleChange] = useUncontrolled<DateRangePickerValue>({
         value,
         defaultValue,
         onChange,
         finalValue: [null, null],
     });
 
-    const onCalendarChange = (dates: DatesRangeValue) => {
-        if (dates[0] !== null) {
-            dates[0] = dayjs(dates[0]).toDate();
-        }
-        if (dates[1] !== null) {
-            dates[1] = dayjs(dates[1]).toDate();
-        }
+    const onCalendarChange = (dates: DateRangePickerValue) => {
         handleChange?.(dates);
         if (dates[1] !== null) {
             setOpened(false);
