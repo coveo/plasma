@@ -1,6 +1,7 @@
 import {render, screen, userEvent} from '@test-utils';
 import {useState} from 'react';
 
+import {type DateStringValue} from '@mantine/dates';
 import {type DatesRangeValue} from '../DateRangePickerInlineCalendar';
 import {EditableDateRangePicker} from '../EditableDateRangePicker';
 
@@ -15,7 +16,7 @@ describe('EditableDateRangePicker', () => {
     it('updates when editing values', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
-            const [value, setValue] = useState<DatesRangeValue>([null, null]);
+            const [value, setValue] = useState<DatesRangeValue<DateStringValue | null>>([null, null]);
             return (
                 <>
                     <EditableDateRangePicker value={value} onChange={setValue} />

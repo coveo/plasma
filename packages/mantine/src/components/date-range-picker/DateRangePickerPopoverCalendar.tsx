@@ -1,5 +1,5 @@
 import {Group, Popover, Space} from '@mantine/core';
-import {CalendarBaseProps, DatePicker, type DatesRangeValue} from '@mantine/dates';
+import {CalendarBaseProps, DatePicker, type DateStringValue, type DatesRangeValue} from '@mantine/dates';
 import {useClickOutside, useUncontrolled} from '@mantine/hooks';
 import {useState} from 'react';
 
@@ -9,11 +9,11 @@ import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableD
 
 interface DateRangePickerPopoverCalendarProps extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */
-    defaultValue?: DatesRangeValue;
+    defaultValue?: DatesRangeValue<DateStringValue | null>;
     /** Value for controlled input */
-    value?: DatesRangeValue;
+    value?: DatesRangeValue<DateStringValue | null>;
     /** onChange value for controlled input */
-    onChange?(value: DatesRangeValue): void;
+    onChange?(value: DatesRangeValue<DateStringValue | null>): void;
     /**
      * The presets to display
      *
@@ -47,19 +47,19 @@ export const DateRangePickerPopoverCalendar = ({
     const [opened, setOpened] = useState(false);
     const ref = useClickOutside(() => setOpened(false));
 
-    const [_value, handleChange] = useUncontrolled<DatesRangeValue>({
+    const [_value, handleChange] = useUncontrolled<DatesRangeValue<DateStringValue> | null>({
         value,
         defaultValue,
         onChange,
         finalValue: [null, null],
     });
 
-    const onCalendarChange = (dates: DatesRangeValue) => {
+    const onCalendarChange = (dates: DatesRangeValue<DateStringValue | null>) => {
         if (dates[0] !== null) {
-            dates[0] = dayjs(dates[0]).toDate();
+            dates[0] = dayjs(dates[0]).toISOString();
         }
         if (dates[1] !== null) {
-            dates[1] = dayjs(dates[1]).toDate();
+            dates[1] = dayjs(dates[1]).toISOString();
         }
         handleChange?.(dates);
         if (dates[1] !== null) {
