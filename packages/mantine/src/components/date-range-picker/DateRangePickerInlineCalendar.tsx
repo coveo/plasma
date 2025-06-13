@@ -1,5 +1,5 @@
 import {Center, Group, Space} from '@mantine/core';
-import {DatePicker, DatePickerBaseProps, type DatesRangeValue, type DateValue} from '@mantine/dates';
+import {DatePicker, DatePickerBaseProps, type DateStringValue, type DatesRangeValue} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
 import dayjs from 'dayjs';
@@ -12,13 +12,13 @@ export interface DateRangePickerInlineCalendarProps
     /**
      * Initial selected range
      */
-    initialRange: DatesRangeValue;
+    initialRange: DatesRangeValue<DateStringValue | null>;
     /**
      * Function called when the user applies the new date range
      *
      * @param range the newly selected dates
      */
-    onApply: (range: DatesRangeValue) => void;
+    onApply: (range: DatesRangeValue<DateStringValue | null>) => void;
     /**
      * Function called when the user click on the cancel button
      */
@@ -45,7 +45,7 @@ export interface DateRangePickerInlineCalendarProps
 
 const isDateRangePickerValue = (value: unknown): value is DatesRangeValue => Array.isArray(value) && value.length === 2;
 
-const endOfDay = (value: DateValue): DateValue => (value ? dayjs(value).endOf('day').toDate() : value);
+const endOfDay = (value: DateStringValue): DateStringValue => (value ? dayjs(value).endOf('day').toISOString() : value);
 
 export const DateRangePickerInlineCalendar = ({
     initialRange,
@@ -63,14 +63,14 @@ export const DateRangePickerInlineCalendar = ({
     });
     const calendarInputProps = form.getInputProps('dates');
 
-    const onCalendarChange = (range: string | string[] | DatesRangeValue<DateValue>): void => {
+    const onCalendarChange = (range: DateStringValue | DatesRangeValue<DateStringValue | null>): void => {
         // If the current value is [null, null] and a date is selected, set [selectedValue, null]
         if (isDateRangePickerValue(range) && range[0] && range[1] === null) {
-            calendarInputProps.onChange([dayjs(range[0]).toDate(), null]);
+            calendarInputProps.onChange([dayjs(range[0]).toISOString(), null]);
             return;
         }
         const normalized =
-            isDateRangePickerValue(range) && range[1] ? [dayjs(range[0]).toDate(), endOfDay(range[1])] : range;
+            isDateRangePickerValue(range) && range[1] ? [dayjs(range[0]).toISOString(), endOfDay(range[1])] : range;
         calendarInputProps.onChange(normalized);
     };
 

@@ -37,9 +37,9 @@ const columns: Array<ColumnDef<Person>> = [
     }),
 ];
 
-const today: Date = dayjs().endOf('day').toDate();
-const previousDay: Date = dayjs().subtract(1, 'day').startOf('day').toDate();
-const previousWeek: Date = dayjs().subtract(1, 'week').startOf('day').toDate();
+const today = dayjs().endOf('day').toISOString();
+const previousDay = dayjs().subtract(1, 'day').startOf('day').toISOString();
+const previousWeek = dayjs().subtract(1, 'week').startOf('day').toISOString();
 const datePickerPresets: Record<string, DateRangePickerPreset> = {
     lastDay: {label: 'Last 24 hours', range: [previousDay, today]},
     lastWeek: {label: 'Last week', range: [previousWeek, today]},
