@@ -1,4 +1,4 @@
-import {DatesRangeValue, type DateStringValue} from '@mantine/dates';
+import type {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {useDidUpdate} from '@mantine/hooks';
 import {type ExpandedState, type PaginationState, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
