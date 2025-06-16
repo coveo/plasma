@@ -29,3 +29,11 @@
         background-color: var(--mantine-color-gray-light);
     }
 }
+
+.control {
+    @mixin light {
+        .root[data-with-items-borders] :where(&)::before {
+            background-color: var(--mantine-color-default-border);
+        }
+    }
+}
