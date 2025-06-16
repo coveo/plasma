@@ -2,7 +2,7 @@ import {CalendarSize16Px} from '@coveord/plasma-react-icons';
 import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, InputBase, Popover, useProps} from '@mantine/core';
 import dayjs from 'dayjs';
 
-import {type DatesRangeValue, type DateValue} from '@mantine/dates';
+import {type DatesRangeValue, type DateStringValue} from '@mantine/dates';
 import {useState} from 'react';
 import {
     DateRangePickerInlineCalendar,
@@ -52,8 +52,8 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
     );
     const [opened, setOpened] = useState(false);
 
-    const onApply = (dates: DatesRangeValue) => {
-        store.setDateRange(dates.map((date) => dayjs(date).toDate()) as DatesRangeValue);
+    const onApply = (dates: DatesRangeValue<DateStringValue | null>) => {
+        store.setDateRange(dates);
         store.setPagination({pageIndex: 0, pageSize: store.state.pagination.pageSize});
         setOpened(false);
     };
@@ -62,9 +62,11 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
         setOpened(false);
     };
 
-    const formatDate = (date: DateValue) => dayjs(date).format('MMM DD, YYYY');
+    const formatDate = (date: DateStringValue) => dayjs(date).format('MMM DD, YYYY');
     const formattedRange = `${formatDate(store.state.dateRange[0])} - ${formatDate(store.state.dateRange[1])}`;
-    const dateRangeInitialized = store.state.dateRange.every((date: DateValue) => date instanceof Date);
+    const dateRangeInitialized = store.state.dateRange.every(
+        (date: DateStringValue) => typeof date === 'string' && date !== '',
+    );
 
     const stylesApiProps = {classNames, styles};
 
