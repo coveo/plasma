@@ -36,4 +36,21 @@
             background-color: var(--mantine-color-default-border);
         }
     }
+
+    &:first-of-type {
+        &::before {
+            background-color: transparent;
+        }
+    }
+
+    &[data-active] {
+        [data-mantine-color-scheme] & {
+            &,
+            & + .control {
+                &::before {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
 }
