@@ -1,3 +1,9 @@
+## <small>55.7.2-next.28 (2025-06-17)</small>
+
+* Ad UI 10500 mantine 8 bump improvements (#4076) af4daba, closes #4076
+
+
+
 ## <small>55.7.2-next.27 (2025-06-16)</small>
 
 * feat(mantine)!: bump mantine, fix type and tests (#4074) 4ab472a, closes #4074
