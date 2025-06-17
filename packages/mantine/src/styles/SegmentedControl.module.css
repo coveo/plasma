@@ -1,3 +1,56 @@
+:root {
+    --sc-radius: var(--mantine-radius-sm);
+}
+
 .label {
-    font-weight: 400;
+    @mixin light {
+        font-weight: 400;
+        color: var(--mantine-color-dimmed);
+
+        @mixin hover {
+            color: var(--mantine-color-text);
+        }
+
+        &[data-active] {
+            color: var(--mantine-color-text);
+        }
+
+        &[data-disabled] {
+            color: var(--coveo-color-text-disabled);
+        }
+    }
+}
+
+.root {
+    border-radius: var(--mantine-radius-md);
+    border: 1px solid var(--mantine-color-default-border);
+
+    @mixin light {
+        background-color: var(--mantine-color-gray-light);
+    }
+}
+
+.control {
+    @mixin light {
+        .root[data-with-items-borders] :where(&)::before {
+            background-color: var(--mantine-color-default-border);
+        }
+    }
+
+    &:first-of-type {
+        &::before {
+            background-color: transparent;
+        }
+    }
+
+    &[data-active] {
+        [data-mantine-color-scheme] & {
+            &,
+            & + .control {
+                &::before {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
 }
