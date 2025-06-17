@@ -1,3 +1,9 @@
+## <small>55.7.2-next.27 (2025-06-16)</small>
+
+* feat(mantine)!: bump mantine, fix type and tests (#4074) 4ab472a, closes #4074
+
+
+
 ## <small>55.7.2-next.26 (2025-06-11)</small>
 
 * fix(mantine): gray-light and gray-light-hover transparency (#4072) dd363ad, closes #4072

@@ -1,9 +1,9 @@
-import {DateInput, DatePickerProps, type DatesRangeValue, type DateValue} from '@mantine/dates';
+import {DateInput, DatePickerProps, DateStringValue, type DatesRangeValue} from '@mantine/dates';
 import dayjs from 'dayjs';
 
 export interface EditableDateRangePickerProps {
-    value: DatesRangeValue;
-    onChange?(value: DatesRangeValue): void;
+    value: DatesRangeValue<DateStringValue | null>;
+    onChange?(value: DatesRangeValue<DateStringValue> | null): void;
     onFocus?: () => void;
     /**
      * Props for the start input
@@ -22,11 +22,11 @@ export const EditableDateRangePicker = ({
     startProps = {},
     endProps = {},
 }: EditableDateRangePickerProps) => {
-    const onChangeStart = (date: DateValue) => {
-        onChange?.([dayjs(date).startOf('day').toDate(), value?.[1]]);
+    const onChangeStart = (date: DateStringValue | null) => {
+        onChange?.([dayjs(date).startOf('day').toISOString(), value?.[1]]);
     };
-    const onChangeEnd = (date: DateValue) => {
-        onChange?.([value?.[0], dayjs(date).endOf('day').toDate()]);
+    const onChangeEnd = (date: DateStringValue | null) => {
+        onChange?.([value?.[0], dayjs(date).endOf('day').toISOString()]);
     };
 
     return (
