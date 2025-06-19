@@ -1,0 +1,14 @@
+body {
+    font-weight: 400;
+    font-size: var(--mantine-font-size-sm);
+
+    &::selection {
+        color: var(--mantine-color-white);
+        background-color: var(--mantine-primary-color-filled);
+    }
+}
+
+b,
+strong {
+    font-weight: 500;
+}
