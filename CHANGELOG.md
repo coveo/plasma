@@ -1,3 +1,11 @@
+## <small>55.7.2-next.29 (2025-06-23)</small>
+
+* feat(mantine8): +inline true for popover and combobox middleware (#4078) 7f12b0b, closes #4078
+* Ad UI 10695 segmented control style changes (#4075) deb80f8, closes #4075
+* feat(mantine,theme): change text selection color (#4077) 772a32e, closes #4077
+
+
+
 ## <small>55.7.2-next.28 (2025-06-17)</small>
 
 * Ad UI 10500 mantine 8 bump improvements (#4076) af4daba, closes #4076
