@@ -200,6 +200,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Combobox: Combobox.extend({
             classNames: ComboboxClasses,
+            defaultProps: {
+                middlewares: {inline: true},
+            },
         }),
         ComboboxSearch: ComboboxSearch.extend({
             defaultProps: {
@@ -306,6 +309,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 shadow: 'md',
                 withArrow: true,
+                middlewares: {inline: true},
             },
         }),
         Radio: Radio.extend({
