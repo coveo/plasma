@@ -1,0 +1,55 @@
+import {DatePickerProps, DateTimePicker} from '@mantine/dates';
+import dayjs from 'dayjs';
+import {DateRangePickerValue} from '../date-range-picker';
+
+export interface EditableDateTimeRangePickerProps {
+    value: DateRangePickerValue;
+    onChange?(value: DateRangePickerValue): void;
+    onFocus?: () => void;
+    /**
+     * Props for the start input
+     */
+    startProps?: Omit<Partial<DatePickerProps>, 'value' | 'onChange' | 'onFocus'>;
+    /**
+     * Props for the end input
+     */
+    endProps?: Omit<Partial<DatePickerProps>, 'value' | 'onChange' | 'onFocus'>;
+}
+
+export const EditableDateTimeRangePicker = ({
+    value,
+    onChange,
+    onFocus,
+    startProps = {},
+    endProps = {},
+}: EditableDateTimeRangePickerProps) => {
+    const onChangeStart = (date: Date) => {
+        onChange?.([dayjs(date).startOf('day').toDate(), value?.[1]]);
+    };
+    const onChangeEnd = (date: Date) => {
+        onChange?.([value?.[0], dayjs(date).endOf('day').toDate()]);
+    };
+
+    return (
+        <>
+            <DateTimePicker
+                clearable={false}
+                label="Start"
+                value={value?.[0]}
+                onChange={onChangeStart}
+                onFocus={onFocus}
+                popoverProps={{styles: {dropdown: {display: 'none'}}}}
+                styles={{...startProps.styles}}
+            />
+            <DateTimePicker
+                clearable={false}
+                label="End"
+                value={value?.[1]}
+                onChange={onChangeEnd}
+                onFocus={onFocus}
+                popoverProps={{styles: {dropdown: {display: 'none'}}}}
+                styles={{...endProps.styles}}
+            />
+        </>
+    );
+};
