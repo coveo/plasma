@@ -1,5 +1,5 @@
 .root {
-    font-weight: 400;
+    font-weight: var(--coveo-fw-normal);
 
     &:where([data-inherit]) {
         font-weight: inherit;

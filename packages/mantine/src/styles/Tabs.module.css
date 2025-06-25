@@ -28,7 +28,7 @@
 }
 
 .tab {
-    font-weight: 500;
+    font-weight: var(--coveo-fw-bold);
     line-height: 1.5;
     color: var(--mantine-color-dimmed);
 

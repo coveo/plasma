@@ -4,7 +4,7 @@
 
 .label {
     @mixin light {
-        font-weight: 400;
+        font-weight: var(--coveo-fw-normal);
         color: var(--mantine-color-dimmed);
 
         @mixin hover {
