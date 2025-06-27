@@ -1,9 +1,9 @@
 import {
     ArrowHeadLeftSize16Px,
     ArrowHeadRightSize16Px,
-    CheckSize16Px,
     CrossSize16Px,
     FilterSize16Px,
+    IconCheck,
     IconSlash,
     InfoSize24Px,
 } from '@coveord/plasma-react-icons';
@@ -347,7 +347,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Stepper: Stepper.extend({
             defaultProps: {
                 size: 'xs',
-                completedIcon: <CheckSize16Px />,
+                completedIcon: <IconCheck size={16} />,
             },
             classNames: StepperClasses,
         }),
