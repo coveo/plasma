@@ -2,7 +2,11 @@ import {alpha, ConvertCSSVariablesInput, CSSVariablesResolver} from '@mantine/co
 
 export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
     const result: ConvertCSSVariablesInput = {
-        variables: {},
+        variables: {
+            '--coveo-fw-light': '300',
+            '--coveo-fw-normal': '400',
+            '--coveo-fw-bold': '500',
+        },
         dark: {},
         light: {
             // custom colors

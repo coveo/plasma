@@ -9,9 +9,9 @@
 }
 
 .description {
-    font-weight: 400;
+    font-weight: var(--coveo-fw-normal);
 }
 
 .error {
-    font-weight: 400;
+    font-weight: var(--coveo-fw-normal);
 }

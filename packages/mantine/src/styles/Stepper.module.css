@@ -6,7 +6,7 @@
 
 .stepIcon {
     background-color: var(--mantine-color-gray-light);
-    font-weight: 500;
+    font-weight: var(--coveo-fw-bold);
 
     &:where([data-completed]) {
         --stepper-icon-color: var(--step-color);

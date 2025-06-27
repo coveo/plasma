@@ -1,5 +1,5 @@
 body {
-    font-weight: 400;
+    font-weight: var(--coveo-fw-normal);
     font-size: var(--mantine-font-size-sm);
 
     &::selection {
@@ -10,5 +10,5 @@ body {
 
 b,
 strong {
-    font-weight: 500;
+    font-weight: var(--coveo-fw-bold);
 }

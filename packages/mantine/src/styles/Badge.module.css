@@ -1,5 +1,5 @@
 .root {
     --badge-fz-md: 12px;
 
-    font-weight: 500;
+    font-weight: var(--coveo-fw-bold);
 }

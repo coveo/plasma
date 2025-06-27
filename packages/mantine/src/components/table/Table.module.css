@@ -92,7 +92,7 @@
     text-align: left;
     color: var(--mantine-color-gray-6);
     height: var(--mantine-spacing-xl);
-    font-weight: 500;
+    font-weight: var(--coveo-fw-bold);
     font-size: var(--mantine-font-size-sm);
 
     &:first-of-type {

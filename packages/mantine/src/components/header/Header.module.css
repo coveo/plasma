@@ -6,7 +6,7 @@
 
     & .description {
         color: var(--mantine-color-dimmed);
-        font-weight: 400;
+        font-weight: var(--coveo-fw-normal);
     }
 }
 

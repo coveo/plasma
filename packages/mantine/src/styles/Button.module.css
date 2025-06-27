@@ -1,5 +1,5 @@
 .label {
-    font-weight: 500;
+    font-weight: var(--coveo-fw-bold);
 }
 
 .root {
