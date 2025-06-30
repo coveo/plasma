@@ -1,10 +1,9 @@
 .root {
     --prompt-icon-size: 68px;
+}
 
-    .body {
-        padding: 0 var(--mantine-spacing-lg) var(--mantine-spacing-lg)
-            calc(var(--prompt-icon-size) + var(--mantine-spacing-md) + var(--mantine-spacing-lg));
-    }
+.body {
+    padding-left: calc(var(--prompt-icon-size) + var(--mantine-spacing-sm) + var(--mb-padding));
 }
 
 .icon {

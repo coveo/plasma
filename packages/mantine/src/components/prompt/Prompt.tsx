@@ -99,22 +99,6 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
         (child.type === Modal.Footer ? footers : otherChildren).push(child);
     });
 
-    const titleContent =
-        typeof title === 'string' ? (
-            <Modal.Title
-                component={Header}
-                renderRoot={(p) => (
-                    <Header variant="secondary" {...p}>
-                        {p.children}
-                    </Header>
-                )}
-            >
-                {title}
-            </Modal.Title>
-        ) : (
-            title
-        );
-
     return (
         <PromptContextProvider value={{variant, getStyles}}>
             <Modal.Root ref={ref} variant="prompt" size="sm" {...others} {...getStyles('root')}>
@@ -131,7 +115,11 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                                 src={PROMPT_VARIANT_ICONS_SRC[variant]}
                             />
                         )}
-                        {titleContent}
+                        <Modal.Title>
+                            <Header titleComponent="div" variant="secondary">
+                                {title}
+                            </Header>
+                        </Modal.Title>
                         <Modal.CloseButton {...getStyles('close', stylesApiProps)} />
                     </Modal.Header>
                     <Modal.Body {...getStyles('body', stylesApiProps)}>

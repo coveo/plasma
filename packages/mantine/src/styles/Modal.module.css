@@ -1,3 +1,11 @@
 .title {
     font-weight: var(--coveo-fw-bold);
 }
+
+.header {
+    gap: var(--mantine-spacing-sm);
+}
+
+.close {
+    align-self: flex-start;
+}
