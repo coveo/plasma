@@ -69,6 +69,7 @@ export const Navigation = () => (
         <NavLink label="Date range" leftSection={<CalendarSize16Px height={16} />} defaultOpened>
             <InternalNavLink to="/date-range/DateRangePickerPopoverCalendar" label="Popover calendar" />
             <InternalNavLink to="/date-range/DateRangePickerInlineCalendar" label="Inline calendar" />
+            <InternalNavLink to="/date-range/DateTimeRangePicker" label="Date time range picker" />
         </NavLink>
         <NavLink label="Feedback" leftSection={<AnnouncementSize16Px height={16} />} defaultOpened>
             <InternalNavLink to="/feedback/Alert" label="Alert" />

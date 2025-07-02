@@ -122,6 +122,11 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
         propsType: 'DateRangePickerInlineCalendarProps',
     },
+    {
+        name: 'DateTimeRangePicker',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'DateTimeRangePickerProps',
+    },
 ];
 
 export default components;
