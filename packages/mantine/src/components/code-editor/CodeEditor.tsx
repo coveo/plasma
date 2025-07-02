@@ -229,6 +229,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     formatOnPaste: true,
                     fontSize: px(theme.fontSizes.xs) as number,
                     readOnly: disabled,
+                    stickyScroll: {enabled: false},
                     tabSize,
                 }}
                 value={_value}
