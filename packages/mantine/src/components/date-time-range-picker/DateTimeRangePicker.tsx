@@ -1,4 +1,4 @@
-import {Group, Space} from '@mantine/core';
+import {Group} from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
 
 import {DatesRangeValue, DateStringValue} from '@mantine/dates';
@@ -48,12 +48,14 @@ export const DateTimeRangePicker = ({
                 startProps={startProps}
                 endProps={endProps}
             />
-            {presets ? (
-                <>
-                    <Space w="sm" />
-                    <DateRangePickerPresetSelect presets={presets} value={_value} onChange={handleChange} />
-                </>
-            ) : null}
+            {presets && (
+                <DateRangePickerPresetSelect
+                    presets={presets}
+                    value={_value}
+                    onChange={handleChange}
+                    selectProps={{ml: 'sm'}}
+                />
+            )}
         </Group>
     );
 };

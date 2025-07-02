@@ -8,7 +8,7 @@ const Page = () => (
         section="Date range"
         title="Date Time Range Picker"
         propsMetadata={DateTimeRangePickerMetadata}
-        description="."
+        description="A date and time range picker with the ability to add presets"
         id="DateTimeRangePickerr"
         demo={<DateTimeRangePickerDemo layout="vertical" center />}
     />
