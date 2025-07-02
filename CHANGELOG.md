@@ -1,3 +1,11 @@
+## <small>55.7.2-next.30 (2025-07-02)</small>
+
+* feat(datetimerangepicker): create the DateTimeRangePicker component (#4081) 5eb8115, closes #4081
+* feat(mantine): update Stepper look (#4080) a916aec, closes #4080
+* feat(variables): create CSS variables for font-weight (#4079) 4af9126, closes #4079
+
+
+
 ## <small>55.7.2-next.29 (2025-06-23)</small>
 
 * feat(mantine8): +inline true for popover and combobox middleware (#4078) 7f12b0b, closes #4078
