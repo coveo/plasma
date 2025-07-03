@@ -59,6 +59,7 @@ export const Navigation = () => (
         <NavLink label="Form" leftSection={<ClickSize16Px height={16} />} defaultOpened>
             <InternalNavLink to="/form/ActionIcon" label="Action Icon" />
             <InternalNavLink to="/form/Button" label="Button" />
+            <InternalNavLink to="/form/Chip" label="Chip" />
             <InternalNavLink to="/form/CodeEditor" label="Code editor" />
             <InternalNavLink to="/form/Collection" label="Collection" />
             <InternalNavLink to="/form/CopyToClipboard" label="Copy to Clipboard" />
