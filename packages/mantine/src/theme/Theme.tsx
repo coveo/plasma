@@ -40,6 +40,7 @@ import {
     SegmentedControl,
     Select,
     Skeleton,
+    Slider,
     Stepper,
     Switch,
     Table,
@@ -69,6 +70,7 @@ import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
 import SelectClasses from '../styles/Select.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
+import SliderClasses from '../styles/Slider.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
 import TableClasses from '../styles/Table.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
@@ -359,6 +361,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Skeleton: Skeleton.extend({
             classNames: SkeletonClasses,
+        }),
+        Slider: Slider.extend({
+            defaultProps: {
+                size: 'md',
+            },
+            classNames: SliderClasses,
         }),
         Stepper: Stepper.extend({
             defaultProps: {
