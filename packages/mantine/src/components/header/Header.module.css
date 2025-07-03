@@ -12,7 +12,6 @@
 
 .title {
     word-break: break-word;
-    line-height: var(--mantine-line-height-md);
 }
 
 .docAnchor {

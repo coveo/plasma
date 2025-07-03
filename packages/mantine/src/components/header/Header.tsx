@@ -78,6 +78,16 @@ const defaultProps: Partial<HeaderProps> = {
     wrap: 'nowrap',
 };
 
+const getSpacing = (variant: HeaderVariant) => {
+    switch (variant) {
+        case 'secondary':
+            return 'xxs';
+        case 'primary':
+        default:
+            return 'xs';
+    }
+};
+
 export const Header = factory<HeaderFactory>((_props, ref) => {
     const props = useProps('PlasmaHeader', defaultProps, _props);
     const {
@@ -116,7 +126,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
     return (
         <HeaderProvider value={{getStyles}}>
             <Group ref={ref} variant={variant} {...getStyles('root')} {...others}>
-                <Stack gap={0}>
+                <Stack gap={getSpacing(variant)}>
                     {breadcrumbs}
                     <Title
                         variant={variant}
