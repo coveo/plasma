@@ -1,3 +1,11 @@
+## <small>55.7.2-next.31 (2025-07-03)</small>
+
+* fix(datetimepicker): the preselect presets in the datetimepicker component in plasma is not working  7ea7ab8, closes #4087
+* fix(mantine): disable CodeEditor stickyScroll (#4086) c4f7a13, closes #4086
+* feat(mantine): add default image fallback (#4083) c868640, closes #4083
+
+
+
 ## <small>55.7.2-next.30 (2025-07-02)</small>
 
 * feat(datetimerangepicker): create the DateTimeRangePicker component (#4081) 5eb8115, closes #4081
