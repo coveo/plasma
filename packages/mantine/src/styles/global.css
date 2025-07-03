@@ -1,0 +1,14 @@
+body {
+    font-weight: var(--coveo-fw-normal);
+    font-size: var(--mantine-font-size-sm);
+
+    &::selection {
+        color: var(--mantine-color-white);
+        background-color: var(--mantine-primary-color-filled);
+    }
+}
+
+b,
+strong {
+    font-weight: var(--coveo-fw-bold);
+}

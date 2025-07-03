@@ -1,27 +1,9 @@
-.root {
-    color: var(--mantine-color-gray-6);
-    line-height: var(--mantine-line-height);
-    border-radius: var(--mantine-radius-default) 0 0 var(--mantine-radius-default);
-
-    &[data-active] {
-        color: var(--mantine-primary-color-6);
-    }
-
-    @mixin hover {
-        @mixin light {
-            &:where(:not([data-active])) {
-                background-color: var(--mantine-color-gray-1);
-            }
-        }
-    }
-}
-
 .label {
-    font-weight: 500;
+    font-weight: var(--coveo-fw-bold);
 }
 
 .children {
     & .label {
-        font-weight: 300;
+        font-weight: var(--coveo-fw-normal);
     }
 }

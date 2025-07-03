@@ -62,7 +62,8 @@ const Demo = () => {
 
     return (
         <Table store={table} data={data} getRowId={({employeeId}) => employeeId?.toString()} columns={columns}>
-            <Table.Header>
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false}>
                 <Table.ColumnsSelector
                     label="Edit columns"
                     maxSelectableColumns={5}

@@ -13,7 +13,7 @@ export const TableLayoutControl = () => {
                         <Center>
                             {Icon ? (
                                 <>
-                                    <Icon height={16} />
+                                    <Icon size={16} />
                                     <Space w="xs" />
                                 </>
                             ) : null}

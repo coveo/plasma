@@ -4,6 +4,7 @@ import {FunctionComponent} from 'react';
 import {plasmaCSSVariablesResolver} from './plasmaCSSVariablesResolver';
 import {plasmaTheme} from './Theme';
 import {mergeCSSVariablesResolvers} from './mergeCSSVariablesResolvers';
+import '../styles/global.css';
 
 export const Plasmantine: FunctionComponent<MantineProviderProps> = ({
     children,

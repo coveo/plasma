@@ -1,14 +1,9 @@
 .root {
-    --prompt-icon-size: 88px;
-
-    .header {
-        border-bottom: none;
-        align-items: center;
-    }
+    --prompt-icon-size: 68px;
 
     .body {
         padding: 0 var(--mantine-spacing-lg) var(--mantine-spacing-lg)
-            calc(var(--prompt-icon-size) + (2 * var(--mantine-spacing-lg)));
+            calc(var(--prompt-icon-size) + var(--mantine-spacing-md) + var(--mantine-spacing-lg));
     }
 }
 
@@ -18,18 +13,12 @@
 }
 
 .header {
-    gap: var(--mantine-spacing-lg);
+    gap: var(--mantine-spacing-md);
     width: 100%;
-    font-size: var(--mantine-h3-font-size);
-    line-height: var(--mantine-h3-line-height);
     overflow-wrap: anywhere;
     padding: var(--mantine-spacing-lg) var(--mantine-spacing-md) var(--mantine-spacing-xs) var(--mantine-spacing-lg);
 }
 
-.close {
-    align-self: flex-start;
-}
-
 .inner {
-    color: var(--mantine-color-gray-7);
+    color: var(--mantine-color-dimmed);
 }

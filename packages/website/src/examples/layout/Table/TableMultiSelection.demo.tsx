@@ -106,7 +106,8 @@ const Demo = () => {
                       ]
             }
         >
-            <Table.Header>
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false}>
                 <Table.Filter placeholder="Search posts by title" />
             </Table.Header>
             <Table.NoData>
@@ -125,7 +126,7 @@ const EmptyState: FunctionComponent<{isFiltered: boolean; clearFilters: () => vo
     isFiltered ? (
         <BlankSlate>
             <Title order={4}>No data found for those filters</Title>
-            <Button onClick={clearFilters}>Clear filters</Button>
+            <Button.Tertiary onClick={clearFilters}>Clear filters</Button.Tertiary>
         </BlankSlate>
     ) : (
         <BlankSlate>
