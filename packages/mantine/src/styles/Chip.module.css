@@ -20,7 +20,7 @@
                 }
 
                 background-color: var(--mantine-color-gray-light);
-                border: 1px solid var(--coveo-color-input-border);
+                border-color: var(--coveo-color-input-border);
             }
         }
 
