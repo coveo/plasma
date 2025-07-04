@@ -24,6 +24,7 @@ import {
     createTheme,
     deepMerge,
     Divider,
+    Image,
     Input,
     InputWrapper,
     List,
@@ -76,6 +77,8 @@ import TabsClasses from '../styles/Tabs.module.css';
 import TextClasses from '../styles/Text.module.css';
 import TooltipClasses from '../styles/Tooltip.module.css';
 import {PlasmaColors} from './PlasmaColors';
+
+import placeholderSvg from '../images/placeholder.svg';
 
 export const plasmaTheme: MantineThemeOverride = createTheme({
     // These are overrides over https://github.com/mantinedev/mantine/blob/master/packages/%40mantine/core/src/core/MantineProvider/default-theme.ts
@@ -221,6 +224,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Divider: Divider.extend({
             defaultProps: {
                 color: 'var(--mantine-color-default-border)',
+            },
+        }),
+        Image: Image.extend({
+            defaultProps: {
+                fallbackSrc: placeholderSvg,
             },
         }),
         Input: Input.extend({
