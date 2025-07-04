@@ -40,7 +40,7 @@
 
     &:where(:disabled, [data-disabled]) {
         opacity: 1 !important; /* Override Mantine's 0.5 */
-        color: var(--coveo-color-text-disabled);
+        color: var(--mantine-color-disabled-color);
     }
 
     &:where([data-active]) {
