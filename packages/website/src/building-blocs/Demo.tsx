@@ -13,9 +13,7 @@ import {
 } from '@coveord/plasma-mantine';
 import {IconPlayerPlay, LinksSize16Px} from '@coveord/plasma-react-icons';
 import {CodeHighlight, CodeHighlightTabs} from '@mantine/code-highlight';
-import '@mantine/code-highlight/styles.css';
 import {Component, ReactNode} from 'react';
-import CodeHighlightClassesThemeClasses from '../styles/CodeHighlight.theme.module.css';
 import DemoClasses from './Demo.module.css';
 import getCodeSandboxLink from './getCodeSandboxLink';
 
@@ -85,10 +83,6 @@ const Demo = ({
                                 ...additionalFiles,
                             ]}
                             withCopyButton={false}
-                            classNames={{
-                                root: CodeHighlightClassesThemeClasses.theme,
-                                file: CodeHighlightClassesThemeClasses.file,
-                            }}
                             styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
                         />
                     ) : (
@@ -96,7 +90,6 @@ const Demo = ({
                             language="tsx"
                             code={snippet}
                             withCopyButton={false}
-                            classNames={{codeHighlight: CodeHighlightClassesThemeClasses.theme}}
                             styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
                         />
                     )}
