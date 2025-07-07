@@ -7,6 +7,7 @@ export * from './browser-preview';
 export * from './button';
 export * from './checkbox';
 export * from './child-form';
+export * from './chip';
 export * from './code-editor';
 export * from './collection';
 export * from './copyToClipboard';

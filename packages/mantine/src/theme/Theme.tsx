@@ -16,6 +16,7 @@ import {
     Breadcrumbs,
     Button,
     Checkbox,
+    Chip,
     CloseButton,
     ColorSwatch,
     Combobox,
@@ -55,6 +56,7 @@ import BreadcrumbsClasses from '../styles/Breadcrumbs.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
+import ChipClasses from '../styles/Chip.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
 import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
@@ -197,6 +199,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 icon: CheckboxIcon,
             },
             classNames: CheckboxIndicatorClasses,
+        }),
+        Chip: Chip.extend({
+            defaultProps: {
+                icon: <IconCheck size={16} />,
+            },
+            classNames: ChipClasses,
         }),
         CloseButton: CloseButton.extend({
             defaultProps: {
