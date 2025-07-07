@@ -1,3 +1,11 @@
+## <small>55.7.2-next.32 (2025-07-07)</small>
+
+* feat(mantine): change font styles (#4090) 22b652a, closes #4090
+* fix(table-action-item): use overridden MenuItem component (#4084) f61e189, closes #4084
+* fix(website): fix code snippet syntax highlighting (#4089) 2370aa2, closes #4089
+
+
+
 ## <small>55.7.2-next.31 (2025-07-03)</small>
 
 * fix(datetimepicker): the preselect presets in the datetimepicker component in plasma is not working  7ea7ab8, closes #4087
