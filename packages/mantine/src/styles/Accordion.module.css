@@ -1,0 +1,43 @@
+.item {
+    overflow: hidden;
+
+    @mixin where-light {
+        --item-border-color: var(--mantine-color-default-border);
+        --item-filled-color: var(--mantine-color-white);
+    }
+
+    &[data-active='true'] {
+        .control {
+            padding-bottom: 12px;
+        }
+    }
+}
+
+.root {
+    &[data-variant='separated'] {
+        .item {
+            border: 1px solid var(--mantine-color-default-border);
+        }
+    }
+}
+
+.control {
+    padding: var(--mantine-spacing-sm);
+
+    &:where(:not(:disabled, [data-disabled])) {
+        @mixin hover {
+            @mixin where-light {
+                background-color: var(--mantine-color-gray-1);
+            }
+        }
+    }
+}
+
+.label {
+    padding: 0;
+}
+
+.content {
+    padding: var(--mantine-spacing-sm);
+    padding-top: 0;
+}
