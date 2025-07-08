@@ -33,6 +33,7 @@ export {
     type HeaderProps,
     type MenuItemProps,
     type ModalFactory,
+    type ModalProps,
     type TableProps,
     type TableState,
 } from './components';

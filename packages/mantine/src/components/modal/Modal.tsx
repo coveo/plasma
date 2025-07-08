@@ -52,5 +52,6 @@ PlasmaModal.Stack = MantineModal.Stack;
 PlasmaModal.Footer = PlasmaModalFooter;
 
 export const Modal = PlasmaModal;
+export type ModalProps = PlasmaModalProps;
 
 export type ModalFactory = PlasmaModalFactory;
