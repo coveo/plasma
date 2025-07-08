@@ -1,4 +1,4 @@
-.track {
+.track:not([data-inverted]) {
     &::before {
         background-color: var(--mantine-color-gray-light);
     }
