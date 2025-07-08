@@ -1,3 +1,11 @@
+## <small>55.7.2-next.34 (2025-07-08)</small>
+
+* fix(mantine): export extended modal props (#4096) ffb76b3, closes #4096
+* feat(mantine): update Tooltip style (#4094) 978d65f, closes #4094
+* Ad UI 10790 move app background css variable in plasma theme (#4095) 8287935, closes #4095
+
+
+
 ## <small>55.7.2-next.33 (2025-07-08)</small>
 
 * feat(mantine): simplify modal usage (#4082) aa1b280, closes #4082
