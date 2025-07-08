@@ -27,6 +27,7 @@ export {
     PasswordInput,
     Select,
     Table,
+    Badge,
     type ActionIconProps,
     type ButtonProps,
     type CopyToClipboardProps,

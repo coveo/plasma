@@ -96,6 +96,7 @@ const components: Component[] = [
     {
         name: 'Badge',
         packageName: '@coveord/plasma-mantine',
+        propsType: 'SemanticBadgeProps',
     },
     {
         name: 'InfoToken',
