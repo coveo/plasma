@@ -13,8 +13,6 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--coveo-app-background': theme.colors.gray[0],
             '--coveo-color-input-border': theme.colors.gray[3],
             '--coveo-color-title': theme.colors.gray[8],
-            '--coveo-color-text-disabled': theme.colors.gray[3],
-            '--coveo-color-bg-disabled': alpha('var(--mantine-color-gray-4)', 0.1),
             '--coveo-color-text-readonly': 'var(--mantine-color-text)',
             '--coveo-color-bg-readonly': theme.colors.gray[1],
 
@@ -29,12 +27,8 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--mantine-color-warning-filled': theme.colors.yellow[4],
             '--mantine-color-placeholder': theme.colors.gray[4],
             '--mantine-color-default-hover': theme.colors.gray[1],
-            /**
-             * ADUI-10725 https://coveord.atlassian.net/browse/ADUI-10725
-             * '--mantine-color-disabled'
-             * '--mantine-color-disabled-color'
-             * '--mantine-color-disabled-border'
-             */
+            '--mantine-color-disabled': alpha('var(--mantine-color-gray-4)', 0.1),
+            '--mantine-color-disabled-color': theme.colors.gray[3],
         },
     };
 

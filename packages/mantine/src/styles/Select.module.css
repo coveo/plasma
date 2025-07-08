@@ -11,7 +11,7 @@
 
         &[data-combobox-disabled] {
             opacity: 1;
-            color: var(--coveo-color-text-disabled);
+            color: var(--mantine-color-disabled-color);
         }
 
         &[data-combobox-active='true'] {
@@ -39,7 +39,7 @@
 .input {
     @mixin light {
         &[data-disabled] {
-            --input-disabled-bg: var(--coveo-color-bg-disabled);
+            --input-disabled-bg: var(--mantine-color-disabled);
             --input-bd: var(--mantine-color-default-border);
         }
     }

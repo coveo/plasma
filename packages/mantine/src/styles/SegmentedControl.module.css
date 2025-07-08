@@ -16,7 +16,7 @@
         }
 
         &[data-disabled] {
-            color: var(--coveo-color-text-disabled);
+            color: var(--mantine-color-disabled-color);
         }
     }
 }
