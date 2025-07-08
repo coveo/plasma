@@ -1,3 +1,9 @@
+## <small>55.7.2-next.33 (2025-07-08)</small>
+
+* feat(mantine): simplify modal usage (#4082) aa1b280, closes #4082
+
+
+
 ## <small>55.7.2-next.32 (2025-07-07)</small>
 
 * feat(mantine): change font styles (#4090) 22b652a, closes #4090
