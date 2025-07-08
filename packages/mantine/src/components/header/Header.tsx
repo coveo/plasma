@@ -11,7 +11,7 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {Children, ReactElement, ReactNode} from 'react';
+import {Children, ElementType, ReactElement, ReactNode} from 'react';
 import {HeaderProvider} from './Header.context';
 import classes from './Header.module.css';
 import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight';
@@ -54,6 +54,13 @@ export interface HeaderProps
      * The title of the header.
      */
     children: ReactNode;
+    /**
+     * The component used to render the title.
+     *
+     * @default Title
+     * @example 'h2'
+     */
+    titleComponent?: ElementType;
 }
 
 export type HeaderFactory = Factory<{
@@ -76,6 +83,7 @@ const defaultProps: Partial<HeaderProps> = {
     variant: 'primary',
     justify: 'space-between',
     wrap: 'nowrap',
+    titleComponent: Title,
 };
 
 const getSpacing = (variant: HeaderVariant) => (variant === 'secondary' ? 'xxs' : 'xs');
@@ -93,6 +101,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
         unstyled,
         vars,
         styles,
+        titleComponent: TitleComponent,
         ...others
     } = props;
     const getStyles = useStyles<HeaderFactory>({
@@ -122,6 +131,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
                     {breadcrumbs}
                     <Title
                         variant={variant}
+                        component={TitleComponent}
                         order={variant === 'primary' ? 1 : 3}
                         {...getStyles('title', stylesApiProps)}
                     >
