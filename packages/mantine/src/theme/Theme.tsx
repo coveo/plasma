@@ -34,6 +34,7 @@ import {
     NavLink,
     Notification,
     Pagination,
+    Pill,
     Popover,
     Radio,
     ScrollArea,
@@ -63,6 +64,7 @@ import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
+import PillClasses from '../styles/Pill.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
@@ -322,6 +324,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 nextIcon: ArrowHeadRightSize16Px,
                 previousIcon: ArrowHeadLeftSize16Px,
             },
+        }),
+        Pill: Pill.extend({
+            classNames: PillClasses,
         }),
         Popover: Popover.extend({
             defaultProps: {
