@@ -1,3 +1,11 @@
+## <small>55.7.2-next.35 (2025-07-09)</small>
+
+* fix(mantine,modal): make description a react node (#4097) b924b72, closes #4097
+* feat(mantine): apply pill style changes (#4093) f14c8ee, closes #4093
+* feat(mantine): update slider look (#4091) c4648bf, closes #4091
+
+
+
 ## <small>55.7.2-next.34 (2025-07-08)</small>
 
 * fix(mantine): export extended modal props (#4096) ffb76b3, closes #4096
