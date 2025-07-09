@@ -4,14 +4,14 @@ import {
     ModalFactory as MantineModalFactory,
     ModalProps as MantineModalProps,
 } from '@mantine/core';
+import {Header, HeaderDocAnchorProps, HeaderProps} from '../header';
 import {ModalFooter as PlasmaModalFooter} from './ModalFooter';
-import {Header, HeaderDocAnchorProps} from '../header';
 
 interface PlasmaModalProps extends MantineModalProps {
     /**
      * Description of the modal, displayed below the title.
      */
-    description?: string;
+    description?: HeaderProps['description'];
     /**
      * Help link for the modal, displayed in the header.
      * Usually provides a link to external documentation or help resources.
