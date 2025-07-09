@@ -7,6 +7,7 @@ npm-debug.log.*
 .DS_Store
 .idea
 .vscode
+.run
 
 # Other various
 *.diff
