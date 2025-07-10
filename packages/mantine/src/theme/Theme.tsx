@@ -34,12 +34,14 @@ import {
     NavLink,
     Notification,
     Pagination,
+    Pill,
     Popover,
     Radio,
     ScrollArea,
     SegmentedControl,
     Select,
     Skeleton,
+    Slider,
     Stepper,
     Switch,
     Table,
@@ -62,6 +64,7 @@ import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
+import PillClasses from '../styles/Pill.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
@@ -69,6 +72,7 @@ import ScrollAreaClasses from '../styles/ScrollArea.module.css';
 import SegmentedControlClasses from '../styles/SegmentedControl.module.css';
 import SelectClasses from '../styles/Select.module.css';
 import SkeletonClasses from '../styles/Skeleton.module.css';
+import SliderClasses from '../styles/Slider.module.css';
 import StepperClasses from '../styles/Stepper.module.css';
 import TableClasses from '../styles/Table.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
@@ -321,6 +325,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 previousIcon: ArrowHeadLeftSize16Px,
             },
         }),
+        Pill: Pill.extend({
+            classNames: PillClasses,
+        }),
         Popover: Popover.extend({
             defaultProps: {
                 shadow: 'md',
@@ -359,6 +366,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Skeleton: Skeleton.extend({
             classNames: SkeletonClasses,
+        }),
+        Slider: Slider.extend({
+            defaultProps: {
+                size: 'md',
+            },
+            classNames: SliderClasses,
         }),
         Stepper: Stepper.extend({
             defaultProps: {
