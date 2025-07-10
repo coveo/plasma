@@ -83,7 +83,6 @@ const defaultProps: Partial<HeaderProps> = {
     variant: 'primary',
     justify: 'space-between',
     wrap: 'nowrap',
-    titleComponent: Title,
 };
 
 const getSpacing = (variant: HeaderVariant) => (variant === 'secondary' ? 'xxs' : 'xs');
