@@ -1,3 +1,13 @@
+## <small>55.7.2-next.36 (2025-07-10)</small>
+
+* fix(mantine,header): header secondary order (#4098) b0209b6, closes #4098
+* Merge branch 'master' of github.com:coveo/plasma into next 1515f0b
+* Merge branch 'next' of github.com:coveo/plasma into next 098b177
+* chore(deps): update actions/setup-node digest to 49933ea (#4047) 74afdeb, closes #4047
+* chore(deps): update dependency vite to v6.2.7 [security] (#4038) 18dee73, closes #4038
+
+
+
 ## <small>55.7.2-next.35 (2025-07-09)</small>
 
 * fix(mantine,modal): make description a react node (#4097) b924b72, closes #4097
