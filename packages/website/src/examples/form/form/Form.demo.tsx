@@ -52,6 +52,7 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Text input placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
@@ -63,6 +64,7 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Textarea placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
@@ -74,6 +76,7 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Number input placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
@@ -85,6 +88,7 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Password input placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
@@ -96,6 +100,7 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Color input placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
@@ -137,6 +142,13 @@ const Demo = () => {
                     <Title order={4}>Checkbox</Title>
                     <Checkbox
                         {...form.getInputProps('checkbox', {type: 'checkbox'})}
+                        label={form.values.label}
+                        description={form.values.description}
+                        readOnly={form.values.readOnly}
+                        disabled={form.values.disabled}
+                    />
+                    <Checkbox
+                        indeterminate
                         label={form.values.label}
                         description={form.values.description}
                         readOnly={form.values.readOnly}

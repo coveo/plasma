@@ -38,7 +38,7 @@ export const generatePage = async (
                         (f) =>
                             `${componentNameFromFileName(f)}: <${componentNameFromFileName(
                                 f,
-                            )} center title="${componentNameFromFileName(f)}" ${
+                            )} grow title="${componentNameFromFileName(f)}" ${
                                 cssFileByTsxFile[f]
                                     ? `additionalFiles={[
                         {

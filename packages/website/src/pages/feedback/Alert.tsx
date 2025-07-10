@@ -1,9 +1,9 @@
 import {AlertMetadata} from '@coveord/plasma-components-props-analyzer';
 import AlertDemo from '@examples/feedback/alert/Alert.demo?demo';
-import AlertTipDemo from '@examples/feedback/alert/AlertTip.demo?demo';
-import AlertSuccessDemo from '@examples/feedback/alert/AlertSuccess.demo?demo';
-import AlertWarningDemo from '@examples/feedback/alert/AlertWarning.demo?demo';
+import AlertAdviceDemo from '@examples/feedback/alert/AlertAdvice.demo?demo';
 import AlertCriticalDemo from '@examples/feedback/alert/AlertCritical.demo?demo';
+import AlertInformationDemo from '@examples/feedback/alert/AlertInformation.demo?demo';
+import AlertWarningDemo from '@examples/feedback/alert/AlertWarning.demo?demo';
 
 import {PageLayout} from '../../building-blocs/PageLayout';
 
@@ -16,8 +16,8 @@ const AlertPage = () => (
         description="Attract user attention with important static message."
         demo={<AlertDemo center />}
         examples={{
-            tip: <AlertTipDemo center title="Tip" />,
-            success: <AlertSuccessDemo center title="Success" />,
+            information: <AlertInformationDemo center title="Information" />,
+            advice: <AlertAdviceDemo center title="Advice" />,
             warning: <AlertWarningDemo center title="Warning" />,
             critical: <AlertCriticalDemo center title="Critical" />,
         }}

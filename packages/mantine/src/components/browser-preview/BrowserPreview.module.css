@@ -2,7 +2,7 @@
     box-shadow: var(--mantine-shadow-md);
     border-radius: var(--mantine-radius-default);
     border: 1px solid;
-    border-color: var(--mantine-color-gray-3);
+    border-color: var(--mantine-color-default-border);
     flex: 1;
 }
 

@@ -9,6 +9,7 @@ describe('Prompt', () => {
                 <Prompt.Footer>footer content</Prompt.Footer>
             </Prompt>,
         );
+        expect(screen.getByRole('dialog', {name: /title modal/i})).toBeInTheDocument();
         expect(screen.getByText(/content modal/i)).toBeInTheDocument();
         expect(screen.getByText(/footer content/i)).toBeInTheDocument();
         expect(screen.getByText(/title modal/i)).toBeInTheDocument();

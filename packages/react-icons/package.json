@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react-icons",
-    "version": "55.8.0",
+    "version": "55.7.2-next.15",
     "description": "Plasma iconography exposed as react components",
     "keywords": [
         "plasma",
@@ -43,7 +43,8 @@
         "prepublishOnly": "publint"
     },
     "dependencies": {
-        "@swc/helpers": "0.5.15"
+        "@swc/helpers": "0.5.15",
+        "@tabler/icons-react": "3.31.0"
     },
     "devDependencies": {
         "@babel/types": "7.27.0",

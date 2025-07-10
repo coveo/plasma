@@ -3,19 +3,17 @@ import {
     Anchor,
     Box,
     Center,
+    CopyToClipboard,
     Flex,
     ScrollArea,
     SimpleGrid,
     Stack,
     Title,
     Tooltip,
-    useClipboard,
 } from '@coveord/plasma-mantine';
-import {CheckSize16Px, CopySize16Px, LinksSize16Px, PlaySize16Px} from '@coveord/plasma-react-icons';
+import {IconPlayerPlay, LinksSize16Px} from '@coveord/plasma-react-icons';
 import {CodeHighlight, CodeHighlightTabs} from '@mantine/code-highlight';
-import '@mantine/code-highlight/styles.css';
 import {Component, ReactNode} from 'react';
-import CodeHighlightClassesThemeClasses from '../styles/CodeHighlight.theme.module.css';
 import DemoClasses from './Demo.module.css';
 import getCodeSandboxLink from './getCodeSandboxLink';
 
@@ -40,7 +38,6 @@ const Demo = ({
     maxHeight,
     additionalFiles,
 }: DemoProps) => {
-    const clipboard = useClipboard();
     const createSandbox = async () => {
         try {
             const res = await fetch(getCodeSandboxLink(snippet));
@@ -51,9 +48,9 @@ const Demo = ({
         }
     };
     return (
-        <div className={DemoClasses.root}>
+        <div>
             {title ? (
-                <Anchor href={`#${id}`} c="gray.9" className={DemoClasses.anchor}>
+                <Anchor href={`#${id}`} className={DemoClasses.anchor}>
                     <Title order={5} mb="xs" id={id} className={DemoClasses.title}>
                         {title}
                     </Title>
@@ -86,10 +83,6 @@ const Demo = ({
                                 ...additionalFiles,
                             ]}
                             withCopyButton={false}
-                            classNames={{
-                                root: CodeHighlightClassesThemeClasses.theme,
-                                file: CodeHighlightClassesThemeClasses.file,
-                            }}
                             styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
                         />
                     ) : (
@@ -97,32 +90,15 @@ const Demo = ({
                             language="tsx"
                             code={snippet}
                             withCopyButton={false}
-                            highlightOnClient
-                            classNames={{root: CodeHighlightClassesThemeClasses.theme}}
                             styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
                         />
                     )}
                     <Stack className={DemoClasses.actions} gap="xs">
-                        <Tooltip label={clipboard.copied ? 'Copied' : 'Copy'} position="left">
-                            <ActionIcon
-                                variant="subtle"
-                                radius="sm"
-                                c={'var(--mantine-color-gray-6)'}
-                                onClick={() => clipboard.copy(snippet)}
-                            >
-                                {clipboard.copied ? <CheckSize16Px height={16} /> : <CopySize16Px height={16} />}
-                            </ActionIcon>
-                        </Tooltip>
-
+                        <CopyToClipboard color="gray" value={snippet} />
                         <Tooltip label="Open in CodeSanbox" position="left">
-                            <ActionIcon
-                                variant="subtle"
-                                radius="sm"
-                                c={'var(--mantine-color-gray-6)'}
-                                onClick={createSandbox}
-                            >
-                                <PlaySize16Px height={16} />
-                            </ActionIcon>
+                            <ActionIcon.Quaternary color="gray" onClick={createSandbox}>
+                                <IconPlayerPlay size={20} />
+                            </ActionIcon.Quaternary>
                         </Tooltip>
                     </Stack>
                 </div>

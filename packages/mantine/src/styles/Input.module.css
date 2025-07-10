@@ -1,3 +1,25 @@
-.input {
-    --input-color: var(--mantine-color-gray-7);
+.wrapper {
+    --input-section-color: var(--mantine-color-placeholder);
+
+    @mixin light {
+        --input-disabled-color: var(--coveo-color-text-disabled);
+
+        &[data-variant='default'] {
+            --input-bd: var(--coveo-color-input-border);
+        }
+    }
+
+    &[data-disabled] {
+        > .section {
+            > svg {
+                color: var(--input-disabled-color);
+            }
+        }
+    }
+}
+
+.section {
+    > svg {
+        color: var(--mantine-color-gray-3);
+    }
 }
