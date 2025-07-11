@@ -14,7 +14,13 @@ const _MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
             disabledTooltip={disabledTooltip}
             disabledTooltipProps={disabledTooltipProps}
         >
-            <MantineMenu.Item ref={ref} disabled={disabled} {...others} />
+            <MantineMenu.Item
+                ref={ref}
+                disabled={disabled}
+                data-disabled={disabled}
+                {...others}
+                {...(disabled && (others as any).href ? {href: undefined} : {})}
+            />
         </ButtonWithDisabledTooltip>
     ),
 );
