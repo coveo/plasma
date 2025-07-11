@@ -6,8 +6,12 @@
     background-color: var(--mantine-color-default-hover);
 }
 
-.root:not([data-active]) {
+.root:not([data-active], [data-disabled]) {
     color: var(--coveo-color-title);
+}
+
+.root[data-disabled] {
+    color: var(--coveo-color-text-disabled);
 }
 
 .children {
