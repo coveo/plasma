@@ -1,3 +1,10 @@
+## <small>55.8.1 (2025-07-11)</small>
+
+* chore(deps): update actions/setup-node digest to 49933ea (#4047) 74afdeb, closes #4047
+* chore(deps): update dependency vite to v6.2.7 [security] (#4038) 18dee73, closes #4038
+
+
+
 ## 55.8.0 (2025-04-11)
 
 * feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043
