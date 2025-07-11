@@ -3,17 +3,20 @@ import {
     Anchor,
     Box,
     Center,
+    Code,
     CopyToClipboard,
     Flex,
     ScrollArea,
     SimpleGrid,
     Stack,
+    Text,
     Title,
     Tooltip,
 } from '@coveord/plasma-mantine';
 import {IconPlayerPlay, LinksSize16Px} from '@coveord/plasma-react-icons';
 import {CodeHighlight, CodeHighlightTabs} from '@mantine/code-highlight';
-import {Component, ReactNode} from 'react';
+import {ReactNode} from 'react';
+import {ErrorBoundary} from 'react-error-boundary';
 import DemoClasses from './Demo.module.css';
 import getCodeSandboxLink from './getCodeSandboxLink';
 
@@ -58,8 +61,17 @@ const Demo = ({
                 </Anchor>
             ) : null}
             <SimpleGrid className={DemoClasses.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
-                <ErrorBoundary>
-                    <Box<'div' | typeof Center> component={center ? Center : 'div'} className={DemoClasses.preview}>
+                <Box<'div' | typeof Center> component={center ? Center : 'div'} className={DemoClasses.preview}>
+                    <ErrorBoundary
+                        fallbackRender={({error}) => (
+                            <Code block w="100%">
+                                <Text c="critical" fw="var(--coveo-fw-bold)" mb="xs">
+                                    An error occurred while rendering the demo:
+                                </Text>
+                                {error.message}
+                            </Code>
+                        )}
+                    >
                         {maxHeight ? (
                             <Flex direction={'column'} mah={maxHeight} flex={1}>
                                 <Box className={DemoClasses.flexPreviewWrapper} p={noPadding ? 0 : 'md'}>
@@ -73,8 +85,8 @@ const Demo = ({
                                 </Box>
                             </ScrollArea.Autosize>
                         )}
-                    </Box>
-                </ErrorBoundary>
+                    </ErrorBoundary>
+                </Box>
                 <div className={DemoClasses.code}>
                     {additionalFiles && additionalFiles.length > 0 ? (
                         <CodeHighlightTabs
@@ -106,35 +118,5 @@ const Demo = ({
         </div>
     );
 };
-
-class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean}> {
-    constructor(props) {
-        super(props);
-        this.state = {hasError: false};
-    }
-
-    static getDerivedStateFromError() {
-        // Update state so the next render will show the fallback UI.
-        return {hasError: true};
-    }
-
-    componentDidCatch(error, info) {
-        // Example "componentStack":
-        //   in ComponentThatThrows (created by App)
-        //   in ErrorBoundary (created by App)
-        //   in div (created by App)
-        //   in App
-        console.error(error, info.componentStack);
-    }
-
-    render() {
-        if (this.state.hasError) {
-            // You can render any custom fallback UI
-            return null;
-        }
-
-        return this.props.children;
-    }
-}
 
 export default Demo;
