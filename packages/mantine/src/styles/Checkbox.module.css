@@ -20,15 +20,8 @@ So we are allowing ourselves some custom style to achieve the desired effect
             }
         }
 
-        /* mantine hardcodes disabled styles so we need to write custom styles */
         &:disabled {
             border-color: var(--mantine-color-default-border);
-            background-color: var(--mantine-color-disabled);
-            color: var(--mantine-color-disabled-color);
-
-            & + .icon {
-                color: var(--mantine-color-disabled-color);
-            }
         }
     }
 }
