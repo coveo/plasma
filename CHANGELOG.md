@@ -1,3 +1,9 @@
+## <small>55.7.2-next.37 (2025-07-14)</small>
+
+* fix(mantine): disable menu item links properly (#4100) 5befae4, closes #4100
+
+
+
 ## <small>55.7.2-next.36 (2025-07-10)</small>
 
 * fix(mantine,header): header secondary order (#4098) b0209b6, closes #4098
