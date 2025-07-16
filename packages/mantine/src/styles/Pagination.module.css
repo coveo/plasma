@@ -6,6 +6,25 @@
 .control {
     @mixin where-light {
         border-color: var(--mantine-color-default-border);
+
+        @mixin hover {
+            &:not([data-active], [data-disabled]) {
+                background-color: var(--mantine-color-default-hover);
+            }
+        }
+
+        &:not([data-active]) {
+            color: var(--mantine-color-placeholder);
+        }
+
+        &[data-disabled] {
+            opacity: 1;
+            background-color: var(--coveo-color-bg-disabled);
+
+            & + .icon {
+                color: var(--coveo-color-text-disabled);
+            }
+        }
     }
 
     &[data-active] {
