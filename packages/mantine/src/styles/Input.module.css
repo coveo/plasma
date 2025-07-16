@@ -2,7 +2,7 @@
     --input-section-color: var(--mantine-color-placeholder);
 
     @mixin light {
-        --input-disabled-color: var(--coveo-color-text-disabled);
+        --input-disabled-color: var(--mantine-color-disabled-color);
 
         &[data-variant='default'] {
             --input-bd: var(--coveo-color-input-border);
