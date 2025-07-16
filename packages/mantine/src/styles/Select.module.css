@@ -1,7 +1,6 @@
 .option {
     @mixin light {
         color: var(--coveo-color-title);
-        border-radius: var(--mantine-radius-sm);
 
         @mixin hover {
             &:not([data-combobox-disabled], [data-checked], [data-combobox-selected]) {
