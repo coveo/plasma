@@ -330,8 +330,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Popover: Popover.extend({
             defaultProps: {
-                shadow: 'md',
-                withArrow: true,
+                shadow: 'xs',
                 middlewares: {inline: true},
             },
         }),

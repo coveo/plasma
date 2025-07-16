@@ -1,4 +1,6 @@
 .option {
+    padding: var(--mantine-spacing-xs);
+
     @mixin light {
         color: var(--coveo-color-title);
 
