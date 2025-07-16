@@ -31,3 +31,7 @@
         border: none;
     }
 }
+
+.dots {
+    color: var(--mantine-color-gray-filled);
+}
