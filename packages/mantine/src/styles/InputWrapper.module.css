@@ -10,6 +10,7 @@
 
 .description {
     font-weight: var(--coveo-fw-normal);
+    font-size: var(--mantine-font-size-sm);
 }
 
 .error {
