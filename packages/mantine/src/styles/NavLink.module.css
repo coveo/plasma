@@ -2,6 +2,18 @@
     font-weight: var(--coveo-fw-bold);
 }
 
+.root:not([data-active]):hover {
+    background-color: var(--mantine-color-default-hover);
+}
+
+.root:not([data-active], [data-disabled]) {
+    color: var(--coveo-color-title);
+}
+
+.root[data-disabled] {
+    color: var(--coveo-color-text-disabled);
+}
+
 .children {
     & .label {
         font-weight: var(--coveo-fw-normal);
