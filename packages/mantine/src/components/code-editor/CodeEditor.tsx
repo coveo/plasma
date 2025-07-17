@@ -159,7 +159,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
 
     hasMonacoErrorRef.current = hasMonacoError;
 
-    const renderErrorOutline = !!error || hasMonacoError;
+    const hasError = !!error || hasMonacoError;
     const theme = useMantineTheme();
     const {colorScheme} = useMantineColorScheme();
 
@@ -185,7 +185,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         <Input.Description {...descriptionProps}>{description}</Input.Description>
     ) : null;
 
-    const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : <Space h="xs" />;
+    const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : <Space h="sm" />;
 
     const _header =
         _label || _description ? (
@@ -212,8 +212,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             pl="xs"
             className={cx(
                 CodeEditorClasses.editor,
-                {[CodeEditorClasses.valid]: !renderErrorOutline},
-                {[CodeEditorClasses.error]: renderErrorOutline},
+                {[CodeEditorClasses.error]: hasError},
                 {[CodeEditorClasses.disabled]: disabled},
             )}
             data-testid="editor-wrapper"
