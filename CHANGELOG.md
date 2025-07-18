@@ -1,3 +1,10 @@
+## <small>55.7.2-next.39 (2025-07-18)</small>
+
+* fix(mantine,navlink): reduce style specificity (#4108) 7a91693, closes #4108
+* feat(radio): adjust newly added style to radio component (#4104) 6b43daf, closes #4104
+
+
+
 ## <small>55.7.2-next.38 (2025-07-18)</small>
 
 * Ad UI 10702 apply style changes to nav link (#4099) fb2e3e9, closes #4099
