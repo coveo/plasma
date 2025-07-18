@@ -11,7 +11,7 @@ const Demo = () => (
         <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
         <Header.Right wrap="nowrap">
             <Button.Primary>Primary</Button.Primary>
-            <Button.Tertiary>Secondary</Button.Tertiary>
+            <Button.Secondary>Secondary</Button.Secondary>
         </Header.Right>
     </Header>
 );
