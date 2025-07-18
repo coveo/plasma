@@ -42,7 +42,7 @@ describe('CodeEditor', () => {
         await waitForElementToBeRemoved(screen.queryByRole('presentation'));
 
         expect(screen.getByText(/invalid configuration/i)).toBeInTheDocument();
-        expect(screen.getByTestId('editor-wrapper')).toHaveStyle('outline-color: #cd2113');
+        expect(screen.getByTestId('editor-wrapper')).toHaveStyle('border-color: #cd2113');
     });
 
     it('loads the monaco editor files from node_modules when monacoLoader prop is "local"', async () => {

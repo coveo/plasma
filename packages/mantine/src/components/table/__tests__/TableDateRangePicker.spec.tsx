@@ -1,6 +1,7 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent} from '@test-utils';
 
+import dayjs from 'dayjs';
 import {Table} from '../Table';
 import {useTable} from '../use-table';
 
@@ -12,7 +13,10 @@ const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enabl
 describe('Table.DateRangePicker', () => {
     it('displays the initial dates', () => {
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {dateRange: [new Date(2022, 0, 1), new Date(2022, 0, 7)]}});
+            const store = useTable<RowData>({
+                initialState: {dateRange: [dayjs('2022-01-01').toISOString(), dayjs('2022-01-07').toISOString()]},
+            });
+
             return (
                 <Table store={store} data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
                     <Table.Header>
@@ -35,7 +39,7 @@ describe('Table.DateRangePicker', () => {
             const user = userEvent.setup();
             const Fixture = () => {
                 const store = useTable<RowData>({
-                    initialState: {dateRange: [new Date(2022, 0, 1), new Date(2022, 0, 7)]},
+                    initialState: {dateRange: [dayjs('2022-01-01').toISOString(), dayjs('2022-01-07').toISOString()]},
                     syncWithUrl: true,
                 });
                 return (
@@ -59,10 +63,9 @@ describe('Table.DateRangePicker', () => {
 
         it('initially selects the specified date range from in the url', async () => {
             window.history.replaceState(null, '', '?from=2022-01-02T00%3A00%3A00.000Z&to=2022-01-08T23%3A59%3A59.999Z');
-            const user = userEvent.setup();
             const Fixture = () => {
                 const store = useTable<RowData>({
-                    initialState: {dateRange: [new Date(2022, 0, 1), new Date(2022, 0, 7)]},
+                    initialState: {dateRange: [dayjs('2022-01-02').toISOString(), dayjs('2022-01-08').toISOString()]},
                     syncWithUrl: true,
                 });
                 return (

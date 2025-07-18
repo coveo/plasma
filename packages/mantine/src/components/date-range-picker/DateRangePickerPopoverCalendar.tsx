@@ -1,19 +1,19 @@
 import {Group, Popover, Space} from '@mantine/core';
-import {CalendarBaseProps, DatePicker} from '@mantine/dates';
+import {CalendarBaseProps, DatePicker, type DateStringValue, type DatesRangeValue} from '@mantine/dates';
 import {useClickOutside, useUncontrolled} from '@mantine/hooks';
 import {useState} from 'react';
 
-import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
+import dayjs from 'dayjs';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
 
 interface DateRangePickerPopoverCalendarProps extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */
-    defaultValue?: DateRangePickerValue;
+    defaultValue?: DatesRangeValue<DateStringValue | null>;
     /** Value for controlled input */
-    value?: DateRangePickerValue;
+    value?: DatesRangeValue<DateStringValue | null>;
     /** onChange value for controlled input */
-    onChange?(value: DateRangePickerValue): void;
+    onChange?(value: DatesRangeValue<DateStringValue | null>): void;
     /**
      * The presets to display
      *
@@ -25,7 +25,6 @@ interface DateRangePickerPopoverCalendarProps extends Pick<EditableDateRangePick
      * }
      */
     presets?: Record<string, DateRangePickerPreset>;
-
     /**
      * Props for RangeCalendar
      */
@@ -47,14 +46,20 @@ export const DateRangePickerPopoverCalendar = ({
     const [opened, setOpened] = useState(false);
     const ref = useClickOutside(() => setOpened(false));
 
-    const [_value, handleChange] = useUncontrolled<DateRangePickerValue>({
+    const [_value, handleChange] = useUncontrolled<DatesRangeValue<DateStringValue> | null>({
         value,
         defaultValue,
         onChange,
         finalValue: [null, null],
     });
 
-    const onCalendarChange = (dates: DateRangePickerValue) => {
+    const onCalendarChange = (dates: DatesRangeValue<DateStringValue | null>) => {
+        if (dates[0] !== null) {
+            dates[0] = dayjs(dates[0]).toISOString();
+        }
+        if (dates[1] !== null) {
+            dates[1] = dayjs(dates[1]).toISOString();
+        }
         handleChange?.(dates);
         if (dates[1] !== null) {
             setOpened(false);

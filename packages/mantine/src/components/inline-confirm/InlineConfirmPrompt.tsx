@@ -15,13 +15,13 @@ interface InlineConfirmPromptProps extends Omit<GroupProps, 'children'>, InlineC
     /**
      * Confirm button element
      *
-     * @default <Button color="red">Delete</Button>
+     * @default <Button.DestructivePrimary>Delete</Button.DestructivePrimary>
      */
     confirm?: ReactElement;
     /**
      * Cancel button element
      *
-     * @default <Button variant="outline">Cancel</Button>
+     * @default <Button.Tertiary>Cancel</Button.Tertiary>
      */
     cancel?: ReactElement;
     /**
@@ -42,8 +42,8 @@ export type InlineConfirmPromptFactory = Factory<{
 
 const defaultProps: Partial<InlineConfirmPromptProps> = {
     label: 'Are you sure?',
-    confirm: <Button color="red">Delete</Button>,
-    cancel: <Button variant="outline">Cancel</Button>,
+    confirm: <Button.DestructivePrimary>Delete</Button.DestructivePrimary>,
+    cancel: <Button.Tertiary>Cancel</Button.Tertiary>,
     gap: 'xs',
     wrap: 'nowrap',
 };

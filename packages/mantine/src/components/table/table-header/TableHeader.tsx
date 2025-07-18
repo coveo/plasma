@@ -23,6 +23,12 @@ export interface TableHeaderProps
      * default true
      */
     showActions?: boolean;
+    /**
+     * Whether to show a border on top of the header
+     *
+     * default true
+     */
+    borderTop?: boolean;
 }
 
 export type TableHeaderFactory = Factory<{
@@ -36,6 +42,7 @@ const defaultProps: Partial<TableHeaderProps> = {
     unselectAllLabel: 'Unselect all',
     selectedCountLabel: (count) => `${count} selected`,
     showActions: true,
+    borderTop: true,
 };
 
 export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
@@ -44,6 +51,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
         showActions,
         unselectAllLabel,
         selectedCountLabel,
+        borderTop,
         children,
         classNames,
         className,
@@ -59,7 +67,12 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
     const gridStyles = getStyles('headerGrid', stylesApiProps);
 
     return (
-        <Box ref={ref} {...getStyles('headerRoot', {className, style, ...stylesApiProps})} {...others}>
+        <Box
+            ref={ref}
+            {...getStyles('headerRoot', {className, style, ...stylesApiProps})}
+            {...others}
+            mod={{'with-border-top': borderTop}}
+        >
             <Grid
                 justify="flex-start"
                 align="center"
@@ -73,14 +86,13 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
                         order={TableComponentsOrder.MultiSelectInfo}
                     >
                         <Tooltip label={unselectAllLabel}>
-                            <Button
+                            <Button.Quaternary
                                 onClick={store.clearRowSelection}
-                                variant="subtle"
                                 disabled={!store.rowSelectionEnabled}
                                 leftSection={<CrossSize16Px height={16} />}
                             >
                                 {selectedCountLabel(selectedRows.length)}
-                            </Button>
+                            </Button.Quaternary>
                         </Tooltip>
                     </Grid.Col>
                 ) : null}

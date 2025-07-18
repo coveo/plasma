@@ -1,9 +1,10 @@
-import {DragAndDropSize24Px, RemoveSize16Px} from '@coveord/plasma-react-icons';
+import {DragAndDropSize24Px, IconCircleMinus} from '@coveord/plasma-react-icons';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {ActionIcon, Group, GroupProps} from '@mantine/core';
+import {Group, GroupProps} from '@mantine/core';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
+import {ActionIcon} from '../action-icon';
 import {useCollectionContext} from './CollectionContext';
 
 interface CollectionItemProps extends CollectionItemSharedProps {
@@ -20,9 +21,9 @@ interface CollectionItemSharedProps extends GroupProps {
 const RemoveButton: FunctionComponent<{
     onClick: React.MouseEventHandler<HTMLButtonElement>;
 }> = ({onClick}) => (
-    <ActionIcon style={{alignSelf: 'center'}} variant="subtle" onClick={onClick} color="action">
-        <RemoveSize16Px height={16} />
-    </ActionIcon>
+    <ActionIcon.Quaternary style={{alignSelf: 'center'}} onClick={onClick}>
+        <IconCircleMinus aria-label="Remove" size={20} />
+    </ActionIcon.Quaternary>
 );
 
 const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
@@ -30,22 +31,27 @@ const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
 const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
     onRemove,
     removable = true,
+    id,
     children,
 }) => {
     const ctx = useCollectionContext();
     const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : <RemoveButtonPlaceholder />;
 
     return (
-        <Group {...ctx.getStyles('item')}>
+        <Group data-testid={`item-${id}`} {...ctx.getStyles('item')}>
             {children}
             {removeButton}
         </Group>
     );
 };
 
-const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({children}) => {
+const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({id, children}) => {
     const ctx = useCollectionContext();
-    return <Group {...ctx.getStyles('item')}>{children}</Group>;
+    return (
+        <Group data-testid={`item-${id}`} {...ctx.getStyles('item')}>
+            {children}
+        </Group>
+    );
 };
 
 const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = ({
@@ -62,6 +68,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
 
     return (
         <Group
+            data-testid={`item-${id}`}
             ref={setNodeRef}
             {...ctx.getStyles('item', {
                 style: transform

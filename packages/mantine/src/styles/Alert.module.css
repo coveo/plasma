@@ -1,35 +1,14 @@
-.root {
-    padding: var(--mantine-spacing-sm);
-
-    &:not(&[data-variant]) {
-        border-color: color-mix(in srgb, var(--alert-color), var(--alert-bg) 85%);
-    }
-}
-
-.wrapper {
-    gap: var(--mantine-spacing-sm);
-}
-
 .title {
-    font-weight: 500;
+    font-weight: var(--coveo-fw-bold);
 }
 
 .icon {
-    width: 16px;
-    height: 16px;
-    margin-right: 0;
+    margin-inline-end: var(--mantine-spacing-sm);
 }
 
-.message {
-    @mixin light {
-        color: var(--mantine-color-gray-7);
-
-        &:where([data-variant='filled']) {
-            color: var(--alert-color);
-        }
-    }
-
-    &:where([data-variant='white']) {
-        color: var(--mantine-color-black);
+.closeButton {
+    & svg {
+        width: 20px;
+        height: 20px;
     }
 }

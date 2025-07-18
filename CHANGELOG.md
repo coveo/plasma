@@ -1,7 +1,194 @@
-## <small>55.8.1 (2025-07-11)</small>
+## <small>55.7.2-next.39 (2025-07-18)</small>
 
+* fix(mantine,navlink): reduce style specificity (#4108) 7a91693, closes #4108
+* feat(radio): adjust newly added style to radio component (#4104) 6b43daf, closes #4104
+
+
+
+## <small>55.7.2-next.38 (2025-07-18)</small>
+
+* Ad UI 10702 apply style changes to nav link (#4099) fb2e3e9, closes #4099
+* Ad UI 10883 select style changes (#4103) cbddabd, closes #4103
+* Ad UI 10887 apply style changes to checkbox (#4106) e2266af, closes #4106
+* fix(mantine,codeeditor): adjust height (#4105) 2e4994f, closes #4105
+* feat(mantine): changed newly added variables with hardcoded ones (#4092) 8579db6, closes #4092
+* feat(mantine): updated input font-size (#4107) fa25253, closes #4107
+* feat(pagination): +style change for pagination (#4102) 55cd318, closes #4102
+
+
+
+## <small>55.7.2-next.37 (2025-07-14)</small>
+
+* fix(mantine): disable menu item links properly (#4100) 5befae4, closes #4100
+
+
+
+## <small>55.7.2-next.36 (2025-07-10)</small>
+
+* fix(mantine,header): header secondary order (#4098) b0209b6, closes #4098
+* Merge branch 'master' of github.com:coveo/plasma into next 1515f0b
+* Merge branch 'next' of github.com:coveo/plasma into next 098b177
 * chore(deps): update actions/setup-node digest to 49933ea (#4047) 74afdeb, closes #4047
 * chore(deps): update dependency vite to v6.2.7 [security] (#4038) 18dee73, closes #4038
+
+
+
+## <small>55.7.2-next.35 (2025-07-09)</small>
+
+* fix(mantine,modal): make description a react node (#4097) b924b72, closes #4097
+* feat(mantine): apply pill style changes (#4093) f14c8ee, closes #4093
+* feat(mantine): update slider look (#4091) c4648bf, closes #4091
+
+
+
+## <small>55.7.2-next.34 (2025-07-08)</small>
+
+* fix(mantine): export extended modal props (#4096) ffb76b3, closes #4096
+* feat(mantine): update Tooltip style (#4094) 978d65f, closes #4094
+* Ad UI 10790 move app background css variable in plasma theme (#4095) 8287935, closes #4095
+
+
+
+## <small>55.7.2-next.33 (2025-07-08)</small>
+
+* feat(mantine): simplify modal usage (#4082) aa1b280, closes #4082
+
+
+
+## <small>55.7.2-next.32 (2025-07-07)</small>
+
+* feat(mantine): change font styles (#4090) 22b652a, closes #4090
+* fix(table-action-item): use overridden MenuItem component (#4084) f61e189, closes #4084
+* fix(website): fix code snippet syntax highlighting (#4089) 2370aa2, closes #4089
+
+
+
+## <small>55.7.2-next.31 (2025-07-03)</small>
+
+* fix(datetimepicker): the preselect presets in the datetimepicker component in plasma is not working  7ea7ab8, closes #4087
+* fix(mantine): disable CodeEditor stickyScroll (#4086) c4f7a13, closes #4086
+* feat(mantine): add default image fallback (#4083) c868640, closes #4083
+
+
+
+## <small>55.7.2-next.30 (2025-07-02)</small>
+
+* feat(datetimerangepicker): create the DateTimeRangePicker component (#4081) 5eb8115, closes #4081
+* feat(mantine): update Stepper look (#4080) a916aec, closes #4080
+* feat(variables): create CSS variables for font-weight (#4079) 4af9126, closes #4079
+
+
+
+## <small>55.7.2-next.29 (2025-06-23)</small>
+
+* feat(mantine8): +inline true for popover and combobox middleware (#4078) 7f12b0b, closes #4078
+* Ad UI 10695 segmented control style changes (#4075) deb80f8, closes #4075
+* feat(mantine,theme): change text selection color (#4077) 772a32e, closes #4077
+
+
+
+## <small>55.7.2-next.28 (2025-06-17)</small>
+
+* Ad UI 10500 mantine 8 bump improvements (#4076) af4daba, closes #4076
+
+
+
+## <small>55.7.2-next.27 (2025-06-16)</small>
+
+* feat(mantine)!: bump mantine, fix type and tests (#4074) 4ab472a, closes #4074
+
+
+
+## <small>55.7.2-next.26 (2025-06-11)</small>
+
+* fix(mantine): gray-light and gray-light-hover transparency (#4072) dd363ad, closes #4072
+* Ad UI 10500 bump mantine 8 (#4070) 02ce1b3, closes #4070
+
+
+
+## <small>55.7.2-next.25 (2025-06-06)</small>
+
+* feat(mantine, tabs): update the style (#4071) 0b4c888, closes #4071
+
+
+
+## <small>55.7.2-next.24 (2025-05-29)</small>
+
+* Fix/ua 10229 fix get item id on collection component (#4069) ee5236c, closes #4069
+
+
+
+## <small>55.7.2-next.23 (2025-05-27)</small>
+
+* fix(mantine): adjust table selected row bg color (#4068) 156f82f, closes #4068
+* Ad UI 10593 apply style radio (#4058) 1220649, closes #4058
+* Ad UI 10596 apply style changes select (#4062) bb4caaa, closes #4062
+* feat(mantine, loader): custom loader to match figma (#4060) e8a2111, closes #4060
+* feat(collection): add-data-testid-param-to-collection (#4061) fefed55, closes #4061
+* feat(mantine): update CodeEditor look (#4059) 35bb241, closes #4059
+* feat(mantine): update style of checkbox (#4057) 01ec538, closes #4057
+* feat(pagination): +active-bg +active-color (#4056) 2f715e3, closes #4056
+
+
+
+## <small>55.7.2-next.22 (2025-04-24)</small>
+
+* fix(mantine, badge): font-size and text-transform (#4055) ee34551, closes #4055
+
+
+
+## <small>55.7.2-next.21 (2025-04-17)</small>
+
+* feat(mantine, action icon): apply style changes and create semantic components (#4053) a91accb, closes #4053
+
+
+
+## <small>55.7.2-next.20 (2025-04-16)</small>
+
+* feat(mantine, button): update style (#4052) de3eba4, closes #4052
+* feat(mantine, modal): update overlay style (#4051) 5023f4f, closes #4051
+
+
+
+## <small>55.7.2-next.19 (2025-04-15)</small>
+
+* feat(mantine): improve CopyToClipboard component (#4050) 5a5bbfe, closes #4050
+
+
+
+## <small>55.7.2-next.18 (2025-04-14)</small>
+
+* fix(mantine): revert header variant removal on root node 207b9ae
+
+
+
+## <small>55.7.2-next.17 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name second try 810e709
+
+
+
+## <small>55.7.2-next.16 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name (#4049) 7abbf7a, closes #4049
+* fix(mantine, input): only add margin top if there's a title or description (#4048) 6d6b58a, closes #4048
+
+
+
+## <small>55.7.2-next.15 (2025-04-14)</small>
+
+* feat(react-icons): reexport tabler icons (#4045) 889df29, closes #4045
+* chore(mantine, input): update the style of the input and input wrapper (#4046) 4c37039, closes #4046
+
+
+
+## <small>55.7.2-next.14 (2025-04-11)</small>
+
+* fix(mantine, prompt): automatically add the Header if the title is a string (#4044) 029b6e6, closes #4044
+* Merge branch 'master' of github.com:coveo/plasma into next 60ab942
+* chore(deps): update all non-major dependencies (#4029) 659172f, closes #4029
+* chore(release): publish version v55.8.0 [skip ci] b14864b
+* feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043
 
 
 

@@ -1,4 +1,4 @@
-import {Icon} from '@coveord/plasma-react-icons';
+import {TablerIcon} from '@coveord/plasma-react-icons';
 import {BoxProps, StylesApiProps} from '@mantine/core';
 import {ColumnDef, CoreOptions, Row, TableOptions} from '@tanstack/table-core';
 import {ReactElement, ReactNode} from 'react';
@@ -23,7 +23,7 @@ export interface TableLayout {
      * Icon illustrating the layout.
      * Will be displayed in the layout control
      */
-    Icon?: Icon;
+    Icon?: TablerIcon;
     /**
      * Header portion of the table.
      * In the standard row layout that is where column headers would be displayed.
