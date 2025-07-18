@@ -3,7 +3,6 @@
     border-radius: var(--mantine-radius-default);
     z-index: 1;
     height: 100%;
-    outline-width: thin;
 
     @mixin light {
         background-color: var(--mantine-color-gray-0);
@@ -14,14 +13,8 @@
     }
 }
 
-.valid {
-    outline-color: auto;
-    outline-style: none;
-}
-
 .error {
-    outline-color: var(--mantine-color-error);
-    outline-style: solid;
+    border-color: var(--mantine-color-error);
 }
 
 .disabled {
