@@ -1,3 +1,15 @@
+## <small>55.7.2-next.38 (2025-07-18)</small>
+
+* Ad UI 10702 apply style changes to nav link (#4099) fb2e3e9, closes #4099
+* Ad UI 10883 select style changes (#4103) cbddabd, closes #4103
+* Ad UI 10887 apply style changes to checkbox (#4106) e2266af, closes #4106
+* fix(mantine,codeeditor): adjust height (#4105) 2e4994f, closes #4105
+* feat(mantine): changed newly added variables with hardcoded ones (#4092) 8579db6, closes #4092
+* feat(mantine): updated input font-size (#4107) fa25253, closes #4107
+* feat(pagination): +style change for pagination (#4102) 55cd318, closes #4102
+
+
+
 ## <small>55.7.2-next.37 (2025-07-14)</small>
 
 * fix(mantine): disable menu item links properly (#4100) 5befae4, closes #4100
