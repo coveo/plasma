@@ -3,6 +3,7 @@ import {
     IconAlertTriangleFilled,
     IconBulbFilled,
     IconHelpCircle,
+    IconInfoCircle,
     IconInfoCircleFilled,
     TablerIcon,
 } from '@coveord/plasma-react-icons';
@@ -26,9 +27,17 @@ export type InfoTokenFactory = Factory<{
     stylesNames: InfoTokenComponentStylesNames;
     vars: InfoTokenCssVariables;
     variant: InfoTokenVariant;
+    staticComponents: {
+        Information: typeof TokenInformation;
+        InformationOutline: typeof TokenInformationOutline;
+        Advice: typeof TokenAdvice;
+        Warning: typeof TokenWarning;
+        Error: typeof TokenError;
+        Question: typeof TokenQuestion;
+    };
 }>;
 export type InfoTokenComponentStylesNames = 'root';
-export type InfoTokenVariant = 'information' | 'advice' | 'warning' | 'error' | 'question';
+export type InfoTokenVariant = 'information' | 'information-outline' | 'advice' | 'warning' | 'error' | 'question';
 export type InfoTokenCssVariables = {
     root: '--info-token-color';
 };
@@ -59,7 +68,7 @@ const colorResolver = (variant: InfoTokenVariant): string => {
         case 'question':
             return 'var(--mantine-primary-color-filled)';
         case 'warning':
-            return 'var(--mantine-color-yellow-filled)';
+            return 'var(--mantine-color-yellow-4)';
         case 'information':
         default:
             return 'var(--mantine-color-gray-3)';
@@ -91,6 +100,8 @@ const iconResolver = (variant: InfoTokenVariant): TablerIcon => {
             return IconAlertSquareFilled;
         case 'information':
             return IconInfoCircleFilled;
+        case 'information-outline':
+            return IconInfoCircle;
         case 'question':
             return IconHelpCircle;
         case 'warning':
@@ -145,3 +156,21 @@ export const InfoToken: ReturnType<typeof polymorphicFactory<InfoTokenFactory>> 
         );
     },
 );
+
+const TokenInformation = InfoToken.withProps({
+    variant: 'information',
+});
+const TokenInformationOutline = InfoToken.withProps({
+    variant: 'information-outline',
+});
+const TokenAdvice = InfoToken.withProps({variant: 'advice'});
+const TokenWarning = InfoToken.withProps({variant: 'warning'});
+const TokenError = InfoToken.withProps({variant: 'error'});
+const TokenQuestion = InfoToken.withProps({variant: 'question'});
+
+InfoToken.Information = TokenInformation;
+InfoToken.InformationOutline = TokenInformationOutline;
+InfoToken.Advice = TokenAdvice;
+InfoToken.Warning = TokenWarning;
+InfoToken.Error = TokenError;
+InfoToken.Question = TokenQuestion;

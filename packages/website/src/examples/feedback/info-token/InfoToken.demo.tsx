@@ -1,12 +1,15 @@
-import {InfoToken, Stack} from '@coveord/plasma-mantine';
+import {Group, InfoToken, Stack} from '@coveord/plasma-mantine';
 
 const Demo = () => (
     <Stack gap="sm">
-        <InfoToken variant="information" />
-        <InfoToken variant="advice" />
-        <InfoToken variant="warning" />
-        <InfoToken variant="error" />
-        <InfoToken variant="question" />
+        <Group>
+            <InfoToken.Information />
+            <InfoToken.InformationOutline />
+        </Group>
+        <InfoToken.Advice />
+        <InfoToken.Warning />
+        <InfoToken.Error />
+        <InfoToken.Question />
     </Stack>
 );
 export default Demo;
