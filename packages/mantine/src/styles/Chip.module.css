@@ -1,0 +1,41 @@
+.root {
+    --chip-color: var(--coveo-color-text-primary);
+    --chip-bg: var(--mantine-primary-color-light);
+    --chip-hover: var(--mantine-primary-color-filled-hover);
+    --chip-radius: var(--mantine-radius-lg);
+    --chip-padding: var(--mantine-spacing-sm);
+    --chip-spacing: var(--mantine-spacing-sm);
+
+    > .label {
+        &:not([data-checked]) {
+            border: 1px solid var(--mantine-color-default-border);
+            border-radius: var(--mantine-radius-lg);
+            background-color: var(--mantine-color-white);
+
+            @mixin hover {
+                &[data-disabled] {
+                    border: none;
+                    color: var(--coveo-color-text-disabled);
+                    background-color: var(--coveo-color-bg-disabled);
+                }
+
+                background-color: var(--mantine-color-gray-light);
+                border-color: var(--coveo-color-input-border);
+            }
+        }
+
+        &:not([data-disabled]) {
+            @mixin hover {
+                &[data-checked] {
+                    color: var(--mantine-color-white);
+                }
+            }
+        }
+
+        &[data-disabled] {
+            border: none;
+            color: var(--coveo-color-text-disabled);
+            background-color: var(--coveo-color-bg-disabled);
+        }
+    }
+}

@@ -20,6 +20,7 @@ export {
     ActionIcon,
     BrowserPreview,
     Button,
+    Chip,
     CopyToClipboard,
     Header,
     Menu,
