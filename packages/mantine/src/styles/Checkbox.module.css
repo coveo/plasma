@@ -7,6 +7,7 @@ So we are allowing ourselves some custom style to achieve the desired effect
         /* targets the default checkbox without overiding mantine's base rules */
         &:not([data-indeterminate], :checked, [readonly], :disabled, [data-error='true']) {
             border-color: var(--coveo-color-input-border);
+            color: var(--coveo-color-title);
         }
 
         /* mantine doesn't have a concept of readonly checkbox */
@@ -35,4 +36,6 @@ So we are allowing ourselves some custom style to achieve the desired effect
             }
         }
     }
+
+    --label-offset-start: 8px;
 }
