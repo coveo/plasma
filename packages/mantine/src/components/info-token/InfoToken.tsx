@@ -140,7 +140,7 @@ export const InfoToken: ReturnType<typeof polymorphicFactory<InfoTokenFactory>> 
                 })}
                 {...others}
             >
-                <IconComponent size={sizeResolver(size)} />
+                <IconComponent size={sizeResolver(size)} aria-label={variant} />
             </Box>
         );
     },
