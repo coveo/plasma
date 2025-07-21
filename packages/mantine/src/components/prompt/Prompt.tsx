@@ -1,6 +1,5 @@
 import {
     Box,
-    createVarsResolver,
     factory,
     Factory,
     Image,
@@ -69,12 +68,6 @@ const defaultProps: Partial<PromptProps> = {
     centered: true,
 };
 
-const varsResolver = createVarsResolver<PromptFactory>((_theme, {icon}) => ({
-    root: {
-        '--prompt-icon-size': icon ? undefined : '88px',
-    },
-}));
-
 export const Prompt = factory<PromptFactory>((_props, ref) => {
     const props = useProps('Prompt', defaultProps, _props);
     const {variant, title, icon, children, className, classNames, style, styles, unstyled, vars, ...others} = props;
@@ -88,7 +81,6 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
         styles,
         unstyled,
         vars,
-        varsResolver,
     });
     const stylesApiProps = {classNames, styles};
 
