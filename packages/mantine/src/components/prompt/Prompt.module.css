@@ -3,8 +3,7 @@
 }
 
 .body {
-    padding-left: calc(var(--prompt-icon-size) + var(--mantine-spacing-sm) + var(--mb-padding));
-    padding-bottom: 0;
+    padding: 0 calc(var(--prompt-icon-size) + var(--mantine-spacing-sm) + var(--mb-padding));
 }
 
 .icon {

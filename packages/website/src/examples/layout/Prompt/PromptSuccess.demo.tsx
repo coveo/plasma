@@ -6,8 +6,8 @@ const Demo = () => {
     return (
         <>
             <Prompt variant="success" opened={opened} title="Prompt title" onClose={close}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
-                sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim.
+                Optional placeholder component. Replace it with any component using the “Component Instance” swapper or
+                detach and fill with your own content.
                 <Prompt.Footer>
                     <Prompt.ConfirmButton onClick={close}>Continue</Prompt.ConfirmButton>
                 </Prompt.Footer>
