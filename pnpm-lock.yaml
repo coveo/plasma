@@ -507,6 +507,9 @@ importers:
       '@faker-js/faker':
         specifier: 9.6.0
         version: 9.6.0
+      '@mantine/carousel':
+        specifier: 8.0.2
+        version: 8.0.2(@mantine/core@8.0.2(@mantine/hooks@8.0.2(react@18.3.1))(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@8.0.2(react@18.3.1))(embla-carousel-react@8.5.2(react@18.3.1))(embla-carousel@8.5.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/code-highlight':
         specifier: 8.0.2
         version: 8.0.2(@mantine/core@8.0.2(@mantine/hooks@8.0.2(react@18.3.1))(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@8.0.2(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -552,6 +555,12 @@ importers:
       dayjs:
         specifier: 1.11.13
         version: 1.11.13
+      embla-carousel:
+        specifier: ^8.5.2
+        version: 8.5.2
+      embla-carousel-react:
+        specifier: ^8.5.2
+        version: 8.5.2(react@18.3.1)
       encoding:
         specifier: 0.1.13
         version: 0.1.13

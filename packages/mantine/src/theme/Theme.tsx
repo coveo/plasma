@@ -4,10 +4,13 @@ import {
     CrossSize16Px,
     FilterSize16Px,
     IconCheck,
+    IconChevronLeft,
+    IconChevronRight,
     IconSlash,
     InfoSize24Px,
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
+import {Carousel} from '@mantine/carousel';
 import {
     ActionIcon,
     Alert,
@@ -50,12 +53,14 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
+import {ActionIcon as PlasmaActionIcon} from '../components';
 import {CheckboxIcon, CircleLoader, InfoToken} from '../components';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import BreadcrumbsClasses from '../styles/Breadcrumbs.module.css';
 import ButtonClasses from '../styles/Button.module.css';
+import CarouselClasses from '../styles/Carousel.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ChipClasses from '../styles/Chip.module.css';
@@ -184,6 +189,26 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 size: 'sm',
             },
             classNames: ButtonClasses,
+        }),
+        Carousel: Carousel.extend({
+            classNames: CarouselClasses,
+            defaultProps: {
+                withIndicators: true,
+                slideGap: '64px',
+                slideSize: 'calc(100% - 2 * 64px)',
+                controlsOffset: 'sm',
+                emblaOptions: {loop: true, align: 'center'},
+                previousControlIcon: (
+                    <PlasmaActionIcon.Tertiary size="lg">
+                        <IconChevronLeft size={16} />
+                    </PlasmaActionIcon.Tertiary>
+                ),
+                nextControlIcon: (
+                    <PlasmaActionIcon.Tertiary size="lg">
+                        <IconChevronRight size={16} />
+                    </PlasmaActionIcon.Tertiary>
+                ),
+            },
         }),
         Checkbox: Checkbox.extend({
             defaultProps: {

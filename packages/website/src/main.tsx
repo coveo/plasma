@@ -3,6 +3,7 @@ import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
 import '@mantine/code-highlight/styles.css';
+import '@mantine/carousel/styles.css';
 
 import {StrictMode, JSX} from 'react';
 import ReactDOM from 'react-dom/client';
