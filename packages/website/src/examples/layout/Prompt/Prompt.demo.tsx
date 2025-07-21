@@ -5,7 +5,7 @@ const Demo = () => {
 
     return (
         <>
-            <Prompt opened={opened} title="Information" onClose={close}>
+            <Prompt opened={opened} title="Important !" onClose={close}>
                 Optional placeholder component. Replace it with any component using the “Component Instance” swapper or
                 detach and fill with your own content.
                 <Prompt.Footer>
