@@ -18,7 +18,7 @@ const Demo = () => {
                 detach and fill with your own content.
                 <Prompt.Footer>
                     <Prompt.CancelButton onClick={onCancel}>Cancel</Prompt.CancelButton>
-                    <Prompt.ConfirmButton onClick={onConfirm}>Continue</Prompt.ConfirmButton>
+                    <Prompt.ConfirmButton onClick={onConfirm}>Delete</Prompt.ConfirmButton>
                 </Prompt.Footer>
             </Prompt>
             <Button.Primary onClick={open}>Open Prompt</Button.Primary>
