@@ -1,5 +1,6 @@
 .wrapper {
     --input-section-color: var(--mantine-color-placeholder);
+    --input-height: 38px;
 
     @mixin light {
         --input-disabled-color: var(--mantine-color-disabled-color);
@@ -13,6 +14,14 @@
         > .section {
             > svg {
                 color: var(--input-disabled-color);
+            }
+        }
+    }
+
+    &[data-error] {
+        > .section {
+            > svg {
+                color: var(--mantine-color-error);
             }
         }
     }

@@ -34,6 +34,7 @@ import {
     MultiSelect,
     NavLink,
     Notification,
+    NumberInput,
     Pagination,
     Pill,
     Popover,
@@ -65,6 +66,7 @@ import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
+import NumberInputClasses from '../styles/NumberInput.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
 import PillClasses from '../styles/Pill.module.css';
 import RadioClasses from '../styles/Radio.module.css';
@@ -325,6 +327,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 icon: <InfoSize24Px height={24} />,
             },
+        }),
+        NumberInput: NumberInput.extend({
+            classNames: NumberInputClasses,
         }),
         Pagination: Pagination.extend({
             classNames: PaginationClasses,
