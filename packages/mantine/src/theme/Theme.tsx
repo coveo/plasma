@@ -4,6 +4,7 @@ import {
     CrossSize16Px,
     FilterSize16Px,
     IconCheck,
+    IconClock,
     IconSlash,
     InfoSize24Px,
 } from '@coveord/plasma-react-icons';
@@ -51,6 +52,7 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
+import {TimeInput} from '@mantine/dates';
 import {CheckboxIcon, CircleLoader, InfoToken} from '../components';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -434,6 +436,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 size: 'sm',
             },
             classNames: TextClasses,
+        }),
+        TimeInput: TimeInput.extend({
+            defaultProps: {
+                rightSection: <IconClock size={16} />,
+            },
         }),
         Tooltip: Tooltip.extend({
             defaultProps: {
