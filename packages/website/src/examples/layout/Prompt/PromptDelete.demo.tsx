@@ -5,9 +5,9 @@ const Demo = () => {
 
     return (
         <>
-            <Prompt size="xs" variant="critical" opened={opened} title="Caution !" onClose={close}>
+            <Prompt size="sm" variant="critical" opened={opened} title="Caution !" onClose={close}>
                 <TextInput
-                    label="The slot with all the recommended products will be permanently removed from your store front and the performance will be affected as a result"
+                    label="The slot with all the recommended products will be permanently removed from your store front"
                     placeholder="Type DELETE to confirm deletion"
                     description="Type DELETE below to confirm"
                 ></TextInput>

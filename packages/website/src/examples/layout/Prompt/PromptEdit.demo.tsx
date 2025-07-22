@@ -5,17 +5,17 @@ const Demo = () => {
 
     return (
         <>
-            <Prompt size="sm" opened={opened} title="Edit display product thresholds" onClose={close}>
+            <Prompt size="xs" opened={opened} title="Edit display product thresholds" onClose={close}>
                 <NumberInput
-                    label="Number of products to display"
-                    placeholder="200ms"
+                    label="Articles to be displayed"
+                    placeholder="200"
                     mb="md"
-                    description="Lorem ipsum more recommendations, you'll need to query the..... API with paginated request"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 ></NumberInput>
                 <NumberInput
-                    label="Minimum number of products to display"
-                    placeholder="200ms"
-                    description="Lorem ipsum more recommendations, you'll need to query the Commerce API with paginated request"
+                    label="Minimum of articles to be displayed"
+                    placeholder="50"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 ></NumberInput>
                 <Prompt.Footer>
                     <Prompt.CancelButton onClick={close}>Cancel</Prompt.CancelButton>
