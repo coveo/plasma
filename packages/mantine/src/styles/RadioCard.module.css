@@ -1,0 +1,5 @@
+.card:hover {
+    @mixin light {
+        background-color: var(--mantine-color-default-hover);
+    }
+}

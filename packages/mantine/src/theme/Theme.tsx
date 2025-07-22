@@ -68,6 +68,7 @@ import NavLinkClasses from '../styles/NavLink.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
 import PillClasses from '../styles/Pill.module.css';
 import RadioClasses from '../styles/Radio.module.css';
+import RadioCardClasses from '../styles/RadioCard.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
 import ScrollAreaClasses from '../styles/ScrollArea.module.css';
@@ -360,6 +361,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 }
                 return {root: {}};
             },
+        }),
+        RadioCard: Radio.Card.extend({
+            classNames: RadioCardClasses,
         }),
         ScrollArea: ScrollArea.extend({
             classNames: ScrollAreaClasses,
