@@ -1,4 +1,4 @@
-.card:hover {
+.card:hover:not([disabled], [readonly]) {
     @mixin light {
         background-color: var(--mantine-color-default-hover);
     }
