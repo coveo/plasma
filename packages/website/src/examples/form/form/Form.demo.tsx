@@ -55,8 +55,6 @@ const Demo = () => {
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
                         placeholder="Text input placeholder"
-                        // leftSection={<IconSearch size={16} />}
-                        // error="This is an error"
                     />
                 </Stack>
                 <Stack gap="xs">
