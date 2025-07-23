@@ -2,4 +2,5 @@
     --badge-fz-md: 12px;
 
     font-weight: var(--coveo-fw-bold);
+    line-height: 14px;
 }
