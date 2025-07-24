@@ -16,6 +16,14 @@
             }
         }
     }
+
+    &[data-error] {
+        > .section {
+            > svg {
+                color: var(--mantine-color-error);
+            }
+        }
+    }
 }
 
 .section {

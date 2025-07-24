@@ -16,6 +16,7 @@ import {
     Title,
     useForm,
 } from '@coveord/plasma-mantine';
+import {TimeInput} from '@mantine/dates';
 
 const Demo = () => {
     const form = useForm({
@@ -29,6 +30,7 @@ const Demo = () => {
             radio: '1',
             switch: false,
             file: '',
+            time: '',
             select: '',
             multiSelect: [],
             codeEditor: '{"key": "value"}',
@@ -107,6 +109,17 @@ const Demo = () => {
                     <Title order={4}>FileInput</Title>
                     <FileInput
                         {...form.getInputProps('file')}
+                        label={form.values.label}
+                        description={form.values.description}
+                        withAsterisk={form.values.withAsterisk}
+                        readOnly={form.values.readOnly}
+                        disabled={form.values.disabled}
+                    />
+                </Stack>
+                <Stack gap="xs">
+                    <Title order={4}>TimeInput</Title>
+                    <TimeInput
+                        {...form.getInputProps('time')}
                         label={form.values.label}
                         description={form.values.description}
                         withAsterisk={form.values.withAsterisk}

@@ -4,6 +4,7 @@ import {
     CrossSize16Px,
     FilterSize16Px,
     IconCheck,
+    IconClock,
     IconSlash,
     InfoSize24Px,
 } from '@coveord/plasma-react-icons';
@@ -34,6 +35,7 @@ import {
     MultiSelect,
     NavLink,
     Notification,
+    NumberInput,
     Pagination,
     Pill,
     Popover,
@@ -50,6 +52,7 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
+import {TimeInput} from '@mantine/dates';
 import {CheckboxIcon, CircleLoader, InfoToken} from '../components';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -65,6 +68,7 @@ import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
+import NumberInputClasses from '../styles/NumberInput.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
 import PillClasses from '../styles/Pill.module.css';
 import RadioClasses from '../styles/Radio.module.css';
@@ -326,6 +330,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 icon: <InfoSize24Px height={24} />,
             },
         }),
+        NumberInput: NumberInput.extend({
+            classNames: NumberInputClasses,
+        }),
         Pagination: Pagination.extend({
             classNames: PaginationClasses,
             defaultProps: {
@@ -429,6 +436,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 size: 'sm',
             },
             classNames: TextClasses,
+        }),
+        TimeInput: TimeInput.extend({
+            defaultProps: {
+                rightSection: <IconClock size={16} />,
+            },
         }),
         Tooltip: Tooltip.extend({
             defaultProps: {

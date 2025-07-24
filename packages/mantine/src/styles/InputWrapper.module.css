@@ -1,7 +1,7 @@
 .root {
     display: flex;
     flex-direction: column;
-    gap: var(--mantine-spacing-xxs);
+    gap: var(--mantine-spacing-xs);
 }
 
 .label {
