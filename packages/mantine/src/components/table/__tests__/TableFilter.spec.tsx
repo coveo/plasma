@@ -76,7 +76,7 @@ describe('Table.Filter', () => {
         };
         render(<Fixture />);
         expect(screen.getByRole('textbox')).toHaveValue('foo');
-        await user.click(screen.getByRole('button', {name: /cross/i}));
+        await user.click(screen.getByRole('button', {name: /clear/i}));
         expect(screen.getByRole('textbox')).toHaveValue('');
     });
 

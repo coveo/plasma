@@ -74,7 +74,7 @@ const listIconVariants = async (grouped) => {
             variants: variantsPaths.map(getComponentName),
         }))
         .sort((a, b) => a.iconName.localeCompare(b.iconName));
-    return fs.appendFile(`${outDirPath}/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
+    return fs.appendFile(`${outDirPath}/index.ts`, `export const plasmaIconsList = ${JSON.stringify(list)};\n`);
 };
 
 const handleSvgFiles = (files) => {

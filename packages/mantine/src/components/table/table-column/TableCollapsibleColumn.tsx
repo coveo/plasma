@@ -1,4 +1,4 @@
-import {ArrowHeadDownSize16Px, ArrowHeadUpSize16Px} from '@coveord/plasma-react-icons';
+import {IconChevronDown, IconChevronUp} from '@coveord/plasma-react-icons';
 import {Factory, factory, useProps} from '@mantine/core';
 import {CellContext, ColumnDef} from '@tanstack/table-core';
 import {MouseEvent as ReactMouseEvent, ReactNode} from 'react';
@@ -58,8 +58,8 @@ type TableCollapsibleColumnFactory = Factory<{
 }>;
 
 const defaultProps: Partial<CollapsibleIconProps> = {
-    iconExpanded: <ArrowHeadUpSize16Px height={16} />,
-    iconCollapsed: <ArrowHeadDownSize16Px height={16} />,
+    iconExpanded: <IconChevronUp aria-label="Collapse" size={20} />,
+    iconCollapsed: <IconChevronDown aria-label="Expand" size={20} />,
 };
 
 const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
@@ -76,16 +76,15 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
         handler();
     };
     return info.row.getCanExpand() ? (
-        <ActionIcon
+        <ActionIcon.Quaternary
             ref={ref}
             onClick={onClick}
-            variant="subtle"
             color="gray"
             radius="sm"
             {...getStyles('collapsibleIcon', {className, classNames, styles, style})}
             {...others}
         >
             {info.row.getIsExpanded() ? iconExpanded : iconCollapsed}
-        </ActionIcon>
+        </ActionIcon.Quaternary>
     ) : null;
 });

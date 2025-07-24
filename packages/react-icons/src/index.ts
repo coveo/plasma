@@ -1,5 +1,8 @@
 import {ForwardRefExoticComponent, SVGProps} from 'react';
 
 export * from './generated';
+export * from './TablerIcons';
 
-export type Icon = ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'> & React.RefAttributes<SVGSVGElement>>;
+export type PlasmaIcon = ForwardRefExoticComponent<
+    Omit<SVGProps<SVGSVGElement>, 'ref'> & React.RefAttributes<SVGSVGElement>
+>;

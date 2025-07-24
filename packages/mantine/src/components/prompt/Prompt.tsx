@@ -11,6 +11,7 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ReactElement, ReactNode} from 'react';
+import {Header} from '../header';
 import {Modal} from '../modal';
 import Critical from './icons/critical.svg';
 import Info from './icons/info.svg';
@@ -24,7 +25,7 @@ import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './Prom
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
 export type PromptVars = {root: '--prompt-icon-size'};
 export type PromptStylesNames =
-    | ModalStylesNames
+    | Exclude<ModalStylesNames, 'title'>
     | 'icon'
     | PromptCancelButtonStylesNamesVariant
     | PromptConfirmButtonStylesNamesVariant;
@@ -114,7 +115,11 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                                 src={PROMPT_VARIANT_ICONS_SRC[variant]}
                             />
                         )}
-                        <Modal.Title {...getStyles('title', stylesApiProps)}>{title}</Modal.Title>
+                        <Modal.Title>
+                            <Header titleComponent="div" variant="secondary">
+                                {title}
+                            </Header>
+                        </Modal.Title>
                         <Modal.CloseButton {...getStyles('close', stylesApiProps)} />
                     </Modal.Header>
                     <Modal.Body {...getStyles('body', stylesApiProps)}>

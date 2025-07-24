@@ -45,7 +45,8 @@ const Demo = () => {
 
     return (
         <Table<Person> store={table} data={filteredData} columns={columns} getRowId={({id}) => id.toString()}>
-            <Table.Header>
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false}>
                 <Table.Predicate
                     id="age"
                     label="Age group"

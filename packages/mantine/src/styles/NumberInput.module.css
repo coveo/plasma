@@ -1,0 +1,7 @@
+.control {
+    @mixin light {
+        @mixin hover {
+            background-color: var(--mantine-color-default-hover);
+        }
+    }
+}

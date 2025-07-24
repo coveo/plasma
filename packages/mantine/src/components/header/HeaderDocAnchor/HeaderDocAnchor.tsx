@@ -1,4 +1,3 @@
-import {QuestionSize16Px} from '@coveord/plasma-react-icons';
 import {
     Anchor,
     AnchorProps,
@@ -11,6 +10,7 @@ import {
 } from '@mantine/core';
 import {ReactNode} from 'react';
 import {useHeaderContext} from '../Header.context';
+import {InfoToken} from '../../info-token';
 
 export type HeaderDocAnchorStyleNames = 'docAnchorTooltip' | 'docAnchor';
 
@@ -42,7 +42,7 @@ export type HeaderDocAnchorFactory = Factory<{
 
 const defaultProps: Partial<HeaderDocAnchorProps> = {
     position: 'right',
-    children: <QuestionSize16Px height={16} />,
+    children: <InfoToken variant="question" />,
 };
 
 export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => {
