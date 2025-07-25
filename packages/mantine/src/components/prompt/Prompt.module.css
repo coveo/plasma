@@ -1,9 +1,9 @@
 .root {
-    --prompt-icon-size: 68px;
+    --prompt-icon-size: 32px;
 }
 
 .body {
-    padding-left: calc(var(--prompt-icon-size) + var(--mantine-spacing-sm) + var(--mb-padding));
+    padding: 0 calc(var(--prompt-icon-size) + var(--mantine-spacing-sm) + var(--mb-padding));
 }
 
 .icon {
@@ -12,12 +12,5 @@
 }
 
 .header {
-    gap: var(--mantine-spacing-md);
     width: 100%;
-    overflow-wrap: anywhere;
-    padding: var(--mantine-spacing-lg) var(--mantine-spacing-md) var(--mantine-spacing-xs) var(--mantine-spacing-lg);
-}
-
-.inner {
-    color: var(--mantine-color-dimmed);
 }
