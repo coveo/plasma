@@ -1,4 +1,4 @@
-import {IconCirclePlus} from '@coveord/plasma-react-icons';
+import {IconPlus} from '@coveord/plasma-react-icons';
 import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
 import {restrictToParentElement, restrictToVerticalAxis} from '@dnd-kit/modifiers';
 import {SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from '@dnd-kit/sortable';
@@ -133,7 +133,7 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
     required?: boolean;
 }
 
-export type CollectionStylesNames = 'root' | 'item' | 'itemDragging' | 'dragHandle';
+export type CollectionStylesNames = 'root' | 'item' | 'items' | 'itemDragging' | 'dragHandle';
 
 export type CollectionFactory = Factory<{
     props: CollectionProps<unknown>;
@@ -147,7 +147,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     addDisabledTooltip: 'There is already an empty item',
     disabled: false,
     readOnly: false,
-    gap: 'xs',
+    gap: 'md',
     required: false,
     getItemId: ({id}: any) => id,
 };
@@ -228,10 +228,10 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : null;
     const _header =
         _label || _description ? (
-            <>
+            <Stack gap="xxs" pb="xs">
                 {_label}
                 {_description}
-            </>
+            </Stack>
         ) : null;
 
     const standardizedItems = value.map((item, index) => ({id: getItemId?.(item, index) ?? String(index), data: item}));
@@ -253,7 +253,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
 
     const _addButton = canEdit ? (
         <Button.Quaternary
-            leftSection={<IconCirclePlus size={16} />}
+            leftSection={<IconPlus size={16} />}
             onClick={() => onInsertItem(newItem, value?.length ?? 0)}
             disabled={!addAllowed}
             disabledTooltip={addDisabledTooltip}
@@ -284,7 +284,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                 <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
                     <Box ref={ref} {...others} {...getStyles('root')}>
                         {_header}
-                        <Stack gap={gap}>
+                        <Stack gap={gap} {...getStyles('items')}>
                             {items}
                             {_addButton}
                             {_error}
