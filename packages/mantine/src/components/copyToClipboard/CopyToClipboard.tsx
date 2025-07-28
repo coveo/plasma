@@ -58,7 +58,7 @@ const CopyToClipboardButton: FunctionComponent<Omit<CopyToClipboardProps, 'withL
                     }}
                     {...others}
                 >
-                    {copied ? <IconClipboardCheck size={20} /> : <IconClipboardText size={20} />}
+                    {copied ? <IconClipboardCheck size={16} /> : <IconClipboardText size={16} />}
                 </ActionIcon.Quaternary>
             </Tooltip>
         )}
