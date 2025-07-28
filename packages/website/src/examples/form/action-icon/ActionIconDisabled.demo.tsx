@@ -1,7 +1,7 @@
 import {ActionIcon, Group, Stack} from '@coveord/plasma-mantine';
-import {IconClipboardCheck} from '@coveord/plasma-react-icons';
+import {IconBell} from '@coveord/plasma-react-icons';
 
-const Icon = () => <IconClipboardCheck size={20} />;
+const Icon = () => <IconBell size={16} />;
 
 const Demo = () => {
     const onClick = () => alert("This won't work because the button is disabled");

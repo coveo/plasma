@@ -97,7 +97,7 @@ const Demo = ({
                         <CopyToClipboard color="gray" value={snippet} />
                         <Tooltip label="Open in CodeSanbox" position="left">
                             <ActionIcon.Quaternary color="gray" onClick={createSandbox}>
-                                <IconPlayerPlay size={20} />
+                                <IconPlayerPlay size={16} />
                             </ActionIcon.Quaternary>
                         </Tooltip>
                     </Stack>
