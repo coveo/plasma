@@ -3,3 +3,9 @@
         background-color: var(--mantine-color-default-hover);
     }
 }
+
+.card:hover([disabled]) {
+    @mixin light {
+        cursor: default;
+    }
+}
