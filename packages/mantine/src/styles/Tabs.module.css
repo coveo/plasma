@@ -29,8 +29,9 @@
 
 .tab {
     font-weight: var(--coveo-fw-bold);
-    line-height: 1.5;
+    line-height: 16px;
     color: var(--mantine-color-dimmed);
+    padding: 12px;
 
     &:not(:disabled, [data-disabled]) {
         @mixin hover {
@@ -46,5 +47,11 @@
     &:where([data-active]) {
         color: var(--coveo-color-title);
         box-shadow: inset var(--tab-box-shadow) var(--tabs-color);
+    }
+}
+
+.list {
+    &[data-variant='default']::before {
+        border-width: var(--tabs-list-border-size);
     }
 }
