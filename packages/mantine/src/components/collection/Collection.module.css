@@ -2,6 +2,13 @@
     position: relative;
 }
 
+.items {
+    background-color: var(--mantine-color-gray-light);
+    padding: var(--mantine-spacing-md);
+    border: 1px solid var(--mantine-color-default-border);
+    border-radius: var(--mantine-radius-default);
+}
+
 .item {
     align-items: baseline;
 
