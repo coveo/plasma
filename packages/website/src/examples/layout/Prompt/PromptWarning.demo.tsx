@@ -13,12 +13,12 @@ const Demo = () => {
 
     return (
         <>
-            <Prompt variant="warning" opened={opened} title="Prompt title" onClose={close}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
-                sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim.
+            <Prompt variant="warning" opened={opened} title="Warning !" onClose={close}>
+                Optional placeholder component. Replace it with any component using the “Component Instance” swapper or
+                detach and fill with your own content.
                 <Prompt.Footer>
                     <Prompt.CancelButton onClick={onCancel}>Cancel</Prompt.CancelButton>
-                    <Prompt.ConfirmButton onClick={onConfirm}>Continue</Prompt.ConfirmButton>
+                    <Prompt.ConfirmButton onClick={onConfirm}>Delete</Prompt.ConfirmButton>
                 </Prompt.Footer>
             </Prompt>
             <Button.Primary onClick={open}>Open Prompt</Button.Primary>
