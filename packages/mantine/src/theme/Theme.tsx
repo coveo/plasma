@@ -71,6 +71,7 @@ import NavLinkClasses from '../styles/NavLink.module.css';
 import NumberInputClasses from '../styles/NumberInput.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
 import PillClasses from '../styles/Pill.module.css';
+import PopoverClasses from '../styles/Popover.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
@@ -344,9 +345,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: PillClasses,
         }),
         Popover: Popover.extend({
+            classNames: PopoverClasses,
             defaultProps: {
-                shadow: 'xs',
                 middlewares: {inline: true},
+                position: 'bottom-start',
             },
         }),
         Radio: Radio.extend({
