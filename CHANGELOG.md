@@ -1,3 +1,16 @@
+## <small>55.7.2-next.40 (2025-07-29)</small>
+
+* feat: implement semantic badges components (#4101) dba5584, closes #4101
+* feat(chip): fix chip group error (#4088) 741558a, closes #4088
+* feat(infotoken): apply style changes (#4110) 7c9d318, closes #4110
+* feat(mantine): update demo button type (#4109) 2d08100, closes #4109
+* feat(multiselect): change pill text color, revert gap inputwrapper (#4117) 3866312, closes #4117
+* Ad UI 10704 apply style changes to radio card (#4115) 935b7f2, closes #4115
+* Ad UI 10888 style changes number text time input (#4114) 1867319, closes #4114
+* feat(mantine,header): update doc anchor icon (#4111) 635c2a2, closes #4111
+
+
+
 ## <small>55.7.2-next.39 (2025-07-18)</small>
 
 * fix(mantine,navlink): reduce style specificity (#4108) 7a91693, closes #4108
