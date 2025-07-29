@@ -1,3 +1,10 @@
+## <small>55.7.2-next.41 (2025-07-29)</small>
+
+* feat(mantine,collection): apply style changes (#4116) b8750cc, closes #4116
+* feat(mantine,tabs): apply style changes (#4118) e9262fd, closes #4118
+
+
+
 ## <small>55.7.2-next.40 (2025-07-29)</small>
 
 * feat: implement semantic badges components (#4101) dba5584, closes #4101
