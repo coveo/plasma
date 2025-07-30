@@ -1,3 +1,9 @@
+## <small>55.7.2-next.42 (2025-07-30)</small>
+
+* feat(childform): adjust background and border thickness of childform (#4085) ef1e214, closes #4085
+
+
+
 ## <small>55.7.2-next.41 (2025-07-29)</small>
 
 * feat(mantine,collection): apply style changes (#4116) b8750cc, closes #4116
