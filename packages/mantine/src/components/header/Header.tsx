@@ -17,6 +17,11 @@ import classes from './Header.module.css';
 import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight';
 import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
+import {
+    HeaderBreadcrumbAnchor,
+    type HeaderBreadcrumbAnchorStyleNames,
+} from './HeaderBreadcrumbs/HeaderBreadcrumbAnchor';
+import {HeaderBreadcrumbText, HeaderBreadcrumbTextStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbText';
 
 export type {HeaderRightProps} from './HeaderRight/HeaderRight';
 export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
@@ -30,6 +35,9 @@ export type HeaderStyleNames =
     | 'divider'
     | 'body'
     | HeaderDocAnchorStyleNames
+    | HeaderBreadcrumbsStyleNames
+    | HeaderBreadcrumbAnchorStyleNames
+    | HeaderBreadcrumbTextStyleNames
     | HeaderBreadcrumbsStyleNames
     | HeaderRightStyleNames;
 
@@ -70,6 +78,8 @@ export type HeaderFactory = Factory<{
     stylesNames: HeaderStyleNames;
     staticComponents: {
         Breadcrumbs: typeof HeaderBreadcrumbs;
+        BreadcrumbAnchor: typeof HeaderBreadcrumbAnchor;
+        BreadcrumbText: typeof HeaderBreadcrumbText;
         Right: typeof HeaderRight;
         DocAnchor: typeof HeaderDocAnchor;
         /**
@@ -149,6 +159,8 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
 });
 
 Header.Breadcrumbs = HeaderBreadcrumbs;
+Header.BreadcrumbAnchor = HeaderBreadcrumbAnchor;
+Header.BreadcrumbText = HeaderBreadcrumbText;
 Header.Right = HeaderRight;
 Header.DocAnchor = HeaderDocAnchor;
 /**
