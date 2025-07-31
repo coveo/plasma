@@ -21,6 +21,7 @@ import {
     CloseButton,
     ColorSwatch,
     Combobox,
+    ComboboxDropdown,
     ComboboxSearch,
     createTheme,
     deepMerge,
@@ -236,6 +237,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 placeholder: 'Search',
                 rightSection: <FilterSize16Px height={16} color="gray.5" />,
+            },
+        }),
+        ComboboxDropdown: ComboboxDropdown.extend({
+            defaultProps: {
+                p: 'xxs',
             },
         }),
         Divider: Divider.extend({

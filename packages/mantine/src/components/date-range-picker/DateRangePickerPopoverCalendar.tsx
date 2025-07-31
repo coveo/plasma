@@ -86,7 +86,7 @@ export const DateRangePickerPopoverCalendar = ({
                         ) : null}
                     </Group>
                 </Popover.Target>
-                <Popover.Dropdown>
+                <Popover.Dropdown p="sm">
                     <DatePicker
                         ref={ref}
                         type="range"
