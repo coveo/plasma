@@ -67,15 +67,30 @@ const ButtonPrimary = Button.withProps({variant: 'filled'});
 const ButtonSecondary = Button.withProps({variant: 'light'});
 const ButtonTertiary = Button.withProps({
     variant: 'default',
-    vars: () => ({root: {'--button-color': 'var(--mantine-primary-color-filled)'}}),
+    vars: (theme) => ({
+        root: {
+            '--button-color': 'var(--mantine-primary-color-filled)',
+            '--button-height': '32px',
+            '--button-padding-x': theme.spacing.sm,
+        },
+    }),
 });
 const ButtonQuaternary = Button.withProps({variant: 'subtle'});
 
 const ButtonDestructive = Button.withProps({variant: 'filled', color: 'var(--mantine-color-error)'});
-const ButtonDestructiveSecondary = Button.withProps({variant: 'light', color: 'var(--mantine-color-error)'});
+const ButtonDestructiveSecondary = Button.withProps({
+    variant: 'light',
+    color: 'var(--mantine-color-error)',
+});
 const ButtonDestructiveTertiary = Button.withProps({
     variant: 'default',
-    vars: () => ({root: {'--button-color': 'var(--mantine-color-error)'}}),
+    vars: (theme) => ({
+        root: {
+            '--button-color': 'var(--mantine-color-error)',
+            '--button-height': '32px',
+            '--button-padding-x': theme.spacing.sm,
+        },
+    }),
 });
 const ButtonDestructiveQuaternary = Button.withProps({variant: 'subtle', color: 'var(--mantine-color-error)'});
 

@@ -37,6 +37,7 @@ import {
     Notification,
     NumberInput,
     Pagination,
+    PasswordInput,
     Pill,
     Popover,
     Radio,
@@ -88,8 +89,10 @@ import TooltipClasses from '../styles/Tooltip.module.css';
 import {PlasmaColors} from './PlasmaColors';
 
 import placeholderSvg from '../images/placeholder.svg';
+import {plasmaVariantColorResolver} from './plasmaVariantColorResolver';
 
 export const plasmaTheme: MantineThemeOverride = createTheme({
+    variantColorResolver: plasmaVariantColorResolver,
     // These are overrides over https://github.com/mantinedev/mantine/blob/master/packages/%40mantine/core/src/core/MantineProvider/default-theme.ts
     fontFamily: 'canada-type-gibson, sans-serif',
     black: color.primary.gray[9],
@@ -152,8 +155,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     components: {
         ActionIcon: ActionIcon.extend({
             defaultProps: {
-                size: 24,
-                radius: 'sm',
+                size: 'lg',
             },
             classNames: ActionIconClasses,
         }),
@@ -187,6 +189,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Button: Button.extend({
             defaultProps: {
                 size: 'sm',
+                vars: (theme) => ({
+                    root: {
+                        '--button-height': '32px',
+                        '--button-padding-x': theme.spacing.sm,
+                        '--button-bd': 'none',
+                    },
+                }),
             },
             classNames: ButtonClasses,
         }),
@@ -284,6 +293,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                     description: {},
                 };
             },
+        }),
+        PasswordInput: PasswordInput.extend({
+            vars: () => ({
+                root: {
+                    '--psi-button-size': 'var(--mantine-spacing-lg)',
+                },
+            }),
         }),
         Loader: Loader.extend({
             defaultProps: {

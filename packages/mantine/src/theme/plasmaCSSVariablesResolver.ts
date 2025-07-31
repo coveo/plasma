@@ -1,4 +1,11 @@
-import {alpha, ConvertCSSVariablesInput, CSSVariablesResolver} from '@mantine/core';
+import {
+    alpha,
+    ConvertCSSVariablesInput,
+    CSSVariablesResolver,
+    getPrimaryShade,
+    MantineColor,
+    MantineTheme,
+} from '@mantine/core';
 
 export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
     const result: ConvertCSSVariablesInput = {
@@ -23,8 +30,6 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--mantine-color-text': theme.colors.gray[6],
             '--mantine-color-dimmed': theme.colors.gray[5],
             '--mantine-color-gray-filled': theme.colors.gray[4],
-            '--mantine-color-gray-light': alpha('var(--mantine-color-gray-filled)', 0.1),
-            '--mantine-color-gray-light-hover': alpha('var(--mantine-color-gray-filled)', 0.16),
             '--mantine-color-warning-filled': theme.colors.yellow[4],
             '--mantine-color-placeholder': theme.colors.gray[4],
             '--mantine-color-default-hover': theme.colors.gray[1],
@@ -33,5 +38,36 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
         },
     };
 
+    Object.keys(theme.colors).forEach((color) => {
+        Object.assign(
+            result.light,
+            getVariantLightVariables({
+                theme,
+                color,
+                colorScheme: 'light',
+            }),
+        );
+    });
+
     return result;
+};
+
+interface GetColorVariablesInput {
+    theme: MantineTheme;
+    color: MantineColor;
+    colorScheme: 'light' | 'dark';
+}
+
+const getVariantLightVariables = ({theme, color, colorScheme}: GetColorVariablesInput) => {
+    if (!theme.colors[color]) {
+        return {};
+    }
+
+    if (colorScheme === 'light') {
+        const primaryShade = getPrimaryShade(theme, 'light');
+        return {
+            [`--mantine-color-${color}-light`]: alpha(theme.colors[color][primaryShade], 0.1),
+            [`--mantine-color-${color}-light-hover`]: alpha(theme.colors[color][primaryShade], 0.16),
+        };
+    }
 };

@@ -1,7 +1,7 @@
 import {ActionIcon, Group, showNotification, Stack} from '@coveord/plasma-mantine';
-import {IconClipboardCheck} from '@coveord/plasma-react-icons';
+import {IconBell} from '@coveord/plasma-react-icons';
 
-const Icon = () => <IconClipboardCheck size={20} />;
+const Icon = () => <IconBell size={16} />;
 
 const Demo = () => {
     const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
