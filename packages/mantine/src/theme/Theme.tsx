@@ -16,6 +16,7 @@ import {
     Badge,
     Breadcrumbs,
     Button,
+    Card,
     Checkbox,
     Chip,
     CloseButton,
@@ -37,6 +38,7 @@ import {
     Notification,
     NumberInput,
     Pagination,
+    Paper,
     Pill,
     Popover,
     Radio,
@@ -59,6 +61,7 @@ import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import BreadcrumbsClasses from '../styles/Breadcrumbs.module.css';
 import ButtonClasses from '../styles/Button.module.css';
+import CardClasses from '../styles/Card.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ChipClasses from '../styles/Chip.module.css';
@@ -70,6 +73,7 @@ import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
 import NumberInputClasses from '../styles/NumberInput.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
+import PaperClasses from '../styles/Paper.module.css';
 import PillClasses from '../styles/Pill.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import RadioCardClasses from '../styles/RadioCard.module.css';
@@ -189,6 +193,15 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 size: 'sm',
             },
             classNames: ButtonClasses,
+        }),
+        Card: Card.extend({
+            defaultProps: {
+                radius: 'lg',
+                shadow: 'xs',
+                padding: 'sm',
+                withBorder: true,
+            },
+            classNames: CardClasses,
         }),
         Checkbox: Checkbox.extend({
             defaultProps: {
@@ -340,6 +353,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 nextIcon: ArrowHeadRightSize16Px,
                 previousIcon: ArrowHeadLeftSize16Px,
             },
+        }),
+        Paper: Paper.extend({
+            classNames: PaperClasses,
         }),
         Pill: Pill.extend({
             classNames: PillClasses,
