@@ -2,5 +2,5 @@
     --popover-radius: var(--mantine-radius-md);
     --popover-shadow: var(--mantine-shadow-xs);
 
-    padding: var(--mantine-spacing-sm);
+    padding: var(--mantine-spacing-xs);
 }
