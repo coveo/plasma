@@ -71,7 +71,8 @@ const Demo = () => {
     });
     return (
         <Table<Person> store={table} data={data} columns={columns} options={options} getRowId={({id}) => id}>
-            <Table.Header>
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false}>
                 <Table.Filter placeholder="Search" />
             </Table.Header>
             <Table.Footer>
@@ -81,7 +82,7 @@ const Demo = () => {
             <Table.NoData>
                 <BlankSlate>
                     <Title order={4}>Nothing found for "{table.state.globalFilter}"</Title>
-                    <Button onClick={table.clearFilters}>Clear filter</Button>
+                    <Button.Tertiary onClick={table.clearFilters}>Clear filter</Button.Tertiary>
                 </BlankSlate>
             </Table.NoData>
         </Table>

@@ -1,39 +1,47 @@
-.input {
-    @mixin light {
-        color: var(--mantine-color-gray-7);
-    }
+.option {
+    padding: var(--mantine-spacing-xs);
 
-    @mixin dark {
-        color: var(--mantine-color-dark-0);
+    @mixin light {
+        color: var(--coveo-color-title);
+
+        @mixin hover {
+            &:not([data-combobox-disabled], [data-checked], [data-combobox-selected]) {
+                background-color: var(--mantine-color-default-hover);
+            }
+        }
+
+        &[data-combobox-disabled] {
+            opacity: 1;
+            color: var(--mantine-color-disabled-color);
+        }
+
+        &[data-combobox-active='true'] {
+            background-color: var(--mantine-primary-color-light);
+            color: var(--mantine-primary-color-filled);
+
+            + svg {
+                opacity: 1;
+            }
+        }
+
+        &[data-combobox-selected] {
+            background-color: var(--mantine-primary-color-filled);
+            color: white;
+        }
     }
 }
 
-.option {
-    padding: 12px 16px;
-
+.groupLabel {
     @mixin light {
-        color: var(--mantine-color-gray-7);
-
-        @mixin hover {
-            background-color: var(--mantine-color-gray-1);
-        }
+        color: var(--mantine-color-placeholder);
     }
+}
 
-    @mixin dark {
-        color: var(--mantine-color-dark-0);
-
-        @mixin hover {
-            background-color: var(--mantine-color-dark-4);
-        }
-    }
-
-    &[aria-selected='true'] {
-        background-color: var(--mantine-color-action-1);
-        color: var(--mantine-color-action-6);
-
-        @mixin hover {
-            color: var(--mantine-color-action-6);
-            background-color: rgb(237 246 255 / 65%);
+.input {
+    @mixin light {
+        &[data-disabled] {
+            --input-disabled-bg: var(--mantine-color-disabled);
+            --input-bd: var(--mantine-color-default-border);
         }
     }
 }

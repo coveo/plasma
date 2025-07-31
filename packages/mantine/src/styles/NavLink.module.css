@@ -1,27 +1,23 @@
 .root {
-    color: var(--mantine-color-gray-6);
-    line-height: var(--mantine-line-height);
-    border-radius: var(--mantine-radius-default) 0 0 var(--mantine-radius-default);
+    &:where(:not([data-active]), [data-disabled]) {
+        color: var(--coveo-color-title);
 
-    &[data-active] {
-        color: var(--mantine-primary-color-6);
+        &:hover {
+            background-color: var(--mantine-color-default-hover);
+        }
     }
 
-    @mixin hover {
-        @mixin light {
-            &:where(:not([data-active])) {
-                background-color: var(--mantine-color-gray-1);
-            }
-        }
+    &:where([data-disabled]) {
+        color: var(--coveo-color-text-disabled);
     }
 }
 
 .label {
-    font-weight: 500;
+    font-weight: var(--coveo-fw-bold);
 }
 
 .children {
     & .label {
-        font-weight: 300;
+        font-weight: var(--coveo-fw-normal);
     }
 }

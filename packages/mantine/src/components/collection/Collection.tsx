@@ -1,18 +1,16 @@
-import {AddSize16Px} from '@coveord/plasma-react-icons';
+import {IconPlus} from '@coveord/plasma-react-icons';
 import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
 import {restrictToParentElement, restrictToVerticalAxis} from '@dnd-kit/modifiers';
 import {SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from '@dnd-kit/sortable';
 import {
+    __InputWrapperProps,
     Box,
     BoxProps,
     Factory,
-    Group,
     Input,
     MantineSpacing,
     Stack,
     StylesApiProps,
-    Tooltip,
-    __InputWrapperProps,
     useProps,
     useStyles,
 } from '@mantine/core';
@@ -52,8 +50,9 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
      * @see {@link https://react-hook-form.com/api/usefieldarray/} for using a collection with ReactHookForm.
      *
      * @param originalItem The original item
+     * @param itemIndex The index of the original item
      */
-    getItemId?: (originalItem: T) => string;
+    getItemId?: (originalItem: T, itemIndex: number) => string;
     /**
      * Unused, has no effect
      */
@@ -134,7 +133,7 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
     required?: boolean;
 }
 
-export type CollectionStylesNames = 'root' | 'item' | 'itemDragging' | 'dragHandle';
+export type CollectionStylesNames = 'root' | 'item' | 'items' | 'itemDragging' | 'dragHandle';
 
 export type CollectionFactory = Factory<{
     props: CollectionProps<unknown>;
@@ -148,7 +147,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     addDisabledTooltip: 'There is already an empty item',
     disabled: false,
     readOnly: false,
-    gap: 'xs',
+    gap: 'md',
     required: false,
     getItemId: ({id}: any) => id,
 };
@@ -229,13 +228,13 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : null;
     const _header =
         _label || _description ? (
-            <>
+            <Stack gap="xxs" pb="xs">
                 {_label}
                 {_description}
-            </>
+            </Stack>
         ) : null;
 
-    const standardizedItems = value.map((item, index) => ({id: getItemId?.(item) ?? String(index), data: item}));
+    const standardizedItems = value.map((item, index) => ({id: getItemId?.(item, index) ?? String(index), data: item}));
 
     const items = standardizedItems.map((item, index) => (
         <CollectionItem
@@ -253,20 +252,14 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     const addAllowed = allowAdd?.(value) ?? true;
 
     const _addButton = canEdit ? (
-        <Group>
-            <Tooltip label={addDisabledTooltip} disabled={addAllowed}>
-                <Box>
-                    <Button
-                        variant="subtle"
-                        leftSection={<AddSize16Px height={16} />}
-                        onClick={() => onInsertItem(newItem, value?.length ?? 0)}
-                        disabled={!addAllowed}
-                    >
-                        {addLabel}
-                    </Button>
-                </Box>
-            </Tooltip>
-        </Group>
+        <Button.Quaternary
+            leftSection={<IconPlus size={16} />}
+            onClick={() => onInsertItem(newItem, value?.length ?? 0)}
+            disabled={!addAllowed}
+            disabledTooltip={addDisabledTooltip}
+        >
+            {addLabel}
+        </Button.Quaternary>
     ) : null;
 
     const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);
@@ -291,7 +284,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                 <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
                     <Box ref={ref} {...others} {...getStyles('root')}>
                         {_header}
-                        <Stack gap={gap}>
+                        <Stack gap={gap} {...getStyles('items')}>
                             {items}
                             {_addButton}
                             {_error}
