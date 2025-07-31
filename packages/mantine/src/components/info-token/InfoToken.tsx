@@ -142,6 +142,7 @@ export const InfoToken: ReturnType<typeof polymorphicFactory<InfoTokenFactory>> 
                 ref={ref}
                 variant={variant}
                 role="img"
+                aria-label={variant}
                 size={size}
                 {...getStyles('root', {
                     className,
@@ -151,7 +152,7 @@ export const InfoToken: ReturnType<typeof polymorphicFactory<InfoTokenFactory>> 
                 })}
                 {...others}
             >
-                <IconComponent size={sizeResolver(size)} aria-label={variant} />
+                <IconComponent size={sizeResolver(size)} />
             </Box>
         );
     },
