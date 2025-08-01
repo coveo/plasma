@@ -1,7 +1,11 @@
-import {alpha, ConvertCSSVariablesInput, CSSVariablesResolver} from '@mantine/core';
+import {alpha, ConvertCSSVariablesInput, CSSVariablesResolver, defaultCssVariablesResolver} from '@mantine/core';
 
 export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
-    const result: ConvertCSSVariablesInput = {
+    // Get the default Mantine CSS variables
+    const mantineVariables = defaultCssVariablesResolver(theme);
+
+    // Define your custom variables
+    const customVariables: ConvertCSSVariablesInput = {
         variables: {
             '--coveo-fw-light': '300',
             '--coveo-fw-normal': '400',
@@ -30,6 +34,22 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--mantine-color-default-hover': theme.colors.gray[1],
             '--mantine-color-disabled': alpha('var(--mantine-color-gray-4)', 0.1),
             '--mantine-color-disabled-color': theme.colors.gray[3],
+        },
+    };
+
+    // Merge Mantine variables with custom variables
+    const result: ConvertCSSVariablesInput = {
+        variables: {
+            ...mantineVariables.variables,
+            ...customVariables.variables,
+        },
+        dark: {
+            ...mantineVariables.dark,
+            ...customVariables.dark,
+        },
+        light: {
+            ...mantineVariables.light,
+            ...customVariables.light,
         },
     };
 
