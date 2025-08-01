@@ -45,3 +45,7 @@
         }
     }
 }
+
+.dropdown {
+    padding: var(--mantine-spacing-xxs);
+}

@@ -21,6 +21,7 @@ import {
     CloseButton,
     ColorSwatch,
     Combobox,
+    ComboboxDropdown,
     ComboboxSearch,
     createTheme,
     deepMerge,
@@ -71,6 +72,7 @@ import NavLinkClasses from '../styles/NavLink.module.css';
 import NumberInputClasses from '../styles/NumberInput.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
 import PillClasses from '../styles/Pill.module.css';
+import PopoverClasses from '../styles/Popover.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import RadioCardClasses from '../styles/RadioCard.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
@@ -238,6 +240,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 rightSection: <FilterSize16Px height={16} color="gray.5" />,
             },
         }),
+        ComboboxDropdown: ComboboxDropdown.extend({
+            defaultProps: {
+                p: 'xxs',
+            },
+        }),
         Divider: Divider.extend({
             defaultProps: {
                 color: 'var(--mantine-color-default-border)',
@@ -345,9 +352,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: PillClasses,
         }),
         Popover: Popover.extend({
+            classNames: PopoverClasses,
             defaultProps: {
-                shadow: 'xs',
                 middlewares: {inline: true},
+                position: 'bottom-start',
             },
         }),
         Radio: Radio.extend({
