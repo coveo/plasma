@@ -46,6 +46,7 @@ export const Navigation = () => (
             <InternalNavLink to="/foundations/Colors" label="Colors" />
             <InternalNavLink to="/foundations/Iconography" label="Iconography" />
             <InternalNavLink to="/foundations/TypeKit" label="TypeKit" />
+            <InternalNavLink to="/foundations/Variables" label="Variables" />
         </NavLink>
         <NavLink label="Layout" leftSection={<RichUiSize16Px height={16} />} defaultOpened>
             <InternalNavLink to="/layout/BrowserPreview" label="Browser Preview" />

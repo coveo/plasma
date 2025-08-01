@@ -12,12 +12,14 @@ export * from '@mantine/notifications';
 export {type NotificationsProps} from '@mantine/notifications';
 export * from '@tanstack/table-core';
 export * from './components';
+export {CssVariablesList} from './utils';
 export {noop};
 
 // explicitly overriding mantine components
 export {
     Accordion,
     ActionIcon,
+    Badge,
     BrowserPreview,
     Button,
     Chip,
@@ -28,7 +30,6 @@ export {
     PasswordInput,
     Select,
     Table,
-    Badge,
     type ActionIconProps,
     type ButtonProps,
     type CopyToClipboardProps,
