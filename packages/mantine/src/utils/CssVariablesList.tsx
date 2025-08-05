@@ -1,17 +1,23 @@
-import {Code, ColorSwatch, keys, Table, Title, useMantineTheme} from '@mantine/core';
+import {LinksSize16Px} from '@coveord/plasma-react-icons';
+import {Anchor, Code, ColorSwatch, CssVariables, keys, Table, Title, useMantineTheme} from '@mantine/core';
+import {FunctionComponent, ReactNode} from 'react';
 import {plasmaCSSVariablesResolver} from '../theme/plasmaCSSVariablesResolver';
+import VariableClasses from './CssVariablesList.module.css';
 
 export const ColorPreview = ({value}: {value: string}) => {
-    if (!value || !value.match(/^(var\(--mantine-color[\w-]+\)|#\w+|rgba?\([\w,. ]+\))$/gm)) {
+    if (
+        !value ||
+        !value.match(
+            /^(var\(--mantine-color[\w-]+\)|var\(--mantine-primary[\w-]*\)|color-mix\(.*\)|#\w+|rgba?\([\w,. ]+\))$/gm,
+        )
+    ) {
         return null;
     }
-
-    return <ColorSwatch size={20} color={value} />;
+    return <ColorSwatch size={20} color={value} withShadow />;
 };
 
 interface DataTableProps {
-    data: React.ReactNode[][];
-    head?: string[];
+    data: ReactNode[][];
 }
 
 const removeScale = (input: string): string => {
@@ -36,7 +42,18 @@ const getTransformedScaledValue = (value: unknown) => {
     return removeScale(value);
 };
 
-const MdxDataTable = ({data, head}: DataTableProps) => {
+const getVariables = (resolvedVariables: CssVariables, prefix: string) =>
+    keys(resolvedVariables)
+        .filter((key) => String(key).startsWith(prefix))
+        .map((key) => [
+            <Code style={{whiteSpace: 'nowrap'}} key="code">
+                {String(key)}
+            </Code>,
+            resolvedVariables[key],
+            <ColorPreview value={resolvedVariables[key]} key="swatch" />,
+        ]);
+
+const MdxDataTable = ({data}: DataTableProps) => {
     const rows = data.map((row, index) => {
         const cells = row.map((cell, cellIndex) => (
             <Table.Td key={cellIndex}>{getTransformedScaledValue(cell)}</Table.Td>
@@ -44,17 +61,10 @@ const MdxDataTable = ({data, head}: DataTableProps) => {
         return <Table.Tr key={index}>{cells}</Table.Tr>;
     });
 
-    const ths = Array.isArray(head) ? head.map((cell, index) => <Table.Th key={index}>{cell}</Table.Th>) : null;
-
     return (
         <div>
             <Table.ScrollContainer minWidth={500}>
-                <Table>
-                    {ths && (
-                        <Table.Thead>
-                            <Table.Tr>{ths}</Table.Tr>
-                        </Table.Thead>
-                    )}
+                <Table className={VariableClasses.table}>
                     <Table.Tbody>{rows}</Table.Tbody>
                 </Table>
             </Table.ScrollContainer>
@@ -65,46 +75,71 @@ export const CssVariablesList = () => {
     // Get the current theme which includes any runtime changes (like primary color)
     const currentTheme = useMantineTheme();
     const resolvedVariables = plasmaCSSVariablesResolver(currentTheme);
-    const variables = keys(resolvedVariables.variables).map((key) => [
-        <Code style={{whiteSpace: 'nowrap'}} key="code">
-            {String(key)}
-        </Code>,
-        resolvedVariables.variables[key],
-        <ColorPreview value={resolvedVariables.variables[key]} key="swatch" />,
-    ]);
 
-    const lightVariables = keys(resolvedVariables.light).map((key) => [
-        <Code style={{whiteSpace: 'nowrap'}} key="code">
-            {String(key)}
-        </Code>,
-        resolvedVariables.light[key],
-        <ColorPreview value={resolvedVariables.light[key]} key="swatch" />,
-    ]);
+    // Separate Mantine and Coveo variables
+    const mantineVariables = getVariables(resolvedVariables.variables, '--mantine-');
 
-    const darkVariables = keys(resolvedVariables.dark).map((key) => [
-        <Code style={{whiteSpace: 'nowrap'}} key="code">
-            {String(key)}
-        </Code>,
-        resolvedVariables.dark[key],
-        <ColorPreview value={resolvedVariables.dark[key]} key="swatch" />,
-    ]);
+    const lightMantineVariables = getVariables(resolvedVariables.light, '--mantine-');
+
+    const darkMantineVariables = getVariables(resolvedVariables.dark, '--mantine-');
+
+    const coveoVariables = getVariables(resolvedVariables.variables, '--coveo-');
+
+    const lightCoveoVariables = getVariables(resolvedVariables.light, '--coveo-');
+
+    const darkCoveoVariables = getVariables(resolvedVariables.dark, '--coveo-');
+
+    const VariableBlock: FunctionComponent<{id: string; children: ReactNode; data: ReactNode[][]}> = ({
+        id,
+        children,
+        data,
+    }) => {
+        if (data.length === 0) {
+            return null;
+        }
+        return (
+            <div style={{scrollMarginTop: '100px'}} id={id}>
+                <Anchor href={`#${id}`} className={VariableClasses.anchor}>
+                    {children}
+                    <LinksSize16Px className={VariableClasses.anchorIcon} height={16} />
+                </Anchor>
+                <MdxDataTable data={data} />
+            </div>
+        );
+    };
 
     return (
         <>
-            <Title order={2} id="no-dependency">
-                CSS variables not depending on color scheme
-            </Title>
-            <MdxDataTable data={variables} />
-
-            <Title order={2} id="light-only">
-                Light color scheme only variables
-            </Title>
-            <MdxDataTable data={lightVariables} />
-
-            <Title order={2} id="dark-only">
-                Dark color scheme only variables
-            </Title>
-            <MdxDataTable data={darkVariables} />
+            <VariableBlock id="coveo-variables" data={coveoVariables}>
+                <Title order={4} id="coveo-variables" display={'inline-block'}>
+                    Coveo custom CSS variables
+                </Title>
+            </VariableBlock>
+            <VariableBlock id="light-coveo-variables" data={lightCoveoVariables}>
+                <Title order={5} id="light-coveo-variables" display={'inline-block'}>
+                    Light color scheme - Coveo custom CSS variables
+                </Title>
+            </VariableBlock>
+            <VariableBlock id="dark-coveo-variables" data={darkCoveoVariables}>
+                <Title order={4} id="dark-coveo-variables" display={'inline-block'}>
+                    Dark color scheme - Coveo variables
+                </Title>
+            </VariableBlock>
+            <VariableBlock id="mantine-variables" data={mantineVariables}>
+                <Title order={4} id="mantine-variables" display={'inline-block'}>
+                    Mantine CSS variables
+                </Title>
+            </VariableBlock>
+            <VariableBlock id="light-mantine-variables" data={lightMantineVariables}>
+                <Title order={5} id="light-mantine-variables" display={'inline-block'}>
+                    Light color scheme - Mantine variables
+                </Title>
+            </VariableBlock>
+            <VariableBlock id="dark-mantine-variables" data={darkMantineVariables}>
+                <Title order={5} id="dark-mantine-variables" display={'inline-block'}>
+                    Dark color scheme - Mantine variables
+                </Title>
+            </VariableBlock>
         </>
     );
 };

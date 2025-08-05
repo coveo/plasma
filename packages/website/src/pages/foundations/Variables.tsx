@@ -1,4 +1,4 @@
-import {CssVariablesList as Test} from '@coveord/plasma-mantine';
+import {CssVariablesList} from '@coveord/plasma-mantine';
 import {PageLayout} from '../../building-blocs/PageLayout';
 
 export const VariablesExamples = () => (
@@ -6,14 +6,10 @@ export const VariablesExamples = () => (
         id="Variables"
         section="Foundations"
         title="Variables"
-        // thumbnail="css variables"
-        description="The css variables that give Plasma its identity"
-        // sourcePath="/packages/tokens#readme"
+        description="The list of all Mantine and Coveo CSS variables available to use in your application."
         withPropsTable={false}
     >
-        <div className="plasma-page-layout__section pl5">
-            <Test />
-        </div>
+        <CssVariablesList />
     </PageLayout>
 );
 
