@@ -9,7 +9,7 @@ const Demo = () => {
 
     return (
         <DateRangePickerInlineCalendar
-            initialRange={range}
+            // initialRange={range}
             onApply={setRange}
             onCancel={onCancel}
             presets={{
@@ -22,6 +22,8 @@ const Demo = () => {
                     range: [dayjs().startOf('month').toISOString(), dayjs().endOf('month').toISOString()],
                 },
             }}
+            initialRange={[dayjs('04-11-2025').toISOString(), dayjs('04-15-2025').toISOString()]}
+            rangeCalendarProps={{defaultDate: dayjs('04-11-2025').toISOString()}}
         />
     );
 };

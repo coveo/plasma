@@ -114,6 +114,7 @@ export const DateRangePickerInlineCalendar = ({
                     {...rangeCalendarProps}
                     {...calendarInputProps}
                     onChange={onCalendarChange}
+                    minDate={dayjs('04-13-2025').toISOString()}
                 />
             </Center>
             <Group justify="right" gap="xs" px="md" py="sm" className={DateRangeClasses.save}>

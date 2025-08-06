@@ -3,6 +3,7 @@ import {
     ArrowHeadRightSize16Px,
     CrossSize16Px,
     FilterSize16Px,
+    IconCalendarWeek,
     IconCheck,
     IconClock,
     IconSlash,
@@ -55,7 +56,7 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
-import {TimeInput} from '@mantine/dates';
+import {DateInput, PickerInputBase, TimeInput} from '@mantine/dates';
 import {Accordion, CheckboxIcon, CircleLoader, InfoToken} from '../components';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
@@ -278,6 +279,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Input: Input.extend({
             defaultProps: {
                 size: 'sm',
+                miw: 250,
             },
             classNames: (_theme, props) => {
                 const anyProps = props as any;
@@ -377,6 +379,18 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Paper: Paper.extend({
             classNames: PaperClasses,
+        }),
+        PickerInputBase: PickerInputBase.extend({
+            defaultProps: {
+                miw: 250,
+                leftSection: <IconCalendarWeek size={16} />,
+            },
+        }),
+        DateInput: DateInput.extend({
+            defaultProps: {
+                miw: 250,
+                leftSection: <IconCalendarWeek size={16} />,
+            },
         }),
         Pill: Pill.extend({
             classNames: PillClasses,
