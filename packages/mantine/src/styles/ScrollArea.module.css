@@ -6,3 +6,7 @@
         }
     }
 }
+
+.thumb {
+    background-color: var(--mantine-color-gray-light);
+}
