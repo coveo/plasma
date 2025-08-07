@@ -18,6 +18,7 @@ export {noop};
 export {
     Accordion,
     ActionIcon,
+    Badge,
     BrowserPreview,
     Button,
     Chip,
@@ -28,7 +29,6 @@ export {
     PasswordInput,
     Select,
     Table,
-    Badge,
     type ActionIconProps,
     type ButtonProps,
     type CopyToClipboardProps,
