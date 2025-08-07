@@ -32,5 +32,4 @@ travis-deploy-key
 **/*.tsbuildinfo
 
 # cache
-.ultra.cache.json
 .turbo

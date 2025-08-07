@@ -21,12 +21,7 @@ const onExit = (childProcess) =>
 const build = async ({watch = false}) => {
     // compile with swc and tsc
     try {
-        const tscArgs = ['--emitDeclarationOnly'];
-        if (existsSync('./tsconfig.build.json')) {
-            tscArgs.push('--project', './tsconfig.build.json');
-        }
-        const tscESMArgs = [...tscArgs, '--declarationDir', './dist/esm'];
-        const tscCJSArgs = [...tscArgs, '--declarationDir', './dist/cjs', '--target', 'es5', '--module', 'commonjs'];
+        const tscArgs = [];
         const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
 
         if (watch) {
@@ -55,11 +50,10 @@ const build = async ({watch = false}) => {
             '--strip-leading-paths',
         ];
 
-        const dtsESM = spawn('tsc', tscESMArgs, {stdio: 'inherit', shell: true});
-        const dtsCJS = spawn('tsc', tscCJSArgs, {stdio: 'inherit', shell: true});
+        const dts = spawn('tsc', tscArgs, {stdio: 'inherit', shell: true});
         const commonJs = spawn('swc', swcCJSArgs, {stdio: 'inherit', shell: true});
         const esm = spawn('swc', swcES6Args, {stdio: 'inherit', shell: true});
-        await Promise.all([onExit(dtsESM), onExit(dtsCJS), onExit(commonJs), onExit(esm)]);
+        await Promise.all([onExit(dts), onExit(commonJs), onExit(esm)]);
 
         // Ensure NodeJS resolves dist/cjs/**/*.js as dist/cjs/**/*.cjs
         writeFileSync('dist/cjs/package.json', JSON.stringify({type: 'commonjs'}));

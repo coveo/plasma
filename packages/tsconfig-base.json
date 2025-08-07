@@ -1,37 +1,22 @@
 {
     "compilerOptions": {
-        "module": "esnext",
-        "moduleResolution": "node",
-        "target": "esnext",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ESNext",
         "jsx": "react-jsx",
         "lib": ["ESNext", "DOM"],
 
-        "outDir": "${configDir}/dist",
+        "emitDeclarationOnly": true,
+        "outDir": "${configDir}/dist/definitions",
+        "rootDir": "${configDir}/src",
         "rootDirs": ["${configDir}/src", "${configDir}/__mocks__"],
         "tsBuildInfoFile": "${configDir}/dist/.tsbuildinfo",
         "baseUrl": "${configDir}",
 
-        "composite": false,
-        "incremental": true,
-        "sourceMap": true,
-        "declaration": true,
-        "declarationMap": true,
-
-        "allowJs": true,
-        "skipLibCheck": true,
-
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "noUnusedLocals": true,
-        "strictBindCallApply": true,
-
-        "experimentalDecorators": true,
-        "downlevelIteration": true,
-        "removeComments": false,
-        "emitDecoratorMetadata": true,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "importHelpers": true
+        "composite": true,
+        "strict": true,
+        "strictNullChecks": false
     },
+    "include": ["${configDir}/src"],
     "exclude": ["${configDir}/dist", "${configDir}/node_modules"]
 }

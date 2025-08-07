@@ -11,6 +11,7 @@
     "license": "Apache-2.0",
     "exports": {
         ".": {
+            "types": "./dist/definitions/index.d.ts",
             "require": "./dist/cjs/index.js",
             "import": "./dist/esm/index.js"
         },
@@ -19,8 +20,6 @@
         "./css/*": "./css/*",
         "./icons/*": "./icons/*"
     },
-    "main": "./dist/cjs/index.js",
-    "module": "./dist/esm/index.js",
     "files": [
         "dist",
         "icons",

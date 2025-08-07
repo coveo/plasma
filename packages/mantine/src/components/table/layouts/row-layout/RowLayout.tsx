@@ -1,5 +1,6 @@
 import {Factory, MantineComponent, StylesApiProps, useProps, useStyles} from '@mantine/core';
 import {ReactNode} from 'react';
+import {Icon} from '@coveord/plasma-react-icons';
 import {identity} from '../../../../utils';
 import {TableLayout} from '../../Table.types';
 import classes from './RowLayout.module.css';
@@ -37,6 +38,6 @@ export const RowLayout = ((props: RowLayoutProps) => {
 
 RowLayout.Body = RowLayoutBody;
 RowLayout.Header = RowLayoutHeader;
-RowLayout.Icon = RowLayoutIcon;
+RowLayout.Icon = RowLayoutIcon as unknown as Icon;
 RowLayout.displayName = 'Rows';
 RowLayout.extend = identity;
