@@ -1,0 +1,4 @@
+.dropdown {
+    --popover-radius: var(--mantine-radius-md);
+    --popover-shadow: var(--mantine-shadow-xs);
+}
