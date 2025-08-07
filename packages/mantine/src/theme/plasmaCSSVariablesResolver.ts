@@ -45,7 +45,7 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
 
     Object.keys(theme.colors).forEach((color) => {
         Object.assign(
-            result.light,
+            customVariables.light,
             getVariantLightVariables({
                 theme,
                 color,
