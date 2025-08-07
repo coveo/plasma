@@ -6,7 +6,6 @@ import {
     IconCheck,
     IconClock,
     IconSlash,
-    InfoSize24Px,
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
@@ -72,6 +71,7 @@ import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
+import NotificationClasses from '../styles/Notifications.module.css';
 import NumberInputClasses from '../styles/NumberInput.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
 import PaperClasses from '../styles/Paper.module.css';
@@ -356,9 +356,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         MultiSelect: MultiSelect.extend({defaultProps: {hidePickedOptions: true}}),
         NavLink: NavLink.extend({classNames: NavLinkClasses}),
         Notification: Notification.extend({
-            defaultProps: {
-                icon: <InfoSize24Px height={24} />,
-            },
+            classNames: NotificationClasses,
         }),
         NumberInput: NumberInput.extend({
             classNames: NumberInputClasses,

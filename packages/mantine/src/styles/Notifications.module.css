@@ -1,0 +1,17 @@
+.root {
+    --notification-radius: var(--mantine-radius-lg);
+
+    @mixin light {
+        background-color: var(--coveo-color-bg-dark-surface);
+    }
+}
+
+.title,
+.description,
+.closeButton > svg {
+    @mixin light {
+        --coveo-color-title: var(--mantine-color-white);
+
+        color: var(--coveo-color-title);
+    }
+}
