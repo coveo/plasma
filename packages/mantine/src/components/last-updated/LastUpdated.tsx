@@ -1,17 +1,16 @@
 import {BoxProps, factory, Factory, Group, GroupProps, StylesApiProps, Text, useProps, useStyles} from '@mantine/core';
-import {useDidUpdate} from '@mantine/hooks';
 import dayjs from 'dayjs';
-import React, {useState} from 'react';
+import React from 'react';
 
-export type LastUpdatedStylesNames = 'lastUpdatedRoot' | 'lastUpdatedLabel';
+export type LastUpdatedStylesNames = 'root' | 'label';
 
 export interface LastUpdatedProps extends BoxProps, Pick<GroupProps, 'justify'>, StylesApiProps<LastUpdatedFactory> {
     /**
-     * The data to determine the last updated time.
+     * The unformatted time to display. Either a Date object, a number timestamp (milliseconds since epoch) or string that can be parsed by dayjs.
      */
-    data: unknown;
+    time: Date | string | number;
     /**
-     * Label to contextualize the date
+     * Label to contextualize the time.
      *
      * @default "Last update:"
      */
@@ -29,7 +28,7 @@ const defaultProps: Partial<LastUpdatedProps> = {
 
 export const LastUpdated = factory<LastUpdatedFactory>(
     (props: LastUpdatedProps, ref: React.ForwardedRef<HTMLDivElement>) => {
-        const {label, classNames, className, styles, style, vars, unstyled, ...others} = useProps(
+        const {time, label, classNames, className, styles, style, vars, unstyled, ...others} = useProps(
             'PlasmaLastUpdated',
             defaultProps as Partial<LastUpdatedProps>,
             props,
@@ -46,23 +45,16 @@ export const LastUpdated = factory<LastUpdatedFactory>(
             unstyled,
             vars,
         });
-        const [time, setTime] = useState(new Date());
-
-        useDidUpdate(() => {
-            setTime(new Date());
-        }, [props.data]);
-
         const stylesApiProps = {classNames, styles};
 
         return (
             <Group
-                px="xl"
-                justify={props.justify || 'right'}
+                justify={props.justify}
                 ref={ref}
-                {...getStyles('lastUpdatedRoot', {className, style, ...stylesApiProps})}
+                {...getStyles('root', {className, style, ...stylesApiProps})}
                 {...others}
             >
-                <Text size="xs" {...getStyles('lastUpdatedLabel', {className, style, ...stylesApiProps})}>
+                <Text size="xs" {...getStyles('label', {className, style, ...stylesApiProps})}>
                     {label}
                     <span role="timer">{dayjs(time).format('h:mm:ss A')}</span>
                 </Text>

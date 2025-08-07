@@ -128,6 +128,11 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
         propsType: 'DateTimeRangePickerProps',
     },
+    {
+        name: 'LastUpdated',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'LastUpdatedProps',
+    },
 ];
 
 export default components;
