@@ -1,3 +1,15 @@
+## <small>55.7.2-next.43 (2025-08-07)</small>
+
+* feat(mantine,accordion): update accordion style (#4127) a2527af, closes #4127
+* feat(mantine,breadcrum): update header breadcrumb implementation (#4126) fcb38c9, closes #4126
+* feat(mantine,browserpreview): update style (#4122) 7595185, closes #4122
+* feat(mantine,button): update Button & ActionIcon style (#4119) fd10819, closes #4119
+* feat(mantine,card): create card variant hover and selected state (#4123) f97e1e4, closes #4123
+* feat(mantine,codeeditor): update style (#4125) c49c7b5, closes #4125
+* feat(skeleton): change background-color (#4121) af96d40, closes #4121
+
+
+
 ## <small>55.7.2-next.42 (2025-07-30)</small>
 
 * feat(childform): adjust background and border thickness of childform (#4085) ef1e214, closes #4085

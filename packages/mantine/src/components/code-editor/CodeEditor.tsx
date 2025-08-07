@@ -211,7 +211,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             p="md"
             pl="xs"
             className={cx(
-                CodeEditorClasses.editor,
+                CodeEditorClasses.root,
                 {[CodeEditorClasses.error]: hasError},
                 {[CodeEditorClasses.disabled]: disabled},
             )}

@@ -1,0 +1,48 @@
+.item {
+    overflow: hidden;
+
+    @mixin where-light {
+        --item-border-color: var(--mantine-color-default-border);
+        --item-filled-color: var(--mantine-color-white);
+    }
+}
+
+.root {
+    &[data-variant='separated'] {
+        .item {
+            border: 1px solid var(--mantine-color-default-border);
+        }
+    }
+
+    &[data-variant='nested'] {
+        .item {
+            background-color: var(--mantine-color-gray-light);
+            border-radius: var(--mantine-radius-default);
+            border: 1px solid var(--mantine-color-default-border);
+        }
+
+        .item + .item {
+            margin-top: var(--mantine-spacing-md);
+        }
+    }
+}
+
+.control {
+    padding: var(--mantine-spacing-sm);
+
+    &:where(:not(:disabled, [data-disabled])) {
+        @mixin hover {
+            @mixin where-light {
+                background-color: var(--mantine-color-gray-1);
+            }
+        }
+    }
+}
+
+.label {
+    padding: 0;
+}
+
+.content {
+    padding: var(--mantine-spacing-sm);
+}

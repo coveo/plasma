@@ -56,7 +56,8 @@ import {
     Tooltip,
 } from '@mantine/core';
 import {TimeInput} from '@mantine/dates';
-import {CheckboxIcon, CircleLoader, InfoToken} from '../components';
+import {CheckboxIcon, CircleLoader, InfoToken, Accordion} from '../components';
+import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
@@ -157,6 +158,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     primaryShade: 5,
     colors: PlasmaColors,
     components: {
+        Accordion: Accordion.extend({
+            classNames: AccordionClasses,
+        }),
         ActionIcon: ActionIcon.extend({
             defaultProps: {
                 size: 'lg',
