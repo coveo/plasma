@@ -12,7 +12,15 @@ import globals from 'globals';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default tsEslint.config(
-    {ignores: ['**/dist', '**/.turbo', 'packages/react-icons/mock/index.js', 'packages/website/src/examples/mantine']},
+    {
+        ignores: [
+            '**/dist',
+            '**/.turbo',
+            'packages/react-icons/mock/index.js',
+            'packages/website/src/examples/mantine',
+            '**/vitest.config.ts',
+        ],
+    },
     {
         files: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs', '**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
         extends: [tsEslint.configs.base, reactJsxRuntime, eslintConfigPrettier],
