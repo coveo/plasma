@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const {spawn} = require('child_process');
 const path = require('path');
-const {existsSync, writeFileSync} = require('node:fs');
+const {writeFileSync} = require('node:fs');
 process.on('unhandledRejection', (err) => {
     throw err;
 });
