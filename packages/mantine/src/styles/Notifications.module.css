@@ -1,5 +1,8 @@
 .root {
     --notification-radius: var(--mantine-radius-lg);
+    --notification-color: transparent;
+
+    padding: 12px var(--mantine-spacing-sm) 12px;
 
     @mixin light {
         background-color: var(--coveo-color-bg-dark-surface);
@@ -7,11 +10,24 @@
 }
 
 .title,
-.description,
-.closeButton > svg {
+.closeButton {
     @mixin light {
-        --coveo-color-title: var(--mantine-color-white);
+        color: var(--mantine-color-white);
 
-        color: var(--coveo-color-title);
+        &:hover {
+            background-color: alpha(var(--mantine-color-gray-4), 0.2);
+        }
+
+        > svg {
+            @mixin light {
+                color: var(--mantine-color-white);
+            }
+        }
+    }
+}
+
+.description {
+    @mixin light {
+        color: var(--mantine-color-gray-2);
     }
 }

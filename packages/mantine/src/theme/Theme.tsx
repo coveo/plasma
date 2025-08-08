@@ -5,6 +5,7 @@ import {
     FilterSize16Px,
     IconCheck,
     IconClock,
+    IconInfoCircleFilled,
     IconSlash,
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
@@ -357,6 +358,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         NavLink: NavLink.extend({classNames: NavLinkClasses}),
         Notification: Notification.extend({
             classNames: NotificationClasses,
+            defaultProps: {
+                icon: <IconInfoCircleFilled height={20} />,
+            },
         }),
         NumberInput: NumberInput.extend({
             classNames: NumberInputClasses,

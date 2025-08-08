@@ -1,7 +1,26 @@
 import {Button, Group, showNotification, Stack} from '@coveord/plasma-mantine';
+import {IconAlertSquareFilled, IconAlertTriangleFilled, IconCircleCheckFilled} from '@coveord/plasma-react-icons';
 
 const Demo = () => {
-    const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
+    const onClick = () => {
+        showNotification({title: 'Title', message: 'Button clicked', autoClose: false});
+        showNotification({
+            message: 'Button clicked',
+            autoClose: false,
+            icon: <IconAlertSquareFilled height={20} color="var(--mantine-color-error-filled)" />,
+        });
+        showNotification({
+            message: 'Button clicked',
+            autoClose: false,
+            icon: <IconCircleCheckFilled height={20} color="var(--mantine-color-success-filled)" />,
+        });
+        showNotification({
+            message: 'Button clicked',
+            autoClose: false,
+            icon: <IconAlertTriangleFilled height={20} color="var(--mantine-color-warning-filled)" />,
+        });
+        showNotification({message: 'Button clicked', autoClose: false, loading: true});
+    };
     return (
         <Stack gap="sm">
             <Group gap="sm">
