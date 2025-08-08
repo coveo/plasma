@@ -6,9 +6,16 @@ export type LastUpdatedStylesNames = 'root' | 'label';
 
 export interface LastUpdatedProps extends BoxProps, Pick<GroupProps, 'justify'>, StylesApiProps<LastUpdatedFactory> {
     /**
-     * The unformatted time to display. Either a Date object, a number timestamp (milliseconds since epoch) or string that can be parsed by dayjs.
+     * Optional formatter function to format the time value.
+     * Receives the time prop and should return a string.
+     * @default (time) => dayjs(time).format('h:mm:ss A')
      */
-    time: Date | string | number;
+    formatter?: (time: dayjs.ConfigType) => string;
+    /**
+     * The unformatted time to display that can be parsed by dayjs.
+     * @default The current time via dayjs().valueOf()
+     */
+    time?: dayjs.ConfigType;
     /**
      * Label to contextualize the time.
      *
@@ -16,6 +23,7 @@ export interface LastUpdatedProps extends BoxProps, Pick<GroupProps, 'justify'>,
      */
     label?: string;
 }
+
 export type LastUpdatedFactory = Factory<{
     props: LastUpdatedProps;
     ref: HTMLDivElement;
@@ -24,15 +32,18 @@ export type LastUpdatedFactory = Factory<{
 
 const defaultProps: Partial<LastUpdatedProps> = {
     label: 'Last update:',
+    formatter: (time) => dayjs(time).format('h:mm:ss A'),
 };
 
 export const LastUpdated = factory<LastUpdatedFactory>(
     (props: LastUpdatedProps, ref: React.ForwardedRef<HTMLDivElement>) => {
-        const {time, label, classNames, className, styles, style, vars, unstyled, ...others} = useProps(
+        const {formatter, label, time, classNames, className, styles, style, vars, unstyled, ...others} = useProps(
             'PlasmaLastUpdated',
             defaultProps as Partial<LastUpdatedProps>,
             props,
         );
+
+        const resolvedTime = time ?? dayjs().valueOf();
 
         const getStyles = useStyles<LastUpdatedFactory>({
             name: 'LastUpdated',
@@ -56,7 +67,7 @@ export const LastUpdated = factory<LastUpdatedFactory>(
             >
                 <Text size="xs" {...getStyles('label', {className, style, ...stylesApiProps})}>
                     {label}
-                    <span role="timer">{dayjs(time).format('h:mm:ss A')}</span>
+                    <span role="timer">{formatter(resolvedTime)}</span>
                 </Text>
             </Group>
         );

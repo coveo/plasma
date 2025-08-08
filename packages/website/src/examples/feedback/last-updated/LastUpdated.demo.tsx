@@ -1,7 +1,4 @@
 import {LastUpdated} from '@coveord/plasma-mantine';
 
-const Demo = () => {
-    const date = new Date();
-    return <LastUpdated time={date} />;
-};
+const Demo = () => <LastUpdated />;
 export default Demo;
