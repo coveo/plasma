@@ -56,7 +56,7 @@ import {
     Tooltip,
 } from '@mantine/core';
 import {TimeInput} from '@mantine/dates';
-import {CheckboxIcon, CircleLoader, InfoToken, Accordion} from '../components';
+import {Accordion, CheckboxIcon, CircleLoader, InfoToken} from '../components';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -77,6 +77,7 @@ import NumberInputClasses from '../styles/NumberInput.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
 import PaperClasses from '../styles/Paper.module.css';
 import PillClasses from '../styles/Pill.module.css';
+import PopoverClasses from '../styles/Popover.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import RadioCardClasses from '../styles/RadioCard.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
@@ -381,9 +382,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: PillClasses,
         }),
         Popover: Popover.extend({
+            classNames: PopoverClasses,
             defaultProps: {
-                shadow: 'xs',
                 middlewares: {inline: true},
+                position: 'bottom-start',
             },
         }),
         Radio: Radio.extend({
