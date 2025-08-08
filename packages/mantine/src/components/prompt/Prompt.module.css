@@ -1,5 +1,5 @@
 .root {
-    --prompt-icon-size: 68px;
+    --prompt-icon-size: 32px;
 }
 
 .body {
@@ -12,10 +12,7 @@
 }
 
 .header {
-    gap: var(--mantine-spacing-md);
-    width: 100%;
-    overflow-wrap: anywhere;
-    padding: var(--mantine-spacing-lg) var(--mantine-spacing-md) var(--mantine-spacing-xs) var(--mantine-spacing-lg);
+    gap: var(--mantine-spacing-sm);
 }
 
 .inner {
