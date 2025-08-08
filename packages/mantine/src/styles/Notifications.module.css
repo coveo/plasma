@@ -31,3 +31,7 @@
         color: var(--mantine-color-gray-2);
     }
 }
+
+.icon {
+    margin-inline-end: var(--mantine-spacing-xs);
+}
