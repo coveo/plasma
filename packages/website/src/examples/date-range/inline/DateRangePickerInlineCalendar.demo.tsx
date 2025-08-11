@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import {useState} from 'react';
 
 const Demo = () => {
-    const [range, setRange] = useState<DatesRangeValue<DateStringValue | null>>([null, null]);
+    const [_range, setRange] = useState<DatesRangeValue<DateStringValue | null>>([null, null]);
     const onCancel = () => console.log('Cancel');
 
     return (
