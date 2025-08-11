@@ -1,3 +1,10 @@
+## <small>55.7.2-next.45 (2025-08-11)</small>
+
+* Ad UI 10705 apply change to toast (#4130) 0a2fec9, closes #4130
+* feat(mantine,prompt): change prompt icons (#4131) 55b586f, closes #4131
+
+
+
 ## <small>55.7.2-next.44 (2025-08-11)</small>
 
 * feat(mantine): new LastUpdated component (#4128) 912e912, closes #4128
