@@ -56,7 +56,7 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
-import {DateInput, PickerInputBase, TimeInput} from '@mantine/dates';
+import {DateInput, DatePicker, MonthPicker, PickerInputBase, TimeInput, TimePicker, YearPicker} from '@mantine/dates';
 import {Accordion, CheckboxIcon, CircleLoader, InfoToken} from '../components';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
@@ -69,10 +69,12 @@ import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ChipClasses from '../styles/Chip.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
+import DatePickerClasses from '../styles/DatePicker.module.css';
 import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
 import ModalClasses from '../styles/Modal.module.css';
+import MonthPickerClasses from '../styles/MonthPicker.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
 import NumberInputClasses from '../styles/NumberInput.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
@@ -92,7 +94,9 @@ import StepperClasses from '../styles/Stepper.module.css';
 import TableClasses from '../styles/Table.module.css';
 import TabsClasses from '../styles/Tabs.module.css';
 import TextClasses from '../styles/Text.module.css';
+import TimePickerClasses from '../styles/TimePicker.module.css';
 import TooltipClasses from '../styles/Tooltip.module.css';
+import YearPickerClasses from '../styles/YearPicker.module.css';
 import {PlasmaColors} from './PlasmaColors';
 
 import placeholderSvg from '../images/placeholder.svg';
@@ -266,6 +270,15 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 rightSection: <FilterSize16Px height={16} color="gray.5" />,
             },
         }),
+        DateInput: DateInput.extend({
+            defaultProps: {
+                miw: 250,
+                leftSection: <IconCalendarWeek size={16} />,
+            },
+        }),
+        DatePicker: DatePicker.extend({
+            classNames: DatePickerClasses,
+        }),
         Divider: Divider.extend({
             defaultProps: {
                 color: 'var(--mantine-color-default-border)',
@@ -360,6 +373,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 padding: 'lg',
             },
         }),
+        MonthPicker: MonthPicker.extend({
+            classNames: MonthPickerClasses,
+        }),
         MultiSelect: MultiSelect.extend({defaultProps: {hidePickedOptions: true}}),
         NavLink: NavLink.extend({classNames: NavLinkClasses}),
         Notification: Notification.extend({
@@ -381,12 +397,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: PaperClasses,
         }),
         PickerInputBase: PickerInputBase.extend({
-            defaultProps: {
-                miw: 250,
-                leftSection: <IconCalendarWeek size={16} />,
-            },
-        }),
-        DateInput: DateInput.extend({
             defaultProps: {
                 miw: 250,
                 leftSection: <IconCalendarWeek size={16} />,
@@ -498,6 +508,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 rightSection: <IconClock size={16} />,
             },
         }),
+        TimePicker: TimePicker.extend({
+            defaultProps: {
+                withDropdown: true,
+                format: '12h',
+            },
+            classNames: TimePickerClasses,
+        }),
         Tooltip: Tooltip.extend({
             defaultProps: {
                 maw: 280,
@@ -507,6 +524,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 color: PlasmaColors.violet[9],
             },
             classNames: TooltipClasses,
+        }),
+        YearPicker: YearPicker.extend({
+            classNames: YearPickerClasses,
         }),
     },
 });

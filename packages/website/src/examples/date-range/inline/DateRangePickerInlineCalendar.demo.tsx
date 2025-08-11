@@ -9,7 +9,6 @@ const Demo = () => {
 
     return (
         <DateRangePickerInlineCalendar
-            // initialRange={range}
             onApply={setRange}
             onCancel={onCancel}
             presets={{
