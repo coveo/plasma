@@ -74,6 +74,7 @@ const Demo = () => {
                 <Table.PerPage />
                 <Table.Pagination />
             </Table.Footer>
+            <Table.LastUpdated />
         </Table>
     );
 };

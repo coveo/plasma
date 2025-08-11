@@ -76,6 +76,7 @@ export const Navigation = () => (
             <InternalNavLink to="/feedback/Alert" label="Alert" />
             <InternalNavLink to="/feedback/Badge" label="Badge" />
             <InternalNavLink to="/feedback/InfoToken" label="InfoToken" />
+            <InternalNavLink to="/feedback/LastUpdated" label="Last updated" />
         </NavLink>
         <NavLink label="Mantine" leftSection={<Image src={MantineLogo} height={16} />} defaultOpened>
             {Object.keys(mantinePages).map((filePath) => {
