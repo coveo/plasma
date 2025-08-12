@@ -2,6 +2,7 @@
     "compilerOptions": {
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
+        "esModuleInterop": true,
         "target": "ESNext",
         "jsx": "react-jsx",
         "lib": ["ESNext", "DOM"],
@@ -15,7 +16,8 @@
 
         "composite": true,
         "strict": true,
-        "strictNullChecks": false
+        "strictNullChecks": false,
+        "skipLibCheck": true
     },
     "include": ["${configDir}/src"],
     "exclude": ["${configDir}/dist", "${configDir}/node_modules"]

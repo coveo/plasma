@@ -20,7 +20,6 @@
     "author": "Coveo",
     "exports": {
         ".": {
-            "types": "./dist/definitions/index.d.ts",
             "require": "./dist/cjs/index.js",
             "import": "./dist/esm/index.js"
         }

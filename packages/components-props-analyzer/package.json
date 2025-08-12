@@ -8,11 +8,12 @@
     "author": "Coveo",
     "exports": {
         ".": {
-            "types": "./dist/definitions/index.d.ts",
             "require": "./dist/cjs/index.js",
             "import": "./dist/esm/index.js"
         }
     },
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
     "scripts": {
         "build": "pnpm gen:props && pnpm prettify && pnpm compile",
         "clean": "rimraf dist",
