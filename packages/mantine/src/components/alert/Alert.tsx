@@ -1,7 +1,32 @@
-import {Alert} from '@mantine/core';
+import {
+    AlertCssVariables,
+    AlertProps,
+    AlertStylesNames,
+    AlertVariant,
+    Factory,
+    Alert as MantineAlert,
+    polymorphicFactory,
+} from '@mantine/core';
 import {InfoToken} from '../info-token/InfoToken';
 
-export const AlertInformation = Alert.withProps({
+type AlertOverloadFactory = Factory<{
+    props: AlertProps;
+    defaultRef: HTMLDivElement;
+    defaultComponent: 'div';
+    stylesNames: AlertStylesNames;
+    vars: AlertCssVariables;
+    variant: AlertVariant;
+    staticComponents: {
+        Information: typeof AlertInformation;
+        Advice: typeof AlertAdvice;
+        Warning: typeof AlertWarning;
+        Critical: typeof AlertCritical;
+    };
+}>;
+
+export const Alert = polymorphicFactory<AlertOverloadFactory>((props, ref) => <MantineAlert {...props} ref={ref} />);
+
+const AlertInformation = Alert.withProps({
     color: 'gray',
     icon: <InfoToken variant="information" />,
     vars: () => ({
@@ -11,11 +36,8 @@ export const AlertInformation = Alert.withProps({
         },
     }),
 });
-/**
- * @deprecated use AlertInformation instead
- */
-export const AlertTip = AlertInformation;
-export const AlertAdvice = Alert.withProps({
+
+const AlertAdvice = Alert.withProps({
     icon: <InfoToken variant="advice" />,
     vars: () => ({
         root: {
@@ -24,11 +46,8 @@ export const AlertAdvice = Alert.withProps({
         },
     }),
 });
-/**
- * @deprecated use AlertAdvice instead
- */
-export const AlertSuccess = AlertAdvice;
-export const AlertWarning = Alert.withProps({
+
+const AlertWarning = Alert.withProps({
     color: 'warning',
     icon: <InfoToken variant="warning" />,
     vars: () => ({
@@ -38,7 +57,7 @@ export const AlertWarning = Alert.withProps({
         },
     }),
 });
-export const AlertCritical = Alert.withProps({
+const AlertCritical = Alert.withProps({
     icon: <InfoToken variant="error" />,
     vars: () => ({
         root: {
@@ -47,3 +66,8 @@ export const AlertCritical = Alert.withProps({
         },
     }),
 });
+
+Alert.Information = AlertInformation;
+Alert.Advice = AlertAdvice;
+Alert.Warning = AlertWarning;
+Alert.Critical = AlertCritical;
