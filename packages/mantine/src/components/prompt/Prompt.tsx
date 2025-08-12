@@ -10,7 +10,7 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {Children, ReactElement, ReactNode} from 'react';
+import {Children, ReactNode} from 'react';
 import {Modal} from '../modal';
 import Critical from './icons/critical.svg';
 import Info from './icons/info.svg';
@@ -91,11 +91,14 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     });
     const stylesApiProps = {classNames, styles};
 
-    const footers: ReactElement[] = [];
-    const otherChildren: ReactElement[] = [];
+    const footers: ReactNode[] = [];
+    const otherChildren: ReactNode[] = [];
 
-    Children.forEach(children, (child: ReactElement) => {
-        (child.type === Modal.Footer ? footers : otherChildren).push(child);
+    Children.forEach(children, (child: ReactNode) => {
+        (typeof child === 'object' && child !== null && 'type' in child && child.type === Modal.Footer
+            ? footers
+            : otherChildren
+        ).push(child);
     });
 
     return (

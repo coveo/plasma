@@ -39,7 +39,7 @@ beforeAll(() => {
         advanceTimersByTime: vi.advanceTimersByTime.bind(vi),
     };
 
-    return () => void ((globalThis as any).jest = _jest);
+    return (): unknown => void ((globalThis as any).jest = _jest);
 });
 
 afterEach(() => {

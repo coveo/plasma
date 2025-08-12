@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const {spawn} = require('child_process');
 const path = require('path');
-const {existsSync, writeFileSync} = require('node:fs');
+const {writeFileSync} = require('node:fs');
 process.on('unhandledRejection', (err) => {
     throw err;
 });
@@ -21,12 +21,17 @@ const onExit = (childProcess) =>
 const build = async ({watch = false}) => {
     // compile with swc and tsc
     try {
-        const tscArgs = ['--emitDeclarationOnly'];
-        if (existsSync('./tsconfig.build.json')) {
-            tscArgs.push('--project', './tsconfig.build.json');
-        }
+        const tscArgs = [];
         const tscESMArgs = [...tscArgs, '--declarationDir', './dist/esm'];
-        const tscCJSArgs = [...tscArgs, '--declarationDir', './dist/cjs', '--target', 'es5', '--module', 'commonjs'];
+        const tscCJSArgs = [
+            ...tscArgs,
+            '--declarationDir',
+            './dist/cjs',
+            '--module',
+            'commonjs',
+            '--moduleResolution',
+            'node',
+        ];
         const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
 
         if (watch) {

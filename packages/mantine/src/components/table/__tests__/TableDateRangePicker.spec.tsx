@@ -59,7 +59,7 @@ describe('Table.DateRangePicker', () => {
 
         it('initially selects the specified date range from in the url', async () => {
             window.history.replaceState(null, '', '?from=2022-01-02T00%3A00%3A00.000Z&to=2022-01-08T23%3A59%3A59.999Z');
-            const user = userEvent.setup();
+            userEvent.setup();
             const Fixture = () => {
                 const store = useTable<RowData>({
                     initialState: {dateRange: [new Date(2022, 0, 1), new Date(2022, 0, 7)]},

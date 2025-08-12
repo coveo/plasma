@@ -16,7 +16,6 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {ReorderPayload} from '@mantine/form/lib/types';
 import {useDidUpdate} from '@mantine/hooks';
 import {ForwardedRef, ReactNode} from 'react';
 
@@ -26,7 +25,7 @@ import classes from './Collection.module.css';
 import {CollectionProvider} from './CollectionContext';
 import {CollectionItem} from './CollectionItem';
 
-export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiProps<CollectionFactory> {
+export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiProps<CollectionFactory<T>> {
     /**
      * The default value each new item should have
      */
@@ -75,7 +74,7 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
      *
      * @param payload The origin and destination index of the item to reorder
      */
-    onReorderItem?: (payload: ReorderPayload) => void;
+    onReorderItem?: (payload: {from: number; to: number}) => void;
     /**
      * Function that gets called when a new item needs to be added to the collection
      *
@@ -136,8 +135,8 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
 
 export type CollectionStylesNames = 'root' | 'item' | 'itemDragging' | 'dragHandle';
 
-export type CollectionFactory = Factory<{
-    props: CollectionProps<unknown>;
+export type CollectionFactory<T> = Factory<{
+    props: CollectionProps<T>;
     ref: HTMLDivElement;
     stylesNames: CollectionStylesNames;
 }>;
@@ -153,7 +152,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     getItemId: ({id}: any) => id,
 };
 
-export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
+export const Collection = <T extends unknown>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
         value,
         onChange,
@@ -189,7 +188,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         ...others
     } = useProps('Collection', defaultProps as CollectionProps<T>, props);
 
-    const getStyles = useStyles<CollectionFactory>({
+    const getStyles = useStyles<CollectionFactory<T>>({
         name: 'Collection',
         classes,
         props,
@@ -303,4 +302,4 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     );
 };
 
-Collection.extend = identity as CustomComponentThemeExtend<CollectionFactory>;
+Collection.extend = identity as CustomComponentThemeExtend<CollectionFactory<unknown>>;

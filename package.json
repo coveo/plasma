@@ -5,6 +5,7 @@
     "scripts": {
         "build": "turbo run build",
         "clean": "pnpm --recursive --parallel clean",
+        "clean:dist": "rimraf --glob **/.turbo packages/*/dist",
         "commit-cli": "cz",
         "preinstall": "npx only-allow pnpm",
         "lintfix": "pnpm --recursive --parallel lintfix",
@@ -71,6 +72,7 @@
         "mime-types": "2.1.35",
         "postcss": "8.5.3",
         "prettier": "3.5.3",
+        "rimraf": "6.0.1",
         "sort-package-json": "3.0.0",
         "stylelint": "16.17.0",
         "stylelint-config-standard-scss": "14.0.0",

@@ -3,6 +3,7 @@ import {defineConfig} from 'vitest/config';
 
 export default defineConfig({
     resolve: {
+        mainFields: ['main', 'module'], // this is needed for Vitest to be able to load the monaco-editor package correctly
         alias: [
             {
                 find: '@test-utils',
@@ -14,11 +15,5 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         setupFiles: './src/__tests__/VitestSetup.ts',
-        alias: [
-            {
-                find: /^monaco-editor$/,
-                replacement: 'monaco-editor/esm/vs/editor/editor.main.js',
-            },
-        ],
     },
 });
