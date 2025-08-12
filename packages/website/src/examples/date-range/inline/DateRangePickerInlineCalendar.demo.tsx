@@ -4,11 +4,12 @@ import dayjs from 'dayjs';
 import {useState} from 'react';
 
 const Demo = () => {
-    const [_range, setRange] = useState<DatesRangeValue<DateStringValue | null>>([null, null]);
+    const [range, setRange] = useState<DatesRangeValue<DateStringValue | null>>([null, null]);
     const onCancel = () => console.log('Cancel');
 
     return (
         <DateRangePickerInlineCalendar
+            initialRange={range}
             onApply={setRange}
             onCancel={onCancel}
             presets={{
@@ -21,8 +22,6 @@ const Demo = () => {
                     range: [dayjs().startOf('month').toISOString(), dayjs().endOf('month').toISOString()],
                 },
             }}
-            initialRange={[dayjs('04-11-2025').toISOString(), dayjs('04-15-2025').toISOString()]}
-            rangeCalendarProps={{defaultDate: dayjs('04-11-2025').toISOString()}}
         />
     );
 };
