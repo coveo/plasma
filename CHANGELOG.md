@@ -1,3 +1,11 @@
+## <small>55.7.2-next.46 (2025-08-12)</small>
+
+* Merge branch 'next' of github.com:coveo/plasma into next 32263fc
+* fix(button): make outline variant work again 112222a
+* feat(calendar): playing around for style change (#4132) 160092d, closes #4132
+
+
+
 ## <small>55.7.2-next.45 (2025-08-11)</small>
 
 * Ad UI 10705 apply change to toast (#4130) 0a2fec9, closes #4130
