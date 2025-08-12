@@ -17,6 +17,7 @@ export * from './ellipsis-text';
 export * from './header';
 export * from './info-token';
 export * from './inline-confirm';
+export * from './last-updated';
 export * from './loader';
 export * from './menu';
 export * from './modal';

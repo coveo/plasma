@@ -1,3 +1,18 @@
+## <small>55.7.2-next.45 (2025-08-11)</small>
+
+* Ad UI 10705 apply change to toast (#4130) 0a2fec9, closes #4130
+* feat(mantine,prompt): change prompt icons (#4131) 55b586f, closes #4131
+
+
+
+## <small>55.7.2-next.44 (2025-08-11)</small>
+
+* feat(mantine): new LastUpdated component (#4128) 912e912, closes #4128
+* feat(popover): +shadow,+padding,+radius,+position of popover (#4120) 4a79d71, closes #4120
+* feat(website): +css variables list in plasma website (#4124) 29d17a8, closes #4124
+
+
+
 ## <small>55.7.2-next.43 (2025-08-07)</small>
 
 * feat(mantine,accordion): update accordion style (#4127) a2527af, closes #4127
