@@ -14,18 +14,18 @@ import {
 import {Children, ElementType, ReactElement, ReactNode} from 'react';
 import {HeaderProvider} from './Header.context';
 import classes from './Header.module.css';
-import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight';
-import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
-import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
 import {
     HeaderBreadcrumbAnchor,
     type HeaderBreadcrumbAnchorStyleNames,
 } from './HeaderBreadcrumbs/HeaderBreadcrumbAnchor';
+import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 import {HeaderBreadcrumbText, HeaderBreadcrumbTextStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbText';
+import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
+import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight';
 
-export type {HeaderRightProps} from './HeaderRight/HeaderRight';
 export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor';
+export type {HeaderRightProps} from './HeaderRight/HeaderRight';
 
 export type HeaderVariant = 'primary' | 'secondary';
 export type HeaderStyleNames =
@@ -163,7 +163,3 @@ Header.BreadcrumbAnchor = HeaderBreadcrumbAnchor;
 Header.BreadcrumbText = HeaderBreadcrumbText;
 Header.Right = HeaderRight;
 Header.DocAnchor = HeaderDocAnchor;
-/**
- * @deprecated use Header.Right instead
- */
-Header.Actions = HeaderRight;
