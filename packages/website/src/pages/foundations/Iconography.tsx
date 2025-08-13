@@ -1,5 +1,5 @@
+import {Accordion, Alert, Anchor, Code, InfoToken, Stack, Text} from '@coveord/plasma-mantine';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
-import {Accordion, AlertAdvice, AlertWarning, Anchor, Code, InfoToken, Stack, Text} from '@coveord/plasma-mantine';
 import IconographyDemo from '@examples/foundations/Iconography/Iconography.demo?demo';
 import {Fragment, FunctionComponent} from 'react';
 
@@ -196,7 +196,7 @@ export const IconographyExamples = () => (
         demo={<IconographyDemo center />}
         withPropsTable={false}
     >
-        <AlertAdvice title="Prefer Tabler Icons">
+        <Alert.Advice title="Prefer Tabler Icons">
             <Text>
                 We use the <Code>@tabler/react-icons</Code> library for our icons. You can consult the full list of
                 icons on{' '}
@@ -205,16 +205,16 @@ export const IconographyExamples = () => (
                 </Anchor>
                 .
             </Text>
-        </AlertAdvice>
+        </Alert.Advice>
         <Accordion variant="contained">
             <Accordion.Item value="plasma-icons">
                 <Accordion.Control icon={<InfoToken variant="information" />}>In-house icons</Accordion.Control>
                 <Accordion.Panel>
                     <Stack>
-                        <AlertWarning title="Deprecated">
+                        <Alert.Warning title="Deprecated">
                             The icons in this list are deprected in favor of Tabler Icons. Only use the in-house icons
                             if no icons in tabler fits your needs.
-                        </AlertWarning>
+                        </Alert.Warning>
                         <PlasmaIconsTable />
                     </Stack>
                 </Accordion.Panel>

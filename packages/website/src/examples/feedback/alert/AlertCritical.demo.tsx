@@ -1,9 +1,9 @@
-import {AlertCritical} from '@coveord/plasma-mantine';
+import {Alert} from '@coveord/plasma-mantine';
 
 const Demo = () => (
-    <AlertCritical title="Bummer!" withCloseButton>
+    <Alert.Critical title="Bummer!" withCloseButton>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
-    </AlertCritical>
+    </Alert.Critical>
 );
 export default Demo;

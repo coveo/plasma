@@ -18,6 +18,7 @@ export {noop};
 export {
     Accordion,
     ActionIcon,
+    Alert,
     Badge,
     BrowserPreview,
     Button,
