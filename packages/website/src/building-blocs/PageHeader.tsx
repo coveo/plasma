@@ -29,7 +29,7 @@ export const PageHeader: FunctionComponent<PageHeaderProps> = ({
             <Text c="dimmed">{section}</Text>
         </Header.Breadcrumbs>
         <span data-coveo-field="title">{title}</span>
-        <Header.Actions>
+        <Header.Right>
             <Stack gap="sm" align="flex-end">
                 {sourcePath && (
                     <GithubButton
@@ -43,6 +43,6 @@ export const PageHeader: FunctionComponent<PageHeaderProps> = ({
                     <Tile thumbnail={thumbnail} />
                 </Box>
             </Stack>
-        </Header.Actions>
+        </Header.Right>
     </Header>
 );

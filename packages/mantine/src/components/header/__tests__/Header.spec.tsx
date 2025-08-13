@@ -98,19 +98,4 @@ describe('Header', () => {
         expect(screen.getByText('action 1')).toBeInTheDocument();
         expect(screen.getByText('action 2')).toBeInTheDocument();
     });
-
-    it('renders provided components in Header.Right when called as Header.Actions', () => {
-        render(
-            <Header>
-                title
-                <Header.Actions>
-                    <span>action 1</span>
-                    <span>action 2</span>
-                </Header.Actions>
-            </Header>,
-        );
-
-        expect(screen.getByText('action 1')).toBeInTheDocument();
-        expect(screen.getByText('action 2')).toBeInTheDocument();
-    });
 });
