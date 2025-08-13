@@ -1,3 +1,11 @@
+## <small>55.7.2-next.47 (2025-08-13)</small>
+
+* fix(mantine): remove min width on Input 3141cf8
+* feat(header)!: remove deprecated header action (#4134) f590af7, closes #4134
+* fix(alert)!: change the naming convention of the alert component, removed deprecated variant (#4133) 9fa0c6f, closes #4133
+
+
+
 ## <small>55.7.2-next.46 (2025-08-12)</small>
 
 * Merge branch 'next' of github.com:coveo/plasma into next 32263fc
