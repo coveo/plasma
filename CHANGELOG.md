@@ -1,3 +1,9 @@
+## <small>55.7.2-next.48 (2025-08-13)</small>
+
+* fix(mantine): remove Header.Actions from type 47ee45d
+
+
+
 ## <small>55.7.2-next.47 (2025-08-13)</small>
 
 * fix(mantine): remove min width on Input 3141cf8
