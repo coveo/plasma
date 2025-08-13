@@ -82,10 +82,6 @@ export type HeaderFactory = Factory<{
         BreadcrumbText: typeof HeaderBreadcrumbText;
         Right: typeof HeaderRight;
         DocAnchor: typeof HeaderDocAnchor;
-        /**
-         * @deprecated use Header.Right instead
-         */
-        Actions: typeof HeaderRight;
     };
 }>;
 
