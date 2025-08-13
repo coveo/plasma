@@ -292,7 +292,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Input: Input.extend({
             defaultProps: {
                 size: 'sm',
-                miw: 250,
             },
             classNames: (_theme, props) => {
                 const anyProps = props as any;
