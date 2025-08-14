@@ -1,3 +1,9 @@
+## <small>55.7.2-next.49 (2025-08-14)</small>
+
+* fix(card): fix css condition on data-disabled 86e1c8f
+
+
+
 ## <small>55.7.2-next.48 (2025-08-13)</small>
 
 * fix(mantine): remove Header.Actions from type 47ee45d
