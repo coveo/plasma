@@ -16,7 +16,7 @@
         }
     }
 
-    &[data-disabled] {
+    &[data-disabled='true'] {
         pointer-events: none;
     }
 }
