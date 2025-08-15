@@ -33,7 +33,11 @@ const Demo = () => {
                         placeholder="Do something ..."
                         {...form.getInputProps(`todoList.${index}.name`)}
                     />
-                    <Checkbox {...form.getInputProps(`todoList.${index}.done`, {type: 'checkbox'})} />
+                    <Checkbox
+                        label="Done"
+                        {...form.getInputProps(`todoList.${index}.done`, {type: 'checkbox'})}
+                        style={{alignSelf: 'center'}}
+                    />
                 </>
             )}
         </Collection>

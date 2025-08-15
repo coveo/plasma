@@ -1,0 +1,23 @@
+.track:not([data-inverted]) {
+    &::before {
+        background-color: var(--mantine-color-gray-light);
+    }
+}
+
+.mark:not([data-filled]) {
+    border-color: var(--mantine-color-gray-light);
+}
+
+.track .markLabel {
+    color: var(--mantine-color-text);
+}
+
+.track[data-disabled] .markLabel {
+    color: var(--coveo-color-text-disabled);
+}
+
+.bar {
+    &:where([data-disabled]) {
+        background-color: var(--coveo-color-input-border);
+    }
+}

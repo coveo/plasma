@@ -1,7 +1,275 @@
-## <small>55.8.1 (2025-07-11)</small>
+## <small>55.7.2-next.49 (2025-08-14)</small>
 
+* fix(card): fix css condition on data-disabled 86e1c8f
+
+
+
+## <small>55.7.2-next.48 (2025-08-13)</small>
+
+* fix(mantine): remove Header.Actions from type 47ee45d
+
+
+
+## <small>55.7.2-next.47 (2025-08-13)</small>
+
+* fix(mantine): remove min width on Input 3141cf8
+* feat(header)!: remove deprecated header action (#4134) f590af7, closes #4134
+* fix(alert)!: change the naming convention of the alert component, removed deprecated variant (#4133) 9fa0c6f, closes #4133
+
+
+
+## <small>55.7.2-next.46 (2025-08-12)</small>
+
+* Merge branch 'next' of github.com:coveo/plasma into next 32263fc
+* fix(button): make outline variant work again 112222a
+* feat(calendar): playing around for style change (#4132) 160092d, closes #4132
+
+
+
+## <small>55.7.2-next.45 (2025-08-11)</small>
+
+* Ad UI 10705 apply change to toast (#4130) 0a2fec9, closes #4130
+* feat(mantine,prompt): change prompt icons (#4131) 55b586f, closes #4131
+
+
+
+## <small>55.7.2-next.44 (2025-08-11)</small>
+
+* feat(mantine): new LastUpdated component (#4128) 912e912, closes #4128
+* feat(popover): +shadow,+padding,+radius,+position of popover (#4120) 4a79d71, closes #4120
+* feat(website): +css variables list in plasma website (#4124) 29d17a8, closes #4124
+
+
+
+## <small>55.7.2-next.43 (2025-08-07)</small>
+
+* feat(mantine,accordion): update accordion style (#4127) a2527af, closes #4127
+* feat(mantine,breadcrum): update header breadcrumb implementation (#4126) fcb38c9, closes #4126
+* feat(mantine,browserpreview): update style (#4122) 7595185, closes #4122
+* feat(mantine,button): update Button & ActionIcon style (#4119) fd10819, closes #4119
+* feat(mantine,card): create card variant hover and selected state (#4123) f97e1e4, closes #4123
+* feat(mantine,codeeditor): update style (#4125) c49c7b5, closes #4125
+* feat(skeleton): change background-color (#4121) af96d40, closes #4121
+
+
+
+## <small>55.7.2-next.42 (2025-07-30)</small>
+
+* feat(childform): adjust background and border thickness of childform (#4085) ef1e214, closes #4085
+
+
+
+## <small>55.7.2-next.41 (2025-07-29)</small>
+
+* feat(mantine,collection): apply style changes (#4116) b8750cc, closes #4116
+* feat(mantine,tabs): apply style changes (#4118) e9262fd, closes #4118
+
+
+
+## <small>55.7.2-next.40 (2025-07-29)</small>
+
+* feat: implement semantic badges components (#4101) dba5584, closes #4101
+* feat(chip): fix chip group error (#4088) 741558a, closes #4088
+* feat(infotoken): apply style changes (#4110) 7c9d318, closes #4110
+* feat(mantine): update demo button type (#4109) 2d08100, closes #4109
+* feat(multiselect): change pill text color, revert gap inputwrapper (#4117) 3866312, closes #4117
+* Ad UI 10704 apply style changes to radio card (#4115) 935b7f2, closes #4115
+* Ad UI 10888 style changes number text time input (#4114) 1867319, closes #4114
+* feat(mantine,header): update doc anchor icon (#4111) 635c2a2, closes #4111
+
+
+
+## <small>55.7.2-next.39 (2025-07-18)</small>
+
+* fix(mantine,navlink): reduce style specificity (#4108) 7a91693, closes #4108
+* feat(radio): adjust newly added style to radio component (#4104) 6b43daf, closes #4104
+
+
+
+## <small>55.7.2-next.38 (2025-07-18)</small>
+
+* Ad UI 10702 apply style changes to nav link (#4099) fb2e3e9, closes #4099
+* Ad UI 10883 select style changes (#4103) cbddabd, closes #4103
+* Ad UI 10887 apply style changes to checkbox (#4106) e2266af, closes #4106
+* fix(mantine,codeeditor): adjust height (#4105) 2e4994f, closes #4105
+* feat(mantine): changed newly added variables with hardcoded ones (#4092) 8579db6, closes #4092
+* feat(mantine): updated input font-size (#4107) fa25253, closes #4107
+* feat(pagination): +style change for pagination (#4102) 55cd318, closes #4102
+
+
+
+## <small>55.7.2-next.37 (2025-07-14)</small>
+
+* fix(mantine): disable menu item links properly (#4100) 5befae4, closes #4100
+
+
+
+## <small>55.7.2-next.36 (2025-07-10)</small>
+
+* fix(mantine,header): header secondary order (#4098) b0209b6, closes #4098
+* Merge branch 'master' of github.com:coveo/plasma into next 1515f0b
+* Merge branch 'next' of github.com:coveo/plasma into next 098b177
 * chore(deps): update actions/setup-node digest to 49933ea (#4047) 74afdeb, closes #4047
 * chore(deps): update dependency vite to v6.2.7 [security] (#4038) 18dee73, closes #4038
+
+
+
+## <small>55.7.2-next.35 (2025-07-09)</small>
+
+* fix(mantine,modal): make description a react node (#4097) b924b72, closes #4097
+* feat(mantine): apply pill style changes (#4093) f14c8ee, closes #4093
+* feat(mantine): update slider look (#4091) c4648bf, closes #4091
+
+
+
+## <small>55.7.2-next.34 (2025-07-08)</small>
+
+* fix(mantine): export extended modal props (#4096) ffb76b3, closes #4096
+* feat(mantine): update Tooltip style (#4094) 978d65f, closes #4094
+* Ad UI 10790 move app background css variable in plasma theme (#4095) 8287935, closes #4095
+
+
+
+## <small>55.7.2-next.33 (2025-07-08)</small>
+
+* feat(mantine): simplify modal usage (#4082) aa1b280, closes #4082
+
+
+
+## <small>55.7.2-next.32 (2025-07-07)</small>
+
+* feat(mantine): change font styles (#4090) 22b652a, closes #4090
+* fix(table-action-item): use overridden MenuItem component (#4084) f61e189, closes #4084
+* fix(website): fix code snippet syntax highlighting (#4089) 2370aa2, closes #4089
+
+
+
+## <small>55.7.2-next.31 (2025-07-03)</small>
+
+* fix(datetimepicker): the preselect presets in the datetimepicker component in plasma is not working  7ea7ab8, closes #4087
+* fix(mantine): disable CodeEditor stickyScroll (#4086) c4f7a13, closes #4086
+* feat(mantine): add default image fallback (#4083) c868640, closes #4083
+
+
+
+## <small>55.7.2-next.30 (2025-07-02)</small>
+
+* feat(datetimerangepicker): create the DateTimeRangePicker component (#4081) 5eb8115, closes #4081
+* feat(mantine): update Stepper look (#4080) a916aec, closes #4080
+* feat(variables): create CSS variables for font-weight (#4079) 4af9126, closes #4079
+
+
+
+## <small>55.7.2-next.29 (2025-06-23)</small>
+
+* feat(mantine8): +inline true for popover and combobox middleware (#4078) 7f12b0b, closes #4078
+* Ad UI 10695 segmented control style changes (#4075) deb80f8, closes #4075
+* feat(mantine,theme): change text selection color (#4077) 772a32e, closes #4077
+
+
+
+## <small>55.7.2-next.28 (2025-06-17)</small>
+
+* Ad UI 10500 mantine 8 bump improvements (#4076) af4daba, closes #4076
+
+
+
+## <small>55.7.2-next.27 (2025-06-16)</small>
+
+* feat(mantine)!: bump mantine, fix type and tests (#4074) 4ab472a, closes #4074
+
+
+
+## <small>55.7.2-next.26 (2025-06-11)</small>
+
+* fix(mantine): gray-light and gray-light-hover transparency (#4072) dd363ad, closes #4072
+* Ad UI 10500 bump mantine 8 (#4070) 02ce1b3, closes #4070
+
+
+
+## <small>55.7.2-next.25 (2025-06-06)</small>
+
+* feat(mantine, tabs): update the style (#4071) 0b4c888, closes #4071
+
+
+
+## <small>55.7.2-next.24 (2025-05-29)</small>
+
+* Fix/ua 10229 fix get item id on collection component (#4069) ee5236c, closes #4069
+
+
+
+## <small>55.7.2-next.23 (2025-05-27)</small>
+
+* fix(mantine): adjust table selected row bg color (#4068) 156f82f, closes #4068
+* Ad UI 10593 apply style radio (#4058) 1220649, closes #4058
+* Ad UI 10596 apply style changes select (#4062) bb4caaa, closes #4062
+* feat(mantine, loader): custom loader to match figma (#4060) e8a2111, closes #4060
+* feat(collection): add-data-testid-param-to-collection (#4061) fefed55, closes #4061
+* feat(mantine): update CodeEditor look (#4059) 35bb241, closes #4059
+* feat(mantine): update style of checkbox (#4057) 01ec538, closes #4057
+* feat(pagination): +active-bg +active-color (#4056) 2f715e3, closes #4056
+
+
+
+## <small>55.7.2-next.22 (2025-04-24)</small>
+
+* fix(mantine, badge): font-size and text-transform (#4055) ee34551, closes #4055
+
+
+
+## <small>55.7.2-next.21 (2025-04-17)</small>
+
+* feat(mantine, action icon): apply style changes and create semantic components (#4053) a91accb, closes #4053
+
+
+
+## <small>55.7.2-next.20 (2025-04-16)</small>
+
+* feat(mantine, button): update style (#4052) de3eba4, closes #4052
+* feat(mantine, modal): update overlay style (#4051) 5023f4f, closes #4051
+
+
+
+## <small>55.7.2-next.19 (2025-04-15)</small>
+
+* feat(mantine): improve CopyToClipboard component (#4050) 5a5bbfe, closes #4050
+
+
+
+## <small>55.7.2-next.18 (2025-04-14)</small>
+
+* fix(mantine): revert header variant removal on root node 207b9ae
+
+
+
+## <small>55.7.2-next.17 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name second try 810e709
+
+
+
+## <small>55.7.2-next.16 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name (#4049) 7abbf7a, closes #4049
+* fix(mantine, input): only add margin top if there's a title or description (#4048) 6d6b58a, closes #4048
+
+
+
+## <small>55.7.2-next.15 (2025-04-14)</small>
+
+* feat(react-icons): reexport tabler icons (#4045) 889df29, closes #4045
+* chore(mantine, input): update the style of the input and input wrapper (#4046) 4c37039, closes #4046
+
+
+
+## <small>55.7.2-next.14 (2025-04-11)</small>
+
+* fix(mantine, prompt): automatically add the Header if the title is a string (#4044) 029b6e6, closes #4044
+* Merge branch 'master' of github.com:coveo/plasma into next 60ab942
+* chore(deps): update all non-major dependencies (#4029) 659172f, closes #4029
+* chore(release): publish version v55.8.0 [skip ci] b14864b
+* feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043
 
 
 

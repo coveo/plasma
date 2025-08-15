@@ -1,21 +1,12 @@
 .root {
-    box-shadow: var(--mantine-shadow-md);
-    border-radius: var(--mantine-radius-default);
+    border-radius: var(--mantine-radius-lg);
     border: 1px solid;
-    border-color: var(--mantine-color-gray-3);
+    border-color: var(--mantine-color-default-border);
     flex: 1;
-}
-
-.header {
-    box-shadow: var(--mantine-shadow-xs);
-    border-radius: var(--mantine-radius-default) var(--mantine-radius-default) 0 0;
+    overflow: hidden;
 }
 
 .content {
     overflow: auto;
     flex-grow: 1;
-}
-
-.infoIcon {
-    color: var(--mantine-color-gray-5);
 }

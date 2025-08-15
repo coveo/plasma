@@ -11,16 +11,21 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {Children, ReactElement, ReactNode} from 'react';
+import {Children, ElementType, ReactElement, ReactNode} from 'react';
 import {HeaderProvider} from './Header.context';
 import classes from './Header.module.css';
-import {HeaderActions, HeaderActionsStyleNames} from './HeaderActions/HeaderActions';
+import {
+    HeaderBreadcrumbAnchor,
+    type HeaderBreadcrumbAnchorStyleNames,
+} from './HeaderBreadcrumbs/HeaderBreadcrumbAnchor';
 import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
+import {HeaderBreadcrumbText, HeaderBreadcrumbTextStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbText';
 import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
+import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight';
 
-export type {HeaderActionsProps} from './HeaderActions/HeaderActions';
 export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
 export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor';
+export type {HeaderRightProps} from './HeaderRight/HeaderRight';
 
 export type HeaderVariant = 'primary' | 'secondary';
 export type HeaderStyleNames =
@@ -28,11 +33,17 @@ export type HeaderStyleNames =
     | 'title'
     | 'description'
     | 'divider'
+    | 'body'
     | HeaderDocAnchorStyleNames
     | HeaderBreadcrumbsStyleNames
-    | HeaderActionsStyleNames;
+    | HeaderBreadcrumbAnchorStyleNames
+    | HeaderBreadcrumbTextStyleNames
+    | HeaderBreadcrumbsStyleNames
+    | HeaderRightStyleNames;
 
-export interface HeaderProps extends StylesApiProps<HeaderFactory>, Omit<GroupProps, 'classNames' | 'styles' | 'vars'> {
+export interface HeaderProps
+    extends StylesApiProps<HeaderFactory>,
+        Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant'> {
     /**
      * The description text displayed inside the header underneath the title
      */
@@ -51,6 +62,13 @@ export interface HeaderProps extends StylesApiProps<HeaderFactory>, Omit<GroupPr
      * The title of the header.
      */
     children: ReactNode;
+    /**
+     * The component used to render the title.
+     *
+     * @default Title
+     * @example 'h2'
+     */
+    titleComponent?: ElementType;
 }
 
 export type HeaderFactory = Factory<{
@@ -60,7 +78,9 @@ export type HeaderFactory = Factory<{
     stylesNames: HeaderStyleNames;
     staticComponents: {
         Breadcrumbs: typeof HeaderBreadcrumbs;
-        Actions: typeof HeaderActions;
+        BreadcrumbAnchor: typeof HeaderBreadcrumbAnchor;
+        BreadcrumbText: typeof HeaderBreadcrumbText;
+        Right: typeof HeaderRight;
         DocAnchor: typeof HeaderDocAnchor;
     };
 }>;
@@ -70,6 +90,8 @@ const defaultProps: Partial<HeaderProps> = {
     justify: 'space-between',
     wrap: 'nowrap',
 };
+
+const getSpacing = (variant: HeaderVariant) => (variant === 'secondary' ? 'xxs' : 'xs');
 
 export const Header = factory<HeaderFactory>((_props, ref) => {
     const props = useProps('PlasmaHeader', defaultProps, _props);
@@ -84,6 +106,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
         unstyled,
         vars,
         styles,
+        titleComponent: TitleComponent,
         ...others
     } = props;
     const getStyles = useStyles<HeaderFactory>({
@@ -101,18 +124,19 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
 
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const breadcrumbs = convertedChildren.find((child) => child.type === HeaderBreadcrumbs);
-    const actions = convertedChildren.find((child) => child.type === HeaderActions);
+    const right = convertedChildren.find((child) => child.type === HeaderRight);
     const docAnchor = convertedChildren.find((child) => child.type === HeaderDocAnchor);
     const otherChildren = convertedChildren.filter(
-        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderActions && child.type !== HeaderDocAnchor,
+        (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderRight && child.type !== HeaderDocAnchor,
     );
     return (
         <HeaderProvider value={{getStyles}}>
             <Group ref={ref} variant={variant} {...getStyles('root')} {...others}>
-                <Stack gap={0}>
+                <Stack gap={getSpacing(variant)}>
                     {breadcrumbs}
                     <Title
                         variant={variant}
+                        component={TitleComponent}
                         order={variant === 'primary' ? 1 : 3}
                         {...getStyles('title', stylesApiProps)}
                     >
@@ -123,7 +147,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
                         {description}
                     </Text>
                 </Stack>
-                {actions}
+                {right}
             </Group>
             {borderBottom ? <Divider {...getStyles('divider', stylesApiProps)} size="xs" /> : null}
         </HeaderProvider>
@@ -131,5 +155,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
 });
 
 Header.Breadcrumbs = HeaderBreadcrumbs;
-Header.Actions = HeaderActions;
+Header.BreadcrumbAnchor = HeaderBreadcrumbAnchor;
+Header.BreadcrumbText = HeaderBreadcrumbText;
+Header.Right = HeaderRight;
 Header.DocAnchor = HeaderDocAnchor;

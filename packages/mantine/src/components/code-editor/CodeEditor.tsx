@@ -136,20 +136,12 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     };
 
     const registerThemes = (monaco: Monaco) => {
-        monaco.editor.defineTheme('light-disabled', {
+        monaco.editor.defineTheme('light', {
             base: 'vs',
             inherit: true,
             rules: [],
             colors: {
-                'editor.background': theme.colors.gray[2],
-            },
-        });
-        monaco.editor.defineTheme('vs-dark-disabled', {
-            base: 'vs-dark',
-            inherit: true,
-            rules: [],
-            colors: {
-                'editor.background': theme.colors.navy[7],
+                'editor.background': theme.colors.gray[0],
             },
         });
     };
@@ -167,7 +159,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
 
     hasMonacoErrorRef.current = hasMonacoError;
 
-    const renderErrorOutline = !!error || hasMonacoError;
+    const hasError = !!error || hasMonacoError;
     const theme = useMantineTheme();
     const {colorScheme} = useMantineColorScheme();
 
@@ -193,24 +185,18 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         <Input.Description {...descriptionProps}>{description}</Input.Description>
     ) : null;
 
-    const _error = error ? (
-        <Input.Error mt="xs" {...errorProps}>
-            {error}
-        </Input.Error>
-    ) : (
-        <Space h="xs" />
-    );
+    const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : <Space h="sm" />;
 
     const _header =
         _label || _description ? (
-            <Box>
+            <Stack gap="xxs">
                 {_label}
                 {_description}
-            </Box>
+            </Stack>
         ) : null;
 
     const _buttons = (
-        <Group justify="right" gap={0}>
+        <Group justify="right" gap="xs">
             <Search handleSearch={handleSearch} />
             <CopyToClipboard value={_value} onCopy={() => onCopy?.()} />
         </Group>
@@ -225,9 +211,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             p="md"
             pl="xs"
             className={cx(
-                CodeEditorClasses.editor,
-                {[CodeEditorClasses.valid]: !renderErrorOutline},
-                {[CodeEditorClasses.error]: renderErrorOutline},
+                CodeEditorClasses.root,
+                {[CodeEditorClasses.error]: hasError},
                 {[CodeEditorClasses.disabled]: disabled},
             )}
             data-testid="editor-wrapper"
@@ -243,17 +228,20 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     formatOnPaste: true,
                     fontSize: px(theme.fontSizes.xs) as number,
                     readOnly: disabled,
+                    stickyScroll: {enabled: false},
                     tabSize,
                 }}
                 value={_value}
                 onChange={handleChange}
-                onMount={(editor, monaco) => {
+                beforeMount={(monaco) => {
+                    registerLanguages(monaco);
+                    registerThemes(monaco);
+                }}
+                onMount={(editor) => {
                     editorRef.current = editor;
                     if (editorHandle) {
                         editorHandle.current = editor;
                     }
-                    registerLanguages(monaco);
-                    registerThemes(monaco);
                     editor.onDidFocusEditorText(() => onFocus?.());
                     editor.onDidBlurEditorText(async () => {
                         // monaco editor has a timeout of 500ms populating errors, we want to ensure that checking errors happen after that
@@ -273,9 +261,18 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     );
 
     return (
-        <Stack justify="flex-start" gap={0} h={Math.max(parentHeight, minHeight)} mah={maxHeight} ref={ref} {...others}>
-            {_header}
-            {_buttons}
+        <Stack
+            justify="flex-start"
+            gap="sm"
+            h={Math.max(parentHeight, minHeight)}
+            mah={maxHeight}
+            ref={ref}
+            {...others}
+        >
+            <Group justify="space-between">
+                {_header}
+                {_buttons}
+            </Group>
             {_editor}
             {_error}
         </Stack>

@@ -1,5 +1,5 @@
 import {render, screen} from '@test-utils';
-import {Prompt} from '../Prompt';
+import {Prompt, PromptVariant} from '../Prompt';
 
 describe('Prompt', () => {
     it('displays the title, body and close button', () => {
@@ -9,6 +9,7 @@ describe('Prompt', () => {
                 <Prompt.Footer>footer content</Prompt.Footer>
             </Prompt>,
         );
+        expect(screen.getByRole('dialog', {name: /title modal/i})).toBeInTheDocument();
         expect(screen.getByText(/content modal/i)).toBeInTheDocument();
         expect(screen.getByText(/footer content/i)).toBeInTheDocument();
         expect(screen.getByText(/title modal/i)).toBeInTheDocument();
@@ -27,21 +28,15 @@ describe('Prompt', () => {
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('display an icon', () => {
-        render(
-            <Prompt opened onClose={vi.fn()} title="title modal">
-                content modal
-            </Prompt>,
-        );
-        expect(screen.getByRole('presentation')).toBeVisible();
-    });
-
-    it('does not display the icon when the icon prop is null', () => {
-        render(
-            <Prompt opened onClose={vi.fn()} title="title modal" icon={null}>
-                content modal
-            </Prompt>,
-        );
-        expect(screen.queryByRole('presentation')).not.toBeInTheDocument();
-    });
+    it.each(['info', 'success', 'warning', 'critical'])(
+        'displays a $0 icon when the prompt is of variant $0',
+        (variant) => {
+            render(
+                <Prompt opened onClose={vi.fn()} title="title modal" variant={variant as PromptVariant}>
+                    content modal
+                </Prompt>,
+            );
+            expect(screen.getByRole('img', {name: variant})).toBeVisible();
+        },
+    );
 });

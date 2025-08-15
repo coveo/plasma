@@ -2,17 +2,10 @@
     position: sticky;
     bottom: 0;
     z-index: 10;
-    background-color: white;
+    background-color: var(--mantine-color-body);
     padding: var(--mantine-spacing-md) var(--mantine-spacing-lg);
-
-    &[data-variant='modal-footer'] {
-        border-top: 1px solid var(--mantine-color-gray-3);
-        padding-bottom: 0;
-        margin: var(--mb-padding) calc(-1 * var(--mb-padding)) calc(var(--mantine-spacing-md) - var(--mb-padding))
-            calc(-1 * var(--mb-padding));
-    }
 }
 
 .border {
-    border-top: 1px solid var(--mantine-color-gray-3);
+    border-top: 1px solid var(--mantine-color-default-border);
 }

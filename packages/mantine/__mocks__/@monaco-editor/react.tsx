@@ -24,6 +24,7 @@ const monaco: any = {
 
 const MockedEditor: FunctionComponent<EditorProps> = (props) => {
     useEffect(() => {
+        props.beforeMount?.(monaco);
         props.onMount(editor, monaco);
     }, []);
     return <div data-testid="monaco-editor" />;

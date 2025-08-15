@@ -1,0 +1,11 @@
+.card:hover:not([disabled]) {
+    @mixin light {
+        background-color: var(--mantine-color-default-hover);
+    }
+}
+
+.card {
+    &[disabled] {
+        pointer-events: none;
+    }
+}

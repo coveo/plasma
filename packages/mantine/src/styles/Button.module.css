@@ -1,3 +1,11 @@
 .label {
-    font-weight: 400;
+    font-weight: var(--coveo-fw-bold);
+}
+
+.root {
+    &[data-variant='subtle'] {
+        &:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
+            background: transparent;
+        }
+    }
 }

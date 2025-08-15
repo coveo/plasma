@@ -1,5 +1,4 @@
 import {render, screen, userEvent} from '@test-utils';
-import dayjs from 'dayjs';
 
 import {DateRangePickerInlineCalendar} from '../DateRangePickerInlineCalendar';
 
@@ -70,7 +69,7 @@ describe('DateRangePickerInlineCalendar', () => {
 
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith([new Date(2022, 0, 8), endOfDay(2022, 0, 14)]);
+        expect(onApply).toHaveBeenCalledWith(['2022-01-08T00:00:00.000Z', '2022-01-14T23:59:59.999Z']);
 
         vi.useRealTimers();
     });
@@ -83,7 +82,7 @@ describe('DateRangePickerInlineCalendar', () => {
         await user.click(screen.getAllByRole('button', {name: /8 january 2022/i})[0]);
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith([new Date(2022, 0, 8), endOfDay(2022, 0, 8)]);
+        expect(onApply).toHaveBeenCalledWith(['2022-01-08T00:00:00.000Z', '2022-01-08T23:59:59.999Z']);
 
         vi.useRealTimers();
     });
@@ -108,14 +107,7 @@ describe('DateRangePickerInlineCalendar', () => {
 
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith([
-            dayjs(new Date(2022, 0, 8))
-                .startOf('day')
-                .toDate(),
-            dayjs(new Date(2022, 0, 14))
-                .endOf('day')
-                .toDate(),
-        ]);
+        expect(onApply).toHaveBeenCalledWith(['2022-01-08T00:00:00.000Z', '2022-01-14T23:59:59.999Z']);
         vi.useRealTimers();
     });
 });

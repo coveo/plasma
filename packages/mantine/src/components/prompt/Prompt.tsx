@@ -1,30 +1,29 @@
 import {
     Box,
-    createVarsResolver,
     factory,
     Factory,
-    Image,
     ModalRootProps,
     ModalStylesNames,
     StylesApiProps,
+    Title,
     useProps,
     useStyles,
 } from '@mantine/core';
-import {Children, ReactElement, ReactNode} from 'react';
+import {Children, ComponentType, ReactElement, ReactNode} from 'react';
 import {Modal} from '../modal';
-import Critical from './icons/critical.svg';
-import Info from './icons/info.svg';
-import Success from './icons/success.svg';
-import Warning from './icons/warning.svg';
 import {PromptContextProvider} from './Prompt.context';
 import classes from './Prompt.module.css';
 import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton';
 import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton';
+import CriticalIcon from './icons/CriticalIcon';
+import InfoIcon from './icons/InfoIcon';
+import SuccessIcon from './icons/SuccessIcon';
+import WarningIcon from './icons/WarningIcon';
 
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
 export type PromptVars = {root: '--prompt-icon-size'};
 export type PromptStylesNames =
-    | ModalStylesNames
+    | Exclude<ModalStylesNames, 'title'>
     | 'icon'
     | PromptCancelButtonStylesNamesVariant
     | PromptConfirmButtonStylesNamesVariant;
@@ -40,7 +39,6 @@ export interface PromptProps
     variant?: PromptVariant;
     children: ReactNode;
     title: ReactNode;
-    icon?: ReactNode;
 }
 
 export type PromptFactory = Factory<{
@@ -56,11 +54,11 @@ export type PromptFactory = Factory<{
     };
 }>;
 
-const PROMPT_VARIANT_ICONS_SRC: Record<PromptVariant, string> = {
-    success: Success,
-    warning: Warning,
-    critical: Critical,
-    info: Info,
+const PromptVariantIconsMapping: Record<PromptVariant, ComponentType> = {
+    success: SuccessIcon,
+    warning: WarningIcon,
+    critical: CriticalIcon,
+    info: InfoIcon,
 };
 
 const defaultProps: Partial<PromptProps> = {
@@ -68,15 +66,9 @@ const defaultProps: Partial<PromptProps> = {
     centered: true,
 };
 
-const varsResolver = createVarsResolver<PromptFactory>((_theme, {icon}) => ({
-    root: {
-        '--prompt-icon-size': icon ? undefined : '88px',
-    },
-}));
-
 export const Prompt = factory<PromptFactory>((_props, ref) => {
     const props = useProps('Prompt', defaultProps, _props);
-    const {variant, title, icon, children, className, classNames, style, styles, unstyled, vars, ...others} = props;
+    const {variant, title, children, className, classNames, style, styles, unstyled, vars, ...others} = props;
     const getStyles = useStyles<PromptFactory>({
         name: 'Prompt',
         props,
@@ -87,7 +79,6 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
         styles,
         unstyled,
         vars,
-        varsResolver,
     });
     const stylesApiProps = {classNames, styles};
 
@@ -95,8 +86,10 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     const otherChildren: ReactElement[] = [];
 
     Children.forEach(children, (child: ReactElement) => {
-        (child.type === Modal.Footer ? footers : otherChildren).push(child);
+        (child.type === Prompt.Footer ? footers : otherChildren).push(child);
     });
+
+    const IconComponent = PromptVariantIconsMapping[variant];
 
     return (
         <PromptContextProvider value={{variant, getStyles}}>
@@ -104,17 +97,12 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                 <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
                 <Modal.Content {...getStyles('content', stylesApiProps)}>
                     <Modal.Header {...getStyles('header', stylesApiProps)}>
-                        {icon || icon === null ? (
-                            icon
-                        ) : (
-                            <Image
-                                alt=""
-                                role="presentation"
-                                {...getStyles('icon', stylesApiProps)}
-                                src={PROMPT_VARIANT_ICONS_SRC[variant]}
-                            />
-                        )}
-                        <Modal.Title {...getStyles('title', stylesApiProps)}>{title}</Modal.Title>
+                        <IconComponent />
+                        <Modal.Title>
+                            <Title order={3} component="div">
+                                {title}
+                            </Title>
+                        </Modal.Title>
                         <Modal.CloseButton {...getStyles('close', stylesApiProps)} />
                     </Modal.Header>
                     <Modal.Body {...getStyles('body', stylesApiProps)}>

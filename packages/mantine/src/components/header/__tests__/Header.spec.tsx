@@ -11,7 +11,20 @@ describe('Header', () => {
             </Header>,
         );
 
-        const header = screen.getByRole('heading');
+        const header = screen.getByRole('heading', {level: 1});
+        expect(header.tagName).toBe('H1');
+        expect(within(header).getByTestId('child')).toBeVisible();
+    });
+
+    it('renders a heading of level 3 when the variant is secondary', () => {
+        render(
+            <Header variant="secondary">
+                <div data-testid="child" />
+            </Header>,
+        );
+
+        const header = screen.getByRole('heading', {level: 3});
+        expect(header.tagName).toBe('H3');
         expect(within(header).getByTestId('child')).toBeVisible();
     });
 
@@ -71,14 +84,14 @@ describe('Header', () => {
         expect(screen.getByText('description')).toBeInTheDocument();
     });
 
-    it('renders provided actions in the header', () => {
+    it('renders provided components in Header.Right', () => {
         render(
             <Header>
                 title
-                <Header.Actions>
+                <Header.Right>
                     <span>action 1</span>
                     <span>action 2</span>
-                </Header.Actions>
+                </Header.Right>
             </Header>,
         );
 

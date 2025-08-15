@@ -1,10 +1,9 @@
 import {Alert} from '@coveord/plasma-mantine';
-import {WarningSize16Px} from '@coveord/plasma-react-icons';
 
 const Demo = () => (
-    <Alert title="Warning!" withCloseButton color="warning" icon={<WarningSize16Px height={16} />}>
+    <Alert.Warning title="Warning!" withCloseButton>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
-    </Alert>
+    </Alert.Warning>
 );
 export default Demo;

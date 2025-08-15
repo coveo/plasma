@@ -7,7 +7,7 @@ describe('Modal', () => {
     it('renders footer', () => {
         render(
             <Modal opened={true} onClose={vi.fn()}>
-                <Modal.Footer sticky>im the footer</Modal.Footer>
+                <Modal.Footer>im the footer</Modal.Footer>
             </Modal>,
         );
 

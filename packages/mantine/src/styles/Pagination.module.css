@@ -1,30 +1,37 @@
 .root {
-    --pagination-control-fz: var(--mantine-font-size-sm);
-
-    color: var(--mantine-color-gray-6);
+    --pagination-active-bg: var(--mantine-primary-color-light);
+    --pagination-active-color: var(--mantine-primary-color-filled);
 }
 
 .control {
-    color: var(--mantine-color-gray-6);
-
-    @mixin light {
-        border-color: var(--mantine-color-gray-3);
+    @mixin where-light {
+        border-color: var(--mantine-color-default-border);
 
         @mixin hover {
-            &:where(:not(:disabled, [data-disabled])) {
-                background-color: var(--mantine-primary-color-1);
+            &:not([data-active], [data-disabled]) {
+                background-color: var(--mantine-color-default-hover);
+            }
+        }
+
+        &:not([data-active]) {
+            color: var(--mantine-color-placeholder);
+        }
+
+        &[data-disabled] {
+            opacity: 1;
+            background-color: var(--coveo-color-bg-disabled);
+
+            & + .icon {
+                color: var(--coveo-color-text-disabled);
             }
         }
     }
 
-    &:where([data-active]) {
-        @mixin light {
-            border-color: var(--pagination-active-bg);
-            color: var(--pagination-active-color, var(--mantine-color-white));
-
-            @mixin hover {
-                background-color: var(--pagination-active-bg);
-            }
-        }
+    &[data-active] {
+        border: none;
     }
+}
+
+.dots {
+    color: var(--mantine-color-gray-filled);
 }
