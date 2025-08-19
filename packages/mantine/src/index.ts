@@ -5,6 +5,7 @@ import {type PlasmaColors} from './theme/PlasmaColors';
 export * from '@mantine/carousel';
 export * from '@mantine/core';
 export {Pagination} from '@mantine/core';
+export {type DatesRangeValue} from '@mantine/dates';
 export * from '@mantine/form';
 export * from '@mantine/hooks';
 export * from '@mantine/notifications';
@@ -15,9 +16,13 @@ export {noop};
 
 // explicitly overriding mantine components
 export {
+    Accordion,
     ActionIcon,
+    Alert,
+    Badge,
     BrowserPreview,
     Button,
+    Chip,
     CopyToClipboard,
     Header,
     Menu,
@@ -31,6 +36,7 @@ export {
     type HeaderProps,
     type MenuItemProps,
     type ModalFactory,
+    type ModalProps,
     type TableProps,
     type TableState,
 } from './components';

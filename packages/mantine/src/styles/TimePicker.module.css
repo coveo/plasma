@@ -1,0 +1,8 @@
+.dropdown {
+    padding: var(--mantine-spacing-xs);
+}
+
+.control {
+    width: 40px;
+    height: 40px;
+}

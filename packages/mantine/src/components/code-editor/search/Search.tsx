@@ -1,14 +1,15 @@
-import {SearchSize16Px} from '@coveord/plasma-react-icons';
-import {ActionIcon} from '@mantine/core';
+import {IconSearch} from '@coveord/plasma-react-icons';
+import {FunctionComponent} from 'react';
+import {ActionIcon} from '../../action-icon';
 
 export interface SearchProps {
     handleSearch: () => void;
 }
 
-const SearchButton: React.FunctionComponent<SearchProps> = ({handleSearch}) => (
-    <ActionIcon onClick={handleSearch} variant="subtle" color="gray">
-        <SearchSize16Px height={16}></SearchSize16Px>
-    </ActionIcon>
+const SearchButton: FunctionComponent<SearchProps> = ({handleSearch}) => (
+    <ActionIcon.Quaternary onClick={handleSearch}>
+        <IconSearch aria-label="Search" size={16} />
+    </ActionIcon.Quaternary>
 );
 
-export const Search: React.FunctionComponent<SearchProps> = ({...params}) => <SearchButton {...params} />;
+export const Search: FunctionComponent<SearchProps> = ({...params}) => <SearchButton {...params} />;

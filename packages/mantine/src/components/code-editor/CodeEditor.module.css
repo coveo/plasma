@@ -1,35 +1,36 @@
-.editor {
-    border: 1px solid var(--mantine-color-gray-3);
-    border-radius: var(--mantine-radius-default);
+.root {
+    --ce-bg: var(--mantine-color-gray-0);
+    --ce-border-color: var(--mantine-color-default-border);
+
+    border: 1px solid var(--ce-border-color);
+    border-radius: var(--mantine-radius-lg);
     z-index: 1;
     height: 100%;
-    outline-width: thin;
+    background-color: var(--ce-bg);
 
     @mixin light {
-        background-color: var(--mantine-color-white);
+        --ce-bg: var(--mantine-color-gray-0);
     }
 
     @mixin dark {
-        background-color: var(--mantine-color-black);
+        --ce-bg: var(--mantine-color-black);
     }
 }
 
-.valid {
-    outline-color: auto;
-    outline-style: none;
-}
-
 .error {
-    outline-color: var(--mantine-color-red-6);
-    outline-style: solid;
+    --ce-border-color: var(--mantine-color-error);
 }
 
 .disabled {
     @mixin light {
-        background-color: var(--mantine-color-gray-2);
-    }
+        --ce-bg: var(--mantine-color-gray-1);
+        --ce-border-color: var(--mantine-color-gray-1);
 
-    @mixin dark {
-        background-color: var(--mantine-color-navy-7);
+        :global {
+            .monaco-editor {
+                --vscode-editor-background: var(--ce-bg);
+                --vscode-editorGutter-background: var(--ce-bg);
+            }
+        }
     }
 }

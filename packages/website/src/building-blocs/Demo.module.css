@@ -1,8 +1,6 @@
-.root {
-    background-color: var(--mantine-color-gray-0);
-}
-
 .anchor {
+    color: var(--mantine-color-text);
+
     &:hover {
         .anchorIcon {
             opacity: 1;
@@ -20,7 +18,7 @@
 }
 
 .sandbox {
-    border: 1px solid var(--mantine-color-gray-3);
+    border: 1px solid var(--mantine-color-default-border);
     border-radius: var(--mantine-radius-md);
     overflow: hidden;
 }
@@ -31,19 +29,12 @@
     right: 0;
     z-index: 2;
     padding: var(--mantine-spacing-xs);
-    background-color: #1e1e1e;
-
-    & button:hover,
-    & a:hover {
-        background-color: var(--mantine-color-gray-8);
-    }
 }
 
 .preview {
     min-height: 100px;
     display: flex;
     flex-direction: column;
-    background-color: white;
 }
 
 .flexPreviewWrapper {
@@ -56,5 +47,5 @@
 .code {
     min-height: 100px;
     position: relative;
-    background-color: '#1E1E1E';
+    background-color: var(--mantine-color-body);
 }

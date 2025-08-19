@@ -1,5 +1,5 @@
 import {Center, Group, Space} from '@mantine/core';
-import {DatePicker, DatePickerBaseProps} from '@mantine/dates';
+import {DatePicker, DatePickerBaseProps, type DateStringValue, type DatesRangeValue} from '@mantine/dates';
 import {useForm} from '@mantine/form';
 
 import dayjs from 'dayjs';
@@ -7,20 +7,18 @@ import {Button} from '../button';
 import DateRangeClasses from './DateRange.module.css';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
-
-export type DateRangePickerValue = [Date | null, Date | null];
 export interface DateRangePickerInlineCalendarProps
     extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /**
      * Initial selected range
      */
-    initialRange: DateRangePickerValue;
+    initialRange: DatesRangeValue<DateStringValue | null>;
     /**
      * Function called when the user applies the new date range
      *
      * @param range the newly selected dates
      */
-    onApply: (range: DateRangePickerValue) => void;
+    onApply: (range: DatesRangeValue<DateStringValue | null>) => void;
     /**
      * Function called when the user click on the cancel button
      */
@@ -45,10 +43,9 @@ export interface DateRangePickerInlineCalendarProps
     >;
 }
 
-const isDateRangePickerValue = (value: unknown): value is DateRangePickerValue =>
-    Array.isArray(value) && value.length === 2;
+const isDateRangePickerValue = (value: unknown): value is DatesRangeValue => Array.isArray(value) && value.length === 2;
 
-const endOfDay = (value: Date): Date => (value ? dayjs(value).endOf('day').toDate() : value);
+const endOfDay = (value: DateStringValue): DateStringValue => (value ? dayjs(value).endOf('day').toISOString() : value);
 
 export const DateRangePickerInlineCalendar = ({
     initialRange,
@@ -66,8 +63,14 @@ export const DateRangePickerInlineCalendar = ({
     });
     const calendarInputProps = form.getInputProps('dates');
 
-    const onCalendarChange = (range: Date | Date[] | DateRangePickerValue): void => {
-        const normalized = isDateRangePickerValue(range) && range[1] ? [range[0], endOfDay(range[1])] : range;
+    const onCalendarChange = (range: DateStringValue | DatesRangeValue<DateStringValue | null>): void => {
+        // If the current value is [null, null] and a date is selected, set [selectedValue, null]
+        if (isDateRangePickerValue(range) && range[0] && range[1] === null) {
+            calendarInputProps.onChange([dayjs(range[0]).toISOString(), null]);
+            return;
+        }
+        const normalized =
+            isDateRangePickerValue(range) && range[1] ? [dayjs(range[0]).toISOString(), endOfDay(range[1])] : range;
         calendarInputProps.onChange(normalized);
     };
 
@@ -79,7 +82,6 @@ export const DateRangePickerInlineCalendar = ({
         }
         onApply(form.values.dates);
     };
-
     return (
         <>
             <Group align="center" gap="xs" grow px="md" py="sm" className={DateRangeClasses.picker}>
@@ -101,7 +103,6 @@ export const DateRangePickerInlineCalendar = ({
                     </>
                 ) : null}
             </Group>
-
             <Center py="sm" px="md">
                 <DatePicker
                     numberOfColumns={2}
@@ -115,14 +116,9 @@ export const DateRangePickerInlineCalendar = ({
                     onChange={onCalendarChange}
                 />
             </Center>
-
             <Group justify="right" gap="xs" px="md" py="sm" className={DateRangeClasses.save}>
-                <Button variant="outline" size="xs" onClick={onCancel}>
-                    Cancel
-                </Button>
-                <Button size="xs" onClick={onCalendarApply}>
-                    Apply
-                </Button>
+                <Button.Tertiary onClick={onCancel}>Cancel</Button.Tertiary>
+                <Button.Primary onClick={onCalendarApply}>Apply</Button.Primary>
             </Group>
         </>
     );

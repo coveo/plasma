@@ -111,11 +111,11 @@ describe('RowLayout', () => {
         render(<Fixture />);
 
         // wait for the collapsible icon to show
-        await screen.findByRole('button', {name: 'arrowHeadDown'});
+        await screen.findByRole('button', {name: 'Expand'});
 
         expect(screen.queryByText('Collapsible content: last')).not.toBeVisible();
 
-        await user.click(screen.getByRole('button', {name: 'arrowHeadDown'}));
+        await user.click(screen.getByRole('button', {name: 'Expand'}));
         await waitFor(() => {
             expect(screen.queryByText('Collapsible content: last')).toBeVisible();
         });
@@ -156,9 +156,9 @@ describe('RowLayout', () => {
         render(<Fixture />);
 
         // wait for the collapsible icon to show
-        await screen.findAllByRole('button', {name: 'arrowHeadDown'});
+        await screen.findAllByRole('button', {name: 'Expand'});
 
-        const allRows = screen.getAllByRole('button', {name: 'arrowHeadDown'});
+        const allRows = screen.getAllByRole('button', {name: 'Expand'});
         expect(allRows).toHaveLength(2);
     });
 
@@ -190,18 +190,18 @@ describe('RowLayout', () => {
         render(<Fixture />);
 
         // wait for the collapsible icon to show
-        await screen.findAllByRole('button', {name: 'arrowHeadDown'});
+        await screen.findAllByRole('button', {name: 'Expand'});
 
         expect(screen.queryByText('Collapsible content: Russel')).not.toBeVisible();
         expect(screen.queryByText('Collapsible content: Retriever')).not.toBeVisible();
 
-        await user.click(within(screen.getAllByRole('row')[1]).getByRole('button', {name: 'arrowHeadDown'}));
+        await user.click(within(screen.getAllByRole('row')[1]).getByRole('button', {name: 'Expand'}));
         await waitFor(() => {
             expect(screen.queryByText('Collapsible content: Russel')).toBeVisible();
         });
         expect(screen.queryByText('Collapsible content: Retriever')).not.toBeVisible();
 
-        await user.click(within(screen.getAllByRole('row')[3]).getByRole('button', {name: 'arrowHeadDown'}));
+        await user.click(within(screen.getAllByRole('row')[3]).getByRole('button', {name: 'Expand'}));
 
         await waitFor(() => {
             expect(screen.queryByText('Collapsible content: Retriever')).toBeVisible();

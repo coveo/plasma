@@ -1,0 +1,18 @@
+.anchor {
+    color: var(--mantine-color-text);
+
+    &:hover {
+        .anchorIcon {
+            opacity: 1;
+        }
+    }
+}
+
+.anchorIcon {
+    opacity: 0;
+    transition: opacity 100ms ease-in;
+}
+
+.table {
+    table-layout: fixed;
+}

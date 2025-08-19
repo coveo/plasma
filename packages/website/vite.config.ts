@@ -16,6 +16,7 @@ export default defineConfig({
         alias: [
             {find: /@examples\/(.*)/, replacement: path.resolve(import.meta.dirname, 'src/examples/$1')},
             {find: '@demo', replacement: path.resolve(import.meta.dirname, 'src/building-blocs/Demo.tsx')},
+            {find: '@tabler/icons-react', replacement: '@tabler/icons-react/dist/esm/icons/index.mjs'},
         ],
     },
 });

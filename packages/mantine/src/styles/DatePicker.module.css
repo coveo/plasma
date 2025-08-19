@@ -1,3 +1,15 @@
-.monthCell {
-    text-align: center;
+.day {
+    border-radius: var(--mantine-radius-default);
+
+    @mixin hover {
+        &:where(:not([data-static], [data-disabled], [data-selected], [data-in-range])) {
+            @mixin light {
+                background-color: var(--mantine-color-default-hover);
+            }
+        }
+    }
+
+    &:where([data-weekend]) {
+        color: var(--mantine-color-error);
+    }
 }

@@ -6,16 +6,17 @@ describe('BrowserPreview', () => {
     it('shows no tooltip when none specified', async () => {
         render(<BrowserPreview />);
 
-        expect(screen.queryByRole('img', {name: /info/i})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: /information/i})).not.toBeInTheDocument();
     });
+
     it('renders the specified text as the header tooltip content', async () => {
         const user = userEvent.setup();
         const headerTooltip = 'This is a custom description.';
 
         render(<BrowserPreview headerTooltip={headerTooltip} />);
 
-        await waitFor(() => screen.findByRole('img', {name: /info/i}));
-        await user.hover(screen.getByRole('img', {name: /info/i}));
+        await waitFor(() => screen.findByRole('img', {name: /information/i}));
+        await user.hover(screen.getByRole('img', {name: /information/i}));
 
         await waitFor(() => expect(screen.getByText(headerTooltip)).toBeVisible());
     });

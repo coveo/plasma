@@ -1,17 +1,17 @@
 import {ComboboxItem, Select, SelectProps} from '@mantine/core';
+import type {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import dayjs from 'dayjs';
 import {useEffect, useState} from 'react';
-import {DateRangePickerValue} from './DateRangePickerInlineCalendar';
 
 export interface DateRangePickerPreset {
     label: string;
-    range: DateRangePickerValue;
+    range: DatesRangeValue<DateStringValue>;
 }
 
 interface DateRangePickerPresetsSelectProps {
     presets: Record<string, DateRangePickerPreset>;
-    value: DateRangePickerValue;
-    onChange?(value: DateRangePickerValue): void;
+    value: DatesRangeValue<DateStringValue>;
+    onChange?(value: DatesRangeValue): void;
     selectProps?: Partial<Omit<SelectProps, 'data' | 'value' | 'onChange'>>;
 }
 
@@ -22,11 +22,12 @@ export const DateRangePickerPresetSelect = ({
     selectProps = {},
 }: DateRangePickerPresetsSelectProps) => {
     const selectData: ComboboxItem[] = Object.entries(presets).map(([val, {label}]) => ({value: val, label}));
-
     const getSelectedPreset = () => {
         if (value[0] !== null && value[1] !== null && dayjs(value[0]).unix() !== dayjs(value[1]).unix()) {
             const selected = Object.entries(presets).find(
-                ([, {range}]) => dayjs(range[0]).isSame(value[0]) && dayjs(value[1]).isSame(value[1]),
+                ([, {range}]) =>
+                    dayjs(range[0]).isSame(dayjs(value[0]).toISOString()) &&
+                    dayjs(range[1]).isSame(dayjs(value[1]).toISOString()),
             );
             if (selected) {
                 return selected[0];

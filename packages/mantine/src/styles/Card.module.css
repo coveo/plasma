@@ -1,0 +1,22 @@
+.root {
+    transition: box-shadow 150ms ease-in-out;
+
+    &:not([data-with-border]) {
+        border: 1px solid transparent;
+    }
+
+    &[data-selected] {
+        border: 1px solid var(--mantine-primary-color-filled);
+    }
+
+    &[data-variant='hover']:not([data-disabled]) {
+        &:hover {
+            cursor: pointer;
+            box-shadow: var(--mantine-shadow-sm);
+        }
+    }
+
+    &[data-disabled='true'] {
+        pointer-events: none;
+    }
+}
