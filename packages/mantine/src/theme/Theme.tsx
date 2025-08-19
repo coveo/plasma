@@ -206,7 +206,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 size: 'sm',
                 vars: (theme) => ({
                     root: {
-                        '--button-height': '32px',
                         '--button-padding-x': theme.spacing.sm,
                     },
                 }),
