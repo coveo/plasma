@@ -169,9 +169,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: AccordionClasses,
         }),
         ActionIcon: ActionIcon.extend({
-            defaultProps: {
-                size: 'lg',
-            },
             classNames: ActionIconClasses,
         }),
         AppShell: AppShell.extend({
