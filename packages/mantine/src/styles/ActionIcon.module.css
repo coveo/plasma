@@ -1,5 +1,5 @@
 .root {
-    --ai-size: 36px;
+    --ai-size-lg: 36px;
 
     &[data-variant='subtle'] {
         &:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
