@@ -68,7 +68,7 @@
         "globals": "16.0.0",
         "husky": "9.1.7",
         "lint-staged": "15.5.0",
-        "mime-types": "2.1.35",
+        "mime-types": "3.0.1",
         "postcss": "8.5.3",
         "prettier": "3.5.3",
         "sort-package-json": "3.0.0",
