@@ -33,6 +33,10 @@ export interface SemanticBadgeProps
         | 'inset'
         | 'display'
         | 'flex'
+        | 'leftSection'
+        | 'rightSection'
+        | 'fullWidth'
+        | 'circle'
     > {
     /**
      * The size of the badge.
