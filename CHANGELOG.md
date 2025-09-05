@@ -1,3 +1,9 @@
+## <small>56.1.1 (2025-09-05)</small>
+
+* fix(mantine, badge): add some missing props (#4142) 1f37706, closes #4142
+
+
+
 ## 56.1.0 (2025-09-05)
 
 * fix(mantine, badge): allow more props on the semantic badges (#4141) f83c718, closes #4141
