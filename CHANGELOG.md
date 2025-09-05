@@ -1,3 +1,12 @@
+## 56.1.0 (2025-09-05)
+
+* fix(mantine, badge): allow more props on the semantic badges (#4141) f83c718, closes #4141
+* fix(border): fixed input disabled border and actionicon default size (#4139) a7353dd, closes #4139
+* fix(button): change the height from 32 to 36px (#4137) f6aedaa, closes #4137
+* feat(actionicon): change default size to 36px (#4138) a23a573, closes #4138
+
+
+
 ## 56.0.0 (2025-08-18)
 
 * fix(mantine): major release (#4136) 313337b, closes #4136
