@@ -11,7 +11,29 @@ import {
 } from '@mantine/core';
 import {forwardRef, ForwardRefExoticComponent, ReactElement, ReactNode, RefAttributes} from 'react';
 
-export interface SemanticBadgeProps {
+export interface SemanticBadgeProps
+    extends Pick<
+        BadgeProps,
+        | 'm'
+        | 'mt'
+        | 'mb'
+        | 'ml'
+        | 'mr'
+        | 'ms'
+        | 'me'
+        | 'mx'
+        | 'my'
+        | 'miw'
+        | 'maw'
+        | 'pos'
+        | 'top'
+        | 'left'
+        | 'right'
+        | 'bottom'
+        | 'inset'
+        | 'display'
+        | 'flex'
+    > {
     /**
      * The size of the badge.
      * @default 'small'
