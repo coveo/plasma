@@ -50,7 +50,7 @@ export type PromptFactory = Factory<{
     staticComponents: {
         CancelButton: typeof PromptCancelButton;
         ConfirmButton: typeof PromptConfirmButton;
-        Footer: typeof Modal.Footer;
+        Footer: typeof PromptFooter;
     };
 }>;
 
@@ -115,6 +115,8 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     );
 });
 
+const PromptFooter = Modal.Footer.withProps({pt: 0});
+
 Prompt.CancelButton = PromptCancelButton;
 Prompt.ConfirmButton = PromptConfirmButton;
-Prompt.Footer = Modal.Footer;
+Prompt.Footer = PromptFooter;

@@ -1,11 +1,11 @@
 import {
-    Button as MantineButton,
     ButtonCssVariables,
     type ButtonGroup,
-    ButtonProps as MantineButtonProps,
     ButtonStylesNames,
     ButtonVariant,
     Factory,
+    Button as MantineButton,
+    ButtonProps as MantineButtonProps,
     polymorphicFactory,
 } from '@mantine/core';
 import {MouseEventHandler} from 'react';
@@ -70,7 +70,6 @@ const ButtonTertiary = Button.withProps({
     vars: (theme) => ({
         root: {
             '--button-color': 'var(--mantine-primary-color-filled)',
-            '--button-height': '32px',
             '--button-padding-x': theme.spacing.sm,
         },
     }),
@@ -87,7 +86,6 @@ const ButtonDestructiveTertiary = Button.withProps({
     vars: (theme) => ({
         root: {
             '--button-color': 'var(--mantine-color-error)',
-            '--button-height': '32px',
             '--button-padding-x': theme.spacing.sm,
         },
     }),
