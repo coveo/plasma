@@ -1,3 +1,10 @@
+## <small>56.1.2 (2025-09-16)</small>
+
+* fix(Mantine, Prompt): padding between body and footer (#4140) 64ba094, closes #4140
+* fix(mantine,button): button with disabled tooltip now has display inline-block (#4144) 612dba2, closes #4144
+
+
+
 ## <small>56.1.1 (2025-09-05)</small>
 
 * fix(mantine, badge): add some missing props (#4142) 1f37706, closes #4142
