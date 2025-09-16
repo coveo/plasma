@@ -252,14 +252,16 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     const addAllowed = allowAdd?.(value) ?? true;
 
     const _addButton = canEdit ? (
-        <Button.Quaternary
-            leftSection={<IconPlus size={16} />}
-            onClick={() => onInsertItem(newItem, value?.length ?? 0)}
-            disabled={!addAllowed}
-            disabledTooltip={addDisabledTooltip}
-        >
-            {addLabel}
-        </Button.Quaternary>
+        <Box>
+            <Button.Quaternary
+                leftSection={<IconPlus size={16} />}
+                onClick={() => onInsertItem(newItem, value?.length ?? 0)}
+                disabled={!addAllowed}
+                disabledTooltip={addDisabledTooltip}
+            >
+                {addLabel}
+            </Button.Quaternary>
+        </Box>
     ) : null;
 
     const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);

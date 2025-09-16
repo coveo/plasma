@@ -27,7 +27,12 @@ const _ButtonWithDisabledTooltip = forwardRef<HTMLDivElement, ButtonWithDisabled
     ({disabledTooltip, disabled, children, disabledTooltipProps, fullWidth, ...others}, ref) =>
         disabledTooltip ? (
             <Tooltip label={disabledTooltip} disabled={!disabled} {...disabledTooltipProps}>
-                <Box ref={ref} style={{'&:hover': {cursor: 'not-allowed'}, width: fullWidth && '100%'}} {...others}>
+                <Box
+                    ref={ref}
+                    style={{'&:hover': {cursor: 'not-allowed'}, width: fullWidth && '100%'}}
+                    display="inline-block"
+                    {...others}
+                >
                     {children}
                 </Box>
             </Tooltip>
