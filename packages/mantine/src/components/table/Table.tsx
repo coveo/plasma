@@ -10,33 +10,33 @@ import {
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
 import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
-import {CustomComponentThemeExtend, identity} from '../../utils';
+import {CustomComponentThemeExtend, identity} from '../../utils/index.js';
 import classes from './Table.module.css';
 import {TableLayout, TableProps} from './Table.types';
-import {TableProvider} from './TableContext';
-import {TableLayouts} from './layouts/TableLayouts';
-import {TableActionItem, TableActionItemStylesNames, TableHeaderActionsStylesNames} from './table-actions';
-import {TableActionsListStylesNames} from './table-actions/TableActionsList';
-import {TableActionsColumn} from './table-column/TableActionsColumn';
+import {TableProvider} from './TableContext.js';
+import {TableLayouts} from './layouts/TableLayouts.js';
+import {TableActionItem, TableActionItemStylesNames, TableHeaderActionsStylesNames} from './table-actions/index.js';
+import {TableActionsListStylesNames} from './table-actions/TableActionsList.js';
+import {TableActionsColumn} from './table-column/TableActionsColumn.js';
 import {
     TableAccordionColumn,
     TableCollapsibleColumn,
     TableCollapsibleColumnStylesNames,
-} from './table-column/TableCollapsibleColumn';
-import {TableSelectableColumn} from './table-column/TableSelectableColumn';
-import {TableColumnsSelector, TableColumnsSelectorStylesNames} from './table-columns-selector/TableColumnsSelector';
-import {TableDateRangePicker, TableDateRangePickerStylesNames} from './table-date-range-picker/TableDateRangePicker';
-import {TableFilter, TableFilterStylesNames} from './table-filter/TableFilter';
-import {TableFooter} from './table-footer/TableFooter';
-import {TableHeader, TableHeaderStylesNames} from './table-header/TableHeader';
-import {TableThStylesNames} from './table-header/Th';
-import {TableLastUpdated, TableLastUpdatedStylesNames} from './table-last-updated/TableLastUpdated';
-import {TableLoading} from './table-loading/TableLoading';
-import {TableNoData} from './table-no-data/TableNoData';
-import {TablePagination} from './table-pagination/TablePagination';
-import {TablePerPage} from './table-per-page/TablePerPage';
-import {TablePredicate, TablePredicateStylesNames} from './table-predicate/TablePredicate';
-import {TableState} from './use-table';
+} from './table-column/TableCollapsibleColumn.js';
+import {TableSelectableColumn} from './table-column/TableSelectableColumn.js';
+import {TableColumnsSelector, TableColumnsSelectorStylesNames} from './table-columns-selector/TableColumnsSelector.js';
+import {TableDateRangePicker, TableDateRangePickerStylesNames} from './table-date-range-picker/TableDateRangePicker.js';
+import {TableFilter, TableFilterStylesNames} from './table-filter/TableFilter.js';
+import {TableFooter} from './table-footer/TableFooter.js';
+import {TableHeader, TableHeaderStylesNames} from './table-header/TableHeader.js';
+import {TableThStylesNames} from './table-header/Th.js';
+import {TableLastUpdated, TableLastUpdatedStylesNames} from './table-last-updated/TableLastUpdated.js';
+import {TableLoading} from './table-loading/TableLoading.js';
+import {TableNoData} from './table-no-data/TableNoData.js';
+import {TablePagination} from './table-pagination/TablePagination.js';
+import {TablePerPage} from './table-per-page/TablePerPage.js';
+import {TablePredicate, TablePredicateStylesNames} from './table-predicate/TablePredicate.js';
+import {TableState} from './use-table.js';
 
 type TableStylesNames =
     | 'root'

@@ -4,7 +4,7 @@ import CollectionWithReactHookFormDemo from '@examples/form/collection/Collectio
 import DisabledCollectionDemo from '@examples/form/collection/DisabledCollection.demo?demo';
 import ReadOnlyCollectionDemo from '@examples/form/collection/ReadOnlyCollection.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const Page = () => (
     <PageLayout

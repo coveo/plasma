@@ -12,7 +12,7 @@ import Text_md_Demo from '@examples/foundations/TypeKit/Text_md.demo?demo';
 import Text_lg_Demo from '@examples/foundations/TypeKit/Text_lg.demo?demo';
 import Text_xl_Demo from '@examples/foundations/TypeKit/Text_xl.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 export const TypeKit = () => (
     <PageLayout

@@ -1,2 +1,2 @@
-export * from './Collection';
-export {enhanceWithCollectionProps} from './enhanceWithCollectionProps';
+export * from './Collection.js';
+export {enhanceWithCollectionProps} from './enhanceWithCollectionProps.js';

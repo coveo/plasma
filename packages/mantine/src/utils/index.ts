@@ -1,3 +1,3 @@
-export * from './createFactoryComponent';
-export * from './createPolymorphicComponent';
-export * from './overrideComponent';
+export * from './createFactoryComponent.js';
+export * from './createPolymorphicComponent.js';
+export * from './overrideComponent.js';

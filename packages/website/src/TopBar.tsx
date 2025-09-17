@@ -11,9 +11,9 @@ import {DefaultMantineColor, useMantineTheme} from '@mantine/core';
 import {FunctionComponent} from 'react';
 import githubLogo from './assets/github-mark.svg';
 import plasmaLogo from './assets/plasma-logo.svg';
-import StandaloneSearchBar from './search/StandaloneSearchBar';
+import StandaloneSearchBar from './search/StandaloneSearchBar.js';
 import classes from './styles/TopBar.module.css';
-import {useThemePicker} from './theme-picker/ThemePickerContext';
+import {useThemePicker} from './theme-picker/ThemePickerContext.js';
 
 const TopBar = () => (
     <Group justify="space-between" px="lg" py="xs" h="100%" wrap="nowrap" className={classes.topBar}>

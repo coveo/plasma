@@ -1,5 +1,5 @@
 import {createSafeContext, GetStylesApi} from '@mantine/core';
-import {type RowLayoutFactory} from './RowLayout';
+import {type RowLayoutFactory} from './RowLayout.js';
 
 interface RowLayoutContextType {
     getStyles: GetStylesApi<RowLayoutFactory>;

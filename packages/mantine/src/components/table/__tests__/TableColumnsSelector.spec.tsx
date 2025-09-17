@@ -1,9 +1,9 @@
 import {Box} from '@mantine/core';
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, waitFor, within} from '@test-utils';
-import {Table} from '../Table';
-import {TableColumnsSelector} from '../table-columns-selector/TableColumnsSelector';
-import {useTable} from '../use-table';
+import {Table} from '../Table.js';
+import {TableColumnsSelector} from '../table-columns-selector/TableColumnsSelector.js';
+import {useTable} from '../use-table.js';
 
 const mockData = [
     {

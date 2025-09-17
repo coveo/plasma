@@ -1,7 +1,7 @@
 import {BadgeMetadata} from '@coveord/plasma-components-props-analyzer';
 import BadgeDemo from '@examples/feedback/badge/Badge.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const BadgePage = () => (
     <PageLayout

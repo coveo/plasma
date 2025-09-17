@@ -2,7 +2,7 @@ import BrowserPreviewDemo from '@examples/layout/BrowserPreview/BrowserPreview.d
 import BrowserPreviewWithTitleAndDescriptionDemo from '@examples/layout/BrowserPreview/BrowserPreviewWithTitleAndDescription.demo?demo';
 import BrowserPreviewOverflowDemo from '@examples/layout/BrowserPreview/BrowserPreviewOverflow.demo?demo';
 import {BrowserPreviewMetadata} from '@coveord/plasma-components-props-analyzer';
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const Page = () => (
     <PageLayout

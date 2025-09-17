@@ -1,7 +1,7 @@
 import {Button, Menu} from '@mantine/core';
 import {render, screen, userEvent} from '@test-utils';
 
-import {InlineConfirm, InlineConfirmComponentsProps} from '../InlineConfirm';
+import {InlineConfirm, InlineConfirmComponentsProps} from '../InlineConfirm.js';
 
 describe('InlineConfirm', () => {
     it('renders its children', () => {

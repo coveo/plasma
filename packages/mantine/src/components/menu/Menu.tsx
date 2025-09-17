@@ -1,9 +1,9 @@
 import {Menu as MantineMenu, MenuItemProps as MantineMenuItemProps} from '@mantine/core';
 import {forwardRef} from 'react';
 
-import {createPolymorphicComponent, overrideComponent} from '../../utils';
-import {ButtonWithDisabledTooltipProps} from '../button';
-import {ButtonWithDisabledTooltip} from '../button/ButtonWithDisabledTooltip';
+import {createPolymorphicComponent, overrideComponent} from '../../utils/index.js';
+import {ButtonWithDisabledTooltipProps} from '../button/index.js';
+import {ButtonWithDisabledTooltip} from '../button/ButtonWithDisabledTooltip.js';
 
 export interface MenuItemProps extends MantineMenuItemProps, ButtonWithDisabledTooltipProps {}
 

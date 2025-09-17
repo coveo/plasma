@@ -3,7 +3,7 @@ import ButtonDemo from '@examples/form/button/Button.demo?demo';
 import ButtonDisabledDemo from '@examples/form/button/ButtonDisabled.demo?demo';
 import ButtonWithAsyncLoaderDemo from '@examples/form/button/ButtonWithAsyncLoader.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const ButtonPage = () => (
     <PageLayout

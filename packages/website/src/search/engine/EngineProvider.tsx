@@ -1,8 +1,8 @@
 import {loadFieldActions} from '@coveo/headless';
 import {FunctionComponent, PropsWithChildren, useEffect} from 'react';
 
-import {searchEngine} from './Engine';
-import {EngineContext} from './EngineContext';
+import {searchEngine} from './Engine.js';
+import {EngineContext} from './EngineContext.js';
 
 const engine = searchEngine();
 

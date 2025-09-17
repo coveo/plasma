@@ -2,7 +2,7 @@ import {render, screen, userEvent} from '@test-utils';
 import {useState} from 'react';
 
 import {type DatesRangeValue, type DateStringValue} from '@mantine/dates';
-import {EditableDateRangePicker} from '../EditableDateRangePicker';
+import {EditableDateRangePicker} from '../EditableDateRangePicker.js';
 
 describe('EditableDateRangePicker', () => {
     it('renders an input for the start and an input for the end', () => {

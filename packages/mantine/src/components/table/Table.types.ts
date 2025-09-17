@@ -3,8 +3,8 @@ import {BoxProps, StylesApiProps} from '@mantine/core';
 import {ColumnDef, CoreOptions, Row, TableOptions} from '@tanstack/table-core';
 import {ReactElement, ReactNode} from 'react';
 
-import {type PlasmaTableFactory} from './Table';
-import {TableStore} from './use-table';
+import {type PlasmaTableFactory} from './Table.js';
+import {TableStore} from './use-table.js';
 
 export type TableLayoutProps<TData = unknown> = Pick<
     TableProps<TData>,

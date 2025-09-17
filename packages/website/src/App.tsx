@@ -3,10 +3,10 @@ import {CodeHighlightAdapterProvider, createShikiAdapter} from '@mantine/code-hi
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {FunctionComponent, ReactNode, useMemo, useState} from 'react';
 import {Outlet} from 'react-router-dom';
-import {Navigation} from './Navigation';
-import {EngineProvider} from './search/engine/EngineProvider';
-import {ThemePickerProvider} from './theme-picker/ThemePickerContext';
-import TopBar from './TopBar';
+import {Navigation} from './Navigation.js';
+import {EngineProvider} from './search/engine/EngineProvider.js';
+import {ThemePickerProvider} from './theme-picker/ThemePickerContext.js';
+import TopBar from './TopBar.js';
 
 import './styles/colors.css';
 import './styles/home.css';

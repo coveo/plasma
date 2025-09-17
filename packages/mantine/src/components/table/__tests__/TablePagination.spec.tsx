@@ -1,8 +1,8 @@
 import {ColumnDef, createColumnHelper, getPaginationRowModel} from '@tanstack/table-core';
 import {render, screen, userEvent, waitFor} from '@test-utils';
 
-import {Table} from '../Table';
-import {useTable} from '../use-table';
+import {Table} from '../Table.js';
+import {useTable} from '../use-table.js';
 
 type RowData = {name: string};
 

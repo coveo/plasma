@@ -1,7 +1,7 @@
 import {InfoTokenMetadata} from '@coveord/plasma-components-props-analyzer';
 import InfoTokenDemo from '@examples/feedback/info-token/InfoToken.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const AlertPage = () => (
     <PageLayout

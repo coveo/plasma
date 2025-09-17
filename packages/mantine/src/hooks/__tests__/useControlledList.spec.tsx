@@ -1,6 +1,6 @@
 import {renderHook} from '@testing-library/react';
 
-import {useControlledList} from '../useControlledList';
+import {useControlledList} from '../useControlledList.js';
 
 describe('useControlledList', () => {
     const onChange = vi.fn();

@@ -3,7 +3,7 @@ import {useDidUpdate} from '@mantine/hooks';
 import {FunctionComponent} from 'react';
 
 import {TablePaginationProps} from './TablePagination.types';
-import {useTableContext} from '../TableContext';
+import {useTableContext} from '../TableContext.js';
 
 export const TablePagination: FunctionComponent<TablePaginationProps> = ({onPageChange}) => {
     const {store, table, containerRef} = useTableContext();

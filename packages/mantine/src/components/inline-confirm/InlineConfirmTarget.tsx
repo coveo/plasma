@@ -1,8 +1,8 @@
 import {createPolymorphicComponent} from '@mantine/core';
 import {forwardRef, MouseEventHandler} from 'react';
-import {Button, ButtonProps} from '../button';
-import {InlineConfirmComponentsProps} from './InlineConfirm';
-import {useInlineConfirm} from './InlineConfirmContext';
+import {Button, ButtonProps} from '../button/index.js';
+import {InlineConfirmComponentsProps} from './InlineConfirm.js';
+import {useInlineConfirm} from './InlineConfirmContext.js';
 
 export interface InlineConfirmTargetProps extends ButtonProps, InlineConfirmComponentsProps {
     onClick?: MouseEventHandler<HTMLButtonElement>;

@@ -1,7 +1,7 @@
 import {Box, Tooltip, TooltipProps} from '@mantine/core';
 import {ReactNode, forwardRef} from 'react';
 
-import {createPolymorphicComponent} from '../../utils';
+import {createPolymorphicComponent} from '../../utils/index.js';
 
 export interface ButtonWithDisabledTooltipProps {
     /**

@@ -2,10 +2,10 @@ import {AppShell, Box, Container, Flex, Stack, Tabs, Title} from '@coveord/plasm
 import {Fragment, FunctionComponent, ReactNode, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 
-import {GuidelinesTab} from './GuidelinesTab';
-import {PageHeader, PageHeaderProps} from './PageHeader';
-import {PropsTable, PropsTableProps} from './PropsTable';
-import {Tile, TileProps} from './Tile';
+import {GuidelinesTab} from './GuidelinesTab.js';
+import {PageHeader, PageHeaderProps} from './PageHeader.js';
+import {PropsTable, PropsTableProps} from './PropsTable.js';
+import {Tile, TileProps} from './Tile.js';
 
 export interface PageLayoutProps extends PageHeaderProps, PropsTableProps {
     id: string;

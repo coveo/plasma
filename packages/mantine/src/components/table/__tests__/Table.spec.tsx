@@ -2,9 +2,9 @@ import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, within} from '@test-utils';
 
 import {useState} from 'react';
-import {Table} from '../Table';
+import {Table} from '../Table.js';
 import {TableLayout} from '../Table.types';
-import {useTable} from '../use-table';
+import {useTable} from '../use-table.js';
 
 type RowData = {id: string; firstName: string; lastName?: string};
 

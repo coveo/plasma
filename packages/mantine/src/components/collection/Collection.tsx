@@ -14,15 +14,14 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {ReorderPayload} from '@mantine/form/lib/types';
 import {useDidUpdate} from '@mantine/hooks';
 import {ForwardedRef, ReactNode} from 'react';
 
-import {CustomComponentThemeExtend, identity} from '../../utils';
-import {Button} from '../button';
+import {CustomComponentThemeExtend, identity} from '../../utils/index.js';
+import {Button} from '../button/index.js';
 import classes from './Collection.module.css';
-import {CollectionProvider} from './CollectionContext';
-import {CollectionItem} from './CollectionItem';
+import {CollectionProvider} from './CollectionContext.js';
+import {CollectionItem} from './CollectionItem.js';
 
 export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiProps<CollectionFactory> {
     /**
@@ -74,7 +73,7 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
      *
      * @param payload The origin and destination index of the item to reorder
      */
-    onReorderItem?: (payload: ReorderPayload) => void;
+    onReorderItem?: (payload: {from: number; to: number}) => void;
     /**
      * Function that gets called when a new item needs to be added to the collection
      *

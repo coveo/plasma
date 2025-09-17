@@ -11,12 +11,12 @@ import {
     useProps,
 } from '@mantine/core';
 import {MouseEventHandler, ReactNode, useState} from 'react';
-import {ActionIcon} from '../../action-icon';
-import {Button} from '../../button';
-import {InlineConfirm} from '../../inline-confirm';
+import {ActionIcon} from '../../action-icon/index.js';
+import {Button} from '../../button/index.js';
+import {InlineConfirm} from '../../inline-confirm/index.js';
 import {TableAction} from '../Table.types';
-import {useTableContext} from '../TableContext';
-import {TableActionProvider} from './TableActionContext';
+import {useTableContext} from '../TableContext.js';
+import {TableActionProvider} from './TableActionContext.js';
 
 export type TableActionsListStylesNames =
     | 'actionsTarget'

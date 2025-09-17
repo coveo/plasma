@@ -1,11 +1,11 @@
 import {BoxProps, CompoundStylesApiProps, Factory, useProps} from '@mantine/core';
 import {ForwardedRef} from 'react';
-import {CustomComponentThemeExtend, identity} from '../../../../utils';
+import {CustomComponentThemeExtend, identity} from '../../../../utils/index.js';
 import {TableLayoutProps} from '../../Table.types';
-import {useTableContext} from '../../TableContext';
-import {Th} from '../../table-header/Th';
-import {RowLayoutBodyFactory} from './RowLayoutBody';
-import {useRowLayout} from './RowLayoutContext';
+import {useTableContext} from '../../TableContext.js';
+import {Th} from '../../table-header/Th.js';
+import {RowLayoutBodyFactory} from './RowLayoutBody.js';
+import {useRowLayout} from './RowLayoutContext.js';
 
 export type RowLayoutHeaderStyleNames = 'headerRow';
 

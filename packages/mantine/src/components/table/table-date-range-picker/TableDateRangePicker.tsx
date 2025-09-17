@@ -8,9 +8,9 @@ import {
     DateRangePickerInlineCalendar,
     DateRangePickerInlineCalendarProps,
     DateRangePickerPreset,
-} from '../../date-range-picker';
-import {TableComponentsOrder} from '../Table';
-import {useTableContext} from '../TableContext';
+} from '../../date-range-picker/index.js';
+import {TableComponentsOrder} from '../Table.js';
+import {useTableContext} from '../TableContext.js';
 
 export type TableDateRangePickerStylesNames = 'dateRangeRoot';
 

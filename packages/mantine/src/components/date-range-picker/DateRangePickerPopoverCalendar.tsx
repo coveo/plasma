@@ -4,8 +4,8 @@ import {useClickOutside, useUncontrolled} from '@mantine/hooks';
 import {useState} from 'react';
 
 import dayjs from 'dayjs';
-import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
-import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
+import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect.js';
+import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker.js';
 
 interface DateRangePickerPopoverCalendarProps extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */

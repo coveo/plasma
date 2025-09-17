@@ -5,7 +5,7 @@ import AlertCriticalDemo from '@examples/feedback/alert/AlertCritical.demo?demo'
 import AlertInformationDemo from '@examples/feedback/alert/AlertInformation.demo?demo';
 import AlertWarningDemo from '@examples/feedback/alert/AlertWarning.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const AlertPage = () => (
     <PageLayout

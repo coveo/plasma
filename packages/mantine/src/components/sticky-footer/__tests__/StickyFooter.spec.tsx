@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 
-import {StickyFooter} from '../StickyFooter';
+import {StickyFooter} from '../StickyFooter.js';
 
 describe('StickyFooter', () => {
     it('renders children', () => {

@@ -1,2 +1,2 @@
-export * from './Modal';
-export * from './ModalFooter';
+export * from './Modal.js';
+export * from './ModalFooter.js';

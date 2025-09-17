@@ -1,9 +1,9 @@
 import {Factory, factory, Grid, GridColProps, Group, useProps} from '@mantine/core';
 import {ReactElement, useMemo} from 'react';
 
-import {TableComponentsOrder} from '../Table';
-import {useTableContext} from '../TableContext';
-import {TableActionsList} from './TableActionsList';
+import {TableComponentsOrder} from '../Table.js';
+import {useTableContext} from '../TableContext.js';
+import {TableActionsList} from './TableActionsList.js';
 
 export type TableHeaderActionsStylesNames = 'headerActionsRoot' | 'headerActionsGroup';
 

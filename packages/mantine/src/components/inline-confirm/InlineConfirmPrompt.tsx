@@ -1,9 +1,9 @@
 import {Factory, factory, Group, GroupProps, isElement, useProps} from '@mantine/core';
 import {cloneElement, ReactElement, ReactNode, useEffect} from 'react';
-import {Button} from '../button/Button';
-import {InlineConfirmComponentsProps} from './InlineConfirm';
+import {Button} from '../button/Button.js';
+import {InlineConfirmComponentsProps} from './InlineConfirm.js';
 
-import {useInlineConfirm} from './InlineConfirmContext';
+import {useInlineConfirm} from './InlineConfirmContext.js';
 
 interface InlineConfirmPromptProps extends Omit<GroupProps, 'children'>, InlineConfirmComponentsProps {
     /**

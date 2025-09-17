@@ -1,7 +1,7 @@
 import {Group, SegmentedControl, Text} from '@mantine/core';
 import {FunctionComponent, useMemo} from 'react';
 
-import {useTableContext} from '../TableContext';
+import {useTableContext} from '../TableContext.js';
 import {TablePerPageProps} from './TablePerPage.types';
 
 export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE: number} = ({

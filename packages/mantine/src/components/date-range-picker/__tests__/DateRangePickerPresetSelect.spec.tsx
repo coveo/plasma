@@ -1,6 +1,6 @@
 import {render, screen, userEvent} from '@test-utils';
 
-import {DateRangePickerPresetSelect} from '../DateRangePickerPresetSelect';
+import {DateRangePickerPresetSelect} from '../DateRangePickerPresetSelect.js';
 
 describe('DateRangePickerPresetSelect', () => {
     it('calls onChange when selecting a preset', async () => {

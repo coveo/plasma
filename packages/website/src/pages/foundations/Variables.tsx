@@ -2,7 +2,7 @@ import {plasmaCSSVariablesResolver} from '@coveord/plasma-mantine';
 import {LinksSize16Px} from '@coveord/plasma-react-icons';
 import {Anchor, Code, ColorSwatch, CssVariables, keys, Table, Title, useMantineTheme} from '@mantine/core';
 import {FunctionComponent, ReactNode} from 'react';
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 import VariableClasses from '../../styles/Variables.module.css';
 
 export const ColorPreview = ({value}: {value: string}) => {

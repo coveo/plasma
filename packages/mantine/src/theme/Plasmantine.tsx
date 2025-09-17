@@ -1,9 +1,9 @@
 import {MantineProvider, MantineProviderProps, mergeThemeOverrides} from '@mantine/core';
 import {FunctionComponent} from 'react';
 
-import {plasmaCSSVariablesResolver} from './plasmaCSSVariablesResolver';
-import {plasmaTheme} from './Theme';
-import {mergeCSSVariablesResolvers} from './mergeCSSVariablesResolvers';
+import {plasmaCSSVariablesResolver} from './plasmaCSSVariablesResolver.js';
+import {plasmaTheme} from './Theme.js';
+import {mergeCSSVariablesResolvers} from './mergeCSSVariablesResolvers.js';
 import '../styles/global.css';
 
 export const Plasmantine: FunctionComponent<MantineProviderProps> = ({

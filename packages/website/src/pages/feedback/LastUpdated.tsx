@@ -3,7 +3,7 @@ import LastUpdatedDemo from '../../examples/feedback/last-updated/LastUpdated.de
 import LastUpdatedCustomDemo from '../../examples/feedback/last-updated/LastUpdatedCustom.demo?demo';
 import LastUpdatedFormatterDemo from '../../examples/feedback/last-updated/LastUpdatedFormatter.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const LastUpdatedPage = () => (
     <PageLayout

@@ -1,7 +1,7 @@
 import {Anchor} from '@mantine/core';
 import {render, screen, within} from '@test-utils';
 
-import {Header} from '../Header';
+import {Header} from '../Header.js';
 
 describe('Header', () => {
     it('renders a heading of level 1 with the specified children within', () => {

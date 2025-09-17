@@ -1,6 +1,6 @@
 import {render, screen, userEvent} from '@test-utils';
 
-import {DateRangePickerInlineCalendar} from '../DateRangePickerInlineCalendar';
+import {DateRangePickerInlineCalendar} from '../DateRangePickerInlineCalendar.js';
 
 const endOfDay = (year: number, month: number, day: number): Date => new Date(year, month, day, 23, 59, 59, 999);
 

@@ -1,1 +1,1 @@
-export * from './CheckboxIcon';
+export * from './CheckboxIcon.js';

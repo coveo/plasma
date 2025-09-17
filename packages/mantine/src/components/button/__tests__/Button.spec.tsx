@@ -1,6 +1,6 @@
 import {render, screen, userEvent, waitFor} from '@test-utils';
 
-import {Button} from '../Button';
+import {Button} from '../Button.js';
 
 describe('Button', () => {
     it('exposes a Button Group component', () => {

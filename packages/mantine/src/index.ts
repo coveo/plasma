@@ -1,6 +1,6 @@
 import {MantineColorsTuple, noop} from '@mantine/core';
 import {type RowData} from '@tanstack/table-core';
-import {type PlasmaColors} from './theme/PlasmaColors';
+import {type PlasmaColors} from './theme/PlasmaColors.js';
 
 export * from '@mantine/carousel';
 export * from '@mantine/core';
@@ -11,7 +11,7 @@ export * from '@mantine/hooks';
 export * from '@mantine/notifications';
 export {type NotificationsProps} from '@mantine/notifications';
 export * from '@tanstack/table-core';
-export * from './components';
+export * from './components/index.js';
 export {noop};
 
 // explicitly overriding mantine components
@@ -39,9 +39,9 @@ export {
     type ModalProps,
     type TableProps,
     type TableState,
-} from './components';
+} from './components/index.js';
 
-export * from './theme';
+export * from './theme/index.js';
 
 declare module '@mantine/core' {
     export interface MantineThemeColorsOverride {

@@ -1,5 +1,5 @@
 import {act, renderHook} from '@test-utils';
-import {useUrlSyncedState} from '../use-url-synced-state';
+import {useUrlSyncedState} from '../use-url-synced-state.js';
 
 /**
  * Split a url into its parts.

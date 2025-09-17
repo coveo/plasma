@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 import dayjs from 'dayjs';
-import {LastUpdated} from '../LastUpdated';
+import {LastUpdated} from '../LastUpdated.js';
 
 describe('LastUpdated', () => {
     it('renders with default label, time and formatter', () => {

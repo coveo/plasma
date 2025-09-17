@@ -1,6 +1,6 @@
 import FormDemo from '@examples/form/form/Form.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const Page = () => (
     <PageLayout

@@ -1,6 +1,6 @@
 import {render, screen, userEvent} from '@test-utils';
 
-import {CopyToClipboard} from '../CopyToClipboard';
+import {CopyToClipboard} from '../CopyToClipboard.js';
 
 describe('CopyToClipboard', () => {
     it('displays only a button by default', () => {

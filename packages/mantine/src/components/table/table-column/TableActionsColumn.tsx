@@ -2,8 +2,8 @@ import {MoreSize16Px} from '@coveord/plasma-react-icons';
 import {useProps} from '@mantine/core';
 import {CellContext, ColumnDef} from '@tanstack/table-core';
 import {FunctionComponent} from 'react';
-import {TableActionsList, TableActionsListProps} from '../table-actions/TableActionsList';
-import {useTableContext} from '../TableContext';
+import {TableActionsList, TableActionsListProps} from '../table-actions/TableActionsList.js';
+import {useTableContext} from '../TableContext.js';
 
 /**
  * Generic column to use when your table needs actions on rows

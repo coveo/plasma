@@ -3,7 +3,7 @@ import {useDidUpdate} from '@mantine/hooks';
 import {type ExpandedState, type PaginationState, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
-import {useUrlSyncedState, UseUrlSyncedStateOptions} from './use-url-synced-state';
+import {useUrlSyncedState, UseUrlSyncedStateOptions} from './use-url-synced-state.js';
 
 // Create a deeply optional version of another type
 type DeepPartial<T> = {

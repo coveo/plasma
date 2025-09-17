@@ -1,7 +1,7 @@
 import {DateRangePickerPopoverCalendarMetadata} from '@coveord/plasma-components-props-analyzer';
 import DateRangePickerDemo from '@examples/date-range/popover/DateRangePickerPopoverCalendar.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const Page = () => (
     <PageLayout

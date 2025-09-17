@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 
-import {Modal} from '../Modal';
+import {Modal} from '../Modal.js';
 
 // Since most part of the modal component directly inherits @mantine/core, many tests are likely covered by Mantine, so we only add tests about our customizations
 describe('Modal', () => {
