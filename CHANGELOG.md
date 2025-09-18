@@ -1,3 +1,11 @@
+## <small>56.1.3 (2025-09-18)</small>
+
+* refactor: migrate to explicit exports (#4145) f07eed7, closes #4145
+* chore: bump pnpm and enable minimum release age (#4146) 9fae328, closes #4146
+* chore(deps): update dependency vite to v6.3.6 [security] (#4143) 0560cd9, closes #4143
+
+
+
 ## <small>56.1.2 (2025-09-16)</small>
 
 * fix(Mantine, Prompt): padding between body and footer (#4140) 64ba094, closes #4140
