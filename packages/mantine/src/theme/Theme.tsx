@@ -57,7 +57,7 @@ import {
     Tooltip,
 } from '@mantine/core';
 import {DateInput, DatePicker, MonthPicker, PickerInputBase, TimeInput, TimePicker, YearPicker} from '@mantine/dates';
-import {Accordion, CheckboxIcon, CircleLoader, InfoToken} from '../components';
+import {Accordion, CheckboxIcon, CircleLoader, InfoToken} from '../components/index.js';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -98,10 +98,10 @@ import TextClasses from '../styles/Text.module.css';
 import TimePickerClasses from '../styles/TimePicker.module.css';
 import TooltipClasses from '../styles/Tooltip.module.css';
 import YearPickerClasses from '../styles/YearPicker.module.css';
-import {PlasmaColors} from './PlasmaColors';
+import {PlasmaColors} from './PlasmaColors.js';
 
 import placeholderSvg from '../images/placeholder.svg';
-import {plasmaVariantColorResolver} from './plasmaVariantColorResolver';
+import {plasmaVariantColorResolver} from './plasmaVariantColorResolver.js';
 
 export const plasmaTheme: MantineThemeOverride = createTheme({
     variantColorResolver: plasmaVariantColorResolver,

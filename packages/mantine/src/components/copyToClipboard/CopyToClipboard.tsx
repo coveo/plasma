@@ -1,7 +1,7 @@
 import {IconClipboardCheck, IconClipboardText} from '@coveord/plasma-react-icons';
 import {ActionIconProps, CopyButton, MantineColor, TextInput, Tooltip} from '@mantine/core';
 import {FunctionComponent, MouseEventHandler} from 'react';
-import {ActionIcon} from '../action-icon';
+import {ActionIcon} from '../action-icon/index.js';
 
 export interface CopyToClipboardProps extends ActionIconProps {
     /**

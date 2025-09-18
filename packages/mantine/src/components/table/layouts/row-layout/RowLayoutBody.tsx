@@ -2,13 +2,13 @@ import {Box, BoxProps, Collapse, CompoundStylesApiProps, Factory, useProps} from
 import {flexRender} from '@tanstack/react-table';
 import {defaultColumnSizing} from '@tanstack/table-core';
 import {ForwardedRef, Fragment, type MouseEvent} from 'react';
-import {CustomComponentThemeExtend, identity} from '../../../../utils';
+import {CustomComponentThemeExtend, identity} from '../../../../utils/index.js';
 import {TableLayoutProps} from '../../Table.types';
-import {useTableContext} from '../../TableContext';
-import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn';
-import {TableSelectableColumn} from '../../table-column/TableSelectableColumn';
-import {TableLoading} from '../../table-loading/TableLoading';
-import {useRowLayout} from './RowLayoutContext';
+import {useTableContext} from '../../TableContext.js';
+import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn.js';
+import {TableSelectableColumn} from '../../table-column/TableSelectableColumn.js';
+import {TableLoading} from '../../table-loading/TableLoading.js';
+import {useRowLayout} from './RowLayoutContext.js';
 
 export type RowLayoutBodyStylesNames = 'row' | 'cell' | 'collapsibleRow' | 'collapsibleWrapper';
 

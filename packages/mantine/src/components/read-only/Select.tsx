@@ -1,5 +1,5 @@
 import {factory, Select as MantineSelect, SelectFactory} from '@mantine/core';
-import {readOnlyInputStyles} from './ReadOnlyInputStyles';
+import {readOnlyInputStyles} from './ReadOnlyInputStyles.js';
 
 const ReadOnlySelect = MantineSelect.withProps({styles: readOnlyInputStyles});
 

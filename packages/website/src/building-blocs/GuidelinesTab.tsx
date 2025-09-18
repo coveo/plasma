@@ -3,8 +3,8 @@ import {FunctionComponent} from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import {GithubButton} from './GithubButton';
-import {Guidelines, MarkdownOverrides} from './Guidelines';
+import {GithubButton} from './GithubButton.js';
+import {Guidelines, MarkdownOverrides} from './Guidelines.js';
 
 export const GuidelinesTab: FunctionComponent<{id: string}> = ({id}) =>
     Guidelines.exists(id) ? (

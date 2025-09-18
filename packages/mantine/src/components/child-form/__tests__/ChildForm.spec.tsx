@@ -1,6 +1,6 @@
 import {TextInput} from '@mantine/core';
-import {render, screen} from '../../../__tests__/Utils';
-import {ChildForm} from '../ChildForm';
+import {render, screen} from '../../../__tests__/Utils.js';
+import {ChildForm} from '../ChildForm.js';
 
 describe('ChildForm', () => {
     it('renders the provided title and description', async () => {

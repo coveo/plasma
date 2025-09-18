@@ -1,5 +1,5 @@
 import {render, screen, userEvent} from '@test-utils';
-import {Search} from '../Search';
+import {Search} from '../Search.js';
 
 describe('Search', () => {
     describe('handleSearch', () => {

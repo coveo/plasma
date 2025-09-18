@@ -1,7 +1,7 @@
 import {CompoundStylesApiProps, factory, Factory, PolymorphicComponentProps, useProps} from '@mantine/core';
 import {JSXElementConstructor, ReactElement} from 'react';
-import {Button, ButtonProps} from '../button/Button';
-import {PromptVariant} from './Prompt';
+import {Button, ButtonProps} from '../button/Button.js';
+import {PromptVariant} from './Prompt.js';
 import {usePromptContext} from './Prompt.context';
 
 export type PromptConfirmButtonStylesNamesVariant = 'confirm';

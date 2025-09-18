@@ -1,8 +1,8 @@
 import {useForm} from '@mantine/form';
 import {render, screen, userEvent, within} from '@test-utils';
 import {useState} from 'react';
-import {Collection} from '../Collection';
-import {enhanceWithCollectionProps} from '../enhanceWithCollectionProps';
+import {Collection} from '../Collection.js';
+import {enhanceWithCollectionProps} from '../enhanceWithCollectionProps.js';
 
 describe('Collection', () => {
     it('renders one item for each initial values in the form', () => {

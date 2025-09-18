@@ -15,8 +15,8 @@ import {
 } from '@mantine/core';
 import {flexRender, Header} from '@tanstack/react-table';
 import {ReactNode} from 'react';
-import {TableComponentsOrder} from '../Table';
-import {useTableContext} from '../TableContext';
+import {TableComponentsOrder} from '../Table.js';
+import {useTableContext} from '../TableContext.js';
 
 export type TableColumnsSelectorStylesNames = 'columnSelector' | 'columnSelectorWrapper';
 

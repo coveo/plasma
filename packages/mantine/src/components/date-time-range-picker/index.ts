@@ -1,1 +1,1 @@
-export * from './DateTimeRangePicker';
+export * from './DateTimeRangePicker.js';

@@ -3,7 +3,7 @@ import InlineConfirmDemo from '@examples/form/inline-confirm/InlineConfirm.demo?
 import InlineConfirmStyleDemo from '@examples/form/inline-confirm/InlineConfirmStyle.demo?demo';
 import InlineConfirmMenuDemo from '@examples/form/inline-confirm/InlineConfirmMenu.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const ButtonPage = () => (
     <PageLayout

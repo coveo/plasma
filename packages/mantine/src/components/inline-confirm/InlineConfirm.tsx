@@ -1,9 +1,9 @@
 import {Factory, MantineComponent, StylesApiProps, useProps} from '@mantine/core';
 import {Children, ReactElement, ReactNode, useState} from 'react';
-import {InlineConfirmProvider} from './InlineConfirmContext';
-import {InlineConfirmPrompt} from './InlineConfirmPrompt';
+import {InlineConfirmProvider} from './InlineConfirmContext.js';
+import {InlineConfirmPrompt} from './InlineConfirmPrompt.js';
 
-import {InlineConfirmTarget} from './InlineConfirmTarget';
+import {InlineConfirmTarget} from './InlineConfirmTarget.js';
 
 /**
  * Direct children of InlineConfirm that wraps an InlineConfirm.Prompt need this prop

@@ -6,7 +6,7 @@ import CodeEditorGraphQLDemo from '@examples/form/code-editor/CodeEditorGraphQL.
 import CodeEditorPythonDemo from '@examples/form/code-editor/CodeEditorPython.demo?demo';
 import CodeEditorXMLDemo from '@examples/form/code-editor/CodeEditorXML.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const CodeEditorPage = () => (
     <PageLayout

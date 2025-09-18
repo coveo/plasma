@@ -1,1 +1,1 @@
-export * from './ChildForm';
+export * from './ChildForm.js';

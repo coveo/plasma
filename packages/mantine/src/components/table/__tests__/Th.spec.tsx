@@ -1,8 +1,8 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent} from '@test-utils';
 
-import {Table} from '../Table';
-import {useTable} from '../use-table';
+import {Table} from '../Table.js';
+import {useTable} from '../use-table.js';
 
 type RowData = {name: string; type: 'fruit' | 'vegetable'; colors: string[]};
 const columnHelper = createColumnHelper<RowData>();

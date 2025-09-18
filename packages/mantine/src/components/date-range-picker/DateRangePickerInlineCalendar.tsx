@@ -3,10 +3,10 @@ import {DatePicker, DatePickerBaseProps, type DateStringValue, type DatesRangeVa
 import {useForm} from '@mantine/form';
 
 import dayjs from 'dayjs';
-import {Button} from '../button';
+import {Button} from '../button/index.js';
 import DateRangeClasses from './DateRange.module.css';
-import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect';
-import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker';
+import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect.js';
+import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker.js';
 export interface DateRangePickerInlineCalendarProps
     extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
     /**

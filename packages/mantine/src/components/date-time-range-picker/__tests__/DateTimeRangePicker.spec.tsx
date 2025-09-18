@@ -2,7 +2,7 @@ import {useForm} from '@mantine/form';
 import {render, screen, userEvent} from '@test-utils';
 
 import {DatesRangeValue, DateStringValue} from '@mantine/dates';
-import {DateTimeRangePicker} from '../DateTimeRangePicker';
+import {DateTimeRangePicker} from '../DateTimeRangePicker.js';
 
 describe('DateTimeRangePicker', () => {
     it('does not render the preset textbox when there is no presets', () => {

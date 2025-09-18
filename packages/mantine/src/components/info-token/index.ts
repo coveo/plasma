@@ -1,1 +1,1 @@
-export * from './InfoToken';
+export * from './InfoToken.js';

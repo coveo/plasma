@@ -1,8 +1,8 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
-import {Table} from '../../Table';
-import {useTable} from '../../use-table';
+import {Table} from '../../Table.js';
+import {useTable} from '../../use-table.js';
 
 describe('RowLayout', () => {
     type RowData = {id: string; firstName: string; lastName?: string; disabled?: boolean};

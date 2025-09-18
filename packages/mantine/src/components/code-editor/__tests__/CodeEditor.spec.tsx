@@ -3,8 +3,8 @@ import {loader} from '@monaco-editor/react';
 import {render, screen, userEvent, waitForElementToBeRemoved} from '@test-utils';
 import type {editor} from 'monaco-editor';
 import {useRef} from 'react';
-import {CodeEditor} from '../CodeEditor';
-import {XML} from '../languages/xml';
+import {CodeEditor} from '../CodeEditor.js';
+import {XML} from '../languages/xml.js';
 
 vi.mock('monaco-editor');
 vi.mock('@monaco-editor/react');

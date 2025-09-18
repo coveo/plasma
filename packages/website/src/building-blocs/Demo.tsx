@@ -18,7 +18,7 @@ import {CodeHighlight, CodeHighlightTabs} from '@mantine/code-highlight';
 import {ReactNode} from 'react';
 import {ErrorBoundary} from 'react-error-boundary';
 import DemoClasses from './Demo.module.css';
-import getCodeSandboxLink from './getCodeSandboxLink';
+import getCodeSandboxLink from './getCodeSandboxLink.js';
 
 const MAX_HEIGHT = 500;
 const MIN_HEIGHT = 100;

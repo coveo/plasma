@@ -1,6 +1,6 @@
 import {createTheme, DEFAULT_THEME, mergeMantineTheme} from '@mantine/core';
-import {PlasmaColors} from '../PlasmaColors';
-import {plasmaCSSVariablesResolver} from '../plasmaCSSVariablesResolver';
+import {PlasmaColors} from '../PlasmaColors.js';
+import {plasmaCSSVariablesResolver} from '../plasmaCSSVariablesResolver.js';
 
 describe('plasmaCSSVariablesResolver', () => {
     it('updates the error color', () => {

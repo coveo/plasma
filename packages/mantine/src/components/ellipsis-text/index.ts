@@ -1,1 +1,1 @@
-export * from './EllipsisText';
+export * from './EllipsisText.js';

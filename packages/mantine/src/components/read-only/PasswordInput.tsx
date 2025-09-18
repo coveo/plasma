@@ -1,5 +1,5 @@
 import {factory, PasswordInput as MantinePasswordInput, type PasswordInputFactory} from '@mantine/core';
-import {readOnlyInputStyles} from './ReadOnlyInputStyles';
+import {readOnlyInputStyles} from './ReadOnlyInputStyles.js';
 
 const ReadOnlyPasswordInput = MantinePasswordInput.withProps({styles: readOnlyInputStyles});
 

@@ -12,7 +12,7 @@ import TableMultiSelectionDemo from '@examples/layout/Table/TableMultiSelection.
 import TablePredicateDemo from '@examples/layout/Table/TablePredicate.demo?demo';
 import TableReactQuery from '@examples/layout/Table/TableReactQuery.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const DemoPage = () => (
     <PageLayout

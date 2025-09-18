@@ -3,9 +3,9 @@ import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, TextInput, use
 import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
 import {ChangeEventHandler, MouseEventHandler, useEffect, useState} from 'react';
 
-import {ActionIcon} from '../../action-icon';
-import {TableComponentsOrder} from '../Table';
-import {useTableContext} from '../TableContext';
+import {ActionIcon} from '../../action-icon/index.js';
+import {TableComponentsOrder} from '../Table.js';
+import {useTableContext} from '../TableContext.js';
 
 export type TableFilterStylesNames = 'filterRoot' | 'filterWrapper' | 'filterEmpty';
 

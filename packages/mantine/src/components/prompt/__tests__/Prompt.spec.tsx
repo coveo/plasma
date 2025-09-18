@@ -1,5 +1,5 @@
 import {render, screen} from '@test-utils';
-import {Prompt, PromptVariant} from '../Prompt';
+import {Prompt, PromptVariant} from '../Prompt.js';
 
 describe('Prompt', () => {
     it('displays the title, body and close button', () => {

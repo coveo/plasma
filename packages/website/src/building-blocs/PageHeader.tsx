@@ -1,8 +1,8 @@
 import {Box, Header, Stack, Text} from '@coveord/plasma-mantine';
 import {FunctionComponent, ReactNode} from 'react';
 
-import {GithubButton} from './GithubButton';
-import {Tile, TileProps} from './Tile';
+import {GithubButton} from './GithubButton.js';
+import {Tile, TileProps} from './Tile.js';
 
 export interface PageHeaderProps {
     title: string;

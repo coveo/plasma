@@ -19,11 +19,11 @@ import {MarkerSeverity, editor as monacoEditor} from 'monaco-editor';
 import {FunctionComponent, useEffect, useRef, useState} from 'react';
 
 import cx from 'clsx';
-import {useParentHeight} from '../../hooks';
-import {CopyToClipboard} from '../copyToClipboard';
+import {useParentHeight} from '../../hooks/index.js';
+import {CopyToClipboard} from '../copyToClipboard/index.js';
 import CodeEditorClasses from './CodeEditor.module.css';
-import {XML} from './languages/xml';
-import {Search} from './search';
+import {XML} from './languages/xml.js';
+import {Search} from './search/index.js';
 interface CodeEditorProps
     extends Omit<
             InputWrapperProps,

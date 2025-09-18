@@ -1,1 +1,1 @@
-export * from './CopyToClipboard';
+export * from './CopyToClipboard.js';

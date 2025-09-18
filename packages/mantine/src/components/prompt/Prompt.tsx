@@ -10,15 +10,15 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ComponentType, ReactElement, ReactNode} from 'react';
-import {Modal} from '../modal';
+import {Modal} from '../modal/index.js';
 import {PromptContextProvider} from './Prompt.context';
 import classes from './Prompt.module.css';
-import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton';
-import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton';
-import CriticalIcon from './icons/CriticalIcon';
-import InfoIcon from './icons/InfoIcon';
-import SuccessIcon from './icons/SuccessIcon';
-import WarningIcon from './icons/WarningIcon';
+import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton.js';
+import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton.js';
+import CriticalIcon from './icons/CriticalIcon.js';
+import InfoIcon from './icons/InfoIcon.js';
+import SuccessIcon from './icons/SuccessIcon.js';
+import WarningIcon from './icons/WarningIcon.js';
 
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
 export type PromptVars = {root: '--prompt-icon-size'};

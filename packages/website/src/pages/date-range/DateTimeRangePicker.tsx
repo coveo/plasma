@@ -1,7 +1,7 @@
 import {DateTimeRangePickerMetadata} from '@coveord/plasma-components-props-analyzer';
 import DateTimeRangePickerDemo from '@examples/date-range/date-time-picker/DateTimeRangePicker.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const Page = () => (
     <PageLayout

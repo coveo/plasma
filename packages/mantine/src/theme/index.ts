@@ -1,2 +1,2 @@
-export * from './plasmaCSSVariablesResolver';
-export * from './Plasmantine';
+export * from './plasmaCSSVariablesResolver.js';
+export * from './Plasmantine.js';

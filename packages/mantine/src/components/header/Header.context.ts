@@ -1,5 +1,5 @@
 import {GetStylesApi, createSafeContext} from '@mantine/core';
-import type {HeaderFactory} from './Header';
+import type {HeaderFactory} from './Header.js';
 
 export interface HeaderContextValue {
     getStyles: GetStylesApi<HeaderFactory>;

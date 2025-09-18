@@ -3,7 +3,7 @@ import ActionIconDemo from '@examples/form/action-icon/ActionIcon.demo?demo';
 import ActionIconDisabledDemo from '@examples/form/action-icon/ActionIconDisabled.demo?demo';
 import ActionIconWithAsyncLoaderDemo from '../../examples/form/action-icon/ActionIconWithAsyncLoader.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const ActionIconPage = () => (
     <PageLayout

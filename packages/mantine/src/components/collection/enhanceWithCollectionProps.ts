@@ -1,10 +1,9 @@
 import {UseFormInput} from '@mantine/form';
-import {_TransformValues} from '@mantine/form/lib/types';
-import {CollectionProps} from './Collection';
+import {CollectionProps} from './Collection.js';
 
 export const enhanceWithCollectionProps = <
     FormValues,
-    TransformValues extends _TransformValues<FormValues> = (values: FormValues) => FormValues,
+    TransformValues extends (values: FormValues) => unknown = (values: FormValues) => FormValues,
 >(
     payload: Parameters<UseFormInput<FormValues, TransformValues>['enhanceGetInputProps']>[0],
     field: (typeof payload)['field'],

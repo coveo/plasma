@@ -1,5 +1,5 @@
 import {render, screen, userEvent} from '@test-utils';
-import {ButtonWithDisabledTooltip} from '../ButtonWithDisabledTooltip';
+import {ButtonWithDisabledTooltip} from '../ButtonWithDisabledTooltip.js';
 
 describe('ButtonWithDisabledTooltip', () => {
     it('shows a tooltip when hovering over the disabled button', async () => {

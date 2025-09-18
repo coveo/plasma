@@ -4,7 +4,7 @@ import PromptSuccessDemo from '@examples/layout/Prompt/PromptSuccess.demo?demo';
 import PromptWarningDemo from '@examples/layout/Prompt/PromptWarning.demo?demo';
 import PromptCriticalDemo from '@examples/layout/Prompt/PromptCritical.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const Page = () => (
     <PageLayout

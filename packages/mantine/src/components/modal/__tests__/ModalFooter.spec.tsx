@@ -1,6 +1,6 @@
 import {render, screen} from '@test-utils';
 
-import {Modal} from '../Modal';
+import {Modal} from '../Modal.js';
 
 describe('ModalFooter', () => {
     it('renders children', () => {

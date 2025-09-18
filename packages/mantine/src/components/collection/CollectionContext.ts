@@ -1,5 +1,5 @@
 import {createSafeContext, type GetStylesApi} from '@mantine/core';
-import type {CollectionFactory} from './Collection';
+import type {CollectionFactory} from './Collection.js';
 
 interface CollectionContextType {
     getStyles: GetStylesApi<CollectionFactory>;

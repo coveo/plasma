@@ -28,7 +28,7 @@ import {
     useTableContext,
 } from '@coveord/plasma-mantine';
 import {rankItem} from '@tanstack/match-sorter-utils';
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const {plasmaIconsList, ...Icons} = PlasmaReactIcons;
 

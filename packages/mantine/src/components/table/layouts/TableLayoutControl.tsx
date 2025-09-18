@@ -1,6 +1,6 @@
 import {Box, Center, Grid, SegmentedControl, Space} from '@mantine/core';
-import {TableComponentsOrder} from '../Table';
-import {useTableContext} from '../TableContext';
+import {TableComponentsOrder} from '../Table.js';
+import {useTableContext} from '../TableContext.js';
 
 export const TableLayoutControl = () => {
     const {layouts, store} = useTableContext();

@@ -1,1 +1,1 @@
-export * from './BrowserPreview';
+export * from './BrowserPreview.js';

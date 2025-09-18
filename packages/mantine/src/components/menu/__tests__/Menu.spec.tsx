@@ -1,5 +1,5 @@
-import {render, screen} from '../../../__tests__/Utils';
-import {Menu} from '../Menu';
+import {render, screen} from '../../../__tests__/Utils.js';
+import {Menu} from '../Menu.js';
 
 describe('Menu', () => {
     it('prevents navigating to the specified link when disabled', async () => {

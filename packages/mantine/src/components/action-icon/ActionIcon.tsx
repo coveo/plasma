@@ -9,8 +9,8 @@ import {
     polymorphicFactory,
 } from '@mantine/core';
 import {MouseEventHandler} from 'react';
-import {useClickWithLoading} from '../../hooks/useClickWithLoading';
-import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from '../button/ButtonWithDisabledTooltip';
+import {useClickWithLoading} from '../../hooks/useClickWithLoading.js';
+import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from '../button/ButtonWithDisabledTooltip.js';
 
 export interface ActionIconProps extends MantineActionIconProps, ButtonWithDisabledTooltipProps {
     /* Handler executed on click */

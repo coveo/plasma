@@ -13,8 +13,8 @@ import {
 } from '@mantine/core';
 import {FunctionComponent} from 'react';
 
-import {TableComponentsOrder} from '../Table';
-import {useTableContext} from '../TableContext';
+import {TableComponentsOrder} from '../Table.js';
+import {useTableContext} from '../TableContext.js';
 
 export type TablePredicateStylesNames = 'predicate' | 'predicateWrapper' | 'predicateLabel' | 'predicateSelect';
 

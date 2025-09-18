@@ -2,8 +2,8 @@ import {Group} from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
 
 import {DatesRangeValue, DateStringValue} from '@mantine/dates';
-import {DateRangePickerPreset, DateRangePickerPresetSelect} from '../date-range-picker/DateRangePickerPresetSelect';
-import {EditableDateTimeRangePicker, EditableDateTimeRangePickerProps} from './EditableDateTimeRangePicker';
+import {DateRangePickerPreset, DateRangePickerPresetSelect} from '../date-range-picker/DateRangePickerPresetSelect.js';
+import {EditableDateTimeRangePicker, EditableDateTimeRangePickerProps} from './EditableDateTimeRangePicker.js';
 
 interface DateTimeRangePickerProps extends Pick<EditableDateTimeRangePickerProps, 'startProps' | 'endProps'> {
     /** Default value for uncontrolled input */

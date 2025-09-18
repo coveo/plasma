@@ -1,8 +1,8 @@
 import {useForm} from '@mantine/form';
 import {render, screen, userEvent, waitFor} from '@test-utils';
-import {DateRangePickerValue} from '../DateRangePickerInlineCalendar';
+import {DateRangePickerValue} from '../DateRangePickerInlineCalendar.js';
 
-import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar';
+import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar.js';
 
 describe('DateRangePickerPopoverCalendar', () => {
     it('does not render the preset searchbox when there is no presets', () => {

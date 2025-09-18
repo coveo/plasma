@@ -2,8 +2,8 @@ import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent} from '@test-utils';
 
 import dayjs from 'dayjs';
-import {Table} from '../Table';
-import {useTable} from '../use-table';
+import {Table} from '../Table.js';
+import {useTable} from '../use-table.js';
 
 type RowData = {name: string};
 

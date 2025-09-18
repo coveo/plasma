@@ -1,8 +1,8 @@
 import {BoxProps, CompoundStylesApiProps, factory, Factory} from '@mantine/core';
 import {useDidUpdate} from '@mantine/hooks';
 import {useState} from 'react';
-import {LastUpdated, LastUpdatedProps} from '../../last-updated/LastUpdated';
-import {useTableContext} from '../TableContext';
+import {LastUpdated, LastUpdatedProps} from '../../last-updated/LastUpdated.js';
+import {useTableContext} from '../TableContext.js';
 
 export type TableLastUpdatedStylesNames = 'lastUpdatedRoot' | 'lastUpdatedLabel';
 

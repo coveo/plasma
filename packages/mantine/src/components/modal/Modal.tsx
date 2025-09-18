@@ -4,8 +4,8 @@ import {
     ModalFactory as MantineModalFactory,
     ModalProps as MantineModalProps,
 } from '@mantine/core';
-import {Header, HeaderDocAnchorProps, HeaderProps} from '../header';
-import {ModalFooter as PlasmaModalFooter} from './ModalFooter';
+import {Header, HeaderDocAnchorProps, HeaderProps} from '../header/index.js';
+import {ModalFooter as PlasmaModalFooter} from './ModalFooter.js';
 
 interface PlasmaModalProps extends MantineModalProps {
     /**

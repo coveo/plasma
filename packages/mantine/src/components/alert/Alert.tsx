@@ -7,7 +7,7 @@ import {
     Alert as MantineAlert,
     polymorphicFactory,
 } from '@mantine/core';
-import {InfoToken} from '../info-token/InfoToken';
+import {InfoToken} from '../info-token/InfoToken.js';
 
 type AlertOverloadFactory = Factory<{
     props: AlertProps;

@@ -1,2 +1,2 @@
-export * from './Button';
-export {type ButtonWithDisabledTooltipProps} from './ButtonWithDisabledTooltip';
+export * from './Button.js';
+export {type ButtonWithDisabledTooltipProps} from './ButtonWithDisabledTooltip.js';

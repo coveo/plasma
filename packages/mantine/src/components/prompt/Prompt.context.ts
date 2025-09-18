@@ -1,5 +1,5 @@
 import {createSafeContext, GetStylesApi} from '@mantine/core';
-import {PromptFactory, PromptVariant} from './Prompt';
+import {PromptFactory, PromptVariant} from './Prompt.js';
 
 interface PromptContext {
     variant: PromptVariant;

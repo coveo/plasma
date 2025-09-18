@@ -17,15 +17,15 @@ import classes from './Header.module.css';
 import {
     HeaderBreadcrumbAnchor,
     type HeaderBreadcrumbAnchorStyleNames,
-} from './HeaderBreadcrumbs/HeaderBreadcrumbAnchor';
-import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
-import {HeaderBreadcrumbText, HeaderBreadcrumbTextStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbText';
-import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor';
-import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight';
+} from './HeaderBreadcrumbs/HeaderBreadcrumbAnchor.js';
+import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs.js';
+import {HeaderBreadcrumbText, HeaderBreadcrumbTextStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbText.js';
+import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor.js';
+import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight.js';
 
-export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs';
-export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor';
-export type {HeaderRightProps} from './HeaderRight/HeaderRight';
+export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs.js';
+export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor.js';
+export type {HeaderRightProps} from './HeaderRight/HeaderRight.js';
 
 export type HeaderVariant = 'primary' | 'secondary';
 export type HeaderStyleNames =

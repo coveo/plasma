@@ -1,6 +1,6 @@
 import {IconSearch} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
-import {ActionIcon} from '../../action-icon';
+import {ActionIcon} from '../../action-icon/index.js';
 
 export interface SearchProps {
     handleSearch: () => void;
