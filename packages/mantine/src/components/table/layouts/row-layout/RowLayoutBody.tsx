@@ -3,7 +3,7 @@ import {flexRender} from '@tanstack/react-table';
 import {defaultColumnSizing} from '@tanstack/table-core';
 import {ForwardedRef, Fragment, type MouseEvent} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/index.js';
-import {TableLayoutProps} from '../../Table.types';
+import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
 import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn.js';
 import {TableSelectableColumn} from '../../table-column/TableSelectableColumn.js';

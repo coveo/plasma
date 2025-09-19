@@ -1,5 +1,5 @@
 import {Anchor, type AnchorProps, type PolymorphicFactory, polymorphicFactory} from '@mantine/core';
-import {useHeaderContext} from '../Header.context';
+import {useHeaderContext} from '../Header.context.js';
 
 export type HeaderBreadcrumbAnchorStyleNames = 'breadcrumbAnchor';
 

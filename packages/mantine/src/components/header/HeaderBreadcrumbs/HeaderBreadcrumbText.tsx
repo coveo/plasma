@@ -1,5 +1,5 @@
 import {type PolymorphicFactory, polymorphicFactory, Text, type TextProps} from '@mantine/core';
-import {useHeaderContext} from '../Header.context';
+import {useHeaderContext} from '../Header.context.js';
 
 export type HeaderBreadcrumbTextStyleNames = 'breadcrumbText';
 

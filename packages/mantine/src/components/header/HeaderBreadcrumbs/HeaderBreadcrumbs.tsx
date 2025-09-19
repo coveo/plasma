@@ -1,5 +1,5 @@
 import {Breadcrumbs, BreadcrumbsProps, CompoundStylesApiProps, Factory, factory} from '@mantine/core';
-import {useHeaderContext} from '../Header.context';
+import {useHeaderContext} from '../Header.context.js';
 
 export type HeaderBreadcrumbsStyleNames = 'breadcrumbsRoot' | 'breadcrumbsSeparator';
 export interface HeaderBreadcrumbsProps

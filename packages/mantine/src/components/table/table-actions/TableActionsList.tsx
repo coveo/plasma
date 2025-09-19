@@ -14,7 +14,7 @@ import {MouseEventHandler, ReactNode, useState} from 'react';
 import {ActionIcon} from '../../action-icon/index.js';
 import {Button} from '../../button/index.js';
 import {InlineConfirm} from '../../inline-confirm/index.js';
-import {TableAction} from '../Table.types';
+import {TableAction} from '../Table.types.js';
 import {useTableContext} from '../TableContext.js';
 import {TableActionProvider} from './TableActionContext.js';
 

@@ -1,7 +1,7 @@
 import {BoxProps, CompoundStylesApiProps, Factory, useProps} from '@mantine/core';
 import {ForwardedRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/index.js';
-import {TableLayoutProps} from '../../Table.types';
+import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
 import {Th} from '../../table-header/Th.js';
 import {RowLayoutBodyFactory} from './RowLayoutBody.js';
