@@ -3,7 +3,7 @@ import {render, screen, userEvent, within} from '@test-utils';
 
 import {useState} from 'react';
 import {Table} from '../Table.js';
-import {TableLayout} from '../Table.types';
+import {TableLayout} from '../Table.types.js';
 import {useTable} from '../use-table.js';
 
 type RowData = {id: string; firstName: string; lastName?: string};

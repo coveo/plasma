@@ -1,6 +1,6 @@
 import {CompoundStylesApiProps, Factory, Group, GroupProps, factory, useProps} from '@mantine/core';
 import {ReactNode} from 'react';
-import {useHeaderContext} from '../Header.context';
+import {useHeaderContext} from '../Header.context.js';
 
 export type HeaderRightStyleNames = 'right';
 
