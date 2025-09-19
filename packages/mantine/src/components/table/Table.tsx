@@ -12,7 +12,7 @@ import isEqual from 'fast-deep-equal';
 import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/index.js';
 import classes from './Table.module.css';
-import {TableLayout, TableProps} from './Table.types';
+import {TableLayout, TableProps} from './Table.types.js';
 import {TableProvider} from './TableContext.js';
 import {TableLayouts} from './layouts/TableLayouts.js';
 import {TableActionItem, TableActionItemStylesNames, TableHeaderActionsStylesNames} from './table-actions/index.js';

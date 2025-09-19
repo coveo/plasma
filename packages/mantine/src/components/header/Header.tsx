@@ -12,7 +12,7 @@ import {
     useStyles,
 } from '@mantine/core';
 import {Children, ElementType, ReactElement, ReactNode} from 'react';
-import {HeaderProvider} from './Header.context';
+import {HeaderProvider} from './Header.context.js';
 import classes from './Header.module.css';
 import {
     HeaderBreadcrumbAnchor,

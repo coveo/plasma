@@ -1,6 +1,6 @@
 import {CompoundStylesApiProps, factory, Factory, useProps} from '@mantine/core';
 import {Button, ButtonProps} from '../button/Button.js';
-import {usePromptContext} from './Prompt.context';
+import {usePromptContext} from './Prompt.context.js';
 
 export type PromptCancelButtonStylesNamesVariant = 'cancel';
 

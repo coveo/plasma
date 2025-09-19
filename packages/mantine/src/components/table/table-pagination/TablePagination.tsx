@@ -2,7 +2,7 @@ import {Pagination} from '@mantine/core';
 import {useDidUpdate} from '@mantine/hooks';
 import {FunctionComponent} from 'react';
 
-import {TablePaginationProps} from './TablePagination.types';
+import {TablePaginationProps} from './TablePagination.types.js';
 import {useTableContext} from '../TableContext.js';
 
 export const TablePagination: FunctionComponent<TablePaginationProps> = ({onPageChange}) => {
