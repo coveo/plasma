@@ -1,3 +1,10 @@
+## <small>56.1.4 (2025-09-19)</small>
+
+* fix: remaining imports without explicit file extension (#4149) 4deae3f, closes #4149
+* chore(deps): update actions/checkout digest to 08eba0b (#4147) 2f1c879, closes #4147
+
+
+
 ## <small>56.1.3 (2025-09-18)</small>
 
 * refactor: migrate to explicit exports (#4145) f07eed7, closes #4145
