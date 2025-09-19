@@ -1,3 +1,9 @@
+## <small>56.1.5 (2025-09-19)</small>
+
+* fix: last remaining imports without explicit file extension (#4150) a9d288f, closes #4150
+
+
+
 ## <small>56.1.4 (2025-09-19)</small>
 
 * fix: remaining imports without explicit file extension (#4149) 4deae3f, closes #4149
