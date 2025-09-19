@@ -2,7 +2,7 @@ import {CompoundStylesApiProps, factory, Factory, PolymorphicComponentProps, use
 import {JSXElementConstructor, ReactElement} from 'react';
 import {Button, ButtonProps} from '../button/Button.js';
 import {PromptVariant} from './Prompt.js';
-import {usePromptContext} from './Prompt.context';
+import {usePromptContext} from './Prompt.context.js';
 
 export type PromptConfirmButtonStylesNamesVariant = 'confirm';
 

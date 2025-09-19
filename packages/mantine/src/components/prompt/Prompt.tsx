@@ -11,7 +11,7 @@ import {
 } from '@mantine/core';
 import {Children, ComponentType, ReactElement, ReactNode} from 'react';
 import {Modal} from '../modal/index.js';
-import {PromptContextProvider} from './Prompt.context';
+import {PromptContextProvider} from './Prompt.context.js';
 import classes from './Prompt.module.css';
 import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton.js';
 import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton.js';
