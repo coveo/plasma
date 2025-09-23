@@ -37,6 +37,9 @@ export const EditableDateTimeRangePicker = ({
                 onChange={onStartDateChange}
                 w={150}
                 styles={{...startProps.styles}}
+                timePickerProps={{
+                    popoverProps: {withinPortal: false},
+                }}
             />
             <DateTimePicker
                 clearable={false}
@@ -46,6 +49,9 @@ export const EditableDateTimeRangePicker = ({
                 onChange={(endDate) => onChange?.([value?.[0], endDate])}
                 w={150}
                 styles={{...endProps.styles}}
+                timePickerProps={{
+                    popoverProps: {withinPortal: false},
+                }}
             />
         </>
     );
