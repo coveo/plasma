@@ -66,10 +66,8 @@ const enhanceBadge = (
             <Component
                 ref={ref}
                 {...props}
-                py={2}
-                px={12}
+                {...(!props.circle ? {py: 2, px: 12, h: props.size === 'large' ? 22 : 20} : {})}
                 size={props.size === 'large' ? 'lg' : 'md'}
-                h={props.size === 'large' ? 22 : 20}
             />
         );
     });

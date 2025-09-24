@@ -1,4 +1,5 @@
 import {Badge, Center, Code, Grid} from '@coveord/plasma-mantine';
+import {IconCheck} from '@coveord/plasma-react-icons';
 import {FunctionComponent, ReactNode} from 'react';
 
 const Demo = () => (
@@ -82,6 +83,24 @@ const Demo = () => (
             <Badge.Disabled on="dark" size="large">
                 Disabled
             </Badge.Disabled>
+        </Cell>
+        <Cell>
+            <Badge.Primary circle>1</Badge.Primary>
+        </Cell>
+        <Cell>
+            <Badge.Primary circle size="large">
+                <IconCheck width={14} />
+            </Badge.Primary>
+        </Cell>
+        <Cell dark>
+            <Badge.Primary circle on="dark">
+                1
+            </Badge.Primary>
+        </Cell>
+        <Cell dark>
+            <Badge.Primary circle on="dark" size="large">
+                <IconCheck width={14} />
+            </Badge.Primary>
         </Cell>
     </Grid>
 );
