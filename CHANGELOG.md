@@ -1,3 +1,10 @@
+## <small>56.1.6 (2025-09-25)</small>
+
+* fix(mantine, datetimerangepicker): issue when selecting a time (#4151) 7a4f532, closes #4151
+* ci: enable turbo remote caching (#4153) 98daa16, closes #4153
+
+
+
 ## <small>56.1.5 (2025-09-19)</small>
 
 * fix: last remaining imports without explicit file extension (#4150) a9d288f, closes #4150
