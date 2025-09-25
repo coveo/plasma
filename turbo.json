@@ -1,5 +1,9 @@
 {
     "$schema": "https://turborepo.org/schema.json",
+    "remoteCache": {
+        "teamSlug": "plasma",
+        "apiUrl": "https://djcopdhbb4ijlio2hgabt64kjy0lxwet.lambda-url.us-east-1.on.aws"
+    },
     "tasks": {
         "build": {
             "dependsOn": ["^build"],
