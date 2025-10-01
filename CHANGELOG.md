@@ -1,3 +1,9 @@
+## <small>56.2.1 (2025-10-01)</small>
+
+* fix(react-icons): missing element in cache prevent package publish (#4159) 571051d, closes #4159
+
+
+
 ## 56.2.0 (2025-10-01)
 
 * ci: bump node version to 24 (#4158) 508a87d, closes #4158
