@@ -30,7 +30,7 @@ export type PromptStylesNames =
 
 export interface PromptProps
     extends StylesApiProps<PromptFactory>,
-        Omit<ModalRootProps, 'classNames' | 'styles' | 'vars'> {
+        Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes'> {
     /**
      * Controls prompt appearance
      *
@@ -68,7 +68,19 @@ const defaultProps: Partial<PromptProps> = {
 
 export const Prompt = factory<PromptFactory>((_props, ref) => {
     const props = useProps('Prompt', defaultProps, _props);
-    const {variant, title, children, className, classNames, style, styles, unstyled, vars, ...others} = props;
+    const {
+        variant,
+        title,
+        children,
+        className,
+        classNames,
+        style,
+        styles,
+        unstyled,
+        vars,
+        attributes: _attributes,
+        ...others
+    } = props;
     const getStyles = useStyles<PromptFactory>({
         name: 'Prompt',
         props,

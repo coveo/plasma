@@ -39,7 +39,14 @@ export interface DateRangePickerInlineCalendarProps
      */
     rangeCalendarProps?: Omit<
         DatePickerBaseProps,
-        'value' | 'onChange' | 'isDateInRange' | 'isDateFirstInRange' | 'isDateLastInRange'
+        | 'value'
+        | 'onChange'
+        | 'isDateInRange'
+        | 'isDateFirstInRange'
+        | 'isDateLastInRange'
+        | 'presets'
+        | '__onPresetSelect'
+        | 'allowDeselect'
     >;
 }
 
@@ -104,7 +111,7 @@ export const DateRangePickerInlineCalendar = ({
                 ) : null}
             </Group>
             <Center py="sm" px="md">
-                <DatePicker
+                <DatePicker<'range'>
                     numberOfColumns={2}
                     columnsToScroll={1}
                     type="range"

@@ -43,7 +43,7 @@ export type HeaderStyleNames =
 
 export interface HeaderProps
     extends StylesApiProps<HeaderFactory>,
-        Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant'> {
+        Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'attributes'> {
     /**
      * The description text displayed inside the header underneath the title
      */
