@@ -1,14 +1,3 @@
-## 56.2.0 (2025-10-01)
-
-* chore: remove node auth token from cd (#4156) 5983a71, closes #4156
-* chore(release): publish version v56.2.0 [skip ci] df37610
-* chore(release): publish version v56.2.1 [skip ci] f9551c8
-* chore(release): revert failed releases (#4157) 8c952b3, closes #4157
-* ci: delete jenkins dead code (#4154) d951f48, closes #4154
-* feat(deps): update all non-major dependencies (#4042) 5afbb20, closes #4042
-
-
-
 ## <small>56.1.6 (2025-09-25)</small>
 
 * fix(mantine, datetimerangepicker): issue when selecting a time (#4151) 7a4f532, closes #4151
