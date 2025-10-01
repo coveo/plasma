@@ -43,28 +43,28 @@
         "prepublishOnly": "publint"
     },
     "dependencies": {
-        "@swc/helpers": "0.5.15",
-        "@tabler/icons-react": "3.31.0"
+        "@swc/helpers": "0.5.17",
+        "@tabler/icons-react": "3.35.0"
     },
     "devDependencies": {
-        "@babel/types": "7.27.0",
+        "@babel/types": "7.28.4",
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "8.1.0",
         "@svgr/plugin-jsx": "8.1.0",
-        "@swc/cli": "0.6.0",
-        "@swc/core": "1.11.16",
-        "@types/react": "18.3.20",
-        "@types/react-dom": "18.3.5",
-        "fs-extra": "11.3.0",
-        "glob": "11.0.1",
+        "@swc/cli": "0.7.8",
+        "@swc/core": "1.13.5",
+        "@types/react": "18.3.24",
+        "@types/react-dom": "18.3.7",
+        "fs-extra": "11.3.2",
+        "glob": "11.0.3",
         "lodash.groupby": "4.6.0",
         "lodash.upperfirst": "4.3.1",
-        "publint": "0.3.9",
+        "publint": "0.3.13",
         "react": "18.3.1",
         "react-dom": "18.3.1",
         "rimraf": "6.0.1",
         "tslib": "2.8.1",
-        "typescript": "5.8.2"
+        "typescript": "5.9.2"
     },
     "peerDependencies": {
         "react": ">= 18.0",
