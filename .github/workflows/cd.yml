@@ -47,7 +47,6 @@ jobs:
               env:
                   DEBUG: '*'
                   DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Deploy
               uses: ./.github/actions/deploy
               # Demo for next branch is deployed by the CI workflow
