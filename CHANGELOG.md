@@ -1,3 +1,10 @@
+## <small>56.2.1 (2025-10-01)</small>
+
+* chore: remove node auth token from cd (#4156) 5983a71, closes #4156
+* ci: delete jenkins dead code (#4154) d951f48, closes #4154
+
+
+
 ## 56.2.0 (2025-10-01)
 
 * feat(deps): update all non-major dependencies (#4042) 5afbb20, closes #4042
