@@ -4,7 +4,7 @@ runs:
     using: composite
     steps:
         - name: Publish
-          uses: actions/github-script@v7
+          uses: actions/github-script@v8
           with:
               script: |
                   const {default: publishNewVersion} = await import('${{ github.workspace }}/.github/actions/publish/index.mjs');
