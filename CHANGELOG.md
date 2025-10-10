@@ -1,3 +1,16 @@
+## <small>56.2.2 (2025-10-10)</small>
+
+* fix(react-icons): fix export path for mock (#4168) 81b804b, closes #4168
+* chore: remove unused deps & bump others (#4161) 9b7738d, closes #4161
+* chore(deps): replace dependency eslint-plugin-vitest with @vitest/eslint-plugin 1.0.1 (#4155) 05b36c1, closes #4155
+* chore(deps): update actions/checkout action to v5 (#4148) 623813a, closes #4148
+* chore(deps): update actions/github-script action to v8 (#4162) 20bf81b, closes #4162
+* chore(deps): update all non-major dependencies (#4160) 7f879d7, closes #4160
+* chore(deps): update aws-actions/configure-aws-credentials action to v5 (#4164) 16b365c, closes #4164
+* chore(deps): update dependency lint-staged to v16 (#4064) 7a9628d, closes #4064
+
+
+
 ## <small>56.2.1 (2025-10-01)</small>
 
 * fix(react-icons): missing element in cache prevent package publish (#4159) 571051d, closes #4159
