@@ -168,6 +168,8 @@ describe('Collection', () => {
 
         expect(onRemoveItemSpy).toHaveBeenCalledExactlyOnceWith(1);
 
+        onRemoveItemSpy.mockReset();
+
         const removeBanana = await within(screen.queryByTestId('item-0')).findByRole('button', {name: /remove/i});
         await user.click(removeBanana);
 

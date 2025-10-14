@@ -192,6 +192,8 @@ describe('Table.Pagination', () => {
         expect(buttons[3]).toHaveAccessibleName('2');
         expect(buttons[4]).toHaveAccessibleName('next page');
 
+        onChangePage.mockReset();
+
         // remove a page
         await user.click(screen.getByTestId('remove-page'));
 
