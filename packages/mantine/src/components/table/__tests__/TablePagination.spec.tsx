@@ -120,7 +120,7 @@ describe('Table.Pagination', () => {
         await user.click(screen.queryByRole('button', {name: '2'}));
 
         await waitFor(() => {
-            expect(onChangePage).toHaveBeenCalledWith(1);
+            expect(onChangePage).toHaveBeenCalledExactlyOnceWith(1);
         });
     });
 
@@ -182,7 +182,7 @@ describe('Table.Pagination', () => {
         await user.click(screen.getByTestId('remove-page'));
 
         // The page is 2, but the index is 1
-        expect(onChangePage).toHaveBeenCalledWith(1);
+        expect(onChangePage).toHaveBeenCalledExactlyOnceWith(1);
 
         buttons = screen.getAllByRole('button');
         expect(buttons).toHaveLength(5);
@@ -196,7 +196,7 @@ describe('Table.Pagination', () => {
         await user.click(screen.getByTestId('remove-page'));
 
         // The page is 1, but the index is 0
-        expect(onChangePage).toHaveBeenCalledWith(0);
+        expect(onChangePage).toHaveBeenCalledExactlyOnceWith(0);
 
         buttons = screen.getAllByRole('button');
         expect(buttons).toHaveLength(4);

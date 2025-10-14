@@ -166,12 +166,12 @@ describe('Collection', () => {
         const removeOrange = await within(screen.queryByTestId('item-1')).findByRole('button', {name: /remove/i});
         await user.click(removeOrange);
 
-        expect(onRemoveItemSpy).toHaveBeenCalledWith(1);
+        expect(onRemoveItemSpy).toHaveBeenCalledExactlyOnceWith(1);
 
         const removeBanana = await within(screen.queryByTestId('item-0')).findByRole('button', {name: /remove/i});
         await user.click(removeBanana);
 
-        expect(onRemoveItemSpy).toHaveBeenCalledWith(0);
+        expect(onRemoveItemSpy).toHaveBeenCalledExactlyOnceWith(0);
     });
 
     it('does not render the remove button when disabled', async () => {
@@ -278,7 +278,7 @@ describe('Collection', () => {
 
         const {rerender} = render(<Fixture />);
         expect(screen.getByRole('button', {name: /add/i})).toBeDisabled();
-        expect(allowAdd).toHaveBeenCalledWith(['banana', 'orange']);
+        expect(allowAdd).toHaveBeenCalledExactlyOnceWith(['banana', 'orange']);
 
         allowAdd.mockImplementation(() => true);
         rerender(<Fixture />);
