@@ -13,7 +13,7 @@ describe('DateRangePickerInlineCalendar', () => {
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
         expect(onApply).toHaveBeenCalledTimes(1);
-        expect(onApply).toHaveBeenCalledWith([null, null]);
+        expect(onApply).toHaveBeenCalledExactlyOnceWith([null, null]);
     });
 
     it('calls onCancel when the user clicks on the cancel button', async () => {
@@ -54,7 +54,7 @@ describe('DateRangePickerInlineCalendar', () => {
         await user.click(screen.getByRole('option', {name: 'select me'}));
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith([new Date(1999, 11, 31), endOfDay(2000, 0, 1)]);
+        expect(onApply).toHaveBeenCalledExactlyOnceWith([new Date(1999, 11, 31), endOfDay(2000, 0, 1)]);
     });
 
     it('calls onApply with the selected dates when clicking in the calendar', async () => {
@@ -69,7 +69,7 @@ describe('DateRangePickerInlineCalendar', () => {
 
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith(['2022-01-08T00:00:00.000Z', '2022-01-14T23:59:59.999Z']);
+        expect(onApply).toHaveBeenCalledExactlyOnceWith(['2022-01-08T00:00:00.000Z', '2022-01-14T23:59:59.999Z']);
 
         vi.useRealTimers();
     });
@@ -82,7 +82,7 @@ describe('DateRangePickerInlineCalendar', () => {
         await user.click(screen.getAllByRole('button', {name: /8 january 2022/i})[0]);
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith(['2022-01-08T00:00:00.000Z', '2022-01-08T23:59:59.999Z']);
+        expect(onApply).toHaveBeenCalledExactlyOnceWith(['2022-01-08T00:00:00.000Z', '2022-01-08T23:59:59.999Z']);
 
         vi.useRealTimers();
     });
@@ -107,7 +107,7 @@ describe('DateRangePickerInlineCalendar', () => {
 
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledWith(['2022-01-08T00:00:00.000Z', '2022-01-14T23:59:59.999Z']);
+        expect(onApply).toHaveBeenCalledExactlyOnceWith(['2022-01-08T00:00:00.000Z', '2022-01-14T23:59:59.999Z']);
         vi.useRealTimers();
     });
 });

@@ -103,7 +103,7 @@ describe('Table.PerPage', () => {
         await user.click(screen.getByRole('radio', {name: /100/i}));
 
         await waitFor(() => {
-            expect(onPerPageChange).toHaveBeenCalledWith(100);
+            expect(onPerPageChange).toHaveBeenCalledExactlyOnceWith(100);
         });
     });
 

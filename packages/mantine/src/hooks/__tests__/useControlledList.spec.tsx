@@ -15,7 +15,7 @@ describe('useControlledList', () => {
             result.current[1].append('three');
 
             expect(onChange).toHaveBeenCalledTimes(1);
-            expect(onChange).toHaveBeenCalledWith(['one', 'two', 'three']);
+            expect(onChange).toHaveBeenCalledExactlyOnceWith(['one', 'two', 'three']);
         });
     });
 
@@ -25,7 +25,7 @@ describe('useControlledList', () => {
             result.current[1].remove(1);
 
             expect(onChange).toHaveBeenCalledTimes(1);
-            expect(onChange).toHaveBeenCalledWith(['good', 'good']);
+            expect(onChange).toHaveBeenCalledExactlyOnceWith(['good', 'good']);
         });
     });
 
@@ -35,7 +35,7 @@ describe('useControlledList', () => {
             result.current[1].reorder({from: 2, to: 0});
 
             expect(onChange).toHaveBeenCalledTimes(1);
-            expect(onChange).toHaveBeenCalledWith(['a', 'b', 'c']);
+            expect(onChange).toHaveBeenCalledExactlyOnceWith(['a', 'b', 'c']);
         });
     });
 });

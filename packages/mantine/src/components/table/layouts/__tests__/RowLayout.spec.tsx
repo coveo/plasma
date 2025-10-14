@@ -231,7 +231,7 @@ describe('RowLayout', () => {
         render(<Fixture />);
         await user.dblClick(screen.getByRole('cell', {name: 'Mario'}));
         expect(doubleClickSpy).toHaveBeenCalledTimes(1);
-        expect(doubleClickSpy).toHaveBeenCalledWith(
+        expect(doubleClickSpy).toHaveBeenCalledExactlyOnceWith(
             {id: '🆔-1', firstName: 'Mario'},
             0,
             expect.objectContaining({id: '🆔-1'}),

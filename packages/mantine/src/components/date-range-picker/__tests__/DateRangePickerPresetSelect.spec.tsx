@@ -23,7 +23,7 @@ describe('DateRangePickerPresetSelect', () => {
         );
         await user.click(screen.getByRole('option', {name: 'select me'}));
 
-        expect(onChange).toHaveBeenCalledWith([new Date(1999, 11, 31), new Date(2000, 0, 1)]);
+        expect(onChange).toHaveBeenCalledExactlyOnceWith([new Date(1999, 11, 31), new Date(2000, 0, 1)]);
     });
 
     it('autoselects the preset that match the value', () => {
