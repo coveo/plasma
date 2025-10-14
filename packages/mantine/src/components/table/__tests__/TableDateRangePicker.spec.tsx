@@ -27,7 +27,7 @@ describe('Table.DateRangePicker', () => {
         };
         render(<Fixture />);
 
-        expect(screen.getByRole('button', {name: /jan 01, 2022 - jan 07, 2022/i})).toBeVisible();
+        expect(screen.getByRole('button', {name: /jan 1, 2022 - jan 7, 2022/i})).toBeVisible();
     });
 
     describe('when url sync is activated', () => {
@@ -51,7 +51,7 @@ describe('Table.DateRangePicker', () => {
                 );
             };
             render(<Fixture />);
-            await user.click(screen.getByRole('button', {name: /jan 01, 2022 - jan 07, 2022/i}));
+            await user.click(screen.getByRole('button', {name: /jan 1, 2022 - jan 7, 2022/i}));
             await screen.findByRole('dialog');
             await user.clear(screen.getByRole('textbox', {name: /start/i}));
             await user.type(screen.getByRole('textbox', {name: /start/i}), '2022-01-02');
@@ -77,7 +77,7 @@ describe('Table.DateRangePicker', () => {
                 );
             };
             render(<Fixture />);
-            expect(screen.getByRole('button', {name: /jan 02, 2022 - jan 08, 2022/i})).toBeVisible();
+            expect(screen.getByRole('button', {name: /jan 2, 2022 - jan 8, 2022/i})).toBeVisible();
         });
     });
 });
