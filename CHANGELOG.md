@@ -1,3 +1,11 @@
+## <small>56.2.3 (2025-10-15)</small>
+
+* chore(deps): update all non-major dependencies (#4166) 63cd473, closes #4166
+* chore(vitest): merge master, + fix testing-library readme (#4169) dec4f56, closes #4169
+* fix(tabledate): fix the formatting of the date (#4171) 1e82f07, closes #4171
+
+
+
 ## <small>56.2.2 (2025-10-10)</small>
 
 * fix(react-icons): fix export path for mock (#4168) 81b804b, closes #4168
