@@ -62,7 +62,7 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
         setOpened(false);
     };
 
-    const formatDate = (date: DateStringValue) => dayjs(date).format('MMM DD, YYYY');
+    const formatDate = (date: DateStringValue) => dayjs(date).format('MMM D, YYYY');
     const formattedRange = `${formatDate(store.state.dateRange[0])} - ${formatDate(store.state.dateRange[1])}`;
     const dateRangeInitialized = store.state.dateRange.every(
         (date: DateStringValue) => typeof date === 'string' && date !== '',
