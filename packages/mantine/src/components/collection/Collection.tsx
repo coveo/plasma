@@ -251,7 +251,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     const addAllowed = allowAdd?.(value) ?? true;
 
     const _addButton = canEdit ? (
-        <Box>
+        <Box className={classes.addButtonContainer}>
             <Button.Quaternary
                 leftSection={<IconPlus size={16} />}
                 onClick={() => onInsertItem(newItem, value?.length ?? 0)}
