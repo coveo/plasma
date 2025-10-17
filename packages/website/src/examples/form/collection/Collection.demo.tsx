@@ -21,7 +21,9 @@ const Demo = () => {
             draggable
             addLabel="Add task"
             description="These will have to be done by next week"
+            addDisabledTooltip="You have reached the maximum number of tasks"
             label="List of tasks"
+            allowAdd={(value) => value.length < 10}
             newItem={{name: '', done: false}}
             {...form.getInputProps('todoList')}
         >

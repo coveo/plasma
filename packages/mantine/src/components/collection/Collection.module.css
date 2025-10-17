@@ -21,3 +21,7 @@
 .dragHandle {
     cursor: move;
 }
+
+.addButtonContainer {
+    align-self: flex-start;
+}
