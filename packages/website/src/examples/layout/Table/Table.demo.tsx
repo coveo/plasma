@@ -74,6 +74,7 @@ const Demo = () => {
                     component: (
                         <Table.ActionItem
                             onClick={() => alert(`Action 1 triggered for row: ${selected[0].id}`)}
+                            disabledTooltip="This action is disabled"
                             leftSection={<EditSize16Px height={16} />}
                             key="action-1"
                         >
