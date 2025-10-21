@@ -1,3 +1,9 @@
+## <small>56.2.4 (2025-10-21)</small>
+
+* fix(mantine,button): button with disabled tooltip alignement glitch in menu (#4173) 330d7b7, closes #4173
+
+
+
 ## <small>56.2.3 (2025-10-15)</small>
 
 * chore(deps): update all non-major dependencies (#4166) 63cd473, closes #4166
