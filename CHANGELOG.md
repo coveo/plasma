@@ -1,3 +1,9 @@
+## <small>56.2.5 (2025-10-21)</small>
+
+* fix(react-icons): spread the props at the end to allow overrides (#4176) e8abdff, closes #4176
+
+
+
 ## <small>56.2.4 (2025-10-21)</small>
 
 * fix(mantine,button): button with disabled tooltip alignement glitch in menu (#4173) 330d7b7, closes #4173
