@@ -30,6 +30,13 @@ describe('Plasma Icon Testing Utilities', () => {
             expect(result).toBeInTheDocument();
         });
 
+        test('finds search icon by custom aria-label', () => {
+            const {container} = render(<SearchSize24Px aria-label="my-awesome-search-icon" />);
+
+            const result = queryByIconName(container, 'my-awesome-search-icon');
+            expect(result).toBeInTheDocument();
+        });
+
         test('returns null when icon not found', () => {
             const {container} = render(<div>No icons here</div>);
 
