@@ -31,10 +31,7 @@ const template = (variables, {tpl}) => {
             ]),
         ),
     );
-    const svgPropsAttr = t.jsxSpreadAttribute(t.identifier('svgProps'));
-
     addAttributeToSvgTag(svgTag, styleAttr);
-    addAttributeToSvgTag(svgTag, svgPropsAttr);
 
     const props = [deconstructSvgProps(['width', 'height', 'style'])];
 

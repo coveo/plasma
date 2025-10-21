@@ -50,6 +50,7 @@ const convertVariant = async (file) => {
                     role: 'img',
                     height: '{height || width || "1em"}',
                     width: '{width || height || "1em"}',
+                    '{...svgProps}': {},
                 },
             },
             {componentName},
