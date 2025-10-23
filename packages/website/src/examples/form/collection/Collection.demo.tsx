@@ -13,7 +13,9 @@ const Demo = () => {
         validate: {
             todoList: (value) => (value.length < 2 ? `Don't be lazy, add just ${2 - value.length} more tasks` : null),
         },
-        enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'todoList')}),
+        enhanceGetInputProps: (payload) => ({
+            ...enhanceWithCollectionProps(payload, 'todoList', {validateInputOnChange: true}),
+        }),
     });
 
     return (
