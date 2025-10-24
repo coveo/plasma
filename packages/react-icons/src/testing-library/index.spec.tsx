@@ -21,6 +21,9 @@ import {SearchSize24Px} from '../generated/search/index.js';
 import {AddSize16Px} from '../generated/add/index.js';
 import {DeleteSize24Px} from '../generated/delete/index.js';
 
+// Import Tabler icon for testing
+import {IconNumber123} from '../TablerIcons';
+
 describe('Plasma Icon Testing Utilities', () => {
     describe('queryByIconName', () => {
         test('finds search icon by accessible name', () => {
@@ -34,6 +37,13 @@ describe('Plasma Icon Testing Utilities', () => {
             const {container} = render(<SearchSize24Px aria-label="my-awesome-search-icon" />);
 
             const result = queryByIconName(container, 'my-awesome-search-icon');
+            expect(result).toBeInTheDocument();
+        });
+
+        test('finds icons with numbers in their name', () => {
+            const {container} = render(<IconNumber123 />);
+
+            const result = queryByIconName(container, 'iconNumber123');
             expect(result).toBeInTheDocument();
         });
 
