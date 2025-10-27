@@ -1,3 +1,9 @@
+## <small>56.2.6 (2025-10-27)</small>
+
+* fix(react-icons): query icons with numbers in their name (#4178) 0d6e7b3, closes #4178
+
+
+
 ## <small>56.2.5 (2025-10-21)</small>
 
 * fix(react-icons): spread the props at the end to allow overrides (#4176) e8abdff, closes #4176
