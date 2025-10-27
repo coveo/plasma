@@ -9,6 +9,7 @@ import {buildQueries, GetErrorFunction} from '@testing-library/dom';
 const slugify = (text: string) =>
     text
         .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .replace(/([a-z])([0-9])/g, '$1-$2')
         .replace(/\s+/g, '-')
         .toLowerCase();
 
