@@ -590,8 +590,8 @@ importers:
         specifier: 18.3.7
         version: 18.3.7(@types/react@18.3.26)
       '@vitejs/plugin-react-swc':
-        specifier: 3.11.0
-        version: 3.11.0(@swc/helpers@0.5.17)(vite@6.3.6(@types/node@22.18.11)(jiti@2.6.0)(sugarss@5.0.1(postcss@8.5.6))(yaml@2.8.1))
+        specifier: 4.1.0
+        version: 4.1.0(@swc/helpers@0.5.17)(vite@6.3.6(@types/node@22.18.11)(jiti@2.6.0)(sugarss@5.0.1(postcss@8.5.6))(yaml@2.8.1))
       autoprefixer:
         specifier: 10.4.21
         version: 10.4.21(postcss@8.5.6)
@@ -1468,8 +1468,8 @@ packages:
       react-redux:
         optional: true
 
-  '@rolldown/pluginutils@1.0.0-beta.27':
-    resolution: {integrity: sha512-+d0F4MKMCbeVUJwG96uQ4SgAznZNSq93I3V+9NHA4OpvqG8mRCpGdKmK8l/dl02h2CCDHwW2FqilnTyDcAnqjA==}
+  '@rolldown/pluginutils@1.0.0-beta.35':
+    resolution: {integrity: sha512-slYrCpoxJUqzFDDNlvrOYRazQUNRvWPjXA17dAOISY3rDMxX6k8K4cj2H+hEYMHF81HO3uNd5rHVigAWRM5dSg==}
 
   '@rollup/rollup-android-arm-eabi@4.50.1':
     resolution: {integrity: sha512-HJXwzoZN4eYTdD8bVV22DN8gsPCAj3V20NHKOs8ezfXanGpmVPR7kalUHd+Y31IJp9stdB87VKPFbsGY3H/2ag==}
@@ -2248,8 +2248,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@vitejs/plugin-react-swc@3.11.0':
-    resolution: {integrity: sha512-YTJCGFdNMHCMfjODYtxRNVAYmTWQ1Lb8PulP/2/f/oEEtglw8oKxKIZmmRkyXrVrHfsKOaVkAc3NT9/dMutO5w==}
+  '@vitejs/plugin-react-swc@4.1.0':
+    resolution: {integrity: sha512-Ff690TUck0Anlh7wdIcnsVMhofeEVgm44Y4OYdeeEEPSKyZHzDI9gfVBvySEhDfXtBp8tLCbfsVKPWEMEjq8/g==}
+    engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       vite: ^4 || ^5 || ^6 || ^7
 
@@ -7217,7 +7218,7 @@ snapshots:
     optionalDependencies:
       react: 18.3.1
 
-  '@rolldown/pluginutils@1.0.0-beta.27': {}
+  '@rolldown/pluginutils@1.0.0-beta.35': {}
 
   '@rollup/rollup-android-arm-eabi@4.50.1':
     optional: true
@@ -7925,9 +7926,9 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vitejs/plugin-react-swc@3.11.0(@swc/helpers@0.5.17)(vite@6.3.6(@types/node@22.18.11)(jiti@2.6.0)(sugarss@5.0.1(postcss@8.5.6))(yaml@2.8.1))':
+  '@vitejs/plugin-react-swc@4.1.0(@swc/helpers@0.5.17)(vite@6.3.6(@types/node@22.18.11)(jiti@2.6.0)(sugarss@5.0.1(postcss@8.5.6))(yaml@2.8.1))':
     dependencies:
-      '@rolldown/pluginutils': 1.0.0-beta.27
+      '@rolldown/pluginutils': 1.0.0-beta.35
       '@swc/core': 1.13.5(@swc/helpers@0.5.17)
       vite: 6.3.6(@types/node@22.18.11)(jiti@2.6.0)(sugarss@5.0.1(postcss@8.5.6))(yaml@2.8.1)
     transitivePeerDependencies:
