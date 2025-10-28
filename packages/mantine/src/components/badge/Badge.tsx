@@ -8,6 +8,7 @@ import {
     PolymorphicFactory,
     PolymorphicComponentProps,
     alpha,
+    useComputedColorScheme,
 } from '@mantine/core';
 import {forwardRef, ForwardRefExoticComponent, ReactElement, ReactNode, RefAttributes} from 'react';
 
@@ -61,7 +62,8 @@ const enhanceBadge = (
     ComponentDark: <L = 'div'>(props: PolymorphicComponentProps<L, BadgeProps>) => ReactElement,
 ): SemanticBadge =>
     forwardRef<HTMLDivElement, SemanticBadgeProps>((props, ref) => {
-        const Component = props.on === 'dark' ? ComponentDark : ComponentLight;
+        const computedColorScheme = useComputedColorScheme('light', {getInitialValueInEffect: true});
+        const Component = props.on === 'dark' || computedColorScheme === 'dark' ? ComponentDark : ComponentLight;
         return (
             <Component
                 ref={ref}
