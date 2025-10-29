@@ -46,7 +46,7 @@ export interface SemanticBadgeProps
     size?: 'small' | 'large';
     /**
      * Whether the badge is displayed over a light or dark background.
-     * @default 'light'
+     * @default Falls back to theme.
      */
     on?: 'light' | 'dark';
     /**
