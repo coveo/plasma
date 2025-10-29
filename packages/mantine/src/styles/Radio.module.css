@@ -1,15 +1,12 @@
 .labelWrapper {
     display: flex;
     align-items: flex-start;
+    color: var(--coveo-color-title);
 
-    @mixin light {
-        color: var(--coveo-color-title);
-
-        &[data-disabled] {
-            .label,
-            .description {
-                color: var(--mantine-color-disabled-color);
-            }
+    &[data-disabled] {
+        .label,
+        .description {
+            color: var(--mantine-color-disabled-color);
         }
     }
 }
