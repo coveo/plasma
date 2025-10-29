@@ -18,3 +18,7 @@
     margin-left: var(--mantine-spacing-xs);
     vertical-align: middle;
 }
+
+.breadcrumbText {
+    color: var(--coveo-color-title);
+}

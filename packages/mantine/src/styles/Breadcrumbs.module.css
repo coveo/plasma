@@ -5,8 +5,8 @@
 
 .breadcrumb {
     line-height: 14px;
+}
 
-    &:not(a) {
-        color: var(--coveo-color-title);
-    }
+.separator {
+    color: var(--coveo-color-title);
 }

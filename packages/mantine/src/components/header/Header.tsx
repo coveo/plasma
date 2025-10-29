@@ -38,7 +38,6 @@ export type HeaderStyleNames =
     | HeaderBreadcrumbsStyleNames
     | HeaderBreadcrumbAnchorStyleNames
     | HeaderBreadcrumbTextStyleNames
-    | HeaderBreadcrumbsStyleNames
     | HeaderRightStyleNames;
 
 export interface HeaderProps
