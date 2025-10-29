@@ -29,8 +29,6 @@ const Demo = () => {
         }),
     });
 
-    console.log(form.getInputProps(`todoList.${0}.name`));
-
     return (
         <Collection<{name: string; done: boolean}>
             draggable
