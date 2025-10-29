@@ -26,10 +26,12 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--coveo-color-input-border': theme.colors.dark[4],
             '--coveo-color-text-readonly': theme.colors.dark[0],
             '--coveo-color-bg-readonly': theme.colors.dark[6],
-            '--coveo-color-text-primary': theme.colors.violet[3],
+            '--coveo-color-text-primary': theme.colors.violet[4],
             '--coveo-color-bg-dark-surface': theme.colors.violet[3],
 
             // mantine overrides
+            '--mantine-primary-color-filled': theme.colors.violet[4],
+            '--mantine-primary-color-light': theme.colors.violet[7],
             '--mantine-color-body': theme.colors.dark[8],
             '--mantine-color-default': theme.colors.dark[7],
             '--mantine-color-default-border': theme.colors.dark[6],
@@ -40,7 +42,7 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--mantine-color-gray-filled': theme.colors.dark[6],
             '--mantine-color-warning-filled': theme.colors.yellow[6],
             '--mantine-color-placeholder': theme.colors.dark[2],
-            '--mantine-color-disabled': theme.colors.dark[8],
+            '--mantine-color-disabled': theme.colors.dark[7],
             '--mantine-color-disabled-color': theme.colors.dark[3],
         },
         light: {
