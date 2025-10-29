@@ -2,4 +2,6 @@
     @mixin light {
         --paper-border-color: var(--mantine-color-default-border);
     }
+
+    background-color: var(--mantine-color-default);
 }
