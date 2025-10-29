@@ -12,29 +12,27 @@
 }
 
 .radio {
-    @mixin light {
-        &:not(:checked, [readonly], :disabled, [data-error='true']) {
-            border-color: var(--coveo-color-input-border);
+    &:not(:checked, [readonly], :disabled, [data-error='true']) {
+        border-color: var(--coveo-color-input-border);
+    }
+
+    &:disabled {
+        background-color: var(--mantine-color-disabled);
+        border-color: var(--mantine-color-default-border);
+
+        & + .icon {
+            color: var(--mantine-color-placeholder);
         }
+    }
 
-        &:disabled {
-            background-color: var(--mantine-color-disabled);
-            border-color: var(--mantine-color-default-border);
+    /* mantine hardcodes disabled styles so we need to write custom styles */
+    &[readonly] {
+        border-color: var(--mantine-color-default-border);
+        background-color: var(--coveo-color-bg-readonly);
+        color: var(--coveo-color-text-readonly);
 
-            & + .icon {
-                color: var(--mantine-color-placeholder);
-            }
-        }
-
-        /* mantine hardcodes disabled styles so we need to write custom styles */
-        &[readonly] {
-            border-color: var(--mantine-color-default-border);
-            background-color: var(--coveo-color-bg-readonly);
+        & + .icon {
             color: var(--coveo-color-text-readonly);
-
-            & + .icon {
-                color: var(--coveo-color-text-readonly);
-            }
         }
     }
 }
