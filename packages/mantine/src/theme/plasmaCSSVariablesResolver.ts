@@ -48,7 +48,7 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--coveo-app-background': theme.colors.gray[0],
             '--coveo-color-input-border': theme.colors.gray[3],
             '--coveo-color-title': theme.colors.gray[8],
-            '--coveo-color-text-readonly': theme.colors.gray[6],
+            '--coveo-color-text-readonly': 'var(--mantine-color-text)',
             '--coveo-color-bg-readonly': theme.colors.gray[1],
             '--coveo-color-text-primary': theme.colors.violet[5],
             '--coveo-color-bg-dark-surface': theme.colors.violet[9],
