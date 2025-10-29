@@ -1,4 +1,11 @@
-import {Checkbox, Collection, TextInput, enhanceWithCollectionProps, useForm} from '@coveord/plasma-mantine';
+import {
+    Checkbox,
+    Collection,
+    TextInput,
+    enhanceWithCollectionProps,
+    formRootRule,
+    useForm,
+} from '@coveord/plasma-mantine';
 
 const Demo = () => {
     const form = useForm({
@@ -11,12 +18,18 @@ const Demo = () => {
             ],
         },
         validate: {
-            todoList: (value) => (value.length < 2 ? `Don't be lazy, add just ${2 - value.length} more tasks` : null),
+            todoList: {
+                [formRootRule]: (value) =>
+                    value.length < 2 ? `Don't be lazy, add just ${2 - value.length} more tasks` : null,
+                name: (value) => (value === '' ? 'Task name cannot be empty' : null),
+            },
         },
         enhanceGetInputProps: (payload) => ({
             ...enhanceWithCollectionProps(payload, 'todoList', {validateInputOnChange: true}),
         }),
     });
+
+    console.log(form.getInputProps(`todoList.${0}.name`));
 
     return (
         <Collection<{name: string; done: boolean}>
