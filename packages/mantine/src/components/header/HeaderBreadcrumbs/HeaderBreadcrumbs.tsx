@@ -7,14 +7,14 @@ export interface HeaderBreadcrumbsProps
         CompoundStylesApiProps<HeaderBreadcrumbsFactory> {}
 
 export type HeaderBreadcrumbsFactory = Factory<{
-    props: BreadcrumbsProps;
+    props: HeaderBreadcrumbsProps;
     ref: HTMLDivElement;
     stylesNames: HeaderBreadcrumbsStyleNames;
     compound: true;
 }>;
 
 export const HeaderBreadcrumbs = factory<HeaderBreadcrumbsFactory>((props, ref) => {
-    const {children, className, classNames, styles, style, ...others} = props;
+    const {children, className, classNames, styles, style, vars: _vars, ...others} = props;
     const ctx = useHeaderContext();
 
     return (
