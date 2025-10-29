@@ -66,20 +66,20 @@ export const Button = polymorphicFactory<ButtonOverloadFactory>(
 const ButtonPrimary = Button.withProps({variant: 'filled'});
 const ButtonSecondary = Button.withProps({
     variant: 'light',
-    vars: () => ({root: {'--button-color': 'var(--mantine-primary-color-filled)'}}),
+    vars: () => ({root: {'--button-color': 'var(--coveo-color-text-primary)'}}),
 });
 const ButtonTertiary = Button.withProps({
     variant: 'default',
     vars: (theme) => ({
         root: {
-            '--button-color': 'var(--mantine-primary-color-filled)',
+            '--button-color': 'var(--coveo-color-text-primary)',
             '--button-padding-x': theme.spacing.sm,
         },
     }),
 });
 const ButtonQuaternary = Button.withProps({
     variant: 'subtle',
-    vars: () => ({root: {'--button-color': 'var(--mantine-primary-color-filled)'}}),
+    vars: () => ({root: {'--button-color': 'var(--coveo-color-text-primary)'}}),
 });
 
 const ButtonDestructive = Button.withProps({variant: 'filled', color: 'var(--mantine-color-error)'});
