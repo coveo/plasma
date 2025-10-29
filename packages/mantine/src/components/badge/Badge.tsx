@@ -63,13 +63,7 @@ const enhanceBadge = (
 ): SemanticBadge =>
     forwardRef<HTMLDivElement, SemanticBadgeProps>((props, ref) => {
         const computedColorScheme = useComputedColorScheme('light', {getInitialValueInEffect: true});
-        const Component = props.on
-            ? props.on === 'dark'
-                ? ComponentDark
-                : ComponentLight
-            : computedColorScheme === 'dark'
-              ? ComponentDark
-              : ComponentLight;
+        const Component = (props.on || computedColorScheme) === 'dark' ? ComponentDark : ComponentLight;
         return (
             <Component
                 ref={ref}
