@@ -1,4 +1,3 @@
-import {Anchor} from '@mantine/core';
 import {render, screen, within} from '@test-utils';
 
 import {Header} from '../Header.js';
@@ -61,7 +60,7 @@ describe('Header', () => {
         );
     });
 
-    it('adds an icon if the single prop is specified on the breadcrum anchor', async () => {
+    it('adds an icon if the single prop is specified on the breadcrumb anchor', async () => {
         render(
             <Header>
                 <Header.Breadcrumbs data-testid="breadcrumbs-after">
