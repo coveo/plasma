@@ -30,7 +30,6 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--coveo-color-bg-dark-surface': 'var(--mantine-primary-color-3)',
 
             // mantine overrides
-            '--mantine-primary-color-filled': 'var(--mantine-primary-color-4)',
             '--mantine-primary-color-light': 'var(--mantine-primary-color-7)',
             '--mantine-color-body': theme.colors.dark[8],
             '--mantine-color-default': theme.colors.dark[7],
