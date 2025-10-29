@@ -10,6 +10,10 @@
     }
 
     &:where([data-weekend]) {
-        color: var(--mantine-color-error);
+        color: var(--mantine-color-text);
+
+        &:where([data-selected]) {
+            color: var(--mantine-primary-color-contrast);
+        }
     }
 }
