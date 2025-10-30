@@ -24,7 +24,13 @@ export const BrowserPreview = ({
     ...others
 }: PropsWithChildren<BrowserPreviewProps>) => (
     <Stack className={cx(BrowserPreviewClasses.root, className)} gap={0} maw={544} mih={0} {...others}>
-        <Group className={BrowserPreviewClasses.header} justify="space-between" p="sm" bg="gray.1" wrap="nowrap">
+        <Group
+            className={BrowserPreviewClasses.header}
+            justify="space-between"
+            p="sm"
+            bg="var(--mantine-color-default-hover)"
+            wrap="nowrap"
+        >
             <Group gap="xs" wrap="nowrap">
                 <Text c="dimmed" fz="md" lh="18px">
                     Preview
