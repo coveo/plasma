@@ -37,16 +37,16 @@ const Demo = ({pageSize = 5, numberOfItems = 40}: DemoProps) => {
                 <Stack gap="xl" pb="sm">
                     {data[page - 1].map((product) => (
                         <Stack gap={0}>
-                            <Text size="md" c="gray.7" fw={400}>
+                            <Text size="md" fw={400}>
                                 {product.name}
                             </Text>
-                            <Text size="xs" c="gray.6" span>
+                            <Text size="xs" c="dimmed" span>
                                 <Text size="xs" fw={500} span>
                                     Dept:{' '}
                                 </Text>
                                 {product.department}
                             </Text>
-                            <Text size="xs" c="gray.6" span>
+                            <Text size="xs" c="dimmed" span>
                                 <Text size="xs" fw={500} span>
                                     Price:{' '}
                                 </Text>

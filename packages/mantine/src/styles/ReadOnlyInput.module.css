@@ -2,7 +2,7 @@
     cursor: text;
 
     --input-bd: var(--mantine-color-default-border);
-    --input-bg: var(--mantine-color-gray-1);
+    --input-bg: var(--coveo-color-bg-readonly);
     --input-color: var(--mantine-color-text);
     --input-placeholder-color: var(--mantine-color-text);
 }

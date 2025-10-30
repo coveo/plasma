@@ -56,7 +56,16 @@ import {
     Text,
     Tooltip,
 } from '@mantine/core';
-import {DateInput, DatePicker, MonthPicker, PickerInputBase, TimeInput, TimePicker, YearPicker} from '@mantine/dates';
+import {
+    DateInput,
+    DatePicker,
+    DateTimePicker,
+    MonthPicker,
+    PickerInputBase,
+    TimeInput,
+    TimePicker,
+    YearPicker,
+} from '@mantine/dates';
 import {Accordion, CheckboxIcon, CircleLoader, InfoToken} from '../components/index.js';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
@@ -70,6 +79,7 @@ import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ChipClasses from '../styles/Chip.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
 import DatePickerClasses from '../styles/DatePicker.module.css';
+import DateTimePickerClasses from '../styles/DateTimePicker.module.css';
 import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
@@ -277,6 +287,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         DatePicker: DatePicker.extend({
             classNames: DatePickerClasses,
+        }),
+        DateTimePicker: DateTimePicker.extend({
+            classNames: DateTimePickerClasses,
         }),
         Divider: Divider.extend({
             defaultProps: {

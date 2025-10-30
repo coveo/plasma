@@ -67,7 +67,7 @@
 /* Table.Header */
 .headerRoot {
     border-bottom: 1px solid var(--mantine-color-default-border);
-    background-color: var(--mantine-color-gray-0);
+    background-color: var(--mantine-color-body);
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
     position: relative;
     min-height: 69px;
@@ -90,7 +90,7 @@
     vertical-align: middle;
     white-space: nowrap;
     text-align: left;
-    color: var(--mantine-color-gray-6);
+    color: var(--mantine-color-text);
     height: var(--mantine-spacing-xl);
     font-weight: var(--coveo-fw-bold);
     font-size: var(--mantine-font-size-sm);
@@ -103,11 +103,11 @@
         padding-right: var(--mantine-spacing-xl);
     }
 
-    background-color: var(--mantine-color-gray-0);
+    background-color: var(--mantine-color-body);
 
     &[data-control='true'] {
         @mixin hover {
-            background-color: var(--mantine-color-gray-1);
+            background-color: var(--mantine-color-default-hover);
         }
     }
 }
@@ -117,7 +117,7 @@
 }
 
 .lastUpdatedLabel {
-    color: var(--mantine-color-gray-6);
+    color: var(--mantine-color-text);
 }
 
 /* Table.Predicate */

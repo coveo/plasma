@@ -12,6 +12,7 @@
 
 .title {
     word-break: break-word;
+    color: var(--coveo-color-title);
 }
 
 .docAnchor {

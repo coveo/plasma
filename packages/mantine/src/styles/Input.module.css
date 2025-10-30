@@ -31,6 +31,12 @@
     }
 }
 
+.input {
+    @mixin dark {
+        --input-bg: var(--mantine-color-default);
+    }
+}
+
 .section {
     > svg {
         color: var(--mantine-color-gray-3);
