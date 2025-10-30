@@ -65,7 +65,7 @@ const colorResolver = (variant: InfoTokenVariant): string => {
             return 'var(--mantine-color-error)';
         case 'advice':
         case 'question':
-            return 'var(--mantine-primary-color-filled)';
+            return 'var(--coveo-color-text-primary)';
         case 'warning':
             return 'var(--mantine-color-warning-filled)';
         case 'information':
