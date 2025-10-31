@@ -105,16 +105,16 @@ const BadgeSecondary = enhanceBadge(
 const BadgeSuccess = enhanceBadge(
     MantineBadge.withProps({
         variant: 'light',
-        color: 'lime',
+        color: 'green',
         bd: '1px solid var(--badge-bg)',
-        c: 'lime.6',
+        c: 'green.6',
     }),
     MantineBadge.withProps({
         variant: 'light',
-        color: 'lime',
-        c: 'lime.2',
-        bd: `1px solid ${alpha('var(--mantine-color-lime-3)', 0.16)}`,
-        bg: alpha('var(--mantine-color-lime-3)', 0.16),
+        color: 'green',
+        c: 'green.2',
+        bd: `1px solid ${alpha('var(--mantine-color-green-3)', 0.16)}`,
+        bg: alpha('var(--mantine-color-green-3)', 0.16),
     }),
 );
 const BadgeCritical = enhanceBadge(
