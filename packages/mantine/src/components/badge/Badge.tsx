@@ -1,13 +1,13 @@
 import {
-    Badge as MantineBadge,
+    alpha,
     BadgeCssVariables,
     BadgeProps,
     BadgeStylesNames,
     BadgeVariant,
+    Badge as MantineBadge,
+    PolymorphicComponentProps,
     polymorphicFactory,
     PolymorphicFactory,
-    PolymorphicComponentProps,
-    alpha,
 } from '@mantine/core';
 import {forwardRef, ForwardRefExoticComponent, ReactElement, ReactNode, RefAttributes} from 'react';
 
@@ -102,6 +102,21 @@ const BadgeSecondary = enhanceBadge(
         bg: alpha('var(--mantine-color-gray-3)', 0.16),
     }),
 );
+const BadgeSuccess = enhanceBadge(
+    MantineBadge.withProps({
+        variant: 'light',
+        color: 'green',
+        bd: '1px solid var(--badge-bg)',
+        c: 'green.6',
+    }),
+    MantineBadge.withProps({
+        variant: 'light',
+        color: 'green',
+        c: 'green.2',
+        bd: `1px solid ${alpha('var(--mantine-color-green-3)', 0.16)}`,
+        bg: alpha('var(--mantine-color-green-3)', 0.16),
+    }),
+);
 const BadgeCritical = enhanceBadge(
     MantineBadge.withProps({
         variant: 'light',
@@ -157,6 +172,7 @@ export type BadgeOverloadFactory = PolymorphicFactory<{
     staticComponents: {
         Primary: SemanticBadge;
         Secondary: SemanticBadge;
+        Success: SemanticBadge;
         Critical: SemanticBadge;
         Warning: SemanticBadge;
         Disabled: SemanticBadge;
@@ -167,6 +183,7 @@ export const Badge = polymorphicFactory<BadgeOverloadFactory>((props, ref) => <M
 
 Badge.Primary = BadgePrimary;
 Badge.Secondary = BadgeSecondary;
+Badge.Success = BadgeSuccess;
 Badge.Critical = BadgeCritical;
 Badge.Warning = BadgeWarning;
 Badge.Disabled = BadgeDisabled;

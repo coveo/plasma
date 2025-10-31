@@ -56,6 +56,20 @@ const Demo = () => (
             </Badge.Warning>
         </Cell>
         <Cell>
+            <Badge.Success>Success</Badge.Success>
+        </Cell>
+        <Cell>
+            <Badge.Success size="large">Success</Badge.Success>
+        </Cell>
+        <Cell dark>
+            <Badge.Success on="dark">Success</Badge.Success>
+        </Cell>
+        <Cell dark>
+            <Badge.Success on="dark" size="large">
+                Success
+            </Badge.Success>
+        </Cell>
+        <Cell>
             <Badge.Critical>Critical</Badge.Critical>
         </Cell>
         <Cell>
