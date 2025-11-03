@@ -242,7 +242,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
             disabled={!canEdit}
             draggable={draggable}
             onRemove={() => onRemoveItem?.(index)}
-            removable={!(required && hasOnlyOneItem)}
+            removable={!(isRequired && hasOnlyOneItem)}
         >
             {children(item.data, index)}
         </CollectionItem>

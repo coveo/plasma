@@ -431,4 +431,45 @@ describe('Collection', () => {
             });
         });
     });
+
+    describe('form validation', () => {
+        it('triggers validation when items are removed and displays error', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const form = useForm({
+                    validateInputOnChange: true,
+                    initialValues: {fruits: ['banana', 'orange']},
+                    validate: {
+                        fruits: (value) => (value.length < 2 ? 'Need at least 2 items' : null),
+                    },
+                    enhanceGetInputProps: (payload) => ({
+                        ...enhanceWithCollectionProps(payload, 'fruits', {validateInputOnChange: true}),
+                    }),
+                });
+                return (
+                    <>
+                        <Collection newItem="new" {...form.getInputProps('fruits')}>
+                            {(name) => <span>{name}</span>}
+                        </Collection>
+                        <div data-testid="form-errors">{JSON.stringify(form.errors)}</div>
+                    </>
+                );
+            };
+
+            render(<Fixture />);
+
+            // Initially no errors
+            expect(screen.getByTestId('form-errors')).toHaveTextContent('{}');
+
+            // Remove one item to get below minimum
+            const removeBanana = await within(screen.getByTestId('item-0')).findByRole('button', {name: /remove/i});
+            await user.click(removeBanana);
+
+            // Should show validation error
+            expect(screen.getByTestId('form-errors')).toHaveTextContent('{"fruits":"Need at least 2 items"}');
+
+            // Error should also be displayed in the UI
+            expect(screen.getByText('Need at least 2 items')).toBeInTheDocument();
+        });
+    });
 });
