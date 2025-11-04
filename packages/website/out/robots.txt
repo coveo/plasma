@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://plasma.coveo.com/
+
+# Sitemaps
+Sitemap: https://plasma.coveo.com/sitemap.xml
