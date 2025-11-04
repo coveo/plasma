@@ -26,7 +26,7 @@
         "@mantine/hooks": "8.3.5",
         "@mantine/modals": "8.3.5",
         "@mantine/notifications": "8.3.5",
-        "@mantinex/dev-icons": "1.1.0",
+        "@mantinex/dev-icons": "2.0.0",
         "@stencil/core": "4.38.2",
         "@swc/helpers": "0.5.17",
         "@tanstack/match-sorter-utils": "8.19.4",
