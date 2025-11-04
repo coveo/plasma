@@ -2,7 +2,7 @@ import {Box, BoxProps, Collapse, CompoundStylesApiProps, Factory, useProps} from
 import {flexRender} from '@tanstack/react-table';
 import {defaultColumnSizing} from '@tanstack/table-core';
 import {ForwardedRef, Fragment, type MouseEvent} from 'react';
-import {CustomComponentThemeExtend, identity} from '../../../../utils/index.js';
+import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
 import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
 import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn.js';

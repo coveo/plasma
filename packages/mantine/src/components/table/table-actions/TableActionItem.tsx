@@ -1,9 +1,11 @@
 import {CompoundStylesApiProps, PolymorphicFactory, polymorphicFactory, useProps} from '@mantine/core';
 import {ReactNode} from 'react';
-import {Button, ButtonProps} from '../../button/index.js';
+import {Button} from '../../button/Button.js';
+import {ButtonProps} from '../../button/Button.js';
 import {useTableContext} from '../TableContext.js';
 import {useTableActionContext} from './TableActionContext.js';
-import {Menu, MenuItemProps} from '../../menu/index.js';
+import {Menu} from '../../menu/Menu.js';
+import {MenuItemProps} from '../../menu/Menu.js';
 
 export type TableActionItemStylesNames = 'actionItemRoot';
 

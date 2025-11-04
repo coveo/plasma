@@ -4,7 +4,7 @@ import {CSS} from '@dnd-kit/utilities';
 import {Group, GroupProps, useProps} from '@mantine/core';
 import {FunctionComponent, PropsWithChildren} from 'react';
 
-import {ActionIcon} from '../action-icon/index.js';
+import {ActionIcon} from '../action-icon/ActionIcon.js';
 import {useCollectionContext} from './CollectionContext.js';
 
 interface CollectionItemProps extends CollectionItemSharedProps {

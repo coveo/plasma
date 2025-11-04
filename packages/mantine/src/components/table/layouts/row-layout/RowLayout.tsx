@@ -1,7 +1,7 @@
 import {IconList} from '@coveord/plasma-react-icons';
 import {Factory, MantineComponent, StylesApiProps, useProps, useStyles} from '@mantine/core';
 import {ReactNode} from 'react';
-import {identity} from '../../../../utils/index.js';
+import {identity} from '../../../../utils/createFactoryComponent.js';
 import {TableLayout} from '../../Table.types.js';
 import classes from './RowLayout.module.css';
 import {RowLayoutBody, RowLayoutBodyStylesNames} from './RowLayoutBody.js';

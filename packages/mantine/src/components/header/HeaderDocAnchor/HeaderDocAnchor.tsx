@@ -10,7 +10,7 @@ import {
 } from '@mantine/core';
 import {ReactNode} from 'react';
 import {useHeaderContext} from '../Header.context.js';
-import {InfoToken} from '../../info-token/index.js';
+import {InfoToken} from '../../info-token/InfoToken.js';
 
 export type HeaderDocAnchorStyleNames = 'docAnchorTooltip' | 'docAnchor';
 
