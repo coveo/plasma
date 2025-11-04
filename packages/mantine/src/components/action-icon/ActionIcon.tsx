@@ -60,13 +60,21 @@ export const ActionIcon = polymorphicFactory<ActionIconOverloadFactory>(
     },
 );
 
-const ActionIconPrimary = ActionIcon.withProps({variant: 'filled'});
-const ActionIconSecondary = ActionIcon.withProps({variant: 'light'});
+const ActionIconPrimary = ActionIcon.withProps({
+    variant: 'filled',
+});
+const ActionIconSecondary = ActionIcon.withProps({
+    variant: 'light',
+    color: 'var(--coveo-color-text-primary)',
+});
 const ActionIconTertiary = ActionIcon.withProps({
     variant: 'default',
-    vars: () => ({root: {'--ai-color': 'var(--mantine-primary-color-filled)'}}),
+    color: 'var(--coveo-color-text-primary)',
 });
-const ActionIconQuaternary = ActionIcon.withProps({variant: 'subtle'});
+const ActionIconQuaternary = ActionIcon.withProps({
+    variant: 'subtle',
+    color: 'var(--coveo-color-text-primary)',
+});
 
 const ActionIconDestructive = ActionIcon.withProps({variant: 'filled', color: 'var(--mantine-color-error)'});
 const ActionIconDestructiveSecondary = ActionIcon.withProps({variant: 'light', color: 'var(--mantine-color-error)'});

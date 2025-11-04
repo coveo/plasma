@@ -3,7 +3,9 @@ import {FunctionComponent, ReactNode} from 'react';
 
 const Demo = () => (
     <Grid gutter={0}>
-        <Cell>Default</Cell>
+        <Cell>
+            <Code>Default</Code>
+        </Cell>
         <Cell>
             <Code>size="large"</Code>
         </Cell>
@@ -14,10 +16,12 @@ const Demo = () => (
             <Code>size="large" on="dark"</Code>
         </Cell>
         <Cell>
-            <Badge.Primary>Primary</Badge.Primary>
+            <Badge.Primary on="light">Primary</Badge.Primary>
         </Cell>
         <Cell>
-            <Badge.Primary size="large">Primary</Badge.Primary>
+            <Badge.Primary on="light" size="large">
+                Primary
+            </Badge.Primary>
         </Cell>
         <Cell dark>
             <Badge.Primary on="dark">Primary</Badge.Primary>
@@ -28,10 +32,12 @@ const Demo = () => (
             </Badge.Primary>
         </Cell>
         <Cell>
-            <Badge.Secondary>Secondary</Badge.Secondary>
+            <Badge.Secondary on="light">Secondary</Badge.Secondary>
         </Cell>
         <Cell>
-            <Badge.Secondary size="large">Secondary</Badge.Secondary>
+            <Badge.Secondary on="light" size="large">
+                Secondary
+            </Badge.Secondary>
         </Cell>
         <Cell dark>
             <Badge.Secondary on="dark">Secondary</Badge.Secondary>
@@ -42,10 +48,12 @@ const Demo = () => (
             </Badge.Secondary>
         </Cell>
         <Cell>
-            <Badge.Warning>Warning</Badge.Warning>
+            <Badge.Warning on="light">Warning</Badge.Warning>
         </Cell>
         <Cell>
-            <Badge.Warning size="large">Warning</Badge.Warning>
+            <Badge.Warning on="light" size="large">
+                Warning
+            </Badge.Warning>
         </Cell>
         <Cell dark>
             <Badge.Warning on="dark">Warning</Badge.Warning>
@@ -56,10 +64,12 @@ const Demo = () => (
             </Badge.Warning>
         </Cell>
         <Cell>
-            <Badge.Success>Success</Badge.Success>
+            <Badge.Success on="light">Success</Badge.Success>
         </Cell>
         <Cell>
-            <Badge.Success size="large">Success</Badge.Success>
+            <Badge.Success on="light" size="large">
+                Success
+            </Badge.Success>
         </Cell>
         <Cell dark>
             <Badge.Success on="dark">Success</Badge.Success>
@@ -70,10 +80,12 @@ const Demo = () => (
             </Badge.Success>
         </Cell>
         <Cell>
-            <Badge.Critical>Critical</Badge.Critical>
+            <Badge.Critical on="light">Critical</Badge.Critical>
         </Cell>
         <Cell>
-            <Badge.Critical size="large">Critical</Badge.Critical>
+            <Badge.Critical on="light" size="large">
+                Critical
+            </Badge.Critical>
         </Cell>
         <Cell dark>
             <Badge.Critical on="dark">Critical</Badge.Critical>
@@ -84,10 +96,12 @@ const Demo = () => (
             </Badge.Critical>
         </Cell>
         <Cell>
-            <Badge.Disabled>Disabled</Badge.Disabled>
+            <Badge.Disabled on="light">Disabled</Badge.Disabled>
         </Cell>
         <Cell>
-            <Badge.Disabled size="large">Disabled</Badge.Disabled>
+            <Badge.Disabled on="light" size="large">
+                Disabled
+            </Badge.Disabled>
         </Cell>
         <Cell dark>
             <Badge.Disabled on="dark">Disabled</Badge.Disabled>

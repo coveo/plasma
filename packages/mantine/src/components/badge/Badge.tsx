@@ -5,9 +5,10 @@ import {
     BadgeStylesNames,
     BadgeVariant,
     Badge as MantineBadge,
-    PolymorphicComponentProps,
     polymorphicFactory,
     PolymorphicFactory,
+    PolymorphicComponentProps,
+    useComputedColorScheme,
 } from '@mantine/core';
 import {forwardRef, ForwardRefExoticComponent, ReactElement, ReactNode, RefAttributes} from 'react';
 
@@ -45,7 +46,7 @@ export interface SemanticBadgeProps
     size?: 'small' | 'large';
     /**
      * Whether the badge is displayed over a light or dark background.
-     * @default 'light'
+     * @default Falls back to theme.
      */
     on?: 'light' | 'dark';
     /**
@@ -61,7 +62,8 @@ const enhanceBadge = (
     ComponentDark: <L = 'div'>(props: PolymorphicComponentProps<L, BadgeProps>) => ReactElement,
 ): SemanticBadge =>
     forwardRef<HTMLDivElement, SemanticBadgeProps>((props, ref) => {
-        const Component = props.on === 'dark' ? ComponentDark : ComponentLight;
+        const computedColorScheme = useComputedColorScheme('light', {getInitialValueInEffect: true});
+        const Component = (props.on || computedColorScheme) === 'dark' ? ComponentDark : ComponentLight;
         return (
             <Component
                 ref={ref}
