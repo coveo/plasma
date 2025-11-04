@@ -1,3 +1,15 @@
+## 56.3.0 (2025-11-04)
+
+* feat: correct dark mode appearances of several components 🌜 COMHUB2-1151 (#4182) 081196d, closes #4182
+* feat(badge): +success badge (#4184) d0e1cfe, closes #4184
+* fix(collection): fix validation not triggering, fix remove button con… (#4177) aa5d318, closes #4177
+* chore(deps): update actions/setup-node action to v6 (#4180) 3285894, closes #4180
+* chore(deps): update all non-major dependencies (#4174) 07aa674, closes #4174
+* chore(deps): update dependency @vitejs/plugin-react-swc to v4 (#4167) 4c01539, closes #4167
+* chore(deps): update dependency cross-env to v10 (#4170) e7ce98b, closes #4170
+
+
+
 ## <small>56.2.6 (2025-10-27)</small>
 
 * fix(react-icons): query icons with numbers in their name (#4178) 0d6e7b3, closes #4178
