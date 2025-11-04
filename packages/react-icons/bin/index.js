@@ -22,10 +22,7 @@ const convertIcons = async (grouped) => Promise.all(Object.entries(grouped).map(
 
 const convertIcon = async ([iconName, variants]) => {
     await fs.ensureDir(`${outDirPath}/${iconName}`);
-    return Promise.all(
-        variants.map(convertVariant),
-        fs.appendFile(`${outDirPath}/index.ts`, `export * from './${iconName}/index.js';\n`),
-    );
+    return Promise.all(variants.map(convertVariant));
 };
 
 const convertVariant = async (file) => {
@@ -57,8 +54,8 @@ const convertVariant = async (file) => {
         );
         return Promise.all([
             fs.appendFile(
-                `${outDirPath}/${iconName}/index.ts`,
-                `export {default as ${componentName}} from './${variantName}.js';\n`,
+                `${outDirPath}/index.ts`,
+                `export {default as ${componentName}} from './${iconName}/${variantName}.js';\n`,
             ),
             fs.outputFile(`${outDirPath}/${iconName}/${variantName}.tsx`, tsCode),
         ]);
