@@ -132,7 +132,9 @@ export {
 
 export {noop};
 
-export * from './theme/index.js';
+// Theme
+export * from './theme/plasmaCSSVariablesResolver.js';
+export * from './theme/Plasmantine.js';
 
 declare module '@mantine/core' {
     export interface MantineThemeColorsOverride {
