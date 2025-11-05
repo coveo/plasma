@@ -2,10 +2,10 @@ import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import {Box, BoxProps, CompoundStylesApiProps, factory, Factory, Grid, Tooltip, useProps} from '@mantine/core';
 import {ReactNode} from 'react';
 
-import {Button} from '../../button/index.js';
+import {Button} from '../../button/Button.js';
 import {TableLayoutControl} from '../layouts/TableLayoutControl.js';
 import {TableComponentsOrder} from '../Table.js';
-import {TableHeaderActions} from '../table-actions/index.js';
+import {TableHeaderActions} from '../table-actions/TableHeaderActions.js';
 import {useTableContext} from '../TableContext.js';
 
 export type TableHeaderStylesNames = 'headerRoot' | 'headerGrid' | 'headerGridInner' | 'headerCol';

@@ -11,9 +11,9 @@ import {
     useProps,
 } from '@mantine/core';
 import {MouseEventHandler, ReactNode, useState} from 'react';
-import {ActionIcon} from '../../action-icon/index.js';
-import {Button} from '../../button/index.js';
-import {InlineConfirm} from '../../inline-confirm/index.js';
+import {ActionIcon} from '../../action-icon/ActionIcon.js';
+import {Button} from '../../button/Button.js';
+import {InlineConfirm} from '../../inline-confirm/InlineConfirm.js';
 import {TableAction} from '../Table.types.js';
 import {useTableContext} from '../TableContext.js';
 import {TableActionProvider} from './TableActionContext.js';

@@ -17,8 +17,8 @@ import {
 import {useDidUpdate} from '@mantine/hooks';
 import {ForwardedRef, ReactNode} from 'react';
 
-import {CustomComponentThemeExtend, identity} from '../../utils/index.js';
-import {Button} from '../button/index.js';
+import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
+import {Button} from '../button/Button.js';
 import classes from './Collection.module.css';
 import {CollectionProvider} from './CollectionContext.js';
 import {CollectionItem} from './CollectionItem.js';

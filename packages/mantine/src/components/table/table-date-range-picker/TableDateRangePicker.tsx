@@ -7,8 +7,8 @@ import {useState} from 'react';
 import {
     DateRangePickerInlineCalendar,
     DateRangePickerInlineCalendarProps,
-    DateRangePickerPreset,
-} from '../../date-range-picker/index.js';
+} from '../../date-range-picker/DateRangePickerInlineCalendar.js';
+import {DateRangePickerPreset} from '../../date-range-picker/DateRangePickerPresetSelect.js';
 import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
 

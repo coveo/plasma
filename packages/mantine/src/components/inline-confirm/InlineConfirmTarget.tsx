@@ -1,6 +1,6 @@
 import {createPolymorphicComponent} from '@mantine/core';
 import {forwardRef, MouseEventHandler} from 'react';
-import {Button, ButtonProps} from '../button/index.js';
+import {Button, type ButtonProps} from '../button/Button.js';
 import {InlineConfirmComponentsProps} from './InlineConfirm.js';
 import {useInlineConfirm} from './InlineConfirmContext.js';
 
