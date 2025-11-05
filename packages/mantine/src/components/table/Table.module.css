@@ -5,6 +5,8 @@
 .table {
     width: 100%;
     padding-bottom: var(--mantine-spacing-sm);
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .header {
