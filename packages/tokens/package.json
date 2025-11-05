@@ -47,7 +47,7 @@
         "@types/node": "24.9.2",
         "chroma-js": "3.1.2",
         "commander": "12.1.0",
-        "dotenv": "16.6.1",
+        "dotenv": "17.2.3",
         "dotenv-safe": "9.1.0",
         "figma-js": "1.16.0",
         "fs-extra": "11.3.2",
