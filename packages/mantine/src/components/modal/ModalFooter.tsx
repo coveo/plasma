@@ -1,8 +1,6 @@
 import {useRef, useEffect} from 'react';
 import {Factory, factory} from '@mantine/core';
-import {StickyFooter} from '../sticky-footer/StickyFooter.js';
-import {StickyFooterProps} from '../sticky-footer/StickyFooter.js';
-import {StickyFooterStylesNames} from '../sticky-footer/StickyFooter.js';
+import {StickyFooter, type StickyFooterProps, type StickyFooterStylesNames} from '../sticky-footer/StickyFooter.js';
 import classes from './ModalFooter.module.css';
 
 export interface ModalFooterProps extends Omit<StickyFooterProps, 'variant'> {}
