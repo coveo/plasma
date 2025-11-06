@@ -11,6 +11,7 @@ export default defineConfig({
         ],
     },
     test: {
+        dir: './src',
         globals: true,
         environment: 'jsdom',
         setupFiles: './src/__tests__/VitestSetup.ts',
