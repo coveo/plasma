@@ -25,11 +25,15 @@
             "import": "./dist/esm/index.js"
         },
         "./mock": {
-            "require": "./dist/cjs/mock/index.js"
+            "require": "./dist/cjs/mock/index.js",
+            "import": "./dist/esm/mock/index.js"
         },
         "./testing-library": {
             "require": "./dist/cjs/testing-library/index.js",
             "import": "./dist/esm/testing-library/index.js"
+        },
+        "./vite-plugin": {
+            "import": "./dist/esm/vite-plugin/index.js"
         }
     },
     "main": "./dist/cjs/index.js",
@@ -75,6 +79,7 @@
         "rimraf": "6.0.1",
         "tslib": "2.8.1",
         "typescript": "5.9.3",
+        "vite": "7.1.12",
         "vitest": "4.0.5"
     },
     "peerDependencies": {

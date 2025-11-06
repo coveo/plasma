@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {forwardRef, type SVGProps} from 'react';
 
 /**
  * You can use the following mock in jest to avoid loading the actual icons during tests, it can slow down your tests if you don't.
@@ -16,21 +16,19 @@ const formatLabel = (name: string) => {
 
 const handler = {
     get: (obj: any, prop: string) => {
-        const IconMock = React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
-            ({height, width, ...others}, ref) => (
-                <svg
-                    ref={ref}
-                    role="img"
-                    aria-label={formatLabel(prop)}
-                    width={width || height || '1em'}
-                    height={height || width || '1em'}
-                    {...others}
-                />
-            ),
-        );
+        const IconMock = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(({height, width, ...others}, ref) => (
+            <svg
+                ref={ref}
+                role="img"
+                aria-label={formatLabel(prop)}
+                width={width || height || '1em'}
+                height={height || width || '1em'}
+                {...others}
+            />
+        ));
         IconMock.displayName = prop;
         return IconMock;
     },
 };
 
-module.exports = new Proxy({}, handler);
+export default new Proxy({}, handler);
