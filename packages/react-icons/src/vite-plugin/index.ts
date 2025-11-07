@@ -9,22 +9,29 @@ const plasmaIconsMockPlugin = () =>
     ({
         name: 'coveord/plasma-react-icons/mock',
         enforce: 'pre',
-        transform: (code: string) => {
-            // Only transform files that import from @coveord/plasma-react-icons
-            if (!code.includes('@coveord/plasma-react-icons')) {
+        transform: (code: string, id: string) => {
+            // Only transform relevant files (e.g., .ts, .tsx, .js, .jsx) that import from @coveord/plasma-react-icons
+            if (!code.includes('@coveord/plasma-react-icons') || !/\.(ts|tsx|js|jsx)$/.test(id)) {
                 return null;
             }
 
             // Transform named imports to default import + destructuring
             // e.g., import { IconA, IconB } from '@coveord/plasma-react-icons'
             // becomes: import __plasmaIcons from '@coveord/plasma-react-icons/mock'; const IconA = __plasmaIcons.IconA; const IconB = __plasmaIcons.IconB;
-            const namedImportRegex = /import\s+\{([^}]+)}\s+from\s+['"]@coveord\/plasma-react-icons['"]/g;
+            // Only match value imports, not type-only imports
+            const namedImportRegex = /import\s+(?!type\b)\{([^}]+)}\s+from\s+['"]@coveord\/plasma-react-icons['"]/g;
 
             let transformedCode = code;
-            let match;
             const imports: string[] = [];
 
-            while ((match = namedImportRegex.exec(code)) !== null) {
+            // Collect all matches first to avoid issues with regex state and string mutation
+            const matches = Array.from(code.matchAll(namedImportRegex));
+            for (const match of matches) {
+                // Extra safety: skip if this is a type-only import (shouldn't match, but just in case)
+                if (/import\s+type\s*\{/.test(match[0])) {
+                    continue;
+                }
+
                 const importedNames = match[1]
                     .split(',')
                     .map((name) => name.trim())
