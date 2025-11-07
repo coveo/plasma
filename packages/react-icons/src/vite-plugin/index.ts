@@ -10,16 +10,22 @@ const plasmaIconsMockPlugin = () =>
         name: 'coveord/plasma-react-icons/mock',
         enforce: 'pre',
         transform: (code: string, id: string) => {
-            // Only transform relevant files (e.g., .ts, .tsx, .js, .jsx) that import from @coveord/plasma-react-icons
-            if (!code.includes('@coveord/plasma-react-icons') || !/\.(ts|tsx|js|jsx)$/.test(id)) {
+            // Only transform relevant files (e.g., .ts, .tsx, .js, .jsx) that import from @coveord/plasma-react-icons and aren't in node_modules
+            if (
+                !code.includes('@coveord/plasma-react-icons') ||
+                id.includes('/node_modules/') ||
+                !/\.(ts|tsx|js|jsx)$/.test(id)
+            ) {
                 return null;
             }
 
             // Transform named imports to default import + destructuring
-            // e.g., import { IconA, IconB } from '@coveord/plasma-react-icons'
-            // becomes: import __plasmaIcons from '@coveord/plasma-react-icons/mock'; const IconA = __plasmaIcons.IconA; const IconB = __plasmaIcons.IconB;
-            // Only match value imports, not type-only imports
-            const namedImportRegex = /import\s+(?!type\b)\{([^}]+)}\s+from\s+['"]@coveord\/plasma-react-icons['"]/g;
+            // e.g., import { ArrowUpSize16Px, IconHome } from '@coveord/plasma-react-icons'
+            // becomes:
+            // import __plasmaIcons from '@coveord/plasma-react-icons/mock';
+            // const ArrowUpSize16Px = __plasmaIcons.ArrowUpSize16Px;
+            // const IconHome = __plasmaIcons.IconHome;
+            const namedImportRegex = /import\s+(?!type\b)\{([^}]+)}\s+from\s+['"]@coveord\/plasma-react-icons['"];?/g;
 
             let transformedCode = code;
             const imports: string[] = [];
@@ -35,6 +41,7 @@ const plasmaIconsMockPlugin = () =>
                 const importedNames = match[1]
                     .split(',')
                     .map((name) => name.trim())
+                    .filter((name) => !name.startsWith('type ')) // avoid type-only imports
                     .filter((name) => name);
 
                 imports.push(...importedNames);
