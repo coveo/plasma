@@ -161,7 +161,7 @@ describe('Plasma Icon Testing Utilities', () => {
         test('times out when icon not found', async () => {
             const {container} = render(<div>No icons here</div>);
 
-            await expect(findByIconName(container, 'search')).rejects.toThrow(
+            await expect(findByIconName(container, 'search', undefined, {timeout: 50})).rejects.toThrow(
                 'Unable to find an element with icon name: search',
             );
         });
