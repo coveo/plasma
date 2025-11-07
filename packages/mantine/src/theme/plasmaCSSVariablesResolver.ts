@@ -31,7 +31,7 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
 
             // mantine overrides
             '--mantine-primary-color-light': 'var(--mantine-primary-color-7)',
-            '--mantine-color-body': theme.colors.dark[8],
+            '--mantine-color-body': theme.colors.dark[7],
             '--mantine-color-default': theme.colors.dark[7],
             '--mantine-color-default-border': theme.colors.dark[6],
             '--mantine-color-default-hover': theme.colors.dark[6],
