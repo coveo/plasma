@@ -1,4 +1,3 @@
-import {Anchor} from '@mantine/core';
 import {render, screen, within} from '@test-utils';
 
 import {Header} from '../Header.js';
@@ -32,9 +31,9 @@ describe('Header', () => {
         const {rerender} = render(
             <Header>
                 <Header.Breadcrumbs data-testid="breadcrumbs-after">
-                    <Anchor>One</Anchor>
-                    <Anchor>Two</Anchor>
-                    <Anchor>Three</Anchor>
+                    <Header.BreadcrumbAnchor>One</Header.BreadcrumbAnchor>
+                    <Header.BreadcrumbAnchor>Two</Header.BreadcrumbAnchor>
+                    <Header.BreadcrumbAnchor>Three</Header.BreadcrumbAnchor>
                 </Header.Breadcrumbs>
                 <div data-testid="title">Title</div>
             </Header>,
@@ -49,9 +48,9 @@ describe('Header', () => {
             <Header>
                 <div data-testid="title">Title</div>
                 <Header.Breadcrumbs data-testid="breadcrumbs-after">
-                    <Anchor>One</Anchor>
-                    <Anchor>Two</Anchor>
-                    <Anchor>Three</Anchor>
+                    <Header.BreadcrumbAnchor>One</Header.BreadcrumbAnchor>
+                    <Header.BreadcrumbAnchor>Two</Header.BreadcrumbAnchor>
+                    <Header.BreadcrumbAnchor>Three</Header.BreadcrumbAnchor>
                 </Header.Breadcrumbs>
             </Header>,
         );
@@ -59,6 +58,21 @@ describe('Header', () => {
         expect(screen.getByTestId('breadcrumbs-after').compareDocumentPosition(screen.getByTestId('title'))).toBe(
             Node.DOCUMENT_POSITION_FOLLOWING,
         );
+    });
+
+    it('adds an icon if the single prop is specified on the breadcrumb anchor', async () => {
+        render(
+            <Header>
+                <Header.Breadcrumbs data-testid="breadcrumbs-after">
+                    <Header.BreadcrumbAnchor href="#" single>
+                        One
+                    </Header.BreadcrumbAnchor>
+                </Header.Breadcrumbs>
+                Title
+            </Header>,
+        );
+
+        expect(screen.getByRole('link', {name: 'arrow pointing back One'})).toBeVisible();
     });
 
     it('renders a doc link icon if a doc anchor is provided', async () => {
