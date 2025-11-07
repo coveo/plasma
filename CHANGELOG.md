@@ -1,3 +1,11 @@
+## <small>56.3.2 (2025-11-07)</small>
+
+* chore(deps): update dependency vite to v7 [security] (#4192) 8ca3db6, closes #4192
+* fix(react-icons): mock and vite plugin (#4193) 470805f, closes #4193
+* feat(mantine, breadcrumb): prop to add back arrow on breadcrumb anchor (#4183) 79e60f8, closes #4183
+
+
+
 ## <small>56.3.1 (2025-11-07)</small>
 
 * chore(deps): bump vitest to v4 (#4189) 24a9617, closes #4189
