@@ -13,7 +13,7 @@ const handler = {
             const TablerIconMock = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
                 ({height, width, className, ...others}, ref) => {
                     const tablerClassName = MockUtils.formatToTablerClassName(prop);
-                    const combinedClassName = className ? [tablerClassName, className].join(' ') : tablerClassName;
+                    const combinedClassName = className ? `${tablerClassName} ${className}` : tablerClassName;
                     return (
                         <svg
                             ref={ref}
