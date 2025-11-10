@@ -1,3 +1,9 @@
+## <small>56.3.3 (2025-11-10)</small>
+
+* fix(react-icons, mock): keep tabler class when adding className (#4195) 2f59e60, closes #4195
+
+
+
 ## <small>56.3.2 (2025-11-07)</small>
 
 * chore(deps): update dependency vite to v7 [security] (#4192) 8ca3db6, closes #4192
