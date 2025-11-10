@@ -11,15 +11,19 @@ const handler = {
     get: (obj: any, prop: string) => {
         if (prop.startsWith('Icon')) {
             const TablerIconMock = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
-                ({height, width, ...others}, ref) => (
-                    <svg
-                        ref={ref}
-                        width={width || height || '1em'}
-                        height={height || width || '1em'}
-                        className={MockUtils.formatToTablerClassName(prop)}
-                        {...others}
-                    />
-                ),
+                ({height, width, className, ...others}, ref) => {
+                    const tablerClassName = MockUtils.formatToTablerClassName(prop);
+                    const combinedClassName = className ? `${tablerClassName} ${className}` : tablerClassName;
+                    return (
+                        <svg
+                            ref={ref}
+                            width={width || height || '1em'}
+                            height={height || width || '1em'}
+                            className={combinedClassName}
+                            {...others}
+                        />
+                    );
+                },
             );
             TablerIconMock.displayName = prop;
             return TablerIconMock;

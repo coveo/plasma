@@ -57,6 +57,13 @@ describe('Mocked Icons Proxy', () => {
             expect(svg).toHaveAttribute('height', '24');
         });
 
+        it('handles className props correctly', () => {
+            render(<MockedIcons.IconChevronDown className="my-className" />);
+            const svg = extendedScreen.getByIconName('iconChevronDown');
+
+            expect(svg).toHaveClass('tabler-icon tabler-icon-chevron-down my-className');
+        });
+
         it('defaults to 1em when no size is provided', () => {
             render(<MockedIcons.IconChevronDown />);
             const svg = extendedScreen.getByIconName('iconChevronDown');
