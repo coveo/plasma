@@ -69,7 +69,7 @@
 /* Table.Header */
 .headerRoot {
     border-bottom: 1px solid var(--mantine-color-default-border);
-    background-color: var(--mantine-color-body);
+    background-color: var(--coveo-app-background);
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
     position: relative;
     min-height: 69px;
@@ -105,7 +105,7 @@
         padding-right: var(--mantine-spacing-xl);
     }
 
-    background-color: var(--mantine-color-body);
+    background-color: var(--coveo-app-background);
 
     &[data-control='true'] {
         @mixin hover {

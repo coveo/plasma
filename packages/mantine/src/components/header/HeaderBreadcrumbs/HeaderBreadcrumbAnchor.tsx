@@ -1,10 +1,21 @@
-import {Anchor, type AnchorProps, type PolymorphicFactory, polymorphicFactory} from '@mantine/core';
+import {IconChevronLeft} from '@coveord/plasma-react-icons';
+import {Anchor, type AnchorProps, Flex, type PolymorphicFactory, polymorphicFactory} from '@mantine/core';
+import {ReactNode} from 'react';
 import {useHeaderContext} from '../Header.context.js';
 
-export type HeaderBreadcrumbAnchorStyleNames = 'breadcrumbAnchor';
+export interface HeaderBreadcrumbAnchorProps extends AnchorProps {
+    /**
+     * If true, only one breadcrumb will be displayed with a back arrow
+     * @default false
+     **/
+    single?: boolean;
+    children: ReactNode;
+}
+
+export type HeaderBreadcrumbAnchorStyleNames = 'breadcrumbAnchor' | 'breadcrumbAnchorSingleGroup';
 
 export type HeaderBreadcrumbAnchorFactory = PolymorphicFactory<{
-    props: AnchorProps;
+    props: HeaderBreadcrumbAnchorProps;
     ref: HTMLAnchorElement;
     stylesNames: HeaderBreadcrumbAnchorStyleNames;
     compound: true;
@@ -13,8 +24,20 @@ export type HeaderBreadcrumbAnchorFactory = PolymorphicFactory<{
 }>;
 
 export const HeaderBreadcrumbAnchor = polymorphicFactory<HeaderBreadcrumbAnchorFactory>((props, ref) => {
-    const {className, classNames, styles, style, ...others} = props;
+    const {children, className, classNames, styles, style, single, ...others} = props;
     const ctx = useHeaderContext();
+
+    const content = single ? (
+        <Flex
+            align="center"
+            {...ctx.getStyles('breadcrumbAnchorSingleGroup', {className, classNames, styles, style, props})}
+        >
+            <IconChevronLeft aria-label="arrow pointing back" size={16} />
+            {children}
+        </Flex>
+    ) : (
+        children
+    );
 
     return (
         <Anchor
@@ -22,7 +45,9 @@ export const HeaderBreadcrumbAnchor = polymorphicFactory<HeaderBreadcrumbAnchorF
             inherit
             {...ctx.getStyles('breadcrumbAnchor', {className, classNames, styles, style, props})}
             {...others}
-        />
+        >
+            {content}
+        </Anchor>
     );
 });
 HeaderBreadcrumbAnchor.displayName = '@coveo/plasma-mantine/HeaderBreadcrumbAnchor';

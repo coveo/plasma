@@ -1,3 +1,29 @@
+## <small>56.3.3 (2025-11-10)</small>
+
+* fix(react-icons, mock): keep tabler class when adding className (#4195) 2f59e60, closes #4195
+
+
+
+## <small>56.3.2 (2025-11-07)</small>
+
+* chore(deps): update dependency vite to v7 [security] (#4192) 8ca3db6, closes #4192
+* fix(react-icons): mock and vite plugin (#4193) 470805f, closes #4193
+* feat(mantine, breadcrumb): prop to add back arrow on breadcrumb anchor (#4183) 79e60f8, closes #4183
+
+
+
+## <small>56.3.1 (2025-11-07)</small>
+
+* chore(deps): bump vitest to v4 (#4189) 24a9617, closes #4189
+* chore(deps): update dependency @types/node to v24 (#4181) 216b330, closes #4181
+* chore(deps): update dependency vite to v6.4.1 [security] (#4175) c82ef7f, closes #4175
+* fix(deps): update dependency @mantinex/dev-icons to v2 (#4063) 988a202, closes #4063
+* fix(mantine): change `mantine-color-body` back to white (#4191) ad1a96f, closes #4191
+* fix(table): +border-spacing: 0 (#4185) 04fbad3, closes #4185
+* refactor: remove barrel files except main entrypoint in monorepo (#4186) cadf2ea, closes #4186
+
+
+
 ## 56.3.0 (2025-11-04)
 
 * feat: correct dark mode appearances of several components 🌜 COMHUB2-1151 (#4182) 081196d, closes #4182

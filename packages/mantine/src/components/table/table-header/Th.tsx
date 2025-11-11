@@ -2,7 +2,7 @@ import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@cov
 import {BoxProps, CompoundStylesApiProps, Factory, Group, UnstyledButton, useProps} from '@mantine/core';
 import {Header, defaultColumnSizing, flexRender} from '@tanstack/react-table';
 import {AriaAttributes, ComponentType, ForwardedRef, SVGProps} from 'react';
-import {CustomComponentThemeExtend, identity} from '../../../utils/index.js';
+import {CustomComponentThemeExtend, identity} from '../../../utils/createFactoryComponent.js';
 import {useTableContext} from '../TableContext.js';
 
 export type TableThStylesNames = 'th';

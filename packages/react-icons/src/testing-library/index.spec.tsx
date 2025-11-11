@@ -17,9 +17,9 @@ import {
 } from './index';
 
 // Import actual icons from the generated folder
-import {SearchSize24Px} from '../generated/search/index.js';
-import {AddSize16Px} from '../generated/add/index.js';
-import {DeleteSize24Px} from '../generated/delete/index.js';
+import SearchSize24Px from '../generated/search/size24Px.js';
+import AddSize16Px from '../generated/add/size16Px.js';
+import DeleteSize24Px from '../generated/delete/size24Px.js';
 
 // Import Tabler icon for testing
 import {IconNumber123} from '../TablerIcons';
@@ -161,7 +161,7 @@ describe('Plasma Icon Testing Utilities', () => {
         test('times out when icon not found', async () => {
             const {container} = render(<div>No icons here</div>);
 
-            await expect(findByIconName(container, 'search')).rejects.toThrow(
+            await expect(findByIconName(container, 'search', undefined, {timeout: 50})).rejects.toThrow(
                 'Unable to find an element with icon name: search',
             );
         });

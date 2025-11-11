@@ -1,7 +1,7 @@
 import {Flex, Group, Stack, StackProps, Text, Tooltip} from '@mantine/core';
 import cx from 'clsx';
 import {PropsWithChildren} from 'react';
-import {InfoToken} from '../info-token/index.js';
+import {InfoToken} from '../info-token/InfoToken.js';
 import BrowserPreviewClasses from './BrowserPreview.module.css';
 
 export interface BrowserPreviewProps extends StackProps {

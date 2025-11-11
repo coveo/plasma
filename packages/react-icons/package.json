@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react-icons",
-    "version": "56.3.0",
+    "version": "56.3.3",
     "description": "Plasma iconography exposed as react components",
     "keywords": [
         "plasma",
@@ -25,11 +25,15 @@
             "import": "./dist/esm/index.js"
         },
         "./mock": {
-            "require": "./dist/cjs/mock/index.js"
+            "require": "./dist/cjs/mock/index.js",
+            "import": "./dist/esm/mock/index.js"
         },
         "./testing-library": {
             "require": "./dist/cjs/testing-library/index.js",
             "import": "./dist/esm/testing-library/index.js"
+        },
+        "./vite-plugin": {
+            "import": "./dist/esm/vite-plugin/index.js"
         }
     },
     "main": "./dist/cjs/index.js",
@@ -61,6 +65,7 @@
         "@testing-library/dom": "10.4.1",
         "@testing-library/jest-dom": "6.9.1",
         "@testing-library/react": "16.3.0",
+        "@types/node": "24.9.2",
         "@types/react": "18.3.26",
         "@types/react-dom": "18.3.7",
         "fs-extra": "11.3.2",
@@ -74,7 +79,8 @@
         "rimraf": "6.0.1",
         "tslib": "2.8.1",
         "typescript": "5.9.3",
-        "vitest": "3.2.4"
+        "vite": "7.1.12",
+        "vitest": "4.0.5"
     },
     "peerDependencies": {
         "react": ">= 18.0",

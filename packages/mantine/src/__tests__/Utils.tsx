@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import {FunctionComponent, PropsWithChildren, ReactElement} from 'react';
 
 import {Combobox, createTheme, Popover} from '@mantine/core';
-import {Plasmantine} from '../theme/index.js';
+import {Plasmantine} from '../theme/Plasmantine.js';
 
 const testTheme = createTheme({
     components: {

@@ -3,7 +3,7 @@ import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, TextInput, use
 import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
 import {ChangeEventHandler, MouseEventHandler, useEffect, useState} from 'react';
 
-import {ActionIcon} from '../../action-icon/index.js';
+import {ActionIcon} from '../../action-icon/ActionIcon.js';
 import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
 
