@@ -1,8 +1,11 @@
 {
     "codeConnect": {
-        "parser": "react"
-    },
-    "importPaths": {
-        "*": "@coveord/plasma-mantine"
+        "parser": "react",
+        "importPaths": {
+            "*": "@coveord/plasma-mantine"
+        },
+        "include": ["src/components/**/*.figma.{tsx,jsx}"],
+        "label": "React",
+        "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?m=auto&t=q0sNSlhd9h2VD776-6"
     }
 }
