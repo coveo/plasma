@@ -35,3 +35,6 @@ travis-deploy-key
 # cache
 .ultra.cache.json
 .turbo
+
+# environment files
+**/*.env
