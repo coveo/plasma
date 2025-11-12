@@ -72,7 +72,7 @@ describe('Header', () => {
             </Header>,
         );
 
-        expect(screen.getByRole('link', {name: 'arrow pointing back One'})).toBeVisible();
+        expect(screen.getByRole('link', {name: 'arrow pointing backOne'})).toBeVisible();
     });
 
     it('renders a doc link icon if a doc anchor is provided', async () => {

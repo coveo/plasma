@@ -28,8 +28,8 @@ describe('Th', () => {
         render(<Fixture />);
 
         const headers = screen.getAllByRole('columnheader');
-        expect(headers[0]).toHaveAccessibleName(/name doubleArrowHead/i);
-        expect(headers[1]).toHaveAccessibleName(/type doubleArrowHead/i);
+        expect(headers[0]).toHaveAccessibleName(/nameDoubleArrowHead/i);
+        expect(headers[1]).toHaveAccessibleName(/typeDoubleArrowHead/i);
     });
 
     it('changes the sort icon when clicking on a table header', async () => {
@@ -44,15 +44,15 @@ describe('Th', () => {
         };
         render(<Fixture />);
 
-        const unsortedRowHeader = screen.getByRole('columnheader', {name: /name doubleArrowHead/i});
+        const unsortedRowHeader = screen.getByRole('columnheader', {name: /nameDoubleArrowHead/i});
         expect(unsortedRowHeader).toBeVisible();
         await user.click(unsortedRowHeader);
 
-        const sortedAscRowHeader = screen.getByRole('columnheader', {name: /name arrowUp/i});
+        const sortedAscRowHeader = screen.getByRole('columnheader', {name: /nameArrowUp/i});
         expect(sortedAscRowHeader).toBeVisible();
         await user.click(sortedAscRowHeader);
 
-        const sortedDescRowHeader = screen.getByRole('columnheader', {name: /name arrowDown/i});
+        const sortedDescRowHeader = screen.getByRole('columnheader', {name: /nameArrowDown/i});
         expect(sortedDescRowHeader).toBeVisible();
         await user.click(sortedDescRowHeader);
     });
@@ -73,7 +73,7 @@ describe('Th', () => {
                 return <Table store={store} data={data} columns={columns} />;
             };
             render(<Fixture />);
-            await user.click(screen.getByRole('columnheader', {name: /name doubleArrowHead/i}));
+            await user.click(screen.getByRole('columnheader', {name: /nameDoubleArrowHead/i}));
             expect(window.location.search).toBe('?sortBy=name.asc');
         });
 
@@ -88,7 +88,7 @@ describe('Th', () => {
                 return <Table store={store} data={data} columns={columns} />;
             };
             render(<Fixture />);
-            expect(screen.getByRole('columnheader', {name: /name arrowDown/i})).toBeVisible();
+            expect(screen.getByRole('columnheader', {name: /nameArrowDown/i})).toBeVisible();
         });
     });
 });
