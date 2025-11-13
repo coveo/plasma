@@ -10,20 +10,22 @@ import {figma} from '@figma/code-connect';
 
 figma.connect(
     Chip,
-    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A51718',
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-51718&m=dev',
     {
         props: {
             // These props were automatically mapped based on your linked code:
             checked: figma.enum('State', {
                 Checked: true,
             }),
-            ta: figma.enum('State', {
-                Checked: 'end',
-            }),
             disabled: figma.enum('State', {
                 Disabled: true,
             }),
+            children: figma.string('Children'),
         },
-        example: (props) => <Chip checked={props.checked} ta={props.ta} disabled={props.disabled} />,
+        example: ({checked, disabled, children}) => (
+            <Chip checked={checked} disabled={disabled}>
+                {children}
+            </Chip>
+        ),
     },
 );
