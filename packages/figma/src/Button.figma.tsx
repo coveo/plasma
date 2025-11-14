@@ -1,25 +1,27 @@
 import {Button} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
+const sharedProps = {
+    leftSection: figma.boolean('Left Icon', {
+        true: figma.instance('Swap Left'),
+    }),
+    rightSection: figma.boolean('Right Icon', {
+        true: figma.instance('Swap Right'),
+    }),
+    placeholder: figma.string('Placeholder'),
+    disabled: figma.enum('State', {
+        Disabled: true,
+    }),
+};
+
 figma.connect(
     Button.Primary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49794',
     {
         variant: {Variant: 'Primary'},
-        props: {
-            leftIcon: figma.boolean('Left Icon', {
-                true: figma.instance('Swap Left'),
-            }),
-            rightIcon: figma.boolean('Right Icon', {
-                true: figma.instance('Swap Right'),
-            }),
-            placeholder: figma.string('Placeholder'),
-            disabled: figma.enum('State', {
-                Disabled: true,
-            }),
-        },
-        example: ({placeholder, leftIcon, rightIcon, disabled}) => (
-            <Button.Primary leftIcon={leftIcon} rightIcon={rightIcon} disabled={disabled}>
+        props: sharedProps,
+        example: ({placeholder, leftSection, rightSection, disabled}) => (
+            <Button.Primary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
             </Button.Primary>
         ),
@@ -31,20 +33,9 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49794',
     {
         variant: {Variant: 'Secondary'},
-        props: {
-            leftIcon: figma.boolean('Left Icon', {
-                true: figma.instance('Swap Left'),
-            }),
-            rightIcon: figma.boolean('Right Icon', {
-                true: figma.instance('Swap Right'),
-            }),
-            placeholder: figma.string('Placeholder'),
-            disabled: figma.enum('State', {
-                Disabled: true,
-            }),
-        },
-        example: ({leftIcon, rightIcon, placeholder, disabled}) => (
-            <Button.Secondary leftIcon={leftIcon} rightIcon={rightIcon} disabled={disabled}>
+        props: sharedProps,
+        example: ({leftSection, rightSection, placeholder, disabled}) => (
+            <Button.Secondary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
             </Button.Secondary>
         ),
@@ -56,20 +47,9 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49794',
     {
         variant: {Variant: 'Tertiary'},
-        props: {
-            leftIcon: figma.boolean('Left Icon', {
-                true: figma.instance('Swap Left'),
-            }),
-            rightIcon: figma.boolean('Right Icon', {
-                true: figma.instance('Swap Right'),
-            }),
-            placeholder: figma.string('Placeholder'),
-            disabled: figma.enum('State', {
-                Disabled: true,
-            }),
-        },
-        example: ({leftIcon, rightIcon, placeholder, disabled}) => (
-            <Button.Tertiary leftIcon={leftIcon} rightIcon={rightIcon} disabled={disabled}>
+        props: sharedProps,
+        example: ({leftSection, rightSection, placeholder, disabled}) => (
+            <Button.Tertiary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
             </Button.Tertiary>
         ),
@@ -81,20 +61,9 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49794',
     {
         variant: {Variant: 'Quaternary'},
-        props: {
-            leftIcon: figma.boolean('Left Icon', {
-                true: figma.instance('Swap Left'),
-            }),
-            rightIcon: figma.boolean('Right Icon', {
-                true: figma.instance('Swap Right'),
-            }),
-            placeholder: figma.string('Placeholder'),
-            disabled: figma.enum('State', {
-                Disabled: true,
-            }),
-        },
-        example: ({leftIcon, rightIcon, placeholder, disabled}) => (
-            <Button.Quaternary leftIcon={leftIcon} rightIcon={rightIcon} disabled={disabled}>
+        props: sharedProps,
+        example: ({leftSection, rightSection, placeholder, disabled}) => (
+            <Button.Quaternary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
             </Button.Quaternary>
         ),
@@ -108,20 +77,9 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49737',
     {
         variant: {Variant: 'Primary'},
-        props: {
-            leftIcon: figma.boolean('Left Icon', {
-                true: figma.instance('Swap Left'),
-            }),
-            rightIcon: figma.boolean('Right Icon', {
-                true: figma.instance('Swap Right'),
-            }),
-            placeholder: figma.string('Placeholder'),
-            disabled: figma.enum('State', {
-                Disabled: true,
-            }),
-        },
-        example: ({leftIcon, rightIcon, placeholder, disabled}) => (
-            <Button.DestructivePrimary leftIcon={leftIcon} rightIcon={rightIcon} disabled={disabled}>
+        props: sharedProps,
+        example: ({leftSection, rightSection, placeholder, disabled}) => (
+            <Button.DestructivePrimary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
             </Button.DestructivePrimary>
         ),
@@ -133,20 +91,9 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49737',
     {
         variant: {Variant: 'Secondary'},
-        props: {
-            leftIcon: figma.boolean('Left Icon', {
-                true: figma.instance('Swap Left'),
-            }),
-            rightIcon: figma.boolean('Right Icon', {
-                true: figma.instance('Swap Right'),
-            }),
-            placeholder: figma.string('Placeholder'),
-            disabled: figma.enum('State', {
-                Disabled: true,
-            }),
-        },
-        example: ({leftIcon, rightIcon, placeholder, disabled}) => (
-            <Button.DestructiveSecondary leftIcon={leftIcon} rightIcon={rightIcon} disabled={disabled}>
+        props: sharedProps,
+        example: ({leftSection, rightSection, placeholder, disabled}) => (
+            <Button.DestructiveSecondary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
             </Button.DestructiveSecondary>
         ),
@@ -157,20 +104,9 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49737',
     {
         variant: {Variant: 'Tertiary'},
-        props: {
-            leftIcon: figma.boolean('Left Icon', {
-                true: figma.instance('Swap Left'),
-            }),
-            rightIcon: figma.boolean('Right Icon', {
-                true: figma.instance('Swap Right'),
-            }),
-            placeholder: figma.string('Placeholder'),
-            disabled: figma.enum('State', {
-                Disabled: true,
-            }),
-        },
-        example: ({leftIcon, rightIcon, placeholder, disabled}) => (
-            <Button.DestructiveTertiary leftIcon={leftIcon} rightIcon={rightIcon} disabled={disabled}>
+        props: sharedProps,
+        example: ({leftSection, rightSection, placeholder, disabled}) => (
+            <Button.DestructiveTertiary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
             </Button.DestructiveTertiary>
         ),
@@ -181,20 +117,9 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49737',
     {
         variant: {Variant: 'Quaternary'},
-        props: {
-            leftIcon: figma.boolean('Left Icon', {
-                true: figma.instance('Swap Left'),
-            }),
-            rightIcon: figma.boolean('Right Icon', {
-                true: figma.instance('Swap Right'),
-            }),
-            placeholder: figma.string('Placeholder'),
-            disabled: figma.enum('State', {
-                Disabled: true,
-            }),
-        },
-        example: ({leftIcon, rightIcon, placeholder, disabled}) => (
-            <Button.DestructiveQuaternary leftIcon={leftIcon} rightIcon={rightIcon} disabled={disabled}>
+        props: sharedProps,
+        example: ({leftSection, rightSection, placeholder, disabled}) => (
+            <Button.DestructiveQuaternary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
             </Button.DestructiveQuaternary>
         ),
