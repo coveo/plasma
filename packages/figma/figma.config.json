@@ -4,8 +4,8 @@
         "importPaths": {
             "*": "@coveord/plasma-mantine"
         },
-        "include": ["src/**/*.figma.{tsx,jsx}"],
+        "include": ["src/**/Image.figma.{tsx,jsx}"],
         "label": "React",
-        "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?m=auto&t=q0sNSlhd9h2VD776-6"
+        "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=44-35909&p=f&m=dev"
     }
 }
