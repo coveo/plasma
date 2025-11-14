@@ -12,10 +12,10 @@ figma.connect(
                 Large: 'large',
             }),
             iconLeft: figma.boolean('Icon Left', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Left'),
             }),
             iconRight: figma.boolean('Icon Right', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Right'),
             }),
             placeholder: figma.string('Placeholder'),
         },
@@ -38,10 +38,10 @@ figma.connect(
                 Large: 'large',
             }),
             iconLeft: figma.boolean('Icon Left', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Left'),
             }),
             iconRight: figma.boolean('Icon Right', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Right'),
             }),
             placeholder: figma.string('Placeholder'),
         },
@@ -64,10 +64,10 @@ figma.connect(
                 Large: 'large',
             }),
             iconLeft: figma.boolean('Icon Left', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Left'),
             }),
             iconRight: figma.boolean('Icon Right', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Right'),
             }),
             placeholder: figma.string('Placeholder'),
         },
@@ -90,10 +90,10 @@ figma.connect(
                 Large: 'large',
             }),
             iconLeft: figma.boolean('Icon Left', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Left'),
             }),
             iconRight: figma.boolean('Icon Right', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Right'),
             }),
             placeholder: figma.string('Placeholder'),
         },
@@ -116,10 +116,10 @@ figma.connect(
                 Large: 'large',
             }),
             iconLeft: figma.boolean('Icon Left', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Left'),
             }),
             iconRight: figma.boolean('Icon Right', {
-                true: figma.children('*'),
+                true: figma.instance('Swap Right'),
             }),
             placeholder: figma.string('Placeholder'),
         },
