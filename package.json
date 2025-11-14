@@ -48,14 +48,14 @@
     "devDependencies": {
         "@commitlint/cli": "19.8.1",
         "@commitlint/config-conventional": "19.8.1",
-        "@coveo/semantic-monorepo-tools": "2.7.0",
-        "@types/node": "24.9.2",
-        "@vitest/eslint-plugin": "1.3.23",
+        "@coveo/semantic-monorepo-tools": "2.7.1",
+        "@types/node": "24.10.0",
+        "@vitest/eslint-plugin": "1.4.1",
         "aws-sdk": "2.1692.0",
         "commitizen": "4.3.1",
         "conventional-changelog-angular": "8.1.0",
         "cz-conventional-changelog": "3.3.0",
-        "eslint": "9.38.0",
+        "eslint": "9.39.1",
         "eslint-config-prettier": "10.1.8",
         "eslint-plugin-import-x": "4.16.1",
         "eslint-plugin-jsdoc": "61.1.12",
@@ -65,19 +65,19 @@
         "eslint-plugin-react-refresh": "0.4.24",
         "eslint-plugin-testing-library": "7.13.3",
         "eslint-plugin-unused-imports": "4.3.0",
-        "globals": "16.4.0",
+        "globals": "16.5.0",
         "husky": "9.1.7",
-        "lint-staged": "16.2.5",
+        "lint-staged": "16.2.6",
         "postcss": "8.5.6",
         "prettier": "3.6.2",
         "sort-package-json": "3.4.0",
         "stylelint": "16.25.0",
         "stylelint-config-standard-scss": "14.0.0",
-        "turbo": "2.5.8",
+        "turbo": "2.6.0",
         "typescript": "5.9.3",
-        "typescript-eslint": "8.46.2"
+        "typescript-eslint": "8.46.3"
     },
-    "packageManager": "pnpm@10.18.3+sha512.bbd16e6d7286fd7e01f6b3c0b3c932cda2965c06a908328f74663f10a9aea51f1129eea615134bf992831b009eabe167ecb7008b597f40ff9bc75946aadfb08d",
+    "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
     "pnpm": {
         "peerDependencyRules": {
             "ignoreMissing": [
