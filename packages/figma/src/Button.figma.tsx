@@ -1,7 +1,7 @@
 import {Button} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
-const sharedProps = {
+const buttonProps = {
     leftSection: figma.boolean('Left Icon', {
         true: figma.instance('Swap Left'),
     }),
@@ -19,7 +19,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49794',
     {
         variant: {Variant: 'Primary'},
-        props: sharedProps,
+        props: buttonProps,
         example: ({placeholder, leftSection, rightSection, disabled}) => (
             <Button.Primary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
@@ -33,7 +33,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49794',
     {
         variant: {Variant: 'Secondary'},
-        props: sharedProps,
+        props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.Secondary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
@@ -47,7 +47,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49794',
     {
         variant: {Variant: 'Tertiary'},
-        props: sharedProps,
+        props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.Tertiary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
@@ -61,7 +61,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49794',
     {
         variant: {Variant: 'Quaternary'},
-        props: sharedProps,
+        props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.Quaternary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
@@ -77,7 +77,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49737',
     {
         variant: {Variant: 'Primary'},
-        props: sharedProps,
+        props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.DestructivePrimary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
@@ -91,7 +91,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49737',
     {
         variant: {Variant: 'Secondary'},
-        props: sharedProps,
+        props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.DestructiveSecondary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
@@ -104,7 +104,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49737',
     {
         variant: {Variant: 'Tertiary'},
-        props: sharedProps,
+        props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.DestructiveTertiary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
@@ -117,7 +117,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A49737',
     {
         variant: {Variant: 'Quaternary'},
-        props: sharedProps,
+        props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.DestructiveQuaternary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
                 {placeholder}
