@@ -7,9 +7,6 @@ figma.connect(
     {
         variant: {Variant: 'Primary'},
         props: {
-            // No matching props could be found for these Figma properties:
-            // "swapLeft": figma.instance('Swap Left'),
-            // "swapRight": figma.instance('Swap Right'),
             leftIcon: figma.boolean('Left Icon', {
                 true: figma.instance('Swap Left'),
             }),
@@ -35,9 +32,6 @@ figma.connect(
     {
         variant: {Variant: 'Secondary'},
         props: {
-            // No matching props could be found for these Figma properties:
-            // "swapLeft": figma.instance('Swap Left'),
-            // "swapRight": figma.instance('Swap Right'),
             leftIcon: figma.boolean('Left Icon', {
                 true: figma.instance('Swap Left'),
             }),
@@ -63,9 +57,6 @@ figma.connect(
     {
         variant: {Variant: 'Tertiary'},
         props: {
-            // No matching props could be found for these Figma properties:
-            // "swapLeft": figma.instance('Swap Left'),
-            // "swapRight": figma.instance('Swap Right'),
             leftIcon: figma.boolean('Left Icon', {
                 true: figma.instance('Swap Left'),
             }),
@@ -91,9 +82,6 @@ figma.connect(
     {
         variant: {Variant: 'Quaternary'},
         props: {
-            // No matching props could be found for these Figma properties:
-            // "swapLeft": figma.instance('Swap Left'),
-            // "swapRight": figma.instance('Swap Right'),
             leftIcon: figma.boolean('Left Icon', {
                 true: figma.instance('Swap Left'),
             }),
@@ -121,9 +109,6 @@ figma.connect(
     {
         variant: {Variant: 'Primary'},
         props: {
-            // No matching props could be found for these Figma properties:
-            // "swapLeft": figma.instance('Swap Left'),
-            // "swapRight": figma.instance('Swap Right'),
             leftIcon: figma.boolean('Left Icon', {
                 true: figma.instance('Swap Left'),
             }),
@@ -149,9 +134,6 @@ figma.connect(
     {
         variant: {Variant: 'Secondary'},
         props: {
-            // No matching props could be found for these Figma properties:
-            // "swapLeft": figma.instance('Swap Left'),
-            // "swapRight": figma.instance('Swap Right'),
             leftIcon: figma.boolean('Left Icon', {
                 true: figma.instance('Swap Left'),
             }),
@@ -176,9 +158,6 @@ figma.connect(
     {
         variant: {Variant: 'Tertiary'},
         props: {
-            // No matching props could be found for these Figma properties:
-            // "swapLeft": figma.instance('Swap Left'),
-            // "swapRight": figma.instance('Swap Right'),
             leftIcon: figma.boolean('Left Icon', {
                 true: figma.instance('Swap Left'),
             }),
@@ -203,9 +182,6 @@ figma.connect(
     {
         variant: {Variant: 'Quaternary'},
         props: {
-            // No matching props could be found for these Figma properties:
-            // "swapLeft": figma.instance('Swap Left'),
-            // "swapRight": figma.instance('Swap Right'),
             leftIcon: figma.boolean('Left Icon', {
                 true: figma.instance('Swap Left'),
             }),
