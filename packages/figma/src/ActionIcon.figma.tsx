@@ -21,14 +21,12 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-49884&m=dev',
     {
         variant: {Variant: 'Secondary'},
-
         props: {
             children: figma.instance('Icon Swap'),
             disabled: figma.enum('State', {
                 Disabled: true,
             }),
         },
-
         example: ({disabled, children}) => <ActionIcon.Secondary disabled={disabled}>{children}</ActionIcon.Secondary>,
     },
 );
@@ -38,14 +36,12 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-49884&m=dev',
     {
         variant: {Variant: 'Tertiary'},
-
         props: {
             children: figma.instance('Icon Swap'),
             disabled: figma.enum('State', {
                 Disabled: true,
             }),
         },
-
         example: ({disabled, children}) => <ActionIcon.Tertiary disabled={disabled}>{children}</ActionIcon.Tertiary>,
     },
 );
