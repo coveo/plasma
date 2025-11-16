@@ -12,6 +12,6 @@ figma.connect(
                 Large: 134,
             }),
         },
-        example: ({h}) => <Image h={h} w={h} src={'ImageSVGHere'} />,
+        example: ({h}) => <Image h={h} w={h} src={'SVGImage'} />,
     },
 );
