@@ -1,4 +1,4 @@
-import {Alert} from '@coveord/plasma-mantine';
+import {Alert, Anchor} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 /**
@@ -13,24 +13,110 @@ figma.connect(
     Alert,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50375',
     {
+        variant: {Variant: 'Information'},
         props: {
-            // No matching props could be found for these Figma properties:
-            // "showClose": figma.boolean('Show Close'),
-            // "showTitle": figma.boolean('Show Title'),
-            // "swapIconLeft": figma.instance('Swap icon left'),
+            withCloseButton: figma.boolean('Show Close'),
+            title: figma.boolean('Show Title', {
+                true: 'Information',
+            }),
             // "button2": figma.boolean('Button 2'),
             // "button": figma.boolean('Button'),
-            // "link": figma.boolean('Link'),
-            // "leftIcon": figma.boolean('Left icon'),
-            // "rightIcon": figma.boolean('Right icon'),
-            // "swapIconRight": figma.instance('Swap icon right'),
-            // "variant": figma.enum('Variant', {
-            //   "Information": "information",
-            //   "Advice": "advice",
-            //   "Warning": "warning",
-            //   "Caution": "caution"
-            // })
+            link: figma.boolean('Link', {
+                true: (
+                    <Anchor href="https://coveord.com" target="_blank">
+                        Learn more
+                    </Anchor>
+                ),
+            }),
         },
-        example: (props) => <Alert />,
+        example: ({withCloseButton, title, link}) => (
+            <Alert withCloseButton={withCloseButton} title={title}>
+                {link}
+            </Alert>
+        ),
+    },
+);
+
+figma.connect(
+    Alert,
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50375',
+    {
+        variant: {Variant: 'Advice'},
+        props: {
+            withCloseButton: figma.boolean('Show Close'),
+            title: figma.boolean('Show Title', {
+                true: 'Advice',
+            }),
+            // "button2": figma.boolean('Button 2'),
+            // "button": figma.boolean('Button'),
+            link: figma.boolean('Link', {
+                true: (
+                    <Anchor href="https://coveord.com" target="_blank">
+                        Learn more
+                    </Anchor>
+                ),
+            }),
+        },
+        example: ({withCloseButton, title, link}) => (
+            <Alert withCloseButton={withCloseButton} title={title}>
+                {link}
+            </Alert>
+        ),
+    },
+);
+
+figma.connect(
+    Alert,
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50375',
+    {
+        variant: {Variant: 'Warning'},
+        props: {
+            withCloseButton: figma.boolean('Show Close'),
+            title: figma.boolean('Show Title', {
+                true: 'Warning!',
+            }),
+            // "button2": figma.boolean('Button 2'),
+            // "button": figma.boolean('Button'),
+            link: figma.boolean('Link', {
+                true: (
+                    <Anchor href="https://coveord.com" target="_blank">
+                        Learn more
+                    </Anchor>
+                ),
+            }),
+        },
+        example: ({withCloseButton, title, link}) => (
+            <Alert withCloseButton={withCloseButton} title={title}>
+                {link}
+            </Alert>
+        ),
+    },
+);
+
+figma.connect(
+    Alert,
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50375',
+    {
+        variant: {Variant: 'Caution'},
+        props: {
+            withCloseButton: figma.boolean('Show Close'),
+            title: figma.boolean('Show Title', {
+                true: 'Bummer!',
+            }),
+            // "button2": figma.boolean('Button 2'),
+            // "button": figma.boolean('Button'),
+            link: figma.boolean('Link', {
+                true: (
+                    <Anchor href="https://coveord.com" target="_blank">
+                        Learn more
+                    </Anchor>
+                ),
+            }),
+        },
+        example: ({withCloseButton, title, link}) => (
+            <Alert withCloseButton={withCloseButton} title={title}>
+                {link}
+            </Alert>
+        ),
     },
 );
