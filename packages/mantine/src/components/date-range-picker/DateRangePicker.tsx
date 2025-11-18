@@ -102,6 +102,7 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
         defaultOpened,
         onOpenedChange,
         onClick,
+        onCancel,
         onChange,
         presets,
         startProps,
@@ -154,6 +155,16 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
         setOpened(false);
     };
 
+    const handleClick = () => {
+        setOpened(true);
+        onClick?.();
+    };
+
+    const handleCancel = () => {
+        setOpened(false);
+        onCancel?.();
+    };
+
     const _value = value ?? dateRange;
     const formattedRange = `${formatter(_value[0])} - ${formatter(_value[1])}`;
     const dateRangeInitialized = _value.every((date: DateStringValue) => typeof date === 'string' && date !== '');
@@ -164,7 +175,7 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
                 <InputBase
                     component="button"
                     leftSection={<IconCalendar height={16} />}
-                    onClick={() => setOpened(true)}
+                    onClick={handleClick}
                     error={error}
                     {...getStyles('input', {className, style, ...stylesApiProps})}
                     {...others}
@@ -176,9 +187,7 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
                 <DateRangePickerInlineCalendar
                     initialRange={_value}
                     onApply={handleApply}
-                    onCancel={() => {
-                        setOpened(false);
-                    }}
+                    onCancel={handleCancel}
                     presets={presets}
                     rangeCalendarProps={rangeCalendarProps}
                     startProps={startProps}
