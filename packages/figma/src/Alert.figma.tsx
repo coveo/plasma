@@ -10,7 +10,7 @@ import {figma} from '@figma/code-connect';
  */
 
 figma.connect(
-    Alert,
+    Alert.Information,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50375',
     {
         variant: {Variant: 'Information'},
@@ -30,15 +30,15 @@ figma.connect(
             }),
         },
         example: ({withCloseButton, title, link}) => (
-            <Alert withCloseButton={withCloseButton} title={title}>
+            <Alert.Information withCloseButton={withCloseButton} title={title}>
                 {link}
-            </Alert>
+            </Alert.Information>
         ),
     },
 );
 
 figma.connect(
-    Alert,
+    Alert.Advice,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50375',
     {
         variant: {Variant: 'Advice'},
@@ -58,15 +58,15 @@ figma.connect(
             }),
         },
         example: ({withCloseButton, title, link}) => (
-            <Alert withCloseButton={withCloseButton} title={title}>
+            <Alert.Advice withCloseButton={withCloseButton} title={title}>
                 {link}
-            </Alert>
+            </Alert.Advice>
         ),
     },
 );
 
 figma.connect(
-    Alert,
+    Alert.Warning,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50375',
     {
         variant: {Variant: 'Warning'},
@@ -86,15 +86,15 @@ figma.connect(
             }),
         },
         example: ({withCloseButton, title, link}) => (
-            <Alert withCloseButton={withCloseButton} title={title}>
+            <Alert.Warning withCloseButton={withCloseButton} title={title}>
                 {link}
-            </Alert>
+            </Alert.Warning>
         ),
     },
 );
 
 figma.connect(
-    Alert,
+    Alert.Critical,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50375',
     {
         variant: {Variant: 'Caution'},
@@ -103,20 +103,26 @@ figma.connect(
             title: figma.boolean('Show Title', {
                 true: 'Bummer!',
             }),
-            // "button2": figma.boolean('Button 2'),
-            // "button": figma.boolean('Button'),
-            link: figma.boolean('Link', {
-                true: (
-                    <Anchor href="https://coveord.com" target="_blank">
-                        Learn more
-                    </Anchor>
-                ),
+            button2: figma.boolean('Button 2', {
+                true: figma.instance('*'),
+            }),
+            button: figma.boolean('Button', {
+                true: figma.instance('*'),
+            }),
+            link: figma.boolean('Link'),
+            rightSection: figma.boolean<React.ReactNode, never>('Right icon', {
+                true: figma.instance('Button'),
+            }),
+            leftSection: figma.boolean<React.ReactNode, never>('Left icon', {
+                true: figma.instance('Button'),
             }),
         },
-        example: ({withCloseButton, title, link}) => (
-            <Alert withCloseButton={withCloseButton} title={title}>
+        example: ({withCloseButton, title, link, rightSection, leftSection, button2, button}) => (
+            <Alert.Critical withCloseButton={withCloseButton} title={title}>
                 {link}
-            </Alert>
+                {button2}
+                {button}
+            </Alert.Critical>
         ),
     },
 );
