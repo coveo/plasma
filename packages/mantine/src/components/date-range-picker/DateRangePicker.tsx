@@ -54,9 +54,9 @@ export interface DateRangePickerProps
      */
     onOpenedChange?(opened: boolean): void;
     /**
-     * Optional formatter function to format the time value.
-     * Receives the time prop and should return a string.
-     * @default (time) => dayjs(time).format('h:mm:ss A')
+     * Optional formatter function to format the date value.
+     * Receives the date prop and should return a string.
+     * @default (time) => dayjs(time).format('MMM D, YYYY')
      */
     formatter?: (time: dayjs.ConfigType) => string;
     /**
