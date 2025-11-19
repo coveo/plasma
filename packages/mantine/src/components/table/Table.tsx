@@ -133,7 +133,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
     const table = useReactTable({
-        data,
+        data: data || [],
         state: {
             globalFilter: store.state.globalFilter,
             sorting: store.state.sorting,
