@@ -34,7 +34,7 @@ export type DateRangePickerStylesNames = 'input';
 
 export interface DateRangePickerProps
     extends BoxProps,
-        Omit<DateRangePickerInlineCalendarProps, 'onApply' | 'onCancel' | 'initialRange'>,
+        Pick<DateRangePickerInlineCalendarProps, 'presets' | 'rangeCalendarProps' | 'startProps' | 'endProps'>,
         Pick<PopoverProps, 'opened' | 'defaultOpened'>,
         StylesApiProps<DateRangePickerFactory> {
     /**
