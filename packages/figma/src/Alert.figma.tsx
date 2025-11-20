@@ -1,4 +1,4 @@
-import {Alert, Anchor} from '@coveord/plasma-mantine';
+import {Alert, Anchor, Text} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 /**
@@ -110,15 +110,11 @@ figma.connect(
                 true: figma.instance('*'),
             }),
             link: figma.boolean('Link'),
-            rightSection: figma.boolean<React.ReactNode, never>('Right icon', {
-                true: figma.instance('Button'),
-            }),
-            leftSection: figma.boolean<React.ReactNode, never>('Left icon', {
-                true: figma.instance('Button'),
-            }),
+            children: figma.textContent('Message'),
         },
-        example: ({withCloseButton, title, link, rightSection, leftSection, button2, button}) => (
+        example: ({withCloseButton, title, link, button2, button, children}) => (
             <Alert.Critical withCloseButton={withCloseButton} title={title}>
+                <Text>{children}</Text>
                 {link}
                 {button2}
                 {button}
