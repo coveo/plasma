@@ -86,8 +86,9 @@ describe('CodeEditor', () => {
         const user = userEvent.setup();
         const onSearchSpy = vi.fn();
         render(<CodeEditor onSearch={onSearchSpy} />);
+        // Wait for editor to mount to ensure editorRef.current is defined so handleSearch invokes onSearch
+        await screen.findByTestId('monaco-editor');
         await user.click(screen.getByRole('button', {name: /search/i}));
-
         expect(onSearchSpy).toHaveBeenCalledTimes(1);
     });
 
