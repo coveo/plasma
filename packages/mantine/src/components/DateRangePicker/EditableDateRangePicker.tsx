@@ -52,3 +52,4 @@ export const EditableDateRangePicker = ({
         </>
     );
 };
+export type {DateRangePickerPreset} from './DateRangePickerPresetSelect';

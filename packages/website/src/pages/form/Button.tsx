@@ -17,7 +17,7 @@ const ButtonPage = () => (
             disabled: <ButtonDisabledDemo center title="Disabled" />,
             promiseHandler: <ButtonWithAsyncLoaderDemo center title="Async click handler" />,
         }}
-        sourcePath="/packages/mantine/src/components/button/Button.tsx"
+        sourcePath="/packages/mantine/src/components/Button/Button.tsx"
         propsMetadata={ButtonMetadata}
     />
 );

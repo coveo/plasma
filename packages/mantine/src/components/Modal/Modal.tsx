@@ -55,3 +55,4 @@ export const Modal = PlasmaModal;
 export type ModalProps = PlasmaModalProps;
 
 export type ModalFactory = PlasmaModalFactory;
+export type {ModalRootProps, ModalCssVariables, ModalStylesNames} from '@mantine/core';
