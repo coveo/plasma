@@ -1,4 +1,4 @@
-import {Button} from '@coveord/plasma-mantine';
+import {Button} from '@coveord/plasma-mantine/components/Button';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent, PropsWithChildren} from 'react';
 import githubLogo from '../assets/github-mark.svg';

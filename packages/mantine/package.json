@@ -22,6 +22,26 @@
         ".": {
             "require": "./dist/cjs/index.js",
             "import": "./dist/esm/index.js"
+        },
+        "./plasmantine": {
+            "types": "./dist/esm/theme.d.ts",
+            "require": "./dist/cjs/theme.js",
+            "import": "./dist/esm/theme.js"
+        },
+        "./hooks": {
+            "types": "./dist/esm/hooks.d.ts",
+            "require": "./dist/cjs/hooks.js",
+            "import": "./dist/esm/hooks.js"
+        },
+        "./form": {
+            "types": "./dist/esm/form.d.ts",
+            "require": "./dist/cjs/form.js",
+            "import": "./dist/esm/form.js"
+        },
+        "./components/*": {
+            "types": "./dist/esm/components/*/*.d.ts",
+            "require": "./dist/cjs/components/*/*.js",
+            "import": "./dist/esm/components/*/*.js"
         }
     },
     "main": "./dist/cjs/index.js",
