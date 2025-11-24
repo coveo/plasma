@@ -1,13 +1,6 @@
-import {CalendarSize16Px} from '@coveord/plasma-react-icons';
-import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, InputBase, Popover, useProps} from '@mantine/core';
-import dayjs from 'dayjs';
-
+import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, useProps} from '@mantine/core';
 import {type DatesRangeValue, type DateStringValue} from '@mantine/dates';
-import {useState} from 'react';
-import {
-    DateRangePickerInlineCalendar,
-    DateRangePickerInlineCalendarProps,
-} from '../../DateRangePicker/DateRangePickerInlineCalendar.js';
+import {DateRangePicker, type DateRangePickerProps} from '../../DateRangePicker/DateRangePicker.js';
 import {DateRangePickerPreset} from '../../DateRangePicker/DateRangePickerPresetSelect.js';
 import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
@@ -17,7 +10,7 @@ export type TableDateRangePickerStylesNames = 'dateRangeRoot';
 export interface TableDateRangePickerProps
     extends BoxProps,
         CompoundStylesApiProps<TableDateRangePickerFactory>,
-        Pick<DateRangePickerInlineCalendarProps, 'startProps' | 'endProps' | 'rangeCalendarProps'> {
+        Pick<DateRangePickerProps, 'placeholder' | 'startProps' | 'endProps' | 'rangeCalendarProps'> {
     /**
      * An object containing date presets.
      * If empty the preset dropdown won't be shown
@@ -45,28 +38,24 @@ const defaultProps: Partial<TableDateRangePickerProps> = {
 
 export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();
-    const {presets, rangeCalendarProps, classNames, className, styles, style, vars, ...others} = useProps(
-        'PlasmaTableDateRangePicker',
-        defaultProps,
-        props,
-    );
-    const [opened, setOpened] = useState(false);
+    const {
+        presets,
+        rangeCalendarProps,
+        startProps,
+        endProps,
+        placeholder,
+        classNames,
+        className,
+        styles,
+        style,
+        vars,
+        ...others
+    } = useProps('PlasmaTableDateRangePicker', defaultProps, props);
 
-    const onApply = (dates: DatesRangeValue<DateStringValue | null>) => {
+    const onChange = (dates: DatesRangeValue<DateStringValue | null>) => {
         store.setDateRange(dates);
         store.setPagination({pageIndex: 0, pageSize: store.state.pagination.pageSize});
-        setOpened(false);
     };
-
-    const onCancel = () => {
-        setOpened(false);
-    };
-
-    const formatDate = (date: DateStringValue) => dayjs(date).format('MMM D, YYYY');
-    const formattedRange = `${formatDate(store.state.dateRange[0])} - ${formatDate(store.state.dateRange[1])}`;
-    const dateRangeInitialized = store.state.dateRange.every(
-        (date: DateStringValue) => typeof date === 'string' && date !== '',
-    );
 
     const stylesApiProps = {classNames, styles};
 
@@ -78,27 +67,16 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
             {...getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <Popover opened={opened} onChange={setOpened}>
-                <Popover.Target>
-                    <InputBase
-                        component="button"
-                        leftSection={<CalendarSize16Px height={16} />}
-                        miw={220}
-                        onClick={() => setOpened(true)}
-                    >
-                        {dateRangeInitialized ? formattedRange : 'Select date range'}
-                    </InputBase>
-                </Popover.Target>
-                <Popover.Dropdown p={0}>
-                    <DateRangePickerInlineCalendar
-                        initialRange={store.state.dateRange}
-                        onApply={onApply}
-                        onCancel={onCancel}
-                        presets={presets}
-                        rangeCalendarProps={rangeCalendarProps}
-                    />
-                </Popover.Dropdown>
-            </Popover>
+            <DateRangePicker
+                value={store.state.dateRange}
+                onChange={onChange}
+                presets={presets}
+                rangeCalendarProps={rangeCalendarProps}
+                startProps={startProps}
+                endProps={endProps}
+                placeholder={placeholder}
+                miw={220}
+            />
         </Grid.Col>
     );
 });

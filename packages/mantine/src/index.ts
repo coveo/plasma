@@ -60,6 +60,7 @@ export {enhanceWithCollectionProps} from './components/Collection/enhanceWithCol
 export * from './components/CopyToClipboard/CopyToClipboard.js';
 
 // Date Range Picker
+export * from './components/DateRangePicker/DateRangePicker.js';
 export * from './components/DateRangePicker/DateRangePickerInlineCalendar.js';
 export * from './components/DateRangePicker/DateRangePickerPopoverCalendar.js';
 export * from './components/DateRangePicker/DateRangePickerPresetSelect.js';
@@ -114,8 +115,8 @@ export * from './components/StickyFooter/StickyFooter.js';
 
 // Table - override Mantine Table
 export {flexRender as renderTableCell} from '@tanstack/react-table';
-export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
 export {type TablePredicateProps} from './components/Table/table-predicate/TablePredicate.js';
+export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
 export {
     type TableAction,
     type TableLayout,
@@ -124,11 +125,7 @@ export {
 } from './components/Table/Table.types.js';
 export {useTableContext} from './components/Table/TableContext.js';
 export {useTable, type TableState, type TableStore, type UseTableOptions} from './components/Table/use-table.js';
-export {
-    useUrlSyncedState,
-    type UseUrlSyncedStateOptions,
-    type SearchParamEntry,
-} from './components/Table/use-url-synced-state.js';
+export {useUrlSyncedState, type SearchParamEntry, type UseUrlSyncedStateOptions} from './hooks/use-url-synced-state.js';
 
 export {noop};
 
