@@ -1,3 +1,22 @@
+## 56.4.0 (2025-11-24)
+
+* feat(actionIcon): connect actionIcon to figma (#4203) 0e3ac2f, closes #4203
+* feat(button): +connect button to figma (#4205) 574db83, closes #4205
+* feat(closebutton): connect closebutton to figma (#4208) da76ad2, closes #4208
+* feat(date-range-picker): implement standalone DateRangePicker component (#4210) ecf5fea, closes #4210
+* feat(figma): code connect TextInput (#4211) b69b3c2, closes #4211
+* feat(mantine): add entrypoints to optimize library import (#4212) 2658ae4, closes #4212
+* feat(navlink): reset on master, +navlink figma connection (#4202) 6340809, closes #4202
+* fix(mantine): prevent undefined data passed down to react-table (#4204) 4bb4de4, closes #4204
+* Ad UI 11079 image codeconnect (#4207) 97c0186, closes #4207
+* Feat/ADUI-10495 code connect poc (#4196) 4d96e12, closes #4196
+* chore(deps): lock file maintenance (#3997) 91d45d2, closes #3997
+* chore(deps): update all non-major dependencies (#4179) 2e14ccc, closes #4179
+* chore(deps): update dependency eslint-plugin-jsdoc to v61 (#4194) ffb3d82, closes #4194
+* chore(deps): update dependency jsdom to v27 (#4199) 72395ae, closes #4199
+
+
+
 ## <small>56.3.3 (2025-11-10)</small>
 
 * fix(react-icons, mock): keep tabler class when adding className (#4195) 2f59e60, closes #4195
