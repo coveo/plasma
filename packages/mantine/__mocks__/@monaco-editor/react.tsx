@@ -1,5 +1,5 @@
-import {type EditorProps} from '@monaco-editor/react';
-import {FunctionComponent, useEffect} from 'react';
+import type {EditorProps} from '@monaco-editor/react';
+import {type FunctionComponent, useEffect} from 'react';
 
 const editor: any = {
     onDidFocusEditorText: vi.fn(),
