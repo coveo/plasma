@@ -1,0 +1,25 @@
+.root {
+    &[data-variant='primary'] {
+        padding: var(--mantine-spacing-xl);
+        padding-bottom: var(--mantine-spacing-lg);
+    }
+
+    & .description {
+        color: var(--mantine-color-dimmed);
+        font-weight: var(--coveo-fw-normal);
+    }
+}
+
+.title {
+    word-break: break-word;
+    color: var(--coveo-color-title);
+}
+
+.docAnchor {
+    margin-left: var(--mantine-spacing-xs);
+    vertical-align: middle;
+}
+
+.breadcrumbText {
+    color: var(--coveo-color-title);
+}

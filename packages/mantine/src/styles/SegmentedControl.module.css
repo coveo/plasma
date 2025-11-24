@@ -1,34 +1,55 @@
-.root {
-    background-color: var(--mantine-color-gray-2);
-}
-
-.indicator {
-    border-radius: var(--sc-radius, var(--mantine-radius-sm));
+:root {
+    --sc-radius: var(--mantine-radius-sm);
 }
 
 .label {
-    font-weight: 300;
+    @mixin light {
+        font-weight: var(--coveo-fw-normal);
+        color: var(--mantine-color-dimmed);
+
+        @mixin hover {
+            color: var(--mantine-color-text);
+        }
+
+        &[data-active] {
+            color: var(--mantine-color-text);
+        }
+
+        &[data-disabled] {
+            color: var(--mantine-color-disabled-color);
+        }
+    }
+}
+
+.root {
+    border-radius: var(--mantine-radius-md);
+    border: 1px solid var(--mantine-color-default-border);
 
     @mixin light {
-        color: var(--mantine-color-gray-6);
+        background-color: var(--mantine-color-gray-light);
     }
+}
 
-    &:where([data-disabled]) {
-        @mixin light {
-            color: var(--mantine-color-gray-5);
+.control {
+    @mixin light {
+        .root[data-with-items-borders] :where(&)::before {
+            background-color: var(--mantine-color-default-border);
         }
     }
 
-    &:where([data-active]) {
-        @mixin light {
-            color: var(--sc-label-color, var(--mantine-color-black));
+    &:first-of-type {
+        &::before {
+            background-color: transparent;
         }
     }
 
-    &:where(:not([data-disabled], [data-active], [data-read-only])) {
-        @mixin hover {
-            @mixin light {
-                color: var(--mantine-color-black);
+    &[data-active] {
+        [data-mantine-color-scheme] & {
+            &,
+            & + .control {
+                &::before {
+                    background-color: transparent;
+                }
             }
         }
     }

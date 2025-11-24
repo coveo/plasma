@@ -22,10 +22,7 @@ const convertIcons = async (grouped) => Promise.all(Object.entries(grouped).map(
 
 const convertIcon = async ([iconName, variants]) => {
     await fs.ensureDir(`${outDirPath}/${iconName}`);
-    return Promise.all(
-        variants.map(convertVariant),
-        fs.appendFile(`${outDirPath}/index.ts`, `export * from './${iconName}';\n`),
-    );
+    return Promise.all(variants.map(convertVariant));
 };
 
 const convertVariant = async (file) => {
@@ -50,14 +47,15 @@ const convertVariant = async (file) => {
                     role: 'img',
                     height: '{height || width || "1em"}',
                     width: '{width || height || "1em"}',
+                    '{...svgProps}': {},
                 },
             },
             {componentName},
         );
         return Promise.all([
             fs.appendFile(
-                `${outDirPath}/${iconName}/index.ts`,
-                `export {default as ${componentName}} from './${variantName}';\n`,
+                `${outDirPath}/index.ts`,
+                `export {default as ${componentName}} from './${iconName}/${variantName}.js';\n`,
             ),
             fs.outputFile(`${outDirPath}/${iconName}/${variantName}.tsx`, tsCode),
         ]);
@@ -74,7 +72,7 @@ const listIconVariants = async (grouped) => {
             variants: variantsPaths.map(getComponentName),
         }))
         .sort((a, b) => a.iconName.localeCompare(b.iconName));
-    return fs.appendFile(`${outDirPath}/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
+    return fs.appendFile(`${outDirPath}/index.ts`, `export const plasmaIconsList = ${JSON.stringify(list)};\n`);
 };
 
 const handleSvgFiles = (files) => {

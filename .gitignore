@@ -7,6 +7,7 @@ npm-debug.log.*
 .DS_Store
 .idea
 .vscode
+.run
 
 # Other various
 *.diff
@@ -34,3 +35,6 @@ travis-deploy-key
 # cache
 .ultra.cache.json
 .turbo
+
+# environment files
+**/*.env

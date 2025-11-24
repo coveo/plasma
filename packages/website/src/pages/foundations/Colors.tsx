@@ -5,7 +5,7 @@ import {InlineCodeHighlight} from '@mantine/code-highlight';
 import {Anchor, Box, Table as MantineTable} from '@mantine/core';
 import kebabCase from 'lodash.kebabcase';
 import {FunctionComponent} from 'react';
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 type Color = string;
 type ColorPalette = Record<number, Color>;

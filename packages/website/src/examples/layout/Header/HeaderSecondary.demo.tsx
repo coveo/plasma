@@ -1,12 +1,12 @@
 import {CloseButton, Header} from '@coveord/plasma-mantine';
 
 const Demo = () => (
-    <Header variant="secondary">
+    <Header description="The header description" variant="secondary">
         Title
         <Header.DocAnchor href="https://about:blank" label="Tooltip text" />
-        <Header.Actions>
+        <Header.Right>
             <CloseButton />
-        </Header.Actions>
+        </Header.Right>
     </Header>
 );
 export default Demo;

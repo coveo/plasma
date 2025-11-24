@@ -23,7 +23,7 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
             <Stack align="flex-start">
                 <Header variant="secondary">We couldn’t find anything for “{query}”</Header>
                 <Text>You may want to try using different keywords, or checking for spelling mistakes.</Text>
-                <Button
+                <Button.Tertiary
                     onClick={async () => {
                         if (state.past.length !== 0) {
                             await historyManager.backOnNoResults();
@@ -33,7 +33,7 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
                     }}
                 >
                     Clear search
-                </Button>
+                </Button.Tertiary>
             </Stack>
             <Image maw={300} src={results_empty_state} />
         </Group>

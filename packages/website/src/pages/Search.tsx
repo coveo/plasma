@@ -7,8 +7,8 @@ import {
 } from '@coveo/headless';
 import {AppShell} from '@coveord/plasma-mantine';
 import {useContext} from 'react';
-import {ResultList} from '../building-blocs/ResultList';
-import {EngineContext} from '../search/engine/EngineContext';
+import {ResultList} from '../building-blocs/ResultList.js';
+import {EngineContext} from '../search/engine/EngineContext.js';
 
 const Search = () => {
     const engine = useContext(EngineContext);

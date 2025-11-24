@@ -1,0 +1,11 @@
+.root {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background-color: var(--mantine-color-body);
+    padding: var(--mantine-spacing-md) var(--mantine-spacing-lg);
+}
+
+.border {
+    border-top: 1px solid var(--mantine-color-default-border);
+}

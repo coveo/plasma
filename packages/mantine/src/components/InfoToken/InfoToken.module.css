@@ -1,0 +1,8 @@
+.root {
+    --info-token-color: var(--mantine-color-primary);
+
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    color: var(--info-token-color);
+}

@@ -1,7 +1,7 @@
 import {Anchor, AppShell, Container, Title, Stack, Text, Box} from '@coveord/plasma-mantine';
 import {ExternalSize16Px} from '@coveord/plasma-react-icons';
 import {FunctionComponent} from 'react';
-import {Tile} from '../building-blocs/Tile';
+import {Tile} from '../building-blocs/Tile.js';
 
 export const Home = () => (
     <AppShell.Main>

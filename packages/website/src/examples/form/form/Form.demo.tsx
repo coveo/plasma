@@ -16,6 +16,7 @@ import {
     Title,
     useForm,
 } from '@coveord/plasma-mantine';
+import {TimeInput} from '@mantine/dates';
 
 const Demo = () => {
     const form = useForm({
@@ -29,6 +30,7 @@ const Demo = () => {
             radio: '1',
             switch: false,
             file: '',
+            time: '',
             select: '',
             multiSelect: [],
             codeEditor: '{"key": "value"}',
@@ -52,6 +54,7 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Text input placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
@@ -63,6 +66,7 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Textarea placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
@@ -74,6 +78,7 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Number input placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
@@ -85,6 +90,7 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Password input placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
@@ -96,12 +102,24 @@ const Demo = () => {
                         withAsterisk={form.values.withAsterisk}
                         readOnly={form.values.readOnly}
                         disabled={form.values.disabled}
+                        placeholder="Color input placeholder"
                     />
                 </Stack>
                 <Stack gap="xs">
                     <Title order={4}>FileInput</Title>
                     <FileInput
                         {...form.getInputProps('file')}
+                        label={form.values.label}
+                        description={form.values.description}
+                        withAsterisk={form.values.withAsterisk}
+                        readOnly={form.values.readOnly}
+                        disabled={form.values.disabled}
+                    />
+                </Stack>
+                <Stack gap="xs">
+                    <Title order={4}>TimeInput</Title>
+                    <TimeInput
+                        {...form.getInputProps('time')}
                         label={form.values.label}
                         description={form.values.description}
                         withAsterisk={form.values.withAsterisk}
@@ -137,6 +155,13 @@ const Demo = () => {
                     <Title order={4}>Checkbox</Title>
                     <Checkbox
                         {...form.getInputProps('checkbox', {type: 'checkbox'})}
+                        label={form.values.label}
+                        description={form.values.description}
+                        readOnly={form.values.readOnly}
+                        disabled={form.values.disabled}
+                    />
+                    <Checkbox
+                        indeterminate
                         label={form.values.label}
                         description={form.values.description}
                         readOnly={form.values.readOnly}

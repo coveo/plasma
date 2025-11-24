@@ -1,5 +1,5 @@
 import {DEFAULT_THEME} from '@mantine/core';
-import {mergeCSSVariablesResolvers} from '../mergeCSSVariablesResolvers';
+import {mergeCSSVariablesResolvers} from '../mergeCSSVariablesResolvers.js';
 
 describe('mergeCSSVariablesResolvers', () => {
     it('resolves to empty variables if no resolvers are given as argument', () => {

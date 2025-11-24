@@ -1,8 +1,8 @@
 import {Box, Header, Stack, Text} from '@coveord/plasma-mantine';
 import {FunctionComponent, ReactNode} from 'react';
 
-import {GithubButton} from './GithubButton';
-import {Tile, TileProps} from './Tile';
+import {GithubButton} from './GithubButton.js';
+import {Tile, TileProps} from './Tile.js';
 
 export interface PageHeaderProps {
     title: string;
@@ -26,10 +26,10 @@ export const PageHeader: FunctionComponent<PageHeaderProps> = ({
 }) => (
     <Header description={<span data-coveo-field="description">{description}</span>}>
         <Header.Breadcrumbs>
-            <Text c="gray.6">{section}</Text>
+            <Text c="dimmed">{section}</Text>
         </Header.Breadcrumbs>
         <span data-coveo-field="title">{title}</span>
-        <Header.Actions>
+        <Header.Right>
             <Stack gap="sm" align="flex-end">
                 {sourcePath && (
                     <GithubButton
@@ -43,6 +43,6 @@ export const PageHeader: FunctionComponent<PageHeaderProps> = ({
                     <Tile thumbnail={thumbnail} />
                 </Box>
             </Stack>
-        </Header.Actions>
+        </Header.Right>
     </Header>
 );

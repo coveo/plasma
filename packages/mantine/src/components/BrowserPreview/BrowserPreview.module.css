@@ -1,0 +1,12 @@
+.root {
+    border-radius: var(--mantine-radius-lg);
+    border: 1px solid;
+    border-color: var(--mantine-color-default-border);
+    flex: 1;
+    overflow: hidden;
+}
+
+.content {
+    overflow: auto;
+    flex-grow: 1;
+}

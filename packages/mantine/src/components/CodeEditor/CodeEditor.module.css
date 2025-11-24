@@ -1,0 +1,36 @@
+.root {
+    --ce-bg: var(--mantine-color-gray-0);
+    --ce-border-color: var(--mantine-color-default-border);
+
+    border: 1px solid var(--ce-border-color);
+    border-radius: var(--mantine-radius-lg);
+    z-index: 1;
+    height: 100%;
+    background-color: var(--ce-bg);
+
+    @mixin light {
+        --ce-bg: var(--mantine-color-gray-0);
+    }
+
+    @mixin dark {
+        --ce-bg: var(--mantine-color-black);
+    }
+}
+
+.error {
+    --ce-border-color: var(--mantine-color-error);
+}
+
+.disabled {
+    @mixin light {
+        --ce-bg: var(--mantine-color-gray-1);
+        --ce-border-color: var(--mantine-color-gray-1);
+
+        :global {
+            .monaco-editor {
+                --vscode-editor-background: var(--ce-bg);
+                --vscode-editorGutter-background: var(--ce-bg);
+            }
+        }
+    }
+}

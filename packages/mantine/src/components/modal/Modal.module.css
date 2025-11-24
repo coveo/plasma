@@ -1,9 +1,0 @@
-.footer {
-    border-top: 1px solid var(--mantine-color-gray-3);
-}
-
-.modalFooterSticky {
-    padding-bottom: 0;
-    margin: var(--mb-padding) calc(-1 * var(--mb-padding)) calc(var(--mantine-spacing-md) - var(--mb-padding))
-        calc(-1 * var(--mb-padding));
-}

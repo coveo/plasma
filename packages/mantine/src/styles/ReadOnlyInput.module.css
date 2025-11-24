@@ -1,8 +1,16 @@
 .input {
     cursor: text;
 
-    --input-bd: transparent;
-    --input-bg: var(--mantine-color-gray-2);
-    --input-color: var(--mantine-color-gray-7);
-    --input-placeholder-color: var(--mantine-color-gray-7);
+    --input-bd: var(--mantine-color-default-border);
+    --input-bg: var(--coveo-color-bg-readonly);
+    --input-color: var(--mantine-color-text);
+    --input-placeholder-color: var(--mantine-color-text);
+}
+
+.section {
+    --input-section-color: var(--mantine-color-text);
+
+    > svg {
+        color: var(--input-section-color);
+    }
 }
