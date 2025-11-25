@@ -2,6 +2,9 @@ name: Clean Demo
 on:
     pull_request:
         types: [closed]
+permissions:
+  contents: read
+
 jobs:
     clean-demo:
         name: Clean PR demo
