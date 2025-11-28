@@ -10,7 +10,7 @@ inputs:
 runs:
     using: composite
     steps:
-        - uses: actions/github-script@v7
+        - uses: actions/github-script@v8
           with:
               script: |
                   const addComment = require('./.github/actions/comment-on-pr/index.js');

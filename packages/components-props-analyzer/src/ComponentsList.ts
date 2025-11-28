@@ -94,6 +94,16 @@ const components: Component[] = [
         packageName: '@coveord/plasma-mantine',
     },
     {
+        name: 'Badge',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'SemanticBadgeProps',
+    },
+    {
+        name: 'InfoToken',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'InfoTokenProps',
+    },
+    {
         name: 'EllipsisText',
         packageName: '@coveord/plasma-mantine',
         propsType: 'EllipsisTextProps',
@@ -112,6 +122,21 @@ const components: Component[] = [
         name: 'DateRangePickerInlineCalendar',
         packageName: '@coveord/plasma-mantine',
         propsType: 'DateRangePickerInlineCalendarProps',
+    },
+    {
+        name: 'DateRangePicker',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'DateRangePickerProps',
+    },
+    {
+        name: 'DateTimeRangePicker',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'DateTimeRangePickerProps',
+    },
+    {
+        name: 'LastUpdated',
+        packageName: '@coveord/plasma-mantine',
+        propsType: 'LastUpdatedProps',
     },
 ];
 

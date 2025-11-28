@@ -45,14 +45,53 @@ const Demo = () => {
             layoutProps={{onRowDoubleClick: (row) => alert(`Row double clicked: ${row.firstName}`)}}
             getRowActions={(selected: Person[]) => [
                 {
+                    group: '$$primary',
+                    component: (
+                        <Table.ActionItem
+                            onClick={() => alert(`Action primary 1 triggered for row: ${selected[0].id}`)}
+                            leftSection={<EditSize16Px height={16} />}
+                            key="action-primary-1"
+                        >
+                            Action primary
+                        </Table.ActionItem>
+                    ),
+                },
+                {
+                    group: '$$primary',
+                    component: (
+                        <Table.ActionItem
+                            disabled
+                            disabledTooltip="This primary action is disabled"
+                            leftSection={<EditSize16Px height={16} />}
+                            key="action-primary-disabled"
+                        >
+                            Action primary disabled
+                        </Table.ActionItem>
+                    ),
+                },
+                {
                     group: 'Actions',
                     component: (
                         <Table.ActionItem
                             onClick={() => alert(`Action 1 triggered for row: ${selected[0].id}`)}
+                            disabledTooltip="This action is disabled"
                             leftSection={<EditSize16Px height={16} />}
                             key="action-1"
                         >
                             Action 1
+                        </Table.ActionItem>
+                    ),
+                },
+                {
+                    group: 'Actions',
+                    component: (
+                        <Table.ActionItem
+                            disabled
+                            disabledTooltip="This action is disabled"
+                            leftSection={<EditSize16Px height={16} />}
+                            key="action-disabled"
+                        >
+                            Action disabled
                         </Table.ActionItem>
                     ),
                 },
@@ -70,7 +109,8 @@ const Demo = () => {
                 },
             ]}
         >
-            <Table.Header />
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false} />
         </Table>
     );
 };

@@ -2,6 +2,7 @@ import './styles/reset.css';
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
+import '@mantine/code-highlight/styles.css';
 
 import {StrictMode, JSX} from 'react';
 import ReactDOM from 'react-dom/client';

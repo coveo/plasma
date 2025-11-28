@@ -1,4 +1,11 @@
-import {Checkbox, Collection, TextInput, enhanceWithCollectionProps, useForm} from '@coveord/plasma-mantine';
+import {
+    Checkbox,
+    Collection,
+    TextInput,
+    enhanceWithCollectionProps,
+    formRootRule,
+    useForm,
+} from '@coveord/plasma-mantine';
 
 const Demo = () => {
     const form = useForm({
@@ -11,9 +18,15 @@ const Demo = () => {
             ],
         },
         validate: {
-            todoList: (value) => (value.length < 2 ? `Don't be lazy, add just ${2 - value.length} more tasks` : null),
+            todoList: {
+                [formRootRule]: (value) =>
+                    value.length < 2 ? `Don't be lazy, add just ${2 - value.length} more tasks` : null,
+                name: (value) => (value === '' ? 'Task name cannot be empty' : null),
+            },
         },
-        enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'todoList')}),
+        enhanceGetInputProps: (payload) => ({
+            ...enhanceWithCollectionProps(payload, 'todoList', {validateInputOnChange: true}),
+        }),
     });
 
     return (
@@ -21,7 +34,9 @@ const Demo = () => {
             draggable
             addLabel="Add task"
             description="These will have to be done by next week"
+            addDisabledTooltip="You have reached the maximum number of tasks"
             label="List of tasks"
+            allowAdd={(value) => value.length < 10}
             newItem={{name: '', done: false}}
             {...form.getInputProps('todoList')}
         >
@@ -33,7 +48,11 @@ const Demo = () => {
                         placeholder="Do something ..."
                         {...form.getInputProps(`todoList.${index}.name`)}
                     />
-                    <Checkbox {...form.getInputProps(`todoList.${index}.done`, {type: 'checkbox'})} />
+                    <Checkbox
+                        label="Done"
+                        {...form.getInputProps(`todoList.${index}.done`, {type: 'checkbox'})}
+                        style={{alignSelf: 'center'}}
+                    />
                 </>
             )}
         </Collection>

@@ -1,7 +1,7 @@
 import {render} from '@test-utils';
 import {ReactNode} from 'react';
 
-import {overrideComponent} from '../overrideComponent';
+import {overrideComponent} from '../overrideComponent.js';
 
 describe('overrideComponent', () => {
     it.skip('overrides the specified properties on the component and copies over the rest', () => {

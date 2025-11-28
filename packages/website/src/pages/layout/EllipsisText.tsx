@@ -5,7 +5,7 @@ import EllipsisTextLineClampLongDemo from '@examples/layout/EllipsisText/Ellipsi
 import EllipsisTextLineClampShortDemo from '@examples/layout/EllipsisText/EllipsisTextLineClampShort.demo?demo';
 import EllipsisTextNoWrapContainerDemo from '@examples/layout/EllipsisText/EllipsisTextNoWrapContainer.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const Page = () => (
     <PageLayout

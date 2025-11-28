@@ -1,5 +1,5 @@
-import {type EditorProps} from '@monaco-editor/react';
-import {FunctionComponent, useEffect} from 'react';
+import type {EditorProps} from '@monaco-editor/react';
+import {type FunctionComponent, useEffect} from 'react';
 
 const editor: any = {
     onDidFocusEditorText: vi.fn(),
@@ -24,6 +24,7 @@ const monaco: any = {
 
 const MockedEditor: FunctionComponent<EditorProps> = (props) => {
     useEffect(() => {
+        props.beforeMount?.(monaco);
         props.onMount(editor, monaco);
     }, []);
     return <div data-testid="monaco-editor" />;

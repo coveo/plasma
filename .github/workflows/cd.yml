@@ -6,27 +6,31 @@ concurrency:
     group: ${{ github.ref_name }}
     cancel-in-progress: true
 
+env:
+    TURBO_TOKEN: '${{ secrets.TURBO_TOKEN }}'
+
+permissions:
+    pull-requests: write
+    id-token: write
+    actions: read
+    contents: write
+    security-events: write
+    statuses: write
+
 jobs:
     cd:
         name: Continuous Delivery
         if: github.ref_name == 'master' || github.ref_name == 'next'
         runs-on: ubuntu-latest
         environment: production
-        permissions:
-            pull-requests: write
-            id-token: write
-            actions: read
-            contents: write
-            security-events: write
-            statuses: write
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@c95a14d0e5bab51a9f56296a4eb0e416910cd350 # v2.10.3
+              uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
               with:
                   egress-policy: audit
 
             - name: Checkout
-              uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+              uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
               with:
                   fetch-depth: 0
             - name: Setup
@@ -44,7 +48,6 @@ jobs:
               env:
                   DEBUG: '*'
                   DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Deploy
               uses: ./.github/actions/deploy
               # Demo for next branch is deployed by the CI workflow

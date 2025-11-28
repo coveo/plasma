@@ -1,0 +1,12 @@
+.root {
+    font-size: var(--mantine-font-size-xs);
+    font-weight: var(--coveo-fw-bold);
+}
+
+.breadcrumb {
+    line-height: 14px;
+}
+
+.separator {
+    color: var(--coveo-color-title);
+}

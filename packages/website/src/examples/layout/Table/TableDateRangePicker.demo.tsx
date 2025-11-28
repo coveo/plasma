@@ -2,11 +2,11 @@ import {
     ColumnDef,
     createColumnHelper,
     DateRangePickerPreset,
-    DateRangePickerValue,
+    type DatesRangeValue,
+    getFilteredRowModel,
     Table,
     TableProps,
     useTable,
-    getFilteredRowModel,
 } from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import dayjs from 'dayjs';
@@ -37,9 +37,9 @@ const columns: Array<ColumnDef<Person>> = [
     }),
 ];
 
-const today: Date = dayjs().endOf('day').toDate();
-const previousDay: Date = dayjs().subtract(1, 'day').startOf('day').toDate();
-const previousWeek: Date = dayjs().subtract(1, 'week').startOf('day').toDate();
+const today = dayjs().endOf('day').toISOString();
+const previousDay = dayjs().subtract(1, 'day').startOf('day').toISOString();
+const previousWeek = dayjs().subtract(1, 'week').startOf('day').toISOString();
 const datePickerPresets: Record<string, DateRangePickerPreset> = {
     lastDay: {label: 'Last 24 hours', range: [previousDay, today]},
     lastWeek: {label: 'Last week', range: [previousWeek, today]},
@@ -70,7 +70,8 @@ const Demo = () => {
             options={options}
             getRowId={({id}) => id.toString()}
         >
-            <Table.Header>
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false}>
                 <Table.DateRangePicker
                     rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
                     presets={datePickerPresets}
@@ -102,7 +103,7 @@ const makeData = (len: number): Person[] =>
             lastActivity: faker.date.recent({days: 7}),
         }));
 
-const lastActivityDateFilter = (row: Person, dateRange: DateRangePickerValue) => {
+const lastActivityDateFilter = (row: Person, dateRange: DatesRangeValue) => {
     const lastActivity = row['lastActivity'];
 
     return dayjs(lastActivity).isAfter(dateRange[0]) && dayjs(lastActivity).isBefore(dateRange[1]);

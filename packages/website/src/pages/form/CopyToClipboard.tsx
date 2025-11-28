@@ -2,7 +2,7 @@ import {CopyToClipboardMetadata} from '@coveord/plasma-components-props-analyzer
 import CopyToClipboardDemo from '@examples/form/copyToClipboard/CopyToClipboard.demo?demo';
 import CopyToClipboardWithLabelDemo from '@examples/form/copyToClipboard/CopyToClipboardWithLabel.demo?demo';
 
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
 const CopyToClipboardPage = () => (
     <PageLayout

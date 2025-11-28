@@ -8,12 +8,14 @@
         "commit-cli": "cz",
         "preinstall": "npx only-allow pnpm",
         "lintfix": "pnpm --recursive --parallel lintfix",
+        "pnpm:devPreinstall": "pnpm turbo:login",
         "precommit": "lint-staged",
         "prepare": "husky",
         "reconstruct": "pnpm dlx rimraf packages/*/node_modules packages/*/.turbo node_modules && npm run setup && echo done",
         "setup": "pnpm install",
         "start": "turbo run build --filter=!@coveord/plasma-website && pnpm --recursive --parallel start",
-        "test": "turbo run test --concurrency=1"
+        "test": "turbo run test --concurrency=1",
+        "turbo:login": "node scripts/turboLogin.mjs"
     },
     "commitlint": {
         "extends": [
@@ -44,43 +46,38 @@
         "not dead"
     ],
     "devDependencies": {
-        "@commitlint/cli": "19.6.1",
-        "@commitlint/config-conventional": "19.6.0",
-        "@coveo/semantic-monorepo-tools": "2.6.2",
-        "@sindresorhus/slugify": "2.2.1",
-        "@types/node": "22.10.7",
-        "@vitest/eslint-plugin": "1.1.25",
+        "@commitlint/cli": "19.8.1",
+        "@commitlint/config-conventional": "19.8.1",
+        "@coveo/semantic-monorepo-tools": "2.7.1",
+        "@types/node": "24.10.0",
+        "@vitest/eslint-plugin": "1.4.1",
         "aws-sdk": "2.1692.0",
-        "chokidar": "4.0.3",
         "commitizen": "4.3.1",
-        "conventional-changelog-angular": "8.0.0",
+        "conventional-changelog-angular": "8.1.0",
         "cz-conventional-changelog": "3.3.0",
-        "eslint": "9.18.0",
-        "eslint-config-prettier": "9.1.0",
-        "eslint-plugin-import-x": "4.6.1",
-        "eslint-plugin-jsdoc": "50.6.1",
+        "eslint": "9.39.1",
+        "eslint-config-prettier": "10.1.8",
+        "eslint-plugin-import-x": "4.16.1",
+        "eslint-plugin-jsdoc": "61.1.12",
         "eslint-plugin-prefer-arrow": "1.2.3",
-        "eslint-plugin-react": "7.37.4",
-        "eslint-plugin-react-hooks": "5.1.0",
-        "eslint-plugin-react-refresh": "0.4.18",
-        "eslint-plugin-testing-library": "7.1.1",
-        "eslint-plugin-unused-imports": "4.1.4",
-        "globals": "15.14.0",
+        "eslint-plugin-react": "7.37.5",
+        "eslint-plugin-react-hooks": "5.2.0",
+        "eslint-plugin-react-refresh": "0.4.24",
+        "eslint-plugin-testing-library": "7.13.3",
+        "eslint-plugin-unused-imports": "4.3.0",
+        "globals": "16.5.0",
         "husky": "9.1.7",
-        "lint-staged": "15.4.0",
-        "mime-types": "2.1.35",
-        "postcss": "8.5.1",
-        "prettier": "3.4.2",
-        "sort-package-json": "2.14.0",
-        "stylelint": "16.13.2",
+        "lint-staged": "16.2.6",
+        "postcss": "8.5.6",
+        "prettier": "3.6.2",
+        "sort-package-json": "3.4.0",
+        "stylelint": "16.25.0",
         "stylelint-config-standard-scss": "14.0.0",
-        "turbo": "2.3.3",
-        "typescript": "5.7.3",
-        "typescript-eslint": "8.20.0",
-        "underscore": "1.13.7",
-        "walkdir": "0.4.1"
+        "turbo": "2.6.0",
+        "typescript": "5.9.3",
+        "typescript-eslint": "8.46.3"
     },
-    "packageManager": "pnpm@9.15.4",
+    "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
     "pnpm": {
         "peerDependencyRules": {
             "ignoreMissing": [
@@ -89,7 +86,7 @@
         },
         "overrides": {
             "@babel/traverse": "^7.23.2",
-            "nwsapi": "2.2.16"
+            "nwsapi": "2.2.22"
         },
         "patchedDependencies": {
             "@stencil/core": "patches/@stencil__core.patch"

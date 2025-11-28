@@ -3,21 +3,22 @@ import {
     Anchor,
     Box,
     Center,
+    Code,
+    CopyToClipboard,
     Flex,
     ScrollArea,
     SimpleGrid,
     Stack,
+    Text,
     Title,
     Tooltip,
-    useClipboard,
 } from '@coveord/plasma-mantine';
-import {CheckSize16Px, CopySize16Px, LinksSize16Px, PlaySize16Px} from '@coveord/plasma-react-icons';
+import {IconPlayerPlay, LinksSize16Px} from '@coveord/plasma-react-icons';
 import {CodeHighlight, CodeHighlightTabs} from '@mantine/code-highlight';
-import '@mantine/code-highlight/styles.css';
-import {Component, ReactNode} from 'react';
-import CodeHighlightClassesThemeClasses from '../styles/CodeHighlight.theme.module.css';
+import {ReactNode} from 'react';
+import {ErrorBoundary} from 'react-error-boundary';
 import DemoClasses from './Demo.module.css';
-import getCodeSandboxLink from './getCodeSandboxLink';
+import getCodeSandboxLink from './getCodeSandboxLink.js';
 
 const MAX_HEIGHT = 500;
 const MIN_HEIGHT = 100;
@@ -40,7 +41,6 @@ const Demo = ({
     maxHeight,
     additionalFiles,
 }: DemoProps) => {
-    const clipboard = useClipboard();
     const createSandbox = async () => {
         try {
             const res = await fetch(getCodeSandboxLink(snippet));
@@ -51,9 +51,9 @@ const Demo = ({
         }
     };
     return (
-        <div className={DemoClasses.root}>
+        <div>
             {title ? (
-                <Anchor href={`#${id}`} c="gray.9" className={DemoClasses.anchor}>
+                <Anchor href={`#${id}`} className={DemoClasses.anchor}>
                     <Title order={5} mb="xs" id={id} className={DemoClasses.title}>
                         {title}
                     </Title>
@@ -61,8 +61,17 @@ const Demo = ({
                 </Anchor>
             ) : null}
             <SimpleGrid className={DemoClasses.sandbox} cols={layout === 'vertical' ? 1 : 2} spacing={0}>
-                <ErrorBoundary>
-                    <Box<'div' | typeof Center> component={center ? Center : 'div'} className={DemoClasses.preview}>
+                <Box<'div' | typeof Center> component={center ? Center : 'div'} className={DemoClasses.preview}>
+                    <ErrorBoundary
+                        fallbackRender={({error}) => (
+                            <Code block w="100%">
+                                <Text c="critical" fw="var(--coveo-fw-bold)" mb="xs">
+                                    An error occurred while rendering the demo:
+                                </Text>
+                                {error.message}
+                            </Code>
+                        )}
+                    >
                         {maxHeight ? (
                             <Flex direction={'column'} mah={maxHeight} flex={1}>
                                 <Box className={DemoClasses.flexPreviewWrapper} p={noPadding ? 0 : 'md'}>
@@ -76,8 +85,8 @@ const Demo = ({
                                 </Box>
                             </ScrollArea.Autosize>
                         )}
-                    </Box>
-                </ErrorBoundary>
+                    </ErrorBoundary>
+                </Box>
                 <div className={DemoClasses.code}>
                     {additionalFiles && additionalFiles.length > 0 ? (
                         <CodeHighlightTabs
@@ -86,10 +95,6 @@ const Demo = ({
                                 ...additionalFiles,
                             ]}
                             withCopyButton={false}
-                            classNames={{
-                                root: CodeHighlightClassesThemeClasses.theme,
-                                file: CodeHighlightClassesThemeClasses.file,
-                            }}
                             styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
                         />
                     ) : (
@@ -97,32 +102,15 @@ const Demo = ({
                             language="tsx"
                             code={snippet}
                             withCopyButton={false}
-                            highlightOnClient
-                            classNames={{root: CodeHighlightClassesThemeClasses.theme}}
                             styles={{pre: {maxHeight: maxHeight ?? MAX_HEIGHT, minHeight: MIN_HEIGHT}}}
                         />
                     )}
                     <Stack className={DemoClasses.actions} gap="xs">
-                        <Tooltip label={clipboard.copied ? 'Copied' : 'Copy'} position="left">
-                            <ActionIcon
-                                variant="subtle"
-                                radius="sm"
-                                c={'var(--mantine-color-gray-6)'}
-                                onClick={() => clipboard.copy(snippet)}
-                            >
-                                {clipboard.copied ? <CheckSize16Px height={16} /> : <CopySize16Px height={16} />}
-                            </ActionIcon>
-                        </Tooltip>
-
+                        <CopyToClipboard color="gray" value={snippet} />
                         <Tooltip label="Open in CodeSanbox" position="left">
-                            <ActionIcon
-                                variant="subtle"
-                                radius="sm"
-                                c={'var(--mantine-color-gray-6)'}
-                                onClick={createSandbox}
-                            >
-                                <PlaySize16Px height={16} />
-                            </ActionIcon>
+                            <ActionIcon.Quaternary color="gray" onClick={createSandbox}>
+                                <IconPlayerPlay size={16} />
+                            </ActionIcon.Quaternary>
                         </Tooltip>
                     </Stack>
                 </div>
@@ -130,35 +118,5 @@ const Demo = ({
         </div>
     );
 };
-
-class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean}> {
-    constructor(props) {
-        super(props);
-        this.state = {hasError: false};
-    }
-
-    static getDerivedStateFromError() {
-        // Update state so the next render will show the fallback UI.
-        return {hasError: true};
-    }
-
-    componentDidCatch(error, info) {
-        // Example "componentStack":
-        //   in ComponentThatThrows (created by App)
-        //   in ErrorBoundary (created by App)
-        //   in div (created by App)
-        //   in App
-        console.error(error, info.componentStack);
-    }
-
-    render() {
-        if (this.state.hasError) {
-            // You can render any custom fallback UI
-            return null;
-        }
-
-        return this.props.children;
-    }
-}
 
 export default Demo;

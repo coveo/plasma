@@ -1,0 +1,20 @@
+.root {
+    --prompt-icon-size: 32px;
+}
+
+.body {
+    padding-left: calc(var(--prompt-icon-size) + var(--mantine-spacing-sm) + var(--mb-padding));
+}
+
+.icon {
+    width: var(--prompt-icon-size);
+    height: var(--prompt-icon-size);
+}
+
+.header {
+    gap: var(--mantine-spacing-sm);
+}
+
+.inner {
+    color: var(--mantine-color-dimmed);
+}

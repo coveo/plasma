@@ -24,11 +24,14 @@ Object.defineProperty(window, 'matchMedia', {
 });
 window.ResizeObserver =
     window.ResizeObserver ||
-    vi.fn().mockImplementation(() => ({
-        disconnect: vi.fn(),
-        observe: vi.fn(),
-        unobserve: vi.fn(),
-    }));
+    vi.fn(
+        class ResizeObserverMock {
+            disconnect = vi.fn();
+            observe = vi.fn();
+            unobserve = vi.fn();
+        },
+    );
+document.queryCommandSupported = document.queryCommandSupported || vi.fn().mockReturnValue(true);
 
 // Temporarily workaround for bug in @testing-library/react when use user-event with `vi.useFakeTimers()`
 beforeAll(() => {

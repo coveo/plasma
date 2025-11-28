@@ -4,4 +4,4 @@ runs:
     using: composite
     steps:
         - shell: bash
-          run: pnpm test -- --color --log-prefix=none -- --silent
+          run: pnpm test -- --silent

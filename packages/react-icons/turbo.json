@@ -1,0 +1,14 @@
+{
+    "extends": ["//"],
+    "tasks": {
+        "build": {
+            "dependsOn": ["^build", "generate"]
+        },
+        "generate": {
+            "dependsOn": ["^build"],
+            "outputs": ["src/generated/**"],
+            "inputs": ["$TURBO_DEFAULT$", "bin/**"],
+            "outputLogs": "new-only"
+        }
+    }
+}

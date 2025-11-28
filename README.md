@@ -18,9 +18,9 @@ npm install @coveord/plasma-react @coveord/plasma-style
 
 Make sure you have
 
--   [Node.js](https://nodejs.org/)'s LTS version
--   [NPM](https://www.npmjs.com/package/npm)'s LTS version
--   [PNPM](https://pnpm.io/installation) >= 5
+- [Node.js](https://nodejs.org/)'s LTS version
+- [NPM](https://www.npmjs.com/package/npm)'s LTS version
+- [PNPM](https://pnpm.io/installation) >= 5
 
 ### Where are @coveord/plasma-style and @coveord/plasma-react?
 
@@ -48,21 +48,19 @@ Changes made to any source files in any package will make the demo rebuild and r
 
 All new unit tests for components should be written using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/), and not Enzyme which is being phased out.
 
-Tests are critical in `packages/react` as this is the source of all components
-
 To run all tests from the root, you can run `pnpm test`
 
-Alternatively, you can run it directly from the `packages/react` package, which also allows using two other testing methods:
+Alternatively, you can run it directly from `packages/{packageName}`, which also allows using two other testing methods:
 
 #### Watching and Debugging
 
-1. First, make sure you're in the `packages/react` package.
+1. First, make sure you're in `packages/{packageName}`.
 2. To watch your tests:
-    1. run `pnpm test:watch`, wait for it to start up then hit any key. This will show you the menu.
-    2. Then, for example, to focus on a particular spec file, hit `p` to filter by a filename regex pattern, then the name of a spec file (eg `SingleSelectConnected`).
+    1. Run `pnpm test:watch`, wait for it to start up then hit any key. This will show you the menu.
+    2. Then, for example, to focus on a particular spec file, hit `p` to filter by a filename regex pattern, then the name of a spec file (e.g `SingleSelectConnected`).
     3. Then you can use `fdescribe` and `fit` to focus on individual suites and tests respectively
 3. To debug your tests:
-    1. run `pnpm test:debug`, wait for it to start up then hit any key to pause.
+    1. Run `pnpm test:debug`, wait for it to start up then hit any key to pause.
     2. In a Chromium browser (Chrome / Brave), go to chrome://inspect and you should see the process under `node_modules/jest/bin/jest`. Click inspect.
     3. From here, you can add a `debugger` in a test, save the file, focus on the suite using `p` and then the spec file name
     4. When the file is saved and rerun, the debugger should open in the dev tools!
@@ -72,7 +70,7 @@ Alternatively, you can run it directly from the `packages/react` package, which 
 
 Every commit made to this repository must comply to the [Conventional Commits specification](https://www.conventionalcommits.org/). Our build system is configured to automatically release and publish new versions according to this convention.
 
-> We have integrated an optionnal [command line utility](https://github.com/commitizen/cz-cli) to help you build proper commit messages.
+> We have integrated an optional [command line utility](https://github.com/commitizen/cz-cli) to help you build proper commit messages.
 >
 > ```bash
 > git add . # stage the changes you want to commit

@@ -1,3 +1,44 @@
+.wrapper {
+    --input-section-color: var(--mantine-color-placeholder);
+
+    @mixin light {
+        --input-disabled-color: var(--mantine-color-disabled-color);
+
+        &[data-variant='default'] {
+            --input-bd: var(--coveo-color-input-border);
+        }
+
+        &[data-disabled],
+        &:read-only {
+            --input-bd: var(--mantine-color-default-border);
+        }
+    }
+
+    &[data-disabled] {
+        > .section {
+            > svg {
+                color: var(--input-disabled-color);
+            }
+        }
+    }
+
+    &[data-error] {
+        > .section {
+            > svg {
+                color: var(--mantine-color-error);
+            }
+        }
+    }
+}
+
 .input {
-    --input-color: var(--mantine-color-gray-7);
+    @mixin dark {
+        --input-bg: var(--mantine-color-default);
+    }
+}
+
+.section {
+    > svg {
+        color: var(--mantine-color-gray-3);
+    }
 }

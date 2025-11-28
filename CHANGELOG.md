@@ -1,3 +1,508 @@
+## 56.4.0 (2025-11-24)
+
+* feat(actionIcon): connect actionIcon to figma (#4203) 0e3ac2f, closes #4203
+* feat(button): +connect button to figma (#4205) 574db83, closes #4205
+* feat(closebutton): connect closebutton to figma (#4208) da76ad2, closes #4208
+* feat(date-range-picker): implement standalone DateRangePicker component (#4210) ecf5fea, closes #4210
+* feat(figma): code connect TextInput (#4211) b69b3c2, closes #4211
+* feat(mantine): add entrypoints to optimize library import (#4212) 2658ae4, closes #4212
+* feat(navlink): reset on master, +navlink figma connection (#4202) 6340809, closes #4202
+* fix(mantine): prevent undefined data passed down to react-table (#4204) 4bb4de4, closes #4204
+* Ad UI 11079 image codeconnect (#4207) 97c0186, closes #4207
+* Feat/ADUI-10495 code connect poc (#4196) 4d96e12, closes #4196
+* chore(deps): lock file maintenance (#3997) 91d45d2, closes #3997
+* chore(deps): update all non-major dependencies (#4179) 2e14ccc, closes #4179
+* chore(deps): update dependency eslint-plugin-jsdoc to v61 (#4194) ffb3d82, closes #4194
+* chore(deps): update dependency jsdom to v27 (#4199) 72395ae, closes #4199
+
+
+
+## <small>56.3.3 (2025-11-10)</small>
+
+* fix(react-icons, mock): keep tabler class when adding className (#4195) 2f59e60, closes #4195
+
+
+
+## <small>56.3.2 (2025-11-07)</small>
+
+* chore(deps): update dependency vite to v7 [security] (#4192) 8ca3db6, closes #4192
+* fix(react-icons): mock and vite plugin (#4193) 470805f, closes #4193
+* feat(mantine, breadcrumb): prop to add back arrow on breadcrumb anchor (#4183) 79e60f8, closes #4183
+
+
+
+## <small>56.3.1 (2025-11-07)</small>
+
+* chore(deps): bump vitest to v4 (#4189) 24a9617, closes #4189
+* chore(deps): update dependency @types/node to v24 (#4181) 216b330, closes #4181
+* chore(deps): update dependency vite to v6.4.1 [security] (#4175) c82ef7f, closes #4175
+* fix(deps): update dependency @mantinex/dev-icons to v2 (#4063) 988a202, closes #4063
+* fix(mantine): change `mantine-color-body` back to white (#4191) ad1a96f, closes #4191
+* fix(table): +border-spacing: 0 (#4185) 04fbad3, closes #4185
+* refactor: remove barrel files except main entrypoint in monorepo (#4186) cadf2ea, closes #4186
+
+
+
+## 56.3.0 (2025-11-04)
+
+* feat: correct dark mode appearances of several components 🌜 COMHUB2-1151 (#4182) 081196d, closes #4182
+* feat(badge): +success badge (#4184) d0e1cfe, closes #4184
+* fix(collection): fix validation not triggering, fix remove button con… (#4177) aa5d318, closes #4177
+* chore(deps): update actions/setup-node action to v6 (#4180) 3285894, closes #4180
+* chore(deps): update all non-major dependencies (#4174) 07aa674, closes #4174
+* chore(deps): update dependency @vitejs/plugin-react-swc to v4 (#4167) 4c01539, closes #4167
+* chore(deps): update dependency cross-env to v10 (#4170) e7ce98b, closes #4170
+
+
+
+## <small>56.2.6 (2025-10-27)</small>
+
+* fix(react-icons): query icons with numbers in their name (#4178) 0d6e7b3, closes #4178
+
+
+
+## <small>56.2.5 (2025-10-21)</small>
+
+* fix(react-icons): spread the props at the end to allow overrides (#4176) e8abdff, closes #4176
+
+
+
+## <small>56.2.4 (2025-10-21)</small>
+
+* fix(mantine,button): button with disabled tooltip alignement glitch in menu (#4173) 330d7b7, closes #4173
+
+
+
+## <small>56.2.3 (2025-10-15)</small>
+
+* chore(deps): update all non-major dependencies (#4166) 63cd473, closes #4166
+* chore(vitest): merge master, + fix testing-library readme (#4169) dec4f56, closes #4169
+* fix(tabledate): fix the formatting of the date (#4171) 1e82f07, closes #4171
+
+
+
+## <small>56.2.2 (2025-10-10)</small>
+
+* fix(react-icons): fix export path for mock (#4168) 81b804b, closes #4168
+* chore: remove unused deps & bump others (#4161) 9b7738d, closes #4161
+* chore(deps): replace dependency eslint-plugin-vitest with @vitest/eslint-plugin 1.0.1 (#4155) 05b36c1, closes #4155
+* chore(deps): update actions/checkout action to v5 (#4148) 623813a, closes #4148
+* chore(deps): update actions/github-script action to v8 (#4162) 20bf81b, closes #4162
+* chore(deps): update all non-major dependencies (#4160) 7f879d7, closes #4160
+* chore(deps): update aws-actions/configure-aws-credentials action to v5 (#4164) 16b365c, closes #4164
+* chore(deps): update dependency lint-staged to v16 (#4064) 7a9628d, closes #4064
+
+
+
+## <small>56.2.1 (2025-10-01)</small>
+
+* fix(react-icons): missing element in cache prevent package publish (#4159) 571051d, closes #4159
+
+
+
+## 56.2.0 (2025-10-01)
+
+* ci: bump node version to 24 (#4158) 508a87d, closes #4158
+* ci: delete jenkins dead code (#4154) d951f48, closes #4154
+* chore: remove node auth token from cd (#4156) 5983a71, closes #4156
+* chore(release): publish version v56.2.0 [skip ci] faa0c23
+* chore(release): publish version v56.2.0 [skip ci] df37610
+* chore(release): publish version v56.2.1 [skip ci] f9551c8
+* chore(release): revert failed releases (#4157) 8c952b3, closes #4157
+* feat(deps): update all non-major dependencies (#4042) 5afbb20, closes #4042
+
+
+
+## <small>56.1.6 (2025-09-25)</small>
+
+* fix(mantine, datetimerangepicker): issue when selecting a time (#4151) 7a4f532, closes #4151
+* ci: enable turbo remote caching (#4153) 98daa16, closes #4153
+
+
+
+## <small>56.1.5 (2025-09-19)</small>
+
+* fix: last remaining imports without explicit file extension (#4150) a9d288f, closes #4150
+
+
+
+## <small>56.1.4 (2025-09-19)</small>
+
+* fix: remaining imports without explicit file extension (#4149) 4deae3f, closes #4149
+* chore(deps): update actions/checkout digest to 08eba0b (#4147) 2f1c879, closes #4147
+
+
+
+## <small>56.1.3 (2025-09-18)</small>
+
+* refactor: migrate to explicit exports (#4145) f07eed7, closes #4145
+* chore: bump pnpm and enable minimum release age (#4146) 9fae328, closes #4146
+* chore(deps): update dependency vite to v6.3.6 [security] (#4143) 0560cd9, closes #4143
+
+
+
+## <small>56.1.2 (2025-09-16)</small>
+
+* fix(Mantine, Prompt): padding between body and footer (#4140) 64ba094, closes #4140
+* fix(mantine,button): button with disabled tooltip now has display inline-block (#4144) 612dba2, closes #4144
+
+
+
+## <small>56.1.1 (2025-09-05)</small>
+
+* fix(mantine, badge): add some missing props (#4142) 1f37706, closes #4142
+
+
+
+## 56.1.0 (2025-09-05)
+
+* fix(mantine, badge): allow more props on the semantic badges (#4141) f83c718, closes #4141
+* fix(border): fixed input disabled border and actionicon default size (#4139) a7353dd, closes #4139
+* fix(button): change the height from 32 to 36px (#4137) f6aedaa, closes #4137
+* feat(actionicon): change default size to 36px (#4138) a23a573, closes #4138
+
+
+
+## 56.0.0 (2025-08-18)
+
+* fix(mantine): major release (#4136) 313337b, closes #4136
+
+
+### BREAKING CHANGE
+
+* major version 56
+
+
+## <small>55.8.2 (2025-08-15)</small>
+
+* Next (#4000) f81589b, closes #4000 #3986 #4037 #4040 #4041 #4044 #4046 #4045 #4048 #4049 #4050 #4051 #4052 #4053 #4055 #4059 #4060 #4056 #4058 #4057 #4061 #4062 #4068 #4069
+
+
+
+## <small>55.7.2-next.49 (2025-08-14)</small>
+
+* fix(card): fix css condition on data-disabled 86e1c8f
+
+
+
+## <small>55.7.2-next.48 (2025-08-13)</small>
+
+* fix(mantine): remove Header.Actions from type 47ee45d
+
+
+
+## <small>55.7.2-next.47 (2025-08-13)</small>
+
+* fix(mantine): remove min width on Input 3141cf8
+* feat(header)!: remove deprecated header action (#4134) f590af7, closes #4134
+* fix(alert)!: change the naming convention of the alert component, removed deprecated variant (#4133) 9fa0c6f, closes #4133
+
+
+
+## <small>55.7.2-next.46 (2025-08-12)</small>
+
+* Merge branch 'next' of github.com:coveo/plasma into next 32263fc
+* fix(button): make outline variant work again 112222a
+* feat(calendar): playing around for style change (#4132) 160092d, closes #4132
+
+
+
+## <small>55.7.2-next.45 (2025-08-11)</small>
+
+* Ad UI 10705 apply change to toast (#4130) 0a2fec9, closes #4130
+* feat(mantine,prompt): change prompt icons (#4131) 55b586f, closes #4131
+
+
+
+## <small>55.7.2-next.44 (2025-08-11)</small>
+
+* feat(mantine): new LastUpdated component (#4128) 912e912, closes #4128
+* feat(popover): +shadow,+padding,+radius,+position of popover (#4120) 4a79d71, closes #4120
+* feat(website): +css variables list in plasma website (#4124) 29d17a8, closes #4124
+
+
+
+## <small>55.7.2-next.43 (2025-08-07)</small>
+
+* feat(mantine,accordion): update accordion style (#4127) a2527af, closes #4127
+* feat(mantine,breadcrum): update header breadcrumb implementation (#4126) fcb38c9, closes #4126
+* feat(mantine,browserpreview): update style (#4122) 7595185, closes #4122
+* feat(mantine,button): update Button & ActionIcon style (#4119) fd10819, closes #4119
+* feat(mantine,card): create card variant hover and selected state (#4123) f97e1e4, closes #4123
+* feat(mantine,codeeditor): update style (#4125) c49c7b5, closes #4125
+* feat(skeleton): change background-color (#4121) af96d40, closes #4121
+
+
+
+## <small>55.7.2-next.42 (2025-07-30)</small>
+
+* feat(childform): adjust background and border thickness of childform (#4085) ef1e214, closes #4085
+
+
+
+## <small>55.7.2-next.41 (2025-07-29)</small>
+
+* feat(mantine,collection): apply style changes (#4116) b8750cc, closes #4116
+* feat(mantine,tabs): apply style changes (#4118) e9262fd, closes #4118
+
+
+
+## <small>55.7.2-next.40 (2025-07-29)</small>
+
+* feat: implement semantic badges components (#4101) dba5584, closes #4101
+* feat(chip): fix chip group error (#4088) 741558a, closes #4088
+* feat(infotoken): apply style changes (#4110) 7c9d318, closes #4110
+* feat(mantine): update demo button type (#4109) 2d08100, closes #4109
+* feat(multiselect): change pill text color, revert gap inputwrapper (#4117) 3866312, closes #4117
+* Ad UI 10704 apply style changes to radio card (#4115) 935b7f2, closes #4115
+* Ad UI 10888 style changes number text time input (#4114) 1867319, closes #4114
+* feat(mantine,header): update doc anchor icon (#4111) 635c2a2, closes #4111
+
+
+
+## <small>55.7.2-next.39 (2025-07-18)</small>
+
+* fix(mantine,navlink): reduce style specificity (#4108) 7a91693, closes #4108
+* feat(radio): adjust newly added style to radio component (#4104) 6b43daf, closes #4104
+
+
+
+## <small>55.7.2-next.38 (2025-07-18)</small>
+
+* Ad UI 10702 apply style changes to nav link (#4099) fb2e3e9, closes #4099
+* Ad UI 10883 select style changes (#4103) cbddabd, closes #4103
+* Ad UI 10887 apply style changes to checkbox (#4106) e2266af, closes #4106
+* fix(mantine,codeeditor): adjust height (#4105) 2e4994f, closes #4105
+* feat(mantine): changed newly added variables with hardcoded ones (#4092) 8579db6, closes #4092
+* feat(mantine): updated input font-size (#4107) fa25253, closes #4107
+* feat(pagination): +style change for pagination (#4102) 55cd318, closes #4102
+
+
+
+## <small>55.7.2-next.37 (2025-07-14)</small>
+
+* fix(mantine): disable menu item links properly (#4100) 5befae4, closes #4100
+
+
+
+## <small>55.7.2-next.36 (2025-07-10)</small>
+
+* fix(mantine,header): header secondary order (#4098) b0209b6, closes #4098
+* Merge branch 'master' of github.com:coveo/plasma into next 1515f0b
+* Merge branch 'next' of github.com:coveo/plasma into next 098b177
+* chore(deps): update actions/setup-node digest to 49933ea (#4047) 74afdeb, closes #4047
+* chore(deps): update dependency vite to v6.2.7 [security] (#4038) 18dee73, closes #4038
+
+
+
+## <small>55.7.2-next.35 (2025-07-09)</small>
+
+* fix(mantine,modal): make description a react node (#4097) b924b72, closes #4097
+* feat(mantine): apply pill style changes (#4093) f14c8ee, closes #4093
+* feat(mantine): update slider look (#4091) c4648bf, closes #4091
+
+
+
+## <small>55.7.2-next.34 (2025-07-08)</small>
+
+* fix(mantine): export extended modal props (#4096) ffb76b3, closes #4096
+* feat(mantine): update Tooltip style (#4094) 978d65f, closes #4094
+* Ad UI 10790 move app background css variable in plasma theme (#4095) 8287935, closes #4095
+
+
+
+## <small>55.7.2-next.33 (2025-07-08)</small>
+
+* feat(mantine): simplify modal usage (#4082) aa1b280, closes #4082
+
+
+
+## <small>55.7.2-next.32 (2025-07-07)</small>
+
+* feat(mantine): change font styles (#4090) 22b652a, closes #4090
+* fix(table-action-item): use overridden MenuItem component (#4084) f61e189, closes #4084
+* fix(website): fix code snippet syntax highlighting (#4089) 2370aa2, closes #4089
+
+
+
+## <small>55.7.2-next.31 (2025-07-03)</small>
+
+* fix(datetimepicker): the preselect presets in the datetimepicker component in plasma is not working  7ea7ab8, closes #4087
+* fix(mantine): disable CodeEditor stickyScroll (#4086) c4f7a13, closes #4086
+* feat(mantine): add default image fallback (#4083) c868640, closes #4083
+
+
+
+## <small>55.7.2-next.30 (2025-07-02)</small>
+
+* feat(datetimerangepicker): create the DateTimeRangePicker component (#4081) 5eb8115, closes #4081
+* feat(mantine): update Stepper look (#4080) a916aec, closes #4080
+* feat(variables): create CSS variables for font-weight (#4079) 4af9126, closes #4079
+
+
+
+## <small>55.7.2-next.29 (2025-06-23)</small>
+
+* feat(mantine8): +inline true for popover and combobox middleware (#4078) 7f12b0b, closes #4078
+* Ad UI 10695 segmented control style changes (#4075) deb80f8, closes #4075
+* feat(mantine,theme): change text selection color (#4077) 772a32e, closes #4077
+
+
+
+## <small>55.7.2-next.28 (2025-06-17)</small>
+
+* Ad UI 10500 mantine 8 bump improvements (#4076) af4daba, closes #4076
+
+
+
+## <small>55.7.2-next.27 (2025-06-16)</small>
+
+* feat(mantine)!: bump mantine, fix type and tests (#4074) 4ab472a, closes #4074
+
+
+
+## <small>55.7.2-next.26 (2025-06-11)</small>
+
+* fix(mantine): gray-light and gray-light-hover transparency (#4072) dd363ad, closes #4072
+* Ad UI 10500 bump mantine 8 (#4070) 02ce1b3, closes #4070
+
+
+
+## <small>55.7.2-next.25 (2025-06-06)</small>
+
+* feat(mantine, tabs): update the style (#4071) 0b4c888, closes #4071
+
+
+
+## <small>55.7.2-next.24 (2025-05-29)</small>
+
+* Fix/ua 10229 fix get item id on collection component (#4069) ee5236c, closes #4069
+
+
+
+## <small>55.7.2-next.23 (2025-05-27)</small>
+
+* fix(mantine): adjust table selected row bg color (#4068) 156f82f, closes #4068
+* Ad UI 10593 apply style radio (#4058) 1220649, closes #4058
+* Ad UI 10596 apply style changes select (#4062) bb4caaa, closes #4062
+* feat(mantine, loader): custom loader to match figma (#4060) e8a2111, closes #4060
+* feat(collection): add-data-testid-param-to-collection (#4061) fefed55, closes #4061
+* feat(mantine): update CodeEditor look (#4059) 35bb241, closes #4059
+* feat(mantine): update style of checkbox (#4057) 01ec538, closes #4057
+* feat(pagination): +active-bg +active-color (#4056) 2f715e3, closes #4056
+
+
+
+## <small>55.7.2-next.22 (2025-04-24)</small>
+
+* fix(mantine, badge): font-size and text-transform (#4055) ee34551, closes #4055
+
+
+
+## <small>55.7.2-next.21 (2025-04-17)</small>
+
+* feat(mantine, action icon): apply style changes and create semantic components (#4053) a91accb, closes #4053
+
+
+
+## <small>55.7.2-next.20 (2025-04-16)</small>
+
+* feat(mantine, button): update style (#4052) de3eba4, closes #4052
+* feat(mantine, modal): update overlay style (#4051) 5023f4f, closes #4051
+
+
+
+## <small>55.7.2-next.19 (2025-04-15)</small>
+
+* feat(mantine): improve CopyToClipboard component (#4050) 5a5bbfe, closes #4050
+
+
+
+## <small>55.7.2-next.18 (2025-04-14)</small>
+
+* fix(mantine): revert header variant removal on root node 207b9ae
+
+
+
+## <small>55.7.2-next.17 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name second try 810e709
+
+
+
+## <small>55.7.2-next.16 (2025-04-14)</small>
+
+* fix(mantine): prompt accessible name (#4049) 7abbf7a, closes #4049
+* fix(mantine, input): only add margin top if there's a title or description (#4048) 6d6b58a, closes #4048
+
+
+
+## <small>55.7.2-next.15 (2025-04-14)</small>
+
+* feat(react-icons): reexport tabler icons (#4045) 889df29, closes #4045
+* chore(mantine, input): update the style of the input and input wrapper (#4046) 4c37039, closes #4046
+
+
+
+## <small>55.7.2-next.14 (2025-04-11)</small>
+
+* fix(mantine, prompt): automatically add the Header if the title is a string (#4044) 029b6e6, closes #4044
+* Merge branch 'master' of github.com:coveo/plasma into next 60ab942
+* chore(deps): update all non-major dependencies (#4029) 659172f, closes #4029
+* chore(release): publish version v55.8.0 [skip ci] b14864b
+* feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043
+
+
+
+## 55.8.0 (2025-04-11)
+
+* feat(codeEditor): front the editor instance (#4043) a1827a0, closes #4043
+* chore(deps): update all non-major dependencies (#4029) 659172f, closes #4029
+* chore(deps): update dependency vite to v6.2.4 [security] (#4036) d645ee1, closes #4036
+
+
+
+## <small>55.7.3 (2025-03-25)</small>
+
+* chore(deps): update all non-major dependencies (#4027) 971fe64, closes #4027
+* chore(deps): update dependency vite to v6.2.3 [security] (#4031) 23f67f8, closes #4031
+* chore(mantine): make test script cross-env (#4030) 1acaa01, closes #4030
+* fix(CodeEditor): do not format if editor closed (#4032) 96392ef, closes #4032
+
+
+
+## <small>55.7.2 (2025-03-18)</small>
+
+* fix(mantine, CodeEditor): format text only on valid input (#4028) cbc1880, closes #4028
+* chore(deps): update actions/setup-node digest to cdca736 (#4026) b973873, closes #4026
+* chore(deps): update all non-major dependencies (#4007) 836a6d8, closes #4007
+* chore(deps): update all non-major dependencies (#4016) 24c3cf1, closes #4016
+* chore(deps): update all non-major dependencies (#4019) 4751036, closes #4019
+* chore(deps): update all non-major dependencies (#4020) d0b80bd, closes #4020
+* chore(deps): update all non-major dependencies (#4021) 8dad170, closes #4021
+* chore(deps): update all non-major dependencies (#4022) a337942, closes #4022
+* chore(deps): update all non-major dependencies (#4025) 3741e15, closes #4025
+* chore(deps): update dependency @swc/core to v1.11.6 (#4023) f7df432, closes #4023
+* chore(deps): update dependency globals to v16 (#4017) a8411c3, closes #4017
+* chore(deps): update dependency sort-package-json to v3 (#4024) 83c2a32, closes #4024
+* chore(deps): update pnpm to v10 (#4008) e6418d4, closes #4008
+* fix(deps): update dependency react-markdown to v10 (#4018) f8a7a90, closes #4018
+
+
+
+## <small>55.7.1 (2025-02-21)</small>
+
+* feat(mantine, code-editor): support custom tabSize (#4014) a4483fa, closes #4014
+* fix(modal): optimize import (#4009) b204340, closes #4009
+* fix(table): correct useUrlSyncedState serialization logic (#4011) 26d6336, closes #4011
+* chore(deps): update actions/setup-node digest to 1d0ff46 (#4006) 43eaf2c, closes #4006
+* chore(deps): update all non-major dependencies (#4005) b73ecfa, closes #4005
+* chore(deps): update dependency eslint-config-prettier to v10 (#3998) 1511c68, closes #3998
+* chore(deps): update dependency vitest to v3 (#4004) 62f90af, closes #4004
+* chore(deps): update dependency vitest to v3.0.5 [security] (#4010) 414fd96, closes #4010
+
+
+
 ## 55.7.0 (2025-01-23)
 
 * fix(prompt): filter footer children in one pass (#4002) a753fd3, closes #4002

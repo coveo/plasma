@@ -1,10 +1,11 @@
 import {
     Box,
+    Card,
     ColumnDef,
     createColumnHelper,
-    Paper,
     renderTableCell,
     SimpleGrid,
+    Stack,
     Table,
     TableLayout,
     TableLayoutProps,
@@ -12,7 +13,7 @@ import {
     useTable,
     useTableContext,
 } from '@coveord/plasma-mantine';
-import {CardSize16Px, EditSize16Px} from '@coveord/plasma-react-icons';
+import {EditSize16Px, IconLayoutGrid} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
 
@@ -23,40 +24,36 @@ const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
         .map((header) => (
             <Title order={6}>{renderTableCell(header.column.columnDef.header, header.getContext())}</Title>
         ));
-    const cards = table.getRowModel().rows.map((row) => {
-        const isSelected = !!row.getIsSelected();
-        return (
-            <Paper
-                key={row.id}
-                shadow={isSelected ? 'xs' : 'md'}
-                withBorder={isSelected}
-                p="md"
-                onClick={(event) => {
-                    if (event.detail <= 1) {
-                        row.toggleSelected(true);
-                    } else {
-                        props.onRowDoubleClick?.(row.original, row.index, row);
-                    }
-                }}
-            >
-                <SimpleGrid cols={3} spacing="md">
-                    {row.getVisibleCells().map((cell, index) => (
-                        <Box key={cell.id}>
-                            <Table.Loading visible={props.loading}>
-                                {headers[index]}
-                                {renderTableCell(cell.column.columnDef.cell, cell.getContext())}
-                            </Table.Loading>
-                        </Box>
-                    ))}
-                </SimpleGrid>
-            </Paper>
-        );
-    });
+    const cards = table.getRowModel().rows.map((row) => (
+        <Card
+            key={row.id}
+            mod={{selected: row.getIsSelected()}}
+            variant="hover"
+            onClick={(event) => {
+                if (event.detail <= 1) {
+                    row.toggleSelected(true);
+                } else {
+                    props.onRowDoubleClick?.(row.original, row.index, row);
+                }
+            }}
+        >
+            <Stack gap="sm">
+                {row.getVisibleCells().map((cell, index) => (
+                    <Box key={cell.id}>
+                        <Table.Loading visible={props.loading}>
+                            {headers[index]}
+                            {renderTableCell(cell.column.columnDef.cell, cell.getContext())}
+                        </Table.Loading>
+                    </Box>
+                ))}
+            </Stack>
+        </Card>
+    ));
 
     return (
         <tr>
             <td style={{padding: 0}}>
-                <SimpleGrid cols={2} spacing="lg" px="xl" py="lg">
+                <SimpleGrid cols={4} spacing="lg" px="xl" py="lg">
                     {cards}
                 </SimpleGrid>
             </td>
@@ -68,7 +65,7 @@ const CardLayout: TableLayout = ({children}) => <>{children}</>;
 CardLayout.Header = () => null;
 CardLayout.displayName = 'Cards';
 CardLayout.Body = TableCards;
-CardLayout.Icon = CardSize16Px;
+CardLayout.Icon = IconLayoutGrid;
 
 const Demo = () => {
     const data = useMemo(() => makeData(10), []);
@@ -95,7 +92,8 @@ const Demo = () => {
                 },
             ]}
         >
-            <Table.Header />
+            {/* Table demo is in a card with a border, remove the one from the header */}
+            <Table.Header borderTop={false} />
         </Table>
     );
 };

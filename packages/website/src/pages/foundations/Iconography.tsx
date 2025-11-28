@@ -1,3 +1,4 @@
+import {Accordion, Alert, Anchor, Code, InfoToken, Stack, Text} from '@coveord/plasma-mantine';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import IconographyDemo from '@examples/foundations/Iconography/Iconography.demo?demo';
 import {Fragment, FunctionComponent} from 'react';
@@ -27,11 +28,11 @@ import {
     useTableContext,
 } from '@coveord/plasma-mantine';
 import {rankItem} from '@tanstack/match-sorter-utils';
-import {PageLayout} from '../../building-blocs/PageLayout';
+import {PageLayout} from '../../building-blocs/PageLayout.js';
 
-const {iconsList, ...Icons} = PlasmaReactIcons;
+const {plasmaIconsList, ...Icons} = PlasmaReactIcons;
 
-type IconSet = (typeof iconsList)[number];
+type IconSet = (typeof plasmaIconsList)[number];
 
 const IconSetCard = <T,>({getVisibleCells}: Row<T>) => {
     const [opened, {toggle}] = useDisclosure(false);
@@ -118,7 +119,9 @@ const columns: Array<ColumnDef<IconSet>> = [
             const Variant32px = getValue().find(
                 (variantName) => getIconSizeFromVariantName(variantName) === 32,
             ) as keyof typeof Icons;
-            const IconComponent = Icons[Variant32px];
+            const IconComponent = Icons[Variant32px] as React.ForwardRefExoticComponent<
+                Omit<React.SVGProps<SVGSVGElement>, 'ref'> & React.RefAttributes<SVGSVGElement>
+            >;
             return <IconComponent height={32} />;
         },
     }),
@@ -129,7 +132,9 @@ const columns: Array<ColumnDef<IconSet>> = [
         cell: ({getValue}) => (
             <Grid columns={4} align="center">
                 {getValue().map((svgName: keyof typeof Icons) => {
-                    const IconComponent = Icons[svgName];
+                    const IconComponent = Icons[svgName] as React.ForwardRefExoticComponent<
+                        Omit<React.SVGProps<SVGSVGElement>, 'ref'> & React.RefAttributes<SVGSVGElement>
+                    >;
                     const size = parseInt(/(\d+)px/i.exec(svgName)?.[0] ?? '16', 10);
                     return IconComponent ? (
                         <Fragment key={svgName}>
@@ -160,12 +165,12 @@ const EmptyState = ({filter}: {filter: string}) => (
     </Box>
 );
 
-const IconsTable: FunctionComponent = () => {
+const PlasmaIconsTable: FunctionComponent = () => {
     const table = useTable<IconSet>();
     return (
         <Table
             store={table}
-            data={iconsList}
+            data={plasmaIconsList}
             layouts={[CardLayout]}
             columns={columns}
             getRowId={({iconName}) => iconName}
@@ -191,7 +196,30 @@ export const IconographyExamples = () => (
         demo={<IconographyDemo center />}
         withPropsTable={false}
     >
-        <IconsTable />
+        <Alert.Advice title="Prefer Tabler Icons">
+            <Text>
+                We use the <Code>@tabler/react-icons</Code> library for our icons. You can consult the full list of
+                icons on{' '}
+                <Anchor target="_blank" href="https://tabler.io/icons" rel="noreferrer noopener">
+                    their website
+                </Anchor>
+                .
+            </Text>
+        </Alert.Advice>
+        <Accordion variant="contained">
+            <Accordion.Item value="plasma-icons">
+                <Accordion.Control icon={<InfoToken variant="information" />}>In-house icons</Accordion.Control>
+                <Accordion.Panel>
+                    <Stack>
+                        <Alert.Warning title="Deprecated">
+                            The icons in this list are deprected in favor of Tabler Icons. Only use the in-house icons
+                            if no icons in tabler fits your needs.
+                        </Alert.Warning>
+                        <PlasmaIconsTable />
+                    </Stack>
+                </Accordion.Panel>
+            </Accordion.Item>
+        </Accordion>
     </PageLayout>
 );
 

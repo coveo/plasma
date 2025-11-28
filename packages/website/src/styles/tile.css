@@ -3,11 +3,11 @@
 }
 
 a.tile {
-    border: 2px solid var(--mantine-color-gray-3);
+    border: 2px solid var(--mantine-color-default-border);
 }
 
 a.tile:hover {
-    border: 2px solid var(--mantine-color-action-6);
+    border: 2px solid var(--mantine-primary-color-filled);
 }
 
 .tile-information {

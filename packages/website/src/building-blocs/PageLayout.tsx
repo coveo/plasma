@@ -1,11 +1,11 @@
-import {AppShell, Box, Container, Divider, Flex, Stack, Tabs, Title} from '@coveord/plasma-mantine';
+import {AppShell, Box, Container, Flex, Stack, Tabs, Title} from '@coveord/plasma-mantine';
 import {Fragment, FunctionComponent, ReactNode, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 
-import {GuidelinesTab} from './GuidelinesTab';
-import {PageHeader, PageHeaderProps} from './PageHeader';
-import {PropsTable, PropsTableProps} from './PropsTable';
-import {Tile, TileProps} from './Tile';
+import {GuidelinesTab} from './GuidelinesTab.js';
+import {PageHeader, PageHeaderProps} from './PageHeader.js';
+import {PropsTable, PropsTableProps} from './PropsTable.js';
+import {Tile, TileProps} from './Tile.js';
 
 export interface PageLayoutProps extends PageHeaderProps, PropsTableProps {
     id: string;
@@ -48,13 +48,12 @@ export const PageLayout = ({
                         title={title}
                         description={description}
                     />
-                    <Tabs.List pl="xl">
+                    <Tabs.List mx="md">
                         <Tabs.Tab value="implementation">Implementation</Tabs.Tab>
                         <Tabs.Tab value="guide">Guidelines</Tabs.Tab>
                     </Tabs.List>
                 </Container>
-                <Divider />
-                <Box bg="gray.0" h="100%">
+                <Box h="100%">
                     <Container size="xl" py="xl">
                         <Tabs.Panel value="implementation">
                             <ResetScroll />
