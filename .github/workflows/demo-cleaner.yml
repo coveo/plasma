@@ -3,7 +3,7 @@ on:
     pull_request:
         types: [closed]
 permissions:
-  contents: read
+    contents: read
 
 jobs:
     clean-demo:

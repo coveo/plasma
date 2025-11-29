@@ -21,7 +21,7 @@ on:
         - cron: '17 2 * * 1'
 
 permissions:
-  contents: read
+    contents: read
 
 jobs:
     analyze:
