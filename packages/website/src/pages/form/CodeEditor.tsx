@@ -13,7 +13,7 @@ const CodeEditorPage = () => (
         id="CodeEditor"
         section="Form"
         title="Code Editor"
-        sourcePath="/packages/mantine/src/components/code-editor/CodeEditor.tsx"
+        sourcePath="/packages/mantine/src/components/CodeEditor/CodeEditor.tsx"
         description="A code editor is a text area that allows users to edit code. A coding syntax is built in."
         thumbnail="codeEditor"
         propsMetadata={CodeEditorMetadata}

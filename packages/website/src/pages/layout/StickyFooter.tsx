@@ -7,7 +7,7 @@ const Page = () => (
     <PageLayout
         section="Layout"
         title="Sticky Footer"
-        sourcePath="/packages/mantine/src/components/sticky-footer/StickyFooter.tsx"
+        sourcePath="/packages/mantine/src/components/StickyFooter/StickyFooter.tsx"
         description="A page footer that sticks to the bottom of the screen."
         id="StickyFooter"
         propsMetadata={StickyFooterMetadata}

@@ -8,7 +8,7 @@ const Page = () => (
     <PageLayout
         section="Layout"
         title="Browser Preview"
-        sourcePath="/packages/mantine/src/components/browser-preview/BrowserPreview.tsx"
+        sourcePath="/packages/mantine/src/components/BrowserPreview/BrowserPreview.tsx"
         description="A browser preview shows the result of configuration changes in a simplified representation of a browser interface."
         thumbnail="placeholder"
         propsMetadata={BrowserPreviewMetadata}
