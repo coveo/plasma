@@ -22,7 +22,7 @@ figma.connect(
         variant: {Type: 'Primary'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
-            <Badge.Primary size={size} rightSection={rightSection} leftSection={leftSection}>
+            <Badge.Primary size={size} leftSection={leftSection} rightSection={rightSection}>
                 {placeholder}
             </Badge.Primary>
         ),
@@ -36,7 +36,7 @@ figma.connect(
         variant: {Type: 'Secondary'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
-            <Badge.Secondary size={size} rightSection={rightSection} leftSection={leftSection}>
+            <Badge.Secondary size={size} leftSection={leftSection} rightSection={rightSection}>
                 {placeholder}
             </Badge.Secondary>
         ),
@@ -50,7 +50,7 @@ figma.connect(
         variant: {Type: 'Success'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
-            <Badge.Success size={size} rightSection={rightSection} leftSection={leftSection}>
+            <Badge.Success size={size} leftSection={leftSection} rightSection={rightSection}>
                 {placeholder}
             </Badge.Success>
         ),
@@ -64,7 +64,7 @@ figma.connect(
         variant: {Type: 'Warning'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
-            <Badge.Warning size={size} rightSection={rightSection} leftSection={leftSection}>
+            <Badge.Warning size={size} leftSection={leftSection} rightSection={rightSection}>
                 {placeholder}
             </Badge.Warning>
         ),
@@ -78,7 +78,7 @@ figma.connect(
         variant: {Type: 'Critical'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
-            <Badge.Critical size={size} rightSection={rightSection} leftSection={leftSection}>
+            <Badge.Critical size={size} leftSection={leftSection} rightSection={rightSection}>
                 {placeholder}
             </Badge.Critical>
         ),
@@ -92,7 +92,7 @@ figma.connect(
         variant: {Type: 'Disabled'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
-            <Badge.Disabled size={size} rightSection={rightSection} leftSection={leftSection}>
+            <Badge.Disabled size={size} leftSection={leftSection} rightSection={rightSection}>
                 {placeholder}
             </Badge.Disabled>
         ),
