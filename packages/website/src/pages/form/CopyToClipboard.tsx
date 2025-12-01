@@ -14,7 +14,7 @@ const CopyToClipboardPage = () => (
         examples={{
             withLabel: <CopyToClipboardWithLabelDemo center title="With Label" />,
         }}
-        sourcePath="/packages/mantine/src/components/copyToClipboard/CopyToClipboard.tsx"
+        sourcePath="/packages/mantine/src/components/CopyToClipboard/CopyToClipboard.tsx"
         propsMetadata={CopyToClipboardMetadata}
     />
 );

@@ -9,7 +9,7 @@ const Page = () => (
     <PageLayout
         section="Layout"
         title="Header"
-        sourcePath="/packages/mantine/src/components/header/Header.tsx"
+        sourcePath="/packages/mantine/src/components/Header/Header.tsx"
         description="A page header informs a user of the section of the product they are currently in. It includes a breadcrumb and optional call to actions."
         thumbnail="header"
         id="Header"

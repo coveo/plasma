@@ -11,7 +11,7 @@ const Page = () => (
     <PageLayout
         section="Layout"
         title="EllipsisText"
-        sourcePath="/packages/mantine/src/components/ellipsis-text/EllipsisText.tsx"
+        sourcePath="/packages/mantine/src/components/EllipsisText/EllipsisText.tsx"
         description="Allows to display text that will automatically truncate and shows a tooltip on hover if it overflows the max width."
         id="EllipsisText"
         propsMetadata={EllipsisTextMetadata}
