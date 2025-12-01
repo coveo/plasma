@@ -7,7 +7,7 @@ const Page = () => (
     <PageLayout
         section="Layout"
         title="Modal"
-        sourcePath="/packages/mantine/src/components/modal/Modal.tsx"
+        sourcePath="/packages/mantine/src/components/Modal/Modal.tsx"
         description="A page header informs a user of the section of the product they are currently in. It includes a breadcrumb and optional call to actions."
         id="Modal"
         propsMetadata={ModalMetadata}

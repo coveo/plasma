@@ -10,7 +10,7 @@ const Page = () => (
     <PageLayout
         section="Layout"
         title="Prompt"
-        sourcePath="/packages/mantine/src/components/prompt/Prompt.tsx"
+        sourcePath="/packages/mantine/src/components/Prompt/Prompt.tsx"
         description="A Prompt is a visual communication from the system to the user."
         id="Prompt"
         propsMetadata={PromptMetadata}

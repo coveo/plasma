@@ -10,7 +10,7 @@ const Page = () => (
     <PageLayout
         section="Form"
         title="Collection"
-        sourcePath="/packages/mantine/src/components/collection/Collection.tsx"
+        sourcePath="/packages/mantine/src/components/Collection/Collection.tsx"
         description="A Collection allows users to provide an array of items of the same type."
         id="Collection"
         demo={<CollectionDemo />}

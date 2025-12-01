@@ -1,11 +1,19 @@
 import {DateRangePicker} from '@coveord/plasma-mantine';
 import dayjs from 'dayjs';
 
+const MIN_DATE = dayjs().subtract(2, 'month').toDate();
+const MAX_DATE = dayjs().endOf('day').toDate();
+
+const DATE_BOUNDARIES = {
+    minDate: MIN_DATE,
+    maxDate: MAX_DATE,
+};
+
 const Demo = () => (
     <DateRangePicker
         placeholder="Custom placeholder"
         formatter={(time) => dayjs(time).format('YYYY-MM-DD HH:mm:ss')}
-        rangeCalendarProps={{minDate: dayjs().subtract(2, 'month').toDate(), maxDate: dayjs().endOf('day').toDate()}}
+        rangeCalendarProps={DATE_BOUNDARIES}
         presets={{
             lastHour: {
                 label: 'Last hour',
@@ -22,6 +30,8 @@ const Demo = () => (
                 ],
             },
         }}
+        startProps={DATE_BOUNDARIES}
+        endProps={DATE_BOUNDARIES}
     />
 );
 
