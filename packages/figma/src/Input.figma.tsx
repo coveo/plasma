@@ -1,4 +1,4 @@
-import {Textarea, TextInput} from '@coveord/plasma-mantine';
+import {NumberInput, Textarea, TextInput} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 import {type ReactNode} from 'react';
 
@@ -28,7 +28,7 @@ const inputProps = {
 
 figma.connect(
     TextInput,
-    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50528&m=dev',
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50528',
     {
         props: inputProps,
         example: (props) => (
@@ -47,13 +47,30 @@ figma.connect(
     },
 );
 
+figma.connect(Textarea, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50534', {
+    props: inputProps,
+    example: (props) => (
+        <Textarea
+            label={props.labelProps.label}
+            description={props.labelProps.description}
+            placeholder={props.inputProps.placeholder}
+            leftSection={props.inputProps.leftSection}
+            rightSection={props.inputProps.rightSection}
+            required={props.labelProps.required}
+            disabled={props.inputProps.disabled}
+            readOnly={props.inputProps.readOnly}
+            error={props.errorProps.error}
+        />
+    ),
+});
+
 figma.connect(
-    Textarea,
-    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50534&t=W55qhPhj21tmNF5t-4',
+    NumberInput,
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50522',
     {
         props: inputProps,
         example: (props) => (
-            <Textarea
+            <NumberInput
                 label={props.labelProps.label}
                 description={props.labelProps.description}
                 placeholder={props.inputProps.placeholder}
