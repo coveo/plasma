@@ -38,7 +38,7 @@ export const EditableDateRangePicker = ({
                 onChange={onChangeStart}
                 onFocus={onFocus}
                 popoverProps={{styles: {dropdown: {display: 'none'}}}}
-                styles={{...startProps.styles}}
+                {...startProps}
             />
             <DateInput
                 clearable={false}
@@ -47,7 +47,7 @@ export const EditableDateRangePicker = ({
                 onChange={onChangeEnd}
                 onFocus={onFocus}
                 popoverProps={{styles: {dropdown: {display: 'none'}}}}
-                styles={{...endProps.styles}}
+                {...endProps}
             />
         </>
     );
