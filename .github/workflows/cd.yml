@@ -56,3 +56,11 @@ jobs:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
                   AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+            - name: Build Storybook
+              uses: ./.github/actions/storybook
+              # Only build Storybook for master branch
+              if: github.ref == 'refs/heads/master'
+            - name: Deploy Storybook
+              # Only deploy Storybook for master branch
+              if: github.ref == 'refs/heads/master'
+              run: bash ./.github/actions/storybook/deploy-storybook.sh ${{ github.ref_name }} ${{ secrets.AWS_BUCKET }}
