@@ -70,5 +70,5 @@ jobs:
             - name: Add Storybook demo link as a comment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
-                  message: ':heavy_check_mark: [Live Storybook demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ steps.deploy-demo.outputs.demo-output-path }}/storybook).'
+                  message: ':heavy_check_mark: [Live Storybook demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ steps.deploy-demo.outputs.demo-output-path }}/storybook/index.html).'
                   avoidRepostsWith: Live Storybook demo of your latest successful build available here

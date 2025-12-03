@@ -426,6 +426,12 @@ importers:
       '@coveord/plasma-mantine':
         specifier: workspace:*
         version: link:../mantine
+      '@coveord/plasma-react-icons':
+        specifier: workspace:*
+        version: link:../react-icons
+      '@faker-js/faker':
+        specifier: 9.9.0
+        version: 9.9.0
       '@mantine/core':
         specifier: 8.3.6
         version: 8.3.6(@mantine/hooks@8.3.6(react@18.3.1))(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -444,12 +450,18 @@ importers:
       '@mantine/notifications':
         specifier: 8.3.6
         version: 8.3.6(@mantine/core@8.3.6(@mantine/hooks@8.3.6(react@18.3.1))(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@8.3.6(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      dayjs:
+        specifier: 1.11.19
+        version: 1.11.19
       react:
         specifier: 18.3.1
         version: 18.3.1
       react-dom:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
+      react-hook-form:
+        specifier: 7.66.0
+        version: 7.66.0(react@18.3.1)
     devDependencies:
       '@storybook/react-vite':
         specifier: 10.0.8

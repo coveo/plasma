@@ -277,5 +277,11 @@ export default tsEslint.config(
             'no-console': 'off',
         },
     },
+    {
+        files: ['**/*.stories.tsx', '**/*.stories.ts'],
+        rules: {
+            'no-console': 'off',
+        },
+    },
     storybook.configs['flat/recommended'],
 );
