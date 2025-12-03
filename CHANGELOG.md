@@ -1,3 +1,19 @@
+## 56.5.0 (2025-12-03)
+
+* ci: add Storybook deployment to CD workflow  (#4222) 710e782, closes #4222
+* feat(editable-date-range-picker): support min and max dates (#4217) 8bf70b8, closes #4217
+* feat(figma): code connect NumberInput (#4216) 1bb3563, closes #4216
+* feat(figma): code connect Textarea (#4213) e51051e, closes #4213
+* feat(storybook): add a storybook demo (#4015) 5989db6, closes #4015
+* chore(deps): update dependency @types/chroma-js to v3 (#3994) e301270, closes #3994
+* [StepSecurity] Apply security best practices (#4214) cc49bea, closes #4214
+* Ad UI 11059 badge codeconnect (#4206) 8364fb8, closes #4206
+* Ad UI 11059 badge codeconnect (#4219) baafeb8, closes #4219
+* Ad UI 11068 chip codeconnect (#4215) bcfc3a2, closes #4215
+* fix(website): not found when viewing source (#4218) fdd8c3a, closes #4218
+
+
+
 ## 56.4.0 (2025-11-24)
 
 * feat(actionIcon): connect actionIcon to figma (#4203) 0e3ac2f, closes #4203
