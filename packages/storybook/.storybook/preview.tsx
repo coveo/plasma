@@ -1,5 +1,5 @@
 import {createTheme, Plasmantine} from '@coveord/plasma-mantine';
-import {ArgTypes, Description, Stories, Subtitle, Title} from '@storybook/addon-docs/blocks';
+import {Stories, Title} from '@storybook/addon-docs/blocks';
 import type {Preview} from '@storybook/react-vite';
 import {useColorScheme} from './decorators/useColorScheme.js';
 
@@ -24,30 +24,22 @@ const preview: Preview = {
                 dynamicTitle: true,
             },
         },
-        colorScheme: {
-            description: "Color scheme applied to Mantine's theme",
-            toolbar: {
-                title: 'Color Scheme',
-                items: [
-                    {value: 'light', title: 'Light', icon: 'sun'},
-                    {value: 'dark', title: 'Dark', icon: 'moon'},
-                ],
-                dynamicTitle: true,
-            },
-        },
     },
     initialGlobals: {
         primaryColor: 'teal',
-        colorScheme: 'light',
+        backgrounds: {value: 'light'},
     },
     parameters: {
+        backgrounds: {
+            options: {
+                dark: {name: 'Dark', value: 'var(--mantine-color-body)'},
+                light: {name: 'Light', value: 'var(--mantine-color-body)'},
+            },
+        },
         docs: {
             page: () => (
                 <>
                     <Title />
-                    <Subtitle />
-                    <Description />
-                    <ArgTypes />
                     <Stories title="Examples" />
                 </>
             ),
