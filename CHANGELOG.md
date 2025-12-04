@@ -1,3 +1,10 @@
+## 56.6.0 (2025-12-04)
+
+* feat(figma): adjust inputs to new figma component structure (#4223) 17747a7, closes #4223
+* feat(storybook): activate docs addon (#4224) ce95580, closes #4224
+
+
+
 ## 56.5.0 (2025-12-03)
 
 * ci: add Storybook deployment to CD workflow  (#4222) 710e782, closes #4222
