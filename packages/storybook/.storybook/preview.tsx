@@ -1,8 +1,10 @@
 import {createTheme, Plasmantine} from '@coveord/plasma-mantine';
+import {ArgTypes, Description, Stories, Subtitle, Title} from '@storybook/addon-docs/blocks';
 import type {Preview} from '@storybook/react-vite';
 import {useColorScheme} from './decorators/useColorScheme.js';
 
 import './styles/reset.css';
+
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
@@ -15,9 +17,9 @@ const preview: Preview = {
                 title: 'Primary Color',
                 icon: 'paintbrush',
                 items: [
-                    {value: 'teal', title: 'Teal'},
-                    {value: 'blue', title: 'Blue'},
-                    {value: 'violet', title: 'Violet'},
+                    {value: 'teal', title: 'Administration Console'},
+                    {value: 'blue', title: 'Knowledge Hub'},
+                    {value: 'violet', title: 'Merchandizing Hub'},
                 ],
                 dynamicTitle: true,
             },
@@ -38,15 +40,27 @@ const preview: Preview = {
         primaryColor: 'teal',
         colorScheme: 'light',
     },
+    parameters: {
+        docs: {
+            page: () => (
+                <>
+                    <Title />
+                    <Subtitle />
+                    <Description />
+                    <ArgTypes />
+                    <Stories title="Examples" />
+                </>
+            ),
+        },
+    },
     decorators: [
         useColorScheme,
         (Story, context) => {
             const theme = createTheme({
-                primaryColor: context.globals.primaryColor || 'teal',
+                primaryColor: context.globals.primaryColor ?? 'teal',
             });
             return (
                 <Plasmantine theme={theme}>
-                    <link rel="stylesheet" href="https://use.typekit.net/wqe4zqp.css" />
                     <Story />
                 </Plasmantine>
             );
