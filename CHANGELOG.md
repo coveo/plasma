@@ -1,3 +1,9 @@
+## 56.7.0 (2025-12-04)
+
+* feat(storybook): remove arg types from docs page (#4225) cbe967c, closes #4225
+
+
+
 ## 56.6.0 (2025-12-04)
 
 * feat(figma): adjust inputs to new figma component structure (#4223) 17747a7, closes #4223
