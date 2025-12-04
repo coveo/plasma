@@ -58,7 +58,7 @@
         "@vitejs/plugin-react-swc": "4.2.1",
         "autoprefixer": "10.4.21",
         "fs-extra": "11.3.2",
-        "klaw-sync": "6.0.0",
+        "klaw-sync": "7.0.0",
         "postcss": "8.5.6",
         "postcss-preset-mantine": "1.18.0",
         "simple-git": "3.30.0",
