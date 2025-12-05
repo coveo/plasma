@@ -17,7 +17,7 @@ const ButtonPage = () => (
             customLook: <InlineConfirmStyleDemo center title="Stylized" />,
             menu: <InlineConfirmMenuDemo center title="Menu item" />,
         }}
-        sourcePath="/packages/mantine/src/components/inline-confirm/InlineConfirm.tsx"
+        sourcePath="/packages/mantine/src/components/InlineConfirm/InlineConfirm.tsx"
         propsMetadata={InlineConfirmMetadata}
     />
 );

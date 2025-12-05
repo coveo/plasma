@@ -25,12 +25,12 @@ jobs:
         environment: production
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+              uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
               with:
                   egress-policy: audit
 
             - name: Checkout
-              uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+              uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
               with:
                   fetch-depth: 0
             - name: Setup
@@ -56,3 +56,11 @@ jobs:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
                   AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+            - name: Build Storybook
+              uses: ./.github/actions/storybook
+              # Only build Storybook for master branch
+              if: github.ref == 'refs/heads/master'
+            - name: Deploy Storybook
+              # Only deploy Storybook for master branch
+              if: github.ref == 'refs/heads/master'
+              run: bash ./.github/actions/storybook/deploy-storybook.sh ${{ github.ref_name }} ${{ secrets.AWS_BUCKET }}

@@ -11,7 +11,7 @@ const BadgePage = () => (
         thumbnail="placeholder"
         description="Display badge, pill or tag."
         demo={<BadgeDemo center />}
-        sourcePath="/packages/mantine/src/styles/Badge.module.css"
+        sourcePath="/packages/mantine/src/components/Badge/Badge.tsx"
         propsMetadata={BadgeMetadata}
     />
 );

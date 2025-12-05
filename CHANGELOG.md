@@ -1,3 +1,51 @@
+## 56.7.0 (2025-12-04)
+
+* feat(storybook): remove arg types from docs page (#4225) cbe967c, closes #4225
+
+
+
+## 56.6.0 (2025-12-04)
+
+* feat(figma): adjust inputs to new figma component structure (#4223) 17747a7, closes #4223
+* feat(storybook): activate docs addon (#4224) ce95580, closes #4224
+
+
+
+## 56.5.0 (2025-12-03)
+
+* ci: add Storybook deployment to CD workflow  (#4222) 710e782, closes #4222
+* feat(editable-date-range-picker): support min and max dates (#4217) 8bf70b8, closes #4217
+* feat(figma): code connect NumberInput (#4216) 1bb3563, closes #4216
+* feat(figma): code connect Textarea (#4213) e51051e, closes #4213
+* feat(storybook): add a storybook demo (#4015) 5989db6, closes #4015
+* chore(deps): update dependency @types/chroma-js to v3 (#3994) e301270, closes #3994
+* [StepSecurity] Apply security best practices (#4214) cc49bea, closes #4214
+* Ad UI 11059 badge codeconnect (#4206) 8364fb8, closes #4206
+* Ad UI 11059 badge codeconnect (#4219) baafeb8, closes #4219
+* Ad UI 11068 chip codeconnect (#4215) bcfc3a2, closes #4215
+* fix(website): not found when viewing source (#4218) fdd8c3a, closes #4218
+
+
+
+## 56.4.0 (2025-11-24)
+
+* feat(actionIcon): connect actionIcon to figma (#4203) 0e3ac2f, closes #4203
+* feat(button): +connect button to figma (#4205) 574db83, closes #4205
+* feat(closebutton): connect closebutton to figma (#4208) da76ad2, closes #4208
+* feat(date-range-picker): implement standalone DateRangePicker component (#4210) ecf5fea, closes #4210
+* feat(figma): code connect TextInput (#4211) b69b3c2, closes #4211
+* feat(mantine): add entrypoints to optimize library import (#4212) 2658ae4, closes #4212
+* feat(navlink): reset on master, +navlink figma connection (#4202) 6340809, closes #4202
+* fix(mantine): prevent undefined data passed down to react-table (#4204) 4bb4de4, closes #4204
+* Ad UI 11079 image codeconnect (#4207) 97c0186, closes #4207
+* Feat/ADUI-10495 code connect poc (#4196) 4d96e12, closes #4196
+* chore(deps): lock file maintenance (#3997) 91d45d2, closes #3997
+* chore(deps): update all non-major dependencies (#4179) 2e14ccc, closes #4179
+* chore(deps): update dependency eslint-plugin-jsdoc to v61 (#4194) ffb3d82, closes #4194
+* chore(deps): update dependency jsdom to v27 (#4199) 72395ae, closes #4199
+
+
+
 ## <small>56.3.3 (2025-11-10)</small>
 
 * fix(react-icons, mock): keep tabler class when adding className (#4195) 2f59e60, closes #4195

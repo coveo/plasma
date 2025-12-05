@@ -66,10 +66,10 @@ import {
     TimePicker,
     YearPicker,
 } from '@mantine/dates';
-import {Accordion} from '../components/accordion/Accordion.js';
-import {CheckboxIcon} from '../components/checkbox/CheckboxIcon.js';
-import {CircleLoader} from '../components/loader/CircleLoader.js';
-import {InfoToken} from '../components/info-token/InfoToken.js';
+import {Accordion} from '../components/Accordion/Accordion.js';
+import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
+import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
+import {InfoToken} from '../components/InfoToken/InfoToken.js';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';

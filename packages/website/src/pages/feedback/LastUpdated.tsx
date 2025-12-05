@@ -17,7 +17,7 @@ const LastUpdatedPage = () => (
             custom: <LastUpdatedCustomDemo title="Custom label and time" />,
             formatter: <LastUpdatedFormatterDemo title="Custom formatter" />,
         }}
-        sourcePath="/packages/mantine/src/components/last-updated/LastUpdated.tsx"
+        sourcePath="/packages/mantine/src/components/LastUpdated/LastUpdated.tsx"
         propsMetadata={LastUpdatedMetadata}
     />
 );
