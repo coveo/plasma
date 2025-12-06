@@ -7,8 +7,10 @@ import {Button} from '../Button/Button.js';
 import DateRangeClasses from './DateRange.module.css';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect.js';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker.js';
-export interface DateRangePickerInlineCalendarProps
-    extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
+export interface DateRangePickerInlineCalendarProps extends Pick<
+    EditableDateRangePickerProps,
+    'startProps' | 'endProps'
+> {
     /**
      * Initial selected range
      */

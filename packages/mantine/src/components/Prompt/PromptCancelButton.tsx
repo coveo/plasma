@@ -5,7 +5,8 @@ import {usePromptContext} from './Prompt.context.js';
 export type PromptCancelButtonStylesNamesVariant = 'cancel';
 
 export interface PromptCancelButtonProps
-    extends CompoundStylesApiProps<PromptCancelButtonFactory>,
+    extends
+        CompoundStylesApiProps<PromptCancelButtonFactory>,
         Omit<ButtonProps, 'primary' | 'classNames' | 'styles' | 'vars' | 'variant'> {}
 
 export type PromptCancelButtonFactory = Factory<{
