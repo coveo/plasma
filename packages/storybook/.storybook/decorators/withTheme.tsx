@@ -6,7 +6,7 @@ type Theme = 'teal' | 'blue' | 'violet';
 export const themes: Array<{value: Theme; title: string}> = [
     {value: 'teal', title: 'Administration Console'},
     {value: 'blue', title: 'Knowledge Hub'},
-    {value: 'violet', title: 'Merchandizing Hub'},
+    {value: 'violet', title: 'Merchandising Hub'},
 ];
 
 export const withTheme: Decorator = (Story, context) => {

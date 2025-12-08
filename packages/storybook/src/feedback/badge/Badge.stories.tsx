@@ -40,7 +40,7 @@ type Story = StoryObj<typeof Badge>;
 
 export const Demo: Story = {
     render: ({text, variant, ...props}: any) => {
-        const BadgeComponent = (Badge as any)[variant];
+        const BadgeComponent = Badge[variant];
         return <BadgeComponent {...props}>{text}</BadgeComponent>;
     },
 };
