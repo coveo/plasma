@@ -17,7 +17,7 @@ const ActionIconPage = () => (
             disabled: <ActionIconDisabledDemo center title="Disabled" />,
             promiseHandler: <ActionIconWithAsyncLoaderDemo center title="Async click handler" />,
         }}
-        sourcePath="/packages/mantine/src/components/action-icon/ActionIcon.tsx"
+        sourcePath="/packages/mantine/src/components/ActionIcon/ActionIcon.tsx"
         propsMetadata={ActionIconMetadata}
     />
 );

@@ -11,7 +11,7 @@ const AlertPage = () => (
         thumbnail="placeholder"
         description="Attract user attention with important static message."
         demo={<InfoTokenDemo center />}
-        sourcePath="/packages/mantine/src/components/info-token/InfoToken.tsx"
+        sourcePath="/packages/mantine/src/components/InfoToken/InfoToken.tsx"
         propsMetadata={InfoTokenMetadata}
     />
 );
