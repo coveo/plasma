@@ -1,13 +1,12 @@
-import {createTheme, Plasmantine} from '@coveord/plasma-mantine';
-import {Stories, Title} from '@storybook/addon-docs/blocks';
-import type {Preview} from '@storybook/react-vite';
-import {useColorScheme} from './decorators/useColorScheme.js';
-
 import './styles/reset.css';
 
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
+
+import type {Preview} from '@storybook/react-vite';
+import {useColorScheme} from './decorators/useColorScheme.js';
+import {themes, withTheme} from './decorators/withTheme.js';
 
 const preview: Preview = {
     globalTypes: {
@@ -16,11 +15,7 @@ const preview: Preview = {
             toolbar: {
                 title: 'Primary Color',
                 icon: 'paintbrush',
-                items: [
-                    {value: 'teal', title: 'Administration Console'},
-                    {value: 'blue', title: 'Knowledge Hub'},
-                    {value: 'violet', title: 'Merchandizing Hub'},
-                ],
+                items: themes,
                 dynamicTitle: true,
             },
         },
@@ -37,27 +32,13 @@ const preview: Preview = {
             },
         },
         docs: {
-            page: () => (
-                <>
-                    <Title />
-                    <Stories title="Examples" />
-                </>
-            ),
+            codePanel: true,
+        },
+        controls: {
+            disableSaveFromUI: true,
         },
     },
-    decorators: [
-        useColorScheme,
-        (Story, context) => {
-            const theme = createTheme({
-                primaryColor: context.globals.primaryColor ?? 'teal',
-            });
-            return (
-                <Plasmantine theme={theme}>
-                    <Story />
-                </Plasmantine>
-            );
-        },
-    ],
+    decorators: [useColorScheme, withTheme],
 };
 
 export default preview;

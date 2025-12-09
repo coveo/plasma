@@ -60,8 +60,9 @@ export type SemanticBadge = ForwardRefExoticComponent<SemanticBadgeProps & RefAt
 const enhanceBadge = (
     ComponentLight: <L = 'div'>(props: PolymorphicComponentProps<L, BadgeProps>) => ReactElement,
     ComponentDark: <L = 'div'>(props: PolymorphicComponentProps<L, BadgeProps>) => ReactElement,
-): SemanticBadge =>
-    forwardRef<HTMLDivElement, SemanticBadgeProps>((props, ref) => {
+    displayName: string,
+): SemanticBadge => {
+    const EnhancedBadge = forwardRef<HTMLDivElement, SemanticBadgeProps>((props, ref) => {
         const computedColorScheme = useComputedColorScheme('light', {getInitialValueInEffect: true});
         const Component = (props.on || computedColorScheme) === 'dark' ? ComponentDark : ComponentLight;
         return (
@@ -75,6 +76,9 @@ const enhanceBadge = (
             />
         );
     });
+    EnhancedBadge.displayName = displayName;
+    return EnhancedBadge;
+};
 
 const BadgePrimary = enhanceBadge(
     MantineBadge.withProps({
@@ -88,6 +92,7 @@ const BadgePrimary = enhanceBadge(
         c: 'var(--mantine-primary-color-2)',
         bg: alpha('var(--mantine-primary-color-3)', 0.32),
     }),
+    'Badge.Primary',
 );
 const BadgeSecondary = enhanceBadge(
     MantineBadge.withProps({
@@ -103,6 +108,7 @@ const BadgeSecondary = enhanceBadge(
         bd: `1px solid ${alpha('var(--mantine-color-gray-3)', 0.16)}`,
         bg: alpha('var(--mantine-color-gray-3)', 0.16),
     }),
+    'Badge.Secondary',
 );
 const BadgeSuccess = enhanceBadge(
     MantineBadge.withProps({
@@ -118,6 +124,7 @@ const BadgeSuccess = enhanceBadge(
         bd: `1px solid ${alpha('var(--mantine-color-green-3)', 0.16)}`,
         bg: alpha('var(--mantine-color-green-3)', 0.16),
     }),
+    'Badge.Success',
 );
 const BadgeCritical = enhanceBadge(
     MantineBadge.withProps({
@@ -133,6 +140,7 @@ const BadgeCritical = enhanceBadge(
         bd: `1px solid ${alpha('var(--mantine-color-red-3)', 0.16)}`,
         bg: alpha('var(--mantine-color-red-3)', 0.16),
     }),
+    'Badge.Critical',
 );
 const BadgeWarning = enhanceBadge(
     MantineBadge.withProps({
@@ -148,6 +156,7 @@ const BadgeWarning = enhanceBadge(
         bd: `1px solid ${alpha('var(--mantine-color-yellow-3)', 0.16)}`,
         bg: alpha('var(--mantine-color-yellow-3)', 0.16),
     }),
+    'Badge.Warning',
 );
 const BadgeDisabled = enhanceBadge(
     MantineBadge.withProps({
@@ -162,6 +171,7 @@ const BadgeDisabled = enhanceBadge(
         c: 'dark.3',
         bg: alpha('var(--mantine-color-gray-3)', 0.16),
     }),
+    'Badge.Disabled',
 );
 
 export type BadgeOverloadFactory = PolymorphicFactory<{
