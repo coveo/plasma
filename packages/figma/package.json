@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-figma-code-connect",
-    "version": "56.6.0",
+    "version": "56.8.0",
     "private": true,
     "type": "module",
     "scripts": {

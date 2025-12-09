@@ -1,3 +1,12 @@
+## 56.8.0 (2025-12-09)
+
+* feat(figma): code connect Card (#4221) ad02e9d, closes #4221
+* feat(storybook): improve setup for confluence embed (#4228) e3ee1d4, closes #4228
+* chore(deps): update dependency klaw-sync to v7 (#4033) dc3154d, closes #4033
+* chore(deps): update non-major github actions (#4226) 14ac0f6, closes #4226
+
+
+
 ## 56.7.0 (2025-12-04)
 
 * feat(storybook): remove arg types from docs page (#4225) cbe967c, closes #4225
