@@ -1,27 +1,21 @@
 import {
     Box,
+    Factory,
     Group,
-    Radio,
     RadioCardProps as MantineRadioCardProps,
     RadioCardStylesNames as MantineRadioCardStylesNames,
-    Title,
-    Factory,
+    Radio,
     RadioCardCssVariables,
-    factory,
-    useStyles,
-    useProps,
     StylesApiProps,
+    Title,
+    factory,
+    useProps,
+    useStyles,
 } from '@mantine/core';
 import {ReactNode} from 'react';
 import classes from './RadioCard.module.css';
 
-export type RadioCardStylesNames =
-    | MantineRadioCardStylesNames
-    | 'container'
-    | 'content'
-    | 'indicator'
-    | 'title'
-    | 'description';
+export type RadioCardStylesNames = MantineRadioCardStylesNames | 'container' | 'indicator' | 'title' | 'description';
 export type RadioCardFactory = Factory<{
     props: RadioCardProps;
     ref: HTMLButtonElement;
@@ -73,7 +67,7 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
                     {label}
                 </Title>
             </Group>
-            <Box {...getStyles('description', {classNames, styles})}>{description}</Box>
+            {description && <Box {...getStyles('description', {classNames, styles})}>{description}</Box>}
         </Radio.Card>
     );
 });

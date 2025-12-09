@@ -120,7 +120,7 @@ export const LongDescription: StoryFn<any> = () => {
     );
 };
 export const RadioGroup: StoryFn<any> = () => {
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState<string | null>(null);
 
     return (
         <Stack gap="sm">
