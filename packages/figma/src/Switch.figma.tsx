@@ -1,4 +1,4 @@
-import {Checkbox} from '@coveord/plasma-mantine';
+import {Switch} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 /**
@@ -8,7 +8,7 @@ import {figma} from '@figma/code-connect';
  * to return the code example you'd like to see in Figma
  */
 
-figma.connect(Checkbox, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50069', {
+figma.connect(Switch, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2250-5136', {
     props: {
         labelProps: figma.nestedProps('Input.Label', {
             label: figma.string('Label'),
@@ -20,9 +20,6 @@ figma.connect(Checkbox, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Pla
         errorProps: figma.nestedProps('Input.Error', {
             error: figma.string('Error'),
         }),
-        indeterminate: figma.enum('Checked', {
-            Indeterminate: true,
-        }),
         disabled: figma.enum('State', {
             Disabled: true,
         }),
@@ -33,12 +30,11 @@ figma.connect(Checkbox, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Pla
             True: true,
         }),
     },
-    example: ({labelProps, descriptionProps, errorProps, indeterminate, disabled, readOnly, checked}) => (
-        <Checkbox
+    example: ({labelProps, descriptionProps, errorProps, disabled, readOnly, checked}) => (
+        <Switch
             checked={checked}
             label={labelProps.label}
             description={descriptionProps.description}
-            indeterminate={indeterminate}
             required={labelProps.required}
             disabled={disabled}
             readOnly={readOnly}

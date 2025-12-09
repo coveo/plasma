@@ -8,20 +8,20 @@ figma.connect(
     {
         props: {
             wrapperProps: figma.nestedProps('Input.Wrapper', {
-                labelProps: figma.boolean('Show Label', {
+                labelProps: figma.boolean('Label', {
                     true: figma.nestedProps('Input.Label', {
-                        required: figma.boolean('Show Asterisk'),
+                        required: figma.boolean('Asterisk'),
                         label: figma.string('Label'),
                     }),
                     false: {label: undefined, required: false},
                 }),
-                descriptionProps: figma.boolean('Show Description', {
+                descriptionProps: figma.boolean('Description', {
                     true: figma.nestedProps('Input.Description', {
                         description: figma.string('Description'),
                     }),
                     false: {description: undefined},
                 }),
-                errorProps: figma.boolean('Show Error', {
+                errorProps: figma.boolean('Error', {
                     true: figma.nestedProps('Input.Error', {
                         error: figma.string('Error'),
                     }),
@@ -29,7 +29,7 @@ figma.connect(
                 }),
             }),
             inputProps: figma.nestedProps('Textarea.Input', {
-                placeholder: figma.boolean('Show Placeholder', {true: figma.string('Placeholder'), false: undefined}),
+                placeholder: figma.boolean('Placeholder', {true: figma.textContent('Placeholder'), false: undefined}),
                 leftSection: figma.boolean<ReactNode, never>('Left Section', {true: figma.instance('Swap Left')}),
                 rightSection: figma.boolean<ReactNode, never>('Right Section', {true: figma.instance('Swap Right')}),
                 disabled: figma.enum('State', {Disabled: true}),
