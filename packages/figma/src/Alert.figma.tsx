@@ -15,6 +15,7 @@ figma.connect(
     {
         variant: {Variant: 'Information'},
         props: {
+            message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show Close'),
             title: figma.boolean('Show Title', {
                 true: 'Information',
@@ -29,8 +30,9 @@ figma.connect(
                 ),
             }),
         },
-        example: ({withCloseButton, title, link}) => (
+        example: ({withCloseButton, title, link, message}) => (
             <Alert.Information withCloseButton={withCloseButton} title={title}>
+                <Text>{message}</Text>
                 {link}
             </Alert.Information>
         ),
@@ -43,6 +45,7 @@ figma.connect(
     {
         variant: {Variant: 'Advice'},
         props: {
+            message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show Close'),
             title: figma.boolean('Show Title', {
                 true: 'Advice',
@@ -57,8 +60,9 @@ figma.connect(
                 ),
             }),
         },
-        example: ({withCloseButton, title, link}) => (
+        example: ({withCloseButton, title, link, message}) => (
             <Alert.Advice withCloseButton={withCloseButton} title={title}>
+                <Text>{message}</Text>
                 {link}
             </Alert.Advice>
         ),
@@ -71,6 +75,7 @@ figma.connect(
     {
         variant: {Variant: 'Warning'},
         props: {
+            message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show Close'),
             title: figma.boolean('Show Title', {
                 true: 'Warning!',
@@ -85,8 +90,9 @@ figma.connect(
                 ),
             }),
         },
-        example: ({withCloseButton, title, link}) => (
+        example: ({withCloseButton, title, link, message}) => (
             <Alert.Warning withCloseButton={withCloseButton} title={title}>
+                <Text>{message}</Text>
                 {link}
             </Alert.Warning>
         ),
@@ -99,6 +105,7 @@ figma.connect(
     {
         variant: {Variant: 'Caution'},
         props: {
+            message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show Close'),
             title: figma.boolean('Show Title', {
                 true: 'Bummer!',
@@ -110,11 +117,10 @@ figma.connect(
                 true: figma.instance('*'),
             }),
             link: figma.boolean('Link'),
-            children: figma.textContent('Message'),
         },
-        example: ({withCloseButton, title, link, button2, button, children}) => (
+        example: ({withCloseButton, title, link, button2, button, message}) => (
             <Alert.Critical withCloseButton={withCloseButton} title={title}>
-                <Text>{children}</Text>
+                <Text>{message}</Text>
                 {link}
                 {button2}
                 {button}
