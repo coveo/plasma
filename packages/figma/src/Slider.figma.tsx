@@ -14,6 +14,13 @@ figma.connect(Slider, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasm
         disabled: figma.enum('State', {
             Disabled: true,
         }),
+        mark1: figma.boolean('Mark 1', {true: 0}),
+        mark2: figma.boolean('Mark 2', {true: 0}),
+        mark3: figma.boolean('Mark 3', {true: 0}),
+        mark4: figma.boolean('Mark 4', {true: 0}),
+        mark5: figma.boolean('Mark 5', {true: 0}),
+        mark6: figma.boolean('Mark 6', {true: 0}),
+        mark7: figma.boolean('Mark 7', {true: 0}),
     },
-    example: (props) => <Slider disabled={props.disabled} />,
+    example: (props) => <Slider disabled={props.disabled} marks={[{value: props.mark1, label: props.mark1}]} />,
 });
