@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-mantine",
-    "version": "56.3.3",
+    "version": "56.8.0",
     "description": "A Plasma flavoured Mantine theme",
     "keywords": [
         "plasma",
@@ -22,6 +22,46 @@
         ".": {
             "require": "./dist/cjs/index.js",
             "import": "./dist/esm/index.js"
+        },
+        "./plasmantine": {
+            "types": "./dist/esm/theme.d.ts",
+            "require": "./dist/cjs/theme.js",
+            "import": "./dist/esm/theme.js"
+        },
+        "./core": {
+            "types": "./dist/esm/core.d.ts",
+            "require": "./dist/cjs/core.js",
+            "import": "./dist/esm/core.js"
+        },
+        "./hooks": {
+            "types": "./dist/esm/hooks.d.ts",
+            "require": "./dist/cjs/hooks.js",
+            "import": "./dist/esm/hooks.js"
+        },
+        "./form": {
+            "types": "./dist/esm/form.d.ts",
+            "require": "./dist/cjs/form.js",
+            "import": "./dist/esm/form.js"
+        },
+        "./notifications": {
+            "types": "./dist/esm/notifications.d.ts",
+            "require": "./dist/cjs/notifications.js",
+            "import": "./dist/esm/notifications.js"
+        },
+        "./components/*": {
+            "types": "./dist/esm/components/*/*.d.ts",
+            "require": "./dist/cjs/components/*/*.js",
+            "import": "./dist/esm/components/*/*.js"
+        },
+        "./factory": {
+            "types": "./dist/esm/factory.d.ts",
+            "require": "./dist/cjs/factory.js",
+            "import": "./dist/esm/factory.js"
+        },
+        "./context": {
+            "types": "./dist/esm/context.d.ts",
+            "require": "./dist/cjs/context.js",
+            "import": "./dist/esm/context.js"
         }
     },
     "main": "./dist/cjs/index.js",
@@ -29,6 +69,7 @@
     "scripts": {
         "build": "node ../../scripts/build",
         "clean": "rimraf dist",
+        "generate:components:exports": "node --experimental-strip-types scripts/GenerateMantineComponentExports.mts",
         "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint \"**/*.{ts,tsx}\" --fix",
         "prepublishOnly": "publint",
         "start": "node ../../scripts/start",

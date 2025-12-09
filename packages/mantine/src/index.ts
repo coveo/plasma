@@ -14,13 +14,13 @@ export * from '@tanstack/table-core';
 
 // Export all components
 // Accordion
-export {Accordion} from './components/accordion/Accordion.js';
+export {Accordion} from './components/Accordion/Accordion.js';
 
 // Action Icon - override Mantine ActionIcon
-export {ActionIcon, type ActionIconProps} from './components/action-icon/ActionIcon.js';
+export {ActionIcon, type ActionIconProps} from './components/ActionIcon/ActionIcon.js';
 
 // Alert - override Mantine Alert
-export {Alert} from './components/alert/Alert.js';
+export {Alert} from './components/Alert/Alert.js';
 
 // Badge - override Mantine Badge
 export {
@@ -28,47 +28,48 @@ export {
     type BadgeOverloadFactory,
     type SemanticBadge,
     type SemanticBadgeProps,
-} from './components/badge/Badge.js';
+} from './components/Badge/Badge.js';
 
 // Blank Slate
-export * from './components/blank-slate/BlankSlate.js';
+export * from './components/BlankSlate/BlankSlate.js';
 
 // Browser Preview
-export * from './components/browser-preview/BrowserPreview.js';
+export * from './components/BrowserPreview/BrowserPreview.js';
 
 // Button - override Mantine Button
-export {Button, type ButtonProps} from './components/button/Button.js';
-export {type ButtonWithDisabledTooltipProps} from './components/button/ButtonWithDisabledTooltip.js';
+export {Button, type ButtonProps} from './components/Button/Button.js';
+export {type ButtonWithDisabledTooltipProps} from './components/Button/ButtonWithDisabledTooltip.js';
 
 // Checkbox
-export * from './components/checkbox/CheckboxIcon.js';
+export * from './components/CheckboxIcon/CheckboxIcon.js';
 
 // Child Form
-export * from './components/child-form/ChildForm.js';
+export * from './components/ChildForm/ChildForm.js';
 
 // Chip - override Mantine Chip
-export {Chip} from './components/chip/Chip.js';
+export {Chip} from './components/Chip/Chip.js';
 
 // Code Editor
-export * from './components/code-editor/CodeEditor.js';
+export * from './components/CodeEditor/CodeEditor.js';
 
 // Collection
-export * from './components/collection/Collection.js';
-export {enhanceWithCollectionProps} from './components/collection/enhanceWithCollectionProps.js';
+export * from './components/Collection/Collection.js';
+export {enhanceWithCollectionProps} from './components/Collection/enhanceWithCollectionProps.js';
 
 // Copy to Clipboard
-export * from './components/copyToClipboard/CopyToClipboard.js';
+export * from './components/CopyToClipboard/CopyToClipboard.js';
 
 // Date Range Picker
-export * from './components/date-range-picker/DateRangePickerInlineCalendar.js';
-export * from './components/date-range-picker/DateRangePickerPopoverCalendar.js';
-export * from './components/date-range-picker/DateRangePickerPresetSelect.js';
+export * from './components/DateRangePicker/DateRangePicker.js';
+export * from './components/DateRangePicker/DateRangePickerInlineCalendar.js';
+export * from './components/DateRangePicker/DateRangePickerPopoverCalendar.js';
+export * from './components/DateRangePicker/DateRangePickerPresetSelect.js';
 
 // Date Time Range Picker
-export * from './components/date-time-range-picker/DateTimeRangePicker.js';
+export * from './components/DateTimeRangePicker/DateTimeRangePicker.js';
 
 // Ellipsis Text
-export * from './components/ellipsis-text/EllipsisText.js';
+export * from './components/EllipsisText/EllipsisText.js';
 
 // Header - override @tanstack/table-core Header
 export {
@@ -80,55 +81,51 @@ export {
     type HeaderRightProps,
     type HeaderStyleNames,
     type HeaderVariant,
-} from './components/header/Header.js';
+} from './components/Header/Header.js';
 
 // Info Token
-export * from './components/info-token/InfoToken.js';
+export * from './components/InfoToken/InfoToken.js';
 
 // Inline Confirm
-export * from './components/inline-confirm/InlineConfirm.js';
-export * from './components/inline-confirm/InlineConfirmContext.js';
+export * from './components/InlineConfirm/InlineConfirm.js';
+export * from './components/InlineConfirm/InlineConfirmContext.js';
 
 // Last Updated
-export * from './components/last-updated/LastUpdated.js';
+export * from './components/LastUpdated/LastUpdated.js';
 
 // Loader
-export * from './components/loader/CircleLoader.js';
+export * from './components/CircleLoader/CircleLoader.js';
 
 // Menu - override Mantine Menu
-export {Menu, type MenuItemProps} from './components/menu/Menu.js';
+export {Menu, type MenuItemProps} from './components/Menu/Menu.js';
 
 // Modal - override Mantine Modal
-export {Modal, type ModalFactory, type ModalProps} from './components/modal/Modal.js';
-export * from './components/modal/ModalFooter.js';
+export {Modal, type ModalFactory, type ModalProps} from './components/Modal/Modal.js';
+export * from './components/Modal/ModalFooter.js';
 
 // Prompt
-export * from './components/prompt/Prompt.js';
+export * from './components/Prompt/Prompt.js';
 
 // Read Only - override Mantine PasswordInput and Select
-export {PasswordInput} from './components/read-only/PasswordInput.js';
-export {Select} from './components/read-only/Select.js';
+export {PasswordInput} from './components/PasswordInput/PasswordInput.js';
+export {Select} from './components/Select/Select.js';
 
 // Sticky Footer
-export * from './components/sticky-footer/StickyFooter.js';
+export * from './components/StickyFooter/StickyFooter.js';
 
 // Table - override Mantine Table
 export {flexRender as renderTableCell} from '@tanstack/react-table';
-export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/table/Table.js';
-export {type TablePredicateProps} from './components/table/table-predicate/TablePredicate.js';
+export {type TablePredicateProps} from './components/Table/table-predicate/TablePredicate.js';
+export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
 export {
     type TableAction,
     type TableLayout,
     type TableLayoutProps,
     type TableProps,
-} from './components/table/Table.types.js';
-export {useTableContext} from './components/table/TableContext.js';
-export {useTable, type TableState, type TableStore, type UseTableOptions} from './components/table/use-table.js';
-export {
-    useUrlSyncedState,
-    type UseUrlSyncedStateOptions,
-    type SearchParamEntry,
-} from './components/table/use-url-synced-state.js';
+} from './components/Table/Table.types.js';
+export {useTableContext} from './components/Table/TableContext.js';
+export {useTable, type TableState, type TableStore, type UseTableOptions} from './components/Table/use-table.js';
+export {useUrlSyncedState, type SearchParamEntry, type UseUrlSyncedStateOptions} from './hooks/use-url-synced-state.js';
 
 export {noop};
 
