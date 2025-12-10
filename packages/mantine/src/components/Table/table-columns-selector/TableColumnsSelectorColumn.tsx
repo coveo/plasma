@@ -116,9 +116,9 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
     return (
         <Combobox store={combobox} position="bottom-end" shadow="md" onOptionSubmit={handleOptionClick}>
             <Combobox.Target>
-                <ActionIcon.Quaternary onClick={() => combobox.toggleDropdown()}>
+                <ActionIcon.Tertiary onClick={() => combobox.toggleDropdown()}>
                     <Icon height={16} width={16} />
-                </ActionIcon.Quaternary>
+                </ActionIcon.Tertiary>
             </Combobox.Target>
             <Combobox.Dropdown miw={270}>
                 <Combobox.Options>{columnOptions}</Combobox.Options>
