@@ -26,10 +26,7 @@ import {
 } from './table-column/TableCollapsibleColumn.js';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn.js';
 import {TableColumnsSelector, TableColumnsSelectorStylesNames} from './table-columns-selector/TableColumnsSelector.js';
-import {
-    createTableColumnsSelectorColumn,
-    TableColumnsSelectorColumn,
-} from './table-columns-selector/TableColumnsSelectorColumn.js';
+import {TableColumnsSelectorColumn} from './table-columns-selector/TableColumnsSelectorColumn.js';
 import {TableDateRangePicker, TableDateRangePickerStylesNames} from './table-date-range-picker/TableDateRangePicker.js';
 import {TableFilter, TableFilterStylesNames} from './table-filter/TableFilter.js';
 import {TableFooter} from './table-footer/TableFooter.js';
@@ -71,7 +68,6 @@ export type PlasmaTableFactory = Factory<{
         CollapsibleColumn: typeof TableCollapsibleColumn;
         ColumnsSelector: typeof TableColumnsSelector;
         ColumnsSelectorColumn: typeof TableColumnsSelectorColumn;
-        createColumnsSelectorColumn: typeof createTableColumnsSelectorColumn;
         DateRangePicker: typeof TableDateRangePicker;
         Filter: typeof TableFilter;
         Footer: typeof TableFooter;
@@ -151,7 +147,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         // Add columns selector column at the end if enabled
         if (columnsSelectorColumn) {
             const selectorOptions = typeof columnsSelectorColumn === 'boolean' ? {} : columnsSelectorColumn;
-            finalColumns = [...finalColumns, createTableColumnsSelectorColumn(selectorOptions) as ColumnDef<T>];
+            finalColumns = [...finalColumns, TableColumnsSelectorColumn(selectorOptions) as ColumnDef<T>];
         }
 
         return finalColumns;
@@ -332,7 +328,6 @@ Table.ActionItem = TableActionItem;
 Table.CollapsibleColumn = TableCollapsibleColumn;
 Table.ColumnsSelector = TableColumnsSelector;
 Table.ColumnsSelectorColumn = TableColumnsSelectorColumn;
-Table.createColumnsSelectorColumn = createTableColumnsSelectorColumn;
 Table.DateRangePicker = TableDateRangePicker;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;

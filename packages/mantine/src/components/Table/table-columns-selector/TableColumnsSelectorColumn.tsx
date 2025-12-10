@@ -1,17 +1,12 @@
-import {EditSize16Px} from '@coveord/plasma-react-icons';
+import {SettingsSize16Px} from '@coveord/plasma-react-icons';
 import {ActionIcon, Checkbox, Combobox, Tooltip, useCombobox} from '@mantine/core';
 import {ColumnDef, flexRender, Header, Table} from '@tanstack/react-table';
-import {ComponentType, ReactNode, SVGProps, useState} from 'react';
+import {ComponentType, ReactNode, SVGProps} from 'react';
 
 export interface TableColumnsSelectorColumnOptions {
     /**
-     * The tooltip for the button
-     * @default 'Edit columns'
-     */
-    label?: string;
-    /**
      * The icon to display in the button
-     * @default EditSize16Px
+     * @default SettingsSize16Px
      */
     icon?: ComponentType<SVGProps<SVGSVGElement>>;
     /**
@@ -36,8 +31,7 @@ export interface TableColumnsSelectorColumnOptions {
 }
 
 const defaultOptions: TableColumnsSelectorColumnOptions = {
-    label: 'Edit columns',
-    icon: EditSize16Px,
+    icon: SettingsSize16Px,
     limitReachedTooltip: 'You have reached the maximum display limit.',
     alwaysVisibleTooltip: 'This column is always visible.',
 };
@@ -49,7 +43,6 @@ interface ColumnsSelectorHeaderProps {
 
 const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => {
     const {
-        label = defaultOptions.label,
         icon: Icon = defaultOptions.icon,
         maxSelectableColumns,
         footer,
@@ -57,11 +50,8 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
         alwaysVisibleTooltip = defaultOptions.alwaysVisibleTooltip,
     } = options;
 
-    const [opened, setOpened] = useState(false);
     const combobox = useCombobox({
-        opened,
         onDropdownClose: () => {
-            setOpened(false);
             combobox.resetSelectedOption();
         },
         onDropdownOpen: () => combobox.updateSelectedOptionIndex('active'),
@@ -123,13 +113,11 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
     });
 
     return (
-        <Combobox store={combobox} withinPortal position="bottom-end" shadow="md" onOptionSubmit={handleOptionClick}>
+        <Combobox store={combobox} position="bottom-end" shadow="md" onOptionSubmit={handleOptionClick}>
             <Combobox.Target>
-                <Tooltip label={label}>
-                    <ActionIcon variant="subtle" aria-label={label} onClick={() => setOpened((o) => !o)}>
-                        <Icon height={16} width={16} />
-                    </ActionIcon>
-                </Tooltip>
+                <ActionIcon variant="outline" onClick={() => combobox.toggleDropdown()}>
+                    <Icon height={16} width={16} />
+                </ActionIcon>
             </Combobox.Target>
             <Combobox.Dropdown miw={270}>
                 <Combobox.Options>{columnOptions}</Combobox.Options>
@@ -142,32 +130,29 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
 /**
  * Creates a column that displays a column selector button in the header.
  * This column should be placed at the end of your columns array to appear on the right side of the table.
+ * The column itself renders empty cells.
  *
  * @example
  * ```tsx
  * const columns = [
  *   columnHelper.accessor('name', { header: 'Name' }),
  *   columnHelper.accessor('age', { header: 'Age' }),
- *   createTableColumnsSelectorColumn({ label: 'Edit columns' }),
+ *   TableColumnsSelectorColumn(),
+ *   // or with options:
+ *   TableColumnsSelectorColumn({ maxSelectableColumns: 5 }),
  * ];
  * ```
  */
-export const createTableColumnsSelectorColumn = (
-    options: TableColumnsSelectorColumnOptions = {},
-): ColumnDef<unknown> => ({
+export const TableColumnsSelectorColumn = (options: TableColumnsSelectorColumnOptions = {}): ColumnDef<unknown> => ({
     id: 'columnsSelector',
     enableSorting: false,
     enableHiding: false,
     meta: {
         controlColumn: true,
     },
-    size: 52, // 16px padding left + 20px ActionIcon + 16px padding right
-    header: ({table}) => <ColumnsSelectorHeader table={table} options={options} />,
+    size: 0,
+    minSize: 0,
+    maxSize: 0,
+    header: ({table}) => <ColumnsSelectorHeader table={table} options={{...defaultOptions, ...options}} />,
     cell: () => null,
 });
-
-/**
- * Default column selector column with default options.
- * Use `createTableColumnsSelectorColumn` if you need to customize the options.
- */
-export const TableColumnsSelectorColumn: ColumnDef<unknown> = createTableColumnsSelectorColumn();
