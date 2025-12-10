@@ -4,7 +4,7 @@
         "importPaths": {
             "*": "@coveord/plasma-mantine"
         },
-        "include": ["src/**/*.figma.{tsx,jsx}"],
+        "include": ["src/**/Notification.figma.{tsx,jsx}"],
         "label": "React",
         "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?m=auto&t=q0sNSlhd9h2VD776-6"
     }
