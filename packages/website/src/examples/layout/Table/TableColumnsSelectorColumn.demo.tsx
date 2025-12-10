@@ -68,7 +68,6 @@ const Demo = () => {
             columns={columns}
             // Add the column selector as the rightmost column in the table header
             columnsSelectorColumn={{
-                label: 'Edit columns',
                 maxSelectableColumns: 5,
                 footer: (
                     <Text size="sm" c="dimmed">
