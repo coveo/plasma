@@ -1,7 +1,8 @@
 import {SettingsSize16Px} from '@coveord/plasma-react-icons';
-import {ActionIcon, Checkbox, Combobox, Tooltip, useCombobox} from '@mantine/core';
+import {Checkbox, Combobox, Tooltip, useCombobox} from '@mantine/core';
 import {ColumnDef, flexRender, Header, Table} from '@tanstack/react-table';
 import {ComponentType, ReactNode, SVGProps} from 'react';
+import {ActionIcon} from '../../ActionIcon/ActionIcon';
 
 export interface TableColumnsSelectorColumnOptions {
     /**
@@ -115,9 +116,9 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
     return (
         <Combobox store={combobox} position="bottom-end" shadow="md" onOptionSubmit={handleOptionClick}>
             <Combobox.Target>
-                <ActionIcon variant="outline" onClick={() => combobox.toggleDropdown()}>
+                <ActionIcon.Quaternary onClick={() => combobox.toggleDropdown()}>
                     <Icon height={16} width={16} />
-                </ActionIcon>
+                </ActionIcon.Quaternary>
             </Combobox.Target>
             <Combobox.Dropdown miw={270}>
                 <Combobox.Options>{columnOptions}</Combobox.Options>
