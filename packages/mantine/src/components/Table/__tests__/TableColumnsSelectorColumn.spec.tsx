@@ -166,29 +166,6 @@ describe('TableColumnsSelectorColumn', () => {
         });
     });
 
-    it('renders a custom always visible tooltip when provided', async () => {
-        const columns: Array<ColumnDef<RowData>> = [
-            columnHelper.accessor('name', {header: 'Name', enableSorting: false}),
-            columnHelper.accessor('age', {header: 'Age', enableSorting: false, enableHiding: false}),
-            columnHelper.accessor('email', {header: 'Email', enableSorting: false}),
-            TableColumnsSelectorColumn({alwaysVisibleTooltip: 'Custom always visible message'}) as ColumnDef<RowData>,
-        ];
-        const user = userEvent.setup();
-        const Fixture = () => {
-            const store = useTable<RowData>();
-            return <Table store={store} data={mockData} columns={columns} />;
-        };
-        render(<Fixture />);
-
-        await user.click(screen.getByRole('button'));
-        const ageColumn = await screen.findByRole('checkbox', {name: 'Age'});
-        await user.hover(ageColumn.parentElement!);
-
-        await waitFor(() => {
-            expect(screen.getByRole('tooltip', {name: 'Custom always visible message'})).toBeVisible();
-        });
-    });
-
     it('renders unchecked checkboxes for columns that are not visible in the initial state', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
@@ -277,31 +254,6 @@ describe('TableColumnsSelectorColumn', () => {
             await waitFor(() => expect(screen.getByText('You have reached the maximum display limit.')).toBeVisible());
         });
 
-        it('renders a custom limit reached tooltip when provided', async () => {
-            const user = userEvent.setup();
-            const Fixture = () => {
-                const store = useTable<RowData>({initialState: {columnVisibility: {email: false}}});
-                return (
-                    <Table
-                        store={store}
-                        data={mockData}
-                        columns={getColumnsWithSelector({
-                            maxSelectableColumns: 3,
-                            limitReachedTooltip: 'You can display up to 3 columns',
-                        })}
-                    />
-                );
-            };
-            render(<Fixture />);
-
-            await user.click(screen.getByRole('button'));
-
-            const emailCheckBoxWrapper = (await screen.findByRole('checkbox', {name: /email/i})).parentElement;
-            await user.hover(emailCheckBoxWrapper!);
-
-            await waitFor(() => expect(screen.getByText('You can display up to 3 columns')).toBeVisible());
-        });
-
         it('ignores maxSelectableColumns when set to 0 (all columns remain enabled)', async () => {
             const user = userEvent.setup();
             const Fixture = () => {
@@ -349,25 +301,6 @@ describe('TableColumnsSelectorColumn', () => {
             expect(emailCheckBox).toBeEnabled();
             expect(phoneCheckBox).toBeEnabled();
         });
-
-        it('does not render the footer when maxSelectableColumns is 0', async () => {
-            const user = userEvent.setup();
-            const Fixture = () => {
-                const store = useTable<RowData>();
-                return (
-                    <Table
-                        store={store}
-                        data={mockData}
-                        columns={getColumnsWithSelector({maxSelectableColumns: 0, footer: 'Should not appear'})}
-                    />
-                );
-            };
-            render(<Fixture />);
-
-            await user.click(screen.getByRole('button'));
-
-            expect(screen.queryByText('Should not appear')).not.toBeInTheDocument();
-        });
     });
 
     describe('footer', () => {
@@ -381,29 +314,22 @@ describe('TableColumnsSelectorColumn', () => {
 
             await user.click(screen.getByRole('button'));
 
-            expect(screen.queryByText('You can display so many patate')).not.toBeInTheDocument();
+            expect(screen.queryByText(/remaining/i)).not.toBeInTheDocument();
         });
 
-        it('renders the footer when maxSelectableColumns and footer are defined', async () => {
+        it('renders the footer with max columns message when maxSelectableColumns is defined', async () => {
             const user = userEvent.setup();
             const Fixture = () => {
                 const store = useTable<RowData>();
                 return (
-                    <Table
-                        store={store}
-                        data={mockData}
-                        columns={getColumnsWithSelector({
-                            maxSelectableColumns: 3,
-                            footer: 'You can display so many patate',
-                        })}
-                    />
+                    <Table store={store} data={mockData} columns={getColumnsWithSelector({maxSelectableColumns: 5})} />
                 );
             };
             render(<Fixture />);
 
             await user.click(screen.getByRole('button'));
 
-            await waitFor(() => expect(screen.getByText('You can display so many patate')).toBeVisible());
+            await waitFor(() => expect(screen.getByText('You can display up to 5 columns')).toBeVisible());
         });
     });
 
