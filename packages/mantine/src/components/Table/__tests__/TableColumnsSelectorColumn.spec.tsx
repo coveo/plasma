@@ -301,6 +301,73 @@ describe('TableColumnsSelectorColumn', () => {
 
             await waitFor(() => expect(screen.getByText('You can display up to 3 columns')).toBeVisible());
         });
+
+        it('ignores maxSelectableColumns when set to 0 (all columns remain enabled)', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table store={store} data={mockData} columns={getColumnsWithSelector({maxSelectableColumns: 0})} />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('button'));
+
+            const nameCheckBox = await screen.findByRole('checkbox', {name: /name/i});
+            const ageCheckBox = screen.getByRole('checkbox', {name: /age/i});
+            const emailCheckBox = screen.getByRole('checkbox', {name: /email/i});
+            const phoneCheckBox = screen.getByRole('checkbox', {name: /phone/i});
+
+            // All checkboxes should be enabled since maxSelectableColumns: 0 is treated as no limit
+            expect(nameCheckBox).toBeEnabled();
+            expect(ageCheckBox).toBeEnabled();
+            expect(emailCheckBox).toBeEnabled();
+            expect(phoneCheckBox).toBeEnabled();
+        });
+
+        it('ignores maxSelectableColumns when set to a negative value (all columns remain enabled)', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table store={store} data={mockData} columns={getColumnsWithSelector({maxSelectableColumns: -5})} />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('button'));
+
+            const nameCheckBox = await screen.findByRole('checkbox', {name: /name/i});
+            const ageCheckBox = screen.getByRole('checkbox', {name: /age/i});
+            const emailCheckBox = screen.getByRole('checkbox', {name: /email/i});
+            const phoneCheckBox = screen.getByRole('checkbox', {name: /phone/i});
+
+            // All checkboxes should be enabled since negative values are treated as no limit
+            expect(nameCheckBox).toBeEnabled();
+            expect(ageCheckBox).toBeEnabled();
+            expect(emailCheckBox).toBeEnabled();
+            expect(phoneCheckBox).toBeEnabled();
+        });
+
+        it('does not render the footer when maxSelectableColumns is 0', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table
+                        store={store}
+                        data={mockData}
+                        columns={getColumnsWithSelector({maxSelectableColumns: 0, footer: 'Should not appear'})}
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('button'));
+
+            expect(screen.queryByText('Should not appear')).not.toBeInTheDocument();
+        });
     });
 
     describe('footer', () => {

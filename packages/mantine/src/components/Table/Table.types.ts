@@ -83,7 +83,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      * <Table columnsSelectorColumn ... />
      *
      * // With custom options
-     * <Table columnsSelectorColumn={{ label: 'Edit columns', maxSelectableColumns: 5 }} ... />
+     * <Table columnsSelectorColumn={{ maxSelectableColumns: 5, limitReachedTooltip: 'Max columns reached' }} ... />
      */
     columnsSelectorColumn?: boolean | TableColumnsSelectorColumnOptions;
     /**

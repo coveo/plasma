@@ -13,6 +13,7 @@ export interface TableColumnsSelectorColumnOptions {
     /**
      * The maximum number of columns that can be selected at the same time.
      * If defined a footer will render with the remaining number of columns that can be selected.
+     * Must be a positive integer (greater than 0).
      */
     maxSelectableColumns?: number;
     /**
@@ -62,19 +63,29 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
     const filteredColumns = allColumns.filter((column) => !column.columnDef.meta?.controlColumn);
     const selectedColumnsCount = filteredColumns.filter((column) => column.getIsVisible()).length;
 
+    // Validate maxSelectableColumns - must be a positive integer to be effective
+    const effectiveMaxColumns =
+        maxSelectableColumns !== undefined && maxSelectableColumns > 0 ? maxSelectableColumns : undefined;
+
     if (filteredColumns.length <= 0) {
         return null;
     }
 
+    const getColumnState = (column: (typeof filteredColumns)[number]) => {
+        const alwaysVisible = !column.getCanHide();
+        const isDisabled =
+            (effectiveMaxColumns !== undefined &&
+                selectedColumnsCount >= effectiveMaxColumns &&
+                !column.getIsVisible()) ||
+            alwaysVisible;
+        const isVisible = column.getIsVisible() || alwaysVisible;
+        return {alwaysVisible, isDisabled, isVisible};
+    };
+
     const handleOptionClick = (columnId: string) => {
         const column = filteredColumns.find((col) => col.id === columnId);
         if (column) {
-            const alwaysVisible = !column.getCanHide();
-            const isDisabled =
-                (maxSelectableColumns !== undefined &&
-                    selectedColumnsCount >= maxSelectableColumns &&
-                    !column.getIsVisible()) ||
-                alwaysVisible;
+            const {isDisabled} = getColumnState(column);
             if (!isDisabled) {
                 column.toggleVisibility();
             }
@@ -82,13 +93,7 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
     };
 
     const columnOptions = filteredColumns.map((column) => {
-        const alwaysVisible = !column.getCanHide();
-        const isDisabled =
-            (maxSelectableColumns !== undefined &&
-                selectedColumnsCount >= maxSelectableColumns &&
-                !column.getIsVisible()) ||
-            alwaysVisible;
-        const isVisible = column.getIsVisible() || alwaysVisible;
+        const {alwaysVisible, isDisabled, isVisible} = getColumnState(column);
 
         return (
             <Combobox.Option value={column.id} key={column.id} disabled={isDisabled} active={isVisible}>
@@ -122,7 +127,7 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
             </Combobox.Target>
             <Combobox.Dropdown miw={270}>
                 <Combobox.Options>{columnOptions}</Combobox.Options>
-                {maxSelectableColumns && <Combobox.Footer>{footer}</Combobox.Footer>}
+                {effectiveMaxColumns && <Combobox.Footer>{footer}</Combobox.Footer>}
             </Combobox.Dropdown>
         </Combobox>
     );
