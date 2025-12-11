@@ -13,7 +13,7 @@ import {
     useStyles,
 } from '@mantine/core';
 import {ReactNode} from 'react';
-import classes from './RadioCard.module.css';
+import classes from '../../styles/RadioCard.module.css';
 
 export type RadioCardStylesNames = MantineRadioCardStylesNames | 'container' | 'indicator' | 'title' | 'description';
 export type RadioCardFactory = Factory<{
