@@ -9,7 +9,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement, useEffect, useMemo, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
 import classes from './Table.module.css';
 import {TableLayout, TableProps} from './Table.types.js';
@@ -67,7 +67,6 @@ export type PlasmaTableFactory = Factory<{
         ActionItem: typeof TableActionItem;
         CollapsibleColumn: typeof TableCollapsibleColumn;
         ColumnsSelector: typeof TableColumnsSelector;
-        ColumnsSelectorColumn: typeof TableColumnsSelectorColumn;
         DateRangePicker: typeof TableDateRangePicker;
         Filter: typeof TableFilter;
         Footer: typeof TableFooter;
@@ -136,22 +135,22 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
     // Build the final columns array with optional selectable and columns selector columns
-    const buildColumns = (): Array<ColumnDef<T>> => {
-        let finalColumns = [...columns];
+    const finalColumns = useMemo((): Array<ColumnDef<T>> => {
+        let cols = [...columns];
 
         // Add multi-selection column at the start if enabled
         if (store.multiRowSelectionEnabled) {
-            finalColumns = [TableSelectableColumn as ColumnDef<T>, ...finalColumns];
+            cols = [TableSelectableColumn as ColumnDef<T>, ...cols];
         }
 
         // Add columns selector column at the end if enabled
         if (columnsSelectorColumn) {
             const selectorOptions = typeof columnsSelectorColumn === 'boolean' ? {} : columnsSelectorColumn;
-            finalColumns = [...finalColumns, TableColumnsSelectorColumn(selectorOptions) as ColumnDef<T>];
+            cols = [...cols, TableColumnsSelectorColumn(selectorOptions) as ColumnDef<T>];
         }
 
-        return finalColumns;
-    };
+        return cols;
+    }, [columns, store.multiRowSelectionEnabled, columnsSelectorColumn]);
 
     const table = useReactTable({
         data: data || [],
@@ -167,7 +166,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         onSortingChange: store.setSorting,
         onPaginationChange: store.setPagination,
         onColumnVisibilityChange: store.setColumnVisibility,
-        columns: buildColumns(),
+        columns: finalColumns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
@@ -327,7 +326,6 @@ Table.ActionsColumn = TableActionsColumn;
 Table.ActionItem = TableActionItem;
 Table.CollapsibleColumn = TableCollapsibleColumn;
 Table.ColumnsSelector = TableColumnsSelector;
-Table.ColumnsSelectorColumn = TableColumnsSelectorColumn;
 Table.DateRangePicker = TableDateRangePicker;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;

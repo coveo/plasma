@@ -1,4 +1,4 @@
-import {ColumnDef, createColumnHelper, Table, Text, useTable} from '@coveord/plasma-mantine';
+import {ColumnDef, createColumnHelper, Table, useTable} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
 
@@ -69,13 +69,6 @@ const Demo = () => {
             // Add the column selector as the rightmost column in the table header
             columnsSelectorColumn={{
                 maxSelectableColumns: 5,
-                footer: (
-                    <Text size="sm" c="dimmed">
-                        You can display up to 5 columns
-                    </Text>
-                ),
-                limitReachedTooltip:
-                    'You have reached the maximum display limit of 5 columns. Uncheck a column to display another one.',
             }}
         >
             <Table.Header borderTop={false} />

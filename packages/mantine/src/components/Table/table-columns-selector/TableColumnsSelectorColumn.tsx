@@ -1,42 +1,16 @@
 import {SettingsSize16Px} from '@coveord/plasma-react-icons';
-import {Checkbox, Combobox, Tooltip, useCombobox} from '@mantine/core';
+import {Checkbox, Combobox, Text, Tooltip, useCombobox} from '@mantine/core';
 import {ColumnDef, flexRender, Header, Table} from '@tanstack/react-table';
-import {ComponentType, ReactNode, SVGProps} from 'react';
 import {ActionIcon} from '../../ActionIcon/ActionIcon';
 
 export interface TableColumnsSelectorColumnOptions {
-    /**
-     * The icon to display in the button
-     * @default SettingsSize16Px
-     */
-    icon?: ComponentType<SVGProps<SVGSVGElement>>;
     /**
      * The maximum number of columns that can be selected at the same time.
      * If defined a footer will render with the remaining number of columns that can be selected.
      * Must be a positive integer (greater than 0).
      */
     maxSelectableColumns?: number;
-    /**
-     * The content to display in the footer when maxSelectableColumns is defined.
-     */
-    footer?: ReactNode;
-    /**
-     * The tooltip to display when the user hovers over a disabled checkbox because of the limit.
-     * @default 'You have reached the maximum display limit.'
-     */
-    limitReachedTooltip?: string;
-    /**
-     * The tooltip to display when the user hovers over a disabled checkbox because a column cannot be hidden.
-     * @default 'This column is always visible.'
-     */
-    alwaysVisibleTooltip?: string;
 }
-
-const defaultOptions: TableColumnsSelectorColumnOptions = {
-    icon: SettingsSize16Px,
-    limitReachedTooltip: 'You have reached the maximum display limit.',
-    alwaysVisibleTooltip: 'This column is always visible.',
-};
 
 interface ColumnsSelectorHeaderProps {
     table: Table<unknown>;
@@ -44,13 +18,7 @@ interface ColumnsSelectorHeaderProps {
 }
 
 const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => {
-    const {
-        icon: Icon = defaultOptions.icon,
-        maxSelectableColumns,
-        footer,
-        limitReachedTooltip = defaultOptions.limitReachedTooltip,
-        alwaysVisibleTooltip = defaultOptions.alwaysVisibleTooltip,
-    } = options;
+    const {maxSelectableColumns} = options;
 
     const combobox = useCombobox({
         onDropdownClose: () => {
@@ -98,7 +66,9 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
         return (
             <Combobox.Option value={column.id} key={column.id} disabled={isDisabled} active={isVisible}>
                 <Tooltip
-                    label={alwaysVisible ? alwaysVisibleTooltip : limitReachedTooltip}
+                    label={
+                        alwaysVisible ? 'This column is always visible.' : 'You have reached the maximum display limit.'
+                    }
                     disabled={!isDisabled}
                     position="left"
                 >
@@ -122,12 +92,18 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
         <Combobox store={combobox} position="bottom-end" shadow="md" onOptionSubmit={handleOptionClick}>
             <Combobox.Target>
                 <ActionIcon.Tertiary onClick={() => combobox.toggleDropdown()}>
-                    <Icon height={16} width={16} />
+                    <SettingsSize16Px height={16} />
                 </ActionIcon.Tertiary>
             </Combobox.Target>
             <Combobox.Dropdown miw={270}>
                 <Combobox.Options>{columnOptions}</Combobox.Options>
-                {effectiveMaxColumns && <Combobox.Footer>{footer}</Combobox.Footer>}
+                {effectiveMaxColumns && (
+                    <Combobox.Footer>
+                        <Text size="sm" c="dimmed">
+                            You can display up to {effectiveMaxColumns} columns
+                        </Text>
+                    </Combobox.Footer>
+                )}
             </Combobox.Dropdown>
         </Combobox>
     );
@@ -159,6 +135,6 @@ export const TableColumnsSelectorColumn = (options: TableColumnsSelectorColumnOp
     size: 0,
     minSize: 0,
     maxSize: 0,
-    header: ({table}) => <ColumnsSelectorHeader table={table} options={{...defaultOptions, ...options}} />,
+    header: ({table}) => <ColumnsSelectorHeader table={table} options={{...options}} />,
     cell: () => null,
 });
