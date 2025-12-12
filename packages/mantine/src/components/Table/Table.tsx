@@ -2,10 +2,10 @@ import {Box, Center, Factory, Loader, useProps, useStyles} from '@mantine/core';
 import {useClickOutside, useMergedRef} from '@mantine/hooks';
 import {
     ColumnDef,
-    Row,
-    RowSelectionState,
     defaultColumnSizing,
     getCoreRowModel,
+    Row,
+    RowSelectionState,
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
@@ -16,8 +16,8 @@ import {TableLayout, TableProps} from './Table.types.js';
 import {TableProvider} from './TableContext.js';
 import {TableLayouts} from './layouts/TableLayouts.js';
 import {TableActionItem, TableActionItemStylesNames} from './table-actions/TableActionItem.js';
-import {TableHeaderActionsStylesNames} from './table-actions/TableHeaderActions.js';
 import {TableActionsListStylesNames} from './table-actions/TableActionsList.js';
+import {TableHeaderActionsStylesNames} from './table-actions/TableHeaderActions.js';
 import {TableActionsColumn} from './table-column/TableActionsColumn.js';
 import {
     TableAccordionColumn,
@@ -25,7 +25,6 @@ import {
     TableCollapsibleColumnStylesNames,
 } from './table-column/TableCollapsibleColumn.js';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn.js';
-import {TableColumnsSelector, TableColumnsSelectorStylesNames} from './table-columns-selector/TableColumnsSelector.js';
 import {TableDateRangePicker, TableDateRangePickerStylesNames} from './table-date-range-picker/TableDateRangePicker.js';
 import {TableFilter, TableFilterStylesNames} from './table-filter/TableFilter.js';
 import {TableFooter} from './table-footer/TableFooter.js';
@@ -53,8 +52,7 @@ type TableStylesNames =
     | TableHeaderStylesNames
     | TableThStylesNames
     | TableLastUpdatedStylesNames
-    | TablePredicateStylesNames
-    | TableColumnsSelectorStylesNames;
+    | TablePredicateStylesNames;
 
 export type PlasmaTableFactory = Factory<{
     props: TableProps<unknown>;
@@ -65,7 +63,6 @@ export type PlasmaTableFactory = Factory<{
         ActionsColumn: typeof TableActionsColumn;
         ActionItem: typeof TableActionItem;
         CollapsibleColumn: typeof TableCollapsibleColumn;
-        ColumnsSelector: typeof TableColumnsSelector;
         DateRangePicker: typeof TableDateRangePicker;
         Filter: typeof TableFilter;
         Footer: typeof TableFooter;
@@ -297,7 +294,6 @@ export const TableComponentsOrder = {
     Predicate: 5,
     Filter: 4,
     DateRangePicker: 3,
-    ColumnsSelector: 2,
     LayoutControl: 1,
 };
 
@@ -305,7 +301,6 @@ Table.AccordionColumn = TableAccordionColumn;
 Table.ActionsColumn = TableActionsColumn;
 Table.ActionItem = TableActionItem;
 Table.CollapsibleColumn = TableCollapsibleColumn;
-Table.ColumnsSelector = TableColumnsSelector;
 Table.DateRangePicker = TableDateRangePicker;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;
