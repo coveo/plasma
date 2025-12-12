@@ -10,12 +10,12 @@ figma.connect(
             message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show CloseButton'),
             title: figma.boolean('Show Title', {
-                true: 'Information',
+                true: figma.textContent('Title'),
             }),
             link: figma.boolean('Show Link', {
                 true: (
                     <Anchor href="https://coveord.com" target="_blank">
-                        Learn more
+                        Link
                     </Anchor>
                 ),
             }),
@@ -38,12 +38,12 @@ figma.connect(
             message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show CloseButton'),
             title: figma.boolean('Show Title', {
-                true: 'Advice',
+                true: figma.textContent('Title'),
             }),
             link: figma.boolean('Show Link', {
                 true: (
                     <Anchor href="https://coveord.com" target="_blank">
-                        Learn more
+                        Link
                     </Anchor>
                 ),
             }),
@@ -66,12 +66,12 @@ figma.connect(
             message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show CloseButton'),
             title: figma.boolean('Show Title', {
-                true: 'Warning!',
+                true: figma.textContent('Title'),
             }),
             link: figma.boolean('Show Link', {
                 true: (
                     <Anchor href="https://coveord.com" target="_blank">
-                        Learn more
+                        Link
                     </Anchor>
                 ),
             }),
@@ -96,7 +96,13 @@ figma.connect(
             title: figma.boolean('Show Title', {
                 true: figma.textContent('Title'),
             }),
-            link: figma.boolean('Show Link'),
+            link: figma.boolean('Show Link', {
+                true: (
+                    <Anchor href="https://coveord.com" target="_blank">
+                        Link
+                    </Anchor>
+                ),
+            }),
         },
         example: ({withCloseButton, title, link, message}) => (
             <Alert.Critical withCloseButton={withCloseButton} title={title}>
