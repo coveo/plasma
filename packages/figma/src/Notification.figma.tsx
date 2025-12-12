@@ -15,10 +15,10 @@ figma.connect(
         variant: {Variant: 'Information'},
         props: {
             title: figma.boolean<string, never>('Title', {
-                true: figma.string('Title'),
+                true: 'Title',
             }),
             message: figma.boolean<string, never>('Description', {
-                true: figma.string('Description'),
+                true: 'This is a great way to describe your title.',
             }),
         },
         example: ({title, message}) => {
@@ -38,10 +38,10 @@ figma.connect(
         variant: {Variant: 'Success'},
         props: {
             title: figma.boolean<string, never>('Title', {
-                true: figma.string('Title'),
+                true: 'Title',
             }),
             message: figma.boolean<string, never>('Description', {
-                true: figma.string('Description'),
+                true: 'This is a great way to describe your title.',
             }),
         },
         example: ({title, message}) => {
@@ -60,10 +60,10 @@ figma.connect(
         variant: {Variant: 'Warning'},
         props: {
             title: figma.boolean<string, never>('Title', {
-                true: figma.string('Title'),
+                true: 'Title',
             }),
             message: figma.boolean<string, never>('Description', {
-                true: figma.string('Description'),
+                true: 'This is a great way to describe your title.',
             }),
         },
         example: ({title, message}) => {
@@ -79,13 +79,13 @@ figma.connect(
     Notification,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50983',
     {
-        variant: {Variant: 'Error'},
+        variant: {Variant: 'Critical'},
         props: {
             title: figma.boolean<string, never>('Title', {
-                true: figma.string('Title'),
+                true: 'Title',
             }),
             message: figma.boolean<string, never>('Description', {
-                true: figma.string('Description'),
+                true: 'This is a great way to describe your title.',
             }),
         },
         example: ({title, message}) => {
@@ -104,10 +104,10 @@ figma.connect(
         variant: {Variant: 'Loading'},
         props: {
             title: figma.boolean<string, never>('Title', {
-                true: figma.string('Title'),
+                true: 'Title',
             }),
             message: figma.boolean<string, never>('Description', {
-                true: figma.string('Description'),
+                true: 'This is a great way to describe your title.',
             }),
         },
         example: ({title, message}) => {
