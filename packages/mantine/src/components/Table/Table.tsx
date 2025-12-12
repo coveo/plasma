@@ -25,7 +25,6 @@ import {
     TableCollapsibleColumnStylesNames,
 } from './table-column/TableCollapsibleColumn.js';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn.js';
-import {TableColumnsSelector, TableColumnsSelectorStylesNames} from './table-columns-selector/TableColumnsSelector.js';
 import {TableColumnsSelectorColumn} from './table-columns-selector/TableColumnsSelectorColumn.js';
 import {TableDateRangePicker, TableDateRangePickerStylesNames} from './table-date-range-picker/TableDateRangePicker.js';
 import {TableFilter, TableFilterStylesNames} from './table-filter/TableFilter.js';
@@ -54,8 +53,7 @@ type TableStylesNames =
     | TableHeaderStylesNames
     | TableThStylesNames
     | TableLastUpdatedStylesNames
-    | TablePredicateStylesNames
-    | TableColumnsSelectorStylesNames;
+    | TablePredicateStylesNames;
 
 export type PlasmaTableFactory = Factory<{
     props: TableProps<unknown>;
@@ -66,7 +64,6 @@ export type PlasmaTableFactory = Factory<{
         ActionsColumn: typeof TableActionsColumn;
         ActionItem: typeof TableActionItem;
         CollapsibleColumn: typeof TableCollapsibleColumn;
-        ColumnsSelector: typeof TableColumnsSelector;
         DateRangePicker: typeof TableDateRangePicker;
         Filter: typeof TableFilter;
         Footer: typeof TableFooter;
@@ -317,7 +314,6 @@ export const TableComponentsOrder = {
     Predicate: 5,
     Filter: 4,
     DateRangePicker: 3,
-    ColumnsSelector: 2,
     LayoutControl: 1,
 };
 
@@ -325,7 +321,6 @@ Table.AccordionColumn = TableAccordionColumn;
 Table.ActionsColumn = TableActionsColumn;
 Table.ActionItem = TableActionItem;
 Table.CollapsibleColumn = TableCollapsibleColumn;
-Table.ColumnsSelector = TableColumnsSelector;
 Table.DateRangePicker = TableDateRangePicker;
 Table.Filter = TableFilter;
 Table.Footer = TableFooter;

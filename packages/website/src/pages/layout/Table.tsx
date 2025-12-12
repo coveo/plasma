@@ -2,7 +2,6 @@ import {TableMetadata} from '@coveord/plasma-components-props-analyzer';
 import TableDemo from '@examples/layout/Table/Table.demo?demo';
 import TableClientSideDemo from '@examples/layout/Table/TableClientSide.demo?demo';
 import TableCollapsibleDemo from '@examples/layout/Table/TableCollapsible.demo?demo';
-import TableColumnsSelectorDemo from '@examples/layout/Table/TableColumnsSelector.demo?demo';
 import TableColumnsSelectorColumn from '@examples/layout/Table/TableColumnsSelectorColumn.demo?demo';
 import TableConfirmAction from '@examples/layout/Table/TableConfirmAction.demo?demo';
 import TableDateRangePickerDemo from '@examples/layout/Table/TableDateRangePicker.demo?demo';
@@ -48,13 +47,6 @@ const DemoPage = () => (
             ),
             disableRowSelection: (
                 <TableDisableRowSelection noPadding layout="vertical" title="Table with disabled row selection" />
-            ),
-            columnSelector: (
-                <TableColumnsSelectorDemo
-                    noPadding
-                    layout="vertical"
-                    title="Table with the ability to select columns"
-                />
             ),
             columnSelectorInColumn: (
                 <TableColumnsSelectorColumn
