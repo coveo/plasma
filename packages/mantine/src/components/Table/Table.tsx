@@ -9,7 +9,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, useEffect, useMemo, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
 import classes from './Table.module.css';
 import {TableLayout, TableProps} from './Table.types.js';
@@ -129,18 +129,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
-    // Build the final columns array with optional selectable and columns selector columns
-    const finalColumns = useMemo((): Array<ColumnDef<T>> => {
-        let cols = [...columns];
-
-        // Add multi-selection column at the start if enabled
-        if (store.multiRowSelectionEnabled) {
-            cols = [TableSelectableColumn as ColumnDef<T>, ...cols];
-        }
-
-        return cols;
-    }, [columns, store.multiRowSelectionEnabled]);
-
     const table = useReactTable({
         data: data || [],
         state: {
@@ -155,7 +143,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         onSortingChange: store.setSorting,
         onPaginationChange: store.setPagination,
         onColumnVisibilityChange: store.setColumnVisibility,
-        columns: finalColumns,
+        columns: store.multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options?.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,

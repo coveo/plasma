@@ -3,7 +3,7 @@ import {Checkbox, Combobox, Text, Tooltip, useCombobox} from '@mantine/core';
 import {flexRender, Header, Table} from '@tanstack/react-table';
 import {ActionIcon} from '../../ActionIcon/ActionIcon';
 
-export interface TableColumnsSelectorColumnOptions {
+export interface TableColumnsSelectorOptions {
     /**
      * The maximum number of columns that can be selected at the same time.
      * If defined a footer will render with the remaining number of columns that can be selected.
@@ -12,12 +12,12 @@ export interface TableColumnsSelectorColumnOptions {
     maxSelectableColumns?: number;
 }
 
-export interface ColumnsSelectorHeaderProps {
+export interface TableColumnsSelectorHeaderProps {
     table: Table<unknown>;
-    options?: TableColumnsSelectorColumnOptions;
+    options?: TableColumnsSelectorOptions;
 }
 
-export const ColumnsSelectorHeader = ({table, options = {}}: ColumnsSelectorHeaderProps) => {
+export const TableColumnsSelectorHeader = ({table, options = {}}: TableColumnsSelectorHeaderProps) => {
     const {maxSelectableColumns} = options;
 
     const combobox = useCombobox({

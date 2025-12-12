@@ -3,11 +3,12 @@ import {useProps} from '@mantine/core';
 import {CellContext, ColumnDef} from '@tanstack/table-core';
 import {FunctionComponent} from 'react';
 import {TableActionsList, TableActionsListProps} from '../table-actions/TableActionsList.js';
-import {
-    ColumnsSelectorHeader,
-    TableColumnsSelectorColumnOptions,
-} from '../table-columns-selector/TableColumnsSelectorColumn.js';
+
 import {useTableContext} from '../TableContext.js';
+import {
+    TableColumnsSelectorHeader,
+    TableColumnsSelectorOptions,
+} from '../table-columns-selector/TableColumnsSelector.js';
 
 export interface TableActionsColumnMeta {
     /**
@@ -21,7 +22,7 @@ export interface TableActionsColumnMeta {
      * // With options
      * options={{ meta: { rowConfigurable: { maxSelectableColumns: 5 } } }}
      */
-    rowConfigurable?: boolean | TableColumnsSelectorColumnOptions;
+    rowConfigurable?: boolean | TableColumnsSelectorOptions;
 }
 
 /**
@@ -40,7 +41,7 @@ export const TableActionsColumn: ColumnDef<unknown> = {
             return null;
         }
         const options = typeof rowConfigurable === 'boolean' ? {} : rowConfigurable;
-        return <ColumnsSelectorHeader table={table} options={options} />;
+        return <TableColumnsSelectorHeader table={table} options={options} />;
     },
     size: 84, // 16px padding left + 28px ActionIcon + 40px padding right
     cell: (info) => <ActionsMenu info={info} />,
