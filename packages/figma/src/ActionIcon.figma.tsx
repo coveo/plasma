@@ -12,6 +12,17 @@ const actionIconProps = {
     }),
 };
 
+const actionIconDestructiveProps = {
+    children: figma.nestedProps('Button_Destructive', {
+        icon: figma.boolean('Left Section', {
+            true: figma.instance('Swap Left'),
+        }),
+    }),
+    disabled: figma.enum('State', {
+        Disabled: true,
+    }),
+};
+
 figma.connect(
     ActionIcon.Primary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-49884',
@@ -65,7 +76,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2274-9600',
     {
         variant: {Variant: 'Primary'},
-        props: actionIconProps,
+        props: actionIconDestructiveProps,
         example: ({disabled, children}) => (
             <ActionIcon.DestructivePrimary disabled={disabled}>{children.icon}</ActionIcon.DestructivePrimary>
         ),
@@ -77,7 +88,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2274-9600',
     {
         variant: {Variant: 'Secondary'},
-        props: actionIconProps,
+        props: actionIconDestructiveProps,
         example: ({disabled, children}) => (
             <ActionIcon.DestructiveSecondary disabled={disabled}>{children.icon}</ActionIcon.DestructiveSecondary>
         ),
@@ -89,7 +100,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2274-9600',
     {
         variant: {Variant: 'Tertiary'},
-        props: actionIconProps,
+        props: actionIconDestructiveProps,
         example: ({disabled, children}) => (
             <ActionIcon.DestructiveTertiary disabled={disabled}>{children.icon}</ActionIcon.DestructiveTertiary>
         ),
@@ -101,7 +112,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2274-9600',
     {
         variant: {Variant: 'Quaternary'},
-        props: actionIconProps,
+        props: actionIconDestructiveProps,
         example: ({disabled, children}) => (
             <ActionIcon.DestructiveQuaternary disabled={disabled}>{children.icon}</ActionIcon.DestructiveQuaternary>
         ),
