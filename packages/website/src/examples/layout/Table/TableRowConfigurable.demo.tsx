@@ -1,4 +1,4 @@
-import {ColumnDef, createColumnHelper, Table, useTable} from '@coveord/plasma-mantine';
+import {ColumnDef, createColumnHelper, Table, TableActionsColumn, useTable} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
 
@@ -50,10 +50,12 @@ const columns: Array<ColumnDef<IEmployeeData>> = [
         header: 'Hire Date',
         cell: (info) => info.row.original.hireDate?.toDateString(),
     }),
+    TableActionsColumn as ColumnDef<IEmployeeData>,
 ];
 
 const Demo = () => {
     const data = useMemo(() => makeData(10), []);
+
     const table = useTable<IEmployeeData>({
         initialState: {
             columnVisibility: {hireDate: false, salary: false, email: false, isFullTime: false},
@@ -61,18 +63,19 @@ const Demo = () => {
     });
 
     return (
-        <Table
+        <Table<IEmployeeData>
             store={table}
             data={data}
-            getRowId={({employeeId}) => employeeId?.toString()}
             columns={columns}
-            // Add the column selector as the rightmost column in the table header
-            columnsSelectorColumn={{
-                maxSelectableColumns: 5,
+            getRowId={({employeeId}) => employeeId?.toString()}
+            options={{
+                meta: {
+                    rowConfigurable: {
+                        maxSelectableColumns: 5,
+                    },
+                },
             }}
-        >
-            <Table.Header borderTop={false} />
-        </Table>
+        />
     );
 };
 export default Demo;

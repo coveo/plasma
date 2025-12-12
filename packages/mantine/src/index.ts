@@ -116,10 +116,6 @@ export * from './components/StickyFooter/StickyFooter.js';
 // Table - override Mantine Table
 export {flexRender as renderTableCell} from '@tanstack/react-table';
 export {TableActionsColumn} from './components/Table/table-column/TableActionsColumn.js';
-export {
-    TableColumnsSelectorColumn,
-    type TableColumnsSelectorColumnOptions,
-} from './components/Table/table-columns-selector/TableColumnsSelectorColumn.js';
 export {type TablePredicateProps} from './components/Table/table-predicate/TablePredicate.js';
 export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
 export {

@@ -1,6 +1,6 @@
 import {SettingsSize16Px} from '@coveord/plasma-react-icons';
 import {Checkbox, Combobox, Text, Tooltip, useCombobox} from '@mantine/core';
-import {ColumnDef, flexRender, Header, Table} from '@tanstack/react-table';
+import {flexRender, Header, Table} from '@tanstack/react-table';
 import {ActionIcon} from '../../ActionIcon/ActionIcon';
 
 export interface TableColumnsSelectorColumnOptions {
@@ -12,12 +12,12 @@ export interface TableColumnsSelectorColumnOptions {
     maxSelectableColumns?: number;
 }
 
-interface ColumnsSelectorHeaderProps {
+export interface ColumnsSelectorHeaderProps {
     table: Table<unknown>;
-    options: TableColumnsSelectorColumnOptions;
+    options?: TableColumnsSelectorColumnOptions;
 }
 
-const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => {
+export const ColumnsSelectorHeader = ({table, options = {}}: ColumnsSelectorHeaderProps) => {
     const {maxSelectableColumns} = options;
 
     const combobox = useCombobox({
@@ -108,33 +108,3 @@ const ColumnsSelectorHeader = ({table, options}: ColumnsSelectorHeaderProps) => 
         </Combobox>
     );
 };
-
-/**
- * Creates a column that displays a column selector button in the header.
- * This column should be placed at the end of your columns array to appear on the right side of the table.
- * The column itself renders empty cells.
- *
- * @example
- * ```tsx
- * const columns = [
- *   columnHelper.accessor('name', { header: 'Name' }),
- *   columnHelper.accessor('age', { header: 'Age' }),
- *   TableColumnsSelectorColumn(),
- *   // or with options:
- *   TableColumnsSelectorColumn({ maxSelectableColumns: 5 }),
- * ];
- * ```
- */
-export const TableColumnsSelectorColumn = (options: TableColumnsSelectorColumnOptions = {}): ColumnDef<unknown> => ({
-    id: 'columnsSelector',
-    enableSorting: false,
-    enableHiding: false,
-    meta: {
-        controlColumn: true,
-    },
-    size: 0,
-    minSize: 0,
-    maxSize: 0,
-    header: ({table}) => <ColumnsSelectorHeader table={table} options={{...options}} />,
-    cell: () => null,
-});

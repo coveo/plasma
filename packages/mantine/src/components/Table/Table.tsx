@@ -25,7 +25,6 @@ import {
     TableCollapsibleColumnStylesNames,
 } from './table-column/TableCollapsibleColumn.js';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn.js';
-import {TableColumnsSelectorColumn} from './table-columns-selector/TableColumnsSelectorColumn.js';
 import {TableDateRangePicker, TableDateRangePickerStylesNames} from './table-date-range-picker/TableDateRangePicker.js';
 import {TableFilter, TableFilterStylesNames} from './table-filter/TableFilter.js';
 import {TableFooter} from './table-footer/TableFooter.js';
@@ -96,7 +95,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         getRowExpandedContent,
         getRowActions,
         columns,
-        columnsSelectorColumn,
         layouts,
         layoutProps,
         children,
@@ -140,14 +138,8 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             cols = [TableSelectableColumn as ColumnDef<T>, ...cols];
         }
 
-        // Add columns selector column at the end if enabled
-        if (columnsSelectorColumn) {
-            const selectorOptions = typeof columnsSelectorColumn === 'boolean' ? {} : columnsSelectorColumn;
-            cols = [...cols, TableColumnsSelectorColumn(selectorOptions) as ColumnDef<T>];
-        }
-
         return cols;
-    }, [columns, store.multiRowSelectionEnabled, columnsSelectorColumn]);
+    }, [columns, store.multiRowSelectionEnabled]);
 
     const table = useReactTable({
         data: data || [],

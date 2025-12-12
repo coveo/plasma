@@ -4,7 +4,6 @@ import {ColumnDef, CoreOptions, Row, TableOptions} from '@tanstack/table-core';
 import {ReactElement, ReactNode} from 'react';
 
 import {type PlasmaTableFactory} from './Table.js';
-import {type TableColumnsSelectorColumnOptions} from './table-columns-selector/TableColumnsSelectorColumn.js';
 import {TableStore} from './use-table.js';
 
 export type TableLayoutProps<TData = unknown> = Pick<
@@ -73,19 +72,6 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      * @see https://tanstack.com/table/v8/docs/guide/column-defs
      */
     columns: Array<ColumnDef<TData>>;
-    /**
-     * Adds a column selector button in the table header row (rightmost column).
-     * Set to `true` for default options, or provide custom options.
-     * This is an alternative to using `Table.ColumnsSelector` in the header actions.
-     *
-     * @example
-     * // With default options
-     * <Table columnsSelectorColumn ... />
-     *
-     * // With custom options
-     * <Table columnsSelectorColumn={{ maxSelectableColumns: 5, limitReachedTooltip: 'Max columns reached' }} ... />
-     */
-    columnsSelectorColumn?: boolean | TableColumnsSelectorColumnOptions;
     /**
      * Available layouts
      *
