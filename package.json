@@ -46,8 +46,8 @@
         "not dead"
     ],
     "devDependencies": {
-        "@commitlint/cli": "19.8.1",
-        "@commitlint/config-conventional": "19.8.1",
+        "@commitlint/cli": "20.2.0",
+        "@commitlint/config-conventional": "20.2.0",
         "@coveo/semantic-monorepo-tools": "2.7.1",
         "@types/node": "24.10.0",
         "@vitest/eslint-plugin": "1.4.1",
