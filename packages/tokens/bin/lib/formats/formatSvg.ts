@@ -12,11 +12,6 @@ const cleanSvgMarkup = (name: string, svgMarkup: string): string => {
             plugins: [
                 {
                     name: 'preset-default',
-                    params: {
-                        overrides: {
-                            removeViewBox: false,
-                        },
-                    },
                 },
                 'removeDimensions',
                 {
