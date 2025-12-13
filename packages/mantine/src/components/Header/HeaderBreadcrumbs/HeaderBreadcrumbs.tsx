@@ -3,7 +3,8 @@ import {useHeaderContext} from '../Header.context.js';
 
 export type HeaderBreadcrumbsStyleNames = 'breadcrumbsRoot' | 'breadcrumbsSeparator';
 export interface HeaderBreadcrumbsProps
-    extends Omit<BreadcrumbsProps, 'classNames' | 'styles' | 'vars'>,
+    extends
+        Omit<BreadcrumbsProps, 'classNames' | 'styles' | 'vars'>,
         CompoundStylesApiProps<HeaderBreadcrumbsFactory> {}
 
 export type HeaderBreadcrumbsFactory = Factory<{
