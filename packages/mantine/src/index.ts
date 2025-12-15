@@ -86,6 +86,9 @@ export {
 // Info Token
 export * from './components/InfoToken/InfoToken.js';
 
+// Status Token
+export * from './components/StatusToken/StatusToken.js';
+
 // Inline Confirm
 export * from './components/InlineConfirm/InlineConfirm.js';
 export * from './components/InlineConfirm/InlineConfirmContext.js';
