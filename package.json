@@ -73,7 +73,7 @@
         "prettier": "3.6.2",
         "sort-package-json": "3.4.0",
         "stylelint": "16.25.0",
-        "stylelint-config-standard-scss": "14.0.0",
+        "stylelint-config-standard-scss": "16.0.0",
         "turbo": "2.6.0",
         "typescript": "5.9.3",
         "typescript-eslint": "8.46.3"
