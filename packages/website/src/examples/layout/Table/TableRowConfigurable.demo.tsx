@@ -1,4 +1,4 @@
-import {ColumnDef, createColumnHelper, Table, Text, useTable} from '@coveord/plasma-mantine';
+import {ColumnDef, createColumnHelper, Table, TableActionsColumn, useTable} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import {useMemo} from 'react';
 
@@ -18,9 +18,9 @@ const columnHelper = createColumnHelper<IEmployeeData>();
 
 const columns: Array<ColumnDef<IEmployeeData>> = [
     columnHelper.accessor('employeeId', {
-        header: 'Employee ID', // the column header is used to display the name of the checkbox in the column selector
+        header: 'Employee ID',
         cell: (info) => info.row.original.employeeId,
-        enableHiding: false, // you can disable hiding for specific columns
+        enableHiding: false, // this column will always be visible
     }),
     columnHelper.accessor('fullName', {
         header: 'Name',
@@ -50,10 +50,12 @@ const columns: Array<ColumnDef<IEmployeeData>> = [
         header: 'Hire Date',
         cell: (info) => info.row.original.hireDate?.toDateString(),
     }),
+    TableActionsColumn as ColumnDef<IEmployeeData>,
 ];
 
 const Demo = () => {
     const data = useMemo(() => makeData(10), []);
+
     const table = useTable<IEmployeeData>({
         initialState: {
             columnVisibility: {hireDate: false, salary: false, email: false, isFullTime: false},
@@ -61,18 +63,21 @@ const Demo = () => {
     });
 
     return (
-        <Table store={table} data={data} getRowId={({employeeId}) => employeeId?.toString()} columns={columns}>
-            {/* Table demo is in a card with a border, remove the one from the header */}
-            <Table.Header borderTop={false}>
-                <Table.ColumnsSelector
-                    label="Edit columns"
-                    maxSelectableColumns={5}
-                    showVisibleCountLabel
-                    footer={<Text variant="dimmed">You can display up to 5 columns</Text>}
-                    limitReachedTooltip="You have reached the maximum display limit of 5 columns. Uncheck a column to display another one."
-                />
-            </Table.Header>
-        </Table>
+        <Table<IEmployeeData>
+            store={table}
+            data={data}
+            columns={columns}
+            getRowId={({employeeId}) => employeeId?.toString()}
+            options={{
+                meta: {
+                    rowConfigurable: {
+                        maxSelectableColumns: 5,
+                        limitReachedTooltip: "That's enough columns!",
+                        alwaysVisibleTooltip: 'You cannot hide this column.',
+                    },
+                },
+            }}
+        />
     );
 };
 export default Demo;
