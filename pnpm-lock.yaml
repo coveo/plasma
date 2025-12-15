@@ -385,8 +385,8 @@ importers:
         specifier: 11.3.2
         version: 11.3.2
       glob:
-        specifier: 11.0.3
-        version: 11.0.3
+        specifier: 11.1.0
+        version: 11.1.0
       jsdom:
         specifier: 27.1.0
         version: 27.1.0
@@ -3407,6 +3407,10 @@ packages:
     resolution: {integrity: sha512-2qwVAnUN+EDpu41pIK1XiJpHXKHV9Dnti3cE1EnUXT1/BV5+B7xuSZtgZ/4LExkCpp5F6BGikraezQL+8hKCOA==}
     peerDependencies:
       dotenv: '>= 8.2.0'
+
+  dotenv@16.6.1:
+    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+    engines: {node: '>=12'}
 
   dotenv@17.2.3:
     resolution: {integrity: sha512-JVUnt+DUIzu87TABbhPmNfVdBDt18BLOWjMUFJMSi/Qqg7NTYtabbvSNJGOJ7afbRuv9D/lngizHtP7QyLQ+9w==}
@@ -9652,6 +9656,8 @@ snapshots:
   dotenv-safe@9.1.0(dotenv@17.2.3):
     dependencies:
       dotenv: 17.2.3
+
+  dotenv@16.6.1: {}
 
   dotenv@17.2.3: {}
 
