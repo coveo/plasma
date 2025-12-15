@@ -1,3 +1,24 @@
+## <small>56.8.1 (2025-12-15)</small>
+
+* Ad UI 11177 move radio card in plasma (#4229) 353dd34, closes #4229
+* fix(mantine, date-range-picker): text wrapping inside button (#4237) c8bb809, closes #4237
+* chore(config): migrate config .github/renovate.json5 (#4240) 7d587f8, closes #4240
+* chore(deps): update actions/checkout action to v6 (#4238) 32dd23d, closes #4238
+* chore(deps): update actions/upload-artifact action to v5 (#4187) 8bcdda3, closes #4187
+* chore(deps): update all non-major dependencies (#4227) a9e7ec1, closes #4227
+* chore(deps): update commitlint monorepo to v20 (#4165) de29bd9, closes #4165
+* chore(deps): update dependency commander to v14 (#4067) dbd9d41, closes #4067
+* chore(deps): update dependency dotenv to v17 (#4188) 3c1d8d0, closes #4188
+* chore(deps): update dependency eslint-plugin-testing-library to v7 (#4198) 77cb6f5, closes #4198
+* chore(deps): update dependency glob to v11.1.0 [security] (#4209) df8a1a3, closes #4209
+* chore(deps): update dependency glob to v13 (#4241) ac5943f, closes #4241
+* chore(deps): update dependency stylelint-config-standard-scss to v16 (#4200) 60214c7, closes #4200
+* chore(deps): update dependency svgo to v4 (#4201) 50db81e, closes #4201
+* chore(mantine): bump to 8.3.9 (#4233) 77cb39e, closes #4233
+* fix(deps): update dependency @faker-js/faker to v10 (#4239) 16d63dd, closes #4239
+
+
+
 ## 56.8.0 (2025-12-09)
 
 * feat(figma): code connect Card (#4221) ad02e9d, closes #4221
