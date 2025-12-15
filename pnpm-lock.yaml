@@ -522,11 +522,11 @@ importers:
         specifier: 12.1.0
         version: 12.1.0
       dotenv:
-        specifier: 16.6.1
-        version: 16.6.1
+        specifier: 17.2.3
+        version: 17.2.3
       dotenv-safe:
         specifier: 9.1.0
-        version: 9.1.0(dotenv@16.6.1)
+        version: 9.1.0(dotenv@17.2.3)
       figma-js:
         specifier: 1.16.0
         version: 1.16.0
@@ -3420,8 +3420,8 @@ packages:
     peerDependencies:
       dotenv: '>= 8.2.0'
 
-  dotenv@16.6.1:
-    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+  dotenv@17.2.3:
+    resolution: {integrity: sha512-JVUnt+DUIzu87TABbhPmNfVdBDt18BLOWjMUFJMSi/Qqg7NTYtabbvSNJGOJ7afbRuv9D/lngizHtP7QyLQ+9w==}
     engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
@@ -9678,11 +9678,11 @@ snapshots:
     dependencies:
       is-obj: 2.0.0
 
-  dotenv-safe@9.1.0(dotenv@16.6.1):
+  dotenv-safe@9.1.0(dotenv@17.2.3):
     dependencies:
-      dotenv: 16.6.1
+      dotenv: 17.2.3
 
-  dotenv@16.6.1: {}
+  dotenv@17.2.3: {}
 
   dunder-proto@1.0.1:
     dependencies:
