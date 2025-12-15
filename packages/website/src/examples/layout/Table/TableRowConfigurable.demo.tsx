@@ -72,6 +72,8 @@ const Demo = () => {
                 meta: {
                     rowConfigurable: {
                         maxSelectableColumns: 5,
+                        limitReachedTooltip: "That's enough columns!",
+                        alwaysVisibleTooltip: 'You cannot hide this column.',
                     },
                 },
             }}

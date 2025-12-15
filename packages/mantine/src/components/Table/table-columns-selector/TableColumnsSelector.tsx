@@ -1,4 +1,4 @@
-import {SettingsSize16Px} from '@coveord/plasma-react-icons';
+import {IconSettings} from '@coveord/plasma-react-icons';
 import {Checkbox, Combobox, Text, Tooltip, useCombobox} from '@mantine/core';
 import {flexRender, Header, Table} from '@tanstack/react-table';
 import {ActionIcon} from '../../ActionIcon/ActionIcon';
@@ -10,6 +10,22 @@ export interface TableColumnsSelectorOptions {
      * Must be a positive integer (greater than 0).
      */
     maxSelectableColumns?: number;
+    /**
+     * The content to display in the footer when maxSelectableColumns is defined.
+     * Can be a string or a function that receives the maxSelectableColumns value.
+     * @default (max) => `You can display up to ${max} columns.`
+     */
+    footer?: string | ((maxSelectableColumns: number) => string);
+    /**
+     * The tooltip to display when the user hovers over a disabled checkbox because of the limit.
+     * @default 'You have reached the maximum display limit.'
+     */
+    limitReachedTooltip?: string;
+    /**
+     * The tooltip to display when the user hovers over a disabled checkbox because a column cannot be hidden.
+     * @default 'This column is always visible.'
+     */
+    alwaysVisibleTooltip?: string;
 }
 
 export interface TableColumnsSelectorHeaderProps {
@@ -17,8 +33,19 @@ export interface TableColumnsSelectorHeaderProps {
     options?: TableColumnsSelectorOptions;
 }
 
-export const TableColumnsSelectorHeader = ({table, options = {}}: TableColumnsSelectorHeaderProps) => {
-    const {maxSelectableColumns} = options;
+const DEFAULT_OPTIONS: Omit<TableColumnsSelectorOptions, 'footer'> & {
+    footer: (maxSelectableColumns: number) => string;
+} = {
+    footer: (max) => `You can display up to ${max} columns.`,
+    limitReachedTooltip: 'You have reached the maximum display limit.',
+    alwaysVisibleTooltip: 'This column is always visible.',
+};
+
+export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelectorHeaderProps) => {
+    const {maxSelectableColumns, footer, limitReachedTooltip, alwaysVisibleTooltip} = {
+        ...DEFAULT_OPTIONS,
+        ...options,
+    };
 
     const combobox = useCombobox({
         onDropdownClose: () => {
@@ -66,9 +93,7 @@ export const TableColumnsSelectorHeader = ({table, options = {}}: TableColumnsSe
         return (
             <Combobox.Option value={column.id} key={column.id} disabled={isDisabled} active={isVisible}>
                 <Tooltip
-                    label={
-                        alwaysVisible ? 'This column is always visible.' : 'You have reached the maximum display limit.'
-                    }
+                    label={alwaysVisible ? alwaysVisibleTooltip : limitReachedTooltip}
                     disabled={!isDisabled}
                     position="left"
                 >
@@ -91,8 +116,8 @@ export const TableColumnsSelectorHeader = ({table, options = {}}: TableColumnsSe
     return (
         <Combobox store={combobox} position="bottom-end" shadow="md" onOptionSubmit={handleOptionClick}>
             <Combobox.Target>
-                <ActionIcon.Tertiary onClick={() => combobox.toggleDropdown()}>
-                    <SettingsSize16Px height={16} />
+                <ActionIcon.Tertiary onClick={() => combobox.toggleDropdown()} aria-label="settings">
+                    <IconSettings height={16} />
                 </ActionIcon.Tertiary>
             </Combobox.Target>
             <Combobox.Dropdown miw={270}>
@@ -100,7 +125,7 @@ export const TableColumnsSelectorHeader = ({table, options = {}}: TableColumnsSe
                 {effectiveMaxColumns && (
                     <Combobox.Footer>
                         <Text size="sm" c="dimmed">
-                            You can display up to {effectiveMaxColumns} columns
+                            {typeof footer === 'function' ? footer(effectiveMaxColumns) : footer}
                         </Text>
                     </Combobox.Footer>
                 )}
