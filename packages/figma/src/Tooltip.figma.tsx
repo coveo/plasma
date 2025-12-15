@@ -7,12 +7,13 @@ figma.connect(
     {
         props: {
             label: figma.string('Tooltip'),
-            position: figma.enum('Tip position', {
-                Top: 'top',
-                Bottom: 'bottom',
+            position: figma.enum('Arrow Position', {
+                Top: 'bottom',
+                Bottom: 'top',
                 Left: 'right',
                 Right: 'left',
             }),
+            withArrow: figma.boolean('With Arrow'),
         },
         example: (props) => <Tooltip {...props} />,
     },

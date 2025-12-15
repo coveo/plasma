@@ -11,7 +11,7 @@ figma.connect(
                 Warning: 'warning',
                 Error: 'error',
                 Advice: 'advice',
-                Question: 'advice',
+                Question: 'question',
             }),
             size: figma.enum('Size', {sm: 'xs', lg: 'md'}),
         },

@@ -2,8 +2,13 @@ import {Card} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 const cardsProps = {
-    state: figma.enum('State', {Default: 'Default', Hover: 'Hover', Selected: 'Selected'}),
-    children: figma.instance('Modal.ContentSwap'),
+    state: figma.enum('State', {
+        Default: 'Default',
+        Hover: 'Hover',
+        Selected: 'Selected',
+        Disabled: 'Disabled',
+    }),
+    children: figma.instance('Content Swap'),
 };
 
 figma.connect(Card, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-51677', {
@@ -15,11 +20,25 @@ figma.connect(Card, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-
 figma.connect(Card, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-51677', {
     props: cardsProps,
     variant: {State: 'Selected'},
-    example: () => <Card variant="hover" mod={{selected: true}} />,
+    example: (props) => (
+        <Card variant="hover" mod={{selected: true}}>
+            {props.children}
+        </Card>
+    ),
 });
 
 figma.connect(Card, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-51677', {
     props: cardsProps,
     variant: {State: 'Hover'},
-    example: () => <Card variant="hover" mod={{selected: false}} />,
+    example: (props) => (
+        <Card variant="hover" mod={{selected: false}}>
+            {props.children}
+        </Card>
+    ),
+});
+
+figma.connect(Card, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-51677', {
+    props: cardsProps,
+    variant: {State: 'Disabled'},
+    example: (props) => <Card mod={{disabled: true}}>{props.children}</Card>,
 });
