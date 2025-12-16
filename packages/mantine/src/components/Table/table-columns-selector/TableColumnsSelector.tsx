@@ -1,5 +1,5 @@
 import {IconSettings} from '@coveord/plasma-react-icons';
-import {Checkbox, Combobox, ScrollArea, Text, Tooltip, useCombobox} from '@mantine/core';
+import {Checkbox, Combobox, Group, ScrollArea, Text, Tooltip, useCombobox} from '@mantine/core';
 import {flexRender, Header, Table} from '@tanstack/react-table';
 import {ActionIcon} from '../../ActionIcon/ActionIcon';
 
@@ -97,17 +97,16 @@ export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelecto
                     disabled={!isDisabled}
                     position="left"
                 >
-                    <div>
-                        <Checkbox
-                            checked={isVisible}
-                            label={flexRender(column.columnDef.header, {
+                    <Group gap="xs" wrap="nowrap">
+                        <Checkbox.Indicator checked={isVisible} disabled={isDisabled} />
+                        <Text size="sm">
+                            {flexRender(column.columnDef.header, {
                                 table,
                                 column,
                                 header: {column} as Header<unknown, unknown>,
                             })}
-                            disabled={isDisabled}
-                        />
-                    </div>
+                        </Text>
+                    </Group>
                 </Tooltip>
             </Combobox.Option>
         );

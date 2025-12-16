@@ -21,7 +21,7 @@ const getBaseColumns = (): Array<ColumnDef<RowData>> => [
     TableActionsColumn as ColumnDef<RowData>,
 ];
 
-describe('TableColumnsSelectorHeader', () => {
+describe('TableColumnsSelector', () => {
     it('renders the column selector button in the actions column header when rowConfigurable is true', () => {
         const Fixture = () => {
             const store = useTable<RowData>();
