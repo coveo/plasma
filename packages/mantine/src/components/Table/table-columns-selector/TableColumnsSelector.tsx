@@ -113,7 +113,13 @@ export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelecto
     });
 
     return (
-        <Combobox store={combobox} position="bottom-end" shadow="md" onOptionSubmit={handleOptionClick}>
+        <Combobox
+            store={combobox}
+            position="bottom-end"
+            shadow="md"
+            onOptionSubmit={handleOptionClick}
+            middlewares={{flip: false, shift: true}}
+        >
             <Combobox.Target>
                 <ActionIcon.Tertiary onClick={() => combobox.toggleDropdown()} aria-label="settings">
                     <IconSettings height={16} />
