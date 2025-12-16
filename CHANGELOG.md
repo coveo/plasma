@@ -1,3 +1,9 @@
+## 56.9.0 (2025-12-16)
+
+* feat(mantine): table with editable columns button in the header (#4230) 129acdd, closes #4230
+
+
+
 ## <small>56.8.1 (2025-12-15)</small>
 
 * Ad UI 11177 move radio card in plasma (#4229) 353dd34, closes #4229
