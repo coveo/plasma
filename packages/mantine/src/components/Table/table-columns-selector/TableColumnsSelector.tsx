@@ -108,7 +108,7 @@ export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelecto
                 </ActionIcon.Tertiary>
             </Popover.Target>
             <Popover.Dropdown miw={270} pb="xs">
-                <ScrollArea.Autosize mah={200} type="always">
+                <ScrollArea.Autosize mah={200} type="auto">
                     <Stack gap="xs">{columnOptions}</Stack>
                 </ScrollArea.Autosize>
                 {effectiveMaxColumns && (
