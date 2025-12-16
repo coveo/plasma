@@ -269,7 +269,8 @@ describe('TableColumnsSelector', () => {
 
             await user.click(screen.getByRole('button', {name: 'settings'}));
 
-            expect(await screen.findByText('You can display up to 5 columns.')).toBeVisible();
+            await screen.findByRole('checkbox', {name: 'Name'});
+            expect(screen.getByText('You can display up to 5 columns.')).toBeInTheDocument();
         });
 
         it('does not render a footer when maxSelectableColumns is not set', async () => {
