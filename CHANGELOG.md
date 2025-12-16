@@ -1,3 +1,11 @@
+## 56.10.0 (2025-12-16)
+
+* refactor(storybook): simplify stories folder architecture (#4246) bf2d318, closes #4246
+* feat: add StatusToken component (#4235) 394185e, closes #4235
+* feat: component InfoToken connection and storybook (#4244) 97f18f1, closes #4244
+
+
+
 ## 56.9.0 (2025-12-16)
 
 * feat(mantine): table with editable columns button in the header (#4230) 129acdd, closes #4230
