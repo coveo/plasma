@@ -120,53 +120,56 @@ const varsResolver = createVarsResolver<InfoTokenFactory>((_theme, {variant}) =>
     };
 });
 
-export const InfoToken: ReturnType<typeof polymorphicFactory<InfoTokenFactory>> = polymorphicFactory<InfoTokenFactory>(
-    (_props, ref) => {
-        const props = useProps('InfoToken', defaultProps, _props);
-        const {variant, vars, className, style, unstyled, styles, classNames, size, ...others} = props;
-        const getStyles = useStyles<InfoTokenFactory>({
-            name: 'InfoToken',
-            classes,
-            className,
-            props,
-            style,
-            styles,
-            unstyled,
-            vars,
-            varsResolver,
-        });
-        const IconComponent = iconResolver(variant);
-        return (
-            <Box
-                ref={ref}
-                variant={variant}
-                role="img"
-                aria-label={variant}
-                size={size}
-                {...getStyles('root', {
-                    className,
-                    style,
-                    styles,
-                    classNames,
-                })}
-                {...others}
-            >
-                <IconComponent size={sizeResolver(size)} />
-            </Box>
-        );
-    },
-);
+export const InfoToken = polymorphicFactory<InfoTokenFactory>((_props, ref) => {
+    const props = useProps('InfoToken', defaultProps, _props);
+    const {variant, vars, className, style, unstyled, styles, classNames, size, ...others} = props;
+    const getStyles = useStyles<InfoTokenFactory>({
+        name: 'InfoToken',
+        classes,
+        className,
+        props,
+        style,
+        styles,
+        unstyled,
+        vars,
+        varsResolver,
+    });
+    const IconComponent = iconResolver(variant);
+    return (
+        <Box
+            ref={ref}
+            variant={variant}
+            role="img"
+            aria-label={variant}
+            size={size}
+            {...getStyles('root', {
+                className,
+                style,
+                styles,
+                classNames,
+            })}
+            {...others}
+        >
+            <IconComponent size={sizeResolver(size)} />
+        </Box>
+    );
+});
 
 const TokenInformation = InfoToken.withProps({
     variant: 'information',
 });
+(TokenInformation as typeof InfoToken).displayName = 'InfoToken.Information';
 const TokenInformationOutline = InfoToken.withProps({
     variant: 'information-outline',
 });
 const TokenAdvice = InfoToken.withProps({variant: 'advice'});
+(TokenAdvice as typeof InfoToken).displayName = 'InfoToken.Advice';
 const TokenWarning = InfoToken.withProps({variant: 'warning'});
+(TokenWarning as typeof InfoToken).displayName = 'InfoToken.Warning';
 const TokenError = InfoToken.withProps({variant: 'error'});
+(TokenError as typeof InfoToken).displayName = 'InfoToken.Error';
 const TokenQuestion = InfoToken.withProps({variant: 'question'});
+(TokenQuestion as typeof InfoToken).displayName = 'InfoToken.Question';
 
 InfoToken.Information = TokenInformation;
 InfoToken.InformationOutline = TokenInformationOutline;

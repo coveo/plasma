@@ -1,6 +1,5 @@
-import type {StoryObj, Meta} from '@storybook/react-vite';
 import {InfoToken} from '@coveord/plasma-mantine/components/InfoToken';
-import {Group, Stack} from '@coveord/plasma-mantine';
+import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof InfoToken> = {
     title: '@components/feedback/InfoToken',
@@ -8,22 +7,34 @@ const meta: Meta<typeof InfoToken> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
+    args: {
+        variant: 'Information',
+        size: 'xs',
+    },
+    argTypes: {
+        variant: {
+            control: 'select',
+            options: ['Information', 'Advice', 'Warning', 'Error', 'Question'],
+            table: {
+                defaultValue: {summary: 'Information'},
+            },
+        },
+        size: {
+            control: 'select',
+            options: ['xs', 'sm', 'md', 'lg', 'xl'],
+            table: {
+                defaultValue: {summary: 'xs'},
+                type: {summary: 'sm | lg'},
+            },
+        },
+    },
 };
 export default meta;
 type Story = StoryObj<typeof InfoToken>;
 
-export const Default: Story = {
-    render: () => (
-        <Stack gap="sm">
-            <Group>
-                <InfoToken.Information />
-                <InfoToken.InformationOutline />
-            </Group>
-            <InfoToken.Advice />
-            <InfoToken.Warning />
-            <InfoToken.Error />
-            <InfoToken.Question />
-        </Stack>
-    ),
+export const Demo: Story = {
+    render: ({variant, ...props}: any) => {
+        const Component = (InfoToken as any)[variant];
+        return <Component {...props} />;
+    },
 };
