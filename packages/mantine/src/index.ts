@@ -106,6 +106,9 @@ export * from './components/Modal/ModalFooter.js';
 // Prompt
 export * from './components/Prompt/Prompt.js';
 
+// RadioCard - override Mantine RadioCard
+export {RadioCard, type RadioCardProps} from './components/RadioCard/RadioCard.js';
+
 // Read Only - override Mantine PasswordInput and Select
 export {PasswordInput} from './components/PasswordInput/PasswordInput.js';
 export {Select} from './components/Select/Select.js';
@@ -115,6 +118,7 @@ export * from './components/StickyFooter/StickyFooter.js';
 
 // Table - override Mantine Table
 export {flexRender as renderTableCell} from '@tanstack/react-table';
+export {TableActionsColumn} from './components/Table/table-column/TableActionsColumn.js';
 export {type TablePredicateProps} from './components/Table/table-predicate/TablePredicate.js';
 export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
 export {

@@ -1,50 +1,21 @@
-import {
-    BoxProps,
-    Button,
-    Checkbox,
-    CompoundStylesApiProps,
-    Divider,
-    factory,
-    Factory,
-    Grid,
-    Popover,
-    ScrollArea,
-    Stack,
-    Tooltip,
-    useProps,
-} from '@mantine/core';
-import {flexRender, Header} from '@tanstack/react-table';
-import {ReactNode} from 'react';
-import {TableComponentsOrder} from '../Table.js';
-import {useTableContext} from '../TableContext.js';
+import {IconSettings} from '@coveord/plasma-react-icons';
+import {Checkbox, Combobox, Text, Tooltip, useCombobox} from '@mantine/core';
+import {flexRender, Header, Table} from '@tanstack/react-table';
+import {ActionIcon} from '../../ActionIcon/ActionIcon';
 
-export type TableColumnsSelectorStylesNames = 'columnSelector' | 'columnSelectorWrapper';
-
-export interface TableColumnsSelectorProps extends BoxProps, CompoundStylesApiProps<TableColumnsSelectorFactory> {
-    /**
-     * The label of the button
-     * @default 'Edit columns'
-     */
-    label?: ReactNode;
-    /**
-     * The style variant of the button
-     * @default 'outline'
-     */
-    buttonVariant?: string;
-    /**
-     * Whether the count of visible columns is shown in the button label.
-     * @default false
-     */
-    showVisibleCountLabel?: boolean;
+export interface TableColumnsSelectorOptions {
     /**
      * The maximum number of columns that can be selected at the same time.
      * If defined a footer will render with the remaining number of columns that can be selected.
+     * Must be a positive integer (greater than 0).
      */
     maxSelectableColumns?: number;
     /**
      * The content to display in the footer when maxSelectableColumns is defined.
+     * Can be a string or a function that receives the maxSelectableColumns value.
+     * @default (max) => `You can display up to ${max} columns.`
      */
-    footer?: ReactNode;
+    footer?: string | ((maxSelectableColumns: number) => string);
     /**
      * The tooltip to display when the user hovers over a disabled checkbox because of the limit.
      * @default 'You have reached the maximum display limit.'
@@ -57,108 +28,108 @@ export interface TableColumnsSelectorProps extends BoxProps, CompoundStylesApiPr
     alwaysVisibleTooltip?: string;
 }
 
-export type TableColumnsSelectorFactory = Factory<{
-    props: TableColumnsSelectorProps;
-    ref: HTMLDivElement;
-    stylesNames: TableColumnsSelectorStylesNames;
-    compound: true;
-}>;
+export interface TableColumnsSelectorHeaderProps {
+    table: Table<unknown>;
+    options?: TableColumnsSelectorOptions;
+}
 
-const defaultProps: Partial<TableColumnsSelectorProps> = {
-    label: 'Edit columns',
-    buttonVariant: 'outline',
+const DEFAULT_OPTIONS: Omit<TableColumnsSelectorOptions, 'footer'> & {
+    footer: (maxSelectableColumns: number) => string;
+} = {
+    footer: (max) => `You can display up to ${max} columns.`,
     limitReachedTooltip: 'You have reached the maximum display limit.',
     alwaysVisibleTooltip: 'This column is always visible.',
-    showVisibleCountLabel: false,
 };
 
-export const TableColumnsSelector = factory<TableColumnsSelectorFactory>((props, ref) => {
-    const {getStyles} = useTableContext();
-    const {
-        label,
-        buttonVariant,
-        showVisibleCountLabel,
-        maxSelectableColumns,
-        footer,
-        limitReachedTooltip,
-        alwaysVisibleTooltip,
-        classNames,
-        className,
-        styles,
-        style,
-        vars,
-        ...others
-    } = useProps('TableColumnsSelector', defaultProps, props);
-    const {table} = useTableContext();
+export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelectorHeaderProps) => {
+    const {maxSelectableColumns, footer, limitReachedTooltip, alwaysVisibleTooltip} = {
+        ...DEFAULT_OPTIONS,
+        ...options,
+    };
+
+    const combobox = useCombobox({
+        onDropdownClose: () => {
+            combobox.resetSelectedOption();
+        },
+        onDropdownOpen: () => combobox.updateSelectedOptionIndex('active'),
+    });
 
     const allColumns = table.getAllLeafColumns();
-
     const filteredColumns = allColumns.filter((column) => !column.columnDef.meta?.controlColumn);
     const selectedColumnsCount = filteredColumns.filter((column) => column.getIsVisible()).length;
+
+    // Validate maxSelectableColumns - must be a positive integer to be effective
+    const effectiveMaxColumns =
+        maxSelectableColumns !== undefined && maxSelectableColumns > 0 ? maxSelectableColumns : undefined;
 
     if (filteredColumns.length <= 0) {
         return null;
     }
 
-    const stylesApiProps = {classNames, styles};
+    const getColumnState = (column: (typeof filteredColumns)[number]) => {
+        const alwaysVisible = !column.getCanHide();
+        const isDisabled =
+            (effectiveMaxColumns !== undefined &&
+                selectedColumnsCount >= effectiveMaxColumns &&
+                !column.getIsVisible()) ||
+            alwaysVisible;
+        const isVisible = column.getIsVisible() || alwaysVisible;
+        return {alwaysVisible, isDisabled, isVisible};
+    };
+
+    const handleOptionClick = (columnId: string) => {
+        const column = filteredColumns.find((col) => col.id === columnId);
+        if (column) {
+            const {isDisabled} = getColumnState(column);
+            if (!isDisabled) {
+                column.toggleVisibility();
+            }
+        }
+    };
+
+    const columnOptions = filteredColumns.map((column) => {
+        const {alwaysVisible, isDisabled, isVisible} = getColumnState(column);
+
+        return (
+            <Combobox.Option value={column.id} key={column.id} disabled={isDisabled} active={isVisible}>
+                <Tooltip
+                    label={alwaysVisible ? alwaysVisibleTooltip : limitReachedTooltip}
+                    disabled={!isDisabled}
+                    position="left"
+                >
+                    <div>
+                        <Checkbox
+                            checked={isVisible}
+                            label={flexRender(column.columnDef.header, {
+                                table,
+                                column,
+                                header: {column} as Header<unknown, unknown>,
+                            })}
+                            disabled={isDisabled}
+                        />
+                    </div>
+                </Tooltip>
+            </Combobox.Option>
+        );
+    });
 
     return (
-        <Grid.Col
-            span="content"
-            order={TableComponentsOrder.ColumnsSelector}
-            {...getStyles('columnSelector', {className, style, ...stylesApiProps})}
-            {...others}
-        >
-            <Popover withinPortal position="bottom" shadow="md">
-                <Popover.Target>
-                    <Button variant={buttonVariant}>
-                        {label}
-                        {showVisibleCountLabel ? ` (${selectedColumnsCount})` : ''}
-                    </Button>
-                </Popover.Target>
-                <Popover.Dropdown miw={240}>
-                    <ScrollArea.Autosize mah={154}>
-                        <Stack {...getStyles('columnSelectorWrapper', stylesApiProps)}>
-                            {filteredColumns.map((column) => {
-                                const alwaysVisible = !column.getCanHide();
-                                const isDisabled =
-                                    (selectedColumnsCount >= maxSelectableColumns && !column.getIsVisible()) ||
-                                    alwaysVisible;
-
-                                return (
-                                    <Tooltip
-                                        label={alwaysVisible ? alwaysVisibleTooltip : limitReachedTooltip}
-                                        disabled={!isDisabled}
-                                        position="left"
-                                        key={column.id}
-                                    >
-                                        <div>
-                                            <Checkbox
-                                                key={column.id}
-                                                label={flexRender(column.columnDef.header, {
-                                                    table,
-                                                    column,
-                                                    header: {column} as Header<unknown, unknown>,
-                                                })}
-                                                name={column.id}
-                                                checked={column.getIsVisible() || alwaysVisible}
-                                                disabled={isDisabled}
-                                                onChange={column.getToggleVisibilityHandler()}
-                                            />
-                                        </div>
-                                    </Tooltip>
-                                );
-                            })}
-                        </Stack>
-                    </ScrollArea.Autosize>
-                    {maxSelectableColumns && (
-                        <>
-                            <Divider mb="xs" mt="sm" />
-                            {footer}
-                        </>
-                    )}
-                </Popover.Dropdown>
-            </Popover>
-        </Grid.Col>
+        <Combobox store={combobox} position="bottom-end" shadow="md" onOptionSubmit={handleOptionClick}>
+            <Combobox.Target>
+                <ActionIcon.Tertiary onClick={() => combobox.toggleDropdown()} aria-label="settings">
+                    <IconSettings height={16} />
+                </ActionIcon.Tertiary>
+            </Combobox.Target>
+            <Combobox.Dropdown miw={270}>
+                <Combobox.Options>{columnOptions}</Combobox.Options>
+                {effectiveMaxColumns && (
+                    <Combobox.Footer>
+                        <Text size="sm" c="dimmed">
+                            {typeof footer === 'function' ? footer(effectiveMaxColumns) : footer}
+                        </Text>
+                    </Combobox.Footer>
+                )}
+            </Combobox.Dropdown>
+        </Combobox>
     );
-});
+};

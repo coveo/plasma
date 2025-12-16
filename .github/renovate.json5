@@ -7,21 +7,21 @@
     packageRules: [
         {
             description: 'Automatically merge minor and patch-level updates',
-            updateTypes: ['minor', 'patch'],
+            matchUpdateTypes: ['minor', 'patch'],
             semanticCommitType: 'chore',
             internalChecksFilter: 'strict',
         },
         {
             groupName: '@tanstack table',
             description: 'Group major updates of @tanstack packages together because they need to be updated at the same time',
-            matchPackagePrefixes: ['@tanstack/'],
-            updateTypes: ['major'],
+            matchUpdateTypes: ['major'],
+            matchPackageNames: ['@tanstack/{/,}**'],
         },
         {
             groupName: 'ui-kit',
             description: 'Group major updates of ui-kit packages together because they need to be updated at the same time',
-            matchPackagePrefixes: ['@coveo/atomic-react', '@coveo/headless'],
-            updateTypes: ['major'],
+            matchUpdateTypes: ['major'],
+            matchPackageNames: ['@coveo/atomic-react{/,}**', '@coveo/headless{/,}**'],
         },
     ],
     lockFileMaintenance: {
