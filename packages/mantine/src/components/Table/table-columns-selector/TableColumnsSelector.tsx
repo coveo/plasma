@@ -1,5 +1,5 @@
 import {IconSettings} from '@coveord/plasma-react-icons';
-import {Checkbox, Combobox, Text, Tooltip, useCombobox} from '@mantine/core';
+import {Checkbox, Combobox, ScrollArea, Text, Tooltip, useCombobox} from '@mantine/core';
 import {flexRender, Header, Table} from '@tanstack/react-table';
 import {ActionIcon} from '../../ActionIcon/ActionIcon';
 
@@ -121,7 +121,11 @@ export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelecto
                 </ActionIcon.Tertiary>
             </Combobox.Target>
             <Combobox.Dropdown miw={270}>
-                <Combobox.Options>{columnOptions}</Combobox.Options>
+                <Combobox.Options>
+                    <ScrollArea.Autosize mah={200} type="always">
+                        {columnOptions}
+                    </ScrollArea.Autosize>
+                </Combobox.Options>
                 {effectiveMaxColumns && (
                     <Combobox.Footer>
                         <Text size="sm" c="dimmed">
