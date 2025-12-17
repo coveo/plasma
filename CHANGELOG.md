@@ -1,3 +1,10 @@
+## 56.11.0 (2025-12-17)
+
+* feat(Table): improve table columns selector (#4249) 6d8463c, closes #4249
+* chore(step-security): apply security best practices (#4248) ec1a330, closes #4248
+
+
+
 ## 56.10.0 (2025-12-16)
 
 * refactor(storybook): simplify stories folder architecture (#4246) bf2d318, closes #4246
