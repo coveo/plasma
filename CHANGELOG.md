@@ -1,3 +1,24 @@
+## 56.11.0 (2025-12-17)
+
+* feat(Table): improve table columns selector (#4249) 6d8463c, closes #4249
+* chore(step-security): apply security best practices (#4248) ec1a330, closes #4248
+
+
+
+## 56.10.0 (2025-12-16)
+
+* refactor(storybook): simplify stories folder architecture (#4246) bf2d318, closes #4246
+* feat: add StatusToken component (#4235) 394185e, closes #4235
+* feat: component InfoToken connection and storybook (#4244) 97f18f1, closes #4244
+
+
+
+## 56.9.0 (2025-12-16)
+
+* feat(mantine): table with editable columns button in the header (#4230) 129acdd, closes #4230
+
+
+
 ## <small>56.8.1 (2025-12-15)</small>
 
 * Ad UI 11177 move radio card in plasma (#4229) 353dd34, closes #4229

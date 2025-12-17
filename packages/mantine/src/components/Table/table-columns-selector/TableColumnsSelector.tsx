@@ -1,5 +1,6 @@
 import {IconSettings} from '@coveord/plasma-react-icons';
-import {Checkbox, Combobox, Text, Tooltip, useCombobox} from '@mantine/core';
+import {Checkbox, Divider, Popover, ScrollArea, Stack, Text, Tooltip} from '@mantine/core';
+import {useDisclosure} from '@mantine/hooks';
 import {flexRender, Header, Table} from '@tanstack/react-table';
 import {ActionIcon} from '../../ActionIcon/ActionIcon';
 
@@ -47,12 +48,7 @@ export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelecto
         ...options,
     };
 
-    const combobox = useCombobox({
-        onDropdownClose: () => {
-            combobox.resetSelectedOption();
-        },
-        onDropdownOpen: () => combobox.updateSelectedOptionIndex('active'),
-    });
+    const [opened, {toggle, close}] = useDisclosure(false);
 
     const allColumns = table.getAllLeafColumns();
     const filteredColumns = allColumns.filter((column) => !column.columnDef.meta?.controlColumn);
@@ -77,59 +73,53 @@ export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelecto
         return {alwaysVisible, isDisabled, isVisible};
     };
 
-    const handleOptionClick = (columnId: string) => {
-        const column = filteredColumns.find((col) => col.id === columnId);
-        if (column) {
-            const {isDisabled} = getColumnState(column);
-            if (!isDisabled) {
-                column.toggleVisibility();
-            }
-        }
-    };
-
     const columnOptions = filteredColumns.map((column) => {
         const {alwaysVisible, isDisabled, isVisible} = getColumnState(column);
 
         return (
-            <Combobox.Option value={column.id} key={column.id} disabled={isDisabled} active={isVisible}>
-                <Tooltip
-                    label={alwaysVisible ? alwaysVisibleTooltip : limitReachedTooltip}
-                    disabled={!isDisabled}
-                    position="left"
-                >
-                    <div>
-                        <Checkbox
-                            checked={isVisible}
-                            label={flexRender(column.columnDef.header, {
-                                table,
-                                column,
-                                header: {column} as Header<unknown, unknown>,
-                            })}
-                            disabled={isDisabled}
-                        />
-                    </div>
-                </Tooltip>
-            </Combobox.Option>
+            <Tooltip
+                label={alwaysVisible ? alwaysVisibleTooltip : limitReachedTooltip}
+                disabled={!isDisabled}
+                position="left"
+                key={column.id}
+            >
+                <div>
+                    <Checkbox
+                        label={flexRender(column.columnDef.header, {
+                            table,
+                            column,
+                            header: {column} as Header<unknown, unknown>,
+                        })}
+                        name={column.id}
+                        checked={isVisible}
+                        disabled={isDisabled}
+                        onChange={column.getToggleVisibilityHandler()}
+                    />
+                </div>
+            </Tooltip>
         );
     });
 
     return (
-        <Combobox store={combobox} position="bottom-end" shadow="md" onOptionSubmit={handleOptionClick}>
-            <Combobox.Target>
-                <ActionIcon.Tertiary onClick={() => combobox.toggleDropdown()} aria-label="settings">
+        <Popover opened={opened} onClose={close} position="bottom-end" shadow="md">
+            <Popover.Target>
+                <ActionIcon.Tertiary onClick={toggle} aria-label="settings">
                     <IconSettings height={16} />
                 </ActionIcon.Tertiary>
-            </Combobox.Target>
-            <Combobox.Dropdown miw={270}>
-                <Combobox.Options>{columnOptions}</Combobox.Options>
+            </Popover.Target>
+            <Popover.Dropdown miw={270} pb="xs">
+                <ScrollArea.Autosize mah={200} type="auto">
+                    <Stack gap="xs">{columnOptions}</Stack>
+                </ScrollArea.Autosize>
                 {effectiveMaxColumns && (
-                    <Combobox.Footer>
+                    <>
+                        <Divider my="xs" mx="-sm" />
                         <Text size="sm" c="dimmed">
                             {typeof footer === 'function' ? footer(effectiveMaxColumns) : footer}
                         </Text>
-                    </Combobox.Footer>
+                    </>
                 )}
-            </Combobox.Dropdown>
-        </Combobox>
+            </Popover.Dropdown>
+        </Popover>
     );
 };

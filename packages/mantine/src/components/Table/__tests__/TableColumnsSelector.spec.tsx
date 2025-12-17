@@ -21,7 +21,7 @@ const getBaseColumns = (): Array<ColumnDef<RowData>> => [
     TableActionsColumn as ColumnDef<RowData>,
 ];
 
-describe('TableColumnsSelectorHeader', () => {
+describe('TableColumnsSelector', () => {
     it('renders the column selector button in the actions column header when rowConfigurable is true', () => {
         const Fixture = () => {
             const store = useTable<RowData>();
@@ -269,7 +269,8 @@ describe('TableColumnsSelectorHeader', () => {
 
             await user.click(screen.getByRole('button', {name: 'settings'}));
 
-            expect(await screen.findByText('You can display up to 5 columns.')).toBeVisible();
+            await screen.findByRole('checkbox', {name: 'Name'});
+            expect(screen.getByText('You can display up to 5 columns.')).toBeInTheDocument();
         });
 
         it('does not render a footer when maxSelectableColumns is not set', async () => {
