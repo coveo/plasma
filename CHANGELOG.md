@@ -1,3 +1,12 @@
+## 56.12.0 (2025-12-17)
+
+* feat: component Card connection and storybook (#4243) abd3ceb, closes #4243
+* feat: component SegmentedControl connection and storybook (#4247) 2e5b7d9, closes #4247
+* feat: component Tooltip connection and storybook (#4245) 99ae2e3, closes #4245
+* feat(storybook): add story for Tabs (#4250) f2098d6, closes #4250
+
+
+
 ## 56.11.0 (2025-12-17)
 
 * feat(Table): improve table columns selector (#4249) 6d8463c, closes #4249
