@@ -1,6 +1,6 @@
 import {Tabs} from '@coveord/plasma-mantine/components/Tabs';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {forwardRef, ReactNode} from 'react';
+import {ReactNode} from 'react';
 
 const meta: Meta<typeof Tabs> = {
     title: '@components/layout/Tabs',
@@ -24,9 +24,8 @@ const meta: Meta<typeof Tabs> = {
 export default meta;
 type Story = StoryObj<typeof Tabs>;
 
-const ExampleContainer = forwardRef<HTMLDivElement, {children: ReactNode}>((props, ref) => (
+const ExampleContainer = (props: {children: ReactNode}) => (
     <div
-        ref={ref}
         style={{
             width: 324,
             height: 200,
@@ -38,7 +37,7 @@ const ExampleContainer = forwardRef<HTMLDivElement, {children: ReactNode}>((prop
     >
         {props.children}
     </div>
-));
+);
 ExampleContainer.displayName = 'ExampleContainer';
 
 export const Demo: Story = {
