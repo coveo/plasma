@@ -12,6 +12,10 @@ interface IEmployeeData {
     isFullTime: boolean;
     email: string;
     body: string;
+    phone: string;
+    address: string;
+    city: string;
+    country: string;
 }
 
 const columnHelper = createColumnHelper<IEmployeeData>();
@@ -50,6 +54,23 @@ const columns: Array<ColumnDef<IEmployeeData>> = [
         header: 'Hire Date',
         cell: (info) => info.row.original.hireDate?.toDateString(),
     }),
+    columnHelper.accessor('phone', {
+        header: 'Phone',
+        cell: (info) => info.row.original.phone,
+    }),
+    columnHelper.accessor('address', {
+        header: 'Address',
+        cell: (info) => info.row.original.address,
+    }),
+    columnHelper.accessor('city', {
+        header: 'City',
+        cell: (info) => info.row.original.city,
+    }),
+    columnHelper.accessor('country', {
+        header: 'Country',
+        cell: (info) => info.row.original.country,
+    }),
+
     TableActionsColumn as ColumnDef<IEmployeeData>,
 ];
 
@@ -58,7 +79,16 @@ const Demo = () => {
 
     const table = useTable<IEmployeeData>({
         initialState: {
-            columnVisibility: {hireDate: false, salary: false, email: false, isFullTime: false},
+            columnVisibility: {
+                hireDate: false,
+                salary: false,
+                email: false,
+                isFullTime: false,
+                phone: false,
+                address: false,
+                city: false,
+                country: false,
+            },
         },
     });
 
@@ -95,4 +125,8 @@ const makeData = (length: number): IEmployeeData[] =>
             isFullTime: faker.datatype.boolean(),
             email: faker.internet.email(),
             body: faker.lorem.paragraph(),
+            phone: faker.phone.number(),
+            address: faker.location.streetAddress(),
+            city: faker.location.city(),
+            country: faker.location.country(),
         }));
