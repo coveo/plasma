@@ -100,9 +100,11 @@ export const TableColumnsSelector = ({table, options}: TableColumnsSelectorHeade
     return (
         <Popover position="bottom-end" shadow="md">
             <Popover.Target>
-                <ActionIcon.Tertiary aria-label="settings">
-                    <IconSettings height={16} />
-                </ActionIcon.Tertiary>
+                <Tooltip label="Edit columns">
+                    <ActionIcon.Tertiary aria-label="settings">
+                        <IconSettings height={16} />
+                    </ActionIcon.Tertiary>
+                </Tooltip>
             </Popover.Target>
             <Popover.Dropdown miw={270} pb="xs">
                 <ScrollArea.Autosize mah={200} type="auto">
