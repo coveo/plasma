@@ -1,3 +1,10 @@
+## 56.13.0 (2025-12-18)
+
+* feat: component Skeleton connection and storybook (#4256) 0fab1b5, closes #4256
+* feat(TableColumnsSelector): add tooltip and close on blur (#4253) 115a2c4, closes #4253
+
+
+
 ## 56.12.0 (2025-12-17)
 
 * feat: component Card connection and storybook (#4243) abd3ceb, closes #4243
