@@ -5,7 +5,8 @@ import {useHeaderContext} from '../Header.context.js';
 export type HeaderRightStyleNames = 'right';
 
 export interface HeaderRightProps
-    extends Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'children'>,
+    extends
+        Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'children'>,
         CompoundStylesApiProps<HeaderRightFactory> {
     children: ReactNode;
 }

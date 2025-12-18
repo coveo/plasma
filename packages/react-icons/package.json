@@ -3,8 +3,8 @@
     "version": "56.8.1",
     "description": "Plasma iconography exposed as react components",
     "keywords": [
-        "plasma",
         "icons",
+        "plasma",
         "react"
     ],
     "homepage": "https://github.com/coveo/plasma/packages/react-icons#readme",
@@ -21,16 +21,16 @@
     "sideEffects": false,
     "exports": {
         ".": {
-            "require": "./dist/cjs/index.js",
-            "import": "./dist/esm/index.js"
+            "import": "./dist/esm/index.js",
+            "require": "./dist/cjs/index.js"
         },
         "./mock": {
-            "require": "./dist/cjs/mock/index.js",
-            "import": "./dist/esm/mock/index.js"
+            "import": "./dist/esm/mock/index.js",
+            "require": "./dist/cjs/mock/index.js"
         },
         "./testing-library": {
-            "require": "./dist/cjs/testing-library/index.js",
-            "import": "./dist/esm/testing-library/index.js"
+            "import": "./dist/esm/testing-library/index.js",
+            "require": "./dist/cjs/testing-library/index.js"
         },
         "./vite-plugin": {
             "import": "./dist/esm/vite-plugin/index.js"

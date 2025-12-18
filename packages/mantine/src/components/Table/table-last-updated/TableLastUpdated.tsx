@@ -7,9 +7,7 @@ import {useTableContext} from '../TableContext.js';
 export type TableLastUpdatedStylesNames = 'lastUpdatedRoot' | 'lastUpdatedLabel';
 
 export interface TableLastUpdatedProps
-    extends BoxProps,
-        CompoundStylesApiProps<TableLastUpdatedFactory>,
-        Pick<LastUpdatedProps, 'label'> {}
+    extends BoxProps, CompoundStylesApiProps<TableLastUpdatedFactory>, Pick<LastUpdatedProps, 'label'> {}
 
 export type TableLastUpdatedFactory = Factory<{
     props: TableLastUpdatedProps;

@@ -25,7 +25,11 @@ figma.connect(
             // })
         },
         example: (props) => (
-            <DateRangePickerInlineCalendar initialRange={/* TODO */} onApply={/* TODO */} onCancel={/* TODO */} />
+            <DateRangePickerInlineCalendar
+                initialRange={[null, null]}
+                onApply={() => undefined}
+                onCancel={() => undefined}
+            />
         ),
     },
 );

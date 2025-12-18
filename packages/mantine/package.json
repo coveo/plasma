@@ -3,10 +3,10 @@
     "version": "56.12.0",
     "description": "A Plasma flavoured Mantine theme",
     "keywords": [
-        "plasma",
-        "mantine",
         "components",
-        "coveo"
+        "coveo",
+        "mantine",
+        "plasma"
     ],
     "bugs": {
         "url": "https://github.com/coveo/plasma/issues"
@@ -20,48 +20,48 @@
     "author": "Coveo",
     "exports": {
         ".": {
-            "require": "./dist/cjs/index.js",
-            "import": "./dist/esm/index.js"
-        },
-        "./plasmantine": {
-            "types": "./dist/esm/theme.d.ts",
-            "require": "./dist/cjs/theme.js",
-            "import": "./dist/esm/theme.js"
-        },
-        "./core": {
-            "types": "./dist/esm/core.d.ts",
-            "require": "./dist/cjs/core.js",
-            "import": "./dist/esm/core.js"
-        },
-        "./hooks": {
-            "types": "./dist/esm/hooks.d.ts",
-            "require": "./dist/cjs/hooks.js",
-            "import": "./dist/esm/hooks.js"
-        },
-        "./form": {
-            "types": "./dist/esm/form.d.ts",
-            "require": "./dist/cjs/form.js",
-            "import": "./dist/esm/form.js"
-        },
-        "./notifications": {
-            "types": "./dist/esm/notifications.d.ts",
-            "require": "./dist/cjs/notifications.js",
-            "import": "./dist/esm/notifications.js"
+            "import": "./dist/esm/index.js",
+            "require": "./dist/cjs/index.js"
         },
         "./components/*": {
             "types": "./dist/esm/components/*/*.d.ts",
-            "require": "./dist/cjs/components/*/*.js",
-            "import": "./dist/esm/components/*/*.js"
-        },
-        "./factory": {
-            "types": "./dist/esm/factory.d.ts",
-            "require": "./dist/cjs/factory.js",
-            "import": "./dist/esm/factory.js"
+            "import": "./dist/esm/components/*/*.js",
+            "require": "./dist/cjs/components/*/*.js"
         },
         "./context": {
             "types": "./dist/esm/context.d.ts",
-            "require": "./dist/cjs/context.js",
-            "import": "./dist/esm/context.js"
+            "import": "./dist/esm/context.js",
+            "require": "./dist/cjs/context.js"
+        },
+        "./core": {
+            "types": "./dist/esm/core.d.ts",
+            "import": "./dist/esm/core.js",
+            "require": "./dist/cjs/core.js"
+        },
+        "./factory": {
+            "types": "./dist/esm/factory.d.ts",
+            "import": "./dist/esm/factory.js",
+            "require": "./dist/cjs/factory.js"
+        },
+        "./form": {
+            "types": "./dist/esm/form.d.ts",
+            "import": "./dist/esm/form.js",
+            "require": "./dist/cjs/form.js"
+        },
+        "./hooks": {
+            "types": "./dist/esm/hooks.d.ts",
+            "import": "./dist/esm/hooks.js",
+            "require": "./dist/cjs/hooks.js"
+        },
+        "./notifications": {
+            "types": "./dist/esm/notifications.d.ts",
+            "import": "./dist/esm/notifications.js",
+            "require": "./dist/cjs/notifications.js"
+        },
+        "./plasmantine": {
+            "types": "./dist/esm/theme.d.ts",
+            "import": "./dist/esm/theme.js",
+            "require": "./dist/cjs/theme.js"
         }
     },
     "main": "./dist/cjs/index.js",

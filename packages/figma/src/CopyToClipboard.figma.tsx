@@ -22,6 +22,6 @@ figma.connect(
                 Default: 'default',
             }),
         },
-        example: (props) => <CopyToClipboard value={/* TODO */} disabled={props.disabled} variant={props.variant} />,
+        example: (props) => <CopyToClipboard value="" disabled={props.disabled} variant={props.variant} />,
     },
 );

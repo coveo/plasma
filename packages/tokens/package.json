@@ -11,21 +11,21 @@
     "license": "Apache-2.0",
     "exports": {
         ".": {
-            "require": "./dist/cjs/index.js",
-            "import": "./dist/esm/index.js"
+            "import": "./dist/esm/index.js",
+            "require": "./dist/cjs/index.js"
         },
-        "./scss": "./scss/index.scss",
-        "./scss/*": "./scss/*",
         "./css/*": "./css/*",
-        "./icons/*": "./icons/*"
+        "./icons/*": "./icons/*",
+        "./scss": "./scss/index.scss",
+        "./scss/*": "./scss/*"
     },
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
     "files": [
+        "css",
         "dist",
         "icons",
-        "scss",
-        "css"
+        "scss"
     ],
     "scripts": {
         "build": "rimraf dist && node ../../scripts/build",

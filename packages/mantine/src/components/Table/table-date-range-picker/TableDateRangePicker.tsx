@@ -8,7 +8,8 @@ import {useTableContext} from '../TableContext.js';
 export type TableDateRangePickerStylesNames = 'dateRangeRoot';
 
 export interface TableDateRangePickerProps
-    extends BoxProps,
+    extends
+        BoxProps,
         CompoundStylesApiProps<TableDateRangePickerFactory>,
         Pick<DateRangePickerProps, 'placeholder' | 'startProps' | 'endProps' | 'rangeCalendarProps'> {
     /**

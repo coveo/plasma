@@ -29,8 +29,7 @@ export type PromptStylesNames =
     | PromptConfirmButtonStylesNamesVariant;
 
 export interface PromptProps
-    extends StylesApiProps<PromptFactory>,
-        Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes'> {
+    extends StylesApiProps<PromptFactory>, Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes'> {
     /**
      * Controls prompt appearance
      *

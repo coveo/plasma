@@ -13,9 +13,7 @@ import {useRowLayout} from './RowLayoutContext.js';
 export type RowLayoutBodyStylesNames = 'row' | 'cell' | 'collapsibleRow' | 'collapsibleWrapper';
 
 export interface RowLayoutBodyProps<T>
-    extends BoxProps,
-        TableLayoutProps<T>,
-        CompoundStylesApiProps<RowLayoutBodyFactory> {}
+    extends BoxProps, TableLayoutProps<T>, CompoundStylesApiProps<RowLayoutBodyFactory> {}
 
 export type RowLayoutBodyFactory = Factory<{
     props: RowLayoutBodyProps<unknown>;

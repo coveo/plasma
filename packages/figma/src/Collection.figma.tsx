@@ -14,6 +14,6 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=176%3A38103',
     {
         props: {},
-        example: (props) => <Collection newItem={/* TODO */} />,
+        example: (props) => <Collection newItem={{}}>{() => null}</Collection>,
     },
 );
