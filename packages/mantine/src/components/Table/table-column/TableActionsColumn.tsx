@@ -21,7 +21,6 @@ export interface TableActionsColumnMeta {
      */
     rowConfigurable?: boolean | TableColumnsSelectorOptions;
 }
-TableColumnsSelector;
 
 /**
  * Generic column to use when your table needs actions on rows
