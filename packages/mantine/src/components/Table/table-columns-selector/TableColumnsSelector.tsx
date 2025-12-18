@@ -28,7 +28,7 @@ export interface TableColumnsSelectorOptions {
     alwaysVisibleTooltip?: string;
 }
 
-export interface TableColumnsSelectorHeaderProps {
+export interface TableColumnsSelectorProps {
     table: Table<unknown>;
     options?: TableColumnsSelectorOptions;
 }
@@ -41,7 +41,7 @@ const DEFAULT_OPTIONS: Omit<TableColumnsSelectorOptions, 'footer'> & {
     alwaysVisibleTooltip: 'This column is always visible.',
 };
 
-export const TableColumnsSelector = ({table, options}: TableColumnsSelectorHeaderProps) => {
+export const TableColumnsSelector = ({table, options}: TableColumnsSelectorProps) => {
     const {maxSelectableColumns, footer, limitReachedTooltip, alwaysVisibleTooltip} = {
         ...DEFAULT_OPTIONS,
         ...options,
