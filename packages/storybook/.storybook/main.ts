@@ -10,7 +10,11 @@ const config: StorybookConfig = {
         name: getAbsolutePath('@storybook/react-vite'),
         options: {},
     },
-    addons: ['@storybook/addon-docs'],
+    addons: [getAbsolutePath('@storybook/addon-docs')],
+    features: {
+        interactions: false,
+        actions: false,
+    },
 };
 
 export default config;

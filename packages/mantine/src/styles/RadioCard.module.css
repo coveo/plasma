@@ -5,7 +5,51 @@
 }
 
 .card {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--mantine-spacing-sm);
+    border-radius: var(--mantine-radius-lg);
+
+    &[data-checked] {
+        border-color: var(--mantine-primary-color-filled);
+    }
+
     &[disabled] {
         pointer-events: none;
+
+        .title {
+            color: var(--mantine-color-disabled-color);
+        }
+
+        .description {
+            color: var(--mantine-color-disabled-color);
+        }
     }
+}
+
+.container {
+    flex-wrap: nowrap;
+    gap: var(--mantine-spacing-sm);
+    align-items: baseline;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: var(--mantine-spacing-xs);
+}
+
+.title {
+    flex: 1;
+    color: var(--coveo-color-title);
+    word-break: break-word;
+}
+
+.description {
+    padding-left: var(--mantine-spacing-lg);
+    color: var(--mantine-color-dimmed);
+    font-weight: 400;
+    font-size: var(--mantine-font-size-xs);
+}
+
+.indicator {
+    cursor: pointer;
 }
