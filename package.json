@@ -27,11 +27,11 @@
             "sort-package-json"
         ],
         "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
-            "prettier --write"
+            "oxfmt --no-error-on-unmatched-pattern"
         ],
         "**/*.{scss,css}": [
             "stylelint --fix",
-            "prettier --write"
+            "oxfmt --no-error-on-unmatched-pattern"
         ]
     },
     "config": {
@@ -69,8 +69,8 @@
         "globals": "16.5.0",
         "husky": "9.1.7",
         "lint-staged": "16.2.7",
+        "oxfmt": "0.15.0",
         "postcss": "8.5.6",
-        "prettier": "3.7.4",
         "sort-package-json": "3.5.1",
         "stylelint": "16.26.1",
         "stylelint-config-standard-scss": "16.0.0",

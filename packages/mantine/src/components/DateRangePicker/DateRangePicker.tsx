@@ -34,7 +34,8 @@ const DATE_RANGE_SERIALIZATION = serialization({
 export type DateRangePickerStylesNames = 'input';
 
 export interface DateRangePickerProps
-    extends BoxProps,
+    extends
+        BoxProps,
         Pick<DateRangePickerInlineCalendarProps, 'presets' | 'rangeCalendarProps' | 'startProps' | 'endProps'>,
         Pick<PopoverProps, 'opened' | 'defaultOpened'>,
         StylesApiProps<DateRangePickerFactory> {

@@ -22,6 +22,6 @@ figma.connect(
             // No matching props could be found for these Figma properties:
             // "swapPlaceholder": figma.instance('Swap placeholder')
         },
-        example: (props) => <Modal opened={/* TODO */} onClose={/* TODO */} size={props.size} />,
+        example: (props) => <Modal opened={true} onClose={() => undefined} size={props.size} />,
     },
 );
