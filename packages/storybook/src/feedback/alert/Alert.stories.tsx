@@ -1,5 +1,5 @@
-import type {StoryObj, Meta} from '@storybook/react-vite';
 import {Alert} from '@coveord/plasma-mantine/components/Alert';
+import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Alert> = {
     title: '@components/feedback/Alert',
@@ -7,7 +7,6 @@ const meta: Meta<typeof Alert> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
 };
 export default meta;
 type Story = StoryObj<typeof Alert>;
