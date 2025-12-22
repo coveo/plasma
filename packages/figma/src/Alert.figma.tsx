@@ -1,4 +1,4 @@
-import {Alert, Anchor, Text} from '@coveord/plasma-mantine';
+import {Alert, Text} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 figma.connect(
@@ -12,18 +12,14 @@ figma.connect(
             title: figma.boolean('Show Title', {
                 true: figma.textContent('Title'),
             }),
-            link: figma.boolean('Show Link', {
-                true: (
-                    <Anchor href="https://coveord.com" target="_blank">
-                        Link
-                    </Anchor>
-                ),
+            contentSwap: figma.boolean('Show ContentSwap', {
+                true: figma.instance('Instance'),
             }),
         },
-        example: ({withCloseButton, title, link, message}) => (
+        example: ({withCloseButton, title, contentSwap, message}) => (
             <Alert.Information withCloseButton={withCloseButton} title={title}>
                 <Text>{message}</Text>
-                {link}
+                {contentSwap}
             </Alert.Information>
         ),
     },
@@ -40,18 +36,14 @@ figma.connect(
             title: figma.boolean('Show Title', {
                 true: figma.textContent('Title'),
             }),
-            link: figma.boolean('Show Link', {
-                true: (
-                    <Anchor href="https://coveord.com" target="_blank">
-                        Link
-                    </Anchor>
-                ),
+            contentSwap: figma.boolean('Show ContentSwap', {
+                true: figma.instance('Instance'),
             }),
         },
-        example: ({withCloseButton, title, link, message}) => (
+        example: ({withCloseButton, title, contentSwap, message}) => (
             <Alert.Advice withCloseButton={withCloseButton} title={title}>
                 <Text>{message}</Text>
-                {link}
+                {contentSwap}
             </Alert.Advice>
         ),
     },
@@ -68,18 +60,14 @@ figma.connect(
             title: figma.boolean('Show Title', {
                 true: figma.textContent('Title'),
             }),
-            link: figma.boolean('Show Link', {
-                true: (
-                    <Anchor href="https://coveord.com" target="_blank">
-                        Link
-                    </Anchor>
-                ),
+            contentSwap: figma.boolean('Show ContentSwap', {
+                true: figma.instance('Instance'),
             }),
         },
-        example: ({withCloseButton, title, link, message}) => (
+        example: ({withCloseButton, title, contentSwap, message}) => (
             <Alert.Warning withCloseButton={withCloseButton} title={title}>
                 <Text>{message}</Text>
-                {link}
+                {contentSwap}
             </Alert.Warning>
         ),
     },
@@ -96,18 +84,14 @@ figma.connect(
             title: figma.boolean('Show Title', {
                 true: figma.textContent('Title'),
             }),
-            link: figma.boolean('Show Link', {
-                true: (
-                    <Anchor href="https://coveord.com" target="_blank">
-                        Link
-                    </Anchor>
-                ),
+            contentSwap: figma.boolean('Show ContentSwap', {
+                true: figma.instance('Instance'),
             }),
         },
-        example: ({withCloseButton, title, link, message}) => (
+        example: ({withCloseButton, title, contentSwap, message}) => (
             <Alert.Critical withCloseButton={withCloseButton} title={title}>
                 <Text>{message}</Text>
-                {link}
+                {contentSwap}
             </Alert.Critical>
         ),
     },
