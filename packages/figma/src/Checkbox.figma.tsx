@@ -1,4 +1,4 @@
-import {Checkbox} from '@coveord/plasma-mantine';
+import {Checkbox, Group, Stack} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 figma.connect(Checkbox, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50069', {
@@ -39,3 +39,83 @@ figma.connect(Checkbox, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Pla
         />
     ),
 });
+
+figma.connect(
+    Checkbox.Group,
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2246-3811',
+    {
+        variant: {Align: 'Horizontal'},
+        example: () => (
+            <Group>
+                <Checkbox label="Label" />
+                <Checkbox label="Label" />
+                <Checkbox label="Label" />
+                <Checkbox label="Label" />
+            </Group>
+        ),
+    },
+);
+
+figma.connect(
+    Checkbox.Group,
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2246-3811',
+    {
+        variant: {Align: 'Vertical'},
+        example: () => (
+            <Stack>
+                <Checkbox label="Label" />
+                <Checkbox label="Label" />
+                <Checkbox label="Label" />
+                <Checkbox label="Label" />
+            </Stack>
+        ),
+    },
+);
+
+figma.connect(
+    Checkbox.Group,
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2557-11354',
+    {
+        props: {
+            inputWrapperProps: figma.nestedProps('Input.Wrapper', {
+                descriptionProps: figma.boolean('Description', {
+                    true: figma.nestedProps('Input.Description', {
+                        description: figma.string('Description'),
+                    }),
+                    false: {description: undefined},
+                }),
+                errorProps: figma.boolean('Error', {
+                    true: figma.nestedProps('Input.Error', {
+                        error: figma.string('Error'),
+                    }),
+                    false: {error: undefined},
+                }),
+                groupChildren: figma.children('Checkbox.Group'),
+            }),
+            labelProps: figma.nestedProps('Input.Label', {
+                required: figma.boolean('Asterisk'),
+                label: figma.string('Label'),
+            }),
+            checkboxGroupProps: figma.nestedProps('Checkbox.Group', {
+                disabled: figma.enum('State', {
+                    Disabled: true,
+                }),
+                readOnly: figma.enum('State', {
+                    'Read-only': true,
+                }),
+            }),
+        },
+        example: ({labelProps, inputWrapperProps, checkboxGroupProps}) => (
+            <Checkbox.Group
+                label={labelProps.label}
+                description={inputWrapperProps.descriptionProps.description}
+                required={labelProps.required}
+                error={inputWrapperProps.errorProps.error}
+                disabled={checkboxGroupProps.disabled}
+                readOnly={checkboxGroupProps.readOnly}
+            >
+                {inputWrapperProps.groupChildren}
+            </Checkbox.Group>
+        ),
+    },
+);
