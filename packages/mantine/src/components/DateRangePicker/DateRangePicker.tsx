@@ -34,7 +34,8 @@ const DATE_RANGE_SERIALIZATION = serialization({
 export type DateRangePickerStylesNames = 'input';
 
 export interface DateRangePickerProps
-    extends BoxProps,
+    extends
+        BoxProps,
         Pick<DateRangePickerInlineCalendarProps, 'presets' | 'rangeCalendarProps' | 'startProps' | 'endProps'>,
         Pick<PopoverProps, 'opened' | 'defaultOpened'>,
         StylesApiProps<DateRangePickerFactory> {
@@ -86,7 +87,7 @@ export interface DateRangePickerProps
 
 export type DateRangePickerFactory = Factory<{
     props: DateRangePickerProps;
-    ref: HTMLDivElement;
+    ref: HTMLButtonElement;
     stylesNames: DateRangePickerStylesNames;
 }>;
 
@@ -95,7 +96,7 @@ const defaultProps: Partial<DateRangePickerProps> = {
     formatter: (time) => dayjs(time).format('MMM D, YYYY'),
 };
 
-export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRangePickerProps) => {
+export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRangePickerProps, ref) => {
     const {
         defaultValue,
         value,
@@ -174,6 +175,7 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
         <Popover opened={_opened} onChange={setOpened}>
             <Popover.Target>
                 <InputBase
+                    ref={ref}
                     component="button"
                     leftSection={<IconCalendar height={16} />}
                     onClick={handleClick}
