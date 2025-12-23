@@ -1,117 +1,62 @@
-import {Box} from '@mantine/core';
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, waitFor, within} from '@test-utils';
+import {render, screen, userEvent, waitFor} from '@test-utils';
+
 import {Table} from '../Table.js';
-import {TableColumnsSelector} from '../table-columns-selector/TableColumnsSelector.js';
+import {TableActionsColumn} from '../table-column/TableActionsColumn.js';
 import {useTable} from '../use-table.js';
 
-const mockData = [
-    {
-        name: 'John Doe',
-        age: 30,
-        email: 'john.doe@example.com',
-        phone: '123-456-7890',
-        body: 'coucou',
-    },
-    {
-        name: 'Jane Doe',
-        age: 25,
-        email: 'jane.doe@example.com',
-        phone: '098-765-4321',
-        body: 'coucou 2',
-    },
+type RowData = {name: string; age: number; email: string; phone: string};
+const columnHelper = createColumnHelper<RowData>();
+
+const mockData: RowData[] = [
+    {name: 'John', age: 30, email: 'john@test.com', phone: '123-456'},
+    {name: 'Jane', age: 25, email: 'jane@test.com', phone: '789-012'},
 ];
 
-type RowData = {
-    name: string;
-    age: number;
-    email: string;
-    phone: string;
-    body: string;
-};
-
-const columnHelper = createColumnHelper<RowData>();
-const baseColumns: Array<ColumnDef<RowData>> = [
+const getBaseColumns = (): Array<ColumnDef<RowData>> => [
     columnHelper.accessor('name', {header: 'Name', enableSorting: false}),
     columnHelper.accessor('age', {header: 'Age', enableSorting: false}),
     columnHelper.accessor('email', {header: 'Email', enableSorting: false}),
     columnHelper.accessor('phone', {header: 'Phone', enableSorting: false}),
-    Table.CollapsibleColumn as ColumnDef<RowData>,
+    TableActionsColumn as ColumnDef<RowData>,
 ];
 
 describe('TableColumnsSelector', () => {
-    it('render the edit button in the table header', () => {
+    it('renders the column selector button in the actions column header when rowConfigurable is true', () => {
         const Fixture = () => {
             const store = useTable<RowData>();
-            return (
-                <Table store={store} data={mockData} columns={baseColumns}>
-                    <Table.Header>
-                        <TableColumnsSelector />
-                    </Table.Header>
-                </Table>
-            );
-        };
-        render(<Fixture />);
-
-        expect(screen.getByRole('button', {name: 'Edit columns'})).toBeVisible();
-        expect(screen.queryByRole('button', {name: 'Edit columns (4)'})).not.toBeInTheDocument();
-    });
-
-    it('renders the custom label when defined', () => {
-        const Fixture = () => {
-            const store = useTable<RowData>();
-            return (
-                <Table store={store} data={mockData} columns={baseColumns}>
-                    <Table.Header>
-                        <TableColumnsSelector label="Custom label" />
-                    </Table.Header>
-                </Table>
-            );
-        };
-        render(<Fixture />);
-
-        expect(screen.getByRole('button', {name: 'Custom label'})).toBeVisible();
-    });
-
-    it('renders the count of visible columns if showVisibleCountLabel is true', () => {
-        const Fixture = () => {
-            const store = useTable<RowData>();
-            return (
-                <Table store={store} data={mockData} columns={baseColumns}>
-                    <Table.Header>
-                        <TableColumnsSelector showVisibleCountLabel />
-                    </Table.Header>
-                </Table>
-            );
-        };
-        render(<Fixture />);
-
-        expect(screen.getByRole('button', {name: 'Edit columns (4)'})).toBeVisible();
-    });
-
-    it('renders all columns in the dropdown, except the collapsible and the multiselectRow by default', async () => {
-        const user = userEvent.setup();
-        const Fixture = () => {
-            const store = useTable<RowData>({enableMultiRowSelection: true});
             return (
                 <Table
                     store={store}
                     data={mockData}
-                    columns={baseColumns}
-                    getRowExpandedContent={(datum) => <Box py="xs">{datum.body}</Box>}
-                >
-                    <Table.Header>
-                        <TableColumnsSelector />
-                    </Table.Header>
-                </Table>
+                    columns={getBaseColumns()}
+                    options={{meta: {rowConfigurable: true}}}
+                />
             );
         };
         render(<Fixture />);
 
-        await user.click(screen.getByRole('button', {name: 'Edit columns'}));
-        const dropdown = await screen.findByRole('dialog', {name: 'Edit columns'});
-        const columnsCheckboxes = within(dropdown).getAllByRole('checkbox');
+        expect(screen.getByRole('button', {name: 'settings'})).toBeVisible();
+    });
 
+    it('renders all columns in the dropdown except control columns', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={getBaseColumns()}
+                    options={{meta: {rowConfigurable: true}}}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        await user.click(screen.getByRole('button', {name: 'settings'}));
+
+        const columnsCheckboxes = await screen.findAllByRole('checkbox');
         expect(columnsCheckboxes).toHaveLength(4);
         expect(columnsCheckboxes[0]).toHaveAccessibleName('Name');
         expect(columnsCheckboxes[1]).toHaveAccessibleName('Age');
@@ -124,16 +69,17 @@ describe('TableColumnsSelector', () => {
         const Fixture = () => {
             const store = useTable<RowData>();
             return (
-                <Table store={store} data={mockData} columns={baseColumns}>
-                    <Table.Header>
-                        <TableColumnsSelector />
-                    </Table.Header>
-                </Table>
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={getBaseColumns()}
+                    options={{meta: {rowConfigurable: true}}}
+                />
             );
         };
         render(<Fixture />);
 
-        await user.click(screen.getByRole('button', {name: 'Edit columns'}));
+        await user.click(screen.getByRole('button', {name: 'settings'}));
 
         expect(await screen.findByRole('checkbox', {name: 'Name'})).toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Age'})).toBeChecked();
@@ -141,56 +87,131 @@ describe('TableColumnsSelector', () => {
         expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeChecked();
     });
 
-    it('renders a disabled checked checkbox for columns that are always visible', async () => {
-        const columns: Array<ColumnDef<RowData>> = [
-            columnHelper.accessor('name', {header: 'Name', enableSorting: false}),
-            columnHelper.accessor('age', {header: 'Age', enableSorting: false, enableHiding: false}),
-            columnHelper.accessor('email', {header: 'Email', enableSorting: false}),
-            columnHelper.accessor('phone', {header: 'Phone', enableSorting: false}),
-        ];
+    it('hides a column when the user unchecks it', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
             const store = useTable<RowData>();
             return (
-                <Table store={store} data={mockData} columns={columns}>
-                    <Table.Header>
-                        <TableColumnsSelector />
-                    </Table.Header>
-                </Table>
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={getBaseColumns()}
+                    options={{meta: {rowConfigurable: true}}}
+                />
             );
         };
         render(<Fixture />);
 
-        await user.click(screen.getByRole('button', {name: 'Edit columns'}));
+        expect(screen.getByRole('columnheader', {name: 'Email'})).toBeVisible();
 
-        expect(await screen.findByRole('checkbox', {name: 'Name'})).toBeChecked();
-        expect(screen.getByRole('checkbox', {name: 'Email'})).toBeChecked();
-        expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeChecked();
+        await user.click(screen.getByRole('button', {name: 'settings'}));
+        await user.click(await screen.findByRole('checkbox', {name: 'Email'}));
 
-        const ageColumn = screen.getByRole('checkbox', {name: 'Age'});
+        expect(screen.queryByRole('columnheader', {name: 'Email'})).not.toBeInTheDocument();
+    });
+
+    it('shows a column when the user checks it', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>({
+                initialState: {columnVisibility: {email: false}},
+            });
+            return (
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={getBaseColumns()}
+                    options={{meta: {rowConfigurable: true}}}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        expect(screen.queryByRole('columnheader', {name: 'Email'})).not.toBeInTheDocument();
+
+        await user.click(screen.getByRole('button', {name: 'settings'}));
+        await user.click(await screen.findByRole('checkbox', {name: 'Email'}));
+
+        expect(screen.getByRole('columnheader', {name: 'Email'})).toBeVisible();
+    });
+
+    it('renders a disabled checked checkbox for columns that are always visible', async () => {
+        const user = userEvent.setup();
+        const columnsWithNonHideable: Array<ColumnDef<RowData>> = [
+            columnHelper.accessor('name', {header: 'Name', enableSorting: false}),
+            columnHelper.accessor('age', {header: 'Age', enableSorting: false, enableHiding: false}),
+            columnHelper.accessor('email', {header: 'Email', enableSorting: false}),
+            TableActionsColumn as ColumnDef<RowData>,
+        ];
+
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={columnsWithNonHideable}
+                    options={{meta: {rowConfigurable: true}}}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        await user.click(screen.getByRole('button', {name: 'settings'}));
+
+        const ageColumn = await screen.findByRole('checkbox', {name: 'Age'});
         expect(ageColumn).toBeChecked();
         expect(ageColumn).toBeDisabled();
-        await user.hover(ageColumn.parentElement);
+    });
+
+    it('renders a tooltip when hovering a disabled always visible column checkbox', async () => {
+        const user = userEvent.setup();
+        const columnsWithNonHideable: Array<ColumnDef<RowData>> = [
+            columnHelper.accessor('name', {header: 'Name', enableSorting: false}),
+            columnHelper.accessor('age', {header: 'Age', enableSorting: false, enableHiding: false}),
+            TableActionsColumn as ColumnDef<RowData>,
+        ];
+
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={columnsWithNonHideable}
+                    options={{meta: {rowConfigurable: true}}}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        await user.click(screen.getByRole('button', {name: 'settings'}));
+        const ageCheckbox = await screen.findByRole('checkbox', {name: 'Age'});
+        await user.hover(ageCheckbox.closest('div')!);
+
         await waitFor(() => {
             expect(screen.getByRole('tooltip', {name: 'This column is always visible.'})).toBeVisible();
         });
     });
 
-    it('renders unchecked checkboxes for the columns that are not visible in the inital state of the table', async () => {
+    it('renders unchecked checkboxes for columns that are not visible in the initial state', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {columnVisibility: {email: false}}});
+            const store = useTable<RowData>({
+                initialState: {columnVisibility: {email: false}},
+            });
             return (
-                <Table store={store} data={mockData} columns={baseColumns}>
-                    <Table.Header>
-                        <TableColumnsSelector />
-                    </Table.Header>
-                </Table>
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={getBaseColumns()}
+                    options={{meta: {rowConfigurable: true}}}
+                />
             );
         };
         render(<Fixture />);
 
-        await user.click(screen.getByRole('button', {name: 'Edit columns'}));
+        await user.click(screen.getByRole('button', {name: 'settings'}));
 
         expect(await screen.findByRole('checkbox', {name: 'Name'})).toBeChecked();
         expect(screen.getByRole('checkbox', {name: 'Age'})).toBeChecked();
@@ -198,155 +219,108 @@ describe('TableColumnsSelector', () => {
         expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeChecked();
     });
 
-    it('renders disabled checkboxes when the maxSelectableColumns is set and the maximum number of columns is checked', async () => {
-        const user = userEvent.setup();
-        const Fixture = () => {
-            const store = useTable<RowData>({initialState: {columnVisibility: {email: false}}});
-            return (
-                <Table store={store} data={mockData} columns={baseColumns}>
-                    <Table.Header>
-                        <TableColumnsSelector maxSelectableColumns={3} />
-                    </Table.Header>
-                </Table>
-            );
-        };
-        render(<Fixture />);
-
-        await user.click(screen.getByRole('button', {name: 'Edit columns'}));
-
-        const nameCheckBox = await screen.findByRole('checkbox', {name: /name/i});
-        const ageCheckBox = screen.getByRole('checkbox', {name: /age/i});
-        const emailCheckBox = screen.getByRole('checkbox', {name: /email/i});
-        const phoneCheckBox = screen.getByRole('checkbox', {name: /phone/i});
-
-        expect(nameCheckBox).toBeChecked();
-        expect(nameCheckBox).toBeEnabled();
-        expect(ageCheckBox).toBeChecked();
-        expect(ageCheckBox).toBeEnabled();
-        expect(emailCheckBox).not.toBeChecked();
-        expect(emailCheckBox).toBeDisabled();
-        expect(phoneCheckBox).toBeChecked();
-        expect(phoneCheckBox).toBeEnabled();
-
-        await user.click(nameCheckBox);
-
-        expect(nameCheckBox).toBeEnabled();
-    });
-
-    it('renders a tooltip when the maxSelectableColumns is set and the maximum number of columns is checked and the user hover a disabled checkbox', async () => {
-        const user = userEvent.setup();
-        const Fixture = () => {
-            const store = useTable<RowData>({initialState: {columnVisibility: {email: false}}});
-            return (
-                <Table store={store} data={mockData} columns={baseColumns}>
-                    <Table.Header>
-                        <TableColumnsSelector
-                            maxSelectableColumns={3}
-                            limitReachedTooltip="You can display up to 3 columns"
-                        />
-                    </Table.Header>
-                </Table>
-            );
-        };
-        render(<Fixture />);
-
-        await user.click(screen.getByRole('button', {name: 'Edit columns'}));
-
-        const emailCheckBoxWrapper = (await screen.findByRole('checkbox', {name: /email/i})).parentElement;
-
-        await user.hover(emailCheckBoxWrapper);
-
-        await waitFor(() => expect(screen.getByText('You can display up to 3 columns')).toBeVisible());
-    });
-
-    describe('footer', () => {
-        it('does not render the footer when maxSelectableColumns is not defined', async () => {
-            const user = userEvent.setup();
-            const Fixture = () => {
-                const store = useTable<RowData>();
-                return (
-                    <Table store={store} data={mockData} columns={baseColumns}>
-                        <Table.Header>
-                            <TableColumnsSelector />
-                        </Table.Header>
-                    </Table>
-                );
-            };
-            render(<Fixture />);
-
-            await user.click(screen.getByRole('button', {name: 'Edit columns'}));
-
-            expect(screen.queryByText('You can display up to 3 columns')).not.toBeInTheDocument();
-        });
-
-        it('renders the footer when maxSelectableColumns is defined and footer is defined', async () => {
-            const user = userEvent.setup();
-            const Fixture = () => {
-                const store = useTable<RowData>();
-                return (
-                    <Table store={store} data={mockData} columns={baseColumns}>
-                        <Table.Header>
-                            <TableColumnsSelector maxSelectableColumns={3} footer="You can display so many patate" />
-                        </Table.Header>
-                    </Table>
-                );
-            };
-            render(<Fixture />);
-
-            await user.click(screen.getByRole('button', {name: 'Edit columns'}));
-
-            await waitFor(() => expect(screen.getByText('You can display so many patate')).toBeVisible());
-        });
-    });
-
-    describe('when url sync is activated', () => {
-        afterEach(() => {
-            window.history.replaceState(null, '', '/');
-        });
-
-        it('sets the current visible column ids in the url', async () => {
+    describe('maxSelectableColumns', () => {
+        it('disables unchecked columns when the maximum number of visible columns is reached', async () => {
             const user = userEvent.setup();
             const Fixture = () => {
                 const store = useTable<RowData>({
-                    syncWithUrl: true,
-                    initialState: {columnVisibility: {email: false, phone: true}},
-                });
-                return (
-                    <Table store={store} data={mockData} columns={baseColumns}>
-                        <Table.Header>
-                            <TableColumnsSelector />
-                        </Table.Header>
-                    </Table>
-                );
-            };
-            render(<Fixture />);
-            await user.click(screen.getByRole('button', {name: 'Edit columns'}));
-            const emailCheckBox = await screen.findByRole('checkbox', {name: /email/i});
-            await user.click(emailCheckBox);
-            await user.click(screen.getByRole('checkbox', {name: /phone/i}));
-            expect(window.location.search).toBe('?show=email&hide=phone');
-        });
-
-        it('determines the initial visible columns from the url', async () => {
-            window.history.replaceState(null, '', '?show=email%2Cphone');
-            const user = userEvent.setup();
-            const Fixture = () => {
-                const store = useTable<RowData>({
-                    syncWithUrl: true,
                     initialState: {columnVisibility: {email: false, phone: false}},
                 });
                 return (
-                    <Table store={store} data={mockData} columns={baseColumns}>
-                        <Table.Header>
-                            <TableColumnsSelector />
-                        </Table.Header>
-                    </Table>
+                    <Table
+                        store={store}
+                        data={mockData}
+                        columns={getBaseColumns()}
+                        options={{meta: {rowConfigurable: {maxSelectableColumns: 2}}}}
+                    />
                 );
             };
             render(<Fixture />);
-            await user.click(screen.getByRole('button', {name: 'Edit columns'}));
-            expect(await screen.findByRole('checkbox', {name: /email/i})).toBeChecked();
-            expect(screen.getByRole('checkbox', {name: /phone/i})).toBeChecked();
+
+            await user.click(screen.getByRole('button', {name: 'settings'}));
+
+            // Name and Age are visible (2 columns = max)
+            expect(await screen.findByRole('checkbox', {name: 'Name'})).toBeChecked();
+            expect(screen.getByRole('checkbox', {name: 'Name'})).not.toBeDisabled();
+            expect(screen.getByRole('checkbox', {name: 'Age'})).toBeChecked();
+            expect(screen.getByRole('checkbox', {name: 'Age'})).not.toBeDisabled();
+
+            // Email and Phone are hidden and should be disabled
+            expect(screen.getByRole('checkbox', {name: 'Email'})).not.toBeChecked();
+            expect(screen.getByRole('checkbox', {name: 'Email'})).toBeDisabled();
+            expect(screen.getByRole('checkbox', {name: 'Phone'})).not.toBeChecked();
+            expect(screen.getByRole('checkbox', {name: 'Phone'})).toBeDisabled();
+        });
+
+        it('renders a footer with the max columns message when maxSelectableColumns is set', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table
+                        store={store}
+                        data={mockData}
+                        columns={getBaseColumns()}
+                        options={{meta: {rowConfigurable: {maxSelectableColumns: 5}}}}
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('button', {name: 'settings'}));
+
+            await screen.findByRole('checkbox', {name: 'Name'});
+            expect(screen.getByText('You can display up to 5 columns.')).toBeInTheDocument();
+        });
+
+        it('does not render a footer when maxSelectableColumns is not set', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table
+                        store={store}
+                        data={mockData}
+                        columns={getBaseColumns()}
+                        options={{meta: {rowConfigurable: true}}}
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('button', {name: 'settings'}));
+
+            await screen.findByRole('checkbox', {name: 'Name'});
+            expect(screen.queryByText(/You can display up to/)).not.toBeInTheDocument();
+        });
+
+        it('enables a disabled column when a visible column is hidden', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    initialState: {columnVisibility: {email: false, phone: false}},
+                });
+                return (
+                    <Table
+                        store={store}
+                        data={mockData}
+                        columns={getBaseColumns()}
+                        options={{meta: {rowConfigurable: {maxSelectableColumns: 2}}}}
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('button', {name: 'settings'}));
+
+            // Email is disabled because max is reached
+            expect(await screen.findByRole('checkbox', {name: 'Email'})).toBeDisabled();
+
+            // Hide Name column
+            await user.click(screen.getByRole('checkbox', {name: 'Name'}));
+
+            // Now Email should be enabled
+            expect(screen.getByRole('checkbox', {name: 'Email'})).not.toBeDisabled();
         });
     });
 });

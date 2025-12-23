@@ -1,4 +1,5 @@
 import {Monaco} from '@monaco-editor/react';
+import type {editor} from 'monaco-editor';
 
 const format = (xml: string): string => {
     // https://stackoverflow.com/questions/57039218/doesnt-monaco-editor-support-xml-language-by-default
@@ -31,7 +32,7 @@ const format = (xml: string): string => {
 
 const register = (monaco: Monaco): void => {
     monaco.languages.registerDocumentFormattingEditProvider('xml', {
-        provideDocumentFormattingEdits: async (model) => [
+        provideDocumentFormattingEdits: async (model: editor.ITextModel) => [
             {
                 range: model.getFullModelRange(),
                 text: format(model.getValue()),
