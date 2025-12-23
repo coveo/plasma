@@ -1,4 +1,4 @@
-import {createTheme, Plasmantine} from '@coveord/plasma-mantine';
+import {createTheme, Notifications, Plasmantine} from '@coveord/plasma-mantine';
 import type {Decorator} from '@storybook/react-vite';
 
 type Theme = 'teal' | 'blue' | 'violet';
@@ -15,6 +15,7 @@ export const withTheme: Decorator = (Story, context) => {
 
     return (
         <Plasmantine theme={selectedTheme}>
+            <Notifications />
             <Story />
         </Plasmantine>
     );
