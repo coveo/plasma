@@ -1,5 +1,6 @@
 import {RadioCard} from '@coveord/plasma-mantine/components/RadioCard';
 import {Meta, StoryObj} from '@storybook/react-vite';
+import {useArgs} from 'storybook/preview-api';
 
 const meta: Meta<typeof RadioCard> = {
     title: '@components/form/RadioCard',
@@ -20,8 +21,13 @@ const meta: Meta<typeof RadioCard> = {
             control: 'text',
             description: 'Radio description',
         },
+        checked: {
+            control: 'boolean',
+            description: 'Checked state',
+        },
     },
     args: {
+        checked: false,
         disabled: false,
         label: 'Label',
         description: 'Description',
@@ -30,5 +36,10 @@ const meta: Meta<typeof RadioCard> = {
 export default meta;
 type Story = StoryObj<typeof RadioCard>;
 export const Demo: Story = {
-    render: (props: any) => <RadioCard {...props} />,
+    render: (props: any) => {
+        const [{checked}, updateArgs] = useArgs();
+        const onClick = () => updateArgs({checked: !checked});
+
+        return <RadioCard {...props} onClick={onClick} />;
+    },
 };
