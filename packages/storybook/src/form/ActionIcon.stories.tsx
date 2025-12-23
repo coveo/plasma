@@ -9,17 +9,26 @@ const meta: Meta<typeof ActionIcon> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
+    args: {
+        size: 'md',
+    },
+    argTypes: {
+        size: {
+            control: 'select',
+            options: ['sm', 'md'],
+            description: 'Size of the ActionIcon',
+        },
+    },
 };
 export default meta;
 type Story = StoryObj<typeof ActionIcon>;
 
 export const Primary: Story = {
-    render: () => {
+    render: (props: {size: 'sm' | 'md'}) => {
         const Icon = () => <IconBell size={16} />;
         const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
         return (
-            <ActionIcon.Primary onClick={onClick}>
+            <ActionIcon.Primary onClick={onClick} size={props.size}>
                 <Icon />
             </ActionIcon.Primary>
         );
@@ -27,11 +36,11 @@ export const Primary: Story = {
 };
 
 export const Secondary: Story = {
-    render: () => {
+    render: (props: {size: 'sm' | 'md'}) => {
         const Icon = () => <IconBell size={16} />;
         const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
         return (
-            <ActionIcon.Secondary onClick={onClick}>
+            <ActionIcon.Secondary onClick={onClick} size={props.size}>
                 <Icon />
             </ActionIcon.Secondary>
         );
@@ -39,11 +48,11 @@ export const Secondary: Story = {
 };
 
 export const Tertiary: Story = {
-    render: () => {
+    render: (props: {size: 'sm' | 'md'}) => {
         const Icon = () => <IconBell size={16} />;
         const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
         return (
-            <ActionIcon.Tertiary onClick={onClick}>
+            <ActionIcon.Tertiary onClick={onClick} size={props.size}>
                 <Icon />
             </ActionIcon.Tertiary>
         );
@@ -51,11 +60,11 @@ export const Tertiary: Story = {
 };
 
 export const Quaternary: Story = {
-    render: () => {
+    render: (props: {size: 'sm' | 'md'}) => {
         const Icon = () => <IconBell size={16} />;
         const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
         return (
-            <ActionIcon.Quaternary onClick={onClick}>
+            <ActionIcon.Quaternary onClick={onClick} size={props.size}>
                 <Icon />
             </ActionIcon.Quaternary>
         );
@@ -63,11 +72,11 @@ export const Quaternary: Story = {
 };
 
 export const DestructivePrimary: Story = {
-    render: () => {
+    render: (props: {size: 'sm' | 'md'}) => {
         const Icon = () => <IconBell size={16} />;
         const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
         return (
-            <ActionIcon.DestructivePrimary onClick={onClick}>
+            <ActionIcon.DestructivePrimary onClick={onClick} size={props.size}>
                 <Icon />
             </ActionIcon.DestructivePrimary>
         );
@@ -75,11 +84,11 @@ export const DestructivePrimary: Story = {
 };
 
 export const DestructiveSecondary: Story = {
-    render: () => {
+    render: (props: {size: 'sm' | 'md'}) => {
         const Icon = () => <IconBell size={16} />;
         const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
         return (
-            <ActionIcon.DestructiveSecondary onClick={onClick}>
+            <ActionIcon.DestructiveSecondary onClick={onClick} size={props.size}>
                 <Icon />
             </ActionIcon.DestructiveSecondary>
         );
@@ -87,11 +96,11 @@ export const DestructiveSecondary: Story = {
 };
 
 export const DestructiveTertiary: Story = {
-    render: () => {
+    render: (props: {size: 'sm' | 'md'}) => {
         const Icon = () => <IconBell size={16} />;
         const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
         return (
-            <ActionIcon.DestructiveTertiary onClick={onClick}>
+            <ActionIcon.DestructiveTertiary onClick={onClick} size={props.size}>
                 <Icon />
             </ActionIcon.DestructiveTertiary>
         );
@@ -99,11 +108,11 @@ export const DestructiveTertiary: Story = {
 };
 
 export const DestructiveQuaternary: Story = {
-    render: () => {
+    render: (props: {size: 'sm' | 'md'}) => {
         const Icon = () => <IconBell size={16} />;
         const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
         return (
-            <ActionIcon.DestructiveQuaternary onClick={onClick}>
+            <ActionIcon.DestructiveQuaternary onClick={onClick} size={props.size}>
                 <Icon />
             </ActionIcon.DestructiveQuaternary>
         );
@@ -111,7 +120,7 @@ export const DestructiveQuaternary: Story = {
 };
 
 export const ActionIconWithAsyncLoader: Story = {
-    render: () => {
+    render: (props: {size: 'sm' | 'md'}) => {
         const somethingAsync = (ms: number) => new Promise((r) => setTimeout(r, ms));
         const promise = async () => {
             await somethingAsync(3000);
