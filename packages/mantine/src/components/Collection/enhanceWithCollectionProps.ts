@@ -1,4 +1,4 @@
-import {UseFormInput} from '@mantine/form';
+import {UseFormInput, type FormArrayElement} from '@mantine/form';
 import {CollectionProps} from './Collection.js';
 
 export const enhanceWithCollectionProps = <
@@ -20,7 +20,7 @@ export const enhanceWithCollectionProps = <
                 payload.form.removeListItem(field, index);
                 validateInputOnChange && payload.form.validate();
             },
-            onInsertItem: (valueToInsert: unknown, index: number) => {
+            onInsertItem: (valueToInsert: FormArrayElement<FormValues, (typeof payload)['field']>, index: number) => {
                 payload.form.insertListItem(field, valueToInsert, index);
                 validateInputOnChange && payload.form.validate();
             },

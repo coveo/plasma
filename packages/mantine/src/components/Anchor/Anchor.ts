@@ -1,8 +1,12 @@
+import {Anchor} from '@mantine/core';
+
+Anchor.displayName = 'Anchor';
+
 export {
     Anchor,
-    type AnchorStylesNames,
+    type AnchorCssVariables,
     type AnchorFactory,
     type AnchorProps,
-    type AnchorCssVariables,
+    type AnchorStylesNames,
     type AnchorVariant,
 } from '@mantine/core';

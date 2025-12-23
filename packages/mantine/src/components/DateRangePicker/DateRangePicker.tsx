@@ -14,6 +14,7 @@ import {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {useUncontrolled} from '@mantine/hooks';
 import dayjs from 'dayjs';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state';
+import classes from './DateRange.module.css';
 import {DateRangePickerInlineCalendar, DateRangePickerInlineCalendarProps} from './DateRangePickerInlineCalendar';
 
 const serialization = (input: Pick<UseUrlSyncedStateOptions<DatesRangeValue<string>>, 'serializer' | 'deserializer'>) =>
@@ -123,7 +124,7 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
 
     const getStyles = useStyles<DateRangePickerFactory>({
         name: 'DateRangePicker',
-        classes: {},
+        classes,
         props,
         className,
         classNames,
