@@ -25,6 +25,6 @@ const meta: Meta<typeof Pill> = {
 export default meta;
 type Story = StoryObj<typeof Pill>;
 
-export const Default: Story = {
+export const Demo: Story = {
     render: ({withRemoveButton, children}) => <Pill withRemoveButton={withRemoveButton}>{children}</Pill>,
 };

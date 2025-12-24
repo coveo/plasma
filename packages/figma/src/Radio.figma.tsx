@@ -37,7 +37,7 @@ figma.connect(Radio, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma
 });
 
 figma.connect(
-    Radio.Card,
+    RadioCard,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50839',
     {
         props: {
@@ -51,16 +51,20 @@ figma.connect(
             disabled: figma.enum('State', {
                 Disabled: true,
             }),
+            readOnly: figma.enum('State', {
+                'Read-only': true,
+            }),
             checked: figma.enum('Checked', {
                 True: true,
             }),
         },
-        example: ({labelProps, descriptionProps, disabled, checked}) => (
+        example: ({labelProps, descriptionProps, disabled, readOnly, checked}) => (
             <RadioCard
                 checked={checked}
                 label={labelProps.label}
                 description={descriptionProps.description}
                 disabled={disabled}
+                readOnly={readOnly}
             />
         ),
     },

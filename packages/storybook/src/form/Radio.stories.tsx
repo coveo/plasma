@@ -47,6 +47,15 @@ export const RadioItem: Story = {
 };
 
 export const RadioGroup: Story = {
+    argTypes: {
+        required: {
+            control: 'boolean',
+            description: 'Whether the checkbox is required',
+        },
+    },
+    args: {
+        required: false,
+    },
     render: (props: any) => (
         <Radio.Group {...props}>
             <Group mt="xs">

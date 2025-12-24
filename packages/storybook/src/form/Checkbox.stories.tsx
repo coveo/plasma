@@ -1,6 +1,7 @@
 import {Checkbox} from '@coveord/plasma-mantine/components/Checkbox';
 import {Group} from '@coveord/plasma-mantine/components/Group';
 import {Meta, StoryObj} from '@storybook/react-vite';
+import {useArgs} from 'storybook/preview-api';
 
 const meta: Meta<typeof Checkbox> = {
     title: '@components/form/Checkbox',
@@ -9,6 +10,10 @@ const meta: Meta<typeof Checkbox> = {
         layout: 'centered',
     },
     argTypes: {
+        checked: {
+            control: 'boolean',
+            description: 'Checked state',
+        },
         disabled: {
             control: 'boolean',
             description: 'Disabled state',
@@ -31,6 +36,7 @@ const meta: Meta<typeof Checkbox> = {
         },
     },
     args: {
+        checked: false,
         disabled: false,
         readOnly: false,
         label: 'Label',
@@ -43,10 +49,23 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const CheckboxItem: Story = {
-    render: (props: any) => <Checkbox {...props} />,
+    render: (props: any) => {
+        const [{checked}, updateArgs] = useArgs();
+        const onClick = () => updateArgs({checked: !checked});
+        return <Checkbox {...props} onClick={onClick} />;
+    },
 };
 
 export const CheckboxGroup: Story = {
+    argTypes: {
+        required: {
+            control: 'boolean',
+            description: 'Whether the checkbox is required',
+        },
+    },
+    args: {
+        required: false,
+    },
     render: (props: any) => (
         <Checkbox.Group {...props}>
             <Group mt="xs">

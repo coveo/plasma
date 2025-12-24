@@ -25,10 +25,15 @@ const meta: Meta<typeof RadioCard> = {
             control: 'boolean',
             description: 'Checked state',
         },
+        readOnly: {
+            control: 'boolean',
+            description: 'Read only state',
+        },
     },
     args: {
         checked: false,
         disabled: false,
+        readOnly: false,
         label: 'Label',
         description: 'Description',
     },
