@@ -18,14 +18,10 @@ const meta: Meta<typeof Kbd> = {
             },
         },
     },
-    tags: ['autodocs'],
 };
 export default meta;
 type Story = StoryObj<typeof Kbd>;
 
-const Content = ({children}: {children: React.ReactNode}) => <Kbd>{children}</Kbd>;
-Content.displayName = 'Kbd';
-
 export const Demo: Story = {
-    render: ({children}) => <Content>{children}</Content>,
+    render: ({children}) => <Kbd>{children}</Kbd>,
 };

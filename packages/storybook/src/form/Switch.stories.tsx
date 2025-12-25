@@ -1,10 +1,10 @@
 import {Group} from '@coveord/plasma-mantine/components/Group';
-import {Switch, SwitchProps} from '@coveord/plasma-mantine/components/Switch';
-import {SwitchGroupProps} from '@mantine/core';
+import {Switch} from '@coveord/plasma-mantine/components/Switch';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {useArgs} from 'storybook/preview-api';
 
 const meta: Meta<typeof Switch> = {
-    title: '@components/feedback/Switch',
+    title: '@components/form/Switch',
     component: Switch,
     parameters: {
         layout: 'centered',
@@ -19,63 +19,71 @@ const meta: Meta<typeof Switch> = {
     argTypes: {
         label: {
             control: 'text',
-            table: {
-                defaultValue: {summary: ''},
-            },
+            description: 'Switch label',
         },
         description: {
             control: 'text',
-            table: {
-                defaultValue: {summary: ''},
-            },
+            description: 'Switch description',
         },
         error: {
             control: 'text',
-            table: {
-                defaultValue: {summary: ''},
-            },
+            description: 'Error message',
         },
         readOnly: {
             control: 'boolean',
+            description: 'Whether the switch is read-only',
             table: {
-                defaultValue: {summary: ''},
+                defaultValue: {summary: 'false'},
             },
         },
         disabled: {
             control: 'boolean',
+            description: 'Whether the switch is disabled',
             table: {
-                defaultValue: {summary: ''},
+                defaultValue: {summary: 'false'},
             },
         },
     },
-    tags: ['autodocs'],
 };
 
 export default meta;
 type Story = StoryObj<typeof Switch>;
 type StoryGroup = StoryObj<typeof Switch.Group>;
-const ContentSwitch = (props: SwitchProps) => <Switch {...props}></Switch>;
-ContentSwitch.displayName = 'Switch';
-
-const ContentSwitchGroup = (props: SwitchGroupProps) => <Switch.Group {...props} />;
-ContentSwitchGroup.displayName = 'Switch.Group';
-
-const ContentGroup = ({children}: {children: React.ReactNode}) => <Group>{children}</Group>;
-ContentGroup.displayName = 'Group';
 
 export const Default: Story = {
-    render: (props) => <ContentSwitch {...props} />,
+    argTypes: {
+        checked: {
+            control: 'boolean',
+            description: 'Checked state',
+        },
+    },
+    args: {
+        checked: false,
+    },
+    render: (props) => {
+        const [{checked}, updateArgs] = useArgs();
+        return <Switch {...props} onChange={() => updateArgs({checked: !checked})} />;
+    },
 };
 
 export const SwitchGroup: StoryGroup = {
+    argTypes: {
+        required: {
+            control: 'boolean',
+            description: 'Whether the switch is required',
+        },
+    },
+    args: {
+        required: false,
+    },
     render: (props) => (
-        <ContentSwitchGroup {...props}>
-            <ContentGroup>
-                <ContentSwitch value="option1" label="Option 1" />
-                <ContentSwitch value="option2" label="Option 2" />
-                <ContentSwitch value="option3" label="Option 3" />
-                <ContentSwitch value="option4" label="Option 4" />
-            </ContentGroup>
-        </ContentSwitchGroup>
+        <Switch.Group {...props}>
+            <Group>
+                <Switch value="option1" label="Option 1" />
+                <Switch value="option2" label="Option 2" />
+                <Switch value="option3" label="Option 3" />
+                <Switch value="option4" label="Option 4" />
+            </Group>
+        </Switch.Group>
     ),
 };

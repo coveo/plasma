@@ -1,8 +1,8 @@
-import {Slider, SliderProps} from '@coveord/plasma-mantine/components/Slider';
+import {Slider} from '@coveord/plasma-mantine/components/Slider';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Slider> = {
-    title: '@components/feedback/Slider',
+    title: '@components/form/Slider',
     component: Slider,
     decorators: [
         (Story) => (
@@ -27,38 +27,32 @@ const meta: Meta<typeof Slider> = {
     argTypes: {
         disabled: {
             control: 'boolean',
+            description: 'Whether the slider is disabled',
             table: {
-                defaultValue: {summary: ''},
+                defaultValue: {summary: 'false'},
             },
         },
         showLabelOnHover: {
             control: 'boolean',
+            description: 'Whether to show the label on hover',
             table: {
-                defaultValue: {summary: ''},
+                defaultValue: {summary: 'true'},
             },
         },
         labelAlwaysOn: {
             control: 'boolean',
+            description: 'Whether the label is always visible',
             table: {
-                defaultValue: {summary: ''},
+                defaultValue: {summary: 'false'},
             },
         },
     },
-    tags: ['autodocs'],
 };
 export default meta;
 type Story = StoryObj<typeof Slider>;
 
-const Content = (props: SliderProps) => <Slider {...props} />;
-Content.displayName = 'Slider';
-
 export const Demo: Story = {
     render: ({disabled, showLabelOnHover, labelAlwaysOn, marks}) => (
-        <Content
-            disabled={disabled}
-            showLabelOnHover={showLabelOnHover ? undefined : false}
-            labelAlwaysOn={labelAlwaysOn}
-            marks={marks}
-        />
+        <Slider disabled={disabled} showLabelOnHover={showLabelOnHover} labelAlwaysOn={labelAlwaysOn} marks={marks} />
     ),
 };
