@@ -41,7 +41,8 @@ export type HeaderStyleNames =
     | HeaderRightStyleNames;
 
 export interface HeaderProps
-    extends StylesApiProps<HeaderFactory>,
+    extends
+        StylesApiProps<HeaderFactory>,
         Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'attributes'> {
     /**
      * The description text displayed inside the header underneath the title
@@ -142,7 +143,11 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
                         {otherChildren}
                         {docAnchor}
                     </Title>
-                    <Text {...getStyles('description', stylesApiProps)} size={variant === 'primary' ? 'md' : 'sm'}>
+                    <Text
+                        component="div"
+                        {...getStyles('description', stylesApiProps)}
+                        size={variant === 'primary' ? 'md' : 'sm'}
+                    >
                         {description}
                     </Text>
                 </Stack>
