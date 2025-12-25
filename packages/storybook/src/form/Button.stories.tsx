@@ -2,6 +2,7 @@ import {showNotification} from '@coveord/plasma-mantine';
 import {Button} from '@coveord/plasma-mantine/components/Button';
 import {CheckmarkSize24Px} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import React from 'react';
 
 const meta: Meta<typeof Button> = {
     title: '@components/form/Button',
@@ -9,71 +10,53 @@ const meta: Meta<typeof Button> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
+    argTypes: {
+        variant: {
+            control: 'select',
+            options: [
+                'Primary',
+                'Secondary',
+                'Tertiary',
+                'Quaternary',
+                'DestructivePrimary',
+                'DestructiveSecondary',
+                'DestructiveTertiary',
+                'DestructiveQuaternary',
+            ],
+            description: 'Button variant',
+        },
+        label: {
+            control: 'text',
+            description: 'Button label',
+        },
+        onClick: {
+            action: 'clicked',
+            description: 'Click handler',
+        },
+    },
+    args: {
+        variant: 'Primary',
+        label: 'Button',
+        onClick: () => showNotification({message: 'Button clicked', autoClose: false}),
+    },
 };
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
-    render: () => {
-        const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
-        return <Button.Primary onClick={onClick}>Button</Button.Primary>;
+export const Demo: Story = {
+    render: ({label, variant, onClick}: any) => {
+        const ButtonComponent = Button[variant as keyof typeof Button] as React.ComponentType<any>;
+        return <ButtonComponent onClick={onClick}>{label}</ButtonComponent>;
     },
 };
 
-export const Secondary: Story = {
-    render: () => {
-        const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
-        return <Button.Secondary onClick={onClick}>Button</Button.Secondary>;
-    },
-};
-
-export const Tertiary: Story = {
-    render: () => {
-        const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
-        return <Button.Tertiary onClick={onClick}>Button</Button.Tertiary>;
-    },
-};
-
-export const Quaternary: Story = {
-    render: () => {
-        const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
-        return <Button.Quaternary onClick={onClick}>Button</Button.Quaternary>;
-    },
-};
-
-export const DestructivePrimary: Story = {
-    render: () => {
-        const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
-        return <Button.DestructivePrimary onClick={onClick}>Button</Button.DestructivePrimary>;
-    },
-};
-
-export const DestructiveSecondary: Story = {
-    render: () => {
-        const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
-        return <Button.DestructiveSecondary onClick={onClick}>Button</Button.DestructiveSecondary>;
-    },
-};
-
-export const DestructiveTertiary: Story = {
-    render: () => {
-        const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
-        return <Button.DestructiveTertiary onClick={onClick}>Button</Button.DestructiveTertiary>;
-    },
-};
-
-export const DestructiveQuaternary: Story = {
-    render: () => {
-        const onClick = () => showNotification({message: 'Button clicked', autoClose: false});
-        return <Button.DestructiveQuaternary onClick={onClick}>Button</Button.DestructiveQuaternary>;
-    },
-};
-
-export const ButtonWithAsyncLoader: Story = {
-    render: () => {
+export const WithAsyncLoader: Story = {
+    render: ({label, variant}: any) => {
+        const ButtonComponent = Button[variant as keyof typeof Button] as React.ComponentType<any>;
+        const [loading, setLoading] = React.useState(false);
         const somethingAsync = (ms: number) => new Promise((r) => setTimeout(r, ms));
         const promise = async () => {
+            setLoading(true);
             await somethingAsync(3000);
             showNotification({
                 title: 'Saved successfully',
@@ -82,11 +65,12 @@ export const ButtonWithAsyncLoader: Story = {
                 icon: <CheckmarkSize24Px height={24} />,
                 color: 'success',
             });
+            setLoading(false);
         };
         return (
-            <Button.Primary loading onClick={promise}>
-                Save
-            </Button.Primary>
+            <ButtonComponent loading={loading} onClick={promise}>
+                {label}
+            </ButtonComponent>
         );
     },
 };

@@ -1,6 +1,6 @@
 {
     "name": "storybook",
-    "version": "56.11.0",
+    "version": "56.13.0",
     "private": true,
     "type": "module",
     "scripts": {
@@ -35,6 +35,7 @@
         "@types/react-dom": "18.3.7",
         "@vitejs/plugin-react-swc": "4.2.2",
         "globals": "16.5.0",
+        "postcss-preset-mantine": "1.18.0",
         "storybook": "10.1.4",
         "typescript": "5.9.3",
         "vite": "7.2.7"

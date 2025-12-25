@@ -33,6 +33,10 @@ export type RadioCardProps = MantineRadioCardProps &
          * The description of the card. Appears under the title.
          */
         description?: ReactNode;
+        /**
+         * If true, the radio card will be displayed in a read-only state.
+         */
+        readOnly?: boolean;
     };
 
 const defaultProps: Partial<RadioCardProps> = {};
@@ -58,6 +62,7 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
         <Radio.Card
             ref={ref}
             disabled={disabled}
+            readOnly={_props.readOnly}
             {...getStyles('card', {className, style, classNames, styles})}
             {...others}
         >
@@ -71,3 +76,4 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
         </Radio.Card>
     );
 });
+RadioCard.displayName = 'RadioCard';

@@ -1,6 +1,5 @@
 import {IconSettings} from '@coveord/plasma-react-icons';
 import {Checkbox, Divider, Popover, ScrollArea, Stack, Text, Tooltip} from '@mantine/core';
-import {useDisclosure} from '@mantine/hooks';
 import {flexRender, Header, Table} from '@tanstack/react-table';
 import {ActionIcon} from '../../ActionIcon/ActionIcon';
 
@@ -29,7 +28,7 @@ export interface TableColumnsSelectorOptions {
     alwaysVisibleTooltip?: string;
 }
 
-export interface TableColumnsSelectorHeaderProps {
+export interface TableColumnsSelectorProps {
     table: Table<unknown>;
     options?: TableColumnsSelectorOptions;
 }
@@ -42,13 +41,11 @@ const DEFAULT_OPTIONS: Omit<TableColumnsSelectorOptions, 'footer'> & {
     alwaysVisibleTooltip: 'This column is always visible.',
 };
 
-export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelectorHeaderProps) => {
+export const TableColumnsSelector = ({table, options}: TableColumnsSelectorProps) => {
     const {maxSelectableColumns, footer, limitReachedTooltip, alwaysVisibleTooltip} = {
         ...DEFAULT_OPTIONS,
         ...options,
     };
-
-    const [opened, {toggle, close}] = useDisclosure(false);
 
     const allColumns = table.getAllLeafColumns();
     const filteredColumns = allColumns.filter((column) => !column.columnDef.meta?.controlColumn);
@@ -101,11 +98,13 @@ export const TableColumnsSelectorHeader = ({table, options}: TableColumnsSelecto
     });
 
     return (
-        <Popover opened={opened} onClose={close} position="bottom-end" shadow="md">
+        <Popover position="bottom-end" shadow="md">
             <Popover.Target>
-                <ActionIcon.Tertiary onClick={toggle} aria-label="settings">
-                    <IconSettings height={16} />
-                </ActionIcon.Tertiary>
+                <Tooltip label="Edit columns">
+                    <ActionIcon.Tertiary aria-label="settings">
+                        <IconSettings height={16} />
+                    </ActionIcon.Tertiary>
+                </Tooltip>
             </Popover.Target>
             <Popover.Dropdown miw={270} pb="xs">
                 <ScrollArea.Autosize mah={200} type="auto">

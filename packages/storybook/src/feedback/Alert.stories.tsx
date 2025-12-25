@@ -1,5 +1,5 @@
-import type {StoryObj, Meta} from '@storybook/react-vite';
 import {Alert} from '@coveord/plasma-mantine/components/Alert';
+import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Alert> = {
     title: '@components/feedback/Alert',
@@ -7,52 +7,49 @@ const meta: Meta<typeof Alert> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
+    argTypes: {
+        variant: {
+            control: 'select',
+            options: ['Advice', 'Critical', 'Information', 'Warning'],
+            table: {
+                defaultValue: {summary: 'Alert.Information'},
+            },
+        },
+        title: {
+            control: 'text',
+            table: {
+                defaultValue: {summary: ''},
+            },
+        },
+        withCloseButton: {
+            control: 'boolean',
+            table: {
+                defaultValue: {summary: true},
+            },
+        },
+        content: {
+            control: 'text',
+            description: 'Alert content',
+        },
+    },
+    args: {
+        variant: 'Advice',
+        title: 'Alert title',
+        withCloseButton: true,
+        content:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    },
 };
 export default meta;
 type Story = StoryObj<typeof Alert>;
 
-export const Default: Story = {
-    render: () => (
-        <Alert title="Advice" withCloseButton>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-        </Alert>
-    ),
-};
-
-export const AlertAdvice: Story = {
-    render: () => (
-        <Alert.Advice title="Advice" withCloseButton>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-        </Alert.Advice>
-    ),
-};
-
-export const AlertCritical: Story = {
-    render: () => (
-        <Alert.Critical title="Bummer!" withCloseButton>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-        </Alert.Critical>
-    ),
-};
-
-export const AlertInformation: Story = {
-    render: () => (
-        <Alert.Information title="Information" withCloseButton>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-        </Alert.Information>
-    ),
-};
-
-export const AlertWarning: Story = {
-    render: () => (
-        <Alert.Warning title="Warning!" withCloseButton>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-        </Alert.Warning>
-    ),
+export const Demo: Story = {
+    render: ({title, withCloseButton, variant, content}: any) => {
+        const AlertComponent = Alert[variant as keyof typeof Alert] as React.ComponentType<any>;
+        return (
+            <AlertComponent title={title} withCloseButton={withCloseButton}>
+                {content}
+            </AlertComponent>
+        );
+    },
 };
