@@ -1,6 +1,6 @@
 {
     "name": "storybook",
-    "version": "56.8.0",
+    "version": "56.13.0",
     "private": true,
     "type": "module",
     "scripts": {
@@ -16,27 +16,28 @@
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
-        "@faker-js/faker": "9.9.0",
-        "@mantine/core": "8.3.6",
-        "@mantine/dates": "8.3.6",
-        "@mantine/form": "8.3.6",
-        "@mantine/hooks": "8.3.6",
-        "@mantine/modals": "8.3.6",
-        "@mantine/notifications": "8.3.6",
+        "@faker-js/faker": "10.1.0",
+        "@mantine/core": "8.3.10",
+        "@mantine/dates": "8.3.10",
+        "@mantine/form": "8.3.10",
+        "@mantine/hooks": "8.3.10",
+        "@mantine/modals": "8.3.10",
+        "@mantine/notifications": "8.3.10",
         "dayjs": "1.11.19",
         "react": "18.3.1",
         "react-dom": "18.3.1",
-        "react-hook-form": "7.66.0"
+        "react-hook-form": "7.68.0"
     },
     "devDependencies": {
-        "@storybook/addon-docs": "10.1.0",
-        "@storybook/react-vite": "10.1.0",
-        "@types/react": "18.3.26",
+        "@storybook/addon-docs": "10.1.4",
+        "@storybook/react-vite": "10.1.4",
+        "@types/react": "18.3.27",
         "@types/react-dom": "18.3.7",
-        "@vitejs/plugin-react-swc": "4.2.1",
+        "@vitejs/plugin-react-swc": "4.2.2",
         "globals": "16.5.0",
-        "storybook": "10.1.0",
+        "postcss-preset-mantine": "1.18.0",
+        "storybook": "10.1.4",
         "typescript": "5.9.3",
-        "vite": "7.2.2"
+        "vite": "7.2.7"
     }
 }
