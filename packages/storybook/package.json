@@ -29,8 +29,8 @@
         "react-hook-form": "7.68.0"
     },
     "devDependencies": {
-        "@storybook/addon-docs": "10.1.4",
-        "@storybook/react-vite": "10.1.4",
+        "@storybook/addon-docs": "10.1.10",
+        "@storybook/react-vite": "10.1.10",
         "@types/react": "18.3.27",
         "@types/react-dom": "18.3.7",
         "@vitejs/plugin-react-swc": "4.2.2",
@@ -38,6 +38,6 @@
         "postcss-preset-mantine": "1.18.0",
         "storybook": "10.1.4",
         "typescript": "5.9.3",
-        "vite": "7.2.7"
+        "vite": "7.3.0"
     }
 }
