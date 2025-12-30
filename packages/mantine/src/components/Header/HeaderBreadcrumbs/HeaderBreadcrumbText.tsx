@@ -25,4 +25,5 @@ export const HeaderBreadcrumbText = polymorphicFactory<HeaderBreadcrumbTextFacto
         />
     );
 });
-HeaderBreadcrumbText.displayName = '@coveo/plasma-mantine/HeaderBreadcrumbText';
+
+HeaderBreadcrumbText.displayName = 'Header.BreadcrumbText';
