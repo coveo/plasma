@@ -50,4 +50,5 @@ export const HeaderBreadcrumbAnchor = polymorphicFactory<HeaderBreadcrumbAnchorF
         </Anchor>
     );
 });
-HeaderBreadcrumbAnchor.displayName = '@coveo/plasma-mantine/HeaderBreadcrumbAnchor';
+
+HeaderBreadcrumbAnchor.displayName = 'Header.BreadcrumbAnchor';

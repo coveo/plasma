@@ -158,6 +158,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
     );
 });
 
+Header.displayName = 'Header';
 Header.Breadcrumbs = HeaderBreadcrumbs;
 Header.BreadcrumbAnchor = HeaderBreadcrumbAnchor;
 Header.BreadcrumbText = HeaderBreadcrumbText;
