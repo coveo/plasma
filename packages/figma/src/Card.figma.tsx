@@ -8,7 +8,7 @@ const cardsProps = {
         Selected: 'Selected',
         Disabled: 'Disabled',
     }),
-    children: figma.instance('Content Swap'),
+    children: figma.instance('Swap Content'),
 };
 
 figma.connect(Card, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-51677', {
