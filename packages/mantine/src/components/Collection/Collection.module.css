@@ -11,6 +11,7 @@
 
 .item {
     align-items: baseline;
+    flex-wrap: nowrap;
 
     &[data-isdragging='true'] {
         box-shadow: var(--mantine-shadow-md);
