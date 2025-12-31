@@ -68,3 +68,5 @@ export const ChildForm = polymorphicFactory<ChildFormFactory>((props, ref) => {
         </Collapse>
     );
 });
+
+ChildForm.displayName = 'ChildForm';
