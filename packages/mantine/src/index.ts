@@ -106,6 +106,9 @@ export {Menu, type MenuItemProps} from './components/Menu/Menu.js';
 export {Modal, type ModalFactory, type ModalProps} from './components/Modal/Modal.js';
 export * from './components/Modal/ModalFooter.js';
 
+// Pills Input - override Mantine PillsInput
+export {PillsInput, type PillsInputProps} from './components/PillsInput/PillsInput.js';
+
 // Prompt
 export * from './components/Prompt/Prompt.js';
 

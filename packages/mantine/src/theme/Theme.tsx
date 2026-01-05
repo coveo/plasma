@@ -70,6 +70,7 @@ import {Accordion} from '../components/Accordion/Accordion.js';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
+import {PillsInput} from '../components/PillsInput/PillsInput.js';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -94,6 +95,7 @@ import NumberInputClasses from '../styles/NumberInput.module.css';
 import PaginationClasses from '../styles/Pagination.module.css';
 import PaperClasses from '../styles/Paper.module.css';
 import PillClasses from '../styles/Pill.module.css';
+import PillsInputClasses from '../styles/PillsInput.module.css';
 import PopoverClasses from '../styles/Popover.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import RadioCardClasses from '../styles/RadioCard.module.css';
@@ -419,6 +421,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Pill: Pill.extend({
             classNames: PillClasses,
+        }),
+        PillsInput: PillsInput.extend({
+            classNames: PillsInputClasses,
         }),
         Popover: Popover.extend({
             classNames: PopoverClasses,

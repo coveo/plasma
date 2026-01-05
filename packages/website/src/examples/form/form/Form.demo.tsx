@@ -7,6 +7,8 @@ import {
     MultiSelect,
     NumberInput,
     PasswordInput,
+    Pill,
+    PillsInput,
     Radio,
     Select,
     Stack,
@@ -56,6 +58,25 @@ const Demo = () => {
                         disabled={form.values.disabled}
                         placeholder="Text input placeholder"
                     />
+                </Stack>
+                <Stack gap="xs">
+                    <Title order={4}>Textarea</Title>
+                    <PillsInput
+                        {...form.getInputProps('textarea')}
+                        label={form.values.label}
+                        description={form.values.description}
+                        withAsterisk={form.values.withAsterisk}
+                        readOnly={form.values.readOnly}
+                        disabled={form.values.disabled}
+                        // placeholder="Textarea placeholder"
+                    >
+                        <Pill.Group>
+                            <Pill>React</Pill>
+                            <Pill>Vue</Pill>
+                            <Pill>Svelte</Pill>
+                            <PillsInput.Field placeholder="Enter tags" />
+                        </Pill.Group>
+                    </PillsInput>
                 </Stack>
                 <Stack gap="xs">
                     <Title order={4}>Textarea</Title>

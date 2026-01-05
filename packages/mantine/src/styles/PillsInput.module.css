@@ -1,0 +1,7 @@
+.input {
+    &[data-readonly='true'] {
+        pointer-events: none;
+        border-color: var(--mantine-color-default-border);
+        background-color: var(--coveo-color-bg-readonly);
+    }
+}
