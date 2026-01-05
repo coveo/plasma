@@ -79,7 +79,7 @@ const meta: Meta<typeof NumberInput> = {
         },
         decimalSeparator: {
             control: 'text',
-            description: 'Thousand separator character',
+            description: 'Decimal separator character',
             table: {
                 defaultValue: {summary: "'.'"},
                 type: {summary: 'string'},
