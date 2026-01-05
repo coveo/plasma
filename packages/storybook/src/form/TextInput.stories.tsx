@@ -1,7 +1,8 @@
 import {TextInput} from '@coveord/plasma-mantine/components/TextInput';
 import {IconSearch, IconX} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {InputArgs, InputArgTypes, InputWrapperArgs, InputWrapperArgTypes} from './InputArgs.js';
+import {Args} from '../Args.js';
+import {BaseInputArgs, InputWrapperArgs} from './InputWrapperArgs.js';
 
 const meta: Meta<typeof TextInput> = {
     title: '@components/form/TextInput',
@@ -10,14 +11,16 @@ const meta: Meta<typeof TextInput> = {
         layout: 'centered',
     },
     args: {
-        ...InputWrapperArgs,
-        ...InputArgs,
+        ...InputWrapperArgs.Args,
+        ...BaseInputArgs.Args,
+        placeholder: Args.placeholder.initialValue,
         leftSection: false,
         rightSection: false,
     },
     argTypes: {
-        ...InputWrapperArgTypes,
-        ...InputArgTypes,
+        ...InputWrapperArgs.ArgsTypes,
+        ...BaseInputArgs.ArgsTypes,
+        placeholder: Args.placeholder.type,
         leftSection: {
             control: 'boolean',
             description: 'Show icon in left section',
