@@ -7,14 +7,11 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2191-1071',
     {
         props: {
+            labelProps: figma.nestedProps('Input.Label', {
+                required: figma.boolean('Asterisk'),
+                label: figma.string('Label'),
+            }),
             wrapperProps: figma.nestedProps('Input.Wrapper', {
-                labelProps: figma.boolean('Label', {
-                    true: figma.nestedProps('Input.Label', {
-                        required: figma.boolean('Asterisk'),
-                        label: figma.string('Label'),
-                    }),
-                    false: {label: undefined, required: false},
-                }),
                 descriptionProps: figma.boolean('Description', {
                     true: figma.nestedProps('Input.Description', {
                         description: figma.string('Description'),
@@ -37,11 +34,11 @@ figma.connect(
         },
         example: (props) => (
             <NumberInput
-                label={props.wrapperProps.labelProps.label}
+                label={props.labelProps.label}
                 description={props.wrapperProps.descriptionProps.description}
                 placeholder={props.inputProps.placeholder}
                 leftSection={props.inputProps.leftSection}
-                required={props.wrapperProps.labelProps.required}
+                required={props.labelProps.required}
                 disabled={props.inputProps.disabled}
                 readOnly={props.inputProps.readOnly}
                 error={props.wrapperProps.errorProps.error}
