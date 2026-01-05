@@ -17,6 +17,7 @@
 
     &[disabled] {
         pointer-events: none;
+        border-color: var(--mantine-color-default-border);
 
         .title {
             color: var(--mantine-color-disabled-color);
@@ -24,6 +25,24 @@
 
         .description {
             color: var(--mantine-color-disabled-color);
+        }
+    }
+
+    &[readonly] {
+        pointer-events: none;
+        border-color: var(--mantine-color-default-border);
+
+        & .indicator {
+            border-color: var(--mantine-color-default-border);
+
+            &[data-checked] {
+                background-color: var(--coveo-color-bg-readonly);
+                color: var(--coveo-color-text-readonly);
+
+                & > svg {
+                    color: var(--coveo-color-text-readonly);
+                }
+            }
         }
     }
 }
