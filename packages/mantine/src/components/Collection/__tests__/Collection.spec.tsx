@@ -261,6 +261,128 @@ describe('Collection', () => {
         expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","orange","new"]}');
     });
 
+    it('adds a new item when newItem is a function', async () => {
+        const user = userEvent.setup();
+        const newItemFactory = vi.fn().mockReturnValue('dynamic');
+        const Fixture = () => {
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
+            return (
+                <>
+                    <Collection newItem={newItemFactory} {...form.getInputProps('fruits')}>
+                        {(name) => <span>{name}</span>}
+                    </Collection>
+                    <div data-testid="form-state">{JSON.stringify(form.values)}</div>
+                </>
+            );
+        };
+
+        render(<Fixture />);
+        const addItem = screen.getByRole('button', {name: /add/i});
+        await user.click(addItem);
+
+        expect(newItemFactory).toHaveBeenCalledOnce();
+        const items = screen.getAllByTestId(/item-/);
+        expect(items).toHaveLength(3);
+        expect(items[0]).toHaveTextContent('banana');
+        expect(items[1]).toHaveTextContent('orange');
+        expect(items[2]).toHaveTextContent('dynamic');
+        expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","orange","dynamic"]}');
+    });
+
+    it('calls newItem function each time an item is added to generate unique values', async () => {
+        const user = userEvent.setup();
+        let counter = 0;
+        const newItemFactory = vi.fn().mockImplementation(() => `item-${++counter}`);
+        const Fixture = () => {
+            const form = useForm({
+                initialValues: {fruits: ['banana']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
+            return (
+                <>
+                    <Collection newItem={newItemFactory} {...form.getInputProps('fruits')}>
+                        {(name) => <span>{name}</span>}
+                    </Collection>
+                    <div data-testid="form-state">{JSON.stringify(form.values)}</div>
+                </>
+            );
+        };
+
+        render(<Fixture />);
+        const addItem = screen.getByRole('button', {name: /add/i});
+
+        // Add first item
+        await user.click(addItem);
+        expect(newItemFactory).toHaveBeenCalledTimes(1);
+        expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","item-1"]}');
+
+        // Add second item
+        await user.click(addItem);
+        expect(newItemFactory).toHaveBeenCalledTimes(2);
+        expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","item-1","item-2"]}');
+
+        // Add third item
+        await user.click(addItem);
+        expect(newItemFactory).toHaveBeenCalledTimes(3);
+        expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","item-1","item-2","item-3"]}');
+
+        const items = screen.getAllByTestId(/item-/);
+        expect(items).toHaveLength(4);
+        expect(items[0]).toHaveTextContent('banana');
+        expect(items[1]).toHaveTextContent('item-1');
+        expect(items[2]).toHaveTextContent('item-2');
+        expect(items[3]).toHaveTextContent('item-3');
+    });
+
+    it('generates items with unique IDs when newItem is a function', async () => {
+        const user = userEvent.setup();
+        type FruitItem = {id: string; name: string};
+        let idCounter = 0;
+        const newItemFactory = vi.fn().mockImplementation(() => ({
+            id: `id-${++idCounter}`,
+            name: 'new fruit',
+        }));
+        const Fixture = () => {
+            const form = useForm({
+                initialValues: {fruits: [{id: 'id-0', name: 'banana'}] as FruitItem[]},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
+            return (
+                <>
+                    <Collection<FruitItem> newItem={newItemFactory} {...form.getInputProps('fruits')}>
+                        {(fruit) => <span>{fruit.name}</span>}
+                    </Collection>
+                    <div data-testid="form-state">{JSON.stringify(form.values)}</div>
+                </>
+            );
+        };
+
+        render(<Fixture />);
+        const addItem = screen.getByRole('button', {name: /add/i});
+
+        // Add first item
+        await user.click(addItem);
+        expect(newItemFactory).toHaveBeenCalledOnce();
+        let formState = JSON.parse(screen.getByTestId('form-state').textContent!);
+        expect(formState.fruits).toHaveLength(2);
+        expect(formState.fruits[1].id).toBe('id-1');
+        expect(formState.fruits[1].name).toBe('new fruit');
+
+        // Add second item
+        await user.click(addItem);
+        expect(newItemFactory).toHaveBeenCalledTimes(2);
+        formState = JSON.parse(screen.getByTestId('form-state').textContent!);
+        expect(formState.fruits).toHaveLength(3);
+        expect(formState.fruits[2].id).toBe('id-2');
+        expect(formState.fruits[2].name).toBe('new fruit');
+
+        const items = screen.getAllByTestId(/item-/);
+        expect(items).toHaveLength(3);
+    });
+
     it('disables the add button whenever allowAdd callback returns false', () => {
         const allowAdd = vi.fn().mockImplementation(() => false);
         const Fixture = () => {
