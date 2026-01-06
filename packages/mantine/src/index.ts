@@ -86,6 +86,9 @@ export {
 // Info Token
 export * from './components/InfoToken/InfoToken.js';
 
+// Pills Input
+export * from './components/PillsInput/PillsInput.js';
+
 // Status Token
 export * from './components/StatusToken/StatusToken.js';
 
