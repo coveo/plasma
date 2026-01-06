@@ -27,7 +27,7 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
     /**
      * The default value each new item should have
      */
-    newItem: T;
+    newItem: T | (() => T);
     /**
      * A render function called for each item passed in the `value` prop.
      *
@@ -105,7 +105,7 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
      *
      * @param values The current items of the collection
      */
-    allowAdd?: (values: T[]) => boolean;
+    allowAdd?: boolean | ((values: T[]) => boolean);
     /**
      * The label of the add item button
      *
@@ -224,7 +224,11 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     const _description = description ? (
         <Input.Description {...descriptionProps}>{description}</Input.Description>
     ) : null;
-    const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : null;
+    const _error = error ? (
+        <Input.Error {...errorProps} pt="xs">
+            {error}
+        </Input.Error>
+    ) : null;
     const _header =
         _label || _description ? (
             <Stack gap="xxs" pb="xs">
@@ -248,13 +252,16 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         </CollectionItem>
     ));
 
-    const addAllowed = allowAdd?.(value) ?? true;
+    const addAllowed = typeof allowAdd === 'boolean' ? allowAdd : (allowAdd?.(value) ?? true);
 
     const _addButton = canEdit ? (
         <Box className={classes.addButtonContainer}>
             <Button.Quaternary
                 leftSection={<IconPlus size={16} />}
-                onClick={() => onInsertItem(newItem, value?.length ?? 0)}
+                onClick={() => {
+                    const newItemValue = typeof newItem === 'function' ? (newItem as () => T)() : newItem;
+                    onInsertItem(newItemValue, value?.length ?? 0);
+                }}
                 disabled={!addAllowed}
                 disabledTooltip={addDisabledTooltip}
             >
@@ -288,8 +295,8 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                         <Stack gap={gap} {...getStyles('items')}>
                             {items}
                             {_addButton}
-                            {_error}
                         </Stack>
+                        {_error}
                     </Box>
                 </SortableContext>
             </DndContext>
