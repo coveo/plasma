@@ -146,6 +146,9 @@ export * from './components/DateTimeRangePicker/DateTimeRangePicker.js';
 // Time Picker
 export * from './components/TimePicker/TimePicker.js';
 
+// Year Picker Input
+export * from './components/YearPickerInput/YearPickerInput.js';
+
 // Dialog
 export * from './components/Dialog/Dialog.js';
 
