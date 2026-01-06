@@ -3,7 +3,7 @@ import {PillsInput} from '@coveord/plasma-mantine/components/PillsInput';
 import {IconSearch, IconX} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useState} from 'react';
-import {InputArgs, InputArgTypes, InputWrapperArgs, InputWrapperArgTypes} from './InputArgs.js';
+import {BaseInputArgs, InputWrapperArgs} from './InputWrapperArgs.js';
 
 const meta: Meta<typeof PillsInput> = {
     title: '@components/form/PillsInput',
@@ -12,14 +12,14 @@ const meta: Meta<typeof PillsInput> = {
         layout: 'centered',
     },
     args: {
-        ...InputWrapperArgs,
-        ...InputArgs,
+        ...InputWrapperArgs.Args,
+        ...BaseInputArgs.Args,
         leftSection: false,
         rightSection: false,
     },
     argTypes: {
-        ...InputWrapperArgTypes,
-        ...InputArgTypes,
+        ...InputWrapperArgs.ArgsTypes,
+        ...BaseInputArgs.ArgsTypes,
         leftSection: {
             control: 'boolean',
             description: 'Show icon in left section',
