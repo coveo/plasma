@@ -230,6 +230,37 @@ describe('Collection', () => {
         expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","orange","new"]}');
     });
 
+    it('adds a new item when newItem is a function', async () => {
+        const user = userEvent.setup();
+        const newItemFactory = vi.fn().mockReturnValue('dynamic');
+        const Fixture = () => {
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
+            return (
+                <>
+                    <Collection newItem={newItemFactory} {...form.getInputProps('fruits')}>
+                        {(name) => <span>{name}</span>}
+                    </Collection>
+                    <div data-testid="form-state">{JSON.stringify(form.values)}</div>
+                </>
+            );
+        };
+
+        render(<Fixture />);
+        const addItem = screen.getByRole('button', {name: /add/i});
+        await user.click(addItem);
+
+        expect(newItemFactory).toHaveBeenCalledOnce();
+        const items = screen.getAllByTestId(/item-/);
+        expect(items).toHaveLength(3);
+        expect(items[0]).toHaveTextContent('banana');
+        expect(items[1]).toHaveTextContent('orange');
+        expect(items[2]).toHaveTextContent('dynamic');
+        expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","orange","dynamic"]}');
+    });
+
     it('adds a new item when clicking on the add button with custom id', async () => {
         const user = userEvent.setup();
         const getItemId = (item: string) => `id-${item}`;
@@ -259,6 +290,26 @@ describe('Collection', () => {
         expect(items[2]).toHaveTextContent('new');
         expect(screen.getByTestId('item-id-new')).toBeInTheDocument();
         expect(screen.getByTestId('form-state')).toHaveTextContent('{"fruits":["banana","orange","new"]}');
+    });
+
+    it('disables the add button if allowAdd is false', () => {
+        const Fixture = () => {
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
+            return (
+                <>
+                    <Collection newItem="new" {...form.getInputProps('fruits')} allowAdd={false}>
+                        {(name) => <span>{name}</span>}
+                    </Collection>
+                    <div data-testid="form-state">{JSON.stringify(form.values)}</div>
+                </>
+            );
+        };
+
+        render(<Fixture />);
+        expect(screen.getByRole('button', {name: /add/i})).toBeDisabled();
     });
 
     it('disables the add button whenever allowAdd callback returns false', () => {
