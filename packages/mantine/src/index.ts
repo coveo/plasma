@@ -140,6 +140,9 @@ export * from './components/DateRangePicker/DateRangePickerInlineCalendar.js';
 export * from './components/DateRangePicker/DateRangePickerPopoverCalendar.js';
 export * from './components/DateRangePicker/DateRangePickerPresetSelect.js';
 
+// Date Picker Input
+export * from './components/DatePickerInput/DatePickerInput.js';
+
 // Date Time Range Picker
 export * from './components/DateTimeRangePicker/DateTimeRangePicker.js';
 
