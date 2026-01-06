@@ -1,4 +1,4 @@
-import {factory, Select as MantineSelect, SelectFactory} from '@mantine/core';
+import {factory, Select as MantineSelect, type SelectFactory} from '@mantine/core';
 import {readOnlyInputStyles} from '../ReadOnly/ReadOnlyInputStyles.js';
 
 const ReadOnlySelect = MantineSelect.withProps({styles: readOnlyInputStyles});
@@ -9,3 +9,5 @@ export const Select = factory<SelectFactory>((props, ref) => {
     }
     return <MantineSelect ref={ref} {...props} />;
 });
+
+Select.displayName = 'Select';
