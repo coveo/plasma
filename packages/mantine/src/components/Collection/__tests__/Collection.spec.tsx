@@ -294,8 +294,12 @@ describe('Collection', () => {
 
     it('calls newItem function each time an item is added to generate unique values', async () => {
         const user = userEvent.setup();
-        let counter = 0;
-        const newItemFactory = vi.fn().mockImplementation(() => `item-${++counter}`);
+        const newItemFactory = vi.fn().mockImplementation(
+            (() => {
+                let counter = 0;
+                return () => `item-${++counter}`;
+            })(),
+        );
         const Fixture = () => {
             const form = useForm({
                 initialValues: {fruits: ['banana']},
@@ -340,11 +344,15 @@ describe('Collection', () => {
     it('generates items with unique IDs when newItem is a function', async () => {
         const user = userEvent.setup();
         type FruitItem = {id: string; name: string};
-        let idCounter = 0;
-        const newItemFactory = vi.fn().mockImplementation(() => ({
-            id: `id-${++idCounter}`,
-            name: 'new fruit',
-        }));
+        const newItemFactory = vi.fn().mockImplementation(
+            (() => {
+                let idCounter = 0;
+                return () => ({
+                    id: `id-${++idCounter}`,
+                    name: 'new fruit',
+                });
+            })(),
+        );
         const Fixture = () => {
             const form = useForm({
                 initialValues: {fruits: [{id: 'id-0', name: 'banana'}] as FruitItem[]},
