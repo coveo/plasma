@@ -18,7 +18,7 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 - **UI Framework**: React 18+ with Mantine UI library
 - **Build Tool**: SWC for fast TypeScript compilation
 - **Testing**: Vitest with React Testing Library
-- **Package Manager**: pnpm (version 10.25.0)
+- **Package Manager**: pnpm
 
 ## Coding Standards
 
@@ -51,47 +51,39 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 
 - Components: PascalCase (e.g., `Button.tsx`)
 - Utilities: camelCase (e.g., `formatDate.ts`)
-- Tests: Same name as file with `.test.tsx` or `.test.ts` suffix
-- Styles: Same name as component with `.module.scss` or `.scss` suffix
+- Tests: Same name as file with `.spec.tsx` or `.spec.ts` suffix
+- Styles: CSS module with the same name as component with `.module.css` or `.css` suffix
 
 ## Testing Practices
 
 ### Test Framework
 
-- **Vitest**: Primary test runner (replacing Jest/Enzyme)
+- **Vitest**: Primary test runner
 - **React Testing Library**: For component testing
 - **Testing Library principles**: Test user behavior, not implementation details
 
 ### Writing Tests
 
 - All new tests must use Vitest and React Testing Library
-- Avoid using Enzyme (being phased out)
 - Test files should be co-located with source files
 - Use descriptive test names that explain the behavior being tested
+- Avoid using `should` at the start of test names; use present tense instead
+    - **Correct**: `it('returns true when value is valid')`, `it('throws an error')`
+    - **Incorrect**: `it('should return true when value is valid')`, `it('should throw an error')`
 - Run tests in UTC timezone (`TZ=UTC`)
-
-### Running Tests
-
-```bash
-# Run all tests from root
-pnpm test
-
-# Run tests in a specific package
-cd packages/{packageName}
-pnpm test
-
-# Watch mode for development
-pnpm test:watch
-
-# Debug tests in Chrome DevTools
-pnpm test:debug
-```
 
 ### Test Coverage
 
 - Write unit tests for all new components and utilities
 - Focus on user-facing behavior and edge cases
 - Test accessibility features
+
+### Documentation
+
+- Update documentation when making changes to public APIs
+- Keep README files up to date with new features
+- Document complex logic and architectural decisions
+- Add JSDoc comments for exported functions and components
 
 ## Build and Development
 
@@ -153,18 +145,11 @@ Types:
 - `test`: Adding or updating tests
 - `chore`: Maintenance tasks
 
-Examples:
+Examples (specify the subject when possible):
 
-- `feat(mantine): add new Button variant`
-- `fix(tokens): correct primary color value`
+- `feat(mantine, button): add new variant`
+- `fix(tokens, colors): correct primary color value`
 - `docs(readme): update installation instructions`
-
-Use the commit helper if needed:
-
-```bash
-git add .
-pnpm run commit-cli
-```
 
 ### Pull Request Process
 
@@ -217,7 +202,7 @@ pnpm add -Dw <package-name>
 
 1. Create component file in appropriate package under `src/components/`
 2. Write TypeScript component with proper typing
-3. Add tests in co-located `.test.tsx` file
+3. Add tests in co-located `.spec.tsx` file
 4. Export from package's main index file
 5. Add to Storybook if applicable
 6. Update package documentation
@@ -241,7 +226,6 @@ pnpm add -Dw <package-name>
 ### Browser Support
 
 - Support last 1 versions of major browsers
-- IE 11 support included
 - Cover 90% browser usage
 
 ### License
