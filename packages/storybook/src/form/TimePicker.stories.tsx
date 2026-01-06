@@ -1,5 +1,6 @@
 import {TimePicker} from '@coveord/plasma-mantine/components/TimePicker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {Args} from '../Args.js';
 import {BaseInputArgs, InputWrapperArgs} from './InputWrapperArgs.js';
 
 const meta: Meta<typeof TimePicker> = {
@@ -12,18 +13,11 @@ const meta: Meta<typeof TimePicker> = {
         ...InputWrapperArgs.Args,
         ...BaseInputArgs.Args,
         format: '12h',
+        clearable: Args.clearable.initialValue,
     },
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        withSeconds: {
-            control: 'boolean',
-            description: 'Include seconds in the time picker',
-            table: {
-                defaultValue: {summary: 'false'},
-                type: {summary: 'boolean'},
-            },
-        },
         format: {
             control: 'radio',
             options: ['12h', '24h'],
@@ -33,9 +27,10 @@ const meta: Meta<typeof TimePicker> = {
                 type: {summary: "'12h' | '24h'"},
             },
         },
-        clearable: {
+        clearable: Args.clearable.type,
+        withSeconds: {
             control: 'boolean',
-            description: 'Display clear button when value is present',
+            description: 'Include seconds in the time picker',
             table: {
                 defaultValue: {summary: 'false'},
                 type: {summary: 'boolean'},

@@ -1,5 +1,6 @@
 import {MonthPickerInput} from '@coveord/plasma-mantine/components/MonthPickerInput';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {Args} from '../Args.js';
 import {BaseInputArgs, InputWrapperArgs} from './InputWrapperArgs.js';
 
 const meta: Meta<typeof MonthPickerInput> = {
@@ -12,34 +13,15 @@ const meta: Meta<typeof MonthPickerInput> = {
         ...InputWrapperArgs.Args,
         ...BaseInputArgs.Args,
         placeholder: 'Pick a month',
+        type: Args.type.initialValue,
+        clearable: Args.clearable.initialValue,
     },
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        placeholder: {
-            control: 'text',
-            description: 'Placeholder text',
-            table: {
-                type: {summary: 'string'},
-            },
-        },
-        clearable: {
-            control: 'boolean',
-            description: 'Display clear button when value is present',
-            table: {
-                defaultValue: {summary: 'false'},
-                type: {summary: 'boolean'},
-            },
-        },
-        type: {
-            control: 'radio',
-            options: ['default', 'multiple', 'range'],
-            description: 'Picker type',
-            table: {
-                defaultValue: {summary: 'default'},
-                type: {summary: "'default' | 'multiple' | 'range'"},
-            },
-        },
+        placeholder: Args.placeholder.type,
+        type: Args.type.type,
+        clearable: Args.clearable.type,
     },
 };
 export default meta;

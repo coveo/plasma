@@ -289,6 +289,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
         }),
         DatePicker: DatePicker.extend({
+            defaultProps: {
+                firstDayOfWeek: 0,
+            },
             classNames: DatePickerClasses,
         }),
         DateTimePicker: DateTimePicker.extend({

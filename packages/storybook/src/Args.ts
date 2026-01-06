@@ -93,6 +93,34 @@ const placeholder: Arg<string> = {
     initialValue: 'Placeholder',
 };
 
+const clearable: Arg<boolean> = {
+    type: {
+        control: 'boolean',
+        description: 'Display clear button when value is present',
+        table: {
+            defaultValue: {summary: 'false'},
+            type: {summary: 'boolean'},
+        },
+    },
+    initialValue: undefined,
+};
+
+/**
+ * Type of date picker
+ */
+const type: Arg<'default' | 'multiple' | 'range'> = {
+    type: {
+        control: 'radio',
+        options: ['default', 'multiple', 'range'],
+        description: 'Picker type',
+        table: {
+            defaultValue: {summary: 'default'},
+            type: {summary: "'default' | 'multiple' | 'range'"},
+        },
+    },
+    initialValue: 'default',
+};
+
 export const Args = {
     label,
     description,
@@ -101,4 +129,6 @@ export const Args = {
     disabled,
     readOnly,
     placeholder,
+    clearable,
+    type,
 } as const;
