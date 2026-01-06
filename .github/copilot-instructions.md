@@ -18,7 +18,7 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 - **UI Framework**: React 18+ with Mantine UI library
 - **Build Tool**: SWC for fast TypeScript compilation
 - **Testing**: Vitest with React Testing Library
-- **Package Manager**: pnpm (version 10.25.0+)
+- **Package Manager**: pnpm (version 10.25.0)
 
 ## Coding Standards
 
@@ -163,7 +163,7 @@ Use the commit helper if needed:
 
 ```bash
 git add .
-npm run commit-cli
+pnpm run commit-cli
 ```
 
 ### Pull Request Process
@@ -240,7 +240,7 @@ pnpm add -Dw <package-name>
 
 ### Browser Support
 
-- Support last 1 version of major browsers
+- Support last 1 versions of major browsers
 - IE 11 support included
 - Cover 90% browser usage
 
