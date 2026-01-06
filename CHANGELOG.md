@@ -1,3 +1,24 @@
+## 56.15.0 (2026-01-06)
+
+* feat(storybook,mantine): component Collection storybook (#4272) 38fbf50, closes #4272
+* feat: component ChildForm storybook (#4273) c27ebe8, closes #4273
+* feat: component CodeEditor storybook (#4274) 3e3e4fc, closes #4274
+* feat: component MonthPickerInput storybook (#4279) d0963a2, closes #4279
+* feat: component MultiSelect storybook (#4271) 131300c, closes #4271
+* feat: component NumberInput storybook (#4265) 248daaf, closes #4265
+* feat: component Select storybook (#4270) 98d690b, closes #4270
+* feat: component Textarea storybook (#4263) 8cde127, closes #4263
+* feat: component TextInput storybook (#4262) e789fd6, closes #4262
+* feat: component TimePicker storybook (#4276) 48b619a, closes #4276
+* feat: component YearPickerInput storybook (#4278) 0648773, closes #4278
+* chore(deps): lock file maintenance (#4260) c1b34c1, closes #4260
+* chore(deps): update actions/upload-artifact action to v6 (#4259) cc2025d, closes #4259
+* chore(deps): update dependency storybook to v10.1.10 [security] (#4255) 7c9eb7a, closes #4255
+* fix(figma): update Card code connect (#4269) 947c0b3, closes #4269
+* fix(mantine): set proper displayName on each component (#4266) 0a36d57, closes #4266 #4275
+
+
+
 ## 56.14.0 (2025-12-29)
 
 * Ad UI 11058 alert codeconnect (#4231) 25cde4e, closes #4231
