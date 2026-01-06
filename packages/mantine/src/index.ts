@@ -143,6 +143,9 @@ export * from './components/DateRangePicker/DateRangePickerPresetSelect.js';
 // Date Time Range Picker
 export * from './components/DateTimeRangePicker/DateTimeRangePicker.js';
 
+// Time Picker
+export * from './components/TimePicker/TimePicker.js';
+
 // Dialog
 export * from './components/Dialog/Dialog.js';
 

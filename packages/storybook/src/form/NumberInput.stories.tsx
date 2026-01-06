@@ -1,7 +1,7 @@
 import {NumberInput} from '@coveord/plasma-mantine/components/NumberInput';
 import {IconCoins} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {InputArgs, InputArgTypes, InputWrapperArgs, InputWrapperArgTypes} from './InputArgs.js';
+import {BaseInputArgs, InputWrapperArgs} from './InputWrapperArgs.js';
 
 const meta: Meta<typeof NumberInput> = {
     title: '@components/form/NumberInput',
@@ -10,14 +10,14 @@ const meta: Meta<typeof NumberInput> = {
         layout: 'centered',
     },
     args: {
-        ...InputWrapperArgs,
-        ...InputArgs,
+        ...InputWrapperArgs.Args,
+        ...BaseInputArgs.Args,
         leftSection: false,
         defaultValue: 0,
     },
     argTypes: {
-        ...InputWrapperArgTypes,
-        ...InputArgTypes,
+        ...InputWrapperArgs.ArgsTypes,
+        ...BaseInputArgs.ArgsTypes,
         leftSection: {
             control: 'boolean',
             description: 'Show icon in left section',

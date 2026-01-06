@@ -1,6 +1,7 @@
 import {Textarea} from '@coveord/plasma-mantine/components/Textarea';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {InputArgs, InputArgTypes, InputWrapperArgs, InputWrapperArgTypes} from './InputArgs.js';
+import {Args} from '../Args.js';
+import {BaseInputArgs, InputWrapperArgs} from './InputWrapperArgs.js';
 
 const meta: Meta<typeof Textarea> = {
     title: '@components/form/Textarea',
@@ -9,12 +10,14 @@ const meta: Meta<typeof Textarea> = {
         layout: 'centered',
     },
     args: {
-        ...InputWrapperArgs,
-        ...InputArgs,
+        ...InputWrapperArgs.Args,
+        ...BaseInputArgs.Args,
+        placeholder: Args.placeholder.initialValue,
     },
     argTypes: {
-        ...InputWrapperArgTypes,
-        ...InputArgTypes,
+        ...InputWrapperArgs.ArgsTypes,
+        ...BaseInputArgs.ArgsTypes,
+        placeholder: Args.placeholder.type,
         rows: {
             control: 'number',
             description: 'Number of visible text lines',
