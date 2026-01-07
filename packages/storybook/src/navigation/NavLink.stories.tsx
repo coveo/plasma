@@ -2,6 +2,7 @@ import {Badge} from '@coveord/plasma-mantine';
 import {NavLink} from '@coveord/plasma-mantine/components/NavLink';
 import {IconHome2} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {BaseInputArgs, InputWrapperArgs} from '../form/InputWrapperArgs.js';
 
 const meta: Meta<typeof NavLink> = {
     title: '@components/navigation/NavLink',
@@ -10,22 +11,8 @@ const meta: Meta<typeof NavLink> = {
         layout: 'centered',
     },
     argTypes: {
-        label: {
-            control: 'text',
-            description: 'The label of the NavLink',
-            table: {
-                type: {summary: 'string'},
-                defaultValue: {summary: 'NavLink'},
-            },
-        },
-        disabled: {
-            control: 'boolean',
-            description: 'Whether the NavLink is disabled',
-            table: {
-                type: {summary: 'boolean'},
-                defaultValue: {summary: 'false'},
-            },
-        },
+        label: InputWrapperArgs.ArgsTypes.label,
+        disabled: BaseInputArgs.ArgsTypes.disabled,
         href: {
             control: 'text',
             description: 'The href of the NavLink',
