@@ -15,7 +15,8 @@ import {InfoToken} from '../../InfoToken/InfoToken.js';
 export type HeaderDocAnchorStyleNames = 'docAnchorTooltip' | 'docAnchor';
 
 export interface HeaderDocAnchorProps
-    extends Pick<TooltipProps, 'position'>,
+    extends
+        Pick<TooltipProps, 'position'>,
         CompoundStylesApiProps<HeaderDocAnchorFactory>,
         Omit<AnchorProps, 'classNames' | 'styles' | 'variant' | 'vars'> {
     /**
@@ -70,3 +71,5 @@ export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => 
         </Tooltip>
     );
 });
+
+HeaderDocAnchor.displayName = 'Header.DocAnchor';
