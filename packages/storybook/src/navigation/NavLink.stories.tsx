@@ -23,8 +23,8 @@ const meta: Meta<typeof NavLink> = {
         },
     } as any,
     args: {
-        label: 'NavLink',
-        disabled: false,
+        label: InputWrapperArgs.Args.label,
+        disabled: BaseInputArgs.Args.disabled,
         href: '#',
     },
 };
