@@ -360,6 +360,7 @@ export * from './components/StatusToken/StatusToken.js';
 export * from './components/Stepper/Stepper.js';
 
 // Sticky Footer
+
 export * from './components/StickyFooter/StickyFooter.js';
 
 // Switch
