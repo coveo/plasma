@@ -70,8 +70,7 @@ describe('Facet', () => {
         expect(screen.getByRole('option', {name: /Charlie/i, selected: true})).toBeVisible();
     });
 
-    // TODO: fix this test once we're able to render the component to test it out
-    it.skip('handles keyboard navigation when there is no search', async () => {
+    it('handles keyboard navigation when there is no search', async () => {
         const user = userEvent.setup();
         render(
             <Facet
@@ -83,19 +82,30 @@ describe('Facet', () => {
             />,
         );
 
-        await user.click(screen.getByRole('option', {name: /Alpha/i}));
+        // Focus the facet container (the ScrollArea with tabindex=0)
+        // This is the EventsTarget that handles keyboard navigation
+        const container = screen.getByRole('listbox').parentElement?.parentElement?.parentElement;
+        container?.focus();
+
+        // Arrow down to navigate to Alpha (starts at nothing selected)
+        await user.keyboard('{arrowdown}');
+        await user.keyboard('{enter}');
         expect(screen.getByRole('option', {name: /Alpha/i, selected: true})).toBeVisible();
 
-        await user.tab(); // moves the hover from Alpha to Bravo
-        await user.keyboard('{enter}'); // selects Bravo
+        // Arrow down to navigate to Bravo
+        await user.keyboard('{arrowdown}');
+        await user.keyboard('{enter}');
         expect(screen.getByRole('option', {name: /Bravo/i, selected: true})).toBeVisible();
 
-        await user.tab(); // moves the hover from Bravo to Charlie
-        await user.keyboard('{enter}'); // selects Charlie
+        // Arrow down to navigate to Charlie
+        await user.keyboard('{arrowdown}');
+        await user.keyboard('{enter}');
         expect(screen.getByRole('option', {name: /Charlie/i, selected: true})).toBeVisible();
 
-        await user.tab({shift: true}); // moves the hover from Charlie to Bravo
-        await user.keyboard('{enter}'); // unselects Bravo
+        // Arrow up to navigate back to Bravo
+        await user.keyboard('{arrowup}');
+        await user.keyboard('{enter}');
+        // Bravo should now be unselected (toggling off)
         expect(screen.getByRole('option', {name: /Bravo/i, selected: false})).toBeVisible();
     });
 
@@ -200,11 +210,11 @@ describe('Facet', () => {
             render(<Facet data={makeData(10)} />);
 
             await user.click(screen.getByRole('textbox')); // put the focus on the textbox
-            await user.type(screen.getByRole('textbox'), '{arrowdown}{arrowdown}{enter}'); // moves the hover from 1 to 2 to 3, then select
+            await user.type(screen.getByRole('textbox'), '{arrowdown}{arrowdown}{enter}'); // starts at none, moves to 1, then to 2, then select 2
 
             expect(screen.getByRole('option', {name: /2/i, selected: true})).toBeVisible();
 
-            await user.type(screen.getByRole('textbox'), '{arrowup}{enter}'); // moves the hover from 3 to 2, then select
+            await user.type(screen.getByRole('textbox'), '{arrowup}{enter}'); // moves from 2 to 1, then select 1
 
             expect(screen.getByRole('option', {name: /1/i, selected: true})).toBeVisible();
         });

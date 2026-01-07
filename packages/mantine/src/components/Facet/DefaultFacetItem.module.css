@@ -1,0 +1,8 @@
+.root {
+    pointer-events: none;
+    display: flex;
+}
+
+.count {
+    white-space: nowrap;
+}

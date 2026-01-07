@@ -15,7 +15,7 @@ import {
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
 import {clsx} from 'clsx';
-import {FunctionComponent, ReactElement, ReactNode} from 'react';
+import {FunctionComponent, ReactElement, ReactNode, useEffect} from 'react';
 import {groupOptions} from '../../utils/groupOptions.js';
 import {ActionIcon} from '../ActionIcon/ActionIcon.js';
 import {DefaultFacetItem} from './DefaultFacetItem.js';
@@ -71,7 +71,7 @@ export interface FacetProps extends BoxProps, StylesApiProps<FacetFactory> {
      * Function to format the facet item count
      *
      * @param count
-     * @default NumberFormatter.integerFull format
+     * @default (count) => count.toString()
      */
     itemCountFormatter?: (value: number) => string;
     /**
@@ -214,22 +214,21 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
 
     let groupName: string = null;
 
+    useEffect(() => {
+        combobox.openDropdown();
+    }, []);
+
     sortedData.forEach((item) => {
+        const isSelected = _selection.includes(item.value);
         const itemComponent = (
             <Combobox.Option
-                active={_selection.includes(item.value)}
-                aria-selected={_selection.includes(item.value)}
+                aria-selected={isSelected ? true : false}
                 value={item.value}
                 key={item.value}
                 onMouseEnter={() => combobox.resetSelectedOption()}
                 className={clsx(classes.facetItem)}
-                tabIndex={data.length > 8 ? -1 : 1} // only remove the tabIndex if there is no search bar
             >
-                <ItemComponent
-                    data={item}
-                    selected={_selection.includes(item.value)}
-                    countFormatter={itemCountFormatter}
-                />
+                <ItemComponent data={item} selected={isSelected} countFormatter={itemCountFormatter} />
             </Combobox.Option>
         );
 
@@ -250,14 +249,14 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
 
     if (groupedItems.length > 0 && unGroupedItems.length > 0) {
         unGroupedItems.unshift(
-            <div className={classes.separator}>
+            <div className={classes.separator} key="ungrouped-separator">
                 <Divider unstyled={unstyled} classNames={{label: classes.separatorLabel}} />
             </div>,
         );
     }
 
     return (
-        <Box className={clsx(classes.facet, className)} {...others}>
+        <Box className={clsx(classes.facet, className)} {...others} ref={ref}>
             <Combobox store={combobox} onOptionSubmit={handleValueSelect}>
                 <Combobox.EventsTarget>
                     <Box className={classes.facetHeader}>
@@ -272,6 +271,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                             }}
                             placeholder={searchPlaceholder}
                             aria-hidden={hideSearch}
+                            tabIndex={hideSearch ? -1 : undefined}
                             className={clsx(classes.facetSearch, {[classes.hiddenSearch]: hideSearch})}
                             rightSection={
                                 search ? (
@@ -292,26 +292,29 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                     </Box>
                 </Combobox.EventsTarget>
                 <div className={classes.facetBody}>
-                    <ListComponent
-                        className={classes.facetItems}
-                        mah={height}
-                        style={{overflow: 'auto', position: 'relative'}}
-                    >
-                        <Combobox.Options>
-                            {groupedItems.length > 0 || unGroupedItems.length > 0 ? (
-                                <>
-                                    {groupedItems}
-                                    {unGroupedItems}
-                                </>
-                            ) : (
-                                <Combobox.Empty>
-                                    <Text c="dimmed" unstyled={unstyled} size="sm" ta="center" my="sm">
-                                        {!query && placeholder ? placeholder : nothingFound}
-                                    </Text>
-                                </Combobox.Empty>
-                            )}
-                        </Combobox.Options>
-                    </ListComponent>
+                    <Combobox.EventsTarget>
+                        <ListComponent
+                            className={classes.facetItems}
+                            mah={height}
+                            style={{overflow: 'auto', position: 'relative'}}
+                            tabIndex={hideSearch ? 0 : undefined}
+                        >
+                            <Combobox.Options aria-multiselectable="true">
+                                {groupedItems.length > 0 || unGroupedItems.length > 0 ? (
+                                    <>
+                                        {groupedItems}
+                                        {unGroupedItems}
+                                    </>
+                                ) : (
+                                    <Combobox.Empty>
+                                        <Text c="dimmed" unstyled={unstyled} size="sm" ta="center" my="sm">
+                                            {!search && placeholder ? placeholder : nothingFound}
+                                        </Text>
+                                    </Combobox.Empty>
+                                )}
+                            </Combobox.Options>
+                        </ListComponent>
+                    </Combobox.EventsTarget>
                 </div>
             </Combobox>
         </Box>

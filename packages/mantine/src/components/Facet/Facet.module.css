@@ -23,13 +23,13 @@
         color: var(--mantine-color-gray-9);
     }
 
-    &[aria-selected='true'] {
-        color: var(--mantine-color-gray-9);
-        background-color: var(--mantine-color-white);
+    &[aria-selected='true'],
+    &[data-combobox-selected='true'] {
+        background-color: var(--mantine-color-gray-light);
 
         @mixin hover {
             color: var(--mantine-color-gray-9);
-            background-color: var(--mantine-color-gray-1);
+            background-color: var(--mantine-color-gray-light-hover);
         }
     }
 }
@@ -49,7 +49,7 @@
 }
 
 .hiddenSearch {
-    display: none;
+    display: none !important;
 }
 
 .facetBody {
@@ -61,6 +61,7 @@
 }
 
 .facetSearch {
+    display: block;
     margin-top: var(--mantine-spacing-sm);
 }
 
@@ -73,6 +74,6 @@
 
 .separatorLabel {
     @mixin light {
-        color: 1px solid var(--mantine-color-gray-5);
+        color: var(--mantine-color-gray-5);
     }
 }

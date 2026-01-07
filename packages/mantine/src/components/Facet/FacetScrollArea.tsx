@@ -2,9 +2,9 @@ import {ScrollArea, ScrollAreaProps} from '@mantine/core';
 import {forwardRef} from 'react';
 
 export const FacetScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
-    ({style, ...others}: ScrollAreaProps, ref) => (
+    ({style, children, ...others}: ScrollAreaProps, ref) => (
         <ScrollArea {...others} style={{width: '100%', ...style}} viewportRef={ref}>
-            {others.children}
+            {children}
         </ScrollArea>
     ),
 );

@@ -1,5 +1,6 @@
 import {Checkbox, Text} from '@mantine/core';
 import {memo} from 'react';
+import classes from './DefaultFacetItem.module.css';
 import {FacetItemComponent, FacetItemComponentProps} from './FacetTypes.js';
 
 export const DefaultFacetItem: FacetItemComponent = memo(
@@ -12,16 +13,14 @@ export const DefaultFacetItem: FacetItemComponent = memo(
                 <>
                     {data.label}
                     {data.count !== undefined ? (
-                        <>
-                            <Text span c="gray.6" ml="xs" style={{whiteSpace: 'nowrap'}}>
-                                ({countFormatter?.(data.count) ?? data.count})
-                            </Text>
-                        </>
+                        <Text span c="dimmed" ml="xs" className={classes.count}>
+                            ({countFormatter?.(data.count) ?? data.count})
+                        </Text>
                     ) : null}
                 </>
             }
             tabIndex={-1}
-            style={{pointerEvents: 'none', display: 'flex'}}
+            className={classes.root}
         />
     ),
 );
