@@ -18,9 +18,7 @@ import classes from './EllipsisText.module.css';
 export type EllipsisTextStylesNames = 'root' | 'tooltip' | 'text';
 
 export interface EllipsisTextProps
-    extends BoxProps,
-        Pick<TextProps, 'variant' | 'lineClamp'>,
-        Omit<StylesApiProps<EllipsisTextFactory>, 'variant'> {
+    extends BoxProps, Pick<TextProps, 'variant' | 'lineClamp'>, Omit<StylesApiProps<EllipsisTextFactory>, 'variant'> {
     children: ReactNode;
     tooltipProps?: Partial<Omit<TooltipProps, 'label' | 'opened' | 'children'>>;
 }
@@ -52,7 +50,7 @@ export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref)
     });
 
     const [showTooltip, setShowTooltip] = useState(false);
-    const textRef = useRef<HTMLDivElement>();
+    const textRef = useRef<HTMLDivElement>(null);
 
     const {className: rootClass, ...rootStyles} = getStyles('root');
     const {className: textClass, ...textStyles} = getStyles('text');

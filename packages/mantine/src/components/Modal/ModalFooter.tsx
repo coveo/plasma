@@ -19,7 +19,7 @@ const ensuresFooterHasEvenHeight = (footer: HTMLElement) => {
 };
 
 export const ModalFooter = factory<ModalFooterFactory>((props, ref) => {
-    const _ref = useRef<HTMLDivElement>();
+    const _ref = useRef<HTMLDivElement>(null);
 
     const footerRef = ref || _ref;
 

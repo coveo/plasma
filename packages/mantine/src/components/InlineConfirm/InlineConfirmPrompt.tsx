@@ -61,16 +61,16 @@ export const InlineConfirmPrompt = factory<InlineConfirmPromptFactory>((props, r
             'InlineConfirm.Prompt component cancel & confirm props should be elements or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported',
         );
     }
-    const cancelEl = cloneElement(cancel, {
+    const cancelEl = cloneElement(cancel as ReactElement<{onClick?: () => void}>, {
         onClick: () => {
-            cancel.props.onClick?.();
+            (cancel as ReactElement<{onClick?: () => void}>).props.onClick?.();
             onCancel?.();
             clearConfirm();
         },
     });
-    const confirmEl = cloneElement(confirm, {
+    const confirmEl = cloneElement(confirm as ReactElement<{onClick?: () => void}>, {
         onClick: () => {
-            confirm.props.onClick?.();
+            (confirm as ReactElement<{onClick?: () => void}>).props.onClick?.();
             onConfirm?.();
             clearConfirm();
         },
