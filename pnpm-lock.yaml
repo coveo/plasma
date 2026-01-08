@@ -78,8 +78,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0(@typescript-eslint/eslint-plugin@8.49.0(@typescript-eslint/parser@8.49.0(eslint@9.39.1(jiti@2.6.0))(typescript@5.9.3))(eslint@9.39.1(jiti@2.6.0))(typescript@5.9.3))(eslint@9.39.1(jiti@2.6.0))
       globals:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 17.0.0
+        version: 17.0.0
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -479,8 +479,8 @@ importers:
         specifier: 4.2.2
         version: 4.2.2(@swc/helpers@0.5.17)(vite@7.2.7(@types/node@24.10.1)(jiti@2.6.0)(sugarss@5.0.1(postcss@8.5.6))(yaml@2.8.1))
       globals:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 17.0.0
+        version: 17.0.0
       postcss-preset-mantine:
         specifier: 1.18.0
         version: 1.18.0(postcss@8.5.6)
@@ -4080,8 +4080,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@16.5.0:
-    resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+  globals@17.0.0:
+    resolution: {integrity: sha512-gv5BeD2EssA793rlFWVPMMCqefTlpusw6/2TbAVMy0FzcG8wKJn4O+NqJ4+XWmmwrayJgw5TzrmWjFgmz1XPqw==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -10610,7 +10610,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@16.5.0: {}
+  globals@17.0.0: {}
 
   globalthis@1.0.4:
     dependencies:
