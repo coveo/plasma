@@ -39,7 +39,9 @@ export const InlineConfirm = ((_props) => {
 
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const prompt = convertedChildren.find(
-        (child) => child.type !== InlineConfirmTarget && child.props?.inlineConfirmId === confirmingId,
+        (child) =>
+            child.type !== InlineConfirmTarget &&
+            (child.props as InlineConfirmComponentsProps)?.inlineConfirmId === confirmingId,
     );
     const clearConfirm = () => setConfirmingId(null);
     return (
