@@ -34,7 +34,7 @@
         "@types/react": "19.2.7",
         "@types/react-dom": "19.0.6",
         "@vitejs/plugin-react-swc": "4.2.2",
-        "globals": "16.5.0",
+        "globals": "17.0.0",
         "postcss-preset-mantine": "1.18.0",
         "storybook": "10.1.10",
         "typescript": "5.9.3",
