@@ -264,14 +264,15 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     );
 
     const canEdit = !disabled && !readOnly;
-    const hasOnlyOneItem = value.length === 1;
+    const items = value ?? [];
+    const hasOnlyOneItem = items.length === 1;
 
     /**
      * Enforcing onChange when the value is modified will make sure the errors are carried through.
      */
     useDidUpdate(() => {
-        onChange?.(value);
-    }, [JSON.stringify(value)]);
+        onChange?.(items);
+    }, [JSON.stringify(items)]);
 
     const isRequired = typeof withAsterisk === 'boolean' ? withAsterisk : required;
     const _label = label ? (
@@ -296,7 +297,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
             </Stack>
         ) : null;
 
-    const standardizedItems = value.map((item, index) => ({id: getItemId?.(item, index) ?? String(index), data: item}));
+    const standardizedItems = items.map((item, index) => ({id: getItemId?.(item, index) ?? String(index), data: item}));
 
     const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);
 
@@ -310,7 +311,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         }
     };
 
-    const addAllowed = typeof allowAdd === 'boolean' ? allowAdd : (allowAdd?.(value) ?? true);
+    const addAllowed = typeof allowAdd === 'boolean' ? allowAdd : (allowAdd?.(items) ?? true);
 
     const _addButton = canEdit ? (
         <Box className={classes.addButtonContainer}>
@@ -318,7 +319,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                 leftSection={<IconPlus size={16} />}
                 onClick={() => {
                     const newItemValue = typeof newItem === 'function' ? (newItem as () => T)() : newItem;
-                    onInsertItem(newItemValue, value?.length ?? 0);
+                    onInsertItem(newItemValue, items?.length ?? 0);
                 }}
                 disabled={!addAllowed}
                 disabledTooltip={addDisabledTooltip}
@@ -350,7 +351,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                                 />
                                 <Layout.Body
                                     columns={columns}
-                                    items={value}
+                                    items={items}
                                     onRemove={canEdit ? onRemoveItem : undefined}
                                     removable={!(isRequired && hasOnlyOneItem)}
                                     draggable={draggable}
