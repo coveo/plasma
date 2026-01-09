@@ -2,8 +2,10 @@
  * Local ESLint rules for plasma project
  */
 
-module.exports = {
+import requireRefInFactory from './require-ref-in-factory.js';
+
+export default {
     rules: {
-        'require-ref-in-factory': require('./require-ref-in-factory.js'),
+        'require-ref-in-factory': requireRefInFactory,
     },
 };

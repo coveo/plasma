@@ -3,7 +3,7 @@
  * @fileoverview Flags calls to identifiers named 'factory' or 'polymorphicFactory' that omit ref parameter
  */
 
-module.exports = {
+export default {
     meta: {
         type: 'problem',
         docs: {
