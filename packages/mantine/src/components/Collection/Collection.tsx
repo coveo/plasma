@@ -116,7 +116,7 @@ interface BaseCollectionProps<T> extends __InputWrapperProps, BoxProps, StylesAp
      *
      * @default 'There is already an empty item'
      */
-    addDisabledTooltip?: ReactNode;
+    addDisabledTooltip?: string;
     /**
      * The gap between the collection items
      *
@@ -138,7 +138,7 @@ interface CollectionWithColumns<T> extends BaseCollectionProps<T> {
     /**
      * Column definitions for the collection
      */
-    columns: CollectionColumnDef<T>[];
+    columns: Array<CollectionColumnDef<T>>;
 
     /**
      * Layout component to use for rendering
@@ -370,7 +370,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     }
 
     // Legacy children render prop pattern
-    const items = standardizedItems.map((item, index) => (
+    const renderedItems = standardizedItems.map((item, index) => (
         <CollectionItem
             key={item.id}
             id={item.id}
@@ -394,7 +394,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                     <Box ref={ref} {...others} {...getStyles('root')}>
                         {_header}
                         <Stack gap={gap} {...getStyles('items')}>
-                            {items}
+                            {renderedItems}
                             {_addButton}
                         </Stack>
                         {_error}

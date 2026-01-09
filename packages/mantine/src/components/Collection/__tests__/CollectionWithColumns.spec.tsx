@@ -210,7 +210,7 @@ describe('Collection with columns', () => {
         });
 
         it('renders items in rows with remove buttons', async () => {
-            const user = userEvent.setup();
+            const _user = userEvent.setup();
             const Fixture = () => {
                 const form = useForm({
                     initialValues: {items: [{name: 'Alice', email: 'alice@example.com'}]},
@@ -445,7 +445,7 @@ describe('Collection with columns', () => {
     describe('Backward compatibility', () => {
         it('throws error when both columns and children are provided', () => {
             // Suppress console.error for this test
-            const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+            const consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
             const Fixture = () => {
                 const form = useForm({
@@ -478,7 +478,7 @@ describe('Collection with columns', () => {
 
         it('throws error when layout is provided without columns', () => {
             // Suppress console.error for this test
-            const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+            const consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
             const Fixture = () => {
                 const form = useForm({

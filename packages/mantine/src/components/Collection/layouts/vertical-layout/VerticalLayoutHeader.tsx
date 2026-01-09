@@ -9,7 +9,7 @@ export type VerticalLayoutHeaderStyleNames = never;
 export interface VerticalLayoutHeaderProps<T>
     extends BoxProps,
         CompoundStylesApiProps<VerticalLayoutBodyFactory> {
-    columns: CollectionColumnDef<T>[];
+    columns: Array<CollectionColumnDef<T>>;
     draggable?: boolean;
     removable?: boolean;
 }
@@ -25,7 +25,7 @@ type VerticalLayoutHeaderFactory = Factory<{
  * VerticalLayout doesn't have a global header - headers are shown per item
  * This component returns null but exists to maintain the layout interface
  */
-export const VerticalLayoutHeader = <T,>(_props: VerticalLayoutHeaderProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
+export const VerticalLayoutHeader = <T,>(_props: VerticalLayoutHeaderProps<T> & {ref?: ForwardedRef<HTMLDivElement>}): null => {
     return null;
 };
 

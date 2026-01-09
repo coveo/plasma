@@ -11,8 +11,8 @@ import {useHorizontalLayout} from './HorizontalLayoutContext.js';
 export type HorizontalLayoutBodyStylesNames = 'row' | 'cell' | 'dragHandle' | 'removeButton';
 
 export interface HorizontalLayoutBodyProps<T> extends BoxProps, CompoundStylesApiProps<HorizontalLayoutBodyFactory> {
-    columns: CollectionColumnDef<T>[];
-    items: T[];
+    columns: Array<CollectionColumnDef<T>>;
+    items: Array<T>; // Required for Body
     onRemove?: (index: number) => void;
     removable?: boolean;
     draggable?: boolean;
@@ -39,7 +39,7 @@ interface RowProps<T> {
     item: T;
     index: number;
     id: string;
-    columns: CollectionColumnDef<T>[];
+    columns: Array<CollectionColumnDef<T>>;
     onRemove?: () => void;
     removable?: boolean;
     draggable?: boolean;
@@ -230,10 +230,10 @@ export const HorizontalLayoutBody = <T,>(
         disabled,
         getItemId,
         gap,
-        classNames,
-        className,
-        styles,
-        style,
+        classNames: _classNames,
+        className: _className,
+        styles: _styles,
+        style: _style,
         ref,
         ...others
     } = useProps('HorizontalLayoutBody', defaultProps as HorizontalLayoutBodyProps<T>, props);

@@ -6,10 +6,10 @@ import {CollectionColumnDef} from '../CollectionColumn.types.js';
  */
 export interface CollectionLayoutProps<T = unknown> {
     /** Array of column definitions */
-    columns: CollectionColumnDef<T>[];
+    columns: Array<CollectionColumnDef<T>>;
 
     /** Items to render */
-    items: T[];
+    items?: Array<T>;
 
     /** Callback to remove an item */
     onRemove?: (index: number) => void;

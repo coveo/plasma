@@ -11,6 +11,7 @@ export interface CollectionHeaderContext {
 /**
  * Context provided to cell render functions
  */
+// eslint-disable-next-line unused-imports/no-unused-vars
 export interface CollectionCellContext<T = unknown> {
     /** Whether the item can be removed */
     removable?: boolean;
