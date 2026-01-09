@@ -1,11 +1,12 @@
-import {DragAndDropSize24Px, IconTrash} from '@coveord/plasma-react-icons';
-import {useSortable} from '@dnd-kit/sortable';
-import {CSS} from '@dnd-kit/utilities';
 import {Box, BoxProps, CompoundStylesApiProps, Factory, MantineSpacing, Stack, useProps} from '@mantine/core';
-import {ForwardedRef, ReactNode} from 'react';
+import {ForwardedRef, useMemo} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
-import {ActionIcon} from '../../../ActionIcon/ActionIcon.js';
-import {CollectionCellContext, CollectionColumnDef, CollectionHeaderContext} from '../../CollectionColumn.types.js';
+import {CollectionColumnDef} from '../../CollectionColumn.types.js';
+import {DragHandle} from '../shared/DragHandle.js';
+import {renderColumnHeader} from '../shared/headerUtils.js';
+import {createItemRenderers, ItemContentRenderer, mapItemsToComponents} from '../shared/itemRenderer.js';
+import {LAYOUT_BODY_DEFAULT_PROPS} from '../shared/layoutConstants.js';
+import {RemoveButton} from '../shared/RemoveButton.js';
 import {useVerticalLayout} from './VerticalLayoutContext.js';
 
 export type VerticalLayoutBodyStylesNames =
@@ -36,157 +37,61 @@ export type VerticalLayoutBodyFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<VerticalLayoutBodyProps<unknown>> = {
-    removable: true,
-    draggable: false,
-    disabled: false,
-    gap: 'md',
-};
+const defaultProps: Partial<VerticalLayoutBodyProps<unknown>> = LAYOUT_BODY_DEFAULT_PROPS;
 
-interface ItemProps<T> {
-    item: T;
-    index: number;
-    id: string;
-    columns: Array<CollectionColumnDef<T>>;
-    onRemove?: () => void;
-    removable?: boolean;
-    draggable?: boolean;
-    disabled?: boolean;
-}
-
-const renderHeader = (header: CollectionColumnDef<unknown>['header'], index: number): ReactNode => {
-    if (typeof header === 'function') {
-        const context: CollectionHeaderContext = {index};
-        return header(context);
-    }
-    return header;
-};
-
-const DraggableItem = <T,>({item, index, id, columns, onRemove, removable, disabled}: ItemProps<T>) => {
-    const ctx = useVerticalLayout();
-    const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
-        id,
-    });
-
-    const cellContext: CollectionCellContext<T> = {
-        removable,
-        draggable: true,
-        disabled,
-        onRemove,
-    };
-
-    return (
-        <Box
-            ref={setNodeRef}
-            data-testid={`item-${id}`}
-            {...ctx.getStyles('item')}
-            style={{
-                ...(transform
-                    ? {
-                          transform: CSS.Transform.toString(transform),
-                          transition,
-                      }
-                    : undefined),
-                ...ctx.getStyles('item').style,
-            }}
-            data-isdragging={isDragging}
-        >
-            <Box {...ctx.getStyles('itemHeader')}>
-                <div ref={setActivatorNodeRef} {...listeners} {...attributes} {...ctx.getStyles('dragHandle')}>
-                    <DragAndDropSize24Px height={16} />
-                </div>
-                {removable && onRemove && (
-                    <Box {...ctx.getStyles('removeButton')}>
-                        <ActionIcon.Quaternary onClick={onRemove}>
-                            <IconTrash aria-label="Remove" size={16} />
-                        </ActionIcon.Quaternary>
+/**
+ * Vertical layout specific content renderer - renders stacked fields with labels
+ */
+const renderVerticalContent: ItemContentRenderer<any> = (item, index, columns, cellContext, getStyles) => (
+    <>
+        {cellContext.removable && cellContext.onRemove && !cellContext.draggable && (
+            <Box {...getStyles('itemHeader')}>
+                <div />
+                <RemoveButton removable={cellContext.removable} onRemove={cellContext.onRemove} getStyles={getStyles} />
+            </Box>
+        )}
+        <Box {...getStyles('fieldGroup')}>
+            {columns.map((column, colIndex) => {
+                const columnId = column.id ?? `column-${colIndex}`;
+                const header = renderColumnHeader(column.header, colIndex);
+                return (
+                    <Box key={columnId} {...getStyles('field')}>
+                        {header && <Box {...getStyles('fieldLabel')}>{header}</Box>}
+                        <Box {...getStyles('fieldContent')}>{column.cell(item, index, cellContext)}</Box>
                     </Box>
-                )}
-            </Box>
-            <Box {...ctx.getStyles('fieldGroup')}>
-                {columns.map((column, colIndex) => {
-                    const columnId = column.id ?? `column-${colIndex}`;
-                    const header = renderHeader(column.header, colIndex);
-                    return (
-                        <Box key={columnId} {...ctx.getStyles('field')}>
-                            {header && <Box {...ctx.getStyles('fieldLabel')}>{header}</Box>}
-                            <Box {...ctx.getStyles('fieldContent')}>{column.cell(item, index, cellContext)}</Box>
-                        </Box>
-                    );
-                })}
-            </Box>
+                );
+            })}
         </Box>
-    );
-};
+    </>
+);
 
-const StaticItem = <T,>({item, index, id, columns, onRemove, removable, disabled}: ItemProps<T>) => {
+/**
+ * Custom header renderer for draggable vertical items
+ */
+const renderVerticalDraggableHeader = (
+    onRemove: (() => void) | undefined,
+    removable: boolean | undefined,
+    setActivatorNodeRef: (element: HTMLElement | null) => void,
+    listeners: any,
+    attributes: any,
+    getStyles: any,
+) => (
+    <Box {...getStyles('itemHeader')}>
+        <DragHandle
+            setActivatorNodeRef={setActivatorNodeRef}
+            listeners={listeners}
+            attributes={attributes}
+            getStyles={getStyles}
+        />
+        {removable && onRemove && <RemoveButton removable={removable} onRemove={onRemove} getStyles={getStyles} />}
+    </Box>
+);
+
+// Create renderers once - they are stable component references
+const verticalRenderers = createItemRenderers<any>();
+
+export const VerticalLayoutBody = <T,>(props: VerticalLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const ctx = useVerticalLayout();
-
-    const cellContext: CollectionCellContext<T> = {
-        removable,
-        draggable: false,
-        disabled,
-        onRemove,
-    };
-
-    return (
-        <Box data-testid={`item-${id}`} {...ctx.getStyles('item')}>
-            {removable && onRemove && (
-                <Box {...ctx.getStyles('itemHeader')}>
-                    <div />
-                    <Box {...ctx.getStyles('removeButton')}>
-                        <ActionIcon.Quaternary onClick={onRemove}>
-                            <IconTrash aria-label="Remove" size={16} />
-                        </ActionIcon.Quaternary>
-                    </Box>
-                </Box>
-            )}
-            <Box {...ctx.getStyles('fieldGroup')}>
-                {columns.map((column, colIndex) => {
-                    const columnId = column.id ?? `column-${colIndex}`;
-                    const header = renderHeader(column.header, colIndex);
-                    return (
-                        <Box key={columnId} {...ctx.getStyles('field')}>
-                            {header && <Box {...ctx.getStyles('fieldLabel')}>{header}</Box>}
-                            <Box {...ctx.getStyles('fieldContent')}>{column.cell(item, index, cellContext)}</Box>
-                        </Box>
-                    );
-                })}
-            </Box>
-        </Box>
-    );
-};
-
-const DisabledItem = <T,>({item, index, id, columns, disabled}: ItemProps<T>) => {
-    const ctx = useVerticalLayout();
-
-    const cellContext: CollectionCellContext<T> = {
-        removable: false,
-        draggable: false,
-        disabled,
-    };
-
-    return (
-        <Box data-testid={`item-${id}`} {...ctx.getStyles('item')}>
-            <Box {...ctx.getStyles('fieldGroup')}>
-                {columns.map((column, colIndex) => {
-                    const columnId = column.id ?? `column-${colIndex}`;
-                    const header = renderHeader(column.header, colIndex);
-                    return (
-                        <Box key={columnId} {...ctx.getStyles('field')}>
-                            {header && <Box {...ctx.getStyles('fieldLabel')}>{header}</Box>}
-                            <Box {...ctx.getStyles('fieldContent')}>{column.cell(item, index, cellContext)}</Box>
-                        </Box>
-                    );
-                })}
-            </Box>
-        </Box>
-    );
-};
-
-export const VerticalLayoutBody = <T,>(
-    props: VerticalLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>},
-) => {
     const {
         columns,
         items,
@@ -204,28 +109,23 @@ export const VerticalLayoutBody = <T,>(
         ...others
     } = useProps('VerticalLayoutBody', defaultProps as VerticalLayoutBodyProps<T>, props);
 
-    const itemComponents = items.map((item, index) => {
-        const id = getItemId?.(item, index) ?? String(index);
-        const itemProps: ItemProps<T> = {
-            item,
-            index,
-            id,
-            columns,
-            onRemove: onRemove ? () => onRemove(index) : undefined,
-            removable,
-            draggable,
-            disabled,
-        };
+    const config = useMemo(
+        () => ({
+            renderContent: renderVerticalContent,
+            containerSelector: 'item',
+            inlineControls: false,
+            renderDraggableHeader: renderVerticalDraggableHeader,
+        }),
+        [],
+    );
 
-        if (disabled) {
-            return <DisabledItem key={id} {...itemProps} />;
-        }
-
-        if (draggable) {
-            return <DraggableItem key={id} {...itemProps} />;
-        }
-
-        return <StaticItem key={id} {...itemProps} />;
+    const itemComponents = mapItemsToComponents(items, verticalRenderers, config, ctx.getStyles, {
+        getItemId,
+        onRemove,
+        removable,
+        draggable,
+        disabled,
+        columns,
     });
 
     return (

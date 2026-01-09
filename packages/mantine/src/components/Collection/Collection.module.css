@@ -23,6 +23,10 @@
     cursor: move;
 }
 
+.removeButton {
+    align-self: center;
+}
+
 .addButtonContainer {
     align-self: flex-start;
 }

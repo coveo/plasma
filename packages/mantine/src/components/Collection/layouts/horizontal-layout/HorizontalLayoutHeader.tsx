@@ -1,15 +1,15 @@
 import {Box, BoxProps, CompoundStylesApiProps, Factory, useProps} from '@mantine/core';
-import {ForwardedRef, ReactNode} from 'react';
+import {ForwardedRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
-import {CollectionColumnDef, CollectionHeaderContext} from '../../CollectionColumn.types.js';
+import {CollectionColumnDef} from '../../CollectionColumn.types.js';
+import {getColumnSizeStyles} from '../shared/columnUtils.js';
+import {renderColumnHeader} from '../shared/headerUtils.js';
 import {HorizontalLayoutBodyFactory} from './HorizontalLayoutBody.js';
 import {useHorizontalLayout} from './HorizontalLayoutContext.js';
 
 export type HorizontalLayoutHeaderStyleNames = 'headerRow' | 'headerCell' | 'dragHandleHeader' | 'removeButtonHeader';
 
-export interface HorizontalLayoutHeaderProps<T>
-    extends BoxProps,
-        CompoundStylesApiProps<HorizontalLayoutBodyFactory> {
+export interface HorizontalLayoutHeaderProps<T> extends BoxProps, CompoundStylesApiProps<HorizontalLayoutBodyFactory> {
     columns: Array<CollectionColumnDef<T>>;
     draggable?: boolean;
     removable?: boolean;
@@ -37,20 +37,8 @@ export const HorizontalLayoutHeader = <T,>(
         props,
     );
 
-    const renderHeader = (header: CollectionColumnDef<T>['header'], index: number): ReactNode => {
-        if (typeof header === 'function') {
-            const context: CollectionHeaderContext = {index};
-            return header(context);
-        }
-        return header;
-    };
-
     return (
-        <Box
-            ref={ref}
-            {...ctx.getStyles('headerRow', {className, classNames, styles, style})}
-            {...others}
-        >
+        <Box ref={ref} {...ctx.getStyles('headerRow', {className, classNames, styles, style})} {...others}>
             {draggable && <div {...ctx.getStyles('dragHandleHeader', {classNames, styles})} />}
             {columns.map((column, index) => {
                 const columnId = column.id ?? `column-${index}`;
@@ -59,25 +47,11 @@ export const HorizontalLayoutHeader = <T,>(
                         key={columnId}
                         {...ctx.getStyles('headerCell', {classNames, styles})}
                         style={{
-                            width: column.size
-                                ? typeof column.size === 'number'
-                                    ? `${column.size}px`
-                                    : column.size
-                                : 'auto',
-                            minWidth: column.minSize
-                                ? typeof column.minSize === 'number'
-                                    ? `${column.minSize}px`
-                                    : column.minSize
-                                : undefined,
-                            maxWidth: column.maxSize
-                                ? typeof column.maxSize === 'number'
-                                    ? `${column.maxSize}px`
-                                    : column.maxSize
-                                : undefined,
+                            ...getColumnSizeStyles(column),
                             ...ctx.getStyles('headerCell', {classNames, styles}).style,
                         }}
                     >
-                        {renderHeader(column.header, index)}
+                        {renderColumnHeader(column.header, index)}
                     </Box>
                 );
             })}

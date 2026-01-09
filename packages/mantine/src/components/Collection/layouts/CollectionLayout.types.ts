@@ -1,3 +1,4 @@
+import type {MantineSpacing} from '@mantine/core';
 import {ReactElement, ReactNode} from 'react';
 import {CollectionColumnDef} from '../CollectionColumn.types.js';
 
@@ -9,7 +10,7 @@ export interface CollectionLayoutProps<T = unknown> {
     columns: Array<CollectionColumnDef<T>>;
 
     /** Items to render */
-    items?: T[];
+    items: T[];
 
     /** Callback to remove an item */
     onRemove?: (index: number) => void;
@@ -27,7 +28,7 @@ export interface CollectionLayoutProps<T = unknown> {
     getItemId?: (item: T, index: number) => string;
 
     /** Gap between items */
-    gap?: string;
+    gap?: MantineSpacing;
 }
 
 /**
