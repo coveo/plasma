@@ -112,7 +112,11 @@ export * from './components/Collapse/Collapse.js';
 // Collection
 export * from './components/Collection/Collection.js';
 export {enhanceWithCollectionProps} from './components/Collection/enhanceWithCollectionProps.js';
-export type {CollectionColumnDef, CollectionCellContext, CollectionHeaderContext} from './components/Collection/CollectionColumn.types.js';
+export type {
+    CollectionColumnDef,
+    CollectionCellContext,
+    CollectionHeaderContext,
+} from './components/Collection/CollectionColumn.types.js';
 export type {CollectionLayout, CollectionLayoutProps} from './components/Collection/layouts/CollectionLayout.types.js';
 
 // Color Input

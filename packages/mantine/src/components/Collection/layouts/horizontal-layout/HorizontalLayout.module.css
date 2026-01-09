@@ -31,20 +31,13 @@
 }
 
 .dragHandle {
+    composes: draghandle from '../shared/LayoutCommon.module.css';
     width: 24px;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    cursor: grab;
-}
-
-.dragHandle:active {
-    cursor: grabbing;
 }
 
 .removeButton {
+    composes: removebutton from '../shared/LayoutCommon.module.css';
     width: 28px;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
 }

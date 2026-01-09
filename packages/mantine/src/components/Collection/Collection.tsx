@@ -346,6 +346,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                             <Layout>
                                 <Layout.Header
                                     columns={columns}
+                                    items={items}
                                     draggable={draggable}
                                     removable={canEdit && !(isRequired && hasOnlyOneItem)}
                                 />

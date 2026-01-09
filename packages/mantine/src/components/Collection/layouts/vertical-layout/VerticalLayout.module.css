@@ -13,18 +13,11 @@
 }
 
 .dragHandle {
-    cursor: grab;
-    display: flex;
-    align-items: center;
-}
-
-.dragHandle:active {
-    cursor: grabbing;
+    composes: draghandle from '../shared/LayoutCommon.module.css';
 }
 
 .removeButton {
-    display: flex;
-    align-items: center;
+    composes: removebutton from '../shared/LayoutCommon.module.css';
 }
 
 .fieldGroup {

@@ -1,4 +1,5 @@
-import {TextInput, useForm} from '@coveord/plasma-mantine';
+import {TextInput} from '@mantine/core';
+import {useForm} from '@mantine/form';
 import {render, screen, userEvent, within} from '@test-utils';
 import {Collection} from '../Collection.js';
 import {enhanceWithCollectionProps} from '../enhanceWithCollectionProps.js';
@@ -29,15 +30,11 @@ describe('Collection with columns', () => {
                         columns={[
                             {
                                 header: 'Name',
-                                cell: (item, index) => (
-                                    <TextInput {...form.getInputProps(`items.${index}.name`)} />
-                                ),
+                                cell: (item, index) => <TextInput {...form.getInputProps(`items.${index}.name`)} />,
                             },
                             {
                                 header: 'Email',
-                                cell: (item, index) => (
-                                    <TextInput {...form.getInputProps(`items.${index}.email`)} />
-                                ),
+                                cell: (item, index) => <TextInput {...form.getInputProps(`items.${index}.email`)} />,
                             },
                         ]}
                     />
@@ -210,7 +207,6 @@ describe('Collection with columns', () => {
         });
 
         it('renders items in rows with remove buttons', async () => {
-            const _user = userEvent.setup();
             const Fixture = () => {
                 const form = useForm({
                     initialValues: {items: [{name: 'Alice', email: 'alice@example.com'}]},
@@ -454,6 +450,7 @@ describe('Collection with columns', () => {
                 });
 
                 return (
+                    // @ts-expect-error
                     <Collection<TestItem>
                         newItem={{name: '', email: ''}}
                         {...form.getInputProps('items')}
@@ -469,9 +466,7 @@ describe('Collection with columns', () => {
                 );
             };
 
-            expect(() => render(<Fixture />)).toThrow(
-                'Collection: Cannot use both "columns" and "children" props',
-            );
+            expect(() => render(<Fixture />)).toThrow('Collection: Cannot use both "columns" and "children" props');
 
             consoleError.mockRestore();
         });
@@ -487,6 +482,7 @@ describe('Collection with columns', () => {
                 });
 
                 return (
+                    // @ts-expect-error
                     <Collection<TestItem>
                         newItem={{name: '', email: ''}}
                         {...form.getInputProps('items')}
@@ -497,9 +493,7 @@ describe('Collection with columns', () => {
                 );
             };
 
-            expect(() => render(<Fixture />)).toThrow(
-                'Collection: "layout" prop can only be used with "columns" prop',
-            );
+            expect(() => render(<Fixture />)).toThrow('Collection: "layout" prop can only be used with "columns" prop');
 
             consoleError.mockRestore();
         });
