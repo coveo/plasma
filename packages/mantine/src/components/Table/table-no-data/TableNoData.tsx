@@ -5,3 +5,5 @@ export interface TableNoDataProps {
 }
 
 export const TableNoData: FunctionComponent<TableNoDataProps> = ({children}) => <>{children}</>;
+
+TableNoData.displayName = 'Table.NoData';
