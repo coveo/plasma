@@ -19,7 +19,8 @@ import {useTableContext} from '../TableContext.js';
 export type TablePredicateStylesNames = 'predicate' | 'predicateWrapper' | 'predicateLabel' | 'predicateSelect';
 
 export interface TablePredicateProps
-    extends BoxProps,
+    extends
+        BoxProps,
         Pick<SelectProps, 'renderOption' | 'comboboxProps'>,
         CompoundStylesApiProps<TablePredicateFactory> {
     /**

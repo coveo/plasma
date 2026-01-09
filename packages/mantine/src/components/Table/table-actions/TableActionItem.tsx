@@ -8,7 +8,8 @@ import {Menu, type MenuItemProps} from '../../Menu/Menu.js';
 export type TableActionItemStylesNames = 'actionItemRoot';
 
 export interface TableActionItemProps
-    extends Omit<ButtonProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection'>,
+    extends
+        Omit<ButtonProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection'>,
         Omit<MenuItemProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'disabled'>,
         CompoundStylesApiProps<TableActionItemFactory> {
     /**

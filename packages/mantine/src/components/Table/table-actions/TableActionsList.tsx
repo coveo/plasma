@@ -28,7 +28,8 @@ export type TableActionsListStylesNames =
     | 'actionsGroupItems';
 
 export interface TableActionsListProps
-    extends Omit<MenuProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
+    extends
+        Omit<MenuProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
         CompoundStylesApiProps<TableActionsListFactory> {
     actions: TableAction[];
     /**

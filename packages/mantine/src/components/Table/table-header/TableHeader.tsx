@@ -11,8 +11,7 @@ import {useTableContext} from '../TableContext.js';
 export type TableHeaderStylesNames = 'headerRoot' | 'headerGrid' | 'headerGridInner' | 'headerCol';
 
 export interface TableHeaderProps
-    extends Omit<BoxProps, 'classNames' | 'styles' | 'vars'>,
-        CompoundStylesApiProps<TableHeaderFactory> {
+    extends Omit<BoxProps, 'classNames' | 'styles' | 'vars'>, CompoundStylesApiProps<TableHeaderFactory> {
     /* Children of header (ie: actions, datepicker, etc.) */
     children?: ReactNode;
     unselectAllLabel?: string;
