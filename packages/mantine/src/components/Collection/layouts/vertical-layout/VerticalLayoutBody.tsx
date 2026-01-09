@@ -1,7 +1,7 @@
 import {DragAndDropSize24Px, IconTrash} from '@coveord/plasma-react-icons';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {Box, BoxProps, CompoundStylesApiProps, Factory, Stack, useProps} from '@mantine/core';
+import {Box, BoxProps, CompoundStylesApiProps, Factory, MantineSpacing, Stack, useProps} from '@mantine/core';
 import {ForwardedRef, ReactNode} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
 import {ActionIcon} from '../../../ActionIcon/ActionIcon.js';
@@ -20,13 +20,13 @@ export type VerticalLayoutBodyStylesNames =
 
 export interface VerticalLayoutBodyProps<T> extends BoxProps, CompoundStylesApiProps<VerticalLayoutBodyFactory> {
     columns: Array<CollectionColumnDef<T>>;
-    items: Array<T>; // Required for Body
+    items: T[]; // Required for Body
     onRemove?: (index: number) => void;
     removable?: boolean;
     draggable?: boolean;
     disabled?: boolean;
     getItemId?: (item: T, index: number) => string;
-    gap?: string;
+    gap?: MantineSpacing;
 }
 
 export type VerticalLayoutBodyFactory = Factory<{
@@ -229,7 +229,7 @@ export const VerticalLayoutBody = <T,>(
     });
 
     return (
-        <Stack ref={ref} gap={gap} {...others}>
+        <Stack ref={ref} gap={gap} {...(others as any)}>
             {itemComponents}
         </Stack>
     );
