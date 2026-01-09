@@ -24,20 +24,20 @@
         "@mantine/modals": "8.3.10",
         "@mantine/notifications": "8.3.10",
         "dayjs": "1.11.19",
-        "react": "19.0.0",
-        "react-dom": "19.0.0",
-        "react-hook-form": "7.68.0"
+        "react": "19.2.3",
+        "react-dom": "19.2.3",
+        "react-hook-form": "7.69.0"
     },
     "devDependencies": {
-        "@storybook/addon-docs": "10.1.4",
-        "@storybook/react-vite": "10.1.4",
+        "@storybook/addon-docs": "10.1.11",
+        "@storybook/react-vite": "10.1.11",
         "@types/react": "19.2.7",
-        "@types/react-dom": "19.0.6",
+        "@types/react-dom": "19.2.3",
         "@vitejs/plugin-react-swc": "4.2.2",
         "globals": "17.0.0",
         "postcss-preset-mantine": "1.18.0",
-        "storybook": "10.1.10",
+        "storybook": "10.1.11",
         "typescript": "5.9.3",
-        "vite": "7.2.7"
+        "vite": "7.3.0"
     }
 }
