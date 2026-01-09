@@ -20,21 +20,20 @@ import {ForwardedRef, ReactNode} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
 import {Button} from '../Button/Button.js';
 import classes from './Collection.module.css';
+import {CollectionColumnDef} from './CollectionColumn.types.js';
 import {CollectionProvider} from './CollectionContext.js';
 import {CollectionItem} from './CollectionItem.js';
+import {CollectionLayout} from './layouts/CollectionLayout.types.js';
+import {CollectionLayouts} from './layouts/CollectionLayouts.js';
 
-export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiProps<CollectionFactory> {
+/**
+ * Base props shared by both column-based and children-based patterns
+ */
+interface BaseCollectionProps<T> extends __InputWrapperProps, BoxProps, StylesApiProps<CollectionFactory> {
     /**
      * The default value each new item should have
      */
     newItem: T | (() => T);
-    /**
-     * A render function called for each item passed in the `value` prop.
-     *
-     * @param item The current item's value
-     * @param index The current item's index
-     */
-    children: (item: T, index: number) => ReactNode;
     /**
      * The list of items to display inside the collection
      *
@@ -111,13 +110,13 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
      *
      * @default "Add item"
      */
-    addLabel?: string;
+    addLabel?: ReactNode;
     /**
      * The tooltip text displayed when hovering over the disabled add item button
      *
      * @default 'There is already an empty item'
      */
-    addDisabledTooltip?: string;
+    addDisabledTooltip?: ReactNode;
     /**
      * The gap between the colleciton items
      *
@@ -131,6 +130,55 @@ export interface CollectionProps<T> extends __InputWrapperProps, BoxProps, Style
      */
     required?: boolean;
 }
+
+/**
+ * Collection with column-based layout
+ */
+interface CollectionWithColumns<T> extends BaseCollectionProps<T> {
+    /**
+     * Column definitions for the collection
+     */
+    columns: CollectionColumnDef<T>[];
+
+    /**
+     * Layout component to use for rendering
+     * @default CollectionLayouts.Horizontal
+     */
+    layout?: CollectionLayout;
+
+    /**
+     * Must not have children when using columns
+     */
+    children?: never;
+}
+
+/**
+ * Collection with legacy children render prop
+ */
+interface CollectionWithChildren<T> extends BaseCollectionProps<T> {
+    /**
+     * A render function called for each item passed in the `value` prop.
+     *
+     * @param item The current item's value
+     * @param index The current item's index
+     */
+    children: (item: T, index: number) => ReactNode;
+
+    /**
+     * Must not have columns when using children
+     */
+    columns?: never;
+
+    /**
+     * Must not have layout when using children
+     */
+    layout?: never;
+}
+
+/**
+ * Collection props - either columns OR children, never both
+ */
+export type CollectionProps<T> = CollectionWithColumns<T> | CollectionWithChildren<T>;
 
 export type CollectionStylesNames = 'root' | 'item' | 'items' | 'itemDragging' | 'dragHandle';
 
@@ -162,6 +210,8 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         readOnly,
         draggable,
         children,
+        columns,
+        layout,
         gap,
         required,
         newItem,
@@ -186,6 +236,15 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         unstyled,
         ...others
     } = useProps('Collection', defaultProps as CollectionProps<T>, props);
+
+    // Runtime validation: ensure columns and children are mutually exclusive
+    if (columns && children) {
+        throw new Error('Collection: Cannot use both "columns" and "children" props. Please use one or the other.');
+    }
+
+    if (layout && !columns) {
+        throw new Error('Collection: "layout" prop can only be used with "columns" prop.');
+    }
 
     const getStyles = useStyles<CollectionFactory>({
         name: 'Collection',
@@ -239,18 +298,17 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
 
     const standardizedItems = value.map((item, index) => ({id: getItemId?.(item, index) ?? String(index), data: item}));
 
-    const items = standardizedItems.map((item, index) => (
-        <CollectionItem
-            key={item.id}
-            id={item.id}
-            disabled={!canEdit}
-            draggable={draggable}
-            onRemove={() => onRemoveItem?.(index)}
-            removable={!(isRequired && hasOnlyOneItem)}
-        >
-            {children(item.data, index)}
-        </CollectionItem>
-    ));
+    const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);
+
+    const handleDragEnd = ({over, active}: DragEndEvent): void => {
+        if (over) {
+            const activeIndex = getIndex(String(active.id));
+            const overIndex = getIndex(String(over.id));
+            if (activeIndex !== overIndex) {
+                onReorderItem?.({from: activeIndex, to: overIndex});
+            }
+        }
+    };
 
     const addAllowed = typeof allowAdd === 'boolean' ? allowAdd : (allowAdd?.(value) ?? true);
 
@@ -270,17 +328,59 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         </Box>
     ) : null;
 
-    const getIndex = (id: string) => standardizedItems.findIndex((item) => item.id === id);
+    // Column-based layout pattern
+    if (columns) {
+        const Layout = layout || CollectionLayouts.Horizontal;
 
-    const handleDragEnd = ({over, active}: DragEndEvent): void => {
-        if (over) {
-            const activeIndex = getIndex(String(active.id));
-            const overIndex = getIndex(String(over.id));
-            if (activeIndex !== overIndex) {
-                onReorderItem?.({from: activeIndex, to: overIndex});
-            }
-        }
-    };
+        return (
+            <CollectionProvider value={{getStyles}}>
+                <DndContext
+                    onDragEnd={handleDragEnd}
+                    sensors={sensors}
+                    modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+                >
+                    <SortableContext items={standardizedItems} strategy={verticalListSortingStrategy}>
+                        <Box ref={ref} {...others} {...getStyles('root')}>
+                            {_header}
+                            <Layout>
+                                <Layout.Header
+                                    columns={columns}
+                                    draggable={draggable}
+                                    removable={!(isRequired && hasOnlyOneItem)}
+                                />
+                                <Layout.Body
+                                    columns={columns}
+                                    items={value}
+                                    onRemove={canEdit ? onRemoveItem : undefined}
+                                    removable={!(isRequired && hasOnlyOneItem)}
+                                    draggable={draggable}
+                                    disabled={!canEdit}
+                                    getItemId={getItemId}
+                                    gap={gap}
+                                />
+                            </Layout>
+                            {_addButton}
+                            {_error}
+                        </Box>
+                    </SortableContext>
+                </DndContext>
+            </CollectionProvider>
+        );
+    }
+
+    // Legacy children render prop pattern
+    const items = standardizedItems.map((item, index) => (
+        <CollectionItem
+            key={item.id}
+            id={item.id}
+            disabled={!canEdit}
+            draggable={draggable}
+            onRemove={() => onRemoveItem?.(index)}
+            removable={!(isRequired && hasOnlyOneItem)}
+        >
+            {children(item.data, index)}
+        </CollectionItem>
+    ));
 
     return (
         <CollectionProvider value={{getStyles}}>
@@ -307,3 +407,5 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
 Collection.displayName = 'Collection';
 
 Collection.extend = identity as CustomComponentThemeExtend<CollectionFactory>;
+
+Collection.Layouts = CollectionLayouts;
