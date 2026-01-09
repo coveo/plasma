@@ -7,7 +7,7 @@ module.exports = {
     meta: {
         type: 'problem',
         docs: {
-            description: 'Ensure Mantine factory and polymorphicFactory callbacks include and forward ref parameter',
+            description: 'Ensure Mantine factory and polymorphicFactory callbacks include ref parameter',
             category: 'Best Practices',
             recommended: true,
         },
@@ -51,13 +51,13 @@ module.exports = {
             // For Mantine factories, ref is typically the second parameter
             // factory<T>((props, ref) => ...)
             // polymorphicFactory<T>((props, ref) => ...)
-            
+
             if (func.params.length < 2) {
                 return false; // Must have at least 2 parameters (props, ref)
             }
 
             const refParam = func.params[1];
-            
+
             // Check if the second parameter is named 'ref' or '_ref'
             if (refParam.type === 'Identifier') {
                 return refParam.name === 'ref' || refParam.name === '_ref';
@@ -82,7 +82,7 @@ module.exports = {
 
                 if (firstArg.type === 'ArrowFunctionExpression' || firstArg.type === 'FunctionExpression') {
                     funcToCheck = firstArg;
-                } 
+                }
                 // Handle wrapped function expressions (e.g., in parentheses or type assertions)
                 else if (firstArg.type === 'TSAsExpression' || firstArg.type === 'TSTypeAssertion') {
                     const expr = firstArg.expression;
