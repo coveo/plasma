@@ -118,7 +118,7 @@ interface BaseCollectionProps<T> extends __InputWrapperProps, BoxProps, StylesAp
      */
     addDisabledTooltip?: ReactNode;
     /**
-     * The gap between the colleciton items
+     * The gap between the collection items
      *
      * @default 'xs'
      */
@@ -239,7 +239,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
 
     // Runtime validation: ensure columns and children are mutually exclusive
     if (columns && children) {
-        throw new Error('Collection: Cannot use both "columns" and "children" props. Please use one or the other.');
+        throw new Error('Collection: Cannot use both "columns" and "children" props.');
     }
 
     if (layout && !columns) {
