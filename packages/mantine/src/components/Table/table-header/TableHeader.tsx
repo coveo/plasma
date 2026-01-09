@@ -4,15 +4,14 @@ import {ReactNode} from 'react';
 
 import {Button} from '../../Button/Button.js';
 import {TableLayoutControl} from '../layouts/TableLayoutControl.js';
-import {TableComponentsOrder} from '../Table.js';
 import {TableHeaderActions} from '../table-actions/TableHeaderActions.js';
+import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
 
 export type TableHeaderStylesNames = 'headerRoot' | 'headerGrid' | 'headerGridInner' | 'headerCol';
 
 export interface TableHeaderProps
-    extends Omit<BoxProps, 'classNames' | 'styles' | 'vars'>,
-        CompoundStylesApiProps<TableHeaderFactory> {
+    extends Omit<BoxProps, 'classNames' | 'styles' | 'vars'>, CompoundStylesApiProps<TableHeaderFactory> {
     /* Children of header (ie: actions, datepicker, etc.) */
     children?: ReactNode;
     unselectAllLabel?: string;
@@ -103,3 +102,5 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
         </Box>
     );
 });
+
+TableHeader.displayName = 'Table.Header';

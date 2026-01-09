@@ -88,3 +88,5 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
         </Grid.Col>
     );
 });
+
+TableFilter.displayName = 'Table.Filter';

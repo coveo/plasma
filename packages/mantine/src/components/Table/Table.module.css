@@ -114,10 +114,6 @@
     }
 }
 
-.lastUpdatedRoot {
-    min-height: 98px;
-}
-
 .lastUpdatedLabel {
     color: var(--mantine-color-text);
 }

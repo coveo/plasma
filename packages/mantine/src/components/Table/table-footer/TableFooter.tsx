@@ -8,3 +8,5 @@ export interface TableFooterProps extends GroupProps {
 export const TableFooter: FunctionComponent<TableFooterProps> = ({...others}) => (
     <Group justify="space-between" px="xl" py="md" {...others} />
 );
+
+TableFooter.displayName = 'Table.Footer';

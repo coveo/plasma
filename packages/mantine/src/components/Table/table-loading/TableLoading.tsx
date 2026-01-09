@@ -6,3 +6,5 @@ export const TableLoading: FunctionComponent<SkeletonProps> = (props) => (
         {props.children}
     </Skeleton>
 );
+
+TableLoading.displayName = 'Table.Loading';

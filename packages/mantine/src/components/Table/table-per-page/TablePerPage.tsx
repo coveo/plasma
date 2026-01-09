@@ -30,4 +30,5 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     ) : null;
 };
 
+TablePerPage.displayName = 'Table.PerPage';
 TablePerPage.DEFAULT_SIZE = 50;
