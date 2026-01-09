@@ -1,0 +1,43 @@
+.headerRow {
+    display: flex;
+    gap: var(--mantine-spacing-sm);
+    padding-bottom: var(--mantine-spacing-xs);
+    align-items: center;
+}
+
+.headerCell {
+    font-weight: 600;
+    text-align: left;
+}
+
+.dragHandleHeader {
+    width: 24px;
+    flex-shrink: 0;
+}
+
+.removeButtonHeader {
+    width: 28px;
+    flex-shrink: 0;
+}
+
+.row {
+    display: flex;
+    gap: var(--mantine-spacing-sm);
+    align-items: center;
+}
+
+.cell {
+    flex: 1;
+}
+
+.dragHandle {
+    composes: draghandle from '../shared/LayoutCommon.module.css';
+    width: 24px;
+    flex-shrink: 0;
+}
+
+.removeButton {
+    composes: removebutton from '../shared/LayoutCommon.module.css';
+    width: 28px;
+    flex-shrink: 0;
+}

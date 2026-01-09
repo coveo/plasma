@@ -1,0 +1,18 @@
+/**
+ * Common styles shared across all Collection layouts
+ */
+
+.dragHandle {
+    cursor: grab;
+    display: flex;
+    align-items: center;
+}
+
+.dragHandle:active {
+    cursor: grabbing;
+}
+
+.removeButton {
+    display: flex;
+    align-items: center;
+}

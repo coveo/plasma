@@ -112,6 +112,12 @@ export * from './components/Collapse/Collapse.js';
 // Collection
 export * from './components/Collection/Collection.js';
 export {enhanceWithCollectionProps} from './components/Collection/enhanceWithCollectionProps.js';
+export type {
+    CollectionColumnDef,
+    CollectionCellContext,
+    CollectionHeaderContext,
+} from './components/Collection/CollectionColumn.types.js';
+export type {CollectionLayout, CollectionLayoutProps} from './components/Collection/layouts/CollectionLayout.types.js';
 
 // Color Input
 export * from './components/ColorInput/ColorInput.js';
@@ -442,6 +448,7 @@ declare module '@mantine/core' {
 }
 
 declare module '@tanstack/react-table' {
+    // eslint-disable-next-line unused-imports/no-unused-vars
     interface ColumnMeta<TData extends RowData, TValue> {
         /**
          * Whether the column is a control column.
