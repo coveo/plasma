@@ -3,6 +3,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginImport from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 import preferArrow from 'eslint-plugin-prefer-arrow';
+import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
@@ -11,6 +12,7 @@ import eslintPluginTestingLibrary from 'eslint-plugin-testing-library';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
+import localRules from './eslint-rules/index.js';
 
 export default tsEslint.config(
     {ignores: ['**/dist', '**/.turbo', 'packages/react-icons/mock/index.js', 'packages/website/src/examples/mantine']},
@@ -21,7 +23,9 @@ export default tsEslint.config(
         plugins: {
             import: eslintPluginImport,
             jsdoc,
+            local: localRules,
             'prefer-arrow': preferArrow,
+            react,
             'react-hooks': reactHooks,
             'unused-imports': unusedImports,
         },
@@ -52,6 +56,8 @@ export default tsEslint.config(
             ...reactHooks.configs.recommended.rules,
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'off',
+            'react/forward-ref-uses-ref': 'error',
+            'local/require-ref-in-factory': 'error',
             '@typescript-eslint/array-type': [
                 'error',
                 {
