@@ -1,8 +1,13 @@
-import {enhanceWithCollectionProps, useForm} from '@coveord/plasma-mantine';
+import {enhanceWithCollectionProps, TextInput, useForm} from '@coveord/plasma-mantine';
 import {Collection} from '@coveord/plasma-mantine/components/Collection';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {FunctionComponent, ReactNode, useCallback, useMemo, useRef} from 'react';
 import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+
+interface ContactItem {
+    name: string;
+    email: string;
+}
 
 const meta: Meta<typeof Collection> = {
     title: '@components/form/array/Collection',
@@ -53,6 +58,9 @@ const useCounter = () => {
     return getNext;
 };
 
+/**
+ * Legacy pattern using children render prop
+ */
 export const Demo: Story = {
     render: (props) => {
         const getNext = useCounter();
@@ -81,6 +89,190 @@ export const Demo: Story = {
             >
                 {(item) => <PlaceholderCollectionItem>Collection item {item}</PlaceholderCollectionItem>}
             </Collection>
+        );
+    },
+};
+
+/**
+ * Column-based pattern with HorizontalLayout (default)
+ */
+export const WithColumnsHorizontal: Story = {
+    render: (props) => {
+        const form = useForm({
+            initialValues: {
+                contacts: [
+                    {name: 'Alice Smith', email: 'alice@example.com'},
+                    {name: 'Bob Johnson', email: 'bob@example.com'},
+                ],
+            },
+            enhanceGetInputProps: (payload) => ({
+                ...enhanceWithCollectionProps(payload, 'contacts'),
+            }),
+        });
+
+        return (
+            <Collection<ContactItem>
+                {...form.getInputProps('contacts')}
+                w={600}
+                label="Contacts"
+                description="Manage your contact list with column headers"
+                draggable={props.draggable}
+                disabled={props.disabled}
+                readOnly={props.readOnly}
+                required={props.required}
+                newItem={{name: '', email: ''}}
+                columns={[
+                    {
+                        header: 'Name',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
+                        size: '50%',
+                    },
+                    {
+                        header: 'Email',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
+                        size: '50%',
+                    },
+                ]}
+            />
+        );
+    },
+};
+
+/**
+ * Column-based pattern with VerticalLayout
+ */
+export const WithColumnsVertical: Story = {
+    render: (props) => {
+        const form = useForm({
+            initialValues: {
+                contacts: [
+                    {name: 'Alice Smith', email: 'alice@example.com'},
+                    {name: 'Bob Johnson', email: 'bob@example.com'},
+                ],
+            },
+            enhanceGetInputProps: (payload) => ({
+                ...enhanceWithCollectionProps(payload, 'contacts'),
+            }),
+        });
+
+        return (
+            <Collection<ContactItem>
+                {...form.getInputProps('contacts')}
+                w={400}
+                label="Contacts (Vertical Layout)"
+                description="Each contact is displayed as a card with labels above fields"
+                draggable={props.draggable}
+                disabled={props.disabled}
+                readOnly={props.readOnly}
+                required={props.required}
+                newItem={{name: '', email: ''}}
+                layout={Collection.Layouts.Vertical}
+                columns={[
+                    {
+                        header: 'Name',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
+                    },
+                    {
+                        header: 'Email',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
+                    },
+                ]}
+            />
+        );
+    },
+};
+
+/**
+ * Column-based pattern with custom column sizing
+ */
+export const WithCustomSizing: Story = {
+    render: (props) => {
+        const form = useForm({
+            initialValues: {
+                contacts: [
+                    {name: 'Alice Smith', email: 'alice@example.com'},
+                    {name: 'Bob Johnson', email: 'bob@example.com'},
+                ],
+            },
+            enhanceGetInputProps: (payload) => ({
+                ...enhanceWithCollectionProps(payload, 'contacts'),
+            }),
+        });
+
+        return (
+            <Collection<ContactItem>
+                {...form.getInputProps('contacts')}
+                w={700}
+                label="Contacts with Custom Sizing"
+                description="Name column is wider than email"
+                draggable={props.draggable}
+                disabled={props.disabled}
+                newItem={{name: '', email: ''}}
+                columns={[
+                    {
+                        header: 'Name',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
+                        size: 400,
+                        minSize: 200,
+                    },
+                    {
+                        header: 'Email',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
+                        size: 250,
+                    },
+                ]}
+            />
+        );
+    },
+};
+
+/**
+ * Column-based pattern without headers
+ */
+export const WithoutHeaders: Story = {
+    render: (props) => {
+        const form = useForm({
+            initialValues: {
+                contacts: [
+                    {name: 'Alice Smith', email: 'alice@example.com'},
+                    {name: 'Bob Johnson', email: 'bob@example.com'},
+                ],
+            },
+            enhanceGetInputProps: (payload) => ({
+                ...enhanceWithCollectionProps(payload, 'contacts'),
+            }),
+        });
+
+        return (
+            <Collection<ContactItem>
+                {...form.getInputProps('contacts')}
+                w={600}
+                label="Contacts without Headers"
+                description="Columns without header labels"
+                draggable={props.draggable}
+                disabled={props.disabled}
+                newItem={{name: '', email: ''}}
+                columns={[
+                    {
+                        cell: (item, index) => (
+                            <TextInput
+                                placeholder="Name"
+                                {...form.getInputProps(`contacts.${index}.name`)}
+                            />
+                        ),
+                        size: '50%',
+                    },
+                    {
+                        cell: (item, index) => (
+                            <TextInput
+                                placeholder="Email"
+                                {...form.getInputProps(`contacts.${index}.email`)}
+                            />
+                        ),
+                        size: '50%',
+                    },
+                ]}
+            />
         );
     },
 };
