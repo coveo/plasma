@@ -1,0 +1,50 @@
+.headerRow {
+    display: flex;
+    gap: var(--mantine-spacing-sm);
+    padding-bottom: var(--mantine-spacing-xs);
+    align-items: center;
+}
+
+.headerCell {
+    font-weight: 600;
+    text-align: left;
+}
+
+.dragHandleHeader {
+    width: 24px;
+    flex-shrink: 0;
+}
+
+.removeButtonHeader {
+    width: 28px;
+    flex-shrink: 0;
+}
+
+.row {
+    display: flex;
+    gap: var(--mantine-spacing-sm);
+    align-items: center;
+}
+
+.cell {
+    flex: 1;
+}
+
+.dragHandle {
+    width: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+}
+
+.dragHandle:active {
+    cursor: grabbing;
+}
+
+.removeButton {
+    width: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}

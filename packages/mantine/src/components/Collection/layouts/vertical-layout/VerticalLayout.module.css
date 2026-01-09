@@ -1,0 +1,49 @@
+.item {
+    border: 1px solid var(--mantine-color-gray-3);
+    border-radius: var(--mantine-radius-default);
+    padding: var(--mantine-spacing-md);
+    position: relative;
+}
+
+.itemHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--mantine-spacing-sm);
+}
+
+.dragHandle {
+    cursor: grab;
+    display: flex;
+    align-items: center;
+}
+
+.dragHandle:active {
+    cursor: grabbing;
+}
+
+.removeButton {
+    display: flex;
+    align-items: center;
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mantine-spacing-xs);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mantine-spacing-xxs);
+}
+
+.fieldLabel {
+    font-weight: 600;
+    font-size: var(--mantine-font-size-sm);
+}
+
+.fieldContent {
+    width: 100%;
+}
