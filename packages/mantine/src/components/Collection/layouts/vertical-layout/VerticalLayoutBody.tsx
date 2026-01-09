@@ -19,8 +19,8 @@ export type VerticalLayoutBodyStylesNames =
     | 'fieldContent';
 
 export interface VerticalLayoutBodyProps<T> extends BoxProps, CompoundStylesApiProps<VerticalLayoutBodyFactory> {
-    columns: CollectionColumnDef<T>[];
-    items: T[];
+    columns: Array<CollectionColumnDef<T>>;
+    items: Array<T>; // Required for Body
     onRemove?: (index: number) => void;
     removable?: boolean;
     draggable?: boolean;
@@ -47,7 +47,7 @@ interface ItemProps<T> {
     item: T;
     index: number;
     id: string;
-    columns: CollectionColumnDef<T>[];
+    columns: Array<CollectionColumnDef<T>>;
     onRemove?: () => void;
     removable?: boolean;
     draggable?: boolean;
@@ -196,10 +196,10 @@ export const VerticalLayoutBody = <T,>(
         disabled,
         getItemId,
         gap,
-        classNames,
-        className,
-        styles,
-        style,
+        classNames: _classNames,
+        className: _className,
+        styles: _styles,
+        style: _style,
         ref,
         ...others
     } = useProps('VerticalLayoutBody', defaultProps as VerticalLayoutBodyProps<T>, props);

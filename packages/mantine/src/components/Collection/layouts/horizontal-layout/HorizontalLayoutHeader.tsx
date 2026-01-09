@@ -10,7 +10,7 @@ export type HorizontalLayoutHeaderStyleNames = 'headerRow' | 'headerCell' | 'dra
 export interface HorizontalLayoutHeaderProps<T>
     extends BoxProps,
         CompoundStylesApiProps<HorizontalLayoutBodyFactory> {
-    columns: CollectionColumnDef<T>[];
+    columns: Array<CollectionColumnDef<T>>;
     draggable?: boolean;
     removable?: boolean;
 }

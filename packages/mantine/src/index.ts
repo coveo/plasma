@@ -444,6 +444,7 @@ declare module '@mantine/core' {
 }
 
 declare module '@tanstack/react-table' {
+    // eslint-disable-next-line unused-imports/no-unused-vars
     interface ColumnMeta<TData extends RowData, TValue> {
         /**
          * Whether the column is a control column.
