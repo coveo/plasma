@@ -9,7 +9,7 @@ export interface CollectionLayoutProps<T = unknown> {
     columns: Array<CollectionColumnDef<T>>;
 
     /** Items to render */
-    items?: Array<T>;
+    items?: T[];
 
     /** Callback to remove an item */
     onRemove?: (index: number) => void;

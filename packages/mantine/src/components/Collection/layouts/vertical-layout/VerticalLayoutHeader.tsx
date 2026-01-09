@@ -25,8 +25,6 @@ type VerticalLayoutHeaderFactory = Factory<{
  * VerticalLayout doesn't have a global header - headers are shown per item
  * This component returns null but exists to maintain the layout interface
  */
-export const VerticalLayoutHeader = <T,>(_props: VerticalLayoutHeaderProps<T> & {ref?: ForwardedRef<HTMLDivElement>}): null => {
-    return null;
-};
+export const VerticalLayoutHeader = <T,>(_props: VerticalLayoutHeaderProps<T> & {ref?: ForwardedRef<HTMLDivElement>}): null => null;
 
 VerticalLayoutHeader.extend = identity as CustomComponentThemeExtend<VerticalLayoutHeaderFactory>;
