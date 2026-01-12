@@ -1,11 +1,10 @@
-import {ReactText} from 'react';
 import * as _ from 'underscore';
 
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {ISetNumericInputPayload, NumericInputActionTypes} from './NumericInputActions';
 
 export interface INumericInputState {
-    value: ReactText;
+    value: string | number;
     hasError: boolean;
 }
 

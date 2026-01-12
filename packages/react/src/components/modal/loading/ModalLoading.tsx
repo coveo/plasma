@@ -26,7 +26,3 @@ export const ModalLoading: FunctionComponent<ModalLoadingProps> = (props) => (
         isPrompt
     />
 );
-
-ModalLoading.defaultProps = {
-    openOnMount: true,
-};

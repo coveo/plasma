@@ -1,6 +1,6 @@
 import {MinusSize16Px, PlusSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
-import {ChangeEvent, HTMLProps, KeyboardEvent, PureComponent, ReactText} from 'react';
+import {ChangeEvent, HTMLProps, KeyboardEvent, PureComponent} from 'react';
 import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -46,7 +46,7 @@ export interface NumericInputOwnProps {
 }
 
 export interface NumericInputStateProps {
-    value: ReactText;
+    value: string | number;
     hasError: boolean;
 }
 

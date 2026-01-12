@@ -8,6 +8,21 @@
 
 [Have a look at the demo page!](https://plasma.coveo.com/)
 
+## ⚠️ Deprecated - Maintenance Mode
+
+**This package is deprecated and in maintenance mode.** For new projects, please use [@coveord/plasma-mantine](https://www.npmjs.com/package/@coveord/plasma-mantine) instead.
+
+This package will continue to receive critical bug fixes and security updates but no new features will be added.
+
+## React Compatibility
+
+This package is compatible with both **React 18 and React 19**. While developed and tested with React 18, the code patterns used are compatible with React 19, allowing consumers to upgrade React independently.
+
+**Peer Dependencies:**
+
+-   React: ^18.0 (also compatible with React 19)
+-   React-DOM: ^18.0 (also compatible with React 19)
+
 ## Getting started
 
 ### Prerequisites

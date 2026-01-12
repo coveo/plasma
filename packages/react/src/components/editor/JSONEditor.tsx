@@ -75,7 +75,7 @@ export const JSONEditor: FunctionComponent<
     errorMessage,
     containerClasses,
     className,
-    options,
+    options = {lint: false},
     onMount,
     onUnmount,
     collapsibleId,
@@ -119,12 +119,6 @@ export const JSONEditor: FunctionComponent<
             {isInError && <ValidationDetails errorMessage={errorMessage} />}
         </div>
     );
-};
-
-JSONEditor.defaultProps = {
-    options: {
-        lint: false,
-    },
 };
 
 const ValidationDetails: FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (

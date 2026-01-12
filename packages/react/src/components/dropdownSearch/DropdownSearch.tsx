@@ -1,6 +1,6 @@
 import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
-import {Component, createElement, KeyboardEvent, MouseEvent, ReactText} from 'react';
+import {Component, createElement, KeyboardEvent, MouseEvent} from 'react';
 import {type Props as InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
@@ -47,8 +47,8 @@ export interface IDropdownSearchOwnProps {
     defaultOptions?: IDropdownOption[];
     defaultSelectedOption?: IDropdownOption;
     filterPlaceholder?: string;
-    maxWidth?: ReactText;
-    width?: ReactText;
+    maxWidth?: string | number;
+    width?: string | number;
     hasFilterSuggestionBoxWidthFixed?: boolean;
     highlightThreshold?: number;
     highlightAllFilterResult?: boolean;

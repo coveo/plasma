@@ -1,4 +1,4 @@
-import {Component, ReactNode, ReactText} from 'react';
+import {Component, ReactNode} from 'react';
 import {OverlayInjectedProps} from 'react-bootstrap/esm/Overlay';
 import OverlayTrigger, {OverlayTriggerType} from 'react-bootstrap/OverlayTrigger';
 import BootstrapTooltip from 'react-bootstrap/Tooltip';
@@ -37,11 +37,11 @@ export interface ITooltipProps extends IOverlayTriggerProps {
     /**
      * @deprecated Do not use
      */
-    arrowOffsetLeft?: ReactText;
+    arrowOffsetLeft?: string | number;
     /**
      * @deprecated Do not use
      */
-    arrowOffsetTop?: ReactText;
+    arrowOffsetTop?: string | number;
     /**
      * @deprecated Do not use
      */
