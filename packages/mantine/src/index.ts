@@ -167,6 +167,9 @@ export * from './components/Drawer/Drawer.js';
 // Ellipsis Text
 export * from './components/EllipsisText/EllipsisText.js';
 
+// Facet
+export * from './components/Facet/Facet.js';
+
 // Fieldset
 export * from './components/Fieldset/Fieldset.js';
 
@@ -360,6 +363,7 @@ export * from './components/StatusToken/StatusToken.js';
 export * from './components/Stepper/Stepper.js';
 
 // Sticky Footer
+
 export * from './components/StickyFooter/StickyFooter.js';
 
 // Switch

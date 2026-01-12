@@ -1,6 +1,6 @@
 {
     "name": "storybook",
-    "version": "56.15.0",
+    "version": "56.16.0",
     "private": true,
     "type": "module",
     "scripts": {
@@ -24,17 +24,17 @@
         "@mantine/modals": "8.3.10",
         "@mantine/notifications": "8.3.10",
         "dayjs": "1.11.19",
-        "react": "18.3.1",
-        "react-dom": "18.3.1",
+        "react": "19.0.0",
+        "react-dom": "19.0.0",
         "react-hook-form": "7.68.0"
     },
     "devDependencies": {
         "@storybook/addon-docs": "10.1.4",
         "@storybook/react-vite": "10.1.4",
-        "@types/react": "18.3.27",
-        "@types/react-dom": "18.3.7",
+        "@types/react": "19.2.7",
+        "@types/react-dom": "19.0.6",
         "@vitejs/plugin-react-swc": "4.2.2",
-        "globals": "16.5.0",
+        "globals": "17.0.0",
         "postcss-preset-mantine": "1.18.0",
         "storybook": "10.1.10",
         "typescript": "5.9.3",

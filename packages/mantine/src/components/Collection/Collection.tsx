@@ -304,4 +304,6 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     );
 };
 
+Collection.displayName = 'Collection';
+
 Collection.extend = identity as CustomComponentThemeExtend<CollectionFactory>;

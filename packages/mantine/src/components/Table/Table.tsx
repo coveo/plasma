@@ -211,7 +211,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         }
     }, [data]);
 
-    const containerRef = useRef<HTMLDivElement>();
+    const containerRef = useRef<HTMLDivElement>(null);
     useClickOutside(
         () => {
             if (!store.multiRowSelectionEnabled && store.getSelectedRows().length > 0) {

@@ -11,9 +11,9 @@ const getElementInnerHeight = (el: HTMLElement): number => {
 /**
  * Computes the available height of the parent element on mount
  */
-export const useParentHeight = (): [number, MutableRefObject<HTMLDivElement>] => {
+export const useParentHeight = (): [number, MutableRefObject<HTMLDivElement | null>] => {
     const [height, setHeight] = useState(-1);
-    const ref = useRef<HTMLDivElement>();
+    const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (ref.current) {

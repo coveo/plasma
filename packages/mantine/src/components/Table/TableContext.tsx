@@ -11,12 +11,12 @@ export interface TableContextValue<TData = unknown> {
     layouts: TableLayout[];
     getRowActions: (datum: TData[]) => TableAction[];
     table: Table<TData>;
-    containerRef: MutableRefObject<HTMLDivElement>;
+    containerRef: MutableRefObject<HTMLDivElement | null>;
 }
 
 export interface TableProviderProps<T> {
     value: TableContextValue<T>;
-    children: JSX.Element;
+    children: ReactElement;
 }
 
 export const [TableProvider, useTableContext] = createSafeContext<TableContextValue>(

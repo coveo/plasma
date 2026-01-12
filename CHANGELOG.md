@@ -1,3 +1,17 @@
+## 56.16.0 (2026-01-08)
+
+* feat: component DatePickerInput storybook (#4280) 88bd321, closes #4280
+* feat: component Header storybook (#4268) 9df14c9, closes #4268
+* feat: migrate to React 19 with React 18 backwards compatibility (#4290) dbe7f28, closes #4290
+* feat(stickyfooter): +figma, *story adjustment (#4287) 9c5f145, closes #4287
+* feat(storybook): +navlink story, +image story, +navlink figma adjustment (#4284) 97f1e72, closes #4284
+* Ad UI 11092 stepper codeconnect (#4285) de84bba, closes #4285
+* Ds 54 pillsinput (#4277) 2bb7382, closes #4277
+* Ds 58 scroll area (#4288) 386e5bc, closes #4288
+* test(mantine,facet): add facet component (#4286) 32b36b6, closes #4286
+
+
+
 ## 56.15.0 (2026-01-06)
 
 * feat(storybook,mantine): component Collection storybook (#4272) 38fbf50, closes #4272
