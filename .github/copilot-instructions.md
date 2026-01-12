@@ -11,6 +11,7 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 - **`@coveord/plasma-react-icons`**: Icon components for React
 - **`@coveord/plasma-website`**: Documentation and demo site
 - **`@coveord/plasma-storybook`**: Storybook for component documentation
+- **`@coveord/plasma-figma`**: CodeConnect instances to document components in Figma
 
 ### Architecture
 
