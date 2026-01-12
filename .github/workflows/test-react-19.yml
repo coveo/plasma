@@ -1,0 +1,72 @@
+name: Test React 19 Compatibility
+
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+        paths:
+            - 'packages/react/**'
+            - 'packages/style/**'
+            - '.github/workflows/test-react-19.yml'
+    workflow_dispatch:
+
+jobs:
+    test-react-19:
+        name: Test with React 19
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
+
+            - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+              with:
+                  registry-url: 'https://registry.npmjs.org'
+                  node-version: 20.9.0
+
+            - name: Enable corepack
+              run: corepack enable
+
+            - name: Get pnpm store directory
+              id: pnpm-cache
+              run: |
+                  echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+            - uses: actions/cache@v4
+              name: Setup pnpm cache
+              with:
+                  path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+                  key: ${{ runner.os }}-pnpm-store-react19-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-react19-
+                      ${{ runner.os }}-pnpm-store-
+
+            - name: Install dependencies with React 18
+              run: pnpm install --frozen-lockfile
+
+            - name: Backup package.json files
+              run: |
+                  cp packages/react/package.json packages/react/package.json.backup
+                  cp pnpm-lock.yaml pnpm-lock.yaml.backup
+
+            - name: Upgrade to React 19
+              run: |
+                  cd packages/react
+                  pnpm add -D react@19 react-dom@19 @types/react@19 @types/react-dom@19
+
+            - name: Build with React 19
+              run: pnpm build --filter=@coveord/plasma-react
+
+            - name: Test with React 19
+              run: pnpm test --filter=@coveord/plasma-react
+
+            - name: Restore original package files
+              if: always()
+              run: |
+                  mv packages/react/package.json.backup packages/react/package.json
+                  mv pnpm-lock.yaml.backup pnpm-lock.yaml
+                  pnpm install --frozen-lockfile
+
+            - name: Summary
+              if: success()
+              run: |
+                  echo "✅ React 19 compatibility test passed!" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "The @coveord/plasma-react package successfully builds and passes all tests with React 19." >> $GITHUB_STEP_SUMMARY
