@@ -45,79 +45,55 @@ type Story = StoryObj<typeof Accordion>;
 
 export const Demo: Story = {
     render: (props) => {
-        switch (props.multiple) {
-            case true:
-                return (
-                    <Accordion defaultValue={['Apple', 'Avocado']} multiple={props.multiple} variant={props.variant}>
-                        <Accordion.Item value="Apple">
-                            <Accordion.Control icon={<IconApple />}>Apple</Accordion.Control>
-                            <Accordion.Panel>
-                                Apples are crisp, sweet fruits packed with fiber and vitamin C. They come in many
-                                varieties including Granny Smith, Fuji, and Honeycrisp.
-                            </Accordion.Panel>
-                        </Accordion.Item>
+        const data = [
+            {
+                value: 'Apple',
+                label: 'Apple',
+                icon: <IconApple />,
+                description:
+                    'Apples are crisp, sweet fruits packed with fiber and vitamin C. They come in many varieties including Granny Smith, Fuji, and Honeycrisp.',
+            },
+            {
+                value: 'Avocado',
+                label: 'Avocado',
+                icon: <IconAvocado />,
+                description:
+                    'Avocados are creamy, nutrient-dense fruits rich in healthy fats, potassium, and vitamins. Perfect for guacamole, salads, or toast.',
+            },
+            {
+                value: 'Cherry',
+                label: 'Cherry',
+                icon: <IconCherry />,
+                description:
+                    "Cherries are small, sweet or tart stone fruits loaded with antioxidants. They're delicious fresh, dried, or in desserts.",
+            },
+            {
+                value: 'Lemon',
+                label: 'Lemon',
+                icon: <IconLemon />,
+                description:
+                    'Lemons are tangy citrus fruits high in vitamin C and antioxidants. Essential for adding bright flavor to drinks, cooking, and baking.',
+            },
+        ];
 
-                        <Accordion.Item value="Avocado">
-                            <Accordion.Control icon={<IconAvocado />}>Avocado</Accordion.Control>
-                            <Accordion.Panel>
-                                Avocados are creamy, nutrient-dense fruits rich in healthy fats, potassium, and
-                                vitamins. Perfect for guacamole, salads, or toast.
-                            </Accordion.Panel>
-                        </Accordion.Item>
+        const items = data.map((item) => (
+            <Accordion.Item value={item.value} key={item.value}>
+                <Accordion.Control icon={item.icon}>{item.label}</Accordion.Control>
+                <Accordion.Panel>{item.description}</Accordion.Panel>
+            </Accordion.Item>
+        ));
 
-                        <Accordion.Item value="Cherry">
-                            <Accordion.Control icon={<IconCherry />}>Cherry</Accordion.Control>
-                            <Accordion.Panel>
-                                Cherries are small, sweet or tart stone fruits loaded with antioxidants. They're
-                                delicious fresh, dried, or in desserts.
-                            </Accordion.Panel>
-                        </Accordion.Item>
-
-                        <Accordion.Item value="Lemon">
-                            <Accordion.Control icon={<IconLemon />}>Lemon</Accordion.Control>
-                            <Accordion.Panel>
-                                Lemons are tangy citrus fruits high in vitamin C and antioxidants. Essential for adding
-                                bright flavor to drinks, cooking, and baking.
-                            </Accordion.Panel>
-                        </Accordion.Item>
-                    </Accordion>
-                );
-            default:
-                return (
-                    <Accordion defaultValue="Apple" multiple={props.multiple} variant={props.variant}>
-                        <Accordion.Item value="Apple">
-                            <Accordion.Control icon={<IconApple />}>Apple</Accordion.Control>
-                            <Accordion.Panel>
-                                Apples are crisp, sweet fruits packed with fiber and vitamin C. They come in many
-                                varieties including Granny Smith, Fuji, and Honeycrisp.
-                            </Accordion.Panel>
-                        </Accordion.Item>
-
-                        <Accordion.Item value="Avocado">
-                            <Accordion.Control icon={<IconAvocado />}>Avocado</Accordion.Control>
-                            <Accordion.Panel>
-                                Avocados are creamy, nutrient-dense fruits rich in healthy fats, potassium, and
-                                vitamins. Perfect for guacamole, salads, or toast.
-                            </Accordion.Panel>
-                        </Accordion.Item>
-
-                        <Accordion.Item value="Cherry">
-                            <Accordion.Control icon={<IconCherry />}>Cherry</Accordion.Control>
-                            <Accordion.Panel>
-                                Cherries are small, sweet or tart stone fruits loaded with antioxidants. They're
-                                delicious fresh, dried, or in desserts.
-                            </Accordion.Panel>
-                        </Accordion.Item>
-
-                        <Accordion.Item value="Lemon">
-                            <Accordion.Control icon={<IconLemon />}>Lemon</Accordion.Control>
-                            <Accordion.Panel>
-                                Lemons are tangy citrus fruits high in vitamin C and antioxidants. Essential for adding
-                                bright flavor to drinks, cooking, and baking.
-                            </Accordion.Panel>
-                        </Accordion.Item>
-                    </Accordion>
-                );
+        if (props.multiple) {
+            return (
+                <Accordion defaultValue={['Apple', 'Avocado']} multiple={props.multiple} variant={props.variant}>
+                    {items}
+                </Accordion>
+            );
         }
+        return (
+            <Accordion defaultValue="Apple" multiple={props.multiple} variant={props.variant}>
+                {items}
+            </Accordion>
+        );
     },
 };

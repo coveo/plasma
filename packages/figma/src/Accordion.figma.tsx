@@ -1,5 +1,6 @@
 import {Accordion} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
+import {ReactNode} from 'react';
 
 figma.connect(
     Accordion.Item,
@@ -7,7 +8,7 @@ figma.connect(
     {
         props: {
             value: figma.string('Label'),
-            control: figma.instance<any>('Swap Left'),
+            control: figma.instance<ReactNode>('Swap Left'),
         },
         example: (props) => (
             <Accordion.Item value={props.value}>
