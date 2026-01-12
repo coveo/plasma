@@ -1,4 +1,4 @@
-import {PropsWithChildren, CrossSize16Px} from '@coveord/plasma-react-icons';
+import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
 import {
     PropsWithChildren,
@@ -9,13 +9,13 @@ import {
     useEffect,
     useRef,
 } from 'react';
-import {PropsWithChildren, connect} from 'react-redux';
+import {connect} from 'react-redux';
 
-import {PropsWithChildren, PlasmaState} from '../../PlasmaState';
-import {PropsWithChildren, IDispatch} from '../../utils';
-import {PropsWithChildren, FileMetadata, FileUtils} from '../../utils/FileUtils';
-import {PropsWithChildren, FilepickerActions} from './FilepickerActions';
-import {PropsWithChildren, FilepickerSelectors} from './FilepickerSelectors';
+import {PlasmaState} from '../../PlasmaState';
+import {IDispatch} from '../../utils';
+import {FileMetadata, FileUtils} from '../../utils/FileUtils';
+import {FilepickerActions} from './FilepickerActions';
+import {FilepickerSelectors} from './FilepickerSelectors';
 
 export interface FilepickerProps extends InputHTMLAttributes<HTMLInputElement> {
     /**

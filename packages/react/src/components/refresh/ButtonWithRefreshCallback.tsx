@@ -1,11 +1,11 @@
 import {PropsWithChildren, HtmlHTMLAttributes, FunctionComponent} from 'react';
-import {PropsWithChildren, connect} from 'react-redux';
-import {PropsWithChildren, PlasmaState} from '../../PlasmaState';
-import {PropsWithChildren, IDispatch} from '../../utils/ReduxUtils';
-import {PropsWithChildren, Button, IButtonProps} from '../button/Button';
-import {PropsWithChildren, RefreshCallBackActions} from './RefeshCallbackActions';
-import {PropsWithChildren, IRefreshCallbackOwnProps, RefreshCallback} from './RefreshCallback';
-import {PropsWithChildren, RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
+import {connect} from 'react-redux';
+import {PlasmaState} from '../../PlasmaState';
+import {IDispatch} from '../../utils/ReduxUtils';
+import {Button, IButtonProps} from '../button/Button';
+import {RefreshCallBackActions} from './RefeshCallbackActions';
+import {IRefreshCallbackOwnProps, RefreshCallback} from './RefreshCallback';
+import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
 
 export interface IButtonWithRefreshCallbackProps extends IRefreshCallbackOwnProps {
     buttonContainerProps?: HtmlHTMLAttributes<HTMLDivElement>;

@@ -1,15 +1,12 @@
 import classNames from 'clsx';
-import {PropsWithChildren, ReactNode, HTMLAttributes, FunctionComponent} from 'react';
+import {FunctionComponent, HTMLAttributes, PropsWithChildren, ReactNode} from 'react';
 import * as _ from 'underscore';
 
-import {PropsWithChildren, IContentProps} from '../../Entry';
-import {
-    PropsWithChildren,
-    WithServerSideProcessingProps,
-} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {PropsWithChildren, ActionBarConnected} from '../actions/ActionBar';
-import {PropsWithChildren, TableLoading} from '../loading/components/TableLoading';
-import {PropsWithChildren, PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
+import {IContentProps} from '../../Entry';
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {ActionBarConnected} from '../actions/ActionBar';
+import {TableLoading} from '../loading/components/TableLoading';
+import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
 
 /**
  * @deprecated Use WithServerSideProcessingProps directly instead

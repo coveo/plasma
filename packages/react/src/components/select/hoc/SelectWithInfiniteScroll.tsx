@@ -1,12 +1,12 @@
 import {PropsWithChildren, ComponentType, FunctionComponent, ReactNode} from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {PropsWithChildren, connect} from 'react-redux';
-import {PropsWithChildren, createStructuredSelector} from 'reselect';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PropsWithChildren, Loading} from '../../loading/Loading';
-import {PropsWithChildren, ISelectOwnProps} from '../SelectConnected';
-import {PropsWithChildren, SelectSelector} from '../SelectSelector';
+import {Loading} from '../../loading/Loading';
+import {ISelectOwnProps} from '../SelectConnected';
+import {SelectSelector} from '../SelectSelector';
 
 export interface SelectWithInfiniteScrollProps {
     totalEntries: number;

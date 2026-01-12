@@ -9,12 +9,12 @@ import {
     useRef,
     useEffect,
 } from 'react';
-import {PropsWithChildren, omit, uniqueId} from 'underscore';
+import {omit, uniqueId} from 'underscore';
 
-import {PropsWithChildren, TooltipPlacement} from '../../utils';
-import {PropsWithChildren, InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {PropsWithChildren, Tooltip} from '../tooltip';
-import {PropsWithChildren, useTextInput} from './useTextInput';
+import {TooltipPlacement} from '../../utils';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
+import {Tooltip} from '../tooltip';
+import {useTextInput} from './useTextInput';
 
 export type InputValidator = (value: string) => {status: 'valid' | 'invalid' | 'warning'; message?: string};
 

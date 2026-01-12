@@ -1,11 +1,11 @@
 import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
-import {PropsWithChildren, connect} from 'react-redux';
+import {connect} from 'react-redux';
 
-import {PropsWithChildren, IDispatch} from '../../../utils/ReduxUtils';
-import {PropsWithChildren, ICheckboxOwnProps} from '../../checkbox/Checkbox';
-import {PropsWithChildren, IInputOwnProps} from '../../input/Input';
-import {PropsWithChildren, ValidationActions} from '../ValidationActions';
-import {PropsWithChildren, ValidationTypes} from '../ValidationTypes';
+import {IDispatch} from '../../../utils/ReduxUtils';
+import {ICheckboxOwnProps} from '../../checkbox/Checkbox';
+import {IInputOwnProps} from '../../input/Input';
+import {ValidationActions} from '../ValidationActions';
+import {ValidationTypes} from '../ValidationTypes';
 
 export interface IWithDirtyCheckboxOwnProps {
     resetDirtyOnUnmount?: boolean;

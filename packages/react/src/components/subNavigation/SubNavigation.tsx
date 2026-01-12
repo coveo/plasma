@@ -8,8 +8,8 @@ import {
     useEffect,
     createElement,
 } from 'react';
-import {PropsWithChildren, map, omit} from 'underscore';
-import {PropsWithChildren, SlideY} from '../../animations';
+import {map, omit} from 'underscore';
+import {SlideY} from '../../animations';
 
 export interface ISubNavigationOwnProps {
     /**

@@ -1,11 +1,11 @@
 import classNames from 'clsx';
 import {PropsWithChildren, FunctionComponent, useEffect} from 'react';
-import {PropsWithChildren, connect} from 'react-redux';
+import {connect} from 'react-redux';
 
-import {PropsWithChildren, PlasmaState} from '../../../PlasmaState';
-import {PropsWithChildren, IDispatch} from '../../../utils';
-import {PropsWithChildren, ValidationActions} from '../ValidationActions';
-import {PropsWithChildren, ValidationSelectors} from '../ValidationSelectors';
+import {PlasmaState} from '../../../PlasmaState';
+import {IDispatch} from '../../../utils';
+import {ValidationActions} from '../ValidationActions';
+import {ValidationSelectors} from '../ValidationSelectors';
 
 export interface IValidationMessageProps {
     id: string;

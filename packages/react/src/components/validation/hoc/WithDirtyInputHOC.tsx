@@ -1,12 +1,12 @@
 import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
-import {PropsWithChildren, connect} from 'react-redux';
-import {PropsWithChildren, PlasmaState} from '../../../PlasmaState';
+import {connect} from 'react-redux';
+import {PlasmaState} from '../../../PlasmaState';
 
-import {PropsWithChildren, IDispatch} from '../../../utils/ReduxUtils';
-import {PropsWithChildren, IInputOwnProps} from '../../input/Input';
-import {PropsWithChildren, ValidationActions} from '../ValidationActions';
-import {PropsWithChildren, ValidationSelectors} from '../ValidationSelectors';
-import {PropsWithChildren, ValidationTypes} from '../ValidationTypes';
+import {IDispatch} from '../../../utils/ReduxUtils';
+import {IInputOwnProps} from '../../input/Input';
+import {ValidationActions} from '../ValidationActions';
+import {ValidationSelectors} from '../ValidationSelectors';
+import {ValidationTypes} from '../ValidationTypes';
 
 export interface IWithDirtyInputOwnProps {
     id?: string;

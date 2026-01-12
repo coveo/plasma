@@ -1,13 +1,13 @@
-import {PropsWithChildren, Icon} from '@coveord/plasma-react-icons';
+import {Icon} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
 import {PropsWithChildren, FunctionComponent} from 'react';
-import {PropsWithChildren, connect} from 'react-redux';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PropsWithChildren, PlasmaState} from '../../PlasmaState';
-import {PropsWithChildren, IDispatch} from '../../utils/ReduxUtils';
-import {PropsWithChildren, Button} from '../button';
-import {PropsWithChildren, removePrompt} from './InlinePromptActions';
+import {PlasmaState} from '../../PlasmaState';
+import {IDispatch} from '../../utils/ReduxUtils';
+import {Button} from '../button';
+import {removePrompt} from './InlinePromptActions';
 
 export interface IUserChoice {
     description?: string;

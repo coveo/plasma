@@ -1,3 +1,4 @@
+import {ComponentType, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';

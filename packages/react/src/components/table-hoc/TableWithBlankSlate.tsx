@@ -1,12 +1,12 @@
 import {PropsWithChildren, HTMLAttributes, ComponentClass, FunctionComponent, ComponentType} from 'react';
-import {PropsWithChildren, connect} from 'react-redux';
+import {connect} from 'react-redux';
 
-import {PropsWithChildren, PlasmaState} from '../../PlasmaState';
-import {PropsWithChildren, ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {PropsWithChildren, IBlankSlateWithTableProps} from '../blankSlate';
-import {PropsWithChildren, BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
-import {PropsWithChildren, ITableHOCOwnProps} from './TableHOC';
-import {PropsWithChildren, TableSelectors} from './TableSelectors';
+import {PlasmaState} from '../../PlasmaState';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
+import {IBlankSlateWithTableProps} from '../blankSlate';
+import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
+import {ITableHOCOwnProps} from './TableHOC';
+import {TableSelectors} from './TableSelectors';
 
 export interface ITableWithBlankSlateStateProps {
     /**

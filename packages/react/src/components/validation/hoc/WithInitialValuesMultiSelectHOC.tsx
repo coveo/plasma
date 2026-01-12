@@ -1,11 +1,11 @@
 import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
-import {PropsWithChildren, connect} from 'react-redux';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PropsWithChildren, IDispatch} from '../../../utils/ReduxUtils';
-import {PropsWithChildren, IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
-import {PropsWithChildren, ValidationActions} from '../ValidationActions';
-import {PropsWithChildren, ValidationTypes} from '../ValidationTypes';
+import {IDispatch} from '../../../utils/ReduxUtils';
+import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
+import {ValidationActions} from '../ValidationActions';
+import {ValidationTypes} from '../ValidationTypes';
 
 const mapDispatchToProps = (dispatch: IDispatch, {id}: IMultiSelectOwnProps) => ({
     setWarning: (warning: string) =>

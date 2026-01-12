@@ -1,10 +1,10 @@
 import {PropsWithChildren, ComponentType} from 'react';
 import * as _ from 'underscore';
 
-import {PropsWithChildren, IMultiSelectOwnProps, MultiSelectConnected} from '../MultiSelectConnected';
-import {PropsWithChildren, ISingleSelectOwnProps, SingleSelectConnected} from '../SingleSelectConnected';
-import {PropsWithChildren, ISelectWithFilterOwnProps, selectWithFilter} from './SelectWithFilter';
-import {PropsWithChildren, ISelectWithPredicateOwnProps, selectWithPredicate} from './SelectWithPredicate';
+import {IMultiSelectOwnProps, MultiSelectConnected} from '../MultiSelectConnected';
+import {ISingleSelectOwnProps, SingleSelectConnected} from '../SingleSelectConnected';
+import {ISelectWithFilterOwnProps, selectWithFilter} from './SelectWithFilter';
+import {ISelectWithPredicateOwnProps, selectWithPredicate} from './SelectWithPredicate';
 
 // Single Select
 

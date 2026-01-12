@@ -1,10 +1,10 @@
 import classNames from 'clsx';
 import {PropsWithChildren, FunctionComponent, useEffect, useState} from 'react';
 
-import {PropsWithChildren, InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {PropsWithChildren, CodeEditor} from './CodeEditor';
-import {PropsWithChildren, CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
-import {PropsWithChildren, JSONEditorUtils} from './JSONEditorUtils';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
+import {CodeEditor} from './CodeEditor';
+import {CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
+import {JSONEditorUtils} from './JSONEditorUtils';
 
 export interface JSONEditorProps {
     /**

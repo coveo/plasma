@@ -1,17 +1,12 @@
-import {
-    PropsWithChildren,
-    ArrowDownSize16Px,
-    ArrowUpSize16Px,
-    DoubleArrowHeadVSize16Px,
-} from '@coveord/plasma-react-icons';
-import {PropsWithChildren, FunctionComponent, HTMLAttributes, useEffect} from 'react';
-import {PropsWithChildren, useDispatch, useSelector} from 'react-redux';
+import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
+import {FunctionComponent, HTMLAttributes, PropsWithChildren, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PropsWithChildren, PlasmaState} from '../../PlasmaState';
-import {PropsWithChildren, TableHeaderActions} from './actions/TableHeaderActions';
-import {PropsWithChildren, ITableWithSortState} from './reducers/TableWithSortReducers';
-import {PropsWithChildren, useFixedWidthWhileLoading} from './utils/TableHooks';
+import {PlasmaState} from '../../PlasmaState';
+import {TableHeaderActions} from './actions/TableHeaderActions';
+import {ITableWithSortState} from './reducers/TableWithSortReducers';
+import {useFixedWidthWhileLoading} from './utils/TableHooks';
 
 export interface ITableHeaderWithSortOwnProps {
     id: string;

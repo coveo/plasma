@@ -1,12 +1,12 @@
 import {PropsWithChildren, HTMLAttributes, FunctionComponent, useState, useRef, useEffect} from 'react';
-import {PropsWithChildren, connect} from 'react-redux';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PropsWithChildren, IDispatch} from '../../utils/ReduxUtils';
+import {IDispatch} from '../../utils/ReduxUtils';
 
-import {PropsWithChildren, PlasmaState} from '../../PlasmaState';
-import {PropsWithChildren, TableHOCActions} from './actions/TableHOCActions';
-import {PropsWithChildren, ITableHOCOwnProps} from './TableHOC';
-import {PropsWithChildren, TableSelectors} from './TableSelectors';
+import {PlasmaState} from '../../PlasmaState';
+import {TableHOCActions} from './actions/TableHOCActions';
+import {ITableHOCOwnProps} from './TableHOC';
+import {TableSelectors} from './TableSelectors';
 
 export interface TableWithEmptyStateProps {
     emptyState: JSX.Element;
