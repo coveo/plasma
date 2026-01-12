@@ -76,9 +76,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: CollapsibleOwnProps) 
 
 export const COLLAPSIBLE_EFFECT_DURATION = 150;
 export const CollapsibleDisconnected: FunctionComponent<
-    React.PropsWithChildren<
-        CollapsibleOwnProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
-    >
+    PropsWithChildren<CollapsibleOwnProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>>
 > = ({
     children,
     id,

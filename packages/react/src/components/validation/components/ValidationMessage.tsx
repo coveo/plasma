@@ -1,11 +1,11 @@
 import classNames from 'clsx';
-import {FunctionComponent, useEffect} from 'react';
-import {connect} from 'react-redux';
+import {PropsWithChildren, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, connect} from 'react-redux';
 
-import {PlasmaState} from '../../../PlasmaState';
-import {IDispatch} from '../../../utils';
-import {ValidationActions} from '../ValidationActions';
-import {ValidationSelectors} from '../ValidationSelectors';
+import {PropsWithChildren, PlasmaState} from '../../../PlasmaState';
+import {PropsWithChildren, IDispatch} from '../../../utils';
+import {PropsWithChildren, ValidationActions} from '../ValidationActions';
+import {PropsWithChildren, ValidationSelectors} from '../ValidationSelectors';
 
 export interface IValidationMessageProps {
     id: string;
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IValidationMessagePro
 });
 
 export const ValidationMessageDisconnect: FunctionComponent<
-    React.PropsWithChildren<
+    PropsWithChildren<
         IValidationMessageProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
     >
 > = ({onlyShowIfDirty, isDirty, errors, warnings, cleanMessage}) => {

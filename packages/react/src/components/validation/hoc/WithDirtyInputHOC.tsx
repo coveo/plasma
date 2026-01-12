@@ -1,12 +1,12 @@
-import {ComponentType, FunctionComponent, useEffect} from 'react';
-import {connect} from 'react-redux';
-import {PlasmaState} from '../../../PlasmaState';
+import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, connect} from 'react-redux';
+import {PropsWithChildren, PlasmaState} from '../../../PlasmaState';
 
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {IInputOwnProps} from '../../input/Input';
-import {ValidationActions} from '../ValidationActions';
-import {ValidationSelectors} from '../ValidationSelectors';
-import {ValidationTypes} from '../ValidationTypes';
+import {PropsWithChildren, IDispatch} from '../../../utils/ReduxUtils';
+import {PropsWithChildren, IInputOwnProps} from '../../input/Input';
+import {PropsWithChildren, ValidationActions} from '../ValidationActions';
+import {PropsWithChildren, ValidationSelectors} from '../ValidationSelectors';
+import {PropsWithChildren, ValidationTypes} from '../ValidationTypes';
 
 export interface IWithDirtyInputOwnProps {
     id?: string;
@@ -29,7 +29,7 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: Component
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedInput: FunctionComponent<
-        React.PropsWithChildren<T & IWithDirtyInputOwnProps & StateProps & DispatchProps>
+        PropsWithChildren<T & IWithDirtyInputOwnProps & StateProps & DispatchProps>
     > = ({wasDirty, setIsDirty, clearIsDirty, validate, resetDirtyOnUnmount, ...props}) => {
         useEffect(
             () => () => {

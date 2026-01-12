@@ -1,25 +1,28 @@
-import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from '@test-utils';
-import {ComponentType} from 'react';
-import {Provider} from 'react-redux';
-import {Store} from 'redux';
+import {PropsWithChildren, mount, ReactWrapper, ShallowWrapper} from 'enzyme';
+import {PropsWithChildren, shallowWithStore} from '@test-utils';
+import {PropsWithChildren, ComponentType} from 'react';
+import {PropsWithChildren, Provider} from 'react-redux';
+import {PropsWithChildren, Store} from 'redux';
 import * as _ from 'underscore';
 
-import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {PlasmaState} from '../../../../PlasmaState';
-import {keyCode} from '../../../../utils/InputUtils';
-import {clearState} from '../../../../utils/ReduxUtils';
-import {TestUtils} from '../../../../utils/tests/TestUtils';
-import {FilterBoxSelectors} from '../../../filterBox';
-import {filterThrough} from '../../../filterBox/FilterBoxActions';
-import {FilterBoxConnected} from '../../../filterBox/FilterBoxConnected';
-import {IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox';
-import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions';
-import {toggleSelect} from '../../SelectActions';
-import {SelectConnected} from '../../SelectConnected';
-import {ISingleSelectOwnProps, SingleSelectConnected} from '../../SingleSelectConnected';
-import {SingleSelectWithFilter} from '../SelectComponents';
-import {ISelectWithFilterOwnProps, selectWithFilter} from '../SelectWithFilter';
+import {
+    PropsWithChildren,
+    withServerSideProcessing,
+} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {PropsWithChildren, PlasmaState} from '../../../../PlasmaState';
+import {PropsWithChildren, keyCode} from '../../../../utils/InputUtils';
+import {PropsWithChildren, clearState} from '../../../../utils/ReduxUtils';
+import {PropsWithChildren, TestUtils} from '../../../../utils/tests/TestUtils';
+import {PropsWithChildren, FilterBoxSelectors} from '../../../filterBox';
+import {PropsWithChildren, filterThrough} from '../../../filterBox/FilterBoxActions';
+import {PropsWithChildren, FilterBoxConnected} from '../../../filterBox/FilterBoxConnected';
+import {PropsWithChildren, IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox';
+import {PropsWithChildren, selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions';
+import {PropsWithChildren, toggleSelect} from '../../SelectActions';
+import {PropsWithChildren, SelectConnected} from '../../SelectConnected';
+import {PropsWithChildren, ISingleSelectOwnProps, SingleSelectConnected} from '../../SingleSelectConnected';
+import {PropsWithChildren, SingleSelectWithFilter} from '../SelectComponents';
+import {PropsWithChildren, ISelectWithFilterOwnProps, selectWithFilter} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('<SingleSelectWithFilter/>', () => {
@@ -288,7 +291,7 @@ describe('Select', () => {
 
         describe('when filter is processed on the server side', () => {
             const ServerSideSingleSelectWithFilter: ComponentType<
-                React.PropsWithChildren<ISelectWithFilterOwnProps & ISingleSelectOwnProps>
+                PropsWithChildren<ISelectWithFilterOwnProps & ISingleSelectOwnProps>
             > = _.compose(withServerSideProcessing, selectWithFilter)(SingleSelectConnected);
 
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];

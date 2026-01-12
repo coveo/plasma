@@ -1,12 +1,15 @@
 import classNames from 'clsx';
-import {ReactNode, HTMLAttributes, FunctionComponent} from 'react';
+import {PropsWithChildren, ReactNode, HTMLAttributes, FunctionComponent} from 'react';
 import * as _ from 'underscore';
 
-import {IContentProps} from '../../Entry';
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {ActionBarConnected} from '../actions/ActionBar';
-import {TableLoading} from '../loading/components/TableLoading';
-import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
+import {PropsWithChildren, IContentProps} from '../../Entry';
+import {
+    PropsWithChildren,
+    WithServerSideProcessingProps,
+} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {PropsWithChildren, ActionBarConnected} from '../actions/ActionBar';
+import {PropsWithChildren, TableLoading} from '../loading/components/TableLoading';
+import {PropsWithChildren, PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
 
 /**
  * @deprecated Use WithServerSideProcessingProps directly instead
@@ -97,9 +100,7 @@ export interface ITableHOCProps extends ITableHOCOwnProps {}
 /**
  * @deprecated Use Mantine instead
  */
-export const TableHOC: FunctionComponent<
-    React.PropsWithChildren<ITableHOCProps & HTMLAttributes<HTMLTableElement>>
-> = ({
+export const TableHOC: FunctionComponent<PropsWithChildren<ITableHOCProps & HTMLAttributes<HTMLTableElement>>> = ({
     hasActionButtons = false,
     actions = [],
     actionBarPrefixContent,

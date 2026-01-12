@@ -1,13 +1,21 @@
-import {CrossSize16Px} from '@coveord/plasma-react-icons';
+import {PropsWithChildren, CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
-import {ChangeEvent, FunctionComponent, InputHTMLAttributes, MouseEventHandler, useEffect, useRef} from 'react';
-import {connect} from 'react-redux';
+import {
+    PropsWithChildren,
+    ChangeEvent,
+    FunctionComponent,
+    InputHTMLAttributes,
+    MouseEventHandler,
+    useEffect,
+    useRef,
+} from 'react';
+import {PropsWithChildren, connect} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils';
-import {FileMetadata, FileUtils} from '../../utils/FileUtils';
-import {FilepickerActions} from './FilepickerActions';
-import {FilepickerSelectors} from './FilepickerSelectors';
+import {PropsWithChildren, PlasmaState} from '../../PlasmaState';
+import {PropsWithChildren, IDispatch} from '../../utils';
+import {PropsWithChildren, FileMetadata, FileUtils} from '../../utils/FileUtils';
+import {PropsWithChildren, FilepickerActions} from './FilepickerActions';
+import {PropsWithChildren, FilepickerSelectors} from './FilepickerSelectors';
 
 export interface FilepickerProps extends InputHTMLAttributes<HTMLInputElement> {
     /**
@@ -28,9 +36,7 @@ const mapDispatchToProps = (dispatch: IDispatch, {id}: FilepickerProps) => ({
 });
 
 const FilepickerDisconnected: FunctionComponent<
-    React.PropsWithChildren<
-        FilepickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>
-    >
+    PropsWithChildren<FilepickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>>
 > = (props) => {
     const {addFilepicker, setFile, clear, isEmpty, selectedFile, placeholder, capture, ...inputProps} = props;
     const input = useRef<HTMLInputElement>();

@@ -7,6 +7,7 @@ import {
     useReducer,
     useMemo,
     PropsWithChildren,
+    Dispatch,
 } from 'react';
 
 import {textInputReducer} from '../textInput/TextInputReducer';
@@ -41,7 +42,7 @@ const formReducer = (state: FormState, {type, ...action}: FormAction) => ({
     [type]: componentReducers[type](state[type], action),
 });
 
-export const FormContext = createContext<{state: FormState; dispatch: React.Dispatch<FormAction>}>(undefined);
+export const FormContext = createContext<{state: FormState; dispatch: Dispatch<FormAction>}>(undefined);
 
 /**
  * @deprecated Use Mantine use-form instead: https://mantine.dev/form/use-form/

@@ -1,11 +1,11 @@
-import {ComponentType, FunctionComponent, useEffect} from 'react';
-import {connect} from 'react-redux';
+import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, connect} from 'react-redux';
 
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {ICheckboxOwnProps} from '../../checkbox/Checkbox';
-import {IInputOwnProps} from '../../input/Input';
-import {ValidationActions} from '../ValidationActions';
-import {ValidationTypes} from '../ValidationTypes';
+import {PropsWithChildren, IDispatch} from '../../../utils/ReduxUtils';
+import {PropsWithChildren, ICheckboxOwnProps} from '../../checkbox/Checkbox';
+import {PropsWithChildren, IInputOwnProps} from '../../input/Input';
+import {PropsWithChildren, ValidationActions} from '../ValidationActions';
+import {PropsWithChildren, ValidationTypes} from '../ValidationTypes';
 
 export interface IWithDirtyCheckboxOwnProps {
     resetDirtyOnUnmount?: boolean;
@@ -21,9 +21,13 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
  */
 export const withDirtyCheckboxHOC = <T extends ICheckboxOwnProps & IInputOwnProps>(Component: ComponentType<T>) => {
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedCheckbox: FunctionComponent<
-        React.PropsWithChildren<T & IWithDirtyCheckboxOwnProps & DispatchProps>
-    > = ({setIsDirty, clearIsDirty, handleOnClick, resetDirtyOnUnmount, ...props}) => {
+    const WrappedCheckbox: FunctionComponent<PropsWithChildren<T & IWithDirtyCheckboxOwnProps & DispatchProps>> = ({
+        setIsDirty,
+        clearIsDirty,
+        handleOnClick,
+        resetDirtyOnUnmount,
+        ...props
+    }) => {
         useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);

@@ -1,10 +1,10 @@
 import classNames from 'clsx';
-import {FunctionComponent, useEffect, useState} from 'react';
+import {PropsWithChildren, FunctionComponent, useEffect, useState} from 'react';
 
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {CodeEditor} from './CodeEditor';
-import {CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
-import {JSONEditorUtils} from './JSONEditorUtils';
+import {PropsWithChildren, InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
+import {PropsWithChildren, CodeEditor} from './CodeEditor';
+import {PropsWithChildren, CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
+import {PropsWithChildren, JSONEditorUtils} from './JSONEditorUtils';
 
 export interface JSONEditorProps {
     /**
@@ -66,7 +66,7 @@ export interface JSONEditorDispatchProps {
  * @deprecated use Mantine instead
  */
 export const JSONEditor: FunctionComponent<
-    React.PropsWithChildren<JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>>
+    PropsWithChildren<JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>>
 > = ({
     defaultValue,
     value,

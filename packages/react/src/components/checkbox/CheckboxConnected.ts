@@ -1,3 +1,4 @@
+import {MouseEvent} from 'react';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -18,7 +19,7 @@ const mapDispatchToProps = (
 ): IInputDispatchProps => ({
     onRender: () => dispatch(addCheckbox(ownProps.id, ownProps.defaultChecked)),
     onDestroy: () => dispatch(removeCheckbox(ownProps.id)),
-    onClick: (e: React.MouseEvent<HTMLElement>) => dispatch(toggleCheckbox(ownProps.id)),
+    onClick: (e: MouseEvent<HTMLElement>) => dispatch(toggleCheckbox(ownProps.id)),
 });
 
 /**

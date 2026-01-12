@@ -1,7 +1,15 @@
 import classNames from 'clsx';
-import {ReactNode, HTMLAttributes, FunctionComponent, MouseEvent, useEffect, createElement} from 'react';
-import {map, omit} from 'underscore';
-import {SlideY} from '../../animations';
+import {
+    PropsWithChildren,
+    ReactNode,
+    HTMLAttributes,
+    FunctionComponent,
+    MouseEvent,
+    useEffect,
+    createElement,
+} from 'react';
+import {PropsWithChildren, map, omit} from 'underscore';
+import {PropsWithChildren, SlideY} from '../../animations';
 
 export interface ISubNavigationOwnProps {
     /**
@@ -58,9 +66,16 @@ const ISubNavigationPropsToOmit = [
 /**
  * @deprecated Use Mantine instead
  */
-export const SubNavigation: FunctionComponent<
-    React.PropsWithChildren<ISubNavigationProps & HTMLAttributes<HTMLElement>>
-> = ({onDestroy, onRender, selected, defaultSelected, onClickItem, items, className, ...props}) => {
+export const SubNavigation: FunctionComponent<PropsWithChildren<ISubNavigationProps & HTMLAttributes<HTMLElement>>> = ({
+    onDestroy,
+    onRender,
+    selected,
+    defaultSelected,
+    onClickItem,
+    items,
+    className,
+    ...props
+}) => {
     useEffect(() => {
         onRender?.();
         return () => onDestroy?.();

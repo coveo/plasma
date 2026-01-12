@@ -1,11 +1,11 @@
-import {ComponentType, FunctionComponent, useEffect} from 'react';
-import {connect} from 'react-redux';
+import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
-import {ValidationActions} from '../ValidationActions';
-import {ValidationTypes} from '../ValidationTypes';
+import {PropsWithChildren, IDispatch} from '../../../utils/ReduxUtils';
+import {PropsWithChildren, IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
+import {PropsWithChildren, ValidationActions} from '../ValidationActions';
+import {PropsWithChildren, ValidationTypes} from '../ValidationTypes';
 
 const mapDispatchToProps = (dispatch: IDispatch, {id}: IMultiSelectOwnProps) => ({
     setWarning: (warning: string) =>
@@ -27,7 +27,7 @@ const defaultInvalidInitialValuesMessageGenerator = (values: string[]) =>
 export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(Component: ComponentType<T>) => {
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedMultiSelect: FunctionComponent<
-        React.PropsWithChildren<T & IMultiSelectWithInitialValuesOwnProps & DispatchProps>
+        PropsWithChildren<T & IMultiSelectWithInitialValuesOwnProps & DispatchProps>
     > = ({
         setWarning,
         clearWarning,

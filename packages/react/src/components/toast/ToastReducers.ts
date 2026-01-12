@@ -1,3 +1,4 @@
+import {ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {IReduxAction} from '../../utils/ReduxUtils';
@@ -11,7 +12,7 @@ export interface IToastsState {
 
 export interface IToastState extends IToastProps {
     id: string;
-    title: React.ReactNode;
+    title: ReactNode;
 }
 
 export const toastContainerInitialState: IToastsState = {

@@ -80,7 +80,7 @@ const mapDispatchToProps = (
 /**
  * @deprecated Use Mantine DatePicker instead
  */
-export const DatePickerDropdownConnected: React.ComponentType<IDatePickerDropdownOwnProps> = connect(
+export const DatePickerDropdownConnected: ComponentType<IDatePickerDropdownOwnProps> = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps,

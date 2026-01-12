@@ -1,12 +1,12 @@
-import {ComponentType, FunctionComponent, ReactNode} from 'react';
+import {PropsWithChildren, ComponentType, FunctionComponent, ReactNode} from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
+import {PropsWithChildren, connect} from 'react-redux';
+import {PropsWithChildren, createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {Loading} from '../../loading/Loading';
-import {ISelectOwnProps} from '../SelectConnected';
-import {SelectSelector} from '../SelectSelector';
+import {PropsWithChildren, Loading} from '../../loading/Loading';
+import {PropsWithChildren, ISelectOwnProps} from '../SelectConnected';
+import {PropsWithChildren, SelectSelector} from '../SelectSelector';
 
 export interface SelectWithInfiniteScrollProps {
     totalEntries: number;
@@ -24,7 +24,7 @@ export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button
     });
 
     const ComponentWithInfiniteScroll: FunctionComponent<
-        React.PropsWithChildren<P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>>
+        PropsWithChildren<P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>>
     > = (props) => {
         const dataLength = _.size(props.items);
         const hasMore = props.totalEntries - dataLength > 0;

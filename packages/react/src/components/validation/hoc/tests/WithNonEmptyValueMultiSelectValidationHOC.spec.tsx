@@ -1,15 +1,16 @@
-import {FC} from 'react';
-import {render, screen} from '@test-utils';
-import {withSelectedValues, ErrorList} from '../../../../utils/tests/TestUtils';
-import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
+import {PropsWithChildren, FC} from 'react';
+import {PropsWithChildren, render, screen} from '@test-utils';
+import {PropsWithChildren, withSelectedValues, ErrorList} from '../../../../utils/tests/TestUtils';
+import {PropsWithChildren, IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
 import {
+    PropsWithChildren,
     withNonEmptyMultiSelectHOC,
     WithNonEmptyValueMultiSelectValidationProps,
 } from '../WithNonEmptyValueMultiSelectValidationHOC';
 
 const MultiSelectWithNonEmpty = withNonEmptyMultiSelectHOC(MultiSelectConnected);
 const MultiSelectWithNonEmptyAndError: FC<
-    React.PropsWithChildren<IMultiSelectOwnProps & WithNonEmptyValueMultiSelectValidationProps>
+    PropsWithChildren<IMultiSelectOwnProps & WithNonEmptyValueMultiSelectValidationProps>
 > = (props) => (
     <>
         <MultiSelectWithNonEmpty {...props} />

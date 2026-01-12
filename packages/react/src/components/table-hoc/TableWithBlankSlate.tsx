@@ -1,12 +1,12 @@
-import {HTMLAttributes, ComponentClass, FunctionComponent, ComponentType} from 'react';
-import {connect} from 'react-redux';
+import {PropsWithChildren, HTMLAttributes, ComponentClass, FunctionComponent, ComponentType} from 'react';
+import {PropsWithChildren, connect} from 'react-redux';
 
-import {PlasmaState} from '../../PlasmaState';
-import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {IBlankSlateWithTableProps} from '../blankSlate';
-import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
-import {ITableHOCOwnProps} from './TableHOC';
-import {TableSelectors} from './TableSelectors';
+import {PropsWithChildren, PlasmaState} from '../../PlasmaState';
+import {PropsWithChildren, ConfigSupplier, HocUtils} from '../../utils/HocUtils';
+import {PropsWithChildren, IBlankSlateWithTableProps} from '../blankSlate';
+import {PropsWithChildren, BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
+import {PropsWithChildren, ITableHOCOwnProps} from './TableHOC';
+import {PropsWithChildren, TableSelectors} from './TableSelectors';
 
 export interface ITableWithBlankSlateStateProps {
     /**
@@ -29,7 +29,7 @@ export const tableWithBlankSlate =
     (
         Component: ComponentClass<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>,
     ): ComponentType<
-        React.PropsWithChildren<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps>
+        PropsWithChildren<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps>
     > => {
         const config = HocUtils.supplyConfig(supplier);
         const defaultRenderBlankSlateMethod = <BlankSlateWithTable {...config} />;
@@ -44,7 +44,7 @@ export const tableWithBlankSlate =
         };
 
         const TableWithBlankSlate: FunctionComponent<
-            React.PropsWithChildren<ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>>
+            PropsWithChildren<ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>>
         > = (props) => {
             const {renderBlankSlate, renderBlankSlateOnly, isEmpty, isTrulyEmpty, isEmptyStateSet, ...tableProps} =
                 props;

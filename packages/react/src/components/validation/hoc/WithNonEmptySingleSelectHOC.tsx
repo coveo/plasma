@@ -1,12 +1,12 @@
-import {ComponentType, FunctionComponent, useEffect} from 'react';
-import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
+import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, connect} from 'react-redux';
+import {PropsWithChildren, createStructuredSelector} from 'reselect';
 
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {SelectSelector} from '../../select/SelectSelector';
-import {ISingleSelectOwnProps} from '../../select/SingleSelectConnected';
-import {ValidationActions} from '../ValidationActions';
-import {ValidationTypes} from '../ValidationTypes';
+import {PropsWithChildren, IDispatch} from '../../../utils/ReduxUtils';
+import {PropsWithChildren, SelectSelector} from '../../select/SelectSelector';
+import {PropsWithChildren, ISingleSelectOwnProps} from '../../select/SingleSelectConnected';
+import {PropsWithChildren, ValidationActions} from '../ValidationActions';
+import {PropsWithChildren, ValidationTypes} from '../ValidationTypes';
 
 const mapStateToProps = createStructuredSelector({
     selectedValue: SelectSelector.getSelectedValue,
@@ -28,7 +28,7 @@ export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Com
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedSingleSelect: FunctionComponent<
-        React.PropsWithChildren<T & IWithNonEmptySingleSelectHOCProps & StateProps & DispatchProps>
+        PropsWithChildren<T & IWithNonEmptySingleSelectHOCProps & StateProps & DispatchProps>
     > = ({
         selectedValue,
         setError,

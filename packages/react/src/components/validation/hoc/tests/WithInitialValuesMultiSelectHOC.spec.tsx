@@ -1,16 +1,17 @@
-import {FC} from 'react';
-import {render, screen, within} from '@test-utils';
+import {PropsWithChildren, FC} from 'react';
+import {PropsWithChildren, render, screen, within} from '@test-utils';
 
-import {getStoreMock, WarningList} from '../../../../utils/tests/TestUtils';
-import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
+import {PropsWithChildren, getStoreMock, WarningList} from '../../../../utils/tests/TestUtils';
+import {PropsWithChildren, IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
 import {
+    PropsWithChildren,
     IMultiSelectWithInitialValuesOwnProps,
     withInitialValuesMultiSelectHOC,
 } from '../WithInitialValuesMultiSelectHOC';
 
 const MultiSelectWithInitialValues = withInitialValuesMultiSelectHOC(MultiSelectConnected);
 const MultiSelectWithInitialValuesAndWarnings: FC<
-    React.PropsWithChildren<IMultiSelectOwnProps & IMultiSelectWithInitialValuesOwnProps>
+    PropsWithChildren<IMultiSelectOwnProps & IMultiSelectWithInitialValuesOwnProps>
 > = (props) => (
     <>
         <WarningList id={props.id} />

@@ -18,7 +18,7 @@ export const tableWithPrepend = (Component: FunctionComponent<PropsWithChildren<
     });
 
     const TableWithPrepend: FunctionComponent<
-        React.PropsWithChildren<TableWithPrependProps & ReturnType<typeof mapStateToProps>>
+        PropsWithChildren<TableWithPrependProps & ReturnType<typeof mapStateToProps>>
     > = (props) => {
         const {prepend, isTrulyEmpty, ...tableProps} = props;
         return (

@@ -1,11 +1,20 @@
 import classNames from 'clsx';
-import {InputHTMLAttributes, FunctionComponent, ChangeEvent, FocusEvent, useMemo, useRef, useEffect} from 'react';
-import {omit, uniqueId} from 'underscore';
+import {
+    PropsWithChildren,
+    InputHTMLAttributes,
+    FunctionComponent,
+    ChangeEvent,
+    FocusEvent,
+    useMemo,
+    useRef,
+    useEffect,
+} from 'react';
+import {PropsWithChildren, omit, uniqueId} from 'underscore';
 
-import {TooltipPlacement} from '../../utils';
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
-import {Tooltip} from '../tooltip';
-import {useTextInput} from './useTextInput';
+import {PropsWithChildren, TooltipPlacement} from '../../utils';
+import {PropsWithChildren, InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
+import {PropsWithChildren, Tooltip} from '../tooltip';
+import {PropsWithChildren, useTextInput} from './useTextInput';
 
 export type InputValidator = (value: string) => {status: 'valid' | 'invalid' | 'warning'; message?: string};
 
@@ -56,7 +65,7 @@ interface TextInputProps {
  * @deprecated Use Mantine Textinput instead: https://mantine.dev/core/text-input/
  */
 export const TextInput: FunctionComponent<
-    React.PropsWithChildren<TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>>
+    PropsWithChildren<TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>>
 > = ({
     id: propsId,
     label,

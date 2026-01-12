@@ -1,13 +1,13 @@
-import {Icon} from '@coveord/plasma-react-icons';
+import {PropsWithChildren, Icon} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
-import {FunctionComponent} from 'react';
-import {connect} from 'react-redux';
+import {PropsWithChildren, FunctionComponent} from 'react';
+import {PropsWithChildren, connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../PlasmaState';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {Button} from '../button';
-import {removePrompt} from './InlinePromptActions';
+import {PropsWithChildren, PlasmaState} from '../../PlasmaState';
+import {PropsWithChildren, IDispatch} from '../../utils/ReduxUtils';
+import {PropsWithChildren, Button} from '../button';
+import {PropsWithChildren, removePrompt} from './InlinePromptActions';
 
 export interface IUserChoice {
     description?: string;
@@ -32,7 +32,7 @@ export interface IInlinePromptProps {
  * @deprecated Use Mantine instead
  */
 export const InlinePrompt: FunctionComponent<
-    React.PropsWithChildren<IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>>
+    PropsWithChildren<IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>>
 > = ({options, onCancel}) => {
     const choices: JSX.Element[] = _.map(options.userChoice.choices, (choice: string) => (
         <Button classes="mod-danger ml1" onClick={options.onClick} key={choice}>
