@@ -1,5 +1,14 @@
 name: Test React 19 Compatibility
 
+# This workflow validates that the @coveord/plasma-react package works with React 19
+# while keeping React 18 as the production version. It:
+# 1. Installs dependencies with React 18 (production version)
+# 2. Temporarily upgrades to React 19 for testing
+# 3. Builds and tests the package with React 19
+# 4. Restores React 18 configuration
+#
+# This ensures consumers can upgrade to React 19 while still using these deprecated packages.
+
 on:
     pull_request:
         types: [opened, reopened, synchronize]
