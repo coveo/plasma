@@ -1,6 +1,5 @@
 import classNames from 'clsx';
 import {ReactNode, HTMLProps, Component} from 'react';
-import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {BrowserUtils} from '../../utils/BrowserUtils';
@@ -116,8 +115,8 @@ export class Flippable extends Component<IFlippableProps & HTMLProps<HTMLDivElem
 
     private handleOutsideClick = (e: MouseEvent) => {
         if (this.props.isFlipped) {
-            const frontside: Element | Text = ReactDOM.findDOMNode(this.frontside);
-            const backside: Element | Text = ReactDOM.findDOMNode(this.backside);
+            const frontside: HTMLElement = this.frontside;
+            const backside: HTMLElement = this.backside;
             const target: Node = e.target as Node;
 
             if (

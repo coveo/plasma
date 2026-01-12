@@ -1,7 +1,7 @@
 import {CSSProperties, useRef, useState, useLayoutEffect} from 'react';
 
 export const useFixedWidthWhileLoading = (isLoading: boolean) => {
-    const tableHeaderRef = useRef<HTMLTableHeaderCellElement>();
+    const tableHeaderRef = useRef<HTMLTableHeaderCellElement>(null);
     const [columnWidth, setColumnWidth] = useState<number>();
 
     useLayoutEffect(() => {

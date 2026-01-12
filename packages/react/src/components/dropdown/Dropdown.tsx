@@ -1,6 +1,5 @@
 import classNames from 'clsx';
 import {ClassAttributes, KeyboardEvent, Component} from 'react';
-import * as ReactDOM from 'react-dom';
 
 import {keyCode} from '../../utils';
 
@@ -40,7 +39,7 @@ export class Dropdown extends Component<IDropdownProps, any> {
 
     private handleDocumentClick = (e: MouseEvent) => {
         if (this.props.isOpened) {
-            const facetSearch: Element | Text = ReactDOM.findDOMNode(this.dropdown);
+            const facetSearch: HTMLElement = this.dropdown;
 
             if (!facetSearch.contains(e.target as Node)) {
                 this.props.onDocumentClick();

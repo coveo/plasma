@@ -39,7 +39,7 @@ const FilepickerDisconnected: FunctionComponent<
     PropsWithChildren<FilepickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>>
 > = (props) => {
     const {addFilepicker, setFile, clear, isEmpty, selectedFile, placeholder, capture, ...inputProps} = props;
-    const input = useRef<HTMLInputElement>();
+    const input = useRef<HTMLInputElement>(null);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFile(FileUtils.serialize(e.target.files[0]));
     };

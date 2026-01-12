@@ -1,7 +1,6 @@
 import classNames from 'clsx';
 import moment from 'moment';
 import {ClassAttributes, Component} from 'react';
-import * as ReactDOM from 'react-dom';
 
 import {TooltipPlacement} from '../../utils';
 import {DateUtils} from '../../utils/DateUtils';
@@ -281,7 +280,7 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
     };
 
     private handleDocumentClick = (e: MouseEvent) => {
-        const dropdown: Element | Text = ReactDOM.findDOMNode(this.dropdown);
+        const dropdown: HTMLElement = this.dropdown;
         if (!dropdown.contains(e.target as Node) && this.props.isOpened && !this.props.withDrop) {
             this.props.onDocumentClick();
             this.handleCancel();

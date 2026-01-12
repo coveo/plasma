@@ -26,7 +26,7 @@ export const Title: FunctionComponent<PropsWithChildren<ITitleProps>> = ({
     htmlId,
     children,
 }) => {
-    const ref = useRef<HTMLHeadingElement>();
+    const ref = useRef<HTMLHeadingElement>(null);
 
     const [isTruncated, setIsTruncated] = useState(false);
     const linkClasses = classNames('inline-doc-link ml1', documentationLink?.className);

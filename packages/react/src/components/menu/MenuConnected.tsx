@@ -1,7 +1,6 @@
 import {DotsSize24Px} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
 import {Component, MouseEvent, ReactNode, SyntheticEvent} from 'react';
-import * as ReactDOM from 'react-dom';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
@@ -134,8 +133,8 @@ export class MenuConnected extends Component<IMenuProps> {
 
     private handleDocumentClick = (e: globalThis.MouseEvent) => {
         if (this.props.isOpen && document.body.contains(e.target as HTMLElement)) {
-            const list: Element | Text = ReactDOM.findDOMNode(this.list);
-            const button: Element | Text = ReactDOM.findDOMNode(this.button);
+            const list: HTMLDivElement = this.list;
+            const button: HTMLDivElement = this.button;
 
             if (!list.contains(e.target as Node) && !button.contains(e.target as Node)) {
                 this.props.onDocumentClick();

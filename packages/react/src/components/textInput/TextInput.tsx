@@ -85,7 +85,7 @@ export const TextInput: FunctionComponent<
 }) => {
     const id = useMemo(() => propsId || uniqueId(), [propsId]);
     const {state, dispatch} = useTextInput(id, defaultValue);
-    const inputElement = useRef<HTMLInputElement>();
+    const inputElement = useRef<HTMLInputElement>(null);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         dispatch({type: 'change-value', payload: event.target.value});

@@ -1,6 +1,5 @@
 import classNames from 'clsx';
 import {KeyboardEvent, ChangeEvent, HTMLProps, Component} from 'react';
-import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
@@ -184,7 +183,7 @@ export class AutocompleteConnected extends Component<IAutocompleteProps & HTMLPr
 
     private handleDocumentClick = (e: MouseEvent) => {
         if (this.props.isOpen && document.body.contains(e.target as HTMLElement)) {
-            const dropdown: Element | Text = ReactDOM.findDOMNode(this.dropdown);
+            const dropdown: HTMLElement = this.dropdown;
 
             if (!dropdown.contains(e.target as Node)) {
                 this.props.onDocumentClick();

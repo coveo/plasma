@@ -16,7 +16,7 @@ export const TabNavigation: FunctionComponent<PropsWithChildren<HTMLAttributes<H
     ...divProps
 }) => {
     const [currentFocus, setCurrentFocus] = useState(0);
-    const tabListRef = useRef<HTMLDivElement>();
+    const tabListRef = useRef<HTMLDivElement>(null);
     const findTabs = () => tabListRef.current?.querySelectorAll<HTMLButtonElement>('[role="tab"]:enabled');
 
     const moveFocus = (newFocus: number) => {
