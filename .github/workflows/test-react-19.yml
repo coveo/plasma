@@ -22,6 +22,8 @@ jobs:
     test-react-19:
         name: Test with React 19
         runs-on: ubuntu-latest
+        permissions:
+            contents: read
         steps:
             - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
 
