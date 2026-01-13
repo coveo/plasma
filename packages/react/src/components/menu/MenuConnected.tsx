@@ -83,7 +83,11 @@ export class MenuConnected extends Component<IMenuProps> {
 
         return (
             <div className={pickerClasses}>
-                <div ref={(ref: HTMLDivElement) => (this.button = ref)}>
+                <div
+                    ref={(ref: HTMLDivElement) => {
+                        this.button = ref;
+                    }}
+                >
                     <Button
                         classes={classNames('btn menu-toggle', this.props.toggleClassName)}
                         onMouseUp={(e: MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
@@ -94,7 +98,9 @@ export class MenuConnected extends Component<IMenuProps> {
                 </div>
                 <div
                     className={dropdownClasses}
-                    ref={(ref: HTMLDivElement) => (this.list = ref)}
+                    ref={(ref: HTMLDivElement) => {
+                        this.list = ref;
+                    }}
                     onClick={() => this.onClickMenu()}
                 >
                     {this.props.children}

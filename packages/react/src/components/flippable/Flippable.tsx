@@ -92,13 +92,17 @@ export class Flippable extends Component<IFlippableProps & HTMLProps<HTMLDivElem
                     <div
                         className={Flippable.sides.FRONT}
                         onClick={this.handleClickOnFront}
-                        ref={(frontside: HTMLDivElement) => (this.frontside = frontside)}
+                        ref={(frontside: HTMLDivElement) => {
+                            this.frontside = frontside;
+                        }}
                     >
                         {this.props.front}
                     </div>
                     <div
                         className={Flippable.sides.BACK}
-                        ref={(backside: HTMLDivElement) => (this.backside = backside)}
+                        ref={(backside: HTMLDivElement) => {
+                            this.backside = backside;
+                        }}
                     >
                         {this.props.back}
                     </div>

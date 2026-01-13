@@ -72,7 +72,9 @@ export class SlideY extends PureComponent<SlideYProps> {
                 <div
                     className="slide-y slide-y-closed"
                     aria-hidden={!this.props.in}
-                    ref={(el: HTMLElement) => (this.el = el)}
+                    ref={(el: HTMLElement) => {
+                        this.el = el;
+                    }}
                     {...style}
                 >
                     {this.props.children}

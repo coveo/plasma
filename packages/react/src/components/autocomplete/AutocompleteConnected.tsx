@@ -124,7 +124,12 @@ export class AutocompleteConnected extends Component<IAutocompleteProps & HTMLPr
             'show-on-top': !this.props.inline,
         });
         return (
-            <div className={pickerClasses} ref={(ref: HTMLDivElement) => (this.dropdown = ref)}>
+            <div
+                className={pickerClasses}
+                ref={(ref: HTMLDivElement) => {
+                    this.dropdown = ref;
+                }}
+            >
                 <div className="input-wrapper validate input-field">
                     <input
                         onFocus={() => this.props.onFocus()}
@@ -136,7 +141,12 @@ export class AutocompleteConnected extends Component<IAutocompleteProps & HTMLPr
                     />
                     {this.props.children}
                 </div>
-                <div className={dropdownClasses} ref={(ref: HTMLDivElement) => (this.menu = ref)}>
+                <div
+                    className={dropdownClasses}
+                    ref={(ref: HTMLDivElement) => {
+                        this.menu = ref;
+                    }}
+                >
                     <SlideY in={this.props.isOpen} timeout={350}>
                         <ListBoxConnected id={this.props.id} classes={['relative']} items={this.props.visibleItems} />
                     </SlideY>

@@ -27,7 +27,12 @@ export class AddInput extends Component<IInputProps, any> {
         props.onBlur = () => this.onAdd();
         props.onKeyUp = (event: KeyboardEvent<HTMLInputElement>) => this.handleAddKeys(event);
         return (
-            <Input ref={(innerInput: Input) => (this.innerInput = innerInput)} {...props}>
+            <Input
+                ref={(innerInput: Input) => {
+                    this.innerInput = innerInput;
+                }}
+                {...props}
+            >
                 {this.props.children}
                 <AddInputAction onClick={() => this.onAdd()} />
             </Input>

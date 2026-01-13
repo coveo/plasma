@@ -1,10 +1,9 @@
-import {PropsWithChildren, FC} from 'react';
 import {render, screen, within} from '@test-utils';
+import {FC, PropsWithChildren} from 'react';
 
 import {getStoreMock, WarningList} from '../../../../utils/tests/TestUtils';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
 import {
-    PropsWithChildren,
     IMultiSelectWithInitialValuesOwnProps,
     withInitialValuesMultiSelectHOC,
 } from '../WithInitialValuesMultiSelectHOC';

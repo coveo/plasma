@@ -89,7 +89,12 @@ export class FacetMoreRows extends Component<IFacetMoreRowsProps, any> {
 
         return (
             <div className={moreSearchClasses}>
-                <div className="facet-search" ref={(facetSearch: HTMLDivElement) => (this.facetSearch = facetSearch)}>
+                <div
+                    className="facet-search"
+                    ref={(facetSearch: HTMLDivElement) => {
+                        this.facetSearch = facetSearch;
+                    }}
+                >
                     {filterBox}
                 </div>
                 <ul className={resultsClass}>{rowsFiltered}</ul>

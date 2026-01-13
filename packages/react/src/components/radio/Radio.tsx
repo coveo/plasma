@@ -36,11 +36,9 @@ const RadioInputContent: FunctionComponent<{
     inputProps: Omit<RadioProps, 'outerContainerClass' | 'outerElementInContainer'>;
     classes: string;
     outerElementInContainer?: ReactNode;
-}> = ({inputProps, classes, outerElementInContainer}) => {
-    return (
-        <>
-            <Input {...inputProps} classes={[classes]} type="radio" />
-            {outerElementInContainer}
-        </>
-    );
-};
+}> = ({inputProps, classes, outerElementInContainer}) => (
+    <>
+        <Input {...inputProps} classes={[classes]} type="radio" />
+        {outerElementInContainer}
+    </>
+);

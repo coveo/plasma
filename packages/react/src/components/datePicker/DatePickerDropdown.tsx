@@ -223,7 +223,9 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
                     renderOpenButton={(onClick: () => void) => (
                         <div
                             className={classNames('date-picker-dropdown', this.props.className)}
-                            ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}
+                            ref={(dropdown: HTMLDivElement) => {
+                                this.dropdown = dropdown;
+                            }}
                         >
                             <div className={dropdownClasses}>
                                 <button
@@ -256,7 +258,12 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
 
         return (
             <div className={classNames('date-picker-dropdown', this.props.className)}>
-                <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
+                <div
+                    className={dropdownClasses}
+                    ref={(dropdown: HTMLDivElement) => {
+                        this.dropdown = dropdown;
+                    }}
+                >
                     <button className={toggleClasses} onClick={this.handleClick} disabled={this.props.readonly}>
                         <span className="dropdown-selected-value">
                             <label>

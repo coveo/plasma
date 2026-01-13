@@ -81,7 +81,9 @@ export class SplitMultilineInput extends PureComponent<ISplitMultilineInputProps
                             validateOnChange
                             labelTitle={input.label}
                             labelProps={{invalidMessage: input.validationMessage}}
-                            ref={(ref: Input) => inputRefs.push(ref)}
+                            ref={(ref: Input) => {
+                                inputRefs.push(ref);
+                            }}
                             classes={'split-multiline-input'}
                             value={values[labelId]}
                             placeholder={input.placeholder}

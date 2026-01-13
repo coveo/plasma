@@ -86,7 +86,12 @@ export class Dropdown extends Component<IDropdownProps, any> {
         );
 
         return (
-            <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
+            <div
+                className={dropdownClasses}
+                ref={(dropdown: HTMLDivElement) => {
+                    this.dropdown = dropdown;
+                }}
+            >
                 <span
                     className={classNames('dropdown-toggle inline-flex flex-center', {
                         'disabled transparency-4 cursor-default': this.props.disabled,

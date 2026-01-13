@@ -1,4 +1,4 @@
-import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
+import {ComponentType, FunctionComponent, PropsWithChildren, useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 

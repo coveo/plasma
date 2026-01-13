@@ -1,6 +1,5 @@
 import {
     Reducer,
-    ReducerAction,
     ReducerState,
     FunctionComponent,
     createContext,
@@ -10,7 +9,7 @@ import {
     Dispatch,
 } from 'react';
 
-import {textInputReducer} from '../textInput/TextInputReducer';
+import {type TextInputAction, textInputReducer} from '../textInput/TextInputReducer';
 
 /**
  * Extrapolates a reducer that manages a state of type `T` into a reducer that manages a state of type `Record<string, T>`.
@@ -30,7 +29,7 @@ const componentReducers = {
 
 export type FormComponent = keyof typeof componentReducers;
 type FormComponentReducer = (typeof componentReducers)[FormComponent];
-type FormAction = {type: FormComponent} & ReducerAction<FormComponentReducer>;
+type FormAction = {type: FormComponent} & {id: string; action: TextInputAction};
 type FormState = Record<FormComponent, ReducerState<FormComponentReducer>>;
 
 const formInitialState: FormState = {

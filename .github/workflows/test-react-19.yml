@@ -54,14 +54,13 @@ jobs:
 
             - name: Upgrade to React 19
               run: |
-                  cd packages/react
-                  pnpm add -D react@^19.0.0 react-dom@^19.0.0 @types/react@^19.0.0 @types/react-dom@^19.0.0
+                  pnpm -r update --filter "@coveord/plasma-react..." react@^19.0.0 react-dom@^19.0.0 @types/react@^19.0.0 @types/react-dom@^19.0.0
 
             - name: Build with React 19
-              run: pnpm build --filter=@coveord/plasma-react
+              run: pnpm build --filter "@coveord/plasma-react..."
 
             - name: Test with React 19
-              run: pnpm test --filter=@coveord/plasma-react
+              run: pnpm test --filter "@coveord/plasma-react..."
 
             - name: Summary
               if: success()
@@ -69,4 +68,3 @@ jobs:
                   echo "✅ React 19 compatibility test passed!" >> $GITHUB_STEP_SUMMARY
                   echo "" >> $GITHUB_STEP_SUMMARY
                   echo "The @coveord/plasma-react package successfully builds and passes all tests with React 19." >> $GITHUB_STEP_SUMMARY
-

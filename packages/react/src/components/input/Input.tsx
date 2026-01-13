@@ -210,7 +210,9 @@ export class Input extends Component<IInputProps, IInputComponentState> {
                 id={this.props.id}
                 className={innerInputClasses}
                 defaultValue={!isUndefined(this.props.value) ? this.props.value : this.props.defaultValue}
-                ref={(innerInput: HTMLInputElement) => (this.innerInput = innerInput)}
+                ref={(innerInput: HTMLInputElement) => {
+                    this.innerInput = innerInput;
+                }}
                 onBlur={() => this.handleBlur()}
                 onChange={this.handleChange}
                 onKeyUp={(event: KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}

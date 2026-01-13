@@ -82,7 +82,9 @@ export class ItemBox extends Component<IItemBoxProps> {
         return (
             <Tooltip noSpanWrapper {...this.props.tooltip}>
                 <li
-                    ref={(li: HTMLLIElement) => (this.listItem = li)}
+                    ref={(li: HTMLLIElement) => {
+                        this.listItem = li;
+                    }}
                     className={this.getClasses()}
                     onClick={() => this.handleOnOptionClick()}
                     data-value={this.props.value}

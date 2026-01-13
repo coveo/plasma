@@ -1,14 +1,11 @@
-import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@test-utils';
-import {PropsWithChildren, ComponentType} from 'react';
+import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
+import {ComponentType, PropsWithChildren} from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {
-    PropsWithChildren,
-    withServerSideProcessing,
-} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {PlasmaState} from '../../../../PlasmaState';
 import {keyCode} from '../../../../utils/InputUtils';
 import {clearState} from '../../../../utils/ReduxUtils';

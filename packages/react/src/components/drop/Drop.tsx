@@ -110,7 +110,9 @@ export class Drop extends PureComponent<IDropProps> {
                     // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
                     <div
                         style={style}
-                        ref={(ref) => (this.dropContent = ref)}
+                        ref={(ref) => {
+                            this.dropContent = ref;
+                        }}
                         className={classNames('drop', this.props.listContainerProps.className)}
                         {...this.props.listContainerProps}
                         data-open={this.props.isOpen}
