@@ -19,4 +19,9 @@ declare module '@mantine/core' {
 }
 
 Accordion.ControlDisabled = DisabledControl;
+Accordion.displayName = 'Accordion';
+Accordion.Control.displayName = 'Accordion.Control';
+Accordion.Panel.displayName = 'Accordion.Panel';
+Accordion.Item.displayName = 'Accordion.Item';
+Accordion.ControlDisabled.displayName = 'Accordion.ControlDisabled';
 export {Accordion};
