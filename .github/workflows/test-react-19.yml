@@ -39,11 +39,16 @@ jobs:
             - name: Validate peer dependencies accept React 19
               run: |
                   cd packages/react
-                  # Check that peerDependencies allow React 19
-                  if grep -q '"react".*19' package.json && grep -q '"react-dom".*19' package.json; then
-                    echo "✅ peerDependencies correctly allow React 19"
+                  # Check that all React peer dependencies allow React 19
+                  if grep -E '"react":\s*"\^18\.0\s*\|\|\s*\^19\.0"' package.json && \
+                     grep -E '"react-dom":\s*"\^18\.0\s*\|\|\s*\^19\.0"' package.json && \
+                     grep -E '"@types/react":\s*"\^18\.0\s*\|\|\s*\^19\.0"' package.json && \
+                     grep -E '"@types/react-dom":\s*"\^18\.0\s*\|\|\s*\^19\.0"' package.json; then
+                    echo "✅ All React peerDependencies correctly allow React 19"
                   else
-                    echo "❌ peerDependencies do not allow React 19"
+                    echo "❌ React peerDependencies do not all allow React 19"
+                    echo "Current peerDependencies:"
+                    grep -A 6 '"peerDependencies"' package.json
                     exit 1
                   fi
 
