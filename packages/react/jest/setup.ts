@@ -25,22 +25,53 @@ if (!global.structuredClone) {
 // Polyfill MessageChannel for React 19 compatibility
 // React 19 uses MessageChannel for scheduling, which is not available in jsdom
 if (typeof MessageChannel === 'undefined') {
+    interface MessagePort {
+        onmessage: ((event: {data: any}) => void) | null;
+        postMessage: (data: any) => void;
+        close: () => void;
+    }
+
     global.MessageChannel = class MessageChannel {
-        port1: {onmessage: ((event: {data: any}) => void) | null};
-        port2: {postMessage: (data: any) => void};
+        port1: MessagePort;
+        port2: MessagePort;
 
         constructor() {
+            let port1Callback: ((event: {data: any}) => void) | null = null;
+            let port2Callback: ((event: {data: any}) => void) | null = null;
+
             this.port1 = {
-                onmessage: null,
-            };
-            this.port2 = {
+                set onmessage(callback: ((event: {data: any}) => void) | null) {
+                    port1Callback = callback;
+                },
+                get onmessage() {
+                    return port1Callback;
+                },
                 postMessage: (data: any) => {
-                    if (this.port1.onmessage) {
+                    if (port2Callback) {
                         // Use setTimeout to simulate async behavior
-                        setTimeout(() => {
-                            this.port1.onmessage?.({data});
-                        }, 0);
+                        setTimeout(() => port2Callback?.({data}), 0);
                     }
+                },
+                close: () => {
+                    port1Callback = null;
+                },
+            };
+
+            this.port2 = {
+                set onmessage(callback: ((event: {data: any}) => void) | null) {
+                    port2Callback = callback;
+                },
+                get onmessage() {
+                    return port2Callback;
+                },
+                postMessage: (data: any) => {
+                    if (port1Callback) {
+                        // Use setTimeout to simulate async behavior
+                        setTimeout(() => port1Callback?.({data}), 0);
+                    }
+                },
+                close: () => {
+                    port2Callback = null;
                 },
             };
         }
