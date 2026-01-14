@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 
 const meta: Meta<typeof LastUpdated> = {
     title: '@components/feedback/LastUpdated',
+    id: 'LastUpdated',
     component: LastUpdated,
     parameters: {
         layout: 'centered',
