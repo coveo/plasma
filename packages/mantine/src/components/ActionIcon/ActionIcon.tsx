@@ -1,14 +1,14 @@
 import {
-    ActionIcon as MantineActionIcon,
     ActionIconCssVariables,
-    type ActionIconGroup,
-    type ActionIconProps as MantineActionIconProps,
     ActionIconStylesNames,
     ActionIconVariant,
     Factory,
+    ActionIcon as MantineActionIcon,
     polymorphicFactory,
+    type ActionIconGroup,
+    type ActionIconProps as MantineActionIconProps,
 } from '@mantine/core';
-import {MouseEventHandler} from 'react';
+import {ComponentType, MouseEventHandler} from 'react';
 import {useClickWithLoading} from '../../hooks/useClickWithLoading.js';
 import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from '../Button/ButtonWithDisabledTooltip.js';
 
@@ -93,3 +93,14 @@ ActionIcon.DestructivePrimary = ActionIconDestructive;
 ActionIcon.DestructiveSecondary = ActionIconDestructiveSecondary;
 ActionIcon.DestructiveTertiary = ActionIconDestructiveTertiary;
 ActionIcon.DestructiveQuaternary = ActionIconDestructiveQuaternary;
+
+ActionIcon.displayName = 'ActionIcon';
+ActionIcon.Group.displayName = 'ActionIcon.Group';
+(ActionIconPrimary as ComponentType).displayName = 'ActionIcon.Primary';
+(ActionIconSecondary as ComponentType).displayName = 'ActionIcon.Secondary';
+(ActionIconTertiary as ComponentType).displayName = 'ActionIcon.Tertiary';
+(ActionIconQuaternary as ComponentType).displayName = 'ActionIcon.Quaternary';
+(ActionIconDestructive as ComponentType).displayName = 'ActionIcon.DestructivePrimary';
+(ActionIconDestructiveSecondary as ComponentType).displayName = 'ActionIcon.DestructiveSecondary';
+(ActionIconDestructiveTertiary as ComponentType).displayName = 'ActionIcon.DestructiveTertiary';
+(ActionIconDestructiveQuaternary as ComponentType).displayName = 'ActionIcon.DestructiveQuaternary';
