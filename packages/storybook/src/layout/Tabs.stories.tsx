@@ -4,6 +4,7 @@ import {ReactNode} from 'react';
 
 const meta: Meta<typeof Tabs> = {
     title: '@components/layout/Tabs',
+    id: 'Tabs',
     component: Tabs,
     parameters: {
         layout: 'centered',

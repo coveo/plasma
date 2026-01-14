@@ -3,6 +3,7 @@ import {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof StatusToken> = {
     title: '@components/feedback/StatusToken',
+    id: 'StatusToken',
     component: StatusToken,
     parameters: {
         layout: 'centered',

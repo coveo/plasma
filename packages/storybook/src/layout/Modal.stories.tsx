@@ -5,6 +5,7 @@ import {Button, Tabs} from '@coveord/plasma-mantine';
 
 const meta: Meta<typeof Modal> = {
     title: '@components/layout/Modal',
+    id: 'Modal',
     component: Modal,
     parameters: {
         layout: 'centered',

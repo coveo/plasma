@@ -6,6 +6,7 @@ import {Flex, Pagination, Stack, Text, Title} from '@coveord/plasma-mantine';
 
 const meta: Meta<typeof BrowserPreview> = {
     title: '@components/layout/BrowserPreview',
+    id: 'BrowserPreview',
     component: BrowserPreview,
     parameters: {
         layout: 'centered',

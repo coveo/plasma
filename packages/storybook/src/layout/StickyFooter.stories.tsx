@@ -4,6 +4,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof StickyFooter> = {
     title: '@components/layout/StickyFooter',
+    id: 'StickyFooter',
     component: StickyFooter,
     parameters: {
         layout: 'centered',

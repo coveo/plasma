@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof InfoToken> = {
     title: '@components/feedback/InfoToken',
+    id: 'InfoToken',
     component: InfoToken,
     parameters: {
         layout: 'centered',
