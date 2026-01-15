@@ -19,17 +19,23 @@ const meta: Meta<typeof Alert> = {
             control: 'text',
             table: {
                 defaultValue: {summary: ''},
+                type: {summary: 'string'},
             },
         },
         withCloseButton: {
             control: 'boolean',
             table: {
                 defaultValue: {summary: true},
+                type: {summary: 'boolean'},
             },
         },
         content: {
             control: 'text',
             description: 'Alert content',
+            table: {
+                defaultValue: {summary: ''},
+                type: {summary: 'ReactNode'},
+            },
         },
     },
     args: {
