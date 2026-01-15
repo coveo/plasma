@@ -1,6 +1,5 @@
-import type {StoryObj, Meta} from '@storybook/react-vite';
 import {LastUpdated} from '@coveord/plasma-mantine/components/LastUpdated';
-import dayjs from 'dayjs';
+import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof LastUpdated> = {
     title: '@components/feedback/LastUpdated',
@@ -9,22 +8,27 @@ const meta: Meta<typeof LastUpdated> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
-};
+    argTypes: {
+        time: {
+            control: 'date',
+            description: 'The unformatted time to display that can be parsed by dayjs.',
+        },
+        label: {control: 'text', description: 'Label to contextualize the time.', defaultValue: 'Last update:'},
+    },
+    args: {
+        time: undefined,
+        label: 'Last update:',
+    },
+} as any;
 export default meta;
 type Story = StoryObj<typeof LastUpdated>;
 
 export const Default: Story = {
-    render: () => <LastUpdated />,
-};
+    render: ({time, label}: any) => {
+        if (time) {
+            return <LastUpdated time={time} label={label} />;
+        }
 
-export const LastUpdatedCustom: Story = {
-    render: () => {
-        const time = new Date('2023-01-01T12:34:56');
-        return <LastUpdated time={time} label="Updated at:" />;
+        return <LastUpdated label={label} />;
     },
-};
-
-export const LastUpdatedFormatter: Story = {
-    render: () => <LastUpdated formatter={(time) => dayjs(time).format('YYYY-MM-DD HH:mm:ss')} />,
 };

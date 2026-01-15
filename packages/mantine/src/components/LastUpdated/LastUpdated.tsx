@@ -73,3 +73,5 @@ export const LastUpdated = factory<LastUpdatedFactory>(
         );
     },
 );
+
+LastUpdated.displayName = 'LastUpdated';
