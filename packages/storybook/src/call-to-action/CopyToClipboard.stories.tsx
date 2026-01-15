@@ -12,10 +12,12 @@ const meta: Meta<typeof CopyToClipboard> = {
         value: {
             control: 'text',
             description: 'The value to be copied to clipboard',
+            table: {type: {summary: 'string'}},
         },
         withLabel: {
             control: 'boolean',
             description: 'Whether to show the "Copy to clipboard" label',
+            table: {defaultValue: {summary: 'false'}, type: {summary: 'boolean'}},
         },
     },
     args: {

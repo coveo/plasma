@@ -12,8 +12,13 @@ const meta: Meta<typeof LastUpdated> = {
         time: {
             control: 'date',
             description: 'The unformatted time to display that can be parsed by dayjs.',
+            table: {type: {summary: 'string | number | Date | dayjs.Dayjs'}, defaultValue: {summary: 'current time'}},
         },
-        label: {control: 'text', description: 'Label to contextualize the time.', defaultValue: 'Last update:'},
+        label: {
+            control: 'text',
+            description: 'Label to contextualize the time.',
+            table: {type: {summary: 'string'}, defaultValue: {summary: 'Last update:'}},
+        },
     },
     args: {
         time: undefined,
