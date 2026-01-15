@@ -13,19 +13,33 @@ const meta: Meta<typeof Anchor> = {
             control: 'select',
             options: ['xs', 'sm'],
             description: 'Size of the Anchor',
+            table: {
+                defaultValue: {summary: 'sm'},
+                type: {summary: 'xs | sm'},
+            },
         },
         href: {
             control: 'text',
             description: 'Link URL',
+            table: {
+                type: {summary: 'string'},
+            },
         },
         children: {
             control: 'text',
             description: 'Link text content',
+            table: {
+                type: {summary: 'ReactNode'},
+            },
         },
         target: {
             control: 'select',
             options: ['_self', '_blank', '_parent', '_top'],
             description: 'Link target attribute',
+            table: {
+                defaultValue: {summary: '_self'},
+                type: {summary: 'string'},
+            },
         },
     },
     args: {
