@@ -28,6 +28,6 @@ const meta: Meta<typeof CopyToClipboard> = {
 export default meta;
 type Story = StoryObj<typeof CopyToClipboard>;
 
-export const Default: Story = {
+export const Demo: Story = {
     render: ({value, withLabel}) => <CopyToClipboard value={value} withLabel={withLabel} />,
 };

@@ -28,7 +28,7 @@ const meta: Meta<typeof LastUpdated> = {
 export default meta;
 type Story = StoryObj<typeof LastUpdated>;
 
-export const Default: Story = {
+export const Demo: Story = {
     render: ({time, label}: any) => {
         if (time) {
             return <LastUpdated time={time} label={label} />;
