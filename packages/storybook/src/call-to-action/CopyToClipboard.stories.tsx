@@ -8,7 +8,6 @@ const meta: Meta<typeof CopyToClipboard> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
     argTypes: {
         value: {
             control: 'text',
