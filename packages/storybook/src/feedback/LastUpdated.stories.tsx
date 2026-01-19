@@ -24,7 +24,7 @@ const meta: Meta<typeof LastUpdated> = {
         time: undefined,
         label: 'Last update:',
     },
-} as any;
+} satisfies Meta<typeof LastUpdated>;
 export default meta;
 type Story = StoryObj<typeof LastUpdated>;
 
