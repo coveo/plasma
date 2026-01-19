@@ -4,6 +4,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Prompt> = {
     title: '@components/layout/Prompt',
+    id: 'Prompt',
     component: Prompt,
     parameters: {
         layout: 'centered',

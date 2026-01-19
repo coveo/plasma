@@ -4,6 +4,7 @@ import {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Accordion> = {
     title: '@components/layout/Accordion',
+    id: 'Accordion',
     component: Accordion,
     parameters: {
         layout: 'centered',

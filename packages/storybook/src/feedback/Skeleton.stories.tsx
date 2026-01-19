@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Skeleton> = {
     title: '@components/feedback/Skeleton',
+    id: 'Skeleton',
     component: Skeleton,
     parameters: {
         layout: 'centered',

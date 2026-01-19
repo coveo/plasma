@@ -1,3 +1,13 @@
+## 56.17.0 (2026-01-14)
+
+* feat(Accordion): +figma, +story (#4289) a9bb48e, closes #4289
+* feat(storybook): rearrange component architecture (#4298) 83d6c6a, closes #4298
+* fix(storybook,table): create a storybook for the table (#4294) 2007311, closes #4294
+* chore: add GitHub Copilot instructions for repository (#4283) d1e8bb3, closes #4283
+* chore(deps): update dependency globals to v17 (#4291) 3d22f83, closes #4291
+
+
+
 ## 56.16.0 (2026-01-08)
 
 * feat: component DatePickerInput storybook (#4280) 88bd321, closes #4280
