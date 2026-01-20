@@ -8,7 +8,7 @@ import {
     ButtonProps as MantineButtonProps,
     polymorphicFactory,
 } from '@mantine/core';
-import {MouseEventHandler} from 'react';
+import {ComponentType, MouseEventHandler} from 'react';
 import {useClickWithLoading} from '../../hooks/useClickWithLoading.js';
 import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from './ButtonWithDisabledTooltip.js';
 
@@ -99,6 +99,7 @@ const ButtonDestructiveTertiary = Button.withProps({
 const ButtonDestructiveQuaternary = Button.withProps({variant: 'subtle', color: 'var(--mantine-color-error)'});
 
 Button.Group = MantineButton.Group;
+Button.Group.displayName = 'Button.Group';
 Button.Primary = ButtonPrimary;
 Button.Secondary = ButtonSecondary;
 Button.Tertiary = ButtonTertiary;
@@ -107,3 +108,13 @@ Button.DestructivePrimary = ButtonDestructive;
 Button.DestructiveSecondary = ButtonDestructiveSecondary;
 Button.DestructiveTertiary = ButtonDestructiveTertiary;
 Button.DestructiveQuaternary = ButtonDestructiveQuaternary;
+(ButtonPrimary as ComponentType).displayName = 'Button.Primary';
+(ButtonSecondary as ComponentType).displayName = 'Button.Secondary';
+(ButtonTertiary as ComponentType).displayName = 'Button.Tertiary';
+(ButtonQuaternary as ComponentType).displayName = 'Button.Quaternary';
+(ButtonDestructive as ComponentType).displayName = 'Button.DestructivePrimary';
+(ButtonDestructiveSecondary as ComponentType).displayName = 'Button.DestructiveSecondary';
+(ButtonDestructiveTertiary as ComponentType).displayName = 'Button.DestructiveTertiary';
+(ButtonDestructiveQuaternary as ComponentType).displayName = 'Button.DestructiveQuaternary';
+
+Button.displayName = 'Button';

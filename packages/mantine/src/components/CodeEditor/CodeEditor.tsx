@@ -25,10 +25,8 @@ import CodeEditorClasses from './CodeEditor.module.css';
 import {XML} from './languages/xml.js';
 import {Search} from './search/Search.js';
 interface CodeEditorProps
-    extends Omit<
-            InputWrapperProps,
-            'inputContainer' | 'inputWrapperOrder' | 'classNames' | 'styles' | 'vars' | 'onChange'
-        >,
+    extends
+        Omit<InputWrapperProps, 'inputContainer' | 'inputWrapperOrder' | 'classNames' | 'styles' | 'vars' | 'onChange'>,
         Omit<StackProps, 'onChange' | 'attributes'> {
     /**
      * The language syntax of the editor
@@ -278,3 +276,5 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         </Stack>
     );
 };
+
+CodeEditor.displayName = 'CodeEditor';

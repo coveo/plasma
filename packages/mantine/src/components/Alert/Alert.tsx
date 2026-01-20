@@ -7,6 +7,7 @@ import {
     Alert as MantineAlert,
     polymorphicFactory,
 } from '@mantine/core';
+import {type ComponentType} from 'react';
 import {InfoToken} from '../InfoToken/InfoToken.js';
 
 type AlertOverloadFactory = Factory<{
@@ -25,6 +26,7 @@ type AlertOverloadFactory = Factory<{
 }>;
 
 export const Alert = polymorphicFactory<AlertOverloadFactory>((props, ref) => <MantineAlert {...props} ref={ref} />);
+Alert.displayName = 'Alert';
 
 const AlertInformation = Alert.withProps({
     color: 'gray',
@@ -36,6 +38,7 @@ const AlertInformation = Alert.withProps({
         },
     }),
 });
+(AlertInformation as ComponentType).displayName = 'Alert.Information';
 
 const AlertAdvice = Alert.withProps({
     icon: <InfoToken variant="advice" />,
@@ -46,6 +49,7 @@ const AlertAdvice = Alert.withProps({
         },
     }),
 });
+(AlertAdvice as ComponentType).displayName = 'Alert.Advice';
 
 const AlertWarning = Alert.withProps({
     color: 'warning',
@@ -57,6 +61,8 @@ const AlertWarning = Alert.withProps({
         },
     }),
 });
+(AlertWarning as ComponentType).displayName = 'Alert.Warning';
+
 const AlertCritical = Alert.withProps({
     icon: <InfoToken variant="error" />,
     vars: () => ({
@@ -66,6 +72,7 @@ const AlertCritical = Alert.withProps({
         },
     }),
 });
+(AlertCritical as ComponentType).displayName = 'Alert.Critical';
 
 Alert.Information = AlertInformation;
 Alert.Advice = AlertAdvice;

@@ -4,8 +4,7 @@ import {ReactNode} from 'react';
 import classes from './StickyFooter.module.css';
 
 export interface StickyFooterProps
-    extends Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
-        StylesApiProps<StickyFooterFactory> {
+    extends Omit<GroupProps, 'classNames' | 'styles' | 'vars' | 'variant'>, StylesApiProps<StickyFooterFactory> {
     /**
      * Whether a border is render on top of the footer
      */
@@ -67,3 +66,5 @@ export const StickyFooter = factory<StickyFooterFactory>((props, ref) => {
         </Group>
     );
 });
+
+StickyFooter.displayName = 'StickyFooter';

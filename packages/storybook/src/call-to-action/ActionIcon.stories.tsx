@@ -29,6 +29,7 @@ const meta: Meta<typeof ActionIcon> = {
             control: 'select',
             options: ['sm', 'md'],
             description: 'Size of the ActionIcon',
+            table: {defaultValue: {summary: 'md'}, type: {summary: 'sm | md'}},
         },
     },
     args: {
