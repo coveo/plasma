@@ -3,27 +3,30 @@
     border-radius: var(--mantine-radius-default);
     padding: var(--mantine-spacing-md);
     position: relative;
+    background: var(--mantine-color-body);
 }
 
-.itemHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--mantine-spacing-sm);
+.item[data-isdragging='true'] {
+    z-index: 1;
+}
+
+.itemContent {
+    width: 100%;
 }
 
 .dragHandle {
     composes: draghandle from '../shared/LayoutCommon.module.css';
+    flex-shrink: 0;
 }
 
 .removeButton {
     composes: removebutton from '../shared/LayoutCommon.module.css';
+    flex-shrink: 0;
 }
 
 .fieldGroup {
-    display: flex;
-    flex-direction: column;
-    gap: var(--mantine-spacing-xs);
+    flex: 1;
+    min-width: 0;
 }
 
 .field {
@@ -33,7 +36,7 @@
 }
 
 .fieldLabel {
-    font-weight: 600;
+    font-weight: var(--coveo-fw-bold);
     font-size: var(--mantine-font-size-sm);
 }
 

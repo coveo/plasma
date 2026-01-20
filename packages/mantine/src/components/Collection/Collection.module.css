@@ -20,7 +20,11 @@
 }
 
 .dragHandle {
-    cursor: move;
+    cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
 }
 
 .removeButton {

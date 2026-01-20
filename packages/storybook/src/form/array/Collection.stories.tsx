@@ -1,7 +1,6 @@
 import {enhanceWithCollectionProps, TextInput, useForm} from '@coveord/plasma-mantine';
 import {Collection} from '@coveord/plasma-mantine/components/Collection';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {FunctionComponent, ReactNode, useCallback, useMemo, useRef} from 'react';
 import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
 
 interface ContactItem {
@@ -32,71 +31,10 @@ const meta: Meta<typeof Collection> = {
 export default meta;
 type Story = StoryObj<typeof Collection>;
 
-const PlaceholderCollectionItem: FunctionComponent<{children: ReactNode}> = ({children}) => (
-    <div
-        style={{
-            height: 36,
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 'var(--mantine-radius-default)',
-            backgroundColor: 'var(--mantine-color-blue-2)',
-        }}
-    >
-        {children}
-    </div>
-);
-PlaceholderCollectionItem.displayName = 'PlaceholderCollectionItem';
-
-const useCounter = () => {
-    const count = useRef(0);
-    const getNext = useCallback(() => {
-        count.current += 1;
-        return count.current.toString();
-    }, []);
-    return getNext;
-};
-
-/**
- * Legacy pattern using children render prop
- */
-export const Demo: Story = {
-    render: (props) => {
-        const getNext = useCounter();
-        const items = useMemo(() => [getNext(), getNext(), getNext()], []);
-        const form = useForm({
-            initialValues: {items},
-            enhanceGetInputProps: (payload) => ({
-                ...enhanceWithCollectionProps(payload, 'items'),
-            }),
-        });
-        return (
-            <Collection<string>
-                {...form.getInputProps('items')}
-                w={400}
-                required={props.required}
-                draggable={props.draggable}
-                addLabel={props.addLabel}
-                description={props.description}
-                addDisabledTooltip={props.addDisabledTooltip}
-                disabled={props.disabled}
-                readOnly={props.readOnly}
-                label={props.label}
-                allowAdd={props.allowAdd}
-                newItem={getNext}
-                error={props.error}
-            >
-                {(item) => <PlaceholderCollectionItem>Collection item {item}</PlaceholderCollectionItem>}
-            </Collection>
-        );
-    },
-};
-
 /**
  * Column-based pattern with HorizontalLayout (default)
  */
-export const WithColumnsHorizontal: Story = {
+export const Demo: Story = {
     render: (props) => {
         const form = useForm({
             initialValues: {
@@ -114,23 +52,25 @@ export const WithColumnsHorizontal: Story = {
             <Collection<ContactItem>
                 {...form.getInputProps('contacts')}
                 w={600}
-                label="Contacts"
-                description="Manage your contact list with column headers"
+                label={props.label}
+                description={props.description}
                 draggable={props.draggable}
                 disabled={props.disabled}
                 readOnly={props.readOnly}
                 required={props.required}
+                allowAdd={props.allowAdd}
+                addLabel={props.addLabel}
+                addDisabledTooltip={props.addDisabledTooltip}
+                error={props.error}
                 newItem={{name: '', email: ''}}
                 columns={[
                     {
                         header: 'Name',
                         cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
-                        size: '50%',
                     },
                     {
                         header: 'Email',
                         cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
-                        size: '50%',
                     },
                 ]}
             />
@@ -204,7 +144,7 @@ export const WithCustomSizing: Story = {
                 {...form.getInputProps('contacts')}
                 w={700}
                 label="Contacts with Custom Sizing"
-                description="Name column is wider than email"
+                description="Email column is wider than name"
                 draggable={props.draggable}
                 disabled={props.disabled}
                 newItem={{name: '', email: ''}}
@@ -212,13 +152,12 @@ export const WithCustomSizing: Story = {
                     {
                         header: 'Name',
                         cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
-                        size: 400,
-                        minSize: 200,
+                        maxSize: 150,
                     },
                     {
                         header: 'Email',
                         cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
-                        size: 250,
+                        maxSize: 500,
                     },
                 ]}
             />
@@ -255,21 +194,13 @@ export const WithoutHeaders: Story = {
                 columns={[
                     {
                         cell: (item, index) => (
-                            <TextInput
-                                placeholder="Name"
-                                {...form.getInputProps(`contacts.${index}.name`)}
-                            />
+                            <TextInput placeholder="Name" {...form.getInputProps(`contacts.${index}.name`)} />
                         ),
-                        size: '50%',
                     },
                     {
                         cell: (item, index) => (
-                            <TextInput
-                                placeholder="Email"
-                                {...form.getInputProps(`contacts.${index}.email`)}
-                            />
+                            <TextInput placeholder="Email" {...form.getInputProps(`contacts.${index}.email`)} />
                         ),
-                        size: '50%',
                     },
                 ]}
             />

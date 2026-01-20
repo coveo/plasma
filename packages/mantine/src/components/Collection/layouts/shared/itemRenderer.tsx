@@ -35,6 +35,23 @@ export type ItemContentRenderer<T> = (
 ) => ReactNode;
 
 /**
+ * Function type that renders content with inline drag handle for draggable items.
+ * Used by layouts that want the drag handle integrated into the content (e.g., vertical layout).
+ */
+export type DraggableContentRenderer<T> = (
+    item: T,
+    index: number,
+    columns: Array<CollectionColumnDef<T>>,
+    cellContext: CollectionCellContext<T>,
+    getStyles: GetStylesApi<any>,
+    dragHandleProps: {
+        setActivatorNodeRef: (element: HTMLElement | null) => void;
+        listeners: any;
+        attributes: any;
+    },
+) => ReactNode;
+
+/**
  * Configuration for creating layout-specific item renderers.
  */
 export interface ItemRendererConfig<T> {
@@ -42,19 +59,14 @@ export interface ItemRendererConfig<T> {
     renderContent: ItemContentRenderer<T>;
     /** The container style selector ('row' for horizontal, 'item' for vertical) */
     containerSelector: string;
-    /** Optional: additional style selectors for the drag handle */
-    dragHandleSelector?: string;
-    /** Optional: whether to render drag handle and remove button inline with content */
+    /** Optional: whether to render drag handle and remove button inline with content (used by horizontal layout) */
     inlineControls?: boolean;
-    /** Optional: custom header renderer for draggable items (used by vertical layout) */
-    renderDraggableHeader?: (
-        onRemove: (() => void) | undefined,
-        removable: boolean | undefined,
-        setActivatorNodeRef: (element: HTMLElement | null) => void,
-        listeners: any,
-        attributes: any,
-        getStyles: GetStylesApi<any>,
-    ) => ReactNode;
+    /**
+     * Optional: custom content renderer for draggable items that integrates the drag handle.
+     * If provided, this is used instead of the default drag handle + renderContent pattern.
+     * Used by vertical layout to place drag handle alongside the field stack.
+     */
+    renderDraggableContent?: DraggableContentRenderer<T>;
 }
 
 /**
@@ -79,6 +91,32 @@ export const createItemRenderers = <T,>() => {
             onRemove,
         };
 
+        const dragHandleProps = {setActivatorNodeRef, listeners, attributes};
+
+        // Use renderDraggableContent if provided (integrates drag handle into content)
+        if (config.renderDraggableContent) {
+            return (
+                <Box
+                    ref={setNodeRef}
+                    data-testid={`item-${id}`}
+                    {...getStyles(config.containerSelector)}
+                    style={{
+                        ...(transform
+                            ? {
+                                  transform: CSS.Transform.toString(transform),
+                                  transition,
+                              }
+                            : undefined),
+                        ...getStyles(config.containerSelector).style,
+                    }}
+                    data-isdragging={isDragging}
+                >
+                    {config.renderDraggableContent(item, index, columns, cellContext, getStyles, dragHandleProps)}
+                </Box>
+            );
+        }
+
+        // Default behavior: inline drag handle + content + remove button (used by horizontal layout)
         return (
             <Box
                 ref={setNodeRef}
@@ -95,23 +133,12 @@ export const createItemRenderers = <T,>() => {
                 }}
                 data-isdragging={isDragging}
             >
-                {config.renderDraggableHeader ? (
-                    config.renderDraggableHeader(
-                        onRemove,
-                        removable,
-                        setActivatorNodeRef,
-                        listeners,
-                        attributes,
-                        getStyles,
-                    )
-                ) : (
-                    <DragHandle
-                        setActivatorNodeRef={setActivatorNodeRef}
-                        listeners={listeners}
-                        attributes={attributes}
-                        getStyles={getStyles}
-                    />
-                )}
+                <DragHandle
+                    setActivatorNodeRef={setActivatorNodeRef}
+                    listeners={listeners}
+                    attributes={attributes}
+                    getStyles={getStyles}
+                />
                 {config.renderContent(item, index, columns, cellContext, getStyles)}
                 {config.inlineControls && (
                     <RemoveButton removable={removable} onRemove={onRemove} getStyles={getStyles} />

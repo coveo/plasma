@@ -1,7 +1,7 @@
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 import {Group, GroupProps, useProps} from '@mantine/core';
-import {FunctionComponent, PropsWithChildren} from 'react';
+import {FunctionComponent, type MouseEventHandler, PropsWithChildren} from 'react';
 
 import {useCollectionContext} from './CollectionContext.js';
 import {DragHandle} from './layouts/shared/DragHandle.js';
@@ -14,7 +14,7 @@ interface CollectionItemProps extends CollectionItemSharedProps {
 
 interface CollectionItemSharedProps extends GroupProps {
     id: string;
-    onRemove?: React.MouseEventHandler<HTMLButtonElement>;
+    onRemove?: MouseEventHandler<HTMLButtonElement>;
     removable?: boolean;
 }
 
@@ -46,11 +46,7 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
             {...others}
         >
             {children}
-            <RemoveButton
-                removable={removable}
-                onRemove={onRemove ? () => onRemove({} as any) : undefined}
-                getStyles={ctx.getStyles}
-            />
+            <RemoveButton removable={removable} onRemove={onRemove} getStyles={ctx.getStyles} />
         </Group>
     );
 };
@@ -125,11 +121,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
                 getStyles={ctx.getStyles}
             />
             {children}
-            <RemoveButton
-                removable={removable}
-                onRemove={onRemove ? () => onRemove({} as any) : undefined}
-                getStyles={ctx.getStyles}
-            />
+            <RemoveButton removable={removable} onRemove={onRemove} getStyles={ctx.getStyles} />
         </Group>
     );
 };

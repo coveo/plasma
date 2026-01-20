@@ -6,17 +6,18 @@
 }
 
 .headerCell {
-    font-weight: 600;
+    flex: 1;
+    font-weight: var(--coveo-fw-bold);
     text-align: left;
 }
 
 .dragHandleHeader {
-    width: 24px;
+    width: var(--mantine-spacing-md);
     flex-shrink: 0;
 }
 
 .removeButtonHeader {
-    width: 28px;
+    width: calc(var(--mantine-spacing-md) + var(--mantine-spacing-xxs));
     flex-shrink: 0;
 }
 
@@ -24,6 +25,11 @@
     display: flex;
     gap: var(--mantine-spacing-sm);
     align-items: center;
+    background: var(--mantine-color-body);
+}
+
+.row[data-isdragging='true'] {
+    z-index: 1;
 }
 
 .cell {
@@ -32,12 +38,12 @@
 
 .dragHandle {
     composes: draghandle from '../shared/LayoutCommon.module.css';
-    width: 24px;
+    width: var(--mantine-spacing-md);
     flex-shrink: 0;
 }
 
 .removeButton {
     composes: removebutton from '../shared/LayoutCommon.module.css';
-    width: 28px;
+    width: calc(var(--mantine-spacing-md) + var(--mantine-spacing-xxs));
     flex-shrink: 0;
 }

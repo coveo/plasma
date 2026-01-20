@@ -436,6 +436,34 @@ describe('Collection with columns', () => {
             expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
             expect(screen.queryByRole('button', {name: /add/i})).not.toBeInTheDocument();
         });
+
+        it('hides controls when readOnly prop is true', () => {
+            const Fixture = () => {
+                const form = useForm({
+                    initialValues: {items: [{name: 'Alice', email: 'alice@example.com'}]},
+                    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'items')}),
+                });
+
+                return (
+                    <Collection<TestItem>
+                        newItem={{name: '', email: ''}}
+                        {...form.getInputProps('items')}
+                        readOnly
+                        columns={[
+                            {
+                                header: 'Name',
+                                cell: (item) => <div>{item.name}</div>,
+                            },
+                        ]}
+                    />
+                );
+            };
+
+            render(<Fixture />);
+
+            expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('button', {name: /add/i})).not.toBeInTheDocument();
+        });
     });
 
     describe('Backward compatibility', () => {

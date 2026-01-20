@@ -1,7 +1,7 @@
-import {Box, BoxProps, CompoundStylesApiProps, Factory, MantineSpacing, Stack, useProps} from '@mantine/core';
+import {Box, BoxProps, CompoundStylesApiProps, Factory, Group, MantineSpacing, Stack, useProps} from '@mantine/core';
 import {ForwardedRef, useMemo} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
-import {CollectionColumnDef} from '../../CollectionColumn.types.js';
+import {CollectionCellContext, CollectionColumnDef} from '../../CollectionColumn.types.js';
 import {DragHandle} from '../shared/DragHandle.js';
 import {renderColumnHeader} from '../shared/headerUtils.js';
 import {createItemRenderers, ItemContentRenderer, mapItemsToComponents} from '../shared/itemRenderer.js';
@@ -11,7 +11,7 @@ import {useVerticalLayout} from './VerticalLayoutContext.js';
 
 export type VerticalLayoutBodyStylesNames =
     | 'item'
-    | 'itemHeader'
+    | 'itemContent'
     | 'dragHandle'
     | 'removeButton'
     | 'fieldGroup'
@@ -40,51 +40,74 @@ export type VerticalLayoutBodyFactory = Factory<{
 const defaultProps: Partial<VerticalLayoutBodyProps<unknown>> = LAYOUT_BODY_DEFAULT_PROPS;
 
 /**
- * Vertical layout specific content renderer - renders stacked fields with labels
+ * Renders the stack of fields (columns) for a vertical layout item
  */
-const renderVerticalContent: ItemContentRenderer<any> = (item, index, columns, cellContext, getStyles) => (
-    <>
-        {cellContext.removable && cellContext.onRemove && !cellContext.draggable && (
-            <Box {...getStyles('itemHeader')}>
-                <div />
-                <RemoveButton removable={cellContext.removable} onRemove={cellContext.onRemove} getStyles={getStyles} />
-            </Box>
-        )}
-        <Box {...getStyles('fieldGroup')}>
-            {columns.map((column, colIndex) => {
-                const columnId = column.id ?? `column-${colIndex}`;
-                const header = renderColumnHeader(column.header, colIndex);
-                return (
-                    <Box key={columnId} {...getStyles('field')}>
-                        {header && <Box {...getStyles('fieldLabel')}>{header}</Box>}
-                        <Box {...getStyles('fieldContent')}>{column.cell(item, index, cellContext)}</Box>
-                    </Box>
-                );
-            })}
-        </Box>
-    </>
+const renderFieldStack = (
+    item: any,
+    index: number,
+    columns: Array<CollectionColumnDef<any>>,
+    cellContext: CollectionCellContext<any>,
+    getStyles: any,
+) => (
+    <Stack gap="xs" {...getStyles('fieldGroup')}>
+        {columns.map((column, colIndex) => {
+            const columnId = column.id ?? `column-${colIndex}`;
+            const header = renderColumnHeader(column.header, colIndex);
+            return (
+                <Box key={columnId} {...getStyles('field')}>
+                    {header && <Box {...getStyles('fieldLabel')}>{header}</Box>}
+                    <Box {...getStyles('fieldContent')}>{column.cell(item, index, cellContext)}</Box>
+                </Box>
+            );
+        })}
+    </Stack>
 );
 
 /**
- * Custom header renderer for draggable vertical items
+ * Vertical layout content renderer - renders: [DragHandle?] [Stack of fields] [RemoveButton?]
+ * For non-draggable items with remove button
  */
-const renderVerticalDraggableHeader = (
-    onRemove: (() => void) | undefined,
-    removable: boolean | undefined,
-    setActivatorNodeRef: (element: HTMLElement | null) => void,
-    listeners: any,
-    attributes: any,
+const renderVerticalContent: ItemContentRenderer<any> = (item, index, columns, cellContext, getStyles) => {
+    const showRemove = cellContext.removable && cellContext.onRemove && !cellContext.draggable;
+
+    return (
+        <Group wrap="nowrap" align="flex-start" gap="sm" {...getStyles('itemContent')}>
+            {renderFieldStack(item, index, columns, cellContext, getStyles)}
+            {showRemove && (
+                <RemoveButton removable={cellContext.removable} onRemove={cellContext.onRemove} getStyles={getStyles} />
+            )}
+        </Group>
+    );
+};
+
+/**
+ * Vertical layout content renderer for draggable items
+ * Renders: [DragHandle] [Stack of fields] [RemoveButton?]
+ */
+const renderVerticalDraggableContent = (
+    item: any,
+    index: number,
+    columns: Array<CollectionColumnDef<any>>,
+    cellContext: CollectionCellContext<any>,
     getStyles: any,
+    dragHandleProps: {
+        setActivatorNodeRef: (element: HTMLElement | null) => void;
+        listeners: any;
+        attributes: any;
+    },
 ) => (
-    <Box {...getStyles('itemHeader')}>
+    <Group wrap="nowrap" align="flex-start" gap="sm" {...getStyles('itemContent')}>
         <DragHandle
-            setActivatorNodeRef={setActivatorNodeRef}
-            listeners={listeners}
-            attributes={attributes}
+            setActivatorNodeRef={dragHandleProps.setActivatorNodeRef}
+            listeners={dragHandleProps.listeners}
+            attributes={dragHandleProps.attributes}
             getStyles={getStyles}
         />
-        {removable && onRemove && <RemoveButton removable={removable} onRemove={onRemove} getStyles={getStyles} />}
-    </Box>
+        {renderFieldStack(item, index, columns, cellContext, getStyles)}
+        {cellContext.removable && cellContext.onRemove && (
+            <RemoveButton removable={cellContext.removable} onRemove={cellContext.onRemove} getStyles={getStyles} />
+        )}
+    </Group>
 );
 
 // Create renderers once - they are stable component references
@@ -114,7 +137,7 @@ export const VerticalLayoutBody = <T,>(props: VerticalLayoutBodyProps<T> & {ref?
             renderContent: renderVerticalContent,
             containerSelector: 'item',
             inlineControls: false,
-            renderDraggableHeader: renderVerticalDraggableHeader,
+            renderDraggableContent: renderVerticalDraggableContent,
         }),
         [],
     );

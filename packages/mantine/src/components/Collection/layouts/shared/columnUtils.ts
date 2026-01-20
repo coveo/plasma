@@ -14,7 +14,6 @@ export const getColumnSizeStyles = (column: CollectionColumnDef<any>): CSSProper
     };
 
     return {
-        width: column.size ? sizeToStyle(column.size) : 'auto',
         minWidth: sizeToStyle(column.minSize),
         maxWidth: sizeToStyle(column.maxSize),
     };

@@ -8,4 +8,8 @@ export const CollectionLayouts = {
 
 export {HorizontalLayout} from './horizontal-layout/HorizontalLayout.js';
 export {VerticalLayout} from './vertical-layout/VerticalLayout.js';
-export type {CollectionLayout, CollectionLayoutProps} from './CollectionLayout.types.js';
+export type {
+    CollectionLayout,
+    CollectionLayoutBodyProps,
+    CollectionLayoutHeaderProps,
+} from './CollectionLayout.types.js';

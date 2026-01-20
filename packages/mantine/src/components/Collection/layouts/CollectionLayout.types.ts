@@ -3,9 +3,23 @@ import {ReactElement, ReactNode} from 'react';
 import {CollectionColumnDef} from '../CollectionColumn.types.js';
 
 /**
- * Props passed to layout Header and Body components
+ * Props passed to layout Header component
  */
-export interface CollectionLayoutProps<T = unknown> {
+export interface CollectionLayoutHeaderProps<T = unknown> {
+    /** Array of column definitions */
+    columns: Array<CollectionColumnDef<T>>;
+
+    /** Whether drag and drop is enabled */
+    draggable?: boolean;
+
+    /** Whether items are removable */
+    removable?: boolean;
+}
+
+/**
+ * Props passed to layout Body component
+ */
+export interface CollectionLayoutBodyProps<T = unknown> {
     /** Array of column definitions */
     columns: Array<CollectionColumnDef<T>>;
 
@@ -42,8 +56,8 @@ export interface CollectionLayout {
     displayName: string;
 
     /** Header component - renders column headers */
-    Header: <TData>(props: CollectionLayoutProps<TData>) => ReactElement;
+    Header: <TData>(props: CollectionLayoutHeaderProps<TData>) => ReactElement | null;
 
     /** Body component - renders rows/items */
-    Body: <TData>(props: CollectionLayoutProps<TData>) => ReactElement;
+    Body: <TData>(props: CollectionLayoutBodyProps<TData>) => ReactElement;
 }

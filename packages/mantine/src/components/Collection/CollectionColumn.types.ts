@@ -42,12 +42,6 @@ export interface CollectionColumnDef<T = unknown> {
     cell: (item: T, index: number, context: CollectionCellContext<T>) => ReactNode;
 
     /**
-     * Column sizing - can be number (pixels) or string ('200px', '50%', etc)
-     * @default 'auto'
-     */
-    size?: string | number;
-
-    /**
      * Minimum column size
      */
     minSize?: string | number;

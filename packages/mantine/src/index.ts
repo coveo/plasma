@@ -117,7 +117,11 @@ export type {
     CollectionCellContext,
     CollectionHeaderContext,
 } from './components/Collection/CollectionColumn.types.js';
-export type {CollectionLayout, CollectionLayoutProps} from './components/Collection/layouts/CollectionLayout.types.js';
+export type {
+    CollectionLayout,
+    CollectionLayoutHeaderProps,
+    CollectionLayoutBodyProps,
+} from './components/Collection/layouts/CollectionLayout.types.js';
 
 // Color Input
 export * from './components/ColorInput/ColorInput.js';

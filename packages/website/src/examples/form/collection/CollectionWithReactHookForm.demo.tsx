@@ -1,6 +1,12 @@
 import {Checkbox, Collection, TextInput} from '@coveord/plasma-mantine';
 import {Controller, useForm, useFieldArray} from 'react-hook-form';
 
+interface TodoItem {
+    name: string;
+    done: boolean;
+    'internal-id'?: string;
+}
+
 const Demo = () => {
     const {control} = useForm({
         defaultValues: {
@@ -21,7 +27,7 @@ const Demo = () => {
             control={control}
             name="todoList"
             render={({fieldState: {error}}) => (
-                <Collection<{name: string; done: boolean; 'internal-id'?: string}>
+                <Collection<TodoItem>
                     draggable
                     addLabel="Add task"
                     description="These will have to be done by next week"
@@ -37,30 +43,38 @@ const Demo = () => {
                     }}
                     value={fields}
                     getItemId={(item) => item[itemId]}
-                >
-                    {(_task, index) => (
-                        <>
-                            <Controller
-                                control={control}
-                                name={`todoList.${index}.name` as const}
-                                render={({field, fieldState: {error: errorFieldName}}) => (
-                                    <TextInput
-                                        {...field}
-                                        error={errorFieldName?.message}
-                                        placeholder="Do something ..."
-                                    />
-                                )}
-                            />
-                            <Controller
-                                control={control}
-                                name={`todoList.${index}.done` as const}
-                                render={({field: {value, ...restField}, fieldState: {error: errorFieldDone}}) => (
-                                    <Checkbox checked={value} {...restField} error={errorFieldDone?.message} />
-                                )}
-                            />
-                        </>
-                    )}
-                </Collection>
+                    columns={[
+                        {
+                            header: 'Task',
+                            cell: (_task, index) => (
+                                <Controller
+                                    control={control}
+                                    name={`todoList.${index}.name` as const}
+                                    render={({field, fieldState: {error: errorFieldName}}) => (
+                                        <TextInput
+                                            {...field}
+                                            error={errorFieldName?.message}
+                                            placeholder="Do something ..."
+                                        />
+                                    )}
+                                />
+                            ),
+                        },
+                        {
+                            header: 'Done',
+                            cell: (_task, index) => (
+                                <Controller
+                                    control={control}
+                                    name={`todoList.${index}.done` as const}
+                                    render={({field: {value, ...restField}, fieldState: {error: errorFieldDone}}) => (
+                                        <Checkbox checked={value} {...restField} error={errorFieldDone?.message} />
+                                    )}
+                                />
+                            ),
+                            maxSize: 25,
+                        },
+                    ]}
+                />
             )}
         />
     );
