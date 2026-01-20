@@ -19,20 +19,36 @@ import {getByIconName, queryByIconName, findByIconName} from '@coveord/plasma-re
 Add this to a separate test utilities file (e.g., `test-utils.ts` or `testing-utils.ts`):
 
 ```typescript
-import {screen as defaultScreen} from '@testing-library/react';
+// test-utils.ts
+
 import {extendScreen, IconQueries} from '@coveord/plasma-react-icons/testing-library';
+import {screen as defaultScreen, within as defaultWithin} from '@testing-library/react';
 
 // Extend screen with icon queries with its type so that you have autocomplete in your IDE
 const screen: typeof defaultScreen & IconQueries = extendScreen(defaultScreen);
 
-// Export everything from testing library + our enhanced screen
-export * from '@testing-library/react';
-export {screen};
+// Extend within with icon queries with its type so that you have autocomplete in your IDE
+const within = (element: HTMLElement) => extendScreen(defaultWithin(element));
 
-// Then, in your test file
+// Export everything from testing library + our enhanced screen & within
+export * from '@testing-library/react';
+export {screen, within};
+```
+
+```typescript
+// in your test file
 import {render, screen} from './test-utils'; // or your utilities file path
 
-// Now screen.getByIconName, screen.queryByIconName, etc. are available
+test('finds icon by name', () => {
+    render(<YourComponent />);
+
+    // You can use the getByIconName method directly on the screen object
+    expect(screen.getByIconName('iconEdit')).toBeVisible();
+
+    // You can use the getByIconName method directly on the object returned by the within method
+    const editButton = screen.getByRole('button', {name: /edit/i});
+    expect(within(editButton).getByIconName('iconEdit')).toBeVisible();
+});
 ```
 
 ### Option 2: Import Individual Queries
