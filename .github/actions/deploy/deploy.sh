@@ -10,7 +10,6 @@ STORYBOOK_PATHNAME="/"
 OLD_WEBSITE_PATHNAME="/old/"
 DEMO_PATHNAME="/feature/"
 
-
 if [ "$BRANCH" = "master" ]
 then
     echo "Deploying Storybook"

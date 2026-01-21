@@ -6,7 +6,7 @@
     "scripts": {
         "build": "storybook build",
         "lint": "../../node_modules/.bin/eslint \"**/*.{ts,tsx}\"",
-        "storybook": "storybook dev -p 6006"
+        "start": "storybook dev -p 6006"
     },
     "eslintConfig": {
         "extends": [
