@@ -13,7 +13,7 @@ Plasma supports both **React 18** and **React 19**. You can use Plasma with eith
 ## Usage
 
 ```bash
-npm install @coveord/plasma-react @coveord/plasma-style
+npm install @coveord/plasma-mantine
 ```
 
 ## Contributing
@@ -50,7 +50,7 @@ Changes made to any source files in any package will make the demo rebuild and r
 
 ### Testing
 
-All new unit tests for components should be written using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/), and not Enzyme which is being phased out.
+All new unit tests for components should be written using [Vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/).
 
 To run all tests from the root, you can run `pnpm test`
 
