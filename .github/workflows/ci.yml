@@ -61,14 +61,5 @@ jobs:
             - name: Add demo link as a comment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
-                  message: ':heavy_check_mark: [Live demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ steps.deploy-demo.outputs.demo-output-path }}/).'
-                  avoidRepostsWith: Live demo of your latest successful build available here
-            - uses: ./.github/actions/storybook
-            - name: Push storybook code to s3 demo folder
-              id: deploy-storybook
-              run: bash ./.github/actions/storybook/deploy-storybook.sh ${{ github.head_ref || github.ref_name }} ${{ secrets.AWS_BUCKET }}
-            - name: Add Storybook demo link as a comment on the PR
-              uses: ./.github/actions/comment-on-pr
-              with:
-                  message: ':heavy_check_mark: [Live Storybook demo of your latest successful build available here](https://plasma.coveo.com/feature/${{ steps.deploy-demo.outputs.demo-output-path }}/storybook/index.html).'
-                  avoidRepostsWith: Live Storybook demo of your latest successful build available here
+                  message: 'Live demos of your latest successful build available here:\n- [:books: Storybook](${{ steps.deploy-demo.outputs.demo-output-path }}/)\n- [:globe_with_meridians: Plasma website (deprecated)](${{ steps.deploy-demo.outputs.demo-output-path }}/old/).'
+                  avoidRepostsWith: Live demos of your latest successful build available here

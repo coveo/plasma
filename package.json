@@ -13,7 +13,7 @@
         "prepare": "husky",
         "reconstruct": "pnpm dlx rimraf packages/*/node_modules packages/*/.turbo node_modules && npm run setup && echo done",
         "setup": "pnpm install",
-        "start": "turbo run build --filter=!@coveord/plasma-website && pnpm --recursive --parallel start",
+        "start": "turbo run build --filter=!@coveord/plasma-website --filter=!storybook && pnpm --recursive --parallel start",
         "test": "turbo run test --concurrency=1",
         "turbo:login": "node scripts/turboLogin.mjs"
     },

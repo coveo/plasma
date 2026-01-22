@@ -1,7 +1,0 @@
-name: Build Storybook
-description: Compile the Storybook stories to static files
-runs:
-    using: composite
-    steps:
-        - run: NODE_OPTIONS="--max-old-space-size=8192" pnpm --recursive build-storybook
-          shell: bash
