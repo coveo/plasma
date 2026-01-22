@@ -10,19 +10,19 @@ figma.connect(Switch, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasm
         readOnly: figma.enum('State', {
             'Read-Only': true,
         }),
-        labelProps: figma.nestedProps('Input.Label', {
+        labelProps: figma.nestedProps('.Input.Label', {
             required: figma.boolean('Asterisk'),
             label: figma.string('Label'),
         }),
 
         descriptionProps: figma.boolean('Description', {
-            true: figma.nestedProps('Input.Description', {
+            true: figma.nestedProps('.Input.Description', {
                 description: figma.string('Description'),
             }),
             false: {description: undefined},
         }),
         errorProps: figma.boolean('Error', {
-            true: figma.nestedProps('Input.Error', {
+            true: figma.nestedProps('.Input.Error', {
                 error: figma.string('Error'),
             }),
             false: {error: undefined},
@@ -48,19 +48,19 @@ figma.connect(
         props: {
             wrapperProps: figma.nestedProps('Input.Wrapper', {
                 descriptionProps: figma.boolean('Description', {
-                    true: figma.nestedProps('Input.Description', {
+                    true: figma.nestedProps('.Input.Description', {
                         description: figma.string('Description'),
                     }),
                     false: {description: undefined},
                 }),
                 errorProps: figma.boolean('Error', {
-                    true: figma.nestedProps('Input.Error', {
+                    true: figma.nestedProps('.Input.Error', {
                         error: figma.string('Error'),
                     }),
                     false: {error: undefined},
                 }),
             }),
-            labelProps: figma.nestedProps('Input.Label', {
+            labelProps: figma.nestedProps('.Input.Label', {
                 required: figma.boolean('Asterisk'),
                 label: figma.string('Label'),
             }),

@@ -3,14 +3,14 @@ import {figma} from '@figma/code-connect';
 
 figma.connect(Radio, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2208-496', {
     props: {
-        labelProps: figma.nestedProps('Input.Label', {
+        labelProps: figma.nestedProps('.Input.Label', {
             label: figma.string('Label'),
             required: figma.boolean('Asterisk'),
         }),
-        descriptionProps: figma.nestedProps('Input.Description', {
+        descriptionProps: figma.nestedProps('.Input.Description', {
             description: figma.string('Description'),
         }),
-        errorProps: figma.nestedProps('Input.Error', {
+        errorProps: figma.nestedProps('.Input.Error', {
             error: figma.string('Error'),
         }),
         disabled: figma.enum('State', {
@@ -41,11 +41,11 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50839',
     {
         props: {
-            labelProps: figma.nestedProps('Input.Label', {
+            labelProps: figma.nestedProps('.Input.Label', {
                 label: figma.string('Label'),
                 required: figma.boolean('Asterisk'),
             }),
-            descriptionProps: figma.nestedProps('Input.Description', {
+            descriptionProps: figma.nestedProps('.Input.Description', {
                 description: figma.string('Description'),
             }),
             disabled: figma.enum('State', {
@@ -125,20 +125,20 @@ figma.connect(
         props: {
             inputWrapperProps: figma.nestedProps('Input.Wrapper', {
                 descriptionProps: figma.boolean('Description', {
-                    true: figma.nestedProps('Input.Description', {
+                    true: figma.nestedProps('.Input.Description', {
                         description: figma.string('Description'),
                     }),
                     false: {description: undefined},
                 }),
                 errorProps: figma.boolean('Error', {
-                    true: figma.nestedProps('Input.Error', {
+                    true: figma.nestedProps('.Input.Error', {
                         error: figma.string('Error'),
                     }),
                     false: {error: undefined},
                 }),
                 groupChildren: figma.children('Radio.Group'),
             }),
-            labelProps: figma.nestedProps('Input.Label', {
+            labelProps: figma.nestedProps('.Input.Label', {
                 required: figma.boolean('Asterisk'),
                 label: figma.string('Label'),
             }),

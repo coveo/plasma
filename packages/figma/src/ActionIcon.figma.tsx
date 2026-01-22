@@ -10,7 +10,6 @@ const actionIconProps = {
     }),
     size: figma.enum('Size', {
         sm: 'sm',
-        md: 'md',
     }),
 };
 
@@ -23,7 +22,6 @@ const actionIconDestructiveProps = {
     }),
     size: figma.enum('Size', {
         sm: 'sm',
-        md: 'md',
     }),
 };
 
@@ -87,7 +85,7 @@ figma.connect(
 
 figma.connect(
     ActionIcon.DestructivePrimary,
-    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2274-9600',
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2911-3649',
     {
         variant: {Variant: 'Primary'},
         props: actionIconDestructiveProps,
@@ -101,7 +99,7 @@ figma.connect(
 
 figma.connect(
     ActionIcon.DestructiveSecondary,
-    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2274-9600',
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2911-3649',
     {
         variant: {Variant: 'Secondary'},
         props: actionIconDestructiveProps,
@@ -115,7 +113,7 @@ figma.connect(
 
 figma.connect(
     ActionIcon.DestructiveTertiary,
-    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2274-9600',
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2911-3649',
     {
         variant: {Variant: 'Tertiary'},
         props: actionIconDestructiveProps,
@@ -129,7 +127,7 @@ figma.connect(
 
 figma.connect(
     ActionIcon.DestructiveQuaternary,
-    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2274-9600',
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2911-3649',
     {
         variant: {Variant: 'Quaternary'},
         props: actionIconDestructiveProps,

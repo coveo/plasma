@@ -7,25 +7,25 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2191-1071',
     {
         props: {
-            labelProps: figma.nestedProps('Input.Label', {
+            labelProps: figma.nestedProps('.Input.Label', {
                 required: figma.boolean('Asterisk'),
                 label: figma.string('Label'),
             }),
             wrapperProps: figma.nestedProps('Input.Wrapper', {
                 descriptionProps: figma.boolean('Description', {
-                    true: figma.nestedProps('Input.Description', {
+                    true: figma.nestedProps('.Input.Description', {
                         description: figma.string('Description'),
                     }),
                     false: {description: undefined},
                 }),
                 errorProps: figma.boolean('Error', {
-                    true: figma.nestedProps('Input.Error', {
+                    true: figma.nestedProps('.Input.Error', {
                         error: figma.string('Error'),
                     }),
                     false: {error: undefined},
                 }),
             }),
-            inputProps: figma.nestedProps('NumberInput.Input', {
+            inputProps: figma.nestedProps('.NumberInput.Input', {
                 placeholder: figma.boolean('Placeholder', {true: figma.textContent('0'), false: undefined}),
                 leftSection: figma.boolean<ReactNode, never>('Left Section', {true: figma.instance('Swap Left')}),
                 disabled: figma.enum('State', {Disabled: true}),
