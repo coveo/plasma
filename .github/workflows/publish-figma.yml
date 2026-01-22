@@ -10,21 +10,6 @@ jobs:
         name: Code Connect Publish
         runs-on: ubuntu-latest
         steps:
-            - run: npx figma connect publish --exit-on-unreadable-files
-
-    notify-failure:
-        name: Notify on Failure
-        if: failure()
-        needs: code-connect-publish
-        runs-on: ubuntu-latest
-        steps:
-            - name: Send Slack notification
-              uses: slackapi/slack-github-action@v1.27.0
-              with:
-                  channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-                  slack-message: |
-                      ❌ Figma Code Connect Publish Failed on Plasma
-                      Commit: ${{ github.sha }}
-                      Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            - run: npx figma connect publish
               env:
-                  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+                  FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_TOKEN }}
