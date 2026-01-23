@@ -88,6 +88,8 @@ export const Demo: StoryObj<DemoStoryProps> = {
             },
             enhanceGetInputProps: (payload) => ({
                 ...enhanceWithCollectionProps(payload, 'contacts'),
+                readOnly: props.readOnly,
+                disabled: props.disabled,
             }),
         });
 
@@ -113,27 +115,22 @@ export const Demo: StoryObj<DemoStoryProps> = {
                 columns={[
                     {
                         header: props.showHeaders ? 'Name' : undefined,
-                        cell: (item, index, context) => (
+                        cell: (item, index) => (
                             <TextInput
                                 placeholder={props.showHeaders ? undefined : 'Name'}
                                 {...form.getInputProps(`contacts.${index}.name`)}
-                                disabled={context.disabled}
-                                readOnly={context.readOnly}
                             />
                         ),
                         maxSize: 150,
                     },
                     {
                         header: props.showHeaders ? 'Email' : undefined,
-                        cell: (item, index, context) => (
+                        cell: (item, index) => (
                             <TextInput
                                 placeholder={props.showHeaders ? undefined : 'Email'}
                                 {...form.getInputProps(`contacts.${index}.email`)}
-                                disabled={context.disabled}
-                                readOnly={context.readOnly}
                             />
                         ),
-                        maxSize: 300,
                     },
                 ]}
             />
@@ -158,6 +155,8 @@ export const Legacy: Story = {
             },
             enhanceGetInputProps: (payload) => ({
                 ...enhanceWithCollectionProps(payload, 'contacts'),
+                readOnly: props.readOnly,
+                disabled: props.disabled,
             }),
         });
 
@@ -178,13 +177,7 @@ export const Legacy: Story = {
                 error={props.error}
             >
                 {(item, index) => (
-                    <TextInput
-                        placeholder="Name"
-                        {...form.getInputProps(`contacts.${index}`)}
-                        disabled={props.disabled}
-                        readOnly={props.readOnly}
-                        style={{flex: 1}}
-                    />
+                    <TextInput placeholder="Name" {...form.getInputProps(`contacts.${index}`)} style={{flex: 1}} />
                 )}
             </Collection>
         );
