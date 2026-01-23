@@ -8,5 +8,6 @@ export const LAYOUT_BODY_DEFAULT_PROPS = {
     removable: true,
     draggable: false,
     disabled: false,
+    readOnly: false,
     gap: 'md' as MantineSpacing,
 } as const;

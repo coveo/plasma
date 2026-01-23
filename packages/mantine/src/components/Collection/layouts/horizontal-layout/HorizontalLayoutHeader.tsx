@@ -5,23 +5,23 @@ import {getColumnSizeStyles} from '../shared/columnUtils.js';
 import {renderColumnHeader} from '../shared/headerUtils.js';
 import classes from './HorizontalLayout.module.css';
 
-export interface HorizontalLayoutHeaderProps<T> extends BoxProps {
+export interface HorizontalLayoutHeaderProps extends BoxProps {
     draggable?: boolean;
     removable?: boolean;
 }
 
-const defaultProps: Partial<HorizontalLayoutHeaderProps<unknown>> = {
+const defaultProps: Partial<HorizontalLayoutHeaderProps> = {
     draggable: false,
     removable: true,
 };
 
 export const HorizontalLayoutHeader = <T,>(
-    props: HorizontalLayoutHeaderProps<T> & {ref?: ForwardedRef<HTMLDivElement>},
+    props: HorizontalLayoutHeaderProps & {ref?: ForwardedRef<HTMLDivElement>},
 ) => {
     const collectionCtx = useCollectionContext();
-    const {draggable, removable, className, style, ref, ...others} = useProps(
+    const {draggable, removable, style, ref, ...others} = useProps(
         'HorizontalLayoutHeader',
-        defaultProps as HorizontalLayoutHeaderProps<T>,
+        defaultProps as HorizontalLayoutHeaderProps,
         props,
     );
 

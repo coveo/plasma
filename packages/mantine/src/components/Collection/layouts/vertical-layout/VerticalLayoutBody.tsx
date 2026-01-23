@@ -21,6 +21,7 @@ export interface VerticalLayoutBodyProps<T> extends BoxProps {
     removable?: boolean;
     draggable?: boolean;
     disabled?: boolean;
+    readOnly?: boolean;
     getItemId?: (item: T, index: number) => string;
     gap?: MantineSpacing;
 }
@@ -96,7 +97,7 @@ const verticalRenderers = createItemRenderers<any>();
 
 export const VerticalLayoutBody = <T,>(props: VerticalLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
-    const {items, onRemove, removable, draggable, disabled, getItemId, gap, ref, ...others} = useProps(
+    const {items, onRemove, removable, draggable, disabled, readOnly, getItemId, gap, ref, ...others} = useProps(
         'VerticalLayoutBody',
         defaultProps as VerticalLayoutBodyProps<T>,
         props,
@@ -118,6 +119,7 @@ export const VerticalLayoutBody = <T,>(props: VerticalLayoutBodyProps<T> & {ref?
         removable,
         draggable,
         disabled,
+        readOnly,
         columns: collectionCtx.columns,
     });
 

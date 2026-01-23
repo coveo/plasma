@@ -9,7 +9,19 @@ export interface CollectionHeaderContext {
 }
 
 /**
- * Context provided to cell render functions
+ * Context provided to cell render functions.
+ *
+ * Use `context.disabled` and `context.readOnly` to pass the collection's state to your form inputs:
+ * @example
+ * ```tsx
+ * cell: (item, index, context) => (
+ *   <TextInput
+ *     {...form.getInputProps(`items.${index}.name`)}
+ *     disabled={context.disabled}
+ *     readOnly={context.readOnly}
+ *   />
+ * )
+ * ```
  */
 // eslint-disable-next-line unused-imports/no-unused-vars
 export interface CollectionCellContext<T = unknown> {
@@ -17,8 +29,16 @@ export interface CollectionCellContext<T = unknown> {
     removable?: boolean;
     /** Whether the collection is draggable */
     draggable?: boolean;
-    /** Whether the collection is disabled */
+    /**
+     * Whether the collection is disabled.
+     * Pass this to your form inputs: `disabled={context.disabled}`
+     */
     disabled?: boolean;
+    /**
+     * Whether the collection is read-only.
+     * Pass this to your form inputs: `readOnly={context.readOnly}`
+     */
+    readOnly?: boolean;
     /** Callback to remove the item */
     onRemove?: () => void;
 }

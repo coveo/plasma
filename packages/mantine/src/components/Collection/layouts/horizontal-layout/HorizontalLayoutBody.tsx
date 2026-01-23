@@ -12,6 +12,7 @@ export interface HorizontalLayoutBodyProps<T = unknown> extends BoxProps {
     removable?: boolean;
     draggable?: boolean;
     disabled?: boolean;
+    readOnly?: boolean;
     getItemId?: (item: T, index: number) => string;
     gap?: MantineSpacing;
 }
@@ -47,7 +48,7 @@ export const HorizontalLayoutBody = <T,>(
     props: HorizontalLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>},
 ) => {
     const collectionCtx = useCollectionContext();
-    const {items, onRemove, removable, draggable, disabled, getItemId, gap, ref, ...others} = useProps(
+    const {items, onRemove, removable, draggable, disabled, readOnly, getItemId, gap, ref, ...others} = useProps(
         'HorizontalLayoutBody',
         defaultProps as HorizontalLayoutBodyProps<T>,
         props,
@@ -68,6 +69,7 @@ export const HorizontalLayoutBody = <T,>(
         removable,
         draggable,
         disabled,
+        readOnly,
         columns: collectionCtx.columns,
     });
 

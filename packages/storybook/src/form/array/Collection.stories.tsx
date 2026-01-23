@@ -1,7 +1,6 @@
 import {enhanceWithCollectionProps, TextInput, useForm} from '@coveord/plasma-mantine';
 import {Collection} from '@coveord/plasma-mantine/components/Collection';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {FunctionComponent, ReactNode, useCallback, useMemo, useRef} from 'react';
 import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
 
 interface ContactItem {
@@ -32,36 +31,53 @@ const meta: Meta<typeof Collection> = {
 export default meta;
 type Story = StoryObj<typeof Collection>;
 
-const PlaceholderCollectionItem: FunctionComponent<{children: ReactNode}> = ({children}) => (
-    <div
-        style={{
-            height: 36,
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 'var(--mantine-radius-default)',
-            backgroundColor: 'var(--mantine-color-blue-2)',
-        }}
-    >
-        {children}
-    </div>
-);
-PlaceholderCollectionItem.displayName = 'PlaceholderCollectionItem';
-
-const useCounter = () => {
-    const count = useRef(0);
-    const getNext = useCallback(() => {
-        count.current += 1;
-        return count.current.toString();
-    }, []);
-    return getNext;
-};
+interface DemoStoryProps {
+    layout: 'Horizontal' | 'Vertical';
+    showHeaders: boolean;
+    label?: string;
+    description?: string;
+    draggable?: boolean;
+    disabled?: boolean;
+    readOnly?: boolean;
+    required?: boolean;
+    allowAdd?: boolean;
+    addLabel?: string;
+    addDisabledTooltip?: string;
+    error?: string;
+}
 
 /**
- * Column-based pattern with HorizontalLayout (default)
+ * Column-based layout pattern.
+ *
+ * Use the controls to switch between Horizontal and Vertical layouts, toggle headers, and test disabled/readOnly states.
+ *
+ * **Important:** When using `disabled` or `readOnly` props, you must pass them to your form inputs via the cell context:
+ * ```tsx
+ * cell: (item, index, context) => (
+ *   <TextInput
+ *     {...form.getInputProps(`items.${index}.name`)}
+ *     disabled={context.disabled}
+ *     readOnly={context.readOnly}
+ *   />
+ * )
+ * ```
  */
-export const Demo: Story = {
+export const Demo: StoryObj<DemoStoryProps> = {
+    args: {
+        layout: 'Horizontal',
+        showHeaders: true,
+    },
+    argTypes: {
+        layout: {
+            control: 'select',
+            options: ['Horizontal', 'Vertical'],
+            description: 'Layout style for the collection items',
+        },
+        showHeaders: {
+            control: 'boolean',
+            description: 'Whether to show column headers',
+        },
+    },
     render: (props) => {
         const form = useForm({
             initialValues: {
@@ -75,10 +91,13 @@ export const Demo: Story = {
             }),
         });
 
+        const layoutComponent =
+            props.layout === 'Vertical' ? Collection.Layouts.Vertical : Collection.Layouts.Horizontal;
+
         return (
             <Collection<ContactItem>
                 {...form.getInputProps('contacts')}
-                w={600}
+                w={props.layout === 'Vertical' ? 400 : 600}
                 label={props.label}
                 description={props.description}
                 draggable={props.draggable}
@@ -90,101 +109,31 @@ export const Demo: Story = {
                 addDisabledTooltip={props.addDisabledTooltip}
                 error={props.error}
                 newItem={{name: '', email: ''}}
+                layout={layoutComponent}
                 columns={[
                     {
-                        header: 'Name',
-                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
-                    },
-                    {
-                        header: 'Email',
-                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
-                    },
-                ]}
-            />
-        );
-    },
-};
-
-/**
- * Column-based pattern with VerticalLayout
- */
-export const WithColumnsVertical: Story = {
-    render: (props) => {
-        const form = useForm({
-            initialValues: {
-                contacts: [
-                    {name: 'Alice Smith', email: 'alice@example.com'},
-                    {name: 'Bob Johnson', email: 'bob@example.com'},
-                ],
-            },
-            enhanceGetInputProps: (payload) => ({
-                ...enhanceWithCollectionProps(payload, 'contacts'),
-            }),
-        });
-
-        return (
-            <Collection<ContactItem>
-                {...form.getInputProps('contacts')}
-                w={400}
-                label="Contacts (Vertical Layout)"
-                description="Each contact is displayed as a card with labels above fields"
-                draggable={props.draggable}
-                disabled={props.disabled}
-                readOnly={props.readOnly}
-                required={props.required}
-                newItem={{name: '', email: ''}}
-                layout={Collection.Layouts.Vertical}
-                columns={[
-                    {
-                        header: 'Name',
-                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
-                    },
-                    {
-                        header: 'Email',
-                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
-                    },
-                ]}
-            />
-        );
-    },
-};
-
-/**
- * Column-based pattern with custom column sizing
- */
-export const WithCustomSizing: Story = {
-    render: (props) => {
-        const form = useForm({
-            initialValues: {
-                contacts: [
-                    {name: 'Alice Smith', email: 'alice@example.com'},
-                    {name: 'Bob Johnson', email: 'bob@example.com'},
-                ],
-            },
-            enhanceGetInputProps: (payload) => ({
-                ...enhanceWithCollectionProps(payload, 'contacts'),
-            }),
-        });
-
-        return (
-            <Collection<ContactItem>
-                {...form.getInputProps('contacts')}
-                w={700}
-                label="Contacts with Custom Sizing"
-                description="Email column is wider than name"
-                draggable={props.draggable}
-                disabled={props.disabled}
-                newItem={{name: '', email: ''}}
-                columns={[
-                    {
-                        header: 'Name',
-                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
+                        header: props.showHeaders ? 'Name' : undefined,
+                        cell: (item, index, context) => (
+                            <TextInput
+                                placeholder={props.showHeaders ? undefined : 'Name'}
+                                {...form.getInputProps(`contacts.${index}.name`)}
+                                disabled={context.disabled}
+                                readOnly={context.readOnly}
+                            />
+                        ),
                         maxSize: 150,
                     },
                     {
-                        header: 'Email',
-                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
-                        maxSize: 500,
+                        header: props.showHeaders ? 'Email' : undefined,
+                        cell: (item, index, context) => (
+                            <TextInput
+                                placeholder={props.showHeaders ? undefined : 'Email'}
+                                {...form.getInputProps(`contacts.${index}.email`)}
+                                disabled={context.disabled}
+                                readOnly={context.readOnly}
+                            />
+                        ),
+                        maxSize: 300,
                     },
                 ]}
             />
@@ -193,16 +142,19 @@ export const WithCustomSizing: Story = {
 };
 
 /**
- * Column-based pattern without headers
+ * Legacy children render prop pattern.
+ *
+ * This demonstrates the original API for rendering collection items using a children render function.
+ * Use this pattern for maximum flexibility when the column-based layout doesn't fit your needs.
+ *
+ * With the legacy pattern, the `disabled` and `readOnly` props are handled by the Collection component,
+ * which hides the drag handle and remove button. You must manually pass these props to your form inputs.
  */
-export const WithoutHeaders: Story = {
+export const Legacy: Story = {
     render: (props) => {
         const form = useForm({
             initialValues: {
-                contacts: [
-                    {name: 'Alice Smith', email: 'alice@example.com'},
-                    {name: 'Bob Johnson', email: 'bob@example.com'},
-                ],
+                contacts: ['Alice Smith', 'Bob Johnson'],
             },
             enhanceGetInputProps: (payload) => ({
                 ...enhanceWithCollectionProps(payload, 'contacts'),
@@ -210,49 +162,8 @@ export const WithoutHeaders: Story = {
         });
 
         return (
-            <Collection<ContactItem>
-                {...form.getInputProps('contacts')}
-                w={600}
-                label="Contacts without Headers"
-                description="Columns without header labels"
-                draggable={props.draggable}
-                disabled={props.disabled}
-                newItem={{name: '', email: ''}}
-                columns={[
-                    {
-                        cell: (item, index) => (
-                            <TextInput placeholder="Name" {...form.getInputProps(`contacts.${index}.name`)} />
-                        ),
-                    },
-                    {
-                        cell: (item, index) => (
-                            <TextInput placeholder="Email" {...form.getInputProps(`contacts.${index}.email`)} />
-                        ),
-                    },
-                ]}
-            />
-        );
-    },
-};
-
-/**
- * Legacy children render prop pattern
- * This demonstrates the original API for rendering collection items using a children render function.
- * Use this pattern for maximum flexibility when the column-based layout doesn't fit your needs.
- */
-export const LegacyChildrenPattern: Story = {
-    render: (props) => {
-        const getNext = useCounter();
-        const items = useMemo(() => [getNext(), getNext(), getNext()], []);
-        const form = useForm({
-            initialValues: {items},
-            enhanceGetInputProps: (payload) => ({
-                ...enhanceWithCollectionProps(payload, 'items'),
-            }),
-        });
-        return (
             <Collection<string>
-                {...form.getInputProps('items')}
+                {...form.getInputProps('contacts')}
                 w={400}
                 required={props.required}
                 draggable={props.draggable}
@@ -263,10 +174,18 @@ export const LegacyChildrenPattern: Story = {
                 readOnly={props.readOnly}
                 label={props.label}
                 allowAdd={props.allowAdd}
-                newItem={getNext}
+                newItem=""
                 error={props.error}
             >
-                {(item) => <PlaceholderCollectionItem>Collection item {item}</PlaceholderCollectionItem>}
+                {(item, index) => (
+                    <TextInput
+                        placeholder="Name"
+                        {...form.getInputProps(`contacts.${index}`)}
+                        disabled={props.disabled}
+                        readOnly={props.readOnly}
+                        style={{flex: 1}}
+                    />
+                )}
             </Collection>
         );
     },

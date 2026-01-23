@@ -25,6 +25,7 @@ export interface ItemProps<T> {
     removable?: boolean;
     draggable?: boolean;
     disabled?: boolean;
+    readOnly?: boolean;
     classes: LayoutClasses;
     config: ItemRendererConfig<T>;
 }
@@ -86,7 +87,7 @@ export const createItemRenderers = <T,>() => {
      * Draggable item/row renderer with drag and drop functionality
      */
     const DraggableItem = (props: ItemProps<T>) => {
-        const {item, index, id, columns, onRemove, removable, disabled, classes, config} = props;
+        const {item, index, id, columns, onRemove, removable, disabled, readOnly, classes, config} = props;
         const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable(
             {id},
         );
@@ -95,6 +96,7 @@ export const createItemRenderers = <T,>() => {
             removable,
             draggable: true,
             disabled,
+            readOnly,
             onRemove,
         };
 
@@ -149,12 +151,13 @@ export const createItemRenderers = <T,>() => {
      * Static (non-draggable) item/row renderer
      */
     const StaticItem = (props: ItemProps<T>) => {
-        const {item, index, id, columns, onRemove, removable, disabled, classes, config} = props;
+        const {item, index, id, columns, onRemove, removable, disabled, readOnly, classes, config} = props;
 
         const cellContext: CollectionCellContext<T> = {
             removable,
             draggable: false,
             disabled,
+            readOnly,
             onRemove,
         };
 
@@ -170,12 +173,13 @@ export const createItemRenderers = <T,>() => {
      * Disabled item/row renderer (no drag, no remove)
      */
     const DisabledItem = (props: ItemProps<T>) => {
-        const {item, index, id, columns, disabled, classes, config} = props;
+        const {item, index, id, columns, disabled, readOnly, classes, config} = props;
 
         const cellContext: CollectionCellContext<T> = {
             removable: false,
             draggable: false,
             disabled,
+            readOnly,
         };
 
         return (
@@ -202,10 +206,11 @@ export const mapItemsToComponents = <T,>(
         removable?: boolean;
         draggable?: boolean;
         disabled?: boolean;
+        readOnly?: boolean;
         columns: Array<CollectionColumnDef<T>>;
     },
 ): ReactNode[] => {
-    const {getItemId, onRemove, removable, draggable, disabled, columns} = options;
+    const {getItemId, onRemove, removable, draggable, disabled, readOnly, columns} = options;
     const {DraggableItem, StaticItem, DisabledItem} = renderers;
 
     return items.map((item, index) => {
@@ -219,6 +224,7 @@ export const mapItemsToComponents = <T,>(
             removable,
             draggable,
             disabled,
+            readOnly,
             classes,
             config,
         };
