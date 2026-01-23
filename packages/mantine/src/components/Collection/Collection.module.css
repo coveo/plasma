@@ -21,6 +21,8 @@
 
 .dragHandle {
     cursor: grab;
+    display: flex;
+    align-items: center;
 
     &:active {
         cursor: grabbing;
@@ -28,9 +30,11 @@
 }
 
 .removeButton {
-    align-self: center;
+    display: flex;
+    align-items: center;
 }
 
 .addButtonContainer {
     align-self: flex-start;
+    width: min-content;
 }

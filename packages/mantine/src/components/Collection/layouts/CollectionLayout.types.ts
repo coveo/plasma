@@ -1,14 +1,10 @@
 import type {MantineSpacing} from '@mantine/core';
 import {ReactElement, ReactNode} from 'react';
-import {CollectionColumnDef} from '../CollectionColumn.types.js';
 
 /**
  * Props passed to layout Header component
  */
-export interface CollectionLayoutHeaderProps<T = unknown> {
-    /** Array of column definitions */
-    columns: Array<CollectionColumnDef<T>>;
-
+export interface CollectionLayoutHeaderProps {
     /** Whether drag and drop is enabled */
     draggable?: boolean;
 
@@ -20,9 +16,6 @@ export interface CollectionLayoutHeaderProps<T = unknown> {
  * Props passed to layout Body component
  */
 export interface CollectionLayoutBodyProps<T = unknown> {
-    /** Array of column definitions */
-    columns: Array<CollectionColumnDef<T>>;
-
     /** Items to render */
     items: T[];
 
@@ -56,7 +49,7 @@ export interface CollectionLayout {
     displayName: string;
 
     /** Header component - renders column headers */
-    Header: <TData>(props: CollectionLayoutHeaderProps<TData>) => ReactElement | null;
+    Header: (props: CollectionLayoutHeaderProps) => ReactElement | null;
 
     /** Body component - renders rows/items */
     Body: <TData>(props: CollectionLayoutBodyProps<TData>) => ReactElement;

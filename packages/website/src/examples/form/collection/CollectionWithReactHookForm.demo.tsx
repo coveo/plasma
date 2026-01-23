@@ -71,7 +71,7 @@ const Demo = () => {
                                     )}
                                 />
                             ),
-                            maxSize: 25,
+                            maxSize: 34,
                         },
                     ]}
                 />

@@ -61,7 +61,7 @@ const Demo = () => {
                     cell: (_task, index) => (
                         <Checkbox {...form.getInputProps(`todoList.${index}.done`, {type: 'checkbox'})} />
                     ),
-                    maxSize: 25,
+                    maxSize: 34,
                 },
             ]}
         />

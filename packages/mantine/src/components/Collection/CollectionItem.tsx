@@ -46,7 +46,7 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
             {...others}
         >
             {children}
-            <RemoveButton removable={removable} onRemove={onRemove} getStyles={ctx.getStyles} />
+            <RemoveButton removable={removable} onRemove={onRemove} />
         </Group>
     );
 };
@@ -114,14 +114,9 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
             data-isdragging={isDragging}
             {...others}
         >
-            <DragHandle
-                setActivatorNodeRef={setActivatorNodeRef}
-                listeners={listeners}
-                attributes={attributes}
-                getStyles={ctx.getStyles}
-            />
+            <DragHandle setActivatorNodeRef={setActivatorNodeRef} listeners={listeners} attributes={attributes} />
             {children}
-            <RemoveButton removable={removable} onRemove={onRemove} getStyles={ctx.getStyles} />
+            <RemoveButton removable={removable} onRemove={onRemove} />
         </Group>
     );
 };

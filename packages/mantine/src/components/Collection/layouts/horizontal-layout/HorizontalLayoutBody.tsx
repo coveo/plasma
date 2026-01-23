@@ -1,17 +1,13 @@
-import {Box, BoxProps, CompoundStylesApiProps, Factory, MantineSpacing, Stack, useProps} from '@mantine/core';
+import {Box, BoxProps, MantineSpacing, Stack, useProps} from '@mantine/core';
 import {ForwardedRef, useMemo} from 'react';
-import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
-import {CollectionColumnDef} from '../../CollectionColumn.types.js';
+import {useCollectionContext} from '../../CollectionContext.js';
 import {getColumnSizeStyles} from '../shared/columnUtils.js';
-import {createItemRenderers, ItemContentRenderer, mapItemsToComponents} from '../shared/itemRenderer.js';
+import {createItemRenderers, ItemContentRenderer, LayoutClasses, mapItemsToComponents} from '../shared/itemRenderer.js';
 import {LAYOUT_BODY_DEFAULT_PROPS} from '../shared/layoutConstants.js';
-import {useHorizontalLayout} from './HorizontalLayoutContext.js';
+import classes from './HorizontalLayout.module.css';
 
-export type HorizontalLayoutBodyStylesNames = 'row' | 'cell' | 'dragHandle' | 'removeButton';
-
-export interface HorizontalLayoutBodyProps<T> extends BoxProps, CompoundStylesApiProps<HorizontalLayoutBodyFactory> {
-    columns: Array<CollectionColumnDef<T>>;
-    items: T[]; // Required for Body
+export interface HorizontalLayoutBodyProps<T = unknown> extends BoxProps {
+    items: T[];
     onRemove?: (index: number) => void;
     removable?: boolean;
     draggable?: boolean;
@@ -20,31 +16,23 @@ export interface HorizontalLayoutBodyProps<T> extends BoxProps, CompoundStylesAp
     gap?: MantineSpacing;
 }
 
-export type HorizontalLayoutBodyFactory = Factory<{
-    props: HorizontalLayoutBodyProps<unknown>;
-    ref: HTMLDivElement;
-    stylesNames: HorizontalLayoutBodyStylesNames;
-    compound: true;
-}>;
-
-const defaultProps: Partial<HorizontalLayoutBodyProps<unknown>> = LAYOUT_BODY_DEFAULT_PROPS;
+const defaultProps: Partial<HorizontalLayoutBodyProps> = LAYOUT_BODY_DEFAULT_PROPS;
 
 /**
  * Horizontal layout specific content renderer - renders cells in a row
  */
-const renderHorizontalContent: ItemContentRenderer<any> = (item, index, columns, cellContext, getStyles) => (
+const renderHorizontalContent: ItemContentRenderer<unknown> = (
+    item,
+    index,
+    columns,
+    cellContext,
+    layoutClasses: LayoutClasses,
+) => (
     <>
         {columns.map((column, colIndex) => {
             const columnId = column.id ?? `column-${colIndex}`;
             return (
-                <Box
-                    key={columnId}
-                    {...getStyles('cell')}
-                    style={{
-                        ...getColumnSizeStyles(column),
-                        ...getStyles('cell').style,
-                    }}
-                >
+                <Box key={columnId} className={layoutClasses.cell} style={getColumnSizeStyles(column)}>
                     {column.cell(item, index, cellContext)}
                 </Box>
             );
@@ -53,28 +41,17 @@ const renderHorizontalContent: ItemContentRenderer<any> = (item, index, columns,
 );
 
 // Create renderers once - they are stable component references
-const horizontalRenderers = createItemRenderers<any>();
+const horizontalRenderers = createItemRenderers<unknown>();
 
 export const HorizontalLayoutBody = <T,>(
     props: HorizontalLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>},
 ) => {
-    const ctx = useHorizontalLayout();
-    const {
-        columns,
-        items,
-        onRemove,
-        removable,
-        draggable,
-        disabled,
-        getItemId,
-        gap,
-        classNames: _classNames,
-        className: _className,
-        styles: _styles,
-        style: _style,
-        ref,
-        ...others
-    } = useProps('HorizontalLayoutBody', defaultProps as HorizontalLayoutBodyProps<T>, props);
+    const collectionCtx = useCollectionContext();
+    const {items, onRemove, removable, draggable, disabled, getItemId, gap, ref, ...others} = useProps(
+        'HorizontalLayoutBody',
+        defaultProps as HorizontalLayoutBodyProps<T>,
+        props,
+    );
 
     const config = useMemo(
         () => ({
@@ -85,20 +62,18 @@ export const HorizontalLayoutBody = <T,>(
         [],
     );
 
-    const rows = mapItemsToComponents(items, horizontalRenderers, config, ctx.getStyles, {
+    const rows = mapItemsToComponents(items, horizontalRenderers, config, classes as LayoutClasses, {
         getItemId,
         onRemove,
         removable,
         draggable,
         disabled,
-        columns,
+        columns: collectionCtx.columns,
     });
 
     return (
-        <Stack ref={ref} gap={gap} {...(others as any)}>
+        <Stack ref={ref} gap={gap} {...others}>
             {rows}
         </Stack>
     );
 };
-
-HorizontalLayoutBody.extend = identity as CustomComponentThemeExtend<HorizontalLayoutBodyFactory>;

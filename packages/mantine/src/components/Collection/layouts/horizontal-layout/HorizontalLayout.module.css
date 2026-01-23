@@ -12,12 +12,12 @@
 }
 
 .dragHandleHeader {
-    width: var(--mantine-spacing-md);
+    width: var(--mantine-spacing-sm);
     flex-shrink: 0;
 }
 
 .removeButtonHeader {
-    width: calc(var(--mantine-spacing-md) + var(--mantine-spacing-xxs));
+    width: calc(var(--mantine-spacing-md) + var(--mantine-spacing-sm));
     flex-shrink: 0;
 }
 
@@ -34,16 +34,4 @@
 
 .cell {
     flex: 1;
-}
-
-.dragHandle {
-    composes: draghandle from '../shared/LayoutCommon.module.css';
-    width: var(--mantine-spacing-md);
-    flex-shrink: 0;
-}
-
-.removeButton {
-    composes: removebutton from '../shared/LayoutCommon.module.css';
-    width: calc(var(--mantine-spacing-md) + var(--mantine-spacing-xxs));
-    flex-shrink: 0;
 }

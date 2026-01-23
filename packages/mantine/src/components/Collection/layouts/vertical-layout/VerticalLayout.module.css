@@ -14,16 +14,6 @@
     width: 100%;
 }
 
-.dragHandle {
-    composes: draghandle from '../shared/LayoutCommon.module.css';
-    flex-shrink: 0;
-}
-
-.removeButton {
-    composes: removebutton from '../shared/LayoutCommon.module.css';
-    flex-shrink: 0;
-}
-
 .fieldGroup {
     flex: 1;
     min-width: 0;
@@ -32,7 +22,7 @@
 .field {
     display: flex;
     flex-direction: column;
-    gap: var(--mantine-spacing-xxs);
+    gap: var(--mantine-spacing-xs);
 }
 
 .fieldLabel {

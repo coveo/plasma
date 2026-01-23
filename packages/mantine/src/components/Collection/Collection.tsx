@@ -120,7 +120,7 @@ interface BaseCollectionProps<T> extends __InputWrapperProps, BoxProps, StylesAp
     /**
      * The gap between the collection items
      *
-     * @default 'xs'
+     * @default 'md'
      */
     gap?: MantineSpacing;
     /**
@@ -180,7 +180,7 @@ interface CollectionWithChildren<T> extends BaseCollectionProps<T> {
  */
 export type CollectionProps<T> = CollectionWithColumns<T> | CollectionWithChildren<T>;
 
-export type CollectionStylesNames = 'root' | 'item' | 'items' | 'itemDragging' | 'dragHandle';
+export type CollectionStylesNames = 'root' | 'item' | 'items' | 'itemDragging' | 'dragHandle' | 'removeButton';
 
 export type CollectionFactory = Factory<{
     props: CollectionProps<unknown>;
@@ -334,7 +334,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         const Layout = layout || CollectionLayouts.Horizontal;
 
         return (
-            <CollectionProvider value={{getStyles}}>
+            <CollectionProvider value={{getStyles, columns: columns as Array<CollectionColumnDef<unknown>>}}>
                 <DndContext
                     onDragEnd={handleDragEnd}
                     sensors={sensors}
@@ -345,12 +345,10 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                             {_header}
                             <Layout>
                                 <Layout.Header
-                                    columns={columns}
                                     draggable={draggable && canEdit}
                                     removable={canEdit && !(isRequired && hasOnlyOneItem)}
                                 />
                                 <Layout.Body
-                                    columns={columns}
                                     items={items}
                                     onRemove={canEdit ? onRemoveItem : undefined}
                                     removable={canEdit && !(isRequired && hasOnlyOneItem)}

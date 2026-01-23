@@ -1,10 +1,17 @@
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {Box, GetStylesApi} from '@mantine/core';
+import {Box} from '@mantine/core';
 import {ReactNode} from 'react';
 import {CollectionCellContext, CollectionColumnDef} from '../../CollectionColumn.types.js';
 import {DragHandle} from './DragHandle.js';
 import {RemoveButton} from './RemoveButton.js';
+
+/**
+ * CSS classes object for layout styling.
+ */
+export interface LayoutClasses {
+    [key: string]: string;
+}
 
 /**
  * Common props for rendering an item/row in either layout.
@@ -18,7 +25,7 @@ export interface ItemProps<T> {
     removable?: boolean;
     draggable?: boolean;
     disabled?: boolean;
-    getStyles: GetStylesApi<any>;
+    classes: LayoutClasses;
     config: ItemRendererConfig<T>;
 }
 
@@ -31,7 +38,7 @@ export type ItemContentRenderer<T> = (
     index: number,
     columns: Array<CollectionColumnDef<T>>,
     cellContext: CollectionCellContext<T>,
-    getStyles: GetStylesApi<any>,
+    classes: LayoutClasses,
 ) => ReactNode;
 
 /**
@@ -43,7 +50,7 @@ export type DraggableContentRenderer<T> = (
     index: number,
     columns: Array<CollectionColumnDef<T>>,
     cellContext: CollectionCellContext<T>,
-    getStyles: GetStylesApi<any>,
+    classes: LayoutClasses,
     dragHandleProps: {
         setActivatorNodeRef: (element: HTMLElement | null) => void;
         listeners: any;
@@ -79,7 +86,7 @@ export const createItemRenderers = <T,>() => {
      * Draggable item/row renderer with drag and drop functionality
      */
     const DraggableItem = (props: ItemProps<T>) => {
-        const {item, index, id, columns, onRemove, removable, disabled, getStyles, config} = props;
+        const {item, index, id, columns, onRemove, removable, disabled, classes, config} = props;
         const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable(
             {id},
         );
@@ -99,19 +106,18 @@ export const createItemRenderers = <T,>() => {
                 <Box
                     ref={setNodeRef}
                     data-testid={`item-${id}`}
-                    {...getStyles(config.containerSelector)}
-                    style={{
-                        ...(transform
+                    className={classes[config.containerSelector]}
+                    style={
+                        transform
                             ? {
                                   transform: CSS.Transform.toString(transform),
                                   transition,
                               }
-                            : undefined),
-                        ...getStyles(config.containerSelector).style,
-                    }}
+                            : undefined
+                    }
                     data-isdragging={isDragging}
                 >
-                    {config.renderDraggableContent(item, index, columns, cellContext, getStyles, dragHandleProps)}
+                    {config.renderDraggableContent(item, index, columns, cellContext, classes, dragHandleProps)}
                 </Box>
             );
         }
@@ -121,28 +127,20 @@ export const createItemRenderers = <T,>() => {
             <Box
                 ref={setNodeRef}
                 data-testid={`item-${id}`}
-                {...getStyles(config.containerSelector)}
-                style={{
-                    ...(transform
+                className={classes[config.containerSelector]}
+                style={
+                    transform
                         ? {
                               transform: CSS.Transform.toString(transform),
                               transition,
                           }
-                        : undefined),
-                    ...getStyles(config.containerSelector).style,
-                }}
+                        : undefined
+                }
                 data-isdragging={isDragging}
             >
-                <DragHandle
-                    setActivatorNodeRef={setActivatorNodeRef}
-                    listeners={listeners}
-                    attributes={attributes}
-                    getStyles={getStyles}
-                />
-                {config.renderContent(item, index, columns, cellContext, getStyles)}
-                {config.inlineControls && (
-                    <RemoveButton removable={removable} onRemove={onRemove} getStyles={getStyles} />
-                )}
+                <DragHandle setActivatorNodeRef={setActivatorNodeRef} listeners={listeners} attributes={attributes} />
+                {config.renderContent(item, index, columns, cellContext, classes)}
+                {config.inlineControls && <RemoveButton removable={removable} onRemove={onRemove} />}
             </Box>
         );
     };
@@ -151,7 +149,7 @@ export const createItemRenderers = <T,>() => {
      * Static (non-draggable) item/row renderer
      */
     const StaticItem = (props: ItemProps<T>) => {
-        const {item, index, id, columns, onRemove, removable, disabled, getStyles, config} = props;
+        const {item, index, id, columns, onRemove, removable, disabled, classes, config} = props;
 
         const cellContext: CollectionCellContext<T> = {
             removable,
@@ -161,11 +159,9 @@ export const createItemRenderers = <T,>() => {
         };
 
         return (
-            <Box data-testid={`item-${id}`} {...getStyles(config.containerSelector)}>
-                {config.renderContent(item, index, columns, cellContext, getStyles)}
-                {config.inlineControls && (
-                    <RemoveButton removable={removable} onRemove={onRemove} getStyles={getStyles} />
-                )}
+            <Box data-testid={`item-${id}`} className={classes[config.containerSelector]}>
+                {config.renderContent(item, index, columns, cellContext, classes)}
+                {config.inlineControls && <RemoveButton removable={removable} onRemove={onRemove} />}
             </Box>
         );
     };
@@ -174,7 +170,7 @@ export const createItemRenderers = <T,>() => {
      * Disabled item/row renderer (no drag, no remove)
      */
     const DisabledItem = (props: ItemProps<T>) => {
-        const {item, index, id, columns, disabled, getStyles, config} = props;
+        const {item, index, id, columns, disabled, classes, config} = props;
 
         const cellContext: CollectionCellContext<T> = {
             removable: false,
@@ -183,8 +179,8 @@ export const createItemRenderers = <T,>() => {
         };
 
         return (
-            <Box data-testid={`item-${id}`} {...getStyles(config.containerSelector)}>
-                {config.renderContent(item, index, columns, cellContext, getStyles)}
+            <Box data-testid={`item-${id}`} className={classes[config.containerSelector]}>
+                {config.renderContent(item, index, columns, cellContext, classes)}
             </Box>
         );
     };
@@ -199,7 +195,7 @@ export const mapItemsToComponents = <T,>(
     items: T[],
     renderers: ReturnType<typeof createItemRenderers<T>>,
     config: ItemRendererConfig<T>,
-    getStyles: GetStylesApi<any>,
+    classes: LayoutClasses,
     options: {
         getItemId?: (item: T, index: number) => string;
         onRemove?: (index: number) => void;
@@ -223,7 +219,7 @@ export const mapItemsToComponents = <T,>(
             removable,
             draggable,
             disabled,
-            getStyles,
+            classes,
             config,
         };
 
