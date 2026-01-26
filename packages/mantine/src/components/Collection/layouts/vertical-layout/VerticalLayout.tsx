@@ -1,12 +1,8 @@
-import {ReactNode} from 'react';
+import {LayoutProps} from '../shared/layoutConstants.js';
 import {VerticalLayoutBody} from './VerticalLayoutBody.js';
 import {VerticalLayoutHeader} from './VerticalLayoutHeader.js';
 
-export interface VerticalLayoutProps {
-    children: ReactNode;
-}
-
-export const VerticalLayout = ({children}: VerticalLayoutProps) => <>{children}</>;
+export const VerticalLayout = ({children}: LayoutProps) => <>{children}</>;
 
 VerticalLayout.Body = VerticalLayoutBody;
 VerticalLayout.Header = VerticalLayoutHeader;

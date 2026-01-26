@@ -1,23 +1,12 @@
-import {Box, BoxProps, MantineSpacing, Stack, useProps} from '@mantine/core';
+import {Box, Stack, useProps} from '@mantine/core';
 import {ForwardedRef, useMemo} from 'react';
 import {useCollectionContext} from '../../CollectionContext.js';
 import {getColumnSizeStyles} from '../shared/columnUtils.js';
 import {createItemRenderers, ItemContentRenderer, LayoutClasses, mapItemsToComponents} from '../shared/itemRenderer.js';
-import {LAYOUT_BODY_DEFAULT_PROPS} from '../shared/layoutConstants.js';
+import {LAYOUT_BODY_DEFAULT_PROPS, LayoutBodyProps} from '../shared/layoutConstants.js';
 import classes from './HorizontalLayout.module.css';
 
-export interface HorizontalLayoutBodyProps<T = unknown> extends BoxProps {
-    items: T[];
-    onRemove?: (index: number) => void;
-    removable?: boolean;
-    draggable?: boolean;
-    disabled?: boolean;
-    readOnly?: boolean;
-    getItemId?: (item: T, index: number) => string;
-    gap?: MantineSpacing;
-}
-
-const defaultProps: Partial<HorizontalLayoutBodyProps> = LAYOUT_BODY_DEFAULT_PROPS;
+const defaultProps: Partial<LayoutBodyProps> = LAYOUT_BODY_DEFAULT_PROPS;
 
 /**
  * Horizontal layout specific content renderer - renders cells in a row
@@ -44,13 +33,11 @@ const renderHorizontalContent: ItemContentRenderer<unknown> = (
 // Create renderers once - they are stable component references
 const horizontalRenderers = createItemRenderers<unknown>();
 
-export const HorizontalLayoutBody = <T,>(
-    props: HorizontalLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>},
-) => {
+export const HorizontalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
     const {items, onRemove, removable, draggable, disabled, readOnly, getItemId, gap, ref, ...others} = useProps(
         'HorizontalLayoutBody',
-        defaultProps as HorizontalLayoutBodyProps<T>,
+        defaultProps as LayoutBodyProps<T>,
         props,
     );
 

@@ -1,27 +1,18 @@
-import {Box, BoxProps, useProps} from '@mantine/core';
+import {Box, useProps} from '@mantine/core';
 import {ForwardedRef} from 'react';
 import {useCollectionContext} from '../../CollectionContext.js';
 import {getColumnSizeStyles} from '../shared/columnUtils.js';
 import {renderColumnHeader} from '../shared/headerUtils.js';
+import {LAYOUT_HEADER_DEFAULT_PROPS, LayoutHeaderProps} from '../shared/layoutConstants.js';
 import classes from './HorizontalLayout.module.css';
 
-export interface HorizontalLayoutHeaderProps extends BoxProps {
-    draggable?: boolean;
-    removable?: boolean;
-}
+const defaultProps: Partial<LayoutHeaderProps> = LAYOUT_HEADER_DEFAULT_PROPS;
 
-const defaultProps: Partial<HorizontalLayoutHeaderProps> = {
-    draggable: false,
-    removable: true,
-};
-
-export const HorizontalLayoutHeader = <T,>(
-    props: HorizontalLayoutHeaderProps & {ref?: ForwardedRef<HTMLDivElement>},
-) => {
+export const HorizontalLayoutHeader = (props: LayoutHeaderProps & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
     const {draggable, removable, style, ref, ...others} = useProps(
         'HorizontalLayoutHeader',
-        defaultProps as HorizontalLayoutHeaderProps,
+        defaultProps as LayoutHeaderProps,
         props,
     );
 

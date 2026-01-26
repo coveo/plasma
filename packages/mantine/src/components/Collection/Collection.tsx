@@ -1,4 +1,3 @@
-import {IconPlus} from '@coveord/plasma-react-icons';
 import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
 import {restrictToParentElement, restrictToVerticalAxis} from '@dnd-kit/modifiers';
 import {SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy} from '@dnd-kit/sortable';
@@ -18,8 +17,8 @@ import {useDidUpdate} from '@mantine/hooks';
 import {ForwardedRef, ReactNode} from 'react';
 
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
-import {Button} from '../Button/Button.js';
 import classes from './Collection.module.css';
+import {CollectionAddButton} from './CollectionAddButton.js';
 import {CollectionColumnDef} from './CollectionColumn.types.js';
 import {CollectionProvider} from './CollectionContext.js';
 import {CollectionItem} from './CollectionItem.js';
@@ -313,20 +312,18 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
 
     const addAllowed = typeof allowAdd === 'boolean' ? allowAdd : (allowAdd?.(items) ?? true);
 
+    const handleAdd = () => {
+        const newItemValue = typeof newItem === 'function' ? (newItem as () => T)() : newItem;
+        onInsertItem?.(newItemValue, items?.length ?? 0);
+    };
+
     const _addButton = canEdit ? (
-        <Box className={classes.addButtonContainer}>
-            <Button.Quaternary
-                leftSection={<IconPlus size={16} />}
-                onClick={() => {
-                    const newItemValue = typeof newItem === 'function' ? (newItem as () => T)() : newItem;
-                    onInsertItem(newItemValue, items?.length ?? 0);
-                }}
-                disabled={!addAllowed}
-                disabledTooltip={addDisabledTooltip}
-            >
-                {addLabel}
-            </Button.Quaternary>
-        </Box>
+        <CollectionAddButton
+            addLabel={addLabel}
+            addDisabledTooltip={addDisabledTooltip}
+            addAllowed={addAllowed}
+            onAdd={handleAdd}
+        />
     ) : null;
 
     // Column-based layout pattern

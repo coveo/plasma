@@ -1,4 +1,4 @@
-import {Box, BoxProps, Group, MantineSpacing, Stack, useProps} from '@mantine/core';
+import {Box, Group, Stack, useProps} from '@mantine/core';
 import {ForwardedRef, useMemo} from 'react';
 import {CollectionCellContext, CollectionColumnDef} from '../../CollectionColumn.types.js';
 import {useCollectionContext} from '../../CollectionContext.js';
@@ -11,22 +11,11 @@ import {
     LayoutClasses,
     mapItemsToComponents,
 } from '../shared/itemRenderer.js';
-import {LAYOUT_BODY_DEFAULT_PROPS} from '../shared/layoutConstants.js';
+import {LAYOUT_BODY_DEFAULT_PROPS, LayoutBodyProps} from '../shared/layoutConstants.js';
 import {RemoveButton} from '../shared/RemoveButton.js';
 import classes from './VerticalLayout.module.css';
 
-export interface VerticalLayoutBodyProps<T> extends BoxProps {
-    items: T[];
-    onRemove?: (index: number) => void;
-    removable?: boolean;
-    draggable?: boolean;
-    disabled?: boolean;
-    readOnly?: boolean;
-    getItemId?: (item: T, index: number) => string;
-    gap?: MantineSpacing;
-}
-
-const defaultProps: Partial<VerticalLayoutBodyProps<unknown>> = LAYOUT_BODY_DEFAULT_PROPS;
+const defaultProps: Partial<LayoutBodyProps<unknown>> = LAYOUT_BODY_DEFAULT_PROPS;
 
 /**
  * Renders the stack of fields (columns) for a vertical layout item
@@ -95,11 +84,11 @@ const renderVerticalDraggableContent: DraggableContentRenderer<any> = (
 // Create renderers once - they are stable component references
 const verticalRenderers = createItemRenderers<any>();
 
-export const VerticalLayoutBody = <T,>(props: VerticalLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
+export const VerticalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
     const {items, onRemove, removable, draggable, disabled, readOnly, getItemId, gap, ref, ...others} = useProps(
         'VerticalLayoutBody',
-        defaultProps as VerticalLayoutBodyProps<T>,
+        defaultProps as LayoutBodyProps<T>,
         props,
     );
 
