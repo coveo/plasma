@@ -1,3 +1,12 @@
+## 53.3.1 (2026-01-27)
+
+
+### Bug Fixes
+
+* **react:** add react 19 peer dependency support (#4297) 83acf0b, closes #4297
+
+
+
 # 53.3.0 (2025-04-28)
 
 
