@@ -26,7 +26,7 @@ figma.connect(
                 title,
                 message,
             });
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render the code snippet
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
@@ -49,7 +49,7 @@ figma.connect(
                 title,
                 message,
             });
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render the code snippet
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
@@ -71,7 +71,7 @@ figma.connect(
                 title,
                 message,
             });
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render the code snippet
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
@@ -93,7 +93,7 @@ figma.connect(
                 title,
                 message,
             });
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render the code snippet
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
@@ -124,11 +124,11 @@ figma.connect(
                     notifications.update({
                         id,
                         title: 'Loaded',
-                        message: 'The operation has completed',
+                        message: 'a operation has completed',
                     }),
                 0,
             );
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render the code snippet
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
