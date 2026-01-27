@@ -124,7 +124,7 @@ figma.connect(
                     notifications.update({
                         id,
                         title: 'Loaded',
-                        message: 'a operation has completed',
+                        message: 'The operation has completed',
                     }),
                 0,
             );
