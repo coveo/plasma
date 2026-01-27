@@ -1,11 +1,11 @@
-import {DragAndDropSize24Px, IconTrash} from '@coveord/plasma-react-icons';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 import {Group, GroupProps, useProps} from '@mantine/core';
-import {FunctionComponent, PropsWithChildren} from 'react';
+import {FunctionComponent, type MouseEventHandler, PropsWithChildren} from 'react';
 
-import {ActionIcon} from '../ActionIcon/ActionIcon.js';
 import {useCollectionContext} from './CollectionContext.js';
+import {DragHandle} from './layouts/shared/DragHandle.js';
+import {RemoveButton} from './layouts/shared/RemoveButton.js';
 
 interface CollectionItemProps extends CollectionItemSharedProps {
     draggable?: boolean;
@@ -14,7 +14,7 @@ interface CollectionItemProps extends CollectionItemSharedProps {
 
 interface CollectionItemSharedProps extends GroupProps {
     id: string;
-    onRemove?: React.MouseEventHandler<HTMLButtonElement>;
+    onRemove?: MouseEventHandler<HTMLButtonElement>;
     removable?: boolean;
 }
 
@@ -22,16 +22,6 @@ const defaultProps: Partial<CollectionItemSharedProps> = {
     removable: true,
     gap: 'sm',
 };
-
-const RemoveButton: FunctionComponent<{
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
-}> = ({onClick}) => (
-    <ActionIcon.Quaternary style={{alignSelf: 'center'}} onClick={onClick}>
-        <IconTrash aria-label="Remove" size={16} />
-    </ActionIcon.Quaternary>
-);
-
-const RemoveButtonPlaceholder = () => <div style={{width: 28}} />;
 
 const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = (props) => {
     const {
@@ -48,7 +38,6 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
         ...others
     } = useProps('CollectionItem', defaultProps, props);
     const ctx = useCollectionContext();
-    const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : <RemoveButtonPlaceholder />;
 
     return (
         <Group
@@ -57,7 +46,7 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
             {...others}
         >
             {children}
-            {removeButton}
+            <RemoveButton removable={removable} onRemove={onRemove} />
         </Group>
     );
 };
@@ -67,6 +56,8 @@ const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItem
     const {
         children,
         id,
+        removable: _removable,
+        onRemove: _onRemove,
 
         // Style props
         style,
@@ -100,7 +91,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
         styles,
         ...others
     } = useProps('CollectionItem', defaultProps, props);
-    const removeButton = removable && onRemove ? <RemoveButton onClick={onRemove} /> : null;
+
     const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
         id,
     });
@@ -123,11 +114,9 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
             data-isdragging={isDragging}
             {...others}
         >
-            <div ref={setActivatorNodeRef} {...listeners} {...attributes} {...ctx.getStyles('dragHandle')}>
-                <DragAndDropSize24Px height={16} />
-            </div>
+            <DragHandle setActivatorNodeRef={setActivatorNodeRef} listeners={listeners} attributes={attributes} />
             {children}
-            {removeButton}
+            <RemoveButton removable={removable} onRemove={onRemove} />
         </Group>
     );
 };

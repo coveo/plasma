@@ -20,9 +20,21 @@
 }
 
 .dragHandle {
-    cursor: move;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+.removeButton {
+    display: flex;
+    align-items: center;
 }
 
 .addButtonContainer {
     align-self: flex-start;
+    width: min-content;
 }

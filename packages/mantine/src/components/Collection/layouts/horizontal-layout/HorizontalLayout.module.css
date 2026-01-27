@@ -1,0 +1,37 @@
+.headerRow {
+    display: flex;
+    gap: var(--mantine-spacing-sm);
+    padding-bottom: var(--mantine-spacing-xs);
+    align-items: center;
+}
+
+.headerCell {
+    flex: 1;
+    font-weight: var(--coveo-fw-bold);
+    text-align: left;
+}
+
+.dragHandleHeader {
+    width: var(--mantine-spacing-sm);
+    flex-shrink: 0;
+}
+
+.removeButtonHeader {
+    width: calc(var(--mantine-spacing-md) + var(--mantine-spacing-sm));
+    flex-shrink: 0;
+}
+
+.row {
+    display: flex;
+    gap: var(--mantine-spacing-sm);
+    align-items: center;
+    background: var(--mantine-color-body);
+}
+
+.row[data-isdragging='true'] {
+    z-index: 1;
+}
+
+.cell {
+    flex: 1;
+}

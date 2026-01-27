@@ -1,8 +1,12 @@
-import {enhanceWithCollectionProps, useForm} from '@coveord/plasma-mantine';
+import {enhanceWithCollectionProps, TextInput, useForm} from '@coveord/plasma-mantine';
 import {Collection} from '@coveord/plasma-mantine/components/Collection';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {FunctionComponent, ReactNode, useCallback, useMemo, useRef} from 'react';
 import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+
+interface ContactItem {
+    name: string;
+    email: string;
+}
 
 const meta: Meta<typeof Collection> = {
     title: '@components/form/array/Collection',
@@ -27,45 +31,138 @@ const meta: Meta<typeof Collection> = {
 export default meta;
 type Story = StoryObj<typeof Collection>;
 
-const PlaceholderCollectionItem: FunctionComponent<{children: ReactNode}> = ({children}) => (
-    <div
-        style={{
-            height: 36,
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 'var(--mantine-radius-default)',
-            backgroundColor: 'var(--mantine-color-blue-2)',
-        }}
-    >
-        {children}
-    </div>
-);
-PlaceholderCollectionItem.displayName = 'PlaceholderCollectionItem';
+interface DemoStoryProps {
+    layout: 'Horizontal' | 'Vertical';
+    showHeaders: boolean;
+    label?: string;
+    description?: string;
+    draggable?: boolean;
+    disabled?: boolean;
+    readOnly?: boolean;
+    required?: boolean;
+    allowAdd?: boolean;
+    addLabel?: string;
+    addDisabledTooltip?: string;
+    error?: string;
+}
 
-const useCounter = () => {
-    const count = useRef(0);
-    const getNext = useCallback(() => {
-        count.current += 1;
-        return count.current.toString();
-    }, []);
-    return getNext;
-};
-
-export const Demo: Story = {
+/**
+ * Column-based layout pattern.
+ *
+ * Use the controls to switch between Horizontal and Vertical layouts, toggle headers, and test disabled/readOnly states.
+ *
+ * **Important:** When using `disabled` or `readOnly` props, you must pass them to your form inputs via the cell context:
+ * ```tsx
+ * cell: (item, index, context) => (
+ *   <TextInput
+ *     {...form.getInputProps(`items.${index}.name`)}
+ *     disabled={context.disabled}
+ *     readOnly={context.readOnly}
+ *   />
+ * )
+ * ```
+ */
+export const Demo: StoryObj<DemoStoryProps> = {
+    args: {
+        layout: 'Horizontal',
+        showHeaders: true,
+    },
+    argTypes: {
+        layout: {
+            control: 'select',
+            options: ['Horizontal', 'Vertical'],
+            description: 'Layout style for the collection items',
+        },
+        showHeaders: {
+            control: 'boolean',
+            description: 'Whether to show column headers',
+        },
+    },
     render: (props) => {
-        const getNext = useCounter();
-        const items = useMemo(() => [getNext(), getNext(), getNext()], []);
         const form = useForm({
-            initialValues: {items},
+            initialValues: {
+                contacts: [
+                    {name: 'Alice Smith', email: 'alice@example.com'},
+                    {name: 'Bob Johnson', email: 'bob@example.com'},
+                ],
+            },
             enhanceGetInputProps: (payload) => ({
-                ...enhanceWithCollectionProps(payload, 'items'),
+                ...enhanceWithCollectionProps(payload, 'contacts'),
+                readOnly: props.readOnly,
+                disabled: props.disabled,
             }),
         });
+
+        const layoutComponent =
+            props.layout === 'Vertical' ? Collection.Layouts.Vertical : Collection.Layouts.Horizontal;
+
+        return (
+            <Collection<ContactItem>
+                {...form.getInputProps('contacts')}
+                w={props.layout === 'Vertical' ? 400 : 600}
+                label={props.label}
+                description={props.description}
+                draggable={props.draggable}
+                disabled={props.disabled}
+                readOnly={props.readOnly}
+                required={props.required}
+                allowAdd={props.allowAdd}
+                addLabel={props.addLabel}
+                addDisabledTooltip={props.addDisabledTooltip}
+                error={props.error}
+                newItem={{name: '', email: ''}}
+                layout={layoutComponent}
+                columns={[
+                    {
+                        header: props.showHeaders ? 'Name' : undefined,
+                        cell: (item, index) => (
+                            <TextInput
+                                placeholder={props.showHeaders ? undefined : 'Name'}
+                                {...form.getInputProps(`contacts.${index}.name`)}
+                            />
+                        ),
+                        maxSize: 150,
+                    },
+                    {
+                        header: props.showHeaders ? 'Email' : undefined,
+                        cell: (item, index) => (
+                            <TextInput
+                                placeholder={props.showHeaders ? undefined : 'Email'}
+                                {...form.getInputProps(`contacts.${index}.email`)}
+                            />
+                        ),
+                    },
+                ]}
+            />
+        );
+    },
+};
+
+/**
+ * Legacy children render prop pattern.
+ *
+ * This demonstrates the original API for rendering collection items using a children render function.
+ * Use this pattern for maximum flexibility when the column-based layout doesn't fit your needs.
+ *
+ * With the legacy pattern, the `disabled` and `readOnly` props are handled by the Collection component,
+ * which hides the drag handle and remove button. You must manually pass these props to your form inputs.
+ */
+export const Legacy: Story = {
+    render: (props) => {
+        const form = useForm({
+            initialValues: {
+                contacts: ['Alice Smith', 'Bob Johnson'],
+            },
+            enhanceGetInputProps: (payload) => ({
+                ...enhanceWithCollectionProps(payload, 'contacts'),
+                readOnly: props.readOnly,
+                disabled: props.disabled,
+            }),
+        });
+
         return (
             <Collection<string>
-                {...form.getInputProps('items')}
+                {...form.getInputProps('contacts')}
                 w={400}
                 required={props.required}
                 draggable={props.draggable}
@@ -76,10 +173,12 @@ export const Demo: Story = {
                 readOnly={props.readOnly}
                 label={props.label}
                 allowAdd={props.allowAdd}
-                newItem={getNext}
+                newItem=""
                 error={props.error}
             >
-                {(item) => <PlaceholderCollectionItem>Collection item {item}</PlaceholderCollectionItem>}
+                {(item, index) => (
+                    <TextInput placeholder="Name" {...form.getInputProps(`contacts.${index}`)} style={{flex: 1}} />
+                )}
             </Collection>
         );
     },

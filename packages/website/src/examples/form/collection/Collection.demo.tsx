@@ -7,6 +7,11 @@ import {
     useForm,
 } from '@coveord/plasma-mantine';
 
+interface TodoItem {
+    name: string;
+    done: boolean;
+}
+
 const Demo = () => {
     const form = useForm({
         validateInputOnChange: true,
@@ -30,7 +35,7 @@ const Demo = () => {
     });
 
     return (
-        <Collection<{name: string; done: boolean}>
+        <Collection<TodoItem>
             draggable
             addLabel="Add task"
             description="These will have to be done by next week"
@@ -39,23 +44,27 @@ const Demo = () => {
             allowAdd={(value) => value.length < 10}
             newItem={{name: '', done: false}}
             {...form.getInputProps('todoList')}
-        >
-            {(_task, index) => (
-                <>
-                    <TextInput
-                        // Autofocus is annoying when playing with the sandbox but you should have this on otherwise
-                        // autoFocus
-                        placeholder="Do something ..."
-                        {...form.getInputProps(`todoList.${index}.name`)}
-                    />
-                    <Checkbox
-                        label="Done"
-                        {...form.getInputProps(`todoList.${index}.done`, {type: 'checkbox'})}
-                        style={{alignSelf: 'center'}}
-                    />
-                </>
-            )}
-        </Collection>
+            columns={[
+                {
+                    header: 'Task',
+                    cell: (_task, index) => (
+                        <TextInput
+                            // Autofocus is annoying when playing with the sandbox but you should have this on otherwise
+                            // autoFocus
+                            placeholder="Do something ..."
+                            {...form.getInputProps(`todoList.${index}.name`)}
+                        />
+                    ),
+                },
+                {
+                    header: 'Done',
+                    cell: (_task, index) => (
+                        <Checkbox {...form.getInputProps(`todoList.${index}.done`, {type: 'checkbox'})} />
+                    ),
+                    maxSize: 34,
+                },
+            ]}
+        />
     );
 };
 export default Demo;
