@@ -21,6 +21,6 @@ jobs:
                   egress-policy: audit
             - name: Publish changes to Figma
               run: npx figma connect publish
-              working-directory: /packages/figma
+              working-directory: packages/figma
               env:
                   FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_TOKEN }}
