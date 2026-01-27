@@ -6,6 +6,9 @@ on:
         branches:
             - master
 
+permissions:
+  contents: read
+
 jobs:
     code-connect-publish:
         name: Code Connect Publish
