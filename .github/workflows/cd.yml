@@ -20,6 +20,11 @@ jobs:
             security-events: write
             statuses: write
         steps:
+            - name: Harden Runner
+              uses: step-security/harden-runner@df199fb7be9f65074067a9eb93f12bb4c5547cf2 # v2.13.3
+              with:
+                  egress-policy: audit
+
             - name: Checkout
               uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
               with:
@@ -39,7 +44,6 @@ jobs:
               env:
                   DEBUG: '*'
                   DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Deploy
               uses: ./.github/actions/deploy
               with:
