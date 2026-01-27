@@ -1,5 +1,14 @@
 import classNames from 'clsx';
-import {InputHTMLAttributes, FunctionComponent, ChangeEvent, FocusEvent, useMemo, useRef, useEffect} from 'react';
+import {
+    PropsWithChildren,
+    InputHTMLAttributes,
+    FunctionComponent,
+    ChangeEvent,
+    FocusEvent,
+    useMemo,
+    useRef,
+    useEffect,
+} from 'react';
 import {omit, uniqueId} from 'underscore';
 
 import {TooltipPlacement} from '../../utils';
@@ -56,7 +65,7 @@ interface TextInputProps {
  * @deprecated Use Mantine Textinput instead: https://mantine.dev/core/text-input/
  */
 export const TextInput: FunctionComponent<
-    React.PropsWithChildren<TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>>
+    PropsWithChildren<TextInputProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultValue'>>
 > = ({
     id: propsId,
     label,
@@ -76,7 +85,7 @@ export const TextInput: FunctionComponent<
 }) => {
     const id = useMemo(() => propsId || uniqueId(), [propsId]);
     const {state, dispatch} = useTextInput(id, defaultValue);
-    const inputElement = useRef<HTMLInputElement>();
+    const inputElement = useRef<HTMLInputElement>(null);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         dispatch({type: 'change-value', payload: event.target.value});

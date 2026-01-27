@@ -1,7 +1,6 @@
 import classNames from 'clsx';
 import moment from 'moment';
 import {ClassAttributes, Component} from 'react';
-import * as ReactDOM from 'react-dom';
 
 import {TooltipPlacement} from '../../utils';
 import {DateUtils} from '../../utils/DateUtils';
@@ -224,7 +223,9 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
                     renderOpenButton={(onClick: () => void) => (
                         <div
                             className={classNames('date-picker-dropdown', this.props.className)}
-                            ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}
+                            ref={(dropdown: HTMLDivElement) => {
+                                this.dropdown = dropdown;
+                            }}
                         >
                             <div className={dropdownClasses}>
                                 <button
@@ -257,7 +258,12 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
 
         return (
             <div className={classNames('date-picker-dropdown', this.props.className)}>
-                <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
+                <div
+                    className={dropdownClasses}
+                    ref={(dropdown: HTMLDivElement) => {
+                        this.dropdown = dropdown;
+                    }}
+                >
                     <button className={toggleClasses} onClick={this.handleClick} disabled={this.props.readonly}>
                         <span className="dropdown-selected-value">
                             <label>
@@ -281,7 +287,7 @@ export class DatePickerDropdown extends Component<IDatePickerDropdownProps, any>
     };
 
     private handleDocumentClick = (e: MouseEvent) => {
-        const dropdown: Element | Text = ReactDOM.findDOMNode(this.dropdown);
+        const dropdown: HTMLElement = this.dropdown;
         if (!dropdown.contains(e.target as Node) && this.props.isOpened && !this.props.withDrop) {
             this.props.onDocumentClick();
             this.handleCancel();

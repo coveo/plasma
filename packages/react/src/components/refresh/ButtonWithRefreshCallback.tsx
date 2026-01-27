@@ -1,4 +1,4 @@
-import {HtmlHTMLAttributes, FunctionComponent} from 'react';
+import {PropsWithChildren, HtmlHTMLAttributes, FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IButtonWithRefreshCal
 const isNotStopped = (status: string) => status !== RefreshStatus.stopped;
 
 const buttonWithRefreshCallbackDisconnected: FunctionComponent<
-    React.PropsWithChildren<
+    PropsWithChildren<
         IButtonWithRefreshCallbackProps &
             Partial<ReturnType<typeof mapStateToProps>> &
             Partial<ReturnType<typeof mapDispatchToProps>>

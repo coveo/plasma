@@ -1,6 +1,5 @@
 import classNames from 'clsx';
 import {CSSProperties, HTMLAttributes, HTMLProps, PureComponent, ReactNode, RefObject, createRef} from 'react';
-import * as ReactDOM from 'react-dom';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
@@ -111,7 +110,9 @@ export class Drop extends PureComponent<IDropProps> {
                     // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
                     <div
                         style={style}
-                        ref={(ref) => (this.dropContent = ref)}
+                        ref={(ref) => {
+                            this.dropContent = ref;
+                        }}
                         className={classNames('drop', this.props.listContainerProps.className)}
                         {...this.props.listContainerProps}
                         data-open={this.props.isOpen}
@@ -134,7 +135,7 @@ export class Drop extends PureComponent<IDropProps> {
 
     private handleDocumentClick(e: MouseEvent) {
         if (this.props.isOpen && document.body.contains(e.target as HTMLElement)) {
-            const button: Element | Text = ReactDOM.findDOMNode(this.button.current);
+            const button: HTMLElement = this.button.current;
 
             if (this.dropContent?.contains(e.target as Node)) {
                 if (this.props.closeOnClickDrop) {

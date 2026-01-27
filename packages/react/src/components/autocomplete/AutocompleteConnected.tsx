@@ -1,6 +1,5 @@
 import classNames from 'clsx';
 import {KeyboardEvent, ChangeEvent, HTMLProps, Component} from 'react';
-import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
@@ -125,7 +124,12 @@ export class AutocompleteConnected extends Component<IAutocompleteProps & HTMLPr
             'show-on-top': !this.props.inline,
         });
         return (
-            <div className={pickerClasses} ref={(ref: HTMLDivElement) => (this.dropdown = ref)}>
+            <div
+                className={pickerClasses}
+                ref={(ref: HTMLDivElement) => {
+                    this.dropdown = ref;
+                }}
+            >
                 <div className="input-wrapper validate input-field">
                     <input
                         onFocus={() => this.props.onFocus()}
@@ -137,7 +141,12 @@ export class AutocompleteConnected extends Component<IAutocompleteProps & HTMLPr
                     />
                     {this.props.children}
                 </div>
-                <div className={dropdownClasses} ref={(ref: HTMLDivElement) => (this.menu = ref)}>
+                <div
+                    className={dropdownClasses}
+                    ref={(ref: HTMLDivElement) => {
+                        this.menu = ref;
+                    }}
+                >
                     <SlideY in={this.props.isOpen} timeout={350}>
                         <ListBoxConnected id={this.props.id} classes={['relative']} items={this.props.visibleItems} />
                     </SlideY>
@@ -184,7 +193,7 @@ export class AutocompleteConnected extends Component<IAutocompleteProps & HTMLPr
 
     private handleDocumentClick = (e: MouseEvent) => {
         if (this.props.isOpen && document.body.contains(e.target as HTMLElement)) {
-            const dropdown: Element | Text = ReactDOM.findDOMNode(this.dropdown);
+            const dropdown: HTMLElement = this.dropdown;
 
             if (!dropdown.contains(e.target as Node)) {
                 this.props.onDocumentClick();

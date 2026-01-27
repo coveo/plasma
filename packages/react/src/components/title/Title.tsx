@@ -17,15 +17,23 @@ export interface ITitleProps {
 /**
  * @deprecated Use Mantine instead
  */
-export const Title: FunctionComponent<PropsWithChildren<ITitleProps>> = (props) => {
-    const ref = useRef<HTMLHeadingElement>();
+export const Title: FunctionComponent<PropsWithChildren<ITitleProps>> = ({
+    prefix = '',
+    withTitleTooltip = false,
+    text,
+    documentationLink,
+    classes,
+    htmlId,
+    children,
+}) => {
+    const ref = useRef<HTMLHeadingElement>(null);
 
     const [isTruncated, setIsTruncated] = useState(false);
-    const linkClasses = classNames('inline-doc-link ml1', props.documentationLink?.className);
-    const titleClasses: string = classNames('bolder truncate flex', props.classes);
-    const prefixClasses: string = classNames({mr1: !_.isEmpty(props.prefix)});
-    const linkIcon = props.documentationLink && <LinkSvg {...props.documentationLink} className={linkClasses} />;
-    const tooltipProps = _.isString(props.text) ? {title: props.text} : {};
+    const linkClasses = classNames('inline-doc-link ml1', documentationLink?.className);
+    const titleClasses: string = classNames('bolder truncate flex', classes);
+    const prefixClasses: string = classNames({mr1: !_.isEmpty(prefix)});
+    const linkIcon = documentationLink && <LinkSvg {...documentationLink} className={linkClasses} />;
+    const tooltipProps = _.isString(text) ? {title: text} : {};
 
     const detection = () => {
         const titleOffSetWidth = ref.current.offsetWidth;
@@ -35,27 +43,22 @@ export const Title: FunctionComponent<PropsWithChildren<ITitleProps>> = (props) 
     };
 
     const title =
-        props.withTitleTooltip || isTruncated ? (
+        withTitleTooltip || isTruncated ? (
             <Tooltip {...tooltipProps} placement="left">
-                {props.text}
+                {text}
             </Tooltip>
         ) : (
-            props.text
+            text
         );
 
     return (
         <div className="flex flex-center full-content-x" onMouseEnter={detection}>
-            <h4 ref={ref} className={titleClasses} id={props.htmlId}>
-                <span className={prefixClasses}>{props.prefix}</span>
+            <h4 ref={ref} className={titleClasses} id={htmlId}>
+                <span className={prefixClasses}>{prefix}</span>
                 {title}
                 {linkIcon}
             </h4>
-            {props.children}
+            {children}
         </div>
     );
-};
-
-Title.defaultProps = {
-    prefix: '',
-    withTitleTooltip: false,
 };

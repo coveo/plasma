@@ -1,5 +1,5 @@
 import classNames from 'clsx';
-import {FunctionComponent, useEffect, useState} from 'react';
+import {PropsWithChildren, FunctionComponent, useEffect, useState} from 'react';
 
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 import {CodeEditor} from './CodeEditor';
@@ -66,7 +66,7 @@ export interface JSONEditorDispatchProps {
  * @deprecated use Mantine instead
  */
 export const JSONEditor: FunctionComponent<
-    React.PropsWithChildren<JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>>
+    PropsWithChildren<JSONEditorProps & Partial<JSONEditorStateProps> & Partial<JSONEditorDispatchProps>>
 > = ({
     defaultValue,
     value,
@@ -75,7 +75,7 @@ export const JSONEditor: FunctionComponent<
     errorMessage,
     containerClasses,
     className,
-    options,
+    options = {lint: false},
     onMount,
     onUnmount,
     collapsibleId,
@@ -119,12 +119,6 @@ export const JSONEditor: FunctionComponent<
             {isInError && <ValidationDetails errorMessage={errorMessage} />}
         </div>
     );
-};
-
-JSONEditor.defaultProps = {
-    options: {
-        lint: false,
-    },
 };
 
 const ValidationDetails: FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (

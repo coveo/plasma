@@ -1,4 +1,4 @@
-import {HTMLAttributes, ComponentClass, FunctionComponent, ComponentType} from 'react';
+import {PropsWithChildren, HTMLAttributes, ComponentClass, FunctionComponent, ComponentType} from 'react';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -29,7 +29,7 @@ export const tableWithBlankSlate =
     (
         Component: ComponentClass<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement>>,
     ): ComponentType<
-        React.PropsWithChildren<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps>
+        PropsWithChildren<ITableHOCOwnProps & HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps>
     > => {
         const config = HocUtils.supplyConfig(supplier);
         const defaultRenderBlankSlateMethod = <BlankSlateWithTable {...config} />;
@@ -44,7 +44,7 @@ export const tableWithBlankSlate =
         };
 
         const TableWithBlankSlate: FunctionComponent<
-            React.PropsWithChildren<ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>>
+            PropsWithChildren<ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>>
         > = (props) => {
             const {renderBlankSlate, renderBlankSlateOnly, isEmpty, isTrulyEmpty, isEmptyStateSet, ...tableProps} =
                 props;

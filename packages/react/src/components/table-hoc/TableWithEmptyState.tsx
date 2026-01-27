@@ -1,4 +1,4 @@
-import {HTMLAttributes, FunctionComponent, useState, useRef, useEffect} from 'react';
+import {PropsWithChildren, HTMLAttributes, FunctionComponent, useState, useRef, useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IDispatch} from '../../utils/ReduxUtils';
@@ -34,7 +34,7 @@ export const tableWithEmptyState = (
     });
 
     const TableEmptyState: FunctionComponent<
-        React.PropsWithChildren<
+        PropsWithChildren<
             ITableHOCOwnProps &
                 TableWithEmptyStateProps &
                 ReturnType<typeof mapStateToProps> &

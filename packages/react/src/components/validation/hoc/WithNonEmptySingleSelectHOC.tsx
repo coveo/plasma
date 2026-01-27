@@ -1,4 +1,4 @@
-import {ComponentType, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
@@ -28,7 +28,7 @@ export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Com
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedSingleSelect: FunctionComponent<
-        React.PropsWithChildren<T & IWithNonEmptySingleSelectHOCProps & StateProps & DispatchProps>
+        PropsWithChildren<T & IWithNonEmptySingleSelectHOCProps & StateProps & DispatchProps>
     > = ({
         selectedValue,
         setError,

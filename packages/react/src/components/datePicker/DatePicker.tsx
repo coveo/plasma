@@ -137,7 +137,9 @@ export class DatePicker extends PureComponent<IDatePickerProps, {isSelected: boo
             <div className="date-picker flex">
                 <input
                     className={inputClasses}
-                    ref={(dateInput: HTMLInputElement) => (this.dateInput = dateInput)}
+                    ref={(dateInput: HTMLInputElement) => {
+                        this.dateInput = dateInput;
+                    }}
                     onBlur={this.handleChangeDate}
                     onFocus={this.handleClick}
                     placeholder={this.props.placeholder}

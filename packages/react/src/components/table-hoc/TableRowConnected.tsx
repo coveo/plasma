@@ -5,7 +5,6 @@ import {
     HTMLAttributes,
     isValidElement,
     PureComponent,
-    ReactChild,
     MouseEvent as ReactMouseEvent,
     ReactNode,
 } from 'react';
@@ -205,7 +204,7 @@ class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttr
     }
 
     private get columnCount(): number {
-        return Children.toArray(this.props.children).filter((child: ReactChild) => isValidElement(child)).length;
+        return Children.toArray(this.props.children).filter((child: ReactNode) => isValidElement(child)).length;
     }
 
     private handleClick = (e: ReactMouseEvent<HTMLTableRowElement>) => {

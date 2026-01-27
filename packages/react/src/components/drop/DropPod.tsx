@@ -58,7 +58,7 @@ const RDropPod: FunctionComponent<IRDropPodProps> = ({
 }) => {
     const [offset, setOffset] = useState(undefined);
     const [lastPosition, setLastPosition] = useState<IDropUIPosition | null>(null);
-    const [computedStyle, setComputedStyle] = useState<React.CSSProperties>({});
+    const [computedStyle, setComputedStyle] = useState<CSSProperties>({});
     const [dropElement, setDropElement] = useState<HTMLDivElement>(null);
 
     const updateElement = () => {

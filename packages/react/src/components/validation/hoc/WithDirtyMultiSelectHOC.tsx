@@ -1,4 +1,4 @@
-import {ComponentType, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -26,7 +26,7 @@ export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Componen
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedMultiSelect: FunctionComponent<
-        React.PropsWithChildren<T & IMultiSelectWithDirtyOwnProps & StateProps & DispatchProps>
+        PropsWithChildren<T & IMultiSelectWithDirtyOwnProps & StateProps & DispatchProps>
     > = ({initialValues = [], selectedValues, toggleIsDirty, ...props}) => {
         const hasDifferentValuesSelected =
             _.difference(initialValues, selectedValues).length > 0 ||

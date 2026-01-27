@@ -86,7 +86,7 @@ export interface ModalWizardProps
     /**
      * Finish button to display on the last step
      */
-    renderFinishButton?: (isValid: boolean, close: () => void) => React.ReactElement;
+    renderFinishButton?: (isValid: boolean, close: () => void) => ReactElement;
     children?: ReactNode;
 }
 

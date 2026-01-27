@@ -13,7 +13,7 @@ import {CodeEditorActions} from './CodeEditorActions';
 import {CodeMirrorGutters} from './EditorConstants';
 
 const ReactCodeMirror = Loadable<IControlledCodeMirror>(
-    () => import('./CodeMirror').then((mod: typeof import('./CodeMirror')) => mod.Controlled),
+    () => import('./CodeMirror').then((mod: typeof import('./CodeMirror')) => mod.Controlled as any),
     {
         ssr: false,
     },

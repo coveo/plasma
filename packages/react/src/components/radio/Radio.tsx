@@ -1,6 +1,5 @@
 import classNames from 'clsx';
 import {ReactNode, FunctionComponent} from 'react';
-import {omit} from 'underscore';
 import {IInputProps, Input} from '../input/Input';
 
 export interface RadioOwnProps {
@@ -13,31 +12,33 @@ export interface RadioProps extends RadioOwnProps, IInputProps {}
 /**
  * @deprecated Use Mantine Radio instead: https://mantine.dev/core/radio/
  */
-export const Radio: FunctionComponent<RadioProps> = (props) => {
-    const outerContainerClasses: string =
-        !!props.outerContainerClass && classNames('radio-option', props.outerContainerClass);
-    const classes: string = classNames('radio-option', props.classes);
-    return outerContainerClasses ? (
-        <div className={outerContainerClasses}>
-            <RadioInputContent props={props} classes={classes} />
-        </div>
-    ) : (
-        <RadioInputContent props={props} classes={classes} />
+export const Radio: FunctionComponent<RadioProps> = ({
+    checked = false,
+    disabled = false,
+    outerContainerClass,
+    outerElementInContainer,
+    classes,
+    ...otherProps
+}) => {
+    const outerContainerClasses: string = !!outerContainerClass && classNames('radio-option', outerContainerClass);
+    const radioClasses: string = classNames('radio-option', classes);
+    const content = (
+        <RadioInputContent
+            inputProps={{...otherProps, checked, disabled}}
+            classes={radioClasses}
+            outerElementInContainer={outerElementInContainer}
+        />
     );
+    return outerContainerClasses ? <div className={outerContainerClasses}>{content}</div> : content;
 };
 
-const RadioInputContent: FunctionComponent<{props: RadioProps; classes: string}> = ({props, classes}) => {
-    const inputProps = omit(props, 'outerContainerClass', 'outerElementInContainer');
-    return (
-        <>
-            <Input {...inputProps} classes={[classes]} type="radio" />
-            {props.outerElementInContainer}
-        </>
-    );
-};
-
-Radio.defaultProps = {
-    ...Input.defaultProps,
-    checked: false,
-    disabled: false,
-};
+const RadioInputContent: FunctionComponent<{
+    inputProps: Omit<RadioProps, 'outerContainerClass' | 'outerElementInContainer'>;
+    classes: string;
+    outerElementInContainer?: ReactNode;
+}> = ({inputProps, classes, outerElementInContainer}) => (
+    <>
+        <Input {...inputProps} classes={[classes]} type="radio" />
+        {outerElementInContainer}
+    </>
+);

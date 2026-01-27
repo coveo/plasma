@@ -1,4 +1,4 @@
-import {ComponentType, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
@@ -29,7 +29,7 @@ export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Compon
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrapperSingleSelect: FunctionComponent<
-        React.PropsWithChildren<T & IWithDirtySingleSelectHOCProps & StateProps & DispatchProps>
+        PropsWithChildren<T & IWithDirtySingleSelectHOCProps & StateProps & DispatchProps>
     > = ({initialValue, selectedValue, setIsDirty, clearIsDirty, resetDirtyOnUnmount, items, ...props}) => {
         useEffect(
             () => () => {

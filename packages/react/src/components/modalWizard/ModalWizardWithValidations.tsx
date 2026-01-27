@@ -1,4 +1,4 @@
-import {FunctionComponent} from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -22,7 +22,7 @@ const extractMessages = (validations: Array<ISingleValidation<string>>) =>
     validations?.map((error) => error.value).join(' ') ?? '';
 
 const ModalWizardWithValidationsDisconnected: FunctionComponent<
-    React.PropsWithChildren<ModalWithValdiationsProps & ReturnType<typeof mapStateToProps>>
+    PropsWithChildren<ModalWithValdiationsProps & ReturnType<typeof mapStateToProps>>
 > = ({validationIdsByStep = [], isDirty, isInError, errors, warnings, ...modalWizardProps}) => {
     const validateStep = (currentStep: number): {isValid: boolean; message?: string} => ({
         isValid: !isInError(currentStep),
@@ -38,5 +38,5 @@ const ModalWizardWithValidationsDisconnected: FunctionComponent<
 export const ModalWizardWithValidations = connect<
     ReturnType<typeof mapStateToProps>,
     null,
-    React.PropsWithChildren<ModalWithValdiationsProps>
+    PropsWithChildren<ModalWithValdiationsProps>
 >(mapStateToProps)(ModalWizardWithValidationsDisconnected);

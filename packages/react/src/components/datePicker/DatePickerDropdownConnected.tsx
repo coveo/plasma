@@ -1,3 +1,4 @@
+import {ComponentType} from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -80,7 +81,7 @@ const mapDispatchToProps = (
 /**
  * @deprecated Use Mantine DatePicker instead
  */
-export const DatePickerDropdownConnected: React.ComponentType<IDatePickerDropdownOwnProps> = connect(
+export const DatePickerDropdownConnected: ComponentType<IDatePickerDropdownOwnProps> = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps,

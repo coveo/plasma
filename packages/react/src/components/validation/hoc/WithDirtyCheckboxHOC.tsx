@@ -1,4 +1,4 @@
-import {ComponentType, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import {IDispatch} from '../../../utils/ReduxUtils';
@@ -21,9 +21,13 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
  */
 export const withDirtyCheckboxHOC = <T extends ICheckboxOwnProps & IInputOwnProps>(Component: ComponentType<T>) => {
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedCheckbox: FunctionComponent<
-        React.PropsWithChildren<T & IWithDirtyCheckboxOwnProps & DispatchProps>
-    > = ({setIsDirty, clearIsDirty, handleOnClick, resetDirtyOnUnmount, ...props}) => {
+    const WrappedCheckbox: FunctionComponent<PropsWithChildren<T & IWithDirtyCheckboxOwnProps & DispatchProps>> = ({
+        setIsDirty,
+        clearIsDirty,
+        handleOnClick,
+        resetDirtyOnUnmount,
+        ...props
+    }) => {
         useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);

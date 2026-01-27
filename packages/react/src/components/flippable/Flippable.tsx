@@ -1,6 +1,5 @@
 import classNames from 'clsx';
 import {ReactNode, HTMLProps, Component} from 'react';
-import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {BrowserUtils} from '../../utils/BrowserUtils';
@@ -93,13 +92,17 @@ export class Flippable extends Component<IFlippableProps & HTMLProps<HTMLDivElem
                     <div
                         className={Flippable.sides.FRONT}
                         onClick={this.handleClickOnFront}
-                        ref={(frontside: HTMLDivElement) => (this.frontside = frontside)}
+                        ref={(frontside: HTMLDivElement) => {
+                            this.frontside = frontside;
+                        }}
                     >
                         {this.props.front}
                     </div>
                     <div
                         className={Flippable.sides.BACK}
-                        ref={(backside: HTMLDivElement) => (this.backside = backside)}
+                        ref={(backside: HTMLDivElement) => {
+                            this.backside = backside;
+                        }}
                     >
                         {this.props.back}
                     </div>
@@ -116,8 +119,8 @@ export class Flippable extends Component<IFlippableProps & HTMLProps<HTMLDivElem
 
     private handleOutsideClick = (e: MouseEvent) => {
         if (this.props.isFlipped) {
-            const frontside: Element | Text = ReactDOM.findDOMNode(this.frontside);
-            const backside: Element | Text = ReactDOM.findDOMNode(this.backside);
+            const frontside: HTMLElement = this.frontside;
+            const backside: HTMLElement = this.backside;
             const target: Node = e.target as Node;
 
             if (

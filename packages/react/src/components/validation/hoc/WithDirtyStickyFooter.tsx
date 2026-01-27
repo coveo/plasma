@@ -1,4 +1,4 @@
-import {ComponentClass, FunctionComponent} from 'react';
+import {PropsWithChildren, ComponentClass, FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../../PlasmaState';
@@ -28,5 +28,5 @@ export const withDirtyStickyFooterHOC = <T extends IStickyFooterProps>(
         ...props
     }) => <Component {...(props as any)} isOpened={isDirty || isOpened} />;
 
-    return connect<StateProps, null, React.PropsWithChildren<NewOwnProps>>(mapStateToProps)(WrappedStickyFooter as any);
+    return connect<StateProps, null, PropsWithChildren<NewOwnProps>>(mapStateToProps)(WrappedStickyFooter as any);
 };

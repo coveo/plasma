@@ -1,6 +1,14 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'clsx';
-import {ChangeEvent, FunctionComponent, InputHTMLAttributes, MouseEventHandler, useEffect, useRef} from 'react';
+import {
+    PropsWithChildren,
+    ChangeEvent,
+    FunctionComponent,
+    InputHTMLAttributes,
+    MouseEventHandler,
+    useEffect,
+    useRef,
+} from 'react';
 import {connect} from 'react-redux';
 
 import {PlasmaState} from '../../PlasmaState';
@@ -28,12 +36,10 @@ const mapDispatchToProps = (dispatch: IDispatch, {id}: FilepickerProps) => ({
 });
 
 const FilepickerDisconnected: FunctionComponent<
-    React.PropsWithChildren<
-        FilepickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>
-    >
+    PropsWithChildren<FilepickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>>
 > = (props) => {
     const {addFilepicker, setFile, clear, isEmpty, selectedFile, placeholder, capture, ...inputProps} = props;
-    const input = useRef<HTMLInputElement>();
+    const input = useRef<HTMLInputElement>(null);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFile(FileUtils.serialize(e.target.files[0]));
     };

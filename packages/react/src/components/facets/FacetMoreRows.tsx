@@ -1,5 +1,4 @@
 import {ClassAttributes, Component} from 'react';
-import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
@@ -61,7 +60,7 @@ export class FacetMoreRows extends Component<IFacetMoreRowsProps, any> {
 
     private handleDocumentClick = (e: MouseEvent) => {
         if (this.props.isOpened) {
-            const facetSearch: Element | Text = ReactDOM.findDOMNode(this.facetSearch);
+            const facetSearch: HTMLElement = this.facetSearch;
 
             if (!facetSearch.contains(e.target as Node)) {
                 this.props.onDocumentClick();
@@ -90,7 +89,12 @@ export class FacetMoreRows extends Component<IFacetMoreRowsProps, any> {
 
         return (
             <div className={moreSearchClasses}>
-                <div className="facet-search" ref={(facetSearch: HTMLDivElement) => (this.facetSearch = facetSearch)}>
+                <div
+                    className="facet-search"
+                    ref={(facetSearch: HTMLDivElement) => {
+                        this.facetSearch = facetSearch;
+                    }}
+                >
                     {filterBox}
                 </div>
                 <ul className={resultsClass}>{rowsFiltered}</ul>

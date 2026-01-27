@@ -1,5 +1,5 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
-import {FunctionComponent, HTMLAttributes, useEffect} from 'react';
+import {FunctionComponent, HTMLAttributes, PropsWithChildren, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -23,7 +23,7 @@ export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps 
  * @deprecated Use Mantine instead
  */
 export const TableHeaderWithSort: FunctionComponent<
-    React.PropsWithChildren<ITableHeaderWithSortProps & HTMLAttributes<HTMLTableHeaderCellElement>>
+    PropsWithChildren<ITableHeaderWithSortProps & HTMLAttributes<HTMLTableHeaderCellElement>>
 > = ({isLoading, id, tableId, isDefault, children}) => {
     const dispatch = useDispatch();
     const order = useSelector((state: PlasmaState): Order => {

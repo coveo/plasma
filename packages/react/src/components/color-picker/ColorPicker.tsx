@@ -6,7 +6,7 @@ import {IDispatch} from '../../utils/ReduxUtils';
 import {changeInputValue} from '../input/InputActions';
 import {InputConnected} from '../input/Input';
 
-export interface IColorPickerProps extends ChromePickerProps {
+export interface IColorPickerProps extends Omit<ChromePickerProps, 'ref'> {
     /**
      * Id of the element
      */

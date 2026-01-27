@@ -1,7 +1,7 @@
 import {DragAndDropSize24Px} from '@coveord/plasma-react-icons';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {CSSProperties, FunctionComponent} from 'react';
+import {CSSProperties, FunctionComponent, PropsWithChildren} from 'react';
 
 import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
@@ -22,7 +22,7 @@ export interface IDraggableSelectedOptionOwnProps {
  * @deprecated use Mantine instead
  */
 export const DraggableSelectedOption: FunctionComponent<
-    React.PropsWithChildren<IDraggableSelectedOptionOwnProps & ISelectedOptionProps>
+    PropsWithChildren<IDraggableSelectedOptionOwnProps & ISelectedOptionProps>
 > = ({label, selectedTooltip, readOnly, value, onRemoveClick}) => {
     const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable({
         id: value,

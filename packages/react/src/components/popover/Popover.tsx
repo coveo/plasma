@@ -1,6 +1,5 @@
 import classNames from 'clsx';
 import {Children, Component, ReactNode, RefObject} from 'react';
-import {findDOMNode} from 'react-dom';
 import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
 import {Defaults} from '../../Defaults';
@@ -135,8 +134,8 @@ export class Popover extends Component<IPopoverProps, IPopoverState> {
     // addEventListener and removeEventListener and therefore prevent leaking listeners.
     private handleDocumentClick: EventListener = (event: Event) => {
         if (this.props.isOpen) {
-            const tetherToggle: Element | Text = findDOMNode(this.tetherToggle.current);
-            const tetherElement: Element | Text = findDOMNode(this.tetherElement.current);
+            const tetherToggle: Element | null = this.tetherToggle.current;
+            const tetherElement: Element | null = this.tetherElement.current;
             const target: Node = event.target as Node;
             const dropdownsContainer = document.querySelector(Defaults.DROP_ROOT);
             const clickedInsideADropdown = dropdownsContainer.contains(target);

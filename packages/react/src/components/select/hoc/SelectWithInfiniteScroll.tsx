@@ -1,4 +1,4 @@
-import {ComponentType, FunctionComponent, ReactNode} from 'react';
+import {PropsWithChildren, ComponentType, FunctionComponent, ReactNode} from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
@@ -24,10 +24,10 @@ export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button
     });
 
     const ComponentWithInfiniteScroll: FunctionComponent<
-        React.PropsWithChildren<P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>>
-    > = (props) => {
+        PropsWithChildren<P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>>
+    > = ({totalEntries = 0, ...props}) => {
         const dataLength = _.size(props.items);
-        const hasMore = props.totalEntries - dataLength > 0;
+        const hasMore = totalEntries - dataLength > 0;
 
         const itemsWrapper = (items: ReactNode[]): ReactNode => (
             <InfiniteScroll
@@ -43,12 +43,9 @@ export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button
             </InfiniteScroll>
         );
 
-        return <Component {...(props as P)} wrapItems={props.isOpened ? itemsWrapper : undefined} />;
+        return <Component {...(props as unknown as P)} wrapItems={props.isOpened ? itemsWrapper : undefined} />;
     };
     ComponentWithInfiniteScroll.displayName = `withInfiniteScroll(${Component.displayName})`;
-    ComponentWithInfiniteScroll.defaultProps = {
-        totalEntries: 0,
-    } as Partial<P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>>;
 
     // @ts-ignore
     return connect(mapStateToProps)(ComponentWithInfiniteScroll);

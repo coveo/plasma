@@ -233,16 +233,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalCompositeOwnPro
 /**
  * @deprecated Use Mantine Modal instead: https://mantine.dev/core/modal/
  */
-export const ModalCompositeConnected = connect<
-    IModalStateProps,
-    IModalDispatchProps,
-    IModalCompositeProps &
-        Partial<IModalCompositeStateProps> &
-        Partial<IModalCompositeDispatchProps> &
-        Partial<ReactModal.Props> &
-        Partial<IWithDirtyProps>
->(
+export const ModalCompositeConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps,
-)(ModalComposite as any);
+)(ModalComposite);

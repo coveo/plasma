@@ -1,5 +1,5 @@
 import classNames from 'clsx';
-import {ReactNode, HTMLAttributes, FunctionComponent} from 'react';
+import {FunctionComponent, HTMLAttributes, PropsWithChildren, ReactNode} from 'react';
 import * as _ from 'underscore';
 
 import {IContentProps} from '../../Entry';
@@ -97,9 +97,7 @@ export interface ITableHOCProps extends ITableHOCOwnProps {}
 /**
  * @deprecated Use Mantine instead
  */
-export const TableHOC: FunctionComponent<
-    React.PropsWithChildren<ITableHOCProps & HTMLAttributes<HTMLTableElement>>
-> = ({
+export const TableHOC: FunctionComponent<PropsWithChildren<ITableHOCProps & HTMLAttributes<HTMLTableElement>>> = ({
     hasActionButtons = false,
     actions = [],
     actionBarPrefixContent,

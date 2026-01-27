@@ -1,4 +1,4 @@
-import {ComponentType, FunctionComponent, useEffect} from 'react';
+import {PropsWithChildren, ComponentType, FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {PlasmaState} from '../../../PlasmaState';
 
@@ -29,7 +29,7 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: Component
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrappedInput: FunctionComponent<
-        React.PropsWithChildren<T & IWithDirtyInputOwnProps & StateProps & DispatchProps>
+        PropsWithChildren<T & IWithDirtyInputOwnProps & StateProps & DispatchProps>
     > = ({wasDirty, setIsDirty, clearIsDirty, validate, resetDirtyOnUnmount, ...props}) => {
         useEffect(
             () => () => {
