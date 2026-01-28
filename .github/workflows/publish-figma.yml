@@ -5,7 +5,6 @@ on:
             - '**/*.figma.tsx'
         branches:
             - master
-
 jobs:
     code-connect-publish:
         name: Code Connect Publish
