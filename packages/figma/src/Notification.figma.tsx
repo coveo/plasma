@@ -117,7 +117,7 @@ figma.connect(
                 loading: true,
             });
             {
-                /* Some async operation */
+                /* Some async operations */
             }
             setTimeout(
                 () =>

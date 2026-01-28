@@ -5,7 +5,6 @@ on:
             - '**/*.figma.tsx'
         branches:
             - master
-
 jobs:
     code-connect-publish:
         name: Code Connect Publish
@@ -20,7 +19,7 @@ jobs:
               with:
                   egress-policy: audit
             - name: Publish changes to Figma
-              run: pnpm publish
+              run: pnpm figma:publish
               working-directory: packages/figma
               env:
                   FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_TOKEN }}
