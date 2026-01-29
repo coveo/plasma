@@ -1,3 +1,12 @@
+## 53.3.2 (2026-01-29)
+
+
+### Bug Fixes
+
+* **ci:** align CD workflow with master for OIDC npm auth (#4312) f1c2507, closes #4312
+
+
+
 ## 53.3.1 (2026-01-27)
 
 
