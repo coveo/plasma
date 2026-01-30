@@ -1,6 +1,5 @@
-import {mount, ReactWrapper} from 'enzyme';
 import {render, screen} from '@test-utils';
-import {SlideY, SlideYProps} from '../SlideY';
+import {SlideY} from '../SlideY';
 
 describe('SlideY', () => {
     const dummyTimeout = 400;
@@ -14,7 +13,7 @@ describe('SlideY', () => {
 
     it('should not throw when rendered with in prop to true', () => {
         expect(() =>
-            mount(
+            render(
                 <SlideY in timeout={dummyTimeout}>
                     {testElement}
                 </SlideY>,
@@ -24,7 +23,7 @@ describe('SlideY', () => {
 
     it('should not throw when rendered with in prop to false', () => {
         expect(() =>
-            mount(
+            render(
                 <SlideY in={false} timeout={dummyTimeout}>
                     {testElement}
                 </SlideY>,
@@ -33,47 +32,59 @@ describe('SlideY', () => {
     });
 
     it('should not throw when updating props', () => {
-        const wrapper = mount(
+        const {rerender} = render(
             <SlideY in={false} timeout={dummyTimeout}>
                 {testElement}
             </SlideY>,
-            {attachTo: document.getElementById('App')},
         );
 
-        expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
-        expect(wrapper.find(SlideY).first().props().in).toBe(true);
+        expect(() =>
+            rerender(
+                <SlideY in={true} timeout={dummyTimeout}>
+                    {testElement}
+                </SlideY>,
+            ),
+        ).not.toThrow();
     });
 
     it('should stay opened when updating props but still in', () => {
-        const wrapper = mount(
+        const {rerender} = render(
             <SlideY in={true} timeout={dummyTimeout}>
                 {testElement}
             </SlideY>,
-            {attachTo: document.getElementById('App')},
         );
-        const component = wrapper.find(SlideY).first();
 
-        expect(() => wrapper.setProps({timeout: dummyTimeout + 1})).not.toThrow();
-        expect(component.props().in).toBe(true);
+        expect(() =>
+            rerender(
+                <SlideY in={true} timeout={dummyTimeout + 1}>
+                    {testElement}
+                </SlideY>,
+            ),
+        ).not.toThrow();
+
+        expect(screen.getByTestId('slide-y')).not.toHaveClass('slide-y-closed');
     });
 
     it('should stay closed when updating props but still not in', () => {
-        const wrapper = mount(
+        const {rerender} = render(
             <SlideY in={false} timeout={dummyTimeout}>
                 {testElement}
             </SlideY>,
-            {attachTo: document.getElementById('App')},
         );
-        const component = wrapper.find(SlideY).first();
 
-        expect(() => wrapper.setProps({timeout: dummyTimeout + 1})).not.toThrow();
-        expect(component.props().in).toBe(false);
+        expect(() =>
+            rerender(
+                <SlideY in={false} timeout={dummyTimeout + 1}>
+                    {testElement}
+                </SlideY>,
+            ),
+        ).not.toThrow();
+
+        expect(screen.getByTestId('slide-y')).toHaveClass('slide-y-closed');
     });
 
     describe('when transition ends', () => {
         const timeout = 5;
-        let wrapper: ReactWrapper<any, any>;
-        let component: ReactWrapper<SlideYProps, any>;
 
         beforeEach(() => {
             jest.useFakeTimers();
@@ -82,16 +93,6 @@ describe('SlideY', () => {
         afterEach(() => {
             jest.clearAllTimers();
         });
-
-        const mountAndWrap = (isIn: boolean, duration?: number) => {
-            wrapper = mount(
-                <SlideY in={isIn} timeout={timeout} duration={duration}>
-                    {testElement}
-                </SlideY>,
-                {attachTo: document.getElementById('App')},
-            );
-            component = wrapper.find(SlideY).first();
-        };
 
         const transitionToEnd = (el: HTMLElement) => {
             jest.advanceTimersByTime(timeout + 1);
@@ -104,65 +105,108 @@ describe('SlideY', () => {
         };
 
         it('should set the height to auto when the SlideY opens', () => {
-            mountAndWrap(false);
+            const {rerender} = render(
+                <SlideY in={false} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            expect(() => wrapper.setProps({in: true})).not.toThrow();
+            rerender(
+                <SlideY in={true} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            const el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
-
-            expect(el).toHaveStyle({height: 'auto'});
+            expect(screen.getByTestId('slide-y')).toHaveStyle({height: 'auto'});
         });
 
         it('should set the height to 0px when the SlideY is closes', () => {
-            mountAndWrap(true);
+            const {rerender} = render(
+                <SlideY in={true} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            expect(() => wrapper.setProps({in: false})).not.toThrow();
+            rerender(
+                <SlideY in={false} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            const el = wrapper.find('.slide-y').first().getDOMNode() as HTMLElement;
-
-            expect(el).toHaveStyle({height: '0px'});
+            expect(screen.getByTestId('slide-y')).toHaveStyle({height: '0px'});
         });
 
         it('should remove the class slide-y-transition', () => {
-            mountAndWrap(false);
+            const {rerender} = render(
+                <SlideY in={false} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
+            rerender(
+                <SlideY in={true} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            const slideY = wrapper.find('.slide-y').first();
-            transitionToEnd(slideY.getDOMNode() as HTMLElement);
+            const el = screen.getByTestId('slide-y');
+            transitionToEnd(el);
 
-            expect(slideY.hasClass('slide-y-transition')).toBe(false);
+            expect(el).not.toHaveClass('slide-y-transition');
         });
 
         it('should remove the class slide-y-closed when the SlideY opens', () => {
-            mountAndWrap(false);
+            const {rerender} = render(
+                <SlideY in={false} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            expect(wrapper.html()).toContain('slide-y-closed');
+            expect(screen.getByTestId('slide-y')).toHaveClass('slide-y-closed');
 
-            expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
-            transitionToEnd(wrapper.find('.slide-y').first().getDOMNode() as HTMLElement);
+            rerender(
+                <SlideY in={true} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            expect(wrapper.html()).not.toContain('slide-y-closed');
+            const el = screen.getByTestId('slide-y');
+            transitionToEnd(el);
+
+            expect(el).not.toHaveClass('slide-y-closed');
         });
 
         it('should add the class slide-y-closed when the SlideY closes', () => {
-            mountAndWrap(true);
+            const {rerender} = render(
+                <SlideY in={true} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            expect(wrapper.html()).not.toContain('slide-y-closed');
+            expect(screen.getByTestId('slide-y')).not.toHaveClass('slide-y-closed');
 
-            expect(() => wrapper.setProps({in: false})).not.toThrow();
-            transitionToEnd(wrapper.find('.slide-y').first().getDOMNode() as HTMLElement);
+            rerender(
+                <SlideY in={false} timeout={timeout}>
+                    {testElement}
+                </SlideY>,
+            );
 
-            expect(wrapper.find('.slide-y-closed').length).toBe(1);
+            const el = screen.getByTestId('slide-y');
+            transitionToEnd(el);
+
+            expect(el).toHaveClass('slide-y-closed');
         });
 
         it('should had the duration if one is added as a prop', () => {
             const expectedDuration = 1000;
-            mountAndWrap(false, expectedDuration);
-
-            expect(wrapper.find('.slide-y').first().prop('style').transitionDuration).toContain(
-                expectedDuration.toString(),
+            render(
+                <SlideY in={false} timeout={timeout} duration={expectedDuration}>
+                    {testElement}
+                </SlideY>,
             );
+
+            const el = screen.getByTestId('slide-y');
+            expect(el).toHaveStyle({transitionDuration: `${expectedDuration}ms`});
         });
 
         it('hides the content when closed', () => {
