@@ -120,7 +120,7 @@ describe('SlideY', () => {
             expect(screen.getByTestId('slide-y')).toHaveStyle({height: 'auto'});
         });
 
-        it('should set the height to 0px when the SlideY is closes', () => {
+        it('should set the height to 0px when the SlideY closes', () => {
             const {rerender} = render(
                 <SlideY in={true} timeout={timeout}>
                     {testElement}
@@ -197,7 +197,7 @@ describe('SlideY', () => {
             expect(el).toHaveClass('slide-y-closed');
         });
 
-        it('should had the duration if one is added as a prop', () => {
+        it('should have the duration if one is added as a prop', () => {
             const expectedDuration = 1000;
             render(
                 <SlideY in={false} timeout={timeout} duration={expectedDuration}>

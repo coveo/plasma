@@ -1,7 +1,7 @@
 // inspired from https://github.com/frankwallis/react-slidedown
 // implemented with the new react-transition-group https://github.com/reactjs/react-transition-group
 
-import {ReactNode, useEffect, useRef} from 'react';
+import {ReactNode, useCallback, useEffect, useMemo, useRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 export interface SlideYProps {
@@ -34,7 +34,10 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
     const elRef = useRef<HTMLDivElement>(null);
     const isFirstRender = useRef(true);
 
-    const getCurrentHeight = (): string => `${elRef.current?.getBoundingClientRect().height ?? 0}px`;
+    const getCurrentHeight = useCallback(
+        (): string => `${elRef.current?.getBoundingClientRect().height ?? 0}px`,
+        [elRef.current],
+    );
 
     const transitionHeight = (from: string, to: string) => {
         if (!elRef.current) {
@@ -94,15 +97,12 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
             return;
         }
         elRef.current.style.height = getCurrentHeight();
-
-        if (isIn) {
-            onEntering();
-        } else {
-            onExiting();
-        }
     }, [isIn]);
 
-    const style = duration ? {transitionDuration: `${duration}ms`, transitionTimingFunction: 'ease-in-out'} : undefined;
+    const style = useMemo(
+        () => (duration ? {transitionDuration: `${duration}ms`, transitionTimingFunction: 'ease-in-out'} : undefined),
+        [duration],
+    );
 
     return (
         <Transition
