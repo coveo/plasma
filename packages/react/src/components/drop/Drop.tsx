@@ -39,7 +39,16 @@ export class Drop extends PureComponent<IDropProps> {
     private readonly button: RefObject<HTMLDivElement>;
     private dropContent: HTMLDivElement | null;
 
-    static defaultProps: Partial<IDropProps>;
+    static defaultProps: Partial<IDropProps> = {
+        groupId: DefaultGroupIds.default,
+        positions: defaultDropPodPosition,
+        closeOnClickDrop: true,
+        closeOnClickOutside: true,
+        listContainerProps: {},
+        minHeight: 0,
+        minWidth: 0,
+        hasSameWidth: false,
+    };
 
     constructor(props: IDropProps) {
         super(props);
@@ -147,14 +156,3 @@ export class Drop extends PureComponent<IDropProps> {
         }
     }
 }
-
-Drop.defaultProps = {
-    groupId: DefaultGroupIds.default,
-    positions: defaultDropPodPosition,
-    closeOnClickDrop: true,
-    closeOnClickOutside: true,
-    listContainerProps: {},
-    minHeight: 0,
-    minWidth: 0,
-    hasSameWidth: false,
-};

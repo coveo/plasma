@@ -23,7 +23,11 @@ export const dropWithDropdown =
     (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
         @ReduxConnect(mapStateToProps)
         class DropWithDropdown extends PureComponent<IDropProps> {
-            static defaultProps: Partial<IDropProps>;
+            static defaultProps: Partial<IDropProps> = {
+                ...Drop.defaultProps,
+                positions: [DropPodPosition.bottom, DropPodPosition.top],
+                groupId: DefaultGroupIds.dropdown,
+            };
 
             render() {
                 return (
@@ -33,12 +37,6 @@ export const dropWithDropdown =
                 );
             }
         }
-
-        DropWithDropdown.defaultProps = {
-            ...Drop.defaultProps,
-            positions: [DropPodPosition.bottom, DropPodPosition.top],
-            groupId: DefaultGroupIds.dropdown,
-        };
 
         return DropWithDropdown;
     };

@@ -114,7 +114,11 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps) =>
  */
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttributes<HTMLTableRowElement>> {
-    static defaultProps: Partial<ITableRowOwnProps>;
+    static defaultProps: Partial<ITableRowOwnProps> = {
+        actions: [],
+        isMultiselect: false,
+        collapsible: {},
+    };
 
     componentDidUpdate(prevProps: ITableRowConnectedProps) {
         if (!isRowCollapsible(prevProps) && isRowCollapsible(this.props)) {
@@ -232,11 +236,5 @@ class TableRowConnected extends PureComponent<ITableRowConnectedProps & HTMLAttr
         this.props.onCollapsibleClick(this.props.opened);
     };
 }
-
-TableRowConnected.defaultProps = {
-    actions: [],
-    isMultiselect: false,
-    collapsible: {},
-};
 
 export {TableRowConnected};
