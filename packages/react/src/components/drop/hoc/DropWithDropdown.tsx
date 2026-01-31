@@ -5,7 +5,7 @@ import {PlasmaState} from '../../../PlasmaState';
 import {PropsToOmitUtils} from '../../../utils/PropsToOmitUtils';
 import {ReduxConnect} from '../../../utils/ReduxUtils';
 import {DropPodPosition} from '../DomPositionCalculator';
-import {Drop, IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
+import {IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
 import {DefaultGroupIds} from '../redux/DropActions';
 import {DropSelectors} from '../redux/DropReducers';
 
@@ -23,7 +23,16 @@ export const dropWithDropdown =
     (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
         @ReduxConnect(mapStateToProps)
         class DropWithDropdown extends PureComponent<IDropProps> {
-            static defaultProps: Partial<IDropProps>;
+            static defaultProps: Partial<IDropProps> = {
+                groupId: DefaultGroupIds.dropdown,
+                positions: [DropPodPosition.bottom, DropPodPosition.top],
+                closeOnClickDrop: true,
+                closeOnClickOutside: true,
+                listContainerProps: {},
+                minHeight: 0,
+                minWidth: 0,
+                hasSameWidth: false,
+            };
 
             render() {
                 return (
@@ -33,12 +42,6 @@ export const dropWithDropdown =
                 );
             }
         }
-
-        DropWithDropdown.defaultProps = {
-            ...Drop.defaultProps,
-            positions: [DropPodPosition.bottom, DropPodPosition.top],
-            groupId: DefaultGroupIds.dropdown,
-        };
 
         return DropWithDropdown;
     };
