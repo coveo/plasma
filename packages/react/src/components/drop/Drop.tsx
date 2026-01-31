@@ -23,11 +23,11 @@ export type IDropDispatchProps = ReturnType<typeof mapDispatchToProps>;
 
 export interface IDropProps extends IDropOwnProps, Partial<IDropStateProps>, Partial<IDropDispatchProps> {}
 
-const mapStateToProps = (state: PlasmaState, {id, groupId}: IDropOwnProps) => ({
+const mapStateToProps = (state: PlasmaState, {id, groupId = DefaultGroupIds.default}: IDropOwnProps) => ({
     isOpen: DropSelectors.isOpen(state, {id, groupId}),
 });
 
-const mapDispatchToProps = (dispatch: IDispatch, {id, groupId}: IDropOwnProps) => ({
+const mapDispatchToProps = (dispatch: IDispatch, {id, groupId = DefaultGroupIds.default}: IDropOwnProps) => ({
     toggle: (isOpen?: boolean) => dispatch(DropActions.toggle(id, groupId, isOpen)),
 });
 

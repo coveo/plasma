@@ -86,7 +86,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps) =>
     return {
         onMount: () => {
             dispatch(TableHOCRowActions.add(ownProps.id, ownProps.tableId));
-            if (isRowCollapsible(ownProps) && ownProps.collapsible.expandOnMount) {
+            if (isRowCollapsible(ownProps) && ownProps.collapsible?.expandOnMount) {
                 dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id, true));
             }
         },
@@ -101,7 +101,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps) =>
             dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id));
         },
         onUpdateToCollapsibleRow: () => {
-            if (ownProps.collapsible.expandOnMount) {
+            if (ownProps.collapsible?.expandOnMount) {
                 dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id, true));
             }
         },
