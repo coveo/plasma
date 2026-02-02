@@ -36,7 +36,7 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
 
     const getCurrentHeight = useCallback((): string => `${elRef.current?.getBoundingClientRect().height ?? 0}px`, []);
 
-    const transitionHeight = (from: string, to: string) => {
+    const transitionHeight = useCallback((from: string, to: string) => {
         if (!elRef.current) {
             return;
         }
@@ -45,7 +45,7 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
         elRef.current.offsetHeight; // force repaint
         elRef.current.style.transitionProperty = 'height';
         elRef.current.style.height = to;
-    };
+    }, []);
 
     const onEntering = useCallback(() => {
         if (!elRef.current) {
@@ -61,11 +61,11 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
         if (parseFloat(endHeight).toFixed(2) !== parseFloat(prevHeight).toFixed(2)) {
             transitionHeight(prevHeight, endHeight);
         }
-    }, [getCurrentHeight]);
+    }, [getCurrentHeight, transitionHeight]);
 
     const onExiting = useCallback(() => {
         transitionHeight(getCurrentHeight(), '0px');
-    }, [getCurrentHeight]);
+    }, [getCurrentHeight, transitionHeight]);
 
     const handleTransitionEnd = useCallback(() => {
         if (!elRef.current) {
