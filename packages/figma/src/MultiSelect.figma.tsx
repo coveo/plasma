@@ -1,16 +1,16 @@
-import {figma} from '@figma/code-connect';
 import {MultiSelect} from '@coveord/plasma-mantine';
+import {figma} from '@figma/code-connect';
 
 figma.connect(
     MultiSelect,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50811',
     {
         props: {
-            labelProps: figma.nestedProps('Input.Label', {
+            labelProps: figma.nestedProps('.Input.Label', {
                 label: figma.string('Label'),
                 required: figma.boolean('Asterisk'),
             }),
-            description: figma.nestedProps('Input.Description', {
+            description: figma.nestedProps('.Input.Description', {
                 text: figma.string('Description'),
             }),
             disabled: figma.enum('State', {
@@ -19,10 +19,10 @@ figma.connect(
             readOnly: figma.enum('State', {
                 'Read-only': true,
             }),
-            error: figma.nestedProps('Input.Error', {
+            error: figma.nestedProps('.Input.Error', {
                 message: figma.string('Error'),
             }),
-            placeholder: figma.nestedProps('Input.Input', {
+            placeholder: figma.nestedProps('.Input.Input', {
                 text: figma.boolean('Placeholder', {true: figma.string('Text'), false: undefined}),
             }),
         },

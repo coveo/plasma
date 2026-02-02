@@ -9,24 +9,24 @@ figma.connect(
         props: {
             wrapperProps: figma.nestedProps('Input.Wrapper', {
                 descriptionProps: figma.boolean('Description', {
-                    true: figma.nestedProps('Input.Description', {
+                    true: figma.nestedProps('.Input.Description', {
                         description: figma.string('Description'),
                     }),
                     false: {description: undefined},
                 }),
                 errorProps: figma.boolean('Error', {
-                    true: figma.nestedProps('Input.Error', {
+                    true: figma.nestedProps('.Input.Error', {
                         error: figma.string('Error'),
                     }),
                     false: {error: undefined},
                 }),
             }),
-            labelProps: figma.nestedProps('Input.Label', {
+            labelProps: figma.nestedProps('.Input.Label', {
                 required: figma.boolean('Asterisk'),
                 label: figma.string('Label'),
             }),
 
-            inputProps: figma.nestedProps('PillsInput.Input', {
+            inputProps: figma.nestedProps('.PillsInput.Input', {
                 leftSection: figma.boolean<ReactNode, never>('Left Section', {true: figma.instance('Swap Left')}),
                 rightSection: figma.boolean<ReactNode, never>('Right Section', {true: figma.instance('Swap Right')}),
                 disabled: figma.enum('State', {Disabled: true}),
