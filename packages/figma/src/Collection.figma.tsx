@@ -22,15 +22,19 @@ figma.connect(
         },
         example: (props) => (
             <Collection
-                newItem=""
+                newItem={{name: ''}}
                 required={props.labelProps.required}
                 label={props.labelProps.text}
                 description={props.description.text}
                 error={props.error.text}
                 addLabel={props.addButton.text}
-            >
-                {(item) => <div>{item}</div>}
-            </Collection>
+                columns={[
+                    {
+                        header: 'Name',
+                        cell: (item) => <div>{item.name}</div>,
+                    },
+                ]}
+            />
         ),
     },
 );

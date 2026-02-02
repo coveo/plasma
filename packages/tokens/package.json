@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "56.8.1",
+    "version": "56.20.0",
     "description": "Design tokens of the Plasma Design System",
     "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
     "repository": {
@@ -52,7 +52,7 @@
         "figma-js": "1.16.0",
         "fs-extra": "11.3.2",
         "lint-staged": "16.2.7",
-        "lodash": "4.17.21",
+        "lodash": "4.17.23",
         "prettier": "3.7.4",
         "publint": "0.3.15",
         "rimraf": "6.1.2",

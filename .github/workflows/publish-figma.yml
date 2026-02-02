@@ -1,0 +1,25 @@
+name: Publish Figma Components
+on:
+    push:
+        paths:
+            - '**/*.figma.tsx'
+        branches:
+            - master
+jobs:
+    code-connect-publish:
+        name: Code Connect Publish
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        steps:
+            - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+            - uses: ./.github/actions/setup
+            - name: Harden Runner
+              uses: step-security/harden-runner@df199fb7be9f65074067a9eb93f12bb4c5547cf2 # v2.13.3
+              with:
+                  egress-policy: audit
+            - name: Publish changes to Figma
+              run: pnpm figma:publish
+              working-directory: packages/figma
+              env:
+                  FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_TOKEN }}

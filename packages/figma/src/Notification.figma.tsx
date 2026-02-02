@@ -26,7 +26,7 @@ figma.connect(
                 title,
                 message,
             });
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
@@ -49,7 +49,7 @@ figma.connect(
                 title,
                 message,
             });
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
@@ -71,7 +71,7 @@ figma.connect(
                 title,
                 message,
             });
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
@@ -93,7 +93,7 @@ figma.connect(
                 title,
                 message,
             });
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
@@ -117,7 +117,7 @@ figma.connect(
                 loading: true,
             });
             {
-                /* Some async operation */
+                /* Some async operations */
             }
             setTimeout(
                 () =>
@@ -128,7 +128,7 @@ figma.connect(
                     }),
                 0,
             );
-            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render
+            return <></>; // DO NOT RETURN THIS, Figma requires a React component to render a code snippet
         },
     },
 );
