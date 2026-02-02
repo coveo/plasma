@@ -2,7 +2,7 @@ import {NavLink} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 figma.connect(
-    NavLink.NavLink,
+    '.NavLink.NavLink',
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2611-1674',
     {
         props: {

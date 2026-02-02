@@ -2,7 +2,7 @@ import {ActionIcon} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 const actionIconProps = {
-    children: figma.nestedProps('Icon', {
+    children: figma.nestedProps('Icons', {
         icon: figma.instance('Icon'),
     }),
     disabled: figma.enum('State', {
@@ -14,7 +14,7 @@ const actionIconProps = {
 };
 
 const actionIconDestructiveProps = {
-    children: figma.nestedProps('Icon', {
+    children: figma.nestedProps('Icons', {
         icon: figma.instance('Icon'),
     }),
     disabled: figma.enum('State', {
