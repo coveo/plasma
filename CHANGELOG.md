@@ -1,3 +1,13 @@
+## 53.3.3 (2026-02-02)
+
+
+### Bug Fixes
+
+* **react, SlideY:** incompatibility with react 19 (#4319) ee7aa4e, closes #4319
+* **react:** React 19 incompatibility with defaultProps  (#4320) 5da6afa, closes #4320
+
+
+
 ## 53.3.2 (2026-01-29)
 
 
