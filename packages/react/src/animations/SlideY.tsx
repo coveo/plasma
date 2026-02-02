@@ -1,7 +1,7 @@
 // inspired from https://github.com/frankwallis/react-slidedown
 // implemented with the new react-transition-group https://github.com/reactjs/react-transition-group
 
-import {PureComponent, ReactNode} from 'react';
+import {ReactNode, useCallback, useEffect, useMemo, useRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 export interface SlideYProps {
@@ -27,96 +27,92 @@ export interface SlideYProps {
     children?: ReactNode;
 }
 
-export class SlideY extends PureComponent<SlideYProps> {
-    private el: HTMLElement;
+export const defaultTimeout: number = 200;
+export const defaultDuration: number = 200;
 
-    static defaultTimeout: number = 200;
-    static defaultDuration: number = 200;
+export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in: isIn, children}: SlideYProps) => {
+    const elRef = useRef<HTMLDivElement>(null);
+    const isFirstRender = useRef(true);
 
-    static defaultProps: Partial<SlideYProps> = {
-        timeout: SlideY.defaultTimeout,
-        duration: SlideY.defaultDuration,
-    };
+    const getCurrentHeight = useCallback((): string => `${elRef.current?.getBoundingClientRect().height ?? 0}px`, []);
 
-    componentDidMount() {
-        if (this.props.in) {
-            this.el.classList.remove('slide-y-closed');
-            this.el.style.height = 'auto';
+    const transitionHeight = useCallback((from: string, to: string) => {
+        if (!elRef.current) {
+            return;
         }
-    }
+        elRef.current.classList.add('slide-y-transition');
+        elRef.current.style.height = from;
+        elRef.current.offsetHeight; // force repaint
+        elRef.current.style.transitionProperty = 'height';
+        elRef.current.style.height = to;
+    }, []);
 
-    componentDidUpdate(prevProps: SlideYProps) {
-        if (prevProps.in !== this.props.in) {
-            this.el.style.height = this.getCurrentHeight();
-
-            if (this.props.in) {
-                this.onEntering();
-            } else {
-                this.onExiting();
-            }
+    const onEntering = useCallback(() => {
+        if (!elRef.current) {
+            return;
         }
-    }
+        const prevHeight = getCurrentHeight();
 
-    render() {
-        const style = this.props.duration && {
-            style: {transitionDuration: `${this.props.duration}ms`, transitionTimingFunction: 'ease-in-out'},
-        };
-        return (
-            <Transition
-                in={this.props.in}
-                timeout={this.props.timeout}
-                onEntering={() => this.onEntering()}
-                onExiting={() => this.onExiting()}
-                onTransitionEnd={() => this.handleTransitionEnd()}
-            >
-                <div
-                    className="slide-y slide-y-closed"
-                    aria-hidden={!this.props.in}
-                    ref={(el: HTMLElement) => {
-                        this.el = el;
-                    }}
-                    {...style}
-                >
-                    {this.props.children}
-                </div>
-            </Transition>
-        );
-    }
+        elRef.current.classList.remove('slide-y-closed');
+        elRef.current.style.height = 'auto';
 
-    private onEntering() {
-        const prevHeight = this.getCurrentHeight();
-
-        this.el.classList.remove('slide-y-closed');
-        this.el.style.height = 'auto';
-
-        const endHeight = this.getCurrentHeight();
+        const endHeight = getCurrentHeight();
 
         if (parseFloat(endHeight).toFixed(2) !== parseFloat(prevHeight).toFixed(2)) {
-            this.transitionHeight(prevHeight, endHeight);
+            transitionHeight(prevHeight, endHeight);
         }
-    }
+    }, [getCurrentHeight, transitionHeight]);
 
-    private onExiting() {
-        this.transitionHeight(this.getCurrentHeight(), '0px');
-    }
+    const onExiting = useCallback(() => {
+        transitionHeight(getCurrentHeight(), '0px');
+    }, [getCurrentHeight, transitionHeight]);
 
-    private handleTransitionEnd() {
-        this.el.classList.remove('slide-y-transition');
-        this.el.style.transitionProperty = 'none';
-        this.el.style.height = !this.props.in ? '0px' : 'auto';
-
-        if (!this.props.in) {
-            this.el.classList.add('slide-y-closed');
+    const handleTransitionEnd = useCallback(() => {
+        if (!elRef.current) {
+            return;
         }
-    }
+        elRef.current.classList.remove('slide-y-transition');
+        elRef.current.style.transitionProperty = 'none';
+        elRef.current.style.height = !isIn ? '0px' : 'auto';
 
-    private transitionHeight(from: string, to: string) {
-        this.el.classList.add('slide-y-transition');
-        this.el.style.height = from;
-        this.el.offsetHeight; // force repaint
-        this.el.style.transitionProperty = 'height';
-        this.el.style.height = to;
-    }
+        if (!isIn) {
+            elRef.current.classList.add('slide-y-closed');
+        }
+    }, [isIn]);
 
-    private getCurrentHeight = (): string => `${this.el.getBoundingClientRect().height}px`;
-}
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            if (isIn && elRef.current) {
+                elRef.current.classList.remove('slide-y-closed');
+                elRef.current.style.height = 'auto';
+            }
+            return;
+        }
+
+        if (!elRef.current) {
+            return;
+        }
+        elRef.current.style.height = getCurrentHeight();
+    }, [isIn, getCurrentHeight]);
+
+    const style = useMemo(
+        () => (duration ? {transitionDuration: `${duration}ms`, transitionTimingFunction: 'ease-in-out'} : undefined),
+        [duration],
+    );
+
+    return (
+        <Transition
+            in={isIn}
+            timeout={timeout}
+            onEntering={onEntering}
+            onExiting={onExiting}
+            onTransitionEnd={handleTransitionEnd}
+            nodeRef={elRef}
+        >
+            <div className="slide-y slide-y-closed" aria-hidden={!isIn} data-testid="slide-y" ref={elRef} style={style}>
+                {children}
+            </div>
+        </Transition>
+    );
+};
