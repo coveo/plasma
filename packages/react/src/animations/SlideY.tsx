@@ -34,10 +34,7 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
     const elRef = useRef<HTMLDivElement>(null);
     const isFirstRender = useRef(true);
 
-    const getCurrentHeight = useCallback(
-        (): string => `${elRef.current?.getBoundingClientRect().height ?? 0}px`,
-        [elRef.current],
-    );
+    const getCurrentHeight = useCallback((): string => `${elRef.current?.getBoundingClientRect().height ?? 0}px`, []);
 
     const transitionHeight = (from: string, to: string) => {
         if (!elRef.current) {
@@ -50,7 +47,7 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
         elRef.current.style.height = to;
     };
 
-    const onEntering = () => {
+    const onEntering = useCallback(() => {
         if (!elRef.current) {
             return;
         }
@@ -64,13 +61,13 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
         if (parseFloat(endHeight).toFixed(2) !== parseFloat(prevHeight).toFixed(2)) {
             transitionHeight(prevHeight, endHeight);
         }
-    };
+    }, [getCurrentHeight]);
 
-    const onExiting = () => {
+    const onExiting = useCallback(() => {
         transitionHeight(getCurrentHeight(), '0px');
-    };
+    }, [getCurrentHeight]);
 
-    const handleTransitionEnd = () => {
+    const handleTransitionEnd = useCallback(() => {
         if (!elRef.current) {
             return;
         }
@@ -81,7 +78,7 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
         if (!isIn) {
             elRef.current.classList.add('slide-y-closed');
         }
-    };
+    }, [isIn]);
 
     useEffect(() => {
         if (isFirstRender.current) {
@@ -97,7 +94,7 @@ export const SlideY = ({duration = defaultDuration, timeout = defaultTimeout, in
             return;
         }
         elRef.current.style.height = getCurrentHeight();
-    }, [isIn]);
+    }, [isIn, getCurrentHeight]);
 
     const style = useMemo(
         () => (duration ? {transitionDuration: `${duration}ms`, transitionTimingFunction: 'ease-in-out'} : undefined),
