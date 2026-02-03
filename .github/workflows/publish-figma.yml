@@ -2,7 +2,7 @@ name: Publish Figma Components
 on:
     push:
         paths:
-            - packages/figma/src/components/**/*.figma.tsx
+            - '**/*.figma.tsx'
         branches:
             - master
 
@@ -13,8 +13,6 @@ jobs:
     code-connect-publish:
         name: Code Connect Publish
         runs-on: ubuntu-latest
-        permissions:
-            contents: read
         steps:
             - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
             - uses: ./.github/actions/setup
@@ -23,7 +21,7 @@ jobs:
               with:
                   egress-policy: audit
             - name: Publish changes to Figma
-              run: npx figma connect publish
-              working-directory: /packages/figma
+              run: pnpm figma:publish
+              working-directory: packages/figma
               env:
                   FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_TOKEN }}

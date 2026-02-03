@@ -14,7 +14,7 @@ figma.connect(
                 '4': 4,
                 '5': 5,
             }),
-            crumb: figma.nestedProps('Breadcrumbs.Breadcrumb', {
+            crumb: figma.nestedProps('.Breadcrumbs.Breadcrumb', {
                 label: figma.string('Tabs'),
             }),
             link: figma.nestedProps('Anchor', {
@@ -49,7 +49,7 @@ figma.connect(
                 '4': 4,
                 '5': 5,
             }),
-            crumb: figma.nestedProps('Breadcrumbs.Breadcrumb', {
+            crumb: figma.nestedProps('.Breadcrumbs.Breadcrumb', {
                 label: figma.string('Tabs'),
             }),
         },

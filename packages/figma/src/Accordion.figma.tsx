@@ -28,7 +28,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=2879-1115',
     {
         props: {
-            children: figma.children('Accordion.Item'),
+            children: figma.children('.Accordion.Item'),
         },
         example: (props) => <Accordion>{props.children}</Accordion>,
     },

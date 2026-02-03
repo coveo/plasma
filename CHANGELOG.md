@@ -1,3 +1,16 @@
+## 56.20.0 (2026-01-29)
+
+* feat(figma): +ci integration workflow (#4299) f5c0feb, closes #4299
+* feat(storybook): add plasma logo to storybook website (#4318) 0603ad7, closes #4318
+* Ad UI 11228 fix workflow figma ci (#4315) 87a39ef, closes #4315
+* Ad UI 11228 fix workflow figma ci (#4316) f032350, closes #4316
+* Ad UI 11228 fix workflow figma ci (#4317) 24227de, closes #4317
+* feat(mantine, collection): add column-based layout system to collection component (#4293) d0f24cf, closes #4293
+* fix(figma): changes string comment for deployment tests, changed the … (#4314) 39a1fdc, closes #4314
+* chore(deps): update dependency lodash to v4.17.23 [security] (#4308) 526dbde, closes #4308
+
+
+
 ## 56.19.0 (2026-01-21)
 
 * feat(deploy): update deployment url for Storybook and Plasma website (#4307) ae7a06f, closes #4307
