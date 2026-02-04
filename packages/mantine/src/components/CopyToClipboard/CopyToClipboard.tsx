@@ -76,3 +76,5 @@ export const CopyToClipboard: FunctionComponent<CopyToClipboardProps> = ({withLa
     ) : (
         <CopyToClipboardButton {...others} />
     );
+
+CopyToClipboard.displayName = 'CopyToClipboard';

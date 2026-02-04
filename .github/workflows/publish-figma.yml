@@ -5,14 +5,16 @@ on:
             - '**/*.figma.tsx'
         branches:
             - master
+
+permissions:
+  contents: read
+
 jobs:
     code-connect-publish:
         name: Code Connect Publish
         runs-on: ubuntu-latest
-        permissions:
-            contents: read
         steps:
-            - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
             - uses: ./.github/actions/setup
             - name: Harden Runner
               uses: step-security/harden-runner@df199fb7be9f65074067a9eb93f12bb4c5547cf2 # v2.13.3
