@@ -30,6 +30,10 @@ const meta: Meta<typeof RadioCard> = {
             control: 'boolean',
             description: 'Read only state',
         },
+        disabledTooltip: {
+            control: 'text',
+            description: 'The tooltip message to display when disabled',
+        },
     },
     args: {
         checked: false,
@@ -37,6 +41,7 @@ const meta: Meta<typeof RadioCard> = {
         readOnly: false,
         label: 'Label',
         description: 'Description',
+        disabledTooltip: 'Disabled tooltip example',
     },
 };
 export default meta;
