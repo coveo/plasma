@@ -258,15 +258,9 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         </Center>
     );
 
+    const height = Math.max(Number.isNaN(parentHeight) ? 0 : parentHeight, minHeight);
     return (
-        <Stack
-            justify="flex-start"
-            gap="sm"
-            h={Math.max(parentHeight, minHeight)}
-            mah={maxHeight}
-            ref={ref}
-            {...others}
-        >
+        <Stack justify="flex-start" gap="sm" h={height} mah={maxHeight} ref={ref} {...others}>
             <Group justify="space-between">
                 {_header}
                 {_buttons}
