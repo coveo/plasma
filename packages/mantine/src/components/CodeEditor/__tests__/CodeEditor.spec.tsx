@@ -6,11 +6,17 @@ import {useRef} from 'react';
 import {CodeEditor} from '../CodeEditor.js';
 import {XML} from '../languages/xml.js';
 
+let mockedParentHeight = 600;
+
 vi.mock('monaco-editor');
 vi.mock('@monaco-editor/react');
+vi.mock('../../hooks/useParentHeight.js', () => ({
+    useParentHeight: vi.fn().mockReturnValue([mockedParentHeight, {current: null}]),
+}));
 
 describe('CodeEditor', () => {
     beforeEach(() => {
+        mockedParentHeight = 600;
         vi.clearAllMocks();
     });
 
@@ -104,5 +110,17 @@ describe('CodeEditor', () => {
         await waitForElementToBeRemoved(screen.queryByRole('presentation'));
 
         expect(editorHandle.current).not.toBeNull();
+    });
+
+    it('defaults to minimum height when useParentHeight returns NaN', async () => {
+        mockedParentHeight = NaN;
+
+        const minHeight = 400;
+        render(<CodeEditor minHeight={minHeight} />);
+
+        await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+        const editorContainer = screen.getByTestId('editor-wrapper').parentElement;
+        expect(editorContainer).toHaveStyle({height: `calc(${minHeight / 16}rem * var(--mantine-scale))`});
     });
 });
