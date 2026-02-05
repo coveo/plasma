@@ -1,3 +1,12 @@
+## <small>56.20.1 (2026-02-05)</small>
+
+* [StepSecurity] Apply security best practices (#4313) 88fe166, closes #4313
+* Ad UI 11220 fix figma mismatch name (#4322) de5ba13, closes #4322
+* fix(mantine, CodeEditor): height can be NaN in React 19 (#4325) 7477902, closes #4325
+* chore(deps): update actions/checkout digest to de0fac2 (#4323) 6881467, closes #4323
+
+
+
 ## 56.20.0 (2026-01-29)
 
 * feat(figma): +ci integration workflow (#4299) f5c0feb, closes #4299
