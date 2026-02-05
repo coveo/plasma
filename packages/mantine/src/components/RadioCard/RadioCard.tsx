@@ -61,7 +61,7 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
     });
 
     return (
-        <Tooltip label={disabledTooltip} disabled={!disabled}>
+        <Tooltip label={disabledTooltip} disabled={!disabled || !disabledTooltip}>
             <Radio.Card
                 ref={ref}
                 disabled={disabled}
