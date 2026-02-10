@@ -68,7 +68,7 @@ const Demo = ({
                                 <Text c="critical" fw="var(--coveo-fw-bold)" mb="xs">
                                     An error occurred while rendering the demo:
                                 </Text>
-                                {error.message}
+                                {error instanceof Error ? error.message : String(error)}
                             </Code>
                         )}
                     >
