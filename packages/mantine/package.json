@@ -103,7 +103,7 @@
         "@mantine/hooks": "8.3.14",
         "@mantine/modals": "8.3.14",
         "@mantine/notifications": "8.3.14",
-        "@swc/cli": "0.7.10",
+        "@swc/cli": "0.8.0",
         "@swc/core": "1.15.11",
         "@testing-library/dom": "10.4.1",
         "@testing-library/jest-dom": "6.9.1",

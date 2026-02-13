@@ -27,7 +27,7 @@
         "@coveord/plasma-mantine": "workspace:*"
     },
     "devDependencies": {
-        "@swc/cli": "0.7.10",
+        "@swc/cli": "0.8.0",
         "@swc/core": "1.15.11",
         "@types/fs-extra": "11.0.4",
         "@types/node": "24.10.11",

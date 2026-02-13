@@ -60,7 +60,7 @@
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "8.1.0",
         "@svgr/plugin-jsx": "8.1.0",
-        "@swc/cli": "0.7.10",
+        "@swc/cli": "0.8.0",
         "@swc/core": "1.15.11",
         "@testing-library/dom": "10.4.1",
         "@testing-library/jest-dom": "6.9.1",
