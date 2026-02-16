@@ -16,7 +16,7 @@
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
-        "@faker-js/faker": "10.2.0",
+        "@faker-js/faker": "10.3.0",
         "@mantine/core": "8.3.14",
         "@mantine/dates": "8.3.14",
         "@mantine/form": "8.3.14",
@@ -29,14 +29,14 @@
         "react-hook-form": "7.71.1"
     },
     "devDependencies": {
-        "@storybook/addon-docs": "10.2.7",
-        "@storybook/react-vite": "10.2.7",
+        "@storybook/addon-docs": "10.2.8",
+        "@storybook/react-vite": "10.2.8",
         "@types/react": "19.2.13",
         "@types/react-dom": "19.2.3",
         "@vitejs/plugin-react-swc": "4.2.3",
         "globals": "17.3.0",
         "postcss-preset-mantine": "1.18.0",
-        "storybook": "10.2.7",
+        "storybook": "10.2.8",
         "typescript": "5.9.3",
         "vite": "7.3.1"
     }
