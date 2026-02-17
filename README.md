@@ -8,7 +8,7 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. All 
 
 ## React Compatibility
 
-Plasma supports both **React 18** and **React 19**. You can use Plasma with either version, allowing you to upgrade Plasma independently of your React version upgrade timeline.
+Plasma requires **React 19** or later.
 
 ## Usage
 
