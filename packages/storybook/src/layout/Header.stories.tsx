@@ -19,14 +19,21 @@ const meta: Meta<typeof Header> = {
         docAnchor: 'Documentation Link',
         breadcrumbs: ['Grand Parent', 'Parent'],
         withActions: true,
+        variant: undefined,
     } as HeaderProps & HeaderStoryProps,
+    argTypes: {
+        variant: {
+            control: 'select',
+            options: ['primary', 'secondary'],
+        },
+    },
 };
 export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const Demo: Story = {
     render: (props: HeaderProps & HeaderStoryProps) => (
-        <Header description={props.description} borderBottom={props.borderBottom}>
+        <Header description={props.description} borderBottom={props.borderBottom} variant={props.variant}>
             {props.breadcrumbs?.length > 0 && (
                 <Header.Breadcrumbs>
                     {props.breadcrumbs.map((breadcrumb) => (
