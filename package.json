@@ -49,8 +49,8 @@
         "@commitlint/cli": "20.4.1",
         "@commitlint/config-conventional": "20.4.1",
         "@coveo/semantic-monorepo-tools": "2.7.1",
-        "@types/node": "24.10.12",
-        "@vitest/eslint-plugin": "1.6.6",
+        "@types/node": "24.10.13",
+        "@vitest/eslint-plugin": "1.6.7",
         "aws-sdk": "2.1693.0",
         "commitizen": "4.3.1",
         "conventional-changelog-angular": "8.1.0",
@@ -74,9 +74,9 @@
         "sort-package-json": "3.6.1",
         "stylelint": "16.26.1",
         "stylelint-config-standard-scss": "16.0.0",
-        "turbo": "2.8.3",
+        "turbo": "2.8.4",
         "typescript": "5.9.3",
-        "typescript-eslint": "8.54.0"
+        "typescript-eslint": "8.55.0"
     },
     "packageManager": "pnpm@10.29.2+sha512.bef43fa759d91fd2da4b319a5a0d13ef7a45bb985a3d7342058470f9d2051a3ba8674e629672654686ef9443ad13a82da2beb9eeb3e0221c87b8154fff9d74b8",
     "pnpm": {
