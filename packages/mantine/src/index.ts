@@ -75,6 +75,7 @@ export * from './components/Burger/Burger.js';
 // Button - override Mantine Button
 export {Button, type ButtonProps} from './components/Button/Button.js';
 export {type ButtonWithDisabledTooltipProps} from './components/Button/ButtonWithDisabledTooltip.js';
+export {type ClickHandler} from './hooks/useClickWithLoading.js';
 
 // Card
 export * from './components/Card/Card.js';

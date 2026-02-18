@@ -71,5 +71,47 @@ describe('Button', () => {
 
             expect(screen.getByRole('button', {name: /promise handler/i})).not.toHaveAttribute('data-loading');
         });
+
+        it('accepts a parameterless handler (like UseMutateFunction)', async () => {
+            const user = userEvent.setup();
+            let wasCalled = false;
+
+            const mutate = () => {
+                wasCalled = true;
+            };
+
+            render(<Button onClick={mutate}>mutate handler</Button>);
+
+            await user.click(screen.getByRole('button', {name: /mutate handler/i}));
+
+            expect(wasCalled).toBe(true);
+        });
+
+        it('shows loader for async parameterless handler', async () => {
+            const user = userEvent.setup();
+            let resolve: () => void;
+            let isResolved = false;
+
+            const asyncMutate = () =>
+                new Promise<void>((res) => {
+                    resolve = res;
+                }).then(() => {
+                    isResolved = true;
+                });
+
+            render(<Button onClick={asyncMutate}>async mutate</Button>);
+
+            await user.click(screen.getByRole('button', {name: /async mutate/i}));
+
+            expect(screen.getByRole('button', {name: /async mutate/i})).toHaveAttribute('data-loading');
+
+            resolve();
+
+            await waitFor(() => {
+                expect(isResolved).toBeTruthy();
+            });
+
+            expect(screen.getByRole('button', {name: /async mutate/i})).not.toHaveAttribute('data-loading');
+        });
     });
 });
