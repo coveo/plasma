@@ -16,7 +16,7 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 ### Architecture
 
 - **Monorepo**: Managed with pnpm workspaces and Turbo for build orchestration
-- **UI Framework**: React 18+ with Mantine UI library
+- **UI Framework**: React 19 with Mantine UI library
 - **Build Tool**: SWC for fast TypeScript compilation
 - **Testing**: Vitest with React Testing Library
 - **Package Manager**: pnpm
@@ -44,7 +44,7 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 ### React
 
 - Use functional components with hooks
-- Follow React 18+ patterns
+- Follow React 19 patterns
 - Use JSX runtime (no need to import React)
 - Prefer named exports over default exports
 
