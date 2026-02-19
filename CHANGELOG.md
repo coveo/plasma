@@ -1,3 +1,21 @@
+## 57.0.0 (2026-02-19)
+
+* feat: drop React 18 support, require React 19 (#4337) 40d3cb6, closes #4337
+* feat(storybook): add variant prop to Header component in Storybook (#4335) 1282d8f, closes #4335
+* chore(deps): update all non-major dependencies (#4242) d654284, closes #4242
+* chore(deps): update all non-major dependencies (#4329) da826f7, closes #4329
+* chore(deps): update all non-major dependencies (#4331) 993eabc, closes #4331
+* chore(deps): update all non-major dependencies (#4332) 32864bf, closes #4332
+* chore(deps): update all non-major dependencies (#4334) 4b1f0c8, closes #4334
+* chore(deps): update aws-actions/configure-aws-credentials action to v6 (#4330) ce3324b, closes #4330
+* chore(deps): update dependency jsdom to v28 (#4327) 5bbc81d, closes #4327
+
+
+### BREAKING CHANGE
+
+* React 18 is no longer supported. Projects must upgrade to React 19.0.0 or higher.
+
+
 ## 56.21.0 (2026-02-05)
 
 * feat(radiocard): +tooltip, +unit test, +storybook adjustments (#4324) 06cb741, closes #4324
