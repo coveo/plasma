@@ -8,13 +8,16 @@ import {
     ButtonProps as MantineButtonProps,
     polymorphicFactory,
 } from '@mantine/core';
-import {ComponentType, MouseEventHandler} from 'react';
-import {useClickWithLoading} from '../../hooks/useClickWithLoading.js';
+import {ComponentType} from 'react';
+import {ClickHandler, useClickWithLoading} from '../../hooks/useClickWithLoading.js';
 import {ButtonWithDisabledTooltip, ButtonWithDisabledTooltipProps} from './ButtonWithDisabledTooltip.js';
 
 export interface ButtonProps extends MantineButtonProps, ButtonWithDisabledTooltipProps {
-    /* Handler executed on click */
-    onClick?: MouseEventHandler<HTMLButtonElement>;
+    /**
+     * Handler executed on click.
+     * Supports async handlers - the button will show a loading state while the promise resolves.
+     */
+    onClick?: ClickHandler<HTMLButtonElement>;
 }
 
 type ButtonOverloadFactory = Factory<{

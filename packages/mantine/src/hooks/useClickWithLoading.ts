@@ -1,6 +1,18 @@
 import {MouseEvent, MouseEventHandler, useState} from 'react';
 
-export const useClickWithLoading = (handler?: MouseEventHandler<HTMLButtonElement>) => {
+/**
+ * A click handler that supports:
+ * - Standard MouseEventHandler (receives event, returns void)
+ * - Async handlers (receives event, returns Promise)
+ * - Parameterless handlers (no event parameter)
+ */
+export type ClickHandler<T = HTMLButtonElement> =
+    | MouseEventHandler<T>
+    | ((event: MouseEvent<T>) => Promise<void>)
+    | (() => void)
+    | (() => Promise<void>);
+
+export const useClickWithLoading = (handler?: ClickHandler<HTMLButtonElement>) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
