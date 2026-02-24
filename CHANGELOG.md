@@ -8,7 +8,7 @@
 * chore(deps): update all non-major dependencies (#4332) 32864bf, closes #4332
 * chore(deps): update all non-major dependencies (#4334) 4b1f0c8, closes #4334
 * chore(deps): update aws-actions/configure-aws-credentials action to v6 (#4330) ce3324b, closes #4330
-* chore(deps): update dependency jsdom to v28 (#4327) 5bbc81d, closes #4327
+* chore(deps): update dependency jsdom to v28 (#4327) 5bbc81d, closes #4327 
 
 
 ### BREAKING CHANGE
