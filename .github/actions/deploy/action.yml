@@ -22,4 +22,7 @@ runs:
         - name: Push distribution code to s3 demo folder
           id: s3-push
           shell: bash
-          run: bash ./.github/actions/deploy/deploy.sh ${{ github.head_ref || github.ref_name }} ${{ inputs.AWS_BUCKET }}
+          env:
+              BRANCH: ${{ github.head_ref || github.ref_name }}
+              BUCKET: ${{ inputs.AWS_BUCKET }}
+          run: bash ./.github/actions/deploy/deploy.sh "$BRANCH" "$BUCKET"

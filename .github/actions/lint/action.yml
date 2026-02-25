@@ -10,10 +10,12 @@ runs:
         - shell: bash
           if: inputs.WORKFLOW == 'ci'
           name: Lint changed files from PR
+          env:
+              BASE_REF: ${{ github.base_ref }}
           run: |
               Purple='\033[0;35m'
               echo -e "${Purple}Starting Lint..."
-              CHANGED_FILES=$(git diff --name-only --pretty="" --diff-filter=d origin/${{ github.base_ref }} HEAD)
+              CHANGED_FILES=$(git diff --name-only --pretty="" --diff-filter=d "origin/$BASE_REF" HEAD)
               node .github/actions/lint/lintChangedFiles.mjs $CHANGED_FILES
         - shell: bash
           if: inputs.WORKFLOW != 'ci'

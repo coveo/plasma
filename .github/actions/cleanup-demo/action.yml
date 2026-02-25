@@ -17,4 +17,7 @@ runs:
               aws-region: ${{ inputs.AWS_REGION }}
         - name: Clean demo files
           shell: bash
-          run: bash ./.github/actions/cleanup-demo/cleanup-demo.sh ${{ github.head_ref || github.ref_name }} ${{ inputs.AWS_BUCKET }}
+          env:
+              BRANCH: ${{ github.head_ref || github.ref_name }}
+              BUCKET: ${{ inputs.AWS_BUCKET }}
+          run: bash ./.github/actions/cleanup-demo/cleanup-demo.sh "$BRANCH" "$BUCKET"
