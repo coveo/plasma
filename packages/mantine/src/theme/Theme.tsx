@@ -539,7 +539,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 multiline: true,
                 withArrow: true,
                 zIndex: 10000,
-                color: PlasmaColors.violet[9],
             },
             classNames: TooltipClasses,
         }),
