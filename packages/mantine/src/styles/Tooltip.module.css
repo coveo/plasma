@@ -1,4 +1,4 @@
 .tooltip {
     word-break: break-word;
-    padding: 12px;
+    padding: var(--mantine-spacing-xs);
 }

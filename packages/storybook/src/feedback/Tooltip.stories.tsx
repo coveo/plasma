@@ -12,6 +12,7 @@ const meta: Meta<typeof Tooltip> = {
     args: {
         label: 'Tooltip',
         position: undefined,
+        freezeOpen: false,
     },
     argTypes: {
         label: {
@@ -53,7 +54,7 @@ Content.displayName = 'HoverMe';
 
 export const Demo: Story = {
     render: (props: any) => (
-        <Tooltip position={props.position} label={props.label}>
+        <Tooltip position={props.position} label={props.label} opened={props.freezeOpen ? true : undefined}>
             <Content />
         </Tooltip>
     ),
