@@ -5,7 +5,10 @@ import {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from '../DateRangePicker/DateRangePickerPresetSelect.js';
 import {EditableDateTimeRangePicker, EditableDateTimeRangePickerProps} from './EditableDateTimeRangePicker.js';
 
-interface DateTimeRangePickerProps extends Pick<EditableDateTimeRangePickerProps, 'startProps' | 'endProps'> {
+interface DateTimeRangePickerProps extends Pick<
+    EditableDateTimeRangePickerProps,
+    'startProps' | 'endProps' | 'dateFormat' | 'timePickerFormat'
+> {
     /** Default value for uncontrolled input */
     defaultValue?: DatesRangeValue<DateStringValue | null>;
     /** Value for controlled input */
@@ -30,8 +33,7 @@ export const DateTimeRangePicker = ({
     value,
     defaultValue,
     onChange,
-    startProps,
-    endProps,
+    ...otherProps
 }: DateTimeRangePickerProps) => {
     const [_value, handleChange] = useUncontrolled<DatesRangeValue<DateStringValue | null>>({
         value,
@@ -42,12 +44,7 @@ export const DateTimeRangePicker = ({
 
     return (
         <Group align="center">
-            <EditableDateTimeRangePicker
-                value={_value}
-                onChange={handleChange}
-                startProps={startProps}
-                endProps={endProps}
-            />
+            <EditableDateTimeRangePicker value={_value} onChange={handleChange} {...otherProps} />
             {presets && (
                 <DateRangePickerPresetSelect
                     presets={presets}
