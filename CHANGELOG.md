@@ -1,3 +1,18 @@
+## 57.1.0 (2026-03-09)
+
+* feat(mantine, tooltip): change padding to xs, background to gray-9, text size to sm (#4354) 2d2389a, closes #4354
+* fix(DateTimeRangePicker): inconsistency in hours formatting (#4347) 2060d4d, closes #4347
+* fix(deps): update dependency shiki to v4 (#4353) ad8a290, closes #4353
+* fix(mantine): allow async and parameterless onClick handlers on Button and ActionIcon (#4341) 2415d72, closes #4341
+* feat(mantine): change input icons colors to dimmed (#4348) 3685872, closes #4348
+* chore(deps): lock file maintenance (#4311) 73a54d9, closes #4311
+* chore(deps): update actions/setup-node digest to 53b8394 (#4349) 82f9ce0, closes #4349
+* chore(deps): update dependency storybook to v10.2.10 [security] (#4346) a3c9aa5, closes #4346
+* chore(deps): update dependency stylelint-config-standard-scss to v17 (#4310) b8968b6, closes #4310 #4340
+* ci: prevent injection via branch name (#4345) 5f4524f, closes #4345
+
+
+
 ## 57.0.0 (2026-02-19)
 
 * feat: drop React 18 support, require React 19 (#4337) 40d3cb6, closes #4337
