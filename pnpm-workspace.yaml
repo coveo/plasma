@@ -7,3 +7,5 @@ minimumReleaseAgeExclude:
   - lodash@4.17.23
   # Renovate security update: storybook@10.2.10
   - storybook@10.2.10
+  # Renovate security update: simple-git@3.32.3
+  - simple-git@3.32.3
