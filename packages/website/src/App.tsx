@@ -1,11 +1,9 @@
-import {AppShell, createTheme, DefaultMantineColor, Notifications, Plasmantine} from '@coveord/plasma-mantine';
+import {AppShell, Notifications} from '@coveord/plasma-mantine';
 import {CodeHighlightAdapterProvider, createShikiAdapter} from '@mantine/code-highlight';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {FunctionComponent, ReactNode, useMemo, useState} from 'react';
 import {Outlet} from 'react-router-dom';
 import {Navigation} from './Navigation.js';
 import {EngineProvider} from './search/engine/EngineProvider.js';
-import {ThemePickerProvider} from './theme-picker/ThemePickerContext.js';
 import TopBar from './TopBar.js';
 
 import './styles/colors.css';
@@ -15,6 +13,7 @@ import './styles/main.css';
 import './styles/plasmaSearchBar.css';
 import './styles/spacing.css';
 import './styles/tile.css';
+import {Theme} from './theme-picker/Theme.js';
 
 const loadShiki = async () => {
     const {createHighlighter} = await import('shiki/bundle/web');
@@ -33,10 +32,10 @@ const queryClient = new QueryClient();
 const App = () => (
     <QueryClientProvider client={queryClient}>
         <EngineProvider>
-            <PlatformAppTheme>
+            <Theme>
                 <CodeHighlightAdapterProvider adapter={shikiAdapter}>
                     <Notifications position="top-center" />
-                    <AppShell navbar={{width: 245, breakpoint: undefined}} header={{height: 100}}>
+                    <AppShell navbar={{width: 245, breakpoint: 0}} header={{height: 100}} layout="default" withBorder>
                         <AppShell.Header>
                             <TopBar />
                         </AppShell.Header>
@@ -46,30 +45,9 @@ const App = () => (
                         <Outlet />
                     </AppShell>
                 </CodeHighlightAdapterProvider>
-            </PlatformAppTheme>
+            </Theme>
         </EngineProvider>
     </QueryClientProvider>
 );
-
-interface PlatformAppThemeProps {
-    children?: ReactNode;
-}
-
-export const PlatformAppTheme: FunctionComponent<PlatformAppThemeProps> = ({children}) => {
-    const [primaryColor, setPrimaryColor] = useState<DefaultMantineColor>('teal');
-    const PlasmaWebsiteTheme = useMemo(
-        () =>
-            createTheme({
-                primaryColor,
-            }),
-        [primaryColor],
-    );
-
-    return (
-        <ThemePickerProvider value={{setPrimaryColor}}>
-            <Plasmantine theme={PlasmaWebsiteTheme}>{children}</Plasmantine>
-        </ThemePickerProvider>
-    );
-};
 
 export default App;
