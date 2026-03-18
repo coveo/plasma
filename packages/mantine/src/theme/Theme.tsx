@@ -70,6 +70,7 @@ import {Accordion} from '../components/Accordion/Accordion.js';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
+import AppShellClasses from '../styles/AppShell.module.css';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -188,6 +189,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: ActionIconClasses,
         }),
         AppShell: AppShell.extend({
+            classNames: AppShellClasses,
+            defaultProps: {
+                header: {height: 60},
+                navbar: {width: 240, breakpoint: 0},
+                layout: 'alt',
+                withBorder: false,
+            },
             vars: (theme) =>
                 ({
                     root: {'--app-shell-border-color': theme.colors.gray[2]},
