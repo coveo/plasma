@@ -1,3 +1,13 @@
+## 57.2.0 (2026-03-18)
+
+* feat(AppShell): improve AppShell default rendering + add Stories (#4359) 1436de5, closes #4359
+* chore(deps-dev): bump simple-git from 3.30.0 to 3.32.3 (#4355) 6113db0, closes #4355
+* chore(deps): lock file maintenance (#4342) 97f066d, closes #4342
+* chore(deps): lock file maintenance (#4358) 1d64c88, closes #4358
+* chore(deps): update actions/upload-artifact action to v7 (#4350) 87466da, closes #4350
+
+
+
 ## 57.1.0 (2026-03-09)
 
 * feat(mantine, tooltip): change padding to xs, background to gray-9, text size to sm (#4354) 2d2389a, closes #4354
