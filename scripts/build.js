@@ -33,9 +33,9 @@ const build = async ({watch = false}) => {
             '--target',
             'es5',
             '--module',
-            'commonjs',
+            'NodeNext',
             '--moduleResolution',
-            'node10',
+            'nodenext',
         ];
         const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
 
