@@ -1,4 +1,4 @@
-import type {Plugin} from 'vite';
+import type {Plugin, TransformResult} from 'vite';
 
 /**
  * Vitest plugin to mock @coveord/plasma-react-icons with the mock version.
@@ -9,7 +9,7 @@ const plasmaIconsMockPlugin = () =>
     ({
         name: 'coveord/plasma-react-icons/mock',
         enforce: 'pre',
-        transform: (code: string, id: string) => {
+        transform: (code: string, id: string): TransformResult => {
             // Only transform relevant files (e.g., .ts, .tsx, .js, .jsx) that import from @coveord/plasma-react-icons and aren't in node_modules
             if (
                 !code.includes('@coveord/plasma-react-icons') ||
