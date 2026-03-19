@@ -11,7 +11,6 @@ import {DefaultMantineColor, useMantineTheme} from '@mantine/core';
 import {FunctionComponent} from 'react';
 import githubLogo from './assets/github-mark.svg';
 import plasmaLogo from './assets/plasma-logo.svg';
-import StandaloneSearchBar from './search/StandaloneSearchBar.js';
 import classes from './styles/TopBar.module.css';
 import {useThemePicker} from './theme-picker/ThemePickerContext.js';
 
@@ -20,7 +19,6 @@ const TopBar = () => (
         <div>
             <Image src={plasmaLogo} className="header-logo" height={80} fit="contain" alt="Plasma Design System" />
         </div>
-        <StandaloneSearchBar />
         <Group gap="sm">
             <a href="https://github.com/coveo/plasma#readme" aria-label="README" target="_blank">
                 <Image src={githubLogo} width={32} height={32} className={classes.githubImage} />
