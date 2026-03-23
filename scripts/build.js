@@ -26,17 +26,7 @@ const build = async ({watch = false}) => {
             tscArgs.push('--project', './tsconfig.build.json');
         }
         const tscESMArgs = [...tscArgs, '--declarationDir', './dist/esm'];
-        const tscCJSArgs = [
-            ...tscArgs,
-            '--declarationDir',
-            './dist/cjs',
-            '--target',
-            'es5',
-            '--module',
-            'commonjs',
-            '--moduleResolution',
-            'node10',
-        ];
+        const tscCJSArgs = [...tscArgs, '--declarationDir', './dist/cjs'];
         const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
 
         if (watch) {

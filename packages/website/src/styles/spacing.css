@@ -1,10 +1,10 @@
-$square-size: 120px;
+:root {
+    --spacing-square-size: 120px;
+}
 
-.highlight-padding {
-    > * {
-        background-image: linear-gradient(white, white), linear-gradient(var(--navy-blue-30), var(--navy-blue-30));
-        background-clip: content-box, padding-box;
-    }
+.highlight-padding > * {
+    background-image: linear-gradient(white, white), linear-gradient(var(--navy-blue-30), var(--navy-blue-30));
+    background-clip: content-box, padding-box;
 }
 
 .highlight-margin {
@@ -14,7 +14,7 @@ $square-size: 120px;
 
 .spacing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax($square-size, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--spacing-square-size), 1fr));
     gap: 8px;
 }
 
@@ -22,8 +22,8 @@ $square-size: 120px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: $square-size;
-    height: $square-size;
+    width: var(--spacing-square-size);
+    height: var(--spacing-square-size);
     font-family: 'source_code_pro_regular', 'Courier New', Courier, monospace;
     text-align: center;
     border: 1px solid black;

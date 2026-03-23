@@ -33,11 +33,11 @@
         "@storybook/react-vite": "10.2.8",
         "@types/react": "19.2.13",
         "@types/react-dom": "19.2.3",
-        "@vitejs/plugin-react-swc": "4.2.3",
+        "@vitejs/plugin-react": "6.0.0",
         "globals": "17.3.0",
         "postcss-preset-mantine": "1.18.0",
         "storybook": "10.2.10",
         "typescript": "5.9.3",
-        "vite": "7.3.1"
+        "vite": "8.0.0"
     }
 }
