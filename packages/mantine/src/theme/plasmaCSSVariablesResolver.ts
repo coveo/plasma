@@ -21,7 +21,7 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
         },
         dark: {
             // custom colors
-            '--coveo-color-title': 'var(--mantine-color-white)',
+            '--coveo-color-title': 'var(--mantine-color-text)',
             '--coveo-app-background': theme.colors.dark[8],
             '--coveo-color-input-border': theme.colors.dark[4],
             '--coveo-color-text-readonly': theme.colors.dark[0],
@@ -49,7 +49,7 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             // custom colors
             '--coveo-app-background': theme.colors.gray[0],
             '--coveo-color-input-border': theme.colors.gray[3],
-            '--coveo-color-title': theme.colors.gray[8],
+            '--coveo-color-title': 'var(--mantine-color-text)', // @deprecated
             '--coveo-color-text-readonly': 'var(--mantine-color-text)',
             '--coveo-color-bg-readonly': theme.colors.gray[1],
             '--coveo-color-text-primary': 'var(--mantine-primary-color-filled)',
@@ -61,12 +61,9 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--mantine-color-default-border': theme.colors.gray[2],
             '--mantine-color-default-hover': theme.colors.gray[1],
             '--mantine-color-error': theme.colors.red[5],
-            '--mantine-color-text': theme.colors.gray[6],
             '--mantine-color-dimmed': theme.colors.gray[5],
-            '--mantine-color-gray-filled': theme.colors.gray[4],
-            '--mantine-color-warning-filled': theme.colors.yellow[4],
             '--mantine-color-placeholder': theme.colors.gray[4],
-            '--mantine-color-disabled': alpha(theme.colors.gray[4], 0.1),
+            '--mantine-color-disabled': theme.colors.gray[1],
             '--mantine-color-disabled-color': theme.colors.gray[3],
         },
     };

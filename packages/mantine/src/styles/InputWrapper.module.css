@@ -4,10 +4,6 @@
     gap: var(--mantine-spacing-xxs);
 }
 
-.label {
-    color: var(--coveo-color-title);
-}
-
 .description {
     font-weight: var(--coveo-fw-normal);
     font-size: var(--mantine-font-size-sm);

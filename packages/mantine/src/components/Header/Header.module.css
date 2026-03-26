@@ -12,14 +12,9 @@
 
 .title {
     word-break: break-word;
-    color: var(--coveo-color-title);
 }
 
 .docAnchor {
     margin-left: var(--mantine-spacing-xs);
     vertical-align: middle;
-}
-
-.breadcrumbText {
-    color: var(--coveo-color-title);
 }

@@ -2,8 +2,6 @@
     padding: var(--mantine-spacing-xs);
 
     @mixin light {
-        color: var(--coveo-color-title);
-
         @mixin hover {
             &:not([data-combobox-disabled], [data-checked], [data-combobox-selected]) {
                 background-color: var(--mantine-color-default-hover);
