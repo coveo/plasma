@@ -11,6 +11,7 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
+import {ReactNode} from 'react';
 import classes from './ChildForm.module.css';
 
 export type ChildFormStylesNames = 'root' | 'paper';
@@ -23,7 +24,7 @@ export interface ChildFormProps extends CollapseProps, StylesApiProps<ChildFormF
     /**
      * Description of the child form.
      */
-    description?: string;
+    description?: ReactNode;
 }
 
 type ChildFormFactory = Factory<{
@@ -41,6 +42,8 @@ export const ChildForm = polymorphicFactory<ChildFormFactory>((props, ref) => {
         defaultProps,
         props,
     );
+    const hasDescription =
+        description !== null && description !== undefined && description !== '' && typeof description !== 'boolean';
 
     const getStyles = useStyles<ChildFormFactory>({
         name: 'ChildForm',
@@ -57,10 +60,14 @@ export const ChildForm = polymorphicFactory<ChildFormFactory>((props, ref) => {
     return (
         <Collapse ref={ref} {...others} {...getStyles('root')}>
             <Paper p="md" {...getStyles('paper')}>
-                {(title || description) && (
+                {(title || hasDescription) && (
                     <Stack gap={0} mb="md">
                         {title && <Title order={5}>{title}</Title>}
-                        {description && <Text c="gray.7">{description}</Text>}
+                        {hasDescription && (
+                            <Text component="div" c="gray.7">
+                                {description}
+                            </Text>
+                        )}
                     </Stack>
                 )}
                 <Stack gap="md">{children}</Stack>
