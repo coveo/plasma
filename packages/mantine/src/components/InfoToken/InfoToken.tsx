@@ -1,10 +1,9 @@
 import {
-    IconAlertSquareFilled,
-    IconAlertTriangleFilled,
-    IconBulbFilled,
+    IconAlertSquare,
+    IconAlertTriangle,
+    IconBulb,
     IconHelpCircle,
     IconInfoCircle,
-    IconInfoCircleFilled,
     TablerIcon,
 } from '@coveord/plasma-react-icons';
 import {
@@ -67,10 +66,10 @@ const colorResolver = (variant: InfoTokenVariant): string => {
         case 'question':
             return 'var(--coveo-color-text-primary)';
         case 'warning':
-            return 'var(--mantine-color-warning-filled)';
+            return 'var(--mantine-color-yellow-text)';
         case 'information':
         default:
-            return 'var(--mantine-color-gray-3)';
+            return 'var(--mantine-color-gray-text)';
     }
 };
 
@@ -96,18 +95,15 @@ const sizeResolver = (size: MantineSize): number => {
 const iconResolver = (variant: InfoTokenVariant): TablerIcon => {
     switch (variant) {
         case 'error':
-            return IconAlertSquareFilled;
-        case 'information':
-            return IconInfoCircleFilled;
-        case 'information-outline':
-            return IconInfoCircle;
+            return IconAlertSquare;
         case 'question':
             return IconHelpCircle;
         case 'warning':
-            return IconAlertTriangleFilled;
+            return IconAlertTriangle;
         case 'advice':
+            return IconBulb;
         default:
-            return IconBulbFilled;
+            return IconInfoCircle;
     }
 };
 

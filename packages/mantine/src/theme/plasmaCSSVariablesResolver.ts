@@ -63,7 +63,6 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--mantine-color-error': theme.colors.red[5],
             '--mantine-color-text': theme.colors.gray[6],
             '--mantine-color-dimmed': theme.colors.gray[5],
-            '--mantine-color-gray-filled': theme.colors.gray[4],
             '--mantine-color-warning-filled': theme.colors.yellow[4],
             '--mantine-color-placeholder': theme.colors.gray[4],
             '--mantine-color-disabled': alpha(theme.colors.gray[4], 0.1),
