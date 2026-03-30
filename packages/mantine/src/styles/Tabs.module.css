@@ -35,7 +35,7 @@
 
     &:not(:disabled, [data-disabled]) {
         @mixin hover {
-            color: var(--coveo-color-title);
+            color: var(--mantine-color-text);
         }
     }
 
@@ -45,7 +45,7 @@
     }
 
     &:where([data-active]) {
-        color: var(--coveo-color-title);
+        color: var(--mantine-color-text);
         box-shadow: inset var(--tab-box-shadow) var(--tabs-color);
     }
 }

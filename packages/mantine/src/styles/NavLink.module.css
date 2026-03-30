@@ -1,7 +1,5 @@
 .root {
     &:where(:not([data-active]), [data-disabled]) {
-        color: var(--coveo-color-title);
-
         &:hover {
             background-color: var(--mantine-color-default-hover);
         }

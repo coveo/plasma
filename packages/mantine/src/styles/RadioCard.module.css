@@ -58,7 +58,6 @@
 
 .title {
     flex: 1;
-    color: var(--coveo-color-title);
     word-break: break-word;
 }
 

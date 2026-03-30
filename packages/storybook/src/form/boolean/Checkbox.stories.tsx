@@ -15,6 +15,10 @@ const meta: Meta<typeof Checkbox> = {
             control: 'boolean',
             description: 'Checked state',
         },
+        indeterminate: {
+            control: 'boolean',
+            description: 'Indeterminate checked state',
+        },
         disabled: {
             control: 'boolean',
             description: 'Disabled state',
@@ -38,6 +42,7 @@ const meta: Meta<typeof Checkbox> = {
     },
     args: {
         checked: false,
+        indeterminate: false,
         disabled: false,
         readOnly: false,
         label: 'Label',
