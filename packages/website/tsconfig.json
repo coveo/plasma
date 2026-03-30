@@ -25,7 +25,7 @@
         "noUnusedLocals": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["src"],
+    "include": ["src", "types"],
     "exclude": ["src/examples/mantine/**.tsx"],
     "references": [{"path": "./tsconfig.node.json"}]
 }

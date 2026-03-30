@@ -25,6 +25,7 @@
         "noUnusedLocals": true,
         "strictBindCallApply": true,
 
+        "ignoreDeprecations": "6.0",
         "experimentalDecorators": true,
         "downlevelIteration": true,
         "removeComments": false,
