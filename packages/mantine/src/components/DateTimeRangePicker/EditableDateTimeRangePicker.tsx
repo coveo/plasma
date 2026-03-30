@@ -31,7 +31,9 @@ export const EditableDateTimeRangePicker = ({
     endProps = {},
 }: EditableDateTimeRangePickerProps) => {
     const onStartDateChange = (startDate: string | null) => {
-        if (startDate === null) return;
+        if (startDate === null) {
+            return;
+        }
         if (value?.[1] && dayjs(startDate) > dayjs(value[1])) {
             onChange?.([startDate, null]);
         } else {

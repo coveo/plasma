@@ -234,7 +234,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     tabSize,
                 }}
                 value={_value}
-                onChange={(value) => handleChange(value ?? '')}
+                onChange={(newValue) => handleChange(newValue ?? '')}
                 beforeMount={(monaco) => {
                     registerLanguages(monaco);
                     registerThemes(monaco);

@@ -46,7 +46,9 @@ export const DateRangePickerPresetSelect = ({
     }, [value]);
 
     const onChangePreset = (presetId: string | null) => {
-        if (presetId === null) return;
+        if (presetId === null) {
+            return;
+        }
         const range = presets[presetId].range as any;
         onChange?.(range);
     };
