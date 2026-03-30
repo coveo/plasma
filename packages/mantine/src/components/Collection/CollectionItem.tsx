@@ -42,7 +42,7 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
     return (
         <Group
             data-testid={`item-${id}`}
-            {...ctx.getStyles('item', {style, className, classNames, styles})}
+            {...ctx.getStyles('item', {style, className, classNames: classNames as any, styles: styles as any})}
             {...others}
         >
             {children}
@@ -69,7 +69,7 @@ const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItem
     return (
         <Group
             data-testid={`item-${id}`}
-            {...ctx.getStyles('item', {style, className, classNames, styles})}
+            {...ctx.getStyles('item', {style, className, classNames: classNames as any, styles: styles as any})}
             {...others}
         >
             {children}
@@ -108,8 +108,8 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
                       }
                     : undefined,
                 className,
-                classNames,
-                styles,
+                classNames: classNames as any,
+                styles: styles as any,
             })}
             data-isdragging={isDragging}
             {...others}

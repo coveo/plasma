@@ -132,7 +132,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
     return (
         <HeaderProvider value={{getStyles}}>
             <Group ref={ref} variant={variant} {...getStyles('root')} {...others}>
-                <Stack gap={getSpacing(variant)}>
+                <Stack gap={getSpacing(variant ?? 'primary')}>
                     {breadcrumbs}
                     <Title
                         variant={variant}

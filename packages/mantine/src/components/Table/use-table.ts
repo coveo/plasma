@@ -227,8 +227,8 @@ const PAGINATION_SERIALIZATION = serialization<'pagination'>({
     deserializer: (params, initialState) =>
         defaultsDeep(
             {
-                pageIndex: params.get('page') ? Math.max(1, parseInt(params.get('page'), 10)) - 1 : undefined,
-                pageSize: params.get('pageSize') ? parseInt(params.get('pageSize'), 10) : undefined,
+                pageIndex: params.get('page') ? Math.max(1, parseInt(params.get('page')!, 10)) - 1 : undefined,
+                pageSize: params.get('pageSize') ? parseInt(params.get('pageSize')!, 10) : undefined,
             },
             initialState,
         ),
@@ -454,8 +454,8 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         clearRowSelection,
         getSelectedRows,
         getSelectedRow,
-        rowSelectionEnabled: options.enableRowSelection,
-        rowSelectionForced: options.forceSelection,
-        multiRowSelectionEnabled: options.enableMultiRowSelection,
+        rowSelectionEnabled: options.enableRowSelection ?? true,
+        rowSelectionForced: options.forceSelection ?? false,
+        multiRowSelectionEnabled: options.enableMultiRowSelection ?? false,
     };
 };

@@ -65,7 +65,6 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
             <Radio.Card
                 ref={ref}
                 disabled={disabled}
-                readOnly={_props.readOnly}
                 {...getStyles('card', {className, style, classNames, styles})}
                 {...others}
             >

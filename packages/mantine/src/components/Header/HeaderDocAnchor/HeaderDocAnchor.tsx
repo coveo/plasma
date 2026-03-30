@@ -61,10 +61,10 @@ export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => 
         >
             <Anchor
                 ref={ref}
-                inline
                 target="_blank"
                 {...ctx.getStyles('docAnchor', {classNames, styles, props, style, className})}
                 {...others}
+                inline
             >
                 {children}
             </Anchor>

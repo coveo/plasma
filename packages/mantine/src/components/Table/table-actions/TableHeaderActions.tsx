@@ -19,7 +19,7 @@ type TableHeaderActionsFactory = Factory<{
 const defaultProps: Partial<TableHeaderActionsProps> = {};
 
 export const TableHeaderActions = factory<TableHeaderActionsFactory>(
-    (props: TableHeaderActionsProps, ref): ReactElement => {
+    (props: TableHeaderActionsProps, ref): ReactElement | null => {
         const {store, getStyles, getRowActions} = useTableContext();
         const {style, className, classNames, styles, ...others} = useProps(
             'PlasmaTableHeaderActions',
@@ -43,11 +43,11 @@ export const TableHeaderActions = factory<TableHeaderActionsFactory>(
 
         return (
             <Grid.Col
-                span="content"
-                order={TableComponentsOrder.Actions}
                 ref={ref}
                 {...getStyles('headerActionsRoot', {className, style, ...stylesApiProps})}
                 {...others}
+                span="content"
+                order={TableComponentsOrder.Actions}
             >
                 <Group gap="xs" {...getStyles('headerActionsGroup', stylesApiProps)}>
                     <TableActionsList actions={actions} variant="split" />

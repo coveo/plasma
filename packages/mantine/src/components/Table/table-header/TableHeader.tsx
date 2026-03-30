@@ -90,7 +90,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
                                 disabled={!store.rowSelectionEnabled}
                                 leftSection={<CrossSize16Px height={16} />}
                             >
-                                {selectedCountLabel(selectedRows.length)}
+                                {selectedCountLabel?.(selectedRows.length)}
                             </Button.Quaternary>
                         </Tooltip>
                     </Grid.Col>

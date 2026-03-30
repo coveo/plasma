@@ -93,11 +93,11 @@ const resolveIconSrcFromVariant = (variant: StatusTokenVariant): string => {
 };
 
 const varsResolver = createVarsResolver<StatusTokenFactory>((theme, {variant, size}) => {
-    const color = resolveThemeColorFromVariant(variant, theme);
+    const color = resolveThemeColorFromVariant(variant ?? 'info', theme);
     return {
         root: {
             '--status-token-color': color,
-            '--status-token-size': getSize(resolveSize(size), 'status-token-size'),
+            '--status-token-size': getSize(resolveSize(size ?? 'lg'), 'status-token-size'),
         },
     };
 });
@@ -136,14 +136,14 @@ export const StatusToken: ReturnType<typeof polymorphicFactory<StatusTokenFactor
                 ref={ref}
                 variant={variant}
                 role="img"
-                aria-label={statusTokenLabels[variant]}
+                aria-label={statusTokenLabels[variant ?? 'info']}
                 {...getStyles('root', {
                     className,
                     style,
                     styles,
                     classNames,
                 })}
-                dangerouslySetInnerHTML={{__html: resolveIconSrcFromVariant(variant)}}
+                dangerouslySetInnerHTML={{__html: resolveIconSrcFromVariant(variant ?? 'info')}}
                 {...others}
             />
         );

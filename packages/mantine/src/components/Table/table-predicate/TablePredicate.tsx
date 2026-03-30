@@ -52,8 +52,8 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<Ta
     const {id, data, label, classNames, className, styles, style, renderOption, comboboxProps, vars, ...others} =
         useProps('PlasmaTablePredicate', defaultProps, props);
 
-    const handleChange = (newValue: string) => {
-        store.setPredicates((prev) => ({...prev, [id]: newValue}));
+    const handleChange = (newValue: string | null) => {
+        store.setPredicates((prev) => ({...prev, [id]: newValue ?? ''}));
         store.setPagination((prev) => ({...prev, pageIndex: 0}));
     };
 

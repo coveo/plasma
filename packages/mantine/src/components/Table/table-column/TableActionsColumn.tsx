@@ -59,5 +59,5 @@ const ActionsMenu: FunctionComponent<TableActionsColumnProps> = (props) => {
     const {info, ...others} = useProps('PlasmaTableActionsColumn', defaultProps, props);
 
     const actionsElements = getRowActions([info.row.original]);
-    return <TableActionsList actions={actionsElements} variant="combined" {...others} />;
+    return <TableActionsList actions={actionsElements} {...others} variant="combined" />;
 };

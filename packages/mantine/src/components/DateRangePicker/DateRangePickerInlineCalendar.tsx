@@ -7,8 +7,10 @@ import {Button} from '../Button/Button.js';
 import DateRangeClasses from './DateRange.module.css';
 import {DateRangePickerPreset, DateRangePickerPresetSelect} from './DateRangePickerPresetSelect.js';
 import {EditableDateRangePicker, EditableDateRangePickerProps} from './EditableDateRangePicker.js';
-export interface DateRangePickerInlineCalendarProps
-    extends Pick<EditableDateRangePickerProps, 'startProps' | 'endProps'> {
+export interface DateRangePickerInlineCalendarProps extends Pick<
+    EditableDateRangePickerProps,
+    'startProps' | 'endProps'
+> {
     /**
      * Initial selected range
      */
@@ -85,7 +87,7 @@ export const DateRangePickerInlineCalendar = ({
         // In case the user only clicked the start date, but not the end date,
         // assume a single day was meant to be selected.
         if (!form.values.dates[1]) {
-            form.values.dates[1] = endOfDay(form.values.dates[0]);
+            form.values.dates[1] = endOfDay(form.values.dates[0] ?? '');
         }
         onApply(form.values.dates);
     };

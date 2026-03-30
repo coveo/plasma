@@ -59,15 +59,10 @@ export const LastUpdated = factory<LastUpdatedFactory>(
         const stylesApiProps = {classNames, styles};
 
         return (
-            <Group
-                justify={props.justify}
-                ref={ref}
-                {...getStyles('root', {className, style, ...stylesApiProps})}
-                {...others}
-            >
+            <Group ref={ref} {...getStyles('root', {className, style, ...stylesApiProps})} {...others}>
                 <Text size="xs" {...getStyles('label', {className, style, ...stylesApiProps})}>
                     {label}
-                    <span role="timer">{formatter(resolvedTime)}</span>
+                    <span role="timer">{formatter?.(resolvedTime)}</span>
                 </Text>
             </Group>
         );

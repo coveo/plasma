@@ -212,7 +212,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
     const handleValueSelect = (val: string) =>
         handleSelection(_selection.includes(val) ? _selection.filter((v) => v !== val) : [..._selection, val]);
 
-    let groupName: string = null;
+    let groupName: string | null = null;
 
     useEffect(() => {
         combobox.openDropdown();
@@ -220,6 +220,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
 
     sortedData.forEach((item) => {
         const isSelected = _selection.includes(item.value);
+        const ResolvedItemComponent = ItemComponent ?? DefaultFacetItem;
         const itemComponent = (
             <Combobox.Option
                 aria-selected={isSelected ? true : false}
@@ -228,7 +229,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                 onMouseEnter={() => combobox.resetSelectedOption()}
                 className={clsx(classes.facetItem)}
             >
-                <ItemComponent data={item} selected={isSelected} countFormatter={itemCountFormatter} />
+                <ResolvedItemComponent data={item} selected={isSelected} countFormatter={itemCountFormatter} />
             </Combobox.Option>
         );
 
@@ -254,6 +255,8 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
             </div>,
         );
     }
+
+    const ResolvedListComponent = ListComponent ?? FacetScrollArea;
 
     return (
         <Box className={clsx(classes.facet, className)} {...others} ref={ref}>
@@ -293,7 +296,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                 </Combobox.EventsTarget>
                 <div className={classes.facetBody}>
                     <Combobox.EventsTarget>
-                        <ListComponent
+                        <ResolvedListComponent
                             className={classes.facetItems}
                             mah={height}
                             style={{overflow: 'auto', position: 'relative'}}
@@ -313,7 +316,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                                     </Combobox.Empty>
                                 )}
                             </Combobox.Options>
-                        </ListComponent>
+                        </ResolvedListComponent>
                     </Combobox.EventsTarget>
                 </div>
             </Combobox>

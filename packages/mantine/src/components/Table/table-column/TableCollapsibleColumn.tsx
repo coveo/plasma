@@ -78,11 +78,11 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
     return info.row.getCanExpand() ? (
         <ActionIcon.Quaternary
             ref={ref}
+            {...getStyles('collapsibleIcon', {className, classNames, styles, style})}
+            {...others}
             onClick={onClick}
             color="gray"
             radius="sm"
-            {...getStyles('collapsibleIcon', {className, classNames, styles, style})}
-            {...others}
         >
             {info.row.getIsExpanded() ? iconExpanded : iconCollapsed}
         </ActionIcon.Quaternary>

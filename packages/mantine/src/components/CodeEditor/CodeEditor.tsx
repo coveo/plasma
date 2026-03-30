@@ -109,6 +109,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         monacoLoader,
         options: {tabSize} = {tabSize: 2},
         editorHandle,
+        justify = 'flex-start',
+        gap = 'sm',
+        h: hProp,
+        mah: mahProp,
         ...others
     } = useProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
@@ -119,7 +123,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         finalValue: '',
     });
     const [parentHeight, ref] = useParentHeight();
-    const editorRef = useRef(null);
+    const editorRef = useRef<monacoEditor.IStandaloneCodeEditor | null>(null);
 
     const loadLocalMonaco = async () => {
         const monacoInstance = await import('monaco-editor');
@@ -230,7 +234,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     tabSize,
                 }}
                 value={_value}
-                onChange={handleChange}
+                onChange={(value) => handleChange(value ?? '')}
                 beforeMount={(monaco) => {
                     registerLanguages(monaco);
                     registerThemes(monaco);
@@ -258,9 +262,9 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         </Center>
     );
 
-    const height = Math.max(Number.isNaN(parentHeight) ? 0 : parentHeight, minHeight);
+    const height = Math.max(Number.isNaN(parentHeight) ? 0 : parentHeight, minHeight ?? 300);
     return (
-        <Stack justify="flex-start" gap="sm" h={height} mah={maxHeight} ref={ref} {...others}>
+        <Stack justify={justify} gap={gap} h={hProp ?? height} mah={mahProp ?? maxHeight} ref={ref} {...others}>
             <Group justify="space-between">
                 {_header}
                 {_buttons}

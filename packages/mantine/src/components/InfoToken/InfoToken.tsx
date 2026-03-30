@@ -108,7 +108,7 @@ const iconResolver = (variant: InfoTokenVariant): TablerIcon => {
 };
 
 const varsResolver = createVarsResolver<InfoTokenFactory>((_theme, {variant}) => {
-    const color = colorResolver(variant);
+    const color = colorResolver(variant ?? 'information');
     return {
         root: {
             '--info-token-color': color,
@@ -130,7 +130,7 @@ export const InfoToken = polymorphicFactory<InfoTokenFactory>((_props, ref) => {
         vars,
         varsResolver,
     });
-    const IconComponent = iconResolver(variant);
+    const IconComponent = iconResolver(variant ?? 'information');
     return (
         <Box
             ref={ref}
@@ -146,7 +146,7 @@ export const InfoToken = polymorphicFactory<InfoTokenFactory>((_props, ref) => {
             })}
             {...others}
         >
-            <IconComponent size={sizeResolver(size)} />
+            <IconComponent size={sizeResolver(size ?? 'xs')} />
         </Box>
     );
 });

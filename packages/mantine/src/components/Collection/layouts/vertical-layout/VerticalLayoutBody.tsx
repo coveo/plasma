@@ -103,13 +103,13 @@ export const VerticalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: Forwar
     );
 
     const itemComponents = mapItemsToComponents(items, verticalRenderers, config, classes as LayoutClasses, {
-        getItemId,
+        getItemId: getItemId as ((item: unknown, index: number) => string) | undefined,
         onRemove,
         removable,
         draggable,
         disabled,
         readOnly,
-        columns: collectionCtx.columns,
+        columns: collectionCtx.columns ?? [],
     });
 
     return (

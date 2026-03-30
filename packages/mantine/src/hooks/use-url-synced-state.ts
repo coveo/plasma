@@ -23,7 +23,8 @@ const slice = Function.prototype.call.bind(Array.prototype.slice) as <T>(
  * @param href The url to extract the parts from.
  * @returns The separate parts, all are an empty string if not present.
  */
-const extractParts = (href: string) => slice(/^([^?#]*)(\?[^#]*|)(#[^?]*|)(\?.*|)$/.exec(href ?? ''), 1, 5) as UrlParts;
+const extractParts = (href: string) =>
+    slice(/^([^?#]*)(\?[^#]*|)(#[^?]*|)(\?.*|)$/.exec(href ?? '') ?? [], 1, 5) as UrlParts;
 
 /**
  * The index of the search parameter to use, e.g. hashSearch for hash routes (hash starts with '#/').
@@ -111,7 +112,7 @@ export const useUrlSyncedState = <T>(options: UseUrlSyncedStateOptions<T>) => {
         let initialize: URLSearchParams | null = null;
         let needsApply = false;
         for (const [key, value, alwaysEmit] of options.serializer(getInitialState(options))) {
-            stateMap.set(key, value);
+            stateMap.set(key, value ?? '');
             if (sync && alwaysEmit && value) {
                 initialize ??= getSearchParams();
                 if (!initialize.has(key)) {
@@ -121,7 +122,7 @@ export const useUrlSyncedState = <T>(options: UseUrlSyncedStateOptions<T>) => {
             }
         }
         if (needsApply) {
-            applySearchParams(initialize);
+            applySearchParams(initialize!);
         }
         return stateMap;
     }, []);

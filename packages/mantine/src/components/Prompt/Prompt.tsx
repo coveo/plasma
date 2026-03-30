@@ -29,8 +29,7 @@ export type PromptStylesNames =
     | PromptConfirmButtonStylesNamesVariant;
 
 export interface PromptProps
-    extends StylesApiProps<PromptFactory>,
-        Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes'> {
+    extends StylesApiProps<PromptFactory>, Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes'> {
     /**
      * Controls prompt appearance
      *
@@ -97,15 +96,16 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     const footers: ReactElement[] = [];
     const otherChildren: ReactElement[] = [];
 
-    Children.forEach(children, (child: ReactElement) => {
-        (child.type === Prompt.Footer ? footers : otherChildren).push(child);
+    Children.forEach(children, (child) => {
+        const element = child as ReactElement;
+        (element.type === Prompt.Footer ? footers : otherChildren).push(element);
     });
 
-    const IconComponent = PromptVariantIconsMapping[variant];
+    const IconComponent = PromptVariantIconsMapping[variant ?? 'info'];
 
     return (
-        <PromptContextProvider value={{variant, getStyles}}>
-            <Modal.Root ref={ref} variant="prompt" size="sm" {...others} {...getStyles('root')}>
+        <PromptContextProvider value={{variant: variant ?? 'info', getStyles}}>
+            <Modal.Root ref={ref} variant="prompt" {...others} size="sm" {...getStyles('root')}>
                 <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
                 <Modal.Content {...getStyles('content', stylesApiProps)}>
                     <Modal.Header {...getStyles('header', stylesApiProps)}>

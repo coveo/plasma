@@ -12,8 +12,10 @@ export const Plasmantine: FunctionComponent<MantineProviderProps> = ({
     cssVariablesResolver: externalCSSVariablesResolver,
     ...others
 }) => {
-    const theme = mergeThemeOverrides(plasmaTheme, externalTheme);
-    const cssVariablesResolver = mergeCSSVariablesResolvers(plasmaCSSVariablesResolver, externalCSSVariablesResolver);
+    const theme = externalTheme ? mergeThemeOverrides(plasmaTheme, externalTheme) : plasmaTheme;
+    const cssVariablesResolver = externalCSSVariablesResolver
+        ? mergeCSSVariablesResolvers(plasmaCSSVariablesResolver, externalCSSVariablesResolver)
+        : plasmaCSSVariablesResolver;
 
     return (
         <MantineProvider theme={theme} cssVariablesResolver={cssVariablesResolver} {...others}>

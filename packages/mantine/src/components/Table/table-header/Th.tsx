@@ -79,7 +79,7 @@ export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElem
 
     const onSort = header.column.getToggleSortingHandler();
     const sortingOrder = header.column.getIsSorted() || 'none';
-    const Icon = sortingIcons[sortingOrder];
+    const Icon = (sortingIcons ?? SortingIcons)[sortingOrder];
 
     return (
         <UnstyledButton

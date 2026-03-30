@@ -155,7 +155,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             minSize: defaultColumnSizing.minSize,
             maxSize: defaultColumnSizing.maxSize,
         },
-        rowCount: options?.getFilteredRowModel ? undefined : store.state.totalEntries,
+        rowCount: options?.getFilteredRowModel ? undefined : (store.state.totalEntries ?? undefined),
         ...options,
     });
 
@@ -219,7 +219,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             }
         },
         null,
-        [containerRef.current, ...additionalRootNodes],
+        [containerRef.current, ...(additionalRootNodes ?? [])],
     );
     const mergedRef = useMergedRef(containerRef, ref);
 
@@ -232,13 +232,25 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     }
 
     const Layout =
-        store.state.layout === null ? layouts[0] : layouts.find(({displayName}) => displayName === store.state.layout);
+        store.state.layout === null
+            ? layouts![0]
+            : layouts!.find(({displayName}) => displayName === store.state.layout);
     const hasRows = table.getRowModel().rows.length > 0;
 
+    const LayoutComponent = Layout!;
     return (
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
-            <TableProvider<T> value={{getStyles, getRowActions, store, table, layouts, containerRef}}>
-                <Layout>
+            <TableProvider<T>
+                value={{
+                    getStyles,
+                    getRowActions: getRowActions ?? (() => []),
+                    store,
+                    table,
+                    layouts: layouts!,
+                    containerRef,
+                }}
+            >
+                <LayoutComponent>
                     {store.isVacant && !store.isFiltered ? (
                         noData
                     ) : (
@@ -252,7 +264,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                             </th>
                                         </tr>
                                     ) : null}
-                                    <Layout.Header
+                                    <LayoutComponent.Header
                                         getRowExpandedContent={getRowExpandedContent}
                                         getRowAttributes={getRowAttributes}
                                         loading={loading}
@@ -261,7 +273,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                 </thead>
                                 <tbody {...getStyles('body')}>
                                     {hasRows ? (
-                                        <Layout.Body
+                                        <LayoutComponent.Body
                                             getRowExpandedContent={getRowExpandedContent}
                                             getRowAttributes={getRowAttributes}
                                             loading={loading}
@@ -282,7 +294,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                             {lastUpdated}
                         </>
                     )}
-                </Layout>
+                </LayoutComponent>
             </TableProvider>
         </Box>
     );

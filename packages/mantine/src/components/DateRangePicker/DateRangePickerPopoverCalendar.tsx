@@ -46,7 +46,7 @@ export const DateRangePickerPopoverCalendar = ({
     const [opened, setOpened] = useState(false);
     const ref = useClickOutside(() => setOpened(false));
 
-    const [_value, handleChange] = useUncontrolled<DatesRangeValue<DateStringValue> | null>({
+    const [_value, handleChange] = useUncontrolled<DatesRangeValue<DateStringValue | null>>({
         value,
         defaultValue,
         onChange,
@@ -81,7 +81,11 @@ export const DateRangePickerPopoverCalendar = ({
                         {presets ? (
                             <>
                                 <Space w="sm" />
-                                <DateRangePickerPresetSelect presets={presets} value={_value} onChange={handleChange} />
+                                <DateRangePickerPresetSelect
+                                    presets={presets}
+                                    value={_value as DatesRangeValue<DateStringValue>}
+                                    onChange={handleChange as (value: DatesRangeValue) => void}
+                                />
                             </>
                         ) : null}
                     </Group>

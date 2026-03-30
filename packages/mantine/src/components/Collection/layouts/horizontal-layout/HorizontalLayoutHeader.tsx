@@ -10,16 +10,16 @@ const defaultProps: Partial<LayoutHeaderProps> = LAYOUT_HEADER_DEFAULT_PROPS;
 
 export const HorizontalLayoutHeader = (props: LayoutHeaderProps & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
-    const {draggable, removable, style, ref, ...others} = useProps(
+    const {draggable, removable, style, className, ref, ...others} = useProps(
         'HorizontalLayoutHeader',
         defaultProps as LayoutHeaderProps,
         props,
     );
 
     return (
-        <Box ref={ref} className={classes.headerRow} style={style} {...others}>
+        <Box ref={ref} className={className ?? classes.headerRow} style={style} {...others}>
             {draggable && <div className={classes.dragHandleHeader} />}
-            {collectionCtx.columns.map((column, index) => {
+            {(collectionCtx.columns ?? []).map((column, index) => {
                 const columnId = column.id ?? `column-${index}`;
                 return (
                     <Box key={columnId} className={classes.headerCell} style={getColumnSizeStyles(column)}>

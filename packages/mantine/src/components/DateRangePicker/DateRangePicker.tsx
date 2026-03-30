@@ -10,7 +10,7 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {DatesRangeValue, DateStringValue} from '@mantine/dates';
+import {DatesRangeValue} from '@mantine/dates';
 import {useUncontrolled} from '@mantine/hooks';
 import dayjs from 'dayjs';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state';
@@ -168,8 +168,8 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
     };
 
     const _value = value ?? dateRange;
-    const formattedRange = `${formatter(_value[0])} - ${formatter(_value[1])}`;
-    const dateRangeInitialized = _value.every((date: DateStringValue) => typeof date === 'string' && date !== '');
+    const formattedRange = `${formatter!(_value[0])} - ${formatter!(_value[1])}`;
+    const dateRangeInitialized = _value.every((date: string | null) => typeof date === 'string' && date !== '');
 
     return (
         <Popover opened={_opened} onChange={setOpened}>

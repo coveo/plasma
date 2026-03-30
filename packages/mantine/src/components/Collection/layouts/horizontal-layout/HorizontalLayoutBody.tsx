@@ -51,13 +51,13 @@ export const HorizontalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: Forw
     );
 
     const rows = mapItemsToComponents(items, horizontalRenderers, config, classes as LayoutClasses, {
-        getItemId,
+        getItemId: getItemId as ((item: unknown, index: number) => string) | undefined,
         onRemove,
         removable,
         draggable,
         disabled,
         readOnly,
-        columns: collectionCtx.columns,
+        columns: collectionCtx.columns ?? [],
     });
 
     return (
