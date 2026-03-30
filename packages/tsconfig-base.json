@@ -9,7 +9,6 @@
         "outDir": "${configDir}/dist",
         "rootDirs": ["${configDir}/src", "${configDir}/__mocks__"],
         "tsBuildInfoFile": "${configDir}/dist/.tsbuildinfo",
-        "baseUrl": "${configDir}",
 
         "composite": false,
         "incremental": true,
@@ -25,9 +24,7 @@
         "noUnusedLocals": true,
         "strictBindCallApply": true,
 
-        "ignoreDeprecations": "6.0",
         "experimentalDecorators": true,
-        "downlevelIteration": true,
         "removeComments": false,
         "emitDecoratorMetadata": true,
         "allowSyntheticDefaultImports": true,

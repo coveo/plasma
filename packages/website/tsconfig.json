@@ -6,7 +6,6 @@
         "module": "ESNext",
         "skipLibCheck": true,
         "typeRoots": ["./types", "./node_modules/@types"],
-        "baseUrl": ".",
         "paths": {
             "@examples/*": ["src/examples/*"],
             "@demo": ["src/building-blocs/Demo.tsx"]
