@@ -50,7 +50,7 @@
         "@commitlint/config-conventional": "20.5.0",
         "@coveo/semantic-monorepo-tools": "2.7.1",
         "@types/node": "24.12.0",
-        "@vitest/eslint-plugin": "1.6.12",
+        "@vitest/eslint-plugin": "1.6.13",
         "aws-sdk": "2.1693.0",
         "commitizen": "4.3.1",
         "conventional-changelog-angular": "8.3.0",
@@ -63,8 +63,8 @@
         "eslint-plugin-react": "7.37.5",
         "eslint-plugin-react-hooks": "5.2.0",
         "eslint-plugin-react-refresh": "0.5.2",
-        "eslint-plugin-storybook": "10.2.19",
-        "eslint-plugin-testing-library": "7.16.0",
+        "eslint-plugin-storybook": "10.3.3",
+        "eslint-plugin-testing-library": "7.16.2",
         "eslint-plugin-unused-imports": "4.4.1",
         "globals": "17.4.0",
         "husky": "9.1.7",
@@ -72,13 +72,13 @@
         "postcss": "8.5.8",
         "prettier": "3.8.1",
         "sort-package-json": "3.6.1",
-        "stylelint": "17.4.0",
+        "stylelint": "17.5.0",
         "stylelint-config-standard-scss": "17.0.0",
-        "turbo": "2.8.17",
+        "turbo": "2.8.20",
         "typescript": "5.9.3",
-        "typescript-eslint": "8.57.1"
+        "typescript-eslint": "8.57.2"
     },
-    "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
+    "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
     "pnpm": {
         "peerDependencyRules": {
             "ignoreMissing": [
