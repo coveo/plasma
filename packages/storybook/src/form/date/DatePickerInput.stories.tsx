@@ -1,10 +1,19 @@
 import {DatePickerInput} from '@coveord/plasma-mantine/components/DatePickerInput';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import dayjs from 'dayjs';
+import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
-import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
-const meta: Meta<typeof DatePickerInput> = {
+type DatePickerInputStoryArgs = ComponentProps<typeof DatePickerInput> & BaseInputStoryArgs & InputWrapperStoryArgs;
+
+const meta = {
     title: '@components/form/date/DatePickerInput',
     id: 'DatePickerInput',
     component: DatePickerInput,
@@ -70,10 +79,10 @@ const meta: Meta<typeof DatePickerInput> = {
         },
         clearable: Args.clearable.type,
     },
-};
+} satisfies Meta<DatePickerInputStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof DatePickerInput>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <DatePickerInput {...props} />,
+    render: (props) => <DatePickerInput {...withLabelInfoProps(props)} />,
 };

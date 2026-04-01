@@ -1,21 +1,27 @@
 import {Facet} from '@coveord/plasma-mantine/components/Facet';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
+import {withTitleInfoProps} from '../LabelInfoArgs.js';
 
-const meta: Meta<typeof Facet> = {
+type FacetStoryArgs = ComponentProps<typeof Facet> & {
+    labelInfo?: string;
+};
+
+const meta = {
     title: '@components/form/array/Facet',
     id: 'Facet',
-    component: Facet,
     parameters: {
         layout: 'centered',
     },
-};
+} satisfies Meta<FacetStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof Facet>;
+type Story = StoryObj<FacetStoryArgs>;
 
 export const Demo: Story = {
     args: {
         title: 'Title',
+        labelInfo: Args.labelInfo.initialValue,
         data: [
             {value: 'apple', label: 'Apple', count: Math.floor(Math.random() * 1000), group: 'Fruits'},
             {value: 'banana', label: 'Banana', count: Math.floor(Math.random() * 1000), group: 'Fruits'},
@@ -35,6 +41,7 @@ export const Demo: Story = {
         searchPlaceholder: 'Search',
     },
     argTypes: {
+        labelInfo: Args.labelInfo.type,
         nothingFound: {
             control: 'text',
             table: {
@@ -57,4 +64,5 @@ export const Demo: Story = {
             },
         },
     },
+    render: (props) => <Facet {...withTitleInfoProps(props)} />,
 };

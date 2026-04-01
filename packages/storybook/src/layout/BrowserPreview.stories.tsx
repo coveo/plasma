@@ -4,6 +4,15 @@ import {faker} from '@faker-js/faker';
 import {useState} from 'react';
 import {Flex, Pagination, Stack, Text, Title} from '@coveord/plasma-mantine';
 
+interface Product {
+    name: string;
+    department: string;
+    price: string;
+}
+
+const numberOfItems = 40;
+const pageSize = 5;
+
 const meta: Meta<typeof BrowserPreview> = {
     title: '@components/layout/BrowserPreview',
     id: 'BrowserPreview',
@@ -27,18 +36,19 @@ export const Default: Story = {
                     price: faker.commerce.price(),
                 }));
         const [page, setPage] = useState(1);
-        const data: Product[][] = makeData(40).reduce((all, one, i) => {
+        const data = makeData(numberOfItems).reduce<Product[][]>((all, one, i) => {
             const ch = Math.floor(i / pageSize);
-            all[ch] = [].concat(all[ch] || [], one);
+            all[ch] = [...(all[ch] ?? []), one];
             return all;
         }, []);
         const numberOfPages = Math.ceil(numberOfItems / pageSize);
+        const currentPageData = data[page - 1] ?? [];
         return (
             <BrowserPreview>
                 <Stack flex={1}>
                     <Stack gap="xl" pb="sm">
-                        {data[page - 1].map((product) => (
-                            <Stack gap={0}>
+                        {currentPageData.map((product) => (
+                            <Stack key={`${product.name}-${product.department}-${product.price}`} gap={0}>
                                 <Text size="md" fw={400}>
                                     {product.name}
                                 </Text>
