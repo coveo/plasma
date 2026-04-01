@@ -233,7 +233,15 @@ export * from './components/Indicator/Indicator.js';
 export * from './components/InfoToken/InfoToken.js';
 
 // Input
-export * from './components/Input/Input.js';
+export {
+    Input,
+    InputLabelInfo,
+    type InputFactory,
+    type InputLabelInfoFactory,
+    type InputLabelInfoProps,
+    type InputLabelInfoStylesNames,
+    type InputProps,
+} from './components/Input/Input.js';
 
 // Input Base
 export * from './components/InputBase/InputBase.js';
