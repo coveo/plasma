@@ -22,9 +22,9 @@ describe('Input', () => {
             </Input.Wrapper>,
         );
 
-        expect(screen.getByText('Field label')).toBeInTheDocument();
+        expect(screen.getByText('Field label')).toBeVisible();
         const infoToken = screen.getByRole('img', {name: 'information'});
-        expect(infoToken).toBeInTheDocument();
+        expect(infoToken).toBeVisible();
 
         await user.hover(infoToken);
 

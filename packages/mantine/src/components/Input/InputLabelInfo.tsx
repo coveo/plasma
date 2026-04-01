@@ -1,6 +1,6 @@
 import {factory, StylesApiProps, Tooltip, useProps, useStyles, type Factory, type TooltipProps} from '@mantine/core';
 import {type ReactNode} from 'react';
-import {InfoToken} from '../InfoToken/InfoToken';
+import {InfoToken} from '../InfoToken/InfoToken.js';
 import classes from './InputLabelInfo.module.css';
 
 export type InputLabelInfoStylesNames = 'labelInfo';
@@ -24,7 +24,7 @@ export const InputLabelInfo = factory<InputLabelInfoFactory>((_props, ref) => {
     const props = useProps('InputLabelInfo', defaultProps, _props);
     const {classNames, className, style, styles, unstyled, vars, children, attributes, ...others} = props;
     const getStyles = useStyles<InputLabelInfoFactory>({
-        name: 'InputWrapper',
+        name: 'InputLabelInfo',
         props,
         style,
         styles,
