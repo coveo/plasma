@@ -4,7 +4,7 @@ import {type ArgTypes} from '@storybook/react-vite';
  * Represents a Storybook arg with both its type definition and initial value
  */
 export type Arg<T> = {
-    readonly type: Partial<ArgTypes<any>>[string];
+    readonly type: Partial<ArgTypes<Record<string, unknown>>>[string];
     readonly initialValue: T;
 };
 
@@ -12,6 +12,10 @@ export type SharedArgs<T> = {
     readonly ArgsTypes: Partial<ArgTypes<T>>;
     readonly Args: T;
 };
+
+export interface WithLabelInfoArgs {
+    labelInfo?: string;
+}
 
 const label: Arg<string> = {
     type: {
@@ -105,6 +109,17 @@ const clearable: Arg<boolean> = {
     initialValue: undefined,
 };
 
+const labelInfo: Arg<string> = {
+    type: {
+        control: 'text',
+        description: 'Tooltip content displayed in Input.LabelInfo',
+        table: {
+            type: {summary: 'string'},
+        },
+    },
+    initialValue: 'Additional information',
+};
+
 /**
  * Type of date picker
  */
@@ -130,5 +145,6 @@ export const Args = {
     readOnly,
     placeholder,
     clearable,
+    labelInfo,
     type,
 } as const;

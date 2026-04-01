@@ -1,8 +1,12 @@
 import {Tooltip} from '@coveord/plasma-mantine/components/Tooltip';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {forwardRef} from 'react';
+import {forwardRef, type ComponentPropsWithoutRef} from 'react';
 
-const meta: Meta<typeof Tooltip> = {
+type TooltipStoryArgs = Omit<ComponentPropsWithoutRef<typeof Tooltip>, 'children' | 'opened'> & {
+    freezeOpen: boolean;
+};
+
+const meta = {
     title: '@components/feedback/Tooltip',
     id: 'Tooltip',
     component: Tooltip,
@@ -11,7 +15,6 @@ const meta: Meta<typeof Tooltip> = {
     },
     args: {
         label: 'Tooltip',
-        position: undefined,
         freezeOpen: false,
     },
     argTypes: {
@@ -25,17 +28,26 @@ const meta: Meta<typeof Tooltip> = {
             control: 'select',
             options: ['top', 'bottom', 'left', 'right'],
             table: {
-                defaultValue: {summary: undefined},
+                defaultValue: {summary: 'undefined'},
+            },
+        },
+        freezeOpen: {
+            control: 'boolean',
+            description: 'Keep the tooltip visible without hovering',
+            table: {
+                defaultValue: {summary: 'false'},
+                type: {summary: 'boolean'},
             },
         },
     },
-};
+} satisfies Meta<TooltipStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof Tooltip>;
+type Story = StoryObj<TooltipStoryArgs>;
 
-const Content = forwardRef<HTMLDivElement>((props, ref) => (
+const Content = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>((props, ref) => (
     <div
         ref={ref}
+        {...props}
         style={{
             width: 100,
             height: 100,
@@ -53,8 +65,8 @@ const Content = forwardRef<HTMLDivElement>((props, ref) => (
 Content.displayName = 'HoverMe';
 
 export const Demo: Story = {
-    render: (props: any) => (
-        <Tooltip position={props.position} label={props.label} opened={props.freezeOpen ? true : undefined}>
+    render: ({freezeOpen, label = 'Tooltip', ...props}) => (
+        <Tooltip {...props} label={label} opened={freezeOpen ? true : undefined}>
             <Content />
         </Tooltip>
     ),

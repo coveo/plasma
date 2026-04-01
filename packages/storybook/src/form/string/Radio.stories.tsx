@@ -1,6 +1,16 @@
 import {Group} from '@coveord/plasma-mantine/components/Group';
 import {Radio} from '@coveord/plasma-mantine/components/Radio';
 import {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
+import {
+    BaseInputArgs,
+    InlineInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InlineInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 const meta: Meta<typeof Radio> = {
     title: '@components/form/string/Radio',
@@ -9,56 +19,34 @@ const meta: Meta<typeof Radio> = {
     parameters: {
         layout: 'centered',
     },
-    argTypes: {
-        disabled: {
-            control: 'boolean',
-            description: 'Disabled state',
-        },
-        label: {
-            control: 'text',
-            description: 'Radio label',
-        },
-        description: {
-            control: 'text',
-            description: 'Radio description',
-        },
-        error: {
-            control: 'text',
-            description: 'Error message',
-        },
-        readOnly: {
-            control: 'boolean',
-            description: 'Read only state',
-        },
-    },
-    args: {
-        disabled: false,
-        readOnly: false,
-        label: 'Label',
-        description: 'Description',
-        error: '',
-    },
 };
 
 export default meta;
-type Story = StoryObj<typeof Radio>;
+type RadioItemStoryArgs = ComponentProps<typeof Radio> & InlineInputStoryArgs;
+type RadioGroupStoryArgs = ComponentProps<typeof Radio.Group> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
-export const RadioItem: Story = {
-    render: (props: any) => <Radio {...props} />,
-};
-
-export const RadioGroup: Story = {
+export const RadioItem: StoryObj<RadioItemStoryArgs> = {
     argTypes: {
-        required: {
-            control: 'boolean',
-            description: 'Whether the checkbox is required',
-        },
+        ...InlineInputArgs.ArgsTypes,
     },
     args: {
-        required: false,
+        checked: false,
+        ...InlineInputArgs.Args,
     },
-    render: (props: any) => (
-        <Radio.Group {...props}>
+    render: (props) => <Radio {...withLabelInfoProps(props)} />,
+};
+
+export const RadioGroup: StoryObj<RadioGroupStoryArgs> = {
+    argTypes: {
+        ...InputWrapperArgs.ArgsTypes,
+        ...BaseInputArgs.ArgsTypes,
+    },
+    args: {
+        ...InputWrapperArgs.Args,
+        ...BaseInputArgs.Args,
+    },
+    render: (props) => (
+        <Radio.Group {...withLabelInfoProps(props)}>
             <Group mt="xs">
                 <Radio value="1" label="Option 1" readOnly={props.readOnly} />
                 <Radio value="2" label="Option 2" readOnly={props.readOnly} />

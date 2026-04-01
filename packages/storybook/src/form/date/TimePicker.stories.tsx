@@ -1,9 +1,18 @@
 import {TimePicker} from '@coveord/plasma-mantine/components/TimePicker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
-import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
 
-const meta: Meta<typeof TimePicker> = {
+type TimePickerStoryArgs = ComponentProps<typeof TimePicker> & BaseInputStoryArgs & InputWrapperStoryArgs;
+
+const meta = {
     title: '@components/form/date/TimePicker',
     id: 'TimePicker',
     component: TimePicker,
@@ -38,10 +47,10 @@ const meta: Meta<typeof TimePicker> = {
             },
         },
     },
-};
+} satisfies Meta<TimePickerStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof TimePicker>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <TimePicker {...props} />,
+    render: (props) => <TimePicker {...withLabelInfoProps(props)} />,
 };

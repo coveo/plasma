@@ -1,7 +1,17 @@
 import {Group} from '@coveord/plasma-mantine/components/Group';
 import {Switch} from '@coveord/plasma-mantine/components/Switch';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
+import {
+    BaseInputArgs,
+    InlineInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InlineInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 const meta: Meta<typeof Switch> = {
     title: '@components/form/boolean/Switch',
@@ -10,75 +20,41 @@ const meta: Meta<typeof Switch> = {
     parameters: {
         layout: 'centered',
     },
-    args: {
-        label: 'Label',
-        description: 'Description',
-        error: 'Error',
-        disabled: false,
-        readOnly: false,
-    },
-    argTypes: {
-        label: {
-            control: 'text',
-            description: 'Switch label',
-        },
-        description: {
-            control: 'text',
-            description: 'Switch description',
-        },
-        error: {
-            control: 'text',
-            description: 'Error message',
-        },
-        readOnly: {
-            control: 'boolean',
-            description: 'Whether the switch is read-only',
-            table: {
-                defaultValue: {summary: 'false'},
-            },
-        },
-        disabled: {
-            control: 'boolean',
-            description: 'Whether the switch is disabled',
-            table: {
-                defaultValue: {summary: 'false'},
-            },
-        },
-    },
 };
 
 export default meta;
-type Story = StoryObj<typeof Switch>;
-type StoryGroup = StoryObj<typeof Switch.Group>;
+type SwitchStoryArgs = ComponentProps<typeof Switch> & InlineInputStoryArgs;
+type SwitchGroupStoryArgs = ComponentProps<typeof Switch.Group> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
-export const Default: Story = {
+export const Default: StoryObj<SwitchStoryArgs> = {
     argTypes: {
+        ...InlineInputArgs.ArgsTypes,
         checked: {
             control: 'boolean',
             description: 'Checked state',
         },
     },
     args: {
+        ...InlineInputArgs.Args,
         checked: false,
     },
     render: (props) => {
-        const [{checked}, updateArgs] = useArgs();
-        return <Switch {...props} onChange={() => updateArgs({checked: !checked})} />;
+        const [{checked}, updateArgs] = useArgs<SwitchStoryArgs>();
+        return <Switch {...withLabelInfoProps(props)} onChange={() => updateArgs({checked: !checked})} />;
     },
 };
 
-export const SwitchGroup: StoryGroup = {
+export const SwitchGroup: StoryObj<SwitchGroupStoryArgs> = {
     argTypes: {
-        required: {
-            control: 'boolean',
-            description: 'Whether the switch is required',
-        },
+        ...InputWrapperArgs.ArgsTypes,
+        ...BaseInputArgs.ArgsTypes,
     },
     args: {
-        required: false,
+        ...InputWrapperArgs.Args,
+        ...BaseInputArgs.Args,
     },
     render: (props) => (
-        <Switch.Group {...props}>
+        <Switch.Group {...withLabelInfoProps(props)}>
             <Group>
                 <Switch value="option1" label="Option 1" />
                 <Switch value="option2" label="Option 2" />

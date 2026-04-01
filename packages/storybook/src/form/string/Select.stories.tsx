@@ -1,9 +1,18 @@
 import {Select} from '@coveord/plasma-mantine/components/Select';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
-import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
 
-const meta: Meta<typeof Select> = {
+type SelectStoryArgs = ComponentProps<typeof Select> & BaseInputStoryArgs & InputWrapperStoryArgs;
+
+const meta = {
     title: '@components/form/string/Select',
     id: 'Select',
     component: Select,
@@ -48,10 +57,10 @@ const meta: Meta<typeof Select> = {
             },
         },
     },
-};
+} satisfies Meta<SelectStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof Select>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props: any) => <Select {...props} />,
+    render: (props) => <Select {...withLabelInfoProps(props)} />,
 };

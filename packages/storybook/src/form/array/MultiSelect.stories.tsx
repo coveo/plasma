@@ -1,9 +1,18 @@
 import {MultiSelect} from '@coveord/plasma-mantine/components/MultiSelect';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
-import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
 
-const meta: Meta<typeof MultiSelect> = {
+type MultiSelectStoryArgs = ComponentProps<typeof MultiSelect> & BaseInputStoryArgs & InputWrapperStoryArgs;
+
+const meta = {
     title: '@components/form/array/MultiSelect',
     id: 'MultiSelect',
     component: MultiSelect,
@@ -39,10 +48,10 @@ const meta: Meta<typeof MultiSelect> = {
             },
         },
     },
-};
+} satisfies Meta<MultiSelectStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof MultiSelect>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props: any) => <MultiSelect {...props} w={300} />,
+    render: (props) => <MultiSelect {...withLabelInfoProps(props)} w={300} />,
 };
