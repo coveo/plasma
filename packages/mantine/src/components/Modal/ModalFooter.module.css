@@ -1,10 +1,10 @@
 :global(.mantine-Modal-body) {
     .root {
         margin: calc(-1 * var(--mb-padding));
-        margin-top: 0;
+        margin-top: var(--mb-padding);
     }
 }
 
 .root {
-    padding: var(--mb-padding, var(--mantine-spacing-lg, 32px));
+    padding: var(--mb-padding, var(--mantine-spacing-md, 24px));
 }
