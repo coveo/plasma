@@ -4,6 +4,7 @@ import {type ExpandedState, type PaginationState, type SortingState} from '@tans
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state.js';
+import {usePersistedColumnVisibility} from './use-persisted-column-visibility.js';
 
 // Create a deeply optional version of another type
 type DeepPartial<T> = {
@@ -191,6 +192,16 @@ export interface UseTableOptions<TData = unknown> {
      * @default false
      */
     syncWithUrl?: boolean;
+    /**
+     * Unique identifier for the table. When provided, column visibility preferences are persisted to localStorage.
+     */
+    tableId?: string;
+    /**
+     * Maximum number of columns that can be visible at the same time.
+     *
+     * @default Infinity
+     */
+    maxSelectableColumns?: number;
 }
 
 const defaultOptions: UseTableOptions = {
@@ -324,6 +335,12 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
      */
     const sync = !!options.syncWithUrl;
 
+    const {initialColumnVisibility, persistColumnVisibility} = usePersistedColumnVisibility(
+        initialState.columnVisibility,
+        options.maxSelectableColumns ?? Infinity,
+        options.tableId,
+    );
+
     // (Optionally) synced with url
     const [pagination, setPagination] = useUrlSyncedState<TableState<TData>['pagination']>({
         ...PAGINATION_SERIALIZATION,
@@ -355,11 +372,22 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         initialState: initialState.dateRange,
         sync,
     });
-    const [columnVisibility, setColumnVisibility] = useUrlSyncedState<TableState<TData>['columnVisibility']>({
+    const [columnVisibility, _setColumnVisibility] = useUrlSyncedState<TableState<TData>['columnVisibility']>({
         ...COLUMN_VISIBILITY_SERIALIZATION,
-        initialState: initialState.columnVisibility,
+        initialState: initialColumnVisibility,
         sync,
     });
+
+    const setColumnVisibility: typeof _setColumnVisibility = useCallback(
+        (updater) => {
+            _setColumnVisibility((old) => {
+                const newVis = updater instanceof Function ? updater(old) : updater;
+                persistColumnVisibility(newVis);
+                return newVis;
+            });
+        },
+        [_setColumnVisibility, persistColumnVisibility],
+    );
 
     // unsynced
     const [totalEntries, _setTotalEntries] = useState<TableState<TData>['totalEntries']>(initialState.totalEntries);
