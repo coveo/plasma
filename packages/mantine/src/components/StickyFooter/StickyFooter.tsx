@@ -33,7 +33,7 @@ export type StickyFooterFactory = Factory<{
 }>;
 
 const defaultProps: Partial<StickyFooterProps> = {
-    gap: 'sm',
+    gap: 'xs',
     justify: 'flex-end',
 };
 

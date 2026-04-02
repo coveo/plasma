@@ -1,78 +1,92 @@
-import type {StoryObj, Meta} from '@storybook/react-vite';
-import {Modal} from '@coveord/plasma-mantine/components/Modal';
-import {useState} from 'react';
 import {Button, Tabs} from '@coveord/plasma-mantine';
+import {Modal} from '@coveord/plasma-mantine/components/Modal';
+import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
+import {useArgs} from 'storybook/preview-api';
 
-const meta: Meta<typeof Modal> = {
+type ModalStoryArgs = ComponentProps<typeof Modal> & {
+    helpLabel?: string;
+    helpHref?: string;
+};
+
+const meta = {
     title: '@components/layout/Modal',
     id: 'Modal',
-    component: Modal,
-    parameters: {
-        layout: 'centered',
+    args: {
+        opened: true,
+        centered: false,
+        size: 'sm',
+        title: 'Title',
+        helpLabel: 'Tooltip',
+        helpHref: 'https://about:blank',
+        description: 'Description',
     },
-    tags: ['autodocs'],
-};
+    argTypes: {
+        size: {
+            control: 'select',
+            options: ['xs', 'sm', 'md', 'lg', 'xl'],
+        },
+    },
+} satisfies Meta<ModalStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof Modal>;
+type Story = StoryObj<ModalStoryArgs>;
 
-export const Default: Story = {
-    render: () => {
-        const [opened, setOpened] = useState(false);
+export const Demo: Story = {
+    render: (args) => {
+        const [{opened}, updateArgs] = useArgs<ModalStoryArgs>();
+        const close = () => updateArgs({opened: false});
         return (
-            <>
-                <Modal
-                    size="md"
-                    opened={opened}
-                    title="Modal Title"
-                    description="Modal description"
-                    help={{href: 'https://about:blank', label: 'Tooltip text'}}
-                    onClose={() => setOpened(false)}
-                >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada
-                    id sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim.
-                    Phasellus lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit.
-                    Cras vitae ipsum sit amet nibh efficitur imperdiet. Praesent scelerisque erat est. Cras dictum
-                    sodales tellus sed pretium
-                    <Modal.Footer>
-                        <Button.Tertiary onClick={() => setOpened(false)}>Cancel</Button.Tertiary>
-                        <Button.Primary onClick={() => setOpened(false)}>Accept</Button.Primary>
-                    </Modal.Footer>
-                </Modal>
-                <Button.Primary onClick={() => setOpened(true)}>Open Modal</Button.Primary>
-            </>
+            <Modal
+                centered={args.centered}
+                size={args.size}
+                opened={opened}
+                title={args.title}
+                description={args.description}
+                help={args.helpLabel || args.helpHref ? {href: args.helpHref, label: args.helpLabel} : undefined}
+                onClose={close}
+            >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
+                sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim. Phasellus
+                lacinia sem nunc, vel dapibus odio suscipit id. Aenean lobortis sollicitudin suscipit. Cras vitae ipsum
+                sit amet nibh efficitur imperdiet. Praesent scelerisque erat est. Cras dictum sodales tellus sed pretium
+                <Modal.Footer>
+                    <Button.Tertiary onClick={close}>Cancel</Button.Tertiary>
+                    <Button.Primary onClick={close}>Save</Button.Primary>
+                </Modal.Footer>
+            </Modal>
         );
     },
 };
 
 export const ModalWithTabs: Story = {
-    render: () => {
-        const [opened, setOpened] = useState(false);
+    render: (args) => {
+        const [{opened}, updateArgs] = useArgs<ModalStoryArgs>();
+        const close = () => updateArgs({opened: false});
         return (
-            <>
-                <Modal
-                    opened={opened}
-                    onClose={() => setOpened(false)}
-                    title="Modal Title"
-                    description="Modal description"
-                    help={{href: 'https://about:blank', label: 'Tooltip text'}}
-                >
-                    <Tabs defaultValue="tab-1" mih={500}>
-                        <Tabs.List>
-                            <Tabs.Tab value="tab-1">Tab 1</Tabs.Tab>
-                            <Tabs.Tab value="tab-2">Tab 2</Tabs.Tab>
-                            <Tabs.Tab value="tab-3">Tab 3</Tabs.Tab>
-                        </Tabs.List>
-                        <Tabs.Panel value="tab-1">Tab 1 content</Tabs.Panel>
-                        <Tabs.Panel value="tab-2">Tab 2 content</Tabs.Panel>
-                        <Tabs.Panel value="tab-3">Tab 3 content</Tabs.Panel>
-                    </Tabs>
-                    <Modal.Footer>
-                        <Button.Tertiary onClick={() => setOpened(false)}>Cancel</Button.Tertiary>
-                        <Button.Primary>Save</Button.Primary>
-                    </Modal.Footer>
-                </Modal>
-                <Button.Primary onClick={() => setOpened(true)}>Open Modal</Button.Primary>
-            </>
+            <Modal
+                size={args.size}
+                centered={args.centered}
+                opened={opened}
+                title={args.title}
+                description={args.description}
+                help={args.helpLabel || args.helpHref ? {href: args.helpHref, label: args.helpLabel} : undefined}
+                onClose={close}
+            >
+                <Tabs defaultValue="tab-1" mih={500}>
+                    <Tabs.List>
+                        <Tabs.Tab value="tab-1">Tab 1</Tabs.Tab>
+                        <Tabs.Tab value="tab-2">Tab 2</Tabs.Tab>
+                        <Tabs.Tab value="tab-3">Tab 3</Tabs.Tab>
+                    </Tabs.List>
+                    <Tabs.Panel value="tab-1">Tab 1 content</Tabs.Panel>
+                    <Tabs.Panel value="tab-2">Tab 2 content</Tabs.Panel>
+                    <Tabs.Panel value="tab-3">Tab 3 content</Tabs.Panel>
+                </Tabs>
+                <Modal.Footer>
+                    <Button.Tertiary onClick={close}>Cancel</Button.Tertiary>
+                    <Button.Primary onClick={close}>Save</Button.Primary>
+                </Modal.Footer>
+            </Modal>
         );
     },
 };

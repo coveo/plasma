@@ -395,7 +395,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         ModalRoot: Modal.Root.extend({
             defaultProps: {
-                padding: 'lg',
+                padding: 'md',
             },
         }),
         MonthPicker: MonthPicker.extend({
