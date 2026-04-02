@@ -70,10 +70,10 @@ import {Accordion} from '../components/Accordion/Accordion.js';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
-import AppShellClasses from '../styles/AppShell.module.css';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
+import AppShellClasses from '../styles/AppShell.module.css';
 import BadgeClasses from '../styles/Badge.module.css';
 import BreadcrumbsClasses from '../styles/Breadcrumbs.module.css';
 import ButtonClasses from '../styles/Button.module.css';
@@ -203,7 +203,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Alert: Alert.extend({
             defaultProps: {
-                icon: <InfoToken variant="advice" />,
+                icon: <InfoToken.Advice />,
                 p: 'sm',
             },
             classNames: AlertClasses,

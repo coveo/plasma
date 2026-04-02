@@ -9,8 +9,8 @@ import {
     useProps,
 } from '@mantine/core';
 import {ReactNode} from 'react';
-import {useHeaderContext} from '../Header.context.js';
 import {InfoToken} from '../../InfoToken/InfoToken.js';
+import {useHeaderContext} from '../Header.context.js';
 
 export type HeaderDocAnchorStyleNames = 'docAnchorTooltip' | 'docAnchor';
 
@@ -43,7 +43,7 @@ export type HeaderDocAnchorFactory = Factory<{
 
 const defaultProps: Partial<HeaderDocAnchorProps> = {
     position: 'right',
-    children: <InfoToken variant="question" />,
+    children: <InfoToken.Question />,
 };
 
 export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => {

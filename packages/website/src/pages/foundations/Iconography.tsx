@@ -208,7 +208,7 @@ export const IconographyExamples = () => (
         </Alert.Advice>
         <Accordion variant="contained">
             <Accordion.Item value="plasma-icons">
-                <Accordion.Control icon={<InfoToken variant="information" />}>In-house icons</Accordion.Control>
+                <Accordion.Control icon={<InfoToken.Information />}>In-house icons</Accordion.Control>
                 <Accordion.Panel>
                     <Stack>
                         <Alert.Warning title="Deprecated">
