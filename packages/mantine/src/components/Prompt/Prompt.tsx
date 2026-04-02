@@ -9,16 +9,13 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {Children, ComponentType, ReactElement, ReactNode} from 'react';
+import {Children, ReactElement, ReactNode} from 'react';
+import {InfoToken} from '../InfoToken/InfoToken.js';
 import {Modal} from '../Modal/Modal.js';
 import {PromptContextProvider} from './Prompt.context.js';
 import classes from './Prompt.module.css';
 import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton.js';
 import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton.js';
-import CriticalIcon from './icons/CriticalIcon.js';
-import InfoIcon from './icons/InfoIcon.js';
-import SuccessIcon from './icons/SuccessIcon.js';
-import WarningIcon from './icons/WarningIcon.js';
 
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
 export type PromptVars = {root: '--prompt-icon-size'};
@@ -53,11 +50,11 @@ export type PromptFactory = Factory<{
     };
 }>;
 
-const PromptVariantIconsMapping: Record<PromptVariant, ComponentType> = {
-    success: SuccessIcon,
-    warning: WarningIcon,
-    critical: CriticalIcon,
-    info: InfoIcon,
+const PromptVariantIconsMapping: Record<PromptVariant, typeof InfoToken.Information> = {
+    success: InfoToken.Success,
+    warning: InfoToken.Warning,
+    critical: InfoToken.Error,
+    info: InfoToken.Information,
 };
 
 const defaultProps: Partial<PromptProps> = {
@@ -108,7 +105,12 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                 <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
                 <Modal.Content {...getStyles('content', stylesApiProps)}>
                     <Modal.Header {...getStyles('header', stylesApiProps)}>
-                        <IconComponent />
+                        <IconComponent
+                            {...getStyles('icon', stylesApiProps)}
+                            variant="light"
+                            size="sm"
+                            aria-label={variant}
+                        />
                         <Modal.Title>
                             <Title order={3} component="div">
                                 {title}
