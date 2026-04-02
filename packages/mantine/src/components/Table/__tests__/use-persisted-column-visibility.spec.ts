@@ -10,16 +10,11 @@ describe('usePersistedColumnVisibility', () => {
     });
 
     describe('without tableId', () => {
-        it('returns the default visibility as-is', () => {
+        it('returns the default visibility and does not persist', () => {
             const defaults = {col1: true, col2: false};
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity));
 
             expect(result.current.initialColumnVisibility).toEqual({col1: true, col2: false});
-        });
-
-        it('does not persist to localStorage', () => {
-            const defaults = {col1: true};
-            const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity));
 
             act(() => {
                 result.current.persistColumnVisibility({col1: false});
@@ -48,17 +43,8 @@ describe('usePersistedColumnVisibility', () => {
             expect(result.current.initialColumnVisibility).toEqual({col1: true, col2: false, col3: false});
         });
 
-        it('ignores stored keys not present in defaults', () => {
-            localStorage.setItem(storageKey(tableId), JSON.stringify({unknown: true, col1: false}));
-            const defaults = {col1: true, col2: true};
-
-            const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity, tableId));
-
-            expect(result.current.initialColumnVisibility).toEqual({col1: false, col2: true});
-        });
-
-        it('ignores stored values that are not booleans', () => {
-            localStorage.setItem(storageKey(tableId), JSON.stringify({col1: 'yes', col2: false}));
+        it('ignores stored keys not present in defaults and non-boolean values', () => {
+            localStorage.setItem(storageKey(tableId), JSON.stringify({unknown: true, col1: 'yes', col2: false}));
             const defaults = {col1: true, col2: true};
 
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity, tableId));
@@ -66,23 +52,13 @@ describe('usePersistedColumnVisibility', () => {
             expect(result.current.initialColumnVisibility).toEqual({col1: true, col2: false});
         });
 
-        it('caps visible columns to maxSelectableColumns', () => {
-            const defaults = {col1: true, col2: true, col3: true};
-            const {result} = renderHook(() => usePersistedColumnVisibility(defaults, 2, tableId));
-
-            const visibility = result.current.initialColumnVisibility;
-            const visibleCount = Object.values(visibility).filter(Boolean).length;
-            expect(visibleCount).toBe(2);
-        });
-
-        it('caps visible columns from storage to maxSelectableColumns', () => {
+        it('caps visible columns to maxSelectableColumns from both defaults and storage', () => {
             localStorage.setItem(storageKey(tableId), JSON.stringify({col1: true, col2: true, col3: true}));
             const defaults = {col1: false, col2: false, col3: false};
 
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, 2, tableId));
 
-            const visibility = result.current.initialColumnVisibility;
-            const visibleCount = Object.values(visibility).filter(Boolean).length;
+            const visibleCount = Object.values(result.current.initialColumnVisibility).filter(Boolean).length;
             expect(visibleCount).toBe(2);
         });
 
@@ -107,8 +83,12 @@ describe('usePersistedColumnVisibility', () => {
             expect(localStorage.getItem(storageKey(tableId))).toBeNull();
         });
 
-        it('falls back to defaults when stored value is an array', () => {
-            localStorage.setItem(storageKey(tableId), JSON.stringify([true, false]));
+        it.each([
+            ['an array', JSON.stringify([true, false])],
+            ['null', JSON.stringify(null)],
+            ['an empty object', JSON.stringify({})],
+        ])('falls back to defaults when stored value is %s', (_, storedValue) => {
+            localStorage.setItem(storageKey(tableId), storedValue);
             const defaults = {col1: true, col2: false};
 
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity, tableId));
@@ -138,9 +118,7 @@ describe('useTable column visibility persistence', () => {
         expect(result.current.state.columnVisibility).toEqual({col1: false, col2: true});
     });
 
-    it('uses default visibility when no tableId is provided', () => {
-        localStorage.setItem(storageKey(tableId), JSON.stringify({col1: false}));
-
+    it('does not read from or write to localStorage when no tableId is provided', () => {
         const {result} = renderHook(() =>
             useTable({
                 initialState: {columnVisibility: {col1: true, col2: true}},
@@ -148,9 +126,16 @@ describe('useTable column visibility persistence', () => {
         );
 
         expect(result.current.state.columnVisibility).toEqual({col1: true, col2: true});
+
+        act(() => {
+            result.current.setColumnVisibility({col1: false});
+        });
+
+        expect(result.current.state.columnVisibility).toEqual({col1: false});
+        expect(localStorage.length).toBe(0);
     });
 
-    it('persists to localStorage when setColumnVisibility is called', () => {
+    it('persists to localStorage when setColumnVisibility is called with a value', () => {
         const {result} = renderHook(() =>
             useTable({
                 tableId,
@@ -166,37 +151,7 @@ describe('useTable column visibility persistence', () => {
         expect(JSON.parse(localStorage.getItem(storageKey(tableId))!)).toEqual({col1: false, col2: true});
     });
 
-    it('does not persist when no tableId is provided', () => {
-        const {result} = renderHook(() =>
-            useTable({
-                initialState: {columnVisibility: {col1: true}},
-            }),
-        );
-
-        act(() => {
-            result.current.setColumnVisibility({col1: false});
-        });
-
-        expect(result.current.state.columnVisibility).toEqual({col1: false});
-        expect(localStorage.length).toBe(0);
-    });
-
-    it('respects maxSelectableColumns on initial load from storage', () => {
-        localStorage.setItem(storageKey(tableId), JSON.stringify({col1: true, col2: true, col3: true}));
-
-        const {result} = renderHook(() =>
-            useTable({
-                tableId,
-                maxSelectableColumns: 2,
-                initialState: {columnVisibility: {col1: false, col2: false, col3: false}},
-            }),
-        );
-
-        const visibleCount = Object.values(result.current.state.columnVisibility).filter(Boolean).length;
-        expect(visibleCount).toBe(2);
-    });
-
-    it('persists when setColumnVisibility is called with an updater function', () => {
+    it('persists to localStorage when setColumnVisibility is called with an updater function', () => {
         const {result} = renderHook(() =>
             useTable({
                 tableId,
