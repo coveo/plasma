@@ -1,9 +1,18 @@
 import {Textarea} from '@coveord/plasma-mantine/components/Textarea';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
-import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
 
-const meta: Meta<typeof Textarea> = {
+type TextareaStoryArgs = ComponentProps<typeof Textarea> & BaseInputStoryArgs & InputWrapperStoryArgs;
+
+const meta = {
     title: '@components/form/string/Textarea',
     id: 'Textarea',
     component: Textarea,
@@ -58,10 +67,10 @@ const meta: Meta<typeof Textarea> = {
             },
         },
     },
-};
+} satisfies Meta<TextareaStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof Textarea>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props: any) => <Textarea {...props} />,
+    render: (props) => <Textarea {...withLabelInfoProps(props)} />,
 };

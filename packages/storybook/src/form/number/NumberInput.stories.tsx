@@ -1,9 +1,22 @@
 import {NumberInput} from '@coveord/plasma-mantine/components/NumberInput';
 import {IconCoins} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+import type {ComponentProps} from 'react';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
 
-const meta: Meta<typeof NumberInput> = {
+type NumberInputStoryArgs = Omit<ComponentProps<typeof NumberInput>, 'leftSection'> &
+    BaseInputStoryArgs &
+    InputWrapperStoryArgs & {
+        leftSection: boolean;
+    };
+
+const meta = {
     title: '@components/form/number/NumberInput',
     id: 'NumberInput',
     component: NumberInput,
@@ -87,12 +100,12 @@ const meta: Meta<typeof NumberInput> = {
             },
         },
     },
-};
+} satisfies Meta<NumberInputStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof NumberInput>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: ({leftSection, ...props}: any) => (
-        <NumberInput leftSection={leftSection ? <IconCoins size={16} /> : undefined} {...props} />
+    render: ({leftSection, ...props}) => (
+        <NumberInput leftSection={leftSection ? <IconCoins size={16} /> : undefined} {...withLabelInfoProps(props)} />
     ),
 };

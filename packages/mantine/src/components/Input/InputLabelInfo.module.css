@@ -1,0 +1,5 @@
+.labelInfo {
+    position: relative; /* Required to make it work within a Switch label */
+    margin-left: var(--mantine-spacing-xxs);
+    vertical-align: text-bottom;
+}

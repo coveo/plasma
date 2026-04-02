@@ -1,9 +1,18 @@
 import {YearPickerInput} from '@coveord/plasma-mantine/components/YearPickerInput';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
-import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
 
-const meta: Meta<typeof YearPickerInput> = {
+type YearPickerInputStoryArgs = ComponentProps<typeof YearPickerInput> & BaseInputStoryArgs & InputWrapperStoryArgs;
+
+const meta = {
     title: '@components/form/date/YearPickerInput',
     id: 'YearPickerInput',
     component: YearPickerInput,
@@ -24,10 +33,10 @@ const meta: Meta<typeof YearPickerInput> = {
         type: Args.type.type,
         clearable: Args.clearable.type,
     },
-};
+} satisfies Meta<YearPickerInputStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof YearPickerInput>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <YearPickerInput {...props} />,
+    render: (props) => <YearPickerInput {...withLabelInfoProps(props)} />,
 };
