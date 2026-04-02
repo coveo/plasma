@@ -37,7 +37,7 @@ export const BrowserPreview = ({
                 </Text>
                 {!!headerTooltip && (
                     <Tooltip label={headerTooltip} position="right" maw={400}>
-                        <InfoToken variant="information" className={BrowserPreviewClasses.infoIcon} />
+                        <InfoToken.Information className={BrowserPreviewClasses.infoIcon} />
                     </Tooltip>
                 )}
             </Group>
