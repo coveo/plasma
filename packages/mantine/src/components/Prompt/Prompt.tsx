@@ -29,8 +29,7 @@ export type PromptStylesNames =
     | PromptConfirmButtonStylesNamesVariant;
 
 export interface PromptProps
-    extends StylesApiProps<PromptFactory>,
-        Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes'> {
+    extends StylesApiProps<PromptFactory>, Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes'> {
     /**
      * Controls prompt appearance
      *
@@ -127,7 +126,7 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     );
 });
 
-const PromptFooter = Modal.Footer.withProps({pt: 0});
+const PromptFooter = Modal.Footer;
 
 Prompt.CancelButton = PromptCancelButton;
 Prompt.ConfirmButton = PromptConfirmButton;

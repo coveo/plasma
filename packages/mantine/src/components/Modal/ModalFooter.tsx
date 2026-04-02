@@ -31,7 +31,7 @@ export const ModalFooter = factory<ModalFooterFactory>((props, ref) => {
         // if ref === 'function', this is a callback ref. Haven't found any solution for adjusting the height in this case
     }, [ref, props.h]);
 
-    return <StickyFooter className={classes.root} ref={footerRef} {...props} />;
+    return <StickyFooter borderTop className={classes.root} ref={footerRef} {...props} />;
 });
 
 ModalFooter.displayName = 'Modal.Footer';
