@@ -7,7 +7,8 @@ import {usePromptContext} from './Prompt.context.js';
 export type PromptConfirmButtonStylesNamesVariant = 'confirm';
 
 export interface PromptConfirmButtonProps
-    extends CompoundStylesApiProps<PromptConfirmButtonFactory>,
+    extends
+        CompoundStylesApiProps<PromptConfirmButtonFactory>,
         Omit<ButtonProps, 'primary' | 'classNames' | 'styles' | 'vars' | 'variant'> {}
 
 export type PromptConfirmButtonFactory = Factory<{
@@ -58,3 +59,4 @@ export const PromptConfirmButton = factory<PromptConfirmButtonFactory>((_props, 
         />
     );
 });
+PromptConfirmButton.displayName = 'Prompt.ConfirmButton';

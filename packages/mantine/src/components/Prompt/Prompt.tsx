@@ -125,8 +125,10 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
         </PromptContextProvider>
     );
 });
+Prompt.displayName = 'Prompt';
 
 const PromptFooter = Modal.Footer;
+PromptFooter.displayName = 'Prompt.Footer';
 
 Prompt.CancelButton = PromptCancelButton;
 Prompt.ConfirmButton = PromptConfirmButton;
