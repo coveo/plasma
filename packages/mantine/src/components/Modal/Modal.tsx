@@ -40,7 +40,7 @@ const PlasmaModal = factory<PlasmaModalFactory>(({title, description, help, ...o
     return <MantineModal ref={ref} title={header} {...otherProps} />;
 });
 
-PlasmaModal.displayName = '@coveord/plasma-mantine/Modal';
+PlasmaModal.displayName = 'Modal';
 PlasmaModal.Root = MantineModal.Root;
 PlasmaModal.Body = MantineModal.Body;
 PlasmaModal.Overlay = MantineModal.Overlay;
