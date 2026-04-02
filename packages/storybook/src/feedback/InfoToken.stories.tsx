@@ -31,7 +31,7 @@ const meta: Meta<InfoTokenStoryArgs> = {
             control: 'select',
             options: ['outline', 'light'],
             table: {
-                defaultValue: {summary: 'Information'},
+                defaultValue: {summary: 'outline'},
             },
         },
         size: {

@@ -35,7 +35,7 @@ export type InfoTokenType = 'information' | 'advice' | 'warning' | 'error' | 'qu
 export type InfoTokenVariant = 'outline' | 'light';
 export type InfoTokenSizes = 'xs' | 'sm' | 'md' | 'lg';
 export type InfoTokenCssVariables = {
-    root: '--it-color';
+    root: '--it-color' | '--it-bg';
 };
 
 interface InfoTokenInternalProps extends BoxProps, StylesApiProps<InfoTokenFactory> {
@@ -131,7 +131,7 @@ const iconResolver = (type: InfoTokenType): TablerIcon => {
     }
 };
 
-const varsResolver = createVarsResolver<InfoTokenFactory>((_theme, {type, size}) => {
+const varsResolver = createVarsResolver<InfoTokenFactory>((_theme, {type}) => {
     const color = colorResolver(type);
     const bgColor = bgColorResolver(type);
     return {
@@ -179,7 +179,7 @@ const _InfoToken = polymorphicFactory<InfoTokenFactory>((_props, ref) => {
 
 const createInfoTokenCompound = (type: InfoTokenType, displayName: string): InfoTokenCompoundComponent => {
     const Component: InfoTokenCompoundComponent = createPolymorphicComponent<'div', InfoTokenProps>(
-        forwardRef<HTMLDivElement, InfoTokenProps>((props, ref) => <_InfoToken ref={ref} {...props} type={type} />),
+        forwardRef<any, InfoTokenProps>((props, ref) => <_InfoToken ref={ref} {...props} type={type} />),
     );
     Component.displayName = displayName;
     return Component;
