@@ -1,28 +1,42 @@
-import {InfoToken} from '@coveord/plasma-mantine/components/InfoToken';
+import {InfoToken, type InfoTokenProps} from '@coveord/plasma-mantine/components/InfoToken';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
-const meta: Meta<typeof InfoToken> = {
+type InfoTokenTypes = keyof typeof InfoToken;
+
+type InfoTokenStoryArgs = InfoTokenProps & {
+    type: InfoTokenTypes;
+};
+
+const meta: Meta<InfoTokenStoryArgs> = {
     title: '@components/feedback/InfoToken',
     id: 'InfoToken',
-    component: InfoToken,
+    component: InfoToken.Information,
     parameters: {
         layout: 'centered',
     },
     args: {
-        variant: 'Information',
+        type: 'Information',
+        variant: 'outline',
         size: 'xs',
     },
     argTypes: {
-        variant: {
+        type: {
             control: 'select',
-            options: ['Information', 'Advice', 'Warning', 'Error', 'Question'],
+            options: ['Information', 'Advice', 'Success', 'Warning', 'Error', 'Question'] as InfoTokenTypes[],
             table: {
                 defaultValue: {summary: 'Information'},
             },
         },
+        variant: {
+            control: 'select',
+            options: ['outline', 'light'],
+            table: {
+                defaultValue: {summary: 'outline'},
+            },
+        },
         size: {
             control: 'select',
-            options: ['xs', 'sm', 'md', 'lg', 'xl'],
+            options: ['xs', 'sm', 'md', 'lg'],
             table: {
                 defaultValue: {summary: 'xs'},
                 type: {summary: 'sm | lg'},
@@ -30,12 +44,13 @@ const meta: Meta<typeof InfoToken> = {
         },
     },
 };
+
 export default meta;
-type Story = StoryObj<typeof InfoToken>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: ({variant, ...props}: any) => {
-        const Component = (InfoToken as any)[variant];
-        return <Component {...props} />;
+    render: ({type, variant, ...props}) => {
+        const Component = InfoToken[type];
+        return <Component variant={variant} {...props} />;
     },
 };
