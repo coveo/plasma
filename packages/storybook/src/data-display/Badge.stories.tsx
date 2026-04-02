@@ -1,7 +1,15 @@
-import {Badge} from '@coveord/plasma-mantine/components/Badge';
+import {Badge, type BadgeOverloadFactory, type SemanticBadge} from '@coveord/plasma-mantine/components/Badge';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 
-const meta: Meta<typeof Badge> = {
+type BadgeVariants = BadgeOverloadFactory['staticComponents'];
+
+type BadgeStoryArgs = Omit<ComponentProps<SemanticBadge>, 'children'> & {
+    variant: keyof BadgeVariants;
+    text: string;
+};
+
+const meta = {
     title: '@components/data-display/Badge',
     id: 'Badge',
     component: Badge,
@@ -15,7 +23,9 @@ const meta: Meta<typeof Badge> = {
     argTypes: {
         variant: {
             control: 'select',
-            options: ['Primary', 'Secondary', 'Success', 'Critical', 'Warning', 'Disabled'],
+            options: ['Primary', 'Secondary', 'Success', 'Warning', 'Critical', 'Disabled'] as Array<
+                keyof BadgeVariants
+            >,
             table: {
                 defaultValue: {summary: 'Badge.Primary'},
             },
@@ -35,12 +45,12 @@ const meta: Meta<typeof Badge> = {
             },
         },
     },
-};
+} satisfies Meta<BadgeStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof Badge>;
+type Story = StoryObj<BadgeStoryArgs>;
 
 export const Demo: Story = {
-    render: ({text, variant, ...props}: any) => {
+    render: ({text, variant, ...props}) => {
         const BadgeComponent = Badge[variant];
         return <BadgeComponent {...props}>{text}</BadgeComponent>;
     },

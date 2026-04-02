@@ -1,6 +1,9 @@
 import {RadioCard} from '@coveord/plasma-mantine/components/RadioCard';
 import {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
+import {InlineInputArgs, type InlineInputStoryArgs} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 const meta: Meta<typeof RadioCard> = {
     title: '@components/form/string/RadioCard',
@@ -10,25 +13,10 @@ const meta: Meta<typeof RadioCard> = {
         layout: 'centered',
     },
     argTypes: {
-        disabled: {
-            control: 'boolean',
-            description: 'Disabled state',
-        },
-        label: {
-            control: 'text',
-            description: 'Radio label',
-        },
-        description: {
-            control: 'text',
-            description: 'Radio description',
-        },
+        ...InlineInputArgs.ArgsTypes,
         checked: {
             control: 'boolean',
             description: 'Checked state',
-        },
-        readOnly: {
-            control: 'boolean',
-            description: 'Read only state',
         },
         disabledTooltip: {
             control: 'text',
@@ -36,21 +24,20 @@ const meta: Meta<typeof RadioCard> = {
         },
     },
     args: {
+        ...InlineInputArgs.Args,
         checked: false,
-        disabled: false,
-        readOnly: false,
-        label: 'Label',
-        description: 'Description',
         disabledTooltip: 'Disabled tooltip example',
     },
 };
 export default meta;
-type Story = StoryObj<typeof RadioCard>;
+type RadioCardStoryArgs = ComponentProps<typeof RadioCard> & InlineInputStoryArgs;
+
+type Story = StoryObj<RadioCardStoryArgs>;
 export const Demo: Story = {
-    render: (props: any) => {
-        const [{checked}, updateArgs] = useArgs();
+    render: (props) => {
+        const [{checked}, updateArgs] = useArgs<RadioCardStoryArgs>();
         const onClick = () => updateArgs({checked: !checked});
 
-        return <RadioCard {...props} onClick={onClick} />;
+        return <RadioCard {...withLabelInfoProps(props)} onClick={onClick} />;
     },
 };

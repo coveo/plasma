@@ -1,9 +1,18 @@
 import {MonthPickerInput} from '@coveord/plasma-mantine/components/MonthPickerInput';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
-import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
 
-const meta: Meta<typeof MonthPickerInput> = {
+type MonthPickerInputStoryArgs = ComponentProps<typeof MonthPickerInput> & BaseInputStoryArgs & InputWrapperStoryArgs;
+
+const meta = {
     title: '@components/form/date/MonthPickerInput',
     id: 'MonthPickerInput',
     component: MonthPickerInput,
@@ -24,10 +33,10 @@ const meta: Meta<typeof MonthPickerInput> = {
         type: Args.type.type,
         clearable: Args.clearable.type,
     },
-};
+} satisfies Meta<MonthPickerInputStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof MonthPickerInput>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <MonthPickerInput {...props} />,
+    render: (props) => <MonthPickerInput {...withLabelInfoProps(props)} />,
 };

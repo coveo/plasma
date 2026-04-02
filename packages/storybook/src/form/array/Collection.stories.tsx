@@ -1,17 +1,29 @@
 import {enhanceWithCollectionProps, TextInput, useForm} from '@coveord/plasma-mantine';
 import {Collection} from '@coveord/plasma-mantine/components/Collection';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {BaseInputArgs, InputWrapperArgs} from '../InputWrapperArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 interface ContactItem {
     name: string;
     email: string;
 }
 
-const meta: Meta<typeof Collection> = {
+interface CollectionStoryArgs extends BaseInputStoryArgs, InputWrapperStoryArgs {
+    draggable: boolean;
+    allowAdd: boolean;
+    addLabel: string;
+    addDisabledTooltip: string;
+}
+
+const meta = {
     title: '@components/form/array/Collection',
     id: 'Collection',
-    component: Collection,
     parameters: {
         layout: 'centered',
     },
@@ -27,23 +39,13 @@ const meta: Meta<typeof Collection> = {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
     },
-};
+} satisfies Meta<CollectionStoryArgs>;
 export default meta;
-type Story = StoryObj<typeof Collection>;
+type Story = StoryObj<CollectionStoryArgs>;
 
-interface DemoStoryProps {
+interface DemoStoryProps extends CollectionStoryArgs {
     layout: 'Horizontal' | 'Vertical';
     showHeaders: boolean;
-    label?: string;
-    description?: string;
-    draggable?: boolean;
-    disabled?: boolean;
-    readOnly?: boolean;
-    required?: boolean;
-    allowAdd?: boolean;
-    addLabel?: string;
-    addDisabledTooltip?: string;
-    error?: string;
 }
 
 /**
@@ -78,7 +80,8 @@ export const Demo: StoryObj<DemoStoryProps> = {
             description: 'Whether to show column headers',
         },
     },
-    render: (props) => {
+    render: (_props) => {
+        const props = withLabelInfoProps(_props);
         const form = useForm({
             initialValues: {
                 contacts: [
@@ -148,7 +151,9 @@ export const Demo: StoryObj<DemoStoryProps> = {
  * which hides the drag handle and remove button. You must manually pass these props to your form inputs.
  */
 export const Legacy: Story = {
-    render: (props) => {
+    args: {},
+    render: (_props) => {
+        const props = withLabelInfoProps(_props);
         const form = useForm({
             initialValues: {
                 contacts: ['Alice Smith', 'Bob Johnson'],
