@@ -33,3 +33,5 @@ export const ModalFooter = factory<ModalFooterFactory>((props, ref) => {
 
     return <StickyFooter className={classes.root} ref={footerRef} {...props} />;
 });
+
+ModalFooter.displayName = 'Modal.Footer';
