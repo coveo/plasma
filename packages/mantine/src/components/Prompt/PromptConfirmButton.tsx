@@ -25,7 +25,7 @@ const COMPONENT_BY_VARIANT: Record<
     ) => ReactElement<any, string | JSXElementConstructor<any>>
 > = {
     success: Button.Primary,
-    info: Button.Primary,
+    information: Button.Primary,
     warning: Button.DestructivePrimary,
     critical: Button.DestructivePrimary,
 };

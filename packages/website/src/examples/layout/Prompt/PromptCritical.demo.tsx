@@ -13,14 +13,14 @@ const Demo = () => {
 
     return (
         <>
-            <Prompt variant="critical" opened={opened} title="Prompt title" onClose={close}>
+            <Prompt.Critical opened={opened} title="Prompt title" onClose={close}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim.
                 <Prompt.Footer>
                     <Prompt.CancelButton onClick={onCancel}>Cancel</Prompt.CancelButton>
                     <Prompt.ConfirmButton onClick={onConfirm}>Continue</Prompt.ConfirmButton>
                 </Prompt.Footer>
-            </Prompt>
+            </Prompt.Critical>
             <Button.Primary onClick={open}>Open Prompt</Button.Primary>
         </>
     );
