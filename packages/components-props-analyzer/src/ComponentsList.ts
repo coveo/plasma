@@ -84,6 +84,7 @@ const components: Component[] = [
     {
         name: 'Prompt',
         packageName: '@coveord/plasma-mantine',
+        propsType: 'PromptProps',
     },
     {
         name: 'InlineConfirm',
