@@ -36,7 +36,7 @@
         "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "dependencies": {
-        "@swc/helpers": "0.5.19"
+        "@swc/helpers": "0.5.20"
     },
     "devDependencies": {
         "@swc/cli": "0.8.0",
