@@ -80,7 +80,7 @@ export const usePersistedColumnVisibility = (
             try {
                 localStorage.setItem(storageKey, JSON.stringify(visibility));
             } catch {
-                // storage unavailable
+                console.warn(`Unable to persist column visibility preferences for "${storageKey}".`);
             }
         },
         [storageKey, hasValidIds],
