@@ -37,7 +37,7 @@ const sanitizeFromStorage = (raw: unknown, validColumnIds: Set<string>): ColumnV
  * Hook that persists column visibility preferences to localStorage.
  *
  * @param defaultVisibleColumns - The default visibility map. Its keys define the set of valid column IDs.
- *   The reference should be stable across renders to avoid unnecessary recomputations.
+ * The reference should be stable across renders to avoid unnecessary recomputations.
  * @param maxSelectableColumns - Maximum number of columns that can be visible at the same time.
  * @param tableId - Unique identifier for the table. When omitted, no persistence occurs.
  */
