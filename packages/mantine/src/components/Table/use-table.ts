@@ -2,7 +2,7 @@ import type {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {useDidUpdate} from '@mantine/hooks';
 import {type ExpandedState, type PaginationState, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
+import {Dispatch, SetStateAction, useCallback, useMemo, useRef, useState} from 'react';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state.js';
 import {usePersistedColumnVisibility} from './use-persisted-column-visibility.js';
 
@@ -197,7 +197,9 @@ export interface UseTableOptions<TData = unknown> {
      */
     tableId?: string;
     /**
-     * Maximum number of columns that can be visible at the same time.
+     * Maximum number of columns that can be visible when restoring persisted visibility from localStorage.
+     * This only affects the initial column visibility resolved on mount when `tableId` is set.
+     * It does not enforce a runtime limit on `setColumnVisibility` — use `TableColumnsSelector` for UI enforcement.
      *
      * @default Infinity
      */
@@ -335,8 +337,9 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
      */
     const sync = !!options.syncWithUrl;
 
+    const defaultColumnVisibility = useRef(initialState.columnVisibility).current;
     const {initialColumnVisibility, persistColumnVisibility} = usePersistedColumnVisibility(
-        initialState.columnVisibility,
+        defaultColumnVisibility,
         options.maxSelectableColumns ?? Infinity,
         options.tableId,
     );

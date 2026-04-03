@@ -1,5 +1,5 @@
 import {useCallback, useMemo} from 'react';
-import {TableState} from './use-table';
+import type {TableState} from './use-table.js';
 
 type ColumnVisibility = TableState['columnVisibility'];
 
@@ -37,7 +37,7 @@ const sanitizeFromStorage = (raw: unknown, validColumnIds: Set<string>): ColumnV
  * Hook that persists column visibility preferences to localStorage.
  *
  * @param defaultVisibleColumns - The default visibility map. Its keys define the set of valid column IDs.
- * The reference should be stable across renders to avoid unnecessary recomputations.
+ * Must be a stable reference (e.g. via `useRef`) to avoid re-reading localStorage on every render.
  * @param maxSelectableColumns - Maximum number of columns that can be visible at the same time.
  * @param tableId - Unique identifier for the table. When omitted, no persistence occurs.
  */
@@ -48,9 +48,10 @@ export const usePersistedColumnVisibility = (
 ) => {
     const storageKey = tableId ? buildStorageKey(tableId) : null;
     const validIds = useMemo(() => new Set(Object.keys(defaultVisibleColumns)), [defaultVisibleColumns]);
+    const hasValidIds = validIds.size > 0;
 
     const initialColumnVisibility = useMemo((): ColumnVisibility => {
-        if (!storageKey || validIds.size === 0) {
+        if (!storageKey || !hasValidIds) {
             return defaultVisibleColumns;
         }
         try {
@@ -73,7 +74,7 @@ export const usePersistedColumnVisibility = (
 
     const persistColumnVisibility = useCallback(
         (visibility: ColumnVisibility) => {
-            if (!storageKey || validIds.size === 0) {
+            if (!storageKey || !hasValidIds) {
                 return;
             }
             try {
@@ -82,7 +83,7 @@ export const usePersistedColumnVisibility = (
                 // storage unavailable
             }
         },
-        [storageKey],
+        [storageKey, hasValidIds],
     );
 
     return {initialColumnVisibility, persistColumnVisibility};
