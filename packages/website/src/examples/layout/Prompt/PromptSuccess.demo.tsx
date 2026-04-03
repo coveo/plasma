@@ -5,13 +5,13 @@ const Demo = () => {
 
     return (
         <>
-            <Prompt variant="success" opened={opened} title="Prompt title" onClose={close}>
+            <Prompt.Success opened={opened} title="Prompt title" onClose={close}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut dui sed sapien finibus malesuada id
                 sit amet risus. Praesent finibus sapien vel dolor bibendum, eget euismod metus dignissim.
                 <Prompt.Footer>
                     <Prompt.ConfirmButton onClick={close}>Continue</Prompt.ConfirmButton>
                 </Prompt.Footer>
-            </Prompt>
+            </Prompt.Success>
             <Button.Primary onClick={open}>Open Prompt</Button.Primary>
         </>
     );

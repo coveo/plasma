@@ -9,18 +9,15 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {Children, ComponentType, ReactElement, ReactNode} from 'react';
+import {Children, ComponentProps, ComponentType, forwardRef, FunctionComponent, ReactElement, ReactNode} from 'react';
+import {InfoToken} from '../InfoToken/InfoToken.js';
 import {Modal} from '../Modal/Modal.js';
 import {PromptContextProvider} from './Prompt.context.js';
 import classes from './Prompt.module.css';
 import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton.js';
 import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton.js';
-import CriticalIcon from './icons/CriticalIcon.js';
-import InfoIcon from './icons/InfoIcon.js';
-import SuccessIcon from './icons/SuccessIcon.js';
-import WarningIcon from './icons/WarningIcon.js';
 
-export type PromptVariant = 'success' | 'warning' | 'critical' | 'info';
+export type PromptVariant = 'success' | 'warning' | 'critical' | 'information';
 export type PromptVars = {root: '--prompt-icon-size'};
 export type PromptStylesNames =
     | Exclude<ModalStylesNames, 'title'>
@@ -28,44 +25,39 @@ export type PromptStylesNames =
     | PromptCancelButtonStylesNamesVariant
     | PromptConfirmButtonStylesNamesVariant;
 
+type PromptStylesApiProps = Omit<StylesApiProps<PromptFactory>, 'variant'>;
+
 export interface PromptProps
-    extends StylesApiProps<PromptFactory>, Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes'> {
-    /**
-     * Controls prompt appearance
-     *
-     * @default "info"
-     */
-    variant?: PromptVariant;
+    extends PromptStylesApiProps, Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes' | 'variant'> {
     children: ReactNode;
     title: ReactNode;
 }
 
+interface PromptInternalProps extends PromptProps {
+    variant?: PromptVariant;
+}
+
 export type PromptFactory = Factory<{
-    props: PromptProps;
+    props: PromptInternalProps;
     ref: HTMLDivElement;
     vars: PromptVars;
     variant: PromptVariant;
     stylesNames: PromptStylesNames;
-    staticComponents: {
-        CancelButton: typeof PromptCancelButton;
-        ConfirmButton: typeof PromptConfirmButton;
-        Footer: typeof PromptFooter;
-    };
 }>;
 
-const PromptVariantIconsMapping: Record<PromptVariant, ComponentType> = {
-    success: SuccessIcon,
-    warning: WarningIcon,
-    critical: CriticalIcon,
-    info: InfoIcon,
+const PromptVariantIconsMapping: Record<PromptVariant, typeof InfoToken.Information> = {
+    success: InfoToken.Success,
+    warning: InfoToken.Warning,
+    critical: InfoToken.Error,
+    information: InfoToken.Information,
 };
 
-const defaultProps: Partial<PromptProps> = {
-    variant: 'info',
+const defaultProps: Partial<PromptInternalProps> = {
+    variant: 'information',
     centered: true,
 };
 
-export const Prompt = factory<PromptFactory>((_props, ref) => {
+const _Prompt = factory<PromptFactory>((_props, ref) => {
     const props = useProps('Prompt', defaultProps, _props);
     const {
         variant,
@@ -97,7 +89,7 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
     const otherChildren: ReactElement[] = [];
 
     Children.forEach(children, (child: ReactElement) => {
-        (child.type === Prompt.Footer ? footers : otherChildren).push(child);
+        (child.type === PromptFooter ? footers : otherChildren).push(child);
     });
 
     const IconComponent = PromptVariantIconsMapping[variant];
@@ -108,7 +100,12 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
                 <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
                 <Modal.Content {...getStyles('content', stylesApiProps)}>
                     <Modal.Header {...getStyles('header', stylesApiProps)}>
-                        <IconComponent />
+                        <IconComponent
+                            {...getStyles('icon', stylesApiProps)}
+                            variant="light"
+                            size="sm"
+                            aria-label={variant}
+                        />
                         <Modal.Title>
                             <Title order={3} component="div">
                                 {title}
@@ -125,9 +122,27 @@ export const Prompt = factory<PromptFactory>((_props, ref) => {
         </PromptContextProvider>
     );
 });
+_Prompt.displayName = 'Prompt';
 
-const PromptFooter = Modal.Footer;
+type PromptCompoundComponent = ((props: PromptProps) => ReactElement) & Omit<FunctionComponent<PromptProps>, never>;
 
-Prompt.CancelButton = PromptCancelButton;
-Prompt.ConfirmButton = PromptConfirmButton;
-Prompt.Footer = PromptFooter;
+const PromptFooter: ComponentType<ComponentProps<typeof Modal.Footer>> = (props) => <Modal.Footer {...props} />;
+PromptFooter.displayName = 'Prompt.Footer';
+
+const createPromptCompound = (variant: PromptVariant, displayName: string): PromptCompoundComponent => {
+    const Component = forwardRef<HTMLDivElement, PromptProps>((props, ref) => (
+        <_Prompt ref={ref} {...props} variant={variant} />
+    ));
+    Component.displayName = displayName;
+    return Component as PromptCompoundComponent;
+};
+
+export const Prompt = {
+    Information: createPromptCompound('information', 'Prompt.Information'),
+    Success: createPromptCompound('success', 'Prompt.Success'),
+    Warning: createPromptCompound('warning', 'Prompt.Warning'),
+    Critical: createPromptCompound('critical', 'Prompt.Critical'),
+    CancelButton: PromptCancelButton,
+    ConfirmButton: PromptConfirmButton,
+    Footer: PromptFooter,
+} as const;
