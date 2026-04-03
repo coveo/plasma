@@ -1,3 +1,9 @@
+## <small>58.0.1 (2026-04-03)</small>
+
+* chore(deps): update all non-major dependencies (#4374) 176a9c6, closes #4374
+
+
+
 ## 58.0.0 (2026-04-03)
 
 * chore(deps): lock file maintenance (#4363) 2e8803d, closes #4363
