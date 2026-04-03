@@ -3,7 +3,7 @@ import {TableState} from './use-table';
 
 type ColumnVisibility = TableState['columnVisibility'];
 
-const buildStorageKey = (tableId: string) => `coveo-comhub-table-columns-${tableId}`;
+const buildStorageKey = (tableId: string) => `plasma-table-columns-${tableId}`;
 
 const capVisibleColumns = (visibility: ColumnVisibility, max: number): ColumnVisibility => {
     let visibleCount = 0;
@@ -33,6 +33,14 @@ const sanitizeFromStorage = (raw: unknown, validColumnIds: Set<string>): ColumnV
     return result;
 };
 
+/**
+ * Hook that persists column visibility preferences to localStorage.
+ *
+ * @param defaultVisibleColumns - The default visibility map. Its keys define the set of valid column IDs.
+ *   The reference should be stable across renders to avoid unnecessary recomputations.
+ * @param maxSelectableColumns - Maximum number of columns that can be visible at the same time.
+ * @param tableId - Unique identifier for the table. When omitted, no persistence occurs.
+ */
 export const usePersistedColumnVisibility = (
     defaultVisibleColumns: ColumnVisibility,
     maxSelectableColumns: number,
@@ -42,7 +50,7 @@ export const usePersistedColumnVisibility = (
     const validIds = useMemo(() => new Set(Object.keys(defaultVisibleColumns)), [defaultVisibleColumns]);
 
     const initialColumnVisibility = useMemo((): ColumnVisibility => {
-        if (!storageKey) {
+        if (!storageKey || validIds.size === 0) {
             return defaultVisibleColumns;
         }
         try {
@@ -55,7 +63,9 @@ export const usePersistedColumnVisibility = (
             try {
                 localStorage.removeItem(storageKey);
             } catch {
-                // storage unavailable
+                console.warn(
+                    `Unable to access localStorage to clean up invalid column visibility data for "${storageKey}".`,
+                );
             }
         }
         return capVisibleColumns(defaultVisibleColumns, maxSelectableColumns);
@@ -63,7 +73,7 @@ export const usePersistedColumnVisibility = (
 
     const persistColumnVisibility = useCallback(
         (visibility: ColumnVisibility) => {
-            if (!storageKey) {
+            if (!storageKey || validIds.size === 0) {
                 return;
             }
             try {

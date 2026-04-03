@@ -2,7 +2,7 @@ import {act, renderHook} from '@test-utils';
 import {usePersistedColumnVisibility} from '../use-persisted-column-visibility.js';
 import {useTable} from '../use-table.js';
 
-const storageKey = (tableId: string) => `coveo-comhub-table-columns-${tableId}`;
+const storageKey = (tableId: string) => `plasma-table-columns-${tableId}`;
 
 describe('usePersistedColumnVisibility', () => {
     afterEach(() => {
@@ -60,6 +60,7 @@ describe('usePersistedColumnVisibility', () => {
 
             const visibleCount = Object.values(result.current.initialColumnVisibility).filter(Boolean).length;
             expect(visibleCount).toBe(2);
+            expect(result.current.initialColumnVisibility).toEqual({col1: true, col2: true, col3: false});
         });
 
         it('persists visibility to localStorage', () => {
@@ -94,6 +95,20 @@ describe('usePersistedColumnVisibility', () => {
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity, tableId));
 
             expect(result.current.initialColumnVisibility).toEqual({col1: true, col2: false});
+        });
+
+        it('skips localStorage when defaultVisibleColumns is empty', () => {
+            localStorage.setItem(storageKey(tableId), JSON.stringify({col1: true}));
+
+            const {result} = renderHook(() => usePersistedColumnVisibility({}, Infinity, tableId));
+
+            expect(result.current.initialColumnVisibility).toEqual({});
+
+            act(() => {
+                result.current.persistColumnVisibility({col1: false});
+            });
+
+            expect(JSON.parse(localStorage.getItem(storageKey(tableId))!)).toEqual({col1: true});
         });
     });
 });
