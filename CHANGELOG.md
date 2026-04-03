@@ -1,3 +1,35 @@
+## 58.0.0 (2026-04-03)
+
+* chore(deps): lock file maintenance (#4363) 2e8803d, closes #4363
+* chore(deps): lock file maintenance (#4368) 007aee3, closes #4368
+* chore(deps): update all non-major dependencies (#4339) 2746c6b, closes #4339
+* chore(deps): update all non-major dependencies (#4364) 11547a7, closes #4364
+* chore(deps): update dependency jsdom to v29 (#4362) d7463b5, closes #4362
+* chore(deps): update dependency lodash to v4.18.1 [security] (#4375) 09cb8c1, closes #4375
+* chore(deps): update dependency svgo to v4.0.1 [security] (#4351) 04fb082, closes #4351
+* chore(deps): update vite and related dependencies to latest version (#4360) bcaea4e, closes #4360
+* chore(website): remove search functionnalities (#4361) f6306d0, closes #4361
+* feat(mantine,storybook): update Prompt look (#4379) a90b8e5, closes #4379
+* fix(mantine, ChildForm): allow ReactNode description (#4365) 1714cb9, closes #4365
+* feat(InfoToken): update InfoToken component (#4378) efe9a0a, closes #4378
+* feat(mantine): add Input.LabelInfo component (#4371) 78d4e40, closes #4371
+* feat(mantine): update modal look with border and padding (#4373) 95426c2, closes #4373
+* refactor(InfoToken): simplify icon imports and update color variables (#4366) fb9f5c3, closes #4366
+* refactor(storybook): improve Modal component story (#4372) 3c3f0c8, closes #4372
+* fix(mantine): fix base color variables overrides (#4367) 8d3610d, closes #4367
+
+
+### BREAKING CHANGE
+
+* InfoToken is no longer a renderable component
+- Only compound components are exported
+- variant prop is no longer used to set the semantic type
+- variant prop has now two possible values: outline and light
+
+* fix: apply copilot review
+* Prompt variant prop is replaced by compound components
+
+
 ## 57.2.0 (2026-03-18)
 
 * feat(AppShell): improve AppShell default rendering + add Stories (#4359) 1436de5, closes #4359
