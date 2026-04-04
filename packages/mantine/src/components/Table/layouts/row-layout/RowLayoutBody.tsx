@@ -38,7 +38,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
         getRowAttributes,
         ...others
     } = useProps('RowLayoutBody', defaultProps as RowLayoutBodyProps<T>, props);
-    const {table, store} = useTableContext<T>();
+    const {table, store, lastSelectedRowIndex} = useTableContext<T>();
 
     const hasMultiSelection =
         store.multiRowSelectionEnabled &&
@@ -58,10 +58,12 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     // and selects only this row (single-select behavior)
                     store.clearRowSelection();
                     row.toggleSelected(true);
+
+                    // Update the anchor index for Shift+click range selection
+                    lastSelectedRowIndex.current = canEdit ? row.index : null;
                 } else if (!isSelected) {
                     row.toggleSelected(true);
                 }
-                // If already selected in single mode, do nothing — keep the selection and actions visible
             }
         };
 
