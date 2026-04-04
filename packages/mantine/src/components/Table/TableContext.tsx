@@ -12,6 +12,7 @@ export interface TableContextValue<TData = unknown> {
     getRowActions: (datum: TData[]) => TableAction[];
     table: Table<TData>;
     containerRef: MutableRefObject<HTMLDivElement | null>;
+    lastSelectedRowIndex: MutableRefObject<number | null>;
 }
 
 export interface TableProviderProps<T> {

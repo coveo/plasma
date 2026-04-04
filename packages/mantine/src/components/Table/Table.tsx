@@ -212,6 +212,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     }, [data]);
 
     const containerRef = useRef<HTMLDivElement>(null);
+    const lastSelectedRowIndex = useRef<number | null>(null);
     useClickOutside(
         () => {
             if (!store.multiRowSelectionEnabled && store.getSelectedRows().length > 0) {
@@ -253,7 +254,9 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
 
     return (
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
-            <TableProvider<T> value={{getStyles, getRowActions, store, table, layouts, containerRef}}>
+            <TableProvider<T>
+                value={{getStyles, getRowActions, store, table, layouts, containerRef, lastSelectedRowIndex}}
+            >
                 <Layout>
                     {store.isVacant && !store.isFiltered ? (
                         noData

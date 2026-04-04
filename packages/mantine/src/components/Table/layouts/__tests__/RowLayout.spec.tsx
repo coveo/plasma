@@ -494,6 +494,70 @@ describe('RowLayout', () => {
             );
             expect(doubleClickSpy).not.toHaveBeenCalled();
         });
+
+        it('selects a range of rows when shift-clicking on checkboxes', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'Row1'},
+                {id: '🆔-2', firstName: 'Row2'},
+                {id: '🆔-3', firstName: 'Row3'},
+                {id: '🆔-4', firstName: 'Row4'},
+                {id: '🆔-5', firstName: 'Row5'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            // click the first row checkbox
+            await user.click(within(screen.getByRole('row', {name: /Row1/i})).getByRole('checkbox'));
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(1);
+
+            // shift+click the fourth row checkbox — should select rows 1 through 4
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByRole('row', {name: /Row4/i})).getByRole('checkbox'));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(4);
+            expect(screen.getByRole('row', {name: /Row1/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row2/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row3/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row4/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row5/i, selected: false})).toBeInTheDocument();
+        });
+
+        it('includes the last row in the range when shift-clicking', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'Row1'},
+                {id: '🆔-2', firstName: 'Row2'},
+                {id: '🆔-3', firstName: 'Row3'},
+                {id: '🆔-4', firstName: 'Row4'},
+                {id: '🆔-5', firstName: 'Row5'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            // click the second row checkbox
+            await user.click(within(screen.getByRole('row', {name: /Row2/i})).getByRole('checkbox'));
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(1);
+
+            // shift+click the fifth row checkbox — should select rows 2 through 5
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByRole('row', {name: /Row5/i})).getByRole('checkbox'));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(4);
+            expect(screen.getByRole('row', {name: /Row1/i, selected: false})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row2/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row3/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row4/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row5/i, selected: true})).toBeInTheDocument();
+        });
     });
 
     it('passes down attributes given by getRowAttributes function to the row element', () => {

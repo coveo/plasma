@@ -1,5 +1,56 @@
 import {Checkbox, Tooltip} from '@mantine/core';
-import {ColumnDef} from '@tanstack/table-core';
+import {CellContext, ColumnDef} from '@tanstack/table-core';
+import {ChangeEvent, FunctionComponent, MouseEvent, useRef} from 'react';
+import {useTableContext} from '../TableContext.js';
+
+const SelectableCheckbox: FunctionComponent<{info: CellContext<unknown, unknown>}> = ({info}) => {
+    const {row} = info;
+    const {table, lastSelectedRowIndex} = useTableContext();
+    const isShiftClickRef = useRef(false);
+
+    const handleClick = (event: MouseEvent<HTMLInputElement>) => {
+        if (event.shiftKey && lastSelectedRowIndex.current !== null) {
+            isShiftClickRef.current = true;
+
+            const currentIndex = row.index;
+            const start = Math.min(lastSelectedRowIndex.current, currentIndex);
+            const end = Math.max(lastSelectedRowIndex.current, currentIndex);
+            const rows = table.getRowModel().rows;
+
+            for (let i = start; i <= end; i++) {
+                rows[i].toggleSelected(true);
+            }
+            lastSelectedRowIndex.current = currentIndex;
+        } else {
+            isShiftClickRef.current = false;
+            lastSelectedRowIndex.current = row.index;
+        }
+    };
+
+    const handleChange = (_event: ChangeEvent<HTMLInputElement>) => {
+        if (isShiftClickRef.current) {
+            // Skip the default toggle — range selection was already handled in onClick
+            isShiftClickRef.current = false;
+            return;
+        }
+        row.toggleSelected();
+    };
+
+    return (
+        <Checkbox
+            checked={row.getIsSelected()}
+            indeterminate={row.getIsSomeSelected()}
+            onChange={handleChange}
+            onClick={handleClick}
+            flex={1}
+            aria-label="Select row"
+            onDoubleClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+            }}
+        />
+    );
+};
 
 /**
  * Generic column to use when your table needs multi selection of rows
@@ -26,17 +77,5 @@ export const TableSelectableColumn: ColumnDef<unknown> = {
             </Tooltip>
         );
     },
-    cell: ({row}) => (
-        <Checkbox
-            checked={row.getIsSelected()}
-            indeterminate={row.getIsSomeSelected()}
-            onChange={row.getToggleSelectedHandler()}
-            flex={1}
-            aria-label="Select row"
-            onDoubleClick={(event) => {
-                event.preventDefault();
-                event.stopPropagation();
-            }}
-        />
-    ),
+    cell: (info) => <SelectableCheckbox info={info} />,
 };
