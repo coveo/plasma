@@ -324,6 +324,71 @@ describe('RowLayout', () => {
             });
         });
 
+        it('hides row checkboxes by default and shows them when a row has multi-selection', async () => {
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            // checkboxes exist in the DOM but body rows have data-has-multi-selection="false"
+            const dataRows = screen.getAllByRole('row').filter((row) => row.hasAttribute('data-has-multi-selection'));
+            expect(dataRows).toHaveLength(2);
+            dataRows.forEach((row) => {
+                expect(row).toHaveAttribute('data-has-multi-selection', 'false');
+            });
+        });
+
+        it('sets data-has-multi-selection to true on all rows when a checkbox is selected', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            // select one row via checkbox
+            await user.click(within(screen.getByRole('row', {name: /John Smith/i})).getByRole('checkbox'));
+
+            const dataRows = screen.getAllByRole('row').filter((row) => row.hasAttribute('data-has-multi-selection'));
+            expect(dataRows).toHaveLength(2);
+            dataRows.forEach((row) => {
+                expect(row).toHaveAttribute('data-has-multi-selection', 'true');
+            });
+        });
+
+        it('clears multi-selection and selects only the clicked row when clicking on a row', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                {id: '🆔-3', firstName: 'Bob', lastName: 'Marley'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            // multi-select two rows via checkboxes
+            await user.click(within(screen.getByRole('row', {name: /John Smith/i})).getByRole('checkbox'));
+            await user.click(within(screen.getByRole('row', {name: /Jane Doe/i})).getByRole('checkbox'));
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(2);
+
+            // click on a row (not the checkbox) — should clear multi-selection and select only this row
+            await user.click(screen.getByRole('cell', {name: 'Bob'}));
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(1);
+            expect(screen.getByRole('row', {name: /Bob Marley/i, selected: true})).toBeInTheDocument();
+        });
+
         it('selects the rows specified in the initial state on mount', () => {
             const data: RowData[] = [
                 {id: '🆔-1', firstName: 'John', lastName: 'Smith'},

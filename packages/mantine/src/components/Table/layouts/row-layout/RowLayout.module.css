@@ -33,6 +33,19 @@
         }
     }
 
+    /* In multi-selection mode, hide checkboxes by default, show on hover or when any row is selected */
+    &[data-multi-selection='true'][data-has-multi-selection='false'] {
+        & input[type='checkbox'] {
+            visibility: hidden;
+        }
+
+        @mixin hover {
+            & input[type='checkbox'] {
+                visibility: visible;
+            }
+        }
+    }
+
     &[data-selected='true'] {
         &[data-multi-selection='false'] {
             background-color: var(--mantine-color-gray-light-hover);

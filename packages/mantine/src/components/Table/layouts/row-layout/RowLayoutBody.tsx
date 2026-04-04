@@ -39,15 +39,22 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
     } = useProps('RowLayoutBody', defaultProps as RowLayoutBodyProps<T>, props);
     const {table, store} = useTableContext<T>();
 
+    const hasMultiSelection = store.multiRowSelectionEnabled && store.getSelectedRows().length > 0;
+
     const rows = table.getRowModel()?.rows.map((row) => {
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
         const onClick = (_event: MouseEvent<HTMLTableRowElement>) => {
-            if (store.rowSelectionEnabled && !store.multiRowSelectionEnabled) {
-                if (!isSelected) {
+            if (store.rowSelectionEnabled) {
+                if (store.multiRowSelectionEnabled) {
+                    // In multi-selection mode, clicking a row clears multi-selection
+                    // and selects only this row (single-select behavior)
+                    store.clearRowSelection();
+                    row.toggleSelected(true);
+                } else if (!isSelected) {
                     row.toggleSelected(true);
                 }
-                // If already selected, do nothing — keep the selection and actions visible
+                // If already selected in single mode, do nothing — keep the selection and actions visible
             }
         };
 
@@ -61,6 +68,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     data-selectable={store.rowSelectionEnabled}
                     data-selected={isSelected}
                     data-multi-selection={store.multiRowSelectionEnabled}
+                    data-has-multi-selection={hasMultiSelection}
                     aria-selected={isSelected}
                     data-testid={row.id}
                     {...ctx.getStyles('row', {classNames, className, styles, style})}
@@ -93,6 +101,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                                     ...ctx.getStyles('cell', {classNames, styles}).style,
                                 }}
                                 data-collapsible-cell={cell.column.id === TableCollapsibleColumn.id}
+                                data-select-cell={cell.column.id === TableSelectableColumn.id}
                                 onClick={onCollapsibleCellClick}
                             >
                                 <TableLoading visible={loading}>

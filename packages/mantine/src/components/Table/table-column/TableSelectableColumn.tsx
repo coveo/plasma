@@ -11,6 +11,7 @@ export const TableSelectableColumn: ColumnDef<unknown> = {
     meta: {
         controlColumn: true,
     },
+    size: 52, // 16px padding left + 20px checkbox + 16px padding right
     header: ({table}) => {
         const label = table.getIsAllRowsSelected() ? 'Unselect all from this page' : 'Select all from this page';
         return (
