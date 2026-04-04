@@ -115,4 +115,30 @@ describe('TableCollapsibleColumn', () => {
         expect(screen.queryByTestId('row-content-a')).toBeVisible();
         expect(screen.queryByTestId('row-content-b')).not.toBeVisible();
     });
+
+    it('does not trigger onRowDoubleClick when double clicking the expand button', async () => {
+        const user = userEvent.setup();
+        const doubleClickSpy = vi.fn();
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={baseColumns}
+                    getRowId={(datum: RowData) => datum.id}
+                    getRowExpandedContent={(datum: RowData) => (
+                        <Box data-testid={`row-content-${datum.id}`}>{datum.body}</Box>
+                    )}
+                    layoutProps={{onRowDoubleClick: doubleClickSpy}}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        const expandButtons = screen.getAllByRole('button', {name: 'Expand'});
+        await user.dblClick(expandButtons[0]);
+
+        expect(doubleClickSpy).not.toHaveBeenCalled();
+    });
 });
