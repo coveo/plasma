@@ -9,7 +9,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement, useCallback, useEffect, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
 import classes from './Table.module.css';
 import {TableLayout, TableProps} from './Table.types.js';
@@ -222,6 +222,22 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         [containerRef.current, ...additionalRootNodes],
     );
     const mergedRef = useMergedRef(containerRef, ref);
+
+    const handleEscapeKey = useCallback(
+        (event: KeyboardEvent) => {
+            if (event.key === 'Escape' && store.getSelectedRows().length > 0) {
+                store.clearRowSelection();
+            }
+        },
+        [store],
+    );
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleEscapeKey);
+        return () => {
+            document.removeEventListener('keydown', handleEscapeKey);
+        };
+    }, [handleEscapeKey]);
 
     if (!data) {
         return (
