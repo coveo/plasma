@@ -48,6 +48,38 @@ describe('Table.Actions', () => {
         expect(screen.getByRole('button', {name: 'Eat vegetable'})).toBeVisible();
     });
 
+    it('keeps actions visible when clicking again on an already selected row', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table<RowData>
+                    store={store}
+                    data={[{name: 'fruit'}, {name: 'vegetable'}]}
+                    getRowId={(row) => row.name}
+                    columns={columns}
+                    getRowActions={(selected: RowData[]) => [
+                        {
+                            group: '$$primary',
+                            component: <Table.ActionItem>Eat {selected[0].name}</Table.ActionItem>,
+                        },
+                    ]}
+                >
+                    <Table.Header />
+                </Table>
+            );
+        };
+        render(<Fixture />);
+
+        // select the fruit row
+        await user.click(screen.getByRole('cell', {name: 'fruit'}));
+        expect(screen.getByRole('button', {name: 'Eat fruit'})).toBeVisible();
+
+        // click again on the same row — actions should remain visible
+        await user.click(screen.getByRole('cell', {name: 'fruit'}));
+        expect(screen.getByRole('button', {name: 'Eat fruit'})).toBeVisible();
+    });
+
     it('displays the secondary actions when the row is selected and the user clicks on more', async () => {
         const user = userEvent.setup();
         const Fixture = () => {

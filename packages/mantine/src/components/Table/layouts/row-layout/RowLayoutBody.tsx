@@ -13,9 +13,7 @@ import {useRowLayout} from './RowLayoutContext.js';
 export type RowLayoutBodyStylesNames = 'row' | 'cell' | 'collapsibleRow' | 'collapsibleWrapper';
 
 export interface RowLayoutBodyProps<T>
-    extends BoxProps,
-        TableLayoutProps<T>,
-        CompoundStylesApiProps<RowLayoutBodyFactory> {}
+    extends BoxProps, TableLayoutProps<T>, CompoundStylesApiProps<RowLayoutBodyFactory> {}
 
 export type RowLayoutBodyFactory = Factory<{
     props: RowLayoutBodyProps<unknown>;
@@ -40,21 +38,16 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
         ...others
     } = useProps('RowLayoutBody', defaultProps as RowLayoutBodyProps<T>, props);
     const {table, store} = useTableContext<T>();
-    const toggleCollapsible = (el: HTMLTableRowElement) => {
-        const cell = el.children[el.children.length - 1] as HTMLTableCellElement;
-        cell.querySelector('button').click();
-    };
 
     const rows = table.getRowModel()?.rows.map((row) => {
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
-        const shouldKeepSelection = store.rowSelectionForced && isSelected;
-        const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
-            if (rowChildren) {
-                toggleCollapsible(event.currentTarget);
-            }
-            if (store.rowSelectionEnabled && !store.multiRowSelectionEnabled && !shouldKeepSelection) {
-                row.toggleSelected();
+        const onClick = (_event: MouseEvent<HTMLTableRowElement>) => {
+            if (store.rowSelectionEnabled && !store.multiRowSelectionEnabled) {
+                if (!isSelected) {
+                    row.toggleSelected(true);
+                }
+                // If already selected, do nothing — keep the selection and actions visible
             }
         };
 

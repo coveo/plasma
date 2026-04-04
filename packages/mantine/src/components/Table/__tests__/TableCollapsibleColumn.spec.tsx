@@ -31,7 +31,7 @@ const baseColumns: Array<ColumnDef<RowData>> = [
 ];
 
 describe('TableCollapsibleColumn', () => {
-    it('expands the rows when the user clicks on a cell', async () => {
+    it('does not expand rows when the user clicks on a cell', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
             const store = useTable<RowData>();
@@ -51,7 +51,37 @@ describe('TableCollapsibleColumn', () => {
 
         expect(screen.queryByTestId('row-content-a')).not.toBeVisible();
         expect(screen.queryByTestId('row-content-b')).not.toBeVisible();
+
+        // clicking on a cell should NOT expand the row
         await user.click(screen.getByRole('cell', {name: 'Jane Doe'}));
+        expect(screen.queryByTestId('row-content-b')).not.toBeVisible();
+        expect(screen.queryByTestId('row-content-a')).not.toBeVisible();
+    });
+
+    it('expands rows only when the user clicks on the expand button', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={baseColumns}
+                    getRowId={(datum: RowData) => datum.id}
+                    getRowExpandedContent={(datum: RowData) => (
+                        <Box data-testid={`row-content-${datum.id}`}>{datum.body}</Box>
+                    )}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        expect(screen.queryByTestId('row-content-a')).not.toBeVisible();
+        expect(screen.queryByTestId('row-content-b')).not.toBeVisible();
+
+        const expandButtons = screen.getAllByRole('button', {name: 'Expand'});
+        // click the expand button for the second row (Jane Doe)
+        await user.click(expandButtons[1]);
 
         await waitFor(() => expect(screen.getByTestId('row-content-b')).toBeVisible());
         expect(screen.queryByTestId('row-content-a')).not.toBeVisible();

@@ -238,7 +238,7 @@ describe('RowLayout', () => {
         );
     });
 
-    it('toggles row selection when clicking on a selected row', async () => {
+    it('keeps the row selected when clicking on an already selected row', async () => {
         const user = userEvent.setup();
         const data: RowData[] = [
             {id: '🆔-1', firstName: 'first', lastName: 'last'},
@@ -254,12 +254,13 @@ describe('RowLayout', () => {
         expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
         expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
 
+        // clicking again on the same row should keep it selected
         await user.click(screen.getByRole('row', {name: /patate king/i}));
-        expect(screen.getByRole('row', {name: /patate king/i, selected: false})).toBeInTheDocument();
-        expect(screen.queryByRole('row', {name: /patate king/i, selected: true})).not.toBeInTheDocument();
+        expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+        expect(screen.queryByRole('row', {name: /patate king/i, selected: false})).not.toBeInTheDocument();
     });
 
-    it('prevents row deselection if row selection is forced', async () => {
+    it('keeps the row selected when row selection is forced and the user clicks on the selected row', async () => {
         const user = userEvent.setup();
         const data: RowData[] = [
             {id: '🆔-1', firstName: 'first', lastName: 'last'},
