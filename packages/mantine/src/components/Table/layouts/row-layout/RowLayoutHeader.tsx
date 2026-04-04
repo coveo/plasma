@@ -10,9 +10,7 @@ import {useRowLayout} from './RowLayoutContext.js';
 export type RowLayoutHeaderStyleNames = 'headerRow';
 
 export interface RowLayoutHeaderProps<T>
-    extends BoxProps,
-        TableLayoutProps<T>,
-        CompoundStylesApiProps<RowLayoutBodyFactory> {}
+    extends BoxProps, TableLayoutProps<T>, CompoundStylesApiProps<RowLayoutBodyFactory> {}
 
 type RowLayoutHeaderFactory = Factory<{
     props: RowLayoutHeaderProps<unknown>;
@@ -28,6 +26,7 @@ export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: Forw
     const {
         getRowExpandedContent: _getRowExpandedContent,
         getRowActions: _getRowActions,
+        getRowCanEdit: _getRowCanEdit,
         loading: _loading,
         getRowAttributes: _getRowAttributes,
         onRowDoubleClick: _onRowDoubleClick,

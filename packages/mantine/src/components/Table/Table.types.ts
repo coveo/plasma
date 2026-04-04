@@ -8,7 +8,7 @@ import {TableStore} from './use-table.js';
 
 export type TableLayoutProps<TData = unknown> = Pick<
     TableProps<TData>,
-    'getRowExpandedContent' | 'getRowAttributes' | 'getRowActions' | 'loading'
+    'getRowExpandedContent' | 'getRowAttributes' | 'getRowCanEdit' | 'getRowActions' | 'loading'
 > &
     TableProps<TData>['layoutProps'];
 
@@ -50,6 +50,16 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      * Allows to define html attributes that will be passed down to each row.
      */
     getRowAttributes?: (datum: TData, index: number, row: Row<TData>) => Record<string, unknown>;
+    /**
+     * Function that determines if a row can be edited.
+     * When a row cannot be edited:
+     * - It can still be selected by clicking on it (single selection)
+     * - It cannot be multi-selected and its checkbox is hidden
+     * - It is displayed with 50% opacity
+     *
+     * @default () => true
+     */
+    getRowCanEdit?: (datum: TData, index: number, row: Row<TData>) => boolean;
     /**
      * Function that generates the expandable content of a row
      * Return null for rows that don't need to be expandable

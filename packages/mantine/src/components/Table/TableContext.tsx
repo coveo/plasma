@@ -1,5 +1,5 @@
 import {createSafeContext, GetStylesApi} from '@mantine/core';
-import {Table} from '@tanstack/table-core';
+import {Row, Table} from '@tanstack/table-core';
 import {MutableRefObject, ReactElement} from 'react';
 import {type PlasmaTableFactory} from './Table.js';
 import {TableAction, TableLayout} from './Table.types.js';
@@ -10,6 +10,7 @@ export interface TableContextValue<TData = unknown> {
     store: TableStore<TData>;
     layouts: TableLayout[];
     getRowActions: (datum: TData[]) => TableAction[];
+    getRowCanEdit: (datum: TData, index: number, row: Row<TData>) => boolean;
     table: Table<TData>;
     containerRef: MutableRefObject<HTMLDivElement | null>;
     lastSelectedRowIndex: MutableRefObject<number | null>;

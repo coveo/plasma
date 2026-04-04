@@ -29,6 +29,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
     const {
         getRowExpandedContent,
         onRowDoubleClick,
+        getRowCanEdit,
         loading,
         classNames,
         className,
@@ -39,11 +40,17 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
     } = useProps('RowLayoutBody', defaultProps as RowLayoutBodyProps<T>, props);
     const {table, store} = useTableContext<T>();
 
-    const hasMultiSelection = store.multiRowSelectionEnabled && store.getSelectedRows().length > 0;
+    const hasMultiSelection =
+        store.multiRowSelectionEnabled &&
+        table
+            .getRowModel()
+            .rows.some((row) => row.getIsSelected() && (getRowCanEdit?.(row.original, row.index, row) ?? true));
 
     const rows = table.getRowModel()?.rows.map((row) => {
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
+        const canEdit = getRowCanEdit?.(row.original, row.index, row) ?? true;
+
         const onClick = (_event: MouseEvent<HTMLTableRowElement>) => {
             if (store.rowSelectionEnabled) {
                 if (store.multiRowSelectionEnabled) {
@@ -69,6 +76,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     data-selected={isSelected}
                     data-multi-selection={store.multiRowSelectionEnabled}
                     data-has-multi-selection={hasMultiSelection}
+                    data-can-edit={canEdit}
                     aria-selected={isSelected}
                     data-testid={row.id}
                     {...ctx.getStyles('row', {classNames, className, styles, style})}

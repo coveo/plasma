@@ -56,6 +56,11 @@
         }
     }
 
+    /* Non-editable rows are displayed with reduced opacity */
+    &[data-can-edit='false'] {
+        opacity: 0.5;
+    }
+
     &[data-collapsible-cell='true'] {
         text-align: right;
         padding: calc(var(--mantine-spacing-xs) / 2) var(--mantine-spacing-sm) !important;

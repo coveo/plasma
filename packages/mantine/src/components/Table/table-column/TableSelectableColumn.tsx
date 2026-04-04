@@ -5,8 +5,15 @@ import {useTableContext} from '../TableContext.js';
 
 const SelectableCheckbox: FunctionComponent<{info: CellContext<unknown, unknown>}> = ({info}) => {
     const {row} = info;
-    const {table, lastSelectedRowIndex} = useTableContext();
+    const {table, lastSelectedRowIndex, getRowCanEdit} = useTableContext();
     const isShiftClickRef = useRef(false);
+
+    const canEdit = getRowCanEdit(row.original, row.index, row);
+
+    // Non-editable rows cannot be multi-selected
+    if (!canEdit) {
+        return null;
+    }
 
     const handleClick = (event: MouseEvent<HTMLInputElement>) => {
         if (event.shiftKey && lastSelectedRowIndex.current !== null) {
@@ -18,7 +25,10 @@ const SelectableCheckbox: FunctionComponent<{info: CellContext<unknown, unknown>
             const rows = table.getRowModel().rows;
 
             for (let i = start; i <= end; i++) {
-                rows[i].toggleSelected(true);
+                const r = rows[i];
+                if (getRowCanEdit(r.original, r.index, r)) {
+                    r.toggleSelected(true);
+                }
             }
             lastSelectedRowIndex.current = currentIndex;
         } else {

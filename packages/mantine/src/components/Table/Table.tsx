@@ -92,6 +92,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         data,
         getRowId,
         getRowAttributes,
+        getRowCanEdit,
         getRowExpandedContent,
         getRowActions,
         columns,
@@ -252,10 +253,21 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         store.state.layout === null ? layouts[0] : layouts.find(({displayName}) => displayName === store.state.layout);
     const hasRows = table.getRowModel().rows.length > 0;
 
+    const resolvedGetRowCanEdit = getRowCanEdit ?? (() => true);
+
     return (
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
             <TableProvider<T>
-                value={{getStyles, getRowActions, store, table, layouts, containerRef, lastSelectedRowIndex}}
+                value={{
+                    getStyles,
+                    getRowActions,
+                    getRowCanEdit: resolvedGetRowCanEdit,
+                    store,
+                    table,
+                    layouts,
+                    containerRef,
+                    lastSelectedRowIndex,
+                }}
             >
                 <Layout>
                     {store.isVacant && !store.isFiltered ? (
@@ -274,6 +286,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                     <Layout.Header
                                         getRowExpandedContent={getRowExpandedContent}
                                         getRowAttributes={getRowAttributes}
+                                        getRowCanEdit={getRowCanEdit}
                                         loading={loading}
                                         {...layoutProps}
                                     />
@@ -283,6 +296,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                         <Layout.Body
                                             getRowExpandedContent={getRowExpandedContent}
                                             getRowAttributes={getRowAttributes}
+                                            getRowCanEdit={getRowCanEdit}
                                             loading={loading}
                                             {...layoutProps}
                                         />

@@ -45,7 +45,7 @@ const defaultProps: Partial<TableHeaderProps> = {
 };
 
 export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
-    const {store, getStyles} = useTableContext();
+    const {store, getStyles, table, getRowCanEdit} = useTableContext();
     const {
         showActions,
         unselectAllLabel,
@@ -59,7 +59,10 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
         vars: _vars,
         ...others
     } = useProps('PlasmaTableHeader', defaultProps, props);
-    const selectedRows = store.getSelectedRows();
+
+    const editableSelectedRows = table
+        .getRowModel()
+        .rows.filter((row) => row.getIsSelected() && getRowCanEdit(row.original, row.index, row));
 
     const stylesApiProps = {classNames, styles};
     const innerStyles = getStyles('headerGridInner', stylesApiProps);
@@ -78,7 +81,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
                 classNames={{inner: innerStyles.className, root: gridStyles.className}}
                 styles={{inner: innerStyles.style, root: gridStyles.style}}
             >
-                {store.multiRowSelectionEnabled && selectedRows.length > 0 ? (
+                {store.multiRowSelectionEnabled && editableSelectedRows.length > 0 ? (
                     <Grid.Col
                         span="auto"
                         {...getStyles('headerCol', stylesApiProps)}
@@ -90,7 +93,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
                                 disabled={!store.rowSelectionEnabled}
                                 leftSection={<CrossSize16Px height={16} />}
                             >
-                                {selectedCountLabel(selectedRows.length)}
+                                {selectedCountLabel(editableSelectedRows.length)}
                             </Button.Quaternary>
                         </Tooltip>
                     </Grid.Col>

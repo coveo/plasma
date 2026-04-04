@@ -593,4 +593,154 @@ describe('RowLayout', () => {
         expect(screen.getByRole('row', {name: /alberto contador/i})).not.toHaveAttribute('data-disabled');
         expect(screen.getByRole('row', {name: /lance armstrong/i})).toHaveAttribute('data-disabled');
     });
+
+    describe('when getRowCanEdit is provided', () => {
+        it('sets data-can-edit to false on non-editable rows', () => {
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'Editable', lastName: 'Row'},
+                {id: '🆔-2', firstName: 'ReadOnly', lastName: 'Row'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        getRowCanEdit={(datum) => datum.firstName !== 'ReadOnly'}
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            expect(screen.getByRole('row', {name: /Editable Row/i})).toHaveAttribute('data-can-edit', 'true');
+            expect(screen.getByRole('row', {name: /ReadOnly Row/i})).toHaveAttribute('data-can-edit', 'false');
+        });
+
+        it('allows single selection on non-editable rows', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'Editable', lastName: 'Row'},
+                {id: '🆔-2', firstName: 'ReadOnly', lastName: 'Row'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        getRowCanEdit={(datum) => datum.firstName !== 'ReadOnly'}
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('row', {name: /ReadOnly Row/i}));
+            expect(screen.getByRole('row', {name: /ReadOnly Row/i, selected: true})).toBeInTheDocument();
+        });
+
+        it('hides the checkbox for non-editable rows in multi-selection mode', () => {
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'Editable', lastName: 'Row'},
+                {id: '🆔-2', firstName: 'ReadOnly', lastName: 'Row'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        getRowCanEdit={(datum) => datum.firstName !== 'ReadOnly'}
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            // Editable row has a checkbox
+            expect(
+                within(screen.getByRole('row', {name: /Editable Row/i})).getByRole('checkbox', {name: /select row/i}),
+            ).toBeInTheDocument();
+
+            // Non-editable row does not have a checkbox
+            expect(
+                within(screen.getByRole('row', {name: /ReadOnly Row/i})).queryByRole('checkbox', {name: /select row/i}),
+            ).not.toBeInTheDocument();
+        });
+
+        it('skips non-editable rows during shift-click range selection', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'Row1'},
+                {id: '🆔-2', firstName: 'Row2'},
+                {id: '🆔-3', firstName: 'Row3'},
+                {id: '🆔-4', firstName: 'Row4'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        getRowCanEdit={(datum) => datum.firstName !== 'Row3'}
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(within(screen.getByRole('row', {name: /Row1/i})).getByRole('checkbox'));
+
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByRole('row', {name: /Row4/i})).getByRole('checkbox'));
+            await user.keyboard('{/Shift}');
+
+            // Row3 is non-editable and should not be selected
+            expect(screen.getByRole('row', {name: /Row1/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row2/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row3/i, selected: false})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /Row4/i, selected: true})).toBeInTheDocument();
+        });
+
+        it('does not activate multi-selection mode when clicking on a non-editable row', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'Editable', lastName: 'Row'},
+                {id: '🆔-2', firstName: 'ReadOnly', lastName: 'Row'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        getRowCanEdit={(datum) => datum.firstName !== 'ReadOnly'}
+                    >
+                        <Table.Header />
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+
+            // Click on non-editable row — selects it but should not activate multi-selection visuals
+            await user.click(screen.getByRole('row', {name: /ReadOnly Row/i}));
+            expect(screen.getByRole('row', {name: /ReadOnly Row/i, selected: true})).toBeInTheDocument();
+
+            // All data rows should still have data-has-multi-selection="false"
+            const dataRows = screen.getAllByRole('row').filter((row) => row.hasAttribute('data-has-multi-selection'));
+            dataRows.forEach((row) => {
+                expect(row).toHaveAttribute('data-has-multi-selection', 'false');
+            });
+
+            // The "X selected" button should not appear in the header
+            expect(screen.queryByRole('button', {name: /selected/i})).not.toBeInTheDocument();
+        });
+    });
 });
