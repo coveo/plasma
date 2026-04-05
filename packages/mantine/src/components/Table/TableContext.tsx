@@ -2,7 +2,7 @@ import {createSafeContext, GetStylesApi} from '@mantine/core';
 import {Row, Table} from '@tanstack/table-core';
 import {MutableRefObject, ReactElement} from 'react';
 import {type PlasmaTableFactory} from './Table.js';
-import {TableAction, TableLayout} from './Table.types.js';
+import {TableAction, TableLayout, type MultiRowSelectionMode} from './Table.types.js';
 import {TableStore} from './use-table.js';
 
 export interface TableContextValue<TData = unknown> {
@@ -11,6 +11,7 @@ export interface TableContextValue<TData = unknown> {
     layouts: TableLayout[];
     getRowActions: (datum: TData[]) => TableAction[];
     getRowCanEdit: (datum: TData, index: number, row: Row<TData>) => boolean;
+    multiRowSelectionMode: MultiRowSelectionMode;
     table: Table<TData>;
     containerRef: MutableRefObject<HTMLDivElement | null>;
     lastSelectedRowIndex: MutableRefObject<number | null>;

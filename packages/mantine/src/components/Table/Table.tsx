@@ -81,6 +81,7 @@ const defaultProps: Partial<TableProps<unknown>> = {
     layouts: [TableLayouts.Rows as TableLayout],
     layoutProps: {},
     loading: false,
+    multiRowSelectionMode: 'selection',
     additionalRootNodes: [],
     options: {},
     getRowActions: () => [],
@@ -100,6 +101,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         layoutProps,
         children,
         loading,
+        multiRowSelectionMode,
         additionalRootNodes,
         options,
         ref,
@@ -212,11 +214,13 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         }
     }, [data]);
 
+    const isInputMode = multiRowSelectionMode === 'input';
+
     const containerRef = useRef<HTMLDivElement>(null);
     const lastSelectedRowIndex = useRef<number | null>(null);
     useClickOutside(
         () => {
-            if (!store.multiRowSelectionEnabled && store.getSelectedRows().length > 0) {
+            if (!isInputMode && !store.multiRowSelectionEnabled && store.getSelectedRows().length > 0) {
                 store.clearRowSelection();
             }
         },
@@ -227,11 +231,11 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
 
     const handleEscapeKey = useCallback(
         (event: KeyboardEvent) => {
-            if (event.key === 'Escape' && store.getSelectedRows().length > 0) {
+            if (!isInputMode && event.key === 'Escape' && store.getSelectedRows().length > 0) {
                 store.clearRowSelection();
             }
         },
-        [store],
+        [store, isInputMode],
     );
 
     useEffect(() => {
@@ -254,6 +258,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const hasRows = table.getRowModel().rows.length > 0;
 
     const resolvedGetRowCanEdit = getRowCanEdit ?? (() => true);
+    const resolvedMultiRowSelectionMode = multiRowSelectionMode ?? 'selection';
 
     return (
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
@@ -262,6 +267,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                     getStyles,
                     getRowActions,
                     getRowCanEdit: resolvedGetRowCanEdit,
+                    multiRowSelectionMode: resolvedMultiRowSelectionMode,
                     store,
                     table,
                     layouts,

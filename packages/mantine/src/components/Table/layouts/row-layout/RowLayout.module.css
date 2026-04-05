@@ -44,6 +44,13 @@
                 visibility: visible;
             }
         }
+
+        /* In input mode, checkboxes are always visible regardless of selection state */
+        &[data-multi-selection-mode='input'] {
+            & input[type='checkbox'] {
+                visibility: visible;
+            }
+        }
     }
 
     &[data-selected='true'] {

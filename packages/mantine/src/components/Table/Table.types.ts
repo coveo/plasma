@@ -6,6 +6,13 @@ import {ReactElement, ReactNode} from 'react';
 import {type PlasmaTableFactory} from './Table.js';
 import {TableStore} from './use-table.js';
 
+/**
+ * Determines how multi-row selection behaves.
+ * - `selection`: default behavior — checkboxes hidden by default, shown on hover, row click exits multi-selection.
+ * - `input`: form input behavior — checkboxes always visible, row click does not affect multi-selection, Escape does not deselect.
+ */
+export type MultiRowSelectionMode = 'selection' | 'input';
+
 export type TableLayoutProps<TData = unknown> = Pick<
     TableProps<TData>,
     'getRowExpandedContent' | 'getRowAttributes' | 'getRowCanEdit' | 'getRowActions' | 'loading'
@@ -107,6 +114,14 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      * @default false
      */
     loading?: boolean;
+    /**
+     * Determines how multi-row selection behaves.
+     * - `selection`: checkboxes hidden by default, shown on hover/selection, row click exits multi-selection, Escape deselects.
+     * - `input`: checkboxes always visible, row click does not affect multi-selection, Escape does not deselect.
+     *
+     * @default 'selection'
+     */
+    multiRowSelectionMode?: MultiRowSelectionMode;
     /**
      * Children to display in the table. They need to be wrap in either `Table.Header` or `Table.Footer`
      *
