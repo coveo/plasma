@@ -743,4 +743,89 @@ describe('RowLayout', () => {
             expect(screen.queryByRole('button', {name: /selected/i})).not.toBeInTheDocument();
         });
     });
+
+    describe('when multiRowSelectionMode is input', () => {
+        it('sets data-multi-selection-mode to input on rows', () => {
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        multiRowSelectionMode="input"
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            const dataRows = screen.getAllByRole('row').filter((row) => row.hasAttribute('data-multi-selection-mode'));
+            dataRows.forEach((row) => {
+                expect(row).toHaveAttribute('data-multi-selection-mode', 'input');
+            });
+        });
+
+        it('does not clear multi-selection when clicking on a row', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                {id: '🆔-3', firstName: 'Bob', lastName: 'Marley'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        multiRowSelectionMode="input"
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            // Select two rows via checkboxes
+            await user.click(within(screen.getByRole('row', {name: /John Smith/i})).getByRole('checkbox'));
+            await user.click(within(screen.getByRole('row', {name: /Jane Doe/i})).getByRole('checkbox'));
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(2);
+
+            // Click on a row (not the checkbox) — should NOT clear multi-selection
+            await user.click(screen.getByRole('cell', {name: 'Bob'}));
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(2);
+        });
+
+        it('does not deselect rows when pressing Escape', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        multiRowSelectionMode="input"
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(within(screen.getByRole('row', {name: /John Smith/i})).getByRole('checkbox'));
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(1);
+
+            await user.keyboard('{Escape}');
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(1);
+        });
+    });
 });

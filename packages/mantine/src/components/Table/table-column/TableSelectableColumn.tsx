@@ -5,13 +5,17 @@ import {useTableContext} from '../TableContext.js';
 
 const SelectableCheckbox: FunctionComponent<{info: CellContext<unknown, unknown>}> = ({info}) => {
     const {row} = info;
-    const {table, lastSelectedRowIndex, getRowCanEdit} = useTableContext();
+    const {table, lastSelectedRowIndex, getRowCanEdit, multiRowSelectionMode} = useTableContext();
     const isShiftClickRef = useRef(false);
 
     const canEdit = getRowCanEdit(row.original, row.index, row);
 
     // Non-editable rows cannot be multi-selected
     if (!canEdit) {
+        // In input mode, show a disabled checkbox so the user sees why the row can't be selected
+        if (multiRowSelectionMode === 'input') {
+            return <Checkbox checked={false} disabled flex={1} aria-label="Select row" />;
+        }
         return null;
     }
 

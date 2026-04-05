@@ -394,6 +394,7 @@ export {TableActionsColumn} from './components/Table/table-column/TableActionsCo
 export {type TablePredicateProps} from './components/Table/table-predicate/TablePredicate.js';
 export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
 export {
+    type MultiRowSelectionMode,
     type TableAction,
     type TableLayout,
     type TableLayoutProps,
@@ -401,6 +402,10 @@ export {
 } from './components/Table/Table.types.js';
 export {useTableContext} from './components/Table/TableContext.js';
 export {useTable, type TableState, type TableStore, type UseTableOptions} from './components/Table/use-table.js';
+
+// TableInput
+export {TableInput, type TableInputProps} from './components/TableInput/TableInput.js';
+
 export {useUrlSyncedState, type SearchParamEntry, type UseUrlSyncedStateOptions} from './hooks/use-url-synced-state.js';
 
 // Table of Contents

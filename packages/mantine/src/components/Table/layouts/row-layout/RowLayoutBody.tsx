@@ -38,7 +38,9 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
         getRowAttributes,
         ...others
     } = useProps('RowLayoutBody', defaultProps as RowLayoutBodyProps<T>, props);
-    const {table, store, lastSelectedRowIndex} = useTableContext<T>();
+    const {table, store, lastSelectedRowIndex, multiRowSelectionMode} = useTableContext<T>();
+
+    const isInputMode = multiRowSelectionMode === 'input';
 
     const hasMultiSelection =
         store.multiRowSelectionEnabled &&
@@ -53,17 +55,18 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
 
         const onClick = (_event: MouseEvent<HTMLTableRowElement>) => {
             if (store.rowSelectionEnabled) {
-                if (store.multiRowSelectionEnabled) {
-                    // In multi-selection mode, clicking a row clears multi-selection
+                if (store.multiRowSelectionEnabled && !isInputMode) {
+                    // In selection mode, clicking a row clears multi-selection
                     // and selects only this row (single-select behavior)
                     store.clearRowSelection();
                     row.toggleSelected(true);
 
                     // Update the anchor index for Shift+click range selection
                     lastSelectedRowIndex.current = canEdit ? row.index : null;
-                } else if (!isSelected) {
+                } else if (!store.multiRowSelectionEnabled && !isSelected) {
                     row.toggleSelected(true);
                 }
+                // In input mode, clicking a row does not affect multi-selection
             }
         };
 
@@ -77,6 +80,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     data-selectable={store.rowSelectionEnabled}
                     data-selected={isSelected}
                     data-multi-selection={store.multiRowSelectionEnabled}
+                    data-multi-selection-mode={multiRowSelectionMode}
                     data-has-multi-selection={hasMultiSelection}
                     data-can-edit={canEdit}
                     aria-selected={isSelected}
