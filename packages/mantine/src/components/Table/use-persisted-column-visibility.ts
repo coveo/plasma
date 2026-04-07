@@ -1,4 +1,5 @@
 import {useCallback, useMemo} from 'react';
+import {getLocalStorageItem, setLocalStorageItem} from '../../utils/local-storage.js';
 import type {TableState} from './use-table.js';
 
 type ColumnVisibility = TableState['columnVisibility'];
@@ -54,19 +55,11 @@ export const usePersistedColumnVisibility = (
         if (!storageKey || !hasValidIds) {
             return defaultVisibleColumns;
         }
-        try {
-            const stored = localStorage.getItem(storageKey);
-            if (stored) {
-                const sanitized = sanitizeFromStorage(JSON.parse(stored), validIds);
+        const stored = getLocalStorageItem<unknown>(storageKey, {removeOnError: true});
+        if (stored !== null) {
+            const sanitized = sanitizeFromStorage(stored, validIds);
+            if (Object.keys(sanitized).length > 0) {
                 return capVisibleColumns({...defaultVisibleColumns, ...sanitized}, maxSelectableColumns);
-            }
-        } catch {
-            try {
-                localStorage.removeItem(storageKey);
-            } catch {
-                console.warn(
-                    `Unable to access localStorage to clean up invalid column visibility data for "${storageKey}".`,
-                );
             }
         }
         return capVisibleColumns(defaultVisibleColumns, maxSelectableColumns);
@@ -77,11 +70,7 @@ export const usePersistedColumnVisibility = (
             if (!storageKey || !hasValidIds) {
                 return;
             }
-            try {
-                localStorage.setItem(storageKey, JSON.stringify(visibility));
-            } catch {
-                console.warn(`Unable to persist column visibility preferences for "${storageKey}".`);
-            }
+            setLocalStorageItem(storageKey, visibility);
         },
         [storageKey, hasValidIds],
     );

@@ -337,13 +337,6 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
      */
     const sync = !!options.syncWithUrl;
 
-    const defaultColumnVisibility = useRef(initialState.columnVisibility).current;
-    const {initialColumnVisibility, persistColumnVisibility} = usePersistedColumnVisibility(
-        defaultColumnVisibility,
-        options.maxSelectableColumns ?? Infinity,
-        options.tableId,
-    );
-
     // (Optionally) synced with url
     const [pagination, setPagination] = useUrlSyncedState<TableState<TData>['pagination']>({
         ...PAGINATION_SERIALIZATION,
@@ -375,6 +368,14 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         initialState: initialState.dateRange,
         sync,
     });
+
+    const defaultColumnVisibility = useRef(initialState.columnVisibility).current;
+    const {initialColumnVisibility, persistColumnVisibility} = usePersistedColumnVisibility(
+        defaultColumnVisibility,
+        options.maxSelectableColumns ?? Infinity,
+        options.tableId,
+    );
+
     const [columnVisibility, _setColumnVisibility] = useUrlSyncedState<TableState<TData>['columnVisibility']>({
         ...COLUMN_VISIBILITY_SERIALIZATION,
         initialState: initialColumnVisibility,
