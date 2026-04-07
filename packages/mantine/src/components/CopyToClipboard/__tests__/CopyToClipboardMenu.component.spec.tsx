@@ -26,6 +26,7 @@ describe('CopyToClipboard.Menu', () => {
 
         await user.click(screen.getByRole('button', {name: /copy to clipboard/i}));
         await waitFor(() => expect(screen.getByText('Copy name to clipboard')).toBeVisible());
+        expect(screen.getByText('Copy ID to clipboard')).toBeVisible();
     });
 
     it('calls onCopy callback when the user copies the value to the clipboard', async () => {

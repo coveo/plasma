@@ -1,4 +1,4 @@
-import {FunctionComponent} from 'react';
+import {Factory, MantineComponent, useProps} from '@mantine/core';
 import {CopyToClipboardButton, CopyToClipboardButtonProps} from './CopyToClipboardButton.js';
 import {CopyToClipboardInput} from './CopyToClipboardInput.js';
 import {CopyToClipboardMenu, CopyToClipboardMenuTarget, CopyToClipboardMenuItem} from './CopyToClipboardMenu.js';
@@ -16,14 +16,28 @@ export type {
     CopyToClipboardMenuItemProps,
 } from './CopyToClipboardMenu.js';
 
-export const CopyToClipboard: FunctionComponent<CopyToClipboardButtonProps> & {
-    Button: typeof CopyToClipboardButton;
-    Input: typeof CopyToClipboardInput;
-    Menu: typeof CopyToClipboardMenu;
-    MenuTarget: typeof CopyToClipboardMenuTarget;
-    MenuItem: typeof CopyToClipboardMenuItem;
-} = ({withLabel, value, onCopy, color, tooltipLabelCopy, tooltipLabelCopied, ...others}) =>
-    withLabel ? (
+export type CopyToClipboardFactory = Factory<{
+    props: CopyToClipboardButtonProps;
+    ref: never;
+    staticComponents: {
+        Button: typeof CopyToClipboardButton;
+        Input: typeof CopyToClipboardInput;
+        Menu: typeof CopyToClipboardMenu;
+        MenuTarget: typeof CopyToClipboardMenuTarget;
+        MenuItem: typeof CopyToClipboardMenuItem;
+    };
+}>;
+
+const defaultProps: Partial<CopyToClipboardButtonProps> = {};
+
+export const CopyToClipboard = ((_props) => {
+    const {withLabel, value, onCopy, color, tooltipLabelCopy, tooltipLabelCopied, ...others} = useProps(
+        'CopyToClipboard',
+        defaultProps,
+        _props,
+    );
+
+    return withLabel ? (
         <CopyToClipboardInput
             value={value}
             onCopy={onCopy}
@@ -41,6 +55,7 @@ export const CopyToClipboard: FunctionComponent<CopyToClipboardButtonProps> & {
             {...others}
         />
     );
+}) as MantineComponent<CopyToClipboardFactory>;
 
 CopyToClipboard.displayName = 'CopyToClipboard';
 CopyToClipboard.Button = CopyToClipboardButton;
