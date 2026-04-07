@@ -16,8 +16,15 @@ export type {
     CopyToClipboardMenuItemProps,
 } from './CopyToClipboardMenu.js';
 
+export interface CopyToClipboardLegacyProps extends CopyToClipboardButtonProps {
+    /**
+     * @deprecated Use `CopyToClipboard.Input` instead.
+     */
+    withLabel?: boolean;
+}
+
 export type CopyToClipboardFactory = Factory<{
-    props: CopyToClipboardButtonProps;
+    props: CopyToClipboardLegacyProps;
     ref: never;
     staticComponents: {
         Button: typeof CopyToClipboardButton;
@@ -28,7 +35,7 @@ export type CopyToClipboardFactory = Factory<{
     };
 }>;
 
-const defaultProps: Partial<CopyToClipboardButtonProps> = {};
+const defaultProps: Partial<CopyToClipboardLegacyProps> = {};
 
 export const CopyToClipboard = ((_props) => {
     const {withLabel, value, onCopy, color, tooltipLabelCopy, tooltipLabelCopied, ...others} = useProps(

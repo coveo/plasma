@@ -1,5 +1,5 @@
 import {render, screen, userEvent, waitFor} from '@test-utils';
-import {CopyToClipboard} from '../CopyToClipboard';
+import {CopyToClipboard} from '../CopyToClipboard.js';
 
 describe('CopyToClipboard.Menu', () => {
     it('displays the menu', () => {

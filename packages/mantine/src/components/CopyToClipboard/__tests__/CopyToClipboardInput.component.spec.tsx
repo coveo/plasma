@@ -1,5 +1,5 @@
 import {render, screen, userEvent} from '@test-utils';
-import {CopyToClipboard} from '../CopyToClipboard';
+import {CopyToClipboard} from '../CopyToClipboard.js';
 
 describe('CopyToClipboard.Input', () => {
     it('displays the input', () => {

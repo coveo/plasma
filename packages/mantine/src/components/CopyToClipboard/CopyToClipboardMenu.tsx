@@ -81,20 +81,24 @@ export const CopyToClipboardMenu = ({children, ...others}: CopyToClipboardMenuPr
         startResetTimeout();
     };
 
-    let target: ReactElement | undefined;
+    const targets: ReactElement[] = [];
     const items: ReactNode[] = [];
     Children.forEach(children, (child) => {
         if (isValidElement(child) && child.type === CopyToClipboardMenuTarget) {
-            target = child;
+            targets.push(child);
         } else {
             items.push(child);
         }
     });
 
+    if (targets.length !== 1) {
+        throw new Error('CopyToClipboard.Menu component requires exactly one CopyToClipboard.MenuTarget child.');
+    }
+
     return (
         <CopyToClipboardMenuProvider value={{copied, onItemCopy}}>
             <Menu {...others}>
-                <Menu.Target>{target}</Menu.Target>
+                <Menu.Target>{targets[0]}</Menu.Target>
                 <Menu.Dropdown>{items}</Menu.Dropdown>
             </Menu>
         </CopyToClipboardMenuProvider>

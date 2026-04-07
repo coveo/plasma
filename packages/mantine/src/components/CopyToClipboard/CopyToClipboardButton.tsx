@@ -1,7 +1,7 @@
 import {IconClipboardCheck, IconClipboardText} from '@coveord/plasma-react-icons';
-import {ActionIconProps, CopyButton, MantineColor, Tooltip} from '@mantine/core';
+import {CopyButton, MantineColor, Tooltip} from '@mantine/core';
 import {MouseEventHandler, forwardRef} from 'react';
-import {ActionIcon} from '../ActionIcon/ActionIcon.js';
+import {ActionIcon, ActionIconProps} from '../ActionIcon/ActionIcon.js';
 
 export interface CopyToClipboardBaseProps {
     /**
@@ -14,8 +14,6 @@ export interface CopyToClipboardBaseProps {
     onCopy?: MouseEventHandler<HTMLButtonElement>;
     /**
      * The color of the icon when idle.
-     *
-     * @default 'teal'
      */
     color?: MantineColor | (string & {});
     /**
@@ -49,12 +47,7 @@ export const CopyToClipboardIconButton = forwardRef<HTMLButtonElement, CopyToCli
     ),
 );
 
-export interface CopyToClipboardButtonProps extends ActionIconProps, CopyToClipboardBaseProps {
-    /**
-     * @deprecated Use `CopyToClipboard.Input` instead.
-     */
-    withLabel?: boolean;
-}
+export interface CopyToClipboardButtonProps extends ActionIconProps, CopyToClipboardBaseProps {}
 
 export const CopyToClipboardButton = ({
     value,
