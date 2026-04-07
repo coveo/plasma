@@ -1,5 +1,4 @@
 import {
-    Box,
     factory,
     Factory,
     ModalRootProps,
@@ -114,9 +113,9 @@ const _Prompt = factory<PromptFactory>((_props, ref) => {
                         <Modal.CloseButton {...getStyles('close', stylesApiProps)} />
                     </Modal.Header>
                     <Modal.Body {...getStyles('body', stylesApiProps)}>
-                        <Box {...getStyles('inner', stylesApiProps)}>{otherChildren}</Box>
+                        {otherChildren}
+                        {footers}
                     </Modal.Body>
-                    {footers}
                 </Modal.Content>
             </Modal.Root>
         </PromptContextProvider>

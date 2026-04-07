@@ -1,7 +1,8 @@
-import {Button, Tabs} from '@coveord/plasma-mantine';
+import {Button, createColumnHelper, Table, Tabs, useTable} from '@coveord/plasma-mantine';
 import {Modal} from '@coveord/plasma-mantine/components/Modal';
+import {faker} from '@faker-js/faker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import type {ComponentProps} from 'react';
+import {useMemo, type ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
 
 type ModalStoryArgs = ComponentProps<typeof Modal> & {
@@ -82,6 +83,66 @@ export const ModalWithTabs: Story = {
                     <Tabs.Panel value="tab-2">Tab 2 content</Tabs.Panel>
                     <Tabs.Panel value="tab-3">Tab 3 content</Tabs.Panel>
                 </Tabs>
+                <Modal.Footer>
+                    <Button.Tertiary onClick={close}>Cancel</Button.Tertiary>
+                    <Button.Primary onClick={close}>Save</Button.Primary>
+                </Modal.Footer>
+            </Modal>
+        );
+    },
+};
+
+type Person = {
+    id: string;
+    firstName: string;
+    lastName: string;
+    age: number;
+};
+
+const columnHelper = createColumnHelper<Person>();
+const columns = [
+    columnHelper.accessor('firstName', {
+        header: 'First name',
+    }),
+    columnHelper.accessor('lastName', {
+        header: 'Last name',
+    }),
+    columnHelper.accessor('age', {
+        header: 'Age',
+    }),
+];
+const makeData = (len: number): Person[] =>
+    Array(len)
+        .fill(0)
+        .map(() => ({
+            id: faker.string.uuid(),
+            firstName: faker.person.firstName(),
+            lastName: faker.person.lastName(),
+            age: faker.number.int(40),
+        }));
+
+export const ModalWithTable: Story = {
+    render: (args) => {
+        const [{opened}, updateArgs] = useArgs<ModalStoryArgs>();
+        const close = () => updateArgs({opened: false});
+        const data = useMemo(() => makeData(20), []);
+
+        const table = useTable<Person>({
+            initialState: {
+                totalEntries: data.length,
+            },
+        });
+        return (
+            <Modal
+                size={args.size}
+                centered={args.centered}
+                opened={opened}
+                title={args.title}
+                description={args.description}
+                help={args.helpLabel || args.helpHref ? {href: args.helpHref, label: args.helpLabel} : undefined}
+                onClose={close}
+            >
+                <Table<Person> store={table} columns={columns} getRowId={({id}) => id.toString()} data={data} />
                 <Modal.Footer>
                     <Button.Tertiary onClick={close}>Cancel</Button.Tertiary>
                     <Button.Primary onClick={close}>Save</Button.Primary>
