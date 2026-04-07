@@ -9,3 +9,5 @@ minimumReleaseAgeExclude:
   - storybook@10.2.10
   # Renovate security update: svgo@4.0.1
   - svgo@4.0.1
+  # Renovate security update: vite@8.0.5
+  - vite@8.0.5
