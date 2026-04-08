@@ -19,6 +19,12 @@ export const CURRENT_STORAGE_VERSION = 1;
 
 type JsonObject = Record<string, unknown>;
 
+const createStorageObject = (): JsonObject => Object.create(null) as JsonObject;
+
+const isUnsafeKey = (key: string): boolean => key === '__proto__' || key === 'constructor' || key === 'prototype';
+
+const isSafePath = (path: string[]): boolean => path.every((key) => !isUnsafeKey(key));
+
 interface PlasmaStorageSchema {
     'storage-version': number;
     storage: JsonObject;
@@ -54,10 +60,6 @@ const writeStorage = (data: PlasmaStorageSchema): void => {
     }
 };
 
-const isUnsafeKey = (key: string): boolean => key === '__proto__' || key === 'constructor' || key === 'prototype';
-
-const isSafePath = (path: string[]): boolean => path.every((key) => !isUnsafeKey(key));
-
 const getNestedValue = (obj: JsonObject, path: string[]): unknown => {
     let current: unknown = obj;
     for (const key of path) {
@@ -73,16 +75,16 @@ const setNestedValue = (obj: JsonObject, path: string[], value: unknown): void =
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
         const key = path[i];
-        if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+        if (isUnsafeKey(key)) {
             return;
         }
         if (typeof current[key] !== 'object' || current[key] === null) {
-            current[key] = {};
+            current[key] = createStorageObject();
         }
         current = current[key] as JsonObject;
     }
     const lastKey = path[path.length - 1];
-    if (lastKey !== '__proto__' && lastKey !== 'constructor' && lastKey !== 'prototype') {
+    if (!isUnsafeKey(lastKey)) {
         current[lastKey] = value;
     }
 };
@@ -101,7 +103,7 @@ export const getStorageItem = <T = unknown>(path: string[]): T | null => {
     if (!data || data['storage-version'] !== CURRENT_STORAGE_VERSION) {
         return null;
     }
-    const value = getNestedValue(data.storage ?? {}, path);
+    const value = getNestedValue(data.storage ?? createStorageObject(), path);
     return value !== undefined ? (value as T) : null;
 };
 
@@ -117,10 +119,10 @@ export const setStorageItem = <T = unknown>(path: string[], value: T): void => {
     }
     let data = readStorage();
     if (!data || data['storage-version'] !== CURRENT_STORAGE_VERSION) {
-        data = {'storage-version': CURRENT_STORAGE_VERSION, storage: {}};
+        data = {'storage-version': CURRENT_STORAGE_VERSION, storage: createStorageObject()};
     }
     if (!data.storage) {
-        data.storage = {};
+        data.storage = createStorageObject();
     }
     setNestedValue(data.storage, path, value);
     writeStorage(data);
