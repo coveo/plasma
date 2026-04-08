@@ -23,7 +23,6 @@ export const CopyToClipboardMenuTarget = forwardRef<HTMLButtonElement, CopyToCli
         return (
             <CopyToClipboardIconButton
                 ref={ref}
-                aria-label={tooltipLabelCopy}
                 copied={copied}
                 tooltipLabelCopy={tooltipLabelCopy}
                 tooltipLabelCopied={tooltipLabelCopied}

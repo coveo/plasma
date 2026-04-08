@@ -40,7 +40,7 @@ export const CopyToClipboardIconButton = forwardRef<HTMLButtonElement, CopyToCli
             label={copied ? tooltipLabelCopied : tooltipLabelCopy}
             opened={copied || undefined}
         >
-            <ActionIcon.Quaternary ref={ref} {...others}>
+            <ActionIcon.Quaternary ref={ref} {...others} aria-label={tooltipLabelCopy}>
                 {copied ? <IconClipboardCheck size={16} /> : <IconClipboardText size={16} />}
             </ActionIcon.Quaternary>
         </Tooltip>
@@ -59,7 +59,6 @@ export const CopyToClipboardButton = ({
     <CopyButton value={value} timeout={2000}>
         {({copied, copy}) => (
             <CopyToClipboardIconButton
-                aria-label={tooltipLabelCopy}
                 copied={copied}
                 tooltipLabelCopy={tooltipLabelCopy}
                 tooltipLabelCopied={tooltipLabelCopied}
