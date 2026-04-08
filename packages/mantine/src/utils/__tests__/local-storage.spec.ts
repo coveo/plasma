@@ -101,7 +101,7 @@ describe('Plasma versioned localStorage', () => {
         });
 
         it('warns when localStorage is full', () => {
-            const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+            const warnSpy = vi.spyOn(console, 'warn').mockReturnValue(undefined);
             vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
                 throw new DOMException('quota exceeded');
             });
