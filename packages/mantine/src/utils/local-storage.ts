@@ -73,12 +73,18 @@ const setNestedValue = (obj: JsonObject, path: string[], value: unknown): void =
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
         const key = path[i];
+        if (UNSAFE_KEYS.has(key)) {
+            return;
+        }
         if (typeof current[key] !== 'object' || current[key] === null) {
             current[key] = {};
         }
         current = current[key] as JsonObject;
     }
-    current[path[path.length - 1]] = value;
+    const lastKey = path[path.length - 1];
+    if (!UNSAFE_KEYS.has(lastKey)) {
+        current[lastKey] = value;
+    }
 };
 
 /**
