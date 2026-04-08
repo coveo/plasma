@@ -54,9 +54,9 @@ const writeStorage = (data: PlasmaStorageSchema): void => {
     }
 };
 
-const UNSAFE_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
+const isUnsafeKey = (key: string): boolean => key === '__proto__' || key === 'constructor' || key === 'prototype';
 
-const isSafePath = (path: string[]): boolean => path.every((key) => !UNSAFE_KEYS.has(key));
+const isSafePath = (path: string[]): boolean => path.every((key) => !isUnsafeKey(key));
 
 const getNestedValue = (obj: JsonObject, path: string[]): unknown => {
     let current: unknown = obj;
@@ -73,7 +73,7 @@ const setNestedValue = (obj: JsonObject, path: string[], value: unknown): void =
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
         const key = path[i];
-        if (UNSAFE_KEYS.has(key)) {
+        if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
             return;
         }
         if (typeof current[key] !== 'object' || current[key] === null) {
@@ -82,7 +82,7 @@ const setNestedValue = (obj: JsonObject, path: string[], value: unknown): void =
         current = current[key] as JsonObject;
     }
     const lastKey = path[path.length - 1];
-    if (!UNSAFE_KEYS.has(lastKey)) {
+    if (lastKey !== '__proto__' && lastKey !== 'constructor' && lastKey !== 'prototype') {
         current[lastKey] = value;
     }
 };
