@@ -8,7 +8,16 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {Children, ComponentProps, ComponentType, forwardRef, FunctionComponent, ReactElement, ReactNode} from 'react';
+import {
+    Children,
+    ComponentProps,
+    ComponentType,
+    forwardRef,
+    ForwardRefExoticComponent,
+    ReactElement,
+    ReactNode,
+    RefAttributes,
+} from 'react';
 import {InfoToken} from '../InfoToken/InfoToken.js';
 import {Modal} from '../Modal/Modal.js';
 import {PromptContextProvider} from './Prompt.context.js';
@@ -123,12 +132,12 @@ const _Prompt = factory<PromptFactory>((_props, ref) => {
 });
 _Prompt.displayName = 'Prompt';
 
-type PromptCompoundComponent = ((props: PromptProps) => ReactElement) & Omit<FunctionComponent<PromptProps>, never>;
+type PromptCompoundComponent = ForwardRefExoticComponent<PromptProps & RefAttributes<HTMLDivElement>>;
 
 const PromptFooter: ComponentType<ComponentProps<typeof Modal.Footer>> = (props) => <Modal.Footer {...props} />;
 PromptFooter.displayName = 'Prompt.Footer';
 
-const createPromptCompound = (variant: PromptVariant, displayName: string): PromptCompoundComponent => {
+const createPromptCompound = (variant: PromptVariant, displayName: string) => {
     const Component = forwardRef<HTMLDivElement, PromptProps>((props, ref) => (
         <_Prompt ref={ref} {...props} variant={variant} />
     ));
