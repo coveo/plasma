@@ -28,7 +28,7 @@
         "@stencil/core": "4.43.3",
         "@swc/helpers": "0.5.20",
         "@tanstack/match-sorter-utils": "8.19.4",
-        "@tanstack/react-query": "5.95.2",
+        "@tanstack/react-query": "5.96.1",
         "clsx": "2.1.1",
         "codesandbox-import-utils": "2.2.3",
         "dayjs": "1.11.20",
