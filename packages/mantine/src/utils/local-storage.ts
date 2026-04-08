@@ -14,8 +14,8 @@
  * ```
  */
 
-const STORAGE_KEY = 'plasma';
-const CURRENT_STORAGE_VERSION = 1;
+export const STORAGE_KEY = 'plasma';
+export const CURRENT_STORAGE_VERSION = 1;
 
 interface PlasmaStorageSchema {
     'storage-version': number;

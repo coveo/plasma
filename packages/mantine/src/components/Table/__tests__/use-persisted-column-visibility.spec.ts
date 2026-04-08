@@ -1,12 +1,11 @@
 import {act, renderHook} from '@test-utils';
+import {CURRENT_STORAGE_VERSION, STORAGE_KEY} from '../../../utils/local-storage.js';
 import {usePersistedColumnVisibility} from '../use-persisted-column-visibility.js';
 import {useTable} from '../use-table.js';
 
-const STORAGE_KEY = 'plasma';
-
 const setStoredVisibility = (tableId: string, value: unknown) => {
     const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null') ?? {
-        'storage-version': 1,
+        'storage-version': CURRENT_STORAGE_VERSION,
         storage: {},
     };
     if (!existing.storage.table) {
