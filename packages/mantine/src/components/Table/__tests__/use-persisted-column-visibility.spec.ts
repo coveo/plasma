@@ -2,7 +2,27 @@ import {act, renderHook} from '@test-utils';
 import {usePersistedColumnVisibility} from '../use-persisted-column-visibility.js';
 import {useTable} from '../use-table.js';
 
-const storageKey = (tableId: string) => `plasma-table-columns-${tableId}`;
+const STORAGE_KEY = 'plasma';
+
+const setStoredVisibility = (tableId: string, value: unknown) => {
+    const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null') ?? {
+        'storage-version': 1,
+        storage: {},
+    };
+    if (!existing.storage.table) {
+        existing.storage.table = {};
+    }
+    if (!existing.storage.table[tableId]) {
+        existing.storage.table[tableId] = {};
+    }
+    existing.storage.table[tableId].columnVisibility = value;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+};
+
+const getStoredVisibility = (tableId: string): unknown => {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY)!);
+    return data?.storage?.table?.[tableId]?.columnVisibility ?? null;
+};
 
 describe('usePersistedColumnVisibility', () => {
     afterEach(() => {
@@ -35,7 +55,7 @@ describe('usePersistedColumnVisibility', () => {
         });
 
         it('merges stored visibility with defaults', () => {
-            localStorage.setItem(storageKey(tableId), JSON.stringify({col2: false}));
+            setStoredVisibility(tableId, {col2: false});
             const defaults = {col1: true, col2: true, col3: false};
 
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity, tableId));
@@ -44,7 +64,7 @@ describe('usePersistedColumnVisibility', () => {
         });
 
         it('ignores stored keys not present in defaults and non-boolean values', () => {
-            localStorage.setItem(storageKey(tableId), JSON.stringify({unknown: true, col1: 'yes', col2: false}));
+            setStoredVisibility(tableId, {unknown: true, col1: 'yes', col2: false});
             const defaults = {col1: true, col2: true};
 
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity, tableId));
@@ -53,7 +73,7 @@ describe('usePersistedColumnVisibility', () => {
         });
 
         it('caps visible columns to maxSelectableColumns from both defaults and storage', () => {
-            localStorage.setItem(storageKey(tableId), JSON.stringify({col1: true, col2: true, col3: true}));
+            setStoredVisibility(tableId, {col1: true, col2: true, col3: true});
             const defaults = {col1: false, col2: false, col3: false};
 
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, 2, tableId));
@@ -71,25 +91,25 @@ describe('usePersistedColumnVisibility', () => {
                 result.current.persistColumnVisibility({col1: false, col2: true});
             });
 
-            expect(JSON.parse(localStorage.getItem(storageKey(tableId))!)).toEqual({col1: false, col2: true});
+            expect(getStoredVisibility(tableId)).toEqual({col1: false, col2: true});
         });
 
         it('clears invalid stored data and falls back to defaults', () => {
-            localStorage.setItem(storageKey(tableId), 'not-valid-json{{{');
+            localStorage.setItem(STORAGE_KEY, 'not-valid-json{{{');
             const defaults = {col1: true, col2: false};
 
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity, tableId));
 
             expect(result.current.initialColumnVisibility).toEqual({col1: true, col2: false});
-            expect(localStorage.getItem(storageKey(tableId))).toBeNull();
+            expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
         });
 
         it.each([
-            ['an array', JSON.stringify([true, false])],
-            ['null', JSON.stringify(null)],
-            ['an empty object', JSON.stringify({})],
+            ['an array', [true, false]],
+            ['null', null],
+            ['an empty object', {}],
         ])('falls back to defaults when stored value is %s', (_, storedValue) => {
-            localStorage.setItem(storageKey(tableId), storedValue);
+            setStoredVisibility(tableId, storedValue);
             const defaults = {col1: true, col2: false};
 
             const {result} = renderHook(() => usePersistedColumnVisibility(defaults, Infinity, tableId));
@@ -98,7 +118,7 @@ describe('usePersistedColumnVisibility', () => {
         });
 
         it('skips localStorage when defaultVisibleColumns is empty', () => {
-            localStorage.setItem(storageKey(tableId), JSON.stringify({col1: true}));
+            setStoredVisibility(tableId, {col1: true});
 
             const {result} = renderHook(() => usePersistedColumnVisibility({}, Infinity, tableId));
 
@@ -108,7 +128,7 @@ describe('usePersistedColumnVisibility', () => {
                 result.current.persistColumnVisibility({col1: false});
             });
 
-            expect(JSON.parse(localStorage.getItem(storageKey(tableId))!)).toEqual({col1: true});
+            expect(getStoredVisibility(tableId)).toEqual({col1: true});
         });
     });
 });
@@ -121,7 +141,7 @@ describe('useTable column visibility persistence', () => {
     });
 
     it('initializes column visibility from localStorage when tableId is provided', () => {
-        localStorage.setItem(storageKey(tableId), JSON.stringify({col1: false, col2: true}));
+        setStoredVisibility(tableId, {col1: false, col2: true});
 
         const {result} = renderHook(() =>
             useTable({
@@ -163,7 +183,7 @@ describe('useTable column visibility persistence', () => {
         });
 
         expect(result.current.state.columnVisibility).toEqual({col1: false, col2: true});
-        expect(JSON.parse(localStorage.getItem(storageKey(tableId))!)).toEqual({col1: false, col2: true});
+        expect(getStoredVisibility(tableId)).toEqual({col1: false, col2: true});
     });
 
     it('persists to localStorage when setColumnVisibility is called with an updater function', () => {
@@ -179,6 +199,6 @@ describe('useTable column visibility persistence', () => {
         });
 
         expect(result.current.state.columnVisibility).toEqual({col1: true, col2: true});
-        expect(JSON.parse(localStorage.getItem(storageKey(tableId))!)).toEqual({col1: true, col2: true});
+        expect(getStoredVisibility(tableId)).toEqual({col1: true, col2: true});
     });
 });

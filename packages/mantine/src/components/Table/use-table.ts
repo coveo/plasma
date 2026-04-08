@@ -2,7 +2,7 @@ import type {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {useDidUpdate} from '@mantine/hooks';
 import {type ExpandedState, type PaginationState, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
-import {Dispatch, SetStateAction, useCallback, useMemo, useRef, useState} from 'react';
+import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state.js';
 import {usePersistedColumnVisibility} from './use-persisted-column-visibility.js';
 
@@ -330,7 +330,9 @@ const COLUMN_VISIBILITY_SERIALIZATION = serialization<'columnVisibility'>({
 
 export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): TableStore<TData> => {
     const options = defaultsDeep({}, userOptions, defaultOptions) as UseTableOptions<TData>;
-    const initialState = defaultsDeep({}, options.initialState, defaultState) as TableState<TData>;
+    const [initialState] = useState(
+        () => defaultsDeep({}, userOptions.initialState, defaultState) as TableState<TData>,
+    );
     /**
      * The `useUrlSyncedState` hook defaults to synchronize, but the table wants to default to not synchronize,
      * so always pass the sync option as a resolved boolean value.
@@ -369,9 +371,8 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         sync,
     });
 
-    const defaultColumnVisibility = useRef(initialState.columnVisibility).current;
     const {initialColumnVisibility, persistColumnVisibility} = usePersistedColumnVisibility(
-        defaultColumnVisibility,
+        initialState.columnVisibility,
         options.maxSelectableColumns ?? Infinity,
         options.tableId,
     );

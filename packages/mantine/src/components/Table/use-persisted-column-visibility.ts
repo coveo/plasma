@@ -1,10 +1,10 @@
 import {useCallback, useMemo} from 'react';
-import {getLocalStorageItem, setLocalStorageItem} from '../../utils/local-storage.js';
+import {getStorageItem, setStorageItem} from '../../utils/local-storage.js';
 import type {TableState} from './use-table.js';
 
 type ColumnVisibility = TableState['columnVisibility'];
 
-const buildStorageKey = (tableId: string) => `plasma-table-columns-${tableId}`;
+const storagePath = (tableId: string) => ['table', tableId, 'columnVisibility'] as const;
 
 const capVisibleColumns = (visibility: ColumnVisibility, max: number): ColumnVisibility => {
     let visibleCount = 0;
@@ -47,15 +47,15 @@ export const usePersistedColumnVisibility = (
     maxSelectableColumns: number,
     tableId?: string,
 ) => {
-    const storageKey = tableId ? buildStorageKey(tableId) : null;
+    const path = tableId ? storagePath(tableId) : null;
     const validIds = useMemo(() => new Set(Object.keys(defaultVisibleColumns)), [defaultVisibleColumns]);
     const hasValidIds = validIds.size > 0;
 
     const initialColumnVisibility = useMemo((): ColumnVisibility => {
-        if (!storageKey || !hasValidIds) {
+        if (!path || !hasValidIds) {
             return defaultVisibleColumns;
         }
-        const stored = getLocalStorageItem<unknown>(storageKey, {removeOnError: true});
+        const stored = getStorageItem<unknown>([...path]);
         if (stored !== null) {
             const sanitized = sanitizeFromStorage(stored, validIds);
             if (Object.keys(sanitized).length > 0) {
@@ -63,16 +63,16 @@ export const usePersistedColumnVisibility = (
             }
         }
         return capVisibleColumns(defaultVisibleColumns, maxSelectableColumns);
-    }, [storageKey, validIds, defaultVisibleColumns, maxSelectableColumns]);
+    }, [path, validIds, defaultVisibleColumns, maxSelectableColumns]);
 
     const persistColumnVisibility = useCallback(
         (visibility: ColumnVisibility) => {
-            if (!storageKey || !hasValidIds) {
+            if (!path || !hasValidIds) {
                 return;
             }
-            setLocalStorageItem(storageKey, visibility);
+            setStorageItem([...path], visibility);
         },
-        [storageKey, hasValidIds],
+        [path, hasValidIds],
     );
 
     return {initialColumnVisibility, persistColumnVisibility};
