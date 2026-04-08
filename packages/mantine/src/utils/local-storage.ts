@@ -17,9 +17,11 @@
 export const STORAGE_KEY = 'plasma';
 export const CURRENT_STORAGE_VERSION = 1;
 
+type JsonObject = Record<string, unknown>;
+
 interface PlasmaStorageSchema {
     'storage-version': number;
-    storage: Record<string, unknown>;
+    storage: JsonObject;
 }
 
 const readStorage = (): PlasmaStorageSchema | null => {
@@ -56,25 +58,25 @@ const UNSAFE_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
 
 const isSafePath = (path: string[]): boolean => path.every((key) => !UNSAFE_KEYS.has(key));
 
-const getNestedValue = (obj: Record<string, unknown>, path: string[]): unknown => {
+const getNestedValue = (obj: JsonObject, path: string[]): unknown => {
     let current: unknown = obj;
     for (const key of path) {
         if (typeof current !== 'object' || current === null) {
             return undefined;
         }
-        current = (current as Record<string, unknown>)[key];
+        current = (current as JsonObject)[key];
     }
     return current;
 };
 
-const setNestedValue = (obj: Record<string, unknown>, path: string[], value: unknown): void => {
+const setNestedValue = (obj: JsonObject, path: string[], value: unknown): void => {
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
         const key = path[i];
         if (typeof current[key] !== 'object' || current[key] === null) {
             current[key] = {};
         }
-        current = current[key] as Record<string, unknown>;
+        current = current[key] as JsonObject;
     }
     current[path[path.length - 1]] = value;
 };
@@ -135,7 +137,7 @@ export const removeStorageItem = (path: string[]): void => {
     const key = path[path.length - 1];
     const parent = getNestedValue(data.storage ?? {}, parentPath);
     if (typeof parent === 'object' && parent !== null) {
-        delete (parent as Record<string, unknown>)[key];
+        delete (parent as JsonObject)[key];
         writeStorage(data);
     }
 };
