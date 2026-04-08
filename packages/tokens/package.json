@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "58.0.0",
+    "version": "58.0.1",
     "description": "Design tokens of the Plasma Design System",
     "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
     "repository": {
@@ -36,7 +36,7 @@
         "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "dependencies": {
-        "@swc/helpers": "0.5.19"
+        "@swc/helpers": "0.5.20"
     },
     "devDependencies": {
         "@swc/cli": "0.8.0",

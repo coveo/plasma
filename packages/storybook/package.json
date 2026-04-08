@@ -1,6 +1,6 @@
 {
     "name": "storybook",
-    "version": "58.0.0",
+    "version": "58.0.1",
     "private": true,
     "type": "module",
     "scripts": {
@@ -38,6 +38,6 @@
         "postcss-preset-mantine": "1.18.0",
         "storybook": "10.3.3",
         "typescript": "5.9.3",
-        "vite": "8.0.2"
+        "vite": "8.0.5"
     }
 }
