@@ -142,4 +142,27 @@ describe('Plasma versioned localStorage', () => {
             expect(raw().storage.table).toEqual({});
         });
     });
+
+    describe('prototype pollution protection', () => {
+        it.each(['__proto__', 'constructor', 'prototype'])('getStorageItem rejects path containing "%s"', (key) => {
+            seed({'storage-version': 1, storage: {[key]: {nested: 'value'}}});
+
+            expect(getStorageItem([key, 'nested'])).toBeNull();
+        });
+
+        it.each(['__proto__', 'constructor', 'prototype'])('setStorageItem rejects path containing "%s"', (key) => {
+            setStorageItem([key, 'polluted'], true);
+
+            expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
+            expect(Object.prototype).not.toHaveProperty('polluted');
+        });
+
+        it.each(['__proto__', 'constructor', 'prototype'])('removeStorageItem rejects path containing "%s"', (key) => {
+            seed({'storage-version': 1, storage: {safe: 'data'}});
+
+            removeStorageItem([key]);
+
+            expect(raw().storage.safe).toBe('data');
+        });
+    });
 });

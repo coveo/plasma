@@ -52,6 +52,10 @@ const writeStorage = (data: PlasmaStorageSchema): void => {
     }
 };
 
+const UNSAFE_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
+
+const isSafePath = (path: string[]): boolean => path.every((key) => !UNSAFE_KEYS.has(key));
+
 const getNestedValue = (obj: Record<string, unknown>, path: string[]): unknown => {
     let current: unknown = obj;
     for (const key of path) {
@@ -82,6 +86,9 @@ const setNestedValue = (obj: Record<string, unknown>, path: string[], value: unk
  * @returns The stored value, or `null` if it doesn't exist or the storage is corrupted.
  */
 export const getStorageItem = <T = unknown>(path: string[]): T | null => {
+    if (!isSafePath(path)) {
+        return null;
+    }
     const data = readStorage();
     if (!data || data['storage-version'] !== CURRENT_STORAGE_VERSION) {
         return null;
@@ -97,6 +104,9 @@ export const getStorageItem = <T = unknown>(path: string[]): T | null => {
  * @param value - The value to store (must be JSON-serializable).
  */
 export const setStorageItem = <T = unknown>(path: string[], value: T): void => {
+    if (!isSafePath(path)) {
+        return;
+    }
     let data = readStorage();
     if (!data || data['storage-version'] !== CURRENT_STORAGE_VERSION) {
         data = {'storage-version': CURRENT_STORAGE_VERSION, storage: {}};
@@ -114,6 +124,9 @@ export const setStorageItem = <T = unknown>(path: string[], value: T): void => {
  * @param path - Path segments within `storage`, e.g. `['table', 'my-table', 'columnVisibility']`.
  */
 export const removeStorageItem = (path: string[]): void => {
+    if (!isSafePath(path)) {
+        return;
+    }
     const data = readStorage();
     if (!data) {
         return;
