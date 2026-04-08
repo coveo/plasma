@@ -38,7 +38,7 @@ export type CopyToClipboardFactory = Factory<{
 const defaultProps: Partial<CopyToClipboardLegacyProps> = {};
 
 export const CopyToClipboard = ((_props) => {
-    const {withLabel, value, onCopy, color, tooltipLabelCopy, tooltipLabelCopied, ...others} = useProps(
+    const {withLabel, value, onCopy, tooltipLabelCopy, tooltipLabelCopied, ...others} = useProps(
         'CopyToClipboard',
         defaultProps,
         _props,
@@ -48,7 +48,6 @@ export const CopyToClipboard = ((_props) => {
         <CopyToClipboardInput
             value={value}
             onCopy={onCopy}
-            color={color}
             tooltipLabelCopy={tooltipLabelCopy}
             tooltipLabelCopied={tooltipLabelCopied}
         />
@@ -56,7 +55,6 @@ export const CopyToClipboard = ((_props) => {
         <CopyToClipboardButton
             value={value}
             onCopy={onCopy}
-            color={color}
             tooltipLabelCopy={tooltipLabelCopy}
             tooltipLabelCopied={tooltipLabelCopied}
             {...others}

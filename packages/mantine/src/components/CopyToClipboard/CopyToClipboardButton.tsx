@@ -1,5 +1,5 @@
 import {IconClipboardCheck, IconClipboardText} from '@coveord/plasma-react-icons';
-import {CopyButton, MantineColor, Tooltip} from '@mantine/core';
+import {CopyButton, Tooltip} from '@mantine/core';
 import {MouseEventHandler, forwardRef} from 'react';
 import {ActionIcon, ActionIconProps} from '../ActionIcon/ActionIcon.js';
 
@@ -12,10 +12,6 @@ export interface CopyToClipboardBaseProps {
      * Called each time the value is copied to the clipboard.
      */
     onCopy?: MouseEventHandler<HTMLButtonElement>;
-    /**
-     * The color of the icon when idle.
-     */
-    color?: MantineColor | (string & {});
     /**
      * The text displayed when hovering over the button.
      *
@@ -32,15 +28,19 @@ export interface CopyToClipboardBaseProps {
 
 interface CopyToClipboardIconButtonProps extends Omit<ActionIconProps, 'children'> {
     copied: boolean;
-    tooltipLabelCopy: string;
-    tooltipLabelCopied: string;
+    tooltipLabelCopy?: string;
+    tooltipLabelCopied?: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export const CopyToClipboardIconButton = forwardRef<HTMLButtonElement, CopyToClipboardIconButtonProps>(
-    ({copied, tooltipLabelCopy, tooltipLabelCopied, color, ...others}, ref) => (
-        <Tooltip label={copied ? tooltipLabelCopied : tooltipLabelCopy}>
-            <ActionIcon.Quaternary ref={ref} color={copied ? 'success' : color} {...others}>
+    ({copied, tooltipLabelCopy = 'Copy to clipboard', tooltipLabelCopied = 'Copied', ...others}, ref) => (
+        <Tooltip
+            key={`${copied ? 'copied' : 'copy'}-tooltip`}
+            label={copied ? tooltipLabelCopied : tooltipLabelCopy}
+            opened={copied || undefined}
+        >
+            <ActionIcon.Quaternary ref={ref} {...others}>
                 {copied ? <IconClipboardCheck size={16} /> : <IconClipboardText size={16} />}
             </ActionIcon.Quaternary>
         </Tooltip>
@@ -52,9 +52,8 @@ export interface CopyToClipboardButtonProps extends ActionIconProps, CopyToClipb
 export const CopyToClipboardButton = ({
     value,
     onCopy,
-    color,
-    tooltipLabelCopy = 'Copy to clipboard',
-    tooltipLabelCopied = 'Copied',
+    tooltipLabelCopy,
+    tooltipLabelCopied,
     ...others
 }: CopyToClipboardButtonProps) => (
     <CopyButton value={value} timeout={2000}>
@@ -62,7 +61,6 @@ export const CopyToClipboardButton = ({
             <CopyToClipboardIconButton
                 aria-label={tooltipLabelCopy}
                 copied={copied}
-                color={color}
                 tooltipLabelCopy={tooltipLabelCopy}
                 tooltipLabelCopied={tooltipLabelCopied}
                 onClick={(clickEvent) => {

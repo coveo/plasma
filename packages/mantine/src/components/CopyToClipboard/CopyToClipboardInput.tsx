@@ -2,12 +2,11 @@ import {TextInput, TextInputProps} from '@mantine/core';
 import {CopyToClipboardBaseProps, CopyToClipboardButton} from './CopyToClipboardButton.js';
 
 export interface CopyToClipboardInputProps
-    extends Omit<TextInputProps, 'value' | 'rightSection' | 'color' | 'onCopy'>, CopyToClipboardBaseProps {}
+    extends Omit<TextInputProps, 'value' | 'rightSection' | 'onCopy'>, CopyToClipboardBaseProps {}
 
 export const CopyToClipboardInput = ({
     value,
     onCopy,
-    color,
     tooltipLabelCopy,
     tooltipLabelCopied,
     ...others
@@ -20,7 +19,6 @@ export const CopyToClipboardInput = ({
             <CopyToClipboardButton
                 value={value}
                 onCopy={onCopy}
-                color={color}
                 tooltipLabelCopy={tooltipLabelCopy}
                 tooltipLabelCopied={tooltipLabelCopied}
             />

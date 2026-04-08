@@ -18,7 +18,7 @@ export interface CopyToClipboardMenuTargetProps extends Omit<ActionIconProps, 'c
 }
 
 export const CopyToClipboardMenuTarget = forwardRef<HTMLButtonElement, CopyToClipboardMenuTargetProps>(
-    ({tooltipLabelCopy = 'Copy to clipboard', tooltipLabelCopied = 'Copied', ...others}, ref) => {
+    ({tooltipLabelCopy, tooltipLabelCopied, ...others}, ref) => {
         const {copied} = useCopyToClipboardMenuContext();
         return (
             <CopyToClipboardIconButton
@@ -52,10 +52,10 @@ export const CopyToClipboardMenuItem = ({value, onCopy, children, ...others}: Co
         <CopyButton value={value} timeout={2000}>
             {({copy}) => (
                 <Menu.Item
-                    onClick={(e) => {
+                    onClick={(event) => {
                         copy();
                         onItemCopy();
-                        onCopy?.(e);
+                        onCopy?.(event);
                     }}
                     {...others}
                 >
@@ -83,8 +83,12 @@ export const CopyToClipboardMenu = ({children, ...others}: CopyToClipboardMenuPr
 
     const targets: ReactElement[] = [];
     const items: ReactNode[] = [];
-    Children.forEach(children, (child) => {
-        if (isValidElement(child) && child.type === CopyToClipboardMenuTarget) {
+    Children.toArray(children).forEach((child) => {
+        if (!isValidElement(child)) {
+            return;
+        }
+
+        if (child.type === CopyToClipboardMenuTarget) {
             targets.push(child);
         } else {
             items.push(child);
