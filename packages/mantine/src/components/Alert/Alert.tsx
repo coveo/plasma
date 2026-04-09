@@ -31,7 +31,7 @@ Alert.displayName = 'Alert';
 
 const AlertInformation = Alert.withProps({
     color: 'gray',
-    icon: <InfoToken.Information size="lg" />,
+    icon: <InfoToken.Information size="md" />,
     vars: () => ({
         root: {
             '--alert-color': 'var(--mantine-color-text)',
@@ -43,7 +43,7 @@ const AlertInformation = Alert.withProps({
 (AlertInformation as ComponentType).displayName = 'Alert.Information';
 
 const AlertAdvice = Alert.withProps({
-    icon: <InfoToken.Advice size="lg" />,
+    icon: <InfoToken.Advice size="md" />,
     vars: () => ({
         root: {
             '--alert-color': 'var(--mantine-primary-color-filled)',
@@ -55,7 +55,7 @@ const AlertAdvice = Alert.withProps({
 (AlertAdvice as ComponentType).displayName = 'Alert.Advice';
 
 const AlertSuccess = Alert.withProps({
-    icon: <InfoToken.Success size="lg" />,
+    icon: <InfoToken.Success size="md" />,
     vars: () => ({
         root: {
             '--alert-color': 'var(--mantine-color-green-filled)',
@@ -68,7 +68,7 @@ const AlertSuccess = Alert.withProps({
 
 const AlertWarning = Alert.withProps({
     color: 'warning',
-    icon: <InfoToken.Warning size="lg" />,
+    icon: <InfoToken.Warning size="md" />,
     vars: () => ({
         root: {
             '--alert-color': 'var(--mantine-color-warning-filled)',
@@ -80,7 +80,7 @@ const AlertWarning = Alert.withProps({
 (AlertWarning as ComponentType).displayName = 'Alert.Warning';
 
 const AlertCritical = Alert.withProps({
-    icon: <InfoToken.Error size="lg" />,
+    icon: <InfoToken.Error size="md" />,
     vars: () => ({
         root: {
             '--alert-color': 'var(--mantine-color-error)',
