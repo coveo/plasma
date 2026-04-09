@@ -2,7 +2,8 @@ import {createSafeContext} from '@mantine/core';
 
 interface CopyToClipboardMenuContextValue {
     copied: boolean;
-    onItemCopy: () => void;
+    onItemCopy: (label: string) => void;
+    copiedLabel: string | undefined;
 }
 
 export const [CopyToClipboardMenuProvider, useCopyToClipboardMenuContext] =

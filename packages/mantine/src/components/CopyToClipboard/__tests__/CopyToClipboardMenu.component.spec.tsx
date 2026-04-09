@@ -6,8 +6,12 @@ describe('CopyToClipboard.Menu', () => {
         render(
             <CopyToClipboard.Menu>
                 <CopyToClipboard.MenuTarget />
-                <CopyToClipboard.MenuItem value="copy-name">Copy name to clipboard</CopyToClipboard.MenuItem>
-                <CopyToClipboard.MenuItem value="copy-id">Copy ID to clipboard</CopyToClipboard.MenuItem>
+                <CopyToClipboard.MenuItem value="copy-name" tooltipLabelCopied="Name copied">
+                    Copy name to clipboard
+                </CopyToClipboard.MenuItem>
+                <CopyToClipboard.MenuItem value="copy-id" tooltipLabelCopied="ID copied">
+                    Copy ID to clipboard
+                </CopyToClipboard.MenuItem>
             </CopyToClipboard.Menu>,
         );
 
@@ -19,8 +23,12 @@ describe('CopyToClipboard.Menu', () => {
         render(
             <CopyToClipboard.Menu>
                 <CopyToClipboard.MenuTarget />
-                <CopyToClipboard.MenuItem value="copy-name">Copy name to clipboard</CopyToClipboard.MenuItem>
-                <CopyToClipboard.MenuItem value="copy-id">Copy ID to clipboard</CopyToClipboard.MenuItem>
+                <CopyToClipboard.MenuItem value="copy-name" tooltipLabelCopied="Name copied">
+                    Copy name to clipboard
+                </CopyToClipboard.MenuItem>
+                <CopyToClipboard.MenuItem value="copy-id" tooltipLabelCopied="ID copied">
+                    Copy ID to clipboard
+                </CopyToClipboard.MenuItem>
             </CopyToClipboard.Menu>,
         );
 
@@ -36,10 +44,12 @@ describe('CopyToClipboard.Menu', () => {
         render(
             <CopyToClipboard.Menu>
                 <CopyToClipboard.MenuTarget />
-                <CopyToClipboard.MenuItem value="copy-name" onCopy={onCopySpy}>
+                <CopyToClipboard.MenuItem value="copy-name" tooltipLabelCopied="Name copied" onCopy={onCopySpy}>
                     Copy name to clipboard
                 </CopyToClipboard.MenuItem>
-                <CopyToClipboard.MenuItem value="copy-id">Copy ID to clipboard</CopyToClipboard.MenuItem>
+                <CopyToClipboard.MenuItem value="copy-id" tooltipLabelCopied="ID copied">
+                    Copy ID to clipboard
+                </CopyToClipboard.MenuItem>
             </CopyToClipboard.Menu>,
         );
 
@@ -47,5 +57,25 @@ describe('CopyToClipboard.Menu', () => {
         await waitFor(() => user.click(screen.getByText('Copy name to clipboard')));
 
         expect(onCopySpy).toHaveBeenCalled();
+    });
+
+    it('displays the correct tooltip label when a menu item is copied', async () => {
+        const user = userEvent.setup();
+
+        render(
+            <CopyToClipboard.Menu>
+                <CopyToClipboard.MenuTarget />
+                <CopyToClipboard.MenuItem value="copy-name" tooltipLabelCopied="Name copied">
+                    Copy name to clipboard
+                </CopyToClipboard.MenuItem>
+                <CopyToClipboard.MenuItem value="copy-id" tooltipLabelCopied="ID copied">
+                    Copy ID to clipboard
+                </CopyToClipboard.MenuItem>
+            </CopyToClipboard.Menu>,
+        );
+
+        await user.click(screen.getByRole('button', {name: /copy to clipboard/i}));
+        await waitFor(() => user.click(screen.getByText('Copy name to clipboard')));
+        expect(screen.getByRole('tooltip', {name: /name copied/i})).toBeVisible();
     });
 });

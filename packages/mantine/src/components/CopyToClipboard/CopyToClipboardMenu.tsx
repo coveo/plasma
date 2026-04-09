@@ -10,22 +10,17 @@ export interface CopyToClipboardMenuTargetProps extends Omit<ActionIconProps, 'c
      * @default 'Copy to clipboard'
      */
     tooltipLabelCopy?: string;
-    /**
-     * The text displayed when the value is copied to the clipboard.
-     * @default 'Copied'
-     */
-    tooltipLabelCopied?: string;
 }
 
 export const CopyToClipboardMenuTarget = forwardRef<HTMLButtonElement, CopyToClipboardMenuTargetProps>(
-    ({tooltipLabelCopy, tooltipLabelCopied, ...others}, ref) => {
-        const {copied} = useCopyToClipboardMenuContext();
+    ({tooltipLabelCopy, ...others}, ref) => {
+        const {copied, copiedLabel} = useCopyToClipboardMenuContext();
         return (
             <CopyToClipboardIconButton
                 ref={ref}
                 copied={copied}
                 tooltipLabelCopy={tooltipLabelCopy}
-                tooltipLabelCopied={tooltipLabelCopied}
+                tooltipLabelCopied={copiedLabel}
                 {...others}
             />
         );
@@ -40,12 +35,22 @@ export interface CopyToClipboardMenuItemProps extends Omit<MenuItemProps, 'onCli
      */
     value: string;
     /**
+     * The text displayed in the target button tooltip when this item is copied to the clipboard.
+     */
+    tooltipLabelCopied: string;
+    /**
      * Called each time the value is copied to the clipboard.
      */
     onCopy?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const CopyToClipboardMenuItem = ({value, onCopy, children, ...others}: CopyToClipboardMenuItemProps) => {
+export const CopyToClipboardMenuItem = ({
+    value,
+    tooltipLabelCopied,
+    onCopy,
+    children,
+    ...others
+}: CopyToClipboardMenuItemProps) => {
     const {onItemCopy} = useCopyToClipboardMenuContext();
     return (
         <CopyButton value={value} timeout={2000}>
@@ -53,7 +58,7 @@ export const CopyToClipboardMenuItem = ({value, onCopy, children, ...others}: Co
                 <Menu.Item
                     onClick={(event) => {
                         copy();
-                        onItemCopy();
+                        onItemCopy(tooltipLabelCopied);
                         onCopy?.(event);
                     }}
                     {...others}
@@ -73,10 +78,15 @@ export interface CopyToClipboardMenuProps extends MenuProps {
 
 export const CopyToClipboardMenu = ({children, ...others}: CopyToClipboardMenuProps) => {
     const [copied, setCopied] = useState(false);
-    const {start: startResetTimeout} = useTimeout(() => setCopied(false), 2000);
+    const [copiedLabel, setCopiedLabel] = useState<string | undefined>(undefined);
+    const {start: startResetTimeout} = useTimeout(() => {
+        setCopied(false);
+        setCopiedLabel(undefined);
+    }, 2000);
 
-    const onItemCopy = () => {
+    const onItemCopy = (label: string) => {
         setCopied(true);
+        setCopiedLabel(label);
         startResetTimeout();
     };
 
@@ -99,7 +109,7 @@ export const CopyToClipboardMenu = ({children, ...others}: CopyToClipboardMenuPr
     }
 
     return (
-        <CopyToClipboardMenuProvider value={{copied, onItemCopy}}>
+        <CopyToClipboardMenuProvider value={{copied, copiedLabel, onItemCopy}}>
             <Menu {...others}>
                 <Menu.Target>{targets[0]}</Menu.Target>
                 <Menu.Dropdown>{items}</Menu.Dropdown>

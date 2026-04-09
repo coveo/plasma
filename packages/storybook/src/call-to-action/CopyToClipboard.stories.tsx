@@ -9,7 +9,9 @@ interface StoryArgs {
     label: string;
     description: string;
     menuItem1Value: string;
+    menuItem1TooltipLabelCopied: string;
     menuItem2Value: string;
+    menuItem2TooltipLabelCopied: string;
 }
 
 const meta: Meta<StoryArgs> = {
@@ -48,9 +50,19 @@ const meta: Meta<StoryArgs> = {
             description: 'The value to be copied to clipboard for the first MenuItem',
             if: {arg: 'variant', eq: 'Menu'},
         },
+        menuItem1TooltipLabelCopied: {
+            control: 'text',
+            description: 'The tooltip label displayed when the first MenuItem value is copied',
+            if: {arg: 'variant', eq: 'Menu'},
+        },
         menuItem2Value: {
             control: 'text',
             description: 'The value to be copied to clipboard for the second MenuItem',
+            if: {arg: 'variant', eq: 'Menu'},
+        },
+        menuItem2TooltipLabelCopied: {
+            control: 'text',
+            description: 'The tooltip label displayed when the second MenuItem value is copied',
             if: {arg: 'variant', eq: 'Menu'},
         },
     },
@@ -60,14 +72,25 @@ const meta: Meta<StoryArgs> = {
         label: 'My Label',
         description: 'My Description',
         menuItem1Value: 'name-123',
+        menuItem1TooltipLabelCopied: 'Name copied',
         menuItem2Value: 'source-id-123',
+        menuItem2TooltipLabelCopied: 'Source ID copied',
     },
 };
 export default meta;
 type Story = StoryObj<StoryArgs>;
 
 export const Demo: Story = {
-    render: ({variant, value, label, description, menuItem1Value, menuItem2Value}) => {
+    render: ({
+        variant,
+        value,
+        label,
+        description,
+        menuItem1Value,
+        menuItem1TooltipLabelCopied,
+        menuItem2Value,
+        menuItem2TooltipLabelCopied,
+    }) => {
         if (variant === 'Input') {
             return <CopyToClipboard.Input label={label} description={description} value={value} />;
         }
@@ -75,8 +98,10 @@ export const Demo: Story = {
             return (
                 <CopyToClipboard.Menu>
                     <CopyToClipboard.MenuTarget />
-                    <CopyToClipboard.MenuItem value={menuItem1Value}>Copy name to clipboard</CopyToClipboard.MenuItem>
-                    <CopyToClipboard.MenuItem value={menuItem2Value}>
+                    <CopyToClipboard.MenuItem value={menuItem1Value} tooltipLabelCopied={menuItem1TooltipLabelCopied}>
+                        Copy name to clipboard
+                    </CopyToClipboard.MenuItem>
+                    <CopyToClipboard.MenuItem value={menuItem2Value} tooltipLabelCopied={menuItem2TooltipLabelCopied}>
                         Copy source ID to clipboard
                     </CopyToClipboard.MenuItem>
                 </CopyToClipboard.Menu>
