@@ -1,3 +1,13 @@
+## <small>58.0.2 (2026-04-09)</small>
+
+* fix(modal): set body as the scroll container (#4389) f6e0528, closes #4389
+* fix(prompt): add back ref prop to PromptCompoundComponent (#4391) 7a4e51d, closes #4391
+* chore(deps): lock file maintenance (#4383) 790cea4, closes #4383
+* chore(deps): update all non-major dependencies (#4382) 52406f9, closes #4382
+* chore(deps): update dependency vite to v8.0.5 [security] (#4384) aebdbad, closes #4384
+
+
+
 ## <small>58.0.1 (2026-04-03)</small>
 
 * chore(deps): update all non-major dependencies (#4374) 176a9c6, closes #4374
