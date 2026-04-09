@@ -19,10 +19,10 @@ export interface LayoutHeaderProps extends BoxProps {
 /**
  * Common default props shared across all layout header components.
  */
-export const LAYOUT_HEADER_DEFAULT_PROPS: Partial<LayoutHeaderProps> = {
+export const LAYOUT_HEADER_DEFAULT_PROPS = {
     draggable: false,
     removable: true,
-};
+} satisfies Partial<LayoutHeaderProps>;
 
 /**
  * Common props shared across all layout body components.
@@ -42,10 +42,10 @@ export interface LayoutBodyProps<T = unknown> extends BoxProps {
  * Common default props shared across all layout body components.
  * This ensures consistent defaults and reduces duplication.
  */
-export const LAYOUT_BODY_DEFAULT_PROPS: Partial<LayoutBodyProps> = {
+export const LAYOUT_BODY_DEFAULT_PROPS = {
     removable: true,
     draggable: false,
     disabled: false,
     readOnly: false,
     gap: 'md' as MantineSpacing,
-} as const;
+} as const satisfies Partial<LayoutBodyProps>;

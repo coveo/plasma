@@ -14,6 +14,7 @@ import {
     ComponentType,
     forwardRef,
     ForwardRefExoticComponent,
+    isValidElement,
     ReactElement,
     ReactNode,
     RefAttributes,
@@ -60,10 +61,11 @@ const PromptVariantIconsMapping: Record<PromptVariant, typeof InfoToken.Informat
     information: InfoToken.Information,
 };
 
-const defaultProps: Partial<PromptInternalProps> = {
+const defaultProps = {
     variant: 'information',
     centered: true,
-};
+    size: 'sm',
+} satisfies Partial<PromptInternalProps>;
 
 const _Prompt = factory<PromptFactory>((_props, ref) => {
     const props = useProps('Prompt', defaultProps, _props);
@@ -94,17 +96,22 @@ const _Prompt = factory<PromptFactory>((_props, ref) => {
     const stylesApiProps = {classNames, styles};
 
     const footers: ReactElement[] = [];
-    const otherChildren: ReactElement[] = [];
+    const otherChildren: ReactNode[] = [];
 
-    Children.forEach(children, (child: ReactElement) => {
-        (child.type === PromptFooter ? footers : otherChildren).push(child);
+    Children.forEach(children, (child) => {
+        if (isValidElement(child) && child.type === PromptFooter) {
+            footers.push(child);
+            return;
+        }
+
+        otherChildren.push(child);
     });
 
     const IconComponent = PromptVariantIconsMapping[variant];
 
     return (
-        <PromptContextProvider value={{variant, getStyles}}>
-            <Modal.Root ref={ref} variant="prompt" size="sm" {...others} {...getStyles('root')}>
+        <PromptContextProvider value={{variant: variant, getStyles}}>
+            <Modal.Root ref={ref} variant="prompt" {...others} {...getStyles('root')}>
                 <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
                 <Modal.Content {...getStyles('content', stylesApiProps)}>
                     <Modal.Header {...getStyles('header', stylesApiProps)}>

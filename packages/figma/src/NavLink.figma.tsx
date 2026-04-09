@@ -1,5 +1,6 @@
 import {NavLink} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
+import type {ReactElement} from 'react';
 
 figma.connect(
     NavLink,
@@ -10,11 +11,11 @@ figma.connect(
             disabled: figma.enum('State', {
                 Disabled: true,
             }),
-            rightSection: figma.boolean<React.ReactNode, never>('Right Section', {
-                true: figma.instance('Swap Right'),
+            rightSection: figma.boolean<ReactElement, undefined>('Right Section', {
+                true: figma.instance<ReactElement>('Swap Right'),
             }),
-            leftSection: figma.boolean<React.ReactNode, never>('Left Section', {
-                true: figma.instance('Swap Left'),
+            leftSection: figma.boolean<ReactElement, undefined>('Left Section', {
+                true: figma.instance<ReactElement>('Swap Left'),
             }),
             active: figma.enum('State', {
                 Active: true,

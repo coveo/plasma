@@ -149,7 +149,7 @@ const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
 };
 
 const CardLayout: TableLayout = ({children}) => <>{children}</>;
-CardLayout.Header = () => null;
+CardLayout.Header = () => <></>;
 CardLayout.displayName = 'Cards';
 CardLayout.Body = TableCards;
 CardLayout.Icon = IconLayoutGrid;

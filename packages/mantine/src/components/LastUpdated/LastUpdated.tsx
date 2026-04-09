@@ -30,18 +30,17 @@ export type LastUpdatedFactory = Factory<{
     stylesNames: LastUpdatedStylesNames;
 }>;
 
-const defaultProps: Partial<LastUpdatedProps> = {
+const defaultProps = {
     label: 'Last update:',
     formatter: (time) => dayjs(time).format('h:mm:ss A'),
-};
+} satisfies Partial<LastUpdatedProps>;
 
 export const LastUpdated = factory<LastUpdatedFactory>((props: LastUpdatedProps, ref: ForwardedRef<HTMLDivElement>) => {
     const {formatter, label, time, classNames, className, styles, style, vars, unstyled, ...others} = useProps(
         'PlasmaLastUpdated',
-        defaultProps as Partial<LastUpdatedProps>,
+        defaultProps,
         props,
     );
-
     const resolvedTime = time ?? dayjs().valueOf();
 
     const getStyles = useStyles<LastUpdatedFactory>({
@@ -58,12 +57,7 @@ export const LastUpdated = factory<LastUpdatedFactory>((props: LastUpdatedProps,
     const stylesApiProps = {classNames, styles};
 
     return (
-        <Group
-            justify={props.justify}
-            ref={ref}
-            {...getStyles('root', {className, style, ...stylesApiProps})}
-            {...others}
-        >
+        <Group ref={ref} {...getStyles('root', {className, style, ...stylesApiProps})} {...others}>
             <Text size="xs" {...getStyles('label', {className, style, ...stylesApiProps})}>
                 {label}
                 <span role="timer">{formatter(resolvedTime)}</span>

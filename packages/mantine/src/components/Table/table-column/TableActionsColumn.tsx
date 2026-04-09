@@ -48,16 +48,16 @@ interface TableActionsColumnProps extends Omit<TableActionsListProps, 'actions'>
     info: CellContext<unknown, unknown>;
 }
 
-const defaultProps: Partial<TableActionsColumnProps> = {
+const defaultProps = {
     label: 'Actions',
     icon: <MoreSize16Px height={16} />,
-};
+} satisfies Partial<TableActionsColumnProps>;
 
 const ActionsMenu: FunctionComponent<TableActionsColumnProps> = (props) => {
     const {getRowActions} = useTableContext();
 
-    const {info, ...others} = useProps('PlasmaTableActionsColumn', defaultProps, props);
+    const {info, variant, ...others} = useProps('PlasmaTableActionsColumn', defaultProps, props);
 
     const actionsElements = getRowActions([info.row.original]);
-    return <TableActionsList actions={actionsElements} variant="combined" {...others} />;
+    return <TableActionsList actions={actionsElements} variant={variant ?? 'combined'} {...others} />;
 };

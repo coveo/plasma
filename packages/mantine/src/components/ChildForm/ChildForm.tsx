@@ -34,7 +34,7 @@ type ChildFormFactory = Factory<{
     stylesNames: ChildFormStylesNames;
 }>;
 
-const defaultProps: Partial<ChildFormProps> = {};
+const defaultProps = {} satisfies Partial<ChildFormProps>;
 
 export const ChildForm = polymorphicFactory<ChildFormFactory>((props, ref) => {
     const {className, children, style, classNames, styles, unstyled, vars, title, description, ...others} = useProps(

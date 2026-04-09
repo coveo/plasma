@@ -25,9 +25,9 @@ export type TableFilterFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableFilterProps> = {
+const defaultProps = {
     placeholder: 'Search by any field',
-};
+} satisfies Partial<TableFilterProps>;
 
 export const TableFilter = factory<TableFilterFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();

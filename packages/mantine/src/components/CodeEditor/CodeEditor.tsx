@@ -80,12 +80,14 @@ interface CodeEditorProps
     options?: Pick<monacoEditor.IStandaloneEditorConstructionOptions, 'tabSize'>;
 }
 
-const defaultProps: Partial<CodeEditorProps> = {
+const defaultProps = {
     language: 'plaintext',
     monacoLoader: 'local',
     defaultValue: '',
     minHeight: 300,
-};
+    justify: 'flex-start',
+    gap: 'sm',
+} satisfies Partial<CodeEditorProps>;
 
 export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     const {
@@ -109,6 +111,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         monacoLoader,
         options: {tabSize} = {tabSize: 2},
         editorHandle,
+        h,
+        mah,
         ...others
     } = useProps('CodeEditor', defaultProps, props);
     const [loaded, setLoaded] = useState(false);
@@ -119,7 +123,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         finalValue: '',
     });
     const [parentHeight, ref] = useParentHeight();
-    const editorRef = useRef(null);
+    const editorRef = useRef<monacoEditor.IStandaloneCodeEditor | null>(null);
 
     const loadLocalMonaco = async () => {
         const monacoInstance = await import('monaco-editor');
@@ -230,7 +234,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     tabSize,
                 }}
                 value={_value}
-                onChange={handleChange}
+                onChange={(nextValue) => handleChange(nextValue ?? '')}
                 beforeMount={(monaco) => {
                     registerLanguages(monaco);
                     registerThemes(monaco);
@@ -260,7 +264,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
 
     const height = Math.max(Number.isNaN(parentHeight) ? 0 : parentHeight, minHeight);
     return (
-        <Stack justify="flex-start" gap="sm" h={height} mah={maxHeight} ref={ref} {...others}>
+        <Stack ref={ref} {...others} h={h ?? height} mah={mah ?? maxHeight}>
             <Group justify="space-between">
                 {_header}
                 {_buttons}

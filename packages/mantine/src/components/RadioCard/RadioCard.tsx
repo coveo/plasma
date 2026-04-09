@@ -44,11 +44,22 @@ export type RadioCardProps = MantineRadioCardProps &
         disabledTooltip?: string;
     };
 
-const defaultProps: Partial<RadioCardProps> = {};
+const defaultProps = {} satisfies Partial<RadioCardProps>;
 
 export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
-    const {classNames, styles, style, className, vars, disabled, label, description, disabledTooltip, ...others} =
-        useProps('RadioCard', defaultProps, _props);
+    const {
+        classNames,
+        styles,
+        style,
+        className,
+        vars,
+        disabled,
+        label,
+        description,
+        disabledTooltip,
+        readOnly,
+        ...others
+    } = useProps('RadioCard', defaultProps, _props);
     const getStyles = useStyles<RadioCardFactory>({
         name: 'RadioCard',
         classes,
@@ -65,9 +76,9 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
             <Radio.Card
                 ref={ref}
                 disabled={disabled}
-                readOnly={_props.readOnly}
                 {...getStyles('card', {className, style, classNames, styles})}
                 {...others}
+                aria-readonly={readOnly}
             >
                 <Group {...getStyles('container', {classNames, styles})}>
                     <Radio.Indicator size="xs" disabled={disabled} {...getStyles('indicator', {classNames, styles})} />

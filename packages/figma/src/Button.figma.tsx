@@ -1,12 +1,13 @@
 import {Button} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
+import type {ReactElement} from 'react';
 
 const buttonProps = {
-    leftSection: figma.boolean('Left Section', {
-        true: figma.instance('Swap Left'),
+    leftSection: figma.boolean<ReactElement, undefined>('Left Section', {
+        true: figma.instance<ReactElement>('Swap Left'),
     }),
-    rightSection: figma.boolean('Right Section', {
-        true: figma.instance('Swap Right'),
+    rightSection: figma.boolean<ReactElement, undefined>('Right Section', {
+        true: figma.instance<ReactElement>('Swap Right'),
     }),
     placeholder: figma.string('Placeholder'),
     disabled: figma.enum('State', {

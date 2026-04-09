@@ -18,10 +18,10 @@ interface CollectionItemSharedProps extends GroupProps {
     removable?: boolean;
 }
 
-const defaultProps: Partial<CollectionItemSharedProps> = {
+const defaultProps = {
     removable: true,
     gap: 'sm',
-};
+} satisfies Partial<CollectionItemSharedProps>;
 
 const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSharedProps>> = (props) => {
     const {
@@ -33,18 +33,12 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
         // Style props
         style,
         className,
-        classNames,
-        styles,
         ...others
     } = useProps('CollectionItem', defaultProps, props);
     const ctx = useCollectionContext();
 
     return (
-        <Group
-            data-testid={`item-${id}`}
-            {...ctx.getStyles('item', {style, className, classNames, styles})}
-            {...others}
-        >
+        <Group data-testid={`item-${id}`} {...ctx.getStyles('item', {style, className})} {...others}>
             {children}
             <RemoveButton removable={removable} onRemove={onRemove} />
         </Group>
@@ -62,16 +56,10 @@ const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItem
         // Style props
         style,
         className,
-        classNames,
-        styles,
         ...others
     } = useProps('CollectionItem', defaultProps, props);
     return (
-        <Group
-            data-testid={`item-${id}`}
-            {...ctx.getStyles('item', {style, className, classNames, styles})}
-            {...others}
-        >
+        <Group data-testid={`item-${id}`} {...ctx.getStyles('item', {style, className})} {...others}>
             {children}
         </Group>
     );
@@ -87,8 +75,6 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
 
         // Style props
         className,
-        classNames,
-        styles,
         ...others
     } = useProps('CollectionItem', defaultProps, props);
 
@@ -108,8 +94,6 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
                       }
                     : undefined,
                 className,
-                classNames,
-                styles,
             })}
             data-isdragging={isDragging}
             {...others}

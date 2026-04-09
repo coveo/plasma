@@ -150,7 +150,7 @@ export type FacetFactory = Factory<{
     stylesNames: FacetStylesNames;
 }>;
 
-const defaultProps: Partial<FacetProps> = {
+const defaultProps = {
     searchPlaceholder: 'Search',
     nothingFound: 'No matching items',
     placeholder: 'No items',
@@ -158,7 +158,7 @@ const defaultProps: Partial<FacetProps> = {
     limit: Infinity,
     itemComponent: DefaultFacetItem,
     listComponent: FacetScrollArea,
-};
+} satisfies Partial<FacetProps>;
 
 export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_props, ref) => {
     const props = useProps('Facet', defaultProps, _props);
@@ -212,7 +212,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
     const handleValueSelect = (val: string) =>
         handleSelection(_selection.includes(val) ? _selection.filter((v) => v !== val) : [..._selection, val]);
 
-    let groupName: string = null;
+    let groupName: string | null = null;
 
     useEffect(() => {
         combobox.openDropdown();

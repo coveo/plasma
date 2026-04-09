@@ -64,7 +64,7 @@ export type InfoTokenProps = Omit<InfoTokenInternalProps, 'type'>;
 type InfoTokenCompoundComponent = (<C = 'div'>(props: PolymorphicComponentProps<C, InfoTokenProps>) => ReactElement) &
     Omit<FunctionComponent<PolymorphicComponentProps<any, InfoTokenProps>>, never>;
 
-const defaultProps: Partial<InfoTokenInternalProps> = {variant: 'outline', type: 'information', size: 'xs'};
+const defaultProps = {variant: 'outline', type: 'information', size: 'xs'} satisfies Partial<InfoTokenInternalProps>;
 
 const colorResolver = (type: InfoTokenType): string => {
     switch (type) {
@@ -132,8 +132,9 @@ const iconResolver = (type: InfoTokenType): TablerIcon => {
 };
 
 const varsResolver = createVarsResolver<InfoTokenFactory>((_theme, {type}) => {
-    const color = colorResolver(type);
-    const bgColor = bgColorResolver(type);
+    const resolvedType = type ?? defaultProps.type;
+    const color = colorResolver(resolvedType);
+    const bgColor = bgColorResolver(resolvedType);
     return {
         root: {
             '--it-color': color,
