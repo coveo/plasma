@@ -33,7 +33,7 @@ export type InfoTokenFactory = Factory<{
 export type InfoTokenComponentStylesNames = 'root';
 export type InfoTokenType = 'information' | 'advice' | 'warning' | 'error' | 'question' | 'success';
 export type InfoTokenVariant = 'outline' | 'light';
-export type InfoTokenSizes = 'xs' | 'sm' | 'md' | 'lg';
+export type InfoTokenSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type InfoTokenCssVariables = {
     root: '--it-color' | '--it-bg';
 };
@@ -103,14 +103,16 @@ const bgColorResolver = (type: InfoTokenType): string => {
 const sizeResolver = (size: InfoTokenSizes): number => {
     switch (size) {
         case 'sm':
-            return 20;
+            return 16;
         case 'md':
-            return 24;
+            return 20;
         case 'lg':
+            return 24;
+        case 'xl':
             return 32;
         case 'xs':
         default:
-            return 16;
+            return 12;
     }
 };
 
