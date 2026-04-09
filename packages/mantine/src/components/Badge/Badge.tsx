@@ -4,41 +4,44 @@ import {
     BadgeProps,
     BadgeStylesNames,
     BadgeVariant,
+    ElementProps,
     Badge as MantineBadge,
+    PolymorphicComponentProps,
     polymorphicFactory,
     PolymorphicFactory,
-    PolymorphicComponentProps,
     useComputedColorScheme,
 } from '@mantine/core';
 import {forwardRef, ForwardRefExoticComponent, ReactElement, ReactNode, RefAttributes} from 'react';
 
 export interface SemanticBadgeProps
-    extends Pick<
-        BadgeProps,
-        | 'm'
-        | 'mt'
-        | 'mb'
-        | 'ml'
-        | 'mr'
-        | 'ms'
-        | 'me'
-        | 'mx'
-        | 'my'
-        | 'miw'
-        | 'maw'
-        | 'pos'
-        | 'top'
-        | 'left'
-        | 'right'
-        | 'bottom'
-        | 'inset'
-        | 'display'
-        | 'flex'
-        | 'leftSection'
-        | 'rightSection'
-        | 'fullWidth'
-        | 'circle'
-    > {
+    extends
+        Pick<
+            BadgeProps,
+            | 'm'
+            | 'mt'
+            | 'mb'
+            | 'ml'
+            | 'mr'
+            | 'ms'
+            | 'me'
+            | 'mx'
+            | 'my'
+            | 'miw'
+            | 'maw'
+            | 'pos'
+            | 'top'
+            | 'left'
+            | 'right'
+            | 'bottom'
+            | 'inset'
+            | 'display'
+            | 'flex'
+            | 'leftSection'
+            | 'rightSection'
+            | 'fullWidth'
+            | 'circle'
+        >,
+        ElementProps<'div'> {
     /**
      * The size of the badge.
      * @default 'small'
