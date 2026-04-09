@@ -2,10 +2,6 @@
     font-weight: var(--coveo-fw-bold);
 }
 
-.icon {
-    margin-inline-end: var(--mantine-spacing-sm);
-}
-
 .closeButton {
     & svg {
         width: 20px;
