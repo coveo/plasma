@@ -1,3 +1,21 @@
+## 59.0.0 (2026-04-10)
+
+* feat(mantine, table): persist column visibility preferences to localStorage (#4377) 4da013b, closes #4377 #4373 #4378 #4379 #4375
+* fix(badge): extend SemanticBadgeProps to include ElementProps for improved type safety (#4396) efd37f7, closes #4396
+* feat(header): header actions gap from 16 to 8 px (#4394) 92842fb, closes #4394
+
+
+### BREAKING CHANGE
+
+* InfoToken is no longer a renderable component
+- Only compound components are exported
+- variant prop is no longer used to set the semantic type
+- variant prop has now two possible values: outline and light
+
+* fix: apply copilot review
+* Prompt variant prop is replaced by compound components
+
+
 ## <small>58.0.2 (2026-04-09)</small>
 
 * fix(modal): set body as the scroll container (#4389) f6e0528, closes #4389
