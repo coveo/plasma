@@ -138,7 +138,7 @@ export const removeStorageItem = (path: string[]): void => {
         return;
     }
     const data = readStorage();
-    if (!data) {
+    if (!data || data['storage-version'] !== CURRENT_STORAGE_VERSION) {
         return;
     }
     const parentPath = path.slice(0, -1);

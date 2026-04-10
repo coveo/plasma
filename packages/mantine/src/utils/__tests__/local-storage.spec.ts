@@ -141,6 +141,14 @@ describe('Plasma versioned localStorage', () => {
 
             expect(raw().storage.table).toEqual({});
         });
+
+        it('does nothing when storage version does not match', () => {
+            seed({'storage-version': 999, storage: {table: {t1: {columnVisibility: {col1: true}}}}});
+
+            removeStorageItem(['table', 't1', 'columnVisibility']);
+
+            expect(raw().storage.table.t1.columnVisibility).toEqual({col1: true});
+        });
     });
 
     describe('prototype pollution protection', () => {
