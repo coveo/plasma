@@ -13,8 +13,8 @@
 .icon {
     margin-inline-end: 0;
     margin-top: 0;
-    width: 24px;
-    height: 24px;
+    width: var(--mantine-spacing-md);
+    height: var(--mantine-spacing-md);
 }
 
 .body {
