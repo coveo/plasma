@@ -71,9 +71,9 @@ const AlertWarning = Alert.withProps({
     icon: <InfoToken.Warning size="md" />,
     vars: () => ({
         root: {
-            '--alert-color': 'var(--mantine-color-warning-filled)',
-            '--alert-bg': 'var(--mantine-color-warning-light)',
-            '--alert-bd': '2px solid var(--mantine-color-warning-light)',
+            '--alert-color': 'var(--mantine-color-yellow-text)',
+            '--alert-bg': 'var(--mantine-color-yellow-light)',
+            '--alert-bd': '2px solid var(--mantine-color-yellow-light)',
         },
     }),
 });

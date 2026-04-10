@@ -2,9 +2,25 @@
     font-weight: var(--coveo-fw-bold);
 }
 
+.label {
+    color: var(--mantine-color-text);
+}
+
+.wrapper {
+    gap: var(--mantine-spacing-sm);
+}
+
+.icon {
+    margin-inline-end: 0;
+    margin-top: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.body {
+    gap: var(--mantine-spacing-xxs);
+}
+
 .closeButton {
-    & svg {
-        width: 20px;
-        height: 20px;
-    }
+    color: var(--mantine-color-text);
 }
