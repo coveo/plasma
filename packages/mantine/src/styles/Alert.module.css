@@ -12,6 +12,7 @@
 
 .icon {
     margin-inline-end: 0;
+    margin-top: 0;
     width: var(--mantine-spacing-md);
     height: var(--mantine-spacing-md);
 }
