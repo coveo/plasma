@@ -12,13 +12,13 @@
 }
 
 .content {
-    overflow-y: initial;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .body {
-    overflow-y: scroll;
+    overflow-y: auto;
     border-end-start-radius: var(--modal-radius, var(--mantine-radius-default));
     border-end-end-radius: var(--modal-radius, var(--mantine-radius-default));
 }
