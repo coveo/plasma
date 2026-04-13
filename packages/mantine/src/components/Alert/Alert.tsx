@@ -37,6 +37,7 @@ const AlertInformation = Alert.withProps({
             '--alert-color': 'var(--mantine-color-text)',
             '--alert-bg': 'var(--mantine-color-gray-light)',
             '--alert-bd': '2px solid var(--mantine-color-gray-light)',
+            '--alert-radius': 'var(--mantine-radius-sm)',
         },
     }),
 });
@@ -49,6 +50,7 @@ const AlertAdvice = Alert.withProps({
             '--alert-color': 'var(--mantine-primary-color-filled)',
             '--alert-bg': 'var(--mantine-primary-color-light)',
             '--alert-bd': '2px solid var(--mantine-primary-color-light)',
+            '--alert-radius': 'var(--mantine-radius-sm)',
         },
     }),
 });
@@ -61,6 +63,7 @@ const AlertSuccess = Alert.withProps({
             '--alert-color': 'var(--mantine-color-green-filled)',
             '--alert-bg': 'var(--mantine-color-green-light)',
             '--alert-bd': '2px solid var(--mantine-color-green-light)',
+            '--alert-radius': 'var(--mantine-radius-sm)',
         },
     }),
 });
@@ -74,6 +77,7 @@ const AlertWarning = Alert.withProps({
             '--alert-color': 'var(--mantine-color-yellow-text)',
             '--alert-bg': 'var(--mantine-color-yellow-light)',
             '--alert-bd': '2px solid var(--mantine-color-yellow-light)',
+            '--alert-radius': 'var(--mantine-radius-sm)',
         },
     }),
 });
@@ -86,6 +90,7 @@ const AlertCritical = Alert.withProps({
             '--alert-color': 'var(--mantine-color-error)',
             '--alert-bg': 'var(--mantine-color-red-light)',
             '--alert-bd': '2px solid var(--mantine-color-red-light)',
+            '--alert-radius': 'var(--mantine-radius-sm)',
         },
     }),
 });

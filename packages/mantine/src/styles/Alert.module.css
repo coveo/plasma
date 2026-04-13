@@ -19,6 +19,7 @@
 
 .body {
     gap: var(--mantine-spacing-xxs);
+    padding: var(--mantine-spacing-xxs) 0;
 }
 
 .closeButton {
