@@ -1,3 +1,9 @@
+## <small>59.1.1 (2026-04-13)</small>
+
+* fix(Alert): *border-radius, *padding body (#4399) acede81, closes #4399
+
+
+
 ## 59.1.0 (2026-04-13)
 
 * fix(modal): adjust scrollbar behavior for better content visibility (#4398) 9039283, closes #4398
