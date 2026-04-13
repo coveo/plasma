@@ -1,3 +1,11 @@
+## 59.1.0 (2026-04-13)
+
+* fix(modal): adjust scrollbar behavior for better content visibility (#4398) 9039283, closes #4398
+* chore(deps): update all non-major dependencies (#4390) 200b07e, closes #4390
+* feat(alert): +Success variant, +border (#4393) 3f50eae, closes #4393
+
+
+
 ## 59.0.0 (2026-04-10)
 
 * feat(mantine, table): persist column visibility preferences to localStorage (#4377) 4da013b, closes #4377 #4373 #4378 #4379 #4375
