@@ -12,13 +12,13 @@
 
 .icon {
     margin-inline-end: 0;
-    margin-top: 0;
     width: var(--mantine-spacing-md);
     height: var(--mantine-spacing-md);
 }
 
 .body {
     gap: var(--mantine-spacing-xxs);
+    padding: var(--mantine-spacing-xxs) 0;
 }
 
 .closeButton {
