@@ -8,6 +8,41 @@ env:
     TURBO_TOKEN: '${{ secrets.TURBO_TOKEN }}'
 
 jobs:
+    release-preview:
+        name: Release Preview
+        if: github.base_ref == 'master' && !startsWith(github.head_ref, 'changeset-release/')
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            pull-requests: write
+        steps:
+            - name: Harden Runner
+              uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
+              with:
+                  egress-policy: audit
+
+            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+              with:
+                  fetch-depth: 0
+            - uses: ./.github/actions/setup
+            - name: Generate release preview
+              id: preview
+              shell: bash
+              run: |
+                  pnpm exec node scripts/releasePreview.mjs > release-preview.md
+                  cat release-preview.md >> "$GITHUB_STEP_SUMMARY"
+                  {
+                    echo "message<<EOF"
+                    cat release-preview.md
+                    echo "EOF"
+                  } >> "$GITHUB_OUTPUT"
+            - name: Comment release preview on the PR
+              if: github.event.pull_request.head.repo.full_name == github.repository
+              uses: ./.github/actions/comment-on-pr
+              with:
+                  message: ${{ steps.preview.outputs.message }}
+                  avoidRepostsWith: '<!-- changesets-release-preview -->'
+                  updateExisting: 'true'
     lint:
         name: Lint Changed Files
         runs-on: ubuntu-latest
