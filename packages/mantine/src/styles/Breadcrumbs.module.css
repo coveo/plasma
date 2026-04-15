@@ -1,8 +1,8 @@
 .root {
-    font-size: var(--mantine-font-size-xs);
+    font-size: var(--mantine-font-size-sm);
     font-weight: var(--coveo-fw-bold);
 }
 
 .breadcrumb {
-    line-height: 14px;
+    line-height: 16px;
 }

@@ -18,7 +18,7 @@ figma.connect(Header, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasm
     example: (props) => (
         <Header description={props.description} borderBottom>
             <Header.Breadcrumbs>
-                <Header.BreadcrumbAnchor>Parent</Header.BreadcrumbAnchor>
+                <Header.BreadcrumbAnchor single>Parent</Header.BreadcrumbAnchor>
             </Header.Breadcrumbs>
             {props.title}
             <Header.DocAnchor label="Documentation Link" href="" />
