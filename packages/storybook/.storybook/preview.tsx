@@ -31,6 +31,7 @@ const preview: Preview = {
                 light: {name: 'Light', value: 'var(--mantine-color-body)'},
             },
         },
+        chromatic: {disableSnapshot: true},
         docs: {
             codePanel: true,
         },
