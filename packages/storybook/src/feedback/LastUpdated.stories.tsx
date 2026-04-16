@@ -1,4 +1,4 @@
-import {LastUpdated} from '@coveord/plasma-mantine/components/LastUpdated';
+import {LastUpdated} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof LastUpdated> = {

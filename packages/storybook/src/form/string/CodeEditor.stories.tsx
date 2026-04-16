@@ -1,8 +1,8 @@
-import {CodeEditor} from '@coveord/plasma-mantine/components/CodeEditor';
+import {CodeEditor} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {Args} from '../../Args.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
 import {InputWrapperArgs, type InputWrapperStoryArgs} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 interface CodeEditorStoryArgs extends InputWrapperStoryArgs {
     disabled: boolean;
@@ -10,12 +10,13 @@ interface CodeEditorStoryArgs extends InputWrapperStoryArgs {
     defaultValue: string;
 }
 
-const meta = {
+const meta: Meta<CodeEditorStoryArgs> = {
     title: '@components/form/string/CodeEditor',
     id: 'CodeEditor',
     parameters: {
         layout: 'centered',
     },
+    component: CodeEditor,
     args: {
         ...InputWrapperArgs.Args,
         disabled: Args.disabled.initialValue,
@@ -30,7 +31,7 @@ const meta = {
             options: ['plaintext', 'json', 'markdown', 'python', 'xml'],
         },
     },
-} satisfies Meta<CodeEditorStoryArgs>;
+};
 export default meta;
 type Story = StoryObj<typeof meta>;
 

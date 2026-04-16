@@ -1,4 +1,4 @@
-import {RadioCard} from '@coveord/plasma-mantine/components/RadioCard';
+import {RadioCard} from '@coveord/plasma-mantine';
 import {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';

@@ -1,4 +1,9 @@
 {
     "extends": "../tsconfig-base.json",
-    "include": [".storybook/**/*", "src/**/*", "vite.config.ts"]
+    "compilerOptions": {
+        "paths": {
+            "@coveord/plasma-mantine": ["../mantine/src/index"]
+        }
+    },
+    "include": [".storybook/**/*", "src/**/*", "vite.config.ts", "../mantine/src/**/*"]
 }

@@ -1,8 +1,7 @@
-import {Button, createColumnHelper, Table, Tabs, useTable} from '@coveord/plasma-mantine';
-import {Modal} from '@coveord/plasma-mantine/components/Modal';
+import {Button, createColumnHelper, Modal, Table, Tabs, useTable} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {useMemo, type ComponentProps} from 'react';
+import {type ComponentProps, useMemo} from 'react';
 import {useArgs} from 'storybook/preview-api';
 
 type ModalStoryArgs = ComponentProps<typeof Modal> & {
@@ -10,9 +9,10 @@ type ModalStoryArgs = ComponentProps<typeof Modal> & {
     helpHref?: string;
 };
 
-const meta = {
+const meta: Meta<ModalStoryArgs> = {
     title: '@components/layout/Modal',
     id: 'Modal',
+    component: Modal,
     args: {
         opened: true,
         centered: false,
@@ -28,7 +28,7 @@ const meta = {
             options: ['xs', 'sm', 'md', 'lg', 'xl'],
         },
     },
-} satisfies Meta<ModalStoryArgs>;
+};
 export default meta;
 type Story = StoryObj<ModalStoryArgs>;
 

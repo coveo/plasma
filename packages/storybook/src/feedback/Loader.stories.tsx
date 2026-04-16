@@ -1,4 +1,4 @@
-import {Loader} from '@coveord/plasma-mantine/components/Loader';
+import {Loader} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Loader> = {

@@ -1,13 +1,12 @@
-import {Group} from '@coveord/plasma-mantine/components/Group';
-import {Radio} from '@coveord/plasma-mantine/components/Radio';
+import {Group, Radio} from '@coveord/plasma-mantine';
 import {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {
     BaseInputArgs,
-    InlineInputArgs,
-    InputWrapperArgs,
     type BaseInputStoryArgs,
+    InlineInputArgs,
     type InlineInputStoryArgs,
+    InputWrapperArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
