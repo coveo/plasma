@@ -1,6 +1,6 @@
-import type {StoryObj, Meta} from '@storybook/react-vite';
-import {EllipsisText} from '@coveord/plasma-mantine/components/EllipsisText';
+import {EllipsisText} from '@coveord/plasma-mantine';
 import {Chip} from '@mantine/core';
+import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof EllipsisText> = {
     title: '@components/typography/EllipsisText',

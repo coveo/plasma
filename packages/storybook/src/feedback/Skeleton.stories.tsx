@@ -1,4 +1,4 @@
-import {Skeleton} from '@coveord/plasma-mantine/components/Skeleton';
+import {Skeleton} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Skeleton> = {

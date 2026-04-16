@@ -1,14 +1,13 @@
-import {Checkbox} from '@coveord/plasma-mantine/components/Checkbox';
-import {Group} from '@coveord/plasma-mantine/components/Group';
+import {Checkbox, Group} from '@coveord/plasma-mantine';
 import {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
 import {
     BaseInputArgs,
-    InlineInputArgs,
-    InputWrapperArgs,
     type BaseInputStoryArgs,
+    InlineInputArgs,
     type InlineInputStoryArgs,
+    InputWrapperArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';

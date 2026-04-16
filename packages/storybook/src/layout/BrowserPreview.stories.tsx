@@ -1,8 +1,7 @@
-import type {StoryObj, Meta} from '@storybook/react-vite';
-import {BrowserPreview} from '@coveord/plasma-mantine/components/BrowserPreview';
+import {BrowserPreview, Flex, Pagination, Stack, Text, Title} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
+import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useState} from 'react';
-import {Flex, Pagination, Stack, Text, Title} from '@coveord/plasma-mantine';
 
 interface Product {
     name: string;

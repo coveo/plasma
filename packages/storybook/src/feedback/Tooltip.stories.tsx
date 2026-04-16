@@ -1,6 +1,6 @@
-import {Tooltip} from '@coveord/plasma-mantine/components/Tooltip';
+import {Tooltip} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {forwardRef, type ComponentPropsWithoutRef} from 'react';
+import {type ComponentPropsWithoutRef, forwardRef} from 'react';
 
 type TooltipStoryArgs = Omit<ComponentPropsWithoutRef<typeof Tooltip>, 'children' | 'opened'> & {
     freezeOpen: boolean;

@@ -1,4 +1,4 @@
-import {Prompt, type PromptProps} from '@coveord/plasma-mantine/components/Prompt';
+import {Prompt, type PromptProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useArgs} from 'storybook/preview-api';
 

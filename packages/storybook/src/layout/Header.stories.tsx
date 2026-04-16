@@ -1,5 +1,4 @@
-import {Button} from '@coveord/plasma-mantine/components/Button';
-import {Header, type HeaderProps} from '@coveord/plasma-mantine/components/Header';
+import {Button, Header, type HeaderProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 interface HeaderStoryProps {

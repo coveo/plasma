@@ -1,4 +1,4 @@
-import {ActionIcon, type ActionIconProps} from '@coveord/plasma-mantine/components/ActionIcon';
+import {ActionIcon, type ActionIconProps} from '@coveord/plasma-mantine';
 import {IconX} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 

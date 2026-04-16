@@ -1,5 +1,4 @@
-import {showNotification} from '@coveord/plasma-mantine';
-import {Button} from '@coveord/plasma-mantine/components/Button';
+import {Button, showNotification} from '@coveord/plasma-mantine';
 import {IconHome2} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import React from 'react';

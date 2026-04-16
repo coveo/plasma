@@ -1,14 +1,14 @@
-import {Select} from '@coveord/plasma-mantine/components/Select';
+import {Select} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
 import {
     BaseInputArgs,
-    InputWrapperArgs,
     type BaseInputStoryArgs,
+    InputWrapperArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 type SelectStoryArgs = ComponentProps<typeof Select> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
