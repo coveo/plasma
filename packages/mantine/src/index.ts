@@ -401,7 +401,7 @@ export {
 } from './components/Table/Table.types.js';
 export {useTableContext} from './components/Table/TableContext.js';
 export {useTable, type TableState, type TableStore, type UseTableOptions} from './components/Table/use-table.js';
-export {useUrlSyncedState, type SearchParamEntry, type UseUrlSyncedStateOptions} from './hooks/use-url-synced-state.js';
+export {useUrlSyncedState, type SearchParamEntry, type UseUrlSyncedStateOptions} from './hooks/useUrlSyncedState.js';
 
 // Table of Contents
 export * from './components/TableOfContents/TableOfContents.js';

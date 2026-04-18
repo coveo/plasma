@@ -13,7 +13,7 @@ import {
 import {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {useUncontrolled} from '@mantine/hooks';
 import dayjs from 'dayjs';
-import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state';
+import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/useUrlSyncedState';
 import classes from './DateRange.module.css';
 import {DateRangePickerInlineCalendar, DateRangePickerInlineCalendarProps} from './DateRangePickerInlineCalendar';
 
