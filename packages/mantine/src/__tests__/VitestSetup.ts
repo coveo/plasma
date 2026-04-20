@@ -33,6 +33,9 @@ window.ResizeObserver =
     );
 document.queryCommandSupported = document.queryCommandSupported || vi.fn().mockReturnValue(true);
 
+// jsdom doesn't implement scrollIntoView — Mantine's use-combobox calls it on dropdown items
+Element.prototype.scrollIntoView = Element.prototype.scrollIntoView || vi.fn();
+
 // Temporarily workaround for bug in @testing-library/react when use user-event with `vi.useFakeTimers()`
 beforeAll(() => {
     const _jest = (globalThis as any).jest;
