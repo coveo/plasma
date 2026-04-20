@@ -1,0 +1,5 @@
+.root {
+    display: block;
+    transform: rotate(0deg);
+    transition: transform 150ms ease;
+}
