@@ -13,7 +13,4 @@ export const readOnlyInputStyles = (theme: MantineTheme) => ({
     input: {
         cursor: 'text',
     },
-    section: {
-        color: theme.colors.gray[7],
-    },
 });
