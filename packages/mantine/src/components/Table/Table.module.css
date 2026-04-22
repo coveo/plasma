@@ -12,7 +12,9 @@
 .header {
     position: sticky;
     top: 0;
-    transition: box-shadow 150ms ease;
+    transition-property: box-shadow;
+    transition-timing-function: var(--coveo-transition-function);
+    transition-duration: var(--coveo-transition-duration);
     z-index: 1;
 
     &::after {
