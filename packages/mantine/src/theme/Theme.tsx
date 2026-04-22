@@ -218,7 +218,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Breadcrumbs: Breadcrumbs.extend({
             classNames: BreadcrumbsClasses,
             defaultProps: {
-                separator: <IconSlash size={16} color="var(--mantine-color-dimmed)" />,
+                separator: <IconSlash size={20} color="var(--mantine-color-dimmed)" />,
                 separatorMargin: 'xxs',
             },
         }),
