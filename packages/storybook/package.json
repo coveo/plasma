@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "build": "storybook build",
+        "chromatic": "chromatic --build-script-name build",
         "lint": "../../node_modules/.bin/eslint \"**/*.{ts,tsx}\"",
         "start": "storybook dev -p 6007"
     },
@@ -34,6 +35,7 @@
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
         "@vitejs/plugin-react": "6.0.1",
+        "chromatic": "16.1.0",
         "globals": "17.5.0",
         "postcss-preset-mantine": "1.18.0",
         "storybook": "10.3.5",

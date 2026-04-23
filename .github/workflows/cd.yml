@@ -56,3 +56,7 @@ jobs:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
                   AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+            - name: Deploy Storybook to Chromatic
+              env:
+                  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+              run: pnpm --filter storybook run chromatic --storybookBuildDir storybook-static --ci --exit-zero-on-changes --auto-accept-changes --branchName=${{ github.ref_name }}
