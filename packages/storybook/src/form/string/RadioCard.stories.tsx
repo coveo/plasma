@@ -1,4 +1,5 @@
 import {RadioCard} from '@coveord/plasma-mantine/components/RadioCard';
+import {Box} from '@coveord/plasma-mantine';
 import {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
@@ -38,6 +39,10 @@ export const Demo: Story = {
         const [{checked}, updateArgs] = useArgs<RadioCardStoryArgs>();
         const onClick = () => updateArgs({checked: !checked});
 
-        return <RadioCard {...withLabelInfoProps(props)} onClick={onClick} />;
+        return (
+            <Box w={280}>
+                <RadioCard {...withLabelInfoProps(props)} onClick={onClick} />
+            </Box>
+        );
     },
 };
