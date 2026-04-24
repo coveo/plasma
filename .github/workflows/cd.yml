@@ -25,7 +25,7 @@ jobs:
         environment: production
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
+              uses: step-security/harden-runner@6c3c2f2c1c457b00c10c4848d6f5491db3b629df # v2.18.0
               with:
                   egress-policy: audit
 
@@ -56,3 +56,7 @@ jobs:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
                   AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+            - name: Deploy Storybook to Chromatic
+              env:
+                  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+              run: pnpm --filter storybook run chromatic --storybookBuildDir storybook-static --ci --exit-zero-on-changes --auto-accept-changes --branchName=${{ github.ref_name }}

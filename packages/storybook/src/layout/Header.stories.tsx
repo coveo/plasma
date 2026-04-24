@@ -37,7 +37,9 @@ export const Demo: Story = {
             {args.breadcrumbs?.length > 0 && (
                 <Header.Breadcrumbs>
                     {args.breadcrumbs.map((breadcrumb) => (
-                        <Header.BreadcrumbAnchor key={breadcrumb}>{breadcrumb}</Header.BreadcrumbAnchor>
+                        <Header.BreadcrumbAnchor single={args.breadcrumbs.length === 1} key={breadcrumb}>
+                            {breadcrumb}
+                        </Header.BreadcrumbAnchor>
                     ))}
                 </Header.Breadcrumbs>
             )}
