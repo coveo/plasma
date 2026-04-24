@@ -1,13 +1,11 @@
 import {
-    Box,
     Factory,
-    Group,
     RadioCardProps as MantineRadioCardProps,
     RadioCardStylesNames as MantineRadioCardStylesNames,
     Radio,
     RadioCardCssVariables,
+    Stack,
     StylesApiProps,
-    Title,
     Tooltip,
     factory,
     useProps,
@@ -15,6 +13,7 @@ import {
 } from '@mantine/core';
 import {ReactNode} from 'react';
 import classes from '../../styles/RadioCard.module.css';
+import {Input} from '../Input/Input';
 
 export type RadioCardStylesNames = MantineRadioCardStylesNames | 'container' | 'indicator' | 'title' | 'description';
 export type RadioCardFactory = Factory<{
@@ -47,8 +46,19 @@ export type RadioCardProps = MantineRadioCardProps &
 const defaultProps: Partial<RadioCardProps> = {};
 
 export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
-    const {classNames, styles, style, className, vars, disabled, label, description, disabledTooltip, ...others} =
-        useProps('RadioCard', defaultProps, _props);
+    const {
+        children,
+        classNames,
+        styles,
+        style,
+        className,
+        vars,
+        disabled,
+        label,
+        description,
+        disabledTooltip,
+        ...others
+    } = useProps('RadioCard', defaultProps, _props);
     const getStyles = useStyles<RadioCardFactory>({
         name: 'RadioCard',
         classes,
@@ -69,13 +79,18 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
                 {...getStyles('card', {className, style, classNames, styles})}
                 {...others}
             >
-                <Group {...getStyles('container', {classNames, styles})}>
-                    <Radio.Indicator size="xs" disabled={disabled} {...getStyles('indicator', {classNames, styles})} />
-                    <Title order={4} {...getStyles('title', {classNames, styles})}>
+                <Radio.Indicator disabled={disabled} {...getStyles('indicator', {classNames, styles})} />
+                <Stack {...getStyles('container', {classNames, styles})}>
+                    <Input.Label size="md" {...getStyles('title', {classNames, styles})}>
                         {label}
-                    </Title>
-                </Group>
-                {description && <Box {...getStyles('description', {classNames, styles})}>{description}</Box>}
+                    </Input.Label>
+                    {description && (
+                        <Input.Description {...getStyles('description', {classNames, styles})}>
+                            {description}
+                        </Input.Description>
+                    )}
+                    {children}
+                </Stack>
             </Radio.Card>
         </Tooltip>
     );
