@@ -13,10 +13,10 @@ import {
 } from '@mantine/core';
 
 import Circle from './icons/circle.svg?raw';
+import Info from './icons/info.svg?raw';
 import Ring from './icons/ring.svg?raw';
 import Square from './icons/square.svg?raw';
 import Triangle from './icons/triangle.svg?raw';
-import Info from './icons/info.svg?raw';
 import classes from './StatusToken.module.css';
 
 export type StatusTokenFactory = Factory<{
@@ -49,7 +49,7 @@ export interface StatusTokenProps extends BoxProps, StylesApiProps<StatusTokenFa
     variant?: StatusTokenVariant;
 }
 
-const defaultProps: Partial<StatusTokenProps> = {size: 'lg', variant: 'info'};
+const defaultProps = {size: 'lg', variant: 'info'} satisfies Partial<StatusTokenProps>;
 
 const resolveThemeColorFromVariant = (variant: StatusTokenVariant, theme: MantineTheme): string => {
     switch (variant) {
@@ -93,11 +93,13 @@ const resolveIconSrcFromVariant = (variant: StatusTokenVariant): string => {
 };
 
 const varsResolver = createVarsResolver<StatusTokenFactory>((theme, {variant, size}) => {
-    const color = resolveThemeColorFromVariant(variant, theme);
+    const resolvedVariant = variant ?? defaultProps.variant;
+    const resolvedSize = size ?? defaultProps.size;
+    const color = resolveThemeColorFromVariant(resolvedVariant, theme);
     return {
         root: {
             '--status-token-color': color,
-            '--status-token-size': getSize(resolveSize(size), 'status-token-size'),
+            '--status-token-size': getSize(resolveSize(resolvedSize), 'status-token-size'),
         },
     };
 });
@@ -115,7 +117,7 @@ const statusTokenLabels: Record<StatusTokenVariant, string> = {
 
 export const StatusToken: ReturnType<typeof polymorphicFactory<StatusTokenFactory>> =
     polymorphicFactory<StatusTokenFactory>((props, ref) => {
-        const {variant, vars, size, className, style, unstyled, styles, classNames, ...others} = useProps(
+        const {variant, vars, className, style, unstyled, styles, classNames, ...others} = useProps(
             'StatusToken',
             defaultProps,
             props,

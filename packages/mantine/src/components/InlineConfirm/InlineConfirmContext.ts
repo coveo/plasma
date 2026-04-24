@@ -1,8 +1,8 @@
 import {createSafeContext} from '@mantine/core';
 
 type InlineConfirmContextType = {
-    confirmingId: string;
-    setConfirmingId: (id: string) => void;
+    confirmingId: string | null;
+    setConfirmingId: (id: string | null) => void;
     clearConfirm: () => void;
 };
 

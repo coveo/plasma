@@ -16,7 +16,7 @@ export type PromptCancelButtonFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<PromptCancelButtonProps> = {};
+const defaultProps = {} satisfies Partial<PromptCancelButtonProps>;
 
 export const PromptCancelButton = factory<PromptCancelButtonFactory>((_props, ref) => {
     const {getStyles} = usePromptContext();

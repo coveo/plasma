@@ -37,12 +37,12 @@ export type TableHeaderFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableHeaderProps> = {
+const defaultProps = {
     unselectAllLabel: 'Unselect all',
     selectedCountLabel: (count) => `${count} selected`,
     showActions: true,
     borderTop: true,
-};
+} satisfies Partial<TableHeaderProps>;
 
 export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();

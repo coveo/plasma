@@ -1,6 +1,6 @@
 import {NumberInput} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
-import {type ReactNode} from 'react';
+import type {ReactElement} from 'react';
 
 figma.connect(
     NumberInput,
@@ -27,7 +27,9 @@ figma.connect(
             }),
             inputProps: figma.nestedProps('.NumberInput.Input', {
                 placeholder: figma.boolean('Placeholder', {true: figma.textContent('0'), false: undefined}),
-                leftSection: figma.boolean<ReactNode, never>('Left Section', {true: figma.instance('Swap Left')}),
+                leftSection: figma.boolean<ReactElement, undefined>('Left Section', {
+                    true: figma.instance<ReactElement>('Swap Left'),
+                }),
                 disabled: figma.enum('State', {Disabled: true}),
                 readOnly: figma.enum('State', {'Read-only': true}),
             }),

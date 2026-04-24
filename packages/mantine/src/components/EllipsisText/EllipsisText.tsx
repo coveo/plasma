@@ -30,9 +30,9 @@ type EllipsisTextFactory = Factory<{
     stylesNames: EllipsisTextStylesNames;
 }>;
 
-const defaultProps: Partial<EllipsisTextProps> = {
+const defaultProps = {
     tooltipProps: {},
-};
+} satisfies Partial<EllipsisTextProps>;
 
 export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref) => {
     const {className, children, style, classNames, styles, unstyled, variant, lineClamp, tooltipProps, ...others} =
