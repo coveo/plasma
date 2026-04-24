@@ -61,5 +61,5 @@ jobs:
             - name: Add demo link as a comment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
-                  message: 'Live demos of your latest successful build available here:\n- [:books: Storybook](${{ steps.deploy-demo.outputs.demo-output-path }}/)\n- [:globe_with_meridians: Plasma website (deprecated)](${{ steps.deploy-demo.outputs.demo-output-path }}/old/).'
-                  avoidRepostsWith: Live demos of your latest successful build available here
+                  message: 'Live demo of your latest successful build available here:\n- [:books: Storybook](${{ steps.deploy-demo.outputs.demo-output-path }}/).'
+                  avoidRepostsWith: Live demo of your latest successful build available here

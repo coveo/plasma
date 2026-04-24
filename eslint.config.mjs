@@ -4,7 +4,6 @@ import eslintPluginImport from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 import preferArrow from 'eslint-plugin-prefer-arrow';
 import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
 import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
 import storybook from 'eslint-plugin-storybook';
 import eslintPluginTestingLibrary from 'eslint-plugin-testing-library';
@@ -13,7 +12,7 @@ import globals from 'globals';
 import tsEslint from 'typescript-eslint';
 
 export default tsEslint.config(
-    {ignores: ['**/dist', '**/.turbo', 'packages/react-icons/mock/index.js', 'packages/website/src/examples/mantine']},
+    {ignores: ['**/dist', '**/.turbo', 'packages/react-icons/mock/index.js']},
     {
         files: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs', '**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
         extends: [tsEslint.configs.base, reactJsxRuntime, eslintConfigPrettier],
@@ -247,23 +246,6 @@ export default tsEslint.config(
         files: ['packages/mantine/**'],
         rules: {
             'no-underscore-dangle': 'off',
-        },
-    },
-    {
-        files: ['packages/website/**'],
-        plugins: {
-            'react-refresh': reactRefresh,
-        },
-        rules: {
-            'react-refresh/only-export-components': ['warn', {allowConstantExport: true}],
-            '@typescript-eslint/no-explicit-any': 'off',
-            '@typescript-eslint/no-unused-vars': 'warn',
-        },
-    },
-    {
-        files: ['packages/website/src/examples/**'],
-        rules: {
-            'no-console': 'off',
         },
     },
     {
