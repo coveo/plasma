@@ -110,7 +110,7 @@ const _Prompt = factory<PromptFactory>((_props, ref) => {
     const IconComponent = PromptVariantIconsMapping[variant];
 
     return (
-        <PromptContextProvider value={{variant: variant, getStyles}}>
+        <PromptContextProvider value={{variant, getStyles}}>
             <Modal.Root ref={ref} variant="prompt" {...others} {...getStyles('root')}>
                 <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
                 <Modal.Content {...getStyles('content', stylesApiProps)}>

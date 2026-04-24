@@ -242,10 +242,10 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             <TableProvider<T>
                 value={{
                     getStyles,
-                    getRowActions: getRowActions,
+                    getRowActions,
                     store,
                     table,
-                    layouts: layouts,
+                    layouts,
                     containerRef,
                 }}
             >
