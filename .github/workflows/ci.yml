@@ -10,14 +10,14 @@ env:
 jobs:
     release-preview:
         name: Release Preview
-        if: github.base_ref == 'master' && !startsWith(github.head_ref, 'changeset-release/')
+        if: ${{ !startsWith(github.head_ref , 'changeset-release/') }}
         runs-on: ubuntu-latest
         permissions:
             contents: read
             pull-requests: write
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
+              uses: step-security/harden-runner@6c3c2f2c1c457b00c10c4848d6f5491db3b629df # v2.18.0
               with:
                   egress-policy: audit
 
@@ -29,11 +29,9 @@ jobs:
               id: preview
               shell: bash
               run: |
-                  pnpm exec node scripts/releasePreview.mjs > release-preview.md
-                  cat release-preview.md >> "$GITHUB_STEP_SUMMARY"
                   {
                     echo "message<<EOF"
-                    cat release-preview.md
+                    pnpm exec node scripts/releasePreview.mjs | tee -a "$GITHUB_STEP_SUMMARY"
                     echo "EOF"
                   } >> "$GITHUB_OUTPUT"
             - name: Comment release preview on the PR
