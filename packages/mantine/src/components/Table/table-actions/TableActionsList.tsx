@@ -5,6 +5,7 @@ import {
     CSSProperties,
     ExtendComponent,
     Factory,
+    MantineThemeComponent,
     Menu,
     MenuProps,
     Tooltip,
@@ -70,7 +71,7 @@ interface ActionGroup {
     actions: ReactNode[];
 }
 
-export const TableActionsList = (props: TableActionsListProps) => {
+export function TableActionsList(props: TableActionsListProps) {
     const {getStyles} = useTableContext();
     const {
         actions,
@@ -186,7 +187,7 @@ export const TableActionsList = (props: TableActionsListProps) => {
             </TableActionProvider>
         </InlineConfirm>
     );
-};
+}
 
 interface ActionsGroupsMenuItemsProps {
     styles?: Partial<Record<TableActionsListStylesNames, CSSProperties>>;
@@ -209,4 +210,4 @@ const ActionsGroupsMenuItems = ({styles = {}, classNames = {}, actionGroups}: Ac
     ));
 };
 
-TableActionsList.extend = (input: ExtendComponent<TableActionsListFactory>) => input;
+TableActionsList.extend = (input: ExtendComponent<TableActionsListFactory>): MantineThemeComponent => input;

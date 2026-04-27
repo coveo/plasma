@@ -10,11 +10,12 @@
     },
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",
+        "@coveord/plasma-react-icons": "workspace:*",
         "@figma/code-connect": "1.4.3",
         "react": "19.2.5"
     },
     "devDependencies": {
         "@types/react": "19.2.14",
-        "typescript": "5.9.3"
+        "typescript": "6.0.3"
     }
 }

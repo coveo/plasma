@@ -184,7 +184,15 @@ export default tsEslint.config(
             'no-unused-labels': 'error',
             'no-var': 'error',
             'one-var': ['error', 'never'],
-            'prefer-arrow/prefer-arrow-functions': 'error',
+            'prefer-arrow/prefer-arrow-functions': [
+                'error',
+                {
+                    disallowPrototype: false,
+                    singleReturnOnly: false,
+                    classPropertiesAllowed: false,
+                    allowStandaloneDeclarations: true,
+                },
+            ],
             'prefer-const': 'error',
             'quote-props': 'off',
             radix: 'error',
