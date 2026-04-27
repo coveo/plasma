@@ -1,5 +1,6 @@
-module.exports = async ({github, context, message, avoidRepostsWith}) => {
+module.exports = async ({github, context, message, avoidRepostsWith, updateExisting = false}) => {
     let comment;
+    const normalizedMessage = message.replace(/\\n/g, '\n');
 
     if (avoidRepostsWith) {
         for await (const {data: comments} of github.paginate.iterator(github.rest.issues.listComments, {
@@ -13,11 +14,17 @@ module.exports = async ({github, context, message, avoidRepostsWith}) => {
         }
     }
 
-    if (!comment) {
+    if (comment && updateExisting) {
+        await github.rest.issues.updateComment({
+            ...context.repo,
+            comment_id: comment.id,
+            body: normalizedMessage,
+        });
+    } else if (!comment) {
         await github.rest.issues.createComment({
             ...context.repo,
             issue_number: context.issue.number,
-            body: message,
+            body: normalizedMessage,
         });
     }
 };

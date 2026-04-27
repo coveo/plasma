@@ -8,7 +8,7 @@ interface HeaderStoryProps {
     withActions: boolean;
 }
 
-const meta: Meta<typeof Header> = {
+const meta: Meta<HeaderProps & HeaderStoryProps> = {
     title: '@components/layout/Header',
     id: 'Header',
     component: Header,
@@ -29,23 +29,23 @@ const meta: Meta<typeof Header> = {
     },
 };
 export default meta;
-type Story = StoryObj<typeof Header>;
+type Story = StoryObj<HeaderProps & HeaderStoryProps>;
 
 export const Demo: Story = {
-    render: (props: HeaderProps & HeaderStoryProps) => (
-        <Header description={props.description} borderBottom={props.borderBottom} variant={props.variant}>
-            {props.breadcrumbs?.length > 0 && (
+    render: (args) => (
+        <Header description={args.description} borderBottom={args.borderBottom} variant={args.variant}>
+            {args.breadcrumbs?.length > 0 && (
                 <Header.Breadcrumbs>
-                    {props.breadcrumbs.map((breadcrumb) => (
-                        <Header.BreadcrumbAnchor single={props.breadcrumbs.length === 1} key={breadcrumb}>
+                    {args.breadcrumbs.map((breadcrumb) => (
+                        <Header.BreadcrumbAnchor single={args.breadcrumbs.length === 1} key={breadcrumb}>
                             {breadcrumb}
                         </Header.BreadcrumbAnchor>
                     ))}
                 </Header.Breadcrumbs>
             )}
-            {props.title}
-            {props.docAnchor && <Header.DocAnchor label={props.docAnchor} href="https://about:blank" />}
-            {props.withActions && (
+            {args.title}
+            {args.docAnchor && <Header.DocAnchor label={args.docAnchor} href="https://about:blank" />}
+            {args.withActions && (
                 <Header.Right>
                     <Button.Primary>Primary</Button.Primary>
                     <Button.Secondary>Secondary</Button.Secondary>

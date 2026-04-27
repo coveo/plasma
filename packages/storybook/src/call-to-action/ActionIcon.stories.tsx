@@ -3,10 +3,14 @@ import {ActionIcon} from '@coveord/plasma-mantine/components/ActionIcon';
 import {IconBell} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
-const meta: Meta<typeof ActionIcon> = {
+interface ActionIconStoryArgs {
+    size: 'sm' | 'md';
+    variant: keyof typeof ActionIcon;
+}
+
+const meta: Meta<ActionIconStoryArgs> = {
     title: '@components/call-to-action/ActionIcon',
     id: 'ActionIcon',
-    component: ActionIcon,
     parameters: {
         layout: 'centered',
     },
@@ -38,15 +42,15 @@ const meta: Meta<typeof ActionIcon> = {
     },
 };
 export default meta;
-type Story = StoryObj<typeof ActionIcon>;
+type Story = StoryObj<ActionIconStoryArgs>;
 
 export const Demo: Story = {
-    render: (props: {size: 'sm' | 'md'; variant: string}) => {
-        const ActionIconComponent = ActionIcon[props.variant as keyof typeof ActionIcon] as React.ComponentType<any>;
+    render: (args) => {
+        const ActionIconComponent = ActionIcon[args.variant as keyof typeof ActionIcon] as React.ComponentType<any>;
         const Icon = () => <IconBell size={16} />;
         const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
         return (
-            <ActionIconComponent onClick={onClick} size={props.size}>
+            <ActionIconComponent onClick={onClick} size={args.size}>
                 <Icon />
             </ActionIconComponent>
         );

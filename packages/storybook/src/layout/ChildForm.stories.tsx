@@ -2,7 +2,7 @@ import {ChildForm, type ChildFormProps} from '@coveord/plasma-mantine/components
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {FunctionComponent, ReactNode} from 'react';
 
-const meta: Meta<typeof ChildForm> = {
+const meta: Meta<ChildFormProps> = {
     title: '@components/layout/ChildForm',
     id: 'ChildForm',
     component: ChildForm,
@@ -18,7 +18,7 @@ const meta: Meta<typeof ChildForm> = {
     },
 };
 export default meta;
-type Story = StoryObj<typeof ChildForm>;
+type Story = StoryObj<ChildFormProps>;
 
 const Inside = () => (
     <div
@@ -40,10 +40,10 @@ const Text: FunctionComponent<{children: ReactNode}> = ({children}) => <div styl
 Text.displayName = 'Text';
 
 export const Demo: Story = {
-    render: (props: ChildFormProps) => (
+    render: (args) => (
         <>
             <Text>Above</Text>
-            <ChildForm {...props}>
+            <ChildForm {...args}>
                 <Inside />
             </ChildForm>
             <Text>Below</Text>

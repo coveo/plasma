@@ -237,14 +237,18 @@ const PAGINATION_SERIALIZATION = serialization<'pagination'>({
         ['page', (pageIndex + 1).toString()],
         ['pageSize', pageSize.toString()],
     ],
-    deserializer: (params, initialState) =>
-        defaultsDeep(
+    deserializer: (params, initialState) => {
+        const page = params.get('page');
+        const pageSize = params.get('pageSize');
+
+        return defaultsDeep(
             {
-                pageIndex: params.get('page') ? Math.max(1, parseInt(params.get('page'), 10)) - 1 : undefined,
-                pageSize: params.get('pageSize') ? parseInt(params.get('pageSize'), 10) : undefined,
+                pageIndex: page ? Math.max(1, parseInt(page, 10)) - 1 : undefined,
+                pageSize: pageSize ? parseInt(pageSize, 10) : undefined,
             },
             initialState,
-        ),
+        );
+    },
 });
 
 const SORTING_SERIALIZATION = serialization<'sorting'>({
@@ -487,8 +491,8 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         clearRowSelection,
         getSelectedRows,
         getSelectedRow,
-        rowSelectionEnabled: options.enableRowSelection,
-        rowSelectionForced: options.forceSelection,
-        multiRowSelectionEnabled: options.enableMultiRowSelection,
+        rowSelectionEnabled: !!options.enableRowSelection,
+        rowSelectionForced: !!options.forceSelection,
+        multiRowSelectionEnabled: !!options.enableMultiRowSelection,
     };
 };

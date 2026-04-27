@@ -97,7 +97,7 @@ const placeholder: Arg<string> = {
     initialValue: 'Placeholder',
 };
 
-const clearable: Arg<boolean> = {
+const clearable: Arg<boolean | undefined> = {
     type: {
         control: 'boolean',
         description: 'Display clear button when value is present',

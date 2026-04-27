@@ -4,6 +4,8 @@
     "private": true,
     "scripts": {
         "build": "turbo run build",
+        "changeset": "changeset",
+        "changeset:version": "changeset version",
         "clean": "pnpm --recursive --parallel clean",
         "commit-cli": "cz",
         "preinstall": "npx only-allow pnpm",
@@ -12,8 +14,12 @@
         "precommit": "lint-staged",
         "prepare": "husky",
         "reconstruct": "pnpm dlx rimraf packages/*/node_modules packages/*/.turbo node_modules && npm run setup && echo done",
+        "release:pre:enter:next": "changeset pre enter next",
+        "release:pre:exit": "changeset pre exit",
+        "release:pre:publish:next": "changeset publish --tag next",
+        "release:publish": "changeset publish",
         "setup": "pnpm install",
-        "start": "turbo run build --filter=!@coveord/plasma-website --filter=!storybook && pnpm --recursive --parallel start",
+        "start": "turbo run build --filter=!storybook && pnpm --recursive --parallel start",
         "test": "turbo run test --concurrency=1",
         "turbo:login": "node scripts/turboLogin.mjs"
     },
@@ -46,9 +52,10 @@
         "not dead"
     ],
     "devDependencies": {
+        "@changesets/changelog-github": "0.5.1",
+        "@changesets/cli": "2.29.6",
         "@commitlint/cli": "20.5.0",
         "@commitlint/config-conventional": "20.5.0",
-        "@coveo/semantic-monorepo-tools": "2.7.1",
         "@types/node": "24.12.2",
         "@vitest/eslint-plugin": "1.6.16",
         "aws-sdk": "2.1693.0",
@@ -88,9 +95,6 @@
         "overrides": {
             "@babel/traverse": "^7.23.2",
             "nwsapi": "2.2.23"
-        },
-        "patchedDependencies": {
-            "@stencil/core": "patches/@stencil__core.patch"
         }
     }
 }

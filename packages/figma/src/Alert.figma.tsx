@@ -1,5 +1,6 @@
 import {Alert, Text} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
+import type {ReactElement} from 'react';
 
 figma.connect(
     Alert.Information,
@@ -9,11 +10,11 @@ figma.connect(
         props: {
             message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show CloseButton'),
-            title: figma.boolean('Show Title', {
+            title: figma.boolean<string, undefined>('Show Title', {
                 true: figma.textContent('Title'),
             }),
-            contentSwap: figma.boolean('Show ContentSwap', {
-                true: figma.instance('Instance'),
+            contentSwap: figma.boolean<ReactElement, undefined>('Show ContentSwap', {
+                true: figma.instance<ReactElement>('Instance'),
             }),
         },
         example: ({withCloseButton, title, contentSwap, message}) => (
@@ -33,11 +34,11 @@ figma.connect(
         props: {
             message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show CloseButton'),
-            title: figma.boolean('Show Title', {
+            title: figma.boolean<string, undefined>('Show Title', {
                 true: figma.textContent('Title'),
             }),
-            contentSwap: figma.boolean('Show ContentSwap', {
-                true: figma.instance('Instance'),
+            contentSwap: figma.boolean<ReactElement, undefined>('Show ContentSwap', {
+                true: figma.instance<ReactElement>('Instance'),
             }),
         },
         example: ({withCloseButton, title, contentSwap, message}) => (
@@ -57,11 +58,11 @@ figma.connect(
         props: {
             message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show CloseButton'),
-            title: figma.boolean('Show Title', {
+            title: figma.boolean<string, undefined>('Show Title', {
                 true: figma.textContent('Title'),
             }),
-            contentSwap: figma.boolean('Show ContentSwap', {
-                true: figma.instance('Instance'),
+            contentSwap: figma.boolean<ReactElement, undefined>('Show ContentSwap', {
+                true: figma.instance<ReactElement>('Instance'),
             }),
         },
         example: ({withCloseButton, title, contentSwap, message}) => (
@@ -81,11 +82,11 @@ figma.connect(
         props: {
             message: figma.textContent('Message'),
             withCloseButton: figma.boolean('Show CloseButton'),
-            title: figma.boolean('Show Title', {
+            title: figma.boolean<string, undefined>('Show Title', {
                 true: figma.textContent('Title'),
             }),
-            contentSwap: figma.boolean('Show ContentSwap', {
-                true: figma.instance('Instance'),
+            contentSwap: figma.boolean<ReactElement, undefined>('Show ContentSwap', {
+                true: figma.instance<ReactElement>('Instance'),
             }),
         },
         example: ({withCloseButton, title, contentSwap, message}) => (

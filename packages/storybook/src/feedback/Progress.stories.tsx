@@ -40,7 +40,11 @@ const colorMapping = {
 } as const;
 
 export const Demo: Story = {
-    render: (props: {value: number; variant?: 'info' | 'success' | 'caution' | 'error'}) => (
-        <Progress value={props.value} w={300} color={colorMapping[props.variant ?? 'info']} />
+    render: (args) => (
+        <Progress
+            value={args.value}
+            w={300}
+            color={colorMapping[(args.variant ?? 'info') as keyof typeof colorMapping]}
+        />
     ),
 };

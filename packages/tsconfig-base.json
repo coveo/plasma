@@ -31,7 +31,8 @@
         "emitDecoratorMetadata": true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "importHelpers": true
+        "importHelpers": true,
+        "strict": true
     },
     "exclude": ["${configDir}/dist", "${configDir}/node_modules"]
 }

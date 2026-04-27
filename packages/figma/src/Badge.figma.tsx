@@ -1,16 +1,17 @@
 import {Badge} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
+import type {ReactElement} from 'react';
 
 const badgeProps = {
     size: figma.enum('Size', {
         Small: 'small',
         Large: 'large',
     }),
-    leftSection: figma.boolean('LeftSection', {
-        true: figma.instance('Swap Left'),
+    leftSection: figma.boolean<ReactElement, undefined>('LeftSection', {
+        true: figma.instance<ReactElement>('Swap Left'),
     }),
-    rightSection: figma.boolean('RightSection', {
-        true: figma.instance('Swap Right'),
+    rightSection: figma.boolean<ReactElement, undefined>('RightSection', {
+        true: figma.instance<ReactElement>('Swap Right'),
     }),
     placeholder: figma.string('Placeholder'),
 };

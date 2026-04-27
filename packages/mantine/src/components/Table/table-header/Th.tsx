@@ -33,15 +33,15 @@ export type TableThFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<ThProps> = {
+const defaultProps = {
     sortingIcons: SortingIcons,
-};
+} satisfies Partial<ThProps>;
 
 export const Th = <T,>(props: ThProps<T> & {ref?: ForwardedRef<HTMLTableCellElement>}) => {
     const {getStyles} = useTableContext();
     const {header, sortingIcons, classNames, className, styles, style, vars, ...others} = useProps(
         'PlasmaTableTh',
-        defaultProps as Partial<ThProps<T>>,
+        defaultProps,
         props,
     );
 
