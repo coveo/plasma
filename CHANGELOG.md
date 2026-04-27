@@ -1,3 +1,17 @@
+## <small>59.1.2 (2026-04-27)</small>
+
+* chore: add chromatic and deployment (#4404) 72bf870, closes #4404
+* chore(deps): lock file maintenance (#4397) da45b9e, closes #4397
+* chore(deps): lock file maintenance (#4409) 36bb39d, closes #4409
+* chore(deps): update actions/github-script action to v9 (#4406) 8f54d89, closes #4406
+* chore(deps): update actions/setup-node digest to 48b55a0 (#4408) ccdd9f3, closes #4408
+* chore(deps): update all non-major dependencies (#4400) 4d47ecb, closes #4400
+* chore(deps): update all non-major dependencies (#4402) 5c90201, closes #4402
+* chore(deps): update all non-major dependencies (#4410) 21c9313, closes #4410
+* fix(mantine, breadcrumbs): update size of component (#4403) 54a9be9, closes #4403
+
+
+
 ## <small>59.1.1 (2026-04-13)</small>
 
 * fix(Alert): *border-radius, *padding body (#4399) acede81, closes #4399
