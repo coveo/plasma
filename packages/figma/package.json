@@ -6,15 +6,16 @@
     "scripts": {
         "figma:publish": "figma connect publish",
         "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint \"**/*.{ts,tsx}\" --fix",
-        "type-check": "tsc --noEmit"
+        "type-check": "tsgo --noEmit"
     },
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",
+        "@coveord/plasma-react-icons": "workspace:*",
         "@figma/code-connect": "1.4.3",
         "react": "19.2.5"
     },
     "devDependencies": {
         "@types/react": "19.2.14",
-        "typescript": "5.9.3"
+        "@typescript/native-preview": "7.0.0-dev.20260420.1"
     }
 }
