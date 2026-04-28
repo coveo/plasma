@@ -18,6 +18,8 @@ export const plasmaCSSVariablesResolver: CSSVariablesResolver = (theme) => {
             '--coveo-fw-light': '300',
             '--coveo-fw-normal': '400',
             '--coveo-fw-bold': '500',
+            '--coveo-transition-duration': '150ms',
+            '--coveo-transition-function': 'ease-in-out',
         },
         dark: {
             // custom colors

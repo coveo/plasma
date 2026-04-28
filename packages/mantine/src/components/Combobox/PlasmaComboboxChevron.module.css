@@ -1,0 +1,7 @@
+.root {
+    display: block;
+    transform: rotate(0deg);
+    transition-property: transform;
+    transition-timing-function: var(--coveo-transition-function);
+    transition-duration: var(--coveo-transition-duration);
+}

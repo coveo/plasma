@@ -23,6 +23,7 @@ import {
     CloseButton,
     ColorSwatch,
     Combobox,
+    ComboboxChevron,
     ComboboxSearch,
     createTheme,
     deepMerge,
@@ -70,6 +71,7 @@ import {Accordion} from '../components/Accordion/Accordion.js';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
+import {PlasmaComboboxChevron} from '../components/Combobox/PlasmaComboboxChevron.js';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -282,6 +284,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: ComboboxClasses,
             defaultProps: {
                 middlewares: {inline: true},
+            },
+        }),
+        ComboboxChevron: ComboboxChevron.extend({
+            defaultProps: {
+                component: PlasmaComboboxChevron,
             },
         }),
         ComboboxSearch: ComboboxSearch.extend({
