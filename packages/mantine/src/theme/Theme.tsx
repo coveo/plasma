@@ -81,6 +81,7 @@ import CardClasses from '../styles/Card.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ChipClasses from '../styles/Chip.module.css';
+import CloseButtonClasses from '../styles/CloseButton.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
 import DatePickerClasses from '../styles/DatePicker.module.css';
 import DateTimePickerClasses from '../styles/DateTimePicker.module.css';
@@ -271,6 +272,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 icon: <CrossSize16Px height={16} aria-label="close" />,
             },
+            classNames: CloseButtonClasses,
         }),
         ColorSwatch: ColorSwatch.extend({
             defaultProps: {
