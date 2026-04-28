@@ -1,7 +1,4 @@
-import {Anchor} from '@coveord/plasma-mantine/components/Anchor';
-import {Breadcrumbs} from '@coveord/plasma-mantine/components/Breadcrumbs';
-import {Flex} from '@coveord/plasma-mantine/components/Flex';
-import {Text} from '@coveord/plasma-mantine/components/Text';
+import {Anchor, Breadcrumbs, Flex, Text} from '@coveord/plasma-mantine';
 import {IconChevronLeft} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 

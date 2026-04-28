@@ -1,4 +1,4 @@
-import {ChildForm, type ChildFormProps} from '@coveord/plasma-mantine/components/ChildForm';
+import {ChildForm, type ChildFormProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {FunctionComponent, ReactNode} from 'react';
 

@@ -1,5 +1,4 @@
-import {Button} from '@coveord/plasma-mantine';
-import {StickyFooter} from '@coveord/plasma-mantine/components/StickyFooter';
+import {Button, StickyFooter} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof StickyFooter> = {

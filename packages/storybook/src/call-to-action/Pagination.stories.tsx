@@ -1,4 +1,4 @@
-import {Pagination} from '@coveord/plasma-mantine/components/Pagination';
+import {Pagination} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useState} from 'react';
 

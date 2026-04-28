@@ -1,4 +1,4 @@
-import {Pill} from '@coveord/plasma-mantine/components/Pill';
+import {Pill} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Pill> = {

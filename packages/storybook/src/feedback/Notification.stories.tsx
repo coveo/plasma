@@ -1,5 +1,4 @@
-import {Button} from '@coveord/plasma-mantine/components/Button';
-import {Notification} from '@coveord/plasma-mantine/components/Notification';
+import {Button, Notification} from '@coveord/plasma-mantine';
 import {notifications} from '@coveord/plasma-mantine/notifications';
 import {
     IconAlertSquareFilled,

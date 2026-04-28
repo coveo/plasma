@@ -1,4 +1,4 @@
-import {Slider} from '@coveord/plasma-mantine/components/Slider';
+import {Slider} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Slider> = {

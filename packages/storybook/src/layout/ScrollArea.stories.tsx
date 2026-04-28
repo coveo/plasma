@@ -1,4 +1,4 @@
-import {ScrollArea} from '@coveord/plasma-mantine/components/ScrollArea';
+import {ScrollArea} from '@coveord/plasma-mantine';
 import {faker} from '@faker-js/faker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 

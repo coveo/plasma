@@ -1,4 +1,4 @@
-import {InfoToken, type InfoTokenProps} from '@coveord/plasma-mantine/components/InfoToken';
+import {InfoToken, type InfoTokenProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 type InfoTokenTypes = keyof typeof InfoToken;

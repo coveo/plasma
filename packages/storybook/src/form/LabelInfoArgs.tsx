@@ -1,5 +1,5 @@
+import {Input} from '@coveord/plasma-mantine';
 import {type ReactNode} from 'react';
-import {Input} from '@coveord/plasma-mantine/components/Input';
 import {type WithLabelInfoArgs} from '../Args.js';
 
 const withLabelInfo = (label: ReactNode, labelInfo?: ReactNode) =>

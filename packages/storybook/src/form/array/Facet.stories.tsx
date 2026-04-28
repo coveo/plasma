@@ -1,4 +1,4 @@
-import {Facet} from '@coveord/plasma-mantine/components/Facet';
+import {Facet} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
@@ -11,6 +11,7 @@ type FacetStoryArgs = ComponentProps<typeof Facet> & {
 const meta = {
     title: '@components/form/array/Facet',
     id: 'Facet',
+    component: Facet,
     parameters: {
         layout: 'centered',
     },

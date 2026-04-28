@@ -1,5 +1,4 @@
-import {Badge} from '@coveord/plasma-mantine';
-import {NavLink} from '@coveord/plasma-mantine/components/NavLink';
+import {Badge, NavLink} from '@coveord/plasma-mantine';
 import {IconHome2} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {BaseInputArgs, InputWrapperArgs} from '../form/InputWrapperArgs.js';
