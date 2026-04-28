@@ -6,8 +6,18 @@
     &[data-with-remove] {
         padding: 0 var(--mantine-spacing-xxs) 0 var(--mantine-spacing-xs);
 
+        & svg {
+            width: 12px;
+            height: 12px;
+        }
+
         &[data-size='md'] {
             padding: 0 2px 0 var(--mantine-spacing-xs);
+
+            & svg {
+                width: 16px;
+                height: 16px;
+            }
         }
     }
 }
