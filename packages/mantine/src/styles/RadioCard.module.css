@@ -5,24 +5,30 @@
 }
 
 .card {
-    display: inline-flex;
-    flex-direction: column;
+    --radio-card-outline-color: var(--mantine-color-default-border);
+
+    display: flex;
+    flex-flow: row nowrap;
     align-items: flex-start;
+    gap: var(--mantine-spacing-sm);
     padding: var(--mantine-spacing-sm);
     border-radius: var(--mantine-radius-lg);
+    border-color: var(--radio-card-outline-color);
+    transition: border-color 150ms ease;
 
     &[data-checked] {
-        border-color: var(--mantine-primary-color-filled);
+        --radio-card-outline-color: var(--mantine-primary-color-filled);
+    }
+
+    &[disabled],
+    &[readonly] {
+        --radio-card-outline-color: var(--mantine-color-default-border);
     }
 
     &[disabled] {
         cursor: not-allowed;
-        border-color: var(--mantine-color-default-border);
 
-        .title {
-            color: var(--mantine-color-disabled-color);
-        }
-
+        .title,
         .description {
             color: var(--mantine-color-disabled-color);
         }
@@ -30,44 +36,35 @@
 
     &[readonly] {
         pointer-events: none;
-        border-color: var(--mantine-color-default-border);
 
-        & .indicator {
-            border-color: var(--mantine-color-default-border);
+        .indicator[data-checked] {
+            background-color: var(--mantine-color-default);
+            color: var(--coveo-color-text-readonly);
 
-            &[data-checked] {
-                background-color: var(--coveo-color-bg-readonly);
-                color: var(--coveo-color-text-readonly);
-
-                & > svg {
-                    color: var(--coveo-color-text-readonly);
-                }
+            & > svg {
+                color: inherit;
             }
         }
     }
 }
 
 .container {
-    flex-wrap: nowrap;
-    gap: var(--mantine-spacing-sm);
-    align-items: baseline;
-    justify-content: flex-start;
-    width: 100%;
-    margin-bottom: var(--mantine-spacing-xs);
+    gap: var(--mantine-spacing-xs);
 }
 
-.title {
-    flex: 1;
-    word-break: break-word;
-}
-
+.title,
 .description {
-    padding-left: var(--mantine-spacing-lg);
-    color: var(--mantine-color-dimmed);
-    font-weight: 400;
-    font-size: var(--mantine-font-size-xs);
+    flex: 1;
+    overflow-wrap: break-word;
 }
 
 .indicator {
     cursor: pointer;
+    transition: border-color 150ms ease;
+
+    &,
+    &[data-disabled],
+    &[data-checked] {
+        border-color: var(--radio-card-outline-color);
+    }
 }

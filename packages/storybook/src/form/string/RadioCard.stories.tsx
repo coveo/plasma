@@ -1,3 +1,4 @@
+import {Badge} from '@coveord/plasma-mantine';
 import {RadioCard} from '@coveord/plasma-mantine/components/RadioCard';
 import {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
