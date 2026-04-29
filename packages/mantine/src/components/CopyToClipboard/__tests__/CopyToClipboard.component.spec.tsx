@@ -1,5 +1,4 @@
 import {render, screen, userEvent} from '@test-utils';
-
 import {CopyToClipboard} from '../CopyToClipboard.js';
 
 describe('CopyToClipboard', () => {
@@ -13,7 +12,7 @@ describe('CopyToClipboard', () => {
     });
 
     describe('when "isLabel" is true', () => {
-        it('should display an input element', () => {
+        it('displays an input element', () => {
             const testValue = 'text value';
             render(<CopyToClipboard value={testValue} withLabel />);
 
